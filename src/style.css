@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Medium.ttf");
+}
