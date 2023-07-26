@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "vue": "^3.3.4",
-    "vue-data-ui": "0.0.4"
+    "vue-data-ui": "0.0.4",
+    "vue-router": "^4.0.13",
+    "vue-tabler-icons": "^2.21.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

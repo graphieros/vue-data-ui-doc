@@ -7,3 +7,8 @@
   font-family: "Satoshi";
   src: url("./fonts/Satoshi-Medium.ttf");
 }
+
+@font-face {
+  font-family: "SatoshiBold";
+  src: url("./fonts/Satoshi-Bold.ttf");
+}
