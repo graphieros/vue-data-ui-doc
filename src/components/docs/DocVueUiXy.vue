@@ -1,8 +1,322 @@
 <script setup>
+import { ref } from "vue";
+import Box from "../Box.vue";
+
+const dataset = ref([
+    {
+        name: "Series 1",
+        series: [ -55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
+        type: "bar",
+        color: "rgb(95,139,238)"
+    },
+    {
+        name: "Series 2",
+        series: [ 55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],
+        type: "line",
+        color: "rgb(66,211,146)"
+    },
+    {
+        name: "Series 3",
+        series: [ 64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],
+        type: "plot",
+        color: "rgb(255,100,0)"
+    },
+]);
+
+
+const config = ref({
+    chart: {
+        backgroundColor: "#1A1A1A",
+        color: "#c8c8c8",
+        height: 300,
+        width: 500,
+        padding: {
+            top:  36,
+            right: 12,
+            bottom: 36,
+            left: 48
+        },
+        grid: {
+            stroke: "#e1e5e8",
+            showVerticalLines: false,
+            labels: {
+                show: true,
+                color: "#c8c8c8",
+                fontSize: 12,
+                axis: {
+                    yLabel: "yLabel",
+                    xLabel: "xLabel",
+                    fontSize: 12
+                },
+                xAxisLabels: {
+                    color: "#c8c8c8",
+                    show: true,
+                    values: ['JAN', 'FEB', 'MAR', 'APR', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
+                    fontSize: 6,
+                }
+            }
+        },
+        legend: {
+            show: true,
+            color: "#c8c8c8",
+            useDiv: true,
+            fontSize: 16
+        },
+        title: {
+           show:true,
+           text: "Title",
+           color: "#c8c8c8",
+           fontSize: 20,
+           bold: true,
+           subtitle: {
+            fontSize: 16,
+            color: "#c8c8c8",
+            text: "Subtitle"
+           }
+        },
+        tooltip: {
+            color: "#FFFFFF",
+            backgroundColor: "#1A1A1A",
+            show: true,
+            showValue: true,
+            showPercentage: false,
+            roundingValue: 0,
+            roundingPercentage: 0,
+        },
+        userOptions: {
+            show: true,
+            title:"options",
+            labels: {
+                dataLabels: "Show datalabels",
+                titleInside: "Title inside",
+                legendInside: "Legend inside",
+                showTable: "Show table"
+            }
+        },
+    },
+    bar: {
+            useGradient: true,
+            labels: {
+                show: true,
+                offsetY: -6,
+                rounding: 0,
+                color: "#c8c8c8",
+            }
+        },
+        line: {
+            radius: 3,
+            useGradient: true,
+            strokeWidth: 2,
+            labels: {
+                show: false,
+                offsetY: -6,
+                rounding: 0,
+                color: "#c8c8c8",
+            }
+
+        },
+        plot: {
+            radius: 3,
+            useGradient: true,
+            labels: {
+                show: false,
+                offsetY: -6,
+                rounding: 0,
+                color: "#c8c8c8",
+            }
+        },
+});
+
+const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
+const mutableDataset = ref(JSON.parse(JSON.stringify(dataset.value)));
+function resetDefault() {
+    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
+}
+
+
+
 </script>
 
 <template>
     <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia eos voluptatibus reprehenderit ut facere laudantium quo rem reiciendis, molestiae voluptatum autem itaque quasi eveniet soluta, excepturi provident necessitatibus deleniti, dicta repellat? Aut dolor dolores possimus beatae provident voluptatibus expedita impedit, laborum fuga illum, maiores eos, nisi ex eligendi aliquam ab omnis itaque nobis doloribus? Neque est nesciunt, optio dicta magni quas facilis. Quas ullam ipsum voluptatum deserunt fuga tempora doloremque distinctio quidem rem laborum aliquam nam iste iure, eos odit dignissimos repudiandae earum. Nam voluptatibus corporis modi temporibus ducimus earum adipisci laborum molestias tempore mollitia. Aliquam harum sint cupiditate maxime expedita accusantium minima. Accusantium sed facilis laborum? Dignissimos ab voluptatibus tempore omnis, enim nisi expedita quaerat, ratione aspernatur eius exercitationem recusandae est? Architecto, praesentium ipsum! Soluta quae saepe earum aspernatur autem neque? Doloremque necessitatibus blanditiis non dolorum sit veritatis! Maxime, sint sapiente ab dolores natus harum. Eveniet eligendi, tenetur voluptates deleniti quos nobis ex at facilis obcaecati laudantium rerum maxime dignissimos neque, magni est quia aspernatur veritatis nostrum id nihil fugiat possimus minima quis sapiente! Quis doloremque, rem molestiae esse voluptate ratione accusamus. Est, porro numquam? Laudantium vitae mollitia neque molestias alias perspiciatis nemo, placeat ea ducimus reiciendis distinctio id libero magnam a animi nobis quam corporis unde facere sit, autem omnis eaque tempora officia. Hic fugit quis numquam, commodi nostrum cupiditate, dolores voluptatum nulla molestias illum ad non reiciendis beatae, obcaecati corrupti soluta molestiae! Harum ea provident eius id nulla accusamus illo, odit iusto iste tempore vero adipisci, soluta deleniti eum totam itaque molestiae tempora fugiat sapiente libero voluptatem quisquam, officiis delectus illum? Deleniti veritatis sint, eum, earum laboriosam officiis similique magni nam accusamus labore magnam mollitia atque incidunt, consequatur nulla tempore. Tempore odit quo non veritatis vel laboriosam iure nulla quod dicta consectetur dignissimos delectus natus suscipit tenetur soluta nostrum veniam fugit, blanditiis sunt perferendis nam ducimus commodi? Numquam, debitis? Velit ullam soluta laboriosam id autem iusto voluptatem ad facilis eum fugiat ab, saepe enim ex? Dolorum fuga repellat iste voluptatibus ex corporis, voluptas soluta iure sint illum autem, facilis eveniet, dolores magni harum eaque sit aspernatur dolor. Nemo quasi amet eum placeat commodi sit perspiciatis impedit quia dignissimos laudantium tempore, delectus ad necessitatibus aspernatur error omnis cupiditate quae deleniti reiciendis maxime nesciunt ut, architecto voluptas officia. Reprehenderit, harum. Nobis, modi doloremque. Id illum dolore corrupti provident. Nulla adipisci harum iusto repellat ut quae sapiente aspernatur! Exercitationem, architecto distinctio ipsum sequi impedit numquam debitis cum, perferendis voluptas error enim quia voluptatum, omnis doloremque aliquam quis cumque magnam modi maiores illum minima sint dolore eaque. Pariatur odit quaerat, eum iste, necessitatibus veniam sequi consectetur hic totam quos numquam ad sint culpa ipsa optio nobis temporibus laborum nesciunt id aliquid? Odio tempore velit doloremque quasi esse itaque, quibusdam doloribus, porro reiciendis fugiat aspernatur fugit enim non autem expedita, perspiciatis accusamus maiores tempora numquam! Eius dicta, ratione ipsam totam suscipit velit eligendi alias accusamus, deleniti, quibusdam vero maxime? Rem aliquid repellendus unde eum vero nihil optio alias voluptatibus, corporis ducimus voluptate libero omnis deserunt sed magni. Iusto cumque, sed beatae eum autem tenetur voluptatem nemo cum consequuntur nihil ullam, reiciendis aut vero excepturi nesciunt dolorum voluptas, eaque atque assumenda doloribus velit dicta architecto magnam! Ratione eum fuga vero ullam nam nisi nesciunt ea dignissimos, error quae repellat iusto dolor sequi sed provident porro ut. Sequi nostrum dicta ducimus est debitis deserunt quaerat cumque quasi modi labore! Nobis excepturi, quaerat commodi inventore saepe hic laboriosam deleniti illo quia laudantium ut dicta, rem eaque at odit accusantium quo, laborum autem debitis blanditiis sed praesentium. Earum eveniet sed cumque corporis consectetur dicta, sequi et amet quia ratione assumenda maxime ipsam dolorem in eos culpa ex! Doloremque corporis, tenetur commodi ipsam aspernatur reprehenderit qui natus. Sapiente, delectus! Mollitia hic incidunt, tenetur, saepe ut, alias corporis sunt amet exercitationem suscipit pariatur dicta? Modi perferendis deserunt odio. Ex autem aut repellendus. Voluptatum cupiditate iure dolores animi sit cumque iusto, quia vel laboriosam esse atque nobis omnis at sint, sunt repellendus corporis iste autem ex fugiat quo? Quaerat, repellat? Ab, optio ad neque dicta ipsam blanditiis? Sunt reiciendis provident harum corrupti earum maiores ex? At, iste qui maxime fugiat officia a corrupti animi accusantium eveniet dolore quod eos nesciunt blanditiis obcaecati cupiditate ullam! Saepe harum culpa iste voluptatibus, eum mollitia? Velit distinctio beatae blanditiis corporis consequuntur. Voluptatem enim esse quas iusto voluptas voluptatibus! Accusantium, ipsum! Commodi tempora suscipit incidunt quaerat distinctio quis perferendis dolore veritatis ipsum animi deserunt harum iure, sit minima? Ea ducimus omnis, ad maiores reprehenderit perspiciatis magnam possimus eaque modi nam quam praesentium illum ratione voluptate id voluptatibus tempora sequi molestiae ut soluta ipsam! Voluptates repudiandae non eos enim aliquid doloribus. Vitae blanditiis dolor, voluptatibus, totam, aut hic molestias vero quas mollitia facilis voluptatem. Voluptatem ratione architecto porro temporibus voluptates aliquid? Sapiente animi ipsum, maiores dolor quia eveniet illum repellendus enim cupiditate corrupti, corporis excepturi nisi, saepe culpa quis magnam sed obcaecati voluptatem eius hic aperiam molestias quae! Sapiente non quasi labore, nisi, nulla ipsam ad eius cupiditate nam earum provident repellat odio error nobis culpa deserunt nostrum atque assumenda voluptates temporibus modi eum esse ducimus? Ipsam a aliquid cupiditate officiis fugiat iure, dolore aut fuga cum ab at corrupti ad tempora? Voluptas nemo earum ab non quisquam fuga quo explicabo atque quam assumenda aperiam, molestiae tempora illo impedit asperiores. Dolorum recusandae, labore amet unde culpa repudiandae aliquam nisi minima laborum odio error, facilis nesciunt doloribus eveniet ullam nobis rem a delectus quibusdam tempore consectetur perferendis? Ipsam iste, expedita tenetur debitis numquam omnis, iure voluptatem vel quisquam impedit aliquid, doloribus aspernatur delectus modi? Libero laboriosam, nam aliquam ipsa ducimus aut illo rerum itaque? Placeat quos temporibus, neque fuga explicabo nostrum esse atque unde quidem distinctio dicta animi consequuntur quam, voluptatum harum voluptas. Ad placeat totam neque necessitatibus excepturi hic iusto magnam sint, voluptatibus quia mollitia repellendus laborum ipsum numquam officia id quasi impedit consequatur maxime quos! Modi recusandae adipisci eum rerum cumque veniam rem! Eligendi labore odit, reiciendis praesentium laudantium ipsa eaque dolorem repellendus eveniet.
+        <h1 class="text-center font-satoshi-bold text-gray-400 text-2xl">VueUiXy</h1>
+        <div class="w-1/2 mx-auto">
+            <VueUiXy :dataset="mutableDataset" :config="mutableConfig"/>
+        </div>
+        <Box>
+            <template v-slot:tab0>
+
+            Datastructure:
+            <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+<pre>
+<code>
+    [
+        {
+            name: string;
+            series: number[];
+            type: string; <span class="text-gray-500">// "bar" | "line" | "plot"</span>
+            color: string;
+        },
+        {...}
+    ]
+</code>
+</pre>      
+            </div>
+
+
+            Example:
+            <div class="w-full overflow-x-auto">
+                    
+<pre class="break-words">
+<code class="break-words">
+    [
+        {
+            name: <span class="text-app-blue">"Series 1",</span>
+            series: <span class="text-app-blue">[-55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],</span>
+            type:<span class="text-app-blue"><select v-model="mutableDataset[0].type">
+                <option>bar</option>
+                <option>line</option>
+                <option>plot</option>
+            </select>,</span>
+            color: <span class="text-app-blue">"rgb(95,139,238)",</span>
+        },
+        {
+            name: <span class="text-app-green">"Series 2",</span>
+            series: <span class="text-app-green">[55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],</span>
+            type:<span class="text-app-green"><select v-model="mutableDataset[1].type">
+                <option>bar</option>
+                <option>line</option>
+                <option>plot</option>
+            </select>,</span>
+            color: <span class="text-app-green">"rgb(66,211,146)"</span>
+        },
+        {
+            name: <span class="text-app-orange">"Series 3",</span>
+            series: <span class="text-app-orange">[64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],</span>
+            type:<span class="text-app-orange"><select v-model="mutableDataset[2].type">
+                <option>bar</option>
+                <option>line</option>
+                <option>plot</option>
+            </select>,</span>
+            color: <span class="text-app-orange">"rgb(255,100,0)"</span>
+        },
+    ]
+</code>
+</pre>
+            </div>
+            </template>
+            <template v-slot:tab1>
+                <div class="w-ull overflow-x-auto">
+                    <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">RESET</button>
+                    <p class="mt-3 text-gray-400">
+                        You can override the css (check out the styles.css in the package)
+                    </p>
+<pre>
+<code>
+const <span class="text-app-blue">config</span> =
+    {
+        chart: {
+            fontFamily: "inherit",
+            backgroundColor: <input type="color" v-model="mutableConfig.chart.backgroundColor">, (default: "#FFFFFF")
+            color: <input type="color" v-model="mutableConfig.chart.color">, (default:"#000000")
+            height: <input type="number" min="50" max="2000" v-model="mutableConfig.chart.height">, (default: 300)
+            width: <input type="number" min="50" max="2000" v-model="mutableConfig.chart.width">, (default: 500)
+            padding: {
+                top: <input type="number" min="0" max="200" v-model="mutableConfig.chart.padding.top">, (default: 36)
+                right: <input type="number" min="0" max="200" v-model="mutableConfig.chart.padding.right">, (default: 12)
+                bottom: <input type="number" min="0" max="200" v-model="mutableConfig.chart.padding.bottom">, (default: 12)
+                left: <input type="number" min="0" max="200" v-model="mutableConfig.chart.padding.left">, (default: 48)
+            },
+            grid: {
+                stroke: <input type="color" v-model="mutableConfig.chart.grid.stroke">, (default: "#E1E5E8"),
+                showVerticalLines: <input type="checkbox" v-model="mutableConfig.chart.grid.showVerticalLines"> (default: false)
+                labels: {
+                    show: <input type="checkbox" v-model="mutableConfig.chart.grid.labels.show">, (default: true)
+                    color: <input type="color" v-model="mutableConfig.chart.grid.labels.color">, (default: "#000000"),
+                    fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.fontSize">, (default: 12)
+                    axis: {
+                        yLabel: <input type="text" v-model="mutableConfig.chart.grid.labels.axis.yLabel">, (default: "")
+                        xLabel: <input type="text" v-model="mutableConfig.chart.grid.labels.axis.xLabel">, (default: "")
+                        fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.axis.fontSize">, (default: 12)
+                    },
+                    xAxisLabels: {
+                        show: <input type="checkbox" v-model="mutableConfig.chart.grid.labels.xAxisLabels.show">, (default: true)
+                        color: <input type="color" v-model="mutableConfig.chart.grid.labels.xAxisLabels.color">, (default: "#000000"),
+                        fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.xAxisLabels.fontSize">, (default: 6)
+                        values: <span class="text-app-blue">string[]</span>,
+                    }
+                }
+            },
+            legend: {
+                show: <input type="checkbox" v-model="mutableConfig.chart.legend.show">, (default: true),
+                color: <input type="color" v-model="mutableConfig.chart.legend.color">, (default: "#000000"),
+                fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.legend.fontSize">, (default: 16)
+                useDiv: <input type="checkbox" v-model="mutableConfig.chart.legend.useDiv">, (default: true),
+            },
+            title: {
+                show: <input type="checkbox" v-model="mutableConfig.chart.title.show">, (default: true)
+                text: <input type="text" v-model="mutableConfig.chart.title.text">, (default: "")
+                color: <input type="color" v-model="mutableConfig.chart.title.color">, (default: "#000000"),
+                fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.title.fontSize">, (default: 20)
+                bold: <input type="checkbox" v-model="mutableConfig.chart.title.bold">, (default: true)
+                subtitle: {
+                    fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.title.subtitle.fontSize">, (default: 16)
+                    color: <input type="color" v-model="mutableConfig.chart.title.subtitle.color">, (default: "#808080"),
+                    text: <input type="text" v-model="mutableConfig.chart.title.subtitle.text">, (default: "")
+                }
+            },
+            tooltip: {
+                show: <input type="checkbox" v-model="mutableConfig.chart.tooltip.show">, (default: true)
+                color: <input type="color" v-model="mutableConfig.chart.tooltip.color">, (default: "#000000"),
+                backgroundColor: <input type="color" v-model="mutableConfig.chart.tooltip.backgroundColor">, (default: "#FFFFFF"),
+                showValue: <input type="checkbox" v-model="mutableConfig.chart.tooltip.showValue">, (default: true)
+                showPercentage: <input type="checkbox" v-model="mutableConfig.chart.tooltip.showPercentage">, (default: false)
+            },
+            userOptions: {
+                show: <input type="checkbox" v-model="mutableConfig.chart.userOptions.show">, (default: true)
+                title: <input type="text" v-model="mutableConfig.chart.userOptions.title">, (default: "options")
+                labels: {
+                    dataLabels: <input type="text" v-model="mutableConfig.chart.userOptions.labels.dataLabels">, (default: "Show datalabels")
+                    titleInside: <input type="text" v-model="mutableConfig.chart.userOptions.labels.titleInside">, (default: "Title inside")
+                    legendInside: <input type="text" v-model="mutableConfig.chart.userOptions.labels.legendInside">, (default: "Legend inside")
+                    showTable: <input type="text" v-model="mutableConfig.chart.userOptions.labels.showTable">, (default: "Show table")
+                },
+            },
+        },
+        <span class="text-app-green">// use the following for the config of a specific chart type:</span>
+        bar: {
+            useGradient: <input type="checkbox" v-model="mutableConfig.bar.useGradient">, (default: true)
+            labels: {
+                show: <input type="checkbox" v-model="mutableConfig.bar.labels.show">, (default: false)
+                offsetY: <input type="number" min="-50" max="50" v-model="mutableConfig.bar.labels.offsetY">, (default: -6)
+                rounding: <input type="number" min="0" max="5" v-model="mutableConfig.bar.labels.rounding">, (default: 0)
+                color: <input type="color" v-model="mutableConfig.bar.labels.color">, (default: "#000000"),
+            }
+        },
+        line: {
+            radius: <input type="number" min="0" max="50" v-model="mutableConfig.line.radius">, (default: 3)
+            strokeWidth: <input type="number" min="0" max="50" v-model="mutableConfig.line.strokeWidth">, (default: 2)
+            labels: {
+                show: <input type="checkbox" v-model="mutableConfig.line.labels.show">, (default: false)
+                offsetY: <input type="number" min="-50" max="50" v-model="mutableConfig.line.labels.offsetY">, (default: -6)
+                rounding: <input type="number" min="0" max="5" v-model="mutableConfig.line.labels.rounding">, (default: 0)
+                color: <input type="color" v-model="mutableConfig.line.labels.color">, (default: "#000000"),
+            }
+        },
+        plot: {
+            radius: <input type="number" min="0" max="50" v-model="mutableConfig.plot.radius">, (default: 3)
+            labels: {
+                show: <input type="checkbox" v-model="mutableConfig.plot.labels.show">, (default: false)
+                offsetY: <input type="number" min="-50" max="50" v-model="mutableConfig.plot.labels.offsetY">, (default: -6)
+                rounding: <input type="number" min="0" max="5" v-model="mutableConfig.plot.labels.rounding">, (default: 0)
+                color: <input type="color" v-model="mutableConfig.plot.labels.color">, (default: "#000000"),
+            }
+        },
+    }
+</code>
+</pre>                
+                </div>
+            </template>
+        </Box>
     </div>
 </template>

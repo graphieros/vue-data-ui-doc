@@ -24,7 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <header class="sticky top-0 w-full font-satoshi bg-black text-slate-300 border-b border-gray-700">
+    <header class="z-10 sticky top-0 w-full font-satoshi bg-black text-slate-300 border-b border-gray-700">
         <div class="mx-auto w-5/6 py-3 flex justify-between">
             <router-link to="/" class="w-full">
                 <div class="flex flex-row gap-3 w-full">

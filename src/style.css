@@ -12,3 +12,45 @@
   font-family: "SatoshiBold";
   src: url("./fonts/Satoshi-Bold.ttf");
 }
+
+* {
+  scrollbar-color: rgb(66,211,146) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(66,211,146);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(26,26,26);
+}
+
+html {
+  background: rgb(26,26,26);
+}
+
+input,
+select {
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: #c8c8c8;
+  border: 1px solid rgb(95,139,238);
+  text-align:center;
+}
+
+.vue-ui-xy-table th {
+  border: 1px solid #e1e5e8;
+  background: rgb(26,26,26) !important;
+  position: sticky;
+  top:0;
+  font-weight: 400;
+  outline: 1px solid #e1e5e8;
+  user-select: none;
+}
+.vue-ui-xy-table-tr-selected {
+  background: rgba(66,211,146,0.2) !important;
+}
