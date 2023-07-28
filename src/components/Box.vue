@@ -12,7 +12,7 @@ const activeTab = ref(0);
 </script>
 
 <template>
-    <div class="p-6 pt-20 rounded-md border border-gray-700 my-6 relative">
+    <div class="p-6 pt-20 rounded-md border border-gray-700 my-6 relative overflow-x-auto">
     <div tabindex="0" :class="`select-none cursor-pointer absolute top-0 left-0 text-app-green font-satoshi-bold p-3 border-b border-gray-700 rounded-tl-lg ${activeTab === 0 ? 'bg-black-100' : ''}`" @click="activeTab = 0" @keypress.enter="activeTab = 0">
         dataset
     </div>

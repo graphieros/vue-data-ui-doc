@@ -22,7 +22,7 @@
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(66,211,146);
+  background: #42d392;
   border-radius: 8px;
 }
 ::-webkit-scrollbar-track {
@@ -38,10 +38,11 @@ select {
   border-radius: 6px;
   background: #1a1a1a;
   color: #c8c8c8;
-  border: 1px solid rgb(95,139,238);
+  border: 1px solid rgb(80,80,80);
   text-align:center;
 }
 
+/* vue-ui-xy overrides */
 .vue-ui-xy-table th {
   border: 1px solid #e1e5e8;
   background: rgb(26,26,26) !important;
@@ -53,4 +54,8 @@ select {
 }
 .vue-ui-xy-table-tr-selected {
   background: rgba(66,211,146,0.2) !important;
+}
+
+input[type="color"] {
+  border: none;
 }

@@ -3,6 +3,7 @@ import {ref} from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useRouter } from "vue-router";
 import DocVueUiXy from '../components/docs/DocVueUiXy.vue';
+import DocVueUiTable from "../components/docs/DocVueUiTable.vue";
 
 const router = useRouter();
 const isOpen = ref(window.innerWidth > 768);
@@ -11,6 +12,8 @@ function toggleMenu(state) {
     isOpen.value = state;
 }
 
+// TODO: copy user config as JSON
+
 </script>
 
 <template>
@@ -18,6 +21,7 @@ function toggleMenu(state) {
     <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden`">
         <div :class="`${isOpen ? 'xl:w-5/6' : ''}`">
             <DocVueUiXy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy'" />
+            <DocVueUiTable v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
                 <h1 class="">
                     vue-data-ui components require 2 props:

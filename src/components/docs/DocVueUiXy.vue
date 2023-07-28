@@ -139,7 +139,7 @@ function resetDefault() {
 
 <template>
     <div>
-        <h1 class="text-center font-satoshi-bold text-gray-400 text-2xl">VueUiXy</h1>
+        <h1 class="text-center font-satoshi-bold text-app-green mb-12 text-2xl">VueUiXy</h1>
         <div class="w-1/2 mx-auto">
             <VueUiXy :dataset="mutableDataset" :config="mutableConfig"/>
         </div>
@@ -204,7 +204,7 @@ function resetDefault() {
 </code>
 </pre>
             </div>
-            </template>
+                </template>
             <template v-slot:tab1>
                 <div class="w-ull overflow-x-auto">
                     <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">RESET</button>
@@ -213,8 +213,7 @@ function resetDefault() {
                     </p>
 <pre>
 <code>
-const <span class="text-app-blue">config</span> =
-    {
+const <span class="text-app-blue">config</span> = {
         chart: {
             fontFamily: "inherit",
             backgroundColor: <input type="color" v-model="mutableConfig.chart.backgroundColor">, (default: "#FFFFFF")
