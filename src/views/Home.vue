@@ -1,5 +1,5 @@
 <script setup>
-
+import { BrandGithubFilledIcon } from "vue-tabler-icons";
 </script>
 
 <template>
@@ -16,6 +16,12 @@
             <button class="bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-gray-400 border border-gray-400 font-satoshi-bold hover:bg-[rgba(255,255,255,0.05)] transition-colors hover:border-app-blue">Docs</button>
         </router-link>
       </div>
+      <a href="https://github.com/graphieros/vue-data-ui" target="_blank">
+          <button class="flex flex-row place-content-center place-items-center bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-gray-400 border border-gray-400 font-satoshi-bold hover:bg-[rgba(255,255,255,0.05)] transition-colors hover:border-app-blue w-[220px] gap-3">
+            <BrandGithubFilledIcon/>
+            <span>GitHub repo</span>
+          </button>
+        </a>
     </div>
     </div>
 </template>

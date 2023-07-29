@@ -13,6 +13,7 @@ function toggleMenu(state) {
 }
 
 // TODO: copy user config as JSON
+// TOOD: show default config (add toggle)
 
 </script>
 
