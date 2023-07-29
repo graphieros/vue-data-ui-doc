@@ -154,7 +154,7 @@ function resetDefault() {
         {
             name: string;
             series: number[];
-            type: string; <span class="text-gray-500">// "bar" | "line" | "plot"</span>
+            type: "bar" | "line" | "plot";
             color: string;
         },
         {...}
@@ -169,38 +169,38 @@ function resetDefault() {
                     
 <pre class="break-words">
 <code class="break-words">
-    [
-        {
-            name: <span class="text-app-blue">"Series 1",</span>
-            series: <span class="text-app-blue">[-55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],</span>
-            type:<span class="text-app-blue"><select v-model="mutableDataset[0].type">
-                <option>bar</option>
-                <option>line</option>
-                <option>plot</option>
-            </select>,</span>
-            color: <span class="text-app-blue">"rgb(95,139,238)",</span>
-        },
-        {
-            name: <span class="text-app-green">"Series 2",</span>
-            series: <span class="text-app-green">[55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],</span>
-            type:<span class="text-app-green"><select v-model="mutableDataset[1].type">
-                <option>bar</option>
-                <option>line</option>
-                <option>plot</option>
-            </select>,</span>
-            color: <span class="text-app-green">"rgb(66,211,146)"</span>
-        },
-        {
-            name: <span class="text-app-orange">"Series 3",</span>
-            series: <span class="text-app-orange">[64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],</span>
-            type:<span class="text-app-orange"><select v-model="mutableDataset[2].type">
-                <option>bar</option>
-                <option>line</option>
-                <option>plot</option>
-            </select>,</span>
-            color: <span class="text-app-orange">"rgb(255,100,0)"</span>
-        },
-    ]
+const <span class="text-app-green">dataset</span> = [
+    {
+        name: <span class="text-app-blue">"Series 1",</span>
+        series: <span class="text-app-blue">[-55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],</span>
+        type:<span class="text-app-blue"><select v-model="mutableDataset[0].type">
+            <option>bar</option>
+            <option>line</option>
+            <option>plot</option>
+        </select>,</span>
+        color: <span class="text-app-blue">"rgb(95,139,238)",</span>
+    },
+    {
+        name: <span class="text-app-green">"Series 2",</span>
+        series: <span class="text-app-green">[55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],</span>
+        type:<span class="text-app-green"><select v-model="mutableDataset[1].type">
+            <option>bar</option>
+            <option>line</option>
+            <option>plot</option>
+        </select>,</span>
+        color: <span class="text-app-green">"rgb(66,211,146)"</span>
+    },
+    {
+        name: <span class="text-app-orange">"Series 3",</span>
+        series: <span class="text-app-orange">[64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],</span>
+        type:<span class="text-app-orange"><select v-model="mutableDataset[2].type">
+            <option>bar</option>
+            <option>line</option>
+            <option>plot</option>
+        </select>,</span>
+        color: <span class="text-app-orange">"rgb(255,100,0)"</span>
+    },
+];
 </code>
 </pre>
             </div>
@@ -228,9 +228,9 @@ const <span class="text-app-blue">config</span> = {
             },
             grid: {
                 stroke: <input type="color" v-model="mutableConfig.chart.grid.stroke">, (default: "#E1E5E8"),
-                showVerticalLines: <input type="checkbox" v-model="mutableConfig.chart.grid.showVerticalLines"> (default: false)
+                showVerticalLines: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.showVerticalLines"> (default: false)
                 labels: {
-                    show: <input type="checkbox" v-model="mutableConfig.chart.grid.labels.show">, (default: true)
+                    show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.show">, (default: true)
                     color: <input type="color" v-model="mutableConfig.chart.grid.labels.color">, (default: "#000000"),
                     fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.fontSize">, (default: 12)
                     axis: {
@@ -239,7 +239,7 @@ const <span class="text-app-blue">config</span> = {
                         fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.axis.fontSize">, (default: 12)
                     },
                     xAxisLabels: {
-                        show: <input type="checkbox" v-model="mutableConfig.chart.grid.labels.xAxisLabels.show">, (default: true)
+                        show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.xAxisLabels.show">, (default: true)
                         color: <input type="color" v-model="mutableConfig.chart.grid.labels.xAxisLabels.color">, (default: "#000000"),
                         fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.xAxisLabels.fontSize">, (default: 6)
                         values: <span class="text-app-blue">string[]</span>,
@@ -247,17 +247,17 @@ const <span class="text-app-blue">config</span> = {
                 }
             },
             legend: {
-                show: <input type="checkbox" v-model="mutableConfig.chart.legend.show">, (default: true),
+                show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.legend.show">, (default: true),
                 color: <input type="color" v-model="mutableConfig.chart.legend.color">, (default: "#000000"),
                 fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.legend.fontSize">, (default: 16)
-                useDiv: <input type="checkbox" v-model="mutableConfig.chart.legend.useDiv">, (default: true),
+                useDiv: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.legend.useDiv">, (default: true),
             },
             title: {
-                show: <input type="checkbox" v-model="mutableConfig.chart.title.show">, (default: true)
+                show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.title.show">, (default: true)
                 text: <input type="text" v-model="mutableConfig.chart.title.text">, (default: "")
                 color: <input type="color" v-model="mutableConfig.chart.title.color">, (default: "#000000"),
                 fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.title.fontSize">, (default: 20)
-                bold: <input type="checkbox" v-model="mutableConfig.chart.title.bold">, (default: true)
+                bold: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.title.bold">, (default: true)
                 subtitle: {
                     fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.title.subtitle.fontSize">, (default: 16)
                     color: <input type="color" v-model="mutableConfig.chart.title.subtitle.color">, (default: "#808080"),
@@ -265,14 +265,14 @@ const <span class="text-app-blue">config</span> = {
                 }
             },
             tooltip: {
-                show: <input type="checkbox" v-model="mutableConfig.chart.tooltip.show">, (default: true)
+                show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.tooltip.show">, (default: true)
                 color: <input type="color" v-model="mutableConfig.chart.tooltip.color">, (default: "#000000"),
                 backgroundColor: <input type="color" v-model="mutableConfig.chart.tooltip.backgroundColor">, (default: "#FFFFFF"),
-                showValue: <input type="checkbox" v-model="mutableConfig.chart.tooltip.showValue">, (default: true)
-                showPercentage: <input type="checkbox" v-model="mutableConfig.chart.tooltip.showPercentage">, (default: false)
+                showValue: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.tooltip.showValue">, (default: true)
+                showPercentage: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.tooltip.showPercentage">, (default: false)
             },
             userOptions: {
-                show: <input type="checkbox" v-model="mutableConfig.chart.userOptions.show">, (default: true)
+                show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.show">, (default: true)
                 title: <input type="text" v-model="mutableConfig.chart.userOptions.title">, (default: "options")
                 labels: {
                     dataLabels: <input type="text" v-model="mutableConfig.chart.userOptions.labels.dataLabels">, (default: "Show datalabels")
@@ -284,9 +284,9 @@ const <span class="text-app-blue">config</span> = {
         },
         <span class="text-app-green">// use the following for the config of a specific chart type:</span>
         bar: {
-            useGradient: <input type="checkbox" v-model="mutableConfig.bar.useGradient">, (default: true)
+            useGradient: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.useGradient">, (default: true)
             labels: {
-                show: <input type="checkbox" v-model="mutableConfig.bar.labels.show">, (default: false)
+                show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.labels.show">, (default: false)
                 offsetY: <input type="number" min="-50" max="50" v-model="mutableConfig.bar.labels.offsetY">, (default: -6)
                 rounding: <input type="number" min="0" max="5" v-model="mutableConfig.bar.labels.rounding">, (default: 0)
                 color: <input type="color" v-model="mutableConfig.bar.labels.color">, (default: "#000000"),
@@ -296,7 +296,7 @@ const <span class="text-app-blue">config</span> = {
             radius: <input type="number" min="0" max="50" v-model="mutableConfig.line.radius">, (default: 3)
             strokeWidth: <input type="number" min="0" max="50" v-model="mutableConfig.line.strokeWidth">, (default: 2)
             labels: {
-                show: <input type="checkbox" v-model="mutableConfig.line.labels.show">, (default: false)
+                show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.line.labels.show">, (default: false)
                 offsetY: <input type="number" min="-50" max="50" v-model="mutableConfig.line.labels.offsetY">, (default: -6)
                 rounding: <input type="number" min="0" max="5" v-model="mutableConfig.line.labels.rounding">, (default: 0)
                 color: <input type="color" v-model="mutableConfig.line.labels.color">, (default: "#000000"),
@@ -305,7 +305,7 @@ const <span class="text-app-blue">config</span> = {
         plot: {
             radius: <input type="number" min="0" max="50" v-model="mutableConfig.plot.radius">, (default: 3)
             labels: {
-                show: <input type="checkbox" v-model="mutableConfig.plot.labels.show">, (default: false)
+                show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.plot.labels.show">, (default: false)
                 offsetY: <input type="number" min="-50" max="50" v-model="mutableConfig.plot.labels.offsetY">, (default: -6)
                 rounding: <input type="number" min="0" max="5" v-model="mutableConfig.plot.labels.rounding">, (default: 0)
                 color: <input type="color" v-model="mutableConfig.plot.labels.color">, (default: "#000000"),

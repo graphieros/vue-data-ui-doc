@@ -19,7 +19,7 @@ const body = computed(() => {
       function generateRandomData() {
         const items = [];
 
-        for (let i = 0; i < 1000; i += 1) {
+        for (let i = 0; i < 500; i += 1) {
           const itemName = getRandomItemName();
           const category = getRandomCategory();
           let accueil = Math.random() * 100;
@@ -37,7 +37,6 @@ const body = computed(() => {
           ];
           items.push({td: data});
         }
-
         return items;
       }
 
@@ -271,6 +270,9 @@ const config = ref({
                 color: "#E1E5E8",
                 opacityDisabled: 0.3
             },
+            navigationIndicator: {
+                backgroundColor: "#42d392"
+            }
         },
         exportMenu: {
             backgroundColor: "#1a1a1a",
@@ -282,13 +284,23 @@ const config = ref({
         },
         closeButtons: {
             backgroundColor: "transparent",
-            color: "#2D353C",
+            color: "#ff6400",
             borderRadius: "50%"
         },
         chart: {
             modal: {
                 backgroundColor: "#1a1a1a",
-                color: "#E1E5E8"
+                color: "#E1E5E8",
+                buttons: {
+                  selected: {
+                      backgroundColor: "#42d392",
+                      color: "#1a1a1a"
+                    },
+                    unselected: {
+                      backgroundColor: "#1a1a1a",
+                      color: "#E1E5E8"
+                    }
+                }
             },
             layout: {
                 backgroundColor: "#1a1a1a",
@@ -360,11 +372,17 @@ function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
 }
 
+const tableKey = ref(0);
+
+function updateTable() {
+    tableKey.value += 1;
+}
+
 </script>
 
 <template>
     <div class="text-center font-satoshi-bold text-app-green text-2xl mb-12">VueUiTable</div>
-    <VueUiTable :dataset="mutableDataset" :config="mutableConfig"/>
+    <VueUiTable :dataset="mutableDataset" :config="mutableConfig" :key="`tablekey_${tableKey}`"/>
     <Box>
         <template v-slot:tab0>
             Datastructure:
@@ -373,15 +391,213 @@ function resetDefault() {
 <code>
     {
         header: [
-        
+            <span class="text-app-green">// Configure each column with a separate object:</span>
+            {
+                name: string;
+                type: "text" | "date" | "numeric";
+                average: boolean;
+                decimals: number | undefined;
+                sum: boolean;
+                isSort: boolean;
+                isSearch: boolean;
+                isMultiselect: boolean;
+                isPercentage: boolean;
+                percentageTo: string | undefined; <span class="text-app-green">// reference to the name of another numeric column</span>
+                suffix: string; (default: "")
+                prefix: string; (default: "")
+                rangeFilter: boolean;
+            },
+            {...}
         ],
         body: [
-        
+            <span class="text-app-green">// each row is represented in an object, leaving room for further config in the future</span>
+            {
+                td: (number|string)[], <span class="text-app-green">// Each element of the array is placed in the same order as the columns</span>
+            },
+            {...}
         ]
     }
 </code>
 </pre>
             </div>
+
+            Example:
+            <div class="w-full overflow-x auto">
+<pre>
+<code>
+const <span class="text-app-green">dataset</span> = [
+    header: [
+        {
+            name: "touchpoint",
+            type: "text",
+            average: false,
+            decimals: undefined,
+            sum: false,
+            isSort: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[0].isSort" @change="updateTable">,
+            isSearch: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[0].isSearch" @change="updateTable">,
+            isMultiselect: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[0].isMultiselect" @change="updateTable">,
+            isPercentage: false,
+            percentageTo: undefined,
+            suffix: "",
+            prefix: "",
+            rangeFilter: false,
+        },
+        {
+              name: "category",
+              type: "text",
+              average: false,
+              decimals: undefined,
+              sum: false,
+              isSort: false,
+              isSearch: false,
+              isMultiselect: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[1].isMultiselect" @change="updateTable">,
+              isPercentage: false,
+              percentageTo: undefined,
+              suffix:"",
+              prefix: "",
+              rangeFilter: false,
+          },
+          {
+              name: "date",
+              type: "date",
+              average: false,
+              decimals: undefined,
+              sum: false,
+              isSort: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[2].isSort" @change="updateTable">,
+              isSearch: false,
+              isMultiselect: false,
+              isPercentage: false,
+              percentageTo: undefined,
+              suffix:"",
+              prefix:"",
+              rangeFilter: false,
+          },
+          {
+              name: "base",
+              type: "numeric",
+              average: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[3].average" @change="updateTable">,
+              decimals: <input type="number" min="0" max="3" class="accent-app-green" v-model="mutableDataset.header[3].decimals" @change="updateTable">,
+              sum: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[3].sum" @change="updateTable">,
+              isSort: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[3].isSort" @change="updateTable">,
+              isSearch: false,
+              isMultiselect: false,
+              isPercentage: false,
+              percentageTo: undefined,
+              suffix:"",
+              prefix:"",
+              rangeFilter: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[3].rangeFilter" @change="updateTable">,
+          },
+          {
+              name: "rating",
+              type: "numeric",
+              average: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[4].average" @change="updateTable">,
+              decimals: <input type="number" min="0" max="3" class="accent-app-green" v-model="mutableDataset.header[4].decimals" @change="updateTable">,
+              sum: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[4].sum" @change="updateTable">,
+              isSort: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[4].isSort" @change="updateTable">,
+              isSearch: false,
+              isMultiselect: false,
+              isPercentage: false,
+              percentageTo: undefined,
+              suffix:"",
+              prefix:"",
+              rangeFilter: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[4].rangeFilter" @change="updateTable">,
+          },
+          {
+              name: "spend",
+              type: "numeric",
+              average: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[5].average" @change="updateTable">,
+              decimals: <input type="number" min="0" max="3" class="accent-app-green" v-model="mutableDataset.header[5].decimals" @change="updateTable">,
+              sum: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[5].sum" @change="updateTable">,
+              isSort: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[5].isSort" @change="updateTable">,
+              isSearch: false,
+              isMultiselect: false,
+              isPercentage: false,
+              percentageTo: undefined,
+              suffix: <input type="text" v-model="mutableDataset.header[5].suffix" @change="updateTable">,
+              prefix:"",
+              rangeFilter: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[5].rangeFilter" @change="updateTable">,
+          },
+          {
+              name: "percentage",
+              type: "numeric",
+              average: false,
+              decimals: <input type="number" min="0" max="3" class="accent-app-green" v-model="mutableDataset.header[6].decimals" @change="updateTable">,
+              sum: false,
+              isSort: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[6].isSort" @change="updateTable">,
+              isSearch: false,
+              isMultiselect: false,
+              isPercentage: true, <span class="text-app-orange">// requires an empty slot in the body td arrays!</span>
+              percentageTo: "base",
+              suffix:"",
+              prefix:"",
+              rangeFilter: false,
+          },
+          {
+              name: "happy",
+              type: "numeric",
+              average: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[7].average" @change="updateTable">,
+              decimals: <input type="number" min="0" max="3" class="accent-app-green" v-model="mutableDataset.header[7].decimals" @change="updateTable">,
+              sum: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[7].sum" @change="updateTable">,
+              isSort: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[7].isSort" @change="updateTable">,
+              isSearch: false,
+              isMultiselect: false,
+              isPercentage: false,
+              percentageTo: "base",
+              suffix:"",
+              prefix:"",
+              rangeFilter: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[7].rangeFilter" @change="updateTable">,
+          },
+          {
+              name: "sad",
+              type: "numeric",
+              average: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[8].average" @change="updateTable">,
+              decimals: <input type="number" min="0" max="3" class="accent-app-green" v-model="mutableDataset.header[8].decimals" @change="updateTable">,
+              sum: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[8].sum" @change="updateTable">,
+              isSort: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[8].isSort" @change="updateTable">,
+              isSearch: false,
+              isMultiselect: false,
+              isPercentage: false,
+              percentageTo: "base",
+              suffix:"",
+              prefix:"",
+              rangeFilter: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[8].rangeFilter" @change="updateTable">,
+          }
+    ],
+    body: [
+        <span class="text-app-green">// Just a few rows as an example:</span>
+        {
+            td: [
+                "Réactivité du support",
+                "Accueil",
+                "2023-11-14",
+                35,
+                4.1,
+                18.7,
+                "", <span class="text-app-orange">// notice the empty string, due to a config of the column with isPercentage = true and percentageTo set to another column</span>
+                -27,
+                109
+            ],
+        },
+        {
+            td: [
+                "Variété des produits",
+                "Caisse",
+                "2023-08-12",
+                25,
+                2,
+                74,
+                "", <span class="text-app-orange">// notice the empty string, due to a config of the column with isPercentage = true and percentageTo set to another column</span>
+                35,
+                276
+            ]
+        },
+        {... and so on}
+    ]
+]
+</code>
+</pre>            
+            </div>
+
         </template>
         <template v-slot:tab1>
             <div class="w-ull overflow-x-auto">
@@ -408,11 +624,11 @@ const <span class="text-app-blue">config</span> = {
                 backgroundColor: <input type="color" v-model="mutableConfig.style.rows.even.backgroundColor">, (default: "#f3f5f7")
                 color: <input type="color" v-model="mutableConfig.style.rows.even.color">, (default: "#2D353C")
                 selectedCell: {
-                    backgroundColor: <input type="text" v-model="mutableConfig.style.rows.even.selectedCell.backgroundColor">, (default: "#6375dd5b")
+                    backgroundColor: <input type="color" v-model="mutableConfig.style.rows.even.selectedCell.backgroundColor">, (default: "#6375dd5b")
                     color: <input type="color" v-model="mutableConfig.style.rows.even.selectedCell.color">, (default: "#2D353C")
                 },
                 selectedNeighbors: {
-                    backgroundColor: <input type="text" v-model="mutableConfig.style.rows.even.selectedNeighbors.backgroundColor">, (selectedNeighbors: "#63dd821e")
+                    backgroundColor: <input type="color" v-model="mutableConfig.style.rows.even.selectedNeighbors.backgroundColor">, (selectedNeighbors: "#63dd821e")
                     color: <input type="color" v-model="mutableConfig.style.rows.even.selectedNeighbors.color">, (default: "#2D353C")
                 }
             },
@@ -420,11 +636,11 @@ const <span class="text-app-blue">config</span> = {
                 backgroundColor: <input type="color" v-model="mutableConfig.style.rows.odd.backgroundColor">, (default: "#FFFFFF")
                 color: <input type="color" v-model="mutableConfig.style.rows.odd.color">, (default: "#2D353C")
                 selectedCell: {
-                    backgroundColor: <input type="text" v-model="mutableConfig.style.rows.odd.selectedCell.backgroundColor">, (default: '#6375dd5b')
+                    backgroundColor: <input type="color" v-model="mutableConfig.style.rows.odd.selectedCell.backgroundColor">, (default: '#6375dd5b')
                     color: <input type="color" v-model="mutableConfig.style.rows.odd.selectedCell.color"> (default: "#2D353C")
                 },
                 selectedNeighbors: {
-                    backgroundColor: <input type="text" v-model="mutableConfig.style.rows.even.selectedNeighbors.backgroundColor">, (default: "#63dd821e")
+                    backgroundColor: <input type="color" v-model="mutableConfig.style.rows.even.selectedNeighbors.backgroundColor">, (default: "#63dd821e")
                     color: <input type="color" v-model="mutableConfig.style.rows.odd.selectedNeighbors.color">, (default: "#2D353C")
                 }
             },
@@ -459,6 +675,9 @@ const <span class="text-app-blue">config</span> = {
                 color: <input type="color" v-model="mutableConfig.style.pagination.buttons.color">, (default: "#2D353C")
                 opacityDisabled: <input type="number" min="0" max="1" step="0.1" v-model="mutableConfig.style.pagination.buttons.opacityDisabled">, (default: 0.5)
             },
+            navigationIndicator: {
+                backgroundColor: <input type="color" v-model="mutableConfig.style.pagination.navigationIndicator.backgroundColor">, (default: "#6376DD")
+            }
         },
         exportMenu: {
             backgroundColor: <input type="color" v-model="mutableConfig.style.exportMenu.backgroundColor">, (default: "#E1E5E8")
@@ -477,6 +696,16 @@ const <span class="text-app-blue">config</span> = {
             modal: {
                 backgroundColor: <input type="color" v-model="mutableConfig.style.chart.modal.backgroundColor">, (default: "#E1E5E8")
                 color: <input type="color" v-model="mutableConfig.style.chart.modal.color">, (default: "#2D353C")
+                buttons: {
+                    selected: {
+                        backgroundColor: <input type="color" v-model="mutableConfig.style.chart.modal.buttons.selected.backgroundColor">, (default: "#6376DD")
+                        color: <input type="color" v-model="mutableConfig.style.chart.modal.buttons.selected.color">, (default: "#FFFFFF")
+                    },
+                    unselected: {
+                        backgroundColor: <input type="color" v-model="mutableConfig.style.chart.modal.buttons.unselected.backgroundColor">, (default: "#FFFFFF")
+                        color: <input type="color" v-model="mutableConfig.style.chart.modal.buttons.unselected.color">, (default: "#2D353C")
+                    }
+                }
             },
             layout: {
                 backgroundColor: <input type="color" v-model="mutableConfig.style.chart.layout.backgroundColor">, (default: "#FFFFFF")
@@ -538,7 +767,7 @@ const <span class="text-app-blue">config</span> = {
         total: <input type="text" v-model="mutableConfig.translations.total">, (default: "Total")
         totalRows: <input type="text" v-model="mutableConfig.translations.totalRows"> (default: "Total rows")
     },
-    useChart: <input type="checkbox" v-model="mutableConfig.useChart">, (default: true)
+    useChart: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.useChart">, (default: true)
 }
 </code>
 </pre>         
