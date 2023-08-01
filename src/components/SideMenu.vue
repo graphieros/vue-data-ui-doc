@@ -34,6 +34,15 @@ function closeIfOpen(){
             <router-link to="/docs#vue-ui-xy" >
                 <div class="pl-6 hover:underline" @click="closeIfOpen">VueUiXy</div>
             </router-link>
+            <router-link to="/docs#vue-ui-donut" >
+                <div class="pl-6 hover:underline" @click="closeIfOpen">VueUiDonut</div>
+            </router-link>
+            <router-link to="/docs#vue-ui-waffle" >
+                <div class="pl-6 hover:underline" @click="closeIfOpen">VueUiWaffle</div>
+            </router-link>
+            <router-link to="/docs#vue-ui-radar" >
+                <div class="pl-6 hover:underline" @click="closeIfOpen">VueUiRadar</div>
+            </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-app-green">Tables</div>

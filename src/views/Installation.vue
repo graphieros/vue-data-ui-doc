@@ -12,11 +12,20 @@
             <code class="mt-3 text-start">
                 import { createApp } from 'vue'<br>
                 import App from "./App.vue"<br>
-                import { VueUiXy, VueUiTable } from "vue-data-ui"<br>
+                import { <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiXy</span>, <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiTable</span>, <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiDonut</span>, <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiWaffle</span>, <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiRadar</span> <br>
+                } from "vue-data-ui"<br>
                 import "vue-data-ui/style.css"<br><br>
                 const app = createApp(App)<br><br>
-                app.component("VueUiXy", VueUiXy)<br>
-                app.component("VueUiTable", VueUiTable)<br><br>
+                app.component("VueUiXy", <span class="text-app-green">VueUiXy</span>)<br>
+                app.component("VueUiTable", <span class="text-app-green">VueUiTable</span>)<br>
+                app.component("VueUiDonut", <span class="text-app-green">VueUiDonut</span>)<br>
+                app.component("VueUiWaffle", <span class="text-app-green">VueUiWaffle</span>)<br>
+                app.component("VueUiRadar", <span class="text-app-green">VueUiRadar</span>)<br><br>
                 app.mount('#app')
             </code>
         </div>

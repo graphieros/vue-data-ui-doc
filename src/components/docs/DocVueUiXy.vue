@@ -95,36 +95,49 @@ const config = ref({
         },
     },
     bar: {
-            useGradient: true,
-            labels: {
-                show: true,
-                offsetY: -6,
-                rounding: 0,
-                color: "#c8c8c8",
-            }
-        },
-        line: {
-            radius: 3,
-            useGradient: true,
-            strokeWidth: 2,
-            labels: {
-                show: false,
-                offsetY: -6,
-                rounding: 0,
-                color: "#c8c8c8",
-            }
+        useGradient: true,
+        labels: {
+            show: true,
+            offsetY: -6,
+            rounding: 0,
+            color: "#c8c8c8",
+        }
+    },
+    line: {
+        radius: 3,
+        useGradient: true,
+        strokeWidth: 2,
+        labels: {
+            show: false,
+            offsetY: -6,
+            rounding: 0,
+            color: "#c8c8c8",
+        }
 
+    },
+    plot: {
+        radius: 3,
+        useGradient: true,
+        labels: {
+            show: false,
+            offsetY: -6,
+            rounding: 0,
+            color: "#c8c8c8",
+        }
+    },
+    table: {
+        rounding: 0,
+        th: {
+            backgroundColor: "#1A1A1A",
+            color: "#c8c8c8",
+            outline: "1px solid #e1e5e8"
         },
-        plot: {
-            radius: 3,
-            useGradient: true,
-            labels: {
-                show: false,
-                offsetY: -6,
-                rounding: 0,
-                color: "#c8c8c8",
-            }
-        },
+        td: {
+            backgroundColor: "#1A1A1A",
+            color: "#c8c8c8",
+            outline: "1px solid #e1e5e8",
+        }
+    }
 });
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -133,6 +146,10 @@ function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
 }
 
+const key = ref(0);
+function forceChartUpdate() {
+    key.value += 1;
+}
 
 
 </script>
@@ -141,7 +158,7 @@ function resetDefault() {
     <div>
         <h1 class="text-center font-satoshi-bold text-app-green mb-12 text-2xl">VueUiXy</h1>
         <div class="w-1/2 mx-auto">
-            <VueUiXy :dataset="mutableDataset" :config="mutableConfig"/>
+            <VueUiXy :dataset="mutableDataset" :config="mutableConfig" :key="key"/>
         </div>
         <Box>
             <template v-slot:tab0>
@@ -206,7 +223,7 @@ const <span class="text-app-green">dataset</span> = [
             </div>
                 </template>
             <template v-slot:tab1>
-                <div class="w-ull overflow-x-auto">
+                <div class="w-full overflow-x-auto">
                     <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">RESET</button>
                     <p class="mt-3 text-gray-400">
                         You can override the css (check out the styles.css in the package)
@@ -311,6 +328,19 @@ const <span class="text-app-blue">config</span> = {
                 color: <input type="color" v-model="mutableConfig.plot.labels.color">, (default: "#000000"),
             }
         },
+        table: {
+            rounding: <input type="number" min="0" max="3" v-model="mutableConfig.table.rounding">, (default: 0)
+            th: {
+                backgroundColor: <input type="color" v-model="mutableConfig.table.th.backgroundColor">, (default: "#FAFAFA"),
+                color: <input type="color" v-model="mutableConfig.table.th.color">, (default: "#2D353C"),
+                outline: <input type="text" v-model="mutableConfig.table.th.outline">, (default: "1px solid #e1e5e8")
+            },
+            td: {
+                backgroundColor: <input type="color" v-model="mutableConfig.table.td.backgroundColor">, (default: "#FAFAFA"),
+                color: <input type="color" v-model="mutableConfig.table.td.color">, (default: "#2D353C"),
+                outline: <input type="text" v-model="mutableConfig.table.td.outline">, (default: "1px solid #e1e5e8")
+            }
+        }
     }
 </code>
 </pre>                
