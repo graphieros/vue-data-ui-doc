@@ -2,6 +2,18 @@
 import { ref } from "vue";
 import Box from "../Box.vue";
 
+// add emit @selectLegend
+
+/**
+ * [
+ *  {
+ *      name: string,
+ *      color: string,
+ *      proportion: number
+ *  }
+ * ]
+ */
+
 const dataset = ref({
   categories: [
     {
@@ -44,13 +56,37 @@ const dataset = ref({
     },
     {
       name: "Serie 5",
-      values: [5, 9, 7],
+      values: [53, 95, 67],
+      color: "",
+      target: 100
+    },
+    {
+      name: "Serie 6",
+      values: [166, 107, 75],
+      color: "",
+      target: 200
+    },
+    {
+      name: "Serie 7",
+      values: [6, 7, 10],
       color: "",
       target: 10
     },
     {
-      name: "Serie 6",
-      values: [6, 7, 10],
+      name: "Serie 8",
+      values: [6, 3, 10],
+      color: "",
+      target: 10
+    },
+    {
+      name: "Serie 9",
+      values: [2, 7, 9],
+      color: "",
+      target: 10
+    },
+    {
+      name: "Serie 10",
+      values: [6, 7, 8],
       color: "",
       target: 10
     },
@@ -153,8 +189,10 @@ const config = ref({
     }
 });
 
+const slicer = ref(6);
+
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
-const mutableDataset = ref(JSON.parse(JSON.stringify(dataset.value)));
+const mutableDataset = ref(JSON.parse(JSON.stringify({...dataset.value, series: dataset.value.series.slice(0,slicer.value)})));
 function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
 }
@@ -162,6 +200,10 @@ function resetDefault() {
 const key = ref(0);
 function forceChartUpdate() {
     key.value += 1;
+}
+
+function updateDataset() {
+    mutableDataset.value = JSON.parse(JSON.stringify({...dataset.value, series: dataset.value.series.slice(0,slicer.value)}));
 }
 
 
@@ -173,7 +215,12 @@ function forceChartUpdate() {
         <div class="w-2/3 mx-auto">
             <VueUiRadar :dataset="mutableDataset" :config="mutableConfig" :key="key"/>
         </div>
-        <Box>
+
+        <div class="mt-6 flex flex-col gap-3">
+            <label for="player">Show more / less series : </label>
+            <input id="player" type="range" :min="3" :max="10" v-model="slicer" @input="updateDataset" class="accent-app-green max-w-[200px]">
+        </div>
+        <Box showEmits>
             <template v-slot:tab0>
                 Datastructure:
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -368,6 +415,87 @@ const <span class="text-app-blue">config</span> = {
 }
 </code>
 </pre>                    
+                </div>
+            </template>
+
+            <template v-slot:tab2>
+                <div><code><b>@selectLegend</b></code></div>
+                <div class="text-gray-400 pl-5">returns the current visible categories when selecting / unselecting the legend:</div>
+    <pre>
+    <code>
+    [
+        {
+            name: string;
+            color: string;
+            proportion: number;
+        },
+        {...}
+    ]
+    </code>
+    </pre>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>getData</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">call this method from the parent to get the full formatted dataset.</div>
+    <pre>
+    <span class="text-app-green">Using composition API:</span>
+    <code>
+        <span class="text-gray-400">&lt;script setup&gt;</span>
+            import { ref, onMounted } from "vue";
+
+            const radarChart = ref(null);
+            const radarDataset = ref([]);
+
+            onMounted(() => {
+                radarDataset.value = radarChart.value.getData();
+            });
+
+            const config = ref({
+                <span class="text-gray-500">// your config here</span>
+            });
+            const dataset = ref([
+                <span class="text-gray-500">// your dataset here</span>
+            ]);
+
+        <span class="text-gray-400">&lt;/script&gt;</span>
+
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiRadar
+                ref="radarChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+    </code>
+    <span class="text-app-green">Using options API:</span>
+    <code>
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiRadar
+                ref="radarChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+
+        <span class="text-gray-400">&lt;script&gt;</span>
+            export default {
+                data() {
+                    return {
+                        radarDataset: [],
+                        config: {
+                            <span class="text-gray-500">// your config here</span>
+                        },
+                        dataset: [
+                            <span class="text-gray-500">// your dataset here</span>
+                        ]
+                    }
+                },
+                mounted () {
+                    this.radarDataset = this.$refs.radarChart.getData();
+                }
+            }
+        <span class="text-gray-400">&lt;/script&gt;</span>
+    </code>
+    </pre>
                 </div>
             </template>
         </Box>

@@ -168,7 +168,7 @@ function forceChartUpdate() {
         <div class="w-1/2 mx-auto">
             <VueUiDonut :dataset="mutableDataset" :config="mutableConfig" :key="key"/>
         </div>
-        <Box>
+        <Box showEmits>
             <template v-slot:tab0>
                 Datastructure:
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -349,6 +349,87 @@ const <span class="text-app-blue">config</span> = {
 }
 </code>
 </pre>                
+            </template>
+
+            <template v-slot:tab2>
+                <div><code><b>@selectLegend</b></code></div>
+                <div class="text-gray-400 pl-5">returns the current visible series when selecting / unselecting the legend:</div>
+    <pre>
+    <code>
+    [
+        {
+            name: string;
+            value: number;
+            color: string;
+        },
+        {...}
+    ]
+    </code>
+    </pre>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>getData</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">call this method from the parent to get the full formatted dataset.</div>
+    <pre>
+    <span class="text-app-green">Using composition API:</span>
+    <code>
+        <span class="text-gray-400">&lt;script setup&gt;</span>
+            import { ref, onMounted } from "vue";
+
+            const donutChart = ref(null);
+            const donutDataset = ref([]);
+
+            onMounted(() => {
+                donutDataset.value = donutChart.value.getData();
+            });
+
+            const config = ref({
+                <span class="text-gray-500">// your config here</span>
+            });
+            const dataset = ref([
+                <span class="text-gray-500">// your dataset here</span>
+            ]);
+
+        <span class="text-gray-400">&lt;/script&gt;</span>
+
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiDonut
+                ref="donutChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+    </code>
+    <span class="text-app-green">Using options API:</span>
+    <code>
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiDonut
+                ref="donutChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+
+        <span class="text-gray-400">&lt;script&gt;</span>
+            export default {
+                data() {
+                    return {
+                        donutDataset: [],
+                        config: {
+                            <span class="text-gray-500">// your config here</span>
+                        },
+                        dataset: [
+                            <span class="text-gray-500">// your dataset here</span>
+                        ]
+                    }
+                },
+                mounted () {
+                    this.donutDataset = this.$refs.donutChart.getData();
+                }
+            }
+        <span class="text-gray-400">&lt;/script&gt;</span>
+    </code>
+    </pre>
+                </div>
             </template>
         </Box>
     </div>
