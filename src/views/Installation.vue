@@ -17,7 +17,9 @@
                     &nbsp;&nbsp;<span class="text-app-green">VueUiTable</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiDonut</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiWaffle</span>, <br>
-                    &nbsp;&nbsp;<span class="text-app-green">VueUiRadar</span> <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiRadar</span>, <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiGauge</span>, <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiChestnut</span> <br>
                 } from "vue-data-ui"<br>
                 import "vue-data-ui/style.css"<br><br>
                 const app = createApp(App)<br><br>
@@ -25,7 +27,9 @@
                 app.component("VueUiTable", <span class="text-app-green">VueUiTable</span>)<br>
                 app.component("VueUiDonut", <span class="text-app-green">VueUiDonut</span>)<br>
                 app.component("VueUiWaffle", <span class="text-app-green">VueUiWaffle</span>)<br>
-                app.component("VueUiRadar", <span class="text-app-green">VueUiRadar</span>)<br><br>
+                app.component("VueUiRadar", <span class="text-app-green">VueUiRadar</span>)<br>
+                app.component("VueUiGauge", <span class="text-app-green">VueUiGauge</span>)<br>
+                app.component("VueUiChestnut", <span class="text-app-green">VueUiChestnut</span>)<br><br>
                 app.mount('#app')
             </code>
         </div>

@@ -51,6 +51,7 @@ const config = ref({
                 xAxisLabels: {
                     color: "#c8c8c8",
                     show: true,
+                    showOnlyFirstAndLast: false,
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
                     fontSize: 6,
                 }
@@ -258,6 +259,7 @@ const <span class="text-app-blue">config</span> = {
                     },
                     xAxisLabels: {
                         show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.xAxisLabels.show">, (default: true)
+                        showOnlyFirstAndLast: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.xAxisLabels.showOnlyFirstAndLast">, (default: false)
                         color: <input type="color" v-model="mutableConfig.chart.grid.labels.xAxisLabels.color">, (default: "#000000"),
                         fontSize: <input type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.xAxisLabels.fontSize">, (default: 6)
                         values: <span class="text-app-blue">string[]</span>,

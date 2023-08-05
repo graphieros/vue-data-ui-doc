@@ -8,6 +8,8 @@ import DocVueUiDonut from "../components/docs/DocVueUiDonut.vue";
 import DocVueUiWaffle from "../components/docs/DocVueUiWaffle.vue";
 import DocVueUiRadar from "../components/docs/DocVueUiRadar.vue";
 import DocVueUiQuadrant from "../components/docs/DocVueUiQuadrant.vue";
+import DocVueUiGauge from "../components/docs/DocVueUiGauge.vue";
+import DocVueUiChestnut from "../components/docs/DocVueUiChestnut.vue";
 
 const router = useRouter();
 const isOpen = ref(window.innerWidth > 768);
@@ -31,6 +33,8 @@ function toggleMenu(state) {
             <DocVueUiWaffle v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-waffle'"/>
             <DocVueUiRadar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-radar'"/>
             <DocVueUiQuadrant v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-quadrant'"/>
+            <DocVueUiGauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-gauge'"/>
+            <DocVueUiChestnut v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-chestnut'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
                 <h1 class="">
                     vue-data-ui components require 2 props:

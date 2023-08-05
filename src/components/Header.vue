@@ -39,6 +39,9 @@ onMounted(() => {
                 <router-link to="/docs" v-if="router.currentRoute.value.path !== '/docs'">
                     <span class="text-slate-400 hover:text-app-blue">Docs</span>
                 </router-link>
+                <router-link to="/versions" v-if="router.currentRoute.value.path !== '/versions'">
+                    <span class="text-gray-400 hover:text-gray-200">Versions</span>
+                </router-link>
             </nav>
             <div class="relative md:hidden">
                 <button id="mainDropdownButton" @click="useMenu" type="button">

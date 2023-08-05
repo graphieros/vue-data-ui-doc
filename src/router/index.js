@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Installation from "../views/Installation.vue";
 import NotFound from "../views/NotFound.vue";
 import Docs from "../views/Docs.vue";
+import Versions from "../views/Versions.vue";
 
 const routes = [
     {
@@ -20,6 +21,11 @@ const routes = [
         path: "/docs",
         name: "Docs",
         component: Docs
+    },
+    {
+        path: "/versions",
+        name: "Versions",
+        component: Versions
     },
     {
         path: "/:catchAll(.*)",
