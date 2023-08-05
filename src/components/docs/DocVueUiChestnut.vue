@@ -397,6 +397,20 @@ function forceChartUpdate() {
     key.value += 1;
 }
 
+function copyToClipboard() {
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = JSON.stringify(mutableConfig.value);
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+}
+
 </script>
 
 <template>
@@ -519,7 +533,8 @@ const <span class="text-app-green">dataset</span> = [
 
             <template v-slot:tab1>
                 <div class="w-ull overflow-x-auto">
-                    <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">RESET</button>
+                  <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4">RESET</button>
+                    <button @click="copyToClipboard" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">Copy this config as JSON</button>
                 </div>
                 <div class="overflow-w-auto">
 <pre>

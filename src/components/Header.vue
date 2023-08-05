@@ -55,6 +55,9 @@ onMounted(() => {
                         <router-link to="/docs" v-if="router.currentRoute.value.path !== '/docs'">
                             <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">Docs</span>
                         </router-link>
+                        <router-link to="/versions" v-if="router.currentRoute.value.path !== '/versions'">
+                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-gray-200 hover:shadow-xl">Versions</span>
+                        </router-link>
                     </ul>
                 </div>
             </div>
