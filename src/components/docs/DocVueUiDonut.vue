@@ -191,7 +191,7 @@ function copyToClipboard() {
     [
         {
             name: string;
-            color: string; <span class="text-app-orange">// HEX format is required for now</span>
+            color: string; <span class="text-app-orange">// HEX, RGB, HSL</span>
             values: number[];
         },
         {...}

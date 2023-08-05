@@ -143,7 +143,7 @@ function copyToClipboard() {
     [
         {
             name: string;
-            color: string; <span class="text-app-orange">// HEX format is required for now</span>
+            color: string; <span class="text-app-orange">// HEX, RGB, HSL</span>
             values: number[];
         },
         {...}
@@ -159,7 +159,7 @@ function copyToClipboard() {
 const <span class="text-app-green">dataset</span> = [
     {
         name: "Series 1",
-        color: <input type="color" v-model="mutableDataset[0].color">,
+        color: <input type="color" v-model="mutableDataset[0].color">, 
         values: [100]
     },
     {
