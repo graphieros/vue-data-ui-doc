@@ -62,6 +62,9 @@ const config = computed(() => {
         color: "#c8c8c8",
         height: 300,
         width: 500,
+        highlighter: {
+            color: "#FAFAFA"
+        },
         padding: {
             top:  36,
             right: 12,
@@ -186,6 +189,13 @@ const config = computed(() => {
             <div class="max-w-[800px] mx-auto">
                 <VueUiXy v-if="data" :dataset="dataset" :config="config"/>
                 <ul>
+                    <li class="mb-3">
+                        2023-08-05 | <span class="text-app-green">v 0.2.8</span><br>
+                        <div class="pl-6">
+                            <span class="text-gray-500"><span class="text-app-blue">VueUiXy</span> add "highlighter" color and opacity options</span><br>
+                            <span class="text-gray-500"><span class="text-app-blue">VueUiChestnut</span> add emits and getData method</span>
+                        </div>
+                    </li>
                     <li>
                         2023-08-05 | <span class="text-app-green">v 0.2.7</span><br>
                         <div class="pl-6">

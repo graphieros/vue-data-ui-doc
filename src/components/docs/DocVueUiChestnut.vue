@@ -405,7 +405,7 @@ function forceChartUpdate() {
         <div class="w-3/4 mx-auto overflow-visible pb-16">
             <VueUiChestnut :dataset="dataset" :config="mutableConfig" :key="key"/>
         </div>
-        <Box>
+        <Box showEmits>
             <template v-slot:tab0>
                 Datastructure:
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -516,6 +516,7 @@ const <span class="text-app-green">dataset</span> = [
 </pre>                
                 </div>
             </template>
+
             <template v-slot:tab1>
                 <div class="w-ull overflow-x-auto">
                     <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">RESET</button>
@@ -699,6 +700,216 @@ const <span class="text-app-blue">config</span> = {
 }
 </code>
 </pre>                
+                </div>
+            </template>
+
+            <template v-slot:tab2>
+              <div><code>@selectRoot</code></div>
+              <div class="text-gray-400 pl-5">returns the selected root data</div>
+<pre>
+<code>
+{
+  branches: [
+    {
+      breakdown: [
+        {
+          branchName: string;
+          branchTotal: number;
+          color: string;
+          id: string;
+          name: string;
+          proportionToBranch: number;
+          proportionToRoot: number;
+          proportionToTree: number;
+          rootIndex: number;
+          rootName: string;
+          table: {
+            branchName: string;
+            branchToRoot: number;
+            branchToTotal: number;
+            branchValue: number;
+            nutName: string;
+            nutToBranch: number;
+            nutToRoot: number;
+            nutToTotal: number;
+            rootName: string;
+            rootToTotal: number;
+            rootValue: number;
+          },
+          type: "nut";
+          value: number;
+        },
+        {...}
+      ],
+      color: string;
+      id: string;
+      name: string;
+      proportionToTotal: number;
+      rootIndex: number;
+      rootName: string;
+      type: "branch";
+      value: number;
+    },
+    {...}
+  ],
+  color: string;
+  id: string;
+  name: string;
+  r: number;
+  rootIndex: number;
+  total: number;
+  type: "root",
+  x: number;
+  y: number;
+}
+</code>
+</pre>
+              <div><code>@selectBranch</code></div>
+              <div class="text-gray-400 pl-5">returns the selected branch data:</div>
+<pre>
+<code>
+{
+  breakdown: [
+    {
+      branchName: string;
+      branchTotal: number;
+      color: string;
+      id: string;
+      name: string;
+      proportionToBranch: number;
+      proportionToRoot: number;
+      proportionToTree: number;
+      rootIndex: number;
+      rootName: string;
+      table: {
+        branchName: string;
+        branchToRoot: number;
+        branchToTotal: number;
+        branchValue: number;
+        nutName: string;
+        nutToBranch: number;
+        nutToRoot: number;
+        nutToTotal: number;
+        rootName: string;
+        rootToTotal: number;
+        rootValue: number;
+      },
+      type: "nut";
+      value: number;
+    },
+    {...}
+  ],
+  color: string;
+  id: string;
+  name: string;
+  proportionToTotal: number;
+  rootIndex: number;
+  rootName: string;
+  type: "branch";
+  value: number;
+}
+</code>
+</pre>
+              <div><code>@selectNut</code></div>
+              <div class="text-gray-400 pl-5">returns the selected donut data:</div>
+<pre>
+<code>
+[
+  {
+      branchName: string;
+      branchTotal: number;
+      color: string;
+      id: string;
+      name: string;
+      proportionToBranch: number;
+      proportionToRoot: number;
+      proportionToTree: number;
+      rootIndex: number;
+      rootName: string;
+      table: {
+        branchName: string;
+        branchToRoot: number;
+        branchToTotal: number;
+        branchValue: number;
+        nutName: string;
+        nutToBranch: number;
+        nutToRoot: number;
+        nutToTotal: number;
+        rootName: string;
+        rootToTotal: number;
+        rootValue: number;
+      },
+      type: "nut";
+      value: number;
+    },
+    {...}
+]
+</code>
+</pre>
+
+<div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>getData</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">call this method from the parent to get the full formatted dataset.</div>
+    <pre>
+    <span class="text-app-green">Using composition API:</span>
+    <code>
+        <span class="text-gray-400">&lt;script setup&gt;</span>
+            import { ref, onMounted } from "vue";
+
+            const chestnutChart = ref(null);
+            const chestnutDataset = ref([]);
+
+            onMounted(() => {
+                chestnutDataset.value = chestnutChart.value.getData();
+            });
+
+            const config = ref({
+                <span class="text-gray-500">// your config here</span>
+            });
+            const dataset = ref([
+                <span class="text-gray-500">// your dataset here</span>
+            ]);
+
+        <span class="text-gray-400">&lt;/script&gt;</span>
+
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiChestnut
+                ref="chestnutChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+    </code>
+    <span class="text-app-green">Using options API:</span>
+    <code>
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiChestnut
+                ref="chestnutChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+
+        <span class="text-gray-400">&lt;script&gt;</span>
+            export default {
+                data() {
+                    return {
+                        chestnutDataset: [],
+                        config: {
+                            <span class="text-gray-500">// your config here</span>
+                        },
+                        dataset: [
+                            <span class="text-gray-500">// your dataset here</span>
+                        ]
+                    }
+                },
+                mounted () {
+                    this.chestnutDataset = this.$refs.chestnutChart.getData();
+                }
+            }
+        <span class="text-gray-400">&lt;/script&gt;</span>
+    </code>
+    </pre>
                 </div>
             </template>
         </Box>
