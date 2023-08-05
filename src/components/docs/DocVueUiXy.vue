@@ -34,6 +34,10 @@ const config = ref({
             color: "#e1e5e8",
             opacity: 10,
         },
+        zoom: {
+            show: true,
+            color: "#42d392"
+        },
         padding: {
             top:  36,
             right: 12,
@@ -266,6 +270,10 @@ const <span class="text-app-blue">config</span> = {
                 right: <input type="number" min="0" max="200" v-model="mutableConfig.chart.padding.right">, (default: 12)
                 bottom: <input type="number" min="0" max="200" v-model="mutableConfig.chart.padding.bottom">, (default: 12)
                 left: <input type="number" min="0" max="200" v-model="mutableConfig.chart.padding.left">, (default: 48)
+            },
+            zoom: {
+                show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.zoom.show" @change="forceChartUpdate()">, (default: true)
+                color: <input type="color" v-model="mutableConfig.chart.zoom.color">, (default: "#2D353C")
             },
             grid: {
                 stroke: <input type="color" v-model="mutableConfig.chart.grid.stroke">, (default: "#E1E5E8"),

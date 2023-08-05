@@ -190,6 +190,13 @@ const config = computed(() => {
                 <VueUiXy v-if="data" :dataset="dataset" :config="config"/>
                 <ul>
                     <li class="mb-3">
+                        2023-08-05 | <span class="text-app-green">v 0.3.1</span><br>
+                        <div class="pl-6">
+                            <span class="text-gray-500"><span class="text-app-blue">VueUiXy</span> add zoom functionality</span><br>
+                            <span class="text-gray-500"><span class="text-app-blue">VueUiRadar</span> fix non closing polygon in Firefox</span>
+                        </div>
+                    </li>
+                    <li class="mb-3">
                         2023-08-05 | <span class="text-app-green">v 0.2.9</span><br>
                         <div class="pl-6">
                             <span class="text-gray-500">Allow RGB, HSL color formats in config & datasets</span>
