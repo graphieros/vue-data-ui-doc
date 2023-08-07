@@ -190,6 +190,18 @@ const config = computed(() => {
                 <VueUiXy v-if="data" :dataset="dataset" :config="config"/>
                 <ul>
                     <li class="mb-3">
+                        2023-08-07 | <span class="text-app-green">v 0.3.4</span><br>
+                        <div class="pl-6">
+                            <span class="text-gray-500"><span class="text-app-blue">VueUiOnion</span> Fix label y position issue</span><br>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        2023-08-06 | <span class="text-app-green">v 0.3.3</span><br>
+                        <div class="pl-6">
+                            <span class="text-gray-500">add <span class="text-app-blue">VueUiOnion</span> chart</span><br>
+                        </div>
+                    </li>
+                    <li class="mb-3">
                         2023-08-06 | <span class="text-app-green">v 0.3.2</span><br>
                         <div class="pl-6">
                             <span class="text-gray-500"><span class="text-app-blue">VueUiXy</span> add zoom functionality</span><br>
