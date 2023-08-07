@@ -49,6 +49,7 @@ function toggleMenu(state) {
 &lt;/NameOfComponent&gt;
 </code>
 </pre>
+                <img src="../../public/vue-data-ui-showcase.png" alt="vue data ui charts showcase, featuring line, radar, donut, waffle, onion, quadrant, chestnut and gauge charts">
             </div>
         </div>
     </div>
