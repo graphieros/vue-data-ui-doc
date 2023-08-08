@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import Box from "../Box.vue";
+import { PinIcon, PinnedOffIcon } from "vue-tabler-icons";
 
 const dataset1 = ref({
     base: 12250,
@@ -144,16 +145,29 @@ function copyToClipboard() {
     document.body.removeChild(selBox);
 }
 
+const isFixed = ref(false);
+
+function fixChart() {
+    isFixed.value = !isFixed.value;
+} 
+
 </script>
 
 <template>
     <div>
         <h1 class="text-center font-satoshi-bold text-app-green mb-12 text-2xl">VueUiGauge</h1>
+        <button v-if="!isFixed" @click="fixChart" class="p-2 text-app-green rounded-full hover:bg-gray-700">
+                    <PinIcon/>
+                </button>
         <div class="w-3/4 mx-auto flex flex-row gap-2">
-            <div class="w-1/2">
+            
+            <div :class="`transition-all w-1/2 mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-white bg-[rgb(26,26,26)]' : ''}`">
+                <button v-if="isFixed" @click="fixChart" class="p-2 text-app-green rounded-full hover:bg-gray-700">
+                    <PinnedOffIcon/>
+                </button>
                 <VueUiGauge :dataset="dataset1" :config="mutableConfig" :key="`gauge_1_${key}`"/>
             </div>
-            <div class="w-1/2">
+            <div class="transition-all w-1/2">
                 <VueUiGauge :dataset="dataset2" :config="mutableConfig" :key="`gauge_2_${key}`"/>
             </div>
         </div>

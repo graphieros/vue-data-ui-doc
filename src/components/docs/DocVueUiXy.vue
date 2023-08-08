@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import Box from "../Box.vue";
+import { PinIcon, PinnedOffIcon } from "vue-tabler-icons";
 
 const dataset = ref([
     {
@@ -174,12 +175,23 @@ function copyToClipboard() {
     document.body.removeChild(selBox);
 }
 
+const isFixed = ref(false);
+
+function fixChart() {
+    isFixed.value = !isFixed.value;
+} 
+
 </script>
+
 
 <template>
     <div>
         <h1 class="text-center font-satoshi-bold text-app-green mb-12 text-2xl">VueUiXy</h1>
-        <div class="w-1/2 mx-auto">
+        <div :class="`transition-all w-1/2 mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-white bg-[rgb(26,26,26)]' : ''}`">
+            <button @click="fixChart" class="p-2 text-app-green rounded-full hover:bg-gray-700">
+                <PinnedOffIcon v-if="isFixed"/>
+                <PinIcon v-else/>
+            </button>
             <VueUiXy :dataset="mutableDataset" :config="mutableConfig" :key="key"/>
         </div>
         <Box showEmits>
