@@ -14,13 +14,24 @@ const dataset = ref([
         name: "Series 2",
         series: [ 55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],
         type: "line",
-        color: "rgb(66,211,146)"
+        color: "rgb(66,211,146)",
+        useProgression: true,
+        dataLabels: false,
     },
     {
         name: "Series 3",
         series: [ 64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],
         type: "plot",
         color: "rgb(255,100,0)"
+    },
+    {
+        name: "Target",
+        series: [ 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+        type: "line",
+        color: "#404040",
+        dashed: true,
+        useTag: "start",
+        dataLabels: false,
     },
 ]);
 
@@ -118,7 +129,7 @@ const config = ref({
         useGradient: true,
         strokeWidth: 2,
         labels: {
-            show: false,
+            show: true,
             offsetY: -6,
             rounding: 0,
             color: "#c8c8c8",
@@ -206,7 +217,12 @@ function fixChart() {
             name: string;
             series: number[];
             type: "bar" | "line" | "plot";
-            color: string;
+            <span class="text-app-orange">// The following are optional:</span>
+            color: string; <span class="text-app-green">// will default to default palette if not provided</span>
+            dashed: boolean; <span class="text-app-green">// use true on line types to display a dashed line</span>
+            useTag: "start" | "end"; <span class="text-app-green">// use for line or plot types to show the serie name as a tag</span>
+            dataLabels: boolean; <span class="text-app-green">// hide or show specific serie dataLabels</span>
+            useProgression: boolean; <span class="text-app-green">// show a progression line, works for all types</span>
         },
         {...}
     ]
@@ -240,6 +256,8 @@ const <span class="text-app-green">dataset</span> = [
             <option>plot</option>
         </select>,</span>
         color: <span class="text-app-green">"rgb(66,211,146)"</span>
+        useProgression: <span class="text-app-green">true,</span>
+        dataLabels: <span class="text-app-green">false</span>
     },
     {
         name: <span class="text-app-orange">"Series 3",</span>
@@ -250,6 +268,15 @@ const <span class="text-app-green">dataset</span> = [
             <option>plot</option>
         </select>,</span>
         color: <span class="text-app-orange">"rgb(255,100,0)"</span>
+    },
+    {
+        name: <span class="text-gray-500">"Target",</span> 
+        series: <span class="text-gray-500">[ 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],</span>
+        type: <span class="text-gray-500">"line",</span>
+        color: <span class="text-gray-500">"#404040",</span>
+        dashed: <span class="text-gray-500">true,</span>
+        useTag: <span class="text-gray-500">"start",</span>
+        dataLabels: <span class="text-gray-500">false,</span>
     },
 ];
 </code>

@@ -80,12 +80,30 @@ onMounted(() => {
 });
 
 const dataset = computed(() => {
+    const series = data.value.downloads.map(d => d.downloads).slice(0, -1);
+    const average = series.reduce((a, b) => a + b) / series.length;
+    const avg = [];
+    for(let i = 0; i < series.length; i += 1) {
+        avg.push(average);
+    }
+
     return [
         {
-            name: "vue-data-ui",
-            series: data.value.downloads.map(d => d.downloads).slice(0,-1),
+            name: "average",
+            series: avg,
             type: "line",
-            color: "#42d392"
+            color: "rgb(62,62,62)",
+            dashed: true,
+            dataLabels: false,
+            useTag: "start"
+        },
+        {
+            name: "vue-data-ui",
+            series,
+            type: "line",
+            color: "#42d392",
+            useProgression: true,
+            dataLabels: false,
         }
     ]
 });
@@ -178,7 +196,7 @@ const config = computed(() => {
         useGradient: true,
         strokeWidth: 2,
         labels: {
-            show: false,
+            show: true,
             offsetY: -6,
             rounding: 0,
             color: "#c8c8c8",
