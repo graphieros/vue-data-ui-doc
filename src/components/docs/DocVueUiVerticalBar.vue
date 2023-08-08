@@ -1,0 +1,536 @@
+<script setup>
+import { ref } from "vue";
+import Box from "../Box.vue";
+
+const dataset = ref([
+    {
+    name: "Serie 1",
+    value: 100,
+    children: [
+      {
+        name: "serie 1 child 1",
+        value: 80
+      },
+      {
+        name: "serie 1 child 2",
+        value: 20
+      },
+    ]
+  },
+  {
+    name: "Serie 2",
+    value: 345,
+  },
+  {
+    name: "Serie 3",
+    value: 210,
+  },
+  {
+    name: "Serie 4",
+    value: 188,
+  },
+  {
+    name: "Serie 5",
+    value: 120,
+    children: [
+      {
+        name: "Serie 5 child 1",
+        value: 60,
+      },
+      {
+        name: "Serie 5 child 2",
+        value: 20,
+      },
+      {
+        name: "Serie 5 child 3",
+        value: 40,
+      },
+    ]
+  }
+]);
+
+const config = ref({
+  style: {
+    fontFamily: "inherit",
+    chart: {
+      backgroundColor: "#1A1A1A",
+      color: "#CCCCCC",
+      layout: {
+        useDiv: true,
+        bars: {
+          useStroke: false,
+          strokeWidth: 2,
+          height: 32,
+          gap: 6,
+          borderRadius: 4,
+          offsetX: 64,
+          paddingRight: 0,
+          useGradient: true,
+          gradientIntensity: 20,
+          fillOpacity: 10,
+          underlayerColor: "#FFFFFF",
+          dataLabels: {
+            color: "#CCCCCC",
+            bold: true,
+            fontSize: 12,
+            value: {
+              show: true,
+              roundingValue: 0,
+              prefix: "",
+              suffix: ""
+            },
+            percentage: {
+              show: true,
+              roundingPercentage: 0
+            },
+            offsetX: 0
+          },
+          nameLabels: {
+            show: true,
+            color: "#CCCCCC",
+            bold: false,
+            fontSize: 10,
+            offsetX: 0
+          },
+          parentLabels: {
+            show: true,
+            color: "#CCCCCC",
+            bold: false,
+            fontSize: 10,
+            offsetX: 0
+          }
+        },
+        highlighter: {
+          color: "#FFFFFF",
+          opacity: 5
+        },
+        separators: {
+          show: true,
+          color: "#343434",
+          strokeWidth: 1
+        }
+      },
+      title: {
+        text: "Title",
+        color: "#FAFAFA",
+        fontSize: 20,
+        bold: true,
+        subtitle: {
+          color: "#A1A1A1",
+          text: "Subtitle",
+          fontSize: 16,
+          bold: false
+        }
+      },
+      legend: {
+        show: true,
+        fontSize: 14,
+        color: "#CCCCCC",
+        bold: true,
+        roundingValue: 0,
+        backgroundColor: "#1A1A1A",
+        roundingPercentage: 0,
+        prefix: "",
+        suffix: ""
+      },
+      tooltip: {
+        show: true,
+        backgroundColor: "#1A1A1A",
+        color: "#CCCCCC",
+        fontSize: 14,
+        showValue: true,
+        showPercentage: true,
+        roundingValue: 0,
+        roundingPercentage: 0,
+        prefix: "",
+        suffix: ""
+      }
+    }
+  },
+  userOptions: {
+    show: true,
+    title: "options",
+    labels: {
+      useDiv: "Title & legend inside",
+      showTable: "Show table"
+    }
+  },
+  table: {
+    show: false,
+    th: {
+      backgroundColor: "#1A1A1A",
+      color: "#CCCCCC",
+      outline: "1px solid #e1e5e8"
+    },
+    td: {
+      backgroundColor: "#1A1A1A",
+      color: "#CCCCCC",
+      outline: "1px solid #e1e5e8",
+      roundingValue: 0,
+      roundingPercentage: 0,
+      prefix: "",
+      suffix: ""
+    }
+  },
+  translations: {
+    parentName: "Serie",
+    childName: "Child",
+    value: "value",
+    percentageToTotal: "%/total",
+    percentageToSerie: "%/serie"
+  }
+});
+
+const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
+function resetDefault() {
+    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
+}
+const key = ref(0);
+function forceChartUpdate() {
+    key.value += 1;
+}
+
+function copyToClipboard() {
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = JSON.stringify(mutableConfig.value);
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+}
+
+</script>
+
+<template>
+    <div>
+    <h1 class="text-center font-satoshi-bold text-app-green mb-12 text-2xl">VueUiVerticalBar</h1>
+        <div class="w-3/4 mx-auto overflow-visible pb-16">
+            <VueUiVerticalBar :dataset="dataset" :config="mutableConfig" :key="key"/>
+        </div>
+        <Box showEmits>
+            <template v-slot:tab0>
+                Datastructure:
+                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+<pre>
+<code>
+    [
+        {
+            name: string;
+            value: number;
+            color: string; <span class="text-app-green">// will default to internal palette if not provided</span>
+            children: [
+                <span class="text-app-green">// use children for the breakdown of a series</span>
+                {
+                    name: string;
+                    value: number;
+                },
+                {...}
+            ]
+        },
+        {...}
+    ]
+</code>
+</pre>          
+                </div>
+                Example:
+                <div class="w-full overflow-x auto">
+<pre>
+<code>
+const <span class="text-app-green">dataset</span> = [
+    {
+        name: "Serie 1",
+        value: 100,
+        children: [
+        {
+            name: "serie 1 child 1",
+            value: 80
+        },
+        {
+            name: "serie 1 child 2",
+            value: 20
+        },
+        ]
+    },
+    {
+        name: "Serie 2",
+        value: 345,
+    },
+    {
+        name: "Serie 3",
+        value: 210,
+    },
+    {
+        name: "Serie 4",
+        value: 188,
+    },
+    {
+        name: "Serie 5",
+        value: 120,
+        children: [
+        {
+            name: "Serie 5 child 1",
+            value: 60,
+        },
+        {
+            name: "Serie 5 child 2",
+            value: 20,
+        },
+        {
+            name: "Serie 5 child 3",
+            value: 40,
+        },
+        ]
+    }
+]
+</code>
+</pre>                
+                </div>
+            </template>
+            <template v-slot:tab1>
+                <div class="w-ull overflow-x-auto">
+                  <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4">RESET</button>
+                    <button @click="copyToClipboard" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">Copy this config as JSON</button>
+                </div>
+                <div class="overflow-x-auto">
+<pre>
+<code>
+const <span class="text-app-blue">config</span> = {
+    style: {
+        fontFamily: "inherit",
+        chart: {
+            backgroundColor: <input type="color" v-model="mutableConfig.style.chart.backgroundColor">,  (default: "#FFFFFF")
+            color: <input type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
+            layout: {
+                useDiv: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: true)
+                bars: {
+                    useStroke: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.useStroke" @change="forceChartUpdate()">, (default: false)
+                    strokeWidth: <input type="number" min="0" max="20" v-model="mutableConfig.style.chart.layout.bars.strokeWidth">, (default: 2)
+                    height: <input type="number" min="1" max="100" v-model="mutableConfig.style.chart.layout.bars.height">, (default: 32)
+                    gap: <input type="number" min="0" max="100" v-model="mutableConfig.style.chart.layout.bars.gap">, (default: 6)
+                    borderRadius: <input type="number" min="0" max="100" v-model="mutableConfig.style.chart.layout.bars.borderRadius">, (default: 4)
+                    offsetX: <input type="number" v-model="mutableConfig.style.chart.layout.bars.offsetX">, (default: 64)
+                    paddingRight: <input type="number" min="0" v-model="mutableConfig.style.chart.layout.bars.paddingRight">, (default: 0)
+                    useGradient: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.useGradient" @change="forceChartUpdate()">, (default: true)
+                    gradientIntensity: <input type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.chart.layout.bars.gradientIntensity">, (default: 20)
+                    fillOpacity: <input type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.chart.layout.bars.fillOpacity">, (default: 90)
+                    underlayerColor: <input type="color" v-model="mutableConfig.style.chart.layout.bars.underlayerColor">,  (default: "#FFFFFF")
+                    dataLabels: {
+                        color: <input type="color" v-model="mutableConfig.style.chart.layout.bars.dataLabels.color">, (default: "#2D353C")
+                        bold: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.dataLabels.bold" @change="forceChartUpdate()">, (default: true)
+                        fontSize: <input type="number" min="6" max="30" v-model="mutableConfig.style.chart.layout.bars.dataLabels.fontSize">, (default: 12)
+                        offsetX: <input type="number" v-model="mutableConfig.style.chart.layout.bars.dataLabels.offsetX">, (default: 0)
+                        value: {
+                            show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.dataLabels.value.show" @change="forceChartUpdate()">, (default: true)
+                            roundingValue: <input type="number" min="0" max="3" v-model="mutableConfig.style.chart.layout.bars.dataLabels.value.roundingValue">, (default: 0)
+                            prefix: <input type="text" v-model="mutableConfig.style.chart.layout.bars.dataLabels.value.prefix">, (default: "")
+                            suffix: <input type="text" v-model="mutableConfig.style.chart.layout.bars.dataLabels.value.suffix">, (default: "")
+                        },
+                        percentage: {
+                            show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.dataLabels.percentage.show" @change="forceChartUpdate()">, (default: true)
+                            roundingPercentage: roundingValue: <input type="number" min="0" max="3" v-model="mutableConfig.style.chart.layout.bars.dataLabels.percentage.roundingPercentage">, (default: 0)
+                        },
+                    },
+                    nameLabels: {
+                        show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.nameLabels.show" @change="forceChartUpdate()">, (default: true)
+                        color: <input type="color" v-model="mutableConfig.style.chart.layout.bars.nameLabels.color">, (default: "#2D353C")
+                        bold: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.nameLabels.bold" @change="forceChartUpdate()">, (default: true)
+                        fontSize: <input type="number" min="6" max="30" v-model="mutableConfig.style.chart.layout.bars.nameLabels.fontSize">, (default: 10)
+                        offsetX: <input type="number" v-model="mutableConfig.style.chart.layout.bars.nameLabels.offsetX">, (default: 0)
+                    },
+                    parentLabels: {
+                        show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.parentLabels.show" @change="forceChartUpdate()">, (default: true)
+                        color: <input type="color" v-model="mutableConfig.style.chart.layout.bars.parentLabels.color">, (default: "#2D353C")
+                        bold: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.parentLabels.bold" @change="forceChartUpdate()">, (default: false)
+                        fontSize: <input type="number" min="6" max="30" v-model="mutableConfig.style.chart.layout.bars.parentLabels.fontSize">, (default: 10)
+                        offsetX: <input type="number" v-model="mutableConfig.style.chart.layout.bars.parentLabels.offsetX">, (default: 0)
+                    }
+                },
+                highlighter: {
+                    color: <input type="color" v-model="mutableConfig.style.chart.layout.highlighter.color">, (default: "#2D353C")
+                    opacity: <input type="range" min="0" max="100" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.highlighter.opacity">, (default: 5)
+                },
+                separators: {
+                    show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.separators.show" @change="forceChartUpdate()">, (default: true)
+                    color: <input type="color" v-model="mutableConfig.style.chart.layout.separators.color">, (default: "#E1E5E8")
+                    strokeWidth: <input type="number" min="0" max="30" v-model="mutableConfig.style.chart.layout.separators.strokeWidth">, (default: 1)
+                }
+            },
+            title: {
+                text: <input type="text" v-model="mutableConfig.style.chart.title.text">, (default: "")
+                color: <input type="color" v-model="mutableConfig.style.chart.title.color">, (default: "#2D353C")
+                fontSize: <input type="number" min="6" max="30" v-model="mutableConfig.style.chart.title.fontSize">, (default: 20)
+                bold: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.title.bold" @change="forceChartUpdate()">, (default: true)
+                subtitle: {
+                    color: <input type="color" v-model="mutableConfig.style.chart.title.subtitle.color">, (default:"#A1A1A1")
+                    text: <input type="text" v-model="mutableConfig.style.chart.title.subtitle.text">, (default: "")
+                    fontSize: <input type="number" min="6" max="30" v-model="mutableConfig.style.chart.title.subtitle.fontSize">, (default: 16)
+                    bold: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.title.subtitle.bold" @change="forceChartUpdate()">, (default: false)
+                }
+            },
+            legend: {
+                show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.show" @change="forceChartUpdate()">, (default: true)
+                fontSize: <input type="number" min="6" max="30" v-model="mutableConfig.style.chart.legend.fontSize">, (default: 14)
+                color: <input type="color" v-model="mutableConfig.style.chart.legend.color">, (default: "#2D353C")
+                backgroundColor: <input type="color" v-model="mutableConfig.style.chart.legend.backgroundColor">, (default: "#FFFFFF")
+                bold: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.bold" @change="forceChartUpdate()">, (default: true)
+                roundingValue: <input type="number" min="0" max="3" v-model="mutableConfig.style.chart.legend.roundingValue">, (default: 0)
+                prefix: <input type="text" v-model="mutableConfig.style.chart.legend.prefix">, (default: "")
+                suffix: <input type="text" v-model="mutableConfig.style.chart.legend.suffix">, (default: "")
+            },
+            tooltip: {
+                show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.show" @change="forceChartUpdate()">, (default: true)
+                backgroundColor: <input type="color" v-model="mutableConfig.style.chart.tooltip.backgroundColor">, (default: "#FFFFFF")
+                color: <input type="color" v-model="mutableConfig.style.chart.tooltip.color">, (default: "#2D353C")
+                fontSize: <input type="number" min="6" max="30" v-model="mutableConfig.style.chart.tooltip.fontSize">, (default: 14)
+                showValue: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showValue" @change="forceChartUpdate()">, (default: true)
+                showPercentage: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showPercentage" @change="forceChartUpdate()">, (default: true)
+                roundingValue: <input type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingValue">, (default: 0)
+                roundingPercentage: <input type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingPercentage">, (default: 0)
+                prefix: <input type="text" v-model="mutableConfig.style.chart.tooltip.prefix">, (default: "")
+                suffix: <input type="text" v-model="mutableConfig.style.chart.tooltip.suffix">, (default: "")
+            }
+        }
+    },
+    userOptions: {
+        show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
+        title: <input type="text" v-model="mutableConfig.userOptions.title">, (default: "options")
+        labels: {
+            useDiv: <input type="text" v-model="mutableConfig.userOptions.labels.useDiv">, (default: "Title & legend inside")
+            showTable: <input type="text" v-model="mutableConfig.userOptions.labels.showTable">, (default: "Show table")
+        }
+    },
+    table: {
+        show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.show" @change="forceChartUpdate()">, (default: false)
+        th: {
+            backgroundColor: <input type="color" v-model="mutableConfig.table.th.backgroundColor">, (default: "#FAFAFA")
+            color: <input type="color" v-model="mutableConfig.table.th.color">, (default: "#2D353C")
+            outline: <input type="text" v-model="mutableConfig.table.th.outline">, (default: "1px solid #e1e5e8")
+        },
+        td: {
+            backgroundColor: <input type="color" v-model="mutableConfig.table.td.backgroundColor">, (default: "#FFFFFF")
+            color: <input type="color" v-model="mutableConfig.table.td.color">, (default: "#2D353C")
+            outline: <input type="text" v-model="mutableConfig.table.td.outline">, (default: "1px solid #e1e5e8")
+            roundingValue: <input type="number" min="0" max="3" v-model="mutableConfig.table.td.roundingValue">, (default: 0)
+            roundingPercentage: <input type="number" min="0" max="3" v-model="mutableConfig.table.td.roundingPercentage">, (default: 0)
+            prefix: <input type="text" v-model="mutableConfig.table.td.prefix">, (default: "")
+                suffix: <input type="text" v-model="mutableConfig.table.td.suffix">, (default: "")
+        }
+    },
+    translations: {
+        parentName: <input type="text" v-model="mutableConfig.translations.parentName">, (default: "Serie")
+        childName: <input type="text" v-model="mutableConfig.translations.childName">, (default: "Child")
+        value: <input type="text" v-model="mutableConfig.translations.value">, (default: "value")
+        percentageToTotal: <input type="text" v-model="mutableConfig.translations.percentageToTotal">, (default: "%/total")
+        percentageToSerie: <input type="text" v-model="mutableConfig.translations.percentageToSerie">, (default: "%/serie")
+    }
+}
+</code>
+</pre>                
+                </div>
+            </template>
+            <template v-slot:tab2>
+                <div><code><b>@selectLegend</b></code></div>
+                <div class="text-gray-400 pl-5">returns the current visible series when selecting / unselecting the legend:</div>
+<pre>
+<code>
+[
+    {
+        children: [
+            {
+                childIndex: number;
+                color: string;
+                isChild: boolean;
+                isFirstChild: boolean;
+                isLastChild: boolean;
+                name: string;
+                parentId: string;
+                parentName: string;
+                parentValue: number;
+                value: number;
+            },
+            {...}
+        ],
+        color: string;
+        hasChildren: boolean;
+        id: string;
+        isChild: boolean;
+        name: string;
+        value: number;
+    },
+    {...}
+]
+</code>
+</pre>
+<div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>getData</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">call this method from the parent to get the full formatted dataset.</div>
+    <pre>
+    <span class="text-app-green">Using composition API:</span>
+    <code>
+        <span class="text-gray-400">&lt;script setup&gt;</span>
+            import { ref, onMounted } from "vue";
+
+            const verticalBarChart = ref(null);
+            const verticalBarDataset = ref([]);
+
+            onMounted(() => {
+                verticalBarDataset.value = verticalBarChart.value.getData();
+            });
+
+            const config = ref({
+                <span class="text-gray-500">// your config here</span>
+            });
+            const dataset = ref([
+                <span class="text-gray-500">// your dataset here</span>
+            ]);
+
+        <span class="text-gray-400">&lt;/script&gt;</span>
+
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiVerticalBar
+                ref="verticalBarChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+    </code>
+    <span class="text-app-green">Using options API:</span>
+    <code>
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiVerticalBar
+                ref="verticalBarChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+
+        <span class="text-gray-400">&lt;script&gt;</span>
+            export default {
+                data() {
+                    return {
+                        verticalBarDataset: [],
+                        config: {
+                            <span class="text-gray-500">// your config here</span>
+                        },
+                        dataset: [
+                            <span class="text-gray-500">// your dataset here</span>
+                        ]
+                    }
+                },
+                mounted () {
+                    this.verticalBarDataset = this.$refs.verticalBarChart.getData();
+                }
+            }
+        <span class="text-gray-400">&lt;/script&gt;</span>
+    </code>
+    </pre>
+                </div>
+            </template>
+        </Box>
+    </div>
+</template>

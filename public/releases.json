@@ -1,0 +1,104 @@
+[
+    {
+        "version": "v 0.3.9",
+        "date": "2023-08-08",
+        "updates": [
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Fix config"
+            }
+        ]
+    },
+    {
+        "version": "v 0.3.8",
+        "date": "2023-08-07",
+        "updates": [
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Create chart"
+            }
+        ]
+    },
+    {
+        "version": "v 0.3.7",
+        "date": "2023-08-07",
+        "updates": [
+            {
+                "component": "",
+                "description": "Centralize config, improve bundle size"
+            }
+        ]
+    },
+    {
+        "version": "v 0.3.4",
+        "date": "2023-08-07",
+        "updates": [
+            {
+                "component": "VueUiOnion",
+                "description": "Fix label y position issue"
+            }
+        ]
+    },
+    {
+        "version": "v 0.3.3",
+        "date":"2023-08-06",
+        "updates": [
+            {
+                "component": "VueUiOnion",
+                "description": "Create chart"
+            }
+        ]
+    },
+    {
+        "version": "v 0.3.2",
+        "date": "2023-08-06",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Add zoom functionality"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Fix non closing polygon in Firefox"
+            }
+        ]
+    },
+    {
+        "version": "v 0.2.9",
+        "date": "2023-08-05",
+        "updates": [
+            {
+                "component": "",
+                "description": "Allow RGB, HSL color formats in config & datasets"
+            }
+        ]
+    },
+    {
+        "version": "v 0.2.8",
+        "date": "2023-08-05",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Add 'highlighter' color and opacity options"
+            },
+            {
+                "component": "VueUiChestnut",
+                "description": "Add emits and getData method"
+            }
+        ]
+    },
+    {
+        "version": "v 0.2.7",
+        "date": "2023-08-05",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fix dataLabels on y axis not showing if min value > 0"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Add 'showOnlyFirstAndLast' config option to show only first and last time labels on x axis. vue-data-ui is opinionated and chooses not to provide rotating x labels, as it is bad dataviz practice."
+            }
+        ]
+    }
+]

@@ -21,11 +21,18 @@ const end = computed(() => {
 const data = ref(null);
 const response = ref(null);
 const isError = ref(false);
-const dates = ref([])
+const dates = ref([]);
+const versionsList = ref([]);
+const versionsData = ref([]);
+const step = ref(0);
 
 const url = computed(() => {
     return `https://api.npmjs.org/downloads/range/${start.value}:${end.value}/vue-data-ui`;
 });
+
+const weekUrl = "https://api.npmjs.org/versions/vue-data-ui/last-week";
+
+const versionsUrl = ref('https://vue-data-ui.graphieros.com/releases.json');
 
 onMounted(() => {
     fetch(url.value, {
@@ -41,6 +48,34 @@ onMounted(() => {
     })
     .catch(err => {
         isError.value = true;
+    });
+
+    fetch(weekUrl, {
+        method: "GET",
+        mode: "cors",
+        cache: "default"
+    }).then((response) => {
+        return response.json()
+    }).then(json => {
+        versionsData.value = Object.keys(json.downloads).map(key => {
+            return {
+                name: key,
+                value: json.downloads[key]
+            }
+        });
+    }).finally(() => {
+        step.value += 1;
+    });
+
+    fetch(versionsUrl.value, {
+    method: 'GET',
+    cache: 'default',
+    }).then((response) => {
+        return response.json();
+    }).then(data => {
+        versionsList.value = data;
+    }).catch(err => {
+        console.error(err.message);
     })
 });
 
@@ -70,8 +105,7 @@ const config = computed(() => {
             right: 12,
             bottom: 36,
             left: 48
-        },
-        grid: {
+        },        grid: {
             stroke: "#e1e5e8",
             showVerticalLines: false,
             labels: {
@@ -177,6 +211,138 @@ const config = computed(() => {
     }
 });
 
+const verticalConfig = ref({
+    style: {
+    fontFamily: "inherit",
+    chart: {
+      backgroundColor: "#1A1A1A",
+      color: "#CCCCCC",
+      layout: {
+        useDiv: true,
+        bars: {
+          useStroke: false,
+          strokeWidth: 2,
+          height: 16,
+          gap: 6,
+          borderRadius: 4,
+          offsetX: -64,
+          paddingRight: 120,
+          useGradient: true,
+          gradientIntensity: 40,
+          fillOpacity: 10,
+          underlayerColor: "#FFFFFF",
+          dataLabels: {
+            color: "#CCCCCC",
+            bold: true,
+            fontSize: 12,
+            value: {
+              show: true,
+              roundingValue: 0,
+              prefix: "",
+              suffix: ""
+            },
+            percentage: {
+              show: true,
+              roundingPercentage: 0
+            },
+            offsetX: 0
+          },
+          nameLabels: {
+            show: true,
+            color: "#CCCCCC",
+            bold: false,
+            fontSize: 10,
+            offsetX: 0
+          },
+          parentLabels: {
+            show: true,
+            color: "#CCCCCC",
+            bold: false,
+            fontSize: 10,
+            offsetX: 0
+          }
+        },
+        highlighter: {
+          color: "#FFFFFF",
+          opacity: 5
+        },
+        separators: {
+          show: false,
+          color: "#343434",
+          strokeWidth: 1
+        }
+      },
+      title: {
+        text: "Downloads per version",
+        color: "#FAFAFA",
+        fontSize: 20,
+        bold: true,
+        subtitle: {
+          color: "#A1A1A1",
+          text: "Last 7 days",
+          fontSize: 16,
+          bold: false
+        }
+      },
+      legend: {
+        show: false,
+        fontSize: 14,
+        color: "#CCCCCC",
+        bold: true,
+        roundingValue: 0,
+        backgroundColor: "#1A1A1A",
+        roundingPercentage: 0,
+        prefix: "",
+        suffix: ""
+      },
+      tooltip: {
+        show: true,
+        backgroundColor: "#1A1A1A",
+        color: "#CCCCCC",
+        fontSize: 14,
+        showValue: true,
+        showPercentage: true,
+        roundingValue: 0,
+        roundingPercentage: 0,
+        prefix: "",
+        suffix: ""
+      }
+    }
+  },
+  userOptions: {
+    show: true,
+    title: "options",
+    labels: {
+      useDiv: "Title & legend inside",
+      showTable: "Show table"
+    }
+  },
+  table: {
+    show: false,
+    th: {
+      backgroundColor: "#1A1A1A",
+      color: "#CCCCCC",
+      outline: "1px solid #e1e5e8"
+    },
+    td: {
+      backgroundColor: "#1A1A1A",
+      color: "#CCCCCC",
+      outline: "1px solid #e1e5e8",
+      roundingValue: 0,
+      roundingPercentage: 0,
+      prefix: "",
+      suffix: ""
+    }
+  },
+  translations: {
+    parentName: "Serie",
+    childName: "Child",
+    value: "value",
+    percentageToTotal: "%/total",
+    percentageToSerie: "%/serie"
+  }
+})
+
 </script>
 
 <template>
@@ -188,47 +354,25 @@ const config = computed(() => {
         </div>
             <div class="max-w-[800px] mx-auto">
                 <VueUiXy v-if="data" :dataset="dataset" :config="config"/>
-                <ul>
-                    <li class="mb-3">
-                        2023-08-07 | <span class="text-app-green">v 0.3.4</span><br>
-                        <div class="pl-6">
-                            <span class="text-gray-500"><span class="text-app-blue">VueUiOnion</span> Fix label y position issue</span><br>
-                        </div>
-                    </li>
-                    <li class="mb-3">
-                        2023-08-06 | <span class="text-app-green">v 0.3.3</span><br>
-                        <div class="pl-6">
-                            <span class="text-gray-500">add <span class="text-app-blue">VueUiOnion</span> chart</span><br>
-                        </div>
-                    </li>
-                    <li class="mb-3">
-                        2023-08-06 | <span class="text-app-green">v 0.3.2</span><br>
-                        <div class="pl-6">
-                            <span class="text-gray-500"><span class="text-app-blue">VueUiXy</span> add zoom functionality</span><br>
-                            <span class="text-gray-500"><span class="text-app-blue">VueUiRadar</span> fix non closing polygon in Firefox</span>
-                        </div>
-                    </li>
-                    <li class="mb-3">
-                        2023-08-05 | <span class="text-app-green">v 0.2.9</span><br>
-                        <div class="pl-6">
-                            <span class="text-gray-500">Allow RGB, HSL color formats in config & datasets</span>
-                        </div>
-                    </li>
-                    <li class="mb-3">
-                        2023-08-05 | <span class="text-app-green">v 0.2.8</span><br>
-                        <div class="pl-6">
-                            <span class="text-gray-500"><span class="text-app-blue">VueUiXy</span> add "highlighter" color and opacity options</span><br>
-                            <span class="text-gray-500"><span class="text-app-blue">VueUiChestnut</span> add emits and getData method</span>
-                        </div>
-                    </li>
-                    <li>
-                        2023-08-05 | <span class="text-app-green">v 0.2.7</span><br>
-                        <div class="pl-6">
-                            <span class="text-gray-500"><span class="text-app-blue">VueUiXy</span> fix dataLabels on y axis not showing if min value > 0</span><br>
-                            <span class="text-gray-500"><span class="text-app-blue">VueUiXy</span> add "showOnlyFirstAndLast" config option to show only first and last time labels on x axis. vue-data-ui is opinionated and chooses not to provide rotating x labels, as it is bad dataviz practice.</span><br>
-                        </div>
-                    </li>
-                </ul>
+                <div class="w-full max-h-[500px] overflow-y-auto">
+                    <ul>
+                        <li v-for="log in versionsList">
+                            {{ log.date }} | <span class="text-app-green">{{ log.version }}</span><br>
+                            <div class="pl-6" v-if="log.updates">
+                                <template v-for="update in log.updates">
+                                    <span class="text-gray-500">
+                                        <span v-if="update.component" class="text-app-blue">{{ update.component }}</span>
+                                        {{ update.description }}
+                                    </span>
+                                    <br>
+                                </template>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="max-w-[800px] mx-auto">
+                <VueUiVerticalBar :key="step" :dataset="versionsData" :config="verticalConfig"/>
             </div>
         </div>
     </div>

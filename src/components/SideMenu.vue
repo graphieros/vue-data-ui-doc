@@ -55,6 +55,9 @@ function closeIfOpen(){
             <router-link to="/docs#vue-ui-onion" >
                 <div class="pl-6 hover:underline" @click="closeIfOpen">VueUiOnion</div>
             </router-link>
+            <router-link to="/docs#vue-ui-vertical-bar" >
+                <div class="pl-6 hover:underline" @click="closeIfOpen">VueUiVerticalBar</div>
+            </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-app-green">Tables</div>

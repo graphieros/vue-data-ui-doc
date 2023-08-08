@@ -7,6 +7,7 @@
             <code>npm i vue-data-ui</code>
             <code>yarn add vue-data-ui</code>
         </div>
+        
         <div class="p-6 border border-gray-700 rounded-lg flex flex-col mt-12">
             <span class="text-app-blue">src/main.js</span>
             <code class="mt-3 text-start">
@@ -20,9 +21,10 @@
                     &nbsp;&nbsp;<span class="text-app-green">VueUiRadar</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiGauge</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiChestnut</span>, <br>
-                    &nbsp;&nbsp;<span class="text-app-green">VueUiOnion</span> <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiOnion</span>, <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiVerticalBar</span>, <br>
                 } from "vue-data-ui"<br>
-                import "vue-data-ui/style.css"<br><br>
+                import "vue-data-ui/style.css" <span class="text-app-orange">// don't forget the css</span><br><br>
                 const app = createApp(App)<br><br>
                 app.component("VueUiXy", <span class="text-app-green">VueUiXy</span>)<br>
                 app.component("VueUiTable", <span class="text-app-green">VueUiTable</span>)<br>
@@ -31,7 +33,8 @@
                 app.component("VueUiRadar", <span class="text-app-green">VueUiRadar</span>)<br>
                 app.component("VueUiGauge", <span class="text-app-green">VueUiGauge</span>)<br>
                 app.component("VueUiChestnut", <span class="text-app-green">VueUiChestnut</span>)<br>
-                app.component("VueUiOnion", <span class="text-app-green">VueUiOnion</span>)<br><br>
+                app.component("VueUiOnion", <span class="text-app-green">VueUiOnion</span>)<br>
+                app.component("VueUiVerticalBar", <span class="text-app-green">VueUiVerticalBar</span>)<br><br>
                 app.mount('#app')
             </code>
         </div>

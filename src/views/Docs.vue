@@ -11,6 +11,7 @@ import DocVueUiQuadrant from "../components/docs/DocVueUiQuadrant.vue";
 import DocVueUiGauge from "../components/docs/DocVueUiGauge.vue";
 import DocVueUiChestnut from "../components/docs/DocVueUiChestnut.vue";
 import DocVueUiOnion from "../components/docs/DocVueUiOnion.vue";
+import DocVueUiVerticalBar from "../components/docs/DocVueUiVerticalBar.vue";
 
 const router = useRouter();
 const isOpen = ref(window.innerWidth > 768);
@@ -37,6 +38,7 @@ function toggleMenu(state) {
             <DocVueUiGauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-gauge'"/>
             <DocVueUiChestnut v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-chestnut'"/>
             <DocVueUiOnion v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-onion'"/>
+            <DocVueUiVerticalBar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-vertical-bar'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
                 <h1 class="">
                     vue-data-ui components require 2 props:
