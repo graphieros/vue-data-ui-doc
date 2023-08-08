@@ -5,6 +5,7 @@ import Box from "../Box.vue";
 const dataset = ref([
     {
     name: "Serie 1",
+    color: "#5f8bee",
     value: 100,
     children: [
       {
@@ -20,18 +21,22 @@ const dataset = ref([
   {
     name: "Serie 2",
     value: 345,
+    color: "#ff6400",
   },
   {
     name: "Serie 3",
+    color: "#42d392",
     value: 210,
   },
   {
     name: "Serie 4",
+    color:"rgb(200,200,50)",
     value: 188,
   },
   {
     name: "Serie 5",
     value: 120,
+    color: "rgb(100,50,200)",
     children: [
       {
         name: "Serie 5 child 1",
@@ -58,6 +63,7 @@ const config = ref({
       layout: {
         useDiv: true,
         bars: {
+          sort: "desc",
           useStroke: false,
           strokeWidth: 2,
           height: 32,
@@ -152,7 +158,8 @@ const config = ref({
     title: "options",
     labels: {
       useDiv: "Title & legend inside",
-      showTable: "Show table"
+      showTable: "Show table",
+      sort: "Sort desc"
     }
   },
   table: {
@@ -308,6 +315,7 @@ const <span class="text-app-blue">config</span> = {
             layout: {
                 useDiv: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: true)
                 bars: {
+                    sort: "desc", <span class="text-app-green">// "desc" | "asc"</span>
                     useStroke: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.useStroke" @change="forceChartUpdate()">, (default: false)
                     strokeWidth: <input type="number" min="0" max="20" v-model="mutableConfig.style.chart.layout.bars.strokeWidth">, (default: 2)
                     height: <input type="number" min="1" max="100" v-model="mutableConfig.style.chart.layout.bars.height">, (default: 32)
@@ -402,6 +410,7 @@ const <span class="text-app-blue">config</span> = {
         labels: {
             useDiv: <input type="text" v-model="mutableConfig.userOptions.labels.useDiv">, (default: "Title & legend inside")
             showTable: <input type="text" v-model="mutableConfig.userOptions.labels.showTable">, (default: "Show table")
+            sort: <input type="text" v-model="mutableConfig.userOptions.labels.sort">, (default: "Sort desc")
         }
     },
     table: {

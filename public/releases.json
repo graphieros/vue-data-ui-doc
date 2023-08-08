@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 0.4.0",
+        "date": "2023-08-08",
+        "updates": [
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Add sorting direction to config & options"
+            }
+        ]
+    },
+    {
         "version": "v 0.3.9",
         "date": "2023-08-08",
         "updates": [
