@@ -4,10 +4,14 @@ const props = defineProps({
     showEmits: {
         type: Boolean,
         default: false,
+    },
+    activeTab: {
+        type: Number,
+        default: 0
     }
 })
 
-const activeTab = ref(0);
+const activeTab = ref(props.activeTab);
 
 </script>
 

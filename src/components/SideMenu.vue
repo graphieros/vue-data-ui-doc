@@ -65,6 +65,12 @@ function closeIfOpen(){
                 <div class="pl-6 hover:underline" @click="closeIfOpen">VueUiTable</div>
             </router-link>
         </section>
+        <section class="mb-6">
+            <div class="font-satoshi-bold text-app-green">Utilities</div>
+            <router-link to="/docs#vue-ui-screenshot">
+                <div class="pl-6 hover:underline" @click="closeIfOpen">VueUiScreenshot</div>
+            </router-link>
+        </section>
     </template>
     </aside>
 </template>

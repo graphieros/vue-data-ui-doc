@@ -19,10 +19,12 @@
                     &nbsp;&nbsp;<span class="text-app-green">VueUiDonut</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiWaffle</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiRadar</span>, <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiQuadrant</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiGauge</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiChestnut</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiOnion</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiVerticalBar</span>, <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiScreenshot</span>, <br>
                 } from "vue-data-ui"<br>
                 import "vue-data-ui/style.css" <span class="text-app-orange">// don't forget the css</span><br><br>
                 const app = createApp(App)<br><br>
@@ -31,10 +33,12 @@
                 app.component("VueUiDonut", <span class="text-app-green">VueUiDonut</span>)<br>
                 app.component("VueUiWaffle", <span class="text-app-green">VueUiWaffle</span>)<br>
                 app.component("VueUiRadar", <span class="text-app-green">VueUiRadar</span>)<br>
+                app.component("VueUiQuadrant", <span class="text-app-green">VueUiQuadrant</span>)<br>
                 app.component("VueUiGauge", <span class="text-app-green">VueUiGauge</span>)<br>
                 app.component("VueUiChestnut", <span class="text-app-green">VueUiChestnut</span>)<br>
                 app.component("VueUiOnion", <span class="text-app-green">VueUiOnion</span>)<br>
-                app.component("VueUiVerticalBar", <span class="text-app-green">VueUiVerticalBar</span>)<br><br>
+                app.component("VueUiVerticalBar", <span class="text-app-green">VueUiVerticalBar</span>)<br>
+                app.component("VueUiScreenshot", <span class="text-app-green">VueUiScreenshot</span>)<br><br>
                 app.mount('#app')
             </code>
         </div>
