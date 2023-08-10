@@ -129,8 +129,8 @@ const downloadConfig = ref({
 
   const imageData = ref(null);
 
-  function postImage({ deviceType, image, screenWidth, x, y }) {
-    imageData.value = { deviceType, screenWidth, x, y};
+  function postImage({ deviceType, image, screenWidth, x, y, createdAt, fileSize }) {
+    imageData.value = { deviceType, screenWidth, x, y, createdAt, fileSize};
     pic.value = image;
   }
 
@@ -336,7 +336,9 @@ const <span class="text-app-blue">config</span> = {
 <pre>
 <code>
     {
+        createdAt: number; <span class="text-gray-500">// timestamp</span>
         deviceType: "desktop" | "tablet" | "mobile",
+        fileSize: string; <span class="text-gray-500">// in KB</span>
         image: string; <span class="text-gray-500">// base64 format</span>
         screenWidth: number;
         x: number; <span class="text-gray-500">// the image's top left x coordinate on the page</span>
@@ -363,9 +365,9 @@ Example:
         const preview = ref("");
         const metadata = ref({});
 
-        function postImage({ deviceType, image, screenWidth, x, y }) {
+        function postImage({ createdAt, deviceType, fileSize, image, screenWidth, x, y }) {
             preview.value = imageData.image;
-            metadata.value = { deviceType, image, screenWidth, x, y };
+            metadata.value = { createdAt, deviceType, fileSize image, screenWidth, x, y };
         }
 
     &lt;/script&gt;

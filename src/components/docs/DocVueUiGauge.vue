@@ -181,7 +181,7 @@ function fixChart() {
         base: number; (optional)
         value: number;
         series: [
-            <span class="text-app-green">// Set up the gaueg steps:</span>
+            <span class="text-app-green">// Set up the gauge steps:</span>
             {
                 from: number;
                 to: number;
