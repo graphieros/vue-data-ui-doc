@@ -19,7 +19,6 @@ const end = computed(() => {
 });
 
 const data = ref(null);
-const response = ref(null);
 const isError = ref(false);
 const dates = ref([]);
 const versionsList = ref([]);
@@ -151,126 +150,192 @@ const dataset = computed(() => {
     ]
 });
 
+function computeSumsByChunks(arr, chunkSize) {
+    const result = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+        const chunk = arr.slice(i, i + chunkSize);
+        const sum = chunk.reduce((a, b) => a + b, 0);
+        result.push(sum);
+    }
+    return result;
+}
+
+const weekDataset = computed(() => {
+    const series = computeSumsByChunks(data.value.downloads.map(d => d.downloads).slice(0, -1), 7);
+    const average = series.reduce((a, b) => a + b, 0) / series.length;
+    const avg = [];
+    for(let i = 0; i < series.length; i += 1) {
+        avg.push(average)
+    }
+     return [
+        {
+            name: "average",
+            series: avg,
+            type: "line",
+            color: "rgb(62,62,62)",
+            dashed: true,
+            dataLabels: false,
+            useTag: "start"
+        },
+        {
+            name: "vue-data-ui week",
+            series,
+            type: "bar",
+            color: "#42d392",
+            useProgression: false,
+            dataLabels: true,
+        }
+     ]
+})
+
 const config = computed(() => {
     return {
         chart: {
-        backgroundColor: "#1A1A1A",
-        color: "#c8c8c8",
-        height: 300,
-        width: 500,
-        highlighter: {
-            color: "#FAFAFA"
-        },
-        padding: {
-            top:  36,
-            right: 12,
-            bottom: 36,
-            left: 48
-        },        grid: {
-            stroke: "#e1e5e8",
-            showVerticalLines: false,
-            labels: {
+            backgroundColor: "#1A1A1A",
+            color: "#c8c8c8",
+            height: 300,
+            width: 500,
+            highlighter: {
+                color: "#FAFAFA"
+            },
+            padding: {
+                top:  36,
+                right: 12,
+                bottom: 36,
+                left: 48
+            },        
+            grid: {
+                stroke: "#e1e5e8",
+                showVerticalLines: false,
+                labels: {
+                    show: true,
+                    color: "#c8c8c8",
+                    fontSize: 12,
+                    axis: {
+                        yLabel: "donwloads",
+                        xLabel: "days",
+                        fontSize: 8
+                    },
+                    xAxisLabels: {
+                        showOnlyFirstAndLast: true,
+                        color: "#c8c8c8",
+                        show: true,
+                        values:  [...dates.value],
+                        fontSize: 6,
+                    }
+                }
+            },
+            legend: {
                 show: true,
                 color: "#c8c8c8",
-                fontSize: 12,
-                axis: {
-                    yLabel: "donwloads",
-                    xLabel: "days",
-                    fontSize: 8
-                },
-                xAxisLabels: {
-                    showOnlyFirstAndLast: true,
-                    color: "#c8c8c8",
-                    show: true,
-                    values:  [...dates.value],
-                    fontSize: 6,
+                useDiv: true,
+                fontSize: 16
+            },
+            title: {
+            show:true,
+            text: "vue-data-ui npm downloads",
+            color: "#FAFAFA",
+            fontSize: 20,
+            bold: true,
+            subtitle: {
+                fontSize: 16,
+                color: "#c8c8c8",
+                text: `from ${start.value} to ${end.value}`
+            }
+            },
+            tooltip: {
+                color: "#FFFFFF",
+                backgroundColor: "#1A1A1A",
+                show: true,
+                showValue: true,
+                showPercentage: false,
+                roundingValue: 0,
+                roundingPercentage: 0,
+            },
+            userOptions: {
+                show: true,
+                title:"options",
+                labels: {
+                    dataLabels: "Show datalabels",
+                    titleInside: "Title inside",
+                    legendInside: "Legend inside",
+                    showTable: "Show table"
                 }
-            }
+            },
         },
-        legend: {
-            show: true,
-            color: "#c8c8c8",
-            useDiv: true,
-            fontSize: 16
-        },
-        title: {
-           show:true,
-           text: "vue-data-ui npm downloads",
-           color: "#FAFAFA",
-           fontSize: 20,
-           bold: true,
-           subtitle: {
-            fontSize: 16,
-            color: "#c8c8c8",
-            text: `from ${start.value} to ${end.value}`
-           }
-        },
-        tooltip: {
-            color: "#FFFFFF",
-            backgroundColor: "#1A1A1A",
-            show: true,
-            showValue: true,
-            showPercentage: false,
-            roundingValue: 0,
-            roundingPercentage: 0,
-        },
-        userOptions: {
-            show: true,
-            title:"options",
+        bar: {
+            useGradient: true,
             labels: {
-                dataLabels: "Show datalabels",
-                titleInside: "Title inside",
-                legendInside: "Legend inside",
-                showTable: "Show table"
+                show: true,
+                offsetY: -6,
+                rounding: 0,
+                color: "#c8c8c8",
             }
         },
-    },
-    bar: {
-        useGradient: true,
-        labels: {
-            show: true,
-            offsetY: -6,
-            rounding: 0,
-            color: "#c8c8c8",
-        }
-    },
-    line: {
-        radius: 3,
-        useGradient: true,
-        strokeWidth: 2,
-        labels: {
-            show: true,
-            offsetY: -6,
-            rounding: 0,
-            color: "#c8c8c8",
-        }
+        line: {
+            radius: 3,
+            useGradient: true,
+            strokeWidth: 2,
+            labels: {
+                show: true,
+                offsetY: -6,
+                rounding: 0,
+                color: "#c8c8c8",
+            }
 
-    },
-    plot: {
-        radius: 3,
-        useGradient: true,
-        labels: {
-            show: false,
-            offsetY: -6,
-            rounding: 0,
-            color: "#c8c8c8",
-        }
-    },
-    table: {
-        rounding: 0,
-        th: {
-            backgroundColor: "#1A1A1A",
-            color: "#c8c8c8",
-            outline: "1px solid #e1e5e8"
         },
-        td: {
-            backgroundColor: "#1A1A1A",
-            color: "#c8c8c8",
-            outline: "1px solid #e1e5e8",
+        plot: {
+            radius: 3,
+            useGradient: true,
+            labels: {
+                show: false,
+                offsetY: -6,
+                rounding: 0,
+                color: "#c8c8c8",
+            }
+        },
+        table: {
+            rounding: 0,
+            th: {
+                backgroundColor: "#1A1A1A",
+                color: "#c8c8c8",
+                outline: "1px solid #e1e5e8"
+            },
+            td: {
+                backgroundColor: "#1A1A1A",
+                color: "#c8c8c8",
+                outline: "1px solid #e1e5e8",
+            }
         }
-    }
     }
 });
+
+const weekConfig = computed(() => {
+    return {
+        ...config.value,
+        chart: {
+            ...config.value.chart,
+            grid: {
+                ...config.value.chart.grid,
+                labels: {
+                    ...config.value.chart.grid.labels,
+                    axis: {
+                        yLabel: "downloads",
+                        xLabel: "weeks",
+                        fontSize: 8
+                    }
+                }
+            },
+            title: {
+                ...config.value.chart.title,
+                subtitle: {
+                    ...config.value.chart.title.subtitle,
+                    text: "by 7-day chunks"
+                }
+            }
+        }
+    }
+})
 
 const verticalConfig = ref({
     style: {
@@ -432,6 +497,8 @@ const verticalConfig = ref({
                         </li>
                     </ul>
                 </div>
+                <VueUiSkeleton :config="skeletonLine" v-if="isLoadingLine"/>
+                <VueUiXy v-if="data && !isLoadingLine" :dataset="weekDataset" :config="weekConfig"/>
             </div>
             <div class="max-w-[800px] mx-auto">
                 <VueUiSkeleton :config="skeletonBar" v-if="isLoadingBar"/>

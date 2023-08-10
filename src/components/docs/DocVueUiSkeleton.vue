@@ -160,7 +160,7 @@ function fixChart() {
                 </option>
             </select>
         </div>
-        <div :class="`transition-all w-3/4 mx-auto overflow-visible pb-16 ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-white bg-[rgb(26,26,26)]' : ''}`">
+        <div :class="`transition-all w-3/4 max-w-[600px] mx-auto overflow-visible pb-16 ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-white bg-[rgb(26,26,26)]' : ''}`">
           <button @click="fixChart" class="p-2 text-app-green rounded-full hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
                 <PinIcon v-else/>
