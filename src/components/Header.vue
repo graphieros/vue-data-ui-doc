@@ -42,6 +42,9 @@ onMounted(() => {
                 <router-link to="/versions" v-if="router.currentRoute.value.path !== '/versions'">
                     <span class="text-gray-400 hover:text-gray-200">Versions</span>
                 </router-link>
+                <router-link to="/about" v-if="router.currentRoute.value.path !== '/about'">
+                    <span class="text-gray-400 hover:text-gray-200">About</span>
+                </router-link>
             </nav>
             <div class="relative md:hidden">
                 <button id="mainDropdownButton" @click="useMenu" type="button">
@@ -57,6 +60,9 @@ onMounted(() => {
                         </router-link>
                         <router-link to="/versions" v-if="router.currentRoute.value.path !== '/versions'">
                             <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-gray-200 hover:shadow-xl">Versions</span>
+                        </router-link>
+                        <router-link to="/about" v-if="router.currentRoute.value.path !== '/about'">
+                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-gray-200 hover:shadow-xl">About</span>
                         </router-link>
                     </ul>
                 </div>
