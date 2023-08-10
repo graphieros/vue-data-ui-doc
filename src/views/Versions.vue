@@ -25,6 +25,8 @@ const dates = ref([]);
 const versionsList = ref([]);
 const versionsData = ref([]);
 const step = ref(0);
+const isLoadingLine = ref(false);
+const isLoadingBar = ref(false);
 
 const url = computed(() => {
     return `https://api.npmjs.org/downloads/range/${start.value}:${end.value}/vue-data-ui`;
@@ -34,7 +36,45 @@ const weekUrl = "https://api.npmjs.org/versions/vue-data-ui/last-week";
 
 const versionsUrl = ref('https://vue-data-ui.graphieros.com/releases.json');
 
+const skeletonLine = ref({
+    type:"line",
+    style: {
+        backgroundColor: "#1A1A1A",
+        line: {
+        axis: {
+            show: true,
+            color: "#343434",
+            strokeWidth: 0.5
+        },
+        path: {
+            color: "#343434",
+            strokeWidth: 1,
+            showPlots: true
+        }
+    }
+    }
+});
+
+const skeletonBar = ref({
+    type: "verticalBar",
+    style: {
+        backgroundColor: "#1A1A1A",
+        verticalBar: {
+          axis: {
+            show: true,
+            color: "#343434",
+            strokeWidth: 0.5
+          },
+          borderRadius: 0.5,
+          color: "#343434"
+        }
+    }
+})
+
 onMounted(() => {
+    isLoadingLine.value = true;
+    isLoadingBar.value = true;
+
     fetch(url.value, {
         method: 'GET',
         mode: 'cors',
@@ -44,11 +84,13 @@ onMounted(() => {
         return response.json();
     }).then(json => {
         data.value = json;
-        dates.value = json.downloads.map(d => d.day)
+        dates.value = json.downloads.map(d => d.day);
     })
     .catch(err => {
         isError.value = true;
-    });
+    }).finally(() => {
+        isLoadingLine.value = false;
+    })
 
     fetch(weekUrl, {
         method: "GET",
@@ -64,6 +106,7 @@ onMounted(() => {
             }
         });
     }).finally(() => {
+        isLoadingBar.value = false;
         step.value += 1;
     });
 
@@ -371,7 +414,8 @@ const verticalConfig = ref({
             <h1 class="text-center text-xl text-app-green">Versions</h1>
         </div>
             <div class="max-w-[800px] mx-auto">
-                <VueUiXy v-if="data" :dataset="dataset" :config="config"/>
+                <VueUiSkeleton :config="skeletonLine" v-if="isLoadingLine"/>
+                <VueUiXy v-if="data && !isLoadingLine" :dataset="dataset" :config="config"/>
                 <div class="w-full max-h-[500px] overflow-y-auto">
                     <ul>
                         <li v-for="log in versionsList">
@@ -390,7 +434,8 @@ const verticalConfig = ref({
                 </div>
             </div>
             <div class="max-w-[800px] mx-auto">
-                <VueUiVerticalBar :key="step" :dataset="versionsData" :config="verticalConfig"/>
+                <VueUiSkeleton :config="skeletonBar" v-if="isLoadingBar"/>
+                <VueUiVerticalBar v-show="!isLoadingBar" :key="step" :dataset="versionsData" :config="verticalConfig"/>
             </div>
         </div>
     </div>

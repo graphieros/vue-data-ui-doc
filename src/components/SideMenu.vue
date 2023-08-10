@@ -76,6 +76,9 @@ function closeIfOpen(){
             <router-link to="/docs#vue-ui-screenshot">
                 <div class="pl-6 hover:underline" @click="closeIfOpen">VueUiScreenshot</div>
             </router-link>
+            <router-link to="/docs#vue-ui-skeleton">
+                <div class="pl-6 hover:underline" @click="closeIfOpen">VueUiSkeleton</div>
+            </router-link>
         </section>
     </template>
     </aside>

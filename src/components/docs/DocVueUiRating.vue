@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon } from "vue-tabler-icons";
 
