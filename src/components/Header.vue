@@ -15,7 +15,6 @@ const currentRoute = computed(() => {
 })
 
 function isSelected(route) {
-    console.log(currentRoute.value)
     return currentRoute.value === route;
 }
 

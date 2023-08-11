@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import Box from "../Box.vue";
+import { CopyIcon } from "vue-tabler-icons";
+import mainConfig from "../../assets/default_configs.json";
 
 const postConfig = ref({
     mode: "post",
@@ -170,6 +172,20 @@ const downloadConfig = ref({
     document.body.removeChild(selBox);
 }
 
+function copyDefaultConf(conf) {
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = JSON.stringify(conf);
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+}
+
 </script>
 
 <template>
@@ -202,16 +218,18 @@ const downloadConfig = ref({
                 </div>
             </div>
         </div>
-
+        <div class="w-full flex place-items-center place-content-center my-6">
+            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-colors" @click="copyDefaultConf(mainConfig.vue_ui_screenshot)"><CopyIcon/> Copy default config as JSON</button>
+        </div>
         <Box showEmits :activeTab="1">
             <template v-slot:tab0>
                 No dataset required, only config.
             </template>
             <template v-slot:tab1>
-                <div class="w-ull overflow-x-auto">
-                  <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4">RESET</button>
-                    <button @click="copyToClipboard" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">Copy this config as JSON</button>
-                </div>
+                <div class="flex gap-2">
+                        <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4">RESET</button>
+                        <button @click="copyToClipboard" class="flex gap-1 text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
+                    </div>
                 <div class="text-app-green hover:underline mt-4 cursor-pointer" role="button" @click="reopen">Refresh VueUiScreenshot to view your changes</div>
                 <div class="overflow-x-auto">
 <pre>

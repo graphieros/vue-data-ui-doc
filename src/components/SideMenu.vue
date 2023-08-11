@@ -69,6 +69,9 @@ function isSelected(route) {
             <router-link to="/docs#vue-ui-vertical-bar" >
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-vertical-bar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-vertical-bar')" class="-ml-6"/> VueUiVerticalBar</div>
             </router-link>
+            <router-link to="/docs#vue-ui-sparkline" >
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkline') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkline')" class="-ml-6"/> VueUiSparkline</div>
+            </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-app-green">Tables</div>

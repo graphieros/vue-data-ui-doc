@@ -1,7 +1,8 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon } from "vue-tabler-icons";
+import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import mainConfig from "../../assets/default_configs.json";
 
 const config = ref({
   type: "line",
@@ -125,13 +126,13 @@ function setType() {
     forceChartUpdate();
 }
 
-function copyToClipboard() {
+function copyToClipboard(conf) {
     let selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = JSON.stringify(mutableConfig.value);
+    selBox.value = JSON.stringify(conf);
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
@@ -167,16 +168,18 @@ function fixChart() {
             </button>
             <VueUiSkeleton :config="mutableConfig" :key="key"/>
         </div>
-
+        <div class="w-full flex place-items-center place-content-center my-6">
+            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-colors" @click="copyToClipboard(mainConfig.vue_ui_skeleton)"><CopyIcon/> Copy default config as JSON</button>
+        </div>
         <Box :activeTab="1">
             <template v-slot:tab0>
                 No dataset required.
             </template>
             <template v-slot:tab1>
-                <div class="w-full overflow-x-auto">
-                    <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4">RESET</button>
-                    <button @click="copyToClipboard" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">Copy this config as JSON</button>
-                </div>
+              <div class="flex gap-2">
+                        <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4">RESET</button>
+                        <button @click="copyToClipboard(mutableConfig)" class="flex gap-1 text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
+                    </div>
 <pre>
 <code>
 const <span class="text-app-blue">config</span> = {
