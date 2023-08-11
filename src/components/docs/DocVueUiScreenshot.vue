@@ -174,7 +174,7 @@ const downloadConfig = ref({
 
 <template>
     <div>
-        <h1 class="text-center font-satoshi-bold text-app-green mb-12 text-2xl">VueUiScreenshot</h1>
+        <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiScreenshot</h1>
         <div class="w-full flex flex-col gap-6 place-items-center place-content-center">
             <h2 class="text-center text-gray-500">
                 A component to take screenshots in the current page, with 2 modes: download or post.

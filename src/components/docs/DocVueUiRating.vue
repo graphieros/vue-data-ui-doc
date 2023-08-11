@@ -120,7 +120,7 @@ function showRating(r) {
 
 <template>
     <div>
-        <h1 class="text-center font-satoshi-bold text-app-green mb-12 text-2xl">VueUiRating</h1>
+        <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiRating</h1>
         <h2 class="text-center text-gray-500">
             A component to rate, or display rating results. Shows stars by default, and you can use an image if you prefer. You can display as many stars as you want.<br><br>
             In the active mode, the rating can be modified by the user. In readonly mode, it just displays the rating.

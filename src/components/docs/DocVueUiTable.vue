@@ -395,7 +395,7 @@ function copyToClipboard() {
 </script>
 
 <template>
-    <div class="text-center font-satoshi-bold text-app-green text-2xl mb-12">VueUiTable</div>
+    <div class="text-center font-satoshi-bold text-app-blue text-2xl mb-12">VueUiTable</div>
     <VueUiTable :dataset="mutableDataset" :config="mutableConfig" :key="`tablekey_${tableKey}`"/>
     <Box>
         <template v-slot:tab0>

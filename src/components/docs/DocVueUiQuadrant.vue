@@ -277,7 +277,7 @@ function fixChart() {
 
 <template>
     <div>
-        <h1 class="text-center font-satoshi-bold text-app-green mb-12 text-2xl">VueUiQuadrant</h1>
+        <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiQuadrant</h1>
         <div :class="`transition-all w-1/2 mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-white bg-[rgb(26,26,26)]' : ''}`">
             <button @click="fixChart" class="p-2 text-app-green rounded-full hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>

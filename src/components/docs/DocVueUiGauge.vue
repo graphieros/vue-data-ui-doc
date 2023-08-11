@@ -155,7 +155,7 @@ function fixChart() {
 
 <template>
     <div>
-        <h1 class="text-center font-satoshi-bold text-app-green mb-12 text-2xl">VueUiGauge</h1>
+        <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiGauge</h1>
         <button v-if="!isFixed" @click="fixChart" class="p-2 text-app-green rounded-full hover:bg-gray-700">
                     <PinIcon/>
                 </button>

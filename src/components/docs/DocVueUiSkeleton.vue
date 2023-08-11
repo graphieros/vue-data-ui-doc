@@ -13,11 +13,11 @@ const config = ref({
     line: {
       axis: {
         show: true,
-        color: "#343434",
+        color: "#5c5c5c",
         strokeWidth: 0.5
       },
       path: {
-        color: "#343434",
+        color: "#5c5c5c",
         strokeWidth: 1,
         showPlots: true
       }
@@ -25,56 +25,56 @@ const config = ref({
     bar: {
       axis: {
         show: true,
-        color: "#343434",
+        color: "#5c5c5c",
         strokeWidth: 0.5
       },
       borderRadius: 0.5,
-      color: "#343434",
+      color: "#5c5c5c",
       barWidth: 9
     },
     donut: {
-      color: "#343434",
+      color: "#5c5c5c",
       strokeWidth: 64
     },
     onion: {
-      color: "#343434"
+      color: "#5c5c5c"
     },
     gauge: {
-      color: "#343434"
+      color: "#5c5c5c"
     },
     quadrant: {
       grid: {
-        color: "#343434",
+        color: "#5c5c5c",
         strokeWidth: 0.5
       },
       plots: {
         radius: 1.5,
-        color: "#343434"
+        color: "#5c5c5c"
       }
     },
     radar: {
       grid: {
-        color: "#343434",
+        color: "#5c5c5c",
         strokeWidth: 0.5
       },
       shapes: {
-        color: "#343434"
+        color: "#5c5c5c"
       }
     },
     waffle: {
-      color: "#343434"
+      color: "#5c5c5c"
     },
     table: {
       th: {
-        color: "#343434"
+        color: "#5c5c5c"
       },
       td: {
-        color: "#343434",
+        color: "#5c5c5c",
         strokeWidth: 0.5
       }
     },
     rating: {
-      color: "#343434",
+      color: "#5c5c5c",
       filled: true,
       strokeWidth: 1,
       maxWidth: 200
@@ -82,11 +82,11 @@ const config = ref({
     verticalBar: {
       axis: {
         show: true,
-        color: "#343434",
+        color: "#5c5c5c",
         strokeWidth: 0.5
       },
       borderRadius: 0.5,
-      color: "#343434"
+      color: "#5c5c5c"
     }
   }
 });
@@ -149,7 +149,7 @@ function fixChart() {
 
 <template>
     <div>
-        <h1 class="text-center font-satoshi-bold text-app-green mb-12 text-2xl">VueUiSkeleton</h1>
+        <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiSkeleton</h1>
         <h2 class="text-center text-gray-500">
             Placeholders while your data is getting fetched.<br><br>
         </h2>
