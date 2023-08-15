@@ -160,6 +160,16 @@ function computeSumsByChunks(arr, chunkSize) {
     return result;
 }
 
+function getEverySeventhItem(inputArray) {
+  const resultArray = [];
+  
+  for (let i = 0; i < inputArray.length; i += 7) {
+    resultArray.push(inputArray[i]);
+  }
+  
+  return resultArray;
+}
+
 const weekDataset = computed(() => {
     const series = computeSumsByChunks(data.value.downloads.map(d => d.downloads).slice(0, -1), 7);
     const average = series.reduce((a, b) => a + b, 0) / series.length;
@@ -323,6 +333,10 @@ const weekConfig = computed(() => {
                         yLabel: "downloads",
                         xLabel: "weeks",
                         fontSize: 8
+                    },
+                    xAxisLabels: {
+                        ...config.value.chart.grid.labels.xAxisLabels,
+                        values: getEverySeventhItem(dates.value)
                     }
                 }
             },

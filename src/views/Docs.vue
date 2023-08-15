@@ -2,6 +2,8 @@
 import {ref} from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useRouter } from "vue-router";
+import AppSkeletons from "../components/AppSkeletons.vue";
+
 import DocVueUiXy from '../components/docs/DocVueUiXy.vue';
 import DocVueUiTable from "../components/docs/DocVueUiTable.vue";
 import DocVueUiDonut from "../components/docs/DocVueUiDonut.vue";
@@ -47,9 +49,11 @@ function toggleMenu(state) {
             <DocVueUiSkeleton v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-skeleton'"/>
             <DocVueUiSparkline v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkline'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
-                <h1 class="">
-                    vue-data-ui components require 2 props:
+                <h1 class="flex gap-2 text-xl">
+                    <img src="../assets/logo.png" class="h-6">
+                    2 props are required:
                 </h1>
+<div class="w-fit mx-auto border border-gray-700 rounded-md py-3 px-6 sm:px-20 mt-6 bg-[rgb(30,30,30)]">
 <pre>
 <code class="text-gray-500 text-xl">
 &lt;NameOfComponent
@@ -58,7 +62,8 @@ function toggleMenu(state) {
 &lt;/NameOfComponent&gt;
 </code>
 </pre>
-                <img src="../../public/vue-data-ui-showcase.png" alt="vue data ui charts showcase, featuring line, radar, donut, waffle, onion, quadrant, chestnut and gauge charts">
+</div>
+                <AppSkeletons/>
             </div>
         </div>
     </div>
