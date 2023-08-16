@@ -1361,6 +1361,9 @@
                 "color": "#e1e5e8",
                 "barWidth": 9
             },
+            "chestnut": {
+                "color": "#E1E5E8"
+            },
             "donut": {
                 "color":"#e1e5e8",
                 "strokeWidth": 64

@@ -33,6 +33,9 @@ const config = ref({
       color: "#5c5c5c",
       barWidth: 9
     },
+    chestnut: {
+      color: "#5C5C5C"
+    },
     donut: {
       color: "#5c5c5c",
       strokeWidth: 64
@@ -96,6 +99,7 @@ const type = ref("line");
 
 const options = ref([
     "bar",
+    "chestnut",
     "donut",
     "gauge",
     "line",
@@ -209,6 +213,9 @@ const <span class="text-app-blue">config</span> = {
       borderRadius: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.style.bar.borderRadius">, (default: 0.5)
       color: <input type="color" v-model="mutableConfig.style.bar.color">, (default: "#e1e5e8")
       barWidth: <input type="number" min="1" max="11" step="0.1" v-model="mutableConfig.style.bar.barWidth"> 9
+    },
+    chestnut: {
+      color: <input type="color" v-model="mutableConfig.style.chestnut.color">, (default: "#e1e5e8")
     },
     donut: {
       color: <input type="color" v-model="mutableConfig.style.donut.color">, (default: "#e1e5e8")

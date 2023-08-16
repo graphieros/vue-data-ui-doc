@@ -37,7 +37,7 @@ onMounted(() => {
             <router-link to="/" class="w-full">
                 <div class="flex flex-row gap-3 w-full">
                     <img src="../assets/logo.png" class="h-5">
-                    <span>vue-data-ui</span>
+                    <span>Vue Data UI</span>
                 </div>
             </router-link>
             <nav class="hidden md:flex flex-row gap-3 justify-end w-full">

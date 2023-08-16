@@ -30,6 +30,9 @@ const skeletonConfig = ref({
       color: "#5c5c5c",
       barWidth: 9
     },
+    chestnut: {
+      color: "#5C5C5C",
+    },
     donut: {
       color: "#5c5c5c",
       strokeWidth: 64
@@ -101,7 +104,7 @@ const skeletons = [
     {...skeletonConfig.value, type: 'onion', link: "/docs#vue-ui-onion"},
     {...skeletonConfig.value, type: 'bar', link: "/docs#vue-ui-xy"},
     {...skeletonConfig.value, type: 'rating', link: "/docs#vue-ui-rating"},
-    {...skeletonConfig.value, type: 'donut', link: "/docs#vue-ui-donut"},
+    {...skeletonConfig.value, type: 'chestnut', link: "/docs#vue-ui-chestnut"},
 ]
 
 </script>

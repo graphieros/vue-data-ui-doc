@@ -30,6 +30,9 @@ const skeletonConfig = ref({
       color: "#5c5c5c",
       barWidth: 9
     },
+    chestnut: {
+      color: "#5C5C5C"
+    },
     donut: {
       color: "#5c5c5c",
       strokeWidth: 64
@@ -101,7 +104,7 @@ const skeletons = [
     {...skeletonConfig.value, type: 'onion'},
     {...skeletonConfig.value, type: 'bar'},
     {...skeletonConfig.value, type: 'rating'},
-    {...skeletonConfig.value, type: 'donut'},
+    {...skeletonConfig.value, type: 'chestnut'},
 ]
 
 
@@ -139,7 +142,7 @@ const skeletons = [
             <div class="flex gap-6 flex-col md:flex-row place-items-center place-content-center">            
                 <img src="../assets/alec_lloyd_probert.png" class="h-[200px]" alt="A picture of Alec Lloyd Probert">
                 <p>
-                    Alec Lloyd Probert is a front-end developer, formerly a data analyst, with a strong passion for data visualization and VueJs.
+                    Alec Lloyd Probert is a front-end developer, formerly a data analyst, with a strong passion for data visualization and VueJs.<br><br>
                     <a class="text-app-blue hover:underline" href="https://github.com/graphieros" target="_blank">GitHub profile</a>
                 </p>
             </div>
