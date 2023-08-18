@@ -166,6 +166,10 @@ function fixChart() {
                 <button v-if="isFixed" @click="fixChart" class="p-2 text-app-green rounded-full hover:bg-gray-700">
                     <PinnedOffIcon/>
                 </button>
+                <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
+                <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">RESET</button>
+                <button @click="copyToClipboard(config)" class="flex gap-1 text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
+            </div>
                 <VueUiGauge :dataset="dataset1" :config="mutableConfig" :key="`gauge_1_${key}`"/>
             </div>
             <div class="transition-all w-1/2">

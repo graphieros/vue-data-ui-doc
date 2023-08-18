@@ -229,6 +229,10 @@ function fixChart() {
                 <PinnedOffIcon v-if="isFixed"/>
                 <PinIcon v-else/>
             </button>
+            <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
+                <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">RESET</button>
+                <button @click="copyToClipboard(config)" class="flex gap-1 text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
+            </div>
             <VueUiVerticalBar :dataset="dataset" :config="mutableConfig" :key="key"/>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6">
