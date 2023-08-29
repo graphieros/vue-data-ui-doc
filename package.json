@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "vue": "^3.3.4",
-    "vue-data-ui": "1.0.0",
+    "vue-data-ui": "1.1.0",
     "vue-router": "^4.0.13",
     "vue-tabler-icons": "^2.21.0"
   },

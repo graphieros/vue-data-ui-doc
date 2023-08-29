@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.1.0",
+        "date": "2023-08-29",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Create component"
+            }
+        ]
+    },
+    {
         "version": "v 1.0.0",
         "date": "2023-08-22",
         "updates": [

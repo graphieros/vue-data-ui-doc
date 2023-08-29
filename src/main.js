@@ -16,7 +16,8 @@ import {
     VueUiScreenshot,
     VueUiRating,
     VueUiSkeleton,
-    VueUiSparkline
+    VueUiSparkline,
+    VueUiHeatmap
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -35,5 +36,6 @@ app.component("VueUiScreenshot", VueUiScreenshot);
 app.component("VueUiRating", VueUiRating);
 app.component("VueUiSkeleton", VueUiSkeleton);
 app.component("VueUiSparkline", VueUiSparkline);
+app.component("VueUiHeatmap", VueUiHeatmap);
 
 app.mount('#app')

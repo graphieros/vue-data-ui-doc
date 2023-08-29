@@ -74,40 +74,40 @@ onMounted(() => {
     isLoadingLine.value = true;
     isLoadingBar.value = true;
 
-    fetch(url.value, {
-        method: 'GET',
-        mode: 'cors',
-        cache: 'default'
-    }).then((response) => {
-        isError.value = false;
-        return response.json();
-    }).then(json => {
-        data.value = json;
-        dates.value = json.downloads.map(d => d.day);
-    })
-    .catch(err => {
-        isError.value = true;
-    }).finally(() => {
-        isLoadingLine.value = false;
-    })
+    // fetch(url.value, {
+    //     method: 'GET',
+    //     mode: 'cors',
+    //     cache: 'default'
+    // }).then((response) => {
+    //     isError.value = false;
+    //     return response.json();
+    // }).then(json => {
+    //     data.value = json;
+    //     dates.value = json.downloads.map(d => d.day);
+    // })
+    // .catch(err => {
+    //     isError.value = true;
+    // }).finally(() => {
+    //     isLoadingLine.value = false;
+    // })
 
-    fetch(weekUrl, {
-        method: "GET",
-        mode: "cors",
-        cache: "default"
-    }).then((response) => {
-        return response.json()
-    }).then(json => {
-        versionsData.value = Object.keys(json.downloads).map(key => {
-            return {
-                name: key,
-                value: json.downloads[key]
-            }
-        });
-    }).finally(() => {
-        isLoadingBar.value = false;
-        step.value += 1;
-    });
+    // fetch(weekUrl, {
+    //     method: "GET",
+    //     mode: "cors",
+    //     cache: "default"
+    // }).then((response) => {
+    //     return response.json()
+    // }).then(json => {
+    //     versionsData.value = Object.keys(json.downloads).map(key => {
+    //         return {
+    //             name: key,
+    //             value: json.downloads[key]
+    //         }
+    //     });
+    // }).finally(() => {
+    //     isLoadingBar.value = false;
+    //     step.value += 1;
+    // });
 
     fetch(versionsUrl.value, {
     method: 'GET',
@@ -493,8 +493,8 @@ const verticalConfig = ref({
             <h1 class="text-center text-xl text-app-green">Versions</h1>
         </div>
             <div class="max-w-[800px] mx-auto">
-                <VueUiSkeleton :config="skeletonLine" v-if="isLoadingLine"/>
-                <VueUiXy v-if="data && !isLoadingLine" :dataset="dataset" :config="config"/>
+                <!-- <VueUiSkeleton :config="skeletonLine" v-if="isLoadingLine"/>
+                <VueUiXy v-if="data && !isLoadingLine" :dataset="dataset" :config="config"/> -->
                 <div class="w-full max-h-[500px] overflow-y-auto">
                     <ul>
                         <li v-for="log in versionsList">
@@ -511,13 +511,13 @@ const verticalConfig = ref({
                         </li>
                     </ul>
                 </div>
-                <VueUiSkeleton :config="skeletonLine" v-if="isLoadingLine"/>
-                <VueUiXy v-if="data && !isLoadingLine" :dataset="weekDataset" :config="weekConfig"/>
+                <!-- <VueUiSkeleton :config="skeletonLine" v-if="isLoadingLine"/>
+                <VueUiXy v-if="data && !isLoadingLine" :dataset="weekDataset" :config="weekConfig"/> -->
             </div>
-            <div class="max-w-[800px] mx-auto">
+            <!-- <div class="max-w-[800px] mx-auto">
                 <VueUiSkeleton :config="skeletonBar" v-if="isLoadingBar"/>
                 <VueUiVerticalBar v-show="!isLoadingBar" :key="step" :dataset="versionsData" :config="verticalConfig"/>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
