@@ -91,6 +91,11 @@ const config = ref({
       },
       borderRadius: 0.5,
       color: "#5c5c5c"
+    },
+    heatmap: {
+      cellsX: 26,
+      cellsY: 7,
+      color: "#5c5c5c"
     }
   }
 });
@@ -102,6 +107,7 @@ const options = ref([
     "chestnut",
     "donut",
     "gauge",
+    "heatmap",
     "line",
     "onion",
     "quadrant",
@@ -276,6 +282,11 @@ const <span class="text-app-blue">config</span> = {
       },
       borderRadius: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.style.verticalBar.borderRadius">, (default: 0.5)
       color: <input type="color" v-model="mutableConfig.style.verticalBar.color">, (default: "#e1e5e8")
+    },
+    heatmap: {
+      cellsX: 26,
+      cellsY: 7,
+      color: <input type="color" v-model="mutableConfig.style.heatmap.color">, (default: "#e1e5e8")
     }
   }
 }
