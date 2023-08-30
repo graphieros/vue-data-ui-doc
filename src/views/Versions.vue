@@ -74,22 +74,28 @@ onMounted(() => {
     isLoadingLine.value = true;
     isLoadingBar.value = true;
 
-    // fetch(url.value, {
-    //     method: 'GET',
-    //     mode: 'cors',
-    //     cache: 'default'
-    // }).then((response) => {
-    //     isError.value = false;
-    //     return response.json();
-    // }).then(json => {
-    //     data.value = json;
-    //     dates.value = json.downloads.map(d => d.day);
-    // })
-    // .catch(err => {
-    //     isError.value = true;
-    // }).finally(() => {
-    //     isLoadingLine.value = false;
-    // })
+    fetch(url.value, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'default'
+    }).then((response) => {
+        isError.value = false;
+        return response.json();
+    }).then(json => {
+        data.value = json.downloads.map(d => {
+            return {
+                period: d.day,
+                value: d.downloads
+            }
+        }).slice(0,-1);
+        isLoadingLine.value = false;
+        // dates.value = json.downloads.map(d => d.day);
+    })
+    .catch(err => {
+        isError.value = true;
+        data.value = [{ period: "", value: 0 }]
+    }).finally(() => {
+    })
 
     // fetch(weekUrl, {
     //     method: "GET",
@@ -481,7 +487,54 @@ const verticalConfig = ref({
     percentageToTotal: "%/total",
     percentageToSerie: "%/serie"
   }
-})
+});
+
+const sparklineConfig = ref({
+  style: {
+    backgroundColor: "#1A1A1A",
+    fontFamily: "inherit",
+    line: {
+      color: "#42d392",
+      strokeWidth: 3
+    },
+    zeroLine: {
+      color: "#505050",
+      strokeWidth: 1
+    },
+    plot: {
+      show: true,
+      radius: 4,
+      stroke: "#FFFFFF",
+      strokeWidth: 1
+    },
+    verticalIndicator: {
+      show: true,
+      strokeWidth: 1.5
+    },
+    dataLabel: {
+      position: "left",
+      fontSize: 48,
+      bold: true,
+      color: "#42d392",
+      roundingValue: 1,
+      valueType: "latest"
+    },
+    title: {
+      show: true,
+      textAlign: "left",
+      color: "#666666",
+      fontSize: 16,
+      bold: true,
+      text: "Daily downloads"
+    },
+    area: {
+      show: true,
+      useGradient: true,
+      opacity: 30,
+      color: "#42d392"
+    }
+  }
+});
 
 </script>
 
@@ -493,8 +546,9 @@ const verticalConfig = ref({
             <h1 class="text-center text-xl text-app-green">Versions</h1>
         </div>
             <div class="max-w-[800px] mx-auto">
-                <!-- <VueUiSkeleton :config="skeletonLine" v-if="isLoadingLine"/>
-                <VueUiXy v-if="data && !isLoadingLine" :dataset="dataset" :config="config"/> -->
+                <div class="max-w-[500px] mx-auto my-6">
+                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="data" :config="sparklineConfig"/>
+                </div>
                 <div class="w-full max-h-[500px] overflow-y-auto">
                     <ul>
                         <li v-for="log in versionsList">
@@ -511,13 +565,8 @@ const verticalConfig = ref({
                         </li>
                     </ul>
                 </div>
-                <!-- <VueUiSkeleton :config="skeletonLine" v-if="isLoadingLine"/>
-                <VueUiXy v-if="data && !isLoadingLine" :dataset="weekDataset" :config="weekConfig"/> -->
+
             </div>
-            <!-- <div class="max-w-[800px] mx-auto">
-                <VueUiSkeleton :config="skeletonBar" v-if="isLoadingBar"/>
-                <VueUiVerticalBar v-show="!isLoadingBar" :key="step" :dataset="versionsData" :config="verticalConfig"/>
-            </div> -->
         </div>
     </div>
 </template>
