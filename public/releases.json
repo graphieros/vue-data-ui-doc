@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.3.3",
+        "date": "2023-08-30",
+        "updates": [
+            {
+                "component": "VueUiScatter",
+                "description": "Create component"
+            }
+        ]
+    },
+    {
         "version": "v 1.2.0",
         "date": "2023-08-29",
         "updates": [
