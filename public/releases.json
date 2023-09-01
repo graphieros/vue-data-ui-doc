@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.3.6",
+        "date": "2023-09-01",
+        "updates": [
+            {
+                "component": "VueUiTable",
+                "description": "Fix sign of progression label"
+            }
+        ]
+    },
+    {
         "version": "v 1.3.5",
         "date": "2023-08-31",
         "updates": [
