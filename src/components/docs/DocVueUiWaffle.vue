@@ -1,7 +1,7 @@
 <script setup>
 import {ref} from "vue";
-import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import Box from "../Box.vue";
 import mainConfig from "../../assets/default_configs.json";
 
     const dataset = ref([
