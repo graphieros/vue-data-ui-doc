@@ -129,7 +129,6 @@ function copyToClipboard(conf) {
 }
 
 const isFixed = ref(false);
-
 function fixChart() {
     isFixed.value = !isFixed.value;
 } 
