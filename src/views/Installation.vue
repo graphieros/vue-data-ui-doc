@@ -30,6 +30,7 @@
                     &nbsp;&nbsp;<span class="text-app-green">VueUiSparkline</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiHeatmap</span>, <br>
                     &nbsp;&nbsp;<span class="text-app-green">VueUiScatter</span>, <br>
+                    &nbsp;&nbsp;<span class="text-app-green">VueUiCandlestick</span>, <br>
                 } from "vue-data-ui"<br>
                 import "vue-data-ui/style.css" <span class="text-app-orange">// don't forget the css</span><br><br>
                 const app = createApp(App)<br><br>
@@ -48,7 +49,8 @@
                 app.component("VueUiSkeleton", <span class="text-app-green">VueUiSkeleton</span>)<br>
                 app.component("VueUiSparkline", <span class="text-app-green">VueUiSparkline</span>)<br>
                 app.component("VueUiHeatmap", <span class="text-app-green">VueUiHeatmap</span>)<br>
-                app.component("VueUiScatter", <span class="text-app-green">VueUiScatter</span>)<br><br>
+                app.component("VueUiScatter", <span class="text-app-green">VueUiScatter</span>)<br>
+                app.component("VueUiCandlestick", <span class="text-app-green">VueUiCandlestick</span>)<br><br>
                 app.mount('#app')
             </code>
         </div>
