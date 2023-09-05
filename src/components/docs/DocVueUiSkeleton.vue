@@ -96,6 +96,17 @@ const config = ref({
       cellsX: 26,
       cellsY: 7,
       color: "#5c5c5c"
+    },
+    candlesticks: {
+        axis: {
+            show: true,
+            color:"#5c5c5c",
+            strokeWidth: 0.5
+        },
+        candle: {
+            color:"#5c5c5c",
+            strokeWidth: 1
+        }
     }
   }
 });
@@ -104,6 +115,7 @@ const type = ref("line");
 
 const options = ref([
     "bar",
+    "candlesticks",
     "chestnut",
     "donut",
     "gauge",
@@ -287,6 +299,17 @@ const <span class="text-app-blue">config</span> = {
       cellsX: 26,
       cellsY: 7,
       color: <input type="color" v-model="mutableConfig.style.heatmap.color">, (default: "#e1e5e8")
+    },
+    candlesticks: {
+        axis: {
+            show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.candlesticks.axis.show">, (default: true)
+            color: <input type="color" v-model="mutableConfig.style.candlesticks.axis.color">, (default: "#e1e5e8")
+            strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.candlesticks.axis.strokeWidth">, (default: 0.5)
+        },
+        candle: {
+            color: <input type="color" v-model="mutableConfig.style.candlesticks.candle.color">, (default: "#e1e5e8")
+            strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.candlesticks.candle.strokeWidth">, (default: 0.5)
+        }
     }
   }
 }
