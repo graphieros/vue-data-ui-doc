@@ -3,7 +3,6 @@ import {ref} from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useRouter } from "vue-router";
 import AppSkeletons from "../components/AppSkeletons.vue";
-
 import DocVueUiXy from '../components/docs/DocVueUiXy.vue';
 import DocVueUiTable from "../components/docs/DocVueUiTable.vue";
 import DocVueUiDonut from "../components/docs/DocVueUiDonut.vue";
