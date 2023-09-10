@@ -78,6 +78,9 @@ function isSelected(route) {
             <router-link to="/docs#vue-ui-candlestick" >
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-candlestick') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-candlestick')" class="-ml-6"/> VueUiCandlestick</div>
             </router-link>
+            <router-link to="/docs#vue-ui-age-pyramid" >
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-age-pyramid') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-age-pyramid')" class="-ml-6"/> VueUiAgePyramid</div>
+            </router-link>
             <router-link to="/docs#vue-ui-sparkline" >
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkline') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkline')" class="-ml-6"/> VueUiSparkline</div>
             </router-link>

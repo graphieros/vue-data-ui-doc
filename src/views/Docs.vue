@@ -20,6 +20,7 @@ import DocVueUiSparkline from "../components/docs/DocVueUiSparkline.vue";
 import DocVueUiHeatmap from "../components/docs/DocVueUiHeatmap.vue";
 import DocVueUiScatter from "../components/docs/DocVueUiScatter.vue";
 import DocVueUiCandlestick from "../components/docs/DocVueUiCandlestick.vue";
+import DocVueUiAgePyramid from "../components/docs/DocVueUiAgePyramid.vue";
 
 const router = useRouter();
 const isOpen = ref(window.innerWidth > 768);
@@ -51,6 +52,7 @@ function toggleMenu(state) {
             <DocVueUiHeatmap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-heatmap'"/>
             <DocVueUiScatter v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-scatter'"/>
             <DocVueUiCandlestick v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-candlestick'"/>
+            <DocVueUiAgePyramid v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-age-pyramid'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-xl">
                     <img src="../assets/logo.png" class="h-6">
