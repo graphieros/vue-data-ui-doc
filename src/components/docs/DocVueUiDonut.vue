@@ -85,7 +85,7 @@ const config = ref({
                     }
                 },
                 donut: {
-                    strokeWidth: 64
+                    strokeWidth: 84
                 },
             },
             legend: {
