@@ -689,7 +689,7 @@ const config = ref({
       bold: true,
       subtitle: {
         color: "#A1A1A1",
-        text: "2022",
+        text: "2023",
         fontSize: 16,
         bold: false
       }
