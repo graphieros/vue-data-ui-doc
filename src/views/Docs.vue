@@ -70,7 +70,7 @@ function toggleMenu(state) {
 </code>
 </pre>
 </div>
-                <div class="text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-4 gap-2 mt-6">
+                <div class="text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-4 gap-2 my-6">
                     <router-link to="/docs#vue-ui-xy">
                         <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
                             <ChartHistogramIcon class="text-gray-400" stroke-width="1"/>
@@ -167,7 +167,6 @@ function toggleMenu(state) {
                             <span>VueUi<span class="text-app-green">Rating</span></span>
                         </div>
                     </router-link>
-                    <div></div>
                     <router-link to="/docs#vue-ui-screenshot">
                         <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
                             <ScreenshotIcon class="text-gray-400" stroke-width="1"/>
