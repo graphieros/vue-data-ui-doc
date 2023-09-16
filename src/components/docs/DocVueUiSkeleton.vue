@@ -107,6 +107,9 @@ const config = ref({
             color:"#5c5c5c",
             strokeWidth: 1
         }
+    },
+    pyramid: {
+      color: "#5c5c5c"
     }
   }
 });
@@ -122,6 +125,7 @@ const options = ref([
     "heatmap",
     "line",
     "onion",
+    "pyramid",
     "quadrant",
     "radar",
     "rating",
@@ -310,6 +314,9 @@ const <span class="text-app-blue">config</span> = {
             color: <input type="color" v-model="mutableConfig.style.candlesticks.candle.color">, (default: "#e1e5e8")
             strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.candlesticks.candle.strokeWidth">, (default: 0.5)
         }
+    },
+    pyramid: {
+      color: <input type="color" v-model="mutableConfig.style.pyramid.color">, (default: "#e1e5e8")
     }
   }
 }

@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.5.2",
+        "date": "2023-09-16",
+        "updates": [
+            {
+                "component": "VueUiSkeleton",
+                "description": "Add pyramid type"
+            }
+        ]
+    },
+    {
         "version": "v 1.5.1",
         "date": "2023-09-13",
         "updates": [
