@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.5.4",
+        "date": "2023-09-17",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fix error when zoom is deactivated; fix tootlip default bg color"
+            }
+        ]
+    },
+    {
         "version": "v 1.5.2",
         "date": "2023-09-16",
         "updates": [
