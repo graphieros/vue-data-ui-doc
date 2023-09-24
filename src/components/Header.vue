@@ -24,7 +24,6 @@ function changeTheme() {
         document.documentElement.classList.add('dark');
         store.isDarkMode = true;
     }
-    console.log(localStorage)
 }
 
 const currentRoute = computed(() => {
