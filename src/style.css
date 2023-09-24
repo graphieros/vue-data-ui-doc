@@ -18,42 +18,45 @@
   scrollbar-width: thin;
 }
 
-::-webkit-scrollbar {
+html {
+  background: rgb(243 244 246);
+}
+
+html.dark {
+  background: rgb(26,26,26);
+}
+
+html ::-webkit-scrollbar {
   width: 8px;
 }
-::-webkit-scrollbar-thumb {
+html ::-webkit-scrollbar-thumb {
+  background: #C4C4C4;
+  border-radius: 8px;
+}
+html ::-webkit-scrollbar-track {
+  background: #F3F4F6;
+}
+
+html.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+html.dark ::-webkit-scrollbar-thumb {
   background: #42d392;
   border-radius: 8px;
 }
-::-webkit-scrollbar-track {
+html.dark ::-webkit-scrollbar-track {
   background: rgb(26,26,26);
 }
 
-html {
-  background: rgb(26,26,26);
-}
 
+html.dark 
 input,
-select {
+html.dark select {
   border-radius: 6px;
   background: #1a1a1a;
   color: #c8c8c8;
   border: 1px solid rgb(80,80,80);
   text-align:center;
-}
-
-/* vue-ui-xy overrides */
-.vue-ui-xy-table th {
-  border: 1px solid #e1e5e8;
-  background: rgb(26,26,26) !important;
-  position: sticky;
-  top:0;
-  font-weight: 400;
-  outline: 1px solid #e1e5e8;
-  user-select: none;
-}
-.vue-ui-xy-table-tr-selected {
-  background: rgba(66,211,146,0.2) !important;
 }
 
 input[type="color"] {

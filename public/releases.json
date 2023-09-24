@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.5.8",
+        "date": "2023-09-23",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fix tooltip css flex issue"
+            }
+        ]
+    },
+    {
         "version": "v 1.5.4",
         "date": "2023-09-17",
         "updates": [

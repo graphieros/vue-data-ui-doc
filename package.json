@@ -9,8 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "pinia": "^2.1.6",
     "vue": "^3.3.4",
-    "vue-data-ui": "1.5.4",
+    "vue-data-ui": "1.5.8",
     "vue-router": "^4.0.13",
     "vue-tabler-icons": "^2.21.0"
   },

@@ -17,13 +17,13 @@ const activeTab = ref(props.activeTab);
 
 <template>
     <div class="p-6 pt-20 rounded-md border border-gray-700 my-6 relative overflow-x-auto">
-    <div tabindex="0" :class="`select-none cursor-pointer absolute top-0 left-0 text-app-green font-satoshi-bold p-3 border-b border-gray-700 rounded-tl-lg ${activeTab === 0 ? 'bg-black-100' : ''}`" @click="activeTab = 0" @keypress.enter="activeTab = 0">
+    <div tabindex="0" :class="`select-none cursor-pointer absolute top-0 left-0 text-black dark:text-app-green font-satoshi-bold p-3 border-b border-gray-700 rounded-tl-lg ${activeTab === 0 ? 'bg-gray-200 dark:bg-black-100' : ''}`" @click="activeTab = 0" @keypress.enter="activeTab = 0">
         dataset
     </div>
-    <div tabindex="0" :class="`select-none cursor-pointer absolute top-0 left-[78px] text-app-blue font-satoshi-bold p-3 border-b border-l border-gray-700 ${activeTab === 1 ? 'bg-black-100' : ''} ${!props.showEmits ? 'border-r rounded-br-lg' : ''}`" @click="activeTab = 1" @keypress.enter="activeTab = 1">
+    <div tabindex="0" :class="`select-none cursor-pointer absolute top-0 left-[78px] text-black dark:text-app-blue font-satoshi-bold p-3 border-b border-l border-gray-700 ${activeTab === 1 ? 'bg-gray-200 dark:bg-black-100' : ''} ${!props.showEmits ? 'border-r rounded-br-lg' : ''}`" @click="activeTab = 1" @keypress.enter="activeTab = 1">
         config
     </div>
-    <div tabindex="0" v-if="props.showEmits" :class="`select-none cursor-pointer absolute top-0 left-[150px] text-gray-400 font-satoshi-bold p-3 border-b border-l border-r border-gray-700 rounded-br-lg ${activeTab === 2 ? 'bg-black-100' : ''}`" @click="activeTab = 2" @keypress.enter="activeTab = 2">
+    <div tabindex="0" v-if="props.showEmits" :class="`select-none cursor-pointer absolute top-0 left-[150px] text-black dark:text-gray-400 font-satoshi-bold p-3 border-b border-l border-r border-gray-700 rounded-br-lg ${activeTab === 2 ? 'bg-gray-200 dark:bg-black-100' : ''}`" @click="activeTab = 2" @keypress.enter="activeTab = 2">
         emits
     </div>
         <div class="text-satoshi-bold text-app-green text-2xl mb-3">

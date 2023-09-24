@@ -60,7 +60,7 @@ function toggleMenu(state) {
                     <img src="../assets/logo.png" class="h-6">
                     2 props are required:
                 </h1>
-<div class="w-fit mx-auto border border-gray-700 rounded-md py-3 px-6 sm:px-20 mt-6 bg-[rgb(30,30,30)]">
+<div class="w-fit mx-auto border border-gray-700 rounded-md py-3 px-6 sm:px-20 mt-6 bg-gray-200 dark:bg-[rgb(30,30,30)]">
 <pre>
 <code class="text-gray-500 text-xl">
 &lt;NameOfComponent
@@ -72,111 +72,111 @@ function toggleMenu(state) {
 </div>
                 <div class="text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-4 gap-2 my-6">
                     <router-link to="/docs#vue-ui-xy">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <ChartHistogramIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Xy</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <ChartHistogramIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Xy</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-donut">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <ChartDonut3Icon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Donut</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <ChartDonut3Icon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Donut</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-waffle">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <LayoutGridIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Waffle</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <LayoutGridIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Waffle</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-radar">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <ChartRadarIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Radar</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <ChartRadarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Radar</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-quadrant">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <PlusIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Quadrant</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <PlusIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Quadrant</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-gauge">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <GaugeIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Gauge</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <GaugeIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Gauge</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-chestnut">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <BinaryTree2Icon class="text-gray-400 -rotate-90" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Chestnut</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <BinaryTree2Icon class="text-gray-800 dark:text-gray-400 -rotate-90" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Chestnut</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-onion">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <ChartArcs3Icon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Onion</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <ChartArcs3Icon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Onion</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-vertical-bar">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <ChartBarIcon class="text-gray-400 rotate-90" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">VerticalBar</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <ChartBarIcon class="text-gray-800 dark:text-gray-400 rotate-90" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">VerticalBar</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-heatmap">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <LayoutGridIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Heatmap</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <LayoutGridIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Heatmap</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-scatter">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <ChartBubbleIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Scatter</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <ChartBubbleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Scatter</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-candlestick">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <ChartCandleIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Candlestick</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <ChartCandleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Candlestick</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-age-pyramid">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <PyramidIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">AgePyramid</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <PyramidIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">AgePyramid</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-sparkline">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <ChartLineIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Sparkline</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <ChartLineIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Sparkline</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-table">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <TableIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Table</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <TableIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Table</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-rating">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <StarIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Rating</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <StarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Rating</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-screenshot">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <ScreenshotIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Screenshot</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <ScreenshotIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Screenshot</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-skeleton">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:shadow-xl hover:bg-black-100">
-                            <SkullIcon class="text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-app-green">Skeleton</span></span>
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <SkullIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Skeleton</span></span>
                         </div>
                     </router-link>
                 </div>                

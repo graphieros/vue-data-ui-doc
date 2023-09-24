@@ -1,7 +1,102 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useMainStore } from "../stores";
+
+const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
 
 const skeletonConfig = ref({
+  type: "line",
+  style: {
+    backgroundColor: "#F3F4F6",
+    color: "#CCCCCC",
+    maxHeight: 500,
+    animated: false,
+    line: {
+      axis: {
+        show: true,
+        color: "#5c5c5c",
+        strokeWidth: 0.5
+      },
+      path: {
+        color: "#5c5c5c",
+        strokeWidth: 1,
+        showPlots: true
+      }
+    },
+    bar: {
+      axis: {
+        show: true,
+        color: "#5c5c5c",
+        strokeWidth: 0.5
+      },
+      borderRadius: 0.5,
+      color: "#5c5c5c",
+      barWidth: 9
+    },
+    chestnut: {
+      color: "#5C5C5C"
+    },
+    donut: {
+      color: "#5c5c5c",
+      strokeWidth: 64
+    },
+    onion: {
+      color: "#5c5c5c"
+    },
+    gauge: {
+      color: "#5c5c5c"
+    },
+    quadrant: {
+      grid: {
+        color: "#5c5c5c",
+        strokeWidth: 0.5
+      },
+      plots: {
+        radius: 1.5,
+        color: "#5c5c5c"
+      }
+    },
+    radar: {
+      grid: {
+        color: "#5c5c5c",
+        strokeWidth: 0.5
+      },
+      shapes: {
+        color: "#5c5c5c"
+      }
+    },
+    waffle: {
+      color: "#5c5c5c"
+    },
+    table: {
+      th: {
+        color: "#5c5c5c"
+      },
+      td: {
+        color: "#5c5c5c",
+        strokeWidth: 0.5
+      }
+    },
+    rating: {
+      color: "#5c5c5c",
+      filled: true,
+      strokeWidth: 1,
+      maxWidth: 200
+    },
+    verticalBar: {
+      axis: {
+        show: true,
+        color: "#5c5c5c",
+        strokeWidth: 0.5
+      },
+      borderRadius: 0.5,
+      color: "#5c5c5c"
+    }
+  }
+});
+
+const skeletonConfigDark = ref({
   type: "line",
   style: {
     backgroundColor: "#1A1A1A",
@@ -105,17 +200,37 @@ const skeletons = [
     {...skeletonConfig.value, type: 'bar'},
     {...skeletonConfig.value, type: 'rating'},
     {...skeletonConfig.value, type: 'chestnut'},
-]
+];
+
+const skeletonsDarkMode = [
+    {...skeletonConfigDark.value},
+    {...skeletonConfigDark.value, type: 'quadrant'},
+    {...skeletonConfigDark.value, type: 'donut'},
+    {...skeletonConfigDark.value, type: 'verticalBar'},
+    {...skeletonConfigDark.value, type: 'radar'},
+    {...skeletonConfigDark.value, type: 'table'},
+    {...skeletonConfigDark.value, type: 'gauge'},
+    {...skeletonConfigDark.value, type: 'waffle'},
+    {...skeletonConfigDark.value, type: 'onion'},
+    {...skeletonConfigDark.value, type: 'bar'},
+    {...skeletonConfigDark.value, type: 'rating'},
+    {...skeletonConfigDark.value, type: 'chestnut'},
+];
 
 
 </script>
 
 <template>
     <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto">
-        <div class="text-center w-full text-app-green font-satoshi-bold text-2xl">
+        <div class="text-center w-full text-black font-bold dark:text-app-green font-satoshi-bold text-2xl">
             About us
         </div>
-        <div class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px]">
+        <div v-if="isDarkMode" class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px]">
+            <div v-for="skeleton in skeletonsDarkMode.slice(0,3)" class="max-w-1/3">
+                <VueUiSkeleton :config="skeleton"/>
+            </div>
+        </div>
+        <div v-else class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px]">
             <div v-for="skeleton in skeletons.slice(0,3)" class="max-w-1/3">
                 <VueUiSkeleton :config="skeleton"/>
             </div>
@@ -128,11 +243,11 @@ const skeletons = [
         </p>
 
         <p class="my-3">
-            Vue Data UI offers a set of classic chart types, along with new or rare items, such as <span class="text-app-green hover:underline"><router-link to="/docs#vue-ui-chestnut">VueUiChestnut</router-link></span> or <span class="text-app-green hover:underline"><router-link to="/docs#vue-ui-quadrant">VueUiQuadrant</router-link></span>, along with the powerful <span class="text-app-green hover:underline"><router-link to="/docs#vue-ui-table">VueUiTable</router-link></span>.
+            Vue Data UI offers a set of classic chart types, along with new or rare items, such as <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-chestnut">VueUiChestnut</router-link></span> or <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-quadrant">VueUiQuadrant</router-link></span>, along with the powerful <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-table">VueUiTable</router-link></span>.
         </p>
 
         <p class="my-3">
-            Vue Data UI also ships with a set of utilities, such as <span class="text-app-green hover:underline"><router-link to="/docs#vue-ui-screenshot">VueUiScreenshot</router-link></span> or <span class="text-app-green hover:underline"><router-link to="/docs#vue-ui-skeleton">VueUiSkeleton</router-link></span>, to make the experience of your dashboards as smooth as possible.
+            Vue Data UI also ships with a set of utilities, such as <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-screenshot">VueUiScreenshot</router-link></span> or <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-skeleton">VueUiSkeleton</router-link></span>, to make the experience of your dashboards as smooth as possible.
         </p>
        
         <div class="text-center w-full text-app-blue font-satoshi-bold text-2xl mt-12">
@@ -147,7 +262,12 @@ const skeletons = [
                 </p>
             </div>
         </div>
-        <div class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px] mb-12">
+        <div v-if="isDarkMode" class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px] mb-12">
+            <div v-for="skeleton in skeletonsDarkMode.slice(3, skeletons.length)" class="max-w-1/3">
+                <VueUiSkeleton :config="skeleton"/>
+            </div>
+        </div>
+        <div v-else class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px] mb-12">
             <div v-for="skeleton in skeletons.slice(3, skeletons.length)" class="max-w-1/3">
                 <VueUiSkeleton :config="skeleton"/>
             </div>
