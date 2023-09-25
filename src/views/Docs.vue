@@ -73,8 +73,8 @@ function toggleMenu(state) {
 <pre>
 <code class="text-gray-500 text-xl">
 &lt;NameOfComponent
-    <span class="text-app-green">:dataset</span>="dataset"
-    <span class="text-app-blue">:config</span>="config"
+    <span class="text-black dark:text-app-green">:dataset</span>="dataset"
+    <span class="text-black dark:text-app-blue">:config</span>="config"
 &lt;/NameOfComponent&gt;
 </code>
 </pre>
