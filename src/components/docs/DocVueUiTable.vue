@@ -1,8 +1,23 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch, nextTick } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
+import { useMainStore } from "../../stores";
+
+const store = useMainStore();
+const tableKey = ref(0);
+
+
+watch(() => store.isDarkMode, (val) => {
+    nextTick(() => {
+        tableKey.value += 1;
+    })
+});
+
+const isDarkMode = computed(() => {
+    return store.isDarkMode;
+})
 
 const body = computed(() => {
         const categories = ["Accueil", "Magasin", "Caisse", "SAV"];
@@ -374,8 +389,6 @@ function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
 }
 
-const tableKey = ref(0);
-
 function updateTable() {
     tableKey.value += 1;
 }
@@ -392,6 +405,7 @@ function copyToClipboard(conf) {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    store.copy();
 }
 
 </script>

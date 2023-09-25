@@ -1,8 +1,23 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed, watch, nextTick } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
+import { useMainStore } from "../../stores";
+
+const store = useMainStore();
+const step = ref(0)
+
+
+watch(() => store.isDarkMode, (val) => {
+    nextTick(() => {
+        step.value += 1;
+    })
+});
+
+const isDarkMode = computed(() => {
+    return store.isDarkMode;
+})
 
 const postConfig = ref({
     mode: "post",
@@ -123,7 +138,7 @@ const downloadConfig = ref({
 
   const pic = ref("");
 
-  const step = ref(0)
+
 
   function clearPic() {
     pic.value = "";
@@ -170,6 +185,7 @@ const downloadConfig = ref({
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    store.copy();
 }
 
 function copyDefaultConf(conf) {
@@ -184,6 +200,7 @@ function copyDefaultConf(conf) {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    store.copy();
 }
 
 </script>

@@ -432,6 +432,7 @@ function copyToClipboard(conf) {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    store.copy();
 }
 
 const isFixed = ref(false);

@@ -1,8 +1,23 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed, watch, nextTick } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
+import { useMainStore } from "../../stores";
+
+const store = useMainStore();
+const key = ref(0);
+
+
+watch(() => store.isDarkMode, (val) => {
+    nextTick(() => {
+        key.value += 1;
+    })
+});
+
+const isDarkMode = computed(() => {
+    return store.isDarkMode;
+})
 
 const config = ref({
   type: "line",
@@ -142,7 +157,6 @@ function resetDefault() {
     forceChartUpdate();
 }
 
-const key = ref(0);
 function forceChartUpdate() {
     key.value += 1;
 }
@@ -164,6 +178,7 @@ function copyToClipboard(conf) {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    store.copy();
 }
 
 const isFixed = ref(false);

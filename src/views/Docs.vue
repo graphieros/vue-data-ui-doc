@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from "vue";
+import {ref, computed} from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useRouter } from "vue-router";
 import AppSkeletons from "../components/AppSkeletons.vue";
@@ -22,7 +22,13 @@ import DocVueUiScatter from "../components/docs/DocVueUiScatter.vue";
 import DocVueUiCandlestick from "../components/docs/DocVueUiCandlestick.vue";
 import DocVueUiAgePyramid from "../components/docs/DocVueUiAgePyramid.vue";
 
-import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon } from "vue-tabler-icons";
+import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon } from "vue-tabler-icons";
+
+import { useMainStore } from "../stores";
+
+const store = useMainStore();
+
+const isCopy = computed(() => store.isCopy);
 
 const router = useRouter();
 const isOpen = ref(window.innerWidth > 768);
@@ -34,6 +40,9 @@ function toggleMenu(state) {
 </script>
 
 <template>
+    <div v-if="isCopy" class="animate-pulse origin-center z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80px] w-[80px] flex place-items-center place-content-center border-2 border-gray-400 dark:border-app-green dark:bg-black rounded-full bg-white">
+        <CheckIcon size="42" class="dark:text-app-green"/>
+    </div>
     <SideMenu @toggle="toggleMenu"/>
     <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden`">
         <div :class="`${isOpen ? 'xl:w-5/6' : ''}`">
