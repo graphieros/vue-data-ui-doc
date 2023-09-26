@@ -44,8 +44,23 @@ onMounted(() => {
             isOpen.value = false;
         }
     });
-    store.isDarkMode = localStorage.theme === "dark";
+    if (localStorage.theme) {
+        store.isDarkMode = localStorage.theme === "dark";
+    } else {
+        if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            console.log('here')
+            document.documentElement.classList.add('dark');
+            store.isDarkMode = true;
+            localStorage.setItem("theme", "dark")
+        } else {
+            store.isDarkMode = false;
+            localStorage.setItem("theme", "light")
+        }
+    }
 });
+
+const isDarkMode = computed(() => store.isDarkMode);
+
 </script>
 
 <template>
@@ -71,7 +86,7 @@ onMounted(() => {
                     <span :class="`${isSelected('/about') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">About</span>
                 </router-link>
                 <button @click="changeTheme" id="themeToggle">
-                    <BrightnessUpIcon v-if="store.isDarkMode"/>
+                    <BrightnessUpIcon v-if="isDarkMode"/>
                     <MoonIcon v-else/>
                 </button>
             </nav>

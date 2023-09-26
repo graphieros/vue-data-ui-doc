@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
+import { BrightnessUpIcon, MoonIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 
@@ -42,8 +43,9 @@ const isDarkMode = computed(() => store.isDarkMode);
             <span>GitHub repo</span>
           </button>
         </a>
-        <button @click="changeTheme" class="dark:text-gray-400 hover:underline">
-          {{ isDarkMode ? 'Switch to light mode' : 'Switch to dark mode' }}
+        <button @click="changeTheme" class="dark:text-gray-400 hover:underline flex flex-row gap-2 place-items-center">
+          <BrightnessUpIcon v-if="store.isDarkMode"/>
+                    <MoonIcon v-else/>{{ isDarkMode ? 'Switch to light mode' : 'Switch to dark mode' }}
         </button>
     </div>
     </div>
