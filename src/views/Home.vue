@@ -1,5 +1,24 @@
 <script setup>
+import { computed } from "vue";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
+import { useMainStore } from "../stores";
+
+const store = useMainStore();
+
+function changeTheme() {
+    if (localStorage.theme === "dark"){
+        localStorage.theme = "light";
+        document.documentElement.classList.remove('dark');
+        store.isDarkMode = false;
+        
+    } else {
+        localStorage.theme = "dark";
+        document.documentElement.classList.add('dark');
+        store.isDarkMode = true;
+    }
+}
+
+const isDarkMode = computed(() => store.isDarkMode);
 
 </script>
 
@@ -23,6 +42,9 @@ import { BrandGithubFilledIcon } from "vue-tabler-icons";
             <span>GitHub repo</span>
           </button>
         </a>
+        <button @click="changeTheme" class="dark:text-gray-400 hover:underline">
+          {{ isDarkMode ? 'Switch to light mode' : 'Switch to dark mode' }}
+        </button>
     </div>
     </div>
 </template>
