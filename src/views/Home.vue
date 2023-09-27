@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import { BrightnessUpIcon, MoonIcon } from "vue-tabler-icons";
+import Logo from "../components/docs/Logo.vue";
 
 const store = useMainStore();
 
@@ -26,7 +27,12 @@ const isDarkMode = computed(() => store.isDarkMode);
 <template>
     <div class="mx-auto w-5/6">
     <div class="mx-auto flex flex-col gap-6 w-full h-[calc(100svh_-_49px)] place-items-center place-content-center">
+    <div class="relative">
       <img src="../assets/logo.png" alt="vue data ui logo" class="h-[200px] mx-auto">
+      <!-- <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
+        <Logo/>
+      </div> -->
+    </div>
       <h1 class="mx-auto text-[48px] md:text-[64px] font-satoshi-bold"><span class="text-app-green">Vue</span> <span class="text-app-blue">Data UI</span></h1>
       <p class="mx-auto text-xl text-black dark:text-gray-500 text-center">A user-empowering data visualization Vue components library</p>
       <div class="flex flex-row gap-6 mt-6">
