@@ -1,6 +1,20 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watch, nextTick } from "vue";
 import SideMenu from '../components/SideMenu.vue';
+import { useMainStore } from "../stores";
+
+
+const store = useMainStore();
+const step = ref(0);
+watch(() => store.isDarkMode, (val) => {
+    nextTick(() => {
+        step.value += 1;
+    })
+});
+
+const isDarkMode = computed(() => {
+    return store.isDarkMode;
+})
 
 const isOpen = ref(window.innerWidth > 768);
 
@@ -23,7 +37,6 @@ const isError = ref(false);
 const dates = ref([]);
 const versionsList = ref([]);
 const versionsData = ref([]);
-const step = ref(0);
 const isLoadingLine = ref(false);
 const isLoadingBar = ref(false);
 
@@ -491,6 +504,52 @@ const verticalConfig = ref({
 
 const sparklineConfig = ref({
   style: {
+    backgroundColor: "#F3F4F6",
+    fontFamily: "inherit",
+    line: {
+      color: "#42d392",
+      strokeWidth: 3
+    },
+    zeroLine: {
+      color: "#505050",
+      strokeWidth: 1
+    },
+    plot: {
+      show: true,
+      radius: 4,
+      stroke: "#FFFFFF",
+      strokeWidth: 1
+    },
+    verticalIndicator: {
+      show: true,
+      strokeWidth: 1.5
+    },
+    dataLabel: {
+      position: "left",
+      fontSize: 48,
+      bold: true,
+      color: "#1A1A1A",
+      roundingValue: 1,
+      valueType: "latest"
+    },
+    title: {
+      show: true,
+      textAlign: "left",
+      color: "#1A1A1A",
+      fontSize: 16,
+      bold: true,
+      text: "Daily downloads"
+    },
+    area: {
+      show: true,
+      useGradient: true,
+      opacity: 30,
+      color: "#42d392"
+    }
+  }
+});
+const darkModeSparklineConfig = ref({
+  style: {
     backgroundColor: "#1A1A1A",
     fontFamily: "inherit",
     line: {
@@ -547,7 +606,7 @@ const sparklineConfig = ref({
         </div>
             <div class="max-w-[800px] mx-auto">
                 <div class="max-w-[500px] mx-auto my-6">
-                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="data" :config="sparklineConfig"/>
+                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="data" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig"/>
                 </div>
                 <div class="w-full max-h-[500px] overflow-y-auto">
                     <ul>
