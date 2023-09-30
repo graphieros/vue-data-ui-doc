@@ -22,6 +22,115 @@ const isDarkMode = computed(() => {
 const config = ref({
   type: "line",
   style: {
+    backgroundColor: "#F3F4F6",
+    color: "#CCCCCC",
+    maxHeight: 500,
+    animated: true,
+    line: {
+      axis: {
+        show: true,
+        color: "#C4C4C4",
+        strokeWidth: 0.5
+      },
+      path: {
+        color: "#C4C4C4",
+        strokeWidth: 1,
+        showPlots: true
+      }
+    },
+    bar: {
+      axis: {
+        show: true,
+        color: "#C4C4C4",
+        strokeWidth: 0.5
+      },
+      borderRadius: 0.5,
+      color: "#C4C4C4",
+      barWidth: 9
+    },
+    chestnut: {
+      color: "#C4C4C4"
+    },
+    donut: {
+      color: "#C4C4C4",
+      strokeWidth: 64
+    },
+    onion: {
+      color: "#C4C4C4"
+    },
+    gauge: {
+      color: "#C4C4C4"
+    },
+    quadrant: {
+      grid: {
+        color: "#C4C4C4",
+        strokeWidth: 0.5
+      },
+      plots: {
+        radius: 1.5,
+        color: "#C4C4C4"
+      }
+    },
+    radar: {
+      grid: {
+        color: "#C4C4C4",
+        strokeWidth: 0.5
+      },
+      shapes: {
+        color: "#C4C4C4"
+      }
+    },
+    waffle: {
+      color: "#C4C4C4"
+    },
+    table: {
+      th: {
+        color: "#C4C4C4"
+      },
+      td: {
+        color: "#C4C4C4",
+        strokeWidth: 0.5
+      }
+    },
+    rating: {
+      color: "#C4C4C4",
+      filled: true,
+      strokeWidth: 1,
+      maxWidth: 200
+    },
+    verticalBar: {
+      axis: {
+        show: true,
+        color: "#C4C4C4",
+        strokeWidth: 0.5
+      },
+      borderRadius: 0.5,
+      color: "#C4C4C4"
+    },
+    heatmap: {
+      cellsX: 26,
+      cellsY: 7,
+      color: "#C4C4C4"
+    },
+    candlesticks: {
+        axis: {
+            show: true,
+            color:"#C4C4C4",
+            strokeWidth: 0.5
+        },
+        candle: {
+            color:"#C4C4C4",
+            strokeWidth: 1
+        }
+    },
+    pyramid: {
+      color: "#C4C4C4"
+    }
+  }
+});
+const darkModeConfig = ref({
+  type: "line",
+  style: {
     backgroundColor: "#1A1A1A",
     color: "#CCCCCC",
     maxHeight: 500,
@@ -150,10 +259,13 @@ const options = ref([
 ]);
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
+const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value)));
 
 function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
+    mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
     mutableConfig.value.type = type.value;
+    mutableConfigDarkMode.value.type = type.value;
     forceChartUpdate();
 }
 
@@ -202,19 +314,19 @@ function fixChart() {
                 </option>
             </select>
         </div>
-        <div :class="`transition-all w-3/4 max-w-[600px] mx-auto overflow-visible pb-16 ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-white bg-[rgb(26,26,26)]' : ''}`">
-          <button @click="fixChart" class="p-2 text-app-green rounded-full hover:bg-gray-700">
+        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-3/4'}`">
+          <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
                 <PinIcon v-else/>
             </button>
             <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">RESET</button>
-                <button @click="copyToClipboard(config)" class="flex gap-1 text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
+                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">RESET</button>
+                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
             </div>
-            <VueUiSkeleton :config="mutableConfig" :key="key"/>
+            <VueUiSkeleton :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-colors" @click="copyToClipboard(mainConfig.vue_ui_skeleton)"><CopyIcon/> Copy default config as JSON</button>
+            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black hover:shadow-xl font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_skeleton)"><CopyIcon/> Copy default config as JSON</button>
         </div>
         <Box :activeTab="1">
             <template v-slot:tab0>
@@ -222,116 +334,116 @@ function fixChart() {
             </template>
             <template v-slot:tab1>
               <div class="flex gap-2">
-                        <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4">RESET</button>
-                        <button @click="copyToClipboard(mutableConfig)" class="flex gap-1 text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
-                    </div>
+                    <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">RESET</button>
+                    <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> Copy this config as JSON</button>
+                </div>
 <pre>
 <code>
-const <span class="text-app-blue">config</span> = {
+const <span class="text-black dark:text-app-blue">config</span> = {
   type: "{{ type }}",
   style: {
-    backgroundColor: <input type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
+    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
     maxHeight: 500,
-    animated: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.animated" @hange="forceChartUpdate()">, (default: true)
+    animated: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.animated" @hange="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.animated" @hange="forceChartUpdate()">, (default: true)
     line: {
       axis: {
-        show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.line.axis.show">, (default: true)
-        color: <input type="color" v-model="mutableConfig.style.line.axis.color">, (default: "#e1e5e8")
-        strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.line.axis.strokeWidth">, (default: 0.5)
+        show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.line.axis.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.line.axis.show">, (default: true)
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.line.axis.color"><input v-else type="color" v-model="mutableConfig.style.line.axis.color">, (default: "#e1e5e8")
+        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.line.axis.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.line.axis.strokeWidth">, (default: 0.5)
       },
       path: {
-        color: <input type="color" v-model="mutableConfig.style.line.path.color">, (default: "#e1e5e8")
-        strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.line.path.strokeWidth">, (default: 1)
-        showPlots: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.line.path.showPlots">, (default: true)
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.line.path.color"><input v-else type="color" v-model="mutableConfig.style.line.path.color">, (default: "#e1e5e8")
+        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.line.path.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.line.path.strokeWidth">, (default: 1)
+        showPlots: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.line.path.showPlots"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.line.path.showPlots">, (default: true)
       }
     },
     bar: {
       axis: {
-        show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.bar.axis.show">, (default: true)
-        color: <input type="color" v-model="mutableConfig.style.bar.axis.color">, (default: "#e1e5e8")
-        strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.bar.axis.strokeWidth">, (default: 0.5)
+        show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.bar.axis.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.bar.axis.show">, (default: true)
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.bar.axis.color"><input v-else type="color" v-model="mutableConfig.style.bar.axis.color">, (default: "#e1e5e8")
+        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.bar.axis.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.bar.axis.strokeWidth">, (default: 0.5)
       },
-      borderRadius: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.style.bar.borderRadius">, (default: 0.5)
-      color: <input type="color" v-model="mutableConfig.style.bar.color">, (default: "#e1e5e8")
-      barWidth: <input type="number" min="1" max="11" step="0.1" v-model="mutableConfig.style.bar.barWidth"> 9
+      borderRadius: <input v-if="isDarkMode" type="number" min="0" max="5" step="0.1" v-model="mutableConfigDarkMode.style.bar.borderRadius"><input v-else type="number" min="0" max="5" step="0.1" v-model="mutableConfig.style.bar.borderRadius">, (default: 0.5)
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.bar.color"><input v-else type="color" v-model="mutableConfig.style.bar.color">, (default: "#e1e5e8")
+      barWidth: <input v-if="isDarkMode" type="number" min="1" max="11" step="0.1" v-model="mutableConfigDarkMode.style.bar.barWidth"><input v-else type="number" min="1" max="11" step="0.1" v-model="mutableConfig.style.bar.barWidth">, (default: 9)
     },
     chestnut: {
-      color: <input type="color" v-model="mutableConfig.style.chestnut.color">, (default: "#e1e5e8")
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chestnut.color"><input v-else type="color" v-model="mutableConfig.style.chestnut.color">, (default: "#e1e5e8")
     },
     donut: {
-      color: <input type="color" v-model="mutableConfig.style.donut.color">, (default: "#e1e5e8")
-      strokeWidth: <input type="number" min="10" max="200" v-model="mutableConfig.style.donut.strokeWidth">, (default: 64)
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.donut.color"><input v-else type="color" v-model="mutableConfig.style.donut.color">, (default: "#e1e5e8")
+      strokeWidth: <input v-if="isDarkMode" type="number" min="10" max="200" v-model="mutableConfigDarkMode.style.donut.strokeWidth"><input v-else type="number" min="10" max="200" v-model="mutableConfig.style.donut.strokeWidth">, (default: 64)
     },
     onion: {
-      color: <input type="color" v-model="mutableConfig.style.onion.color">, (default: "#E1E5E8")
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.onion.color"><input v-else type="color" v-model="mutableConfig.style.onion.color">, (default: "#E1E5E8")
     },
     gauge: {
-      color: <input type="color" v-model="mutableConfig.style.gauge.color">, (default: "#E1E5E8")
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.gauge.color"><input v-else type="color" v-model="mutableConfig.style.gauge.color">, (default: "#E1E5E8")
     },
     quadrant: {
       grid: {
-        color: <input type="color" v-model="mutableConfig.style.quadrant.grid.color">, (default: "#E1E5E8")
-        strokeWidth: <input type="number" min="0" max="20" step="0.1" v-model="mutableConfig.style.quadrant.grid.strokeWidth">, (default: 0.5)
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.quadrant.grid.color"><input v-else type="color" v-model="mutableConfig.style.quadrant.grid.color">, (default: "#E1E5E8")
+        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.1" v-model="mutableConfigDarkMode.style.quadrant.grid.strokeWidth"><input v-else type="number" min="0" max="20" step="0.1" v-model="mutableConfig.style.quadrant.grid.strokeWidth">, (default: 0.5)
       },
       plots: {
-        radius: <input type="number" min="0" max="20" step="0.1" v-model="mutableConfig.style.quadrant.plots.radius">, (default: 1.5)
-        color: <input type="color" v-model="mutableConfig.style.quadrant.plots.color">, (default: "#E1E5E8")
+        radius: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.1" v-model="mutableConfigDarkMode.style.quadrant.plots.radius"><input v-else type="number" min="0" max="20" step="0.1" v-model="mutableConfig.style.quadrant.plots.radius">, (default: 1.5)
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.quadrant.plots.color"><input v-else type="color" v-model="mutableConfig.style.quadrant.plots.color">, (default: "#E1E5E8")
       }
     },
     radar: {
       grid: {
-        color: <input type="color" v-model="mutableConfig.style.radar.grid.color">, (default: "#E1E5E8")
-        strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.radar.grid.strokeWidth">, (default: 0.5)
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.radar.grid.color"><input v-else type="color" v-model="mutableConfig.style.radar.grid.color">, (default: "#E1E5E8")
+        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.radar.grid.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.radar.grid.strokeWidth">, (default: 0.5)
       },
       shapes: {
-        color: <input type="color" v-model="mutableConfig.style.radar.shapes.color">, (default: "#E1E5E8")
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.radar.shapes.color"><input v-else type="color" v-model="mutableConfig.style.radar.shapes.color">, (default: "#E1E5E8")
       }
     },
     waffle: {
-      color: <input type="color" v-model="mutableConfig.style.waffle.color">, (default: "#E1E5E8")
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.waffle.color"><input v-else type="color" v-model="mutableConfig.style.waffle.color">, (default: "#E1E5E8")
     },
     table: {
       th: {
-        color: <input type="color" v-model="mutableConfig.style.table.th.color">, (default: "#E1E5E8")
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.table.th.color"><input v-else type="color" v-model="mutableConfig.style.table.th.color">, (default: "#E1E5E8")
       },
       td: {
-        color: <input type="color" v-model="mutableConfig.style.table.td.color">, (default: "#E1E5E8"),
-        strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.table.td.strokeWidth">, (default: 0.5)
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.table.td.color"><input v-else type="color" v-model="mutableConfig.style.table.td.color">, (default: "#E1E5E8"),
+        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.table.td.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.table.td.strokeWidth">, (default: 0.5)
       }
     },
     rating: {
-      color: <input type="color" v-model="mutableConfig.style.rating.color">, (default: "#E1E5E8")
-      filled: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.filled">, (default: true)
-      strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.rating.strokeWidth">, (default: 1)
-      maxWidth: <input type="number" min="100" v-model="mutableConfig.style.rating.maxWidth">, (default: 200)
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rating.color"><input v-else type="color" v-model="mutableConfig.style.rating.color">, (default: "#E1E5E8")
+      filled: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.rating.filled"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.filled">, (default: true)
+      strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.rating.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.rating.strokeWidth">, (default: 1)
+      maxWidth: <input v-if="isDarkMode" type="number" min="100" v-model="mutableConfigDarkMode.style.rating.maxWidth"><input v-else type="number" min="100" v-model="mutableConfig.style.rating.maxWidth">, (default: 200)
     },
     verticalBar: {
       axis: {
-        show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.verticalBar.axis.show">, (default: true)
-        color: <input type="color" v-model="mutableConfig.style.verticalBar.axis.color">, (default: "#e1e5e8")
-        strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.verticalBar.axis.strokeWidth">, (default: 0.5)
+        show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.verticalBar.axis.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.verticalBar.axis.show">, (default: true)
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.verticalBar.axis.color"><input v-else type="color" v-model="mutableConfig.style.verticalBar.axis.color">, (default: "#e1e5e8")
+        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.verticalBar.axis.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.verticalBar.axis.strokeWidth">, (default: 0.5)
       },
-      borderRadius: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.style.verticalBar.borderRadius">, (default: 0.5)
-      color: <input type="color" v-model="mutableConfig.style.verticalBar.color">, (default: "#e1e5e8")
+      borderRadius: <input v-if="isDarkMode" type="number" min="0" max="5" step="0.1" v-model="mutableConfigDarkMode.style.verticalBar.borderRadius"><input v-else type="number" min="0" max="5" step="0.1" v-model="mutableConfig.style.verticalBar.borderRadius">, (default: 0.5)
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.verticalBar.color"><input v-else type="color" v-model="mutableConfig.style.verticalBar.color">, (default: "#e1e5e8")
     },
     heatmap: {
       cellsX: 26,
       cellsY: 7,
-      color: <input type="color" v-model="mutableConfig.style.heatmap.color">, (default: "#e1e5e8")
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.heatmap.color"><input v-else type="color" v-model="mutableConfig.style.heatmap.color">, (default: "#e1e5e8")
     },
     candlesticks: {
         axis: {
-            show: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.candlesticks.axis.show">, (default: true)
-            color: <input type="color" v-model="mutableConfig.style.candlesticks.axis.color">, (default: "#e1e5e8")
-            strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.candlesticks.axis.strokeWidth">, (default: 0.5)
+            show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.candlesticks.axis.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.candlesticks.axis.show">, (default: true)
+            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.candlesticks.axis.color"><input v-else type="color" v-model="mutableConfig.style.candlesticks.axis.color">, (default: "#e1e5e8")
+            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.candlesticks.axis.strokeWidth"><input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.candlesticks.axis.strokeWidth">, (default: 0.5)
         },
         candle: {
-            color: <input type="color" v-model="mutableConfig.style.candlesticks.candle.color">, (default: "#e1e5e8")
-            strokeWidth: <input type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.candlesticks.candle.strokeWidth">, (default: 0.5)
+            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.candlesticks.candle.color"><input v-else type="color" v-model="mutableConfig.style.candlesticks.candle.color">, (default: "#e1e5e8")
+            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.candlesticks.candle.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.candlesticks.candle.strokeWidth">, (default: 0.5)
         }
     },
     pyramid: {
-      color: <input type="color" v-model="mutableConfig.style.pyramid.color">, (default: "#e1e5e8")
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.pyramid.color"><input v-else type="color" v-model="mutableConfig.style.pyramid.color">, (default: "#e1e5e8")
     }
   }
 }
