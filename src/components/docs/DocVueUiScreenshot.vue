@@ -24,6 +24,61 @@ const postConfig = ref({
     quality: 1,
     style: {
       info: {
+        background: "#F3F4F6",
+        color: "#1A1A1A",
+        fontSize: 14,
+        bold: true,
+        minWidth: 300,
+        padding: 12,
+        borderRadius: 4,
+        boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
+        fontFamily: "inherit",
+        border: "1px solid rgb(80,80,80)",
+        top: -100,
+      },
+      captureButton: {
+        background: "#F3F4F6",
+        color: "#1A1A1A",
+        fontSize: 14,
+        borderRadius: 4,
+        border: "1px solid #1A1A1A",
+        minHeight: 40,
+        padding: "8px 12px",
+        boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
+        bold: true
+      },
+      cancelButton: {
+        background: "#F3F4F6",
+        color: "#1A1A1A",
+        size: 28,
+        borderRadius: 14,
+        top: -14,
+        right: -14,
+        border: "none"
+      },
+      captureArea: {
+        initialHeight: 200,
+        initialWidth: 200,
+        border: "dashed 2px #CCCCCC",
+        background: "radial-gradient(transparent, rgba(66,211,146,0.2))"
+      },
+      handles: {
+        size: 40,
+        background: "#F3F4F6",
+        border: "4px solid #1A1A1A",
+        borderRadius: 4
+      }
+    },
+    translations: {
+      info: "Resize or move and click to capture",
+      captureButton: "Capture"
+    }
+  });
+const darkModePostConfig = ref({
+    mode: "post",
+    quality: 1,
+    style: {
+      info: {
         background: "#1A1A1A",
         color: "#CCCCCC",
         fontSize: 14,
@@ -130,9 +185,66 @@ const downloadConfig = ref({
       captureButton: "Capture"
     }
   });
+const darkModeDownloadConfig = ref({
+    mode: "download",
+    quality: 1,
+    style: {
+      info: {
+        background: "#1A1A1A",
+        color: "#CCCCCC",
+        fontSize: 14,
+        bold: true,
+        minWidth: 300,
+        padding: 12,
+        borderRadius: 4,
+        boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
+        fontFamily: "inherit",
+        border: "1px solid rgb(80,80,80)",
+        top: -100,
+      },
+      captureButton: {
+        background: "#1A1A1A",
+        color: "#CCCCCC",
+        fontSize: 14,
+        borderRadius: 4,
+        border: "1px solid rgb(66,211,146)",
+        minHeight: 40,
+        padding: "8px 12px",
+        boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
+        bold: true
+      },
+      cancelButton: {
+        background: "rgb(66,211,146)",
+        color: "#1A1A1A",
+        size: 28,
+        borderRadius: 14,
+        top: -14,
+        right: -14,
+        border: "none"
+      },
+      captureArea: {
+        initialHeight: 200,
+        initialWidth: 200,
+        border: "dashed 2px #CCCCCC",
+        background: "radial-gradient(transparent, rgba(66,211,146,0.2))"
+      },
+      handles: {
+        size: 40,
+        background: "#1A1A1A",
+        border: "4px solid #CCCCCC",
+        borderRadius: 4
+      }
+    },
+    translations: {
+      info: "Resize or move and click to capture",
+      captureButton: "Capture"
+    }
+  });
 
   const mutablePostConfig = ref(JSON.parse(JSON.stringify(postConfig.value)));
   const mutableDownloadConfig = ref(JSON.parse(JSON.stringify(downloadConfig.value)));
+  const mutablePostConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModePostConfig.value)));
+  const mutableDownloadConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeDownloadConfig.value)));
 
   const mode = ref("post");
 
@@ -165,6 +277,8 @@ const downloadConfig = ref({
   function resetDefault() {
     mutablePostConfig.value = JSON.parse(JSON.stringify(postConfig.value));
     mutableDownloadConfig.value = JSON.parse(JSON.stringify(downloadConfig.value));
+    mutablePostConfigDarkMode.value = JSON.parse(JSON.stringify(darkModePostConfig.value));
+    mutableDownloadConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeDownloadConfig.value));
     step.value += 1;
     screenshot.value.close();
 }
@@ -176,9 +290,17 @@ const downloadConfig = ref({
     selBox.style.top = '0';
     selBox.style.opacity = '0';
     if (mode.value === "post") {
-        selBox.value = JSON.stringify(mutablePostConfig.value);
+        if(isDarkMode.value) {
+            selBox.value = JSON.stringify(mutablePostConfigDarkMode.value);
+        } else {
+            selBox.value = JSON.stringify(mutablePostConfig.value);
+        }
     } else if (mode.value === 'download') {
-        selBox.value = JSON.stringify(mutableDownloadConfig.value);
+        if(isDarkMode.value) {
+            selBox.value = JSON.stringify(mutableDownloadConfigDarkMode.value);
+        } else {
+            selBox.value = JSON.stringify(mutableDownloadConfig.value);
+        }
     }
     document.body.appendChild(selBox);
     selBox.focus();
@@ -222,7 +344,7 @@ function copyDefaultConf(conf) {
                     <label for="ss-download">download</label>
                 </div>
             </div>
-            <button class="rounded-md border border-app-green py-2 px-6 hover:bg-gray-800" @click="openScreenshot">try it</button>
+            <button class="rounded-md border border-app-green py-2 px-6 hover:bg-gray-200 dark:hover:bg-gray-800" @click="openScreenshot">try it</button>
             <div v-if="mode === 'post'" class="border border-dashed border-gray-500 rounded-md p-6">
                 <div v-if="!pic" class="text-gray-500">Your screenshot will appear here</div>
                 <img v-if="pic" :src="pic" class="w-full border border-gray-700">
@@ -236,7 +358,7 @@ function copyDefaultConf(conf) {
             </div>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-colors" @click="copyDefaultConf(mainConfig.vue_ui_screenshot)"><CopyIcon/> Copy default config as JSON</button>
+            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green hover:shadow-xl transition-all" @click="copyDefaultConf(mainConfig.vue_ui_screenshot)"><CopyIcon/> Copy default config as JSON</button>
         </div>
         <Box showEmits :activeTab="1">
             <template v-slot:tab0>
@@ -244,121 +366,121 @@ function copyDefaultConf(conf) {
             </template>
             <template v-slot:tab1>
                 <div class="flex gap-2">
-                        <button @click="resetDefault" class="text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4">RESET</button>
-                        <button @click="copyToClipboard" class="flex gap-1 text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
+                        <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">RESET</button>
+                        <button @click="copyToClipboard" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
                     </div>
-                <div class="text-app-green hover:underline mt-4 cursor-pointer" role="button" @click="reopen">Refresh VueUiScreenshot to view your changes</div>
+                <div class="text-black dark:text-app-green hover:underline mt-4 cursor-pointer" role="button" @click="reopen">Refresh VueUiScreenshot to view your changes</div>
                 <div class="overflow-x-auto">
 <pre>
 <code v-if="mode === 'post'">
-const <span class="text-app-blue">config</span> = {
+const <span class="text-black dark:text-app-blue">config</span> = {
     mode: "post", (default:"download")
-    quality: <input type="number" min="0.1" max="3" step="0.1" v-model="mutablePostConfig.quality">, (default: 1) <span class="text-app-green">// don't set it up too high if you care about image size</span>
+    quality: <input v-if="isDarkMode" type="number" min="0.1" max="3" step="0.1" v-model="mutablePostConfigDarkMode.quality"><input v-else type="number" min="0.1" max="3" step="0.1" v-model="mutablePostConfig.quality">, (default: 1) <span class="text-gray-600 dark:text-app-green">// don't set it up too high if you care about image size</span>
     style: {
         info: {
-            background: <input type="color" v-model="mutablePostConfig.style.info.background">, (default: "#FFFFFF")
-            bold: <input type="checkbox" class="accent-app-blue" v-model="mutablePostConfig.style.info.bold">, (default: true)
-            border: <input type="text" v-model="mutablePostConfig.style.info.border">, (default: "none")
-            borderRadius: <input type="number" min="0" max="100" v-model="mutablePostConfig.style.info.borderRadius">, (default: 4)
-            boxShadow: <input type="text" v-model="mutablePostConfig.style.info.boxShadow">, (default: "0 6px 12px -6px rgba(0,0,0,0.2)")
-            color: <input type="color" v-model="mutablePostConfig.style.info.color">, (default: "#2D353C")
-            fontFamily: <input type="text" v-model="mutablePostConfig.style.info.fontFamily">, (default: "inherit")
-            fontSize: <input type="number" min="6" max="30" v-model="mutablePostConfig.style.info.fontSize">, (default: 14)
-            minWidth: <input type="number" min="100" v-model="mutablePostConfig.style.info.minWidth">, (default: 300)
-            padding: <input type="number" min="0" max="48" v-model="mutablePostConfig.style.info.padding">, (default: 12)
-            top: <input type="number" v-model="mutablePostConfig.style.info.top">, (default: -100)
+            background: <input v-if="isDarkMode" type="color" v-model="mutablePostConfigDarkMode.style.info.background"><input v-else type="color" v-model="mutablePostConfig.style.info.background">, (default: "#FFFFFF")
+            bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutablePostConfigDarkMode.style.info.bold"><input v-else type="checkbox" class="accent-app-blue" v-model="mutablePostConfig.style.info.bold">, (default: true)
+            border: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.style.info.border"><input v-else type="text" v-model="mutablePostConfig.style.info.border">, (default: "none")
+            borderRadius: <input v-if="isDarkMode" type="number" min="0" max="100" v-model="mutablePostConfigDarkMode.style.info.borderRadius"><input v-else type="number" min="0" max="100" v-model="mutablePostConfig.style.info.borderRadius">, (default: 4)
+            boxShadow: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.style.info.boxShadow"><input v-else type="text" v-model="mutablePostConfig.style.info.boxShadow">, (default: "0 6px 12px -6px rgba(0,0,0,0.2)")
+            color: <input v-if="isDarkMode" type="color" v-model="mutablePostConfigDarkMode.style.info.color"><input v-else type="color" v-model="mutablePostConfig.style.info.color">, (default: "#2D353C")
+            fontFamily: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.style.info.fontFamily"><input v-else type="text" v-model="mutablePostConfig.style.info.fontFamily">, (default: "inherit")
+            fontSize: <input v-if="isDarkMode" type="number" min="6" max="30" v-model="mutablePostConfigDarkMode.style.info.fontSize"><input v-else type="number" min="6" max="30" v-model="mutablePostConfig.style.info.fontSize">, (default: 14)
+            minWidth: <input v-if="isDarkMode" type="number" min="100" v-model="mutablePostConfigDarkMode.style.info.minWidth"><input v-else type="number" min="100" v-model="mutablePostConfig.style.info.minWidth">, (default: 300)
+            padding: <input v-if="isDarkMode" type="number" min="0" max="48" v-model="mutablePostConfigDarkMode.style.info.padding"><input v-else type="number" min="0" max="48" v-model="mutablePostConfig.style.info.padding">, (default: 12)
+            top: <input v-if="isDarkMode" type="number" v-model="mutablePostConfigDarkMode.style.info.top"><input v-else type="number" v-model="mutablePostConfig.style.info.top">, (default: -100)
         },
         captureButton: {
-            background: <input type="color" v-model="mutablePostConfig.style.captureButton.background">, (default: "#E1E5E8")
-            bold: <input type="checkbox" class="accent-app-blue" v-model="mutablePostConfig.style.captureButton.bold">, (default: true)
-            border: <input type="text" v-model="mutablePostConfig.style.captureButton.border">, (default: "none")
-            borderRadius: <input type="number" min="0" max="100" v-model="mutablePostConfig.style.captureButton.borderRadius">, (default: 4)
-            boxShadow: <input type="text" v-model="mutablePostConfig.style.captureButton.boxShadow">, (default: "0 6px 12px -6px rgba(0,0,0,0.2)")
-            color: <input type="color" v-model="mutablePostConfig.style.captureButton.color">, (default: "#2D353C")
-            fontSize: <input type="number" min="6" max="30" v-model="mutablePostConfig.style.captureButton.fontSize">, (default: 14)
-            minHeight: <input type="number" min="32" max="100" v-model="mutablePostConfig.style.captureButton.minHeight">, (default: 40)
-            padding: <input type="text" v-model="mutablePostConfig.style.captureButton.padding">, (default: "8px 12px")
+            background: <input v-if="isDarkMode" type="color" v-model="mutablePostConfigDarkMode.style.captureButton.background"><input v-else type="color" v-model="mutablePostConfig.style.captureButton.background">, (default: "#E1E5E8")
+            bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutablePostConfigDarkMode.style.captureButton.bold"><input v-else type="checkbox" class="accent-app-blue" v-model="mutablePostConfig.style.captureButton.bold">, (default: true)
+            border: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.style.captureButton.border"><input v-else type="text" v-model="mutablePostConfig.style.captureButton.border">, (default: "none")
+            borderRadius: <input v-if="isDarkMode" type="number" min="0" max="100" v-model="mutablePostConfigDarkMode.style.captureButton.borderRadius"><input v-else type="number" min="0" max="100" v-model="mutablePostConfig.style.captureButton.borderRadius">, (default: 4)
+            boxShadow: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.style.captureButton.boxShadow"><input v-else type="text" v-model="mutablePostConfig.style.captureButton.boxShadow">, (default: "0 6px 12px -6px rgba(0,0,0,0.2)")
+            color: <input v-if="isDarkMode" type="color" v-model="mutablePostConfigDarkMode.style.captureButton.color"><input v-else type="color" v-model="mutablePostConfig.style.captureButton.color">, (default: "#2D353C")
+            fontSize: <input v-if="isDarkMode" type="number" min="6" max="30" v-model="mutablePostConfigDarkMode.style.captureButton.fontSize"><input v-else type="number" min="6" max="30" v-model="mutablePostConfig.style.captureButton.fontSize">, (default: 14)
+            minHeight: <input v-if="isDarkMode" type="number" min="32" max="100" v-model="mutablePostConfigDarkMode.style.captureButton.minHeight"><input v-else type="number" min="32" max="100" v-model="mutablePostConfig.style.captureButton.minHeight">, (default: 40)
+            padding: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.style.captureButton.padding"><input v-else type="text" v-model="mutablePostConfig.style.captureButton.padding">, (default: "8px 12px")
         },
         cancelButton: {
-            background: <input type="color" v-model="mutablePostConfig.style.cancelButton.background">, (default: "#F17171")
-            border: <input type="text" v-model="mutablePostConfig.style.cancelButton.border">, (default: "none")
-            color: <input type="color" v-model="mutablePostConfig.style.cancelButton.color">, (default: "#FFFFFF")
-            right: <input type="number" v-model="mutablePostConfig.style.cancelButton.right">, (default: -14)
-            size: <input type="number" min="12" max="48" v-model="mutablePostConfig.style.cancelButton.size">, (default: 28)
-            top: <input type="number" v-model="mutablePostConfig.style.cancelButton.top">, (default: -14)
+            background: <input v-if="isDarkMode" type="color" v-model="mutablePostConfigDarkMode.style.cancelButton.background"><input v-else type="color" v-model="mutablePostConfig.style.cancelButton.background">, (default: "#F17171")
+            border: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.style.cancelButton.border"><input v-else type="text" v-model="mutablePostConfig.style.cancelButton.border">, (default: "none")
+            color: <input v-if="isDarkMode" type="color" v-model="mutablePostConfigDarkMode.style.cancelButton.color"><input v-else type="color" v-model="mutablePostConfig.style.cancelButton.color">, (default: "#FFFFFF")
+            right: <input v-if="isDarkMode" type="number" v-model="mutablePostConfigDarkMode.style.cancelButton.right"><input v-else type="number" v-model="mutablePostConfig.style.cancelButton.right">, (default: -14)
+            size: <input v-if="isDarkMode" type="number" min="12" max="48" v-model="mutablePostConfigDarkMode.style.cancelButton.size"><input v-else type="number" min="12" max="48" v-model="mutablePostConfig.style.cancelButton.size">, (default: 28)
+            top: <input v-if="isDarkMode" type="number" v-model="mutablePostConfigDarkMode.style.cancelButton.top"><input v-else type="number" v-model="mutablePostConfig.style.cancelButton.top">, (default: -14)
         },
         captureArea: {
-            background: <input type="text" v-model="mutablePostConfig.style.captureArea.background">, (default: "radial-gradient(transparent, rgba(0,0,0,0.15))")
-            border: <input type="text" v-model="mutablePostConfig.style.captureArea.border">, (default: "dashed 4px #2D353C")
-            initialHeight: <input type="number" min="64" v-model="mutablePostConfig.style.captureArea.initialHeight">, (default: 200)
-            initialWidth: <input type="number" min="64" v-model="mutablePostConfig.style.captureArea.initialWidth">, (default: 200)
+            background: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.style.captureArea.background"><input v-else type="text" v-model="mutablePostConfig.style.captureArea.background">, (default: "radial-gradient(transparent, rgba(0,0,0,0.15))")
+            border: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.style.captureArea.border"><input v-else type="text" v-model="mutablePostConfig.style.captureArea.border">, (default: "dashed 4px #2D353C")
+            initialHeight: <input v-if="isDarkMode" type="number" min="64" v-model="mutablePostConfigDarkMode.style.captureArea.initialHeight"><input v-else type="number" min="64" v-model="mutablePostConfig.style.captureArea.initialHeight">, (default: 200)
+            initialWidth: <input v-if="isDarkMode" type="number" min="64" v-model="mutablePostConfigDarkMode.style.captureArea.initialWidth"><input v-else type="number" min="64" v-model="mutablePostConfig.style.captureArea.initialWidth">, (default: 200)
         },
         handles: {
-            background: <input type="color" v-model="mutablePostConfig.style.handles.background">, (default: "#FFFFFF")
-            border: <input type="text" v-model="mutablePostConfig.style.handles.border">, (default: "4px solid #2D353C")
-            borderRadius: <input type="number" min="0" max="48" v-model="mutablePostConfig.style.handles.borderRadius">, (default: 4)
-            size: <input type="number" min="20" max="100" v-model="mutablePostConfig.style.handles.size">, (default: 40)
+            background: <input v-if="isDarkMode" type="color" v-model="mutablePostConfigDarkMode.style.handles.background"><input v-else type="color" v-model="mutablePostConfig.style.handles.background">, (default: "#FFFFFF")
+            border: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.style.handles.border"><input v-else type="text" v-model="mutablePostConfig.style.handles.border">, (default: "4px solid #2D353C")
+            borderRadius: <input v-if="isDarkMode" type="number" min="0" max="48" v-model="mutablePostConfigDarkMode.style.handles.borderRadius"><input v-else type="number" min="0" max="48" v-model="mutablePostConfig.style.handles.borderRadius">, (default: 4)
+            size: <input v-if="isDarkMode" type="number" min="20" max="100" v-model="mutablePostConfigDarkMode.style.handles.size"><input v-else type="number" min="20" max="100" v-model="mutablePostConfig.style.handles.size">, (default: 40)
         }
     },
     translations: {
-        captureButton: <input type="text" v-model="mutablePostConfig.translations.captureButton">, (default: "Capture")
-        info: <input type="text" v-model="mutablePostConfig.translations.info">, (default: "Resize or move and click to capture")
+        captureButton: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.translations.captureButton"><input v-else type="text" v-model="mutablePostConfig.translations.captureButton">, (default: "Capture")
+        info: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.translations.info"><input type="text" v-model="mutablePostConfig.translations.info">, (default: "Resize or move and click to capture")
     }
 }
 </code>
 <code v-if="mode === 'download'">
-const <span class="text-app-blue">config</span> = {
+const <span class="text-black dark:text-app-blue">config</span> = {
     mode: "post", (default:"download")
-    quality: <input type="number" min="0.1" max="3" step="0.1" v-model="mutableDownloadConfig.quality">, (default: 1) <span class="text-app-green">// don't set it up too high if you care about image size</span>
+    quality: <input type="number" min="0.1" max="3" step="0.1" v-model="mutableDownloadConfig.quality">, (default: 1) <span class="text-gray-600 dark:text-app-green">// don't set it up too high if you care about image size</span>
     style: {
         info: {
-            background: <input type="color" v-model="mutableDownloadConfig.style.info.background">, (default: "#FFFFFF")
-            bold: <input type="checkbox" class="accent-app-blue" v-model="mutableDownloadConfig.style.info.bold">, (default: true)
-            border: <input type="text" v-model="mutableDownloadConfig.style.info.border">, (default: "none")
+            background: <input v-if="isDarkMode" type="color" v-model="mutableDownloadConfigDarkMode.style.info.background"><input v-else type="color" v-model="mutableDownloadConfig.style.info.background">, (default: "#FFFFFF")
+            bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableDownloadConfigDarkMode.style.info.bold"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableDownloadConfig.style.info.bold">, (default: true)
+            border: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.style.info.border"><input v-else type="text" v-model="mutableDownloadConfig.style.info.border">, (default: "none")
             borderRadius: <input type="number" min="0" max="100" v-model="mutableDownloadConfig.style.info.borderRadius">, (default: 4)
-            boxShadow: <input type="text" v-model="mutableDownloadConfig.style.info.boxShadow">, (default: "0 6px 12px -6px rgba(0,0,0,0.2)")
-            color: <input type="color" v-model="mutableDownloadConfig.style.info.color">, (default: "#2D353C")
-            fontFamily: <input type="text" v-model="mutableDownloadConfig.style.info.fontFamily">, (default: "inherit")
-            fontSize: <input type="number" min="6" max="30" v-model="mutableDownloadConfig.style.info.fontSize">, (default: 14)
-            minWidth: <input type="number" min="100" v-model="mutableDownloadConfig.style.info.minWidth">, (default: 300)
-            padding: <input type="number" min="0" max="48" v-model="mutableDownloadConfig.style.info.padding">, (default: 12)
-            top: <input type="number" v-model="mutableDownloadConfig.style.info.top">, (default: -100)
+            boxShadow: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.style.info.boxShadow"><input v-else type="text" v-model="mutableDownloadConfig.style.info.boxShadow">, (default: "0 6px 12px -6px rgba(0,0,0,0.2)")
+            color: <input v-if="isDarkMode" type="color" v-model="mutableDownloadConfigDarkMode.style.info.color"><input v-else type="color" v-model="mutableDownloadConfig.style.info.color">, (default: "#2D353C")
+            fontFamily: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.style.info.fontFamily"><input v-else type="text" v-model="mutableDownloadConfig.style.info.fontFamily">, (default: "inherit")
+            fontSize: <input v-if="isDarkMode" type="number" min="6" max="30" v-model="mutableDownloadConfigDarkMode.style.info.fontSize"><input v-else type="number" min="6" max="30" v-model="mutableDownloadConfig.style.info.fontSize">, (default: 14)
+            minWidth: <input v-if="isDarkMode" type="number" min="100" v-model="mutableDownloadConfigDarkMode.style.info.minWidth"><input v-else type="number" min="100" v-model="mutableDownloadConfig.style.info.minWidth">, (default: 300)
+            padding: <input v-if="isDarkMode" type="number" min="0" max="48" v-model="mutableDownloadConfigDarkMode.style.info.padding"><input v-else type="number" min="0" max="48" v-model="mutableDownloadConfig.style.info.padding">, (default: 12)
+            top: <input v-if="isDarkMode" type="number" v-model="mutableDownloadConfigDarkMode.style.info.top"><input v-else type="number" v-model="mutableDownloadConfig.style.info.top">, (default: -100)
         },
         captureButton: {
-            background: <input type="color" v-model="mutableDownloadConfig.style.captureButton.background">, (default: "#E1E5E8")
-            bold: <input type="checkbox" class="accent-app-blue" v-model="mutableDownloadConfig.style.captureButton.bold">, (default: true)
-            border: <input type="text" v-model="mutableDownloadConfig.style.captureButton.border">, (default: "none")
-            borderRadius: <input type="number" min="0" max="100" v-model="mutableDownloadConfig.style.captureButton.borderRadius">, (default: 4)
-            boxShadow: <input type="text" v-model="mutableDownloadConfig.style.captureButton.boxShadow">, (default: "0 6px 12px -6px rgba(0,0,0,0.2)")
-            color: <input type="color" v-model="mutableDownloadConfig.style.captureButton.color">, (default: "#2D353C")
-            fontSize: <input type="number" min="6" max="30" v-model="mutableDownloadConfig.style.captureButton.fontSize">, (default: 14)
-            minHeight: <input type="number" min="32" max="100" v-model="mutableDownloadConfig.style.captureButton.minHeight">, (default: 40)
-            padding: <input type="text" v-model="mutableDownloadConfig.style.captureButton.padding">, (default: "8px 12px")
+            background: <input v-if="isDarkMode" type="color" v-model="mutableDownloadConfigDarkMode.style.captureButton.background"><input v-else type="color" v-model="mutableDownloadConfig.style.captureButton.background">, (default: "#E1E5E8")
+            bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableDownloadConfigDarkMode.style.captureButton.bold"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableDownloadConfig.style.captureButton.bold">, (default: true)
+            border: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.style.captureButton.border"><input v-else type="text" v-model="mutableDownloadConfig.style.captureButton.border">, (default: "none")
+            borderRadius: <input v-if="isDarkMode" type="number" min="0" max="100" v-model="mutableDownloadConfigDarkMode.style.captureButton.borderRadius"><input v-else type="number" min="0" max="100" v-model="mutableDownloadConfig.style.captureButton.borderRadius">, (default: 4)
+            boxShadow: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.style.captureButton.boxShadow"><input v-else type="text" v-model="mutableDownloadConfig.style.captureButton.boxShadow">, (default: "0 6px 12px -6px rgba(0,0,0,0.2)")
+            color: <input v-if="isDarkMode" type="color" v-model="mutableDownloadConfigDarkMode.style.captureButton.color"><input v-else type="color" v-model="mutableDownloadConfig.style.captureButton.color">, (default: "#2D353C")
+            fontSize: <input v-if="isDarkMode" type="number" min="6" max="30" v-model="mutableDownloadConfigDarkMode.style.captureButton.fontSize"><input v-else type="number" min="6" max="30" v-model="mutableDownloadConfig.style.captureButton.fontSize">, (default: 14)
+            minHeight: <input v-if="isDarkMode" type="number" min="32" max="100" v-model="mutableDownloadConfigDarkMode.style.captureButton.minHeight"><input v-else type="number" min="32" max="100" v-model="mutableDownloadConfig.style.captureButton.minHeight">, (default: 40)
+            padding: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.style.captureButton.padding"><input v-else type="text" v-model="mutableDownloadConfig.style.captureButton.padding">, (default: "8px 12px")
         },
         cancelButton: {
-            background: <input type="color" v-model="mutableDownloadConfig.style.cancelButton.background">, (default: "#F17171")
-            border: <input type="text" v-model="mutableDownloadConfig.style.cancelButton.border">, (default: "none")
-            color: <input type="color" v-model="mutableDownloadConfig.style.cancelButton.color">, (default: "#FFFFFF")
-            right: <input type="number" v-model="mutableDownloadConfig.style.cancelButton.right">, (default: -14)
-            size: <input type="number" min="12" max="48" v-model="mutableDownloadConfig.style.cancelButton.size">, (default: 28)
-            top: <input type="number" v-model="mutableDownloadConfig.style.cancelButton.top">, (default: -14)
+            background: <input v-if="isDarkMode" type="color" v-model="mutableDownloadConfigDarkMode.style.cancelButton.background"><input v-else type="color" v-model="mutableDownloadConfig.style.cancelButton.background">, (default: "#F17171")
+            border: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.style.cancelButton.border"><input v-else type="text" v-model="mutableDownloadConfig.style.cancelButton.border">, (default: "none")
+            color: <input v-if="isDarkMode" type="color" v-model="mutableDownloadConfigDarkMode.style.cancelButton.color"><input v-else type="color" v-model="mutableDownloadConfig.style.cancelButton.color">, (default: "#FFFFFF")
+            right: <input v-if="isDarkMode" type="number" v-model="mutableDownloadConfigDarkMode.style.cancelButton.right"><input v-else type="number" v-model="mutableDownloadConfig.style.cancelButton.right">, (default: -14)
+            size: <input v-if="isDarkMode" type="number" min="12" max="48" v-model="mutableDownloadConfigDarkMode.style.cancelButton.size"><input v-else type="number" min="12" max="48" v-model="mutableDownloadConfig.style.cancelButton.size">, (default: 28)
+            top: <input v-if="isDarkMode" type="number" v-model="mutableDownloadConfigDarkMode.style.cancelButton.top"><input v-else type="number" v-model="mutableDownloadConfig.style.cancelButton.top">, (default: -14)
         },
         captureArea: {
-            background: <input type="text" v-model="mutableDownloadConfig.style.captureArea.background">, (default: "radial-gradient(transparent, rgba(0,0,0,0.15))")
-            border: <input type="text" v-model="mutableDownloadConfig.style.captureArea.border">, (default: "dashed 4px #2D353C")
-            initialHeight: <input type="number" min="64" v-model="mutableDownloadConfig.style.captureArea.initialHeight">, (default: 200)
-            initialWidth: <input type="number" min="64" v-model="mutableDownloadConfig.style.captureArea.initialWidth">, (default: 200)
+            background: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.style.captureArea.background"><input v-else type="text" v-model="mutableDownloadConfig.style.captureArea.background">, (default: "radial-gradient(transparent, rgba(0,0,0,0.15))")
+            border: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.style.captureArea.border"><input v-else type="text" v-model="mutableDownloadConfig.style.captureArea.border">, (default: "dashed 4px #2D353C")
+            initialHeight: <input v-if="isDarkMode" type="number" min="64" v-model="mutableDownloadConfigDarkMode.style.captureArea.initialHeight"><input v-else type="number" min="64" v-model="mutableDownloadConfig.style.captureArea.initialHeight">, (default: 200)
+            initialWidth: <input v-if="isDarkMode" type="number" min="64" v-model="mutableDownloadConfigDarkMode.style.captureArea.initialWidth"><input v-else type="number" min="64" v-model="mutableDownloadConfig.style.captureArea.initialWidth">, (default: 200)
         },
         handles: {
-            background: <input type="color" v-model="mutableDownloadConfig.style.handles.background">, (default: "#FFFFFF")
-            border: <input type="text" v-model="mutableDownloadConfig.style.handles.border">, (default: "4px solid #2D353C")
-            borderRadius: <input type="number" min="0" max="48" v-model="mutableDownloadConfig.style.handles.borderRadius">, (default: 4)
-            size: <input type="number" min="20" max="100" v-model="mutableDownloadConfig.style.handles.size">, (default: 40)
+            background: <input v-if="isDarkMode" type="color" v-model="mutableDownloadConfigDarkMode.style.handles.background"><input v-else type="color" v-model="mutableDownloadConfig.style.handles.background">, (default: "#FFFFFF")
+            border: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.style.handles.border"><input v-else type="text" v-model="mutableDownloadConfig.style.handles.border">, (default: "4px solid #2D353C")
+            borderRadius: <input v-if="isDarkMode" type="number" min="0" max="48" v-model="mutableDownloadConfigDarkMode.style.handles.borderRadius"><input v-else type="number" min="0" max="48" v-model="mutableDownloadConfig.style.handles.borderRadius">, (default: 4)
+            size: <input v-if="isDarkMode" type="number" min="20" max="100" v-model="mutableDownloadConfigDarkMode.style.handles.size"><input v-else type="number" min="20" max="100" v-model="mutableDownloadConfig.style.handles.size">, (default: 40)
         }
     },
     translations: {
-        captureButton: <input type="text" v-model="mutableDownloadConfig.translations.captureButton">, (default: "Capture")
-        info: <input type="text" v-model="mutableDownloadConfig.translations.info">, (default: "Resize or move and click to capture")
+        captureButton: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.translations.captureButton"><input v-else type="text" v-model="mutableDownloadConfig.translations.captureButton">, (default: "Capture")
+        info: <input v-if="isDarkMode" type="text" v-model="mutableDownloadConfigDarkMode.translations.info"><input v-else type="text" v-model="mutableDownloadConfig.translations.info">, (default: "Resize or move and click to capture")
     }
 }
 </code>
@@ -474,7 +596,7 @@ Example:
             </template>
         </Box>
 
-        <VueUiScreenshot :key="step" v-if="mode === 'post'" ref="screenshot" :config="mutablePostConfig" @postImage="postImage"/>
-        <VueUiScreenshot :key="step" v-if="mode === 'download'" ref="screenshot" :config="mutableDownloadConfig"/>
+        <VueUiScreenshot :key="step" v-if="mode === 'post'" ref="screenshot" :config="isDarkMode ? mutablePostConfigDarkMode : mutablePostConfig" @postImage="postImage"/>
+        <VueUiScreenshot :key="step" v-if="mode === 'download'" ref="screenshot" :config="isDarkMode ? mutableDownloadConfigDarkMode : mutableDownloadConfig"/>
     </div>
 </template>
