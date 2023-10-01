@@ -45,7 +45,7 @@ function toggleMenu(state) {
     </div>
     <SideMenu @toggle="toggleMenu"/>
     <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden`">
-        <div :class="`${isOpen ? 'xl:w-5/6' : ''}`">
+        <div :class="`px-2 ${isOpen ? `xl:w-5/6 hidden sm:block` : ''}`">
             <DocVueUiXy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy'" />
             <DocVueUiTable v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table'"/>
             <DocVueUiDonut v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-donut'"/>

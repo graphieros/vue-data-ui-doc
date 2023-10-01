@@ -43,67 +43,67 @@ function isSelected(route) {
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Charts</div>
             <router-link to="/docs#vue-ui-xy" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-xy') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-xy')" class="-ml-6"/> <ChartHistogramIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-xy')"/> VueUiXy</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-xy') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-xy')" class="-ml-6"/> <ChartHistogramIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-xy')"/> <span class="text-gray-500">VueUi</span>Xy</div>
             </router-link>
             <router-link to="/docs#vue-ui-donut" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-donut') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-donut')" class="-ml-6"/> <ChartDonut3Icon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-donut')"/> VueUiDonut</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-donut') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-donut')" class="-ml-6"/> <ChartDonut3Icon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-donut')"/> <span class="text-gray-500">VueUi</span>Donut</div>
             </router-link>
             <router-link to="/docs#vue-ui-waffle" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-waffle') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-waffle')" class="-ml-6"/><LayoutGridIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-waffle')"/> VueUiWaffle</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-waffle') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-waffle')" class="-ml-6"/><LayoutGridIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-waffle')"/> <span class="text-gray-500">VueUi</span>Waffle</div>
             </router-link>
             <router-link to="/docs#vue-ui-radar" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-radar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-radar')" class="-ml-6"/><ChartRadarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-radar')"/> VueUiRadar</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-radar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-radar')" class="-ml-6"/><ChartRadarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-radar')"/> <span class="text-gray-500">VueUi</span>Radar</div>
             </router-link>
             <router-link to="/docs#vue-ui-quadrant" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-quadrant') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-quadrant')" class="-ml-6"/><PlusIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-quadrant')"/>  VueUiQuadrant</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-quadrant') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-quadrant')" class="-ml-6"/><PlusIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-quadrant')"/>  <span class="text-gray-500">VueUi</span>Quadrant</div>
             </router-link>
             <router-link to="/docs#vue-ui-gauge" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-gauge') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-gauge')" class="-ml-6"/><GaugeIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-gauge')"/>  VueUiGauge</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-gauge') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-gauge')" class="-ml-6"/><GaugeIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-gauge')"/>  <span class="text-gray-500">VueUi</span>Gauge</div>
             </router-link>
             <router-link to="/docs#vue-ui-chestnut" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-chestnut') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-chestnut')" class="-ml-6"/><BinaryTree2Icon class="text-gray-800 dark:text-gray-400 -rotate-90" stroke-width="1" v-if="!isSelected('/docs#vue-ui-chestnut')"/>  VueUiChestnut</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-chestnut') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-chestnut')" class="-ml-6"/><BinaryTree2Icon class="text-gray-800 dark:text-gray-400 -rotate-90" stroke-width="1" v-if="!isSelected('/docs#vue-ui-chestnut')"/>  <span class="text-gray-500">VueUi</span>Chestnut</div>
             </router-link>
             <router-link to="/docs#vue-ui-onion" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-onion') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-onion')" class="-ml-6"/><ChartArcs3Icon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-onion')"/>  VueUiOnion</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-onion') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-onion')" class="-ml-6"/><ChartArcs3Icon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-onion')"/>  <span class="text-gray-500">VueUi</span>Onion</div>
             </router-link>
             <router-link to="/docs#vue-ui-vertical-bar" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-vertical-bar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-vertical-bar')" class="-ml-6"/><ChartBarIcon class="text-gray-800 dark:text-gray-400 rotate-90" stroke-width="1" v-if="!isSelected('/docs#vue-ui-vertical-bar')"/>  VueUiVerticalBar</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-vertical-bar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-vertical-bar')" class="-ml-6"/><ChartBarIcon class="text-gray-800 dark:text-gray-400 rotate-90" stroke-width="1" v-if="!isSelected('/docs#vue-ui-vertical-bar')"/>  <span class="text-gray-500">VueUi</span>VerticalBar</div>
             </router-link>
             <router-link to="/docs#vue-ui-heatmap" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-heatmap') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-heatmap')" class="-ml-6"/><LayoutGridIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-heatmap')"/>  VueUiHeatmap</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-heatmap') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-heatmap')" class="-ml-6"/><LayoutGridIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-heatmap')"/>  <span class="text-gray-500">VueUi</span>Heatmap</div>
             </router-link>
             <router-link to="/docs#vue-ui-scatter" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-scatter') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-scatter')" class="-ml-6"/><ChartBubbleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-scatter')"/>  VueUiScatter</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-scatter') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-scatter')" class="-ml-6"/><ChartBubbleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-scatter')"/>  <span class="text-gray-500">VueUi</span>Scatter</div>
             </router-link>
             <router-link to="/docs#vue-ui-candlestick" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-candlestick') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-candlestick')" class="-ml-6"/><ChartCandleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-candlestick')"/>  VueUiCandlestick</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-candlestick') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-candlestick')" class="-ml-6"/><ChartCandleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-candlestick')"/>  <span class="text-gray-500">VueUi</span>Candlestick</div>
             </router-link>
             <router-link to="/docs#vue-ui-age-pyramid" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-age-pyramid') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-age-pyramid')" class="-ml-6"/><PyramidIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-age-pyramid')"/>  VueUiAgePyramid</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-age-pyramid') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-age-pyramid')" class="-ml-6"/><PyramidIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-age-pyramid')"/>  <span class="text-gray-500">VueUi</span>AgePyramid</div>
             </router-link>
             <router-link to="/docs#vue-ui-sparkline" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkline') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkline')" class="-ml-6"/><ChartLineIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-sparkline')"/>  VueUiSparkline</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkline') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkline')" class="-ml-6"/><ChartLineIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-sparkline')"/>  <span class="text-gray-500">VueUi</span>Sparkline</div>
             </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Tables</div>
             <router-link to="/docs#vue-ui-table">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-table') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-table')" class="-ml-6"/><TableIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-table')"/>  VueUiTable</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-table') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-table')" class="-ml-6"/><TableIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-table')"/>  <span class="text-gray-500">VueUi</span>Table</div>
             </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Rating</div>
             <router-link to="/docs#vue-ui-rating">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-rating') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-rating')" class="-ml-6"/><StarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-rating')"/>  VueUiRating</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-rating') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-rating')" class="-ml-6"/><StarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-rating')"/>  <span class="text-gray-500">VueUi</span>Rating</div>
             </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Utilities</div>
             <router-link to="/docs#vue-ui-screenshot">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-screenshot') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-screenshot')" class="-ml-6"/><ScreenshotIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-screenshot')"/>  VueUiScreenshot</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-screenshot') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-screenshot')" class="-ml-6"/><ScreenshotIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-screenshot')"/>  <span class="text-gray-500">VueUi</span>Screenshot</div>
             </router-link>
             <router-link to="/docs#vue-ui-skeleton">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-skeleton') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-skeleton')" class="-ml-6"/><SkullIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-skeleton')"/>  VueUiSkeleton</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-skeleton') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-skeleton')" class="-ml-6"/><SkullIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-skeleton')"/>  <span class="text-gray-500">VueUi</span>Skeleton</div>
             </router-link>
         </section>
     </template>

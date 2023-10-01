@@ -599,12 +599,12 @@ const darkModeSparklineConfig = ref({
 
 <template>
     <SideMenu @toggle="toggleMenu"/>
-    <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden`">
+    <div :class="`${isOpen ? 'pl-[348px] pr-[48px] hidden sm:block' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden`">
         <div :class="`${isOpen ? 'xl:w-5/6' : ''}`">
             <div class="mx-auto">
             <h1 class="text-center text-xl text-app-green">Versions</h1>
         </div>
-            <div class="max-w-[800px] mx-auto">
+            <div class="max-w-[800px] mx-auto px-6">
                 <div class="max-w-[500px] mx-auto my-6">
                     <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="data" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig"/>
                 </div>

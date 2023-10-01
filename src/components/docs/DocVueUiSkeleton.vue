@@ -275,6 +275,7 @@ function forceChartUpdate() {
 
 function setType() {
     mutableConfig.value.type = type.value;
+    mutableConfigDarkMode.value.type = type.value;
     forceChartUpdate();
 }
 
