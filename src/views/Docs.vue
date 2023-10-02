@@ -65,20 +65,24 @@ function toggleMenu(state) {
             <DocVueUiCandlestick v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-candlestick'"/>
             <DocVueUiAgePyramid v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-age-pyramid'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
-                <h1 class="flex gap-2 text-xl">
+                <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">
                     2 props are required:
                 </h1>
-<div class="w-fit mx-auto border border-gray-700 rounded-md py-3 px-6 sm:px-20 mt-6 bg-gray-200 dark:bg-[rgb(30,30,30)]">
+<div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 mt-6 bg-gray-200 dark:bg-[rgb(30,30,30)]">
 <pre>
-<code class="text-gray-500 text-xl">
-&lt;NameOfComponent
+<code class="text-gray-500 text-md">
+&lt;VueUiXy
     <span class="text-black dark:text-app-green">:dataset</span>="dataset"
     <span class="text-black dark:text-app-blue">:config</span>="config"
-&lt;/NameOfComponent&gt;
+/&gt;
 </code>
 </pre>
 </div>
+                <div class="w-full px-2 sm:px-0 sm:w-1/2 text-left mx-auto mt-4">
+                    Documentation pages provide you with a <span class="text-app-blue">config</span> tab where you can tweak your config and save it as JSON. You can also switch from dark to light themes to save configs for both modes.
+                </div>
+
                 <div class="text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-4 gap-2 my-6">
                     <router-link to="/docs#vue-ui-xy">
                         <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">

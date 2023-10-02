@@ -5,6 +5,9 @@ export const useMainStore = defineStore("main", {
         return {
             isDarkMode: false,
             isCopy: false,
+            hints: {
+                pin: 'Pin the chart to the left so you can visualize configuration changes when you scroll.'
+            }
         }
     },
     actions: {

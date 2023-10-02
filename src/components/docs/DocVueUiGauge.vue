@@ -8,6 +8,7 @@ import { useMainStore } from "../../stores";
 
 const store = useMainStore();
 const key = ref(0);
+const hintPin = computed(() => store.hints.pin);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
@@ -253,7 +254,12 @@ function fixChart() {
     <div>
         <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiGauge</h1>
         <button v-if="!isFixed" @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                    <PinIcon/>
+            <div class="relative overflow-visible">
+                    <PinIcon class="peer overflow-visible"/>
+                    <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
+                        {{ hintPin }}
+                    </div>
+                </div>
                 </button>
         <div class="w-3/4 mx-auto flex flex-row gap-2">
             
