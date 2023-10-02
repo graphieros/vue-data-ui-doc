@@ -146,6 +146,7 @@ const config = ref({
         }
       },
       legend: {
+        position: "top",
         show: true,
         fontSize: 14,
         color: "#1A1A1A",
@@ -279,6 +280,7 @@ const darkModeConfig = ref({
         }
       },
       legend: {
+        position: "top",
         show: true,
         fontSize: 14,
         color: "#CCCCCC",
@@ -557,6 +559,7 @@ const <span class="text-app-blue">config</span> = {
             },
             legend: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.show" @change="forceChartUpdate()">, (default: true)
+                position: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.chart.legend.position"><option>top</option><option>bottom</option></select><select v-else v-model="mutableConfig.style.chart.legend.position"><option>top</option><option>bottom</option></select>
                 fontSize: <input v-if="isDarkMode" type="number" min="6" max="30" v-model="mutableConfigDarkMode.style.chart.legend.fontSize"><input v-else type="number" min="6" max="30" v-model="mutableConfig.style.chart.legend.fontSize">, (default: 14)
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.legend.color"><input v-else type="color" v-model="mutableConfig.style.chart.legend.color">, (default: "#2D353C")
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.legend.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.legend.backgroundColor">, (default: "#FFFFFF")

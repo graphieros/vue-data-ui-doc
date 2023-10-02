@@ -189,6 +189,7 @@ function fixChart() {
 
 function setReadonly(isTrue) {
     mutableConfig.value.readonly = isTrue;
+    mutableConfigDarkMode.value.readonly = isTrue;
     key.value += 1;
 }
 
