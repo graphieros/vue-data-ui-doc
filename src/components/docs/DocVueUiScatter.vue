@@ -360,7 +360,7 @@ function fixChart() {
         <div class="w-full flex place-items-center place-content-center my-6">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-colors" @click="copyToClipboard(mainConfig.vue_ui_scatter)"><CopyIcon/> Copy default config as JSON</button>
         </div>
-        <Box>
+        <Box showEmits>
             <template v-slot:tab0>
                 Datastructure:
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -566,6 +566,72 @@ const <span class="text-black dark:text-app-blue">config</span> = {
 }
 </code>
 </pre>                
+            </template>
+            <template v-slot:tab2>
+              <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>getData</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">call this method from the parent to get the full formatted dataset.</div>
+    <pre>
+    <span class="text-gray-600 dark:text-app-green">Using composition API:</span>
+    <code>
+        <span class="text-gray-400">&lt;script setup&gt;</span>
+            import { ref, onMounted } from "vue";
+
+            const scatterChart = ref(null);
+            const scatterDataset = ref([]);
+
+            onMounted(() => {
+                scatterDataset.value = scatterChart.value.getData();
+            });
+
+            const config = ref({
+                <span class="text-gray-500">// your config here</span>
+            });
+            const dataset = ref([
+                <span class="text-gray-500">// your dataset here</span>
+            ]);
+
+        <span class="text-gray-400">&lt;/script&gt;</span>
+
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiScatter
+                ref="scatterChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+    </code>
+    <span class="text-gray-600 dark:text-app-green">Using options API:</span>
+    <code>
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiScatter
+                ref="scatterChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+
+        <span class="text-gray-400">&lt;script&gt;</span>
+            export default {
+                data() {
+                    return {
+                        scatterDataset: [],
+                        config: {
+                            <span class="text-gray-500">// your config here</span>
+                        },
+                        dataset: [
+                            <span class="text-gray-500">// your dataset here</span>
+                        ]
+                    }
+                },
+                mounted () {
+                    this.scatterDataset = this.$refs.scatterChart.getData();
+                }
+            }
+        <span class="text-gray-400">&lt;/script&gt;</span>
+    </code>
+    </pre>
+                </div>
             </template>
         </Box>
     </div>
