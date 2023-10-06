@@ -237,7 +237,7 @@ const skeletonsDM = [
 </script>
 
 <template>
-<div class="w-full grid grid-cols-4 sm:grid-cols-5 gap-1 sm:gap-6" v-if="isDarkMode">
+<div class="w-full grid grid-cols-4 sm:grid-cols-5 gap-1 sm:gap-6 z-0" v-if="isDarkMode">
     <div v-for="skeleton in skeletonsDM" :class="`max-w-1/3 skeleton ${skeleton.type === 'radar' ? 'radar' : ''}`">
             <VueUiSkeleton v-if="skeleton.type" :config="skeleton" />
     </div>
