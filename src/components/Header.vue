@@ -79,6 +79,9 @@ const isDarkMode = computed(() => store.isDarkMode);
                 <router-link to="/docs">
                     <span :class="`${isSelected('/docs') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">Docs</span>
                 </router-link>
+                <router-link to="/dashboard">
+                    <span :class="`${isSelected('/dashboard') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">Dashboard</span>
+                </router-link>
                 <router-link to="/versions">
                     <span :class="`${isSelected('/versions') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">Versions</span>
                 </router-link>
@@ -101,6 +104,9 @@ const isDarkMode = computed(() => store.isDarkMode);
                         </router-link>
                         <router-link to="/docs">
                             <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">Docs</span>
+                        </router-link>
+                        <router-link to="/dashboard">
+                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">Dashboard</span>
                         </router-link>
                         <router-link to="/versions">
                             <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-gray-200 hover:shadow-xl">Versions</span>
