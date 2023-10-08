@@ -24,6 +24,7 @@ function toggleMenu(state) {
 
 const start = ref("2023-07-25");
 const lastDate = ref(new Date(Date.now()));
+const info = ref(null);
 
 const end = computed(() => {
     const day = lastDate.value.getDate();
@@ -108,6 +109,15 @@ onMounted(() => {
         isError.value = true;
         data.value = [{ period: "", value: 0 }]
     }).finally(() => {
+    });
+
+    fetch("https://registry.npmjs.org/-/v1/search?text=vue-data-ui", {
+      method: 'GET',
+    }).then(response => {
+      return response.json();
+    }).then(json => {
+      info.value = json.objects.find(el => el.package.name === 'vue-data-ui').score.detail;
+      console.log(info.value)
     })
 
     // fetch(weekUrl, {
@@ -595,6 +605,38 @@ const darkModeSparklineConfig = ref({
   }
 });
 
+const sparkbarDataset = computed(() => {
+  if(info.value) {
+    return Object.keys(info.value).map(key => {
+      return {
+        name: key,
+        value: info.value[key] * 100,
+        rounding: 2,
+        suffix: "%",
+        color: "#42d392"
+      }
+    })
+  } else {
+    return []
+  }
+});
+
+const sparkbarConfig = computed(() => {
+  return {
+    style: {
+      gutter: {
+        backgroundColor: isDarkMode.value ? '#3A3A3A' : '#e1e5e6'
+      },
+      labels: {
+        fontSize: 14,
+        name: {
+          color: isDarkMode.value ? "#BABABA" : "#1A1A1A"
+        }
+      }
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -607,6 +649,12 @@ const darkModeSparklineConfig = ref({
             <div class="max-w-[800px] mx-auto px-6">
                 <div class="max-w-[500px] mx-auto my-6">
                     <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="data" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig"/>
+                </div>
+                <div class="max-w-[300px] mx-auto px-6 mb-6">
+                    <div class="pb-2 mb-2">
+                      Current NPM score:
+                    </div>
+                    <VueUiSparkbar :dataset="sparkbarDataset" :config="sparkbarConfig"/>
                 </div>
                 <div class="w-full max-h-[500px] overflow-y-auto">
                     <ul>

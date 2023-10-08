@@ -2,7 +2,6 @@
 import {ref, computed} from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useRouter } from "vue-router";
-import AppSkeletons from "../components/AppSkeletons.vue";
 import DocVueUiXy from '../components/docs/DocVueUiXy.vue';
 import DocVueUiTable from "../components/docs/DocVueUiTable.vue";
 import DocVueUiDonut from "../components/docs/DocVueUiDonut.vue";
@@ -21,6 +20,7 @@ import DocVueUiHeatmap from "../components/docs/DocVueUiHeatmap.vue";
 import DocVueUiScatter from "../components/docs/DocVueUiScatter.vue";
 import DocVueUiCandlestick from "../components/docs/DocVueUiCandlestick.vue";
 import DocVueUiAgePyramid from "../components/docs/DocVueUiAgePyramid.vue";
+import DocVueUiSparkbar from "../components/docs/DocVueUiSparkbar.vue";
 
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon } from "vue-tabler-icons";
 
@@ -64,6 +64,7 @@ function toggleMenu(state) {
             <DocVueUiScatter v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-scatter'"/>
             <DocVueUiCandlestick v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-candlestick'"/>
             <DocVueUiAgePyramid v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-age-pyramid'"/>
+            <DocVueUiSparkbar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkbar'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">
@@ -166,6 +167,12 @@ function toggleMenu(state) {
                         <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
                             <ChartLineIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
                             <span>VueUi<span class="text-gray-600 dark:text-app-green">Sparkline</span></span>
+                        </div>
+                    </router-link>
+                    <router-link to="/docs#vue-ui-sparkbar">
+                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
+                            <ChartBarIcon class="text-gray-800 dark:text-gray-400 rotate-90" stroke-width="1"/>
+                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Sparkbar</span></span>
                         </div>
                     </router-link>
                     <router-link to="/docs#vue-ui-table">

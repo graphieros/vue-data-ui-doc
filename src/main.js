@@ -21,7 +21,8 @@ import {
     VueUiHeatmap,
     VueUiScatter,
     VueUiCandlestick,
-    VueUiAgePyramid
+    VueUiAgePyramid,
+    VueUiSparkbar,
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -47,5 +48,6 @@ app.component("VueUiHeatmap", VueUiHeatmap);
 app.component("VueUiScatter", VueUiScatter);
 app.component("VueUiCandlestick", VueUiCandlestick);
 app.component("VueUiAgePyramid", VueUiAgePyramid);
+app.component("VueUiSparkbar", VueUiSparkbar);
 
 app.mount('#app')
