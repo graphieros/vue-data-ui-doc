@@ -11,6 +11,7 @@ const charts = computed(() => {
         {
             component: defineAsyncComponent(() => import("vue-data-ui").then(module => module.VueUiXy)),
             padding: "p-6",
+            cols: "one",
             config: {
                 table: {
                         rounding: 9,
@@ -221,7 +222,11 @@ const charts = computed(() => {
         {
             component: defineAsyncComponent(() => import("vue-data-ui").then(module => module.VueUiDonut)),
             padding: "p-6",
+            cols: "one",
             config: {
+                userOptions: {
+                    show: false,
+                },
                 table: {
 
                         th: {
@@ -320,7 +325,11 @@ const charts = computed(() => {
         {
             component: defineAsyncComponent(() => import("vue-data-ui").then(module => module.VueUiRadar)),
             padding: "p-6 px-10",
+            cols: "one",
             config: {
+                userOptions: {
+                    show: false,
+                },
                 translations: {
                     target: "Max"
                 },
@@ -423,6 +432,273 @@ const charts = computed(() => {
                     },
                 ]
             }
+        },
+        {
+            component: defineAsyncComponent(() => import("vue-data-ui").then(module => module.VueUiChestnut)),
+            padding: "p-6",
+            cols: "all",
+            config: {
+                userOptions: {
+                    show: false,
+                },
+                table: {
+                    th: {
+                        backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FAFAFA",
+                        color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
+                    },
+                    td: {
+                        backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
+                        color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
+                    }
+                },
+                style: {
+                    chart: {
+                        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                        color: isDarkMode.value ? '#C8C8C8' : '#1A1A1A',
+                        layout: {
+                            grandTotal: {
+                                show: false
+                            },
+                            roots: {
+                                stroke: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
+                                labels: {
+                                    name: {
+                                        color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
+                                    }
+                                }
+                            },
+                            verticalSeparator: {
+                                stroke: isDarkMode.value ? "#1A1A1A" : "#FFFFFF"
+                            },
+                            branches: {
+                                labels: {
+                                    color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A",
+                                }
+                            },
+                            nuts: {
+                                selected: {
+                                    labels: {
+                                        dataLabels: {
+                                            color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
+                                        },
+                                        core: {
+                                            total: {
+                                                color: isDarkMode.value ? "#C4C4C4" : "#1A1A1A",
+                                                fontSize: 20
+                                            },
+                                            value: {
+                                                color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A",
+                                                fontSize: 20
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            legend: {
+                                color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
+                            },
+                            title: {
+                                text: "USA, Japan, China",
+                                color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A",
+                                subtitle: {
+                                    text: "Economy and Education"
+                                }
+                            }
+                        },
+                        
+                    }
+                }
+            },
+            dataset: [
+                {
+                    name: "USA",
+                    branches: [
+                    {
+                        name: "Economy",
+                        value: 200,
+                        breakdown: [
+                            {
+                                name: "GDP (trillion USD)",
+                                value: 22.675,
+                            },
+                            {
+                                name: "Exports (billion USD)",
+                                value: 2.688,
+                            },
+                            {
+                                name: "Imports (billion USD)",
+                                value: 3.407,
+                            },
+                        ]
+                    },
+                    {
+                        name: "Education",
+                        value: 150,
+                        breakdown: [
+                            {
+                                name: "Total School Enrollment (millions)",
+                                value: 77.8,
+                            },
+                            {
+                                name: "Adult Literacy Rate (%)",
+                                value: 99.0,
+                            },
+                        ]
+                    }
+                    ]
+                },
+                {
+                    name: "Japan",
+                    branches: [
+                    {
+                        name: "Economy",
+                        value: 180,
+                        breakdown: [
+                            {
+                                name: "GDP (trillion USD)",
+                                value: 5.083,
+                            },
+                            {
+                                name: "Exports (billion USD)",
+                                value: 707.1,
+                            },
+                            {
+                                name: "Imports (billion USD)",
+                                value: 726.3,
+                            },
+                        ]
+                    },
+                    {
+                        name: "Education",
+                        value: 140,
+                        breakdown: [
+                            {
+                                name: "Total School Enrollment (millions)",
+                                value: 14.7,
+                            },
+                            {
+                                name: "Adult Literacy Rate (%)",
+                                value: 99.0,
+                            },
+                        ]
+                    }
+                    ]
+                },
+                {
+                    name: "China",
+                    branches: [
+                    {
+                        name: "Economy",
+                        value: 160,
+                        breakdown: [
+                            {
+                                name: "GDP (trillion USD)",
+                                value: 16.38,
+                            },
+                            {
+                                name: "Exports (billion USD)",
+                                value: 2.830,
+                            },
+                            {
+                                name: "Imports (billion USD)",
+                                value: 2.689,
+                            },
+                        ]
+                    },
+                    {
+                        name: "Education",
+                        value: 120,
+                        breakdown: [
+                            {
+                                name: "Total School Enrollment (millions)",
+                                value: 232.2,
+                            },
+                            {
+                                name: "Adult Literacy Rate (%)",
+                                value: 96.4,
+                            },
+                        ]
+                    }
+                    ]
+                }
+            ]
+        },
+        {
+            component: defineAsyncComponent(() => import("vue-data-ui").then(module => module.VueUiOnion)),
+            padding: "p-6",
+            cols: "one",
+            config: {
+                userOptions: {
+                    show: false,
+                },
+                table: {
+                    th: {
+                        backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FAFAFA",
+                        color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
+                    },
+                    td: {
+                        backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
+                        color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
+                    },
+                    translations: {
+                        value: "Population in Millions"
+                    }
+                },
+                style: {
+                    chart: {
+                        backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
+                        color: isDarkMode.value ? "#C8C8C8" : "#1A1A1A",
+                        layout: {
+                            gutter: {
+                                color: isDarkMode.value ? "#2F2F2F" : "#F1F1F1"
+                            },
+                            labels: {
+                                color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
+                            }
+                        },
+                        title: {
+                            text: "Internet access",
+                            color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
+                        },
+                        legend: {
+                            backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
+                            color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
+                        }
+                    }
+                }
+            },
+            dataset: [
+                {
+                    name: "USA",
+                    percentage: 87.3,
+                    value: 291.6,
+                },
+                {
+                    name: "China",
+                    percentage: 50.3,
+                    value: 703.7, 
+                },
+                {
+                    name: "Japan",
+                    percentage: 93.0,
+                    value: 118.6,
+                },
+                {
+                    name: "Germany",
+                    percentage: 84.6,
+                    value: 70.5,
+                },
+                {
+                    name: "India",
+                    percentage: 34.8,
+                    value: 487.7,
+                },
+                {
+                    name: "Brazil",
+                    percentage: 47.1,
+                    value: 98.7,
+                },
+            ]
         }
     ]
 })
@@ -435,10 +711,12 @@ const charts = computed(() => {
             <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'"/>
             <AppSkeletons/>
         </div>
-      <div class="z-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div class="z-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 grid-flow-row-dense align-center content-center">
         <template v-for="chart in charts">
-            <div :class="`z-20 h-fit ${chart.padding} ${isDarkMode ? 'bg-black' : 'bg-white'}`">
-                <component :is="chart.component" :dataset="chart.dataset" :config="chart.config"/>
+            <div :class="`${chart.cols === 'all' ? 'lg:col-span-3' : ''} z-20 h-full self-center flex place-items-center place-content-center ${chart.padding} ${isDarkMode ? 'bg-black' : 'bg-white'}`">
+                <div class="w-full">
+                    <component :is="chart.component" :dataset="chart.dataset" :config="chart.config"/>
+                </div>
             </div>
         </template>
       </div>

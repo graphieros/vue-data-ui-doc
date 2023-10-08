@@ -1,5 +1,23 @@
 [
     {
+        "version": "v 1.6.2",
+        "date": "2023-10-07",
+        "updates": [
+            {
+                "component": "VueUiOnion",
+                "description": "Fix undefined displayed in data labels if no prefix or suffix"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Update data label formatting"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Update data label formatting"
+            }
+        ]
+    },
+    {
         "version": "v 1.6.1",
         "date": "2023-10-04",
         "updates": [
