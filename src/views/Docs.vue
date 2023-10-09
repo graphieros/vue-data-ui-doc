@@ -21,6 +21,8 @@ import DocVueUiScatter from "../components/docs/DocVueUiScatter.vue";
 import DocVueUiCandlestick from "../components/docs/DocVueUiCandlestick.vue";
 import DocVueUiAgePyramid from "../components/docs/DocVueUiAgePyramid.vue";
 import DocVueUiSparkbar from "../components/docs/DocVueUiSparkbar.vue";
+import Tooltip from "../components/Tooltip.vue";
+import MenuDetail from "../components/MenuDetail.vue";
 
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon } from "vue-tabler-icons";
 
@@ -36,6 +38,123 @@ const isOpen = ref(window.innerWidth > 768);
 function toggleMenu(state) {
     isOpen.value = state;
 }
+
+const menuItems = ref([
+    {
+        name: "Xy",
+        icon: "ChartHistogramIcon",
+        tooltip: "Lines, bars, plots using classic x and y axis representation",
+        link: "/docs#vue-ui-xy"
+    },
+    {
+        name: "Donut",
+        icon: "ChartDonut3Icon",
+        tooltip: "Visualize relative proportions with this classic representation",
+        link: "/docs#vue-ui-donut"
+    },
+    {
+        name: "Waffle",
+        icon: "LayoutGridIcon",
+        tooltip: "Visualize relative proportions with a representation known to be easier to grasp by the human brain",
+        link: "/docs#vue-ui-waffle"
+    },
+    {
+        name: "Radar",
+        icon: "ChartRadarIcon",
+        tooltip: "Reveal outliers and commonality of different measures on the same scale",
+        link: "/docs#vue-ui-radar"
+    },
+    {
+        name: "Quadrant",
+        icon: "PlusIcon",
+        tooltip: "Identify patterns and trends to prioritize actions based on the position of data points",
+        link: "/docs#vue-ui-quadrant"
+    },
+    {
+        name: "Gauge",
+        icon: "GaugeIcon",
+        tooltip: "Quickly show how well a given metric is performing against a target goal",
+        link: "/docs#vue-ui-gauge"
+    },
+    {
+        name: "Chestnut",
+        icon: "BinaryTree2Icon",
+        tooltip: "Represent nested information from a general base to detailed breakdowns",
+        link: "/docs#vue-ui-chestnut"
+    },
+    {
+        name: "Onion",
+        icon: "ChartArcs3Icon",
+        tooltip: "Compare the values of multiple categories or groups in a single visualization",
+        link: "/docs#vue-ui-onion"
+    },
+    {
+        name: "VerticalBar",
+        icon: "ChartBarIcon",
+        tooltip: "Compare different categorical or discrete variables, with the option to show their breakdowns",
+        link: "/docs#vue-ui-vertical-bar"
+    },
+    {
+        name: "Heatmap",
+        icon: "LayoutGridIcon",
+        tooltip: "Show relationships and patterns between two variables by observing how cell colors change across each axis",
+        link: "/docs#vue-ui-heatmap"
+    },
+    {
+        name: "Scatter",
+        icon: "ChartBubbleIcon",
+        tooltip: "From a large dataset, reveal the correlation between two variables",
+        link: "/docs#vue-ui-scatter"
+    },
+    {
+        name: "Candlestick",
+        icon: "ChartCandleIcon",
+        tooltip: "Determine possible price movements based on past patterns",
+        link: "/docs#vue-ui-candlestick"
+    },
+    {
+        name: "AgePyramid",
+        icon: "PyramidIcon",
+        tooltip: "Show how populations are composed and how they are changing",
+        link: "/docs#vue-ui-age-pyramid"
+    },
+    {
+        name: "Sparkline",
+        icon: "ChartLineIcon",
+        tooltip: "Visualize evolution on a tiny line chart",
+        link: "/docs#vue-ui-sparkline"
+    },
+    {
+        name: "Sparkbar",
+        icon: "ChartBarIcon",
+        tooltip: "Show kpi performance with a tiny vertical bar chart",
+        link: "/docs#vue-ui-sparkbar"
+    },
+    {
+        name: "Table",
+        icon: "TableIcon",
+        tooltip: "Powerful dynamic table that allows the user to select data and calculate sums, averages, and visualize charts based on their selection",
+        link: "/docs#vue-ui-table"
+    },
+    {
+        name: "Rating",
+        icon: "StarIcon",
+        tooltip: "A classic rating component to rate or visualize rating results. Control the number of stars to display, and their shape",
+        link: "/docs#vue-ui-rating"
+    },
+    {
+        name: "Screenshot",
+        icon: "ScreenshotIcon",
+        tooltip: "Select an area on the screen and either download or post the image as base64 with additional metadata",
+        link: "/docs#vue-ui-screenshot"
+    },
+    {
+        name: "Skeleton",
+        icon: "SkullIcon",
+        tooltip: "Display gorgeous skeleton charts while data is loading",
+        link: "/docs#vue-ui-skeleton"
+    },
+])
 
 </script>
 
@@ -84,121 +203,11 @@ function toggleMenu(state) {
                     Documentation pages provide you with a <span class="text-app-blue">config</span> tab where you can tweak your config and save it as JSON. You can also switch from dark to light themes to save configs for both modes.
                 </div>
 
-                <div class="text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-4 gap-2 my-6">
-                    <router-link to="/docs#vue-ui-xy">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <ChartHistogramIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Xy</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-donut">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <ChartDonut3Icon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Donut</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-waffle">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <LayoutGridIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Waffle</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-radar">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <ChartRadarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Radar</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-quadrant">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <PlusIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Quadrant</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-gauge">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <GaugeIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Gauge</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-chestnut">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <BinaryTree2Icon class="text-gray-800 dark:text-gray-400 -rotate-90" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Chestnut</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-onion">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <ChartArcs3Icon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Onion</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-vertical-bar">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <ChartBarIcon class="text-gray-800 dark:text-gray-400 rotate-90" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">VerticalBar</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-heatmap">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <LayoutGridIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Heatmap</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-scatter">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <ChartBubbleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Scatter</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-candlestick">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <ChartCandleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Candlestick</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-age-pyramid">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <PyramidIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">AgePyramid</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-sparkline">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <ChartLineIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Sparkline</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-sparkbar">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <ChartBarIcon class="text-gray-800 dark:text-gray-400 rotate-90" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Sparkbar</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-table">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <TableIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Table</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-rating">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <StarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Rating</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-screenshot">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <ScreenshotIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Screenshot</span></span>
-                        </div>
-                    </router-link>
-                    <router-link to="/docs#vue-ui-skeleton">
-                        <div class="p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black hover:bg-white hover:shadow-xl dark:hover:bg-black-100">
-                            <SkullIcon class="text-gray-800 dark:text-gray-400" stroke-width="1"/>
-                            <span>VueUi<span class="text-gray-600 dark:text-app-green">Skeleton</span></span>
-                        </div>
-                    </router-link>
+                <div class="text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-4 gap-2 my-6 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700">
+                    <MenuDetail v-for="item in menuItems" :icon="item.icon" :link="item.link">
+                        <template #name>{{ item.name }}</template>
+                        <template #tooltip>{{ item.tooltip }}</template>
+                    </MenuDetail>
                 </div>                
             </div>
         </div>
