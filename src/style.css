@@ -62,3 +62,24 @@ html.dark select {
 input[type="color"] {
   border: none;
 }
+
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 35px;
+  background-color: transparent;
+  border: none !important;
+  cursor: pointer;
+}
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 50%;
+  border: 1px solid #C4C4C4;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+input[type="color"]::-moz-color-swatch {
+  border-radius: 6px;
+  border: 1px solid #C4C4C4;
+
+}

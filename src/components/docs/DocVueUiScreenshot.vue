@@ -424,7 +424,7 @@ const <span class="text-black dark:text-app-blue">config</span> = {
     },
     translations: {
         captureButton: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.translations.captureButton"><input v-else type="text" v-model="mutablePostConfig.translations.captureButton">, (default: "Capture")
-        info: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.translations.info"><input type="text" v-model="mutablePostConfig.translations.info">, (default: "Resize or move and click to capture")
+        info: <input v-if="isDarkMode" type="text" v-model="mutablePostConfigDarkMode.translations.info"><input v-else type="text" v-model="mutablePostConfig.translations.info">, (default: "Resize or move and click to capture")
     }
 }
 </code>
