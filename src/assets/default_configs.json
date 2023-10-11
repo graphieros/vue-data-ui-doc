@@ -1340,6 +1340,10 @@
             "color":"#2D353C",
             "maxHeight":500,
             "animated": true,
+            "sparkline": {
+                "color": "#e1e5e8",
+                "strokeWidth": 0.7
+            },
             "line": {
                 "axis": {
                     "show": true,

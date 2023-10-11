@@ -635,6 +635,18 @@ const sparkbarConfig = computed(() => {
       }
     }
   }
+});
+
+const sparklineSkeletonConfig = computed(() => {
+  return {
+    type: "sparkline",
+    style: {
+      backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+      sparkline: {
+        color: isDarkMode.value ? '#5c5c5c' : '#e1e5e8',
+      }
+    }
+  }
 })
 
 </script>
@@ -648,6 +660,7 @@ const sparkbarConfig = computed(() => {
         </div>
             <div class="max-w-[800px] mx-auto px-6">
                 <div class="max-w-[500px] mx-auto my-6">
+                    <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                     <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="data" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig"/>
                 </div>
                 <div class="max-w-[300px] mx-auto px-6 mb-6">

@@ -26,6 +26,10 @@ const config = ref({
     color: "#CCCCCC",
     maxHeight: 500,
     animated: true,
+    sparkline: {
+      color: "#C4C4C4",
+      strokeWidth: 0.7
+    },
     line: {
       axis: {
         show: true,
@@ -135,6 +139,10 @@ const darkModeConfig = ref({
     color: "#CCCCCC",
     maxHeight: 500,
     animated: true,
+    sparkline: {
+      color: "#5c5c5c",
+      strokeWidth: 0.7
+    },
     line: {
       axis: {
         show: true,
@@ -253,6 +261,7 @@ const options = ref([
     "quadrant",
     "radar",
     "rating",
+    "sparkline",
     "table",
     "verticalBar",
     "waffle",
@@ -422,6 +431,10 @@ const <span class="text-black dark:text-app-blue">config</span> = {
       filled: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.rating.filled"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.filled">, (default: true)
       strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.rating.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.rating.strokeWidth">, (default: 1)
       maxWidth: <input v-if="isDarkMode" type="number" min="100" v-model="mutableConfigDarkMode.style.rating.maxWidth"><input v-else type="number" min="100" v-model="mutableConfig.style.rating.maxWidth">, (default: 200)
+    },
+    sparkline: {
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.sparkline.color"><input v-else type="color" v-model="mutableConfig.style.sparkline.color">, (default: "#E1E5E8")
+      strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.sparkline.strokeWidth"><input v-else type="number" min="0" max="5" step="0.1" v-model="mutableConfig.style.sparkline.strokeWidth">, (default: 0.7)
     },
     verticalBar: {
       axis: {
