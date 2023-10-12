@@ -117,7 +117,6 @@ onMounted(() => {
       return response.json();
     }).then(json => {
       info.value = json.objects.find(el => el.package.name === 'vue-data-ui').score.detail;
-      console.log(info.value)
     })
 
     // fetch(weekUrl, {

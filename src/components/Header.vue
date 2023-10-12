@@ -48,7 +48,6 @@ onMounted(() => {
         store.isDarkMode = localStorage.theme === "dark";
     } else {
         if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            console.log('here')
             document.documentElement.classList.add('dark');
             store.isDarkMode = true;
             localStorage.setItem("theme", "dark")

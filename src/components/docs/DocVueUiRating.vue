@@ -194,7 +194,7 @@ function setReadonly(isTrue) {
 }
 
 function showRating(r) {
-    console.log(r)
+    console.log("Rating : ", r)
 }
 
 </script>
