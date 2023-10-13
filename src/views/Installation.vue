@@ -5,6 +5,9 @@ import { useMainStore } from '../stores';
 const store = useMainStore();
 
 const isDarkMode = computed(() => store.isDarkMode);
+const translations = computed(() => {
+    return store.translations;
+})
 
 </script>
 
@@ -20,7 +23,7 @@ const isDarkMode = computed(() => store.isDarkMode);
         </div>
 
         <div class="mt-4 z-10">
-            For TypeScript users: types are available in <b>vue-data-ui.d.ts</b> file under the types folder of the package.
+            {{ translations.installation.tsUsers[store.lang] }}
         </div>
         
         <div class="z-10 p-6 border border-gray-700 rounded-lg flex flex-col mt-6 bg-gray-200 dark:bg-[rgb(26,26,26)]">
@@ -28,10 +31,10 @@ const isDarkMode = computed(() => store.isDarkMode);
             <code class="mt-3 text-start">
                 import { createApp } from 'vue'<br>
                 import App from "./App.vue"<br>
-                <span class="text-red-600 dark:text-gray-500">// Include the css :</span><br>
+                <span class="text-red-600 dark:text-gray-500">// {{ translations.installation.comments.includeCss[store.lang] }}</span><br>
                 import "<span class="text-gray-800 dark:text-app-green">vue-data-ui/style.css</span>"<br><br>
                 
-                <span class="text-gray-600 dark:text-gray-500">// You can declare Vue Data UI components globally :</span><br>
+                <span class="text-gray-600 dark:text-gray-500">// {{ translations.installation.comments.global[store.lang] }}</span><br>
                 import { <span class="text-gray-800 dark:text-app-green">VueUiRadar</span> } from "vue-data-ui"<br><br>
 
                 const app = createApp(App)<br><br>
@@ -40,7 +43,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 
                 app.mount('#app')<br><br>
 
-                <span class="text-gray-600 dark:text-gray-500">// Or you can import just what you need in your files :</span><br>
+                <span class="text-gray-600 dark:text-gray-500">// {{ translations.installation.comments.import[store.lang] }}</span><br>
             </code>
             <span class="text-app-blue">MyComponent.vue</span>
             <code class="mt-3 text-start">

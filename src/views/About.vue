@@ -5,6 +5,10 @@ import { useMainStore } from "../stores";
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
+const translations = computed(() => {
+  return store.translations;
+})
+
 const skeletonConfig = ref({
   type: "line",
   style: {
@@ -236,29 +240,29 @@ const skeletonsDarkMode = [
             </div>
         </div>
         <p class="mt-12 mb-3">
-            Vue Data UI was born of a single question: if your dashboards are so good, why are your users asking for Excel export features ?
+            {{ translations.about.p1[store.lang] }}
         </p>
         <p class="my-3">
-            The purpose of this open-source library is to offer end users a set of in-built tools around charts and tables to reduce the friction of having to recompute exported data. Of course, Vue Data UI keeps the option to export to Excel and PDF, just in case.
-        </p>
-
-        <p class="my-3">
-            Vue Data UI offers a set of classic chart types, along with new or rare items, such as <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-chestnut">VueUiChestnut</router-link></span> or <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-quadrant">VueUiQuadrant</router-link></span>, along with the powerful <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-table">VueUiTable</router-link></span>.
+          {{ translations.about.p2[store.lang] }}
         </p>
 
         <p class="my-3">
-            Vue Data UI also ships with a set of utilities, such as <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-screenshot">VueUiScreenshot</router-link></span> or <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-skeleton">VueUiSkeleton</router-link></span>, to make the experience of your dashboards as smooth as possible.
+            {{ translations.about.p3[store.lang] }} <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-chestnut">VueUiChestnut</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-quadrant">VueUiQuadrant</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-table">VueUiTable</router-link></span>.
+        </p>
+
+        <p class="my-3">
+            {{ translations.about.p4[store.lang] }}<span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-screenshot">VueUiScreenshot</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-skeleton">VueUiSkeleton</router-link></span>
         </p>
        
         <div class="text-center w-full text-app-blue font-satoshi-bold text-2xl mt-12">
-            Maintainer(s)
+            {{ translations.about.maintainers[store.lang] }}
         </div>
         <div class="w-full mt-12 flex place-items-center place-content-center">
             <div class="flex gap-6 flex-col md:flex-row place-items-center place-content-center">            
                 <img src="../assets/alec_lloyd_probert.png" class="h-[200px]" alt="A picture of Alec Lloyd Probert">
                 <p>
-                    Alec Lloyd Probert is a front-end developer, formerly a data analyst, with a strong passion for data visualization and VueJs.<br><br>
-                    <a class="text-app-blue hover:underline" href="https://github.com/graphieros" target="_blank">GitHub profile</a>
+                    {{ translations.about.alp[store.lang] }}<br><br>
+                    <a class="text-app-blue hover:underline" href="https://github.com/graphieros" target="_blank">GitHub</a>
                 </p>
             </div>
         </div>

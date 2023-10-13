@@ -21,14 +21,17 @@ import DocVueUiScatter from "../components/docs/DocVueUiScatter.vue";
 import DocVueUiCandlestick from "../components/docs/DocVueUiCandlestick.vue";
 import DocVueUiAgePyramid from "../components/docs/DocVueUiAgePyramid.vue";
 import DocVueUiSparkbar from "../components/docs/DocVueUiSparkbar.vue";
-import Tooltip from "../components/Tooltip.vue";
 import MenuDetail from "../components/MenuDetail.vue";
 
-import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon } from "vue-tabler-icons";
+import { CheckIcon } from "vue-tabler-icons";
 
 import { useMainStore } from "../stores";
 
 const store = useMainStore();
+const translations = computed(() => {
+    return store.translations;
+})
+
 
 const isCopy = computed(() => store.isCopy);
 
@@ -39,11 +42,11 @@ function toggleMenu(state) {
     isOpen.value = state;
 }
 
-const menuItems = ref([
+const menuItems = computed(() => [
     {
         name: "Xy",
         icon: "ChartHistogramIcon",
-        tooltip: "Lines, bars, plots using classic x and y axis representation",
+        tooltip: translations.value.docs.tooltips.xy[store.lang],
         link: "/docs#vue-ui-xy"
     },
     {
@@ -187,20 +190,20 @@ const menuItems = ref([
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">
-                    2 props are required:
+                    {{ translations.docs.props[store.lang] }}
                 </h1>
 <div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 mt-6 bg-gray-200 dark:bg-[rgb(30,30,30)]">
 <pre>
 <code class="text-gray-500 text-md">
 &lt;VueUiXy
-    <span class="text-black dark:text-app-green">:dataset</span>="dataset"
-    <span class="text-black dark:text-app-blue">:config</span>="config"
+    <span class="text-black dark:text-app-green">:dataset</span>="{{ translations.docs.dataset[store.lang] }}"
+    <span class="text-black dark:text-app-blue">:config</span>="{{ translations.docs.config[store.lang] }}"
 /&gt;
 </code>
 </pre>
 </div>
                 <div class="w-full px-2 sm:px-0 sm:w-1/2 text-left mx-auto mt-4">
-                    Documentation pages provide you with a <span class="text-app-blue">config</span> tab where you can tweak your config and save it as JSON. You can also switch from dark to light themes to save configs for both modes.
+                    {{ translations.docs.p1[store.lang] }}
                 </div>
 
                 <div class="text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-4 gap-2 my-6 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700">
