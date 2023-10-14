@@ -187,6 +187,252 @@ export const useMainStore = defineStore("main", {
                             pt: "Linhas, barras, gráficos usando representação clássica dos eixos x e y",
                             zh: "使用经典 x 和 y 轴的线条、条形图、图表",
                             jp: "従来の X 軸と Y 軸を使用した折れ線、棒、グラフ"
+                        },
+                        donut: {
+                            en: "Visualize relative proportions with this classic representation",
+                            fr: "Visualisez les proportions relatives avec cette représentation classique",
+                            pt: "Visualize proporções relativas com esta representação clássica",
+                            zh: "用这种经典的表示方式可视化相对比例",
+                            jp: "この古典的な表現で相対的な比率を視覚化します"
+                        },
+                        waffle: {
+                            en: "Reveal outliers and commonality of different measures on the same scale",
+                            fr: "Révélez les valeurs aberrantes et les points communs de différentes mesures sur la même échelle",
+                            pt: "Revelar valores discrepantes e pontos em comum de diferentes medidas na mesma escala",
+                            zh: "揭示同一尺度上不同度量的异常值和共性",
+                            jp: "同じスケール上のさまざまな指標にわたる外れ値と共通点を明らかにする"
+                        },
+                        radar: {
+                            en: "Visualize relative proportions with a representation known to be easier to grasp by the human brain",
+                            fr: "Visualisez les proportions relatives avec une représentation connue pour être plus facile à saisir par le cerveau humain",
+                            pt: "Visualize proporções relativas com uma representação conhecida por ser mais fácil de entender pelo cérebro humano",
+                            zh: "使用已知更容易被人脑掌握的表示形式可视化相对比例",
+                            jp: "人間の脳にとって理解しやすいことが知られている表現を使用して、相対的な比率を視覚化します。"
+                        },
+                        quadrant: {
+                            en: "Identify patterns and trends to prioritize actions based on the position of data points",
+                            fr: "Identifier les modèles et les tendances pour prioriser les actions en fonction de la position des points de données",
+                            pt: "Identifique padrões e tendências para priorizar ações com base na posição dos pontos de dados",
+                            zh: "识别模式和趋势，根据数据点的位置确定行动的优先级",
+                            jp: "パターンと傾向を特定し、データ ポイントの位置に基づいてアクションに優先順位を付けます"
+                        },
+                        gauge: {
+                            en: "Quickly show how well a given metric is performing against a target goal",
+                            fr: "Montrez rapidement les performances d'une métrique donnée par rapport à un objectif cible",
+                            pt: "Mostre rapidamente o desempenho de uma determinada métrica em relação a uma meta desejada",
+                            zh: "快速显示给定指标对目标的执行情况",
+                            jp: "特定の指標が目標目標に対してどの程度優れたパフォーマンスを発揮しているかをすぐに示します"
+                        },
+                        chestnut: {
+                            en: "Represent nested information from a general base to detailed breakdowns",
+                            fr: "Représenter des informations imbriquées depuis une base générale jusqu'à des ventilations détaillées",
+                            pt: "Representar informações aninhadas desde uma base geral até detalhamentos detalhados",
+                            zh: "表示从一般基础到详细细分的嵌套信息",
+                            jp: "一般的な基礎から詳細なセグメンテーションまでのネストされた情報を表現します"
+                        },
+                        onion: {
+                            en: "Compare the values of multiple categories or groups in a single visualization",
+                            fr: "Comparez les valeurs de plusieurs catégories ou groupes dans une seule visualisation",
+                            pt: "Compare os valores de diversas categorias ou grupos em uma única visualização",
+                            zh: "在单个可视化中比较多个类别或组的值",
+                            jp: "単一のビジュアライゼーションで複数のカテゴリまたはグループの値を比較します"
+                        },
+                        verticalBar: {
+                            en: "Compare different categorical or discrete variables, with the option to show their breakdowns",
+                            fr: "Comparez différentes variables catégorielles ou discrètes, avec la possibilité d'afficher leurs répartitions",
+                            pt: "Compare diferentes variáveis ​​categóricas ou discretas, com a opção de mostrar seus detalhamentos",
+                            zh: "比较不同的分类或离散变量，并可选择显示其细分",
+                            jp: "さまざまなカテゴリ変数または離散変数を、その内訳を表示するオプションを使用して比較します。"
+                        },
+                        heatmap: {
+                            en: "Show relationships and patterns between two variables by observing how cell colors change across each axis",
+                            fr: "Montrez les relations et les modèles entre deux variables en observant comment les couleurs des cellules changent sur chaque axe",
+                            pt: "Mostre relações e padrões entre duas variáveis ​​observando como as cores das células mudam em cada eixo",
+                            zh: "通过观察细胞颜色在每个轴上的变化来显示两个变量之间的关系和模式",
+                            jp: "各軸でセルの色がどのように変化するかを観察することで、2 つの変数間の関係とパターンを表示します"
+                        },
+                        scatter: {
+                            en: "From a large dataset, reveal the correlation between two variables",
+                            fr: "À partir d'un grand ensemble de données, révélez la corrélation entre deux variables",
+                            pt: "A partir de um grande conjunto de dados, revele a correlação entre duas variáveis",
+                            zh: "从大型数据集中揭示两个变量之间的相关性",
+                            jp: "大規模なデータセットから 2 つの変数間の相関関係を明らかにする"
+                        },
+                        candlestick: {
+                            en: "Determine possible price movements based on past patterns",
+                            fr: "Déterminer les mouvements de prix possibles en fonction des modèles passés",
+                            pt: "Determine possíveis movimentos de preços com base em padrões anteriores",
+                            zh: "根据过去的模式确定可能的价格变动",
+                            jp: "過去のパターンに基づいて起こり得る値動きを判断する"
+                        },
+                        agePyramid: {
+                            en: "Show how populations are composed and how they are changing",
+                            fr: "Montrer comment les populations sont composées et comment elles évoluent",
+                            pt: "Mostre como as populações são compostas e como estão mudando",
+                            zh: "显示人口的组成方式及其变化情况",
+                            jp: "人口がどのように構成され、どのように変化しているかを示す"
+                        },
+                        sparkline: {
+                            en: "Visualize evolution on a tiny line chart",
+                            fr: "Visualisez l'évolution sur un petit graphique linéaire",
+                            pt: "Visualize a evolução em um pequeno gráfico de linhas",
+                            zh: "在微小的折线图上可视化进化",
+                            jp: "小さな折れ線グラフで進化を視覚化する"
+                        },
+                        sparkbar: {
+                            en: "Show kpi performance with a tiny vertical bar chart",
+                            fr: "Afficher les performances des KPI avec un petit graphique à barres verticales",
+                            pt: "Mostre o desempenho do KPI com um pequeno gráfico de barras verticais",
+                            zh: "用微小的垂直条形图显示关键绩效指标",
+                            jp: "主要業績評価指標を小さな縦棒グラフで表示します"
+                        },
+                        table: {
+                            en: "Powerful dynamic table that allows the user to select data and calculate sums, averages, and visualize charts based on their selection",
+                            fr: "Tableau dynamique puissant qui permet à l'utilisateur de sélectionner des données et de calculer des sommes, des moyennes et de visualiser des graphiques en fonction de leur sélection",
+                            pt: "Tabela dinâmica poderosa que permite ao usuário selecionar dados e calcular somas, médias e visualizar gráficos com base em sua seleção",
+                            zh: "强大的动态表，允许用户选择数据并计算总和、平均值，并根据他们的选择可视化图表",
+                            jp: "ユーザーがデータを選択し、選択に基づいて合計、平均、視覚的なグラフを計算できる強力な動的テーブル"
+                        },
+                        rating: {
+                            en: "A classic rating component to rate or visualize rating results. Control the number of stars to display, and their shape",
+                            fr: "Un composant de notation classique pour noter ou visualiser les résultats de la notation. Contrôlez le nombre d'étoiles à afficher et leur forme",
+                            pt: "Um componente de classificação clássico para avaliar ou visualizar resultados de classificação. Controle o número de estrelas a serem exibidas e sua forma",
+                            zh: "用于对评级结果进行评级或可视化的经典评级组件。控制要显示的星星数量及其形状",
+                            jp: "評価または評価結果を視覚化するための古典的な評価コンポーネント。表示する星の数とその形を制御する"
+                        },
+                        screenshot: {
+                            en: "Select an area on the screen and either download or post the image as base64 with additional metadata",
+                            fr: "Sélectionnez une zone sur l'écran et téléchargez ou publiez l'image en base64 avec des métadonnées supplémentaires",
+                            pt: "Selecione uma área na tela e baixe ou publique a imagem como base64 com metadados adicionais",
+                            zh: "选择屏幕上的一个区域，然后下载或发布带有附加元数据的 Base64 图像",
+                            jp: "画面上の領域を選択し、追加のメタデータを含む画像をダウンロードするか、base64 として投稿します。"
+                        },
+                        skeleton: {
+                            en: "Display gorgeous skeleton charts while data is loading",
+                            fr: "Affichez de superbes graphiques squelettes pendant le chargement des données",
+                            pt: "Exiba lindos gráficos de esqueleto enquanto os dados estão sendo carregados",
+                            zh: "数据加载时显示华丽的骨架图",
+                            jp: "データのロード中に豪華なスケルトン チャートを表示"
+                        },
+                    },
+                    datastructure: {
+                        en: "Datastructure",
+                        fr: "Structure des données",
+                        pt: "Estrutura de dados",
+                        zh: "数据结构",
+                        jp: "データ構造"
+                    },
+                    copyDefaultConfig: {
+                        en: "Copy default config as JSON",
+                        fr: "Copier la configuration par défaut au format JSON",
+                        pt: "Copie a configuração padrão como JSON",
+                        zh: "将默认配置复制为 JSON",
+                        jp: "デフォルト設定をJSONとしてコピー"
+                    },
+                    copyThisConfig: {
+                        en: "Copy this config as JSON",
+                        fr: "Copier cette config en JSON",
+                        pt: "Copie esta configuração como JSON",
+                        zh: "将此配置复制为 JSON",
+                        jp: "この構成を JSON としてコピーします"
+                    },
+                    reset: {
+                        en: "Reset",
+                        fr: "Réinitialiser",
+                        pt: "Reiniciar",
+                        zh: "重置",
+                        jp: "リセット"
+                    },
+                    cssOverride: {
+                        en: "You can override the css (check out the styles.css in the package)",
+                        fr: "Vous pouvez remplacer le CSS (consultez le styles.css dans le package)",
+                        pt: "Você pode substituir o CSS (consulte estilos.css no package)",
+                        zh: "您可以重新使用 CSS（在包中查看 styles.css）",
+                        jp: "CSS を再配置する (styles.css とパッケージを参照)"
+                    },
+                    emits: {
+                        xy: {
+                            selectLegend: {
+                                en: "returns the current visible series when selecting / unselecting the legend:",
+                                fr: "renvoie la série visible actuelle lors de la sélection/désélection de la légende :",
+                                pt: "retorna a série visível atual ao selecionar/desmarcar a legenda:",
+                                zh: "选择/取消选择图例时返回当前可见系列：",
+                                jp: "凡例を選択または選択解除するときに、現在表示されているシリーズを返します。"
+                            },
+                            selectX: {
+                                en: "returns the current visible series at the selected x index when clicking on the chart :",
+                                fr: "renvoie la série visible actuelle à l'index x sélectionné en cliquant sur le graphique :",
+                                pt: "retorna a série visível atual no índice x selecionado ao clicar no gráfico:",
+                                zh: "单击图表时返回所选 x 索引处的当前可见系列：",
+                                jp: "チャートをクリックすると、選択された x インデックスで現在表示されているシリーズが返されます。"
+                            },
+                            getData: {
+                                en: "call this method from the parent to get the full formatted dataset.",
+                                fr: "appelez cette méthode depuis le parent pour obtenir l'ensemble de données entièrement formaté.",
+                                pt: "chame esse método do pai para obter o conjunto de dados formatado completo.",
+                                zh: "从父级调用此方法以获取完整格式化的数据集。",
+                                jp: "完全なフォーマット済みデータセットを取得するには、親からこのメソッドを呼び出します。"
+                            }
+                        }
+                    },
+                    comments: {
+                        yourConfigHere: {
+                            en: "Your config here",
+                            fr: "Votre config ici",
+                            pt: "Sua configuração aqui",
+                            zh: "你的配置在这里",
+                            jp: "設定はここにあります",
+                        },
+                        yourDatasetHere: {
+                            en: "Your dataset here",
+                            fr: "Votre dataset ici",
+                            pt: "Sua dataset aqui",
+                            zh: "您的数据集位于此处",
+                            jp: "データセットはここにあります",
+                        },
+                        xy: {
+                            type: {
+                                en: "The following attributes are optional:",
+                                fr: "Les attributs suivants sont optionnels:",
+                                pt: "Os seguintes atributos são opcionais:",
+                                zh: "以下属性是可选的：",
+                                jp: "次のプロパティはオプションです。"
+                            },
+                            color: {
+                                en: "If not provided, the default palette will be used by default",
+                                fr: "Si elle n'est pas fournie, la palette par défaut sera utilisée par défaut",
+                                pt: "o padrão será a paleta padrão se não for fornecida",
+                                zh: "如果未提供，将默认使用默认调色板",
+                                jp: "指定しない場合は、デフォルトのパレットがデフォルトで使用されます。"
+                            },
+                            dashed: {
+                                en: "use 'true' on line types to display a dashed line",
+                                fr: "utilisez 'true' sur les types de ligne pour afficher une ligne pointillée",
+                                pt: "use 'true' em tipos de linha para exibir uma linha tracejada",
+                                zh: "在线类型上使用“true”来显示虚线",
+                                jp: "破線を表示するには、線種に「true」を使用します。"
+                            },
+                            useTag: {
+                                en: "use for line or plot types to show the serie name as a tag",
+                                fr: "utiliser pour les types ligne ou points pour afficher le nom de la série sous forme de tag",
+                                pt: "use para tipos de linha ou gráfico para mostrar o nome da série como uma tag",
+                                zh: "用于线条或绘图类型以将系列名称显示为标签",
+                                jp: "シリーズ名をラベルとして表示するためのラインまたはプロット タイプに使用されます。"
+                            },
+                            dataLabels: {
+                                en: "hide or show specific serie dataLabels",
+                                fr: "masquer ou afficher les étiquettes de données d'une série spécifique",
+                                pt: "ocultar ou mostrar dataLabels de séries específicas",
+                                zh: "隐藏或显示特定系列数据标签",
+                                jp: "特定のシリーズのデータ​​ラベルを表示または非表示にする"
+                            },
+                            useProgression: {
+                                en: "show a progression line, works for all types",
+                                fr: "afficher une ligne de progression, fonctionne pour tous les types",
+                                pt: "mostra uma linha de progressão, funciona para todos os tipos",
+                                zh: "显示进度线，适用于所有类型",
+                                jp: "進行線を表示し、すべてのタイプに機能します"
+                            },
                         }
                     }
                 }

@@ -52,109 +52,109 @@ const menuItems = computed(() => [
     {
         name: "Donut",
         icon: "ChartDonut3Icon",
-        tooltip: "Visualize relative proportions with this classic representation",
+        tooltip: translations.value.docs.tooltips.donut[store.lang],
         link: "/docs#vue-ui-donut"
     },
     {
         name: "Waffle",
         icon: "LayoutGridIcon",
-        tooltip: "Visualize relative proportions with a representation known to be easier to grasp by the human brain",
+        tooltip: translations.value.docs.tooltips.waffle[store.lang],
         link: "/docs#vue-ui-waffle"
     },
     {
         name: "Radar",
         icon: "ChartRadarIcon",
-        tooltip: "Reveal outliers and commonality of different measures on the same scale",
+        tooltip: translations.value.docs.tooltips.radar[store.lang],
         link: "/docs#vue-ui-radar"
     },
     {
         name: "Quadrant",
         icon: "PlusIcon",
-        tooltip: "Identify patterns and trends to prioritize actions based on the position of data points",
+        tooltip: translations.value.docs.tooltips.quadrant[store.lang],
         link: "/docs#vue-ui-quadrant"
     },
     {
         name: "Gauge",
         icon: "GaugeIcon",
-        tooltip: "Quickly show how well a given metric is performing against a target goal",
+        tooltip: translations.value.docs.tooltips.gauge[store.lang],
         link: "/docs#vue-ui-gauge"
     },
     {
         name: "Chestnut",
         icon: "BinaryTree2Icon",
-        tooltip: "Represent nested information from a general base to detailed breakdowns",
+        tooltip: translations.value.docs.tooltips.chestnut[store.lang],
         link: "/docs#vue-ui-chestnut"
     },
     {
         name: "Onion",
         icon: "ChartArcs3Icon",
-        tooltip: "Compare the values of multiple categories or groups in a single visualization",
+        tooltip: translations.value.docs.tooltips.onion[store.lang],
         link: "/docs#vue-ui-onion"
     },
     {
         name: "VerticalBar",
         icon: "ChartBarIcon",
-        tooltip: "Compare different categorical or discrete variables, with the option to show their breakdowns",
+        tooltip: translations.value.docs.tooltips.verticalBar[store.lang],
         link: "/docs#vue-ui-vertical-bar"
     },
     {
         name: "Heatmap",
         icon: "LayoutGridIcon",
-        tooltip: "Show relationships and patterns between two variables by observing how cell colors change across each axis",
+        tooltip: translations.value.docs.tooltips.heatmap[store.lang],
         link: "/docs#vue-ui-heatmap"
     },
     {
         name: "Scatter",
         icon: "ChartBubbleIcon",
-        tooltip: "From a large dataset, reveal the correlation between two variables",
+        tooltip: translations.value.docs.tooltips.scatter[store.lang],
         link: "/docs#vue-ui-scatter"
     },
     {
         name: "Candlestick",
         icon: "ChartCandleIcon",
-        tooltip: "Determine possible price movements based on past patterns",
+        tooltip: translations.value.docs.tooltips.candlestick[store.lang],
         link: "/docs#vue-ui-candlestick"
     },
     {
         name: "AgePyramid",
         icon: "PyramidIcon",
-        tooltip: "Show how populations are composed and how they are changing",
+        tooltip: translations.value.docs.tooltips.agePyramid[store.lang],
         link: "/docs#vue-ui-age-pyramid"
     },
     {
         name: "Sparkline",
         icon: "ChartLineIcon",
-        tooltip: "Visualize evolution on a tiny line chart",
+        tooltip: translations.value.docs.tooltips.sparkline[store.lang],
         link: "/docs#vue-ui-sparkline"
     },
     {
         name: "Sparkbar",
         icon: "ChartBarIcon",
-        tooltip: "Show kpi performance with a tiny vertical bar chart",
+        tooltip: translations.value.docs.tooltips.sparkbar[store.lang],
         link: "/docs#vue-ui-sparkbar"
     },
     {
         name: "Table",
         icon: "TableIcon",
-        tooltip: "Powerful dynamic table that allows the user to select data and calculate sums, averages, and visualize charts based on their selection",
+        tooltip: translations.value.docs.tooltips.table[store.lang],
         link: "/docs#vue-ui-table"
     },
     {
         name: "Rating",
         icon: "StarIcon",
-        tooltip: "A classic rating component to rate or visualize rating results. Control the number of stars to display, and their shape",
+        tooltip: translations.value.docs.tooltips.rating[store.lang],
         link: "/docs#vue-ui-rating"
     },
     {
         name: "Screenshot",
         icon: "ScreenshotIcon",
-        tooltip: "Select an area on the screen and either download or post the image as base64 with additional metadata",
+        tooltip: translations.value.docs.tooltips.screenshot[store.lang],
         link: "/docs#vue-ui-screenshot"
     },
     {
         name: "Skeleton",
         icon: "SkullIcon",
-        tooltip: "Display gorgeous skeleton charts while data is loading",
+        tooltip: translations.value.docs.tooltips.skeleton[store.lang],
         link: "/docs#vue-ui-skeleton"
     },
 ])
