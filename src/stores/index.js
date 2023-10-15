@@ -6,7 +6,13 @@ export const useMainStore = defineStore("main", {
             isDarkMode: false,
             isCopy: false,
             hints: {
-                pin: 'Pin the chart to the left so you can visualize configuration changes when you scroll.'
+                pin: {
+                    en: "Pin the chart to the left so you can visualize configuration changes when you scroll.",
+                    fr: "Épinglez le graphique à gauche afin de pouvoir visualiser les modifications de configuration lorsque vous faites défiler.",
+                    pt: "Fixe o gráfico à esquerda para poder visualizar as alterações de configuração ao rolar.",
+                    zh: "将图表固定在左侧，以便您在滚动时可以直观地看到配置更改。",
+                    jp: "グラフを左側に固定すると、スクロール時に構成の変更を視覚化できます。"
+                }
             },
             lang: "en",
             translations: {
@@ -351,6 +357,29 @@ export const useMainStore = defineStore("main", {
                         jp: "CSS を再配置する (styles.css とパッケージを参照)"
                     },
                     emits: {
+                        screenshot: {
+                            postImage: {
+                                en: "in post mode, returns the current image data:",
+                                fr: "en mode post, renvoie les données de l'image :",
+                                pt: "no modo post, retorna os dados da imagem atual:",
+                                zh: "在 post 模式下，返回当前图像数据：",
+                                jp: "ポストモードでは、現在の画像データを返します。"
+                            },
+                            shoot: {
+                                en: "call this method to open the component",
+                                fr: "appelez cette méthode pour ouvrir le composant",
+                                pt: "chame este método para abrir o componente",
+                                zh: "调用该方法打开组件",
+                                jp: "このメソッドを呼び出してコンポーネントを開きます"
+                            },
+                            close: {
+                                en: "call this method to close the component",
+                                fr: "appelez cette méthode pour fermer le composant",
+                                pt: "chame este método para fechar o componente",
+                                zh: "调用该方法关闭组件",
+                                jp: "このメソッドを呼び出してコンポーネントを閉じます"
+                            }
+                        },
                         xy: {
                             selectLegend: {
                                 en: "returns the current visible series when selecting / unselecting the legend:",
@@ -373,9 +402,115 @@ export const useMainStore = defineStore("main", {
                                 zh: "从父级调用此方法以获取完整格式化的数据集。",
                                 jp: "完全なフォーマット済みデータセットを取得するには、親からこのメソッドを呼び出します。"
                             }
-                        }
+                        },
+                        quadrant: {
+                            selectLegend: {
+                                en: "returns the current visible categories with their items when selecting / unselecting the legend:",
+                                fr: "renvoie les catégories actuellement visibles avec leurs éléments lors de la sélection/désélection de la légende :",
+                                pt: "retorna as categorias visíveis atuais com seus itens ao selecionar/desmarcar a legenda:",
+                                zh: "选择/取消选择图例时返回当前可见类别及其项目：",
+                                jp: "凡例を選択または選択解除すると、現在表示されているカテゴリとその項目が返されます。"
+                            },
+                            selectPlot: {
+                                en: "returns the data of the selected plot on click:",
+                                fr: "renvoie les données du tracé sélectionné au clic :",
+                                pt: "retorna os dados do gráfico selecionado ao clicar:",
+                                zh: "单击时返回所选图的数据：",
+                                jp: "クリックすると、選択したプロットのデータが返されます。"
+                            },
+                            selectSide: {
+                                en: "returns the data of all the plots located on the area on click of a corner label:",
+                                fr: "renvoie les données de toutes les parcelles situées sur la zone au clic d'une étiquette de coin :",
+                                pt: "retorna os dados de todas as parcelas localizadas na área ao clicar em um rótulo de canto:",
+                                zh: "单击角标签时返回位于该区域的所有图的数据：",
+                                jp: "コーナーラベルをクリックすると、そのエリアにあるすべてのプロットのデータを返します。"
+                            }
+                        },
+                        chestnut: {
+                            selectRoot: {
+                                en: "returns the selected root data",
+                                fr: "renvoie les données racine sélectionnées",
+                                pt: "retorna os dados raiz selecionados",
+                                zh: "返回选定的根数据",
+                                jp: "選択したルート データを返します"
+                            },
+                            selectBranch: {
+                                en: "returns the selected branch data",
+                                fr: "renvoie les données de la branche sélectionnée",
+                                pt: "retorna os dados da filial selecionada",
+                                zh: "返回选定的分支数据",
+                                jp: "選択されたブランチデータを返します"
+                            },
+                            selectNut: {
+                                en: "returns the selected donut data",
+                                fr: "renvoie les données du graphique en anneau sélectionnées",
+                                pt: "retorna os dados do gráfico de rosca selecionado",
+                                zh: "返回选定的圆环图数据",
+                                jp: "選択されたドーナツ チャート データを返します"
+                            }
+                        },
+                        onion: {
+                            selectLegend: {
+                                en: "returns the current visible series when selecting / unselecting the legend",
+                                fr: "renvoie la série visible actuelle lors de la sélection/désélection de la légende",
+                                pt: "retorna a série visível atual ao selecionar/desmarcar a legenda",
+                                zh: "选择/取消选择图例时返回当前可见系列",
+                                jp: "凡例を選択または選択解除すると、現在表示されているシリーズを返します。"
+                            }
+                        },
+                        rating: {
+                            rate: {
+                                en: "returns the selected rating value as a number",
+                                fr: "renvoie la valeur de note sélectionnée sous forme de nombre",
+                                pt: "retorna o valor da classificação selecionada como um número",
+                                zh: "以数字形式返回选定的评级值",
+                                jp: "選択した評価値を数値として返します"
+                            },
+                            getData: {
+                                en: "call this method from the parent component to get the current rating value",
+                                fr: "appelez cette méthode à partir du composant parent pour obtenir la valeur de note actuelle",
+                                pt: "chame este método do componente pai para obter o valor da classificação atual",
+                                zh: "从父组件调用此方法获取当前评分值",
+                                jp: "親コンポーネントからこのメソッドを呼び出して、現在の評価値を取得します。"
+                            },
+                            toggleReadonly: {
+                                en: "call this method from the parent component to flip the readonly or active state",
+                                fr: "appelez cette méthode à partir du composant parent pour inverser l'état actif ou lecture seule",
+                                pt: "chame este método do componente pai para inverter o estado somente leitura ou ativo",
+                                zh: "从父组件调用此方法可以翻转只读或活动状态",
+                                jp: "親コンポーネントからこのメソッドを呼び出して、読み取り専用状態とアクティブ状態を切り替えます。"
+                            }
+                        },
                     },
+                    showMoreSeries: {
+                        en: "Show more / less series :",
+                        fr: "Afficher plus / moins de séries :",
+                        pt: "Mostrar mais/menos séries:",
+                        zh: "显示更多/更少系列：",
+                        jp: "シリーズの表示を増やす/減らす:"
+                    },
+                    example: {
+                        en: "Example",
+                        fr: "Exemple",
+                        pt: "Exemplo",
+                        zh: "例子",
+                        jp: "例"
+                    },                    
                     comments: {
+                        noDataset: {
+                            en: "No dataset required",
+                            fr: "Aucun dataset requis",
+                            pt: "Nenhum dataset é necessário",
+                            zh: "无需数据集",
+                            jp: "データセットは必要ありません"
+                        },
+                        optional: {
+                            en: "Optional",
+                            fr: "Optionnel",
+                            pt: "Opcional",
+                            zh: "选修的",
+                            jp: "オプション"
+                        },
                         yourConfigHere: {
                             en: "Your config here",
                             fr: "Votre config ici",
@@ -433,6 +568,354 @@ export const useMainStore = defineStore("main", {
                                 zh: "显示进度线，适用于所有类型",
                                 jp: "進行線を表示し、すべてのタイプに機能します"
                             },
+                        },
+                        donut: {
+                            layoutTitle: {
+                                en: "display title and legend outside of the svg",
+                                fr: "afficher le titre et la légende en dehors du svg",
+                                pt: "exibir título e legenda fora do SVG",
+                                zh: "在 svg 之外显示标题和图例”",
+                                jp: "タイトルと凡例を SVG の外に表示します。」"
+                            },
+                            hideUnderValue: {
+                                en: "hide datalabels under this value",
+                                fr: "masquer les étiquettes de données sous cette valeur",
+                                pt: "ocultar rótulos de dados sob este valor",
+                                zh: "隐藏该值下的数据标签",
+                                jp: "この値の下のデータラベルを非表示にします"
+                            }
+                        },
+                        waffle: {
+                            gridSize: {
+                                en: "results in a 20 x 20 grid",
+                                fr: "grille 20 x 20",
+                                pt: "resulta em uma grade de 20 x 20",
+                                zh: "结果是 20 x 20 网格",
+                                jp: "結果は 20 x 20 グリッドになります"
+                            }
+                        },
+                        radar: {
+                            seriesValues: {
+                                en: "must be of same length as categories",
+                                fr: "doit être de même longueur que les catégories",
+                                pt: "deve ter o mesmo comprimento das categorias",
+                                zh: "必须与类别的长度相同",
+                                jp: "カテゴリと同じ長さでなければなりません"
+                            },
+                            target: {
+                                en: "if not used will default to max value",
+                                fr: "s'il n'est pas utilisé, la valeur par défaut sera la valeur maximale",
+                                pt: "se não for usado, o padrão será o valor máximo",
+                                zh: "如果不使用将默认为最大值",
+                                jp: "使用しない場合はデフォルトの最大値になります"
+                            },
+                            polygon: {
+                                en: "you must provide at least 3 series to create a polygon",
+                                fr: "vous devez fournir au moins 3 séries pour créer un polygone",
+                                pt: "você deve fornecer pelo menos 3 séries para criar um polígono",
+                                zh: "您必须提供至少 3 个系列才能创建多边形",
+                                jp: "ポリゴンを作成するには少なくとも 3 つのシリーズを指定する必要があります"
+                            },
+                            scale: {
+                                en: "Each serie can have its own scale using the target attribute, so you can represent all types of data relations (revenue, satisfaction, percentages...)",
+                                fr: "Chaque série peut avoir sa propre échelle grâce à l'attribut target, vous pouvez ainsi représenter tous types de relations de données (revenu, satisfaction, pourcentages...)",
+                                pt: "Cada série pode ter sua própria escala usando o atributo target, para que você possa representar todos os tipos de relações de dados (receita, satisfação, percentuais...)",
+                                zh: "每个系列都可以使用目标属性拥有自己的比例，因此您可以表示所有类型的数据关系（收入、满意度、百分比...）",
+                                jp: "各シリーズはターゲット属性を使用して独自のスケールを持つことができるため、あらゆるタイプのデータ関係 (収益、満足度、パーセンテージなど) を表すことができます。"
+                            }
+                        },
+                        quadrant: {
+                            useWhenAutoFalse: {
+                                en: "Used when auto is 'false'",
+                                fr: "Utilisé lorsque auto est 'false'",
+                                pt: "Usado quando auto é 'false'",
+                                zh: "当 auto 为“false”时使用",
+                                jp: "auto が「false」の場合に使用されます"
+                            }
+                        },
+                        gauge: {
+                            steps: {
+                                en: "Set up the gauge steps",
+                                fr: "Configurer les crans de la jauge",
+                                pt: "Configurar as etapas do medidor",
+                                zh: "设置仪器步骤",
+                                jp: "ゲージステップを設定する"
+                            }
+                        },
+                        onion: {
+                            optionalDisplay: {
+                                en: "Optional, display the value in the dataLabel",
+                                fr: "Facultatif, affichez la valeur dans le dataLabel",
+                                pt: "Opcional, exiba o valor no dataLabel",
+                                zh: "可选，在数据标签中显示值",
+                                jp: "オプションで、データラベルに値を表示します。"
+                            },
+                            prefix: {
+                                en: "Optional, display a symbol as a prefix before the value in the data label",
+                                fr: "Facultatif, afficher un symbole comme préfixe avant la valeur dans l'étiquette de données",
+                                pt: "Opcional, exiba um símbolo como prefixo antes do valor no rótulo de dados",
+                                zh: "可选，在数据标签中的值之前显示一个符号作为前缀",
+                                jp: "オプションで、データラベルの値の前に接頭辞としてシンボルを表示します。"
+                            },
+                            suffix: {
+                                en: "Optional, display a symbol as a suffix before the value in the data label",
+                                fr: "Facultatif, afficher un symbole comme suffixe avant la valeur dans l'étiquette de données",
+                                pt: "Opcional, exiba um símbolo como sufixo antes do valor no rótulo de dados",
+                                zh: "可选，在数据标签中的值之前显示一个符号作为后缀",
+                                jp: "オプションで、データラベルの値の前に接尾辞としてシンボルを表示します。"
+                            },
+                            gradient: {
+                                en: "works best on a white background for now",
+                                fr: "fonctionne mieux sur un fond blanc pour le moment",
+                                pt: "funciona melhor em um fundo branco por enquanto",
+                                zh: "目前在白色背景上效果最好",
+                                jp: "今のところ白い背景で最適に動作します"
+                            }
+                        },
+                        verticalBar: {
+                            breakdown: {
+                                en: "Use this attribute to breakdown a serie",
+                                fr: "Utilisez cet attribut pour décomposer une série",
+                                pt: "Use este atributo para detalhar uma série",
+                                zh: "使用此属性来细分系列",
+                                jp: "この属性を使用してシリーズを分類します"
+                            }
+                        },
+                        candlestick: {
+                            order: {
+                                en: "This order must be strictly respected :",
+                                fr: "Cet ordre doit être absolument respecté :",
+                                pt: "Esta ordem deve ser rigorosamente respeitada :",
+                                zh: "必须严格遵守此命令 :",
+                                jp: "この順序は厳密に遵守する必要があります。"
+                            }
+                        },
+                        agePyramid: {
+                            start: {
+                                en: "start from the oldest year",
+                                fr: "commencer à l'année la plus ancienne",
+                                pt: "começar do ano mais antigo",
+                                zh: "从最早的年份开始",
+                                jp: "最古の年からスタート"
+                            },
+                            arrayOfEach: {
+                                en: "Array of arrays each containing in order:",
+                                fr: "Tableau de tableaux contenant chacun dans l'ordre :",
+                                pt: "Matriz de matrizes, cada uma contendo em ordem:",
+                                zh: "每个数组按顺序包含：",
+                                jp: "それぞれが順番に含む配列の配列:"
+                            },
+                            cols: {
+                                en: "year | age | number women | number men",
+                                fr: "année | âge | nombre de femmes | nombre d'hommes",
+                                pt: "ano | idade | número de mulheres | número de homens",
+                                zh: "年 |年龄 |女性人数 |人数",
+                                jp: "年 |年齢 |数字の女性 |数字の男性"
+                            }
+                        },
+                        table: {
+                            header: {
+                                en: "Configure each column with a separate object",
+                                fr: "Configurer chaque colonne avec un objet distinct",
+                                pt: "Configure cada coluna com um objeto separado",
+                                zh: "使用单独的对象配置每一列",
+                                jp: "各列を個別のオブジェクトで構成する"
+                            },
+                            reference: {
+                                en: "reference to the name of another numeric column",
+                                fr: "référence au nom d'une autre colonne numérique",
+                                pt: "referência ao nome de outra coluna numérica",
+                                zh: "引用另一个数字列的名称",
+                                jp: "別の数値列の名前への参照"
+                            },
+                            body: {
+                                en: "each row is represented in an object, leaving room for further config in the future",
+                                fr: "chaque ligne est représentée dans un objet, laissant la place à d'autres configurations à l'avenir",
+                                pt: "cada linha é representada em um objeto, deixando espaço para configurações adicionais no futuro",
+                                zh: "每行都用一个对象表示，为将来的进一步配置留出空间",
+                                jp: "各行はオブジェクトで表され、将来さらに構成できる余地が残されています。"
+                            },
+                            td: {
+                                en: "Each element of the array is placed in the same order as the columns",
+                                fr: "Chaque élément du tableau est placé dans le même ordre que les colonnes",
+                                pt: "Cada elemento da matriz é colocado na mesma ordem que as colunas",
+                                zh: "数组的每个元素的放置顺序与列的顺序相同",
+                                jp: "配列の各要素は列と同じ順序で配置されます。"
+                            },
+                            warning1: {
+                                en: "requires an empty array in the body 'td' arrays!",
+                                fr: "nécessite un tableau vide dans les tableaux body 'td' !",
+                                pt: "requer um array vazio nos arrays 'td' do corpo!",
+                                zh: "需要主体“td”数组中有一个空数组！",
+                                jp: "本体の 'td' 配列に空の配列が必要です。"
+                            },
+                            warning2: {
+                                en: "notice the empty string, due to a config of the column with isPercentage = true and percentageTo set to another column",
+                                fr: "remarquez la chaîne vide, en raison d'une configuration de la colonne avec isPercentage = true et percentTo défini sur une autre colonne",
+                                pt: "observe a string vazia, devido a uma configuração da coluna com isPercentage = true e percentageTo definida para outra coluna",
+                                zh: "请注意空字符串，因为该列的配置 isPercentage = true 且 PercentageTo 设置为另一列",
+                                jp: "isPercentage = true およびpercentageToが別の列に設定されている列の構成により、空の文字列に注目してください。"
+                            },
+                            fewRows: {
+                                en: "A few rows as an example",
+                                fr: "Quelques lignes à titre d'exemple",
+                                pt: "Algumas linhas como exemplo",
+                                zh: "以几行为例",
+                                jp: "例としていくつかの行"
+                            }
+                        },
+                        rating: {
+                            readonly: {
+                                en: 'readonly',
+                                fr: "lecture seule",
+                                pt: "somenta leitura",
+                                zh: "只读",
+                                jp: "読み取り専用"
+                            },
+                            active: {
+                                en: "active",
+                                fr: "actif",
+                                pt: "ativo",
+                                zh: "行动",
+                                jp: "アクティブ"
+                            },
+                            p1: {
+                                en: "A component to rate, or display rating results. Shows stars by default, and you can use an image if you prefer. You can display as many stars as you want.",
+                                fr: "Un composant pour évaluer ou afficher les résultats de l'évaluation. Affiche les étoiles par défaut et vous pouvez utiliser une image si vous préférez. Vous pouvez afficher autant d'étoiles que vous le souhaitez.",
+                                pt: "Um componente para avaliar ou exibir resultados de classificação. Mostra estrelas por padrão e você pode usar uma imagem se preferir. Você pode exibir quantas estrelas quiser.",
+                                zh: "用于评分或显示评分结果的组件。默认情况下显示星星，如果您愿意，可以使用图像。您可以根据需要显示任意数量的星星。",
+                                jp: "スコアリングまたはスコアリング結果の表示に使用されるコンポーネント。デフォルトでは星が表示されますが、必要に応じて画像を使用できます。必要な数の星を表示できます。"
+                            },
+                            p2: {
+                                en: "In the active mode, the rating can be modified by the user. In readonly mode, it just displays the rating.",
+                                fr: "En mode actif, la note peut être modifiée par l'utilisateur. En mode lecture seule, il affiche simplement la note.",
+                                pt: "No modo ativo, a classificação pode ser modificada pelo usuário. No modo somente leitura, apenas exibe a classificação.",
+                                zh: "在主动模式下，用户可以修改评级。在只读模式下，它仅显示评级。",
+                                jp: "アクティブ モードでは、ユーザーは評価を変更できます。読み取り専用モードでは、評価のみが表示されます。"
+                            },
+                            simpleRating: {
+                                en: "If you have a simple rating to display",
+                                fr: "Si vous avez une note simple à afficher",
+                                pt: "Se você tiver uma classificação simples para exibir",
+                                zh: "如果您有一个简单的评级要显示",
+                                jp: "表示する簡単な評価がある場合"
+                            },
+                            breakdown: {
+                                en: "if you have a breakdown per value",
+                                fr: "si vous avez une répartition par valeur",
+                                pt: "se você tiver um detalhamento por valor",
+                                zh: "如果您有每个值的细目分类",
+                                jp: "それぞれの値の内訳があれば"
+                            },
+                            calculation: {
+                                en: "Rating will be calculated based on the breakdown provided.",
+                                fr: "La note sera calculée à partir de la répartition fournie",
+                                pt: "A classificação será calculada a partir da discriminação fornecida.",
+                                zh: "评级将根据提供的细目进行计算。",
+                                jp: "評価は提供された内訳に基づいて計算されます。"
+                            },
+                            tooltip: {
+                                en: "The tooltip can be enabled, to display the values at the hovered star (use in readonly mode).",
+                                fr: "L'info-bulle peut être activée pour afficher les valeurs au niveau de l'étoile survolée (à utiliser en mode lecture seule).",
+                                pt: "A dica de ferramenta pode ser habilitada para exibir os valores na estrela pairada (use no modo somente leitura).",
+                                zh: "可以启用工具提示，以显示悬停的星星处的值（在只读模式下使用）。",
+                                jp: "ツールチップを有効にすると、ホバーされた星に値が表示されます (読み取り専用モードで使用)。"
+                            },
+                            useImage: {
+                                en: 'or use "image" and provide url in image.src',
+                                fr: `ou utilisez "image" et fournissez l'URL dans image.src`,
+                                pt: `ou use "image" e forneça o URL em image.src`,
+                                zh: `或使用“image”并在 image.src 中提供 url`,
+                                jp: `または、「image」を使用し、image.src に URL を指定します。`
+                            },
+                            src: {
+                                en: "works like the regular src attribute",
+                                fr: "fonctionne comme l'attribut src normal",
+                                pt: "funciona como o atributo src normal",
+                                zh: "与常规 src 属性类似",
+                                jp: "通常の src 属性と同じように機能します"
+                            },
+                            alt: {
+                                en: "In image mode, the value of each star will be appended to the provided alt text",
+                                fr: "En mode image, la valeur de chaque étoile sera ajoutée au texte alt fourni",
+                                pt: "No modo de imagem, o valor de cada estrela será anexado ao texto alt fornecido",
+                                zh: "在图像模式下，每个星星的值将附加到提供的替代文本中",
+                                jp: "画像モードでは、各星の値が指定された代替テキストに追加されます。"
+                            }
+                        },
+                        skeleton: {
+                            p1: {
+                                en: "Placeholders to display while your data is getting fetched",
+                                fr: "Placeholders à afficher pendant la récupération de vos données",
+                                pt: "Placeholders para exibição durante a recuperação de seus dados",
+                                zh: "获取数据时显示的占位符",
+                                jp: "データを取得するときに表示されるプレースホルダー"
+                            }
+                        },
+                        screenshot: {
+                            tryIt: {
+                                en: "Try it",
+                                fr: "Essayer",
+                                pt: "Tente",
+                                zh: "尝试一下",
+                                jp: "それを試してみてください"
+                            },
+                            yourScreeshot: {
+                                en: "Your screenshot will appear here",
+                                fr: "Votre capture d'écran apparaîtra ici",
+                                pt: "Sua captura de tela aparecerá aqui",
+                                zh: "您的屏幕截图将出现在此处",
+                                jp: "スクリーンショットがここに表示されます"
+                            },
+                            p1: {
+                                en: "A component to take screenshots in the current page, with 2 modes: download or post.",
+                                fr: "Un composant pour prendre des captures d'écran dans la page en cours, avec 2 modes : télécharger ou poster",
+                                pt: "Um composto para capturar capturas de tela na página atual, com 2 modos: baixar ou post",
+                                zh: "当前页面截图的组件有两种模式：下载或发布。",
+                                jp: "現在のページのスクリーンショットを取得するコンポーネントには、ダウンロードと投稿の 2 つのモードがあります。"
+                            },
+                            refresh: {
+                                en: "Refresh to view your changes",
+                                fr: "Rafraîchir pour visualiser les changements",
+                                pt: "Atualize para ver suas alterações",
+                                zh: "刷新以查看您的更改",
+                                jp: "更新して変更内容を確認する"
+                            },
+                            metadata: {
+                                en: "In post mode, the following metadata will also be provided:",
+                                fr: "En mode post, les métadonnées suivantes seront également fournies :",
+                                pt: "No modo post, os seguintes metadados também serão fornecidos:",
+                                zh: "在发布模式下，还将提供以下元数据：",
+                                jp: "ポストモードでは、次のメタデータも提供されます。"
+                            },
+                            quality: {
+                                en: "don't set it up too high if you care about image size",
+                                fr: "ne le réglez pas trop haut si vous vous souciez de la taille de l'image",
+                                pt: "não configure muito alto se você se preocupa com o tamanho da imagem",
+                                zh: "如果您关心图像尺寸，请不要将其设置得太高",
+                                jp: "画像サイズを気にする場合は、あまり高く設定しないでください"
+                            },
+                            x: {
+                                en: "the image's top left x coordinate on the page",
+                                fr: "la coordonnée x en haut à gauche de l'image sur la page",
+                                pt: "a coordenada x superior esquerda da imagem na página",
+                                zh: "图像在页面上的左上角 x 坐标",
+                                jp: "ページ上の画像の左上の X 座標"
+                            },
+                            y: {
+                                en: "the image's top left y coordinate on the page",
+                                fr: "la coordonnée y en haut à gauche de l'image sur la page",
+                                pt: "a coordenada y superior esquerda da imagem na página",
+                                zh: "图像在页面上的左上角 y 坐标",
+                                jp: "ページ上の画像の左上の Y 座標"
+                            },
+                            timestamp: {
+                                en: "timestamp",
+                                fr: "horodatage",
+                                pt: "carimbo de data/hora",
+                                zh: "时间戳",
+                                jp: "タイムスタンプ"
+                            }
                         }
                     }
                 }

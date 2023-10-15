@@ -8,6 +8,7 @@ import { useMainStore } from "../../stores";
 const store = useMainStore();
 const key = ref(0);
 const hintPin = computed(() => store.hints.pin);
+const translations = computed(() => store.translations);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
@@ -319,45 +320,45 @@ function fixChart() {
                 <div v-else class="relative overflow-visible">
                     <PinIcon class="peer overflow-visible"/>
                     <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
-                        {{ hintPin }}
+                        {{ hintPin[store.lang] }}
                     </div>
                 </div>
             </button>
             <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">RESET</button>
-                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
+                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
+                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
             <VueUiOnion :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
         </div>
 
         <div class="mt-6 flex flex-col gap-3">
-            <label for="player">Show more / less series : </label>
+            <label for="player">{{ translations.docs.showMoreSeries[store.lang] }} </label>
             <input id="player" type="range" :min="1" :max="10" v-model="slicer" @input="updateDataset" class="accent-app-green max-w-[200px]">
         </div>
         <div class="w-full flex place-items-center place-content-center my-6">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green hover:shadow-xl transition-all" @click="copyToClipboard(mainConfig.vue_ui_onion)"><CopyIcon/> Copy default config as JSON</button>
+            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green hover:shadow-xl transition-all" @click="copyToClipboard(mainConfig.vue_ui_onion)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
         </div>
         <Box showEmits>
             <template v-slot:tab0>
-                Datastructure:
+                {{ translations.docs.datastructure[store.lang] }}
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
     [
         {
             name: string;
-            percentage: number; <span class="text-gray-600 dark:text-app-green">// 0 to 100</span>
-            value: number; <span class="text-gray-600 dark:text-app-green">// optional, used for display</span>
+            percentage: number; <span class="text-gray-600 dark:text-app-green">// 0 - 100</span>
+            value: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.onion.optionalDisplay[store.lang] }}</span>
             color: string; <span class="text-gray-600 dark:text-app-orange">// HEX, RGB, HSL</span>
-            prefix: string; <span class="text-gray-600 dark:text-app-green">// optional, used with the value</span>
-            suffix: string; <span class="text-gray-600 dark:text-app-green">// optional, used with the value</span>
+            prefix: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.onion.prefix[store.lang] }}</span>
+            suffix: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.onion.suffix[store.lang] }}</span>
         }
     ]
 </code>
 </pre>                
                 </div>
 
-                Example:
+                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>
@@ -392,8 +393,8 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
             </template>
             <template v-slot:tab1>
                 <div class="flex gap-2">
-                        <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">RESET</button>
-                        <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> Copy this config as JSON</button>
+                        <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
+                        <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                     </div>
                 <div class="overflow-w-auto">
 <pre>
@@ -404,7 +405,7 @@ const <span class="text-app-blue">config</span> = {
         chart: {
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">,  (default: "#FFFFFF")
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
-            useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.useGradient" @change="forceChartUpdate()">, (default: false) <span class="text-gray-600 dark:text-app-orange">// works best on a white background for now</span>
+            useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.useGradient" @change="forceChartUpdate()">, (default: false) <span class="text-gray-600 dark:text-app-orange">// {{ translations.docs.comments.onion.gradient[store.lang] }}</span>
             gradientIntensity: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.chart.gradientIntensity"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.chart.gradientIntensity">, (default: 20)
             layout: {
                 useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: true)
@@ -489,7 +490,7 @@ const <span class="text-app-blue">config</span> = {
             </template>
             <template v-slot:tab2>
                 <div><code>@selectLegend</code></div>       
-                <div class="text-gray-400 pl-5">returns the current visible series when selecting / unselecting the legend:</div>
+                <div class="text-gray-400 pl-5">{{ translations.docs.emits.onion.selectLegend[store.lang] }}</div>
 <pre>
 <code>
 [
@@ -517,7 +518,7 @@ const <span class="text-app-blue">config</span> = {
 </pre>
 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">call this method from the parent to get the full formatted dataset.</div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
     <pre>
     <span class="text-black dark:text-app-green">Using composition API:</span>
     <code>
@@ -532,10 +533,10 @@ const <span class="text-app-blue">config</span> = {
             });
 
             const config = ref({
-                <span class="text-gray-500">// your config here</span>
+                <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
             });
             const dataset = ref([
-                <span class="text-gray-500">// your dataset here</span>
+                <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
             ]);
 
         <span class="text-gray-400">&lt;/script&gt;</span>
@@ -564,10 +565,10 @@ const <span class="text-app-blue">config</span> = {
                     return {
                         onionDataset: [],
                         config: {
-                            <span class="text-gray-500">// your config here</span>
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
                         },
                         dataset: [
-                            <span class="text-gray-500">// your dataset here</span>
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
                         ]
                     }
                 },

@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 
 const store = useMainStore();
 const tableKey = ref(0);
+const translations = computed(() => store.translations);
 
 
 watch(() => store.isDarkMode, (val) => {
@@ -580,17 +581,17 @@ function copyToClipboard(conf) {
     <div class="text-center font-satoshi-bold text-app-blue text-2xl mb-12">VueUiTable</div>
     <VueUiTable :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`tablekey_${tableKey}`"/>
     <div class="w-full flex place-items-center place-content-center my-6">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black hover:shadow-xl font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_table)"><CopyIcon/> Copy default config as JSON</button>
+            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black hover:shadow-xl font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_table)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
         </div>
     <Box>
         <template v-slot:tab0>
-            Datastructure:
+            {{ translations.docs.datastructure[store.lang] }}
             <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
     {
         header: [
-            <span class="text-gray-600 dark:text-app-green">// Configure each column with a separate object:</span>
+            <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.table.header[store.lang] }}</span>
             {
                 name: string;
                 type: "text" | "date" | "numeric";
@@ -601,7 +602,7 @@ function copyToClipboard(conf) {
                 isSearch: boolean;
                 isMultiselect: boolean;
                 isPercentage: boolean;
-                percentageTo: string | undefined; <span class="text-gray-600 dark:text-app-green">// reference to the name of another numeric column</span>
+                percentageTo: string | undefined; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.table.reference[store.lang] }}</span>
                 suffix: string; (default: "")
                 prefix: string; (default: "")
                 rangeFilter: boolean;
@@ -609,9 +610,9 @@ function copyToClipboard(conf) {
             {...}
         ],
         body: [
-            <span class="text-gray-600 dark:text-app-green">// each row is represented in an object, leaving room for further config in the future</span>
+            <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.table.body[store.lang] }}</span>
             {
-                td: (number|string)[], <span class="text-gray-600 dark:text-app-green">// Each element of the array is placed in the same order as the columns</span>
+                td: (number|string)[], <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.table.td[store.lang] }}</span>
             },
             {...}
         ]
@@ -620,7 +621,7 @@ function copyToClipboard(conf) {
 </pre>
             </div>
 
-            Example:
+            {{ translations.docs.example[store.lang] }} :
             <div class="w-full overflow-x auto">
 <pre>
 <code>
@@ -725,7 +726,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
               isSort: <input type="checkbox" class="accent-app-green" v-model="mutableDataset.header[6].isSort" @change="updateTable">,
               isSearch: false,
               isMultiselect: false,
-              isPercentage: true, <span class="text-app-orange">// requires an empty array in the body td arrays!</span>
+              isPercentage: true, <span class="text-app-orange">// {{ translations.docs.comments.table.warning1[store.lang] }}</span>
               percentageTo: "base",
               suffix:"",
               prefix:"",
@@ -763,7 +764,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
           }
     ],
     body: [
-        <span class="text-gray-600 dark:text-app-green">// Just a few rows as an example:</span>
+        <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.table.fewRows[store.lang] }}</span>
         {
             td: [
                 "Réactivité du support",
@@ -772,7 +773,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
                 35,
                 4.1,
                 18.7,
-                "", <span class="text-app-orange">// notice the empty string, due to a config of the column with isPercentage = true and percentageTo set to another column</span>
+                "", <span class="text-app-orange">// {{ translations.docs.comments.table.warning2[store.lang] }}</span>
                 -27,
                 109
             ],
@@ -785,7 +786,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
                 25,
                 2,
                 74,
-                "", <span class="text-app-orange">// notice the empty string, due to a config of the column with isPercentage = true and percentageTo set to another column</span>
+                "", <span class="text-app-orange">// {{ translations.docs.comments.table.warning2[store.lang] }}</span>
                 35,
                 276
             ]
@@ -800,8 +801,8 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
         </template>
         <template v-slot:tab1>
             <div class="flex gap-2">
-            <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">RESET</button>
-            <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> Copy this config as JSON</button>
+            <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
+            <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
         </div>
 <pre>
 <code>

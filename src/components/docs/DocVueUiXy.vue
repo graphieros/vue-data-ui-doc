@@ -351,7 +351,7 @@ function fixChart() {
                 <div v-else class="relative overflow-visible">
                     <PinIcon class="peer overflow-visible"/>
                     <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
-                        {{ hintPin }}
+                        {{ hintPin[store.lang] }}
                     </div>
                 </div>
             </button>
@@ -390,7 +390,7 @@ function fixChart() {
             </div>
 
 
-            Example:
+            {{ translations.docs.example[store.lang] }} :
             <div class="w-full overflow-x-auto">
                     
 <pre class="break-words">

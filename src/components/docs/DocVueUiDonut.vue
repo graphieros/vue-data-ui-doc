@@ -8,6 +8,8 @@ import { useMainStore } from "../../stores";
 const store = useMainStore();
 const key = ref(0);
 const hintPin = computed(() => store.hints.pin);
+const translations = computed(() => store.translations);
+
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
@@ -340,22 +342,22 @@ function fixChart() {
                 <div v-else class="relative overflow-visible">
                     <PinIcon class="peer overflow-visible"/>
                     <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
-                        {{ hintPin }}
+                        {{ hintPin[store.lang] }}
                     </div>
                 </div>
             </button>
             <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">RESET</button>
-                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
+                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
+                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
             <VueUiDonut :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_donut)"><CopyIcon/> Copy default config as JSON</button>
+            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_donut)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
         </div>
         <Box showEmits>
             <template v-slot:tab0>
-                Datastructure:
+                {{ translations.docs.datastructure[store.lang] }}
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
@@ -372,7 +374,7 @@ function fixChart() {
                 </div>
 
 
-                Example:
+                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>
@@ -400,8 +402,8 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
 
             <template v-slot:tab1>
                 <div class="flex gap-2">
-                    <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">RESET</button>
-                        <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> Copy this config as JSON</button>
+                    <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
+                        <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/>{{  translations.docs.copyThisConfig[store.lang]  }}</button>
                 </div>
 <pre>
 <code>
@@ -414,11 +416,11 @@ const <span class="text-app-blue">config</span> = {
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
             layout: {
-                useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: true) <span class="text-gray-600 dark:text-app-blue">// display title & legend outside of the svg</span>
+                useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: true) <span class="text-gray-600 dark:text-app-blue">// {{ translations.docs.comments.donut.layoutTitle[store.lang] }}</span>
                 labels: {
                     dataLabels: {
                         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.dataLabels.show" @change="forceChartUpdate()">, (default: true)
-                        hideUnderValue: <input v-if="isDarkMode" type="number" min="0" max="10" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.hideUnderValue"><input v-else type="number" min="0" max="10" v-model="mutableConfig.style.chart.layout.labels.dataLabels.hideUnderValue">, (default: 3) <span class="text-gray-600 dark:text-app-blue">// hide datalabels under this value</span>
+                        hideUnderValue: <input v-if="isDarkMode" type="number" min="0" max="10" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.hideUnderValue"><input v-else type="number" min="0" max="10" v-model="mutableConfig.style.chart.layout.labels.dataLabels.hideUnderValue">, (default: 3) <span class="text-gray-600 dark:text-app-blue">// {{ translations.docs.comments.donut.hideUnderValue[store.lang]}} </span>
                     },
                     percentage: {
                         color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.labels.percentage.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.labels.percentage.color">, (default: "#2D353C")
@@ -539,7 +541,7 @@ const <span class="text-app-blue">config</span> = {
 
             <template v-slot:tab2>
                 <div><code><b>@selectLegend</b></code></div>
-                <div class="text-gray-400 pl-5">returns the current visible series when selecting / unselecting the legend:</div>
+                <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
     <pre>
     <code>
     [
@@ -554,7 +556,7 @@ const <span class="text-app-blue">config</span> = {
     </pre>
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">call this method from the parent to get the full formatted dataset.</div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
     <pre>
     <span class="text-black dark:text-app-green">Using composition API:</span>
     <code>
@@ -569,10 +571,10 @@ const <span class="text-app-blue">config</span> = {
             });
 
             const config = ref({
-                <span class="text-gray-500">// your config here</span>
+                <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
             });
             const dataset = ref([
-                <span class="text-gray-500">// your dataset here</span>
+                <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
             ]);
 
         <span class="text-gray-400">&lt;/script&gt;</span>
@@ -601,10 +603,10 @@ const <span class="text-app-blue">config</span> = {
                     return {
                         donutDataset: [],
                         config: {
-                            <span class="text-gray-500">// your config here</span>
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
                         },
                         dataset: [
-                            <span class="text-gray-500">// your dataset here</span>
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
                         ]
                     }
                 },

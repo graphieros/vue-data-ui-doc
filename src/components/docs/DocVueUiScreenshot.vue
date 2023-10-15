@@ -7,7 +7,7 @@ import { useMainStore } from "../../stores";
 
 const store = useMainStore();
 const step = ref(0)
-
+const translations = computed(() => store.translations);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
@@ -113,7 +113,7 @@ const darkModePostConfig = ref({
       },
       captureArea: {
         initialHeight: 200,
-        initialWidth: 200,
+        initialWidth: 300,
         border: "dashed 2px #CCCCCC",
         background: "radial-gradient(transparent, rgba(66,211,146,0.2))"
       },
@@ -332,7 +332,7 @@ function copyDefaultConf(conf) {
         <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiScreenshot</h1>
         <div class="w-full flex flex-col gap-6 place-items-center place-content-center">
             <h2 class="text-center text-gray-500">
-                A component to take screenshots in the current page, with 2 modes: download or post.
+                {{ translations.docs.comments.screenshot.p1[store.lang] }}
             </h2>
             <div class="flex flex-row gap-6">
                 <div class="flex flex-row gap-1">
@@ -344,12 +344,12 @@ function copyDefaultConf(conf) {
                     <label for="ss-download">download</label>
                 </div>
             </div>
-            <button class="rounded-md border border-app-green py-2 px-6 hover:bg-gray-200 dark:hover:bg-gray-800" @click="openScreenshot">try it</button>
+            <button class="rounded-md border border-app-green py-2 px-6 hover:bg-gray-200 dark:hover:bg-gray-800" @click="openScreenshot">{{ translations.docs.comments.screenshot.tryIt[store.lang] }}</button>
             <div v-if="mode === 'post'" class="border border-dashed border-gray-500 rounded-md p-6">
-                <div v-if="!pic" class="text-gray-500">Your screenshot will appear here</div>
+                <div v-if="!pic" class="text-gray-500">{{ translations.docs.comments.screenshot.yourScreeshot[store.lang] }}</div>
                 <img v-if="pic" :src="pic" class="w-full border border-gray-700">
                 <div v-if="pic" class="mt-6">
-                    <div class="text-gray-500">Post mode will also provide the following metadata along with the base64 image:</div>
+                    <div class="text-gray-500">{{ translations.docs.comments.screenshot.metadata[store.lang] }}</div>
                     <div class="mt-3 text-app-green">{{ imageData }}</div>
                 </div>
                 <div v-if="pic" class="w-full flex place-items-center place-content-center mt-6">
@@ -358,24 +358,24 @@ function copyDefaultConf(conf) {
             </div>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green hover:shadow-xl transition-all" @click="copyDefaultConf(mainConfig.vue_ui_screenshot)"><CopyIcon/> Copy default config as JSON</button>
+            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green hover:shadow-xl transition-all" @click="copyDefaultConf(mainConfig.vue_ui_screenshot)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
         </div>
         <Box showEmits :activeTab="1">
             <template v-slot:tab0>
-                No dataset required, only config.
+              {{ translations.docs.comments.noDataset[store.lang] }}
             </template>
             <template v-slot:tab1>
                 <div class="flex gap-2">
-                        <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">RESET</button>
-                        <button @click="copyToClipboard" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
+                        <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
+                        <button @click="copyToClipboard" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                     </div>
-                <div class="text-black dark:text-app-green hover:underline mt-4 cursor-pointer" role="button" @click="reopen">Refresh VueUiScreenshot to view your changes</div>
+                <div class="text-black dark:text-app-green hover:underline mt-4 cursor-pointer" role="button" @click="reopen">{{ translations.docs.comments.screenshot.refresh[store.lang] }}</div>
                 <div class="overflow-x-auto">
 <pre>
 <code v-if="mode === 'post'">
 const <span class="text-black dark:text-app-blue">config</span> = {
     mode: "post", (default:"download")
-    quality: <input v-if="isDarkMode" type="number" min="0.1" max="3" step="0.1" v-model="mutablePostConfigDarkMode.quality"><input v-else type="number" min="0.1" max="3" step="0.1" v-model="mutablePostConfig.quality">, (default: 1) <span class="text-gray-600 dark:text-app-green">// don't set it up too high if you care about image size</span>
+    quality: <input v-if="isDarkMode" type="number" min="0.1" max="3" step="0.1" v-model="mutablePostConfigDarkMode.quality"><input v-else type="number" min="0.1" max="3" step="0.1" v-model="mutablePostConfig.quality">, (default: 1) <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.screenshot.quality[store.lang] }}</span>
     style: {
         info: {
             background: <input v-if="isDarkMode" type="color" v-model="mutablePostConfigDarkMode.style.info.background"><input v-else type="color" v-model="mutablePostConfig.style.info.background">, (default: "#FFFFFF")
@@ -489,21 +489,21 @@ const <span class="text-black dark:text-app-blue">config</span> = {
             </template>
             <template v-slot:tab2>
                 <div><code><b>@postImage</b></code></div>
-                <div class="text-gray-400 pl-5">in post mode, returns the current image data:</div>
+                <div class="text-gray-400 pl-5">{{translations.docs.emits.screenshot.postImage[store.lang]}}</div>
 <pre>
 <code>
     {
-        createdAt: number; <span class="text-gray-500">// timestamp</span>
+        createdAt: number; <span class="text-gray-500">// {{ translations.docs.comments.screenshot.timestamp[store.lang] }}</span>
         deviceType: "desktop" | "tablet" | "mobile",
         fileSize: string; <span class="text-gray-500">// in KB</span>
         image: string; <span class="text-gray-500">// base64 format</span>
         screenWidth: number;
-        x: number; <span class="text-gray-500">// the image's top left x coordinate on the page</span>
-        y: number; <span class="text-gray-500">// the image's top left y coordinate on the page</span>
+        x: number; <span class="text-gray-500">// {{ translations.docs.comments.screenshot.x[store.lang] }}</span>
+        y: number; <span class="text-gray-500">// {{ translations.docs.comments.screenshot.y[store.lang] }}</span>
     }
 </code>
 </pre>
-Example:
+{{ translations.docs.example[store.lang] }}:
 <pre>
 <code>
     &lt;script setup&gt;
@@ -543,7 +543,7 @@ Example:
 </pre>
             <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                 <div><code><b>shoot</b></code></div>
-                <div class="text-gray-400 pl-5">call this method to open the component</div>
+                <div class="text-gray-400 pl-5">{{  translations.docs.emits.screenshot.shoot[store.lang] }}</div>
 <pre>
 <code>
     &lt;script setup&gt;
@@ -568,7 +568,7 @@ Example:
 </code>
 </pre>
                 <div class="pt-6 border-t mt-6 border-gray-700"><code><b>close</b></code></div>
-                <div class="text-gray-400 pl-5">call this method to close the component</div>
+                <div class="text-gray-400 pl-5">{{ translations.docs.emits.screenshot.close[store.lang] }}</div>
 <pre>
 <code>
     &lt;script setup&gt;

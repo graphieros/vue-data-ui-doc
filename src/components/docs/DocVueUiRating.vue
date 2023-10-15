@@ -8,6 +8,7 @@ import { useMainStore } from "../../stores";
 const store = useMainStore();
 const key = ref(0);
 const hintPin = computed(() => store.hints.pin);
+const translations = computed(() => store.translations);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
@@ -203,18 +204,18 @@ function showRating(r) {
     <div>
         <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiRating</h1>
         <h2 class="text-center text-gray-500">
-            A component to rate, or display rating results. Shows stars by default, and you can use an image if you prefer. You can display as many stars as you want.<br><br>
-            In the active mode, the rating can be modified by the user. In readonly mode, it just displays the rating.
+            {{ translations.docs.comments.rating.p1[store.lang] }}<br><br>
+            {{ translations.docs.comments.rating.p2[store.lang] }}
         </h2>
 
         <div class="flex flex-row gap-6 justify-center mt-6">
                 <div class="flex flex-row gap-1">
                     <input type="radio" id="r-read" name="r-readonly" value="readonly" v-model="mode" class="accent-app-green" @change="setReadonly(true)">
-                    <label for="r-read">readonly</label>
+                    <label for="r-read">{{ translations.docs.comments.rating.readonly[store.lang] }}</label>
                 </div>
                 <div class="flex flex-row gap-1">
                     <input type="radio" id="r-act" name="r-readonly" value="active" v-model="mode" class="accent-app-green" @change="setReadonly(false)">
-                    <label for="r-act">active</label>
+                    <label for="r-act">{{ translations.docs.comments.rating.active[store.lang] }}</label>
                 </div>
             </div>
             <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-fit'}`">
@@ -223,32 +224,32 @@ function showRating(r) {
                 <div v-else class="relative overflow-visible">
                     <PinIcon class="peer overflow-visible"/>
                     <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
-                        {{ hintPin }}
+                        {{ hintPin[store.lang] }}
                     </div>
                 </div>
             </button>
             <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">RESET</button>
-                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> Copy this config as JSON</button>
+                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
+                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
             <VueUiRating ref="rating" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" @rate="showRating"/>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_rating)"><CopyIcon/> Copy default config as JSON</button>
+            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_rating)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
         </div>
         <Box showEmits>
             <template v-slot:tab0>
-                Datastructure:
+                {{ translations.docs.datastructure[store.lang] }}
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
 <span class="text-gray-500">
-// if you only have a simple rating to pass in:
+// {{ translations.docs.comments.rating.simpleRating[store.lang] }} :
 </span>
 const <span class="text-black dark:text-app-green">dataset</span> = { rating: 3.6 };
 
 <span class="text-gray-500">
-// if you have a breakdown per value:
+// {{ translations.docs.comments.rating.breakdown[store.lang] }} :
 </span>
 const <span class="text-black dark:text-app-green">dataset</span> = {
     rating: {
@@ -259,22 +260,22 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
         "5": 2125
     }
 };
-<span class="text-gray-500">// The rating will be calculated from the breakdown. 
-// The tooltip can be enabled, to display the values at the hovered star.</span>
+<span class="text-gray-500">// {{ translations.docs.comments.rating.calculation[store.lang] }} 
+// {{ translations.docs.comments.rating.tooltip[store.lang] }}</span>
 </code>
 </pre>                
                 </div>
             </template>
             <template v-slot:tab1>
                 <div class="flex gap-2">
-                    <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">RESET</button>
-                    <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> Copy this config as JSON</button>
+                    <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
+                    <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                 </div>
                 <div class="overflow-w-auto">
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config</span> = {
-    type: "star", <span class="text-gray-500">// or use "image" and provide url in image.src</span>
+    type: "star", <span class="text-gray-500">// {{ translations.docs.comments.rating.useImage[store.lang] }}</span>
     readonly: {{ mode === "readonly" ? "true" : "false" }}, (default: false)
     from: <input v-if="isDarkMode" type="number" min="0" max="9" v-model="mutableConfigDarkMode.from" @change="forceChartUpdate()"><input v-else type="number" min="0" max="9" v-model="mutableConfig.from" @change="forceChartUpdate()">, (default: 1)
     to: <input v-if="isDarkMode" type="number" min="1" max="10" v-model="mutableConfigDarkMode.to" @change="forceChartUpdate()"><input v-else type="number" min="1" max="10" v-model="mutableConfig.to" @change="forceChartUpdate()">, (default: 5)
@@ -291,9 +292,9 @@ const <span class="text-black dark:text-app-blue">config</span> = {
             useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.star.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.star.useGradient" @change="forceChartUpdate()">, (default: true)
         },
         image: {
-            src: "", <span class="text-gray-500">// works like your usual src attribute</span>
+            src: "", <span class="text-gray-500">// {{ translations.docs.comments.rating.src[store.lang] }}</span>
             inactiveOpacity: 0.3,
-            alt: "rating image" <span class="text-gray-500">// the value of each star will be appended for each item</span>
+            alt: "rating image" <span class="text-gray-500">// {{ translations.docs.comments.rating.alt[store.lang] }}</span>
         },
         title: {
             textAlign: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.textAlign"><input v-else type="text" v-model="mutableConfig.style.title.textAlign">, (default: "center". Other options: "left", "right")
@@ -338,11 +339,11 @@ const <span class="text-black dark:text-app-blue">config</span> = {
             </template>
             <template v-slot:tab2>
                 <div><code>@rate</code></div>       
-                <div class="text-gray-400 pl-5 mb-6">returns the selected rating value as a number</div>
+                <div class="text-gray-400 pl-5 mb-6">{{ translations.docs.emits.rating.rate[store.lang] }}</div>
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">call this method from the parent to get the current rating value</div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.rating.getData[store.lang] }}</div>
                     <pre>
     <span class="text-black dark:text-app-green">Using composition API:</span>
     <code>
@@ -357,10 +358,10 @@ const <span class="text-black dark:text-app-blue">config</span> = {
             });
 
             const config = ref({
-                <span class="text-gray-500">// your config here</span>
+                <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
             });
             const dataset = ref({
-                <span class="text-gray-500">// your dataset here</span>
+                <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
             });
 
         <span class="text-gray-400">&lt;/script&gt;</span>
@@ -389,10 +390,10 @@ const <span class="text-black dark:text-app-blue">config</span> = {
                     return {
                         currentRating: null,
                         config: {
-                            <span class="text-gray-500">// your config here</span>
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
                         },
                         dataset: {
-                            <span class="text-gray-500">// your dataset here</span>
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
                         }
                     }
                 },
@@ -407,7 +408,7 @@ const <span class="text-black dark:text-app-blue">config</span> = {
 
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>toggleReadonly</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">call this method from the parent to flip the readonly | active state</div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.rating.toggleReadonly[store.lang] }}</div>
                 </div>
             </template>
         </Box>
