@@ -22,6 +22,7 @@ import DocVueUiCandlestick from "../components/docs/DocVueUiCandlestick.vue";
 import DocVueUiAgePyramid from "../components/docs/DocVueUiAgePyramid.vue";
 import DocVueUiSparkbar from "../components/docs/DocVueUiSparkbar.vue";
 import MenuDetail from "../components/MenuDetail.vue";
+import DocVueUiDashboard from "../components/docs/DocVueUiDashboard.vue";
 
 import { CheckIcon } from "vue-tabler-icons";
 
@@ -157,6 +158,12 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.skeleton[store.lang],
         link: "/docs#vue-ui-skeleton"
     },
+    {
+        name: "Dashboard",
+        icon: "LayoutDashboardIcon",
+        tooltip: translations.value.docs.tooltips.dashboard[store.lang],
+        link: "/docs#vue-ui-dashboard"
+    },
 ])
 
 </script>
@@ -187,6 +194,7 @@ const menuItems = computed(() => [
             <DocVueUiCandlestick v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-candlestick'"/>
             <DocVueUiAgePyramid v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-age-pyramid'"/>
             <DocVueUiSparkbar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkbar'"/>
+            <DocVueUiDashboard v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-dashboard'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">

@@ -385,7 +385,7 @@ function fixChart() {
 </code>
 </pre>                
                 </div>
-                Example:
+                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>

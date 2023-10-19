@@ -11,7 +11,8 @@ export const useMainStore = defineStore("main", {
                     fr: "Épinglez le graphique à gauche afin de pouvoir visualiser les modifications de configuration lorsque vous faites défiler.",
                     pt: "Fixe o gráfico à esquerda para poder visualizar as alterações de configuração ao rolar.",
                     zh: "将图表固定在左侧，以便您在滚动时可以直观地看到配置更改。",
-                    jp: "グラフを左側に固定すると、スクロール時に構成の変更を視覚化できます。"
+                    jp: "グラフを左側に固定すると、スクロール時に構成の変更を視覚化できます。",
+                    es: "Fije el gráfico a la izquierda para que pueda visualizar los cambios de configuración cuando se desplaza."
                 }
             },
             lang: "en",
@@ -21,28 +22,32 @@ export const useMainStore = defineStore("main", {
                     fr: "Une bibliothèque de composants Vue de visualisation de données qui autonomise les utilisateurs",
                     pt: "Uma biblioteca de componentes Vue para visualização de dados que capacita o usuário",
                     zh: "一个赋予用户权力的数据可视化Vue组件库",
-                    jp: "ユーザーをエンパワーするデータ可視化Vueコンポーネントライブラリ"
+                    jp: "ユーザーをエンパワーするデータ可視化Vueコンポーネントライブラリ",
+                    es: "Una biblioteca de componentes Vue de visualización de datos que potencia al usuario"
                 },
                 github: {
                     en: "Github repo",
                     fr: "Github repo",
                     pt: "Github repo",
                     zh: "Github",
-                    jp: "Github"
+                    jp: "Github",
+                    es: "Github"
                 },
                 lightMode: {
                     en: "Switch to light mode",
                     fr: "Passer en thème clair",
                     pt: "Mudar para o modo claro",
                     zh: "切换到灯光模式",
-                    jp: "ライトモードに切り替える"
+                    jp: "ライトモードに切り替える",
+                    es: "Cambiar al modo de luz"
                 },
                 darkMode: {
                     en: "Switch to dark mode",
                     fr: "Passer en thème sombre",
                     pt: "Mudar para o modo escuro",
                     zh: "切换到深色模式",
-                    jp: "ダークモードに切り替える"
+                    jp: "ダークモードに切り替える",
+                    es: "Cambiar al modo oscuro"
                 },
                 menu: {
                     installation: {
@@ -50,35 +55,40 @@ export const useMainStore = defineStore("main", {
                         fr: "Installation",
                         pt: "Instalação",
                         zh: "安装",
-                        jp: "インストール"
+                        jp: "インストール",
+                        es: "Instalación"
                     },
                     docs: {
                         en: "Docs",
                         fr: "Docs",
                         pt: "Documentação",
                         zh: "文档",
-                        jp: "ドキュメンテーション"
+                        jp: "ドキュメンテーション",
+                        es: "Documentación"
                     },
                     dashboard: {
                         en: "Dashboard",
                         fr: "Dashboard",
                         pt: "Dashboard",
                         zh: "仪表板",
-                        jp: "ダッシュボード"
+                        jp: "ダッシュボード",
+                        es: "Panel"
                     },
                     versions: {
                         en: "Versions",
                         fr: "Versions",
                         pt: "Versões",
                         zh: "版本",
-                        jp: "バージョン"
+                        jp: "バージョン",
+                        es: "Versiones"
                     },
                     about: {
                         en: "About",
                         fr: "A propos",
                         pt: "Sobre",
                         zh: "关于",
-                        jp: "について"
+                        jp: "について",
+                        es: "A proposito"
                     }
                 },
                 installation: {
@@ -87,7 +97,8 @@ export const useMainStore = defineStore("main", {
                         fr: "Typescript: les types sont disponibles dans le fichier 'vue-data-ui.d.ts' dans le dossier 'types' du package.",
                         pt: "Para usuários TypeScript: os tipos estão disponíveis no arquivo 'vue-data-ui.d.ts' na pasta de tipos do package.",
                         zh: "对于 TypeScript 用户：类型可在包的 types 文件夹下的“vue-data-ui.d.ts”文件中找到。",
-                        jp: "TypeScript ユーザーの場合: タイプは、パッケージの Types フォルダーにある「vue-data-ui.d.ts」ファイルで入手できます。"
+                        jp: "TypeScript ユーザーの場合: タイプは、パッケージの Types フォルダーにある「vue-data-ui.d.ts」ファイルで入手できます。",
+                        es: "Para usuarios de TypeScript: los tipos están disponibles en el archivo 'vue-data-ui.d.ts' en la carpeta de tipos del paquete."
                     },
                     comments: {
                         includeCss: {
@@ -95,21 +106,24 @@ export const useMainStore = defineStore("main", {
                             fr: "Inclure le css",
                             pt: "Incluir o css",
                             zh: "包括CSS",
-                            jp: "CSSを含める"
+                            jp: "CSSを含める",
+                            es: "incluir el css"
                         },
                         global: {
                             en: "You can declare Vue Data UI components globally",
                             fr: "Vous pouvez importer les composants Vue Data UI globalement",
                             pt: "Você pode declarar componentes Vue Data UI globalmente",
                             zh: "您可以全局声明 Vue Data UI 组件",
-                            jp: "Vue Data UI コンポーネントはグローバルに宣言できます"
+                            jp: "Vue Data UI コンポーネントはグローバルに宣言できます",
+                            es: "Puede declarar los componentes de la interfaz de usuario de Vue Data globalmente"
                         },
                         import: {
                             en: "Or you can import just what you need in your files",
                             fr: "Ou vous pouvez juste importer les composants dont vous avez besoin",
                             pt: "Ou você pode importar apenas o que precisa em seus arquivos",
                             zh: "或者您可以从文件中导入您需要的内容",
-                            jp: "または、ファイル内の必要なものだけをインポートすることもできます"
+                            jp: "または、ファイル内の必要なものだけをインポートすることもできます",
+                            es: "O puedes importar sólo lo que necesitas en tus archivos"
                         }
                     }
                 },
@@ -119,42 +133,48 @@ export const useMainStore = defineStore("main", {
                         fr: "Vue Data UI est née d'une simple question: si vos dashboards sont si bons, pourquoi les utilisateurs demandent-ils encore des exports Excel ?",
                         pt: "O Vue Data UI nasceu de uma única pergunta: se seus dashboards são tão bons, por que seus usuários estão solicitando recursos de exportação do Excel?",
                         zh: "Vue Data UI 诞生于一个问题：如果你的仪表板这么好，为什么你的用户要求 Excel 导出功能？",
-                        jp: "Vue Data UI は 1 つの疑問から生まれました。 「ダッシュボードがそれほど優れているのであれば、なぜユーザーは Excel エクスポート機能を必要とするのでしょうか?」"
+                        jp: "Vue Data UI は 1 つの疑問から生まれました。 「ダッシュボードがそれほど優れているのであれば、なぜユーザーは Excel エクスポート機能を必要とするのでしょうか?」",
+                        es: "Vue Data UI nació de una sola pregunta: si sus paneles son tan buenos, ¿por qué sus usuarios solicitan funciones de exportación a Excel?"
                     },
                     p2: {
                         en: "The purpose of this open-source library is to offer end users a set of in-built tools around charts and tables to reduce the friction of having to recompute exported data. Of course, Vue Data UI keeps the option to export to Excel and PDF, just in case.",
                         fr: "Le but de cette bibliothèque open source est d'offrir aux utilisateurs finaux un ensemble d'outils intégrés autour des graphiques et des tableaux pour réduire la friction liée au recalcul des données exportées. Bien entendu, Vue Data UI conserve la possibilité d'exporter vers Excel et PDF, juste au cas où.",
                         pt: "O objetivo desta biblioteca de código aberto é oferecer aos usuários finais um conjunto de ferramentas integradas em gráficos e tabelas para reduzir o atrito de ter que recalcular os dados exportados. Claro, o Vue Data UI mantém a opção de exportar para Excel e PDF, apenas por precaução.",
                         zh: "这个开源库的目的是为最终用户提供一组围绕图表和表格的内置工具，以减少重新计算导出数据的麻烦。当然，Vue Data UI 保留了导出为 Excel 和 PDF 的选项，以防万一。",
-                        jp: "このオープン ソース ライブラリの目的は、エクスポートされたデータを再計算する労力を軽減するためのチャートとテーブル用の一連の組み込みツールをエンド ユーザーに提供することです。もちろん、Vue Data UI には、万が一に備えて Excel または PDF にエクスポートするオプションが用意されています。"
+                        jp: "このオープン ソース ライブラリの目的は、エクスポートされたデータを再計算する労力を軽減するためのチャートとテーブル用の一連の組み込みツールをエンド ユーザーに提供することです。もちろん、Vue Data UI には、万が一に備えて Excel または PDF にエクスポートするオプションが用意されています。",
+                        es: "El propósito de esta biblioteca de código abierto es ofrecer a los usuarios finales un conjunto de herramientas integradas en torno a gráficos y tablas para reducir la fricción de tener que volver a calcular los datos exportados. Por supuesto, Vue Data UI mantiene la opción de exportar a Excel y PDF, por si acaso."
                     },
                     p3: {
                         en: "Vue Data UI offers a set of classic chart types, along with new or rare items, such as",
                         fr: "Vue Data UI propose un ensemble de types de graphiques classiques, ainsi que des composants nouveaux ou rares, tels que",
                         pt: "Vue Data UI oferece um conjunto de tipos de gráficos clássicos, junto com itens novos ou raros, como",
                         zh: "Vue Data UI 提供了一组经典的图表类型，以及新的或稀有的项目，例如",
-                        jp: "Vue Data UI は、一連の古典的なチャート タイプに加えて、などの新しいアイテムや珍しいアイテムを提供します"
+                        jp: "Vue Data UI は、一連の古典的なチャート タイプに加えて、などの新しいアイテムや珍しいアイテムを提供します",
+                        es: "Vue Data UI ofrece un conjunto de tipos de gráficos clásicos, junto con elementos nuevos o raros, como"
                     },
                     p4: {
                         en: "To make the experience of your dashboards as smooth as possible, Vue Data UI also ships with a set of utilities, such as",
                         fr: "Pour rendre l'expérience de vos tableaux de bord aussi fluide que possible, Vue Data UI est également livré avec un ensemble d'utilitaires, tels que",
                         pt: "Para tornar a experiência de seus painéis o mais tranquila possível, o Vue Data UI também vem com um conjunto de utilitários, como",
                         zh: "为了使仪表板体验尽可能流畅，Vue Data UI 还附带了一组实用程序，例如",
-                        jp: "ダッシュボードのエクスペリエンスをできるだけスムーズにするために、Vue Data UI には VueUiScreenshot や VueUiSkeleton などの一連のユーティリティも付属しています。"
+                        jp: "ダッシュボードのエクスペリエンスをできるだけスムーズにするために、Vue Data UI には VueUiScreenshot や VueUiSkeleton などの一連のユーティリティも付属しています。",
+                        es: "Para que la experiencia de sus paneles sea lo más fluida posible, Vue Data UI también incluye un conjunto de utilidades, como"
                     },
                     maintainers: {
                         en: "Maintainer",
                         fr: "Mainteneur",
                         pt: "Mantenedor",
                         zh: "维护者",
-                        jp: "メンテナー"
+                        jp: "メンテナー",
+                        es: "Mantenedor"
                     },
                     alp: {
                         en: "Alec Lloyd Probert is a front-end developer, formerly a data analyst, with a strong passion for data visualization and VueJs.",
                         fr: "Alec Lloyd Probert est un développeur front-end, ancien data analyste, passionné par la visualisation de données et VueJs.",
                         pt: "Alec Lloyd Probert é desenvolvedor front-end, ex-analista de dados, com grande paixão por visualização de dados e VueJs.",
                         zh: "Alec Lloyd Probert 是一名前端开发人员和前数据分析师，对数据可视化和 VueJs 充满热情。",
-                        jp: "Alec Lloyd Probert は、データ視覚化と VueJs に情熱を注ぐフロントエンド開発者であり、元データ アナリストです。"
+                        jp: "Alec Lloyd Probert は、データ視覚化と VueJs に情熱を注ぐフロントエンド開発者であり、元データ アナリストです。",
+                        es: "Alec Lloyd Probert es un desarrollador front-end, anteriormente analista de datos, con una gran pasión por la visualización de datos y VueJ."
                     }
                 },
                 docs: {
@@ -163,162 +183,193 @@ export const useMainStore = defineStore("main", {
                         fr: "2 props sont requises",
                         pt: "2 props necessários",
                         zh: "需要2个属性",
-                        jp: "2 つの属性が必要です"
+                        jp: "2 つの属性が必要です",
+                        es: "Se requieren 2 props"
                     },
                     dataset: {
                         en: "dataset",
                         fr: "dataset",
                         pt: "dataset",
                         zh: "数据集",
-                        jp: "データセット"
+                        jp: "データセット",
+                        es: "dataset"
                     },
                     config: {
                         en: "config",
                         fr: "config",
                         pt: "config",
                         zh: "配置",
-                        jp: "構成"
+                        jp: "構成",
+                        es: "config"
                     },
                     p1: {
                         en: "Documentation pages provide you with a config tab where you can tweak your config and save it as JSON. You can also switch from dark to light themes to save configs for both modes.",
                         fr: "Les pages de documentation vous fournissent un onglet de configuration dans lequel vous pouvez modifier votre configuration et l'enregistrer au format JSON. Vous pouvez également passer des thèmes sombres aux thèmes clairs pour enregistrer les configurations pour les deux modes.",
                         pt: "As páginas de documentação fornecem uma guia de configuração onde você pode ajustar sua configuração e salvá-la como JSON. Você também pode alternar entre temas escuros e claros para salvar as configurações de ambos os modos.",
                         zh: "文档页面为您提供了一个配置选项卡，您可以在其中调整配置并将其保存为 JSON。您还可以从深色主题切换到浅色主题以保存两种模式的配置。",
-                        jp: "ドキュメント ページには、構成を調整して JSON として保存できる構成タブが表示されます。ダークテーマからライトテーマに切り替えて、両方のモードの設定を保存することもできます。"
+                        jp: "ドキュメント ページには、構成を調整して JSON として保存できる構成タブが表示されます。ダークテーマからライトテーマに切り替えて、両方のモードの設定を保存することもできます。",
+                        es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        dashboard: {
+                            en: "A drag and resize component to place your charts, and allow the user to save their position.",
+                            fr: "Un composant glisser et redimensionner pour placer vos graphiques et permettre à l'utilisateur de sauvegarder sa position.",
+                            pt: "Um componente de arrastar e redimensionar para posicionar seus gráficos e permitir ao usuário salvar sua posição.",
+                            zh: "拖动和调整大小的组件来放置图表，并允许用户保存其位置。",
+                            jp: "コンポーネントをドラッグしてサイズ変更してチャートを配置し、ユーザーがその位置を保存できるようにします。",
+                            es: "Un componente de arrastrar y cambiar el tamaño para colocar sus gráficos y permitir al usuario guardar su posición.",
+                        },
                         xy: {
                             en: "Lines, bars, plots using classic x and y axis representation",
                             fr: "Lignes, barres, tracés utilisant la représentation classique des axes X et Y",
                             pt: "Linhas, barras, gráficos usando representação clássica dos eixos x e y",
                             zh: "使用经典 x 和 y 轴的线条、条形图、图表",
-                            jp: "従来の X 軸と Y 軸を使用した折れ線、棒、グラフ"
+                            jp: "従来の X 軸と Y 軸を使用した折れ線、棒、グラフ",
+                            es: "Líneas, barras y gráficos utilizando la representación clásica de los ejes x e y"
                         },
                         donut: {
                             en: "Visualize relative proportions with this classic representation",
                             fr: "Visualisez les proportions relatives avec cette représentation classique",
                             pt: "Visualize proporções relativas com esta representação clássica",
                             zh: "用这种经典的表示方式可视化相对比例",
-                            jp: "この古典的な表現で相対的な比率を視覚化します"
+                            jp: "この古典的な表現で相対的な比率を視覚化します",
+                            es: "Visualiza proporciones relativas con esta representación clásica."
                         },
-                        waffle: {
+                        radar: {
                             en: "Reveal outliers and commonality of different measures on the same scale",
                             fr: "Révélez les valeurs aberrantes et les points communs de différentes mesures sur la même échelle",
                             pt: "Revelar valores discrepantes e pontos em comum de diferentes medidas na mesma escala",
                             zh: "揭示同一尺度上不同度量的异常值和共性",
-                            jp: "同じスケール上のさまざまな指標にわたる外れ値と共通点を明らかにする"
+                            jp: "同じスケール上のさまざまな指標にわたる外れ値と共通点を明らかにする",
+                            es: "Revelar valores atípicos y puntos en común de diferentes medidas en la misma escala"
                         },
-                        radar: {
+                        waffle: {
                             en: "Visualize relative proportions with a representation known to be easier to grasp by the human brain",
                             fr: "Visualisez les proportions relatives avec une représentation connue pour être plus facile à saisir par le cerveau humain",
                             pt: "Visualize proporções relativas com uma representação conhecida por ser mais fácil de entender pelo cérebro humano",
                             zh: "使用已知更容易被人脑掌握的表示形式可视化相对比例",
-                            jp: "人間の脳にとって理解しやすいことが知られている表現を使用して、相対的な比率を視覚化します。"
+                            jp: "人間の脳にとって理解しやすいことが知られている表現を使用して、相対的な比率を視覚化します。",
+                            es: "Visualice proporciones relativas con una representación que se sabe que es más fácil de captar para el cerebro humano."
                         },
                         quadrant: {
                             en: "Identify patterns and trends to prioritize actions based on the position of data points",
                             fr: "Identifier les modèles et les tendances pour prioriser les actions en fonction de la position des points de données",
                             pt: "Identifique padrões e tendências para priorizar ações com base na posição dos pontos de dados",
                             zh: "识别模式和趋势，根据数据点的位置确定行动的优先级",
-                            jp: "パターンと傾向を特定し、データ ポイントの位置に基づいてアクションに優先順位を付けます"
+                            jp: "パターンと傾向を特定し、データ ポイントの位置に基づいてアクションに優先順位を付けます",
+                            es: "Identificar patrones y tendencias para priorizar acciones en función de la posición de los puntos de datos."
                         },
                         gauge: {
                             en: "Quickly show how well a given metric is performing against a target goal",
                             fr: "Montrez rapidement les performances d'une métrique donnée par rapport à un objectif cible",
                             pt: "Mostre rapidamente o desempenho de uma determinada métrica em relação a uma meta desejada",
                             zh: "快速显示给定指标对目标的执行情况",
-                            jp: "特定の指標が目標目標に対してどの程度優れたパフォーマンスを発揮しているかをすぐに示します"
+                            jp: "特定の指標が目標目標に対してどの程度優れたパフォーマンスを発揮しているかをすぐに示します",
+                            es: "Muestre rápidamente qué tan bien se está desempeñando una métrica determinada frente a un objetivo objetivo."
                         },
                         chestnut: {
                             en: "Represent nested information from a general base to detailed breakdowns",
                             fr: "Représenter des informations imbriquées depuis une base générale jusqu'à des ventilations détaillées",
                             pt: "Representar informações aninhadas desde uma base geral até detalhamentos detalhados",
                             zh: "表示从一般基础到详细细分的嵌套信息",
-                            jp: "一般的な基礎から詳細なセグメンテーションまでのネストされた情報を表現します"
+                            jp: "一般的な基礎から詳細なセグメンテーションまでのネストされた情報を表現します",
+                            es: "Representar información anidada desde una base general hasta desgloses detallados."
                         },
                         onion: {
                             en: "Compare the values of multiple categories or groups in a single visualization",
                             fr: "Comparez les valeurs de plusieurs catégories ou groupes dans une seule visualisation",
                             pt: "Compare os valores de diversas categorias ou grupos em uma única visualização",
                             zh: "在单个可视化中比较多个类别或组的值",
-                            jp: "単一のビジュアライゼーションで複数のカテゴリまたはグループの値を比較します"
+                            jp: "単一のビジュアライゼーションで複数のカテゴリまたはグループの値を比較します",
+                            es: "Compare los valores de múltiples categorías o grupos en una sola visualización"
                         },
                         verticalBar: {
                             en: "Compare different categorical or discrete variables, with the option to show their breakdowns",
                             fr: "Comparez différentes variables catégorielles ou discrètes, avec la possibilité d'afficher leurs répartitions",
                             pt: "Compare diferentes variáveis ​​categóricas ou discretas, com a opção de mostrar seus detalhamentos",
                             zh: "比较不同的分类或离散变量，并可选择显示其细分",
-                            jp: "さまざまなカテゴリ変数または離散変数を、その内訳を表示するオプションを使用して比較します。"
+                            jp: "さまざまなカテゴリ変数または離散変数を、その内訳を表示するオプションを使用して比較します。",
+                            es: "Compara diferentes variables categóricas o discretas, con la opción de mostrar sus desgloses"
                         },
                         heatmap: {
                             en: "Show relationships and patterns between two variables by observing how cell colors change across each axis",
                             fr: "Montrez les relations et les modèles entre deux variables en observant comment les couleurs des cellules changent sur chaque axe",
                             pt: "Mostre relações e padrões entre duas variáveis ​​observando como as cores das células mudam em cada eixo",
                             zh: "通过观察细胞颜色在每个轴上的变化来显示两个变量之间的关系和模式",
-                            jp: "各軸でセルの色がどのように変化するかを観察することで、2 つの変数間の関係とパターンを表示します"
+                            jp: "各軸でセルの色がどのように変化するかを観察することで、2 つの変数間の関係とパターンを表示します",
+                            es: "Muestre relaciones y patrones entre dos variables observando cómo cambian los colores de las celdas en cada eje."
                         },
                         scatter: {
                             en: "From a large dataset, reveal the correlation between two variables",
                             fr: "À partir d'un grand ensemble de données, révélez la corrélation entre deux variables",
                             pt: "A partir de um grande conjunto de dados, revele a correlação entre duas variáveis",
                             zh: "从大型数据集中揭示两个变量之间的相关性",
-                            jp: "大規模なデータセットから 2 つの変数間の相関関係を明らかにする"
+                            jp: "大規模なデータセットから 2 つの変数間の相関関係を明らかにする",
+                            es: "A partir de un gran conjunto de datos, revele la correlación entre dos variables."
                         },
                         candlestick: {
                             en: "Determine possible price movements based on past patterns",
                             fr: "Déterminer les mouvements de prix possibles en fonction des modèles passés",
                             pt: "Determine possíveis movimentos de preços com base em padrões anteriores",
                             zh: "根据过去的模式确定可能的价格变动",
-                            jp: "過去のパターンに基づいて起こり得る値動きを判断する"
+                            jp: "過去のパターンに基づいて起こり得る値動きを判断する",
+                            es: "Determinar posibles movimientos de precios basados ​​en patrones pasados."
                         },
                         agePyramid: {
                             en: "Show how populations are composed and how they are changing",
                             fr: "Montrer comment les populations sont composées et comment elles évoluent",
                             pt: "Mostre como as populações são compostas e como estão mudando",
                             zh: "显示人口的组成方式及其变化情况",
-                            jp: "人口がどのように構成され、どのように変化しているかを示す"
+                            jp: "人口がどのように構成され、どのように変化しているかを示す",
+                            es: "Mostrar cómo se componen las poblaciones y cómo están cambiando."
                         },
                         sparkline: {
                             en: "Visualize evolution on a tiny line chart",
                             fr: "Visualisez l'évolution sur un petit graphique linéaire",
                             pt: "Visualize a evolução em um pequeno gráfico de linhas",
                             zh: "在微小的折线图上可视化进化",
-                            jp: "小さな折れ線グラフで進化を視覚化する"
+                            jp: "小さな折れ線グラフで進化を視覚化する",
+                            es: "Visualice la evolución en un pequeño gráfico de líneas"
                         },
                         sparkbar: {
                             en: "Show kpi performance with a tiny vertical bar chart",
                             fr: "Afficher les performances des KPI avec un petit graphique à barres verticales",
                             pt: "Mostre o desempenho do KPI com um pequeno gráfico de barras verticais",
                             zh: "用微小的垂直条形图显示关键绩效指标",
-                            jp: "主要業績評価指標を小さな縦棒グラフで表示します"
+                            jp: "主要業績評価指標を小さな縦棒グラフで表示します",
+                            es: "Muestre el rendimiento de los KPI con un pequeño gráfico de barras verticales"
                         },
                         table: {
                             en: "Powerful dynamic table that allows the user to select data and calculate sums, averages, and visualize charts based on their selection",
                             fr: "Tableau dynamique puissant qui permet à l'utilisateur de sélectionner des données et de calculer des sommes, des moyennes et de visualiser des graphiques en fonction de leur sélection",
                             pt: "Tabela dinâmica poderosa que permite ao usuário selecionar dados e calcular somas, médias e visualizar gráficos com base em sua seleção",
                             zh: "强大的动态表，允许用户选择数据并计算总和、平均值，并根据他们的选择可视化图表",
-                            jp: "ユーザーがデータを選択し、選択に基づいて合計、平均、視覚的なグラフを計算できる強力な動的テーブル"
+                            jp: "ユーザーがデータを選択し、選択に基づいて合計、平均、視覚的なグラフを計算できる強力な動的テーブル",
+                            es: "Potente tabla dinámica que permite al usuario seleccionar datos y calcular sumas, promedios y visualizar gráficos en función de su selección."
                         },
                         rating: {
                             en: "A classic rating component to rate or visualize rating results. Control the number of stars to display, and their shape",
                             fr: "Un composant de notation classique pour noter ou visualiser les résultats de la notation. Contrôlez le nombre d'étoiles à afficher et leur forme",
                             pt: "Um componente de classificação clássico para avaliar ou visualizar resultados de classificação. Controle o número de estrelas a serem exibidas e sua forma",
                             zh: "用于对评级结果进行评级或可视化的经典评级组件。控制要显示的星星数量及其形状",
-                            jp: "評価または評価結果を視覚化するための古典的な評価コンポーネント。表示する星の数とその形を制御する"
+                            jp: "評価または評価結果を視覚化するための古典的な評価コンポーネント。表示する星の数とその形を制御する",
+                            es: "Un componente de calificación clásico para calificar o visualizar resultados de calificación. Controla el número de estrellas a mostrar y su forma."
                         },
                         screenshot: {
                             en: "Select an area on the screen and either download or post the image as base64 with additional metadata",
                             fr: "Sélectionnez une zone sur l'écran et téléchargez ou publiez l'image en base64 avec des métadonnées supplémentaires",
                             pt: "Selecione uma área na tela e baixe ou publique a imagem como base64 com metadados adicionais",
                             zh: "选择屏幕上的一个区域，然后下载或发布带有附加元数据的 Base64 图像",
-                            jp: "画面上の領域を選択し、追加のメタデータを含む画像をダウンロードするか、base64 として投稿します。"
+                            jp: "画面上の領域を選択し、追加のメタデータを含む画像をダウンロードするか、base64 として投稿します。",
+                            es: "Seleccione un área en la pantalla y descargue o publique la imagen como base64 con metadatos adicionales"
                         },
                         skeleton: {
                             en: "Display gorgeous skeleton charts while data is loading",
                             fr: "Affichez de superbes graphiques squelettes pendant le chargement des données",
                             pt: "Exiba lindos gráficos de esqueleto enquanto os dados estão sendo carregados",
                             zh: "数据加载时显示华丽的骨架图",
-                            jp: "データのロード中に豪華なスケルトン チャートを表示"
+                            jp: "データのロード中に豪華なスケルトン チャートを表示",
+                            es: "Muestre magníficos gráficos de esqueleto mientras se cargan los datos"
                         },
                     },
                     datastructure: {
@@ -326,58 +377,76 @@ export const useMainStore = defineStore("main", {
                         fr: "Structure des données",
                         pt: "Estrutura de dados",
                         zh: "数据结构",
-                        jp: "データ構造"
+                        jp: "データ構造",
+                        es: "Estructura de datos"
                     },
                     copyDefaultConfig: {
                         en: "Copy default config as JSON",
                         fr: "Copier la configuration par défaut au format JSON",
                         pt: "Copie a configuração padrão como JSON",
                         zh: "将默认配置复制为 JSON",
-                        jp: "デフォルト設定をJSONとしてコピー"
+                        jp: "デフォルト設定をJSONとしてコピー",
+                        es: "Copie la configuración predeterminada como JSON"
                     },
                     copyThisConfig: {
                         en: "Copy this config as JSON",
                         fr: "Copier cette config en JSON",
                         pt: "Copie esta configuração como JSON",
                         zh: "将此配置复制为 JSON",
-                        jp: "この構成を JSON としてコピーします"
+                        jp: "この構成を JSON としてコピーします",
+                        es: "Copie esta configuración como JSON"
                     },
                     reset: {
                         en: "Reset",
                         fr: "Réinitialiser",
                         pt: "Reiniciar",
                         zh: "重置",
-                        jp: "リセット"
+                        jp: "リセット",
+                        es: "Reiniciar"
                     },
                     cssOverride: {
                         en: "You can override the css (check out the styles.css in the package)",
                         fr: "Vous pouvez remplacer le CSS (consultez le styles.css dans le package)",
                         pt: "Você pode substituir o CSS (consulte estilos.css no package)",
                         zh: "您可以重新使用 CSS（在包中查看 styles.css）",
-                        jp: "CSS を再配置する (styles.css とパッケージを参照)"
+                        jp: "CSS を再配置する (styles.css とパッケージを参照)",
+                        es: "Puede anular el CSS (consulte estilos.css en el paquete)"
                     },
                     emits: {
+                        dashboard: {
+                            change: {
+                                en: "Emits the updated config to the parent component",
+                                fr: "Émet la configuration mise à jour au composant parent",
+                                pt: "Emite a configuração atualizada para o componente pai",
+                                zh: "将更新后的配置发送到父组件",
+                                jp: "更新された構成を親コンポーネントに送信します",
+                                es: "Emite la configuración actualizada al componente principal."
+                            }
+                        },
                         screenshot: {
                             postImage: {
                                 en: "in post mode, returns the current image data:",
                                 fr: "en mode post, renvoie les données de l'image :",
                                 pt: "no modo post, retorna os dados da imagem atual:",
                                 zh: "在 post 模式下，返回当前图像数据：",
-                                jp: "ポストモードでは、現在の画像データを返します。"
+                                jp: "ポストモードでは、現在の画像データを返します。",
+                                es: "en modo publicación, devuelve los datos de la imagen actual:"
                             },
                             shoot: {
                                 en: "call this method to open the component",
                                 fr: "appelez cette méthode pour ouvrir le composant",
                                 pt: "chame este método para abrir o componente",
                                 zh: "调用该方法打开组件",
-                                jp: "このメソッドを呼び出してコンポーネントを開きます"
+                                jp: "このメソッドを呼び出してコンポーネントを開きます",
+                                es: "llame a este método para abrir el componente"
                             },
                             close: {
                                 en: "call this method to close the component",
                                 fr: "appelez cette méthode pour fermer le composant",
                                 pt: "chame este método para fechar o componente",
                                 zh: "调用该方法关闭组件",
-                                jp: "このメソッドを呼び出してコンポーネントを閉じます"
+                                jp: "このメソッドを呼び出してコンポーネントを閉じます",
+                                es: "call this method to close the component"
                             }
                         },
                         xy: {
@@ -386,21 +455,24 @@ export const useMainStore = defineStore("main", {
                                 fr: "renvoie la série visible actuelle lors de la sélection/désélection de la légende :",
                                 pt: "retorna a série visível atual ao selecionar/desmarcar a legenda:",
                                 zh: "选择/取消选择图例时返回当前可见系列：",
-                                jp: "凡例を選択または選択解除するときに、現在表示されているシリーズを返します。"
+                                jp: "凡例を選択または選択解除するときに、現在表示されているシリーズを返します。",
+                                es: "devuelve la serie visible actual al seleccionar/deseleccionar la leyenda:"
                             },
                             selectX: {
                                 en: "returns the current visible series at the selected x index when clicking on the chart :",
                                 fr: "renvoie la série visible actuelle à l'index x sélectionné en cliquant sur le graphique :",
                                 pt: "retorna a série visível atual no índice x selecionado ao clicar no gráfico:",
                                 zh: "单击图表时返回所选 x 索引处的当前可见系列：",
-                                jp: "チャートをクリックすると、選択された x インデックスで現在表示されているシリーズが返されます。"
+                                jp: "チャートをクリックすると、選択された x インデックスで現在表示されているシリーズが返されます。",
+                                es: "devuelve la serie visible actual en el índice x seleccionado al hacer clic en el gráfico:"
                             },
                             getData: {
                                 en: "call this method from the parent to get the full formatted dataset.",
                                 fr: "appelez cette méthode depuis le parent pour obtenir l'ensemble de données entièrement formaté.",
                                 pt: "chame esse método do pai para obter o conjunto de dados formatado completo.",
                                 zh: "从父级调用此方法以获取完整格式化的数据集。",
-                                jp: "完全なフォーマット済みデータセットを取得するには、親からこのメソッドを呼び出します。"
+                                jp: "完全なフォーマット済みデータセットを取得するには、親からこのメソッドを呼び出します。",
+                                es: "Llame a este método desde el padre para obtener el conjunto de datos formateado completo."
                             }
                         },
                         quadrant: {
@@ -409,21 +481,24 @@ export const useMainStore = defineStore("main", {
                                 fr: "renvoie les catégories actuellement visibles avec leurs éléments lors de la sélection/désélection de la légende :",
                                 pt: "retorna as categorias visíveis atuais com seus itens ao selecionar/desmarcar a legenda:",
                                 zh: "选择/取消选择图例时返回当前可见类别及其项目：",
-                                jp: "凡例を選択または選択解除すると、現在表示されているカテゴリとその項目が返されます。"
+                                jp: "凡例を選択または選択解除すると、現在表示されているカテゴリとその項目が返されます。",
+                                es: "devuelve las categorías visibles actuales con sus elementos al seleccionar/deseleccionar la leyenda:"
                             },
                             selectPlot: {
                                 en: "returns the data of the selected plot on click:",
                                 fr: "renvoie les données du tracé sélectionné au clic :",
                                 pt: "retorna os dados do gráfico selecionado ao clicar:",
                                 zh: "单击时返回所选图的数据：",
-                                jp: "クリックすると、選択したプロットのデータが返されます。"
+                                jp: "クリックすると、選択したプロットのデータが返されます。",
+                                es: "devuelve los datos del gráfico seleccionado al hacer clic:"
                             },
                             selectSide: {
                                 en: "returns the data of all the plots located on the area on click of a corner label:",
                                 fr: "renvoie les données de toutes les parcelles situées sur la zone au clic d'une étiquette de coin :",
                                 pt: "retorna os dados de todas as parcelas localizadas na área ao clicar em um rótulo de canto:",
                                 zh: "单击角标签时返回位于该区域的所有图的数据：",
-                                jp: "コーナーラベルをクリックすると、そのエリアにあるすべてのプロットのデータを返します。"
+                                jp: "コーナーラベルをクリックすると、そのエリアにあるすべてのプロットのデータを返します。",
+                                es: "devuelve los datos de todas las parcelas ubicadas en el área al hacer clic en una etiqueta de esquina:"
                             }
                         },
                         chestnut: {
@@ -432,21 +507,24 @@ export const useMainStore = defineStore("main", {
                                 fr: "renvoie les données racine sélectionnées",
                                 pt: "retorna os dados raiz selecionados",
                                 zh: "返回选定的根数据",
-                                jp: "選択したルート データを返します"
+                                jp: "選択したルート データを返します",
+                                es: "devuelve los datos raíz seleccionados"
                             },
                             selectBranch: {
                                 en: "returns the selected branch data",
                                 fr: "renvoie les données de la branche sélectionnée",
                                 pt: "retorna os dados da filial selecionada",
                                 zh: "返回选定的分支数据",
-                                jp: "選択されたブランチデータを返します"
+                                jp: "選択されたブランチデータを返します",
+                                es: "devuelve los datos de la rama seleccionada"
                             },
                             selectNut: {
                                 en: "returns the selected donut data",
                                 fr: "renvoie les données du graphique en anneau sélectionnées",
                                 pt: "retorna os dados do gráfico de rosca selecionado",
                                 zh: "返回选定的圆环图数据",
-                                jp: "選択されたドーナツ チャート データを返します"
+                                jp: "選択されたドーナツ チャート データを返します",
+                                es: "devuelve los datos del donut seleccionado"
                             }
                         },
                         onion: {
@@ -455,7 +533,8 @@ export const useMainStore = defineStore("main", {
                                 fr: "renvoie la série visible actuelle lors de la sélection/désélection de la légende",
                                 pt: "retorna a série visível atual ao selecionar/desmarcar a legenda",
                                 zh: "选择/取消选择图例时返回当前可见系列",
-                                jp: "凡例を選択または選択解除すると、現在表示されているシリーズを返します。"
+                                jp: "凡例を選択または選択解除すると、現在表示されているシリーズを返します。",
+                                es: "devuelve la serie visible actual al seleccionar/deseleccionar la leyenda"
                             }
                         },
                         rating: {
@@ -464,21 +543,24 @@ export const useMainStore = defineStore("main", {
                                 fr: "renvoie la valeur de note sélectionnée sous forme de nombre",
                                 pt: "retorna o valor da classificação selecionada como um número",
                                 zh: "以数字形式返回选定的评级值",
-                                jp: "選択した評価値を数値として返します"
+                                jp: "選択した評価値を数値として返します",
+                                es: "devuelve el valor de calificación seleccionado como un número"
                             },
                             getData: {
                                 en: "call this method from the parent component to get the current rating value",
                                 fr: "appelez cette méthode à partir du composant parent pour obtenir la valeur de note actuelle",
                                 pt: "chame este método do componente pai para obter o valor da classificação atual",
                                 zh: "从父组件调用此方法获取当前评分值",
-                                jp: "親コンポーネントからこのメソッドを呼び出して、現在の評価値を取得します。"
+                                jp: "親コンポーネントからこのメソッドを呼び出して、現在の評価値を取得します。",
+                                es: "Llame a este método desde el componente principal para obtener el valor de calificación actual."
                             },
                             toggleReadonly: {
                                 en: "call this method from the parent component to flip the readonly or active state",
                                 fr: "appelez cette méthode à partir du composant parent pour inverser l'état actif ou lecture seule",
                                 pt: "chame este método do componente pai para inverter o estado somente leitura ou ativo",
                                 zh: "从父组件调用此方法可以翻转只读或活动状态",
-                                jp: "親コンポーネントからこのメソッドを呼び出して、読み取り専用状態とアクティブ状態を切り替えます。"
+                                jp: "親コンポーネントからこのメソッドを呼び出して、読み取り専用状態とアクティブ状態を切り替えます。",
+                                es: "llame a este método desde el componente principal para cambiar el estado de solo lectura o activo"
                             }
                         },
                     },
@@ -487,14 +569,16 @@ export const useMainStore = defineStore("main", {
                         fr: "Afficher plus / moins de séries :",
                         pt: "Mostrar mais/menos séries:",
                         zh: "显示更多/更少系列：",
-                        jp: "シリーズの表示を増やす/減らす:"
+                        jp: "シリーズの表示を増やす/減らす:",
+                        es: "Mostrar más/menos series:"
                     },
                     example: {
                         en: "Example",
                         fr: "Exemple",
                         pt: "Exemplo",
                         zh: "例子",
-                        jp: "例"
+                        jp: "例",
+                        es: "Ejemplo"
                     },                    
                     comments: {
                         noDataset: {
@@ -502,14 +586,16 @@ export const useMainStore = defineStore("main", {
                             fr: "Aucun dataset requis",
                             pt: "Nenhum dataset é necessário",
                             zh: "无需数据集",
-                            jp: "データセットは必要ありません"
+                            jp: "データセットは必要ありません",
+                            es: "No se requiere conjunto de datos"
                         },
                         optional: {
                             en: "Optional",
                             fr: "Optionnel",
                             pt: "Opcional",
                             zh: "选修的",
-                            jp: "オプション"
+                            jp: "オプション",
+                            es: "Opcional"
                         },
                         yourConfigHere: {
                             en: "Your config here",
@@ -517,6 +603,7 @@ export const useMainStore = defineStore("main", {
                             pt: "Sua configuração aqui",
                             zh: "你的配置在这里",
                             jp: "設定はここにあります",
+                            es: "Su configuración aquí"
                         },
                         yourDatasetHere: {
                             en: "Your dataset here",
@@ -524,6 +611,7 @@ export const useMainStore = defineStore("main", {
                             pt: "Sua dataset aqui",
                             zh: "您的数据集位于此处",
                             jp: "データセットはここにあります",
+                            es: "Su conjunto de datos aquí"
                         },
                         xy: {
                             type: {
@@ -531,42 +619,48 @@ export const useMainStore = defineStore("main", {
                                 fr: "Les attributs suivants sont optionnels:",
                                 pt: "Os seguintes atributos são opcionais:",
                                 zh: "以下属性是可选的：",
-                                jp: "次のプロパティはオプションです。"
+                                jp: "次のプロパティはオプションです。",
+                                es: "Los siguientes atributos son opcionales:"
                             },
                             color: {
                                 en: "If not provided, the default palette will be used by default",
                                 fr: "Si elle n'est pas fournie, la palette par défaut sera utilisée par défaut",
                                 pt: "o padrão será a paleta padrão se não for fornecida",
                                 zh: "如果未提供，将默认使用默认调色板",
-                                jp: "指定しない場合は、デフォルトのパレットがデフォルトで使用されます。"
+                                jp: "指定しない場合は、デフォルトのパレットがデフォルトで使用されます。",
+                                es: "Si no se proporciona, la paleta predeterminada se utilizará de forma predeterminada."
                             },
                             dashed: {
                                 en: "use 'true' on line types to display a dashed line",
                                 fr: "utilisez 'true' sur les types de ligne pour afficher une ligne pointillée",
                                 pt: "use 'true' em tipos de linha para exibir uma linha tracejada",
                                 zh: "在线类型上使用“true”来显示虚线",
-                                jp: "破線を表示するには、線種に「true」を使用します。"
+                                jp: "破線を表示するには、線種に「true」を使用します。",
+                                es: "use 'true' en los tipos de línea para mostrar una línea discontinua"
                             },
                             useTag: {
                                 en: "use for line or plot types to show the serie name as a tag",
                                 fr: "utiliser pour les types ligne ou points pour afficher le nom de la série sous forme de tag",
                                 pt: "use para tipos de linha ou gráfico para mostrar o nome da série como uma tag",
                                 zh: "用于线条或绘图类型以将系列名称显示为标签",
-                                jp: "シリーズ名をラベルとして表示するためのラインまたはプロット タイプに使用されます。"
+                                jp: "シリーズ名をラベルとして表示するためのラインまたはプロット タイプに使用されます。",
+                                es: "utilizar para tipos de líneas o gráficos para mostrar el nombre de la serie como una etiqueta"
                             },
                             dataLabels: {
                                 en: "hide or show specific serie dataLabels",
                                 fr: "masquer ou afficher les étiquettes de données d'une série spécifique",
                                 pt: "ocultar ou mostrar dataLabels de séries específicas",
                                 zh: "隐藏或显示特定系列数据标签",
-                                jp: "特定のシリーズのデータ​​ラベルを表示または非表示にする"
+                                jp: "特定のシリーズのデータ​​ラベルを表示または非表示にする",
+                                es: "ocultar o mostrar etiquetas de datos de series específicas"
                             },
                             useProgression: {
                                 en: "show a progression line, works for all types",
                                 fr: "afficher une ligne de progression, fonctionne pour tous les types",
                                 pt: "mostra uma linha de progressão, funciona para todos os tipos",
                                 zh: "显示进度线，适用于所有类型",
-                                jp: "進行線を表示し、すべてのタイプに機能します"
+                                jp: "進行線を表示し、すべてのタイプに機能します",
+                                es: "muestra una línea de progresión, funciona para todos los tipos"
                             },
                         },
                         donut: {
@@ -575,14 +669,16 @@ export const useMainStore = defineStore("main", {
                                 fr: "afficher le titre et la légende en dehors du svg",
                                 pt: "exibir título e legenda fora do SVG",
                                 zh: "在 svg 之外显示标题和图例”",
-                                jp: "タイトルと凡例を SVG の外に表示します。」"
+                                jp: "タイトルと凡例を SVG の外に表示します。」",
+                                es: "mostrar título y leyenda fuera del svg"
                             },
                             hideUnderValue: {
                                 en: "hide datalabels under this value",
                                 fr: "masquer les étiquettes de données sous cette valeur",
                                 pt: "ocultar rótulos de dados sob este valor",
                                 zh: "隐藏该值下的数据标签",
-                                jp: "この値の下のデータラベルを非表示にします"
+                                jp: "この値の下のデータラベルを非表示にします",
+                                es: "ocultar etiquetas de datos bajo este valor"
                             }
                         },
                         waffle: {
@@ -591,7 +687,8 @@ export const useMainStore = defineStore("main", {
                                 fr: "grille 20 x 20",
                                 pt: "resulta em uma grade de 20 x 20",
                                 zh: "结果是 20 x 20 网格",
-                                jp: "結果は 20 x 20 グリッドになります"
+                                jp: "結果は 20 x 20 グリッドになります",
+                                es: "da como resultado una cuadrícula de 20 x 20"
                             }
                         },
                         radar: {
@@ -600,28 +697,32 @@ export const useMainStore = defineStore("main", {
                                 fr: "doit être de même longueur que les catégories",
                                 pt: "deve ter o mesmo comprimento das categorias",
                                 zh: "必须与类别的长度相同",
-                                jp: "カテゴリと同じ長さでなければなりません"
+                                jp: "カテゴリと同じ長さでなければなりません",
+                                es: "debe tener la misma longitud que las categorías"
                             },
                             target: {
                                 en: "if not used will default to max value",
                                 fr: "s'il n'est pas utilisé, la valeur par défaut sera la valeur maximale",
                                 pt: "se não for usado, o padrão será o valor máximo",
                                 zh: "如果不使用将默认为最大值",
-                                jp: "使用しない場合はデフォルトの最大値になります"
+                                jp: "使用しない場合はデフォルトの最大値になります",
+                                es: "si no se usa, el valor predeterminado será el máximo"
                             },
                             polygon: {
                                 en: "you must provide at least 3 series to create a polygon",
                                 fr: "vous devez fournir au moins 3 séries pour créer un polygone",
                                 pt: "você deve fornecer pelo menos 3 séries para criar um polígono",
                                 zh: "您必须提供至少 3 个系列才能创建多边形",
-                                jp: "ポリゴンを作成するには少なくとも 3 つのシリーズを指定する必要があります"
+                                jp: "ポリゴンを作成するには少なくとも 3 つのシリーズを指定する必要があります",
+                                es: "debes proporcionar al menos 3 series para crear un polígono"
                             },
                             scale: {
                                 en: "Each serie can have its own scale using the target attribute, so you can represent all types of data relations (revenue, satisfaction, percentages...)",
                                 fr: "Chaque série peut avoir sa propre échelle grâce à l'attribut target, vous pouvez ainsi représenter tous types de relations de données (revenu, satisfaction, pourcentages...)",
                                 pt: "Cada série pode ter sua própria escala usando o atributo target, para que você possa representar todos os tipos de relações de dados (receita, satisfação, percentuais...)",
                                 zh: "每个系列都可以使用目标属性拥有自己的比例，因此您可以表示所有类型的数据关系（收入、满意度、百分比...）",
-                                jp: "各シリーズはターゲット属性を使用して独自のスケールを持つことができるため、あらゆるタイプのデータ関係 (収益、満足度、パーセンテージなど) を表すことができます。"
+                                jp: "各シリーズはターゲット属性を使用して独自のスケールを持つことができるため、あらゆるタイプのデータ関係 (収益、満足度、パーセンテージなど) を表すことができます。",
+                                es: "Cada serie puede tener su propia escala utilizando el atributo objetivo, por lo que se pueden representar todo tipo de relaciones de datos (ingresos, satisfacción, porcentajes...)"
                             }
                         },
                         quadrant: {
@@ -630,7 +731,8 @@ export const useMainStore = defineStore("main", {
                                 fr: "Utilisé lorsque auto est 'false'",
                                 pt: "Usado quando auto é 'false'",
                                 zh: "当 auto 为“false”时使用",
-                                jp: "auto が「false」の場合に使用されます"
+                                jp: "auto が「false」の場合に使用されます",
+                                es: "Se utiliza cuando auto es 'false'"
                             }
                         },
                         gauge: {
@@ -639,7 +741,8 @@ export const useMainStore = defineStore("main", {
                                 fr: "Configurer les crans de la jauge",
                                 pt: "Configurar as etapas do medidor",
                                 zh: "设置仪器步骤",
-                                jp: "ゲージステップを設定する"
+                                jp: "ゲージステップを設定する",
+                                es: "Configurar los pasos del medidor"
                             }
                         },
                         onion: {
@@ -648,28 +751,32 @@ export const useMainStore = defineStore("main", {
                                 fr: "Facultatif, affichez la valeur dans le dataLabel",
                                 pt: "Opcional, exiba o valor no dataLabel",
                                 zh: "可选，在数据标签中显示值",
-                                jp: "オプションで、データラベルに値を表示します。"
+                                jp: "オプションで、データラベルに値を表示します。",
+                                es: "Opcional, muestra el valor en la etiqueta de datos."
                             },
                             prefix: {
                                 en: "Optional, display a symbol as a prefix before the value in the data label",
                                 fr: "Facultatif, afficher un symbole comme préfixe avant la valeur dans l'étiquette de données",
                                 pt: "Opcional, exiba um símbolo como prefixo antes do valor no rótulo de dados",
                                 zh: "可选，在数据标签中的值之前显示一个符号作为前缀",
-                                jp: "オプションで、データラベルの値の前に接頭辞としてシンボルを表示します。"
+                                jp: "オプションで、データラベルの値の前に接頭辞としてシンボルを表示します。",
+                                es: "Opcional, muestre un símbolo como prefijo antes del valor en la etiqueta de datos"
                             },
                             suffix: {
                                 en: "Optional, display a symbol as a suffix before the value in the data label",
                                 fr: "Facultatif, afficher un symbole comme suffixe avant la valeur dans l'étiquette de données",
                                 pt: "Opcional, exiba um símbolo como sufixo antes do valor no rótulo de dados",
                                 zh: "可选，在数据标签中的值之前显示一个符号作为后缀",
-                                jp: "オプションで、データラベルの値の前に接尾辞としてシンボルを表示します。"
+                                jp: "オプションで、データラベルの値の前に接尾辞としてシンボルを表示します。",
+                                es: "Opcional, muestre un símbolo como sufijo antes del valor en la etiqueta de datos"
                             },
                             gradient: {
                                 en: "works best on a white background for now",
                                 fr: "fonctionne mieux sur un fond blanc pour le moment",
                                 pt: "funciona melhor em um fundo branco por enquanto",
                                 zh: "目前在白色背景上效果最好",
-                                jp: "今のところ白い背景で最適に動作します"
+                                jp: "今のところ白い背景で最適に動作します",
+                                es: "funciona mejor sobre un fondo blanco por ahora"
                             }
                         },
                         verticalBar: {
@@ -678,7 +785,8 @@ export const useMainStore = defineStore("main", {
                                 fr: "Utilisez cet attribut pour décomposer une série",
                                 pt: "Use este atributo para detalhar uma série",
                                 zh: "使用此属性来细分系列",
-                                jp: "この属性を使用してシリーズを分類します"
+                                jp: "この属性を使用してシリーズを分類します",
+                                es: "Utilice este atributo para desglosar una serie."
                             }
                         },
                         candlestick: {
@@ -687,7 +795,8 @@ export const useMainStore = defineStore("main", {
                                 fr: "Cet ordre doit être absolument respecté :",
                                 pt: "Esta ordem deve ser rigorosamente respeitada :",
                                 zh: "必须严格遵守此命令 :",
-                                jp: "この順序は厳密に遵守する必要があります。"
+                                jp: "この順序は厳密に遵守する必要があります。",
+                                es: "Este orden debe respetarse estrictamente:"
                             }
                         },
                         agePyramid: {
@@ -696,21 +805,24 @@ export const useMainStore = defineStore("main", {
                                 fr: "commencer à l'année la plus ancienne",
                                 pt: "começar do ano mais antigo",
                                 zh: "从最早的年份开始",
-                                jp: "最古の年からスタート"
+                                jp: "最古の年からスタート",
+                                es: "empezar desde el año más antiguo"
                             },
                             arrayOfEach: {
                                 en: "Array of arrays each containing in order:",
                                 fr: "Tableau de tableaux contenant chacun dans l'ordre :",
                                 pt: "Matriz de matrizes, cada uma contendo em ordem:",
                                 zh: "每个数组按顺序包含：",
-                                jp: "それぞれが順番に含む配列の配列:"
+                                jp: "それぞれが順番に含む配列の配列:",
+                                es: "Matriz de matrices, cada una de las cuales contiene en orden:"
                             },
                             cols: {
                                 en: "year | age | number women | number men",
                                 fr: "année | âge | nombre de femmes | nombre d'hommes",
                                 pt: "ano | idade | número de mulheres | número de homens",
                                 zh: "年 |年龄 |女性人数 |人数",
-                                jp: "年 |年齢 |数字の女性 |数字の男性"
+                                jp: "年 |年齢 |数字の女性 |数字の男性",
+                                es: "año | edad | número de mujeres | numero hombres"
                             }
                         },
                         table: {
@@ -719,49 +831,56 @@ export const useMainStore = defineStore("main", {
                                 fr: "Configurer chaque colonne avec un objet distinct",
                                 pt: "Configure cada coluna com um objeto separado",
                                 zh: "使用单独的对象配置每一列",
-                                jp: "各列を個別のオブジェクトで構成する"
+                                jp: "各列を個別のオブジェクトで構成する",
+                                es: "Configurar cada columna con un objeto separado"
                             },
                             reference: {
                                 en: "reference to the name of another numeric column",
                                 fr: "référence au nom d'une autre colonne numérique",
                                 pt: "referência ao nome de outra coluna numérica",
                                 zh: "引用另一个数字列的名称",
-                                jp: "別の数値列の名前への参照"
+                                jp: "別の数値列の名前への参照",
+                                es: "referencia al nombre de otra columna numérica"
                             },
                             body: {
                                 en: "each row is represented in an object, leaving room for further config in the future",
                                 fr: "chaque ligne est représentée dans un objet, laissant la place à d'autres configurations à l'avenir",
                                 pt: "cada linha é representada em um objeto, deixando espaço para configurações adicionais no futuro",
                                 zh: "每行都用一个对象表示，为将来的进一步配置留出空间",
-                                jp: "各行はオブジェクトで表され、将来さらに構成できる余地が残されています。"
+                                jp: "各行はオブジェクトで表され、将来さらに構成できる余地が残されています。",
+                                es: "cada fila está representada en un objeto, lo que deja espacio para más configuraciones en el futuro"
                             },
                             td: {
                                 en: "Each element of the array is placed in the same order as the columns",
                                 fr: "Chaque élément du tableau est placé dans le même ordre que les colonnes",
                                 pt: "Cada elemento da matriz é colocado na mesma ordem que as colunas",
                                 zh: "数组的每个元素的放置顺序与列的顺序相同",
-                                jp: "配列の各要素は列と同じ順序で配置されます。"
+                                jp: "配列の各要素は列と同じ順序で配置されます。",
+                                es: "Cada elemento de la matriz se coloca en el mismo orden que las columnas."
                             },
                             warning1: {
                                 en: "requires an empty array in the body 'td' arrays!",
                                 fr: "nécessite un tableau vide dans les tableaux body 'td' !",
                                 pt: "requer um array vazio nos arrays 'td' do corpo!",
                                 zh: "需要主体“td”数组中有一个空数组！",
-                                jp: "本体の 'td' 配列に空の配列が必要です。"
+                                jp: "本体の 'td' 配列に空の配列が必要です。",
+                                es: "¡Requiere una matriz vacía en las matrices 'td' del body!"
                             },
                             warning2: {
                                 en: "notice the empty string, due to a config of the column with isPercentage = true and percentageTo set to another column",
                                 fr: "remarquez la chaîne vide, en raison d'une configuration de la colonne avec isPercentage = true et percentTo défini sur une autre colonne",
                                 pt: "observe a string vazia, devido a uma configuração da coluna com isPercentage = true e percentageTo definida para outra coluna",
                                 zh: "请注意空字符串，因为该列的配置 isPercentage = true 且 PercentageTo 设置为另一列",
-                                jp: "isPercentage = true およびpercentageToが別の列に設定されている列の構成により、空の文字列に注目してください。"
+                                jp: "isPercentage = true およびpercentageToが別の列に設定されている列の構成により、空の文字列に注目してください。",
+                                es: "observe la cadena vacía, debido a una configuración de la columna con isPercentage = true y percentTo establecido en otra columna"
                             },
                             fewRows: {
                                 en: "A few rows as an example",
                                 fr: "Quelques lignes à titre d'exemple",
                                 pt: "Algumas linhas como exemplo",
                                 zh: "以几行为例",
-                                jp: "例としていくつかの行"
+                                jp: "例としていくつかの行",
+                                es: "Algunas filas como ejemplo."
                             }
                         },
                         rating: {
@@ -770,77 +889,88 @@ export const useMainStore = defineStore("main", {
                                 fr: "lecture seule",
                                 pt: "somenta leitura",
                                 zh: "只读",
-                                jp: "読み取り専用"
+                                jp: "読み取り専用",
+                                es: "solo lectura"
                             },
                             active: {
                                 en: "active",
                                 fr: "actif",
                                 pt: "ativo",
                                 zh: "行动",
-                                jp: "アクティブ"
+                                jp: "アクティブ",
+                                es: "activo"
                             },
                             p1: {
                                 en: "A component to rate, or display rating results. Shows stars by default, and you can use an image if you prefer. You can display as many stars as you want.",
                                 fr: "Un composant pour évaluer ou afficher les résultats de l'évaluation. Affiche les étoiles par défaut et vous pouvez utiliser une image si vous préférez. Vous pouvez afficher autant d'étoiles que vous le souhaitez.",
                                 pt: "Um componente para avaliar ou exibir resultados de classificação. Mostra estrelas por padrão e você pode usar uma imagem se preferir. Você pode exibir quantas estrelas quiser.",
                                 zh: "用于评分或显示评分结果的组件。默认情况下显示星星，如果您愿意，可以使用图像。您可以根据需要显示任意数量的星星。",
-                                jp: "スコアリングまたはスコアリング結果の表示に使用されるコンポーネント。デフォルトでは星が表示されますが、必要に応じて画像を使用できます。必要な数の星を表示できます。"
+                                jp: "スコアリングまたはスコアリング結果の表示に使用されるコンポーネント。デフォルトでは星が表示されますが、必要に応じて画像を使用できます。必要な数の星を表示できます。",
+                                es: "Un componente para calificar o mostrar resultados de calificación. Muestra estrellas de forma predeterminada y puedes usar una imagen si lo prefieres. Puedes mostrar tantas estrellas como quieras."
                             },
                             p2: {
                                 en: "In the active mode, the rating can be modified by the user. In readonly mode, it just displays the rating.",
                                 fr: "En mode actif, la note peut être modifiée par l'utilisateur. En mode lecture seule, il affiche simplement la note.",
                                 pt: "No modo ativo, a classificação pode ser modificada pelo usuário. No modo somente leitura, apenas exibe a classificação.",
                                 zh: "在主动模式下，用户可以修改评级。在只读模式下，它仅显示评级。",
-                                jp: "アクティブ モードでは、ユーザーは評価を変更できます。読み取り専用モードでは、評価のみが表示されます。"
+                                jp: "アクティブ モードでは、ユーザーは評価を変更できます。読み取り専用モードでは、評価のみが表示されます。",
+                                es: "En el modo activo, la calificación puede ser modificada por el usuario. En modo de solo lectura, solo muestra la calificación."
                             },
                             simpleRating: {
                                 en: "If you have a simple rating to display",
                                 fr: "Si vous avez une note simple à afficher",
                                 pt: "Se você tiver uma classificação simples para exibir",
                                 zh: "如果您有一个简单的评级要显示",
-                                jp: "表示する簡単な評価がある場合"
+                                jp: "表示する簡単な評価がある場合",
+                                es: "Si tiene una calificación simple para mostrar"
                             },
                             breakdown: {
                                 en: "if you have a breakdown per value",
                                 fr: "si vous avez une répartition par valeur",
                                 pt: "se você tiver um detalhamento por valor",
                                 zh: "如果您有每个值的细目分类",
-                                jp: "それぞれの値の内訳があれば"
+                                jp: "それぞれの値の内訳があれば",
+                                es: "si tiene un desglose por valor"
                             },
                             calculation: {
                                 en: "Rating will be calculated based on the breakdown provided.",
                                 fr: "La note sera calculée à partir de la répartition fournie",
                                 pt: "A classificação será calculada a partir da discriminação fornecida.",
                                 zh: "评级将根据提供的细目进行计算。",
-                                jp: "評価は提供された内訳に基づいて計算されます。"
+                                jp: "評価は提供された内訳に基づいて計算されます。",
+                                es: "La calificación se calculará en función del desglose proporcionado."
                             },
                             tooltip: {
                                 en: "The tooltip can be enabled, to display the values at the hovered star (use in readonly mode).",
                                 fr: "L'info-bulle peut être activée pour afficher les valeurs au niveau de l'étoile survolée (à utiliser en mode lecture seule).",
                                 pt: "A dica de ferramenta pode ser habilitada para exibir os valores na estrela pairada (use no modo somente leitura).",
                                 zh: "可以启用工具提示，以显示悬停的星星处的值（在只读模式下使用）。",
-                                jp: "ツールチップを有効にすると、ホバーされた星に値が表示されます (読み取り専用モードで使用)。"
+                                jp: "ツールチップを有効にすると、ホバーされた星に値が表示されます (読み取り専用モードで使用)。",
+                                es: "La información sobre herramientas se puede habilitar para mostrar los valores en la estrella suspendida (usar en modo de solo lectura)."
                             },
                             useImage: {
                                 en: 'or use "image" and provide url in image.src',
                                 fr: `ou utilisez "image" et fournissez l'URL dans image.src`,
                                 pt: `ou use "image" e forneça o URL em image.src`,
                                 zh: `或使用“image”并在 image.src 中提供 url`,
-                                jp: `または、「image」を使用し、image.src に URL を指定します。`
+                                jp: `または、「image」を使用し、image.src に URL を指定します。`,
+                                es: `o utilice "image" y proporcione la URL en image.src`
                             },
                             src: {
                                 en: "works like the regular src attribute",
                                 fr: "fonctionne comme l'attribut src normal",
                                 pt: "funciona como o atributo src normal",
                                 zh: "与常规 src 属性类似",
-                                jp: "通常の src 属性と同じように機能します"
+                                jp: "通常の src 属性と同じように機能します",
+                                es: "funciona como el atributo src normal"
                             },
                             alt: {
                                 en: "In image mode, the value of each star will be appended to the provided alt text",
                                 fr: "En mode image, la valeur de chaque étoile sera ajoutée au texte alt fourni",
                                 pt: "No modo de imagem, o valor de cada estrela será anexado ao texto alt fornecido",
                                 zh: "在图像模式下，每个星星的值将附加到提供的替代文本中",
-                                jp: "画像モードでは、各星の値が指定された代替テキストに追加されます。"
+                                jp: "画像モードでは、各星の値が指定された代替テキストに追加されます。",
+                                es: "En el modo de imagen, el valor de cada estrella se agregará al texto alternativo proporcionado."
                             }
                         },
                         skeleton: {
@@ -849,7 +979,8 @@ export const useMainStore = defineStore("main", {
                                 fr: "Placeholders à afficher pendant la récupération de vos données",
                                 pt: "Placeholders para exibição durante a recuperação de seus dados",
                                 zh: "获取数据时显示的占位符",
-                                jp: "データを取得するときに表示されるプレースホルダー"
+                                jp: "データを取得するときに表示されるプレースホルダー",
+                                es: "Marcadores de posición para mostrar mientras se recuperan sus datos"
                             }
                         },
                         screenshot: {
@@ -858,63 +989,90 @@ export const useMainStore = defineStore("main", {
                                 fr: "Essayer",
                                 pt: "Tente",
                                 zh: "尝试一下",
-                                jp: "それを試してみてください"
+                                jp: "それを試してみてください",
+                                es: "Intentalo"
                             },
                             yourScreeshot: {
                                 en: "Your screenshot will appear here",
                                 fr: "Votre capture d'écran apparaîtra ici",
                                 pt: "Sua captura de tela aparecerá aqui",
                                 zh: "您的屏幕截图将出现在此处",
-                                jp: "スクリーンショットがここに表示されます"
+                                jp: "スクリーンショットがここに表示されます",
+                                es: "Tu captura de pantalla aparecerá aquí."
                             },
                             p1: {
                                 en: "A component to take screenshots in the current page, with 2 modes: download or post.",
                                 fr: "Un composant pour prendre des captures d'écran dans la page en cours, avec 2 modes : télécharger ou poster",
                                 pt: "Um composto para capturar capturas de tela na página atual, com 2 modos: baixar ou post",
                                 zh: "当前页面截图的组件有两种模式：下载或发布。",
-                                jp: "現在のページのスクリーンショットを取得するコンポーネントには、ダウンロードと投稿の 2 つのモードがあります。"
+                                jp: "現在のページのスクリーンショットを取得するコンポーネントには、ダウンロードと投稿の 2 つのモードがあります。",
+                                es: "Un componente para tomar capturas de pantalla en la página actual, con 2 modos: descargar o publicar."
                             },
                             refresh: {
                                 en: "Refresh to view your changes",
                                 fr: "Rafraîchir pour visualiser les changements",
                                 pt: "Atualize para ver suas alterações",
                                 zh: "刷新以查看您的更改",
-                                jp: "更新して変更内容を確認する"
+                                jp: "更新して変更内容を確認する",
+                                es: "Actualiza para ver tus cambios"
                             },
                             metadata: {
                                 en: "In post mode, the following metadata will also be provided:",
                                 fr: "En mode post, les métadonnées suivantes seront également fournies :",
                                 pt: "No modo post, os seguintes metadados também serão fornecidos:",
                                 zh: "在发布模式下，还将提供以下元数据：",
-                                jp: "ポストモードでは、次のメタデータも提供されます。"
+                                jp: "ポストモードでは、次のメタデータも提供されます。",
+                                es: "En el modo de publicación, también se proporcionarán los siguientes metadatos:"
                             },
                             quality: {
                                 en: "don't set it up too high if you care about image size",
                                 fr: "ne le réglez pas trop haut si vous vous souciez de la taille de l'image",
                                 pt: "não configure muito alto se você se preocupa com o tamanho da imagem",
                                 zh: "如果您关心图像尺寸，请不要将其设置得太高",
-                                jp: "画像サイズを気にする場合は、あまり高く設定しないでください"
+                                jp: "画像サイズを気にする場合は、あまり高く設定しないでください",
+                                es: "no lo configures demasiado alto si le importa el tamaño de la imagen"
                             },
                             x: {
                                 en: "the image's top left x coordinate on the page",
                                 fr: "la coordonnée x en haut à gauche de l'image sur la page",
                                 pt: "a coordenada x superior esquerda da imagem na página",
                                 zh: "图像在页面上的左上角 x 坐标",
-                                jp: "ページ上の画像の左上の X 座標"
+                                jp: "ページ上の画像の左上の X 座標",
+                                es: "la coordenada x superior izquierda de la imagen en la página"
                             },
                             y: {
                                 en: "the image's top left y coordinate on the page",
                                 fr: "la coordonnée y en haut à gauche de l'image sur la page",
                                 pt: "a coordenada y superior esquerda da imagem na página",
                                 zh: "图像在页面上的左上角 y 坐标",
-                                jp: "ページ上の画像の左上の Y 座標"
+                                jp: "ページ上の画像の左上の Y 座標",
+                                es: "Coordenada y superior izquierda de la imagen en la página."
                             },
                             timestamp: {
                                 en: "timestamp",
                                 fr: "horodatage",
                                 pt: "carimbo de data/hora",
                                 zh: "时间戳",
-                                jp: "タイムスタンプ"
+                                jp: "タイムスタンプ",
+                                es: "marca de tiempo"
+                            }
+                        },
+                        dashboard: {
+                            p1: {
+                                en: "Display your charts in a drag and resize component. Changes can be saved via the @change emit.",
+                                fr: "Affichez vos graphiques dans un composant glisser-redimensionner. Les modifications peuvent être enregistrées via l'emit @change.",
+                                pt: "Exiba seus gráficos em um componente de arrastar e redimensionar. As alterações podem ser salvas através do @change emit.",
+                                zh: "在拖动和调整大小组件中显示图表。可以通过 @change 发出保存更改。",
+                                jp: "ドラッグしてコンポーネントのサイズを変更してグラフを表示します。変更は @change 発行を通じて保存できます。",
+                                es: "Muestre sus gráficos en un componente de arrastrar y cambiar el tamaño. Los cambios se pueden guardar mediante @change emit."
+                            },
+                            warning: {
+                                en: "On embedded VueUiXy and VueUiCandlestick components, it is recommended to disable the zoom functionality in the config, as it conflicts with the dashboard drag events for now.",
+                                fr: "Sur les composants VueUiXy et VueUiCandlestick intégrés, il est recommandé de désactiver la fonctionnalité de zoom dans la configuration, car elle entre en conflit avec les événements de drag du tableau de bord pour le moment.",
+                                pt: "Nos componentes incorporados VueUiXy e VueUiCandlestick, é recomendado desabilitar a funcionalidade de zoom na configuração, pois por enquanto ela entra em conflito com os eventos de arrastar do painel.",
+                                zh: "在嵌入式 VueUiXy 和 VueUiCandlestick 组件上，建议在配置中禁用缩放功能，因为它目前与仪表板拖动事件冲突。",
+                                jp: "埋め込まれた VueUiXy および VueUiCandlestick コンポーネントでは、現時点ではダッシュボードのドラッグ イベントと競合するため、設定でズーム機能を無効にすることをお勧めします。",
+                                es: "En los componentes integrados VueUiXy y VueUiCandlestick, se recomienda desactivar la funcionalidad de zoom en la configuración, ya que por ahora entra en conflicto con los eventos de arrastre del panel."
                             }
                         }
                     }

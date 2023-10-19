@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon } from "vue-tabler-icons";
+import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -111,6 +111,9 @@ function isSelected(route) {
             <router-link to="/docs#vue-ui-skeleton">
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-skeleton') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-skeleton')" class="-ml-6"/><SkullIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-skeleton')"/>  <span class="text-gray-500">VueUi</span>Skeleton</div>
             </router-link>
+            <router-link to="/docs#vue-ui-dashboard">
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-dashboard') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><LayoutDashboardIcon v-if="isSelected('/docs#vue-ui-dashboard')" class="-ml-6"/><LayoutDashboardIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-dashboard')"/>  <span class="text-gray-500">VueUi</span>Dashboard</div>
+            </router-link>
         </section>
     </template>
     <template v-else>
@@ -170,6 +173,9 @@ function isSelected(route) {
             </router-link>
             <router-link to="/docs#vue-ui-skeleton">
                 <div class="-ml-2 my-2"><SkullIcon :class="`${isSelected('/docs#vue-ui-skeleton') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-skeleton') ? 2 : 1"/></div>
+            </router-link>
+            <router-link to="/docs#vue-ui-dashboard">
+                <div class="-ml-2 my-2"><LayoutDashboardIcon  :class="`${isSelected('/docs#vue-ui-dashboard') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-dashboard') ? 2 : 1"/></div>
             </router-link>
 
     </template>

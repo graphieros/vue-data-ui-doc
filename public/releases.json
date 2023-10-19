@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.6.9",
+        "date": "2023-10-19",
+        "updates": [
+            {
+                "component": "VueUiDashboard",
+                "description": "Create component"
+            }
+        ]
+    },
+    {
         "version": "v 1.6.4",
         "date": "2023-10-11",
         "updates": [
