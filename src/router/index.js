@@ -1,43 +1,36 @@
 import { createWebHistory, createRouter } from "vue-router";
-
-import Home from "../views/Home.vue";
-import Installation from "../views/Installation.vue";
 import NotFound from "../views/NotFound.vue";
-import Docs from "../views/Docs.vue";
-import Versions from "../views/Versions.vue";
-import About from "../views/About.vue";
-import Dashboard from "../views/Dashboard.vue";
 
 const routes = [
     {
         path: "/",
         name: "Home",
-        component: Home
+        component: () => import('../views/Home.vue')
     },
     {
         path: "/installation",
         name: "Installation",
-        component: Installation
+        component: () => import('../views/Installation.vue')
     },
     {
         path: "/docs",
         name: "Docs",
-        component: Docs
+        component: () => import("../views/Docs.vue")
     },
     {
         path: "/dashboard",
         name: "Dashboard",
-        component: Dashboard
+        component: () => import("../views/Dashboard.vue")
     },
     {
         path: "/versions",
         name: "Versions",
-        component: Versions
+        component: () => import("../views/Versions.vue")
     },
     {
         path: "/about",
         name: "About",
-        component: About
+        component: () => import("../views/About.vue")
     },
     {
         path: "/:catchAll(.*)",
