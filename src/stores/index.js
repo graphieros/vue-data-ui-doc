@@ -211,6 +211,14 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        annotator: {
+                            en: "A component to wrap any content and make it annotatable.",
+                            fr: "Un composant pour envelopper n'importe quel contenu et le rendre annotable.",
+                            pt: "Um componente para agrupar qualquer conteúdo e torná-lo anotável.",
+                            zh: "用于包装任何内容并使其可注释的组件。",
+                            jp: "コンテンツをラップして注釈を付けられるようにするコンポーネント。",
+                            es: "Un componente para envolver cualquier contenido y hacerlo anotable."
+                        },
                         dashboard: {
                             en: "A drag and resize component to place your charts, and allow the user to save their position.",
                             fr: "Un composant glisser et redimensionner pour placer vos graphiques et permettre à l'utilisateur de sauvegarder sa position.",
@@ -1073,6 +1081,48 @@ export const useMainStore = defineStore("main", {
                                 zh: "在嵌入式 VueUiXy 和 VueUiCandlestick 组件上，建议在配置中禁用缩放功能，因为它目前与仪表板拖动事件冲突。",
                                 jp: "埋め込まれた VueUiXy および VueUiCandlestick コンポーネントでは、現時点ではダッシュボードのドラッグ イベントと競合するため、設定でズーム機能を無効にすることをお勧めします。",
                                 es: "En los componentes integrados VueUiXy y VueUiCandlestick, se recomienda desactivar la funcionalidad de zoom en la configuración, ya que por ahora entra en conflicto con los eventos de arrastre del panel."
+                            }
+                        },
+                        annotator: {
+                            description: {
+                                en: "Add and save annotations on any slotted content. It works with all 'Vue Data UI' charts, but also with any div, svg, canvas element you place inside.",
+                                fr: "Ajoutez et enregistrez des annotations sur n'importe quel contenu inséré. Il fonctionne avec tous les graphiques de Vue Data UI, mais également avec n'importe quel élément div, svg, canvas que vous placez à l'intérieur.",
+                                pt: "Adicione e salve anotações em qualquer conteúdo com slot. Ele funciona com todos os gráficos de Vue Data UI, mas também com qualquer elemento div, svg ou canvas que você colocar dentro dele.",
+                                zh: "在任何开槽内容上添加并保存注释。它适用于所有“Vue Data UI”图表，也适用于您放置在其中的任何 div、svg、canvas 元素。",
+                                jp: "スロット付きコンテンツに注釈を追加して保存します。すべての「Vue Data UI」チャートだけでなく、内部に配置したあらゆる div、svg、canvas 要素でも機能します。",
+                                es: "Agregue y guarde anotaciones sobre cualquier contenido ranurado. Funciona con todos los gráficos 'Vue Data UI', pero también con cualquier elemento div, svg o lienzo que coloque dentro."
+                            },
+                            closedState: {
+                                en: "VueUiAnnotator is in closed state. In the closed state, annotations are invisible, and user interactions with the content is unchanged.",
+                                fr: "VueUiAnnotator est dans un état fermé. À l'état fermé, les annotations sont invisibles et les interactions de l'utilisateur avec le contenu restent inchangées.",
+                                pt: "VueUiAnnotator está em estado fechado. No estado fechado, as anotações ficam invisíveis e as interações do usuário com o conteúdo permanecem inalteradas.",
+                                zh: "VueUiAnnotator 处于关闭状态。在关闭状态下，注释不可见，并且用户与内容的交互保持不变。",
+                                jp: "VueUiAnnotator は閉じた状態です。閉じた状態では、注釈は表示されず、コンテンツに対するユーザーの操作は変わりません。",
+                                es: "VueUiAnnotator está en estado cerrado. En el estado cerrado, las anotaciones son invisibles y las interacciones del usuario con el contenido no cambian."
+                            },
+                            openState: {
+                                en: "VueUiAnnotator is in open state. In the open state, all interactions with the slotted content are muted, to allow the user to add, move and resize shapes.",
+                                fr: "VueUiAnnotator est à l'état ouvert. À l'état ouvert, toutes les interactions avec le contenu inséré sont désactivées, pour permettre à l'utilisateur d'ajouter, de déplacer et de redimensionner des formes.",
+                                pt: "VueUiAnnotator está em estado aberto. No estado aberto, todas as interações com o conteúdo com slot são silenciadas, para permitir ao usuário adicionar, mover e redimensionar formas.",
+                                zh: "VueUiAnnotator 处于打开状态。在打开状态下，与开槽内容的所有交互都被静音，以允许用户添加、移动形状和调整形状大小。",
+                                jp: "VueUiAnnotator はオープン状態です。開いた状態では、スロット付きコンテンツとのすべてのインタラクションがミュートされ、ユーザーが図形を追加、移動、サイズ変更できるようになります。",
+                                es: "VueUiAnnotator está en estado abierto. En el estado abierto, todas las interacciones con el contenido ranurado están silenciadas para permitir al usuario agregar, mover y cambiar el tamaño de las formas."
+                            },
+                            datastructure: {
+                                en: "Saved annotations can be passed to the dataset attribute to be displayed onload. Check the 'EMITS' section to learn how to save annotations.",
+                                fr: "Les annotations enregistrées peuvent être transmises à l'attribut de l'ensemble de données pour être affichées lors du chargement. Consultez la section 'emit' pour savoir comment enregistrer des annotations.",
+                                pt: "As anotações salvas podem ser passadas para o atributo do conjunto de dados para serem exibidas no carregamento. Verifique a seção 'emit' para saber como salvar anotações.",
+                                zh: "保存的注释可以传递到数据集属性以在加载时显示。查看“EMIT”部分以了解如何保存注释。",
+                                jp: "保存されたアノテーションをデータセットのプロパティに渡して、読み込み時に表示することができます。コメントを保存する方法については、「EMIT」セクションを確認してください。",
+                                es: "Las anotaciones guardadas se pueden pasar a las propiedades del conjunto de datos para que se muestren al cargar. Consulte la sección 'emit' para saber cómo guardar comentarios."
+                            },
+                            notByYourself: {
+                                en: "Important: you should never have to hardcode this dataset, as you can retrieve it from the component's '@saveAnnotations' emit, to save on your database or localStorage.",
+                                fr: "Important : vous ne devriez jamais avoir à coder en dur cet ensemble de données, car vous pouvez le récupérer à partir de l'émission '@saveAnnotations' du composant, pour l'enregistrer sur votre base de données ou localStorage.",
+                                pt: "Importante: você nunca deve ter que codificar este conjunto de dados, pois você pode recuperá-lo da emissão '@saveAnnotations' do componente, para salvá-lo em seu banco de dados ou localStorage.",
+                                zh: "重要提示：您永远不必对此数据集进行硬编码，因为您可以从组件的“@saveAnnotations”发出中检索它，以保存在数据库或本地存储中。",
+                                jp: "重要: このデータセットはコンポーネントの「@saveAnnotations」出力から取得してデータベースまたは localStorage に保存できるため、ハードコードする必要はありません。",
+                                es: "Importante: nunca debería tener que codificar este conjunto de datos, ya que puede recuperarlo de la emisión '@saveAnnotations' del componente para guardarlo en su base de datos o en el localStorage."
                             }
                         }
                     }

@@ -23,6 +23,7 @@ import DocVueUiAgePyramid from "../components/docs/DocVueUiAgePyramid.vue";
 import DocVueUiSparkbar from "../components/docs/DocVueUiSparkbar.vue";
 import MenuDetail from "../components/MenuDetail.vue";
 import DocVueUiDashboard from "../components/docs/DocVueUiDashboard.vue";
+import DocVueUiAnnotator from "../components/docs/DocVueUiAnnotator.vue";
 
 import { CheckIcon } from "vue-tabler-icons";
 
@@ -164,6 +165,12 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.dashboard[store.lang],
         link: "/docs#vue-ui-dashboard"
     },
+    {
+        name: "Annotator",
+        icon: "EditIcon",
+        tooltip: translations.value.docs.tooltips.annotator[store.lang],
+        link: "/docs#vue-ui-annotator"
+    },
 ])
 
 </script>
@@ -195,6 +202,7 @@ const menuItems = computed(() => [
             <DocVueUiAgePyramid v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-age-pyramid'"/>
             <DocVueUiSparkbar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkbar'"/>
             <DocVueUiDashboard v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-dashboard'"/>
+            <DocVueUiAnnotator v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-annotator'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">
