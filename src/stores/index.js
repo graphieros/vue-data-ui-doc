@@ -1119,12 +1119,12 @@ export const useMainStore = defineStore("main", {
                                 es: "Agregue y guarde anotaciones sobre cualquier contenido ranurado. Funciona con todos los gráficos 'Vue Data UI', pero también con cualquier elemento div, svg o lienzo que coloque dentro."
                             },
                             warning: {
-                                en: "Touch events are not supported yet.",
-                                fr: "Les événements tactiles ne sont pas encore pris en charge.",
-                                pt: "Eventos de toque ainda não são suportados.",
-                                zh: "尚不支持触摸事件。",
-                                jp: "タッチイベントはまだサポートされていません。",
-                                es: "Los eventos táctiles aún no son compatibles."
+                                en: "Touch events are supported since v.1.7.3, but may be glitchy",
+                                fr: "Les événements tactiles sont pris en charge depuis la version 1.7.3, mais peuvent présenter des problèmes",
+                                pt: "Eventos de toque são suportados desde a v.1.7.3, mas podem apresentar falhas",
+                                zh: "从 v.1.7.3 开始支持触摸事件，但可能会出现问题",
+                                jp: "タッチ イベントは v.1.7.3 以降サポートされていますが、不具合が発生する可能性があります。",
+                                es: "Los eventos táctiles son compatibles desde la versión 1.7.3, pero pueden presentar fallos"
                             },
                             closedState: {
                                 en: "VueUiAnnotator is in closed state. In the closed state, annotations are invisible, and user interactions with the content is unchanged.",

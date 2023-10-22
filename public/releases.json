@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.7.3",
+        "date": "2023-10-22",
+        "updates": [
+            {
+                "component": "VueUiAnnotator",
+                "description": "Implement touch events (not perfect yet)"
+            }
+        ]
+    },
+    {
         "version": "v 1.7.1",
         "date": "2023-10-21",
         "updates": [
