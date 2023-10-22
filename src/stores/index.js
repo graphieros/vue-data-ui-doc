@@ -1084,6 +1084,32 @@ export const useMainStore = defineStore("main", {
                             }
                         },
                         annotator: {
+                            emits: {
+                                toggleOpenState: {
+                                    en: "when opening or closing the accordeon, emits the following object to the parent component:",
+                                    fr: "lors de l'ouverture ou de la fermeture de l'accordéon, émet l'objet suivant vers le composant parent :",
+                                    pt: "ao abrir ou fechar o acordeão, emite o seguinte objeto para o componente pai:",
+                                    zh: "打开或关闭折叠面板时，向父组件发出以下对象：",
+                                    jp: "アコーディオンを開閉するときに、次のオブジェクトを親コンポーネントに送信します。",
+                                    es: "al abrir o cerrar el acordeón, emite el siguiente objeto al componente padre:"
+                                },
+                                saveAnnotations: {
+                                    en: "emits to the parent component the collection of items currently drawn on the annotator, so they can be saved, and injected back into the component 'dataset' prop later. The emit returns the following attributes:",
+                                    fr: "émet au composant parent la collection d'éléments actuellement dessinés sur l'annotateur, afin qu'ils puissent être enregistrés et réinjectés ultérieurement dans la prop 'dataset' du composant. L'emit renvoit les attributs suivants :",
+                                    pt: "emite para o componente pai a coleção de itens atualmente desenhados no anotador, para que possam ser salvos e injetados de volta no componente 'dataset' posteriormente. A emit retorna os seguintes atributos:",
+                                    zh: "向父组件发送当前在注释器上绘制的项目集合，以便可以保存它们，并稍后将其注入回组件“dataset”道具中。发出返回以下属性：",
+                                    jp: "アノテーターに現在描画されている項目のコレクションを親コンポーネントに出力します。これにより、それらを保存して、後でコンポーネントの「データセット」プロパティに注入し直すことができます。エミットは次の属性を返します。",
+                                    es: "emite al componente principal la colección de elementos actualmente dibujados en el anotador, para que puedan guardarse y volver a inyectarse en el componente 'conjunto de datos' más adelante. El emit devuelve los siguientes atributos:"
+                                },
+                                calledWhen: {
+                                    en: "This emit is called when the user clicks the save button, provided the button is displayed by setting the config.style.showSave to 'true'",
+                                    fr: "Cet émetteur est appelé lorsque l'utilisateur clique sur le bouton Enregistrer, à condition que le bouton soit affiché en définissant config.style.showSave sur 'true'.",
+                                    pt: "Este emit é chamado quando o usuário clica no botão salvar, desde que o botão seja exibido definindo config.style.showSave como 'true'",
+                                    zh: "当用户单击保存按钮时调用此发出，前提是通过将 config.style.showSave 设置为“true”来显示该按钮",
+                                    jp: "このエミットは、config.style.showSave を「true」に設定してボタンが表示されている場合に、ユーザーが保存ボタンをクリックしたときに呼び出されます。",
+                                    es: "Esta emisión se llama cuando el usuario hace clic en el botón Guardar, siempre que el botón se muestre configurando config.style.showSave en 'true'."
+                                }
+                            },
                             description: {
                                 en: "Add and save annotations on any slotted content. It works with all 'Vue Data UI' charts, but also with any div, svg, canvas element you place inside.",
                                 fr: "Ajoutez et enregistrez des annotations sur n'importe quel contenu inséré. Il fonctionne avec tous les graphiques de Vue Data UI, mais également avec n'importe quel élément div, svg, canvas que vous placez à l'intérieur.",
@@ -1091,6 +1117,14 @@ export const useMainStore = defineStore("main", {
                                 zh: "在任何开槽内容上添加并保存注释。它适用于所有“Vue Data UI”图表，也适用于您放置在其中的任何 div、svg、canvas 元素。",
                                 jp: "スロット付きコンテンツに注釈を追加して保存します。すべての「Vue Data UI」チャートだけでなく、内部に配置したあらゆる div、svg、canvas 要素でも機能します。",
                                 es: "Agregue y guarde anotaciones sobre cualquier contenido ranurado. Funciona con todos los gráficos 'Vue Data UI', pero también con cualquier elemento div, svg o lienzo que coloque dentro."
+                            },
+                            warning: {
+                                en: "Touch events are not supported yet.",
+                                fr: "Les événements tactiles ne sont pas encore pris en charge.",
+                                pt: "Eventos de toque ainda não são suportados.",
+                                zh: "尚不支持触摸事件。",
+                                jp: "タッチイベントはまだサポートされていません。",
+                                es: "Los eventos táctiles aún no son compatibles."
                             },
                             closedState: {
                                 en: "VueUiAnnotator is in closed state. In the closed state, annotations are invisible, and user interactions with the content is unchanged.",

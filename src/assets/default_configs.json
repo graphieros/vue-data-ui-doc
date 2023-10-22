@@ -2021,9 +2021,7 @@
         "style": {
             "backgroundColor": "#FFFFFF",
             "color": "#2D353C",
-            "fixedTools": false,
             "fontFamily" : "inherit",
-            "hideWhenFolded": false,
             "showPrint": true,
             "showSave": true,
             "showTooltips": true,

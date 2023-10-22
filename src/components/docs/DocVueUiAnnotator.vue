@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch, nextTick } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import { CopyIcon, InfoTriangleIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import { xyConfig, xyDataset, donutConfig, donutDataset, waffleConfig, waffleDataset, radarConfig, radarDataset, chestnutConfig, chestnutDataset } from "./dash";
@@ -24,9 +24,7 @@ const config = ref({
   style: {
     backgroundColor: "#FFFFFF",
     color: "#2D353C",
-    fixedTools: false,
     fontFamily: "inherit",
-    hideWhenFolded: false,
     showPrint: true,
     showSave: true,
     showTooltips: true,
@@ -205,8 +203,11 @@ function saveAnnotations({ shapes, lastSelectedShape }) {
     <div>
         <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiAnnotator</h1>
         <div class="mx-auto w-full max-w-[400px] text-center mb-4">
-            {{ translations.docs.comments.annotator.description[store.lang] }}
+            {{ translations.docs.comments.annotator.description[store.lang] }}<br>
         </div>
+            <div class="text-app-orange flex flex-row gap-2 mx-auto text-center w-full place-items-center justify-center">
+              <InfoTriangleIcon/> {{ translations.docs.comments.annotator.warning[store.lang] }}
+            </div>
         <div :class="`transition-all mx-auto`">
         <div v-if="isAnnotatorOpen" class="py-2">
           {{ translations.docs.comments.annotator.openState[store.lang] }}
@@ -326,10 +327,102 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                     <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
                     <button @click="copyToClipboard(mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                 </div>
-                Full config will be available very soon :)
+  <pre>
+  <code>
+  const <span class="text-black dark:text-app-blue">config</span> = {
+    style: {
+        backgroundColor: <input  type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
+        color: <input  type="color" v-model="mutableConfig.style.color">, (default: "#2D353C")
+        fontFamily: "inherit",
+        showPrint: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.showPrint" @change="forceChartUpdate()">, (default: true)
+        showSave: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.showSave" @change="forceChartUpdate()">, (default: true)
+        showTooltips: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.showTooltips" @change="forceChartUpdate()">, (default: true)
+        buttons: {
+            borderRadius: <input type="number" min="0" max="32" v-model="mutableConfig.style.buttons.borderRadius">, (default: 6)
+            controls: {
+                backgroundColor: <input  type="color" v-model="mutableConfig.style.buttons.controls.backgroundColor">, (default: "#FFFFFF")
+                color: <input  type="color" v-model="mutableConfig.style.buttons.controls.color">, (default: "#2D353C")
+                border: <input type="text" v-model="mutableConfig.style.buttons.controls.border">, (default: "1px solid #262626")
+                selected: {
+                    backgroundColor: <input  type="color" v-model="mutableConfig.style.buttons.controls.selected.backgroundColor">, (default: "#2D353C")
+                    color: <input  type="color" v-model="mutableConfig.style.buttons.controls.selected.color">, (default: "#fafafa")
+                    border: <input type="text" v-model="mutableConfig.style.buttons.controls.selected.border">, (default: "1px solid #CCCCCC")
+                }
+            },
+            shapes: {
+              backgroundColor: <input  type="color" v-model="mutableConfig.style.buttons.shapes.backgroundColor">, (default: "#FFFFFF")
+                color: <input  type="color" v-model="mutableConfig.style.buttons.shapes.color">, (default: "#2D353C")
+                border: <input type="text" v-model="mutableConfig.style.buttons.shapes.border">, (default: "1px solid #262626")
+                selected: {
+                    backgroundColor: <input  type="color" v-model="mutableConfig.style.buttons.shapes.selected.backgroundColor">, (default: "#2D353C")
+                    color: <input  type="color" v-model="mutableConfig.style.buttons.shapes.selected.color">, (default: "#fafafa")
+                    border: <input type="text" v-model="mutableConfig.style.buttons.shapes.selected.border">, (default: "1px solid #CCCCCC")
+                }
+            }
+        },
+        tooltips: {
+            backgroundColor: <input  type="color" v-model="mutableConfig.style.tooltips.backgroundColor">, (default: "#fafafa")
+            color: <input  type="color" v-model="mutableConfig.style.tooltips.color">, (default: "#2D353C")
+            border: <input type="text" v-model="mutableConfig.style.tooltips.border">, (default: "1px solid #CCCCCC")
+            borderRadius: <input type="number" min="0" max="32" v-model="mutableConfig.style.tooltips.borderRadius">, (default: 6)
+            boxShadow: <input type="text" v-model="mutableConfig.style.tooltips.boxShadow">, (default: "0 6px 12px -6px rgba(0,0,0,0.2)")
+        }
+    },
+    translations: {
+        colorAlpha: <input type="text" v-model="mutableConfig.translations.colorAlpha">, (default: "Color alpha")
+        dashedLines: <input type="text" v-model="mutableConfig.translations.dashedLines">, (default: "Dashed lines")
+        filled: <input type="text" v-model="mutableConfig.translations.filled">, (default: "Filled")
+        fontSize: <input type="text" v-model="mutableConfig.translations.fontSize">, (default: "Font size")
+        thickness: <input type="text" v-model="mutableConfig.translations.thickness">, (default: "Thickness")
+        title: <input type="text" v-model="mutableConfig.translations.title">, (default: "Annotations")
+        tooltipGroup: <input type="text" v-model="mutableConfig.translations.tooltipGroup">, (default: "Select & group")
+        tooltipDelete: <input type="text" v-model="mutableConfig.translations.tooltipDelete">, (default: "Delete")
+        tooltipMove: <input type="text" v-model="mutableConfig.translations.tooltipMove">, (default: "Move")
+        tooltipResize: <input type="text" v-model="mutableConfig.translations.tooltipResize">, (default: "Resize")
+        tooltipBringToFront: <input type="text" v-model="mutableConfig.translations.tooltipBringToFront">, (default: "Bring to front")
+        tooltipBringToBack: <input type="text" v-model="mutableConfig.translations.tooltipBringToBack">, (default: "Bring to back")
+        tooltipDuplicate: <input type="text" v-model="mutableConfig.translations.tooltipDuplicate">, (default: "Duplicate")
+        tooltipUndo: <input type="text" v-model="mutableConfig.translations.tooltipUndo">, (default: "Undo last shape")
+        tooltipPdf: <input type="text" v-model="mutableConfig.translations.tooltipPdf">, (default: "Save pdf")
+        tooltipSave: <input type="text" v-model="mutableConfig.translations.tooltipSave">, (default: "Save annotations")
+        tooltipShapeCircle: <input type="text" v-model="mutableConfig.translations.tooltipShapeCircle">, (default: "Draw circle")
+        tooltipShapeRect: <input type="text" v-model="mutableConfig.translations.tooltipShapeRect">, (default: "Draw rect")
+        tooltipShapeArrow: <input type="text" v-model="mutableConfig.translations.tooltipShapeArrow">, (default: "Draw arrow")
+        tooltipShapeFreehand: <input type="text" v-model="mutableConfig.translations.tooltipShapeFreehand">, (default: "Freehand line")
+        tooltipShapeText: <input type="text" v-model="mutableConfig.translations.tooltipShapeText">, (default: "Text mode")
+        tooltipShapeTextLeft: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextLeft">, (default: "Align left")
+        tooltipShapeTextCenter: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextCenter">, (default: "Align center")
+        tooltipShapeTextRight: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextRight">, (default: "Align right")
+        tooltipShapeTextBullet: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextBullet">, (default: "Bullet points")
+        tooltipShapeTextBold: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextBold">, (default: "Bold")
+        tooltipShapeTextItalic: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextItalic">, (default: "Italic")
+        tooltipShapeTextUnderline: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextUnderline">, (default: "Underlined")
+        tooltipShapeColor: <input type="text" v-model="mutableConfig.translations.tooltipShapeColor">, (default: "Color")
+    }
+}
+  </code>
+  </pre>
           </template>
           <template #tab2>
-            Available very soon :)
+            <div><code><b>@toggleOpenState</b></code></div>
+            <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.comments.annotator.emits.toggleOpenState[store.lang] }}</div>
+<pre>
+<code>
+    {
+        isOpen: boolean,
+    }
+</code>
+</pre>    
+          <div class="border-t border-gray-500 pt-4"><code><b>@saveAnnotations</b></code></div>
+            <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.comments.annotator.emits.saveAnnotations[store.lang] }}</div>
+<pre>
+<code>
+    {
+        shapes: [],
+        lastSelectedShape: {}
+    }
+</code>
+</pre>    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.comments.annotator.emits.calledWhen[store.lang] }}</div>        
           </template>
         </Box>
     </div>
