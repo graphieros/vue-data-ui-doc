@@ -5,7 +5,7 @@
         "updates": [
             {
                 "component": "VueUiAnnotator",
-                "description": "Implement touch events (not perfect yet)"
+                "description": "Add touch support"
             }
         ]
     },

@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import { BrightnessUpIcon, MoonIcon, LanguageIcon } from "vue-tabler-icons";
@@ -46,6 +46,23 @@ const selectedLanguage = computed({
   }
 });
 
+const versionsList = ref([]);
+const versionsUrl = ref('https://vue-data-ui.graphieros.com/releases.json');
+
+onMounted(() => {
+  fetch(versionsUrl.value, {
+    method: 'GET',
+    cache: 'default',
+    }).then((response) => {
+        return response.json();
+    }).then(data => {
+        versionsList.value = data;
+    }).catch(err => {
+        console.error(err.message);
+    })
+});
+
+
 </script>
 
 <template>
@@ -57,11 +74,11 @@ const selectedLanguage = computed({
     <div class="z-10 mx-auto flex flex-col gap-6 w-full h-[calc(100svh_-_49px)] place-items-center place-content-center">
     <div class="relative z-10">
       <img src="../assets/logo.png" alt="vue data ui logo" class="h-[200px] mx-auto drop-shadow-2xl">
-      <!-- <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
-        <Logo/>
-      </div> -->
     </div>
-      <h1 class="z-10 mx-auto text-[48px] md:text-[64px] font-satoshi-bold"><span class="text-app-green">Vue</span> <span class="text-app-blue">Data UI</span></h1>
+    <div class="relative">
+      <h1 class="z-10 mx-auto text-[48px] md:text-[64px] font-satoshi-bold text-center"><span class="text-app-green">Vue</span> <span class="text-app-blue">Data UI</span></h1>
+      <span v-if="versionsList.length" class="absolute left-1/2 -translate-x-1/2 text-xs">{{ versionsList[0].version }}</span>
+    </div>
     <div class="z-10 flex flex-row place-items-center gap-2">
       <LanguageIcon/>
         <select v-model="selectedLanguage" class="h-[36px] px-2">

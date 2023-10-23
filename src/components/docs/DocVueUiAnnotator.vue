@@ -1,23 +1,21 @@
 <script setup>
-import { ref, computed, watch, nextTick } from "vue";
+import { ref, computed, watch, nextTick, onBeforeMount } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon, InfoTriangleIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
-import { xyConfig, xyDataset, donutConfig, donutDataset, waffleConfig, waffleDataset, radarConfig, radarDataset, chestnutConfig, chestnutDataset } from "./dash";
+import { donutConfig, donutDataset } from "./dash";
 
 const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
 
+
+
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
         key.value += 1;
     })
-});
-
-const isDarkMode = computed(() => {
-    return store.isDarkMode;
 });
 
 const config = ref({
@@ -122,7 +120,7 @@ function toggleOpenState(state) {
   isAnnotatorOpen.value = state.isOpen;
 }
 
-const shapes = ref([
+const initShapes = ref([
     {
         "alpha": "FA",
         "id": "rect_5984.908326049341_1697899539759",
@@ -178,7 +176,7 @@ const shapes = ref([
     }
 ]);
 
-const lastSelectedShape = ref({
+const initLastSelectedShape = ref({
     "alpha": "FA",
     "id": "circle_4641.74639444795_1697899591317",
     "color": "#ff6400",
@@ -192,9 +190,33 @@ const lastSelectedShape = ref({
     "isDash": false
 });
 
+const shapes = ref([]);
+
+
+const lastSelectedShape = ref(undefined);
+
+onBeforeMount(() => {
+  if(localStorage.getItem("vue-data-ui-annotator") === null) {
+    localStorage.setItem("vue-data-ui-annotator", JSON.stringify({
+      shapes: initShapes.value,
+      lastSelectedShape: initLastSelectedShape.value
+    }));
+    shapes.value = initShapes.value;
+    lastSelectedShape.value = initLastSelectedShape.value;
+  } else {
+    shapes.value = JSON.parse(localStorage.getItem("vue-data-ui-annotator")).shapes;
+    lastSelectedShape.value = JSON.parse(localStorage.getItem("vue-data-ui-annotator")).lastSelectedShape;
+  }
+});
+
+
 
 function saveAnnotations({ shapes, lastSelectedShape }) {
   console.log({ shapes, lastSelectedShape });
+  localStorage['vue-data-ui-annotator'] = JSON.stringify({
+      shapes,
+      lastSelectedShape
+    })
 }
 
 </script>
