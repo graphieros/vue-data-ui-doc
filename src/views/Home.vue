@@ -29,6 +29,7 @@ const translations = computed(() => {
 const languageOptions = ref([
   { value: "en", text: "English" },
   { value: "fr", text: "Français" },
+  { value: "de", text: "Deutsch" },
   { value: "es", text: "Español" },
   { value: "pt", text: "Portugues" },
   { value: "zh", text: "中国人" },
