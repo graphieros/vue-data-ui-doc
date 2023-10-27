@@ -82,6 +82,46 @@ const skeletonBar = ref({
           color: "#343434"
         }
     }
+});
+
+Date.prototype.getWeek = function () {
+  const d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+};
+
+const weekData = ref([]);
+const usableWeekData = computed(() => {
+  if(!weekData.value) return [];
+  const weeklyData = [];
+  let currentWeek = null;
+  let weeklySum = 0;
+
+  weekData.value.forEach((dataPoint) => {
+    const date = new Date(dataPoint.day);
+    const weekNumber = date.getWeek(); // Custom function to get the week number
+
+    if (currentWeek === null) {
+      currentWeek = weekNumber;
+    }
+
+    if (currentWeek !== weekNumber) {
+      weeklyData.push({ period: `week ${currentWeek}`, value: weeklySum });
+      currentWeek = weekNumber;
+      weeklySum = 0;
+    }
+
+    weeklySum += dataPoint.downloads;
+  });
+
+  // Push the last week's data
+  if (currentWeek !== null) {
+    weeklyData.push({ period: `week ${currentWeek}`, value: weeklySum });
+  }
+
+  return weeklyData;
 })
 
 onMounted(() => {
@@ -96,6 +136,7 @@ onMounted(() => {
         isError.value = false;
         return response.json();
     }).then(json => {
+      weekData.value = json.downloads;
         data.value = json.downloads.map(d => {
             return {
                 period: d.day,
@@ -118,24 +159,6 @@ onMounted(() => {
     }).then(json => {
       info.value = json.objects.find(el => el.package.name === 'vue-data-ui').score.detail;
     })
-
-    // fetch(weekUrl, {
-    //     method: "GET",
-    //     mode: "cors",
-    //     cache: "default"
-    // }).then((response) => {
-    //     return response.json()
-    // }).then(json => {
-    //     versionsData.value = Object.keys(json.downloads).map(key => {
-    //         return {
-    //             name: key,
-    //             value: json.downloads[key]
-    //         }
-    //     });
-    // }).finally(() => {
-    //     isLoadingBar.value = false;
-    //     step.value += 1;
-    // });
 
     fetch(versionsUrl.value, {
     method: 'GET',
@@ -202,28 +225,12 @@ const weekDataset = computed(() => {
     const series = computeSumsByChunks(data.value.downloads.map(d => d.downloads).slice(0, -1), 7);
     const average = series.reduce((a, b) => a + b, 0) / series.length;
     const avg = [];
-    for(let i = 0; i < series.length; i += 1) {
-        avg.push(average)
-    }
-     return [
-        {
-            name: "average",
-            series: avg,
-            type: "line",
-            color: "rgb(62,62,62)",
-            dashed: true,
-            dataLabels: false,
-            useTag: "start"
-        },
-        {
-            name: "vue-data-ui week",
-            series,
-            type: "bar",
-            color: "#42d392",
-            useProgression: false,
-            dataLabels: true,
-        }
-     ]
+    return series.map((s, i) => {
+      return {
+        period: i,
+        value: s
+      }
+    })
 })
 
 const config = computed(() => {
@@ -661,6 +668,7 @@ const sparklineSkeletonConfig = computed(() => {
                 <div class="max-w-[500px] mx-auto my-6">
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                     <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="data" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig"/>
+                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="usableWeekData" :config="isDarkMode ? {...darkModeSparklineConfig, style: {...darkModeSparklineConfig.style, line: {...darkModeSparklineConfig.style.line, color: '#5f8bee'}, area: {...darkModeSparklineConfig.style.area, color: '#5f8bee'}, dataLabel: {...darkModeSparklineConfig.style.dataLabel, color: '#5f8bee'}, title: {...darkModeSparklineConfig.style.title, text: 'Weekly downloads'}}} : {...sparklineConfig, style: {...sparklineConfig.style, line: {...sparklineConfig.style.line, color: '#5f8bee'}, area: {...sparklineConfig.style.area, color: '#5f8bee'}, title: {...sparklineConfig.style.title, text: 'Weekly downloads'}}} "/>
                 </div>
                 <div class="max-w-[300px] mx-auto px-6 mb-6">
                     <div class="pb-2 mb-2">
