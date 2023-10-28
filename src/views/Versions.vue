@@ -93,6 +93,31 @@ Date.prototype.getWeek = function () {
 };
 
 const weekData = ref([]);
+
+const heatmapData = ref([]);
+
+const usableHeatmapData = computed(() => {
+  if (!data.value) return [];
+
+  const result = [
+    { name: "Sun", values: [] },
+    { name: "Mon", values: [] },
+    { name: "Tue", values: [] },
+    { name: "Wed", values: [] },
+    { name: "Thu", values: [] },
+    { name: "Fri", values: [] },
+    { name: "Sat", values: [] },
+  ];
+
+  data.value.forEach(item => {
+    const dayOfWeek = new Date(item.period).getDay();
+    result[dayOfWeek].values.push(item.value);
+  });
+
+  return result;
+
+});
+
 const usableWeekData = computed(() => {
   if(!weekData.value) return [];
   const weeklyData = [];
@@ -108,7 +133,7 @@ const usableWeekData = computed(() => {
     }
 
     if (currentWeek !== weekNumber) {
-      weeklyData.push({ period: `week ${currentWeek}`, value: weeklySum });
+      weeklyData.push({ period: `week ${currentWeek}`, value: weeklySum, short: `w${currentWeek}` });
       currentWeek = weekNumber;
       weeklySum = 0;
     }
@@ -118,10 +143,93 @@ const usableWeekData = computed(() => {
 
   // Push the last week's data
   if (currentWeek !== null) {
-    weeklyData.push({ period: `week ${currentWeek}`, value: weeklySum });
+    weeklyData.push({ period: `week ${currentWeek}`, value: weeklySum, short: `w${currentWeek}` });
   }
 
   return weeklyData;
+});
+
+const heatmapConfig = computed(() => {
+  return {
+  style: {
+    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
+    color: "#2D353C",
+    fontFamily: "inherit",
+    layout: {
+      useDiv: true,
+      padding: {
+        top: 36,
+        right: 12,
+        bottom: 12,
+        left: 48
+      },
+      cells: {
+        height: 24,
+        value: {
+          show: true,
+          fontSize: 8,
+          bold: false,
+          roundingValue: 0,
+          color: isDarkMode.value ? '#FAFAFA' : '#1A1A1A',
+        },
+        colors: {
+          hot: "#42d392",
+          cold: "#5f8bee",
+          underlayer: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+        },
+        spacing: 0.5,
+        selected: {
+          border: 2,
+          color: "#2D353C"
+        }
+      },
+      dataLabels: {
+        xAxis: {
+          show: true,
+          values: usableWeekData.value.map(p => p.short),
+          fontSize: 8,
+          color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+          bold: false,
+          offsetX: 0,
+          offsetY: 0
+        },
+        yAxis: {
+          show: true,
+          values: [],
+          fontSize: 8,
+          color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+          bold: false,
+          offsetY: 0,
+          offsetX: 0
+        }
+      }
+    },
+    title: {
+      text: "Downloads heatmap",
+      color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+      fontSize: 16,
+      bold: true,
+    },
+    legend: {
+      show: true,
+      backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
+      color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+      fontSize: 12,
+      bold: true,
+      roundingValue: 0
+    },
+    tooltip: {
+      show: true,
+      backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+      color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+      fontSize: 14,
+      roundingValue: 0
+    }
+  },
+  userOptions: {
+    show: false,
+  },
+}
 })
 
 onMounted(() => {
@@ -675,6 +783,9 @@ const sparklineSkeletonConfig = computed(() => {
                       Current NPM score:
                     </div>
                     <VueUiSparkbar :dataset="sparkbarDataset" :config="sparkbarConfig"/>
+                </div>
+                <div class="max-w-[500px] mx-auto" v-if="usableHeatmapData.length">
+                  <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig"/>
                 </div>
                 <div class="w-full max-h-[500px] overflow-y-auto">
                     <ul>
