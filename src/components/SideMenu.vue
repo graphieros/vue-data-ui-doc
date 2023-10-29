@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon } from "vue-tabler-icons";
+import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon, MoodSmileIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -102,6 +102,9 @@ function isSelected(route) {
             <router-link to="/docs#vue-ui-rating">
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-rating') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-rating')" class="-ml-6"/><StarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-rating')"/>  <span class="text-gray-500">VueUi</span>Rating</div>
             </router-link>
+            <router-link to="/docs#vue-ui-smiley">
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-smiley') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-smiley')" class="-ml-6"/><MoodSmileIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-smiley')"/>  <span class="text-gray-500">VueUi</span>Smiley</div>
+            </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Utilities</div>
@@ -170,6 +173,9 @@ function isSelected(route) {
             </router-link>
             <router-link to="/docs#vue-ui-rating">
                 <div class="-ml-2 my-2"><StarIcon :class="`${isSelected('/docs#vue-ui-rating') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-rating') ? 2 : 1"/></div>
+            </router-link>
+            <router-link to="/docs#vue-ui-smiley">
+                <div class="-ml-2 my-2"><MoodSmileIcon :class="`${isSelected('/docs#vue-ui-smiley') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-smiley') ? 2 : 1"/></div>
             </router-link>
             <router-link to="/docs#vue-ui-screenshot">
                 <div class="-ml-2 my-2"><ScreenshotIcon :class="`${isSelected('/docs#vue-ui-screenshot') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-screenshot') ? 2 : 1"/></div>

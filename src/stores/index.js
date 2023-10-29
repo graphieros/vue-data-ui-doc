@@ -18,6 +18,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                nuxt: {
+                    implementation: {
+                        en: "If you are using Nuxt, an example of installation is provided in this Github repository",
+                        fr: "Si vous utilisez Nuxt, un exemple d'installation est fourni dans ce dépôt Github",
+                        pt: "Se você estiver usando Nuxt, um exemplo de instalação é fornecido neste repositório Github",
+                        de: "Wenn Sie Nuxt verwenden, finden Sie in diesem Github-Repository ein Installationsbeispiel",
+                        zh: "如果您使用 Nuxt，则此 Github 存储库中提供了安装示例",
+                        jp: "Nuxt を使用している場合、インストールの例がこの Github リポジトリに提供されています。",
+                        es: "Si está utilizando Nuxt, se proporciona un ejemplo de instalación en este repositorio de Github"
+                    }
+                },
                 tagline: {
                     en: "A user-empowering data visualization Vue3 components library",
                     fr: "Une bibliothèque de composants Vue3 de visualisation de données qui autonomise les utilisateurs",
@@ -406,6 +417,15 @@ export const useMainStore = defineStore("main", {
                             jp: "評価または評価結果を視覚化するための古典的な評価コンポーネント。表示する星の数とその形を制御する",
                             es: "Un componente de calificación clásico para calificar o visualizar resultados de calificación. Controla el número de estrellas a mostrar y su forma."
                         },
+                        smiley: {
+                            en: "A rating component using smiley icons",
+                            fr: "Un composant de notation utilisant des icônes souriantes",
+                            pt: "Um componente de classificação usando ícones sorridentes",
+                            de: "Eine Bewertungskomponente mit Smiley-Symbolen",
+                            zh: "使用笑脸图标的评级组件",
+                            jp: "スマイリーアイコンを使用した評価コンポーネント",
+                            es: "Un componente de calificación que utiliza íconos sonrientes",
+                        },
                         screenshot: {
                             en: "Select an area on the screen and either download or post the image as base64 with additional metadata",
                             fr: "Sélectionnez une zone sur l'écran et téléchargez ou publiez l'image en base64 avec des métadonnées supplémentaires",
@@ -658,6 +678,17 @@ export const useMainStore = defineStore("main", {
                         es: "Ejemplo"
                     },                    
                     comments: {
+                        smiley: {
+                            p1: {
+                                en: "A component to rate, or display rating results.",
+                                fr: "Un composant pour évaluer ou afficher les résultats de l'évaluation.",
+                                pt: "Um componente para avaliar ou exibir resultados de classificação.",
+                                de: "Eine Komponente zum Bewerten oder Anzeigen von Bewertungsergebnissen.",
+                                zh: "用于评分或显示评分结果的组件。",
+                                jp: "評価するコンポーネント、または評価結果を表示するコンポーネント。",
+                                es: "Un componente para calificar o mostrar resultados de calificación."
+                            }
+                        },
                         noDataset: {
                             en: "No dataset required",
                             fr: "Aucun dataset requis",
@@ -1060,13 +1091,13 @@ export const useMainStore = defineStore("main", {
                                 es: "La calificación se calculará en función del desglose proporcionado."
                             },
                             tooltip: {
-                                en: "The tooltip can be enabled, to display the values at the hovered star (use in readonly mode).",
-                                fr: "L'info-bulle peut être activée pour afficher les valeurs au niveau de l'étoile survolée (à utiliser en mode lecture seule).",
-                                pt: "A dica de ferramenta pode ser habilitada para exibir os valores na estrela pairada (use no modo somente leitura).",
-                                de: "Der Tooltip kann aktiviert werden, um die Werte auf dem schwebenden Stern anzuzeigen (Verwendung im schreibgeschützten Modus).",
-                                zh: "可以启用工具提示，以显示悬停的星星处的值（在只读模式下使用）。",
-                                jp: "ツールチップを有効にすると、ホバーされた星に値が表示されます (読み取り専用モードで使用)。",
-                                es: "La información sobre herramientas se puede habilitar para mostrar los valores en la estrella suspendida (usar en modo de solo lectura)."
+                                en: "The tooltip can be enabled, to display the values at the hovered item (use in readonly mode).",
+                                fr: "L'info-bulle peut être activée pour afficher les valeurs de l'élément survolé (à utiliser en mode lecture seule).",
+                                pt: "A dica de ferramenta pode ser habilitada para exibir os valores no item pairado (use no modo somente leitura).",
+                                de: "Der Tooltip kann aktiviert werden, um die Werte am schwebenden Element anzuzeigen (Verwendung im schreibgeschützten Modus).",
+                                zh: "可以启用工具提示，以显示悬停项目处的值（在只读模式下使用）。",
+                                jp: "ツールチップを有効にすると、ホバーされた項目の値が表示されます (読み取り専用モードで使用)。",
+                                es: "La información sobre herramientas se puede habilitar para mostrar los valores en el elemento sobre el que se encuentra (usar en modo de solo lectura)."
                             },
                             useImage: {
                                 en: 'or use "image" and provide url in image.src',
