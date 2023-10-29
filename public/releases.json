@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.7.8",
+        "date": "2023-10-29",
+        "updates": [
+            {
+                "component": "VueUiSmiley",
+                "description": "Add keyboard support"
+            }
+        ]
+    },
+    {
         "version": "v 1.7.7",
         "date": "2023-10-29",
         "updates": [
