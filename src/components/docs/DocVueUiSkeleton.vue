@@ -98,6 +98,7 @@ const config = ref({
       }
     },
     rating: {
+      useSmiley: false,
       color: "#C4C4C4",
       filled: true,
       strokeWidth: 1,
@@ -211,6 +212,7 @@ const darkModeConfig = ref({
       }
     },
     rating: {
+      useSmiley: false,
       color: "#5c5c5c",
       filled: true,
       strokeWidth: 1,
@@ -340,6 +342,12 @@ function fixChart() {
                 <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
             <VueUiSkeleton :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <div v-if="[mutableConfig.type, mutableConfigDarkMode.type].includes('rating')" class="mt-4 mx-auto flex flex-row place-items-center justify-center gap-2">
+              <input id="useSmiley" v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.rating.useSmiley"><input id="useSmiley" v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.useSmiley" @change="forceChartUpdate()">
+              <label for="useSmiley">
+                {{ translations.docs.comments.skeleton.smiley[store.lang] }}
+              </label>
+            </div>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black hover:shadow-xl font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_skeleton)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
@@ -428,8 +436,9 @@ const <span class="text-black dark:text-app-blue">config</span> = {
       }
     },
     rating: {
+      useSmiley: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.rating.useSmiley"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.useSmiley" @change="forceChartUpdate()">, (default: false)
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rating.color"><input v-else type="color" v-model="mutableConfig.style.rating.color">, (default: "#E1E5E8")
-      filled: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.rating.filled"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.filled">, (default: true)
+      filled: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.rating.filled" @hange="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.filled">, (default: true)
       strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.rating.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.rating.strokeWidth">, (default: 1)
       maxWidth: <input v-if="isDarkMode" type="number" min="100" v-model="mutableConfigDarkMode.style.rating.maxWidth"><input v-else type="number" min="100" v-model="mutableConfig.style.rating.maxWidth">, (default: 200)
     },

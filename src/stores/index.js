@@ -1136,6 +1136,15 @@ export const useMainStore = defineStore("main", {
                                 zh: "获取数据时显示的占位符",
                                 jp: "データを取得するときに表示されるプレースホルダー",
                                 es: "Marcadores de posición para mostrar mientras se recuperan sus datos"
+                            },
+                            smiley: {
+                                en: "Use smiley icons instead of stars",
+                                fr: "Utilisez des icônes souriantes au lieu d'étoiles",
+                                pt: "Use ícones sorridentes em vez de estrelas",
+                                de: "Verwenden Sie Smiley-Symbole anstelle von Sternen",
+                                zh: "使用笑脸图标代替星星",
+                                jp: "星の代わりにスマイリーアイコンを使用する",
+                                es: "Utilice íconos sonrientes en lugar de estrellas"
                             }
                         },
                         screenshot: {
