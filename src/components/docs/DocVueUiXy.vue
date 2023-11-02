@@ -53,9 +53,8 @@ const dataset = ref([
     },
 ]);
 
-
-
 const config = ref({
+    useCanvas: false,
     chart: {
         backgroundColor: "#F3F4F6",
         color: "#1A1A1A",
@@ -96,6 +95,9 @@ const config = ref({
                 }
             }
         },
+        labels: {
+            fontSize: 10,
+        },
         legend: {
             show: true,
             color: "#1A1A1A",
@@ -135,6 +137,7 @@ const config = ref({
         },
     },
     bar: {
+        borderRadius: 2,
         useGradient: true,
         labels: {
             show: true,
@@ -181,6 +184,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    useCanvas: false,
     chart: {
         backgroundColor: "#1A1A1A",
         color: "#c8c8c8",
@@ -221,6 +225,9 @@ const darkModeConfig = ref({
                 }
             }
         },
+        labels: {
+            fontSize: 10,
+        },
         legend: {
             show: true,
             color: "#c8c8c8",
@@ -260,6 +267,7 @@ const darkModeConfig = ref({
         },
     },
     bar: {
+        borderRadius: 2,
         useGradient: true,
         labels: {
             show: true,
@@ -309,6 +317,8 @@ const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value)));
 const mutableDataset = ref(JSON.parse(JSON.stringify(dataset.value)));
 
+const useCanvas = ref(false);
+
 function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
     mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
@@ -339,6 +349,49 @@ function fixChart() {
     isFixed.value = !isFixed.value;
 }
 
+function toggleUseCanvas() {
+    if (useCanvas.value) {
+        mutableConfig.value.useCanvas = true;
+        mutableConfig.value.chart.height = 600;
+        mutableConfig.value.chart.width = 1000;
+        mutableConfig.value.chart.padding = {
+            top: 72,
+            right: 48,
+            left: 92,
+            bottom: 72
+        };
+        mutableConfig.value.chart.grid.labels.fontSize = 20;
+        mutableConfig.value.chart.grid.labels.axis.fontSize = 24;
+        mutableConfig.value.chart.grid.labels.xAxisLabels.fontSize = 12;
+        mutableConfig.value.chart.labels.fontSize = 20;
+        mutableConfig.value.line.strokeWidth = 4;
+        mutableConfig.value.line.radius = 6;
+        mutableConfig.value.plot.radius = 6;
+        
+        mutableConfigDarkMode.value.useCanvas = true;
+        mutableConfigDarkMode.value.chart.height = 600;
+        mutableConfigDarkMode.value.chart.width = 1000;
+        mutableConfigDarkMode.value.chart.padding = {
+            top: 72,
+            right: 48,
+            left: 92,
+            bottom: 72
+        };
+        mutableConfigDarkMode.value.chart.grid.labels.fontSize = 20;
+        mutableConfigDarkMode.value.chart.grid.labels.axis.fontSize = 24;
+        mutableConfigDarkMode.value.chart.grid.labels.xAxisLabels.fontSize = 12;
+        mutableConfigDarkMode.value.chart.labels.fontSize = 20;
+        mutableConfigDarkMode.value.line.strokeWidth = 4;
+        mutableConfigDarkMode.value.line.radius = 6;
+        mutableConfigDarkMode.value.plot.radius = 6;
+
+        forceChartUpdate();
+    } else {
+        resetDefault();
+        forceChartUpdate();
+    }
+}
+
 </script>
 
 
@@ -363,6 +416,15 @@ function fixChart() {
         </div>
         <div class="w-full flex place-items-center place-content-center my-6">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green hover:shadow-xl transition-all" @click="copyToClipboard(mainConfig.vue_ui_xy)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
+        </div>
+        <div class="w-full mx-auto max-w-[500px] flex flex-col">
+            <span>
+                v 1.8.1 : {{ translations.docs.comments.xy.canvas.description[store.lang] }}
+            </span>
+            <div class="w-full flex flex-row place-items-center justify-center gap-2">
+                <input id="useCanvas" type="checkbox" v-model="useCanvas" @change="toggleUseCanvas">
+                <label for="useCanvas">Use canvas</label>
+            </div>
         </div>
         <Box showEmits>
             <template v-slot:tab0>
@@ -457,6 +519,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
 <code>
 const <span class="text-black dark:text-app-blue">config</span> = {
         chart: {
+            useCanvas: {{ useCanvas }},
             fontFamily: "inherit",
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.chart.backgroundColor">, (default: "#FFFFFF")
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.color"><input v-else type="color" v-model="mutableConfig.chart.color">, (default:"#2D353C")
@@ -535,6 +598,7 @@ const <span class="text-black dark:text-app-blue">config</span> = {
         },
         <span class="text-gray-600 dark:text-app-green">// use the following for the config of a specific chart type:</span>
         bar: {
+            borderRadius: <input v-if="isDarkMode" type="number" min="0" max="50" v-model="mutableConfigDarkMode.bar.borderRadius"><input v-else type="number" min="0" max="50" v-model="mutableConfig.bar.borderRadius">, (default: 2)
             useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.useGradient"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.useGradient">, (default: true)
             labels: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.labels.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.labels.show">, (default: false)

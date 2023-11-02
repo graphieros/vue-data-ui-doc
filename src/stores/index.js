@@ -726,6 +726,17 @@ export const useMainStore = defineStore("main", {
                             es: "Su conjunto de datos aquí"
                         },
                         xy: {
+                            canvas: {
+                                description: {
+                                    en: "This chart can be displayed as a SVG or a Canvas. By default, the configuration will generate a SVG. If you rather have less nodes in your HTML, you can display the chart as a Canvas. This is an experimental feature, you will need to adapt font sizes and chart padding in the options.",
+                                    fr: "Ce graphique peut être affiché au format SVG ou Canvas. Par défaut, la configuration générera un SVG. Si vous préférez avoir moins de nœuds dans votre HTML, vous pouvez afficher le graphique sous forme de canevas. Il s'agit d'une fonctionnalité expérimentale, vous devrez adapter la taille des polices et le remplissage du graphique dans les options.",
+                                    pt: "Este gráfico pode ser exibido como SVG ou Canvas. Por padrão, a configuração irá gerar um SVG. Se preferir ter menos nós em seu HTML, você pode exibir o gráfico como um Canvas. Este é um recurso experimental, você precisará adaptar os tamanhos das fontes e o preenchimento do gráfico nas opções.",
+                                    de: "Dieses Diagramm kann als SVG oder Canvas angezeigt werden. Standardmäßig generiert die Konfiguration ein SVG. Wenn Sie weniger Knoten in Ihrem HTML haben möchten, können Sie das Diagramm als Canvas anzeigen. Dies ist eine experimentelle Funktion. Sie müssen die Schriftgröße und den Diagrammabstand in den Optionen anpassen.",
+                                    zh: "该图表可以显示为 SVG 或 Canvas。默认情况下，配置将生成 SVG。如果您希望 HTML 中的节点较少，则可以将图表显示为 Canvas。这是一项实验性功能，您需要在选项中调整字体大小和图表填充。",
+                                    jp: "このグラフは SVG または Canvas として表示できます。デフォルトでは、設定により SVG が生成されます。 HTML 内のノードを減らしたい場合は、チャートをキャンバスとして表示できます。これは実験的な機能であり、オプションでフォント サイズとグラフのパディングを調整する必要があります。",
+                                    es: "Este gráfico se puede mostrar como SVG o Canvas. De forma predeterminada, la configuración generará un SVG. Si prefiere tener menos nodos en su HTML, puede mostrar el gráfico como un lienzo. Esta es una característica experimental; deberá adaptar los tamaños de fuente y el relleno del gráfico en las opciones."
+                                }
+                            },
                             type: {
                                 en: "The following attributes are optional:",
                                 fr: "Les attributs suivants sont optionnels:",

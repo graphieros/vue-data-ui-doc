@@ -164,6 +164,7 @@
         "useChart": true
     },
     "vue_ui_xy": {
+        "useCanvas": false,
         "chart": {
             "fontFamily" : "inherit",
             "backgroundColor" : "#FFFFFF",
@@ -250,6 +251,7 @@
             }
         },
         "bar": {
+            "borderRadius": 2,
             "useGradient": true,
             "labels": {
                 "show": false,
