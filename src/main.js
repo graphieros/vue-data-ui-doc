@@ -25,7 +25,8 @@ import {
     VueUiSparkbar,
     VueUiDashboard,
     VueUiAnnotator,
-    VueUiSmiley
+    VueUiSmiley,
+    VueUiRelationCircle
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -55,5 +56,6 @@ app.component("VueUiSparkbar", VueUiSparkbar);
 app.component("VueUiDashboard", VueUiDashboard);
 app.component("VueUiAnnotator", VueUiAnnotator);
 app.component("VueUiSmiley", VueUiSmiley);
+app.component("VueUiRelationCircle", VueUiRelationCircle);
 
 app.mount('#app')

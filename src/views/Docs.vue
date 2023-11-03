@@ -25,6 +25,7 @@ import MenuDetail from "../components/MenuDetail.vue";
 import DocVueUiDashboard from "../components/docs/DocVueUiDashboard.vue";
 import DocVueUiAnnotator from "../components/docs/DocVueUiAnnotator.vue";
 import DocVueUiSmiley from "../components/docs/DocVueUiSmiley.vue";
+import DocVueUiRelationCircle from "../components/docs/DocVueUiRelationCircle.vue";
 
 import { CheckIcon } from "vue-tabler-icons";
 
@@ -137,6 +138,12 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-sparkbar"
     },
     {
+        name: "RelationCircle",
+        icon: "CircleTriangle",
+        tooltip: translations.value.docs.tooltips.relationCircle[store.lang],
+        link: "/docs#vue-ui-relation-circle"
+    },
+    {
         name: "Table",
         icon: "TableIcon",
         tooltip: translations.value.docs.tooltips.table[store.lang],
@@ -211,6 +218,7 @@ const menuItems = computed(() => [
             <DocVueUiDashboard v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-dashboard'"/>
             <DocVueUiAnnotator v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-annotator'"/>
             <DocVueUiSmiley v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-smiley'"/>
+            <DocVueUiRelationCircle v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-relation-circle'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">

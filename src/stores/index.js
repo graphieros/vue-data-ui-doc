@@ -246,6 +246,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        relationCircle: {
+                            en: "A component to visualize relationships between people, words, companies...",
+                            fr: "Un composant pour visualiser les relations entre les personnes, les mots, les entreprises...",
+                            pt: "Um componente para visualizar relações entre pessoas, palavras, empresas...",
+                            de: "Eine Komponente zur Visualisierung von Beziehungen zwischen Menschen, Wörtern, Unternehmen ...",
+                            zh: "一个可视化人、文字、公司之间关系的组件......",
+                            jp: "人、言葉、企業…の関係性を可視化するコンポーネント",
+                            es: "Un componente para visualizar las relaciones entre personas, palabras, empresas..."
+                        },
                         annotator: {
                             en: "A component to wrap any content and make it annotatable.",
                             fr: "Un composant pour envelopper n'importe quel contenu et le rendre annotable.",
@@ -678,6 +687,35 @@ export const useMainStore = defineStore("main", {
                         es: "Ejemplo"
                     },                    
                     comments: {
+                        relationCircle: {
+                            limit: {
+                                en: "Number of items to display (basically slices the array from 0 to n)",
+                                fr: "Nombre d'éléments à afficher (coupe essentiellement le tableau de 0 à n)",
+                                pt: "Número de itens a serem exibidos (basicamente divide o array de 0 a n)",
+                                de: "Anzahl der anzuzeigenden Elemente (unterteilt das Array grundsätzlich von 0 bis n)",
+                                zh: "要显示的项目数（基本上将数组从 0 分割到 n）",
+                                jp: "表示する項目の数 (基本的に配列を 0 から n までスライスします)",
+                                es: "Número de elementos a mostrar (básicamente divide la matriz de 0 a n)"
+                            },
+                            weight: {
+                                en: "List the weight of each link in the same order as the relations array",
+                                fr: "Répertoriez le poids de chaque lien dans le même ordre que le tableau des relations",
+                                pt: "Liste o peso de cada link na mesma ordem da matriz de relações",
+                                de: "Listen Sie die Gewichtung jedes Links in derselben Reihenfolge auf wie im Beziehungsarray",
+                                zh: "按照与关系数组相同的顺序列出每个链接的权重",
+                                jp: "各リンクの重みを関係配列と同じ順序でリストします。",
+                                es: "Enumere el peso de cada enlace en el mismo orden que la matriz de relaciones."
+                            },
+                            relations: {
+                                en: "List all the ids of the items linked to this item.",
+                                fr: "Répertoriez tous les identifiants des éléments liés à cet élément.",
+                                pt: "Liste todos os IDs dos itens vinculados a este item.",
+                                de: "Listen Sie alle IDs der mit diesem Artikel verknüpften Artikel auf.",
+                                zh: "列出与该项目链接的所有项目的 ID。",
+                                jp: "このアイテムにリンクされているアイテムのすべての ID をリストします。",
+                                es: "Enumere todos los identificadores de los elementos vinculados a este elemento."
+                            }
+                        },
                         smiley: {
                             p1: {
                                 en: "A component to rate, or display rating results.",

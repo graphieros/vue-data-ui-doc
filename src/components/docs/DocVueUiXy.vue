@@ -437,7 +437,7 @@ function toggleUseCanvas() {
                         <div class="col-span-5 bg-[#42d39233] rounded-md p-2 text-xs w-full h-full flex place-items-center shadow" v-html="translations.docs.comments.xy.canvas.svgAdvantage[store.lang]"></div>
                         <div class="col-span-5 bg-[#ff640033] rounded-md p-2 text-xs w-full h-full flex place-items-center shadow" v-html="translations.docs.comments.xy.canvas.svgDrawbacks[store.lang]"></div>
                     </div>
-                    <div class="grid grid-cols-12 place-items-center gap-4 mt-2 pb-4 border-b border-app-blue mb-4">
+                    <div class="grid grid-cols-12 place-items-center gap-4 mt-4 pb-4 border-b border-app-blue mb-4">
                         <div class="col-span-2">CANVAS</div>
                         <div class="col-span-5 bg-[#42d39233] rounded-md p-2 text-xs w-full h-full flex place-items-center shadow" v-html="translations.docs.comments.xy.canvas.canvasAdvantages[store.lang]"></div>
                         <div class="col-span-5 bg-[#ff640033] rounded-md p-2 text-xs w-full h-full flex place-items-center shadow" v-html="translations.docs.comments.xy.canvas.canvasDrawbacks[store.lang]"></div>

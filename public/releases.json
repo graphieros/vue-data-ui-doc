@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.8.2",
+        "date": "2023-11-03",
+        "updates": [
+            {
+                "component": "VueUiRelationCircle",
+                "description": "Add component"
+            }
+        ]
+    },
+    {
         "version": "v 1.8.1",
         "date": "2023-11-02",
         "updates": [
