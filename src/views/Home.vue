@@ -73,36 +73,36 @@ onMounted(() => {
       </div>
     <div class="z-10 mx-auto flex flex-col gap-6 w-full h-[calc(100svh_-_49px)] place-items-center place-content-center">
     <div class="relative z-10">
-      <img src="../assets/logo.png" alt="vue data ui logo" class="h-[200px] mx-auto drop-shadow-2xl">
+      <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[200px] mx-auto drop-shadow-2xl">
     </div>
     <div class="relative">
-      <h1 class="z-10 mx-auto text-[48px] md:text-[64px] font-satoshi-bold text-center"><span class="text-app-green">Vue</span> <span class="text-app-blue">Data UI</span></h1>
+      <h1 class="z-10 mx-auto text-[48px] md:text-[64px] font-satoshi-bold text-center"><span class="text-app-green" data-cy="app-name-vue">Vue</span> <span data-cy="app-name" class="text-app-blue">Data UI</span></h1>
       <span v-if="versionsList.length" class="absolute left-1/2 -translate-x-1/2 text-xs">{{ versionsList[0].version }}</span>
     </div>
     <div class="z-10 flex flex-row place-items-center gap-2">
       <LanguageIcon/>
-        <select v-model="selectedLanguage" class="h-[36px] px-2">
+        <select data-cy="select-lang" v-model="selectedLanguage" class="h-[36px] px-2">
           <option v-for="option in languageOptions" :value="option.value">
             {{ option.text }}
           </option>
         </select>
     </div>
-      <p class="z-10 mx-auto text-xl text-black dark:text-gray-200 text-center">
+      <p data-cy="tag-line" class="z-10 mx-auto text-xl text-black dark:text-gray-200 text-center">
         {{ translations.tagline[store.lang] }}
       </p>
       <div class="z-10 flex flex-row gap-6 mt-6">
         <router-link to="/installation">
-            <button class="bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:shadow-xl hover:from-app-blue hover:to-app-green transition-all">
+            <button data-cy="btn-install" class="bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:shadow-xl hover:from-app-blue hover:to-app-green transition-all">
               {{ translations.menu.installation[store.lang] }}
             </button>
         </router-link>
         <router-link to="/docs">
-            <button class="bg-white hover:shadow-xl dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold dark:hover:bg-[rgba(255,255,255,0.05)] transition-all hover:border-app-blue">
+            <button data-cy="btn-docs" class="bg-white hover:shadow-xl dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold dark:hover:bg-[rgba(255,255,255,0.05)] transition-all hover:border-app-blue">
               {{ translations.menu.docs[store.lang] }}
             </button>
         </router-link>
       </div>
-      <a href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10">
+      <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10">
           <button class="flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue w-[220px] gap-3 transition-all">
             <BrandGithubFilledIcon/>
             <span>
@@ -110,7 +110,7 @@ onMounted(() => {
             </span>
           </button>
         </a>
-        <button @click="changeTheme" class="z-10 dark:text-gray-400 hover:underline flex flex-row gap-2 place-items-center">
+        <button data-cy="switch-mode" @click="changeTheme" class="z-10 dark:text-gray-400 hover:underline flex flex-row gap-2 place-items-center">
           <BrightnessUpIcon v-if="store.isDarkMode"/>
                     <MoonIcon v-else/>{{ isDarkMode ? translations.lightMode[store.lang] : translations.darkMode[store.lang] }}
         </button>

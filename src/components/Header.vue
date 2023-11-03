@@ -92,48 +92,48 @@ const selectedLanguage = computed({
 </script>
 
 <template>
-    <header class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b border-gray-700 transition-all">
+    <header data-cy="app-header" class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b border-gray-700 transition-all">
         <div class="mx-auto w-5/6 py-3 flex justify-between">
-            <router-link to="/" class="w-[150px]">
-                <div class="flex flex-row gap-3 w-full">
-                    <img src="../assets/logo.png" class="h-5">
+            <router-link data-cy="link-home" to="/" class="w-[150px]">
+                <div data-cy="header-app-name" class="flex flex-row gap-3 w-full">
+                    <img data-cy="header-logo" src="../assets/logo.png" class="h-5">
                     <span>Vue Data UI</span>
                 </div>
             </router-link>
 
             <nav class="hidden md:flex flex-row gap-3 justify-end w-full place-items-center">
-                <router-link to="/installation">
+                <router-link data-cy="link-installation" to="/installation">
                     <span :class="`${isSelected('/installation') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">
                         {{ translations.menu.installation[store.lang] }}
                     </span>
                 </router-link>
-                <router-link to="/docs">
+                <router-link data-cy="link-docs" to="/docs">
                     <span :class="`${isSelected('/docs') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">
                         {{ translations.menu.docs[store.lang] }}
                     </span>
                 </router-link>
-                <router-link to="/dashboard">
+                <router-link data-cy="link-dashboard" to="/dashboard">
                     <span :class="`${isSelected('/dashboard') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">
                         {{ translations.menu.dashboard[store.lang] }}
                     </span>
                 </router-link>
-                <router-link to="/versions">
+                <router-link data-cy="link-versions" to="/versions">
                     <span :class="`${isSelected('/versions') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">
                         {{ translations.menu.versions[store.lang] }}
                     </span>
                 </router-link>
-                <router-link to="/about">
+                <router-link data-cy="link-about" to="/about">
                     <span :class="`${isSelected('/about') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">
                         {{ translations.menu.about[store.lang] }}
                     </span>
                 </router-link>
-                <button @click="changeTheme" id="themeToggle">
+                <button data-cy="btn-mode" @click="changeTheme" id="themeToggle">
                     <BrightnessUpIcon v-if="isDarkMode"/>
                     <MoonIcon v-else/>
                 </button>
                 <div class="z-10 flex flex-row place-items-center gap-2">
                     <LanguageIcon/>
-                    <select v-model="selectedLanguage" class="h-[24px] px-2">
+                    <select data-cy="header-select" v-model="selectedLanguage" class="h-[24px] px-2">
                         <option v-for="option in languageOptions" :value="option.value">
                             {{ option.text }}
                         </option>
