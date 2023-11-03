@@ -728,13 +728,85 @@ export const useMainStore = defineStore("main", {
                         xy: {
                             canvas: {
                                 description: {
-                                    en: "This chart can be displayed as a SVG or a Canvas. By default, the configuration will generate a SVG. If you rather have less nodes in your HTML, you can display the chart as a Canvas. This is an experimental feature, you will need to adapt font sizes and chart padding in the options.",
-                                    fr: "Ce graphique peut être affiché au format SVG ou Canvas. Par défaut, la configuration générera un SVG. Si vous préférez avoir moins de nœuds dans votre HTML, vous pouvez afficher le graphique sous forme de canevas. Il s'agit d'une fonctionnalité expérimentale, vous devrez adapter la taille des polices et le remplissage du graphique dans les options.",
-                                    pt: "Este gráfico pode ser exibido como SVG ou Canvas. Por padrão, a configuração irá gerar um SVG. Se preferir ter menos nós em seu HTML, você pode exibir o gráfico como um Canvas. Este é um recurso experimental, você precisará adaptar os tamanhos das fontes e o preenchimento do gráfico nas opções.",
-                                    de: "Dieses Diagramm kann als SVG oder Canvas angezeigt werden. Standardmäßig generiert die Konfiguration ein SVG. Wenn Sie weniger Knoten in Ihrem HTML haben möchten, können Sie das Diagramm als Canvas anzeigen. Dies ist eine experimentelle Funktion. Sie müssen die Schriftgröße und den Diagrammabstand in den Optionen anpassen.",
-                                    zh: "该图表可以显示为 SVG 或 Canvas。默认情况下，配置将生成 SVG。如果您希望 HTML 中的节点较少，则可以将图表显示为 Canvas。这是一项实验性功能，您需要在选项中调整字体大小和图表填充。",
-                                    jp: "このグラフは SVG または Canvas として表示できます。デフォルトでは、設定により SVG が生成されます。 HTML 内のノードを減らしたい場合は、チャートをキャンバスとして表示できます。これは実験的な機能であり、オプションでフォント サイズとグラフのパディングを調整する必要があります。",
-                                    es: "Este gráfico se puede mostrar como SVG o Canvas. De forma predeterminada, la configuración generará un SVG. Si prefiere tener menos nodos en su HTML, puede mostrar el gráfico como un lienzo. Esta es una característica experimental; deberá adaptar los tamaños de fuente y el relleno del gráfico en las opciones."
+                                    en: "This chart can be displayed as a SVG or a Canvas.",
+                                    fr: "Ce graphique peut être affiché au format SVG ou Canvas.",
+                                    pt: "Este gráfico pode ser exibido como SVG ou Canvas.",
+                                    de: "Dieses Diagramm kann als SVG oder Canvas angezeigt werden.",
+                                    zh: "该图表可以显示为 SVG 或 Canvas。",
+                                    jp: "このグラフは SVG または Canvas として表示できます。",
+                                    es: "Este gráfico se puede mostrar como SVG o Canvas."
+                                },
+                                moreInfo: {
+                                    en: "More info",
+                                    fr: "Plus d'informations",
+                                    pt: "Mais informações",
+                                    de: "Mehr Info",
+                                    zh: "更多信息",
+                                    jp: "より詳しい情報",
+                                    es: "Más información"
+                                },
+                                details: {
+                                    en: "By default, the configuration will generate a SVG. If you rather have less nodes in your HTML, you can display the chart as a Canvas. This is an experimental feature, you will need to adapt font sizes and chart padding in the options.",
+                                    fr: "Par défaut, la configuration générera un SVG. Si vous préférez avoir moins de nœuds dans votre HTML, vous pouvez afficher le graphique sous forme de canevas. Il s'agit d'une fonctionnalité expérimentale, vous devrez adapter la taille des polices et le remplissage du graphique dans les options.",
+                                    pt: "Por padrão, a configuração irá gerar um SVG. Se preferir ter menos nós em seu HTML, você pode exibir o gráfico como um Canvas. Este é um recurso experimental, você precisará adaptar os tamanhos das fontes e o preenchimento do gráfico nas opções.",
+                                    de: "Standardmäßig generiert die Konfiguration ein SVG. Wenn Sie weniger Knoten in Ihrem HTML haben möchten, können Sie das Diagramm als Canvas anzeigen. Dies ist eine experimentelle Funktion. Sie müssen die Schriftgröße und den Diagrammabstand in den Optionen anpassen.",
+                                    zh: "默认情况下，配置将生成 SVG。如果您希望 HTML 中的节点较少，则可以将图表显示为 Canvas。这是一项实验性功能，您需要在选项中调整字体大小和图表填充。",
+                                    jp: "デフォルトでは、設定により SVG が生成されます。 HTML 内のノードを減らしたい場合は、チャートをキャンバスとして表示できます。これは実験的な機能であり、オプションでフォント サイズとグラフのパディングを調整する必要があります。",
+                                    es: "De forma predeterminada, la configuración generará un SVG. Si prefiere tener menos nodos en su HTML, puede mostrar el gráfico como un lienzo. Esta es una característica experimental; deberá adaptar los tamaños de fuente y el relleno del gráfico en las opciones."
+                                },
+                                advantage: {
+                                    en: "Advantages",
+                                    fr: "Avantages",
+                                    pt: "Vantagens",
+                                    de: "Vorteile",
+                                    zh: "优点",
+                                    jp: "利点",
+                                    es: "Ventajas"
+                                },
+                                drawbacks: {
+                                    en: "Drawbacks",
+                                    fr: "Inconvénients",
+                                    pt: "Desvantagens",
+                                    de: "Nachteile",
+                                    zh: "缺点",
+                                    jp: "欠点",
+                                    es: "Desventajas"
+                                },
+                                svgAdvantage: {
+                                    en: `<ul class="pl-4"><li class="list-disc">Vectorized: graphics quality remains the same at all scales.</li><li class="list-disc">Acessibility: text nodes can be detected by screen readers.</li><li class="list-disc">Easier debugging, as nodes are part of the DOM</li></ul>`,
+                                    fr: `<ul class="pl-4"><li class="list-disc">Vectorisé : la qualité graphique reste la même à toutes les échelles.</li><li class="list-disc">Accessibilité : les nœuds de texte peuvent être détectés par les lecteurs d'écran.</li><li class="list-disc">Débogage plus facile, car les nœuds font partie du DOM</li></ul>`,
+                                    pt: `<ul class="pl-4"><li class="list-disc">Vetorizado: a qualidade gráfica permanece a mesma em todas as escalas.</li><li class="list-disc">Acessibilidade: nós de texto podem ser detectados por leitores de tela.</li><li class="list-disc">Depuração mais fácil, pois os nós fazem parte do DOM</li></ul>`,
+                                    de: `<ul class="pl-4"><li class="list-disc">Vektorisiert: Die Grafikqualität bleibt in allen Maßstäben gleich.</li><li class="list-disc">Zugänglichkeit: Textknoten können von Screenreadern erkannt werden.</li><li class="list-disc">Einfacheres Debuggen, da Knoten Teil des DOM sind</li></ul>`,
+                                    zh: `<ul class="pl-4"><li class="list-disc">矢量化：图形质量在所有比例下保持不变。</li><li class="list-disc">可访问性：屏幕阅读器可以检测到文本节点。</li><li class="list-disc">更容易调试，因为节点是 DOM 的一部分</li></ul>`,
+                                    jp: `<ul class="pl-4"><li class="list-disc">ベクトル化: グラフィックスの品質はどのスケールでも同じままです。</li><li class="list-disc">アクセシビリティ: テキスト ノードはスクリーン リーダーによって検出できます。</li><li class="list-disc">ノードは DOM の一部であるため、デバッグが容易になります。</li></ul>`,
+                                    es: `<ul class="pl-4"><li class="list-disc">Vectorizado: la calidad de los gráficos sigue siendo la misma en todas las escalas.</li><li class="list-disc">Accesibilidad: los lectores de pantalla pueden detectar nodos de texto.</li><li class="list-disc">Depuración más sencilla, ya que los nodos son parte del DOM</li></ul>`,
+                                },
+                                svgDrawbacks: {
+                                    en: `<ul class="pl-4"><li class="list-disc">Performance decreases with the number of nodes to paint on the HTML</li><li class="list-disc">PDF render can be unpredictable for fonts and styling</li></ul>`,
+                                    fr: `<ul class="pl-4"><li class="list-disc">Les performances diminuent avec le nombre de nœuds à peindre sur le HTML</li><li class="list-disc">Le rendu PDF peut être imprévisible pour les polices et le style</li></ul>`,
+                                    pt: `<ul class="pl-4"><li class="list-disc">O desempenho diminui com o número de nós a serem pintados no HTML</li><li class="list-disc">A renderização de PDF pode ser imprevisível para fontes e estilos</li></ul>`,
+                                    de: `<ul class="pl-4"><li class="list-disc">Die Leistung nimmt mit der Anzahl der Knoten ab, die auf der HTML-Seite gezeichnet werden sollen.</li><li class="list-disc">PDF-Rendering kann durchgeführt werden unvorhersehbar für Schriftarten und Stil</li></ul>`,
+                                    zh: `<ul class="pl-4"><li class="list-disc">性能随着 HTML 上绘制的节点数量的增加而降低</li><li class="list-disc">PDF 渲染可能会字体和样式不可预测</li></ul>`,
+                                    jp: `<ul class="pl-4"><li class="list-disc">HTML 上に描画するノードの数に応じてパフォーマンスが低下する</li><li class="list-disc">PDF レンダリングでは、フォントとスタイルは予測不可能</li></ul>`,
+                                    es: `<ul class="pl-4"><li class="list-disc">El rendimiento disminuye con la cantidad de nodos para pintar en el HTML</li><li class="list-disc">El renderizado PDF se puede impredecible en cuanto a fuentes y estilos</li></ul>`
+                                },
+                                canvasAdvantages: {
+                                    en: `<ul class="pl-4"><li class="list-disc">Stable performance: only one node in the DOM.</li><li class="list-disc">PDF render is identical.</li><li class="list-disc">Can be copy pasted as an image</li></ul>`,
+                                    fr: `<ul class="pl-4"><li class="list-disc">Performances stables : un seul nœud dans le DOM.</li><li class="list-disc">Le rendu PDF est identique.< /li><li class="list-disc">Peut être copié-collé sous forme d'image</li></ul>`,
+                                    pt: `<ul class="pl-4"><li class="list-disc">Desempenho estável: apenas um nó no DOM.</li><li class="list-disc">A renderização do PDF é idêntica.< /li><li class="list-disc">Pode ser copiado e colado como uma imagem</li></ul>`,
+                                    de: `<ul class="pl-4"><li class="list-disc">Stabile Leistung: nur ein Knoten im DOM.</li><li class="list-disc">PDF-Rendering ist identisch.< /li><li class="list-disc">Kann als Bild kopiert und eingefügt werden</li></ul>`,
+                                    zh: `<ul class="pl-4"><li class="list-disc">性能稳定：DOM 中只有一个节点。</li><li class="list-disc">PDF 渲染完全相同。< /li><li class="list-disc">可以复制粘贴为图像</li></ul>`,
+                                    jp: `<ul class="pl-4"><li class="list-disc">安定したパフォーマンス: DOM 内のノードは 1 つだけです。</li><li class="list-disc">PDF レンダリングは同一です。< /li><li class="list-disc">画像としてコピー＆ペーストできます</li></ul>`,
+                                    es: `<ul class="pl-4"><li class="list-disc">Rendimiento estable: solo un nodo en el DOM.</li><li class="list-disc">La representación del PDF es idéntica.< /li><li class="list-disc">Se puede copiar y pegar como imagen</li></ul>`
+                                },
+                                canvasDrawbacks: {
+                                    en: `<ul class="pl-4"><li class="list-disc">Image quality does not scale</li><li class="list-disc">Text elements are not accessible to screen readers</li><li class="list-disc">Harder debugging as the node is empty in the DOM.</li></ul>`,
+                                    fr: `<ul class="pl-4"><li class="list-disc">La qualité de l'image n'est pas adaptée</li><li class="list-disc">Les éléments de texte ne sont pas accessibles aux lecteurs d'écran</li ><li class="list-disc">Débogage plus difficile car le nœud est vide dans le DOM.</li></ul>`,
+                                    pt: `<ul class="pl-4"><li class="list-disc">A qualidade da imagem não aumenta</li><li class="list-disc">Os elementos de texto não são acessíveis aos leitores de tela</li ><li class="list-disc">Depuração mais difícil porque o nó está vazio no DOM.</li></ul>`,
+                                    de: `<ul class="pl-4"><li class="list-disc">Bildqualität lässt sich nicht skalieren</li><li class="list-disc">Textelemente sind für Screenreader nicht zugänglich</li ><li class="list-disc">Schwierigeres Debuggen, da der Knoten im DOM leer ist.</li></ul>`,
+                                    zh: `<ul class="pl-4"><li class="list-disc">图像质量无法缩放</li><li class="list-disc">屏幕阅读器无法访问文本元素</li ><li class="list-disc">由于 DOM 中的节点为空，调试更加困难。</li></ul>`,
+                                    jp: `<ul class="pl-4"><li class="list-disc">画質が調整されない</li><li class="list-disc">スクリーン リーダーがテキスト要素にアクセスできない</li ><li class="list-disc">DOM 内のノードが空であるため、デバッグが難しくなります。</li></ul>`,
+                                    es: `<ul class="pl-4"><li class="list-disc">La calidad de la imagen no escala</li><li class="list-disc">Los lectores de pantalla no pueden acceder a los elementos de texto</li ><li class="list-disc">Depuración más difícil ya que el nodo está vacío en el DOM.</li></ul>`
                                 }
                             },
                             type: {

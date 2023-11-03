@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch, nextTick, computed } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import { PinIcon, PinnedOffIcon, CopyIcon, ThumbUpIcon, ThumbDownIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 
@@ -417,13 +417,35 @@ function toggleUseCanvas() {
         <div class="w-full flex place-items-center place-content-center my-6">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green hover:shadow-xl transition-all" @click="copyToClipboard(mainConfig.vue_ui_xy)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
         </div>
-        <div class="w-full mx-auto max-w-[500px] flex flex-col">
-            <span>
+        <div class="w-full mx-auto max-w-[500px] flex flex-col p-6 border border-app-blue rounded-md bg-[#5f8bee12]">
+            <span class="dark:text-blue-300">
                 v 1.8.1 : {{ translations.docs.comments.xy.canvas.description[store.lang] }}
             </span>
-            <div class="w-full flex flex-row place-items-center justify-center gap-2">
-                <input id="useCanvas" type="checkbox" v-model="useCanvas" @change="toggleUseCanvas">
-                <label for="useCanvas">Use canvas</label>
+            <details class="mt-2">
+                <summary class="cursor-pointer select-none">
+                    {{  translations.docs.comments.xy.canvas.moreInfo[store.lang] }}
+                </summary>
+                    <div class="text-sm my-2 pb-4 border-b border-app-blue">
+                        {{ translations.docs.comments.xy.canvas.details[store.lang] }}
+                    </div>
+                    <div class="grid grid-cols-12 place-items-center gap-4">
+                        <div class="col-span-2"></div>
+                        <div class="col-span-5 flex flex-row place-items-center gap-2"><ThumbUpIcon class="text-app-green" />{{ translations.docs.comments.xy.canvas.advantage[store.lang] }}</div>
+                        <div class="col-span-5 flex flex-row place-items-center gap-2"><ThumbDownIcon class="text-app-orange" />{{ translations.docs.comments.xy.canvas.drawbacks[store.lang] }}</div>
+                        
+                        <div class="col-span-2">SVG</div>
+                        <div class="col-span-5 bg-[#42d39233] rounded-md p-2 text-xs w-full h-full flex place-items-center shadow" v-html="translations.docs.comments.xy.canvas.svgAdvantage[store.lang]"></div>
+                        <div class="col-span-5 bg-[#ff640033] rounded-md p-2 text-xs w-full h-full flex place-items-center shadow" v-html="translations.docs.comments.xy.canvas.svgDrawbacks[store.lang]"></div>
+                    </div>
+                    <div class="grid grid-cols-12 place-items-center gap-4 mt-2 pb-4 border-b border-app-blue mb-4">
+                        <div class="col-span-2">CANVAS</div>
+                        <div class="col-span-5 bg-[#42d39233] rounded-md p-2 text-xs w-full h-full flex place-items-center shadow" v-html="translations.docs.comments.xy.canvas.canvasAdvantages[store.lang]"></div>
+                        <div class="col-span-5 bg-[#ff640033] rounded-md p-2 text-xs w-full h-full flex place-items-center shadow" v-html="translations.docs.comments.xy.canvas.canvasDrawbacks[store.lang]"></div>
+                    </div>
+            </details>
+            <div class="w-full flex flex-row place-items-center justify-center gap-2 mt-2">
+                <input id="useCanvas" class="accent-app-blue" type="checkbox" v-model="useCanvas" @change="toggleUseCanvas">
+                <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use canvas</label>
             </div>
         </div>
         <Box showEmits>
