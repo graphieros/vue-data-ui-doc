@@ -1,5 +1,71 @@
 [
     {
+        "version": "v 1.8.4",
+        "date": "2023-11-05",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiQuadrant",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiGauge",
+                "description": "Expose generatePdf method"
+            },
+            {
+                "component": "VueUiChestnut",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiOnion",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiHeatmap",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiScatter",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Expose generatePdf and generateXls methods"
+            },
+            {
+                "component": "VueUiAgePyramid",
+                "description": "Expose generatePdf method"
+            },
+            {
+                "component": "VueUiRelationCircle",
+                "description": "Expose generatePdf method"
+            },
+            {
+                "component": "VueUiThermometer",
+                "description": "Expose generatePdf method"
+            }
+        ]
+    },
+    {
         "version": "v 1.8.3",
         "date": "2023-11-05",
         "updates": [

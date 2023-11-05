@@ -193,7 +193,7 @@ function fixChart() {
 
 <template>
     <div>
-        <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiRelationCircle</h1>
+        <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiThermometer</h1>
         <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'sm:w-1/4 sm:max-w-[300px]'}`">
             <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
