@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon, MoodSmileIcon, CircleTriangleIcon } from "vue-tabler-icons";
+import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon, MoodSmileIcon, CircleTriangleIcon, TemperatureIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -83,6 +83,9 @@ function isSelected(route) {
             </router-link>
             <router-link to="/docs#vue-ui-relation-circle" >
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-relation-circle') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-relation-circle')" class="-ml-6"/><CircleTriangleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-relation-circle')"/>  <span class="text-gray-500">VueUi</span>RelationCircle</div>
+            </router-link>
+            <router-link to="/docs#vue-ui-thermometer" >
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-thermometer') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-thermometer')" class="-ml-6"/><TemperatureIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-thermometer')"/>  <span class="text-gray-500">VueUi</span>Thermometer</div>
             </router-link>
         </section>
         <section class="mb-6">
@@ -167,6 +170,9 @@ function isSelected(route) {
             </router-link>
             <router-link to="/docs#vue-ui-relation-circle" >
                 <div class="-ml-2 my-2"><CircleTriangleIcon :class="`${isSelected('/docs#vue-ui-relation-circle') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-relation-circle') ? 2 : 1"/></div>
+            </router-link>
+            <router-link to="/docs#vue-ui-thermometer" >
+                <div class="-ml-2 my-2"><TemperatureIcon :class="`${isSelected('/docs#vue-ui-thermometer') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-thermometer') ? 2 : 1"/></div>
             </router-link>
             <router-link to="/docs#vue-ui-sparkline" >
                 <div class="-ml-2 my-2"><ChartLineIcon :class="`${isSelected('/docs#vue-ui-sparkline') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-sparkline') ? 2 : 1"/></div>

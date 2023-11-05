@@ -246,6 +246,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        thermometer: {
+                            en: "A component to visualize a KPI as a temperature",
+                            fr: "Un composant pour visualiser un KPI sous forme de température",
+                            pt: "Um componente para visualizar um KPI como uma temperatura",
+                            de: "Eine Komponente zur Visualisierung eines KPI als Temperatur",
+                            zh: "将 KPI 可视化为温度的组件",
+                            jp: "KPIを温度として可視化するコンポーネント",
+                            es: "Un componente para visualizar un KPI como temperatura."
+                        },
                         relationCircle: {
                             en: "A component to visualize relationships between people, words, companies...",
                             fr: "Un composant pour visualiser les relations entre les personnes, les mots, les entreprises...",

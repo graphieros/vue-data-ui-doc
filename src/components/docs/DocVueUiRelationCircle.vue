@@ -389,7 +389,7 @@ const <span class="text-black dark:text-app-blue">config</span> = {
         },
         links: {
             curved: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.links.curved" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.links.curved" @change="forceChartUpdate()">, (default: true)
-            maxWidth: 3
+            maxWidth: <input v-if="isDarkMode" type="number" min="0" max="24" step="1" v-model="mutableConfigDarkMode.style.links.maxWidth" @change="forceChartUpdate"><input v-else type="number" min="0" max="24" step="1" v-model="mutableConfig.style.links.maxWidth" @change="forceChartUpdate">, (default: 3)
         },
         circle: {
             radiusProportion: <input v-if="isDarkMode" type="number" min="0" max="1" step="0.1" v-model="mutableConfigDarkMode.style.circle.radiusProportion" @change="forceChartUpdate"><input v-else type="number" min="0" max="1" step="0.1" v-model="mutableConfig.style.circle.radiusProportion" @change="forceChartUpdate">, (default: 0.2)

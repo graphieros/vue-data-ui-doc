@@ -26,6 +26,7 @@ import DocVueUiDashboard from "../components/docs/DocVueUiDashboard.vue";
 import DocVueUiAnnotator from "../components/docs/DocVueUiAnnotator.vue";
 import DocVueUiSmiley from "../components/docs/DocVueUiSmiley.vue";
 import DocVueUiRelationCircle from "../components/docs/DocVueUiRelationCircle.vue";
+import DocVueUiThermometer from "../components/docs/DocVueUiThermometer.vue";
 
 import { CheckIcon } from "vue-tabler-icons";
 
@@ -144,6 +145,12 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-relation-circle"
     },
     {
+        name: "Thermometer",
+        icon: "Temperature",
+        tooltip: translations.value.docs.tooltips.thermometer[store.lang],
+        link: "/docs#vue-ui-thermometer"
+    },
+    {
         name: "Table",
         icon: "TableIcon",
         tooltip: translations.value.docs.tooltips.table[store.lang],
@@ -219,6 +226,7 @@ const menuItems = computed(() => [
             <DocVueUiAnnotator v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-annotator'"/>
             <DocVueUiSmiley v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-smiley'"/>
             <DocVueUiRelationCircle v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-relation-circle'"/>
+            <DocVueUiThermometer v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-thermometer'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="h-[calc(100svh_-_89px)] flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">
