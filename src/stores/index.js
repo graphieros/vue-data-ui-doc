@@ -18,6 +18,71 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                types: {
+                    classic: {
+                        en: "Classic",
+                        fr: "Classique",
+                        pt: "Clássico",
+                        de: "Klassisch",
+                        zh: "经典的",
+                        jp: "クラシック",
+                        es: "Clásico"
+                    },
+                    measure: {
+                        en: "Rating & Measure",
+                        fr: "Notation et mesure",
+                        pt: "Classificação e medição",
+                        de: "Bewertung und Messung",
+                        zh: "评级与测量",
+                        jp: "評価と測定",
+                        es: "Calificación y medida"
+                    },
+                    mini: {
+                        en: "Mini",
+                        fr: "Miniature",
+                        pt: "Miniatura",
+                        de: "Miniatur",
+                        zh: "微型",
+                        jp: "ミニチュア",
+                        es: "Miniatura"
+                    },
+                    combined: {
+                        en: "Combined",
+                        fr: "Combiné",
+                        pt: "",
+                        de: "",
+                        zh: "",
+                        jp: "",
+                        es: ""
+                    },
+                    table: {
+                        en: "Table",
+                        fr: "Tableau",
+                        pt: "Combinado",
+                        de: "Kombiniert",
+                        zh: "组合",
+                        jp: "組み合わせた",
+                        es: "Conjunto"
+                    },
+                    semantic: {
+                        en: "Semantic",
+                        fr: "Sémantique",
+                        pt: "Semântico",
+                        de: "Semantisch",
+                        zh: "语义学",
+                        jp: "セマンティック",
+                        es: "Semántico"
+                    },
+                    tool: {
+                        en: "Tools",
+                        fr: "Outils",
+                        pt: "Ferramentas",
+                        de: "Werkzeuge",
+                        zh: "工具",
+                        jp: "ツール",
+                        es: "Herramientas"
+                    }
+                },
                 nuxt: {
                     implementation: {
                         en: "If you are using Nuxt, an example of installation is provided in this Github repository",

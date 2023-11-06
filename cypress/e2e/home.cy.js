@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+import releases from "../../public/releases.json";
 
 describe('landing page', () => {
     beforeEach(() => {
@@ -151,4 +152,11 @@ describe('landing page', () => {
         cy.get('@btnDocs').click();
         cy.location('pathname').should('eq', '/docs')
     });
+
+    it('sould call releases api and display the latest version number', () => {
+        const staticResponse = {
+            body: releases
+        }
+        cy.intercept('https://vue-data-ui.graphieros.com/releases.json', staticResponse)
+    })
 });
