@@ -509,6 +509,24 @@ export const useMainStore = defineStore("main", {
                         es: "Puede anular el CSS (consulte estilos.css en el paquete)"
                     },
                     emits: {
+                        generatePdf: {
+                            en: "Call this method from the parent component to print as PDF. This is especially useful if user options are hidden.",
+                            fr: "Appelez cette méthode à partir du composant parent pour imprimer au format PDF. Ceci est particulièrement utile si les options utilisateur sont masquées.",
+                            pt: "Chame esse método do componente pai para imprimir como PDF. Isto é especialmente útil se as opções do usuário estiverem ocultas.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um als PDF zu drucken. Dies ist besonders nützlich, wenn Benutzeroptionen ausgeblendet sind.",
+                            zh: "从父组件调用此方法以打印为 PDF。如果用户选项被隐藏，这尤其有用。",
+                            jp: "PDF として印刷するには、親コンポーネントからこのメソッドを呼び出します。これは、ユーザー オプションが非表示の場合に特に便利です。",
+                            es: "Llame a este método desde el componente principal para imprimir como PDF. Esto es especialmente útil si las opciones de usuario están ocultas."
+                        },
+                        generateXls: {
+                            en: "Call this method from the parent component to generate an Excel extraction. This is especially useful if user options are hidden.",
+                            fr: "Appelez cette méthode depuis le composant parent pour générer une extraction Excel. Ceci est particulièrement utile si les options utilisateur sont masquées.",
+                            pt: "Chame esse método do componente pai para gerar uma extração do Excel. Isto é especialmente útil se as opções do usuário estiverem ocultas.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um eine Excel-Extraktion zu generieren. Dies ist besonders nützlich, wenn Benutzeroptionen ausgeblendet sind.",
+                            zh: "从父组件调用此方法以生成 Excel 提取。如果用户选项被隐藏，这尤其有用。",
+                            jp: "Excel 抽出を生成するには、親コンポーネントからこのメソッドを呼び出します。これは、ユーザー オプションが非表示の場合に特に便利です。",
+                            es: "Llame a este método desde el componente principal para generar una extracción de Excel. Esto es especialmente útil si las opciones de usuario están ocultas."
+                        },
                         dashboard: {
                             change: {
                                 en: "Emits the updated config to the parent component",

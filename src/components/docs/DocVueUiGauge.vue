@@ -281,7 +281,7 @@ function fixChart() {
         <div class="w-full flex place-items-center place-content-center my-6">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green hover:shadow-xl transition-all" @click="copyToClipboard(mainConfig.vue_ui_gauge)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
         </div>
-        <Box>
+        <Box showEmits>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -446,6 +446,13 @@ const <span class="text-black dark:text-app-blue">config</span> = {
 }
 </code>
 </pre>                
+                </div>
+            </template>
+
+            <template #tab2>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generatePdf</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generatePdf[store.lang] }}</div>
                 </div>
             </template>
         </Box>
