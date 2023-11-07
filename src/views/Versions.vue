@@ -68,22 +68,6 @@ const skeletonLine = ref({
     }
 });
 
-const skeletonBar = ref({
-    type: "verticalBar",
-    style: {
-        backgroundColor: "#1A1A1A",
-        verticalBar: {
-          axis: {
-            show: true,
-            color: "#343434",
-            strokeWidth: 0.5
-          },
-          borderRadius: 0.5,
-          color: "#343434"
-        }
-    }
-});
-
 Date.prototype.getWeek = function () {
   const d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
   const dayNum = d.getUTCDay() || 7;
@@ -763,6 +747,19 @@ const sparklineSkeletonConfig = computed(() => {
   }
 })
 
+
+const skeletonHeatmapConfig= ref({
+    type: "heatmap",
+    style: {
+        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+        heatmap: {
+          cellsX: 26,
+          cellsY: 7,
+          color: isDarkMode.value ? '#5c5c5c' : '#e1e5e8',
+        }
+    }
+});
+
 </script>
 
 <template>
@@ -775,6 +772,7 @@ const sparklineSkeletonConfig = computed(() => {
             <div class="max-w-[800px] mx-auto px-6">
                 <div class="max-w-[500px] mx-auto my-6">
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
+                    <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                     <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="data" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig"/>
                     <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="usableWeekData" :config="isDarkMode ? {...darkModeSparklineConfig, style: {...darkModeSparklineConfig.style, line: {...darkModeSparklineConfig.style.line, color: '#5f8bee'}, area: {...darkModeSparklineConfig.style.area, color: '#5f8bee'}, dataLabel: {...darkModeSparklineConfig.style.dataLabel, color: '#5f8bee'}, title: {...darkModeSparklineConfig.style.title, text: 'Weekly downloads'}}} : {...sparklineConfig, style: {...sparklineConfig.style, line: {...sparklineConfig.style.line, color: '#5f8bee'}, area: {...sparklineConfig.style.area, color: '#5f8bee'}, title: {...sparklineConfig.style.title, text: 'Weekly downloads'}}} "/>
                 </div>
@@ -785,6 +783,7 @@ const sparklineSkeletonConfig = computed(() => {
                     <VueUiSparkbar :dataset="sparkbarDataset" :config="sparkbarConfig"/>
                 </div>
                 <div class="max-w-[500px] mx-auto" v-if="usableHeatmapData.length">
+                  <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig"/>
                 </div>
                 <div class="w-full max-h-[500px] overflow-y-auto">

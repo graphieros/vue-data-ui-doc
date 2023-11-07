@@ -26,8 +26,8 @@ const dataset = ref({
   to: 100,
   steps: 20,
   colors: {
-    from: "#dc3912",
-    to: "#3366cc",
+    from: "#42d392",
+    to: "#5f8bee",
   }
 });
 
@@ -56,7 +56,7 @@ const config = ref({
         showIntermediate: true,
         gradient: {
           show: true,
-          intensity: 20
+          intensity: 40
         }
       },
       animation: {
@@ -118,7 +118,7 @@ const darkModeConfig = ref({
         showIntermediate: true,
         gradient: {
           show: true,
-          intensity: 20
+          intensity: 40
         }
       },
       animation: {
