@@ -311,6 +311,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        stackbar: {
+                            en: "A compact way to represent proportions",
+                            fr: "Une façon compacte de représenter les proportions",
+                            pt: "Uma maneira compacta de representar proporções",
+                            de: "Eine kompakte Möglichkeit, Proportionen darzustellen",
+                            zh: "表示比例的紧凑方式",
+                            jp: "プロポーションをコンパクトに表現する方法",
+                            es: "Una forma compacta de representar proporciones."
+                        },
                         thermometer: {
                             en: "A component to visualize a KPI as a temperature",
                             fr: "Un composant pour visualiser un KPI sous forme de température",

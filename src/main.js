@@ -27,7 +27,8 @@ import {
     VueUiAnnotator,
     VueUiSmiley,
     VueUiRelationCircle,
-    VueUiThermometer
+    VueUiThermometer,
+    VueUiSparkStackbar
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -59,5 +60,6 @@ app.component("VueUiAnnotator", VueUiAnnotator);
 app.component("VueUiSmiley", VueUiSmiley);
 app.component("VueUiRelationCircle", VueUiRelationCircle);
 app.component("VueUiThermometer", VueUiThermometer);
+app.component("VueUiSparkStackbar", VueUiSparkStackbar);
 
 app.mount('#app')

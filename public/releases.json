@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.8.6",
+        "date": "2023-11-08",
+        "updates": [
+            {
+                "component": "VueUiSparkStackbar",
+                "description": "Add component"
+            }
+        ]
+    },
+    {
         "version": "v 1.8.4",
         "date": "2023-11-05",
         "updates": [
