@@ -33,6 +33,7 @@ const dataset = ref([
         series: [ 55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],
         type: "line",
         color: "rgb(66,211,146)",
+        useArea: true,
         useProgression: true,
         dataLabels: false,
     },
@@ -155,8 +156,11 @@ const config = ref({
             offsetY: -6,
             rounding: 0,
             color: "#1A1A1A",
+        },
+        area: {
+            useGradient: true,
+            opacity: 30
         }
-
     },
     plot: {
         radius: 3,
@@ -285,8 +289,11 @@ const darkModeConfig = ref({
             offsetY: -6,
             rounding: 0,
             color: "#c8c8c8",
+        },
+        area: {
+            useGradient: true,
+            opacity: 30
         }
-
     },
     plot: {
         radius: 3,
@@ -466,6 +473,7 @@ function toggleUseCanvas() {
             useTag: "start" | "end"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.useTag[store.lang] }}</span>
             dataLabels: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.dataLabels[store.lang] }}</span>
             useProgression: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.useProgression[store.lang] }}</span>
+            useArea: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.area[store.lang] }}</span>
         },
         {...}
     ]
@@ -500,7 +508,8 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
         </select>,</span>
         color: <span class="text-app-green">"rgb(66,211,146)"</span>
         useProgression: <span class="text-app-green">true,</span>
-        dataLabels: <span class="text-app-green">false</span>
+        dataLabels: <span class="text-app-green">false,</span>
+        useArea: <span class="text-app-green">true</span>
     },
     {
         name: <span class="text-app-orange">"Series 3",</span>
@@ -637,6 +646,10 @@ const <span class="text-black dark:text-app-blue">config</span> = {
                 offsetY: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.line.labels.offsetY"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.line.labels.offsetY">, (default: -6)
                 rounding: <input v-if="isDarkMode" type="number" min="0" max="5" v-model="mutableConfigDarkMode.line.labels.rounding"><input v-else type="number" min="0" max="5" v-model="mutableConfig.line.labels.rounding">, (default: 0)
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.line.labels.color"><input v-else type="color" v-model="mutableConfig.line.labels.color">, (default: "#2D353C"),
+            },
+            area: {
+                useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.line.area.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.line.area.useGradient" @change="forceChartUpdate()"> ,(default: true)
+                opacity: <input type="range" v-if="isDarkMode" v-model="mutableConfigDarkMode.line.area.opacity" class="accent-app-blue" min="0" max="100" @change="forceChartUpdate()"><input type="range" v-else v-model="mutableConfig.line.area.opacity" class="accent-app-blue" min="0" max="100" @change="forceChartUpdate()">, (default: 30)
             }
         },
         plot: {

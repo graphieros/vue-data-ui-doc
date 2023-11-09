@@ -865,6 +865,15 @@ export const useMainStore = defineStore("main", {
                             es: "Su conjunto de datos aquí"
                         },
                         xy: {
+                            area: {
+                                en: "Since version v.1.8.7, you can set this property to show an area chart on line types",
+                                fr: "Depuis la version v.1.8.7, vous pouvez définir cette propriété pour afficher un graphique en aires sur les types ligne",
+                                pt: "Desde a versão v.1.8.7, você pode definir esta propriedade para mostrar um gráfico de área em tipos de linha",
+                                de: "Seit Version v.1.8.7 können Sie diese Eigenschaft so einstellen, dass ein Flächendiagramm für Linientypen angezeigt wird",
+                                zh: "从版本 v.1.8.7 开始，您可以设置此属性以在线类型上显示面积图",
+                                jp: "バージョン v.1.8.7 以降、このプロパティを設定して線種の面グラフを表示できます。",
+                                es: "Desde la versión v.1.8.7, puede configurar esta propiedad para mostrar un gráfico de áreas en tipos de línea"
+                            },
                             canvas: {
                                 description: {
                                     en: "This chart can be displayed as a SVG or a Canvas.",
