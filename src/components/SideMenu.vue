@@ -99,6 +99,9 @@ function isSelected(route) {
             <router-link to="/docs#vue-ui-sparkstackbar" >
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkstackbar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkstackbar')" class="-ml-6"/><ChartBarIcon class="text-gray-800 dark:text-gray-400 rotate-90" stroke-width="1" v-if="!isSelected('/docs#vue-ui-sparkstackbar')"/>  <span class="text-gray-500">VueUi</span>SparkStackbar</div>
             </router-link>
+            <router-link to="/docs#vue-ui-sparkhistogram" >
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkhistogram') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkhistogram')" class="-ml-6"/><ChartBarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-sparkhistogram')"/>  <span class="text-gray-500">VueUi</span>SparkHistogram</div>
+            </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Tables</div>
@@ -185,6 +188,9 @@ function isSelected(route) {
             </router-link>
             <router-link to="/docs#vue-ui-sparkstackbar" >
                 <div class="-ml-2 my-2"><ChartBarIcon :class="`${isSelected('/docs#vue-ui-sparkstackbar') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-sparkstackbar') ? 2 : 1"/></div>
+            </router-link>
+            <router-link to="/docs#vue-ui-sparkhistogram" >
+                <div class="-ml-2 my-2"><ChartBarIcon :class="`${isSelected('/docs#vue-ui-sparkhistogram') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-sparkhistogram') ? 2 : 1"/></div>
             </router-link>
             <router-link to="/docs#vue-ui-table">
                 <div class="-ml-2 my-2"><TableIcon :class="`${isSelected('/docs#vue-ui-table') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-table') ? 2 : 1"/></div>

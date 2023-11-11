@@ -311,6 +311,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        histogram: {
+                            en: "A compact and flexible mini histogram component.",
+                            fr: "Un mini composant d'histogramme compact et flexible.",
+                            pt: "Um mini componente de histograma compacto e flexível.",
+                            de: "Eine kompakte und flexible Mini-Histogrammkomponente.",
+                            zh: "紧凑灵活的迷你直方图组件。",
+                            jp: "コンパクトで柔軟なミニ ヒストグラム コンポーネント。",
+                            es: "Un componente de mini histograma compacto y flexible."
+                        },
                         stackbar: {
                             en: "A compact way to represent proportions",
                             fr: "Une façon compacte de représenter les proportions",

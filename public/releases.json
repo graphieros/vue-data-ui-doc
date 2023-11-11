@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.8.9",
+        "date": "2023-11-11",
+        "updates": [
+            {
+                "component": "VueUiSparkHistogram",
+                "description": "Add component"
+            }
+        ]
+    },
+    {
         "version": "v 1.8.8",
         "date": "2023-11-10",
         "updates": [

@@ -28,6 +28,7 @@ import DocVueUiSmiley from "../components/docs/DocVueUiSmiley.vue";
 import DocVueUiRelationCircle from "../components/docs/DocVueUiRelationCircle.vue";
 import DocVueUiThermometer from "../components/docs/DocVueUiThermometer.vue";
 import DocVueUiSparkStackbar from "../components/docs/DocVueUiSparkStackbar.vue";
+import DocVueUiSparkHistogram from "../components/docs/DocVueUiSparkHistogram.vue";
 
 import { CheckIcon } from "vue-tabler-icons";
 
@@ -178,6 +179,14 @@ const menuItems = computed(() => [
         thumb: new URL('../assets/thumb_stackbar.png', import.meta.url).href
     },
     {
+        name: "SparkHistogram",
+        icon: "ChartBarIcon",
+        tooltip: translations.value.docs.tooltips.histogram[store.lang],
+        link: "/docs#vue-ui-sparkhistogram",
+        type: "mini",
+        thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href
+    },
+    {
         name: "RelationCircle",
         icon: "CircleTriangleIcon",
         tooltip: translations.value.docs.tooltips.relationCircle[store.lang],
@@ -282,6 +291,7 @@ const menuItems = computed(() => [
             <DocVueUiRelationCircle v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-relation-circle'"/>
             <DocVueUiThermometer v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-thermometer'"/>
             <DocVueUiSparkStackbar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-sparkstackbar'"/>
+            <DocVueUiSparkHistogram v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-sparkhistogram'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">
