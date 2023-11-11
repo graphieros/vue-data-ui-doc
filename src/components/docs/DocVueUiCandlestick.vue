@@ -41,6 +41,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  useCssAnimation: true,
   style: {
     backgroundColor: "#F3F4F6",
     color: "#1A1A1A",
@@ -170,6 +171,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  useCssAnimation: true,
   style: {
     backgroundColor: "#1A1A1A",
     color: "#CCCCCC",
@@ -404,6 +406,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config</span> = {
+  useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)
   style: {
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
     color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.color"><input v-else type="color" v-model="mutableConfig.style.color">, (default: "#2D353C")

@@ -244,7 +244,7 @@ function saveAnnotations({ shapes, lastSelectedShape }) {
           @saveAnnotations="saveAnnotations"
         >
             <div>
-                <VueUiDonut :config="donutConfig" :dataset="donutDataset"></VueUiDonut>
+                <VueUiDonut :config="{...donutConfig, useCssAnimation: !isAnnotatorOpen }" :dataset="donutDataset"></VueUiDonut>
             </div>
         </VueUiAnnotator>
         </div>

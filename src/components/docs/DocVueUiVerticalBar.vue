@@ -73,6 +73,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  useCssAnimation: true,
   style: {
     fontFamily: "inherit",
     chart: {
@@ -207,6 +208,7 @@ const config = ref({
   }
 });
 const darkModeConfig = ref({
+  useCssAnimation: true,
   style: {
     fontFamily: "inherit",
     chart: {
@@ -485,6 +487,7 @@ const <span class="text-app-green">dataset</span> = [
 <pre>
 <code>
 const <span class="text-app-blue">config</span> = {
+    useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)
     style: {
         fontFamily: "inherit",
         chart: {

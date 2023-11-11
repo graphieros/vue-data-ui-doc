@@ -165,20 +165,21 @@
     },
     "vue_ui_xy": {
         "useCanvas": false,
+        "useCssAnimation": true,
         "chart": {
             "fontFamily" : "inherit",
             "backgroundColor" : "#FFFFFF",
             "color": "#2D353C",
-            "height": 300,
-            "width": 500,
+            "height": 600,
+            "width": 1000,
             "zoom": {
                 "show": true,
                 "color": "#2D353C"
             },
             "padding": {
                 "top": 36,
-                "right": 12,
-                "bottom": 12,
+                "right": 24,
+                "bottom": 24,
                 "left": 48
             },
             "highlighter": {
@@ -232,7 +233,7 @@
             },
             "tooltip": {
                 "color": "#2D353C",
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#FFFFFF",
                 "show": true,
                 "showValue": true,
                 "showPercentage": false,
@@ -301,6 +302,7 @@
         "showTable": false
     },
     "vue_ui_donut": {
+        "useCssAnimation": true,
         "style": {
             "fontFamily": "inherit",
             "chart": {
@@ -508,6 +510,7 @@
         }
     },
     "vue_ui_radar": {
+        "useCssAnimation": true,
         "style": {
             "fontFamily": "inherit",
             "chart": {
@@ -603,6 +606,7 @@
         }
     },
     "vue_ui_quadrant": {
+        "useCssAnimation": true,
         "style": {
             "fontFamily": "inherit",
             "chart": {
@@ -1003,6 +1007,7 @@
         }
     },
     "vue_ui_onion": {
+        "useCssAnimation": true,
         "style": {
             "fontFamily": "inherit",
             "chart": {
@@ -1089,6 +1094,7 @@
         }
     },
     "vue_ui_vertical_bar": {
+        "useCssAnimation": true,
         "style": {
             "fontFamily": "inherit",
             "chart": {
@@ -1163,7 +1169,7 @@
                     }
                 },
                 "legend": {
-                    "position": "top",
+                    "position" : "top",
                     "show": true,
                     "fontSize": 14,
                     "color":"#2D353C",
@@ -1345,6 +1351,9 @@
             "color":"#2D353C",
             "maxHeight":500,
             "animated": true,
+            "chestnut": {
+                "color": "#E1E5E8"
+            },
             "sparkline": {
                 "color": "#e1e5e8",
                 "strokeWidth": 0.7
@@ -1370,9 +1379,6 @@
                 "borderRadius": 0.5,
                 "color": "#e1e5e8",
                 "barWidth": 9
-            },
-            "chestnut": {
-                "color": "#E1E5E8"
             },
             "donut": {
                 "color":"#e1e5e8",
@@ -1448,7 +1454,7 @@
                 }
             },
             "pyramid": {
-                "color":"#E1E5E8"
+                "color": "#e1e5e8"
             }
         }
     },
@@ -1585,7 +1591,8 @@
             "title": "options",
             "labels": {
                 "useDiv": "Title & legend inside",
-                "showTable": "Show table"
+                "showTable": "Show table",
+                "showPlotLabels": "Show plot labels"
             }
         },
         "table": {
@@ -1603,7 +1610,8 @@
             }
         }
     },
-    "vue_ui_scatter":  {
+    "vue_ui_scatter": {
+        "useCssAnimation": true,
         "style": {
             "backgroundColor": "#FFFFFF",
             "color":"#2D353C",
@@ -1658,6 +1666,8 @@
                         "fontSize": 8,
                         "color":"#2D353C",
                         "bold":false,
+                        "offsetX": 0,
+                        "offsetY": 0,
                         "roundingValue": 0
                     },
                     "yAxis": {
@@ -1666,6 +1676,8 @@
                         "fontSize": 8,
                         "color":"#2D353C",
                         "bold":false,
+                        "offsetY": 0,
+                        "offsetX": 0,
                         "roundingValue": 0
                     }
                 }
@@ -1687,7 +1699,8 @@
                 "backgroundColor":"#FFFFFF",
                 "color": "#2D353C",
                 "fontSize" : 12,
-                "bold": true
+                "bold": true,
+                "roundingValue": 0
             },
             "tooltip": {
                 "show": true,
@@ -1702,7 +1715,8 @@
             "title": "options",
             "labels": {
                 "useDiv": "Title & legend inside",
-                "showTable": "Show table"
+                "showTable": "Show table",
+                "showPlotLabels": "Show plot labels"
             }
         },
         "table": {
@@ -1726,7 +1740,8 @@
             }
         }
     },
-    "vue_ui_candlestick" : {
+    "vue_ui_candlestick": {
+        "useCssAnimation": true,
         "style": {
             "backgroundColor": "#FFFFFF",
             "color":"#2D353C",
@@ -1791,13 +1806,15 @@
                     },
                     "gradient": {
                         "show": true,
+                        "intensity": 40,
                         "underlayer":"#FFFFFF"
                     },
                     "widthRatio": 0.5
                 }
             },
             "zoom": {
-                "show": true
+                "show": true,
+                "color":"#CCCCCC"
             },
             "title": {
                 "text": "",
@@ -1834,7 +1851,8 @@
             "title": "options",
             "labels": {
                 "useDiv": "Title inside",
-                "showTable": "Show table"
+                "showTable": "Show table",
+                "showPlotLabels": "Show plot labels"
             }
         },
         "table": {
@@ -1939,7 +1957,8 @@
                 "show": true,
                 "backgroundColor": "#FFFFFF",
                 "color": "#2D353C",
-                "fontSize": 14
+                "fontSize": 14,
+                "roundingValue": 0
             }
         },
         "translations": {
@@ -1973,6 +1992,7 @@
     },
     "vue_ui_sparkbar": {
         "style": {
+            "backgroundColor": "#FFFFFF",
             "fontFamily": "inherit",
             "layout": {
                 "independant": true,
@@ -2018,7 +2038,8 @@
                 "borderColor": "#e1e5e8"
             },
             "resizeHandles": {
-                "backgroundColor": "#2D353C"
+                "backgroundColor": "#2D353C",
+                "border": "none"
             }
         },
         "allowPrint": true
@@ -2027,7 +2048,9 @@
         "style": {
             "backgroundColor": "#FFFFFF",
             "color": "#2D353C",
+            "fixedTools": false,
             "fontFamily" : "inherit",
+            "hideWhenFolded": false,
             "showPrint": true,
             "showSave": true,
             "showTooltips": true,

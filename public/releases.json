@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.8.8",
+        "date": "2023-11-10",
+        "updates": [
+            {
+                "component": "VueUiXy, VueUiDonut, VueUiRadar, VueUiQuadrant, VueUiOnion, VueUiVerticalBar, VueUiScatter, VueUiCandlestick",
+                "description": "Optional css animation"
+            }
+        ]
+    },
+    {
         "version": "v 1.8.7",
         "date": "2023-11-09",
         "updates": [
