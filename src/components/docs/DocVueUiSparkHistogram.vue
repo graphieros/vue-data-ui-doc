@@ -417,17 +417,17 @@ const <span class="text-black dark:text-app-blue">config</span> = {
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
         fontFamily: "inherit",
         layout: {
-            height: <input v-if="isDarkMode" type="number" min="64" max="600" v-model="mutableConfigDarkMode.style.layout.height"><input v-else type="number" min="20" max="600" v-model="mutableConfig.style.layout.height">, (default: 96)
-            width: <input v-if="isDarkMode" type="number" min="200" max="1200" v-model="mutableConfigDarkMode.style.layout.width"><input v-else type="number" min="200" max="1200" v-model="mutableConfig.style.layout.width">, (default: 640)
+            height: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="64" max="600" v-model="mutableConfigDarkMode.style.layout.height"><input v-else type="range" class="accent-app-blue" min="64" max="600" v-model="mutableConfig.style.layout.height">, (default: 96)
+            width: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="200" max="1600" v-model="mutableConfigDarkMode.style.layout.width"><input v-else type="range" class="accent-app-blue" min="200" max="1600" v-model="mutableConfig.style.layout.width">, (default: 640)
             padding: {
-                top: <input v-if="isDarkMode" type="number" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.top"><input v-else type="number" min="0" max="100" v-model="mutableConfig.style.layout.padding.top">, (default: 24)
-                right: <input v-if="isDarkMode" type="number" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.right"><input v-else type="number" min="0" max="100" v-model="mutableConfig.style.layout.padding.right">, (default: 0)
-                left: <input v-if="isDarkMode" type="number" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.left"><input v-else type="number" min="0" max="100" v-model="mutableConfig.style.layout.padding.left">, (default: 0)
-                bottom: <input v-if="isDarkMode" type="number" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.bottom"><input v-else type="number" min="0" max="100" v-model="mutableConfig.style.layout.padding.bottom">, (default: 36)
+                top: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.top"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.top">, (default: 24)
+                right: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.right"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.right">, (default: 0)
+                left: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.left"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.left">, (default: 0)
+                bottom: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.bottom"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.bottom">, (default: 36)
             }
         },
         bars: {
-            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.bars.strokeWidth"><input v-else type="number" min="0" max="100" v-model="mutableConfig.style.bars.strokeWidth">, (default: 0)
+            strokeWidth: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.bars.strokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.bars.strokeWidth">, (default: 0)
             colors: {
                 positive: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.bars.colors.positive"><input v-else type="color" v-model="mutableConfig.style.bars.colors.positive">, (default: "#3366cc")
                 negative: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.bars.colors.negative"><input v-else type="color" v-model="mutableConfig.style.bars.colors.negative">, (default: "#dc3912")
@@ -435,8 +435,8 @@ const <span class="text-black dark:text-app-blue">config</span> = {
                     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.bars.colors.gradient.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.bars.colors.gradient.show" @change="forceChartUpdate()">, (default: true)
                 }
             },
-            borderRadius: <input v-if="isDarkMode" type="number" min="0" max="100" v-model="mutableConfigDarkMode.style.bars.borderRadius"><input v-else type="number" min="0" max="100" v-model="mutableConfig.style.bars.borderRadius">, (default: 24)
-            gap: <input v-if="isDarkMode" type="number" min="0" max="100" v-model="mutableConfigDarkMode.style.bars.gap"><input v-else type="number" min="0" max="100" v-model="mutableConfig.style.bars.gap">, (default: 12)
+            borderRadius: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.bars.borderRadius"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.bars.borderRadius">, (default: 24)
+            gap: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.bars.gap"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.bars.gap">, (default: 12)
         },
         labels: {
             value: {

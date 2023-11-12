@@ -216,6 +216,81 @@ const heatmapConfig = computed(() => {
 }
 })
 
+const histoData = computed(() => {
+  return (data.value || []).slice(-14).map(d => {
+    return {
+      value: d.value,
+      timeLabel: d.period,
+    }
+  })
+});
+
+const histoConfig = computed(() => {
+  return {
+  style: {
+    backgroundColor: isDarkMode.value ? "#1A1A1A" : "#F3F4F6",
+    fontFamily: "inherit",
+    layout: {
+      height: 140,
+      width: 1200,
+      padding: {
+        top: 36,
+        right: 0,
+        left: 0,
+        bottom: 44
+      }
+    },
+    bars: {
+      strokeWidth: 0,
+      colors: {
+        positive: "#5f8bee",
+        negative: "#ff6400",
+        gradient: {
+          show: true
+        }
+      },
+      borderRadius: 24,
+      gap: 12
+    },
+    labels: {
+      value: {
+        fontSize: 24,
+        color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
+        bold: true,
+        rounding: 1,
+        prefix: "",
+        suffix: ""
+      },
+      valueLabel: {
+        fontSize: 24,
+        color: isDarkMode.value ? "#777777" : "#2D353C",
+        bold: false,
+        rounding: 0
+      },
+      timeLabel: {
+        fontSize: 13,
+        color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
+        bold: false
+      }
+    },
+    title: {
+      textAlign: "left",
+      text: "NPM downloads",
+      color: isDarkMode.value ? "#666666" : "#2D353C",
+      fontSize: 16,
+      bold: true,
+      margin: "0 0 6px 0",
+      subtitle: {
+        color: "#A1A1A1",
+        text: "Last 14 days",
+        fontSize: 12,
+        bold: false
+      }
+    }
+  }
+}
+})
+
 onMounted(() => {
     isLoadingLine.value = true;
     isLoadingBar.value = true;
@@ -782,6 +857,11 @@ const skeletonHeatmapConfig= ref({
                     </div>
                     <VueUiSparkbar :dataset="sparkbarDataset" :config="sparkbarConfig"/>
                 </div>
+                
+                <div class="max-w-[500px] mx-auto mb-6" v-if="!!data && !isLoadingLine">
+                  <VueUiSparkHistogram :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`"/>
+                </div>
+
                 <div class="max-w-[500px] mx-auto" v-if="usableHeatmapData.length">
                   <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig"/>

@@ -311,7 +311,7 @@ const menuItems = computed(() => [
                     {{ translations.docs.p1[store.lang] }}
                 </div>
 
-                <div class="w-full text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-6 mb-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-6 mb-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.classic[store.lang] }}
                     </div>
@@ -326,7 +326,7 @@ const menuItems = computed(() => [
                     </MenuDetail>
                 </div>  
 
-                <div class="w-full text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.measure[store.lang] }}
                     </div>
@@ -339,7 +339,7 @@ const menuItems = computed(() => [
                     </MenuDetail>
                 </div>
 
-                <div class="w-full text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.mini[store.lang] }}
                     </div>
@@ -352,7 +352,7 @@ const menuItems = computed(() => [
                     </MenuDetail>
                 </div>
 
-                <div class="w-full text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.combined[store.lang] }}
                     </div>
@@ -365,7 +365,7 @@ const menuItems = computed(() => [
                     </MenuDetail>
                 </div>
 
-                <div class="w-full text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.table[store.lang] }}
                     </div>
@@ -378,7 +378,7 @@ const menuItems = computed(() => [
                     </MenuDetail>
                 </div>       
 
-                <div class="w-full text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.semantic[store.lang] }}
                     </div>
@@ -391,7 +391,7 @@ const menuItems = computed(() => [
                     </MenuDetail>
                 </div> 
 
-                <div class="w-full text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.tool[store.lang] }}
                     </div>
