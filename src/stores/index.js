@@ -874,6 +874,24 @@ export const useMainStore = defineStore("main", {
                             es: "Su conjunto de datos aquí"
                         },
                         xy: {
+                            smooth2: {
+                                en: "Available since v.1.9.0 for line types, in SVG mode.",
+                                fr: "Disponible depuis la v.1.9.0 pour les types lignes, en mode SVG.",
+                                pt: "Disponível desde a v.1.9.0 para tipos de linha, no modo SVG.",
+                                de: "Verfügbar seit Version 1.9.0 für Linientypen im SVG-Modus.",
+                                zh: "自 v.1.9.0 起适用于 SVG 模式下的线型。",
+                                jp: "v.1.9.0 以降、SVG モードの線種で使用できます。",
+                                es: "Disponible desde la v.1.9.0 para tipos de línea, en modo SVG."
+                            },
+                            smooth: {
+                                en: "Since version 1.9.0, you can set this property on line types to make them curved.",
+                                fr: "Depuis la version 1.9.0, vous pouvez définir cette propriété sur les types de lignes pour les rendre courbes.",
+                                pt: "Desde a versão 1.9.0, você pode definir esta propriedade em tipos de linha para torná-los curvos.",
+                                de: "Seit Version 1.9.0 können Sie diese Eigenschaft für Linientypen festlegen, um sie gekrümmt zu machen.",
+                                zh: "从版本 1.9.0 开始，您可以在线类型上设置此属性以使它们弯曲。",
+                                jp: "バージョン 1.9.0 以降、線種にこのプロパティを設定して線種を曲線にすることができます。",
+                                es: "Desde la versión 1.9.0, puede establecer esta propiedad en tipos de líneas para hacerlas curvas."
+                            },
                             area: {
                                 en: "Since version v.1.8.7, you can set this property to show an area chart on line types",
                                 fr: "Depuis la version v.1.8.7, vous pouvez définir cette propriété pour afficher un graphique en aires sur les types ligne",

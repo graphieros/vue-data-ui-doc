@@ -485,7 +485,7 @@ function toggleUseCanvas() {
             dataLabels?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.dataLabels[store.lang] }}</span>
             useProgression?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.useProgression[store.lang] }}</span>
             useArea?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.area[store.lang] }}</span>
-            smooth?: boolean;
+            smooth?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.smooth[store.lang] }}</span>
         },
         {...}
     ]
@@ -541,7 +541,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
             <option>line</option>
             <option>plot</option>
         </select>,</span>
-        smooth: true, <span class="text-gray-500">// available since v.1.9.0 for line types, in SVG mode</span>
+        smooth: true, <span class="text-gray-500">// {{ translations.docs.comments.xy.smooth2[store.lang] }}</span>
         color: <span class="text-app-yellow">"rgb(200,200,50)"</span>
     },
     {
