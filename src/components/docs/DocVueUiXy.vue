@@ -44,6 +44,15 @@ const dataset = ref([
         color: "rgb(255,100,0)"
     },
     {
+        name: "Series 4",
+        series: [ 0, 1, -2, 3, -4, 5, -6, 7, -8, 9, -10, 11, -12, 13, -14, 15, -16, 17, -18, 19, -20],
+        type: "line",
+        smooth: true,
+        useArea: false,
+        dataLabels: false,
+        color: "rgb(200,200,50)"
+    },
+    {
         name: "Target",
         series: [ 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
         type: "line",
@@ -470,12 +479,13 @@ function toggleUseCanvas() {
             series: number[];
             type: "bar" | "line" | "plot";
             <span class="text-gray-600 dark:text-app-orange">// {{ translations.docs.comments.xy.type[store.lang] }}</span>
-            color: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.color[store.lang] }}</span>
-            dashed: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.dashed[store.lang] }}</span>
-            useTag: "start" | "end"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.useTag[store.lang] }}</span>
-            dataLabels: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.dataLabels[store.lang] }}</span>
-            useProgression: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.useProgression[store.lang] }}</span>
-            useArea: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.area[store.lang] }}</span>
+            color?: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.color[store.lang] }}</span>
+            dashed?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.dashed[store.lang] }}</span>
+            useTag?: "start" | "end"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.useTag[store.lang] }}</span>
+            dataLabels?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.dataLabels[store.lang] }}</span>
+            useProgression?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.useProgression[store.lang] }}</span>
+            useArea?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.area[store.lang] }}</span>
+            smooth?: boolean;
         },
         {...}
     ]
@@ -522,6 +532,17 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
             <option>plot</option>
         </select>,</span>
         color: <span class="text-app-orange">"rgb(255,100,0)"</span>
+    },
+    {
+        name: <span class="text-app-yellow">"Series 4",</span>
+        series: <span class="text-app-yellow">[0, 1, -2, 3, -4, 5, -6, 7, -8, 9, -10, 11, -12, 13, -14, 15, -16, 17, -18, 19, -20],</span>
+        type:<span class="text-app-yellow"><select v-model="mutableDataset[3].type">
+            <option>bar</option>
+            <option>line</option>
+            <option>plot</option>
+        </select>,</span>
+        smooth: true, <span class="text-gray-500">// available since v.1.9.0 for line types, in SVG mode</span>
+        color: <span class="text-app-yellow">"rgb(200,200,50)"</span>
     },
     {
         name: <span class="text-gray-500">"Target",</span> 

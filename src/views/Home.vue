@@ -24,7 +24,7 @@ function changeTheme() {
 const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => {
   return store.translations;
-})
+});
 
 const languageOptions = ref([
   { value: "en", text: "English" },
@@ -50,6 +50,34 @@ const selectedLanguage = computed({
 const versionsList = ref([]);
 const versionsUrl = ref('https://vue-data-ui.graphieros.com/releases.json');
 
+const sparklineDataset = ref(generateSparkline())
+
+function generateSparkline() {
+  const arr = [];
+  for(let i = 0; i < 24; i += 1) {
+    arr.push({
+      period: i,
+      value: Math.round(Math.random()* 100)
+    })
+  }
+  return arr;
+}
+
+const timeout = ref(null);
+
+function updateSparkline() {
+  const newVal = Math.round(Math.random() * 100);
+  sparklineDataset.value.push({
+    period: Math.random(),
+    value: newVal
+  });
+  sparklineDataset.value = sparklineDataset.value.slice(-24);
+  clearTimeout(timeout.value);
+  timeout.value = setTimeout(() => {
+    requestAnimationFrame(updateSparkline);
+  }, 1000)
+}
+
 onMounted(() => {
   fetch(versionsUrl.value, {
     method: 'GET',
@@ -61,6 +89,57 @@ onMounted(() => {
     }).catch(err => {
         console.error(err.message);
     })
+
+    requestAnimationFrame(updateSparkline)
+  
+});
+
+const sparklineConfig = ref({
+  style: {
+    backgroundColor: isDarkMode ? '#0000000' : "#F3F4F6",
+    fontFamily: "inherit",
+    line: {
+      color: "#5f8bee",
+      strokeWidth: 3,
+      smooth: true
+    },
+    zeroLine: {
+      color: "#505050",
+      strokeWidth: 1
+    },
+    plot: {
+      show: true,
+      radius: 4,
+      stroke: "#FFFFFF",
+      strokeWidth: 1
+    },
+    verticalIndicator: {
+      show: true,
+      strokeWidth: 1.5
+    },
+    dataLabel: {
+      position: "left",
+      fontSize: 0,
+      bold: true,
+      color: "#1A1A1A",
+      roundingValue: 1,
+      valueType: "latest"
+    },
+    title: {
+      show: true,
+      textAlign: "left",
+      color: "#1A1A1A",
+      fontSize: 0,
+      bold: true,
+      text: ""
+    },
+    area: {
+      show: true,
+      useGradient: true,
+      opacity: 30,
+      color: "#5f8bee"
+    }
+  }
 });
 
 </script>
@@ -74,6 +153,9 @@ onMounted(() => {
     <div class="z-10 mx-auto flex flex-col gap-6 w-full h-[calc(100svh_-_49px)] place-items-center place-content-center">
     <div class="relative z-10">
       <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[200px] mx-auto drop-shadow-2xl">
+      <div class="w-full absolute top-[100%] left-0 -translate-x-[40px]">
+        <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset" :config="sparklineConfig"/>
+        </div>
     </div>
     <div class="relative">
       <h1 class="z-10 mx-auto text-[48px] md:text-[64px] font-satoshi-bold text-center"><span class="text-app-green" data-cy="app-name-vue">Vue</span> <span data-cy="app-name" class="text-app-blue">Data UI</span></h1>

@@ -16,7 +16,8 @@ export default {
         "black-100" : "rgb(36,36,36)",
         "app-green": "rgb(66,211,146)",
         "app-blue": "rgb(95,139,238)",
-        "app-orange": "rgb(255,100,0)"
+        "app-orange": "rgb(255,100,0)",
+        "app-yellow": "rgb(200,200,50)"
       }
     },
   },
