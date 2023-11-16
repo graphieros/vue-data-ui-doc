@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.3",
+        "date": "2023-11-16",
+        "updates": [
+            {
+                "component": "VueUiQuadrant",
+                "description": "Fix xAxis labels position issue"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.2",
         "date": "2023-11-13",
         "updates": [

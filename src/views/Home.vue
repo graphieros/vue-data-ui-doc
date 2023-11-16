@@ -78,6 +78,8 @@ function updateSparkline() {
   }, 1000)
 }
 
+const clientPosition = ref({x: 0, y: 0});
+
 onMounted(() => {
   fetch(versionsUrl.value, {
     method: 'GET',
@@ -90,9 +92,30 @@ onMounted(() => {
         console.error(err.message);
     })
 
-    requestAnimationFrame(updateSparkline)
-  
+    requestAnimationFrame(updateSparkline);
+    document.addEventListener("mousemove", getClientPosition);
 });
+
+function getClientPosition(e) {
+  clientPosition.value.x = e.clientX;
+  clientPosition.value.y = e.clientY;
+}
+
+const deviationY = computed(() => {
+  if(clientPosition.value.x > window.innerWidth / 2) {
+    return clientPosition.value.x / window.innerWidth / 2
+  } else {
+    return -(window.innerWidth / 2 - clientPosition.value.x) / window.innerWidth
+  }
+});
+
+const deviationX = computed(() => {
+  if(clientPosition.value.y > window.innerHeight / 2) {
+    return clientPosition.value.y / window.innerHeight / 2;
+  } else {
+    return -(window.innerHeight / 2 - clientPosition.value.y) / window.innerHeight
+  }
+})
 
 const sparklineConfig = ref({
   style: {
@@ -151,11 +174,13 @@ const sparklineConfig = ref({
         <AppSkeletons/>
       </div>
     <div class="z-10 mx-auto flex flex-col gap-6 w-full h-[calc(100svh_-_49px)] place-items-center place-content-center">
-    <div class="relative z-10">
-      <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[200px] mx-auto drop-shadow-2xl">
-      <div class="w-full absolute top-[100%] left-0 -translate-x-[40px]">
-        <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset" :config="sparklineConfig"/>
-        </div>
+    <div class="home-perspective-wrapper"> 
+      <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${deviationX * 20}deg)`">
+        <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[200px] mx-auto drop-shadow-2xl">
+        <div class="w-full absolute top-[100%] left-0 -translate-x-[40px]">
+          <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset" :config="sparklineConfig"/>
+          </div>
+      </div>
     </div>
     <div class="relative">
       <h1 class="z-10 mx-auto text-[48px] md:text-[64px] font-satoshi-bold text-center"><span class="text-app-green" data-cy="app-name-vue">Vue</span> <span data-cy="app-name" class="text-app-blue">Data UI</span></h1>
@@ -199,3 +224,14 @@ const sparklineConfig = ref({
     </div>
     </div>
 </template>
+
+<style>
+.home-perspective-wrapper {
+  perspective-origin: center;
+  perspective: 400px;
+}
+.home-perspective {
+  transform-style: preserve-3d;
+}
+
+</style>
