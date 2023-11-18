@@ -18,6 +18,44 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                search: {
+                    defaultValue: {
+                        en: "Default value",
+                        fr: "Valeur par défaut",
+                        pt: "Valor padrão",
+                        de: "Standardwert",
+                        zh: "默认值",
+                        jp: "デフォルト値",
+                        es: "Valor por defecto"
+                    },
+                    close: {
+                        en: "Close",
+                        fr: "Terminé",
+                        pt: "Fechar",
+                        de: "Schließen",
+                        zh: "关闭",
+                        jp: "近い",
+                        es: "Cerca"
+                    },
+                    term: {
+                        en: "Results for",
+                        fr: "Résultats pour",
+                        pt: "Resultados para",
+                        de: "Ergebnisse für",
+                        zh: "结果",
+                        jp: "の結果",
+                        es: "Resultados para"
+                    },
+                    placeholder: {
+                        en: "Search config...",
+                        fr: "Rechercher une config...",
+                        pt: "Configuração de pesquisa...",
+                        de: "Konfiguration durchsuchen...",
+                        zh: "搜索配置",
+                        jp: "検索構成",
+                        es: "Configuración de búsqueda..."
+                    }
+                },
                 types: {
                     classic: {
                         en: "Classic",
