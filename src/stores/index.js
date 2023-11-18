@@ -19,6 +19,15 @@ export const useMainStore = defineStore("main", {
             lang: "en",
             translations: {
                 search: {
+                    viewComponent: {
+                        en: "View component",
+                        fr: "Afficher le composant",
+                        pt: "Ver componente",
+                        de: "Komponente anzeigen",
+                        zh: "查看组件",
+                        jp: "ビューコンポーネント",
+                        es: "Ver componente"
+                    },
                     defaultValue: {
                         en: "Default value",
                         fr: "Valeur par défaut",

@@ -3,8 +3,8 @@ import { computed, ref, onMounted } from "vue";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import { BrightnessUpIcon, MoonIcon, LanguageIcon } from "vue-tabler-icons";
-import Logo from "../components/docs/Logo.vue";
 import AppSkeletons from "../components/AppSkeletons.vue";
+import DeepSearch from "../components/DeepSearch.vue";
 
 const store = useMainStore();
 
@@ -169,6 +169,7 @@ const sparklineConfig = ref({
 
 <template>
     <div class="mx-auto w-5/6">
+    <DeepSearch/>
       <div class="fixed top-0 left-0 h-screen w-screen z-0" style="opacity:0.4">
         <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'"/>
         <AppSkeletons/>
