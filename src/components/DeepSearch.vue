@@ -219,7 +219,7 @@ onUnmounted(() => {
             </ul>
         </form>
             <div v-if="hasResults">
-                <div v-for="res in currentResults" class="p-2 border border-gray-300 dark:border-gray-600 my-2 rounded-md">
+                <div v-for="res in currentResults" class="p-2 border border-gray-300 dark:border-gray-600 my-2 rounded-md hover:bg-gray-100 dark:hover:bg-[#FFFFFF11]">
                     <details>
                         <summary class="select-none cursor-pointer">
                             <span v-html="res.path.replace(searchTerm, `<span class='text-app-blue font-black'>${searchTerm}</span>`)"></span>
@@ -254,3 +254,9 @@ onUnmounted(() => {
         </div>
     </dialog>
 </template>
+
+<style>
+dialog::backdrop {
+  background: rgba(0,0,0,0.3);
+}
+</style>
