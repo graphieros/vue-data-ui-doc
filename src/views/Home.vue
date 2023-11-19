@@ -177,8 +177,8 @@ const sparklineConfig = ref({
     <div class="z-10 mx-auto flex flex-col gap-6 w-full h-[calc(100svh_-_49px)] place-items-center place-content-center">
     <div class="home-perspective-wrapper"> 
       <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${deviationX * 20}deg)`">
-        <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[200px] mx-auto drop-shadow-2xl">
-        <div class="w-full absolute top-[100%] left-0 -translate-x-[40px]">
+        <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[100px] sm:h-[200px] mx-auto drop-shadow-2xl">
+        <div class="w-full absolute top-[100%] left-0 -translate-x-[20px] sm:-translate-x-[40px]">
           <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset" :config="sparklineConfig"/>
           </div>
       </div>

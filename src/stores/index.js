@@ -19,6 +19,15 @@ export const useMainStore = defineStore("main", {
             lang: "en",
             translations: {
                 search: {
+                    noResults: {
+                        en: "No results found",
+                        fr: "Aucun résultat trouvé",
+                        pt: "Nenhum resultado encontrado",
+                        de: "keine Ergebnisse gefunden",
+                        zh: "未找到结果",
+                        jp: "結果が見つかりません",
+                        es: "No se han encontrado resultados" 
+                    },
                     viewComponent: {
                         en: "View component",
                         fr: "Afficher le composant",
