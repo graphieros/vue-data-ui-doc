@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.4",
+        "date": "2023-11-21",
+        "updates": [
+            {
+                "component": "",
+                "description": "Minor code cleanup after component e2e test implemented"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.3",
         "date": "2023-11-16",
         "updates": [
