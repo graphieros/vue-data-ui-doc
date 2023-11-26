@@ -117,7 +117,9 @@ const darkModeConfig = ref({
     },
     verticalIndicator: {
       show: true,
-      strokeWidth: 1.5
+      strokeWidth: 1.5,
+      color: "#5f8bee",
+      strokeDasharray: 3
     },
     dataLabel: {
       position: "left",
@@ -169,7 +171,9 @@ const config = ref({
     },
     verticalIndicator: {
       show: true,
-      strokeWidth: 1.5
+      strokeWidth: 1.5,
+      color: "#5f8bee",
+      strokeDasharray: 3
     },
     dataLabel: {
       position: "left",
@@ -354,7 +358,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config</span> = {
-  type: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.type"><option>line</option><option>bar</option></select><select v-else v-model="mutableConfig.type"><option>line</option><option>bar</option></select>
+  type: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.type"><option>line</option><option>bar</option></select><select v-else v-model="mutableConfig.type"><option>line</option><option>bar</option></select> <span class="text-gray-400">// since v.1.9.6</span>
   style: {
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
     fontFamily: "inherit",
@@ -380,6 +384,8 @@ const <span class="text-black dark:text-app-blue">config</span> = {
     verticalIndicator: {
       show:  <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.verticalIndicator.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.verticalIndicator.show">, (default: true)
       strokeWidth: <input v-if="isDarkMode" type="number" min="0.1" max="10" step="0.1" v-model="mutableConfigDarkMode.style.verticalIndicator.strokeWidth"><input v-else type="number" min="0.1" max="10" step="0.1" v-model="mutableConfig.style.verticalIndicator.strokeWidth">, (default: 1.5)
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.verticalIndicator.color"><input v-else type="color" v-model="mutableConfig.style.verticalIndicator.color"> (default: "#3366cc"), <span class="text-gray-400">// since v.1.9.7</span>
+      strokeDasharray: <input v-if="isDarkMode" type="number" min="0" max="8" step="0.1" v-model="mutableConfigDarkMode.style.verticalIndicator.strokeDasharray"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.verticalIndicator.strokeDasharray">, (default: 3) <span class="text-gray-400">// since v.1.9.7</span>
     },
     dataLabel: {
       position: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.dataLabel.position"><input v-else type="text" v-model="mutableConfig.style.dataLabel.position">, (default: "left", other option: "right")

@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.7",
+        "date": "2023-11-26",
+        "updates": [
+            {
+                "component": "VueUiSparkline",
+                "description": "Add color & strokeDasharray for verticalIndicator"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.6",
         "date": "2023-11-26",
         "updates": [
