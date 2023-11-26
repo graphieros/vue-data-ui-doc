@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.6",
+        "date": "2023-11-26",
+        "updates": [
+            {
+                "component": "VueUiSparkline",
+                "description": "Add bar type config option"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.5",
         "date": "2023-11-24",
         "updates": [

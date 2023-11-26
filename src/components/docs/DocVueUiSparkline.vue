@@ -92,6 +92,7 @@ const dataset = ref([
 ]);
 
 const darkModeConfig = ref({
+  type: 'line',
   style: {
     backgroundColor: "#242424",
     fontFamily: "inherit",
@@ -99,6 +100,10 @@ const darkModeConfig = ref({
       color: "#5f8bee",
       strokeWidth: 3,
       smooth: true,
+    },
+    bar: {
+      borderRadius: 3,
+      color: "#5f8bee",
     },
     zeroLine: {
       color: "#505050",
@@ -139,6 +144,7 @@ const darkModeConfig = ref({
   }
 });
 const config = ref({
+  type: 'line',
   style: {
     backgroundColor: "#e1e5e8",
     fontFamily: "inherit",
@@ -146,6 +152,10 @@ const config = ref({
       color: "#5f8bee",
       strokeWidth: 3,
       smooth: true
+    },
+    bar: {
+      borderRadius: 3,
+      color: "#5f8bee",
     },
     zeroLine: {
       color: "#505050",
@@ -344,6 +354,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config</span> = {
+  type: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.type"><option>line</option><option>bar</option></select><select v-else v-model="mutableConfig.type"><option>line</option><option>bar</option></select>
   style: {
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
     fontFamily: "inherit",
@@ -351,6 +362,10 @@ const <span class="text-black dark:text-app-blue">config</span> = {
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.line.color"><input v-else type="color" v-model="mutableConfig.style.line.color"> (default: "#3366cc"),
       strokeWidth: <input v-if="isDarkMode" type="number" min="0.1" max="10" step="0.1" v-model="mutableConfigDarkMode.style.line.strokeWidth"><input v-else type="number" min="0.1" max="10" step="0.1" v-model="mutableConfig.style.line.strokeWidth">, (default: 3),
       smooth: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.line.smooth" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.line.smooth" @change="forceChartUpdate()">, (default: false) <span class="text-gray-400">// since v.1.9.1</span>
+    },
+    bar: {
+      borderRadius: <input v-if="isDarkMode" type="number" min="0" max="12" step="0.1" v-model="mutableConfigDarkMode.style.bar.borderRadius"><input v-else type="number" min="0.1" max="12" step="0.1" v-model="mutableConfig.style.bar.borderRadius">, (default: 3)
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.bar.color"><input v-else type="color" v-model="mutableConfig.style.bar.color"> (default: "#3366cc"),
     },
     zeroLine: {
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.zeroLine.color"><input v-else type="color" v-model="mutableConfig.style.zeroLine.color">, (default: "#2D353C")
