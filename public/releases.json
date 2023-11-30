@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.10",
+        "date": "2023-11-30",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Prevent highlight area side overflow when using zoom"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.9",
         "date": "2023-11-28",
         "updates": [
