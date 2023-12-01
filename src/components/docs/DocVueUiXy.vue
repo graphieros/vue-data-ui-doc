@@ -124,7 +124,7 @@ const config = ref({
             }
         },
         labels: {
-            fontSize: 10,
+            fontSize: 7,
         },
         legend: {
             show: true,
@@ -275,7 +275,7 @@ const darkModeConfig = ref({
             }
         },
         labels: {
-            fontSize: 10,
+            fontSize: 7,
         },
         legend: {
             show: true,
