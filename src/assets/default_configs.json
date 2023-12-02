@@ -209,7 +209,7 @@
                 "labels": {
                     "color": "#2D353C",
                     "show": true,
-                    "fontSize": 10,
+                    "fontSize": 12,
                     "axis": {
                         "yLabel": "",
                         "xLabel": "",
@@ -319,8 +319,8 @@
         "showTable": false
     },
     "vue_ui_donut": {
-        "useBlurOnHover": true,
         "useCssAnimation": true,
+        "useBlurOnHover": true,
         "style": {
             "fontFamily": "inherit",
             "chart": {
@@ -1025,8 +1025,8 @@
         }
     },
     "vue_ui_onion": {
-        "useBlurOnHover": true,
         "useCssAnimation": true,
+        "useBlurOnHover": true,
         "style": {
             "fontFamily": "inherit",
             "chart": {
@@ -2198,6 +2198,7 @@
     },
     "vue_ui_relation_circle": {
         "style": {
+            "color":"#2D353C",
             "backgroundColor": "#FFFFFF",
             "fontFamily":"inherit",
             "size": 400,
@@ -2237,6 +2238,10 @@
                     "bold": false
                 }
             }
+        },
+        "userOptions": {
+            "show": true,
+            "title": "options"
         }
     },
     "vue_ui_thermometer": {

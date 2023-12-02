@@ -110,6 +110,7 @@ const dataset = ref([
 const config = ref({
   style: {
     backgroundColor: "#f3f4f6",
+    color: "#2D353C",
     fontFamily: "inherit",
     size: 400,
     limit: 50,
@@ -154,6 +155,7 @@ const config = ref({
 const darkModeConfig = ref({
   style: {
     backgroundColor: "#1A1A1A",
+    color: "#CCCCCC",
     fontFamily: "inherit",
     size: 400,
     limit: 50,
@@ -376,6 +378,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
 const <span class="text-black dark:text-app-blue">config</span> = {
     style: {
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.color"><input v-else type="color" v-model="mutableConfig.style.color">, (default: "#2D353C")
         fontFamily: "inherit",
         size: 400,
         limit: <input v-if="isDarkMode" type="number" min="0" max="1000" step="1" v-model="mutableConfigDarkMode.style.limit" @change="forceChartUpdate"><input v-else type="number" min="0" max="1000" step="1" v-model="mutableConfig.style.limit" @change="forceChartUpdate"> , (default: 50) <span class="dark:text-app-blue text-gray-500">// {{ translations.docs.comments.relationCircle.limit[store.lang] }}</span>

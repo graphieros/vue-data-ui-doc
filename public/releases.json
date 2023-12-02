@@ -1,5 +1,19 @@
 [
     {
+        "version": "v 1.9.12",
+        "date": "2023-12-02",
+        "updates": [
+            {
+                "component": "",
+                "description": "Reduce bundle size"
+            },
+            {
+                "component": "VueUiRelationCircle",
+                "description": "Add user options"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.11",
         "date": "2023-12-01",
         "updates": [
