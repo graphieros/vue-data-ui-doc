@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.14",
+        "date": "2023-12-03",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fix highlight area label not showing in Firefox"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.13",
         "date": "2023-12-03",
         "updates": [
