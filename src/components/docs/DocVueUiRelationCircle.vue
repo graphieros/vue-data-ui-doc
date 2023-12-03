@@ -10,14 +10,17 @@ const key = ref(0);
 const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
 
-watch(() => store.isDarkMode, (val) => {
+watch(
+  () => store.isDarkMode,
+  (val) => {
     nextTick(() => {
-        key.value += 1;
-    })
-});
+      key.value += 1;
+    });
+  }
+);
 
 const isDarkMode = computed(() => {
-    return store.isDarkMode;
+  return store.isDarkMode;
 });
 
 const dataset = ref([
@@ -116,25 +119,25 @@ const config = ref({
     limit: 50,
     animation: {
       show: true,
-      speedMs: 300
+      speedMs: 300,
     },
     labels: {
       color: "#2D353C",
-      fontSize: 10
+      fontSize: 10,
     },
     links: {
       curved: true,
-      maxWidth: 3
+      maxWidth: 3,
     },
     circle: {
       radiusProportion: 0.3,
       stroke: "#CCCCCC",
       strokeWidth: 1,
-      offsetY: 0
+      offsetY: 0,
     },
     plot: {
       radius: 2,
-      color: "#2D353C"
+      color: "#2D353C",
     },
     title: {
       useDiv: true,
@@ -146,10 +149,10 @@ const config = ref({
         color: "#A1A1A1",
         text: "Subtitle",
         fontSize: 16,
-        bold: false
-      }
-    }
-  }
+        bold: false,
+      },
+    },
+  },
 });
 
 const darkModeConfig = ref({
@@ -161,25 +164,25 @@ const darkModeConfig = ref({
     limit: 50,
     animation: {
       show: true,
-      speedMs: 300
+      speedMs: 300,
     },
     labels: {
       color: "#CCCCCC",
-      fontSize: 10
+      fontSize: 10,
     },
     links: {
       curved: true,
-      maxWidth: 3
+      maxWidth: 3,
     },
     circle: {
       radiusProportion: 0.3,
       stroke: "#565656",
       strokeWidth: 1,
-      offsetY: 0
+      offsetY: 0,
     },
     plot: {
       radius: 2,
-      color: "#FAFAFA"
+      color: "#FAFAFA",
     },
     title: {
       useDiv: true,
@@ -191,75 +194,106 @@ const darkModeConfig = ref({
         color: "#A1A1A1",
         text: "Subtitle",
         fontSize: 16,
-        bold: false
-      }
-    }
-  }
+        bold: false,
+      },
+    },
+  },
 });
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value)));
 
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
-    forceChartUpdate();
+  mutableConfig.value = JSON.parse(JSON.stringify(config.value));
+  mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
+  forceChartUpdate();
 }
 
 function forceChartUpdate() {
-    key.value += 1;
+  key.value += 1;
 }
 
 function copyToClipboard(conf) {
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = JSON.stringify(conf);
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
-    store.copy();
+  let selBox = document.createElement("textarea");
+  selBox.style.position = "fixed";
+  selBox.style.left = "0";
+  selBox.style.top = "0";
+  selBox.style.opacity = "0";
+  selBox.value = JSON.stringify(conf);
+  document.body.appendChild(selBox);
+  selBox.focus();
+  selBox.select();
+  document.execCommand("copy");
+  document.body.removeChild(selBox);
+  store.copy();
 }
 
 const isFixed = ref(false);
 
 function fixChart() {
-    isFixed.value = !isFixed.value;
-} 
-
+  isFixed.value = !isFixed.value;
+}
 </script>
 
 <template>
-    <div>
-        <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiRelationCircle</h1>
-        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-3/4'}`">
-            <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                <PinnedOffIcon v-if="isFixed"/>
-                <div v-else class="relative overflow-visible">
-                    <PinIcon class="peer overflow-visible"/>
-                    <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
-                        {{ hintPin[store.lang] }}
-                    </div>
-                </div>
-            </button>
-            <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
-                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
-            </div>
-            <VueUiRelationCircle :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+  <div>
+    <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">
+      VueUiRelationCircle
+    </h1>
+    <div
+      :class="`transition-all mx-auto ${
+        isFixed
+          ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl'
+          : 'w-3/4'
+      }`"
+    >
+      <button
+        @click="fixChart"
+        class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+      >
+        <PinnedOffIcon v-if="isFixed" />
+        <div v-else class="relative overflow-visible">
+          <PinIcon class="peer overflow-visible" />
+          <div
+            class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded"
+          >
+            {{ hintPin[store.lang] }}
+          </div>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-colors" @click="copyToClipboard(mainConfig.vue_ui_relation_circle)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-        </div>
-        <Box showEmits>
-                <template v-slot:tab0>
-                    {{ translations.docs.datastructure[store.lang] }}
-                    <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
+      </button>
+      <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
+        <button
+          @click="resetDefault"
+          class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6"
+        >
+          {{ translations.docs.reset[store.lang] }}
+        </button>
+        <button
+          @click="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+          class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"
+        >
+          <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
+        </button>
+      </div>
+      <VueUiRelationCircle
+        :dataset="dataset"
+        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
+        :key="key"
+      />
+    </div>
+    <div class="w-full flex place-items-center place-content-center my-6">
+      <button
+        class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-colors"
+        @click="copyToClipboard(mainConfig.vue_ui_relation_circle)"
+      >
+        <CopyIcon /> {{ translations.docs.copyDefaultConfig[store.lang] }}
+      </button>
+    </div>
+    <Box showEmits>
+      <template v-slot:tab0>
+        {{ translations.docs.datastructure[store.lang] }}
+        <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+          <pre>
 <code>
     [
         {
@@ -272,9 +306,10 @@ function fixChart() {
         {...}
     ]
 </code>
-</pre>              {{ translations.docs.example[store.lang] }} :
-                        <div class="w-full overflow-x-auto">
-<pre>
+</pre>
+          {{ translations.docs.example[store.lang] }} :
+          <div class="w-full overflow-x-auto">
+            <pre>
 <code>
 const <span class="text-black dark:text-app-green">dataset</span> = [
     {
@@ -363,17 +398,27 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
     }
 ];
 </code>
-</pre>                        
-                        </div>
-                    </div>
-                </template>
+</pre>
+          </div>
+        </div>
+      </template>
 
-                <template v-slot:tab1>
-                    <div class="flex gap-2">
-                        <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
-                        <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
-                    </div>
-<pre>
+      <template v-slot:tab1>
+        <div class="flex gap-2">
+          <button
+            @click="resetDefault"
+            class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all"
+          >
+            {{ translations.docs.reset[store.lang] }}
+          </button>
+          <button
+            @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)"
+            class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"
+          >
+            <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
+          </button>
+        </div>
+        <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config</span> = {
     style: {
@@ -420,14 +465,21 @@ const <span class="text-black dark:text-app-blue">config</span> = {
     }
 }
 </code>
-</pre>                    
-                </template>
-                <template #tab2>
-                    <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generatePdf</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generatePdf[store.lang] }}</div>
+</pre>
+      </template>
+      <template #tab2>
+        <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+          <div><code>generatePdf</code></div>
+          <div class="text-gray-400 pl-5 mb-4">
+            {{ translations.docs.emits.generatePdf[store.lang] }}
+          </div>
+          
+        </div>
+        <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generateImage</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
                 </div>
-                </template>
-            </Box>
-    </div>
+      </template>
+    </Box>
+  </div>
 </template>

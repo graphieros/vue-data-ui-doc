@@ -648,6 +648,15 @@ export const useMainStore = defineStore("main", {
                         es: "Puede anular el CSS (consulte estilos.css en el paquete)"
                     },
                     emits: {
+                        generateImage: {
+                            en: "Call this method from the parent component to download as png image. This is especially useful if user options are hidden.",
+                            fr: "Appelez cette méthode à partir du composant parent pour la télécharger sous forme d'image png. Ceci est particulièrement utile si les options utilisateur sont masquées.",
+                            pt: "Chame esse método do componente pai para fazer download como imagem png. Isto é especialmente útil se as opções do usuário estiverem ocultas.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um sie als PNG-Bild herunterzuladen. Dies ist besonders nützlich, wenn Benutzeroptionen ausgeblendet sind.",
+                            zh: "从父组件调用此方法以下载 png 图像。如果用户选项被隐藏，这尤其有用。",
+                            jp: "親コンポーネントからこのメソッドを呼び出して、PNG イメージとしてダウンロードします。これは、ユーザー オプションが非表示の場合に特に便利です。",
+                            es: "Llame a este método desde el componente principal para descargarlo como imagen png. Esto es especialmente útil si las opciones de usuario están ocultas."
+                        },
                         generatePdf: {
                             en: "Call this method from the parent component to print as PDF. This is especially useful if user options are hidden.",
                             fr: "Appelez cette méthode à partir du composant parent pour imprimer au format PDF. Ceci est particulièrement utile si les options utilisateur sont masquées.",

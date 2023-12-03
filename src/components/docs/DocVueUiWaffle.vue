@@ -477,6 +477,10 @@ const <span class="text-black dark:text-app-blue">config</span> = {
                     <div><code>generateXls</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateXls[store.lang] }}</div>
                 </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generateImage</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
+                </div>
                 </div>
             </template>
         </Box>

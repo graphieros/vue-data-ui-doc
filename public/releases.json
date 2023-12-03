@@ -1,5 +1,71 @@
 [
     {
+        "version": "v 1.9.13",
+        "date": "2023-12-03",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiQuadrant",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiGauge",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiChestnut",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiOnion",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiHeatmap",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiScatter",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiAgePyramid",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiRelationCircle",
+                "description": "Add png image download option and exposed generateImage method"
+            },
+            {
+                "component": "VueUiThermometer",
+                "description": "Add png image download option and exposed generateImage method"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.12",
         "date": "2023-12-02",
         "updates": [
