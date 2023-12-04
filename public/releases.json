@@ -1,5 +1,19 @@
 [
     {
+        "version": "v 1.9.15",
+        "date": "2023-12-04",
+        "updates": [
+            {
+                "component": "",
+                "description": "Reduce bundle size"
+            },
+            {
+                "component": "VueUiQuadrant",
+                "description": "Slightly increase datapoint shapes size on hover"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.14",
         "date": "2023-12-03",
         "updates": [
