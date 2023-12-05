@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.16",
+        "date": "2023-12-05",
+        "updates": [
+            {
+                "component": "VueUiQuadrant",
+                "description": "Add selected shape in tooltip. Fix legend issue in print render."
+            }
+        ]
+    },
+    {
         "version": "v 1.9.15",
         "date": "2023-12-04",
         "updates": [
