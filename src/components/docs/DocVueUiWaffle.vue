@@ -40,6 +40,7 @@ const isDarkMode = computed(() => {
     ]);
 
     const darkModeConfig = ref({
+        useBlurOnHover: true,
         style: {
             fontFamily: "inherit",
             chart: {
@@ -47,7 +48,7 @@ const isDarkMode = computed(() => {
                 color: "#CCCCCC",
                 layout: {
                     grid: {
-                        size: 20,
+                        size: 10,
                         spaceBetween: 0,
                         vertical: false,
                     },
@@ -120,6 +121,7 @@ const isDarkMode = computed(() => {
     });
 
     const config = ref({
+        useBlurOnHover: true,
         style: {
             fontFamily: "inherit",
             chart: {
@@ -127,7 +129,7 @@ const isDarkMode = computed(() => {
                 color: "#1A1A1A",
                 layout: {
                     grid: {
-                        size: 20,
+                        size: 10,
                         spaceBetween: 0,
                         vertical: false,
                     },
@@ -309,6 +311,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
 <code>
 const <span class="text-black dark:text-app-blue">config</span> = {
     style: {
+        useBlurOnHover: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()">, (default: true) <span class="text-app-blue">// since v.1.9.17</span>
         fontFamily: "inherit",
         chart: {
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")

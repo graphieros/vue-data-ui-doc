@@ -19,6 +19,15 @@ export const useMainStore = defineStore("main", {
             lang: "en",
             translations: {
                 search: {
+                    componentSelect: {
+                        en: "Select component...",
+                        fr: "Sélectionnez le composant...",
+                        pt: "Selecione o componente...",
+                        de: "Komponente auswählen...",
+                        zh: "选择组件...",
+                        jp: "コンポーネントを選択...",
+                        es: "Seleccionar componente..."
+                    },
                     noResults: {
                         en: "No results found",
                         fr: "Aucun résultat trouvé",
@@ -939,6 +948,15 @@ export const useMainStore = defineStore("main", {
                             es: "Su conjunto de datos aquí"
                         },
                         xy: {
+                            shape: {
+                                en: "Available since v.1.9.17 for line and plot types. Defaults to 'circle'",
+                                fr: "Disponible depuis la v.1.9.17 pour les types de lignes et de tracés. La valeur par défaut est 'circle'",
+                                pt: "Disponível desde v.1.9.17 para tipos de linha e plotagem. O padrão é 'circle'",
+                                de: "Verfügbar seit Version 1.9.17 für Linien- und Plottypen. Standardmäßig ist „circle“",
+                                jp: "v.1.9.17 以降、ライン タイプとプロット タイプで使用できます。デフォルトは「circle」",
+                                zh: "自 v.1.9.17 起可用于线条和绘图类型。默认为“circle”",
+                                es: "Disponible desde la v.1.9.17 para tipos de línea y gráfico. El valor predeterminado es 'círcle'"
+                            },
                             smooth2: {
                                 en: "Available since v.1.9.0 for line types, in SVG mode.",
                                 fr: "Disponible depuis la v.1.9.0 pour les types lignes, en mode SVG.",
@@ -984,6 +1002,15 @@ export const useMainStore = defineStore("main", {
                                     zh: "更多信息",
                                     jp: "より詳しい情報",
                                     es: "Más información"
+                                },
+                                detailsDisclaimer: {
+                                    en: "In canvas mode, shapes are not yet available for 'line' and 'plot' types",
+                                    fr: "En mode canvas, les formes ne sont pas encore disponibles pour les types 'line' et 'plot'",
+                                    pt: "No modo de tela, as formas ainda não estão disponíveis para os tipos 'line' e 'plot'",
+                                    de: "Im Leinwandmodus sind Formen für die Typen „line“ und „plot“ noch nicht verfügbar",
+                                    zh: "在画布模式下，形状尚不可用于“line”和“plot”类型",
+                                    jp: "キャンバス モードでは、「line」タイプと「plot」タイプでは形状をまだ使用できません。",
+                                    es: "En el modo lienzo, las formas aún no están disponibles para los tipos 'line' y 'plots'"
                                 },
                                 details: {
                                     en: "By default, the configuration will generate a SVG. If you rather have less nodes in your HTML, you can display the chart as a Canvas. This is an experimental feature, you will need to adapt font sizes and chart padding in the options.",

@@ -26,7 +26,8 @@ const dataset = ref([
         name: "Series 1",
         series: [ -55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
         type: "bar",
-        color: "rgb(95,139,238)"
+        color: "rgb(95,139,238)",
+        shape: 'circle'
     },
     {
         name: "Series 2",
@@ -36,12 +37,14 @@ const dataset = ref([
         useArea: true,
         useProgression: true,
         dataLabels: false,
+        shape: "triangle"
     },
     {
         name: "Series 3",
         series: [ 64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],
         type: "plot",
-        color: "rgb(255,100,0)"
+        color: "rgb(255,100,0)",
+        shape: "star"
     },
     {
         name: "Series 4",
@@ -50,7 +53,8 @@ const dataset = ref([
         smooth: true,
         useArea: false,
         dataLabels: false,
-        color: "rgb(200,200,50)"
+        color: "rgb(200,200,50)",
+        shape: 'circle'
     },
     {
         name: "Target",
@@ -60,6 +64,7 @@ const dataset = ref([
         dashed: true,
         useTag: "start",
         dataLabels: false,
+        shape: 'circle'
     },
 ]);
 
@@ -444,6 +449,16 @@ function toggleUseCanvas() {
     }
 }
 
+const shapeOptions = ref([
+    'circle',
+    'triangle',
+    'square',
+    'diamond',
+    'pentagon',
+    'hexagon',
+    'star'
+]);
+
 </script>
 
 
@@ -477,8 +492,11 @@ function toggleUseCanvas() {
                 <summary class="cursor-pointer select-none">
                     {{  translations.docs.comments.xy.canvas.moreInfo[store.lang] }}
                 </summary>
-                    <div class="text-sm my-2 pb-4 border-b border-app-blue">
+                    <div class="text-sm my-2 pb-4">
                         {{ translations.docs.comments.xy.canvas.details[store.lang] }}
+                    </div>
+                    <div class="text-sm my-2 pb-4 border-b border-app-blue text-app-orange">
+                        {{ translations.docs.comments.xy.canvas.detailsDisclaimer[store.lang] }}
                     </div>
                     <div class="grid grid-cols-12 place-items-center gap-4">
                         <div class="col-span-2"></div>
@@ -520,6 +538,7 @@ function toggleUseCanvas() {
             useProgression?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.useProgression[store.lang] }}</span>
             useArea?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.area[store.lang] }}</span>
             smooth?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.smooth[store.lang] }}</span>
+            shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.shape[store.lang] }}</span>
         },
         {...}
     ]
@@ -543,6 +562,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
             <option>plot</option>
         </select>,</span>
         color: <span class="text-app-blue">"rgb(95,139,238)",</span>
+        <template v-if="['line', 'plot'].includes(mutableDataset[0].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[0].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
     },
     {
         name: <span class="text-app-green">"Series 2",</span>
@@ -556,6 +576,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
         useProgression: <span class="text-app-green">true,</span>
         dataLabels: <span class="text-app-green">false,</span>
         useArea: <span class="text-app-green">true</span>
+        <template v-if="['line', 'plot'].includes(mutableDataset[1].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[1].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
     },
     {
         name: <span class="text-app-orange">"Series 3",</span>
@@ -566,6 +587,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
             <option>plot</option>
         </select>,</span>
         color: <span class="text-app-orange">"rgb(255,100,0)"</span>
+        <template v-if="['line', 'plot'].includes(mutableDataset[2].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[2].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
     },
     {
         name: <span class="text-app-yellow">"Series 4",</span>
@@ -577,6 +599,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
         </select>,</span>
         smooth: true, <span class="text-gray-500">// {{ translations.docs.comments.xy.smooth2[store.lang] }}</span>
         color: <span class="text-app-yellow">"rgb(200,200,50)"</span>
+        <template v-if="['line', 'plot'].includes(mutableDataset[3].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[3].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
     },
     {
         name: <span class="text-gray-500">"Target",</span> 
@@ -586,6 +609,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
         dashed: <span class="text-gray-500">true,</span>
         useTag: <span class="text-gray-500">"start",</span>
         dataLabels: <span class="text-gray-500">false,</span>
+        <template v-if="['line', 'plot'].includes(mutableDataset[4].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[4].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
     },
 ];
 </code>

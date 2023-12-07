@@ -1,5 +1,31 @@
 [
     {
+        "version": "v 1.9.17",
+        "date": "2023-12-07",
+        "updates": [
+            {
+                "component": "VueUiQuadrant",
+                "description": "Add shapes in table"
+            },
+            {
+                "component": "VueUiOnion",
+                "description": "On serie select, dataLabel takes the color of the highlighted series"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Add config attribute 'useBlurOnHover'"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "For plot and line types, add shapes dataset option"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Improve tooltip content with inline bar charts"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.16",
         "date": "2023-12-05",
         "updates": [

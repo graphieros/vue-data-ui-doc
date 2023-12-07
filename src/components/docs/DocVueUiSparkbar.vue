@@ -53,7 +53,8 @@ const darkModeConfig = ref(
                 target: 0
             },
             gutter: {
-                backgroundColor: "#3A3A3A"
+                backgroundColor: "#3A3A3A",
+                opacity: 100
             },
             bar: {
                 gradient: {
@@ -89,7 +90,8 @@ const config = ref(
                 target: 0
             },
             gutter: {
-                backgroundColor: "#e1e5e8"
+                backgroundColor: "#e1e5e8",
+                opacity: 100
             },
             bar: {
                 gradient: {
@@ -238,6 +240,7 @@ const <span class="text-black dark:text-app-blue">config</span> = {
             },
             gutter: {
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.gutter.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.gutter.backgroundColor">, (default: "#e1e5e8")
+                opacity: <input v-if="isDarkMode" type="range" min="0" max="100" class="accent-app-blue" v-model="mutableConfigDarkMode.style.gutter.opacity"><input v-else type="range" min="0" max="100" class="accent-app-blue" v-model="mutableConfig.style.gutter.opacity">, (default: 100) <span class="text-app-blue">// since v.1.9.17</span>
             },
             bar: {
                 gradient: {

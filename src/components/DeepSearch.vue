@@ -63,10 +63,15 @@ function selectSuggestion(suggestion) {
   search();
 }
 
+const objNames = ref([]);
+const selectedObjName = ref("");
+
 function search() {
     const results = [];
+    objNames.value = [];
 
     function searchObject(obj, objName = "", path = "") {
+    
         for (let key in obj) {
             if (obj.hasOwnProperty(key)) {
                 const newPath = path ? `${path} > ${key}` : key;
@@ -74,6 +79,9 @@ function search() {
 
                 if (key === searchTerm.value) {
                     results.push({ path: fullPath, value: obj[key], type: typeof obj[key], route: objName.replaceAll("_", "-") });
+                    if (objName && !objNames.value.includes(formatString(objName))) {
+                        objNames.value.push(formatString(objName));
+                    }
                 }
 
                 if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
@@ -86,7 +94,11 @@ function search() {
         searchObject(config[key], key);
     });
     hasResults.value = results.length > 0;
-    currentResults.value = results;
+    currentResults.value = results.filter(r => {
+        if(!selectedObjName.value) return r;
+        return r.path.includes(selectedObjName.value)
+    });
+
     useModal("open");
     return results;
 }
@@ -115,6 +127,8 @@ function useModal(state) {
 
 function clearSearch() {
     searchTerm.value = "";
+    objNames.value = [];
+    selectedObjName.value = "";
     hasResults.value = false;
     showSuggestions.value = false;
 }
@@ -164,7 +178,6 @@ onUnmounted(() => {
                 <button v-if="searchTerm || showSuggestions" class="h-[36px] w-[36px] flex place-items-center justify-center border border-gray-600 rounded-lg hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed" @click="clearSearch">
                     <XIcon/>
                 </button>
-
             </div>
             <ul v-if="showSuggestions" class="absolute bg-white dark:bg-black-100 border border-gray-300 mt-1 rounded-md shadow-lg z-10 max-h-[500px] overflow-auto">
                 <li
@@ -201,6 +214,13 @@ onUnmounted(() => {
                     <SearchIcon/>
                 </button>
                 <button v-if="searchTerm || showSuggestions" class="h-[36px] w-[36px] flex place-items-center justify-center border border-gray-600 rounded-lg hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed" @click="clearSearch">
+                    <XIcon/>
+                </button>
+                <select v-if="searchTerm || showSuggestions" v-model="selectedObjName" @change="search" class="p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green" >
+                    <option value="" disabled selected>{{ store.translations.search.componentSelect[store.lang] }}</option>
+                    <option v-for="el in objNames" class="text-left">{{ el }}</option>
+                </select>
+                <button v-if="(searchTerm || showSuggestions) && selectedObjName" class="h-[36px] w-[36px] flex place-items-center justify-center border border-gray-600 rounded-lg hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed" @click="selectedObjName = ''; search()">
                     <XIcon/>
                 </button>
 
