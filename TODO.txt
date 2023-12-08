@@ -1,4 +1,1 @@
-[] search dialog - color '>'
-[] search dialog - search on uppercase
 [] search dialog - add v-click-outside
-[] style summary arrow

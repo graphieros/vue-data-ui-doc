@@ -18,6 +18,7 @@ const currentResults = ref([]);
 const hasResults = ref(false);
 const showSuggestions = ref(false);
 const canShowOutside = ref(true);
+const isClosing = ref(false);
 
 function flattenAttributes(obj) {
   const attributes = [];
@@ -74,7 +75,7 @@ function search() {
     
         for (let key in obj) {
             if (obj.hasOwnProperty(key)) {
-                const newPath = path ? `${path} > ${key}` : key;
+                const newPath = path ? `${path} ➜ ${key}` : key;
                 const fullPath = objName ? `${formatString(objName)} : ${newPath}` : newPath;
 
                 if (key === searchTerm.value) {
@@ -96,7 +97,7 @@ function search() {
     hasResults.value = results.length > 0;
     currentResults.value = results.filter(r => {
         if(!selectedObjName.value) return r;
-        return r.path.includes(selectedObjName.value)
+        return r.path.toUpperCase().includes(selectedObjName.value.toUpperCase())
     });
 
     useModal("open");
@@ -278,5 +279,28 @@ onUnmounted(() => {
 <style>
 dialog::backdrop {
   background: rgba(0,0,0,0.3);
+  animation: backdrop-appear 0.2s ease-in forwards;
+}
+dialog {
+    animation: dialog-appear 0.2s ease-in forwards;
+}
+
+@keyframes dialog-appear {
+    from {
+        transform: translateY(5px) scale(0.95, 0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1,1);
+        opacity: 1;
+    }
+}
+@keyframes backdrop-appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 </style>

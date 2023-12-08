@@ -81,5 +81,8 @@ input[type="color"]::-webkit-color-swatch {
 input[type="color"]::-moz-color-swatch {
   border-radius: 6px;
   border: 1px solid #C4C4C4;
+}
 
+.dark summary:not([class*="vue"])::marker {
+  color: #42d392;
 }
