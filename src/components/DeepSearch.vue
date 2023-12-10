@@ -194,8 +194,8 @@ onUnmounted(() => {
             </ul>
         </form>
     </div>
-    <dialog id="searchDialog" class=" fixed h-screen max-h-[600px] w-full max-w-[800px] p-6 rounded-lg bg-white dark:bg-black-100 text-black dark:text-gray-300">
-        <div class="z-10 w-full text-2xl sticky top-0 bg-white dark:bg-black-100 font-black">
+    <dialog id="searchDialog" class="glass fixed h-screen max-h-[600px] w-full max-w-[800px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-gray-700">
+        <div class="z-10 w-full text-2xl sticky top-0 font-black">
             <div class="flex flex-row gap-2 place-items-center">
                 <img data-cy="header-logo" src="../assets/logo.png" class="h-5">
                 <span>
@@ -283,6 +283,12 @@ dialog::backdrop {
 }
 dialog {
     animation: dialog-appear 0.2s ease-in forwards;
+}
+
+.glass {
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 @keyframes dialog-appear {
