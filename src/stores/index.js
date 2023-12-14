@@ -376,6 +376,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        rings: {
+                            en: "Visualize relative proportions with a beautiful concentric layout",
+                            fr: "Visualisez les proportions relatives avec une belle disposition concentrique",
+                            pt: "Visualize proporções relativas com um belo layout concêntrico",
+                            de: "Visualisieren Sie relative Proportionen mit einem schönen konzentrischen Layout",
+                            zh: "通过美丽的同心布局可视化相对比例",
+                            jp: "美しい同心円状のレイアウトで相対的な比率を視覚化",
+                            es: "Visualice proporciones relativas con un hermoso diseño concéntrico"
+                        },
                         histogram: {
                             en: "A compact and flexible mini histogram component.",
                             fr: "Un mini composant d'histogramme compact et flexible.",

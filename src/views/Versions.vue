@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, watch, nextTick } from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useMainStore } from "../stores";
+import globalConfig from "../assets/default_configs.json";
 
 
 const store = useMainStore();
@@ -272,6 +273,11 @@ const histoConfig = computed(() => {
         color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
         bold: false
       }
+    },
+    selector: {
+      stroke: "#42d392",
+      borderRadius: 12,
+      strokeDasharray: 6
     },
     title: {
       textAlign: "left",
@@ -837,6 +843,372 @@ const skeletonHeatmapConfig= ref({
     }
 });
 
+const tableConfigDarkMode = ref({
+    fontFamily: "inherit",
+    maxHeight: 700,
+    rowsPerPage: 25,
+    style: {
+        th: {
+            backgroundColor: "#1a1a1a",
+            color:"#c4c9cc",
+            outline: "1px solid #7b8185",
+            selected: {
+                backgroundColor: "#42d392",
+                color: "#1a1a1a"
+            }
+        },
+        rows: {
+            even: {
+                backgroundColor: "#1a1a1a",
+                color: "#c4c9cc",
+                selectedCell: {
+                    backgroundColor: '#42d392',
+                    color: "#2D353C"
+                },
+                selectedNeighbors: {
+                    backgroundColor: "#075e37",
+                    color: "#FFFFFF"
+                }
+            },
+            odd: {
+                backgroundColor: "#2A2A2A",
+                color: "#FFFFFF",
+                selectedCell: {
+                    backgroundColor: '#5de8aa',
+                    color: "#2D353C"
+                },
+                selectedNeighbors: {
+                    backgroundColor: "#0c7a49",
+                    color: "#FFFFFF"
+                }
+            },
+        },
+        inputs: {
+            backgroundColor: "#FFFFFF",
+            color: "#2D353C",
+            border: "1px solid #CCCCCC",
+            accentColor: "#42d392"
+        },
+        dropdowns: {
+            backgroundColor: "#1a1a1a",
+            color: "#c4c9cc",
+            icons: {
+                selected: {
+                    color: "#42d392",
+                    unicode: "✔"
+                },
+                unselected: {
+                    color: "#ff6400",
+                    unicode: "✖"
+                }
+            }
+        },
+        infoBar: {
+            backgroundColor: "#1a1a1a",
+            color: "#FFFFFF"
+        },
+        pagination: {
+            buttons: {
+                backgroundColor: "#1a1a1a",
+                color: "#E1E5E8",
+                opacityDisabled: 0.3
+            },
+            navigationIndicator: {
+                backgroundColor: "#42d392"
+            }
+        },
+        exportMenu: {
+            backgroundColor: "#1a1a1a",
+            color: "#E1E5E8",
+            buttons: {
+                backgroundColor: "#42d392",
+                color: "#2D353C"
+            }
+        },
+        closeButtons: {
+            backgroundColor: "transparent",
+            color: "#ff6400",
+            borderRadius: "50%"
+        },
+        chart: {
+            modal: {
+                backgroundColor: "#1a1a1a",
+                color: "#E1E5E8",
+                buttons: {
+                  selected: {
+                      backgroundColor: "#42d392",
+                      color: "#1a1a1a"
+                    },
+                    unselected: {
+                      backgroundColor: "#1a1a1a",
+                      color: "#E1E5E8"
+                    }
+                }
+            },
+            layout: {
+                backgroundColor: "#1a1a1a",
+                axis: {
+                    stroke: "#ccd1d4",
+                    strokeWidth: 2,
+                },
+                bar: {
+                    fill: "#42d392",
+                    stroke: "#1a1a1a"
+                },
+                line: {
+                    stroke: "#42d392",
+                    strokeWidth: 4,
+                    plot: {
+                        fill: "#5fe3a8",
+                        stroke: "#FFFFFF",
+                        strokeWidth: 1,
+                        radius: {
+                            selected: 6,
+                            unselected: 4,
+                        }
+                    },
+                    selector: {
+                        stroke: "#ff6400",
+                        strokeWidth: 1,
+                        strokeDasharray: 5
+                    },
+                },
+                labels: {
+                    color: "#ccd1d4"
+                },
+                progression: {
+                    stroke: "#FFFFFF",
+                    strokeWidth: 2,
+                    strokeDasharray: 4,
+                    arrowSize: 7,
+                }
+            },
+        }
+    },
+    translations: {
+        average: "Average",
+        by: "by",
+        chooseCategoryColumn: "Choose category column",
+        exportAllButton: "XLSX all",
+        exportAllLabel: "Export all rows of your current filtered dataset",
+        exportPageButton: "XLSX page",
+        exportPageLabel: "Export rows of the current page",
+        from: "From",
+        inputPlaceholder: "Search...",
+        makeDonut: "Generate",
+        nb: "Nb",
+        page: "Page",
+        paginatorLabel: "Rows per page",
+        sizeWarning: "Displaying too many rows at a time can lead to slower performance",
+        sum: "Sum",
+        to: "To",
+        total: 'Total',
+        totalRows: "Total rows",
+    },
+    useChart: true
+})
+
+const tableConfig = ref({
+    fontFamily: "inherit",
+    maxHeight: 700,
+    rowsPerPage: 25,
+    style: {
+        th: {
+            backgroundColor: "#F3F4F6",
+            color:"#1A1A1A",
+            outline: "1px solid #C4C4C4",
+            selected: {
+                backgroundColor: "#42d392",
+                color: "#1a1a1a"
+            }
+        },
+        rows: {
+            even: {
+                backgroundColor: "#F3F4F6",
+                color: "#1A1A1A",
+                selectedCell: {
+                    backgroundColor: '#5de8aa',
+                    color: "#2D353C"
+                },
+                selectedNeighbors: {
+                    backgroundColor: "#b2d4c4",
+                    color: "#1A1A1A"
+                }
+            },
+            odd: {
+                backgroundColor: "#e1e5e8",
+                color: "#1A1A1A",
+                selectedCell: {
+                    backgroundColor: '#42d392',
+                    color: "#2D353C"
+                },
+                selectedNeighbors: {
+                    backgroundColor: "#9cbaac",
+                    color: "#1A1A1A"
+                }
+            },
+        },
+        inputs: {
+            backgroundColor: "#FFFFFF",
+            color: "#1A1A1A",
+            border: "1px solid #C4C4C4",
+            accentColor: "#42d392"
+        },
+        dropdowns: {
+            backgroundColor: "#FFFFFF",
+            color: "#1A1A1A",
+            icons: {
+                selected: {
+                    color: "#42d392",
+                    unicode: "✔"
+                },
+                unselected: {
+                    color: "#ff6400",
+                    unicode: "✖"
+                }
+            }
+        },
+        infoBar: {
+            backgroundColor: "#e1e5e8",
+            color: "#1A1A1A"
+        },
+        pagination: {
+            buttons: {
+                backgroundColor: "#e1e5e8",
+                color: "#1A1A1A",
+                opacityDisabled: 0.3
+            },
+            navigationIndicator: {
+                backgroundColor: "#42d392"
+            }
+        },
+        exportMenu: {
+            backgroundColor: "#FFFFFF",
+            color: "#1A1A1A",
+            buttons: {
+                backgroundColor: "#e1e5e8",
+                color: "#2D353C"
+            }
+        },
+        closeButtons: {
+            backgroundColor: "transparent",
+            color: "#ff6400",
+            borderRadius: "50%"
+        },
+        chart: {
+            modal: {
+                backgroundColor: "#FFFFFF",
+                color: "#1A1A1A",
+                buttons: {
+                  selected: {
+                      backgroundColor: "#42d392",
+                      color: "#FFFFFF"
+                    },
+                    unselected: {
+                      backgroundColor: "#e1e5e8",
+                      color: "#1A1A1A"
+                    }
+                }
+            },
+            layout: {
+                backgroundColor: "#FFFFFF",
+                axis: {
+                    stroke: "#ccd1d4",
+                    strokeWidth: 2,
+                },
+                bar: {
+                    fill: "#42d392",
+                    stroke: "#FFFFFF"
+                },
+                line: {
+                    stroke: "#42d392",
+                    strokeWidth: 4,
+                    plot: {
+                        fill: "#5fe3a8",
+                        stroke: "#FFFFFF",
+                        strokeWidth: 1,
+                        radius: {
+                            selected: 6,
+                            unselected: 4,
+                        }
+                    },
+                    selector: {
+                        stroke: "#ff6400",
+                        strokeWidth: 1,
+                        strokeDasharray: 5
+                    },
+                },
+                labels: {
+                    color: "#1A1A1A"
+                },
+                progression: {
+                    stroke: "#565656",
+                    strokeWidth: 2,
+                    strokeDasharray: 4,
+                    arrowSize: 7,
+                }
+            },
+        }
+    },
+    translations: {
+        average: "Average",
+        by: "by",
+        chooseCategoryColumn: "Choose category column",
+        exportAllButton: "XLSX all",
+        exportAllLabel: "Export all rows of your current filtered dataset",
+        exportPageButton: "XLSX page",
+        exportPageLabel: "Export rows of the current page",
+        from: "From",
+        inputPlaceholder: "Search...",
+        makeDonut: "Generate",
+        nb: "Nb",
+        page: "Page",
+        paginatorLabel: "Rows per page",
+        sizeWarning: "Displaying too many rows at a time can lead to slower performance",
+        sum: "Sum",
+        to: "To",
+        total: 'Total',
+        totalRows: "Total rows",
+    },
+    useChart: true
+})
+
+const tableDataset = computed(() => {
+  return {
+    header: [
+      {
+        name: 'Day',
+        type: "date",
+        average: false,
+        decimals: false,
+        sum: false,
+        isSort: true,
+        isSearch: false,
+        isMultiselect: false,
+        isPercentage: false, 
+        rangeFilter: false,
+      },
+      {
+        name: 'NPM downloads',
+        type: "numeric",
+        average: true,
+        decimals: 0,
+        sum: true,
+        isSort: true,
+        isSearch: false,
+        isMultiselect: false,
+        isPercentage: false,  
+        rangeFilter: true,
+      }
+    ],
+    body: data.value.map(d => {
+      return {
+        td: [d.period, d.value]
+      }
+    })
+  }
+})
+
 </script>
 
 <template>
@@ -884,6 +1256,11 @@ const skeletonHeatmapConfig= ref({
                         </li>
                     </ul>
                 </div>
+
+                <div class="w-full max-w-[800px] mx-auto mt-12">
+                  <VueUiTable :key="`table_${step}`" v-if="!isLoadingLine && !!data" :dataset="tableDataset" :config="isDarkMode ? tableConfigDarkMode: tableConfig"/>
+                </div>
+
 
             </div>
         </div>

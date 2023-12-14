@@ -29,6 +29,7 @@ import DocVueUiRelationCircle from "../components/docs/DocVueUiRelationCircle.vu
 import DocVueUiThermometer from "../components/docs/DocVueUiThermometer.vue";
 import DocVueUiSparkStackbar from "../components/docs/DocVueUiSparkStackbar.vue";
 import DocVueUiSparkHistogram from "../components/docs/DocVueUiSparkHistogram.vue";
+import DocVueUiRings from "../components/docs/DocVueUIRings.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 
 import { CheckIcon } from "vue-tabler-icons";
@@ -74,6 +75,14 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-waffle",
         type: "classic",
         thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href
+    },
+    {
+        name: "Rings",
+        icon: "PlaystationCircleIcon",
+        tooltip: translations.value.docs.tooltips.rings[store.lang],
+        link: "/docs#vue-ui-rings",
+        type: "classic",
+        thumb: new URL('../assets/thumb_rings.png', import.meta.url).href
     },
     {
         name: "Radar",
@@ -290,6 +299,7 @@ const menuItems = computed(() => [
             <DocVueUiDashboard v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-dashboard'"/>
             <DocVueUiAnnotator v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-annotator'"/>
             <DocVueUiSmiley v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-smiley'"/>
+            <DocVueUiRings v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-rings'"/>
             <DocVueUiRelationCircle v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-relation-circle'"/>
             <DocVueUiThermometer v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-thermometer'"/>
             <DocVueUiSparkStackbar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-sparkstackbar'"/>

@@ -153,6 +153,12 @@ const config = ref({
         bold: false
       }
     },
+    selector: {
+      stroke: "#5f8bee",
+      borderRadius: 12,
+      strokeWidth: 2,
+      strokeDasharray: 0
+    },
     title: {
       textAlign: "left",
       text: "Rainfall in mm",
@@ -216,6 +222,12 @@ const darkModeConfig = ref({
         color: "#CCCCCC",
         bold: false
       }
+    },
+    selector: {
+      stroke: "#5f8bee",
+      borderRadius: 12,
+      strokeWidth: 2,
+      strokeDasharray: 0
     },
     title: {
       textAlign: "left",
@@ -457,6 +469,12 @@ const <span class="text-black dark:text-app-blue">config</span> = {
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.labels.timeLabel.color"><input v-else type="color" v-model="mutableConfig.style.labels.timeLabel.color">, (default: "#2D353C")
                 bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.labels.timeLabel.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.labels.timeLabel.bold" @change="forceChartUpdate()">, (default: false)
             }
+        },
+        selector: { <span class="text-gray-500">// since v.1.9.20</span>
+          stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.selector.stroke"><input v-else type="color" v-model="mutableConfig.style.selector.stroke">, (default: "#3366cc")
+          strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="6" v-model="mutableConfigDarkMode.style.selector.strokeWidth"><input v-else type="number" min="0" max="6" v-model="mutableConfig.style.selector.strokeWidth">, (default: 2)
+          strokeDasharray: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.style.selector.strokeDasharray"><input v-else type="number" min="0" max="6" v-model="mutableConfig.style.selector.strokeDasharray">, (default: 0)
+          borderRadius: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.selector.borderRadius"><input v-else type="number" min="0" max="6" v-model="mutableConfig.style.selector.borderRadius">, (default: 2)
         },
         title: {
             textAlign: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.textAlign"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.style.title.textAlign"><option>left</option><option>center</option><option>right</option></select>, (default: "left")
