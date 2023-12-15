@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.22",
+        "date": "2023-12-15",
+        "updates": [
+            {
+                "component": "",
+                "description": "Minor refactoring and test addition"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.21",
         "date": "2023-12-13",
         "updates": [

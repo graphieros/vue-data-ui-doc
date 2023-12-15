@@ -1,1 +1,0 @@
-[] search dialog - add v-click-outside
