@@ -103,27 +103,27 @@ const selectedLanguage = computed({
 
             <nav class="hidden md:flex flex-row gap-3 justify-end w-full place-items-center">
                 <router-link data-cy="link-installation" to="/installation">
-                    <span :class="`${isSelected('/installation') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/installation') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.installation[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-docs" to="/docs">
-                    <span :class="`${isSelected('/docs') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/docs') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.docs[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-dashboard" to="/dashboard">
-                    <span :class="`${isSelected('/dashboard') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/dashboard') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.dashboard[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-versions" to="/versions">
-                    <span :class="`${isSelected('/versions') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/versions') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.versions[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-about" to="/about">
-                    <span :class="`${isSelected('/about') ? 'text-app-blue hover:cursor-default' : 'text-gray-800 dark:text-gray-400 hover:underline'}`">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/about') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.about[store.lang] }}
                     </span>
                 </router-link>
