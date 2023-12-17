@@ -1209,6 +1209,39 @@ const tableDataset = computed(() => {
   }
 })
 
+const wheelConfig = computed(() => {
+  return {
+    userOptions: {
+      show: false
+    },
+    style: {
+      chart: {
+        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+        layout: {
+          wheel: {
+            ticks: {
+              activeColor: '#42d392',
+              inactiveColor: isDarkMode.value ? '#3A3A3A' : '#e1e5e8',
+              gradient: {
+                shiftHueIntensity: 20
+              }
+            }
+          },
+          innerCircle: {
+            stroke: isDarkMode.value ? '#3A3A3A' : '#e1e5e8',
+            strokeWidth: 12
+          }
+        },
+        title: {
+          fontSize: 12,
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+          bold: false
+        }
+      }
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -1231,7 +1264,11 @@ const tableDataset = computed(() => {
                     </div>
                     <VueUiSparkbar :dataset="sparkbarDataset" :config="sparkbarConfig"/>
                 </div>
-                
+                <div class="flex flew-row gap-2 justify-center mb-6">
+                  <div class="w-[100px] sm:w-[150px]" v-for="(wheel, i) in sparkbarDataset">
+                    <VueUiWheel :dataset="{ percentage: wheel.value }" :config="{...wheelConfig, style: {...wheelConfig.style, chart: {...wheelConfig.style.chart, title: {...wheelConfig.style.chart.title, text: i === 0 ? 'Quality' : i === 1 ? 'Popularity' : 'Maintenance'}}}}"/>
+                  </div>
+                </div>
                 <div class="max-w-[500px] mx-auto mb-6" v-if="!!data && !isLoadingLine">
                   <VueUiSparkHistogram :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`"/>
                 </div>

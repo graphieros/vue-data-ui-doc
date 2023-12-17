@@ -1,10 +1,20 @@
 [
     {
+        "version": "v 1.9.28",
+        "date": "2023-12-17",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "Improve datalabels"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.27",
         "date": "2023-12-17",
         "updates": [
             {
-                "component": "VuerUiWheel",
+                "component": "VueUiWheel",
                 "description": "Create component"
             }
         ]
