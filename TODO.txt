@@ -1,0 +1,2 @@
+Add button to toggle show options dynamically ?
+With tooltip information

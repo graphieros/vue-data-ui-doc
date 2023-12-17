@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon, MoodSmileIcon, CircleTriangleIcon, TemperatureIcon, PlaystationCircleIcon } from "vue-tabler-icons";
+import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon, MoodSmileIcon, CircleTriangleIcon, TemperatureIcon, PlaystationCircleIcon, LoaderIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -59,6 +59,9 @@ function isSelected(route) {
             </router-link>
             <router-link to="/docs#vue-ui-gauge" >
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-gauge') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-gauge')" class="-ml-6"/><GaugeIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-gauge')"/>  <span class="text-gray-500">VueUi</span>Gauge</div>
+            </router-link>
+            <router-link to="/docs#vue-ui-wheel" >
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-wheel') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-wheel')" class="-ml-6"/><LoaderIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-wheel')"/>  <span class="text-gray-500">VueUi</span>Wheel</div>
             </router-link>
             <router-link to="/docs#vue-ui-chestnut" >
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-chestnut') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-chestnut')" class="-ml-6"/><BinaryTree2Icon class="text-gray-800 dark:text-gray-400 -rotate-90" stroke-width="1" v-if="!isSelected('/docs#vue-ui-chestnut')"/>  <span class="text-gray-500">VueUi</span>Chestnut</div>
@@ -155,6 +158,9 @@ function isSelected(route) {
             </router-link>
             <router-link to="/docs#vue-ui-gauge" >
                 <div class="-ml-2 my-2"><GaugeIcon :class="`${isSelected('/docs#vue-ui-gauge') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-gauge') ? 2 : 1"/></div>
+            </router-link>
+            <router-link to="/docs#vue-ui-wheel" >
+                <div class="-ml-2 my-2"><LoaderIcon :class="`${isSelected('/docs#vue-ui-wheel') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-wheel') ? 2 : 1"/></div>
             </router-link>
             <router-link to="/docs#vue-ui-chestnut" >
                 <div class="-ml-2 my-2"><BinaryTree2Icon :class="`-rotate-90 ${isSelected('/docs#vue-ui-chestnut') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-chestnut') ? 2 : 1"/></div>

@@ -376,6 +376,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        wheel: {
+                            en: "Visualize a percentage through a dynamic wheel-type layout",
+                            fr: "Visualisez un pourcentage grâce à une disposition dynamique de type roue",
+                            pt: "Visualize uma porcentagem por meio de um layout dinâmico do tipo roda",
+                            de: "Visualisieren Sie einen Prozentsatz durch ein dynamisches Rad-Layout",
+                            zh: "通过动态轮式布局可视化百分比",
+                            jp: "動的なホイールタイプのレイアウトでパーセンテージを視覚化",
+                            es: "Visualice un porcentaje a través de un diseño dinámico tipo rueda"
+                        },
                         rings: {
                             en: "Visualize relative proportions with a beautiful concentric layout",
                             fr: "Visualisez les proportions relatives avec une belle disposition concentrique",

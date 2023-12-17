@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.26",
+        "date": "2023-12-17",
+        "updates": [
+            {
+                "component": "VuerUiWheel",
+                "description": "Create component"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.24",
         "date": "2023-12-16",
         "updates": [
