@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.29",
+        "date": "2023-12-18",
+        "updates": [
+            {
+                "component": "VueUiWheel",
+                "description": "Improve animation"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.28",
         "date": "2023-12-17",
         "updates": [
