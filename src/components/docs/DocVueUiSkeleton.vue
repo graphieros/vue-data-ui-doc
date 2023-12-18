@@ -131,6 +131,12 @@ const config = ref({
     },
     pyramid: {
       color: "#C4C4C4"
+    },
+    wheel: {
+      color: "#C4C4C4"
+    },
+    rings: {
+      color: "#C4C4C4"
     }
   }
 });
@@ -245,6 +251,12 @@ const darkModeConfig = ref({
     },
     pyramid: {
       color: "#5c5c5c"
+    },
+    wheel: {
+      color: "#5c5c5c"
+    },
+    rings: {
+      color: "#5c5c5c"
     }
   }
 });
@@ -264,10 +276,12 @@ const options = ref([
     "quadrant",
     "radar",
     "rating",
+    "rings",
     "sparkline",
     "table",
     "verticalBar",
     "waffle",
+    "wheel",
 ]);
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -473,6 +487,12 @@ const <span class="text-black dark:text-app-blue">config</span> = {
     },
     pyramid: {
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.pyramid.color"><input v-else type="color" v-model="mutableConfig.style.pyramid.color">, (default: "#e1e5e8")
+    }
+    rings: {
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rings.color"><input v-else type="color" v-model="mutableConfig.style.rings.color">, (default: "#e1e5e8")
+    }
+    wheel: {
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.wheel.color"><input v-else type="color" v-model="mutableConfig.style.wheel.color">, (default: "#e1e5e8")
     }
   }
 }
