@@ -8,10 +8,14 @@ const props = defineProps({
 
 const icon = defineAsyncComponent(() => import("vue-tabler-icons").then(module => module[props.icon]))
 
+function scrollToTop() {
+    window.scrollTo({ top: 0});
+}
+
 </script>
 
 <template>
-    <router-link :to="link">
+    <router-link :to="link" @click="scrollToTop">
         <div class="relative">
             <div class="peer p-2 rounded-md flex flex-row gap-2 place-items-center place-content-center border border-black bg-gray-100 dark:bg-[rgb(35,35,35)] hover:bg-white hover:shadow-xl dark:hover:bg-[rgb(40,40,40)] dark:hover:border-app-green">
                 <component :is="icon" class="text-gray-800 dark:text-gray-400" stroke-width="1"/>

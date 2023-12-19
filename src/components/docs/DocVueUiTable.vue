@@ -578,7 +578,10 @@ function copyToClipboard(conf) {
 </script>
 
 <template>
-    <div class="text-center font-satoshi-bold text-app-blue text-2xl mb-12">VueUiTable</div>
+    <div class="text-center font-satoshi-bold text-app-blue text-2xl mb-2">VueUiTable</div>
+    <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-4 text-center">
+            {{ translations.docs.tooltips.table[store.lang] }}
+        </p>
     <VueUiTable :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`tablekey_${tableKey}`"/>
     <div class="w-full flex place-items-center place-content-center my-6">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black hover:shadow-xl font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_table)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>

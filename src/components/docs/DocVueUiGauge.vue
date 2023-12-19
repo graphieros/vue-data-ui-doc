@@ -253,7 +253,10 @@ function fixChart() {
 
 <template>
     <div>
-        <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiGauge</h1>
+        <h1 class="text-center font-satoshi-bold text-app-blue mb-2 text-2xl">VueUiGauge</h1>
+        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
+            {{ translations.docs.tooltips.gauge[store.lang] }}
+        </p>
         <button v-if="!isFixed" @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
             <div class="relative overflow-visible">
                     <PinIcon class="peer overflow-visible"/>

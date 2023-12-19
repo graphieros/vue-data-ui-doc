@@ -237,9 +237,12 @@ function fixChart() {
 
 <template>
   <div>
-    <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">
+    <h1 class="text-center font-satoshi-bold text-app-blue mb-2 text-2xl">
       VueUiRelationCircle
     </h1>
+    <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
+            {{ translations.docs.tooltips.relationCircle[store.lang] }}
+        </p>
     <div
       :class="`transition-all mx-auto ${
         isFixed

@@ -1,2 +1,4 @@
 Add button to toggle show options dynamically ?
 With tooltip information
+
+Add chart description in each doc page. After all, translation is already available
