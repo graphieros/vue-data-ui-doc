@@ -376,6 +376,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        tiremarks: {
+                            en: "Visualize a percentage through a dynamic tiremarks-like layout",
+                            fr: "Visualisez un pourcentage grâce à une disposition dynamique semblable à des marques de pneu",
+                            pt: "Visualize uma porcentagem por meio de um layout dinâmico semelhante a marcas de pneus",
+                            de: "Visualisieren Sie einen Prozentsatz durch ein dynamisches Reifenspuren-ähnliches Layout",
+                            zh: "通过类似轮胎痕迹的动态布局可视化百分比",
+                            jp: "タイヤ跡のような動的なレイアウトでパーセンテージを視覚化",
+                            es: "Visualice un porcentaje a través de un diseño dinámico similar a marcas de neumáticos"
+                        },
                         wheel: {
                             en: "Visualize a percentage through a dynamic wheel-type layout",
                             fr: "Visualisez un pourcentage grâce à une disposition dynamique de type roue",
