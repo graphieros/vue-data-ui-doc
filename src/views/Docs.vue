@@ -32,6 +32,7 @@ import DocVueUiSparkHistogram from "../components/docs/DocVueUiSparkHistogram.vu
 import DocVueUiRings from "../components/docs/DocVueUIRings.vue";
 import DocVueUiWheel from "../components/docs/DocVueUiWheel.vue";
 import DocVueUiTiremarks from "../components/docs/DocVueUiTiremarks.vue";
+import DocVueUiDonutEvolution from "../components/docs/DocVueUiDonutEvolution.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 
 import { CheckIcon } from "vue-tabler-icons";
@@ -69,6 +70,14 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-donut",
         type: "classic",
         thumb: new URL('../assets/thumb_donut.png', import.meta.url).href
+    },
+    {
+        name: "DonutEvolution",
+        icon: "ChartDotsIcon",
+        tooltip: translations.value.docs.tooltips.donutEvolution[store.lang],
+        link: "/docs#vue-ui-donut-evolution",
+        type: "combined",
+        thumb: new URL('../assets/thumb_donut_evolution.png', import.meta.url).href
     },
     {
         name: "Waffle",
@@ -324,6 +333,7 @@ const menuItems = computed(() => [
             <DocVueUiSparkHistogram v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-sparkhistogram'"/>
             <DocVueUiWheel v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-wheel'"/>
             <DocVueUiTiremarks v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-tiremarks'"/>
+            <DocVueUiDonutEvolution v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-donut-evolution'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">

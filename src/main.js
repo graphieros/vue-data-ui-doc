@@ -32,7 +32,8 @@ import {
     VueUiSparkHistogram,
     VueUiRings,
     VueUiWheel,
-    VueUiTiremarks
+    VueUiTiremarks,
+    VueUiDonutEvolution,
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -69,5 +70,6 @@ app.component("VueUiSparkHistogram", VueUiSparkHistogram);
 app.component("VueUiRings", VueUiRings);
 app.component("VueUiWheel", VueUiWheel);
 app.component("VueUiTiremarks", VueUiTiremarks);
+app.component("VueUiDonutEvolution", VueUiDonutEvolution);
 
 app.mount('#app')

@@ -376,6 +376,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        donutEvolution: {
+                            en: "A fusion of line and donut charts, to visualize growth and proportions in one go",
+                            fr: "Une fusion de graphiques en courbes et en anneaux, pour visualiser la croissance et les proportions en une seule fois",
+                            pt: "Uma fusão de gráficos de linha e de rosca, para visualizar o crescimento e as proporções de uma só vez",
+                            de: "Eine Kombination aus Linien- und Ringdiagrammen, um Wachstum und Proportionen auf einmal zu visualisieren",
+                            zh: "折线图和圆环图的融合，一次性可视化增长和比例",
+                            jp: "折れ線グラフとドーナツ グラフを融合し、成長と比率を一度に視覚化",
+                            es: "Una fusión de gráficos de líneas y de anillos para visualizar el crecimiento y las proporciones de una sola vez."
+                        },
                         tiremarks: {
                             en: "Visualize a percentage through a dynamic tiremarks-like layout",
                             fr: "Visualisez un pourcentage grâce à une disposition dynamique semblable à des marques de pneu",
