@@ -22,7 +22,7 @@ function scrollToTop() {
 <template>
     <div class="overflow-visible relative">
         <router-link :to="route" @click="scrollToTop">
-            <div :class="`-ml-2 my-2 ${index === 0 ? 'mt-12' : ''}`"><component :is="ico" :class="`${cssClasses} ${isSelected(route) ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected(route) ? 2 : 1"/></div>
+            <div :class="`-ml-2 my-2 ${index === 0 ? 'mt-12' : ''}`"><component :is="ico" :class="`${cssClasses} ${isSelected(route) ? 'text-app-blue' : 'text-black dark:text-gray-400'} hover:text-app-blue dark:hover:text-app-blue`" :stroke-width="isSelected(route) ? 2 : 1"/></div>
         </router-link>
     </div>
 </template>

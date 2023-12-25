@@ -3,12 +3,19 @@ import { ref, computed } from "vue";
 import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon, MoodSmileIcon, CircleTriangleIcon, TemperatureIcon, PlaystationCircleIcon, LoaderIcon, Tallymark4Icon, ChartDotsIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import LinkTooltip from "../components/LinkTooltip.vue";
+import DynamicTooltip from "./DynamicTooltip.vue";
+import { useMainStore } from "../stores";
 
 const router = useRouter();
 
 const currentRoute = computed(() => {
     return router.currentRoute.value.fullPath
 })
+
+const store = useMainStore();
+const isDarkMode = computed(() => {
+    return store.isDarkMode;
+});
 
 const isOpen = ref(window.innerWidth > 768);
 
@@ -40,212 +47,255 @@ const smallMenu = ref([
         icon: 'ChartHistogramIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiXy',
+        tooltipContent: 'Xy',
+        thumb: new URL('../assets/thumb_xy.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-donut',
         icon: 'ChartDonut3Icon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiDonut',
+        tooltipContent: 'Donut',
+        thumb: new URL('../assets/thumb_donut.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-waffle',
         icon: 'LayoutGridIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiWaffle',
+        tooltipContent: 'Waffle',
+        thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-radar',
         icon: 'ChartRadarIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiRadar',
+        tooltipContent: 'Radar',
+        thumb: new URL('../assets/thumb_radar.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-quadrant',
         icon: 'PlusIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiQuadrant',
+        tooltipContent: 'Quadrant',
+        thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-gauge',
         icon: 'GaugeIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiGauge',
+        tooltipContent: 'Gauge',
+        thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-wheel',
         icon: 'LoaderIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiWheel',
+        tooltipContent: 'Wheel',
+        thumb: new URL('../assets/thumb_wheel.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-tiremarks',
         icon: 'Tallymark4Icon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiTiremarks',
+        tooltipContent: 'Tiremarks',
+        thumb: new URL('../assets/thumb_tiremarks.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-chestnut',
         icon: 'BinaryTree2Icon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiChestnut',
+        tooltipContent: 'Chestnut',
+        thumb: new URL('../assets/thumb_chestnut.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-onion',
         icon: 'ChartArcs3Icon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiOnion',
+        tooltipContent: 'Onion',
+        thumb: new URL('../assets/thumb_onion.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-vertical-bar',
         icon: 'ChartBarIcon',
         cssClasses: 'rotate-90',
         isSelected: isSelected,
-        tooltipContent: 'VueUiVerticalBar',
+        tooltipContent: 'VerticalBar',
+        thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-heatmap',
         icon: 'LayoutGridIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiHeatmap',
+        tooltipContent: 'Heatmap',
+        thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-scatter',
         icon: 'ChartBubbleIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiScatter',
+        tooltipContent: 'Scatter',
+        thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-candlestick',
         icon: 'ChartCandleIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiCandlestick',
+        tooltipContent: 'Candlestick',
+        thumb: new URL('../assets/thumb_candlestick.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-age-pyramid',
         icon: 'PyramidIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiAgePyramid',
+        tooltipContent: 'AgePyramid',
+        thumb: new URL('../assets/thumb_age_pyramid.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-relation-circle',
         icon: 'CircleTriangleIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiRelationCircle',
+        tooltipContent: 'RelationCircle',
+        thumb: new URL('../assets/thumb_relation_circle.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-thermometer',
         icon: 'TemperatureIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiThermometer',
+        tooltipContent: 'Thermometer',
+        thumb: new URL('../assets/thumb_thermometer.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-rings',
         icon: 'PlaystationCircleIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiRings',
+        tooltipContent: 'Rings',
+        thumb: new URL('../assets/thumb_rings.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-donut-evolution',
         icon: 'ChartDotsIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiDonutEvolution',
+        tooltipContent: 'DonutEvolution',
+        thumb: new URL('../assets/thumb_donut_evolution.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-sparkline',
         icon: 'ChartLineIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiSparkline',
+        tooltipContent: 'Sparkline',
+        thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-sparkbar',
         icon: 'ChartBarIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiSparkbar',
+        tooltipContent: 'Sparkbar',
+        thumb: new URL('../assets/thumb_sparkbar.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-sparkstackbar',
         icon: 'ChartBarIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiSparkStackbar',
+        tooltipContent: 'SparkStackbar',
+        thumb: new URL('../assets/thumb_stackbar.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-sparkhistogram',
         icon: 'ChartBarIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiSparkHistogram',
+        tooltipContent: 'SparkHistogram',
+        thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-table',
         icon: 'TableIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiTable',
+        tooltipContent: 'Table',
+        thumb: new URL('../assets/thumb_table.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-rating',
         icon: 'StarIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiRating',
+        tooltipContent: 'Rating',
+        thumb: new URL('../assets/thumb_rating.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-smiley',
         icon: 'MoodSmileIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiSmiley',
+        tooltipContent: 'Smiley',
+        thumb: new URL('../assets/thumb_smiley.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-screenshot',
         icon: 'ScreenshotIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiScreenshot',
+        tooltipContent: 'Screenshot',
     },
     {
         route: '/docs#vue-ui-skeleton',
         icon: 'SkullIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiSkeleton',
+        tooltipContent: 'Skeleton',
     },
     {
         route: '/docs#vue-ui-dashboard',
         icon: 'LayoutDashboardIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiDashboard',
+        tooltipContent: 'Dashboard',
     },
     {
         route: '/docs#vue-ui-annotator',
         icon: 'EditIcon',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VueUiAnnotator',
+        tooltipContent: 'Annotator',
     },
 ])
+
+const isTooltip = ref(false);
+const tooltipContent = ref('');
+
+function showTooltip(source) {
+    isTooltip.value = true;
+    tooltipContent.value = `<div class="flex flex-center flex-col gap-2 place-items-center"><div class="flex flex-row place-items-center"><span>VueUi</span><b class="text-app-blue">${source.tooltipContent}</b></div>${source.thumb ? `<img class="h-12 max-w-[150px]" src="${source.thumb}">` : ''}</div>`
+}
+
+function nukeTooltip() {
+    isTooltip.value = false;
+    tooltipContent.value = "";
+}
+
+const thisApp = computed(() => {
+    return document.getElementById("app")
+})
 
 </script>
 
@@ -365,11 +415,22 @@ const smallMenu = ref([
         </section>
     </template>
     <template v-else>
-            <LinkTooltip 
-                v-for="(lt, i) in smallMenu"
-                :index="i"
-                v-bind="lt"
-            />
+        <LinkTooltip 
+            v-for="(lt, i) in smallMenu"
+            :index="i"
+            v-bind="lt"
+            @mouseenter="() => showTooltip(lt)"
+            @mouseleave="nukeTooltip"
+        />
     </template>
     </aside>
+    <DynamicTooltip
+        v-if="isTooltip"
+        :content="tooltipContent"
+        :parent="thisApp"
+        :show="true"
+        :backgroundColor="isDarkMode ? '#1A1A1A' : '#FFFFFF'"
+        :color="isDarkMode ? '#CCCCCC' : '#1A1A1A'"
+        maxWidth="400px"
+    />
 </template>
