@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon, MoodSmileIcon, CircleTriangleIcon, TemperatureIcon, PlaystationCircleIcon, LoaderIcon, Tallymark4Icon, ChartDotsIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
+import LinkTooltip from "../components/LinkTooltip.vue";
 
 const router = useRouter();
 
@@ -32,6 +33,219 @@ function isSelected(route) {
 function scrollToTop() {
     window.scrollTo({ top: 0});
 }
+
+const smallMenu = ref([
+    {
+        route: '/docs#vue-ui-xy',
+        icon: 'ChartHistogramIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiXy',
+    },
+    {
+        route: '/docs#vue-ui-donut',
+        icon: 'ChartDonut3Icon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiDonut',
+    },
+    {
+        route: '/docs#vue-ui-waffle',
+        icon: 'LayoutGridIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiWaffle',
+    },
+    {
+        route: '/docs#vue-ui-radar',
+        icon: 'ChartRadarIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiRadar',
+    },
+    {
+        route: '/docs#vue-ui-quadrant',
+        icon: 'PlusIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiQuadrant',
+    },
+    {
+        route: '/docs#vue-ui-gauge',
+        icon: 'GaugeIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiGauge',
+    },
+    {
+        route: '/docs#vue-ui-wheel',
+        icon: 'LoaderIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiWheel',
+    },
+    {
+        route: '/docs#vue-ui-tiremarks',
+        icon: 'Tallymark4Icon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiTiremarks',
+    },
+    {
+        route: '/docs#vue-ui-chestnut',
+        icon: 'BinaryTree2Icon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiChestnut',
+    },
+    {
+        route: '/docs#vue-ui-onion',
+        icon: 'ChartArcs3Icon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiOnion',
+    },
+    {
+        route: '/docs#vue-ui-vertical-bar',
+        icon: 'ChartBarIcon',
+        cssClasses: 'rotate-90',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiVerticalBar',
+    },
+    {
+        route: '/docs#vue-ui-heatmap',
+        icon: 'LayoutGridIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiHeatmap',
+    },
+    {
+        route: '/docs#vue-ui-scatter',
+        icon: 'ChartBubbleIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiScatter',
+    },
+    {
+        route: '/docs#vue-ui-candlestick',
+        icon: 'ChartCandleIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiCandlestick',
+    },
+    {
+        route: '/docs#vue-ui-age-pyramid',
+        icon: 'PyramidIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiAgePyramid',
+    },
+    {
+        route: '/docs#vue-ui-relation-circle',
+        icon: 'CircleTriangleIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiRelationCircle',
+    },
+    {
+        route: '/docs#vue-ui-thermometer',
+        icon: 'TemperatureIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiThermometer',
+    },
+    {
+        route: '/docs#vue-ui-rings',
+        icon: 'PlaystationCircleIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiRings',
+    },
+    {
+        route: '/docs#vue-ui-donut-evolution',
+        icon: 'ChartDotsIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiDonutEvolution',
+    },
+    {
+        route: '/docs#vue-ui-sparkline',
+        icon: 'ChartLineIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiSparkline',
+    },
+    {
+        route: '/docs#vue-ui-sparkbar',
+        icon: 'ChartBarIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiSparkbar',
+    },
+    {
+        route: '/docs#vue-ui-sparkstackbar',
+        icon: 'ChartBarIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiSparkStackbar',
+    },
+    {
+        route: '/docs#vue-ui-sparkhistogram',
+        icon: 'ChartBarIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiSparkHistogram',
+    },
+    {
+        route: '/docs#vue-ui-table',
+        icon: 'TableIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiTable',
+    },
+    {
+        route: '/docs#vue-ui-rating',
+        icon: 'StarIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiRating',
+    },
+    {
+        route: '/docs#vue-ui-smiley',
+        icon: 'MoodSmileIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiSmiley',
+    },
+    {
+        route: '/docs#vue-ui-screenshot',
+        icon: 'ScreenshotIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiScreenshot',
+    },
+    {
+        route: '/docs#vue-ui-skeleton',
+        icon: 'SkullIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiSkeleton',
+    },
+    {
+        route: '/docs#vue-ui-dashboard',
+        icon: 'LayoutDashboardIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiDashboard',
+    },
+    {
+        route: '/docs#vue-ui-annotator',
+        icon: 'EditIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'VueUiAnnotator',
+    },
+])
 
 </script>
 
@@ -151,97 +365,11 @@ function scrollToTop() {
         </section>
     </template>
     <template v-else>
-            <router-link to="/docs#vue-ui-xy" >
-                <div class="-ml-2 my-2 mt-12"><ChartHistogramIcon :class="`${isSelected('/docs#vue-ui-xy') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-xy') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-donut" >
-                <div class="-ml-2 my-2"><ChartDonut3Icon :class="`${isSelected('/docs#vue-ui-donut') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-donut') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-waffle" >
-                <div class="-ml-2 my-2"><LayoutGridIcon :class="`${isSelected('/docs#vue-ui-waffle') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-waffle') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-radar" >
-                <div class="-ml-2 my-2"><ChartRadarIcon :class="`${isSelected('/docs#vue-ui-radar') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-radar') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-quadrant" >
-                <div class="-ml-2 my-2"><PlusIcon :class="`${isSelected('/docs#vue-ui-quadrant') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-quadrant') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-gauge" >
-                <div class="-ml-2 my-2"><GaugeIcon :class="`${isSelected('/docs#vue-ui-gauge') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-gauge') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-wheel" >
-                <div class="-ml-2 my-2"><LoaderIcon :class="`${isSelected('/docs#vue-ui-wheel') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-wheel') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-tiremarks" >
-                <div class="-ml-2 my-2"><Tallymark4Icon :class="`${isSelected('/docs#vue-ui-tiremarks') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-tiremarks') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-chestnut" >
-                <div class="-ml-2 my-2"><BinaryTree2Icon :class="`-rotate-90 ${isSelected('/docs#vue-ui-chestnut') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-chestnut') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-onion" >
-                <div class="-ml-2 my-2"><ChartArcs3Icon :class="`${isSelected('/docs#vue-ui-onion') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-onion') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-vertical-bar" >
-                <div class="-ml-2 my-2"><ChartBarIcon :class="`rotate-90 ${isSelected('/docs#vue-ui-vertical-bar') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-vertical-bar') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-heatmap" >
-                <div class="-ml-2 my-2"><LayoutGridIcon :class="`${isSelected('/docs#vue-ui-heatmap') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-heatmap') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-scatter" >
-                <div class="-ml-2 my-2"><ChartBubbleIcon :class="`${isSelected('/docs#vue-ui-scatter') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-scatter') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-candlestick" >
-                <div class="-ml-2 my-2"><ChartCandleIcon :class="`${isSelected('/docs#vue-ui-candlestick') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-candlestick') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-age-pyramid" >
-                <div class="-ml-2 my-2"><PyramidIcon :class="`${isSelected('/docs#vue-ui-age-pyramid') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-age-pyramid') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-relation-circle" >
-                <div class="-ml-2 my-2"><CircleTriangleIcon :class="`${isSelected('/docs#vue-ui-relation-circle') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-relation-circle') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-thermometer" >
-                <div class="-ml-2 my-2"><TemperatureIcon :class="`${isSelected('/docs#vue-ui-thermometer') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-thermometer') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-rings" >
-                <div class="-ml-2 my-2"><PlaystationCircleIcon :class="`${isSelected('/docs#vue-ui-rings') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-rings') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-donut-evolution" >
-                <div class="-ml-2 my-2"><ChartDotsIcon :class="`${isSelected('/docs#vue-ui-donut-evolution') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-donut-evolution') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-sparkline" >
-                <div class="-ml-2 my-2"><ChartLineIcon :class="`${isSelected('/docs#vue-ui-sparkline') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-sparkline') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-sparkbar" >
-                <div class="-ml-2 my-2"><ChartBarIcon :class="`${isSelected('/docs#vue-ui-sparkbar') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-sparkbar') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-sparkstackbar" >
-                <div class="-ml-2 my-2"><ChartBarIcon :class="`${isSelected('/docs#vue-ui-sparkstackbar') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-sparkstackbar') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-sparkhistogram" >
-                <div class="-ml-2 my-2"><ChartBarIcon :class="`${isSelected('/docs#vue-ui-sparkhistogram') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-sparkhistogram') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-table">
-                <div class="-ml-2 my-2"><TableIcon :class="`${isSelected('/docs#vue-ui-table') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-table') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-rating">
-                <div class="-ml-2 my-2"><StarIcon :class="`${isSelected('/docs#vue-ui-rating') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-rating') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-smiley">
-                <div class="-ml-2 my-2"><MoodSmileIcon :class="`${isSelected('/docs#vue-ui-smiley') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-smiley') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-screenshot">
-                <div class="-ml-2 my-2"><ScreenshotIcon :class="`${isSelected('/docs#vue-ui-screenshot') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-screenshot') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-skeleton">
-                <div class="-ml-2 my-2"><SkullIcon :class="`${isSelected('/docs#vue-ui-skeleton') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-skeleton') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-dashboard">
-                <div class="-ml-2 my-2"><LayoutDashboardIcon  :class="`${isSelected('/docs#vue-ui-dashboard') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-dashboard') ? 2 : 1"/></div>
-            </router-link>
-            <router-link to="/docs#vue-ui-annotator">
-                <div class="-ml-2 my-2"><EditIcon  :class="`${isSelected('/docs#vue-ui-annotator') ? 'text-app-blue' : 'text-black dark:text-gray-400'}`" :stroke-width="isSelected('/docs#vue-ui-annotator') ? 2 : 1"/></div>
-            </router-link>
-
+            <LinkTooltip 
+                v-for="(lt, i) in smallMenu"
+                :index="i"
+                v-bind="lt"
+            />
     </template>
     </aside>
 </template>

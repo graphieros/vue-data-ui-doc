@@ -1,2 +1,4 @@
 Add button to toggle show options dynamically ?
 With tooltip information
+
+add tooltips on menu items when folded
