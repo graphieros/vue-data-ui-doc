@@ -1,5 +1,19 @@
 [
     {
+        "version": "v 1.9.36",
+        "date": "2023-12-25",
+        "updates": [
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Minor improvements"
+            },
+            {
+                "component": "",
+                "description": "Improve test coverage"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.35",
         "date": "2023-12-24",
         "updates": [
