@@ -10,6 +10,18 @@ const key = ref(0);
 const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
 
+const currentShape = ref('square');
+
+const shapes = ref([
+  "circle",
+  "triangle",
+  "square",
+  "diamond",
+  "pentagon",
+  "hexagon",
+  "star"
+]);
+
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
         key.value += 1;
@@ -121,6 +133,7 @@ const config = ref({
       }
     },
     bars: {
+      shape: currentShape.value,
       strokeWidth: 0,
       colors: {
         positive: "#5f8bee",
@@ -139,7 +152,8 @@ const config = ref({
         bold: true,
         rounding: 1,
         prefix: "",
-        suffix: ""
+        suffix: "",
+        offsetY: -4
       },
       valueLabel: {
         fontSize: 24,
@@ -191,6 +205,7 @@ const darkModeConfig = ref({
       }
     },
     bars: {
+      shape: currentShape.value,
       strokeWidth: 0,
       colors: {
         positive: "#5f8bee",
@@ -209,7 +224,8 @@ const darkModeConfig = ref({
         bold: true,
         rounding: 1,
         prefix: "",
-        suffix: ""
+        suffix: "",
+        offsetY: -4
       },
       valueLabel: {
         fontSize: 24,
@@ -442,6 +458,7 @@ const <span class="text-black dark:text-app-blue">config</span> = {
             }
         },
         bars: {
+            shape: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.bars.shape" @change="forceChartUpdate"><option v-for="shape in shapes">{{ shape }}</option></select><select v-else v-model="mutableConfig.style.bars.shape" @change="forceChartUpdate"><option v-for="shape in shapes">{{ shape }}</option></select>
             strokeWidth: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.bars.strokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.bars.strokeWidth">, (default: 0)
             colors: {
                 positive: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.bars.colors.positive"><input v-else type="color" v-model="mutableConfig.style.bars.colors.positive">, (default: "#3366cc")
@@ -461,6 +478,7 @@ const <span class="text-black dark:text-app-blue">config</span> = {
                 rounding: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.labels.value.rounding"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.labels.value.rounding">, (default: 1)
                 prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.labels.value.prefix"><input v-else type="text" v-model="mutableConfig.style.labels.value.prefix">, (default: "")
                 suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.labels.value.suffix"><input v-else type="text" v-model="mutableConfig.style.labels.value.suffix">, (default: "")
+                offsetY: <input v-if="isDarkMode" type="number" v-model="mutableConfigDarkMode.style.labels.value.offsetY"><input v-else type="number" v-model="mutableConfig.style.labels.value.offsetY">, (default: 0)
             },
             valueLabel: {
                 fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.labels.valueLabel.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.labels.valueLabel.fontSize">, (default: 14)

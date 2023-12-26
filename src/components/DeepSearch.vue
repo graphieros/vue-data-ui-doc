@@ -121,6 +121,7 @@ function formatString(str) {
 
 function useModal(state) {
   const dialog = document.getElementById("searchDialog");
+  isClosing.value = false;
   if (!dialog) return;
 
   if (state === "open") {
@@ -128,8 +129,12 @@ function useModal(state) {
     canShowOutside.value = false;
     showSuggestions.value = false;
   } else {
-    dialog.close();
-    canShowOutside.value = true;
+    isClosing.value = true;
+
+    setTimeout(() => {
+        dialog.close();
+        canShowOutside.value = true;
+    }, 150)
   }
   selectedIndex.value = -1;
 }
@@ -225,7 +230,7 @@ onUnmounted(() => {
   </div>
   <dialog
     id="searchDialog"
-    class="glass fixed h-screen max-h-[600px] w-full max-w-[800px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-gray-700"
+    :class="`${isClosing ? 'is-closing' : ''} glass fixed h-screen max-h-[600px] w-full max-w-[800px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-gray-700`"
   >
     <div class="z-10 w-full text-2xl sticky top-0 font-black">
       <div class="flex flex-row gap-2 place-items-center">
@@ -363,10 +368,10 @@ onUnmounted(() => {
 <style>
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.3);
-  animation: backdrop-appear 0.2s ease-in forwards;
+  animation: backdrop-appear 0.15s ease-in forwards;
 }
 dialog {
-  animation: dialog-appear 0.2s ease-in forwards;
+  animation: dialog-appear 0.15s ease-in forwards;
 }
 
 .glass {
@@ -392,5 +397,20 @@ dialog {
   to {
     opacity: 1;
   }
+}
+
+.is-closing {
+    animation: close-dialog 150ms ease-out;
+}
+
+@keyframes close-dialog {
+    from {
+        transform: translateY(0) scale(1, 1);
+        opacity: 1
+    }
+    to {
+        transform: translateY(5px) scale(0.95, 0.95);
+        opacity: 0;
+    }
 }
 </style>

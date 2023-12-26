@@ -49,12 +49,14 @@ const dataset = computed(() => {
   {
     name: "Cluster 1",
     values: scat1.value,
-    color: "#42d392"
+    color: "#42d392",
+    shape: "star"
   },
   {
     name: "Cluster 2",
     values: scat2.value,
-    color: "#ff6400"
+    color: "#ff6400",
+    shape: "triangle"
   }
 ]});
 
@@ -80,7 +82,7 @@ const darkModeConfig = ref({
         strokeWidth: 1
       },
       plots: {
-        radius: 2,
+        radius: 3,
         stroke: "#1A1A1A",
         strokeWidth: 0.3,
         opacity: 0.6,
@@ -204,7 +206,7 @@ const config = ref({
         strokeWidth: 1
       },
       plots: {
-        radius: 2,
+        radius: 3,
         stroke: "#F3F4F6",
         strokeWidth: 0.3,
         opacity: 0.6,
@@ -380,7 +382,8 @@ function fixChart() {
                 { 
                     x: number; 
                     y: number; 
-                    name: string; <span class="text-gray-500">// {{ translations.docs.comments.optional[store.lang] }}</span>
+                    name?: string; <span class="text-gray-500">// {{ translations.docs.comments.optional[store.lang] }}</span>
+                    shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star "<span class="text-gray-500">// {{ translations.docs.comments.optional[store.lang] }}</span>
                 },
                 {...}
             ]

@@ -1,5 +1,29 @@
 [
     {
+        "version": "v 1.9.39",
+        "date": "2023-12-26",
+        "updates": [
+            {
+                "component": "VueUiSparkHistogram",
+                "description": "Add offsetY config option to value label"
+            }
+        ]
+    },
+    {
+        "version": "v 1.9.38",
+        "date": "2023-12-26",
+        "updates": [
+            {
+                "component": "VueUiSparkHistogram",
+                "description": "Add shape option"
+            },
+            {
+                "component": "VueUiScatter",
+                "description": "Add shape dataset option"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.37",
         "date": "2023-12-25",
         "updates": [

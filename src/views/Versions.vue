@@ -242,9 +242,10 @@ const histoConfig = computed(() => {
       }
     },
     bars: {
+      shape: "star",
       strokeWidth: 0,
       colors: {
-        positive: "#5f8bee",
+        positive: "#42d392",
         negative: "#ff6400",
         gradient: {
           show: true
@@ -260,7 +261,8 @@ const histoConfig = computed(() => {
         bold: true,
         rounding: 1,
         prefix: "",
-        suffix: ""
+        suffix: "",
+        offsetY: -6
       },
       valueLabel: {
         fontSize: 24,
