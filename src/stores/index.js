@@ -377,6 +377,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        icon: {
+                            en: "A collection of handcrafted icons, ideal if you choose to hide the built-in user options menu and make your own.",
+                            fr: "Une collection d'icônes fabriquées à la main, idéale si vous choisissez de masquer le menu d'options utilisateur intégré et de créer le vôtre.",
+                            pt: "Uma coleção de ícones feitos à mão, ideal se você optar por ocultar o menu de opções do usuário integrado e criar o seu próprio.",
+                            de: "Eine Sammlung handgefertigter Symbole, ideal, wenn Sie das integrierte Benutzeroptionsmenü ausblenden und Ihr eigenes erstellen möchten.",
+                            zh: "手工制作的图标集合，如果您选择隐藏内置用户选项菜单并制作自己的图标，那么这是理想的选择。",
+                            jp: "手作りのアイコンのコレクション。組み込みのユーザー オプション メニューを非表示にして独自のアイコンを作成する場合に最適です。",
+                            es: "Una colección de íconos hechos a mano, ideal si eliges ocultar el menú de opciones de usuario integrado y crear el tuyo propio."
+                        },
                         donutEvolution: {
                             en: "A fusion of line and donut charts, to visualize growth and proportions in one go",
                             fr: "Une fusion de graphiques en courbes et en anneaux, pour visualiser la croissance et les proportions en une seule fois",

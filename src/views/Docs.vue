@@ -33,6 +33,7 @@ import DocVueUiRings from "../components/docs/DocVueUIRings.vue";
 import DocVueUiWheel from "../components/docs/DocVueUiWheel.vue";
 import DocVueUiTiremarks from "../components/docs/DocVueUiTiremarks.vue";
 import DocVueUiDonutEvolution from "../components/docs/DocVueUiDonutEvolution.vue";
+import DocVueUiIcon from "../components/docs/DocVueUiIcon.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 
 import { CheckIcon } from "vue-tabler-icons";
@@ -291,6 +292,13 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-annotator",
         type: "tool"
     },
+    {
+        name: "Icon",
+        icon: "WashDryIcon",
+        tooltip: translations.value.docs.tooltips.icon[store.lang],
+        link: "/docs#vue-ui-icon",
+        type: "tool"
+    },
 ])
 
 </script>
@@ -334,6 +342,7 @@ const menuItems = computed(() => [
             <DocVueUiWheel v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-wheel'"/>
             <DocVueUiTiremarks v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-tiremarks'"/>
             <DocVueUiDonutEvolution v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-donut-evolution'"/>
+            <DocVueUiIcon v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-icon'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">

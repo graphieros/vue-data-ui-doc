@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon, MoodSmileIcon, CircleTriangleIcon, TemperatureIcon, PlaystationCircleIcon, LoaderIcon, Tallymark4Icon, ChartDotsIcon } from "vue-tabler-icons";
+import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon, MoodSmileIcon, CircleTriangleIcon, TemperatureIcon, PlaystationCircleIcon, LoaderIcon, Tallymark4Icon, ChartDotsIcon, WashDryIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import LinkTooltip from "../components/LinkTooltip.vue";
 import DynamicTooltip from "./DynamicTooltip.vue";
@@ -278,6 +278,13 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: 'Annotator',
     },
+    {
+        route: '/docs#vue-ui-icon',
+        icon: 'WashDryIcon',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Icon',
+    },
 ])
 
 const isTooltip = ref(false);
@@ -411,6 +418,9 @@ const thisApp = computed(() => {
             </router-link>
             <router-link to="/docs#vue-ui-annotator" @click="scrollToTop">
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-annotator') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><EditIcon v-if="isSelected('/docs#vue-ui-annotator')" class="-ml-6"/><EditIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-annotator')"/>  <span class="text-gray-500">VueUi</span>Annotator</div>
+            </router-link>
+            <router-link to="/docs#vue-ui-icon" @click="scrollToTop">
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-icon') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><WashDryIcon v-if="isSelected('/docs#vue-ui-icon')" class="-ml-6"/><WashDryIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-icon')"/>  <span class="text-gray-500">VueUi</span>Icon</div>
             </router-link>
         </section>
     </template>
