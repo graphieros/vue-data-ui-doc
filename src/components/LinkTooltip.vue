@@ -1,5 +1,10 @@
 <script setup>
-import { defineAsyncComponent } from 'vue';
+import { computed } from "vue";
+import { useMainStore } from "../stores";
+const store = useMainStore();
+const isDarkMode = computed(() => {
+    return store.isDarkMode;
+});
 
 const props = defineProps({
     isSelected: Function,
@@ -11,8 +16,6 @@ const props = defineProps({
 })
 
 
-const ico = defineAsyncComponent(() => import("vue-tabler-icons").then(module => module[props.icon]))
-
 function scrollToTop() {
     window.scrollTo({ top: 0});
 }
@@ -22,7 +25,7 @@ function scrollToTop() {
 <template>
     <div class="overflow-visible relative">
         <router-link :to="route" @click="scrollToTop">
-            <div :class="`-ml-2 my-2 ${index === 0 ? 'mt-12' : ''}`"><component :is="ico" :class="`${cssClasses} ${isSelected(route) ? 'text-app-blue' : 'text-black dark:text-gray-400'} hover:text-app-blue dark:hover:text-app-blue`" :stroke-width="isSelected(route) ? 2 : 1"/></div>
+            <div :class="`-ml-2 my-2 ${index === 0 ? 'mt-12' : ''}`"><VueUiIcon :name="icon" :size="20" :stroke="isSelected(route) ? 'rgb(95, 139, 238)' : isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" :class="`${cssClasses} hover:stroke-app-blue dark:hover:stroke-app-blue`" :strokeWidth="isSelected(route) ? 2 : 1"/></div>
         </router-link>
     </div>
 </template>

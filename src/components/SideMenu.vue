@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, ChartHistogramIcon, ChartDonut3Icon, LayoutGridIcon, ChartRadarIcon, PlusIcon, GaugeIcon, ScreenshotIcon, ChartBarIcon, ChartArcs3Icon, ChartBubbleIcon, ChartCandleIcon, PyramidIcon, ChartLineIcon, TableIcon, StarIcon, SkullIcon, BinaryTree2Icon, LayoutDashboardIcon, EditIcon, MoodSmileIcon, CircleTriangleIcon, TemperatureIcon, PlaystationCircleIcon, LoaderIcon, Tallymark4Icon, ChartDotsIcon, WashDryIcon } from "vue-tabler-icons";
+import { ChevronLeftIcon, ChevronRightIcon, CaretRightIcon, LayoutDashboardIcon, EditIcon, PlaystationCircleIcon, ChartDotsIcon, WashDryIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import LinkTooltip from "../components/LinkTooltip.vue";
 import DynamicTooltip from "./DynamicTooltip.vue";
@@ -44,7 +44,7 @@ function scrollToTop() {
 const smallMenu = ref([
     {
         route: '/docs#vue-ui-xy',
-        icon: 'ChartHistogramIcon',
+        icon: 'chartLine',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Xy',
@@ -52,7 +52,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-donut',
-        icon: 'ChartDonut3Icon',
+        icon: 'chartDonut',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Donut',
@@ -60,7 +60,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-waffle',
-        icon: 'LayoutGridIcon',
+        icon: 'chartWaffle',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Waffle',
@@ -68,7 +68,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-radar',
-        icon: 'ChartRadarIcon',
+        icon: 'chartRadar',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Radar',
@@ -76,7 +76,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-quadrant',
-        icon: 'PlusIcon',
+        icon: 'chartQuadrant',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Quadrant',
@@ -84,7 +84,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-gauge',
-        icon: 'GaugeIcon',
+        icon: 'chartGauge',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Gauge',
@@ -92,7 +92,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-wheel',
-        icon: 'LoaderIcon',
+        icon: 'chartWheel',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Wheel',
@@ -100,7 +100,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-tiremarks',
-        icon: 'Tallymark4Icon',
+        icon: 'chartTiremarks',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Tiremarks',
@@ -108,7 +108,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-chestnut',
-        icon: 'BinaryTree2Icon',
+        icon: 'chartChestnut',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Chestnut',
@@ -116,7 +116,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-onion',
-        icon: 'ChartArcs3Icon',
+        icon: 'chartOnion',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Onion',
@@ -124,15 +124,15 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-vertical-bar',
-        icon: 'ChartBarIcon',
-        cssClasses: 'rotate-90',
+        icon: 'chartVerticalBar',
+        cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'VerticalBar',
         thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href
     },
     {
         route: '/docs#vue-ui-heatmap',
-        icon: 'LayoutGridIcon',
+        icon: 'chartHeatmap',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Heatmap',
@@ -140,7 +140,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-scatter',
-        icon: 'ChartBubbleIcon',
+        icon: 'chartScatter',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Scatter',
@@ -148,7 +148,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-candlestick',
-        icon: 'ChartCandleIcon',
+        icon: 'chartCandlestick',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Candlestick',
@@ -156,7 +156,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-age-pyramid',
-        icon: 'PyramidIcon',
+        icon: 'chartAgePyramid',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'AgePyramid',
@@ -164,7 +164,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-relation-circle',
-        icon: 'CircleTriangleIcon',
+        icon: 'chartRelationCircle',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'RelationCircle',
@@ -172,7 +172,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-thermometer',
-        icon: 'TemperatureIcon',
+        icon: 'chartThermometer',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Thermometer',
@@ -180,7 +180,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-rings',
-        icon: 'PlaystationCircleIcon',
+        icon: 'chartRings',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Rings',
@@ -188,7 +188,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-donut-evolution',
-        icon: 'ChartDotsIcon',
+        icon: 'chartDonutEvolution',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'DonutEvolution',
@@ -196,7 +196,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-sparkline',
-        icon: 'ChartLineIcon',
+        icon: 'chartLine',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Sparkline',
@@ -204,7 +204,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-sparkbar',
-        icon: 'ChartBarIcon',
+        icon: 'chartVerticalBar',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Sparkbar',
@@ -212,7 +212,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-sparkstackbar',
-        icon: 'ChartBarIcon',
+        icon: 'chartSparkStackbar',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'SparkStackbar',
@@ -220,7 +220,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-sparkhistogram',
-        icon: 'ChartBarIcon',
+        icon: 'chartSparkHistogram',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'SparkHistogram',
@@ -228,7 +228,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-table',
-        icon: 'TableIcon',
+        icon: 'chartTable',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Table',
@@ -236,7 +236,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-rating',
-        icon: 'StarIcon',
+        icon: 'star',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Rating',
@@ -244,7 +244,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-smiley',
-        icon: 'MoodSmileIcon',
+        icon: 'smiley',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Smiley',
@@ -252,35 +252,35 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-screenshot',
-        icon: 'ScreenshotIcon',
+        icon: 'screenshot',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Screenshot',
     },
     {
         route: '/docs#vue-ui-skeleton',
-        icon: 'SkullIcon',
+        icon: 'skeleton',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Skeleton',
     },
     {
         route: '/docs#vue-ui-dashboard',
-        icon: 'LayoutDashboardIcon',
+        icon: 'dashboard',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Dashboard',
     },
     {
         route: '/docs#vue-ui-annotator',
-        icon: 'EditIcon',
+        icon: 'annotator',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Annotator',
     },
     {
         route: '/docs#vue-ui-icon',
-        icon: 'WashDryIcon',
+        icon: 'smiley',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Icon',
@@ -318,109 +318,109 @@ const thisApp = computed(() => {
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Charts</div>
             <router-link to="/docs#vue-ui-xy" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-xy') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-xy')" class="-ml-6"/> <ChartHistogramIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-xy')"/> <span class="text-gray-500">VueUi</span>Xy</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-xy') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-xy')" class="-ml-6"/> <VueUiIcon :size="18" name="chartLine" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-xy')"/> <span class="text-gray-500">VueUi</span>Xy</div>
             </router-link>
             <router-link to="/docs#vue-ui-donut" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-donut') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-donut')" class="-ml-6"/> <ChartDonut3Icon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-donut')"/> <span class="text-gray-500">VueUi</span>Donut</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-donut') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-donut')" class="-ml-6"/> <VueUiIcon :size="18" name="chartDonut" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-donut')"/>  <span class="text-gray-500">VueUi</span>Donut</div>
             </router-link>
             <router-link to="/docs#vue-ui-waffle" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-waffle') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-waffle')" class="-ml-6"/><LayoutGridIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-waffle')"/> <span class="text-gray-500">VueUi</span>Waffle</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-waffle') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-waffle')" class="-ml-6"/><VueUiIcon :size="18" name="chartWaffle" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-waffle')"/>  <span class="text-gray-500">VueUi</span>Waffle</div>
             </router-link>
             <router-link to="/docs#vue-ui-radar" @click="scrollToTop" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-radar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-radar')" class="-ml-6"/><ChartRadarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-radar')"/> <span class="text-gray-500">VueUi</span>Radar</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-radar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-radar')" class="-ml-6"/><VueUiIcon :size="18" name="chartRadar" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-radar')"/> <span class="text-gray-500">VueUi</span>Radar</div>
             </router-link>
             <router-link to="/docs#vue-ui-quadrant" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-quadrant') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-quadrant')" class="-ml-6"/><PlusIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-quadrant')"/>  <span class="text-gray-500">VueUi</span>Quadrant</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-quadrant') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-quadrant')" class="-ml-6"/><VueUiIcon :size="18" name="chartQuadrant" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-quadrant')"/>  <span class="text-gray-500">VueUi</span>Quadrant</div>
             </router-link>
             <router-link to="/docs#vue-ui-gauge" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-gauge') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-gauge')" class="-ml-6"/><GaugeIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-gauge')"/>  <span class="text-gray-500">VueUi</span>Gauge</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-gauge') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-gauge')" class="-ml-6"/><VueUiIcon :size="18" name="chartGauge" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-gauge')"/>  <span class="text-gray-500">VueUi</span>Gauge</div>
             </router-link>
             <router-link to="/docs#vue-ui-wheel" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-wheel') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-wheel')" class="-ml-6"/><LoaderIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-wheel')"/>  <span class="text-gray-500">VueUi</span>Wheel</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-wheel') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-wheel')" class="-ml-6"/><VueUiIcon :size="18" name="chartWheel" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-wheel')"/>  <span class="text-gray-500">VueUi</span>Wheel</div>
             </router-link>
             <router-link to="/docs#vue-ui-tiremarks" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-tiremarks') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-tiremarks')" class="-ml-6"/><Tallymark4Icon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-tiremarks')"/>  <span class="text-gray-500">VueUi</span>Tiremarks</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-tiremarks') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-tiremarks')" class="-ml-6"/><VueUiIcon :size="18" name="chartTiremarks" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-tiremarks')"/>  <span class="text-gray-500">VueUi</span>Tiremarks</div>
             </router-link>
             <router-link to="/docs#vue-ui-chestnut" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-chestnut') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-chestnut')" class="-ml-6"/><BinaryTree2Icon class="text-gray-800 dark:text-gray-400 -rotate-90" stroke-width="1" v-if="!isSelected('/docs#vue-ui-chestnut')"/>  <span class="text-gray-500">VueUi</span>Chestnut</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-chestnut') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-chestnut')" class="-ml-6"/><VueUiIcon :size="18" name="chartChestnut" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-chestnut')"/>  <span class="text-gray-500">VueUi</span>Chestnut</div>
             </router-link>
             <router-link to="/docs#vue-ui-onion" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-onion') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-onion')" class="-ml-6"/><ChartArcs3Icon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-onion')"/>  <span class="text-gray-500">VueUi</span>Onion</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-onion') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-onion')" class="-ml-6"/><VueUiIcon :size="18" name="chartOnion" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-onion')"/>  <span class="text-gray-500">VueUi</span>Onion</div>
             </router-link>
             <router-link to="/docs#vue-ui-vertical-bar" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-vertical-bar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-vertical-bar')" class="-ml-6"/><ChartBarIcon class="text-gray-800 dark:text-gray-400 rotate-90" stroke-width="1" v-if="!isSelected('/docs#vue-ui-vertical-bar')"/>  <span class="text-gray-500">VueUi</span>VerticalBar</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-vertical-bar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-vertical-bar')" class="-ml-6"/><VueUiIcon :size="18" name="chartVerticalBar" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-vertical-bar')"/>  <span class="text-gray-500">VueUi</span>VerticalBar</div>
             </router-link>
             <router-link to="/docs#vue-ui-heatmap" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-heatmap') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-heatmap')" class="-ml-6"/><LayoutGridIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-heatmap')"/>  <span class="text-gray-500">VueUi</span>Heatmap</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-heatmap') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-heatmap')" class="-ml-6"/><VueUiIcon :size="18" name="chartHeatmap" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-heatmap')"/>  <span class="text-gray-500">VueUi</span>Heatmap</div>
             </router-link>
             <router-link to="/docs#vue-ui-scatter" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-scatter') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-scatter')" class="-ml-6"/><ChartBubbleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-scatter')"/>  <span class="text-gray-500">VueUi</span>Scatter</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-scatter') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-scatter')" class="-ml-6"/><VueUiIcon :size="18" name="chartScatter" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-scatter')"/>  <span class="text-gray-500">VueUi</span>Scatter</div>
             </router-link>
             <router-link to="/docs#vue-ui-candlestick" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-candlestick') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-candlestick')" class="-ml-6"/><ChartCandleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-candlestick')"/>  <span class="text-gray-500">VueUi</span>Candlestick</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-candlestick') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-candlestick')" class="-ml-6"/><VueUiIcon :size="18" name="chartCandlestick" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-candlestick')"/>  <span class="text-gray-500">VueUi</span>Candlestick</div>
             </router-link>
             <router-link to="/docs#vue-ui-age-pyramid" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-age-pyramid') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-age-pyramid')" class="-ml-6"/><PyramidIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-age-pyramid')"/>  <span class="text-gray-500">VueUi</span>AgePyramid</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-age-pyramid') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-age-pyramid')" class="-ml-6"/><VueUiIcon :size="18" name="chartAgePyramid" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-age-pyramid')"/>  <span class="text-gray-500">VueUi</span>AgePyramid</div>
             </router-link>
             <router-link to="/docs#vue-ui-relation-circle" @click="scrollToTop" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-relation-circle') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-relation-circle')" class="-ml-6"/><CircleTriangleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-relation-circle')"/>  <span class="text-gray-500">VueUi</span>RelationCircle</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-relation-circle') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-relation-circle')" class="-ml-6"/><VueUiIcon :size="18" name="chartRelationCircle" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-relation-circle')"/>  <span class="text-gray-500">VueUi</span>RelationCircle</div>
             </router-link>
             <router-link to="/docs#vue-ui-thermometer" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-thermometer') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-thermometer')" class="-ml-6"/><TemperatureIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-thermometer')"/>  <span class="text-gray-500">VueUi</span>Thermometer</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-thermometer') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-thermometer')" class="-ml-6"/><VueUiIcon :size="18" name="chartThermometer" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-thermometer')"/>  <span class="text-gray-500">VueUi</span>Thermometer</div>
             </router-link>
             <router-link to="/docs#vue-ui-rings" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-rings') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><PlaystationCircleIcon v-if="isSelected('/docs#vue-ui-rings')" class="-ml-6"/><PlaystationCircleIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-rings')"/>  <span class="text-gray-500">VueUi</span>Rings</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-rings') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-rings')" class="-ml-6"/><VueUiIcon :size="18" name="chartRings" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-rings')"/>  <span class="text-gray-500">VueUi</span>Rings</div>
             </router-link>
             <router-link to="/docs#vue-ui-donut-evolution" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-donut-evolution') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><ChartDotsIcon v-if="isSelected('/docs#vue-ui-donut-evolution')" class="-ml-6"/><ChartDotsIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-donut-evolution')"/>  <span class="text-gray-500">VueUi</span>DonutEvolution</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-donut-evolution') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-donut-evolution')" class="-ml-6"/><VueUiIcon :size="18" name="chartDonutEvolution" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-donut-evolution')"/>  <span class="text-gray-500">VueUi</span>DonutEvolution</div>
             </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Mini charts</div>
             <router-link to="/docs#vue-ui-sparkline" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkline') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkline')" class="-ml-6"/><ChartLineIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-sparkline')"/>  <span class="text-gray-500">VueUi</span>Sparkline</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkline') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkline')" class="-ml-6"/><VueUiIcon :size="18" name="chartLine" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-sparkline')"/>  <span class="text-gray-500">VueUi</span>Sparkline</div>
             </router-link>
             <router-link to="/docs#vue-ui-sparkbar" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkbar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkbar')" class="-ml-6"/><ChartBarIcon class="text-gray-800 dark:text-gray-400 rotate-90" stroke-width="1" v-if="!isSelected('/docs#vue-ui-sparkbar')"/>  <span class="text-gray-500">VueUi</span>Sparkbar</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkbar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkbar')" class="-ml-6"/><VueUiIcon :size="18" name="chartVerticalBar" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-sparkbar')"/>  <span class="text-gray-500">VueUi</span>Sparkbar</div>
             </router-link>
             <router-link to="/docs#vue-ui-sparkstackbar" @click="scrollToTop" >
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkstackbar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkstackbar')" class="-ml-6"/><ChartBarIcon class="text-gray-800 dark:text-gray-400 rotate-90" stroke-width="1" v-if="!isSelected('/docs#vue-ui-sparkstackbar')"/>  <span class="text-gray-500">VueUi</span>SparkStackbar</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkstackbar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkstackbar')" class="-ml-6"/><VueUiIcon :size="18" name="chartSparkStackbar" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-sparkstackbar')"/>  <span class="text-gray-500">VueUi</span>SparkStackbar</div>
             </router-link>
             <router-link to="/docs#vue-ui-sparkhistogram" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkhistogram') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkhistogram')" class="-ml-6"/><ChartBarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-sparkhistogram')"/>  <span class="text-gray-500">VueUi</span>SparkHistogram</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkhistogram') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkhistogram')" class="-ml-6"/><VueUiIcon :size="18" name="chartSparkHistogram" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-sparkhistogram')"/>  <span class="text-gray-500">VueUi</span>SparkHistogram</div>
             </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Tables</div>
             <router-link to="/docs#vue-ui-table" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-table') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-table')" class="-ml-6"/><TableIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-table')"/>  <span class="text-gray-500">VueUi</span>Table</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-table') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-table')" class="-ml-6"/><VueUiIcon :size="18" name="chartTable" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-table')"/>  <span class="text-gray-500">VueUi</span>Table</div>
             </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Rating</div>
             <router-link to="/docs#vue-ui-rating" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-rating') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-rating')" class="-ml-6"/><StarIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-rating')"/>  <span class="text-gray-500">VueUi</span>Rating</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-rating') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-rating')" class="-ml-6"/><VueUiIcon :size="18" name="star" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-rating')"/>  <span class="text-gray-500">VueUi</span>Rating</div>
             </router-link>
             <router-link to="/docs#vue-ui-smiley" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-smiley') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-smiley')" class="-ml-6"/><MoodSmileIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-smiley')"/>  <span class="text-gray-500">VueUi</span>Smiley</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-smiley') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-smiley')" class="-ml-6"/><VueUiIcon :size="18" name="smiley" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-smiley')"/>  <span class="text-gray-500">VueUi</span>Smiley</div>
             </router-link>
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Utilities</div>
             <router-link to="/docs#vue-ui-screenshot" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-screenshot') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-screenshot')" class="-ml-6"/><ScreenshotIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-screenshot')"/>  <span class="text-gray-500">VueUi</span>Screenshot</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-screenshot') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-screenshot')" class="-ml-6"/><VueUiIcon :size="18" name="screenshot" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-screenshot')"/>  <span class="text-gray-500">VueUi</span>Screenshot</div>
             </router-link>
             <router-link to="/docs#vue-ui-skeleton" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-skeleton') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-skeleton')" class="-ml-6"/><SkullIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-skeleton')"/>  <span class="text-gray-500">VueUi</span>Skeleton</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-skeleton') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-skeleton')" class="-ml-6"/><VueUiIcon :size="18" name="skeleton" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-skeleton')"/>  <span class="text-gray-500">VueUi</span>Skeleton</div>
             </router-link>
             <router-link to="/docs#vue-ui-dashboard" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-dashboard') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><LayoutDashboardIcon v-if="isSelected('/docs#vue-ui-dashboard')" class="-ml-6"/><LayoutDashboardIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-dashboard')"/>  <span class="text-gray-500">VueUi</span>Dashboard</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-dashboard') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-dashboard')" class="-ml-6"/><VueUiIcon :size="18" name="dashboard" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-dashboard')"/>  <span class="text-gray-500">VueUi</span>Dashboard</div>
             </router-link>
             <router-link to="/docs#vue-ui-annotator" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-annotator') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><EditIcon v-if="isSelected('/docs#vue-ui-annotator')" class="-ml-6"/><EditIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-annotator')"/>  <span class="text-gray-500">VueUi</span>Annotator</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-annotator') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-annotator')" class="-ml-6"/><VueUiIcon :size="18" name="annotator" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-annotator')"/>  <span class="text-gray-500">VueUi</span>Annotator</div>
             </router-link>
             <router-link to="/docs#vue-ui-icon" @click="scrollToTop">
-                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-icon') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><WashDryIcon v-if="isSelected('/docs#vue-ui-icon')" class="-ml-6"/><WashDryIcon class="text-gray-800 dark:text-gray-400" stroke-width="1" v-if="!isSelected('/docs#vue-ui-icon')"/>  <span class="text-gray-500">VueUi</span>Icon</div>
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-icon') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-icon')" class="-ml-6"/><VueUiIcon :size="18" name="smiley" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-icon')"/>  <span class="text-gray-500">VueUi</span>Icon</div>
             </router-link>
         </section>
     </template>

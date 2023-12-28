@@ -223,7 +223,10 @@ function saveAnnotations({ shapes, lastSelectedShape }) {
 
 <template>
     <div>
-        <h1 class="text-center font-satoshi-bold text-app-blue mb-12 text-2xl">VueUiAnnotator</h1>
+      <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
+            <VueUiIcon name="annotator" stroke="#42d392" :strokeWidth="1.5" />
+            VueUiAnnotator
+        </h1>
         <div class="mx-auto w-full max-w-[400px] text-center mb-4">
             {{ translations.docs.comments.annotator.description[store.lang] }}<br>
         </div>

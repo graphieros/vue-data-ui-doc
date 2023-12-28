@@ -51,10 +51,11 @@ const versionsList = ref([]);
 const versionsUrl = ref('https://vue-data-ui.graphieros.com/releases.json');
 
 const sparklineDataset = ref(generateSparkline())
+const sparklineDataset2 = ref(generateSparkline())
 
 function generateSparkline() {
   const arr = [];
-  for(let i = 0; i < 24; i += 1) {
+  for(let i = 0; i < 12; i += 1) {
     arr.push({
       period: i,
       value: Math.round(Math.random()* 100)
@@ -67,11 +68,17 @@ const timeout = ref(null);
 
 function updateSparkline() {
   const newVal = Math.round(Math.random() * 100);
+  const newVal2 = Math.round(Math.random() * 100);
   sparklineDataset.value.push({
     period: Math.random(),
     value: newVal
   });
-  sparklineDataset.value = sparklineDataset.value.slice(-24);
+  sparklineDataset2.value.push({
+    period: Math.random(),
+    value: newVal2
+  });
+  sparklineDataset.value = sparklineDataset.value.slice(-12);
+  sparklineDataset2.value = sparklineDataset2.value.slice(-12);
   clearTimeout(timeout.value);
   timeout.value = setTimeout(() => {
     requestAnimationFrame(updateSparkline);
@@ -118,11 +125,15 @@ const deviationX = computed(() => {
 })
 
 const sparklineConfig = ref({
+  type: 'bar',
   style: {
     backgroundColor: isDarkMode ? '#0000000' : "#F3F4F6",
     fontFamily: "inherit",
+    bar: {
+      color: "#42d392",
+    },
     line: {
-      color: "#5f8bee",
+      color:'#5f8bee',
       strokeWidth: 3,
       smooth: true
     },
@@ -157,7 +168,7 @@ const sparklineConfig = ref({
       text: ""
     },
     area: {
-      show: true,
+      show: false,
       useGradient: true,
       opacity: 30,
       color: "#5f8bee"
@@ -179,7 +190,8 @@ const sparklineConfig = ref({
       <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${deviationX * 20}deg)`">
         <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[100px] sm:h-[200px] mx-auto drop-shadow-2xl">
         <div class="w-full absolute top-[100%] left-0 -translate-x-[20px] sm:-translate-x-[40px]">
-          <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset" :config="sparklineConfig"/>
+          <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset" :config="sparklineConfig" class="absolute"/>
+          <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset2" :config="{...sparklineConfig, type: 'line'}" class="absolute"/>
           </div>
       </div>
     </div>

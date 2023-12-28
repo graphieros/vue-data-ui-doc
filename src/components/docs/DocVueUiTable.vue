@@ -578,7 +578,10 @@ function copyToClipboard(conf) {
 </script>
 
 <template>
-    <div class="text-center font-satoshi-bold text-app-blue text-2xl mb-2">VueUiTable</div>
+    <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
+            <VueUiIcon name="chartTable" stroke="#42d392" :strokeWidth="1.5" />
+            VueUiTable
+        </h1>
     <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-4 text-center">
             {{ translations.docs.tooltips.table[store.lang] }}
         </p>

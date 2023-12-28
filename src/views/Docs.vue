@@ -58,7 +58,7 @@ function toggleMenu(state) {
 const menuItems = computed(() => [
     {
         name: "Xy",
-        icon: "ChartHistogramIcon",
+        icon: "chartLine",
         tooltip: translations.value.docs.tooltips.xy[store.lang],
         link: "/docs#vue-ui-xy",
         type: "classic",
@@ -66,7 +66,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Donut",
-        icon: "ChartDonut3Icon",
+        icon: "chartDonut",
         tooltip: translations.value.docs.tooltips.donut[store.lang],
         link: "/docs#vue-ui-donut",
         type: "classic",
@@ -74,7 +74,7 @@ const menuItems = computed(() => [
     },
     {
         name: "DonutEvolution",
-        icon: "ChartDotsIcon",
+        icon: "chartDonutEvolution",
         tooltip: translations.value.docs.tooltips.donutEvolution[store.lang],
         link: "/docs#vue-ui-donut-evolution",
         type: "combined",
@@ -82,7 +82,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Waffle",
-        icon: "LayoutGridIcon",
+        icon: "chartWaffle",
         tooltip: translations.value.docs.tooltips.waffle[store.lang],
         link: "/docs#vue-ui-waffle",
         type: "classic",
@@ -90,7 +90,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Rings",
-        icon: "PlaystationCircleIcon",
+        icon: "chartRings",
         tooltip: translations.value.docs.tooltips.rings[store.lang],
         link: "/docs#vue-ui-rings",
         type: "classic",
@@ -98,7 +98,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Radar",
-        icon: "ChartRadarIcon",
+        icon: "chartRadar",
         tooltip: translations.value.docs.tooltips.radar[store.lang],
         link: "/docs#vue-ui-radar",
         type: "classic",
@@ -106,7 +106,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Quadrant",
-        icon: "PlusIcon",
+        icon: "chartQuadrant",
         tooltip: translations.value.docs.tooltips.quadrant[store.lang],
         link: "/docs#vue-ui-quadrant",
         type: "classic",
@@ -114,7 +114,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Gauge",
-        icon: "GaugeIcon",
+        icon: "chartGauge",
         tooltip: translations.value.docs.tooltips.gauge[store.lang],
         link: "/docs#vue-ui-gauge",
         type: "measure",
@@ -122,7 +122,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Wheel",
-        icon: "LoaderIcon",
+        icon: "chartWheel",
         tooltip: translations.value.docs.tooltips.wheel[store.lang],
         link: "/docs#vue-ui-wheel",
         type: "measure",
@@ -130,7 +130,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Tiremarks",
-        icon: "Tallymark4Icon",
+        icon: "chartTiremarks",
         tooltip: translations.value.docs.tooltips.tiremarks[store.lang],
         link: "/docs#vue-ui-tiremarks",
         type: "measure",
@@ -138,7 +138,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Chestnut",
-        icon: "BinaryTree2Icon",
+        icon: "chartChestnut",
         tooltip: translations.value.docs.tooltips.chestnut[store.lang],
         link: "/docs#vue-ui-chestnut",
         type: "combined",
@@ -146,7 +146,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Onion",
-        icon: "ChartArcs3Icon",
+        icon: "chartOnion",
         tooltip: translations.value.docs.tooltips.onion[store.lang],
         link: "/docs#vue-ui-onion",
         type: "classic",
@@ -154,7 +154,7 @@ const menuItems = computed(() => [
     },
     {
         name: "VerticalBar",
-        icon: "ChartBarIcon",
+        icon: "chartVerticalBar",
         tooltip: translations.value.docs.tooltips.verticalBar[store.lang],
         link: "/docs#vue-ui-vertical-bar",
         type: "classic",
@@ -162,7 +162,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Heatmap",
-        icon: "LayoutGridIcon",
+        icon: "chartHeatmap",
         tooltip: translations.value.docs.tooltips.heatmap[store.lang],
         link: "/docs#vue-ui-heatmap",
         type: "classic",
@@ -170,7 +170,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Scatter",
-        icon: "ChartBubbleIcon",
+        icon: "chartScatter",
         tooltip: translations.value.docs.tooltips.scatter[store.lang],
         link: "/docs#vue-ui-scatter",
         type: "classic",
@@ -178,7 +178,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Candlestick",
-        icon: "ChartCandleIcon",
+        icon: "chartCandlestick",
         tooltip: translations.value.docs.tooltips.candlestick[store.lang],
         link: "/docs#vue-ui-candlestick",
         type: "classic",
@@ -186,7 +186,7 @@ const menuItems = computed(() => [
     },
     {
         name: "AgePyramid",
-        icon: "PyramidIcon",
+        icon: "chartAgePyramid",
         tooltip: translations.value.docs.tooltips.agePyramid[store.lang],
         link: "/docs#vue-ui-age-pyramid",
         type: "classic",
@@ -194,7 +194,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Sparkline",
-        icon: "ChartLineIcon",
+        icon: "chartLine",
         tooltip: translations.value.docs.tooltips.sparkline[store.lang],
         link: "/docs#vue-ui-sparkline",
         type: "mini",
@@ -202,7 +202,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Sparkbar",
-        icon: "ChartBarIcon",
+        icon: "chartVerticalBar",
         tooltip: translations.value.docs.tooltips.sparkbar[store.lang],
         link: "/docs#vue-ui-sparkbar",
         type: "mini",
@@ -210,7 +210,7 @@ const menuItems = computed(() => [
     },
     {
         name: "SparkStackbar",
-        icon: "ChartBarIcon",
+        icon: "chartSparkStackbar",
         tooltip: translations.value.docs.tooltips.stackbar[store.lang],
         link: "/docs#vue-ui-sparkstackbar",
         type: "mini",
@@ -218,7 +218,7 @@ const menuItems = computed(() => [
     },
     {
         name: "SparkHistogram",
-        icon: "ChartBarIcon",
+        icon: "chartSparkHistogram",
         tooltip: translations.value.docs.tooltips.histogram[store.lang],
         link: "/docs#vue-ui-sparkhistogram",
         type: "mini",
@@ -226,7 +226,7 @@ const menuItems = computed(() => [
     },
     {
         name: "RelationCircle",
-        icon: "CircleTriangleIcon",
+        icon: "chartRelationCircle",
         tooltip: translations.value.docs.tooltips.relationCircle[store.lang],
         link: "/docs#vue-ui-relation-circle",
         type: "semantic",
@@ -234,7 +234,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Thermometer",
-        icon: "TemperatureIcon",
+        icon: "chartThermometer",
         tooltip: translations.value.docs.tooltips.thermometer[store.lang],
         link: "/docs#vue-ui-thermometer",
         type: "measure",
@@ -242,7 +242,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Table",
-        icon: "TableIcon",
+        icon: "chartTable",
         tooltip: translations.value.docs.tooltips.table[store.lang],
         link: "/docs#vue-ui-table",
         type: "table",
@@ -250,7 +250,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Rating",
-        icon: "StarIcon",
+        icon: "star",
         tooltip: translations.value.docs.tooltips.rating[store.lang],
         link: "/docs#vue-ui-rating",
         type: "measure",
@@ -258,7 +258,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Smiley",
-        icon: "MoodSmileIcon",
+        icon: "smiley",
         tooltip: translations.value.docs.tooltips.smiley[store.lang],
         link: "/docs#vue-ui-smiley",
         type: "measure",
@@ -266,35 +266,35 @@ const menuItems = computed(() => [
     },
     {
         name: "Screenshot",
-        icon: "ScreenshotIcon",
+        icon: "screenshot",
         tooltip: translations.value.docs.tooltips.screenshot[store.lang],
         link: "/docs#vue-ui-screenshot",
         type: "tool"
     },
     {
         name: "Skeleton",
-        icon: "SkullIcon",
+        icon: "skeleton",
         tooltip: translations.value.docs.tooltips.skeleton[store.lang],
         link: "/docs#vue-ui-skeleton",
         type: "tool"
     },
     {
         name: "Dashboard",
-        icon: "LayoutDashboardIcon",
+        icon: "dashboard",
         tooltip: translations.value.docs.tooltips.dashboard[store.lang],
         link: "/docs#vue-ui-dashboard",
         type: "tool"
     },
     {
         name: "Annotator",
-        icon: "EditIcon",
+        icon: "annotator",
         tooltip: translations.value.docs.tooltips.annotator[store.lang],
         link: "/docs#vue-ui-annotator",
         type: "tool"
     },
     {
         name: "Icon",
-        icon: "WashDryIcon",
+        icon: "smiley",
         tooltip: translations.value.docs.tooltips.icon[store.lang],
         link: "/docs#vue-ui-icon",
         type: "tool"

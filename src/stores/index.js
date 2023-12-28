@@ -377,6 +377,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        iconSpecial: {
+                            en: "Other icons available :",
+                            fr: "Autres icônes disponibles :",
+                            pt: "Outros ícones disponíveis:",
+                            de: "Weitere verfügbare Symbole:",
+                            zh: "其他可用图标：",
+                            jp: "他のアイコンも利用可能:",
+                            es: "Otros iconos disponibles:"
+                        },
                         icon: {
                             en: "A collection of handcrafted icons, ideal if you choose to hide the built-in user options menu and make your own.",
                             fr: "Une collection d'icônes fabriquées à la main, idéale si vous choisissez de masquer le menu d'options utilisateur intégré et de créer le vôtre.",
@@ -388,7 +397,7 @@ export const useMainStore = defineStore("main", {
                         },
                         donutEvolution: {
                             en: "A fusion of line and donut charts, to visualize growth and proportions in one go",
-                            fr: "Une fusion de graphiques en courbes et en anneaux, pour visualiser la croissance et les proportions en une seule fois",
+                            fr: "Une fusion de graphiques en courbes et en anneaux, pour visualiser la croissance et les proportions en une apartmentseule fois",
                             pt: "Uma fusão de gráficos de linha e de rosca, para visualizar o crescimento e as proporções de uma só vez",
                             de: "Eine Kombination aus Linien- und Ringdiagrammen, um Wachstum und Proportionen auf einmal zu visualisieren",
                             zh: "折线图和圆环图的融合，一次性可视化增长和比例",
