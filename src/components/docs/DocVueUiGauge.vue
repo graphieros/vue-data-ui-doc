@@ -287,7 +287,7 @@ function fixChart() {
         <div class="w-full flex place-items-center place-content-center my-6">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green hover:shadow-xl transition-all" @click="copyToClipboard(mainConfig.vue_ui_gauge)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
         </div>
-        <Box showEmits>
+        <Box showEmits showSlots>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -464,6 +464,25 @@ const <span class="text-black dark:text-app-blue">config</span> = {
                     <div><code>generateImage</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
                 </div>
+            </template>
+
+            <template #tab3>
+                <div class="text-gray-500">
+                    {{ translations.slots.presentation[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiGauge
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #svg="{ svg }"&gt;
+            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
+        &lt;/template&gt;
+    &lt;/VueUiGauge&gt;
+</code>
+</pre>                    
+
             </template>
         </Box>
     </div>

@@ -293,7 +293,7 @@ function fixChart() {
         <CopyIcon /> {{ translations.docs.copyDefaultConfig[store.lang] }}
       </button>
     </div>
-    <Box showEmits>
+    <Box showEmits showSlots>
       <template v-slot:tab0>
         {{ translations.docs.datastructure[store.lang] }}
         <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -485,6 +485,25 @@ const <span class="text-black dark:text-app-blue">config</span> = {
           </div>
         </div>
       </template>
+
+      <template #tab3>
+                <div class="text-gray-500">
+                    {{ translations.slots.presentation[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiRelationCircle
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #svg="{ svg }"&gt;
+            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
+        &lt;/template&gt;
+    &lt;/VueUiRelationCircle&gt;
+</code>
+</pre>                    
+
+            </template>
     </Box>
   </div>
 </template>

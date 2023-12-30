@@ -524,7 +524,7 @@ const shapeOptions = ref([
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use canvas</label>
             </div>
         </div>
-        <Box showEmits>
+        <Box showEmits showSlots>
             <template v-slot:tab0>
 
             {{ translations.docs.datastructure[store.lang] }}
@@ -897,6 +897,25 @@ const <span class="text-black dark:text-app-blue">config</span> = {
                     <div><code>generateImage</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
                 </div>
+            </template>
+
+            <template #tab3>
+                <div class="text-gray-500">
+                    {{ translations.slots.presentation[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiXy
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #svg="{ svg }"&gt;
+            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
+        &lt;/template&gt;
+    &lt;/VueUiXy&gt;
+</code>
+</pre>                    
+
             </template>
         </Box>
     </div>

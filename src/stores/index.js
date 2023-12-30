@@ -19,6 +19,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                slots: {
+                    presentation: {
+                        en: "This component contains a #svg slot you can use to introduce your own customized svg elements into the chart, and through which the dimensions of the svg viewBox are exposed. Any svg element added in this slot will be displayed on the last layer of the svg, enabling any mouse or touch events you might want to use, however possibly hindering the component's own mouse events.",
+                        fr: "Ce composant contient un emplacement #svg que vous pouvez utiliser pour introduire vos propres éléments svg personnalisés dans le graphique et à travers lequel les dimensions de la viewBox svg sont exposées. Tout élément svg ajouté dans cet emplacement sera affiché sur la dernière couche du svg, permettant tous les événements de souris ou tactiles que vous pourriez vouloir utiliser, mais pouvant éventuellement gêner les propres événements de souris du composant.",
+                        pt: "Este componente contém um slot #svg que você pode usar para introduzir seus próprios elementos SVG personalizados no gráfico e por meio do qual as dimensões da viewBox SVG são expostas. Qualquer elemento svg adicionado neste slot será exibido na última camada do svg, habilitando quaisquer eventos de mouse ou toque que você queira usar, mas possivelmente prejudicando os eventos de mouse do próprio componente.",
+                        de: "Diese Komponente enthält einen #svg-Slot, mit dem Sie Ihre eigenen benutzerdefinierten SVG-Elemente in das Diagramm einfügen können und über den die Abmessungen der SVG-ViewBox angezeigt werden. Jedes in diesem Slot hinzugefügte SVG-Element wird auf der letzten Ebene des SVG angezeigt und aktiviert alle Maus- oder Berührungsereignisse, die Sie möglicherweise verwenden möchten, behindert jedoch möglicherweise die eigenen Mausereignisse der Komponente.",
+                        zh: "该组件包含一个 #svg 插槽，您可以使用它来将您自己的自定义 svg 元素引入到图表中，并通过它公开 svg viewBox 的尺寸。在此槽中添加的任何 svg 元素都将显示在 svg 的最后一层上，从而启用您可能想要使用的任何鼠标或触摸事件，但可能会阻碍组件自己的鼠标事件。",
+                        jp: "このコンポーネントには、独自にカスタマイズした svg 要素をチャートに導入するために使用できる #svg スロットが含まれており、これを通じて svg viewBox の寸法が公開されます。このスロットに追加された svg 要素はすべて svg の最後のレイヤーに表示され、使用したいマウス イベントやタッチ イベントが有効になりますが、コンポーネント自体のマウス イベントが妨げられる可能性があります。",
+                        es: "Este componente contiene una ranura #svg que puede utilizar para introducir sus propios elementos svg personalizados en el gráfico y a través de la cual se exponen las dimensiones del viewBox svg. Cualquier elemento svg agregado en esta ranura se mostrará en la última capa del svg, lo que permitirá cualquier evento táctil o de mouse que desee usar, aunque posiblemente obstaculice los eventos de mouse propios del componente."
+                    }
+                },
                 search: {
                     componentSelect: {
                         en: "Select component...",

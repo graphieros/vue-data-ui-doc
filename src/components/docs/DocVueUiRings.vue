@@ -268,7 +268,7 @@ function fixChart() {
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_rings)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
         </div>
 
-        <Box showEmits>
+        <Box showEmits showSlots>
         
           <template #tab0>
             {{ translations.docs.datastructure[store.lang] }}
@@ -506,7 +506,24 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
                 </div>
             </template>
 
+            <template #tab3>
+                <div class="text-gray-500">
+                    {{ translations.slots.presentation[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiRings
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #svg="{ svg }"&gt;
+            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
+        &lt;/template&gt;
+    &lt;/VueUiRings&gt;
+</code>
+</pre>                    
 
+            </template>
         </Box>
 
     </div>

@@ -5,6 +5,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    showSlots: {
+        type: Boolean,
+        default: false,
+    },
     activeTab: {
         type: Number,
         default: 0
@@ -23,8 +27,11 @@ const activeTab = ref(props.activeTab);
     <div tabindex="0" :class="`select-none cursor-pointer absolute top-0 left-[78px] text-black dark:text-app-blue font-satoshi-bold p-3 border-b border-l border-gray-700 ${activeTab === 1 ? 'bg-gray-200 dark:bg-black-100' : ''} ${!props.showEmits ? 'border-r rounded-br-lg' : ''} hover:border-b-app-blue`" @click="activeTab = 1" @keypress.enter="activeTab = 1">
         config
     </div>
-    <div tabindex="0" v-if="props.showEmits" :class="`select-none cursor-pointer absolute top-0 left-[150px] text-black dark:text-gray-400 font-satoshi-bold p-3 border-b border-l border-r border-gray-700 rounded-br-lg ${activeTab === 2 ? 'bg-gray-200 dark:bg-black-100' : ''} hover:border-b-gray-100`" @click="activeTab = 2" @keypress.enter="activeTab = 2">
+    <div tabindex="0" v-if="props.showEmits" :class="`select-none cursor-pointer absolute top-0 left-[150px] text-black dark:text-gray-400 font-satoshi-bold p-3 border-b border-l border-r border-gray-700 ${props.showSlots ? '' : 'rounded-br-lg'} ${activeTab === 2 ? 'bg-gray-200 dark:bg-black-100' : ''} hover:border-b-gray-100`" @click="activeTab = 2" @keypress.enter="activeTab = 2">
         emits
+    </div>
+    <div tabindex="0" v-if="props.showSlots" :class="`select-none cursor-pointer absolute top-0 left-[214px] text-black dark:text-app-orange font-satoshi-bold p-3 border-b border-l border-r border-gray-700 rounded-br-lg ${activeTab === 3 ? 'bg-gray-200 dark:bg-black-100' : ''} hover:border-b-app-orange`" @click="activeTab = 3" @keypress.enter="activeTab = 3">
+        slots
     </div>
         <div class="text-satoshi-bold text-app-green text-2xl mb-3">
             <slot name="title"/>
@@ -38,6 +45,9 @@ const activeTab = ref(props.activeTab);
         </div>
         <div v-show="activeTab === 2">
             <slot name="tab2"/>
+        </div>
+        <div v-show="activeTab === 3">
+            <slot name="tab3"/>
         </div>
     </div>
 </template>
