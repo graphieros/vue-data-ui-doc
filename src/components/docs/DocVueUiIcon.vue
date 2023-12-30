@@ -45,6 +45,7 @@ const specialIcons = ref([
     "chartGauge",
     "chartHeatmap",
     "chartLine",
+    "chartMoodRadar",
     "chartOnion",
     "chartQuadrant",
     "chartRadar",
@@ -60,9 +61,13 @@ const specialIcons = ref([
     "chartWaffle",
     "chartWheel",
     "dashboard",
+    "moodHappy",
+    "smiley",
+    "moodNeutral",
+    "moodFlat",
+    "moodSad",
     "screenshot",
     "skeleton",
-    "smiley",
     "star",
 ])
 

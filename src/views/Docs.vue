@@ -34,6 +34,7 @@ import DocVueUiWheel from "../components/docs/DocVueUiWheel.vue";
 import DocVueUiTiremarks from "../components/docs/DocVueUiTiremarks.vue";
 import DocVueUiDonutEvolution from "../components/docs/DocVueUiDonutEvolution.vue";
 import DocVueUiIcon from "../components/docs/DocVueUiIcon.vue";
+import DocVueUiMoodRadar from "../components/docs/DocVueUiMoodRadar.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 
 import { CheckIcon } from "vue-tabler-icons";
@@ -299,6 +300,14 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-icon",
         type: "tool"
     },
+    {
+        name: "MoodRadar",
+        icon: "chartMoodRadar",
+        tooltip: translations.value.docs.tooltips.moodRadar[store.lang],
+        link: "/docs#vue-ui-mood-radar",
+        type: "measure",
+        thumb: new URL('../assets/thumb_mood_radar.png', import.meta.url).href
+    },
 ])
 
 </script>
@@ -343,6 +352,7 @@ const menuItems = computed(() => [
             <DocVueUiTiremarks v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-tiremarks'"/>
             <DocVueUiDonutEvolution v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-donut-evolution'"/>
             <DocVueUiIcon v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-icon'"/>
+            <DocVueUiMoodRadar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-mood-radar'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">

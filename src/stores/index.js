@@ -377,6 +377,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        moodRadar: {
+                            en: "Visualize rating statistics on a colorful and expressive radar chart",
+                            fr: "Visualisez les statistiques de notation sur un graphique radar coloré et expressif",
+                            pt: "Visualize estatísticas de classificação em um gráfico de radar colorido e expressivo",
+                            de: "Visualisieren Sie Bewertungsstatistiken auf einem farbenfrohen und ausdrucksstarken Radardiagramm",
+                            zh: "在丰富多彩且富有表现力的雷达图上可视化评级统计数据",
+                            jp: "カラフルで表現力豊かなレーダー チャートで評価統計を視覚化します",
+                            es: "Visualice estadísticas de calificación en un gráfico de radar colorido y expresivo"
+                        },
                         iconSpecial: {
                             en: "Other icons available :",
                             fr: "Autres icônes disponibles :",

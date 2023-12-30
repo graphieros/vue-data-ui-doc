@@ -195,6 +195,14 @@ const smallMenu = ref([
         thumb: new URL('../assets/thumb_donut_evolution.png', import.meta.url).href
     },
     {
+        route: '/docs#vue-ui-mood-radar',
+        icon: 'chartMoodRadar',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'MoodRadar',
+        thumb: new URL('../assets/thumb_mood_radar.png', import.meta.url).href
+    },
+    {
         route: '/docs#vue-ui-sparkline',
         icon: 'chartLine',
         cssClasses: '',
@@ -373,6 +381,9 @@ const thisApp = computed(() => {
             </router-link>
             <router-link to="/docs#vue-ui-donut-evolution" @click="scrollToTop">
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-donut-evolution') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-donut-evolution')" class="-ml-6"/><VueUiIcon :size="18" name="chartDonutEvolution" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-donut-evolution')"/>  <span class="text-gray-500">VueUi</span>DonutEvolution</div>
+            </router-link>
+            <router-link to="/docs#vue-ui-mood-radar" @click="scrollToTop">
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-mood-radar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-mood-radar')" class="-ml-6"/><VueUiIcon :size="18" name="chartMoodRadar" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-mood-radar')"/>  <span class="text-gray-500">VueUi</span>MoodRadar</div>
             </router-link>
         </section>
         <section class="mb-6">
