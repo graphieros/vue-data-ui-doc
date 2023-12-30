@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.43",
+        "date": "2023-12-30",
+        "updates": [
+            {
+                "component": "",
+                "description": "Use unique ids instead of Math.random"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.42",
         "date": "2023-12-30",
         "updates": [
