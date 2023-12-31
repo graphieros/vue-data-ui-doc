@@ -20,6 +20,24 @@ export const useMainStore = defineStore("main", {
             lang: "en",
             translations: {
                 slots: {
+                    summary: {
+                        en: "Components marked with this icon provide a #svg slot to extend the svg with custom elements.",
+                        fr: "Les composants marqués de cette icône fournissent un slot #svg pour étendre le svg avec des éléments personnalisés.",
+                        pt: "Os componentes marcados com este ícone fornecem um slot #svg para estender o svg com elementos personalizados.",
+                        de: "Mit diesem Symbol gekennzeichnete Komponenten bieten einen #svg-Slot, um die SVG-Datei mit benutzerdefinierten Elementen zu erweitern.",
+                        zh: "标有此图标的组件提供 #svg 槽，以使用自定义元素扩展 svg。",
+                        jp: "このアイコンの付いたコンポーネントは、カスタム要素で svg を拡張するための #svg スロットを提供します。",
+                        es: "Los componentes marcados con este icono proporcionan una ranura (slot) #svg para ampliar el archivo svg con elementos personalizados."
+                    },
+                    summaryLink: {
+                        en: "View an example",
+                        fr: "Voir un exemple",
+                        pt: "Veja um exemplo",
+                        de: "Sehen Sie sich ein Beispiel an",
+                        zh: "查看示例",
+                        jp: "例を見る",
+                        es: "Ver un ejemplo"
+                    },
                     presentation: {
                         en: "This component contains a #svg slot you can use to introduce your own customized svg elements into the chart, and through which the dimensions of the svg viewBox are exposed. Any svg element added in this slot will be displayed on the last layer of the svg, enabling any mouse or touch events you might want to use, however possibly hindering the component's own mouse events.",
                         fr: "Ce composant contient un emplacement #svg que vous pouvez utiliser pour introduire vos propres éléments svg personnalisés dans le graphique et à travers lequel les dimensions de la viewBox svg sont exposées. Tout élément svg ajouté dans cet emplacement sera affiché sur la dernière couche du svg, permettant tous les événements de souris ou tactiles que vous pourriez vouloir utiliser, mais pouvant éventuellement gêner les propres événements de souris du composant.",

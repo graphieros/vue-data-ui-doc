@@ -37,7 +37,7 @@ import DocVueUiIcon from "../components/docs/DocVueUiIcon.vue";
 import DocVueUiMoodRadar from "../components/docs/DocVueUiMoodRadar.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 
-import { CheckIcon } from "vue-tabler-icons";
+import { CheckIcon, SquareRoundedLetterSIcon } from "vue-tabler-icons";
 
 import { useMainStore } from "../stores";
 
@@ -63,7 +63,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.xy[store.lang],
         link: "/docs#vue-ui-xy",
         type: "classic",
-        thumb: new URL('../assets/thumb_xy.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Donut",
@@ -71,7 +72,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.donut[store.lang],
         link: "/docs#vue-ui-donut",
         type: "classic",
-        thumb: new URL('../assets/thumb_donut.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "DonutEvolution",
@@ -79,7 +81,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.donutEvolution[store.lang],
         link: "/docs#vue-ui-donut-evolution",
         type: "combined",
-        thumb: new URL('../assets/thumb_donut_evolution.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_donut_evolution.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Waffle",
@@ -87,7 +90,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.waffle[store.lang],
         link: "/docs#vue-ui-waffle",
         type: "classic",
-        thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Rings",
@@ -95,7 +99,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.rings[store.lang],
         link: "/docs#vue-ui-rings",
         type: "classic",
-        thumb: new URL('../assets/thumb_rings.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_rings.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Radar",
@@ -103,7 +108,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.radar[store.lang],
         link: "/docs#vue-ui-radar",
         type: "classic",
-        thumb: new URL('../assets/thumb_radar.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_radar.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Quadrant",
@@ -111,7 +117,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.quadrant[store.lang],
         link: "/docs#vue-ui-quadrant",
         type: "classic",
-        thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Gauge",
@@ -119,7 +126,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.gauge[store.lang],
         link: "/docs#vue-ui-gauge",
         type: "measure",
-        thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Wheel",
@@ -127,7 +135,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.wheel[store.lang],
         link: "/docs#vue-ui-wheel",
         type: "measure",
-        thumb: new URL('../assets/thumb_wheel.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_wheel.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Tiremarks",
@@ -135,7 +144,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.tiremarks[store.lang],
         link: "/docs#vue-ui-tiremarks",
         type: "measure",
-        thumb: new URL('../assets/thumb_tiremarks.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_tiremarks.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Chestnut",
@@ -143,7 +153,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.chestnut[store.lang],
         link: "/docs#vue-ui-chestnut",
         type: "combined",
-        thumb: new URL('../assets/thumb_chestnut.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_chestnut.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Onion",
@@ -151,7 +162,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.onion[store.lang],
         link: "/docs#vue-ui-onion",
         type: "classic",
-        thumb: new URL('../assets/thumb_onion.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "VerticalBar",
@@ -159,7 +171,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.verticalBar[store.lang],
         link: "/docs#vue-ui-vertical-bar",
         type: "classic",
-        thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Heatmap",
@@ -167,7 +180,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.heatmap[store.lang],
         link: "/docs#vue-ui-heatmap",
         type: "classic",
-        thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Scatter",
@@ -175,7 +189,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.scatter[store.lang],
         link: "/docs#vue-ui-scatter",
         type: "classic",
-        thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Candlestick",
@@ -183,7 +198,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.candlestick[store.lang],
         link: "/docs#vue-ui-candlestick",
         type: "classic",
-        thumb: new URL('../assets/thumb_candlestick.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_candlestick.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "AgePyramid",
@@ -191,7 +207,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.agePyramid[store.lang],
         link: "/docs#vue-ui-age-pyramid",
         type: "classic",
-        thumb: new URL('../assets/thumb_age_pyramid.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_age_pyramid.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Sparkline",
@@ -199,7 +216,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.sparkline[store.lang],
         link: "/docs#vue-ui-sparkline",
         type: "mini",
-        thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Sparkbar",
@@ -207,7 +225,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.sparkbar[store.lang],
         link: "/docs#vue-ui-sparkbar",
         type: "mini",
-        thumb: new URL('../assets/thumb_sparkbar.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_sparkbar.png', import.meta.url).href,
+        hasSlot: false
     },
     {
         name: "SparkStackbar",
@@ -215,7 +234,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.stackbar[store.lang],
         link: "/docs#vue-ui-sparkstackbar",
         type: "mini",
-        thumb: new URL('../assets/thumb_stackbar.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_stackbar.png', import.meta.url).href,
+        hasSlot: false
     },
     {
         name: "SparkHistogram",
@@ -223,7 +243,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.histogram[store.lang],
         link: "/docs#vue-ui-sparkhistogram",
         type: "mini",
-        thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href,
+        hasSlot: false
     },
     {
         name: "RelationCircle",
@@ -231,7 +252,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.relationCircle[store.lang],
         link: "/docs#vue-ui-relation-circle",
         type: "semantic",
-        thumb: new URL('../assets/thumb_relation_circle.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_relation_circle.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Thermometer",
@@ -239,7 +261,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.thermometer[store.lang],
         link: "/docs#vue-ui-thermometer",
         type: "measure",
-        thumb: new URL('../assets/thumb_thermometer.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_thermometer.png', import.meta.url).href,
+        hasSlot: true
     },
     {
         name: "Table",
@@ -247,7 +270,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.table[store.lang],
         link: "/docs#vue-ui-table",
         type: "table",
-        thumb: new URL('../assets/thumb_table.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_table.png', import.meta.url).href,
+        hasSlot: false
     },
     {
         name: "Rating",
@@ -255,7 +279,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.rating[store.lang],
         link: "/docs#vue-ui-rating",
         type: "measure",
-        thumb: new URL('../assets/thumb_rating.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_rating.png', import.meta.url).href,
+        hasSlot: false
     },
     {
         name: "Smiley",
@@ -263,42 +288,48 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.smiley[store.lang],
         link: "/docs#vue-ui-smiley",
         type: "measure",
-        thumb: new URL('../assets/thumb_smiley.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_smiley.png', import.meta.url).href,
+        hasSlot: false
     },
     {
         name: "Screenshot",
         icon: "screenshot",
         tooltip: translations.value.docs.tooltips.screenshot[store.lang],
         link: "/docs#vue-ui-screenshot",
-        type: "tool"
+        type: "tool",
+        hasSlot: false
     },
     {
         name: "Skeleton",
         icon: "skeleton",
         tooltip: translations.value.docs.tooltips.skeleton[store.lang],
         link: "/docs#vue-ui-skeleton",
-        type: "tool"
+        type: "tool",
+        hasSlot: false
     },
     {
         name: "Dashboard",
         icon: "dashboard",
         tooltip: translations.value.docs.tooltips.dashboard[store.lang],
         link: "/docs#vue-ui-dashboard",
-        type: "tool"
+        type: "tool",
+        hasSlot: false
     },
     {
         name: "Annotator",
         icon: "annotator",
         tooltip: translations.value.docs.tooltips.annotator[store.lang],
         link: "/docs#vue-ui-annotator",
-        type: "tool"
+        type: "tool",
+        hasSlot: false
     },
     {
         name: "Icon",
         icon: "smiley",
         tooltip: translations.value.docs.tooltips.icon[store.lang],
         link: "/docs#vue-ui-icon",
-        type: "tool"
+        type: "tool",
+        hasSlot: false
     },
     {
         name: "MoodRadar",
@@ -306,7 +337,8 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.moodRadar[store.lang],
         link: "/docs#vue-ui-mood-radar",
         type: "measure",
-        thumb: new URL('../assets/thumb_mood_radar.png', import.meta.url).href
+        thumb: new URL('../assets/thumb_mood_radar.png', import.meta.url).href,
+        hasSlot: true
     },
 ])
 
@@ -372,12 +404,22 @@ const menuItems = computed(() => [
                     {{ translations.docs.p1[store.lang] }}
                 </div>
 
+                <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm border border-app-blue bg-[#5f8bee33] p-4 rounded-lg flex flex-row gap-6 place-items-center">
+                    <div class="h-[40px] w-[40px] flex place-items-center justify-center">
+                    <SquareRoundedLetterSIcon class="bg-white dark:bg-black rounded-md text-app-blue"/>
+                    </div>
+                    {{ translations.slots.summary[store.lang] }}
+                </div>
+
                 <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-6 mb-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.classic[store.lang] }}
                     </div>
                     <MenuDetail v-for="item in menuItems.filter(item => item.type === 'classic')" :icon="item.icon" :link="item.link">
-                        <template #name>{{ item.name }}</template>
+                        <template #name>
+                            {{ item.name }}
+                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                        </template>
                         <template #tooltip>
                             <div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
@@ -392,7 +434,10 @@ const menuItems = computed(() => [
                         {{ translations.types.measure[store.lang] }}
                     </div>
                     <MenuDetail v-for="item in menuItems.filter(item => item.type === 'measure')" :icon="item.icon" :link="item.link">
-                        <template #name>{{ item.name }}</template>
+                        <template #name>
+                            {{ item.name }}
+                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                        </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
                             {{ item.tooltip }}
@@ -405,7 +450,10 @@ const menuItems = computed(() => [
                         {{ translations.types.mini[store.lang] }}
                     </div>
                     <MenuDetail v-for="item in menuItems.filter(item => item.type === 'mini')" :icon="item.icon" :link="item.link">
-                        <template #name>{{ item.name }}</template>
+                        <template #name>
+                            {{ item.name }}
+                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                        </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
                             {{ item.tooltip }}
@@ -418,7 +466,10 @@ const menuItems = computed(() => [
                         {{ translations.types.combined[store.lang] }}
                     </div>
                     <MenuDetail v-for="item in menuItems.filter(item => item.type === 'combined')" :icon="item.icon" :link="item.link">
-                        <template #name>{{ item.name }}</template>
+                        <template #name>
+                            {{ item.name }}
+                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                        </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
                             {{ item.tooltip }}
@@ -431,7 +482,10 @@ const menuItems = computed(() => [
                         {{ translations.types.table[store.lang] }}
                     </div>
                     <MenuDetail v-for="item in menuItems.filter(item => item.type === 'table')" :icon="item.icon" :link="item.link">
-                        <template #name>{{ item.name }}</template>
+                        <template #name>
+                            {{ item.name }}
+                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                        </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
                             {{ item.tooltip }}
@@ -444,7 +498,10 @@ const menuItems = computed(() => [
                         {{ translations.types.semantic[store.lang] }}
                     </div>
                     <MenuDetail v-for="item in menuItems.filter(item => item.type === 'semantic')" :icon="item.icon" :link="item.link">
-                        <template #name>{{ item.name }}</template>
+                        <template #name>
+                            {{ item.name }}
+                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                        </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
                             {{ item.tooltip }}
@@ -457,7 +514,10 @@ const menuItems = computed(() => [
                         {{ translations.types.tool[store.lang] }}
                     </div>
                     <MenuDetail v-for="item in menuItems.filter(item => item.type === 'tool')" :icon="item.icon" :link="item.link">
-                        <template #name>{{ item.name }}</template>
+                        <template #name>
+                            {{ item.name }}
+                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                        </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
                             {{ item.tooltip }}
