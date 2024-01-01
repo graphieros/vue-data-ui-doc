@@ -364,9 +364,9 @@ const config = ref({
         average: "Average",
         by: "by",
         chooseCategoryColumn: "Choose category column",
-        exportAllButton: "XLSX all",
+        exportAllButton: "CSV all",
         exportAllLabel: "Export all rows of your current filtered dataset",
-        exportPageButton: "XLSX page",
+        exportPageButton: "CSV page",
         exportPageLabel: "Export rows of the current page",
         from: "From",
         inputPlaceholder: "Search...",
@@ -528,9 +528,9 @@ const darkModeConfig = ref({
         average: "Average",
         by: "by",
         chooseCategoryColumn: "Choose category column",
-        exportAllButton: "XLSX all",
+        exportAllButton: "CSV all",
         exportAllLabel: "Export all rows of your current filtered dataset",
-        exportPageButton: "XLSX page",
+        exportPageButton: "CSV page",
         exportPageLabel: "Export rows of the current page",
         from: "From",
         inputPlaceholder: "Search...",
@@ -958,9 +958,9 @@ const <span class="text-black dark:text-app-blue">config</span> = {
         average: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.average"><input v-else type="text" v-model="mutableConfig.translations.average">, (default: "Average")
         by: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.by"><input v-else type="text" v-model="mutableConfig.translations.by">, (default: "by")
         chooseCategoryColumn: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.chooseCategoryColumn"><input v-else type="text" v-model="mutableConfig.translations.chooseCategoryColumn">, (default: "Choose category column")
-        exportAllButton: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.exportAllButton"><input v-else type="text" v-model="mutableConfig.translations.exportAllButton">, (default "XLSX all")
+        exportAllButton: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.exportAllButton"><input v-else type="text" v-model="mutableConfig.translations.exportAllButton">, (default "CSV all")
         exportAllLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.exportAllLabel"><input v-else type="text" v-model="mutableConfig.translations.exportAllLabel">, (default: "Export all rows of your current filtered dataset")
-        exportPageButton: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.exportPageButton"><input v-else type="text" v-model="mutableConfig.translations.exportPageButton">, (default: "XLSX page")
+        exportPageButton: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.exportPageButton"><input v-else type="text" v-model="mutableConfig.translations.exportPageButton">, (default: "CSV page")
         exportPageLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.exportPageLabel"><input v-else type="text" v-model="mutableConfig.translations.exportPageLabel">, (default: "Export rows of the current page")
         from: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.from"><input v-else type="text" v-model="mutableConfig.translations.from">, (default: "From")
         inputPlaceholder: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.inputPlaceholder"><input v-else type="text" v-model="mutableConfig.translations.inputPlaceholder">, (default: "Search...")
