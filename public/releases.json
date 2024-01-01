@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.50",
+        "date": "2024-01-01",
+        "updates": [
+            {
+                "component": "VueUi3dBar",
+                "description": "Create component"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.44",
         "date": "2023-12-31",
         "updates": [

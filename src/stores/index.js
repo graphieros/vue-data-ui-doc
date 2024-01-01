@@ -406,6 +406,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        bar3d: {
+                            en: "Visualize a percentage with a 3d bar",
+                            fr: "Visualisez un pourcentage avec une barre 3D",
+                            pt: "Visualize uma porcentagem com uma barra 3D",
+                            de: "Visualisieren Sie einen Prozentsatz mit einem 3D-Balken",
+                            zh: "使用 3d 条形图可视化百分比",
+                            jp: "パーセンテージを 3D バーで視覚化する",
+                            es: "Visualiza un porcentaje con una barra 3d."
+                        },
                         moodRadar: {
                             en: "Visualize rating statistics on a colorful and expressive radar chart",
                             fr: "Visualisez les statistiques de notation sur un graphique radar coloré et expressif",

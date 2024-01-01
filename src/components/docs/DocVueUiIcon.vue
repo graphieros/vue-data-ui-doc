@@ -36,6 +36,7 @@ const icons = ref([
 
 const specialIcons = ref([
     "annotator",
+    "chart3dBar",
     "chartAgePyramid",
     "chartBar",
     "chartCandlestick",
@@ -61,13 +62,13 @@ const specialIcons = ref([
     "chartWaffle",
     "chartWheel",
     "dashboard",
-    "moodHappy",
-    "smiley",
-    "moodNeutral",
     "moodFlat",
+    "moodHappy",
+    "moodNeutral",
     "moodSad",
     "screenshot",
     "skeleton",
+    "smiley",
     "star",
 ])
 

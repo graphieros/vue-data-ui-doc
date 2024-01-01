@@ -35,6 +35,7 @@ import DocVueUiTiremarks from "../components/docs/DocVueUiTiremarks.vue";
 import DocVueUiDonutEvolution from "../components/docs/DocVueUiDonutEvolution.vue";
 import DocVueUiIcon from "../components/docs/DocVueUiIcon.vue";
 import DocVueUiMoodRadar from "../components/docs/DocVueUiMoodRadar.vue";
+import DocVueUi3dBar from "../components/docs/DocVueUi3dBar.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 
 import { CheckIcon, SquareRoundedLetterSIcon } from "vue-tabler-icons";
@@ -340,6 +341,15 @@ const menuItems = computed(() => [
         thumb: new URL('../assets/thumb_mood_radar.png', import.meta.url).href,
         hasSlot: true
     },
+    {
+        name: "3dBar",
+        icon: "chart3dBar",
+        tooltip: translations.value.docs.tooltips.bar3d[store.lang],
+        link: "/docs#vue-ui-3d-bar",
+        type: "3d",
+        thumb: new URL('../assets/thumb_3d_bar.png', import.meta.url).href,
+        hasSlot: true
+    },
 ])
 
 </script>
@@ -385,6 +395,7 @@ const menuItems = computed(() => [
             <DocVueUiDonutEvolution v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-donut-evolution'"/>
             <DocVueUiIcon v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-icon'"/>
             <DocVueUiMoodRadar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-mood-radar'"/>
+            <DocVueUi3dBar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-3d-bar'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">
@@ -450,6 +461,22 @@ const menuItems = computed(() => [
                         {{ translations.types.mini[store.lang] }}
                     </div>
                     <MenuDetail v-for="item in menuItems.filter(item => item.type === 'mini')" :icon="item.icon" :link="item.link">
+                        <template #name>
+                            {{ item.name }}
+                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                        </template>
+                        <template #tooltip><div class="flex flex-col place-items-center justify-center">
+                            <img v-if="item.thumb" :src="item.thumb">
+                            {{ item.tooltip }}
+                            </div></template>
+                    </MenuDetail>
+                </div>
+
+                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                    <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
+                        3D
+                    </div>
+                    <MenuDetail v-for="item in menuItems.filter(item => item.type === '3d')" :icon="item.icon" :link="item.link">
                         <template #name>
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>

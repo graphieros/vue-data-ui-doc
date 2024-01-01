@@ -235,6 +235,14 @@ const smallMenu = ref([
         thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href
     },
     {
+        route: '/docs#vue-ui-3d-bar',
+        icon: 'chart3dBar',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: '3dBar',
+        thumb: new URL('../assets/thumb_3d_bar.png', import.meta.url).href
+    },
+    {
         route: '/docs#vue-ui-table',
         icon: 'chartTable',
         cssClasses: '',
@@ -399,6 +407,12 @@ const thisApp = computed(() => {
             </router-link>
             <router-link to="/docs#vue-ui-sparkhistogram" @click="scrollToTop">
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-sparkhistogram') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-sparkhistogram')" class="-ml-6"/><VueUiIcon :size="18" name="chartSparkHistogram" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-sparkhistogram')"/>  <span class="text-gray-500">VueUi</span>SparkHistogram</div>
+            </router-link>
+        </section>
+        <section class="mb-6">
+            <div class="font-satoshi-bold text-black dark:text-app-green">3d charts</div>
+            <router-link to="/docs#vue-ui-3d-bar" @click="scrollToTop">
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-3d-bar') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-3d-bar')" class="-ml-6"/><VueUiIcon :size="18" name="chart3dBar" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-3d-bar')"/>  <span class="text-gray-500">VueUi</span>3dBar</div>
             </router-link>
         </section>
         <section class="mb-6">
