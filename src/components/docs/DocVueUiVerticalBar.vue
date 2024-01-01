@@ -732,8 +732,8 @@ const <span class="text-app-blue">config</span> = {
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generatePdf[store.lang] }}</div>
                 </div>
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generateXls</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateXls[store.lang] }}</div>
+                    <div><code>generateCsv</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateCsv[store.lang] }}</div>
                 </div>
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>generateImage</code></div>

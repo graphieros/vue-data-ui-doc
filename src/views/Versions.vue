@@ -1244,6 +1244,65 @@ const wheelConfig = computed(() => {
   }
 })
 
+const config3dBar = computed(() => {
+  return {
+    style: {
+        fontFamily: "inherit",
+        shape: "tube",
+        chart: {
+            animation: {
+                use: true,
+                speed: 1,
+                acceleration: 1
+            },
+            backgroundColor: isDarkMode.value ? "#1A1A1A" : "#F3F4F6",
+            color: "#CCCCCC",
+            bar: {
+                color: "#5f8bee",
+                stroke: "#5f8bee",
+                strokeWidth: 0.7
+            },
+            box: {
+                stroke: "#5A5A5A",
+                strokeWidth: 0.7,
+                strokeDasharray: 2,
+                dimensions: {
+                    width: 128,
+                    height: 256,
+                    top: 27,
+                    bottom: 9,
+                    left: 24,
+                    right: 24,
+                    perspective: 18
+                }
+            },
+            title: {
+                text: "",
+                color:  isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                fontSize: 20,
+                bold: true,
+                subtitle: {
+                    color: "#A1A1A1",
+                    text: "",
+                    fontSize: 16,
+                    bold: false
+                }
+            },
+            dataLabel: {
+                show: false,
+                bold: true,
+                color: "#5f8bee",
+                fontSize: 12,
+                rounding: 1
+            }
+        }
+    },
+    userOptions: {
+        show: false
+    }
+};
+})
+
 </script>
 
 <template>
@@ -1269,6 +1328,11 @@ const wheelConfig = computed(() => {
                 <div class="flex flew-row gap-2 justify-center mb-6">
                   <div class="w-[100px] sm:w-[150px]" v-for="(wheel, i) in sparkbarDataset">
                     <VueUiWheel :dataset="{ percentage: wheel.value }" :config="{...wheelConfig, style: {...wheelConfig.style, chart: {...wheelConfig.style.chart, title: {...wheelConfig.style.chart.title, text: i === 0 ? 'Quality' : i === 1 ? 'Popularity' : 'Maintenance'}}}}"/>
+                  </div>
+                </div>
+                <div class="flex flew-row gap-2 justify-center mb-6">
+                  <div class="w-[100px] sm:w-[150px]" v-for="(bar, i) in sparkbarDataset">
+                    <VueUi3dBar :dataset="{ percentage: bar.value }" :config="{...config3dBar, style: {...config3dBar.style, chart: {...config3dBar.style.chart}}}"/>
                   </div>
                 </div>
                 <div class="max-w-[500px] mx-auto mb-6" v-if="!!data && !isLoadingLine">

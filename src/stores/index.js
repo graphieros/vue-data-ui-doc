@@ -314,22 +314,22 @@ export const useMainStore = defineStore("main", {
                 },
                 about: {
                     p1: {
-                        en: "Vue Data UI was born of a single question: if your dashboards are so good, why are your users asking for Excel export features ?",
-                        fr: "Vue Data UI est née d'une simple question: si vos dashboards sont si bons, pourquoi les utilisateurs demandent-ils encore des exports Excel ?",
-                        pt: "O Vue Data UI nasceu de uma única pergunta: se seus dashboards são tão bons, por que seus usuários estão solicitando recursos de exportação do Excel?",
-                        de: "Vue Data UI entstand aus einer einzigen Frage: Wenn Ihre Dashboards so gut sind, warum fragen Ihre Benutzer dann nach Excel-Exportfunktionen?",
-                        zh: "Vue Data UI 诞生于一个问题：如果你的仪表板这么好，为什么你的用户要求 Excel 导出功能？",
-                        jp: "Vue Data UI は 1 つの疑問から生まれました。 「ダッシュボードがそれほど優れているのであれば、なぜユーザーは Excel エクスポート機能を必要とするのでしょうか?」",
-                        es: "Vue Data UI nació de una sola pregunta: si sus paneles son tan buenos, ¿por qué sus usuarios solicitan funciones de exportación a Excel?"
+                        en: "Vue Data UI was born of a single question: if your dashboards are so good, why are your users asking for CSV export features ?",
+                        fr: "Vue Data UI est née d'une simple question: si vos dashboards sont si bons, pourquoi les utilisateurs demandent-ils encore des exports CSV ?",
+                        pt: "O Vue Data UI nasceu de uma única pergunta: se seus dashboards são tão bons, por que seus usuários estão solicitando recursos de exportação do CSV?",
+                        de: "Vue Data UI entstand aus einer einzigen Frage: Wenn Ihre Dashboards so gut sind, warum fragen Ihre Benutzer dann nach CSV-Exportfunktionen?",
+                        zh: "Vue Data UI 诞生于一个问题：如果你的仪表板这么好，为什么你的用户要求 CSV 导出功能？",
+                        jp: "Vue Data UI は 1 つの疑問から生まれました。 「ダッシュボードがそれほど優れているのであれば、なぜユーザーは CSV エクスポート機能を必要とするのでしょうか?」",
+                        es: "Vue Data UI nació de una sola pregunta: si sus paneles son tan buenos, ¿por qué sus usuarios solicitan funciones de exportación a CSV?"
                     },
                     p2: {
-                        en: "The purpose of this open-source library is to offer end users a set of in-built tools around charts and tables to reduce the friction of having to recompute exported data. Of course, Vue Data UI keeps the option to export to Excel and PDF, just in case.",
-                        fr: "Le but de cette bibliothèque open source est d'offrir aux utilisateurs finaux un ensemble d'outils intégrés autour des graphiques et des tableaux pour réduire la friction liée au recalcul des données exportées. Bien entendu, Vue Data UI conserve la possibilité d'exporter vers Excel et PDF, juste au cas où.",
-                        pt: "O objetivo desta biblioteca de código aberto é oferecer aos usuários finais um conjunto de ferramentas integradas em gráficos e tabelas para reduzir o atrito de ter que recalcular os dados exportados. Claro, o Vue Data UI mantém a opção de exportar para Excel e PDF, apenas por precaução.",
-                        de: "Der Zweck dieser Open-Source-Bibliothek besteht darin, Endbenutzern eine Reihe integrierter Tools rund um Diagramme und Tabellen zur Verfügung zu stellen, um die Reibung bei der Neuberechnung exportierter Daten zu verringern. Natürlich bietet die Vue Data-Schnittstelle für alle Fälle weiterhin die Möglichkeit, nach Excel und PDF zu exportieren.",
-                        zh: "这个开源库的目的是为最终用户提供一组围绕图表和表格的内置工具，以减少重新计算导出数据的麻烦。当然，Vue Data UI 保留了导出为 Excel 和 PDF 的选项，以防万一。",
-                        jp: "このオープン ソース ライブラリの目的は、エクスポートされたデータを再計算する労力を軽減するためのチャートとテーブル用の一連の組み込みツールをエンド ユーザーに提供することです。もちろん、Vue Data UI には、万が一に備えて Excel または PDF にエクスポートするオプションが用意されています。",
-                        es: "El propósito de esta biblioteca de código abierto es ofrecer a los usuarios finales un conjunto de herramientas integradas en torno a gráficos y tablas para reducir la fricción de tener que volver a calcular los datos exportados. Por supuesto, Vue Data UI mantiene la opción de exportar a Excel y PDF, por si acaso."
+                        en: "The purpose of this open-source library is to offer end users a set of in-built tools around charts and tables to reduce the friction of having to recompute exported data. Of course, Vue Data UI keeps the option to export to CSV and PDF, just in case.",
+                        fr: "Le but de cette bibliothèque open source est d'offrir aux utilisateurs finaux un ensemble d'outils intégrés autour des graphiques et des tableaux pour réduire la friction liée au recalcul des données exportées. Bien entendu, Vue Data UI conserve la possibilité d'exporter vers CSV et PDF, juste au cas où.",
+                        pt: "O objetivo desta biblioteca de código aberto é oferecer aos usuários finais um conjunto de ferramentas integradas em gráficos e tabelas para reduzir o atrito de ter que recalcular os dados exportados. Claro, o Vue Data UI mantém a opção de exportar para CSV e PDF, apenas por precaução.",
+                        de: "Der Zweck dieser Open-Source-Bibliothek besteht darin, Endbenutzern eine Reihe integrierter Tools rund um Diagramme und Tabellen zur Verfügung zu stellen, um die Reibung bei der Neuberechnung exportierter Daten zu verringern. Natürlich bietet die Vue Data-Schnittstelle für alle Fälle weiterhin die Möglichkeit, nach CSV und PDF zu exportieren.",
+                        zh: "这个开源库的目的是为最终用户提供一组围绕图表和表格的内置工具，以减少重新计算导出数据的麻烦。当然，Vue Data UI 保留了导出为 CSV 和 PDF 的选项，以防万一。",
+                        jp: "このオープン ソース ライブラリの目的は、エクスポートされたデータを再計算する労力を軽減するためのチャートとテーブル用の一連の組み込みツールをエンド ユーザーに提供することです。もちろん、Vue Data UI には、万が一に備えて CSV または PDF にエクスポートするオプションが用意されています。",
+                        es: "El propósito de esta biblioteca de código abierto es ofrecer a los usuarios finales un conjunto de herramientas integradas en torno a gráficos y tablas para reducir la fricción de tener que volver a calcular los datos exportados. Por supuesto, Vue Data UI mantiene la opción de exportar a CSV y PDF, por si acaso."
                     },
                     p3: {
                         en: "Vue Data UI offers a set of classic chart types, along with new or rare items, such as",
@@ -777,14 +777,14 @@ export const useMainStore = defineStore("main", {
                             jp: "PDF として印刷するには、親コンポーネントからこのメソッドを呼び出します。これは、ユーザー オプションが非表示の場合に特に便利です。",
                             es: "Llame a este método desde el componente principal para imprimir como PDF. Esto es especialmente útil si las opciones de usuario están ocultas."
                         },
-                        generateXls: {
-                            en: "Call this method from the parent component to generate an Excel extraction. This is especially useful if user options are hidden.",
-                            fr: "Appelez cette méthode depuis le composant parent pour générer une extraction Excel. Ceci est particulièrement utile si les options utilisateur sont masquées.",
-                            pt: "Chame esse método do componente pai para gerar uma extração do Excel. Isto é especialmente útil se as opções do usuário estiverem ocultas.",
-                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um eine Excel-Extraktion zu generieren. Dies ist besonders nützlich, wenn Benutzeroptionen ausgeblendet sind.",
-                            zh: "从父组件调用此方法以生成 Excel 提取。如果用户选项被隐藏，这尤其有用。",
-                            jp: "Excel 抽出を生成するには、親コンポーネントからこのメソッドを呼び出します。これは、ユーザー オプションが非表示の場合に特に便利です。",
-                            es: "Llame a este método desde el componente principal para generar una extracción de Excel. Esto es especialmente útil si las opciones de usuario están ocultas."
+                        generateCsv: {
+                            en: "Call this method from the parent component to generate an CSV extraction. This is especially useful if user options are hidden.",
+                            fr: "Appelez cette méthode depuis le composant parent pour générer une extraction CSV. Ceci est particulièrement utile si les options utilisateur sont masquées.",
+                            pt: "Chame esse método do componente pai para gerar uma extração do CSV. Isto é especialmente útil se as opções do usuário estiverem ocultas.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um eine CSV-Extraktion zu generieren. Dies ist besonders nützlich, wenn Benutzeroptionen ausgeblendet sind.",
+                            zh: "从父组件调用此方法以生成 CSV 提取。如果用户选项被隐藏，这尤其有用。",
+                            jp: "CSV 抽出を生成するには、親コンポーネントからこのメソッドを呼び出します。これは、ユーザー オプションが非表示の場合に特に便利です。",
+                            es: "Llame a este método desde el componente principal para generar una extracción de CSV. Esto es especialmente útil si las opciones de usuario están ocultas."
                         },
                         dashboard: {
                             change: {

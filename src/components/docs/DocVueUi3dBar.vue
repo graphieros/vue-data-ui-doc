@@ -26,9 +26,15 @@ const dataset = ref({
     percentage: 66.5
 })
 
+const shapeOptions = ref([
+    "bar",
+    "tube"
+])
+
 const config = ref({
     style: {
         fontFamily: "inherit",
+        shape: "bar",
         chart: {
             animation: {
                 use: true,
@@ -85,6 +91,7 @@ const config = ref({
 const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
+        shape: "bar",
         chart: {
             animation: {
                 use: true,
@@ -241,6 +248,13 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
     const <span class="text-black dark:text-app-blue">config</span> = {
         style: {
             fontFamily: "inherit",
+            shape:  <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.shape">
+            <option>bar</option>
+            <option>tube</option>
+          </select><select v-else v-model="mutableConfig.style.shape">
+            <option>bar</option>
+            <option>tube</option>
+          </select>, (default: "bar")
             chart: {
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">,  (default: "#FFFFFF")
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")

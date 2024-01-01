@@ -1,5 +1,25 @@
 [
     {
+        "version": "v 1.9.52",
+        "date": "2024-01-01",
+        "updates": [
+            {
+                "component": "",
+                "description": "Removed XLSX dependency, which had unfixable vulnerabilities. Now exports will generate csv files."
+            }
+        ]
+    },
+    {
+        "version": "v 1.9.51",
+        "date": "2024-01-01",
+        "updates": [
+            {
+                "component": "VueUi3dBar",
+                "description": "Added tube shape option"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.50",
         "date": "2024-01-01",
         "updates": [
@@ -533,23 +553,23 @@
         "updates": [
             {
                 "component": "VueUiXy",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiDonut",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiWaffle",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiRadar",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiQuadrant",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiGauge",
@@ -557,27 +577,27 @@
             },
             {
                 "component": "VueUiChestnut",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiOnion",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiVerticalBar",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiHeatmap",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiScatter",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiCandlestick",
-                "description": "Expose generatePdf and generateXls methods"
+                "description": "Expose generatePdf and generateCsv methods"
             },
             {
                 "component": "VueUiAgePyramid",
