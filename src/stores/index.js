@@ -309,6 +309,15 @@ export const useMainStore = defineStore("main", {
                             zh: "或者您可以从文件中导入您需要的内容",
                             jp: "または、ファイル内の必要なものだけをインポートすることもできます",
                             es: "O puedes importar sólo lo que necesitas en tus archivos"
+                        },
+                        types: {
+                            en: "If you are using Typescript, you can paste the vue-data-ui.d.ts file into your src folder, and import types this way:",
+                            fr: "Si vous utilisez Typescript, vous pouvez coller le fichier vue-data-ui.d.ts dans votre dossier src et importer les types de cette façon :",
+                            pt: "Se estiver usando Typescript, você pode colar o arquivo vue-data-ui.d.ts em sua pasta src e importar os tipos desta forma:",
+                            de: "Wenn Sie Typescript verwenden, können Sie die Datei vue-data-ui.d.ts in Ihren src-Ordner einfügen und Typen auf diese Weise importieren:",
+                            zh: "如果您使用的是 Typescript，您可以将 vue-data-ui.d.ts 文件粘贴到 src 文件夹中，并以这种方式导入类型：",
+                            jp: "Typescript を使用している場合は、vue-data-ui.d.ts ファイルを src フォルダーに貼り付け、次の方法で型をインポートできます。",
+                            es: "Si está utilizando Typecript, puede pegar el archivo vue-data-ui.d.ts en su carpeta src e importar tipos de esta manera:"
                         }
                     }
                 },

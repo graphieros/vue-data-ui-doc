@@ -33,7 +33,7 @@ const translations = computed(() => {
             </a>
         </div>
         
-        <div class="z-10 p-6 border border-gray-700 rounded-lg flex flex-col mt-6 bg-gray-200 dark:bg-[rgb(26,26,26)]">
+        <div class="z-10 p-6 border border-gray-700 rounded-lg flex flex-col mt-6 bg-gray-200 dark:bg-[rgb(26,26,26)] max-w-[800px]">
             <span class="text-app-blue">src/main.js</span>
             <code class="mt-3 text-start">
                 import { createApp } from 'vue'<br>
@@ -57,7 +57,23 @@ const translations = computed(() => {
                &lt;script setup&gt;<br>
                &nbsp;&nbsp;import { <span class="text-gray-800 dark:text-app-green">VueUiRadar, VueUiXy</span> } from "vue-data-ui";<br>
                &lt;/script&gt;<br><br>
+               <span class="text-gray-600 dark:text-gray-500 text-left">// {{ translations.installation.comments.types[store.lang] }}</span><br><br>
+               &lt;script setup&gt;<br>
+               &nbsp;&nbsp;import { ref } from "vue";<br>
+               &nbsp;&nbsp;import { <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-800 dark:text-app-green">VueUiRadar, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">type </span>VueUiRadarDataset,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">type </span>VueUiRadarConfig</span><br>
+                &nbsp;&nbsp;} from "vue-data-ui";<br><br>
+                const dataset = ref&lt;<span class="text-gray-800 dark:text-app-green">VueUiRadarDataset</span>&gt;({
+                    ...
+                })<br>
+                const config = ref&lt;<span class="text-gray-800 dark:text-app-green">VueUiRadarConfig</span>&gt;({
+                    ...
+                })<br>
+               &lt;/script&gt;<br><br>
             </code>
+
         </div>
     </div>
 </template>
