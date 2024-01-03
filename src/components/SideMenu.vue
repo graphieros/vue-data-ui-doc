@@ -301,6 +301,13 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: 'Icon',
     },
+    {
+        route: '/docs#vue-ui-digits',
+        icon: 'digit8',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Digits',
+    },
 ])
 
 const isTooltip = ref(false);
@@ -446,6 +453,9 @@ const thisApp = computed(() => {
             </router-link>
             <router-link to="/docs#vue-ui-icon" @click="scrollToTop">
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-icon') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-icon')" class="-ml-6"/><VueUiIcon :size="18" name="smiley" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-icon')"/>  <span class="text-gray-500">VueUi</span>Icon</div>
+            </router-link>
+            <router-link to="/docs#vue-ui-digits" @click="scrollToTop">
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-digits') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-digits')" class="-ml-6"/><VueUiIcon :size="18" name="digit8" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-digits')"/>  <span class="text-gray-500">VueUi</span>Digits</div>
             </router-link>
         </section>
     </template>

@@ -36,7 +36,8 @@ import {
     VueUiDonutEvolution,
     VueUiIcon,
     VueUiMoodRadar,
-    VueUi3dBar
+    VueUi3dBar,
+    VueUiDigits
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -77,5 +78,6 @@ app.component("VueUiDonutEvolution", VueUiDonutEvolution);
 app.component("VueUiIcon", VueUiIcon);
 app.component("VueUiMoodRadar", VueUiMoodRadar);
 app.component("VueUi3dBar", VueUi3dBar);
+app.component("VueUiDigits", VueUiDigits);
 
 app.mount('#app')

@@ -36,6 +36,7 @@ import DocVueUiDonutEvolution from "../components/docs/DocVueUiDonutEvolution.vu
 import DocVueUiIcon from "../components/docs/DocVueUiIcon.vue";
 import DocVueUiMoodRadar from "../components/docs/DocVueUiMoodRadar.vue";
 import DocVueUi3dBar from "../components/docs/DocVueUi3dBar.vue";
+import DocVueUiDigits from "../components/docs/DocVueUiDigits.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 
 import { CheckIcon, SquareRoundedLetterSIcon } from "vue-tabler-icons";
@@ -350,6 +351,14 @@ const menuItems = computed(() => [
         thumb: new URL('../assets/thumb_3d_bar.png', import.meta.url).href,
         hasSlot: true
     },
+    {
+        name: "Digits",
+        icon: "digit8",
+        tooltip: translations.value.docs.tooltips.digits[store.lang],
+        link: "/docs#vue-ui-digits",
+        type: "tool",
+        hasSlot: false
+    },
 ])
 
 </script>
@@ -396,6 +405,7 @@ const menuItems = computed(() => [
             <DocVueUiIcon v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-icon'"/>
             <DocVueUiMoodRadar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-mood-radar'"/>
             <DocVueUi3dBar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-3d-bar'"/>
+            <DocVueUiDigits v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-digits'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">
