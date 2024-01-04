@@ -22,7 +22,7 @@ const isDarkMode = computed(() => {
 
 const icons = ref([
     "close",
-    "CSV",
+    "excel",
     "image",
     "labelClose",
     "labelOpen",
@@ -120,7 +120,7 @@ const specialIcons = ref([
 
 <code>
     &lt;<span class="text-app-green">VueUiIcon</span>
-        name="CSV"
+        name="moodHappy"
         :size="24"
         stroke="#1A1A1A"
         :strokeWidth="1.5"
