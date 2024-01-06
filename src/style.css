@@ -86,3 +86,101 @@ input[type="color"]::-moz-color-swatch {
 .dark summary:not([class*="vue"])::marker {
   color: #42d392;
 }
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  border: none;
+  appearance: none;
+  position: relative;
+  display: inline-block;
+  background: lightgrey;
+  height: 1.65rem;
+  width: 3.75rem;
+  vertical-align: middle;
+  border-radius: 2rem !important;
+  box-shadow: 0px 1px 3px #0003 inset;
+  transition: 0.15s linear background;
+}
+input[type="checkbox"]::before {
+  content: "false";
+  font-size: 0.6em;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  color: #1A1A1A;
+  width: 2.2rem;
+  height: 1.2rem;
+  background: #F3F4F6;
+  border-radius: 1.2rem !important;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  box-shadow: 0px 1px 3px #0003;
+  transition: 0.15s linear transform;
+  transform: translateX(0rem);
+}
+
+input[type="checkbox"]:checked {
+  background: #5F8bee;
+}
+input[type="checkbox"]:checked::before {
+  content: "true";
+  font-size: 0.6em;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  color: #1A1A1A;
+  transform: translateX(1.1rem);
+  box-shadow: -2px 0px 10px #2f4c91;
+}
+
+.dark input[type="checkbox"] {
+  border: none;
+  appearance: none;
+  position: relative;
+  display: inline-block;
+  background: #3A3A3A;
+  height: 1.65rem;
+  width: 3.75rem;
+  vertical-align: middle;
+  border-radius: 2rem !important;
+  box-shadow: 0px 1px 3px #0003 inset;
+  transition: 0.15s linear background;
+  border: 1px solid #5A5A5A;
+}
+.dark input[type="checkbox"]::before {
+  content: "false";
+  font-size: 0.6em;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  color: #1A1A1A;
+  width: 2.2rem;
+  height: 1.2rem;
+  background: #F3F4F6;
+  border-radius: 1.2rem !important;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  box-shadow: 0px 1px 3px #0003;
+  transition: 0.15s linear transform;
+  transform: translateX(0rem);
+}
+
+.dark input[type="checkbox"]:checked {
+  background: #5F8bee;
+  border: none;
+}
+.dark input[type="checkbox"]:checked::before {
+  content: "true";
+  font-size: 0.6em;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  color: #1A1A1A;
+  transform: translateX(1.1rem);
+  box-shadow: -2px -2px 10px #2f4c91;
+}

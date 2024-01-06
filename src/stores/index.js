@@ -415,6 +415,15 @@ export const useMainStore = defineStore("main", {
                         es: "Las páginas de documentación le proporcionan una pestaña de configuración donde puede modificar su configuración y guardarla como JSON. También puedes cambiar de temas oscuros a claros para guardar configuraciones para ambos modos."
                     },
                     tooltips: {
+                        molecule: {
+                            en: "Visualize a nested tree of nodes",
+                            fr: "Visualisez une arborescence de nœuds imbriquée",
+                            pt: "Visualize uma árvore aninhada de nós",
+                            de: "Visualisieren Sie einen verschachtelten Knotenbaum",
+                            zh: "可视化嵌套的节点树",
+                            jp: "ネストされたノードのツリーを視覚化する",
+                            es: "Visualice un árbol de nodos anidado"
+                        },
                         digits: {
                             en: "Show numbers with a classic electronic display",
                             fr: "Afficher les chiffres avec un affichage électronique classique",

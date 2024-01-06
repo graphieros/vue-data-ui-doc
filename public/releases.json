@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.60",
+        "date": "2024-01-06",
+        "updates": [
+            {
+                "component": "VueUiMolecule",
+                "description": "Create component"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.54",
         "date": "2024-01-04",
         "updates": [

@@ -37,6 +37,7 @@ import DocVueUiIcon from "../components/docs/DocVueUiIcon.vue";
 import DocVueUiMoodRadar from "../components/docs/DocVueUiMoodRadar.vue";
 import DocVueUi3dBar from "../components/docs/DocVueUi3dBar.vue";
 import DocVueUiDigits from "../components/docs/DocVueUiDigits.vue";
+import DocVueUiMolecule from "../components/docs/DocVueUiMolecule.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 
 import { CheckIcon, SquareRoundedLetterSIcon } from "vue-tabler-icons";
@@ -359,6 +360,15 @@ const menuItems = computed(() => [
         type: "tool",
         hasSlot: false
     },
+    {
+        name: "Molecule",
+        icon: "chartCluster",
+        tooltip: translations.value.docs.tooltips.molecule[store.lang],
+        thumb: new URL('../assets/thumb_molecule.png', import.meta.url).href,
+        link: "/docs#vue-ui-molecule",
+        type: "classic",
+        hasSlot: true
+    },
 ])
 
 </script>
@@ -406,6 +416,7 @@ const menuItems = computed(() => [
             <DocVueUiMoodRadar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-mood-radar'"/>
             <DocVueUi3dBar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-3d-bar'"/>
             <DocVueUiDigits v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-digits'"/>
+            <DocVueUiMolecule v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-molecule'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">
