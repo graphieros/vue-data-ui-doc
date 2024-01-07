@@ -2,7 +2,7 @@
 import { computed, ref, onMounted } from "vue";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
-import { BrightnessUpIcon, MoonIcon, LanguageIcon } from "vue-tabler-icons";
+import { BrightnessUpIcon, MoonIcon, LanguageIcon, StarFilledIcon } from "vue-tabler-icons";
 import AppSkeletons from "../components/AppSkeletons.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 
@@ -101,8 +101,27 @@ const downloadsUrl = computed(() => {
 });
 
 const downloads = ref(null);
+const stars = ref(0);
+
+const owner = 'graphieros'; 
+const repo = 'vue-data-ui';
 
 onMounted(() => {
+
+  fetch(`https://api.github.com/repos/${owner}/${repo}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    const starsCount = data.stargazers_count;
+    stars.value = starsCount;
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
 
   fetch(downloadsUrl.value, {
     method: 'GET',
@@ -209,7 +228,18 @@ const digitConfig = computed(() => {
     backgroundColor: 'transparent',
     digits: {
       color: isDarkMode.value ? '#42d392' : '#1A1A1A',
-      skeletonColor: isDarkMode.value ? '#3A3A3A' : '#BBBBBB'
+      skeletonColor: isDarkMode.value ? '#3A3A3A' : '#e1e5e8'
+    }
+  }
+})
+
+const digitConfigStars = computed(() => {
+  return {
+    height: "100%",
+    backgroundColor: 'transparent',
+    digits: {
+      color: isDarkMode.value ? '#fdd663' : '#1A1A1A',
+      skeletonColor: isDarkMode.value ? '#2A2A2A' : '#e1e5e8'
     }
   }
 })
@@ -268,16 +298,23 @@ const digitConfig = computed(() => {
           </router-link>
         </div>
         <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10">
-            <button class="flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue w-[220px] gap-3 transition-all">
+            <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue gap-3 transition-all">
               <BrandGithubFilledIcon/>
               <span>
                 {{ translations.github[store.lang] }}
               </span>
+              <div class="flex flex-row gap-2 place-items-center">
+                <StarFilledIcon class="text-[#fdd663]"/>
+                <span class="text-xs dark:text-[#fdd663] h-[20px]">
+                  <VueUiDigits :dataset="stars" :config="digitConfigStars"/>
+                </span>
+              </div>
+
             </button>
           </a>
           <button data-cy="switch-mode" @click="changeTheme" class="z-10 dark:text-gray-400 hover:underline flex flex-row gap-2 place-items-center">
             <BrightnessUpIcon v-if="store.isDarkMode"/>
-                      <MoonIcon v-else/>{{ isDarkMode ? translations.lightMode[store.lang] : translations.darkMode[store.lang] }}
+            <MoonIcon v-else/>{{ isDarkMode ? translations.lightMode[store.lang] : translations.darkMode[store.lang] }}
           </button>
       </div>
     </div>
