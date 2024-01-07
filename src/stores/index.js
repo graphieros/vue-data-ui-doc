@@ -460,6 +460,15 @@ export const useMainStore = defineStore("main", {
                             jp: "他のアイコンも利用可能:",
                             es: "Otros iconos disponibles:"
                         },
+                        iconUserOptions: {
+                            en: "Icons used in the user options menus:",
+                            fr: "Icônes utilisées dans les menus d'options:",
+                            pt: "Ícones usado nos menus de opções do usuário:",
+                            de: "In den Benutzeroptionsmenüs verwendete Symbole:",
+                            zh: "用户选项菜单中使用的图标：",
+                            jp: "ユーザー オプション メニューで使用されるアイコン:",
+                            es: "Iconos utilizados en los menús de opciones de usuario:"
+                        },
                         icon: {
                             en: "A collection of handcrafted icons, ideal if you choose to hide the built-in user options menu and make your own.",
                             fr: "Une collection d'icônes fabriquées à la main, idéale si vous choisissez de masquer le menu d'options utilisateur intégré et de créer le vôtre.",
