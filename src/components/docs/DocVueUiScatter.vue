@@ -4,6 +4,7 @@ import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
+import GitHubLink from "../GitHubLink.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -368,8 +369,9 @@ function fixChart() {
             </div>
             <VueUiScatter :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-colors" @click="copyToClipboard(mainConfig.vue_ui_scatter)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
+        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
+            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_scatter)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
+            <GitHubLink link="vue-ui-scatter"/>
         </div>
         <Box showEmits showSlots>
             <template v-slot:tab0>

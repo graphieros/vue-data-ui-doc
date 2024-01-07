@@ -19,6 +19,15 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                githubCode: {
+                    en: "View source code",
+                    fr: "Afficher le code source",
+                    pt: "Ver código-fonte",
+                    de: "Quellcode anzeigen",
+                    zh: "查看源代码",
+                    jp: "ソースコードを表示する",
+                    es: "Ver código fuente"
+                },
                 downloads: {
                     en: "Downloads:",
                     fr: "Téléchargements:",

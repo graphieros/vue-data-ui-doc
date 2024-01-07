@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, defineAsyncComponent, markRaw } from "vue";
+import { ref, computed, defineAsyncComponent } from "vue";
 import AppSkeletons from '../components/AppSkeletons.vue';
 import { useMainStore } from '../stores';
 
