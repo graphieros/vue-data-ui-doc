@@ -87,7 +87,34 @@ function updateSparkline() {
 
 const clientPosition = ref({x: 0, y: 0});
 
+const start = ref("2023-07-25");
+const end = computed(() => {
+  const d = new Date(Date.now());
+  const day = d.getDate();
+  const month = d.getMonth()+1;
+  const year = d.getFullYear();
+  return `${year}-${String(month).length === 1 ? `0${month}` : month}-${String(day).length === 1 ? `0${day}` : day}`;
+})
+
+const downloadsUrl = computed(() => {
+    return `https://api.npmjs.org/downloads/range/${start.value}:${end.value}/vue-data-ui`;
+});
+
+const downloads = ref(null);
+
 onMounted(() => {
+
+  fetch(downloadsUrl.value, {
+    method: 'GET',
+    cache: 'default',
+  }).then((response) => {
+    return response.json()
+  }).then(data => {
+    downloads.value = data.downloads.map(d => d.downloads).reduce((a,b) => a + b, 0)
+  }).catch(err => {
+    console.error(err.message)
+  })
+
   fetch(versionsUrl.value, {
     method: 'GET',
     cache: 'default',
@@ -176,6 +203,17 @@ const sparklineConfig = ref({
   }
 });
 
+const digitConfig = computed(() => {
+  return {
+    height: "100%",
+    backgroundColor: 'transparent',
+    digits: {
+      color: isDarkMode.value ? '#42d392' : '#1A1A1A',
+      skeletonColor: isDarkMode.value ? '#3A3A3A' : '#BBBBBB'
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -185,8 +223,8 @@ const sparklineConfig = ref({
         <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'"/>
         <AppSkeletons/>
       </div>
-    <div class="z-10 mx-auto flex flex-col gap-6 w-full h-[calc(100svh_-_49px)] place-items-center place-content-center">
-    <div class="home-perspective-wrapper"> 
+    <div class="z-10 mx-auto flex flex-col sm:flex-row gap-6 sm:gap-12 w-full h-[calc(100svh_-_49px)] place-items-center place-content-center sm:justify-around max-w-[1000px]">
+    <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[400px] place-items-center"> 
       <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${deviationX * 20}deg)`">
         <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[100px] sm:h-[200px] mx-auto drop-shadow-2xl">
         <div class="w-full absolute top-[100%] left-0 -translate-x-[20px] sm:-translate-x-[40px]">
@@ -194,47 +232,56 @@ const sparklineConfig = ref({
           <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset2" :config="{...sparklineConfig, type: 'line'}" class="absolute"/>
           </div>
       </div>
-    </div>
-    <div class="relative">
-      <h1 class="z-10 mx-auto text-[48px] md:text-[64px] font-satoshi-bold text-center"><span class="text-app-green" data-cy="app-name-vue">Vue</span> <span data-cy="app-name" class="text-app-blue">Data UI</span></h1>
-      <span v-if="versionsList.length" class="absolute left-1/2 -translate-x-1/2 text-xs">{{ versionsList[0].version }}</span>
-    </div>
-    <div class="z-10 flex flex-row place-items-center gap-2">
-      <LanguageIcon/>
-        <select data-cy="select-lang" v-model="selectedLanguage" class="h-[36px] px-2">
-          <option v-for="option in languageOptions" :value="option.value">
-            {{ option.text }}
-          </option>
-        </select>
-    </div>
-      <p data-cy="tag-line" class="z-10 mx-auto text-xl text-black dark:text-gray-200 text-center">
-        {{ translations.tagline[store.lang] }}
-      </p>
-      <div class="z-10 flex flex-row gap-6 mt-6">
-        <router-link to="/installation">
-            <button data-cy="btn-install" class="bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:shadow-xl hover:from-app-blue hover:to-app-green transition-all">
-              {{ translations.menu.installation[store.lang] }}
-            </button>
-        </router-link>
-        <router-link to="/docs">
-            <button data-cy="btn-docs" class="bg-white hover:shadow-xl dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold dark:hover:bg-[rgba(255,255,255,0.05)] transition-all hover:border-app-blue">
-              {{ translations.menu.docs[store.lang] }}
-            </button>
-        </router-link>
+            <div class="relative">
+        <h1 class="z-10 mx-auto text-[48px] md:text-[64px] font-satoshi-bold text-center"><span class="text-app-green" data-cy="app-name-vue">Vue</span> <span data-cy="app-name" class="text-app-blue">Data UI</span></h1>
+        <span v-if="versionsList.length" class="absolute left-1/2 -translate-x-1/2 text-xs">{{ versionsList[0].version }}</span>
       </div>
-      <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10">
-          <button class="flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue w-[220px] gap-3 transition-all">
-            <BrandGithubFilledIcon/>
-            <span>
-              {{ translations.github[store.lang] }}
-            </span>
-          </button>
-        </a>
-        <button data-cy="switch-mode" @click="changeTheme" class="z-10 dark:text-gray-400 hover:underline flex flex-row gap-2 place-items-center">
-          <BrightnessUpIcon v-if="store.isDarkMode"/>
-                    <MoonIcon v-else/>{{ isDarkMode ? translations.lightMode[store.lang] : translations.darkMode[store.lang] }}
-        </button>
+      <p data-cy="tag-line" class="z-10 mx-auto text-xl text-black dark:text-gray-200 text-center">
+          {{ translations.tagline[store.lang] }}
+        </p>
     </div>
+
+    <div class="z-10 flex flex-col place-items-center gap-4">
+    
+      <div class="z-10 flex flex-row place-items-center gap-2">
+        <LanguageIcon/>
+          <select data-cy="select-lang" v-model="selectedLanguage" class="h-[36px] px-2">
+            <option v-for="option in languageOptions" :value="option.value">
+              {{ option.text }}
+            </option>
+          </select>
+      </div>
+        <div class="mx-auto h-[40px] flex flex-row gap-3 place-items-center">
+          <small>{{ translations.downloads[store.lang] }}</small>
+          <VueUiDigits :dataset="downloads" :config="digitConfig"/>
+        </div>
+        <div class="z-10 flex flex-row gap-6 mt-6">
+          <router-link to="/installation">
+              <button data-cy="btn-install" class="bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:shadow-xl hover:from-app-blue hover:to-app-green transition-all">
+                {{ translations.menu.installation[store.lang] }}
+              </button>
+          </router-link>
+          <router-link to="/docs">
+              <button data-cy="btn-docs" class="bg-white hover:shadow-xl dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold dark:hover:bg-[rgba(255,255,255,0.05)] transition-all hover:border-app-blue">
+                {{ translations.menu.docs[store.lang] }}
+              </button>
+          </router-link>
+        </div>
+        <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10">
+            <button class="flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue w-[220px] gap-3 transition-all">
+              <BrandGithubFilledIcon/>
+              <span>
+                {{ translations.github[store.lang] }}
+              </span>
+            </button>
+          </a>
+          <button data-cy="switch-mode" @click="changeTheme" class="z-10 dark:text-gray-400 hover:underline flex flex-row gap-2 place-items-center">
+            <BrightnessUpIcon v-if="store.isDarkMode"/>
+                      <MoonIcon v-else/>{{ isDarkMode ? translations.lightMode[store.lang] : translations.darkMode[store.lang] }}
+          </button>
+      </div>
+    </div>
+
     </div>
 </template>
 

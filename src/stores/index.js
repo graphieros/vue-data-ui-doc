@@ -19,6 +19,15 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                downloads: {
+                    en: "Downloads:",
+                    fr: "Téléchargements:",
+                    pt: "Transferências:",
+                    de: "Downloads:",
+                    zh: "下载次数：",
+                    jp: "ダウンロード:",
+                    es: "Descargas:"
+                },
                 slots: {
                     summary: {
                         en: "Components marked with this icon provide a #svg slot to extend the svg with custom elements.",
