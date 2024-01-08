@@ -44,6 +44,17 @@ const config = ref({
         showPlots: true
       }
     },
+    donutEvolution: {
+      axis: {
+        show: true,
+        color: "#C4C4C4",
+        strokeWidth: 0.5
+      },
+      donuts: {
+        strokeWidth: 0.5,
+        color: "#C4C4C4"
+      }
+    },
     bar: {
       axis: {
         show: true,
@@ -164,6 +175,17 @@ const darkModeConfig = ref({
         showPlots: true
       }
     },
+    donutEvolution: {
+      axis: {
+        show: true,
+        color: "#5c5c5c",
+        strokeWidth: 0.5
+      },
+      donuts: {
+        strokeWidth: 0.5,
+        color: "#5c5c5c"
+      },
+    },
     bar: {
       axis: {
         show: true,
@@ -269,6 +291,7 @@ const options = ref([
     "candlesticks",
     "chestnut",
     "donut",
+    "donutEvolution",
     "gauge",
     "heatmap",
     "line",
@@ -401,6 +424,17 @@ const <span class="text-black dark:text-app-blue">config: VueUiSkeletonConfig</s
         color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.line.path.color"><input v-else type="color" v-model="mutableConfig.style.line.path.color">, (default: "#e1e5e8")
         strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.line.path.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.line.path.strokeWidth">, (default: 1)
         showPlots: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.line.path.showPlots"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.line.path.showPlots">, (default: true)
+      }
+    },
+    donutEvolution: {
+      axis: {
+        show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.donutEvolution.axis.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.donutEvolution.axis.show">, (default: true)
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.donutEvolution.axis.color"><input v-else type="color" v-model="mutableConfig.style.donutEvolution.axis.color">, (default: "#e1e5e8")
+        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.donutEvolution.axis.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.donutEvolution.axis.strokeWidth">, (default: 0.5)
+      },
+      donuts: {
+        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.donutEvolution.donuts.color"><input v-else type="color" v-model="mutableConfig.style.donutEvolution.donuts.color">, (default: "#e1e5e8")
+        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.donutEvolution.donuts.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.donutEvolution.donuts.strokeWidth">, (default: 0.5)
       }
     },
     bar: {

@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.61",
+        "date": "2024-01-08",
+        "updates": [
+            {
+                "component": "VueUiSkeleton",
+                "description": "Added donutEvolution type"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.60",
         "date": "2024-01-06",
         "updates": [
