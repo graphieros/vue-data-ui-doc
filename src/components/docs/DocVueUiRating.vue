@@ -245,18 +245,21 @@ function showRating(r) {
         <Box showEmits>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
+                <div class="mt-4">
+                    TS type: <code class="text-app-green">VueUiRatingDataset</code>
+                </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
 <span class="text-gray-500">
 // {{ translations.docs.comments.rating.simpleRating[store.lang] }} :
 </span>
-const <span class="text-black dark:text-app-green">dataset</span> = { rating: 3.6 };
+const <span class="text-black dark:text-app-green">dataset: VueUiRatingDataset</span> = { rating: 3.6 };
 
 <span class="text-gray-500">
 // {{ translations.docs.comments.rating.breakdown[store.lang] }} :
 </span>
-const <span class="text-black dark:text-app-green">dataset</span> = {
+const <span class="text-black dark:text-app-green">dataset: VueUiRatingDataset</span> = {
     rating: {
         "1": 146,
         "2": 225,
@@ -276,10 +279,13 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                     <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
                     <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                 </div>
+                <div class="mt-4">
+                    TS type: <code class="text-app-blue">VueUiRatingConfig</code>
+                </div>
                 <div class="overflow-w-auto">
 <pre>
 <code>
-const <span class="text-black dark:text-app-blue">config</span> = {
+const <span class="text-black dark:text-app-blue">config: VueUiRatingConfig</span> = {
     type: "star", <span class="text-gray-500">// {{ translations.docs.comments.rating.useImage[store.lang] }}</span>
     readonly: {{ mode === "readonly" ? "true" : "false" }}, (default: false)
     from: <input v-if="isDarkMode" type="number" min="0" max="9" v-model="mutableConfigDarkMode.from" @change="forceChartUpdate()"><input v-else type="number" min="0" max="9" v-model="mutableConfig.from" @change="forceChartUpdate()">, (default: 1)

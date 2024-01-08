@@ -294,6 +294,9 @@ function fixChart() {
       <template v-slot:tab0>
         {{ translations.docs.datastructure[store.lang] }}
         <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+        <div class="mt-4">
+          TS type: <code class="text-app-green">VueUiRelationCircleDatasetItem[]</code>
+        </div>
           <pre>
 <code>
     [
@@ -312,7 +315,7 @@ function fixChart() {
           <div class="w-full overflow-x-auto">
             <pre>
 <code>
-const <span class="text-black dark:text-app-green">dataset</span> = [
+const <span class="text-black dark:text-app-green">dataset: VueUiRelationCircleDatasetItem[]</span> = [
     {
         id: "01",
         label: "Lorem",
@@ -419,9 +422,14 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
             <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
           </button>
         </div>
+
+        <div class="mt-4">
+          TS type: <code class="text-app-blue">VueUiRelationCircleConfig</code>
+        </div>
+
         <pre>
 <code>
-const <span class="text-black dark:text-app-blue">config</span> = {
+const <span class="text-black dark:text-app-blue">config: VueUiRelationCircleConfig</span> = {
     style: {
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
         color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.color"><input v-else type="color" v-model="mutableConfig.style.color">, (default: "#2D353C")

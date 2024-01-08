@@ -274,6 +274,9 @@ function fixChart() {
         
           <template #tab0>
             {{ translations.docs.datastructure[store.lang] }}
+            <div class="mt-4">
+              TS type: <code class="text-app-green">VueUiRingsDatasetItem[]</code>
+            </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
@@ -291,7 +294,7 @@ function fixChart() {
       <div class="w-full overflow-x-auto">
 <pre>
 <code>
-const <span class="text-black dark:text-app-green">dataset</span> = [
+const <span class="text-black dark:text-app-green">dataset: VueUiRingsDatasetItem[]</span> = [
   [
         {
             name: "Serie 1",
@@ -332,9 +335,12 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
               <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
               <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/>{{  translations.docs.copyThisConfig[store.lang]  }}</button>
           </div>
+          <div class="mt-4">
+            TS type: <code class="text-app-blue">VueUiRingsConfig</code>
+          </div>
 <pre>
 <code>
-  const <span class="text-app-blue">config</span> = {
+  const <span class="text-app-blue">config: VueUiRingsConfig</span> = {
   useBlurOnHover: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()">, (default: true) 
   useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true) 
   style: {

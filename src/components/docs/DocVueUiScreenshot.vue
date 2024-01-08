@@ -375,10 +375,14 @@ function copyDefaultConf(conf) {
                         <button @click="copyToClipboard" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                     </div>
                 <div class="text-black dark:text-app-green hover:underline mt-4 cursor-pointer" role="button" @click="reopen">{{ translations.docs.comments.screenshot.refresh[store.lang] }}</div>
+                
+                <div class="mt-4">
+                  TS type: <code class="text-app-blue">VueUiScreenshotConfig</code>
+                </div>
                 <div class="overflow-x-auto">
 <pre>
 <code v-if="mode === 'post'">
-const <span class="text-black dark:text-app-blue">config</span> = {
+const <span class="text-black dark:text-app-blue">config: VueUiScreenshotConfig</span> = {
     mode: "post", (default:"download")
     quality: <input v-if="isDarkMode" type="number" min="0.1" max="3" step="0.1" v-model="mutablePostConfigDarkMode.quality"><input v-else type="number" min="0.1" max="3" step="0.1" v-model="mutablePostConfig.quality">, (default: 1) <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.screenshot.quality[store.lang] }}</span>
     style: {
@@ -434,7 +438,7 @@ const <span class="text-black dark:text-app-blue">config</span> = {
 }
 </code>
 <code v-if="mode === 'download'">
-const <span class="text-black dark:text-app-blue">config</span> = {
+const <span class="text-black dark:text-app-blue">config: VueUiScreenshotConfig</span> = {
     mode: "post", (default:"download")
     quality: <input type="number" min="0.1" max="3" step="0.1" v-model="mutableDownloadConfig.quality">, (default: 1) <span class="text-gray-600 dark:text-app-green">// don't set it up too high if you care about image size</span>
     style: {

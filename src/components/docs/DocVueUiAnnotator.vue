@@ -260,6 +260,9 @@ function saveAnnotations({ shapes, lastSelectedShape }) {
           <template #tab0>
             {{ translations.docs.datastructure[store.lang] }}<br>
             {{ translations.docs.comments.annotator.datastructure[store.lang] }}
+            <div class="mt-4">
+              TS type: <code class="text-app-green">VueUiAnnotatorDataset</code>
+            </div>
             <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
@@ -275,7 +278,7 @@ function saveAnnotations({ shapes, lastSelectedShape }) {
 <span class="text-app-orange">{{ translations.docs.comments.annotator.notByYourself[store.lang] }}</span>
 <pre>
 <code>
-const <span class="text-black dark:text-app-green">dataset</span> = {
+const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDataset</span> = {
     shapes: [
         {
             "alpha": "FA",
@@ -354,9 +357,12 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                     <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
                     <button @click="copyToClipboard(mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                 </div>
+                <div class="mt-4">
+                  TS type: <code class="text-app-blue">VueUiAnnotatorConfig</code>
+                </div>
   <pre>
   <code>
-  const <span class="text-black dark:text-app-blue">config</span> = {
+  const <span class="text-black dark:text-app-blue">config: VueUiAnnotatorConfig</span> = {
     style: {
         backgroundColor: <input  type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
         color: <input  type="color" v-model="mutableConfig.style.color">, (default: "#2D353C")

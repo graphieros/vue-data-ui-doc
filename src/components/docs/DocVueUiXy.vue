@@ -530,6 +530,9 @@ const shapeOptions = ref([
             <template v-slot:tab0>
 
             {{ translations.docs.datastructure[store.lang] }}
+            <div>
+                TS type: <code class="text-app-green">VueUiXyDatasetItem[]</code>
+            </div>
             <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
@@ -560,7 +563,7 @@ const shapeOptions = ref([
                     
 <pre class="break-words">
 <code class="break-words">
-const <span class="text-black dark:text-app-green">dataset</span> = [
+const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]</span> = [
     {
         name: <span class="text-app-blue">"Series 1",</span>
         series: <span class="text-app-blue">[-55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],</span>
@@ -635,9 +638,12 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
                     <p class="mt-3 text-gray-400">
                         {{  translations.docs.cssOverride[store.lang]  }}
                     </p>
+                    <div>
+                    TS type: <code class="text-app-blue">VueUiXyConfig</code>
+                    </div>
 <pre>
 <code>
-const <span class="text-black dark:text-app-blue">config</span> = {
+const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> = {
         useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)
         useCanvas: {{ useCanvas }},
         chart: {

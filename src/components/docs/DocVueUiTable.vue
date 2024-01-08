@@ -594,6 +594,9 @@ function copyToClipboard(conf) {
     <Box>
         <template v-slot:tab0>
             {{ translations.docs.datastructure[store.lang] }}
+            <div class="mt-4">
+                TS type: <code class="text-app-green">VueUiTableDataset</code>
+            </div>
             <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
@@ -633,7 +636,7 @@ function copyToClipboard(conf) {
             <div class="w-full overflow-x auto">
 <pre>
 <code>
-const <span class="text-black dark:text-app-green">dataset</span> = [
+const <span class="text-black dark:text-app-green">dataset: VueUiTableDataset</span> = [
     header: [
         {
             name: "touchpoint",
@@ -812,9 +815,12 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
             <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
             <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
         </div>
+        <div class="mt-4">
+            TS type: <code class="text-app-blue">VueUiTableConfig</code>
+        </div>
 <pre>
 <code>
-const <span class="text-black dark:text-app-blue">config</span> = {
+const <span class="text-black dark:text-app-blue">config: VueUiTableConfig</span> = {
     fontFamily: "inherit",
     maxHeight: <input v-if="isDarkMode" type="number" min="100" max="5000" v-model="mutableConfigDarkMode.maxHeight"><input v-else type="number" min="100" max="5000" v-model="mutableConfig.maxHeight">, (default: 500)
     rowsPerPage: 25,

@@ -205,6 +205,9 @@ function fixChart() {
         <Box showEmits showSlots>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
+                <div class="mt-4">
+                  TS type: <code class="text-app-green">VueUiWheelDataset</code>
+                </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
@@ -218,7 +221,7 @@ function fixChart() {
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>
-const <span class="text-black dark:text-app-green">dataset</span> = {
+const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</span> = {
     percentage: 66.5
 }
 </code>
@@ -230,10 +233,13 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                     <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
                     <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                 </div>
+                <div class="mt-4">
+                  TS type: <code class="text-app-blue">VueUiWheelConfig</code>
+                </div>
                 <div class="overflow-w-auto">
 <pre>
 <code>
-const <span class="text-black dark:text-app-blue">config</span> = {
+const <span class="text-black dark:text-app-blue">config: VueUiWheelConfig</span> = {
   style: {
     fontFamily: "inherit",
     chart: {

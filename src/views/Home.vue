@@ -303,7 +303,7 @@ const digitConfigStars = computed(() => {
               <span>
                 {{ translations.github[store.lang] }}
               </span>
-              <div class="flex flex-row gap-2 place-items-center">
+              <div class="flex flex-row gap-2 place-items-center" v-if="stars">
                 <StarFilledIcon class="text-[#fdd663]"/>
                 <span class="text-xs dark:text-[#fdd663] h-[20px]">
                   <VueUiDigits :dataset="stars" :config="digitConfigStars"/>

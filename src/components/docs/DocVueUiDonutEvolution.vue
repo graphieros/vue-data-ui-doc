@@ -317,6 +317,9 @@ function fixChart() {
             <template #tab0>
             
                 {{ translations.docs.datastructure[store.lang] }}
+                <div class="mt-4">
+                    TS type: <code class="text-app-green">VueUiDonutEvolutionDatasetItem[]</code>
+                </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
@@ -336,7 +339,7 @@ function fixChart() {
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>
-const <span class="text-black dark:text-app-green">dataset</span> = [
+const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionDatasetItem[]</span> = [
     {
         name: "Serie 1",
         values: [55, 34, 21, 13, 8, 5, 8, 13, 21, 34, 55 ],
@@ -364,9 +367,12 @@ const <span class="text-black dark:text-app-green">dataset</span> = [
                     <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
                         <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/>{{  translations.docs.copyThisConfig[store.lang]  }}</button>
                 </div>
+                <div class="mt-4">
+                    TS type: <code class="text-app-blue">VueUiDonutEvolutionConfig</code>
+                </div>
 <pre>
 <code>
-const <span class="text-app-blue">config</span> = {
+const <span class="text-app-blue">config: VueUiDonutEvolutionConfig</span> = {
   style: {
     fontFamily: "inherit",
     chart: {

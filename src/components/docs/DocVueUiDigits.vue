@@ -131,9 +131,12 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
                     <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
                         <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/>{{  translations.docs.copyThisConfig[store.lang]  }}</button>                     
                 </div>
+                <div class="mt-4">
+                    TS type: <code class="text-app-blue">VueUiDigitsConfig</code>
+                </div>
 <pre>
 <code>
-const <span class="text-app-blue">config</span> = {
+const <span class="text-app-blue">config: VueUiDigitsConfig</span> = {
     height: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.height"><input v-else type="text" v-model="mutableConfig.height">, (type: string; default: "100%")
     width: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.width"><input v-else type="text" v-model="mutableConfig.width">, (type: string; default: null)
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.backgroundColor"><input v-else type="color" v-model="mutableConfig.backgroundColor">, (default: "#FFFFFF")
