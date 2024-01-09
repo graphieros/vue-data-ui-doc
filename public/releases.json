@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.64",
+        "date": "2024-01-09",
+        "updates": [
+            {
+                "component": "",
+                "description": "Improved fullscreen behavior"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.63",
         "date": "2024-01-09",
         "updates": [
