@@ -29,6 +29,8 @@ const icons = ref([
     "spin",
     "tableClose",
     "tableOpen",
+    "fullscreen",
+    "exitFullscreen"
 ]);
 
 const specialIcons = ref([
