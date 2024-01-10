@@ -123,16 +123,16 @@ onMounted(() => {
     console.error('There was a problem fetching the data:', error);
   });
 
-  fetch(downloadsUrl.value, {
-    method: 'GET',
-    cache: 'default',
-  }).then((response) => {
-    return response.json()
-  }).then(data => {
-    downloads.value = data.downloads.map(d => d.downloads).reduce((a,b) => a + b, 0)
-  }).catch(err => {
-    console.error(err.message)
-  })
+  // fetch(downloadsUrl.value, {
+  //   method: 'GET',
+  //   cache: 'default',
+  // }).then((response) => {
+  //   return response.json()
+  // }).then(data => {
+  //   downloads.value = data.downloads.map(d => d.downloads).reduce((a,b) => a + b, 0)
+  // }).catch(err => {
+  //   console.error(err.message)
+  // })
 
   fetch(versionsUrl.value, {
     method: 'GET',
@@ -281,10 +281,10 @@ const digitConfigStars = computed(() => {
             </option>
           </select>
       </div>
-        <div class="mx-auto h-[40px] flex flex-row gap-3 place-items-center">
+        <!-- <div class="mx-auto h-[40px] flex flex-row gap-3 place-items-center">
           <small>{{ translations.downloads[store.lang] }}</small>
           <VueUiDigits :dataset="downloads" :config="digitConfig"/>
-        </div>
+        </div> -->
         <div class="z-10 flex flex-row gap-6 mt-6">
           <router-link to="/installation">
               <button data-cy="btn-install" class="bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:shadow-xl hover:from-app-blue hover:to-app-green transition-all">

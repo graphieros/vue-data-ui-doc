@@ -300,39 +300,51 @@ const histoConfig = computed(() => {
 })
 
 onMounted(() => {
-    isLoadingLine.value = true;
-    isLoadingBar.value = true;
+    // isLoadingLine.value = true;
+    // isLoadingBar.value = true;
 
-    fetch(url.value, {
-        method: 'GET',
-        mode: 'cors',
-        cache: 'default'
-    }).then((response) => {
-        isError.value = false;
-        return response.json();
-    }).then(json => {
-      weekData.value = json.downloads;
-        data.value = json.downloads.map(d => {
-            return {
-                period: d.day,
-                value: d.downloads
-            }
-        }).slice(0,-1);
-        isLoadingLine.value = false;
-        // dates.value = json.downloads.map(d => d.day);
-    })
-    .catch(err => {
-        isError.value = true;
-        data.value = [{ period: "", value: 0 }]
-    }).finally(() => {
-    });
+    // fetch(url.value, {
+    //     method: 'GET',
+    //     mode: 'cors',
+    //     cache: 'default'
+    // }).then((response) => {
+    //     isError.value = false;
+    //     return response.json();
+    // }).then(json => {
+    //   weekData.value = json.downloads;
+    //     data.value = json.downloads.map(d => {
+    //         return {
+    //             period: d.day,
+    //             value: d.downloads
+    //         }
+    //     }).slice(0,-1);
+    //     isLoadingLine.value = false;
+    //     // dates.value = json.downloads.map(d => d.day);
+    // })
+    // .catch(err => {
+    //     isError.value = true;
+    //     data.value = [{ period: "", value: 0 }]
+    // }).finally(() => {
+    // });
 
-    fetch("https://registry.npmjs.org/-/v1/search?text=vue-data-ui", {
+    // fetch("https://registry.npmjs.org/-/v1/search?text=vue-data-ui", {
+    //   method: 'GET',
+    // }).then(response => {
+    //   return response.json();
+    // }).then(json => {
+    //   info.value = json.objects.find(el => el.package.name === 'vue-data-ui').score.detail;
+    // })
+
+    fetch('https://api.npms.io/v2/search?q=vue-data-ui&from=25', {
       method: 'GET',
-    }).then(response => {
-      return response.json();
-    }).then(json => {
-      info.value = json.objects.find(el => el.package.name === 'vue-data-ui').score.detail;
+      cache: 'default'
+    }).then((response) => {
+      return response.json()
+    }).then(data => {
+      console.log(data.results.map(r => r.package.name))
+      console.log(data.results.map(r => r.package.name).includes('vue-data-ui'))
+    }).catch(err => {
+      console.error(err.message)
     })
 
     fetch(versionsUrl.value, {
@@ -1313,7 +1325,7 @@ const config3dBar = computed(() => {
             <h1 class="text-center text-xl text-app-green">Versions</h1>
         </div>
             <div class="max-w-[800px] mx-auto px-6">
-                <div class="max-w-[500px] mx-auto my-6">
+                <!-- <div class="max-w-[500px] mx-auto my-6">
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                     <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="data" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig"/>
@@ -1342,7 +1354,7 @@ const config3dBar = computed(() => {
                 <div class="max-w-[500px] mx-auto" v-if="usableHeatmapData.length">
                   <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig"/>
-                </div>
+                </div> -->
                 <div class="w-full max-h-[500px] overflow-y-auto">
                     <ul>
                         <li v-for="log in versionsList">
@@ -1359,10 +1371,10 @@ const config3dBar = computed(() => {
                         </li>
                     </ul>
                 </div>
-
+<!-- 
                 <div class="w-full max-w-[800px] mx-auto mt-12">
                   <VueUiTable :key="`table_${step}`" v-if="!isLoadingLine && !!data" :dataset="tableDataset" :config="isDarkMode ? tableConfigDarkMode: tableConfig"/>
-                </div>
+                </div> -->
 
 
             </div>

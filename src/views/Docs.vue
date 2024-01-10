@@ -67,6 +67,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-xy",
         type: "classic",
         thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -76,6 +77,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-donut",
         type: "classic",
         thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -85,6 +87,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-donut-evolution",
         type: "combined",
         thumb: new URL('../assets/thumb_donut_evolution.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_donut_evolution_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -94,6 +97,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-waffle",
         type: "classic",
         thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -103,6 +107,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-rings",
         type: "classic",
         thumb: new URL('../assets/thumb_rings.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_rings_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -112,6 +117,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-radar",
         type: "classic",
         thumb: new URL('../assets/thumb_radar.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_radar_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -121,6 +127,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-quadrant",
         type: "classic",
         thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -130,6 +137,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-gauge",
         type: "measure",
         thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -139,6 +147,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-wheel",
         type: "measure",
         thumb: new URL('../assets/thumb_wheel.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_wheel_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -148,6 +157,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-tiremarks",
         type: "measure",
         thumb: new URL('../assets/thumb_tiremarks.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_tiremarks_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -157,6 +167,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-chestnut",
         type: "combined",
         thumb: new URL('../assets/thumb_chestnut.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -166,6 +177,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-onion",
         type: "classic",
         thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -175,6 +187,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-vertical-bar",
         type: "classic",
         thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -184,6 +197,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-heatmap",
         type: "classic",
         thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -193,6 +207,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-scatter",
         type: "classic",
         thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_scatter_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -202,6 +217,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-candlestick",
         type: "classic",
         thumb: new URL('../assets/thumb_candlestick.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_candlestick_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -210,6 +226,7 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.agePyramid[store.lang],
         link: "/docs#vue-ui-age-pyramid",
         type: "classic",
+        thumbLight: new URL('../assets/thumb_age_pyramid_light.png', import.meta.url).href,
         thumb: new URL('../assets/thumb_age_pyramid.png', import.meta.url).href,
         hasSlot: true
     },
@@ -220,6 +237,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-sparkline",
         type: "mini",
         thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -229,6 +247,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-sparkbar",
         type: "mini",
         thumb: new URL('../assets/thumb_sparkbar.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_sparkbar_light.png', import.meta.url).href,
         hasSlot: false
     },
     {
@@ -238,6 +257,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-sparkstackbar",
         type: "mini",
         thumb: new URL('../assets/thumb_stackbar.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_stackbar_light.png', import.meta.url).href,
         hasSlot: false
     },
     {
@@ -247,6 +267,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-sparkhistogram",
         type: "mini",
         thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_histogram_light.png', import.meta.url).href,
         hasSlot: false
     },
     {
@@ -256,6 +277,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-relation-circle",
         type: "semantic",
         thumb: new URL('../assets/thumb_relation_circle.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_relation_circle_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -265,6 +287,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-thermometer",
         type: "measure",
         thumb: new URL('../assets/thumb_thermometer.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_thermometer_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -274,6 +297,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-table",
         type: "table",
         thumb: new URL('../assets/thumb_table.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_table_light.png', import.meta.url).href,
         hasSlot: false
     },
     {
@@ -283,6 +307,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-rating",
         type: "measure",
         thumb: new URL('../assets/thumb_rating.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_rating_light.png', import.meta.url).href,
         hasSlot: false
     },
     {
@@ -292,6 +317,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-smiley",
         type: "measure",
         thumb: new URL('../assets/thumb_smiley.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_smiley_light.png', import.meta.url).href,
         hasSlot: false
     },
     {
@@ -341,6 +367,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-mood-radar",
         type: "measure",
         thumb: new URL('../assets/thumb_mood_radar.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_mood_radar_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -350,6 +377,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-3d-bar",
         type: "3d",
         thumb: new URL('../assets/thumb_3d_bar.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_3d_bar_light.png', import.meta.url).href,
         hasSlot: true
     },
     {
@@ -365,6 +393,7 @@ const menuItems = computed(() => [
         icon: "chartCluster",
         tooltip: translations.value.docs.tooltips.molecule[store.lang],
         thumb: new URL('../assets/thumb_molecule.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_molecule_light.png', import.meta.url).href,
         link: "/docs#vue-ui-molecule",
         type: "classic",
         hasSlot: true
@@ -447,7 +476,7 @@ const menuItems = computed(() => [
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.classic[store.lang] }}
                     </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'classic')" :icon="item.icon" :link="item.link">
+                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'classic')" :icon="item.icon" :link="item.link" :item="item">
                         <template #name>
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
@@ -465,7 +494,7 @@ const menuItems = computed(() => [
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.measure[store.lang] }}
                     </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'measure')" :icon="item.icon" :link="item.link">
+                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'measure')" :icon="item.icon" :link="item.link" :item="item">
                         <template #name>
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
@@ -481,7 +510,7 @@ const menuItems = computed(() => [
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.mini[store.lang] }}
                     </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'mini')" :icon="item.icon" :link="item.link">
+                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'mini')" :icon="item.icon" :link="item.link" :item="item">
                         <template #name>
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
@@ -497,7 +526,7 @@ const menuItems = computed(() => [
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         3D
                     </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === '3d')" :icon="item.icon" :link="item.link">
+                    <MenuDetail v-for="item in menuItems.filter(item => item.type === '3d')" :icon="item.icon" :link="item.link" :item="item">
                         <template #name>
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
@@ -513,7 +542,7 @@ const menuItems = computed(() => [
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.combined[store.lang] }}
                     </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'combined')" :icon="item.icon" :link="item.link">
+                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'combined')" :icon="item.icon" :link="item.link" :item="item">
                         <template #name>
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
@@ -529,7 +558,7 @@ const menuItems = computed(() => [
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.table[store.lang] }}
                     </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'table')" :icon="item.icon" :link="item.link">
+                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'table')" :icon="item.icon" :link="item.link" :item="item">
                         <template #name>
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
@@ -545,7 +574,7 @@ const menuItems = computed(() => [
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.semantic[store.lang] }}
                     </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'semantic')" :icon="item.icon" :link="item.link">
+                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'semantic')" :icon="item.icon" :link="item.link" :item="item">
                         <template #name>
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
@@ -561,7 +590,7 @@ const menuItems = computed(() => [
                     <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
                         {{ translations.types.tool[store.lang] }}
                     </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'tool')" :icon="item.icon" :link="item.link">
+                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'tool')" :icon="item.icon" :link="item.link" :item="item">
                         <template #name>
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
