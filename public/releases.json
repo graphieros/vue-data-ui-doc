@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.65",
+        "date": "2024-01-24",
+        "updates": [
+            {
+                "component": "",
+                "description": "Updated vite version"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.64",
         "date": "2024-01-09",
         "updates": [
