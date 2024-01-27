@@ -106,7 +106,8 @@ const darkModeConfig = ref({
                     }
                 },
                 donut: {
-                    strokeWidth: 84
+                    strokeWidth: 84,
+                    borderWidth: 2,
                 },
             },
             legend: {
@@ -237,7 +238,8 @@ const config = ref({
                     }
                 },
                 donut: {
-                    strokeWidth: 84
+                    strokeWidth: 84,
+                    borderWidth: 2
                 },
             },
             legend: {
@@ -490,6 +492,7 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
                     },
                     donut: {
                         strokeWidth: <input v-if="isDarkMode" type="number" min="6" max="100" v-model="mutableConfigDarkMode.style.chart.layout.donut.strokeWidth"><input v-else type="number" min="6" max="100" v-model="mutableConfig.style.chart.layout.donut.strokeWidth">, (default: 64)
+                        borderWidth: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.style.chart.layout.donut.borderWidth"><input v-else type="number" min="0" max="12" v-model="mutableConfig.style.chart.layout.donut.borderWidth">, (default: 64)
                     }
                 },
                 legend: {

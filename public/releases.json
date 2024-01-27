@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.66",
+        "date": "2024-01-27",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "Improved arcs design to allow a border"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.65",
         "date": "2024-01-24",
         "updates": [
