@@ -34,6 +34,7 @@ const languageOptions = ref([
   { value: "pt", text: "Portugues" },
   { value: "zh", text: "中国人" },
   { value: "jp", text: "日本語" },
+  { value: "ko", text: "한국인"}
 ])
 
 const selectedLanguage = computed({
