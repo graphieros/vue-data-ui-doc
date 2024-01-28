@@ -1,18 +1,22 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
-const props = defineProps({
-    showEmits: {
-        type: Boolean,
-        default: false,
-    },
-    showSlots: {
-        type: Boolean,
-        default: false,
-    },
-    activeTab: {
-        type: Number,
-        default: 0
-    }
+
+type BoxProps = {
+    /**
+    * @description - FUKK
+    */
+    showEmits?: boolean
+    /**
+     * 
+     */
+    showSlots?: boolean;
+    activeTab?: number;
+}
+
+const props = withDefaults(defineProps<BoxProps>(), {
+    showEmits: false,
+    showSlots: false,
+    activeTab: 0
 })
 
 const activeTab = ref(props.activeTab);

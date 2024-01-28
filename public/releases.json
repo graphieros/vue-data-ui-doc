@@ -1,5 +1,23 @@
 [
     {
+        "version": "v 1.9.67",
+        "date": "2024-01-28",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Improved yLabels nice scale display"
+            },
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Improved yLabels nice scale display"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Improved yLabels nice scale display"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.66",
         "date": "2024-01-27",
         "updates": [
