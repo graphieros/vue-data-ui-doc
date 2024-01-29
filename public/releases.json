@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.70",
+        "date": "2024-01-29",
+        "updates": [
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Removed akward hover animation"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.69",
         "date": "2024-01-29",
         "updates": [
