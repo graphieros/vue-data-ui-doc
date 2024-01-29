@@ -1,6 +1,16 @@
 [
     {
-        "version": "v 1.9.67",
+        "version": "v 1.9.69",
+        "date": "2024-01-29",
+        "updates": [
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Improved donuts layout"
+            }
+        ]
+    },
+    {
+        "version": "v 1.9.68",
         "date": "2024-01-28",
         "updates": [
             {
