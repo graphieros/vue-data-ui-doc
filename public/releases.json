@@ -1,5 +1,31 @@
 [
     {
+        "version": "v 1.9.71",
+        "date": "2024-01-30",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "Improved table options, layout and responsiveness"
+            },
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Improved table options, layout and responsiveness"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Improved table options, layout and responsiveness"
+            },
+            {
+                "component": "VueUiRings",
+                "description": "Improved table options, layout and responsiveness"
+            },
+            {
+                "component": "VueUiMolecule",
+                "description": "Improved table options, layout and responsiveness"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.70",
         "date": "2024-01-29",
         "updates": [
