@@ -369,7 +369,7 @@ const config = ref({
         th: {
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
-            outline: "1px solid #C4C4C4",
+            outline: "none",
             translations: {
                 rootName: "root name",
                 rootValue: "root value",
@@ -388,7 +388,7 @@ const config = ref({
         td: {
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
-            outline: "1px solid #C4C4C4",
+            outline: "none",
             roundingValue: 0,
             roundingPercentage: 0
         }
@@ -543,7 +543,7 @@ const darkModeConfig = ref({
         th: {
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
-            outline: "1px solid #e1e5e8",
+            outline: "none",
             translations: {
                 rootName: "root name",
                 rootValue: "root value",
@@ -562,7 +562,7 @@ const darkModeConfig = ref({
         td: {
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
-            outline: "1px solid #e1e5e8",
+            outline: "none",
             roundingValue: 0,
             roundingPercentage: 0
         }

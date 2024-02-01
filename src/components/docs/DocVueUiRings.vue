@@ -120,12 +120,12 @@ const config = ref({
     th: {
       backgroundColor: "#FAFAFA",
       color: "#2D353C",
-      outline: "1px solid #e1e5e8"
+      outline: "none"
     },
     td: {
       backgroundColor: "#FFFFFF",
       color: "#2D353C",
-      outline: "1px solid #e1e5e8",
+      outline: "none",
       roundingValue: 0,
       roundingPercentage: 0
     }
@@ -203,12 +203,12 @@ const darkModeConfig = ref({
     th: {
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
-      outline: "1px solid #e1e5e8"
+      outline: "none"
     },
     td: {
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
-      outline: "1px solid #e1e5e8",
+      outline: "none",
       roundingValue: 0,
       roundingPercentage: 0
     }

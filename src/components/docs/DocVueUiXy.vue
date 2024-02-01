@@ -211,12 +211,12 @@ const config = ref({
         th: {
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
-            outline: "1px solid #C4C4C4"
+            outline: "none"
         },
         td: {
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
-            outline: "1px solid #C4C4C4",
+            outline: "none",
         },
         columnNames: {
             period: "Period",
@@ -367,12 +367,12 @@ const darkModeConfig = ref({
         th: {
             backgroundColor: "#1A1A1A",
             color: "#c8c8c8",
-            outline: "1px solid #e1e5e8"
+            outline: "none"
         },
         td: {
             backgroundColor: "#1A1A1A",
             color: "#c8c8c8",
-            outline: "1px solid #e1e5e8",
+            outline: "none",
         },
         columnNames: {
             period: "Period",

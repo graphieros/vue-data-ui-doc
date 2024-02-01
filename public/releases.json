@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.73",
+        "date": "2024-01-29",
+        "updates": [
+            {
+                "component": "",
+                "description": "Improved data tables and added exposed css classes"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.72",
         "date": "2024-01-31",
         "updates": [

@@ -8,3 +8,12 @@ import Header from "./components/Header.vue";
     <router-view />
   </div>
 </template>
+
+<style>
+.vue-ui-data-table__tbody__row-even {
+  background: #e1e5e845 !important;
+}
+.dark .vue-ui-data-table__tbody__row-even {
+  background: #FFFFFF08 !important;
+}
+</style>

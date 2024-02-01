@@ -217,12 +217,12 @@ const config = ref({
         th: {
             backgroundColor: "#FAFAFA",
             color: "#2D353C",
-            outline: "1px solid #e1e5e8"
+            outline: "none"
         },
         td: {
             backgroundColor: "#FFFFFF",
             color: "#2D353C",
-            outline: "1px solid #e1e5e8"
+            outline: "none"
         },
         translations: {
             nodeName: "Node name",
@@ -277,12 +277,12 @@ const darkModeConfig = ref({
         th: {
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
-            outline: "1px solid #3A3A3A"
+            outline: "none"
         },
         td: {
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
-            outline: "1px solid #3A3A3A"
+            outline: "none"
         },
         translations: {
             nodeName: "Node name",
