@@ -166,6 +166,7 @@ const darkModeConfig = ref({
   },
   table: {
     show: false,
+    responsiveBreakpoint: 400,
     th: {
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
@@ -181,7 +182,8 @@ const darkModeConfig = ref({
     translations: {
       correlationCoefficient: "Correlation Coef.",
       nbrPlots: "Nbr plots",
-      average: "Average"
+      average: "Average",
+      series: "Series"
     }
   }
 });
@@ -290,6 +292,7 @@ const config = ref({
   },
   table: {
     show: false,
+    responsiveBreakpoint: 400,
     th: {
       backgroundColor: "#F3F4F6",
       color: "#1A1A1A",
@@ -305,7 +308,8 @@ const config = ref({
     translations: {
       correlationCoefficient: "Correlation Coef.",
       nbrPlots: "Nbr plots",
-      average: "Average"
+      average: "Average",
+      series: "Series"
     }
   }
 });
@@ -566,6 +570,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
   },
   table: {
     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.show">, (default: false)
+    responsiveBreakpoint: <input v-if="isDarkMode" type="number" min="0" max="650" v-model="mutableConfigDarkMode.table.responsiveBreakpoint" @change="forceChartUpdate()"><input v-else type="number" min="0" max="650" v-model="mutableConfig.table.responsiveBreakpoint" @change="forceChartUpdate()">, (default: 400)
     th: {
       backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.th.backgroundColor"><input v-else type="color" v-model="mutableConfig.table.th.backgroundColor">, (default: "#FAFAFA")
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.th.color"><input v-else type="color" v-model="mutableConfig.table.th.color">, (default: "#2D353C")
@@ -582,6 +587,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
       correlationCoefficient: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.translations.correlationCoefficient"><input v-else type="text" v-model="mutableConfig.table.translations.correlationCoefficient">, (default: "Correlation Coef.")
       nbrPlots: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.translations.nbrPlots"><input v-else type="text" v-model="mutableConfig.table.translations.nbrPlots">, (default: Nbr plots")
       average: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.translations.average"><input v-else type="text" v-model="mutableConfig.table.translations.average">, (default: "Average")
+      series: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.translations.series"><input v-else type="text" v-model="mutableConfig.table.translations.series">, (default: "Series")
     }
   }
 }

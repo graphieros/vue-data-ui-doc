@@ -207,6 +207,7 @@ const config = ref({
     },
     table: {
         rounding: 0,
+        responsiveBreakpoint: 400,
         th: {
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
@@ -216,6 +217,10 @@ const config = ref({
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
+        },
+        columnNames: {
+            period: "Period",
+            total: "Total"
         }
     }
 });
@@ -358,6 +363,7 @@ const darkModeConfig = ref({
     },
     table: {
         rounding: 0,
+        responsiveBreakpoint: 400,
         th: {
             backgroundColor: "#1A1A1A",
             color: "#c8c8c8",
@@ -367,6 +373,10 @@ const darkModeConfig = ref({
             backgroundColor: "#1A1A1A",
             color: "#c8c8c8",
             outline: "1px solid #e1e5e8",
+        },
+        columnNames: {
+            period: "Period",
+            total: "Total"
         }
     }
 });
@@ -776,6 +786,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
         },
         table: {
             rounding: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.table.rounding"><input v-else type="number" min="0" max="3" v-model="mutableConfig.table.rounding">, (default: 0)
+            responsiveBreakpoint: <input v-if="isDarkMode" type="number" min="0" max="650" v-model="mutableConfigDarkMode.table.responsiveBreakpoint" @change="forceChartUpdate()"><input v-else type="number" min="0" max="650" v-model="mutableConfig.table.responsiveBreakpoint" @change="forceChartUpdate()">, (default: 400)
             th: {
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.th.backgroundColor"><input v-else type="color" v-model="mutableConfig.table.th.backgroundColor">, (default: "#FAFAFA"),
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.th.color"><input v-else type="color" v-model="mutableConfig.table.th.color">, (default: "#2D353C"),
@@ -785,7 +796,11 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.td.backgroundColor"><input v-else type="color" v-model="mutableConfig.table.td.backgroundColor">, (default: "#FAFAFA"),
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.td.color"><input v-else type="color" v-model="mutableConfig.table.td.color">, (default: "#2D353C"),
                 outline: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.td.outline"><input v-else type="text" v-model="mutableConfig.table.td.outline">, (default: "1px solid #e1e5e8")
-            }
+            },
+            columnNames: {
+                period: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.columnNames.period"><input v-else type="text" v-model="mutableConfig.table.columnNames.period">, (default: "Period")
+                total: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.columnNames.total"><input v-else type="text" v-model="mutableConfig.table.columnNames.total">, (default: "Total")
+            },
         }
     }
 </code>

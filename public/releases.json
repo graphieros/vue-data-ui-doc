@@ -1,5 +1,39 @@
 [
     {
+        "version": "v 1.9.72",
+        "date": "2024-01-31",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Improved table options, layout and responsiveness"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Improved table options, layout and responsiveness"
+            },
+            {
+                "component": "VueUiQuadrant",
+                "description": "Improved table options, layout and responsiveness"
+            },
+            {
+                "component": "VueUiOnion",
+                "description": "Improved table options, layout and responsiveness"
+            },
+            {
+                "component": "VueUiScatter",
+                "description": "Improved table options, layout and responsiveness"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Improved table options, layout and responsiveness"
+            },
+            {
+                "component": "VueUiAgePyramid",
+                "description": "Improved table options, layout and responsiveness"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.71",
         "date": "2024-01-30",
         "updates": [
