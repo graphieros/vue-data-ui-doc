@@ -40,6 +40,28 @@ export const useMainStore = defineStore("main", {
                     es: "Descargas:",
                     ko: "다운로드:"
                 },
+                tableCss: {
+                    summary: {
+                        en: "Components marked with this icon include a togglable data table (usable if user options are enabled, which they are by default), with exposed css classes to adjust to your design system.",
+                        fr: "Les composants marqués de cette icône incluent un dataTable à bascule (utilisable si les options utilisateur sont activées, ce qui est le cas par défaut), avec des classes CSS exposées pour s'adapter à votre système de conception.",
+                        pt: "Os componentes marcados com este ícone incluem uma dataTable de alternância (utilizável se as opções do usuário estiverem habilitadas, o que é o padrão), com classes CSS expostas para ajustar ao seu sistema de design.",
+                        de: "Zu den mit diesem Symbol gekennzeichneten Komponenten gehört eine umschaltbare Datentabelle (verwendbar, wenn Benutzeroptionen aktiviert sind, was standardmäßig der Fall ist) mit verfügbar gemachten CSS-Klassen zur Anpassung an Ihr Designsystem.",
+                        zh: "标有此图标的组件包括一个切换数据表（如果启用用户选项则可用，默认情况下），以及公开的 css 类以适应您的设计系统。",
+                        jp: "このアイコンでマークされたコンポーネントには、デザイン システムに合わせて調整する公開 CSS クラスを備えた切り替え dataTable (ユーザー オプションがデフォルトで有効になっている場合に使用可能) が含まれています。",
+                        es: "Los componentes marcados con este icono incluyen una tabla de datos de alternancia (que se puede utilizar si las opciones del usuario están habilitadas, lo cual es lo predeterminado), con clases CSS expuestas para ajustarse a su sistema de diseño.",
+                        ko: "이 아이콘으로 표시된 구성 요소에는 토글 dataTable(기본적으로 사용자 옵션이 활성화된 경우 사용 가능)과 디자인 시스템에 맞게 조정하기 위한 노출된 CSS 클래스가 포함됩니다."
+                    },
+                    cta: {
+                        en: "View css classes",
+                        fr: "Afficher les classes css",
+                        pt: "Ver CSS exposto",
+                        de: "Offengelegtes CSS anzeigen",
+                        zh: "查看暴露的CSS",
+                        jp: "公開された CSS を表示する",
+                        es: "Ver CSS expuesto",
+                        ko: "CSS 수업 보기"
+                    }
+                },
                 slots: {
                     summary: {
                         en: "Components marked with this icon provide a #svg slot to extend the svg with custom elements.",
