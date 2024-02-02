@@ -366,6 +366,7 @@ const config = ref({
     },
     table: {
         show: false,
+        responsiveBreakpoint: 400,
         th: {
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
@@ -540,6 +541,7 @@ const darkModeConfig = ref({
     },
     table: {
         show: false,
+        responsiveBreakpoint: 400,
         th: {
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
@@ -905,6 +907,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiChestnutConfig</s
     },
     table: {
         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.show" @change="forceChartUpdate()">, (default: false)
+        responsiveBreakpoint: <input v-if="isDarkMode" type="number" min="0" max="650" v-model="mutableConfigDarkMode.table.responsiveBreakpoint" @change="forceChartUpdate()"><input v-else type="number" min="0" max="650" v-model="mutableConfig.table.responsiveBreakpoint" @change="forceChartUpdate()">, (default: 400)
         th: {
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.th.backgroundColor"><input v-else type="color" v-model="mutableConfig.table.th.backgroundColor">, (default: "#FAFAFA")
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.th.color"><input v-else type="color" v-model="mutableConfig.table.th.color">, (default: "#2D353C")

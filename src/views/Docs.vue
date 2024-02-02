@@ -190,7 +190,7 @@ const menuItems = computed(() => [
         thumb: new URL('../assets/thumb_chestnut.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href,
         hasSlot: true,
-        hasTableCss: false,
+        hasTableCss: true,
     },
     {
         name: "Onion",
@@ -212,7 +212,7 @@ const menuItems = computed(() => [
         thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
         hasSlot: true,
-        hasTableCss: false,
+        hasTableCss: true,
     },
     {
         name: "Heatmap",
@@ -223,7 +223,7 @@ const menuItems = computed(() => [
         thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
         hasSlot: true,
-        hasTableCss: false,
+        hasTableCss: true,
     },
     {
         name: "Scatter",

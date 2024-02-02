@@ -1,7 +1,25 @@
 [
     {
+        "version": "v 1.9.75",
+        "date": "2024-02-02",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Improved data tables and added exposed css classes"
+            },
+            {
+                "component": "VueUiChestnut",
+                "description": "Improved data tables and added exposed css classes"
+            },
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Improved data tables and added exposed css classes"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.73",
-        "date": "2024-01-29",
+        "date": "2024-02-01",
         "updates": [
             {
                 "component": "",
