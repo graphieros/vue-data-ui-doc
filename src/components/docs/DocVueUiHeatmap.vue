@@ -111,7 +111,9 @@ const config = ref({
       color: "#1A1A1A",
       fontSize: 12,
       bold: true,
-      roundingValue: 0
+      roundingValue: 0,
+      position: "right",
+      scaleBorderRadius: 18,
     },
     tooltip: {
       show: true,
@@ -220,7 +222,9 @@ const darkModeConfig = ref({
       color: "#CCCCCC",
       fontSize: 12,
       bold: true,
-      roundingValue: 0
+      roundingValue: 0,
+      position: "right",
+      scaleBorderRadius: 18,
     },
     tooltip: {
       show: true,
@@ -446,6 +450,8 @@ const <span class="text-app-blue">config: VueUiHeatmapConfig</span> = {
       fontSize: <input v-if="isDarkMode" type="number" min="6" max="36" v-model="mutableConfigDarkMode.style.legend.fontSize"><input v-else type="number" min="6" max="36" v-model="mutableConfig.style.legend.fontSize">, (default: 12)
       bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.legend.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.legend.bold" @change="forceChartUpdate()">, (default: true)
       roundingValue: <input v-if="isDarkMode" type="number" min="0"  max="3" v-model="mutableConfigDarkMode.style.legend.roundingValue"><input v-else type="number" min="0"  max="3" v-model="mutableConfig.style.legend.roundingValue">, (default: 0)
+      position: "right",
+      scaleBorderRadius: <input v-if="isDarkMode" type="number" min="0"  max="18" v-model="mutableConfigDarkMode.style.legend.scaleBorderRadius"><input v-else type="number" min="0"  max="18" v-model="mutableConfig.style.legend.scaleBorderRadius">, (default: 18)
     },
     tooltip: {
       show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.tooltip.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.tooltip.show" @change="forceChartUpdate()">, (default: true)

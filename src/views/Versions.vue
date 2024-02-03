@@ -159,7 +159,7 @@ const heatmapConfig = computed(() => {
         },
         colors: {
           hot: "#42d392",
-          cold: "#5f8bee",
+          cold: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
           underlayer: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
         },
         spacing: 0.5,
@@ -199,7 +199,7 @@ const heatmapConfig = computed(() => {
       show: true,
       backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
       color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
-      fontSize: 12,
+      fontSize: 6,
       bold: true,
       roundingValue: 0
     },
@@ -1351,7 +1351,7 @@ const config3dBar = computed(() => {
                   <VueUiSparkHistogram :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`"/>
                 </div>
 
-                <div class="max-w-[500px] mx-auto" v-if="usableHeatmapData.length">
+                <div class="max-w-[800px] mx-auto" v-if="usableHeatmapData.length">
                   <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig"/>
                 </div>
