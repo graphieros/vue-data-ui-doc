@@ -299,6 +299,68 @@ const histoConfig = computed(() => {
 }
 })
 
+const xyConfig = computed({
+  get() {
+    return {
+      ...globalConfig.vue_ui_xy,
+      chart: {
+        ...globalConfig.vue_ui_xy.chart,
+        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+        color: isDarkMode.value ? '#F3F4F6': '#1A1A1A',
+        highlighter: {
+          color: '#42d392',
+          opacity: 20,
+        },
+        tooltip: {
+          backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+          color: isDarkMode.value ? '#F3F4F6': '#1A1A1A',
+        },
+        padding: {
+          ...globalConfig.vue_ui_xy.chart.padding,
+          left: 64,
+          right: 64
+        },
+        legend: {
+          ...globalConfig.vue_ui_xy.chart.legend,
+          color: isDarkMode.value ? '#F3F4F6' : '#1A1A1A'
+        },
+        title: {
+          ...globalConfig.vue_ui_xy.chart.title,
+          text: "Daily npm downloads",
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+        },
+        grid: {
+          stroke: isDarkMode.value ? '#42d392' : '#CCCCCC',
+          labels: {
+            color: isDarkMode.value ? '#42d392' : '#1A1A1A',
+            xAxisLabels: {
+              color: isDarkMode.value ? '#42d392' : '#1A1A1A',
+            }
+          }
+        },
+      },
+      line: {
+        strokeWidth: 1
+      },
+      table: {
+        th: {
+          backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+          color: isDarkMode.value ? '#F3F4F6' : '#1A1A1A'
+        },
+        td: {
+          backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+          color: isDarkMode.value ? '#F3F4F6' : '#1A1A1A'
+        }
+      }
+    }
+  },
+  set(v) {
+    return v
+  }
+})
+
+const xyDataset = ref([])
+
 onMounted(() => {
     isLoadingLine.value = true;
     isLoadingBar.value = true;
@@ -319,7 +381,18 @@ onMounted(() => {
             }
         }).slice(0,-1);
         isLoadingLine.value = false;
-        // dates.value = json.downloads.map(d => d.day);
+        xyDataset.value = [
+          {
+            name: "Daily npm downloads",
+            series: json.downloads.map(d => d.downloads),
+            type: "line",
+            useArea: true,
+            smooth: false,
+            shape: "star"
+          }
+        ]
+        xyConfig.value.chart.grid.labels.xAxisLabels.values = json.downloads.map(d => d.day)
+        xyConfig.value.chart.grid.labels.xAxisLabels.showOnlyFirstAndLast = true
     })
     .catch(err => {
         isError.value = true;
@@ -1354,6 +1427,9 @@ const config3dBar = computed(() => {
                 <div class="max-w-[800px] mx-auto" v-if="usableHeatmapData.length">
                   <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig"/>
+                </div>
+                <div class="max-w-[800px] mx-auto" v-if="!isLoadingLine">
+                  <VueUiXy :config="xyConfig" :dataset="xyDataset"/>
                 </div>
                 <div class="w-full max-h-[500px] overflow-y-auto">
                     <ul>

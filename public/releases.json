@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.80",
+        "date": "2024-02-03",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Improved zoom"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.79",
         "date": "2024-02-03",
         "updates": [
