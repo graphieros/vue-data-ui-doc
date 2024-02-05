@@ -277,6 +277,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_3d_bar_light.png', import.meta.url).href,
     },
     {
+        route: '/docs#vue-ui-table-sparkline',
+        icon: 'chartTable',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'TableSparkline',
+        thumb: new URL('../assets/thumb_table_sparkline.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_table_sparkline_light.png', import.meta.url).href,
+    },
+    {
         route: '/docs#vue-ui-table',
         icon: 'chartTable',
         cssClasses: '',
@@ -464,6 +473,9 @@ const thisApp = computed(() => {
         </section>
         <section class="mb-6">
             <div class="font-satoshi-bold text-black dark:text-app-green">Tables</div>
+            <router-link to="/docs#vue-ui-table-sparkline" @click="scrollToTop">
+                <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-table-sparkline') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-table-sparkline')" class="-ml-6"/><VueUiIcon :size="18" name="chartTable" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-table-sparkline')"/>  <span class="text-gray-500">VueUi</span>TableSparkline</div>
+            </router-link>
             <router-link to="/docs#vue-ui-table" @click="scrollToTop">
                 <div :class="`flex transition-all gap-1 pl-6 ${isSelected('/docs#vue-ui-table') ? 'text-app-blue hover:cursor-default' : 'hover:underline'}`" @click="closeIfOpen"><CaretRightIcon v-if="isSelected('/docs#vue-ui-table')" class="-ml-6"/><VueUiIcon :size="18" name="chartTable" :stroke="isDarkMode ? 'rgb(156, 163, 175)' : 'rgb(31, 41, 55)'" v-if="!isSelected('/docs#vue-ui-table')"/>  <span class="text-gray-500">VueUi</span>Table</div>
             </router-link>

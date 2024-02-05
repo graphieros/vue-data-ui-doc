@@ -16,4 +16,16 @@ import Header from "./components/Header.vue";
 .dark .vue-ui-data-table__tbody__row-even {
   background: #FFFFFF08 !important;
 }
+* .no-style .vue-ui-data-table__tbody__row-even {
+  background: unset !important;
+}
+* .no-style .vue-ui-data-table__tbody__row-even {
+  background: unset !important;
+}
+.dark .no-style .vue-ui-data-table__tbody__row-even  {
+  background: unset !important;
+}
+.dark .no-style .vue-ui-data-table__tbody__row-odd  {
+  background: unset !important;
+}
 </style>

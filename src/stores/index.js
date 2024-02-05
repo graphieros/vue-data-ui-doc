@@ -500,6 +500,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        sparklineTable:{
+                            en: "A responsive table with sparkline charts",
+                            fr: "Un tableau responsive avec des graphiques sparkline",
+                            pt: "Uma tabela responsiva com gráficos minigráficos",
+                            de: "Eine responsive Tabelle mit Sparkline-Diagrammen",
+                            zh: "带有迷你图的响应式表格",
+                            jp: "スパークライン グラフを備えた応答性の高いテーブル",
+                            es: "Una tabla responsiva con minigráficos",
+                            ko: "스파크라인 차트가 포함된 반응형 테이블",
+                        },
                         molecule: {
                             en: "Visualize a nested tree of nodes",
                             fr: "Visualisez une arborescence de nœuds imbriquée",

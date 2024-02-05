@@ -256,7 +256,7 @@ const digitConfigStars = computed(() => {
       </div>
     <div class="z-10 mx-auto flex flex-col sm:flex-row gap-6 sm:gap-12 w-full h-[calc(100svh_-_49px)] place-items-center place-content-center sm:justify-around max-w-[1000px]">
     <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[400px] place-items-center"> 
-      <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${deviationX * 20}deg)`">
+      <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${-deviationX * 20}deg);`">
         <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[100px] sm:h-[200px] mx-auto drop-shadow-2xl">
         <div class="w-full absolute top-[100%] left-0 -translate-x-[20px] sm:-translate-x-[40px]">
           <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset" :config="sparklineConfig" class="absolute"/>

@@ -39,6 +39,7 @@ import DocVueUi3dBar from "../components/docs/DocVueUi3dBar.vue";
 import DocVueUiDigits from "../components/docs/DocVueUiDigits.vue";
 import DocVueUiMolecule from "../components/docs/DocVueUiMolecule.vue";
 import DeepSearch from "../components/DeepSearch.vue";
+import DocVueUiTableSparkline from "../components/docs/DocVueUiTablesparkline.vue";
 import Tooltip from "../components/Tooltip.vue";
 
 import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon } from "vue-tabler-icons";
@@ -336,6 +337,17 @@ const menuItems = computed(() => [
         hasTableCss: false,
     },
     {
+        name: "TableSparkline",
+        icon: "chartTable",
+        tooltip: translations.value.docs.tooltips.sparklineTable[store.lang],
+        link: "/docs#vue-ui-table-sparkline",
+        type: "table",
+        thumb: new URL('../assets/thumb_table_sparkline.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_table_sparkline_light.png', import.meta.url).href,
+        hasSlot: false,
+        hasTableCss: false,
+    },
+    {
         name: "Rating",
         icon: "star",
         tooltip: translations.value.docs.tooltips.rating[store.lang],
@@ -457,6 +469,7 @@ const menuItems = computed(() => [
     <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden`">
         <DeepSearch/>
         <div :class="`px-2 pt-6 sm:pt-0 ${isOpen ? `xl:w-5/6 hidden sm:block` : ''}`">
+            <DocVueUiTableSparkline v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-table-sparkline'"/>
             <DocVueUiXy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy'" />
             <DocVueUiTable v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table'"/>
             <DocVueUiDonut v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-donut'"/>

@@ -91,6 +91,8 @@ const specialIcons = ref([
     "moodLaughing",
     "screenshot",
     "skeleton",
+    "sort",
+    "sortReverse",
     "star",
     
 ])
