@@ -251,14 +251,14 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 tagline: {
-                    en: "A user-empowering data visualization Vue3 components library",
-                    fr: "Une bibliothèque de composants Vue3 de visualisation de données qui autonomise les utilisateurs",
-                    pt: "Uma biblioteca de componentes Vue3 para visualização de dados que capacita o usuário",
-                    de: "Eine benutzerorientierte Vue3-Komponentenbibliothek zur Datenvisualisierung",
-                    zh: "一个赋予用户权力的数据可视化Vue3组件库",
-                    jp: "ユーザーをエンパワーするデータ可視化Vue3コンポーネントライブラリ",
-                    es: "Una biblioteca de componentes Vue3 de visualización de datos que potencia al usuario",
-                    ko: "사용자에게 힘을 실어주는 데이터 시각화 Vue3 구성 요소 라이브러리"
+                    en: "A user-empowering data visualization Vue3 components library for eloquent data storytelling.",
+                    fr: "Bibliothèque de composants Vue3 pour la visualisation de données et data storytelling éloquente.",
+                    pt: "Uma biblioteca de componentes Vue3 para visualização de dados, capacitando o usuário para contar histórias de dados eloquentes.",
+                    de: "Eine benutzerfreundliche Datenvisualisierungs-Bibliothek mit Vue3-Komponenten für aussagekräftige Datenpräsentation.",
+                    zh: "一个赋予用户权力的数据可视化 Vue3 组件库，用于巧妙地叙述数据故事。",
+                    jp: "ユーザーに力を与えるデータ可視化のためのVue3コンポーネントライブラリ、なめらかなデータストーリーテリング向け。",
+                    es: "Una biblioteca de componentes Vue3 para la visualización de datos, empoderando al usuario para contar historias de datos elocuentes.",
+                    ko: "뛰어난 데이터 스토리텔링을 위한 사용자 친화적인 데이터 시각화 Vue3 컴포넌트 라이브러리입니다."
                 },
                 github: {
                     en: "Github repo",
@@ -291,6 +291,16 @@ export const useMainStore = defineStore("main", {
                     ko: "어두운 모드로 전환"
                 },
                 menu: {
+                    customization: {
+                        en: "Customization",
+                        fr: "Customisation",
+                        pt: "Costumização",
+                        de: "Anpassung",
+                        zh: "定制化",
+                        jp: "カスタマイズ",
+                        es: "Personalización",
+                        ko: "맞춤화"
+                    },
                     installation: {
                         en: "Installation",
                         fr: "Installation",
@@ -340,6 +350,38 @@ export const useMainStore = defineStore("main", {
                         jp: "について",
                         es: "A proposito",
                         ko: "에 대한"
+                    }
+                },
+                customization: {
+                    p1: {
+                        en: "Most charts have a '#svg' slot you can use to inject any content you want, such as comments, descriptions, and even other charts. The slot provides the dimensions of the svg, so you can position your elements exactly where you need to. This page shows you how to do it.",
+                        fr: "La plupart des graphiques disposent d'un emplacement « #svg » que vous pouvez utiliser pour injecter le contenu de votre choix, tel que des commentaires, des descriptions et même d'autres graphiques. La fente fournit les dimensions du svg, vous pouvez donc positionner vos éléments exactement là où vous en avez besoin. Cette page vous montre comment procéder.",
+                        pt: "A maioria dos gráficos possui um slot '#svg' que você pode usar para inserir qualquer conteúdo desejado, como comentários, descrições e até outros gráficos. O slot fornece as dimensões do SVG, para que você possa posicionar seus elementos exatamente onde precisar. Esta página mostra como fazer isso.",
+                        de: "Die meisten Diagramme verfügen über einen „#svg“-Slot, den Sie zum Einfügen beliebiger Inhalte wie Kommentare, Beschreibungen und sogar anderer Diagramme verwenden können. Der Schlitz gibt die Abmessungen des SVG an, sodass Sie Ihre Elemente genau dort positionieren können, wo Sie sie benötigen. Auf dieser Seite erfahren Sie, wie es geht.",
+                        zh: "大多数图表都有一个“#svg”槽，您可以使用它来注入任何您想要的内容，例如评论、描述，甚至其他图表。该插槽提供了 svg 的尺寸，因此您可以将元素准确放置在您需要的位置。此页面向您展示了如何操作。",
+                        jp: "ほとんどのチャートには、コメント、説明、さらには他のチャートなど、必要なコンテンツを挿入するために使用できる「#svg」スロットがあります。スロットは SVG の寸法を提供するため、必要な場所に要素を正確に配置できます。このページではその方法を説明します。",
+                        es: "La mayoría de los gráficos tienen una ranura '#svg' que puede utilizar para insertar cualquier contenido que desee, como comentarios, descripciones e incluso otros gráficos. La ranura proporciona las dimensiones del svg, para que puedas colocar tus elementos exactamente donde los necesites. Esta página le muestra cómo hacerlo.",
+                        ko: "대부분의 차트에는 설명, 설명, 기타 차트 등 원하는 콘텐츠를 삽입하는 데 사용할 수 있는 '#svg' 슬롯이 있습니다. 슬롯은 svg의 크기를 제공하므로 필요한 위치에 요소를 정확하게 배치할 수 있습니다. 이 페이지에서는 수행 방법을 보여줍니다."
+                    },
+                    comment: {
+                        en: "Injecting a comment",
+                        fr: "Injecter un commentaire",
+                        pt: "Injetando um comentário",
+                        de: "Einen Kommentar einfügen",
+                        zh: "注入评论",
+                        jp: "コメントの挿入",
+                        es: "Inyectando un comentario",
+                        ko: "댓글 삽입"
+                    },
+                    otherChart: {
+                        en: "Injecting another chart",
+                        fr: "Injecter un autre graphique",
+                        pt: "Injetando outro gráfico",
+                        de: "Ein weiteres Diagramm einfügen",
+                        zh: "注入另一个图表",
+                        jp: "別のチャートの挿入",
+                        es: "Inyectando otro gráfico",
+                        ko: "다른 차트 삽입"
                     }
                 },
                 installation: {

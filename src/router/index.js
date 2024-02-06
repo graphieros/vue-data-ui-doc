@@ -34,6 +34,11 @@ const routes = [
         component: () => import("../views/About.vue")
     },
     {
+        path: "/customization",
+        name: "Customization",
+        component: () => import("../views/Customization.vue")
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound
     }

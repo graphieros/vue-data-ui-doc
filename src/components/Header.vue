@@ -102,7 +102,7 @@ const selectedLanguage = computed({
                 </div>
             </router-link>
 
-            <nav class="hidden md:flex flex-row gap-3 justify-end w-full place-items-center">
+            <nav class="hidden lg:flex flex-row gap-3 justify-end w-full place-items-center">
                 <router-link data-cy="link-installation" to="/installation">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/installation') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.installation[store.lang] }}
@@ -116,6 +116,11 @@ const selectedLanguage = computed({
                 <router-link data-cy="link-dashboard" to="/dashboard">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/dashboard') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.dashboard[store.lang] }}
+                    </span>
+                </router-link>
+                <router-link data-cy="link-customization" to="/customization">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/customization') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
+                        {{ translations.menu.customization[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-versions" to="/versions">
@@ -141,7 +146,7 @@ const selectedLanguage = computed({
                     </select>
                 </div>
             </nav>
-            <div class="relative md:hidden">
+            <div class="relative lg:hidden">
                 <button id="mainDropdownButton" @click="useMenu" type="button">
                     <Menu2Icon/>
                 </button>
@@ -160,6 +165,11 @@ const selectedLanguage = computed({
                         <router-link to="/dashboard">
                             <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
                                 {{ translations.menu.dashboard[store.lang] }}
+                            </span>
+                        </router-link>
+                        <router-link to="/customization">
+                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
+                                {{ translations.menu.customization[store.lang] }}
                             </span>
                         </router-link>
                         <router-link to="/versions">
