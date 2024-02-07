@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.85",
+        "date": "2024-02-07",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Minor fix"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.84",
         "date": "2024-02-05",
         "updates": [

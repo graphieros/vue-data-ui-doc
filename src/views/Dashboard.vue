@@ -2,9 +2,71 @@
 import { ref, computed, defineAsyncComponent } from "vue";
 import AppSkeletons from '../components/AppSkeletons.vue';
 import { useMainStore } from '../stores';
+import temperatures from "../assets/temp.json"
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
+
+Date.prototype.getWeek = function () {
+    const d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
+    const dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+};
+
+
+const heatmapDataset = computed(() => {
+    const weeklyData = [];
+    let currentWeek = null;
+    let weeklySum = 0;
+
+
+    temperatures.time.forEach((dataPoint, i) => {
+        const date = new Date(dataPoint);
+        const weekNumber = date.getWeek();
+
+        if (currentWeek === null) {
+            currentWeek = weekNumber;
+        }
+
+        if (currentWeek !== weekNumber) {
+            weeklyData.push({ period: `week ${currentWeek}`, value: weeklySum, short: `w${currentWeek}` });
+            currentWeek = weekNumber;
+            weeklySum = 0;
+        }
+        weeklySum += temperatures.temperature[i];
+    });
+
+    if (currentWeek !== null) {
+        weeklyData.push({ period: `week ${currentWeek}`, value: weeklySum, short: `w${currentWeek}` });
+    }
+    return weeklyData;
+});
+
+const usableHeatmapData = computed(() => {
+
+  const result = [
+    { name: "Sun", values: [] },
+    { name: "Mon", values: [] },
+    { name: "Tue", values: [] },
+    { name: "Wed", values: [] },
+    { name: "Thu", values: [] },
+    { name: "Fri", values: [] },
+    { name: "Sat", values: [] },
+  ];
+
+  temperatures.time.forEach((item, i) => {
+
+    const dayOfWeek = new Date(item).getDay();
+    if(!isNaN(dayOfWeek)) {
+        result[dayOfWeek].values.push(temperatures.temperature[i]);
+    }
+  });
+
+  return result;
+
+});
 
 const charts = computed(() => {
     return [
@@ -14,16 +76,16 @@ const charts = computed(() => {
             cols: "one",
             config: {
                 table: {
-                        rounding: 9,
-                        th: {
-                            backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FAFAFA',
-                            color: isDarkMode.value ? '#FAFAFA': "#1A1A1A",
-                        },
-                        td: {
-                            backgroundColor: isDarkMode.value ? '#1A1A1A' : "#FFFFFF",
-                            color: isDarkMode.value ? '#FAFAFA' : "#1A1A1A"
-                        }
+                    rounding: 9,
+                    th: {
+                        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FAFAFA',
+                        color: isDarkMode.value ? '#FAFAFA' : "#1A1A1A",
                     },
+                    td: {
+                        backgroundColor: isDarkMode.value ? '#1A1A1A' : "#FFFFFF",
+                        color: isDarkMode.value ? '#FAFAFA' : "#1A1A1A"
+                    }
+                },
                 chart: {
                     backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FFFFFF",
                     color: isDarkMode.value ? "#c8c8c8" : "#1A1A1A",
@@ -229,15 +291,15 @@ const charts = computed(() => {
                 },
                 table: {
 
-                        th: {
-                            backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FAFAFA',
-                            color: isDarkMode.value ? '#FAFAFA': "#1A1A1A",
-                        },
-                        td: {
-                            backgroundColor: isDarkMode.value ? '#1A1A1A' : "#FFFFFF",
-                            color: isDarkMode.value ? '#FAFAFA' : "#1A1A1A"
-                        }
+                    th: {
+                        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FAFAFA',
+                        color: isDarkMode.value ? '#FAFAFA' : "#1A1A1A",
                     },
+                    td: {
+                        backgroundColor: isDarkMode.value ? '#1A1A1A' : "#FFFFFF",
+                        color: isDarkMode.value ? '#FAFAFA' : "#1A1A1A"
+                    }
+                },
                 style: {
                     chart: {
                         backgroundColor: isDarkMode.value ? '#1A1A1A' : "#FFFFFF",
@@ -336,11 +398,11 @@ const charts = computed(() => {
                 table: {
                     th: {
                         backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FAFAFA",
-                        color: isDarkMode.value ? "#FAFAFA": "#1A1A1A"
+                        color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A"
                     },
                     td: {
                         backgroundColor: isDarkMode.value ? "#1A1A1A" : "#FAFAFA",
-                        color: isDarkMode.value ? "#FAFAFA": "#1A1A1A",
+                        color: isDarkMode.value ? "#FAFAFA" : "#1A1A1A",
                         roundingValue: 0,
                         roundingPercentage: 1
                     }
@@ -505,7 +567,7 @@ const charts = computed(() => {
                                 }
                             }
                         },
-                        
+
                     }
                 }
             },
@@ -513,115 +575,201 @@ const charts = computed(() => {
                 {
                     name: "USA",
                     branches: [
-                    {
-                        name: "Economy",
-                        value: 200,
-                        breakdown: [
-                            {
-                                name: "GDP (trillion USD)",
-                                value: 22.675,
-                            },
-                            {
-                                name: "Exports (billion USD)",
-                                value: 2.688,
-                            },
-                            {
-                                name: "Imports (billion USD)",
-                                value: 3.407,
-                            },
-                        ]
-                    },
-                    {
-                        name: "Education",
-                        value: 150,
-                        breakdown: [
-                            {
-                                name: "Total School Enrollment (millions)",
-                                value: 77.8,
-                            },
-                            {
-                                name: "Adult Literacy Rate (%)",
-                                value: 99.0,
-                            },
-                        ]
-                    }
+                        {
+                            name: "Economy",
+                            value: 200,
+                            breakdown: [
+                                {
+                                    name: "GDP (trillion USD)",
+                                    value: 22.675,
+                                },
+                                {
+                                    name: "Exports (billion USD)",
+                                    value: 2.688,
+                                },
+                                {
+                                    name: "Imports (billion USD)",
+                                    value: 3.407,
+                                },
+                            ]
+                        },
+                        {
+                            name: "Education",
+                            value: 150,
+                            breakdown: [
+                                {
+                                    name: "Total School Enrollment (millions)",
+                                    value: 77.8,
+                                },
+                                {
+                                    name: "Adult Literacy Rate (%)",
+                                    value: 99.0,
+                                },
+                            ]
+                        }
                     ]
                 },
                 {
                     name: "Japan",
                     branches: [
-                    {
-                        name: "Economy",
-                        value: 180,
-                        breakdown: [
-                            {
-                                name: "GDP (trillion USD)",
-                                value: 5.083,
-                            },
-                            {
-                                name: "Exports (billion USD)",
-                                value: 707.1,
-                            },
-                            {
-                                name: "Imports (billion USD)",
-                                value: 726.3,
-                            },
-                        ]
-                    },
-                    {
-                        name: "Education",
-                        value: 140,
-                        breakdown: [
-                            {
-                                name: "Total School Enrollment (millions)",
-                                value: 14.7,
-                            },
-                            {
-                                name: "Adult Literacy Rate (%)",
-                                value: 99.0,
-                            },
-                        ]
-                    }
+                        {
+                            name: "Economy",
+                            value: 180,
+                            breakdown: [
+                                {
+                                    name: "GDP (trillion USD)",
+                                    value: 5.083,
+                                },
+                                {
+                                    name: "Exports (billion USD)",
+                                    value: 707.1,
+                                },
+                                {
+                                    name: "Imports (billion USD)",
+                                    value: 726.3,
+                                },
+                            ]
+                        },
+                        {
+                            name: "Education",
+                            value: 140,
+                            breakdown: [
+                                {
+                                    name: "Total School Enrollment (millions)",
+                                    value: 14.7,
+                                },
+                                {
+                                    name: "Adult Literacy Rate (%)",
+                                    value: 99.0,
+                                },
+                            ]
+                        }
                     ]
                 },
                 {
                     name: "China",
                     branches: [
-                    {
-                        name: "Economy",
-                        value: 160,
-                        breakdown: [
-                            {
-                                name: "GDP (trillion USD)",
-                                value: 16.38,
-                            },
-                            {
-                                name: "Exports (billion USD)",
-                                value: 2.830,
-                            },
-                            {
-                                name: "Imports (billion USD)",
-                                value: 2.689,
-                            },
-                        ]
-                    },
-                    {
-                        name: "Education",
-                        value: 120,
-                        breakdown: [
-                            {
-                                name: "Total School Enrollment (millions)",
-                                value: 232.2,
-                            },
-                            {
-                                name: "Adult Literacy Rate (%)",
-                                value: 96.4,
-                            },
-                        ]
-                    }
+                        {
+                            name: "Economy",
+                            value: 160,
+                            breakdown: [
+                                {
+                                    name: "GDP (trillion USD)",
+                                    value: 16.38,
+                                },
+                                {
+                                    name: "Exports (billion USD)",
+                                    value: 2.830,
+                                },
+                                {
+                                    name: "Imports (billion USD)",
+                                    value: 2.689,
+                                },
+                            ]
+                        },
+                        {
+                            name: "Education",
+                            value: 120,
+                            breakdown: [
+                                {
+                                    name: "Total School Enrollment (millions)",
+                                    value: 232.2,
+                                },
+                                {
+                                    name: "Adult Literacy Rate (%)",
+                                    value: 96.4,
+                                },
+                            ]
+                        }
                     ]
                 }
             ]
+        },
+        {
+            component: defineAsyncComponent(() => import("vue-data-ui").then(module => module.VueUiHeatmap)),
+            padding: 'p-6',
+            cols: "all",
+            dataset: usableHeatmapData.value,
+            config: {
+                style: {
+                    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
+                    color: "#2D353C",
+                    fontFamily: "inherit",
+                    layout: {
+                        useDiv: true,
+                        padding: {
+                            top: 36,
+                            right: 12,
+                            bottom: 12,
+                            left: 48
+                        },
+                        cells: {
+                            height: 24,
+                            value: {
+                                show: true,
+                                fontSize: 8,
+                                bold: false,
+                                roundingValue: 0,
+                                color: isDarkMode.value ? '#FAFAFA' : '#1A1A1A',
+                            },
+                            colors: {
+                                hot: "#ff6400",
+                                cold: "#5f8bee",
+                                underlayer: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                            },
+                            spacing: 0.5,
+                            selected: {
+                                border: 2,
+                                color: "#2D353C"
+                            }
+                        },
+                        dataLabels: {
+                            xAxis: {
+                                show: true,
+                                values: heatmapDataset.value.map(p => p.short),
+                                fontSize: 8,
+                                color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+                                bold: false,
+                                offsetX: 0,
+                                offsetY: 0
+                            },
+                            yAxis: {
+                                show: true,
+                                values: [],
+                                fontSize: 8,
+                                color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+                                bold: false,
+                                offsetY: 0,
+                                offsetX: 0
+                            }
+                        }
+                    },
+                    title: {
+                        text: "Paris daily temperatures 2023 in °C",
+                        color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+                        fontSize: 16,
+                        bold: true,
+                    },
+                    legend: {
+                        show: true,
+                        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
+                        color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+                        fontSize: 6,
+                        bold: true,
+                        roundingValue: 0
+                    },
+                    tooltip: {
+                        show: true,
+                        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                        color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+                        fontSize: 14,
+                        roundingValue: 0
+                    }
+                },
+                userOptions: {
+                    show: false,
+                },
+            }
         },
         {
             component: defineAsyncComponent(() => import("vue-data-ui").then(module => module.VueUiOnion)),
@@ -676,7 +824,7 @@ const charts = computed(() => {
                 {
                     name: "China",
                     percentage: 50.3,
-                    value: 703.7, 
+                    value: 703.7,
                 },
                 {
                     name: "Japan",
@@ -699,27 +847,32 @@ const charts = computed(() => {
                     value: 98.7,
                 },
             ]
-        }
+        },
     ]
 })
+
+
 
 </script>
 
 <template>
     <div class="mx-auto w-5/6 mt-12">
         <div class="fixed top-0 left-0 h-screen w-screen z-0" style="opacity:0.4">
-            <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'"/>
-            <AppSkeletons/>
+            <div class="absolute top-0 left-0 w-full h-full"
+                :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'" />
+            <AppSkeletons />
         </div>
-      <div class="z-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 grid-flow-row-dense align-center content-center">
-        <template v-for="chart in charts">
-            <div :class="`${chart.cols === 'all' ? 'lg:col-span-3' : ''} z-20 h-full self-center flex place-items-center place-content-center ${chart.padding} ${isDarkMode ? 'bg-black' : 'bg-white'}`">
-                <div class="w-full">
-                    <component :is="chart.component" :dataset="chart.dataset" :config="chart.config"/>
+        <div
+            class="z-10 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 grid-flow-row-dense align-center content-center">
+            <template v-for="chart in charts">
+                <div
+                    :class="`${chart.cols === 'all' ? 'lg:col-span-3' : ''} z-20 h-full self-center flex place-items-center place-content-center ${chart.padding} ${isDarkMode ? 'bg-black' : 'bg-white'}`">
+                    <div class="w-full">
+                        <component :is="chart.component" :dataset="chart.dataset" :config="chart.config ?? {}" />
+                    </div>
                 </div>
-            </div>
-        </template>
-      </div>
+            </template>
+        </div>
     </div>
 </template>
 

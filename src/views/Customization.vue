@@ -75,7 +75,7 @@ const donutConfig = ref({
         
         <div class="w-full">
             <p class="text-lg dark:text-app-green">1. {{ translations.customization.comment[store.lang] }}</p>
-            <div class="my-6 p-3 w-full bg-gray-200 dark:bg-[#2A2A2A]">
+            <div class="my-6 p-3 w-full bg-gray-200 dark:bg-[#2A2A2A] overflow-auto text-xs md:text-base">
 <pre>
 <code>
 &lt;VueUiXy :dataset="dataset" :config="config"&gt;
@@ -109,7 +109,7 @@ const donutConfig = ref({
 
         <div class="w-full mt-6">
             <p class="text-lg dark:text-app-green">2. {{ translations.customization.otherChart[store.lang] }}</p>
-            <div class="my-6 p-3 w-full bg-gray-200 dark:bg-[#2A2A2A]">
+            <div class="my-6 p-3 w-full bg-gray-200 dark:bg-[#2A2A2A] overflow-auto text-xs md:text-base">
 <pre>
 <code>
 &lt;VueUiXy :dataset="dataset" :config="config"&gt;
