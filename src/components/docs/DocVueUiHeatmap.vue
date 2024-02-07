@@ -45,7 +45,6 @@ const config = ref({
     color: "#1A1A1A",
     fontFamily: "inherit",
     layout: {
-      useDiv: true,
       padding: {
         top: 36,
         right: 12,
@@ -125,11 +124,6 @@ const config = ref({
   },
   userOptions: {
     show: true,
-    title: "options",
-    labels: {
-      useDiv: "Title & legend inside",
-      showTable: "Show table"
-    }
   },
   table: {
     show: false,
@@ -156,7 +150,6 @@ const darkModeConfig = ref({
     color: "#CCCCCC",
     fontFamily: "inherit",
     layout: {
-      useDiv: true,
       padding: {
         top: 36,
         right: 12,
@@ -237,10 +230,6 @@ const darkModeConfig = ref({
   userOptions: {
     show: true,
     title: "options",
-    labels: {
-      useDiv: "Title & legend inside",
-      showTable: "Show table"
-    }
   },
   table: {
     show: false,
@@ -383,7 +372,6 @@ const <span class="text-app-blue">config: VueUiHeatmapConfig</span> = {
     color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.color"><input v-else type="color" v-model="mutableConfig.style.color">, (default: "#2D353C")
     fontFamily: "inherit",
     layout: {
-      useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.useDiv" @change="forceChartUpdate()">, (default: true)
       padding: {
         top: <input v-if="isDarkMode" type="number" min="0" v-model="mutableConfigDarkMode.style.layout.padding.top"><input v-else type="number" min="0" v-model="mutableConfig.style.layout.padding.top">, (default: 36)
         right: <input v-if="isDarkMode" type="number" min="0" v-model="mutableConfigDarkMode.style.layout.padding.right"><input v-else type="number" min="0" v-model="mutableConfig.style.layout.padding.right">, (default: 12)
@@ -463,11 +451,6 @@ const <span class="text-app-blue">config: VueUiHeatmapConfig</span> = {
   },
   userOptions: {
     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
-    title: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.title"><input v-else type="text" v-model="mutableConfig.userOptions.title">, (default: "options")
-    labels: {
-      useDiv: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.labels.useDiv"><input v-else type="text" v-model="mutableConfig.userOptions.labels.useDiv">, (default: "Title & legend inside")
-      showTable: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.labels.showTable"><input v-else type="text" v-model="mutableConfig.userOptions.labels.showTable">, (default: "Show table")
-    }
   },
   table: {
     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.show" @change="forceChartUpdate()">, (default: false)
