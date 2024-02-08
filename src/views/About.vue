@@ -221,6 +221,37 @@ const skeletonsDarkMode = [
     {...skeletonConfigDark.value, type: 'chestnut'},
 ];
 
+const componentTypes = ref([
+  {
+    name: "Charts",
+    value: 26
+  },
+  {
+    name: "Utilities",
+    value: 6
+  },
+  {
+    name: "Tables",
+    value: 2,
+  },
+  {
+    name: "Rating",
+    value: 2
+  },
+])
+
+const donut = computed(() => {
+  return componentTypes.value.map(t => {
+    return {
+      name:t.name,
+      values: [t.value]
+    }
+  })
+})
+
+const stackConfigDarkMode = ref({"style":{"backgroundColor":"#1A1A1A","fontFamily":"inherit","bar":{"gradient":{"show":true,"intensity":40,"underlayerColor":"#FFFFFF"}},"legend":{"margin":"6px 0 0 0","textAlign":"left","show":true,"fontSize":12,"name":{"color":"#CCCCCC","bold":false},"value":{"show":true,"bold":false,"color":"#DDDDDD","prefix":"","suffix":"","rounding":0},"percentage":{"show":true,"bold":true,"color":"#DDDDDD","rounding":1}},"title":{"textAlign":"left","text":"Vue Data UI","color":"#FAFAFA","fontSize":16,"bold":true,"margin":"0 0 6px 0","subtitle":{"color":"#A1A1A1","text":"Component types","fontSize":12,"bold":false}}}})
+
+const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inherit","bar":{"gradient":{"show":true,"intensity":40,"underlayerColor":"#FFFFFF"}},"legend":{"margin":"6px 0 0 0","textAlign":"left","show":true,"fontSize":12,"name":{"color":"#2D353C","bold":false},"value":{"show":true,"bold":false,"color":"#2D353C","prefix":"","suffix":"","rounding":0},"percentage":{"show":true,"bold":true,"color":"#2D353C","rounding":1}},"title":{"textAlign":"left","text":"Vue Data UI","color":"#2D353C","fontSize":16,"bold":true,"margin":"0 0 6px 0","subtitle":{"color":"#A1A1A1","text":"Component types","fontSize":12,"bold":false}}}})
 
 </script>
 
@@ -254,6 +285,10 @@ const skeletonsDarkMode = [
             {{ translations.about.p4[store.lang] }}<span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-screenshot">VueUiScreenshot</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-skeleton">VueUiSkeleton</router-link></span>
         </p>
        
+        <div class="w-full mx-auto max-w-[400px] mt-8">
+          <VueUiSparkStackbar :dataset="componentTypes" :config="isDarkMode ? stackConfigDarkMode :stackConfig" />
+        </div>
+
         <div class="text-center w-full text-app-blue font-satoshi-bold text-2xl mt-12">
             {{ translations.about.maintainers[store.lang] }}
         </div>
