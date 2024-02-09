@@ -294,7 +294,7 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
         </div>
         <div class="w-full mt-12 flex place-items-center place-content-center">
             <div class="flex gap-6 flex-col md:flex-row place-items-center place-content-center">            
-                <img src="../assets/alec_lloyd_probert.png" class="h-[200px]" alt="A picture of Alec Lloyd Probert">
+                <img src="../assets/alec_lloyd_probert.png" class="h-[200px] rounded" alt="A picture of Alec Lloyd Probert">
                 <p>
                     {{ translations.about.alp[store.lang] }}<br><br>
                     <a class="text-app-blue hover:underline" href="https://github.com/graphieros" target="_blank">GitHub</a>
