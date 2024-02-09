@@ -526,11 +526,19 @@ const menuItems = computed(() => [
 
                 <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col md:flex-row gap-4">
                 
-                    <div class="w-full border border-app-blue bg-[#5f8bee33] p-4 rounded-lg flex flex-row gap-6 place-items-center">
+                    <div class="w-full border border-app-blue bg-[#5f8bee33] p-4 rounded-lg flex flex-col gap-6 place-items-center">
+                    <div class="flex flex-row gap-6 place-items-center">
+                    
                         <div class="h-[40px] w-[40px] flex place-items-center justify-center">
                         <SquareRoundedLetterSIcon class="bg-white dark:bg-black rounded-md text-app-blue"/>
                         </div>
                         {{ translations.slots.summary[store.lang] }}
+                    </div>
+                        <div class="w-full flex justify-center">
+                        <router-link to="/customization">
+                            <button class="py-2 px-6 bg-app-blue text-white dark:text-black rounded shadow hover:outline hover:outline-gray-400">{{ translations.docs.example[store.lang] }}</button>
+                        </router-link>
+                        </div>
                     </div>
 
                     <div class="w-full border border-app-green bg-[#42d39233] p-4 rounded-lg flex flex-row gap-6 place-items-center">
