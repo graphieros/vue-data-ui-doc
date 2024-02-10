@@ -144,5 +144,63 @@ const donutConfig = ref({
                 </template>
             </VueUiXy>
         </div>
+
+
+        <div class="w-full mt-6">
+            <p class="text-lg dark:text-app-green">3. {{ translations.customization.arrow[store.lang] }}</p>
+            <details>
+                <summary class="cursor-pointer">{{ translations.customization.arrowDetails[store.lang]  }}</summary>
+                <div class="px-4 py-2 bg-gray-100 dark:bg-[#2A2A2A]">
+                    <h5>Props :</h5>
+                    <ul class="pl-3">
+                        <li><code>markerEnd?: boolean;</code> (default: true)</li>
+                        <li><code>markerSize?: number;</code> (default: 10)</li>
+                        <li><code>markerStart?: boolean;</code> (default: false)</li>
+                        <li><code>stroke?: string;</code> (default: "#2D353C")</li>
+                        <li><code>strokeDahsarray?: number;</code> (default: 0)</li>
+                        <li><code>strokeLinecap?: "round" | "butt" | "square";</code> (default: "round")</li>
+                        <li><code>strokeWidth?: number;</code> (default: 1)</li>
+                        <li><code>x1: number;</code> (default: 0)</li>
+                        <li><code>x2: number;</code> (default: 0)</li>
+                        <li><code>y1: number;</code> (default: 0)</li>
+                        <li><code>y2: number;</code> (default: 0)</li>
+                    </ul>
+                </div>
+            </details>
+            <div class="my-6 p-3 w-full bg-gray-200 dark:bg-[#2A2A2A] overflow-auto text-xs md:text-base">
+                <pre>
+<code>
+&lt;script setup&gt;
+import { Arrow } from "vue-data-ui"
+&lt;/script&gt;
+
+&lt;template&gt;
+    &lt;VueUiXy :dataset="dataset" :config="config"&gt;
+        &lt;template #svg&gt;
+            &lt;Arrow 
+                :x1="150"
+                :y1="100"
+                :x2="270"
+                :y2="300"
+                :markerSize="20"
+            /&gt;
+        &lt;/template&gt;
+    &lt;/VueUiXy&gt;
+&lt;/template&gt;
+</code>
+</pre> 
+                <div class="w-full">
+                <VueUiXy :dataset="xyDataset" :config="xyConfig">
+                    <template #svg>
+                        <Arrow :x1="150" :x2="270" :y1="100" :y2="300" :markerSize="20"/>
+                    </template>
+                </VueUiXy>
+            </div>
+        </div>
+
     </div>
+
+
+    </div>
+
 </template>

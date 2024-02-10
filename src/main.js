@@ -39,7 +39,8 @@ import {
     VueUi3dBar,
     VueUiDigits,
     VueUiMolecule,
-    VueUiTableSparkline
+    VueUiTableSparkline,
+    Arrow
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -83,5 +84,6 @@ app.component("VueUi3dBar", VueUi3dBar);
 app.component("VueUiDigits", VueUiDigits);
 app.component("VueUiMolecule", VueUiMolecule);
 app.component("VueUiTableSparkline", VueUiTableSparkline);
+app.component("Arrow", Arrow)
 
 app.mount('#app')

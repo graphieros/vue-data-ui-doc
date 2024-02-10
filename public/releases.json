@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.87",
+        "date": "2024-02-10",
+        "updates": [
+            {
+                "component": "Arrow",
+                "description": "Create component that can be injected into #svg slots"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.85",
         "date": "2024-02-07",
         "updates": [

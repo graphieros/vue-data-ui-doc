@@ -382,6 +382,26 @@ export const useMainStore = defineStore("main", {
                         jp: "別のチャートの挿入",
                         es: "Inyectando otro gráfico",
                         ko: "다른 차트 삽입"
+                    },
+                    arrow: {
+                        en: "Injecting an arrow element",
+                        fr: "Injection d'un élément flèche",
+                        pt: "Injetando um elemento de seta",
+                        de: "Ein Pfeilelement einfügen", 
+                        zh: "注入箭头元素",
+                        jp: "矢印要素の挿入",
+                        es: "Inyectar un elemento de flecha",
+                        ko: "화살표 요소 삽입"
+                    },
+                    arrowDetails: {
+                        en: "View details about the Arrow component",
+                        fr: "Afficher les détails sur le composant Arrow",
+                        pt: "Ver detalhes sobre o componente Arrow",
+                        de: "Details zur Arrow-Komponente anzeigen",
+                        zh: "查看有关箭头组件的详细信息",
+                        jp: "Arrow コンポーネントの詳細を表示する",
+                        es: "Ver detalles sobre el componente Arrow",
+                        ko: "Arrow 구성요소에 대한 세부정보 보기"
                     }
                 },
                 installation: {
