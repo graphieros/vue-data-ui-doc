@@ -84,7 +84,7 @@ const donutConfig = ref({
             :x="svg.width / 2 - 90" 
             :y="svg.height / 2 - 250" 
             height="100" 
-            width="100"
+            width="180"
         &gt;
             &lt;div class="bg-gray-100 p-3 shadow"&gt;
                 This comment was added in the slot
@@ -177,13 +177,25 @@ import { Arrow } from "vue-data-ui"
 &lt;template&gt;
     &lt;VueUiXy :dataset="dataset" :config="config"&gt;
         &lt;template #svg&gt;
-            &lt;Arrow 
-                :x1="150"
-                :y1="100"
-                :x2="270"
-                :y2="300"
-                :markerSize="20"
-            /&gt;
+            &lt;g&gt;
+                &lt;Arrow 
+                    :x1="150"
+                    :y1="100"
+                    :x2="270"
+                    :y2="300"
+                    :markerSize="20"
+                /&gt;
+                &lt;foreignObject 
+                    :x="100" 
+                    :y="100" 
+                    height="100" 
+                    width="180"
+                &gt;
+                    &lt;div class="bg-gray-100 p-3 shadow"&gt;
+                        Wow this random datapoint is pretty
+                    &lt;/div&gt;
+                &lt;/foreignObject&gt;
+            &lt;/g&gt;
         &lt;/template&gt;
     &lt;/VueUiXy&gt;
 &lt;/template&gt;
@@ -192,7 +204,12 @@ import { Arrow } from "vue-data-ui"
                 <div class="w-full">
                 <VueUiXy :dataset="xyDataset" :config="xyConfig">
                     <template #svg>
-                        <Arrow :x1="150" :x2="270" :y1="100" :y2="300" :markerSize="20"/>
+                        <g>
+                            <Arrow :x1="150" :x2="270" :y1="100" :y2="300" :markerSize="20"/>
+                            <foreignObject :x="100" :y="100" height="100" width="180">
+                                <div class="bg-gray-100 p-3 shadow">Wow this random datapoint is pretty</div>
+                            </foreignObject>
+                        </g>
                     </template>
                 </VueUiXy>
             </div>
