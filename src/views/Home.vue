@@ -282,7 +282,7 @@ const digitsConfigVersion = computed(() => {
         <h1 class="z-10 mx-auto text-[48px] md:text-[64px] font-satoshi-bold text-center"><span class="text-app-green" data-cy="app-name-vue">Vue</span> <span data-cy="app-name" class="text-app-blue">Data UI</span></h1>
         <!-- <span v-if="versionsList.length" class="absolute left-1/2 -translate-x-1/2 text-xs">{{ versionsList[0].version }}</span> -->
         <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center">
-          <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-4' : ''"/>
+          <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
         </div>
       </div>
       <p data-cy="tag-line" class="z-10 mx-auto text-xl text-black dark:text-gray-200 text-center">
