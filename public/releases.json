@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.88",
+        "date": "2024-02-12",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "When showOnlyFirstAndLast is true, show any xLabel on hover"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.87",
         "date": "2024-02-10",
         "updates": [
