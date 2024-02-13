@@ -70,9 +70,14 @@ const donutConfig = ref({
 <template>
     <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
         <h1 class="text-xl text-app-blue">{{ translations.menu.customization[store.lang] }}</h1>
+        <div class="w-full sticky py-4 z-10 top-[48px] flex flex-row gap-6 bg-[#F3F4F6] dark:bg-[#1A1A1A] place-items-center justify-center">
+            <a href="#comment" class="flex flex-row gap-2 place-items-center justify-center text-center text-xs py-2 px-4 bg-white dark:bg-[#2A2A2A] rounded-md hover:shadow-xl hover:outline hover:outline-app-green transition-colors"><VueUiIcon name="annotator" stroke="#42d392"/> {{ translations.customization.comment[store.lang] }}</a>
+            <a href="#otherChart" class="flex flex-row gap-2 place-items-center justify-center text-center text-xs py-2 px-4 bg-white dark:bg-[#2A2A2A] rounded-md hover:shadow-xl hover:outline hover:outline-app-green transition-colors"><VueUiIcon name="dashboard" stroke="#42d392"/> {{ translations.customization.otherChart[store.lang] }}</a>
+            <a href="#arrow" class="flex flex-row gap-2 place-items-center justify-center text-center text-xs py-2 px-4 bg-white dark:bg-[#2A2A2A] rounded-md hover:shadow-xl hover:outline hover:outline-app-green transition-colors"><VueUiIcon name="sort" stroke="#42d392"/> {{ translations.customization.arrow[store.lang] }}</a>
+        </div>
 
         <p class="my-6">{{ translations.customization.p1[store.lang] }}</p>
-        
+        <hr id="comment" class="mb-[120px]">
         <div class="w-full">
             <p class="text-lg dark:text-app-green">1. {{ translations.customization.comment[store.lang] }}</p>
             <div class="my-6 p-3 w-full bg-gray-200 dark:bg-[#2A2A2A] overflow-auto text-xs md:text-base">
@@ -106,7 +111,7 @@ const donutConfig = ref({
                 </template>
             </VueUiXy>
         </div>
-
+        <hr id="otherChart" class="mb-[120px]">
         <div class="w-full mt-6">
             <p class="text-lg dark:text-app-green">2. {{ translations.customization.otherChart[store.lang] }}</p>
             <div class="my-6 p-3 w-full bg-gray-200 dark:bg-[#2A2A2A] overflow-auto text-xs md:text-base">
@@ -145,7 +150,7 @@ const donutConfig = ref({
             </VueUiXy>
         </div>
 
-
+        <hr id="arrow" class="mb-[120px]">
         <div class="w-full mt-6">
             <p class="text-lg dark:text-app-green">3. {{ translations.customization.arrow[store.lang] }}</p>
             <details>
