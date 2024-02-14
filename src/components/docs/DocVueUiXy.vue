@@ -126,11 +126,14 @@ const config = ref({
                     showOnlyFirstAndLast: false,
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
                     fontSize: 6,
+                    yOffset: 0,
                 }
             }
         },
         labels: {
             fontSize: 7,
+            prefix: '',
+            suffix: ''
         },
         legend: {
             show: true,
@@ -282,11 +285,14 @@ const darkModeConfig = ref({
                     showOnlyFirstAndLast: false,
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
                     fontSize: 6,
+                    yOffset: 0
                 }
             }
         },
         labels: {
             fontSize: 7,
+            prefix: "",
+            suffix: ""
         },
         legend: {
             show: true,
@@ -711,8 +717,14 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                         color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.color"><input v-else type="color" v-model="mutableConfig.chart.grid.labels.xAxisLabels.color">, (default: "#2D353C"),
                         fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.xAxisLabels.fontSize">, (default: 6)
                         values: <span class="text-app-blue">string[]</span>,
+                        yOffset: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.yOffset"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.xAxisLabels.yOffset">, (default: 0)
                     }
                 }
+            },
+            labels: {
+                fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.labels.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.labels.fontSize">, (default: 10),
+                prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.labels.prefix"><input v-else type="text" v-model="mutableConfig.chart.labels.prefix">, (default: "")
+                suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.labels.suffix"><input v-else type="text" v-model="mutableConfig.chart.labels.suffix">, (default: "")
             },
             legend: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.legend.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.legend.show">, (default: true),

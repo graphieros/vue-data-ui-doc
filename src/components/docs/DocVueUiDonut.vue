@@ -57,6 +57,12 @@ const darkModeConfig = ref({
                     dataLabels: {
                         show: true,
                         hideUnderValue: 3,
+                        prefix: "",
+                        suffix: ""
+                    },
+                    value: {
+                        rounding: 0,
+                        show: true,
                     },
                     percentage: {
                         color: "#CCCCCC",
@@ -195,6 +201,12 @@ const config = ref({
                     dataLabels: {
                         show: true,
                         hideUnderValue: 3,
+                        prefix: "",
+                        suffix: ""
+                    },
+                    value: {
+                        rounding: 0,
+                        show: true
                     },
                     percentage: {
                         color: "#1A1A1A",
@@ -455,6 +467,8 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
                     dataLabels: {
                         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.dataLabels.show" @change="forceChartUpdate()">, (default: true)
                         hideUnderValue: <input v-if="isDarkMode" type="number" min="0" max="10" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.hideUnderValue"><input v-else type="number" min="0" max="10" v-model="mutableConfig.style.chart.layout.labels.dataLabels.hideUnderValue">, (default: 3) <span class="text-gray-600 dark:text-app-blue">// {{ translations.docs.comments.donut.hideUnderValue[store.lang]}} </span>
+                        prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.prefix">, (default: "")
+                        suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.suffix">, (default: "")
                     },
                     percentage: {
                         color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.labels.percentage.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.labels.percentage.color">, (default: "#2D353C")

@@ -72,6 +72,8 @@ const config = ref({
         }
       },
       dataLabels: {
+        prefix: "",
+        suffix: "",
         xAxis: {
           show: true,
           values: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],
@@ -177,6 +179,8 @@ const darkModeConfig = ref({
         }
       },
       dataLabels: {
+        prefix: "",
+        suffix: "",
         xAxis: {
           show: true,
           values: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],
@@ -399,6 +403,8 @@ const <span class="text-app-blue">config: VueUiHeatmapConfig</span> = {
         }
       },
       dataLabels: {
+        prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.layout.dataLabels.prefix"><input v-else type="text" v-model="mutableConfig.style.layout.dataLabels.prefix">, (default: "")
+        suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.layout.dataLabels.suffix"><input v-else type="text" v-model="mutableConfig.style.layout.dataLabels.suffix">, (default: "")
         xAxis: {
           show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.dataLabels.xAxis.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.dataLabels.xAxis.show" @change="forceChartUpdate()">, (default: false)
           values: [],

@@ -169,6 +169,7 @@ const heatmapConfig = computed(() => {
         }
       },
       dataLabels: {
+        suffix: " downloads",
         xAxis: {
           show: true,
           values: usableWeekData.value.map(p => p.short),
@@ -335,6 +336,8 @@ const xyConfig = computed({
             color: isDarkMode.value ? '#42d392' : '#1A1A1A',
             xAxisLabels: {
               color: isDarkMode.value ? '#42d392' : '#1A1A1A',
+              yOffset: 6,
+              fontSize: 12
             }
           }
         },

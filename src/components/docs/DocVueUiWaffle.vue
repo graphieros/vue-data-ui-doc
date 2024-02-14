@@ -48,6 +48,12 @@ const isDarkMode = computed(() => {
                 backgroundColor: "#1A1A1A",
                 color: "#CCCCCC",
                 layout: {
+                    labels: {
+                        dataLabels: {
+                            prefix: "",
+                            suffix: ""
+                        }
+                    },
                     grid: {
                         size: 10,
                         spaceBetween: 0,
@@ -135,6 +141,12 @@ const isDarkMode = computed(() => {
                 backgroundColor: "#F3F4F6",
                 color: "#1A1A1A",
                 layout: {
+                    labels: {
+                        dataLabels: {
+                            prefix: "",
+                            suffix: ""
+                        }
+                    },
                     grid: {
                         size: 10,
                         spaceBetween: 0,
@@ -343,7 +355,12 @@ const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</spa
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
             layout: {
-                useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: true) <span class="text-app-blue">// {{ translations.docs.comments.donut.layoutTitle[store.lang] }}</span>
+                labels: {
+                    dataLabels: {
+                        prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.prefix">, (default: "")
+                        suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.suffix">, (default: "")
+                    }
+                },
                 grid: {
                     size: <input v-if="isDarkMode" type="number" min="2" max="50" v-model="mutableConfigDarkMode.style.chart.layout.grid.size"><input v-else type="number" min="2" max="50" v-model="mutableConfig.style.chart.layout.grid.size">, (default: 20), <span class="text-app-blue">// {{ translations.docs.comments.waffle.gridSize[store.lang] }}</span>
                     spaceBetween: <input v-if="isDarkMode" type="number" min="0" max="5" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.grid.spaceBetween"><input v-else type="number" min="0" max="5" step="0.1" v-model="mutableConfig.style.chart.layout.grid.spaceBetween">, (default: 0)

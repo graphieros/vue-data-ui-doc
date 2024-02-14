@@ -128,7 +128,9 @@ const darkModeConfig = ref({
       bold: true,
       color: "#CCCCCC",
       roundingValue: 1,
-      valueType: "latest"
+      valueType: "latest",
+      prefix: "",
+      suffix: ""
     },
     title: {
       show: true,
@@ -182,7 +184,9 @@ const config = ref({
       bold: true,
       color: "#1A1A1A",
       roundingValue: 1,
-      valueType: "latest"
+      valueType: "latest",
+      prefix: "",
+      suffix: ""
     },
     title: {
       show: true,
@@ -408,6 +412,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.dataLabel.color"><input v-else type="color" v-model="mutableConfig.style.dataLabel.color">, (default: "#2D353C")
       roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.dataLabel.roundingValue"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.dataLabel.roundingValue">, (default: 0)
       valueType: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.dataLabel.valueType"><input v-else type="text" v-model="mutableConfig.style.dataLabel.valueType">, (default: "latest", other options: "sum"; "average")
+      prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.dataLabel.prefix"><input v-else type="text" v-model="mutableConfig.style.dataLabel.prefix">, (default: "")
+      suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.dataLabel.suffix"><input v-else type="text" v-model="mutableConfig.style.dataLabel.suffix">, (default: "")
     },
     title: {
       show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.show">, (default: true)

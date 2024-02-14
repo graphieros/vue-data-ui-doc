@@ -58,6 +58,12 @@ const config = ref({
       backgroundColor: "#F3F4F6",
       color: "#2D353C",
       layout: {
+        labels: {
+          dataLabels: {
+            prefix: "",
+            suffix: ""
+          }
+        },
         rings: {
           strokeWidth: 2,
           stroke: "#FFFFFF",
@@ -141,6 +147,12 @@ const darkModeConfig = ref({
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
       layout: {
+        labels: {
+          dataLabels: {
+            prefix: "",
+            suffix: ""
+          }
+        },
         rings: {
           strokeWidth: 2,
           stroke: "#1A1A1A",
@@ -361,6 +373,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRingsDatasetIte
       backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
       layout: {
+        labels: {
+          dataLabels: {
+            prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.prefix">, (default: "")
+            suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.suffix">, (default: "")
+          }
+        },
         rings: {
           strokeWidth: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.chart.layout.rings.strokeWidth"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.chart.layout.rings.strokeWidth">, (default: 2)
           stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.rings.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.rings.stroke">, (default: "#FFFFFF")

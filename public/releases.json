@@ -1,5 +1,39 @@
 [
     {
+        "version": "v 1.9.89",
+        "date": "2024-02-13",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added prefix & suffix data label options"
+            },
+            {
+                "component": "VueUiHeatmap",
+                "description": "Added prefix & suffix data label options"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Added prefix & suffix data label options"
+            },
+            {
+                "component": "VueUiRings",
+                "description": "Added prefix & suffix data label options"
+            },
+            {
+                "component": "VueUiSparkline",
+                "description": "Added prefix & suffix data label options"
+            },
+            {
+                "component": "VueUiThermometer",
+                "description": "Added prefix & suffix data label options"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Added prefix & suffix data label options"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.88",
         "date": "2024-02-12",
         "updates": [

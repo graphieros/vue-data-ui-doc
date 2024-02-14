@@ -68,7 +68,9 @@ const config = ref({
         fontSize: 20,
         rounding: 1,
         bold: true,
-        color: "#2D353C"
+        color: "#2D353C",
+        prefix: "",
+        suffix: ""
       }
     },
     title: {
@@ -130,7 +132,9 @@ const darkModeConfig = ref({
         fontSize: 20,
         rounding: 1,
         bold: true,
-        color: "#CCCCCC"
+        color: "#CCCCCC",
+        prefix: "",
+        suffix: ""
       }
     },
     title: {
@@ -257,7 +261,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
     }
 }
 </code>
-</pre>                    
+</pre>                     
                     </div>
                 </div>
             </template>
@@ -307,6 +311,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiThermometerConfig
                 rounding: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" v-model="mutableConfigDarkMode.style.chart.label.rounding" @change="forceChartUpdate"><input v-else type="number" min="0" max="3" step="1" v-model="mutableConfig.style.chart.label.rounding" @change="forceChartUpdate">, (default: 1)
                 bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.label.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.label.bold" @change="forceChartUpdate()">, (default: true)
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.label.color"><input v-else type="color" v-model="mutableConfig.style.chart.label.color">, (default: "#2D353C")
+                prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.label.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.label.prefix">, (default: "")
+                suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.label.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.label.suffix">, (default: "")
             }
         },
         title: {
