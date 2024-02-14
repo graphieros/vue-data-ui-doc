@@ -562,6 +562,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        miniLoader: {
+                            en: "A customizable loader component to stand out",
+                            fr: "Un composant chargeur personnalisable pour se démarquer",
+                            pt: "Um componente de carregamento personalizável para se destacar",
+                            de: "Eine anpassbare Loader-Komponente, die hervorsticht",
+                            zh: "可定制的加载器组件脱颖而出",
+                            jp: "目立つようにカスタマイズ可能なローダー コンポーネント",
+                            es: "Un componente de cargador personalizable para destacar",
+                            ko: "눈에 띄는 맞춤형 로더 구성요소"
+                        },
                         sparklineTable:{
                             en: "A responsive table with sparkline charts",
                             fr: "Un tableau responsive avec des graphiques sparkline",

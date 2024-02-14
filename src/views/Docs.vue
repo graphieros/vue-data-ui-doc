@@ -41,6 +41,7 @@ import DocVueUiMolecule from "../components/docs/DocVueUiMolecule.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 import DocVueUiTableSparkline from "../components/docs/DocVueUiTablesparkline.vue";
 import Tooltip from "../components/Tooltip.vue";
+import DocVueUiMiniLoader from "../components/docs/DocVueUiMiniLoader.vue";
 
 import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon } from "vue-tabler-icons";
 
@@ -446,6 +447,15 @@ const menuItems = computed(() => [
         hasTableCss: false,
     },
     {
+        name: "MiniLoader",
+        icon: "chartWheel",
+        tooltip: translations.value.docs.tooltips.miniLoader[store.lang],
+        link: "/docs#vue-ui-mini-loader",
+        type: "tool",
+        hasSlot: false,
+        hasTableCss: false,
+    },
+    {
         name: "Molecule",
         icon: "chartCluster",
         tooltip: translations.value.docs.tooltips.molecule[store.lang],
@@ -505,6 +515,7 @@ const menuItems = computed(() => [
             <DocVueUi3dBar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-3d-bar'"/>
             <DocVueUiDigits v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-digits'"/>
             <DocVueUiMolecule v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-molecule'"/>
+            <DocVueUiMiniLoader v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-mini-loader'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">
