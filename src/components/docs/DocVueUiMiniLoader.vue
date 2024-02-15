@@ -25,21 +25,27 @@ const config = ref({
   type: "onion",
   onion: {
     gutterColor: "#CCCCCC",
-    gutterOpacity: 0,
+    gutterOpacity: 0.3,
     gutterBlur: 0,
     trackHueRotate: 360,
     trackBlur: 1,
     trackColor: "#42d392"
   },
   line: {
-    color: "#42d392",
-    blur: 1,
-    hueRotate: 360
+    gutterColor: "#CCCCCC",
+    gutterOpacity: 0.3,
+    gutterBlur: 0,
+    trackHueRotate: 360,
+    trackBlur: 1,
+    trackColor: "#42d392"
   },
   bar: {
-    color: "#42d392",
-    blur: 1,
-    hueRotate: 360
+    gutterColor: "#CCCCCC",
+    gutterOpacity: 0.3,
+    gutterBlur: 0,
+    trackHueRotate: 360,
+    trackBlur: 1,
+    trackColor: "#42d392"
   }
 })
 
@@ -100,16 +106,16 @@ function fixChart() {
                 <button @click="copyToClipboard(config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
             <div class="flex flex-row gap-6 place-items-center justify-center max-w-[300px] mx-auto">            
-                <VueUiMiniLoader :config="mutableConfig" :key="key"/>
                 <VueUiMiniLoader :config="{...mutableConfig, type: 'line'}" :key="key"/>
                 <VueUiMiniLoader :config="{...mutableConfig, type: 'bar'}" :key="key"/>
+                <VueUiMiniLoader :config="mutableConfig" :key="key"/>
             </div>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_mini_loader)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
             <GitHubLink link="vue-ui-mini-loader"/>
         </div>
-        <Box>
+        <Box :activeTab="1">
             <template #tab0>
                 {{ translations.docs.comments.noDataset[store.lang] }}
             </template>
@@ -125,24 +131,30 @@ function fixChart() {
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiMiniLoaderConfig</span> = {
     type: "line" | "bar" | "onion", (default: "onion")
-    onion: {
-        gutterColor: <input type="color" v-model="mutableConfig.onion.gutterColor">, (default: "#CCCCCC")
-        gutterOpacity: <input type="number" min="0" max="1" step="0.1" v-model="mutableConfig.onion.gutterOpacity">, (default: 0)
-        gutterBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.onion.gutterBlur">, (default: 0)
-        trackHueRotate: <input type="number" min="0" max="360" step="1" v-model="mutableConfig.onion.trackHueRotate">, (default: 20)
-        trackBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.onion.trackBlur">, (default: 5)
-        trackColor: <input type="color" v-model="mutableConfig.onion.trackColor">, (default: "#42d392")
-    },
     line: {
-        color: <input type="color" v-model="mutableConfig.line.color">, (default: "#42d392"),
-        blur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.line.blur">, (default: 1)
-        hueRotate: <input type="number" min="0" max="360" step="1" v-model="mutableConfig.line.hueRotate">, (default: 20)
+        gutterColor: <input type="color" v-model="mutableConfig.line.gutterColor">, (default: "#CCCCCC")
+        gutterOpacity: <input type="number" min="0" max="1" step="0.1" v-model="mutableConfig.line.gutterOpacity">, (default: 0.3)
+        gutterBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.line.gutterBlur">, (default: 0)
+        trackHueRotate: <input type="number" min="0" max="360" step="1" v-model="mutableConfig.line.trackHueRotate">, (default: 20)
+        trackBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.line.trackBlur">, (default: 1)
+        trackColor: <input type="color" v-model="mutableConfig.line.trackColor">, (default: "#42d392")
     },
     bar: {
-        color: <input type="color" v-model="mutableConfig.bar.color">, (default: "#42d392"),
-        blur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.bar.blur">, (default: 1)
-        hueRotate: <input type="number" min="0" max="360" step="1" v-model="mutableConfig.bar.hueRotate">, (default: 20)
-    }
+        gutterColor: <input type="color" v-model="mutableConfig.onion.gutterColor">, (default: "#CCCCCC")
+        gutterOpacity: <input type="number" min="0" max="1" step="0.1" v-model="mutableConfig.bar.gutterOpacity">, (default: 0.3)
+        gutterBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.bar.gutterBlur">, (default: 0)
+        trackHueRotate: <input type="number" min="0" max="360" step="1" v-model="mutableConfig.bar.trackHueRotate">, (default: 20)
+        trackBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.bar.trackBlur">, (default: 1)
+        trackColor: <input type="color" v-model="mutableConfig.bar.trackColor">, (default: "#42d392")
+    },
+    onion: {
+        gutterColor: <input type="color" v-model="mutableConfig.onion.gutterColor">, (default: "#CCCCCC")
+        gutterOpacity: <input type="number" min="0" max="1" step="0.1" v-model="mutableConfig.onion.gutterOpacity">, (default: 0.3)
+        gutterBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.onion.gutterBlur">, (default: 0)
+        trackHueRotate: <input type="number" min="0" max="360" step="1" v-model="mutableConfig.onion.trackHueRotate">, (default: 20)
+        trackBlur: <input type="number" min="0" max="5" step="0.1" v-model="mutableConfig.onion.trackBlur">, (default: 1)
+        trackColor: <input type="color" v-model="mutableConfig.onion.trackColor">, (default: "#42d392")
+    },
 }
 </code>
 </pre>

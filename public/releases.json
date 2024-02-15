@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.92",
+        "date": "2024-02-15",
+        "updates": [
+            {
+                "component": "VueUiMiniLoader",
+                "description": "Minor improvement (standardization)"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.91",
         "date": "2024-02-15",
         "updates": [
