@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 1.9.93",
+        "date": "2024-02-16",
+        "updates": [
+            {
+                "component": "",
+                "description": "Added getVueDataUi config utility function to get the template of the config object for any component"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.92",
         "date": "2024-02-15",
         "updates": [

@@ -42,8 +42,10 @@ import DeepSearch from "../components/DeepSearch.vue";
 import DocVueUiTableSparkline from "../components/docs/DocVueUiTablesparkline.vue";
 import Tooltip from "../components/Tooltip.vue";
 import DocVueUiMiniLoader from "../components/docs/DocVueUiMiniLoader.vue";
+import { getVueDataUiConfig } from "vue-data-ui";
+import mainConfig from "../assets/default_configs.json";
 
-import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon } from "vue-tabler-icons";
+import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, CopyIcon } from "vue-tabler-icons";
 
 import { useMainStore } from "../stores";
 
@@ -71,6 +73,31 @@ const cssTableClasses = ref([
     ".vue-ui-data-table__tbody__row-odd",
     ".vue-ui-data-table__tbody__td",
 ])
+
+function copyToClipboard(conf) {
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = JSON.stringify(conf);
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    store.copy();
+}
+
+const configKeys = computed(() => {
+    return Object.keys(mainConfig).toSorted()
+})
+
+const configSelect = ref('vue_ui_xy')
+
+const selectedConfig = computed(() => {
+    return getVueDataUiConfig(configSelect.value)
+})
 
 const menuItems = computed(() => [
     {
@@ -533,6 +560,23 @@ const menuItems = computed(() => [
 </div>
                 <div class="w-full px-2 sm:px-0 sm:w-1/2 text-left mx-auto mt-4 text-xs sm:text-sm">
                     {{ translations.docs.p1[store.lang] }}
+                </div>
+
+                <div class="w-full max-w-[1000px] mx-auto my-4 sm:text-sm flex flex-col place-items-center border p-4 border-app-orange rounded-lg bg-[#ff640018]">
+                    <div class="mb-4">{{ translations.getConfig[store.lang] }}</div>
+                    <code class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4">
+                        import { getVueDataUiConfig } from "vue-data-ui";<br>
+
+                        const {{ configSelect.replace('vue_ui_', '') }}_config = getVueDataUiConfig({{ configSelect }});
+                    </code>
+                    <select class="mb-4 h-8 px-2" v-model="configSelect"><option v-for="opt in configKeys">{{ opt }}</option> </select>
+                    <details class="text-center select-none cursor-pointer">
+                        <summary>{{ translations.viewSelectedConfig[store.lang] }}</summary>
+                    <div class="text-xs text-left mt-6 cursor-pointer" @click="copyToClipboard(selectedConfig)">
+                        <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
+                        {{ selectedConfig }}
+                    </div>
+                    </details>
                 </div>
 
                 <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col md:flex-row gap-4">

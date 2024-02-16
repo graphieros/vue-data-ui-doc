@@ -20,6 +20,36 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                getConfig: {
+                    en: "Since version v.1.9.93 you can get any configuration object by importing and calling the getVueDataUiConfig function, passing as a parameter the key corresponding to the component.",
+                    fr: "Depuis la version v.1.9.93 vous pouvez obtenir n'importe quel objet de configuration en important et en appelant la fonction getVueDataUiConfig, en passant en paramètre la clé correspondant au composant.",
+                    pt: "Desde a versão v.1.9.93 você pode obter qualquer objeto de configuração importando e chamando a função getVueDataUiConfig, passando como parâmetro a chave correspondente ao componente.",
+                    de: "Seit Version v.1.9.93 können Sie jedes Konfigurationsobjekt erhalten, indem Sie die Funktion getVueDataUiConfig importieren und aufrufen und dabei als Parameter den der Komponente entsprechenden Schlüssel übergeben.",
+                    zh: "从 v.1.9.93 版本开始，您可以通过导入并调用 getVueDataUiConfig 函数来获取任何配置对象，并将与组件对应的键作为参数传递。",
+                    jp: "バージョン v.1.9.93 以降、getVueDataUiConfig 関数をインポートして呼び出し、コンポーネントに対応するキーをパラメータとして渡すことで、任意の構成オブジェクトを取得できます。",
+                    es: "Desde la versión v.1.9.93 se puede obtener cualquier objeto de configuración importando y llamando a la función getVueDataUiConfig, pasando como parámetro la clave correspondiente al componente.",
+                    ko: "버전 v.1.9.93부터 getVueDataUiConfig 함수를 가져오고 호출하여 구성 요소에 해당하는 키를 매개 변수로 전달하여 구성 개체를 얻을 수 있습니다."
+                },
+                viewSelectedConfig: {
+                    en: "View selected config",
+                    fr: "Voir la config sélectionnée",
+                    pt: "Ver configuração selecionada",
+                    de: "Ausgewählte Konfiguration anzeigen",
+                    zh: "查看选定的配置",
+                    jp: "選択した構成を表示する",
+                    es: "Ver configuración seleccionada",
+                    ko: "선택한 구성 보기"
+                },
+                clickToCopy: {
+                    en: "Click to copy",
+                    fr: "Cliquez pour copier",
+                    pt: "Clique para copiar",
+                    de: "Klicken Sie zum Kopieren",
+                    zh: "点击复制",
+                    jp: "クリックしてコピー",
+                    es: "Haga clic para copiar",
+                    ko: "복사하려면 클릭하세요."
+                },
                 githubCode: {
                     en: "View source code",
                     fr: "Afficher le code source",
