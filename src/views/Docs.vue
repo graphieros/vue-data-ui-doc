@@ -562,12 +562,12 @@ const menuItems = computed(() => [
                     {{ translations.docs.p1[store.lang] }}
                 </div>
 
-                <div class="w-full max-w-[1000px] mx-auto mt-4 sm:text-sm flex flex-col place-items-center border p-4 border-app-orange rounded-lg bg-[#ff640018]">
+                <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-orange rounded-lg bg-[#ff640018]">
                     <div class="mb-4">{{ translations.getConfig[store.lang] }}</div>
                     <code class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm">
                         import { getVueDataUiConfig } from "vue-data-ui";<br>
 
-                        const {{ configSelect.replace('vue_ui_', '') }}_config = getVueDataUiConfig({{ configSelect }});
+                        const {{ configSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_config = getVueDataUiConfig("{{ configSelect }}");
                     </code>
                     <select class="mb-4 h-8 px-2" v-model="configSelect"><option v-for="opt in configKeys">{{ opt }}</option> </select>
                     <details class="text-center select-none cursor-pointer">

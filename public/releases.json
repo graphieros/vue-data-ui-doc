@@ -1,5 +1,19 @@
 [
     {
+        "version": "v 1.9.94",
+        "date": "2024-02-17",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Added dynamic indicator on side legend showing on cell hover"
+            },
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Fixed y position of multiple series parent label"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.93",
         "date": "2024-02-16",
         "updates": [
