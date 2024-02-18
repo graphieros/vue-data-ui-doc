@@ -247,7 +247,7 @@
                 "offsetY": 0,
                 "subtitle": {
                     "fontSize": 16,
-                    "color": "grey",
+                    "color": "#CCCCCC",
                     "text": ""
                 }
             },
@@ -309,6 +309,7 @@
         "table": {
             "rounding": 0,
             "responsiveBreakpoint": 400,
+            "sparkline": true,
             "columnNames": {
                 "period": "Period",
                 "total": "Total"
@@ -1117,7 +1118,8 @@
                     "color": "#2D353C",
                     "fontSize": 14,
                     "roundingValue": 0,
-                    "roundingPercentage": 0
+                    "roundingPercentage": 0,
+                    "offsetY": 6
                 }
             }
         },

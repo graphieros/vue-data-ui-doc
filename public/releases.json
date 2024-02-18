@@ -1,5 +1,25 @@
 [
     {
+        "version": "v 1.9.98",
+        "date": "2024-02-18",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added optional display of data table with sparklines"
+            }
+        ]
+    },
+    {
+        "version": "v 1.9.95",
+        "date": "2024-02-18",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Fixed viewBox size issues ocurring with small datasets"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.94",
         "date": "2024-02-17",
         "updates": [
