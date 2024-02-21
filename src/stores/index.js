@@ -20,6 +20,51 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                maker: {
+                    labels: {
+                        period: {
+                            en: "Period",
+                            fr: "Période",
+                            pt: "Período",
+                            de: "Zeitraum",
+                            zh: "时期",
+                            jp: "期間",
+                            es: "Período",
+                            ko: "기간"
+                        }
+                    },
+                    tooltips: {
+                        addDataset: {
+                            en: "Add dataset",
+                            fr: "Ajout jeu de données",
+                            pt: "Adicionar conjunto de dados",
+                            de: "Datensatz hinzufügen",
+                            zh: "添加数据集",
+                            jp: "データセットの追加",
+                            es: "Agregar conjunto de datos",
+                            ko: "데이터 세트 추가"
+                        },
+                        addData: {
+                            en: "Add data",
+                            fr: "Ajout données",
+                            pt: "Adicionar dados",
+                            de: "Daten hinzufügen",
+                            zh: "添加数据",
+                            jp: "データの追加",
+                            ko: "データの追加"
+                        },
+                        delete: {
+                            en: "Delete",
+                            fr: "Supprimer",
+                            pt: "Excluir",
+                            de: "Löschen",
+                            zh: "删除",
+                            jp: "消去",
+                            es: "Borrar",
+                            ko: "삭제"
+                        }
+                    }
+                },
                 getConfig: {
                     en: "Since version v.1.9.93 you can get any configuration object by importing and calling the getVueDataUiConfig function, passing as a parameter the key corresponding to the component.",
                     fr: "Depuis la version v.1.9.93 vous pouvez obtenir n'importe quel objet de configuration en important et en appelant la fonction getVueDataUiConfig, en passant en paramètre la clé correspondant au composant.",
@@ -321,6 +366,16 @@ export const useMainStore = defineStore("main", {
                     ko: "어두운 모드로 전환"
                 },
                 menu: {
+                    chartBuilder: {
+                        en: "Chart builder",
+                        fr: "Générateur de graphiques",
+                        pt: "Construtor de gráficos",
+                        de: "Diagrammersteller",
+                        zh: "图表生成器",
+                        jp: "チャートビルダー",
+                        es: "Generador de gráficos",
+                        ko: "차트 빌더"
+                    },
                     customization: {
                         en: "Customization",
                         fr: "Customisation",

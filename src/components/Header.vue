@@ -2,8 +2,9 @@
 import { ref, onMounted, computed } from "vue";
 import { Menu2Icon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
-import { BrightnessUpIcon, MoonIcon, LanguageIcon } from "vue-tabler-icons";
+import { BrightnessUpIcon, MoonIcon, LanguageIcon, ToolIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
+import ChartMaker from "./ChartMaker.vue";
 const router = useRouter();
 const store = useMainStore();
 
@@ -14,6 +15,12 @@ const translations = computed(() => {
 
 function useMenu() {
     isOpen.value = !isOpen.value;
+}
+
+const chartMkr = ref(null)
+
+function openChartMaker() {
+    chartMkr.value.openDialog()
 }
 
 function changeTheme() {
@@ -93,6 +100,7 @@ const selectedLanguage = computed({
 </script>
 
 <template>
+    <ChartMaker ref="chartMkr"/>
     <header data-cy="app-header" class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b border-gray-700 transition-all">
         <div class="mx-auto w-5/6 py-3 flex justify-between">
             <router-link data-cy="link-home" to="/" class="w-[150px]">
@@ -103,6 +111,9 @@ const selectedLanguage = computed({
             </router-link>
 
             <nav class="hidden lg:flex flex-row gap-3 justify-end w-full place-items-center">
+                <!-- <button @click="openChartMaker">
+                    <ToolIcon/>
+                </button> -->
                 <router-link data-cy="link-installation" to="/installation">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/installation') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.installation[store.lang] }}
@@ -111,6 +122,11 @@ const selectedLanguage = computed({
                 <router-link data-cy="link-docs" to="/docs">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/docs') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.docs[store.lang] }}
+                    </span>
+                </router-link>
+                <router-link data-cy="link-docs" to="/chart-builder">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/chart-builder') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
+                        {{ translations.menu.chartBuilder[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-dashboard" to="/dashboard">
@@ -152,6 +168,9 @@ const selectedLanguage = computed({
                 </button>
                 <div id="mainDropdown" class="absolute top-full mt-2 right-0 bg-white dark:bg-black rounded-lg border border-gray-700 shadow-2xl px-2 py-3 w-[140px] text-right" v-show="isOpen">
                     <ul>
+                        <!-- <button @click="openChartMaker">
+                            <ToolIcon/>
+                        </button> -->
                         <router-link to="/installation">
                             <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-green hover:shadow-xl">
                                 {{ translations.menu.installation[store.lang] }}
@@ -160,6 +179,11 @@ const selectedLanguage = computed({
                         <router-link to="/docs">
                             <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
                                 {{ translations.menu.docs[store.lang] }}
+                            </span>
+                        </router-link>
+                        <router-link to="/chart-builder">
+                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
+                                {{ translations.menu.chartBuilder[store.lang] }}
                             </span>
                         </router-link>
                         <router-link to="/dashboard">

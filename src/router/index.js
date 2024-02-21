@@ -39,6 +39,11 @@ const routes = [
         component: () => import("../views/Customization.vue")
     },
     {
+        path: "/chart-builder",
+        name: "Maker",
+        component: () => import("../views/Maker.vue")
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound
     }

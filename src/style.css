@@ -56,7 +56,12 @@ html.dark select {
   background: #1a1a1a;
   color: #c8c8c8;
   border: 1px solid rgb(80,80,80);
-  text-align:center;
+}
+
+html.dark input[type="number"],
+html.dark input[type="text"] {
+  border-radius: 6px;
+  padding-left: 8px;
 }
 
 input[type="color"] {
@@ -183,4 +188,14 @@ input[type="checkbox"]:checked::before {
   color: #1A1A1A;
   transform: translateX(1.1rem);
   box-shadow: -2px -2px 10px #2f4c91;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }

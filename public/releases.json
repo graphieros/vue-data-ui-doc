@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.0",
+        "date": "2024-02-20",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fixed a bug introduced in previous release"
+            }
+        ]
+    },
+    {
         "version": "v 1.9.99",
         "date": "2024-02-19",
         "updates": [
