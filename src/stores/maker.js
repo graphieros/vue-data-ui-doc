@@ -14,6 +14,16 @@ export const useMakerStore = defineStore('maker', {
                 ko: ""
             },
             translations: {
+                steps: {
+                    en: "<ul><li>1. Compose your dataset</li><li>2. Tweak configuration settings</li><li>3. Copy the component code</li></ul>",
+                    fr: "<ul><li>1. Composez votre ensemble de données</li><li>2. Ajustez les paramètres de configuration</li><li>3. Copiez le code du composant</li></ul>",
+                    pt: "<ul><li>1. Componha seu conjunto de dados</li><li>2. Ajustar as configurações</li><li>3. Copie o código do componente</li></ul>",
+                    de: "<ul><li>1. Stellen Sie Ihren Datensatz zusammen</li><li>2. Konfigurationseinstellungen anpassen</li><li>3. Kopieren Sie den Komponentencode</li></ul>",
+                    zh: "<ul><li>1.编写数据集</li><li>2.调整配置设置</li><li>3.复制组件代码</li></ul>",
+                    jp: "<ul><li>1.データセットを構成する</li><li>2.構成設定を微調整する</li><li>3.コンポーネントコードをコピーします</li></ul>",
+                    es: "<ul><li>1. Redacte su conjunto de datos</li><li>2. Modificar los ajustes de configuración</li><li>3. Copia el código del componente</li></ul>",
+                    ko: "<ul><li>1. 데이터세트를 구성하세요</li><li>2. 구성 설정 조정</li><li>3. 구성요소 코드 복사</li></ul>"
+                },
                 config: {
                     en: "Configuration",
                     fr: "Configuration",
@@ -45,6 +55,16 @@ export const useMakerStore = defineStore('maker', {
                     ko: "구성 요소 코드:"
                 },
                 categories: {
+                    donut: {
+                        en: 'Arcs',
+                        fr: "Arcs",
+                        pt: "Arcos",
+                        de: "Bögen",
+                        zh: "弧线",
+                        jp: "円弧",
+                        es: "Arcos",
+                        ko: "호"
+                    },
                     general: {
                         en: "General settings",
                         fr: "Réglages généraux",
@@ -187,6 +207,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Área",
                         ko: "영역"
                     },
+                    average: {
+                        en: 'Average',
+                        fr: "Moyenne",
+                        pt: "Média",
+                        de: "Durchschnitt",
+                        zh: "平均的",
+                        jp: "平均",
+                        es: "Promedio",
+                        ko: "평균"
+                    },
                     backgroundColor: {
                         en: "Background color",
                         fr: "Couleur de fond",
@@ -226,6 +256,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "太字フォント",
                         es: "Negrita",
                         ko: "볼드체"
+                    },
+                    border: {
+                        en: "Border",
+                        fr: "Bordure",
+                        pt: "Borda",
+                        de: "Rand",
+                        zh: "边缘",
+                        jp: "角",
+                        es: "Borde",
+                        ko: "가장자리"
                     },
                     borderRadius: {
                         en: "Border radius",
@@ -286,6 +326,25 @@ export const useMakerStore = defineStore('maker', {
                         jp: "色",
                         es: "Color",
                         ko: "색상"
+                    },
+                    colorName: {
+                        en: "Serie name color",
+                        fr: "Couleur du nom de série",
+                        pt: "Cor do nome da série",
+                        de: "Farbe des Seriennamens",
+                        zh: "系列名称 颜色",
+                        jp: "シリーズ名カラー",
+                        ko: "시리즈명 색상"
+                    },
+                    colorPercentage: {
+                        en: "% label color",
+                        fr: "Couleur du label %",
+                        pt: "% cor do rótulo",
+                        de: "% Etikettenfarbe",
+                        zh: "% 标签颜色",
+                        jp: "% ラベルの色",
+                        es: "% color de etiqueta",
+                        ko: "% 라벨 색상"
                     },
                     columnNamePeriod: {
                         en: "Column name: Period",
@@ -357,6 +416,15 @@ export const useMakerStore = defineStore('maker', {
                         es: "Desde",
                         ko: "부터"
                     },
+                    gradientIntensity: {
+                        en: 'Gradient intensity',
+                        fr: "Intensité du dégradé",
+                        pt: "Intensidade gradiente",
+                        de: "Gradientenintensität",
+                        zh: "梯度强度",
+                        jp: "勾配強度",
+                        ko: "그라데이션 강도"
+                    },
                     height: {
                         en: "Height",
                         fr: "Hauteur",
@@ -366,6 +434,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "縦",
                         es: "Altura",
                         ko: "키"
+                    },
+                    hideUnderValue: {
+                        en: "Hide under %",
+                        fr: "Masquer en dessous du %",
+                        pt: "Ocultar em %",
+                        de: "Unter % verstecken",
+                        zh: "隐藏在%下",
+                        jp: "% の下に隠す",
+                        es: "Ocultar en %",
+                        ko: "% 아래에 숨기기"
                     },
                     highlighterColor: {
                         en: "Highlighter color",
@@ -386,6 +464,26 @@ export const useMakerStore = defineStore('maker', {
                         jp: "ハイライターの不透明度",
                         es: "Opacidad del resaltador",
                         ko: "형광펜 불투명도"
+                    },
+                    hollow: {
+                        en: "Hollow",
+                        fr: "Creux",
+                        pt: "Oco",
+                        de: "Hohl",
+                        zh: "空洞的",
+                        jp: "中空",
+                        es: "Hueco",
+                        ko: "구멍"
+                    },
+                    is: {
+                        en: ':',
+                        fr: ":",
+                        pt: ":",
+                        de: ":",
+                        zh: ':',
+                        jp: ":",
+                        es: ":",
+                        ko: ":"
                     },
                     left: {
                         en: "Left",
@@ -787,6 +885,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Arriba",
                         ko: "맨 위"
                     },
+                    total: {
+                        en: 'Total',
+                        fr: 'Total',
+                        pt: "Total",
+                        de: "Gesamt",
+                        zh: "全部的",
+                        jp: "合計",
+                        es: "Total",
+                        ko: "총"
+                    },
                     type: {
                         en: "Type",
                         fr: "Type",
@@ -796,6 +904,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "タイプ",
                         es: "タイプ",
                         ko: "유형"
+                    },
+                    useBlurOnHover: {
+                        en: "Blur on hover",
+                        fr: "Flou au survol",
+                        pt: "Desfocar ao passar o mouse",
+                        de: "Unschärfe beim Schweben",
+                        zh: "Unschärfe beim Schweben",
+                        jp: "ホバー時にぼかし",
+                        es: "Desenfoque al pasar el cursor",
+                        ko: "마우스를 올리면 흐림"
                     },
                     useCssAnimation: {
                         en: "Use css animation",
@@ -816,6 +934,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "グラデーションを使用する",
                         es: "Usar gradiente",
                         ko: "그라데이션 사용"
+                    },
+                    value: {
+                        en: "Value",
+                        fr: "Valeur",
+                        pt: "Valor",
+                        de: "Wert",
+                        zh: "价格",
+                        jp: "値",
+                        es: "Valor",
+                        ko: "값"
                     },
                     valueRounding: {
                         en: "Value rounding",

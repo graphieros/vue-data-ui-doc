@@ -5,6 +5,7 @@ import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon, CopyIcon } from "v
 import { getVueDataUiConfig } from "vue-data-ui";
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
+import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -22,28 +23,6 @@ const isDarkMode = computed(() => {
 })
 
 const isFixed = ref(true);
-
-function createUid() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-        .replace(/[xy]/g, function (c) {
-            const r = Math.random() * 16 | 0,
-                v = c == 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-            });
-}
-
-function getValueByPath(referenceObject, path) {
-    const pathArray = path.split('.');
-    let currentObject = referenceObject;
-    for (const attr of pathArray) {
-        if (currentObject.hasOwnProperty(attr)) {
-        currentObject = currentObject[attr];
-        } else {
-        return undefined;
-        }
-    }
-    return currentObject;
-}
 
 const C = ref(getVueDataUiConfig('vue_ui_xy'))
 
@@ -219,10 +198,6 @@ const CONFIG_MODEL = ref([
     { key: 'table.td.outline', def: '', type: 'text', label: 'outlineRow', category: 'table' },
 ])
 
-
-
-console.log(getValueByPath(C.value, "chart.zoom.show"))
-
 const options = ref(
     {
         name: "VueUiXy",
@@ -307,7 +282,12 @@ const datasetItems= ref([
         useTag: 'none'
     }
 ]);
+
 const step = ref(0);
+
+function forceChartUpdate() {
+    step.value += 1;
+}
 
 
 function addDatasetItem() {
@@ -335,28 +315,6 @@ function deleteValueFromSeries({id, index, key='values'}) {
     step.value += 1;
 }
 
-function convertArrayToObject(configArray) {
-    const resultObject = {};
-
-    configArray.forEach(({ key, def }) => {
-        const keys = key.split('.');
-        let currentObject = resultObject;
-
-        keys.forEach((nestedKey, index) => {
-            if (!currentObject.hasOwnProperty(nestedKey)) {
-                if (index === keys.length - 1) {
-                    currentObject[nestedKey] = def;
-                } else {
-                    currentObject[nestedKey] = {};
-                }
-            }
-            currentObject = currentObject[nestedKey];
-        });
-    });
-
-    return resultObject;
-}
-
 const finalConfig = computed(() => {
     return convertArrayToObject(CONFIG_MODEL.value)
 })
@@ -365,33 +323,18 @@ const finalConfig = computed(() => {
 function getLabel(label) {
     return xyTranslations.value.labels[label][store.lang]
 }
-
-function copyComponent() {
-    const content = document.getElementById('componentContent').innerHTML
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = content.replaceAll('&lt;', '<').replaceAll('&gt;', '>');
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
-    store.copy();
-}
-
 </script>
 
 <template>
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <transition name="fade">                
                 <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`" v-if="datasetItems.length > 0 && datasetItems[0].series.length">
-                    <button @click="isFixed = !isFixed">
-                        <PinnedOffIcon v-if="isFixed"/>
-                        <PinIcon v-else/>
-                    </button>
+                    <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
+                        <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
+                            <PinnedOffIcon v-if="isFixed"/>
+                            <PinIcon v-else/>
+                        </button>
+                    </div>
                     <VueUiXy :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
                 </div>
             </transition>
@@ -470,7 +413,7 @@ function copyComponent() {
                             <div v-for="knob in CONFIG_MODEL.filter(k => k.category === category.key)" class="flex flex-col justify-start">
                                 <label class="text-xs">{{ getLabel(knob.label) }}</label>
                                 <div class="flex place-items-center justify-start h-[40px]">
-                                    <input class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def">
+                                    <input class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def" @change="forceChartUpdate">
                                     <select v-if="knob.type === 'select'" v-model="knob.def">
                                         <option v-for="opt in knob.options">{{ opt }}</option>
                                     </select>
@@ -484,10 +427,10 @@ function copyComponent() {
 
             <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
             <div class="mt-6 mb-2 text-lg flex flex-row gap-4 place-items-center">
-                <button @click="copyComponent"><CopyIcon/></button>
+                <button @click="() => copyComponent('componentContent', store)"><CopyIcon/></button>
                 {{ xyTranslations.componentCode[store.lang] }} 
             </div>
-<pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer" @click="copyComponent">
+<pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer"  @click="() => copyComponent('componentContent', store)">
 <code id="componentContent">
 &lt;script setup&gt;
     import { ref } from "vue";

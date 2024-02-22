@@ -1,9 +1,10 @@
 <script setup>
 import { ref, computed} from "vue";
 import { useMainStore } from "../stores";
-import MakerXy from "../components/maker/MakerXy.vue"
 import { useMakerStore } from "../stores/maker"
 import { CheckIcon } from "vue-tabler-icons"
+import MakerXy from "../components/maker/MakerXy.vue"
+import MakerDonut from "../components/maker/MakerDonut.vue"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -51,9 +52,11 @@ const options = ref([
                     <VueUiIcon :size="38" :stroke-width="0.8" :name="selectedChart.icon" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
                 </div>
             </div>
+                    <div v-html="makerTranslations.steps[store.lang]" class="mx-auto w-fit mt-6"/>
         </div>
 
         <MakerXy v-if="selectedChart.name === 'VueUiXy'"/>
+        <MakerDonut v-if="selectedChart.name === 'VueUiDonut'"/>
 
 
     </div>
