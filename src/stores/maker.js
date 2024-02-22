@@ -3,7 +3,47 @@ import { defineStore } from "pinia";
 export const useMakerStore = defineStore('maker', {
     state: () => {
         return {
+            template: {
+                en: "",
+                fr: "",
+                pt: "",
+                de: "",
+                zh: "",
+                jp: "",
+                es: "",
+                ko: ""
+            },
             translations: {
+                config: {
+                    en: "Configuration",
+                    fr: "Configuration",
+                    pt: "Configuração",
+                    de: "Aufbau",
+                    zh: "配置",
+                    jp: "構成",
+                    es: "Configuración",
+                    ko: "구성"
+                },
+                dataset: {
+                    en: "Dataset",
+                    fr: "Données",
+                    pt: "Conjunto de dados",
+                    de: "Datensatz",
+                    zh: "数据集",
+                    jp: "データセット",
+                    es: "Conjunto de datos",
+                    ko: "데이터세트"
+                },
+                componentCode: {
+                    en: "Component code:",
+                    fr: "Code composant :",
+                    pt: "Código do componente:",
+                    de: "Komponentencode:",
+                    zh: "组件代码：",
+                    jp: "コンポーネントコード:",
+                    es: "Código de componente:",
+                    ko: "구성 요소 코드:"
+                },
                 categories: {
                     general: {
                         en: "General settings",
@@ -137,6 +177,16 @@ export const useMakerStore = defineStore('maker', {
                     },
                 },
                 labels: {
+                    area: {
+                        en: "Area",
+                        fr: "Surface",
+                        pt: "Área",
+                        de: "Bereich",
+                        zh: "区",
+                        jp: "エリア",
+                        es: "Área",
+                        ko: "영역"
+                    },
                     backgroundColor: {
                         en: "Background color",
                         fr: "Couleur de fond",
@@ -227,6 +277,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Ancho de título",
                         ko: "캡션 너비"
                     },
+                    color: {
+                        en: "Color",
+                        fr: "Couleur",
+                        pt: "Cor",
+                        de: "Farbe",
+                        zh: "颜色",
+                        jp: "色",
+                        es: "Color",
+                        ko: "색상"
+                    },
                     columnNamePeriod: {
                         en: "Column name: Period",
                         fr: "Nom de la colonne : Période",
@@ -246,6 +306,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "列名: 合計",
                         es: "Nombre de columna: Total",
                         ko: "열 이름: 합계"
+                    },
+                    dashed: {
+                        en: "Dashed",
+                        fr: "pointillés",
+                        pt: "Pontilhado",
+                        de: "Gepunktet",
+                        zh: "点状",
+                        jp: "点在",
+                        es: "Punteado",
+                        ko: "점이 찍힌"
                     },
                     fontFamily: {
                         en: "Font family",
@@ -427,6 +497,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Prefijo",
                         ko: "접두사"
                     },
+                    progression: {
+                        en: "Progression",
+                        fr: "Progression",
+                        pt: "Progresso",
+                        de: "Fortschritt",
+                        zh: "进步",
+                        jp: "進捗",
+                        es: "Progreso",
+                        ko: "진전"
+                    },
                     radius: {
                         en: "Radius",
                         fr: "Rayon",
@@ -466,6 +546,36 @@ export const useMakerStore = defineStore('maker', {
                         jp: "丸める",
                         es: "redondeo",
                         ko: "반올림"
+                    },
+                    selectChartType: {
+                        en: "Select chart type:",
+                        fr: "Sélectionnez le type de graphique :",
+                        pt: "Selecione o tipo de gráfico:",
+                        de: "Diagrammtyp auswählen:",
+                        zh: "选择图表类型：",
+                        jp: "チャートの種類を選択してください:",
+                        es: "Seleccione el tipo de gráfico:",
+                        ko: "차트 유형 선택:"
+                    },
+                    serieName: {
+                        en: "Serie name",
+                        fr: "Nom de la série",
+                        pt: "Nome da série",
+                        de: "Serienname",
+                        zh: "系列名称",
+                        jp: "シリーズ名",
+                        es: "Nombre de la serie",
+                        ko: "시리즈 이름"
+                    },
+                    shape: {
+                        en: "Shape",
+                        fr: "Forme",
+                        pt: "Forma",
+                        de: "Form",
+                        zh: "形状",
+                        jp: "形",
+                        es: "Forma",
+                        ko: "모양"
                     },
                     show: {
                         en: "Show",
@@ -547,6 +657,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Mostrar valor",
                         ko: "값 표시"
                     },
+                    smooth: {
+                        en: "Curved line",
+                        fr: "Ligne courbe",
+                        pt: "Linha curvada",
+                        de: "Gekrümmte Linie",
+                        zh: "曲线",
+                        jp: "曲線",
+                        es: "Línea curva",
+                        ko: "곡선"
+                    },
                     sparkline: {
                         en: "Sparkline chart",
                         fr: "Graphique sparkline",
@@ -566,6 +686,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "サフィックス",
                         es: "Sufijo",
                         ko: "접미사"
+                    },
+                    tag: {
+                        en: "Tag",
+                        fr: "Etiquette",
+                        pt: "Marcação",
+                        de: "Etikett",
+                        zh: "标签",
+                        jp: "鬼ごっこ",
+                        es: "Etiqueta",
+                        ko: "꼬리표"
                     },
                     textAlign: {
                         en: "Text alignment",
@@ -656,6 +786,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "上",
                         es: "Arriba",
                         ko: "맨 위"
+                    },
+                    type: {
+                        en: "Type",
+                        fr: "Type",
+                        pt: "Tipo",
+                        de: "Typ",
+                        zh: "类型",
+                        jp: "タイプ",
+                        es: "タイプ",
+                        ko: "유형"
                     },
                     useCssAnimation: {
                         en: "Use css animation",

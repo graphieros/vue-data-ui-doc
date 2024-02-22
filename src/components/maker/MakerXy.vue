@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed} from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon } from "vue-tabler-icons"
+import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon, CopyIcon } from "vue-tabler-icons"
 import { getVueDataUiConfig } from "vue-data-ui";
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
@@ -21,7 +21,7 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 })
 
-const isFixed = ref(false);
+const isFixed = ref(true);
 
 function createUid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
@@ -344,15 +344,12 @@ function convertArrayToObject(configArray) {
 
         keys.forEach((nestedKey, index) => {
             if (!currentObject.hasOwnProperty(nestedKey)) {
-                // For the last key, assign the 'def' value
                 if (index === keys.length - 1) {
                     currentObject[nestedKey] = def;
                 } else {
-                    // Create an empty object for nested keys
                     currentObject[nestedKey] = {};
                 }
             }
-            // Move to the next level in the nested structure
             currentObject = currentObject[nestedKey];
         });
     });
@@ -367,6 +364,22 @@ const finalConfig = computed(() => {
 
 function getLabel(label) {
     return xyTranslations.value.labels[label][store.lang]
+}
+
+function copyComponent() {
+    const content = document.getElementById('componentContent').innerHTML
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = content.replaceAll('&lt;', '<').replaceAll('&gt;', '>');
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    store.copy();
 }
 
 </script>
@@ -385,27 +398,22 @@ function getLabel(label) {
 
 
             <details open>
-                <summary class="cursor-pointer mb-4">DATASET</summary>
-                <div class="flex flex-row gap-4 my-6">
-                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-                    </Tooltip>
-                </div>
+                <summary class="cursor-pointer mb-4">{{ xyTranslations.dataset[store.lang] }}</summary>
                 <div class="flex flex-col gap-2">
                     <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
                     <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                         <table>
                             <thead>
-                                <th class="text-left text-xs h-[40px]">Color</th>
-                                <th class="text-left text-xs">Serie name</th>
-                                <th class="text-left text-xs">Type</th>
-                                <th class="text-left text-xs">Labels</th>
-                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Tag</th>
-                                <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">Area</th>
-                                <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">Smooth</th>
-                                <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">Dashed</th>
-                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Progression</th>
-                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Shape</th>
+                                <th class="text-left text-xs h-[40px]">{{ xyTranslations.labels.color[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ xyTranslations.labels.serieName[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ xyTranslations.labels.type[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ xyTranslations.labels.showDataLabels[store.lang] }}</th>
+                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.tag[store.lang] }}</th>
+                                <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.area[store.lang] }}</th>
+                                <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.smooth[store.lang] }}</th>
+                                <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.dashed[store.lang] }}</th>
+                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.progression[store.lang] }}</th>
+                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.shape[store.lang] }}</th>
                                 <th v-for="(_, j) in maxSeries">
                                     <div class="flex flex-col">
                                         <label class="text-left text-xs flex flex-row gap-2">{{ translations.maker.labels.period[store.lang] }} <AlertTriangleIcon class="text-app-orange" size="14" v-if="!CONFIG_MODEL.find(el => el.key === 'chart.grid.labels.xAxisLabels.values').def[j]" /></label>
@@ -443,11 +451,16 @@ function getLabel(label) {
                         </table>
                     </div>
                 </div>
+                <div class="flex flex-row gap-4 mt-4 mb-6">
+                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
+                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
+                    </Tooltip>
+                </div>
             </details>
 
 
             <details open class="mt-6" v-if="xyTranslations.labels">
-                <summary class="cursor-pointer">CONFIG</summary>
+                <summary class="cursor-pointer">{{ xyTranslations.config[store.lang] }}</summary>
 
                 <template v-for="category in CONFIG_CATEGORIES">
                 
@@ -470,9 +483,12 @@ function getLabel(label) {
 
 
             <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-            <div class="mt-6 mb-2 text-lg">Component code: </div>
-<pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded">
-<code>
+            <div class="mt-6 mb-2 text-lg flex flex-row gap-4 place-items-center">
+                <button @click="copyComponent"><CopyIcon/></button>
+                {{ xyTranslations.componentCode[store.lang] }} 
+            </div>
+<pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer" @click="copyComponent">
+<code id="componentContent">
 &lt;script setup&gt;
     import { ref } from "vue";
     import { VueUiXy } from "vue-data-ui";
@@ -498,3 +514,9 @@ function getLabel(label) {
             </div>
         </div>
 </template>
+
+<style scoped>
+th, td {
+    padding: 0 3px;
+}
+</style>
