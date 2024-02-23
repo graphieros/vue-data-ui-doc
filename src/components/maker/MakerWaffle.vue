@@ -24,7 +24,7 @@ const isDarkMode = computed(() => {
 
 const isFixed = ref(true);
 
-const C = ref(getVueDataUiConfig('vue_ui_donut'));
+const C = ref(getVueDataUiConfig('vue_ui_waffle'));
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -37,12 +37,8 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.labels[store.lang]
         },
         {
-            key: 'donut',
-            title: makerTranslations.value.categories.donut[store.lang]
-        },
-        {
-            key: 'legend',
-            title: makerTranslations.value.categories.legend[store.lang]
+            key: 'grid',
+            title: makerTranslations.value.categories.grid[store.lang]
         },
         {
             key: 'title',
@@ -57,74 +53,54 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.tooltip[store.lang]
         },
         {
+            key: 'legend',
+            title: makerTranslations.value.categories.legend[store.lang]
+        },
+        {
             key: 'table',
             title: makerTranslations.value.categories.table[store.lang]
         }
     ]
 })
+
 const CONFIG_MODEL = ref([
-    { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
-    { key: 'useBlurOnHover', def: true, type: 'checkbox', label: "useBlurOnHover", category: 'general' },
-    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: "fontFamily", category: 'general'},
-    { key: 'style.chart.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'general'},
-    { key: 'style.chart.gradientIntensity', def: 40, min: 0, max: 100, type: 'range', label: 'gradientIntensity', category: 'general'},
+    { key: 'useBlurOnHover', def: true, type: 'checkbox', label: 'useBlurOnHover', category: 'general'},
+    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
-    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
-    { key: 'style.chart.layout.labels.dataLabels.show', def: true, type: 'checkbox', label: 'show', category: 'labels' },
-    { key: 'style.chart.layout.labels.dataLabels.hideUnderValue', def: 3, type: 'number', min: 0, max: 100, label: 'hideUnderValue', category: 'labels'},
-    { key: 'style.chart.layout.labels.dataLabels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },
-    { key: 'style.chart.layout.labels.dataLabels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels' },
-    { key: 'style.chart.layout.labels.value.show', def: true, type: 'checkbox', label: 'showValue', category: 'labels'},
-    { key: 'style.chart.layout.labels.value.rounding', def: 0, type: 'number', min:0, max: 6, label: 'valueRounding', category: 'labels'},
-    { key: 'style.chart.layout.labels.percentage.color', def: '#1A1A1A', type: 'color', label: 'colorPercentage', category: 'labels'},
-    { key: 'style.chart.layout.labels.percentage.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels'},
-    { key: 'style.chart.layout.labels.percentage.fontSize', def: 18, min: 6, max: 48, type: 'number', label: 'fontSize', category: 'labels'},
-    { key: 'style.chart.layout.labels.name.color', def: '#1A1A1A', type: 'color', label: 'colorName', category: 'labels'},
-    { key: 'style.chart.layout.labels.name.bold', def: false, type: 'checkbox', label: 'bold', category: 'labels'},
-    { key: 'style.chart.layout.labels.name.fontSize', def: 14, type: 'number', min: 6, max: 36, label: 'fontSize', category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.show', def: true, type: 'checkbox', label: ['hollow', 'total', 'is', 'show'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.bold', def: false, type: 'checkbox', label: ['hollow', 'total', 'is', 'bold'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['hollow', 'total', 'is', 'fontSize'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.color', def: '#AAAAAA', type: 'color', label: ['hollow', 'total', 'is', 'color'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.text', def: 'Total', type: 'text', label: ['hollow', 'total', 'is', 'textContent'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'total', 'is', 'offsetY'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.color', def: '#1A1A1A', type: 'color', label: ['hollow', 'total', 'value', 'is', 'color'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['hollow', 'total', 'value', 'is', 'fontSize'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.bold', def: true, type: 'checkbox', label: ['hollow', 'total', 'value', 'is', 'bold'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.prefix', def: '', type: 'text', label: ['hollow', 'total', 'value', 'is', 'prefix'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.suffix', def: '', type: 'text', label: ['hollow', 'total', 'value', 'is', 'suffix'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'total', 'value', 'is', 'offsetY'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['hollow', 'total', 'value', 'is', 'rounding'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.show', def: true, type: 'checkbox', label: ['hollow', 'average', 'is', 'show'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.bold', def: false, type: 'checkbox', label: ['hollow', 'average', 'is', 'bold'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.color', def: "#AAAAAA", type: "color", label: ['hollow','average', 'is', 'color'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['hollow', 'average', 'is', 'fontSize'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.text', def: 'Average', type: 'text', label: ['hollow', 'average', 'is', 'textContent'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'average', 'is', 'offsetY'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.color', def: "#1A1A1A", type: 'color', label: ['hollow', 'average', 'value', 'is', 'color'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['hollow', 'average', 'value', 'is', 'fontSize'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.bold', def: true, type: 'checkbox', label: ['hollow', 'average', 'value', 'is', 'bold'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.prefix', def: '', type: 'text', label: ['hollow', 'average', 'value', 'is', 'prefix'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.suffix', def: '', type: 'text', label: ['hollow', 'average', 'value', 'is', 'suffix'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'average', 'value', 'is', 'offsetY'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['hollow', 'average', 'value', 'is', 'rounding'], category: 'labels'},
-    { key: 'style.chart.layout.donut.strokeWidth', def: 64, type: 'range', min: 3, max: 92, label: 'thickness', category: 'donut'},
-    { key: 'style.chart.layout.donut.borderWidth', def: 1, type: 'range', min: 0, max: 36, label: ['border', 'is', 'thickness'], category: 'donut'},
-    { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend'},
-    { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend'},
-    { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
-    { key: 'style.chart.legend.fontSize', def: 16, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'legend'},
-    { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
-    { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'legend'},
-    { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: 'percentageRounding', category: 'legend'},
+    { key: 'style.chart.color', def: '#1A1A1A', type: "color", label: 'textColor', category: 'general'},
+    { key: 'style.chart.layout.labels.dataLabels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels'},
+    { key: 'style.chart.layout.labels.dataLabels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels'},
+    { key: 'style.chart.layout.grid.size', def: 10, type: 'number', min: 2, max: 30, label: 'size', category: 'grid'},
+    { key: 'style.chart.layout.grid.spaceBetween', def: 0, type: 'number', min: 0, max: 20, label: 'spacing', category: 'grid'},
+    { key: 'style.chart.layout.grid.vertical', def: false, type: 'checkbox', label: 'vertical', category: 'grid'},
+    { key: 'style.chart.layout.rect.rounding', def: 2, type: 'number', min: 0, max: 100, label: 'borderRadius', category: 'grid'},
+    { key: 'style.chart.layout.rect.stroke', def: '#1A1A1A', type: 'color', label: ['border', 'is', 'color'], category: 'grid'},
+    { key: 'style.chart.layout.rect.strokeWidth', def: 1, type: 'number', min: 0, max: 20, label: ['border', 'is', 'thickness'], category: 'grid'},
+    { key: 'style.chart.layout.rect.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'grid'},
+    { key: 'style.chart.layout.rect.gradientIntensity', def: 40, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'grid'},
     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
-    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category:  'title'},
     { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
     { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
     { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
     { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'subtitle'},
+    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
+    { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip'},
+    { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip'},
+    { key: 'style.chart.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip'},
+    { key: 'style.chart.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 24, label: 'fontSize', category: 'tooltip'},
+    { key: 'style.chart.tooltip.showValue', def: true, type: 'checkbox', label: 'showValue', category: 'tooltip'},
+    { key: 'style.chart.tooltip.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'tooltip'},
+    { key: 'style.chart.tooltip.showPercentage', def: true, type: 'checkbox', label: 'showPercentage', category: 'tooltip'},
+    { key: 'style.chart.tooltip.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: 'percentageRounding', category: 'tooltip'},
+    { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend'},
+    { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend'},
+    { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
+    { key: 'style.chart.legend.fontSize', def: 14, type: 'number', min: 6, max: 32, label: 'fontSize', category: 'legend'},
+    { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
+    { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'legend'},
+    { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: 'percentageRounding', category: 'legend'},
     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table'},
@@ -138,15 +114,8 @@ const CONFIG_MODEL = ref([
     { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', category: 'table'},
     { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table'},
     { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'table'},
-    { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'table'},
-    { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip'},
-    { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip'},
-    { key: 'style.chart.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip'},
-    { key: 'style.chart.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 24, label: 'fontSize', category: 'tooltip'},
-    { key: 'style.chart.tooltip.showValue', def: true, type: 'checkbox', label: 'showValue', category: 'tooltip'},
-    { key: 'style.chart.tooltip.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'tooltip'},
-    { key: 'style.chart.tooltip.showPercentage', def: true, type: 'checkbox', label: 'showPercentage', category: 'tooltip'},
-    { key: 'style.chart.tooltip.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: 'percentageRounding', category: 'tooltip'},
+    { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'table'}
+
 ])
 
 const options = ref({
@@ -162,13 +131,13 @@ const options = ref({
 const datasetItems = ref([
     {
         name: "series 1",
-        values: [50],
+        values: [60],
         color: '#42d392',
         id: "111"
     },
     {
         name: "series 2",
-        values: [50],
+        values: [40],
         color: '#6376DD',
         id: "222"
     }
@@ -217,7 +186,7 @@ function getLabel(label) {
                             <PinIcon v-else/>
                         </button>
                     </div>
-                    <VueUiDonut :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                    <VueUiWaffle :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
                 </div>
             </transition>
     </div>
@@ -252,7 +221,6 @@ function getLabel(label) {
         <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
 
         <template v-for="category in CONFIG_CATEGORIES">
-        
             <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4">
                 <h4>{{ category.title }}</h4> 
                 <div class="flex flex-row gap-4 place-items-center flex-wrap">
@@ -279,12 +247,12 @@ function getLabel(label) {
 <code id="componentContent">
 &lt;script setup&gt;
     import { ref } from "vue";
-    import { VueUiDonut } from "vue-data-ui";
+    import { VueUiWaffle } from "vue-data-ui";
     import "vue-data-ui/style.css"
 
     const config = ref({{ finalConfig }});
 
-    const dataset = ref({{ datasetItems.map(({name, values, color}) => {
+    const dataset = ref({{ datasetItems.map(({name, values, color }) => {
         return {
             name, values, color
         }
@@ -293,14 +261,14 @@ function getLabel(label) {
 
 &lt;template&gt;
     &lt;div style="width:600px"&gt;
-        &lt;VueUiDonut :config="config" :dataset="dataset" /&gt;
+        &lt;VueUiWaffle :config="config" :dataset="dataset" /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
 </code>
 </pre>            
             </div>
-    
+        
 </template>
 
 <style scoped>

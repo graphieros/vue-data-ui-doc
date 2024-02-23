@@ -5,6 +5,7 @@ import { useMakerStore } from "../stores/maker"
 import { CheckIcon } from "vue-tabler-icons"
 import MakerXy from "../components/maker/MakerXy.vue"
 import MakerDonut from "../components/maker/MakerDonut.vue"
+import MakerWaffle from "../components/maker/MakerWaffle.vue"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -57,6 +58,7 @@ const options = ref([
 
         <MakerXy v-if="selectedChart.name === 'VueUiXy'"/>
         <MakerDonut v-if="selectedChart.name === 'VueUiDonut'"/>
+        <MakerWaffle v-if="selectedChart.name === 'VueUiWaffle'"/>
 
 
     </div>

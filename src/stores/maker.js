@@ -346,6 +346,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "% color de etiqueta",
                         ko: "% 라벨 색상"
                     },
+                    columnName: {
+                        en: "Column name",
+                        fr: "Nom de la colonne",
+                        pt: "Nome da coluna",
+                        de: "Spaltenname",
+                        zh: "列名称",
+                        jp: "列名",
+                        es: "Nombre de columna",
+                        ko: "열 이름"
+                    },
                     columnNamePeriod: {
                         en: "Column name: Period",
                         fr: "Nom de la colonne : Période",
@@ -575,6 +585,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "borde de línea",
                         ko: "선 테두리"
                     },
+                    percentage: {
+                        en: 'Percentage',
+                        fr: "Pourcentage",
+                        pt: 'Porcentagem',
+                        de: 'Prozentsatz',
+                        zh: '百分比',
+                        jp: 'パーセント',
+                        es: 'Porcentaje',
+                        ko: '백분율'
+                    },
                     percentageRounding: {
                         en: "Rounding: percentage",
                         fr: "Arrondi : pourcentage",
@@ -654,6 +674,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "チャートの種類を選択してください:",
                         es: "Seleccione el tipo de gráfico:",
                         ko: "차트 유형 선택:"
+                    },
+                    series: {
+                        en: 'Series',
+                        fr: 'Série',
+                        pt: 'Series',
+                        de: 'Serie',
+                        zh: '系列',
+                        jp: 'シリーズ',
+                        es: 'Serie',
+                        ko: '시리즈'
                     },
                     serieName: {
                         en: "Serie name",
@@ -755,6 +785,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Mostrar valor",
                         ko: "값 표시"
                     },
+                    size: {
+                        en: "Size",
+                        fr: "Taille",
+                        pt: "Tamanho",
+                        de: "Größe",
+                        zh: "尺寸",
+                        jp: "サイズ",
+                        es: "Tamaño",
+                        ko: "크기"
+                    },
                     smooth: {
                         en: "Curved line",
                         fr: "Ligne courbe",
@@ -765,6 +805,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Línea curva",
                         ko: "곡선"
                     },
+                    spacing: {
+                        en: "Spacing",
+                        fr: "Espacement",
+                        pt: "Espaçamento",
+                        de: "Abstand",
+                        zh: "间距",
+                        jp: "間隔",
+                        es: "Espaciado",
+                        ko: "간격"
+                    },  
                     sparkline: {
                         en: "Sparkline chart",
                         fr: "Graphique sparkline",
@@ -954,6 +1004,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "値の四捨五入",
                         es: "Redondeo de valor",
                         ko: "값 반올림"
+                    },
+                    vertical: {
+                        en: "Vertical",
+                        fr: "Vertical",
+                        pt: 'Vertical',
+                        de: "Vertikal",
+                        zh: "垂直的",
+                        jp: "垂直",
+                        es: "Vertical",
+                        ko: "수직의"
                     },
                     verticalLines: {
                         en: "Vertical lines",
