@@ -6,6 +6,7 @@ import { CheckIcon } from "vue-tabler-icons"
 import MakerXy from "../components/maker/MakerXy.vue"
 import MakerDonut from "../components/maker/MakerDonut.vue"
 import MakerWaffle from "../components/maker/MakerWaffle.vue"
+import MakerRadar from "../components/maker/MakerRadar.vue"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -30,6 +31,7 @@ const options = ref([
     { name: "VueUiXy", icon: "chartLine"},
     { name: "VueUiDonut", icon: "chartDonut"},
     { name: "VueUiWaffle", icon: "chartWaffle"},
+    { name: "VueUiRadar", icon: "chartRadar"},
 ])
 
 </script>
@@ -59,6 +61,7 @@ const options = ref([
         <MakerXy v-if="selectedChart.name === 'VueUiXy'"/>
         <MakerDonut v-if="selectedChart.name === 'VueUiDonut'"/>
         <MakerWaffle v-if="selectedChart.name === 'VueUiWaffle'"/>
+        <MakerRadar v-if="selectedChart.name === 'VueUiRadar'"/>
 
 
     </div>

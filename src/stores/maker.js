@@ -15,14 +15,14 @@ export const useMakerStore = defineStore('maker', {
             },
             translations: {
                 steps: {
-                    en: "<ul><li>1. Compose your dataset</li><li>2. Tweak configuration settings</li><li>3. Copy the component code</li></ul>",
-                    fr: "<ul><li>1. Composez votre ensemble de données</li><li>2. Ajustez les paramètres de configuration</li><li>3. Copiez le code du composant</li></ul>",
-                    pt: "<ul><li>1. Componha seu conjunto de dados</li><li>2. Ajustar as configurações</li><li>3. Copie o código do componente</li></ul>",
-                    de: "<ul><li>1. Stellen Sie Ihren Datensatz zusammen</li><li>2. Konfigurationseinstellungen anpassen</li><li>3. Kopieren Sie den Komponentencode</li></ul>",
-                    zh: "<ul><li>1.编写数据集</li><li>2.调整配置设置</li><li>3.复制组件代码</li></ul>",
-                    jp: "<ul><li>1.データセットを構成する</li><li>2.構成設定を微調整する</li><li>3.コンポーネントコードをコピーします</li></ul>",
-                    es: "<ul><li>1. Redacte su conjunto de datos</li><li>2. Modificar los ajustes de configuración</li><li>3. Copia el código del componente</li></ul>",
-                    ko: "<ul><li>1. 데이터세트를 구성하세요</li><li>2. 구성 설정 조정</li><li>3. 구성요소 코드 복사</li></ul>"
+                    en: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Compose your dataset</li><li><span class=\"text-black dark:text-app-green\">2.</span> Tweak configuration settings</li><li><span class=\"text-black dark:text-app-green\">3.</span> Copy the component code</li></ul>",
+                    fr: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Composez votre ensemble de données</li><li><span class=\"text-black dark:text-app-green\">2.</span> Ajustez les paramètres de configuration</li><li><span class=\"text-black dark:text-app-green\">3.</span> Copiez le code du composant</li></ul>",
+                    pt: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Componha seu conjunto de dados</li><li><span class=\"text-black dark:text-app-green\">2.</span> Ajustar as configurações</li><li><span class=\"text-black dark:text-app-green\">3.</span> Copie o código do componente</li></ul>",
+                    de: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Stellen Sie Ihren Datensatz zusammen</li><li><span class=\"text-black dark:text-app-green\">2.</span> Konfigurationseinstellungen anpassen</li><li><span class=\"text-black dark:text-app-green\">3.</span> Kopieren Sie den Komponentencode</li></ul>",
+                    zh: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span>编写数据集</li><li><span class=\"text-black dark:text-app-green\">2.</span>调整配置设置</li><li><span class=\"text-black dark:text-app-green\">3.</span>复制组件代码</li></ul>",
+                    jp: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span>データセットを構成する</li><li><span class=\"text-black dark:text-app-green\">2.</span>構成設定を微調整する</li><li><span class=\"text-black dark:text-app-green\">3.</span>コンポーネントコードをコピーします</li></ul>",
+                    es: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Redacte su conjunto de datos</li><li><span class=\"text-black dark:text-app-green\">2.</span> Modificar los ajustes de configuración</li><li><span class=\"text-black dark:text-app-green\">3.</span> Copia el código del componente</li></ul>",
+                    ko: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> 데이터세트를 구성하세요</li><li><span class=\"text-black dark:text-app-green\">2.</span> 구성 설정 조정</li><li><span class=\"text-black dark:text-app-green\">3.</span> 구성요소 코드 복사</li></ul>"
                 },
                 config: {
                     en: "Configuration",
@@ -33,6 +33,16 @@ export const useMakerStore = defineStore('maker', {
                     jp: "構成",
                     es: "Configuración",
                     ko: "구성"
+                },
+                categoriesLabel: {
+                    en: 'Categories',
+                    fr: 'Catégories',
+                    pt: "Categorias",
+                    de: "Kategorien",
+                    zh: "类别",
+                    jp: "カテゴリー",
+                    es: "Categorías",
+                    ko: "카테고리"
                 },
                 dataset: {
                     en: "Dataset",
@@ -317,6 +327,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Ancho de título",
                         ko: "캡션 너비"
                     },
+                    categoryName: {
+                        en: "Category name",
+                        fr: "Nom de la catégorie",
+                        pt: "Nome da Categoria",
+                        de: "Kategoriename",
+                        zh: "分类名称",
+                        jp: "種別名",
+                        es: "Nombre de la categoría",
+                        ko: "카테고리 이름"
+                    },
                     color: {
                         en: "Color",
                         fr: "Couleur",
@@ -385,6 +405,26 @@ export const useMakerStore = defineStore('maker', {
                         jp: "点在",
                         es: "Punteado",
                         ko: "점이 찍힌"
+                    },
+                    datapoint: {
+                        en: "Datapoint",
+                        fr: "Point de données",
+                        pt: 'Ponto de dados',
+                        de: "Datenpunkt",
+                        zh: "数据点",
+                        jp: "データポイント",
+                        es: "Punto de datos",
+                        ko: "데이터 포인트"
+                    },
+                    dataPolygon: {
+                        en: 'Data polygon',
+                        fr: "Polygones de données",
+                        pt: "Polígono de dados",
+                        de: "Datenpolygon",
+                        zh: "数据多边形",
+                        jp: "データポリゴン",
+                        es: "polígono de datos",
+                        ko: "데이터 폴리곤"
                     },
                     fontFamily: {
                         en: "Font family",
@@ -565,6 +605,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Opacidad",
                         ko: "불투명"
                     },
+                    outerPolygon: {
+                        en: 'Outer polygon',
+                        fr: "Polygone extérieur",
+                        pt: 'Polígono externo',
+                        de: "Äußeres Polygon",
+                        zh: "外多边形",
+                        jp: "外側の多角形",
+                        es: "Polígono exterior",
+                        ko: "외부 다각형"
+                    },
                     outlineHeader: {
                         en: "Header border",
                         fr: "Bordure de l'en-tête",
@@ -605,6 +655,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Redondeo: porcentaje",
                         ko: "반올림: 백분율"
                     },
+                    plots: {
+                        en: 'Plots',
+                        fr: 'Points',
+                        pt: 'Pontos',
+                        de: 'Punkte',
+                        zh: '点',
+                        jp: 'ドット',
+                        es: "Puntos",
+                        ko: '도트'
+                    },
                     prefix: {
                         en: "Prefix",
                         fr: "Préfixe",
@@ -624,6 +684,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "進捗",
                         es: "Progreso",
                         ko: "진전"
+                    },
+                    quantity: {
+                        en: "Quantity",
+                        fr: "Quantité",
+                        pt: "Quantidade",
+                        de: "Menge",
+                        zh: "数量",
+                        jp: "量",
+                        es: "Cantidad",
+                        ko: "수량"
                     },
                     radius: {
                         en: "Radius",
@@ -664,6 +734,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "丸める",
                         es: "redondeo",
                         ko: "반올림"
+                    },
+                    scale: {
+                        en: 'Scale',
+                        fr: "Echelle",
+                        pt: "Escala",
+                        de: "Skala",
+                        zh: "规模",
+                        jp: "規模",
+                        es: "Escala",
+                        ko: "규모"
                     },
                     selectChartType: {
                         en: "Select chart type:",
@@ -845,6 +925,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Etiqueta",
                         ko: "꼬리표"
                     },
+                    target: {
+                        en: "Target",
+                        fr: "Objectif",
+                        pt: "Alvo",
+                        de: "Ziel",
+                        zh: "目标",
+                        jp: "目標",
+                        es: "Objetivo",
+                        ko: "표적"
+                    },
                     textAlign: {
                         en: "Text alignment",
                         fr: "Alignement du texte",
@@ -944,6 +1034,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "合計",
                         es: "Total",
                         ko: "총"
+                    },
+                    transparent: {
+                        en: 'Transparent',
+                        fr: "Transparent",
+                        pt: "Transparente",
+                        de: "Transparent",
+                        zh: '透明的',
+                        jp: "透明",
+                        es: "Transparente",
+                        ko: "투명한"
                     },
                     type: {
                         en: "Type",

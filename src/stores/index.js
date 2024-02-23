@@ -34,6 +34,16 @@ export const useMainStore = defineStore("main", {
                         }
                     },
                     tooltips: {
+                        addCategory: {
+                            en: 'Add category',
+                            fr: "Ajouter une catégorie",
+                            pt: "Adicionar uma categoria",
+                            de: "Fügen Sie eine Kategorie hinzu",
+                            zh: "添加类别",
+                            jp: "カテゴリを追加する",
+                            es: "Añadir una categoría",
+                            ko: "카테고리 추가"
+                        },
                         addDataset: {
                             en: "Add dataset",
                             fr: "Ajout jeu de données",

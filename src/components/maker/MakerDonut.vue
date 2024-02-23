@@ -62,6 +62,7 @@ const CONFIG_CATEGORIES = computed(() => {
         }
     ]
 })
+
 const CONFIG_MODEL = ref([
     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
     { key: 'useBlurOnHover', def: true, type: 'checkbox', label: "useBlurOnHover", category: 'general' },
