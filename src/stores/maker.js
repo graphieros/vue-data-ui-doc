@@ -207,6 +207,26 @@ export const useMakerStore = defineStore('maker', {
                     },
                 },
                 labels: {
+                    acceleration: {
+                        en: 'Acceleration',
+                        fr: "Acceleration",
+                        pt: "Aceleração",
+                        de: "Beschleunigung",
+                        zh: "加速",
+                        jp: "加速度",
+                        es: "Aceleración",
+                        ko: "가속"
+                    },
+                    animation: {
+                        en: "Animation",
+                        fr: "Animation",
+                        pt: "Animação",
+                        de: "Animation",
+                        zh: "动画片",
+                        jp: "アニメーション",
+                        es: "Animación",
+                        ko: "생기"
+                    },
                     area: {
                         en: "Area",
                         fr: "Surface",
@@ -216,6 +236,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "エリア",
                         es: "Área",
                         ko: "영역"
+                    },
+                    auto: {
+                        en: 'Auto',
+                        fr: 'Auto',
+                        pt: 'Auto',
+                        de: "Automatisch",
+                        zh: "自动的",
+                        jp: "自動",
+                        es: "Auto",
+                        ko: "자동적 인"
                     },
                     average: {
                         en: 'Average',
@@ -336,6 +366,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "種別名",
                         es: "Nombre de la categoría",
                         ko: "카테고리 이름"
+                    },
+                    circle: {
+                        en: "Circle",
+                        fr: "Cercle",
+                        pt: "Círculo",
+                        de: "Kreis",
+                        zh: "圆圈",
+                        jp: "丸",
+                        es: "Círculo",
+                        ko: "원"
                     },
                     color: {
                         en: "Color",
@@ -555,6 +595,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Color de linea",
                         ko: "선 색상"
                     },
+                    markers: {
+                        en: "Markers",
+                        fr: "Marqueurs",
+                        pt: "Marcadores",
+                        de: "Zeichen",
+                        zh: "标志",
+                        jp: "記号",
+                        es: "Señal",
+                        ko: "징후"
+                    },
                     offsetX: {
                         en: "Offset X",
                         fr: "Décalage X",
@@ -665,6 +715,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Puntos",
                         ko: '도트'
                     },
+                    pointer: {
+                        en: "Pointer",
+                        fr: "Pointeur",
+                        pt: "Ponteiro",
+                        de: "Zeiger",
+                        zh: "指针",
+                        jp: "ポインタ",
+                        es: "Puntero",
+                        ko: "바늘"
+                    },
                     prefix: {
                         en: "Prefix",
                         fr: "Préfixe",
@@ -704,6 +764,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "半径",
                         es: "Radio",
                         ko: "반지름"
+                    },
+                    ratio: {
+                        en: 'Ratio',
+                        fr: "Ratio",
+                        pt: "Razão",
+                        de: "Verhältnis",
+                        zh: "比率",
+                        jp: "比率",
+                        es: "Relación",
+                        ko: "비율"
                     },
                     responsiveBreakpoint: {
                         en: "Responsive breakpoint",
@@ -845,6 +915,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Mostrar etiquetas de período",
                         ko: "생리 라벨 표시"
                     },
+                    showPlusSymbol: {
+                        en: 'Show plus symbol',
+                        fr: "Montrer le signe +",
+                        pt: "Mostrar símbolo de mais",
+                        de: "Plus-Symbol anzeigen",
+                        zh: "显示加号",
+                        jp: "プラス記号を表示",
+                        es: "Mostrar símbolo más",
+                        ko: "더하기 기호 표시"
+                    },
                     showUserOptions: {
                         en: "Show user options",
                         fr: "Afficher les options utilisateur",
@@ -904,6 +984,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "スパークラインチャート",
                         es: "Minigráfico",
                         ko: "스파크라인 차트"
+                    },
+                    speed: {
+                        en: 'Speed',
+                        fr: "Vitesse",
+                        pt: "Velocidade",
+                        de: "Geschwindigkeit",
+                        zh: "速度",
+                        jp: "スピード",
+                        es: "Velocidad",
+                        ko: "속도"
                     },
                     suffix: {
                         en: "Suffix",
@@ -1034,6 +1124,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "合計",
                         es: "Total",
                         ko: "총"
+                    },
+                    track: {
+                        en: 'Track',
+                        fr: "Piste",
+                        pt: "Pista",
+                        de: "Spur",
+                        zh: "追踪",
+                        jp: "追跡",
+                        es: "Pista",
+                        ko: "길"
                     },
                     transparent: {
                         en: 'Transparent',
