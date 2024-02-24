@@ -2,7 +2,7 @@
 import { computed, ref, onMounted } from "vue";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
-import { BrightnessUpIcon, MoonIcon, LanguageIcon, StarFilledIcon } from "vue-tabler-icons";
+import { BrightnessUpIcon, MoonIcon, LanguageIcon, StarFilledIcon, ToolIcon } from "vue-tabler-icons";
 import AppSkeletons from "../components/AppSkeletons.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 
@@ -316,6 +316,13 @@ const digitsConfigVersion = computed(() => {
               </button>
           </router-link>
         </div>
+        <router-link to="/chart-builder" class="w-full">
+          <button class="w-full bg-white hover:shadow-xl dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold dark:hover:bg-[rgba(255,255,255,0.05)] transition-all hover:border-app-blue flex flex-row gap-2 place-items-center justify-center">
+            <ToolIcon/>
+            {{ translations.menu.chartBuilder[store.lang] }}
+              </button>
+         
+        </router-link>
         <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10">
             <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue gap-3 transition-all">
               <BrandGithubFilledIcon/>
