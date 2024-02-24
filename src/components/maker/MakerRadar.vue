@@ -126,7 +126,6 @@ const options = ref({
         name:  'name',
         values: [],
         target: 100,
-        color: '#42d392'
     },
     categoryItems: {
         name: 'category',
@@ -143,21 +142,18 @@ const datasetItems = ref([
     {
         name: 'series 1',
         values: [50, 10],
-        color: '#42d392',
         id: '111',
         target: 100,
     },
     {
         name: 'series 2',
         values: [30, 20],
-        color: '#6376DD',
         id: '222',
         target: 100
     },
     {
         name: 'series 3',
         values: [30, 18],
-        color: '#ff6400',
         id: '333',
         target: 100
     },
@@ -166,12 +162,12 @@ const datasetItems = ref([
 const categoryItems = ref([
     {
         name: 'category 1',
-        color: '#c8c832',
+        color: '#42d392',
         id: '111'
     },
     {
         name: 'category 2',
-        color: '#32b2c8',
+        color: '#6376DD',
         id: '222'
     },
 ])
@@ -280,17 +276,15 @@ const dataset = computed(() => {
     <details open>
         <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
         <div class="flex flex-col gap-2">
-            <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+            <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#2A2A2A]`">
                 <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                 <table>
                     <thead>
-                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
                         <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
                         <th class="text-left text-xs">{{ makerTranslations.labels.target[store.lang] }}</th>
                         <th class="text-left text-xs" v-for="category in categoryItems">{{ category.name }}</th>
                     </thead>
                     <tbody>
-                        <td><input type="color" v-model="datasetItems[i].color"></td>
                         <td><input class="h-[36px]" type="text" v-model="ds.name"></td>
                         <td><input class="h-[36px]" type="number" v-model="ds.target"></td>
                         <td v-for="(val, i) in ds.values"><input class="h-[36px] w-[84px]" type="number" v-model="ds.values[i]"></td>
@@ -347,9 +341,9 @@ const dataset = computed(() => {
             name, color
         }
     }) }},
-        series: {{ datasetItems.map(({name, values, color}) => {
+        series: {{ datasetItems.map(({name, values}) => {
         return {
-            name, values, color
+            name, values
         }
     }) }}
     });
