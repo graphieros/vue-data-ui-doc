@@ -8,6 +8,7 @@ import MakerDonut from "../components/maker/MakerDonut.vue"
 import MakerWaffle from "../components/maker/MakerWaffle.vue"
 import MakerRadar from "../components/maker/MakerRadar.vue"
 import MakerGauge from "../components/maker/MakerGauge.vue"
+import MakerOnion from "../components/maker/MakerOnion.vue"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -34,6 +35,7 @@ const options = ref([
     { name: "VueUiWaffle", icon: "chartWaffle"},
     { name: "VueUiRadar", icon: "chartRadar"},
     { name: "VueUiGauge", icon: "chartGauge"},
+    { name: "VueUiOnion", icon: "chartOnion"},
 ])
 
 </script>
@@ -65,6 +67,7 @@ const options = ref([
         <MakerWaffle v-if="selectedChart.name === 'VueUiWaffle'"/>
         <MakerRadar v-if="selectedChart.name === 'VueUiRadar'"/>
         <MakerGauge v-if="selectedChart.name === 'VueUiGauge'"/>
+        <MakerOnion v-if="selectedChart.name === 'VueUiOnion'"/>
 
 
     </div>

@@ -515,6 +515,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "勾配強度",
                         ko: "그라데이션 강도"
                     },
+                    gutter: {
+                        en: 'Gutter',
+                        fr: "Gouttière",
+                        pt: "Calha",
+                        de: "Rinne",
+                        zh: "排水沟",
+                        jp: "側溝",
+                        es: "Canal",
+                        ko: "홈통"
+                    },
                     height: {
                         en: "Height",
                         fr: "Hauteur",
