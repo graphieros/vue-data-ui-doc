@@ -14,6 +14,16 @@ export const useMakerStore = defineStore('maker', {
                 ko: ""
             },
             translations: {
+                atWork: {
+                    en: "We are currently working on adding all the components here. If you don't find the one you need, you can still check out the docs page.",
+                    fr: "Nous travaillons actuellement sur l'ajout de tous les composants ici. Si vous ne trouvez pas celui dont vous avez besoin, vous pouvez toujours consulter la page de documentation.",
+                    pt: "No momento, estamos trabalhando para adicionar todos os componentes aqui. Se você não encontrar o que precisa, ainda poderá verificar a página de documentos.",
+                    de: "Wir arbeiten derzeit daran, alle Komponenten hier hinzuzufügen. Wenn Sie das benötigte Dokument nicht finden, können Sie sich trotzdem die Dokumentationsseite ansehen.",
+                    zh: "我们目前正在努力在此处添加所有组件。如果您找不到所需的内容，您仍然可以查看文档页面。",
+                    jp: "現在、すべてのコンポーネントをここに追加する作業を行っています。必要なものが見つからない場合でも、ドキュメント ページをチェックしてください。",
+                    es: "Actualmente estamos trabajando para agregar todos los componentes aquí. Si no encuentra el que necesita, aún puede consultar la página de documentos.",
+                    ko: "현재 여기에 모든 구성요소를 추가하는 작업이 진행 중입니다. 필요한 것을 찾지 못한 경우에도 문서 페이지를 확인하실 수 있습니다."
+                },
                 steps: {
                     en: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Compose your dataset</li><li><span class=\"text-black dark:text-app-green\">2.</span> Tweak configuration settings</li><li><span class=\"text-black dark:text-app-green\">3.</span> Copy the component code</li></ul>",
                     fr: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Composez votre ensemble de données</li><li><span class=\"text-black dark:text-app-green\">2.</span> Ajustez les paramètres de configuration</li><li><span class=\"text-black dark:text-app-green\">3.</span> Copiez le code du composant</li></ul>",

@@ -2,7 +2,7 @@
 import { ref, computed} from "vue";
 import { useMainStore } from "../stores";
 import { useMakerStore } from "../stores/maker"
-import { CheckIcon } from "vue-tabler-icons"
+import { CheckIcon, InfoSquareRoundedIcon } from "vue-tabler-icons"
 import MakerXy from "../components/maker/MakerXy.vue"
 import MakerDonut from "../components/maker/MakerDonut.vue"
 import MakerWaffle from "../components/maker/MakerWaffle.vue"
@@ -47,7 +47,20 @@ const options = ref([
     <div class="w-full max-w-[1400px] mx-auto overflow-visible">
         <h1 class="text-3xl top-6 left-6 text-center mt-6">{{ translations.menu.chartBuilder[store.lang] }}</h1>
 
-        <div class="w-full mt-[64px]">
+        <div class="mx-auto max-w-[400px] dark:text-app-green mt-6 flex flex-row gap-2">
+                    <div class="h-[40px] w-[40px]">
+                        <InfoSquareRoundedIcon/>
+                    </div>
+                    <div>
+                    
+                    <span>{{ makerTranslations.atWork[store.lang] }} : </span>
+                    <router-link to="/docs" class="text-app-blue underline">
+                        {{ translations.menu.docs[store.lang] }}
+                    </router-link>
+                    </div>
+                </div>
+
+        <div class="w-full mt-6">
             <div class="flex flex-row gap-3 place-items-end justify-center">
                 <div class="flex flex-col gap-2">
                     <label for="chartType">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
