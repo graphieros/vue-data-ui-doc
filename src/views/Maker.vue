@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed} from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../stores";
 import { useMakerStore } from "../stores/maker"
 import { CheckIcon, InfoSquareRoundedIcon } from "vue-tabler-icons"
@@ -27,7 +27,6 @@ const isDarkMode = computed(() => {
 
 
 const isCopy = computed(() => store.isCopy);
-const selectedChart = ref({name: "VueUiXy", icon: "chartLine"})
 
 const options = ref([
     { name: "VueUiXy", icon: "chartLine"},
@@ -37,6 +36,20 @@ const options = ref([
     { name: "VueUiGauge", icon: "chartGauge"},
     { name: "VueUiOnion", icon: "chartOnion"},
 ])
+
+const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
+
+onMounted(() => {
+    if(!localStorage.currentChart) {
+        localStorage.setItem('currentChart', 'VueUiXy')
+    } else {
+        selectedChart.value = options.value.find(item => item.name === localStorage.currentChart)
+    }
+})
+
+function saveSelectedChartToLocalStorage() {
+    localStorage.currentChart = selectedChart.value.name;
+}
 
 </script>
 
@@ -67,7 +80,7 @@ const options = ref([
             <div class="flex flex-row gap-3 place-items-end justify-center">
                 <div class="flex flex-col gap-2">
                     <label for="chartType">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
-                    <select style="outline:1px solid #42d392 !important;margin-left:1px" id="chartType" v-model="selectedChart" class="h-[40px] px-6">
+                    <select @change="saveSelectedChartToLocalStorage" style="outline:1px solid #42d392 !important;margin-left:1px" id="chartType" v-model="selectedChart" class="h-[40px] px-6">
                         <option class="text-left" v-for="option in options" :value="option">{{ option.name }}</option>
                     </select>
                 </div>

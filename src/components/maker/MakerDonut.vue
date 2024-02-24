@@ -1,14 +1,16 @@
 <script setup>
-import { ref, computed} from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
 import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon, CopyIcon, RefreshIcon } from "vue-tabler-icons"
 import { getVueDataUiConfig } from "vue-data-ui";
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
+import { useDefaultDataStore } from "../../stores/defaultData"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
+const defaultData = useDefaultDataStore();
 
 const translations = computed(() => {
     return store.translations;
@@ -23,8 +25,6 @@ const isDarkMode = computed(() => {
 })
 
 const isFixed = ref(true);
-
-const C = ref(getVueDataUiConfig('vue_ui_donut'));
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -63,92 +63,7 @@ const CONFIG_CATEGORIES = computed(() => {
     ]
 })
 
-const CONFIG_MODEL = ref([
-    { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
-    { key: 'useBlurOnHover', def: true, type: 'checkbox', label: "useBlurOnHover", category: 'general' },
-    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: "fontFamily", category: 'general'},
-    { key: 'style.chart.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'general'},
-    { key: 'style.chart.gradientIntensity', def: 40, min: 0, max: 100, type: 'range', label: 'gradientIntensity', category: 'general'},
-    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
-    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
-    { key: 'style.chart.layout.labels.dataLabels.show', def: true, type: 'checkbox', label: 'show', category: 'labels' },
-    { key: 'style.chart.layout.labels.dataLabels.hideUnderValue', def: 3, type: 'number', min: 0, max: 100, label: 'hideUnderValue', category: 'labels'},
-    { key: 'style.chart.layout.labels.dataLabels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },
-    { key: 'style.chart.layout.labels.dataLabels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels' },
-    { key: 'style.chart.layout.labels.value.show', def: true, type: 'checkbox', label: 'showValue', category: 'labels'},
-    { key: 'style.chart.layout.labels.value.rounding', def: 0, type: 'number', min:0, max: 6, label: 'valueRounding', category: 'labels'},
-    { key: 'style.chart.layout.labels.percentage.color', def: '#1A1A1A', type: 'color', label: 'colorPercentage', category: 'labels'},
-    { key: 'style.chart.layout.labels.percentage.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels'},
-    { key: 'style.chart.layout.labels.percentage.fontSize', def: 18, min: 6, max: 48, type: 'number', label: 'fontSize', category: 'labels'},
-    { key: 'style.chart.layout.labels.name.color', def: '#1A1A1A', type: 'color', label: 'colorName', category: 'labels'},
-    { key: 'style.chart.layout.labels.name.bold', def: false, type: 'checkbox', label: 'bold', category: 'labels'},
-    { key: 'style.chart.layout.labels.name.fontSize', def: 14, type: 'number', min: 6, max: 36, label: 'fontSize', category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.show', def: true, type: 'checkbox', label: ['hollow', 'total', 'is', 'show'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.bold', def: false, type: 'checkbox', label: ['hollow', 'total', 'is', 'bold'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['hollow', 'total', 'is', 'fontSize'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.color', def: '#AAAAAA', type: 'color', label: ['hollow', 'total', 'is', 'color'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.text', def: 'Total', type: 'text', label: ['hollow', 'total', 'is', 'textContent'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'total', 'is', 'offsetY'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.color', def: '#1A1A1A', type: 'color', label: ['hollow', 'total', 'value', 'is', 'color'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['hollow', 'total', 'value', 'is', 'fontSize'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.bold', def: true, type: 'checkbox', label: ['hollow', 'total', 'value', 'is', 'bold'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.prefix', def: '', type: 'text', label: ['hollow', 'total', 'value', 'is', 'prefix'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.suffix', def: '', type: 'text', label: ['hollow', 'total', 'value', 'is', 'suffix'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'total', 'value', 'is', 'offsetY'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.total.value.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['hollow', 'total', 'value', 'is', 'rounding'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.show', def: true, type: 'checkbox', label: ['hollow', 'average', 'is', 'show'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.bold', def: false, type: 'checkbox', label: ['hollow', 'average', 'is', 'bold'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.color', def: "#AAAAAA", type: "color", label: ['hollow','average', 'is', 'color'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['hollow', 'average', 'is', 'fontSize'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.text', def: 'Average', type: 'text', label: ['hollow', 'average', 'is', 'textContent'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'average', 'is', 'offsetY'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.color', def: "#1A1A1A", type: 'color', label: ['hollow', 'average', 'value', 'is', 'color'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['hollow', 'average', 'value', 'is', 'fontSize'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.bold', def: true, type: 'checkbox', label: ['hollow', 'average', 'value', 'is', 'bold'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.prefix', def: '', type: 'text', label: ['hollow', 'average', 'value', 'is', 'prefix'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.suffix', def: '', type: 'text', label: ['hollow', 'average', 'value', 'is', 'suffix'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'average', 'value', 'is', 'offsetY'], category: 'labels'},
-    { key: 'style.chart.layout.labels.hollow.average.value.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['hollow', 'average', 'value', 'is', 'rounding'], category: 'labels'},
-    { key: 'style.chart.layout.donut.strokeWidth', def: 64, type: 'range', min: 3, max: 92, label: 'thickness', category: 'donut'},
-    { key: 'style.chart.layout.donut.borderWidth', def: 1, type: 'range', min: 0, max: 36, label: ['border', 'is', 'thickness'], category: 'donut'},
-    { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend'},
-    { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend'},
-    { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
-    { key: 'style.chart.legend.fontSize', def: 16, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'legend'},
-    { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
-    { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'legend'},
-    { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: 'percentageRounding', category: 'legend'},
-    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
-    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
-    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
-    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
-    { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
-    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
-    { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
-    { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table'},
-    { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'},
-    { key: 'table.columnNames.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table'},
-    { key: 'table.columnNames.percentage', def: 'Percentage', type: 'text', label: ['columnName', 'is', 'percentage'], category: 'table'},
-    { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table'},
-    { key: 'table.th.color', def: '#1A1A1A', type: 'color', label: 'textColorHeader', category: 'table'},
-    { key: 'table.th.outline', def: 'none', type: 'text', label: 'outlineHeader', category: 'table'},
-    { key: 'table.td.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorRow', category: 'table'},
-    { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', category: 'table'},
-    { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table'},
-    { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'table'},
-    { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'table'},
-    { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip'},
-    { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip'},
-    { key: 'style.chart.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip'},
-    { key: 'style.chart.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 24, label: 'fontSize', category: 'tooltip'},
-    { key: 'style.chart.tooltip.showValue', def: true, type: 'checkbox', label: 'showValue', category: 'tooltip'},
-    { key: 'style.chart.tooltip.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'tooltip'},
-    { key: 'style.chart.tooltip.showPercentage', def: true, type: 'checkbox', label: 'showPercentage', category: 'tooltip'},
-    { key: 'style.chart.tooltip.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: 'percentageRounding', category: 'tooltip'},
-])
+const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_donut.model)))
 
 const options = ref({
     datasetItems: {
@@ -160,40 +75,60 @@ const options = ref({
     config: {}
 })
 
-const datasetItems = ref([
-    {
-        name: "series 1",
-        values: [50],
-        color: '#42d392',
-        id: "111"
-    },
-    {
-        name: "series 2",
-        values: [50],
-        color: '#6376DD',
-        id: "222"
-    }
-])
+const datasetItems = ref(defaultData.vue_ui_donut.dataset)
 
 const step = ref(0)
 
+onMounted(() => {
+    if(localStorage.donutConfig) {
+        CONFIG_MODEL.value = JSON.parse(localStorage.donutConfig);
+    } 
+    if(localStorage.donutDataset) {
+        datasetItems.value = JSON.parse(localStorage.donutDataset)
+    }else {
+        localStorage.setItem('donutDataset', JSON.stringify(defaultData.vue_ui_donut.dataset))
+    }
+    step.value += 1;
+})
+
+function saveDatasetToLocalStorage() {
+    localStorage.donutDataset = JSON.stringify(datasetItems.value);
+}
+
+function saveConfigToLocalStorage() {
+    localStorage.donutConfig = JSON.stringify(CONFIG_MODEL.value)
+}
+
+function resetModel() {
+    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_donut.model))
+    step.value += 1;
+    saveConfigToLocalStorage();
+}
+
 function forceChartUpdate() {
+    if(!localStorage.donutConfig) {
+        localStorage.setItem('donutConfig', {})
+    }
+    saveConfigToLocalStorage()
     step.value += 1;
 }
 
 function addDatasetItem() {
     datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.datasetItems)), id: createUid()});
-    step.value += 1
+    step.value += 1;
+    saveDatasetToLocalStorage()
 }
 
 function deleteDatasetItem(id) {
     datasetItems.value = datasetItems.value.filter(_ => _.id !== id);
+    saveDatasetToLocalStorage()
 }
 
 function pushValueToSeries({ value, id }) {
     const thisItem = datasetItems.value.find(_ => _.id === id);
     thisItem.values = [value];
     step.value += 1;
+    saveDatasetToLocalStorage()
 }
 
 const finalConfig = computed(() => {
@@ -217,6 +152,7 @@ function getLabel(label) {
                         <PinnedOffIcon v-if="isFixed"/>
                         <PinIcon v-else/>
                     </button>
+                    <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
                 </div>
                 <VueUiDonut :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
             </div>
@@ -235,9 +171,9 @@ function getLabel(label) {
                         <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</th>
                     </thead>
                     <tbody>
-                        <td><input type="color" v-model="datasetItems[i].color"></td>
-                        <td><input class="h-[36px]" type="text" v-model="ds.name"></td>
-                        <td><input class="h-[36px]" type="number" v-model="ds.values[0]"></td>
+                        <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px]" type="number" v-model="ds.values[0]" @change="saveDatasetToLocalStorage"></td>
                     </tbody>
                 </table>
             </div>
@@ -251,6 +187,10 @@ function getLabel(label) {
 
     <details open class="mt-6" v-if="makerTranslations.labels">
         <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+
+        <div class="flex justify-end">
+            <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+        </div>
 
         <template v-for="category in CONFIG_CATEGORIES">
         

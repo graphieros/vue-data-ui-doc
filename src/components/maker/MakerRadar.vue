@@ -1,14 +1,16 @@
 <script setup>
-import { ref, computed} from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
 import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon, CopyIcon, RefreshIcon } from "vue-tabler-icons"
 import { getVueDataUiConfig } from "vue-data-ui";
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
+import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js";
+import { useDefaultDataStore } from "../../stores/defaultData"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
+const defaultData = useDefaultDataStore();
 
 const translations = computed(() => {
     return store.translations;
@@ -23,8 +25,6 @@ const isDarkMode = computed(() => {
 })
 
 const isFixed = ref(true);
-
-const C = ref(getVueDataUiConfig('vue_ui_radar'));
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -63,63 +63,7 @@ const CONFIG_CATEGORIES = computed(() => {
     ]
 })
 
-const CONFIG_MODEL = ref([
-    { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
-    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
-    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
-    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
-    { key: 'style.chart.layout.plots.show', def: true, type: 'checkbox', label: ['show', 'is', 'plots'], category: 'grid'},
-    { key: 'style.chart.layout.plots.radius', def: 2, type: 'number', min: 0, max: 32, label: ['plots', 'is', 'radius'], category: 'grid'},
-    { key: 'style.chart.layout.outerPolygon.stroke', def: '#CCCCCC', type: 'color', label: ['outerPolygon', 'is', 'color'], category: 'grid'},
-    { key: 'style.chart.layout.outerPolygon.strokeWidth', def: 1, type: 'number', min: 0, max: 20, label: ['outerPolygon', 'is', 'thickness'], category: 'grid'},
-    { key: 'style.chart.layout.dataPolygon.strokeWidth', def: 1, type: 'number', min: 1, max: 20, label: ['dataPolygon', 'is', 'thickness'], category: 'grid'},
-    { key: 'style.chart.layout.dataPolygon.transparent', def: false, type: "checkbox", label: ['dataPolygon', 'is', 'transparent'], category: 'grid'},
-    { key: 'style.chart.layout.dataPolygon.opacity', def: 20, min: 0, max: 100, type: 'range', label: ['dataPolygon', 'is', 'opacity'], category: 'grid' },
-    { key: 'style.chart.layout.dataPolygon.useGradient', def: true, type: 'checkbox', label: ['dataPolygon', 'is', 'useGradient'], category: 'grid'},
-    { key: 'style.chart.layout.grid.show', def: true, type: 'checkbox', label: ['scale', 'is', 'show'], category: 'grid'},
-    { key: 'style.chart.layout.grid.stroke', def: '#e1e5e8', type: 'color', label: ['scale', 'is', 'color'], category: 'grid'},
-    { key: 'style.chart.layout.grid.strokeWidth', def: 0.5, type: 'number', min: 0, max: 12, label: ['scale', 'is', 'thickness'], category: 'grid'},
-    { key: 'style.chart.layout.grid.graduations', def: 5, type: 'number', min: 2, max: 25, label: ['scale', 'is', 'quantity'], category: 'grid'},
-    { key: 'style.chart.layout.labels.dataLabels.show', def: true, type: 'checkbox', label: 'show', category: 'labels'},
-    { key: 'style.chart.layout.labels.dataLabels.fontSize', def: 12, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'labels'},
-    { key: 'style.chart.layout.labels.dataLabels.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'labels'},
-    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
-    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
-    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
-    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
-    { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
-    { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip'},
-    { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip'},
-    { key: 'style.chart.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip'},
-    { key: 'style.chart.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'tooltip'},
-    // { key: 'style.chart.tooltip.showValue', def: true, type: 'checkbox', label: 'showValue', category: 'tooltip'},
-    // { key: 'style.chart.tooltip.showPercentage', def: true, type: 'checkbox', label: 'showPercentage', category: 'tooltip'}
-    { key: 'style.chart.tooltip.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'tooltip'},
-    { key: 'style.chart.tooltip.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'tooltip'},
-    { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend'},
-    { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: "color", label: 'backgroundColor', category: 'legend'},
-    { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
-    { key: 'style.chart.legend.fontSize', def: 14, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'legend'},
-    { key: 'style.chart.legend.bold', def: true, type: 'checkbox', label: 'bold', category: 'legend'},
-    { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend'},
-    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
-    { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
-    { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table'},
-    { key: 'translations.target', def: 'Target', type: 'text', label: ['columnName', 'is', 'target'], category: 'table'},
-    { key: 'translations.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table'},
-    { key: 'translations.datapoint', def: 'Datapoint', type: 'text', label: ['columnName', 'is', 'datapoint'], category: 'table'},
-    { key: 'table.th.backgroundColor', def: "#FFFFFF", type: 'color', label: 'backgroundColorHeader', category: 'table'},
-    { key: 'table.th.color', def: '#1A1A1A', type: 'color', label: 'textColorHeader', category: 'table'},
-    { key: 'table.th.outline', def: 'none', type: 'text', label: 'outlineHeader', category: 'table'},
-    { key: 'table.td.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorRow', category: 'table'},
-    { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', category: 'table'},
-    { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table'},
-    { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'table'},
-    { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'table'}
-])
+const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_radar.model)))
 
 const options = ref({
     datasetItems: {
@@ -138,54 +82,63 @@ const options = ref({
     config: {},
 })
 
-const datasetItems = ref([
-    {
-        name: 'series 1',
-        values: [50, 10],
-        id: '111',
-        target: 100,
-    },
-    {
-        name: 'series 2',
-        values: [30, 20],
-        id: '222',
-        target: 100
-    },
-    {
-        name: 'series 3',
-        values: [30, 18],
-        id: '333',
-        target: 100
-    },
-]);
-
-const categoryItems = ref([
-    {
-        name: 'category 1',
-        color: '#42d392',
-        id: '111'
-    },
-    {
-        name: 'category 2',
-        color: '#6376DD',
-        id: '222'
-    },
-])
+const datasetItems = ref(defaultData.vue_ui_radar.dataset);
+const categoryItems = ref(defaultData.vue_ui_radar.categories)
 
 const step = ref(0);
 
+onMounted(() => {
+    if(localStorage.radarConfig) {
+        CONFIG_MODEL.value = JSON.parse(localStorage.radarConfig);
+    } 
+    if(localStorage.radarDataset) {
+        datasetItems.value = JSON.parse(localStorage.radarDataset)
+    }else {
+        localStorage.setItem('radarDataset', JSON.stringify(defaultData.vue_ui_radar.dataset))
+    }
+    if(localStorage.radarCategories) {
+        categoryItems.value = JSON.parse(localStorage.radarCategories)
+    } else {
+        localStorage.setItem('radarCategories', JSON.stringify(defaultData.vue_ui_radar.categories))
+    }
+    step.value += 1;
+})
+
+function saveDatasetToLocalStorage() {
+    localStorage.radarDataset = JSON.stringify(datasetItems.value);
+}
+
+function saveCategoriesToLocalStorage() {
+    localStorage.radarCategories = JSON.stringify(categoryItems.value);
+}
+
+function saveConfigToLocalStorage() {
+    localStorage.radarConfig = JSON.stringify(CONFIG_MODEL.value)
+}
+
+function resetModel() {
+    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_donut.model))
+    step.value += 1;
+    saveConfigToLocalStorage();
+}
+
 function forceChartUpdate() {
+    if(!localStorage.radarConfig) {
+        localStorage.setItem('radarConfig', {})
+    }
+    saveConfigToLocalStorage()
     step.value += 1;
 }
 
 function addDatasetItem() {
     datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.datasetItems)), id: createUid(), values: categoryItems.value.map(_ => 0)});
-
-    step.value += 1
+    step.value += 1;
+    saveDatasetToLocalStorage()
 }
 
-function deleteDatasetItem() {
+function deleteDatasetItem(id) {
     datasetItems.value = datasetItems.value.filter(_ => _.id !== id);
+    saveDatasetToLocalStorage()
 }
 
 function addCategoryItem() {
@@ -193,7 +146,9 @@ function addCategoryItem() {
     datasetItems.value.forEach(ds => {
         ds.values.push(0)
     })
-    step.value += 1
+    step.value += 1;
+    saveCategoriesToLocalStorage()
+    saveDatasetToLocalStorage()
 }
 
 function deleteCategoryItem(index, id) {
@@ -201,18 +156,22 @@ function deleteCategoryItem(index, id) {
     datasetItems.value.forEach(ds => {
         ds.values.splice(index, 1)
     })
+    saveCategoriesToLocalStorage()
+    saveDatasetToLocalStorage()
 }
 
 function pushValueToSeries({ value, id }) {
     const thisItem = datasetItems.value.find(_ => _.id === id);
     thisItem.values.push(value)
     step.value += 1;
+    saveDatasetToLocalStorage()
 }
 
 function removeValueFromSeries({id, index}) {
     const thisItem = datasetItems.value.find(_ => _.id === id);
     thisItem.values.splice(index, i)
-    step.value += 1
+    step.value += 1;
+    saveDatasetToLocalStorage()
 }
 
 const finalConfig = computed(() => {
@@ -243,6 +202,7 @@ const dataset = computed(() => {
                         <PinnedOffIcon v-if="isFixed"/>
                         <PinIcon v-else/>
                     </button>
+                    <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
                 </div>
                 <VueUiRadar :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
             </div>
@@ -260,8 +220,8 @@ const dataset = computed(() => {
                         <th class="text-left text-xs">{{ makerTranslations.labels.categoryName[store.lang] }}</th>
                     </thead>
                     <tbody>
-                        <td><input type="color" v-model="categoryItems[i].color"></td>
-                        <td><input class="h-[36px]" type="text" v-model="ds.name"></td>
+                        <td><input type="color" v-model="categoryItems[i].color" @change="saveCategoriesToLocalStorage"></td>
+                        <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveCategoriesToLocalStorage"></td>
                     </tbody>
                 </table>
             </div>
@@ -285,9 +245,9 @@ const dataset = computed(() => {
                         <th class="text-left text-xs" v-for="category in categoryItems">{{ category.name }}</th>
                     </thead>
                     <tbody>
-                        <td><input class="h-[36px]" type="text" v-model="ds.name"></td>
-                        <td><input class="h-[36px]" type="number" v-model="ds.target"></td>
-                        <td v-for="(val, i) in ds.values"><input class="h-[36px] w-[84px]" type="number" v-model="ds.values[i]"></td>
+                        <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px]" type="number" v-model="ds.target" @change="saveDatasetToLocalStorage"></td>
+                        <td v-for="(val, i) in ds.values" @change="saveDatasetToLocalStorage"><input class="h-[36px] w-[84px]" type="number" v-model="ds.values[i]"></td>
                     </tbody>
                 </table>
             </div>
@@ -301,6 +261,10 @@ const dataset = computed(() => {
 
     <details open class="mt-6" v-if="makerTranslations.labels">
         <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+
+        <div class="flex justify-end">
+            <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+        </div>
 
         <template v-for="category in CONFIG_CATEGORIES">
         

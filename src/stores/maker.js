@@ -14,6 +14,16 @@ export const useMakerStore = defineStore('maker', {
                 ko: ""
             },
             translations: {
+                reset: {
+                    en: "Reset config",
+                    fr: "Réinitialiser la config",
+                    pt: "Redefinir config",
+                    de: "Konfig zurücksetzen",
+                    zh: "重置配置",
+                    jp: "設定をリセットする",
+                    es: "Restablecer config",
+                    ko: "구성 재설정"
+                },
                 atWork: {
                     en: "We are currently working on adding all the components here. If you don't find the one you need, you can still check out the docs page.",
                     fr: "Nous travaillons actuellement sur l'ajout de tous les composants ici. Si vous ne trouvez pas celui dont vous avez besoin, vous pouvez toujours consulter la page de documentation.",

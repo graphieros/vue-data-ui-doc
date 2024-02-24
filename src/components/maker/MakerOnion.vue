@@ -1,14 +1,16 @@
 <script setup>
-import { ref, computed} from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
 import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon, CopyIcon } from "vue-tabler-icons"
 import { getVueDataUiConfig } from "vue-data-ui";
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
+import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js";
+import { useDefaultDataStore } from "../../stores/defaultData"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
+const defaultData = useDefaultDataStore();
 
 const translations = computed(() => {
     return store.translations;
@@ -23,8 +25,6 @@ const isDarkMode = computed(() => {
 })
 
 const isFixed = ref(true);
-
-const C = ref(getVueDataUiConfig('vue_ui_onion'))
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -55,56 +55,7 @@ const CONFIG_CATEGORIES = computed(() => {
     ]
 })
 
-const CONFIG_MODEL = ref([
-    { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
-    { key: 'useBlurOnHover', def: true, type: 'checkbox', label: 'useBlurOnHover', category: 'general' },
-    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
-    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
-    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
-    { key: 'style.chart.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'general'},
-    { key: 'style.chart.gradientIntensity', def: 20, type: 'range', min:0, max: 100, label: 'gradientIntensity', category: 'general'},
-    { key: 'style.chart.layout.gutter.color', def: '#e1e5e8', type: 'color', label: ['gutter', 'is', 'color'], category: 'general'},
-    { key: 'style.chart.layout.gutter.width', def: 0.62, type: "range", step: 0.01, min: 0, max: 1, label: ['gutter', 'is', 'thickness'], category: 'general'},
-    { key: 'style.chart.layout.track.width', def: 0.62, type: 'range', step:0.01, min: 0.1, max: 1, label: ['track', 'is', 'thickness'], category: 'general'},
-    { key: 'style.chart.layout.labels.show', def: true, type: 'checkbox', label: 'show', category:  'labels'},
-    { key: 'style.chart.layout.labels.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'labels'},
-    { key: 'style.chart.layout.labels.fontSize', def: 14, type: 'number', min: 6, max: 32, label: 'fontSize', category: 'labels'},
-    { key: 'style.chart.layout.labels.bold', def: true, type:'checkbox', label: 'bold', category: 'labels'},
-    { key: 'style.chart.layout.labels.roundingValue', def: 0, type: 'number', min:0, max: 6, label: ['value', 'is', 'rounding'], category: 'labels'},
-    { key: 'style.chart.layout.labels.roundingPercentage', def: 0, type: 'number', min:0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'labels'},
-    { key: 'style.chart.layout.labels.offsetX', def: 0, type: 'number', min: -100, max: 100, label: 'offsetX', category: 'labels'},
-    { key: 'style.chart.layout.labels.offsetY', def: 0, type: 'number', min: -100, max: 100, label: 'offsetY', category: 'labels'},
-    { key: 'style.chart.layout.labels.value.show', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'labels'},
-    { key: 'style.chart.layout.labels.percentage.show', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'labels'},
-    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
-    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
-    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
-    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
-    { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
-    { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend'},
-    { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend'},
-    { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
-    { key: 'style.chart.legend.fontSize', def: 14, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'legend'},
-    { key: 'style.chart.legend.bold', def: true, type: 'checkbox', label: 'bold', category: 'legend'},
-    { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'legend'},
-    { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend'},
-    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
-    { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
-    { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table'},
-    { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table'},
-    { key: 'table.th.color', def: '#1A1A1A', type: 'color', label: 'textColorHeader', category: 'table'},
-    { key: 'table.th.outline', def: 'none', type: 'text', label: 'outlineHeader', category: 'table'},
-    { key: 'table.td.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorRow', category: 'table'},
-    { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', category: 'table'},
-    { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'table'},
-    { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'table'},
-    { key: 'table.translations.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table'},
-    { key: 'table.translations.percentage', def: 'Percentage', type: 'text', label: ['columnName', 'is', 'percentage'], category: 'table'},
-    { key: 'table.translations.serie', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'}
-])
+const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_onion.model)))
 
 const options = ref({
     datasetItems: {
@@ -117,49 +68,53 @@ const options = ref({
     }
 })
 
-const datasetItems = ref([
-    {
-        name: 'Serie 1',
-        percentage: 66.667,
-        value: 150,
-        color: "#42d392",
-        prefix: '$',
-        suffix: '',
-        id: '111'
-    },
-    {
-        name: 'Serie 2',
-        percentage: 33.334,
-        value: 130,
-        color: "#5f8bee",
-        prefix: '',
-        suffix: '€',
-        id: '222'
-    },
-    {
-        name: 'Serie 3',
-        percentage: 62,
-        value: 12,
-        color: "#ff6400",
-        prefix: '',
-        suffix: 'K€',
-        id: '333'
-    },
-])
+const datasetItems = ref(defaultData.vue_ui_onion.dataset)
 
-const step = ref(0)
+const step = ref(0);
+
+onMounted(() => {
+    if(localStorage.onionConfig) {
+        CONFIG_MODEL.value = JSON.parse(localStorage.onionConfig);
+    } 
+    if(localStorage.onionDataset) {
+        datasetItems.value = JSON.parse(localStorage.onionDataset)
+    }else {
+        localStorage.setItem('onionDataset', JSON.stringify(defaultData.vue_ui_onion.dataset))
+    }
+    step.value += 1;
+});
+
+function saveDatasetToLocalStorage() {
+    localStorage.onionDataset = JSON.stringify(datasetItems.value);
+}
+
+function saveConfigToLocalStorage() {
+    localStorage.onionConfig = JSON.stringify(CONFIG_MODEL.value)
+}
+
+function resetModel() {
+    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_onion.model))
+    step.value += 1;
+    saveConfigToLocalStorage();
+}
 
 function forceChartUpdate() {
+    if(!localStorage.onionConfig) {
+        localStorage.setItem('onionConfig', {})
+    }
+    saveConfigToLocalStorage()
     step.value += 1;
 }
 
 function addDatasetItem() {
     datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.datasetItems)), id: createUid()});
-    step.value += 1
+    step.value += 1;
+    saveDatasetToLocalStorage()
 }
 
 function deleteDatasetItem(id) {
     datasetItems.value = datasetItems.value.filter(_ => _.id !== id);
+    saveDatasetToLocalStorage();
 }
 
 const finalConfig = computed(() => {
@@ -182,6 +137,7 @@ function getLabel(label) {
                         <PinnedOffIcon v-if="isFixed"/>
                         <PinIcon v-else/>
                     </button>
+                    <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
                 </div>
                 <VueUiOnion :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
             </div>
@@ -202,12 +158,12 @@ function getLabel(label) {
                         <th class="text-left text-xs">{{ makerTranslations.labels.suffix[store.lang] }}</th>
                     </thead>
                     <tbody>
-                        <td><input type="color" v-model="ds.color"></td>
-                        <td><input class="h-[36px]" type="text" v-model="ds.name"></td>
-                        <td><input class="h-[36px] w-[82px]" type="number" min="0" max="100" v-model="ds.percentage"></td>
-                        <td><input class="h-[36px] w-[82px]" type="number"  v-model="ds.value"></td>
-                        <td><input class="h-[36px] w-[48px]" type="text" v-model="ds.prefix"></td>
-                        <td><input class="h-[36px] w-[48px]" type="text" v-model="ds.suffix"></td>
+                        <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px] w-[82px]" type="number" min="0" max="100" v-model="ds.percentage" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px] w-[82px]" type="number"  v-model="ds.value" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px] w-[48px]" type="text" v-model="ds.prefix" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px] w-[48px]" type="text" v-model="ds.suffix" @change="saveDatasetToLocalStorage"></td>
                     </tbody>
                 </table>
             </div>
@@ -221,6 +177,10 @@ function getLabel(label) {
 
     <details open class="mt-6" v-if="makerTranslations.labels">
         <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+
+        <div class="flex justify-end">
+            <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+        </div>
 
         <template v-for="category in CONFIG_CATEGORIES">
         

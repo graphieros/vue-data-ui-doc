@@ -1,14 +1,16 @@
 <script setup>
-import { ref, computed} from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
 import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon, CopyIcon, RefreshIcon } from "vue-tabler-icons"
 import { getVueDataUiConfig } from "vue-data-ui";
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
+import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js";
+import { useDefaultDataStore } from "../../stores/defaultData"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
+const defaultData = useDefaultDataStore();
 
 const translations = computed(() => {
     return store.translations;
@@ -23,8 +25,6 @@ const isDarkMode = computed(() => {
 })
 
 const isFixed = ref(true);
-
-const C = ref(getVueDataUiConfig('vue_ui_gauge'));
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -47,51 +47,7 @@ const CONFIG_CATEGORIES = computed(() => {
     ]
 })
 
-const CONFIG_MODEL = ref([
-    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
-    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category:'general'},
-    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
-    { key: 'style.chart.animation.use', def: false, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
-    { key: 'style.chart.animation.speed', def: 1, min: 0, max: 10, type: 'range', label: ['animation', 'is', 'speed'], category: 'general'},
-    { key: 'style.chart.animation.acceleration', def: 1, min: 0, max: 10, type: 'range',label: ['animation', 'is', 'acceleration'], category: 'general' },
-    { key: 'style.chart.layout.track.size', def: 1, type: 'number', min: 1, max: 3, label: ['track', 'is', 'thickness'], category: 'general'},
-    { key: 'style.chart.layout.track.useGradient', def: true, type: 'checkbox', label: ['track', 'is', 'useGradient'], category: 'general'},
-    { key: 'style.chart.layout.track.gradientIntensity', def: 40, min: 0, max: 100, type: 'range', label: ['track', 'is', 'gradientIntensity'], category: 'general'},
-    { key: 'style.chart.layout.markers.size', def: 1, min: 1, max: 3, type: 'number', label: ['markers', 'is', 'size'], category: 'general'},
-    { key: 'style.chart.layout.markers.color', def: '#1A1A1A', type: 'color', label: ['markers', 'is', 'textColor'], category: 'general'},
-    { key: 'style.chart.layout.markers.bold', def: true, type: 'checkbox', label: ['markers', 'is', 'bold'], category: 'general'},
-    { key: 'style.chart.layout.markers.fontSizeRatio', def: 1, type: 'number', min: 0, max: 3, label: ['markers', 'fontSize', 'is', 'ratio'], category: 'general'},
-    { key: 'style.chart.layout.markers.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['markers', 'is', 'offsetY'], category: 'general'},
-    { key: 'style.chart.layout.markers.stroke', def: '#1A1A1A', type: "color", label: ['markers', 'border', 'is', 'color'], category: 'general'},
-    { key: 'style.chart.layout.markers.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['markers', 'border', 'is', 'thickness'], category: 'general'},
-    { key: 'style.chart.layout.markers.backgroundColor', def: '#FFFFFF', type: 'color', label: ['markers', 'is', 'backgroundColor'], category: 'general'},
-    { key: 'style.chart.layout.markers.roundingValue', def: 0, type: 'number', min: 0, max: 3, label: ['markers', 'is', 'rounding'], category: 'general'},
-    { key: 'style.chart.layout.pointer.size', def: 1, type: 'number', min: 0, max: 2, label: ['pointer', 'is', 'size'], category: 'general'},
-    { key: 'style.chart.layout.pointer.stroke', def: '#1A1A1A', type: 'color', label: ['pointer', 'border', 'is', 'color'], category: 'general'},
-    { key: 'style.chart.layout.pointer.strokeWidth', def: 12, type: 'number', min: 1, max: 48, label: ['pointer', 'is', 'thickness'], category: 'general'},
-    { key: 'style.chart.layout.pointer.useRatingColor', def: true, type: 'checkbox', label: ['pointer', 'color', 'is', 'auto'], category: 'general'},
-    { key: 'style.chart.layout.pointer.color', def: '#CCCCCC', type: 'color', label: ['pointer', 'is', 'color'], category: 'general'},
-    { key: 'style.chart.layout.pointer.circle.radius', def: 10, type: 'number', min: 0, max: 48, label: ['pointer', 'circle', 'is', 'radius'], category: 'general'},
-    { key: 'style.chart.layout.pointer.circle.stroke', def: '#1A1A1A', type: 'color', label: ['pointer', 'circle', 'is', 'border', 'color'], category: 'general'},
-    { key: 'style.chart.layout.pointer.circle.strokeWidth', def: 2, type: 'number', min: 0, max: 12, label: ['pointer', 'circle', 'is', 'border', 'thickness'], category: 'general'},
-    { key: 'style.chart.layout.pointer.circle.color', def: '#FFFFFF', type: 'color', label: ['pointer', 'circle', 'is', 'backgroundColor'], category: 'general'},
-    { key: 'style.chart.legend.fontSize', def: 48, type: 'number', min: 12, max: 120, label: 'fontSize', category: 'legend'},
-    { key: 'style.chart.legend.prefix', def: '', type: 'text', label: 'prefix', category: 'legend'},
-    { key: 'style.chart.legend.suffix', def: '', type: 'text', label: 'suffix', category: 'legend'},
-    { key: 'style.chart.legend.showPlusSymbol', def: true, type: 'checkbox', label: "showPlusSymbol", category: 'legend'},
-    { key: 'style.chart.legend.useRatingColor', def: true, type: 'checkbox', label: ['textColor', 'is', 'auto'], category: 'legend'},
-    { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
-    { key: 'style.chart.legend.roundingValue', def: 1, type: 'number', min: 0, max: 6, label: 'rounding', category: 'legend'},
-    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
-    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
-    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
-    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
-    { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle' },
-    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
-    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
-    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'}
-])
+const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_gauge.model)))
 
 const options = ref({
     datasetItems: {
@@ -104,34 +60,54 @@ const options = ref({
     config: {}
 })
 
-const datasetItems = ref([
-    {
-        from: 0,
-        to: 5,
-        color: "#6376DD",
-        id: "111"
-    },
-    {
-        from: 5,
-        to: 10,
-        color: "#42d392",
-        id: "222"
-    }
-])
+const datasetItems = ref(defaultData.vue_ui_gauge.dataset)
 
-const step = ref(0)
+const step = ref(0);
+
+onMounted(() => {
+    if(localStorage.gaugeConfig) {
+        CONFIG_MODEL.value = JSON.parse(localStorage.gaugeConfig);
+    } 
+    if(localStorage.gaugeDataset) {
+        datasetItems.value = JSON.parse(localStorage.gaugeDataset)
+    }else {
+        localStorage.setItem('gaugeDataset', JSON.stringify(defaultData.vue_ui_gauge.dataset))
+    }
+    step.value += 1;
+})
+
+function saveDatasetToLocalStorage() {
+    localStorage.gaugeDataset = JSON.stringify(datasetItems.value);
+    step.value += 1;
+}
+
+function saveConfigToLocalStorage() {
+    localStorage.gaugeConfig = JSON.stringify(CONFIG_MODEL.value)
+}
+
+function resetModel() {
+    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_gauge.model))
+    step.value += 1;
+    saveConfigToLocalStorage();
+}
 
 function forceChartUpdate() {
+    if(!localStorage.waffleConfig) {
+        localStorage.setItem('waffleConfig', {})
+    }
+    saveConfigToLocalStorage()
     step.value += 1;
 }
 
 function addDatasetItem() {
     datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.datasetItems)), id: createUid()});
-    step.value += 1
+    step.value += 1;
+    saveDatasetToLocalStorage()
 }
 
 function deleteDatasetItem(id) {
     datasetItems.value = datasetItems.value.filter(_ => _.id !== id);
+    saveDatasetToLocalStorage();
 }
 
 const finalConfig = computed(() => {
@@ -162,6 +138,7 @@ const usableDataset = computed(() => {
                             <PinnedOffIcon v-if="isFixed"/>
                             <PinIcon v-else/>
                         </button>
+                        <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
                     </div>
                     <VueUiGauge :dataset="usableDataset" :config="finalConfig" :key="`chart_${step}`"/>
                 </div>
@@ -186,9 +163,9 @@ const usableDataset = computed(() => {
                         <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
                     </thead>
                     <tbody>
-                        <td><input type="color" v-model="datasetItems[i].color"></td>
-                        <td><input class="h-[36px]" type="number" v-model="ds.from" @change="forceChartUpdate"></td>
-                        <td><input class="h-[36px]" type="number" v-model="ds.to" @change="forceChartUpdate"></td>
+                        <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px]" type="number" v-model="ds.from" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px]" type="number" v-model="ds.to" @change="saveDatasetToLocalStorage"></td>
                     </tbody>
                 </table>
             </div>
@@ -202,6 +179,10 @@ const usableDataset = computed(() => {
 
     <details open class="mt-6" v-if="makerTranslations.labels">
         <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+
+        <div class="flex justify-end">
+            <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+        </div>
 
         <template v-for="category in CONFIG_CATEGORIES">
         
