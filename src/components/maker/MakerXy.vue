@@ -12,6 +12,10 @@ const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
 
+const isMobile = computed(() => {
+    return window.innerWidth < 800;
+})
+
 const translations = computed(() => {
     return store.translations;
 })
@@ -24,7 +28,7 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 })
 
-const isFixed = ref(true);
+const isFixed = ref(!isMobile.value);
 
 const datasetItems = ref(defaultData.vue_ui_xy.dataset)
 const step = ref(0);
