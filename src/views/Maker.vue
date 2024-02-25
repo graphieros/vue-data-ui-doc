@@ -9,6 +9,7 @@ import MakerWaffle from "../components/maker/MakerWaffle.vue"
 import MakerRadar from "../components/maker/MakerRadar.vue"
 import MakerGauge from "../components/maker/MakerGauge.vue"
 import MakerOnion from "../components/maker/MakerOnion.vue"
+import MakerQuadrant from "../components/maker/MakerQuadrant.vue"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -35,6 +36,7 @@ const options = ref([
     { name: "VueUiRadar", icon: "chartRadar"},
     { name: "VueUiGauge", icon: "chartGauge"},
     { name: "VueUiOnion", icon: "chartOnion"},
+    { name: "VueUiQuadrant", icon: "chartQuadrant"},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -97,6 +99,7 @@ function saveSelectedChartToLocalStorage() {
         <MakerRadar v-if="selectedChart.name === 'VueUiRadar'"/>
         <MakerGauge v-if="selectedChart.name === 'VueUiGauge'"/>
         <MakerOnion v-if="selectedChart.name === 'VueUiOnion'"/>
+        <MakerQuadrant v-if="selectedChart.name === 'VueUiQuadrant'"/>
 
 
     </div>

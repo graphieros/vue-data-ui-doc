@@ -304,18 +304,19 @@ const digitsConfigVersion = computed(() => {
           <small>{{ translations.downloads[store.lang] }}</small>
           <VueUiDigits :dataset="downloads" :config="digitConfig"/>
         </div> -->
-        <div class="z-10 flex flex-row gap-6 mt-6">
-          <router-link to="/installation">
-              <button data-cy="btn-install" class="bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:shadow-xl hover:from-app-blue hover:to-app-green transition-all">
+        <div class="z-10 flex flex-row gap-4 mt-6 w-full">
+          <router-link to="/installation" class="w-full">
+              <button data-cy="btn-install" class="w-full bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:shadow-xl hover:from-app-blue hover:to-app-green transition-all">
                 {{ translations.menu.installation[store.lang] }}
               </button>
           </router-link>
-          <router-link to="/docs">
-              <button data-cy="btn-docs" class="bg-white hover:shadow-xl dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold dark:hover:bg-[rgba(255,255,255,0.05)] transition-all hover:border-app-blue">
+          <router-link to="/docs" class="w-full">
+              <button data-cy="btn-docs" class="w-full bg-white hover:shadow-xl dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold dark:hover:bg-[rgba(255,255,255,0.05)] transition-all hover:border-app-blue">
                 {{ translations.menu.docs[store.lang] }}
               </button>
           </router-link>
         </div>
+
         <router-link to="/chart-builder" class="w-full">
           <button class="w-full bg-white hover:shadow-xl dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold dark:hover:bg-[rgba(255,255,255,0.05)] transition-all hover:border-app-blue flex flex-row gap-2 place-items-center justify-center">
             <ToolIcon/>

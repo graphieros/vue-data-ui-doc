@@ -85,6 +85,16 @@ export const useMakerStore = defineStore('maker', {
                     ko: "구성 요소 코드:"
                 },
                 categories: {
+                    datapoints: {
+                        en: "Datapoints",
+                        fr: "Points de données",
+                        pt: "Pontos de dados",
+                        de: "Datenpunkte",
+                        zh: "数据点",
+                        jp: "データポイント",
+                        es: "Puntos de datos",
+                        ko: "데이터 점수"
+                    },
                     donut: {
                         en: 'Arcs',
                         fr: "Arcs",
@@ -267,6 +277,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Auto",
                         ko: "자동적 인"
                     },
+                    arrow: {
+                        en: 'Arrow',
+                        fr: "Flèche",
+                        pt: "Seta",
+                        de: "Pfeil",
+                        zh: "箭",
+                        jp: "矢印",
+                        es: "Flecha",
+                        ko: "화살"
+                    },
                     average: {
                         en: 'Average',
                         fr: "Moyenne",
@@ -276,6 +296,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "平均",
                         es: "Promedio",
                         ko: "평균"
+                    },
+                    axis: {
+                        en: 'Axis',
+                        fr: "Axes",
+                        pt: "Eixos",
+                        de: "Äxte",
+                        zh: "轴",
+                        jp: "軸",
+                        es: "Ejes",
+                        ko: "축"
                     },
                     backgroundColor: {
                         en: "Background color",
@@ -376,6 +406,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "キャプションの幅",
                         es: "Ancho de título",
                         ko: "캡션 너비"
+                    },
+                    category: {
+                        en: 'Category',
+                        fr: 'Catégorie',
+                        pt: 'Categoria',
+                        de: "Kategorie",
+                        zh: "类别",
+                        jp: "カテゴリー",
+                        es: "Categoría",
+                        ko: "범주"
                     },
                     categoryName: {
                         en: "Category name",
@@ -486,6 +526,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "polígono de datos",
                         ko: "데이터 폴리곤"
                     },
+                    fill: {
+                        en: 'Fill',
+                        fr: "Remplissage",
+                        pt: "Enchimentor",
+                        de: "Füllung",
+                        zh: "填充",
+                        jp: "充填",
+                        es: "Relleno",
+                        ko: "충전재"
+                    },
                     fontFamily: {
                         en: "Font family",
                         fr: "Police",
@@ -534,6 +584,16 @@ export const useMakerStore = defineStore('maker', {
                         zh: "梯度强度",
                         jp: "勾配強度",
                         ko: "그라데이션 강도"
+                    },
+                    grid: {
+                        en: 'Grid',
+                        fr: "Grille",
+                        pt: "Grade",
+                        de: "Netz",
+                        zh: "网格",
+                        jp: "グリッド",
+                        es: "cuadricula",
+                        ko: "그리드"
                     },
                     gutter: {
                         en: 'Gutter',
@@ -605,6 +665,16 @@ export const useMakerStore = defineStore('maker', {
                         es: ":",
                         ko: ":"
                     },
+                    labels: {
+                        en: 'Labels',
+                        fr: "Labels",
+                        pt: 'Etiquetas',
+                        de: "Etiketten",
+                        zh: "标签",
+                        jp: "ラベル",
+                        es: "Etiquetas",
+                        ko: "라벨"
+                    },
                     left: {
                         en: "Left",
                         fr: "Gauche",
@@ -634,6 +704,36 @@ export const useMakerStore = defineStore('maker', {
                         jp: "記号",
                         es: "Señal",
                         ko: "징후"
+                    },
+                    max: {
+                        en: "Maximum",
+                        fr: "Maximum",
+                        pt: "Máximo",
+                        de: "Maximal",
+                        zh: "最大限度",
+                        jp: "最大",
+                        es: "Máximo",
+                        ko: "최저한의"
+                    },
+                    min: {
+                        en: 'Minimum',
+                        fr: "Minimum",
+                        pt: "Mínimo",
+                        de: "Minimum",
+                        zh: "最低限度",
+                        jp: "最小",
+                        es: "Mínimo",
+                        ko: "최저한의"
+                    },
+                    negative: {
+                        en: 'Negative',
+                        fr: "Négatif",
+                        pt: "Negativo",
+                        de: "Negativ",
+                        zh: "消极的",
+                        jp: "ネガティブ",
+                        es: "Negativo",
+                        ko: "부정적인"
                     },
                     offsetX: {
                         en: "Offset X",
@@ -755,6 +855,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Puntero",
                         ko: "바늘"
                     },
+                    positive: {
+                        en: 'Positive',
+                        fr: "Positif",
+                        pt: 'Positivo',
+                        de: "Positiv",
+                        zh: "积极的",
+                        jp: "ポジティブ",
+                        es: "Positivo",
+                        ko: "긍정적인"
+                    },
                     prefix: {
                         en: "Prefix",
                         fr: "Préfixe",
@@ -774,6 +884,26 @@ export const useMakerStore = defineStore('maker', {
                         jp: "進捗",
                         es: "Progreso",
                         ko: "진전"
+                    },
+                    quadrant: {
+                        en: 'Quadrant',
+                        fr: 'Quadrant',
+                        pt: 'Quadrante',
+                        de: "Quadrant",
+                        zh: "象限",
+                        jp: "四分円",
+                        es: "Cuadrante",
+                        ko: "사분면"
+                    },
+                    quadrantSide: {
+                        en: 'Quadrant side',
+                        fr: 'Côté du quadrant',
+                        pt: "Lado do quadrante",
+                        de: "Quadrantenseite",
+                        zh: "象限边",
+                        jp: "象限側",
+                        es: "Lado del cuadrante",
+                        ko: "사분면"
                     },
                     quantity: {
                         en: "Quantity",
@@ -1265,6 +1395,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Ancho",
                         ko: "너비"
                     },
+                    x: {
+                        en: 'X',
+                        fr: 'X',
+                        pt: 'X',
+                        de: "X",
+                        zh: "X",
+                        jp: "X", 
+                        es: "X",
+                        ko: "X"
+                    },
                     xAxisLabel: {
                         en: "X axis labels",
                         fr: "Étiquettes de l'axe X",
@@ -1274,6 +1414,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "X 軸のラベル",
                         es: "Etiquetas del eje X",
                         ko: "X축 라벨"
+                    },
+                    y: {
+                        en: 'Y',
+                        fr: 'Y',
+                        pt: 'Y',
+                        de: "Y",
+                        zh: "Y",
+                        jp: "Y", 
+                        es: "Y",
+                        ko: "Y"
                     },
                     yAxisLabel: {
                         en: "Y axis labels",
