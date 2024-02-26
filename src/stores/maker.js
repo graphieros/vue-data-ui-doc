@@ -1015,6 +1015,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Forma",
                         ko: "모양"
                     },
+                    shiftHue: {
+                        en: 'Shift hue',
+                        fr: "Changement de teinte",
+                        pt: "Mudança de cor",
+                        de: "Farbwechsel",
+                        zh: "颜色变化",
+                        jp: "色変更",
+                        es: "tono de cambio",
+                        ko: "색상 변경"
+                    },
                     show: {
                         en: "Show",
                         fr: "Montrer",
@@ -1254,6 +1264,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "厚さ",
                         es: "Espesor",
                         ko: "두께"
+                    },
+                    ticks: {
+                        en: 'Ticks',
+                        fr: "Marques",
+                        pt: "Marcas",
+                        de: "Zecken",
+                        zh: "品牌",
+                        jp: "ブランド",
+                        es: "Marcas",
+                        ko: "순간"
                     },
                     to: {
                         en: "To",

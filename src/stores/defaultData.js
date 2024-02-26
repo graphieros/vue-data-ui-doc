@@ -663,6 +663,35 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'translations.item', def: 'Item', type: 'text', label: ['columnName', 'is', 'datapoint'], category: 'table'},
                     { key: 'translations.side', def: 'Side', type: 'text', label: ['columnName', 'is', 'quadrantSide'], category: 'table'}
                 ]
+            },
+            vue_ui_wheel: {
+                dataset: { percentage: 95.555 },
+                model: [
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
+                    { key: 'style.chart.animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'style.chart.animation.speed', def: 0.5, step: 0.1, min: 0.1, max: 2, type: 'number', label: ['animation', 'is', 'speed'], category: 'general'},
+                    { key: 'style.chart.animation.acceleration', def: 1, step: 0.1, min: 0, max: 100, type: 'number', label: ['animation', 'is', 'acceleration'], category: 'general'},
+                    { key: 'style.chart.layout.wheel.ticks.gradient.show', def: true, type: 'checkbox', label: ['ticks',  'is', 'useGradient' ], category: 'general' },
+                    { key:  'style.chart.layout.wheel.ticks.gradient.shiftHueIntensity', def: 10, type: 'range', min: 0, max: 100, label: ['ticks', 'is', 'shiftHue'], category: 'general'},
+                    { key: 'style.chart.layout.innerCircle.show', def: true, type: 'checkbox', label: ['hollow', 'circle', 'is', 'show'], category: 'general'},
+                    { key: 'style.chart.layout.innerCircle.stroke', def: "#e1e5e8", type: 'color', label: ['hollow', 'circle', 'is', 'border', 'color'], category: 'general'},
+                    { key: 'style.chart.layout.innerCircle.strokeWidth', def: 1, type: 'number', min: 0, max: 48, label: ['hollow', 'circle', 'is',  'thickness'], category: 'general'},
+                    { key: 'style.chart.layout.percentage.show', def: true, type: 'checkbox', label: 'show', category: 'labels'},
+                    { key: 'style.chart.layout.percentage.fontSize', def: 48, type: 'number', min: 12, max: 64, label: 'fontSize', category: 'labels'},
+                    { key: 'style.chart.layout.percentage.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'labels'},
+                    { key: 'style.chart.layout.percentage.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels'},
+                    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
+                    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+                    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
+                    { key:  'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'}
+                ]
             }
         }
     }

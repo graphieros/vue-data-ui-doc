@@ -1,11 +1,10 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon, CopyIcon, RefreshIcon } from "vue-tabler-icons"
-import { getVueDataUiConfig } from "vue-data-ui";
+import { PlusIcon, PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
+import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
 
 const store = useMainStore();
