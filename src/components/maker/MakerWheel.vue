@@ -1,10 +1,9 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons"
-import Tooltip from "../../components/FlexibleTooltip.vue";
+import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons"
 import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
+import { copyComponent, convertArrayToObject } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
 
 const store = useMainStore();
@@ -66,9 +65,6 @@ onMounted(() => {
     }else {
         localStorage.setItem('wheelDataset', JSON.stringify(defaultData.vue_ui_wheel.dataset))
     }
-
-    // TEMP !!
-    localStorage.clear()
     step.value += 1;
 })
 
@@ -154,7 +150,7 @@ function getLabel(label) {
                         <label class="text-xs">{{ getLabel(knob.label) }}</label>
                         <div class="flex place-items-center justify-start h-[40px]">
                             <input class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :step="knob.step ?? 1" :type="knob.type" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def" @change="forceChartUpdate">
-                            <select v-if="knob.type === 'select'" v-model="knob.def">
+                            <select v-if="knob.type === 'select'" v-model="knob.def" @change="forceChartUpdate">
                                 <option v-for="opt in knob.options">{{ opt }}</option>
                             </select>
                         </div>
@@ -180,7 +176,7 @@ function getLabel(label) {
 
 
     const dataset = ref({{ currentDataset }});
-    
+
 &lt;/script&gt;
 
 &lt;template&gt;

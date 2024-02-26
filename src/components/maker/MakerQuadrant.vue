@@ -239,7 +239,7 @@ function getLabel(label) {
                                 <label class="text-xs">{{ getLabel(knob.label) }}</label>
                                 <div class="flex place-items-center justify-start h-[40px]">
                                     <input class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)"  :step='knob.step ?? 1' :type="knob.type" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def" @change="forceChartUpdate">
-                                    <select v-if="knob.type === 'select'" v-model="knob.def">
+                                    <select v-if="knob.type === 'select'" v-model="knob.def" @change="forceChartUpdate">
                                         <option v-for="opt in knob.options">{{ opt }}</option>
                                     </select>
                                 </div>

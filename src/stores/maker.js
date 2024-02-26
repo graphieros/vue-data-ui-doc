@@ -247,6 +247,26 @@ export const useMakerStore = defineStore('maker', {
                         es: "Aceleración",
                         ko: "가속"
                     },
+                    active: {
+                        en: 'Active',
+                        fr: "Actif",
+                        pt: 'Ativo',
+                        de: "Aktiv",
+                        zh: "积极的",
+                        jp: "アクティブ",
+                        es: "Activo",
+                        ko: "활동적인"
+                    },
+                    angle: {
+                        en: "Angle",
+                        fr: "Angle",
+                        pt: "Canto",
+                        de: "Ecke",
+                        zh: "角落",
+                        jp: "コーナー",
+                        es: "Esquina",
+                        ko: "모서리"
+                    },
                     animation: {
                         en: "Animation",
                         fr: "Animation",
@@ -496,6 +516,26 @@ export const useMakerStore = defineStore('maker', {
                         es: "Nombre de columna: Total",
                         ko: "열 이름: 합계"
                     },
+                    crescendo: {
+                        en: 'Crescendo',
+                        fr: 'Crescendo',
+                        pt: 'Crescendo',
+                        de: "Crescendo",
+                        zh: '渐强',
+                        jp: 'クレッシェンド',
+                        es: 'Crescendo',
+                        ko: '진전'
+                    },
+                    curve: {
+                        en: 'Curve',
+                        fr: "Courbe",
+                        pt: "Curva",
+                        de: "Kurve",
+                        zh: "曲线",
+                        jp: "曲線",
+                        es: "Curva",
+                        ko: "곡선"
+                    },
                     dashed: {
                         en: "Dashed",
                         fr: "pointillés",
@@ -525,6 +565,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "データポリゴン",
                         es: "polígono de datos",
                         ko: "데이터 폴리곤"
+                    },
+                    display: {
+                        en: 'Display',
+                        fr: 'Affichage',
+                        pt: 'Mostrar',
+                        de: 'Anzeige',
+                        zh: "展示",
+                        jp: "画面",
+                        es: "Mostrar",
+                        ko: "표시하다"
                     },
                     fill: {
                         en: 'Fill',
@@ -654,6 +704,26 @@ export const useMakerStore = defineStore('maker', {
                         jp: "中空",
                         es: "Hueco",
                         ko: "구멍"
+                    },
+                    horizontal: {
+                        en: 'Horizontal',
+                        fr: "Horizontal",
+                        pt: 'Horizontal',
+                        de: "Horizontal",
+                        zh: "水平的",
+                        jp: "水平",
+                        es: "Horizontal",
+                        ko: "수평의"
+                    },
+                    inactive: {
+                        en: 'Inactive',
+                        fr: 'Inactif',
+                        pt: 'Inativo',
+                        de: "Inaktiv",
+                        zh: "不活跃",
+                        jp: "非活性",
+                        es: "Inactivo",
+                        ko: "비활성"
                     },
                     is: {
                         en: ':',

@@ -692,6 +692,43 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'}
                 ]
+            },
+            vue_ui_tiremarks: {
+                dataset: { percentage: 95.555 },
+                model: [
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
+                    { key: 'style.chart.animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'style.chart.animation.speed', def: 0.5, step: 0.1, min: 0.1, max: 2, type: 'number', label: ['animation', 'is', 'speed'], category: 'general'},
+                    { key: 'style.chart.animation.acceleration', def: 1, step: 0.1, min: 0, max: 100, type: 'number', label: ['animation', 'is', 'acceleration'], category: 'general'},
+                    { key: 'style.chart.layout.display', def: 'horizontal', type: 'select', options: ['horizontal', 'vertical'], label: 'display', category: 'general'},
+                    { key: 'style.chart.layout.crescendo', def: true, type: 'checkbox', label: 'crescendo', category: 'general'},
+                    { key: 'style.chart.layout.curved', def: true, type: 'checkbox', label: 'curve', category: 'general'},
+                    { key: 'style.chart.layout.curveAngleX', def: 10, min: 1, max: 360, type: 'range', label: ['curve', 'angle', 'is', 'x'], category: 'general'},
+                    { key: 'style.chart.layout.curveAngleY', def: 10, min: 1, max: 13, type: 'range', label: ['curve', 'angle', 'is', 'y'], category: 'general'},
+                    { key: 'style.chart.layout.ticks.gradient.show', def: true, type: 'checkbox', label: ['ticks', 'is', 'useGradient'], category: 'general'},
+                    { key: 'style.chart.layout.ticks.gradient.shiftHueIntensity', def: 100, min: 0, max: 100, type: 'range', label: ['ticks', 'is', 'shiftHue'], category: 'general'},
+                    { key: 'style.chart.layout.activeColor', def: '#5f8bee', type: 'color', label: ['ticks', 'color', 'is', 'active'], category: 'general'},
+                    { key: 'style.chart.layout.inactiveColor', def: '#e1e5e8', type: 'color', label: ['ticks', 'color', 'is', 'inactive'], category: 'general'},
+                    { key: 'style.chart.percentage.show', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'labels'},
+                    { key: 'style.chart.percentage.useGradientColor', def: true, type: 'checkbox', label: ['textColor', 'is', 'useGradient'], category: 'labels'},
+                    { key: 'style.chart.percentage.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'labels'},
+                    { key: 'style.chart.percentage.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'labels' },
+                    { key: 'style.chart.percentage.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels'},
+                    { key: 'style.chart.percentage.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'labels'},
+                    { key: 'style.chart.percentage.verticalPosition', def: 'bottom', type: 'select', options: ['top', 'bottom'], label: ['display', 'is', 'vertical'], category: 'labels'},
+                    { key: 'style.chart.percentage.horizontalPosition', def: 'left', type: 'select', options: ['left', 'right'], label: ['display', 'is', 'horizontal'], category: 'labels'},
+                    { key: 'style.chart.title.text', def: 'Title', type: 'text',  label: 'textContent', category: 'title'},
+                    { key: 'style.chart.title.color', def: '#1A1A1A', type: "color", label: 'textColor', category: 'title'},
+                    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: "color", label: 'textColor', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'}
+                ]
             }
         }
     }
