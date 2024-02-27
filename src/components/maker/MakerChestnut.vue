@@ -36,8 +36,36 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.general[store.lang]
         },
         {
-            key: 'labels',
-            title: makerTranslations.value.categories.labels[store.lang]
+            key: 'roots',
+            title: makerTranslations.value.categories.roots[store.lang]
+        },
+        {
+            key: 'branches',
+            title: makerTranslations.value.categories.branches[store.lang]
+        },
+        {
+            key: 'donutCharts',
+            title: makerTranslations.value.categories.donutCharts[store.lang]
+        },
+        {
+            key: 'legend',
+            title: makerTranslations.value.categories.legend[store.lang]
+        },
+        {
+            key: 'title',
+            title: makerTranslations.value.categories.title[store.lang]
+        },
+        {
+            key: 'subtitle',
+            title: makerTranslations.value.categories.subtitle[store.lang]
+        },
+        {
+            key: 'table',
+            title: makerTranslations.value.categories.table[store.lang]
+        },
+        {
+            key: 'translations',
+            title: makerTranslations.value.categories.translations[store.lang]
         },
     ]
 })
@@ -75,11 +103,8 @@ onMounted(() => {
     if(localStorage.chestnutDataset) {
         datasetItems.value = JSON.parse(localStorage.chestnutDataset)
     }else {
-        localStorage.setItem('chestnutDataset', JSON.stringify(defaultData.vue_ui_donut.dataset))
+        localStorage.setItem('chestnutDataset', JSON.stringify(defaultData.vue_ui_chestnut.dataset))
     }
-
-    // TODO REMOVE !!!
-    localStorage.clear()
 
     step.value += 1;
 })
@@ -107,7 +132,7 @@ function forceChartUpdate() {
 }
 
 function addDatasetItem() {
-    datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.root)), id: createUid()});
+    datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.root)), id: createUid(), branches: [JSON.parse(JSON.stringify(options.value.branch))]});
     step.value += 1;
     saveDatasetToLocalStorage()
 }
@@ -151,6 +176,7 @@ function updateBranchValue({ branchId, rootId }) {
     const thisRoot = datasetItems.value.find(_ => _.id === rootId);
     const thisBranch = thisRoot.branches.find(_ => _.id === branchId);
     thisBranch.value = thisBranch.breakdown.map(b => b.value).reduce((a,b) => a + b, 0)
+    saveDatasetToLocalStorage();
 }
 
 const finalConfig = computed(() => {
@@ -158,8 +184,18 @@ const finalConfig = computed(() => {
 })
 
 function getLabel(label) {
-    return Array.isArray(label) ? label.map(l => makerTranslations.value.labels[l][store.lang]).join(" ") :
+    return Array.isArray(label) ? label.map(l => {
+        if(!makerTranslations.value.labels[l]) return l;
+        return  makerTranslations.value.labels[l][store.lang]
+    }).join(" ") :
     makerTranslations.value.labels[label][store.lang]
+}
+
+function composeLabel(labels) {
+    return labels.map(l => {
+        if(!makerTranslations.value.labels[l]) return `!${l}`
+        return makerTranslations.value.labels[l][store.lang] ?? `!${l}`
+    }).join(' ')
 }
 
 </script>
@@ -183,7 +219,7 @@ function getLabel(label) {
 <details open>
     <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
     <div class="flex flex-col gap-2">
-        <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+        <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 place-items-center`" :style="`background:${ds.color}30`">
             <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
             <table>
                 <thead>
@@ -199,40 +235,40 @@ function getLabel(label) {
                             <button v-if="ds.branches.length > 1" tabindex="0" @click="removeFromRoot({ rootId: ds.id, branchId: branch.id})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute left-2 top-2" /></button>
                             <table>
                                 <thead>
-                                    <th class="text-left text-xs">Branch name</th>
-                                    <th class="text-left text-xs">Branch value</th>
-                                    <th class="text-left text-xs">Breakdown</th>
+                                    <th class="text-left text-xs">{{ composeLabel(['branch', 'is', 'name']) }}</th>
+                                    <th class="text-left text-xs">{{ composeLabel(['branch', 'is', 'value']) }}</th>
+                                    <th class="text-left text-xs">{{ composeLabel(['breakdown']) }}</th>
                                 </thead>
                                 <tbody>
-                                    <td><input v-model="branch.name" type="text" class="h-[32px]"></td>
-                                    <td><input v-model="branch.value" type="number" class="h-[32px]"></td>
+                                    <td><input v-model="branch.name" type="text" class="h-[32px]" @change="saveDatasetToLocalStorage"></td>
+                                    <td><input v-model="branch.value" type="number" class="h-[32px]" @change="saveDatasetToLocalStorage"></td>
                                     <td v-for="(br, k) in branch.breakdown">
                                         <div class="flex flex-col gap-4 p-2 bg-[#FFFFFF33] dark:bg-[#FFFFFF10] rounded mx-1 shadow-md relative">
                                             <button tabindex="0" @click="removeFromBranch({ rootId: ds.id, branchId: branch.id, index: k})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-2 right-2" /></button>
                                             <div class="flex flex-col gap-1">
-                                                <label class="text-xs text-left">Breakdown color</label>
-                                                <input v-model="br.color" type="color">
+                                                <label class="text-xs text-left">{{ composeLabel(['breakdown', 'is', 'color']) }}</label>
+                                                <input v-model="br.color" type="color" @change="saveDatasetToLocalStorage">
                                             </div>
                                             <div class="flex flex-col gap-1">
-                                                <label class="text-xs text-left">Breakdown name</label>
-                                                <input v-model="br.name" type="text" class="h-[32px]">
+                                                <label class="text-xs text-left">{{ composeLabel(['breakdown', 'is', 'name']) }}</label>
+                                                <input v-model="br.name" type="text" class="h-[32px]" @change="saveDatasetToLocalStorage">
                                             </div>
                                             <div class="flex flex-col gap-1">
-                                                <label class="text-xs text-left">Breakdown value</label>
+                                                <label class="text-xs text-left">{{ composeLabel(['breakdown', 'is', 'value']) }}</label>
                                                 <input v-model="br.value" type="number" class="h-[32px] w-[82px]" @change="updateBranchValue({ rootId: ds.id, branchId: branch.id })">
                                             </div>
                                         </div>
                                     </td>
                                 </tbody>
                             </table>
-                            <Tooltip :content="'Add breakdown'">
+                            <Tooltip :content="composeLabel(['add', 'is', 'breakdown'])">
                                 <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushToBranch({ rootId: ds.id, branchId: branch.id})"><PlusIcon/></button>
                             </Tooltip>
                         </div>
                     </td>
                 </tbody>
             </table>
-            <Tooltip :content="'Add branch'">
+            <Tooltip :content="composeLabel(['add', 'is', 'branch'])">
                 <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushToRoot({ rootId: ds.id})"><PlusIcon/></button>
             </Tooltip>
         </div>
@@ -243,4 +279,76 @@ function getLabel(label) {
         </Tooltip>
     </div>
 </details>
+
+<details open class="mt-6" v-if="makerTranslations.labels">
+    <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+
+    <div class="flex justify-end">
+        <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+    </div>
+
+    <template v-for="category in CONFIG_CATEGORIES">
+    
+        <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4">
+            <h4>{{ category.title }}</h4> 
+            <div class="flex flex-row gap-4 place-items-center flex-wrap">
+                <div v-for="knob in CONFIG_MODEL.filter(k => k.category === category.key)" class="flex flex-col justify-start">
+                    <label class="text-xs">{{ getLabel(knob.label) }}</label>
+                    <div class="flex place-items-center justify-start h-[40px]">
+                        <input class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" :step="knob.step ?? 1" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def" @change="forceChartUpdate">
+                        <select v-if="knob.type === 'select'" v-model="knob.def" @change="forceChartUpdate" class="h-[32px] px-2">
+                            <option v-for="opt in knob.options">{{ opt }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</details>
+
+<div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+            <div class="mt-6 mb-2 text-lg flex flex-row gap-4 place-items-center">
+                <button @click="() => copyComponent('componentContent', store)"><CopyIcon/></button>
+                {{ makerTranslations.componentCode[store.lang] }} 
+            </div>
+<pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer"  @click="() => copyComponent('componentContent', store)">
+<code id="componentContent">
+&lt;script setup&gt;
+    import { ref } from "vue";
+    import { VueUiChestnut } from "vue-data-ui";
+    import "vue-data-ui/style.css"
+
+    const config = ref({{ finalConfig }});
+
+    const dataset = ref({{ datasetItems.map(ds => {
+        return {
+            name: ds.name,
+            color: ds.color,
+            branches: ds.branches.map(b => {
+                return {
+                    name: b.name,
+                    value: b.value,
+                    breakdown: b.breakdown
+                }
+            })
+        }
+    }) }})
+&lt;/script&gt;
+
+&lt;template&gt;
+    &lt;div style="width:600px"&gt;
+        &lt;VueUiChestnut :config="config" :dataset="dataset" /&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+</code>
+</pre>            
+            </div>
+    
 </template>
+
+<style scoped>
+th, td {
+    padding: 0 3px;
+}
+</style>

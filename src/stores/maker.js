@@ -235,6 +235,46 @@ export const useMakerStore = defineStore('maker', {
                         es: "Configuración de la tabla de datos",
                         ko: "데이터 테이블 설정"
                     },
+                    roots: {
+                        en: 'Roots',
+                        fr: 'Racines',
+                        pt: "Raízes",
+                        de: "Wurzeln",
+                        zh: "根源",
+                        jp: "ルーツ",
+                        es: "Raíces",
+                        ko: "뿌리"
+                    },
+                    branches: {
+                        en: 'Branches',
+                        fr: "Branches",
+                        pt: "Ramo",
+                        de: "Zweige",
+                        zh: "树枝",
+                        jp: "小枝",
+                        es: "Ramas",
+                        ko: "나뭇가지"
+                    },
+                    donutCharts: {
+                        en: 'Donut charts',
+                        fr: 'Graphiques en beignet',
+                        pt: 'Gráficos de rosca',
+                        de: 'Donut-Diagramme',
+                        zh: '圆环图',
+                        jp: 'ドーナツチャート',
+                        es: 'Gráficos de anillos',
+                        ko: '도넛 차트'
+                    },
+                    translations: {
+                        en: 'Translations',
+                        fr: 'Traductions',
+                        pt: 'Traduções',
+                        de: "Übersetzungen",
+                        zh: '翻译',
+                        jp: '翻訳',
+                        es: 'Traducciones',
+                        ko: '번역'
+                    }
                 },
                 labels: {
                     acceleration: {
@@ -256,6 +296,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "アクティブ",
                         es: "Activo",
                         ko: "활동적인"
+                    },
+                    add: {
+                        en: 'Add',
+                        fr: "Ajouter",
+                        pt: "Acrescentar",
+                        de: "Hinzufügen",
+                        zh: "添加",
+                        jp: "追加",
+                        es: "Agregar",
+                        ko: "추가하다"
                     },
                     angle: {
                         en: "Angle",
@@ -408,7 +458,7 @@ export const useMakerStore = defineStore('maker', {
                         ko: "작은 가지"
                     },
                     breakdown: {
-                        en: 'breakdown',
+                        en: 'Breakdown',
                         fr: "Répartition",
                         pt: "Distribuição",
                         de: "Verteilung",
@@ -566,6 +616,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Punteado",
                         ko: "점이 찍힌"
                     },
+                    dataLabels: {
+                        en: 'Data labels',
+                        fr: "Etiquettes de données", 
+                        pt: "Rótulos de dados",
+                        de: "Datenaufkleber",
+                        zh: "数据标签",
+                        jp: "データラベル",
+                        es: "Etiquetas de datos",
+                        ko: "데이터 라벨"
+                    },
                     datapoint: {
                         en: "Datapoint",
                         fr: "Point de données",
@@ -646,6 +706,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Desde",
                         ko: "부터"
                     },
+                    gradient: {
+                        en: 'Gradient',
+                        fr: "Dégradé",
+                        pt: "Gradiente",
+                        de: "Gradient",
+                        zh: "坡度",
+                        jp: "勾配",
+                        es: "Degradado",
+                        ko: "구배"
+                    },
                     gradientIntensity: {
                         en: 'Gradient intensity',
                         fr: "Intensité du dégradé",
@@ -684,6 +754,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "縦",
                         es: "Altura",
                         ko: "키"
+                    },
+                    hideUnder: {
+                        en: "Hide under",
+                        fr: "Masquer en dessous de",
+                        pt: "Ocultar em",
+                        de: "Unter verstecken",
+                        zh: "隐藏在下",
+                        jp: "の下に隠す",
+                        es: "Ocultar abajo de",
+                        ko: "아래에 숨기기"
                     },
                     hideUnderValue: {
                         en: "Hide under %",
@@ -785,6 +865,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Color de linea",
                         ko: "선 색상"
                     },
+                    links: {
+                        en: 'Links',
+                        fr: "Liens",
+                        pt: 'Ligações',
+                        de: "Links",
+                        zh: '链接',
+                        jp: 'リンク',
+                        es: 'Enlaces',
+                        ko: '연결'
+                    },
                     markers: {
                         en: "Markers",
                         fr: "Marqueurs",
@@ -814,6 +904,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "最小",
                         es: "Mínimo",
                         ko: "최저한의"
+                    },
+                    name: {
+                        en: 'Name',
+                        fr: "Nom",
+                        pt: 'Nome',
+                        de: "Name",
+                        zh: "姓名",
+                        jp: "名前",
+                        es: "Nombre",
+                        ko: "이름"
                     },
                     negative: {
                         en: 'Negative',
@@ -1075,6 +1175,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Escala",
                         ko: "규모"
                     },
+                    selected: {
+                        en: 'Selected',
+                        fr: 'Sélectionné',
+                        pt: 'Selecionado',
+                        de: 'Ausgewählt',
+                        zh: '已选择',
+                        jp: '選択済み',
+                        es: 'Seleccionado',
+                        ko: '선택된'
+                    },
                     selectChartType: {
                         en: "Select chart type:",
                         fr: "Sélectionnez le type de graphique :",
@@ -1084,6 +1194,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "チャートの種類を選択してください:",
                         es: "Seleccione el tipo de gráfico:",
                         ko: "차트 유형 선택:"
+                    },
+                    separator: {
+                        en: 'Separator',
+                        fr: 'Séparateur',
+                        pt: 'Separador',
+                        de: "Separator",
+                        zh: '分隔器',
+                        jp: "セパレータ",
+                        es: "Separador",
+                        ko: "분리 기호"
                     },
                     series: {
                         en: 'Series',
