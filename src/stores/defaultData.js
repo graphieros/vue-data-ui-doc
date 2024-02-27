@@ -753,7 +753,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                                         color: '#f5c542'
                                     },
                                 ]
-                            }
+                            },
                         ]
                     },
                     {

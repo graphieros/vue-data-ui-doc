@@ -397,6 +397,26 @@ export const useMakerStore = defineStore('maker', {
                         es: "Abajo",
                         ko: "맨 아래"
                     },
+                    branch: {
+                        en: 'Branch',
+                        fr: "Branche",
+                        pt: "Ramo",
+                        de: "Zweig",
+                        zh: "枝条",
+                        jp: "小枝",
+                        es: "Ramita",
+                        ko: "작은 가지"
+                    },
+                    breakdown: {
+                        en: 'breakdown',
+                        fr: "Répartition",
+                        pt: "Distribuição",
+                        de: "Verteilung",
+                        zh: "分配",
+                        jp: "分布",
+                        es: "Distribución",
+                        ko: "분포"
+                    },
                     caption: {
                         en: "Caption",
                         fr: "Légende",
@@ -1024,6 +1044,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "右",
                         es: "Derecha",
                         ko: "오른쪽"
+                    },
+                    root: {
+                        en: 'Root',
+                        fr: "Racine",
+                        pt: "Raiz",
+                        de: "Wurzel",
+                        zh: "根",
+                        jp: "根",
+                        es: "Raíz",
+                        ko: "뿌리"
                     },
                     rounding: {
                         en: "Rounding",
