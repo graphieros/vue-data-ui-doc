@@ -729,6 +729,61 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'}
                 ]
+            },
+            vue_ui_chestnut: {
+                dataset: [
+                    {
+                        name: 'Root 1',
+                        color: '#42d392',
+                        id: '111',
+                        branches: [
+                            {
+                                name: 'Branch 1 (Root 1)',
+                                value: 100,
+                                id: '111',
+                                breakdown: [
+                                    {
+                                        name: 'Breakdown A',
+                                        value: 30,
+                                        color: '#f542e3'
+                                    },
+                                    {
+                                        name: 'Breakdown B',
+                                        value: 70,
+                                        color: '#f5c542'
+                                    },
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Root 2',
+                        color: '#6376DD',
+                        id: '222',
+                        branches: [
+                            {
+                                name: 'Branch 1 (Root 2)',
+                                value: 80,
+                                id: '222',
+                                breakdown: [
+                                    {
+                                        name: 'Breakdown A',
+                                        value: 50,
+                                        color: '#f542e3'
+                                    },
+                                    {
+                                        name: 'Breakdown B',
+                                        value: 30,
+                                        color: '#f5c542'
+                                    },
+                                ]
+                            }
+                        ]
+                    },
+                ],
+                model: [
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                ]
             }
         }
     }

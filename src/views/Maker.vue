@@ -12,6 +12,7 @@ import MakerOnion from "../components/maker/MakerOnion.vue"
 import MakerQuadrant from "../components/maker/MakerQuadrant.vue"
 import MakerWheel from "../components/maker/MakerWheel.vue"
 import MakerTiremarks from "../components/maker/MakerTiremarks.vue"
+import MakerChestnut from "../components/maker/MakerChestnut.vue"
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -41,6 +42,7 @@ const options = ref([
     { name: "VueUiQuadrant", icon: "chartQuadrant"},
     { name: "VueUiWheel", icon: "chartWheel"},
     { name: "VueUiTiremarks", icon: "chartTiremarks"},
+    { name: "VueUiChestnut", icon: "chartChestnut"},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -106,6 +108,7 @@ function saveSelectedChartToLocalStorage() {
         <MakerQuadrant v-if="selectedChart.name === 'VueUiQuadrant'"/>
         <MakerWheel v-if="selectedChart.name === 'VueUiWheel'"/>
         <MakerTiremarks v-if="selectedChart.name === 'VueUiTiremarks'"/>
+        <MakerChestnut v-if="selectedChart.name === 'VueUiChestnut'"/>
 
 
     </div>
