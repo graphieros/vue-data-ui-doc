@@ -898,8 +898,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_vertical_bar: {
                 dataset: [
                     { name: 'Serie 1', value: 100, color: '#42d392', children: [], id: '111' },
-                    { name: 'Serie 1', value: 66.4, color: '#6376DD', children: [], id: '222' },
-                    { name: 'Serie 1', value: 33.6, color: '#ff6400', children: [], id: '333' },
+                    { name: 'Serie 2', value: 66.4, color: '#6376DD', children: [], id: '222' },
+                    { name: 'Serie 3', value: 33.6, color: '#ff6400', children: [], id: '333' },
                 ],
                 model: [
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
