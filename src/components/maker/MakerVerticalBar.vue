@@ -102,9 +102,6 @@ onMounted(() => {
         localStorage.setItem('verticalBarDataset', JSON.stringify(defaultData.vue_ui_vertical_bar.dataset))
     }
 
-    // REMOVE!!
-    localStorage.clear();
-
     step.value += 1;
 })
 

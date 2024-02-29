@@ -4,6 +4,14 @@ defineProps({
         type: String,
         default: "",
     },
+    width: {
+        type: String,
+        default: 'w-[84px]'
+    },
+    delay: {
+        type: String,
+        default: 'delay-300'
+    }
 });
 </script>
 
@@ -11,7 +19,7 @@ defineProps({
     <div class="group cursor-pointer relative inline-block overflow-visible">
         <slot />
         <div
-            class="opacity-0 w-[84px] text-gray-200 bg-[#2A2A2A] dark:text-black dark:bg-[#CCCCCC] text-center text-xs rounded-lg py-2 absolute z-10 group-hover:opacity-100 transition-opacity delay-300 bottom-full left-1/2 -translate-x-1/2 px-3 pointer-events-none">
+            :class="`opacity-0 ${width} text-gray-200 bg-[#2A2A2A] dark:text-black dark:bg-[#CCCCCC] text-center text-xs rounded-lg py-2 absolute z-10 group-hover:opacity-100 transition-opacity ${delay} bottom-full left-1/2 -translate-x-1/2 px-3 pointer-events-none`">
             <div>
                 {{ content }}
             </div>

@@ -14,6 +14,7 @@ import MakerWheel from "../components/maker/MakerWheel.vue"
 import MakerTiremarks from "../components/maker/MakerTiremarks.vue"
 import MakerChestnut from "../components/maker/MakerChestnut.vue"
 import MakerVerticalBar from "../components/maker/MakerVerticalBar.vue";
+import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -74,17 +75,27 @@ function saveSelectedChartToLocalStorage() {
         </div>
 
         <div class="mx-auto max-w-[400px] dark:text-app-green mt-6 flex flex-row gap-2">
-                    <div class="h-[40px] w-[40px]">
-                        <InfoSquareRoundedIcon/>
-                    </div>
-                    <div>
-                    
-                    <span>{{ makerTranslations.atWork[store.lang] }} : </span>
-                    <router-link to="/docs" class="text-app-blue underline">
-                        {{ translations.menu.docs[store.lang] }}
-                    </router-link>
-                    </div>
-                </div>
+            <div class="h-[40px] w-[40px]">
+                <InfoSquareRoundedIcon/>
+            </div>
+            <div>
+            
+            <span>{{ makerTranslations.atWork[store.lang] }} : </span>
+            <router-link to="/docs" class="text-app-blue underline">
+                {{ translations.menu.docs[store.lang] }}
+            </router-link>
+            </div>
+        </div>
+
+        <div class="w-full max-w-[400px] flex flex-row flex-wrap gap-2 mx-auto justify-center my-12">
+            <div v-for="option in options" class="relative">
+                <Tooltip :content="option.name" width="w-fit" delay="delay-150">
+                    <button  @click="selectedChart = option" :class="`border p-2 rounded hover:bg-[#42d39233] transition-colors ${selectedChart.name === option.name ? 'border-app-blue bg-[#6376DD33] hover:bg-[#6376DD33] shadow-md' : 'border-gray-400 hover:border-app-green '}`">
+                        <VueUiIcon :name="option.icon" :stroke="selectedChart.icon === option.icon ? '#6376DD' : isDarkMode ? '#AAAAAA' : '#1A1A1A'"></VueUiIcon>
+                    </button>
+                </Tooltip>
+            </div>
+        </div>
 
         <div class="w-full mt-6">
             <div class="flex flex-row gap-3 place-items-end justify-center">

@@ -4,7 +4,7 @@ import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import GitHubLink from "../GitHubLink.vue";
-
+import MakerLink from "../MakerLink.vue"
 import { useMainStore } from "../../stores";
 
 
@@ -478,6 +478,7 @@ function fixChart() {
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_quadrant)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
             <GitHubLink link="vue-ui-quadrant"/>
+            <MakerLink to="VueUiQuadrant" />
         </div>
         <Box showEmits showSlots>
             <template v-slot:tab0>
