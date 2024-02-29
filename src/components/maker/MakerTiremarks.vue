@@ -60,7 +60,7 @@ onMounted(() => {
     if(localStorage.tiremarksConfig) {
         CONFIG_MODEL.value = JSON.parse(localStorage.tiremarksConfig);
     } 
-    if(localStorage.wheelDataset) {
+    if(localStorage.tiremarksDataset) {
         currentDataset.value = JSON.parse(localStorage.tiremarksDataset)
     }else {
         localStorage.setItem('tiremarksDataset', JSON.stringify(defaultData.vue_ui_tiremarks.dataset))
