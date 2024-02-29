@@ -35,6 +35,42 @@ const CONFIG_CATEGORIES = computed(() => {
             key: 'general',
             title: makerTranslations.value.categories.general[store.lang]
         },
+        {
+            key: 'bars',
+            title: makerTranslations.value.categories.bars[store.lang]
+        },
+        {
+            key: 'labels',
+            title: makerTranslations.value.categories.labels[store.lang]
+        },
+        {
+            key: 'serieLabels',
+            title: makerTranslations.value.categories.serieLabels[store.lang]
+        },
+        {
+            key: 'title',
+            title: makerTranslations.value.categories.title[store.lang]
+        },
+        {
+            key: 'subtitle',
+            title: makerTranslations.value.categories.subtitle[store.lang]
+        },
+        {
+            key: 'legend',
+            title: makerTranslations.value.categories.legend[store.lang]
+        },
+        {
+            key: 'tooltip',
+            title: makerTranslations.value.categories.tooltip[store.lang]
+        },
+        {
+            key: 'table',
+            title: makerTranslations.value.categories.table[store.lang]
+        },
+        {
+            key: 'translations',
+            title: makerTranslations.value.categories.translations[store.lang]
+        },
     ]
 })
 
@@ -125,7 +161,10 @@ const finalConfig = computed(() => {
 })
 
 function getLabel(label) {
-    return Array.isArray(label) ? label.map(l => makerTranslations.value.labels[l][store.lang]).join(" ") :
+    return Array.isArray(label) ? label.map(l => {
+        if(!makerTranslations.value.labels[l]) return l
+        return makerTranslations.value.labels[l][store.lang]
+    }).join(" ") :
     makerTranslations.value.labels[label][store.lang]
 }
 
@@ -200,4 +239,68 @@ function updateParent({parentId}) {
         </Tooltip>
     </div>
 </details>
+
+<details open class="mt-6" v-if="makerTranslations.labels">
+        <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+
+        <div class="flex justify-end">
+            <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+        </div>
+
+        <template v-for="category in CONFIG_CATEGORIES">
+        
+            <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4">
+                <h4>{{ category.title }}</h4> 
+                <div class="flex flex-row gap-4 place-items-center flex-wrap">
+                    <div v-for="knob in CONFIG_MODEL.filter(k => k.category === category.key)" class="flex flex-col justify-start">
+                        <label class="text-xs">{{ getLabel(knob.label) }}</label>
+                        <div class="flex place-items-center justify-start h-[40px]">
+                            <input class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" :step="knob.step ?? 1" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def" @change="forceChartUpdate">
+                            <select v-if="knob.type === 'select'" v-model="knob.def" @change="forceChartUpdate" class="h-[32px] px-2">
+                                <option v-for="opt in knob.options">{{ opt }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </details>
+
+    <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+            <div class="mt-6 mb-2 text-lg flex flex-row gap-4 place-items-center">
+                <button @click="() => copyComponent('componentContent', store)"><CopyIcon/></button>
+                {{ makerTranslations.componentCode[store.lang] }} 
+            </div>
+<pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer"  @click="() => copyComponent('componentContent', store)">
+<code id="componentContent">
+&lt;script setup&gt;
+    import { ref } from "vue";
+    import { VueUiVerticalBar } from "vue-data-ui";
+    import "vue-data-ui/style.css"
+
+    const config = ref({{ finalConfig }});
+
+    const dataset = ref({{ datasetItems.map(({name, value, color, children}) => {
+        return {
+            name, value, color, children
+        }
+    }) }});
+&lt;/script&gt;
+
+&lt;template&gt;
+    &lt;div style="width:600px"&gt;
+        &lt;VueUiVerticalBar :config="config" :dataset="dataset" /&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+</code>
+</pre>            
+            </div>
+    
 </template>
+
+<style scoped>
+th, td {
+    padding: 0 3px;
+}
+</style>

@@ -205,6 +205,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Configuraciones específicas para conjuntos de datos escritos con barras",
                         ko: "막대 유형 데이터세트에 대한 특정 설정"
                     },
+                    bars: {
+                        en: 'Bars',
+                        fr: "Barres",
+                        pt: "Barras",
+                        de: "Barren",
+                        zh: "酒吧",
+                        jp: "バー",
+                        es: "Barras",
+                        ko: "바"
+                    },
                     line: {
                         en: "Line types specific settings",
                         fr: "Paramètres spécifiques pour les ensembles de données de type ligne",
@@ -274,6 +284,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: '翻訳',
                         es: 'Traducciones',
                         ko: '번역'
+                    },
+                    serieLabels: {
+                        en: 'Serie labels',
+                        fr: 'Etiquettes des séries',
+                        pt: "Etiquetas de série",
+                        de: "Serienetiketten",
+                        zh: "Serienetiketten",
+                        jp: "シリーズラベル",
+                        es: "Etiquetas de serie",
+                        ko: "시리즈 라벨"
                     }
                 },
                 labels: {
@@ -1005,6 +1025,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "borde de línea",
                         ko: "선 테두리"
                     },
+                    parent: {
+                        en: 'Parent',
+                        fr: "Parent",
+                        pt: "Parente",
+                        de: "Elternteil",
+                        zh: "父母亲",
+                        jp: "親",
+                        es: "Padre",
+                        ko: "원인이 되는 것"
+                    },
                     percentage: {
                         en: 'Percentage',
                         fr: "Pourcentage",
@@ -1044,6 +1074,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "ポインタ",
                         es: "Puntero",
                         ko: "바늘"
+                    },
+                    position: {
+                        en: 'Position',
+                        fr: "Position",
+                        pt: "Posição",
+                        de: "Position",
+                        zh: '位置',
+                        jp: "位置",
+                        es: "Posición",
+                        ko: "위치"
                     },
                     positive: {
                         en: 'Positive',
@@ -1354,6 +1394,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "曲線",
                         es: "Línea curva",
                         ko: "곡선"
+                    },
+                    sortingOrder: {
+                        en: 'Sorting order',
+                        fr: "Ordre de tri",
+                        pt: "Ordem de classificação",
+                        de: "Sortierreihenfolge",
+                        zh: "排序顺序",
+                        jp: "並べ替え順序",
+                        es: "Orden de clasificación",
+                        ko: "정렬 순서"
                     },
                     spacing: {
                         en: "Spacing",
