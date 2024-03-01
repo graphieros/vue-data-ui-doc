@@ -993,6 +993,79 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'translations.percentageToTotal', def: '% / total', type: 'text', label: ['%', '/', 'total'], category: 'translations'},
                     { key: 'translations.percentageToSerie', def: '% / group', type: 'text', label: ['%', '/', 'parent'], category: 'translations'}
                 ]
+            },
+            vue_ui_heatmap: {
+                dataset: [
+                    {
+                        name: 'Mon',
+                        values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                        id: '1'
+                    },
+                    {
+                        name: 'Tue',
+                        values: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+                        id: '2'
+                    },
+                    {
+                        name: 'Wed',
+                        values: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+                        id: '3'
+                    },
+                    {
+                        name: 'Thu',
+                        values: [31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
+                        id: '4'
+                    },
+                    {
+                        name: 'Fri',
+                        values: [41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+                        id: '5'
+                    },
+                    {
+                        name: 'Sat',
+                        values: [51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+                        id: '6'
+                    },
+                    {
+                        name: 'Sun',
+                        values: [61, 62, 63, 64, 65, 66, 67, 68, 69, 70],
+                        id: '7'
+                    },
+                ],
+                model: [
+                    { key: 'style.layout.dataLabels.xAxis.values', def: [], type: 'none'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                    { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
+                    { key: 'style.layout.padding.top', def: 36, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'top'], category: 'general'},
+                    { key: 'style.layout.padding.right', def: 12, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'right'], category: 'general'},
+                    { key: 'style.layout.padding.bottom', def: 12, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'bottom'], category: 'general'},
+                    { key: 'style.layout.padding.left', def: 48, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'left'], category: 'general'},
+                    { key: 'style.layout.cells.height', def: 48, type: 'number', min: 36, max: 100, label: ['cell', 'is', 'height'], category: 'general'},
+                    { key: 'style.layout.cells.value.show', def: true, type: 'checkbox', label: ['cell', 'value', 'is', 'show'], category: 'general'},
+                    { key: 'style.layout.cells.value.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['cell', 'is', 'fontSize'], category: 'general'},
+                    { key: 'style.layout.cells.value.roundingValue', def: 0, type: 'number', min: 0, max: 3, label: ['cell', 'is', 'valueRounding'], category: 'general'},
+                    { key: 'style.layout.cells.value.bold', def: true, type: 'checkbox', label: ['cell', 'is', 'bold'], category: 'general'},
+                    { key: 'style.layout.cells.colors.cold', def: '#6376DD', type: 'color', label: ['cell', 'color', 'is', 'cold'], category: 'general'},
+                    { key: 'style.layout.cells.colors.hot', def: '#ff6400', type: 'color', label: ['cell', 'color', 'is', 'hot'], category: 'general'},
+                    { key: 'style.layout.cells.spacing', def: 1, type: 'range', min: 0, max: 12, step: 0.1, label: ['cell', 'is', 'spacing'], category: 'general'},
+                    { key: 'style.layout.cells.selected.border', def: 2, type: 'number', min: 0, max: 12, step: 0.1, label: ['cell', 'selected', 'is', 'border', 'thickness'], category: 'general'},
+                    { key: 'style.layout.cells.selected.color', def: '#1A1A1A', type: 'color', label: ['cell', 'selected', 'is', 'border', 'color'], category: 'general'},
+                    { key: 'style.layout.dataLabels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels'},
+                    { key: 'style.layout.dataLabels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.show', def: true, type: 'checkbox', label: ['xAxisLabel', 'is', 'show'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.fontSize', def: 12, type: 'number', min: 6, max: 24, label: ['xAxisLabel', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.color', def: '#1A1A1A', type: 'color', label: ['xAxisLabel', 'is', 'textColor'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.bold', def: false, type: 'checkbox', label: ['xAxisLabel', 'is', 'bold'], cateogry: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.offsetX', def: 0, type: 'number', min: -100, max: 100, step: 0.1, label: ['xAxisLabel', 'is', 'offsetX'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.offsetY', def: 0, type: 'number', min: -100, max: 100, step: 0.1, label: ['xAxisLabel', 'is', 'offsetY'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.yAxis.show', def: true, type: 'checkbox', label: ['yAxisLabel', 'is', 'show'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.yAxis.fontSize', def: 12, type: 'number', min: 6, max: 24, label: ['yAxisLabel', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.yAxis.color', def: '#1A1A1A', type: 'color', label: ['yAxisLabel', 'is', 'textColor'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.yAxis.bold', def: false, type: 'checkbox', label: ['yAxisLabel', 'is', 'bold'], category: 'labels'},
+                    { key: 'style.layout.datalabels.yAxis.offsetX', def: 0, type: 'number', min: -100, max: 100, step: 0.1, label: ['yAxisLabel', 'is', 'offsetX'], category: 'labels'},
+                    { key: 'style.layout.datalabels.yAxis.offsetY', def: 0, type: 'number', min: -100, max: 100, step: 0.1, label: ['yAxisLabel', 'is', 'offsetY'], category: 'labels'},
+                ]
             }
         }
     }

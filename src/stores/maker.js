@@ -116,7 +116,7 @@ export const useMakerStore = defineStore('maker', {
                         ko: "일반 설정"
                     },
                     padding: {
-                        en: "Chart padding",
+                        en: "Padding",
                         fr: "Padding",
                         pt: "Padding",
                         de: "Padding",
@@ -537,6 +537,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Nombre de la categoría",
                         ko: "카테고리 이름"
                     },
+                    cell: {
+                        en: 'Cell',
+                        fr: "Cellule",
+                        pt: "Célula",
+                        de: "Zelle",
+                        zh: "细胞",
+                        jp: "細胞",
+                        es: "Celúla",
+                        ko: "셀"
+                    },
                     circle: {
                         en: "Circle",
                         fr: "Cercle",
@@ -546,6 +556,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "丸",
                         es: "Círculo",
                         ko: "원"
+                    },
+                    cold: {
+                        en: 'Cold',
+                        fr: "Froid",
+                        pt: 'Frio',
+                        de: "Kalt",
+                        zh: "寒冷的",
+                        jp: "寒い",
+                        es: "Frío",
+                        ko: "추운"
                     },
                     color: {
                         en: "Color",
@@ -835,6 +855,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Horizontal",
                         ko: "수평의"
                     },
+                    hot: {
+                        en: 'Hot',
+                        fr: "Chaud",
+                        pt: 'Quente',
+                        de: "Heiß",
+                        zh: "热的",
+                        jp: "熱い",
+                        es: "Caliente",
+                        ko: "더운"
+                    },
                     inactive: {
                         en: 'Inactive',
                         fr: 'Inactif',
@@ -1024,6 +1054,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "線の境界線",
                         es: "borde de línea",
                         ko: "선 테두리"
+                    },
+                    padding: {
+                        en: "Padding",
+                        fr: "Padding",
+                        pt: "Padding",
+                        de: "Padding",
+                        zh: "图表填充",
+                        jp: "チャートのパディング",
+                        es: "Padding",
+                        ko: "차트 패딩"
                     },
                     parent: {
                         en: 'Parent',

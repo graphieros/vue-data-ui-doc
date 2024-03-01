@@ -14,6 +14,7 @@ import MakerWheel from "../components/maker/MakerWheel.vue"
 import MakerTiremarks from "../components/maker/MakerTiremarks.vue"
 import MakerChestnut from "../components/maker/MakerChestnut.vue"
 import MakerVerticalBar from "../components/maker/MakerVerticalBar.vue";
+import MakerHeatmap from "../components/maker/MakerHeatmap.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
@@ -46,6 +47,7 @@ const options = ref([
     { name: "VueUiTiremarks", icon: "chartTiremarks"},
     { name: "VueUiChestnut", icon: "chartChestnut"},
     { name: "VueUiVerticalBar", icon: "chartVerticalBar"},
+    { name: "VueUiHeatmap", icon: "chartHeatmap"},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -128,6 +130,7 @@ function selectChart(opt) {
         <MakerTiremarks v-if="selectedChart.name === 'VueUiTiremarks'"/>
         <MakerChestnut v-if="selectedChart.name === 'VueUiChestnut'"/>
         <MakerVerticalBar v-if="selectedChart.name === 'VueUiVerticalBar'"/>
+        <MakerHeatmap v-if="selectedChart.name === 'VueUiHeatmap'"/>
 
 
     </div>
