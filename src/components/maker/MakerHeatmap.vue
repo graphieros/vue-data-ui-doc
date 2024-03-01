@@ -44,6 +44,10 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.title[store.lang]
         },
         {
+            key: 'subtitle',
+            title: makerTranslations.value.categories.subtitle[store.lang]
+        },
+        {
             key: 'legend',
             title: makerTranslations.value.categories.legend[store.lang]
         },
@@ -101,7 +105,7 @@ function saveConfigToLocalStorage() {
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_config.model))
+    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_heatmap.model))
     step.value += 1;
     saveConfigToLocalStorage();
 }
