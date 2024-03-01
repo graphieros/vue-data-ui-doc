@@ -203,8 +203,10 @@ function getLabel(label) {
                             <div class="relative flex flex-col gap-2 bg-[#FFFFFF33] shadow dark:bg-[#FFFFFF12] p-2 rounded ml-2">
                                 <label class="text-xs text-left">{{ makerTranslations.labels.datapoint[store.lang] }}</label>
                                 <input type="text" v-model="datasetItems[i].series[j].name" @change="saveDatasetToLocalStorage">
-                                <input type="number" v-model="datasetItems[i].series[j].x"  @change="saveDatasetToLocalStorage">
-                                <input type="number" v-model="datasetItems[i].series[j].y" @change="saveDatasetToLocalStorage">
+                                <label class="text-xs text-left">X</label>
+                                <input type="number" v-model="datasetItems[i].series[j].x"  @change="saveDatasetToLocalStorage(); forceChartUpdate()">
+                                <label class="text-xs text-left">Y</label>
+                                <input type="number" v-model="datasetItems[i].series[j].y" @change="saveDatasetToLocalStorage(); forceChartUpdate">
                                 <button tabindex="0" @click="deleteSerieItem(ds.id, j)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2.5 left-1" /></button>
                             </div>
                         </td>

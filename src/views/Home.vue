@@ -54,6 +54,8 @@ const versionsUrl = ref('https://vue-data-ui.graphieros.com/releases.json');
 const sparklineDataset = ref(generateSparkline())
 const sparklineDataset2 = ref(generateSparkline())
 
+const isLoading = ref(false);
+
 function generateSparkline() {
   const arr = [];
   for(let i = 0; i < 12; i += 1) {
@@ -108,7 +110,7 @@ const owner = 'graphieros';
 const repo = 'vue-data-ui';
 
 onMounted(() => {
-
+  isLoading.value = true;
   fetch(`https://api.github.com/repos/${owner}/${repo}`)
   .then(response => {
     if (!response.ok) {
@@ -122,7 +124,9 @@ onMounted(() => {
   })
   .catch(error => {
     console.error('There was a problem fetching the data:', error);
-  });
+  }).finally(() => {
+    isLoading.value = false;
+  })
 
   // fetch(downloadsUrl.value, {
   //   method: 'GET',
@@ -330,7 +334,21 @@ const digitsConfigVersion = computed(() => {
               <span>
                 {{ translations.github[store.lang] }}
               </span>
-              <div class="flex flex-row gap-2 place-items-center" v-if="stars">
+              <div class="w-[25px]" v-if="isLoading">              
+                <VueUiMiniLoader 
+                  :config="{
+                    onion: {
+                      gutterColor: '#CCCCCC',
+                      gutterOpacity: 0.3,
+                      gutterBlur: 0,
+                      trackHueRotate: 360,
+                      trackBlur: 1,
+                      trackColor: '#42d392'
+                    }
+                  }"
+                />
+              </div>
+              <div class="flex flex-row gap-2 place-items-center" v-if="stars && !isLoading">
                 <StarFilledIcon class="text-[#fdd663]"/>
                 <span class="text-xs dark:text-[#fdd663] h-[20px]">
                   <VueUiDigits :dataset="stars" :config="digitConfigStars"/>

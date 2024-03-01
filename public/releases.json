@@ -1,5 +1,19 @@
 [
     {
+        "version": "v 2.0.1",
+        "date": "2024-03-01",
+        "updates": [
+            {
+                "component": "VueUiQuadrant",
+                "description": "Fixed a bug causing negative datapoints overflow in auto mode"
+            },
+            {
+                "component": "VueUiHeatmap",
+                "description": "Improved cells layout & right legend"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.0",
         "date": "2024-02-20",
         "updates": [

@@ -151,7 +151,7 @@ const heatmapConfig = computed(() => {
       cells: {
         height: 24,
         value: {
-          show: true,
+          show: false,
           fontSize: 8,
           bold: false,
           roundingValue: 0,
@@ -162,14 +162,13 @@ const heatmapConfig = computed(() => {
           cold: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
           underlayer: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
         },
-        spacing: 0.5,
+        spacing: 0,
         selected: {
           border: 2,
           color: "#2D353C"
         }
       },
       dataLabels: {
-        suffix: " downloads",
         xAxis: {
           show: true,
           values: usableWeekData.value.map(p => p.short),
