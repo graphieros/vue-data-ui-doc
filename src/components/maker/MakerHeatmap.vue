@@ -86,11 +86,8 @@ onMounted(() => {
     if(localStorage.heatmapDataset) {
         currentDataset.value = JSON.parse(localStorage.heatmapDataset)
     }else {
-        localStorage.setItem('heatmapDataset', JSON.stringify(defaultData.vue_ui_wheel.dataset))
+        localStorage.setItem('heatmapDataset', JSON.stringify(defaultData.vue_ui_heatmap.dataset))
     }
-
-    // REMOVE!!
-    localStorage.clear()
 
     step.value += 1;
 })
@@ -173,7 +170,7 @@ function getLabel(label) {
 <details open>
         <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
         <div class="flex flex-col gap-2">
-            <div v-for="(ds, i) in currentDataset" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+            <div v-for="(ds, i) in currentDataset" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`" :style="`background:${ds.color}30`">
                 <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                 <table>
                     <thead>
