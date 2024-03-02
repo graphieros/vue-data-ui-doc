@@ -268,7 +268,9 @@ const digitsConfigVersion = computed(() => {
 
 <template>
     <div class="mx-auto w-5/6">
-    <DeepSearch/>
+    <div class="hidden md:block">
+      <DeepSearch/>
+    </div>
       <div class="fixed top-0 left-0 h-screen w-screen z-0" style="opacity:0.4">
         <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'"/>
         <AppSkeletons/>
@@ -277,6 +279,20 @@ const digitsConfigVersion = computed(() => {
     <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[400px] place-items-center"> 
       <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${-deviationX * 20}deg);`">
         <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[100px] sm:h-[200px] mx-auto drop-shadow-2xl">
+        <div class="w-[40px] mx-auto">
+          <VueUiMiniLoader 
+              :config="{
+                onion: {
+                  gutterColor: '#CCCCCC',
+                  gutterOpacity: 0.3,
+                  gutterBlur: 0,
+                  trackHueRotate: 360,
+                  trackBlur: 1,
+                  trackColor: '#42d392'
+                }
+              }"
+            />
+        </div>
         <div class="w-full absolute top-[100%] left-0 -translate-x-[20px] sm:-translate-x-[40px]">
           <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset" :config="sparklineConfig" class="absolute"/>
           <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset2" :config="{...sparklineConfig, type: 'line'}" class="absolute"/>
@@ -289,7 +305,7 @@ const digitsConfigVersion = computed(() => {
           <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
         </div>
       </div>
-      <p data-cy="tag-line" class="z-10 mx-auto text-xl text-black dark:text-gray-200 text-center">
+      <p data-cy="tag-line" class="z-10 mx-auto sm:text-xl text-black dark:text-gray-200 text-center">
           {{ translations.tagline[store.lang] }}
         </p>
     </div>
