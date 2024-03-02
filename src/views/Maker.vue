@@ -19,6 +19,7 @@ import MakerSparkline from "../components/maker/MakerSparkline.vue";
 import MakerSparkStackbar from "../components/maker/MakerSparkStackbar.vue";
 import MakerSparkbar from "../components/maker/MakerSparkbar.vue";
 import MakerSparkHistogram from "../components/maker/MakerSparkHistogram.vue";
+import MakerDonutEvolution from "../components/maker/MakerDonutEvolution.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
@@ -56,6 +57,7 @@ const options = ref([
     { name: "VueUiSparkStackbar", icon: "chartSparkStackbar"},
     { name: "VueUiSparkbar", icon: "chartVerticalBar"},
     { name: "VueUiSparkHistogram", icon: "chartSparkHistogram"},
+    { name: "VueUiDonutEvolution", icon: "chartDonutEvolution"}
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -143,6 +145,7 @@ function selectChart(opt) {
         <MakerSparkStackbar v-if="selectedChart.name === 'VueUiSparkStackbar'"/>
         <MakerSparkbar v-if="selectedChart.name === 'VueUiSparkbar'"/>
         <MakerSparkHistogram v-if="selectedChart.name === 'VueUiSparkHistogram'"/>
+        <MakerDonutEvolution v-if="selectedChart.name === 'VueUiDonutEvolution'"/>
 
 
     </div>

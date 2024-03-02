@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons"
+import { PlusIcon, PinIcon, PinnedOffIcon, CopyIcon, AlertTriangleIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
@@ -29,7 +29,6 @@ const isDarkMode = computed(() => {
 
 const isFixed = ref(!isMobile.value);
 
-
 const CONFIG_CATEGORIES = computed(() => {
     return [
         {
@@ -37,12 +36,12 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.general[store.lang]
         },
         {
-            key: 'labels',
-            title: makerTranslations.value.categories.labels[store.lang]
+            key: 'grid',
+            title: makerTranslations.value.categories.grid[store.lang]
         },
         {
-            key: 'selector',
-            title: makerTranslations.value.categories.selector[store.lang]
+            key: 'labels',
+            title: makerTranslations.value.categories.labels[store.lang]
         },
         {
             key: 'title',
@@ -52,54 +51,64 @@ const CONFIG_CATEGORIES = computed(() => {
             key: 'subtitle',
             title: makerTranslations.value.categories.subtitle[store.lang]
         },
+        {
+            key: 'legend',
+            title: makerTranslations.value.categories.legend[store.lang]
+        },
+        {
+            key: 'table',
+            title: makerTranslations.value.categories.table[store.lang]
+        },
     ]
 })
 
-const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_sparkhistogram.model)))
+const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_donut_evolution.model)))
 
 const options = ref({
     dataset: {
-        value: 0,
-        valueLabel: 'label',
-        timeLabel: 'label',
-        intensity: 1
+        name: "Name",
+        values: [],
+        color: '#CCCCCC'
     }
 })
 
-const datasetItems = ref(defaultData.vue_ui_sparkhistogram.dataset)
+const datasetItems = ref(defaultData.vue_ui_donut_evolution.dataset)
 
 const step = ref(0)
 
 onMounted(() => {
-    if(localStorage.sparkHistogramConfig) {
-        CONFIG_MODEL.value = JSON.parse(localStorage.sparkHistogramConfig);
+    if(localStorage.donutEvolutionConfig) {
+        CONFIG_MODEL.value = JSON.parse(localStorage.donutEvolutionConfig);
     } 
-    if(localStorage.sparkHistogramDataset) {
-        datasetItems.value = JSON.parse(localStorage.sparkHistogramDataset)
+    if(localStorage.donutEvolutionDataset) {
+        datasetItems.value = JSON.parse(localStorage.donutEvolutionDataset)
     }else {
-        localStorage.setItem('sparkHistogramDataset', JSON.stringify(defaultData.vue_ui_sparkhistogram.dataset))
+        localStorage.setItem('donutEvolutionDataset', JSON.stringify(defaultData.vue_ui_donut_evolution.dataset))
     }
+
+    // REMOVE !!!!
+    localStorage.clear()
 
     step.value += 1;
 })
 
 function saveDatasetToLocalStorage() {
-    localStorage.sparkHistogramDataset = JSON.stringify(datasetItems.value);
+    localStorage.donutEvolutionDataset = JSON.stringify(datasetItems.value);
 }
 
 function saveConfigToLocalStorage() {
-    localStorage.sparkHistogramConfig = JSON.stringify(CONFIG_MODEL.value)
+    localStorage.donutEvolutionConfig = JSON.stringify(CONFIG_MODEL.value)
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_sparkhistogram.model))
+    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_donut_evolution.model))
     step.value += 1;
     saveConfigToLocalStorage();
 }
 
 function forceChartUpdate() {
-    if(!localStorage.sparkHistogramConfig) {
-        localStorage.setItem('sparkHistogramConfig', {})
+    if(!localStorage.donutEvolutionConfig) {
+        localStorage.setItem('donutEvolutionConfig', {})
     }
     saveConfigToLocalStorage()
     step.value += 1;
@@ -116,6 +125,20 @@ function deleteDatasetItem(id) {
     saveDatasetToLocalStorage()
 }
 
+function pushValueToSeries({ value, id }) {
+    const thisItem = datasetItems.value.find(_ => _.id === id)
+    thisItem.values.push(value)
+    step.value += 1;
+    saveDatasetToLocalStorage()
+}
+
+function deleteValueFromSeries({id, index}) {
+    const thisItem = datasetItems.value.find(_ => _.id === id);
+    thisItem.values.splice(index, 1)
+    step.value += 1;
+    saveDatasetToLocalStorage()
+}
+
 const finalConfig = computed(() => {
     return convertArrayToObject(CONFIG_MODEL.value)
 })
@@ -127,6 +150,11 @@ function getLabel(label) {
     }).join(" ") :
     makerTranslations.value.labels[label][store.lang]
 }
+
+
+const maxSeries = computed(() => {
+    return Math.max(...datasetItems.value.map(ds => ds.values.length))
+})
 
 </script>
 
@@ -142,7 +170,7 @@ function getLabel(label) {
                 <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
             </div>
             <div class="w-full bg-white p-2">
-                <VueUiSparkHistogram :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                <VueUiDonutEvolution :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
             </div>
         </div>
     </transition>
@@ -150,27 +178,33 @@ function getLabel(label) {
 
 <details open>
     <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-    <div class="flex flex-row gap-2 w-full overflow-auto">
-        <div v-for="(ds, i) in datasetItems" :class="`shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`" :style="`background:${ds.color}30`">
-            <div class="relative flex flex-col gap-2">
-                <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2 -right-2" /></button>
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm text-left">{{ translations.maker.labels.period[store.lang] }} : {{ makerTranslations.labels.labels[store.lang] }}</label>
-                    <input class="h-[36px] w-[100px]" type="text" v-model="ds.timeLabel" @change="saveDatasetToLocalStorage">
-                </div>
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm text-left">{{ makerTranslations.labels.value[store.lang] }} : {{ makerTranslations.labels.labels[store.lang] }}</label>
-                    <input class="h-[36px] w-[100px]" type="text" v-model="ds.valueLabel" @change="saveDatasetToLocalStorage">
-                </div>
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm text-left">{{ makerTranslations.labels.value[store.lang] }}</label>
-                    <input class="h-[36px] w-[100px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage">
-                </div>
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm text-left">{{ makerTranslations.labels.opacity[store.lang] }} : {{ ds.intensity }} </label>
-                    <input class="h-[36px] w-[100px] accent-app-blue" type="range" min="0" max="1" step="0.01" v-model="ds.intensity" @change="saveDatasetToLocalStorage">
-                </div>
-            </div>
+    <div class="flex flex-col gap-2">
+        <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+            <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
+            <table>
+                <thead>
+                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                    <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                    <th v-for="(_, j) in maxSeries">
+                        <div class="flex flex-col">
+                            <label class="text-left text-xs flex flex-row gap-2">{{ translations.maker.labels.period[store.lang] }} <AlertTriangleIcon class="text-app-orange" size="14" v-if="!CONFIG_MODEL.find(el => el.key === 'style.chart.layout.grid.xAxis.dataLabels.values').def[j]" /></label>
+                            <input @change="saveConfigToLocalStorage(); saveDatasetToLocalStorage()" class="w-[86px]" type="text" v-model="CONFIG_MODEL.find(el => el.key === 'style.chart.layout.grid.xAxis.dataLabels.values').def[j]">
+                        </div>
+                    </th>
+                </thead>
+                <tbody>
+                    <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                    <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                    <td v-for="(val, j) in datasetItems[i].values">
+                        <div class="relative">
+                            <input @change="saveDatasetToLocalStorage" type="number" style="" v-model="datasetItems[i].values[j]" class="h-[36px] w-[86px]"><button tabindex="0" @click="deleteValueFromSeries({id: ds.id, index: j})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2.5 left-1" /></button>
+                        </div>
+                    </td>
+                    <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
+                        <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushValueToSeries({ value: 0, id: ds.id})"><PlusIcon/></button>
+                    </Tooltip>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="flex flex-row gap-4 mt-4 mb-6">
@@ -207,29 +241,29 @@ function getLabel(label) {
 </details>
 
 <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-    <div class="mt-6 mb-2 text-lg flex flex-row gap-4 place-items-center">
-        <button @click="() => copyComponent('componentContent', store)"><CopyIcon/></button>
-        {{ makerTranslations.componentCode[store.lang] }} 
-    </div>
+        <div class="mt-6 mb-2 text-lg flex flex-row gap-4 place-items-center">
+            <button @click="() => copyComponent('componentContent', store)"><CopyIcon/></button>
+            {{ makerTranslations.componentCode[store.lang] }} 
+        </div>
 <pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer"  @click="() => copyComponent('componentContent', store)">
 <code id="componentContent">
 &lt;script setup&gt;
     import { ref } from "vue";
-    import { VueUiSparkHistogram } from "vue-data-ui";
+    import { VueUiDonutEvolution } from "vue-data-ui";
     import "vue-data-ui/style.css"
 
     const config = ref({{ finalConfig }});
 
-    const dataset = ref({{ datasetItems.map(({value, valueLabel, timeLabel, intensity}) => {
+    const dataset = ref({{ datasetItems.map(({name, values, color}) => {
         return {
-            value, valueLabel, timeLabel, intensity
+            name, values, color
         }
     }) }});
 &lt;/script&gt;
 
 &lt;template&gt;
     &lt;div style="width:600px"&gt;
-        &lt;VueUiSparkHistogram :config="config" :dataset="dataset" /&gt;
+        &lt;VueUiDonutEvolution :config="config" :dataset="dataset" /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
