@@ -5,6 +5,7 @@ import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
+import MakerLink from "../MakerLink.vue"
 
 const store = useMainStore();
 const key = ref(0);
@@ -178,7 +179,7 @@ function fixChart() {
 </script>
 
 <template>
-     <div>
+    <div>
       <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="chartSparkStackbar" stroke="#42d392" :strokeWidth="1.5" />
             VueUiSparkStackbar
@@ -203,11 +204,13 @@ function fixChart() {
             <div class="w-full px-4">
                 <VueUiSparkStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
             </div>
-            <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
+        </div>
+        <div class="mx-auto">
+          <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
                 <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_sparkstackbar)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
                 <GitHubLink link="vue-ui-sparkstackbar"/>
+                <MakerLink to="VueUiSparkStackbar"/>
             </div>
-
         </div>
         <Box>
             <template #tab0>
