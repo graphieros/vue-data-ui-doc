@@ -15,6 +15,7 @@ import MakerTiremarks from "../components/maker/MakerTiremarks.vue"
 import MakerChestnut from "../components/maker/MakerChestnut.vue"
 import MakerVerticalBar from "../components/maker/MakerVerticalBar.vue";
 import MakerHeatmap from "../components/maker/MakerHeatmap.vue";
+import MakerSparkline from "../components/maker/MakerSparkline.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
@@ -48,6 +49,7 @@ const options = ref([
     { name: "VueUiChestnut", icon: "chartChestnut"},
     { name: "VueUiVerticalBar", icon: "chartVerticalBar"},
     { name: "VueUiHeatmap", icon: "chartHeatmap"},
+    { name: "VueUiSparkline", icon: "chartLine"},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -98,7 +100,7 @@ function selectChart(opt) {
             <div v-for="option in options" class="relative">
                 <Tooltip :content="option.name" width="w-fit" delay="delay-150">
                     <button  @click="selectChart(option)" :class="`border p-2 rounded hover:bg-[#42d39233] transition-colors ${selectedChart.name === option.name ? 'border-app-blue bg-[#6376DD33] hover:bg-[#6376DD33] shadow-md' : 'border-gray-400 hover:border-app-green '}`">
-                        <VueUiIcon :name="option.icon" :stroke="selectedChart.icon === option.icon ? '#6376DD' : isDarkMode ? '#AAAAAA' : '#1A1A1A'"></VueUiIcon>
+                        <VueUiIcon :name="option.icon" :stroke="selectedChart.name === option.name ? '#6376DD' : isDarkMode ? '#AAAAAA' : '#1A1A1A'"></VueUiIcon>
                     </button>
                 </Tooltip>
             </div>
@@ -131,6 +133,7 @@ function selectChart(opt) {
         <MakerChestnut v-if="selectedChart.name === 'VueUiChestnut'"/>
         <MakerVerticalBar v-if="selectedChart.name === 'VueUiVerticalBar'"/>
         <MakerHeatmap v-if="selectedChart.name === 'VueUiHeatmap'"/>
+        <MakerSparkline v-if="selectedChart.name === 'VueUiSparkline'"/>
 
 
     </div>

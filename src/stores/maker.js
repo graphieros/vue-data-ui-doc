@@ -294,6 +294,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "シリーズラベル",
                         es: "Etiquetas de serie",
                         ko: "시리즈 라벨"
+                    },
+                    selector: {
+                        en: 'Selector',
+                        fr: "Sélecteur",
+                        pt: "Seletor",
+                        de: "Wählschalter",
+                        zh: "选择器",
+                        jp: "セレクタ",
+                        es: "Selector",
+                        ko: "선택자"
                     }
                 },
                 labels: {
@@ -904,6 +914,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "左",
                         es: "Izquierda",
                         ko: "왼쪽"
+                    },
+                    line: {
+                        en: 'Line',
+                        fr: "Ligne",
+                        pt: "Linha",
+                        de: "Linie",
+                        zh: "线",
+                        jp: "ライン",
+                        es: "Linea",
+                        ko: "선"
                     },
                     lineColor: {
                         en: "Line color",
@@ -1764,6 +1784,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "Y 軸のラベル",
                         es: "Etiquetas del eje Y",
                         ko: "Y축 라벨"
+                    },
+                    zeroAxis: {
+                        en: 'Zero axis',
+                        fr: "Axe zéro",
+                        pt: "Eixo zero",
+                        de: "Nullachse",
+                        zh: "零轴",
+                        jp: "ゼロ軸",
+                        es: "Eje cero",
+                        ko: "영축"
                     },
                     zoom: {
                         en: "Show zoom inputs",
