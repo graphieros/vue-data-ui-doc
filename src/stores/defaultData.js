@@ -1253,6 +1253,149 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.labels.value.show', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'labels'},
                     { key: 'style.labels.value.bold', def: true, type: 'checkbox', label: ['value', 'is', 'bold'], category: 'labels'}
                 ]
+            },
+            vue_ui_sparkhistogram: {
+                dataset: [
+                    {
+                        value: -4,
+                        valueLabel: "20%",
+                        timeLabel: "09:00",
+                        intensity: 0.2,
+                        id: '1'
+                    },
+                    {
+                        value: -3.2,
+                        valueLabel: "50%",
+                        timeLabel: "10:00",
+                        intensity: 0.5,
+                        id: '2'
+                
+                    },
+                    {
+                        value: -1.1,
+                        valueLabel: "60%",
+                        timeLabel: "11:00",
+                        intensity: 0.6,
+                        id: '3'
+                
+                    },
+                    {
+                        value: 0.8,
+                        valueLabel: "70%",
+                        timeLabel: "12:00",
+                        intensity: 0.7,
+                        id: '4'                
+                    },
+                    {
+                        value: 2,
+                        valueLabel: "100%",
+                        timeLabel: "13:00",
+                        intensity: 1,
+                        id: '5'
+                
+                    },
+                    {
+                        value: 2.1,
+                        valueLabel: "100%",
+                        timeLabel: "14:00",
+                        intensity: 1,
+                        id: '6'
+                
+                    },
+                    {
+                        value: 2.3,
+                        valueLabel: "80%",
+                        timeLabel: "15:00",
+                        intensity: 0.8,
+                        id: '7'
+                
+                    },
+                    {
+                        value: 2.1,
+                        valueLabel: "70%",
+                        timeLabel: "16:00",
+                        intensity: 0.7,
+                        id: '8'
+                
+                    },
+                    {
+                        value: 0.9,
+                        valueLabel: "60%",
+                        timeLabel: "17:00",
+                        intensity: 0.6,
+                        id: '9'
+                        
+                    },
+                    {
+                        value: 0.7,
+                        valueLabel: "50%",
+                        timeLabel: "18:00",
+                        intensity: 0.5,
+                        id: '10'
+                
+                    },
+                    {
+                        value: 0.3,
+                        valueLabel: "30%",
+                        timeLabel: "19:00",
+                        intensity: 0.3,
+                        id: '11'
+                
+                    },
+                    {
+                        value: 0.2,
+                        valueLabel: "20%",
+                        timeLabel: "20:00",
+                        intensity: 0.2,
+                        id: '12'
+                
+                    },
+                ],
+                model: [
+                    { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                    { key: 'style.layout.height', def: 96, type: 'range', min: 96, max: 500, label: 'height', category: 'general'},
+                    { key: 'style.layout.width', def: 640, type: 'range', min: 500, max: 1200, label: 'width', category: 'general'},
+                    { key: 'style.layout.padding.top', def: 24, type: 'number', min: 0, max: 120, label: ['padding', 'is', 'top'], category: 'general'},
+                    { key: 'style.layout.padding.right', def: 0, type: 'number', min: 0, max: 120, label: ['padding', 'is', 'right'], category: 'general'},
+                    { key: 'style.layout.padding.bottom', def: 36, type: 'number', min: 0, max: 120, label: ['padding', 'is', 'bottom'], category: 'general'},
+                    { key: 'style.layout.padding.left', def: 0, type: 'number', min: 0, max: 120, label: ['padding', 'is', 'left'], category: 'general'},
+                    { key: 'style.bars.shape', def: 'square', type: 'select', options: ['circle', 'triangle', 'square', 'diamond', 'pentagon', 'hexagon', 'star'], label: ['datapoint', 'is', 'shape'], category: 'general'},
+                    { key: 'style.bars.strokeWidth', def: 0, type: 'number', min: 0, max: 24, label: ['border', 'is', 'thickness'], category: 'general'},
+                    { key: 'style.bars.colors.positive', def: '#6376DD', type: 'color', label: ['color', 'is', 'positive'], category: 'general'},
+                    { key: 'style.bars.colors.negative', def: '#ff6400', type: 'color', label: ['color', 'is', 'negative'], category: 'general'},
+                    { key: 'style.bars.colors.gradient.show', def: true, type: 'checkbox', label: 'useGradient', category: 'general'},
+                    { key: 'style.bars.borderRadius', def: 24, type: 'number', min: 0, max: 120, label: 'borderRadius', category: 'general'},
+                    { key: 'style.bars.gap', def: 12, type: 'number', min: 0, max: 100, label: 'spacing', category: 'general'},
+                    { key: 'style.labels.value.color', def: '#1A1A1A', type: 'color', label: ['value', 'is', 'textColor'], category: 'labels'},
+                    { key: 'style.labels.value.fontSize', def: 14, type: 'number', min: 6, max: 48, label: ['value', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.labels.value.rounding', def: 1, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'labels'},
+                    { key: 'style.labels.value.bold', def: true, type: 'checkbox', label: ['value', 'is', 'bold'], category: 'labels'},
+                    { key: 'style.labels.value.prefix', def: '', type: 'text', label: ['value', 'is', 'prefix'], category: 'labels'},
+                    { key: 'style.labels.value.suffix', def: '', type: 'text', label: ['value', 'is', 'suffix'], category: 'labels'},
+                    { key: 'style.labels.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['value', 'is', 'offsetY'], category: 'labels'},
+                    { key: 'style.labels.valueLabel.color', def: '#1A1A1A', type: 'color', label: ['value', 'labels', 'is', 'textColor'], category: 'labels'},
+                    { key: 'style.labels.valueLabel.fontSize', def: 14, type: 'number', min: 6, max: 48, label: ['value', 'labels', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.labels.valueLabel.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'labels', 'is', 'rounding'], category: 'labels'},
+                    { key: 'style.labels.valueLabel.bold', def: false, type: 'checkbox', label: ['value', 'labels', 'is', 'bold'], category: 'labels'},
+                    { key: 'style.labels.timeLabel.color', def: '#1A1A1A', type: 'color', label: ['period', 'labels', 'is', 'textColor'], category: 'labels'},
+                    { key: 'style.labels.timeLabel.fontSize', def: 12, type: 'number', min: 6, max: 48, label: ['period', 'labels', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.labels.timeLabel.bold', def: false, type: 'checkbox', label: ['period', 'labels', 'is', 'bold'], category: 'labels'},
+                    { key: 'style.selector.stroke', def: '#CCCCCC', type: 'color', label: ['border', 'is', 'color'], category: 'selector'},
+                    { key: 'style.selector.strokeWidth', def: 2, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'selector'},
+                    { key: 'style.selector.strokeDasharray', def: 0, type: 'number', min: 0, max: 48, label: ['dashed'], category: 'selector'},
+                    { key: 'style.selector.borderRadius', def: 2, type: 'number', min:0, max: 100, label: 'borderRadius', category: 'selector'},
+                    { key: 'style.title.text', def: 'Title', type: 'text', label:'textContent', category: 'title'},
+                    { key: 'style.title.textAlign', def: 'left', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'title'},
+                    { key: 'style.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+                    { key: 'style.title.fontSize', def: 16, type: 'number', min: 0, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.title.margin', def: '0 0 6px 0', type: 'text', label: 'margin', category: 'title'},
+                    { key: 'style.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
+                    { key: 'style.title.subtitle.fontSize', def: 12, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'}
+                ]
             }
         }
     }

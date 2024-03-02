@@ -1135,6 +1135,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Redondeo: porcentaje",
                         ko: "반올림: 백분율"
                     },
+                    period: {
+                        en: "Period",
+                        fr: "Période",
+                        pt: "Período",
+                        de: "Zeitraum",
+                        zh: "时期",
+                        jp: "期間",
+                        es: "Período",
+                        ko: "기간"
+                    },
                     plots: {
                         en: 'Plots',
                         fr: 'Points',
