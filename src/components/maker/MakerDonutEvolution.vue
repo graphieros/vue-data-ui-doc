@@ -86,9 +86,6 @@ onMounted(() => {
         localStorage.setItem('donutEvolutionDataset', JSON.stringify(defaultData.vue_ui_donut_evolution.dataset))
     }
 
-    // REMOVE !!!!
-    localStorage.clear()
-
     step.value += 1;
 })
 
