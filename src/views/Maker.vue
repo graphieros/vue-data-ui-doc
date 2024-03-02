@@ -17,6 +17,7 @@ import MakerVerticalBar from "../components/maker/MakerVerticalBar.vue";
 import MakerHeatmap from "../components/maker/MakerHeatmap.vue";
 import MakerSparkline from "../components/maker/MakerSparkline.vue";
 import MakerSparkStackbar from "../components/maker/MakerSparkStackbar.vue";
+import MakerSparkbar from "../components/maker/MakerSparkbar.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
@@ -52,6 +53,7 @@ const options = ref([
     { name: "VueUiHeatmap", icon: "chartHeatmap"},
     { name: "VueUiSparkline", icon: "chartLine"},
     { name: "VueUiSparkStackbar", icon: "chartSparkStackbar"},
+    { name: "VueUiSparkbar", icon: "chartVerticalBar"},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -137,6 +139,7 @@ function selectChart(opt) {
         <MakerHeatmap v-if="selectedChart.name === 'VueUiHeatmap'"/>
         <MakerSparkline v-if="selectedChart.name === 'VueUiSparkline'"/>
         <MakerSparkStackbar v-if="selectedChart.name === 'VueUiSparkStackbar'"/>
+        <MakerSparkbar v-if="selectedChart.name === 'VueUiSparkbar'"/>
 
 
     </div>

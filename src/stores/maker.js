@@ -885,6 +885,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Inactivo",
                         ko: "비활성"
                     },
+                    independant: {
+                        en: 'Independant',
+                        fr: "Indépendant",
+                        pt: 'Independente',
+                        de: "Unabhängig",
+                        zh: "独立",
+                        jp: "独立した",
+                        es: "independiente",
+                        ko: "독립"
+                    },
                     is: {
                         en: ':',
                         fr: ":",

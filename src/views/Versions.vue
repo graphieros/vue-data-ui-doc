@@ -894,6 +894,7 @@ const sparkbarDataset = computed(() => {
 const sparkbarConfig = computed(() => {
   return {
     style: {
+      backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6',
       gutter: {
         backgroundColor: isDarkMode.value ? '#3A3A3A' : '#e1e5e6'
       },

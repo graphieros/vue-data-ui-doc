@@ -1202,6 +1202,57 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.title.subtitle.fontSize', def: 12, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
                     { key: 'style.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'}
                 ]
+            },
+            vue_ui_sparkbar: {
+                dataset: [
+                    {
+                        name: 'KPI 1',
+                        value: 96.66,
+                        prefix: '',
+                        suffix: '%',
+                        rounding: 1,
+                        color: '#6376DD',
+                        id: '1'
+                    },
+                    {
+                        name: 'KPI 2',
+                        value: 64.44,
+                        prefix: '',
+                        suffix: '%',
+                        rounding: 1,
+                        color: '#42d392',
+                        id: '2'
+                    },
+                    {
+                        name: 'KPI 3',
+                        value: 32.22,
+                        prefix: '',
+                        suffix: '%',
+                        rounding: 1,
+                        color: '#ff6400',
+                        id: '3'
+                    },
+                ],
+                model: [
+                    { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
+                    { key: 'style.layout.independant', def: true, type: 'checkbox', label: ['series', 'is', 'independant'], category: 'general'},
+                    { key: 'style.layout.percentage', def: true, type: 'checkbox', label: ['series', 'is', 'percentage'], category: 'general'},
+                    { key: 'style.layout.target', def: 0, type: 'number', min: 0, max: 999999, label: ['series', 'is', 'target'], category: 'general'},
+                    { key: 'style.gutter.backgroundColor', def: '#e1e5e8', type: 'color', label: ['gutter', 'is', 'backgroundColor'], category: 'general'},
+                    { key: 'style.gutter.opacity', def: 100, type: 'range', min: 0, max: 100, label: ['gutter', 'is', 'opacity'], category:'general'},
+                    { key: 'style.bar.gradient.show', def: true, type: 'checkbox', label: "useGradient", category: 'general'},
+                    { key: 'style.bar.gradient.intensity', def: 40, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'general'},
+                    { key: 'style.bar.gradient.underlayerColor', def: '#FFFFFF', type: 'color', label: ['gradient', 'is', 'backgroundColor'], category: 'general'},
+                    { key: 'style.gap', def: 4, type: 'number', min: 0, max: 100, label: 'spacing', category: 'general'},
+                    { key: 'style.labels.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'labels'},
+                    { key: 'style.labels.name.position', def: 'top', type: 'select', options: ['top', 'left'], label: 'position', category: 'labels'},
+                    { key: 'style.labels.name.width', def: '100%', type: 'text', label: ['width', '(', '%', '|', 'px', '|', 'rem', '|', 'em', ')'], category: 'labels'},
+                    { key: 'style.labels.name.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'labels'},
+                    { key: 'style.labels.name.bold', def: true, type: 'checkbox', label: ['name', 'is', 'bold'], category: 'labels'},
+                    { key: 'style.labels.value.show', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'labels'},
+                    { key: 'style.labels.value.bold', def: true, type: 'checkbox', label: ['value', 'is', 'bold'], category: 'labels'}
+                ]
             }
         }
     }
