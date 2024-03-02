@@ -955,6 +955,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Señal",
                         ko: "징후"
                     },
+                    margin: {
+                        en: 'Margin',
+                        fr: "Marges",
+                        pt: "Margens",
+                        de: "Marge",
+                        zh: "边",
+                        jp: "余白",
+                        es: "Márgenes",
+                        ko: "가장자리"
+                    },
                     max: {
                         en: "Maximum",
                         fr: "Maximum",

@@ -1148,6 +1148,60 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
                     { key: 'style.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
                 ]
+            },
+            vue_ui_sparkstackbar: {
+                dataset: [
+                    {
+                        name: 'Serie 1',
+                        value: 256,
+                        color: '#6376DD',
+                        id: '1'
+                    },
+                    {
+                        name: 'Serie 2',
+                        value: 128,
+                        color: '#42d392',
+                        id: '2'
+                    },
+                    {
+                        name: 'Serie 3',
+                        value: 64,
+                        color: '#ff6400',
+                        id: '3'
+                    }
+                ],
+                model: [
+                    { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                    { key: 'style.bar.gradient.show', def: true, type: 'checkbox', label: 'useGradient', category: 'general'},
+                    { key: 'style.bar.gradient.intensity', def: 40, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'general'},
+                    { key: 'style.bar.gradient.underlayerColor', def: '#FFFFFF',  type: 'color', label: ['gradient', 'is', 'backgroundColor'], category: 'general'},
+                    { key: 'style.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend'},
+                    { key: 'style.legend.textAlign', def: 'left',  type: 'select', options: ['left', 'center', 'right'], label: 'textAlign', category: 'legend'},
+                    { key: 'style.legend.fontSize', def: 12, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'legend'},
+                    { key: 'style.legend.margin', def: '6px 0 0 0', type: 'text', label: 'margin', category: 'legend'},
+                    { key: 'style.legend.name.color', def: '#1A1A1A', type: 'color', label: ['name', 'is', 'textColor'], category: 'legend'},
+                    { key: 'style.legend.name.bold', def: false, type: 'checkbox', label: ['name', 'is', 'bold'], category: 'legend'},
+                    { key: 'style.legend.value.show', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
+                    { key: 'style.legend.value.color', def: '#1A1A1A', type: "color", label: ['value', 'is', 'textColor'], category: "legend"},
+                    { key: 'style.legend.value.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'valueRounding', category: 'legend'},
+                    { key: 'style.legend.value.prefix', def: '', type: 'text', label: ['value', 'is', 'prefix'], category: 'legend'},
+                    { key: 'style.legend.value.suffix', def: '', type: 'text', label: ['value', 'is', 'suffix'], category: 'legend'},
+                    { key: 'style.legend.percentage.show', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
+                    { key: 'style.legend.percentage.color', def: '#1A1A1A', type: 'color', label: ['percentage', 'is', 'textColor'], category: 'legend'},
+                    { key: 'style.legend.percentage.rounding', def: 1, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend'},
+                    { key: 'style.legend.percentage.bold', def: true, type: 'checkbox', label: ['percentage', 'is', 'bold'], category: 'legend'},
+                    { key: 'style.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
+                    { key: 'style.title.textAlign', def: 'left', type: 'select', options: ['left', 'center', 'right'], label: 'textAlign', category: 'title'},
+                    { key: 'style.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+                    { key: 'style.title.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.title.margin', def: '0 0 6px 0', type: 'text', label: 'margin', category: 'title'},
+                    { key: 'style.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
+                    { key: 'style.title.subtitle.fontSize', def: 12, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'}
+                ]
             }
         }
     }
