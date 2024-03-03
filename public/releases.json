@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.3",
+        "date": "2024-03-03",
+        "updates": [
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Minor option fix"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.2",
         "date": "2024-03-02",
         "updates": [
