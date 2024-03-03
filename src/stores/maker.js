@@ -1355,6 +1355,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Nombre de la serie",
                         ko: "시리즈 이름"
                     },
+                    shadow: {
+                        en: "Shadow",
+                        fr: "Ombre",
+                        pt: "Sombra",
+                        de: "Schatten",
+                        zh: "阴影",
+                        jp: "影",
+                        es: "Sombra",
+                        ko: "그림자"
+                    },
                     shape: {
                         en: "Shape",
                         fr: "Forme",

@@ -20,6 +20,7 @@ import MakerSparkStackbar from "../components/maker/MakerSparkStackbar.vue";
 import MakerSparkbar from "../components/maker/MakerSparkbar.vue";
 import MakerSparkHistogram from "../components/maker/MakerSparkHistogram.vue";
 import MakerDonutEvolution from "../components/maker/MakerDonutEvolution.vue";
+import MakerRings from "../components/maker/MakerRings.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
@@ -41,23 +42,24 @@ const isDarkMode = computed(() => {
 const isCopy = computed(() => store.isCopy);
 
 const options = ref([
-    { name: "VueUiXy", icon: "chartLine"},
-    { name: "VueUiDonut", icon: "chartDonut"},
-    { name: "VueUiWaffle", icon: "chartWaffle"},
-    { name: "VueUiRadar", icon: "chartRadar"},
-    { name: "VueUiGauge", icon: "chartGauge"},
-    { name: "VueUiOnion", icon: "chartOnion"},
-    { name: "VueUiQuadrant", icon: "chartQuadrant"},
-    { name: "VueUiWheel", icon: "chartWheel"},
-    { name: "VueUiTiremarks", icon: "chartTiremarks"},
-    { name: "VueUiChestnut", icon: "chartChestnut"},
-    { name: "VueUiVerticalBar", icon: "chartVerticalBar"},
-    { name: "VueUiHeatmap", icon: "chartHeatmap"},
-    { name: "VueUiSparkline", icon: "chartLine"},
-    { name: "VueUiSparkStackbar", icon: "chartSparkStackbar"},
-    { name: "VueUiSparkbar", icon: "chartVerticalBar"},
-    { name: "VueUiSparkHistogram", icon: "chartSparkHistogram"},
-    { name: "VueUiDonutEvolution", icon: "chartDonutEvolution"}
+    { name: "VueUiXy", icon: "chartLine", thumb: new URL('../assets/thumb_xy_light.png', import.meta.url).href},
+    { name: "VueUiDonut", icon: "chartDonut", thumb: new URL('../assets/thumb_donut_light.png', import.meta.url).href},
+    { name: "VueUiWaffle", icon: "chartWaffle", thumb: new URL('../assets/thumb_waffle_light.png', import.meta.url).href},
+    { name: "VueUiRadar", icon: "chartRadar", thumb: new URL('../assets/thumb_radar_light.png', import.meta.url).href},
+    { name: "VueUiGauge", icon: "chartGauge", thumb: new URL('../assets/thumb_gauge_light.png', import.meta.url).href},
+    { name: "VueUiOnion", icon: "chartOnion", thumb: new URL('../assets/thumb_onion_light.png', import.meta.url).href},
+    { name: "VueUiQuadrant", icon: "chartQuadrant", thumb: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href},
+    { name: "VueUiWheel", icon: "chartWheel", thumb: new URL('../assets/thumb_wheel_light.png', import.meta.url).href},
+    { name: "VueUiTiremarks", icon: "chartTiremarks", thumb: new URL('../assets/thumb_tiremarks_light.png', import.meta.url).href},
+    { name: "VueUiChestnut", icon: "chartChestnut", thumb: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href},
+    { name: "VueUiVerticalBar", icon: "chartVerticalBar", thumb: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href},
+    { name: "VueUiHeatmap", icon: "chartHeatmap", thumb: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href},
+    { name: "VueUiSparkline", icon: "chartLine", thumb: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href},
+    { name: "VueUiSparkStackbar", icon: "chartSparkStackbar", thumb: new URL('../assets/thumb_stackbar_light.png', import.meta.url).href},
+    { name: "VueUiSparkbar", icon: "chartVerticalBar", thumb: new URL('../assets/thumb_sparkbar_light.png', import.meta.url).href},
+    { name: "VueUiSparkHistogram", icon: "chartSparkHistogram", thumb: new URL('../assets/thumb_histogram_light.png', import.meta.url).href},
+    { name: "VueUiDonutEvolution", icon: "chartDonutEvolution", thumb: new URL('../assets/thumb_donut_evolution_light.png', import.meta.url).href},
+    { name: "VueUiRings", icon: "chartRings", thumb: new URL('../assets/thumb_rings_light.png', import.meta.url).href}
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -106,7 +108,7 @@ function selectChart(opt) {
 
         <div class="w-full max-w-[400px] flex flex-row flex-wrap gap-2 mx-auto justify-center my-12">
             <div v-for="option in options" class="relative">
-                <Tooltip :content="option.name" width="w-fit" delay="delay-150">
+                <Tooltip :content="option.name" width="w-fit min-w-[120px]" delay="delay-150" :img="option.thumb">
                     <button  @click="selectChart(option)" :class="`border p-2 rounded hover:bg-[#42d39233] transition-colors ${selectedChart.name === option.name ? 'border-app-blue bg-[#6376DD33] hover:bg-[#6376DD33] shadow-md' : 'border-gray-400 hover:border-app-green '}`">
                         <VueUiIcon :name="option.icon" :stroke="selectedChart.name === option.name ? '#6376DD' : isDarkMode ? '#AAAAAA' : '#1A1A1A'"></VueUiIcon>
                     </button>
@@ -146,6 +148,7 @@ function selectChart(opt) {
         <MakerSparkbar v-if="selectedChart.name === 'VueUiSparkbar'"/>
         <MakerSparkHistogram v-if="selectedChart.name === 'VueUiSparkHistogram'"/>
         <MakerDonutEvolution v-if="selectedChart.name === 'VueUiDonutEvolution'"/>
+        <MakerRings v-if="selectedChart.name === 'VueUiRings'"/>
 
 
     </div>

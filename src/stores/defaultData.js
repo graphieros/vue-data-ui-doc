@@ -1483,6 +1483,76 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.columnNames.period', def: 'Period', type: 'text', label: 'columnNamePeriod', category: 'table'},
                     { key: 'table.columnNames.total', def: 'Total', type: 'text', label: 'columnNameTotal', category: 'table'}
                 ]
+            },
+            vue_ui_rings: {
+                dataset: [
+                    {
+                        name: 'Serie 1',
+                        values: [100],
+                        color: '#6376DD'
+                    },
+                    {
+                        name: 'Serie 2',
+                        values: [200],
+                        color: "#42d392",
+                    },
+                    {
+                        name: 'Serie 3',
+                        values: [300],
+                        color: "#ff6400",
+                    }
+                ],
+                model: [
+                    { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
+                    { key: 'useBlurOnHover', def: true, type: 'checkbox', label: 'useBlurOnHover', category: 'general'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
+                    { key: 'style.chart.layout.labels.dataLabels.prefix', def: '', type: 'text', label: ['labels', 'is', 'prefix'], category: 'general'},
+                    { key: 'style.chart.layout.labels.dataLabels.suffix', def: '', type: 'text', label: ['labels', 'is', 'suffix'], category: 'general'},
+                    { key: 'style.chart.layout.rings.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'datapoints'},
+                    { key: 'style.chart.layout.rings.strokeWidth', def: 2, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: "datapoints"},
+                    { key: 'style.chart.layout.rings.gradient.show', def: true, type: 'checkbox', label: 'useGradient', category: 'datapoints'},
+                    { key: 'style.chart.layout.rings.gradient.intensity', def: 100, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'datapoints'},
+                    { key: 'style.chart.layout.rings.gradient.underlayerColor', def: '#FFFFFF', type: 'color', label: ['gradient', 'is', 'backgroundColor'], category: 'datapoints'},
+                    { key: 'style.chart.layout.rings.useShadow', def: true, type: 'checkbox', label: ['shadow', 'is', 'show'], category: 'datapoints'},
+                    { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend'},
+                    { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend'},
+                    { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
+                    { key: 'style.chart.legend.fontSize', def: 14, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'legend'},
+                    { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'legend'},
+                    { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend'},
+                    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
+                    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+                    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
+                    { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'tooltip'},
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
+                    { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
+                    { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table'},
+                    { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table'},
+                    { key: 'table.th.color', def: '#1A1A1A', type: 'color', label: 'textColorHeader', category: 'table'},
+                    { key: 'table.th.outline', def: 'none', type: 'text', label: 'outlineHeader', category: 'table'},
+                    { key: 'table.td.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorRow', category: 'table'},
+                    { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', cateogry: 'table'},
+                    { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table'},
+                    { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'table'},
+                    { key: 'table.td.rondingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'table'},
+                    { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'},
+                    { key: 'table.columnNames.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table'},
+                    { key: 'table.columnNames.percentage', def: 'Percentage', type: 'text', label: ['columnName', 'is', 'percentage'], category: 'table'}
+                ]
             }
         }
     }
