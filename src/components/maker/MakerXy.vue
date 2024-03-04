@@ -7,10 +7,12 @@ import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { useDefaultDataStore } from "../../stores/defaultData"
 import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
+import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
+const clearStep = ref(0)
 
 const isMobile = computed(() => {
     return window.innerWidth < 800;
@@ -137,10 +139,12 @@ const selectedChart = ref(options.value)
 
 function saveDatasetToLocalStorage() {
     localStorage.xyDataset = JSON.stringify(datasetItems.value);
+    clearStep.value += 1;
 }
 
 function saveConfigToLocalStorage() {
-    localStorage.xyConfig = JSON.stringify(CONFIG_MODEL.value)
+    localStorage.xyConfig = JSON.stringify(CONFIG_MODEL.value);
+    clearStep.value += 1;
 }
 
 function resetModel() {
@@ -198,6 +202,9 @@ function getLabel(label) {
 </script>
 
 <template>
+
+        <ClearStorageAndRefresh keyConfig="xyConfig" keyDataset="xyDataset" :key="`clear_${clearStep}`"/>
+
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <transition name="fade">                
                 <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`" v-if="datasetItems.length > 0 && datasetItems[0].series.length">
@@ -208,6 +215,7 @@ function getLabel(label) {
                         </button>
 
                         <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ xyTranslations.reset[store.lang] }}</button>
+
                     </div>
                     <VueUiXy :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
                 </div>

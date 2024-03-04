@@ -14,6 +14,16 @@ export const useMakerStore = defineStore('maker', {
                 ko: ""
             },
             translations: {
+                clearStorage: {
+                    en: 'Clear local storage for this chart',
+                    fr: "Effacer le stockage local pour ce graphique",
+                    pt: "Limpe o armazenamento local deste gráfico",
+                    de: "Löschen Sie den lokalen Speicher für dieses Diagramm",
+                    zh: "清除该图表的本地存储",
+                    jp: "このチャートのローカル ストレージをクリアします",
+                    es: "Borrar almacenamiento local para este gráfico",
+                    ko: "이 차트의 로컬 저장소 지우기",
+                },
                 reset: {
                     en: "Reset config",
                     fr: "Réinitialiser la config",

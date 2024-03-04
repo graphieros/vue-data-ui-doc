@@ -5,10 +5,12 @@ import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons"
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
+import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
+const clearStep = ref(0)
 
 const isMobile = computed(() => {
     return window.innerWidth < 800;
@@ -71,10 +73,12 @@ onMounted(() => {
 function saveDatasetToLocalStorage() {
     step.value += 1;
     localStorage.wheelDataset = JSON.stringify(currentDataset.value);
+    clearStep.value += 1;
 }
 
 function saveConfigToLocalStorage() {
     localStorage.wheelConfig = JSON.stringify(CONFIG_MODEL.value)
+    clearStep.value += 1;
 }
 
 function resetModel() {
@@ -103,6 +107,9 @@ function getLabel(label) {
 </script>
 
 <template>
+
+<ClearStorageAndRefresh keyConfig="wheelConfig" keyDataset="wheelDataset" :key="`clear_${clearStep}`"/>
+
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <transition name="fade">                
             <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`" v-if="currentDataset && ![undefined, null].includes(currentDataset.percentage)">

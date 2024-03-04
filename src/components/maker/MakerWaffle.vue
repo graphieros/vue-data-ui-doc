@@ -7,10 +7,12 @@ import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
+import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
+const clearStep = ref(0)
 
 const isMobile = computed(() => {
     return window.innerWidth < 800;
@@ -97,10 +99,12 @@ onMounted(() => {
 
 function saveDatasetToLocalStorage() {
     localStorage.waffleDataset = JSON.stringify(datasetItems.value);
+    clearStep.value += 1;
 }
 
 function saveConfigToLocalStorage() {
     localStorage.waffleConfig = JSON.stringify(CONFIG_MODEL.value)
+    clearStep.value += 1;
 }
 
 function resetModel() {
@@ -147,6 +151,8 @@ function getLabel(label) {
 </script>
 
 <template>
+
+<ClearStorageAndRefresh keyConfig="waffleConfig" keyDataset="waffleDataset" :key="`clear_${clearStep}`"/>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <transition name="fade">                

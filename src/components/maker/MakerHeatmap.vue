@@ -6,10 +6,12 @@ import { useMakerStore } from "../../stores/maker"
 import { useDefaultDataStore } from "../../stores/defaultData"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
+import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
+const clearStep = ref(0)
 
 const isMobile = computed(() => {
     return window.innerWidth < 800;
@@ -95,10 +97,12 @@ onMounted(() => {
 function saveDatasetToLocalStorage() {
     step.value += 1;
     localStorage.heatmapDataset = JSON.stringify(currentDataset.value);
+    clearStep.value += 1;
 }
 
 function saveConfigToLocalStorage() {
-    localStorage.heatmapConfig = JSON.stringify(CONFIG_MODEL.value)
+    localStorage.heatmapConfig = JSON.stringify(CONFIG_MODEL.value);
+    clearStep.value += 1;
 }
 
 function resetModel() {
@@ -152,6 +156,9 @@ function getLabel(label) {
 </script>
 
 <template>
+
+<ClearStorageAndRefresh keyConfig="heatmapConfig" keyDataset="heatmapDataset" :key="`clear_${clearStep}`"/>
+
 <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
     <transition name="fade">                
         <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`" v-if="currentDataset.length">
