@@ -142,6 +142,7 @@ const config = ref({
                         },
                     },
                     plotLabels: {
+                        showAsTag: false,
                         show: true,
                         fontSize: 10,
                         color: "#1A1A1A",
@@ -293,6 +294,7 @@ const darkModeConfig = ref({
                         },
                     },
                     plotLabels: {
+                        showAsTag: false,
                         show: true,
                         fontSize: 10,
                         color: "#CCCCCC",
@@ -645,6 +647,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiQuadrantConfig</s
                         },
                     },
                     plotLabels: {
+                        showAsTag: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.labels.plotLabels.showAsTag" @change="forceChartUpdate()"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.labels.plotLabels.showAsTag" @change="forceChartUpdate()">, (default: false)
                         show: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.labels.plotLabels.show" @change="forceChartUpdate()"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.labels.plotLabels.show" @change="forceChartUpdate()">, (default: true)
                         fontSize: <input v-if="isDarkMode" type="number" min="6" max="30" v-model="mutableConfigDarkMode.style.chart.layout.labels.plotLabels.fontSize"><input v-else type="number" min="6" max="30" v-model="mutableConfig.style.chart.layout.labels.plotLabels.fontSize">, (default: 10)
                         color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.labels.plotLabels.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.labels.plotLabels.color">, (default: "#2D353C") 

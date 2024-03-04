@@ -597,6 +597,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.quadrantLabels.bl.color', def: '#1A1A1A', type: 'color', label: ['quadrant', 'bottom', 'left', 'is', 'textColor'], category: 'labels'},
                     { key: 'style.chart.layout.labels.quadrantLabels.bl.fontSize', def: 16, type: 'number', min: 6, max: 48, label: ['quadrant', 'bottom', 'left', 'is', 'fontSize'], category: 'labels'},
                     { key: 'style.chart.layout.labels.quadrantLabels.bl.bold', def: true, type: 'checkbox', label: ['quadrant', 'bottom', 'left', 'is', 'bold'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.plotLabels.showAsTag', def: false, type: 'checkbox', label: ['plots', 'labels', 'is', 'show', 'tag'], category: 'labels'},
                     { key: 'style.chart.layout.labels.plotLabels.show', def: true, type: 'checkbox', label: ['plots', 'labels', 'is', 'show'], category: 'labels'},
                     { key: 'style.chart.layout.labels.plotLabels.color', def: '#1A1A1A', type: 'color', label: ['plots', 'labels', 'is', 'textColor'], category: 'labels'},
                     { key: 'style.chart.layout.labels.plotLabels.fontSize', def: 10, type: 'number', min: 6, max: 48, label: ['plots', 'labels', 'is', 'fontSize'], category: 'labels'},
