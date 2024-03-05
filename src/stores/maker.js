@@ -45,14 +45,36 @@ export const useMakerStore = defineStore('maker', {
                     ko: "현재 여기에 모든 구성요소를 추가하는 작업이 진행 중입니다. 필요한 것을 찾지 못한 경우에도 문서 페이지를 확인하실 수 있습니다."
                 },
                 steps: {
-                    en: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Compose your dataset</li><li><span class=\"text-black dark:text-app-green\">2.</span> Tweak configuration settings</li><li><span class=\"text-black dark:text-app-green\">3.</span> Copy the component code</li></ul>",
-                    fr: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Composez votre ensemble de données</li><li><span class=\"text-black dark:text-app-green\">2.</span> Ajustez les paramètres de configuration</li><li><span class=\"text-black dark:text-app-green\">3.</span> Copiez le code du composant</li></ul>",
-                    pt: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Componha seu conjunto de dados</li><li><span class=\"text-black dark:text-app-green\">2.</span> Ajustar as configurações</li><li><span class=\"text-black dark:text-app-green\">3.</span> Copie o código do componente</li></ul>",
-                    de: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Stellen Sie Ihren Datensatz zusammen</li><li><span class=\"text-black dark:text-app-green\">2.</span> Konfigurationseinstellungen anpassen</li><li><span class=\"text-black dark:text-app-green\">3.</span> Kopieren Sie den Komponentencode</li></ul>",
-                    zh: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span>编写数据集</li><li><span class=\"text-black dark:text-app-green\">2.</span>调整配置设置</li><li><span class=\"text-black dark:text-app-green\">3.</span>复制组件代码</li></ul>",
-                    jp: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span>データセットを構成する</li><li><span class=\"text-black dark:text-app-green\">2.</span>構成設定を微調整する</li><li><span class=\"text-black dark:text-app-green\">3.</span>コンポーネントコードをコピーします</li></ul>",
-                    es: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> Redacte su conjunto de datos</li><li><span class=\"text-black dark:text-app-green\">2.</span> Modificar los ajustes de configuración</li><li><span class=\"text-black dark:text-app-green\">3.</span> Copia el código del componente</li></ul>",
-                    ko: "<ul><li><span class=\"text-black dark:text-app-green\">1.</span> 데이터세트를 구성하세요</li><li><span class=\"text-black dark:text-app-green\">2.</span> 구성 설정 조정</li><li><span class=\"text-black dark:text-app-green\">3.</span> 구성요소 코드 복사</li></ul>"
+                    one: {
+                        en: "Compose your dataset",
+                        fr: "Composez votre ensemble de données",
+                        pt: "Componha seu conjunto de dados",
+                        de: "Stellen Sie Ihren Datensatz zusammen",
+                        zh: "编写数据集",
+                        jp: "データセットを構成する",
+                        es: "Redacte su conjunto de datos",
+                        ko: "데이터세트를 구성하세요"
+                    },
+                    two: {
+                        en: "Tweak configuration settings",
+                        fr: "Ajustez les paramètres de configuration",
+                        pt: "Ajustar as configurações",
+                        de: "Konfigurationseinstellungen anpassen",
+                        zh: "调整配置设置",
+                        jp: "構成設定を微調整する",
+                        es: "Modificar los ajustes de configuración",
+                        ko: "구성 설정 조정"
+                    },
+                    three: {
+                        en: "Copy the component code",
+                        fr: "Copiez le code du composant",
+                        pt: "Copie o código do componente",
+                        de: "Kopieren Sie den Komponentencode",
+                        zh: "复制组件代码",
+                        jp: "コンポーネントコードをコピーします",
+                        es: "Copia el código del componente",
+                        ko: "구성요소 코드 복사"
+                    },
                 },
                 config: {
                     en: "Configuration",
