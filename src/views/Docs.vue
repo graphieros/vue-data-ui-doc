@@ -40,7 +40,6 @@ import DocVueUiDigits from "../components/docs/DocVueUiDigits.vue";
 import DocVueUiMolecule from "../components/docs/DocVueUiMolecule.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 import DocVueUiTableSparkline from "../components/docs/DocVueUiTablesparkline.vue";
-import Tooltip from "../components/Tooltip.vue";
 import DocVueUiMiniLoader from "../components/docs/DocVueUiMiniLoader.vue";
 import { getVueDataUiConfig } from "vue-data-ui";
 import mainConfig from "../assets/default_configs.json";
@@ -81,6 +80,25 @@ function copyToClipboard(conf) {
     selBox.style.top = '0';
     selBox.style.opacity = '0';
     selBox.value = JSON.stringify(conf);
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    store.copy();
+}
+
+const copyConfigContent = ref(null)
+
+function copyContent() {
+    if(!copyConfigContent.value) return;
+
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = copyConfigContent.value.innerText;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
@@ -564,7 +582,8 @@ const menuItems = computed(() => [
 
                 <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-orange rounded-lg bg-[#ff640018]">
                     <div class="mb-4">{{ translations.getConfig[store.lang] }}</div>
-                    <code class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm">
+                    <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
+                    <CopyIcon class="absolute right-2 top-2"/>
                         import { getVueDataUiConfig } from "vue-data-ui";<br>
 
                         const {{ configSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_config = getVueDataUiConfig("{{ configSelect }}");
