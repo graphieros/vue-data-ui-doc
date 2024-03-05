@@ -38,7 +38,6 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 })
 
-
 const isCopy = computed(() => store.isCopy);
 
 const options = ref([

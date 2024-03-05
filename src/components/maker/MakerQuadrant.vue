@@ -1,11 +1,10 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon, CopyIcon } from "vue-tabler-icons"
-import { getVueDataUiConfig } from "vue-data-ui";
+import { PlusIcon, PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js";
+import { copyComponent, convertArrayToObject, createUid } from "./lib.js";
 import { useDefaultDataStore } from "../../stores/defaultData"
 import BaseShape from "../../components/BaseShape.vue";
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
@@ -25,10 +24,6 @@ const translations = computed(() => {
 
 const makerTranslations = computed(() => {
     return makerStore.translations;
-})
-
-const isDarkMode = computed(() => {
-    return store.isDarkMode;
 })
 
 const isFixed = ref(!isMobile.value);
@@ -91,9 +86,11 @@ const options = ref({
     shape: 'circle',
     color: '#42d392',
     series: [
-       { name: 'serie name',
-        x: 0,
-        y: 0}
+        { 
+            name: 'serie name',
+            x: 0,
+            y: 0
+        }
     ]
 });
 
@@ -168,7 +165,6 @@ function getLabel(label) {
     return Array.isArray(label) ? label.map(l => makerTranslations.value.labels[l][store.lang]).join(" ") :
     makerTranslations.value.labels[label][store.lang]
 }
-
 </script>
 
 <template>
