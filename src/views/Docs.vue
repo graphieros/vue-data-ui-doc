@@ -45,14 +45,12 @@ import { getVueDataUiConfig } from "vue-data-ui";
 import mainConfig from "../assets/default_configs.json";
 
 import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, CopyIcon } from "vue-tabler-icons";
-
 import { useMainStore } from "../stores";
 
 const store = useMainStore();
 const translations = computed(() => {
     return store.translations;
 })
-
 
 const isCopy = computed(() => store.isCopy);
 

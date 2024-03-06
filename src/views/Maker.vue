@@ -166,7 +166,5 @@ function selectChart(opt) {
         <MakerSparkHistogram v-if="selectedChart.name === 'VueUiSparkHistogram'"/>
         <MakerDonutEvolution v-if="selectedChart.name === 'VueUiDonutEvolution'"/>
         <MakerRings v-if="selectedChart.name === 'VueUiRings'"/>
-
-
     </div>
 </template>
