@@ -714,6 +714,13 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
     return `&lt;div&gt;${content}&lt;/div&gt;`
 }
 </code>
+</pre>
+Using custom mode, the tooltip will be headless.
+Target the following css class to apply custom styles:
+<pre>
+<code>
+.vue-data-ui-custom-tooltip
+</code>
 </pre>            
             </template>
         </Box>
