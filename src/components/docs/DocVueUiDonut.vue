@@ -147,6 +147,7 @@ const darkModeConfig = ref({
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
+                customFormat: null
             }
         }
     },
@@ -291,6 +292,7 @@ const config = ref({
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
+                customFormat: null
             }
         }
     },
@@ -395,7 +397,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-donut"/>
             <MakerLink to="VueUiDonut"/>
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -553,6 +555,7 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
                     showPercentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.showPercentage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showPercentage" @change="forceChartUpdate()">, (default: true)
                     roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingValue" @change="forceChartUpdate()"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingValue" @change="forceChartUpdate()">, (default: 0)
                     roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingPercentage" @change="forceChartUpdate()"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingPercentage" @change="forceChartUpdate()">, (default: 0)
+                    customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
                 }
             }
         }
@@ -706,6 +709,19 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
 </code>
 </pre>                    
 
+            </template>
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre>            
             </template>
         </Box>
     </div>

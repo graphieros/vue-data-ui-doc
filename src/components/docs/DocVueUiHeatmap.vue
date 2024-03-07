@@ -122,7 +122,8 @@ const config = ref({
       backgroundColor: "#F3F4F6",
       color: "#1A1A1A",
       fontSize: 14,
-      roundingValue: 0
+      roundingValue: 0,
+      customFormat: null
     }
   },
   userOptions: {
@@ -229,7 +230,8 @@ const darkModeConfig = ref({
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
       fontSize: 14,
-      roundingValue: 0
+      roundingValue: 0,
+      customFormat: null
     }
   },
   userOptions: {
@@ -320,7 +322,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-heatmap"/>
             <MakerLink to="VueUiHeatmap" />
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">
@@ -455,6 +457,7 @@ const <span class="text-app-blue">config: VueUiHeatmapConfig</span> = {
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.color"><input v-else type="color" v-model="mutableConfig.style.tooltip.color">, (default: "#2D353C")
       fontSize: <input v-if="isDarkMode" type="number" min="6" max="36" v-model="mutableConfigDarkMode.style.tooltip.fontSize"><input v-else type="number" min="6" max="36" v-model="mutableConfig.style.tooltip.fontSize">, (default: 14)
       roundingValue: <input v-if="isDarkMode" type="number" min="0"  max="3" v-model="mutableConfigDarkMode.style.tooltip.roundingValue"><input v-else type="number" min="0"  max="3" v-model="mutableConfig.style.tooltip.roundingValue">, (default: 0)
+      customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
     }
   },
   userOptions: {
@@ -514,6 +517,19 @@ const <span class="text-app-blue">config: VueUiHeatmapConfig</span> = {
 </code>
 </pre>                    
 
+            </template>
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre>            
             </template>
         </Box>
     </div>

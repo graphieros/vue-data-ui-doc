@@ -204,7 +204,8 @@ const config = ref({
                 show: true,
                 color: "#2D353C",
                 backgroundColor: "#FFFFFF",
-                fontSize: 14
+                fontSize: 14,
+                customFormat: null
             },
             zoom: {
                 speed: 1
@@ -264,7 +265,8 @@ const darkModeConfig = ref({
                 show: true,
                 color: "#CCCCCC",
                 backgroundColor: "#1A1A1A",
-                fontSize: 14
+                fontSize: 14,
+                customFormat: null
             },
             zoom: {
                 speed: 1
@@ -359,7 +361,7 @@ function fixChart() {
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_molecule)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
             <GitHubLink link="vue-ui-molecule"/>
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -587,6 +589,7 @@ const <span class="text-app-blue">config: VueUiMoleculeConfig</span> = {
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.tooltip.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.tooltip.backgroundColor">, (default: "#FFFFFF")
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.tooltip.color"><input v-else type="color" v-model="mutableConfig.style.chart.tooltip.color">, (default: "#2D353C")
                 fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.chart.tooltip.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.chart.tooltip.fontSize">, (default: 14)
+                customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
             }
             zoom: {
                 speed: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="2" step="0.1" v-model="mutableConfigDarkMode.style.chart.zoom.speed"><input v-else type="number" class="accent-app-blue" min="0" max="2" step="0.1" v-model="mutableConfig.style.chart.zoom.speed">, (default: 1)
@@ -714,6 +717,19 @@ const <span class="text-app-blue">config: VueUiMoleculeConfig</span> = {
     &lt;/VueUiMolecule&gt;
 </code>
 </pre>             
+            </template>
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre>            
             </template>
         </Box>
     </div>

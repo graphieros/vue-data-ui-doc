@@ -162,6 +162,7 @@ const config = ref({
             showPercentage: false,
             roundingValue: 0,
             roundingPercentage: 0,
+            customFormat: null,
         },
         userOptions: {
             show: true,
@@ -321,6 +322,7 @@ const darkModeConfig = ref({
             showPercentage: false,
             roundingValue: 0,
             roundingPercentage: 0,
+            customFormat: null
         },
         userOptions: {
             show: true,
@@ -544,7 +546,7 @@ const shapeOptions = ref([
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use canvas</label>
             </div>
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template v-slot:tab0>
 
             {{ translations.docs.datastructure[store.lang] }}
@@ -752,6 +754,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.tooltip.backgroundColor"><input v-else type="color" v-model="mutableConfig.chart.tooltip.backgroundColor">, (default: "#FFFFFF"),
                 showValue: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.tooltip.showValue"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.tooltip.showValue">, (default: true)
                 showPercentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.tooltip.showPercentage"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.tooltip.showPercentage">, (default: false)
+                customFormat: null, // default behavior. To customize, check out the 'custom tooltip' tab
             },
             userOptions: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.show">, (default: true)
@@ -953,6 +956,20 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
 </code>
 </pre>                    
 
+            </template>
+
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config, bars, lines, plots</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre>            
             </template>
         </Box>
     </div>

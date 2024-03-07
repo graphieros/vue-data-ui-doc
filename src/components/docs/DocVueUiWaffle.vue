@@ -90,6 +90,7 @@ const isDarkMode = computed(() => {
                     showPercentage: true,
                     roundingValue: 0,
                     roundingPercentage: 0,
+                    customFormat: null
                 },
                 legend: {
                     show: true,
@@ -183,6 +184,7 @@ const isDarkMode = computed(() => {
                     showPercentage: true,
                     roundingValue: 0,
                     roundingPercentage: 0,
+                    customFormat: null
                 },
                 legend: {
                     show: true,
@@ -291,7 +293,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-waffle"/>
             <MakerLink to="VueUiWaffle"/>
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -397,6 +399,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</spa
                     showPercentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.showPercentage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showPercentage" @change="forceChartUpdate()">, (default: true)
                     roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingValue" @change="forceChartUpdate()"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingValue" @change="forceChartUpdate()">, (default: 0)
                     roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingPercentage" @change="forceChartUpdate()"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingPercentage" @change="forceChartUpdate()">, (default: 0)
+                    customFormat: null, // default behavior, to customize content see 'custom tooltip' tab
                 }
                 legend: {
                     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.show" @change="forceChartUpdate()">, (default: true)
@@ -555,7 +558,19 @@ const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</spa
 </pre>                    
 
             </template>
-            
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre>            
+            </template>
         </Box>
     </div>
 </template>

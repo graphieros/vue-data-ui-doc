@@ -160,6 +160,7 @@ const config = ref({
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
+                customFormat: null
             },
             legend: {
                 show: true,
@@ -260,6 +261,7 @@ const darkModeConfig = ref({
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
+                customFormat: null
             },
             legend: {
                 show: true,
@@ -379,7 +381,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-radar"/>
             <MakerLink to="VueUiRadar"/>
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -542,7 +544,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiRadarConfig</span
                 showValue: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.showValue" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showValue" @change="forceChartUpdate()">, (default: true)
                 showPercentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.showPercentage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showPercentage" @change="forceChartUpdate()">, (default: true)
                 roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingValue"><input v-else type="number" min="0" max="3" step="1" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.roundingValue">, (default: 0)
-                roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingPercentage"><input v-else type="number" min="0" max="3" step="1" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.roundingPercentage">, (default: 0)
+                roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingPercentage"><input v-else type="number" min="0" max="3" step="1" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.roundingPercentage">, (default: 0),
+                customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
             },
             legend: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.show" @change="forceChartUpdate()">, (default: true)
@@ -699,6 +702,19 @@ const <span class="text-black dark:text-app-blue">config: VueUiRadarConfig</span
 </code>
 </pre>                    
 
+            </template>
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre>            
             </template>
         </Box>
     </div>

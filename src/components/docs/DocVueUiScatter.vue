@@ -153,7 +153,9 @@ const darkModeConfig = ref({
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
       fontSize: 14,
-      roundingValue: 0
+      roundingValue: 0,
+      customFormat: null,
+      showShape: true
     }
   },
   userOptions: {
@@ -279,7 +281,9 @@ const config = ref({
       backgroundColor: "#F3F4F6",
       color: "#1A1A1A",
       fontSize: 14,
-      roundingValue: 0
+      roundingValue: 0,
+      customFormat: null,
+      showShape: true
     }
   },
   userOptions: {
@@ -377,7 +381,7 @@ function fixChart() {
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_scatter)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
             <GitHubLink link="vue-ui-scatter"/>
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">
@@ -558,6 +562,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
       backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.tooltip.backgroundColor">, (default: "#FFFFFF")
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.color"><input v-else type="color" v-model="mutableConfig.style.tooltip.color">, (default: "#2D353C")
       fontSize: <input v-if="isDarkMode" type="number" min="6" max="24" v-model="mutableConfigDarkMode.style.tooltip.fontSize"><input v-else type="number" min="6" max="24" v-model="mutableConfig.style.tooltip.fontSize">, (default: 14)
+      showShape: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.tooltip.showShape"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.tooltip.showShape">, (default: true)
+      customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
     }
   },
   userOptions: {
@@ -691,7 +697,19 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
 </pre>                    
 
             </template>
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.tooltip.customFormat</span>
 
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre>            
+            </template>
         </Box>
     </div>
 </template>

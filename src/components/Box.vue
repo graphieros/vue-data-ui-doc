@@ -10,12 +10,14 @@ type BoxProps = {
      * 
      */
     showSlots?: boolean;
+    showTooltip?: boolean;
     activeTab?: number;
 }
 
 const props = withDefaults(defineProps<BoxProps>(), {
     showEmits: false,
     showSlots: false,
+    showtooltip: false,
     activeTab: 0
 })
 
@@ -38,6 +40,9 @@ const activeTab = ref(props.activeTab);
         <div tabindex="0" v-if="props.showSlots" :class="`w-fit select-none cursor-pointer text-black dark:text-app-orange border-b   font-satoshi-bold p-3  ${activeTab === 3 ? 'bg-gray-200 dark:bg-black-100 border-b-app-orange' : 'border-b-transparent'} hover:border-b hover:border-b-app-orange`" @click="activeTab = 3" @keypress.enter="activeTab = 3">
             slots
         </div>
+        <div tabindex="0" v-if="props.showTooltip" :class="`w-fit select-none cursor-pointer text-black dark:text-gray-100 border-b   font-satoshi-bold p-3  ${activeTab === 4 ? 'bg-gray-200 dark:bg-black-100 border-b-gray-100' : 'border-b-transparent'} hover:border-b hover:border-b-gray-100`" @click="activeTab = 4" @keypress.enter="activeTab = 4">
+            custom tooltip
+        </div>
     </div>
 
         <div class="text-satoshi-bold text-app-green text-2xl mb-3">
@@ -55,6 +60,9 @@ const activeTab = ref(props.activeTab);
         </div>
         <div v-show="activeTab === 3">
             <slot name="tab3"/>
+        </div>
+        <div v-show="activeTab === 4">
+            <slot name="tab4"/>
         </div>
     </div>
 </template>

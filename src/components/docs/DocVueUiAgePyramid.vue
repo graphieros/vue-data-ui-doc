@@ -715,7 +715,8 @@ const config = ref({
       show: true,
       backgroundColor: "#F3F4F6",
       color: "#1A1A1A",
-      fontSize: 14
+      fontSize: 14,
+      customFormat: null
     }
   },
   translations: {
@@ -833,7 +834,8 @@ const darkModeConfig = ref({
       show: true,
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
-      fontSize: 14
+      fontSize: 14,
+      customFormat: null
     }
   },
   translations: {
@@ -930,7 +932,7 @@ function fixChart() {
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_age_pyramid)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
             <GitHubLink link="vue-ui-age-pyramid"/>
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template #tab0>
                 {{ translations.docs.example[store.lang] }}:
                 <br>
@@ -1053,6 +1055,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiAgePyramidConfig<
       backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.tooltip.backgroundColor">, (default: "#FFFFFF")
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.color"><input v-else type="color" v-model="mutableConfig.style.tooltip.color">, (default: "#2D353C")
       fontSize: <input v-if="isDarkMode" type="number" min="6" max="36" v-model="mutableConfigDarkMode.style.tooltip.fontSize"><input v-else type="number" min="6" max="36" v-model="mutableConfig.style.tooltip.fontSize">, (default: 14)
+      customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
     }
   },
   translations: {
@@ -1116,6 +1119,19 @@ const <span class="text-black dark:text-app-blue">config: VueUiAgePyramidConfig<
 </code>
 </pre>                    
 
+            </template>
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre>            
             </template>
         </Box>
     </div>

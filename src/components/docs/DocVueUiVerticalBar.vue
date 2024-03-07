@@ -171,7 +171,8 @@ const config = ref({
         roundingValue: 0,
         roundingPercentage: 0,
         prefix: "",
-        suffix: ""
+        suffix: "",
+        customFormat: null
       }
     }
   },
@@ -307,7 +308,8 @@ const darkModeConfig = ref({
         roundingValue: 0,
         roundingPercentage: 0,
         prefix: "",
-        suffix: ""
+        suffix: "",
+        customFormat: null
       }
     }
   },
@@ -411,7 +413,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-vertical-bar"/>
             <MakerLink to="VueUiVerticalBar" />
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">
@@ -601,6 +603,7 @@ const <span class="text-app-blue">config: VueUiVerticalBarConfig</span> = {
                 roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingPercentage"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingPercentage">, (default: 0)
                 prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.tooltip.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.tooltip.prefix">, (default: "")
                 suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.tooltip.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.tooltip.suffix">, (default: "")
+                customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
             }
         }
     },
@@ -771,6 +774,19 @@ const <span class="text-app-blue">config: VueUiVerticalBarConfig</span> = {
 </code>
 </pre>                    
 
+            </template>
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre>            
             </template>
         </Box>
     </div>

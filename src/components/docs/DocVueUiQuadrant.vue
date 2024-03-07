@@ -213,6 +213,8 @@ const config = ref({
                 color: "#1A1A1A",
                 fontSize: 14,
                 roundingValue: 0,
+                customFormat: null,
+                showShape: true
             },
             legend: {
                 show: true,
@@ -365,6 +367,8 @@ const darkModeConfig = ref({
                 color: "#CCCCCC",
                 fontSize: 14,
                 roundingValue: 0,
+                customFormat: null,
+                showShape: true
             },
             legend: {
                 show: true,
@@ -482,7 +486,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-quadrant"/>
             <MakerLink to="VueUiQuadrant" />
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -717,7 +721,9 @@ const <span class="text-black dark:text-app-blue">config: VueUiQuadrantConfig</s
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.tooltip.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.tooltip.backgroundColor">, (default: "#FFFFFF")
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.tooltip.color"><input v-else type="color" v-model="mutableConfig.style.chart.tooltip.color">, (default: "#2D353C")
                 fontSize: <input v-if="isDarkMode" type="number" min="6" max="30" v-model="mutableConfigDarkMode.style.chart.tooltip.fontSize"><input v-else type="number" min="6" max="30" v-model="mutableConfig.style.chart.tooltip.fontSize">, (default: 14)
-                roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingValue"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingValue">, (default: 0)
+                roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingValue"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingValue">, (default: 0),
+                showShape: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.tooltip.showShape" @change="forceChartUpdate()"><input v-else type="checkbox" v-model="mutableConfig.style.chart.tooltip.showShape" @change="forceChartUpdate()">, (default: true),
+                customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
             },
             legend: {
                 show: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.legend.show" @change="forceChartUpdate()"><input v-else type="checkbox" v-model="mutableConfig.style.chart.legend.show" @change="forceChartUpdate()">, (default: true)
@@ -917,6 +923,19 @@ const <span class="text-black dark:text-app-blue">config: VueUiQuadrantConfig</s
 </code>
 </pre>                    
 
+            </template>
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre>            
             </template>
         </Box>
     </div>
