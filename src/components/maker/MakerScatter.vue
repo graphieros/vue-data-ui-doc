@@ -46,7 +46,9 @@ const options = ref({
     datasetItem: {
         name: 'Name',
         color: '#CCCCCC',
-        values: []
+        values: [
+
+        ]
     },
     valueItem: {
         x: 0,
@@ -101,7 +103,7 @@ function forceChartUpdate() {
 }
 
 function addDatasetItem() {
-    datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.datasetItem)), id: createUid()});
+    datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.datasetItem)), id: createUid(), values: [{...JSON.parse(JSON.stringify(options.value.valueItem)), id: createUid()}]});
     step.value += 1;
     saveDatasetToLocalStorage()
 }
@@ -111,7 +113,17 @@ function deleteDatasetItem(id) {
     saveDatasetToLocalStorage()
 }
 
-// and same for value items
+function addDatapoint(datasetId) {
+    const thisDS = datasetItems.value.find(ds => ds.id === datasetId);
+    thisDS.values.push({...JSON.parse(JSON.stringify(options.value.valueItem)), id: createUid()})
+    saveDatasetToLocalStorage()
+}
+
+function deleteDatapoint(datasetId, datapointId) {
+    const thisDS = datasetItems.value.find(ds => ds.id === datasetId);
+    const thisDP = thisDS.values = thisDS.values.filter(d => d.id !== datapointId)
+    saveDatasetToLocalStorage()
+}
 
 const finalConfig = computed(() => {
     return convertArrayToObject(CONFIG_MODEL.value)
@@ -145,20 +157,44 @@ function getLabel(label) {
 <details open>
     <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
     <div class="flex flex-col gap-2">
-        <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+        <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row place-items-center gap-3`" :style="`background:${ds.color}30`">
             <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
             <table>
                 <thead>
                     <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
                     <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                    <th class="text-left text-xs" v-for="dp in ds.values">
+                        <div class="flex flex-col gap-2 relative">
+                            <label class="text-xs text-left">{{ makerTranslations.labels.datapoint[store.lang] }} : {{ makerTranslations.labels.name[store.lang] }}</label>
+                            <input class="h-[32px]" type="text" v-model="dp.name">
+                            <button tabindex="0" @click="deleteDatapoint(ds.id, dp.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-0 right-0" /></button>
+                        </div>
+                    </th>
 
                 </thead>
                 <tbody>
-                    <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-
+                    <tr>                    
+                        <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                        <td v-for="dp in ds.values">
+                            <div class="flex flex-col gap-2"> 
+                                <div class="flex flex-col gap-2 mt-2">
+                                    <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }} X</label>
+                                    <input class="h-[32px]" type="number" v-model="dp.x">
+                                </div>
+                                <div class="flex flex-col gap-2 mt-2">
+                                    <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }} Y</label>
+                                    <input class="h-[32px]" type="number" v-model="dp.y">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
+                <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
+                    <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatapoint(ds.id)"><PlusIcon/></button>
+                </Tooltip>
+            
         </div>
     </div>
     <div class="flex flex-row gap-4 mt-4 mb-6">

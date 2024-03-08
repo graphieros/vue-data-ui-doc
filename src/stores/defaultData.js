@@ -1559,37 +1559,49 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 dataset: [
                     {
                         name: "Cluster 1",
+                        color: "#42d392",
+                        id: '01',
                         values: [
                             {
                                 x: 1,
                                 y: 1,
-                                name: "Item 1"
+                                name: "Item 1",
+                                id: '001'
                             },
                             {
                                 x: 0.5,
                                 y: 1.2,
-                                name: "Item 2"
+                                name: "Item 2",
+                                id: '002'
                             },
                             {
                                 x: 1,
                                 y: 2,
-                                name: "Item 3"
+                                name: "Item 3",
+                                id: '003'
                             },
                             {
                                 x: 1.2,
                                 y: 2.4,
-                                name: "Item 4"
+                                name: "Item 4",
+                                id: '004'
                             },
                             {
                                 x: 2,
                                 y: 3,
-                                name: "Item 5"
+                                name: "Item 5",
+                                id: '005'
                             },
                         ]
                     },
                 ],
                 model: [
-                    { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'}
+                    { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
+                    { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                    { key: 'style.layout.height', def: 316, type: 'range', min: 200, max: 1000, label: 'height', category: 'general'},
+                    { key: 'style.layout.width', def: 512, type: 'range', min: 200, max: 1000, label: 'width', category: 'general'},
                 ]
             }
         }

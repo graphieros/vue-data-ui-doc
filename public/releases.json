@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.11",
+        "date": "2024-03-08",
+        "updates": [
+            {
+                "component": "VueUiSparkline",
+                "description": "Layout fixes"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.10",
         "date": "2024-03-08",
         "updates": [

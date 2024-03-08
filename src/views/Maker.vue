@@ -60,7 +60,7 @@ const options = ref([
     { name: "VueUiSparkHistogram", icon: "chartSparkHistogram", thumb: new URL('../assets/thumb_histogram_light.png', import.meta.url).href},
     { name: "VueUiDonutEvolution", icon: "chartDonutEvolution", thumb: new URL('../assets/thumb_donut_evolution_light.png', import.meta.url).href},
     { name: "VueUiRings", icon: "chartRings", thumb: new URL('../assets/thumb_rings_light.png', import.meta.url).href},
-    // { name: "VueUiScatter", icon: "chartScatter", thumb: new URL('../assets/thumb_scatter_light.png', import.meta.url).href}
+    { name: "VueUiScatter", icon: "chartScatter", thumb: new URL('../assets/thumb_scatter_light.png', import.meta.url).href}
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -168,6 +168,6 @@ function selectChart(opt) {
         <MakerSparkHistogram v-if="selectedChart.name === 'VueUiSparkHistogram'"/>
         <MakerDonutEvolution v-if="selectedChart.name === 'VueUiDonutEvolution'"/>
         <MakerRings v-if="selectedChart.name === 'VueUiRings'"/>
-        <!-- <MakerScatter v-if="selectedChart.name === 'VueUiScatter'"/> -->
+        <MakerScatter v-if="selectedChart.name === 'VueUiScatter'"/>
     </div>
 </template>
