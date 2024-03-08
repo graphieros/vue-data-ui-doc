@@ -339,6 +339,16 @@ export const useMakerStore = defineStore('maker', {
                     }
                 },
                 labels: {
+                    abbreviation: {
+                        en: "Abbreviation",
+                        fr: "Abréviation",
+                        pt: "Abreviação",
+                        de: "Abkürzung",
+                        zh: "缩写",
+                        jp: "略語",
+                        es: "Abreviatura",
+                        ko: "약어"
+                    },
                     acceleration: {
                         en: 'Acceleration',
                         fr: "Acceleration",

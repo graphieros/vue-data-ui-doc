@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.12",
+        "date": "2024-03-08",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Improvements to bar labels options, to display abbreviated serie names"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.11",
         "date": "2024-03-08",
         "updates": [

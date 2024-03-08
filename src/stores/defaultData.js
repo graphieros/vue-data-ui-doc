@@ -101,6 +101,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'bar.labels.offsetY', def: -8, type: 'number', min: -100, max: 100, label: 'offsetYDataLabels', category: 'bar' },
                     { key: 'bar.labels.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'bar' },
                     { key: 'bar.labels.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'bar' },
+                    { key: 'bar.serieName.show', def: false, type: 'checkbox', label: ['serieName', 'is', 'show'], category: 'bar'},
+                    { key: 'bar.serieName.offsetY', def: -6, type: 'number', min: -100, max: 100, label: ['serieName', 'is', 'offsetY'], category: 'bar'},
+                    { key: 'bar.serieName.useAbbreviation', def: true, type: 'checkbox', label: ['serieName', 'is', 'abbreviation'], category: 'bar'},
+                    { key: 'bar.serieName.abbreviationSize', def: 3, type: 'number', min: 0, max: 12, label: ['serieName', 'abbreviation', 'is', 'size'], category: 'bar'},
+                    { key: 'bar.serieName.useSerieColor', def: true, type: 'checkbox', label: ['serieName', 'textColor', 'is', 'series'], category: 'bar'},
+                    { key: 'bar.serieName.color', def: '#1A1A1A', type: 'color', label: ['serieName', 'is', 'textColor'], category: 'bar'},
                 
                     { key: 'line.radius', def: 6, type: 'number', min: 0, max: 20, label: 'radius', category: 'line' },
                     { key: 'line.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'line' },

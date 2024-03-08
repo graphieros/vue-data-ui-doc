@@ -183,6 +183,14 @@ const config = ref({
             offsetY: -6,
             rounding: 0,
             color: "#1A1A1A",
+        },
+        serieName: {
+            show: false,
+            offsetY: -6,
+            useAbbreviation: true,
+            useSerieColor: true,
+            color: "#1A1A1A",
+            bold: false
         }
     },
     line: {
@@ -343,6 +351,14 @@ const darkModeConfig = ref({
             offsetY: -6,
             rounding: 0,
             color: "#c8c8c8",
+        },
+        serieName: {
+            show: false,
+            offsetY: -6,
+            useAbbreviation: true,
+            useSerieColor: true,
+            color: "#c8c8c8",
+            bold: false
         }
     },
     line: {
@@ -776,6 +792,15 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                 offsetY: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.bar.labels.offsetY"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.bar.labels.offsetY">, (default: -6)
                 rounding: <input type="number" min="0" max="5" v-model="mutableConfig.bar.labels.rounding">, (default: 0)
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.bar.labels.color"><input v-else type="color" v-model="mutableConfig.bar.labels.color">, (default: "#2D353C"),
+            },
+            serieName: {
+                show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.serieName.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.serieName.show">, (default: false)
+                offsetY: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.bar.serieName.offsetY"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.bar.serieName.offsetY">, (default: -6)
+                useSerieColor: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.serieName.useSerieColor"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.serieName.useSerieColor">, (default: true)
+                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.bar.serieName.color"><input v-else type="color" v-model="mutableConfig.bar.serieName.color">, (default: "#2D353C"),
+                bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.serieName.bold"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.serieName.bold">, (default: false)
+                useAbbreviation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.serieName.useAbbreviation"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.serieName.useAbbreviation">, (default: true)
+                abbreviationSize: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.bar.serieName.abbreviationSize"><input v-else type="number" min="0" max="12" v-model="mutableConfig.bar.serieName.abbreviationSize">, (default: -6)
             }
         },
         line: {

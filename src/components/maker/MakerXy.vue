@@ -197,7 +197,8 @@ const finalConfig = computed(() => {
 
 
 function getLabel(label) {
-    return xyTranslations.value.labels[label][store.lang]
+    return Array.isArray(label) ? label.map(l => xyTranslations.value.labels[l][store.lang]).join(" ") :
+    xyTranslations.value.labels[label][store.lang]
 }
 </script>
 
