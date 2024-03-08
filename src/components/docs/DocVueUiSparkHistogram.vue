@@ -331,7 +331,7 @@ function fixChart() {
             <MakerLink to="VueUiSparkHistogram"/>
         </div>
 
-        <Box>
+        <Box showEmits>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -528,6 +528,30 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkHistogramCon
 }
 </code>
 </pre>
+            </template>
+            <template #tab2>
+@selectDatapoint<br><br>
+
+{{ translations.docs.emits.selectDatapoint[store.lang] }}
+<br><br>
+<pre>
+<code>
+&lt;template&gt;
+  &lt;VueUiSparkHistogram
+    :dataset="dataset"
+    :config="config"
+    @selectDatapoint="selectDatapoint"
+  /&gt;
+&lt;/template&gt;
+
+&lt;script setup lang="ts"&gt;
+  function selectDatapoint({ datapoint, index }: { datapoint: VueUiSparkHistogramDatasetItem, index: number }) {
+    console.log({ datapoint, index })
+  }
+&lt;/script&gt;
+</code>
+</pre>
+
             </template>
         </Box>
 

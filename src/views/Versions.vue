@@ -208,7 +208,10 @@ const heatmapConfig = computed(() => {
       backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
       color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
       fontSize: 14,
-      roundingValue: 0
+      roundingValue: 0,
+      customFormat: ({datapoint}) => {
+        return `<div style="border-radius:50%;background:${datapoint.color};display:flex;align-items:center;justify-content:center;height: 64px;width:64px;box-shadow:0 12px 24px -12px rgba(0,0,0,0.3)">${datapoint.value}</div>`
+      }
     }
   },
   userOptions: {
@@ -894,7 +897,7 @@ const sparkbarDataset = computed(() => {
 const sparkbarConfig = computed(() => {
   return {
     style: {
-      backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6',
+      backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
       gutter: {
         backgroundColor: isDarkMode.value ? '#3A3A3A' : '#e1e5e6'
       },

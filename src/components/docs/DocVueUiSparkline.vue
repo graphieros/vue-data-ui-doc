@@ -270,7 +270,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-sparkline"/>
             <MakerLink to="VueUiSparkline"/>
         </div>
-        <Box showSlots>
+        <Box showSlots showEmits>
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">
@@ -438,6 +438,31 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</
                 </div>
             </template>
 
+            <template #tab2>
+@selectDatapoint<br><br>
+
+{{ translations.docs.emits.selectDatapoint[store.lang] }}
+<br><br>
+<pre>
+<code>
+&lt;template&gt;
+  &lt;VueUiSparkline
+    :dataset="dataset"
+    :config="config"
+    @selectDatapoint="selectDatapoint"
+  /&gt;
+&lt;/template&gt;
+
+&lt;script setup lang="ts"&gt;
+  function selectDatapoint({ datapoint, index }: { datapoint: VueUiSparklineDatasetItem, index: number }) {
+    console.log({ datapoint, index })
+  }
+&lt;/script&gt;
+</code>
+</pre>
+
+            </template>
+
             <template #tab3>
                 <div class="text-gray-500">
                     {{ translations.slots.presentation[store.lang]  }}
@@ -454,6 +479,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</
     &lt;/VueUiSparkline&gt;
 </code>
 </pre>                    
+
 
             </template>
         </Box>

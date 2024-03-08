@@ -1554,6 +1554,43 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.columnNames.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table'},
                     { key: 'table.columnNames.percentage', def: 'Percentage', type: 'text', label: ['columnName', 'is', 'percentage'], category: 'table'}
                 ]
+            },
+            vue_ui_scatter: {
+                dataset: [
+                    {
+                        name: "Cluster 1",
+                        values: [
+                            {
+                                x: 1,
+                                y: 1,
+                                name: "Item 1"
+                            },
+                            {
+                                x: 0.5,
+                                y: 1.2,
+                                name: "Item 2"
+                            },
+                            {
+                                x: 1,
+                                y: 2,
+                                name: "Item 3"
+                            },
+                            {
+                                x: 1.2,
+                                y: 2.4,
+                                name: "Item 4"
+                            },
+                            {
+                                x: 2,
+                                y: 3,
+                                name: "Item 5"
+                            },
+                        ]
+                    },
+                ],
+                model: [
+                    { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'}
+                ]
             }
         }
     }

@@ -189,7 +189,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-sparkbar"/>
             <MakerLink to="VueUiSparkbar" />
         </div>
-        <Box>
+        <Box showEmits>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -294,6 +294,31 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkbarConfig</s
 </code>
 </pre>                    
                 </div>
+            </template>
+            
+            <template #tab2>
+@selectDatapoint<br><br>
+
+{{ translations.docs.emits.selectDatapoint[store.lang] }}
+<br><br>
+<pre>
+<code>
+&lt;template&gt;
+  &lt;VueUiSparkbar
+    :dataset="dataset"
+    :config="config"
+    @selectDatapoint="selectDatapoint"
+  /&gt;
+&lt;/template&gt;
+
+&lt;script setup lang="ts"&gt;
+  function selectDatapoint({ datapoint, index }: { datapoint: VueUiSparkbarDatasetItem, index: number }) {
+    console.log({ datapoint, index })
+  }
+&lt;/script&gt;
+</code>
+</pre>
+
             </template>
         </Box>
     </div>

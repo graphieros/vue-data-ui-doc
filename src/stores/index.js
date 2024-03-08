@@ -1099,6 +1099,16 @@ export const useMainStore = defineStore("main", {
                         ko: "CSS를 재정의할 수 있습니다(패키지의 styles.css 확인)."
                     },
                     emits: {
+                        selectDatapoint: {
+                            en: "Use this event on the component to get the selected datapoint and index on click",
+                            fr: "Utilisez cet événement sur le composant pour obtenir le point de données et l'index sélectionnés en un clic",
+                            pt: "Use este evento no componente para obter o ponto de dados e o índice selecionados ao clicar",
+                            de: "Verwenden Sie dieses Ereignis für die Komponente, um den ausgewählten Datenpunkt und Index beim Klicken abzurufen",
+                            zh: "在组件上使用此事件来获取单击时选定的数据点和索引",
+                            jp: "コンポーネント上でこのイベントを使用して、クリック時に選択されたデータポイントとインデックスを取得します。",
+                            es: "Utilice este evento en el componente para obtener el punto de datos seleccionado y el índice al hacer clic",
+                            ko: "클릭 시 선택한 데이터 포인트와 인덱스를 가져오려면 구성 요소에서 이 이벤트를 사용하세요."
+                        },
                         generateImage: {
                             en: "Call this method from the parent component to download as png image. This is especially useful if user options are hidden.",
                             fr: "Appelez cette méthode à partir du composant parent pour la télécharger sous forme d'image png. Ceci est particulièrement utile si les options utilisateur sont masquées.",
