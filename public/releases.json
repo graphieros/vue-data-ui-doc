@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.14",
+        "date": "2024-03-09",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Redesigned legend in bottom position to have same style as right position"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.13",
         "date": "2024-03-09",
         "updates": [
