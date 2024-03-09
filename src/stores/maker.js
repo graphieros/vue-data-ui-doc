@@ -117,6 +117,16 @@ export const useMakerStore = defineStore('maker', {
                     ko: "구성 요소 코드:"
                 },
                 categories: {
+                    correlation: {
+                        en: 'Correlation',
+                        fr: "Corrélation",
+                        pt: "Correlação",
+                        de: "Korrelation",
+                        zh: "相关性",
+                        jp: "相関",
+                        es: "Correlación",
+                        ko: "상관관계"
+                    },
                     datapoints: {
                         en: "Datapoints",
                         fr: "Points de données",
@@ -678,6 +688,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Nombre de columna: Total",
                         ko: "열 이름: 합계"
                     },
+                    correlation: {
+                        en: 'Correlation',
+                        fr: "Corrélation",
+                        pt: "Correlação",
+                        de: "Korrelation",
+                        zh: "相关性",
+                        jp: "相関",
+                        es: "Correlación",
+                        ko: "상관관계"
+                    },
                     crescendo: {
                         en: 'Crescendo',
                         fr: 'Crescendo',
@@ -737,6 +757,26 @@ export const useMakerStore = defineStore('maker', {
                         jp: "データポリゴン",
                         es: "polígono de datos",
                         ko: "데이터 폴리곤"
+                    },
+                    deviation: {
+                        en: "Deviation",
+                        fr: "Ecart",
+                        pt: "Desvio",
+                        de: "Abweichung",
+                        zh: "偏差",
+                        jp: "偏差",
+                        es: "Desviación",
+                        ko: "편차"
+                    },
+                    deviationThreshold: {
+                        en: 'Deviation threshold',
+                        fr: "Seuil d'écart",
+                        pt: "Limite de desvio",
+                        de: "Abweichungsschwelle",
+                        zh: "偏差阈值",
+                        jp: "偏差閾値",
+                        es: "Umbral de desviación",
+                        ko: "편차 임계값"
                     },
                     display: {
                         en: 'Display',
@@ -1517,6 +1557,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Mostrar valor",
                         ko: "값 표시"
                     },
+                    significance: {
+                        en: 'Significance',
+                        fr: "Précision",
+                        pt: "Significado",
+                        de: "Bedeutung",
+                        zh: "意义",
+                        jp: "意義",
+                        es: "Significado",
+                        ko: "중요성"
+                    },
                     size: {
                         en: "Size",
                         fr: "Taille",
@@ -1726,6 +1776,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "追跡",
                         es: "Pista",
                         ko: "길"
+                    },
+                    translation: {
+                        en: 'Translation',
+                        fr: "Traduction",
+                        pt: "Tradução",
+                        de: "Übersetzung",
+                        zh: "翻译",
+                        jp: "翻訳",
+                        es: "Traducción",
+                        ko: "번역"
                     },
                     transparent: {
                         en: 'Transparent',

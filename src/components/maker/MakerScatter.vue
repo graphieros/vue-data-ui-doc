@@ -36,7 +36,51 @@ const CONFIG_CATEGORIES = computed(() => {
         {
             key: 'general',
             title: makerTranslations.value.categories.general[store.lang]
-        }
+        },
+        {
+            key: 'padding',
+            title: makerTranslations.value.categories.padding[store.lang]
+        },
+        {
+            key: 'grid',
+            title: makerTranslations.value.categories.grid[store.lang]
+        },
+        {
+            key: 'datapoints',
+            title: makerTranslations.value.categories.datapoints[store.lang]
+        },
+        {
+            key: 'correlation',
+            title: makerTranslations.value.categories.correlation[store.lang]
+        },
+        {
+            key: 'labels',
+            title: makerTranslations.value.categories.labels[store.lang]
+        },
+        {
+            key: 'title',
+            title: makerTranslations.value.categories.title[store.lang]
+        },
+        {
+            key: 'subtitle',
+            title: makerTranslations.value.categories.subtitle[store.lang]
+        },
+        {
+            key: 'legend',
+            title: makerTranslations.value.categories.legend[store.lang]
+        },
+        {
+            key: 'tooltip',
+            title: makerTranslations.value.categories.tooltip[store.lang]
+        },
+        {
+            key: 'table',
+            title: makerTranslations.value.categories.table[store.lang]
+        },
+        {
+            key: 'translations',
+            title: makerTranslations.value.categories.translations[store.lang]
+        },
     ]
 })
 
@@ -48,15 +92,25 @@ const options = ref({
         color: '#CCCCCC',
         values: [
 
-        ]
+        ],
+        shape: 'circle'
     },
     valueItem: {
         x: 0,
         y: 0,
         name: 'Item',
-        shape: 'circle'
     }
 })
+
+const shapeOptions = [
+    "circle",
+    "triangle",
+    "square",
+    "diamond",
+    "pentagon",
+    "hexagon",
+    "star",
+]
 
 const datasetItems = ref(defaultData.vue_ui_scatter.dataset)
 
@@ -71,9 +125,6 @@ onMounted(() => {
     }else {
         localStorage.setItem('scatterDataset', JSON.stringify(defaultData.vue_ui_scatter.dataset))
     }
-
-    // REMOVE !!!
-    localStorage.clear()
 
     step.value += 1;
 })
@@ -121,7 +172,7 @@ function addDatapoint(datasetId) {
 
 function deleteDatapoint(datasetId, datapointId) {
     const thisDS = datasetItems.value.find(ds => ds.id === datasetId);
-    const thisDP = thisDS.values = thisDS.values.filter(d => d.id !== datapointId)
+    thisDS.values = thisDS.values.filter(d => d.id !== datapointId)
     saveDatasetToLocalStorage()
 }
 
@@ -163,6 +214,7 @@ function getLabel(label) {
                 <thead>
                     <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
                     <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                    <th class="text-left text-xs">{{ makerTranslations.labels.shape[store.lang] }}</th>
                     <th class="text-left text-xs" v-for="dp in ds.values">
                         <div class="flex flex-col gap-2 relative">
                             <label class="text-xs text-left">{{ makerTranslations.labels.datapoint[store.lang] }} : {{ makerTranslations.labels.name[store.lang] }}</label>
@@ -174,8 +226,12 @@ function getLabel(label) {
                 </thead>
                 <tbody>
                     <tr>                    
-                        <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                        <td>
+                            <input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage">
+                        </td>
                         <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                        <td><select class="h-[36px] pl-2" v-model="ds.shape" @change="saveDatasetToLocalStorage"><option v-for="opt in shapeOptions">{{ opt }}</option>
+                                </select></td>
                         <td v-for="dp in ds.values">
                             <div class="flex flex-col gap-2"> 
                                 <div class="flex flex-col gap-2 mt-2">
@@ -188,6 +244,7 @@ function getLabel(label) {
                                 </div>
                             </div>
                         </td>
+
                     </tr>
                 </tbody>
             </table>
@@ -244,9 +301,15 @@ function getLabel(label) {
 
     const config = ref({{ finalConfig }});
 
-    const dataset = ref({{ datasetItems.map(({name, values, color}) => {
+    const dataset = ref({{ datasetItems.map(({name, values, color, shape}) => {
         return {
-            name, values, color
+            name, values:values.map((v) => {
+                return {
+                    x: v.x,
+                    y: v.y,
+                    name: v.name,
+                }
+            }), color, shape
         }
     }) }});
 &lt;/script&gt;

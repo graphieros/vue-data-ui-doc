@@ -1,1 +1,1 @@
-add tooltips on menu items when folded 
+use tresshake for configs in makers

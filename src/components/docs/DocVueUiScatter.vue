@@ -394,12 +394,12 @@ function fixChart() {
         {
             name: string;
             color: string; <span class="text-gray-500">// {{ translations.docs.comments.xy.color[store.lang] }}</span>
+            shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star ";<span class="text-gray-500">// {{ translations.docs.comments.optional[store.lang] }}</span>
             values: [
                 { 
                     x: number; 
                     y: number; 
                     name?: string; <span class="text-gray-500">// {{ translations.docs.comments.optional[store.lang] }}</span>
-                    shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star "<span class="text-gray-500">// {{ translations.docs.comments.optional[store.lang] }}</span>
                 },
                 {...}
             ]

@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.13",
+        "date": "2024-03-09",
+        "updates": [
+            {
+                "component": "VueUiScatter",
+                "description": "Fixed minor axis issue when all values were positive and > 0"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.12",
         "date": "2024-03-08",
         "updates": [
