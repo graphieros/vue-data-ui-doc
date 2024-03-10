@@ -967,6 +967,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Caliente",
                         ko: "더운"
                     },
+                    icons: {
+                        en: 'Icons',
+                        fr: 'Icones',
+                        pt: 'Ícones',
+                        de: 'Symbole',
+                        zh: "图标",
+                        jp: "アイコン",
+                        es: "Iconos",
+                        ko: "아이콘"
+                    },
                     inactive: {
                         en: 'Inactive',
                         fr: 'Inactif',
