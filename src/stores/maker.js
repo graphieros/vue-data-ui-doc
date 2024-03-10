@@ -14,6 +14,26 @@ export const useMakerStore = defineStore('maker', {
                 ko: ""
             },
             translations: {
+                activeRelations: {
+                    en: 'Active relations',
+                    fr: "Relations actives",
+                    pt: "Relações ativas",
+                    de: "Aktive Beziehungen",
+                    zh: "积极的关系",
+                    jp: "活発な関係",
+                    es: "Relaciones activas",
+                    ko: "적극적인 관계"
+                },
+                addRelations: {
+                    en: 'Add relations',
+                    fr: "Ajouter relations",
+                    pt: "Adicionar relações",
+                    de: "Beziehungen hinzufügen",
+                    zh: "添加关系",
+                    jp: "リレーションの追加",
+                    es: "Agregar relaciones",
+                    ko: "관계 추가"
+                },
                 clearStorage: {
                     en: 'Clear local storage for this chart',
                     fr: "Effacer le stockage local pour ce graphique",
@@ -1027,6 +1047,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Izquierda",
                         ko: "왼쪽"
                     },
+                    limit: {
+                        en: 'Max number of datapoints',
+                        fr: 'Nb max de points de données',
+                        pt: 'Número máximo de pontos de dados',
+                        de: "Maximale Anzahl von Datenpunkten",
+                        zh: "最大数据点数量",
+                        jp: "データポイントの最大数",
+                        es: "Número máximo de puntos de datos",
+                        ko: "최대 데이터 포인트 수"
+                    },
                     line: {
                         en: 'Line',
                         fr: "Ligne",
@@ -1896,6 +1926,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "縦線",
                         es: "Líneas verticales",
                         ko: "수직선"
+                    },
+                    weight: {
+                        en: 'Weight',
+                        fr: "Poids",
+                        pt: "Peso",
+                        de: "Gewicht",
+                        zh: "重量",
+                        jp: "重さ",
+                        es: "Peso",
+                        ko: "무게"
                     },
                     width: {
                         en: "Width",

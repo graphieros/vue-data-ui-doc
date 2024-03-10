@@ -24,6 +24,7 @@ import MakerRings from "../components/maker/MakerRings.vue";
 import MakerScatter from "../components/maker/MakerScatter.vue";
 import MakerPyramid from "../components/maker/MakerPyramid.vue";
 import MakerMoodRadar from "../components/maker/MakerMoodRadar.vue";
+import MakerRelationCircle from "../components/maker/MakerRelationCircle.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
@@ -65,6 +66,7 @@ const options = ref([
     { name: "VueUiScatter", icon: "chartScatter", thumb: new URL('../assets/thumb_scatter_light.png', import.meta.url).href},
     { name: "VueUiAgePyramid", icon: "chartAgePyramid", thumb: new URL('../assets/thumb_age_pyramid_light.png', import.meta.url).href},
     { name: "VueUiMoodRadar", icon: "chartMoodRadar", thumb: new URL('../assets/thumb_mood_radar_light.png', import.meta.url).href},
+    { name: "VueUiRelationCircle", icon: "chartRelationCircle", thumb: new URL('../assets/thumb_relation_circle_light.png', import.meta.url).href},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -175,5 +177,6 @@ function selectChart(opt) {
         <MakerScatter v-if="selectedChart.name === 'VueUiScatter'"/>
         <MakerPyramid v-if="selectedChart.name === 'VueUiAgePyramid'"/>
         <MakerMoodRadar v-if="selectedChart.name === 'VueUiMoodRadar'"/>
+        <MakerRelationCircle v-if="selectedChart.name === 'VueUiRelationCircle'"/>
     </div>
 </template>

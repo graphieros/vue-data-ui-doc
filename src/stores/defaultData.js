@@ -1831,6 +1831,59 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.columnNames.value', def: 'Value', type: 'text', label: 'value', category:'translations'},
                     { key: 'table.columnNames.percentage', def: 'Percentage', type: 'text', label: 'percentage', category: 'translations'}
                 ]
+            },
+            vue_ui_relation_circle: {
+                dataset: [
+                    {
+                        id: "01",
+                        label: 'Keyterm 1',
+                        relations: ['02', '03'],
+                        weights: [1, 1],
+                        color: "#6376DD"
+                    },
+                    {
+                        id: "02",
+                        label: 'Keyterm 2',
+                        relations: ['01', '03'],
+                        weights: [1, 1],
+                        color: "#42d392"
+                    },
+                    {
+                        id: "03",
+                        label: 'Keyterm 3',
+                        relations: ['01', '02'],
+                        weights: [1, 1],
+                        color: "#ff6400"
+                    },
+                ],
+                model: [
+                    { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                    { key: 'style.size', def: 400, type: 'number', min: 300, max: 1200, label: 'size', category: 'general'},
+                    { key: 'style.limit', def: 50, type: 'number', min: 3, max: 360, label: 'limit', category: 'general'},
+                    { key: 'style.animation.show', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'style.animation.speedMs', def: 300, type: 'number', min: 0, max: 2000, label: ['animation', 'is', 'speed'], category: 'general'},
+                    { key: 'style.circle.radiusProportion', def: 0.3, type: 'range', min: 0.1, max: 0.5, step: '0.01', label: ['circle', 'is', 'radius'], category: 'general'},
+                    { key: 'style.circle.stroke', def: '#e1e5e8', type: 'color', label: ['circle', 'border', 'is', 'color'], category: 'general'},
+                    { key: 'style.circle.strokeWidth', def: 1, type: 'number', min: 0, max: 24, step: 0.1, label: ['circle', 'border', 'is', 'thickness'], category: 'general'},
+                    { key: 'style.circle.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['circle', 'is', 'offsetY'], category: 'general'},
+                    { key: 'style.labels.color', def: '#1A1A1A', type: 'color', label: ['labels', 'is', 'textColor'], category: 'datapoints'},
+                    { key: 'style.labels.fontSize', def: 12, type: 'number', min: 6, max: 48, label: ['labels', 'is', 'fontSize'], category: 'datapoints'},
+                    { key: 'style.links.curved', def: true, type: 'checkbox', label: 'smooth', category: 'datapoints'},
+                    { key: 'style.links.maxWidth', def: 6, type: 'number', min: 0.1, max: 24, label: ['thickness', 'is', 'max'], category: 'datapoints' },
+                    { key: 'style.plot.radius', def: 2, type: 'number', min: 0, max: 24, label: ['plots', 'is', 'radius'], category: 'datapoints'},
+                    { key: 'style.plot.color', def: '#1A1A1A', type: 'color', label: ['plots', 'is', 'color'], category: 'datapoints'},
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
+                    { key: 'style.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
+                    { key: 'style.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+                    { key: 'style.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
+                    { key: 'style.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
+                ]
             }
         }
     }
