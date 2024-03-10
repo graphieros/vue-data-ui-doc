@@ -1,5 +1,25 @@
 [
     {
+        "version": "v 2.0.17",
+        "date": "2024-03-10",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Fixed bottom legend label colors not applied"
+            }
+        ]
+    },
+    {
+        "version": "v 2.0.16",
+        "date": "2024-03-10",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fixed edge case breaking the chart when data is not ready and slider option is used"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.14",
         "date": "2024-03-09",
         "updates": [

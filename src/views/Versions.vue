@@ -201,7 +201,8 @@ const heatmapConfig = computed(() => {
       color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
       fontSize: 6,
       bold: true,
-      roundingValue: 0
+      roundingValue: 0,
+      position: 'bottom'
     },
     tooltip: {
       show: true,
