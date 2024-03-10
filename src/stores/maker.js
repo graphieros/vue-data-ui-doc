@@ -389,6 +389,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Agregar",
                         ko: "추가하다"
                     },
+                    age: {
+                        en: 'Age',
+                        fr: "Âge",
+                        pt: "Idade",
+                        de: "Alter",
+                        zh: "年龄",
+                        jp: "年",
+                        es: "Edad",
+                        ko: "나이"
+                    },
                     angle: {
                         en: "Angle",
                         fr: "Angle",
