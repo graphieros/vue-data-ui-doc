@@ -10,7 +10,6 @@ import MakerLink from "../MakerLink.vue"
 const store = useMainStore();
 const key = ref(0);
 const hintPin = computed(() => store.hints.pin);
-
 const translations = computed(() => store.translations);
 
 watch(() => store.isDarkMode, (val) => {
