@@ -1718,6 +1718,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.dataLabels.sideTitles.bold', def: false, type: 'checkbox', label: ['name', 'is', 'bold'], category: 'labels'},
                     { key: 'translations.female', def: 'female', type: 'text', label: ['name', 'left', 'is', 'textContent'], category: 'labels'},
                     { key: 'translations.male', def: 'male', type: 'text', label: ['name', 'right', 'is', 'textContent'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.sideTitles.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['name', 'is', 'offsetY'], category: 'labels'},
                     { key: 'style.layout.dataLabels.xAxis.show', def: true, type: 'checkbox', label: ['xAxisLabel', 'is', 'show'], category: 'labels'},
                     { key: 'style.layout.dataLabels.xAxis.color', def: '#1A1A1A', type: 'color', label: ['xAxisLabel', 'is', 'textColor'], category: 'labels'},
                     { key: 'style.layout.dataLabels.xAxis.fontSize', def: 12, type: 'number', min: 6, max: 42, label: ['xAxisLabel', 'is', 'fontSize'], category: 'labels'},

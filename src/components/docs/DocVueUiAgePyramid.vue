@@ -657,7 +657,8 @@ const config = ref({
           fontSize: 18,
           color: "#1A1A1A",
           useSideColor: true,
-          bold: false
+          bold: false,
+          offsetY: 0
         },
         xAxis: {
           show: true,
@@ -776,7 +777,8 @@ const darkModeConfig = ref({
           fontSize: 18,
           color: "#CCCCCC",
           useSideColor: true,
-          bold: false
+          bold: false,
+          offsetY: 0,
         },
         xAxis: {
           show: true,
@@ -997,7 +999,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiAgePyramidConfig<
           fontSize: <input v-if="isDarkMode" type="number" min="6" max="64" v-model="mutableConfigDarkMode.style.layout.dataLabels.sideTitles.fontSize"><input v-else type="number" min="6" max="64" v-model="mutableConfig.style.layout.dataLabels.sideTitles.fontSize">, (default: 18)
           color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.layout.dataLabels.sideTitles.color"><input v-else type="color" v-model="mutableConfig.style.layout.dataLabels.sideTitles.color">, (default: "#2D353C")
           useSideColor: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.dataLabels.sideTitles.useSideColor" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.dataLabels.sideTitles.useSideColor" @change="forceChartUpdate()">, (default: true)
-          bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.dataLabels.sideTitles.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.dataLabels.sideTitles.bold" @change="forceChartUpdate()">, (default: false)
+          bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.dataLabels.sideTitles.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.dataLabels.sideTitles.bold" @change="forceChartUpdate()">, (default: false),
+          offsetY: <input v-if="isDarkMode" type="number" min="-100" max="100" v-model="mutableConfigDarkMode.style.layout.dataLabels.sideTitles.offsetY"><input v-else type="number" min="-100" max="100" v-model="mutableConfig.style.layout.dataLabels.sideTitles.offsetY">, (default: 0)
         },
         xAxis: {
           show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.dataLabels.xAxis.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.dataLabels.xAxis.show" @change="forceChartUpdate()">, (default: true)
