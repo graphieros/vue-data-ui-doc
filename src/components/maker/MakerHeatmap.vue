@@ -113,7 +113,7 @@ function resetModel() {
 
 function forceChartUpdate() {
     if(!localStorage.heatmapConfig) {
-        localStorage.setItem('wheelConfig', {})
+        localStorage.setItem('heatmapConfig', {})
     }
     saveConfigToLocalStorage()
     step.value += 1;
