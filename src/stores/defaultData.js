@@ -1885,6 +1885,53 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
                     { key: 'style.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
                 ]
+            },
+            vue_ui_thermometer: {
+                dataset: {
+                    value: 0,
+                    from: -100,
+                    to: 100,
+                    steps: 20,
+                    colors: {
+                        from: "#ff6400",
+                        to: "#5f8bee",
+                    }
+                },
+                model: [
+                    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
+                    { key: 'style.chart.height', def: 360, type: 'number', min: 200, max: 800, label: 'height', category: 'general'},
+                    { key: 'style.chart.thermometer.width', def: 48, type: 'number', min: 12, max: 100, label: 'width', category: 'general'},
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
+                    { key: 'style.chart.animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'style.chart.animation.speedMs', def: 1000, type: 'number', min: 100, max: 2000, label: ['animation', 'is', 'speed'], category: 'general'},
+                    { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label: 'top', category: 'padding'},
+                    { key: 'style.chart.padding.right', def: 64, type: 'number', min: 0, max: 100, label: 'right', category: 'padding'},
+                    { key: 'style.chart.padding.bottom', def: 12, type: 'number', min: 0, max: 100, label: 'bottom', category: 'padding'},
+                    { key: 'style.chart.padding.left', def: 64, type: 'number', min: 0, max: 100, label: 'left', category: 'padding'},
+                    { key: 'style.chart.graduations.show', def: true, type: 'checkbox', label: 'show', category: 'grid'},
+                    { key: 'style.chart.graduations.sides', def: 'both', type: 'select', options: ['both', 'left', 'right'], label: 'position', category: 'grid'},
+                    // { key: 'style.chart.graduations.height', def: 2, type: 'number', mon: 0.1, max: 12, step: 0.1, label: 'thickness', category: 'grid'}
+                    { key: 'style.chart.graduations.stroke', def: '#e1e5e8', type: 'color', label: 'color', category: 'grid'},
+                    { key: 'style.chart.graduations.strokeWidth', def: 1, type: 'number', min: 0.1, max: 12, step: 0.1, label: 'thickness', category: 'grid'},
+                    { key: 'style.chart.graduations.showIntermediate', def: true, type: 'checkbox', label: ['between', 'is', 'show'], category: 'grid' },
+                    { key: 'style.chart.graduations.gradient.show', def: true, type: 'checkbox', label: 'useGradient', category: 'grid'},
+                    { key: 'style.chart.graduations.gradient.intensity', def: 20, type: 'range', min: 0, max: 100, label: ['gradient', 'is', 'intensity'], category: 'grid'},
+                    { key: 'style.chart.label.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'labels'},
+                    { key: 'style.chart.label.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'labels'},
+                    { key: 'style.chart.label.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels'},
+                    { key: 'style.chart.label.rounding', def: 1, type: 'number', min: 0, max: 6, label: 'rounding', category: 'labels'},
+                    { key: 'style.chart.label.prefix', def: '', type: 'text', label: 'prefix', category: 'labels'},
+                    { key: 'style.chart.label.suffix', def: '', type: 'text', label: 'suffix', category: 'labels'},
+                    { key: 'style.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
+                    { key: 'style.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+                    { key: 'style.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
+                    { key: 'style.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.title.subtitle.bold', def: true, type: 'checkbox', label: 'bold', category: 'subtitle'},
+                ]
             }
         }
     }

@@ -519,6 +519,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Color de fondo de las filas",
                         ko: "행 배경색"
                     },
+                    between: {
+                        en: "Intermediate",
+                        fr: "Intermédiaire",
+                        pt: "Intermediário",
+                        de: "Dazwischenliegend",
+                        zh: "中间的",
+                        jp: "中級",
+                        es: "Intermedio",
+                        ko: "중급"
+                    },
                     bold: {
                         en: "Bold",
                         fr: "Caractère gras",

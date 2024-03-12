@@ -37,12 +37,12 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.general[store.lang]
         },
         {
-            key: 'grid',
-            title: makerTranslations.value.categories.grid[store.lang]
+            key: 'padding',
+            title: makerTranslations.value.categories.padding[store.lang]
         },
         {
-            key: 'datapoints',
-            title: makerTranslations.value.categories.datapoints[store.lang]
+            key: 'grid',
+            title: makerTranslations.value.categories.grid[store.lang]
         },
         {
             key: 'labels',
@@ -56,59 +56,45 @@ const CONFIG_CATEGORIES = computed(() => {
             key: 'subtitle',
             title: makerTranslations.value.categories.subtitle[store.lang]
         },
-        {
-            key: 'legend',
-            title: makerTranslations.value.categories.legend[store.lang]
-        },
-        {
-            key: 'table',
-            title: makerTranslations.value.categories.table[store.lang]
-        },
-        {
-            key: 'translations',
-            title: makerTranslations.value.categories.translations[store.lang]
-        },
     ]
 })
 
-const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_mood_radar.model)))
-
-const datasetItems = ref(defaultData.vue_ui_mood_radar.dataset)
+const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_thermometer.model)))
+const dataset = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_thermometer.dataset)))
 
 const step = ref(0)
 
 onMounted(() => {
-    if(localStorage.moodRadarConfig) {
-        CONFIG_MODEL.value = JSON.parse(localStorage.moodRadarConfig);
+    if(localStorage.thermometerConfig) {
+        CONFIG_MODEL.value = JSON.parse(localStorage.thermometerConfig);
     } 
-    if(localStorage.moodRadarDataset) {
-        datasetItems.value = JSON.parse(localStorage.moodRadarDataset)
+    if(localStorage.thermometerDataset) {
+        dataset.value = JSON.parse(localStorage.thermometerDataset)
     }else {
-        localStorage.setItem('moodRadarDataset', JSON.stringify(defaultData.vue_ui_mood_radar.dataset))
+        localStorage.setItem('thermometerDataset', JSON.stringify(defaultData.vue_ui_thermometer.dataset))
     }
-
     step.value += 1;
 })
 
 function saveDatasetToLocalStorage() {
-    localStorage.moodRadarDataset = JSON.stringify(datasetItems.value);
+    localStorage.thermometerDataset = JSON.stringify(dataset.value);
     clearStep.value += 1;
 }
 
 function saveConfigToLocalStorage() {
-    localStorage.moodRadarConfig = JSON.stringify(CONFIG_MODEL.value);
+    localStorage.thermometerConfig = JSON.stringify(CONFIG_MODEL.value);
     clearStep.value += 1;
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_mood_radar.model))
+    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_thermometer.model))
     step.value += 1;
     saveConfigToLocalStorage();
 }
 
 function forceChartUpdate() {
-    if(!localStorage.moodRadarConfig) {
-        localStorage.setItem('moodRadarConfig', {})
+    if(!localStorage.thermometerConfig) {
+        localStorage.setItem('thermometerConfig', {})
     }
     saveConfigToLocalStorage()
     step.value += 1;
@@ -129,12 +115,11 @@ function getLabel(label) {
 </script>
 
 <template>
-
-<ClearStorageAndRefresh keyConfig="moodRadarConfig" keyDataset="moodRadarDataset" :key="`clear_${clearStep}`"/>
+    <ClearStorageAndRefresh keyConfig="thermometerConfig" keyDataset="thermometerDataset" :key="`clear_${clearStep}`"/>
 
 <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
     <transition name="fade">                
-        <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`">
+        <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[250px]' : 'w-full mx-auto max-w-[250px]'}`">
             <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
                 <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
                     <PinnedOffIcon v-if="isFixed"/>
@@ -142,7 +127,7 @@ function getLabel(label) {
                 </button>
                 <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
             </div>
-            <VueUiMoodRadar :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+            <VueUiThermometer :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
         </div>
     </transition>
 </div>
@@ -153,18 +138,22 @@ function getLabel(label) {
         <div :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`">
             <table>
                 <thead>
-                    <th class="text-left text-xs h-[40px]">1</th>
-                    <th class="text-left text-xs h-[40px]">2</th>
-                    <th class="text-left text-xs h-[40px]">3</th>
-                    <th class="text-left text-xs h-[40px]">4</th>
-                    <th class="text-left text-xs h-[40px]">5</th>
+                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.value[store.lang] }}</th>
+                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.from[store.lang] }}</th>
+                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.to[store.lang] }}</th>
+                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.scale[store.lang] }}</th>
+                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }} : {{ makerTranslations.labels.from[store.lang] }}</th>
+                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }} : {{ makerTranslations.labels.to[store.lang] }}</th>
+
                 </thead>
                 <tbody>
-                    <td><input class="w-[82px]" type="number" v-model="datasetItems['1']" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="w-[82px]" type="number" v-model="datasetItems['2']" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="w-[82px]" type="number" v-model="datasetItems['3']" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="w-[82px]" type="number" v-model="datasetItems['4']" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="w-[82px]" type="number" v-model="datasetItems['5']" @change="saveDatasetToLocalStorage"></td>
+                    <td><input class="w-[82px]" type="number" v-model="dataset.value" @change="saveDatasetToLocalStorage"></td>
+                    <td><input class="w-[82px]" type="number" v-model="dataset.from" @change="saveDatasetToLocalStorage"></td>
+                    <td><input class="w-[82px]" type="number" v-model="dataset.to" @change="saveDatasetToLocalStorage"></td>
+                    <td><input class="w-[82px]" type="number" v-model="dataset.steps" @change="saveDatasetToLocalStorage"></td>
+                    <td><input type="color" v-model="dataset.colors.from" @change="saveDatasetToLocalStorage"></td>
+                    <td><input type="color" v-model="dataset.colors.to" @change="saveDatasetToLocalStorage"></td>
+
                 </tbody>
             </table>
         </div>
@@ -206,17 +195,17 @@ function getLabel(label) {
 <code id="componentContent">
 &lt;script setup&gt;
     import { ref } from "vue";
-    import { VueUiMoodRadar } from "vue-data-ui";
+    import { VueUiThermometer } from "vue-data-ui";
     import "vue-data-ui/style.css"
 
     const config = ref({{ finalConfig }});
 
-    const dataset = ref({{ datasetItems }})
+    const dataset = ref({{ dataset }})
 &lt;/script&gt;
 
 &lt;template&gt;
     &lt;div style="width:600px"&gt;
-        &lt;VueUiMoodRadar :config="config" :dataset="dataset" /&gt;
+        &lt;VueUiThermometer :config="config" :dataset="dataset" /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
