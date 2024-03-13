@@ -129,12 +129,12 @@ function selectChart(opt) {
             <div class="flex flex-row gap-3 place-items-end justify-center">
                 <div class="flex flex-col gap-2">
                     <label for="chartType">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
-                    <select @change="saveSelectedChartToLocalStorage" style="outline:1px solid #42d392 !important;margin-left:1px" id="chartType" v-model="selectedChart" class="h-[40px] px-6">
+                    <select @change="saveSelectedChartToLocalStorage" style="outline:1px solid #5f8bee !important;margin-left:1px" id="chartType" v-model="selectedChart" class="h-[40px] px-6">
                         <option class="text-left" v-for="option in options" :value="option">{{ option.name }}</option>
                     </select>
                 </div>
                 <div style="margin-bottom:0.3px">
-                    <VueUiIcon :size="38" :stroke-width="0.8" :name="selectedChart.icon" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
+                    <VueUiIcon :size="38" :stroke-width="0.8" :name="selectedChart.icon" :stroke="isDarkMode ? '#5f8bee' : '#1A1A1A'"/>
                 </div>
             </div>
 
