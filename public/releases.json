@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.19",
+        "date": "2024-03-13",
+        "updates": [
+            {
+                "component": "VueUiOnion",
+                "description": "Added tooltip"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.18",
         "date": "2024-03-11",
         "updates": [

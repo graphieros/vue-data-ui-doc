@@ -155,6 +155,15 @@ const config = ref({
                 fontSize: 14,
                 roundingValue: 0,
                 roundingPercentage: 0,
+            },
+            tooltip: {
+                show: true,
+                backgroundColor: "#FFFFFF",
+                color: "#1A1A1A",
+                fontSize: 14,
+                roundingValue: 0,
+                roundingPercentage: 0,
+                customFormat: null
             }
         }
     },
@@ -244,6 +253,15 @@ const darkModeConfig = ref({
                 fontSize: 14,
                 roundingValue: 0,
                 roundingPercentage: 0,
+            },
+            tooltip: {
+                show: true,
+                backgroundColor: "#1A1A1A",
+                color: "#CCCCCC",
+                fontSize: 14,
+                roundingValue: 0,
+                roundingPercentage: 0,
+                customFormat: null
             }
         }
     },
@@ -354,7 +372,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-onion"/>
             <MakerLink to="VueUiOnion"/>
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showTooltip>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -476,6 +494,15 @@ const <span class="text-app-blue">config: VueUiOnionConfig</span> = {
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.legend.color"><input v-else type="color" v-model="mutableConfig.style.chart.legend.color">, (default: "#2D353C")
                 fontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="30" v-model="mutableConfigDarkMode.style.chart.legend.fontSize"><input v-else type="number" class="accent-app-blue" min="6" max="30" v-model="mutableConfig.style.chart.legend.fontSize">, (default: 14)
                 roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.legend.roundingPercentage"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.legend.roundingPercentage">, (default: 0)
+            },
+            tooltip: {
+                show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.show" @change="forceChartUpdate()">, (default: true)
+                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.tooltip.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.tooltip.backgroundColor">, (default: "#FFFFFF")
+                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.tooltip.color"><input v-else type="color" v-model="mutableConfig.style.chart.tooltip.color">, (default: "#2D353C")
+                fontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="30" v-model="mutableConfigDarkMode.style.chart.tooltip.fontSize"><input v-else type="number" class="accent-app-blue" min="6" max="30" v-model="mutableConfig.style.chart.tooltip.fontSize">, (default: 14)
+                roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingValue"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingValue">, (default: 0)
+                roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingPercentage"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.tooltip.roundingPercentage">, (default: 0)
+                customFormat: null // default behavior. To customize tooltip content, see 'custom tooltip' tab
             }
         }
     },
@@ -636,6 +663,27 @@ const <span class="text-app-blue">config: VueUiOnionConfig</span> = {
 </code>
 </pre>                    
 
+            </template>
+
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre> 
+Using custom mode, the tooltip will be headless.
+Target the following css class to apply custom styles:
+<pre>
+<code>
+.vue-data-ui-custom-tooltip
+</code>
+</pre>           
             </template>
         </Box>
     </div>

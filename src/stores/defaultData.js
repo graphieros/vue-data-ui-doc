@@ -539,7 +539,13 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'table'},
                     { key: 'table.translations.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table'},
                     { key: 'table.translations.percentage', def: 'Percentage', type: 'text', label: ['columnName', 'is', 'percentage'], category: 'table'},
-                    { key: 'table.translations.serie', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'}
+                    { key: 'table.translations.serie', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'},
+                    { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'tooltip'}
                 ]
             },
             vue_ui_quadrant: {

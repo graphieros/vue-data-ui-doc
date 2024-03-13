@@ -55,6 +55,10 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.legend[store.lang]
         },
         {
+            key: 'tooltip',
+            title: makerTranslations.value.categories.tooltip[store.lang]
+        },
+        {
             key: 'table',
             title: makerTranslations.value.categories.table[store.lang]
         },
@@ -150,7 +154,9 @@ function getLabel(label) {
                     </button>
                     <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
                 </div>
-                <VueUiOnion :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                <div class="w-full">
+                    <VueUiOnion :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                </div>
             </div>
         </transition>
     </div>
