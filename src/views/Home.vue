@@ -5,6 +5,8 @@ import { useMainStore } from "../stores";
 import { BrightnessUpIcon, MoonIcon, LanguageIcon, StarFilledIcon, ToolIcon } from "vue-tabler-icons";
 import AppSkeletons from "../components/AppSkeletons.vue";
 import DeepSearch from "../components/DeepSearch.vue";
+import router from "../router"
+import staticReleases from "../../public/releases.json"
 
 const store = useMainStore();
 
@@ -108,9 +110,35 @@ const stars = ref(0);
 
 const owner = 'graphieros'; 
 const repo = 'vue-data-ui';
+const viewBox = ref('0 0 0 0');
+const targetSize = ref(48)
+const resizeContainer = ref(null);
+
+const boardSize = computed(() => {
+    const splitBox = viewBox.value.split(' ')
+    return {
+        width: splitBox[2],
+        height: splitBox[3]
+    }
+})
+
+function setClientPosition({ clientX, clientY }) {
+    clientPosition.value.x = clientX;
+    clientPosition.value.y = clientY;
+}
 
 onMounted(() => {
   isLoading.value = true;
+  const resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+            const { width, height } = entry.contentRect;
+            viewBox.value = `0 0 ${width} ${height}`
+        }
+    })
+    if (resizeContainer.value) {
+        resizeObserver.observe(resizeContainer.value)
+    }
+    
   fetch(`https://api.github.com/repos/${owner}/${repo}`)
   .then(response => {
     if (!response.ok) {
@@ -148,6 +176,7 @@ onMounted(() => {
         versionsList.value = data;
     }).catch(err => {
         console.error(err.message);
+        versionsList.value = staticReleases
     })
 
     requestAnimationFrame(updateSparkline);
@@ -264,88 +293,133 @@ const digitsConfigVersion = computed(() => {
   }
 })
 
+const datasetDonutMenu = computed(() => {
+    return [
+        {
+            name: translations.value.menu.installation[store.lang],
+            values: [1],
+            color: "#42d392"
+        },
+        {
+            name: translations.value.menu.docs[store.lang],
+            values: [1],
+            color: "#5f8bee"
+        },
+        {
+            name: translations.value.menu.chartBuilder[store.lang],
+            values: [1],
+            color: "#5A5A5A"
+        },
+        {
+            name: translations.value.menu.customization[store.lang],
+            values: [0.5],
+            color: "#9A9A9A"
+        },
+        {
+            name: translations.value.menu.versions[store.lang],
+            values: [0.5],
+            color: "#C1C1C1"
+        },
+    ]
+})
+
+const configDonutMenu = computed(() => {
+    return {
+        userOptions: {
+            show: false,
+        },
+        style: {
+            chart: {
+                backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+                useGradient: true,
+                gradientIntensity: isDarkMode.value ? 30 : 40,
+                legend: {
+                    show: false
+                },
+                tooltip: {
+                    show: false,
+                },
+                layout: {
+                    donut: {
+                        borderWidth: 2
+                    },
+                    labels: {
+                        percentage: {
+                            color: isDarkMode.value ? '#7A7A7A': '#AAAAAA',
+                            bold: false
+                        },
+                        name: {
+                            color: isDarkMode.value ? '#C1C1C1': '#1A1A1A',
+                            fontSize: 14,
+                            bold: true
+                        },
+                        hollow: {
+                            total: {
+                                show: false,
+                            },
+                            average: {
+                                show: false,
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})
+
+const menuRoutes = ref([
+    '/installation',
+    '/docs',
+    '/chart-builder',
+    '/customization',
+    '/versions'
+])
+
+function selectMenu({ datapoint, index }) {
+    router.push(menuRoutes.value[index])
+}
+
 </script>
 
 <template>
-    <div class="mx-auto w-5/6">
-    <div class="hidden md:block">
-      <DeepSearch/>
-    </div>
-      <div class="fixed top-0 left-0 h-screen w-screen z-0" style="opacity:0.4">
-        <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'"/>
-        <AppSkeletons/>
-      </div>
-    <div class="z-10 mx-auto flex flex-col sm:flex-row gap-6 sm:gap-12 w-full h-[calc(100svh_-_49px)] place-items-center place-content-center sm:justify-around max-w-[1000px]">
-    <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[400px] place-items-center"> 
-      <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${-deviationX * 20}deg);`">
-        <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[100px] sm:h-[200px] mx-auto drop-shadow-2xl">
-        <div class="w-[40px] mx-auto">
-          <VueUiMiniLoader 
-              :config="{
-                onion: {
-                  gutterColor: '#CCCCCC',
-                  gutterOpacity: 0.3,
-                  gutterBlur: 0,
-                  trackHueRotate: 360,
-                  trackBlur: 1,
-                  trackColor: '#42d392'
-                }
-              }"
-            />
-        </div>
-        <div class="w-full absolute top-[100%] left-0 -translate-x-[20px] sm:-translate-x-[40px]">
-          <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset" :config="sparklineConfig" class="absolute"/>
-          <VueUiSparkline v-if="sparklineDataset" :dataset="sparklineDataset2" :config="{...sparklineConfig, type: 'line'}" class="absolute"/>
-          </div>
-      </div>
-            <div class="relative">
-        <h1 class="z-10 mx-auto text-[48px] md:text-[64px] font-satoshi-bold text-center"><span class="text-app-green" data-cy="app-name-vue">Vue</span> <span data-cy="app-name" class="text-app-blue">Data UI</span></h1>
-        <!-- <span v-if="versionsList.length" class="absolute left-1/2 -translate-x-1/2 text-xs">{{ versionsList[0].version }}</span> -->
-        <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center">
-          <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
-        </div>
-      </div>
-      <p data-cy="tag-line" class="z-10 mx-auto sm:text-xl text-black dark:text-gray-200 text-center">
-          {{ translations.tagline[store.lang] }}
-        </p>
-    </div>
+      <div ref="resizeContainer" class="absolute top-0 left-0" style="width:100%;height:100%;overflow: hidden" @mousemove="setClientPosition($event)">
 
-    <div class="z-10 flex flex-col place-items-center gap-4">
-    
-      <div class="z-10 flex flex-row place-items-center gap-2">
-        <LanguageIcon/>
-          <select data-cy="select-lang" v-model="selectedLanguage" class="h-[36px] px-2">
-            <option v-for="option in languageOptions" :value="option.value">
-              {{ option.text }}
-            </option>
-          </select>
-      </div>
-        <!-- <div class="mx-auto h-[40px] flex flex-row gap-3 place-items-center">
-          <small>{{ translations.downloads[store.lang] }}</small>
-          <VueUiDigits :dataset="downloads" :config="digitConfig"/>
-        </div> -->
-        <div class="z-10 flex flex-row gap-4 mt-6 w-full">
-          <router-link to="/installation" class="w-full">
-              <button data-cy="btn-install" class="w-full bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white dark:text-black font-satoshi-bold hover:shadow-xl hover:from-app-blue hover:to-app-green transition-all">
-                {{ translations.menu.installation[store.lang] }}
-              </button>
-          </router-link>
-          <router-link to="/docs" class="w-full">
-              <button data-cy="btn-docs" class="w-full bg-white hover:shadow-xl dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold dark:hover:bg-[rgba(255,255,255,0.05)] transition-all hover:border-app-blue">
-                {{ translations.menu.docs[store.lang] }}
-              </button>
-          </router-link>
-        </div>
+<svg :viewBox="viewBox" width="100%" class="bg-transparent absolute top-0 left-0 user-position">
+    <line :x1="clientPosition.x" :x2="clientPosition.x" :y1="0" :y2="clientPosition.y - targetSize" stroke="#616161" stroke-width="0.6" />
+    <line :x1="clientPosition.x" :x2="clientPosition.x" :y1="clientPosition.y - targetSize" :y2="clientPosition.y + targetSize" :stroke="isDarkMode ? '#212121' : '#E1E1E1'" stroke-width="1"/>
+    <line :x1="clientPosition.x" :x2="clientPosition.x" :y1="clientPosition.y + targetSize" :y2="boardSize.height" stroke="#616161" stroke-width="0.6" />
 
-        <router-link to="/chart-builder" class="w-full">
-          <button class="w-full bg-white hover:shadow-xl dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold dark:hover:bg-[rgba(255,255,255,0.05)] transition-all hover:border-app-blue flex flex-row gap-2 place-items-center justify-center">
-            <ToolIcon/>
-            {{ translations.menu.chartBuilder[store.lang] }}
-              </button>
-         
-        </router-link>
-        <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10">
-            <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue gap-3 transition-all">
+    <line :x1="0" :x2="clientPosition.x - targetSize" :y1="clientPosition.y" :y2="clientPosition.y" stroke="#616161" stroke-width="0.6" />
+    <line :x1="clientPosition.x - targetSize" :x2="clientPosition.x + targetSize" :y1="clientPosition.y" :y2="clientPosition.y" :stroke="isDarkMode ? '#212121' : '#E1E1E1'" stroke-width="1" />
+    <line :x1="clientPosition.x + targetSize" :x2="boardSize.width" :y1="clientPosition.y" :y2="clientPosition.y" stroke="#616161" stroke-width="0.6" />
+
+    <text :x="clientPosition.x - targetSize" :y="clientPosition.y - 6" text-anchor="end" class="tabular-nums" :fill="isDarkMode ? '#616161' : '#BBBBBB'">{{ clientPosition.x }}</text>
+    <g :transform="`translate(${clientPosition.x - 6}, ${clientPosition.y - targetSize})`">
+        <text
+            text-anchor="start"
+            transform="rotate(-90)"
+            :fill="isDarkMode ? '#616161' : '#BBBBBB'"
+        >
+            {{ clientPosition.y }}
+        </text>
+    </g>
+    <circle :cx="clientPosition.x - targetSize" :cy="clientPosition.y" r="2" fill="#42d392"/>
+    <circle :cx="clientPosition.x + targetSize" :cy="clientPosition.y" r="2" fill="#42d392"/>
+    <circle :cx="clientPosition.x" :cy="clientPosition.y - targetSize" r="2" fill="#5f8bee"/>
+    <circle :cx="clientPosition.x" :cy="clientPosition.y + targetSize" r="2" fill="#5f8bee"/>
+    <circle class="moving-target" :cx="clientPosition.x" :cy="clientPosition.y" :r="targetSize" :fill="isDarkMode ? '#FFFFFF05' : '#00000005'"/>
+</svg>
+
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col lg:flex-row justify-center place-items-center lg:gap-[100px] w-full max-w-[1280px]">
+    <div class="flex flex-col gap-6 max-w-[360px] justify-center place-items-center text-center">
+        <h1 style="font-family: SatoshiBold" class="text-[48px]">
+            <span class="text-app-green">Vue </span>
+            <span class="text-app-blue">Data UI</span>
+        </h1>
+        <p class="text-board-2 text-xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
+        <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 hidden lg:block">
+            <button class="relative flex flex-row place-content-center place-items-center bg-transparent dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue gap-3 transition-all">
               <BrandGithubFilledIcon/>
               <span>
                 {{ translations.github[store.lang] }}
@@ -373,17 +447,58 @@ const digitsConfigVersion = computed(() => {
 
             </button>
           </a>
-          <button data-cy="switch-mode" @click="changeTheme" class="z-10 dark:text-gray-400 hover:underline flex flex-row gap-2 place-items-center">
-            <BrightnessUpIcon v-if="store.isDarkMode"/>
-            <MoonIcon v-else/>{{ isDarkMode ? translations.lightMode[store.lang] : translations.darkMode[store.lang] }}
-          </button>
-      </div>
+          <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center">
+          <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
+        </div>
     </div>
 
+    <div class="w-[400px] max-w-[400px] lg:w-[500px] lg:min-w-[500px] relative">
+        <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu"/>
+        <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[500px] place-items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20px]"> 
+            <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${-deviationX * 20}deg);`">
+                <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[80px] mx-auto drop-shadow-xl">
+            </div>
+        </div>
     </div>
+
+    <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 lg:hidden mt-6">
+            <button class="relative flex flex-row place-content-center place-items-center bg-transparent dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue gap-3 transition-all">
+              <BrandGithubFilledIcon/>
+              <span>
+                {{ translations.github[store.lang] }}
+              </span>
+              <div class="w-[25px]" v-if="isLoading">              
+                <VueUiMiniLoader 
+                  :config="{
+                    onion: {
+                      gutterColor: '#CCCCCC',
+                      gutterOpacity: 0.3,
+                      gutterBlur: 0,
+                      trackHueRotate: 360,
+                      trackBlur: 1,
+                      trackColor: '#42d392'
+                    }
+                  }"
+                />
+              </div>
+              <div class="flex flex-row gap-2 place-items-center" v-if="stars && !isLoading">
+                <StarFilledIcon class="text-[#fdd663] drop-shadow"/>
+                <span class="text-xs dark:text-[#fdd663] h-[20px]">
+                  <VueUiDigits :dataset="stars" :config="digitConfigStars"/>
+                </span>
+              </div>
+
+            </button>
+          </a>
+</div>
+<button @click="changeTheme" id="themeToggle" class=" flex place-items-center place-content-end w-full py-1 pr-4 text-center absolute top-3 right-2">
+<BrightnessUpIcon v-if="isDarkMode" class="text-chalk"/>
+<MoonIcon v-else class="text-board-2"/>
+</button>
+</div>
 </template>
 
-<style>
+<style scoped>
 .home-perspective-wrapper {
   perspective-origin: center;
   perspective: 400px;
@@ -391,5 +506,32 @@ const digitsConfigVersion = computed(() => {
 .home-perspective {
   transform-style: preserve-3d;
 }
+.user-position line {
+    stroke-linecap: round;
+}
+.user-position text {
+    font-size: 12px;
+}
 
+.yRotated{
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+</style>
+
+<style>
+.custom-styles 
+.vue-ui-donut svg {
+    background: #FFFFFF00 !important;
+}
+.custom-styles .vue-ui-donut path {
+    cursor: pointer;
+}
+.custom-styles .vue-ui-donut text {
+    cursor: pointer;
+}
+.custom-styles 
+.vue-ui-donut {
+    background: transparent !important;
+}
 </style>

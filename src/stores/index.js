@@ -378,12 +378,12 @@ export const useMainStore = defineStore("main", {
                 menu: {
                     chartBuilder: {
                         en: "Chart builder",
-                        fr: "Générateur de graphiques",
-                        pt: "Construtor de gráficos",
-                        de: "Diagrammersteller",
+                        fr: "Chart builder",
+                        pt: "Chart builder",
+                        de: "Chart builder",
                         zh: "图表生成器",
                         jp: "チャートビルダー",
-                        es: "Generador de gráficos",
+                        es: "Chart builder",
                         ko: "차트 빌더"
                     },
                     customization: {
