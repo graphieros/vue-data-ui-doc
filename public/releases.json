@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.21",
+        "date": "2024-03-14",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "Added @selectDatapoint emit"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.20",
         "date": "2024-03-13",
         "updates": [

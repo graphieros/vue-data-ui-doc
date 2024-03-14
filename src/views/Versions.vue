@@ -3,6 +3,7 @@ import { ref, computed, onMounted, watch, nextTick } from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useMainStore } from "../stores";
 import globalConfig from "../assets/default_configs.json";
+import staticReleases from "../../public/releases.json"
 
 
 const store = useMainStore();
@@ -100,7 +101,6 @@ const usableHeatmapData = computed(() => {
   });
 
   return result;
-
 });
 
 const usableWeekData = computed(() => {
@@ -212,6 +212,92 @@ const heatmapConfig = computed(() => {
       roundingValue: 0,
       customFormat: ({datapoint}) => {
         return `<div style="border-radius:50%;background:${datapoint.color};display:flex;align-items:center;justify-content:center;height: 64px;width:64px;box-shadow:0 12px 24px -12px rgba(0,0,0,0.3)">${datapoint.value}</div>`
+      }
+    }
+  },
+  userOptions: {
+    show: false,
+  },
+}
+})
+const sparklineReleasesConfig = computed(() => {
+  return {
+  style: {
+    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
+    color: "#2D353C",
+    fontFamily: "inherit",
+    layout: {
+      useDiv: true,
+      padding: {
+        top: 36,
+        right: 12,
+        bottom: 12,
+        left: 48
+      },
+      cells: {
+        height: 24,
+        value: {
+          show: false,
+          fontSize: 8,
+          bold: false,
+          roundingValue: 0,
+          color: isDarkMode.value ? '#FAFAFA' : '#1A1A1A',
+        },
+        colors: {
+          hot: "#6376DD",
+          cold: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
+          underlayer: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+        },
+        spacing: 0,
+        selected: {
+          border: 2,
+          color: "#2D353C"
+        }
+      },
+      dataLabels: {
+        xAxis: {
+          show: false,
+          fontSize: 8,
+          color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+          bold: false,
+          offsetX: 0,
+          offsetY: 0
+        },
+        yAxis: {
+          show: true,
+          values: [],
+          fontSize: 8,
+          color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+          bold: false,
+          offsetY: 0,
+          offsetX: 0
+        }
+      }
+    },
+    title: {
+      text: "Releases",
+      color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+      fontSize: 16,
+      bold: true,
+    },
+    legend: {
+      show: true,
+      backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
+      color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+      fontSize: 6,
+      bold: true,
+      roundingValue: 0,
+      position: 'right'
+    },
+    tooltip: {
+      show: true,
+      backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+      color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+      fontSize: 14,
+      roundingValue: 0,
+      customFormat: ({datapoint, series}) => {
+        console.log({ datapoint, series})
+        return `<div style="border-radius:50%;background:${datapoint.color};display:flex;align-items:center;justify-content:center;height: 64px;width:64px;box-shadow:0 12px 24px -12px rgba(0,0,0,0.3)">Components affected: ${datapoint.value}</div>`
       }
     }
   },
@@ -420,7 +506,6 @@ onMounted(() => {
     }).then((response) => {
       return response.json()
     }).then(data => {
-      console.log(data.results.map(r => r.package.name))
       console.log(data.results.map(r => r.package.name).includes('vue-data-ui'))
     }).catch(err => {
       console.error(err.message)
@@ -435,7 +520,20 @@ onMounted(() => {
         versionsList.value = data;
     }).catch(err => {
         console.error(err.message);
+        versionsList.value = staticReleases
     })
+});
+
+
+const sparklineReleases = computed(() => {
+  if (!versionsList.value) return [];
+
+  return versionsList.value.map(v => {
+    return {
+      period: v.date,
+      value: v.updates.length
+    }
+  })
 });
 
 const dataset = computed(() => {
@@ -1395,6 +1493,31 @@ const config3dBar = computed(() => {
 };
 })
 
+const sparklineConfigForReleases = computed(() => {
+  return {
+    type: 'bar',
+    style: {
+      backgroundColor: isDarkMode.value ? '#1E1E1E': '#f3f4f6',
+      color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+      bar: {
+        borderRadius: 1,
+        color: '#5f8bee'
+      },
+      dataLabel: {
+        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+        suffix: ' updates',
+        fontSize: 16,
+        valueType: 'sum'
+      },
+      title: {
+        text: 'Releases',
+        color: isDarkMode.value ? '#5f8bee' : '#1A1A1A',
+        fontSize: 20
+      }
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -1437,6 +1560,9 @@ const config3dBar = computed(() => {
                 </div>
                 <div class="max-w-[800px] mx-auto" v-if="!isLoadingLine">
                   <VueUiXy :config="xyConfig" :dataset="xyDataset"/>
+                </div>
+                <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
+                  <VueUiSparkline :dataset="sparklineReleases.reverse()" :config="sparklineConfigForReleases"/>
                 </div>
                 <div class="w-full max-h-[500px] overflow-y-auto">
                     <ul>

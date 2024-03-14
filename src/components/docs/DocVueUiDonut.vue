@@ -600,6 +600,28 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
             </template>
 
             <template v-slot:tab2>
+                @selectDatapoint<br><br>
+
+{{ translations.docs.emits.selectDatapoint[store.lang] }}
+<br><br>
+<pre>
+<code>
+&lt;template&gt;
+  &lt;VueUiDonut
+    :dataset="dataset"
+    :config="config"
+    @selectDatapoint="selectDatapoint"
+  /&gt;
+&lt;/template&gt;
+
+&lt;script setup lang="ts"&gt;
+  function selectDatapoint({ datapoint, index }: { datapoint: VueUiDonutDatasetItem, index: number }) {
+    console.log({ datapoint, index })
+  }
+&lt;/script&gt;
+</code>
+</pre>
+
                 <div><code><b>@selectLegend</b></code></div>
                 <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
     <pre>
