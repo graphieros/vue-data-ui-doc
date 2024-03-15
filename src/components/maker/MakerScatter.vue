@@ -7,6 +7,7 @@ import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
+import DocLink from "../DocLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -189,6 +190,7 @@ function getLabel(label) {
 
 <template>
 <ClearStorageAndRefresh keyConfig="scatterConfig" keyDataset="scatterDataset" :key="`clear_${clearStep}`"/>
+<DocLink to="vue-ui-scatter" name="VueUiScatter"/>
 
 <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
     <transition name="fade">                

@@ -8,6 +8,7 @@ import { useMakerStore } from "../../stores/maker"
 import { useDefaultDataStore } from "../../stores/defaultData"
 import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
+import DocLink from "../DocLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -205,6 +206,7 @@ function getLabel(label) {
 <template>
 
         <ClearStorageAndRefresh keyConfig="xyConfig" keyDataset="xyDataset" :key="`clear_${clearStep}`"/>
+        <DocLink to="vue-ui-xy" name="VueUiXy"/>
 
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <transition name="fade">                

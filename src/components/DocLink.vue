@@ -1,0 +1,30 @@
+<script setup>
+import { computed, nextTick } from "vue";
+import { useMainStore } from "../stores";
+import { useMakerStore } from "../stores/maker"
+import { ClipboardTextIcon } from "vue-tabler-icons";
+
+import { useRouter } from "vue-router"
+
+const store = useMainStore();
+const router = useRouter()
+
+const translations = computed(() => store.translations);
+
+const props = defineProps({
+    to: String,
+    name: String
+})
+
+function goToDocs() {
+    nextTick(() => {
+        router.push({ path: `/docs`, hash: `#${props.to}`})
+        window.scrollTo(0,0)
+    })
+}
+
+</script>
+
+<template>
+    <button @click="goToDocs" class="flex flex-row gap-2 place-items-center rounded-md border border-black dark:border-app-green py-3 px-4 hover:bg-[#42d39233] hover:shadow-xl"><ClipboardTextIcon /> {{ props.name }} {{ translations.menu.docs[store.lang] }}</button>
+</template>

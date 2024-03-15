@@ -7,6 +7,7 @@ import { useDefaultDataStore } from "../../stores/defaultData"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
+import DocLink from "../DocLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -158,6 +159,7 @@ function getLabel(label) {
 <template>
 
 <ClearStorageAndRefresh keyConfig="heatmapConfig" keyDataset="heatmapDataset" :key="`clear_${clearStep}`"/>
+<DocLink to="vue-ui-heatmap" name="VueUiHeatmap"/>
 
 <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
     <transition name="fade">                

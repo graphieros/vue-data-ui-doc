@@ -8,6 +8,7 @@ import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js";
 import { useDefaultDataStore } from "../../stores/defaultData"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
+import DocLink from "../DocLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -140,6 +141,7 @@ const usableDataset = computed(() => {
 <template>
 
 <ClearStorageAndRefresh keyConfig="gaugeConfig" keyDataset="gaugeDataset" :key="`clear_${clearStep}`"/>
+<DocLink to="vue-ui-gauge" name="VueUiGauge"/>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <transition name="fade">                
