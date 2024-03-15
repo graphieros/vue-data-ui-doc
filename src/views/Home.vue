@@ -344,23 +344,26 @@ const configDonutMenu = computed(() => {
                         borderWidth: 2
                     },
                     labels: {
-                        percentage: {
-                            color: isDarkMode.value ? '#7A7A7A': '#AAAAAA',
-                            bold: false
-                        },
-                        name: {
-                            color: isDarkMode.value ? '#C1C1C1': '#1A1A1A',
-                            fontSize: 14,
-                            bold: true
-                        },
-                        hollow: {
-                            total: {
-                                show: false,
-                            },
-                            average: {
-                                show: false,
-                            }
-                        }
+                      value: {
+                        show: false,
+                      },
+                      percentage: {
+                          color: isDarkMode.value ? '#7A7A7A': '#AAAAAA',
+                          bold: false
+                      },
+                      name: {
+                          color: isDarkMode.value ? '#C1C1C1': '#1A1A1A',
+                          fontSize: 14,
+                          bold: true
+                      },
+                      hollow: {
+                          total: {
+                              show: false,
+                          },
+                          average: {
+                              show: false,
+                          }
+                      }
                     }
                 }
             }
@@ -452,7 +455,7 @@ function selectMenu({ datapoint, index }) {
         </div>
     </div>
 
-    <div class="w-[400px] max-w-[400px] lg:w-[500px] lg:min-w-[500px] relative">
+    <div class="w-[400px] max-w-[400px] lg:w-[500px] lg:min-w-[500px] 2xl:w-[900px] 2xl:min-w-[900px] relative">
         <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu"/>
         <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[500px] place-items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20px]"> 
             <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${-deviationX * 20}deg);`">
