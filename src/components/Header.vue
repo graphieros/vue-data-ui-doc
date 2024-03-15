@@ -115,17 +115,17 @@ const selectedLanguage = computed({
                     <ToolIcon/>
                 </button> -->
                 <router-link data-cy="link-installation" to="/installation">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/installation') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/installation') ? 'text-[#277753] dark:text-app-green hover:cursor-default bg-[#42d39233] shadow-md' : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.installation[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-docs" to="/docs">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/docs') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/docs') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-md' : 'text-gray-800 dark:text-app-blue dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.docs[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-docs" to="/chart-builder">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/chart-builder') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/chart-builder') ? 'text-black dark:text-gray-200 hover:cursor-default bg-[#FFFFFF33] shadow-md' : 'text-gray-800 dark:text-gray-200 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
                         {{ translations.menu.chartBuilder[store.lang] }}
                     </span>
                 </router-link>
@@ -166,43 +166,43 @@ const selectedLanguage = computed({
                 <button id="mainDropdownButton" @click="useMenu" type="button">
                     <Menu2Icon/>
                 </button>
-                <div id="mainDropdown" class="absolute top-full mt-2 right-0 bg-white dark:bg-black rounded-lg border border-gray-700 shadow-2xl px-2 py-3 w-[140px] text-right" v-show="isOpen">
+                <div id="mainDropdown" class="absolute top-full mt-2 right-0 bg-white dark:bg-black rounded-lg border border-gray-700 shadow-2xl px-2 pl-3 py-3 w-[180px] text-right" v-show="isOpen">
                     <ul>
                         <!-- <button @click="openChartMaker">
                             <ToolIcon/>
                         </button> -->
                         <router-link to="/installation">
-                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-green hover:shadow-xl">
+                            <span @click="isOpen=false"  class="block dark:text-app-green w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-green hover:shadow-xl">
                                 {{ translations.menu.installation[store.lang] }}
                             </span>
                         </router-link>
                         <router-link to="/docs">
-                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
+                            <span @click="isOpen=false"  class="block w-full dark:text-app-blue py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
                                 {{ translations.menu.docs[store.lang] }}
                             </span>
                         </router-link>
                         <router-link to="/chart-builder">
-                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
+                            <span @click="isOpen=false"  class="block w-full dark:text-gray-200 py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-gray-200 hover:shadow-xl">
                                 {{ translations.menu.chartBuilder[store.lang] }}
                             </span>
                         </router-link>
                         <router-link to="/dashboard">
-                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
+                            <span @click="isOpen=false"  class="block w-full dark:text-gray-400  py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
                                 {{ translations.menu.dashboard[store.lang] }}
                             </span>
                         </router-link>
                         <router-link to="/customization">
-                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
+                            <span @click="isOpen=false"  class="block w-full dark:text-gray-400 py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
                                 {{ translations.menu.customization[store.lang] }}
                             </span>
                         </router-link>
                         <router-link to="/versions">
-                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-gray-200 hover:shadow-xl">
+                            <span @click="isOpen=false"  class="block w-full dark:text-gray-400 py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
                                 {{ translations.menu.versions[store.lang] }}
                             </span>
                         </router-link>
                         <router-link to="/about">
-                            <span @click="isOpen=false"  class="block w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-gray-200 hover:shadow-xl">
+                            <span @click="isOpen=false"  class="block w-full dark:text-gray-400 py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
                                 {{ translations.menu.about[store.lang] }}
                             </span>
                         </router-link>
@@ -210,8 +210,10 @@ const selectedLanguage = computed({
                             <BrightnessUpIcon v-if="store.isDarkMode"/>
                             <MoonIcon v-else/>
                         </button>
-                        <div class="z-10 flex flex-row place-items-center gap-2">
-                            <LanguageIcon/>
+                        <div class="z-10 flex flex-row place-items-center gap-2 mt-4">
+                            <div class="w-fit">
+                                <LanguageIcon class="dark:text-app-green"/>
+                            </div>
                             <select v-model="selectedLanguage" class="h-[24px] px-2">
                                 <option v-for="option in languageOptions" :value="option.value">
                                     {{ option.text }}

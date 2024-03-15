@@ -137,6 +137,16 @@ export const useMakerStore = defineStore('maker', {
                     ko: "구성 요소 코드:"
                 },
                 categories: {
+                    container: {
+                        en: "Container",
+                        fr: "Conteneur",
+                        pt: "Recipiente",
+                        de: "Container",
+                        zh: "容器",
+                        jp: "容器",
+                        es: "Envase",
+                        ko: "컨테이너"
+                    },
                     correlation: {
                         en: 'Correlation',
                         fr: "Corrélation",
@@ -1286,6 +1296,16 @@ export const useMakerStore = defineStore('maker', {
                         jp: "期間",
                         es: "Período",
                         ko: "기간"
+                    },
+                    perspective: {
+                        en: 'Perspective',
+                        fr: "Perspective",
+                        pt: "Perspectiva",
+                        de: "Perspektive",
+                        zh: "看法",
+                        jp: "遠近",
+                        es: "Perspectiva",
+                        ko: "배경"
                     },
                     plots: {
                         en: 'Plots',

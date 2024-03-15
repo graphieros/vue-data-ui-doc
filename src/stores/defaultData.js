@@ -1938,6 +1938,47 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
                     { key: 'style.title.subtitle.bold', def: true, type: 'checkbox', label: 'bold', category: 'subtitle'},
                 ]
+            },
+            vue_ui_3d_bar: {
+                dataset: {
+                    percentage: 66.5
+                },
+                model: [
+                    { key: 'style.shape', def: 'bar', type: 'select', options: ['bar', 'tube'], label: 'shape', category: 'general'},
+                    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
+                    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                    { key: 'style.chart.animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'style.chart.animation.speed', def: 1, type: 'number', min: 0, max: 10, label: ['animation', 'is', 'speed'], category: 'general'},
+                    { key: 'style.chart.animation.acceleration', def: 1, type: 'number', min: 0, max: 100, label: ['animation', 'is', 'acceleration'], category: 'general'},
+                    { key: 'style.chart.box.stroke', def: '#CCCCCC', type: 'color', label: ['border', 'is', 'color'], category: 'container'},
+                    { key: 'style.chart.box.strokeWidth', def: 0.7, type: 'number', min: 0, max: 6, step: 0.1, label: ['border', 'is', 'thickness'], category: 'container'},
+                    { key: 'style.chart.box.strokeDasharray', def: 2, type: 'number', min: 0, max: 24, step: 0.1, label: 'dashed', category: 'container'},
+                    { key: 'style.chart.box.dimensions.width', def: 128, type: 'number', min: 24, max: 256, label: ['size', 'is', 'width'], category: 'container'},
+                    { key: 'style.chart.box.dimensions.height', def: 256, type: 'number', min: 24, max: 512, label: ['size', 'is', 'height'], category: 'container'},
+                    { key: 'style.chart.box.dimensions.top', def: 27, type: 'number', min: 0, max: 100, label: ['size', 'is', 'top'], category: 'container'},
+                    { key: 'style.chart.box.dimensions.right', def: 24, type: 'number', min: 0, max: 100, label: ['size', 'is', 'right'], category: 'container'},
+                    { key: 'style.chart.box.dimensions.bottom', def: 9, type: 'number', min: 0, max: 100, label: ['size', 'is', 'bottom'], category: 'container'},
+                    { key: 'style.chart.box.dimensions.left', def: 24, type: 'number', min: 0, max: 100, label: ['size', 'is', 'left'], category: 'container'},
+                    { key: 'style.chart.box.dimensions.perspective', def: 18, type: 'number', min: 0, max: 100, label: ['size', 'is', 'perspective'], category: 'container'},
+                    { key: 'style.chart.bar.color', def: '#6376DD', type: 'color', label: ['bars', 'is', 'color'], category: 'container'},
+                    { key: 'style.chart.bar.stroke', def: '#6376DD', type: 'color', label: ['bars', 'border', 'is', 'color'], category: 'container'},
+                    { key: 'style.chart.bar.strokeWidth', def: 0.7, type: 'number', min: 0, max: 24, step: 0.1, label: ['bars', 'border', 'is', 'thcikness'], category: 'container'},
+                    { key: 'style.chart.dataLabel.show', def: true, type: 'checkbox', label: 'show', category: 'labels'},
+                    { key: 'style.chart.dataLabel.color', def: '#6376DD', type: 'color', label: 'textColor', category: 'labels'},
+                    { key: 'style.chart.dataLabel.fontSize', def: 12, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'labels'},
+                    { key: 'style.chart.dataLabel.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels'},
+                    { key: 'style.chart.dataLabel.rounding', def: 1, type: 'number', min: 0, max: 6, label: 'rounding', category: 'labels'},
+                    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
+                    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+                    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.fontSize', def: 16, type:'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'}
+                ]
             }
         }
     }
