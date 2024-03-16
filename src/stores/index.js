@@ -20,6 +20,68 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                sideMenu: {
+                    miniCharts: {
+                        en: "Mini charts",
+                        fr: "Mini-graphiques",
+                        pt: "Minigráficos",
+                        de: "Mini-Charts",
+                        zh: "迷你图表",
+                        jp: "ミニチャート",
+                        es: "Mini gráficos",
+                        ko: "미니 차트",
+                    },
+                    charts: {
+                        en: "Charts",
+                        fr: "Graphiques",
+                        pt: "Gráficos",
+                        de: "Diagramme",
+                        zh: "图表",
+                        jp: "チャート",
+                        es: "Gráficos",
+                        ko: "차트",
+                    },
+                    charts3d: {
+                        en: "3d charts",
+                        fr: "Graphiques 3d",
+                        pt: "Gráficos 3d",
+                        de: "3d-Diagramme",
+                        zh: "3D图表",
+                        jp: "3Dチャート",
+                        es: "3d Gráficos",
+                        ko: "3D 차트",
+                    },
+                    tables: {
+                        en: "Data tables",
+                        fr: "Tableaux",
+                        pt: "Tabelas de dados",
+                        de: "Datentabellen",
+                        zh: "数据表",
+                        jp: "データテーブル",
+                        es: "Tablas de datos",
+                        ko: "데이터 테이블",
+                    },
+                    rating: {
+                        en: "Rating",
+                        fr: "Notation",
+                        pt: "Avaliação",
+                        de: "Bewertung",
+                        zh: "评分",
+                        jp: "評価",
+                        es: "Clasificación",
+                        ko: "평가",
+                    },
+                    utilities: {
+                        en: "Utilities",
+                        fr: "Utilitaires",
+                        pt: "Utilidades",
+                        de: "Nützlichkeit",
+                        zh: "公用事业",
+                        jp: "公共事業",
+                        es: "Utilidades",
+                        ko: "유용",
+                    }
+                },
                 maker: {
                     labels: {
                         period: {
