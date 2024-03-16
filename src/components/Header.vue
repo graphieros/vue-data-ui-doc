@@ -2,7 +2,7 @@
 import { ref, onMounted, computed } from "vue";
 import { Menu2Icon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
-import { BrightnessUpIcon, MoonIcon, LanguageIcon, ToolIcon } from "vue-tabler-icons";
+import { SunFilledIcon, MoonStarsIcon, LanguageIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import ChartMaker from "./ChartMaker.vue";
 const router = useRouter();
@@ -102,7 +102,7 @@ const selectedLanguage = computed({
 <template>
     <ChartMaker ref="chartMkr"/>
     <header data-cy="app-header" class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b border-gray-700 transition-all">
-        <div class="mx-auto w-5/6 py-3 flex justify-between">
+        <div class="mx-auto w-5/6 py-3 flex justify-between place-items-center">
             <router-link data-cy="link-home" to="/" class="w-[150px]">
                 <div data-cy="header-app-name" class="flex flex-row gap-3 w-full">
                     <img data-cy="header-logo" src="../assets/logo.png" class="h-5">
@@ -149,9 +149,9 @@ const selectedLanguage = computed({
                         {{ translations.menu.about[store.lang] }}
                     </span>
                 </router-link>
-                <button data-cy="btn-mode" @click="changeTheme" id="themeToggle">
-                    <BrightnessUpIcon v-if="isDarkMode"/>
-                    <MoonIcon v-else/>
+                <button data-cy="btn-mode" @click="changeTheme" id="themeToggle" class="dark:hover:bg-[#fdd66320] hover:bg-[#5f8bee30] hover:text-[#5f8bee] rounded-full p-1">
+                    <SunFilledIcon v-if="isDarkMode" class="text-[#fdd663]"/>
+                    <MoonStarsIcon v-else/>
                 </button>
                 <div class="z-10 flex flex-row place-items-center gap-2">
                     <LanguageIcon/>
@@ -207,8 +207,8 @@ const selectedLanguage = computed({
                             </span>
                         </router-link>
                         <button @click="changeTheme" id="themeToggle" class=" flex place-items-center place-content-end w-full py-1 pr-4 text-center">
-                            <BrightnessUpIcon v-if="store.isDarkMode"/>
-                            <MoonIcon v-else/>
+                            <SunFilledIcon v-if="store.isDarkMode" class="text-[#fdd663]"/>
+                            <MoonStarsIcon v-else/>
                         </button>
                         <div class="z-10 flex flex-row place-items-center gap-2 mt-4">
                             <div class="w-fit">
