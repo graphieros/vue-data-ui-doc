@@ -9,7 +9,6 @@ import router from "../router"
 import staticReleases from "../../public/releases.json"
 
 const store = useMainStore();
-
 function changeTheme() {
     if (localStorage.theme === "dark"){
         localStorage.theme = "light";
