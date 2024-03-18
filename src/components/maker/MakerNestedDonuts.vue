@@ -96,8 +96,6 @@ onMounted(() => {
     }else {
         localStorage.setItem('nestedDonutsDataset', JSON.stringify(defaultData.vue_ui_nested_donuts.dataset))
     }
-    //REMOVE
-    localStorage.clear()
 
     step.value += 1;
 })
