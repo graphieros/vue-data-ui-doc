@@ -122,9 +122,14 @@ const boardSize = computed(() => {
     }
 })
 
-function setClientPosition({ clientX, clientY }) {
+function setClientPosition({ clientX, clientY, ...rest }) {
     clientPosition.value.x = clientX;
     clientPosition.value.y = clientY;
+  }
+  
+  function setFingerPosition(data) {
+    clientPosition.value.x = data.targetTouches[0].clientX;
+    clientPosition.value.y = data.targetTouches[0].clientY;
 }
 
 onMounted(() => {
@@ -181,6 +186,7 @@ onMounted(() => {
 
     requestAnimationFrame(updateSparkline);
     document.addEventListener("mousemove", getClientPosition);
+    document.addEventListener("touchmove", setFingerPosition);
 });
 
 function getClientPosition(e) {
@@ -397,14 +403,14 @@ function selectMenu({ datapoint, index }) {
     <line :x1="clientPosition.x - targetSize" :x2="clientPosition.x + targetSize" :y1="clientPosition.y" :y2="clientPosition.y" :stroke="isDarkMode ? '#212121' : '#E1E1E1'" stroke-width="1" />
     <line :x1="clientPosition.x + targetSize" :x2="boardSize.width" :y1="clientPosition.y" :y2="clientPosition.y" stroke="#616161" stroke-width="0.6" />
 
-    <text :x="clientPosition.x - targetSize" :y="clientPosition.y - 6" text-anchor="end" class="tabular-nums" :fill="isDarkMode ? '#616161' : '#BBBBBB'">{{ clientPosition.x }}</text>
+    <text :x="clientPosition.x - targetSize" :y="clientPosition.y - 6" text-anchor="end" class="tabular-nums" :fill="isDarkMode ? '#616161' : '#BBBBBB'">{{ clientPosition.x.toFixed(0) }}</text>
     <g :transform="`translate(${clientPosition.x - 6}, ${clientPosition.y - targetSize})`">
         <text
             text-anchor="start"
             transform="rotate(-90)"
             :fill="isDarkMode ? '#616161' : '#BBBBBB'"
         >
-            {{ clientPosition.y }}
+            {{ clientPosition.y.toFixed(0) }}
         </text>
     </g>
     <circle :cx="clientPosition.x - targetSize" :cy="clientPosition.y" r="2" fill="#42d392"/>
