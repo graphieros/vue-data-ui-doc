@@ -719,6 +719,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        nestedDonuts: {
+                            en: "Visualize breakdowns of comparable series",
+                            fr: "Visualisez les répartitions de séries comparables",
+                            pt: "Visualize detalhamentos de séries comparáveis",
+                            de: "Visualisieren Sie Aufschlüsselungen vergleichbarer Serien",
+                            zh: "可视化可比系列的细分",
+                            jp: "比較可能なシリーズの内訳を視覚化する",
+                            es: "Visualice desgloses de series comparables",
+                            ko: "비교 가능한 시리즈의 분석 시각화"
+                        },
                         miniLoader: {
                             en: "A customizable loader component to stand out",
                             fr: "Un composant chargeur personnalisable pour se démarquer",

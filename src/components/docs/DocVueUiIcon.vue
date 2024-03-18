@@ -46,6 +46,7 @@ const specialIcons = ref([
     "chartChestnut",
     "chartCluster",
     "chartDonut",
+    "chartNestedDonuts",
     "chartDonutEvolution",
     "chartGauge",
     "chartHeatmap",

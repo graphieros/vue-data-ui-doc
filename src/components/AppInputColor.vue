@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from "vue";
 
 const props = defineProps({
@@ -17,9 +17,7 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits<{
-    (event: "select", value: string): void;
-}>();
+const emit = defineEmits(['select'])
 
 const currentColor = ref(props.color || "#2D353C");
 function updateColor() {

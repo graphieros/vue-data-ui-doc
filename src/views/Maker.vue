@@ -27,6 +27,7 @@ import MakerMoodRadar from "../components/maker/MakerMoodRadar.vue";
 import MakerRelationCircle from "../components/maker/MakerRelationCircle.vue";
 import MakerThermometer from "../components/maker/MakerThermometer.vue";
 import Maker3dBar from "../components/maker/Maker3dBar.vue";
+import MakerNestedDonuts from "../components/maker/MakerNestedDonuts.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
@@ -70,7 +71,8 @@ const options = ref([
     { name: "VueUiMoodRadar", icon: "chartMoodRadar", thumb: new URL('../assets/thumb_mood_radar_light.png', import.meta.url).href},
     { name: "VueUiRelationCircle", icon: "chartRelationCircle", thumb: new URL('../assets/thumb_relation_circle_light.png', import.meta.url).href},
     { name: "VueUiThermometer", icon: "chartThermometer", thumb: new URL('../assets/thumb_thermometer_light.png', import.meta.url).href},
-    { name: "VueUi3dBar", icon: "chart3dBar", thumb: new URL('../assets/thumb_3d_bar_light.png', import.meta.url).href}
+    { name: "VueUi3dBar", icon: "chart3dBar", thumb: new URL('../assets/thumb_3d_bar_light.png', import.meta.url).href},
+    { name: "VueUiNestedDonuts", icon: "chartNestedDonuts", thumb: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -184,5 +186,6 @@ function selectChart(opt) {
         <MakerRelationCircle v-if="selectedChart.name === 'VueUiRelationCircle'"/>
         <MakerThermometer v-if="selectedChart.name === 'VueUiThermometer'" />
         <Maker3dBar v-if="selectedChart.name === 'VueUi3dBar'" />
+        <MakerNestedDonuts v-if="selectedChart.name === 'VueUiNestedDonuts'" />
     </div>
 </template>

@@ -41,6 +41,7 @@ import DocVueUiMolecule from "../components/docs/DocVueUiMolecule.vue";
 import DeepSearch from "../components/DeepSearch.vue";
 import DocVueUiTableSparkline from "../components/docs/DocVueUiTablesparkline.vue";
 import DocVueUiMiniLoader from "../components/docs/DocVueUiMiniLoader.vue";
+import DocVueUiNestedDonuts from "../components/docs/DocVueUiNestedDonuts.vue";
 import { getVueDataUiConfig } from "vue-data-ui";
 import mainConfig from "../assets/default_configs.json";
 
@@ -136,6 +137,17 @@ const menuItems = computed(() => [
         thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
         hasSlot: true,
+        hasTableCss: true,
+    },
+    {
+        name: "NestedDonuts",
+        icon: "chartNestedDonuts",
+        tooltip: translations.value.docs.tooltips.nestedDonuts[store.lang],
+        link: "/docs#vue-ui-nested-donuts",
+        type: "classic",
+        thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
+        hasSlot: false,
         hasTableCss: true,
     },
     {
@@ -559,6 +571,7 @@ const menuItems = computed(() => [
             <DocVueUiDigits v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-digits'"/>
             <DocVueUiMolecule v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-molecule'"/>
             <DocVueUiMiniLoader v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-mini-loader'"/>
+            <DocVueUiNestedDonuts v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-nested-donuts'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">

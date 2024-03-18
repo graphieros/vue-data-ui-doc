@@ -252,6 +252,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_molecule_light.png', import.meta.url).href,
     },
     {
+        route: '/docs#vue-ui-nested-donuts',
+        icon: 'chartNestedDonuts',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'NestedDonuts',
+        thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
+    },
+    {
         route: '/docs#vue-ui-sparkline',
         icon: 'chartLine',
         cssClasses: '',
@@ -400,6 +409,77 @@ const thisApp = computed(() => {
     return document.getElementById("app")
 })
 
+const sideMenuItems = ref([
+    {
+        title: translations.value.sideMenu.miniCharts[store.lang],
+        items: [
+            { route: '/docs#vue-ui-sparkline', componentName: 'Sparkline', icon: 'chartLine' },
+            { route: '/docs#vue-ui-sparkbar', componentName: 'Sparkbar', icon: 'chartVerticalBar' },
+            { route: '/docs#vue-ui-sparkstackbar', componentName: 'SparkStackbar', icon: 'chartSparkStackbar' },
+            { route: '/docs#vue-ui-sparkhistogram', componentName: 'SparkHistogram', icon: 'chartSparkHistogram' },
+        ],
+    },
+    {
+        title: translations.value.sideMenu.charts[store.lang],
+        items: [
+            {route: '/docs#vue-ui-xy', componentName: 'Xy', icon: 'chartLine' },
+            {route: '/docs#vue-ui-donut', componentName: 'Donut', icon: 'chartDonut' },
+            {route: '/docs#vue-ui-waffle', componentName: 'Waffle', icon: 'chartWaffle' },
+            {route: '/docs#vue-ui-radar', componentName: 'Radar', icon: 'chartRadar' },
+            {route: '/docs#vue-ui-quadrant', componentName: 'Quadrant', icon: 'chartQuadrant' },
+            {route: '/docs#vue-ui-gauge', componentName: 'Gauge', icon: 'chartGauge' },
+            {route: '/docs#vue-ui-wheel', componentName: 'Wheel', icon: 'chartWheel' },
+            {route: '/docs#vue-ui-tiremarks', componentName: 'Tiremarks', icon: 'chartTiremarks' },
+            {route: '/docs#vue-ui-chestnut', componentName: 'Chestnut', icon: 'chartChestnut' },
+            {route: '/docs#vue-ui-onion', componentName: 'Onion', icon: 'chartOnion' },
+            {route: '/docs#vue-ui-vertical-bar', componentName: 'VerticalBar', icon: 'chartVerticalBar' },
+            {route: '/docs#vue-ui-heatmap', componentName: 'Heatmap', icon: 'chartHeatmap' },
+            {route: '/docs#vue-ui-scatter', componentName: 'Scatter', icon: 'chartScatter' },
+            {route: '/docs#vue-ui-candlestick', componentName: 'Candlestick', icon: 'chartCandlestick' },
+            {route: '/docs#vue-ui-age-pyramid', componentName: 'AgePyramid', icon: 'chartAgePyramid' },
+            {route: '/docs#vue-ui-relation-circle', componentName: 'RelationCircle', icon: 'chartRelationCircle' },
+            {route: '/docs#vue-ui-thermometer', componentName: 'Thermometer', icon: 'chartThermometer' },
+            {route: '/docs#vue-ui-rings', componentName: 'Rings', icon: 'chartRings' },
+            {route: '/docs#vue-ui-donut-evolution', componentName: 'DonutEvolution', icon: 'chartDonutEvolution' },
+            {route: '/docs#vue-ui-mood-radar', componentName: 'MoodRadar', icon: 'chartMoodRadar' },
+            {route: '/docs#vue-ui-molecule', componentName: 'Molecule', icon: 'chartCluster' },
+            {route: '/docs#vue-ui-nested-donuts', componentName: 'NestedDonuts', icon: 'chartNestedDonuts' },
+        ]
+    },
+    {
+        title: translations.value.sideMenu.charts3d[store.lang],
+        items: [
+            { route: '/docs#vue-ui-3d-bar', componentName: '3dBar', icon: 'chart3dBar' }
+        ]
+    },
+    {
+        title: translations.value.sideMenu.tables[store.lang],
+        items: [
+            { route: '/docs#vue-ui-table-sparkline', componentName: 'TableSparkline', icon: 'chartTable' },
+            { route: '/docs#vue-ui-table', componentName: 'Table', icon: 'chartTable' },
+        ]
+    },
+    {
+        title: translations.value.sideMenu.rating[store.lang],
+        items: [
+            { route: '/docs#vue-ui-rating', componentName: 'Rating', icon: 'star' },
+            { route: '/docs#vue-ui-smiley', componentName: 'Smiley', icon: 'smiley' },
+        ]
+    },
+    {
+        title: translations.value.sideMenu.utilities[store.lang],
+        items: [
+            { route: '/docs#vue-ui-screenshot', componentName: 'Screenshot', icon: 'screenshot' },
+            { route: '/docs#vue-ui-skeleton', componentName: 'Skeleton', icon: 'skeleton' },
+            { route: '/docs#vue-ui-dashboard', componentName: 'Dashboard', icon: 'dashboard' },
+            { route: '/docs#vue-ui-annotator', componentName: 'Annotator', icon: 'annotator' },
+            { route: '/docs#vue-ui-icon', componentName: 'Icon', icon: 'smiley' },
+            { route: '/docs#vue-ui-digits', componentName: 'Digits', icon: 'digit8' },
+            { route: '/docs#vue-ui-mini-loader', componentName: 'MiniLoader', icon: 'chartWheel' },
+        ]
+    },
+])
+
 </script>
 
 <template>
@@ -412,108 +492,12 @@ const thisApp = computed(() => {
     </button>
     <template v-if="isOpen">
         <div class="mt-6">
-            <!-- Mini Charts -->
-            <Dropdown>
-                <template #title>
-                    <span class="font-satoshi-bold text-black dark:text-gray-300">
-                        {{ translations.sideMenu.miniCharts[store.lang] }}
-                    </span>
-                </template>
-                <template #content>
-                    <SideMenuItem itsRoute="/docs#vue-ui-sparkline" componentName="Sparkline" icon="chartLine" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-sparkbar" componentName="Sparkbar" icon="chartVerticalBar" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-sparkstackbar" componentName="SparkStackbar" icon="chartSparkStackbar" @close="closeIfOpen" @scrollToTop="scrollToTop" />
-                    <SideMenuItem itsRoute="/docs#vue-ui-sparkhistogram" componentName="SparkHistogram" icon="chartSparkHistogram" @close="closeIfOpen" @scrollToTop="scrollToTop" />
-                </template>
-            </Dropdown>
-
-            <!-- Charts -->
-            <Dropdown>
-                <template #title>
-                    <span class="font-satoshi-bold text-black dark:text-gray-300">
-                        {{ translations.sideMenu.charts[store.lang] }}
-                    </span>
-                </template>
-                <template #content>
-                    <SideMenuItem itsRoute="/docs#vue-ui-xy" componentName="Xy" icon="chartLine" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-donut" componentName="Donut" icon="chartDonut" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-waffle" componentName="Waffle" icon="chartWaffle" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-radar" componentName="Radar" icon="chartRadar" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-quadrant" componentName="Quadrant" icon="chartQuadrant" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-gauge" componentName="Gauge" icon="chartGauge" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-wheel" componentName="Wheel" icon="chartWheel" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-tiremarks" componentName="Tiremarks" icon="chartTiremarks" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-chestnut" componentName="Chestnut" icon="chartChestnut" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-onion" componentName="Onion" icon="chartOnion" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-vertical-bar" componentName="VerticalBar" icon="chartVerticalBar" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-heatmap" componentName="Heatmap" icon="chartHeatmap" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-scatter" componentName="Scatter" icon="chartScatter" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-candlestick" componentName="Candlestick" icon="chartCandlestick" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-age-pyramid" componentName="AgePyramid" icon="chartAgePyramid" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-relation-circle" componentName="RelationCircle" icon="chartRelationCircle" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-thermometer" componentName="Thermometer" icon="chartThermometer" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-rings" componentName="Rings" icon="chartRings" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-donut-evolution" componentName="DonutEvolution" icon="chartDonutEvolution" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-mood-radar" componentName="MoodRadar" icon="chartMoodRadar" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-molecule" componentName="Molecule" icon="chartCluster" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                </template>
-            </Dropdown>
-
-            <!-- 3d Charts -->
-            <Dropdown>
-                <template #title>
-                    <span class="font-satoshi-bold text-black dark:text-gray-300">
-                        {{ translations.sideMenu.charts3d[store.lang] }}
-                    </span>
-                </template>
-                <template #content>
-                    <SideMenuItem itsRoute="/docs#vue-ui-3d-bar" componentName="3dBar" icon="chart3dBar" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                </template>
-            </Dropdown>
-
-            <!-- Tables -->
-            <Dropdown>
-                <template #title>
-                    <span class="font-satoshi-bold text-black dark:text-gray-300">
-                        {{ translations.sideMenu.tables[store.lang] }}
-                    </span>
-                </template>
-                <template #content>
-                    <SideMenuItem itsRoute="/docs#vue-ui-table-sparkline" componentName="TableSparkline" icon="chartTable" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-table" componentName="Table" icon="chartTable" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                </template>
-            </Dropdown>
-
-            <!-- Rating -->
-            <Dropdown>
-                <template #title>
-                    <span class="font-satoshi-bold text-black dark:text-gray-300">
-                        {{ translations.sideMenu.rating[store.lang] }}
-                    </span>
-                </template>
-                <template #content>
-                    <SideMenuItem itsRoute="/docs#vue-ui-rating" componentName="Rating" icon="star" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-smiley" componentName="Smiley" icon="smiley" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                </template>
-            </Dropdown>
-
-            <!-- Utilities -->
-            <Dropdown>
-                <template #title>
-                    <span class="font-satoshi-bold text-black dark:text-gray-300">
-                        {{ translations.sideMenu.utilities[store.lang] }}
-                    </span>
-                </template>
-                <template #content>
-                    <SideMenuItem itsRoute="/docs#vue-ui-screenshot" componentName="Screenshot" icon="screenshot" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-skeleton" componentName="Skeleton" icon="skeleton" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-dashboard" componentName="Dashboard" icon="dashboard" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-annotator" componentName="Annotator" icon="annotator" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-icon" componentName="Icon" icon="smiley" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-digits" componentName="Digits" icon="digit8" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                    <SideMenuItem itsRoute="/docs#vue-ui-mini-loader" componentName="MiniLoader" icon="chartWheel" @close="closeIfOpen" @scrollToTop="scrollToTop"/>
-                </template>
-            </Dropdown>
+            <Dropdown 
+                v-for="menu in sideMenuItems"
+                :title="menu.title"
+                :items="menu.items"
+                @close="closeIfOpen"
+            />
         </div>
     </template>
     <template v-else>

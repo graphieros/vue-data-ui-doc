@@ -1557,6 +1557,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Mostrar",
                         ko: "보여주기 위해"
                     },
+                    showAllItemsAtIndex: {
+                        en: 'Show all items at index',
+                        fr: "Afficher tous les éléments à l'index",
+                        pt: "Mostrar todos os itens no índice",
+                        de: "Alle Elemente im Index anzeigen",
+                        zh: "显示索引处的所有项目",
+                        jp: "インデックスにあるすべてのアイテムを表示",
+                        es: "Mostrar todos los elementos en el índice",
+                        ko: "색인의 모든 항목 표시"
+                    },
                     showDataLabels: {
                         en: "Show data labels",
                         fr: "Afficher les étiquettes de données",
