@@ -297,6 +297,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_histogram_light.png', import.meta.url).href,
     },
     {
+        route: '/docs#vue-ui-sparkgauge',
+        icon: 'chartGauge',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Sparkgauge',
+        thumb: new URL('../assets/thumb_sparkgauge.png', import.meta.url).href, 
+        thumbLight: new URL('../assets/thumb_sparkgauge_light.png', import.meta.url).href, 
+    },
+    {
         route: '/docs#vue-ui-3d-bar',
         icon: 'chart3dBar',
         cssClasses: '',
@@ -417,6 +426,7 @@ const sideMenuItems = ref([
             { route: '/docs#vue-ui-sparkbar', componentName: 'Sparkbar', icon: 'chartVerticalBar' },
             { route: '/docs#vue-ui-sparkstackbar', componentName: 'SparkStackbar', icon: 'chartSparkStackbar' },
             { route: '/docs#vue-ui-sparkhistogram', componentName: 'SparkHistogram', icon: 'chartSparkHistogram' },
+            { route: '/docs#vue-ui-sparkgauge', componentName: 'Sparkgauge', icon: 'chartGauge' },
         ],
     },
     {

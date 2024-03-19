@@ -42,9 +42,9 @@ import DeepSearch from "../components/DeepSearch.vue";
 import DocVueUiTableSparkline from "../components/docs/DocVueUiTablesparkline.vue";
 import DocVueUiMiniLoader from "../components/docs/DocVueUiMiniLoader.vue";
 import DocVueUiNestedDonuts from "../components/docs/DocVueUiNestedDonuts.vue";
+import DocVueUiSparkgauge from "../components/docs/DocVueUiSparkgauge.vue";
 import { getVueDataUiConfig } from "vue-data-ui";
 import mainConfig from "../assets/default_configs.json";
-
 import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 
@@ -360,6 +360,17 @@ const menuItems = computed(() => [
         hasTableCss: false,
     },
     {
+        name: "Sparkgauge",
+        icon: "chartGauge",
+        tooltip: translations.value.docs.tooltips.gauge[store.lang], //////
+        link: "/docs#vue-ui-sparkgauge",
+        type: "mini",
+        thumb: new URL('../assets/thumb_sparkgauge.png', import.meta.url).href, //////
+        thumbLight: new URL('../assets/thumb_sparkgauge_light.png', import.meta.url).href, //////
+        hasSlot: false,
+        hasTableCss: false,
+    },
+    {
         name: "RelationCircle",
         icon: "chartRelationCircle",
         tooltip: translations.value.docs.tooltips.relationCircle[store.lang],
@@ -572,6 +583,7 @@ const menuItems = computed(() => [
             <DocVueUiMolecule v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-molecule'"/>
             <DocVueUiMiniLoader v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-mini-loader'"/>
             <DocVueUiNestedDonuts v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-nested-donuts'"/>
+            <DocVueUiSparkgauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkgauge'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <h1 class="flex gap-2 text-md">
                     <img src="../assets/logo.png" class="h-6">

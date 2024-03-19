@@ -2100,6 +2100,43 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.dataLabels.donutNameMaxAbbreviationSize', def: 3, type: 'number', min: 1, max: 12, label: ['abbreviation', 'is', 'max', 'size'], category: 'labels'},
                     { key: 'style.chart.layout.labels.dataLabels.donutNameOffsetY', def: 0, type: 'number', min: -100, max: 100, label: ['series', 'name', 'is', 'offsetY'], category: 'labels'}
                 ]
+            },
+            vue_ui_sparkgauge: {
+                dataset: {
+                    value: 50,
+                    min: 0,
+                    max: 100,
+                    title: 'Title'
+                },
+                model: [
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
+                    { key: 'style.background', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
+                    { key: 'style.height', def: 84, type: 'number', min: 84, max: 150, label: 'height', category: 'general' },
+                    { key: 'style.basePosition', def: 72, type: 'number', min: 72, max: 150, label: ['position', 'is', 'deviation'], category: 'general' },
+                    { key: 'style.animation.show', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'style.animation.speedMs', def: 150, type: 'range', min: 100, max: 500, step:10, label: ['animation', 'is', 'speed'], category: 'general'},
+                    { key: 'style.title.show', def: true, type: 'checkbox', label: 'show', category: 'title'},
+                    { key: 'style.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
+                    { key: 'style.title.fontSize', def: 12, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.title.position', def: 'top', type: 'select', options: ['top', 'bottom'], label: 'position', category: 'title'},
+                    { key: 'style.title.textAlign', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'textAlign', category: 'title'},
+                    { key: 'style.title.bold', def: false, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.dataLabel.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'labels'},
+                    { key: 'style.dataLabel.autoColor', def: true, type: 'checkbox', label: ['textColor', 'is', 'auto'], category: 'labels'},
+                    { key: 'style.dataLabel.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'labels'},
+                    { key: 'style.dataLabel.offsetY', def: 0, type: 'number', min: -100, max: 100, label: 'offsetY', category: 'labels'},
+                    { key: 'style.dataLabel.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels'},
+                    { key: 'style.dataLabel.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'labels'},
+                    { key: 'style.dataLabel.prefix', def: '', type: 'text', label: 'prefix', category: 'labels'},
+                    { key: 'style.dataLabel.suffix', def: '', type: 'text', label: 'suffix', category: 'labels'},
+                    { key: 'style.colors.min', def: '#FF0000', type: 'color', label: ['min', 'is', 'color'], category: 'general'},
+                    { key: 'style.colors.max', def: '#00FF00', type: 'color', label: ['max', 'is', 'color'], category: 'general'},
+                    { key: 'style.track.autoColor', def: true, type: 'checkbox', label: ['track', 'color', 'is', 'auto'], category: 'general'},
+                    { key: 'style.track.color', def: '#5f8bee', type: 'color', label: ['track', 'is', 'color'], category: 'general'},
+                    { key: 'style.track.strokeLinecap', def: 'round', type: 'select', options: ['round', 'square', 'butt'], label: ['track', 'line', 'is', 'shape'], category: 'general'},
+                    { key: 'style.gutter.color', def: '#e1e5e8', type: 'color', label: ['gutter', 'is', 'color'], category: 'general'},
+                    { key: 'style.gutter.strokeLinecap', def: 'round', type: 'select', options: ['round', 'square', 'butt'], label: ['gutter', 'line', 'is', 'shape'], category: 'general'}
+                ]
             }
         }
     }

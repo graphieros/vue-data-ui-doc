@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.33",
+        "date": "2024-03-19",
+        "updates": [
+            {
+                "component": "VueUiSparkgauge",
+                "description": "Added component"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.31",
         "date": "2024-03-19",
         "updates": [
