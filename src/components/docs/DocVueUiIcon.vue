@@ -1,7 +1,8 @@
 <script setup>
 import { ref, watch, nextTick, computed } from "vue";
-import { XIcon } from "vue-tabler-icons";
+import { XIcon, CopyIcon, CheckIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
+import { copyText } from "../maker/lib";
 
 const store = useMainStore();
 const key = ref(0);
@@ -116,6 +117,23 @@ function selectIcon(icon) {
     useModal("open");
 }
 
+const isCopied = ref(false);
+
+function requestCopy() {
+    const text = `
+        &lt;VueUiIcon
+            name="${selectedIcon.value}"
+            :size="24"
+            stroke="${ isDarkMode.value ? '___CCCCCC' : '___1A1A1A'}"
+        /&gt;
+    `;
+    copyText(text, document.getElementById('iconDialog'));
+    isCopied.value = true;
+    setTimeout(() => {
+        isCopied.value = false;
+    }, 1000)
+}
+
 </script>
 
 <template>
@@ -165,7 +183,9 @@ function selectIcon(icon) {
 
             <div class="mx-auto flex place-items-center justify-center flex-col gap-6 mt-6">
                 <VueUiIcon :name="selectedIcon" :size="128" :strokeWidth="1.2" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-            <div>
+            <div @click="requestCopy" class="relative">
+                <CopyIcon class="absolute -top-2 -right-2 cursor-pointer" v-if="!isCopied" />
+                <CheckIcon v-else class="absolute text-app-green -top-2 -right-2 cursor-pointer animate-ping"/>
                 <code>
                     &lt;<span class="text-app-green">VueUiIcon</span><br>
                         &nbsp;&nbsp;&nbsp;&nbsp;name="{{ selectedIcon }}"<br>

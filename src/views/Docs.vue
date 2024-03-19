@@ -526,7 +526,7 @@ const menuItems = computed(() => [
 </script>
 
 <template>
-    <div v-if="isCopy" class="animate-pulse origin-center z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80px] w-[80px] flex place-items-center place-content-center border-2 border-gray-400 dark:border-app-green dark:bg-black rounded-full bg-white">
+    <div style="z-index:10000000" v-if="isCopy" class="animate-pulse origin-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80px] w-[80px] flex place-items-center place-content-center border-2 border-gray-400 dark:border-app-green dark:bg-black rounded-full bg-white">
         <CheckIcon size="42" class="dark:text-app-green"/>
     </div>
     <SideMenu @toggle="toggleMenu"/>

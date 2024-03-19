@@ -58,9 +58,25 @@ export function copyComponent(id, store) {
     store.copy();
 }
 
+export function copyText(text, parent) {
+    const content = text
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = content.replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('___', '#');
+    parent.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    parent.removeChild(selBox);
+}
+
 
 const lib = {
     copyComponent,
+    copyText,
     createUid,
     getValueByPath,
     convertArrayToObject
