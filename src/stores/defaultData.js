@@ -308,7 +308,18 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', category: 'table'},
                     { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table'},
                     { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'table'},
-                    { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'table'}
+                    { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'table'},
+                    { key: 'style.chart.layout.labels.captions.show', def: false, type: 'checkbox', label: ['caption', 'is', 'show'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.captions.showSerieName', def: true, type: 'checkbox', label: ['caption', 'name', 'is', 'show'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.captions.serieNameAbbreviation', def: true, type: 'checkbox', label: ['caption', 'name', 'is', 'abbreviation'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.captions.serieNameMaxAbbreviationSize', def: 3, type: 'number', min: 1, max: 12, label: ['caption', 'name', 'is', 'abbreviation', 'max', 'size'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.captions.fontSize', def: 12, type: 'number', min: 6, max: 48, label: ['caption', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.captions.showValue', def: true, type: 'checkbox', label: ['caption', 'value', 'is', 'show'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.captions.showPercentage', def: true, type: 'checkbox', label: ['caption', 'percentage', 'is', 'show'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.captions.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['caption', 'value', 'is', 'rounding'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.captions.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['caption', 'percentage', 'is', 'rounding'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.captions.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['caption', 'is', 'offsetX'], category: 'labels'},
+                    { key: 'style.chart.layout.labels.captions.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['caption', 'is', 'offsetY'], category: 'labels'},
                 ]
             },
             vue_ui_radar: {

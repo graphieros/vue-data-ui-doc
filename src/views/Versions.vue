@@ -1562,7 +1562,7 @@ const sparklineConfigForReleases = computed(() => {
                   <VueUiXy :config="xyConfig" :dataset="xyDataset"/>
                 </div>
                 <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
-                  <VueUiSparkline :dataset="sparklineReleases.reverse()" :config="sparklineConfigForReleases"/>
+                  <VueUiSparkline :dataset="JSON.parse(JSON.stringify(sparklineReleases)).reverse()" :config="sparklineConfigForReleases"/>
                 </div>
                 <div class="w-full max-h-[500px] overflow-y-auto">
                     <ul>

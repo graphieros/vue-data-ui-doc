@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.31",
+        "date": "2024-03-19",
+        "updates": [
+            {
+                "component": "VueUiWaffle",
+                "description": "Added config option 'caption' to display series info directly onto the chart only in horizontal mode (default)"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.29",
         "date": "2024-03-18",
         "updates": [

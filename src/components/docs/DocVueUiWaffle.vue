@@ -52,7 +52,20 @@ const isDarkMode = computed(() => {
                         dataLabels: {
                             prefix: "",
                             suffix: ""
-                        }
+                        },
+                        captions: {
+                            "show": false,
+                            "showSerieName": false,
+                            "serieNameAbbreviation": true,
+                            "serieNameMaxAbbreviationSize": 3,
+                            "fontSize": 12,
+                            "showValue": true,
+                            "showPercentage": true,
+                            "roundingValue": 0,
+                            "roundingPercentage": 0,
+                            "offsetX": 0,
+                            "offsetY": 0
+                        },
                     },
                     grid: {
                         size: 10,
@@ -146,7 +159,20 @@ const isDarkMode = computed(() => {
                         dataLabels: {
                             prefix: "",
                             suffix: ""
-                        }
+                        },
+                        captions: {
+                            "show": false,
+                            "showSerieName": false,
+                            "serieNameAbbreviation": true,
+                            "serieNameMaxAbbreviationSize": 3,
+                            "fontSize": 12,
+                            "showValue": true,
+                            "showPercentage": true,
+                            "roundingValue": 0,
+                            "roundingPercentage": 0,
+                            "offsetX": 0,
+                            "offsetY": 0
+                        },
                     },
                     grid: {
                         size: 10,
@@ -362,6 +388,19 @@ const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</spa
                     dataLabels: {
                         prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.prefix">, (default: "")
                         suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.suffix">, (default: "")
+                    },
+                    captions: {
+                        show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.captions.show" @change="forceChartUpdate()">, (default: false)
+                        showSerieName: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.showSerieName" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.captions.showSerieName" @change="forceChartUpdate()">, (default: false)
+                        serieNameAbbreviation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.serieNameAbbreviation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.captions.serieNameAbbreviation" @change="forceChartUpdate()">, (default: true)
+                        serieNameMaxAbbreviationSize: <input v-if="isDarkMode" type="number" min="0" max="12" step="1" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.serieNameMaxAbbreviationSize"><input v-else type="number" min="0" max="12" step="1" v-model="mutableConfig.style.chart.layout.labels.captions.serieNameMaxAbbreviationSize">, (default: 3)
+                        fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" step="1" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.fontSize"><input v-else type="number" min="6" max="48" step="1" v-model="mutableConfig.style.chart.layout.labels.captions.fontSize">, (default: 12)
+                        showValue: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.showValue" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.captions.showValue" @change="forceChartUpdate()">, (default: true)
+                        showPercentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.showPercentage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.captions.showPercentage" @change="forceChartUpdate()">, (default: true)
+                        roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.roundingValue"><input v-else type="number" min="0" max="3" step="1" v-model="mutableConfig.style.chart.layout.labels.captions.roundingValue">, (default: 0)
+                        roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.roundingPercentage"><input v-else type="number" min="0" max="3" step="1" v-model="mutableConfig.style.chart.layout.labels.captions.roundingPercentage">, (default: 0)
+                        offsetX: <input v-if="isDarkMode" type="number" min="-100" max="100" step="1" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.offsetX"><input v-else type="number" min="-100" max="100" step="1" v-model="mutableConfig.style.chart.layout.labels.captions.offsetX">, (default: 0)
+                        offsetY: <input v-if="isDarkMode" type="number" min="-100" max="100" step="1" v-model="mutableConfigDarkMode.style.chart.layout.labels.captions.offsetY"><input v-else type="number" min="-100" max="100" step="1" v-model="mutableConfig.style.chart.layout.labels.captions.offsetY">, (default: 0)
                     }
                 },
                 grid: {
@@ -414,11 +453,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</spa
     },
     userOptions: {
         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
-        title: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.title"><input v-else type="text" v-model="mutableConfig.userOptions.title">, (default: "options")
-        labels: {
-            useDiv: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.labels.useDiv"><input v-else type="text" v-model="mutableConfig.userOptions.labels.useDiv">, (default: "Title & legend inside")
-            showTable: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.labels.showTable"><input v-else type="text" v-model="mutableConfig.userOptions.labels.showTable">, (default: "Show table")
-        }
     },
     table: {
         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.show" @change="forceChartUpdate()">, (default: false)
