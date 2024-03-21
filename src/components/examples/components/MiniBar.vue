@@ -21,6 +21,15 @@ const config = computed(() => {
     "style": {
         "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
         "fontFamily": "inherit",
+        "layout": {
+            "independant": true,
+            "percentage": false,
+            "target": 1500
+        },
+        "gutter": {
+            "backgroundColor": isDarkMode.value ? '#3A3A3A' : '#e1e5e8',
+            "opacity": 100
+        },
         "bar": {
             "gradient": {
                 "show": true,
@@ -28,31 +37,19 @@ const config = computed(() => {
                 "underlayerColor": "#FFFFFF"
             }
         },
-        "legend": {
-            "show": true,
-            "textAlign": "left",
-            "fontSize": 12,
-            "margin": "24px 0 0 0",
+        "gap": 4,
+        "labels": {
+            "fontSize": 16,
             "name": {
+                "position": "top",
+                "width": "100%",
                 "color": isDarkMode.value ? '#CCCCCC' : '#2A2A2A',
                 "bold": false
             },
             "value": {
                 "show": true,
-                "color": isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
-                "rounding": 0,
-                "prefix": "",
-                "suffix": ""
-            },
-            "percentage": {
-                "show": true,
-                "color": isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
-                "rounding": 1,
                 "bold": true
             }
-        },
-        "title": {
-            "text": "",
         }
     }
 }
@@ -60,28 +57,32 @@ const config = computed(() => {
 
 const dataset = ref([
     {
-        "name": "18-29",
+        "name": "Accessories",
         "value": props.detail[0],
-        "color": "#6376DD"
+        "color": "#6376DD",
+        "prefix": "k$ ",
+        "suffix": "",
+        "rounding": 1
     },
     {
-        "name": "30-39",
+        "name": "Hardware",
         "value": props.detail[1],
-        "color": "#42d392"
+        "color": "#42d392",
+        "prefix": "k$ ",
+        "suffix": "",
+        "rounding": 1
     },
     {
-        "name": "40-49",
+        "name": "Software",
         "value": props.detail[2],
-        "color": "#ff6400"
-    },
-    {
-        "name": "50+",
-        "value": props.detail[3],
-        "color": "#ffdd00"
+        "color": "#ff6400",
+        "prefix": "k$ ",
+        "suffix": "",
+        "rounding": 1
     }
 ]);
 </script>
 
 <template>
-    <VueUiSparkStackbar :config="config" :dataset="dataset" />
+    <VueUiSparkbar :config="config" :dataset="dataset" />
 </template>

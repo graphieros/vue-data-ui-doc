@@ -28,5 +28,9 @@ const currentMenu = ref('mini')
 
         <ExampleSpark v-if="currentMenu === 'mini'"/>
 
+        <div v-if="currentMenu === 'charts'">
+            This section is in progress :)
+        </div>
+
     </div>
 </template>
