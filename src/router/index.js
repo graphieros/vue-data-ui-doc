@@ -44,6 +44,11 @@ const routes = [
         component: () => import("../views/Maker.vue")
     },
     {
+        path: "/examples",
+        name: "Examples",
+        component: () => import("../views/Examples.vue")
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound
     }

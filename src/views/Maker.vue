@@ -103,7 +103,7 @@ function selectChart(opt) {
         <CheckIcon size="42" class="dark:text-app-green"/>
     </div>
     <div class="w-full max-w-[1400px] mx-auto overflow-visible">
-        <div class="w-full flex flex-row gap-4 place-items-center justify-center mt-6">
+        <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
             <img src="../assets/logo.png" class="h-6">
             <h1 class="text-3xl text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>

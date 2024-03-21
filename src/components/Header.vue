@@ -129,9 +129,9 @@ const selectedLanguage = computed({
                         {{ translations.menu.chartBuilder[store.lang] }}
                     </span>
                 </router-link>
-                <router-link data-cy="link-dashboard" to="/dashboard">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/dashboard') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
-                        {{ translations.menu.dashboard[store.lang] }}
+                <router-link to="/examples">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/examples') ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm' : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'}`">
+                        {{ translations.menu.examples[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-customization" to="/customization">
@@ -186,9 +186,9 @@ const selectedLanguage = computed({
                                 {{ translations.menu.chartBuilder[store.lang] }}
                             </span>
                         </router-link>
-                        <router-link to="/dashboard">
+                        <router-link to="/examples">
                             <span @click="isOpen=false"  class="block w-full dark:text-gray-400  py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
-                                {{ translations.menu.dashboard[store.lang] }}
+                                {{ translations.menu.examples[store.lang] }}
                             </span>
                         </router-link>
                         <router-link to="/customization">

@@ -438,6 +438,16 @@ export const useMainStore = defineStore("main", {
                     ko: "어두운 모드로 전환"
                 },
                 menu: {
+                    examples: {
+                        en: "Examples",
+                        fr: "Exemples",
+                        pt: "Exemplos",
+                        de: "Beispiele",
+                        zh: "例子",
+                        jp: "例",
+                        es: "Ejemplos",
+                        ko: "예"
+                    },
                     chartBuilder: {
                         en: "Chart builder",
                         fr: "Chart builder",
