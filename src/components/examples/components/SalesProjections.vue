@@ -200,5 +200,9 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiDonutEvolution :config="config" :dataset="dataset" />
+    <VueUiDonutEvolution :config="config" :dataset="dataset">
+        <template #svg>
+            <slot></slot>
+        </template>
+    </VueUiDonutEvolution>
 </template>

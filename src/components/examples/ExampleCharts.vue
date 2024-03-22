@@ -12,6 +12,7 @@ import WorldSatisfaction from "./components/WorldSatisfaction.vue";
 import AverageOccupancy from "./components/AverageOccupancy.vue";
 import WorldSales from "./components/WorldSales.vue";
 import SalesProjections from "./components/SalesProjections.vue";
+import DetailedSatisfaction from "./components/DetailedSatisfaction.vue";
 import Grabber from "./Grabber.vue";
 
 const store = useMainStore();
@@ -52,6 +53,9 @@ const worldSalesConfig = ref(null);
 const salesProjections = ref(null);
 const salesProjectionsDataset = ref(null);
 const salesProjectionsConfig = ref(null);
+const detailedSatisfaction = ref(null);
+const detailedSatisfactionDataset = ref(null);
+const detailedSatisfactionConfig = ref(null);
 
 onMounted(() => {
     if(revenueDonut.value) {
@@ -97,6 +101,10 @@ onMounted(() => {
     if(salesProjections.value) {
         salesProjectionsDataset.value = salesProjections.value.getData().dataset;
         salesProjectionsConfig.value = salesProjections.value.getData().config;
+    }
+    if(detailedSatisfaction.value) {
+        detailedSatisfactionDataset.value = detailedSatisfaction.value.getData().dataset;
+        detailedSatisfactionConfig.value = detailedSatisfaction.value.getData().config;
     }
 })
 
@@ -159,14 +167,40 @@ onMounted(() => {
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
                 <Grabber v-if="salesProjectionsDataset" :dataset="salesProjectionsDataset" :config="salesProjectionsConfig" componentName="VueUiDonutEvolution" id="sales"/>
-                <SalesProjections ref="salesProjections" class="mt-12" />
+                <SalesProjections ref="salesProjections" class="mt-12">
+                        <foreignObject
+                            :x="50"
+                            :y="0"
+                            height="80"
+                            width="80"
+                            style="overflow: visible"
+                        >
+                            <div style="width:80px;">
+                                <DetailedSatisfaction :titleFontSize="8" :subtitleFontSize="8" :value="53.2" title="World" mainTitle="Retail to Service"/>
+                            </div>
+                        </foreignObject>
+                </SalesProjections>
             </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                ... more examples to come
+            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md place-items-center justify-center relative">
+                <Grabber v-if="detailedSatisfactionDataset" :dataset="detailedSatisfactionDataset" :config="detailedSatisfactionConfig" componentName="VueUiWheel" id="wheel"/>
+                <div class="grid grid-cols-2 gap-0 mt-12 place-content-center place-items-center">
+                    <div class="w-full max-w-[200px]">
+                        <DetailedSatisfaction :value="87.6" title="Europe 2025" :isModel="true" ref="detailedSatisfaction" />
+                    </div>
+                    <div class="w-full max-w-[200px]">
+                        <DetailedSatisfaction :value="83.2" title="America 2025" />
+                    </div>
+                    <div class="w-full max-w-[200px]">
+                        <DetailedSatisfaction :value="72.7" title="Asia 2025" />
+                    </div>
+                    <div class="w-full max-w-[200px]">
+                        <DetailedSatisfaction :value="68.9" title="Africa 2025" />
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- <div class="mt-12">
+        <div class="mt-12">
             ... more examples to come
-        </div> -->
+        </div>
     </div>
 </template>
