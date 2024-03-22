@@ -151,6 +151,18 @@ const dataset = ref([
         ]
     }
 ]);
+
+function getData(){
+    return {
+        config: config.value,
+        dataset: dataset.value
+    }
+}
+
+defineExpose({
+    getData
+})
+
 </script>
 
 <template>

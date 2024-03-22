@@ -317,9 +317,9 @@ const dataset = computed(() => {
             name, color
         }
     }) }},
-        series: {{ datasetItems.map(({name, values}) => {
+        series: {{ datasetItems.map(({name, values, target}) => {
         return {
-            name, values
+            name, values, target
         }
     }) }}
     });

@@ -214,6 +214,18 @@ const dataset = ref([
         "useTag": "none"
     }
 ]);
+
+function getData(){
+    return {
+        config: config.value,
+        dataset: dataset.value
+    }
+}
+
+defineExpose({
+    getData
+})
+
 </script>
 
 <template>

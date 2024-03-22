@@ -5,7 +5,7 @@ import { useMakerStore } from "../../stores/maker";
 import { XIcon, CopyIcon, CheckIcon } from "vue-tabler-icons";
 import { copyText } from "../maker/lib";
 
-const props = defineProps(['config', 'dataset', 'componentName'])
+const props = defineProps(['config', 'dataset', 'componentName', 'id'])
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -14,7 +14,7 @@ const translations = computed(() => makerStore.translations);
 
 
 function useModal(state) {
-    const dialog = document.getElementById('grabber');
+    const dialog = document.getElementById(props.id);
     if(!dialog) return;
 
     if(state === "open") {
@@ -51,7 +51,7 @@ const dialogContent = computed(() => {
 const isCopied = ref(false);
 
 function copy() {
-    copyText(dialogContent.value.replaceAll('<br>', ''), document.getElementById('grabber'));
+    copyText(dialogContent.value.replaceAll('<br>', ''), document.getElementById(props.id));
     isCopied.value = true;
     setTimeout(() => {
         isCopied.value = false;
@@ -62,12 +62,12 @@ function copy() {
 </script>
 
 <template>
-    <div class="flex w-full justify-end mt-4">
+    <div class="flex w-full justify-end mb-4 absolute top-4 right-4">
         <button @click="useModal('open')" class="border border-app-blue px-4 py-1 rounded-md text-app-blue shadow-md hover:bg-[#5f8bee20] transition-colors">{{ translations.componentCode[lang] }}</button>
     </div>
 
     
-    <dialog id="grabber" class="glass fixed h-screen max-h-[600px] w-full max-w-[600px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-gray-700">
+    <dialog :id="props.id" class="glass fixed h-screen max-h-[700px] w-full max-w-[900px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-gray-700">
         <button class="absolute top-2 right-2" @click="useModal('close')">
             <XIcon class="text-black dark:text-app-green" />
         </button>
