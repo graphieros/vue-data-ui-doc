@@ -127,14 +127,14 @@ export const useMakerStore = defineStore('maker', {
                     ko: "데이터세트"
                 },
                 componentCode: {
-                    en: "Component code:",
-                    fr: "Code composant :",
-                    pt: "Código do componente:",
-                    de: "Komponentencode:",
-                    zh: "组件代码：",
-                    jp: "コンポーネントコード:",
-                    es: "Código de componente:",
-                    ko: "구성 요소 코드:"
+                    en: "Component code",
+                    fr: "Code composant",
+                    pt: "Código do componente",
+                    de: "Komponentencode",
+                    zh: "组件代码",
+                    jp: "コンポーネントコード",
+                    es: "Código de componente",
+                    ko: "구성 요소 코드"
                 },
                 categories: {
                     container: {

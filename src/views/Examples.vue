@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import ExampleButton from "../components/examples/ExampleButton.vue";
 import ExampleSpark from "../components/examples/ExampleSpark.vue";
+import ExampleCharts from "../components/examples/ExampleCharts.vue";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -27,10 +28,6 @@ const currentMenu = ref('mini')
         </div>
 
         <ExampleSpark v-if="currentMenu === 'mini'"/>
-
-        <div v-if="currentMenu === 'charts'">
-            This section is in progress :)
-        </div>
-
+        <ExampleCharts v-if="currentMenu === 'charts'" />
     </div>
 </template>
