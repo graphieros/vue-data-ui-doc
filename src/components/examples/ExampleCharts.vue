@@ -15,6 +15,7 @@ import SalesProjections from "./components/SalesProjections.vue";
 import DetailedSatisfaction from "./components/DetailedSatisfaction.vue";
 import MainStores from "./components/MainStores.vue";
 import MarketShare from "./components/MarketShare.vue";
+import SalesBar from "./components/SalesBar.vue";
 import MakerLink from "../MakerLink.vue";
 import DocLink from "../DocLink.vue";
 import Grabber from "./Grabber.vue";
@@ -66,6 +67,9 @@ const mainStoresConfig = ref(null);
 const marketShare = ref(null);
 const marketShareDataset = ref(null);
 const marketShareConfig = ref(null);
+const salesBar = ref(null);
+const salesBarDataset = ref(null);
+const salesBarConfig = ref(null);
 
 onMounted(() => {
     if(revenueDonut.value) {
@@ -123,6 +127,10 @@ onMounted(() => {
     if(marketShare.value) {
         marketShareDataset.value = marketShare.value.getData().dataset;
         marketShareConfig.value = marketShare.value.getData().config;
+    }
+    if(salesBar.value) {
+        salesBarDataset.value = salesBar.value.getData().dataset;
+        salesBarConfig.value = salesBar.value.getData().config;
     }
 })
 
@@ -281,6 +289,18 @@ onMounted(() => {
                     <Grabber v-if="marketShareDataset" :dataset="marketShareDataset" :config="marketShareConfig" componentName="VueUiRings" id="marketShare"/>
                 </div>
                 <MarketShare ref="marketShare" class="mt-12" />
+            </div>
+        </div>
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiVerticalBar" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-vertical-bar" size="py-1 px-4"/>
+                    <Grabber v-if="salesBarDataset" :dataset="salesBarDataset" :config="salesBarConfig" componentName="VueUiVerticalBar" id="salesBar"/>
+                </div>
+                <SalesBar ref="salesBar" class="mt-12" />
+            </div>
+            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
             </div>
         </div>
         <div class="mt-12">
