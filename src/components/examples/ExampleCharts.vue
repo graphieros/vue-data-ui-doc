@@ -301,11 +301,12 @@ onMounted(() => {
                 <SalesBar ref="salesBar" class="mt-12" />
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
+                ... more examples to come
             </div>
         </div>
-        <div class="mt-12">
+        <!-- <div class="mt-12">
             ... more examples to come
-        </div>
+        </div> -->
     </div>
 </template>
 
