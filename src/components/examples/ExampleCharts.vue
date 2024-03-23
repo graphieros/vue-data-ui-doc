@@ -13,6 +13,10 @@ import AverageOccupancy from "./components/AverageOccupancy.vue";
 import WorldSales from "./components/WorldSales.vue";
 import SalesProjections from "./components/SalesProjections.vue";
 import DetailedSatisfaction from "./components/DetailedSatisfaction.vue";
+import MainStores from "./components/MainStores.vue";
+import MarketShare from "./components/MarketShare.vue";
+import MakerLink from "../MakerLink.vue";
+import DocLink from "../DocLink.vue";
 import Grabber from "./Grabber.vue";
 
 const store = useMainStore();
@@ -56,6 +60,12 @@ const salesProjectionsConfig = ref(null);
 const detailedSatisfaction = ref(null);
 const detailedSatisfactionDataset = ref(null);
 const detailedSatisfactionConfig = ref(null);
+const mainStores = ref(null);
+const mainStoresDataset = ref(null);
+const mainStoresConfig = ref(null);
+const marketShare = ref(null);
+const marketShareDataset = ref(null);
+const marketShareConfig = ref(null);
 
 onMounted(() => {
     if(revenueDonut.value) {
@@ -106,6 +116,14 @@ onMounted(() => {
         detailedSatisfactionDataset.value = detailedSatisfaction.value.getData().dataset;
         detailedSatisfactionConfig.value = detailedSatisfaction.value.getData().config;
     }
+    if(mainStores.value) {
+        mainStoresDataset.value = mainStores.value.getData().dataset;
+        mainStoresConfig.value = mainStores.value.getData().config;
+    }
+    if(marketShare.value) {
+        marketShareDataset.value = marketShare.value.getData().dataset;
+        marketShareConfig.value = marketShare.value.getData().config;
+    }
 })
 
 </script>
@@ -114,75 +132,123 @@ onMounted(() => {
     <div class="mt-12 flex flex-col gap-6">
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="revenueDonutDataset" :dataset="revenueDonutDataset" :config="revenueDonutConfig" componentName="VueUiDonut" id="donut1"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiDonut" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-donut" size="py-1 px-4"/>
+                    <Grabber v-if="revenueDonutDataset" :dataset="revenueDonutDataset" :config="revenueDonutConfig" componentName="VueUiDonut" id="donut1"/>
+                </div>
                 <RevenueDonut ref="revenueDonut" class="mt-12" />
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="evolutionDataset" :dataset="evolutionDataset" :config="evolutionConfig" componentName="VueUiXy" id="xy1"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiXy" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-xy" size="py-1 px-4"/>
+                    <Grabber v-if="evolutionDataset" :dataset="evolutionDataset" :config="evolutionConfig" componentName="VueUiXy" id="xy1"/>
+                </div>
                 <ExampleXyEvolutionArea ref="evolutionArea" class="mt-12"/>
             </div>
         </div>
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="phoneCallsDataset" :dataset="phoneCallsDataset" :config="phoneCallsConfig" componentName="VueUiXy" id="xy2"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiXy" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-xy" size="py-1 px-4"/>
+                    <Grabber v-if="phoneCallsDataset" :dataset="phoneCallsDataset" :config="phoneCallsConfig" componentName="VueUiXy" id="xy2"/>
+                </div>
                 <ExampleXy ref="phoneCalls" class="mt-12"/>
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="revenueBreakDataset" :dataset="revenueBreakDataset" :config="revenueBreakConfig" componentName="VueUiNestedDonuts" id="donut2"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiNestedDonuts" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-nested-donuts" size="py-1 px-4"/>
+                    <Grabber v-if="revenueBreakDataset" :dataset="revenueBreakDataset" :config="revenueBreakConfig" componentName="VueUiNestedDonuts" id="donut2"/>
+                </div>
                 <RevenueBreakdown ref="revenueBreak" class="mt-12" />
             </div>
         </div>
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="customerOsDataset" :dataset="customerOsDataset" :config="customerOsConfig" componentName="VueUiWaffle" id="waffle"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiWaffle" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-waffle" size="py-1 px-4"/>
+                    <Grabber v-if="customerOsDataset" :dataset="customerOsDataset" :config="customerOsConfig" componentName="VueUiWaffle" id="waffle"/>
+                </div>
                 <CustomerOs ref="customerOs" class="mt-12" />
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="sprDataset" :dataset="sprDataset" :config="sprConfig" componentName="VueUiRadar" id="spr"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiRadar" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-radar" size="py-1 px-4"/>
+                    <Grabber v-if="sprDataset" :dataset="sprDataset" :config="sprConfig" componentName="VueUiRadar" id="spr"/>
+                </div>
                 <ServicesPerRegion ref="spr" class="mt-12" />
             </div>
         </div>
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="temperaturesDataset" :dataset="temperaturesDataset" :config="temperaturesConfig" componentName="VueUiHeatmap" id="heat"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-center" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiHeatmap" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-heatmap" size="py-1 px-4"/>
+                    <Grabber v-if="temperaturesDataset" :dataset="temperaturesDataset" :config="temperaturesConfig" componentName="VueUiHeatmap" id="heat"/>
+                </div>
                 <ParisTemperatures ref="temperatures" class="mt-12" />
             </div>
         </div>
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="worldDataset" :dataset="worldDataset" :config="worldConfig" componentName="VueUiGauge" id="world"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiGauge" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-gauge" size="py-1 px-4"/>
+                    <Grabber v-if="worldDataset" :dataset="worldDataset" :config="worldConfig" componentName="VueUiGauge" id="world"/>
+                </div>
                 <WorldSatisfaction ref="world" class="mt-12" />
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="averageOccupancyDataset" :dataset="averageOccupancyDataset" :config="averageOccupancyConfig" componentName="VueUiOnion" id="averageOcc"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiOnion" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-onion" size="py-1 px-4"/>
+                    <Grabber v-if="averageOccupancyDataset" :dataset="averageOccupancyDataset" :config="averageOccupancyConfig" componentName="VueUiOnion" id="averageOcc"/>
+                </div>
                 <AverageOccupancy ref="averageOccupancy" class="mt-12" />
             </div>
         </div>
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="worldSalesDataset" :dataset="worldSalesDataset" :config="worldSalesConfig" componentName="VueUiChestnut" id="chest"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-center" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiChestnut" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-chestnut" size="py-1 px-4"/>
+                    <Grabber v-if="worldSalesDataset" :dataset="worldSalesDataset" :config="worldSalesConfig" componentName="VueUiChestnut" id="chest"/>
+                </div>
                 <WorldSales ref="worldSales" class="mt-12" />
             </div>
         </div>
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <Grabber v-if="salesProjectionsDataset" :dataset="salesProjectionsDataset" :config="salesProjectionsConfig" componentName="VueUiDonutEvolution" id="sales"/>
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiDonutEvolution" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-donut-evolution" size="py-1 px-4"/>
+                    <Grabber v-if="salesProjectionsDataset" :dataset="salesProjectionsDataset" :config="salesProjectionsConfig" componentName="VueUiDonutEvolution" id="sales"/>
+                </div>
                 <SalesProjections ref="salesProjections" class="mt-12">
-                        <foreignObject
-                            :x="50"
-                            :y="0"
-                            height="80"
-                            width="80"
-                            style="overflow: visible"
-                        >
-                            <div style="width:80px;">
-                                <DetailedSatisfaction :titleFontSize="8" :subtitleFontSize="8" :value="53.2" title="World" mainTitle="Retail to Service"/>
-                            </div>
-                        </foreignObject>
-                </SalesProjections>
-            </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md place-items-center justify-center relative">
-                <Grabber v-if="detailedSatisfactionDataset" :dataset="detailedSatisfactionDataset" :config="detailedSatisfactionConfig" componentName="VueUiWheel" id="wheel"/>
+                    <foreignObject
+                    :x="58"
+                    :y="0"
+                    height="80"
+                    width="80"
+                    style="overflow: visible"
+                    >
+                    <div style="width:80px;">
+                        <DetailedSatisfaction :titleFontSize="8" :subtitleFontSize="8" :value="53.2" title="World" mainTitle="Retail to Service"/>
+                    </div>
+                </foreignObject>
+            </SalesProjections>
+        </div>
+        <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md place-items-center justify-center relative">
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiWheel" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-wheel" size="py-1 px-4"/>
+                    <Grabber v-if="detailedSatisfactionDataset" :dataset="detailedSatisfactionDataset" :config="detailedSatisfactionConfig" componentName="VueUiWheel" id="wheel"/>
+                </div>
                 <div class="grid grid-cols-2 gap-0 mt-12 place-content-center place-items-center">
                     <div class="w-full max-w-[200px]">
                         <DetailedSatisfaction :value="87.6" title="Europe 2025" :isModel="true" ref="detailedSatisfaction" />
@@ -199,8 +265,27 @@ onMounted(() => {
                 </div>
             </div>
         </div>
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiQuadrant" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-quadrant" size="py-1 px-4"/>
+                    <Grabber v-if="mainStoresDataset" :dataset="mainStoresDataset" :config="mainStoresConfig" componentName="VueUiQuadrant" id="mainStores"/>
+                </div>
+                <MainStores ref="mainStores" class="mt-12" />
+            </div>
+            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUiRings" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-rings" size="py-1 px-4"/>
+                    <Grabber v-if="marketShareDataset" :dataset="marketShareDataset" :config="marketShareConfig" componentName="VueUiRings" id="marketShare"/>
+                </div>
+                <MarketShare ref="marketShare" class="mt-12" />
+            </div>
+        </div>
         <div class="mt-12">
             ... more examples to come
         </div>
     </div>
 </template>
+

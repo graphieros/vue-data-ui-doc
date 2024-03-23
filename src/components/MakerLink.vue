@@ -13,7 +13,14 @@ const router = useRouter()
 const translations = computed(() => store.translations);
 
 const props = defineProps({
-    to: String
+    to: {
+        type: String,
+        default: ''
+    },
+    size: {
+        type: String,
+        default: 'py-3 px-4'
+    }
 })
 
 function returnToMaker() {
@@ -31,5 +38,5 @@ function returnToMaker() {
 </script>
 
 <template>
-    <button @click="returnToMaker" class="flex flex-row gap-2 place-items-center rounded-md border border-black dark:border-app-green py-3 px-4 hover:bg-[#42d39233] hover:shadow-xl"><ToolIcon/>{{ translations.menu.chartBuilder[store.lang] }}</button>
+    <button @click="returnToMaker" :class="`flex flex-row gap-2 place-items-center rounded-md border border-black dark:border-app-green ${props.size} hover:bg-[#42d39233] hover:shadow-xl`"><ToolIcon/>{{ translations.menu.chartBuilder[store.lang] }}</button>
 </template>

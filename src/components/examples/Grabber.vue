@@ -62,11 +62,8 @@ function copy() {
 </script>
 
 <template>
-    <div class="flex w-full justify-end mb-4 absolute top-4 right-4">
-        <button @click="useModal('open')" class="border border-app-blue px-4 py-1 rounded-md text-app-blue shadow-md hover:bg-[#5f8bee20] transition-colors">{{ translations.componentCode[lang] }}</button>
-    </div>
+    <button @click="useModal('open')" class="border border-app-blue px-4 py-1 rounded-md text-app-blue shadow-md hover:bg-[#5f8bee20] transition-colors">{{ translations.componentCode[lang] }}</button>
 
-    
     <dialog :id="props.id" class="glass fixed h-screen max-h-[700px] w-full max-w-[900px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-gray-700">
         <button class="absolute top-2 right-2" @click="useModal('close')">
             <XIcon class="text-black dark:text-app-green" />
