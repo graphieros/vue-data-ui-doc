@@ -16,6 +16,7 @@ import DetailedSatisfaction from "./components/DetailedSatisfaction.vue";
 import MainStores from "./components/MainStores.vue";
 import MarketShare from "./components/MarketShare.vue";
 import SalesBar from "./components/SalesBar.vue";
+import IceCubes from "./components/IceCubes.vue";
 import MakerLink from "../MakerLink.vue";
 import DocLink from "../DocLink.vue";
 import Grabber from "./Grabber.vue";
@@ -70,6 +71,9 @@ const marketShareConfig = ref(null);
 const salesBar = ref(null);
 const salesBarDataset = ref(null);
 const salesBarConfig = ref(null);
+const iceCubes = ref(null);
+const iceCubesDataset = ref(null);
+const iceCubesConfig = ref(null);
 
 onMounted(() => {
     if(revenueDonut.value) {
@@ -131,6 +135,10 @@ onMounted(() => {
     if(salesBar.value) {
         salesBarDataset.value = salesBar.value.getData().dataset;
         salesBarConfig.value = salesBar.value.getData().config;
+    }
+    if(iceCubes.value) {
+        iceCubesDataset.value = iceCubes.value.getData().dataset;
+        iceCubesConfig.value = iceCubes.value.getData().config;
     }
 })
 
@@ -301,7 +309,14 @@ onMounted(() => {
                 <SalesBar ref="salesBar" class="mt-12" />
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                ... more examples to come
+                <div class="absolute top-[24px] left-[24px] w-full flex flex-row gap-2 justify-between" style="width:calc(100% - 48px)">
+                    <MakerLink to="VueUi3dBar" size="py-1 px-4"/>
+                    <DocLink to="vue-ui-3d-bar" size="py-1 px-4"/>
+                    <Grabber v-if="iceCubesDataset" :dataset="iceCubesDataset" :config="iceCubesConfig" componentName="VueUi3dBar" id="cubes"/>
+                </div>
+                <div class="w-full max-w-[200px]">
+                    <IceCubes ref="iceCubes" class="mt-12" />
+                </div>
             </div>
         </div>
         <!-- <div class="mt-12">
