@@ -52,10 +52,12 @@ const translations = computed(() => {
 
                 <span class="text-gray-600 dark:text-gray-500">// {{ translations.installation.comments.import[store.lang] }}</span><br>
             </code>
+
             <span class="text-app-blue">MyComponent.vue</span>
             <code class="mt-3 text-start">
                &lt;script setup&gt;<br>
                &nbsp;&nbsp;import { <span class="text-gray-800 dark:text-app-green">VueUiRadar, VueUiXy</span> } from "vue-data-ui";<br>
+               
                &lt;/script&gt;<br><br>
                <span class="text-gray-600 dark:text-gray-500 text-left">// {{ translations.installation.comments.types[store.lang] }}</span><br><br>
                &lt;script setup&gt;<br>
@@ -72,6 +74,28 @@ const translations = computed(() => {
                     ...
                 })<br>
                &lt;/script&gt;<br><br>
+
+               <span class="text-gray-600 dark:text-gray-500">// {{ translations.installation.comments.universalComponent[store.lang] }}</span><br>
+            </code>
+
+            <span class="text-app-blue">MyComponent.vue</span>
+            <code class="mt-3 text-start">
+                &lt;script setup&gt;<br>
+                &nbsp;&nbsp;import { ref } from "vue"; <br>
+                &nbsp;&nbsp;import { <span class="text-gray-800 dark:text-app-green">VueDataUi</span> } from "vue-data-ui";<br>
+                &nbsp;&nbsp;import "<span class="text-gray-800 dark:text-app-green">vue-data-ui/style.css</span>";<br><br>
+                &nbsp;&nbsp;const dataset = ref([...]);<br>
+                &nbsp;&nbsp;const config = ref({...});<br>
+                &lt;/script&gt;<br><br>
+                &lt;template&gt;<br>
+                &nbsp;&nbsp;&lt;div style="width:600px;"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-gray-800 dark:text-app-green">VueDataUi</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;component="VueUiXy"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
+                &nbsp;&nbsp;&lt;/div&gt;<br>
+                &lt;/template&gt;
             </code>
 
         </div>

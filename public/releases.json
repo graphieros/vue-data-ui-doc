@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.38",
+        "date": "2024-03-24",
+        "updates": [
+            {
+                "component": "VueDataUi",
+                "description": "Added universal component 'VueDataUi', which can be used instead of individual components, by specifying the component name in the props."
+            }
+        ]
+    },
+    {
         "version": "v 2.0.37",
         "date": "2024-03-23",
         "updates": [

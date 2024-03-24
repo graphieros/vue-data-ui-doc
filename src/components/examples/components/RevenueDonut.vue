@@ -196,5 +196,7 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiDonut :config="config" :dataset="dataset" />
+    <div>
+        <VueDataUi component="VueUiDonut" :config="config" :dataset="dataset" />
+    </div>
 </template>

@@ -583,6 +583,16 @@ export const useMainStore = defineStore("main", {
                         ko: "TypeScript 사용자의 경우: 유형은 패키지의 유형 폴더 아래 'vue-data-ui.d.ts' 파일에서 사용할 수 있습니다."
                     },
                     comments: {
+                        universalComponent: {
+                            en: 'Since v.2.0.38, the universal component "VueDataUi" can be used, instead of importing individual components. You just have to specify the component name in the props:',
+                            fr: `Depuis la v.2.0.38, le composant universel "VueDataUi" peut être utilisé au lieu d'importer des composants individuels. Il vous suffit de préciser le nom du composant dans les props :`,
+                            pt: `Desde a v.2.0.38, o componente universal "VueDataUi" pode ser utilizado, em vez de importar componentes individuais. Você só precisa especificar o nome do componente nos adereços:`,
+                            de: `Seit v.2.0.38 kann anstelle des Imports einzelner Komponenten die universelle Komponente „VueDataUi“ verwendet werden. Sie müssen lediglich den Komponentennamen in den Requisiten angeben:`,
+                            zh: `从 v.2.0.38 开始，可以使用通用组件“VueDataUi”，而不是导入单独的组件。您只需在 props 中指定组件名称：`,
+                            jp: `v.2.0.38 以降、個別のコンポーネントをインポートする代わりに、ユニバーサル コンポーネント「VueDataUi」を使用できるようになりました。 props でコンポーネント名を指定するだけです。`,
+                            es: `Desde la versión 2.0.38, se puede utilizar el componente universal "VueDataUi", en lugar de importar componentes individuales. Sólo tienes que especificar el nombre del componente en los accesorios:`,
+                            ko: `v.2.0.38부터 개별 구성요소를 가져오는 대신 범용 구성요소인 "VueDataUi"를 사용할 수 있습니다. 소품에 구성요소 이름을 지정하기만 하면 됩니다.`
+                        },
                         includeCss: {
                             en: "Include the css",
                             fr: "Inclure le css",
