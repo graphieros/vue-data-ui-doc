@@ -599,6 +599,20 @@ const menuItems = computed(() => [
 </code>
 </pre>
 </div>
+<div class="mt-6">
+    {{ translations.installation.comments.or[store.lang] }}
+</div>
+<div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 mt-6 bg-gray-200 dark:bg-[rgb(30,30,30)]">
+<pre>
+<code class="text-gray-500 text-md">
+&lt;VueDataUi
+    <span class="text-black dark:text-app-orange">component</span>="VueUiXy"
+    <span class="text-black dark:text-app-green">:dataset</span>="{{ translations.docs.dataset[store.lang] }}"
+    <span class="text-black dark:text-app-blue">:config</span>="{{ translations.docs.config[store.lang] }}"
+/&gt;
+</code>
+</pre>
+</div>
                 <div class="w-full px-2 sm:px-0 sm:w-1/2 text-left mx-auto mt-4 text-xs sm:text-sm">
                     {{ translations.docs.p1[store.lang] }}
                 </div>

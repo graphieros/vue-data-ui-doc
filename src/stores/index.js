@@ -583,6 +583,16 @@ export const useMainStore = defineStore("main", {
                         ko: "TypeScript 사용자의 경우: 유형은 패키지의 유형 폴더 아래 'vue-data-ui.d.ts' 파일에서 사용할 수 있습니다."
                     },
                     comments: {
+                        or: {
+                            en: `Or, since v.2.0.38 you can use the universal wrapper, by adding the component name in the props:`,
+                            fr: `Ou, depuis la version 2.0.38, vous pouvez utiliser le wrapper universel, en ajoutant le nom du composant dans les accessoires :`,
+                            pt: `Ou, desde a v.2.0.38 você pode usar o wrapper universal, adicionando o nome do componente nas propriedades:`,
+                            de: `Oder Sie können seit Version 2.0.38 den Universal-Wrapper verwenden, indem Sie den Komponentennamen in den Requisiten hinzufügen:`,
+                            zh: `或者，从 v.2.0.38 开始，您可以通过在 props 中添加组件名称来使用通用包装器：`,
+                            jp: `または、v.2.0.38 以降は、props にコンポーネント名を追加することで、ユニバーサル ラッパーを使用できます。`,
+                            es: `O, desde la versión 2.0.38, puede usar el contenedor universal agregando el nombre del componente en los accesorios:`,
+                            ko: `또는 v.2.0.38부터 props에 구성 요소 이름을 추가하여 범용 래퍼를 사용할 수 있습니다.`
+                        },
                         universalComponent: {
                             en: 'Since v.2.0.38, the universal component "VueDataUi" can be used, instead of importing individual components. You just have to specify the component name in the props:',
                             fr: `Depuis la v.2.0.38, le composant universel "VueDataUi" peut être utilisé au lieu d'importer des composants individuels. Il vous suffit de préciser le nom du composant dans les props :`,
