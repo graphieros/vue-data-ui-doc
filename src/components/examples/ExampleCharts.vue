@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
+import TokoTsubo from "./components/TokoTsubo.vue";
 import ExampleXy from "./components/ExampleXy.vue";
 import ExampleXyEvolutionArea from "./components/ExampleXyEvolutionArea.vue";
 import RevenueDonut from "./components/RevenueDonut.vue";
@@ -17,10 +18,6 @@ import MainStores from "./components/MainStores.vue";
 import MarketShare from "./components/MarketShare.vue";
 import SalesBar from "./components/SalesBar.vue";
 import IceCubes from "./components/IceCubes.vue";
-import MakerLink from "../MakerLink.vue";
-import DocLink from "../DocLink.vue";
-import Grabber from "./Grabber.vue";
-import TokoTsubo from "./components/TokoTsubo.vue";
 
 const store = useMainStore();
 const lang = computed(() => store.lang);
