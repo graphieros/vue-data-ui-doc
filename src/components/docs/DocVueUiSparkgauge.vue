@@ -71,7 +71,8 @@ const config = ref({
         },
         colors: {
             min: "#FF0000",
-            max: "#00FF00"
+            max: "#00FF00",
+            showGradient: true,
         },
         track: {
             autoColor: true,
@@ -115,7 +116,8 @@ const darkModeConfig = ref({
         },
         colors: {
             min: "#FF0000",
-            max: "#00FF00"
+            max: "#00FF00",
+            showGradient: true,
         },
         track: {
             autoColor: true,
@@ -284,6 +286,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkgaugeConfig<
         colors: {
             min: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.colors.min"><input v-else type="color" v-model="mutableConfig.style.colors.min">,  (default: "#FF0000")
             max: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.colors.max"><input v-else type="color" v-model="mutableConfig.style.colors.max">,  (default: "#00FF00")
+            showGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.colors.showGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.colors.showGradient" @change="forceChartUpdate()">, (default: true)
         },
         track: {
             autoColor: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.track.autoColor" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.track.autoColor" @change="forceChartUpdate()">, (default: true)

@@ -1,5 +1,19 @@
 [
     {
+        "version": "v 2.0.39",
+        "date": "2024-03-25",
+        "updates": [
+            {
+                "component": "VueUiSparkgauge",
+                "description": "Added config option colors.showGradient"
+            },
+            {
+                "component": ".d.ts file",
+                "description": "Fixed typos"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.38",
         "date": "2024-03-24",
         "updates": [

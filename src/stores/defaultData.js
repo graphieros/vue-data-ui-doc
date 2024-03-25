@@ -2131,6 +2131,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.dataLabel.suffix', def: '', type: 'text', label: 'suffix', category: 'labels'},
                     { key: 'style.colors.min', def: '#FF0000', type: 'color', label: ['min', 'is', 'color'], category: 'general'},
                     { key: 'style.colors.max', def: '#00FF00', type: 'color', label: ['max', 'is', 'color'], category: 'general'},
+                    { key: 'style.colors.showGradient', def: true, type: 'checkbox', label: ['gradient', 'is', 'show'], category: 'general'},
                     { key: 'style.track.autoColor', def: true, type: 'checkbox', label: ['track', 'color', 'is', 'auto'], category: 'general'},
                     { key: 'style.track.color', def: '#5f8bee', type: 'color', label: ['track', 'is', 'color'], category: 'general'},
                     { key: 'style.track.strokeLinecap', def: 'round', type: 'select', options: ['round', 'square', 'butt'], label: ['track', 'line', 'is', 'shape'], category: 'general'},
