@@ -9,6 +9,7 @@ import { useDefaultDataStore } from "../../stores/defaultData"
 import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import DocLink from "../DocLink.vue";
+import CopyComponent from "./CopyComponent.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -315,10 +316,7 @@ function getLabel(label) {
 
 
             <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-            <div class="mt-6 mb-2 text-lg flex flex-row gap-4 place-items-center">
-                <button @click="() => copyComponent('componentContent', store)"><CopyIcon/></button>
-                {{ xyTranslations.componentCode[store.lang] }} 
-            </div>
+                <CopyComponent @click="() => copyComponent('componentContent', store)"/>
 <pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer"  @click="() => copyComponent('componentContent', store)">
 <code id="componentContent">
 &lt;script setup&gt;
