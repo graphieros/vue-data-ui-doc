@@ -262,7 +262,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-sparkline',
-        icon: 'chartLine',
+        icon: 'chartSparkline',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Sparkline',
@@ -271,7 +271,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-sparkbar',
-        icon: 'chartVerticalBar',
+        icon: 'chartSparkbar',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Sparkbar',
@@ -422,8 +422,8 @@ const sideMenuItems = ref([
     {
         title: translations.value.sideMenu.miniCharts[store.lang],
         items: [
-            { route: '/docs#vue-ui-sparkline', componentName: 'Sparkline', icon: 'chartLine' },
-            { route: '/docs#vue-ui-sparkbar', componentName: 'Sparkbar', icon: 'chartVerticalBar' },
+            { route: '/docs#vue-ui-sparkline', componentName: 'Sparkline', icon: 'chartSparkline' },
+            { route: '/docs#vue-ui-sparkbar', componentName: 'Sparkbar', icon: 'chartSparkbar' },
             { route: '/docs#vue-ui-sparkstackbar', componentName: 'SparkStackbar', icon: 'chartSparkStackbar' },
             { route: '/docs#vue-ui-sparkhistogram', componentName: 'SparkHistogram', icon: 'chartSparkHistogram' },
             { route: '/docs#vue-ui-sparkgauge', componentName: 'Sparkgauge', icon: 'chartGauge' },

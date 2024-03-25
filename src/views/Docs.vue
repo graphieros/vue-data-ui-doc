@@ -317,7 +317,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Sparkline",
-        icon: "chartLine",
+        icon: "chartSparkline",
         tooltip: translations.value.docs.tooltips.sparkline[store.lang],
         link: "/docs#vue-ui-sparkline",
         type: "mini",
@@ -328,7 +328,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Sparkbar",
-        icon: "chartVerticalBar",
+        icon: "chartSparkbar",
         tooltip: translations.value.docs.tooltips.sparkbar[store.lang],
         link: "/docs#vue-ui-sparkbar",
         type: "mini",

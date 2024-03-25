@@ -476,7 +476,7 @@ onMounted(() => {
         xyDataset.value = [
           {
             name: "Daily npm downloads",
-            series: json.downloads.map(d => d.downloads),
+            series: json.downloads.map(d => d.downloads).slice(0, -1),
             type: "line",
             useArea: true,
             smooth: false,
@@ -1551,7 +1551,7 @@ const sparklineConfigForReleases = computed(() => {
                   </div>
                 </div>
                 <div class="max-w-[500px] mx-auto mb-6" v-if="!!data && !isLoadingLine">
-                  <VueUiSparkHistogram :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`"/>
+                  <VueDataUi component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`"/>
                 </div>
 
                 <div class="max-w-[800px] mx-auto" v-if="usableHeatmapData.length">
