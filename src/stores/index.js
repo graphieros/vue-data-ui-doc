@@ -210,6 +210,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    legend: {
+                        en: "Components marked with this icon provice a #legend slot to create your own custom legend.",
+                        fr: "Les composants marqués de cette icône fournissent un slot #legend pour créer votre propre légende personnalisée.",
+                        pt: "Os componentes marcados com este ícone fornecem um espaço #legend para criar sua própria legenda personalizada.",
+                        de: "Mit diesem Symbol gekennzeichnete Komponenten bieten einen #legend-Slot zum Erstellen Ihrer eigenen benutzerdefinierten Legende.",
+                        zh: "标有此图标的组件提供#legend 插槽来创建您自己的自定义图例。",
+                        jp: "このアイコンの付いたコンポーネントは、独自のカスタム凡例を作成するための #legend スロットを提供します。",
+                        es: "Los componentes marcados con este ícono proporcionan una ranura #legend para crear su propia leyenda personalizada.",
+                        ko: "이 아이콘이 표시된 구성요소는 사용자 정의 범례를 생성할 수 있는 #legend 슬롯을 제공합니다."
+                    },
                     summary: {
                         en: "Components marked with this icon provide a #svg slot to extend the svg with custom elements.",
                         fr: "Les composants marqués de cette icône fournissent un slot #svg pour étendre le svg avec des éléments personnalisés.",
@@ -520,6 +530,26 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 customization: {
+                    legendAllowed: {
+                        en: "The #legend slot is enabled for the following components:",
+                        fr: "Le slot #legend est activé pour les composants suivants :",
+                        pt: "O slot #legend está habilitado para os seguintes componentes:",
+                        de: "Der #legend-Slot ist für die folgenden Komponenten aktiviert:",
+                        zh: "#legend 插槽已为以下组件启用：",
+                        jp: "#legend スロットは次のコンポーネントに対して有効です。",
+                        es: "El slot #legend está habilitado para los siguientes componentes:",
+                        ko: "#legend 슬롯은 다음 구성 요소에 대해 활성화됩니다."
+                    },
+                    legend: {
+                        en: "Most charts have a '#legend' slot, from which a custom legend can be built. The slot provides necessary formatted data to ease the process.",
+                        fr: "La plupart des graphiques disposent d'un slot « #legend », à partir duquel une légende personnalisée peut être créée. L'emplacement fournit les données formatées nécessaires pour faciliter le processus.",
+                        pt: "A maioria dos gráficos possui um slot '#legend', a partir do qual uma legenda personalizada pode ser construída. O slot fornece os dados formatados necessários para facilitar o processo.",
+                        de: "Die meisten Diagramme verfügen über einen „#legend“-Slot, aus dem eine benutzerdefinierte Legende erstellt werden kann. Der Steckplatz stellt die erforderlichen formatierten Daten bereit, um den Vorgang zu vereinfachen.",
+                        zh: "大多数图表都有一个“#legend”槽，可以从中构建自定义图例。该插槽提供必要的格式化数据以简化该过程。",
+                        jp: "ほとんどのグラフには「#legend」スロットがあり、そこからカスタム凡例を作成できます。スロットは、プロセスを容易にするために必要なフォーマットされたデータを提供します。",
+                        es: "La mayoría de los gráficos tienen una ranura '#leyenda', a partir de la cual se puede crear una leyenda personalizada. La ranura proporciona los datos formateados necesarios para facilitar el proceso.",
+                        ko: "대부분의 차트에는 사용자 정의 범례를 작성할 수 있는 '#legend' 슬롯이 있습니다. 슬롯은 프로세스를 쉽게 하기 위해 필요한 형식의 데이터를 제공합니다."
+                    },
                     p1: {
                         en: "Most charts have a '#svg' slot you can use to inject any content you want, such as comments, descriptions, and even other charts. The slot provides the dimensions of the svg, so you can position your elements exactly where you need to. This page shows you how to do it.",
                         fr: "La plupart des graphiques disposent d'un emplacement « #svg » que vous pouvez utiliser pour injecter le contenu de votre choix, tel que des commentaires, des descriptions et même d'autres graphiques. La fente fournit les dimensions du svg, vous pouvez donc positionner vos éléments exactement là où vous en avez besoin. Cette page vous montre comment procéder.",

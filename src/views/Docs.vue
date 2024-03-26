@@ -45,7 +45,7 @@ import DocVueUiNestedDonuts from "../components/docs/DocVueUiNestedDonuts.vue";
 import DocVueUiSparkgauge from "../components/docs/DocVueUiSparkgauge.vue";
 import { getVueDataUiConfig } from "vue-data-ui";
 import mainConfig from "../assets/default_configs.json";
-import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, CopyIcon } from "vue-tabler-icons";
+import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 
 const store = useMainStore();
@@ -127,6 +127,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Donut",
@@ -138,6 +139,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "NestedDonuts",
@@ -149,6 +151,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
         hasSlot: false,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "DonutEvolution",
@@ -160,6 +163,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_donut_evolution_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Waffle",
@@ -171,6 +175,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Rings",
@@ -182,6 +187,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_rings_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Radar",
@@ -193,6 +199,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_radar_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Quadrant",
@@ -204,6 +211,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Gauge",
@@ -215,6 +223,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: false,
+        hasLegend: true
     },
     {
         name: "Wheel",
@@ -248,6 +257,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Onion",
@@ -259,6 +269,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "VerticalBar",
@@ -270,6 +281,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Heatmap",
@@ -292,6 +304,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_scatter_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Candlestick",
@@ -303,6 +316,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_candlestick_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "AgePyramid",
@@ -314,6 +328,7 @@ const menuItems = computed(() => [
         thumb: new URL('../assets/thumb_age_pyramid.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Sparkline",
@@ -491,6 +506,7 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_mood_radar_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "3dBar",
@@ -617,7 +633,7 @@ const menuItems = computed(() => [
                     {{ translations.docs.p1[store.lang] }}
                 </div>
 
-                <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-orange rounded-lg bg-[#ff640018]">
+                <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
                     <div class="mb-4">{{ translations.getConfig[store.lang] }}</div>
                     <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
                     <CopyIcon class="absolute right-2 top-2"/>
@@ -637,11 +653,16 @@ const menuItems = computed(() => [
 
                 <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col md:flex-row gap-4">
                 
-                    <div class="w-full border border-app-blue bg-[#5f8bee33] p-4 rounded-lg flex flex-col gap-6 place-items-center">
+                    <div class="w-full border border-gray-400 bg-[#FFFFFF10] p-4 rounded-lg flex flex-col gap-6 place-items-center">
                     <div class="flex flex-row gap-6 place-items-center">
-                    
                         <div class="h-[40px] w-[40px] flex place-items-center justify-center">
                         <SquareRoundedLetterSIcon class="bg-white dark:bg-black rounded-md text-app-blue"/>
+                        </div>
+                        {{ translations.slots.summary[store.lang] }}
+                    </div>
+                    <div class="flex flex-row gap-6 place-items-center">
+                        <div class="h-[40px] w-[40px] flex place-items-center justify-center">
+                        <SquareRoundedLetterLIcon class="bg-white dark:bg-black rounded-md text-app-orange"/>
                         </div>
                         {{ translations.slots.summary[store.lang] }}
                     </div>
@@ -652,7 +673,7 @@ const menuItems = computed(() => [
                         </div>
                     </div>
 
-                    <div class="w-full border border-app-green bg-[#42d39233] p-4 rounded-lg flex flex-row gap-6 place-items-center">
+                    <div class="w-full border border-gray-400 bg-[#FFFFFF10] p-4 rounded-lg flex flex-row gap-6 place-items-center">
                         <div class="h-[40px] w-[40px] flex place-items-center justify-center">
                         <SquareRoundedLetterTIcon class="bg-white dark:bg-black rounded-md text-app-green"/>
                         </div>
@@ -685,6 +706,7 @@ const menuItems = computed(() => [
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
                             <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
                         </template>
                         <template #tooltip>
                             <div class="flex flex-col place-items-center justify-center">
@@ -704,6 +726,7 @@ const menuItems = computed(() => [
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
                             <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
                         </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
@@ -721,6 +744,7 @@ const menuItems = computed(() => [
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
                             <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
                         </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
@@ -738,6 +762,7 @@ const menuItems = computed(() => [
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
                             <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
                         </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
@@ -755,6 +780,7 @@ const menuItems = computed(() => [
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
                             <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
                         </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
@@ -772,6 +798,7 @@ const menuItems = computed(() => [
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
                             <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
                         </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
@@ -789,6 +816,7 @@ const menuItems = computed(() => [
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
                             <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
                         </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">
@@ -806,6 +834,7 @@ const menuItems = computed(() => [
                             {{ item.name }}
                             <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
                             <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
                         </template>
                         <template #tooltip><div class="flex flex-col place-items-center justify-center">
                             <img v-if="item.thumb" :src="item.thumb">

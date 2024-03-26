@@ -1,5 +1,75 @@
 [
     {
+        "version": "v 2.0.41",
+        "date": "2024-03-26",
+        "updates": [
+            {
+                "component": "VueUiAgePyramid",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiChestnut",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiGauge",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiMoodRadar",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiNestedDonuts",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiOnion",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiQuadrant",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiRings",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiScatter",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Added #legend slot"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Added #legend slot"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.40",
         "date": "2024-03-25",
         "updates": [
