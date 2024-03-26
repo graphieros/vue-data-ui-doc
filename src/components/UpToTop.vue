@@ -12,7 +12,6 @@ onUnmounted(() => {
 })
 
 function setScrollY(e){
-    console.log(e)
     scrollY.value = window.scrollY
 }
 
@@ -29,7 +28,7 @@ function toTop(){
 
 <template>
     <transition name="fade">
-        <button @click="toTop" v-if="isScrolled" class="z-50 fixed bottom-4 right-2 rounded-full p-2 flex place-items-center justify-center topButton border border-app-green hover:bg-[#42d39220] transition-colors">
+        <button @click="toTop" v-if="isScrolled" class="hover:-translate-y-[2px] z-50 fixed bottom-4 right-2 rounded-full p-2 flex place-items-center justify-center topButton border border-app-green hover:bg-[#42d39220] transition-all hover:shadow-md">
             <VueUiIcon name="arrowTop" stroke="#42d392"/>
         </button>
     </transition>

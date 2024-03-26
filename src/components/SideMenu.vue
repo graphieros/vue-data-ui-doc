@@ -493,7 +493,7 @@ const sideMenuItems = ref([
 </script>
 
 <template>
-    <aside :class="`transition-all fixed left-0 top-[49px] ${isOpen ? 'w-[300px]' : 'w-[59px]'} h-[calc(100svh_-_49px)] bg-gray-200 dark:bg-black overflow-y-auto border-r border-gray-700 p-6`">
+    <aside :class="`transition-all fixed left-0 top-[49px] ${isOpen ? 'w-[300px]' : 'w-[59px]'} h-[calc(100svh_-_49px)] bg-gray-200 dark:bg-black overflow-y-auto border-r dark:border-gray-700 p-6 shadow-2xl`">
     <button class="absolute right-4 top-4" v-if="isOpen" @click="toggle">
         <ChevronLeftIcon class="text-black dark:text-app-green"/>
     </button>

@@ -108,7 +108,7 @@ function selectChart(opt) {
             <h1 class="text-3xl text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>
 
-        <div class="mx-auto max-w-[400px] dark:text-app-green mt-6 flex flex-row gap-2">
+        <!-- <div class="mx-auto max-w-[400px] dark:text-app-green mt-6 flex flex-row gap-2">
             <div class="h-[40px] w-[40px]">
                 <InfoSquareRoundedIcon/>
             </div>
@@ -119,7 +119,7 @@ function selectChart(opt) {
                 {{ translations.menu.docs[store.lang] }}
             </router-link>
             </div>
-        </div>
+        </div> -->
 
         <div class="w-full max-w-[400px] flex flex-row flex-wrap gap-2 mx-auto justify-center my-12">
             <div v-for="option in options" class="relative">

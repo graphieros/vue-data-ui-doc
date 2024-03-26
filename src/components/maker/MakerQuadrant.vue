@@ -10,6 +10,7 @@ import BaseShape from "../../components/BaseShape.vue";
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
+import ComponentContent from "./ComponentContent.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -232,58 +233,40 @@ function getLabel(label) {
 </details>
 
 <details open class="mt-6" v-if="makerTranslations.labels">
-                <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+    <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
 
-                <div class="flex justify-end">
-                    <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
-                </div>
+    <div class="flex justify-end">
+        <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+    </div>
 
-                <template v-for="category in CONFIG_CATEGORIES">
-                
-                    <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4">
-                        <h4>{{ category.title }}</h4> 
-                        <div class="flex flex-row gap-4 place-items-center flex-wrap">
-                            <div v-for="knob in CONFIG_MODEL.filter(k => k.category === category.key)" class="flex flex-col justify-start">
-                                <label class="text-xs">{{ getLabel(knob.label) }}</label>
-                                <div class="flex place-items-center justify-start h-[40px]">
-                                    <input class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)"  :step='knob.step ?? 1' :type="knob.type" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def" @change="forceChartUpdate">
-                                    <select v-if="knob.type === 'select'" v-model="knob.def" @change="forceChartUpdate">
-                                        <option v-for="opt in knob.options">{{ opt }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+    <template v-for="category in CONFIG_CATEGORIES">
+    
+        <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4">
+            <h4>{{ category.title }}</h4> 
+            <div class="flex flex-row gap-4 place-items-center flex-wrap">
+                <div v-for="knob in CONFIG_MODEL.filter(k => k.category === category.key)" class="flex flex-col justify-start">
+                    <label class="text-xs">{{ getLabel(knob.label) }}</label>
+                    <div class="flex place-items-center justify-start h-[40px]">
+                        <input class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)"  :step='knob.step ?? 1' :type="knob.type" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def" @change="forceChartUpdate">
+                        <select v-if="knob.type === 'select'" v-model="knob.def" @change="forceChartUpdate">
+                            <option v-for="opt in knob.options">{{ opt }}</option>
+                        </select>
                     </div>
-                </template>
-            </details>
-
-            <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-                <CopyComponent @click="() => copyComponent('componentContent', store)"/>
-<pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer"  @click="() => copyComponent('componentContent', store)">
-<code id="componentContent">
-&lt;script setup&gt;
-    import { ref } from "vue";
-    import { VueUiQuadrant } from "vue-data-ui";
-    import "vue-data-ui/style.css"
-
-    const config = ref({{ finalConfig }});
-
-    const dataset = ref({{ datasetItems.map(({name, shape, color, series}) => {
-        return {
-            name, shape, color, series
-        }
-    }) }});
-&lt;/script&gt;
-
-&lt;template&gt;
-    &lt;div style="width:600px"&gt;
-        &lt;VueUiQuadrant :config="config" :dataset="dataset" /&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
-
-</code>
-</pre>            
+                </div>
             </div>
+        </div>
+    </template>
+</details>
+
+<div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+    <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+    <ComponentContent
+        :dataset="datasetItems.map(({name, shape, color, series}) => {return {name, shape, color, series}})"
+        :config="finalConfig"
+        componentName="VueUiQuadrant"
+        @click="() => copyComponent('componentContent', store)"
+    />           
+</div>
     
 </template>
 

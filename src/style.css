@@ -199,3 +199,16 @@ input[type="checkbox"]:checked::before {
 .fade-leave-to {
   opacity: 0;
 }
+
+input:not([type="color"]),
+select {
+  border: 1px solid transparent !important;
+}
+
+input:not([type="color"]):hover {
+  border: 1px solid #5f8bee !important;
+}
+
+select:hover {
+  border: 1px solid #5f8bee !important;
+}

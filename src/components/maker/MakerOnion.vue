@@ -10,6 +10,7 @@ import { useDefaultDataStore } from "../../stores/defaultData"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
+import ComponentContent from "./ComponentContent.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -224,31 +225,13 @@ function getLabel(label) {
 
     <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
         <CopyComponent @click="() => copyComponent('componentContent', store)"/>
-<pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer"  @click="() => copyComponent('componentContent', store)">
-<code id="componentContent">
-&lt;script setup&gt;
-    import { ref } from "vue";
-    import { VueUiOnion } from "vue-data-ui";
-    import "vue-data-ui/style.css"
-
-    const config = ref({{ finalConfig }});
-
-    const dataset = ref({{ datasetItems.map(({name, value, color, percentage, prefix, suffix}) => {
-        return {
-            name, percentage, color, value, prefix, suffix
-        }
-    }) }});
-&lt;/script&gt;
-
-&lt;template&gt;
-    &lt;div style="width:600px"&gt;
-        &lt;VueUiOnion :config="config" :dataset="dataset" /&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
-
-</code>
-</pre>            
-            </div>
+        <ComponentContent
+            :dataset="datasetItems.map(({name, value, color, percentage, prefix, suffix}) => {return {name, percentage, color, value, prefix, suffix}})"
+            :config="finalConfig"
+            componentName="VueUiOnion"
+            @click="() => copyComponent('componentContent', store)"
+        />           
+    </div>
     
 </template>
 
