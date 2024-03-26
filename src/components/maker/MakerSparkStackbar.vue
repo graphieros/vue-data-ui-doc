@@ -206,7 +206,7 @@ function getLabel(label) {
             :dataset="datasetItems.map(({name, value, color}) => {return {name, value, color}})"
             :config="finalConfig"
             componentName="VueUiSparkStackbar"
-            @copy="() => copyComponent('componentContent', store)"
+            @click="() => copyComponent('componentContent', store)"
         />            
     </div>
     

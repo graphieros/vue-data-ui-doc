@@ -514,7 +514,21 @@ const <span class="text-app-blue">config: VueUiMoodRadarConfig</span> = {
     &lt;/VueUiMoodRadar&gt;
 </code>
 </pre>                    
-
+<div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiMoodRadar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #legend="{ legend }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiMoodRadar&gt;
+</code>
+</pre> 
             </template>
         </Box>
     </div>

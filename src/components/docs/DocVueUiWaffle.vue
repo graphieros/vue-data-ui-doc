@@ -590,7 +590,21 @@ const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</spa
     &lt;/VueUiWaffle&gt;
 </code>
 </pre>                    
-
+<div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiWaffle
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #legend="{ legend }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiWaffle&gt;
+</code>
+</pre> 
             </template>
             <template #tab4>
 <pre>

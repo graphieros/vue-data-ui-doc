@@ -606,7 +606,21 @@ const <span class="text-app-blue">config: VueUiDonutEvolutionConfig</span> = {
     &lt;/VueUiDonutEvolution&gt;
 </code>
 </pre>                    
-
+<div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiDonutEvolution
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #legend="{ legend }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiDonutEvolution&gt;
+</code>
+</pre> 
             </template>
 
         </Box>

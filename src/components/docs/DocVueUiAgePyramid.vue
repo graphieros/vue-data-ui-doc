@@ -1123,7 +1123,21 @@ const <span class="text-black dark:text-app-blue">config: VueUiAgePyramidConfig<
     &lt;/VueUiAgePyramid&gt;
 </code>
 </pre>                    
-
+<div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiAgePyramid
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #legend="{ legend }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiAgePyramid&gt;
+</code>
+</pre> 
             </template>
             <template #tab4>
 <pre>

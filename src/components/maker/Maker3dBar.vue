@@ -182,7 +182,7 @@ function getLabel(label) {
             :dataset="dataset"
             :config="finalConfig"
             componentName="VueUi3dBar"
-            @copy="() => copyComponent('componentContent', store)"
+            @click="() => copyComponent('componentContent', store)"
         /> 
     </div>
     

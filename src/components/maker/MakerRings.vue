@@ -225,7 +225,7 @@ function getLabel(label) {
             :dataset="datasetItems.map(({name, values, color}) => {return {name, values, color}})"
             :config="finalConfig"
             componentName="VueUiRings"
-            @click="() => copyComponent('componentContnt', store)"
+            @click="() => copyComponent('componentContent', store)"
         />     
     </div>
     

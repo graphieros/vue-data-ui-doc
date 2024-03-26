@@ -491,7 +491,21 @@ const <span class="text-black dark:text-app-blue">config: VueUiGaugeConfig</span
     &lt;/VueUiGauge&gt;
 </code>
 </pre>                    
-
+<div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiGauge
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #legend="{ legend }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiGauge&gt;
+</code>
+</pre> 
             </template>
         </Box>
     </div>

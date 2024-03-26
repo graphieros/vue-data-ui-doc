@@ -613,7 +613,22 @@ const <span class="text-black dark:text-app-blue">config: VueUiCandlestickConfig
         &lt;/template&gt;
     &lt;/VueUiCandlestick&gt;
 </code>
-</pre>                    
+</pre>  
+<div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiCandlestick
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #legend="{ legend }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiCandlestick&gt;
+</code>
+</pre>                   
 
             </template>
             <template #tab4>

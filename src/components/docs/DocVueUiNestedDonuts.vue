@@ -345,7 +345,7 @@ function fixChart() {
             <MakerLink to="VueUiNestedDonuts" />
         </div>
 
-        <Box showEmits showTooltip>
+        <Box showEmits showTooltip showSlots>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -669,7 +669,21 @@ const <span class="text-app-blue">config: VueUiNestedDonutsConfig</span> = {
     &lt;/VueUiNestedDonuts&gt;
 </code>
 </pre>                    
-
+<div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiNestedDonuts
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #legend="{ legend }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiNestedDonuts&gt;
+</code>
+</pre> 
             </template>
             <template #tab4>
 <pre>

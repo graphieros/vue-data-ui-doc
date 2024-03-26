@@ -290,7 +290,7 @@ function getRelationNodes(relationIds) {
             :dataset="datasetItems"
             :config="finalConfig"
             componentName="VueUiRelationCircle"
-            @copy="() => copyComponent('componentContent')"
+            @click="() => copyComponent('componentContent', store)"
         />    
     </div>
     

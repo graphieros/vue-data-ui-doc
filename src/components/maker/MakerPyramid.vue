@@ -233,7 +233,7 @@ function getLabel(label) {
             :dataset="datasetItems"
             :config="finalConfig"
             componentName="VueUiAgePyramid"
-            @copy="() => copyComponent('componentContent', store)"
+            @click="() => copyComponent('componentContent', store)"
         />    
     </div>
     

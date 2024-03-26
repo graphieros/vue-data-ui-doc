@@ -724,7 +724,21 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
     &lt;/VueUiDonut&gt;
 </code>
 </pre>                    
-
+<div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiDonut
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #legend="{ legend }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiDonut&gt;
+</code>
+</pre> 
             </template>
             <template #tab4>
 <pre>

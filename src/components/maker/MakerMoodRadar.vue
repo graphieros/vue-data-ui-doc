@@ -207,7 +207,7 @@ function getLabel(label) {
             :dataset="datasetItems"
             :config="finalConfig"
             componentName="VueUiMoodRadar"
-            @copy="() => copyComponent('componentContent', store)"
+            @click="() => copyComponent('componentContent', store)"
         />
     </div>
     

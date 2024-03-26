@@ -210,6 +210,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    legendDetail: {
+                        en: "This component contains a #legend slot you can use to customize your own legend. The slot provides formatted data you can use to ease the process.",
+                        fr: "Ce composant contient un slot #legend que vous pouvez utiliser pour personnaliser votre propre légende. Le slot fournit des données formatées que vous pouvez utiliser pour faciliter le processus.",
+                        pt: "Este componente contém um slot #legend que você pode usar para personalizar sua própria legenda. O slot fornece dados formatados que você pode usar para facilitar o processo.",
+                        de: "Diese Komponente enthält einen #legend-Slot, den Sie zum Anpassen Ihrer eigenen Legende verwenden können. Der Steckplatz stellt formatierte Daten bereit, die Sie zur Vereinfachung des Vorgangs verwenden können.",
+                        zh: "该组件包含一个 #legend 插槽，您可以使用它来自定义您自己的图例。该插槽提供了可用于简化该过程的格式化数据。",
+                        jp: "このコンポーネントには、独自の凡例をカスタマイズするために使用できる #legend スロットが含まれています。スロットは、プロセスを容易にするために使用できるフォーマットされたデータを提供します。",
+                        es: "Este componente contiene una ranura #legend que puede utilizar para personalizar su propia leyenda. La ranura proporciona datos formateados que puede utilizar para facilitar el proceso.",
+                        ko: "이 구성 요소에는 자신만의 범례를 사용자 정의하는 데 사용할 수 있는 #legend 슬롯이 포함되어 있습니다. 슬롯은 프로세스를 쉽게 하는 데 사용할 수 있는 형식화된 데이터를 제공합니다."
+                    },
                     legend: {
                         en: "Components marked with this icon provice a #legend slot to create your own custom legend.",
                         fr: "Les composants marqués de cette icône fournissent un slot #legend pour créer votre propre légende personnalisée.",

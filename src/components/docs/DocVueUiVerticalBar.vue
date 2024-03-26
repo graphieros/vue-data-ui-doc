@@ -773,7 +773,21 @@ const <span class="text-app-blue">config: VueUiVerticalBarConfig</span> = {
     &lt;/VueUiVerticalBar&gt;
 </code>
 </pre>                    
-
+<div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiVerticalBar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #legend="{ legend }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiVerticalBar&gt;
+</code>
+</pre> 
             </template>
             <template #tab4>
 <pre>
