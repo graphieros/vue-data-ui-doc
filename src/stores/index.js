@@ -221,7 +221,7 @@ export const useMainStore = defineStore("main", {
                         ko: "이 구성 요소에는 자신만의 범례를 사용자 정의하는 데 사용할 수 있는 #legend 슬롯이 포함되어 있습니다. 슬롯은 프로세스를 쉽게 하는 데 사용할 수 있는 형식화된 데이터를 제공합니다."
                     },
                     legend: {
-                        en: "Components marked with this icon provice a #legend slot to create your own custom legend.",
+                        en: "Components marked with this icon provide a #legend slot to create your own custom legend.",
                         fr: "Les composants marqués de cette icône fournissent un slot #legend pour créer votre propre légende personnalisée.",
                         pt: "Os componentes marcados com este ícone fornecem um espaço #legend para criar sua própria legenda personalizada.",
                         de: "Mit diesem Symbol gekennzeichnete Komponenten bieten einen #legend-Slot zum Erstellen Ihrer eigenen benutzerdefinierten Legende.",

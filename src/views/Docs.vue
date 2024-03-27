@@ -664,7 +664,7 @@ const menuItems = computed(() => [
                         <div class="h-[40px] w-[40px] flex place-items-center justify-center">
                         <SquareRoundedLetterLIcon class="bg-white dark:bg-black rounded-md text-app-orange"/>
                         </div>
-                        {{ translations.slots.summary[store.lang] }}
+                        {{ translations.slots.legend[store.lang] }}
                     </div>
                         <div class="w-full flex justify-center">
                         <router-link to="/customization">
