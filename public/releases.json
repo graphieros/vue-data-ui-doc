@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.44",
+        "date": "2024-03-28",
+        "updates": [
+            {
+                "component": "VueUiWaffle",
+                "description": "Fixed edge case bug on serie segregation when data labels are enabled"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.43",
         "date": "2024-03-28",
         "updates": [
