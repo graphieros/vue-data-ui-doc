@@ -1,5 +1,5 @@
 <script setup>
-import {ref, computed } from "vue";
+import {ref, computed, onMounted, onUnmounted } from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useRouter } from "vue-router";
 import DocVueUiXy from '../components/docs/DocVueUiXy.vue';
@@ -47,6 +47,8 @@ import { getVueDataUiConfig } from "vue-data-ui";
 import mainConfig from "../assets/default_configs.json";
 import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
+import Sprinter from "../components/Sprinter.vue";
+import Wheeler from "../components/Wheeler.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -550,6 +552,28 @@ const menuItems = computed(() => [
     },
 ])
 
+const currentShowcase = ref('VueUiXy')
+const menuItemsCount = ref(40);
+let count = ref(0)
+const wheelerValue = computed(() => {
+    return (count.value / 40) * 100
+})
+
+function playShowcase() {
+    setInterval(() => {
+        if(count.value === menuItemsCount.value - 1) {
+            count.value = 0;
+            currentShowcase.value = "Xy"
+            count.value += 1;
+        } else {
+            currentShowcase.value = `${menuItems.value[count.value] ? menuItems.value[count.value].name : 'Xy'}`
+            count.value += 1;
+        }
+ }, 1000)
+}
+
+onMounted(playShowcase)
+
 </script>
 
 <template>
@@ -601,14 +625,22 @@ const menuItems = computed(() => [
             <DocVueUiNestedDonuts v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-nested-donuts'"/>
             <DocVueUiSparkgauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkgauge'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
-                <h1 class="flex gap-2 text-md">
-                    <img src="../assets/logo.png" class="h-6">
-                    {{ translations.docs.props[store.lang] }}
-                </h1>
-<div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 mt-6 bg-gray-200 dark:bg-[rgb(30,30,30)]">
+                <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
+                    <div class="flex flex-row gap-4 place-items-center">
+                        <img src="../assets/logo.png" class="h-6">
+                        <h1 class="text-3xl text-center">{{ translations.menu.docs[store.lang] }}</h1>
+                    </div>
+                    <h2>{{ translations.docs.props[store.lang] }}</h2>
+                    <div class="w-[100px]">
+                        <!-- <Sprinter :value="count" :key="`sprinter_${count}`"/> -->
+                        <Wheeler :value="wheelerValue" :key="`wheeler_${count}`"/>
+                    </div>
+                </div>
+
+<div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 bg-gray-200 dark:bg-[rgb(30,30,30)]">
 <pre>
 <code class="text-gray-500 text-md">
-&lt;VueUiXy
+&lt;VueUi<span class="dark:text-gray-200">{{ currentShowcase }}</span>
     <span class="text-black dark:text-app-green">:dataset</span>="{{ translations.docs.dataset[store.lang] }}"
     <span class="text-black dark:text-app-blue">:config</span>="{{ translations.docs.config[store.lang] }}"
 /&gt;
@@ -621,7 +653,7 @@ const menuItems = computed(() => [
 <div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 mt-6 bg-gray-200 dark:bg-[rgb(30,30,30)]">
 <pre>
 <code class="text-gray-500 text-md">
-&lt;VueDataUi
+&lt;<span class="dark:text-gray-200">VueDataUi</span>
     <span class="text-black dark:text-app-orange">component</span>="VueUiXy"
     <span class="text-black dark:text-app-green">:dataset</span>="{{ translations.docs.dataset[store.lang] }}"
     <span class="text-black dark:text-app-blue">:config</span>="{{ translations.docs.config[store.lang] }}"
@@ -629,7 +661,7 @@ const menuItems = computed(() => [
 </code>
 </pre>
 </div>
-                <div class="w-full px-2 sm:px-0 sm:w-1/2 text-left mx-auto mt-4 text-xs sm:text-sm">
+                <div class="w-full px-2 sm:px-0 sm:w-1/2 text-left mx-auto my-6 text-xs sm:text-lg">
                     {{ translations.docs.p1[store.lang] }}
                 </div>
 
