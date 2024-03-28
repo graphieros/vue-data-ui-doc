@@ -5,8 +5,9 @@ import { useMainStore } from "../stores";
 import globalConfig from "../assets/default_configs.json";
 import staticReleases from "../../public/releases.json"
 
-
 const store = useMainStore();
+const translations = computed(() => store.translations)
+
 const step = ref(0);
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
@@ -1524,9 +1525,10 @@ const sparklineConfigForReleases = computed(() => {
     <SideMenu @toggle="toggleMenu"/>
     <div :class="`${isOpen ? 'pl-[348px] pr-[48px] hidden sm:block' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden`">
         <div :class="`${isOpen ? 'xl:w-5/6' : ''}`">
-            <div class="mx-auto">
-            <h1 class="text-center text-xl text-app-green">Versions</h1>
-        </div>
+            <h1 class="flex flex-row gap-4 place-items-center justify-center text-3xl text-center mb-12">
+                <img src="../assets/logo.png" class="h-6">
+                {{ translations.menu.versions[store.lang] }}
+            </h1>
             <div class="max-w-[800px] mx-auto px-6">
                 <div class="max-w-[500px] mx-auto my-6">
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
@@ -1538,7 +1540,7 @@ const sparklineConfigForReleases = computed(() => {
                     <div class="pb-2 mb-2">
                       Current NPM score:
                     </div>
-                    <VueUiSparkbar :dataset="sparkbarDataset" :config="sparkbarConfig"/>
+                    <VueUiSparkbar v-if="sparkbarDataset.length" :dataset="sparkbarDataset" :config="sparkbarConfig"/>
                 </div>
                 <div class="flex flew-row gap-2 justify-center mb-6">
                   <div class="w-[100px] sm:w-[150px]" v-for="(wheel, i) in sparkbarDataset">
@@ -1559,7 +1561,7 @@ const sparklineConfigForReleases = computed(() => {
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig"/>
                 </div>
                 <div class="max-w-[800px] mx-auto" v-if="!isLoadingLine">
-                  <VueUiXy :config="xyConfig" :dataset="xyDataset"/>
+                  <VueUiXy v-if="xyDataset.length" :config="xyConfig" :dataset="xyDataset"/>
                 </div>
                 <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
                   <VueUiSparkline :dataset="JSON.parse(JSON.stringify(sparklineReleases)).reverse()" :config="sparklineConfigForReleases"/>

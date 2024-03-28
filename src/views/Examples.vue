@@ -15,7 +15,8 @@ const currentMenu = ref('mini')
 
 <template>
     <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative my-12">
-        <h1 class="text-3xl text-center mb-12">
+        <h1 class="flex flex-row gap-4 place-items-center justify-center text-3xl text-center mb-12">
+            <img src="../assets/logo.png" class="h-6">
             {{ translations.menu.examples[lang] }}
         </h1>
         <div class="flex gap-4 place-items-center justify-center">

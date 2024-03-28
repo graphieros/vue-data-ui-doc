@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.43",
+        "date": "2024-03-28",
+        "updates": [
+            {
+                "component": "All components",
+                "description": "Use console.warn for error handling"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.42",
         "date": "2024-03-27",
         "updates": [
