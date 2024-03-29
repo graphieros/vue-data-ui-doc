@@ -323,17 +323,17 @@ const histoConfig = computed(() => {
     backgroundColor: isDarkMode.value ? "#1A1A1A" : "#F3F4F6",
     fontFamily: "inherit",
     layout: {
-      height: 140,
+      height: 240,
       width: 1200,
       padding: {
-        top: 36,
+        top: 48,
         right: 0,
         left: 0,
         bottom: 44
       }
     },
     bars: {
-      shape: "star",
+      shape: "square",
       strokeWidth: 0,
       colors: {
         positive: "#42d392",
@@ -342,8 +342,8 @@ const histoConfig = computed(() => {
           show: true
         }
       },
-      borderRadius: 24,
-      gap: 12
+      borderRadius: 6,
+      gap: 2
     },
     labels: {
       value: {

@@ -110,7 +110,7 @@ const selectedLanguage = computed({
                 </div>
             </router-link>
 
-            <nav class="hidden lg:flex flex-row gap-3 justify-end w-full place-items-center">
+            <nav class="hidden xl:flex flex-row gap-1 justify-end w-full place-items-center">
                 <!-- <button @click="openChartMaker">
                     <ToolIcon/>
                 </button> -->
@@ -162,7 +162,7 @@ const selectedLanguage = computed({
                     </select>
                 </div>
             </nav>
-            <div class="relative lg:hidden">
+            <div class="relative xl:hidden">
                 <button id="mainDropdownButton" @click="useMenu" type="button">
                     <Menu2Icon/>
                 </button>
