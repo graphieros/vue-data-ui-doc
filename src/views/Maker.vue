@@ -29,6 +29,7 @@ import MakerThermometer from "../components/maker/MakerThermometer.vue";
 import Maker3dBar from "../components/maker/Maker3dBar.vue";
 import MakerNestedDonuts from "../components/maker/MakerNestedDonuts.vue";
 import MakerSparkgauge from "../components/maker/MakerSparkgauge.vue";
+import MakerGalaxy from "../components/maker/MakerGalaxy.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
@@ -75,6 +76,7 @@ const options = ref([
     { name: "VueUi3dBar", icon: "chart3dBar", thumb: new URL('../assets/thumb_3d_bar_light.png', import.meta.url).href},
     { name: "VueUiNestedDonuts", icon: "chartNestedDonuts", thumb: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href},
     { name: "VueUiSparkgauge", icon: "chartGauge", thumb: new URL('../assets/thumb_sparkgauge_light.png', import.meta.url).href},
+    { name: "VueUiGalaxy", icon: "chartGalaxy", thumb: new URL('../assets/thumb_galaxy_light.png', import.meta.url).href}
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -190,5 +192,6 @@ function selectChart(opt) {
         <Maker3dBar v-if="selectedChart.name === 'VueUi3dBar'" />
         <MakerNestedDonuts v-if="selectedChart.name === 'VueUiNestedDonuts'" />
         <MakerSparkgauge v-if="selectedChart.name === 'VueUiSparkgauge'" />
+        <MakerGalaxy v-if="selectedChart.name === 'VueUiGalaxy'" />
     </div>
 </template>

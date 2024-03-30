@@ -789,6 +789,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        galaxy: {
+                            en: "Visualize relative proportions, favoring the visibility of small values.",
+                            fr: "Visualisez les proportions relatives, favorisant la visibilité des petites valeurs.",
+                            pt: "Visualize proporções relativas, favorecendo a visibilidade de pequenos valores.",
+                            de: "Visualisieren Sie relative Proportionen und begünstigen Sie die Sichtbarkeit kleiner Werte.",
+                            zh: "可视化相对比例，有利于小值的可见性。",
+                            jp: "相対的な比率を視覚化し、小さな値の視認性を優先します。",
+                            es: "Visualizar proporciones relativas, favoreciendo la visibilidad de valores pequeños.",
+                            ko: "작은 값의 가시성에 유리하도록 상대적 비율을 시각화합니다."
+                        },  
                         nestedDonuts: {
                             en: "Visualize breakdowns of comparable series",
                             fr: "Visualisez les répartitions de séries comparables",

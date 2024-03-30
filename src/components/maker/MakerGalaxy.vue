@@ -28,10 +28,6 @@ const makerTranslations = computed(() => {
     return makerStore.translations;
 })
 
-const isDarkMode = computed(() => {
-    return store.isDarkMode;
-})
-
 const isFixed = ref(!isMobile.value);
 
 const CONFIG_CATEGORIES = computed(() => {
@@ -39,10 +35,6 @@ const CONFIG_CATEGORIES = computed(() => {
         {
             key: 'general',
             title: makerTranslations.value.categories.general[store.lang]
-        },
-        {
-            key: 'labels',
-            title: makerTranslations.value.categories.labels[store.lang]
         },
         {
             key: 'donut',
@@ -71,53 +63,53 @@ const CONFIG_CATEGORIES = computed(() => {
     ]
 })
 
-const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_donut.model)))
+const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_galaxy.model)))
 
 const options = ref({
     datasetItems: {
         name: "name",
         values: [],
-        color: "#42d392"
+        color: "#CCCCCC"
     },
     dataset: [],
     config: {}
 })
 
-const datasetItems = ref(defaultData.vue_ui_donut.dataset)
+const datasetItems = ref(defaultData.vue_ui_galaxy.dataset)
 
 const step = ref(0)
 
 onMounted(() => {
-    if(localStorage.donutConfig) {
-        CONFIG_MODEL.value = JSON.parse(localStorage.donutConfig);
+    if(localStorage.galaxyConfig) {
+        CONFIG_MODEL.value = JSON.parse(localStorage.galaxyConfig);
     } 
-    if(localStorage.donutDataset) {
-        datasetItems.value = JSON.parse(localStorage.donutDataset)
+    if(localStorage.galaxyDataset) {
+        datasetItems.value = JSON.parse(localStorage.galaxyDataset)
     }else {
-        localStorage.setItem('donutDataset', JSON.stringify(defaultData.vue_ui_donut.dataset))
+        localStorage.setItem('galaxyDataset', JSON.stringify(defaultData.vue_ui_galaxy.dataset))
     }
     step.value += 1;
 })
 
 function saveDatasetToLocalStorage() {
-    localStorage.donutDataset = JSON.stringify(datasetItems.value);
+    localStorage.galaxyDataset = JSON.stringify(datasetItems.value);
     clearStep.value += 1;
 }
 
 function saveConfigToLocalStorage() {
-    localStorage.donutConfig = JSON.stringify(CONFIG_MODEL.value);
+    localStorage.galaxyConfig = JSON.stringify(CONFIG_MODEL.value);
     clearStep.value += 1;
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_donut.model))
+    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_galaxy.model))
     step.value += 1;
     saveConfigToLocalStorage();
 }
 
 function forceChartUpdate() {
-    if(!localStorage.donutConfig) {
-        localStorage.setItem('donutConfig', {})
+    if(!localStorage.galaxyConfig) {
+        localStorage.setItem('galaxyConfig', {})
     }
     saveConfigToLocalStorage()
     step.value += 1;
@@ -134,13 +126,6 @@ function deleteDatasetItem(id) {
     saveDatasetToLocalStorage()
 }
 
-function pushValueToSeries({ value, id }) {
-    const thisItem = datasetItems.value.find(_ => _.id === id);
-    thisItem.values = [value];
-    step.value += 1;
-    saveDatasetToLocalStorage()
-}
-
 const finalConfig = computed(() => {
     return convertArrayToObject(CONFIG_MODEL.value)
 })
@@ -153,9 +138,8 @@ function getLabel(label) {
 </script>
 
 <template>
-
-    <ClearStorageAndRefresh keyConfig="donutConfig" keyDataset="donutDataset" :key="`clear_${clearStep}`"/>
-    <DocLink to="vue-ui-donut" name="VueUiDonut"/>
+    <ClearStorageAndRefresh keyConfig="galaxyConfig" keyDataset="galaxyDataset" :key="`clear_${clearStep}`"/>
+    <DocLink to="vue-ui-galaxy" name="VueUiGalaxy"/>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <transition name="fade">                
@@ -167,7 +151,7 @@ function getLabel(label) {
                     </button>
                     <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
                 </div>
-                <VueUiDonut :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                <VueDataUi component="VueUiGalaxy" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
             </div>
         </transition>
     </div>
@@ -229,7 +213,7 @@ function getLabel(label) {
         <ComponentContent
             :dataset="datasetItems.map(({name, values, color}) => { return {name, values, color}})"
             :config="finalConfig"
-            componentName="VueUiDonut"
+            componentName="VueUiGalaxy"
             @click="() => copyComponent('componentContent', store)"
         />          
     </div>

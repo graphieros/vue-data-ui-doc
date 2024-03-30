@@ -261,6 +261,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
     },
     {
+        route: '/docs#vue-ui-galaxy',
+        icon: 'chartGalaxy',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Galaxy',
+        thumb: new URL('../assets/thumb_galaxy.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_galaxy_light.png', import.meta.url).href,
+    },
+    {
         route: '/docs#vue-ui-sparkline',
         icon: 'chartSparkline',
         cssClasses: '',
@@ -454,6 +463,7 @@ const sideMenuItems = ref([
             {route: '/docs#vue-ui-mood-radar', componentName: 'MoodRadar', icon: 'chartMoodRadar' },
             {route: '/docs#vue-ui-molecule', componentName: 'Molecule', icon: 'chartCluster' },
             {route: '/docs#vue-ui-nested-donuts', componentName: 'NestedDonuts', icon: 'chartNestedDonuts' },
+            {route: '/docs#vue-ui-galaxy', componentName: 'Galaxy', icon: 'chartGalaxy' },
         ]
     },
     {

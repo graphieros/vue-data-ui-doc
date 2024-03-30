@@ -43,6 +43,7 @@ import DocVueUiTableSparkline from "../components/docs/DocVueUiTablesparkline.vu
 import DocVueUiMiniLoader from "../components/docs/DocVueUiMiniLoader.vue";
 import DocVueUiNestedDonuts from "../components/docs/DocVueUiNestedDonuts.vue";
 import DocVueUiSparkgauge from "../components/docs/DocVueUiSparkgauge.vue";
+import DocVueUiGalaxy from "../components/docs/DocVueUiGalaxy.vue";
 import { getVueDataUiConfig } from "vue-data-ui";
 import mainConfig from "../assets/default_configs.json";
 import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon } from "vue-tabler-icons";
@@ -139,6 +140,18 @@ const menuItems = computed(() => [
         type: "classic",
         thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: true
+    },
+    {
+        name: "Galaxy",
+        icon: "chartGalaxy",
+        tooltip: translations.value.docs.tooltips.galaxy[store.lang],
+        link: "/docs#vue-ui-galaxy",
+        type: "classic",
+        thumb: new URL('../assets/thumb_galaxy.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_galaxy_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
         hasLegend: true
@@ -624,6 +637,7 @@ onMounted(playShowcase)
             <DocVueUiMiniLoader v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-mini-loader'"/>
             <DocVueUiNestedDonuts v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-nested-donuts'"/>
             <DocVueUiSparkgauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkgauge'"/>
+            <DocVueUiGalaxy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-galaxy'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

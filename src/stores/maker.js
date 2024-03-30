@@ -1007,6 +1007,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Caliente",
                         ko: "더운"
                     },
+                    hoverEffect: {
+                        en: 'Hover effect',
+                        fr: "Effet de survol",
+                        pt: "Efeito de foco",
+                        de: "Hover-Effekt",
+                        zh: "悬停效果",
+                        jp: "ホバー効果",
+                        es: "efecto de desplazamiento",
+                        ko: "호버 효과"
+                    },
                     icons: {
                         en: 'Icons',
                         fr: 'Icones',
