@@ -60,8 +60,19 @@ const config = ref({
           hoverEffect: {
             show: true,
             multiplicator: 1.1
+          },
+          gradient: {
+            show: true,
+            intensity: 30,
+            color: "#FFFFFF"
           }
         },
+        labels: {
+          dataLabels: {
+            prefix: "",
+            suffix: ""
+          }
+        }
       },
       legend: {
         backgroundColor: "#F3F4F6",
@@ -140,8 +151,19 @@ const darkModeConfig = ref({
           hoverEffect: {
             show: true,
             multiplicator: 1.1
+          },
+          gradient: {
+            show: true,
+            intensity: 30,
+            color: "#FFFFFF"
           }
         },
+        labels: {
+          dataLabels: {
+            prefix: "",
+            suffix: ""
+          }
+        }
       },
       legend: {
         backgroundColor: "#1A1A1A",
@@ -398,6 +420,17 @@ const <span class="text-app-blue">config: VueUiGalaxyConfig</span> = {
           hoverEffect: {
             show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.arcs.hoverEffect.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.arcs.hoverEffect.show" @change="forceChartUpdate()">, (default: true) 
             multiplicator: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="1" max="1.4" step="0.01" v-model="mutableConfigDarkMode.style.chart.layout.arcs.hoverEffect.multiplicator" ><input v-else type="number" class="accent-app-blue" min="1" max="1.4" step="0.01" v-model="mutableConfig.style.chart.layout.arcs.hoverEffect.multiplicator" >, (default: 1.1)
+          },
+          gradient: {
+            show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.arcs.gradient.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.arcs.gradient.show" @change="forceChartUpdate()">, (default: true)
+            intensity: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.chart.layout.arcs.gradient.intensity" ><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.chart.layout.arcs.gradient.intensity" >, (default: 30)
+            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.arcs.gradient.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.arcs.gradient.color">, (default: "#FFFFFF")
+          }
+        },
+        labels: {
+          dataLabels: {
+            prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.prefix">, (default: "")
+            suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.suffix">, (default: "")
           }
         },
       },

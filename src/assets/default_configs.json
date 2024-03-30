@@ -3321,6 +3321,17 @@
                         "hoverEffect": {
                             "show": true,
                             "multiplicator": 1.1
+                        },
+                        "gradient": {
+                            "show": true,
+                            "intensity": 30,
+                            "color": "#FFFFFF"
+                        }
+                    },
+                    "labels": {
+                        "dataLabels": {
+                            "prefix": "",
+                            "suffix": ""
                         }
                     }
                 },

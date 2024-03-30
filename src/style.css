@@ -202,7 +202,7 @@ input[type="checkbox"]:checked::before {
 
 input:not([type="color"]),
 select {
-  border: 1px solid transparent !important;
+  border: 1px solid #CCCCCC30 !important;
 }
 
 input:not([type="color"]):hover {

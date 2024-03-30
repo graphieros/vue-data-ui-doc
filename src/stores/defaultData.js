@@ -2208,6 +2208,11 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table' },
                     { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'table' },
                     { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'table' },
+                    { key: 'style.chart.layout.arcs.gradient.show', def: true, type: 'checkbox', label: 'useGradient', category: 'donut' },
+                    { key: 'style.chart.layout.arcs.gradient.intensity', def: 30, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'donut'},
+                    { key: 'style.chart.layout.arcs.gradient.color', def: '#FFFFFF', type: 'color', label: ['gradient', 'is', 'backgroundColor'], category: 'donut'},
+                    { key: 'style.chart.layout.labels.dataLabels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels'},
+                    { key: 'style.chart.layout.labels.dataLabels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels'},
                 ]
             }
         }
