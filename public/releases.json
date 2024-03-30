@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.49",
+        "date": "2024-03-30",
+        "updates": [
+            {
+                "component": "VueUiIcon",
+                "description": "Minor fixes"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.48",
         "date": "2024-03-30",
         "updates": [
