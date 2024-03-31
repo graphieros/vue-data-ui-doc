@@ -2174,6 +2174,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend'},
                     { key: 'style.chart.layout.arcs.hoverEffect.multiplicator', def: 1.1, type: 'number', min: 1, max: 1.4, step: 0.01, label: ['hoverEffect', 'is', 'thickness'], category: 'donut'},
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend'},
+                    { key: 'style.chart.legend.color', def: '#1A1A1A', type: "color", label: 'textColor', category: "legend" },
                     { key: 'style.chart.legend.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'legend'},
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
                     { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'legend'},
