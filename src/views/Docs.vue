@@ -44,6 +44,7 @@ import DocVueUiMiniLoader from "../components/docs/DocVueUiMiniLoader.vue";
 import DocVueUiNestedDonuts from "../components/docs/DocVueUiNestedDonuts.vue";
 import DocVueUiSparkgauge from "../components/docs/DocVueUiSparkgauge.vue";
 import DocVueUiGalaxy from "../components/docs/DocVueUiGalaxy.vue";
+import DocVueUiKpi from "../components/docs/DocVueUiKpi.vue";
 import { getVueDataUiConfig } from "vue-data-ui";
 import mainConfig from "../assets/default_configs.json";
 import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon } from "vue-tabler-icons";
@@ -467,6 +468,15 @@ const menuItems = computed(() => [
         hasTableCss: false,
     },
     {
+        name: "Kpi",
+        icon: "legend",
+        tooltip: translations.value.docs.tooltips.kpi[store.lang],
+        link: "/docs#vue-ui-kpi",
+        type: "tool",
+        hasSlot: false,
+        hasTableCss: false,
+    },
+    {
         name: "Screenshot",
         icon: "screenshot",
         tooltip: translations.value.docs.tooltips.screenshot[store.lang],
@@ -638,6 +648,7 @@ onMounted(playShowcase)
             <DocVueUiNestedDonuts v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-nested-donuts'"/>
             <DocVueUiSparkgauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkgauge'"/>
             <DocVueUiGalaxy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-galaxy'"/>
+            <DocVueUiKpi v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-kpi'"/>
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

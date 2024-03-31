@@ -789,6 +789,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        kpi: {
+                            en: "An animated and flexible component to display important KPI",
+                            fr: "Un composant animé et flexible pour afficher les KPI importants",
+                            pt: "Um componente animado e flexível para exibir KPI importantes",
+                            de: "Eine animierte und flexible Komponente zur Darstellung wichtiger KPI",
+                            zh: "用于显示重要 KPI 的动画且灵活的组件",
+                            jp: "重要な KPI を表示するアニメーション化された柔軟なコンポーネント",
+                            es: "Un componente animado y flexible para mostrar KPI importantes",
+                            ko: "중요한 KPI를 표시하는 애니메이션되고 유연한 구성 요소"
+                        },
                         galaxy: {
                             en: "Visualize relative proportions, favoring the visibility of small values.",
                             fr: "Visualisez les proportions relatives, favorisant la visibilité des petites valeurs.",

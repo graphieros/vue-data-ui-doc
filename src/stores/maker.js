@@ -758,6 +758,16 @@ export const useMakerStore = defineStore('maker', {
                         es: 'Crescendo',
                         ko: '진전'
                     },
+                    cssClass: {
+                        en: 'CSS classes',
+                        fr: "Classes CSS",
+                        pt: "Classes CSS",
+                        de: "CSS-Klassen",
+                        zh: "CSS 类",
+                        jp: "CSSクラス",
+                        es: "Clases CSS",
+                        ko: "CSS 클래스"
+                    },
                     curve: {
                         en: 'Curve',
                         fr: "Courbe",

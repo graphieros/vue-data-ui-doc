@@ -408,6 +408,13 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: 'MiniLoader',
     },
+    {
+        route: '/docs#vue-ui-kpi',
+        icon: 'legend',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Kpi',
+    },
 ])
 
 const isTooltip = ref(false);
@@ -496,6 +503,7 @@ const sideMenuItems = ref([
             { route: '/docs#vue-ui-icon', componentName: 'Icon', icon: 'smiley' },
             { route: '/docs#vue-ui-digits', componentName: 'Digits', icon: 'digit8' },
             { route: '/docs#vue-ui-mini-loader', componentName: 'MiniLoader', icon: 'chartWheel' },
+            { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'legend' },
         ]
     },
 ])
