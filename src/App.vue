@@ -1,14 +1,25 @@
 <script setup>
+import { computed } from "vue";
 import Header from "./components/Header.vue";
 import UpToTop from "./components/UpToTop.vue";
+import { useRouter } from "vue-router";
+import Follower from "./components/examples/components/Follower.vue";
+
+const router = useRouter();
+
+const currentRoute = computed(() => {
+    return router.currentRoute.value.fullPath
+})
+
 </script>
 
 <template>
   <Header/>
-  <div class="font-satoshi bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors">
+  <div id="vdui" class="font-satoshi bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors">
     <router-view />
     <UpToTop/>
   </div>
+  <Follower v-if="currentRoute !== '/'"/>
 </template>
 
 <style>
