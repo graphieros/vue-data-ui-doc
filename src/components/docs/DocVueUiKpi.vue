@@ -101,7 +101,7 @@ function copyToClipboard(conf) {
 </script>
 
 <template>
-     <div>
+    <div>
         <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="legend" stroke="#42d392" :strokeWidth="1.5" />
             VueUiKpi
@@ -109,14 +109,7 @@ function copyToClipboard(conf) {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.kpi[store.lang] }}
         </p>
-        <button v-if="!isFixed" @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-            <div class="relative overflow-visible">
-                    <PinIcon class="peer overflow-visible"/>
-                    <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
-                        {{ hintPin[store.lang] }}
-                    </div>
-                </div>
-                </button>
+
         <div class="w-full mx-auto flex flex-row gap-4 flex-grow place-items-center justify-center">
             <VueDataUi component="VueUiKpi" :dataset="dataset0" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`kpi0_${key}`">
                 <template #comment-before>

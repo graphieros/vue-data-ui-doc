@@ -4,6 +4,7 @@ import { useMainStore } from "../stores";
 import ExampleButton from "../components/examples/ExampleButton.vue";
 import ExampleSpark from "../components/examples/ExampleSpark.vue";
 import ExampleCharts from "../components/examples/ExampleCharts.vue";
+import ExampleKpi from "../components/examples/ExampleKpi.vue";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -26,9 +27,13 @@ const currentMenu = ref('mini')
             <ExampleButton @click="currentMenu = 'charts'" :selected="currentMenu === 'charts'" :isDarkMode="isDarkMode">
                 {{ translations.sideMenu.charts[lang] }}
             </ExampleButton>
+            <ExampleButton @click="currentMenu = 'kpi'" :selected="currentMenu === 'kpi'" :isDarkMode="isDarkMode">
+                KPI
+            </ExampleButton>
         </div>
 
         <ExampleSpark v-if="currentMenu === 'mini'"/>
         <ExampleCharts v-if="currentMenu === 'charts'" />
+        <ExampleKpi v-if="currentMenu === 'kpi'" />
     </div>
 </template>
