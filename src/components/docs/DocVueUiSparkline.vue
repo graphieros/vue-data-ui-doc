@@ -29,67 +29,67 @@ const dataset = ref([
   },
   {
     period: "period 2",
-    value: -1
+    value: 1
   },
   {
     period: "period 3",
-    value: 2
+    value: 0
   },
   {
     period: "period 4",
-    value: -3
+    value: 2
   },
   {
     period: "period 5",
-    value: 4
+    value: 1
   },
   {
     period: "period 6",
-    value: -5
+    value: 3
   },
   {
     period: "period 7",
-    value: 6
+    value: 2
   },
   {
     period: "period 8",
-    value: -7
+    value: 5
   },
   {
     period: "period 9",
-    value: 8
+    value: 3
   },
   {
     period: "period 10",
-    value: -9
+    value: 8
   },
   {
     period: "period 11",
-    value: 10
+    value: 5
   },
   {
     period: "period 12",
-    value: -11
+    value: 13
   },
   {
     period: "period 13",
-    value: 12
+    value: 8
   },
   {
     period: "period 14",
-    value: -13
+    value: 21
   },
   {
     period: "period 15",
-    value: 14
+    value: 13
   },
   {
     period: "period 16",
-    value: -15
+    value: 34
   },
   {
     period: "period 17",
-    value: 16
+    value: 21
   },
 ]);
 
@@ -98,6 +98,10 @@ const darkModeConfig = ref({
   style: {
     backgroundColor: "#242424",
     fontFamily: "inherit",
+    animation: {
+      show: true,
+      animationFrames: 60,
+    },
     line: {
       color: "#5f8bee",
       strokeWidth: 3,
@@ -154,6 +158,10 @@ const config = ref({
   style: {
     backgroundColor: "#e1e5e8",
     fontFamily: "inherit",
+    animation: {
+      show: true,
+      animationFrames: 60
+    },
     line: {
       color: "#5f8bee",
       strokeWidth: 3,
@@ -382,6 +390,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</
   style: {
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
     fontFamily: "inherit",
+    animation: {
+      show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.animation.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.animation.show" @change="forceChartUpdate()">, (default: true)
+      animationFrames: <input v-if="isDarkMode" type="number" min="0" max="200" v-model="mutableConfigDarkMode.style.animation.animationFrames" @change="forceChartUpdate()"><input v-else type="number" min="0" max="200" v-model="mutableConfig.style.animation.animationFrames" @change="forceChartUpdate()">, (default: 60),
+    },
     line: {
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.line.color"><input v-else type="color" v-model="mutableConfig.style.line.color"> (default: "#3366cc"),
       strokeWidth: <input v-if="isDarkMode" type="number" min="0.1" max="10" step="0.1" v-model="mutableConfigDarkMode.style.line.strokeWidth"><input v-else type="number" min="0.1" max="10" step="0.1" v-model="mutableConfig.style.line.strokeWidth">, (default: 3),

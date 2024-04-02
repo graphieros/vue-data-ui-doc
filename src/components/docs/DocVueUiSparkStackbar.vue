@@ -29,7 +29,7 @@ const dataset = ref([
     color: "#42d392"
   },
   {
-    name: "Javascript",
+    name: "JS",
     value: 36,
     color: "#ff9900"
   },
@@ -44,6 +44,10 @@ const config = ref({
   style: {
     backgroundColor: "#F3F4F6",
     fontFamily: "inherit",
+    animation: {
+      show: true,
+      animationFrames: 60
+    },
     bar: {
       gradient: {
         show: true,
@@ -96,6 +100,10 @@ const darkModeConfig = ref({
   style: {
     backgroundColor: "#1A1A1A",
     fontFamily: "inherit",
+    animation: {
+      show: true,
+      animationFrames: 60
+    },
     bar: {
       gradient: {
         show: true,
@@ -270,6 +278,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkStackBarConf
     style: {
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
         fontFamily: "inherit",
+        animation: {
+          show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.animation.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.animation.show" @change="forceChartUpdate()">, (default: true)
+          animationFrames: <input v-if="isDarkMode" type="number" min="0" max="200" v-model="mutableConfigDarkMode.style.animation.animationFrames" @change="forceChartUpdate()"><input v-else type="number" min="0" max="200" v-model="mutableConfig.style.animation.animationFrames" @change="forceChartUpdate()">, (default: 60),
+        },
         bar: {
             gradient: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.bar.gradient.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.bar.gradient.show" @change="forceChartUpdate()">, (default: true)

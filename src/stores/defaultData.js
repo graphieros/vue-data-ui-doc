@@ -1126,14 +1126,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 dataset: [
                     { period: 'day0', value: 0, id: '1' },
                     { period: 'day1', value: 1, id: '2' },
-                    { period: 'day2', value: -2, id: '3' },
-                    { period: 'day3', value: 3, id: '4' },
-                    { period: 'day4', value: -5, id: '5' },
-                    { period: 'day5', value: 8, id: '6' },
-                    { period: 'day6', value: -13, id: '7' },
-                    { period: 'day7', value: 21, id: '8' },
-                    { period: 'day8', value: -34, id: '9' },
-                    { period: 'day9', value: 55, id: '10' },
+                    { period: 'day2', value: 3, id: '3' },
+                    { period: 'day3', value: 1, id: '4' },
+                    { period: 'day4', value: 5, id: '5' },
+                    { period: 'day5', value: 3, id: '6' },
+                    { period: 'day6', value: 8, id: '7' },
+                    { period: 'day7', value: 5, id: '8' },
+                    { period: 'day8', value: 21, id: '9' },
+                    { period: 'day9', value: 13, id: '10' },
                 ],
                 model: [
                     { key: 'type', def: 'line', type: 'select', options: ['line', 'bar'], label: 'type', category: 'general' },
@@ -1141,6 +1141,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.zeroLine.color', def: '#CCCCCC', type: 'color', label: ['zeroAxis', 'is', 'color'], category: 'general' },
                     { key: 'style.zeroLine.strokeWidth', def: 1, type: 'number', min: 0, max: 6, step: 0.1, label: ['zeroAxis', 'is', 'thickness'], category: 'general' },
+                    { key: 'style.animation.show', def: false, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'style.animation.animationFrames', def: 60, type: 'range', min: 0, max: 300, label: ['animation', 'is', 'speed'], category: 'general' },
                     { key: 'style.line.color', def: '#6376DD', type: 'color', label: 'lineColor', category: 'line' },
                     { key: 'style.line.strokeWidth', def: 3, type: 'number', min: 0.1, max: 24, step: 0.1, label: 'thickness', category: 'line' },
                     { key: 'style.line.smooth', def: true, type: 'checkbox', label: 'smooth', category: 'line' },
@@ -1176,19 +1178,19 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_sparkstackbar: {
                 dataset: [
                     {
-                        name: 'Serie 1',
+                        name: 'S1',
                         value: 256,
                         color: '#6376DD',
                         id: '1'
                     },
                     {
-                        name: 'Serie 2',
+                        name: 'S2',
                         value: 128,
                         color: '#42d392',
                         id: '2'
                     },
                     {
-                        name: 'Serie 3',
+                        name: 'S3',
                         value: 64,
                         color: '#ff6400',
                         id: '3'
@@ -1200,6 +1202,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.bar.gradient.show', def: true, type: 'checkbox', label: 'useGradient', category: 'general' },
                     { key: 'style.bar.gradient.intensity', def: 40, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'general' },
                     { key: 'style.bar.gradient.underlayerColor', def: '#FFFFFF', type: 'color', label: ['gradient', 'is', 'backgroundColor'], category: 'general' },
+                    { key: 'style.animation.show', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'style.animation.animationFrames', def: 60, type: 'range', min: 0, max: 300, label: ['animation', 'is', 'speed'], category: 'general' },
                     { key: 'style.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.legend.textAlign', def: 'left', type: 'select', options: ['left', 'center', 'right'], label: 'textAlign', category: 'legend' },
                     { key: 'style.legend.fontSize', def: 12, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'legend' },
@@ -1269,6 +1273,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.bar.gradient.intensity', def: 40, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'general' },
                     { key: 'style.bar.gradient.underlayerColor', def: '#FFFFFF', type: 'color', label: ['gradient', 'is', 'backgroundColor'], category: 'general' },
                     { key: 'style.gap', def: 4, type: 'number', min: 0, max: 100, label: 'spacing', category: 'general' },
+                    { key: 'style.animation.show', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'style.animation.animationFrames', def: 60, type: 'range', min: 0, max: 300, label: ['animation', 'is', 'speed'], category: 'general' },
                     { key: 'style.labels.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'labels' },
                     { key: 'style.labels.name.position', def: 'top', type: 'select', options: ['top', 'left'], label: 'position', category: 'labels' },
                     { key: 'style.labels.name.width', def: '100%', type: 'text', label: ['width', '(', '%', '|', 'px', '|', 'rem', '|', 'em', ')'], category: 'labels' },

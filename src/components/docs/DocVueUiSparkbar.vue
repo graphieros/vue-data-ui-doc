@@ -48,12 +48,16 @@ const dataset = ref([
 const darkModeConfig = ref(
     {
         style: {
-                backgroundColor: '#1A1A1A',
-                fontFamily: "inherit",
-                layout: {
+            backgroundColor: '#1A1A1A',
+            fontFamily: "inherit",
+            animation: {
+                show: true,
+                animationFrames: 60
+            },
+            layout: {
                 independant: true,
                 percentage: true,
-                target: 0
+                target: 0,
             },
             gutter: {
                 backgroundColor: "#3A3A3A",
@@ -86,9 +90,13 @@ const darkModeConfig = ref(
 const config = ref(
     {
         style: {
-                backgroundColor: "#F3F4F6",
-                fontFamily: "inherit",
-                layout: {
+            backgroundColor: "#F3F4F6",
+            fontFamily: "inherit",
+            animation: {
+                show: true,
+                animationFrames: 60
+            },
+            layout: {
                 independant: true,
                 percentage: true,
                 target: 0
@@ -252,6 +260,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkbarConfig</s
     {
         style: {
             fontFamily: "inherit",
+            animation: {
+                show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.animation.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.animation.show" @change="forceChartUpdate()">, (default: true)
+                animationFrames: <input v-if="isDarkMode" type="number" min="0" max="200" v-model="mutableConfigDarkMode.style.animation.animationFrames" @change="forceChartUpdate()"><input v-else type="number" min="0" max="200" v-model="mutableConfig.style.animation.animationFrames" @change="forceChartUpdate()">, (default: 60),
+            },
             layout: {
                 independant: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.independant" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.independant" @change="forceChartUpdate()">, (default: true)
                 percentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.percentage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.percentage" @change="forceChartUpdate()">, (default: true)

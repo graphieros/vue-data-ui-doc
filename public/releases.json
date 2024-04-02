@@ -1,5 +1,23 @@
 [
     {
+        "version": "v 2.0.55",
+        "date": "2024-04-02",
+        "updates": [
+            {
+                "component": "VueUiSparkline",
+                "description": "Added optional animation"
+            },
+            {
+                "component": "VueUiSparkbar",
+                "description": "Added optional animation"
+            },
+            {
+                "component": "VueUiSparkStackbar",
+                "description": "Added optional animation"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.54",
         "date": "2024-03-31",
         "updates": [
