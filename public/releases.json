@@ -1,5 +1,27 @@
 [
     {
+        "version": "v 2.0.56",
+        "date": "2024-04-02",
+        "updates": [
+            {
+                "component": "VueUiSparkline",
+                "description": "Improved animation consistency"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Added config options to control the animation of the tooltip bar charts"
+            },
+            {
+                "component": "VueUiTableSparkline",
+                "description": "Added config options to control sparkline animations"
+            },
+            {
+                "component": "VueUiSparkHistogram",
+                "description": "Added optional animation"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.55",
         "date": "2024-04-02",
         "updates": [

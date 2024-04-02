@@ -68,7 +68,11 @@ const config = ref({
     showArea: true,
     strokeWidth: 3,
     type: "line",
-    smooth: true
+    smooth: true,
+    animation: {
+      show: true,
+      animationFrames: 360
+    }
   },
   translations: {
     serie: "Serie",
@@ -129,7 +133,11 @@ const darkModeConfig = ref({
     showArea: true,
     strokeWidth: 3,
     type: "line",
-    smooth: true
+    smooth: true,
+    animation: {
+      show: true,
+      animationFrames: 360
+    }
   },
   translations: {
     serie: "Serie",
@@ -321,6 +329,10 @@ const <span class="text-app-blue">config: VueUiTableSparklineConfig</span> = {
     strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.sparkline.strokeWidth"><input v-else type="number" min="0" max="12" v-model="mutableConfig.sparkline.strokeWidth">, (default: 0)
     type: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.sparkline.type"><option>line</option><option>bar</option></select><select v-else v-model="mutableConfig.sparkline.type"><option>line</option><option>bar</option></select>, (default: "line")
     smooth: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.sparkline.smooth" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.sparkline.smooth" @change="forceChartUpdate()">, (default: true)
+    animation: {
+      show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.sparkline.animation.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.sparkline.animation.show" @change="forceChartUpdate()">, (default: true)
+      animationFrames: <input v-if="isDarkMode" type="number" min="0" max="1000" v-model="mutableConfigDarkMode.sparkline.animation.animationFrames"><input v-else type="number" min="0" max="1000" v-model="mutableConfig.sparkline.animation.animationFrames">, (default: 360)
+    }
   },
   translations: {
     serie: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.serie"><input v-else type="text" v-model="mutableConfig.translations.serie">, (default: "Serie")

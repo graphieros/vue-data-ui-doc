@@ -160,7 +160,11 @@ const config = ref({
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
-                customFormat: null
+                customFormat: null,
+                animation: {
+                    show: true,
+                    animationFrames: 60
+                }
             },
             legend: {
                 show: true,
@@ -261,7 +265,11 @@ const darkModeConfig = ref({
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
-                customFormat: null
+                customFormat: null,
+                animation: {
+                    show: true,
+                    animationFrames: 60
+                }
             },
             legend: {
                 show: true,
@@ -545,7 +553,11 @@ const <span class="text-black dark:text-app-blue">config: VueUiRadarConfig</span
                 showPercentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.showPercentage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showPercentage" @change="forceChartUpdate()">, (default: true)
                 roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingValue"><input v-else type="number" min="0" max="3" step="1" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.roundingValue">, (default: 0)
                 roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.roundingPercentage"><input v-else type="number" min="0" max="3" step="1" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.roundingPercentage">, (default: 0),
-                customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
+                customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab,
+                animation: {
+                    show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.animation.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.animation.show" @change="forceChartUpdate()">, (default: true)
+                    animationFrames: <input v-if="isDarkMode" type="number" min="0" max="300" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.animation.animationFrames"><input v-else type="number" min="0" max="300" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.animation.animationFrames">, (default: 60)
+                }
             },
             legend: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.show" @change="forceChartUpdate()">, (default: true)

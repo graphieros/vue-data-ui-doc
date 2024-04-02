@@ -124,6 +124,10 @@ const config = ref({
   style: {
     backgroundColor: "#F3F4F6",
     fontFamily: "inherit",
+    animation: {
+      show: true,
+      speedMs: 500,
+    },
     layout: {
       height: 160,
       width: 1200,
@@ -196,6 +200,10 @@ const darkModeConfig = ref({
   style: {
     backgroundColor: "#1A1A1A",
     fontFamily: "inherit",
+    animation: {
+      show: true,
+      speedMs: 500,
+    },
     layout: {
       height: 160,
       width: 1200,
@@ -460,6 +468,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkHistogramCon
     style: {
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
         fontFamily: "inherit",
+        animation: {
+          show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.animation.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.animation.show" @change="forceChartUpdate()">, (default: true)
+          speedMs: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="1000" v-model="mutableConfigDarkMode.style.animation.speedMs"><input v-else type="number" class="accent-app-blue" min="0" max="1000" v-model="mutableConfig.style.animation.speedMs">, (default: 500)
+        },
         layout: {
             height: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="64" max="600" v-model="mutableConfigDarkMode.style.layout.height"><input v-else type="range" class="accent-app-blue" min="64" max="600" v-model="mutableConfig.style.layout.height">, (default: 96)
             width: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="200" max="1600" v-model="mutableConfigDarkMode.style.layout.width"><input v-else type="range" class="accent-app-blue" min="200" max="1600" v-model="mutableConfig.style.layout.width">, (default: 640)

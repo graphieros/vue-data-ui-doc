@@ -100,7 +100,7 @@ const darkModeConfig = ref({
     fontFamily: "inherit",
     animation: {
       show: true,
-      animationFrames: 60,
+      animationFrames: 360,
     },
     line: {
       color: "#5f8bee",
@@ -160,7 +160,7 @@ const config = ref({
     fontFamily: "inherit",
     animation: {
       show: true,
-      animationFrames: 60
+      animationFrames: 360
     },
     line: {
       color: "#5f8bee",
