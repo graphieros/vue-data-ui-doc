@@ -683,6 +683,26 @@ const <span class="text-app-blue">config: VueUiNestedDonutsConfig</span> = {
         &lt;/template&gt;
     &lt;/VueUiNestedDonuts&gt;
 </code>
+</pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.tooltip[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiNestedDonuts
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #tooltip-before&gt;
+            ...your content here
+        &lt;/template&gt;
+        &lt;template #tooltip-after&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiNestedDonuts&gt;
+</code>
 </pre> 
             </template>
             <template #tab4>

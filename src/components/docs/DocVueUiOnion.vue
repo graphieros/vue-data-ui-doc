@@ -676,6 +676,26 @@ const <span class="text-app-blue">config: VueUiOnionConfig</span> = {
         &lt;/template&gt;
     &lt;/VueUiOnion&gt;
 </code>
+</pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.tooltip[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiOnion
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #tooltip-before&gt;
+            ...your content here
+        &lt;/template&gt;
+        &lt;template #tooltip-after&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiOnion&gt;
+</code>
 </pre> 
             </template>
 

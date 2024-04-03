@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.58",
+        "date": "2024-04-03",
+        "updates": [
+            {
+                "component": "VueUiGalaxy",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.57",
         "date": "2024-04-03",
         "updates": [

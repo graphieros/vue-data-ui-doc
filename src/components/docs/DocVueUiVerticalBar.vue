@@ -787,6 +787,26 @@ const <span class="text-app-blue">config: VueUiVerticalBarConfig</span> = {
         &lt;/template&gt;
     &lt;/VueUiVerticalBar&gt;
 </code>
+</pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.tooltip[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiVerticalBar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #tooltip-before&gt;
+            ...your content here
+        &lt;/template&gt;
+        &lt;template #tooltip-after&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiVerticalBar&gt;
+</code>
 </pre> 
             </template>
             <template #tab4>

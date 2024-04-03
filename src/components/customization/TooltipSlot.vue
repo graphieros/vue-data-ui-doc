@@ -13,6 +13,7 @@ const allowedComponents = ref([
     {name: "VueUiAgePyramid", icon: 'chartAgePyramid', link: '/docs#vue-ui-age-pyramid'},
     {name: "VueUiCandlestick", icon: 'chartCandlestick', link: '/docs#vue-ui-candlestick'},
     {name: "VueUiDonut", icon: 'chartDonut', link: '/docs#vue-ui-donut'},
+    {name: 'VueUiGalaxy', icon: 'chartGalaxy', link: '/docs#vue-ui-galaxy'},
     {name: "VueUiHeatmap", icon: "chartHeatmap", link: '/docs#vue-ui-heatmap'},
     {name: "VueUiMolecule", icon: 'chartCluster', link: '/docs#vue-ui-molecule'},
     {name: "VueUiNestedDonuts", icon: 'chartNestedDonuts', link: '/docs#vue-ui-nested-donuts'},

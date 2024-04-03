@@ -210,6 +210,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    tooltip: {
+                        en: 'This component contains a #tooltip-before and #tooltip-after slots, to customize the tooltip contents. Through these slots, you can inject images, charts, text etc.',
+                        fr: "Ce composant contient des emplacements #tooltip-before et #tooltip-after, pour personnaliser le contenu de l'info-bulle. Grâce à ces emplacements, vous pouvez injecter des images, des graphiques, du texte, etc.",
+                        pt: "Este componente contém slots #tooltip-before e #tooltip-after, para personalizar o conteúdo da dica de ferramenta. Através desses slots, você pode injetar imagens, gráficos, texto etc.",
+                        de: "Diese Komponente enthält die Slots #tooltip-before und #tooltip-after, um den Tooltip-Inhalt anzupassen. Über diese Slots können Sie Bilder, Diagramme, Text usw. einfügen.",
+                        zh: "该组件包含 #tooltip-before 和 #tooltip-after 插槽，用于自定义工具提示内容。通过这些插槽，您可以注入图像、图表、文本等。",
+                        jp: "このコンポーネントには、ツールチップの内容をカスタマイズするための #tooltip-before スロットと #tooltip-after スロットが含まれています。これらのスロットを通じて、画像、グラフ、テキストなどを挿入できます。",
+                        es: "Este componente contiene espacios #tooltip-before y #tooltip-after, para personalizar el contenido de la información sobre herramientas. A través de estas ranuras, puede inyectar imágenes, gráficos, texto, etc.",
+                        ko: "이 구성 요소에는 도구 설명 내용을 사용자 정의하기 위한 #tooltip-before 및 #tooltip-after 슬롯이 포함되어 있습니다. 이 슬롯을 통해 이미지, 차트, 텍스트 등을 삽입할 수 있습니다."
+                    },
                     legendDetail: {
                         en: "This component contains a #legend slot you can use to customize your own legend. The slot provides formatted data you can use to ease the process.",
                         fr: "Ce composant contient un slot #legend que vous pouvez utiliser pour personnaliser votre propre légende. Le slot fournit des données formatées que vous pouvez utiliser pour faciliter le processus.",
