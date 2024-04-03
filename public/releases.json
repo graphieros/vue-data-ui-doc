@@ -1,5 +1,71 @@
 [
     {
+        "version": "v 2.0.57",
+        "date": "2024-04-03",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiQuadrant",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiOnion",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiHeatmap",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiScatter",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiAgePyramid",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiRings",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiMolecule",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiNestedDonuts",
+                "description": "Added #tooltip-before & #tooltip-after named slots"
+            },
+            {
+                "component": "VueUiSparkStackbar",
+                "description": "Improved animation"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.56",
         "date": "2024-04-02",
         "updates": [

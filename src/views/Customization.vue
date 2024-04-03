@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import SvgSlot from "../components/customization/SvgSlot.vue";
 import LegendSlot from "../components/customization/LegendSlot.vue";
+import TooltipSlot from "../components/customization/TooltipSlot.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -14,7 +15,8 @@ const translations = computed(() => {
 const selectedMenu = ref('svgSlot')
 const menu = ref([
     { name: 'svgSlot', label: '#svg slot' },
-    { name: 'legendSlot', label: '#legend slot'}
+    { name: 'legendSlot', label: '#legend slot'},
+    { name: 'tooltipSlot', label: 'tooltip slots'},
 ]);
 
 
@@ -32,4 +34,5 @@ const menu = ref([
     </div>
     <SvgSlot v-if="selectedMenu === 'svgSlot'" />
     <LegendSlot v-if="selectedMenu === 'legendSlot'" />
+    <TooltipSlot v-if="selectedMenu === 'tooltipSlot'" />
 </template>

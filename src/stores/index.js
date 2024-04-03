@@ -540,6 +540,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 customization: {
+                    tooltipSlot: {
+                        en: 'To further customize tooltip contents, #tooltip-before & #tooltip-after slots are made available on the following components (which can also be used on the VueDataUi universal component):',
+                        fr: "Pour personnaliser davantage le contenu des info-bulles, les emplacements #tooltip-before et #tooltip-after sont mis à disposition sur les composants suivants (qui peuvent également être utilisés sur le composant universel VueDataUi):",
+                        pt: "Para personalizar ainda mais o conteúdo da dica de ferramenta, os slots #tooltip-before e #tooltip-after são disponibilizados nos seguintes componentes (que também podem ser usados ​​no componente universal VueDataUi):",
+                        de: "Um den Tooltip-Inhalt weiter anzupassen, werden die Slots #tooltip-before und #tooltip-after auf den folgenden Komponenten verfügbar gemacht (die auch auf der VueDataUi-Universalkomponente verwendet werden können):",
+                        zh: "为了进一步自定义工具提示内容，#tooltip-before 和 #tooltip-after 插槽可在以下组件上使用（也可以在 VueDataUi 通用组件上使用）：",
+                        jp: "ツールチップの内容をさらにカスタマイズするには、次のコンポーネントで #tooltip-before および #tooltip-after スロットを使用できるようにします (VueDataUi ユニバーサル コンポーネントでも使用できます)。",
+                        es: "Para personalizar aún más el contenido de la información sobre herramientas, las ranuras #tooltip-before y #tooltip-after están disponibles en los siguientes componentes (que también se pueden usar en el componente universal VueDataUi):",
+                        ko: "도구 설명 내용을 추가로 사용자 정의하기 위해 다음 구성 요소에서 #tooltip-before 및 #tooltip-after 슬롯을 사용할 수 있습니다(VueDataUi 범용 구성 요소에서도 사용할 수 있음)."
+                    },
                     legendAllowed: {
                         en: "The #legend slot is enabled for the following components:",
                         fr: "Le slot #legend est activé pour les composants suivants :",
