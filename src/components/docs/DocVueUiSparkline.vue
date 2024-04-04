@@ -98,6 +98,7 @@ const darkModeConfig = ref({
   style: {
     backgroundColor: "#242424",
     fontFamily: "inherit",
+    chartWidth: 290,
     animation: {
       show: true,
       animationFrames: 360,
@@ -128,6 +129,9 @@ const darkModeConfig = ref({
       strokeDasharray: 3
     },
     dataLabel: {
+      show: true,
+      offsetX: 0,
+      offsetY: 0,
       position: "left",
       fontSize: 48,
       bold: true,
@@ -158,6 +162,7 @@ const config = ref({
   style: {
     backgroundColor: "#e1e5e8",
     fontFamily: "inherit",
+    chartWidth: 290,
     animation: {
       show: true,
       animationFrames: 360
@@ -188,6 +193,9 @@ const config = ref({
       strokeDasharray: 3
     },
     dataLabel: {
+      show: true,
+      offsetX: 0,
+      offsetY: 0,
       position: "left",
       fontSize: 48,
       bold: true,
@@ -390,6 +398,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</
   style: {
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
     fontFamily: "inherit",
+    chartWidth: <input v-if="isDarkMode" type="number" min="200" max="400" v-model="mutableConfigDarkMode.style.chartWidth"><input v-else type="number" min="200" max="400" v-model="mutableConfig.style.chartWidth">, (default: 290),
     animation: {
       show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.animation.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.animation.show" @change="forceChartUpdate()">, (default: true)
       animationFrames: <input v-if="isDarkMode" type="number" min="0" max="200" v-model="mutableConfigDarkMode.style.animation.animationFrames" @change="forceChartUpdate()"><input v-else type="number" min="0" max="200" v-model="mutableConfig.style.animation.animationFrames" @change="forceChartUpdate()">, (default: 60),
@@ -420,7 +429,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</
       strokeDasharray: <input v-if="isDarkMode" type="number" min="0" max="8" step="0.1" v-model="mutableConfigDarkMode.style.verticalIndicator.strokeDasharray"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.verticalIndicator.strokeDasharray">, (default: 3) <span class="text-gray-400">// since v.1.9.7</span>
     },
     dataLabel: {
+      show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.dataLabel.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.dataLabel.show" @change="forceChartUpdate()">, (default: true)
       position: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.dataLabel.position"><input v-else type="text" v-model="mutableConfig.style.dataLabel.position">, (default: "left", other option: "right")
+      offsetX: <input v-if="isDarkMode" type="number" min="-100" max="100" v-model="mutableConfigDarkMode.style.dataLabel.offsetX"><input v-else type="number" min="-100" max="100" v-model="mutableConfig.style.dataLabel.offsetX">, (default: 0),
+      offsetY: <input v-if="isDarkMode" type="number" min="-100" max="100" v-model="mutableConfigDarkMode.style.dataLabel.offsetY"><input v-else type="number" min="-100" max="100" v-model="mutableConfig.style.dataLabel.offsetY">, (default: 0),
       fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.dataLabel.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.dataLabel.fontSize">, (default: 20)
       bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.dataLabel.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.dataLabel.bold" @change="forceChartUpdate()">, (default: true)
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.dataLabel.color"><input v-else type="color" v-model="mutableConfig.style.dataLabel.color">, (default: "#2D353C")

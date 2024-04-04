@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.60",
+        "date": "2024-04-04",
+        "updates": [
+            {
+                "component": "VueUiSparkline",
+                "description": "Added config options to control chart width and dataLabel display"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.59",
         "date": "2024-04-04",
         "updates": [
