@@ -728,10 +728,10 @@ const <span class="text-app-blue">config: VueUiMoleculeConfig</span> = {
         :config="config"
         :dataset="dataset"
     &gt;
-        &lt;template #tooltip-before&gt;
+        &lt;template #tooltip-before="{ datapoint, series, config }"&gt;
             ...your content here
         &lt;/template&gt;
-        &lt;template #tooltip-after&gt;
+        &lt;template #tooltip-after="{ datapoint, series, config }"&gt;
             ...your content here
         &lt;/template&gt;
     &lt;/VueUiMolecule&gt;
@@ -743,7 +743,7 @@ const <span class="text-app-blue">config: VueUiMoleculeConfig</span> = {
 <code>
 <span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
 
-customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+customFormat: ({ <span class="text-app-blue">datapoint, series, config</span> }) => {
     <span class="text-gray-400">// use args to build your custom content</span>
     const content = "My custom content";
     return `&lt;div&gt;${content}&lt;/div&gt;`

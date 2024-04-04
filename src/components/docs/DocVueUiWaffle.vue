@@ -616,10 +616,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</spa
         :config="config"
         :dataset="dataset"
     &gt;
-        &lt;template #tooltip-before&gt;
+        &lt;template #tooltip-before="{ datapoint, seriesIndex, series, config }"&gt;
             ...your content here
         &lt;/template&gt;
-        &lt;template #tooltip-after&gt;
+        &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
             ...your content here
         &lt;/template&gt;
     &lt;/VueUiWaffle&gt;

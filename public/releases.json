@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.59",
+        "date": "2024-04-04",
+        "updates": [
+            {
+                "component": "All components with tooltips",
+                "description": "Added exposed data in #tooltip-before & #tooltip-after scoped slots"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.58",
         "date": "2024-04-03",
         "updates": [
