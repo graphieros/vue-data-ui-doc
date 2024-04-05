@@ -6,11 +6,10 @@ import LegendSlot from "../components/customization/LegendSlot.vue";
 import TooltipSlot from "../components/customization/TooltipSlot.vue";
 
 const store = useMainStore();
-const isDarkMode = computed(() => store.isDarkMode);
 
 const translations = computed(() => {
   return store.translations;
-})
+});
 
 const selectedMenu = ref('svgSlot')
 const menu = ref([
@@ -18,7 +17,6 @@ const menu = ref([
     { name: 'legendSlot', label: '#legend slot'},
     { name: 'tooltipSlot', label: 'tooltip slots'},
 ]);
-
 
 </script>
 
