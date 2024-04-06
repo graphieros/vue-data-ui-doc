@@ -81,6 +81,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href
     },
     {
+        route: '/docs#vue-ui-treemap',
+        icon: 'chartTreemap',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Treemap',
+        thumb: new URL('../assets/thumb_treemap.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_treemap_light.png', import.meta.url).href
+    },
+    {
         route: '/docs#vue-ui-waffle',
         icon: 'chartWaffle',
         cssClasses: '',
@@ -450,6 +459,7 @@ const sideMenuItems = ref([
         items: [
             {route: '/docs#vue-ui-xy', componentName: 'Xy', icon: 'chartLine' },
             {route: '/docs#vue-ui-donut', componentName: 'Donut', icon: 'chartDonut' },
+            {route: '/docs#vue-ui-treemap', componentName: 'Treemap', icon: 'chartTreemap' },
             {route: '/docs#vue-ui-waffle', componentName: 'Waffle', icon: 'chartWaffle' },
             {route: '/docs#vue-ui-radar', componentName: 'Radar', icon: 'chartRadar' },
             {route: '/docs#vue-ui-quadrant', componentName: 'Quadrant', icon: 'chartQuadrant' },

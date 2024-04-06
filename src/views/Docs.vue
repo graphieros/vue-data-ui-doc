@@ -51,6 +51,7 @@ import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRo
 import { useMainStore } from "../stores";
 import Sprinter from "../components/Sprinter.vue";
 import Wheeler from "../components/Wheeler.vue";
+import DocVueUiTreemap from "../components/docs/DocVueUiTreemap.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -141,6 +142,18 @@ const menuItems = computed(() => [
         type: "classic",
         thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: true
+    },
+    {
+        name: "Treemap",
+        icon: "chartTreemap",
+        tooltip: translations.value.docs.tooltips.treemap[store.lang],
+        link: "/docs#vue-ui-treemap",
+        type: "classic",
+        thumb: new URL('../assets/thumb_treemap.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_treemap_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
         hasLegend: true
@@ -649,6 +662,7 @@ onMounted(playShowcase)
             <DocVueUiSparkgauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkgauge'"/>
             <DocVueUiGalaxy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-galaxy'"/>
             <DocVueUiKpi v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-kpi'"/>
+            <DocVueUiTreemap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-treemap'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

@@ -67,6 +67,7 @@ const specialIcons = ref([
     "chartTable",
     "chartThermometer",
     "chartTiremarks",
+    "chartTreemap",
     "chartVerticalBar",
     "chartWaffle",
     "chartWheel",

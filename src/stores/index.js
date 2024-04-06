@@ -809,6 +809,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        treemap: {
+                            en: 'Visualize a large amount of data in a hierarchical, tree-structured diagram where the size of rectangles are organized from largest to smallest.',
+                            fr: "Visualisez une grande quantité de données dans un diagramme hiérarchique et arborescent où la taille des rectangles est organisée du plus grand au plus petit.",
+                            pt: "Visualize uma grande quantidade de dados em um diagrama hierárquico estruturado em árvore, onde o tamanho dos retângulos é organizado do maior para o menor.",
+                            de: "Visualisieren Sie große Datenmengen in einem hierarchischen, baumstrukturierten Diagramm, in dem die Größe der Rechtecke vom größten zum kleinsten geordnet ist.",
+                            zh: "在分层树形结构图中可视化大量数据，其中矩形的大小按从最大到最小的顺序组织。",
+                            jp: "大量のデータを、四角形のサイズが最大から最小の順に編成された階層ツリー構造図で視覚化します。",
+                            es: "Visualice una gran cantidad de datos en un diagrama jerárquico con estructura de árbol donde el tamaño de los rectángulos se organiza de mayor a menor.",
+                            ko: "직사각형의 크기가 가장 큰 것에서 가장 작은 것 순으로 구성된 계층적, 트리 구조 다이어그램에서 대량의 데이터를 시각화합니다."
+                        },
                         kpi: {
                             en: "An animated and flexible component to display important KPI",
                             fr: "Un composant animé et flexible pour afficher les KPI importants",

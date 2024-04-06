@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.0.64",
+        "date": "2024-04-06",
+        "updates": [
+            {
+                "component": "VueUiTreemap",
+                "description": "Added new component"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.61",
         "date": "2024-04-05",
         "updates": [
