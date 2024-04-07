@@ -18,6 +18,7 @@ import MainStores from "./components/MainStores.vue";
 import MarketShare from "./components/MarketShare.vue";
 import SalesBar from "./components/SalesBar.vue";
 import IceCubes from "./components/IceCubes.vue";
+import ExampleTreemap from "./components/ExampleTreemap.vue";
 
 const store = useMainStore();
 const lang = computed(() => store.lang);
@@ -72,8 +73,15 @@ const salesBarConfig = ref(null);
 const iceCubes = ref(null);
 const iceCubesDataset = ref(null);
 const iceCubesConfig = ref(null);
+const treemap = ref(null);
+const treemapConfig = ref(null);
+const treemapDataset = ref(null);
 
 onMounted(() => {
+    if(treemap.value) {
+        treemapConfig.value = treemap.value.getData().config;
+        treemapDataset.value = treemap.value.getData().dataset;
+    }
     if(revenueDonut.value) {
         revenueDonutDataset.value = revenueDonut.value.getData().dataset;
         revenueDonutConfig.value = revenueDonut.value.getData().config;
@@ -349,9 +357,21 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <!-- <div class="mt-12">
-            ... more examples to come
-        </div> -->
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
+                <TokoTsubo
+                    :dataset="treemapDataset"
+                    :config="treemapConfig"
+                    componentName="VueUiTreemap"
+                    link="vue-ui-treemap"
+                    id="treem"
+                    :hideMaker="true"
+                />
+                <div class="w-full mt-12">
+                    <ExampleTreemap ref="treemap" />
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
