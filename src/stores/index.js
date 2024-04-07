@@ -210,6 +210,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    rect: {
+                        en: "This component contains a #rect slot to customize the treemap's cells contents. Be sure to set the config option style.chart.layout.labels.showDefaultLabels to 'false'.",
+                        fr: "Ce composant contient un emplacement #rect pour personnaliser le contenu des cellules du treemap. Assurez-vous de définir l'option de configuration style.chart.layout.labels.showDefaultLabels sur « false ».",
+                        pt: "Este componente contém um slot #rect para personalizar o conteúdo das células do mapa de árvore. Certifique-se de definir a opção de configuração style.chart.layout.labels.showDefaultLabels como 'false'.",
+                        de: "Diese Komponente enthält einen #rect-Slot zum Anpassen des Zellinhalts der Treemap. Stellen Sie sicher, dass die Konfigurationsoption style.chart.layout.labels.showDefaultLabels auf „false“ gesetzt ist.",
+                        zh: "该组件包含一个#rect 槽来自定义树形图的单元格内容。请务必将配置选项 style.chart.layout.labels.showDefaultLabels 设置为“false”。",
+                        jp: "このコンポーネントには、ツリーマップのセルの内容をカスタマイズするための #rect スロットが含まれています。構成オプション style.chart.layout.labels.showDefaultLabels を必ず「false」に設定してください。",
+                        es: "Este componente contiene una ranura #rect para personalizar el contenido de las celdas del mapa de árbol. Asegúrese de configurar la opción de configuración style.chart.layout.labels.showDefaultLabels en 'falso'.",
+                        ko: "이 구성 요소에는 트리맵의 셀 내용을 사용자 정의하기 위한 #ect 슬롯이 포함되어 있습니다. 구성 옵션 style.chart.layout.labels.showDefaultLabels를 'false'로 설정하세요."
+                    },
                     tooltip: {
                         en: 'This component contains a #tooltip-before and #tooltip-after slots, to customize the tooltip contents. Through these slots, you can inject images, charts, text etc.',
                         fr: "Ce composant contient des emplacements #tooltip-before et #tooltip-after, pour personnaliser le contenu de l'info-bulle. Grâce à ces emplacements, vous pouvez injecter des images, des graphiques, du texte, etc.",
