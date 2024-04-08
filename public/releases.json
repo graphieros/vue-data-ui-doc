@@ -1,5 +1,35 @@
 [
     {
+        "version": "v 2.0.75",
+        "date": "2024-04-08",
+        "updates": [
+            {
+                "component": "VueUiMolecule",
+                "description": "Improvement allowing to select datapoints located below dataLabels"
+            }
+        ]
+    },
+    {
+        "version": "v 2.0.74",
+        "date": "2024-04-08",
+        "updates": [
+            {
+                "component": "VueUiQuadrant",
+                "description": "Minor fixes on zoom minimap"
+            }
+        ]
+    },
+    {
+        "version": "v 2.0.73",
+        "date": "2024-04-08",
+        "updates": [
+            {
+                "component": "VueUiQuadrant",
+                "description": "Added zoom & minimap"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.71",
         "date": "2024-04-07",
         "updates": [

@@ -111,7 +111,18 @@ const dataset = ref([
                                                 name: 'node2.1.6.6.6', nodes: [
                                                     { name: 'node2.1.6.6.6.1' },
                                                     { name: 'node2.1.6.6.6.2' },
-                                                    { name: 'node2.1.6.6.6.3' },
+                                                    { name: 'node2.1.6.6.6.3' , nodes: [
+                                                        { name: 'node2.1.6.6.6.3.1' },
+                                                        { name: 'node2.1.6.6.6.3.2', nodes: [
+                                                            { name: 'node2.1.6.6.6.3.2.1' },
+                                                            { name: 'node2.1.6.6.6.3.2.2' },
+                                                            { name: 'node2.1.6.6.6.3.2.3' },
+                                                        ] },
+                                                        { name: 'node2.1.6.6.6.3.3' },
+                                                        { name: 'node2.1.6.6.6.3.4' },
+                                                        { name: 'node2.1.6.6.6.3.5' },
+                                                        { name: 'node2.1.6.6.6.3.6' },
+                                                    ]},
                                                     { name: 'node2.1.6.6.6.4' },
                                                     { name: 'node2.1.6.6.6.5' },
                                                     { name: 'node2.1.6.6.6.6' },
