@@ -364,7 +364,6 @@ const isFixed = ref(false);
 function fixChart() {
     isFixed.value = !isFixed.value;
 } 
-
 </script>
 
 <template>
