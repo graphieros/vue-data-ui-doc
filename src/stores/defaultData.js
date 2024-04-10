@@ -1972,7 +1972,27 @@ export const useDefaultDataStore = defineStore('defaultData', {
             },
             vue_ui_3d_bar: {
                 dataset: {
-                    percentage: 66.5
+                    percentage: 66.5,
+                    series: [
+                        {
+                            name: 'Serie 1',
+                            value: 128,
+                            color: '#5f8bee',
+                            id: "1"
+                        },
+                        {
+                            name: 'Serie 2',
+                            value: 64,
+                            color: '#42d392',
+                            id: '2'
+                        },
+                        {
+                            name: 'Serie 3',
+                            value: 32,
+                            color: '#ff6400',
+                            id: '3'
+                        }
+                    ]
                 },
                 model: [
                     { key: 'style.shape', def: 'bar', type: 'select', options: ['bar', 'tube'], label: 'shape', category: 'general' },
@@ -2008,7 +2028,29 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle' },
                     { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle' },
                     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
-                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' }
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'style.chart.legend.showDefault', def: true, type: 'checkbox', label: 'show', category: 'legend'},
+                    { key: 'style.chart.legend.fontSize', def: 10,  type: 'number', min: 6, max: 20, label: 'fontSize', category: 'legend'},
+                    { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
+                    { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
+                    { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'legend'},
+                    { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend'},
+                    { key: "style.chart.legend.prefix", def: '', type: 'text', label: 'prefix', category: 'legend'},
+                    { key: "style.chart.legend.suffix", def: '', type: 'text', label: 'suffix', category: 'legend'},
+                    { key: 'style.chart.legend.hideUnderPercentage', def: 3, type: 'number', min: 0, max: 10, label: 'hideUnderValue', category: 'legend'},
+                    { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
+                    { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
+                    { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table' },
+                    { key: 'table.columnNames.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table' },
+                    { key: 'table.columnNames.percentage', def: 'Percentage', type: 'text', label: ['columnName', 'is', 'percentage'], category: 'table' },
+                    { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table' },
+                    { key: 'table.th.color', def: '#1A1A1A', type: 'color', label: 'textColorHeader', category: 'table' },
+                    { key: 'table.th.outline', def: 'none', type: 'text', label: 'outlineHeader', category: 'table' },
+                    { key: 'table.td.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorRow', category: 'table' },
+                    { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', category: 'table' },
+                    { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table' },
+                    { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'table' },
+                    { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'table' },
                 ]
             },
             vue_ui_nested_donuts: {
