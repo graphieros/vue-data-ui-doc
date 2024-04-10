@@ -25,13 +25,41 @@ const isDarkMode = computed(() => {
 })
 
 const dataset = ref({
-    percentage: 66.5
+    percentage: 66.5,
+    series: [
+        {
+            name:  'Serie 1 with a long name that should be shorter but we do not have the choice',
+            value: 256
+        },
+        {
+            name: 'Serie 2',
+            value: 128
+        },
+        {
+            name: 'Serie 3',
+            value: 64
+        },
+        {
+            name: 'Serie 4',
+            value: 32
+        },
+        {
+            name: 'Serie 5',
+            value: 16
+        },
+        {
+            name: 'Serie 6',
+            value: 8
+        }
+    ]
 })
 
 const shapeOptions = ref([
     "bar",
     "tube"
-])
+]);
+
+const isSeries = ref(true);
 
 const config = ref({
     style: {
@@ -48,7 +76,8 @@ const config = ref({
             bar: {
                 color: "#5f8bee",
                 stroke: "#5f8bee",
-                strokeWidth: 0.7
+                strokeWidth: 0.7,
+                shadeColor: "#1A1A1A"
             },
             box: {
                 stroke: "#CCCCCC",
@@ -76,6 +105,17 @@ const config = ref({
                     bold: false
                 }
             },
+            legend: {
+                showDefault: true,
+                fontSize: 10,
+                color: "#1A1A1A",
+                bold: false,
+                roundingValue: 0,
+                roundingPercentage: 0,
+                prefix: "",
+                suffix: "",
+                hideUnderPercentage: 3
+            },
             dataLabel: {
                 show: true,
                 bold: true,
@@ -87,6 +127,27 @@ const config = ref({
     },
     userOptions: {
         show: true
+    },
+    table: {
+        show: false,
+        responsiveBreakpoint: 300,
+        columnNames: {
+            series: "Series",
+            value: "Value",
+            percentage: "Percentage"
+        },
+        th: {
+            backgroundColor: "#FAFAFA",
+            color: "#2D353C",
+            outline: "none"
+        },
+        td: {
+            backgroundColor: "#FFFFFF",
+            color: "#2D353C",
+            outline: "none",
+            roundingValue: 0,
+            roundingPercentage: 0
+        }
     }
 });
 
@@ -105,7 +166,8 @@ const darkModeConfig = ref({
             bar: {
                 color: "#5f8bee",
                 stroke: "#5f8bee",
-                strokeWidth: 0.7
+                strokeWidth: 0.7,
+                shadeColor: '#1A1A1A'
             },
             box: {
                 stroke: "#5A5A5A",
@@ -133,6 +195,17 @@ const darkModeConfig = ref({
                     bold: false
                 }
             },
+            legend: {
+                showDefault: true,
+                fontSize: 10,
+                color: "#CCCCCC",
+                bold: false,
+                roundingValue: 0,
+                roundingPercentage: 0,
+                prefix: "",
+                suffix: "",
+                hideUnderPercentage: 3
+            },
             dataLabel: {
                 show: true,
                 bold: true,
@@ -144,6 +217,27 @@ const darkModeConfig = ref({
     },
     userOptions: {
         show: true
+    },
+    table: {
+        show: false,
+        responsiveBreakpoint: 300,
+        columnNames: {
+            series: "Series",
+            value: "Value",
+            percentage: "Percentage"
+        },
+        th: {
+            backgroundColor: "#1A1A1A",
+            color: "#CCCCCC",
+            outline: "none"
+        },
+        td: {
+            backgroundColor: "#1A1A1A",
+            color: "#CCCCCC",
+            outline: "none",
+            roundingValue: 0,
+            roundingPercentage: 0
+        }
     }
 });
 
@@ -192,7 +286,7 @@ function fixChart() {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.bar3d[store.lang] }}
         </p>
-        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[200px]'}`">
+        <div :class="`mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : isSeries ? 'max-w-[400px]' : 'max-w-[200px]'}`">
             <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
                 <div v-else class="relative overflow-visible">
@@ -208,8 +302,15 @@ function fixChart() {
             </div>
             <div :class="`mx-auto ${isFixed ? 'max-w-[150px]' : 'w-full'}`">
             
-                <VueUi3dBar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <VueUi3dBar :dataset="isSeries ? dataset : { percentage: dataset.percentage }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
             </div>
+            <div class="w-full mx-auto flex flex-row place-items-center justify-center mt-10 gap-3">
+                <label for="is_series">Stack mode</label>
+                <input id="is_series" type="checkbox" v-model="isSeries">
+            </div>
+        </div>
+        <div class="w-full mx-auto max-w-[600px] text-gray-500 mb-10 mt-5 text-center">
+            {{ translations.docs.comments.bar3d.mode[store.lang] }}
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_3d_bar)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
@@ -223,7 +324,8 @@ function fixChart() {
                 <div class="mt-4">
                     TS type: <code class="text-app-green">VueUi3dBarDataset</code>
                 </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto mb-6 border-gray-700">
+Percentage mode:                    
 <pre>
 <code>
     {
@@ -240,7 +342,58 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
     percentage: 66.5
 }
 </code>
-</pre>                
+</pre>
+<div class="border-b border-gray-700 mb-6"></div>                
+Stack mode:
+<pre>
+<code>
+    {
+        series: [
+            {
+                name: string;
+                value: number;
+                color?: string;
+            },
+            {...}
+        ]
+    }
+</code>
+</pre>
+                </div>
+                {{ translations.docs.example[store.lang] }} :
+                <div class="w-full overflow-x-auto">
+<pre>
+<code>
+const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</span> = {
+    series: [
+        {
+            name:  'Serie 1 with a long name that should be shorter but we do not have the choice',
+            value: 256
+        },
+        {
+            name: 'Serie 2',
+            value: 128
+        },
+        {
+            name: 'Serie 3',
+            value: 64
+        },
+        {
+            name: 'Serie 4',
+            value: 32
+        },
+        {
+            name: 'Serie 5',
+            value: 16
+        },
+        {
+            name: 'Serie 6',
+            value: 8
+        }
+    ]
+}
+</code>
+</pre>  
                 </div>
             </template>
             <template #tab1>
@@ -268,20 +421,21 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
             chart: {
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">,  (default: "#FFFFFF")
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
-                animation: {
+                animation: { <span class="text-gray-500">// percentage mode only</span>
                     use: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.animation.use" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.animation.use" @change="forceChartUpdate()">, (default: true)
                     speed: 1,
                     acceleration: 1,
                 },
-                bar: {
-                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.bar.color"><input v-else type="color" v-model="mutableConfig.style.chart.bar.color">,  (default: "#5f8bee")
-                    stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.bar.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.bar.stroke">,  (default: "#5f8bee")
-                    strokeWidth: <input v-if="isDarkMode" type="range" min="0" max="12" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.bar.strokeWidth"><input v-else type="range" min="0" max="12" class="accent-app-blue" v-model="mutableConfig.style.chart.bar.strokeWidth">, (default: 0.7)
+                bar: { 
+                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.bar.color"><input v-else type="color" v-model="mutableConfig.style.chart.bar.color">,  (default: "#5f8bee") <span class="text-gray-500">// percentage mode only</span>
+                    stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.bar.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.bar.stroke">,  (default: "#5f8bee") <span class="text-gray-500">// percentage mode only</span>
+                    strokeWidth: <input v-if="isDarkMode" type="range" min="0" max="12" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.bar.strokeWidth"><input v-else type="range" min="0" max="12" class="accent-app-blue" v-model="mutableConfig.style.chart.bar.strokeWidth">, (default: 0.7) <span class="text-gray-500">// percentage mode only</span>
+                    shadeColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.bar.shadeColor"><input v-else type="color" v-model="mutableConfig.style.chart.bar.shadeColor">,  (default: "#2D353C") <span class="text-gray-500">// stack mode only</span>
                 },
                 box: {
-                    stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.box.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.box.stroke">, (default: "#CCCCCC")
-                    strokeWidth: <input v-if="isDarkMode" type="range" min="0" max="12" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.box.strokeWidth"><input v-else type="range" min="0" max="12" class="accent-app-blue" v-model="mutableConfig.style.chart.box.strokeWidth">, (default: 0.7)
-                    strokeDasharray: <input v-if="isDarkMode" type="range" min="0" max="12" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.box.strokeDasharray"><input v-else type="range" min="0" max="24" class="accent-app-blue" v-model="mutableConfig.style.chart.box.strokeDasharray">, (default: 2)
+                    stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.box.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.box.stroke">, (default: "#CCCCCC") <span class="text-gray-500">// percentage mode only</span>
+                    strokeWidth: <input v-if="isDarkMode" type="range" min="0" max="12" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.box.strokeWidth"><input v-else type="range" min="0" max="12" class="accent-app-blue" v-model="mutableConfig.style.chart.box.strokeWidth">, (default: 0.7) <span class="text-gray-500">// percentage mode only</span>
+                    strokeDasharray: <input v-if="isDarkMode" type="range" min="0" max="12" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.box.strokeDasharray"><input v-else type="range" min="0" max="24" class="accent-app-blue" v-model="mutableConfig.style.chart.box.strokeDasharray">, (default: 2) <span class="text-gray-500">// percentage mode only</span>
                     dimensions: {
                         width: <input v-if="isDarkMode" type="range" min="64" max="512" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.box.dimensions.width"><input v-else type="range" min="0" max="512" class="accent-app-blue" v-model="mutableConfig.style.chart.box.dimensions.width">, (default: 128)
                         height: <input v-if="isDarkMode" type="range" min="64" max="512" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.box.dimensions.height"><input v-else type="range" min="0" max="512" class="accent-app-blue" v-model="mutableConfig.style.chart.box.dimensions.height">, (default: 256)
@@ -304,7 +458,18 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                         bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.title.subtitle.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.title.subtitle.bold" @change="forceChartUpdate()">, (default: false)
                     }
                 },
-                dataLabel: {
+                legend: { <span class="text-gray-500">// stack mode only</span>
+                    showDefault: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.showDefault" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.showDefault" @change="forceChartUpdate()">, (default: true)
+                    fontSize: <input v-if="isDarkMode" type="number" min="6" max="30" step="1" v-model="mutableConfigDarkMode.style.chart.legend.fontSize"><input v-else type="number" min="6" max="30" step="1" v-model="mutableConfig.style.chart.legend.fontSize">, (default: 10)
+                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.legend.color"><input v-else type="color" v-model="mutableConfig.style.chart.legend.color">,  (default: "#2D353C")
+                    bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.bold" @change="forceChartUpdate()">, (default: false)
+                    roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" v-model="mutableConfigDarkMode.style.chart.legend.roundingValue" @change="forceChartUpdate"><input v-else type="number" min="0" max="3" step="1" v-model="mutableConfig.style.chart.legend.roundingValue" @change="forceChartUpdate">, (default: 0)
+                    roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" v-model="mutableConfigDarkMode.style.chart.legend.roundingPercentage" @change="forceChartUpdate"><input v-else type="number" min="0" max="3" step="1" v-model="mutableConfig.style.chart.legend.roundingPercentage" @change="forceChartUpdate">, (default: 0)
+                    prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.legend.prefix" @change="forceChartUpdate"><input v-else type="text" v-model="mutableConfig.style.chart.legend.prefix" @change="forceChartUpdate">, (default: "")
+                    suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.legend.suffix" @change="forceChartUpdate"><input v-else type="text" v-model="mutableConfig.style.chart.legend.suffix" @change="forceChartUpdate">, (default: "")
+                    hideUnderPercentage: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.chart.legend.hideUnderPercentage" @change="forceChartUpdate"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.chart.legend.hideUnderPercentage" @change="forceChartUpdate">, (default: 3)
+                },
+                dataLabel: { <span class="text-gray-500">// percentage mode only</span>
                     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.dataLabel.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.dataLabel.show" @change="forceChartUpdate()">, (default: true)
                     bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.dataLabel.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.dataLabel.bold" @change="forceChartUpdate()">, (default: true)
                     color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.dataLabel.color"><input v-else type="color" v-model="mutableConfig.style.chart.dataLabel.color">,  (default: "#5f8bee")
@@ -315,6 +480,27 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
         },
         userOptions: {
             <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
+        },
+        table: { <span class="text-gray-500">// stack mode only</span>
+            show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.show" @change="forceChartUpdate()">, (default: false)
+            responsiveBreakpoint: <input v-if="isDarkMode" type="number" min="0" max="650" v-model="mutableConfigDarkMode.table.responsiveBreakpoint" @change="forceChartUpdate()"><input v-else type="number" min="0" max="650" v-model="mutableConfig.table.responsiveBreakpoint" @change="forceChartUpdate()">, (default: 300)
+            columnNames: {
+                series: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.columnNames.series"><input v-else type="text" v-model="mutableConfig.table.columnNames.series">, (default: "Series")
+                value: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.columnNames.value"><input v-else type="text" v-model="mutableConfig.table.columnNames.value">, (default: "Value")
+                percentage: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.columnNames.percentage"><input v-else type="text" v-model="mutableConfig.table.columnNames.percentage">, (default: "Percebtage")
+            },
+            th: {
+                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.th.backgroundColor"><input v-else type="color" v-model="mutableConfig.table.th.backgroundColor">, (default: "#FFFFFF")
+                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.th.color"><input v-else type="color" v-model="mutableConfig.table.th.color">, (default: "#2D353C")
+                outline: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.th.outline"><input v-else type="text" v-model="mutableConfig.table.th.outline">, (default: "1px solid #E1E5E8")
+            },
+            td: {
+                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.td.backgroundColor"><input v-else type="color" v-model="mutableConfig.table.td.backgroundColor">, (default: "#FFFFFF")
+                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.td.color"><input v-else type="color" v-model="mutableConfig.table.td.color">, (default: "#2D353C")
+                outline: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.td.outline"><input v-else type="text" v-model="mutableConfig.table.td.outline">, (default: "1px solid #E1E5E8")
+                roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.table.td.roundingValue"><input v-else type="number" min="0" max="3" v-model="mutableConfig.table.td.roundingValue">, (default: 0)
+                roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.table.td.roundingPercentage"><input v-else type="number" min="0" max="3" v-model="mutableConfig.table.td.roundingPercentage">, (default: 0)
+            }
         }
     }
 </code>

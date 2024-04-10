@@ -1547,6 +1547,18 @@ export const useMainStore = defineStore("main", {
                         ko: "예"
                     },                    
                     comments: {
+                        bar3d: {
+                            mode: {
+                                en: `"Stack mode" is obtained by poviding a "series" array in the dataset.`,
+                                fr: `Le "mode pile" est obtenu en fournissant un tableau "série" dans l'ensemble de données.`,
+                                pt: `O "modo pilha" é obtido fornecendo uma matriz "série" no conjunto de dados.`,
+                                de: `Der „Stapelmodus“ wird durch die Bereitstellung eines „Serien“-Arrays im Datensatz erreicht.`,
+                                zh: `“堆栈模式”是通过在数据集中提供“系列”数组来获得的。`,
+                                jp: `「スタック モード」は、データセットに「系列」配列を提供することによって取得されます。`,
+                                es: `El "modo de pila" se obtiene proporcionando una matriz de "serie" en el conjunto de datos.`,
+                                ko: `"스택 모드"는 데이터 세트에 "시리즈" 배열을 제공하여 얻습니다.`
+                            }
+                        },
                         relationCircle: {
                             limit: {
                                 en: "Number of items to display (basically slices the array from 0 to n)",
