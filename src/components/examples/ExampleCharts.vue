@@ -19,6 +19,7 @@ import MarketShare from "./components/MarketShare.vue";
 import SalesBar from "./components/SalesBar.vue";
 import IceCubes from "./components/IceCubes.vue";
 import ExampleTreemap from "./components/ExampleTreemap.vue";
+import Bar3dVersion from "./components/Bar3dVersion.vue";
 
 const store = useMainStore();
 const lang = computed(() => store.lang);
@@ -26,6 +27,9 @@ const translations = computed(() => store.translations);
 const isDarkMode = computed(() => store.isDarkMode);
 
 const revenueDonut = ref(null);
+const bar3d = ref(null);
+const bar3dDataset = ref(null);
+const bar3dConfig = ref(null);
 const revenueDonutDataset = ref(null);
 const revenueDonutConfig = ref(null);
 const evolutionArea = ref(null);
@@ -85,6 +89,10 @@ onMounted(() => {
     if(revenueDonut.value) {
         revenueDonutDataset.value = revenueDonut.value.getData().dataset;
         revenueDonutConfig.value = revenueDonut.value.getData().config;
+    }
+    if(bar3d.value) {
+        bar3dDataset.value = bar3d.value.getData().dataset;
+        bar3dConfig.value = bar3d.value.getData().config;
     }
     if(evolutionArea.value) {
         evolutionDataset.value = evolutionArea.value.getData().dataset;
@@ -155,22 +163,47 @@ onMounted(() => {
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
                 <TokoTsubo
+                    :dataset="bar3dDataset"
+                    :config="bar3dConfig"
+                    componentName="VueUi3dBar"
+                    link="vue-ui-3d-bar"
+                    id="3d"
+                >
+                <template #icon>
+                    <VueUiIcon name="chart3dBar" stroke="#5f8bee"/>
+                </template>    
+            </TokoTsubo>
+                <Bar3dVersion ref="bar3d" class="mt-12"/>
+            </div>
+            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
+                <TokoTsubo
                     :dataset="revenueDonutDataset"
                     :config="revenueDonutConfig"
                     componentName="VueUiDonut"
                     link="vue-ui-donut"
                     id="donut1"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartDonut" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <RevenueDonut ref="revenueDonut" class="mt-12" />
             </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
+        </div>
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
                 <TokoTsubo
                     :dataset="evolutionDataset"
                     :config="evolutionConfig"
                     componentName="VueUiXy"
                     link="vue-ui-xy"
                     id="xy1"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartLine" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
+                    
                 <ExampleXyEvolutionArea ref="evolutionArea" class="mt-12"/>
             </div>
         </div>
@@ -182,7 +215,11 @@ onMounted(() => {
                     componentName="VueUiXy"
                     link="vue-ui-xy"
                     id="xy2"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartBar" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <ExampleXy ref="phoneCalls" class="mt-12"/>
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
@@ -192,7 +229,11 @@ onMounted(() => {
                     componentName="VueUiNestedDonuts"
                     link="vue-ui-nested-donuts"
                     id="donut2"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartNestedDonuts" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <RevenueBreakdown ref="revenueBreak" class="mt-12" />
             </div>
         </div>
@@ -204,7 +245,11 @@ onMounted(() => {
                     componentName="VueUiWaffle"
                     link="vue-ui-waffle"
                     id="waffle"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartWaffle" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <CustomerOs ref="customerOs" class="mt-12" />
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
@@ -214,7 +259,11 @@ onMounted(() => {
                     componentName="VueUiRadar"
                     link="vue-ui-radar"
                     id="spr"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartRadar" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <ServicesPerRegion ref="spr" class="mt-12" />
             </div>
         </div>
@@ -226,7 +275,11 @@ onMounted(() => {
                     componentName="VueUiHeatmap"
                     link="vue-ui-heatmap"
                     id="heat"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartHeatmap" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <ParisTemperatures ref="temperatures" class="mt-12" />
             </div>
         </div>
@@ -238,7 +291,11 @@ onMounted(() => {
                     componentName="VueUiGauge"
                     link="vue-ui-gauge"
                     id="world"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartGauge" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <WorldSatisfaction ref="world" class="mt-12" />
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
@@ -248,7 +305,11 @@ onMounted(() => {
                     componentName="VueUiOnion"
                     link="vue-ui-onion"
                     id="averageOcc"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartOnion" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <AverageOccupancy ref="averageOccupancy" class="mt-12" />
             </div>
         </div>
@@ -260,7 +321,11 @@ onMounted(() => {
                     componentName="VueUiChestnut"
                     link="vue-ui-chestnut"
                     id="chest"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartChestnut" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <WorldSales ref="worldSales" class="mt-12" />
             </div>
         </div>
@@ -272,7 +337,11 @@ onMounted(() => {
                     componentName="VueUiDonutEvolution"
                     link="vue-ui-donut-evolution"
                     id="sales"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartDonutEvolution" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <SalesProjections ref="salesProjections" class="mt-12">
                     <foreignObject
                     :x="58"
@@ -294,7 +363,11 @@ onMounted(() => {
                     componentName="VueUiWheel"
                     link="vue-ui-wheel"
                     id="wheel"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartWheel" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <div class="grid grid-cols-2 gap-0 mt-12 place-content-center place-items-center">
                     <div class="w-full max-w-[200px]">
                         <DetailedSatisfaction :value="87.6" title="Europe 2025" :isModel="true" ref="detailedSatisfaction" />
@@ -319,7 +392,11 @@ onMounted(() => {
                     componentName="VueUiQuadrant"
                     link="vue-ui-quadrant"
                     id="mainStores"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartQuadrant" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <MainStores ref="mainStores" class="mt-12" />
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
@@ -329,7 +406,11 @@ onMounted(() => {
                     componentName="VueUiRings"
                     link="vue-ui-rings"
                     id="marketShare"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartRings" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <MarketShare ref="marketShare" class="mt-12" />
             </div>
         </div>
@@ -341,7 +422,11 @@ onMounted(() => {
                     componentName="VueUiVerticalBar"
                     link="vue-ui-vertical-bar"
                     id="salesBar"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartVerticalBar" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <SalesBar ref="salesBar" class="mt-12" />
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
@@ -351,7 +436,11 @@ onMounted(() => {
                     componentName="VueUi3dBar"
                     link="vue-ui-3d-bar"
                     id="cubes"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chart3dBar" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <div class="w-full max-w-[200px]">
                     <IceCubes ref="iceCubes" class="mt-12" />
                 </div>
@@ -366,7 +455,11 @@ onMounted(() => {
                     link="vue-ui-treemap"
                     id="treem"
                     :hideMaker="true"
-                />
+                >
+                    <template #icon>
+                        <VueUiIcon name="chartTreemap" stroke="#5f8bee"/>
+                    </template>  
+                </TokoTsubo>
                 <div class="w-full mt-12">
                     <ExampleTreemap ref="treemap" />
                 </div>

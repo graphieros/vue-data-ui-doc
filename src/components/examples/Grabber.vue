@@ -62,16 +62,25 @@ function copy() {
 </script>
 
 <template>
-    <button @click="useModal('open')" class="border border-app-blue px-4 py-1 rounded-md text-app-blue shadow-md hover:bg-[#5f8bee20] transition-colors">{{ translations.componentCode[lang] }}</button>
+    <button @click="useModal('open')" class="border border-app-blue pr-4 pl-3 py-1 rounded-md text-app-blue shadow-md hover:bg-[#5f8bee20] transition-colors flex flex-row place-items-center gap-2">
+        <slot name="icon"></slot>
+        {{ translations.componentCode[lang] }}
+    </button>
 
     <dialog :id="props.id" class="glass fixed h-screen max-h-[700px] w-full max-w-[900px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-gray-700">
         <button class="absolute top-2 right-2" @click="useModal('close')">
             <XIcon class="text-black dark:text-app-green" />
         </button>
-        <button @click="copy">
-            <CopyIcon class="cursor-pointer" v-if="!isCopied" />
-            <CheckIcon v-else class="text-app-green cursor-pointer animate-ping"/>
-        </button>
+        <div class="flex flex-row gap-4 place-items-center mb-6">
+            <slot name="icon"></slot>
+            <button @click="copy" class="shadow flex flex-row place-items-center gap-2 bg-[#42d39233] text-black px-2 py-2 rounded-md hover:shadow-xl hover:outline hover:outline-app-green transition-all">
+                <CopyIcon class="cursor-pointer text-black dark:text-app-green" v-if="!isCopied" />
+                <CheckIcon v-else class="text-black dark:text-app-green cursor-pointer animate-ping"/>
+                <span class="text-black dark:text-app-green">
+                    &lt;{{ componentName }} /&gt;
+                </span>
+            </button>
+        </div>
         <div>
             <code v-html="dialogContent" class="text-xs max-w-[400px]"/>
         </div>

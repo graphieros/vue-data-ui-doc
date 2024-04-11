@@ -17,7 +17,7 @@ const config = computed(() => {
             "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
             "color": isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             "height": 800,
-            "width": 1000,
+            "width": 1800,
             "zoom": {
                 "show": false
             },
