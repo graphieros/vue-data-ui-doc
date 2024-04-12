@@ -28,10 +28,6 @@ const makerTranslations = computed(() => {
     return makerStore.translations;
 })
 
-const isDarkMode = computed(() => {
-    return store.isDarkMode;
-})
-
 const isFixed = ref(!isMobile.value);
 
 const CONFIG_CATEGORIES = computed(() => {
