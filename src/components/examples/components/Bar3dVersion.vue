@@ -106,27 +106,97 @@ const dataset = ref({
         {
             name: "Brazil",
             value: 153,
-            color: "#42d392"
+            color: "#42d392",
+            breakdown: [
+                {
+                    name: 'São Paulo',
+                    value: 90
+                },
+                {
+                    name: 'Rio de Janeiro',
+                    value: 50
+                },
+                {
+                    name: 'Brasilia',
+                    value: 13
+                }
+            ]
         },
         {
             name: "France",
             value: 255,
-            color: "#6376DD"
+            color: "#6376DD",
+            breakdown: [
+                {
+                    name: 'Paris',
+                    value: 150
+                },
+                {
+                    name: 'Lyon',
+                    value: 55
+                },
+                {
+                    name: 'Marseille',
+                    value: 50
+                }
+            ]
         },
         {
             name: "India",
             value: 113,
-            color: "#d98320"
+            color: "#d98320",
+            breakdown: [
+                {
+                    name: 'Mumbai',
+                    value: 75
+                },
+                {
+                    name: 'Delhi',
+                    value: 25
+                },
+                {
+                    name: 'Bangalore',
+                    value: 13
+                }
+            ]
         },
         {
             name: "Japan",
             value: 290,
-            color: "#d94126"
+            color: "#d94126",
+            breakdown: [
+                {
+                    name: 'Tokyo',
+                    value: 220
+                },
+                {
+                    name: 'Yokohama',
+                    value: 50
+                },
+                {
+                    name: 'Osaka',
+                    value: 20
+                }
+            ]
         },
         {
             name: "Germany",
             value: 275,
-            color: "#f5ee38"
+            color: "#f5ee38",
+            breakdown: [
+                {
+                    name: 'Berlin',
+                    value: 100
+                },
+                {
+                    name: 'Hamburg',
+                    value: 90
+                },
+                {
+                    name: 'Munich',
+                    value: 85
+                }
+            ]
         }
     ]
 });

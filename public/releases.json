@@ -1,11 +1,21 @@
 [
     {
+        "version": "v 2.0.79",
+        "date": "2024-04-12",
+        "updates": [
+            {
+                "component": "VueUi3dBar",
+                "description": "Added the 'breakdown 'dataset option that will display donuts in the legend in stack mode."
+            }
+        ]
+    },
+    {
         "version": "v 2.0.78",
         "date": "2024-04-10",
         "updates": [
             {
                 "component": "VueUi3dBar",
-                "description": "Adds stack mode through a new 'series' dataset option"
+                "description": "Added stack mode through a new 'series' dataset option"
             }
         ]
     },
