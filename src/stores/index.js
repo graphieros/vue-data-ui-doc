@@ -6,6 +6,7 @@ export const useMainStore = defineStore("main", {
             isMenuOpen: false,
             isDarkMode: true,
             isCopy: false,
+            isFetching: false,
             hints: {
                 pin: {
                     en: "Pin the chart to the left so you can visualize configuration changes when you scroll.",
@@ -560,6 +561,18 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 customization: {
+                    otherSlots: {
+                        waffle: {
+                            en: "Cell contents can be customized by setting the config.useCustomCells to 'true', and using the #cell slot.",
+                            fr: "Le contenu des cellules peut être personnalisé en définissant config.useCustomCells sur « true » et en utilisant l'emplacement #cell.",
+                            pt: "O conteúdo da célula pode ser personalizado definindo config.useCustomCells como 'true' e usando o slot #cell.",
+                            de: "Zellinhalte können angepasst werden, indem config.useCustomCells auf „true“ gesetzt und der #cell-Slot verwendet wird.",
+                            zh: "可以通过将 config.useCustomCells 设置为“true”并使用 #cell 槽来自定义单元格内容。",
+                            jp: "セルの内容は、config.useCustomCells を「true」に設定し、#cell スロットを使用することでカスタマイズできます。",
+                            es: `El contenido de la celda se puede personalizar configurando config.useCustomCells en "verdadero" y usando la ranura #cell.`,
+                            ko: "config.useCustomCells를 'true'로 설정하고 #cell 슬롯을 사용하여 셀 내용을 사용자 정의할 수 있습니다."
+                        }
+                    },
                     tooltipSlot: {
                         en: 'To further customize tooltip contents, #tooltip-before & #tooltip-after slots are made available on the following components (which can also be used on the VueDataUi universal component):',
                         fr: "Pour personnaliser davantage le contenu des info-bulles, les emplacements #tooltip-before et #tooltip-after sont mis à disposition sur les composants suivants (qui peuvent également être utilisés sur le composant universel VueDataUi):",

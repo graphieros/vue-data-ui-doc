@@ -457,6 +457,7 @@ const xyDataset = ref([])
 onMounted(() => {
     isLoadingLine.value = true;
     isLoadingBar.value = true;
+    store.isFetching = true;
 
     fetch(url.value, {
         method: 'GET',
@@ -491,6 +492,7 @@ onMounted(() => {
         isError.value = true;
         data.value = [{ period: "", value: 0 }]
     }).finally(() => {
+      store.isFetching = false;
     });
 
     fetch("https://registry.npmjs.org/-/v1/search?text=vue-data-ui", {

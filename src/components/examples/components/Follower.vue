@@ -5,6 +5,7 @@ import { useMainStore } from "../../../stores";
 const store = useMainStore();
 
 const isDarkMode = computed(() => store.isDarkMode);
+const isFetching = computed(() => store.isFetching);
 
 const position = ref({
     x: -100,
@@ -44,7 +45,7 @@ onBeforeUnmount(() => {
             </radialGradient>
         </defs>
         <circle cx="50" cy="50" r="49" fill="url(#follower)" :stroke="isDarkMode ? '#CCCCCC20' : '#1A1A1A20'"/>
-        <circle cx="50" cy="50" r="49" fill="none" stroke="#42d392" class="follower-action"/>
+        <circle cx="50" cy="50" r="49" fill="none" stroke="#42d392" :class="{'follower-action': !isFetching, 'follower-action-fetching': isFetching}"/>
     </svg>
 </template>
 
@@ -52,6 +53,12 @@ onBeforeUnmount(() => {
 .follower-action {
     animation: follow infinite linear 20s;
     stroke-dasharray: 308;
+    stroke-dashoffset: 310;
+    transform-origin: center;
+}
+.follower-action-fetching {
+    animation: follow infinite linear 1s;
+    stroke-dasharray: 300;
     stroke-dashoffset: 310;
     transform-origin: center;
 }

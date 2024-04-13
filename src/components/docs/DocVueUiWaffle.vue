@@ -42,6 +42,7 @@ const isDarkMode = computed(() => {
 
     const darkModeConfig = ref({
         useBlurOnHover: true,
+        useCustomCells: false,
         style: {
             fontFamily: "inherit",
             chart: {
@@ -149,6 +150,7 @@ const isDarkMode = computed(() => {
 
     const config = ref({
         useBlurOnHover: true,
+        useCustomCells: false,
         style: {
             fontFamily: "inherit",
             chart: {
@@ -379,6 +381,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWaffleDatasetIt
 const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</span> = {
     style: {
         useBlurOnHover: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()">, (default: true) <span class="text-app-blue">// since v.1.9.17</span>
+        useCustomCells: false, <span class="text-app-blue">// since v2.0.81 {{ translations.customization.otherSlots.waffle[store.lang] }}</span>
         fontFamily: "inherit",
         chart: {
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")
@@ -575,6 +578,25 @@ const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</spa
             </template>
 
             <template #tab3>
+                <div class="text-gray-500">
+                    {{ translations.customization.otherSlots.waffle[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiWaffle
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #cell="{ cell, isSelected }"&gt;
+            &lt;div&gt;
+                ... your custom content (icon, image, etc)
+            &lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiWaffle&gt;
+</code>
+</pre>
+
+
                 <div class="text-gray-500">
                     {{ translations.slots.presentation[store.lang]  }}
                 </div>

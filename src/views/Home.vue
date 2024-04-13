@@ -135,6 +135,7 @@ function setClientPosition({ clientX, clientY, ...rest }) {
 
 onMounted(() => {
   isLoading.value = true;
+  store.isFetching = true;
   const resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
             const { width, height } = entry.contentRect;
@@ -160,6 +161,7 @@ onMounted(() => {
     console.error('There was a problem fetching the data:', error);
   }).finally(() => {
     isLoading.value = false;
+    store.isFetching = false;
   })
 
   // fetch(downloadsUrl.value, {

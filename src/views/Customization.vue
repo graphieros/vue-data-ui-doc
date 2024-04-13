@@ -4,6 +4,7 @@ import { useMainStore } from "../stores";
 import SvgSlot from "../components/customization/SvgSlot.vue";
 import LegendSlot from "../components/customization/LegendSlot.vue";
 import TooltipSlot from "../components/customization/TooltipSlot.vue";
+import OtherSlots from "../components/customization/OtherSlots.vue";
 
 const store = useMainStore();
 
@@ -16,6 +17,7 @@ const menu = ref([
     { name: 'svgSlot', label: '#svg slot' },
     { name: 'legendSlot', label: '#legend slot'},
     { name: 'tooltipSlot', label: 'tooltip slots'},
+    { name: 'otherSlots', label: 'other slots'},
 ]);
 
 </script>
@@ -33,4 +35,5 @@ const menu = ref([
     <SvgSlot v-if="selectedMenu === 'svgSlot'" />
     <LegendSlot v-if="selectedMenu === 'legendSlot'" />
     <TooltipSlot v-if="selectedMenu === 'tooltipSlot'" />
+    <OtherSlots v-if="selectedMenu === 'otherSlots'" />
 </template>

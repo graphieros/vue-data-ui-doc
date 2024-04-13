@@ -1978,19 +1978,22 @@ export const useDefaultDataStore = defineStore('defaultData', {
                             name: 'Serie 1',
                             value: 128,
                             color: '#5f8bee',
-                            id: "1"
+                            id: "1",
+                            breakdown:[]
                         },
                         {
                             name: 'Serie 2',
                             value: 64,
                             color: '#42d392',
-                            id: '2'
+                            id: '2',
+                            breakdown: []
                         },
                         {
                             name: 'Serie 3',
                             value: 32,
                             color: '#ff6400',
-                            id: '3'
+                            id: '3',
+                            breakdown: []
                         }
                     ]
                 },
