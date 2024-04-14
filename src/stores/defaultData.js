@@ -1611,30 +1611,35 @@ export const useDefaultDataStore = defineStore('defaultData', {
                                 y: 1,
                                 name: "Item 1",
                                 id: '001',
+                                weight: 8
                             },
                             {
                                 x: 0.5,
                                 y: 1.2,
                                 name: "Item 2",
                                 id: '002',
+                                weight: 12
                             },
                             {
                                 x: 1,
                                 y: 2,
                                 name: "Item 3",
                                 id: '003',
+                                weight: 10
                             },
                             {
                                 x: 1.2,
                                 y: 2.4,
                                 name: "Item 4",
                                 id: '004',
+                                weight: 16
                             },
                             {
                                 x: 2,
                                 y: 3,
                                 name: "Item 5",
                                 id: '005',
+                                weight: 20
                             },
                         ]
                     },

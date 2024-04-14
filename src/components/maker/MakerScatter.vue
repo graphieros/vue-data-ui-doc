@@ -102,6 +102,7 @@ const options = ref({
         x: 0,
         y: 0,
         name: 'Item',
+        weight: 8
     }
 })
 
@@ -246,6 +247,10 @@ function getLabel(label) {
                                     <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }} Y</label>
                                     <input class="h-[32px]" type="number" v-model="dp.y">
                                 </div>
+                                <div class="flex flex-col gap-2 mt-2">
+                                    <label class="text-left text-xs">{{ makerTranslations.labels.weight[store.lang] }}</label>
+                                    <input class="h-[32px]" type="number" v-model="dp.weight">
+                                </div>
                             </div>
                         </td>
 
@@ -301,6 +306,7 @@ function getLabel(label) {
                         x: v.x,
                         y: v.y,
                         name: v.name,
+                        weight: v.weight
                     }
                 }), color, shape
             }})"

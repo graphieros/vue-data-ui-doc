@@ -1560,6 +1560,16 @@ export const useMainStore = defineStore("main", {
                         ko: "예"
                     },                    
                     comments: {
+                        scatterWeight: {
+                            en: "To create a bubble chart. If not used, datapoints radius will use config.style.layout.plots.radius",
+                            fr: "Pour créer un graphique à bulles. S'il n'est pas utilisé, le rayon des points de données utilisera config.style.layout.plots.radius",
+                            pt: "Para criar um gráfico de bolhas. Se não for usado, o raio dos pontos de dados usará config.style.layout.plots.radius",
+                            de: "So erstellen Sie ein Blasendiagramm. Wenn nicht verwendet, verwendet der Datenpunktradius config.style.layout.plots.radius",
+                            zh: "创建气泡图。如果不使用，数据点半径将使用 config.style.layout.plots.radius",
+                            jp: "バブル チャートを作成するには。使用しない場合、データポイント半径は config.style.layout.plots.radius を使用します。",
+                            es: "Para crear un gráfico de burbujas. Si no se usa, el radio de los puntos de datos usará config.style.layout.plots.radius",
+                            ko: "거품형 차트를 생성하려면 사용하지 않으면 데이터 포인트 반경은 config.style.layout.plots.radius를 사용합니다."
+                        },
                         bar3d: {
                             mode: {
                                 en: `"Stack mode" is obtained by poviding a "series" array in the dataset.`,

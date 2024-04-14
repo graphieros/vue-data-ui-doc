@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch, nextTick } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import { CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
@@ -103,7 +103,7 @@ function copyToClipboard(conf) {
 <template>
     <div>
         <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
-            <VueUiIcon name="legend" stroke="#42d392" :strokeWidth="1.5" />
+            <VueUiIcon name="kpiBox" stroke="#42d392" :strokeWidth="1.5" />
             VueUiKpi
         </h1>
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
