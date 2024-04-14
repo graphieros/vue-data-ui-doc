@@ -1575,7 +1575,8 @@ const sparklineConfigForReleases = computed(() => {
                             <div class="pl-6" v-if="log.updates">
                                 <template v-for="update in log.updates">
                                     <span class="text-gray-500">
-                                        <span v-if="update.component" class="text-app-blue">{{ update.component }}</span>
+                                          <a class="text-app-blue hover:underline text-bold" v-if="update.component && update.link" :href="update.link">{{ update.component }}</a>
+                                        <span v-else-if="update.component" class="text-app-blue">{{ update.component }}</span>
                                         {{ update.description }}
                                     </span>
                                     <br>

@@ -3,7 +3,6 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 
 const store = useMainStore();
-const isDarkMode = computed(() => store.isDarkMode);
 
 const translations = computed(() => {
     return store.translations;

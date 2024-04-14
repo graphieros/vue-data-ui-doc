@@ -1,11 +1,12 @@
 [
     {
         "version": "v 2.0.81",
-        "date": "2024-04-12",
+        "date": "2024-04-13",
         "updates": [
             {
                 "component": "VueUiWaffle",
-                "description": "Added the #cell scoped slot for custom cell contents."
+                "description": "Added the #cell scoped slot for custom cell contents.",
+                "link": "/docs#vue-ui-waffle"
             }
         ]
     },
@@ -15,7 +16,8 @@
         "updates": [
             {
                 "component": "VueUi3dBar",
-                "description": "Added the 'breakdown 'dataset option that will display donuts in the legend in stack mode."
+                "description": "Added the 'breakdown 'dataset option that will display donuts in the legend in stack mode.",
+                "link": "/docs#vue-ui-3d-bar"
             }
         ]
     },
@@ -25,7 +27,8 @@
         "updates": [
             {
                 "component": "VueUi3dBar",
-                "description": "Added stack mode through a new 'series' dataset option"
+                "description": "Added stack mode through a new 'series' dataset option",
+                "link": "/docs#vue-ui-3d-bar"
             }
         ]
     },
@@ -35,7 +38,8 @@
         "updates": [
             {
                 "component": "VueUiMolecule",
-                "description": "Improvement allowing to select datapoints located below dataLabels"
+                "description": "Improvement allowing to select datapoints located below dataLabels",
+                "link": "/docs#vue-ui-molecule"
             }
         ]
     },
@@ -45,7 +49,8 @@
         "updates": [
             {
                 "component": "VueUiQuadrant",
-                "description": "Minor fixes on zoom minimap"
+                "description": "Minor fixes on zoom minimap",
+                "link": "/docs#vue-ui-quadrant"
             }
         ]
     },
@@ -55,7 +60,8 @@
         "updates": [
             {
                 "component": "VueUiQuadrant",
-                "description": "Added zoom & minimap"
+                "description": "Added zoom & minimap",
+                "link": "/docs#vue-ui-quadrant"
             }
         ]
     },
@@ -65,7 +71,8 @@
         "updates": [
             {
                 "component": "VueUiTreemap",
-                "description": "Added new component"
+                "description": "Added new component",
+                "link": "/docs#vue-ui-treemap"
             }
         ]
     },
@@ -85,7 +92,8 @@
         "updates": [
             {
                 "component": "VueUiSparkline",
-                "description": "Added config options to control chart width and dataLabel display"
+                "description": "Added config options to control chart width and dataLabel display",
+                "link": "/docs#vue-ui-sparkline"
             }
         ]
     },
