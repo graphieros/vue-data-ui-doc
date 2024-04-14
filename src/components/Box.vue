@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useMainStore } from "../stores";
+import { BracketsContainIcon } from "vue-tabler-icons";
+
+const store = useMainStore();
+
+const isDarkMode = computed(() => store.isDarkMode);
 
 type BoxProps = {
     /**
@@ -29,19 +35,34 @@ const activeTab = ref(props.activeTab);
     <div class="p-6 rounded-md border border-gray-700 my-6 relative overflow-x-auto">
     <div class="flex flex-row border w-fit border-gray-700 mb-6 rounded">
         <div tabindex="0" :class="`w-fit select-none cursor-pointer text-black dark:text-app-green font-satoshi-bold p-3  ${activeTab === 0 ? 'bg-gray-200 dark:bg-black-100 border-b border-b-app-green' : 'border-b border-b-transparent'} hover:border-b hover:border-b-app-green`" @click="activeTab = 0" @keypress.enter="activeTab = 0">
-            dataset
+            <div class="flex flex-row place-items-center gap-2">
+                <VueUiIcon name="ratio" :size="18" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
+                dataset
+            </div>
         </div>
         <div tabindex="0" :class="`w-fit select-none cursor-pointer text-black dark:text-app-blue font-satoshi-bold p-3 border-b   ${activeTab === 1 ? 'bg-gray-200 dark:bg-black-100 border-b-app-blue' : 'border-b-transparent'} hover:border-b hover:border-b-app-blue`" @click="activeTab = 1" @keypress.enter="activeTab = 1">
-            config
+            <div class="flex flex-row place-items-center gap-2">
+                <VueUiIcon name="settings" :size="18" :stroke="isDarkMode ? '#5f8bee' : '#1A1A1A'"/>
+                config
+            </div>
         </div>
         <div tabindex="0" v-if="props.showEmits" :class="`w-fit select-none cursor-pointer text-black dark:text-gray-400  border-b   font-satoshi-bold p-3 ${activeTab === 2 ? 'bg-gray-200 dark:bg-black-100 border-b-gray-100' : 'border-b-transparent'} hover:border-b hover:border-b-gray-100`" @click="activeTab = 2" @keypress.enter="activeTab = 2">
-            emits
+            <div class="flex flex-row place-items-center gap-2">
+                <VueUiIcon name="func" :size="18" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                emits
+            </div>
         </div>
         <div tabindex="0" v-if="props.showSlots" :class="`w-fit select-none cursor-pointer text-black dark:text-app-orange border-b   font-satoshi-bold p-3  ${activeTab === 3 ? 'bg-gray-200 dark:bg-black-100 border-b-app-orange' : 'border-b-transparent'} hover:border-b hover:border-b-app-orange`" @click="activeTab = 3" @keypress.enter="activeTab = 3">
-            slots
+            <div class="flex flex-row place-items-center gap-2">
+                <BracketsContainIcon size="18"/>
+                slots
+            </div>
         </div>
         <div tabindex="0" v-if="props.showTooltip" :class="`w-fit select-none cursor-pointer text-black dark:text-gray-100 border-b   font-satoshi-bold p-3  ${activeTab === 4 ? 'bg-gray-200 dark:bg-black-100 border-b-gray-100' : 'border-b-transparent'} hover:border-b hover:border-b-gray-100`" @click="activeTab = 4" @keypress.enter="activeTab = 4">
-            custom tooltip
+            <div class="flex flex-row place-items-center gap-2">
+                <VueUiIcon name="tooltip" :size="18" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                custom tooltip
+            </div>
         </div>
     </div>
 
