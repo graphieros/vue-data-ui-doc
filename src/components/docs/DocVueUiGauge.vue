@@ -77,7 +77,7 @@ const config = ref({
                 track: {
                     size: 1,
                     useGradient: true,
-                    gradientIntensity: 40,
+                    gradientIntensity: 20,
                 },
                 markers: {
                     size: 1,
@@ -155,7 +155,7 @@ const darkModeConfig = ref({
                 track: {
                     size: 1,
                     useGradient: true,
-                    gradientIntensity: 40,
+                    gradientIntensity: 20,
                 },
                 markers: {
                     size: 1,
@@ -398,7 +398,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiGaugeConfig</span
                 track: {
                     size: <input v-if="isDarkMode" type="number" min="0.5" max="2" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.track.size"><input v-else type="number" min="0.5" max="2" step="0.1" v-model="mutableConfig.style.chart.layout.track.size">, (default: 1)
                     useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.track.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.track.useGradient" @change="forceChartUpdate()">, (default: true)
-                    gradientIntensity: 40,
+                    gradientIntensity: 20,
                 },
                 markers: {
                     size: <input v-if="isDarkMode" type="number" min="0.5" max="2" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.markers.size"><input v-else type="number" min="0.5" max="2" step="0.1" v-model="mutableConfig.style.chart.layout.markers.size">, (default: 1)

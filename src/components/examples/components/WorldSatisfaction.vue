@@ -24,7 +24,7 @@ const config = computed(() => {
                 "track": {
                     "size": 1,
                     "useGradient": true,
-                    "gradientIntensity": 40
+                    "gradientIntensity": 20
                 },
                 "markers": {
                     "size": 1,

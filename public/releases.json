@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.0.87",
+        "date": "2024-04-15",
+        "updates": [
+            {
+                "component": "VueUiGauge",
+                "description": "Improved gradient",
+                "link": "/docs#vue-ui-gauge"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.86",
         "date": "2024-04-15",
         "updates": [
