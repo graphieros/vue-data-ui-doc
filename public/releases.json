@@ -1,5 +1,26 @@
 [
     {
+        "version": "v 2.0.86",
+        "date": "2024-04-15",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "Fixed blur effect not working on Safari",
+                "link": "/docs#vue-ui-donut"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Fixed blur effect not working on Safari",
+                "link": "/docs#vue-ui-waffle"
+            },
+            {
+                "component": "VueUiNestedDonuts",
+                "description": "Fixed blur effect not working on Safari",
+                "link": "/docs#vue-ui-nested-donuts"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.85",
         "date": "2024-04-14",
         "updates": [
