@@ -1670,6 +1670,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.plots.significance.opacity', def: 0.3, type: 'number', min: 0, max: 1, step: 0.01, label: ['significance', 'is', 'opacity'], category: 'datapoints' },
                     { key: 'style.layout.plots.deviation.translation', def: 'deviation', type: 'text', label: ['deviation', 'is', 'translation'], category: 'datapoints' },
                     { key: 'style.layout.plots.deviation.roundingValue', def: 1, type: 'number', min: 0, max: 6, label: ['deviation', 'is', 'rounding'], category: 'datapoints' },
+                    { key: 'style.layout.plots.giftWrap.show', def: false, type: 'checkbox', label: ['giftWrap', "is", 'show'], category: 'datapoints'},
+                    { key: 'style.layout.plots.giftWrap.strokeWidth', def: 1, type: 'number', min: 0, max: 24, step: 0.1, label: ['giftWrap', 'border', 'is', 'thickness'], category: 'datapoints'},
+                    { key: 'style.layout.plots.giftWrap.strokeDasharray', def: 0, type: 'number', min: 0, max: 64, step: 0.1, label: ['giftWrap', 'border', 'is', 'dashed'], category: 'datapoints'},
+                    { key: 'style/layout.plots.giftWrap.fillOpacity', def: 0.2, type: 'number', min: 0, max: 1, step: 0.01, label: ['giftWrap', 'backgroundColor', 'is', 'opacity'], category: 'datapoints'},
 
                     { key: 'style.layout.correlation.show', def: false, type: 'checkbox', label: 'show', category: 'correlation' },
                     { key: 'style.layout.correlation.strokeDasharray', def: 2, type: 'number', min: 0, max: 24, step: 0.1, label: 'dashed', category: 'correlation' },

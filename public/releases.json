@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.0.88",
+        "date": "2024-04-16",
+        "updates": [
+            {
+                "component": "VueUiScatter",
+                "description": "Added giftWrap plot config option to display the max area occupied by dataset's plots",
+                "link": "/docs#vue-ui-scatter"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.87",
         "date": "2024-04-15",
         "updates": [

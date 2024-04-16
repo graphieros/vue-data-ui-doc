@@ -898,6 +898,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Desde",
                         ko: "부터"
                     },
+                    giftWrap: {
+                        en: 'Gift wrap algorithm',
+                        fr: "algorithme d'emballage cadeau",
+                        pt: "algoritmo de embrulho para presente",
+                        de: "Geschenkverpackungsalgorithmus",
+                        zh: "礼品包装算法",
+                        jp: "ギフト包装アルゴリズム",
+                        es: "algoritmo de envoltura de regalo",
+                        ko: "선물 포장 알고리즘"
+                    },
                     gradient: {
                         en: 'Gradient',
                         fr: "Dégradé",

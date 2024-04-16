@@ -96,7 +96,13 @@ const darkModeConfig = ref({
         deviation: {
           translation: "deviation",
           roundingValue: 1
-        }
+        },
+        giftWrap: {
+          show: false,
+          strokeWidth: 1,
+          strokeDasharray: 0,
+          fillOpacity: 0.2
+        },
       },
       correlation: {
         show: true,
@@ -224,7 +230,13 @@ const config = ref({
         deviation: {
           translation: "deviation",
           roundingValue: 1
-        }
+        },
+        giftWrap: {
+          show: false,
+          strokeWidth: 1,
+          strokeDasharray: 0,
+          fillOpacity: 0.2
+        },
       },
       correlation: {
         show: true,
@@ -507,6 +519,12 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
         deviation: {
           translation: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.layout.plots.deviation.translation"><input v-else type="text" v-model="mutableConfig.style.layout.plots.deviation.translation">, (default: "deviation")
           roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.layout.plots.deviation.roundingValue"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.layout.plots.deviation.roundingValue">, (default: 1)
+        },
+        giftWrap: {
+          show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.giftWrap.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.giftWrap.show">, (default: false)
+          strokeWidth: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="12" step="0.1" v-model="mutableConfigDarkMode.style.layout.plots.giftWrap.strokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="12" step="0.1" v-model="mutableConfig.style.layout.plots.giftWrap.strokeWidth">, (default: 1)
+          strokeDasharray: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="64" step="0.1" v-model="mutableConfigDarkMode.style.layout.plots.giftWrap.strokeDasharray"><input v-else type="range" class="accent-app-blue" min="0" max="64" step="0.1" v-model="mutableConfig.style.layout.plots.giftWrap.strokeDasharray">, (default: 0)
+          fillOpacity: <input v-if="isDarkMode" type="range" min="0" max="1" step="0.1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.giftWrap.fillOpacity"><input v-else type="range" min="0" max="1" step="0.1" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.giftWrap.fillOpacity">, (default: 0.2)
         }
       },
       correlation: {
