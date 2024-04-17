@@ -20,7 +20,7 @@ watch(() => store.isDarkMode, (val) => {
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
+});
 
 const scat1 = computed(() => {
   const arr = [];
@@ -32,7 +32,8 @@ const scat1 = computed(() => {
     });
   }
   return arr;
-})
+});
+
 const scat2 = computed(() => {
   const arr = [];
   for(let i = -100; i < 100; i += 1) {
