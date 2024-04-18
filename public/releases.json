@@ -1,6 +1,17 @@
 [
     {
-        "version": "v 2.0.89",
+        "version": "v 2.0.91",
+        "date": "2024-04-18",
+        "updates": [
+            {
+                "component": "VueUiSparkStackbar",
+                "description": "Added serie segregation when selecting a legend item",
+                "link": "/docs#vue-ui-sparkstackbar"
+            }
+        ]
+    },
+    {
+        "version": "v 2.0.90",
         "date": "2024-04-17",
         "updates": [
             {
