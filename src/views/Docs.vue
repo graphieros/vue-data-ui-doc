@@ -52,6 +52,7 @@ import { useMainStore } from "../stores";
 import Sprinter from "../components/Sprinter.vue";
 import Wheeler from "../components/Wheeler.vue";
 import DocVueUiTreemap from "../components/docs/DocVueUiTreemap.vue";
+import DocVueUiTableHeatmap from "../components/docs/DocVueUiTableHeatmap.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -459,6 +460,17 @@ const menuItems = computed(() => [
         hasTableCss: false,
     },
     {
+        name: "TableHeatmap",
+        icon: "chartTable",
+        tooltip: translations.value.docs.tooltips.tableHeatmap[store.lang],
+        link: "/docs#vue-ui-table-heatmap",
+        type: "table",
+        thumb: new URL('../assets/thumb_table_heatmap.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_table_heatmap_light.png', import.meta.url).href,
+        hasSlot: false,
+        hasTableCss: false,
+    },
+    {
         name: "Rating",
         icon: "star",
         tooltip: translations.value.docs.tooltips.rating[store.lang],
@@ -663,6 +675,7 @@ onMounted(playShowcase)
             <DocVueUiGalaxy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-galaxy'"/>
             <DocVueUiKpi v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-kpi'"/>
             <DocVueUiTreemap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-treemap'" />
+            <DocVueUiTableHeatmap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table-heatmap'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

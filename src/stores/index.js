@@ -832,6 +832,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        tableHeatmap: {
+                            en: "A responsive table with heatmap features",
+                            fr: "Un tableau responsive avec des fonctionnalités de carte thermique",
+                            pt: "Uma tabela responsiva com recursos de mapa de calor.",
+                            de: "Eine reaktionsfähige Tabelle mit Heatmap-Funktionen.",
+                            zh: "具有热图功能的响应式表格。",
+                            jp: "ヒートマップ機能を備えたレスポンシブなテーブル。",
+                            es: "Una tabla responsiva con funciones de mapa de calor.",
+                            ko: "히트맵 기능을 갖춘 반응형 테이블입니다."
+                        },
                         treemap: {
                             en: 'Visualize a large amount of data in a hierarchical, tree-structured diagram where the size of rectangles are organized from largest to smallest.',
                             fr: "Visualisez une grande quantité de données dans un diagramme hiérarchique et arborescent où la taille des rectangles est organisée du plus grand au plus petit.",

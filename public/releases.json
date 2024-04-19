@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.0.93",
+        "date": "2024-04-19",
+        "updates": [
+            {
+                "component": "VueUiTableHeatmap",
+                "description": "Added new component",
+                "link": "/docs#vue-ui-table-heatmap"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.91",
         "date": "2024-04-18",
         "updates": [

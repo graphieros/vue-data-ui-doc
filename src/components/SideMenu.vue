@@ -342,6 +342,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_table_sparkline_light.png', import.meta.url).href,
     },
     {
+        route: '/docs#vue-ui-table-heatmap',
+        icon: 'chartTable',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'TableHeatmap',
+        thumb: new URL('../assets/thumb_table_heatmap.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_table_heatmap_light.png', import.meta.url).href,
+    },
+    {
         route: '/docs#vue-ui-table',
         icon: 'chartTable',
         cssClasses: '',
@@ -493,6 +502,7 @@ const sideMenuItems = ref([
         title: translations.value.sideMenu.tables[store.lang],
         items: [
             { route: '/docs#vue-ui-table-sparkline', componentName: 'TableSparkline', icon: 'chartTable' },
+            { route: '/docs#vue-ui-table-heatmap', componentName: 'TableHeatmap', icon: 'chartTable' },
             { route: '/docs#vue-ui-table', componentName: 'Table', icon: 'chartTable' },
         ]
     },
