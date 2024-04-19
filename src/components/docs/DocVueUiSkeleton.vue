@@ -19,7 +19,7 @@ watch(() => store.isDarkMode, (val) => {
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
+});
 
 const config = ref({
   type: "line",
