@@ -226,7 +226,7 @@ function fixChart() {
             <!-- <MakerLink to="VueUiTableHeatmap"/> -->
         </div>
 
-        <Box>
+        <Box showSlots>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -320,6 +320,52 @@ const <span class="text-black dark:text-app-blue">config: VueUiTableHeatmapConfi
 }
 </code>
 </pre>
+            </template>
+
+            <template #tab3>
+                <ul class="mb-6">
+                    <li>#caption</li>
+                    <li>#rowTitle</li>
+                    <li>#cell</li>
+                    <li>#sum</li>
+                    <li>#average</li>
+                    <li>#median</li>
+                </ul>
+                <code class="dark:text-gray-400">
+                    &lt;VueUiTableHeatmap<br>
+                    &nbsp;&nbsp;:dataset="dataset"<br>
+                    &nbsp;&nbsp;:config="config"<br>
+                    &gt;<br>
+
+                    &nbsp;&nbsp;&lt;template #caption&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;TITLE&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
+
+                    &nbsp;&nbsp;&lt;template #head="{ value, rowIndex, type }"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
+
+                    &nbsp;&nbsp;&lt;template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
+
+                    &nbsp;&nbsp;&lt;template #cell="{ value, rowIndex, colIndex, type, color, textColor, isResponsive }"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
+
+                    &nbsp;&nbsp;&lt;template #sum="{ value, rowIndex, isResponsive }"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
+
+                    &nbsp;&nbsp;&lt;template #average="{ value, rowIndex, isResponsive }"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
+
+                    &nbsp;&nbsp;&lt;template #median="{ value, rowIndex, isResponsive }"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<span v-pre>{{ value }}</span>&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
+                    &lt;/VueUiTableHeatmap&gt;
+                </code>
             </template>
         </Box>
     </div>
