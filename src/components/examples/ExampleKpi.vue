@@ -1,9 +1,15 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useMainStore } from '../../stores';
 const store = useMainStore();
 
 const isDarkMode = computed(() => store.isDarkMode)
+
+const sparkstackDataset = ref([
+    { name: 'Germany', value: 542000 },
+    { name: 'France', value: 443250 },
+    { name: 'Spain', value: 275405 },
+])
 
 </script>
 
@@ -104,14 +110,10 @@ const isDarkMode = computed(() => store.isDarkMode)
                 <div class="w-full max-w-[300px] mt-2">
                     <VueDataUi
                         component="VueUiSparkStackbar"
-                        :dataset="[
-                            { name: 'Germany', value: 542000 },
-                            { name: 'France', value: 443250 },
-                            { name: 'Spain', value: 275405 },
-                        ]"
+                        :dataset="sparkstackDataset"
                         :config="{
                             style: {
-                                backgroundColor: isDarkMode ? '#FFFFFF10' : '#FFFFFF',
+                                backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
                                 legend: {
                                     name: {
                                         color: isDarkMode ? '#8A8A8A' : '#3A3A3A',

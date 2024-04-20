@@ -19,7 +19,7 @@ const currentRoute = computed(() => {
     <router-view />
     <UpToTop/>
   </div>
-  <Follower v-if="currentRoute !== '/' || isFetching"/>
+  <Follower v-if="currentRoute !== '/'"/>
 </template>
 
 <style>

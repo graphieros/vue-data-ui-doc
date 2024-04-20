@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.0.94",
+        "date": "2024-04-20",
+        "updates": [
+            {
+                "component": "VueUiSparkStackbar",
+                "description": "Fixed a bug when no colors are provided in dataset and animation is activated",
+                "link": "/docs#vue-ui-sparkstackbar"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.93",
         "date": "2024-04-19",
         "updates": [
