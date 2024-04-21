@@ -378,6 +378,13 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_smiley_light.png', import.meta.url).href,
     },
     {
+        route: '/docs#vue-ui-accordion',
+        icon: 'accordion',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Accordion',
+    },
+    {
         route: '/docs#vue-ui-screenshot',
         icon: 'screenshot',
         cssClasses: '',
@@ -516,6 +523,7 @@ const sideMenuItems = ref([
     {
         title: translations.value.sideMenu.utilities[store.lang],
         items: [
+            { route: '/docs#vue-ui-accordion', componentName: 'Accordion', icon: 'accordion' },
             { route: '/docs#vue-ui-screenshot', componentName: 'Screenshot', icon: 'screenshot' },
             { route: '/docs#vue-ui-skeleton', componentName: 'Skeleton', icon: 'skeleton' },
             { route: '/docs#vue-ui-dashboard', componentName: 'Dashboard', icon: 'dashboard' },

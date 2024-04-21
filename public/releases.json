@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.0.96",
+        "date": "2024-04-20",
+        "updates": [
+            {
+                "component": "VueUiAccordion",
+                "description": "Added new component",
+                "link": "/docs#vue-ui-accordion"
+            }
+        ]
+    },
+    {
         "version": "v 2.0.95",
         "date": "2024-04-21",
         "updates": [

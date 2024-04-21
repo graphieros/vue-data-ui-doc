@@ -53,6 +53,7 @@ import Sprinter from "../components/Sprinter.vue";
 import Wheeler from "../components/Wheeler.vue";
 import DocVueUiTreemap from "../components/docs/DocVueUiTreemap.vue";
 import DocVueUiTableHeatmap from "../components/docs/DocVueUiTableHeatmap.vue";
+import DocVueUiAccordion from "../components/docs/DocVueUiAccordion.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -502,6 +503,15 @@ const menuItems = computed(() => [
         hasTableCss: false,
     },
     {
+        name: "Accordion",
+        icon: "accordion",
+        tooltip: translations.value.docs.tooltips.accordion[store.lang],
+        link: "/docs#vue-ui-accordion",
+        type: "tool",
+        hasSlot: false,
+        hasTableCss: false,
+    },
+    {
         name: "Screenshot",
         icon: "screenshot",
         tooltip: translations.value.docs.tooltips.screenshot[store.lang],
@@ -676,6 +686,7 @@ onMounted(playShowcase)
             <DocVueUiKpi v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-kpi'"/>
             <DocVueUiTreemap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-treemap'" />
             <DocVueUiTableHeatmap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table-heatmap'" />
+            <DocVueUiAccordion v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-accordion'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

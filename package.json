@@ -13,7 +13,7 @@
     "cypress": "^13.4.0",
     "pinia": "^2.1.6",
     "vue": "^3.3.4",
-    "vue-data-ui": "2.0.95",
+    "vue-data-ui": "2.0.96",
     "vue-router": "^4.0.13",
     "vue-tabler-icons": "^2.21.0"
   },

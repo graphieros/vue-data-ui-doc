@@ -832,6 +832,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        accordion: {
+                            en: "A highly customizable accordion component",
+                            fr: "Un composant accordéon hautement personnalisable",
+                            pt: "Um componente de acordeão altamente personalizável",
+                            de: "Eine hochgradig anpassbare Akkordeonkomponente",
+                            zh: "高度可定制的手风琴组件",
+                            jp: "高度にカスタマイズ可能なアコーディオン コンポーネント",
+                            es: "Un componente de acordeón altamente personalizable",
+                            ko: "고도로 사용자 정의 가능한 아코디언 구성 요소"
+                        },
                         tableHeatmap: {
                             en: "A responsive table with heatmap features",
                             fr: "Un tableau responsive avec des fonctionnalités de carte thermique",
