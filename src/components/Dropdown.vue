@@ -1,5 +1,7 @@
 <script setup>
+import { computed} from "vue"
 import SideMenuItem from './SideMenuItem.vue';
+import { useMainStore } from '../stores';
 
 defineProps({
     items: {
@@ -15,6 +17,7 @@ defineProps({
 })
 
 const emit = defineEmits(['close'])
+const store = useMainStore();
 
 function scrollToTop() {
     window.scrollTo({ top: 0});
@@ -24,28 +27,54 @@ function close(){
     emit('close')
 }
 
+const isDarkMode = computed(() => {
+    return store.isDarkMode;
+});
+
+const config = computed(() => {
+    return {
+        head: {
+            useArrowSlot: true,
+            backgroundColor: isDarkMode.value ? '#1A1A1A' : 'rgb(229 231 235)',
+            color: "#2D353C",
+            iconColor: "#5f8bee",
+            padding: "12px 6px"
+        },
+        body: {
+            backgroundColor: isDarkMode.value ? '#1A1A1A' : 'rgb(229 231 235)',
+            color: "#2D353C"
+        }
+    }
+})
+
 </script>
 
 <template>
-    <details class="my-2 my-dropdown peer mb-4">
-        <summary class="cursor-pointer px-2 py-2 hover:bg-[#5f8bee30] rounded-t-md mySummary relative select-none">
-            <span class="font-satoshi-bold text-black dark:text-gray-300">
-                {{ title }}
-            </span>
-            <div class="absolute top-1/2 right-4 -translate-y-1/2 text-xs rounded-full bg-[#5f8bee80] w-[24px] h-[24px] flex place-items-center justify-center">{{ items.length }}</div>
-            <div class="summary-marker bg-app-blue"></div>
-        </summary>
-        <div class="dark:bg-[#1F1F1F] bg-[#EEEEEE] py-2 rounded-b-md shadow">
-            <SideMenuItem 
-                v-for="item in items"
-                :itsRoute="item.route"
-                :componentName="item.componentName"
-                :icon="item.icon"
-                @close="close"
-                @scrollToTop="scrollToTop"
-            />
-        </div>
-    </details>
+    <div class="mb-2">
+        <VueDataUi component="VueUiAccordion" :config="config">
+            <template #arrow>
+                <VueUiIcon name="arrowRight" :size="12" stroke="#5f8bee"/>
+            </template>
+            <template #title>
+                <div class="relative w-full">
+                    {{ title }}
+                    <div class="absolute top-1/2 right-4 -translate-y-1/2 text-xs rounded-full bg-[#5f8bee80] w-[24px] h-[24px] flex place-items-center justify-center">{{ items.length }}</div>
+                </div>
+            </template>
+            <template #content>
+                <div class="dark:bg-[#1F1F1F] bg-[#EEEEEE] py-2 rounded-b-md shadow">
+                <SideMenuItem 
+                    v-for="item in items"
+                    :itsRoute="item.route"
+                    :componentName="item.componentName"
+                    :icon="item.icon"
+                    @close="close"
+                    @scrollToTop="scrollToTop"
+                />
+            </div>
+            </template>
+        </VueDataUi>
+    </div>
 </template>
 
 <style scoped>

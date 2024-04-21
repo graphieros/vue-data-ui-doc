@@ -61,6 +61,7 @@ const translations = computed(() => {
 })
 
 const isCopy = computed(() => store.isCopy);
+const isDarkMode = computed(() => store.isDarkMode);
 
 const router = useRouter();
 const isOpen = ref(window.innerWidth > 768);
@@ -737,13 +738,31 @@ onMounted(playShowcase)
                         const {{ configSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_config = getVueDataUiConfig("{{ configSelect }}");
                     </code>
                     <select class="mb-4 h-8 px-2" v-model="configSelect"><option v-for="opt in configKeys">{{ opt }}</option> </select>
-                    <details class="text-center select-none cursor-pointer">
-                        <summary>{{ translations.viewSelectedConfig[store.lang] }}</summary>
-                    <div class="text-xs text-left mt-6 cursor-pointer" @click="copyToClipboard(selectedConfig)">
-                        <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
-                        {{ selectedConfig }}
-                    </div>
-                    </details>
+
+                    <VueDataUi component="VueUiAccordion" :config="{
+                        head: {
+                            useArrowSlot: true,
+                            backgroundColor: 'transparent'
+                        },
+                        body: {
+                            backgroundColor: 'transparent',
+                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                        }
+                    }">
+                        <template #arrow="{ iconColor }">
+                            <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                        </template>
+                        <template #title>
+                            {{ translations.viewSelectedConfig[store.lang] }}
+                        </template>
+                        <template #content>
+                            <div class="text-xs text-left mt-6 cursor-pointer" @click="copyToClipboard(selectedConfig)">
+                                <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
+                                {{ selectedConfig }}
+                            </div>
+                        </template>
+                    </VueDataUi>
+
                 </div>
 
                 <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col md:flex-row gap-4">

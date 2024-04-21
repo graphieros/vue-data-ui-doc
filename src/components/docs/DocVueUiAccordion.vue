@@ -103,7 +103,7 @@ const skeletonConfig = computed(() => {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.accordion[store.lang] }}
         </p>
-        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`">
+        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[600px]'}`">
             <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
                 <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
                 <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
@@ -124,7 +124,7 @@ const skeletonConfig = computed(() => {
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_accordion)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
             <GitHubLink link="vue-ui-accordion"/>
         </div>
-        <Box :activeTab="1">
+        <Box :activeTab="1" showSlots>
             <template #tab0>
                 {{ translations.docs.comments.noDataset[store.lang] }}
             </template>
@@ -153,6 +153,31 @@ const <span class="text-black dark:text-app-blue">config: VueUiAccordionConfig</
 }
 </code>
 </pre>
+            </template>
+            <template #tab3>
+                <ul class="mb-6">
+                    <li>#arrow</li>
+                    <li>#title</li>
+                    <li>#content</li>
+                </ul>
+                <code class="dark:text-gray-400">
+                    &lt;VueUiAccordion<br>
+                    &nbsp;&nbsp;:config="config"<br>
+                    &gt;<br>
+
+                    &nbsp;&nbsp;&lt;template #arrow="{ backgroundColor, color, iconColor }"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiIcon name="arrowRight" :size="16" :stroke="iconColor" /&gt;<br>
+                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
+
+                    &nbsp;&nbsp;&lt;template #title="{ color }"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div :style="color: color;"&gt;My title&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
+                    
+                    &nbsp;&nbsp;&lt;template #content="{ backgroundColor, color }"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div :style="color: color;"&gt;My content and components&lt;/div&gt;<br>
+                    &nbsp;&nbsp;&lt;/template&gt;<br>
+                    &lt;/VueUiAccordion&gt;
+                </code>
             </template>
         </Box>
     </div>
