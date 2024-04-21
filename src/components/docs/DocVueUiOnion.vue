@@ -386,7 +386,7 @@ function fixChart() {
             name: string;
             percentage: number; <span class="text-gray-600 dark:text-app-green">// 0 - 100</span>
             value: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.onion.optionalDisplay[store.lang] }}</span>
-            color: string; <span class="text-gray-600 dark:text-app-orange">// HEX, RGB, HSL</span>
+            color: string; 
             prefix: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.onion.prefix[store.lang] }}</span>
             suffix: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.onion.suffix[store.lang] }}</span>
         }

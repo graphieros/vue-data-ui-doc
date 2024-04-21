@@ -402,7 +402,7 @@ function fixChart() {
         categories: [
             {
                 name: string;
-                color: string; <span class="text-gray-600 dark:text-app-orange">// HEX, RGB, HSL</span>
+                color: string;
             },
             {...}
         ],
