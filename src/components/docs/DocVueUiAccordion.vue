@@ -23,6 +23,8 @@ const isDarkMode = computed(() => {
 })
 
 const config = ref({
+    open: false,
+    maxHeight: 2000,
   head: {
     useArrowSlot: false,
     backgroundColor: "#e1e5e8",
@@ -37,6 +39,8 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    open: false,
+    maxHeight: 2000,
   head: {
     useArrowSlot: false,
     backgroundColor: "#2A2A2A",
@@ -139,6 +143,8 @@ const skeletonConfig = computed(() => {
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiAccordionConfig</span> = {
+    open: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.open" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.open" @change="forceChartUpdate()">, (default: false) 
+    maxHeight: <input v-if="isDarkMode" type="number" min="800" max="5000" v-model="mutableConfigDarkMode.maxHeight"><input v-else type="number" min="800" max="5000" v-model="mutableConfig.maxHeight">, (default: 2000)
     head: {
         useArrowSlot: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.head.useArrowSlot" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.head.useArrowSlot" @change="forceChartUpdate()">, (default: true) 
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.head.backgroundColor"><input v-else type="color" v-model="mutableConfig.head.backgroundColor">, (default: "#FFFFFF")
@@ -165,15 +171,15 @@ const <span class="text-black dark:text-app-blue">config: VueUiAccordionConfig</
                     &nbsp;&nbsp;:config="config"<br>
                     &gt;<br>
 
-                    &nbsp;&nbsp;&lt;template #arrow="{ backgroundColor, color, iconColor }"&gt;<br>
+                    &nbsp;&nbsp;&lt;template #arrow="{ backgroundColor, color, iconColor, isOpen }"&gt;<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiIcon name="arrowRight" :size="16" :stroke="iconColor" /&gt;<br>
                     &nbsp;&nbsp;&lt;/template&gt;<br><br>
 
-                    &nbsp;&nbsp;&lt;template #title="{ color }"&gt;<br>
+                    &nbsp;&nbsp;&lt;template #title="{ color, isOpen }"&gt;<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&lt;div :style="color: color;"&gt;My title&lt;/div&gt;<br>
                     &nbsp;&nbsp;&lt;/template&gt;<br><br>
                     
-                    &nbsp;&nbsp;&lt;template #content="{ backgroundColor, color }"&gt;<br>
+                    &nbsp;&nbsp;&lt;template #content="{ backgroundColor, color, isOpen }"&gt;<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&lt;div :style="color: color;"&gt;My content and components&lt;/div&gt;<br>
                     &nbsp;&nbsp;&lt;/template&gt;<br>
                     &lt;/VueUiAccordion&gt;

@@ -793,20 +793,36 @@ onMounted(playShowcase)
                         </div>
                         <div class="flex flex-col gap-2">
                             {{ translations.tableCss.summary[store.lang] }}
-                            <details>
-                                <summary class="underline select-none cursor-pointer">
-                                    {{ translations.tableCss.cta[store.lang] }}
-                                </summary>
-                                <div class="mt-2">
-                                    <code>
-                                        <ul>
-                                            <li v-for="cssClass in cssTableClasses">
-                                                {{  cssClass }}
-                                            </li>
-                                        </ul>
-                                    </code>
-                                </div>
-                            </details>
+
+                            <VueDataUi component="VueUiAccordion" :config="{
+                                    head: {
+                                        useArrowSlot: true,
+                                        backgroundColor: 'transparent',
+                                        iconColor: '#42d392'
+                                    },
+                                    body: {
+                                        backgroundColor: 'transparent',
+                                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                                    }
+                                }">
+                                    <template #arrow="{ iconColor }">
+                                        <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                                    </template>
+                                    <template #title>
+                                        {{ translations.tableCss.cta[store.lang] }}
+                                    </template>
+                                    <template #content>
+                                        <div class="mt-2">
+                                            <code>
+                                                <ul>
+                                                    <li v-for="cssClass in cssTableClasses">
+                                                        {{  cssClass }}
+                                                    </li>
+                                                </ul>
+                                            </code>
+                                        </div>
+                                    </template>
+                                </VueDataUi>
                         </div>
                     </div>
                 </div>

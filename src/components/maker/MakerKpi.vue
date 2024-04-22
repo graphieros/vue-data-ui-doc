@@ -94,6 +94,20 @@ function forceChartUpdate() {
     step.value += 1;
 }
 
+const accordionConfig = ref(
+    {
+            open: true,
+            head: {
+                backgroundColor: 'transparent',
+                iconColor: '#42d392'
+            },
+            body: {
+                backgroundColor: 'transparent',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+            }
+        }
+)
+
 
 </script>
 
@@ -118,26 +132,38 @@ function forceChartUpdate() {
         </transition>
     </div>
 
-    <details open>
-        <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-        <div class="flex flex-col gap-2">
-            <div  :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`">
-                <table>
-                    <thead>
-                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.value[store.lang] }}</th>
-                    </thead>
-                    <tbody>
-                        <td><input type="number" v-model="datasetItems" @change="saveDatasetToLocalStorage"></td>
-                    </tbody>
-                </table>
+    <VueDataUi
+        component="VueUiAccordion"
+        :config="accordionConfig"
+    >
+        <template #title>
+            {{ makerTranslations.dataset[store.lang] }}
+        </template>
+        <template #content>
+            <div class="flex flex-col gap-2">
+                <div  :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`">
+                    <table>
+                        <thead>
+                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.value[store.lang] }}</th>
+                        </thead>
+                        <tbody>
+                            <td><input type="number" v-model="datasetItems" @change="saveDatasetToLocalStorage"></td>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </details>
+        </template>
+    </VueDataUi>
 
-    <details open class="mt-6" v-if="makerTranslations.labels">
-        <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-
-        <div class="flex justify-end">
+    <VueDataUi
+        component="VueUiAccordion"
+        :config="accordionConfig"
+    >
+        <template #title>
+            {{ makerTranslations.config[store.lang] }}
+        </template>
+        <template #content>
+            <div class="flex justify-end">
             <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
         </div>
 
@@ -158,7 +184,9 @@ function forceChartUpdate() {
                 </div>
             </div>
         </template>
-    </details>
+        </template>
+    </VueDataUi>
+
 
     <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
         <CopyComponent @click="() => copyComponent('componentContent', store)"/>

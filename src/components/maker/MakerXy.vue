@@ -203,6 +203,21 @@ function getLabel(label) {
     return Array.isArray(label) ? label.map(l => xyTranslations.value.labels[l][store.lang]).join(" ") :
     xyTranslations.value.labels[label][store.lang]
 }
+
+const accordionConfig = ref(
+    {
+            open: true,
+            head: {
+                backgroundColor: 'transparent',
+                iconColor: '#42d392'
+            },
+            body: {
+                backgroundColor: 'transparent',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+            }
+        }
+)
+
 </script>
 
 <template>
@@ -226,10 +241,15 @@ function getLabel(label) {
                 </div>
             </transition>
 
-
-            <details open>
-                <summary class="cursor-pointer mb-4">{{ xyTranslations.dataset[store.lang] }}</summary>
-                <div class="flex flex-col gap-2">
+            <VueDataUi
+                component="VueUiAccordion"
+                :config="accordionConfig"
+            >
+                <template #title>
+                    {{ xyTranslations.dataset[store.lang] }}
+                </template>
+                <template #content>
+                    <div class="flex flex-col gap-2">
                     <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
                     <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                         <table>
@@ -286,13 +306,18 @@ function getLabel(label) {
                         <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
                     </Tooltip>
                 </div>
-            </details>
+                </template>
+            </VueDataUi>
 
-
-            <details open class="mt-6" v-if="xyTranslations.labels">
-                <summary class="cursor-pointer">{{ xyTranslations.config[store.lang] }}</summary>
-
-                <div class="flex justify-end">
+            <VueDataUi
+                component="VueUiAccordion"
+                :config="accordionConfig"
+            >
+                <template #title>
+                    {{ xyTranslations.config[store.lang] }}
+                </template>
+                <template #content>
+                    <div class="flex justify-end">
                     <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ xyTranslations.reset[store.lang] }}</button>
                 </div>
 
@@ -313,7 +338,8 @@ function getLabel(label) {
                         </div>
                     </div>
                 </template>
-            </details>
+                </template>
+            </VueDataUi>
 
 
             <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">

@@ -3639,6 +3639,8 @@
         }
     },
     "vue_ui_accordion": {
+        "open": false,
+        "maxHeight": 2000,
         "head": {
             "useArrowSlot": false,
             "backgroundColor": "#FFFFFF",

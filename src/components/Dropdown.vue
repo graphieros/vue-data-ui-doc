@@ -50,15 +50,15 @@ const config = computed(() => {
 </script>
 
 <template>
-    <div class="mb-2">
+    <div>
         <VueDataUi component="VueUiAccordion" :config="config">
             <template #arrow>
                 <VueUiIcon name="arrowRight" :size="12" stroke="#5f8bee"/>
             </template>
-            <template #title>
-                <div class="relative w-full">
+            <template #title="{ isOpen }">
+                <div class="relative w-full py-2 pl-2 rounded" :style="`background: ${isOpen ? '#5f8bee30' : ''}`">
                     {{ title }}
-                    <div class="absolute top-1/2 right-4 -translate-y-1/2 text-xs rounded-full bg-[#5f8bee80] w-[24px] h-[24px] flex place-items-center justify-center">{{ items.length }}</div>
+                    <div class="shadow absolute top-1/2 right-2 -translate-y-1/2 text-xs rounded-full bg-[#5f8bee80] w-[24px] h-[24px] flex place-items-center justify-center">{{ items.length }}</div>
                 </div>
             </template>
             <template #content>

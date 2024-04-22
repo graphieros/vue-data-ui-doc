@@ -35,6 +35,7 @@ const icons = ref([
 ]);
 
 const specialIcons = ref([
+    "accordion",
     "annotator",
     "arrowBottom",
     "arrowLeft",
