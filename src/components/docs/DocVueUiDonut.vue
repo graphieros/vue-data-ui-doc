@@ -413,7 +413,7 @@ const slotsConfig = computed(() => {
 const sparkGaugeConfig = ref({
     style: {
         fontFamily: "inherit",
-        background: "#F3F4F6",
+        background: "transparent",
         height: 84,
         basePosition: 72,
         animation: {
@@ -479,7 +479,7 @@ const sparkGaugeDatasets = ref([
 const sparkGaugeConfigDarkMode = ref({
     style: {
         fontFamily: "inherit",
-        background: "#1A1A1A",
+        background: "transparent",
         height: 84,
         basePosition: 72,
         animation: {
