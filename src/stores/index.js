@@ -211,6 +211,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    donutDataLabels: {
+                        en: "Custom datalabels can be obtained using the #dataLabel scoped slot. You can place anything you want inside this slot (icon, image, another chart...).",
+                        fr: "Des étiquettes de données personnalisées peuvent être obtenues à l'aide du slot #dataLabel. Vous pouvez placer tout ce que vous voulez à l'intérieur de cet emplacement (icône, image, autre graphique...).",
+                        pt: "Datalabels personalizados podem ser obtidos usando o slot com escopo #dataLabel. Você pode colocar o que quiser dentro deste slot (ícone, imagem, outro gráfico...).",
+                        de: "Benutzerdefinierte Datenbeschriftungen können über den Bereichsslot #dataLabel abgerufen werden. Sie können in diesem Slot alles platzieren, was Sie möchten (Symbol, Bild, ein anderes Diagramm ...).",
+                        zh: "可以使用 #dataLabel 范围槽获取自定义数据标签。您可以在此槽中放置任何您想要的内容（图标、图像、另一个图表...）。",
+                        jp: "カスタム データラベルは、#dataLabel スコープ スロットを使用して取得できます。このスロット内には何でも配置できます (アイコン、画像、別のグラフなど)。",
+                        es: "Se pueden obtener etiquetas de datos personalizadas utilizando la ranura con alcance #dataLabel. Puedes colocar lo que quieras dentro de esta ranura (icono, imagen, otro gráfico...).",
+                        ko: "#dataLabel 범위 슬롯을 사용하여 사용자 정의 데이터 라벨을 얻을 수 있습니다. 이 슬롯에는 원하는 것은 무엇이든 넣을 수 있습니다(아이콘, 이미지, 다른 차트...)."
+                    },
                     rect: {
                         en: "This component contains a #rect slot to customize the treemap's cells contents. Be sure to set the config option style.chart.layout.labels.showDefaultLabels to 'false'.",
                         fr: "Ce composant contient un emplacement #rect pour personnaliser le contenu des cellules du treemap. Assurez-vous de définir l'option de configuration style.chart.layout.labels.showDefaultLabels sur « false ».",

@@ -36,7 +36,7 @@ const dataset = ref([
         values: [200]
     },
     {
-        name: "Serie 1",
+        name: "Serie 3",
         color: "#ff6400",
         values: [300, 1]
     },
@@ -57,6 +57,7 @@ const darkModeConfig = ref({
                 labels: {
                     dataLabels: {
                         show: true,
+                        useLabelSlots: false,
                         hideUnderValue: 3,
                         prefix: "",
                         suffix: ""
@@ -202,6 +203,7 @@ const config = ref({
                 labels: {
                     dataLabels: {
                         show: true,
+                        useLabelSlots: false,
                         hideUnderValue: 3,
                         prefix: "",
                         suffix: ""
@@ -363,7 +365,170 @@ const isFixed = ref(false);
 
 function fixChart() {
     isFixed.value = !isFixed.value;
-} 
+}
+
+const slotsConfig = computed(() => {
+    return {
+        darkMode: {
+            ...mutableConfigDarkMode.value,
+            style: {
+                ...mutableConfigDarkMode.value.style,
+                chart: {
+                    ...mutableConfigDarkMode.value.style.chart,
+                    layout: {
+                        ...mutableConfigDarkMode.value.style.chart.layout,
+                        labels: {
+                            ...mutableConfigDarkMode.value.style.chart.layout.labels,
+                            dataLabels: {
+                                ...mutableConfigDarkMode.value.style.chart.layout.labels.dataLabels,
+                                useLabelSlots: true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        lightMode: {
+            ...mutableConfig.value,
+            style: {
+                ...mutableConfig.value.style,
+                chart: {
+                    ...mutableConfig.value.style.chart,
+                    layout: {
+                        ...mutableConfig.value.style.chart.layout,
+                        labels: {
+                            ...mutableConfig.value.style.chart.layout.labels,
+                            dataLabels: {
+                                ...mutableConfig.value.style.chart.layout.labels.dataLabels,
+                                useLabelSlots: true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+});
+
+const sparkGaugeConfig = ref({
+    style: {
+        fontFamily: "inherit",
+        background: "#F3F4F6",
+        height: 84,
+        basePosition: 72,
+        animation: {
+            show: true,
+            speedMs: 150
+        },
+        title: {
+            show: true,
+            fontSize: 12,
+            position: "bottom",
+            textAlign: "center",
+            bold: false,
+            color: "#1A1A1A"
+        },
+        dataLabel: {
+            fontSize: 24,
+            autoColor: true,
+            color: "#1A1A1A",
+            offsetY: 0,
+            bold: true,
+            rounding: 0,
+            prefix: "",
+            suffix: ""
+        },
+        colors: {
+            min: "#FF0000",
+            max: "#00FF00",
+            showGradient: true,
+        },
+        track: {
+            autoColor: true,
+            color: "#5f8bee",
+            strokeLinecap: "round"
+        },
+        gutter: {
+            color: "#E1E5E8",
+            strokeLinecap: "round"
+        }
+    }
+})
+
+const sparkGaugeDatasets = ref([
+    {
+        value: 7,
+        min: 0,
+        max: 10,
+        title: 'Serie 1 satisfaction'
+    },
+    {
+        value: 6.5,
+        min: 0,
+        max: 10,
+        title: 'Serie 2 satisfaction'
+    },
+    {
+        value: 9,
+        min: 0,
+        max: 10,
+        title: 'Serie 3 satisfaction'
+    },
+])
+
+const sparkGaugeConfigDarkMode = ref({
+    style: {
+        fontFamily: "inherit",
+        background: "#1A1A1A",
+        height: 84,
+        basePosition: 72,
+        animation: {
+            show: true,
+            speedMs: 150
+        },
+        title: {
+            show: true,
+            fontSize: 12,
+            position: "bottom",
+            textAlign: "center",
+            bold: false,
+            color: "#6A6A6A"
+        },
+        dataLabel: {
+            fontSize: 20,
+            autoColor: true,
+            color: "#CCCCCC",
+            offsetY: 0,
+            bold: true,
+            rounding: 0,
+            prefix: "",
+            suffix: ""
+        },
+        colors: {
+            min: "#FF0000",
+            max: "#00FF00",
+            showGradient: true,
+        },
+        track: {
+            autoColor: true,
+            color: "#5f8bee",
+            strokeLinecap: "round"
+        },
+        gutter: {
+            color: "#3A3A3A",
+            strokeLinecap: "round"
+        }
+    }
+})
+
+const slotOptions = ref([
+    'justLabels',
+    'chart',
+    'icon'
+])
+
+const slotOption = ref(slotOptions.value[0])
+
 </script>
 
 <template>
@@ -434,7 +599,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
         values: [200]
     },
     {
-        name: "Series 1",
+        name: "Series 3",
         color: <input type="color" v-model="mutableDataset[2].color">,
         values: [300, 1]
     },
@@ -469,6 +634,7 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
                 labels: {
                     dataLabels: {
                         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.dataLabels.show" @change="forceChartUpdate()">, (default: true)
+                        useLabelSlots: false, <span class="text-gray-600 dark:text-app-blue">// Check out the slots tab for information on how to use custom data labels</span>
                         hideUnderValue: <input v-if="isDarkMode" type="number" min="0" max="10" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.hideUnderValue"><input v-else type="number" min="0" max="10" v-model="mutableConfig.style.chart.layout.labels.dataLabels.hideUnderValue">, (default: 3) <span class="text-gray-600 dark:text-app-blue">// {{ translations.docs.comments.donut.hideUnderValue[store.lang]}} </span>
                         prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.prefix">, (default: "")
                         suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.layout.labels.dataLabels.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.layout.labels.dataLabels.suffix">, (default: "")
@@ -708,9 +874,120 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
             </template>
 
             <template #tab3>
-                <div class="text-gray-500">
-                    {{ translations.slots.presentation[store.lang]  }}
-                </div>
+<div class="text-gray-500">
+    {{ translations.slots.donutDataLabels[store.lang]  }}
+Set <code class="text-app-orange">config.style.chart.layout.labels.dataLabels.useLabelSlots</code> to true. 
+</div>
+
+<pre>
+<code>
+    &lt;VueUiDonut
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #dataLabel="{ datapoint, isBlur, isVisible, isSafari, textAlign, flexAlign, percentage }"&gt;
+            &lt;div :style="`background:${datapoint.color}`"&gt;
+                <span v-pre>{{ datapoint.name }} : {{ percentage }}</span>
+            &lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiDonut&gt;
+</code>
+</pre>
+
+
+<fieldSet class="flex flex-row gap-2 mb-6 place-items-center justify-center">        
+    <label :for="slotOptions[0]">Simple label</label>
+    <input type="radio" v-model="slotOption" :value="slotOptions[0]" class="accent-app-orange">
+    <label :for="slotOptions[1]">Chart</label>
+    <input type="radio" v-model="slotOption" :value="slotOptions[1]" class="accent-app-orange">
+</fieldSet>
+
+
+<div class="mx-auto max-w-[600px] mb-6">
+    <VueUiDonut :dataset="mutableDataset" :config="isDarkMode ? slotsConfig.darkMode : slotsConfig.lightMode" :key="key">
+        <template #dataLabel="{ datapoint, percentage }">
+            <div v-if="slotOption === 'justLabels'" :style="`background:${datapoint.color}33;`" class="rounded text-xs py-2">
+                {{ datapoint.name }} : {{ percentage }}
+            </div>
+            <div v-if="slotOption === 'chart'" class="w-[100px]">
+                <VueDataUi v-if="datapoint.name === 'Serie 1'" component="VueUiSparkgauge" :dataset="sparkGaugeDatasets[0]" :config="isDarkMode ? {
+                    ...sparkGaugeConfigDarkMode,
+                    style: {
+                        ...sparkGaugeConfigDarkMode.style,
+                        colors: {
+                            showGradient: true,
+                            min: `${datapoint.color}33`,
+                            max: datapoint.color
+                        }
+                    }
+                } 
+                    : {
+                    ...sparkGaugeConfig,
+                    style: {
+                        ...sparkGaugeConfig.style,
+                        colors: {
+                            showGradient: true,
+                            min: `${datapoint.color}33`,
+                            max: datapoint.color
+                        }
+                    }
+                }"
+                />
+                <VueDataUi v-if="datapoint.name === 'Serie 2'" component="VueUiSparkgauge" :dataset="sparkGaugeDatasets[1]" :config="isDarkMode ? {
+                    ...sparkGaugeConfigDarkMode,
+                    style: {
+                        ...sparkGaugeConfigDarkMode.style,
+                        colors: {
+                            showGradient: true,
+                            min: `${datapoint.color}33`,
+                            max: datapoint.color
+                        }
+                    }
+                } 
+                    : {
+                    ...sparkGaugeConfig,
+                    style: {
+                        ...sparkGaugeConfig.style,
+                        colors: {
+                            showGradient: true,
+                            min: `${datapoint.color}33`,
+                            max: datapoint.color
+                        }
+                    }
+                }"/>
+                <VueDataUi v-if="datapoint.name === 'Serie 3'" component="VueUiSparkgauge" :dataset="sparkGaugeDatasets[2]" :config="isDarkMode ? {
+                    ...sparkGaugeConfigDarkMode,
+                    style: {
+                        ...sparkGaugeConfigDarkMode.style,
+                        colors: {
+                            showGradient: true,
+                            min: `${datapoint.color}33`,
+                            max: datapoint.color
+                        }
+                    }
+                } 
+                    : {
+                    ...sparkGaugeConfig,
+                    style: {
+                        ...sparkGaugeConfig.style,
+                        colors: {
+                            showGradient: true,
+                            min: `${datapoint.color}33`,
+                            max: datapoint.color
+                        }
+                    }
+                }"/>
+            </div>
+        </template>
+    </VueUiDonut>
+</div>
+
+
+<hr class="mb-6 border-t-gray-500">
+
+<div class="text-gray-500">
+    {{ translations.slots.presentation[store.lang]  }}
+</div>
 <pre>
 <code>
     &lt;VueUiDonut
@@ -722,7 +999,10 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
         &lt;/template&gt;
     &lt;/VueUiDonut&gt;
 </code>
-</pre>                    
+</pre>
+
+<hr class="mb-6 border-t-gray-500">
+
 <div class="text-gray-500">
                     {{ translations.slots.legendDetail[store.lang]  }}
                 </div>
@@ -738,6 +1018,8 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
     &lt;/VueUiDonut&gt;
 </code>
 </pre>
+
+<hr class="mb-6 border-t-gray-500">
 
 <div class="text-gray-500">
     {{ translations.slots.tooltip[store.lang]  }}
