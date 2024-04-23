@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.1",
+        "date": "2024-04-23",
+        "updates": [
+            {
+                "component": "VueUi3dBar",
+                "description": "Fixed Safari css problems affecting legend labels",
+                "link": "/docs#vue-ui-3d-bar"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.0",
         "date": "2024-04-23",
         "updates": [
