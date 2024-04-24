@@ -878,7 +878,6 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
     {{ translations.slots.donutDataLabels[store.lang]  }}
 Set <code class="text-app-orange">config.style.chart.layout.labels.dataLabels.useLabelSlots</code> to true. 
 </div>
-
 <pre>
 <code>
     &lt;VueUiDonut
