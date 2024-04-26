@@ -5,6 +5,7 @@ import SvgSlot from "../components/customization/SvgSlot.vue";
 import LegendSlot from "../components/customization/LegendSlot.vue";
 import TooltipSlot from "../components/customization/TooltipSlot.vue";
 import OtherSlots from "../components/customization/OtherSlots.vue";
+import ColorPalette from "../components/customization/ColorPalette.vue";
 
 const store = useMainStore();
 
@@ -18,6 +19,7 @@ const menu = ref([
     { name: 'legendSlot', label: '#legend slot'},
     { name: 'tooltipSlot', label: 'tooltip slots'},
     { name: 'otherSlots', label: 'other slots'},
+    { name: 'colorPalette', label: 'palette'}
 ]);
 
 </script>
@@ -36,4 +38,5 @@ const menu = ref([
     <LegendSlot v-if="selectedMenu === 'legendSlot'" />
     <TooltipSlot v-if="selectedMenu === 'tooltipSlot'" />
     <OtherSlots v-if="selectedMenu === 'otherSlots'" />
+    <ColorPalette v-if="selectedMenu === 'colorPalette'" />
 </template>

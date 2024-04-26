@@ -571,6 +571,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 customization: {
+                    palette: {
+                        en: 'The default color palette contains the following 40 colors, which are accessible through the getPalette method you can import from vue-data-ui:',
+                        fr: 'La palette de couleurs par défaut contient les 40 couleurs suivantes, accessibles via la méthode getPalette que vous pouvez importer depuis vue-data-ui :',
+                        pt: 'A paleta de cores padrão contém as 40 cores a seguir, que podem ser acessadas por meio do método getPalette que você pode importar de vue-data-ui:',
+                        de: "Die Standardfarbpalette enthält die folgenden 40 Farben, auf die über die getPalette-Methode zugegriffen werden kann, die Sie aus vue-data-ui importieren können:",
+                        zh: '默认调色板包含以下 40 种颜色，可以通过从 vue-data-ui 导入的 getPalette 方法访问这些颜色：',
+                        jp: "デフォルトのカラー パレットには次の 40 色が含まれており、vue-data-ui からインポートできる getPalette メソッドを通じてアクセスできます。",
+                        es: "La paleta de colores predeterminada contiene los siguientes 40 colores, a los que se puede acceder mediante el método getPalette que puede importar desde vue-data-ui:",
+                        ko: "기본 색상 팔레트에는 vue-data-ui에서 가져올 수 있는 getPalette 메소드를 통해 액세스할 수 있는 다음 40가지 색상이 포함되어 있습니다."
+                    },
                     otherSlots: {
                         waffle: {
                             en: "Cell contents can be customized by setting the config.useCustomCells to 'true', and using the #cell slot.",
