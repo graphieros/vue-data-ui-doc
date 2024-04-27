@@ -894,7 +894,7 @@ Set <code class="text-app-orange">config.style.chart.layout.labels.dataLabels.us
 </pre>
 
 
-<fieldSet class="flex flex-row gap-2 mb-6 place-items-center justify-center">        
+<fieldset class="flex flex-row gap-2 mb-6 place-items-center justify-center">        
     <label :for="slotOptions[0]">Simple label</label>
     <input type="radio" v-model="slotOption" :value="slotOptions[0]" class="accent-app-orange">
     <label :for="slotOptions[1]">Chart</label>

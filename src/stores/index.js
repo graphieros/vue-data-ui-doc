@@ -852,6 +852,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        quickChart: {
+                            en: 'A flexible component that will provide the most adapted chart type to your dataset.',
+                            fr: "Un composant flexible qui fournira le type de graphique le plus adapté à votre ensemble de données.",
+                            pt: "Um componente flexível que fornecerá o tipo de gráfico mais adaptado ao seu conjunto de dados.",
+                            de: "Eine flexible Komponente, die den am besten an Ihren Datensatz angepassten Diagrammtyp bereitstellt.",
+                            zh: "一个灵活的组件，将为您的数据集提供最适合的图表类型。",
+                            jp: "データセットに最も適合したグラフ タイプを提供する柔軟なコンポーネント。",
+                            es: "Un componente flexible que proporcionará el tipo de gráfico más adaptado a su conjunto de datos.",
+                            ko: "데이터 세트에 가장 적합한 차트 유형을 제공하는 유연한 구성 요소입니다."
+                        },
                         accordion: {
                             en: "A highly customizable accordion component",
                             fr: "Un composant accordéon hautement personnalisable",
@@ -1600,6 +1610,26 @@ export const useMainStore = defineStore("main", {
                         ko: "예"
                     },                    
                     comments: {
+                        quickChartKeys: {
+                            en: "You can provide a simple array of numbers. Depending on its length, either a line chart or a bar chart will be generated. The threshold between bar and line is manageable in the configuration options. You can also provide an array of objects. Here are the sets of accepted keys for serie names and data:",
+                            fr: "Vous pouvez fournir un tableau simple de nombres. En fonction de sa longueur, un graphique linéaire ou un graphique à barres sera généré. Le seuil entre barre et ligne est gérable dans les options de configuration. Vous pouvez également fournir un tableau d'objets. Voici les ensembles de clés acceptées pour les noms de séries et les données :",
+                            pt: "Você pode fornecer uma matriz simples de números. Dependendo do seu comprimento, será gerado um gráfico de linhas ou de barras. O limite entre a barra e a linha é gerenciável nas opções de configuração. Você também pode fornecer uma variedade de objetos. Aqui estão os conjuntos de chaves aceitas para nomes de séries e dados:",
+                            de: "Sie können ein einfaches Array von Zahlen bereitstellen. Je nach Länge wird entweder ein Liniendiagramm oder ein Balkendiagramm generiert. Der Schwellenwert zwischen Balken und Linie ist in den Konfigurationsoptionen einstellbar. Sie können auch ein Array von Objekten bereitstellen. Hier sind die Sätze akzeptierter Schlüssel für Seriennamen und -daten:",
+                            zh: "您可以提供一个简单的数字数组。根据其长度，将生成折线图或条形图。条形图和线形图之间的阈值可在配置选项中进行管理。您还可以提供对象数组。以下是系列名称和数据的可接受键集：",
+                            jp: "単純な数値の配列を指定できます。長さに応じて、折れ線グラフまたは棒グラフが生成されます。バーとラインの間のしきい値は、設定オプションで管理できます。オブジェクトの配列を指定することもできます。シリーズ名とデータに対して受け入れられるキーのセットは次のとおりです。",
+                            es: "Puede proporcionar una serie simple de números. Dependiendo de su longitud, se generará un gráfico de líneas o de barras. El umbral entre barra y línea es gestionable en las opciones de configuración. También puede proporcionar una variedad de objetos. Estos son los conjuntos de claves aceptadas para nombres de series y datos:",
+                            ko: "간단한 숫자 배열을 제공할 수 있습니다. 길이에 따라 선형 차트 또는 막대 차트가 생성됩니다. 막대와 선 사이의 임계값은 구성 옵션에서 관리할 수 있습니다. 객체 배열을 제공할 수도 있습니다. 시리즈 이름과 데이터에 허용되는 키 세트는 다음과 같습니다."
+                        },
+                        quickChart: {
+                            en: "The shape of the dataset is very flexible. The most adapted chart will be computed from it (either a line, bar or donut chart).",
+                            fr: "La forme de l'ensemble de données est très flexible. Le graphique le plus adapté sera calculé à partir de celui-ci (soit un graphique en courbes, en barres ou en anneau).",
+                            pt: "A forma do conjunto de dados é muito flexível. O gráfico mais adaptado será calculado a partir dele (um gráfico de linhas, barras ou rosca).",
+                            de: "Die Form des Datensatzes ist sehr flexibel. Daraus wird das am besten geeignete Diagramm berechnet (entweder ein Linien-, Balken- oder Donutdiagramm).",
+                            zh: "数据集的形状非常灵活。将根据它计算出最适合的图表（折线图、条形图或圆环图）。",
+                            jp: "データセットの形状は非常に柔軟です。そこから最も適合したグラフが計算されます (折れ線グラフ、棒グラフ、またはドーナツ グラフのいずれか)。",
+                            es: "La forma del conjunto de datos es muy flexible. A partir de él se calculará el gráfico más adaptado (ya sea un gráfico de líneas, de barras o de anillos).",
+                            ko: "데이터 세트의 모양은 매우 유연합니다. 가장 적합한 차트가 이 차트(선형, 막대형 또는 도넛형 차트)에서 계산됩니다."
+                        },
                         scatterWeight: {
                             en: "To create a bubble chart. If not used, datapoints radius will use config.style.layout.plots.radius",
                             fr: "Pour créer un graphique à bulles. S'il n'est pas utilisé, le rayon des points de données utilisera config.style.layout.plots.radius",

@@ -54,6 +54,7 @@ import Wheeler from "../components/Wheeler.vue";
 import DocVueUiTreemap from "../components/docs/DocVueUiTreemap.vue";
 import DocVueUiTableHeatmap from "../components/docs/DocVueUiTableHeatmap.vue";
 import DocVueUiAccordion from "../components/docs/DocVueUiAccordion.vue";
+import DocVueUiQuickChart from "../components/docs/DocVueUiQuickChart.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -418,6 +419,17 @@ const menuItems = computed(() => [
         hasTableCss: false,
     },
     {
+        name: "QuickChart",
+        icon: "vueDataUi",
+        tooltip: translations.value.docs.tooltips.quickChart[store.lang], 
+        link: "/docs#vue-ui-quick-chart",
+        type: "mini",
+        thumb: new URL('../assets/thumb_quick_chart.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_quick_chart_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: false,
+    },
+    {
         name: "RelationCircle",
         icon: "chartRelationCircle",
         tooltip: translations.value.docs.tooltips.relationCircle[store.lang],
@@ -688,6 +700,7 @@ onMounted(playShowcase)
             <DocVueUiTreemap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-treemap'" />
             <DocVueUiTableHeatmap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table-heatmap'" />
             <DocVueUiAccordion v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-accordion'" />
+            <DocVueUiQuickChart v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-quick-chart'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">
