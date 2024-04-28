@@ -426,7 +426,8 @@ const menuItems = computed(() => [
         type: "mini",
         thumb: new URL('../assets/thumb_quick_chart.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_quick_chart_light.png', import.meta.url).href,
-        hasSlot: true,
+        hasSlot: false,
+        hasLegend: true,
         hasTableCss: false,
     },
     {

@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
+import ConfigAttribute from "../ConfigAttribute.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -620,7 +621,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
-    useBlurOnHover: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()">, (default: true) 
+    <ConfigAttribute v-if="isDarkMode" name="useBlurOnHover" type="checkbox" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()" defaultVal="true" />
+    <ConfigAttribute v-else name="useBlurOnHover" type="checkbox" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()" defaultVal="true" />
     useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true) 
     style: {
         fontFamily: "inherit",

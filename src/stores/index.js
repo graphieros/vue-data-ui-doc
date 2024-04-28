@@ -963,13 +963,13 @@ export const useMainStore = defineStore("main", {
                             ko: "클래식 전자 디스플레이로 숫자 표시"
                         },
                         bar3d: {
-                            en: "Visualize a percentage with a 3d bar",
-                            fr: "Visualisez un pourcentage avec une barre 3D",
-                            pt: "Visualize uma porcentagem com uma barra 3D",
-                            de: "Visualisieren Sie einen Prozentsatz mit einem 3D-Balken",
+                            en: "Visualize percentages with a 3d bar",
+                            fr: "Visualisez les pourcentages avec une barre 3D",
+                            pt: "Visualize porcentagens com uma barra 3D",
+                            de: "Visualisieren Sie Prozentsätze mit einem 3D-Balken",
                             zh: "使用 3d 条形图可视化百分比",
                             jp: "パーセンテージを 3D バーで視覚化する",
-                            es: "Visualiza un porcentaje con una barra 3d.",
+                            es: "Visualiza porcentajes con una barra 3d.",
                             ko: "3D 막대로 백분율 시각화"
                         },
                         moodRadar: {
