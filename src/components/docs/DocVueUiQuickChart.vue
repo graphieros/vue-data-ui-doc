@@ -438,7 +438,7 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
 <pre>
 <code>
 &lt;template&gt;
-  &lt;VueUiDonut
+  &lt;VueUiQuickChart
     :dataset="dataset"
     :config="config"
     @selectDatapoint="selectDatapoint"
