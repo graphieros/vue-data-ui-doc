@@ -1487,6 +1487,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "redondeo",
                         ko: "반올림"
                     },
+                    rotation: {
+                        en: "Rotation",
+                        fr: "Rotation",
+                        pt: "Rotação",
+                        de: "Drehung",
+                        zh: "回转",
+                        jp: "回転",
+                        es: "Rotación",
+                        ko: "회전"
+                    },
                     scale: {
                         en: 'Scale',
                         fr: "Echelle",

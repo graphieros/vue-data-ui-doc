@@ -127,6 +127,7 @@ const config = ref({
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
                     fontSize: 6,
                     yOffset: 0,
+                    rotation: 0
                 }
             }
         },
@@ -294,7 +295,8 @@ const darkModeConfig = ref({
                     showOnlyFirstAndLast: false,
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
                     fontSize: 6,
-                    yOffset: 0
+                    yOffset: 0,
+                    rotation: 0
                 }
             }
         },
@@ -737,6 +739,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                         fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.xAxisLabels.fontSize">, (default: 6)
                         values: <span class="text-app-blue">string[]</span>,
                         yOffset: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.yOffset"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.xAxisLabels.yOffset">, (default: 0)
+                        rotation: <input v-if="isDarkMode" type="number" min="-360" max="360" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.rotation"><input v-else type="number" min="-360" max="360" v-model="mutableConfig.chart.grid.labels.xAxisLabels.rotation">, (default: 0)
                     }
                 }
             },

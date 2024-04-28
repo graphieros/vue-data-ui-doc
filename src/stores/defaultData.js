@@ -63,7 +63,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.grid.labels.xAxisLabels.values', def: [], type: 'none', label: 'fontSize' },
                     { key: 'chart.grid.labels.xAxisLabels.fontSize', def: 18, type: 'number', min: 6, max: 30, label: 'fontSizePeriodLabels', category: 'grid' },
                     { key: 'chart.grid.labels.xAxisLabels.showOnlyFirstAndLast', def: false, type: 'checkbox', label: 'showOnlyFirstAndLast', category: 'grid' },
-                    { key: 'chart.grid.labels.xAxisLabels.yOffset', def: 8, type: 'number', label: 'offsetYPeriodLabels', category: 'grid' },
+                    { key: 'chart.grid.labels.xAxisLabels.yOffset', def: 8, type: 'number', min:-100, max: 100, label: 'offsetYPeriodLabels', category: 'grid' },
+                    { key: 'chart.grid.labels.xAxisLabels.rotation', def: 0, type: 'range', min: -360, max: 360, label: 'rotation', category: 'grid'},
 
                     { key: 'chart.labels.fontSize', def: 10, type: 'number', min: 6, max: 30, label: 'fontSize', category: 'labels' },
                     { key: 'chart.labels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },

@@ -148,6 +148,7 @@ const config = ref({
     xyPaddingRight: 12,
     xyPaddingTop: 24,
     xyPeriods: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+    xyPeriodLabelsRotation: 0,
     xyScaleSegments: 10,
     xyShowAxis: true,
     xyShowGrid: true,
@@ -207,6 +208,7 @@ const darkModeConfig = ref({
     xyPaddingRight: 12,
     xyPaddingTop: 24,
     xyPeriods: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+    xyPeriodLabelsRotation: 0,
     xyScaleSegments: 10,
     xyShowAxis: true,
     xyShowGrid: true,
@@ -264,7 +266,7 @@ function fixChart() {
         </div>
         <div class="grid md:grid-cols-2 gap-4">
                 <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                    <VueUiQuickChart component="VueUiQuickChart" :dataset="quickDatasetSimpleLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    <VueUiQuickChart :dataset="quickDatasetSimpleLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
 
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89])
@@ -272,13 +274,13 @@ function fixChart() {
                 
             </div>
             <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                <VueUiQuickChart component="VueUiQuickChart" :dataset="quickDatasetSimpleBar" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <VueUiQuickChart :dataset="quickDatasetSimpleBar" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([1, 2, -3, 5, 8])
                 </code>                        
             </div>
             <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                <VueUiQuickChart component="VueUiQuickChart" :dataset="quickDatasetLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <VueUiQuickChart :dataset="quickDatasetLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([<br>
                     &nbsp;&nbsp;{<br>
@@ -297,7 +299,7 @@ function fixChart() {
                 </code>                        
             </div>
             <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                <VueUiQuickChart component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <VueUiQuickChart :dataset="quickDatasetDonut" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([<br>
                     &nbsp;&nbsp;{<br>
@@ -422,6 +424,7 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     xyPaddingRight: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="48" v-model="mutableConfigDarkMode.xyPaddingRight"><input v-else type="number" class="accent-app-blue" min="0" max="48" v-model="mutableConfig.xyPaddingRight">, (default: 12)
     xyPaddingTop: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="48" v-model="mutableConfigDarkMode.xyPaddingTop"><input v-else type="number" class="accent-app-blue" min="0" max="48" v-model="mutableConfig.xyPaddingTop">, (default: 24)
     xyPeriods: [], (Array&lt;string | number&gt;)
+    xyPeriodLabelsRotation: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="-360" max="360" v-model="mutableConfigDarkMode.xyPeriodLabelsRotation"><input v-else type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.xyPeriodLabelsRotation">, (default: 0)
     xyScaleSegments: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="20" v-model="mutableConfigDarkMode.xyScaleSegments"><input v-else type="number" class="accent-app-blue" min="0" max="20" v-model="mutableConfig.xyScaleSegments">, (default: 10)
     xyShowAxis: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.xyShowAxis" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.xyShowAxis" @change="forceChartUpdate()">, (default: true)
     xyShowGrid: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.xyShowGrid" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.xyShowGrid" @change="forceChartUpdate()">, (default: true)

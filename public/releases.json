@@ -1,5 +1,19 @@
 [
     {
+        "version": "v 2.1.9",
+        "date": "2024-04-28",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added time label rotation config option"
+            },
+            {
+                "component": "VueUiQuickChart",
+                "description": "Added time label rotation config option"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.8",
         "date": "2024-04-28",
         "updates": [
