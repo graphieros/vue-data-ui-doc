@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.1.10",
+        "date": "2024-04-29",
+        "updates": [
+            {
+                "component": "VueUiQuickChart",
+                "description": "Fixed issues in fullscreen mode (tooltip & legend not visible)"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.9",
         "date": "2024-04-28",
         "updates": [
