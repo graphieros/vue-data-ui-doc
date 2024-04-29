@@ -313,6 +313,16 @@ export const useMainStore = defineStore("main", {
                         es: "No se han encontrado resultados" ,
                         ko: "검색 결과가 없습니다"
                     },
+                    viewComponentCode: {
+                        en: "View component code",
+                        fr: "Voir le code du composant",
+                        pt: "Ver código do componente",
+                        de: "Komponentencode anzeigen",
+                        zh: "查看组件代码",
+                        jp: "コンポーネントコードを表示する",
+                        es: "Ver código de componente",
+                        ko: "구성요소 코드 보기"
+                    },
                     viewComponent: {
                         en: "View component",
                         fr: "Afficher le composant",

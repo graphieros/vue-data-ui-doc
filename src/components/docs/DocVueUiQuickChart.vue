@@ -270,14 +270,93 @@ function fixChart() {
 
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89])
-                </code>                        
+                </code>
+
+                <VueDataUi component="VueUiAccordion" :config="{
+                    head: {
+                        useArrowSlot: true,
+                        backgroundColor: 'transparent'
+                    },
+                    body: {
+                        backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                    }
+                }">
+                    <template #arrow="{ iconColor }">
+                        <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
+                    </template>
+                    <template #title>
+                        {{ translations.search.viewComponentCode[store.lang] }}
+                    </template>
+                    <template #content>
+                        <div style="background:transparent" class="p-2">
+                            <code class="text-[10px]">
+                                &lt;script setup&gt;<br>
+                                &nbsp;&nbsp;import { ref } from "vue";<br>
+                                &nbsp;&nbsp;import { VueUiQuickChart } from "vue-data-ui";<br>
+                                &nbsp;&nbsp;import "vue-data-ui/style.css";<br><br>
+                                &nbsp;&nbsp;const dataset = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89]);<br><br>
+                                &nbsp;&nbsp;const config = ref({{ isDarkMode ? mutableConfigDarkMode : mutableConfig }});<br>
+                                &lt;/script&gt;<br><br>
+                                
+                                &lt;template&gt;<br>
+                                &nbsp;&nbsp;&lt;div style="width: 500px"&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiQuickChart<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
+                                &nbsp;&nbsp;&lt/div&gt;<br>
+                                &lt;/template&gt;
+                            </code>
+                        </div>
+                    </template>
+                </VueDataUi>                     
                 
             </div>
             <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
                 <VueUiQuickChart :dataset="quickDatasetSimpleBar" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([1, 2, -3, 5, 8])
-                </code>                        
+                </code>
+                <VueDataUi component="VueUiAccordion" :config="{
+                    head: {
+                        useArrowSlot: true,
+                        backgroundColor: 'transparent'
+                    },
+                    body: {
+                        backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                    }
+                }">
+                    <template #arrow="{ iconColor }">
+                        <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
+                    </template>
+                    <template #title>
+                        {{ translations.search.viewComponentCode[store.lang] }}
+                    </template>
+                    <template #content>
+                        <div style="background:transparent" class="p-2">
+                            <code class="text-[10px]">
+                                &lt;script setup&gt;<br>
+                                &nbsp;&nbsp;import { ref } from "vue";<br>
+                                &nbsp;&nbsp;import { VueUiQuickChart } from "vue-data-ui";<br>
+                                &nbsp;&nbsp;import "vue-data-ui/style.css";<br><br>
+                                &nbsp;&nbsp;const dataset = ref([1, 2, -3, 5, 8]);<br><br>
+                                &nbsp;&nbsp;const config = ref({{ isDarkMode ? mutableConfigDarkMode : mutableConfig }});<br>
+                                &lt;/script&gt;<br><br>
+                                
+                                &lt;template&gt;<br>
+                                &nbsp;&nbsp;&lt;div style="width: 500px"&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiQuickChart<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
+                                &nbsp;&nbsp;&lt/div&gt;<br>
+                                &lt;/template&gt;
+                            </code>
+                        </div>
+                    </template>
+                </VueDataUi>                          
             </div>
             <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
                 <VueUiQuickChart :dataset="quickDatasetLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
@@ -296,7 +375,59 @@ function fixChart() {
                     &nbsp;&nbsp;&nbsp;&nbsp;values: [1, 2, 3, 5, 8, 13, 21, 13, 8]<br>
                     &nbsp;&nbsp;},<br>
                     ])
-                </code>                        
+                </code>
+                <VueDataUi component="VueUiAccordion" :config="{
+                    head: {
+                        useArrowSlot: true,
+                        backgroundColor: 'transparent'
+                    },
+                    body: {
+                        backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                    }
+                }">
+                    <template #arrow="{ iconColor }">
+                        <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
+                    </template>
+                    <template #title>
+                        {{ translations.search.viewComponentCode[store.lang] }}
+                    </template>
+                    <template #content>
+                        <div style="background:transparent" class="p-2">
+                            <code class="text-[10px]">
+                                &lt;script setup&gt;<br>
+                                &nbsp;&nbsp;import { ref } from "vue";<br>
+                                &nbsp;&nbsp;import { VueUiQuickChart } from "vue-data-ui";<br>
+                                &nbsp;&nbsp;import "vue-data-ui/style.css";<br><br>
+                                &nbsp;&nbsp;const dataset = ref([<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie1',<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values: [1, 2, 3, 2, 3, 4, 3, 4, 5]<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie2',<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values: [5, 6, 7, 6, 7, 8, 7, 8, 9]<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie3',<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values: [1, 2, 3, 5, 8, 13, 21, 13, 8]<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                                &nbsp;&nbsp;]);<br><br>
+                                &nbsp;&nbsp;const config = ref({{ isDarkMode ? mutableConfigDarkMode : mutableConfig }});<br>
+                                &lt;/script&gt;<br><br>
+                                
+                                &lt;template&gt;<br>
+                                &nbsp;&nbsp;&lt;div style="width: 500px"&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiQuickChart<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
+                                &nbsp;&nbsp;&lt/div&gt;<br>
+                                &lt;/template&gt;
+                            </code>
+                        </div>
+                    </template>
+                </VueDataUi>                  
             </div>
             <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
                 <VueUiQuickChart :dataset="quickDatasetDonut" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
@@ -323,7 +454,67 @@ function fixChart() {
                     &nbsp;&nbsp;&nbsp;&nbsp;value: 1<br>
                     &nbsp;&nbsp;},<br>
                     ])
-                </code>                        
+                </code>
+                <VueDataUi component="VueUiAccordion" :config="{
+                    head: {
+                        useArrowSlot: true,
+                        backgroundColor: 'transparent'
+                    },
+                    body: {
+                        backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                    }
+                }">
+                    <template #arrow="{ iconColor }">
+                        <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
+                    </template>
+                    <template #title>
+                        {{ translations.search.viewComponentCode[store.lang] }}
+                    </template>
+                    <template #content>
+                        <div style="background:transparent" class="p-2">
+                            <code class="text-[10px]">
+                                &lt;script setup&gt;<br>
+                                &nbsp;&nbsp;import { ref } from "vue";<br>
+                                &nbsp;&nbsp;import { VueUiQuickChart } from "vue-data-ui";<br>
+                                &nbsp;&nbsp;import "vue-data-ui/style.css";<br><br>
+                                &nbsp;&nbsp;const dataset = ref([<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie1',<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 10<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie2',<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 20<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie3',<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 5<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie4',<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 2<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie5',<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 1<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                                &nbsp;&nbsp;])<br><br>
+                                &nbsp;&nbsp;const config = ref({{ isDarkMode ? mutableConfigDarkMode : mutableConfig }});<br>
+                                &lt;/script&gt;<br><br>
+                                
+                                &lt;template&gt;<br>
+                                &nbsp;&nbsp;&lt;div style="width: 500px"&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiQuickChart<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
+                                &nbsp;&nbsp;&lt/div&gt;<br>
+                                &lt;/template&gt;
+                            </code>
+                        </div>
+                    </template>
+                </VueDataUi>                         
             </div>
             </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
