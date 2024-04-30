@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.13",
+        "date": "2024-04-30",
+        "updates": [
+            {
+                "component": "VueUiQuadrant",
+                "description": "Removed janky animation on side zoom. A smoother animation is in the works.",
+                "link": "/docs#vue-ui-quadrant"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.12",
         "date": "2024-04-30",
         "updates": [

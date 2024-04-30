@@ -19,6 +19,7 @@ const allowedComponents = ref([
     {name: "VueUiNestedDonuts", icon: 'chartNestedDonuts', link: '/docs#vue-ui-nested-donuts'},
     {name: "VueUiOnion", icon: 'chartOnion', link: '/docs#vue-ui-onion'},
     {name: "VueUiQuadrant", icon: 'chartQuadrant', link: '/docs#vue-ui-quadrant'},
+    {name: "VueUiQuickChart", icon: 'vueDataUi', link: '/docs#vue-ui-quick-chart'},
     {name: "VueUiRadar", icon: 'chartRadar', link: '/docs#vue-ui-radar'},
     {name: "VueUiRings", icon: 'chartRings', link: '/docs#vue-ui-rings'},
     {name: "VueUiScatter", icon: 'chartScatter', link: '/docs#vue-ui-scatter'},
