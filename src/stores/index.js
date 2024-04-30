@@ -862,6 +862,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        cursor: {
+                            en: "A fancy decorative mouse cursor that also works on mobile.",
+                            fr: "Un curseur de souris décoratif sophistiqué qui fonctionne également sur mobile.",
+                            pt: "Um cursor de mouse decorativo sofisticado que também funciona em dispositivos móveis.",
+                            de: "Ein schicker, dekorativer Mauszeiger, der auch auf Mobilgeräten funktioniert.",
+                            zh: "一款精美的装饰性鼠标光标，也适用于移动设备。",
+                            jp: "モバイルでも動作する派手な装飾マウス カーソル。",
+                            es: "Un elegante cursor de mouse decorativo que también funciona en dispositivos móviles.",
+                            ko: "모바일에서도 작동하는 멋진 장식용 마우스 커서입니다."
+                        },
                         quickChart: {
                             en: 'A flexible component that will provide the most adapted chart type to your dataset.',
                             fr: "Un composant flexible qui fournira le type de graphique le plus adapté à votre ensemble de données.",

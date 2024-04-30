@@ -85,6 +85,7 @@ const specialIcons = ref([
     "clipboardVariable",
     "copy",
     "csv",
+    "cursor",
     "dashboard",
     "diamond",
     "diamondFill",

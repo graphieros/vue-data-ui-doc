@@ -55,6 +55,7 @@ import DocVueUiTreemap from "../components/docs/DocVueUiTreemap.vue";
 import DocVueUiTableHeatmap from "../components/docs/DocVueUiTableHeatmap.vue";
 import DocVueUiAccordion from "../components/docs/DocVueUiAccordion.vue";
 import DocVueUiQuickChart from "../components/docs/DocVueUiQuickChart.vue";
+import DocVueUiCursor from "../components/docs/DocVueUiCursor.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -571,6 +572,15 @@ const menuItems = computed(() => [
         hasTableCss: false,
     },
     {
+        name: "Cursor",
+        icon: "cursor",
+        tooltip: translations.value.docs.tooltips.cursor[store.lang],
+        link: "/docs#vue-ui-cursor",
+        type: "tool",
+        hasSlot: false,
+        hasTableCss: false,
+    },
+    {
         name: "MoodRadar",
         icon: "chartMoodRadar",
         tooltip: translations.value.docs.tooltips.moodRadar[store.lang],
@@ -702,6 +712,7 @@ onMounted(playShowcase)
             <DocVueUiTableHeatmap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table-heatmap'" />
             <DocVueUiAccordion v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-accordion'" />
             <DocVueUiQuickChart v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-quick-chart'" />
+            <DocVueUiCursor v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-cursor'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

@@ -1,11 +1,23 @@
 [
     {
+        "version": "v 2.1.12",
+        "date": "2024-04-30",
+        "updates": [
+            {
+                "component": "VueUiCursor",
+                "description": "Added new component",
+                "link": "/docs#vue-ui-cursor"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.10",
         "date": "2024-04-29",
         "updates": [
             {
                 "component": "VueUiQuickChart",
-                "description": "Fixed issues in fullscreen mode (tooltip & legend not visible)"
+                "description": "Fixed issues in fullscreen mode (tooltip & legend not visible)",
+                "link": "/docs#vue-ui-quick-chart"
             }
         ]
     },
@@ -15,11 +27,13 @@
         "updates": [
             {
                 "component": "VueUiXy",
-                "description": "Added time label rotation config option"
+                "description": "Added time label rotation config option",
+                "link": "/docs#vue-ui-xy"
             },
             {
                 "component": "VueUiQuickChart",
-                "description": "Added time label rotation config option"
+                "description": "Added time label rotation config option",
+                "link": "/docs#vue-ui-quick-chart"
             }
         ]
     },
@@ -29,7 +43,8 @@
         "updates": [
             {
                 "component": "VueUiQuickChart",
-                "description": "Added new component"
+                "description": "Added new component",
+                "link": "/docs#vue-ui-quick-chart"
             }
         ]
     },
