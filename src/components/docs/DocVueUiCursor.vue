@@ -33,15 +33,15 @@ const config = ref({
     centerCircleDasharray: 0,
     centerCircleOpacity: 0,
     centerCircleRadius: 50,
-    centerCircleStroke: "#CCCCCC",
+    centerCircleStroke: "#1A1A1A",
     centerCircleStrokeWidth: 0.5,
-    coordinatesColor: "#CCCCCC",
+    coordinatesColor: "#1A1A1A",
     coordinatesFontSize: 10,
     coordinatesOffset: 0,
     crosshairDasharray: 0,
-    crosshairStroke: "#CCCCCC",
+    crosshairStroke: "#1A1A1A",
     crosshairStrokeWidth: 0.5,
-    intersectCirclesFill: "#CCCCCC",
+    intersectCirclesFill: "#1A1A1A",
     intersectCirclesRadius: 2,
     isLoading: false,
     parentId: "",
@@ -140,8 +140,7 @@ const isActive = ref(true);
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_cursor)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-donut"/>
-            <MakerLink to="VueUiDonut"/>
+            <GitHubLink link="vue-ui-cursor"/>
         </div>
         <Box :activeTab="1" >
             <template #tab0>
