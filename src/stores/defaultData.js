@@ -603,6 +603,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 ],
                 model: [
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
+                    { key: 'zoomAnimationFrames', def: true, type: 'number', min: 5, max: 40, label: ['zoom animation', 'is', 'speed'], category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },

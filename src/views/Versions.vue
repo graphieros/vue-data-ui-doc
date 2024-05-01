@@ -459,6 +459,30 @@ onMounted(() => {
     isLoadingBar.value = true;
     store.isFetching = true;
 
+    // let pages = 20;
+    // let isDone = false;
+
+    // for(let i = 1; i < pages; i += 1) {
+    //   setTimeout(() => {
+    //     if(!isDone){
+    //       fetch(`https://api.github.com/repos/graphieros/vue-data-ui/stargazers?per_page=30&page=${i}`, {
+    //         method: 'GET',
+    //         mode: 'cors',
+    //         cache: "default"
+    //       }).then((response) => {
+    //         return response.json()
+    //       }).then(json => {
+    //         const sg = JSON.parse(json)
+    //         if(sg.length) {
+    //           stargazers.value.push(json)
+    //         } else {
+    //           isDone = true;
+    //         }
+    //       })
+    //     }
+    //   }, i * 100)
+    // }
+
     fetch(url.value, {
         method: 'GET',
         mode: 'cors',

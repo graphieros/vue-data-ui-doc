@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.14",
+        "date": "2024-05-01",
+        "updates": [
+            {
+                "component": "VueUiQuadrant",
+                "description": "Added smooth zoom animation.",
+                "link": "/docs#vue-ui-quadrant"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.13",
         "date": "2024-04-30",
         "updates": [
