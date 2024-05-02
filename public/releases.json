@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.15",
+        "date": "2024-05-01",
+        "updates": [
+            {
+                "component": "VueUiQuickChart",
+                "description": "Added optional axis labels",
+                "link": "/docs#vue-ui-quick-chart"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.14",
         "date": "2024-05-01",
         "updates": [

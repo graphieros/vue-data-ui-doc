@@ -143,7 +143,7 @@ const config = ref({
     xyHighlighterOpacity: 0.05,
     xyLabelsXFontSize: 8,
     xyLabelsYFontSize: 12,
-    xyPaddingBottom: 24,
+    xyPaddingBottom: 48,
     xyPaddingLeft: 48,
     xyPaddingRight: 12,
     xyPaddingTop: 24,
@@ -152,7 +152,10 @@ const config = ref({
     xyScaleSegments: 10,
     xyShowAxis: true,
     xyShowGrid: true,
-    xyShowScale: true
+    xyShowScale: true,
+    yAxisLabel: 'Quantity',
+    xAxisLabel: 'Time',
+    axisLabelsFontSize: 12
 })
 
 const darkModeConfig = ref({
@@ -203,7 +206,7 @@ const darkModeConfig = ref({
     xyHighlighterOpacity: 0.05,
     xyLabelsXFontSize: 8,
     xyLabelsYFontSize: 12,
-    xyPaddingBottom: 24,
+    xyPaddingBottom: 48,
     xyPaddingLeft: 48,
     xyPaddingRight: 12,
     xyPaddingTop: 24,
@@ -212,7 +215,10 @@ const darkModeConfig = ref({
     xyScaleSegments: 10,
     xyShowAxis: true,
     xyShowGrid: true,
-    xyShowScale: true
+    xyShowScale: true,
+    yAxisLabel: 'Quantity',
+    xAxisLabel: 'Time',
+    axisLabelsFontSize: 12
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -564,6 +570,7 @@ function fixChart() {
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
+    axisLabelsFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.axisLabelsFontSize"><input v-else type="range" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.axisLabelsFontSize">, (default: 12)
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.backgroundColor"><input v-else type="color" v-model="mutableConfig.backgroundColor">, (default: "#FFFFFF")
     barGap: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="64" v-model="mutableConfigDarkMode.barGap"><input v-else type="range" class="accent-app-blue" min="0" max="64" v-model="mutableConfig.barGap">, (default: 12)
     barStrokeWidth: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="12" v-model="mutableConfigDarkMode.barStrokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="12" v-model="mutableConfig.barStrokeWidth">, (default: 1)
@@ -602,6 +609,7 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     valuePrefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.valuePrefix"><input v-else type="text" v-model="mutableConfig.valuePrefix">, (default: "")
     valueSuffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.valueSuffix"><input v-else type="text" v-model="mutableConfig.valueSuffix">, (default: "")
     width: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="200" max="1000" v-model="mutableConfigDarkMode.width"><input v-else type="range" class="accent-app-blue" min="200" max="1000" v-model="mutableConfig.width">, (default: 512)
+    xAxisLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.xAxisLabel"><input v-else type="text" v-model="mutableConfig.xAxisLabel">, (default: "")
     xyAxisStroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.xyAxisStroke"><input v-else type="color" v-model="mutableConfig.xyAxisStroke">, (default: "#CCCCCC")
     xyAxisStrokeWidth: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="24" v-model="mutableConfigDarkMode.xyAxisStrokeWidth"><input v-else type="number" class="accent-app-blue" min="0" max="24" v-model="mutableConfig.xyAxisStrokeWidth">, (default: 1)
     xyGridStroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.xyGridStroke"><input v-else type="color" v-model="mutableConfig.xyGridStroke">,  (default: "#e1e5e8")
@@ -620,6 +628,7 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     xyShowAxis: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.xyShowAxis" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.xyShowAxis" @change="forceChartUpdate()">, (default: true)
     xyShowGrid: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.xyShowGrid" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.xyShowGrid" @change="forceChartUpdate()">, (default: true)
     xyShowScale: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.xyShowScale" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.xyShowScale" @change="forceChartUpdate()">, (default: true)
+    yAxisLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.yAxisLabel"><input v-else type="text" v-model="mutableConfig.yAxisLabel">, (default: "")
 }
 </code>
 </pre>                
