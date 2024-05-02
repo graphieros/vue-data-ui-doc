@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.16",
+        "date": "2024-05-02",
+        "updates": [
+            {
+                "component": "VueUiQuickChart",
+                "description": "Fixed errors when a daatapoint has a 0 value",
+                "link": "/docs#vue-ui-quick-chart"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.15",
         "date": "2024-05-01",
         "updates": [
