@@ -1,5 +1,27 @@
 [
     {
+        "version": "v 2.1.18",
+        "date": "2024-05-03",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "Added smooth animation on serie segregation",
+                "link": "/docs#vue-ui-donut"
+            }
+        ]
+    },
+    {
+        "version": "v 2.1.17",
+        "date": "2024-05-03",
+        "updates": [
+            {
+                "component": "VueUiQuickChart",
+                "description": "Added donut smooth animation on serie segregation",
+                "link": "/docs#vue-ui-quick-chart"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.16",
         "date": "2024-05-02",
         "updates": [

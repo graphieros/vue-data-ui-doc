@@ -41,11 +41,11 @@ const icons = ref([
 const quickDatasetDonut = ref([
     {
         name: 'serie1',
-        value: 10,
+        value: 20,
     },
     {
         name: 'Serie 2',
-        value: 20,
+        value: 10,
     },
     {
         name: 'Serie 3',
