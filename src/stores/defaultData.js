@@ -2316,6 +2316,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'valueFontSize', def: 32, type: 'number', label: ['value', 'is', 'fontSize'], category: 'general' },
                     { key: 'valueRounding', def: 0, type: 'number', label: ['value', 'is', 'rounding'], category: 'general'}
                 ]
+            },
+            vue_ui_spark_trend: {
+                dataset: [1, 2, 3, 5, 8, 13, 21, 34, 55, 89],
+                model: []
             }
         }
     }

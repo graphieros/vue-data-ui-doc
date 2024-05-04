@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 2.1.22",
+        "date": "2024-05-04",
+        "updates": [
+            {
+                "component": "VueUiQuickChart",
+                "description": "Fixed offset zero axis with negative values on line & bar charts.",
+                "link": "/docs#vue-ui-quick-chart"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Fixed useCssAnimation config option not applied on dataLabels",
+                "link": "/docs#vue-ui-donut"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.21",
         "date": "2024-05-04",
         "updates": [
