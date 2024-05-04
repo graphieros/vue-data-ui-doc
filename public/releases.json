@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.21",
+        "date": "2024-05-04",
+        "updates": [
+            {
+                "component": "VueUiSparkTrend",
+                "description": "Added new component",
+                "link": "/docs#vue-ui-spark-trend"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.18",
         "date": "2024-05-03",
         "updates": [

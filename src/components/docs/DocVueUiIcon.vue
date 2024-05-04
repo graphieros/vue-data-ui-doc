@@ -132,6 +132,7 @@ const specialIcons = ref([
     "star",
     "starFill",
     "tooltip",
+    "trend",
     "trendDown",
     "trendUp",
     "triangle",

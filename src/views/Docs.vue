@@ -56,6 +56,7 @@ import DocVueUiTableHeatmap from "../components/docs/DocVueUiTableHeatmap.vue";
 import DocVueUiAccordion from "../components/docs/DocVueUiAccordion.vue";
 import DocVueUiQuickChart from "../components/docs/DocVueUiQuickChart.vue";
 import DocVueUiCursor from "../components/docs/DocVueUiCursor.vue";
+import DocVueUiSparkTrend from "../components/docs/DocVueUiSparkTrend.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -411,11 +412,22 @@ const menuItems = computed(() => [
     {
         name: "Sparkgauge",
         icon: "chartGauge",
-        tooltip: translations.value.docs.tooltips.gauge[store.lang], //////
+        tooltip: translations.value.docs.tooltips.gauge[store.lang],
         link: "/docs#vue-ui-sparkgauge",
         type: "mini",
-        thumb: new URL('../assets/thumb_sparkgauge.png', import.meta.url).href, //////
-        thumbLight: new URL('../assets/thumb_sparkgauge_light.png', import.meta.url).href, //////
+        thumb: new URL('../assets/thumb_sparkgauge.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_sparkgauge_light.png', import.meta.url).href,
+        hasSlot: false,
+        hasTableCss: false,
+    },
+    {
+        name: "SparkTrend",
+        icon: "trend",
+        tooltip: translations.value.docs.tooltips.trend[store.lang],
+        link: "/docs#vue-ui-spark-trend",
+        type: "mini",
+        thumb: new URL('../assets/thumb_spark_trend.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_spark_trend_light.png', import.meta.url).href,
         hasSlot: false,
         hasTableCss: false,
     },
@@ -713,6 +725,7 @@ onMounted(playShowcase)
             <DocVueUiAccordion v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-accordion'" />
             <DocVueUiQuickChart v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-quick-chart'" />
             <DocVueUiCursor v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-cursor'" />
+            <DocVueUiSparkTrend v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-spark-trend'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

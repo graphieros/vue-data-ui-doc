@@ -862,6 +862,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        trend: {
+                            en: "Quickly visualize a trend from a simple dataset.",
+                            fr: "Visualisez rapidement une tendance à partir d’un simple ensemble de données.",
+                            pt: "Visualize rapidamente uma tendência a partir de um conjunto de dados simples.",
+                            de: "Visualisieren Sie schnell einen Trend anhand eines einfachen Datensatzes.",
+                            zh: "从简单的数据集中快速可视化趋势。",
+                            jp: "シンプルなデータセットから傾向を素早く視覚化します。",
+                            es: "Visualice rápidamente una tendencia a partir de un conjunto de datos simple.",
+                            ko: "간단한 데이터 세트에서 추세를 빠르게 시각화합니다."
+                        },
                         cursor: {
                             en: "A fancy decorative mouse cursor that also works on mobile.",
                             fr: "Un curseur de souris décoratif sophistiqué qui fonctionne également sur mobile.",
