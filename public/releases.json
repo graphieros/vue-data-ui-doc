@@ -1,5 +1,71 @@
 [
     {
+        "version": "v 2.1.23",
+        "date": "2024-05-05",
+        "updates": [
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-donut-evolution"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-donut"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Removed legend label wobbling when segregating a series",
+                "link": "/docs#vue-ui-donut"
+            },
+            {
+                "component": "VueUiGalaxy",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-galaxy"
+            },
+            {
+                "component": "VueUiNestedDonuts",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-nested-donuts"
+            },
+            {
+                "component": "VueUiOnion",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-onion"
+            },
+            {
+                "component": "VueUiQuadrant",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-quadrant"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-radar"
+            },
+            {
+                "component": "VueUiRings",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-rings"
+            },
+            {
+                "component": "VueUiScatter",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-scatter"
+            },
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-vertical-bar"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-waffle"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.22",
         "date": "2024-05-04",
         "updates": [
