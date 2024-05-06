@@ -1545,6 +1545,63 @@ const sparklineConfigForReleases = computed(() => {
   }
 })
 
+const trendConfig = computed(() => {
+  return {
+  style: {
+    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+    fontFamily: "inherit",
+    animation: {
+      show: true,
+      animationFrames: 115
+    },
+    line: {
+      stroke: isDarkMode.value ? '#7A7A7A' : '#5A5A5A',
+      strokeWidth: 1,
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      smooth: true,
+      useColorTrend: false
+    },
+    area: {
+      show: true,
+      useGradient: true,
+      opacity: 20
+    },
+    dataLabel: {
+      show: true,
+      useColorTrend: true,
+      color: "#2D353C",
+      fontSize: 14,
+      bold: false,
+      prefix: "",
+      suffix: "",
+      rounding: 0
+    },
+    trendLabel: {
+      trendType: "global",
+      useColorTrend: true,
+      color: "#2D353C",
+      fontSize: 14,
+      bold: true,
+      rounding: 0
+    },
+    arrow: {
+      colors: {
+        positive: "#42d392",
+        neutral: "#7f7f7f",
+        negative: "#ff6400"
+      }
+    },
+    padding: {
+      top: 12,
+      left: 100,
+      right: 12,
+      bottom: 12
+    }
+  }
+}
+})
+
 </script>
 
 <template>
@@ -1588,6 +1645,20 @@ const sparklineConfigForReleases = computed(() => {
                 </div>
                 <div class="max-w-[800px] mx-auto" v-if="!isLoadingLine">
                   <VueUiXy v-if="xyDataset.length" :config="xyConfig" :dataset="xyDataset"/>
+                </div>
+                <div class="max-w-[400px] mx-auto my-6 flex flex-col gap-2">
+                  Overall trend
+                  <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
+                    <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="data.map(d => d.value)" :config="trendConfig"/>
+                  </div>
+                    N - 1
+                    <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
+                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="data.map(d => d.value)" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'n-1'}}}"/>
+                    </div>
+                    Last to First
+                    <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
+                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="data.map(d => d.value)" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'lastToFirst'}}}"/>
+                    </div>
                 </div>
                 <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
                   <VueUiSparkline :dataset="JSON.parse(JSON.stringify(sparklineReleases)).reverse()" :config="sparklineConfigForReleases"/>
