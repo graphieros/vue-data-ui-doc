@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 2.1.24",
+        "date": "2024-05-06",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "Average label is hidden during serie segregation animation",
+                "link": "/docs#vue-ui-donut"
+            },
+            {
+                "component": "VueUiOnion",
+                "description": "Track size remains the same when series are segregated",
+                "link": "/docs#vue-ui-onion"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.23",
         "date": "2024-05-05",
         "updates": [
@@ -7,6 +23,11 @@
                 "component": "VueUiDonutEvolution",
                 "description": "Added segregation reactivity to #legend slot",
                 "link": "/docs#vue-ui-donut-evolution"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Added segregation reactivity to #legend slot",
+                "link": "/docs#vue-ui-xy"
             },
             {
                 "component": "VueUiDonut",
