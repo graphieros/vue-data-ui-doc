@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.30",
+        "date": "2024-05-07",
+        "updates": [
+            {
+                "component": "VueUiNestedDonuts",
+                "description": "Added smooth animation on series segregation",
+                "link": "/docs#vue-ui-nested-donuts"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.29",
         "date": "2024-05-07",
         "updates": [
