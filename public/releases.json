@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.29",
+        "date": "2024-05-07",
+        "updates": [
+            {
+                "component": "VueUiScatter",
+                "description": "Added marginal bars config option",
+                "link": "/docs#vue-ui-scatter"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.26",
         "date": "2024-05-06",
         "updates": [

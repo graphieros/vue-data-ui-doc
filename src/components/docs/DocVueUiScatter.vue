@@ -84,6 +84,17 @@ const darkModeConfig = ref({
         stroke: "#565656",
         strokeWidth: 1
       },
+      marginalBars: {
+        show: true,
+        size: 40,
+        tranches: 20,
+        opacity: 0.5,
+        fill: '#CCCCCC',
+        strokeWidth: 0.5,
+        offset: 20,
+        borderRadius: 2,
+        useGradient: true
+      },
       plots: {
         radius: 3,
         stroke: "#1A1A1A",
@@ -217,6 +228,17 @@ const config = ref({
         show: true,
         stroke: "#C4C4C4",
         strokeWidth: 1
+      },
+      marginalBars: {
+        show: true,
+        size: 40,
+        tranches: 20,
+        opacity: 0.5,
+        fill: '##2D353C',
+        strokeWidth: 0.5,
+        offset: 20,
+        borderRadius: 2,
+        useGradient: true
       },
       plots: {
         radius: 3,
@@ -527,6 +549,17 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
           strokeDasharray: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="64" step="0.1" v-model="mutableConfigDarkMode.style.layout.plots.giftWrap.strokeDasharray"><input v-else type="range" class="accent-app-blue" min="0" max="64" step="0.1" v-model="mutableConfig.style.layout.plots.giftWrap.strokeDasharray">, (default: 0)
           fillOpacity: <input v-if="isDarkMode" type="range" min="0" max="1" step="0.1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.giftWrap.fillOpacity"><input v-else type="range" min="0" max="1" step="0.1" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.giftWrap.fillOpacity">, (default: 0.2)
         }
+      },
+      marginalBars: {
+        show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.marginalBars.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.marginalBars.show">, (default: true)
+        size: 40,
+        tranches: <input v-if="isDarkMode" type="number" min="10" max="100" v-model="mutableConfigDarkMode.style.layout.marginalBars.tranches"><input v-else type="number" min="10" max="100" v-model="mutableConfig.style.layout.marginalBars.tranches">, (default: 20)
+        opacity: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="1" step="0.01" v-model="mutableConfigDarkMode.style.layout.marginalBars.opacity"><input v-else type="number" class="accent-app-blue" min="0" max="1" step="0.01" v-model="mutableConfig.style.layout.marginalBars.opacity">, (default: 1)
+        fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.layout.marginalBars.fill"><input v-else type="color" v-model="mutableConfig.style.layout.marginalBars.fill">, (default: "#2D353C")
+        strokeWidth: <input v-if="isDarkMode" type="number" min="0.1" max="6" step="0.1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.marginalBars.strokeWidth" @change="forceChartUpdate()"><input v-else type="number" min="0.1" max="6" step="0.1" class="accent-app-blue" v-model="mutableConfig.style.layout.marginalBars.strokeWidth" @change="forceChartUpdate()">, (default: 1)
+        offset: 20,
+        borderRadius: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.style.layout.marginalBars.borderRadius"><input v-else type="number" min="0" max="12" v-model="mutableConfig.style.layout.marginalBars.borderRadius">, (default: 2)
+        useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.marginalBars.useGradient"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.marginalBars.show">, (default: true)
       },
       correlation: {
         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.correlation.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.correlation.show">, (default: true)

@@ -185,7 +185,10 @@ const finalConfig = computed(() => {
 })
 
 function getLabel(label) {
-    return Array.isArray(label) ? label.map(l => makerTranslations.value.labels[l][store.lang]).join(" ") :
+    return Array.isArray(label) ? label.map(l => {
+        if(! makerTranslations.value.labels[l]) return l
+        return  makerTranslations.value.labels[l][store.lang]
+    }).join(" ") :
     makerTranslations.value.labels[label][store.lang]
 }
 

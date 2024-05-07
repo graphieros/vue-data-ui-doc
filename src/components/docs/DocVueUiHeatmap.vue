@@ -30,7 +30,7 @@ const dataset = computed(() => {
     for (let i = 0; i < serieLen; i += 1) {
         const values = [];
         for (let j = 0; j < dsLen; j += 1) {
-        values.push(Math.random()*100)
+        values.push((i + j * 2))
         }
         arr.push({
             name: `${days[i]}`,
@@ -66,7 +66,7 @@ const config = ref({
           cold: "#5f8bee",
           underlayer: "#F3F4F6"
         },
-        spacing: 2,
+        spacing: 0.5,
         selected: {
           border: 2,
           color: "#1A1A1A"
@@ -174,7 +174,7 @@ const darkModeConfig = ref({
           cold: "#5f8bee",
           underlayer: "#1A1A1A"
         },
-        spacing: 2,
+        spacing: 0.5,
         selected: {
           border: 2,
           color: "#FFFFFF"
