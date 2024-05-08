@@ -1,5 +1,31 @@
 [
     {
+        "version": "v 2.1.34",
+        "date": "2024-05-08",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added a border to lines of same color as background",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiQuickChart",
+                "description": "Added a border to lines of same color as background",
+                "link": "/docs#vue-ui-quick-chart"
+            },
+            {
+                "component": "VueUiChestnut",
+                "description": "Added opacity transition on serie selection",
+                "link": "/docs#vue-ui-chestnut"
+            },
+            {
+                "component": "VueUiSparkStackbar",
+                "description": "Added smooth animation on serie segregation",
+                "link": "/docs#vue-ui-sparkstackbar"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.32",
         "date": "2024-05-08",
         "updates": [
