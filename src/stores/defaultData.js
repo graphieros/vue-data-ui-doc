@@ -1671,6 +1671,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.marginalBars.offset', def: 20, type: 'number', min: 0, max: 64, label: ['bars', 'is', 'offset'], category: 'grid' },
                     { key: 'style.layout.marginalBars.borderRadius', def: 2, type: 'number', min: 0, max: 12, label: ['bars', 'is', 'borderRadius'], category: 'grid' },
                     { key: 'style.layout.marginalBars.useGradient', def: true, type: 'checkbox', label: ['bars', 'gradient', 'is', 'show'], category: 'grid' },
+                    { key: 'style.layout.marginalBars.showLines', def: true, type: 'checkbox', label: ['lines', 'is', 'show'], category: 'grid' },
+                    { key: 'style.layout.marginalBars.linesStrokeWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['lines', 'is', 'strokeWidth'], category: 'grid' },
 
                     { key: 'style.layout.plots.radius', def: 8, type: 'number', min: 0.1, max: 48, step: 0.1, label: 'radius', category: 'datapoints' },
                     { key: 'style.layout.plots.opacity', def: 0.6, type: 'number', min: 0.01, max: 1, step: 0.01, label: 'opacity', category: 'datapoints' },

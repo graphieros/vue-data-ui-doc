@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.32",
+        "date": "2024-05-08",
+        "updates": [
+            {
+                "component": "VueUiScatter",
+                "description": "Added marginal lines config option",
+                "link": "/docs#vue-ui-scatter"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.31",
         "date": "2024-05-07",
         "updates": [
