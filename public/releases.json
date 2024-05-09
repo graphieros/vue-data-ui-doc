@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.1.38",
+        "date": "2024-05-09",
+        "updates": [
+            {
+                "component": "",
+                "description": "For TS users, it is no longer necessary to copy the .d.ts file (at last)"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.36",
         "date": "2024-05-08",
         "updates": [
