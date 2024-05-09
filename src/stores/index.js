@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useMainStore = defineStore("main", {
     state: () => {
         return {
+            stars: 177,
             isMenuOpen: false,
             isDarkMode: true,
             isCopy: false,

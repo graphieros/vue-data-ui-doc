@@ -134,8 +134,8 @@ function setClientPosition({ clientX, clientY, ...rest }) {
 }
 
 onMounted(() => {
-  isLoading.value = true;
-  store.isFetching = true;
+  // isLoading.value = true;
+  // store.isFetching = true;
   const resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
             const { width, height } = entry.contentRect;
@@ -146,23 +146,23 @@ onMounted(() => {
         resizeObserver.observe(resizeContainer.value)
     }
     
-  fetch(`https://api.github.com/repos/${owner}/${repo}`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    const starsCount = data.stargazers_count;
-    stars.value = starsCount;
-  })
-  .catch(error => {
-    console.error('There was a problem fetching the data:', error);
-  }).finally(() => {
-    isLoading.value = false;
-    store.isFetching = false;
-  })
+  // fetch(`https://api.github.com/repos/${owner}/${repo}`)
+  // .then(response => {
+  //   if (!response.ok) {
+  //     throw new Error('Network response was not ok');
+  //   }
+  //   return response.json();
+  // })
+  // .then(data => {
+  //   const starsCount = data.stargazers_count;
+  //   stars.value = starsCount;
+  // })
+  // .catch(error => {
+  //   console.error('There was a problem fetching the data:', error);
+  // }).finally(() => {
+  //   isLoading.value = false;
+  //   store.isFetching = false;
+  // })
 
   // fetch(downloadsUrl.value, {
   //   method: 'GET',
@@ -436,7 +436,7 @@ function selectMenu({ datapoint, index }) {
               <span>
                 {{ translations.github[store.lang] }}
               </span>
-              <div class="w-[25px]" v-if="isLoading">              
+              <div class="w-[25px]" v-if="store.isFetching">              
                 <VueUiMiniLoader 
                   :config="{
                     onion: {
@@ -450,10 +450,10 @@ function selectMenu({ datapoint, index }) {
                   }"
                 />
               </div>
-              <div class="flex flex-row gap-2 place-items-center" v-if="stars && !isLoading">
+              <div class="flex flex-row gap-2 place-items-center" v-if="store.stars && !store.isFetching">
                 <StarFilledIcon class="text-[#fdd663]"/>
                 <span class="text-xs dark:text-[#fdd663] h-[20px]">
-                  <VueUiDigits :dataset="stars" :config="digitConfigStars"/>
+                  <VueUiDigits :dataset="store.stars" :config="digitConfigStars"/>
                 </span>
               </div>
 

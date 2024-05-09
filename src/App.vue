@@ -1,15 +1,38 @@
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import Header from "./components/Header.vue";
 import UpToTop from "./components/UpToTop.vue";
 import { useRouter } from "vue-router";
 import Follower from "./components/examples/components/Follower.vue";
 import GithubButton from "./components/examples/components/GithubButton.vue";
+import { useMainStore } from "./stores";
+
+const store = useMainStore()
 
 const router = useRouter();
 
 const currentRoute = computed(() => {
     return router.currentRoute.value.fullPath
+})
+
+onMounted(() => {
+  store.isFetching = true;
+  fetch(`https://api.github.com/repos/graphieros/vue-data-ui`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    store.stars = data.stargazers_count;
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  }).finally(() => {
+    store.isFetching = false;
+  })
+
 })
 
 </script>
