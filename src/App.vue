@@ -4,6 +4,7 @@ import Header from "./components/Header.vue";
 import UpToTop from "./components/UpToTop.vue";
 import { useRouter } from "vue-router";
 import Follower from "./components/examples/components/Follower.vue";
+import GithubButton from "./components/examples/components/GithubButton.vue";
 
 const router = useRouter();
 
@@ -18,6 +19,7 @@ const currentRoute = computed(() => {
   <div id="vdui" class="font-satoshi bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors">
     <router-view />
     <UpToTop/>
+    <GithubButton v-if="currentRoute !== '/'"/>
   </div>
   <Follower v-if="!['/', '/docs#vue-ui-cursor'].includes(currentRoute)"/>
 </template>
