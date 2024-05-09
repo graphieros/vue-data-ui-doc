@@ -40,7 +40,6 @@ const data = ref(null);
 const isError = ref(false);
 const dates = ref([]);
 const versionsList = ref([]);
-const versionsData = ref([]);
 const isLoadingLine = ref(false);
 const isLoadingBar = ref(false);
 
@@ -80,8 +79,6 @@ Date.prototype.getWeek = function () {
 };
 
 const weekData = ref([]);
-
-const heatmapData = ref([]);
 
 const usableHeatmapData = computed(() => {
   if (!data.value) return [];
@@ -459,30 +456,6 @@ onMounted(() => {
     isLoadingBar.value = true;
     store.isFetching = true;
 
-    // let pages = 20;
-    // let isDone = false;
-
-    // for(let i = 1; i < pages; i += 1) {
-    //   setTimeout(() => {
-    //     if(!isDone){
-    //       fetch(`https://api.github.com/repos/graphieros/vue-data-ui/stargazers?per_page=30&page=${i}`, {
-    //         method: 'GET',
-    //         mode: 'cors',
-    //         cache: "default"
-    //       }).then((response) => {
-    //         return response.json()
-    //       }).then(json => {
-    //         const sg = JSON.parse(json)
-    //         if(sg.length) {
-    //           stargazers.value.push(json)
-    //         } else {
-    //           isDone = true;
-    //         }
-    //       })
-    //     }
-    //   }, i * 100)
-    // }
-
     fetch(url.value, {
         method: 'GET',
         mode: 'cors',
@@ -503,7 +476,7 @@ onMounted(() => {
           {
             name: "Daily npm downloads",
             series: json.downloads.map(d => d.downloads).slice(0, -1),
-            type: "line",
+            type: "bar",
             useArea: true,
             smooth: false,
             shape: "star"
@@ -1623,20 +1596,24 @@ const trendConfig = computed(() => {
                     <div class="pb-2 mb-2">
                       Current NPM score:
                     </div>
-                    <VueUiSparkbar v-if="sparkbarDataset.length" :dataset="sparkbarDataset" :config="sparkbarConfig"/>
+                    <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkbar', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' }}" />
+                    <VueUiSparkbar v-else-if="sparkbarDataset.length" :dataset="sparkbarDataset" :config="sparkbarConfig"/>
                 </div>
                 <div class="flex flew-row gap-2 justify-center mb-6">
                   <div class="w-[100px] sm:w-[150px]" v-for="(wheel, i) in sparkbarDataset">
-                    <VueUiWheel :dataset="{ percentage: wheel.value }" :config="{...wheelConfig, style: {...wheelConfig.style, chart: {...wheelConfig.style.chart, title: {...wheelConfig.style.chart.title, text: i === 0 ? 'Quality' : i === 1 ? 'Popularity' : 'Maintenance'}}}}"/>
+                    <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'wheel', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6'} }" />
+                    <VueUiWheel v-else :dataset="{ percentage: wheel.value }" :config="{...wheelConfig, style: {...wheelConfig.style, chart: {...wheelConfig.style.chart, title: {...wheelConfig.style.chart.title, text: i === 0 ? 'Quality' : i === 1 ? 'Popularity' : 'Maintenance'}}}}"/>
                   </div>
                 </div>
                 <div class="flex flew-row gap-2 justify-center mb-6">
                   <div class="w-[100px] sm:w-[150px]" v-for="(bar, i) in sparkbarDataset">
-                    <VueUi3dBar :dataset="{ percentage: bar.value }" :config="{...config3dBar, style: {...config3dBar.style, chart: {...config3dBar.style.chart}}}"/>
+                    <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'bar3d', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' } }"/>
+                    <VueUi3dBar v-else :dataset="{ percentage: bar.value }" :config="{...config3dBar, style: {...config3dBar.style, chart: {...config3dBar.style.chart}}}"/>
                   </div>
                 </div>
                 <div class="max-w-[500px] mx-auto mb-6" v-if="!!data && !isLoadingLine">
-                  <VueDataUi component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`"/>
+                  <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkHistogram', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' } }"/>
+                  <VueDataUi v-else component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`"/>
                 </div>
 
                 <div class="max-w-[800px] mx-auto" v-if="usableHeatmapData.length">
