@@ -40,7 +40,7 @@ const dataset = ref([
         values: [200]
     },
     {
-        name: "Serie 1",
+        name: "Serie 3",
         color: "#ff6400",
         values: [300, 1]
     },

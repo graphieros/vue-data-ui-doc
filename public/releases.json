@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.39",
+        "date": "2024-05-09",
+        "updates": [
+            {
+                "component": "VueUiGauge",
+                "description": "Added config option to change the pointer type (rounded or pointy)",
+                "link": "/docs#vue-ui-gauge"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.38",
         "date": "2024-05-09",
         "updates": [

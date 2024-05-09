@@ -91,6 +91,7 @@ const config = ref({
                     roundingValue: 0,
                 },
                 pointer: {
+                    type: "pointy",
                     size: 1,
                     stroke: "#1A1A1A",
                     strokeWidth: 12,
@@ -169,6 +170,7 @@ const darkModeConfig = ref({
                     roundingValue: 0,
                 },
                 pointer: {
+                    type: "pointy",
                     size: 1,
                     stroke: "#CCCCCC",
                     strokeWidth: 12,
@@ -412,6 +414,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiGaugeConfig</span
                     roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" step="1" v-model="mutableConfigDarkMode.style.chart.layout.markers.roundingValue"><input v-else type="number" min="0" max="3" step="1" v-model="mutableConfig.style.chart.layout.markers.roundingValue">, (default: 0)
                 },
                 pointer: {
+                    type: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.chart.layout.pointer.type"><option>rounded</option><option>pointy</option></select><select v-else v-model="mutableConfig.style.chart.layout.pointer.type"><option>rounded</option><option>pointy</option></select>, (default: "rounded")
                     size: <input v-if="isDarkMode" type="number" min="0.5" max="2" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.pointer.size"><input v-else type="number" min="0.5" max="2" step="0.1" v-model="mutableConfig.style.chart.layout.pointer.size">, (default: 1)
                     stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.pointer.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.pointer.stroke">, (default: "#2D353C")
                     strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="30" step="1" v-model="mutableConfigDarkMode.style.chart.layout.pointer.strokeWidth"><input v-else type="number" min="0" max="30" step="1" v-model="mutableConfig.style.chart.layout.pointer.strokeWidth">, (default: 12)
