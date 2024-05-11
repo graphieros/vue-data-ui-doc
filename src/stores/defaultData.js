@@ -2329,6 +2329,127 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'valueRounding', def: 0, type: 'number', label: ['value', 'is', 'rounding'], category: 'general'}
                 ]
             },
+            vue_ui_strip_plot: {
+                dataset: [
+                    {
+                        id: '1',
+                        name: "Category 1",
+                        color: '#42d392',
+                        plots: [
+                            {
+                                name: "C1 P1",
+                                value: 10,
+                                id: '11'
+                            },
+                            {
+                                name: "C1 P2",
+                                value: 20,
+                                id: '22'
+                            },
+                            {
+                                name: "C1 P3",
+                                value: 30,
+                                id: '33'
+                            },
+                        ]
+                    },
+                    {
+                        id: '2',
+                        color: '#ff6400',
+                        name: "Category 2",
+                        plots: [
+                            {
+                                name: "C2 P1",
+                                value: 15,
+                                id: '44'
+                            },
+                            {
+                                name: "C2 P2",
+                                value: 20,
+                                id: '55'
+                            },
+                        ]
+                    }
+                ],
+                model: [
+                    { key: 'useCssAnmation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
+                    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'color', category: 'general'},
+                    { key: 'style.chart.height', def: 600, type: 'range', min: 200, max: 1000, label: 'height', category: 'general'},
+                    { key: 'style.chart.stripWidth', def: 120, type: 'range', min: 48, max: 200, label: ['slot', 'is', 'width'], category: 'general'},
+                    { key: 'style.chart.padding.top', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
+                    { key: 'style.chart.padding.right', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
+                    { key: 'style.chart.padding.bottom', def: 64, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'padding'},
+                    { key: 'style.chart.padding.left', def: 64, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'padding'},
+                    { key: 'style.chart.grid.show', def: true, type: 'checkbox', label: 'show', category: 'grid'},
+                    { key: 'style.chart.grid.stroke', def: '#CCCCCC', type: 'color', label: ['line', 'is', 'color'], category: 'grid'},
+                    { key: 'style.chart.grid.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['line', 'is', 'thickness'], category: 'grid'},
+                    { key: 'style.chart.grid.scaleSteps', def: 10, type: 'number', min: 2, max: 30, label: ['scale', 'is', 'size'], category: 'grid'},
+                    { key: 'style.chart.grid.horizontalGrid.show', def: true, type: 'checkbox', label: ['horizontal', 'line', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.horizontalGrid.stroke', def: '#CCCCCC', type: 'color', label: ['horizontal', 'line', 'is', 'color'], category: 'grid'},
+                    { key: 'style.chart.grid.horizontalGrid.strokeWidth', def: 0.5, type: 'number', min: 0, max: 12, step: 0.1, label: ['horizontal', 'line', 'is', 'thickness'], category: 'grid'},
+                    { key: 'style.chart.grid.horizontalGrid.strokeDasharray', def: 4, type: 'number', min: 0, max: 64, step: 0.1, label: ['horizontal', 'line', 'is', 'dashed'], category: 'grid'},
+                    { key: 'style.chart.grid.verticalGrid.show', def: true, type: 'checkbox', label: ['vertical', 'line', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.verticalGrid.stroke', def: '#CCCCCC', type: 'color', label: ['vertical', 'line', 'is', 'color'], category: 'grid'},
+                    { key: 'style.chart.grid.verticalGrid.strokeWidth', def: 0.5, type: 'number', min: 0, max: 12, step: 0.1, label: ['vertical', 'line', 'is', 'thickness'], category: 'grid'},
+                    { key: 'style.chart.grid.verticalGrid.strokeDasharray', def: 4, type: 'number', min: 0, max: 64, step: 0.1, label: ['vertical', 'line', 'is', 'dashed'], category: 'grid'},
+                    { key: 'style.chart.plots.opacity', def: 0.5, type: 'number', min: 0.1, max: 1, step: 0.01, label: 'opacity', category: 'plots'},
+                    { key: 'style.chart.plots.radius', def: 20, type: 'number', min: 5, max: 64, label: 'radius', category: 'plots'},
+                    { key: 'style.chart.plots.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'plots'},
+                    { key: 'style.chart.plots.strokeWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'plots'},
+                    { key: 'style.chart.plots.shape', def: 'circle', type: 'select', options: ['circle', 'triangle', 'square', 'diamond', 'pentagon', 'hexagon', 'star'], label: 'shape', category: 'plots'},
+                    { key: 'style.chart.plots.gradient.show', def: true, type: 'checkbox', label: ['gradient', 'is', 'show'], category: 'plots'},
+                    { key: 'style.chart.plots.gradient.intensity', def: 40, type: 'range', min: 0, max: 100, label: ['gradient', 'is', 'intensity'], category: 'plots'},
+                    { key: 'style.chart.labels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels'},
+                    { key: 'style.chart.labels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels'},
+                    { key: 'style.chart.labels.bestPlotLabel.show', def: true, type: 'checkbox', label: ['top', 'is', 'show'], category: 'labels'},
+                    { key: 'style.chart.labels.bestPlotLabel.showValue', def: true, type: 'checkbox', label: ['top', 'value', 'is', 'show'], category: 'labels'},
+                    { key: 'style.chart.labels.bestPlotLabel.fontSize', def: 14, type: 'number', min: 6, max: 42, label: ['top', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.chart.labels.bestPlotLabel.color', def: '#1A1A1A', type: 'color', label: ['top', 'is', 'textColor'], category: 'labels'},
+                    { key: 'style.chart.labels.bestPlotLabel.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['top', 'is', 'rounding'], category: 'labels'},
+                    { key: 'style.chart.labels.bestPlotLabel.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['top', 'is', 'offsetY'], category: 'labels'},
+                    { key: 'style.chart.labels.axis.xLabel', def: 'x Label', type: 'text', label: ['axis', 'label', 'X', 'is', 'textContent'], category: 'labels'},
+                    { key: 'style.chart.labels.axis.xLabelOffsetY', def: 0, type: 'number', min: -100, max: 100, label: ['axis', 'label', 'X', 'is', 'offsetY'], category: 'labels'},
+                    { key: 'style.chart.labels.axis.yLabel', def: 'y Label', type: 'text', label: ['axis', 'label', 'Y', 'is', 'textContent'], category: 'labels'},
+                    { key: 'style.chart.labels.axis.yLabelOffsetX', def: 0, type: 'number', min: -100, max: 100, label: ['axis', 'label', 'Y', 'is', 'offsetX'], category: 'labels'},
+                    { key: 'style.chart.labels.axis.fontSize', def: 14, type: 'number', min: 6, max: 42, label: ['axis', 'label', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.chart.labels.axis.color', def: '#1A1A1A', type: 'color', label: ['axis', 'label', 'is', 'textColor'], category: 'labels'},
+                    { key: 'style.chart.labels.xAxisLabels.show', def: true, type: 'checkbox', label: ['category', 'labels', 'is', 'show'], category: 'labels'},
+                    { key: 'style.chart.labels.xAxisLabels.color', def: '#1A1A1A', type: 'color', label: ['category', 'labels', 'is', 'textColor'], category: 'labels'},
+                    { key: 'style.chart.labels.xAxisLabels.fontSize', def: 14, type: 'number', min:6, max: 42, label: ['category', 'labels', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.chart.labels.xAxisLabels.offsetY', def: 0, type: 'number', min: -100, max: 100, label:  ['category', 'labels', 'is', 'offsetY'], category: 'labels'},
+                    { key: 'style.chart.labels.yAxisLabels.show', def: true, type: 'checkbox', label: ['Y', 'labels', 'is', 'show'], category: 'labels'},
+                    { key: 'style.chart.labels.yAxisLabels.color', def: '#1A1A1A', type: 'color', label: ['Y', 'labels', 'is', 'textColor'], category: 'labels'},
+                    { key: 'style.chart.labels.yAxisLabels.fontSize', def: 14, type: 'number', min: 6, max: 42, label: ['Y', 'labels', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.chart.labels.yAxisLabels.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['Y', 'labels', 'is', 'rounding'], category: 'labels'},
+                    { key: 'style.chart.labels.yAxisLabels.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['Y', 'labels', 'is', 'offsetX'], category: 'labels'},
+                    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
+                    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+                    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.chart.title.subtitle.text', def: 'Subtitle', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.color', def: '#8A8A8A', type: 'color', label: 'textColor', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.fontSize', def: 14, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
+                    { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 24, label: 'fontSize', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'tooltip' },
+                    { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
+                    { key: 'table.responsiveBreakpoint', def: 300, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
+                    { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table' },
+                    { key: 'table.columnNames.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table' },
+                    { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table' },
+                    { key: 'table.th.color', def: '#1A1A1A', type: 'color', label: 'textColorHeader', category: 'table' },
+                    { key: 'table.th.outline', def: 'none', type: 'text', label: 'outlineHeader', category: 'table' },
+                    { key: 'table.td.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorRow', category: 'table' },
+                    { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', category: 'table' },
+                    { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table' },
+                    { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'table' }
+                ]
+            },
             vue_ui_spark_trend: {
                 dataset: [1, 2, 3, 5, 8, 13, 21, 34, 55, 89],
                 model: []

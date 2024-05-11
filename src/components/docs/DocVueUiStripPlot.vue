@@ -410,7 +410,7 @@ function fixChart() {
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_strip_plot)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
             <GitHubLink link="vue-ui-strip-plot"/>
-            <!-- <MakerLink to="VueUiStripPlot"/> -->
+            <MakerLink to="VueUiStripPlot"/>
         </div>
         <Box showEmits showSlots showTooltip>
             <template #tab0>

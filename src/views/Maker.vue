@@ -31,6 +31,7 @@ import MakerNestedDonuts from "../components/maker/MakerNestedDonuts.vue";
 import MakerSparkgauge from "../components/maker/MakerSparkgauge.vue";
 import MakerGalaxy from "../components/maker/MakerGalaxy.vue";
 import MakerKpi from "../components/maker/MakerKpi.vue";
+import MakerStripPlot from "../components/maker/MakerStripPlot.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
@@ -63,6 +64,7 @@ const options = ref([
     { name: "VueUiChestnut", icon: "chartChestnut", thumb: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href},
     { name: "VueUiVerticalBar", icon: "chartVerticalBar", thumb: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href},
     { name: "VueUiHeatmap", icon: "chartHeatmap", thumb: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href},
+    { name: "VueUiStripPlot", icon: "chartStripPlot", thumb: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href},
     { name: "VueUiSparkline", icon: "chartSparkline", thumb: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href},
     { name: "VueUiSparkStackbar", icon: "chartSparkStackbar", thumb: new URL('../assets/thumb_stackbar_light.png', import.meta.url).href},
     { name: "VueUiSparkbar", icon: "chartSparkbar", thumb: new URL('../assets/thumb_sparkbar_light.png', import.meta.url).href},
@@ -196,5 +198,6 @@ function selectChart(opt) {
         <MakerSparkgauge v-if="selectedChart.name === 'VueUiSparkgauge'" />
         <MakerGalaxy v-if="selectedChart.name === 'VueUiGalaxy'" />
         <MakerKpi v-if="selectedChart.name === 'VueUiKpi'" />
+        <MakerStripPlot v-if="selectedChart.name === 'VueUiStripPlot'" />
     </div>
 </template>
