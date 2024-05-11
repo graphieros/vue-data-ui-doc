@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.43",
+        "date": "2024-05-11",
+        "updates": [
+            {
+                "component": "VueUiStripPlot",
+                "description": "Added new component",
+                "link": "/docs#vue-ui-strip-plot"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.40",
         "date": "2024-05-10",
         "updates": [

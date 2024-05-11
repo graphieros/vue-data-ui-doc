@@ -45,7 +45,8 @@ import {
     VueUiNestedDonuts,
     VueUiSparkgauge,
     VueDataUi,
-    VueUiQuickChart
+    VueUiQuickChart,
+    VueUiStripPlot
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -95,5 +96,6 @@ app.component("VueUiNestedDonuts", VueUiNestedDonuts)
 app.component("VueUiSparkgauge", VueUiSparkgauge)
 app.component("VueDataUi", VueDataUi)
 app.component("VueUiQuickChart", VueUiQuickChart)
+app.component("VueUiStripPlot", VueUiStripPlot)
 
 app.mount('#app')

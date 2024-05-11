@@ -32,7 +32,6 @@ onMounted(() => {
   }).finally(() => {
     store.isFetching = false;
   })
-
 })
 
 </script>

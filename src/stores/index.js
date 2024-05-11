@@ -863,6 +863,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        stripPlot: {
+                            en: "Visualize the distribution of many individual one-dimensional values on a single-axis scatter plot chart.",
+                            fr: "Visualisez la distribution de nombreuses valeurs unidimensionnelles individuelles sur un nuage de points à un seul axe.",
+                            pt: "Visualize a distribuição de muitos valores unidimensionais individuais em um gráfico de dispersão de eixo único.",
+                            de: "Visualisieren Sie die Verteilung vieler einzelner eindimensionaler Werte in einem einachsigen Streudiagramm.",
+                            zh: "在单轴散点图上可视化许多单独一维值的分布。",
+                            jp: "多数の個々の 1 次元値の分布を単軸の散布図で視覚化します。",
+                            es: "Visualice la distribución de muchos valores unidimensionales individuales en un gráfico de dispersión de un solo eje.",
+                            ko: "단일 축 산점도 차트에서 많은 개별 1차원 값의 분포를 시각화합니다."
+                        },
                         trend: {
                             en: "Quickly visualize a trend from a simple dataset.",
                             fr: "Visualisez rapidement une tendance à partir d’un simple ensemble de données.",

@@ -57,6 +57,7 @@ import DocVueUiAccordion from "../components/docs/DocVueUiAccordion.vue";
 import DocVueUiQuickChart from "../components/docs/DocVueUiQuickChart.vue";
 import DocVueUiCursor from "../components/docs/DocVueUiCursor.vue";
 import DocVueUiSparkTrend from "../components/docs/DocVueUiSparkTrend.vue";
+import DocVueUiStripPlot from "../components/docs/DocVueUiStripPlot.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -644,6 +645,17 @@ const menuItems = computed(() => [
         hasSlot: true,
         hasTableCss: false,
     },
+    {
+        name: "StripPlot",
+        icon: "chartStripPlot",
+        tooltip: translations.value.docs.tooltips.stripPlot[store.lang],
+        link: "/docs#vue-ui-strip-plot",
+        type: "classic",
+        thumb: new URL('../assets/thumb_strip_plot.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+    },
 ])
 
 const currentShowcase = ref('VueUiXy')
@@ -726,6 +738,7 @@ onMounted(playShowcase)
             <DocVueUiQuickChart v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-quick-chart'" />
             <DocVueUiCursor v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-cursor'" />
             <DocVueUiSparkTrend v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-spark-trend'" />
+            <DocVueUiStripPlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-strip-plot'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

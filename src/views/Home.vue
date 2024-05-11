@@ -479,7 +479,7 @@ function selectMenu({ datapoint, index }) {
               <span>
                 {{ translations.github[store.lang] }}
               </span>
-              <div class="w-[25px]" v-if="isLoading">              
+              <div class="w-[25px]" v-if="store.isFetching">              
                 <VueUiMiniLoader 
                   :config="{
                     onion: {
@@ -493,10 +493,10 @@ function selectMenu({ datapoint, index }) {
                   }"
                 />
               </div>
-              <div class="flex flex-row gap-2 place-items-center" v-if="stars && !isLoading">
+              <div class="flex flex-row gap-2 place-items-center" v-if="store.stars && !store.isFetching">
                 <StarFilledIcon class="text-[#fdd663] drop-shadow"/>
                 <span class="text-xs dark:text-[#fdd663] h-[20px]">
-                  <VueUiDigits :dataset="stars" :config="digitConfigStars"/>
+                  <VueUiDigits :dataset="store.stars" :config="digitConfigStars"/>
                 </span>
               </div>
 
