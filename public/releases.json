@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.50",
+        "date": "2024-05-13",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added multiple y axis scales option",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.49",
         "date": "2024-05-13",
         "updates": [

@@ -28,7 +28,9 @@ const dataset = ref([
         series: [ -55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
         type: "bar",
         color: "rgb(95,139,238)",
-        shape: 'circle'
+        shape: 'circle',
+        scaleSteps: 10,
+        scaleLabel: "Blue circles"
     },
     {
         name: "Series 2",
@@ -38,14 +40,18 @@ const dataset = ref([
         useArea: true,
         useProgression: true,
         dataLabels: false,
-        shape: "triangle"
+        shape: "triangle",
+        scaleSteps: 10,
+        scaleLabel: "Triangles"
     },
     {
         name: "Series 3",
         series: [ 64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],
         type: "plot",
         color: "rgb(255,100,0)",
-        shape: "star"
+        shape: "star",
+        scaleSteps: 10,
+        scaleLabel: "Plots"
     },
     {
         name: "Series 4",
@@ -55,7 +61,9 @@ const dataset = ref([
         useArea: false,
         dataLabels: false,
         color: "rgb(200,200,50)",
-        shape: 'circle'
+        shape: 'Yellow circles',
+        scaleSteps: 10,
+        scaleLabel: ""
     },
     {
         name: "Target",
@@ -65,7 +73,9 @@ const dataset = ref([
         dashed: true,
         useTag: "start",
         dataLabels: false,
-        shape: 'circle'
+        shape: 'circle',
+        scaleSteps: 10,
+        scaleLabel: "Black circles"
     },
 ]);
 
@@ -119,6 +129,11 @@ const config = ref({
                     yLabel: "yLabel",
                     xLabel: "xLabel",
                     fontSize: 12
+                },
+                yAxis: {
+                    commonScaleSteps: 10,
+                    useIndividualScale: false,
+                    labelWidth: 40
                 },
                 xAxisLabels: {
                     color: "#1A1A1A",
@@ -288,6 +303,11 @@ const darkModeConfig = ref({
                     yLabel: "yLabel",
                     xLabel: "xLabel",
                     fontSize: 12
+                },
+                yAxis: {
+                    commonScaleSteps: 10,
+                    useIndividualScale: false,
+                    labelWidth: 40
                 },
                 xAxisLabels: {
                     color: "#c8c8c8",
@@ -486,6 +506,12 @@ function toggleUseCanvas() {
     }
 }
 
+function toggleUseIndividualScale() {
+    mutableConfig.value.chart.grid.labels.yAxis.useIndividualScale = !mutableConfig.value.chart.grid.labels.yAxis.useIndividualScale;
+    mutableConfigDarkMode.value.chart.grid.labels.yAxis.useIndividualScale = !mutableConfigDarkMode.value.chart.grid.labels.yAxis.useIndividualScale;
+    forceChartUpdate();
+}
+
 const shapeOptions = ref([
     'circle',
     'triangle',
@@ -529,7 +555,7 @@ const shapeOptions = ref([
             <GitHubLink link="vue-ui-xy"/>
             <MakerLink to="VueUiXy"/>
         </div>
-        <div class="w-full mx-auto max-w-[500px] flex flex-col p-6 border border-app-blue rounded-md bg-[#5f8bee12]">
+        <!-- <div class="w-full mx-auto max-w-[500px] flex flex-col p-6 border border-app-blue rounded-md bg-[#5f8bee12]">
             <span class="dark:text-blue-300">
                 v 1.8.1 : {{ translations.docs.comments.xy.canvas.description[store.lang] }}
             </span>
@@ -562,6 +588,16 @@ const shapeOptions = ref([
                 <input id="useCanvas" class="accent-app-blue" type="checkbox" v-model="useCanvas" @change="toggleUseCanvas">
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use canvas</label>
             </div>
+        </div> -->
+        <div class="w-full mx-auto max-w-[500px] flex flex-col p-6 border border-app-blue rounded-md bg-[#5f8bee12]">
+            <span class="dark:text-blue-300">
+                v2.1.50 : {{ translations.docs.comments.xy.individualScales[store.lang] }}
+            </span>
+            
+            <div class="w-full flex flex-row place-items-center justify-center gap-2 mt-2">
+                <input id="useCanvas" class="accent-app-blue" type="checkbox" v-model="useCanvas" @change="toggleUseIndividualScale">
+                <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
+            </div>
         </div>
         <Box showEmits showSlots showTooltip>
             <template v-slot:tab0>
@@ -587,6 +623,8 @@ const shapeOptions = ref([
             useArea?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.area[store.lang] }}</span>
             smooth?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.smooth[store.lang] }}</span>
             shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.shape[store.lang] }}</span>
+            scaleSteps?: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleSteps[store.lang] }}</span>
+            scaleLabel?: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleLabel[store.lang] }}</span>
         },
         {...}
     ]
@@ -611,6 +649,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
         </select>,</span>
         color: <span class="text-app-blue">"rgb(95,139,238)",</span>
         <template v-if="['line', 'plot'].includes(mutableDataset[0].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[0].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
+        scaleSteps: 10,
+        scaleLabel: "Blue circles"
     },
     {
         name: <span class="text-app-green">"Series 2",</span>
@@ -625,6 +665,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
         dataLabels: <span class="text-app-green">false,</span>
         useArea: <span class="text-app-green">true</span>
         <template v-if="['line', 'plot'].includes(mutableDataset[1].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[1].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
+        scaleSteps: 10,
+        scaleLabel: "Triangles"
     },
     {
         name: <span class="text-app-orange">"Series 3",</span>
@@ -636,6 +678,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
         </select>,</span>
         color: <span class="text-app-orange">"rgb(255,100,0)"</span>
         <template v-if="['line', 'plot'].includes(mutableDataset[2].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[2].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
+        scaleSteps: 10,
+        scaleLabel: "Plots"
     },
     {
         name: <span class="text-app-yellow">"Series 4",</span>
@@ -648,6 +692,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
         smooth: true, <span class="text-gray-500">// {{ translations.docs.comments.xy.smooth2[store.lang] }}</span>
         color: <span class="text-app-yellow">"rgb(200,200,50)"</span>
         <template v-if="['line', 'plot'].includes(mutableDataset[3].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[3].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
+        scaleSteps: 10,
+        scaleLabel: ""
     },
     {
         name: <span class="text-gray-500">"Target",</span> 
@@ -658,6 +704,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
         useTag: <span class="text-gray-500">"start",</span>
         dataLabels: <span class="text-gray-500">false,</span>
         <template v-if="['line', 'plot'].includes(mutableDataset[4].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[4].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
+        scaleSteps: 10,
+        scaleLabel: "Black circles"
     },
 ];
 </code>
@@ -731,6 +779,11 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                         yLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.grid.labels.axis.yLabel"><input v-else type="text" v-model="mutableConfig.chart.grid.labels.axis.yLabel">, (default: "")
                         xLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.grid.labels.axis.xLabel"><input v-else type="text" v-model="mutableConfig.chart.grid.labels.axis.xLabel">, (default: "")
                         fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.grid.labels.axis.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.axis.fontSize">, (default: 12)
+                    },
+                    yAxis: {
+                        commonScaleSteps: <input v-if="isDarkMode" type="number" min="2" max="30" v-model="mutableConfigDarkMode.chart.grid.labels.yAxis.commonScaleSteps"><input v-else type="number" min="2" max="30" v-model="mutableConfig.chart.grid.labels.yAxis.commonScaleSteps">, (default: 10)
+                        useIndividualScale: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.grid.labels.yAxis.useIndividualScale"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.yAxis.useIndividualScale">, (default: false)
+                        labelWidth: <input v-if="isDarkMode" type="number" min="40" max="64" v-model="mutableConfigDarkMode.chart.grid.labels.yAxis.labelWidth"><input v-else type="number" min="40" max="64" v-model="mutableConfig.chart.grid.labels.yAxis.labelWidth">, (default: 40)
                     },
                     xAxisLabels: {
                         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.xAxisLabels.show">, (default: true)

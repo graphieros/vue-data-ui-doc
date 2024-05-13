@@ -1788,6 +1788,36 @@ export const useMainStore = defineStore("main", {
                             ko: "여기에 데이터세트가 있습니다"
                         },
                         xy: {
+                            individualScales: {
+                                en: "It is possible to display all series with their indivudual scale, to show correlations between series with different magnitudes. It is recommended to use this config option when the dataset presents a limited number of datapoints, to avoid hindering the chart's readability.",
+                                fr: "Il est possible d'afficher toutes les séries avec leur échelle individuelle, pour montrer les corrélations entre des séries de différentes magnitudes. Il est recommandé d'utiliser cette option de configuration lorsque l'ensemble de données présente un nombre limité de points de données, pour éviter de gêner la lisibilité du graphique.",
+                                pt: "É possível visualizar todas as séries com sua escala individual, para mostrar correlações entre séries com diferentes magnitudes. Recomenda-se utilizar esta opção de configuração quando o conjunto de dados apresentar um número limitado de pontos de dados, para não prejudicar a legibilidade do gráfico.",
+                                de: "Es ist möglich, alle Serien mit ihrer individuellen Skala anzuzeigen, um Korrelationen zwischen Serien mit unterschiedlichen Größenordnungen anzuzeigen. Es wird empfohlen, diese Konfigurationsoption zu verwenden, wenn der Datensatz eine begrenzte Anzahl von Datenpunkten aufweist, um die Lesbarkeit des Diagramms nicht zu beeinträchtigen.",
+                                zh: "可以显示所有系列及其各自的比例，以显示不同量级的系列之间的相关性。当数据集提供有限数量的数据点时，建议使用此配置选项，以避免影响图表的可读性。",
+                                jp: "すべての系列を個別のスケールで表示し、異なる大きさの系列間の相関を示すことができます。データセットが提示するデータポイントの数が限られている場合は、グラフの読みやすさの妨げを避けるために、この構成オプションを使用することをお勧めします。",
+                                es: "Es posible visualizar todas las series con su escala individual, para mostrar correlaciones entre series con diferentes magnitudes. Se recomienda utilizar esta opción de configuración cuando el conjunto de datos presenta una cantidad limitada de puntos de datos, para evitar obstaculizar la legibilidad del gráfico.",
+                                ko: "모든 계열을 개별 규모로 표시하여 크기가 다른 계열 간의 상관 관계를 표시할 수 있습니다. 차트의 가독성을 방해하지 않도록 데이터 세트가 제한된 수의 데이터 포인트를 제공하는 경우 이 구성 옵션을 사용하는 것이 좋습니다."
+                            },
+                            scaleSteps: {
+                                en: 'Available since v2.1.50, to define the number of indentations in an individual scale.',
+                                fr: "Disponible depuis la v2.1.50, pour définir le nombre d'indentations dans une échelle individuelle.",
+                                pt: "Disponível desde a v2.1.50, para definir o número de recuos em uma escala individual.",
+                                de: "Verfügbar seit v2.1.50, um die Anzahl der Einrückungen in einer einzelnen Skala zu definieren.",
+                                zh: "自 v2.1.50 起可用，用于定义单个比例中的缩进数量。",
+                                jp: "v2.1.50 以降、個々のスケールのインデント数を定義するために使用できます。",
+                                es: "Disponible desde la v2.1.50, para definir el número de sangrías en una escala individual.",
+                                ko: "개별 눈금의 들여쓰기 수를 정의하기 위해 v2.1.50부터 사용할 수 있습니다."
+                            },
+                            scaleLabel: {
+                                en: 'Available since v2.1.50, to specify a label for individual scales.',
+                                fr: "Disponible depuis la v2.1.50, pour spécifier une étiquette pour les échelles individuelles.",
+                                pt: "Disponível desde a v2.1.50, para especificar um rótulo para balanças individuais.",
+                                de: "Verfügbar seit v2.1.50, um eine Beschriftung für einzelne Skalen festzulegen.",
+                                zh: "自 v2.1.50 起可用，用于为各个比例指定标签。",
+                                jp: "v2.1.50 以降、個々のスケールのラベルを指定するために使用できます。",
+                                es: "Disponible desde v2.1.50, para especificar una etiqueta para básculas individuales.",
+                                ko: "개별 눈금에 대한 레이블을 지정하기 위해 v2.1.50부터 사용할 수 있습니다."
+                            },
                             shape: {
                                 en: "Available since v.1.9.17 for line and plot types. Defaults to 'circle'",
                                 fr: "Disponible depuis la v.1.9.17 pour les types de lignes et de tracés. La valeur par défaut est 'circle'",
