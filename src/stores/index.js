@@ -1799,24 +1799,24 @@ export const useMainStore = defineStore("main", {
                                 ko: "모든 계열을 개별 규모로 표시하여 크기가 다른 계열 간의 상관 관계를 표시할 수 있습니다. 차트의 가독성을 방해하지 않도록 데이터 세트가 제한된 수의 데이터 포인트를 제공하는 경우 이 구성 옵션을 사용하는 것이 좋습니다."
                             },
                             scaleSteps: {
-                                en: 'Available since v2.1.50, to define the number of indentations in an individual scale.',
-                                fr: "Disponible depuis la v2.1.50, pour définir le nombre d'indentations dans une échelle individuelle.",
-                                pt: "Disponível desde a v2.1.50, para definir o número de recuos em uma escala individual.",
-                                de: "Verfügbar seit v2.1.50, um die Anzahl der Einrückungen in einer einzelnen Skala zu definieren.",
-                                zh: "自 v2.1.50 起可用，用于定义单个比例中的缩进数量。",
-                                jp: "v2.1.50 以降、個々のスケールのインデント数を定義するために使用できます。",
-                                es: "Disponible desde la v2.1.50, para definir el número de sangrías en una escala individual.",
-                                ko: "개별 눈금의 들여쓰기 수를 정의하기 위해 v2.1.50부터 사용할 수 있습니다."
+                                en: 'Available since v2.1.52, to define the number of indentations in an individual scale.',
+                                fr: "Disponible depuis la v2.1.52, pour définir le nombre d'indentations dans une échelle individuelle.",
+                                pt: "Disponível desde a v2.1.52, para definir o número de recuos em uma escala individual.",
+                                de: "Verfügbar seit v2.1.52, um die Anzahl der Einrückungen in einer einzelnen Skala zu definieren.",
+                                zh: "自 v2.1.52 起可用，用于定义单个比例中的缩进数量。",
+                                jp: "v2.1.52 以降、個々のスケールのインデント数を定義するために使用できます。",
+                                es: "Disponible desde la v2.1.52, para definir el número de sangrías en una escala individual.",
+                                ko: "개별 눈금의 들여쓰기 수를 정의하기 위해 v2.1.52부터 사용할 수 있습니다."
                             },
                             scaleLabel: {
-                                en: 'Available since v2.1.50, to specify a label for individual scales.',
-                                fr: "Disponible depuis la v2.1.50, pour spécifier une étiquette pour les échelles individuelles.",
-                                pt: "Disponível desde a v2.1.50, para especificar um rótulo para balanças individuais.",
-                                de: "Verfügbar seit v2.1.50, um eine Beschriftung für einzelne Skalen festzulegen.",
-                                zh: "自 v2.1.50 起可用，用于为各个比例指定标签。",
-                                jp: "v2.1.50 以降、個々のスケールのラベルを指定するために使用できます。",
-                                es: "Disponible desde v2.1.50, para especificar una etiqueta para básculas individuales.",
-                                ko: "개별 눈금에 대한 레이블을 지정하기 위해 v2.1.50부터 사용할 수 있습니다."
+                                en: 'Available since v2.1.52, to specify a label for individual scales.',
+                                fr: "Disponible depuis la v2.1.52, pour spécifier une étiquette pour les échelles individuelles.",
+                                pt: "Disponível desde a v2.1.52, para especificar um rótulo para balanças individuais.",
+                                de: "Verfügbar seit v2.1.52, um eine Beschriftung für einzelne Skalen festzulegen.",
+                                zh: "自 v2.1.52 起可用，用于为各个比例指定标签。",
+                                jp: "v2.1.52 以降、個々のスケールのラベルを指定するために使用できます。",
+                                es: "Disponible desde v2.1.52, para especificar una etiqueta para básculas individuales.",
+                                ko: "개별 눈금에 대한 레이블을 지정하기 위해 v2.1.52부터 사용할 수 있습니다."
                             },
                             shape: {
                                 en: "Available since v.1.9.17 for line and plot types. Defaults to 'circle'",

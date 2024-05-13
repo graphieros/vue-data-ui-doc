@@ -591,7 +591,7 @@ const shapeOptions = ref([
         </div> -->
         <div class="w-full mx-auto max-w-[500px] flex flex-col p-6 border border-app-blue rounded-md bg-[#5f8bee12]">
             <span class="dark:text-blue-300">
-                v2.1.50 : {{ translations.docs.comments.xy.individualScales[store.lang] }}
+                v2.1.52 : {{ translations.docs.comments.xy.individualScales[store.lang] }}
             </span>
             
             <div class="w-full flex flex-row place-items-center justify-center gap-2 mt-2">
