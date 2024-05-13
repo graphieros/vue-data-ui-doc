@@ -1,5 +1,27 @@
 [
     {
+        "version": "v 2.1.49",
+        "date": "2024-05-13",
+        "updates": [
+            {
+                "component": "VueUiDumbbell",
+                "description": "Added optional animation",
+                "link": "/docs#vue-ui-dumbbell"
+            }
+        ]
+    },
+    {
+        "version": "v 2.1.44",
+        "date": "2024-05-12",
+        "updates": [
+            {
+                "component": "VueUiDumbbell",
+                "description": "Added new component",
+                "link": "/docs#vue-ui-dumbbell"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.43",
         "date": "2024-05-11",
         "updates": [

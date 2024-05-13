@@ -288,6 +288,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href,
     },
     {
+        route: '/docs#vue-ui-dumbbell',
+        icon: 'chartDumbbell',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Dumbbell',
+        thumb: new URL('../assets/thumb_dumbbell.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_dumbbell_light.png', import.meta.url).href,
+    },
+    {
         route: '/docs#vue-ui-sparkline',
         icon: 'chartSparkline',
         cssClasses: '',
@@ -534,6 +543,7 @@ const sideMenuItems = ref([
             {route: '/docs#vue-ui-nested-donuts', componentName: 'NestedDonuts', icon: 'chartNestedDonuts' },
             {route: '/docs#vue-ui-galaxy', componentName: 'Galaxy', icon: 'chartGalaxy' },
             {route: '/docs#vue-ui-strip-plot', componentName: 'StripPlot', icon: 'chartStripPlot' },
+            {route: '/docs#vue-ui-dumbbell', componentName: 'Dumbbell', icon: 'chartDumbbell' },
         ]
     },
     {

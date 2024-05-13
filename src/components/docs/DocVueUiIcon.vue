@@ -49,6 +49,7 @@ const specialIcons = ref([
     "chartCluster",
     "chartDonut",
     "chartDonutEvolution",
+    "chartDumbbell",
     "chartGalaxy",
     "chartGauge",
     "chartHeatmap",

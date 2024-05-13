@@ -863,6 +863,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        dumbbell: {
+                            en: "Visualize changes between two points in time for many datapoints.",
+                            fr: "Visualisez les changements entre deux points dans le temps pour de nombreux points de données",
+                            pt: "Visualize alterações entre dois pontos no tempo para muitos pontos de dados",
+                            de: "Visualisieren Sie Änderungen zwischen zwei Zeitpunkten für viele Datenpunkte",
+                            zh: "可视化许多数据点的两个时间点之间的变化",
+                            jp: "多くのデータポイントの 2 つの時点間の変化を視覚化",
+                            es: "Visualice cambios entre dos puntos en el tiempo para muchos puntos de datos",
+                            ko: "많은 데이터 포인트에 대해 두 시점 간의 변경 사항을 시각화합니다."
+                        },
                         stripPlot: {
                             en: "Visualize the distribution of many individual one-dimensional values on a single-axis scatter plot chart.",
                             fr: "Visualisez la distribution de nombreuses valeurs unidimensionnelles individuelles sur un nuage de points à un seul axe.",

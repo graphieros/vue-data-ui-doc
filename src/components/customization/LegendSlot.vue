@@ -15,6 +15,7 @@ const allowedComponents = ref([
     {name: "VueUiChestnut", icon: 'chartChestnut', link: '/docs#vue-ui-chestnut'},
     {name: "VueUiDonut", icon: 'chartDonut', link: '/docs#vue-ui-donut'},
     {name: "VueUiDonutEvolution", icon: 'chartDonutEvolution', link: '/docs#vue-ui-donut-evolution'},
+    {name: "VueUiDumbbell", icon: 'chartDumbbell', link: '/docs#vue-ui-dumbbell'},
     {name: "VueUiGauge", icon: 'chartGauge', link: '/docs#vue-ui-gauge'},
     {name: "VueUiMoodRadar", icon: 'chartMoodRadar', link: '/docs#vue-ui-mood-radar'},
     {name: "VueUiNestedDonuts", icon: 'chartNestedDonuts', link: '/docs#vue-ui-nested-donuts'},
