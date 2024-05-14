@@ -5,6 +5,8 @@ import { useRouter } from "vue-router";
 import { SunFilledIcon, MoonStarsIcon, LanguageIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import ChartMaker from "./ChartMaker.vue";
+import releases from "../../public/releases.json"
+
 const router = useRouter();
 const store = useMainStore();
 
@@ -16,6 +18,22 @@ const translations = computed(() => {
 function useMenu() {
     isOpen.value = !isOpen.value;
 }
+
+const lastVersion = computed(() => {
+    console.log(releases[0].version)
+    return releases[0].version.replace('v', '').split('').slice(1)
+})
+
+const digitsConfigVersion = computed(() => {
+  
+  return {
+    backgroundColor: "transparent",
+    digits: {
+      color: isDarkMode.value ? '#42d392' : '#1A1A1A',
+      skeletonColor: isDarkMode.value ? '#FFFFFF10' : '#1A1A1A16'
+    }
+  }
+})
 
 const chartMkr = ref(null)
 
@@ -103,10 +121,15 @@ const selectedLanguage = computed({
     <ChartMaker ref="chartMkr"/>
     <header data-cy="app-header" class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-gray-700 transition-all">
         <div class="mx-auto w-5/6 py-3 flex justify-between place-items-center">
-            <router-link data-cy="link-home" to="/" class="w-[150px]">
-                <div data-cy="header-app-name" class="flex flex-row gap-3 w-full">
-                    <img data-cy="header-logo" src="../assets/logo.png" class="h-5">
-                    <span>Vue Data UI</span>
+            <router-link data-cy="link-home" to="/">
+                <div class="flex flex-row gap-3">
+                    <div data-cy="header-app-name" class="flex flex-row gap-3 w-full whitespace-nowrap">
+                        <img data-cy="header-logo" src="../assets/logo.png" class="h-5">
+                        <span>Vue Data UI</span>
+                    </div>
+                    <div class="w-[70px] flex flex-row align-center">
+                        <VueUiDigits v-for="d in lastVersion" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.5rem]' : ''"/>
+                    </div>
                 </div>
             </router-link>
 

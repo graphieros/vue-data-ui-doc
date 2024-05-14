@@ -30,8 +30,7 @@ const dataset = ref([
         type: "bar",
         color: "rgb(95,139,238)",
         shape: 'circle',
-        scaleSteps: 10,
-        scaleLabel: "Blue circles"
+        scaleSteps: 2,
     },
     {
         name: "Series 2",
@@ -42,8 +41,7 @@ const dataset = ref([
         useProgression: true,
         dataLabels: false,
         shape: "triangle",
-        scaleSteps: 10,
-        scaleLabel: "Triangles"
+        scaleSteps: 2,
     },
     {
         name: "Series 3",
@@ -51,8 +49,7 @@ const dataset = ref([
         type: "plot",
         color: "rgb(255,100,0)",
         shape: "star",
-        scaleSteps: 10,
-        scaleLabel: "Plots"
+        scaleSteps: 2,
     },
     {
         name: "Series 4",
@@ -63,8 +60,7 @@ const dataset = ref([
         dataLabels: false,
         color: "rgb(200,200,50)",
         shape: 'Yellow circles',
-        scaleSteps: 10,
-        scaleLabel: ""
+        scaleSteps: 2,
     },
     {
         name: "Target",
@@ -75,8 +71,7 @@ const dataset = ref([
         useTag: "start",
         dataLabels: false,
         shape: 'circle',
-        scaleSteps: 10,
-        scaleLabel: "Black circles"
+        scaleSteps: 2,
     },
 ]);
 
@@ -122,6 +117,7 @@ const config = ref({
         grid: {
             stroke: "#C4C4C4",
             showVerticalLines: false,
+            showHorizontalLines: false,
             labels: {
                 show: true,
                 color: "#1A1A1A",
@@ -136,6 +132,8 @@ const config = ref({
                 yAxis: {
                     commonScaleSteps: 10,
                     useIndividualScale: false,
+                    stacked: false,
+                    gap: 64,
                     labelWidth: 40
                 },
                 xAxisLabels: {
@@ -298,6 +296,7 @@ const darkModeConfig = ref({
         grid: {
             stroke: "#e1e5e8",
             showVerticalLines: false,
+            showHorizontalLines: false,
             labels: {
                 show: true,
                 color: "#c8c8c8",
@@ -312,6 +311,8 @@ const darkModeConfig = ref({
                 yAxis: {
                     commonScaleSteps: 10,
                     useIndividualScale: false,
+                    stacked: false,
+                    gap: 64,
                     labelWidth: 40
                 },
                 xAxisLabels: {
@@ -630,6 +631,8 @@ const shapeOptions = ref([
             shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.shape[store.lang] }}</span>
             scaleSteps?: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleSteps[store.lang] }}</span>
             scaleLabel?: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleLabel[store.lang] }}</span>
+            scaleMax?: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleMax[store.lang] }}</span>
+            scaleMin?: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleMin[store.lang] }}</span>
         },
         {...}
     ]
@@ -776,6 +779,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
             grid: {
                 stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.grid.stroke"><input v-else type="color" v-model="mutableConfig.chart.grid.stroke">, (default: "#E1E5E8"),
                 showVerticalLines: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.grid.showVerticalLines"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.showVerticalLines"> (default: false)
+                showHorizontalLines: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.grid.showHorizontalLines"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.showVerticalLines"> (default: false)
                 labels: {
                     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.grid.labels.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.show">, (default: true)
                     color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.grid.labels.color"><input v-else type="color" v-model="mutableConfig.chart.grid.labels.color">, (default: "#2D353C"),
@@ -789,8 +793,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                     },
                     yAxis: {
                         commonScaleSteps: <input v-if="isDarkMode" type="number" min="2" max="30" v-model="mutableConfigDarkMode.chart.grid.labels.yAxis.commonScaleSteps"><input v-else type="number" min="2" max="30" v-model="mutableConfig.chart.grid.labels.yAxis.commonScaleSteps">, (default: 10)
-                        useIndividualScale: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.grid.labels.yAxis.useIndividualScale"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.yAxis.useIndividualScale">, (default: false)
+                        useIndividualScale: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.grid.labels.yAxis.useIndividualScale" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.yAxis.useIndividualScale" @change="forceChartUpdate()">, (default: false)
                         labelWidth: <input v-if="isDarkMode" type="number" min="40" max="64" v-model="mutableConfigDarkMode.chart.grid.labels.yAxis.labelWidth"><input v-else type="number" min="40" max="64" v-model="mutableConfig.chart.grid.labels.yAxis.labelWidth">, (default: 40)
+                        stacked: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.grid.labels.yAxis.stacked" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.yAxis.stacked" @change="forceChartUpdate()">, (default: false) // always use in combination with useIndividualScale: true
+                        gap: <input v-if="isDarkMode" type="number" min="10" max="100" v-model="mutableConfigDarkMode.chart.grid.labels.yAxis.gap" @change="forceChartUpdate()"><input v-else type="number" min="20" max="100" v-model="mutableConfig.chart.grid.labels.yAxis.gap" @change="forceChartUpdate()">, (default: 64) // to be used with useIndividualScale: true && stacked: true
                     },
                     xAxisLabels: {
                         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.xAxisLabels.show">, (default: true)

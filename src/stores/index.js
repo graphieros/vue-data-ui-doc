@@ -1788,6 +1788,26 @@ export const useMainStore = defineStore("main", {
                             ko: "여기에 데이터세트가 있습니다"
                         },
                         xy: {
+                            scaleMin: {
+                                en: "Set the minimum value for an individual scale",
+                                fr: "Définir la valeur minimale pour une échelle individuelle",
+                                pt: "Defina o valor mínimo para uma escala individual",
+                                de: "Legen Sie den Mindestwert für eine einzelne Skala fest",
+                                zh: "设置单个比例的最小值",
+                                jp: "個々のスケールの最小値を設定する",
+                                es: "Establecer el valor mínimo para una escala individual",
+                                ko: "개별 눈금의 최소값 설정"
+                            },
+                            scaleMax: {
+                                en: "Set the max value for an individual scale (can act like an offset Y of sorts)",
+                                fr: "Définir la valeur maximale pour une échelle individuelle (peut agir comme une sorte de décalage Y)",
+                                pt: "Defina o valor máximo para uma escala individual (pode funcionar como uma espécie de deslocamento Y)",
+                                de: "Legen Sie den Maximalwert für eine einzelne Skala fest (kann wie eine Art Offset-Y wirken)",
+                                zh: "设置单个比例的最大值（可以起到类似 Y 偏移量的作用）",
+                                jp: "個々のスケールの最大値を設定します (ある種のオフセット Y のように機能します)",
+                                es: "Establezca el valor máximo para una escala individual (puede actuar como una especie de compensación Y)",
+                                ko: "개별 눈금의 최대값 설정(일종의 오프셋 Y처럼 작동할 수 있음)"
+                            },
                             individualScales: {
                                 en: "It is possible to display all series with their indivudual scale, to show correlations between series with different magnitudes. It is recommended to use this config option when the dataset presents a limited number of datapoints, to avoid hindering the chart's readability.",
                                 fr: "Il est possible d'afficher toutes les séries avec leur échelle individuelle, pour montrer les corrélations entre des séries de différentes magnitudes. Il est recommandé d'utiliser cette option de configuration lorsque l'ensemble de données présente un nombre limité de points de données, pour éviter de gêner la lisibilité du graphique.",

@@ -1,5 +1,27 @@
 [
     {
+        "version": "v 2.1.55",
+        "date": "2024-05-14",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added config option to stack series in individual scale mode",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
+        "version": "v 2.1.54",
+        "date": "2024-05-14",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added optional datapoint scaleMin & scaleMax attributes to further customize individual scales.",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.53",
         "date": "2024-05-14",
         "updates": [
