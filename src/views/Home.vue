@@ -317,7 +317,7 @@ const datasetDonutMenu = computed(() => {
         {
             name: translations.value.menu.chartBuilder[store.lang],
             values: [1],
-            color: "#e0b731"
+            color: "#fdd663"
         },
         {
             name: translations.value.menu.customization[store.lang],

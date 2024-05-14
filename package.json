@@ -12,6 +12,7 @@
   "dependencies": {
     "cypress": "^13.4.0",
     "pinia": "^2.1.6",
+    "prismjs": "^1.29.0",
     "vue": "^3.3.4",
     "vue-data-ui": "2.1.52",
     "vue-router": "^4.0.13",

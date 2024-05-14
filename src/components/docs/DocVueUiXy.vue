@@ -5,7 +5,8 @@ import { PinIcon, PinnedOffIcon, CopyIcon, ThumbUpIcon, ThumbDownIcon } from "vu
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue"
+import MakerLink from "../MakerLink.vue";
+import ucXy from "../useCases/uc-xy.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -599,7 +600,7 @@ const shapeOptions = ref([
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
             </div>
         </div>
-        <Box showEmits showSlots showTooltip>
+        <Box showEmits showSlots showTooltip showUseCases>
             <template v-slot:tab0>
 
             {{ translations.docs.datastructure[store.lang] }}
@@ -1093,6 +1094,10 @@ Target the following css class to apply custom styles:
 .vue-data-ui-custom-tooltip
 </code>
 </pre>
+            </template>
+
+            <template #tab5>
+                <uc-xy/>
             </template>
         </Box>
     </div>
