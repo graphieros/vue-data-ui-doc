@@ -128,7 +128,9 @@ const config = ref({
                 fontSize: 12,
                 axis: {
                     yLabel: "yLabel",
+                    yLabelOffsetX: 0,
                     xLabel: "xLabel",
+                    xLabelOffsetY: 0,
                     fontSize: 12
                 },
                 yAxis: {
@@ -302,7 +304,9 @@ const darkModeConfig = ref({
                 fontSize: 12,
                 axis: {
                     yLabel: "yLabel",
+                    yLabelOffsetX: 0,
                     xLabel: "xLabel",
+                    xLabelOffsetY: 0,
                     fontSize: 12
                 },
                 yAxis: {
@@ -778,7 +782,9 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                     fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.grid.labels.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.fontSize">, (default: 12)
                     axis: {
                         yLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.grid.labels.axis.yLabel"><input v-else type="text" v-model="mutableConfig.chart.grid.labels.axis.yLabel">, (default: "")
+                        yLabelOffsetX: <input v-if="isDarkMode" type="number" min="-64" max="64" v-model="mutableConfigDarkMode.chart.grid.labels.axis.yLabelOffsetX"><input v-else type="number" min="-64" max="64" v-model="mutableConfig.chart.grid.labels.axis.yLabelOffsetX">, (default: 0)
                         xLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.grid.labels.axis.xLabel"><input v-else type="text" v-model="mutableConfig.chart.grid.labels.axis.xLabel">, (default: "")
+                        xLabelOffsetY: <input v-if="isDarkMode" type="number" min="-64" max="64" v-model="mutableConfigDarkMode.chart.grid.labels.axis.xLabelOffsetY"><input v-else type="number" min="-64" max="64" v-model="mutableConfig.chart.grid.labels.axis.xLabelOffsetY">, (default: 0)
                         fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.grid.labels.axis.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.axis.fontSize">, (default: 12)
                     },
                     yAxis: {

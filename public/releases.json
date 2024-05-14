@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.53",
+        "date": "2024-05-14",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fixed yLabel positioning issues. Fixed data table behavior when toggling time range.",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.52",
         "date": "2024-05-13",
         "updates": [
