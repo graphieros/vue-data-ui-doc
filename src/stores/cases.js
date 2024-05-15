@@ -13,6 +13,28 @@ export const useCaseStore = defineStore("cases", {
                 es: "Ver código",
                 ko: "코드 보기"
             },
+            DONUT_PIE: {
+                title: {
+                    en: "I'd rather have a pie",
+                    fr: "Je préfère un camembert",
+                    pt: "Eu prefiro uma torta",
+                    de: "Ich hätte lieber einen Kuchen",
+                    zh: "我宁愿吃个馅饼",
+                    jp: "むしろパイを食べたいです",
+                    es: "Prefiero un pastel",
+                    ko: "차라리 파이를 먹고 싶어"
+                },
+                description: {
+                    en: "If for some reason a pie chart is what you need, the configuration can be tweaked to achieve this result.",
+                    fr: "Si, pour une raison quelconque, vous avez besoin d'un diagramme circulaire, la configuration peut être modifiée pour obtenir ce résultat.",
+                    pt: "Se por algum motivo você precisa de um gráfico de pizza, a configuração pode ser ajustada para alcançar esse resultado.",
+                    de: "Wenn Sie aus irgendeinem Grund ein Kreisdiagramm benötigen, können Sie die Konfiguration anpassen, um dieses Ergebnis zu erzielen.",
+                    zh: "如果由于某种原因您需要饼图，则可以调整配置以获得此结果。",
+                    jp: "何らかの理由で円グラフが必要な場合は、構成を調整してこの結果を達成できます。",
+                    es: "Si por alguna razón lo que necesita es un gráfico circular, la configuración se puede modificar para lograr este resultado.",
+                    ko: "어떤 이유로 원형 차트가 필요한 경우 구성을 조정하여 이 결과를 얻을 수 있습니다."
+                }
+            },
             XY_MULTIPLE_Y_AXES: {
                 title: {
                     en: "Multiple Y axes scales",

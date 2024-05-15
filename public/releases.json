@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.57",
+        "date": "2024-05-15",
+        "updates": [
+            {
+                "component": "VueUiDonut",
+                "description": "Fixed donut thickness config not applied",
+                "link": "/docs#vue-ui-donut"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.56",
         "date": "2024-05-15",
         "updates": [

@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
 import ConfigAttribute from "../ConfigAttribute.vue";
+import UcDonut from "../useCases/uc-donut.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -78,6 +79,7 @@ const darkModeConfig = ref({
                         fontSize: 14,
                     },
                     hollow: {
+                        show: true,
                         total: {
                             show: true,
                             bold: false,
@@ -224,6 +226,7 @@ const config = ref({
                         fontSize: 14,
                     },
                     hollow: {
+                        show: true,
                         total: {
                             show: true,
                             bold: false,
@@ -562,7 +565,7 @@ const slotOption = ref(slotOptions.value[0])
             <GitHubLink link="vue-ui-donut"/>
             <MakerLink to="VueUiDonut"/>
         </div>
-        <Box showEmits showSlots showTooltip>
+        <Box showEmits showSlots showTooltip showUseCases>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -652,6 +655,7 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
                         fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.chart.layout.labels.name.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.chart.layout.labels.name.fontSize">, (default: 14)
                     },
                     hollow: {
+                        show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.hollow.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.hollow.show" @change="forceChartUpdate()">, (default: true)
                         total: {
                             show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.hollow.total.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.hollow.total.show" @change="forceChartUpdate()">, (default: true)
                             bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.hollow.total.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.hollow.total.bold" @change="forceChartUpdate()">, (default: false)
@@ -1061,6 +1065,10 @@ Target the following css class to apply custom styles:
 .vue-data-ui-custom-tooltip
 </code>
 </pre>           
+            </template>
+
+            <template #tab5>
+                <UcDonut/>
             </template>
         </Box>
     </div>

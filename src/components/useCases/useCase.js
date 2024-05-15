@@ -11,6 +11,67 @@ export function useCase() {
         return isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
     });
 
+    const DONUT_PIE_DATASET = ref([
+        {
+            name: 'Serie 1',
+            values: [100]
+        },
+        {
+            name: 'Serie 2',
+            values: [45]
+        },
+        {
+            name: 'Serie 3',
+            values: [36]
+        },
+        {
+            name: 'Serie 4',
+            values: [12]
+        }
+    ]);
+
+    const DONUT_PIE_CONFIG = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: bgColor.value,
+                    color: textColor.value,
+                    useGradient: true,
+                    tooltip: {
+                        backgroundColor: bgColor.value,
+                        color: textColor.value,
+                    },
+                    legend: {
+                        backgroundColor: bgColor.value,
+                        color: textColor.value,
+                    },
+                    layout: {
+                        donut: {
+                            strokeWidth: 130
+                        },
+                        labels: {
+                            percentage: {
+                                color: textColor.value
+                            },
+                            name: {
+                                color: textColor.value
+                            },
+                            hollow: {
+                                show: false,
+                                total: {
+                                    show: false
+                                },
+                                average: {
+                                    show: false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+
     const XY_STACKED_DATASET = ref([
         {
             name: "Serie 0",
@@ -218,6 +279,8 @@ export function useCase() {
         XY_MULTIPLE_Y_AXES_CONFIG,
         XY_MULTIPLE_Y_AXES_DATASET,
         XY_STACKED_CONFIG,
-        XY_STACKED_DATASET
+        XY_STACKED_DATASET,
+        DONUT_PIE_CONFIG,
+        DONUT_PIE_DATASET
     }
 }
