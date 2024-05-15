@@ -34,6 +34,28 @@ export const useCaseStore = defineStore("cases", {
                     es: "A veces es necesario mostrar puntos de datos con diferentes órdenes de magnitud en el mismo gráfico para analizar posibles correlaciones.",
                     ko: "때로는 가능한 상관 관계를 분석하기 위해 동일한 차트에 크기가 다른 데이터 포인트를 표시해야 하는 경우가 있습니다."
                 }
+            },
+            XY_STACKED: {
+                title: {
+                    en: "Stacked, with multiple Y axes scales",
+                    fr: "Empilé, avec plusieurs échelles d'axes Y",
+                    pt: "Empilhados, com múltiplas escalas de eixos Y",
+                    de: "Gestapelt, mit mehreren Y-Achsenskalen",
+                    zh: "堆叠式，具有多个 Y 轴刻度",
+                    jp: "複数の Y 軸スケールを備えたスタック型",
+                    es: "Apiladas, con múltiples escalas de ejes Y",
+                    ko: "여러 개의 Y축 스케일을 사용하여 누적됨"
+                },
+                description: {
+                    en: "Sometimes it is better to show every datapoint on a dedicated area of the chart, to highlight correlations and variations.",
+                    fr: "Parfois, il est préférable d'afficher chaque point de données sur une zone dédiée du graphique, pour mettre en évidence les corrélations et les variations.",
+                    pt: "Às vezes é melhor mostrar cada ponto de dados em uma área dedicada do gráfico, para destacar correlações e variações.",
+                    de: "Manchmal ist es besser, jeden Datenpunkt in einem speziellen Bereich des Diagramms anzuzeigen, um Korrelationen und Variationen hervorzuheben.",
+                    zh: "有时，最好在图表的专用区域上显示每个数据点，以突出显示相关性和变化。",
+                    jp: "場合によっては、相関関係や変動を強調するために、チャートの専用領域にすべてのデータポイントを表示する方がよい場合があります。",
+                    es: "A veces es mejor mostrar cada punto de datos en un área dedicada del gráfico para resaltar correlaciones y variaciones.",
+                    ko: "때로는 상관 관계와 변형을 강조하기 위해 차트의 전용 영역에 모든 데이터 포인트를 표시하는 것이 더 나을 때도 있습니다."
+                }
             }
         }
     }

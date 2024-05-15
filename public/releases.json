@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.56",
+        "date": "2024-05-15",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fixeed harmless console errors when using time zoom with series that have no datapoint in the timeframe",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.55",
         "date": "2024-05-14",
         "updates": [

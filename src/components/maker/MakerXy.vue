@@ -206,6 +206,7 @@ function getLabel(label) {
 
 const accordionConfig = ref(
     {
+            maxHeight: 5000,
             open: true,
             head: {
                 backgroundColor: 'transparent',

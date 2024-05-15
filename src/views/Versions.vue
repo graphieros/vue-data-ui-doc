@@ -979,7 +979,8 @@ const darkModeSparklineConfig = ref({
 
 const sparkbarDataset = computed(() => {
   if(info.value) {
-    return Object.keys(info.value).map(key => {
+    return Object.keys(info.value).filter(key => ['maintenance', 'popularity', 'quality'].includes(key)).map(key => {
+
       return {
         name: key,
         value: info.value[key] * 100,
