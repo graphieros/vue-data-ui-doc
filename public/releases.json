@@ -5,8 +5,13 @@
         "updates": [
             {
                 "component": "VueUiXy",
-                "description": "Fixeed harmless console errors when using time zoom with series that have no datapoint in the timeframe",
+                "description": "Fixed harmless console errors when using time zoom with series that have no datapoint in the timeframe",
                 "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiSparkStackbar",
+                "description": "Fixed TS typo in component name",
+                "link": "/docs#vue-ui-sparkstackbar"
             }
         ]
     },
