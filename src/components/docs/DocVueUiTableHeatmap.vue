@@ -28,23 +28,33 @@ const isDarkMode = computed(() => {
 const dataset = ref([
     {
         name: "Serie 1",
-        values: [20, 30, 40, 50, 40, 30, 20,]
+        values: [20, 30, 40, 50, 40, 30, 20,],
+        color: '#1f77b4',
+        shape: 'circle'
     },
     {
         name: "Serie 2",
-        values: [30, 40, 50, 60, 50, 40, 30,]
+        values: [30, 40, 50, 60, 50, 40, 30,],
+        color: '#aec7e8',
+        shape: 'triangle'
     },
     {
         name: "Serie 3",
-        values: [40, 50, 60, 70, 60, 50, 40,]
+        values: [40, 50, 60, 70, 60, 50, 40,],
+        color: '#ff7f0e',
+        shape: 'diamond'
     },
     {
         name: "Serie 4",
-        values: [50, 60, 70, 80, 70, 60, 50,]
+        values: [50, 60, 70, 80, 70, 60, 50,],
+        color: '#ffbb78',
+        shape: 'hexagon'
     },
     {
         name: "Serie 5",
-        values: [60, 70, 80, 90, 80, 70, 60,]
+        values: [60, 70, 80, 90, 80, 70, 60,],
+        color: '#2ca02c',
+        shape: 'star'
     },
 ]);
 
@@ -53,6 +63,7 @@ const config = ref({
         backgroundColor: "#F3F4F6",
         color: "#2D353C",
         fontFamily: "inherit",
+        shapeSize: 14,
         heatmapColors: {
             useIndividualScale: false,
             min: "#FFFFFF",
@@ -80,6 +91,7 @@ const darkModeConfig = ref({
         backgroundColor: "#1A1A1A",
         color: "#CCCCCC",
         fontFamily: "inherit",
+        shapeSize: 14,
         heatmapColors: {
             useIndividualScale: false,
             min: "#FFFFFF",
@@ -184,7 +196,7 @@ function fixChart() {
 
                 <template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }">
                     <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-start; padding: 0 6px;font-weight:${isResponsive ? 'bold' : 'normal'}`"
-                        class="bg-gray-200 dark:bg-[#2A2A2A]">
+                        class="bg-gray-200 dark:bg-[#2A2A2A] w-full">
                         {{ value }}
                     </div>
                 </template>
@@ -237,7 +249,9 @@ function fixChart() {
     [
         {
             name: string;
-            values: Array&lt;number | string&gt;;
+            values: Array&lt;number | string&gt;
+            color?: string;
+            shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star";
         },
         {...}
     ]
@@ -252,24 +266,34 @@ function fixChart() {
 const <span class="text-black dark:text-app-green">dataset: VueUiTableHeatmapDatasetItem[]</span> = [
     {
         name: "Serie 1",
-        values: [20, 30, 40, 50, 40, 30, 20]
+        values: [20, 30, 40, 50, 40, 30, 20,],
+        color: '#1f77b4',
+        shape: 'circle'
     },
     {
         name: "Serie 2",
-        values: [30, 40, 50, 60, 50, 40, 30]
+        values: [30, 40, 50, 60, 50, 40, 30,],
+        color: '#aec7e8',
+        shape: 'triangle'
     },
     {
         name: "Serie 3",
-        values: [40, 50, 60, 70, 60, 50, 40]
+        values: [40, 50, 60, 70, 60, 50, 40,],
+        color: '#ff7f0e',
+        shape: 'diamond'
     },
     {
         name: "Serie 4",
-        values: [50, 60, 70, 80, 70, 60, 50]
+        values: [50, 60, 70, 80, 70, 60, 50,],
+        color: '#ffbb78',
+        shape: 'hexagon'
     },
     {
         name: "Serie 5",
-        values: [60, 70, 80, 90, 80, 70, 60]
-    }
+        values: [60, 70, 80, 90, 80, 70, 60,],
+        color: '#2ca02c',
+        shape: 'star'
+    },
 ]
 </code>    
 </pre>
@@ -297,6 +321,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiTableHeatmapConfi
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
         color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.color"><input v-else type="color" v-model="mutableConfig.style.color">, (default"#2D353C")
         fontFamily: "inherit",
+        shapeSize: <input v-if="isDarkMode" type="number" min="8" max="36" v-model="mutableConfigDarkMode.style.shapeSize"><input v-else type="number" min="8" max="36" v-model="mutableConfig.style.shapeSize">, (default: 14)
         heatmapColors: {
             useIndividualScale: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.heatmapColors.useIndividualScale" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.heatmapColors.useIndividualScale" @change="forceChartUpdate()">, (default: false)
             min: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.heatmapColors.min"><input v-else type="color" v-model="mutableConfig.style.heatmapColors.min">, (default: "#FFFFFF")

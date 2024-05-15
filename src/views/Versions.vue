@@ -888,7 +888,7 @@ const sparklineConfig = ref({
     fontFamily: "inherit",
     line: {
       color: "#42d392",
-      strokeWidth: 3,
+      strokeWidth: 1,
       smooth: true
     },
     zeroLine: {
@@ -935,7 +935,7 @@ const darkModeSparklineConfig = ref({
     fontFamily: "inherit",
     line: {
       color: "#42d392",
-      strokeWidth: 3,
+      strokeWidth: 1,
       smooth: true
     },
     zeroLine: {

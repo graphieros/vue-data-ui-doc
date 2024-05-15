@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.58",
+        "date": "2024-05-15",
+        "updates": [
+            {
+                "component": "VueUiTableHeatmap",
+                "description": "Added optional datapoint shape & color attributes",
+                "link": "/docs#vue-ui-table-heatmap"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.57",
         "date": "2024-05-15",
         "updates": [
