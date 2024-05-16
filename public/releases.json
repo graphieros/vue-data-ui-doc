@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.1.60",
+        "date": "2024-05-15",
+        "updates": [
+            {
+                "component": "VueDataUi universal component",
+                "description": "Now uses dynamic imports, so it does not import all components when used"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.58",
         "date": "2024-05-15",
         "updates": [
