@@ -72,6 +72,44 @@ export function useCase() {
         }
     })
 
+    const XY_STACKED_DATASET_WITH_AUTOSCALE = ref([
+        {
+            name: "S0",
+            series: [0, 0, 1, 1, 1, 0, 0, 1, 1, 1],
+            type: "line",
+            smooth: false,
+            useArea: true,
+            dataLabels: false,
+            scaleSteps: 2,
+        },
+        {
+            name: "S1",
+            series: [0,1,1,1,1,1,0,0, 1, 1, 0],
+            type: "line",
+            smooth: false,
+            useArea: true,
+            scaleSteps: 2,
+        },
+        {
+            name: "S2",
+            series: [0,0,0,1,1,0,0,1,1,1],
+            type: "line",
+            smooth: false,
+            useArea: true,
+            scaleSteps: 2
+        },
+        {
+            name: "S3",
+            series: [23.12, 23.12, 23.05, 23.07, 23.65, 23.69, 23.72, 23.21, 23.36, 23.41],
+            type: "line",
+            smooth: false,
+            useArea: true,
+            scaleSteps: 5,
+            autoScaling: true,
+            stackRatio: 0.5
+        },
+    ]);
+
     const XY_STACKED_DATASET = ref([
         {
             name: "Serie 0",
@@ -276,6 +314,7 @@ export function useCase() {
     });
 
     return {
+        XY_STACKED_DATASET_WITH_AUTOSCALE,
         XY_MULTIPLE_Y_AXES_CONFIG,
         XY_MULTIPLE_Y_AXES_DATASET,
         XY_STACKED_CONFIG,

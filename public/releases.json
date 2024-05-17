@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.62",
+        "date": "2024-05-17",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added more datapoint options to further customize stacked mode",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.60",
         "date": "2024-05-15",
         "updates": [

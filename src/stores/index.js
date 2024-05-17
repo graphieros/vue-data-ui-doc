@@ -1788,6 +1788,26 @@ export const useMainStore = defineStore("main", {
                             ko: "여기에 데이터세트가 있습니다"
                         },
                         xy: {
+                            autoScaling: {
+                                en: "In stacked mode, will attempt to harmonize the scale to the datapoint's min & max values",
+                                fr: "En mode empilé, tentera d'harmoniser l'échelle avec les valeurs min et max du point de données",
+                                pt: "No modo empilhado, tentará harmonizar a escala com os valores mínimo e máximo do ponto de dados",
+                                de: "Im gestapelten Modus wird versucht, die Skala an die Min.- und Max.-Werte des Datenpunkts anzupassen",
+                                zh: "在堆叠模式下，将尝试将比例与数据点的最小值和最大值协调一致",
+                                jp: "スタックモードでは、スケールをデータポイントの最小値と最大値に調和させようとします。",
+                                es: "En modo apilado, intentará armonizar la escala con los valores mínimo y máximo del punto de datos.",
+                                ko: "스택 모드에서는 데이터 포인트의 최소 및 최대 값에 배율을 조화시키려고 시도합니다."
+                            },
+                            stackRatio: {
+                                en: "In stacked mode, force the height ratio of a datapoint to take more height space on the chart",
+                                fr: "En mode empilé, forcez le rapport de hauteur d'un point de données à occuper plus d'espace en hauteur sur le graphique.",
+                                pt: "No modo empilhado, força a proporção de altura de um ponto de dados para ocupar mais espaço de altura no gráfico",
+                                de: "Erzwingen Sie im gestapelten Modus das Höhenverhältnis eines Datenpunkts, um mehr Höhenraum im Diagramm einzunehmen",
+                                zh: "在堆叠模式下，强制数据点的高度比例在图表上占据更多高度空间",
+                                jp: "積み上げモードでは、データポイントの高さの比率を強制的にグラフ上でより多くの高さのスペースに配置します。",
+                                es: "En modo apilado, fuerce la relación de altura de un punto de datos para que ocupe más espacio de altura en el gráfico.",
+                                ko: "누적 모드에서는 데이터 포인트의 높이 비율이 차트에서 더 많은 높이 공간을 차지하도록 강제합니다."
+                            },
                             scaleMin: {
                                 en: "Set the minimum value for an individual scale",
                                 fr: "Définir la valeur minimale pour une échelle individuelle",
