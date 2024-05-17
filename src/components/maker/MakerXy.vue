@@ -200,7 +200,10 @@ const finalConfig = computed(() => {
 
 
 function getLabel(label) {
-    return Array.isArray(label) ? label.map(l => xyTranslations.value.labels[l][store.lang]).join(" ") :
+    return Array.isArray(label) ? label.map(l => {
+        if(!xyTranslations.value.labels[l]) return l
+        return xyTranslations.value.labels[l][store.lang]
+    }).join(" ") :
     xyTranslations.value.labels[label][store.lang]
 }
 

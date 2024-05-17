@@ -35,6 +35,16 @@ export const useDefaultDataStore = defineStore('defaultData', {
 
                     { key: 'chart.highlighter.color', def: '#1A1A1A', type: 'color', label: 'highlighterColor', category: 'general' },
                     { key: 'chart.highlighter.opacity', def: 5, type: 'range', min: 0, max: 100, label: 'highlighterOpacity', category: 'general' },
+                    { key: 'chart.highlighter.useLine', def: false, type: 'checkbox', label: ['highlighter', 'line', 'is', 'show'], category: 'general'},
+                    { key: 'chart.highlighter.lineDasharray', def: 2, type: 'number', min: 0, max: 48, label: ['highlighter', 'line', 'is', 'dashed'], category: 'general'},
+                    { key: 'chart.highlighter.lineWidth', def: 1, type: 'number', min: 0, max: 12, label: ['highlighter', 'line', 'is', 'thickness'], category: 'general'},
+
+                    { key: 'chart.timeTag.show', def: false, type: 'checkbox', label: ['time tag', 'is', 'show'], category: 'general'},
+                    { key: 'chart.timeTag.backgoundColor', def: '#e1e5e8', type: 'color', label: ['time tag', 'is', 'backgroundColor'], category: 'general'},
+                    { key: 'chart.timeTag.color', def: '#1A1A1A', type: 'color', label: ['time tag', 'is', 'textColor'], category: 'general'},
+                    { key: 'chart.timeTag.fontSize', def: 12, type: 'number', min: 8, max: 48, label: ['timetag', 'is', 'fontSize'], category: "general"},
+                    { key: 'chart.timeTag.circleMarker.color', def: '#1A1A1A', type: 'color', label: ['time tag', 'circle', 'is', 'color'], category:'general'},
+                    { key: 'chart.timeTag.circleMarker.radius', def: 3, type: 'number', min: 0, max: 48, label: ['time tag', 'circle', 'is', 'radius'], category: 'general'},
 
                     { key: 'chart.highlightArea.show', def: false, type: 'checkbox', label: 'show', category: 'highlight' },
                     { key: 'chart.highlightArea.from', def: 0, type: 'number', min: 0, max: 999, label: 'from', category: 'highlight' },
@@ -65,6 +75,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.grid.labels.xAxisLabels.showOnlyFirstAndLast', def: false, type: 'checkbox', label: 'showOnlyFirstAndLast', category: 'grid' },
                     { key: 'chart.grid.labels.xAxisLabels.yOffset', def: 8, type: 'number', min:-100, max: 100, label: 'offsetYPeriodLabels', category: 'grid' },
                     { key: 'chart.grid.labels.xAxisLabels.rotation', def: 0, type: 'range', min: -360, max: 360, label: 'rotation', category: 'grid'},
+
+                    { key: 'chart.grid.labels.xAxis.showBaseline', def: true, type: 'checkbox', label: ['xAxis', 'base line', 'is', 'show'], category: 'grid'},
+
+                    { key: 'chart.grid.labels.yAxis.commonScaleSteps', def: 10, type: 'number', min: 2, max: 20, label: ['yAxis', 'scale', 'is', 'steps'], category: 'grid'},
+                    { key: 'chart.grid.labels.yAxis.useIndividualScale', def: false, type: 'checkbox', label: ['yAxis', 'is', 'use individual scale'], category: 'grid'},
+                    { key: 'chart.grid.labels.yAxis.stacked', def: false, type: 'checkbox', label: ['yAxis', 'is', 'stacked scales'], category: 'grid'},
+                    { key: 'chart.grid.labels.yAxis.gap', def: 12, type: 'number', min: 8, max: 24, label: ['yAxis', 'is', 'stack gap'], category: 'grid'},
+                    { key: 'chart.grid.labels.yAxis.labelWidth', def: 40, type: 'number', min: 36, max: 64, label: ['yAxis', 'is', 'labelWidth'], category: 'grid'},
 
                     { key: 'chart.labels.fontSize', def: 10, type: 'number', min: 6, max: 30, label: 'fontSize', category: 'labels' },
                     { key: 'chart.labels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },
