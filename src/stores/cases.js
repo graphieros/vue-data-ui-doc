@@ -78,6 +78,28 @@ export const useCaseStore = defineStore("cases", {
                     es: "A veces es mejor mostrar cada punto de datos en un área dedicada del gráfico para resaltar correlaciones y variaciones.",
                     ko: "때로는 상관 관계와 변형을 강조하기 위해 차트의 전용 영역에 모든 데이터 포인트를 표시하는 것이 더 나을 때도 있습니다."
                 }
+            },
+            XY_STACKED_AUTOSCALE: {
+                title: {
+                    en: "",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    jp: "",
+                    es: "",
+                    ko: ""
+                },
+                description: {
+                    en: "",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    jp: "",
+                    es: "",
+                    ko: ""
+                }
             }
         }
     }

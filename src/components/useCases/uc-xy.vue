@@ -130,8 +130,8 @@ const {
             </template>
         </VueDataUi>
     </div>
-<!-- 
-    <hr class="mt-4 mb-8"/>
+
+    <!-- <hr class="mt-4 mb-8"/>
 
     <UseCaseTitle>
         <template #title>

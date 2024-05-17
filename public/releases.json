@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.63",
+        "date": "2024-05-17",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added optional timeTag on serie hover",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.62",
         "date": "2024-05-17",
         "updates": [

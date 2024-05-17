@@ -86,6 +86,19 @@ const config = ref({
         highlighter: {
             color: "#1A1A1A",
             opacity: 10,
+            useLine: false,
+            lineDasharray: 2,
+            lineWidth: 1
+        },
+        timeTag: {
+            show: false,
+            backgroundColor: "#e1e5e8",
+            color: "#1A1A1A",
+            fontSize: 12,
+            circleMarker: {
+                radius: 3,
+                color: "#1A1A1A"
+            }
         },
         highlightArea: {
             show: true,
@@ -268,6 +281,19 @@ const darkModeConfig = ref({
         highlighter: {
             color: "#e1e5e8",
             opacity: 10,
+            useLine: false,
+            lineDahsarray: 2,
+            lineWidth: 1
+        },
+        timeTag: {
+            show: false,
+            backgroundColor: "#2A2A2A",
+            color: "#CCCCCC",
+            fontSize: 12,
+            circleMarker: {
+                radius: 3,
+                color: "#6A6A6A"
+            }
         },
         highlightArea: {
             show: true,
@@ -757,6 +783,19 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
             highlighter: {
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.highlighter.color"><input v-else type="color" v-model="mutableConfig.chart.highlighter.color">, (default:"#2D353C")
                 opacity: <input v-if="isDarkMode" type="range" min="0" max="100" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.highlighter.opacity"><input v-else type="range" min="0" max="100" class="accent-app-blue" v-model="mutableConfig.chart.highlighter.opacity">, (default: 5)
+                useLine: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.highlighter.useLine" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.highlighter.useLine" @change="forceChartUpdate()">, (default: false)
+                lineDasharray: <input v-if="isDarkMode" type="number" min="0" max="50" v-model="mutableConfigDarkMode.chart.highlighter.lineDasharray"><input v-else type="number" min="0" max="50" v-model="mutableConfig.chart.highlighter.lineDasharray">, (default: 2)
+                lineWidth: <input v-if="isDarkMode" type="number" min="0" max="50" v-model="mutableConfigDarkMode.chart.highlighter.lineWidth"><input v-else type="number" min="0" max="50" v-model="mutableConfig.chart.highlighter.lineWidth">, (default: 1)
+            },
+            timeTag: {
+                show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.timeTag.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.timeTag.show" @change="forceChartUpdate()">, (default: false)
+                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.timeTag.backgroundColor"><input v-else type="color" v-model="mutableConfig.chart.timeTag.backgroundColor">, (default: "#E1E5E8")
+                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.timeTag.color"><input v-else type="color" v-model="mutableConfig.chart.timeTag.color">, (default: "#2D353C")
+                fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.timeTag.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.timeTag.fontSize">, (default: 12)
+                circleMarker: {
+                    radius: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.chart.timeTag.circleMarker.radius"><input v-else type="number" min="0" max="12" v-model="mutableConfig.chart.timeTag.circleMarker.radius">, (default: 3)
+                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.timeTag.circleMarker.color"><input v-else type="color" v-model="mutableConfig.chart.timeTag.circleMarker.color">, (default: "#2D353C")
+                }
             },
             highlightArea: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.highlightArea.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.highlightArea.show" @change="forceChartUpdate()">, (default: false)
@@ -851,6 +890,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                 showValue: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.tooltip.showValue"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.tooltip.showValue">, (default: true)
                 showPercentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.tooltip.showPercentage"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.tooltip.showPercentage">, (default: false)
                 customFormat: null, // default behavior. To customize, check out the 'custom tooltip' tab
+                roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.chart.tooltip.roundingValue" @change="forceChartUpdate()"><input v-else type="number" min="0" max="3" v-model="mutableConfig.chart.tooltip.roundingValue" @change="forceChartUpdate()">, (default: 0)
+                roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.chart.tooltip.roundingPercentage" @change="forceChartUpdate()"><input v-else type="number" min="0" max="3" v-model="mutableConfig.chart.tooltip.roundingPercentage" @change="forceChartUpdate()">, (default: 0)
             },
             userOptions: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.show">, (default: true)
