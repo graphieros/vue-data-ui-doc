@@ -81,24 +81,24 @@ export const useCaseStore = defineStore("cases", {
             },
             XY_STACKED_AUTOSCALE: {
                 title: {
-                    en: "",
-                    fr: "",
-                    pt: "",
-                    de: "",
-                    zh: "",
-                    jp: "",
-                    es: "",
-                    ko: ""
+                    en: "Stacked, with multiple Y axes and custom height",
+                    fr: "Empilé, avec plusieurs axes Y et hauteur personnalisée",
+                    pt: "Empilhado, com vários eixos Y e altura personalizada",
+                    de: "Gestapelt, mit mehreren Y-Achsen und individueller Höhe",
+                    zh: "堆叠式，具有多个 Y 轴和自定义高度",
+                    jp: "複数の Y 軸とカスタム高さを備えたスタック型",
+                    es: "Apilados, con múltiples ejes Y y altura personalizada",
+                    ko: "여러 개의 Y축과 사용자 정의 높이가 있는 스택형"
                 },
                 description: {
-                    en: "",
-                    fr: "",
-                    pt: "",
-                    de: "",
-                    zh: "",
-                    jp: "",
-                    es: "",
-                    ko: ""
+                    en: "Some series might need more real estate.",
+                    fr: "Certaines séries pourraient nécessiter davantage d’espace.",
+                    pt: "Algumas séries podem precisar de mais espaço.",
+                    de: "Einige Serien benötigen möglicherweise mehr Platz.",
+                    zh: "某些系列可能需要更多空间。",
+                    jp: "シリーズによっては、より多くの領域が必要になる場合があります。",
+                    es: "Es posible que algunas series necesiten más espacio.",
+                    ko: "일부 시리즈에는 더 많은 공간이 필요할 수 있습니다."
                 }
             }
         }

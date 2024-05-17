@@ -131,14 +131,14 @@ const {
         </VueDataUi>
     </div>
 
-    <!-- <hr class="mt-4 mb-8"/>
+    <hr class="mt-4 mb-8"/>
 
     <UseCaseTitle>
         <template #title>
-            {{ cases.XY_STACKED.title[store.lang] }}
+            {{ cases.XY_STACKED_AUTOSCALE.title[store.lang] }}
         </template>
         <template #description>
-            {{ cases.XY_STACKED.description[store.lang] }}
+            {{ cases.XY_STACKED_AUTOSCALE.description[store.lang] }}
         </template>
     </UseCaseTitle>
     <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
@@ -170,7 +170,7 @@ const {
             <template #content>
                 <div class="bg-[#272822] p-2 rounded">
                     <code class="language-javascript" style="white-space: pre-wrap;">
-                        const dataset = ref({{ XY_STACKED_DATASET }});
+                        const dataset = ref({{ XY_STACKED_DATASET_WITH_AUTOSCALE }});
                     </code>
                     <br><br>
                     <code class="language-javascript" style="white-space: pre-wrap;">
@@ -179,5 +179,5 @@ const {
                 </div>
             </template>
         </VueDataUi>
-    </div> -->
+    </div>
 </template>

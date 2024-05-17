@@ -75,7 +75,7 @@ export function useCase() {
     const XY_STACKED_DATASET_WITH_AUTOSCALE = ref([
         {
             name: "S0",
-            series: [0, 0, 1, 1, 1, 0, 0, 1, 1, 1],
+            series: [0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1],
             type: "line",
             smooth: false,
             useArea: true,
@@ -88,25 +88,27 @@ export function useCase() {
             type: "line",
             smooth: false,
             useArea: true,
+            dataLabels: false,
             scaleSteps: 2,
         },
         {
             name: "S2",
-            series: [0,0,0,1,1,0,0,1,1,1],
+            series: [0,0,0,1,1,0,0,1,1,1, 0],
             type: "line",
             smooth: false,
             useArea: true,
+            dataLabels: false,
             scaleSteps: 2
         },
         {
             name: "S3",
-            series: [23.12, 23.12, 23.05, 23.07, 23.65, 23.69, 23.72, 23.21, 23.36, 23.41],
+            series: [23.12, 23.12, 23.05, 23.07, 23.65, 23.69, 23.72, 23.21, 23.36, 23.41, 23.08],
             type: "line",
             smooth: false,
             useArea: true,
             scaleSteps: 5,
             autoScaling: true,
-            stackRatio: 0.5
+            stackRatio: 0.7
         },
     ]);
 
@@ -173,19 +175,23 @@ export function useCase() {
                         },
                         xAxisLabels: {
                             color: textColor.value,
-                            values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+                            values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10'],
                             fontSize: 12,
                             yOffset: 0
                         },
                         yAxis: {
                             useIndividualScale: true,
-                            stacked: true
+                            stacked: true,
+                            gap: 24
                         }
                     }
                 },
                 highlighter: {
                     color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
                     opacity: 5
+                },
+                timeTag: {
+                    show: true,
                 },
                 legend: {
                     color: textColor.value
