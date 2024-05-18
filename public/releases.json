@@ -1,5 +1,15 @@
 [
     {
+        "version": "v 2.1.65",
+        "date": "2024-05-18",
+        "updates": [
+            {
+                "component": "All components with tooltips",
+                "description": "Fixed config option tooltip.fontSize not applied"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.64",
         "date": "2024-05-17",
         "updates": [
