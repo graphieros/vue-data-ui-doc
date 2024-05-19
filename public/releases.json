@@ -1,5 +1,26 @@
 [
     {
+        "version": "v 2.1.66",
+        "date": "2024-05-19",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fixed wrong behaviors in stack mode when any datapoint contains a null value",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Hide tooltip's embedded bar chart component when customFormat is enabled",
+                "link": "/docs#vue-ui-radar"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Fixed polygons still showing when segregating series, when useCssAnimation is set to false",
+                "link": "/docs#vue-ui-radar"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.65",
         "date": "2024-05-18",
         "updates": [

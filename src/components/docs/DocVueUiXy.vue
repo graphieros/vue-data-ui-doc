@@ -550,6 +550,14 @@ function toggleUseIndividualScale() {
     forceChartUpdate();
 }
 
+function toggleUseStacked() {
+    mutableConfig.value.chart.grid.labels.yAxis.stacked = !mutableConfig.value.chart.grid.labels.yAxis.stacked;
+    mutableConfigDarkMode.value.chart.grid.labels.yAxis.stacked = !mutableConfigDarkMode.value.chart.grid.labels.yAxis.stacked;
+    forceChartUpdate();
+}
+
+
+
 const shapeOptions = ref([
     'circle',
     'triangle',
@@ -633,9 +641,13 @@ const shapeOptions = ref([
             </span>
             
             <div class="w-full flex flex-row place-items-center justify-center gap-2 mt-2">
-                <input id="useCanvas" class="accent-app-blue" type="checkbox" v-model="useCanvas" @change="toggleUseIndividualScale">
+                <input id="useCanvas" class="accent-app-blue" type="checkbox" @change="toggleUseIndividualScale">
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
             </div>
+            <!-- <div v-if="(isDarkMode && mutableConfigDarkMode.chart.grid.labels.yAxis.useIndividualScale) || (!isDarkMode && mutableConfig.chart.grid.labels.yAxis.useIndividualScale)" class="w-full flex flex-row place-items-center justify-center gap-2 mt-2">
+                <input id="useCanvas" class="accent-app-blue" type="checkbox" @change="toggleUseStacked">
+                <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
+            </div> -->
         </div>
         <Box showEmits showSlots showTooltip showUseCases>
             <template v-slot:tab0>
@@ -892,6 +904,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                 customFormat: null, // default behavior. To customize, check out the 'custom tooltip' tab
                 roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.chart.tooltip.roundingValue" @change="forceChartUpdate()"><input v-else type="number" min="0" max="3" v-model="mutableConfig.chart.tooltip.roundingValue" @change="forceChartUpdate()">, (default: 0)
                 roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.chart.tooltip.roundingPercentage" @change="forceChartUpdate()"><input v-else type="number" min="0" max="3" v-model="mutableConfig.chart.tooltip.roundingPercentage" @change="forceChartUpdate()">, (default: 0)
+                fontSize: <input v-if="isDarkMode" type="number" min="8" max="42" v-model="mutableConfigDarkMode.chart.tooltip.fontSize"><input v-else type="number" min="8" max="48" v-model="mutableConfig.chart.tooltip.fontSize">, (default: 14)
             },
             userOptions: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.show">, (default: true)
