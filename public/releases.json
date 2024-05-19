@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.67",
+        "date": "2024-05-19",
+        "updates": [
+            {
+                "component": "VueUiOnion",
+                "description": "Various fixes pertaining to config options not applied",
+                "link": "/docs#vue-ui-onion"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.66",
         "date": "2024-05-19",
         "updates": [
