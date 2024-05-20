@@ -160,7 +160,6 @@ const config = ref({
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
-                customFormat: null,
                 animation: {
                     show: true,
                     animationFrames: 60
@@ -265,7 +264,6 @@ const darkModeConfig = ref({
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
-                customFormat: null,
                 animation: {
                     show: true,
                     animationFrames: 60

@@ -834,7 +834,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
             },
             zoom: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.zoom.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.zoom.show" @change="forceChartUpdate()">, (default: true)
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.zoom.color"><input v-else type="color" v-model="mutableConfig.chart.zoom.color">, (default: "#2D353C")
+                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.zoom.color" @change="forceChartUpdate()"><input v-else type="color" v-model="mutableConfig.chart.zoom.color" @change="forceChartUpdate()">, (default: "#2D353C")
             },
             grid: {
                 stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.grid.stroke"><input v-else type="color" v-model="mutableConfig.chart.grid.stroke">, (default: "#E1E5E8"),

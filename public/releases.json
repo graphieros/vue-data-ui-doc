@@ -1,6 +1,17 @@
 [
     {
-        "version": "v 2.1.72",
+        "version": "v 2.1.75",
+        "date": "2024-05-20",
+        "updates": [
+            {
+                "component": "VueUiRadar",
+                "description": "Fixed tooltip embedded chart not showing if tooltip.customFormat is null (which is the default btw)",
+                "link": "/docs#vue-ui-radar"
+            }
+        ]
+    },
+    {
+        "version": "v 2.1.74",
         "date": "2024-05-20",
         "updates": [
             {
