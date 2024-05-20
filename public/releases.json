@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 2.1.69",
+        "date": "2024-05-20",
+        "updates": [
+            {
+                "component": "VueUiHeatmap",
+                "description": "Fixed border radius config option not applied on bottom legend",
+                "link": "/docs#vue-ui-heatmap"
+            },
+            {
+                "component": "VueUiQuadrant",
+                "description": "Fixed @selectSide emit not applied",
+                "link": "/docs#vue-ui-quadrant"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.67",
         "date": "2024-05-19",
         "updates": [
