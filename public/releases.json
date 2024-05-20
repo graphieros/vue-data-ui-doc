@@ -1,5 +1,37 @@
 [
     {
+        "version": "v 2.1.72",
+        "date": "2024-05-20",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fixed zoom.color config option not applied",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiSparkStackbar",
+                "description": "Fixed bold config option on legend name not applied",
+                "link": "/docs#vue-ui-sparkstackbar"
+            }
+        ]
+    },
+    {
+        "version": "v 2.1.70",
+        "date": "2024-05-20",
+        "updates": [
+            {
+                "component": "VueUiCandlestick",
+                "description": "Fixed Y axis scale config option not applied",
+                "link": "/docs#vue-ui-candlestick"
+            },
+            {
+                "component": "VueUiGauge",
+                "description": "Fixed harmless console error related to pointy arrow path painted before data is computed when animation is enabled",
+                "link": "/docs#vue-ui-gauge"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.69",
         "date": "2024-05-20",
         "updates": [
