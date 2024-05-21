@@ -212,6 +212,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    resetButton: {
+                        en: 'This component contains a zoom slider, which reset button can be customized through the #reset-action slot.',
+                        fr: `Ce composant contient un curseur de zoom, dont le bouton de réinitialisation peut être personnalisé via l'emplacement #reset-action.`,
+                        pt: `Este componente contém um controle deslizante de zoom, cujo botão de reset pode ser personalizado através do slot #reset-action.`,
+                        de: `Diese Komponente enthält einen Zoom-Schieberegler, dessen Reset-Taste über den #reset-action-Slot angepasst werden kann.`,
+                        zh: "该组件包含一个缩放滑块，可以通过 #reset-action 插槽自定义重置按钮。",
+                        jp: "このコンポーネントにはズーム スライダーが含まれており、このリセット ボタンは #reset-action スロットを通じてカスタマイズできます。",
+                        es: "Este componente contiene un control deslizante de zoom, cuyo botón de reinicio se puede personalizar a través de la ranura #reset-action.",
+                        ko: "이 구성 요소에는 #reset-action 슬롯을 통해 재설정 버튼을 사용자 정의할 수 있는 확대/축소 슬라이더가 포함되어 있습니다."
+                    },
                     donutDataLabels: {
                         en: "Custom datalabels can be obtained using the #dataLabel scoped slot. You can place anything you want inside this slot (icon, image, another chart...).",
                         fr: "Des étiquettes de données personnalisées peuvent être obtenues à l'aide du slot #dataLabel. Vous pouvez placer tout ce que vous voulez à l'intérieur de cet emplacement (icône, image, autre graphique...).",

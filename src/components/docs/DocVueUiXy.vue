@@ -119,7 +119,9 @@ const config = ref({
         },
         zoom: {
             show: true,
-            color: "#42d392"
+            color: "#42d392",
+            fontSize: 14,
+            useResetSlot: false,
         },
         padding: {
             top:  36,
@@ -314,7 +316,9 @@ const darkModeConfig = ref({
         },
         zoom: {
             show: true,
-            color: "#42d392"
+            color: "#42d392",
+            fontSize: 14,
+            useResetSlot: false,
         },
         padding: {
             top:  36,
@@ -835,6 +839,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
             zoom: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.zoom.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.zoom.show" @change="forceChartUpdate()">, (default: true)
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.zoom.color" @change="forceChartUpdate()"><input v-else type="color" v-model="mutableConfig.chart.zoom.color" @change="forceChartUpdate()">, (default: "#2D353C")
+                fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.zoom.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.zoom.fontSize">, (default: 14)
+                useResetSlot: false; // To use a custom slot for the reset feature (see slots tab)
             },
             grid: {
                 stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.grid.stroke"><input v-else type="color" v-model="mutableConfig.chart.grid.stroke">, (default: "#E1E5E8"),
@@ -1149,7 +1155,25 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
         &lt;/template&gt;
     &lt;/VueUiXy&gt;
 </code>
-</pre> 
+</pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.resetButton[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiXy
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #reset-action="{ reset }"&gt;
+            &lt;button @click="reset()"&gt;Refresh&lt;/button&gt;
+        &lt;/template&gt;
+    &lt;/VueUiXy&gt;
+</code>
+</pre>
+
             </template>
 
             <template #tab4>

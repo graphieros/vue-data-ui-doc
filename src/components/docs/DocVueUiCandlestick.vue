@@ -113,7 +113,10 @@ const config = ref({
       }
     },
     zoom: {
-      show: true
+        show: true,
+        color: "#42d392",
+        fontSize: 14,
+        useResetSlot: false,
     },
     title: {
       text: "Title",
@@ -245,7 +248,10 @@ const darkModeConfig = ref({
       }
     },
     zoom: {
-      show: true
+        show: true,
+        color: "#42d392",
+        fontSize: 14,
+        useResetSlot: false,
     },
     title: {
       text: "Title",
@@ -522,6 +528,9 @@ const <span class="text-black dark:text-app-blue">config: VueUiCandlestickConfig
     },
     zoom: {
       show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.zoom.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.zoom.show" @change="forceChartUpdate()">, (default: true)
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.zoom.color" @change="forceChartUpdate()"><input v-else type="color" v-model="mutableConfig.style.zoom.color" @change="forceChartUpdate()">, (default: "#2D353C")
+      fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.style.zoom.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.style.zoom.fontSize">, (default: 14)
+      useResetSlot: false; // To use a custom slot for the reset feature (see slots tab)
     },
     title: {
       text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.text"><input v-else type="text" v-model="mutableConfig.style.title.text">, (default: "")
@@ -649,6 +658,23 @@ const <span class="text-black dark:text-app-blue">config: VueUiCandlestickConfig
     &lt;/VueUiCandlestick&gt;
 </code>
 </pre> 
+
+<div class="text-gray-500">
+    {{ translations.slots.resetButton[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiXy
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #reset-action="{ reset }"&gt;
+            &lt;button @click="reset()"&gt;Refresh&lt;/button&gt;
+        &lt;/template&gt;
+    &lt;/VueUiXy&gt;
+</code>
+</pre>
 
             </template>
             <template #tab4>

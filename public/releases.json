@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 2.1.77",
+        "date": "2024-05-21",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Improved zoom component",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Improved zoom component",
+                "link": "/docs#vue-ui-candlestick"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.75",
         "date": "2024-05-20",
         "updates": [

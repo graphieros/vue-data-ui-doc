@@ -150,7 +150,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
                 <div class="overflow-w-auto">
 <pre>
 <code>
-const <span class="text-black dark:text-app-blue">config: VueUiGaugeConfig</span> = {
+const <span class="text-black dark:text-app-blue">config: VueUiKpiConfig</span> = {
     animationFrames: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="1000" v-model="mutableConfigDarkMode.animationFrames" @change="forceChartUpdate()"><input v-else type="number" class="accent-app-blue" min="0" max="1000" v-model="mutableConfig.animationFrames" @change="forceChartUpdate()">, (default: 60)
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.backgroundColor"><input v-else type="color" v-model="mutableConfig.backgroundColor">,  (default: "#FFFFFF")
     fontFamily: "inherit",
