@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.79",
+        "date": "2024-05-22",
+        "updates": [
+            {
+                "component": "VueUiStripPlot",
+                "description": "Fixed wrong scaling",
+                "link": "/docs#vue-ui-strip-plot"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.78",
         "date": "2024-05-22",
         "updates": [
