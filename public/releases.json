@@ -1,5 +1,31 @@
 [
     {
+        "version": "v 2.1.78",
+        "date": "2024-05-22",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Improved xAxis time labels text-anchor when rotated",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiQuickChart",
+                "description": "Improved xAxis time labels text-anchor when rotated",
+                "link": "/docs#vue-ui-quick-chart"
+            },
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Added config options to rotate xAxis time labels",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Added config options to rotate xAxis time labels",
+                "link": "/docs#vue-ui-candlestick"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.77",
         "date": "2024-05-21",
         "updates": [

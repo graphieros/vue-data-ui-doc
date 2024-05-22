@@ -1508,6 +1508,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.grid.xAxis.dataLabels.color', def: '#1A1A1A', type: 'color', label: ['xAxisLabel', 'is', 'textColor'], category: 'grid' },
                     { key: 'style.chart.layout.grid.xAxis.dataLabels.fontSize', def: 10, type: 'number', min: 6, max: 24, label: ['xAxisLabel', 'is', 'fontSize'], category: 'grid' },
                     { key: 'style.chart.layout.grid.xAxis.dataLabels.showOnlyFirstAndLast', def: false, type: 'checkbox', label: ['xAxisLabel', 'is', 'showOnlyFirstAndLast'], category: 'grid' },
+                    { key: 'style.chart.layout.grid.xAxis.dataLabels.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['xAxisLabel', 'is', 'offsetY'], category: 'grid'},
+                    { key: 'style.chart.layout.grid.xAxis.dataLabels.rotation', def: 0, type: 'number', min: -360, max: 360, label: ['xAxisLabel', 'is', 'rotation'], category: 'grid'},
                     { key: 'style.chart.layout.line.show', def: true, type: 'checkbox', label: ['line', 'is', 'show'], category: 'general' },
                     { key: 'style.chart.layout.line.stroke', def: '#CCCCCC', type: 'color', label: ['line', 'is', 'color'], category: 'general' },
                     { key: 'style.chart.layout.line.strokeWidth', def: 4, type: 'number', min: 0.1, max: 48, step: 0.1, label: ['line', 'is', 'thickness'], category: 'general' },

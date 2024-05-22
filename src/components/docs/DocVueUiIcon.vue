@@ -86,6 +86,7 @@ const specialIcons = ref([
     "clipboardLine",
     "clipboardVariable",
     "copy",
+    "copyLeft",
     "csv",
     "cursor",
     "dashboard",

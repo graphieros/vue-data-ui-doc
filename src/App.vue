@@ -26,6 +26,7 @@ onMounted(() => {
   })
   .then(data => {
     store.stars = data.stargazers_count;
+    store.issues = data.open_issues_count;
   })
   .catch(error => {
     console.error('There was a problem fetching the data:', error);

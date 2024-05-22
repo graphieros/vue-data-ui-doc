@@ -37,7 +37,7 @@ const dataset = ref([
         values: [16, 2, 3, 5, 28, 13, 21, 34, 55, 89, 134 ]
     },
     {
-        name: "Serie 3",
+        name: "Serie 4",
         values: [5, null, 5, 5, 5, 5 ]
     }
 ]);
@@ -78,7 +78,9 @@ const config = ref({
                         show: true,
                         values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
                         fontSize: 8,
-                        showOnlyFirstAndLast: false
+                        showOnlyFirstAndLast: false,
+                        offsetY: 0,
+                        rotation: 0
                     }
                 }
                 },
@@ -187,7 +189,9 @@ const darkModeConfig = ref({
                             values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
                             fontSize: 8,
                             showOnlyFirstAndLast: false,
-                            color: "#CCCCCC"
+                            color: "#CCCCCC",
+                            offsetY: 0,
+                            rotation: 0
                         }
                     }
                 },
@@ -365,7 +369,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionD
         values: [16, 2, 3, 5, 28, 13, 21, 34, 55, 89, 134 ]
     },
     {
-        name: "Serie 3",
+        name: "Serie 4",
         values: [5, null, 5, 5, 5, 5 ]
     }
 ]
@@ -421,6 +425,8 @@ const <span class="text-app-blue">config: VueUiDonutEvolutionConfig</span> = {
               values: string[], 
               fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.chart.layout.grid.xAxis.dataLabels.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.chart.layout.grid.xAxis.dataLabels.fontSize">, (default: 8)
               color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.grid.xAxis.dataLabels.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.grid.xAxis.dataLabels.color">, (default: "#2D353C")
+              offsetY: <input v-if="isDarkMode" type="number" min="-100" max="100" v-model="mutableConfigDarkMode.style.chart.layout.grid.xAxis.dataLabels.offsetY"><input v-else type="number" min="-100" max="100" v-model="mutableConfig.style.chart.layout.grid.xAxis.dataLabels.offsetY">, (default: 0)
+              rotation: <input v-if="isDarkMode" type="number" min="-360" max="360" v-model="mutableConfigDarkMode.style.chart.layout.grid.xAxis.dataLabels.offsetY"><input v-else type="number" min="-360" max="360" v-model="mutableConfig.style.chart.layout.grid.xAxis.dataLabels.offsetY">, (default: 0)
             }
           }
         },

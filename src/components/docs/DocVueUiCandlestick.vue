@@ -71,7 +71,8 @@ const config = ref({
             fontSize: 4,
             color: "#1A1A1A",
             offsetY: 0,
-            bold: false
+            bold: false,
+            rotation: 0
           }
         },
         yAxis: {
@@ -206,7 +207,8 @@ const darkModeConfig = ref({
             fontSize: 4,
             color: "#CCCCCC",
             offsetY: 0,
-            bold: false
+            bold: false,
+            rotation: 0
           }
         },
         yAxis: {
@@ -460,6 +462,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiCandlestickConfig
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.layout.grid.xAxis.dataLabels.color"><input v-else type="color" v-model="mutableConfig.style.layout.grid.xAxis.dataLabels.color">, (default: "#2D353C")
             offsetY: 0,
             bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.grid.xAxis.dataLabels.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.grid.xAxis.dataLabels.bold" @change="forceChartUpdate()">, (default: false)
+            rotation: <input v-if="isDarkMode" type="number" min="-360" max="360" v-model="mutableConfigDarkMode.style.layout.grid.xAxis.dataLabels.rotation"><input v-else type="number" min="-360" max="360" v-model="mutableConfig.style.layout.grid.xAxis.dataLabels.rotation">, (default: 0)
           }
         },
         yAxis: {

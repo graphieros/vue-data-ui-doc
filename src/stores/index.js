@@ -4,6 +4,7 @@ export const useMainStore = defineStore("main", {
     state: () => {
         return {
             stars: 0,
+            issues: 0,
             isMenuOpen: false,
             isDarkMode: true,
             isCopy: false,
