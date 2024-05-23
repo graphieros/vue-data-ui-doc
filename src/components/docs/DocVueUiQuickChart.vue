@@ -104,7 +104,7 @@ const config = ref({
     color: "#2D353C",
     dataLabelFontSize: 14,
     dataLabelRoundingPercentage: 1,
-    dataLabelRoundingValue: 0,
+    dataLabelRoundingValue: 1,
     donutHideLabelUnderPercentage: 3,
     donutLabelMarkerStrokeWidth: 1,
     donutRadiusRatio: 0.4,
@@ -155,7 +155,11 @@ const config = ref({
     xyShowScale: true,
     yAxisLabel: 'Quantity',
     xAxisLabel: 'Time',
-    axisLabelsFontSize: 12
+    axisLabelsFontSize: 12,
+    zoomXy: true,
+    zoomColor: '#CCCCCC',
+    zoomFontSize: 14,
+    zoomUseResetSlot: false
 })
 
 const darkModeConfig = ref({
@@ -167,7 +171,7 @@ const darkModeConfig = ref({
     color: "#CCCCCC",
     dataLabelFontSize: 14,
     dataLabelRoundingPercentage: 1,
-    dataLabelRoundingValue: 0,
+    dataLabelRoundingValue: 1,
     donutHideLabelUnderPercentage: 3,
     donutLabelMarkerStrokeWidth: 1,
     donutRadiusRatio: 0.4,
@@ -218,7 +222,11 @@ const darkModeConfig = ref({
     xyShowScale: true,
     yAxisLabel: 'Quantity',
     xAxisLabel: 'Time',
-    axisLabelsFontSize: 12
+    axisLabelsFontSize: 12,
+    zoomXy: true,
+    zoomColor: '#CCCCCC',
+    zoomFontSize: 14,
+    zoomUseResetSlot: false
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -272,7 +280,11 @@ function fixChart() {
         </div>
         <div class="grid md:grid-cols-2 gap-4">
                 <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                    <VueUiQuickChart :dataset="quickDatasetSimpleLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    <VueUiQuickChart :dataset="quickDatasetSimpleLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                        <template #reset-action="{ reset }">
+                            <button @click="reset()">CUSTOM RESET</button>
+                        </template>
+                    </VueUiQuickChart>
 
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89])
@@ -629,6 +641,10 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     xyShowGrid: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.xyShowGrid" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.xyShowGrid" @change="forceChartUpdate()">, (default: true)
     xyShowScale: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.xyShowScale" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.xyShowScale" @change="forceChartUpdate()">, (default: true)
     yAxisLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.yAxisLabel"><input v-else type="text" v-model="mutableConfig.yAxisLabel">, (default: "")
+    zoomXy: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.zoomXy" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.zoomXy" @change="forceChartUpdate()">, (default: true)
+    zoomColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.zoomColor"><input v-else type="color" v-model="mutableConfig.zoomColor">,  (default: "#CCCCCC")
+    zoomFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.zoomFontSize"><input v-else type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.zoomFontSize">, (default: 14)
+    zoomUseResetSlot: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.zoomUseResetSlot" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.zoomUseResetSlot" @change="forceChartUpdate()">, (default: false)
 }
 </code>
 </pre>                
