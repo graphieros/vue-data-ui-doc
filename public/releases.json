@@ -1,5 +1,21 @@
 [
     {
+        "version": "v 2.1.88",
+        "date": "2024-05-24",
+        "updates": [
+            {
+                "component": "VueUiTreemap",
+                "description": "Fixed cell colors not showing on Safari when using zoom",
+                "link": "/docs#vue-ui-treemap"
+            },
+            {
+                "component": "VueUiGalaxy",
+                "description": "Fixed gradient not showing on Safari",
+                "link": "/docs#vue-ui-galaxy"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.87",
         "date": "2024-05-24",
         "updates": [
