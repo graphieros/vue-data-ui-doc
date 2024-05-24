@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch, nextTick, computed } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import { PinIcon, PinnedOffIcon, CopyIcon, InfoTriangleFilledIcon  } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
@@ -239,6 +239,10 @@ function fixChart() {
         </div>
 
         <Box showSlots>
+            <template #warning>
+                <InfoTriangleFilledIcon/>
+                {{ translations.slots.warning[store.lang] }}
+            </template>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

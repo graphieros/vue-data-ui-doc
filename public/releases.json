@@ -1,5 +1,27 @@
 [
     {
+        "version": "v 2.1.87",
+        "date": "2024-05-24",
+        "updates": [
+            {
+                "component": "VueUiSparkline",
+                "description": "Added #before slot",
+                "link": "/docs#vue-ui-sparkline"
+            }
+        ]
+    },
+    {
+        "version": "v 2.1.86",
+        "date": "2024-05-23",
+        "updates": [
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Added zoom feature",
+                "link": "/docs#vue-ui-donut-evolution"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.83",
         "date": "2024-05-23",
         "updates": [

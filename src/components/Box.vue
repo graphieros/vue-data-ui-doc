@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
-import { BracketsContainIcon } from "vue-tabler-icons";
+import { BracketsContainIcon} from "vue-tabler-icons";
 
 const store = useMainStore();
 
@@ -76,6 +76,10 @@ const activeTab = ref(props.activeTab);
 
         <div class="text-satoshi-bold text-app-green text-2xl mb-3">
             <slot name="title"/>
+        </div>
+
+        <div class="text-app-orange text-lg my-3 gap-2 flex flex-row align-center">
+            <slot name="warning"></slot>
         </div>
 
         <div v-show="activeTab === 0">

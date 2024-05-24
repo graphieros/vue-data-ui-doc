@@ -213,6 +213,26 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    sparklineBefore: {
+                        en: "This component contains a #before 'slot' exposing data you can use to customize labels for your chart: details of the selected datapoint, sum, average, median, trend, latest value.",
+                        fr: "Ce composant contient un 'slot' #before exposant les données que vous pouvez utiliser pour personnaliser les étiquettes de votre graphique : détails du point de données sélectionné, somme, moyenne, médiane, tendance, dernière valeur.",
+                        pt: "Este componente contém um 'slot' #before de exposição de dados que você pode usar para personalizar rótulos para seu gráfico: detalhes do ponto de dados selecionado, soma, média, mediana, tendência, valor mais recente.",
+                        de: "Diese Komponente enthält einen #before-Slot, in dem Daten angezeigt werden, mit denen Sie Beschriftungen für Ihr Diagramm anpassen können: Details zum ausgewählten Datenpunkt, Summe, Durchschnitt, Median, Trend, aktueller Wert.",
+                        zh: "该组件包含一个#before“槽”，公开可用于自定义图表标签的数据：所选数据点的详细信息、总和、平均值、中值、趋势、最新值。",
+                        jp: "このコンポーネントには、チャートのラベルをカスタマイズするために使用できるデータを公開する #before 'slot' が含まれています: 選択したデータポイントの詳細、合計、平均、中央値、トレンド、最新値。",
+                        es: "Este componente contiene un 'espacio' #before que expone datos que puede usar para personalizar etiquetas para su gráfico: detalles del punto de datos seleccionado, suma, promedio, mediana, tendencia, valor más reciente.",
+                        ko: "이 구성 요소에는 차트 레이블을 사용자 정의하는 데 사용할 수 있는 데이터(선택한 데이터 포인트, 합계, 평균, 중앙값, 추세, 최신 값)에 대한 세부 정보를 노출하는 #before '슬롯'이 포함되어 있습니다."
+                    },
+                    warning: {
+                        en: "This component works with 'slots'. See the 'slots' tab for an example.",
+                        fr: "Ce composant fonctionne avec des « slots ». Voir l'onglet « slots » pour un exemple.",
+                        pt: "Este componente funciona com 'slots'. Veja um exemplo na aba 'slots'.",
+                        de: "Diese Komponente arbeitet mit „Slots“. Ein Beispiel finden Sie auf der Registerkarte „Slots“.",
+                        zh: "该组件与“槽”一起使用。有关示例，请参阅“插槽”选项卡。",
+                        jp: "このコンポーネントは「スロット」で動作します。例については、「スロット」タブを参照してください。",
+                        es: "Este componente funciona con 'slots'. Consulte la pestaña 'slots' para ver un ejemplo.",
+                        ko: "이 구성요소는 '슬롯'과 함께 작동합니다. 예시는 '슬롯' 탭을 참조하세요."
+                    },
                     resetButton: {
                         en: 'This component contains a zoom slider, which reset button can be customized through the #reset-action slot.',
                         fr: `Ce composant contient un curseur de zoom, dont le bouton de réinitialisation peut être personnalisé via l'emplacement #reset-action.`,

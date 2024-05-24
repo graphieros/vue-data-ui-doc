@@ -48,6 +48,12 @@ const config = ref({
         chart: {
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
+            zoom: {
+                show: true,
+                color: "#CCCCCC",
+                fontSize: 14,
+                useResetSlot: false,
+            },
             layout: {
                 height: 316,
                 width: 500,
@@ -158,6 +164,12 @@ const darkModeConfig = ref({
         chart: {
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
+            zoom: {
+                show: true,
+                color: "#CCCCCC",
+                fontSize: 14,
+                useResetSlot: false,
+            },
             layout: {
                 height: 316,
                 width: 500,
@@ -394,6 +406,12 @@ const <span class="text-app-blue">config: VueUiDonutEvolutionConfig</span> = {
     chart: {
       backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
+      zoom: {
+            show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.zoom.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.zoom.show" @change="forceChartUpdate()">, (default: true)
+            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.zoom.color" @change="forceChartUpdate()"><input v-else type="color" v-model="mutableConfig.style.chart.zoom.color" @change="forceChartUpdate()">, (default: "#2D353C")
+            fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.style.chart.zoom.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.style.chart.zoom.fontSize">, (default: 14)
+            useResetSlot: false; // To use a custom slot for the reset feature (see slots tab)
+        },
       layout: {
         height: 316,
         width: 500,
@@ -626,7 +644,24 @@ const <span class="text-app-blue">config: VueUiDonutEvolutionConfig</span> = {
         &lt;/template&gt;
     &lt;/VueUiDonutEvolution&gt;
 </code>
-</pre> 
+</pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.resetButton[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiDonutEvolution
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #reset-action="{ reset }"&gt;
+            &lt;button @click="reset()"&gt;Refresh&lt;/button&gt;
+        &lt;/template&gt;
+    &lt;/VueUiDonutEvolution&gt;
+</code>
+</pre>
             </template>
 
         </Box>

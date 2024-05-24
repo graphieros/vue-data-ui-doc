@@ -487,7 +487,31 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</
 
             </template>
 
+            
             <template #tab3>
+
+              <div class="text-gray-500">
+    {{ translations.slots.sparklineBefore[store.lang]  }}
+</div>
+<pre>
+<code>
+    &lt;VueUiSparkline
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #before="{ selected, latest, sum, average, median, trend }"&gt;
+            &lt;ul&gt;
+              &lt;li&gt;Latest: <span v-pre>{{ latest }}</span>&gt;
+              &lt;li&gt;Sum: <span v-pre>{{ sum }}</span>&gt;
+              &lt;li&gt;Average: <span v-pre>{{ average }}</span>&gt;
+              &lt;li&gt;Median: <span v-pre>{{ median }}</span>&gt;
+              &lt;li&gt;Trend: <span v-pre>{{ trend }}</span>&gt;
+              &lt;li&gt;Selected: <span v-pre>{{ selected }}</span>&gt;
+            &lt;/ul&gt;
+        &lt;/template&gt;
+    &lt;/VueUiSparkline&gt;
+</code>
+</pre>  
                 <div class="text-gray-500">
                     {{ translations.slots.presentation[store.lang]  }}
                 </div>
@@ -502,9 +526,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</
         &lt;/template&gt;
     &lt;/VueUiSparkline&gt;
 </code>
-</pre>                    
-
-
+</pre>               
             </template>
         </Box>
     </div>
