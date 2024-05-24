@@ -13,6 +13,28 @@ export const useCaseStore = defineStore("cases", {
                 es: "Ver código",
                 ko: "코드 보기"
             },
+            SPARKLINE_SLOT: {
+                title: {
+                    en: "Usage of the #before 'slot'",
+                    fr: `Utilisation du #before 'slot'`,
+                    pt: "Uso do #before 'slot'",
+                    de: "Verwendung des #before 'Slot'",
+                    zh: "#before 'slot' 的用法",
+                    jp: "#before 'slot' の使用法",
+                    es: "Uso del #before 'slot'",
+                    ko: "#before '슬롯' 사용법"
+                },
+                description: {
+                    en: "Customize your presentation with additional data provided by the 'slot'",
+                    fr: "Personnalisez votre présentation avec des données supplémentaires fournies par le « slot »",
+                    pt: "Personalize sua apresentação com dados adicionais fornecidos pelo ‘slot’",
+                    de: "Passen Sie Ihre Präsentation mit zusätzlichen Daten an, die vom „Slot“ bereitgestellt werden.",
+                    zh: "使用“插槽”提供的附加数据自定义您的演示文稿",
+                    jp: "「スロット」によって提供される追加データを使用してプレゼンテーションをカスタマイズします",
+                    es: "Personaliza tu presentación con datos adicionales proporcionados por el 'slot'",
+                    ko: "'슬롯'에서 제공하는 추가 데이터로 프레젠테이션을 맞춤설정하세요."
+                }
+            },
             DONUT_PIE: {
                 title: {
                     en: "I'd rather have a pie",

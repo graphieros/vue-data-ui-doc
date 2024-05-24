@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
+import ucSparkline from "../useCases/uc-sparkline.vue"
 
 const store = useMainStore();
 const key = ref(0);
@@ -286,7 +287,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-sparkline"/>
             <MakerLink to="VueUiSparkline"/>
         </div>
-        <Box showSlots showEmits>
+        <Box showSlots showEmits showUseCases>
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">
@@ -527,6 +528,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</
     &lt;/VueUiSparkline&gt;
 </code>
 </pre>               
+            </template>
+
+            <template #tab5>
+              <ucSparkline/>
             </template>
         </Box>
     </div>

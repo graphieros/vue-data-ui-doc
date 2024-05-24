@@ -11,6 +11,102 @@ export function useCase() {
         return isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
     });
 
+    const SPARKLINE_SLOT_DATASET = ref([
+        {
+            period: "period 1",
+            value: 0
+        },
+        {
+            period: "period 2",
+            value: 1
+        },
+        {
+            period: "period 3",
+            value: 0
+        },
+        {
+            period: "period 4",
+            value: 2
+        },
+        {
+            period: "period 5",
+            value: 1
+        },
+        {
+            period: "period 6",
+            value: 3
+        },
+        {
+            period: "period 7",
+            value: 2
+        },
+        {
+            period: "period 8",
+            value: 5
+        },
+        {
+            period: "period 9",
+            value: 3
+        },
+        {
+            period: "period 10",
+            value: 8
+        },
+        {
+            period: "period 11",
+            value: 5
+        },
+        {
+            period: "period 12",
+            value: 13
+        },
+        {
+            period: "period 13",
+            value: 8
+        },
+        {
+            period: "period 14",
+            value: 21
+        },
+        {
+            period: "period 15",
+            value: 13
+        },
+        {
+            period: "period 16",
+            value: 34
+        },
+        {
+            period: "period 17",
+            value: 21
+        },
+    ]);
+
+    const SPARKLINE_SLOT_CONFIG = computed(() => {
+        return {
+            type: "line",
+            style: {
+                backgroundColor: bgColor.value,
+                area: {
+                    color: "#5f8bee",
+                },
+                line: {
+                    smooth: true,
+                    color: "#5f8bee",
+                },
+                dataLabel: {
+                    show: false,
+                },
+                title: {
+                    show: false,
+                },
+                zeroLine: {
+                    color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                }
+            }
+        }
+    })
+
     const DONUT_PIE_DATASET = ref([
         {
             name: 'Serie 1',
@@ -84,7 +180,7 @@ export function useCase() {
         },
         {
             name: "S1",
-            series: [0,1,1,1,1,1,0,0, 1, 1, 0],
+            series: [0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0],
             type: "line",
             smooth: false,
             useArea: true,
@@ -93,7 +189,7 @@ export function useCase() {
         },
         {
             name: "S2",
-            series: [0,0,0,1,1,0,0,1,1,1, 0],
+            series: [0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0],
             type: "line",
             smooth: false,
             useArea: true,
@@ -254,7 +350,7 @@ export function useCase() {
             scaleLabel: "Grams"
         },
     ]);
-    
+
     const XY_MULTIPLE_Y_AXES_CONFIG = computed(() => {
         return {
             line: {
@@ -320,6 +416,8 @@ export function useCase() {
     });
 
     return {
+        SPARKLINE_SLOT_DATASET,
+        SPARKLINE_SLOT_CONFIG,
         XY_STACKED_DATASET_WITH_AUTOSCALE,
         XY_MULTIPLE_Y_AXES_CONFIG,
         XY_MULTIPLE_Y_AXES_DATASET,
