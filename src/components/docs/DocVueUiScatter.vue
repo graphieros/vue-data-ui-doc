@@ -117,6 +117,27 @@ const darkModeConfig = ref({
           strokeDasharray: 0,
           fillOpacity: 0.2
         },
+        selectors: {
+            show: true,
+            stroke: "#CCCCCC",
+            strokeWidth: 0.7,
+            strokeDasharray: 0,
+            labels: {
+              fontSize: 8,
+              color: "#CCCCCC",
+              rounding: 2,
+              bold: false,
+              showName: true,
+              prefix: "",
+              suffix: ""
+            },
+            markers: {
+              radius: 1.5,
+              stroke: "#CCCCCC",
+              strokeWidth: 0.5,
+              fill: "#1A1A1A"
+            }
+        },
       },
       correlation: {
         show: true,
@@ -176,7 +197,9 @@ const darkModeConfig = ref({
       fontSize: 14,
       roundingValue: 0,
       customFormat: null,
-      showShape: true
+      showShape: true,
+      prefix: "",
+      suffix: ""
     }
   },
   userOptions: {
@@ -264,6 +287,27 @@ const config = ref({
           strokeDasharray: 0,
           fillOpacity: 0.2
         },
+        selectors: {
+            show: true,
+            stroke: "#1A1A1A",
+            strokeWidth: 0.7,
+            strokeDasharray: 0,
+            labels: {
+              fontSize: 8,
+              color: "#1A1A1A",
+              rounding: 2,
+              bold: false,
+              showName: true,
+              prefix: "",
+              suffix: ""
+            },
+            markers: {
+              radius: 1.5,
+              stroke: "#1A1A1A",
+              strokeWidth: 0.5,
+              fill: "#FFFFFF"
+            }
+        },
       },
       correlation: {
         show: true,
@@ -323,7 +367,9 @@ const config = ref({
       fontSize: 14,
       roundingValue: 0,
       customFormat: null,
-      showShape: true
+      showShape: true,
+      prefix: "",
+      suffix: ""
     }
   },
   userOptions: {
@@ -552,7 +598,28 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
           strokeWidth: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="12" step="0.1" v-model="mutableConfigDarkMode.style.layout.plots.giftWrap.strokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="12" step="0.1" v-model="mutableConfig.style.layout.plots.giftWrap.strokeWidth">, (default: 1)
           strokeDasharray: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="64" step="0.1" v-model="mutableConfigDarkMode.style.layout.plots.giftWrap.strokeDasharray"><input v-else type="range" class="accent-app-blue" min="0" max="64" step="0.1" v-model="mutableConfig.style.layout.plots.giftWrap.strokeDasharray">, (default: 0)
           fillOpacity: <input v-if="isDarkMode" type="range" min="0" max="1" step="0.1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.giftWrap.fillOpacity"><input v-else type="range" min="0" max="1" step="0.1" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.giftWrap.fillOpacity">, (default: 0.2)
-        }
+        },
+        selectors: {
+            show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.selectors.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.selectors.show">, (default: true)
+            stroke:  <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.layout.plots.selectors.stroke"><input v-else type="color" v-model="mutableConfig.style.layout.plots.selectors.stroke">, (default: "#2D353C")
+            strokeWidth: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="12" step="0.1" v-model="mutableConfigDarkMode.style.layout.plots.selectors.strokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="12" step="0.1" v-model="mutableConfig.style.layout.plots.selectors.strokeWidth">, (default: 0.7)
+            strokeDasharray: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="64" step="0.1" v-model="mutableConfigDarkMode.style.layout.plots.selectors.strokeDasharray"><input v-else type="range" class="accent-app-blue" min="0" max="64" step="0.1" v-model="mutableConfig.style.layout.plots.selectors.strokeDasharray">, (default: 0)
+            labels: {
+              fontSize: <input v-if="isDarkMode" type="number" min="4" max="32" v-model="mutableConfigDarkMode.style.layout.plots.selectors.labels.fontSize"><input v-else type="number" min="4" max="32" v-model="mutableConfig.style.layout.plots.selectors.labels.fontSize">, (default: 12)
+              color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.layout.plots.selectors.labels.color"><input v-else type="color" v-model="mutableConfig.style.layout.plots.selectors.labels.color">, (default: "#2D353C")
+              rounding: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.style.layout.plots.selectors.labels.rounding"><input v-else type="number" min="0" max="12" v-model="mutableConfig.style.layout.plots.selectors.labels.rounding">, (default: 12)
+              bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.selectors.labels.bold"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.selectors.labels.bold">, (default: false)
+              showName: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.selectors.labels.showName"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.selectors.labels.showName">, (default: true)
+              prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.layout.plots.selectors.labels.prefix"><input v-else type="text" v-model="mutableConfig.style.layout.plots.selectors.labels.prefix">, (default: "")
+              suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.layout.plots.selectors.labels.suffix"><input v-else type="text" v-model="mutableConfig.style.layout.plots.selectors.labels.suffix">, (default: "")
+            },
+            markers: {
+              radius: <input v-if="isDarkMode" type="number" min="0" max="32" v-model="mutableConfigDarkMode.style.layout.plots.selectors.markers.radius"><input v-else type="number" min="0" max="32" v-model="mutableConfig.style.layout.plots.selectors.markers.radius">, (default: 12)
+              stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.layout.plots.selectors.markers.stroke"><input v-else type="color" v-model="mutableConfig.style.layout.plots.selectors.markers.stroke">, (default: "#FFFFFF")
+              strokeWidth: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="12" step="0.1" v-model="mutableConfigDarkMode.style.layout.plots.selectors.markers.strokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="12" step="0.1" v-model="mutableConfig.style.layout.plots.selectors.markers.strokeWidth">, (default: 0.5)
+              fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.layout.plots.selectors.markers.fill"><input v-else type="color" v-model="mutableConfig.style.layout.plots.selectors.markers.fill">, (default: "#2D353C")
+            }
+        },
       },
       marginalBars: {
         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.marginalBars.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.marginalBars.show">, (default: false)
@@ -624,6 +691,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.color"><input v-else type="color" v-model="mutableConfig.style.tooltip.color">, (default: "#2D353C")
       fontSize: <input v-if="isDarkMode" type="number" min="6" max="24" v-model="mutableConfigDarkMode.style.tooltip.fontSize"><input v-else type="number" min="6" max="24" v-model="mutableConfig.style.tooltip.fontSize">, (default: 14)
       showShape: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.tooltip.showShape"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.tooltip.showShape">, (default: true)
+      prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.tooltip.prefix"><input v-else type="text" v-model="mutableConfig.style.tooltip.prefix">, (default: "")
+      suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.tooltip.suffix"><input v-else type="text" v-model="mutableConfig.style.tooltip.suffix">, (default: "")
       customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
     }
   },

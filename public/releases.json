@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.89",
+        "date": "2024-05-24",
+        "updates": [
+            {
+                "component": "VueUiScatter",
+                "description": "Added optional selectors on datapoint hover",
+                "link": "/docs#vue-ui-scatter"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.88",
         "date": "2024-05-24",
         "updates": [
