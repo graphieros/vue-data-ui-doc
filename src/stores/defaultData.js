@@ -7,7 +7,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 dataset: [
                     {
                         name: "name",
-                        series: [1, 2, 4],
+                        series: [1, 10, 20, 30, 25, 20, 12, 16, 19, 21],
                         color: "#6376DD",
                         type: "line",
                         shape: 'circle',
@@ -27,6 +27,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.height', def: 600, type: 'range', min: 300, max: 1000, label: 'height', category: 'general' },
                     { key: 'chart.width', def: 1000, type: 'range', min: 300, max: 2000, label: 'width', category: 'general' },
                     { key: 'chart.zoom.show', def: false, type: 'checkbox', label: 'zoom', category: 'general' },
+                    { key: 'chart.zoom.color', def: '#CCCCCC', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
+                    { key: 'chart.zoom.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['zoom',  'is', 'fontSize'], category: 'general'},
 
                     { key: 'chart.padding.top', def: 36, type: 'number', min: 0, max: 100, label: "top", category: 'padding' },
                     { key: 'chart.padding.right', def: 24, type: 'number', min: 0, max: 100, label: 'right', category: 'padding' },
@@ -1708,7 +1710,23 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.plots.giftWrap.show', def: false, type: 'checkbox', label: ['giftWrap', "is", 'show'], category: 'datapoints'},
                     { key: 'style.layout.plots.giftWrap.strokeWidth', def: 1, type: 'number', min: 0, max: 24, step: 0.1, label: ['giftWrap', 'border', 'is', 'thickness'], category: 'datapoints'},
                     { key: 'style.layout.plots.giftWrap.strokeDasharray', def: 0, type: 'number', min: 0, max: 64, step: 0.1, label: ['giftWrap', 'border', 'is', 'dashed'], category: 'datapoints'},
-                    { key: 'style/layout.plots.giftWrap.fillOpacity', def: 0.2, type: 'number', min: 0, max: 1, step: 0.01, label: ['giftWrap', 'backgroundColor', 'is', 'opacity'], category: 'datapoints'},
+                    { key: 'style.layout.plots.giftWrap.fillOpacity', def: 0.2, type: 'number', min: 0, max: 1, step: 0.01, label: ['giftWrap', 'backgroundColor', 'is', 'opacity'], category: 'datapoints'},
+
+                    { key: 'style.layout.plots.selectors.show', def: true, type: 'checkbox', label: ['selectors', 'is', 'show'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.stroke', def: '#1A1A1A', type: 'color', label: ['selectors', 'is', 'stroke color'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.strokeWidth', def: 0.7, type: 'number', min: 0.1, max: 6, step: 0.1, label: ['selectors', 'is', 'stroke width'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.strokeDasharray', def: 0, type: 'number', min: 0, max: 100, label: ['selectors', 'is', 'dashed'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.labels.fontSize', def: 12, type:'number', min: 8, max: 42, label: ['selectors', 'labels', 'is', 'fontSize'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.labels.color', def: '#1A1A1A', type: 'color', label: ['selectors', 'labels', 'is', 'textColor'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.labels.rounding', def: 2, type: 'number', min: 0, max: 12, label: ['selectors', 'labels', 'is', 'rounding'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.labels.bold', def: false, type: 'checkbox', label: ['selectors', 'labels', 'is', 'bold'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.labels.showName', def: true, type: 'checkbox', label: ['selectors', 'labels', 'name', 'is', 'show'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.labels.prefix', def: '', type: 'text', label: ['selectors', 'labels', 'is', 'prefix'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.labels.suffix', def: '', type: 'text', label: ['selectors', 'labels', 'is', 'suffix'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.markers.radius', def: 1.5, type: 'number', min: 0, max: 24, step: 0.5, label: ['selectors', 'marker', 'is', 'radius'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.markers.stroke', def: '#FFFFFF', type: 'color', label: ['selectors', 'marker', 'is', 'stroke'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.markers.strokeWidth', def: 0.5, type: 'number', min: 0, max: 6, label: ['selectors', 'marker', 'is', 'thickness'], category: 'datapoints'},
+                    { key: 'style.layout.plots.selectors.markers.fill', def: '#1A1A1A', type: 'color', label: ['selectors', 'marker', 'is', 'color'], category: 'datapoints'},
 
                     { key: 'style.layout.correlation.show', def: false, type: 'checkbox', label: 'show', category: 'correlation' },
                     { key: 'style.layout.correlation.strokeDasharray', def: 2, type: 'number', min: 0, max: 24, step: 0.1, label: 'dashed', category: 'correlation' },
@@ -1753,6 +1771,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'tooltip' },
                     { key: 'style.tooltip.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'tooltip' },
                     { key: 'style.tooltip.showShape', def: true, type: 'checkbox', label: ['shape', 'is', 'show'], category: 'tooltip' },
+                    { key: 'style.tooltip.prefix', def: '', type: 'text', label: ['value', 'is', 'prefix'], category: 'tooltip'},
+                    { key: 'style.tooltip.suffix', def: '', type: 'text', label: ['value', 'is', 'suffix'], category: 'tooltip'},
+
                     { key: 'userOptions.show', def: true, type: "checkbox", label: 'showUserOptions', category: 'general' },
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
