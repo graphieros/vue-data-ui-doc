@@ -25,7 +25,6 @@ const isDarkMode = computed(() => {
 const dataset = ref([
     {
     name: "Serie 1",
-    color: "#5f8bee",
     value: 100,
     children: [
       {
@@ -41,22 +40,18 @@ const dataset = ref([
   {
     name: "Serie 2",
     value: 345,
-    color: "#ff6400",
   },
   {
     name: "Serie 3",
-    color: "#42d392",
     value: 210,
   },
   {
     name: "Serie 4",
-    color:"rgb(200,200,50)",
     value: 188,
   },
   {
     name: "Serie 5",
     value: 120,
-    color: "rgb(100,50,200)",
     children: [
       {
         name: "Serie 5 child 1",

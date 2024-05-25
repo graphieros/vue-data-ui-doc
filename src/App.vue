@@ -6,6 +6,7 @@ import { useRouter } from "vue-router";
 import Follower from "./components/examples/components/Follower.vue";
 import GithubButton from "./components/examples/components/GithubButton.vue";
 import { useMainStore } from "./stores";
+import HelpCenter from "./components/helpCenter/HelpCenter.vue";
 
 const store = useMainStore()
 
@@ -39,6 +40,7 @@ onMounted(() => {
 
 <template>
   <Header/>
+  <HelpCenter/>
   <div id="vdui" class="font-satoshi bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors">
     <router-view />
     <UpToTop/>

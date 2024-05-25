@@ -181,7 +181,6 @@ onUnmounted(() => {
 
 <template>
   <div
-    v-if="canShowOutside"
     :class="`z-50 text-white ${
       props.fixed ? 'fixed' : ''
     } top-16 right-4 w-fit text-left`"
