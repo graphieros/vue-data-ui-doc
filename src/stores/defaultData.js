@@ -128,6 +128,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'bar.serieName.abbreviationSize', def: 3, type: 'number', min: 0, max: 12, label: ['serieName', 'abbreviation', 'is', 'size'], category: 'bar' },
                     { key: 'bar.serieName.useSerieColor', def: true, type: 'checkbox', label: ['serieName', 'textColor', 'is', 'series'], category: 'bar' },
                     { key: 'bar.serieName.color', def: '#1A1A1A', type: 'color', label: ['serieName', 'is', 'textColor'], category: 'bar' },
+                    { key: 'bar.periodGap', def: 0.1, type: 'number', min: 0, max: 0.5, step: 0.01, label: ['period', 'is', 'gap'], category: 'bar'},
 
                     { key: 'line.radius', def: 6, type: 'number', min: 0, max: 20, label: 'radius', category: 'line' },
                     { key: 'line.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'line' },

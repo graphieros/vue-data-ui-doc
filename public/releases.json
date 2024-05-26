@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.90",
+        "date": "2024-05-26",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added optional bar gap between periods on bar types",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.89",
         "date": "2024-05-24",
         "updates": [
