@@ -129,6 +129,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'bar.serieName.useSerieColor', def: true, type: 'checkbox', label: ['serieName', 'textColor', 'is', 'series'], category: 'bar' },
                     { key: 'bar.serieName.color', def: '#1A1A1A', type: 'color', label: ['serieName', 'is', 'textColor'], category: 'bar' },
                     { key: 'bar.periodGap', def: 0.1, type: 'number', min: 0, max: 0.5, step: 0.01, label: ['period', 'is', 'gap'], category: 'bar'},
+                    { key: 'bar.border.useSerieColor', def: false, type: 'checkbox', label: ['border', 'is', 'serie color'], type: 'checkbox'},
+                    { key: 'bar.border.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'bar'},
+                    { key: 'bar.border.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'bar'},
 
                     { key: 'line.radius', def: 6, type: 'number', min: 0, max: 20, label: 'radius', category: 'line' },
                     { key: 'line.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'line' },

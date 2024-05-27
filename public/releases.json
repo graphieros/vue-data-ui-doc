@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.91",
+        "date": "2024-05-27",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Removed canvas option, added bar types border config options",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.90",
         "date": "2024-05-26",
         "updates": [

@@ -77,7 +77,6 @@ const dataset = ref([
 
 const config = ref({
     useCssAnimation: true,
-    useCanvas: false,
     chart: {
         backgroundColor: "#F3F4F6",
         color: "#1A1A1A",
@@ -212,6 +211,11 @@ const config = ref({
     bar: {
         borderRadius: 2,
         useGradient: true,
+        border: {
+            useSerieColor: false,
+            strokeWidth: 1,
+            stroke: "#F3F4F6"
+        },
         labels: {
             show: true,
             offsetY: -6,
@@ -274,7 +278,6 @@ const config = ref({
 
 const darkModeConfig = ref({
     useCssAnimation: true,
-    useCanvas: false,
     chart: {
         backgroundColor: "#1A1A1A",
         color: "#c8c8c8",
@@ -409,6 +412,11 @@ const darkModeConfig = ref({
     bar: {
         borderRadius: 2,
         useGradient: true,
+        border: {
+            useSerieColor: false,
+            strokeWidth: 1,
+            stroke: "#1A1A1A"
+        },
         labels: {
             show: true,
             offsetY: -6,
@@ -473,8 +481,6 @@ const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value)));
 const mutableDataset = ref(JSON.parse(JSON.stringify(dataset.value)));
 
-const useCanvas = ref(false);
-
 function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
     mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
@@ -503,49 +509,6 @@ const isFixed = ref(false);
 
 function fixChart() {
     isFixed.value = !isFixed.value;
-}
-
-function toggleUseCanvas() {
-    if (useCanvas.value) {
-        mutableConfig.value.useCanvas = true;
-        mutableConfig.value.chart.height = 600;
-        mutableConfig.value.chart.width = 1000;
-        mutableConfig.value.chart.padding = {
-            top: 72,
-            right: 48,
-            left: 92,
-            bottom: 72
-        };
-        mutableConfig.value.chart.grid.labels.fontSize = 20;
-        mutableConfig.value.chart.grid.labels.axis.fontSize = 24;
-        mutableConfig.value.chart.grid.labels.xAxisLabels.fontSize = 12;
-        mutableConfig.value.chart.labels.fontSize = 20;
-        mutableConfig.value.line.strokeWidth = 4;
-        mutableConfig.value.line.radius = 6;
-        mutableConfig.value.plot.radius = 6;
-        
-        mutableConfigDarkMode.value.useCanvas = true;
-        mutableConfigDarkMode.value.chart.height = 600;
-        mutableConfigDarkMode.value.chart.width = 1000;
-        mutableConfigDarkMode.value.chart.padding = {
-            top: 72,
-            right: 48,
-            left: 92,
-            bottom: 72
-        };
-        mutableConfigDarkMode.value.chart.grid.labels.fontSize = 20;
-        mutableConfigDarkMode.value.chart.grid.labels.axis.fontSize = 24;
-        mutableConfigDarkMode.value.chart.grid.labels.xAxisLabels.fontSize = 12;
-        mutableConfigDarkMode.value.chart.labels.fontSize = 20;
-        mutableConfigDarkMode.value.line.strokeWidth = 4;
-        mutableConfigDarkMode.value.line.radius = 6;
-        mutableConfigDarkMode.value.plot.radius = 6;
-
-        forceChartUpdate();
-    } else {
-        resetDefault();
-        forceChartUpdate();
-    }
 }
 
 function toggleUseIndividualScale() {
@@ -789,7 +752,6 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> = {
         useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)
-        useCanvas: {{ useCanvas }},
         chart: {
             fontFamily: "inherit",
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.chart.backgroundColor">, (default: "#FFFFFF")
@@ -927,6 +889,11 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
         bar: {
             borderRadius: <input v-if="isDarkMode" type="number" min="0" max="50" v-model="mutableConfigDarkMode.bar.borderRadius"><input v-else type="number" min="0" max="50" v-model="mutableConfig.bar.borderRadius">, (default: 2)
             useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.useGradient"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.useGradient">, (default: true)
+            border: {
+                useSerieColor: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.border.useSerieColor"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.border.useSerieColor">, (default: false)
+                strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.bar.border.strokeWidth"><input v-else type="number" min="0" max="12" v-model="mutableConfig.bar.border.strokeWidth">, (default: 1)
+                stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.bar.border.stroke"><input v-else type="color" v-model="mutableConfig.bar.border.stroke">, (default: "#FFFFFF")
+            },
             labels: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.labels.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.labels.show">, (default: false)
                 offsetY: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.bar.labels.offsetY"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.bar.labels.offsetY">, (default: -6)
