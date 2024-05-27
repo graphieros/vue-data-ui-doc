@@ -40,7 +40,7 @@ onMounted(() => {
 
 <template>
   <Header/>
-  <HelpCenter/>
+  <HelpCenter v-if="currentRoute !== '/'"/>
   <div id="vdui" class="font-satoshi bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors">
     <router-view />
     <UpToTop/>
