@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../stores";
 
 const store = useMainStore();
@@ -8,6 +8,22 @@ const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => {
   return store.translations;
 })
+
+const contributors = ref(null)
+
+onMounted(() => {
+  fetch('https://api.github.com/repos/graphieros/vue-data-ui/contributors').then(response => {
+    if(!response.ok) {
+      throw new Error('Meh')
+    }
+    return response.json()
+  }).then(data => {
+    contributors.value = data;
+    console.log({data})
+  })
+})
+
+// https://api.github.com/repos/graphieros/vue-data-ui/contributors
 
 const skeletonConfig = ref({
   type: "line",
@@ -306,6 +322,17 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
                 </p>
             </div>
         </div>
+
+        <!-- <div class="w-full my-12">
+          <h3>Contributors</h3>
+          <div class="flex flex-row flew-wrap gap-4 palce-items-center justify-center">
+            <div v-for="contributor in contributors" class="flex flex-col gap-2 place-items-center justify-center">
+              <img :src="contributor.avatar_url" class="h-[40px] w-[40px] rounded-full" :alt="contributor.login"/>
+              <div class="text-[9px]">{{ contributor.contributions }}</div>
+            </div>
+          </div>
+        </div> -->
+
         <div v-if="isDarkMode" class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px] mb-12">
             <div v-for="skeleton in skeletonsDarkMode.slice(3, skeletons.length)" class="max-w-1/3">
                 <VueUiSkeleton :config="skeleton"/>

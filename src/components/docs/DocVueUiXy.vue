@@ -891,7 +891,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
             useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.useGradient"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.useGradient">, (default: true)
             border: {
                 useSerieColor: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.bar.border.useSerieColor"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.bar.border.useSerieColor">, (default: false)
-                strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.bar.border.strokeWidth"><input v-else type="number" min="0" max="12" v-model="mutableConfig.bar.border.strokeWidth">, (default: 1)
+                strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.bar.border.strokeWidth"><input v-else type="number" min="0" max="12" v-model="mutableConfig.bar.border.strokeWidth">, (default: 0)
                 stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.bar.border.stroke"><input v-else type="color" v-model="mutableConfig.bar.border.stroke">, (default: "#FFFFFF")
             },
             labels: {
