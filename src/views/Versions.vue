@@ -47,28 +47,7 @@ const url = computed(() => {
     return `https://api.npmjs.org/downloads/range/${start.value}:${end.value}/vue-data-ui`;
 });
 
-const weekUrl = "https://api.npmjs.org/versions/vue-data-ui/last-week";
-
 const versionsUrl = ref('https://vue-data-ui.graphieros.com/releases.json');
-
-const skeletonLine = ref({
-    type:"line",
-    style: {
-        backgroundColor: "#1A1A1A",
-        line: {
-        axis: {
-            show: true,
-            color: "#343434",
-            strokeWidth: 0.5
-        },
-        path: {
-            color: "#343434",
-            strokeWidth: 1,
-            showPlots: true
-        }
-    }
-    }
-});
 
 Date.prototype.getWeek = function () {
   const d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
