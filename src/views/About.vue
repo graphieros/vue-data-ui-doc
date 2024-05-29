@@ -305,7 +305,7 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
         <p class="my-3">
             {{ translations.about.p4[store.lang] }}<span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-screenshot">VueUiScreenshot</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-skeleton">VueUiSkeleton</router-link></span>
         </p>
-       
+
         <div class="w-full mx-auto max-w-[400px] mt-8">
           <VueUiSparkStackbar :dataset="componentTypes" :config="isDarkMode ? stackConfigDarkMode :stackConfig" />
         </div>
