@@ -515,35 +515,6 @@ const sparklineReleases = computed(() => {
   })
 });
 
-const dataset = computed(() => {
-    const series = data.value.downloads.map(d => d.downloads).slice(0, -1);
-    const average = series.reduce((a, b) => a + b) / series.length;
-    const avg = [];
-    for(let i = 0; i < series.length; i += 1) {
-        avg.push(average);
-    }
-
-    return [
-        {
-            name: "average",
-            series: avg,
-            type: "line",
-            color: "rgb(62,62,62)",
-            dashed: true,
-            dataLabels: false,
-            useTag: "start"
-        },
-        {
-            name: "vue-data-ui",
-            series,
-            type: "line",
-            color: "#42d392",
-            useProgression: true,
-            dataLabels: false,
-        }
-    ]
-});
-
 function computeSumsByChunks(arr, chunkSize) {
     const result = [];
     for (let i = 0; i < arr.length; i += chunkSize) {
