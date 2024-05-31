@@ -1,7 +1,23 @@
 [
     {
+        "version": "v 2.1.97",
+        "date": "2024-05-31",
+        "updates": [
+            {
+                "component": "VueUiStripPlot",
+                "description": "Now accepts negative values",
+                "link": "/docs#vue-ui-strip-plot"
+            },
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Added a warning when using negative values",
+                "link": "/docs#vue-ui-vertical-bar"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.96",
-        "date": "2024-05-27",
+        "date": "2024-05-31",
         "updates": [
             {
                 "component": "VueUiXy",
