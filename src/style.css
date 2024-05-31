@@ -201,6 +201,7 @@ input[type="checkbox"]:checked::before {
 }
 
 input:not([type="color"]),
+input:not([type="range"]),
 select {
   border: 1px solid #CCCCCC30 !important;
 }
@@ -208,7 +209,15 @@ select {
 input:not([type="color"]):hover {
   border: 1px solid #5f8bee !important;
 }
+input:not([type="range"]):hover {
+  border: 1px solid #5f8bee !important;
+}
 
 select:hover {
   border: 1px solid #5f8bee !important;
+}
+
+input[type="range"],
+input[type="range"]:hover {
+  border: none !important;
 }

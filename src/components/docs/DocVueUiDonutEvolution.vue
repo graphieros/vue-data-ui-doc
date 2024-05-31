@@ -51,6 +51,7 @@ const config = ref({
             zoom: {
                 show: true,
                 color: "#CCCCCC",
+                highlightColor: "#4A4A4A",
                 fontSize: 14,
                 useResetSlot: false,
             },
@@ -167,6 +168,7 @@ const darkModeConfig = ref({
             zoom: {
                 show: true,
                 color: "#CCCCCC",
+                highlightColor: '#4A4A4A',
                 fontSize: 14,
                 useResetSlot: false,
             },
@@ -408,7 +410,8 @@ const <span class="text-app-blue">config: VueUiDonutEvolutionConfig</span> = {
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
       zoom: {
             show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.zoom.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.zoom.show" @change="forceChartUpdate()">, (default: true)
-            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.zoom.color" @change="forceChartUpdate()"><input v-else type="color" v-model="mutableConfig.style.chart.zoom.color" @change="forceChartUpdate()">, (default: "#2D353C")
+            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.zoom.color" @change="forceChartUpdate()"><input v-else type="color" v-model="mutableConfig.style.chart.zoom.color" @change="forceChartUpdate()">, (default: "#CCCCCC")
+            highlightColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.zoom.highlightColor" @change="forceChartUpdate()"><input v-else type="color" v-model="mutableConfig.style.chart.zoom.highlightColor" @change="forceChartUpdate()">, (default: "#4A4A4A")
             fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.style.chart.zoom.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.style.chart.zoom.fontSize">, (default: 14)
             useResetSlot: false; // To use a custom slot for the reset feature (see slots tab)
         },

@@ -158,6 +158,7 @@ const config = ref({
     axisLabelsFontSize: 12,
     zoomXy: true,
     zoomColor: '#CCCCCC',
+    zoomHighlightColor: '#4A4A4A',
     zoomFontSize: 14,
     zoomUseResetSlot: false
 })
@@ -225,6 +226,7 @@ const darkModeConfig = ref({
     axisLabelsFontSize: 12,
     zoomXy: true,
     zoomColor: '#CCCCCC',
+    zoomHighlightColor: '#4A4A4A',
     zoomFontSize: 14,
     zoomUseResetSlot: false
 })
@@ -643,6 +645,7 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     yAxisLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.yAxisLabel"><input v-else type="text" v-model="mutableConfig.yAxisLabel">, (default: "")
     zoomXy: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.zoomXy" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.zoomXy" @change="forceChartUpdate()">, (default: true)
     zoomColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.zoomColor"><input v-else type="color" v-model="mutableConfig.zoomColor">,  (default: "#CCCCCC")
+    zoomHighlightColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.zoomHighlightColor"><input v-else type="color" v-model="mutableConfig.zoomHighlightColor">,  (default: "#4A4A4A")
     zoomFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.zoomFontSize"><input v-else type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.zoomFontSize">, (default: 14)
     zoomUseResetSlot: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.zoomUseResetSlot" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.zoomUseResetSlot" @change="forceChartUpdate()">, (default: false)
 }

@@ -115,7 +115,8 @@ const config = ref({
     },
     zoom: {
         show: true,
-        color: "#42d392",
+        color: "#CCCCCC",
+        highlightColor: "#4A4A4A",
         fontSize: 14,
         useResetSlot: false,
     },
@@ -251,7 +252,8 @@ const darkModeConfig = ref({
     },
     zoom: {
         show: true,
-        color: "#42d392",
+        color: "#CCCCCC",
+        highlightColor: "#4A4A4A",
         fontSize: 14,
         useResetSlot: false,
     },
@@ -531,7 +533,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiCandlestickConfig
     },
     zoom: {
       show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.zoom.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.zoom.show" @change="forceChartUpdate()">, (default: true)
-      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.zoom.color" @change="forceChartUpdate()"><input v-else type="color" v-model="mutableConfig.style.zoom.color" @change="forceChartUpdate()">, (default: "#2D353C")
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.zoom.color" @change="forceChartUpdate()"><input v-else type="color" v-model="mutableConfig.style.zoom.color" @change="forceChartUpdate()">, (default: "#CCCCCC")
+      highlightColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.zoom.highlightColor" @change="forceChartUpdate()"><input v-else type="color" v-model="mutableConfig.style.zoom.highlightColor" @change="forceChartUpdate()">, (default: "#4A4A4A")
       fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.style.zoom.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.style.zoom.fontSize">, (default: 14)
       useResetSlot: false; // To use a custom slot for the reset feature (see slots tab)
     },

@@ -1,5 +1,52 @@
 [
     {
+        "version": "v 2.1.96",
+        "date": "2024-05-27",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Fixed bar starting base when all datapoints are negative",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiQuickChart",
+                "description": "Fixed bar starting base when all datapoints are negative",
+                "link": "/docs#vue-ui-quick-chart"
+            },
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Various layout improvements",
+                "link": "/docs#vue-ui-donut-evolution"
+            }
+        ]
+    },
+    {
+        "version": "v 2.1.95",
+        "date": "2024-05-30",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Improved double range input",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiQuickChart",
+                "description": "Improved double range input",
+                "link": "/docs#vue-ui-quick-chart"
+            },
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Improved double range input",
+                "link": "/docs#vue-ui-donut-evolution"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Improved double range input",
+                "link": "/docs#vue-ui-candlestick"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.92",
         "date": "2024-05-27",
         "updates": [
