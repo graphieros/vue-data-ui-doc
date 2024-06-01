@@ -1,5 +1,27 @@
 [
     {
+        "version": "v 2.2.0",
+        "date": "2024-06-01",
+        "updates": [
+            {
+                "component": "VueUiWaffle",
+                "description": "Added optional animation on serie segregation",
+                "link": "/docs#vue-ui-waffle"
+            },
+            {
+                "component": "VueUiStripPlot",
+                "description": "Added discrete animation on datapoint hover",
+                "link": "/docs#vue-ui-strip-plot"
+            },
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Added discrete animation on datapoint selection zoom",
+                "link": "/docs#vue-ui-donut-evolution"
+            }
+
+        ]
+    },
+    {
         "version": "v 2.1.99",
         "date": "2024-06-01",
         "updates": [

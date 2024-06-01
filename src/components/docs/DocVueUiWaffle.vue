@@ -43,6 +43,7 @@ const isDarkMode = computed(() => {
     const darkModeConfig = ref({
         useBlurOnHover: true,
         useCustomCells: false,
+        useAnimation: true,
         style: {
             fontFamily: "inherit",
             chart: {
@@ -151,6 +152,7 @@ const isDarkMode = computed(() => {
     const config = ref({
         useBlurOnHover: true,
         useCustomCells: false,
+        useAnimation: true,
         style: {
             fontFamily: "inherit",
             chart: {
@@ -382,6 +384,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</spa
     style: {
         useBlurOnHover: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()">, (default: true) <span class="text-app-blue">// since v.1.9.17</span>
         useCustomCells: false, <span class="text-app-blue">// since v2.0.81 {{ translations.customization.otherSlots.waffle[store.lang] }}</span>
+        useAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useAnimation" @change="forceChartUpdate()">, (default: true)
         fontFamily: "inherit",
         chart: {
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")
