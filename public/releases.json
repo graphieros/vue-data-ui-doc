@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.99",
+        "date": "2024-06-01",
+        "updates": [
+            {
+                "component": "VueUiQuickChart",
+                "description": "Removed legend wobbling on donut legend when segregating datapoints; improved line behavior when all datapoints are negative",
+                "link": "/docs#vue-ui-quick-chart"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.98",
         "date": "2024-06-01",
         "updates": [
