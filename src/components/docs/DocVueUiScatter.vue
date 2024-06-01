@@ -104,6 +104,7 @@ const darkModeConfig = ref({
         opacity: 0.6,
         significance: {
           show: true,
+          useDistanceOpacity: false,
           deviationThreshold: 10,
           opacity: 0.3
         },
@@ -274,6 +275,7 @@ const config = ref({
         opacity: 0.6,
         significance: {
           show: true,
+          useDistanceOpacity: false,
           deviationThreshold: 10,
           opacity: 0.3
         },
@@ -586,6 +588,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
         opacity: <input v-if="isDarkMode" type="range" min="0" max="1" step="0.1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.opacity"><input v-else type="range" min="0" max="1" step="0.1" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.opacity">, (default: 0.6)
         significance: {
           show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.significance.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.significance.show">, (default: true)
+          useDistanceOpacity: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.significance.useDistanceOpacity"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.significance.useDistanceOpacity">, (default: false)
           deviationThreshold: <input v-if="isDarkMode" type="range" min="0.1" max="100" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.significance.deviationThreshold"><input v-else type="range" min="0.1" max="100" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.significance.deviationThreshold">, (default: 10)
           opacity: <input v-if="isDarkMode" type="range" min="0" max="1" step="0.1" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.significance.opacity"><input v-else type="range" min="0" max="1" step="0.1" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.significance.opacity">, (default: 0.3)
         },

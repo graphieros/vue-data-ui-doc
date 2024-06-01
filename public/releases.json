@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.1.98",
+        "date": "2024-06-01",
+        "updates": [
+            {
+                "component": "VueUiScatter",
+                "description": "Added useDistanceOpacity plot config option",
+                "link": "/docs#vue-ui-scatter"
+            }
+        ]
+    },
+    {
         "version": "v 2.1.97",
         "date": "2024-05-31",
         "updates": [
