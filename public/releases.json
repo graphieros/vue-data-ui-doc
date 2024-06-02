@@ -1,5 +1,121 @@
 [
     {
+        "version": "v 2.2.1",
+        "date": "2024-06-02",
+        "updates": [
+            {
+                "component": "VueUi3dBar",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-3d-bar"
+            },
+            {
+                "component": "VueUiAgePyramid",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-age-pyramid"
+            },
+            {
+                "component": "VueUiCandlestick",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-candlestick"
+            },
+            {
+                "component": "VueUiChestnut",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-chestnut"
+            },
+            {
+                "component": "VueUiDonutEvolution",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-donut-evolution"
+            },
+            {
+                "component": "VueUiDonut",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-donut"
+            },
+            {
+                "component": "VueUiDumbbell",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-dumbbell"
+            },
+            {
+                "component": "VueUiGalaxy",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-galaxy"
+            },
+            {
+                "component": "VueUiMolecule",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-molecule"
+            },
+            {
+                "component": "VueUiMoodRadar",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-mood-radar"
+            },
+            {
+                "component": "VueUiNestedDonuts",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-nested-donuts"
+            },
+            {
+                "component": "VueUiOnion",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-onion"
+            },
+            {
+                "component": "VueUiQuadrant",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-quadrant"
+            },
+            {
+                "component": "VueUiRadar",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-radar"
+            },
+            {
+                "component": "VueUiRings",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-rings"
+            },
+            {
+                "component": "VueUiScatter",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-scatter"
+            },
+            {
+                "component": "VueUiStripPlot",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-strip-plot"
+            },
+            {
+                "component": "VueUiTreemap",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-treemap"
+            },
+            {
+                "component": "VueUiVerticalBar",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-vertical-bar"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-waffle"
+            },
+            {
+                "component": "VueUiXy",
+                "description": "Added close button on table",
+                "link": "/docs#vue-ui-xy"
+            },
+            {
+                "component": "VueUiWaffle",
+                "description": "Improved legend display during segregating animations",
+                "link": "/docs#vue-ui-waffle"
+            }
+        ]
+    },
+    {
         "version": "v 2.2.0",
         "date": "2024-06-01",
         "updates": [
@@ -18,7 +134,6 @@
                 "description": "Added discrete animation on datapoint selection zoom",
                 "link": "/docs#vue-ui-donut-evolution"
             }
-
         ]
     },
     {
@@ -3195,7 +3310,7 @@
     },
     {
         "version": "v 0.3.3",
-        "date":"2023-08-06",
+        "date": "2023-08-06",
         "updates": [
             {
                 "component": "VueUiOnion",
