@@ -1,5 +1,16 @@
 [
     {
+        "version": "v 2.2.2",
+        "date": "2024-06-02",
+        "updates": [
+            {
+                "component": "VueUiXy",
+                "description": "Added dataset option to display serie name at start or end of lines and plot type series",
+                "link": "/docs#vue-ui-xy"
+            }
+        ]
+    },
+    {
         "version": "v 2.2.1",
         "date": "2024-06-02",
         "updates": [

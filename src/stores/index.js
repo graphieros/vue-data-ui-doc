@@ -1819,6 +1819,16 @@ export const useMainStore = defineStore("main", {
                             ko: "여기에 데이터세트가 있습니다"
                         },
                         xy: {
+                            showSerieName: {
+                                en: "Display the name of the series at the end of start of a 'line' or 'plot' datapoint.",
+                                fr: "Afficher le nom de la série à la fin ou au début d'un point de données « line » ou « plot ».",
+                                pt: "Exibe o nome da série no final do início de um ponto de dados de 'line' ou 'plot'.",
+                                de: "Zeigt den Namen der Serie am Ende oder Anfang eines „line“- oder „plot“-Datenpunkts an.",
+                                zh: "line“线”plot“图”数据点的开头末尾显示系列名称。",
+                                jp: "「line」または「plot」データポイントの開始点の末尾に系列の名前を表示します。",
+                                es: "Muestra el nombre de la serie al final del inicio de un punto de datos de 'líne' o 'plot'.",
+                                ko: "'line' 또는 'plot' 데이터 포인트의 시작 부분에 계열 이름을 표시합니다."
+                            },
                             autoScaling: {
                                 en: "In stacked mode, will attempt to harmonize the scale to the datapoint's min & max values",
                                 fr: "En mode empilé, tentera d'harmoniser l'échelle avec les valeurs min et max du point de données",

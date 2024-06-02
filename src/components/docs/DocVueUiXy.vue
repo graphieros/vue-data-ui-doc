@@ -42,6 +42,7 @@ const dataset = ref([
         dataLabels: false,
         shape: "triangle",
         scaleSteps: 2,
+        showSerieName: 'end'
     },
     {
         name: "Series 3",
@@ -50,6 +51,7 @@ const dataset = ref([
         color: "rgb(255,100,0)",
         shape: "star",
         scaleSteps: 2,
+        showSerieName: 'end'
     },
     {
         name: "Series 4",
@@ -61,6 +63,7 @@ const dataset = ref([
         color: "rgb(200,200,50)",
         shape: 'Yellow circles',
         scaleSteps: 2,
+        showSerieName: 'end'
     },
     {
         name: "Target",
@@ -125,7 +128,7 @@ const config = ref({
         },
         padding: {
             top:  36,
-            right: 12,
+            right: 24,
             bottom: 36,
             left: 48
         },
@@ -327,7 +330,7 @@ const darkModeConfig = ref({
         },
         padding: {
             top:  36,
-            right: 12,
+            right: 24,
             bottom: 36,
             left: 48
         },
@@ -648,6 +651,7 @@ const shapeOptions = ref([
             scaleMin?: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleMin[store.lang] }}</span>
             autoScaling?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.autoScaling[store.lang] }}</span>
             stackRatio?: number; (0 to 1) <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.stackRatio[store.lang] }}</span>
+            showSerieName?: "start" | "end"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.showSerieName[store.lang] }}</span>
 
         },
         {...}

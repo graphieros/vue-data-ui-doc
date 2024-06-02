@@ -118,6 +118,7 @@ const options = ref(
         types: ['line', 'plot', 'bar'],
         shapes: ['circle', 'triangle', 'square', 'diamond', 'pentagon', 'hexagon', 'star'],
         useTag: ['none', 'start', 'end'],
+        showSerieName: ['none', 'start', 'end'],
         datasetItems: {
             name: "name",
             series: [],
@@ -263,6 +264,7 @@ const accordionConfig = ref(
                                 <th class="text-left text-xs">{{ xyTranslations.labels.type[store.lang] }}</th>
                                 <th class="text-left text-xs">{{ xyTranslations.labels.showDataLabels[store.lang] }}</th>
                                 <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.tag[store.lang] }}</th>
+                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Show serie name</th>
                                 <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.area[store.lang] }}</th>
                                 <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.smooth[store.lang] }}</th>
                                 <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.dashed[store.lang] }}</th>
@@ -285,6 +287,7 @@ const accordionConfig = ref(
                                     </td>
                                     <td><input type="checkbox" v-model="datasetItems[i].dataLabels" @change="saveDatasetToLocalStorage"></td>
                                     <td v-if="datasetItems[i].type !== 'bar'"><select class="h-[36px]" v-model="datasetItems[i].useTag" @change="saveDatasetToLocalStorage"><option v-for="tag in selectedChart.useTag">{{ tag }}</option></select></td>
+                                    <td v-if="datasetItems[i].type !== 'bar'"><select class="h-[36px]" v-model="datasetItems[i].showSerieName" @change="saveDatasetToLocalStorage"><option v-for="tag in selectedChart.showSerieName">{{ tag }}</option></select></td>
                                     <td v-if="datasetItems[i].type === 'line'"><input type="checkbox" v-model="datasetItems[i].useArea" @change="saveDatasetToLocalStorage"></td>
                                     <td v-if="datasetItems[i].type === 'line'"><input type="checkbox" v-model="datasetItems[i].smooth" @change="saveDatasetToLocalStorage"></td>
                                     <td v-if="datasetItems[i].type === 'line'"><input type="checkbox" v-model="datasetItems[i].dashed" @change="saveDatasetToLocalStorage"></td>

@@ -16,7 +16,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         dataLabels: true,
                         smooth: false,
                         dashed: false,
-                        useTag: 'none'
+                        useTag: 'none',
+                        showSerieName: 'none'
                     }
                 ],
                 model: [
