@@ -96,7 +96,7 @@ const dashboardComponents = computed(() => {
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_dashboard)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
             <GitHubLink link="vue-ui-dashboard"/>
         </div>
-        <Box showEmits>
+        <Box showEmits showSlots>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -189,6 +189,21 @@ const <span class="text-black dark:text-app-blue">config: VueUiDashboardConfig</
             <template #tab2>
                 <div><code><b>@change</b></code></div>
                 <div class="text-gray-400 pl-5">{{ translations.docs.emits.dashboard.change[store.lang] }}</div>
+            </template>
+            <template #tab3>
+                To display charts on the dashboard, use the #content slot:
+
+<pre>
+<code>
+    &lt;template&gt;
+        &lt;VueUiDashboard :dataset="dataset" :config="config"&gt;
+            &lt;template #content="{ item }"&gt;
+                &lt;component :is="item.component" v-bind="item.props" /&gt;
+            &lt;/template&gt;
+        &lt;/VueUiDashboard&gt;
+    &lt;/template&gt;
+</code>
+</pre>                
             </template>
         </Box>
     </div>

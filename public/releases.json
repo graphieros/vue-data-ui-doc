@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.5",
+    "date": "2024-06-03",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Prevented highlight area from overflowing on the left side of the chart when zooming",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.4",
     "date": "2024-06-03",
     "updates": [
