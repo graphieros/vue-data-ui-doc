@@ -1,3384 +1,3495 @@
 [
-    {
-        "version": "v 2.2.2",
-        "date": "2024-06-02",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added dataset option to display serie name at start or end of lines and plot type series",
-                "link": "/docs#vue-ui-xy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.2.1",
-        "date": "2024-06-02",
-        "updates": [
-            {
-                "component": "VueUi3dBar",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-3d-bar"
-            },
-            {
-                "component": "VueUiAgePyramid",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-age-pyramid"
-            },
-            {
-                "component": "VueUiCandlestick",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-candlestick"
-            },
-            {
-                "component": "VueUiChestnut",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-chestnut"
-            },
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-donut-evolution"
-            },
-            {
-                "component": "VueUiDonut",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-donut"
-            },
-            {
-                "component": "VueUiDumbbell",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-dumbbell"
-            },
-            {
-                "component": "VueUiGalaxy",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-galaxy"
-            },
-            {
-                "component": "VueUiMolecule",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-molecule"
-            },
-            {
-                "component": "VueUiMoodRadar",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-mood-radar"
-            },
-            {
-                "component": "VueUiNestedDonuts",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-nested-donuts"
-            },
-            {
-                "component": "VueUiOnion",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-onion"
-            },
-            {
-                "component": "VueUiQuadrant",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-quadrant"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-radar"
-            },
-            {
-                "component": "VueUiRings",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-rings"
-            },
-            {
-                "component": "VueUiScatter",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-scatter"
-            },
-            {
-                "component": "VueUiStripPlot",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-strip-plot"
-            },
-            {
-                "component": "VueUiTreemap",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-treemap"
-            },
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-vertical-bar"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-waffle"
-            },
-            {
-                "component": "VueUiXy",
-                "description": "Added close button on table",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Improved legend display during segregating animations",
-                "link": "/docs#vue-ui-waffle"
-            }
-        ]
-    },
-    {
-        "version": "v 2.2.0",
-        "date": "2024-06-01",
-        "updates": [
-            {
-                "component": "VueUiWaffle",
-                "description": "Added optional animation on serie segregation",
-                "link": "/docs#vue-ui-waffle"
-            },
-            {
-                "component": "VueUiStripPlot",
-                "description": "Added discrete animation on datapoint hover",
-                "link": "/docs#vue-ui-strip-plot"
-            },
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Added discrete animation on datapoint selection zoom",
-                "link": "/docs#vue-ui-donut-evolution"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.99",
-        "date": "2024-06-01",
-        "updates": [
-            {
-                "component": "VueUiQuickChart",
-                "description": "Removed legend wobbling on donut legend when segregating datapoints; improved line behavior when all datapoints are negative",
-                "link": "/docs#vue-ui-quick-chart"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.98",
-        "date": "2024-06-01",
-        "updates": [
-            {
-                "component": "VueUiScatter",
-                "description": "Added useDistanceOpacity plot config option",
-                "link": "/docs#vue-ui-scatter"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.97",
-        "date": "2024-05-31",
-        "updates": [
-            {
-                "component": "VueUiStripPlot",
-                "description": "Now accepts negative values",
-                "link": "/docs#vue-ui-strip-plot"
-            },
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Added a warning when using negative values",
-                "link": "/docs#vue-ui-vertical-bar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.96",
-        "date": "2024-05-31",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fixed bar starting base when all datapoints are negative",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiQuickChart",
-                "description": "Fixed bar starting base when all datapoints are negative",
-                "link": "/docs#vue-ui-quick-chart"
-            },
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Various layout improvements",
-                "link": "/docs#vue-ui-donut-evolution"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.95",
-        "date": "2024-05-30",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Improved double range input",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiQuickChart",
-                "description": "Improved double range input",
-                "link": "/docs#vue-ui-quick-chart"
-            },
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Improved double range input",
-                "link": "/docs#vue-ui-donut-evolution"
-            },
-            {
-                "component": "VueUiCandlestick",
-                "description": "Improved double range input",
-                "link": "/docs#vue-ui-candlestick"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.92",
-        "date": "2024-05-27",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Removed canvas option, added bar types border config options",
-                "link": "/docs#vue-ui-xy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.90",
-        "date": "2024-05-26",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added optional bar gap between periods on bar types",
-                "link": "/docs#vue-ui-xy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.89",
-        "date": "2024-05-24",
-        "updates": [
-            {
-                "component": "VueUiScatter",
-                "description": "Added optional selectors on datapoint hover",
-                "link": "/docs#vue-ui-scatter"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.88",
-        "date": "2024-05-24",
-        "updates": [
-            {
-                "component": "VueUiTreemap",
-                "description": "Fixed cell colors not showing on Safari when using zoom",
-                "link": "/docs#vue-ui-treemap"
-            },
-            {
-                "component": "VueUiGalaxy",
-                "description": "Fixed gradient not showing on Safari",
-                "link": "/docs#vue-ui-galaxy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.87",
-        "date": "2024-05-24",
-        "updates": [
-            {
-                "component": "VueUiSparkline",
-                "description": "Added #before slot",
-                "link": "/docs#vue-ui-sparkline"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.86",
-        "date": "2024-05-23",
-        "updates": [
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Added zoom feature",
-                "link": "/docs#vue-ui-donut-evolution"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.83",
-        "date": "2024-05-23",
-        "updates": [
-            {
-                "component": "VueUiTableSparkline",
-                "description": "Fixed wrong sparkline order when ordering columns",
-                "link": "/docs#vue-ui-table-sparkline"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.82",
-        "date": "2024-05-23",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Improved line path coating",
-                "link": "/docs#vue-ui-xy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.81",
-        "date": "2024-05-22",
-        "updates": [
-            {
-                "component": "VueUiQuickChart",
-                "description": "Added zoom component, usable on line and bar types",
-                "link": "/docs#vue-ui-quick-chart"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.79",
-        "date": "2024-05-22",
-        "updates": [
-            {
-                "component": "VueUiStripPlot",
-                "description": "Fixed wrong scaling",
-                "link": "/docs#vue-ui-strip-plot"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.78",
-        "date": "2024-05-22",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Improved xAxis time labels text-anchor when rotated",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiQuickChart",
-                "description": "Improved xAxis time labels text-anchor when rotated",
-                "link": "/docs#vue-ui-quick-chart"
-            },
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Added config options to rotate xAxis time labels",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiCandlestick",
-                "description": "Added config options to rotate xAxis time labels",
-                "link": "/docs#vue-ui-candlestick"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.77",
-        "date": "2024-05-21",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Improved zoom component",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiCandlestick",
-                "description": "Improved zoom component",
-                "link": "/docs#vue-ui-candlestick"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.75",
-        "date": "2024-05-20",
-        "updates": [
-            {
-                "component": "VueUiRadar",
-                "description": "Fixed tooltip embedded chart not showing if tooltip.customFormat is null (which is the default btw)",
-                "link": "/docs#vue-ui-radar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.74",
-        "date": "2024-05-20",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fixed zoom.color config option not applied",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiSparkStackbar",
-                "description": "Fixed bold config option on legend name not applied",
-                "link": "/docs#vue-ui-sparkstackbar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.70",
-        "date": "2024-05-20",
-        "updates": [
-            {
-                "component": "VueUiCandlestick",
-                "description": "Fixed Y axis scale config option not applied",
-                "link": "/docs#vue-ui-candlestick"
-            },
-            {
-                "component": "VueUiGauge",
-                "description": "Fixed harmless console error related to pointy arrow path painted before data is computed when animation is enabled",
-                "link": "/docs#vue-ui-gauge"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.69",
-        "date": "2024-05-20",
-        "updates": [
-            {
-                "component": "VueUiHeatmap",
-                "description": "Fixed border radius config option not applied on bottom legend",
-                "link": "/docs#vue-ui-heatmap"
-            },
-            {
-                "component": "VueUiQuadrant",
-                "description": "Fixed @selectSide emit not applied",
-                "link": "/docs#vue-ui-quadrant"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.67",
-        "date": "2024-05-19",
-        "updates": [
-            {
-                "component": "VueUiOnion",
-                "description": "Various fixes pertaining to config options not applied",
-                "link": "/docs#vue-ui-onion"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.66",
-        "date": "2024-05-19",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fixed wrong behaviors in stack mode when any datapoint contains a null value",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Hide tooltip's embedded bar chart component when customFormat is enabled",
-                "link": "/docs#vue-ui-radar"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Fixed polygons still showing when segregating series, when useCssAnimation is set to false",
-                "link": "/docs#vue-ui-radar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.65",
-        "date": "2024-05-18",
-        "updates": [
-            {
-                "component": "All components with tooltips",
-                "description": "Fixed config option tooltip.fontSize not applied"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.64",
-        "date": "2024-05-17",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added optional timeTag on serie hover",
-                "link": "/docs#vue-ui-xy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.62",
-        "date": "2024-05-17",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added more datapoint options to further customize stacked mode",
-                "link": "/docs#vue-ui-xy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.60",
-        "date": "2024-05-15",
-        "updates": [
-            {
-                "component": "VueDataUi universal component",
-                "description": "Now uses dynamic imports, so it does not import all components when used"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.58",
-        "date": "2024-05-15",
-        "updates": [
-            {
-                "component": "VueUiTableHeatmap",
-                "description": "Added optional datapoint shape & color attributes",
-                "link": "/docs#vue-ui-table-heatmap"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.57",
-        "date": "2024-05-15",
-        "updates": [
-            {
-                "component": "VueUiDonut",
-                "description": "Fixed donut thickness config not applied",
-                "link": "/docs#vue-ui-donut"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.56",
-        "date": "2024-05-15",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fixed harmless console errors when using time zoom with series that have no datapoint in the timeframe",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiSparkStackbar",
-                "description": "Fixed TS typo in component name",
-                "link": "/docs#vue-ui-sparkstackbar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.55",
-        "date": "2024-05-14",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added config option to stack series in individual scale mode",
-                "link": "/docs#vue-ui-xy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.54",
-        "date": "2024-05-14",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added optional datapoint scaleMin & scaleMax attributes to further customize individual scales.",
-                "link": "/docs#vue-ui-xy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.53",
-        "date": "2024-05-14",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fixed yLabel positioning issues. Fixed data table behavior when toggling time range.",
-                "link": "/docs#vue-ui-xy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.52",
-        "date": "2024-05-13",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added multiple y axis scales option",
-                "link": "/docs#vue-ui-xy"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.49",
-        "date": "2024-05-13",
-        "updates": [
-            {
-                "component": "VueUiDumbbell",
-                "description": "Added optional animation",
-                "link": "/docs#vue-ui-dumbbell"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.44",
-        "date": "2024-05-12",
-        "updates": [
-            {
-                "component": "VueUiDumbbell",
-                "description": "Added new component",
-                "link": "/docs#vue-ui-dumbbell"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.43",
-        "date": "2024-05-11",
-        "updates": [
-            {
-                "component": "VueUiStripPlot",
-                "description": "Added new component",
-                "link": "/docs#vue-ui-strip-plot"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.40",
-        "date": "2024-05-10",
-        "updates": [
-            {
-                "component": "",
-                "description": "Technical release"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.39",
-        "date": "2024-05-09",
-        "updates": [
-            {
-                "component": "VueUiGauge",
-                "description": "Added config option to change the pointer type (rounded or pointy)",
-                "link": "/docs#vue-ui-gauge"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.38",
-        "date": "2024-05-09",
-        "updates": [
-            {
-                "component": "",
-                "description": "For TS users, it is no longer necessary to copy the .d.ts file (at last)"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.36",
-        "date": "2024-05-08",
-        "updates": [
-            {
-                "component": "VueUiRadar",
-                "description": "Added smooth animation on category segregation",
-                "link": "/docs#vue-ui-radar"
-            },
-            {
-                "component": "VueUiOnion",
-                "description": "Added smooth animation on series segregation",
-                "link": "/docs#vue-ui-onion"
-            },
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Added smooth animation on series segregation",
-                "link": "/docs#vue-ui-vertical-bar"
-            },
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Fixed zoomed donut breaking when segregating series",
-                "link": "/docs#vue-ui-donut-evolution"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.34",
-        "date": "2024-05-08",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added a border to lines of same color as background",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiQuickChart",
-                "description": "Added a border to lines of same color as background",
-                "link": "/docs#vue-ui-quick-chart"
-            },
-            {
-                "component": "VueUiChestnut",
-                "description": "Added opacity transition on serie selection",
-                "link": "/docs#vue-ui-chestnut"
-            },
-            {
-                "component": "VueUiSparkStackbar",
-                "description": "Added smooth animation on serie segregation",
-                "link": "/docs#vue-ui-sparkstackbar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.32",
-        "date": "2024-05-08",
-        "updates": [
-            {
-                "component": "VueUiScatter",
-                "description": "Added marginal lines config option",
-                "link": "/docs#vue-ui-scatter"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.31",
-        "date": "2024-05-07",
-        "updates": [
-            {
-                "component": "VueUiNestedDonuts",
-                "description": "Added smooth animation on series segregation",
-                "link": "/docs#vue-ui-nested-donuts"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.29",
-        "date": "2024-05-07",
-        "updates": [
-            {
-                "component": "VueUiScatter",
-                "description": "Added marginal bars config option",
-                "link": "/docs#vue-ui-scatter"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.26",
-        "date": "2024-05-06",
-        "updates": [
-            {
-                "component": "",
-                "description": "Added a documentation directory in the dist directory."
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.24",
-        "date": "2024-05-06",
-        "updates": [
-            {
-                "component": "VueUiDonut",
-                "description": "Average label is hidden during serie segregation animation",
-                "link": "/docs#vue-ui-donut"
-            },
-            {
-                "component": "VueUiOnion",
-                "description": "Track size remains the same when series are segregated",
-                "link": "/docs#vue-ui-onion"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.23",
-        "date": "2024-05-05",
-        "updates": [
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-donut-evolution"
-            },
-            {
-                "component": "VueUiXy",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiDonut",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-donut"
-            },
-            {
-                "component": "VueUiDonut",
-                "description": "Removed legend label wobbling when segregating a series",
-                "link": "/docs#vue-ui-donut"
-            },
-            {
-                "component": "VueUiGalaxy",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-galaxy"
-            },
-            {
-                "component": "VueUiNestedDonuts",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-nested-donuts"
-            },
-            {
-                "component": "VueUiOnion",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-onion"
-            },
-            {
-                "component": "VueUiQuadrant",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-quadrant"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-radar"
-            },
-            {
-                "component": "VueUiRings",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-rings"
-            },
-            {
-                "component": "VueUiScatter",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-scatter"
-            },
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-vertical-bar"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Added segregation reactivity to #legend slot",
-                "link": "/docs#vue-ui-waffle"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.22",
-        "date": "2024-05-04",
-        "updates": [
-            {
-                "component": "VueUiQuickChart",
-                "description": "Fixed offset zero axis with negative values on line & bar charts.",
-                "link": "/docs#vue-ui-quick-chart"
-            },
-            {
-                "component": "VueUiDonut",
-                "description": "Fixed useCssAnimation config option not applied on dataLabels",
-                "link": "/docs#vue-ui-donut"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.21",
-        "date": "2024-05-04",
-        "updates": [
-            {
-                "component": "VueUiSparkTrend",
-                "description": "Added new component",
-                "link": "/docs#vue-ui-spark-trend"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.18",
-        "date": "2024-05-03",
-        "updates": [
-            {
-                "component": "VueUiDonut",
-                "description": "Added smooth animation on serie segregation",
-                "link": "/docs#vue-ui-donut"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.17",
-        "date": "2024-05-03",
-        "updates": [
-            {
-                "component": "VueUiQuickChart",
-                "description": "Added donut smooth animation on serie segregation",
-                "link": "/docs#vue-ui-quick-chart"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.16",
-        "date": "2024-05-02",
-        "updates": [
-            {
-                "component": "VueUiQuickChart",
-                "description": "Fixed errors when a daatapoint has a 0 value",
-                "link": "/docs#vue-ui-quick-chart"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.15",
-        "date": "2024-05-01",
-        "updates": [
-            {
-                "component": "VueUiQuickChart",
-                "description": "Added optional axis labels",
-                "link": "/docs#vue-ui-quick-chart"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.14",
-        "date": "2024-05-01",
-        "updates": [
-            {
-                "component": "VueUiQuadrant",
-                "description": "Added smooth zoom animation.",
-                "link": "/docs#vue-ui-quadrant"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.13",
-        "date": "2024-04-30",
-        "updates": [
-            {
-                "component": "VueUiQuadrant",
-                "description": "Removed janky animation on side zoom. A smoother animation is in the works.",
-                "link": "/docs#vue-ui-quadrant"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.12",
-        "date": "2024-04-30",
-        "updates": [
-            {
-                "component": "VueUiCursor",
-                "description": "Added new component",
-                "link": "/docs#vue-ui-cursor"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.10",
-        "date": "2024-04-29",
-        "updates": [
-            {
-                "component": "VueUiQuickChart",
-                "description": "Fixed issues in fullscreen mode (tooltip & legend not visible)",
-                "link": "/docs#vue-ui-quick-chart"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.9",
-        "date": "2024-04-28",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added time label rotation config option",
-                "link": "/docs#vue-ui-xy"
-            },
-            {
-                "component": "VueUiQuickChart",
-                "description": "Added time label rotation config option",
-                "link": "/docs#vue-ui-quick-chart"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.8",
-        "date": "2024-04-28",
-        "updates": [
-            {
-                "component": "VueUiQuickChart",
-                "description": "Added new component",
-                "link": "/docs#vue-ui-quick-chart"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.2",
-        "date": "2024-04-24",
-        "updates": [
-            {
-                "component": "All components",
-                "description": "Updated default color palette"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.1",
-        "date": "2024-04-23",
-        "updates": [
-            {
-                "component": "VueUi3dBar",
-                "description": "Fixed Safari css problems affecting legend labels",
-                "link": "/docs#vue-ui-3d-bar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.1.0",
-        "date": "2024-04-23",
-        "updates": [
-            {
-                "component": "VueUiDonut",
-                "description": "Added #dataLabel scoped slot to enable custom data labels.",
-                "link": "/docs#vue-ui-donut"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.99",
-        "date": "2024-04-21",
-        "updates": [
-            {
-                "component": "VueUiAccordion",
-                "description": "Added new component",
-                "link": "/docs#vue-ui-accordion"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.95",
-        "date": "2024-04-21",
-        "updates": [
-            {
-                "component": "All components",
-                "description": "Name colors are now accepeted in configs and datasets"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.94",
-        "date": "2024-04-20",
-        "updates": [
-            {
-                "component": "VueUiSparkStackbar",
-                "description": "Fixed a bug when no colors are provided in dataset and animation is activated",
-                "link": "/docs#vue-ui-sparkstackbar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.93",
-        "date": "2024-04-19",
-        "updates": [
-            {
-                "component": "VueUiTableHeatmap",
-                "description": "Added new component",
-                "link": "/docs#vue-ui-table-heatmap"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.91",
-        "date": "2024-04-18",
-        "updates": [
-            {
-                "component": "VueUiSparkStackbar",
-                "description": "Added serie segregation when selecting a legend item",
-                "link": "/docs#vue-ui-sparkstackbar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.90",
-        "date": "2024-04-17",
-        "updates": [
-            {
-                "component": "VueUiIcon",
-                "description": "Added more icons",
-                "link": "/docs#vue-ui-icon"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.88",
-        "date": "2024-04-16",
-        "updates": [
-            {
-                "component": "VueUiScatter",
-                "description": "Added giftWrap plot config option to display the max area occupied by dataset's plots",
-                "link": "/docs#vue-ui-scatter"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.87",
-        "date": "2024-04-15",
-        "updates": [
-            {
-                "component": "VueUiGauge",
-                "description": "Improved gradient",
-                "link": "/docs#vue-ui-gauge"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.86",
-        "date": "2024-04-15",
-        "updates": [
-            {
-                "component": "VueUiDonut",
-                "description": "Fixed blur effect not working on Safari",
-                "link": "/docs#vue-ui-donut"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Fixed blur effect not working on Safari",
-                "link": "/docs#vue-ui-waffle"
-            },
-            {
-                "component": "VueUiNestedDonuts",
-                "description": "Fixed blur effect not working on Safari",
-                "link": "/docs#vue-ui-nested-donuts"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.85",
-        "date": "2024-04-14",
-        "updates": [
-            {
-                "component": "VueUiOnion",
-                "description": "Improved gradient implementation so it works on dark backgrounds.",
-                "link": "/docs#vue-ui-onion"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.84",
-        "date": "2024-04-14",
-        "updates": [
-            {
-                "component": "VueUiScatter",
-                "description": "Added dataset value.weight option to make a bubble chart.",
-                "link": "/docs#vue-ui-scatter"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.82",
-        "date": "2024-04-14",
-        "updates": [
-            {
-                "component": "VueUiIcon",
-                "description": "Added icons",
-                "link": "/docs#vue-ui-icon"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.81",
-        "date": "2024-04-13",
-        "updates": [
-            {
-                "component": "VueUiWaffle",
-                "description": "Added the #cell scoped slot for custom cell contents.",
-                "link": "/docs#vue-ui-waffle"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.79",
-        "date": "2024-04-12",
-        "updates": [
-            {
-                "component": "VueUi3dBar",
-                "description": "Added the 'breakdown 'dataset option that will display donuts in the legend in stack mode.",
-                "link": "/docs#vue-ui-3d-bar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.78",
-        "date": "2024-04-10",
-        "updates": [
-            {
-                "component": "VueUi3dBar",
-                "description": "Added stack mode through a new 'series' dataset option",
-                "link": "/docs#vue-ui-3d-bar"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.75",
-        "date": "2024-04-08",
-        "updates": [
-            {
-                "component": "VueUiMolecule",
-                "description": "Improvement allowing to select datapoints located below dataLabels",
-                "link": "/docs#vue-ui-molecule"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.74",
-        "date": "2024-04-08",
-        "updates": [
-            {
-                "component": "VueUiQuadrant",
-                "description": "Minor fixes on zoom minimap",
-                "link": "/docs#vue-ui-quadrant"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.73",
-        "date": "2024-04-08",
-        "updates": [
-            {
-                "component": "VueUiQuadrant",
-                "description": "Added zoom & minimap",
-                "link": "/docs#vue-ui-quadrant"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.71",
-        "date": "2024-04-07",
-        "updates": [
-            {
-                "component": "VueUiTreemap",
-                "description": "Added new component",
-                "link": "/docs#vue-ui-treemap"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.61",
-        "date": "2024-04-05",
-        "updates": [
-            {
-                "component": "All chart components",
-                "description": "Improved component resilience when dataset is undefined or empty, and showing a skeleton."
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.60",
-        "date": "2024-04-04",
-        "updates": [
-            {
-                "component": "VueUiSparkline",
-                "description": "Added config options to control chart width and dataLabel display",
-                "link": "/docs#vue-ui-sparkline"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.59",
-        "date": "2024-04-04",
-        "updates": [
-            {
-                "component": "All components with tooltips",
-                "description": "Added exposed data in #tooltip-before & #tooltip-after scoped slots"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.58",
-        "date": "2024-04-03",
-        "updates": [
-            {
-                "component": "VueUiGalaxy",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.57",
-        "date": "2024-04-03",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiDonut",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiQuadrant",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiOnion",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiHeatmap",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiScatter",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiCandlestick",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiAgePyramid",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiRings",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiMolecule",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiNestedDonuts",
-                "description": "Added #tooltip-before & #tooltip-after named slots"
-            },
-            {
-                "component": "VueUiSparkStackbar",
-                "description": "Improved animation"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.56",
-        "date": "2024-04-02",
-        "updates": [
-            {
-                "component": "VueUiSparkline",
-                "description": "Improved animation consistency"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Added config options to control the animation of the tooltip bar charts"
-            },
-            {
-                "component": "VueUiTableSparkline",
-                "description": "Added config options to control sparkline animations"
-            },
-            {
-                "component": "VueUiSparkHistogram",
-                "description": "Added optional animation"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.55",
-        "date": "2024-04-02",
-        "updates": [
-            {
-                "component": "VueUiSparkline",
-                "description": "Added optional animation"
-            },
-            {
-                "component": "VueUiSparkbar",
-                "description": "Added optional animation"
-            },
-            {
-                "component": "VueUiSparkStackbar",
-                "description": "Added optional animation"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.54",
-        "date": "2024-03-31",
-        "updates": [
-            {
-                "component": "VueUiKpi",
-                "description": "Added new component"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.51",
-        "date": "2024-03-31",
-        "updates": [
-            {
-                "component": "All components",
-                "description": "Optimized css"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.49",
-        "date": "2024-03-30",
-        "updates": [
-            {
-                "component": "VueUiIcon",
-                "description": "Minor fixes"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.48",
-        "date": "2024-03-30",
-        "updates": [
-            {
-                "component": "VueUiGalaxy",
-                "description": "Added new component"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.44",
-        "date": "2024-03-28",
-        "updates": [
-            {
-                "component": "VueUiWaffle",
-                "description": "Fixed edge case bug on serie segregation when data labels are enabled"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.43",
-        "date": "2024-03-28",
-        "updates": [
-            {
-                "component": "All components",
-                "description": "Use console.warn for error handling"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.42",
-        "date": "2024-03-27",
-        "updates": [
-            {
-                "component": "All components",
-                "description": "Improved error handling"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.41",
-        "date": "2024-03-26",
-        "updates": [
-            {
-                "component": "VueUiAgePyramid",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiCandlestick",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiChestnut",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiDonut",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiGauge",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiMoodRadar",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiNestedDonuts",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiOnion",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiQuadrant",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiRings",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiScatter",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Added #legend slot"
-            },
-            {
-                "component": "VueUiXy",
-                "description": "Added #legend slot"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.40",
-        "date": "2024-03-25",
-        "updates": [
-            {
-                "component": "VueUiIcon",
-                "description": "Added new icons"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.39",
-        "date": "2024-03-25",
-        "updates": [
-            {
-                "component": "VueUiSparkgauge",
-                "description": "Added config option colors.showGradient"
-            },
-            {
-                "component": ".d.ts file",
-                "description": "Fixed typos"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.38",
-        "date": "2024-03-24",
-        "updates": [
-            {
-                "component": "VueDataUi",
-                "description": "Added universal component 'VueDataUi', which can be used instead of individual components, by specifying the component name in the props."
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.37",
-        "date": "2024-03-23",
-        "updates": [
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Added missing prefix & suffix on parent category labels"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.36",
-        "date": "2024-03-22",
-        "updates": [
-            {
-                "component": "VueUiOnion",
-                "description": "Minor fix"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.34",
-        "date": "2024-03-20",
-        "updates": [
-            {
-                "component": "VueUiSparkgauge",
-                "description": "Improved safeguards when value is higher than max or lower than min"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.33",
-        "date": "2024-03-19",
-        "updates": [
-            {
-                "component": "VueUiSparkgauge",
-                "description": "Added component"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.31",
-        "date": "2024-03-19",
-        "updates": [
-            {
-                "component": "VueUiWaffle",
-                "description": "Added config option 'caption' to display series info directly onto the chart only in horizontal mode (default)"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.29",
-        "date": "2024-03-18",
-        "updates": [
-            {
-                "component": "VueUiNestedDonuts",
-                "description": "Added optional display of donut names"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.27",
-        "date": "2024-03-17",
-        "updates": [
-            {
-                "component": "VueUiNestedDonuts",
-                "description": "Added component"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.21",
-        "date": "2024-03-14",
-        "updates": [
-            {
-                "component": "VueUiDonut",
-                "description": "Added @selectDatapoint emit"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.20",
-        "date": "2024-03-13",
-        "updates": [
-            {
-                "component": "VueUiOnion",
-                "description": "Fixed tooltip issues when gradient is enabled"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.19",
-        "date": "2024-03-13",
-        "updates": [
-            {
-                "component": "VueUiOnion",
-                "description": "Added tooltip"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.18",
-        "date": "2024-03-11",
-        "updates": [
-            {
-                "component": "VueUiAgePyramid",
-                "description": "Added offsetY option to serie titles"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.17",
-        "date": "2024-03-10",
-        "updates": [
-            {
-                "component": "VueUiHeatmap",
-                "description": "Fixed bottom legend label colors not applied"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.16",
-        "date": "2024-03-10",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fixed edge case breaking the chart when data is not ready and slider option is used"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.14",
-        "date": "2024-03-09",
-        "updates": [
-            {
-                "component": "VueUiHeatmap",
-                "description": "Redesigned legend in bottom position to have same style as right position"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.13",
-        "date": "2024-03-09",
-        "updates": [
-            {
-                "component": "VueUiScatter",
-                "description": "Fixed minor axis issue when all values were positive and > 0"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.12",
-        "date": "2024-03-08",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Improvements to bar labels options, to display abbreviated serie names"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.11",
-        "date": "2024-03-08",
-        "updates": [
-            {
-                "component": "VueUiSparkline",
-                "description": "Layout fixes"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.10",
-        "date": "2024-03-08",
-        "updates": [
-            {
-                "component": "VueUiSparkline",
-                "description": "Added @selectDatapoint event"
-            },
-            {
-                "component": "VueUiSparkbar",
-                "description": "Added @selectDatapoint event"
-            },
-            {
-                "component": "VueUiSparkStackbar",
-                "description": "Added @selectDatapoint event"
-            },
-            {
-                "component": "VueUiSparkHistogram",
-                "description": "Added @selectDatapoint event"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.9",
-        "date": "2024-03-07",
-        "updates": [
-            {
-                "component": "",
-                "description": "Added customizable tooltips for all charts bearing tooltip config options."
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.4",
-        "date": "2024-03-04",
-        "updates": [
-            {
-                "component": "VueUiQuadrant",
-                "description": "Added showAsTag plotLabel option"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.3",
-        "date": "2024-03-03",
-        "updates": [
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Minor option fix"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.2",
-        "date": "2024-03-02",
-        "updates": [
-            {
-                "component": "VueUiSparkbar",
-                "description": "Minor option fix"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.1",
-        "date": "2024-03-01",
-        "updates": [
-            {
-                "component": "VueUiQuadrant",
-                "description": "Fixed a bug causing negative datapoints overflow in auto mode"
-            },
-            {
-                "component": "VueUiHeatmap",
-                "description": "Improved cells layout & right legend"
-            }
-        ]
-    },
-    {
-        "version": "v 2.0.0",
-        "date": "2024-02-20",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fixed a bug introduced in previous release"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.99",
-        "date": "2024-02-19",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added optional display of data table with sparklines"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.95",
-        "date": "2024-02-18",
-        "updates": [
-            {
-                "component": "VueUiHeatmap",
-                "description": "Fixed viewBox size issues ocurring with small datasets"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.94",
-        "date": "2024-02-17",
-        "updates": [
-            {
-                "component": "VueUiHeatmap",
-                "description": "Added dynamic indicator on side legend showing on cell hover"
-            },
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Fixed y position of multiple series parent label"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.93",
-        "date": "2024-02-16",
-        "updates": [
-            {
-                "component": "",
-                "description": "Added getVueDataUi config utility function to get the template of the config object for any component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.92",
-        "date": "2024-02-15",
-        "updates": [
-            {
-                "component": "VueUiMiniLoader",
-                "description": "Minor improvement (standardization)"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.91",
-        "date": "2024-02-15",
-        "updates": [
-            {
-                "component": "VueUiMiniLoader",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.89",
-        "date": "2024-02-13",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Added prefix & suffix data label options"
-            },
-            {
-                "component": "VueUiHeatmap",
-                "description": "Added prefix & suffix data label options"
-            },
-            {
-                "component": "VueUiDonut",
-                "description": "Added prefix & suffix data label options"
-            },
-            {
-                "component": "VueUiRings",
-                "description": "Added prefix & suffix data label options"
-            },
-            {
-                "component": "VueUiSparkline",
-                "description": "Added prefix & suffix data label options"
-            },
-            {
-                "component": "VueUiThermometer",
-                "description": "Added prefix & suffix data label options"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Added prefix & suffix data label options"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.88",
-        "date": "2024-02-12",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "When showOnlyFirstAndLast is true, show any xLabel on hover"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.87",
-        "date": "2024-02-10",
-        "updates": [
-            {
-                "component": "Arrow",
-                "description": "Create component that can be injected into #svg slots"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.85",
-        "date": "2024-02-07",
-        "updates": [
-            {
-                "component": "VueUiHeatmap",
-                "description": "Minor fix"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.84",
-        "date": "2024-02-05",
-        "updates": [
-            {
-                "component": "VueUiTableSparkline",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.80",
-        "date": "2024-02-03",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Improved zoom"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.79",
-        "date": "2024-02-03",
-        "updates": [
-            {
-                "component": "VueUiHeatmap",
-                "description": "Improved color management"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.76",
-        "date": "2024-02-02",
-        "updates": [
-            {
-                "component": "VueUiHeatmap",
-                "description": "Improved data tables and added exposed css classes"
-            },
-            {
-                "component": "VueUiChestnut",
-                "description": "Improved data tables and added exposed css classes"
-            },
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Improved data tables and added exposed css classes"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.73",
-        "date": "2024-02-01",
-        "updates": [
-            {
-                "component": "",
-                "description": "Improved data tables and added exposed css classes"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.72",
-        "date": "2024-01-31",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Improved table options, layout and responsiveness"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Improved table options, layout and responsiveness"
-            },
-            {
-                "component": "VueUiQuadrant",
-                "description": "Improved table options, layout and responsiveness"
-            },
-            {
-                "component": "VueUiOnion",
-                "description": "Improved table options, layout and responsiveness"
-            },
-            {
-                "component": "VueUiScatter",
-                "description": "Improved table options, layout and responsiveness"
-            },
-            {
-                "component": "VueUiCandlestick",
-                "description": "Improved table options, layout and responsiveness"
-            },
-            {
-                "component": "VueUiAgePyramid",
-                "description": "Improved table options, layout and responsiveness"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.71",
-        "date": "2024-01-30",
-        "updates": [
-            {
-                "component": "VueUiDonut",
-                "description": "Improved table options, layout and responsiveness"
-            },
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Improved table options, layout and responsiveness"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Improved table options, layout and responsiveness"
-            },
-            {
-                "component": "VueUiRings",
-                "description": "Improved table options, layout and responsiveness"
-            },
-            {
-                "component": "VueUiMolecule",
-                "description": "Improved table options, layout and responsiveness"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.70",
-        "date": "2024-01-29",
-        "updates": [
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Removed akward hover animation"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.69",
-        "date": "2024-01-29",
-        "updates": [
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Improved donuts layout"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.68",
-        "date": "2024-01-28",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Improved yLabels nice scale display"
-            },
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Improved yLabels nice scale display"
-            },
-            {
-                "component": "VueUiCandlestick",
-                "description": "Improved yLabels nice scale display"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.66",
-        "date": "2024-01-27",
-        "updates": [
-            {
-                "component": "VueUiDonut",
-                "description": "Improved arcs design to allow a border"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.65",
-        "date": "2024-01-24",
-        "updates": [
-            {
-                "component": "",
-                "description": "Updated vite version"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.64",
-        "date": "2024-01-09",
-        "updates": [
-            {
-                "component": "",
-                "description": "Improved fullscreen behavior"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.63",
-        "date": "2024-01-09",
-        "updates": [
-            {
-                "component": "",
-                "description": "Added fullscreen toggle user option"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.61",
-        "date": "2024-01-08",
-        "updates": [
-            {
-                "component": "VueUiSkeleton",
-                "description": "Added donutEvolution type"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.60",
-        "date": "2024-01-06",
-        "updates": [
-            {
-                "component": "VueUiMolecule",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.54",
-        "date": "2024-01-04",
-        "updates": [
-            {
-                "component": "VueUiIcon",
-                "description": "Design improvements"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.53",
-        "date": "2024-01-03",
-        "updates": [
-            {
-                "component": "VueUiDigits",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.52",
-        "date": "2024-01-01",
-        "updates": [
-            {
-                "component": "",
-                "description": "Removed XLSX dependency, which had unfixable vulnerabilities. Now exports will generate csv files."
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.51",
-        "date": "2024-01-01",
-        "updates": [
-            {
-                "component": "VueUi3dBar",
-                "description": "Added tube shape option"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.50",
-        "date": "2024-01-01",
-        "updates": [
-            {
-                "component": "VueUi3dBar",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.44",
-        "date": "2023-12-31",
-        "updates": [
-            {
-                "component": "",
-                "description": "Added a #svg slot in most chart components, enabling customized svg extensions."
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.43",
-        "date": "2023-12-30",
-        "updates": [
-            {
-                "component": "",
-                "description": "Use unique ids instead of Math.random"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.42",
-        "date": "2023-12-30",
-        "updates": [
-            {
-                "component": "VueUiMoodRadar",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.41",
-        "date": "2023-12-28",
-        "updates": [
-            {
-                "component": "VueUiIcon",
-                "description": "Added icons for all chart types"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.40",
-        "date": "2023-12-27",
-        "updates": [
-            {
-                "component": "VueUiIcon",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.39",
-        "date": "2023-12-26",
-        "updates": [
-            {
-                "component": "VueUiSparkHistogram",
-                "description": "Add offsetY config option to value label"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.38",
-        "date": "2023-12-26",
-        "updates": [
-            {
-                "component": "VueUiSparkHistogram",
-                "description": "Add shape option"
-            },
-            {
-                "component": "VueUiScatter",
-                "description": "Add shape dataset option"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.37",
-        "date": "2023-12-25",
-        "updates": [
-            {
-                "component": "",
-                "description": "Improve test coverage"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.36",
-        "date": "2023-12-25",
-        "updates": [
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Minor improvements"
-            },
-            {
-                "component": "",
-                "description": "Improve test coverage"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.35",
-        "date": "2023-12-24",
-        "updates": [
-            {
-                "component": "VueUiDonutEvolution",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.32",
-        "date": "2023-12-21",
-        "updates": [
-            {
-                "component": "",
-                "description": "New design for user options menu"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.31",
-        "date": "2023-12-20",
-        "updates": [
-            {
-                "component": "VueUiTiremarks",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.30",
-        "date": "2023-12-18",
-        "updates": [
-            {
-                "component": "VueUiSkeleton",
-                "description": "Add rings & wheel types"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.29",
-        "date": "2023-12-18",
-        "updates": [
-            {
-                "component": "VueUiWheel",
-                "description": "Improve animation"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.28",
-        "date": "2023-12-17",
-        "updates": [
-            {
-                "component": "VueUiDonut",
-                "description": "Improve datalabels"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.27",
-        "date": "2023-12-17",
-        "updates": [
-            {
-                "component": "VueUiWheel",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.24",
-        "date": "2023-12-16",
-        "updates": [
-            {
-                "component": "",
-                "description": "Reduce bundle size"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.22",
-        "date": "2023-12-15",
-        "updates": [
-            {
-                "component": "",
-                "description": "Minor refactoring and test addition"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.21",
-        "date": "2023-12-13",
-        "updates": [
-            {
-                "component": "VueUiRings",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.20",
-        "date": "2023-12-11",
-        "updates": [
-            {
-                "component": "VueUiSparkHistogram",
-                "description": "Add hover selector"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.18",
-        "date": "2023-12-08",
-        "updates": [
-            {
-                "component": "VueUiQuadrant",
-                "description": "Fix flex layout in table first col"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.17",
-        "date": "2023-12-07",
-        "updates": [
-            {
-                "component": "VueUiQuadrant",
-                "description": "Add shapes in table"
-            },
-            {
-                "component": "VueUiOnion",
-                "description": "On serie select, dataLabel takes the color of the highlighted series"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Add config attribute 'useBlurOnHover'"
-            },
-            {
-                "component": "VueUiXy",
-                "description": "For plot and line types, add shapes dataset option"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Improve tooltip content with inline bar charts"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.16",
-        "date": "2023-12-05",
-        "updates": [
-            {
-                "component": "VueUiQuadrant",
-                "description": "Add selected shape in tooltip. Fix legend issue in print render."
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.15",
-        "date": "2023-12-04",
-        "updates": [
-            {
-                "component": "",
-                "description": "Reduce bundle size"
-            },
-            {
-                "component": "VueUiQuadrant",
-                "description": "Slightly increase datapoint shapes size on hover"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.14",
-        "date": "2023-12-03",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fix highlight area label not showing in Firefox"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.13",
-        "date": "2023-12-03",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiDonut",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiQuadrant",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiGauge",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiChestnut",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiOnion",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiHeatmap",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiScatter",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiCandlestick",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiAgePyramid",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiRelationCircle",
-                "description": "Add png image download option and exposed generateImage method"
-            },
-            {
-                "component": "VueUiThermometer",
-                "description": "Add png image download option and exposed generateImage method"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.12",
-        "date": "2023-12-02",
-        "updates": [
-            {
-                "component": "",
-                "description": "Reduce bundle size"
-            },
-            {
-                "component": "VueUiRelationCircle",
-                "description": "Add user options"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.11",
-        "date": "2023-12-01",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Add highlight area in canvas mode"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.10",
-        "date": "2023-11-30",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Prevent highlight area side overflow when using zoom"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.9",
-        "date": "2023-11-28",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Add highlightArea config option"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.8",
-        "date": "2023-11-27",
-        "updates": [
-            {
-                "component": "VueUiDonut, VueUiOnion",
-                "description": "Add useBlurOnHover config option"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.7",
-        "date": "2023-11-26",
-        "updates": [
-            {
-                "component": "VueUiSparkline",
-                "description": "Add color & strokeDasharray for verticalIndicator"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.6",
-        "date": "2023-11-26",
-        "updates": [
-            {
-                "component": "VueUiSparkline",
-                "description": "Add bar type config option"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.5",
-        "date": "2023-11-24",
-        "updates": [
-            {
-                "component": "",
-                "description": "Code optimization"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.4",
-        "date": "2023-11-21",
-        "updates": [
-            {
-                "component": "",
-                "description": "Minor code cleanup after component e2e test implemented"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.3",
-        "date": "2023-11-16",
-        "updates": [
-            {
-                "component": "VueUiQuadrant",
-                "description": "Fix xAxis labels position issue"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.2",
-        "date": "2023-11-13",
-        "updates": [
-            {
-                "component": "VueUiRelationCircle",
-                "description": "Reset on click outside"
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.1",
-        "date": "2023-11-12",
-        "updates": [
-            {
-                "component": "VueUiSparkline",
-                "description": "Add smooth curve config option."
-            }
-        ]
-    },
-    {
-        "version": "v 1.9.0",
-        "date": "2023-11-12",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Add smooth curve dataset option to line types in SVG mode."
-            }
-        ]
-    },
-    {
-        "version": "v 1.8.9",
-        "date": "2023-11-11",
-        "updates": [
-            {
-                "component": "VueUiSparkHistogram",
-                "description": "Add component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.8.8",
-        "date": "2023-11-10",
-        "updates": [
-            {
-                "component": "VueUiXy, VueUiDonut, VueUiRadar, VueUiQuadrant, VueUiOnion, VueUiVerticalBar, VueUiScatter, VueUiCandlestick",
-                "description": "Optional css animation"
-            }
-        ]
-    },
-    {
-        "version": "v 1.8.7",
-        "date": "2023-11-09",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Add dataset option to display a line type as an area."
-            }
-        ]
-    },
-    {
-        "version": "v 1.8.6",
-        "date": "2023-11-08",
-        "updates": [
-            {
-                "component": "VueUiSparkStackbar",
-                "description": "Add component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.8.4",
-        "date": "2023-11-05",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiDonut",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiWaffle",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiQuadrant",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiGauge",
-                "description": "Expose generatePdf method"
-            },
-            {
-                "component": "VueUiChestnut",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiOnion",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiHeatmap",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiScatter",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiCandlestick",
-                "description": "Expose generatePdf and generateCsv methods"
-            },
-            {
-                "component": "VueUiAgePyramid",
-                "description": "Expose generatePdf method"
-            },
-            {
-                "component": "VueUiRelationCircle",
-                "description": "Expose generatePdf method"
-            },
-            {
-                "component": "VueUiThermometer",
-                "description": "Expose generatePdf method"
-            }
-        ]
-    },
-    {
-        "version": "v 1.8.3",
-        "date": "2023-11-05",
-        "updates": [
-            {
-                "component": "VueUiThermometer",
-                "description": "Add component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.8.2",
-        "date": "2023-11-03",
-        "updates": [
-            {
-                "component": "VueUiRelationCircle",
-                "description": "Add component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.8.1",
-        "date": "2023-11-02",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Add the useCanvas option to display the chart as a canvas. This is an experimental feature."
-            }
-        ]
-    },
-    {
-        "version": "v 1.7.9",
-        "date": "2023-10-30",
-        "updates": [
-            {
-                "component": "VueUiSkeleton",
-                "description": "Add smiley option in skeleton rating type"
-            }
-        ]
-    },
-    {
-        "version": "v 1.7.8",
-        "date": "2023-10-29",
-        "updates": [
-            {
-                "component": "VueUiSmiley",
-                "description": "Add keyboard support"
-            }
-        ]
-    },
-    {
-        "version": "v 1.7.7",
-        "date": "2023-10-29",
-        "updates": [
-            {
-                "component": "",
-                "description": "Update vue-data-ui.d.ts types. Now config types are optional."
-            }
-        ]
-    },
-    {
-        "version": "v 1.7.6",
-        "date": "2023-10-28",
-        "updates": [
-            {
-                "component": "VueUiSmiley",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.7.4",
-        "date": "2023-10-25",
-        "updates": [
-            {
-                "component": "",
-                "description": "Add smooth animations on some charts"
-            }
-        ]
-    },
-    {
-        "version": "v 1.7.3",
-        "date": "2023-10-22",
-        "updates": [
-            {
-                "component": "VueUiAnnotator",
-                "description": "Add touch support"
-            }
-        ]
-    },
-    {
-        "version": "v 1.7.1",
-        "date": "2023-10-21",
-        "updates": [
-            {
-                "component": "VueUiAnnotator",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.6.9",
-        "date": "2023-10-19",
-        "updates": [
-            {
-                "component": "VueUiDashboard",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.6.4",
-        "date": "2023-10-11",
-        "updates": [
-            {
-                "component": "VueUiSkeleton",
-                "description": "Add sparkline type"
-            }
-        ]
-    },
-    {
-        "version": "v 1.6.3",
-        "date": "2023-10-08",
-        "updates": [
-            {
-                "component": "VueUiSparkbar",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.6.2",
-        "date": "2023-10-07",
-        "updates": [
-            {
-                "component": "VueUiOnion",
-                "description": "Fix undefined displayed in data labels if no prefix or suffix"
-            },
-            {
-                "component": "VueUiXy",
-                "description": "Update data label formatting"
-            },
-            {
-                "component": "VueUiDonut",
-                "description": "Update data label formatting"
-            }
-        ]
-    },
-    {
-        "version": "v 1.6.1",
-        "date": "2023-10-04",
-        "updates": [
-            {
-                "component": "VueUiScatter",
-                "description": "Add getData exposed method"
-            }
-        ]
-    },
-    {
-        "version": "v 1.6.0",
-        "date": "2023-10-02",
-        "updates": [
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Add config option to position legend on top or bottom"
-            }
-        ]
-    },
-    {
-        "version": "v 1.5.9",
-        "date": "2023-10-01",
-        "updates": [
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Improve tooltip & legend markers"
-            }
-        ]
-    },
-    {
-        "version": "v 1.5.8",
-        "date": "2023-09-23",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fix tooltip css flex issue"
-            }
-        ]
-    },
-    {
-        "version": "v 1.5.4",
-        "date": "2023-09-17",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fix error when zoom is deactivated; fix tootlip default bg color"
-            }
-        ]
-    },
-    {
-        "version": "v 1.5.2",
-        "date": "2023-09-16",
-        "updates": [
-            {
-                "component": "VueUiSkeleton",
-                "description": "Add pyramid type"
-            }
-        ]
-    },
-    {
-        "version": "v 1.5.1",
-        "date": "2023-09-13",
-        "updates": [
-            {
-                "component": "",
-                "description": "Replace unicode icons by svg elements in most charts"
-            }
-        ]
-    },
-    {
-        "version": "v 1.5.0",
-        "date": "2023-09-10",
-        "updates": [
-            {
-                "component": "VueUiAgePyramid",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.4.3",
-        "date": "2023-09-05",
-        "updates": [
-            {
-                "component": "",
-                "description": "Bundle size optimization"
-            }
-        ]
-    },
-    {
-        "version": "v 1.4.2",
-        "date": "2023-09-05",
-        "updates": [
-            {
-                "component": "VueUiSkeleton",
-                "description": "Add candlesticks type"
-            }
-        ]
-    },
-    {
-        "version": "v 1.4.1",
-        "date": "2023-09-04",
-        "updates": [
-            {
-                "component": "VueUiCandlestick",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.3.6",
-        "date": "2023-09-01",
-        "updates": [
-            {
-                "component": "VueUiTable",
-                "description": "Fix sign of progression label"
-            }
-        ]
-    },
-    {
-        "version": "v 1.3.5",
-        "date": "2023-08-31",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Improve zoom functionality"
-            }
-        ]
-    },
-    {
-        "version": "v 1.3.3",
-        "date": "2023-08-30",
-        "updates": [
-            {
-                "component": "VueUiScatter",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.2.0",
-        "date": "2023-08-29",
-        "updates": [
-            {
-                "component": "VueUiSkeleton",
-                "description": "Add heatmap type"
-            }
-        ]
-    },
-    {
-        "version": "v 1.1.0",
-        "date": "2023-08-29",
-        "updates": [
-            {
-                "component": "VueUiHeatmap",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 1.0.0",
-        "date": "2023-08-22",
-        "updates": [
-            {
-                "component": "",
-                "description": "Reduce bundle size, release 1.0.0"
-            }
-        ]
-    },
-    {
-        "version": "v 0.6.2",
-        "date": "2023-08-19",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fix sign of progression label"
-            }
-        ]
-    },
-    {
-        "version": "v 0.6.1",
-        "date": "2023-08-18",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fix progression line crash when filtering period range to an empty set."
-            }
-        ]
-    },
-    {
-        "version": "v 0.6.0",
-        "date": "2023-08-16",
-        "updates": [
-            {
-                "component": "VueUiSkeleton",
-                "description": "Add chestnut type"
-            },
-            {
-                "component": "",
-                "description": "Update vue-data-ui.d.ts"
-            }
-        ]
-    },
-    {
-        "version": "v 0.5.9",
-        "date": "2023-08-15",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fix trend calculation"
-            }
-        ]
-    },
-    {
-        "version": "v 0.5.8",
-        "date": "2023-08-11",
-        "updates": [
-            {
-                "component": "",
-                "description": "Add vue-data-ui.d.ts types"
-            }
-        ]
-    },
-    {
-        "version": "v 0.5.7",
-        "date": "2023-08-11",
-        "updates": [
-            {
-                "component": "VueUiSparkline",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 0.5.4",
-        "date": "2023-08-10",
-        "updates": [
-            {
-                "component": "VueUiSkeleton",
-                "description": "Fix css overflow issue"
-            }
-        ]
-    },
-    {
-        "version": "v 0.5.3",
-        "date": "2023-08-10",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fix x dataLabels centering offset on bar type"
-            }
-        ]
-    },
-    {
-        "version": "v 0.5.2",
-        "date": "2023-08-10",
-        "updates": [
-            {
-                "component": "VueUiSkeleton",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 0.4.9",
-        "date": "2023-08-10",
-        "updates": [
-            {
-                "component": "VueUiScreenshot",
-                "description": "In post mode, add createdAt timestamp and fileSize"
-            }
-        ]
-    },
-    {
-        "version": "v 0.4.8",
-        "date": "2023-08-09",
-        "updates": [
-            {
-                "component": "VueUiRating",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 0.4.6",
-        "date": "2023-08-09",
-        "updates": [
-            {
-                "component": "VueUiScreenshot",
-                "description": "Create component"
-            }
-        ]
-    },
-    {
-        "version": "v 0.4.3",
-        "date": "2023-08-08",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Add progression line & serie tag dataset options"
-            }
-        ]
-    },
-    {
-        "version": "v 0.4.2",
-        "date": "2023-08-08",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Add dahsed option for line types"
-            }
-        ]
-    },
-    {
-        "version": "v 0.4.1",
-        "date": "2023-08-08",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fix table not opening from options"
-            }
-        ]
-    },
-    {
-        "version": "v 0.4.0",
-        "date": "2023-08-08",
-        "updates": [
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Add sorting direction to config & options"
-            }
-        ]
-    },
-    {
-        "version": "v 0.3.9",
-        "date": "2023-08-08",
-        "updates": [
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Fix config"
-            }
-        ]
-    },
-    {
-        "version": "v 0.3.8",
-        "date": "2023-08-07",
-        "updates": [
-            {
-                "component": "VueUiVerticalBar",
-                "description": "Create chart"
-            }
-        ]
-    },
-    {
-        "version": "v 0.3.7",
-        "date": "2023-08-07",
-        "updates": [
-            {
-                "component": "",
-                "description": "Centralize config, improve bundle size"
-            }
-        ]
-    },
-    {
-        "version": "v 0.3.4",
-        "date": "2023-08-07",
-        "updates": [
-            {
-                "component": "VueUiOnion",
-                "description": "Fix label y position issue"
-            }
-        ]
-    },
-    {
-        "version": "v 0.3.3",
-        "date": "2023-08-06",
-        "updates": [
-            {
-                "component": "VueUiOnion",
-                "description": "Create chart"
-            }
-        ]
-    },
-    {
-        "version": "v 0.3.2",
-        "date": "2023-08-06",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Add zoom functionality"
-            },
-            {
-                "component": "VueUiRadar",
-                "description": "Fix non closing polygon in Firefox"
-            }
-        ]
-    },
-    {
-        "version": "v 0.2.9",
-        "date": "2023-08-05",
-        "updates": [
-            {
-                "component": "",
-                "description": "Allow RGB, HSL color formats in config & datasets"
-            }
-        ]
-    },
-    {
-        "version": "v 0.2.8",
-        "date": "2023-08-05",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Add 'highlighter' color and opacity options"
-            },
-            {
-                "component": "VueUiChestnut",
-                "description": "Add emits and getData method"
-            }
-        ]
-    },
-    {
-        "version": "v 0.2.7",
-        "date": "2023-08-05",
-        "updates": [
-            {
-                "component": "VueUiXy",
-                "description": "Fix dataLabels on y axis not showing if min value > 0"
-            },
-            {
-                "component": "VueUiXy",
-                "description": "Add 'showOnlyFirstAndLast' config option to show only first and last time labels on x axis. vue-data-ui is opinionated and chooses not to provide rotating x labels, as it is bad dataviz practice."
-            }
-        ]
-    }
+  {
+    "version": "v 2.2.4",
+    "date": "2024-06-03",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiMoodRadar",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-mood-radar"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiDumbbell",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-dumbbell"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-chestnut"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUi3dBar",
+        "description": "Added data table inside an accordion for smoother open transition",
+        "link": "/docs#vue-ui-3d-bar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.2.2",
+    "date": "2024-06-02",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added dataset option to display serie name at start or end of lines and plot type series",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.2.1",
+    "date": "2024-06-02",
+    "updates": [
+      {
+        "component": "VueUi3dBar",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-3d-bar"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-chestnut"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiDumbbell",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-dumbbell"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiMoodRadar",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-mood-radar"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Added close button on table",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Improved legend display during segregating animations",
+        "link": "/docs#vue-ui-waffle"
+      }
+    ]
+  },
+  {
+    "version": "v 2.2.0",
+    "date": "2024-06-01",
+    "updates": [
+      {
+        "component": "VueUiWaffle",
+        "description": "Added optional animation on serie segregation",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Added discrete animation on datapoint hover",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Added discrete animation on datapoint selection zoom",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.99",
+    "date": "2024-06-01",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Removed legend wobbling on donut legend when segregating datapoints; improved line behavior when all datapoints are negative",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.98",
+    "date": "2024-06-01",
+    "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Added useDistanceOpacity plot config option",
+        "link": "/docs#vue-ui-scatter"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.97",
+    "date": "2024-05-31",
+    "updates": [
+      {
+        "component": "VueUiStripPlot",
+        "description": "Now accepts negative values",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added a warning when using negative values",
+        "link": "/docs#vue-ui-vertical-bar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.96",
+    "date": "2024-05-31",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fixed bar starting base when all datapoints are negative",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Fixed bar starting base when all datapoints are negative",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Various layout improvements",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.95",
+    "date": "2024-05-30",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improved double range input",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Improved double range input",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Improved double range input",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Improved double range input",
+        "link": "/docs#vue-ui-candlestick"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.92",
+    "date": "2024-05-27",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Removed canvas option, added bar types border config options",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.90",
+    "date": "2024-05-26",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added optional bar gap between periods on bar types",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.89",
+    "date": "2024-05-24",
+    "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Added optional selectors on datapoint hover",
+        "link": "/docs#vue-ui-scatter"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.88",
+    "date": "2024-05-24",
+    "updates": [
+      {
+        "component": "VueUiTreemap",
+        "description": "Fixed cell colors not showing on Safari when using zoom",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Fixed gradient not showing on Safari",
+        "link": "/docs#vue-ui-galaxy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.87",
+    "date": "2024-05-24",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Added #before slot",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.86",
+    "date": "2024-05-23",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Added zoom feature",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.83",
+    "date": "2024-05-23",
+    "updates": [
+      {
+        "component": "VueUiTableSparkline",
+        "description": "Fixed wrong sparkline order when ordering columns",
+        "link": "/docs#vue-ui-table-sparkline"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.82",
+    "date": "2024-05-23",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improved line path coating",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.81",
+    "date": "2024-05-22",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added zoom component, usable on line and bar types",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.79",
+    "date": "2024-05-22",
+    "updates": [
+      {
+        "component": "VueUiStripPlot",
+        "description": "Fixed wrong scaling",
+        "link": "/docs#vue-ui-strip-plot"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.78",
+    "date": "2024-05-22",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improved xAxis time labels text-anchor when rotated",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Improved xAxis time labels text-anchor when rotated",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Added config options to rotate xAxis time labels",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Added config options to rotate xAxis time labels",
+        "link": "/docs#vue-ui-candlestick"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.77",
+    "date": "2024-05-21",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improved zoom component",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Improved zoom component",
+        "link": "/docs#vue-ui-candlestick"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.75",
+    "date": "2024-05-20",
+    "updates": [
+      {
+        "component": "VueUiRadar",
+        "description": "Fixed tooltip embedded chart not showing if tooltip.customFormat is null (which is the default btw)",
+        "link": "/docs#vue-ui-radar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.74",
+    "date": "2024-05-20",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fixed zoom.color config option not applied",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Fixed bold config option on legend name not applied",
+        "link": "/docs#vue-ui-sparkstackbar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.70",
+    "date": "2024-05-20",
+    "updates": [
+      {
+        "component": "VueUiCandlestick",
+        "description": "Fixed Y axis scale config option not applied",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiGauge",
+        "description": "Fixed harmless console error related to pointy arrow path painted before data is computed when animation is enabled",
+        "link": "/docs#vue-ui-gauge"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.69",
+    "date": "2024-05-20",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Fixed border radius config option not applied on bottom legend",
+        "link": "/docs#vue-ui-heatmap"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Fixed @selectSide emit not applied",
+        "link": "/docs#vue-ui-quadrant"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.67",
+    "date": "2024-05-19",
+    "updates": [
+      {
+        "component": "VueUiOnion",
+        "description": "Various fixes pertaining to config options not applied",
+        "link": "/docs#vue-ui-onion"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.66",
+    "date": "2024-05-19",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fixed wrong behaviors in stack mode when any datapoint contains a null value",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Hide tooltip's embedded bar chart component when customFormat is enabled",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Fixed polygons still showing when segregating series, when useCssAnimation is set to false",
+        "link": "/docs#vue-ui-radar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.65",
+    "date": "2024-05-18",
+    "updates": [
+      {
+        "component": "All components with tooltips",
+        "description": "Fixed config option tooltip.fontSize not applied"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.64",
+    "date": "2024-05-17",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added optional timeTag on serie hover",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.62",
+    "date": "2024-05-17",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added more datapoint options to further customize stacked mode",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.60",
+    "date": "2024-05-15",
+    "updates": [
+      {
+        "component": "VueDataUi universal component",
+        "description": "Now uses dynamic imports, so it does not import all components when used"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.58",
+    "date": "2024-05-15",
+    "updates": [
+      {
+        "component": "VueUiTableHeatmap",
+        "description": "Added optional datapoint shape & color attributes",
+        "link": "/docs#vue-ui-table-heatmap"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.57",
+    "date": "2024-05-15",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Fixed donut thickness config not applied",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.56",
+    "date": "2024-05-15",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fixed harmless console errors when using time zoom with series that have no datapoint in the timeframe",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Fixed TS typo in component name",
+        "link": "/docs#vue-ui-sparkstackbar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.55",
+    "date": "2024-05-14",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added config option to stack series in individual scale mode",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.54",
+    "date": "2024-05-14",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added optional datapoint scaleMin & scaleMax attributes to further customize individual scales.",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.53",
+    "date": "2024-05-14",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fixed yLabel positioning issues. Fixed data table behavior when toggling time range.",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.52",
+    "date": "2024-05-13",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added multiple y axis scales option",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.49",
+    "date": "2024-05-13",
+    "updates": [
+      {
+        "component": "VueUiDumbbell",
+        "description": "Added optional animation",
+        "link": "/docs#vue-ui-dumbbell"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.44",
+    "date": "2024-05-12",
+    "updates": [
+      {
+        "component": "VueUiDumbbell",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-dumbbell"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.43",
+    "date": "2024-05-11",
+    "updates": [
+      {
+        "component": "VueUiStripPlot",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-strip-plot"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.40",
+    "date": "2024-05-10",
+    "updates": [
+      {
+        "component": "",
+        "description": "Technical release"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.39",
+    "date": "2024-05-09",
+    "updates": [
+      {
+        "component": "VueUiGauge",
+        "description": "Added config option to change the pointer type (rounded or pointy)",
+        "link": "/docs#vue-ui-gauge"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.38",
+    "date": "2024-05-09",
+    "updates": [
+      {
+        "component": "",
+        "description": "For TS users, it is no longer necessary to copy the .d.ts file (at last)"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.36",
+    "date": "2024-05-08",
+    "updates": [
+      {
+        "component": "VueUiRadar",
+        "description": "Added smooth animation on category segregation",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Added smooth animation on series segregation",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added smooth animation on series segregation",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Fixed zoomed donut breaking when segregating series",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.34",
+    "date": "2024-05-08",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added a border to lines of same color as background",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added a border to lines of same color as background",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Added opacity transition on serie selection",
+        "link": "/docs#vue-ui-chestnut"
+      },
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Added smooth animation on serie segregation",
+        "link": "/docs#vue-ui-sparkstackbar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.32",
+    "date": "2024-05-08",
+    "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Added marginal lines config option",
+        "link": "/docs#vue-ui-scatter"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.31",
+    "date": "2024-05-07",
+    "updates": [
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added smooth animation on series segregation",
+        "link": "/docs#vue-ui-nested-donuts"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.29",
+    "date": "2024-05-07",
+    "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Added marginal bars config option",
+        "link": "/docs#vue-ui-scatter"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.26",
+    "date": "2024-05-06",
+    "updates": [
+      {
+        "component": "",
+        "description": "Added a documentation directory in the dist directory."
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.24",
+    "date": "2024-05-06",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Average label is hidden during serie segregation animation",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Track size remains the same when series are segregated",
+        "link": "/docs#vue-ui-onion"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.23",
+    "date": "2024-05-05",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Removed legend label wobbling when segregating a series",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Added segregation reactivity to #legend slot",
+        "link": "/docs#vue-ui-waffle"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.22",
+    "date": "2024-05-04",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Fixed offset zero axis with negative values on line & bar charts.",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Fixed useCssAnimation config option not applied on dataLabels",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.21",
+    "date": "2024-05-04",
+    "updates": [
+      {
+        "component": "VueUiSparkTrend",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-spark-trend"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.18",
+    "date": "2024-05-03",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Added smooth animation on serie segregation",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.17",
+    "date": "2024-05-03",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added donut smooth animation on serie segregation",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.16",
+    "date": "2024-05-02",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Fixed errors when a daatapoint has a 0 value",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.15",
+    "date": "2024-05-01",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added optional axis labels",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.14",
+    "date": "2024-05-01",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added smooth zoom animation.",
+        "link": "/docs#vue-ui-quadrant"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.13",
+    "date": "2024-04-30",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Removed janky animation on side zoom. A smoother animation is in the works.",
+        "link": "/docs#vue-ui-quadrant"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.12",
+    "date": "2024-04-30",
+    "updates": [
+      {
+        "component": "VueUiCursor",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-cursor"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.10",
+    "date": "2024-04-29",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Fixed issues in fullscreen mode (tooltip & legend not visible)",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.9",
+    "date": "2024-04-28",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added time label rotation config option",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added time label rotation config option",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.8",
+    "date": "2024-04-28",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.2",
+    "date": "2024-04-24",
+    "updates": [
+      {
+        "component": "All components",
+        "description": "Updated default color palette"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.1",
+    "date": "2024-04-23",
+    "updates": [
+      {
+        "component": "VueUi3dBar",
+        "description": "Fixed Safari css problems affecting legend labels",
+        "link": "/docs#vue-ui-3d-bar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.1.0",
+    "date": "2024-04-23",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Added #dataLabel scoped slot to enable custom data labels.",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.99",
+    "date": "2024-04-21",
+    "updates": [
+      {
+        "component": "VueUiAccordion",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-accordion"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.95",
+    "date": "2024-04-21",
+    "updates": [
+      {
+        "component": "All components",
+        "description": "Name colors are now accepeted in configs and datasets"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.94",
+    "date": "2024-04-20",
+    "updates": [
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Fixed a bug when no colors are provided in dataset and animation is activated",
+        "link": "/docs#vue-ui-sparkstackbar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.93",
+    "date": "2024-04-19",
+    "updates": [
+      {
+        "component": "VueUiTableHeatmap",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-table-heatmap"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.91",
+    "date": "2024-04-18",
+    "updates": [
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Added serie segregation when selecting a legend item",
+        "link": "/docs#vue-ui-sparkstackbar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.90",
+    "date": "2024-04-17",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Added more icons",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.88",
+    "date": "2024-04-16",
+    "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Added giftWrap plot config option to display the max area occupied by dataset's plots",
+        "link": "/docs#vue-ui-scatter"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.87",
+    "date": "2024-04-15",
+    "updates": [
+      {
+        "component": "VueUiGauge",
+        "description": "Improved gradient",
+        "link": "/docs#vue-ui-gauge"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.86",
+    "date": "2024-04-15",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Fixed blur effect not working on Safari",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Fixed blur effect not working on Safari",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Fixed blur effect not working on Safari",
+        "link": "/docs#vue-ui-nested-donuts"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.85",
+    "date": "2024-04-14",
+    "updates": [
+      {
+        "component": "VueUiOnion",
+        "description": "Improved gradient implementation so it works on dark backgrounds.",
+        "link": "/docs#vue-ui-onion"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.84",
+    "date": "2024-04-14",
+    "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Added dataset value.weight option to make a bubble chart.",
+        "link": "/docs#vue-ui-scatter"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.82",
+    "date": "2024-04-14",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Added icons",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.81",
+    "date": "2024-04-13",
+    "updates": [
+      {
+        "component": "VueUiWaffle",
+        "description": "Added the #cell scoped slot for custom cell contents.",
+        "link": "/docs#vue-ui-waffle"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.79",
+    "date": "2024-04-12",
+    "updates": [
+      {
+        "component": "VueUi3dBar",
+        "description": "Added the 'breakdown 'dataset option that will display donuts in the legend in stack mode.",
+        "link": "/docs#vue-ui-3d-bar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.78",
+    "date": "2024-04-10",
+    "updates": [
+      {
+        "component": "VueUi3dBar",
+        "description": "Added stack mode through a new 'series' dataset option",
+        "link": "/docs#vue-ui-3d-bar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.75",
+    "date": "2024-04-08",
+    "updates": [
+      {
+        "component": "VueUiMolecule",
+        "description": "Improvement allowing to select datapoints located below dataLabels",
+        "link": "/docs#vue-ui-molecule"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.74",
+    "date": "2024-04-08",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Minor fixes on zoom minimap",
+        "link": "/docs#vue-ui-quadrant"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.73",
+    "date": "2024-04-08",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added zoom & minimap",
+        "link": "/docs#vue-ui-quadrant"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.71",
+    "date": "2024-04-07",
+    "updates": [
+      {
+        "component": "VueUiTreemap",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-treemap"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.61",
+    "date": "2024-04-05",
+    "updates": [
+      {
+        "component": "All chart components",
+        "description": "Improved component resilience when dataset is undefined or empty, and showing a skeleton."
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.60",
+    "date": "2024-04-04",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Added config options to control chart width and dataLabel display",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.59",
+    "date": "2024-04-04",
+    "updates": [
+      {
+        "component": "All components with tooltips",
+        "description": "Added exposed data in #tooltip-before & #tooltip-after scoped slots"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.58",
+    "date": "2024-04-03",
+    "updates": [
+      {
+        "component": "VueUiGalaxy",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.57",
+    "date": "2024-04-03",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiHeatmap",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added #tooltip-before & #tooltip-after named slots"
+      },
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Improved animation"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.56",
+    "date": "2024-04-02",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Improved animation consistency"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Added config options to control the animation of the tooltip bar charts"
+      },
+      {
+        "component": "VueUiTableSparkline",
+        "description": "Added config options to control sparkline animations"
+      },
+      {
+        "component": "VueUiSparkHistogram",
+        "description": "Added optional animation"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.55",
+    "date": "2024-04-02",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Added optional animation"
+      },
+      {
+        "component": "VueUiSparkbar",
+        "description": "Added optional animation"
+      },
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Added optional animation"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.54",
+    "date": "2024-03-31",
+    "updates": [
+      {
+        "component": "VueUiKpi",
+        "description": "Added new component"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.51",
+    "date": "2024-03-31",
+    "updates": [
+      {
+        "component": "All components",
+        "description": "Optimized css"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.49",
+    "date": "2024-03-30",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Minor fixes"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.48",
+    "date": "2024-03-30",
+    "updates": [
+      {
+        "component": "VueUiGalaxy",
+        "description": "Added new component"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.44",
+    "date": "2024-03-28",
+    "updates": [
+      {
+        "component": "VueUiWaffle",
+        "description": "Fixed edge case bug on serie segregation when data labels are enabled"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.43",
+    "date": "2024-03-28",
+    "updates": [
+      {
+        "component": "All components",
+        "description": "Use console.warn for error handling"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.42",
+    "date": "2024-03-27",
+    "updates": [
+      {
+        "component": "All components",
+        "description": "Improved error handling"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.41",
+    "date": "2024-03-26",
+    "updates": [
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiGauge",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiMoodRadar",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Added #legend slot"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Added #legend slot"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.40",
+    "date": "2024-03-25",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Added new icons"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.39",
+    "date": "2024-03-25",
+    "updates": [
+      {
+        "component": "VueUiSparkgauge",
+        "description": "Added config option colors.showGradient"
+      },
+      {
+        "component": ".d.ts file",
+        "description": "Fixed typos"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.38",
+    "date": "2024-03-24",
+    "updates": [
+      {
+        "component": "VueDataUi",
+        "description": "Added universal component 'VueDataUi', which can be used instead of individual components, by specifying the component name in the props."
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.37",
+    "date": "2024-03-23",
+    "updates": [
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added missing prefix & suffix on parent category labels"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.36",
+    "date": "2024-03-22",
+    "updates": [
+      {
+        "component": "VueUiOnion",
+        "description": "Minor fix"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.34",
+    "date": "2024-03-20",
+    "updates": [
+      {
+        "component": "VueUiSparkgauge",
+        "description": "Improved safeguards when value is higher than max or lower than min"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.33",
+    "date": "2024-03-19",
+    "updates": [
+      {
+        "component": "VueUiSparkgauge",
+        "description": "Added component"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.31",
+    "date": "2024-03-19",
+    "updates": [
+      {
+        "component": "VueUiWaffle",
+        "description": "Added config option 'caption' to display series info directly onto the chart only in horizontal mode (default)"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.29",
+    "date": "2024-03-18",
+    "updates": [
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added optional display of donut names"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.27",
+    "date": "2024-03-17",
+    "updates": [
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added component"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.21",
+    "date": "2024-03-14",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Added @selectDatapoint emit"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.20",
+    "date": "2024-03-13",
+    "updates": [
+      {
+        "component": "VueUiOnion",
+        "description": "Fixed tooltip issues when gradient is enabled"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.19",
+    "date": "2024-03-13",
+    "updates": [
+      {
+        "component": "VueUiOnion",
+        "description": "Added tooltip"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.18",
+    "date": "2024-03-11",
+    "updates": [
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Added offsetY option to serie titles"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.17",
+    "date": "2024-03-10",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Fixed bottom legend label colors not applied"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.16",
+    "date": "2024-03-10",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fixed edge case breaking the chart when data is not ready and slider option is used"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.14",
+    "date": "2024-03-09",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Redesigned legend in bottom position to have same style as right position"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.13",
+    "date": "2024-03-09",
+    "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Fixed minor axis issue when all values were positive and > 0"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.12",
+    "date": "2024-03-08",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improvements to bar labels options, to display abbreviated serie names"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.11",
+    "date": "2024-03-08",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Layout fixes"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.10",
+    "date": "2024-03-08",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Added @selectDatapoint event"
+      },
+      {
+        "component": "VueUiSparkbar",
+        "description": "Added @selectDatapoint event"
+      },
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Added @selectDatapoint event"
+      },
+      {
+        "component": "VueUiSparkHistogram",
+        "description": "Added @selectDatapoint event"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.9",
+    "date": "2024-03-07",
+    "updates": [
+      {
+        "component": "",
+        "description": "Added customizable tooltips for all charts bearing tooltip config options."
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.4",
+    "date": "2024-03-04",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added showAsTag plotLabel option"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.3",
+    "date": "2024-03-03",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Minor option fix"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.2",
+    "date": "2024-03-02",
+    "updates": [
+      {
+        "component": "VueUiSparkbar",
+        "description": "Minor option fix"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.1",
+    "date": "2024-03-01",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Fixed a bug causing negative datapoints overflow in auto mode"
+      },
+      {
+        "component": "VueUiHeatmap",
+        "description": "Improved cells layout & right legend"
+      }
+    ]
+  },
+  {
+    "version": "v 2.0.0",
+    "date": "2024-02-20",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fixed a bug introduced in previous release"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.99",
+    "date": "2024-02-19",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added optional display of data table with sparklines"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.95",
+    "date": "2024-02-18",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Fixed viewBox size issues ocurring with small datasets"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.94",
+    "date": "2024-02-17",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Added dynamic indicator on side legend showing on cell hover"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Fixed y position of multiple series parent label"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.93",
+    "date": "2024-02-16",
+    "updates": [
+      {
+        "component": "",
+        "description": "Added getVueDataUi config utility function to get the template of the config object for any component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.92",
+    "date": "2024-02-15",
+    "updates": [
+      {
+        "component": "VueUiMiniLoader",
+        "description": "Minor improvement (standardization)"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.91",
+    "date": "2024-02-15",
+    "updates": [
+      {
+        "component": "VueUiMiniLoader",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.89",
+    "date": "2024-02-13",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added prefix & suffix data label options"
+      },
+      {
+        "component": "VueUiHeatmap",
+        "description": "Added prefix & suffix data label options"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Added prefix & suffix data label options"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Added prefix & suffix data label options"
+      },
+      {
+        "component": "VueUiSparkline",
+        "description": "Added prefix & suffix data label options"
+      },
+      {
+        "component": "VueUiThermometer",
+        "description": "Added prefix & suffix data label options"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Added prefix & suffix data label options"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.88",
+    "date": "2024-02-12",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "When showOnlyFirstAndLast is true, show any xLabel on hover"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.87",
+    "date": "2024-02-10",
+    "updates": [
+      {
+        "component": "Arrow",
+        "description": "Create component that can be injected into #svg slots"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.85",
+    "date": "2024-02-07",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Minor fix"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.84",
+    "date": "2024-02-05",
+    "updates": [
+      {
+        "component": "VueUiTableSparkline",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.80",
+    "date": "2024-02-03",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improved zoom"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.79",
+    "date": "2024-02-03",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Improved color management"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.76",
+    "date": "2024-02-02",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Improved data tables and added exposed css classes"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Improved data tables and added exposed css classes"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Improved data tables and added exposed css classes"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.73",
+    "date": "2024-02-01",
+    "updates": [
+      {
+        "component": "",
+        "description": "Improved data tables and added exposed css classes"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.72",
+    "date": "2024-01-31",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improved table options, layout and responsiveness"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Improved table options, layout and responsiveness"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Improved table options, layout and responsiveness"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Improved table options, layout and responsiveness"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Improved table options, layout and responsiveness"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Improved table options, layout and responsiveness"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Improved table options, layout and responsiveness"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.71",
+    "date": "2024-01-30",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Improved table options, layout and responsiveness"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Improved table options, layout and responsiveness"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Improved table options, layout and responsiveness"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Improved table options, layout and responsiveness"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Improved table options, layout and responsiveness"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.70",
+    "date": "2024-01-29",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Removed akward hover animation"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.69",
+    "date": "2024-01-29",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Improved donuts layout"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.68",
+    "date": "2024-01-28",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improved yLabels nice scale display"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Improved yLabels nice scale display"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Improved yLabels nice scale display"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.66",
+    "date": "2024-01-27",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Improved arcs design to allow a border"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.65",
+    "date": "2024-01-24",
+    "updates": [
+      {
+        "component": "",
+        "description": "Updated vite version"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.64",
+    "date": "2024-01-09",
+    "updates": [
+      {
+        "component": "",
+        "description": "Improved fullscreen behavior"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.63",
+    "date": "2024-01-09",
+    "updates": [
+      {
+        "component": "",
+        "description": "Added fullscreen toggle user option"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.61",
+    "date": "2024-01-08",
+    "updates": [
+      {
+        "component": "VueUiSkeleton",
+        "description": "Added donutEvolution type"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.60",
+    "date": "2024-01-06",
+    "updates": [
+      {
+        "component": "VueUiMolecule",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.54",
+    "date": "2024-01-04",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Design improvements"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.53",
+    "date": "2024-01-03",
+    "updates": [
+      {
+        "component": "VueUiDigits",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.52",
+    "date": "2024-01-01",
+    "updates": [
+      {
+        "component": "",
+        "description": "Removed XLSX dependency, which had unfixable vulnerabilities. Now exports will generate csv files."
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.51",
+    "date": "2024-01-01",
+    "updates": [
+      {
+        "component": "VueUi3dBar",
+        "description": "Added tube shape option"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.50",
+    "date": "2024-01-01",
+    "updates": [
+      {
+        "component": "VueUi3dBar",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.44",
+    "date": "2023-12-31",
+    "updates": [
+      {
+        "component": "",
+        "description": "Added a #svg slot in most chart components, enabling customized svg extensions."
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.43",
+    "date": "2023-12-30",
+    "updates": [
+      {
+        "component": "",
+        "description": "Use unique ids instead of Math.random"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.42",
+    "date": "2023-12-30",
+    "updates": [
+      {
+        "component": "VueUiMoodRadar",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.41",
+    "date": "2023-12-28",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Added icons for all chart types"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.40",
+    "date": "2023-12-27",
+    "updates": [
+      {
+        "component": "VueUiIcon",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.39",
+    "date": "2023-12-26",
+    "updates": [
+      {
+        "component": "VueUiSparkHistogram",
+        "description": "Add offsetY config option to value label"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.38",
+    "date": "2023-12-26",
+    "updates": [
+      {
+        "component": "VueUiSparkHistogram",
+        "description": "Add shape option"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Add shape dataset option"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.37",
+    "date": "2023-12-25",
+    "updates": [
+      {
+        "component": "",
+        "description": "Improve test coverage"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.36",
+    "date": "2023-12-25",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Minor improvements"
+      },
+      {
+        "component": "",
+        "description": "Improve test coverage"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.35",
+    "date": "2023-12-24",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.32",
+    "date": "2023-12-21",
+    "updates": [
+      {
+        "component": "",
+        "description": "New design for user options menu"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.31",
+    "date": "2023-12-20",
+    "updates": [
+      {
+        "component": "VueUiTiremarks",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.30",
+    "date": "2023-12-18",
+    "updates": [
+      {
+        "component": "VueUiSkeleton",
+        "description": "Add rings & wheel types"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.29",
+    "date": "2023-12-18",
+    "updates": [
+      {
+        "component": "VueUiWheel",
+        "description": "Improve animation"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.28",
+    "date": "2023-12-17",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Improve datalabels"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.27",
+    "date": "2023-12-17",
+    "updates": [
+      {
+        "component": "VueUiWheel",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.24",
+    "date": "2023-12-16",
+    "updates": [
+      {
+        "component": "",
+        "description": "Reduce bundle size"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.22",
+    "date": "2023-12-15",
+    "updates": [
+      {
+        "component": "",
+        "description": "Minor refactoring and test addition"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.21",
+    "date": "2023-12-13",
+    "updates": [
+      {
+        "component": "VueUiRings",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.20",
+    "date": "2023-12-11",
+    "updates": [
+      {
+        "component": "VueUiSparkHistogram",
+        "description": "Add hover selector"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.18",
+    "date": "2023-12-08",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Fix flex layout in table first col"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.17",
+    "date": "2023-12-07",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Add shapes in table"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "On serie select, dataLabel takes the color of the highlighted series"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Add config attribute 'useBlurOnHover'"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "For plot and line types, add shapes dataset option"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Improve tooltip content with inline bar charts"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.16",
+    "date": "2023-12-05",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Add selected shape in tooltip. Fix legend issue in print render."
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.15",
+    "date": "2023-12-04",
+    "updates": [
+      {
+        "component": "",
+        "description": "Reduce bundle size"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Slightly increase datapoint shapes size on hover"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.14",
+    "date": "2023-12-03",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix highlight area label not showing in Firefox"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.13",
+    "date": "2023-12-03",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiGauge",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiHeatmap",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Add png image download option and exposed generateImage method"
+      },
+      {
+        "component": "VueUiThermometer",
+        "description": "Add png image download option and exposed generateImage method"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.12",
+    "date": "2023-12-02",
+    "updates": [
+      {
+        "component": "",
+        "description": "Reduce bundle size"
+      },
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Add user options"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.11",
+    "date": "2023-12-01",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add highlight area in canvas mode"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.10",
+    "date": "2023-11-30",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Prevent highlight area side overflow when using zoom"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.9",
+    "date": "2023-11-28",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add highlightArea config option"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.8",
+    "date": "2023-11-27",
+    "updates": [
+      {
+        "component": "VueUiDonut, VueUiOnion",
+        "description": "Add useBlurOnHover config option"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.7",
+    "date": "2023-11-26",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Add color & strokeDasharray for verticalIndicator"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.6",
+    "date": "2023-11-26",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Add bar type config option"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.5",
+    "date": "2023-11-24",
+    "updates": [
+      {
+        "component": "",
+        "description": "Code optimization"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.4",
+    "date": "2023-11-21",
+    "updates": [
+      {
+        "component": "",
+        "description": "Minor code cleanup after component e2e test implemented"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.3",
+    "date": "2023-11-16",
+    "updates": [
+      {
+        "component": "VueUiQuadrant",
+        "description": "Fix xAxis labels position issue"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.2",
+    "date": "2023-11-13",
+    "updates": [
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Reset on click outside"
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.1",
+    "date": "2023-11-12",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Add smooth curve config option."
+      }
+    ]
+  },
+  {
+    "version": "v 1.9.0",
+    "date": "2023-11-12",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add smooth curve dataset option to line types in SVG mode."
+      }
+    ]
+  },
+  {
+    "version": "v 1.8.9",
+    "date": "2023-11-11",
+    "updates": [
+      {
+        "component": "VueUiSparkHistogram",
+        "description": "Add component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.8.8",
+    "date": "2023-11-10",
+    "updates": [
+      {
+        "component": "VueUiXy, VueUiDonut, VueUiRadar, VueUiQuadrant, VueUiOnion, VueUiVerticalBar, VueUiScatter, VueUiCandlestick",
+        "description": "Optional css animation"
+      }
+    ]
+  },
+  {
+    "version": "v 1.8.7",
+    "date": "2023-11-09",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add dataset option to display a line type as an area."
+      }
+    ]
+  },
+  {
+    "version": "v 1.8.6",
+    "date": "2023-11-08",
+    "updates": [
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Add component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.8.4",
+    "date": "2023-11-05",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiGauge",
+        "description": "Expose generatePdf method"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiHeatmap",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Expose generatePdf and generateCsv methods"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Expose generatePdf method"
+      },
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Expose generatePdf method"
+      },
+      {
+        "component": "VueUiThermometer",
+        "description": "Expose generatePdf method"
+      }
+    ]
+  },
+  {
+    "version": "v 1.8.3",
+    "date": "2023-11-05",
+    "updates": [
+      {
+        "component": "VueUiThermometer",
+        "description": "Add component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.8.2",
+    "date": "2023-11-03",
+    "updates": [
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Add component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.8.1",
+    "date": "2023-11-02",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add the useCanvas option to display the chart as a canvas. This is an experimental feature."
+      }
+    ]
+  },
+  {
+    "version": "v 1.7.9",
+    "date": "2023-10-30",
+    "updates": [
+      {
+        "component": "VueUiSkeleton",
+        "description": "Add smiley option in skeleton rating type"
+      }
+    ]
+  },
+  {
+    "version": "v 1.7.8",
+    "date": "2023-10-29",
+    "updates": [
+      {
+        "component": "VueUiSmiley",
+        "description": "Add keyboard support"
+      }
+    ]
+  },
+  {
+    "version": "v 1.7.7",
+    "date": "2023-10-29",
+    "updates": [
+      {
+        "component": "",
+        "description": "Update vue-data-ui.d.ts types. Now config types are optional."
+      }
+    ]
+  },
+  {
+    "version": "v 1.7.6",
+    "date": "2023-10-28",
+    "updates": [
+      {
+        "component": "VueUiSmiley",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.7.4",
+    "date": "2023-10-25",
+    "updates": [
+      {
+        "component": "",
+        "description": "Add smooth animations on some charts"
+      }
+    ]
+  },
+  {
+    "version": "v 1.7.3",
+    "date": "2023-10-22",
+    "updates": [
+      {
+        "component": "VueUiAnnotator",
+        "description": "Add touch support"
+      }
+    ]
+  },
+  {
+    "version": "v 1.7.1",
+    "date": "2023-10-21",
+    "updates": [
+      {
+        "component": "VueUiAnnotator",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.6.9",
+    "date": "2023-10-19",
+    "updates": [
+      {
+        "component": "VueUiDashboard",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.6.4",
+    "date": "2023-10-11",
+    "updates": [
+      {
+        "component": "VueUiSkeleton",
+        "description": "Add sparkline type"
+      }
+    ]
+  },
+  {
+    "version": "v 1.6.3",
+    "date": "2023-10-08",
+    "updates": [
+      {
+        "component": "VueUiSparkbar",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.6.2",
+    "date": "2023-10-07",
+    "updates": [
+      {
+        "component": "VueUiOnion",
+        "description": "Fix undefined displayed in data labels if no prefix or suffix"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Update data label formatting"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Update data label formatting"
+      }
+    ]
+  },
+  {
+    "version": "v 1.6.1",
+    "date": "2023-10-04",
+    "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Add getData exposed method"
+      }
+    ]
+  },
+  {
+    "version": "v 1.6.0",
+    "date": "2023-10-02",
+    "updates": [
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Add config option to position legend on top or bottom"
+      }
+    ]
+  },
+  {
+    "version": "v 1.5.9",
+    "date": "2023-10-01",
+    "updates": [
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Improve tooltip & legend markers"
+      }
+    ]
+  },
+  {
+    "version": "v 1.5.8",
+    "date": "2023-09-23",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix tooltip css flex issue"
+      }
+    ]
+  },
+  {
+    "version": "v 1.5.4",
+    "date": "2023-09-17",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix error when zoom is deactivated; fix tootlip default bg color"
+      }
+    ]
+  },
+  {
+    "version": "v 1.5.2",
+    "date": "2023-09-16",
+    "updates": [
+      {
+        "component": "VueUiSkeleton",
+        "description": "Add pyramid type"
+      }
+    ]
+  },
+  {
+    "version": "v 1.5.1",
+    "date": "2023-09-13",
+    "updates": [
+      {
+        "component": "",
+        "description": "Replace unicode icons by svg elements in most charts"
+      }
+    ]
+  },
+  {
+    "version": "v 1.5.0",
+    "date": "2023-09-10",
+    "updates": [
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.4.3",
+    "date": "2023-09-05",
+    "updates": [
+      {
+        "component": "",
+        "description": "Bundle size optimization"
+      }
+    ]
+  },
+  {
+    "version": "v 1.4.2",
+    "date": "2023-09-05",
+    "updates": [
+      {
+        "component": "VueUiSkeleton",
+        "description": "Add candlesticks type"
+      }
+    ]
+  },
+  {
+    "version": "v 1.4.1",
+    "date": "2023-09-04",
+    "updates": [
+      {
+        "component": "VueUiCandlestick",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.3.6",
+    "date": "2023-09-01",
+    "updates": [
+      {
+        "component": "VueUiTable",
+        "description": "Fix sign of progression label"
+      }
+    ]
+  },
+  {
+    "version": "v 1.3.5",
+    "date": "2023-08-31",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improve zoom functionality"
+      }
+    ]
+  },
+  {
+    "version": "v 1.3.3",
+    "date": "2023-08-30",
+    "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.2.0",
+    "date": "2023-08-29",
+    "updates": [
+      {
+        "component": "VueUiSkeleton",
+        "description": "Add heatmap type"
+      }
+    ]
+  },
+  {
+    "version": "v 1.1.0",
+    "date": "2023-08-29",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 1.0.0",
+    "date": "2023-08-22",
+    "updates": [
+      {
+        "component": "",
+        "description": "Reduce bundle size, release 1.0.0"
+      }
+    ]
+  },
+  {
+    "version": "v 0.6.2",
+    "date": "2023-08-19",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix sign of progression label"
+      }
+    ]
+  },
+  {
+    "version": "v 0.6.1",
+    "date": "2023-08-18",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix progression line crash when filtering period range to an empty set."
+      }
+    ]
+  },
+  {
+    "version": "v 0.6.0",
+    "date": "2023-08-16",
+    "updates": [
+      {
+        "component": "VueUiSkeleton",
+        "description": "Add chestnut type"
+      },
+      {
+        "component": "",
+        "description": "Update vue-data-ui.d.ts"
+      }
+    ]
+  },
+  {
+    "version": "v 0.5.9",
+    "date": "2023-08-15",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix trend calculation"
+      }
+    ]
+  },
+  {
+    "version": "v 0.5.8",
+    "date": "2023-08-11",
+    "updates": [
+      {
+        "component": "",
+        "description": "Add vue-data-ui.d.ts types"
+      }
+    ]
+  },
+  {
+    "version": "v 0.5.7",
+    "date": "2023-08-11",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 0.5.4",
+    "date": "2023-08-10",
+    "updates": [
+      {
+        "component": "VueUiSkeleton",
+        "description": "Fix css overflow issue"
+      }
+    ]
+  },
+  {
+    "version": "v 0.5.3",
+    "date": "2023-08-10",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix x dataLabels centering offset on bar type"
+      }
+    ]
+  },
+  {
+    "version": "v 0.5.2",
+    "date": "2023-08-10",
+    "updates": [
+      {
+        "component": "VueUiSkeleton",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 0.4.9",
+    "date": "2023-08-10",
+    "updates": [
+      {
+        "component": "VueUiScreenshot",
+        "description": "In post mode, add createdAt timestamp and fileSize"
+      }
+    ]
+  },
+  {
+    "version": "v 0.4.8",
+    "date": "2023-08-09",
+    "updates": [
+      {
+        "component": "VueUiRating",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 0.4.6",
+    "date": "2023-08-09",
+    "updates": [
+      {
+        "component": "VueUiScreenshot",
+        "description": "Create component"
+      }
+    ]
+  },
+  {
+    "version": "v 0.4.3",
+    "date": "2023-08-08",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add progression line & serie tag dataset options"
+      }
+    ]
+  },
+  {
+    "version": "v 0.4.2",
+    "date": "2023-08-08",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add dahsed option for line types"
+      }
+    ]
+  },
+  {
+    "version": "v 0.4.1",
+    "date": "2023-08-08",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix table not opening from options"
+      }
+    ]
+  },
+  {
+    "version": "v 0.4.0",
+    "date": "2023-08-08",
+    "updates": [
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Add sorting direction to config & options"
+      }
+    ]
+  },
+  {
+    "version": "v 0.3.9",
+    "date": "2023-08-08",
+    "updates": [
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Fix config"
+      }
+    ]
+  },
+  {
+    "version": "v 0.3.8",
+    "date": "2023-08-07",
+    "updates": [
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Create chart"
+      }
+    ]
+  },
+  {
+    "version": "v 0.3.7",
+    "date": "2023-08-07",
+    "updates": [
+      {
+        "component": "",
+        "description": "Centralize config, improve bundle size"
+      }
+    ]
+  },
+  {
+    "version": "v 0.3.4",
+    "date": "2023-08-07",
+    "updates": [
+      {
+        "component": "VueUiOnion",
+        "description": "Fix label y position issue"
+      }
+    ]
+  },
+  {
+    "version": "v 0.3.3",
+    "date": "2023-08-06",
+    "updates": [
+      {
+        "component": "VueUiOnion",
+        "description": "Create chart"
+      }
+    ]
+  },
+  {
+    "version": "v 0.3.2",
+    "date": "2023-08-06",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add zoom functionality"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Fix non closing polygon in Firefox"
+      }
+    ]
+  },
+  {
+    "version": "v 0.2.9",
+    "date": "2023-08-05",
+    "updates": [
+      {
+        "component": "",
+        "description": "Allow RGB, HSL color formats in config & datasets"
+      }
+    ]
+  },
+  {
+    "version": "v 0.2.8",
+    "date": "2023-08-05",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add 'highlighter' color and opacity options"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Add emits and getData method"
+      }
+    ]
+  },
+  {
+    "version": "v 0.2.7",
+    "date": "2023-08-05",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix dataLabels on y axis not showing if min value > 0"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Add 'showOnlyFirstAndLast' config option to show only first and last time labels on x axis. vue-data-ui is opinionated and chooses not to provide rotating x labels, as it is bad dataviz practice."
+      }
+    ]
+  }
 ]
