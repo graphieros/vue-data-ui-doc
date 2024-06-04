@@ -434,6 +434,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiNestedDonutsDat
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiNestedDonutsConfig</span> = {
+    customPalette: []; // string[]
     useBlurOnHover: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()">, (default: true) 
     useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)
     style: {

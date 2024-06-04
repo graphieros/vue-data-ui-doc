@@ -312,6 +312,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiTableSparklineConfig</span> = {
+  customPalette: []; // string[]
   responsiveBreakpoint: <input v-if="isDarkMode" type="number" min="300" max="650" v-model="mutableConfigDarkMode.responsiveBreakpoint"><input v-else type="number" min="300" max="650" v-model="mutableConfig.responsiveBreakpoint">, (default: 500)
   showAverage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showAverage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showAverage" @change="forceChartUpdate()">, (default: true)
   showMedian: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showMedian" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showMedian" @change="forceChartUpdate()">, (default: true)

@@ -493,6 +493,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiRadarConfig</span> = {
+    customPalette: []; // string[]
     useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)
     style: {
         fontFamily: "inherit",

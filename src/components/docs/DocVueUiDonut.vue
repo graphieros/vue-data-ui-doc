@@ -624,6 +624,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
+    customPalette: []; // string[]
     <ConfigAttribute v-if="isDarkMode" name="useBlurOnHover" type="checkbox" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()" defaultVal="true" />
     <ConfigAttribute v-else name="useBlurOnHover" type="checkbox" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()" defaultVal="true" />
     useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true) 

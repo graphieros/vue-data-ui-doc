@@ -571,6 +571,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiMoleculeDataset
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiMoleculeConfig</span> = {
+    customPalette: []; // string[]
     style: {
         fontFamily: "inherit",
         chart: {

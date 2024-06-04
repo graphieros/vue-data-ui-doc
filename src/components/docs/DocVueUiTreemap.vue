@@ -483,6 +483,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTreemapDatasetI
                 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiTreemapConfig</span> = {
+    customPalette: []; // string[]
     userOptions: {
         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
     },

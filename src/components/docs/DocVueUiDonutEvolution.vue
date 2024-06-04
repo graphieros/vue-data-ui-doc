@@ -403,7 +403,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionD
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiDonutEvolutionConfig</span> = {
+  customPalette: []; // string[]
   style: {
+    customPalette: []; // string[]
     fontFamily: "inherit",
     chart: {
       backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")

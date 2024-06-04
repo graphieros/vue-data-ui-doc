@@ -776,6 +776,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiChestnutDataset
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiChestnutConfig</span> = {
+    customPalette: []; // string[]
     style: {
         fontFamily: "inherit",
         chart: {

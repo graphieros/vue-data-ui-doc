@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.8",
+    "date": "2024-06-04",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added config options to hide or show axes and zero lines",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.6",
     "date": "2024-06-04",
     "updates": [

@@ -382,6 +382,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWaffleDatasetIt
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</span> = {
     style: {
+        customPalette: []; // string[]
         useBlurOnHover: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()">, (default: true) <span class="text-app-blue">// since v.1.9.17</span>
         useCustomCells: false, <span class="text-app-blue">// since v2.0.81 {{ translations.customization.otherSlots.waffle[store.lang] }}</span>
         useAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useAnimation" @change="forceChartUpdate()">, (default: true)
