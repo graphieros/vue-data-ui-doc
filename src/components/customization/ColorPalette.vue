@@ -44,6 +44,84 @@ function copyContent(color) {
         <CheckIcon size="42" class="dark:text-app-green"/>
     </div>
     <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
+        <p class="my-6">
+            You can use config.customPalette (string[]]) to use your own color palette. Colors provided in datasets will always override custom and default palettes. Allowed color formats: HEX, RGB, HSL, named colors.
+            The config.customPalette attribute can be used on the following components:
+        </p>
+        <ul>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUi3dBar
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiChestnut
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiDonut
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiDonutEvolution
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiGalaxy
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiGauge
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiMolecule
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiNestedDonuts
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiOnion
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiQuadrant
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiQuickChart
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiRadar
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiRelationCircle
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiRings
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiScatter
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiSparkStackbar
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiSparkbar
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiStripPlot
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiTableSparkline
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiThermometer
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiTreemap
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiVerticalBar
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiWaffle
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiXy
+            </li>
+        </ul>
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
         <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md">
             <code class="text-xs text-left">

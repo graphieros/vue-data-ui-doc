@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.2.6",
+    "date": "2024-06-04",
+    "updates": [
+      {
+        "component": "All components using color palettes",
+        "description": "Added customPalette config attribute to customize color palette."
+      }
+    ]
+  },
+  {
     "version": "v 2.2.5",
     "date": "2024-06-03",
     "updates": [
