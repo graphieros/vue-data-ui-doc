@@ -9,7 +9,6 @@ import { useMainStore } from "./stores";
 import HelpCenter from "./components/helpCenter/HelpCenter.vue";
 
 const store = useMainStore()
-
 const router = useRouter();
 
 const currentRoute = computed(() => {
@@ -35,7 +34,6 @@ onMounted(() => {
     store.isFetching = false;
   })
 })
-
 </script>
 
 <template>

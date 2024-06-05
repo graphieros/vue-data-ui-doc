@@ -536,8 +536,6 @@ function toggleUseStacked() {
     forceChartUpdate();
 }
 
-
-
 const shapeOptions = ref([
     'circle',
     'triangle',
@@ -549,7 +547,6 @@ const shapeOptions = ref([
 ]);
 
 </script>
-
 
 <template>
     <div>
@@ -667,7 +664,6 @@ const shapeOptions = ref([
 </code>
 </pre>      
             </div>
-
 
             {{ translations.docs.example[store.lang] }} :
             <div class="w-full overflow-x-auto">
