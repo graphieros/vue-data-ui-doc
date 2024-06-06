@@ -561,6 +561,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiScatterDatasetI
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</span> = {
+  theme: ""; ("zen" | "hack" | "concrete" | "")
   customPalette: []; // string[]
   useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation">, (default: true)
   style: {

@@ -256,6 +256,7 @@ function fixChart() {
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiSparkgaugeConfig</span> = {
+    theme: ""; ("zen" | "hack" | "concrete" | "")
     style: {
         fontFamily: "inherit",
         background: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.background"><input v-else type="color" v-model="mutableConfig.style.background">,  (default: "#FFFFFF")

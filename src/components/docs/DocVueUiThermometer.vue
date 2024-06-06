@@ -278,6 +278,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiThermometerConfig</span> = {
+    theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     style: {
         fontFamily: "inherit",

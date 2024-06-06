@@ -385,6 +385,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiGaugeConfig</span> = {
+    theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     style: {
         fontFamily: "inherit",

@@ -325,6 +325,7 @@ function fixChart() {
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiMoodRadarConfig</span> = {
+    theme: ""; ("zen" | "hack" | "concrete" | "")
     style: {
         fontFamily: "inherit",
         chart: {

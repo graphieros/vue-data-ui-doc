@@ -395,6 +395,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</span> = {
+  theme: ""; ("zen" | "hack" | "concrete" | "")
   type: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.type"><option>line</option><option>bar</option></select><select v-else v-model="mutableConfig.type"><option>line</option><option>bar</option></select> <span class="text-gray-400">// since v.1.9.6</span>
   style: {
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")

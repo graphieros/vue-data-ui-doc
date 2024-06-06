@@ -140,6 +140,16 @@ export const useMainStore = defineStore("main", {
                         }
                     }
                 },
+                getTheme: {
+                    en: `Since version 2.1.9, you can apply on of the 3 themes to all charts. Just set the 'theme' config attribute to either "", "zen", "hack" or "concrete". Theme objects can be retrieved by importing and calling the getThemeConfig function, passing as a parameter the key corresponding to the component.`,
+                    fr: `Depuis la version 2.1.9, vous pouvez appliquer l'un des 3 thèmes à tous les graphiques. Définissez simplement l'attribut de configuration 'theme' sur "", "zen", "hack" ou "concrete". Les objets thème peuvent être récupérés en important et en appelant la fonction getThemeConfig, en passant en paramètre la clé correspondant au composant.`,
+                    pt: `Desde a versão 2.1.9, você pode aplicar um dos 3 temas a todos os gráficos. Basta definir o atributo de configuração 'tema' como "", "zen", "hack" ou "concrete". Os objetos do tema podem ser recuperados importando e chamando a função getThemeConfig, passando como parâmetro a chave correspondente ao componente.`,
+                    de: `Seit Version 2.1.9 können Sie eines der drei Themen auf alle Diagramme anwenden. Setzen Sie einfach das Konfigurationsattribut „Theme“ auf „“, „zen“, „hack“ oder „concrete“. Theme-Objekte können durch Importieren und Aufrufen der getThemeConfig-Funktion abgerufen werden, wobei als Parameter der der Komponente entsprechende Schlüssel übergeben wird.`,
+                    zh: `从版本 2.1.9 开始，您可以将 3 个主题中的一个应用到所有图表。只需将“主题”配置属性设置为“”、“zen”、“hack”或“concrete”即可。可以通过导入并调用 getThemeConfig 函数来检索主题对象，并将与组件对应的键作为参数传递。`,
+                    jp: `バージョン 2.1.9 以降、3 つのテーマのいずれかをすべてのチャートに適用できるようになりました。 「テーマ」構成属性を「」、「zen」、「hack」、「concrete」のいずれかに設定するだけです。テーマ オブジェクトは、getThemeConfig 関数をインポートして呼び出し、コンポーネントに対応するキーをパラメータとして渡すことで取得できます。`,
+                    es: `Desde la versión 2.1.9, puede aplicar uno de los 3 temas a todos los gráficos. Simplemente configure el atributo de configuración 'tema' en "", "zen", "hack" o "concrete". Los objetos del tema se pueden recuperar importando y llamando a la función getThemeConfig, pasando como parámetro la clave correspondiente al componente.`,
+                    ko: `버전 2.1.9부터 3가지 테마 중 하나를 모든 차트에 적용할 수 있습니다. 'theme' 구성 속성을 "", "zen", "hack" 또는 "concrete"로 설정하기만 하면 됩니다. 테마 개체는 getThemeConfig 함수를 가져오고 호출하여 구성 요소에 해당하는 키를 매개 변수로 전달하여 검색할 수 있습니다.`
+                },
                 getConfig: {
                     en: "Since version v.1.9.93 you can get any configuration object by importing and calling the getVueDataUiConfig function, passing as a parameter the key corresponding to the component.",
                     fr: "Depuis la version v.1.9.93 vous pouvez obtenir n'importe quel objet de configuration en important et en appelant la fonction getVueDataUiConfig, en passant en paramètre la clé correspondant au composant.",
@@ -149,6 +159,16 @@ export const useMainStore = defineStore("main", {
                     jp: "バージョン v.1.9.93 以降、getVueDataUiConfig 関数をインポートして呼び出し、コンポーネントに対応するキーをパラメータとして渡すことで、任意の構成オブジェクトを取得できます。",
                     es: "Desde la versión v.1.9.93 se puede obtener cualquier objeto de configuración importando y llamando a la función getVueDataUiConfig, pasando como parámetro la clave correspondiente al componente.",
                     ko: "버전 v.1.9.93부터 getVueDataUiConfig 함수를 가져오고 호출하여 구성 요소에 해당하는 키를 매개 변수로 전달하여 구성 개체를 얻을 수 있습니다."
+                },
+                viewSelectedTheme: {
+                    en: "View selected themes",
+                    fr: "Afficher les thèmes sélectionnés",
+                    pt: "Ver temas selecionados",
+                    de: "Ausgewählte Themen anzeigen",
+                    zh: "查看选定的主题",
+                    jp: "選択したテーマを表示する",
+                    es: "Ver temas seleccionados",
+                    ko: "선택한 테마 보기"
                 },
                 viewSelectedConfig: {
                     en: "View selected config",

@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.2.9",
+    "date": "2024-06-06",
+    "updates": [
+      {
+        "component": "",
+        "description": "Added themes to all chart components"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.8",
     "date": "2024-06-04",
     "updates": [

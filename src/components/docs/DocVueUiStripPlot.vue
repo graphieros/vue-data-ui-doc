@@ -533,6 +533,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStripPlotDatase
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiStripPlotConfig</span> = {
+    theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true) 
     style: {

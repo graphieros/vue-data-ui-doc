@@ -230,6 +230,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiSparkTrendConfig</span> = {
+    theme: ""; ("zen" | "hack" | "concrete" | "")
     style: {
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
         fontFamily: "inherit",

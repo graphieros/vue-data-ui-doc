@@ -501,6 +501,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
 <pre>
 <code>
     const <span class="text-black dark:text-app-blue">config: VueUi3dBarConfig</span> = {
+        theme: ""; ("zen" | "hack" | "concrete" | "")
         customPalette: []; // string[]
         style: {
             fontFamily: "inherit",

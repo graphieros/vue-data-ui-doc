@@ -584,6 +584,7 @@ function fixChart() {
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
+    theme: ""; ("zen" | "hack" | "concrete" | "")
     axisLabelsFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.axisLabelsFontSize"><input v-else type="range" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.axisLabelsFontSize">, (default: 12)
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.backgroundColor"><input v-else type="color" v-model="mutableConfig.backgroundColor">, (default: "#FFFFFF")
     barGap: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="64" v-model="mutableConfigDarkMode.barGap"><input v-else type="range" class="accent-app-blue" min="0" max="64" v-model="mutableConfig.barGap">, (default: 12)

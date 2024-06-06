@@ -257,6 +257,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkbarDataset
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiSparkbarConfig</span> = {
+    theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     style: {
         fontFamily: "inherit",

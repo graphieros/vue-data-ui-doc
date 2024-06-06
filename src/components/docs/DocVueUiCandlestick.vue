@@ -434,6 +434,7 @@ const <span class="text-black dark:text-app-green">dataset: Array&lt;Array&lt;st
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiCandlestickConfig</span> = {
+  theme: ""; ("zen" | "hack" | "concrete" | "")
   useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)
   style: {
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")

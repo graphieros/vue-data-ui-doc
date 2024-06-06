@@ -403,6 +403,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionD
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiDonutEvolutionConfig</span> = {
+  theme: ""; ("zen" | "hack" | "concrete" | "")
   customPalette: []; // string[]
   style: {
     customPalette: []; // string[]

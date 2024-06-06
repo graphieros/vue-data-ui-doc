@@ -45,7 +45,7 @@ import DocVueUiNestedDonuts from "../components/docs/DocVueUiNestedDonuts.vue";
 import DocVueUiSparkgauge from "../components/docs/DocVueUiSparkgauge.vue";
 import DocVueUiGalaxy from "../components/docs/DocVueUiGalaxy.vue";
 import DocVueUiKpi from "../components/docs/DocVueUiKpi.vue";
-import { getVueDataUiConfig } from "vue-data-ui";
+import { getVueDataUiConfig, getThemeConfig } from "vue-data-ui";
 import mainConfig from "../assets/default_configs.json";
 import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
@@ -123,10 +123,34 @@ const configKeys = computed(() => {
     return Object.keys(mainConfig).toSorted()
 })
 
+const themeKeys = computed(() => {
+    return Object.keys(mainConfig).toSorted().filter(key => {
+        return ![
+            "vue_ui_table",
+            "vue_ui_rating",
+            "vue_ui_smiley",
+            "vue_ui_accordion",
+            "vue_ui_skeleton",
+            "vue_ui_dashboard",
+            "vue_ui_annotator",
+            "vue_ui_icon",
+            "vue_ui_digits",
+            "vue_ui_cursor",
+            "vue_ui_mini_loader",
+            "vue_ui_kpi"
+        ].includes(key)
+    })
+})
+
 const configSelect = ref('vue_ui_xy')
+const themeSelect = ref("vue_ui_xy")
 
 const selectedConfig = computed(() => {
     return getVueDataUiConfig(configSelect.value)
+})
+
+const selectedTheme = computed(() => {
+    return getThemeConfig(themeSelect.value)
 })
 
 const menuItems = computed(() => [
@@ -795,6 +819,41 @@ onMounted(playShowcase)
                 </div>
 
                 <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
+                    <div class="mb-4">{{ translations.getTheme[store.lang] }}</div>
+                    <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
+                    <CopyIcon class="absolute right-2 top-2"/>
+                        import { getThemeConfig } from "vue-data-ui";<br>
+
+                        const {{ themeSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_themes = getThemeConfig("{{ themeSelect }}");
+                    </code>
+                    <select class="mb-4 h-8 px-2" v-model="themeSelect"><option v-for="opt in themeKeys">{{ opt }}</option> </select>
+
+                    <VueDataUi component="VueUiAccordion" :config="{
+                        head: {
+                            useArrowSlot: true,
+                            backgroundColor: 'transparent'
+                        },
+                        body: {
+                            backgroundColor: 'transparent',
+                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                        }
+                    }">
+                        <template #arrow="{ iconColor }">
+                            <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                        </template>
+                        <template #title>
+                            {{ translations.viewSelectedTheme[store.lang] }}
+                        </template>
+                        <template #content>
+                            <div class="text-xs text-left mt-6 cursor-pointer" @click="copyToClipboard(selectedTheme)">
+                                <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
+                                {{ selectedTheme }}
+                            </div>
+                        </template>
+                    </VueDataUi>
+                </div>
+
+                <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
                     <div class="mb-4">{{ translations.getConfig[store.lang] }}</div>
                     <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
                     <CopyIcon class="absolute right-2 top-2"/>
@@ -827,7 +886,6 @@ onMounted(playShowcase)
                             </div>
                         </template>
                     </VueDataUi>
-
                 </div>
 
                 <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col md:flex-row gap-4">

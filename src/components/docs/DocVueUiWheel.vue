@@ -242,6 +242,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiWheelConfig</span> = {
+  theme: ""; ("zen" | "hack" | "concrete" | "")
   style: {
     fontFamily: "inherit",
     chart: {

@@ -246,6 +246,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiTiremarksConfig</span> = {
+  theme: ""; ("zen" | "hack" | "concrete" | "")
   style: {
     fontFamily: "inherit",
     chart: {

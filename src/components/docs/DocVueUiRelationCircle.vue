@@ -432,6 +432,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRelationCircleD
         <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiRelationCircleConfig</span> = {
+    theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     style: {
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")

@@ -616,6 +616,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiQuadrantConfig</span> = {
+    theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)
     zoomAnimationFrames: <input v-if="isDarkMode" type="number" min="5" max="40" v-model="mutableConfigDarkMode.zoomAnimationFrames"><input v-else type="number" min="5" max="40" v-model="mutableConfig.zoomAnimationFrames">, (default: 20)
