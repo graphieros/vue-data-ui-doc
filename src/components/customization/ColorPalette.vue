@@ -21,6 +21,8 @@ const palette = ref([
     "#e7969c", "#7b4173", "#a55194", "#ce6dbd", "#de9ed6"
 ]);
 
+// TODO: THEMES HERE ?
+
 function copyContent(color) {
     let selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
@@ -35,7 +37,6 @@ function copyContent(color) {
     document.body.removeChild(selBox);
     store.copy();
 }
-
 </script>
 
 <template>
