@@ -6,7 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
-import ConfigAttribute from "../ConfigAttribute.vue";
+import ThemesVueUiStripPlot from "../themes/ThemesVueUiStripPlot.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -412,7 +412,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-strip-plot"/>
             <MakerLink to="VueUiStripPlot"/>
         </div>
-        <Box showEmits showSlots showTooltip>
+        <Box showEmits showSlots showTooltip showThemes>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -814,6 +814,10 @@ Target the following css class to apply custom styles:
 .vue-data-ui-custom-tooltip
 </code>
 </pre>           
+            </template>
+
+            <template #tab6>
+                <ThemesVueUiStripPlot />
             </template>
         </Box>
     </div>

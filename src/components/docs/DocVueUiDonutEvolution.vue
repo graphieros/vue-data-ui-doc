@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
+import ThemesVueUiDonutEvolution from "../themes/ThemesVueUiDonutEvolution.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -343,7 +344,7 @@ function fixChart() {
             <MakerLink to="VueUiDonutEvolution" />
         </div>
 
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showThemes>
             <template #tab0>
             
                 {{ translations.docs.datastructure[store.lang] }}
@@ -669,7 +670,9 @@ const <span class="text-app-blue">config: VueUiDonutEvolutionConfig</span> = {
 </code>
 </pre>
             </template>
-
+            <template #tab6>
+                <ThemesVueUiDonutEvolution />
+            </template>
         </Box>
     </div>
 </template>

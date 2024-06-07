@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
 import { useMainStore } from "../../stores";
+import ThemesVueUiQuadrant from "../themes/ThemesVueUiQuadrant.vue";
 
 
 const store = useMainStore();
@@ -488,7 +489,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-quadrant"/>
             <MakerLink to="VueUiQuadrant" />
         </div>
-        <Box showEmits showSlots showTooltip>
+        <Box showEmits showSlots showTooltip showThemes>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -982,6 +983,10 @@ Target the following css class to apply custom styles:
 .vue-data-ui-custom-tooltip
 </code>
 </pre>           
+            </template>
+
+            <template #tab6>
+                <ThemesVueUiQuadrant />
             </template>
         </Box>
     </div>

@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
+import ThemesVueUiSparkHistogram from "../themes/ThemesVueUiSparkHistogram.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -339,7 +340,7 @@ function fixChart() {
             <MakerLink to="VueUiSparkHistogram"/>
         </div>
 
-        <Box showEmits>
+        <Box showEmits showThemes>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -565,6 +566,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkHistogramCon
 </code>
 </pre>
 
+            </template>
+
+            <template #tab6>
+              <ThemesVueUiSparkHistogram />
             </template>
         </Box>
 

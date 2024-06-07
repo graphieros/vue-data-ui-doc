@@ -5,8 +5,7 @@ import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue"
-import ConfigAttribute from "../ConfigAttribute.vue";
+import ThemesVueUiDumbbell from "../themes/ThemesVueUiDumbbell.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -365,7 +364,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-dumbbell"/>
             <!-- <MakerLink to="VueUiStripPlot"/> -->
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showThemes>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -660,6 +659,10 @@ const <span class="text-app-blue">config: VueUiDumbbellConfig</span> = {
     &lt;/VueUiDumbbell&gt;
 </code>
 </pre>
+            </template>
+
+            <template #tab6>
+                <ThemesVueUiDumbbell />
             </template>
         </Box>
     </div>

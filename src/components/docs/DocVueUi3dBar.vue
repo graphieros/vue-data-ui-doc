@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
+import ThemesVueUi3dBar from "../themes/ThemesVueUi3dBar.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -390,7 +391,7 @@ function fixChart() {
             <MakerLink to="VueUi3dBar"/>
         </div>
 
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showThemes>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -627,6 +628,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
     &lt;/VueUi3dBar&gt;
 </code>
 </pre>                    
+            </template>
+
+            <template #tab6>
+                <ThemesVueUi3dBar />
             </template>
         </Box>
     </div>

@@ -5,7 +5,8 @@ import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue"
+import MakerLink from "../MakerLink.vue";
+import ThemesVueUiSparkgauge from "../themes/ThemesVueUiSparkgauge.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -212,7 +213,7 @@ function fixChart() {
             <MakerLink to="VueUiSparkgauge"/>
         </div>
 
-        <Box>
+        <Box showThemes>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -302,6 +303,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkgaugeConfig<
 </code>
 </pre>
                 </div>
+            </template>
+
+            <template #tab6>
+                <ThemesVueUiSparkgauge />
             </template>
         </Box>
     </div>

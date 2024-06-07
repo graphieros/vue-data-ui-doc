@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
+import ThemesVueUiGalaxy from "../themes/ThemesVueUiGalaxy.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -331,7 +332,7 @@ function fixChart() {
       <MakerLink to="VueUiGalaxy" />
     </div>
 
-    <Box showEmits showSlots showTooltip>
+    <Box showEmits showSlots showTooltip showThemes>
       <template #tab0>
         {{ translations.docs.datastructure[store.lang] }}
         <div>
@@ -687,6 +688,10 @@ Target the following css class to apply custom styles:
 .vue-data-ui-custom-tooltip
 </code>
 </pre>
+      </template>
+
+      <template #tab6>
+        <ThemesVueUiGalaxy />
       </template>
     </Box>
   </div>

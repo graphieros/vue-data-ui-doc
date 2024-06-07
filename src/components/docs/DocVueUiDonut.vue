@@ -8,6 +8,7 @@ import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
 import ConfigAttribute from "../ConfigAttribute.vue";
 import UcDonut from "../useCases/uc-donut.vue";
+import ThemesVueUiDonut from "../themes/ThemesVueUiDonut.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -565,7 +566,7 @@ const slotOption = ref(slotOptions.value[0])
             <GitHubLink link="vue-ui-donut"/>
             <MakerLink to="VueUiDonut"/>
         </div>
-        <Box showEmits showSlots showTooltip showUseCases>
+        <Box showEmits showSlots showTooltip showUseCases showThemes>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -1070,7 +1071,11 @@ Target the following css class to apply custom styles:
             </template>
 
             <template #tab5>
-                <UcDonut/>
+                <UcDonut />
+            </template>
+
+            <template #tab6>
+                <ThemesVueUiDonut />
             </template>
         </Box>
     </div>

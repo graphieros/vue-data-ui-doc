@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
+import ThemesVueUiOnion from "../themes/ThemesVueUiOnion.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -372,7 +373,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-onion"/>
             <MakerLink to="VueUiOnion"/>
         </div>
-        <Box showEmits showSlots showTooltip>
+        <Box showEmits showSlots showTooltip showThemes>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -720,6 +721,10 @@ Target the following css class to apply custom styles:
 .vue-data-ui-custom-tooltip
 </code>
 </pre>           
+            </template>
+
+            <template #tab6>
+                <ThemesVueUiOnion />
             </template>
         </Box>
     </div>

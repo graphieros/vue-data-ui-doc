@@ -5,7 +5,7 @@ import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue";
+import ThemesVueUiSparkTrend from "../themes/ThemesVueUiSparkTrend.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -204,7 +204,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-spark-trend"/>
             <!-- <MakerLink to="VueUiSparkline"/> -->
         </div>
-        <Box>
+        <Box showThemes>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="border-b my-6 pb-6 border-gray-700">
@@ -286,6 +286,10 @@ const <span class="text-app-blue">config: VueUiSparkTrendConfig</span> = {
 }
 </code>
 </pre>                
+            </template>
+
+            <template #tab6>
+                <ThemesVueUiSparkTrend />
             </template>
         </Box>
     </div>

@@ -37,7 +37,7 @@ const activeTab = ref(props.activeTab);
 
 <template>
     <div class="p-6 rounded-md border border-gray-700 my-6 relative overflow-x-auto">
-    <div class="flex flex-row border w-fit border-gray-700 mb-6 rounded">
+    <div class="flex flex-row border w-full border-gray-700 mb-6 rounded overflow-auto">
         <div tabindex="0" :class="`w-fit select-none cursor-pointer text-black dark:text-app-green font-satoshi-bold p-3  ${activeTab === 0 ? 'bg-gray-200 dark:bg-black-100 border-b border-b-app-green' : 'border-b border-b-transparent'} hover:border-b hover:border-b-app-green`" @click="activeTab = 0" @keypress.enter="activeTab = 0">
             <div class="flex flex-row place-items-center gap-2">
                 <VueUiIcon name="ratio" :size="18" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
@@ -74,7 +74,7 @@ const activeTab = ref(props.activeTab);
                 Use cases
             </div>
         </div>
-        <div tabindex="0" v-if="props.showUseCases" :class="`w-fit select-none cursor-pointer text-black dark:text-[#ddaaFF] border-b font-satoshi-bold p-3  ${activeTab === 6 ? 'bg-gray-200 dark:bg-black-100 border-b-[#ddaaFF]' : 'border-b-transparent'} hover:border-b hover:border-b-[#ddaaFF]`" @click="activeTab = 6" @keypress.enter="activeTab = 6">
+        <div tabindex="0" v-if="props.showThemes" :class="`w-fit select-none cursor-pointer text-black dark:text-[#ddaaFF] border-b font-satoshi-bold p-3  ${activeTab === 6 ? 'bg-gray-200 dark:bg-black-100 border-b-[#ddaaFF]' : 'border-b-transparent'} hover:border-b hover:border-b-[#ddaaFF]`" @click="activeTab = 6" @keypress.enter="activeTab = 6">
             <div class="flex flex-row place-items-center gap-2">
                 <VueUiIcon name="clipboardBar" :size="18" :stroke="isDarkMode ? '#ddaaFF' : '#1A1A1A'"/>
                 Themes

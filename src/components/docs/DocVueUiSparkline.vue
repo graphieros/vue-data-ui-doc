@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ucSparkline from "../useCases/uc-sparkline.vue"
+import ThemesVueUiSparkline from "../themes/ThemesVueUiSparkline.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -287,7 +288,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-sparkline"/>
             <MakerLink to="VueUiSparkline"/>
         </div>
-        <Box showSlots showEmits showUseCases>
+        <Box showSlots showEmits showUseCases showThemes>
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">
@@ -533,6 +534,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparklineConfig</
 
             <template #tab5>
               <ucSparkline/>
+            </template>
+
+            <template #tab6>
+              <ThemesVueUiSparkline />
             </template>
         </Box>
     </div>

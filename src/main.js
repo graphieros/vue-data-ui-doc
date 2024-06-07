@@ -46,7 +46,8 @@ import {
     VueUiSparkgauge,
     VueDataUi,
     VueUiQuickChart,
-    VueUiStripPlot
+    VueUiStripPlot,
+    VueUiTreemap
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -97,5 +98,6 @@ app.component("VueUiSparkgauge", VueUiSparkgauge)
 app.component("VueDataUi", VueDataUi)
 app.component("VueUiQuickChart", VueUiQuickChart)
 app.component("VueUiStripPlot", VueUiStripPlot)
+app.component("VueUiTreemap", VueUiTreemap)
 
 app.mount('#app')

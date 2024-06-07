@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
+import ThemesVueUiGauge from "../themes/ThemesVueUiGauge.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -292,7 +293,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-gauge"/>
             <MakerLink to="VueUiGauge"/>
         </div>
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showThemes>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -511,6 +512,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiGaugeConfig</span
     &lt;/VueUiGauge&gt;
 </code>
 </pre> 
+            </template>
+
+            <template #tab6>
+                <ThemesVueUiGauge />
             </template>
         </Box>
     </div>

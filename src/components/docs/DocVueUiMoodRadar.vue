@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
+import ThemesVueUiMoodRadar from "../themes/ThemesVueUiMoodRadar.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -280,7 +281,7 @@ function fixChart() {
             <MakerLink to="VueUiMoodRadar"/>
         </div>
 
-        <Box showEmits showSlots>
+        <Box showEmits showSlots showThemes>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -530,6 +531,10 @@ const <span class="text-app-blue">config: VueUiMoodRadarConfig</span> = {
     &lt;/VueUiMoodRadar&gt;
 </code>
 </pre> 
+            </template>
+
+            <template #tab6>
+                <ThemesVueUiMoodRadar />
             </template>
         </Box>
     </div>
