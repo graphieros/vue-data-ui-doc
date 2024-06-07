@@ -18,6 +18,7 @@ type BoxProps = {
     showSlots?: boolean;
     showTooltip?: boolean;
     showUseCases?: boolean;
+    showThemes?: boolean;
     activeTab?: number;
 }
 
@@ -26,6 +27,7 @@ const props = withDefaults(defineProps<BoxProps>(), {
     showSlots: false,
     showtooltip: false,
     showUseCases: false,
+    showThemes: false,
     activeTab: 0
 })
 
@@ -72,6 +74,12 @@ const activeTab = ref(props.activeTab);
                 Use cases
             </div>
         </div>
+        <div tabindex="0" v-if="props.showUseCases" :class="`w-fit select-none cursor-pointer text-black dark:text-[#ddaaFF] border-b font-satoshi-bold p-3  ${activeTab === 6 ? 'bg-gray-200 dark:bg-black-100 border-b-[#ddaaFF]' : 'border-b-transparent'} hover:border-b hover:border-b-[#ddaaFF]`" @click="activeTab = 6" @keypress.enter="activeTab = 6">
+            <div class="flex flex-row place-items-center gap-2">
+                <VueUiIcon name="clipboardBar" :size="18" :stroke="isDarkMode ? '#ddaaFF' : '#1A1A1A'"/>
+                Themes
+            </div>
+        </div>
     </div>
 
         <div class="text-satoshi-bold text-app-green text-2xl mb-3">
@@ -99,6 +107,9 @@ const activeTab = ref(props.activeTab);
         </div>
         <div v-show="activeTab === 5">
             <slot name="tab5"/>
+        </div>
+        <div v-show="activeTab === 6">
+            <slot name="tab6"/>
         </div>
     </div>
 </template>

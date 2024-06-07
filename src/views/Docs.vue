@@ -29,7 +29,7 @@ import DocVueUiRelationCircle from "../components/docs/DocVueUiRelationCircle.vu
 import DocVueUiThermometer from "../components/docs/DocVueUiThermometer.vue";
 import DocVueUiSparkStackbar from "../components/docs/DocVueUiSparkStackbar.vue";
 import DocVueUiSparkHistogram from "../components/docs/DocVueUiSparkHistogram.vue";
-import DocVueUiRings from "../components/docs/DocVueUIRings.vue";
+import DocVueUiRings from "../components/docs/DocVueUiRings.vue";
 import DocVueUiWheel from "../components/docs/DocVueUiWheel.vue";
 import DocVueUiTiremarks from "../components/docs/DocVueUiTiremarks.vue";
 import DocVueUiDonutEvolution from "../components/docs/DocVueUiDonutEvolution.vue";

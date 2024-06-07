@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ucXy from "../useCases/uc-xy.vue";
+import ThemesVueUiXy from "../themes/ThemesVueUiXy.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -612,6 +613,7 @@ const shapeOptions = ref([
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use canvas</label>
             </div>
         </div> -->
+
         <div class="w-full mx-auto max-w-[500px] flex flex-col p-6 border border-app-blue rounded-md bg-[#5f8bee12]">
             <span class="dark:text-blue-300">
                 v2.1.52 : {{ translations.docs.comments.xy.individualScales[store.lang] }}
@@ -1184,6 +1186,10 @@ Target the following css class to apply custom styles:
 
             <template #tab5>
                 <uc-xy/>
+            </template>
+
+            <template #tab6>
+                <ThemesVueUiXy/>
             </template>
         </Box>
     </div>
