@@ -164,7 +164,10 @@ const config = ref({
                 animation: {
                     show: true,
                     animationFrames: 60
-                }
+                },
+                borderRadius: 4,
+                borderColor:"#e1e5e8",
+                borderWidth: 1
             },
             legend: {
                 show: true,
@@ -268,7 +271,10 @@ const darkModeConfig = ref({
                 animation: {
                     show: true,
                     animationFrames: 60
-                }
+                },
+                borderRadius: 4,
+                borderColor:"#3A3A3A",
+                borderWidth: 1
             },
             legend: {
                 show: true,
@@ -558,7 +564,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiRadarConfig</span
                 animation: {
                     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.animation.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.animation.show" @change="forceChartUpdate()">, (default: true)
                     animationFrames: <input v-if="isDarkMode" type="number" min="0" max="300" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.animation.animationFrames"><input v-else type="number" min="0" max="300" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.animation.animationFrames">, (default: 60)
-                }
+                },
+                borderRadius: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.chart.tooltip.borderRadius" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.chart.tooltip.borderRadius" @change="forceChartUpdate()">, (default: 4)
+                borderColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.tooltip.borderColor"><input v-else type="color" v-model="mutableConfig.style.chart.tooltip.borderColor">, (default: "#e1e5e8"),
+                borderWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.chart.tooltip.borderWidth" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.chart.tooltip.borderWidth" @change="forceChartUpdate()">, (default: 1)
             },
             legend: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.show" @change="forceChartUpdate()">, (default: true)

@@ -719,7 +719,10 @@ const config = ref({
       backgroundColor: "#F3F4F6",
       color: "#1A1A1A",
       fontSize: 14,
-      customFormat: null
+      customFormat: null,
+      borderRadius: 4,
+      borderColor:"#e1e5e8",
+      borderWidth: 1
     }
   },
   translations: {
@@ -839,7 +842,10 @@ const darkModeConfig = ref({
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
       fontSize: 14,
-      customFormat: null
+      customFormat: null,
+      borderRadius: 4,
+      borderColor:"#3A3A3A",
+      borderWidth: 1
     }
   },
   translations: {
@@ -1063,6 +1069,9 @@ const <span class="text-black dark:text-app-blue">config: VueUiAgePyramidConfig<
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.color"><input v-else type="color" v-model="mutableConfig.style.tooltip.color">, (default: "#2D353C")
       fontSize: <input v-if="isDarkMode" type="number" min="6" max="36" v-model="mutableConfigDarkMode.style.tooltip.fontSize"><input v-else type="number" min="6" max="36" v-model="mutableConfig.style.tooltip.fontSize">, (default: 14)
       customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
+      borderRadius: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.tooltip.borderRadius" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.tooltip.borderRadius" @change="forceChartUpdate()">, (default: 4)
+      borderColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.borderColor"><input v-else type="color" v-model="mutableConfig.style.tooltip.borderColor">, (default: "#e1e5e8"),
+      borderWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.tooltip.borderWidth" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.tooltip.borderWidth" @change="forceChartUpdate()">, (default: 1)
     }
   },
   translations: {

@@ -1,5 +1,96 @@
 [
   {
+    "version": "v 2.2.10",
+    "date": "2024-06-08",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Added tooltip border config options",
+        "link": "/docs#vue-ui-age-pyramid"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.9",
     "date": "2024-06-06",
     "updates": [

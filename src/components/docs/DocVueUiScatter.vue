@@ -201,7 +201,10 @@ const darkModeConfig = ref({
       customFormat: null,
       showShape: true,
       prefix: "",
-      suffix: ""
+      suffix: "",
+      borderRadius: 4,
+      borderColor:"#3A3A3A",
+      borderWidth: 1
     }
   },
   userOptions: {
@@ -372,7 +375,10 @@ const config = ref({
       customFormat: null,
       showShape: true,
       prefix: "",
-      suffix: ""
+      suffix: "",
+      borderRadius: 4,
+      borderColor:"#e1e5e8",
+      borderWidth: 1
     }
   },
   userOptions: {
@@ -700,6 +706,9 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
       prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.tooltip.prefix"><input v-else type="text" v-model="mutableConfig.style.tooltip.prefix">, (default: "")
       suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.tooltip.suffix"><input v-else type="text" v-model="mutableConfig.style.tooltip.suffix">, (default: "")
       customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
+      borderRadius: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.tooltip.borderRadius" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.tooltip.borderRadius" @change="forceChartUpdate()">, (default: 4)
+      borderColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.borderColor"><input v-else type="color" v-model="mutableConfig.style.tooltip.borderColor">, (default: "#e1e5e8"),
+      borderWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.tooltip.borderWidth" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.tooltip.borderWidth" @change="forceChartUpdate()">, (default: 1)
     }
   },
   userOptions: {

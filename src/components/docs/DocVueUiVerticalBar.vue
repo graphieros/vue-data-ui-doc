@@ -168,7 +168,10 @@ const config = ref({
         roundingPercentage: 0,
         prefix: "",
         suffix: "",
-        customFormat: null
+        customFormat: null,
+        borderRadius: 4,
+        borderColor:"#e1e5e8",
+        borderWidth: 1
       }
     }
   },
@@ -305,7 +308,10 @@ const darkModeConfig = ref({
         roundingPercentage: 0,
         prefix: "",
         suffix: "",
-        customFormat: null
+        customFormat: null,
+        borderRadius: 4,
+        borderColor:"#3A3A3A",
+        borderWidth: 1
       }
     }
   },
@@ -602,6 +608,9 @@ const <span class="text-app-blue">config: VueUiVerticalBarConfig</span> = {
                 prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.tooltip.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.tooltip.prefix">, (default: "")
                 suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.tooltip.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.tooltip.suffix">, (default: "")
                 customFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
+                borderRadius: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.chart.tooltip.borderRadius" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.chart.tooltip.borderRadius" @change="forceChartUpdate()">, (default: 4)
+                borderColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.tooltip.borderColor"><input v-else type="color" v-model="mutableConfig.style.chart.tooltip.borderColor">, (default: "#e1e5e8"),
+                borderWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.chart.tooltip.borderWidth" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.chart.tooltip.borderWidth" @change="forceChartUpdate()">, (default: 1)
             }
         }
     },

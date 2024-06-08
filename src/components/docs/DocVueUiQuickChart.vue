@@ -131,6 +131,9 @@ const config = ref({
     titleFontSize: 16,
     titleTextAlign: "center",
     tooltipCustomFormat: null,
+    tooltipBorderRadius: 4,
+    tooltipBorderColor: '#e1e5e8',
+    tooltipBorderWidth: 1,
     useCustomLegend: false,
     valuePrefix: "",
     valueSuffix: "",
@@ -199,6 +202,9 @@ const darkModeConfig = ref({
     titleFontSize: 16,
     titleTextAlign: "center",
     tooltipCustomFormat: null,
+    tooltipBorderRadius: 4,
+    tooltipBorderColor: '#3A3A3A',
+    tooltipBorderWidth: 1,
     useCustomLegend: false,
     valuePrefix: "",
     valueSuffix: "",
@@ -621,6 +627,9 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     titleFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.titleFontSize"><input v-else type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.titleFontSize">, (default: 16)
     titleTextAlign: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.titleTextAlign"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.titleTextAlign"><option>left</option><option>center</option><option>right</option></select>,
     tooltipCustomFormat: null, // default behavior. To customize content, see 'custom tooltip' tab
+    tooltipBorderRadius: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.tooltipBorderRadius" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.tooltipBorderRadius" @change="forceChartUpdate()">, (default: 4)
+    tooltipBorderColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.tooltipBorderColor"><input v-else type="color" v-model="mutableConfig.tooltipBorderColor">, (default: "#e1e5e8"),
+    tooltipBorderWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.tooltipBorderWidth" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.tooltipBorderWidth" @change="forceChartUpdate()">, (default: 1)
     useCustomLegend: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCustomLegend" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCustomLegend" @change="forceChartUpdate()">, (default: false) // Use #legend slot to make a custom legend
     valuePrefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.valuePrefix"><input v-else type="text" v-model="mutableConfig.valuePrefix">, (default: "")
     valueSuffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.valueSuffix"><input v-else type="text" v-model="mutableConfig.valueSuffix">, (default: "")
