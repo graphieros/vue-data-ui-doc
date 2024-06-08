@@ -242,8 +242,7 @@ const darkModeConfig = ref({
     }
   },
   userOptions: {
-    show: true,
-    title: "options",
+    show: true
   },
   table: {
     show: false,

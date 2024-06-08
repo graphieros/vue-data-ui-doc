@@ -160,13 +160,7 @@ const darkModeConfig = ref({
         }
     },
     userOptions: {
-        show: true,
-        title: "options",
-        labels: {
-            dataLabels: "Show datalabels",
-            useDiv: "Title & legend inside",
-            showTable: "Show table"
-        }
+        show: true
     },
     translations: {
         total: "Total",
@@ -310,13 +304,7 @@ const config = ref({
         }
     },
     userOptions: {
-        show: true,
-        title: "options",
-        labels: {
-            dataLabels: "Show datalabels",
-            useDiv: "Title & legend inside",
-            showTable: "Show table"
-        }
+        show: true
     },
     translations: {
         total: "Total",

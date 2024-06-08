@@ -246,13 +246,7 @@ const config = ref({
         }
     },
     userOptions: {
-        show: true,
-        title: "options",
-        labels: {
-            useDiv: "Title & legend inside",
-            showTable: "Show table",
-            showPlotLabels: "Show plot labels"
-        }
+        show: true
     },
     translations: {
         category: "Category",
@@ -404,13 +398,7 @@ const darkModeConfig = ref({
         }
     },
     userOptions: {
-        show: true,
-        title: "options",
-        labels: {
-            useDiv: "Title & legend inside",
-            showTable: "Show table",
-            showPlotLabels: "Show plot labels"
-        }
+        show: true
     },
     translations: {
         category: "Category",
@@ -766,12 +754,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiQuadrantConfig</s
     },
     userOptions: {
         show: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
-        title: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.title"><input v-else type="text" v-model="mutableConfig.userOptions.title">, (default: "options")
-        labels: {
-            showPlotLabels: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.labels.showPlotLabels"><input v-else type="text" v-model="mutableConfig.userOptions.labels.showPlotLabels">, (default: "Show plot labels"),
-            useDiv: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.labels.useDiv"><input v-else type="text" v-model="mutableConfig.userOptions.labels.useDiv">, (default: "Title & legend inside"),
-            showTable: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.labels.showTable"><input v-else type="text" v-model="mutableConfig.userOptions.labels.showTable">, (default: "Show table"),
-        }
     },
     translations: {
         category: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.category"><input v-else type="text" v-model="mutableConfig.translations.category">, (default: "Category"),

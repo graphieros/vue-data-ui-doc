@@ -210,14 +210,7 @@ const config = ref({
             borderWidth: 1
         },
         userOptions: {
-            show: true,
-            title:"options",
-            labels: {
-                dataLabels: "Show datalabels",
-                titleInside: "Title inside",
-                legendInside: "Legend inside",
-                showTable: "Show table"
-            }
+            show: true
         },
     },
     bar: {
@@ -419,14 +412,7 @@ const darkModeConfig = ref({
             borderWidth: 1
         },
         userOptions: {
-            show: true,
-            title:"options",
-            labels: {
-                dataLabels: "Show datalabels",
-                titleInside: "Title inside",
-                legendInside: "Legend inside",
-                showTable: "Show table"
-            }
+            show: true
         },
     },
     bar: {
@@ -904,13 +890,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
             },
             userOptions: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.show">, (default: true)
-                title: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.title"><input v-else type="text" v-model="mutableConfig.chart.userOptions.title">, (default: "options")
-                labels: {
-                    dataLabels: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.labels.dataLabels"><input v-else type="text" v-model="mutableConfig.chart.userOptions.labels.dataLabels">, (default: "Show datalabels")
-                    titleInside: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.labels.titleInside"><input v-else type="text" v-model="mutableConfig.chart.userOptions.labels.titleInside">, (default: "Title inside")
-                    legendInside: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.labels.legendInside"><input v-else type="text" v-model="mutableConfig.chart.userOptions.labels.legendInside">, (default: "Legend inside")
-                    showTable: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.labels.showTable"><input v-else type="text" v-model="mutableConfig.chart.userOptions.labels.showTable">, (default: "Show table")
-                },
             },
         },
         <span class="text-gray-600 dark:text-app-green">// use the following for the config of a specific chart type:</span>

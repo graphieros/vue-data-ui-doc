@@ -90,11 +90,7 @@ const config = ref({
     }
   },
   userOptions: {
-    show: true,
-    title: "options",
-    labels: {
-      useDiv: "Title inside"
-    }
+    show: true
   }
 });
 
@@ -154,11 +150,7 @@ const darkModeConfig = ref({
     }
   },
   userOptions: {
-    show: true,
-    title: "options",
-    labels: {
-      useDiv: "Title inside"
-    }
+    show: true
   }
 });
 
@@ -336,10 +328,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiThermometerConfig
     },
     userOptions: {
         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
-        title: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.title"><input v-else type="text" v-model="mutableConfig.userOptions.title">, (default: "options")
-        labels: {
-            useDiv: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.labels.useDiv"><input v-else type="text" v-model="mutableConfig.userOptions.labels.useDiv">, (default: "Title inside")
-        }
     }
 }
 </code>

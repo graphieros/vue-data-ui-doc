@@ -115,11 +115,7 @@ const config = ref({
     }
   },
   userOptions: {
-    show: true,
-    title: "options",
-    labels: {
-      showTable: "Show table"
-    }
+    show: true
   },
   table: {
     show: false,
@@ -208,11 +204,7 @@ const darkModeConfig = ref({
     }
   },
   userOptions: {
-    show: true,
-    title: "options",
-    labels: {
-      showTable: "Show table"
-    }
+    show: true
   },
   table: {
     show: false,
@@ -442,10 +434,6 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRingsDatasetIte
   },
   userOptions: {
     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
-    title: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.title"><input v-else type="text" v-model="mutableConfig.userOptions.title">, (default: "options")
-    labels: {
-        showTable: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.labels.showTable"><input v-else type="text" v-model="mutableConfig.userOptions.labels.showTable">, (default: "Show table")
-    }
   },
   table: {
     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.show" @change="forceChartUpdate()">, (default: false)

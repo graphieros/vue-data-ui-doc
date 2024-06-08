@@ -123,12 +123,7 @@ const isDarkMode = computed(() => {
             }
         },
         userOptions: {
-            show: true,
-            title: "options",
-            labels: {
-                useDiv: "Title & legend inside",
-                showTable: "Show table"
-            }
+            show: true
         },
         table: {
             show: false,
@@ -235,12 +230,7 @@ const isDarkMode = computed(() => {
             }
         },
         userOptions: {
-            show: true,
-            title: "options",
-            labels: {
-                useDiv: "Title & legend inside",
-                showTable: "Show table"
-            }
+            show: true
         },
         table: {
             show: false,

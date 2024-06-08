@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.2.11",
+    "date": "2024-06-08",
+    "updates": [
+      {
+        "component": "",
+        "description": "Optimized bundle size"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.10",
     "date": "2024-06-08",
     "updates": [
