@@ -59,6 +59,7 @@ import DocVueUiCursor from "../components/docs/DocVueUiCursor.vue";
 import DocVueUiSparkTrend from "../components/docs/DocVueUiSparkTrend.vue";
 import DocVueUiStripPlot from "../components/docs/DocVueUiStripPlot.vue";
 import DocVueUiDumbbell from "../components/docs/DocVueUiDumbbell.vue";
+import DocsVueUiWordCloud from "../components/docs/DocsVueUiWordCloud.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -693,6 +694,18 @@ const menuItems = computed(() => [
         hasTableCss: true,
         hasLegend: true
     },
+    {
+        name: "WordCloud",
+        icon: "chartWordCloud",
+        tooltip: translations.value.docs.tooltips.wordCloud[store.lang],
+        link: "/docs#vue-ui-word-cloud",
+        type: "classic",
+        thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: false
+    },
 ])
 
 const currentShowcase = ref('VueUiXy')
@@ -777,6 +790,7 @@ onMounted(playShowcase)
             <DocVueUiSparkTrend v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-spark-trend'" />
             <DocVueUiStripPlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-strip-plot'" />
             <DocVueUiDumbbell v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-dumbbell'" />
+            <DocsVueUiWordCloud v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-word-cloud'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

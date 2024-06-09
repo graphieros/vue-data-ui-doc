@@ -23,6 +23,18 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                wordCloud: {
+                    dataset: {
+                        en: "You can pass plain text into the dataset prop. The component will compute the word counts. You can also import the method 'createWordCloudDatasetFromPlainText' from 'vue-data-ui' to convert plain text into a dataset object to pass to the 'dataset' prop.",
+                        fr: "Vous pouvez transmettre du texte brut dans le prop de l'ensemble de données. Le composant calculera le nombre de mots. Vous pouvez également importer la méthode « createWordCloudDatasetFromPlainText » depuis « vue-data-ui » pour convertir le texte brut en un objet d'ensemble de données à transmettre à l'accessoire « dataset ».",
+                        pt: "Você pode passar texto simples para o conjunto de dados. O componente calculará a contagem de palavras. Você também pode importar o método 'createWordCloudDatasetFromPlainText' de 'vue-data-ui' para converter texto simples em um objeto de conjunto de dados para passar para a propriedade 'dataset'.",
+                        de: "Sie können einfachen Text an die Dataset-Requisite übergeben. Die Komponente berechnet die Wortanzahl. Sie können auch die Methode „createWordCloudDatasetFromPlainText“ aus „vue-data-ui“ importieren, um einfachen Text in ein Datensatzobjekt umzuwandeln und ihn an die Requisite „dataset“ zu übergeben.",
+                        zh: "您可以将纯文本传递到 dataset 属性中。该组件将计算字数。您还可以从“vue-data-ui”导入方法“createWordCloudDatasetFromPlainText”，将纯文本转换为数据集对象以传递给“dataset”属性。",
+                        jp: "プレーンテキストをデータセットプロップに渡すことができます。コンポーネントは単語数を計算します。また、「vue-data-ui」から「createWordCloudDatasetFromPlainText」メソッドをインポートして、プレーン テキストをデータセット オブジェクトに変換し、「dataset」プロパティに渡すこともできます。",
+                        es: "Puede pasar texto sin formato al dataset prop. El componente calculará el recuento de palabras. También puede importar el método 'createWordCloudDatasetFromPlainText' desde 'vue-data-ui' para convertir texto sin formato en un objeto de conjunto de datos para pasarlo a la prop 'dataset'.",
+                        ko: "데이터세트 소품에 일반 텍스트를 전달할 수 있습니다. 구성 요소는 단어 수를 계산합니다. 또한 'vue-data-ui'에서 'createWordCloudDatasetFromPlainText' 메소드를 가져와서 일반 텍스트를 데이터세트 객체로 변환하여 'dataset' prop에 전달할 수도 있습니다."
+                    }
+                },
                 sideMenu: {
                     miniCharts: {
                         en: "Mini charts",
@@ -914,6 +926,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        wordCloud: {
+                            en: "Visualize predominant data in word form and in a scale from largest to smallest.",
+                            fr: "Visualisez les données prédominantes sous forme de mots et sur une échelle allant du plus grand au plus petit.",
+                            pt: "Visualize os dados predominantes em formato de palavras e em uma escala do maior ao menor.",
+                            de: "Visualisieren Sie vorherrschende Daten in Wortform und in einer Skala vom größten zum kleinsten.",
+                            zh: "以文字形式并按从最大到最小的比例可视化主要数据。",
+                            jp: "主要なデータをワード形式で、最大から最小までのスケールで視覚化します。",
+                            es: "Visualice los datos predominantes en forma de palabras y en una escala de mayor a menor.",
+                            ko: "주요 데이터를 단어 형식으로 시각화하고 가장 큰 것부터 가장 작은 것까지의 규모로 시각화합니다."
+                        },
                         dumbbell: {
                             en: "Visualize changes between two points in time for many datapoints.",
                             fr: "Visualisez les changements entre deux points dans le temps pour de nombreux points de données",

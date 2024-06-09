@@ -48,7 +48,7 @@ const darkModeConfig = ref({
 </script>
 
 <template>
-    <VueDataUi component="VueUiAccordion" :config="isDarkMode ? darkModeConfig : config" :key="key">
+    <VueDataUi component="VueUiAccordion" :config="isDarkMode ? darkModeConfig : config">
         <template #title="{color}">
             <div :style="`color:${color}`">{{ title }}</div>
         </template>

@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.14",
+    "date": "2024-06-09",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.11",
     "date": "2024-06-08",
     "updates": [

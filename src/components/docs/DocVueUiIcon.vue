@@ -74,6 +74,7 @@ const specialIcons = ref([
     "chartVerticalBar",
     "chartWaffle",
     "chartWheel",
+    "chartWordCloud",
     "circle",
     "circleCancel",
     "circleCheck",
