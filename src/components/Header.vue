@@ -20,7 +20,13 @@ function useMenu() {
 }
 
 const lastVersion = computed(() => {
-    console.log(releases[0].version)
+    console.log(`
+               _                   ___ 
+ \\  /     _   | \\  _. _|_  _.  | |  |  
+  \\/ |_| (/_  |_/ (_|  |_ (_|  |_| _|_ 
+
+   ${releases[0].version}
+    `)
     return releases[0].version.replace('v', '').split('').slice(1)
 })
 
