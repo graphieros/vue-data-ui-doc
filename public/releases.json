@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.16",
+    "date": "2024-06-10",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Added optional callback parameter to createWordCloudDatasetFromPlainText function to format text output",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.15",
     "date": "2024-06-09",
     "updates": [
