@@ -29,11 +29,11 @@ const isComputed = ref(false);
     </template>
     <template v-if="isComputed">
     const dataset = computed(() => {
-        return {{ dataset }}
+        return {{ typeof dataset === 'string' ? `"${dataset}"` : dataset }}
     })
     </template>
     <template v-else>
-    const dataset = ref({{ dataset }});
+    const dataset = ref({{ typeof dataset === 'string' ? `"${dataset}"` : dataset }});
     </template>
 &lt;/script&gt;
 

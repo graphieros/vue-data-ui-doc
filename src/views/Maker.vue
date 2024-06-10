@@ -32,6 +32,7 @@ import MakerSparkgauge from "../components/maker/MakerSparkgauge.vue";
 import MakerGalaxy from "../components/maker/MakerGalaxy.vue";
 import MakerKpi from "../components/maker/MakerKpi.vue";
 import MakerStripPlot from "../components/maker/MakerStripPlot.vue";
+import MakerVueUiWordCloud from "../components/maker/MakerVueUiWordCloud.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 
 const store = useMainStore();
@@ -80,6 +81,7 @@ const options = ref([
     { name: "VueUiNestedDonuts", icon: "chartNestedDonuts", thumb: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href},
     { name: "VueUiSparkgauge", icon: "chartGauge", thumb: new URL('../assets/thumb_sparkgauge_light.png', import.meta.url).href},
     { name: "VueUiGalaxy", icon: "chartGalaxy", thumb: new URL('../assets/thumb_galaxy_light.png', import.meta.url).href},
+    { name: "VueUiWordCloud", icon: "chartWordCloud", thumb: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href},
     { name: "VueUiKpi", icon: "legend", thumb: ""},
 ])
 
@@ -199,5 +201,6 @@ function selectChart(opt) {
         <MakerGalaxy v-if="selectedChart.name === 'VueUiGalaxy'" />
         <MakerKpi v-if="selectedChart.name === 'VueUiKpi'" />
         <MakerStripPlot v-if="selectedChart.name === 'VueUiStripPlot'" />
+        <MakerVueUiWordCloud v-if="selectedChart.name === 'VueUiWordCloud'" />
     </div>
 </template>

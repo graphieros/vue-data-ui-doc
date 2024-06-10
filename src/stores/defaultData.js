@@ -2540,6 +2540,48 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_spark_trend: {
                 dataset: [1, 2, 3, 5, 8, 13, 21, 34, 55, 89],
                 model: []
+            },
+            vue_ui_word_cloud: {
+                dataset: "Curabitur rhoncus tortor vel quam tempor, non placerat metus aliquet. Morbi malesuada id ex a pellentesque. Nam consectetur molestie mauris vitae volutpat. Aliquam efficitur ac nulla efficitur cursus. Nullam accumsan nisi et purus vehicula efficitur. Integer rutrum leo urna, et dictum magna iaculis et. Proin eget velit eget urna volutpat gravida. Nulla suscipit gravida tempus. Phasellus sodales, neque vel lacinia euismod, tortor nunc condimentum ipsum, sit amet ornare dui neque non ex. In quis viverra tortor, a elementum ex. Donec vitae diam purus. Cras mollis neque vel leo congue, at sagittis lorem eleifend. Sed porta nulla nisl, in hendrerit ipsum egestas vitae. Phasellus et dolor convallis lectus varius tincidunt eu vel mauris. Praesent iaculis vestibulum arcu, eu dictum lectus feugiat a.",
+                model: [
+                    { key: "useCssAnimation", def: true, type: 'checkbox', label: "useCssAnimation", category: "general"},
+                    { key: "theme", def: '', type: "select", options: ['', 'zen', 'hack', 'concrete'], label: "theme", category: "general"},
+                    { key: 'animationDelayMs', def: 20, type: 'number', min: 0, max: 100, label: ['animation', 'is', 'delay'], category: 'general'},
+                    { key: 'userOptions.show', def: true, type: "checkbox", label: "showUserOptions", category: 'general'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+                    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'color', category: 'general'},
+                    { key: 'style.chart.height', def: 300, type: 'number', min: 300, max: 1000, label: 'height', category: 'general'},
+                    { key: 'style.chart.width', def: 512, type: 'number', min: 300, max: 1000, label: 'width', category: 'general'},
+                    { key: 'style.chart.words.maxFontSize', def: 100, type: 'number', min: 50, max: 500, label: ['words', 'is', 'max', 'fontSize'], category: 'general'},
+                    { key: 'style.chart.words.minFontSize', def: 10, type: 'number', min: 10, max: 200, label: ['words', 'is', 'min', 'fontSize'], category: 'general'},
+                    { key: 'style.chart.words.bold', def: false, type: 'checkbox', label: ['words', 'is', 'bold'], category: 'general'},
+                    { key: 'style.chart.words.proximity', def: 10, type: 'number', min: 1, max: 100, label: ['words', 'is', 'proximity'], category: 'general'},
+                    { key: 'style.chart.words.packingWeight', def: 1, type: 'number', min: 1, max: 50, label: ['words', 'is', 'packing force'], category: 'general'},
+                    { key: 'style.chart.words.color', def: '#1A1A1A', type: 'color', label: ['words', 'is', 'default', 'textColor'], category: 'general'},
+                    { key: 'style.chart.words.usePalette', def: true, type: 'checkbox', label: ['words', 'is', 'use color palette'], category: 'general'},
+                    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
+                    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+                    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 8, max: 48, label: 'fontSize', category: 'title'},
+                    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.chart.title.subtitle.text', def: 'Subtitle', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.color', def: '#CCCCCC', type: 'color', label: 'textColor', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 8, max: 48, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
+                    { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
+                    { key: 'table.responsiveBreakpoint', def: 300, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
+                    { key: 'table.columnNames.series', def: 'Word', type: 'text', label: ['columnName', 'is', 'series'], category: 'table' },
+                    { key: 'table.columnNames.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table' },
+                    { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table' },
+                    { key: 'table.th.color', def: '#1A1A1A', type: 'color', label: 'textColorHeader', category: 'table' },
+                    { key: 'table.th.outline', def: 'none', type: 'text', label: 'outlineHeader', category: 'table' },
+                    { key: 'table.td.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorRow', category: 'table' },
+                    { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', category: 'table' },
+                    { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table' },
+                    { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'table' },
+                    { key: 'table.td.prefix', def: "", type: 'text', label: 'prefix', category: 'table'},
+                    { key: 'table.td.suffix', def: "", type: 'text', label: 'suffix', category: 'table'},
+                ]
             }
         }
     }

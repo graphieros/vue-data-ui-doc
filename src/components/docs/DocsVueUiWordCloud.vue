@@ -5,6 +5,7 @@ import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
+import MakerLink from "../MakerLink.vue"
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
 // import ThemesVueUiWordCloud from "../themes/ThemesVueUiWordCloud.vue";
 
@@ -236,6 +237,7 @@ function fixChart() {
                 <CopyIcon /> {{ translations.docs.copyDefaultConfig[store.lang] }}
             </button>
             <GitHubLink link="vue-ui-word-cloud" />
+            <MakerLink to="VueUiWordCloud"/>
         </div>
 
         <Box showSlots showEmits>
