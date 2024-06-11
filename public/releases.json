@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.2.17",
+    "date": "2024-06-11",
+    "updates": [
+      {
+        "component": "",
+        "description": "Removed legacy useDiv config attribute"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.16",
     "date": "2024-06-10",
     "updates": [

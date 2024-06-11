@@ -640,7 +640,6 @@ const config = ref({
     height: 500,
     width: 500,
     layout: {
-      useDiv: true,
       padding: {
         top: 36,
         right: 12,
@@ -758,7 +757,6 @@ const darkModeConfig = ref({
     height: 500,
     width: 500,
     layout: {
-      useDiv: true,
       padding: {
         top: 36,
         right: 12,
@@ -979,7 +977,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiAgePyramidConfig<
     height: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="300" max="1000" v-model="mutableConfigDarkMode.style.height"><input v-else type="range" class="accent-app-blue" min="300" max="1000" v-model="mutableConfig.style.height">, (default: 500)
     width: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="300" max="1000" v-model="mutableConfigDarkMode.style.width"><input v-else type="range" class="accent-app-blue" min="300" max="1000" v-model="mutableConfig.style.width">, (default: 500)
     layout: {
-      useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.useDiv" @change="forceChartUpdate()">, (default: true)
       padding: {
         top: 36,
         right: 12,

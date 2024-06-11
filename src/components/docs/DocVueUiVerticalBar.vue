@@ -78,7 +78,6 @@ const config = ref({
       backgroundColor: "#F3F4F6",
       color: "#1A1A1A",
       layout: {
-        useDiv: true,
         bars: {
           sort: "desc",
           useStroke: false,
@@ -212,7 +211,6 @@ const darkModeConfig = ref({
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
       layout: {
-        useDiv: true,
         bars: {
           sort: "desc",
           useStroke: false,
@@ -506,7 +504,6 @@ const <span class="text-app-blue">config: VueUiVerticalBarConfig</span> = {
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">,  (default: "#FFFFFF")
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
             layout: {
-                useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: true)
                 bars: {
                     sort: "desc", <span class="text-gray-600 dark:text-app-green">// "desc" | "asc"</span>
                     useStroke: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.bars.useStroke" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.bars.useStroke" @change="forceChartUpdate()">, (default: false)

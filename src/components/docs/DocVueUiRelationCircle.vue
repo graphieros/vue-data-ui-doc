@@ -143,7 +143,6 @@ const config = ref({
       color: "#2D353C",
     },
     title: {
-      useDiv: true,
       text: "Title",
       color: "#2D353C",
       fontSize: 20,
@@ -188,7 +187,6 @@ const darkModeConfig = ref({
       color: "#FAFAFA",
     },
     title: {
-      useDiv: true,
       text: "Title",
       color: "#FAFAFA",
       fontSize: 20,
@@ -464,7 +462,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiRelationCircleCon
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.plot.color"><input v-else type="color" v-model="mutableConfig.style.plot.color">, (default: "#2D353C")
         },
         title: {
-            useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.useDiv" @change="forceChartUpdate()">, (default: true)
             text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.text"><input v-else type="text" v-model="mutableConfig.style.title.text">, (default: "")
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.color"><input v-else type="color" v-model="mutableConfig.style.title.color">, (default: "#2D353C")
             fontSize: fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.title.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.title.fontSize">, (default: 20)

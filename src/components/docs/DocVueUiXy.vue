@@ -181,7 +181,6 @@ const config = ref({
         legend: {
             show: true,
             color: "#1A1A1A",
-            useDiv: true,
             fontSize: 16
         },
         title: {
@@ -383,7 +382,6 @@ const darkModeConfig = ref({
         legend: {
             show: true,
             color: "#c8c8c8",
-            useDiv: true,
             fontSize: 16
         },
         title: {
@@ -860,7 +858,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.legend.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.legend.show">, (default: true),
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.legend.color"><input v-else type="color" v-model="mutableConfig.chart.legend.color">, (default: "#2D353C"),
                 fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.legend.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.legend.fontSize">, (default: 16)
-                useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.legend.useDiv"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.legend.useDiv">, (default: true),
             },
             title: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.title.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.title.show">, (default: true)

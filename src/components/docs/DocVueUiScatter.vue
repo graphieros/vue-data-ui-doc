@@ -71,7 +71,6 @@ const darkModeConfig = ref({
     color: "#CCCCCC",
     fontFamily: "inherit",
     layout: {
-      useDiv: true,
       height: 316,
       width: 512,
       padding: {
@@ -240,7 +239,6 @@ const config = ref({
     color: "#1A1A1A",
     fontFamily: "inherit",
     layout: {
-      useDiv: true,
       height: 316,
       width: 512,
       padding: {
@@ -566,7 +564,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</sp
     color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.color"><input v-else type="color" v-model="mutableConfig.style.color">, (default: "#2D353C")
     fontFamily: "inherit",
     layout: {
-      useDiv: true,
       height: <input v-if="isDarkMode" type="range" min="200" max="1000" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.height"><input v-else type="range" min="200" max="1000" class="accent-app-blue" v-model="mutableConfig.style.layout.height">, (default: 316)
       width: <input v-if="isDarkMode" type="range" min="200" max="1000" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.width"><input v-else type="range" min="200" max="1000" class="accent-app-blue" v-model="mutableConfig.style.layout.width">, (default: 512)
       padding: {

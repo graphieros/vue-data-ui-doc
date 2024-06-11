@@ -83,7 +83,6 @@ const isDarkMode = computed(() => {
                         useGradient: true,
                         gradientIntensity: 40,
                     },
-                    useDiv: true,
                 },
                 title: {
                     text: "Title",
@@ -190,7 +189,6 @@ const isDarkMode = computed(() => {
                         useGradient: true,
                         gradientIntensity: 20,
                     },
-                    useDiv: true,
                 },
                 title: {
                     text: "Title",

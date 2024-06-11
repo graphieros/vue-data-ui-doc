@@ -74,7 +74,6 @@ const config = ref({
                 acceleration: 1,
             },
             layout: {
-                useDiv: false,
                 track: {
                     size: 1,
                     useGradient: true,
@@ -148,7 +147,6 @@ const darkModeConfig = ref({
                 acceleration: 1,
             },
             layout: {
-                useDiv: false,
                 track: {
                     size: 1,
                     useGradient: true,
@@ -389,7 +387,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiGaugeConfig</span
                 acceleration: 1,
             },
             layout: {
-                useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: false)
                 track: {
                     size: <input v-if="isDarkMode" type="number" min="0.5" max="2" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.track.size"><input v-else type="number" min="0.5" max="2" step="0.1" v-model="mutableConfig.style.chart.layout.track.size">, (default: 1)
                     useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.track.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.track.useGradient" @change="forceChartUpdate()">, (default: true)

@@ -114,7 +114,6 @@ const config = ref({
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
             layout: {
-                useDiv: true,
                 labels: {
                     quadrantLabels: {
                         show: true,
@@ -266,7 +265,6 @@ const darkModeConfig = ref({
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
             layout: {
-                useDiv: true,
                 labels: {
                     quadrantLabels: {
                         show: true,
@@ -621,7 +619,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiQuadrantConfig</s
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
             layout: {
-                useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: true) <span class="text-gray-600 dark:text-app-blue">// {{ translations.docs.comments.donut.layoutTitle[store.lang] }}</span>
                 labels: {
                     quadrantLabels: {
                         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.quadrantLabels.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.quadrantLabels.show" @change="forceChartUpdate()">, (default: true)

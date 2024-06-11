@@ -111,7 +111,6 @@ const config = ref({
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
             layout: {
-                useDiv: true,
                 plots: {
                     show: true,
                     radius: 2,
@@ -213,7 +212,6 @@ const darkModeConfig = ref({
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
             layout: {
-                useDiv: true,
                 plots: {
                     show: true,
                     radius: 2,
@@ -499,7 +497,6 @@ const <span class="text-black dark:text-app-blue">config: VueUiRadarConfig</span
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")
             layout: {
-                useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: true) <span class="text-gray-600 dark:text-app-blue">// {{ translations.docs.comments.donut.layoutTitle[store.lang] }}</span>
                 plots: {
                     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.plots.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.plots.show" @change="forceChartUpdate()">, (default: true),
                     radius: <input v-if="isDarkMode" type="number" min="0" max="20" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.plots.radius"><input v-else type="number" min="0" max="20" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.plots.radius">, (default: 2)

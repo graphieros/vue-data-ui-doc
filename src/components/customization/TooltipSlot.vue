@@ -57,7 +57,6 @@ const darkModeConfig = ref({
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
             layout: {
-                useDiv: false,
                 labels: {
                     dataLabels: {
                         show: true,
@@ -155,13 +154,7 @@ const darkModeConfig = ref({
         }
     },
     userOptions: {
-        show: false,
-        title: "options",
-        labels: {
-            dataLabels: "Show datalabels",
-            useDiv: "Title & legend inside",
-            showTable: "Show table"
-        }
+        show: false
     },
     translations: {
         total: "Total",
@@ -201,7 +194,6 @@ const config = ref({
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
             layout: {
-                useDiv: false,
                 labels: {
                     dataLabels: {
                         show: true,
@@ -300,13 +292,7 @@ const config = ref({
         }
     },
     userOptions: {
-        show: false,
-        title: "options",
-        labels: {
-            dataLabels: "Show datalabels",
-            useDiv: "Title & legend inside",
-            showTable: "Show table"
-        }
+        show: false
     },
     translations: {
         total: "Total",

@@ -118,7 +118,6 @@ const heatmapConfig = computed(() => {
     color: "#2D353C",
     fontFamily: "inherit",
     layout: {
-      useDiv: true,
       padding: {
         top: 36,
         right: 12,
@@ -204,7 +203,6 @@ const sparklineReleasesConfig = computed(() => {
     color: "#2D353C",
     fontFamily: "inherit",
     layout: {
-      useDiv: true,
       padding: {
         top: 36,
         right: 12,
@@ -587,7 +585,6 @@ const config = computed(() => {
             legend: {
                 show: true,
                 color: "#c8c8c8",
-                useDiv: true,
                 fontSize: 16
             },
             title: {
@@ -707,7 +704,6 @@ const verticalConfig = ref({
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
       layout: {
-        useDiv: true,
         bars: {
           useStroke: false,
           strokeWidth: 2,
@@ -799,12 +795,7 @@ const verticalConfig = ref({
     }
   },
   userOptions: {
-    show: true,
-    title: "options",
-    labels: {
-      useDiv: "Title & legend inside",
-      showTable: "Show table"
-    }
+    show: true
   },
   table: {
     show: false,

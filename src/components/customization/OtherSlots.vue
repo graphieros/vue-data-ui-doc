@@ -68,7 +68,6 @@ const waffleConfig = computed(() => {
                         useGradient: true,
                         gradientIntensity: 40
                     },
-                    useDiv: true
                 },
                 title: {
                     text: "Attendies satisfaction",
@@ -105,12 +104,7 @@ const waffleConfig = computed(() => {
             }
         },
         userOptions: {
-            show: true,
-            title: "options",
-            labels: {
-                useDiv: "Title & legend inside",
-                showTable: "Show table"
-            }
+            show: true
         },
         table: {
             show: false,

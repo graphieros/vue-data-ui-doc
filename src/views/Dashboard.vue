@@ -696,7 +696,6 @@ const charts = computed(() => {
                     color: "#2D353C",
                     fontFamily: "inherit",
                     layout: {
-                        useDiv: true,
                         padding: {
                             top: 36,
                             right: 12,

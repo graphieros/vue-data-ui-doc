@@ -111,7 +111,6 @@ const config = ref({
             useGradient: true,
             gradientIntensity: 20,
             layout: {
-                useDiv: false,
                 gutter: {
                     color: "#D1D1D1",
                     width: 0.62,
@@ -207,7 +206,6 @@ const darkModeConfig = ref({
             useGradient: true,
             gradientIntensity: 20,
             layout: {
-                useDiv: false,
                 gutter: {
                     color: "#3A3A3A",
                     width: 0.62,
@@ -449,7 +447,6 @@ const <span class="text-app-blue">config: VueUiOnionConfig</span> = {
             useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.useGradient" @change="forceChartUpdate()">, (default: true)
             gradientIntensity: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="10" max="30" v-model="mutableConfigDarkMode.style.chart.gradientIntensity"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.chart.gradientIntensity">, (default: 20)
             layout: {
-                useDiv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.useDiv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.useDiv" @change="forceChartUpdate()">, (default: true)
                 gutter: {
                     color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.gutter.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.gutter.color">, (default: "#e1e5e8")
                     width: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="1" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.gutter.width"><input v-else type="range" class="accent-app-blue" min="0" max="1" step="0.1" v-model="mutableConfig.style.chart.layout.gutter.width">, (default: 0.62)

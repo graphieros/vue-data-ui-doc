@@ -74,7 +74,6 @@ export const xyConfig = {
         legend: {
             show: true,
             color: "#1A1A1A",
-            useDiv: false,
             fontSize: 16
         },
         title: {
@@ -83,7 +82,6 @@ export const xyConfig = {
            color: "#1A1A1A",
            fontSize: 20,
            bold: true,
-           useDiv: false,
            subtitle: {
             fontSize: 16,
             color: "#565656",
@@ -183,7 +181,6 @@ export const donutConfig = {
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
             layout: {
-                useDiv: true,
                 labels: {
                     dataLabels: {
                         show: true,
@@ -274,13 +271,7 @@ export const donutConfig = {
         }
     },
     userOptions: {
-        show: false,
-        title: "options",
-        labels: {
-            dataLabels: "Show datalabels",
-            useDiv: "Title & legend inside",
-            showTable: "Show table"
-        }
+        show: false
     },
     translations: {
         total: "Total",
@@ -341,7 +332,6 @@ export const waffleConfig = {
                     useGradient: true,
                     gradientIntensity: 20,
                 },
-                useDiv: false,
             },
             title: {
                 text: "Title",
@@ -377,12 +367,7 @@ export const waffleConfig = {
         }
     },
     userOptions: {
-        show: false,
-        title: "options",
-        labels: {
-            useDiv: "Title & legend inside",
-            showTable: "Show table"
-        }
+        show: false
     },
     table: {
         show: false,
@@ -487,7 +472,6 @@ export const radarConfig = {
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
             layout: {
-                useDiv: false,
                 plots: {
                     show: true,
                     radius: 2,
@@ -564,12 +548,7 @@ export const radarConfig = {
         }
     },
     userOptions: {
-        show: false,
-        title: "options",
-        labels: {
-            useDiv: "Title & legend inside",
-            showTable: "Show table"
-        }
+        show: false
     },
     translations: {
         target: "Target"

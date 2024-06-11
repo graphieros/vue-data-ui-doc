@@ -74,7 +74,6 @@ const config = computed(() => {
                     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                     fontFamily: "inherit",
                     layout: {
-                        useDiv: true,
                         padding: {
                             top: 36,
                             right: 12,
