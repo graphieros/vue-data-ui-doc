@@ -125,7 +125,7 @@ const selectedLanguage = computed({
 
 <template>
     <ChartMaker ref="chartMkr"/>
-    <header data-cy="app-header" class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-gray-700 transition-all">
+    <header data-cy="app-header" class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] transition-all">
         <div class="mx-auto w-5/6 py-3 flex justify-between place-items-center">
             <router-link data-cy="link-home" to="/">
                 <div class="flex flex-row gap-3">

@@ -229,7 +229,7 @@ onUnmounted(() => {
   </div>
   <dialog
     id="searchDialog"
-    :class="`${isClosing ? 'is-closing' : ''} glass fixed h-screen max-h-[600px] w-full max-w-[800px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-gray-700`"
+    :class="`${isClosing ? 'is-closing' : ''} glass fixed h-screen max-h-[600px] w-full max-w-[800px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-[#2A2A2A]`"
   >
     <div class="z-10 w-full text-2xl sticky top-0 font-black">
       <div class="flex flex-row gap-2 place-items-center">
@@ -310,7 +310,7 @@ onUnmounted(() => {
       <div v-if="hasResults">
         <div
           v-for="res in currentResults"
-          class="p-2 border border-gray-300 dark:border-gray-600 my-2 rounded-md hover:bg-gray-100 dark:hover:bg-[#FFFFFF11]"
+          class="p-2 border border-gray-300 dark:border-[#2A2A2A] my-2 rounded-md hover:bg-gray-100 dark:hover:bg-[#FFFFFF11]"
         >
           <details>
             <summary class="select-none cursor-pointer">

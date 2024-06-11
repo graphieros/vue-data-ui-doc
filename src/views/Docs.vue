@@ -733,12 +733,13 @@ onMounted(playShowcase)
 </script>
 
 <template>
+    <div :class="{'vdui': isDarkMode}"/>
     <div style="z-index:10000000" v-if="isCopy" class="animate-pulse origin-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80px] w-[80px] flex place-items-center place-content-center border-2 border-gray-400 dark:border-app-green dark:bg-black rounded-full bg-white">
         <CheckIcon size="42" class="dark:text-app-green"/>
     </div>
     <SideMenu @toggle="toggleMenu"/>
     
-    <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden`">
+    <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`">
         <DeepSearch/>
         <div :class="`px-2 pt-6 sm:pt-0 ${isOpen ? `xl:w-5/6 hidden sm:block` : ''}`">
             <DocVueUiTableSparkline v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-table-sparkline'"/>
@@ -798,13 +799,13 @@ onMounted(playShowcase)
                         <h1 class="text-3xl text-center">{{ translations.menu.docs[store.lang] }}</h1>
                     </div>
                     <h2>{{ translations.docs.props[store.lang] }}</h2>
-                    <div class="w-[100px]">
+                    <div class="w-[100px] rounded-full overflow-hidden flex place-items-center justify-center shadow-md">
                         <!-- <Sprinter :value="count" :key="`sprinter_${count}`"/> -->
                         <Wheeler :value="wheelerValue" :key="`wheeler_${count}`"/>
                     </div>
                 </div>
 
-<div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 bg-gray-200 dark:bg-[rgb(30,30,30)]">
+<div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 bg-gray-200 dark:bg-[rgb(30,30,30)] shadow-md">
 <pre>
 <code class="text-gray-500 text-md">
 &lt;VueUi<span class="dark:text-gray-200">{{ currentShowcase }}</span>
@@ -817,7 +818,7 @@ onMounted(playShowcase)
 <div class="mt-6">
     {{ translations.installation.comments.or[store.lang] }}
 </div>
-<div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 mt-6 bg-gray-200 dark:bg-[rgb(30,30,30)]">
+<div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 mt-6 bg-gray-200 dark:bg-[rgb(30,30,30)] shadow-md">
 <pre>
 <code class="text-gray-500 text-md">
 &lt;<span class="dark:text-gray-200">VueDataUi</span>
@@ -1113,3 +1114,18 @@ onMounted(playShowcase)
         </div>
     </div>
 </template>
+
+<style>
+/* .vdui {
+    background: radial-gradient(at top left, #2A2A2A, #1A1A1A, #1A1A1A, #1A1A1A);
+} */
+.vdui {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(at top left, #FFFFFF07, transparent, transparent);
+}
+</style>

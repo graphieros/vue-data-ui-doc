@@ -67,7 +67,7 @@ function copy() {
         {{ translations.componentCode[lang] }}
     </button>
 
-    <dialog :id="props.id" class="glass fixed h-screen max-h-[700px] w-full max-w-[900px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-gray-700">
+    <dialog :id="props.id" class="glass fixed h-screen max-h-[700px] w-full max-w-[900px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-[#2A2A2A]">
         <button class="absolute top-2 right-2" @click="useModal('close')">
             <XIcon class="text-black dark:text-app-green" />
         </button>

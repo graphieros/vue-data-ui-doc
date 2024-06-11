@@ -218,7 +218,7 @@ function requestCopy() {
             </div>
         </div>
         
-        <dialog id="iconDialog"  :class="`glass fixed h-screen max-h-[400px] w-full max-w-[400px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-gray-700`">
+        <dialog id="iconDialog"  :class="`glass fixed h-screen max-h-[400px] w-full max-w-[400px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-[#2A2A2A]`">
             <div class="z-10 w-full text-2xl sticky top-0 font-black">
             <div class="flex flex-row gap-2 place-items-center text-app-blue">
                 {{ selectedIcon }}
