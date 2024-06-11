@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { Menu2Icon } from "vue-tabler-icons";
+import { Menu2Icon, XIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import { SunFilledIcon, MoonStarsIcon, LanguageIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
@@ -192,10 +192,13 @@ const selectedLanguage = computed({
                 </div>
             </nav>
             <div class="relative xl:hidden">
-                <button id="mainDropdownButton" @click="useMenu" type="button">
-                    <Menu2Icon/>
+                <button id="mainDropdownButton" v-if="isOpen" @click="useMenu" type="button">
+                    <XIcon />
                 </button>
-                <div id="mainDropdown" class="absolute top-full mt-2 right-0 bg-white dark:bg-black rounded-lg border border-gray-700 shadow-2xl px-2 pl-3 py-3 w-[180px] text-right" v-show="isOpen">
+                <button id="mainDropdownButton" v-else @click="useMenu" type="button">
+                    <Menu2Icon />
+                </button>
+                <div id="mainDropdown" class="absolute top-full mt-2 right-0 bg-white dark:bg-black rounded-lg border border-gray-700 shadow-2xl px-2 pl-3 py-3 w-[180px] text-right" v-if="isOpen">
                     <ul>
                         <!-- <button @click="openChartMaker">
                             <ToolIcon/>
@@ -256,3 +259,22 @@ const selectedLanguage = computed({
         </div>
     </header>
 </template>
+
+<style>
+#mainDropdown {
+    animation: openDD 0.2s ease-in-out forwards;
+    transform: scale(1,0.5);
+    transform-origin: top;
+}
+
+@keyframes openDD {
+    from {
+        opacity:0;
+        transform: scale(1,0.5);
+    }
+    to {
+        transform: scale(1,1);
+        opacity: 1;
+    }
+}
+</style>

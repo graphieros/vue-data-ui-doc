@@ -392,9 +392,21 @@ function selectMenu({ datapoint, index }) {
     router.push(menuRoutes.value[index])
 }
 
+const componentTranslation = ref({
+  en: 'Components',
+  fr: 'Composants',
+  pt: 'Componentes',
+  de: 'Komponenten',
+  zh: '成分',
+  jp: 'コンポーネント',
+  es: 'Componentes',
+  ko: '구성요소'
+})
+
 </script>
 
 <template>
+      <div class="underlay"></div>
       <div ref="resizeContainer" class="absolute top-0 left-0" style="width:100%;height:100%;overflow: hidden" @mousemove="setClientPosition($event)">
 
 <svg :viewBox="viewBox" width="100%" class="bg-transparent absolute top-0 left-0 user-position">
@@ -430,6 +442,14 @@ function selectMenu({ datapoint, index }) {
             <span class="text-app-blue">Data UI</span>
         </h1>
         <p class="text-board-2 text-xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
+
+        <div class="flex flex-row gap-2 text-gray-500">
+          {{ componentTranslation[store.lang] }}: 
+          <div class="h-[22px]">
+            <VueUiDigits :dataset="50" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#5f8bee' : '#1A1A1A' }  }"/>
+          </div>
+        </div>
+
         <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 hidden lg:block">
             <button class="relative flex flex-row place-content-center place-items-center bg-transparent dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] dark:hover:border-[#fdd663] gap-3 transition-all">
               <BrandGithubFilledIcon class="dark:text-gray-200"/>
@@ -545,5 +565,14 @@ function selectMenu({ datapoint, index }) {
 .custom-styles 
 .vue-ui-donut {
     background: transparent !important;
+}
+
+.underlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(at top left, #FFFFFF07, transparent, transparent);
 }
 </style>
