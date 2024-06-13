@@ -1168,78 +1168,78 @@
             "dataset": "VueUiSparklineDatasetItem[]"
         },
         "examples": [
-           {
-             "dataset": [
-                {
-                    "period": "period 1",
-                    "value": 0
-                },
-                {
-                    "period": "period 2",
-                    "value": -1
-                },
-                {
-                    "period": "period 3",
-                    "value": 2
-                },
-                {
-                    "period": "period 4",
-                    "value": -3
-                },
-                {
-                    "period": "period 5",
-                    "value": 4
-                },
-                {
-                    "period": "period 6",
-                    "value": -5
-                },
-                {
-                    "period": "period 7",
-                    "value": 6
-                },
-                {
-                    "period": "period 8",
-                    "value": -7
-                },
-                {
-                    "period": "period 9",
-                    "value": 8
-                },
-                {
-                    "period": "period 10",
-                    "value": -9
-                },
-                {
-                    "period": "period 11",
-                    "value": 10
-                },
-                {
-                    "period": "period 12",
-                    "value": -11
-                },
-                {
-                    "period": "period 13",
-                    "value": 12
-                },
-                {
-                    "period": "period 14",
-                    "value": -13
-                },
-                {
-                    "period": "period 15",
-                    "value": 14
-                },
-                {
-                    "period": "period 16",
-                    "value": -15
-                },
-                {
-                    "period": "period 17",
-                    "value": 16
-                }
-             ]
-           }
+            {
+                "dataset": [
+                    {
+                        "period": "period 1",
+                        "value": 0
+                    },
+                    {
+                        "period": "period 2",
+                        "value": -1
+                    },
+                    {
+                        "period": "period 3",
+                        "value": 2
+                    },
+                    {
+                        "period": "period 4",
+                        "value": -3
+                    },
+                    {
+                        "period": "period 5",
+                        "value": 4
+                    },
+                    {
+                        "period": "period 6",
+                        "value": -5
+                    },
+                    {
+                        "period": "period 7",
+                        "value": 6
+                    },
+                    {
+                        "period": "period 8",
+                        "value": -7
+                    },
+                    {
+                        "period": "period 9",
+                        "value": 8
+                    },
+                    {
+                        "period": "period 10",
+                        "value": -9
+                    },
+                    {
+                        "period": "period 11",
+                        "value": 10
+                    },
+                    {
+                        "period": "period 12",
+                        "value": -11
+                    },
+                    {
+                        "period": "period 13",
+                        "value": 12
+                    },
+                    {
+                        "period": "period 14",
+                        "value": -13
+                    },
+                    {
+                        "period": "period 15",
+                        "value": 14
+                    },
+                    {
+                        "period": "period 16",
+                        "value": -15
+                    },
+                    {
+                        "period": "period 17",
+                        "value": 16
+                    }
+                ]
+            }
         ],
         "emits": [
             {
@@ -1268,7 +1268,10 @@
         "hasSlots": false,
         "hasEmits": true,
         "hasExposed": false,
-        "props": ["config", "dataset"],
+        "props": [
+            "config",
+            "dataset"
+        ],
         "types": {
             "config": "VueUiSparkHistogramConfig",
             "dataset": "VueUiSparkHistogramDatasetItem[]"
@@ -1287,77 +1290,66 @@
                         "valueLabel": "50%",
                         "timeLabel": "10:00",
                         "intensity": 0.5
-                
                     },
                     {
                         "value": 1.1,
                         "valueLabel": "60%",
                         "timeLabel": "11:00",
                         "intensity": 0.6
-                
                     },
                     {
                         "value": 0.8,
                         "valueLabel": "70%",
                         "timeLabel": "12:00",
                         "intensity": 0.7
-                
                     },
                     {
                         "value": 2,
                         "valueLabel": "100%",
                         "timeLabel": "13:00",
                         "intensity": 1
-                
                     },
                     {
                         "value": 2.1,
                         "valueLabel": "100%",
                         "timeLabel": "14:00",
                         "intensity": 1
-                
                     },
                     {
                         "value": 2.3,
                         "valueLabel": "80%",
                         "timeLabel": "15:00",
                         "intensity": 0.8
-                
                     },
                     {
                         "value": 2.1,
                         "valueLabel": "70%",
                         "timeLabel": "16:00",
                         "intensity": 0.7
-                
                     },
                     {
                         "value": 0.9,
                         "valueLabel": "60%",
                         "timeLabel": "17:00",
                         "intensity": 0.6
-                
                     },
                     {
                         "value": 0.7,
                         "valueLabel": "50%",
                         "timeLabel": "18:00",
                         "intensity": 0.5
-                
                     },
                     {
                         "value": 0.3,
                         "valueLabel": "30%",
                         "timeLabel": "19:00",
                         "intensity": 0.3
-                
                     },
                     {
                         "value": 0.2,
                         "valueLabel": "20%",
                         "timeLabel": "20:00",
                         "intensity": 0.2
-                
                     }
                 ]
             }
@@ -1379,7 +1371,10 @@
         "hasSlots": false,
         "hasEmits": false,
         "hasExposed": false,
-        "props": ["config", "dataset"],
+        "props": [
+            "config",
+            "dataset"
+        ],
         "types": {
             "dataset": "VueUiSparkgaugeDataset",
             "config": "VueUiGaugeConfig"
@@ -1391,6 +1386,2287 @@
                     "min": -10,
                     "max": 10
                 }
+            }
+        ]
+    },
+    "vue_ui_sparkbar": {
+        "name": "VueUiSparkbar",
+        "icon": "chartSparkbar",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-sparkbar",
+        "path": "/docs#vue-ui-sparkbar",
+        "description": "Show kpi performance with a tiny vertical bar chart.",
+        "hasThemes": true,
+        "hasSlots": false,
+        "hasEmits": true,
+        "hasExposed": false,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiSparkbarConfig",
+            "dataset": "VueUiSparkbarDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "quality",
+                        "value": 61.953,
+                        "rounding": 2,
+                        "suffix": "%"
+                    },
+                    {
+                        "name": "popularity",
+                        "value": 2.0412,
+                        "rounding": 2,
+                        "suffix": "%"
+                    },
+                    {
+                        "name": "maintenance",
+                        "value": 33.3291,
+                        "rounding": 2,
+                        "suffix": "%"
+                    }
+                ]
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click."
+            }
+        ]
+    },
+    "vue_ui_spark_trend": {
+        "chartSize": 350,
+        "name": "VueUiSparkTrend",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-spark-trend",
+        "path": "/docs#vue-ui-spark-trend",
+        "description": "Quickly visualize a trend from a simple dataset.",
+        "hasThemes": true,
+        "hasSlots": false,
+        "hasEmits": false,
+        "hasExposed": false,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiSparkTrendConfig",
+            "dataset": "number[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    8,
+                    -13,
+                    21,
+                    34
+                ]
+            }
+        ]
+    },
+    "vue_ui_scatter": {
+        "name": "VueUiScatter",
+        "icon": "chartScatter",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-scatter",
+        "path": "/docs#vue-ui-scatter",
+        "description": "From a large dataset, reveal the correlation between two variables.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiScatterConfig",
+            "dataset": "VueUiScatterDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Cluster 1",
+                        "values": [
+                            {
+                                "x": 1,
+                                "y": 1,
+                                "name": "Cluster 1 point 1"
+                            },
+                            {
+                                "x": 0,
+                                "y": 1,
+                                "name": "Cluster 1 point 2"
+                            },
+                            {
+                                "x": 2,
+                                "y": 3,
+                                "name": "Cluster 1 point 3"
+                            },
+                            {
+                                "x": 3,
+                                "y": 5,
+                                "name": "Cluster 1 point 4"
+                            },
+                            {
+                                "x": 5,
+                                "y": 2,
+                                "name": "Cluster 1 point 5"
+                            },
+                            {
+                                "x": 2,
+                                "y": 3,
+                                "name": "Cluster 1 point 6"
+                            },
+                            {
+                                "x": 2,
+                                "y": 2,
+                                "name": "Cluster 1 point 7"
+                            },
+                            {
+                                "x": 3,
+                                "y": 2.5,
+                                "name": "Cluster 1 point 8"
+                            },
+                            {
+                                "x": 2.5,
+                                "y": 3,
+                                "name": "Cluster 1 point 9"
+                            },
+                            {
+                                "x": 2.8,
+                                "y": 3.1,
+                                "name": "Cluster 1 point 10"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_rings": {
+        "name": "VueUiRings",
+        "icon": "chartRings",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-rings",
+        "path": "/docs#vue-ui-rings",
+        "description": "Visualize relative proportions with a beautiful concentric layout.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiRingsConfig",
+            "dataset": "VueUiRingsDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Serie 1",
+                        "values": [
+                            100
+                        ]
+                    },
+                    {
+                        "name": "Serie 2",
+                        "values": [
+                            200
+                        ]
+                    },
+                    {
+                        "name": "Serie 3",
+                        "values": [
+                            300,
+                            1
+                        ]
+                    },
+                    {
+                        "name": "Serie 4",
+                        "values": [
+                            50,
+                            1
+                        ]
+                    },
+                    {
+                        "name": "Serie 5",
+                        "values": [
+                            25,
+                            1
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_relation_circle": {
+        "name": "VueUiRelationCircle",
+        "icon": "chartRelationCircle",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-relation-circle",
+        "path": "/docs#vue-ui-relation-circle",
+        "description": "A component to visualize relationships between people, words, companies...",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiRelationCircleConfig",
+            "dataset": "VueUiRelationCircleDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "id": "01",
+                        "label": "Lorem",
+                        "relations": [
+                            "02",
+                            "03",
+                            "04",
+                            "05",
+                            "06",
+                            "07",
+                            "08",
+                            "09",
+                            "10",
+                            "11",
+                            "12"
+                        ],
+                        "weights": [
+                            5,
+                            3,
+                            10,
+                            2,
+                            9,
+                            3,
+                            1,
+                            2,
+                            3,
+                            7,
+                            1
+                        ]
+                    },
+                    {
+                        "id": "02",
+                        "label": "Ipsum",
+                        "relations": [
+                            "01",
+                            "03",
+                            "07",
+                            "06",
+                            "07"
+                        ],
+                        "weights": [
+                            3,
+                            2,
+                            9,
+                            7,
+                            1
+                        ]
+                    },
+                    {
+                        "id": "03",
+                        "label": "Dolor",
+                        "relations": [
+                            "01",
+                            "02"
+                        ],
+                        "weights": [
+                            2,
+                            5
+                        ]
+                    },
+                    {
+                        "id": "04",
+                        "label": "Consectetur",
+                        "relations": [
+                            "01",
+                            "05",
+                            "10"
+                        ],
+                        "weights": [
+                            2,
+                            1,
+                            4
+                        ]
+                    },
+                    {
+                        "id": "05",
+                        "label": "Amet",
+                        "relations": [
+                            "01",
+                            "04",
+                            "07",
+                            "10"
+                        ],
+                        "weights": [
+                            2,
+                            3,
+                            4,
+                            5
+                        ]
+                    },
+                    {
+                        "id": "06",
+                        "label": "Rherum",
+                        "relations": [
+                            "01",
+                            "02"
+                        ],
+                        "weights": [
+                            4,
+                            1
+                        ]
+                    },
+                    {
+                        "id": "07",
+                        "label": "Delecta",
+                        "relations": [
+                            "01",
+                            "02",
+                            "08",
+                            "12"
+                        ],
+                        "weights": [
+                            4,
+                            8,
+                            2,
+                            1
+                        ]
+                    },
+                    {
+                        "id": "08",
+                        "label": "Nitimur",
+                        "relations": [
+                            "01",
+                            "07",
+                            "12",
+                            "01"
+                        ],
+                        "weights": [
+                            7,
+                            3,
+                            2,
+                            3
+                        ]
+                    },
+                    {
+                        "id": "09",
+                        "label": "Vetitum",
+                        "relations": [
+                            "01"
+                        ],
+                        "weights": [
+                            1
+                        ]
+                    },
+                    {
+                        "id": "10",
+                        "label": "Monumentum",
+                        "relations": [
+                            "01",
+                            "04",
+                            "05"
+                        ],
+                        "weights": [
+                            4,
+                            1,
+                            4
+                        ]
+                    },
+                    {
+                        "id": "11",
+                        "label": "Aere",
+                        "relations": [
+                            "01"
+                        ],
+                        "weights": [
+                            3
+                        ]
+                    },
+                    {
+                        "id": "12",
+                        "label": "Perennius",
+                        "relations": [
+                            "01",
+                            "07",
+                            "08"
+                        ],
+                        "weights": [
+                            8,
+                            1,
+                            1
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            }
+        ]
+    },
+    "vue_ui_radar": {
+        "name": "VueUiRadar",
+        "icon": "chartRadar",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-radar",
+        "path": "/docs#vue-ui-radar",
+        "description": "Reveal outliers and commonality of different measures on the same scale.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiRadarConfig",
+            "dataset": "VueUiRadarDataset"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "categories": [
+                        {
+                            "name": "category 1",
+                            "color": "#5f8bee"
+                        },
+                        {
+                            "name": "category 2",
+                            "color": "#42d392"
+                        },
+                        {
+                            "name": "category 3",
+                            "color": "#ff6400"
+                        }
+                    ],
+                    "series": [
+                        {
+                            "name": "Serie 1",
+                            "values": [
+                                65,
+                                45,
+                                12
+                            ],
+                            "target": 100
+                        },
+                        {
+                            "name": "Serie 2",
+                            "values": [
+                                2525,
+                                3472,
+                                4950
+                            ],
+                            "target": 10000
+                        },
+                        {
+                            "name": "Serie 3",
+                            "values": [
+                                4.7,
+                                1,
+                                3
+                            ],
+                            "target": 5
+                        },
+                        {
+                            "name": "Serie 4",
+                            "values": [
+                                400,
+                                250,
+                                325
+                            ],
+                            "target": 500
+                        },
+                        {
+                            "name": "Serie 5",
+                            "values": [
+                                5,
+                                9,
+                                7
+                            ],
+                            "target": 10
+                        },
+                        {
+                            "name": "Serie 6",
+                            "values": [
+                                6,
+                                7,
+                                10
+                            ],
+                            "target": 10
+                        }
+                    ]
+                }
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_quick_chart": {
+        "name": "VueUiQuickChart",
+        "icon": "vueDataUi",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-quick-chart",
+        "path": "/docs#vue-ui-quick-chart",
+        "description": "A flexible component that will provide the most adapted chart type to your dataset (line, bar or donut).",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": false,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiQuickChartConfig",
+            "dataset": "VueUiQuickChartDataset"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    1,
+                    2,
+                    -3,
+                    8,
+                    5
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            },
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click."
+            }
+        ],
+        "slots": [
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_quadrant": {
+        "name": "VueUiQuadrant",
+        "icon": "chartQuadrant",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-quadrant",
+        "path": "/docs#vue-ui-quadrant",
+        "description": "Identify patterns and trends to prioritize actions based on the position of data points.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiQuadrantConfig",
+            "dataset": "VueUiQuadrantDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Stars",
+                        "shape": "star",
+                        "series": [
+                            {
+                                "name": "Star 1",
+                                "x": 50,
+                                "y": 50
+                            },
+                            {
+                                "name": "Star 2",
+                                "x": -10,
+                                "y": -10
+                            },
+                            {
+                                "name": "Star 3",
+                                "x": -15,
+                                "y": 20
+                            },
+                            {
+                                "name": "Star 4",
+                                "x": 15,
+                                "y": -20
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Triangles",
+                        "shape": "triangle",
+                        "series": [
+                            {
+                                "name": "Triangle 1",
+                                "x": -50,
+                                "y": -50
+                            },
+                            {
+                                "name": "Triangle 2",
+                                "x": 25,
+                                "y": -25
+                            },
+                            {
+                                "name": "Triangle 3",
+                                "x": -25,
+                                "y": 25
+                            },
+                            {
+                                "name": "Triangle 4",
+                                "x": 10,
+                                "y": 10
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Hexagons",
+                        "shape": "hexagon",
+                        "series": [
+                            {
+                                "name": "Hexagon 1",
+                                "x": -39,
+                                "y": 39
+                            },
+                            {
+                                "name": "Hexagon 2",
+                                "x": -2,
+                                "y": 45
+                            },
+                            {
+                                "name": "Hexagon 3",
+                                "x": -15,
+                                "y": 30
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Data labels",
+                "description": "Toggles data labels visibility.",
+                "icon": "labelOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            },
+            {
+                "name": "selectPlot",
+                "description": "Emits the selected plot on click."
+            },
+            {
+                "name": "selectSide",
+                "description": "Emits the dataset of the selected quadrant side."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_onion": {
+        "name": "VueUiOnion",
+        "icon": "chartOnion",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-onion",
+        "path": "/docs#vue-ui-onion",
+        "description": "Compare the values of multiple categories or groups in a single visualization.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiOnionConfig",
+            "dataset": "VueUiOnionDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Serie 1",
+                        "percentage": 21,
+                        "value": 1200
+                    },
+                    {
+                        "name": "Serie 2",
+                        "percentage": 34,
+                        "value": 1000
+                    },
+                    {
+                        "name": "Serie 3",
+                        "percentage": 55,
+                        "value": 500
+                    },
+                    {
+                        "name": "Serie 4",
+                        "percentage": 79,
+                        "value": 1280
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_nested_donuts": {
+        "name": "VueUiNestedDonuts",
+        "icon": "chartNestedDonuts",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-nested-donuts",
+        "path": "/docs#vue-ui-nested-donuts",
+        "description": "Visualize breakdowns of comparable series on multiple stacked donuts.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiNestedDonutsConfig",
+            "dataset": "VueUiNestedDonutsDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Group 1",
+                        "series": [
+                            {
+                                "name": "Serie 1",
+                                "values": [
+                                    50
+                                ]
+                            },
+                            {
+                                "name": "Serie 2",
+                                "values": [
+                                    30
+                                ]
+                            },
+                            {
+                                "name": "Serie 3",
+                                "values": [
+                                    20
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Group 2",
+                        "series": [
+                            {
+                                "name": "Serie 1",
+                                "values": [
+                                    40
+                                ]
+                            },
+                            {
+                                "name": "Serie 2",
+                                "values": [
+                                    40
+                                ]
+                            },
+                            {
+                                "name": "Serie 3",
+                                "values": [
+                                    30
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Data labels",
+                "description": "Toggles data labels visibility.",
+                "icon": "labelOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            },
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_mood_radar": {
+        "name": "VueUiMoodRadar",
+        "icon": "chartMoodRadar",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-mood-radar",
+        "path": "/docs#vue-ui-mood-radar",
+        "description": "Visualize rating statistics on a colorful and expressive radar chart.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiMoodRadarConfig",
+            "dataset": "VueUiMoodRadarDataset"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "1": 96,
+                    "2": 64,
+                    "3": 128,
+                    "4": 256,
+                    "5": 384
+                }
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            }
+        ]
+    },
+    "vue_ui_molecule": {
+        "name": "VueUiMolecule",
+        "icon": "chartCluster",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-molecule",
+        "path": "/docs#vue-ui-molecule",
+        "description": "Visualize a nested tree of nodes.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiMoleculeConfig",
+            "dataset": "VueUiMoleculeDatasetNode[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Root",
+                        "details": "This is the root node",
+                        "nodes": [
+                            {
+                                "name": "node1",
+                                "details": "Lorem ipsum",
+                                "nodes": [
+                                    {
+                                        "name": "node1.1",
+                                        "details": "Lorem ipsum",
+                                        "nodes": [
+                                            {
+                                                "name": "node1.1"
+                                            },
+                                            {
+                                                "name": "node1.2"
+                                            },
+                                            {
+                                                "name": "node1.3"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "node1.2",
+                                        "nodes": [
+                                            {
+                                                "name": "node1.2.1"
+                                            },
+                                            {
+                                                "name": "node1.2.2"
+                                            },
+                                            {
+                                                "name": "node1.2.3"
+                                            },
+                                            {
+                                                "name": "node1.2.4"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "node1.3",
+                                        "nodes": [
+                                            {
+                                                "name": "node1.3.1"
+                                            },
+                                            {
+                                                "name": "node1.3.2"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "node1.4",
+                                        "nodes": [
+                                            {
+                                                "name": "node1.4.1"
+                                            },
+                                            {
+                                                "name": "node1.4.2"
+                                            },
+                                            {
+                                                "name": "node1.4.3"
+                                            },
+                                            {
+                                                "name": "node1.4.4"
+                                            },
+                                            {
+                                                "name": "node1.4.5"
+                                            },
+                                            {
+                                                "name": "node1.4.6"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "node1.5",
+                                        "nodes": [
+                                            {
+                                                "name": "node1.5.1"
+                                            },
+                                            {
+                                                "name": "node1.5.2"
+                                            },
+                                            {
+                                                "name": "node1.5.3"
+                                            },
+                                            {
+                                                "name": "node1.5.4"
+                                            },
+                                            {
+                                                "name": "node1.5.5"
+                                            },
+                                            {
+                                                "name": "node1.5.6"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "node1.6",
+                                        "nodes": [
+                                            {
+                                                "name": "node1.6.1"
+                                            },
+                                            {
+                                                "name": "node1.6.2"
+                                            },
+                                            {
+                                                "name": "node1.6.3"
+                                            },
+                                            {
+                                                "name": "node1.6.4"
+                                            },
+                                            {
+                                                "name": "node1.6.5"
+                                            },
+                                            {
+                                                "name": "node1.6.6"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "node2",
+                                "nodes": [
+                                    {
+                                        "name": "node2.1",
+                                        "nodes": [
+                                            {
+                                                "name": "node2.1.1"
+                                            },
+                                            {
+                                                "name": "node2.1.2"
+                                            },
+                                            {
+                                                "name": "node2.1.3"
+                                            },
+                                            {
+                                                "name": "node2.1.4"
+                                            },
+                                            {
+                                                "name": "node2.1.5"
+                                            },
+                                            {
+                                                "name": "node2.1.6",
+                                                "nodes": [
+                                                    {
+                                                        "name": "node2.1.6.1"
+                                                    },
+                                                    {
+                                                        "name": "node2.1.6.2"
+                                                    },
+                                                    {
+                                                        "name": "node2.1.6.3"
+                                                    },
+                                                    {
+                                                        "name": "node2.1.6.4"
+                                                    },
+                                                    {
+                                                        "name": "node2.1.6.5"
+                                                    },
+                                                    {
+                                                        "name": "node2.1.6.6",
+                                                        "nodes": [
+                                                            {
+                                                                "name": "node2.1.6.6.1"
+                                                            },
+                                                            {
+                                                                "name": "node2.1.6.6.2"
+                                                            },
+                                                            {
+                                                                "name": "node2.1.6.6.3"
+                                                            },
+                                                            {
+                                                                "name": "node2.1.6.6.4"
+                                                            },
+                                                            {
+                                                                "name": "node2.1.6.6.5"
+                                                            },
+                                                            {
+                                                                "name": "node2.1.6.6.6",
+                                                                "nodes": [
+                                                                    {
+                                                                        "name": "node2.1.6.6.6.1"
+                                                                    },
+                                                                    {
+                                                                        "name": "node2.1.6.6.6.2"
+                                                                    },
+                                                                    {
+                                                                        "name": "node2.1.6.6.6.3"
+                                                                    },
+                                                                    {
+                                                                        "name": "node2.1.6.6.6.4"
+                                                                    },
+                                                                    {
+                                                                        "name": "node2.1.6.6.6.5"
+                                                                    },
+                                                                    {
+                                                                        "name": "node2.1.6.6.6.6"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "node3",
+                                "nodes": [
+                                    {
+                                        "name": "node3.1"
+                                    },
+                                    {
+                                        "name": "node3.2"
+                                    },
+                                    {
+                                        "name": "node3.3"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "node4",
+                                "nodes": [
+                                    {
+                                        "name": "node4.1"
+                                    },
+                                    {
+                                        "name": "node4.2",
+                                        "nodes": [
+                                            {
+                                                "name": "node4.2.1"
+                                            },
+                                            {
+                                                "name": "node4.2.2"
+                                            },
+                                            {
+                                                "name": "node4.2.3"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "node4.3"
+                                    },
+                                    {
+                                        "name": "node4.4",
+                                        "nodes": [
+                                            {
+                                                "name": "node4.4.1"
+                                            },
+                                            {
+                                                "name": "node4.4.2"
+                                            },
+                                            {
+                                                "name": "node4.4.3"
+                                            },
+                                            {
+                                                "name": "node4.4.4"
+                                            },
+                                            {
+                                                "name": "node4.4.5"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "node5",
+                                "nodes": [
+                                    {
+                                        "name": "node4.1"
+                                    },
+                                    {
+                                        "name": "node4.2"
+                                    },
+                                    {
+                                        "name": "node4.3"
+                                    },
+                                    {
+                                        "name": "node4.4"
+                                    },
+                                    {
+                                        "name": "node4.5"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "node6",
+                                "nodes": [
+                                    {
+                                        "name": "node4.1"
+                                    },
+                                    {
+                                        "name": "node4.2"
+                                    },
+                                    {
+                                        "name": "node4.3"
+                                    },
+                                    {
+                                        "name": "node4.4"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Data labels",
+                "description": "Toggles data labels visibility.",
+                "icon": "labelOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_heatmap": {
+        "name": "VueUiHeatmap",
+        "icon": "chartHeatmap",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-heatmap",
+        "path": "/docs#vue-ui-heatmap",
+        "description": "Show relationships and patterns between two variables by observing how cell colors change across each axis",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiHeatmapConfig",
+            "dataset": "VueUiHeatmapDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Mon",
+                        "values": [
+                            31,
+                            58,
+                            12,
+                            25,
+                            13,
+                            9,
+                            3,
+                            7,
+                            55,
+                            12,
+                            36,
+                            23,
+                            37,
+                            28,
+                            29
+                        ]
+                    },
+                    {
+                        "name": "Tue",
+                        "values": [
+                            3,
+                            12,
+                            7,
+                            9,
+                            15,
+                            27,
+                            31,
+                            42,
+                            63,
+                            13,
+                            25,
+                            12,
+                            9,
+                            55,
+                            12
+                        ]
+                    },
+                    {
+                        "name": "Wed",
+                        "values": [
+                            8,
+                            9,
+                            3,
+                            18,
+                            11,
+                            7,
+                            2,
+                            1,
+                            2,
+                            1,
+                            8,
+                            3,
+                            2,
+                            1,
+                            2
+                        ]
+                    },
+                    {
+                        "name": "Thu",
+                        "values": [
+                            8,
+                            12,
+                            13,
+                            25,
+                            31,
+                            42,
+                            12,
+                            9,
+                            8,
+                            4,
+                            12,
+                            5,
+                            2,
+                            1,
+                            9
+                        ]
+                    },
+                    {
+                        "name": "Fri",
+                        "values": [
+                            8,
+                            9,
+                            3,
+                            18,
+                            11,
+                            7,
+                            12,
+                            25,
+                            13,
+                            21,
+                            12,
+                            88,
+                            33,
+                            66,
+                            9
+                        ]
+                    },
+                    {
+                        "name": "Sat",
+                        "values": [
+                            8,
+                            9,
+                            3,
+                            18,
+                            11,
+                            7,
+                            55,
+                            19,
+                            12,
+                            55,
+                            18,
+                            13,
+                            33,
+                            12,
+                            22
+                        ]
+                    },
+                    {
+                        "name": "Sun",
+                        "values": [
+                            8,
+                            9,
+                            3,
+                            18,
+                            11,
+                            7,
+                            19,
+                            25,
+                            13,
+                            44,
+                            22,
+                            33,
+                            66,
+                            77,
+                            22
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_gauge": {
+        "name": "VueUiGauge",
+        "icon": "chartGauge",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-gauge",
+        "path": "/docs#vue-ui-gauge",
+        "description": "Quickly show how well a given metric is performing against a target goal.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiGaugeConfig",
+            "dataset": "VueUiGaugeDataset"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "base": 21200,
+                    "value": -42,
+                    "series": [
+                        {
+                            "from": -100,
+                            "to": 0,
+                            "color": "#ff6400"
+                        },
+                        {
+                            "from": 0,
+                            "to": 100,
+                            "color": "#42d392"
+                        }
+                    ]
+                }
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            }
+        ]
+    },
+    "vue_ui_galaxy": {
+        "name": "VueUiGalaxy",
+        "icon": "chartGalaxy",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-galaxy",
+        "path": "/docs#vue-ui-galaxy",
+        "description": "Visualize relative proportions, favoring the visibility of small values.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiGalaxyConfig",
+            "dataset": "VueUiGalaxyDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Series 0",
+                        "values": [
+                            12
+                        ]
+                    },
+                    {
+                        "name": "Series 1",
+                        "values": [
+                            100
+                        ]
+                    },
+                    {
+                        "name": "Series 2",
+                        "values": [
+                            200
+                        ]
+                    },
+                    {
+                        "name": "Series 3",
+                        "values": [
+                            300,
+                            1
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            },
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_dumbbell": {
+        "name": "VueUiDumbbell",
+        "icon": "chartDumbbell",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-dumbbell",
+        "path": "/docs#vue-ui-dumbbell",
+        "description": "Visualize changes between two points in time for many datapoints.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiDumbbellConfig",
+            "dataset": "VueUiDumbbellDataset[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Sweden",
+                        "start": 5000,
+                        "end": 7100
+                    },
+                    {
+                        "name": "Korea, Rep.",
+                        "start": 4900,
+                        "end": 7050
+                    },
+                    {
+                        "name": "Iceland",
+                        "start": 6500,
+                        "end": 8000
+                    },
+                    {
+                        "name": "Finland",
+                        "start": 6400,
+                        "end": 7600
+                    },
+                    {
+                        "name": "Norway",
+                        "start": 5400,
+                        "end": 6050
+                    },
+                    {
+                        "name": "Ireland",
+                        "start": 3000,
+                        "end": 2000
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
             }
         ]
     }

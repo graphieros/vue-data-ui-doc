@@ -5,6 +5,7 @@ import BaseText from "./BaseText.vue";
 import { useMainStore } from "../stores";
 import Prism from "prismjs"
 import "prismjs/themes/prism-okaidia.css"
+import DocLink from "../components/DocLink.vue";
 
 const store = useMainStore()
 
@@ -44,11 +45,10 @@ onMounted(() => {
             <BaseText label="Description" :text="selectedComponent.description" />
             <BaseText v-if="selectedComponent.props.includes('dataset')" label="Dataset TS type" isCode :text="selectedComponent.types.dataset" />
             <BaseText v-if="selectedComponent.props.includes('dataset')" label="Config TS type" isCode :text="selectedComponent.types.config" />
-            <RouterLink :to="selectedComponent.path">
-                <div class="my-4 text-app-blue underline">
-                    View docs
-                </div>
-            </RouterLink>
+            <div class="mt-8">
+                <DocLink :to="selectedComponent.path.replace('/docs#', '')"/>
+            </div>
+
         </div>
 
         <table class="schema table-auto border-collapse border border-slate-500 my-4 w-full">
