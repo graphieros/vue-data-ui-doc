@@ -1440,6 +1440,7 @@
     },
     "vue_ui_spark_trend": {
         "chartSize": 350,
+        "icon": "trend",
         "name": "VueUiSparkTrend",
         "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-spark-trend",
         "path": "/docs#vue-ui-spark-trend",
@@ -3667,6 +3668,873 @@
             {
                 "name": "legend",
                 "description": "Use this slot to create a custom legend."
+            }
+        ]
+    },
+    "vue_ui_donut_evolution": {
+        "name": "VueUiDonutEvolution",
+        "icon": "chartDonutEvolution",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-donut-evolution",
+        "path": "/docs#vue-ui-donut-evolution",
+        "description": "A fusion of line and donut charts, to visualize growth and proportions in one go.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiDonutEvolutionConfig",
+            "dataset": "VueUiDonutEvolutionDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Serie 1",
+                        "values": [
+                            55,
+                            34,
+                            21,
+                            13,
+                            8,
+                            5,
+                            8,
+                            13,
+                            21,
+                            34,
+                            55
+                        ]
+                    },
+                    {
+                        "name": "Serie 2",
+                        "values": [
+                            1,
+                            12,
+                            24,
+                            32,
+                            5,
+                            8,
+                            13,
+                            21,
+                            34,
+                            55,
+                            89
+                        ]
+                    },
+                    {
+                        "name": "Serie 3",
+                        "values": [
+                            16,
+                            2,
+                            3,
+                            5,
+                            28,
+                            13,
+                            21,
+                            34,
+                            55,
+                            89,
+                            134
+                        ]
+                    },
+                    {
+                        "name": "Serie 4",
+                        "values": [
+                            5,
+                            null,
+                            5,
+                            5,
+                            5,
+                            5
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "reset-action",
+                "description": "Use this slot to customize the reset button of the zoom slider."
+            }
+        ]
+    },
+    "vue_ui_donut": {
+        "name": "VueUiDonut",
+        "icon": "chartDonut",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-donut",
+        "path": "/docs#vue-ui-donut",
+        "description": "Visualize relative proportions with this classic donut representation.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiDonutConfig",
+            "dataset": "VueUiDonutDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Series 1",
+                        "values": [
+                            100
+                        ]
+                    },
+                    {
+                        "name": "Series 2",
+                        "values": [
+                            200
+                        ]
+                    },
+                    {
+                        "name": "Series 3",
+                        "values": [
+                            300,
+                            1
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Data labels",
+                "description": "Toggles data labels visibility.",
+                "icon": "labelOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click"
+            },
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "dataLabel",
+                "description": "Use this slot to customize the looks of data labels."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_chestnut": {
+        "name": "VueUiChestnut",
+        "icon": "chartChestnut",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-chestnut",
+        "path": "/docs#vue-ui-chestnut",
+        "description": "Represent nested information from a general base to detailed breakdowns.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiChestnutConfig",
+            "dataset": "VueUiChestnutDatasetRoot[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Root 1",
+                        "branches": [
+                            {
+                                "name": "Branch 1 (Root 1)",
+                                "value": 100,
+                                "breakdown": [
+                                    {
+                                        "name": "Breakdown A",
+                                        "value": 30
+                                    },
+                                    {
+                                        "name": "Breakdown B",
+                                        "value": 70
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Branch 2 (Root 1)",
+                                "value": 200,
+                                "breakdown": [
+                                    {
+                                        "name": "Breakdown A",
+                                        "value": 30
+                                    },
+                                    {
+                                        "name": "Breakdown B",
+                                        "value": 170
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Root 2",
+                        "branches": [
+                            {
+                                "name": "Branch 1 (Root 2)",
+                                "value": 80,
+                                "breakdown": [
+                                    {
+                                        "name": "Breakdown A",
+                                        "value": 50
+                                    },
+                                    {
+                                        "name": "Breakdown B",
+                                        "value": 30
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Branch 2 (Root 2)",
+                                "value": 120,
+                                "breakdown": [
+                                    {
+                                        "name": "Breakdown A",
+                                        "value": 50
+                                    },
+                                    {
+                                        "name": "Breakdown B",
+                                        "value": 80
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectRoot",
+                "description": "Emits the dataset of the selected root"
+            },
+            {
+                "name": "selectBranch",
+                "description": "Emits the dataset of the selected branch"
+            },
+            {
+                "name": "selectNut",
+                "description": "Emits the dataset of the selected donut"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            }
+        ]
+    },
+    "vue_ui_candlestick": {
+        "name": "VueUiCandlestick",
+        "icon": "chartCandlestick",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-candlestick",
+        "path": "/docs#vue-ui-candlestick",
+        "description": "Determine possible price movements based on past patterns.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiCandlestickConfig",
+            "dataset": "Array<Array<string | number>>"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    [
+                        "2024-01-01",
+                        56,
+                        120,
+                        40,
+                        110,
+                        1250
+                    ],
+                    [
+                        "2024-02-01",
+                        110,
+                        150,
+                        80,
+                        98,
+                        2200
+                    ],
+                    [
+                        "2024-03-01",
+                        98,
+                        155,
+                        75,
+                        103,
+                        3500
+                    ],
+                    [
+                        "2024-04-01",
+                        103,
+                        115,
+                        102,
+                        102,
+                        999
+                    ],
+                    [
+                        "2024-05-01",
+                        102,
+                        135,
+                        72,
+                        85,
+                        3216
+                    ],
+                    [
+                        "2024-06-01",
+                        85,
+                        162,
+                        65,
+                        107,
+                        4315
+                    ],
+                    [
+                        "2024-07-01",
+                        107,
+                        134,
+                        99,
+                        112,
+                        2561
+                    ],
+                    [
+                        "2024-08-01",
+                        112,
+                        125,
+                        112,
+                        120,
+                        669
+                    ],
+                    [
+                        "2024-09-01",
+                        120,
+                        113,
+                        76,
+                        89,
+                        2591
+                    ],
+                    [
+                        "2024-10-01",
+                        89,
+                        150,
+                        85,
+                        125,
+                        2881
+                    ],
+                    [
+                        "2024-11-01",
+                        125,
+                        130,
+                        45,
+                        92,
+                        1972
+                    ],
+                    [
+                        "2024-12-01",
+                        92,
+                        120,
+                        35,
+                        75,
+                        3599
+                    ],
+                    [
+                        "2024-13-01",
+                        75,
+                        80,
+                        26,
+                        45,
+                        5881
+                    ],
+                    [
+                        "2024-14-01",
+                        45,
+                        60,
+                        20,
+                        30,
+                        2881
+                    ],
+                    [
+                        "2024-15-01",
+                        30,
+                        120,
+                        10,
+                        105,
+                        2881
+                    ]
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "reset-action",
+                "description": "Use this slot to customize the reset button of the zoom slider."
+            }
+        ]
+    },
+    "vue_ui_age_pyramid": {
+        "name": "VueUiAgePyramid",
+        "icon": "chartAgePyramid",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-age-pyramid",
+        "path": "/docs#vue-ui-age-pyramid",
+        "description": "Show how populations are composed and how they are changing.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiAgePyramidConfig",
+            "dataset": "Array<Array<string | number>>"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    [
+                        "2018",
+                        5,
+                        120000,
+                        119500
+                    ],
+                    [
+                        "2019",
+                        4,
+                        109200,
+                        109100
+                    ],
+                    [
+                        "2020",
+                        3,
+                        160700,
+                        160600
+                    ],
+                    [
+                        "2021",
+                        2,
+                        98630,
+                        98250
+                    ],
+                    [
+                        "2022",
+                        1,
+                        81100,
+                        81200
+                    ],
+                    [
+                        "2023",
+                        0,
+                        77900,
+                        77800
+                    ]
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_3d_bar": {
+        "name": "VueUi3dBar",
+        "icon": "chart3dBar",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-3d-bar",
+        "path": "/docs#vue-ui-3d-bar",
+        "description": "Visualize percentages with a 3d bar.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUi3dBarConfig",
+            "dataset": "VueUi3dBarDataset"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "series": [
+                        {
+                            "name": "Serie 1 with a long name that should be shorter but we do not have the choice",
+                            "value": 256,
+                            "breakdown": [
+                                {
+                                    "name": "Sub serie 1",
+                                    "value": 100
+                                },
+                                {
+                                    "name": "Sub serie 2",
+                                    "value": 90
+                                },
+                                {
+                                    "name": "Sub serie 3",
+                                    "value": 66
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Serie 2",
+                            "value": 128
+                        },
+                        {
+                            "name": "Serie 3",
+                            "value": 64
+                        },
+                        {
+                            "name": "Serie 4",
+                            "value": 32
+                        },
+                        {
+                            "name": "Serie 5",
+                            "value": 16
+                        },
+                        {
+                            "name": "Serie 6",
+                            "value": 8
+                        }
+                    ]
+                }
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
             }
         ]
     }
