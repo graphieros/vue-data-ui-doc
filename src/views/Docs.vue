@@ -60,6 +60,7 @@ import DocVueUiSparkTrend from "../components/docs/DocVueUiSparkTrend.vue";
 import DocVueUiStripPlot from "../components/docs/DocVueUiStripPlot.vue";
 import DocVueUiDumbbell from "../components/docs/DocVueUiDumbbell.vue";
 import DocsVueUiWordCloud from "../components/docs/DocsVueUiWordCloud.vue";
+import Schema from "../schema/Schema.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -143,7 +144,30 @@ const themeKeys = computed(() => {
     })
 })
 
+const chartKeys = computed(() => {
+    return Object.keys(mainConfig).toSorted().filter(key => {
+        return ![
+            "vue_ui_accordion",
+            "vue_ui_screenshot",
+            "vue_ui_skeleton",
+            "vue_ui_dashboard",
+            "vue_ui_annotator",
+            "vue_ui_icon",
+            "vue_ui_digits",
+            "vue_ui_cursor",
+            "vue_ui_mini_loader",
+            "vue_ui_kpi",
+            "vue_ui_rating",
+            "vue_ui_smiley",
+            "vue_ui_table_sparkline",
+            "vue_ui_table_heatmap",
+            "vue_ui_table"
+        ].includes(key)
+    })
+})
+
 const configSelect = ref('vue_ui_xy')
+const schemaSelect = ref('vue_ui_xy')
 const themeSelect = ref("vue_ui_xy")
 
 const selectedConfig = computed(() => {
@@ -829,9 +853,18 @@ onMounted(playShowcase)
 </code>
 </pre>
 </div>
-                <div class="w-full px-2 sm:px-0 sm:w-1/2 text-left mx-auto my-6 text-xs sm:text-lg">
-                    {{ translations.docs.p1[store.lang] }}
-                </div>
+
+<div class="w-full px-2 sm:px-0 sm:w-1/2 text-left mx-auto my-6 text-xs sm:text-lg">
+    {{ translations.docs.p1[store.lang] }}
+</div>
+
+<div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
+    <div class="w-full text-left text-lg">Quick chart components overview</div>
+    <div>
+        <select class="mb-4 h-8 px-2" v-model="schemaSelect"><option v-for="opt in chartKeys">{{ opt }}</option> </select>
+    </div>
+    <Schema :component="schemaSelect"/>
+</div>
 
                 <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
                     <div class="mb-4">{{ translations.getTheme[store.lang] }}</div>

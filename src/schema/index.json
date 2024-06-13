@@ -8,8 +8,17 @@
         "hasThemes": true,
         "hasSlots": true,
         "hasEmits": true,
-        "hasDataset": true,
-        "keywords": ["xy", "line", "bar", "plot"],
+        "hasExposed": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "keywords": [
+            "xy",
+            "line",
+            "bar",
+            "plot"
+        ],
         "types": {
             "config": "VueUiXyConfig",
             "dataset": "VueUiXyDatasetItem[]"
@@ -19,9 +28,21 @@
                 "dataset": [
                     {
                         "name": "Serie 1",
-                        "series": [0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144],
-                        "type": "line",
-                        "smooth": true
+                        "series": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            5,
+                            8,
+                            13,
+                            21,
+                            34,
+                            55,
+                            89,
+                            144
+                        ],
+                        "type": "line"
                     }
                 ],
                 "config": {}
@@ -107,6 +128,1269 @@
             {
                 "name": "reset-action",
                 "description": "Use this slot to customize the reset button of the zoom slider."
+            }
+        ]
+    },
+    "vue_ui_word_cloud": {
+        "name": "VueUiWordCloud",
+        "icon": "chartWordCloud",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-word-cloud",
+        "path": "/docs#vue-ui-word-cloud",
+        "description": "Visualize predominant data in word form and in a scale from largest to smallest",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiWordCloudConfig",
+            "dataset": "VueUiWordCloudDatasetItem[] | string"
+        },
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            }
+        ],
+        "examples": [
+            {
+                "dataset": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum nibh eget sem efficitur mollis. Duis aliquam, leo id varius faucibus, eros purus ultrices odio, in vestibulum lectus ante et orci. Aliquam ac viverra augue. Maecenas accumsan auctor massa, sit amet egestas diam aliquam non. Aenean dapibus neque posuere ligula porttitor egestas. In lorem felis, congue eu purus in, rhoncus porta lacus. Maecenas commodo erat at sollicitudin pharetra. In mauris odio, posuere a dui id, rutrum ornare lorem. Etiam ut tempus arcu. Maecenas orci felis, dictum et ultricies non, tristique a diam.Duis nibh risus, interdum convallis nulla ac, pharetra porttitor ligula. Donec ullamcorper tortor turpis, sit amet accumsan lectus tristique eu. Vestibulum fermentum quam non fermentum mattis. Suspendisse at bibendum tellus, nec scelerisque nibh. Sed nec sapien turpis. Sed et libero venenatis, suscipit erat non, aliquet sem. Aliquam gravida semper purus a sollicitudin.Vestibulum pretium varius pulvinar. Nulla at elit sit amet quam commodo hendrerit. Aliquam iaculis ornare velit eget congue. Sed commodo eros at quam sodales posuere. Nam scelerisque pretium est eu porttitor. Nulla ornare, mi non tempus auctor, est dolor congue velit, quis varius enim nunc ac massa. Vivamus sed neque vitae libero tincidunt faucibus. Etiam hendrerit viverra arcu, eget pretium nunc finibus quis. Suspendisse in neque ornare, auctor velit vel, imperdiet orci. Vivamus viverra ullamcorper ex vel laoreet. Ut ornare lacus sed convallis maximus. Ut mollis urna a posuere feugiat. Aenean blandit ullamcorper elit ac lacinia. Nullam gravida gravida nisl, vel scelerisque risus rutrum tincidunt. Nullam ultricies ligula elementum bibendum pharetra."
+            }
+        ]
+    },
+    "vue_ui_wheel": {
+        "name": "VueUiWheel",
+        "icon": "chartWheel",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-wheel",
+        "path": "/docs#vue-ui-wheel",
+        "description": "Visualize a percentage through a dynamic wheel-type layout.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiWheelConfig",
+            "dataset": "VueUiWheelDataset"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "percentage": 66.6
+                },
+                "config": {}
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            }
+        ]
+    },
+    "vue_ui_waffle": {
+        "name": "VueUiWaffle",
+        "icon": "chartWaffle",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-waffle",
+        "path": "/docs#vue-ui-waffle",
+        "description": "Visualize relative proportions with a representation known to be easier to grasp by the human brain.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiWaffleConfig",
+            "dataset": "VueUiWaffleDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Serie 1",
+                        "values": [
+                            100
+                        ]
+                    },
+                    {
+                        "name": "Serie 2",
+                        "values": [
+                            50
+                        ]
+                    },
+                    {
+                        "name": "Serie 3",
+                        "values": [
+                            25
+                        ]
+                    }
+                ],
+                "config": {}
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "cell",
+                "description": "Use this slot to customize cells rendering"
+            }
+        ]
+    },
+    "vue_ui_vertical_bar": {
+        "name": "VueUiVerticalBar",
+        "icon": "chartVerticalBar",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-vertical-bar",
+        "path": "/docs#vue-ui-vertical-bar",
+        "description": "Compare different categorical or discrete variables, with the option to show their breakdowns.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiVerticalBarConfig",
+            "dataset": "VueUiVerticalBarDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Serie 1",
+                        "value": 100,
+                        "children": [
+                            {
+                                "name": "serie 1 child 1",
+                                "value": 80
+                            },
+                            {
+                                "name": "serie 1 child 2",
+                                "value": 20
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Serie 2",
+                        "value": 345
+                    },
+                    {
+                        "name": "Serie 3",
+                        "value": 210
+                    },
+                    {
+                        "name": "Serie 4",
+                        "value": 188
+                    },
+                    {
+                        "name": "Serie 5",
+                        "value": 120,
+                        "children": [
+                            {
+                                "name": "Serie 5 child 1",
+                                "value": 60
+                            },
+                            {
+                                "name": "Serie 5 child 2",
+                                "value": 20
+                            },
+                            {
+                                "name": "Serie 5 child 3",
+                                "value": 40
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Sort",
+                "description": "Sort by asc or desc order",
+                "icon": "sort"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_treemap": {
+        "name": "VueUiTreemap",
+        "icon": "chartTreemap",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-treemap",
+        "path": "/docs#vue-ui-treemap",
+        "description": "Visualize a large amount of data in a hierarchical, tree-structured diagram where the size of rectangles are organized from largest to smallest.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiTreemapConfig",
+            "dataset": "VueUiTreemapDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Parent 1",
+                        "value": 100,
+                        "children": [
+                            {
+                                "name": "P1 C1",
+                                "value": 70
+                            },
+                            {
+                                "name": "P1 C2",
+                                "value": 20
+                            },
+                            {
+                                "name": "P1 C3",
+                                "value": 10
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Parent 2",
+                        "value": 110,
+                        "children": [
+                            {
+                                "name": "P2 C1",
+                                "value": 80
+                            },
+                            {
+                                "name": "P2 C2",
+                                "value": 20
+                            },
+                            {
+                                "name": "P2 C3",
+                                "value": 10
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click"
+            },
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "rect",
+                "description": "Use this slot to customize treemap cell contents."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_tiremarks": {
+        "name": "VueUiTiremarks",
+        "icon": "chartTiremarks",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-tiremarks",
+        "path": "/docs#vue-ui-tiremarks",
+        "description": "Visualize a percentage through a dynamic tiremarks-like layout.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiTiremarksConfig",
+            "dataset": "VueUiTiremarksDataset"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "percentage": 66.6
+                },
+                "config": {}
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            }
+        ]
+    },
+    "vue_ui_thermometer": {
+        "chartSize": 250,
+        "name": "VueUiThermometer",
+        "icon": "chartThermometer",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-thermometer",
+        "path": "/docs#vue-ui-thermometer",
+        "description": "A component to visualize a KPI as a temperature",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "examples": [
+            {
+                "dataset": {
+                    "value": 37,
+                    "from": -100,
+                    "to": 100,
+                    "steps": 20,
+                    "colors": {
+                        "from": "#dc3912",
+                        "to": "#3366cc"
+                    }
+                }
+            }
+        ],
+        "types": {
+            "config": "VueUiThermometerConfig",
+            "dataset": "VueUiThermometerDataset"
+        },
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            }
+        ]
+    },
+    "vue_ui_strip_plot": {
+        "name": "VueUiStripPlot",
+        "icon": "chartStripPlot",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-strip-plot",
+        "path": "/docs#vue-ui-strip-plot",
+        "description": "Visualize the distribution of many individual one-dimensional values on a single-axis scatter plot chart.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiStripPlotConfig",
+            "dataset": "VueUiStripPlotDataset[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Asia",
+                        "plots": [
+                            {
+                                "name": "Shanghai",
+                                "value": 24.9
+                            },
+                            {
+                                "name": "Beijing",
+                                "value": 21.9
+                            },
+                            {
+                                "name": "Delhi",
+                                "value": 16.8
+                            },
+                            {
+                                "name": "Guangzhou",
+                                "value": 16.1
+                            },
+                            {
+                                "name": "Istanbul",
+                                "value": 15.6
+                            },
+                            {
+                                "name": "Chengdu",
+                                "value": 15.4
+                            },
+                            {
+                                "name": "Mumbai",
+                                "value": 15.4
+                            },
+                            {
+                                "name": "Karachi",
+                                "value": 14.9
+                            },
+                            {
+                                "name": "Shenzen",
+                                "value": 14.7
+                            },
+                            {
+                                "name": "Tokyo",
+                                "value": 14
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Africa",
+                        "plots": [
+                            {
+                                "name": "Kinshasa",
+                                "value": 17.1
+                            },
+                            {
+                                "name": "Lagos",
+                                "value": 14.9
+                            },
+                            {
+                                "name": "Cairo",
+                                "value": 9.3
+                            },
+                            {
+                                "name": "Johannesburg",
+                                "value": 5.6
+                            },
+                            {
+                                "name": "Giza",
+                                "value": 5.6
+                            },
+                            {
+                                "name": "Khartoum",
+                                "value": 5.3
+                            },
+                            {
+                                "name": "Abidjan",
+                                "value": 5
+                            },
+                            {
+                                "name": "Alexandria",
+                                "value": 4.9
+                            },
+                            {
+                                "name": "Dar es Salaam",
+                                "value": 4.7
+                            },
+                            {
+                                "name": "Nairobi",
+                                "value": 4.4
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Europe",
+                        "plots": [
+                            {
+                                "name": "Moscow",
+                                "value": 13
+                            },
+                            {
+                                "name": "London",
+                                "value": 9
+                            },
+                            {
+                                "name": "Saint Petersburg",
+                                "value": 5.4
+                            },
+                            {
+                                "name": "Berlin",
+                                "value": 3.8
+                            },
+                            {
+                                "name": "Madrid",
+                                "value": 3.3
+                            },
+                            {
+                                "name": "Kyiv",
+                                "value": 3
+                            },
+                            {
+                                "name": "Rome",
+                                "value": 2.7
+                            },
+                            {
+                                "name": "Paris",
+                                "value": 2.1
+                            },
+                            {
+                                "name": "Minsk",
+                                "value": 2
+                            },
+                            {
+                                "name": "Vienna",
+                                "value": 1.9
+                            }
+                        ]
+                    },
+                    {
+                        "name": "America",
+                        "plots": [
+                            {
+                                "name": "Sao Paulo",
+                                "value": 12.2
+                            },
+                            {
+                                "name": "Lima",
+                                "value": 9.7
+                            },
+                            {
+                                "name": "Mexico City",
+                                "value": 9.2
+                            },
+                            {
+                                "name": "New York",
+                                "value": 8.4
+                            },
+                            {
+                                "name": "Bogota",
+                                "value": 8
+                            },
+                            {
+                                "name": "Rio de Janeiro",
+                                "value": 6.7
+                            },
+                            {
+                                "name": "Santiago",
+                                "value": 6.2
+                            },
+                            {
+                                "name": "Los Angeles",
+                                "value": 4
+                            },
+                            {
+                                "name": "Buenos Aires",
+                                "value": 3
+                            },
+                            {
+                                "name": "Brasilia",
+                                "value": 2.9
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Australia & Oceania",
+                        "plots": [
+                            {
+                                "name": "Sydney",
+                                "value": 5.4
+                            },
+                            {
+                                "name": "Melbourne",
+                                "value": 5.1
+                            },
+                            {
+                                "name": "Brisbane",
+                                "value": 2.6
+                            },
+                            {
+                                "name": "Perth",
+                                "value": 2.1
+                            },
+                            {
+                                "name": "Auckland",
+                                "value": 1.7
+                            },
+                            {
+                                "name": "Adelaide",
+                                "value": 1.4
+                            },
+                            {
+                                "name": "Honolulu",
+                                "value": 1
+                            },
+                            {
+                                "name": "Gold Coast",
+                                "value": 0.7
+                            },
+                            {
+                                "name": "Newcastle-Maitland",
+                                "value": 0.5
+                            },
+                            {
+                                "name": "Canberra",
+                                "value": 0.46
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            }
+        ]
+    },
+    "vue_ui_sparkstackbar": {
+        "name": "VueUiSparkStackbar",
+        "icon": "chartSparkStackbar",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-sparkstackbar",
+        "path": "/docs#vue-ui-sparkstackbar",
+        "description": "A compact way to represent proportions in a mini stacked bar chart",
+        "hasThemes": true,
+        "hasSlots": false,
+        "hasEmits": true,
+        "hasExposed": false,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "dataset": "VueUiSparkStackBarDatasetItem[]",
+            "config": "VueUiSparkStackBarConfig"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Vue",
+                        "value": 258
+                    },
+                    {
+                        "name": "Javascript",
+                        "value": 36
+                    },
+                    {
+                        "name": "Other",
+                        "value": 16
+                    }
+                ]
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits selected datapoint on click."
+            }
+        ]
+    },
+    "vue_ui_sparkline": {
+        "name": "VueUiSparkline",
+        "icon": "chartSparkline",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-sparkline",
+        "path": "/docs#vue-ui-sparkline",
+        "description": "Visualize evolution on a tiny line chart",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": false,
+        "props": [
+            "config",
+            "dataset"
+        ],
+        "types": {
+            "config": "VueUiSparklineConfig",
+            "dataset": "VueUiSparklineDatasetItem[]"
+        },
+        "examples": [
+           {
+             "dataset": [
+                {
+                    "period": "period 1",
+                    "value": 0
+                },
+                {
+                    "period": "period 2",
+                    "value": -1
+                },
+                {
+                    "period": "period 3",
+                    "value": 2
+                },
+                {
+                    "period": "period 4",
+                    "value": -3
+                },
+                {
+                    "period": "period 5",
+                    "value": 4
+                },
+                {
+                    "period": "period 6",
+                    "value": -5
+                },
+                {
+                    "period": "period 7",
+                    "value": 6
+                },
+                {
+                    "period": "period 8",
+                    "value": -7
+                },
+                {
+                    "period": "period 9",
+                    "value": 8
+                },
+                {
+                    "period": "period 10",
+                    "value": -9
+                },
+                {
+                    "period": "period 11",
+                    "value": 10
+                },
+                {
+                    "period": "period 12",
+                    "value": -11
+                },
+                {
+                    "period": "period 13",
+                    "value": 12
+                },
+                {
+                    "period": "period 14",
+                    "value": -13
+                },
+                {
+                    "period": "period 15",
+                    "value": 14
+                },
+                {
+                    "period": "period 16",
+                    "value": -15
+                },
+                {
+                    "period": "period 17",
+                    "value": 16
+                }
+             ]
+           }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "before",
+                "description": "Use this slot to customize labels for your chart: details of the selected datapoint, sum, average, median, trend, latest value."
+            }
+        ]
+    },
+    "vue_ui_sparkhistogram": {
+        "name": "VueUiSparkHistogram",
+        "icon": "chartSparkHistogram",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-sparkhistogram",
+        "path": "/docs#vue-ui-sparkhistogram",
+        "description": "A compact and flexible mini histogram component.",
+        "hasThemes": true,
+        "hasSlots": false,
+        "hasEmits": true,
+        "hasExposed": false,
+        "props": ["config", "dataset"],
+        "types": {
+            "config": "VueUiSparkHistogramConfig",
+            "dataset": "VueUiSparkHistogramDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "value": 1.2,
+                        "valueLabel": "20%",
+                        "timeLabel": "09:00",
+                        "intensity": 0.2
+                    },
+                    {
+                        "value": 1.3,
+                        "valueLabel": "50%",
+                        "timeLabel": "10:00",
+                        "intensity": 0.5
+                
+                    },
+                    {
+                        "value": 1.1,
+                        "valueLabel": "60%",
+                        "timeLabel": "11:00",
+                        "intensity": 0.6
+                
+                    },
+                    {
+                        "value": 0.8,
+                        "valueLabel": "70%",
+                        "timeLabel": "12:00",
+                        "intensity": 0.7
+                
+                    },
+                    {
+                        "value": 2,
+                        "valueLabel": "100%",
+                        "timeLabel": "13:00",
+                        "intensity": 1
+                
+                    },
+                    {
+                        "value": 2.1,
+                        "valueLabel": "100%",
+                        "timeLabel": "14:00",
+                        "intensity": 1
+                
+                    },
+                    {
+                        "value": 2.3,
+                        "valueLabel": "80%",
+                        "timeLabel": "15:00",
+                        "intensity": 0.8
+                
+                    },
+                    {
+                        "value": 2.1,
+                        "valueLabel": "70%",
+                        "timeLabel": "16:00",
+                        "intensity": 0.7
+                
+                    },
+                    {
+                        "value": 0.9,
+                        "valueLabel": "60%",
+                        "timeLabel": "17:00",
+                        "intensity": 0.6
+                
+                    },
+                    {
+                        "value": 0.7,
+                        "valueLabel": "50%",
+                        "timeLabel": "18:00",
+                        "intensity": 0.5
+                
+                    },
+                    {
+                        "value": 0.3,
+                        "valueLabel": "30%",
+                        "timeLabel": "19:00",
+                        "intensity": 0.3
+                
+                    },
+                    {
+                        "value": 0.2,
+                        "valueLabel": "20%",
+                        "timeLabel": "20:00",
+                        "intensity": 0.2
+                
+                    }
+                ]
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits selected datapoint on click."
+            }
+        ]
+    },
+    "vue_ui_sparkgauge": {
+        "chartSize": 150,
+        "name": "VueUiSparkgauge",
+        "icon": "chartGauge",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-sparkgauge",
+        "path": "/docs#vue-ui-sparkgauge",
+        "hasThemes": true,
+        "hasSlots": false,
+        "hasEmits": false,
+        "hasExposed": false,
+        "props": ["config", "dataset"],
+        "types": {
+            "dataset": "VueUiSparkgaugeDataset",
+            "config": "VueUiGaugeConfig"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "value": 8,
+                    "min": -10,
+                    "max": 10
+                }
             }
         ]
     }

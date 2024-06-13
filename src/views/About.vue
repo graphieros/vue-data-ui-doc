@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../stores";
+import Schema from "../schema/Schema.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -276,6 +277,8 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
 </script>
 
 <template>
+  <Schema/>
+  
     <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto">
       <h1 class="flex flex-row gap-4 place-items-center justify-center text-3xl text-center mb-12">
                 <img src="../assets/logo.png" class="h-6">
