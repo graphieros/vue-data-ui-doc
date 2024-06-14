@@ -12,9 +12,6 @@ type BoxProps = {
     * @description - FUKK
     */
     showEmits?: boolean
-    /**
-     * 
-     */
     showSlots?: boolean;
     showTooltip?: boolean;
     showUseCases?: boolean;
