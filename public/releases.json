@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.19",
+    "date": "2024-06-28",
+    "updates": [
+      {
+        "component": "VueUiOnion",
+        "description": "Hide : in datalabels and legend when no serie name is provided",
+        "link": "/docs#vue-ui-onion"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.18",
     "date": "2024-06-25",
     "updates": [
