@@ -123,7 +123,7 @@ function copyContent() {
 
 const configKeys = computed(() => {
     return Object.keys(mainConfig).toSorted()
-})
+});
 
 const themeKeys = computed(() => {
     return Object.keys(mainConfig).toSorted().filter(key => {
@@ -141,8 +141,8 @@ const themeKeys = computed(() => {
             "vue_ui_mini_loader",
             "vue_ui_kpi"
         ].includes(key)
-    })
-})
+    });
+});
 
 const chartKeys = computed(() => {
     return Object.keys(mainConfig).toSorted().filter(key => {
@@ -166,17 +166,17 @@ const chartKeys = computed(() => {
     })
 })
 
-const configSelect = ref('vue_ui_xy')
-const schemaSelect = ref('vue_ui_xy')
-const themeSelect = ref("vue_ui_xy")
+const configSelect = ref('vue_ui_xy');
+const schemaSelect = ref('vue_ui_xy');
+const themeSelect = ref("vue_ui_xy");
 
 const selectedConfig = computed(() => {
     return getVueDataUiConfig(configSelect.value)
-})
+});
 
 const selectedTheme = computed(() => {
     return getThemeConfig(themeSelect.value)
-})
+});
 
 const menuItems = computed(() => [
     {
@@ -730,14 +730,14 @@ const menuItems = computed(() => [
         hasTableCss: true,
         hasLegend: false
     },
-])
+]);
 
 const currentShowcase = ref('VueUiXy')
 const menuItemsCount = ref(40);
 let count = ref(0)
 const wheelerValue = computed(() => {
     return (count.value / 40) * 100
-})
+});
 
 function playShowcase() {
     setInterval(() => {
@@ -749,8 +749,8 @@ function playShowcase() {
             currentShowcase.value = `${menuItems.value[count.value] ? menuItems.value[count.value].name : 'Xy'}`
             count.value += 1;
         }
- }, 1000)
-}
+    }, 1000)
+};
 
 onMounted(playShowcase)
 
