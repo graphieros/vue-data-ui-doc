@@ -926,6 +926,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        xyCanvas: {
+                            en: 'High-performance evolution graph using a canvas, ideal for very large datasets.',
+                            fr: `Graphique d'évolution très performant utilisant un canvas, idéal pour les très grands ensembles de données.`,
+                            pt: 'Gráfico de evolução de alto desempenho usando canvas, ideal para conjuntos de dados muito grandes.',
+                            de: 'Hochleistungs-Evolutionsdiagramm mit Canvas, ideal für sehr große Datensätze.',
+                            zh: '使用画布的高性能演化图，非常适合非常大的数据集。',
+                            jp: 'キャンバスを使用した高性能の進化グラフ。非常に大規模なデータ セットに最適です。',
+                            es: 'Gráfico de evolución de alto rendimiento mediante lienzo, ideal para conjuntos de datos muy grandes.',
+                            ko: '매우 큰 데이터 세트에 이상적인 캔버스를 사용한 고성능 진화 그래프입니다.'
+                        },
                         wordCloud: {
                             en: "Visualize predominant data in word form and in a scale from largest to smallest.",
                             fr: "Visualisez les données prédominantes sous forme de mots et sur une échelle allant du plus grand au plus petit.",

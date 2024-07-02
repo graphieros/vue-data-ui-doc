@@ -48,7 +48,8 @@ import {
     VueUiQuickChart,
     VueUiStripPlot,
     VueUiTreemap,
-    VueUiWordCloud
+    VueUiWordCloud,
+    VueUiXyCanvas
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -101,5 +102,6 @@ app.component("VueUiQuickChart", VueUiQuickChart)
 app.component("VueUiStripPlot", VueUiStripPlot)
 app.component("VueUiTreemap", VueUiTreemap)
 app.component("VueUiWordCloud", VueUiWordCloud)
+app.component("VueUiXyCanvas", VueUiXyCanvas)
 
 app.mount('#app')

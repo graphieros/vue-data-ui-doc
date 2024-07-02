@@ -446,7 +446,7 @@ const componentTranslation = ref({
         <div class="flex flex-row gap-2 text-gray-500">
           {{ componentTranslation[store.lang] }}: 
           <div class="h-[22px]">
-            <VueUiDigits :dataset="50" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#5f8bee' : '#1A1A1A' }  }"/>
+            <VueUiDigits :dataset="51" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#5f8bee' : '#1A1A1A' }  }"/>
           </div>
         </div>
 

@@ -4537,5 +4537,128 @@
                 "description": "Use this slot to inject any svg element on the top layer of the chart."
             }
         ]
+    },
+    "vue_ui_xy_canvas": {
+        "name": "VueUiXyCanvas",
+        "icon": "chartLine",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-xy-canvas",
+        "path": "/docs#vue-ui-xy-canvas",
+        "description": "High-performance evolution chart using canvas, ideal for very large datasets.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiXyCanvasConfig",
+            "dataset": "VueUiXyCanvasDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Serie 1",
+                        "type": "line",
+                        "series": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            5,
+                            8,
+                            13,
+                            21,
+                            34,
+                            55,
+                            89,
+                            144
+                        ]
+                    }
+                ],
+                "config": {}
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Data labels",
+                "description": "Toggles data labels visibility.",
+                "icon": "labelOpen"
+            },
+            {
+                "name": "Data labels",
+                "description": "Toggles stacked mode.",
+                "icon": "stack"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "reset-action",
+                "description": "Use this slot to customize the reset button of the zoom slider."
+            }
+        ]
     }
 }

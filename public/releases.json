@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.21",
+    "date": "2024-07-02",
+    "updates": [
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-xy-canvas"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.19",
     "date": "2024-06-28",
     "updates": [

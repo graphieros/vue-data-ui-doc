@@ -60,6 +60,7 @@ import DocVueUiSparkTrend from "../components/docs/DocVueUiSparkTrend.vue";
 import DocVueUiStripPlot from "../components/docs/DocVueUiStripPlot.vue";
 import DocVueUiDumbbell from "../components/docs/DocVueUiDumbbell.vue";
 import DocsVueUiWordCloud from "../components/docs/DocsVueUiWordCloud.vue";
+import DocVueUiXyCanvas from "../components/docs/DocVueUiXyCanvas.vue";
 import Schema from "../schema/Schema.vue";
 
 const store = useMainStore();
@@ -187,6 +188,18 @@ const menuItems = computed(() => [
         type: "classic",
         thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: true
+    },
+    {
+        name: "XyCanvas",
+        icon: "chartLine",
+        tooltip: translations.value.docs.tooltips.xyCanvas[store.lang],
+        link: "/docs#vue-ui-xy-canvas",
+        type: "classic",
+        thumb: new URL('../assets/thumb_xy_canvas.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_xy_canvaslight.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
         hasLegend: true
@@ -816,6 +829,7 @@ onMounted(playShowcase)
             <DocVueUiStripPlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-strip-plot'" />
             <DocVueUiDumbbell v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-dumbbell'" />
             <DocsVueUiWordCloud v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-word-cloud'" />
+            <DocVueUiXyCanvas v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy-canvas'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

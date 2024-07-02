@@ -6,19 +6,17 @@ const dataset = ref([
         name: 'Serie 1',
         series: [13, 25, 29, 22, 18, 33, 16, 32, 12, 8, 23, 29],
         type: 'bar',
-        smooth: false,
         dataLabels: true
     },
     {
         name: 'Serie 2',
         series: [8, 25, 13, 29, 31, 42, 23, 29, 12, 44, 13, 20],
         type: 'line',
-        smooth: true,
         dataLabels: true
     }
 ])
 
-const config = ref({
+const config = ref({ // TODO
     bar: {
         labels: {
             show: true,
@@ -58,19 +56,19 @@ const config = ref({
     <div class="my-4 grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center w-full p-4 bg-gray-200 dark:bg-[#3A3A3A] rounded-md">
         <div class="w-full shadow-md">
             <code>theme: "" (default)</code>
-            <VueUiXy :dataset="dataset" :config="{...config, theme: ''}" />
+            <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="{...config, theme: ''}" />
         </div>
         <div class="w-full shadow-md">
             <code>theme: "zen"</code>
-            <VueUiXy :dataset="dataset" :config="{...config, theme: 'zen'}" />
+            <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="{...config, theme: 'zen'}" />
         </div>
         <div class="w-full shadow-md">
             <code>theme: "concrete"</code>
-            <VueUiXy :dataset="dataset" :config="{...config, theme: 'concrete'}" />
+            <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="{...config, theme: 'concrete'}" />
         </div>
         <div class="w-full shadow-md">
             <code>theme: "hack"</code>
-            <VueUiXy :dataset="dataset" :config="{...config, theme: 'hack'}" />
+            <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="{...config, theme: 'hack'}" />
         </div>
     </div>
 </template>
