@@ -415,6 +415,71 @@ export function useCase() {
         }
     });
 
+    const XY_CANVAS_CONFIG = computed(() => {
+        return {
+            style: {
+                fontFamily: "Satoshi",
+                chart: {
+                    backgroundColor: bgColor.value,
+                    color: textColor.value,
+                    selector: {
+                        color: textColor.value
+                    },
+                    tooltip: {
+                        backgroundColor: bgColor.value,
+                        color: textColor.value
+                    },
+                    legend: {
+                        backgroundColor: bgColor.value,
+                        color: textColor.value
+                    },
+                    grid: {
+                        y: {
+                            axisLabels: {
+                                color: textColor.value
+                            },
+                            timeLabels: {
+                                color: textColor.value
+                            }
+                        },
+                        x: {
+                            horizontalLines: {
+                                show: true,
+                                opacity: isDarkMode.value ? 5 : 20
+                            }
+                        }
+                    },
+                    line: {
+                        plots: {
+                            radiusRatio: 1
+                        }
+                    },
+                    paddingProportions: {
+                        left: 0.16
+                    }
+                }
+            }
+        }
+    })
+
+    const arr = [];
+    let incr = 50000;
+
+    for (let i = 0; i < 50000; i += 1) {
+        incr -= 1
+        arr.push(Math.random()*i*incr)
+    }
+
+    const XY_CANVAS_DS = [
+        {
+            name: 'Serie',
+            series: arr,
+            type: 'line',
+            dataLabels: false,
+            useArea: false
+        }
+    ]
+
     return {
         SPARKLINE_SLOT_DATASET,
         SPARKLINE_SLOT_CONFIG,
@@ -424,6 +489,8 @@ export function useCase() {
         XY_STACKED_CONFIG,
         XY_STACKED_DATASET,
         DONUT_PIE_CONFIG,
-        DONUT_PIE_DATASET
+        DONUT_PIE_DATASET,
+        XY_CANVAS_DS,
+        XY_CANVAS_CONFIG
     }
 }
