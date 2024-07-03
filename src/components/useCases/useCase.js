@@ -436,7 +436,8 @@ export function useCase() {
                     grid: {
                         y: {
                             axisLabels: {
-                                color: textColor.value
+                                color: textColor.value,
+                                suffix: "%"
                             },
                             timeLabels: {
                                 color: textColor.value
@@ -455,7 +456,7 @@ export function useCase() {
                         }
                     },
                     paddingProportions: {
-                        left: 0.16
+                        left: 0.08
                     }
                 }
             }
@@ -463,11 +464,11 @@ export function useCase() {
     })
 
     const arr = [];
-    let incr = 50000;
+    let incr = 20000;
 
-    for (let i = 0; i < 50000; i += 1) {
+    for (let i = 0; i < 20000; i += 1) {
         incr -= 1
-        arr.push(Math.random()*i*incr)
+        arr.push(Math.random()*0.000001*i*incr)
     }
 
     const XY_CANVAS_DS = [

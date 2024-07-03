@@ -35,7 +35,7 @@ const {
             Very large dataset
         </template>
         <template #description>
-            Performance with a dataset containing 50000 datapoints
+            Performance with a dataset containing 20000 datapoints
         </template>
     </UseCaseTitle>
     <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
