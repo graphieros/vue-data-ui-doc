@@ -75,6 +75,11 @@
                 "icon": "labelOpen"
             },
             {
+                "name": "Data labels",
+                "description": "Toggles stacked mode.",
+                "icon": "stack"
+            },
+            {
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
