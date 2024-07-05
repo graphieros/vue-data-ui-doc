@@ -4,6 +4,7 @@ import SideMenu from '../components/SideMenu.vue';
 import { useMainStore } from "../stores";
 import globalConfig from "../assets/default_configs.json";
 import staticReleases from "../../public/releases.json"
+import { createWordCloudDatasetFromPlainText } from "vue-data-ui"
 
 const store = useMainStore();
 const translations = computed(() => store.translations)
@@ -14,6 +15,8 @@ watch(() => store.isDarkMode, (val) => {
         step.value += 1;
     })
 });
+
+const done = ref(false)
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
@@ -432,6 +435,7 @@ onMounted(() => {
     isLoadingLine.value = true;
     isLoadingBar.value = true;
     store.isFetching = true;
+    done.value = false;
 
     fetch(url.value, {
         method: 'GET',
@@ -498,6 +502,8 @@ onMounted(() => {
     }).catch(err => {
         console.error(err.message);
         versionsList.value = staticReleases
+    }).finally(() => {
+      done.value = true;
     })
 });
 
@@ -1517,6 +1523,84 @@ const trendConfig = computed(() => {
 }
 })
 
+const wordCloudDataset = computed(() => {
+  const source = staticReleases.map(r => {
+    if(!r.updates || !r.updates.length) return ''
+    return r.updates.map(u => u.description + ' ').join(' ') + ' '
+  }).join(' ')
+  return createWordCloudDatasetFromPlainText(source);
+})
+
+const wordCloudConfig = computed(() => {
+  return {
+//     customPalette: [
+//   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
+//   "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A",
+//   "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C",
+//   "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5",
+//   "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1",
+//   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
+//   "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A",
+//   "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C",
+//   "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5",
+//   "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1",
+//   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
+//   "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A",
+//   "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C",
+//   "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5",
+//   "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1",
+//   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
+//   "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A",
+//   "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C",
+//   "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5",
+//   "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F", "#263238", "#ECEFF1",
+//   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
+//   "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B",
+//   "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688",
+//   "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC",
+//   "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB",
+//   "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40",
+//   "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B",
+//   "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688",
+//   "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC",
+//   "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB",
+//   "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40",
+//   "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B",
+//   "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688",
+//   "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC",
+//   "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB",
+//   "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40",
+//   "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B",
+//   "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688",
+//   "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC",
+//   "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40", "#E0F2F1", "#B2DFDB",
+//   "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40"
+// ],
+table: {
+  th: {
+    backgroundColor: isDarkMode.value ? '#1E1E1E' : '#FFFFFF',
+    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+  },
+  td: {
+    backgroundColor: isDarkMode.value ? '#1E1E1E' : '#FFFFFF',
+    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+  }
+},
+    style: {
+      chart: {
+        color: isDarkMode.value ? '#CCCCCC' : "#1A1A1A",
+        backgroundColor: isDarkMode.value ? '#1E1E1E' : '#FFFFFF',
+        height: 500,
+        width: 500,
+        words: {
+          proximity: 10,
+          packingWeight: 5
+        }
+      }
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -1581,8 +1665,16 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
                   <VueUiSparkline :dataset="JSON.parse(JSON.stringify(sparklineReleases)).reverse()" :config="sparklineConfigForReleases"/>
+                  <div style="height: 48px"/>
+                  <div class="w-full shadow-lg">
+                    <VueDataUi v-if="done" component="VueUiWordCloud" :dataset="wordCloudDataset" :config="wordCloudConfig"/>
+                  </div>
                 </div>
-                <div class="w-full max-h-[500px] overflow-y-auto">
+
+                <div class="w-full dark:bg-[#1E1E1E] p-4">
+                  Releases:
+                </div>
+                <div class="w-full max-h-[500px] overflow-y-auto dark:bg-[#1E1E1E] p-4">
                     <ul>
                         <li v-for="log in versionsList">
                             {{ log.date }} | <span class="text-app-green">{{ log.version }}</span><br>
