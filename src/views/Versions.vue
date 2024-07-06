@@ -1442,7 +1442,7 @@ const wordCloudDataset = computed(() => {
   const source = staticReleases.map(r => {
     if(!r.updates || !r.updates.length) return ''
     return r.updates.map(u => u.description + ' ').join(' ') + ' '
-  }).join(' ').toUpperCase()
+  }).join(' ')
   return createWordCloudDatasetFromPlainText(source);
 })
 
