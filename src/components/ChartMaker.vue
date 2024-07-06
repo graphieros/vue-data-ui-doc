@@ -116,7 +116,6 @@ const selectedChart = ref(options.value[0])
 
 
 const datasetItems= ref([]);
-const currentSerieValue = ref(0);
 const step = ref(0);
 
 function nuke() {
