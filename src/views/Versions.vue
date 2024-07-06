@@ -199,91 +199,6 @@ const heatmapConfig = computed(() => {
   },
 }
 })
-const sparklineReleasesConfig = computed(() => {
-  return {
-  style: {
-    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
-    color: "#2D353C",
-    fontFamily: "inherit",
-    layout: {
-      padding: {
-        top: 36,
-        right: 12,
-        bottom: 12,
-        left: 48
-      },
-      cells: {
-        height: 24,
-        value: {
-          show: false,
-          fontSize: 8,
-          bold: false,
-          roundingValue: 0,
-          color: isDarkMode.value ? '#FAFAFA' : '#1A1A1A',
-        },
-        colors: {
-          hot: "#6376DD",
-          cold: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
-          underlayer: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
-        },
-        spacing: 0,
-        selected: {
-          border: 2,
-          color: "#2D353C"
-        }
-      },
-      dataLabels: {
-        xAxis: {
-          show: false,
-          fontSize: 8,
-          color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
-          bold: false,
-          offsetX: 0,
-          offsetY: 0
-        },
-        yAxis: {
-          show: true,
-          values: [],
-          fontSize: 8,
-          color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
-          bold: false,
-          offsetY: 0,
-          offsetX: 0
-        }
-      }
-    },
-    title: {
-      text: "Releases",
-      color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
-      fontSize: 16,
-      bold: true,
-    },
-    legend: {
-      show: true,
-      backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
-      color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
-      fontSize: 6,
-      bold: true,
-      roundingValue: 0,
-      position: 'right'
-    },
-    tooltip: {
-      show: true,
-      backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
-      color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
-      fontSize: 14,
-      roundingValue: 0,
-      customFormat: ({datapoint, series}) => {
-        console.log({ datapoint, series})
-        return `<div style="border-radius:50%;background:${datapoint.color};display:flex;align-items:center;justify-content:center;height: 64px;width:64px;box-shadow:0 12px 24px -12px rgba(0,0,0,0.3)">Components affected: ${datapoint.value}</div>`
-      }
-    }
-  },
-  userOptions: {
-    show: false,
-  },
-}
-})
 
 const histoData = computed(() => {
   return (data.value || []).slice(-14).map(d => {
@@ -1527,7 +1442,7 @@ const wordCloudDataset = computed(() => {
   const source = staticReleases.map(r => {
     if(!r.updates || !r.updates.length) return ''
     return r.updates.map(u => u.description + ' ').join(' ') + ' '
-  }).join(' ')
+  }).join(' ').toUpperCase()
   return createWordCloudDatasetFromPlainText(source);
 })
 
