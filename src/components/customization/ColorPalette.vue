@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import {adaptColorToBackground} from '../maker/lib'
 import { useMainStore } from "../../stores";
 import { CheckIcon } from "vue-tabler-icons";
+import { getPalette } from "vue-data-ui";
 
 const store = useMainStore()
 const isCopy = computed(() => store.isCopy);
@@ -120,18 +121,78 @@ function copyContent(color) {
                 <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiWaffle
             </li>
             <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiWordCloud
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
                 <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiXy
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiXyCanvas
             </li>
         </ul>
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
         <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md">
             <code class="text-xs text-left">
                 import { getPalette } from "vue-data-ui";<br>
-                const palette = getPalette();
+                const palette = getPalette(); // Default palette
             </code>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in palette">
+                <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
+                    {{ color.toUpperCase() }}
+                    <div class="absolute top-0 left-1 text-xs">
+                        {{ i }}
+                    </div>
+                    <div class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md mt-12">
+            <code class="text-xs text-left">
+                import { getPalette } from "vue-data-ui";<br>
+                const palette = getPalette('zen');
+            </code>
+        </div>
+        <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
+            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('zen')">
+                <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
+                    {{ color.toUpperCase() }}
+                    <div class="absolute top-0 left-1 text-xs">
+                        {{ i }}
+                    </div>
+                    <div class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md mt-12">
+            <code class="text-xs text-left">
+                import { getPalette } from "vue-data-ui";<br>
+                const palette = getPalette('concrete');
+            </code>
+        </div>
+        <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
+            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('concrete')">
+                <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
+                    {{ color.toUpperCase() }}
+                    <div class="absolute top-0 left-1 text-xs">
+                        {{ i }}
+                    </div>
+                    <div class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md mt-12">
+            <code class="text-xs text-left">
+                import { getPalette } from "vue-data-ui";<br>
+                const palette = getPalette('hack');
+            </code>
+        </div>
+        <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
+            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('hack')">
                 <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
                     {{ color.toUpperCase() }}
                     <div class="absolute top-0 left-1 text-xs">

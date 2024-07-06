@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import { BracketsContainIcon} from "vue-tabler-icons";
+import IconSettings from "./IconSettings.vue";
 
 const store = useMainStore();
 
@@ -43,7 +44,7 @@ const activeTab = ref(props.activeTab);
         </div>
         <div tabindex="0" :class="`w-fit select-none cursor-pointer text-black dark:text-app-blue font-satoshi-bold p-3 border-b   ${activeTab === 1 ? 'bg-gray-200 dark:bg-black-100 border-b-app-blue' : 'border-b-transparent'} hover:border-b hover:border-b-app-blue`" @click="activeTab = 1" @keypress.enter="activeTab = 1">
             <div class="flex flex-row place-items-center gap-2">
-                <VueUiIcon name="settings" :size="18" :stroke="isDarkMode ? '#5f8bee' : '#1A1A1A'"/>
+                <IconSettings :stroke="isDarkMode ? '#5f8bee' : '#1A1A1A'" :size="26"/>
                 Config
             </div>
         </div>

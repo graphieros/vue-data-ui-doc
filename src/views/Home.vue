@@ -350,7 +350,9 @@ const configDonutMenu = computed(() => {
                 },
                 layout: {
                     donut: {
-                        borderWidth: 2
+                        borderWidth: 0.8,
+                        useShadow: true,
+                        shadowColor: '#000000'
                     },
                     labels: {
                       value: {

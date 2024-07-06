@@ -182,7 +182,7 @@ onUnmounted(() => {
 <template>
   <div
     :class="`z-50 text-white ${
-      props.fixed ? 'fixed' : ''
+      props.fixed ? 'fixed hidden sm:block' : ''
     } top-16 right-4 w-fit text-left`"
   >
     <form autocomplete="off" onsubmit="return false">

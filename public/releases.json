@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.28",
+    "date": "2024-07-06",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Added shadow config option",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.27",
     "date": "2024-07-06",
     "updates": [

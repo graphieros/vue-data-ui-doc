@@ -119,6 +119,8 @@ const darkModeConfig = ref({
                 donut: {
                     strokeWidth: 84,
                     borderWidth: 2,
+                    useShadow: false,
+                    shadowColor: '#1A1A1A',
                 },
             },
             legend: {
@@ -261,7 +263,9 @@ const config = ref({
                 },
                 donut: {
                     strokeWidth: 84,
-                    borderWidth: 2
+                    borderWidth: 2,
+                    useShadow: false,
+                    shadowColor: '#1A1A1A',
                 },
             },
             legend: {
@@ -688,6 +692,8 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
                     donut: {
                         strokeWidth: <input v-if="isDarkMode" type="number" min="6" max="100" v-model="mutableConfigDarkMode.style.chart.layout.donut.strokeWidth"><input v-else type="number" min="6" max="100" v-model="mutableConfig.style.chart.layout.donut.strokeWidth">, (default: 64)
                         borderWidth: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.style.chart.layout.donut.borderWidth"><input v-else type="number" min="0" max="12" v-model="mutableConfig.style.chart.layout.donut.borderWidth">, (default: 2)
+                        useShadow: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.donut.useShadow" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.donut.useShadow" @change="forceChartUpdate()">, (default: false)
+                        shadowColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.donut.shadowColor"><input v-else type="color" v-model="mutableConfig.style.chart.layout.donut.shadowColor">, (default: "#2D353C")
                     }
                 },
                 legend: {
