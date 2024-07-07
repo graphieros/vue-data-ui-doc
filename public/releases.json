@@ -1,5 +1,31 @@
 [
   {
+    "version": "v 2.2.29",
+    "date": "2024-07-07",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added shadow config options for donut",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added shadow config options",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Fixed shape fill on certain icons",
+        "link": "/docs#vue-ui-icon"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Line and plot types plots radius increase on hover",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.28",
     "date": "2024-07-06",
     "updates": [

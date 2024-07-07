@@ -114,6 +114,8 @@ const config = ref({
     donutTotalLabelFontSize: 24,
     donutTotalLabelOffsetY: 0,
     donutTotalLabelText: "Total",
+    donutUseShadow: false,
+    donutShadowColor: '#1A1A1A',
     fontFamily: "inherit",
     height: 338,
     legendFontSize: 12,
@@ -185,6 +187,8 @@ const darkModeConfig = ref({
     donutTotalLabelFontSize: 24,
     donutTotalLabelOffsetY: 0,
     donutTotalLabelText: "Total",
+    donutUseShadow: false,
+    donutShadowColor: '#1A1A1A',
     fontFamily: "inherit",
     height: 338,
     legendFontSize: 12,
@@ -610,6 +614,8 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     donutThicknessRatio: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0.05" step="0.01" max="0.4" v-model="mutableConfigDarkMode.donutThicknessRatio"><input v-else type="range" class="accent-app-blue" min="0.01" step="0.01" max="0.4" v-model="mutableConfig.donutThicknessRatio">, (default: 0.18)
     donutTotalLabelFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.donutTotalLabelFontSize"><input v-else type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.donutTotalLabelFontSize">, (default: 24)
     donutTotalLabelText: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.donutTotalLabelText"><input v-else type="text" v-model="mutableConfig.donutTotalLabelText">, (default: "Total")
+    donutUseShadow: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.donutUseShadow" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.donutUseShadow" @change="forceChartUpdate()">, (default: false)
+    donutShadowColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.donutShadowColor"><input v-else type="color" v-model="mutableConfig.donutShadowColor">, (default: "#2D353C")
     fontFamily: "inherit",
     height: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="100" max="600" v-model="mutableConfigDarkMode.height"><input v-else type="range" class="accent-app-blue" min="100" max="600" v-model="mutableConfig.height">, (default: 338)
     legendFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.legendFontSize"><input v-else type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.legendFontSize">, (default: 12)

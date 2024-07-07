@@ -2225,6 +2225,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.donut.strokeWidth', def: 200, type: 'range', min: 100, max: 200, label: 'width', category: 'donut' },
                     { key: 'style.chart.layout.donut.borderWidth', def: 2, type: 'range', min: 0, max: 24, step: 0.1, label: ['border', 'is', 'thickness'], category: 'donut' },
                     { key: 'style.chart.layout.donut.spacingRatio', def: 0.5, type: 'range', min: 0.1, max: 1, step: 0.01, label: 'spacing', category: 'donut' },
+                    { key: 'style.chart.layout.donut.useShadow', def: false, type: 'checkbox', label: ['shadow', 'is', 'show'], category: 'donut'},
+                    { key: 'style.chart.layout.donut.shadowColor', def: '#1A1A1A', type: 'color', label: ['shadow', 'is', 'color'], category: 'donut'},
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend' },
                     { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend' },
