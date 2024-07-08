@@ -1438,12 +1438,47 @@ const trendConfig = computed(() => {
 }
 })
 
+const uselessWords = ref([
+  "A",
+  "IT",
+  "SO",
+  "AT",
+  "ARE",
+  "A",
+  "IN",
+  "OR",
+  "NOT",
+  "0",
+  "1",
+  "IF",
+  "AND",
+  "BY",
+  "AN",
+  "S",
+  "D",
+  "IS",
+  "FOR",
+  "AS",
+  "HAS",
+  "BE",
+  "TO",
+  "THE",
+  "OF",
+  "ON",
+  "NO",
+  "WHEN"
+])
+
 const wordCloudDataset = computed(() => {
   const source = staticReleases.map(r => {
     if(!r.updates || !r.updates.length) return ''
     return r.updates.map(u => u.description + ' ').join(' ') + ' '
   }).join(' ')
-  return createWordCloudDatasetFromPlainText(source);
+  return createWordCloudDatasetFromPlainText(source).filter(ds => {
+    if(!uselessWords.value.includes(ds.name.toUpperCase())) {
+      return ds
+    }
+  })
 })
 
 const wordCloudConfig = computed(() => {

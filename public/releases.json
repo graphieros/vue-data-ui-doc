@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.30",
+    "date": "2024-07-07",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Set pointer events to none on selector (highlighter.useLine) to avoid tooltip blinking effect when hovering right on the selector",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.29",
     "date": "2024-07-07",
     "updates": [
