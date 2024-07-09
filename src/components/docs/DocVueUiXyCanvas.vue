@@ -453,6 +453,7 @@ function fixChart() {
             suffix?: string;
             rounding?: number;
             autoScaling?: boolean;
+            stackRatio?: number; // if used on all datapoints, must sum up to 1
         },
         {...}
     ]
