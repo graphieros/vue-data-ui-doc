@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.33",
+    "date": "2024-07-09",
+    "updates": [
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Stack mode : added individual height support",
+        "link": "/docs#vue-ui-xxy-canvas"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.31",
     "date": "2024-07-08",
     "updates": [

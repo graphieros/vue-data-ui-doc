@@ -64,7 +64,7 @@ const config = ref({
             color: "#2D353C",
             aspectRatio: "14 / 9",
             stacked: false,
-            stackGapRatio: 0.8,
+            stackGap: 20,
             scale: {
                 ticks: 10
             },
@@ -214,7 +214,7 @@ const darkModeConfig = ref({
             color: "#CCCCCC",
             aspectRatio: "14 / 9",
             stacked: false,
-            stackGapRatio: 0.8,
+            stackGap: 20,
             scale: {
                 ticks: 10
             },
@@ -452,6 +452,7 @@ function fixChart() {
             prefix?: string;
             suffix?: string;
             rounding?: number;
+            autoScaling?: boolean;
         },
         {...}
     ]
@@ -524,7 +525,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyCanvasConfig</s
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color" @input="forceChartUpdate"><input v-else type="color" v-model="mutableConfig.style.chart.color" @input="forceChartUpdate">, (default:"#2D353C")
             aspectRatio: <input type="text" v-if="isDarkMode" v-model="mutableConfigDarkMode.style.chart.aspectRatio" @change="forceChartUpdate"><input v-else type="text" v-model="mutableConfig.style.chart.aspectRatio" @change="forceChartUpdate" >, (default: "12 / 9")
             stacked: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.stacked" @change="forceChartUpdate"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.stacked" @change="forceChartUpdate">, (default: true)
-            stackGapRatio: <input v-if="isDarkMode" type="number" min="0" max="1" step="0.01" v-model="mutableConfigDarkMode.style.chart.stackGapRatio" @change="forceChartUpdate"><input v-else type="number" min="0" max="1" step="0.01" v-model="mutableConfig.style.chart.stackGapRatio" @change="forceChartUpdate">, (default: 0.8)
+            stackGap: <input v-if="isDarkMode" type="number" min="0" max="1" step="0.01" v-model="mutableConfigDarkMode.style.chart.stackGap" @change="forceChartUpdate"><input v-else type="number" min="0" max="1" step="0.01" v-model="mutableConfig.style.chart.stackGap" @change="forceChartUpdate">, (default: 20)
             scale: {
                 ticks: <input v-if="isDarkMode" type="number" min="2" max="20" v-model="mutableConfigDarkMode.style.chart.scale.ticks" @change="forceChartUpdate"><input v-else type="number" min="2" max="20" v-model="mutableConfig.style.chart.scale.ticks" @change="forceChartUpdate">, (default: 10)
             },
