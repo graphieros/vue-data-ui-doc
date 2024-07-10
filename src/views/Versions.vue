@@ -340,11 +340,11 @@ const xyConfig = computed({
     }
   },
   set(v) {
-    return v
+    return v;
   }
-})
+});
 
-const xyDataset = ref([])
+const xyDataset = ref([]);
 
 onMounted(() => {
     isLoadingLine.value = true;
