@@ -40,6 +40,7 @@ const {
     </UseCaseTitle>
     <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
         <VueDataUi
+            v-if="!!XY_CANVAS_DS"
             component="VueUiXyCanvas" 
             :dataset="XY_CANVAS_DS"
             :config="XY_CANVAS_CONFIG"

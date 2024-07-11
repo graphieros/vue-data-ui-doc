@@ -419,7 +419,7 @@ function fixChart() {
                     <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
                 </button>
             </div>
-            <VueDataUi component="VueUiXyCanvas" :dataset="dataset"
+            <VueDataUi v-if="!!dataset" component="VueUiXyCanvas" :dataset="dataset"
                 :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
