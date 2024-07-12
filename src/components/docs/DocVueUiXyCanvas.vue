@@ -1,11 +1,10 @@
 <script setup>
 import { ref, watch, nextTick, computed } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon, ThumbUpIcon, ThumbDownIcon } from "vue-tabler-icons";
+import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue";
 import ucXyCanvas from "../../components/useCases/ux-xy-canvas.vue"
 import ThemesVueUiXyCanvas from "../themes/ThemesVueUiXyCanvas.vue";
 
