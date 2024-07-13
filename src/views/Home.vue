@@ -8,8 +8,6 @@ import DeepSearch from "../components/DeepSearch.vue";
 import router from "../router"
 import staticReleases from "../../public/releases.json"
 
-// TODO: add effect on crosshairs lines
-
 const store = useMainStore();
 function changeTheme() {
     if (localStorage.theme === "dark"){
