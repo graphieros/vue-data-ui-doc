@@ -2,9 +2,7 @@
 import { computed, ref, onMounted } from "vue";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
-import { BrightnessUpIcon, MoonIcon, LanguageIcon, StarFilledIcon, ToolIcon } from "vue-tabler-icons";
-import AppSkeletons from "../components/AppSkeletons.vue";
-import DeepSearch from "../components/DeepSearch.vue";
+import { BrightnessUpIcon, MoonIcon, StarFilledIcon } from "vue-tabler-icons";
 import router from "../router"
 import staticReleases from "../../public/releases.json"
 
