@@ -873,7 +873,9 @@ onMounted(playShowcase)
 </div>
 
 <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
-    <div class="w-full text-left text-lg">Quick chart components overview</div>
+    <div class="w-full text-left text-lg">
+        {{ translations.overview.title[store.lang] }}
+    </div>
     <div>
         <select class="mb-4 h-8 px-2" v-model="schemaSelect"><option v-for="opt in chartKeys">{{ opt }}</option> </select>
     </div>

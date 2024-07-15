@@ -13,6 +13,10 @@ const isDarkMode = computed(() => {
     return store.isDarkMode
 })
 
+const translations = computed(() => {
+    return store.translations
+})
+
 const props = defineProps({
     component: {
         type: String,
@@ -41,8 +45,8 @@ onMounted(() => {
             <VueUiIcon :name="selectedComponent.icon" :stroke="isDarkMode ? '#FFFFFF' : '#1A1A1A'"/>
         </div>
         <div class="mb-4">
-            <BaseText label="Component" :text="`${selectedComponent.name}`" />
-            <BaseText label="Description" :text="selectedComponent.description" />
+            <BaseText :label="translations.overview.component[store.lang]" :text="`${selectedComponent.name}`" />
+            <BaseText :label="translations.overview.description[store.lang]" :text="selectedComponent.description" />
             <BaseText v-if="selectedComponent.props.includes('dataset')" label="Dataset TS type" isCode :text="selectedComponent.types.dataset" />
             <BaseText v-if="selectedComponent.props.includes('dataset')" label="Config TS type" isCode :text="selectedComponent.types.config" />
             <div class="mt-8">
@@ -53,14 +57,14 @@ onMounted(() => {
 
         <table class="schema table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left">
-                Features
+                {{ translations.overview.features[store.lang] }}
             </caption>
             <thead>
                 <tr class="bg-[#FFFFFF05]">
-                    <th class="border border-slate-600 p-2">Themes</th>
+                    <th class="border border-slate-600 p-2">{{ translations.overview.themes[store.lang] }}</th>
                     <th class="border border-slate-600 p-2">Slots</th>
                     <th class="border border-slate-600 p-2">Emits</th>
-                    <th class="border border-slate-600 p-2">Exposed methods</th>
+                    <th class="border border-slate-600 p-2">{{ translations.overview.exposedMethods[store.lang] }}</th>
                 </tr>
 
             </thead>
@@ -92,12 +96,12 @@ onMounted(() => {
 
         <table v-if="selectedComponent.userOptions" class="table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left">
-                User options
+                {{ translations.overview.userOptions[store.lang] }}
             </caption>
             <thead>
                 <tr class="bg-[#FFFFFF05]">
-                    <th class="border border-slate-600 p-2">Icon</th>
-                    <th class="border border-slate-600 p-2">Description</th>
+                    <th class="border border-slate-600 p-2">{{ translations.overview.icon[store.lang] }}</th>
+                    <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -121,7 +125,7 @@ onMounted(() => {
             <thead>
                 <tr class="bg-[#FFFFFF05]">
                     <th class="border border-slate-600 p-2">Slot</th>
-                    <th class="border border-slate-600 p-2">Description</th>
+                    <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -143,7 +147,7 @@ onMounted(() => {
             <thead>
                 <tr class="bg-[#FFFFFF05]">
                     <th class="border border-slate-600 p-2">Emit</th>
-                    <th class="border border-slate-600 p-2">Description</th>
+                    <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -160,12 +164,12 @@ onMounted(() => {
 
         <table v-if="selectedComponent.exposed" class="table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left">
-                Exposed methods
+                {{ translations.overview.exposedMethods[store.lang] }}
             </caption>
             <thead>
                 <tr class="bg-[#FFFFFF05]">
                     <th class="border border-slate-600 p-2">Method</th>
-                    <th class="border border-slate-600 p-2">Description</th>
+                    <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -180,7 +184,7 @@ onMounted(() => {
             </tbody>
         </table>
 
-        <div class="mb-2">Basic rendering:</div>
+        <div class="mb-2">{{ translations.overview.basicRendering[store.lang] }}</div>
         <div :class="`w-full mx-auto p-4 bg-white ${selectedComponent.chartSize ? `max-w-[${selectedComponent.chartSize}px]` : ''}`" v-for="example in selectedComponent.examples">
             <VueDataUi :component="selectedComponent.name" :dataset="example.dataset" :config="example.config"/>
         </div>
@@ -199,7 +203,7 @@ onMounted(() => {
             }"
         >
             <template #title>
-                View sample dataset
+                {{ translations.overview.viewSampleDataset[store.lang] }}
             </template>
             <template #content>
                 <code class="language-javascript" style="white-space: pre-wrap; background: transparent">

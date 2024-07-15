@@ -23,6 +23,108 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                overview: {
+                    icon: {
+                        en: 'Icon',
+                        fr: 'Icone',
+                        pt: 'Ícone',
+                        de: 'Symbol',
+                        zh: '图标',
+                        jp: 'アイコン',
+                        es: 'Icono',
+                        ko: '상'
+                    },
+                    userOptions: {
+                        en: 'User options',
+                        fr: 'Options utilisateur',
+                        pt: 'Opções do usuário',
+                        de: 'Benutzeroptionen',
+                        zh: '用户选项',
+                        jp: 'ユーザーオプション',
+                        es: 'Opciones de usuario',
+                        ko: '사용자 옵션'
+                    },
+                    themes: {
+                        en: 'Themes',
+                        fr: 'Themes',
+                        pt: 'Temas',
+                        de: 'Themen',
+                        zh: '主题',
+                        jp: 'テーマ',
+                        es: 'Temas',
+                        ko: '테마'
+                    },
+                    component: {
+                        en: 'Component',
+                        fr: "Composant",
+                        pt: 'Componente',
+                        de: 'Komponente',
+                        zh: '成分',
+                        jp: '成分',
+                        es: 'Componente',
+                        ko: '요소'
+                    },
+                    description: {
+                        en: 'Description',
+                        fr: "Description",
+                        pt: 'Descrição',
+                        de: 'Beschreibung',
+                        zh: '描述',
+                        jp: '説明',
+                        es: 'Descripción',
+                        ko: '설명'
+                    },
+                    features: {
+                        en: 'Features',
+                        fr: "Caractéristiques",
+                        pt: 'Características',
+                        de: 'Merkmale',
+                        zh: '特征',
+                        jp: '特徴',
+                        es: 'Características',
+                        ko: '특징'
+                    },
+                    exposedMethods: {
+                        en: 'Exposed methods',
+                        fr: "Méthodes exposées",
+                        pt: 'Métodos expostos',
+                        de: 'Offengelegte Methoden',
+                        zh: '暴露方法',
+                        jp: '公開されたメソッド',
+                        es: 'Métodos expuestos',
+                        ko: '노출된 방법'
+                    },
+                    basicRendering: {
+                        en: 'Basic rendering',
+                        fr: "Rendu de base",
+                        pt: 'Renderização básica',
+                        de: 'Grundlegendes Rendering',
+                        zh: '基础渲染',
+                        jp: '基本レンダリング',
+                        es: 'Representación básica',
+                        ko: '기본 렌더링'
+                    },
+                    viewSampleDataset: {
+                        en: 'View sample dataset',
+                        fr: "Afficher un exemple d'ensemble de données",
+                        pt: 'Ver conjunto de dados de amostra',
+                        de: 'Beispieldatensatz ansehen',
+                        zh: '查看示例数据集',
+                        jp: 'サンプル データセットを表示する',
+                        es: 'Ver conjunto de datos de muestra',
+                        ko: '샘플 데이터세트 보기'
+                    },
+                    title: {
+                        en: 'Quick components overview',
+                        fr: 'Présentation rapide des composants',
+                        pt: 'Visão geral rápida dos componentes',
+                        de: 'Schneller Komponentenüberblick',
+                        zh: '组件快速概览',
+                        jp: 'コンポーネントの簡単な概要',
+                        es: 'Descripción rápida de los componentes',
+                        ko: '빠른 구성 요소 개요'
+                    }
+                },
                 wordCloud: {
                     dataset: {
                         en: "You can pass plain text into the dataset prop. The component will compute the word counts. You can also import the method 'createWordCloudDatasetFromPlainText' from 'vue-data-ui' to convert plain text into a dataset object to pass to the 'dataset' prop.",
