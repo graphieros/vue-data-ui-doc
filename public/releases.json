@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.38",
+    "date": "2024-07-15",
+    "updates": [
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Added skeleton loader fallback when dataset is absent or empty",
+        "link": "/docs#vue-ui-xxy-canvas"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.35",
     "date": "2024-07-09",
     "updates": [
