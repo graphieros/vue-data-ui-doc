@@ -1,4 +1,94 @@
 {
+    "vue_ui_flow": {
+        "name": "VueUiFlow",
+        "icon": "chartFlow",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-flow",
+        "path": "/docs#vue-ui-flow",
+        "description": "Classic Sankey diagram in which the width of the links is proportional to the flow depicted,used in particular to visualize process energy flows.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiFlowConfig",
+            "dataset": "VueUiFlowDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    ["A1", "B1", 10],
+                    ["A1", "B2", 10],
+                    ["B1", "C1", 5],
+                    ["B1", "C2", 5],
+                    ["B1", "C3", 5],
+                    ["B1", "C4", 5],
+                    ["A2", "B1", 10],
+                    ["B2", "C5", 10],
+                    ["C3", "D1", 2],
+                    ["C4", "D1", 2],
+                    ["C5", "D1", 2],
+                    ["C2", "D2", 2],
+                    ["C3", "D2", 1]
+                ]
+            }
+        ],
+        "config": {},
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            }
+        ]
+    },
     "vue_ui_xy": {
         "name": "VueUiXy",
         "icon": "chartLine",
@@ -4613,7 +4703,7 @@
                 "icon": "labelOpen"
             },
             {
-                "name": "Data labels",
+                "name": "Stack mode",
                 "description": "Toggles stacked mode.",
                 "icon": "stack"
             },

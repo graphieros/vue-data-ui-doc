@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.2.39",
+    "date": "2024-07-19",
+    "updates": [
+      {
+        "component": "VueUiFLow",
+        "description": "Added new chart component",
+        "link": "/docs#vue-ui-flow"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Added new chartFlow icon",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.38",
     "date": "2024-07-15",
     "updates": [

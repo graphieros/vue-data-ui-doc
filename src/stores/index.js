@@ -1028,6 +1028,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        flow: {
+                            en: "Classic Sankey diagram in which the width of the links is proportional to the flow depicted,used in particular to visualize process energy flows.",
+                            fr: "Diagramme de Sankey classique dans lequel la largeur des liens est proportionnelle au flux représenté, utilisé notamment pour visualiser les flux d'énergie des procédés.",
+                            pt: "Diagrama clássico de Sankey em que a largura dos links é proporcional ao fluxo representado, usado principalmente para visualizar fluxos de energia do processo.",
+                            de: "Klassisches Sankey-Diagramm, bei dem die Breite der Glieder proportional zum dargestellten Fluss ist, wird insbesondere zur Visualisierung von Prozessenergieflüssen verwendet.",
+                            zh: "经典桑基图，其中链接的宽度与所描绘的流量成正比，特别用于可视化过程能量流。",
+                            jp: "リンクの幅が描かれた流れに比例する古典的なサンキー ダイアグラム。特にプロセス エネルギー フローを視覚化するために使用されます。",
+                            es: "Diagrama clásico de Sankey en el que el ancho de los enlaces es proporcional al flujo representado, utilizado en particular para visualizar los flujos de energía del proceso.",
+                            ko: "링크의 폭이 묘사된 흐름에 비례하는 클래식 Sankey 다이어그램은 특히 프로세스 에너지 흐름을 시각화하는 데 사용됩니다."
+                        },
                         xyCanvas: {
                             en: 'High-performance evolution graph using a canvas, ideal for very large datasets.',
                             fr: `Graphique d'évolution très performant utilisant un canvas, idéal pour les très grands ensembles de données.`,

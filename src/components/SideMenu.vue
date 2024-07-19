@@ -315,6 +315,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
     },
     {
+        route: '/docs#vue-ui-flow',
+        icon: 'chartFlow',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'flow',
+        thumb: new URL('../assets/thumb_flow.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_flow_light.png', import.meta.url).href,
+    },
+    {
         route: '/docs#vue-ui-sparkline',
         icon: 'chartSparkline',
         cssClasses: '',
@@ -564,6 +573,7 @@ const sideMenuItems = ref([
             {route: '/docs#vue-ui-strip-plot', componentName: 'StripPlot', icon: 'chartStripPlot' },
             {route: '/docs#vue-ui-dumbbell', componentName: 'Dumbbell', icon: 'chartDumbbell' },
             {route: '/docs#vue-ui-word-cloud', componentName: 'WordCloud', icon: 'chartWordCloud' },
+            {route: '/docs#vue-ui-flow', componentName: 'Flow', icon: 'chartFlow' },
         ]
     },
     {

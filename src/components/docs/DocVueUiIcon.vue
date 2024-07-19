@@ -50,6 +50,7 @@ const specialIcons = ref([
     "chartDonut",
     "chartDonutEvolution",
     "chartDumbbell",
+    "chartFlow",
     "chartGalaxy",
     "chartGauge",
     "chartHeatmap",
