@@ -262,10 +262,10 @@ function fixChart() {
                 <CopyIcon /> {{ translations.docs.copyDefaultConfig[store.lang]}}
             </button>
             <GitHubLink link="vue-ui-flow" />
-            <!-- <MakerLink to="VueUiDonut"/> -->
+            <!-- <MakerLink to="VueUiFlow"/> -->
         </div>
 
-        <Box showSlots showThemes>
+        <Box showSlots showThemes showEmits>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -285,7 +285,7 @@ function fixChart() {
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>
-const <span class="text-black dark:text-app-green">dataset: VueUiFLowDatasetItem[]</span> = [
+const <span class="text-black dark:text-app-green">dataset: VueUiFlowDatasetItem[]</span> = [
     ['A1', 'B1', 10],
     ['A1', 'B2', 10],
     ['B1', 'C1', 5],
@@ -392,6 +392,85 @@ const <span class="text-app-blue">config: VueUiFlowConfig</span> = {
 }
 </code>
 </pre>                
+            </template>
+
+            <template #tab2>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>getData</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
+    <pre>
+    <span class="text-black dark:text-app-green">Using composition API:</span>
+    <code>
+        <span class="text-gray-400">&lt;script setup&gt;</span>
+            import { ref, onMounted } from "vue";
+
+            const flowChart = ref(null);
+            const flowDataset = ref([]);
+
+            onMounted(() => {
+                flowDataset.value = flowChart.value.getData();
+            });
+
+            const config = ref({
+                <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
+            });
+            const dataset = ref([
+                <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
+            ]);
+
+        <span class="text-gray-400">&lt;/script&gt;</span>
+
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiFlow
+                ref="flowChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+    </code>
+    <span class="text-black dark:text-app-green">Using options API:</span>
+    <code>
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiFlow
+                ref="flowChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+
+        <span class="text-gray-400">&lt;script&gt;</span>
+            export default {
+                data() {
+                    return {
+                        flowDataset: [],
+                        config: {
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
+                        },
+                        dataset: [
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
+                        ]
+                    }
+                },
+                mounted () {
+                    this.flowDataset = this.$refs.flowChart.getData();
+                }
+            }
+        <span class="text-gray-400">&lt;/script&gt;</span>
+    </code>
+    </pre>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generatePdf</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generatePdf[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generateCsv</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateCsv[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generateImage</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
+                </div>
+                </div>
             </template>
 
             <!-- SLOTS -->
