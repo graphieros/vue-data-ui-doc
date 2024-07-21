@@ -5,6 +5,7 @@ import { useMainStore } from "../stores";
 import { BrightnessUpIcon, MoonIcon, StarFilledIcon } from "vue-tabler-icons";
 import router from "../router"
 import staticReleases from "../../public/releases.json"
+import configs from "../assets/default_configs.json";
 
 const store = useMainStore();
 function changeTheme() {
@@ -24,6 +25,8 @@ const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => {
   return store.translations;
 });
+
+const componentsLen = computed(() => Object.keys(configs).length + 1)
 
 const languageOptions = ref([
   { value: "en", text: "English" },
@@ -444,7 +447,7 @@ const componentTranslation = ref({
         <div class="flex flex-row gap-2 text-gray-500">
           {{ componentTranslation[store.lang] }}: 
           <div class="h-[22px]">
-            <VueUiDigits :dataset="51" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#5f8bee' : '#1A1A1A' }  }"/>
+            <VueUiDigits :dataset="componentsLen" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#5f8bee' : '#1A1A1A' }  }"/>
           </div>
         </div>
 
