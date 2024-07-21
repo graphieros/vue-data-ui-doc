@@ -262,7 +262,7 @@ function fixChart() {
                 <CopyIcon /> {{ translations.docs.copyDefaultConfig[store.lang]}}
             </button>
             <GitHubLink link="vue-ui-flow" />
-            <!-- <MakerLink to="VueUiFlow"/> -->
+            <MakerLink to="VueUiFlow"/>
         </div>
 
         <Box showSlots showThemes showEmits>

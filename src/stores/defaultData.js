@@ -3,6 +3,52 @@ import { defineStore } from "pinia";
 export const useDefaultDataStore = defineStore('defaultData', {
     state: () => {
         return {
+            vue_ui_flow: {
+                dataset: [
+                    ['A1', 'B1', 10],
+                    ['A1', 'B2', 10],
+                    ['A2', 'B2', 5]
+                ],
+                model: [
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
+                    { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
+                    { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
+                    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
+                    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
+                    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title' },
+                    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title' },
+                    { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle' },
+                    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle' },
+                    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'subtitle' },
+                    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
+                    { key: 'style.chart.nodes.gap', def: 10, type: 'number', min: 0, max: 100, label: ['gap'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.minHeight', def: 20, type: 'number', min: 10, max: 100, label: ['height', 'is', 'min'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.width', def: 40, type: 'number', min: 10, max: 100, label: ['width'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.labels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'datapoints' },
+                    { key: 'style.chart.nodes.labels.abbreviation.use', def: true, type: 'checkbox', label: ['abbreviation', 'is', 'use'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.labels.abbreviation.length', def: 3, type: 'number', min: 1, max: 12, label: ['abbreviation', 'is', 'length'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.labels.prefix', def: '', type: 'text', label: ['prefix'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.labels.suffix', def: '', type: 'text', label: ['suffix'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.labels.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'datapoints'},
+                    { key: 'style.chart.links.width', def: 200, type: 'number', min: 0, max: 500, label: ['link', 'is', 'width'], category: 'datapoints'},
+                    { key: 'style.chart.links.opacity', def: 0.8, type: 'number', min: 0, max: 1, step: 0.01, label: ['link', 'is', 'opacity'], category: 'datapoints'},
+                    { key: 'style.chart.links.stroke', def: '#FFFFFF', type: 'color', label: ['link', 'border', 'is', 'color'], category: 'datapoints'},
+                    { key: 'style.chart.links.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['link', 'border', 'is', 'thickness'], category: 'datapoints'},
+                    { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
+                    { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
+                    { key: 'table.columnNames.source', def: 'Source', type: 'text', label: ['columnName', 'is', 'source'], category: 'table' },
+                    { key: 'table.columnNames.target', def: 'Target', type: 'text', label: ['columnName', 'is', 'target'], category: 'table' },
+                    { key: 'table.columnNames.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table' },
+                    { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table' },
+                    { key: 'table.th.color', def: '#1A1A1A', type: 'color', label: 'textColorHeader', category: 'table' },
+                    { key: 'table.th.outline', def: 'none', type: 'text', label: 'outlineHeader', category: 'table' },
+                    { key: 'table.td.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorRow', category: 'table' },
+                    { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', category: 'table' },
+                    { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table' },
+                ],
+            },
             vue_ui_xy: {
                 dataset: [
                     {
