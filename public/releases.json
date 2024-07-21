@@ -22,7 +22,7 @@
       {
         "component": "VueUiXyCanvas",
         "description": "Added skeleton loader fallback when dataset is absent or empty",
-        "link": "/docs#vue-ui-xxy-canvas"
+        "link": "/docs#vue-ui-xy-canvas"
       }
     ]
   },
@@ -33,7 +33,7 @@
       {
         "component": "VueUiXyCanvas",
         "description": "Fixed various issues",
-        "link": "/docs#vue-ui-xxy-canvas"
+        "link": "/docs#vue-ui-xy-canvas"
       }
     ]
   },
@@ -44,7 +44,7 @@
       {
         "component": "VueUiXyCanvas",
         "description": "Stack mode : added individual height support",
-        "link": "/docs#vue-ui-xxy-canvas"
+        "link": "/docs#vue-ui-xy-canvas"
       }
     ]
   },
