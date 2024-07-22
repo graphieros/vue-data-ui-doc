@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.40",
+    "date": "2024-07-22",
+    "updates": [
+      {
+        "component": "VueUiScreenshot",
+        "description": "Centered starting position",
+        "link": "/docs#vue-ui-screenshot"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.39",
     "date": "2024-07-19",
     "updates": [
