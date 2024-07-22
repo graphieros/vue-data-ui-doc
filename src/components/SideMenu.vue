@@ -529,7 +529,8 @@ const thisApp = computed(() => {
     return document.getElementById("app")
 })
 
-const sideMenuItems = ref([
+const sideMenuItems = computed(() => {
+    return [
     {
         title: translations.value.sideMenu.miniCharts[store.lang],
         items: [
@@ -612,7 +613,8 @@ const sideMenuItems = ref([
             { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' },
         ]
     },
-])
+]
+})
 
 </script>
 

@@ -44,7 +44,7 @@ const position = computed(() => {
     <div
         ref="tooltip"
         data-cy="tooltip"
-        class="vue-data-ui-tooltip"
+        class="vue-data-ui-tooltip hidden sm:block"
         v-if="show"
         :style="`top:${position.top}px;left:${position.left}px;background:${props.backgroundColor};color:${props.color};max-width:${props.maxWidth}`"
     >
