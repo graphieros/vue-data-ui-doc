@@ -1,5 +1,20 @@
 [
   {
+    "version": "v 2.2.41",
+    "date": "2024-07-23",
+    "updates": [
+      {
+        "component": "VueUiDashboard",
+        "description": "Added a togglable lock config option",
+        "link": "/docs#vue-ui-dashboard"
+      },
+      {
+        "component": "VueDataUi",
+        "description": "Applied VueUiDashboard improvements"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.40",
     "date": "2024-07-22",
     "updates": [

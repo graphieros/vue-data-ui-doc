@@ -19,6 +19,7 @@ watch(() => store.isDarkMode, (val) => {
 
 const config = ref(
     {
+    locked: false,
     style: {
         board: {
             backgroundColor: "#FFFFFF",
@@ -65,10 +66,10 @@ function copyToClipboard(conf) {
 
 const dashboardComponents = computed(() => {
     return [
-        { id: 1, width: 55, height: 25, left: 3, top: 2, component: 'VueUiXy', props: { config: xyConfig, dataset: xyDataset}},
+        { id: 1, width: 50, height: 25, left: 3, top: 2, component: 'VueUiXy', props: { config: xyConfig, dataset: xyDataset}},
         { id: 2, width: 35, height: 25, left: 62, top: 2, component: 'VueUiDonut', props: { config: donutConfig, dataset: donutDataset}},
-        { id: 3, width: 35, height: 33, left: 3, top: 28, component: 'VueUiWaffle', props: { config: waffleConfig, dataset: waffleDataset}},
-        { id: 4, width: 55, height: 33, left: 42, top: 28, component: 'VueUiRadar', props: { config: radarConfig, dataset: radarDataset}},
+        { id: 3, width: 35, height: 33, left: 3, top: 29, component: 'VueUiWaffle', props: { config: waffleConfig, dataset: waffleDataset}},
+        { id: 4, width: 55, height: 33, left: 42, top: 31, component: 'VueUiRadar', props: { config: radarConfig, dataset: radarDataset}},
         { id: 5, width: 94, height: 36, left: 3, top: 62, component: 'VueUiChestnut', props: { config: chestnutConfig, dataset: chestnutDataset}},
     ]
 });
@@ -188,7 +189,35 @@ const <span class="text-black dark:text-app-blue">config: VueUiDashboardConfig</
             </template>
             <template #tab2>
                 <div><code><b>@change</b></code></div>
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.dashboard.change[store.lang] }}</div>
+                <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.dashboard.change[store.lang] }}</div>
+                
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto"><code><b>toggleLock</b></code></div>
+                <div class="text-gray-400 pl-5">{{ translations.docs.emits.dashboard.toggleLock[store.lang] }}</div>
+            <pre>
+
+<code>
+<span class="text-gray-400">&lt;script setup&gt;</span>
+    import { ref } from "vue";
+
+    const dashboard = ref(null);
+
+    function toggleLock() {
+        dashboard.value.toggleLock();
+    }
+
+<span class="text-gray-400">&lt;/script&gt;</span>
+
+<span class="text-gray-400">&lt;template&gt;</span>
+    &lt;button @click="toggleLock"&gt;Toggle lock&lt;/button&gt;
+
+    &lt;VueUiDashboard
+        ref="dashboard"
+        :config="config"
+        :dataset="dataset"
+    /&gt;
+<span class="text-gray-400">&lt;/template&gt;</span>
+</code>
+</pre>
             </template>
             <template #tab3>
                 To display charts on the dashboard, use the #content slot:

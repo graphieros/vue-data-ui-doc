@@ -530,12 +530,6 @@ const componentTranslation = ref({
 </button>
 </div>
 
-<div class="fixed bottom-0 w-full flex place-items-center justify-end p-2 sm:p-5">
-  <a href="https://humanmademark.com/" target="_blank">
-    <img v-if="isDarkMode" src="../assets/human-made-logo-light.png" class="w-[100px] sm:w-[150px]"/>
-    <img  v-else src="../assets/human-made-logo.png" class="w-[100px] sm:w-[150px]"/>
-  </a>
-</div>
 </template>
 
 <style scoped>

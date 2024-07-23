@@ -1651,6 +1651,16 @@ export const useMainStore = defineStore("main", {
                             ko: "CSV 추출을 생성하려면 상위 구성 요소에서 이 메서드를 호출하세요. 이는 사용자 옵션이 숨겨져 있는 경우 특히 유용합니다."
                         },
                         dashboard: {
+                            toggleLock: {
+                                en: "Call this method from the parent component to toggle the lock state of the dashboard.",
+                                fr: "Appelez cette méthode à partir du composant parent pour basculer l'état de verrouillage du tableau de bord.",
+                                pt: "Chame esse método do componente pai para alternar o estado de bloqueio do painel.",
+                                de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um den Sperrstatus des Dashboards umzuschalten.",
+                                zh: "从父组件调用此方法可以切换仪表板的锁定状态。",
+                                jp: "親コンポーネントからこのメソッドを呼び出して、ダッシュボードのロック状態を切り替えます。",
+                                es: "Llame a este método desde el componente principal para alternar el estado de bloqueo del panel.",
+                                ko: "대시보드의 잠금 상태를 전환^하려면 상위 구성 요소에서 이 메서드를 호출하세요."
+                            },
                             change: {
                                 en: "Emits the updated config to the parent component",
                                 fr: "Émet la configuration mise à jour au composant parent",
