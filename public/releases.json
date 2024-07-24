@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.2.42",
+    "date": "2024-07-24",
+    "updates": [
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Fixed chart not updating when dataset is mutated",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Fixed chart not updating when dataset is mutated",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.41",
     "date": "2024-07-23",
     "updates": [
