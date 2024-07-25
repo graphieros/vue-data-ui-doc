@@ -8,12 +8,12 @@ import GithubButton from "./components/examples/components/GithubButton.vue";
 import { useMainStore } from "./stores";
 import HelpCenter from "./components/helpCenter/HelpCenter.vue";
 
-const store = useMainStore()
+const store = useMainStore();
 const router = useRouter();
 
 const currentRoute = computed(() => {
-    return router.currentRoute.value.fullPath
-})
+    return router.currentRoute.value.fullPath;
+});
 
 onMounted(() => {
   store.isFetching = true;
@@ -33,7 +33,7 @@ onMounted(() => {
   }).finally(() => {
     store.isFetching = false;
   })
-})
+});
 </script>
 
 <template>

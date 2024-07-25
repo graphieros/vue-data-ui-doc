@@ -163,10 +163,6 @@ const darkModeConfig = ref({
     userOptions: {
         show: true
     },
-    translations: {
-        total: "Total",
-        average: "Average",
-    },
     table: {
         show: false,
         responsiveBreakpoint: 300,
@@ -307,10 +303,6 @@ const config = ref({
     },
     userOptions: {
         show: true
-    },
-    translations: {
-        total: "Total",
-        average: "Average",
     },
     table: {
         show: false,
@@ -736,10 +728,6 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
     },
     userOptions: {
         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
-    },
-    translations: {
-        total: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.total"><input v-else type="text" v-model="mutableConfig.translations.total">, (default: "Total")
-        average: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.average"><input v-else type="text" v-model="mutableConfig.translations.average">, (default: "Average")
     },
     table: {
         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.show" @change="forceChartUpdate()">, (default: false)
