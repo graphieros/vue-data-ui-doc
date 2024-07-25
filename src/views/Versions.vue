@@ -346,6 +346,8 @@ const xyConfig = computed({
 
 const xyDataset = ref([]);
 
+const fDates = ref([])
+
 onMounted(() => {
     isLoadingLine.value = true;
     isLoadingBar.value = true;
@@ -379,13 +381,15 @@ onMounted(() => {
           }
         ]
         xyConfig.value.chart.grid.labels.xAxisLabels.values = json.downloads.map(d => d.day)
+        fDates.value = json.downloads.map(d => d.day)
         xyConfig.value.chart.grid.labels.xAxisLabels.showOnlyFirstAndLast = true
-    })
-    .catch(err => {
+      })
+      .catch(err => {
         isError.value = true;
         data.value = [{ period: "", value: 0 }]
-    }).finally(() => {
-      store.isFetching = false;
+      }).finally(() => {
+        store.isFetching = false;
+        step.value += 1;
     });
 
     fetch("https://registry.npmjs.org/-/v1/search?text=vue-data-ui", {
@@ -1551,6 +1555,73 @@ table: {
   }
 })
 
+const xyCanvasConfig = computed({
+  get() {
+    return {
+      customPalette: ['#42d392'],
+      style: {
+        chart: {
+          backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+          dataLabels: {
+            show: false
+          },
+          zoom: {
+            highlightColor: '#42d392',
+            color: isDarkMode.value ? '#616161' : '#CCCCCC',
+          },
+          paddingProportions: {
+            top: 0.05
+          },
+          selector: {
+            color: '#42d392'
+          },
+          tooltip: {
+            backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            borderColor: isDarkMode.value ? '#4A4A4A' : '#e1e5e8'
+          },
+          legend: {
+            backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+          },
+          title: {
+            text: 'Daily NPM Downloads',
+            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+          },
+          grid: {
+            y: {
+              axisName: 'Downloads',
+              axisLabels: {
+                color: isDarkMode.value ? '#6A6A6A' : '#1A1A1A',
+              },
+              verticalLines: {
+                show: false
+              },
+              timeLabels: {
+                color: isDarkMode.value ? '#6A6A6A' : '#1A1A1A',
+                values: fDates.value,
+                fontSizeRatio: 0.5,
+                rotation: -20
+              }
+            },
+            x: {
+              axisColor: isDarkMode.value ? '#2A2A2A' : '#1A1A1A',
+              horizontalLines: {
+                alternate: false,
+                color: isDarkMode.value ? '#2A2A2A' : '#CCCCCC',
+              }
+            }
+          }
+        }
+      }
+  }
+  },
+  set(v) {
+    return v
+  }
+})
+
 </script>
 
 <template>
@@ -1596,8 +1667,8 @@ table: {
                   <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig"/>
                 </div>
-                <div class="max-w-[800px] mx-auto" v-if="!isLoadingLine">
-                  <VueUiXy v-if="xyDataset.length" :config="xyConfig" :dataset="xyDataset"/>
+                <div class="max-w-[800px] mx-auto my-6" v-if="!isLoadingLine">
+                  <VueDataUi v-if="xyDataset.length" component="VueUiXyCanvas" :dataset="xyDataset" :config="xyCanvasConfig" :key="`xystep_${step}`"/>
                 </div>
                 <div class="max-w-[400px] mx-auto my-6 flex flex-col gap-2">
                   Overall trend
