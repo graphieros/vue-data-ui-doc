@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.43",
+    "date": "2024-07-26",
+    "updates": [
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Fixed error when unsegregating series",
+        "link": "/docs#vue-ui-nested-donuts"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.42",
     "date": "2024-07-24",
     "updates": [
