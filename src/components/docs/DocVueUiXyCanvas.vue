@@ -419,7 +419,19 @@ function fixChart() {
                 </button>
             </div>
             <VueDataUi component="VueUiXyCanvas" :dataset="dataset"
-                :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                :config="isDarkMode ? {
+                    ...mutableConfigDarkMode,
+                    style: {
+                        ...mutableConfigDarkMode.style,
+                        fontFamily: 'Satoshi'
+                    }
+                } : {
+                    ...mutableConfig,
+                    style: {
+                        ...mutableConfig.style,
+                        fontFamily: 'Satoshi' 
+                    }
+                }" :key="key" />
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button
