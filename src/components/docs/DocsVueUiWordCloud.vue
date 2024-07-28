@@ -7,7 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
-// import ThemesVueUiWordCloud from "../themes/ThemesVueUiWordCloud.vue";
+import ThemesVueUiWordCloud from "../themes/ThemesVueUiWordCloud.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -240,7 +240,7 @@ function fixChart() {
             <MakerLink to="VueUiWordCloud"/>
         </div>
 
-        <Box showSlots showEmits>
+        <Box showSlots showEmits showThemes>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -453,9 +453,9 @@ const <span class="text-app-blue">config: VueUiWordCloudConfig</span> = {
 </pre>
             </template>
 
-            <!-- <template #tab6>
+            <template #tab6>
                 <ThemesVueUiWordCloud />
-            </template> -->
+            </template>
         </Box>
     </div>
 </template>

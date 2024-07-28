@@ -2443,7 +2443,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_kpi: {
                 dataset: 1618,
                 model: [
-                    { key: 'animationFrames', def: 60, type: 'number', label: 'speed', category: 'general' },
+                    { key: 'animationFrames', def: 60, type: 'number', min: 0, max: 120, label: 'speed', category: 'general' },
                     { key: 'backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
                     { key: 'fontFamily', def: "inherit", type: 'text', label: 'fontFamily', category: 'general'},
                     { key: 'layoutClass', def: 'p-4 m-4 rounded-md shadow', type: 'text', label: ['display', 'is', 'cssClass'], category: 'general'},
@@ -2455,14 +2455,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'titleColor', def: '#1A1A1A', type: 'color', label: ['Title', 'is', 'textColor'], category: 'general'},
                     { key: 'titleClass', def: '', type: 'text', label: ['Title', 'is', 'cssClass'], category: 'general'},
                     { key: 'titleCss', def: '', type: 'text', label: ['Title', 'is', 'CSS'], category: 'general'},
-                    { key: 'titleFontSize', def: 16, type: 'number', label: ['Title', 'is', 'fontSize'], category: 'general'},
+                    { key: 'titleFontSize', def: 16, min: 8, max: 48, type: 'number', label: ['Title', 'is', 'fontSize'], category: 'general'},
                     { key: 'useAnimation', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
                     { key: 'valueBold', def: true, type: 'checkbox', label: ['value', 'is', 'bold'], category: 'general'},
                     { key: 'valueColor', def: '#6376DD', type: 'color', label: ['value', 'is',  'textColor'], category: 'general'},
                     { key: 'valueClass', def: '', type: 'text', label: ['value', 'is', 'cssClass'], category: 'general'},
                     { key: 'valueCss', def: '', type: 'text', label: ['value', 'is', 'CSS'], category: 'general'},
-                    { key: 'valueFontSize', def: 32, type: 'number', label: ['value', 'is', 'fontSize'], category: 'general' },
-                    { key: 'valueRounding', def: 0, type: 'number', label: ['value', 'is', 'rounding'], category: 'general'}
+                    { key: 'valueFontSize', def: 32, type: 'number', min: 8, max: 120, label: ['value', 'is', 'fontSize'], category: 'general' },
+                    { key: 'valueRounding', def: 0, type: 'number', min: 0, max: 12, label: ['value', 'is', 'rounding'], category: 'general'}
                 ]
             },
             vue_ui_strip_plot: {
