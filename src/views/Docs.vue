@@ -62,6 +62,7 @@ import DocVueUiDumbbell from "../components/docs/DocVueUiDumbbell.vue";
 import DocsVueUiWordCloud from "../components/docs/DocsVueUiWordCloud.vue";
 import DocVueUiXyCanvas from "../components/docs/DocVueUiXyCanvas.vue";
 import DocVueUiFlow from "../components/docs/DocVueUiFlow.vue";
+import DocVueUiParallelCoordinatePlot from "../components/docs/DocVueUiParallelCoordinatePlot.vue";
 import Schema from "../schema/Schema.vue";
 
 const store = useMainStore();
@@ -756,6 +757,18 @@ const menuItems = computed(() => [
         hasTableCss: true,
         hasLegend: false
     },
+    {
+        name: "ParallelCoordinatePlot",
+        icon: "chartParallelCoordinatePlot",
+        tooltip: translations.value.docs.tooltips.pcp[store.lang],
+        link: "/docs#vue-ui-parallel-coordinate-plot",
+        type: "classic",
+        thumb: new URL('../assets/thumb_pcp.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_pcp_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: true
+    },
 ]);
 
 const currentShowcase = ref('VueUiXy')
@@ -844,6 +857,7 @@ onMounted(playShowcase)
             <DocsVueUiWordCloud v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-word-cloud'" />
             <DocVueUiXyCanvas v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy-canvas'" />
             <DocVueUiFlow v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-flow'" />
+            <DocVueUiParallelCoordinatePlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-parallel-coordinate-plot'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

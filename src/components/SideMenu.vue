@@ -319,9 +319,18 @@ const smallMenu = ref([
         icon: 'chartFlow',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'flow',
+        tooltipContent: 'Flow',
         thumb: new URL('../assets/thumb_flow.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_flow_light.png', import.meta.url).href,
+    },
+    {
+        route: '/docs#vue-ui-parallel-coordinate-plot',
+        icon: 'chartParallelCoordinatePlot',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'ParallelCoordinatePlot',
+        thumb: new URL('../assets/thumb_pcp.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_pcp_light.png', import.meta.url).href,
     },
     {
         route: '/docs#vue-ui-sparkline',
@@ -575,6 +584,7 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-dumbbell', componentName: 'Dumbbell', icon: 'chartDumbbell' },
             {route: '/docs#vue-ui-word-cloud', componentName: 'WordCloud', icon: 'chartWordCloud' },
             {route: '/docs#vue-ui-flow', componentName: 'Flow', icon: 'chartFlow' },
+            {route: '/docs#vue-ui-parallel-coordinate-plot', componentName: 'ParallelCoordinatePlot', icon: 'chartParallelCoordinatePlot' },
         ]
     },
     {

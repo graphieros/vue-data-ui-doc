@@ -1028,6 +1028,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        pcp: {
+                            en: 'Each data point is depicted as a line traversing a series of parallel axes, corresponding to a specific variable or dimension. This arrangement allows for the exploration of relationships, trends, and variations that might be obscured in raw data.',
+                            fr: `Chaque point de données est représenté comme une ligne traversant une série d'axes parallèles, correspondant à une variable ou dimension spécifique. Cette disposition permet d'explorer les relations, les tendances et les variations qui pourraient être obscurcies dans les données brutes.`,
+                            pt: 'Cada ponto de dados é representado como uma linha que atravessa uma série de eixos paralelos, correspondendo a uma variável ou dimensão específica. Esse arranjo permite a exploração de relacionamentos, tendências e variações que podem estar obscurecidas nos dados brutos.',
+                            de: 'Jeder Datenpunkt wird als Linie dargestellt, die eine Reihe paralleler Achsen durchquert und einer bestimmten Variablen oder Dimension entspricht. Diese Anordnung ermöglicht die Untersuchung von Beziehungen, Trends und Variationen, die in Rohdaten möglicherweise verdeckt sind.',
+                            zh: '每个数据点都被描述为穿过一系列平行轴的线，对应于特定的变量或维度。这种安排允许探索原始数据中可能隐藏的关系、趋势和变化。',
+                            jp: '各データ ポイントは、特定の変数または次元に対応する、一連の平行軸を横切る線として表されます。この配置により、生データでは不明瞭な可能性のある関係、傾向、変動を調査することができます。',
+                            es: 'Cada punto de datos se representa como una línea que atraviesa una serie de ejes paralelos, correspondientes a una variable o dimensión específica. Esta disposición permite la exploración de relaciones, tendencias y variaciones que podrían quedar ocultas en los datos sin procesar.',
+                            ko: '각 데이터 포인트는 특정 변수 또는 차원에 해당하는 일련의 평행 축을 가로지르는 선으로 표시됩니다. 이러한 배열을 통해 원시 데이터에서 모호할 수 있는 관계, 추세 및 변형을 탐색할 수 있습니다.'
+                        },
                         flow: {
                             en: "Classic Sankey diagram in which the width of the links is proportional to the flow depicted,used in particular to visualize process energy flows.",
                             fr: "Diagramme de Sankey classique dans lequel la largeur des liens est proportionnelle au flux représenté, utilisé notamment pour visualiser les flux d'énergie des procédés.",

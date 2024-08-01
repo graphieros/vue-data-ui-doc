@@ -58,6 +58,7 @@ const specialIcons = ref([
     "chartMoodRadar",
     "chartNestedDonuts",
     "chartOnion",
+    "chartParallelCoordinatePlot",
     "chartQuadrant",
     "chartRadar",
     "chartRelationCircle",

@@ -4633,6 +4633,144 @@
             }
         ]
     },
+    "vue_ui_parallel_coordinate_plot": {
+        "name": "VueUiParallelCoordinatePlot",
+        "icon": "chartParallelCoordinatePlot",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-parallel-coordinate-plot",
+        "path": "/docs#vue-ui-parallel-coordinate-plot",
+        "description": "Parallel vertical axes to represent multiple variables, with each data point displayed as a polyline connecting corresponding values across these axes to analyze relationships, patterns, and trends in high-dimensional data.",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiParallelCoordinatePlotConfig",
+            "dataset": "VueUiParallelCoordinatePlotDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Series 1",
+                        "shape": "triangle",
+                        "series": [
+                            {
+                                "name": "Item 1.1",
+                                "values": [1200, 150, 12, 1.2]
+                            },
+                            {
+                                "name": "Item 1.2",
+                                "values": [1000, 100, 10, 1]
+                            },
+                            {
+                                "name": "Item 1.3",
+                                "values": [-800, 85, 8.5, 0.85]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Series 2",
+                        "series": [
+                            {
+                                "name": "Item 2.1",
+                                "values": [2300, 230, 23, 2.3]
+                            },
+                            {
+                                "name": "Item 2.2",
+                                "values": [2500, 250, 25, 2.5]
+                            },
+                            {
+                                "name": "Item 2.3",
+                                "values": [2800, 280, 28, 2.8]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Data labels",
+                "description": "Toggles data labels visibility.",
+                "icon": "labelOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click"
+            },
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "slots": [
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "reset-action",
+                "description": "Use this slot to customize the reset button of the zoom slider."
+            }
+        ]
+    },
     "vue_ui_xy_canvas": {
         "name": "VueUiXyCanvas",
         "icon": "chartLine",
