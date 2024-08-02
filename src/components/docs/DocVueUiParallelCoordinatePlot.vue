@@ -574,7 +574,7 @@ const <span class="text-app-blue">config: VueUiParallelCoordinatePlotConfig</spa
             <template #tab2>
                 @selectDatapoint<br><br>
 
-                Emitted when clicing on a datapoint (plot, line).
+                Emitted when clicing on a datapoint (plot).
 
 {{ translations.docs.emits.selectDatapoint[store.lang] }}
 <br><br>
@@ -589,8 +589,8 @@ const <span class="text-app-blue">config: VueUiParallelCoordinatePlotConfig</spa
 &lt;/template&gt;
 
 &lt;script setup lang="ts"&gt;
-  function selectDatapoint({ datapoint, index }: { datapoint: VueUipcpDatasetItem, index: number }) {
-    console.log({ datapoint, index })
+  function selectDatapoint(datapoint) {
+    console.log(datapoint)
   }
 &lt;/script&gt;
 </code>

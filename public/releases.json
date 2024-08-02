@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.46",
+    "date": "2024-08-02",
+    "updates": [
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Improved @selectLegend & @selectDatapoint emits",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.45",
     "date": "2024-08-01",
     "updates": [
