@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
+import ThemesVueUiParallelCoordinatePlot from "../themes/ThemesVueUiParallelCoordinatePlot.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -319,6 +320,7 @@ function fixChart() {
     isFixed.value = !isFixed.value;
 }
 
+
 </script>
 
 <template>
@@ -354,7 +356,8 @@ function fixChart() {
                 </button>
             </div>
             <VueDataUi component="VueUiParallelCoordinatePlot" :dataset="dataset"
-                :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+            </VueDataUi>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button
@@ -363,7 +366,7 @@ function fixChart() {
                 <CopyIcon /> {{ translations.docs.copyDefaultConfig[store.lang] }}
             </button>
             <GitHubLink link="vue-ui-parallel-coordinate-plot" />
-            <!-- <MakerLink to="VueUiDonut"/> -->
+            <!-- <MakerLink to="VueUiParallelCoordinatePlot"/> -->
         </div>
         <Box showEmits showSlots showTooltip showThemes>
             <template #tab0>
@@ -567,17 +570,210 @@ const <span class="text-app-blue">config: VueUiParallelCoordinatePlotConfig</spa
 </pre>
             </template>
 
+            <!-- EMITS -->
             <template #tab2>
-                We are currently working on the docs :)
+                @selectDatapoint<br><br>
+
+                Emitted when clicing on a datapoint (plot, line).
+
+{{ translations.docs.emits.selectDatapoint[store.lang] }}
+<br><br>
+<pre>
+<code>
+&lt;template&gt;
+  &lt;VueUiParallelCoordinatePlot
+    :dataset="dataset"
+    :config="config"
+    @selectDatapoint="selectDatapoint"
+  /&gt;
+&lt;/template&gt;
+
+&lt;script setup lang="ts"&gt;
+  function selectDatapoint({ datapoint, index }: { datapoint: VueUipcpDatasetItem, index: number }) {
+    console.log({ datapoint, index })
+  }
+&lt;/script&gt;
+</code>
+</pre>
+
+                <div><code><b>@selectLegend</b></code></div>
+                <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
+    <pre>
+    <code>
+   VueUiParallelCoordinatePlotDatasetItem = {
+        name: string;
+        shape: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star";
+        series: VueUiParallelCoordinatePlotDatasetSerieItem[]
+   } & {
+        id: string;
+        isSegregated: boolean;
+        opacity: number;
+        seriesIndex: number;
+   }
+    </code>
+    </pre>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>getData</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
+    <pre>
+    <span class="text-black dark:text-app-green">Using composition API:</span>
+    <code>
+        <span class="text-gray-400">&lt;script setup&gt;</span>
+            import { ref, onMounted } from "vue";
+
+            const pcpChart = ref(null);
+            const pcpDataset = ref([]);
+
+            onMounted(() => {
+                pcpDataset.value = pcpChart.value.getData();
+            });
+
+            const config = ref({
+                <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
+            });
+            const dataset = ref([
+                <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
+            ]);
+
+        <span class="text-gray-400">&lt;/script&gt;</span>
+
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiParallelCoordinatePlot
+                ref="pcpChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+    </code>
+    <span class="text-black dark:text-app-green">Using options API:</span>
+    <code>
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiParallelCoordinatePlot
+                ref="pcpChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+
+        <span class="text-gray-400">&lt;script&gt;</span>
+            export default {
+                data() {
+                    return {
+                        pcpDataset: [],
+                        config: {
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
+                        },
+                        dataset: [
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
+                        ]
+                    }
+                },
+                mounted () {
+                    this.pcpDataset = this.$refs.pcpChart.getData();
+                }
+            }
+        <span class="text-gray-400">&lt;/script&gt;</span>
+    </code>
+    </pre>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generatePdf</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generatePdf[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generateCsv</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateCsv[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generateImage</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
+                </div>
+                </div>
             </template>
+
+            <!-- SLOTS -->
             <template #tab3>
-                We are currently working on the docs :)
+                <div class="text-gray-500">
+    {{ translations.slots.presentation[store.lang]  }}
+</div>
+<pre>
+<code>
+    &lt;VueUiParallelCoordinatePlot
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #svg="{ svg }"&gt;
+            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
+        &lt;/template&gt;
+    &lt;/VueUiParallelCoordinatePlot&gt;
+</code>
+</pre>
+
+<hr class="mb-6 border-t-gray-500">
+
+<div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiParallelCoordinatePlot
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #legend="{ legend }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiParallelCoordinatePlot&gt;
+</code>
+</pre>
+
+<hr class="mb-6 border-t-gray-500">
+
+<div class="text-gray-500">
+    {{ translations.slots.tooltip[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiParallelCoordinatePlot
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #tooltip-before="{ datapoint, seriesIndex, series, config }"&gt;
+            ...your content here
+        &lt;/template&gt;
+        &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiParallelCoordinatePlot&gt;
+</code>
+</pre> 
             </template>
+
+            <!-- TOOLTIP -->
             <template #tab4>
-                We are currently working on the docs :)
+                <pre>
+<code>
+<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">serie, seriesIndex, series, config, scales</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre> 
+Using custom mode, the tooltip will be headless.
+Target the following css class to apply custom styles:
+<pre>
+<code>
+.vue-data-ui-custom-tooltip
+</code>
+</pre>     
             </template>
+
+            <!-- THEMES -->
             <template #tab6>
-                We are currently working on the docs :)
+                <ThemesVueUiParallelCoordinatePlot/>
             </template>
         </Box>
     </div>
