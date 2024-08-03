@@ -97,6 +97,7 @@ const quickDatasetBar = ref([
 
 const config = ref({
     backgroundColor: "#FFFFFF",
+    barAnimated: true,
     barGap: 12,
     barStrokeWidth: 1,
     blurOnHover: true,
@@ -121,6 +122,7 @@ const config = ref({
     legendFontSize: 12,
     legendIcon: "circleFill",
     legendIconSize: 12,
+    lineAnimated: true,
     lineSmooth: true,
     lineStrokeWidth: 2,
     paletteStartIndex: 0,
@@ -170,6 +172,7 @@ const config = ref({
 
 const darkModeConfig = ref({
     backgroundColor: "#2A2A2A",
+    barAnimated: true,
     barGap: 12,
     barStrokeWidth: 1,
     blurOnHover: true,
@@ -194,6 +197,7 @@ const darkModeConfig = ref({
     legendFontSize: 12,
     legendIcon: "circleFill",
     legendIconSize: 12,
+    lineAnimated: true,
     lineSmooth: true,
     lineStrokeWidth: 2,
     paletteStartIndex: 0,
@@ -597,6 +601,7 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     theme: ""; ("zen" | "hack" | "concrete" | "")
     axisLabelsFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.axisLabelsFontSize"><input v-else type="range" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.axisLabelsFontSize">, (default: 12)
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.backgroundColor"><input v-else type="color" v-model="mutableConfig.backgroundColor">, (default: "#FFFFFF")
+    barAnimated: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.barAnimated" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.barAnimated" @change="forceChartUpdate()">, (default: true)
     barGap: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="64" v-model="mutableConfigDarkMode.barGap"><input v-else type="range" class="accent-app-blue" min="0" max="64" v-model="mutableConfig.barGap">, (default: 12)
     barStrokeWidth: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="12" v-model="mutableConfigDarkMode.barStrokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="12" v-model="mutableConfig.barStrokeWidth">, (default: 1)
     blurOnHover: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.blurOnHover" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.blurOnHover" @change="forceChartUpdate()">, (default: true)
@@ -621,6 +626,7 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     legendFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.legendFontSize"><input v-else type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.legendFontSize">, (default: 12)
     legendIcon: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.legendIcon"><option v-for="i in icons">{{ i }}</option></select><select v-else v-model="mutableConfig.legendIcon"><option v-for="i in icons">{{ i }}</option></select> ,(default: "circleFill")
     legendIconSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.legendIconSize"><input v-else type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.legendIconSize">, (default: 12)
+    lineAnimated: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.lineAnimated" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.lineAnimated" @change="forceChartUpdate()">, (default: true)
     lineSmooth: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.lineSmooth" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.lineSmooth" @change="forceChartUpdate()">, (default: true)
     lineStrokeWidth: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="24" v-model="mutableConfigDarkMode.lineStrokeWidth"><input v-else type="number" class="accent-app-blue" min="0" max="24" v-model="mutableConfig.lineStrokeWidth">, (default: 2)
     paletteStartIndex: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="39" v-model="mutableConfigDarkMode.paletteStartIndex"><input v-else type="number" class="accent-app-blue" min="0" max="39" v-model="mutableConfig.paletteStartIndex">, (default: 0)

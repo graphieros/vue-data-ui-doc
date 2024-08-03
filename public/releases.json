@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.47",
+    "date": "2024-08-03",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added optional animations",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.46",
     "date": "2024-08-02",
     "updates": [
