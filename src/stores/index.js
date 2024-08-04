@@ -138,6 +138,66 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 sideMenu: {
+                    lineAndBars: {
+                        en: `Lines and bars`,
+                        fr: `Lignes et barres`,
+                        pt: 'Linhas e barras',
+                        de: 'Linien und Balken',
+                        zh: '线条和条形',
+                        jp: '線と棒',
+                        es: 'Líneas y barras',
+                        ko: '선과 막대'
+                    },
+                    donuts: {
+                        en: `Donuts / Proportions`,
+                        fr: `Donuts / Proportions`,
+                        pt: 'Rosquinhas / Proporções',
+                        de: 'Donuts / Proportionen',
+                        zh: '甜甜圈/比例',
+                        jp: 'ドーナツ / プロポーション',
+                        es: 'Donuts / Proporciones',
+                        ko: '도넛 / 비율'
+                    },
+                    gauges: {
+                        en: `Gauges`,
+                        fr: `Jauges`,
+                        pt: 'Manômetros',
+                        de: 'Messgeräte',
+                        zh: '仪表',
+                        jp: 'ゲージ',
+                        es: 'Medidores',
+                        ko: '게이지'
+                    },
+                    radars: {
+                        en: `Radar`,
+                        fr: `Radar`,
+                        pt: 'Radar',
+                        de: 'Radar',
+                        zh: '雷达',
+                        jp: 'レーダー',
+                        es: 'Radar',
+                        ko: '레이더'
+                    },
+                    semantic: {
+                        en: 'Semantic',
+                        fr: 'Sémantique',
+                        pt: 'Semântico',
+                        de: 'Semantisch',
+                        zh: '语义学',
+                        jp: 'セマンティック',
+                        es: 'Semántico',
+                        ko: '의미론적'
+                    },
+                    misc: {
+                        en: `Misc charts`,
+                        fr: `Divers`,
+                        pt: 'Diversos',
+                        de: 'Sonstiges',
+                        zh: '杂项',
+                        jp: 'その他',
+                        es: 'Varios',
+                        ko: '기타'
+                    },
                     miniCharts: {
                         en: "Mini charts",
                         fr: "Mini-graphiques",
