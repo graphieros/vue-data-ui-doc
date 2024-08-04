@@ -120,7 +120,7 @@ const darkModeConfig = ref({
         fontFamily: "inherit",
         chart: {
             backgroundColor: "#1A1A1A",
-            color: "#2D353C",
+            color: "#CCCCCC",
             padding: {
                 top: 0,
                 left: 24,
@@ -173,13 +173,13 @@ const darkModeConfig = ref({
             value: "Value"
         },
         th: {
-            backgroundColor: "#FAFAFA",
-            color: "#2D353C",
+            backgroundColor: "#1A1A1A",
+            color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#FFFFFF",
-            color: "#2D353C",
+            backgroundColor: "#1A1A1A",
+            color: "#CCCCCC",
             outline: "none"
         }
     }
@@ -469,6 +469,10 @@ const <span class="text-app-blue">config: VueUiFlowConfig</span> = {
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>generateImage</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>toggleTable</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleTable[store.lang] }}</div>
                 </div>
                 </div>
             </template>

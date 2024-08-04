@@ -275,13 +275,13 @@ const darkModeConfig = ref({
             item: "Item"
         },
         th: {
-            backgroundColor: "#FAFAFA",
-            color: "#2D353C",
+            backgroundColor: "#1A1A1A",
+            color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#FFFFFF",
-            color: "#2D353C",
+            backgroundColor: "#1A1A1A",
+            color: "#CCCCCC",
             outline: "none"
         }
     }
@@ -686,6 +686,14 @@ const <span class="text-app-blue">config: VueUiParallelCoordinatePlotConfig</spa
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>generateImage</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>toggleTable</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleTable[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>toggleLabels</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleLabels[store.lang] }}</div>
                 </div>
                 </div>
             </template>

@@ -1,5 +1,141 @@
 [
   {
+    "version": "v 2.2.48",
+    "date": "2024-08-04",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Exposed toggleTable & toggleLabels & toggleStack methods",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Exposed toggleTable & toggleLabels & toggleStack methods",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiWordCloud",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-word-cloud"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Exposed toggleTable & toggleSort methods",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Exposed toggleTable & toggleLabels methods",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Exposed toggleTable & toggleLabels methods",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Exposed toggleTable & toggleLabel methods",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Exposed toggleTable & toggleLabel methods",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiMoodRadar",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-mood-radar"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiFlow",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-flow"
+      },
+      {
+        "component": "VueUiDumbbell",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-dumbbell"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Exposed toggleTable & toggleLabels methodsé",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-chestnut"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Exposed toggleTable method",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Added toggleTable exposed method",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUi3dBar",
+        "description": "Added toggleTable exposed method",
+        "link": "/docs#vue-ui-3d-bar"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Improved css animation",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.47",
     "date": "2024-08-03",
     "updates": [

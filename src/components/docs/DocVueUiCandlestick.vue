@@ -604,6 +604,10 @@ const <span class="text-black dark:text-app-blue">config: VueUiCandlestickConfig
                     <div><code>generateImage</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
                 </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>toggleTable</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleTable[store.lang] }}</div>
+                </div>
             </template>
 
             <template #tab3>

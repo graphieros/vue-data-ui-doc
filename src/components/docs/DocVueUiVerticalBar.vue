@@ -741,6 +741,14 @@ const <span class="text-app-blue">config: VueUiVerticalBarConfig</span> = {
                     <div><code>generateImage</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
                 </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>toggleTable</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleTable[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>toggleSort</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleSort[store.lang] }}</div>
+                </div>
             </template>
 
             <template #tab3>

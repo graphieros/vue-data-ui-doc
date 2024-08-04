@@ -1620,6 +1620,46 @@ export const useMainStore = defineStore("main", {
                         ko: "CSS를 재정의할 수 있습니다(패키지의 styles.css 확인)."
                     },
                     emits: {
+                        toggleTable: {
+                            en: 'Call this method from the parent component to toggle the visibility of the data table.',
+                            fr: `Appelez cette méthode à partir du composant parent pour basculer la visibilité de la table de données.`,
+                            pt: 'Chame esse método do componente pai para alternar a visibilidade da tabela de dados.',
+                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Sichtbarkeit der Datentabelle umzuschalten.',
+                            zh: '从父组件调用此方法可以切换数据表的可见性。',
+                            jp: 'データ テーブルの表示/非表示を切り替えるには、親コンポーネントからこのメソッドを呼び出します。',
+                            es: 'Llame a este método desde el componente principal para alternar la visibilidad de la tabla de datos.',
+                            ko: '데이터 테이블의 가시성을 전환하려면 상위 구성요소에서 이 메소드를 호출하십시오.'
+                        },
+                        toggleLabels: {
+                            en: 'Call this method from the parent component to toggle the visibility of data labels.',
+                            fr: `Appelez cette méthode à partir du composant parent pour basculer la visibilité des étiquettes de données.`,
+                            pt: 'Chame esse método do componente pai para alternar a visibilidade dos rótulos de dados.',
+                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Sichtbarkeit von Datenbeschriftungen umzuschalten.',
+                            zh: '从父组件调用此方法可以切换数据标签的可见性。',
+                            jp: 'データ ラベルの表示/非表示を切り替えるには、親コンポーネントからこのメソッドを呼び出します。',
+                            es: 'Llame a este método desde el componente principal para alternar la visibilidad de las etiquetas de datos.',
+                            ko: '데이터 레이블의 가시성을 전환하려면 상위 구성요소에서 이 메소드를 호출하십시오.'
+                        },
+                        toggleStack: {
+                            en: 'Call this method from the parent component to toggle the stack mode.',
+                            fr: `Appelez cette méthode à partir du composant parent pour basculer en mode pile.`,
+                            pt: 'Chame esse método do componente pai para alternar o modo de pilha.',
+                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um den Stapelmodus umzuschalten.',
+                            zh: '从父组件调用此方法来切换堆栈模式。',
+                            jp: 'スタック モードを切り替えるには、親コンポーネントからこのメソッドを呼び出します。',
+                            es: 'Llame a este método desde el componente principal para alternar el modo de pila.',
+                            ko: '스택 모드를 전환하려면 상위 구성 요소에서 이 메서드를 호출하세요.'
+                        },
+                        toggleSort: {
+                            en: 'Call this method from the parent component to toggle the sorting direction.',
+                            fr: `Appelez cette méthode à partir du composant parent pour basculer le sens de tri.`,
+                            pt: 'Chame esse método do componente pai para alternar a direção de classificação.',
+                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Sortierrichtung umzuschalten.',
+                            zh: '从父组件调用此方法可以切换排序方向。',
+                            jp: '親コンポーネントからこのメソッドを呼び出して、並べ替え方向を切り替えます。',
+                            es: 'Llame a este método desde el componente principal para alternar la dirección de clasificación.',
+                            ko: '정렬 방향을 전환하려면 상위 구성 요소에서 이 메서드를 호출하세요.'
+                        },
                         selectDatapoint: {
                             en: "Use this event on the component to get the selected datapoint and index on click",
                             fr: "Utilisez cet événement sur le composant pour obtenir le point de données et l'index sélectionnés en un clic",
