@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.2.49",
+    "date": "2024-08-05",
+    "updates": [
+      {
+        "component": "",
+        "description": "Technical release improving bundle size"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.48",
     "date": "2024-08-04",
     "updates": [
