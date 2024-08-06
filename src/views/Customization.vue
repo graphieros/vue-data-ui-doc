@@ -6,6 +6,7 @@ import LegendSlot from "../components/customization/LegendSlot.vue";
 import TooltipSlot from "../components/customization/TooltipSlot.vue";
 import OtherSlots from "../components/customization/OtherSlots.vue";
 import ColorPalette from "../components/customization/ColorPalette.vue";
+import CustomMenu from "../components/customization/CustomMenu.vue";
 
 const store = useMainStore();
 
@@ -19,7 +20,8 @@ const menu = ref([
     { name: 'legendSlot', label: '#legend slot'},
     { name: 'tooltipSlot', label: 'tooltip slots'},
     { name: 'otherSlots', label: 'other slots'},
-    { name: 'colorPalette', label: 'palette'}
+    { name: 'colorPalette', label: 'palette'},
+    { name: 'customMenu', label: 'custom menu'}
 ]);
 
 </script>
@@ -39,4 +41,5 @@ const menu = ref([
     <TooltipSlot v-if="selectedMenu === 'tooltipSlot'" />
     <OtherSlots v-if="selectedMenu === 'otherSlots'" />
     <ColorPalette v-if="selectedMenu === 'colorPalette'" />
+    <CustomMenu v-if="selectedMenu === 'customMenu'" />
 </template>
