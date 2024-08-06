@@ -1,7 +1,53 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, onMounted } from "vue";
 
-    
+const dataset = ref([
+    {
+        name: 'Serie 1',
+        values: [128]
+    },
+    {
+        name: 'Serie 2',
+        values: [64]
+    },
+    {
+        name: 'Serie 3',
+        values: [32]
+    },
+    {
+        name: 'Serie 4',
+        values: [16]
+    }
+]);
+
+const config = ref({
+    userOptions: {
+        show: false
+    }
+})
+
+const donutChart = ref(null)
+
+function generatePdf() {
+    donutChart.value.generatePdf();
+}
+
+function generateImage() {
+    donutChart.value.generateImage();
+}
+
+function generateCsv() {
+    donutChart.value.generateCsv();
+}
+
+function toggleLabels() {
+    donutChart.value.toggleLabels();
+}
+
+function toggleTable() {
+    donutChart.value.toggleTable();
+}
+
 </script>
 
 <template>
@@ -31,20 +77,25 @@ import { ref, computed } from "vue";
     const donutChart = ref(null);
 
     <span class="text-gray-500">// Declare the methods used for the custom menu</span>
-    const generatePdf = ref(() => {});
-    const generateImage = ref(() => {});
-    const generateCsv = ref(() => {});
-    const toggleTable = ref(() => {});
-    const toggleLabels = ref(() => {});
+    function generatePdf() {
+        donutChart.value.generatePdf();
+    }
 
-    <span class="text-gray-500">// When the component is mounted, assign the exposed methods</span>
-    onMounted(() => {
-        generatePdf.value = donutChart.value.generatePdf;
-        generateImage.value = donutChart.value.generateImage;
-        generateCsv.value = donutChart.value.generateCsv;
-        toggleTable.value = donutChart.value.toggleTable;
-        toggleLabels.value = donutChart.value.toggleLabels;
-    })
+    function generateImage() {
+        donutChart.value.generateImage();
+    }
+
+    function generateCsv() {
+        donutChart.value.generateCsv();
+    }
+
+    function toggleLabels() {
+        donutChart.value.toggleLabels();
+    }
+
+    function toggleTable() {
+        donutChart.value.toggleTable();
+    }
 </code>
 </pre>
 
@@ -70,6 +121,20 @@ import { ref, computed } from "vue";
     &lt;/template&gt;
 </code>
 </pre>
+
+<div class="p-4 bg-gray-200 dark:bg-[#FFFFFF10]">
+    Example:
+    <div class="w-full">
+        <div class="p-2 my-4 flex flex-row flex-wrap gap-4 bg-gray-300 dark:bg-[#FFFFFF10]">
+            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="toggleLabels">TOGGLE LABELS</button>
+            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="toggleTable">TOGGLE TABLE</button>
+            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="generatePdf">PDF</button>
+            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="generateImage">IMG</button>
+            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="generateCsv">CSV</button>
+        </div>
+        <VueUiDonut ref="donutChart" :dataset="dataset" :config="config"/>
+    </div>
+</div>
     </div>
     
 </template>
