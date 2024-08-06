@@ -20,6 +20,7 @@ const allowedComponents = ref([
     {name: "VueUiMoodRadar", icon: 'chartMoodRadar', link: '/docs#vue-ui-mood-radar'},
     {name: "VueUiNestedDonuts", icon: 'chartNestedDonuts', link: '/docs#vue-ui-nested-donuts'},
     {name: "VueUiOnion", icon: 'chartOnion', link: '/docs#vue-ui-onion'},
+    {name: "VueUiParallelCoordinatePlot", icon: "chartParallelCoordinatePlot", link: '/docs#vue-ui-parallel-coordinate-plot'},
     {name: "VueUiQuadrant", icon: 'chartQuadrant', link: '/docs#vue-ui-quadrant'},
     {name: "VueUiQuickChart", icon: 'vueDataUi', link: '/docs#vue-ui-quick-chart'},
     {name: "VueUiRadar", icon: 'chartRadar', link: '/docs#vue-ui-radar'},
@@ -28,6 +29,7 @@ const allowedComponents = ref([
     {name: "VueUiVerticalBar", icon: 'chartBar', link: '/docs#vue-ui-vertical-bar'},
     {name: "VueUiWaffle", icon: 'chartWaffle', link: '/docs#vue-ui-waffle'},
     {name: 'VueUiXy', icon: 'chartLine', link: '/docs#vue-ui-xy'},
+    {name: 'VueUiXyCanvas', icon: 'chartLine', link: '/docs#vue-ui-xy-canvas'},
 ])
 
 </script>

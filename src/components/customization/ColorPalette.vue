@@ -79,6 +79,9 @@ function copyContent(color) {
                 <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiOnion
             </li>
             <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiParallelCoordinatePlot
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
                 <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiQuadrant
             </li>
             <li class="flex flex-row gap-2 place-items-center">
