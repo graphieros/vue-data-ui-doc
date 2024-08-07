@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 2.2.50",
+    "date": "2024-08-06",
+    "updates": [
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Display a skeleton loader when dataset is not provided or empty",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiFlow",
+        "description": "Display a skeleton loader when dataset is not provided or empty",
+        "link": "/docs#vue-ui-flow"
+      },
+      {
+        "component": "VueUiSkeleton",
+        "description": "Added flow and parallelCoordinate plot skeletons",
+        "link": "/docs#vue-ui-skeleton"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.49",
     "date": "2024-08-05",
     "updates": [

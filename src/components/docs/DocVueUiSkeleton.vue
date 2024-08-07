@@ -28,6 +28,12 @@ const config = ref({
     color: "#CCCCCC",
     maxHeight: 500,
     animated: true,
+    flow: {
+      color: "#C4C4C4",
+    },
+    parallelCoordinatePlot: {
+      color: "#C4C4C4",
+    },
     sparkline: {
       color: "#C4C4C4",
       strokeWidth: 0.7
@@ -159,6 +165,12 @@ const darkModeConfig = ref({
     color: "#CCCCCC",
     maxHeight: 500,
     animated: true,
+    flow: {
+      color: "#5c5c5c",
+    },
+    parallelCoordinatePlot: {
+      color: "#5c5c5c",
+    },
     sparkline: {
       color: "#5c5c5c",
       strokeWidth: 0.7
@@ -314,6 +326,8 @@ const options = ref([
     "verticalBar",
     "waffle",
     "wheel",
+    "flow",
+    "parallelCoordinatePlot"
 ]);
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -543,6 +557,12 @@ const <span class="text-black dark:text-app-blue">config: VueUiSkeletonConfig</s
     }
     wheel: {
       color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.wheel.color"><input v-else type="color" v-model="mutableConfig.style.wheel.color">, (default: "#e1e5e8")
+    },
+    flow: {
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.flow.color"><input v-else type="color" v-model="mutableConfig.style.flow.color">, (default: "#e1e5e8")
+    },
+    parallelCoordinatePlot: {
+      color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.parallelCoordinatePlot.color"><input v-else type="color" v-model="mutableConfig.style.parallelCoordinatePlot.color">, (default: "#e1e5e8")
     }
   }
 }
