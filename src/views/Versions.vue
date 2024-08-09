@@ -620,7 +620,7 @@ const weekConfig = computed(() => {
             }
         }
     }
-})
+});
 
 const sparklineConfig = ref({
   style: {
