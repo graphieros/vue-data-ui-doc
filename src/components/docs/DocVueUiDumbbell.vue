@@ -36,7 +36,14 @@ const config = ref({
     useAnimation: true,
     animationSpeed: 2,
     userOptions: {
-        show: true
+        show: true,
+        buttons: {
+            pdf: true,
+            img: true,
+            csv: true,
+            table: true,
+            fullscreen: true
+        }
     },
     style: {
         fontFamily: "inherit",
@@ -170,7 +177,14 @@ const darkModeConfig = ref({
     useAnimation: true,
     animationSpeed: 2,
     userOptions: {
-        show: true
+        show: true,
+        buttons: {
+            pdf: true,
+            img: true,
+            csv: true,
+            table: true,
+            fullscreen: true
+        }
     },
     style: {
         fontFamily: "inherit",
@@ -415,7 +429,14 @@ const <span class="text-app-blue">config: VueUiDumbbellConfig</span> = {
     useAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useAnimation" @change="forceChartUpdate()">, (default: true) 
     animationSpeed: <input v-if="isDarkMode" type="number" min="0.1" max="6" step="0.01" v-model="mutableConfigDarkMode.animationSpeed" @change="forceChartUpdate()"><input v-else type="number" min="0.1" max="6" step="0.01" v-model="mutableConfig.animationSpeed" @change="forceChartUpdate()">, (default: 2)
     userOptions: {
-        show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true) 
+        show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
+        buttons: {
+            pdf: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.pdf" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.pdf" @change="forceChartUpdate()">, (default: true)
+            img: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.img" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.img" @change="forceChartUpdate()">, (default: true)
+            csv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.csv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.csv" @change="forceChartUpdate()">, (default: true)
+            table: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.table" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.table" @change="forceChartUpdate()">, (default: true)
+            fullscreen: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.fullscreen" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.fullscreen" @change="forceChartUpdate()">, (default: true)
+        }
     },
     style: {
         fontFamily: "inherit",

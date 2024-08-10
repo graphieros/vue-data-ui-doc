@@ -114,6 +114,14 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  userOptions: {
+    show: true,
+    buttons: {
+            pdf: true,
+            img: true,
+            fullscreen: true
+        }
+  },
   style: {
     backgroundColor: "#f3f4f6",
     color: "#2D353C",
@@ -158,6 +166,14 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  userOptions: {
+    show: true,
+    buttons: {
+            pdf: true,
+            img: true,
+            fullscreen: true
+        }
+  },
   style: {
     backgroundColor: "#1A1A1A",
     color: "#CCCCCC",
@@ -433,6 +449,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRelationCircleD
 const <span class="text-black dark:text-app-blue">config: VueUiRelationCircleConfig</span> = {
     theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
+    userOptions: {
+        <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
+        buttons: {
+            pdf: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.pdf" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.pdf" @change="forceChartUpdate()">, (default: true)
+            img: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.img" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.img" @change="forceChartUpdate()">, (default: true)
+            fullscreen: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.fullscreen" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.fullscreen" @change="forceChartUpdate()">, (default: true)
+        }
+    },
     style: {
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
         color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.color"><input v-else type="color" v-model="mutableConfig.style.color">, (default: "#2D353C")

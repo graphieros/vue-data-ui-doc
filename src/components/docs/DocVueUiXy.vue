@@ -209,7 +209,16 @@ const config = ref({
             borderWidth: 1
         },
         userOptions: {
-            show: true
+            show: true,
+            buttons: {
+                pdf: true,
+                img: true,
+                csv: true,
+                table: true,
+                labels: true,
+                stack: true,
+                fullscreen: true
+            }
         },
     },
     bar: {
@@ -410,7 +419,16 @@ const darkModeConfig = ref({
             borderWidth: 1
         },
         userOptions: {
-            show: true
+            show: true,
+            buttons: {
+                pdf: true,
+                img: true,
+                csv: true,
+                table: true,
+                labels: true,
+                stack: true,
+                fullscreen: true
+            }
         },
     },
     bar: {
@@ -849,6 +867,15 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
             },
             userOptions: {
                 show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.show">, (default: true)
+                buttons: {
+                    pdf: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.buttons.pdf" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.buttons.pdf" @change="forceChartUpdate()">, (default: true)
+                    img: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.buttons.img" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.buttons.img" @change="forceChartUpdate()">, (default: true)
+                    csv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.buttons.csv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.buttons.csv" @change="forceChartUpdate()">, (default: true)
+                    table: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.buttons.table" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.buttons.table" @change="forceChartUpdate()">, (default: true)
+                    labels: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.buttons.labels" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.buttons.labels" @change="forceChartUpdate()">, (default: true)
+                    stack: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.buttons.stack" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.buttons.stack" @change="forceChartUpdate()">, (default: true)
+                    fullscreen: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.buttons.fullscreen" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.buttons.fullscreen" @change="forceChartUpdate()">, (default: true)
+                }
             },
         },
         <span class="text-gray-600 dark:text-app-green">// use the following for the config of a specific chart type:</span>

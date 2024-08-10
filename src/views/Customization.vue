@@ -7,6 +7,7 @@ import TooltipSlot from "../components/customization/TooltipSlot.vue";
 import OtherSlots from "../components/customization/OtherSlots.vue";
 import ColorPalette from "../components/customization/ColorPalette.vue";
 import CustomMenu from "../components/customization/CustomMenu.vue";
+import MenuSlots from "../components/customization/MenuSlots.vue";
 
 const store = useMainStore();
 
@@ -21,6 +22,7 @@ const menu = ref([
     { name: 'tooltipSlot', label: 'tooltip slots'},
     { name: 'otherSlots', label: 'other slots'},
     { name: 'colorPalette', label: 'palette'},
+    { name: 'menuSlots', label: 'menu slots'},
     { name: 'customMenu', label: 'custom menu'}
 ]);
 
@@ -41,5 +43,6 @@ const menu = ref([
     <TooltipSlot v-if="selectedMenu === 'tooltipSlot'" />
     <OtherSlots v-if="selectedMenu === 'otherSlots'" />
     <ColorPalette v-if="selectedMenu === 'colorPalette'" />
+    <MenuSlots v-if="selectedMenu === 'menuSlots'" />
     <CustomMenu v-if="selectedMenu === 'customMenu'" />
 </template>

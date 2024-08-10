@@ -130,6 +130,11 @@ const config = ref({
     showLegend: true,
     showTooltip: true,
     showUserOptions: true,
+    userOptionsButtons: {
+        pdf: true,
+        img: true,
+        fullscreen: true
+    },
     title: "A quick chart",
     titleBold: true,
     titleFontSize: 16,
@@ -205,6 +210,11 @@ const darkModeConfig = ref({
     showLegend: true,
     showTooltip: true,
     showUserOptions: true,
+    userOptionsButtons: {
+        pdf: true,
+        img: true,
+        fullscreen: true
+    },
     title: "A quick chart",
     titleBold: true,
     titleFontSize: 16,
@@ -634,6 +644,11 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     showLegend: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showLegend" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showLegend" @change="forceChartUpdate()">, (default: true)
     showTooltip: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showTooltip" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showTooltip" @change="forceChartUpdate()">, (default: true)
     showUserOptions: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showUserOptions" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showUserOptions" @change="forceChartUpdate()">, (default: true)
+    userOptionsButtons: {
+        pdf: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptionsButtons.pdf" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptionsButtons.pdf" @change="forceChartUpdate()">, (default: true)
+        img: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptionsButtons.img" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptionsButtons.img" @change="forceChartUpdate()">, (default: true)
+        fullscreen: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptionsButtons.fullscreen" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptionsButtons.fullscreen" @change="forceChartUpdate()">, (default: true)
+    },
     title: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.title"><input v-else type="text" v-model="mutableConfig.title">, (default: "")
     titleBold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.titleBold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.titleBold" @change="forceChartUpdate()">, (default: true)
     titleFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.titleFontSize"><input v-else type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.titleFontSize">, (default: 16)

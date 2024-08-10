@@ -89,7 +89,12 @@ const config = ref({
     }
   },
   userOptions: {
-    show: true
+    show: true,
+    buttons: {
+            pdf: true,
+            img: true,
+            fullscreen: true
+        }
   }
 });
 
@@ -148,7 +153,12 @@ const darkModeConfig = ref({
     }
   },
   userOptions: {
-    show: true
+    show: true,
+    buttons: {
+            pdf: true,
+            img: true,
+            fullscreen: true
+        }
   }
 });
 
@@ -325,6 +335,11 @@ const <span class="text-black dark:text-app-blue">config: VueUiThermometerConfig
     },
     userOptions: {
         show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)
+        buttons: {
+            pdf: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.pdf" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.pdf" @change="forceChartUpdate()">, (default: true)
+            img: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.img" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.img" @change="forceChartUpdate()">, (default: true)
+            fullscreen: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.fullscreen" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.fullscreen" @change="forceChartUpdate()">, (default: true)
+        }
     }
 }
 </code>
