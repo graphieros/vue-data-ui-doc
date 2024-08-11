@@ -46,6 +46,7 @@ const dataset = ref([
 ]);
 
 const darkModeConfig = ref({
+    responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
     style: {
@@ -117,7 +118,7 @@ const darkModeConfig = ref({
                     }
                 },
                 donut: {
-                    strokeWidth: 84,
+                    strokeWidth: 55,
                     borderWidth: 2,
                     useShadow: false,
                     shadowColor: '#1A1A1A',
@@ -195,6 +196,7 @@ const darkModeConfig = ref({
 });
 
 const config = ref({
+    responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
     style: {
@@ -266,7 +268,7 @@ const config = ref({
                     }
                 },
                 donut: {
-                    strokeWidth: 84,
+                    strokeWidth: 55,
                     borderWidth: 2,
                     useShadow: false,
                     shadowColor: '#1A1A1A',
@@ -629,6 +631,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     <ConfigAttribute v-if="isDarkMode" name="useBlurOnHover" type="checkbox" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()" defaultVal="true" />
@@ -698,7 +701,7 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
                         }
                     },
                     donut: {
-                        strokeWidth: <input v-if="isDarkMode" type="number" min="6" max="100" v-model="mutableConfigDarkMode.style.chart.layout.donut.strokeWidth"><input v-else type="number" min="6" max="100" v-model="mutableConfig.style.chart.layout.donut.strokeWidth">, (default: 64)
+                        strokeWidth: <input v-if="isDarkMode" type="number" min="6" max="100" v-model="mutableConfigDarkMode.style.chart.layout.donut.strokeWidth"><input v-else type="number" min="6" max="100" v-model="mutableConfig.style.chart.layout.donut.strokeWidth">, (default: 55)
                         borderWidth: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.style.chart.layout.donut.borderWidth"><input v-else type="number" min="0" max="12" v-model="mutableConfig.style.chart.layout.donut.borderWidth">, (default: 2)
                         useShadow: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.donut.useShadow" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.donut.useShadow" @change="forceChartUpdate()">, (default: false)
                         shadowColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.donut.shadowColor"><input v-else type="color" v-model="mutableConfig.style.chart.layout.donut.shadowColor">, (default: "#2D353C")

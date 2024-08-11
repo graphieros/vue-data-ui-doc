@@ -80,12 +80,11 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    responsive: false,
     useCssAnimation: true,
     chart: {
         backgroundColor: "#F3F4F6",
         color: "#1A1A1A",
-        height: 300,
-        width: 500,
         highlighter: {
             color: "#1A1A1A",
             opacity: 10,
@@ -111,7 +110,7 @@ const config = ref({
             opacity: 10,
             caption: {
                 text: "This area is highlighted",
-                fontSize: 10,
+                fontSize: 20,
                 color: "#2D353C",
                 bold: false,
                 offsetY: 0,
@@ -130,8 +129,8 @@ const config = ref({
         padding: {
             top:  36,
             right: 24,
-            bottom: 36,
-            left: 48
+            bottom: 48,
+            left: 64
         },
         grid: {
             stroke: "#C4C4C4",
@@ -140,13 +139,13 @@ const config = ref({
             labels: {
                 show: true,
                 color: "#1A1A1A",
-                fontSize: 12,
+                fontSize: 20,
                 axis: {
                     yLabel: "yLabel",
                     yLabelOffsetX: 0,
                     xLabel: "xLabel",
                     xLabelOffsetY: 0,
-                    fontSize: 12
+                    fontSize: 20
                 },
                 zeroLine: {
                     show: true,
@@ -167,7 +166,7 @@ const config = ref({
                     show: true,
                     showOnlyFirstAndLast: false,
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
-                    fontSize: 6,
+                    fontSize: 18,
                     yOffset: 0,
                     rotation: 0
                 }
@@ -290,12 +289,11 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    responsive: false,
     useCssAnimation: true,
     chart: {
         backgroundColor: "#1A1A1A",
         color: "#c8c8c8",
-        height: 300,
-        width: 500,
         highlighter: {
             color: "#e1e5e8",
             opacity: 10,
@@ -321,7 +319,7 @@ const darkModeConfig = ref({
             opacity: 10,
             caption: {
                 text: "This area is highlighted",
-                fontSize: 10,
+                fontSize: 20,
                 color: "#FAFAFA",
                 bold: false,
                 offsetY: 0,
@@ -340,8 +338,8 @@ const darkModeConfig = ref({
         padding: {
             top:  36,
             right: 24,
-            bottom: 36,
-            left: 48
+            bottom: 48,
+            left: 64
         },
         grid: {
             stroke: "#e1e5e8",
@@ -350,13 +348,13 @@ const darkModeConfig = ref({
             labels: {
                 show: true,
                 color: "#c8c8c8",
-                fontSize: 12,
+                fontSize: 20,
                 axis: {
                     yLabel: "yLabel",
                     yLabelOffsetX: 0,
                     xLabel: "xLabel",
                     xLabelOffsetY: 0,
-                    fontSize: 12
+                    fontSize: 20
                 },
                 zeroLine: {
                     show: true,
@@ -377,7 +375,7 @@ const darkModeConfig = ref({
                     show: true,
                     showOnlyFirstAndLast: false,
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
-                    fontSize: 6,
+                    fontSize: 18,
                     yOffset: 0,
                     rotation: 0
                 }
@@ -733,6 +731,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> = {
+        responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
         theme: ""; ("zen" | "hack" | "concrete" | "")
         customPalette: []; // string[]
         useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)
@@ -740,8 +739,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
             fontFamily: "inherit",
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.chart.backgroundColor">, (default: "#FFFFFF")
             color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.color"><input v-else type="color" v-model="mutableConfig.chart.color">, (default:"#2D353C")
-            height: <input v-if="isDarkMode" type="number" min="50" max="2000" v-model="mutableConfigDarkMode.chart.height"><input v-else type="number" min="50" max="2000" v-model="mutableConfig.chart.height">, (default: 300)
-            width: <input v-if="isDarkMode" type="number" min="50" max="2000" v-model="mutableConfigDarkMode.chart.width"><input v-else type="number" min="50" max="2000" v-model="mutableConfig.chart.width">, (default: 500)
+            height: 600,
+            width: 1000,
             highlighter: {
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.highlighter.color"><input v-else type="color" v-model="mutableConfig.chart.highlighter.color">, (default:"#2D353C")
                 opacity: <input v-if="isDarkMode" type="range" min="0" max="100" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.highlighter.opacity"><input v-else type="range" min="0" max="100" class="accent-app-blue" v-model="mutableConfig.chart.highlighter.opacity">, (default: 5)

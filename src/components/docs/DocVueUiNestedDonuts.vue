@@ -62,6 +62,7 @@ const dataset = ref([
 ])
 
 const darkModeConfig = ref({
+    responsive: false,
     useCssAnimation: true,
     useBlurOnHover: true,
     userOptions: {
@@ -177,6 +178,7 @@ const darkModeConfig = ref({
 })
 
 const config = ref({
+    responsive: false,
     useCssAnimation: true,
     useBlurOnHover: true,
     userOptions: {
@@ -461,6 +463,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiNestedDonutsDat
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiNestedDonutsConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     useBlurOnHover: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()">, (default: true) 

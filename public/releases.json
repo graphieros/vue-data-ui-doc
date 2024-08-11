@@ -1,5 +1,36 @@
 [
   {
+    "version": "v 2.2.52",
+    "date": "2024-08-11",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.51",
     "date": "2024-08-10",
     "updates": [

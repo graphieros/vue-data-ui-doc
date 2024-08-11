@@ -15,7 +15,7 @@
     "pinia": "^2.1.6",
     "prismjs": "^1.29.0",
     "vue": "^3.3.4",
-    "vue-data-ui": "2.2.51",
+    "vue-data-ui": "2.2.52",
     "vue-router": "^4.0.13",
     "vue-tabler-icons": "^2.21.0"
   },

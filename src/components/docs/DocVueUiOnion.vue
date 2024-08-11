@@ -101,6 +101,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
     useStartAnimation: true,
@@ -205,6 +206,7 @@ const config = ref({
     }
 });
 const darkModeConfig = ref({
+    responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
     useStartAnimation: true,
@@ -453,6 +455,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiOnionDatasetIte
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiOnionConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     useBlurOnHover: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useBlurOnHover" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useBlurOnHover" @change="forceChartUpdate()">, (default: true)

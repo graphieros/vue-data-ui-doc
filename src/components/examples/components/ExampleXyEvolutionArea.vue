@@ -11,6 +11,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 const config = computed(() => {
     return {
+        "responsive": true,
         "useCssAnimation": true,
         "chart": {
             "fontFamily": "inherit",
@@ -54,11 +55,11 @@ const config = computed(() => {
                 "labels": {
                     "show": true,
                     "color": isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    "fontSize": 23,
+                    "fontSize": 14,
                     "axis": {
                         "yLabel": "",
                         "xLabel": "",
-                        "fontSize": 29
+                        "fontSize": 12
                     },
                     "xAxisLabels": {
                         "show": true,
@@ -77,14 +78,14 @@ const config = computed(() => {
                             "NOV",
                             "DEC"
                         ],
-                        "fontSize": 24,
+                        "fontSize": 14,
                         "showOnlyFirstAndLast": false,
                         "yOffset": 8
                     }
                 }
             },
             "labels": {
-                "fontSize": 19,
+                "fontSize": 16,
                 "prefix": "",
                 "suffix": "%"
             },

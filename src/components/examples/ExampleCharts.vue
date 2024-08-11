@@ -191,7 +191,7 @@ onMounted(() => {
             </div>
         </div>
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
+            <div class="max-h-[800px] w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
                 <TokoTsubo
                     :dataset="evolutionDataset"
                     :config="evolutionConfig"

@@ -23,6 +23,16 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                responsive: {
+                    en: 'Set this attribute to true when the chart is placed inside a resizable container, or when the container has fixed dimensions. Never use when no height is set on the parent container, this will cause infinite height growth of the chart.',
+                    fr: `Définissez cet attribut sur true lorsque le graphique est placé dans un conteneur redimensionnable ou lorsque le conteneur a des dimensions fixes. Ne jamais utiliser lorsqu'aucune hauteur n'est définie sur le conteneur parent, cela entraînerait une croissance infinie de la hauteur du graphique.`,
+                    pt: 'Defina esse atributo como verdadeiro quando o gráfico for colocado dentro de um contêiner redimensionável ou quando o contêiner tiver dimensões fixas. Nunca use quando nenhuma altura estiver definida no contêiner pai, isso causará um crescimento infinito de altura do gráfico',
+                    de: 'Setzen Sie dieses Attribut auf „true“, wenn das Diagramm in einem Container mit veränderbarer Größe platziert wird oder wenn der Container feste Abmessungen hat. Niemals verwenden, wenn für den übergeordneten Container keine Höhe festgelegt ist, da dies zu einem unendlichen Höhenwachstum des Diagramms führt',
+                    zh: '当图表放置在可调整大小的容器内或容器具有固定尺寸时，请将此属性设置为 true。父容器未设置高度时切勿使用，这将导致图表的高度无限增长',
+                    jp: 'チャートがサイズ変更可能なコンテナー内に配置される場合、またはコンテナーの寸法が固定されている場合は、この属性を true に設定します。親コンテナに高さが設定されていない場合は決して使用しないでください。これにより、チャートの高さが無限に増加します。',
+                    es: 'Establezca este atributo en verdadero cuando el gráfico se coloque dentro de un contenedor de tamaño variable o cuando el contenedor tenga dimensiones fijas. Nunca lo use cuando no se haya establecido ninguna altura en el contenedor principal, esto provocará un crecimiento infinito de la altura del gráfico.',
+                    ko: '차트가 크기 조정 가능한 컨테이너 내에 배치되거나 컨테이너에 고정 크기가 있는 경우 이 특성을 true로 설정합니다. 상위 컨테이너에 높이가 설정되지 않은 경우에는 사용하지 마십시오. 이로 인해 차트의 높이가 무한히 증가합니다.'
+                },
                 overview: {
                     icon: {
                         en: 'Icon',

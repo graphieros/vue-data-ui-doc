@@ -96,6 +96,7 @@ const quickDatasetBar = ref([
 ])
 
 const config = ref({
+    responsive: false,
     backgroundColor: "#FFFFFF",
     barAnimated: true,
     barGap: 12,
@@ -176,6 +177,7 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    responsive: false,
     backgroundColor: "#2A2A2A",
     barAnimated: true,
     barGap: 12,
@@ -608,6 +610,7 @@ function fixChart() {
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     axisLabelsFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="48" v-model="mutableConfigDarkMode.axisLabelsFontSize"><input v-else type="range" class="accent-app-blue" min="6" max="48" v-model="mutableConfig.axisLabelsFontSize">, (default: 12)
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.backgroundColor"><input v-else type="color" v-model="mutableConfig.backgroundColor">, (default: "#FFFFFF")
