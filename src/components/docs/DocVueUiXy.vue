@@ -128,7 +128,7 @@ const config = ref({
         },
         padding: {
             top:  36,
-            right: 24,
+            right: 92,
             bottom: 48,
             left: 64
         },
@@ -173,7 +173,7 @@ const config = ref({
             }
         },
         labels: {
-            fontSize: 7,
+            fontSize: 20,
             prefix: '',
             suffix: ''
         },
@@ -337,7 +337,7 @@ const darkModeConfig = ref({
         },
         padding: {
             top:  36,
-            right: 24,
+            right: 92,
             bottom: 48,
             left: 64
         },
@@ -382,7 +382,7 @@ const darkModeConfig = ref({
             }
         },
         labels: {
-            fontSize: 7,
+            fontSize: 20,
             prefix: "",
             suffix: ""
         },
