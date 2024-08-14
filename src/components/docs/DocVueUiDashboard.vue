@@ -28,7 +28,7 @@ const config = ref(
             border: "1px solid #e1e5e8"
         },
         item: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "transparent",
             borderColor: "#e1e5e8"
         },
         resizeHandles: {

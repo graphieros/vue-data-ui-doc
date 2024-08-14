@@ -32,10 +32,8 @@ export const xyDataset = [
 
 export const xyConfig = {
     chart: {
-        backgroundColor: "#F3F4F6",
+        backgroundColor: "transparent",
         color: "#1A1A1A",
-        height: 300,
-        width: 500,
         highlighter: {
             color: "#1A1A1A",
             opacity: 10,
@@ -74,7 +72,7 @@ export const xyConfig = {
         legend: {
             show: true,
             color: "#1A1A1A",
-            fontSize: 16
+            fontSize: 12
         },
         title: {
            show:true,
@@ -142,12 +140,12 @@ export const xyConfig = {
     table: {
         rounding: 0,
         th: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4"
         },
         td: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
         }
@@ -178,7 +176,7 @@ export const donutConfig = {
         chart: {
             useGradient: true,
             gradientIntensity: 40,
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             layout: {
                 labels: {
@@ -234,14 +232,14 @@ export const donutConfig = {
                     }
                 },
                 donut: {
-                    strokeWidth: 84
+                    strokeWidth: 55
                 },
             },
             legend: {
-                    backgroundColor: "#F3F4F6",
+                    backgroundColor: "#FFFFFF",
                     color: "#1A1A1A",
                     show: true,
-                    fontSize: 16,
+                    fontSize: 12,
                     bold: false,
                     roundingValue: 0,
                     roundingPercentage: 0,
@@ -261,7 +259,7 @@ export const donutConfig = {
             tooltip: {
                 show: true,
                 color: "#1A1A1A",
-                backgroundColor: "#F3F4F6",
+                backgroundColor: "#FFFFFF",
                 fontSize: 14,
                 showValue: true,
                 showPercentage: true,
@@ -280,12 +278,12 @@ export const donutConfig = {
     table: {
         show: false,
         th: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4"
         },
         td: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
             roundingValue: 0,
@@ -316,7 +314,7 @@ export const waffleConfig = {
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "transparent",
             color: "#1A1A1A",
             layout: {
                 grid: {
@@ -327,7 +325,7 @@ export const waffleConfig = {
                 rect: {
                     rounded: true,
                     rounding:2,
-                    stroke: "#F3F4F6",
+                    stroke: "#FFFFFF",
                     strokeWidth: 3,
                     useGradient: true,
                     gradientIntensity: 20,
@@ -347,7 +345,7 @@ export const waffleConfig = {
             },
             tooltip: {
                 show: true,
-                backgroundColor: "#F3F4F6",
+                backgroundColor: "#FFFFFF",
                 color: "#1A1A1A",
                 fontSize: 14,
                 showValue: true,
@@ -357,10 +355,10 @@ export const waffleConfig = {
             },
             legend: {
                 show: true,
-                backgroundColor: "#F3F4F6",
+                backgroundColor: "#FFFFFF",
                 color: "#1A1A1A",
                 bold: false,
-                fontSize: 14,
+                fontSize: 12,
                 roundingValue: 0,
                 roundingPercentage: 0,
             }
@@ -372,12 +370,12 @@ export const waffleConfig = {
     table: {
         show: false,
         th: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4"
         },
         td: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
             roundingValue: 0,
@@ -469,7 +467,7 @@ export const radarConfig = {
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "transparent",
             color: "#1A1A1A",
             layout: {
                 plots: {
@@ -514,7 +512,7 @@ export const radarConfig = {
             },
             tooltip: {
                 show: true,
-                backgroundColor: "#F3F4F6",
+                backgroundColor: "#FFFFFF",
                 color: "#1A1A1A",
                 fontSize: 14,
                 showValue: true,
@@ -525,7 +523,7 @@ export const radarConfig = {
             legend: {
                 show: true,
                 bold: true,
-                backgroundColor: "#F3F4F6",
+                backgroundColor: "#FFFFFF",
                 color: "#1A1A1A",
                 fontSize: 14,
                 roundingPercentage: 0,
@@ -535,12 +533,12 @@ export const radarConfig = {
     table: {
         show: false,
         th: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4"
         },
         td: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
             roundingValue: 0,
@@ -770,7 +768,7 @@ export const chestnutConfig = {
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "transparent",
             color: "#1A1A1A",
             layout: {
                 grandTotal: {
@@ -785,7 +783,7 @@ export const chestnutConfig = {
                     offsetY: 0,
                 },
                 roots: {
-                    stroke: "#F3F4F6",
+                    stroke: "#FFFFFF",
                     strokeWidth: 5,
                     useGradient: true,
                     gradientIntensity: 20,
@@ -807,14 +805,14 @@ export const chestnutConfig = {
                     }
                 },
                 verticalSeparator: {
-                    stroke: "#F3F4F6",
+                    stroke: "#FFFFFF",
                     strokeWidth: 5,
                 },
                 links: {
                     opacity: 20,
                 },
                 branches: {
-                    stroke: "#F3F4F6",
+                    stroke: "#FFFFFF",
                     strokeWidth: 0,
                     borderRadius: 6,
                     useGradient: true,
@@ -901,7 +899,7 @@ export const chestnutConfig = {
     table: {
         show: false,
         th: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
             translations: {
@@ -920,7 +918,7 @@ export const chestnutConfig = {
             }
         },
         td: {
-            backgroundColor: "#F3F4F6",
+            backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             outline: "1px solid #C4C4C4",
             roundingValue: 0,
