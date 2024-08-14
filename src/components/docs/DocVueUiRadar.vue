@@ -104,6 +104,7 @@ const dataset = ref({
 });
 
 const config = ref({
+    responsive: false,
     useCssAnimation: true,
     style: {
         fontFamily: "inherit",
@@ -212,6 +213,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    responsive: false,
     useCssAnimation: true,
     style: {
         fontFamily: "inherit",
@@ -502,6 +504,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiRadarConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)

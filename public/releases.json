@@ -1,5 +1,31 @@
 [
   {
+    "version": "v 2.2.53",
+    "date": "2024-08-13",
+    "updates": [
+      {
+        "component": "VueUiTreemap",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.52",
     "date": "2024-08-11",
     "updates": [

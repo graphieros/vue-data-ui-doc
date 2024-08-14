@@ -62,6 +62,7 @@ const dataset = ref([
 ])
 
 const config = ref({
+    responsive: false,
     theme: "",
     useCssAnimation: true,
     customPalette: [],
@@ -183,6 +184,7 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    responsive: false,
     theme: "",
     useCssAnimation: true,
     customPalette: [],
@@ -471,6 +473,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiParallelCoordin
                 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiParallelCoordinatePlotConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true) 
