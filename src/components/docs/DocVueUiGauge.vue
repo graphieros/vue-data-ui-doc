@@ -80,11 +80,7 @@ const config = ref({
                     gradientIntensity: 20,
                 },
                 markers: {
-                    size: 1,
                     color: "#1A1A1A",
-                    strokeWidth: 1,
-                    stroke: "#1A1A1A",
-                    backgroundColor: "#F3F4F6",
                     bold: true,
                     fontSizeRatio: 1,
                     offsetY: 0,
@@ -158,11 +154,7 @@ const darkModeConfig = ref({
                     gradientIntensity: 20,
                 },
                 markers: {
-                    size: 1,
                     color: "#CCCCCC",
-                    strokeWidth: 1,
-                    stroke: "#CCCCCC",
-                    backgroundColor: "#1A1A1A",
                     bold: true,
                     fontSizeRatio: 1,
                     offsetY: 0,
@@ -403,11 +395,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiGaugeConfig</span
                     gradientIntensity: 20,
                 },
                 markers: {
-                    size: <input v-if="isDarkMode" type="number" min="0.5" max="2" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.markers.size"><input v-else type="number" min="0.5" max="2" step="0.1" v-model="mutableConfig.style.chart.layout.markers.size">, (default: 1)
-                    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.markers.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.layout.markers.backgroundColor">, (default: "#FFFFFF")
                     color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.markers.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.markers.color">, (default: "#2D353C")
-                    stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.markers.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.markers.stroke">, (default: "#2D353C")
-                    strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="3" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.markers.strokeWidth"><input v-else type="number" min="0" max="3" step="0.1" v-model="mutableConfig.style.chart.layout.markers.strokeWidth">, (default: 1)
                     bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.markers.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.markers.bold" @change="forceChartUpdate()">, (default: true)
                     fontSizeRatio: <input v-if="isDarkMode" type="number" min="0.5" max="2" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.markers.fontSizeRatio"><input v-else type="number" min="0.5" max="2" step="0.1" v-model="mutableConfig.style.chart.layout.markers.fontSizeRatio">, (default: 1)
                     offsetY: <input v-if="isDarkMode" type="number" min="-30" max="30" step="1" v-model="mutableConfigDarkMode.style.chart.layout.markers.offsetY"><input v-else type="number" min="-30" max="30" step="1" v-model="mutableConfig.style.chart.layout.markers.offsetY">, (default: 0)

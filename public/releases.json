@@ -1,5 +1,31 @@
 [
   {
+    "version": "v 2.2.54",
+    "date": "2024-08-15",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix chart wrapper leaving a small bottom gap in responsive mode",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUiGauge",
+        "description": "Improved chart design",
+        "link": "/docs#vue-ui-gauge"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.53",
     "date": "2024-08-13",
     "updates": [

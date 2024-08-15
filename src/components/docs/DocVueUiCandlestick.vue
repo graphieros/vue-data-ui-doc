@@ -43,6 +43,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  responsive: false,
   useCssAnimation: true,
   style: {
     backgroundColor: "#F3F4F6",
@@ -184,6 +185,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  responsive: false,
   useCssAnimation: true,
   style: {
     backgroundColor: "#1A1A1A",
@@ -443,6 +445,7 @@ const <span class="text-black dark:text-app-green">dataset: Array&lt;Array&lt;st
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiCandlestickConfig</span> = {
+  responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
   theme: ""; ("zen" | "hack" | "concrete" | "")
   useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)
   style: {

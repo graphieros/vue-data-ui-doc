@@ -633,6 +633,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  responsive: false,
   style: {
     backgroundColor: "#F3F4F6",
     color: "#1A1A1A",
@@ -757,6 +758,7 @@ const config = ref({
   }
 });
 const darkModeConfig = ref({
+  responsive: false,
   style: {
     backgroundColor: "#1A1A1A",
     color: "#CCCCCC",
@@ -983,6 +985,7 @@ function fixChart() {
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiAgePyramidConfig</span> = {
+  responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
   theme: ""; ("zen" | "hack" | "concrete" | "")
   style: {
     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
