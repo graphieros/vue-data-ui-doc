@@ -125,6 +125,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.grid.labels.xAxisLabels.showOnlyFirstAndLast', def: false, type: 'checkbox', label: 'showOnlyFirstAndLast', category: 'grid' },
                     { key: 'chart.grid.labels.xAxisLabels.yOffset', def: 8, type: 'number', min:-100, max: 100, label: 'offsetYPeriodLabels', category: 'grid' },
                     { key: 'chart.grid.labels.xAxisLabels.rotation', def: 0, type: 'range', min: -360, max: 360, label: 'rotation', category: 'grid'},
+                    { key: 'chart.grid.labels.xAxisLabels.showOnlyAtModulo', def: false, type: 'checkbox', label: 'show only at mod', category: 'grid'},
+                    { key: 'chart.grid.labels.xAxisLabels.modulo', def: 12, type: 'number', min: 2, max: 365, label: 'modulo', category: 'grid'},
 
                     { key: 'chart.grid.labels.xAxis.showBaseline', def: true, type: 'checkbox', label: ['xAxis', 'base line', 'is', 'show'], category: 'grid'},
 

@@ -168,7 +168,9 @@ const config = ref({
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
                     fontSize: 18,
                     yOffset: 0,
-                    rotation: 0
+                    rotation: 0,
+                    showOnlyAtModulo: false,
+                    modulo: 12
                 }
             }
         },
@@ -377,7 +379,9 @@ const darkModeConfig = ref({
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
                     fontSize: 18,
                     yOffset: 0,
-                    rotation: 0
+                    rotation: 0,
+                    showOnlyAtModulo: false,
+                    modulo: 12
                 }
             }
         },
@@ -825,6 +829,8 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                         values: <span class="text-app-blue">string[]</span>,
                         yOffset: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.yOffset"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.grid.labels.xAxisLabels.yOffset">, (default: 0)
                         rotation: <input v-if="isDarkMode" type="number" min="-360" max="360" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.rotation"><input v-else type="number" min="-360" max="360" v-model="mutableConfig.chart.grid.labels.xAxisLabels.rotation">, (default: 0)
+                        showOnlyAtModulo: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.showOnlyAtModulo"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.grid.labels.xAxisLabels.showOnlyAtModulo">, (default: false)
+                        modulo: <input v-if="isDarkMode" type="number" min="2" max="100" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.modulo"><input v-else type="number" min="2" max="100" v-model="mutableConfig.chart.grid.labels.xAxisLabels.modulo">, (default: 12)
                     }
                 }
             },

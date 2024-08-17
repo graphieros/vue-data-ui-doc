@@ -205,7 +205,8 @@ function getLabel(label) {
         if(!xyTranslations.value.labels[l]) return l
         return xyTranslations.value.labels[l][store.lang]
     }).join(" ") :
-    xyTranslations.value.labels[label][store.lang]
+    xyTranslations.value.labels[label] ?
+    xyTranslations.value.labels[label][store.lang] : label
 }
 
 const accordionConfig = ref(
