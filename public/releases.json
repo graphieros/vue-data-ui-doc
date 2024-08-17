@@ -1,5 +1,36 @@
 [
   {
+    "version": "v 2.2.55",
+    "date": "2024-08-17",
+    "updates": [
+      {
+        "component": "VueUiWaffle",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-relation-circle"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-quadrant"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.54",
     "date": "2024-08-15",
     "updates": [

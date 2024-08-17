@@ -42,6 +42,7 @@ const isDarkMode = computed(() => {
     ]);
 
     const darkModeConfig = ref({
+        responsive: false,
         useBlurOnHover: true,
         useCustomCells: false,
         useAnimation: true,
@@ -155,6 +156,7 @@ const isDarkMode = computed(() => {
     });
 
     const config = ref({
+        responsive: false,
         useBlurOnHover: true,
         useCustomCells: false,
         useAnimation: true,
@@ -390,6 +392,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWaffleDatasetIt
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiWaffleConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     style: {

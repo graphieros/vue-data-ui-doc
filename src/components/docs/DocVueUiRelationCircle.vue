@@ -114,6 +114,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  responsive: false,
   userOptions: {
     show: true,
     buttons: {
@@ -166,6 +167,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  responsive: false,
   userOptions: {
     show: true,
     buttons: {
@@ -447,6 +449,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRelationCircleD
         <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiRelationCircleConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     userOptions: {

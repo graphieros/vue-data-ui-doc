@@ -201,7 +201,7 @@ const menuItems = computed(() => [
         link: "/docs#vue-ui-xy-canvas",
         type: "classic",
         thumb: new URL('../assets/thumb_xy_canvas.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_xy_canvaslight.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_xy_canvas_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
         hasLegend: true

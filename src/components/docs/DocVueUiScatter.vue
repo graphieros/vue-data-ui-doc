@@ -65,6 +65,7 @@ const dataset = computed(() => {
 ]});
 
 const darkModeConfig = ref({
+  responsive: false,
   useCssAnimation: true,
   style: {
     backgroundColor: "#1A1A1A",
@@ -240,6 +241,7 @@ const darkModeConfig = ref({
   }
 });
 const config = ref({
+  responsive: false,
   useCssAnimation: true,
   style: {
     backgroundColor: "#F3F4F6",
@@ -570,6 +572,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiScatterDatasetI
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiScatterConfig</span> = {
+  responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
   theme: ""; ("zen" | "hack" | "concrete" | "")
   customPalette: []; // string[]
   useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation">, (default: true)
