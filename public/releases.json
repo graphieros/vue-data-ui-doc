@@ -1,5 +1,27 @@
 [
   {
+    "version": "v 2.2.58",
+    "date": "2024-08-17",
+    "updates": [
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Added modulo config attribute to manage the number of time labels to display",
+        "link": "/docs#vue-ui-xy-canvas"
+      }
+    ]
+  },
+  {
+    "version": "v 2.2.57",
+    "date": "2024-08-17",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Show last x axis label value on large datasets when modulo is enabled",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.56",
     "date": "2024-08-17",
     "updates": [

@@ -143,7 +143,8 @@ const config = ref({
                         values: [],
                         rotation: 0,
                         offsetY: 30,
-                        color: "#2D353C"
+                        color: "#2D353C",
+                        modulo: 12
                     }
                 },
                 x: {
@@ -302,7 +303,8 @@ const darkModeConfig = ref({
                         values: [],
                         rotation: 0,
                         offsetY: 30,
-                        color: "#6A6A6A"
+                        color: "#6A6A6A",
+                        modulo: 12
                     }
                 },
                 x: {
@@ -636,6 +638,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyCanvasConfig</s
                         rotation: <input v-if="isDarkMode" type="number" min="-360" max="360" v-model="mutableConfigDarkMode.style.chart.grid.y.timeLabels.rotation" @change="forceChartUpdate"><input v-else type="number" min="-360" max="360" v-model="mutableConfig.style.chart.grid.y.timeLabels.rotation" @change="forceChartUpdate">, (default: 0)
                         offsetY: <input v-if="isDarkMode" type="number" min="-100" max="100" v-model="mutableConfigDarkMode.style.chart.grid.y.timeLabels.offsetY" @change="forceChartUpdate"><input v-else type="number" min="-100" max="100" v-model="mutableConfig.style.chart.grid.y.timeLabels.offsetY" @change="forceChartUpdate">, (default: 30)
                         color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.grid.y.timeLabels.color" @input="forceChartUpdate"><input v-else type="color" v-model="mutableConfig.style.chart.grid.y.timeLabels.color" @input="forceChartUpdate">, (default: "#2D353C")
+                        modulo: <input v-if="isDarkMode" type="number" min="1" max="365" v-model="mutableConfigDarkMode.style.chart.grid.y.timeLabels.modulo" @change="forceChartUpdate"><input v-else type="number" min="1" max="365" v-model="mutableConfig.style.chart.grid.y.timeLabels.modulo" @change="forceChartUpdate">, (default: 12)
                     }
                 },
                 x: {
