@@ -65,6 +65,7 @@ onMounted(() => {
                     <th class="border border-slate-600 p-2">Slots</th>
                     <th class="border border-slate-600 p-2">Emits</th>
                     <th class="border border-slate-600 p-2">{{ translations.overview.exposedMethods[store.lang] }}</th>
+                    <th class="border border-slate-600 p-2">Responsive<sup>1</sup></th>
                 </tr>
 
             </thead>
@@ -90,9 +91,15 @@ onMounted(() => {
                             <VueUiIcon :name="selectedComponent.hasExposed ? 'circleCheck' : 'circleCancel'" :stroke="selectedComponent.hasExposed ? '#42d392' : '#ff6400'"/>
                         </div>
                     </td>
+                    <td class="p-2 border border-slate-700">
+                        <div class="w-full flex justify-center">
+                            <VueUiIcon :name="selectedComponent.responsive ? 'circleCheck' : 'circleCancel'" :stroke="selectedComponent.responsive ? '#42d392' : '#ff6400'"/>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
+        1. {{ translations.responsiveUsage[store.lang] }} {{ translations.responsive[store.lang] }}
 
         <table v-if="selectedComponent.userOptions" class="table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left">

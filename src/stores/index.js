@@ -23,6 +23,16 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                responsiveUsage: {
+                    en: 'By default, all charts will scale based on the width of the parent container. Charts with the responsive configuration option have it disabled by default. If a chart has the responsive configuration option available : ',
+                    fr: `Par défaut, tous les graphiques seront mis à l'échelle en fonction de la largeur du conteneur parent. Les graphiques avec l'option de configuration responsive l'ont désactivé par défaut. Si un graphique dispose de l'option de configuration responsive :`,
+                    pt: `Por padrão, todos os gráficos serão dimensionados com base na largura do contêiner pai. Gráficos com opção de configuração 'responsiva' estão desabilitados por padrão. Se um gráfico tiver a opção de configuração 'responsiva' disponível:`,
+                    de: 'Standardmäßig werden alle Diagramme basierend auf der Breite des übergeordneten Containers skaliert. Bei Diagrammen mit der Konfigurationsoption „responsiv“ ist diese standardmäßig deaktiviert. Wenn für ein Diagramm die Konfigurationsoption „Responsiv“ verfügbar ist:',
+                    zh: '默认情况下，所有图表都将根据父容器的宽度进行缩放。具有“响应式”配置选项的图表默认情况下处于禁用状态。如果图表具有可用的“响应式”配置选项：',
+                    jp: 'デフォルトでは、すべてのグラフは親コンテナの幅に基づいて拡大縮小されます。 「応答性」構成オプションを含むチャートでは、デフォルトで無効になっています。チャートに「レスポンシブ」構成オプションが利用可能な場合:',
+                    es: 'De forma predeterminada, todos los gráficos se escalarán según el ancho del contenedor principal. Los gráficos con la opción de configuración "responsive" la tienen deshabilitada de forma predeterminada. Si un gráfico tiene disponible la opción de configuración "responsive":',
+                    ko: `기본적으로 모든 차트는 상위 컨테이너의 너비를 기준으로 크기가 조정됩니다. '반응형' 구성 옵션이 있는 차트에서는 기본적으로 비활성화되어 있습니다. 차트에 '반응형' 구성 옵션을 사용할 수 있는 경우:`
+                },
                 responsive: {
                     en: 'Set this attribute to true when the chart is placed inside a resizable container, or when the container has fixed dimensions. Never use when no height is set on the parent container, this will cause infinite height growth of the chart.',
                     fr: `Définissez cet attribut sur true lorsque le graphique est placé dans un conteneur redimensionnable ou lorsque le conteneur a des dimensions fixes. Ne jamais utiliser lorsqu'aucune hauteur n'est définie sur le conteneur parent, cela entraînerait une croissance infinie de la hauteur du graphique.`,

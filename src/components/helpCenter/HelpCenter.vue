@@ -45,7 +45,7 @@ onMounted(() => {
         <div class="absolute -bottom-5 text-xs text-app-orange">HELP</div>
     </button>
 
-    <dialog id="dialog" ref="helpCenter" class="shadow-xl fixed p-6 glass h-screen  w-full max-w-[1000px] max-h-[764px] rounded-lg bg-[#e1e5e890] dark:bg-[#2A2A2AAF] text-black dark:text-gray-300 border border-app-orange overflow-hidden">
+    <dialog id="dialog" ref="helpCenter" class="shadow-xl fixed p-6 glass h-screen  w-full max-w-[1000px] max-h-[764px] rounded-lg bg-[#e1e5e8] dark:bg-[#2A2A2A] text-black dark:text-gray-300 border border-app-orange overflow-hidden">
         <button @click="closeDialog" class="absolute top-6 right-6 z-50">
             <VueUiIcon name="close" :stroke="isDarkMode ? '#ff6400' : '#1A1A1A'"/>
         </button>

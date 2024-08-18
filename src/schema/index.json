@@ -9,6 +9,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "dataset",
             "config"
@@ -103,6 +104,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "dataset",
             "config"
@@ -252,6 +254,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "dataset",
             "config"
@@ -331,6 +334,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -391,6 +395,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -512,6 +517,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "dataset",
             "config"
@@ -663,6 +669,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -805,6 +812,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -866,6 +874,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -932,6 +941,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -1255,6 +1265,7 @@
         "hasSlots": false,
         "hasEmits": true,
         "hasExposed": false,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -1298,6 +1309,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": false,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -1407,6 +1419,7 @@
         "hasSlots": false,
         "hasEmits": true,
         "hasExposed": false,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -1510,6 +1523,7 @@
         "hasSlots": false,
         "hasEmits": false,
         "hasExposed": false,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -1538,6 +1552,7 @@
         "hasSlots": false,
         "hasEmits": true,
         "hasExposed": false,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -1588,6 +1603,7 @@
         "hasSlots": false,
         "hasEmits": false,
         "hasExposed": false,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -1621,6 +1637,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -1768,6 +1785,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -1899,6 +1917,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -2139,6 +2158,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -2307,6 +2327,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": false,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -2378,6 +2399,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -2566,6 +2588,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -2684,6 +2707,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -2841,6 +2865,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -2930,6 +2955,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -3335,6 +3361,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -3559,6 +3586,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -3635,6 +3663,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -3762,6 +3791,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -3876,6 +3906,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -4029,6 +4060,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -4163,6 +4195,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "config",
             "dataset"
@@ -4327,6 +4360,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -4539,6 +4573,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "config",
             "dataset"
@@ -4659,6 +4694,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "dataset",
             "config"
@@ -4771,6 +4807,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": true,
         "props": [
             "dataset",
             "config"
@@ -4917,6 +4954,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "responsive": false,
         "props": [
             "dataset",
             "config"
