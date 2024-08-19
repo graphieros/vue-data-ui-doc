@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 2.2.60",
+    "date": "2024-08-18",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-word-cloud"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-xy-canvas"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.58",
     "date": "2024-08-17",
     "updates": [

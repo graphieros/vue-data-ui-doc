@@ -254,7 +254,7 @@
         "hasSlots": true,
         "hasEmits": false,
         "hasExposed": true,
-        "responsive": false,
+        "responsive": true,
         "props": [
             "dataset",
             "config"
@@ -517,7 +517,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
-        "responsive": false,
+        "responsive": true,
         "props": [
             "dataset",
             "config"
@@ -4954,7 +4954,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
-        "responsive": false,
+        "responsive": true,
         "props": [
             "dataset",
             "config"

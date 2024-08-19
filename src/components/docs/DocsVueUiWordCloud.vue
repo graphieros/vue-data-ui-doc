@@ -39,6 +39,7 @@ const themes = ref([
 const selectedTheme = ref(themes.value[0]);
 
 const config = ref({
+    responsive: false,
     theme: "",
     customPalette: [],
     useCssAnimation: true,
@@ -107,6 +108,7 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    responsive: false,
     theme: "",
     customPalette: [],
     useCssAnimation: true,
@@ -307,6 +309,7 @@ function fixChart() {
                 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiWordCloudConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: <select v-model="selectedTheme" @change="forceChartUpdate()"><option v-for="opt in themes">{{ opt }}</option></select>; (default: "")
     customPalette: []; // string[]
     useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true) 

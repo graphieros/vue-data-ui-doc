@@ -51,6 +51,7 @@ const dataset = ref([
 ])
 
 const config = ref({
+    responsive: false,
     theme: "",
     customPalette: [],
     userOptions: {
@@ -211,6 +212,7 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    responsive: false,
     theme: "",
     customPalette: [],
     userOptions: {
@@ -545,6 +547,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                     <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiXyCanvasConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     userOptions: {
