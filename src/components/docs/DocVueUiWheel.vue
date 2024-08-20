@@ -31,6 +31,7 @@ const dataset = ref({
 });
 
 const config = ref({
+  responsive: false,
   style: {
     fontFamily: "inherit",
     chart: {
@@ -90,6 +91,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  responsive: false,
   style: {
     fontFamily: "inherit",
     chart: {
@@ -251,6 +253,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiWheelConfig</span> = {
+  responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
   theme: ""; ("zen" | "hack" | "concrete" | "")
   style: {
     fontFamily: "inherit",

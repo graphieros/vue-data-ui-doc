@@ -33,6 +33,7 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    responsive: false,
     useAnimation: true,
     animationSpeed: 2,
     userOptions: {
@@ -174,6 +175,7 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    responsive: false,
     useAnimation: true,
     animationSpeed: 2,
     userOptions: {
@@ -425,6 +427,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDumbbellDataset
 <pre>
 <code>
 const <span class="text-app-blue">config: VueUiDumbbellConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     useAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useAnimation" @change="forceChartUpdate()">, (default: true) 
     animationSpeed: <input v-if="isDarkMode" type="number" min="0.1" max="6" step="0.01" v-model="mutableConfigDarkMode.animationSpeed" @change="forceChartUpdate()"><input v-else type="number" min="0.1" max="6" step="0.01" v-model="mutableConfig.animationSpeed" @change="forceChartUpdate()">, (default: 2)

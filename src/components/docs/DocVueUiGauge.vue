@@ -63,6 +63,7 @@ const dataset2 = ref({
 });
 
 const config = ref({
+    responsive: false,
     style: {
         fontFamily: "inherit",
         chart: {
@@ -137,6 +138,7 @@ const config = ref({
     }
 });
 const darkModeConfig = ref({
+    responsive: false,
     style: {
         fontFamily: "inherit",
         chart: {
@@ -376,6 +378,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
 <pre>
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiGaugeConfig</span> = {
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
     theme: ""; ("zen" | "hack" | "concrete" | "")
     customPalette: []; // string[]
     style: {

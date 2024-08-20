@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 2.2.61",
+    "date": "2024-08-20",
+    "updates": [
+      {
+        "component": "VueUiWheel",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-wheel"
+      },
+      {
+        "component": "VueUiGauge",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-gauge"
+      },
+      {
+        "component": "VueUiDumbbell",
+        "description": "Implemented responsive feature",
+        "link": "/docs#vue-ui-dumbbell"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.60",
     "date": "2024-08-18",
     "updates": [
