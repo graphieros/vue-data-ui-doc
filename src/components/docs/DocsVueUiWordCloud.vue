@@ -8,6 +8,7 @@ import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
 import ThemesVueUiWordCloud from "../themes/ThemesVueUiWordCloud.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -256,7 +257,7 @@ function fixChart() {
             <MakerLink to="VueUiWordCloud"/>
         </div>
 
-        <Box showSlots showEmits showThemes>
+        <Box showSlots showEmits showThemes showResponsive>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -483,6 +484,29 @@ const <span class="text-app-blue">config: VueUiWordCloudConfig</span> = {
 
             <template #tab6>
                 <ThemesVueUiWordCloud />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit>
+                    <template #chart>
+                        <VueDataUi 
+                            component="VueUiWordCloud" 
+                            :dataset="dataset"
+                            :config="
+                                isDarkMode ? {
+                                    ...mutableConfigDarkMode, 
+                                    theme: selectedTheme,
+                                    responsive: true
+                                    } 
+                                    : {
+                                        ...mutableConfig, 
+                                        theme: selectedTheme,
+                                        responsive: true
+                                    }" 
+                            :key="key" 
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>

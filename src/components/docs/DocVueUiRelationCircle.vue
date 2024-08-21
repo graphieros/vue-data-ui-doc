@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ThemesVueUiRelationCircle from "../themes/ThemesVueUiRelationCircle.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -309,7 +310,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-relation-circle"/>
             <MakerLink to="VueUiRelationCircle"/>
         </div>
-    <Box showEmits showSlots showThemes>
+    <Box showEmits showSlots showThemes showResponsive>
       <template v-slot:tab0>
         {{ translations.docs.datastructure[store.lang] }}
         <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -541,6 +542,28 @@ const <span class="text-black dark:text-app-blue">config: VueUiRelationCircleCon
 
             <template #tab6>
               <ThemesVueUiRelationCircle />
+            </template>
+
+            <template #tab7>
+              <ResponsiveUnit>
+                <template #chart>
+                  <VueUiRelationCircle
+                    :dataset="dataset"
+                    :config="
+                      isDarkMode 
+                        ? {
+                          ...mutableConfigDarkMode,
+                          responsive: true
+                        } 
+                        : {
+                          ...mutableConfig,
+                          responsive: true
+                        }
+                      "
+                    :key="key"
+                  />
+                </template>
+              </ResponsiveUnit>
             </template>
     </Box>
   </div>

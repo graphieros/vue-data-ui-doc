@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import ucXyCanvas from "../../components/useCases/ux-xy-canvas.vue"
 import ThemesVueUiXyCanvas from "../themes/ThemesVueUiXyCanvas.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -465,7 +466,7 @@ function fixChart() {
             <!-- <MakerLink to="VueUiXy"/> -->
         </div>
 
-        <Box showEmits showSlots showUseCases showThemes showTooltip>
+        <Box showEmits showSlots showUseCases showThemes showTooltip showResponsive>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -909,6 +910,29 @@ Target the following css class to apply custom styles:
             <!-- THEMES -->
             <template #tab6>
                <ThemesVueUiXyCanvas/>
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit>
+                    <template #chart>
+                        <VueDataUi component="VueUiXyCanvas" :dataset="dataset"
+                            :config="isDarkMode ? {
+                                ...mutableConfigDarkMode,
+                                responsive: true,
+                                style: {
+                                    ...mutableConfigDarkMode.style,
+                                    fontFamily: 'Satoshi'
+                                }
+                            } : {
+                                ...mutableConfig,
+                                responsive: true,
+                                style: {
+                                    ...mutableConfig.style,
+                                    fontFamily: 'Satoshi' 
+                                }
+                            }" :key="key" />
+                    </template>
+                </ResponsiveUnit>
             </template>
 
         </Box>

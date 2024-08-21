@@ -8,6 +8,7 @@ import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ucXy from "../useCases/uc-xy.vue";
 import ThemesVueUiXy from "../themes/ThemesVueUiXy.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -600,7 +601,7 @@ const shapeOptions = ref([
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
             </div>
         </div>
-        <Box showEmits showSlots showTooltip showUseCases showThemes>
+        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive>
             <template v-slot:tab0>
 
             {{ translations.docs.datastructure[store.lang] }}
@@ -1181,6 +1182,39 @@ Target the following css class to apply custom styles:
 
             <template #tab6>
                 <ThemesVueUiXy/>
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit height="600px">
+                    <template #chart>
+                        <VueUiXy 
+                            :dataset="mutableDataset" 
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode, 
+                                        responsive: true,
+                                        chart: {
+                                            ...mutableConfigDarkMode.chart,
+                                            highlightArea: {
+                                                show: false,
+                                            }
+                                        }
+                                    } 
+                                    : {
+                                        ...mutableConfig, 
+                                        responsive: true,
+                                        chart: {
+                                            ...mutableConfig.chart,
+                                            highlightArea: {
+                                                show: false,
+                                            }
+                                        }
+                                    }" 
+                            :key="key"
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>

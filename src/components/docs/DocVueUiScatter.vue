@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ThemesVueUiScatter from "../themes/ThemesVueUiScatter.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -481,7 +482,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-scatter"/>
             <MakerLink to="VueUiScatter"/>
         </div>
-        <Box showEmits showSlots showTooltip showThemes>
+        <Box showEmits showSlots showTooltip showThemes showResponsive>
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">
@@ -909,6 +910,28 @@ Target the following css class to apply custom styles:
 
             <template #tab6>
               <ThemesVueUiScatter />
+            </template>
+
+            <template #tab7>
+              <ResponsiveUnit>
+                <template #chart>
+                  <VueUiScatter 
+                    :dataset="dataset" 
+                    :config="
+                      isDarkMode 
+                        ? {
+                          ...mutableConfigDarkMode,
+                          responsive: true
+                        } 
+                        : {
+                          ...mutableConfig,
+                          responsive: true
+                        }
+                      " 
+                    :key="key"
+                  />
+                </template>
+              </ResponsiveUnit>
             </template>
         </Box>
     </div>

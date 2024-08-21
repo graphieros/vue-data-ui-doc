@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ThemesVueUiTreemap from "../themes/ThemesVueUiTreemap.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -421,7 +422,7 @@ function fixChart() {
             <!-- <MakerLink to="VueUiGalaxy" /> -->
         </div>
 
-        <Box showEmits showSlots showTooltip :showThemes="false">
+        <Box showEmits showSlots showTooltip :showThemes="false" showResponsive>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -831,6 +832,29 @@ Target the following css class to apply custom styles:
             <!-- <template #tab6>
                 <ThemesVueUiTreemap />
             </template> -->
+
+            <template #tab7>
+                <ResponsiveUnit>
+                    <template #chart>
+                        <VueDataUi 
+                            component="VueUiTreemap" 
+                            :dataset="dataset"
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    } 
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                            :key="key" 
+                        />
+                    </template>
+                </ResponsiveUnit>
+            </template>
 
         </Box>
     </div>

@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
 import ThemesVueUiVerticalBar from "../themes/ThemesVueUiVerticalBar.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -419,7 +420,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-vertical-bar"/>
             <MakerLink to="VueUiVerticalBar" />
         </div>
-        <Box showEmits showSlots showTooltip showThemes>
+        <Box showEmits showSlots showTooltip showThemes showResponsive>
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">
@@ -853,6 +854,28 @@ Target the following css class to apply custom styles:
 
             <template #tab6>
               <ThemesVueUiVerticalBar />
+            </template>
+
+            <template #tab7>
+              <ResponsiveUnit>
+                <template #chart>
+                  <VueUiVerticalBar 
+                    :dataset="dataset" 
+                    :config="
+                      isDarkMode 
+                        ? {
+                          ...mutableConfigDarkMode,
+                          responsive: true
+                        } 
+                        : {
+                          ...mutableConfig,
+                          responsive: true
+                        }
+                      " 
+                    :key="key"
+                  />
+                </template>
+              </ResponsiveUnit>
             </template>
         </Box>
     </div>

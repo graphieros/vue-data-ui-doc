@@ -23,6 +23,26 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                responsiveUnitPresentation: {
+                    en: `This chart can be made 'responsive'. Place the chart inside a resizable container, or a container with fixed dimensions. Set the config attribute`,
+                    fr: `Ce graphique peut être rendu « responsive ». Placez le graphique dans un conteneur redimensionnable ou dans un conteneur aux dimensions fixes. Définir l'attribut de configuration`,
+                    pt: `Este gráfico pode ser tornado 'responsivo'. Coloque o gráfico dentro de um contêiner redimensionável ou de dimensões fixas. Defina o atributo de configuração`,
+                    de: 'Dieses Diagramm kann „responsiv“ gestaltet werden. Platzieren Sie das Diagramm in einem Container mit veränderbarer Größe oder einem Container mit festen Abmessungen. Legen Sie das Konfigurationsattribut fest',
+                    zh: '该图表可以设为“响应式”。将图表放置在可调整大小的容器或具有固定尺寸的容器内。设置配置属性',
+                    jp: 'このチャートは「レスポンシブ」にすることができます。サイズ変更可能なコンテナまたは固定寸法のコンテナ内にグラフを配置します。構成属性を設定する',
+                    es: 'Este gráfico se puede hacer "responsive". Coloque el gráfico dentro de un contenedor de tamaño variable o un contenedor con dimensiones fijas. Establecer el atributo de configuración',
+                    ko: `이 차트는 '반응형'으로 만들 수 있습니다. 크기 조정 가능한 컨테이너나 고정된 크기의 컨테이너 안에 차트를 배치합니다. 구성 속성 설정`
+                },
+                responsiveHandle: {
+                    en: `Use the resize handle to check out 'responsive' behaviour:`,
+                    fr: `Utilisez la poignée de redimensionnement pour vérifier le comportement « responsive » :`,
+                    pt: `Use o identificador de redimensionamento para verificar o comportamento 'responsivo':`,
+                    de: 'Verwenden Sie den Größenänderungsgriff, um das „responsive“ Verhalten zu überprüfen:',
+                    zh: '使用调整大小手柄来检查“响应”行为：',
+                    jp: 'サイズ変更ハンドルを使用して「応答性」の動作を確認します。',
+                    es: 'Utilice el controlador de cambio de tamaño para comprobar el comportamiento "receptivo":',
+                    ko: '반응형 동작을 확인하려면 크기 조정 핸들을 사용하세요.'
+                },
                 responsiveUsage: {
                     en: 'By default, all charts will scale based on the width of the parent container. Charts with the responsive configuration option have it disabled by default. If a chart has the responsive configuration option available : ',
                     fr: `Par défaut, tous les graphiques seront mis à l'échelle en fonction de la largeur du conteneur parent. Les graphiques avec l'option de configuration responsive l'ont désactivé par défaut. Si un graphique dispose de l'option de configuration responsive :`,

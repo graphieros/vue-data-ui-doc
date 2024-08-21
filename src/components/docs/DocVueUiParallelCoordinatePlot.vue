@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ThemesVueUiParallelCoordinatePlot from "../themes/ThemesVueUiParallelCoordinatePlot.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -386,7 +387,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-parallel-coordinate-plot" />
             <!-- <MakerLink to="VueUiParallelCoordinatePlot"/> -->
         </div>
-        <Box showEmits showSlots showTooltip showThemes>
+        <Box showEmits showSlots showTooltip showThemes showResponsive>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -809,6 +810,29 @@ Target the following css class to apply custom styles:
             <!-- THEMES -->
             <template #tab6>
                 <ThemesVueUiParallelCoordinatePlot/>
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit>
+                    <template #chart>
+                        <VueDataUi 
+                            component="VueUiParallelCoordinatePlot" 
+                            :dataset="dataset"
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    } 
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                            :key="key"
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>

@@ -9,6 +9,7 @@ import MakerLink from "../MakerLink.vue"
 import ConfigAttribute from "../ConfigAttribute.vue";
 import UcDonut from "../useCases/uc-donut.vue";
 import ThemesVueUiDonut from "../themes/ThemesVueUiDonut.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -572,7 +573,7 @@ const slotOption = ref(slotOptions.value[0])
             <GitHubLink link="vue-ui-donut"/>
             <MakerLink to="VueUiDonut"/>
         </div>
-        <Box showEmits showSlots showTooltip showUseCases showThemes>
+        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -1099,6 +1100,29 @@ Target the following css class to apply custom styles:
 
             <template #tab6>
                 <ThemesVueUiDonut />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit height="500px">
+                    <template #chart>
+                        <VueDataUi 
+                            component="VueUiDonut" 
+                            :dataset="mutableDataset" 
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    }
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                            :key="key"
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>

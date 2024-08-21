@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
 import ThemesVueUiGauge from "../themes/ThemesVueUiGauge.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -285,7 +286,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-gauge"/>
             <MakerLink to="VueUiGauge"/>
         </div>
-        <Box showEmits showSlots showThemes>
+        <Box showEmits showSlots showThemes showResponsive>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -505,6 +506,28 @@ const <span class="text-black dark:text-app-blue">config: VueUiGaugeConfig</span
 
             <template #tab6>
                 <ThemesVueUiGauge />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit>
+                    <template #chart>
+                        <VueUiGauge 
+                            :dataset="dataset1" 
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    } 
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                            :key="`gauge_1_${key}`"
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>

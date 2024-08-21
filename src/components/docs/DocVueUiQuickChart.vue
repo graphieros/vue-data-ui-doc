@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import ThemesVueUiQuickChart from "../themes/ThemesVueUiQuickChart.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -567,7 +568,7 @@ function fixChart() {
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_quick_chart)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
             <GitHubLink link="vue-ui-quick-chart"/>
         </div>
-        <Box showSlots showTooltip showEmits showThemes>
+        <Box showSlots showTooltip showEmits showThemes showResponsive>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -781,6 +782,28 @@ Target the following css class to apply custom styles:
 
             <template #tab6>
                 <ThemesVueUiQuickChart />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit>
+                    <template #chart>
+                        <VueUiQuickChart 
+                            :dataset="quickDatasetSimpleLine" 
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    } 
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                            :key="key"
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>

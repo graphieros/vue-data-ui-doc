@@ -17,6 +17,7 @@ type BoxProps = {
     showTooltip?: boolean;
     showUseCases?: boolean;
     showThemes?: boolean;
+    showResponsive?: boolean;
     activeTab?: number;
 }
 
@@ -26,6 +27,7 @@ const props = withDefaults(defineProps<BoxProps>(), {
     showtooltip: false,
     showUseCases: false,
     showThemes: false,
+    showResponsive: false,
     activeTab: 0
 })
 
@@ -78,6 +80,12 @@ const activeTab = ref(props.activeTab);
                 Themes
             </div>
         </div>
+        <div tabindex="0" v-if="props.showResponsive" :class="`w-fit select-none cursor-pointer text-black dark:text-[#40b3c7] border-b font-satoshi-bold p-3  ${activeTab === 7 ? 'bg-gray-200 dark:bg-black-100 border-b-[#40b3c7]' : 'border-b-transparent'} hover:border-b hover:border-b-[#40b3c7]`" @click="activeTab = 7" @keypress.enter="activeTab = 7">
+            <div class="flex flex-row place-items-center gap-2">
+                <VueUiIcon name="window" :size="18" :stroke="isDarkMode ? '#40b3c7' : '#1A1A1A'"/>
+                Responsive
+            </div>
+        </div>
     </div>
 
         <div class="text-satoshi-bold text-app-green text-2xl mb-3">
@@ -108,6 +116,9 @@ const activeTab = ref(props.activeTab);
         </div>
         <div v-show="activeTab === 6">
             <slot name="tab6"/>
+        </div>
+        <div v-show="activeTab === 7">
+            <slot name="tab7"/>
         </div>
     </div>
 </template>

@@ -7,6 +7,7 @@ import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
 import { useMainStore } from "../../stores";
 import ThemesVueUiQuadrant from "../themes/ThemesVueUiQuadrant.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 
 const store = useMainStore();
@@ -499,7 +500,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-quadrant"/>
             <MakerLink to="VueUiQuadrant" />
         </div>
-        <Box showEmits showSlots showTooltip showThemes>
+        <Box showEmits showSlots showTooltip showThemes showResponsive>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -1010,6 +1011,28 @@ Target the following css class to apply custom styles:
 
             <template #tab6>
                 <ThemesVueUiQuadrant />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit width="300px">
+                    <template #chart>
+                        <VueUiQuadrant 
+                            :dataset="mutableDataset" 
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    } 
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                            :key="key"
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>

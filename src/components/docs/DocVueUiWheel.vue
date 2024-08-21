@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
 import ThemesVueUiWheel from "../themes/ThemesVueUiWheel.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -215,7 +216,7 @@ function fixChart() {
             <MakerLink to="VueUiWheel" />
         </div>
 
-        <Box showEmits showSlots showThemes>
+        <Box showEmits showSlots showThemes showResponsive>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -348,6 +349,28 @@ const <span class="text-black dark:text-app-blue">config: VueUiWheelConfig</span
 
             <template #tab6>
               <ThemesVueUiWheel />
+            </template>
+
+            <template #tab7>
+              <ResponsiveUnit>
+                <template #chart>
+                  <VueUiWheel 
+                    :dataset="dataset" 
+                    :config="
+                      isDarkMode 
+                        ? {
+                          ...mutableConfigDarkMode,
+                          responsive: true
+                        } 
+                        : {
+                          ...mutableConfig,
+                          responsive: true
+                        }
+                      " 
+                    :key="key"
+                  />
+                </template>
+              </ResponsiveUnit>
             </template>
         </Box>
     </div>

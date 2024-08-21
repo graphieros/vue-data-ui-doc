@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from '../MakerLink.vue';
 import ThemesVueUiAgePyramid from "../themes/ThemesVueUiAgePyramid.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -947,7 +948,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-age-pyramid"/>
             <MakerLink to="VueUiAgePyramid"/>
         </div>
-        <Box showEmits showSlots showTooltip showThemes>
+        <Box showEmits showSlots showTooltip showThemes showResponsive>
             <template #tab0>
                 {{ translations.docs.example[store.lang] }}:
                 <br>
@@ -1203,6 +1204,28 @@ Target the following css class to apply custom styles:
 
             <template #tab6>
               <ThemesVueUiAgePyramid />
+            </template>
+
+            <template #tab7>
+              <ResponsiveUnit>
+                <template #chart>
+                  <VueUiAgePyramid 
+                    :dataset="dataset" 
+                    :config="
+                      isDarkMode 
+                        ? {
+                          ...mutableConfigDarkMode,
+                          responsive: true
+                        } 
+                        : {
+                          ...mutableConfig,
+                          responsive: true
+                        }
+                      " 
+                    :key="key"
+                  />
+                </template>
+              </ResponsiveUnit>
             </template>
         </Box>
     </div>

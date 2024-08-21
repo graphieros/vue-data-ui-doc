@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ThemesVueUiRings from "../themes/ThemesVueUiRings.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -313,7 +314,7 @@ function fixChart() {
             <MakerLink to="VueUiRings"/>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes>
+        <Box showEmits showSlots showTooltip showThemes showResponsive>
         
           <template #tab0>
             {{ translations.docs.datastructure[store.lang] }}
@@ -658,6 +659,28 @@ Target the following css class to apply custom styles:
 
             <template #tab6>
               <ThemesVueUiRings />
+            </template>
+
+            <template #tab7>
+              <ResponsiveUnit>
+                <template #chart>
+                  <VueUiRings 
+                    :dataset="dataset" 
+                    :config="
+                      isDarkMode 
+                        ? {
+                          ...mutableConfigDarkMode,
+                          responsive: true
+                        } 
+                        : {
+                          ...mutableConfig,
+                          responsive: true
+                        }
+                      " 
+                    :key="key"
+                  />
+                </template>
+              </ResponsiveUnit>
             </template>
         </Box>
 

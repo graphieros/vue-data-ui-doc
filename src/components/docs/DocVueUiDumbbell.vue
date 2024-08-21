@@ -6,6 +6,7 @@ import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import ThemesVueUiDumbbell from "../themes/ThemesVueUiDumbbell.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -380,7 +381,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-dumbbell"/>
             <!-- <MakerLink to="VueUiStripPlot"/> -->
         </div>
-        <Box showEmits showSlots showThemes>
+        <Box showEmits showSlots showThemes showResponsive>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -691,6 +692,29 @@ const <span class="text-app-blue">config: VueUiDumbbellConfig</span> = {
 
             <template #tab6>
                 <ThemesVueUiDumbbell />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit>
+                    <template #chart>
+                        <VueDataUi 
+                            component="VueUiDumbbell" 
+                            :dataset="dataset" 
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    } 
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                            :key="key"
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>
