@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.2.62",
+    "date": "2024-08-21",
+    "updates": [
+      {
+        "component":"",
+        "description": "Fixed type errors in VueUiXyConfig type"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.61",
     "date": "2024-08-20",
     "updates": [
