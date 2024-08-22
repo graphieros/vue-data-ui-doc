@@ -1,5 +1,5 @@
 <script setup>
-import {ref, computed, onMounted, onUnmounted } from "vue";
+import {ref, computed, onMounted } from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useRouter } from "vue-router";
 import DocVueUiXy from '../components/docs/DocVueUiXy.vue';
@@ -49,7 +49,6 @@ import { getVueDataUiConfig, getThemeConfig } from "vue-data-ui";
 import mainConfig from "../assets/default_configs.json";
 import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
-import Sprinter from "../components/Sprinter.vue";
 import Wheeler from "../components/Wheeler.vue";
 import DocVueUiTreemap from "../components/docs/DocVueUiTreemap.vue";
 import DocVueUiTableHeatmap from "../components/docs/DocVueUiTableHeatmap.vue";
