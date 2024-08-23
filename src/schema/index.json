@@ -146,6 +146,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -219,6 +224,10 @@
             {
                 "name": "toggleStack",
                 "description": "Triggers toggling of the stack mode"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -431,6 +440,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -482,6 +496,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -578,6 +596,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -638,6 +661,10 @@
             {
                 "name": "toggleSort",
                 "description": "Triggers toggling of the sorting order"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -722,6 +749,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -777,6 +809,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -1183,6 +1219,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -1238,6 +1279,10 @@
             {
                 "name": "toggleLabels",
                 "description": "Triggers toggling of the data labels visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -1709,6 +1754,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -1754,6 +1804,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -1835,6 +1889,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -1886,6 +1945,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -2245,6 +2308,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -2296,6 +2364,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -2349,6 +2421,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -2372,6 +2449,12 @@
             {
                 "name": "selectDatapoint",
                 "description": "Emits the selected datapoint on click."
+            }
+        ],
+        "exposed": [
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers the toggling of tooltip visibility"
             }
         ],
         "slots": [
@@ -2489,6 +2572,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -2557,6 +2645,10 @@
             {
                 "name": "toggleLabels",
                 "description": "Triggers toggling of the data labels visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -2625,6 +2717,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -2676,6 +2773,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -2770,6 +2871,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -2834,6 +2940,10 @@
             {
                 "name": "toggleLabels",
                 "description": "Triggers toggling of the data labels visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -3280,6 +3390,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -3334,6 +3449,10 @@
             {
                 "name": "toggleLabels",
                 "description": "Triggers toggling of the data labels visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -3518,6 +3637,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -3559,6 +3683,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -3705,6 +3833,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -3760,6 +3893,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -4096,6 +4233,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -4160,6 +4302,10 @@
             {
                 "name": "toggleLabels",
                 "description": "Triggers toggling of the data labels visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -4497,6 +4643,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -4538,6 +4689,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -4626,6 +4781,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -4663,6 +4823,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -4859,6 +5023,11 @@
         ],
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -4923,6 +5092,10 @@
             {
                 "name": "toggleLabels",
                 "description": "Triggers toggling of the data labels visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -4989,6 +5162,11 @@
             }
         ],
         "userOptions": [
+            {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
             {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
@@ -5059,6 +5237,10 @@
             {
                 "name": "toggleStack",
                 "description": "Triggers toggling of the stack mode"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [

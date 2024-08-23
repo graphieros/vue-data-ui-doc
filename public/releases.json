@@ -1,10 +1,116 @@
 [
   {
+    "version": "v 2.2.63",
+    "date": "2024-08-23",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Added toggle tooltip user option",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Added tooltipDisabled icon",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.62",
     "date": "2024-08-21",
     "updates": [
       {
-        "component":"",
+        "component": "",
         "description": "Fixed type errors in VueUiXyConfig type"
       }
     ]

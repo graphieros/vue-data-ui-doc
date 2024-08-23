@@ -14,6 +14,7 @@ import { ref, computed } from "vue";
 <code>
     const config = ref({
         userOptions: {
+            tooltip: true,
             pdf: true,
             csv: true,
             img: true,
@@ -70,6 +71,10 @@ import { ref, computed } from "vue";
             </thead>
             <tbody>
                 <tr class="bg-[#FFFFFF10]">
+                    <td class="p-2 border border-slate-700">tooltip</td>
+                    <td class="p-2 border border-slate-700">#optionTooltip</td>
+                </tr>
+                <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700">pdf</td>
                     <td class="p-2 border border-slate-700">#optionPdf</td>
                 </tr>
@@ -119,11 +124,11 @@ import { ref, computed } from "vue";
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-age-pyramid">VueUiAgePyramid</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-candlestick">VueUiCandlestick</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-chestnut">VueUiChestnut</RouterLink></td>
@@ -131,7 +136,7 @@ import { ref, computed } from "vue";
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-donut">VueUiDonut</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen, labels</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen, labels</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-donut-evolution">VueUiDonutEvolution</RouterLink></td>
@@ -147,7 +152,7 @@ import { ref, computed } from "vue";
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-galaxy">VueUiGalaxy</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-gauge">VueUiGauge</RouterLink></td>
@@ -155,11 +160,11 @@ import { ref, computed } from "vue";
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-heatmap">VueUiHeatmap</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-molecule">VueUiMolecule</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen, labels</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen, labels</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-mood-radar">VueUiMoodRadar</RouterLink></td>
@@ -167,27 +172,27 @@ import { ref, computed } from "vue";
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-nested-donuts">VueUiNestedDonuts</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen, labels</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen, labels</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-nested-onion">VueUiOnion</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-parallel-coordinate-plot">VueUiParallelCoordinatePlot</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen, labels</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen, labels</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-quadrant">VueUiQuadrant</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen, labels</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen, labels</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-quick-chart">VueUiQuickChart</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-radar">VueUiRadar</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-relation-circle">VueUiRelationCircle</RouterLink></td>
@@ -195,11 +200,11 @@ import { ref, computed } from "vue";
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-rings">VueUiRings</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-scatter">VueUiScatter</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-sparkhistogram">VueUiSparkHistogram</RouterLink></td>
@@ -227,7 +232,7 @@ import { ref, computed } from "vue";
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-strip-plot">VueUiStripPlot</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen, labels</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen, labels</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-table-heatmap">VueUiTableHeatmap</RouterLink></td>
@@ -247,15 +252,15 @@ import { ref, computed } from "vue";
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-treemap">VueUiTreemap</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-vertical-bar">VueUiVerticalBar</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen, sort</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen, sort</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-waffle">VueUiWaffle</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-wheel">VueUiWheel</RouterLink></td>
@@ -267,11 +272,11 @@ import { ref, computed } from "vue";
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-xy">VueUiXy</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen, labels, stack</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen, labels, stack</td>
                 </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700 underline text-app-blue"><RouterLink to="/docs#vue-ui-xy-canvas">VueUiXyCanvas</RouterLink></td>
-                    <td class="p-2 border border-slate-700">pdf, img, csv, table, fullscreen, labels, stack</td>
+                    <td class="p-2 border border-slate-700">tooltip, pdf, img, csv, table, fullscreen, labels, stack</td>
                 </tr>
             </tbody>
         </table>

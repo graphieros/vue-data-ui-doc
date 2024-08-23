@@ -48,6 +48,10 @@ function toggleTable() {
     donutChart.value.toggleTable();
 }
 
+function toggleTooltip() {
+    donutChart.value.toggleTooltip();
+}
+
 </script>
 
 <template>
@@ -96,6 +100,10 @@ function toggleTable() {
     function toggleTable() {
         donutChart.value.toggleTable();
     }
+
+    function toggleTooltip() {
+        donutChart.value.toggleTooltip();
+    }
 </code>
 </pre>
 
@@ -106,6 +114,7 @@ function toggleTable() {
 <code>
     &lt;template&gt;
         &lt;div class="my-menu"&gt;
+            &lt;button @click="toggleTooltip"&gt;VIEW TOOLTIP&lt;/button&gt;
             &lt;button @click="generatePdf"&gt;PDF&lt;/button&gt;
             &lt;button @click="generateImage"&gt;IMG&lt;/button&gt;
             &lt;button @click="generateCsv"&gt;CSV&lt;/button&gt;
@@ -126,6 +135,7 @@ function toggleTable() {
     Example:
     <div class="w-full">
         <div class="p-2 my-4 flex flex-row flex-wrap gap-4 bg-gray-300 dark:bg-[#FFFFFF10]">
+            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="toggleTooltip">TOGGLE TOOLTIP</button>
             <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="toggleLabels">TOGGLE LABELS</button>
             <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="toggleTable">TOGGLE TABLE</button>
             <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="generatePdf">PDF</button>
