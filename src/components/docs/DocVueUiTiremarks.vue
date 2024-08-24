@@ -216,7 +216,7 @@ function fixChart() {
             <MakerLink to="VueUiTiremarks" />
         </div>
 
-        <Box showEmits showSlots showThemes>
+        <Box showEmits showSlots showThemes schema="vue_ui_tiremarks">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

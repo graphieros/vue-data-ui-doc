@@ -358,7 +358,7 @@ function fixChart() {
             <MakerLink to="VueUiDonutEvolution" />
         </div>
 
-        <Box showEmits showSlots showThemes>
+        <Box showEmits showSlots showThemes schema="vue_ui_donut_evolution">
             <template #tab0>
             
                 {{ translations.docs.datastructure[store.lang] }}

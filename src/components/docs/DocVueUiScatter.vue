@@ -484,7 +484,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-scatter"/>
             <MakerLink to="VueUiScatter"/>
         </div>
-        <Box showEmits showSlots showTooltip showThemes showResponsive>
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_scatter">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">

@@ -295,7 +295,7 @@ function fixChart() {
             <MakerLink to="VueUiMoodRadar"/>
         </div>
 
-        <Box showEmits showSlots showThemes>
+        <Box showEmits showSlots showThemes schema="vue_ui_mood_radar">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

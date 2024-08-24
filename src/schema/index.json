@@ -329,7 +329,7 @@
         ],
         "examples": [
             {
-                "dataset": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum nibh eget sem efficitur mollis. Duis aliquam, leo id varius faucibus, eros purus ultrices odio, in vestibulum lectus ante et orci. Aliquam ac viverra augue. Maecenas accumsan auctor massa, sit amet egestas diam aliquam non. Aenean dapibus neque posuere ligula porttitor egestas. In lorem felis, congue eu purus in, rhoncus porta lacus. Maecenas commodo erat at sollicitudin pharetra. In mauris odio, posuere a dui id, rutrum ornare lorem. Etiam ut tempus arcu. Maecenas orci felis, dictum et ultricies non, tristique a diam.Duis nibh risus, interdum convallis nulla ac, pharetra porttitor ligula. Donec ullamcorper tortor turpis, sit amet accumsan lectus tristique eu. Vestibulum fermentum quam non fermentum mattis. Suspendisse at bibendum tellus, nec scelerisque nibh. Sed nec sapien turpis. Sed et libero venenatis, suscipit erat non, aliquet sem. Aliquam gravida semper purus a sollicitudin.Vestibulum pretium varius pulvinar. Nulla at elit sit amet quam commodo hendrerit. Aliquam iaculis ornare velit eget congue. Sed commodo eros at quam sodales posuere. Nam scelerisque pretium est eu porttitor. Nulla ornare, mi non tempus auctor, est dolor congue velit, quis varius enim nunc ac massa. Vivamus sed neque vitae libero tincidunt faucibus. Etiam hendrerit viverra arcu, eget pretium nunc finibus quis. Suspendisse in neque ornare, auctor velit vel, imperdiet orci. Vivamus viverra ullamcorper ex vel laoreet. Ut ornare lacus sed convallis maximus. Ut mollis urna a posuere feugiat. Aenean blandit ullamcorper elit ac lacinia. Nullam gravida gravida nisl, vel scelerisque risus rutrum tincidunt. Nullam ultricies ligula elementum bibendum pharetra."
+                "dataset": "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ipsum ipsum ipsum ipsum ipsum ipsum ipsum dolor dolor dolor dolor sic sic amet amet amet"
             }
         ]
     },
@@ -1693,6 +1693,23 @@
         },
         "examples": [
             {
+                "config": {
+                    "style": {
+                        "layout": {
+                            "dataLabels": {
+                                "xAxis": {
+                                    "fontSize": 12
+                                },
+                                "yAxis": {
+                                    "fontSize": 12
+                                }
+                            },
+                            "plots": {
+                                "radius": 6
+                            }
+                        }
+                    }
+                },
                 "dataset": [
                     {
                         "name": "Cluster 1",
@@ -4517,6 +4534,19 @@
         },
         "examples": [
             {
+                "config": {
+                    "style": {
+                        "layout": {
+                            "grid": {
+                                "xAxis": {
+                                    "dataLabels": {
+                                        "rotation": -20
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 "dataset": [
                     [
                         "2024-01-01",

@@ -468,7 +468,7 @@ function fixChart() {
             <!-- <MakerLink to="VueUiXy"/> -->
         </div>
 
-        <Box showEmits showSlots showUseCases showThemes showTooltip showResponsive>
+        <Box showEmits showSlots showUseCases showThemes showTooltip showResponsive schema="vue_ui_xy_canvas">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

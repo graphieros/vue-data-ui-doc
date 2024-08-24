@@ -257,7 +257,7 @@ function fixChart() {
             <MakerLink to="VueUiWordCloud"/>
         </div>
 
-        <Box showSlots showEmits showThemes showResponsive>
+        <Box showSlots showEmits showThemes showResponsive schema="vue_ui_word_cloud">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

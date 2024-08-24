@@ -3,10 +3,12 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import { BracketsContainIcon} from "vue-tabler-icons";
 import IconSettings from "./IconSettings.vue";
+import Schema from "../schema/Schema.vue";
 
 const store = useMainStore();
 
 const isDarkMode = computed(() => store.isDarkMode);
+const translations = computed(() => store.translations);
 
 type BoxProps = {
     /**
@@ -19,6 +21,7 @@ type BoxProps = {
     showThemes?: boolean;
     showResponsive?: boolean;
     activeTab?: number;
+    schema?: string;
 }
 
 const props = withDefaults(defineProps<BoxProps>(), {
@@ -28,14 +31,61 @@ const props = withDefaults(defineProps<BoxProps>(), {
     showUseCases: false,
     showThemes: false,
     showResponsive: false,
-    activeTab: 0
+    activeTab: 0,
+    schema: ''
 })
 
 const activeTab = ref(props.activeTab);
 
+const config = ref({
+    open: false,
+    maxHeight: 10000,
+  head: {
+    useArrowSlot: false,
+    backgroundColor: "#e1e5e8",
+    color: "#2D353C",
+    iconColor: "#5f8bee",
+    padding: "12px 6px"
+  },
+  body: {
+    backgroundColor: "#e1e5e8",
+    color: "#2D353C"
+  }
+})
+
+const darkModeConfig = ref({
+    open: false,
+    maxHeight: 10000,
+  head: {
+    useArrowSlot: false,
+    backgroundColor: "#5f8bee20",
+    color: "#CCCCCC",
+    iconColor: "#5f8bee",
+    padding: "12px 6px"
+  },
+  body: {
+    backgroundColor: "#5f8bee20",
+    color: "#CCCCCC"
+  }
+})
+
 </script>
 
 <template>
+    <div v-if="schema" class="border p-4 border-app-blue rounded-lg bg-[#5f8bee20] my-6 relative overflow-x-auto">
+        <VueDataUi
+            component="VueUiAccordion"
+            :config="isDarkMode ? darkModeConfig : config"
+        >
+            <template #title="{ color }">
+                <div :style="`color:${color}`">
+                {{ translations.quickOverview[store.lang] }}</div>
+            </template>
+            <template #content>
+                <Schema :component="schema" :showLink="false"/>
+            </template>
+        </VueDataUi>
+    </div>
     <div class="p-6 rounded-md border border-gray-700 my-6 relative overflow-x-auto">
     <div class="flex flex-row border w-full border-gray-700 mb-6 rounded overflow-auto">
         <div tabindex="0" :class="`w-fit select-none cursor-pointer text-black dark:text-app-green font-satoshi-bold p-3  ${activeTab === 0 ? 'bg-gray-200 dark:bg-black-100 border-b border-b-app-green' : 'border-b border-b-transparent'} hover:border-b hover:border-b-app-green`" @click="activeTab = 0" @keypress.enter="activeTab = 0">

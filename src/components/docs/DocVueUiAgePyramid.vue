@@ -950,7 +950,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-age-pyramid"/>
             <MakerLink to="VueUiAgePyramid"/>
         </div>
-        <Box showEmits showSlots showTooltip showThemes showResponsive>
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_age_pyramid">
             <template #tab0>
                 {{ translations.docs.example[store.lang] }}:
                 <br>

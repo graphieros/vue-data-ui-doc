@@ -316,7 +316,7 @@ function fixChart() {
             <MakerLink to="VueUiRings"/>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive>
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_rings">
         
           <template #tab0>
             {{ translations.docs.datastructure[store.lang] }}

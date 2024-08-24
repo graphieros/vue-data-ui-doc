@@ -21,6 +21,10 @@ const props = defineProps({
     component: {
         type: String,
         default: 'vue_ui_xy'
+    },
+    showLink: {
+        type: Boolean,
+        default: true
     }
 }) 
 
@@ -49,7 +53,7 @@ onMounted(() => {
             <BaseText :label="translations.overview.description[store.lang]" :text="selectedComponent.description" />
             <BaseText v-if="selectedComponent.props.includes('dataset')" label="Dataset TS type" isCode :text="selectedComponent.types.dataset" />
             <BaseText v-if="selectedComponent.props.includes('dataset')" label="Config TS type" isCode :text="selectedComponent.types.config" />
-            <div class="mt-8">
+            <div class="mt-8" v-if="showLink">
                 <DocLink :to="selectedComponent.path.replace('/docs#', '')"/>
             </div>
 

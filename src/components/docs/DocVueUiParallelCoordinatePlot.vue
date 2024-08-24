@@ -389,7 +389,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-parallel-coordinate-plot" />
             <!-- <MakerLink to="VueUiParallelCoordinatePlot"/> -->
         </div>
-        <Box showEmits showSlots showTooltip showThemes showResponsive>
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_parallel_coordinate_plot">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

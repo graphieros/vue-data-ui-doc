@@ -286,7 +286,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-gauge"/>
             <MakerLink to="VueUiGauge"/>
         </div>
-        <Box showEmits showSlots showThemes showResponsive>
+        <Box showEmits showSlots showThemes showResponsive schema="vue_ui_gauge">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

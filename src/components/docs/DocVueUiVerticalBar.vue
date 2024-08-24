@@ -422,7 +422,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-vertical-bar"/>
             <MakerLink to="VueUiVerticalBar" />
         </div>
-        <Box showEmits showSlots showTooltip showThemes showResponsive>
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_vertical_bar">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">

@@ -310,7 +310,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-relation-circle"/>
             <MakerLink to="VueUiRelationCircle"/>
         </div>
-    <Box showEmits showSlots showThemes showResponsive>
+    <Box showEmits showSlots showThemes showResponsive schema="vue_ui_relation_circle">
       <template v-slot:tab0>
         {{ translations.docs.datastructure[store.lang] }}
         <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">

@@ -337,7 +337,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-waffle"/>
             <MakerLink to="VueUiWaffle"/>
         </div>
-        <Box showEmits showSlots showTooltip showThemes showResponsive>
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_waffle">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

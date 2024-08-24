@@ -354,7 +354,7 @@ function fixChart() {
       <MakerLink to="VueUiGalaxy" />
     </div>
 
-    <Box showEmits showSlots showTooltip showThemes>
+    <Box showEmits showSlots showTooltip showThemes schema="vue_ui_galaxy">
       <template #tab0>
         {{ translations.docs.datastructure[store.lang] }}
         <div>

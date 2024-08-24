@@ -381,7 +381,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-dumbbell"/>
             <!-- <MakerLink to="VueUiStripPlot"/> -->
         </div>
-        <Box showEmits showSlots showThemes showResponsive>
+        <Box showEmits showSlots showThemes showResponsive schema="vue_ui_dumbbell">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

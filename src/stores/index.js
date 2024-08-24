@@ -23,6 +23,16 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                quickOverview: {
+                    en: 'Quick overview - Technical specs',
+                    fr: 'Aperçu rapide - Spécifications techniques',
+                    pt: 'Visão geral rápida - Especificações técnicas',
+                    de: 'Schneller Überblick – Technische Daten',
+                    zh: '快速概述 - 技术规格',
+                    jp: '概要 - 技術仕様',
+                    es: 'Descripción rápida: especificaciones técnicas',
+                    ko: '빠른 개요 - 기술 사양'
+                },
                 responsiveUnitPresentation: {
                     en: `This chart can be made 'responsive'. Place the chart inside a resizable container, or a container with fixed dimensions. Set the config attribute`,
                     fr: `Ce graphique peut être rendu « responsive ». Placez le graphique dans un conteneur redimensionnable ou dans un conteneur aux dimensions fixes. Définir l'attribut de configuration`,

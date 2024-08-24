@@ -229,7 +229,7 @@ function fixChart() {
             <MakerLink to="VueUiThermometer" />
         </div>
 
-        <Box showEmits showSlots showThemes>
+        <Box showEmits showSlots showThemes schema="vue_ui_thermometer">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

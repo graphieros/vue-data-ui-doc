@@ -575,7 +575,7 @@ const slotOption = ref(slotOptions.value[0])
             <GitHubLink link="vue-ui-donut"/>
             <MakerLink to="VueUiDonut"/>
         </div>
-        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive>
+        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive schema="vue_ui_donut">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

@@ -279,7 +279,7 @@ function fixChart() {
             <MakerLink to="VueUiFlow"/>
         </div>
 
-        <Box showSlots showThemes showEmits>
+        <Box showSlots showThemes showEmits schema="vue_ui_flow">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

@@ -401,7 +401,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-radar"/>
             <MakerLink to="VueUiRadar"/>
         </div>
-        <Box showEmits showSlots showTooltip showThemes showResponsive>
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_radar">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

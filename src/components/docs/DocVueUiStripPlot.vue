@@ -439,7 +439,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-strip-plot"/>
             <MakerLink to="VueUiStripPlot"/>
         </div>
-        <Box showEmits showSlots showTooltip showThemes showResponsive>
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_strip_plot">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

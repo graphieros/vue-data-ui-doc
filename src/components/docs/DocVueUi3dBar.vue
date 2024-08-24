@@ -405,7 +405,7 @@ function fixChart() {
             <MakerLink to="VueUi3dBar"/>
         </div>
 
-        <Box showEmits showSlots showThemes>
+        <Box showEmits showSlots showThemes schema="vue_ui_3d_bar">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

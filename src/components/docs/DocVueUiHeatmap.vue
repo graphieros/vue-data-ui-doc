@@ -344,7 +344,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-heatmap"/>
             <MakerLink to="VueUiHeatmap" />
         </div>
-        <Box showEmits showSlots showTooltip showThemes>
+        <Box showEmits showSlots showTooltip showThemes schema="vue_ui_heatmap">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">

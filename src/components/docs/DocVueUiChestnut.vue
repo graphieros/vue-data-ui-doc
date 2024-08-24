@@ -655,7 +655,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-chestnut"/>
             <MakerLink to="VueUiChestnut"/>
         </div>
-        <Box showEmits showSlots showThemes>
+        <Box showEmits showSlots showThemes schema="vue_ui_chestnut">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
