@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.65",
+    "date": "2024-08-24",
+    "updates": [
+      {
+        "component": "VueUiMolecule",
+        "description": "Renamed 'parentNode' name usage to 'ancestor' to avoid any naming conflicts",
+        "link": "/docs#vue-ui-molecule"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.63",
     "date": "2024-08-23",
     "updates": [

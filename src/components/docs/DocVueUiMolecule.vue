@@ -242,7 +242,7 @@ const config = ref({
         translations: {
             nodeName: "Node name",
             details: "Details",
-            parentNode: "Parent node"
+            ancestor: "Parent node"
         }
     },
     userOptions: {
@@ -315,7 +315,7 @@ const darkModeConfig = ref({
         translations: {
             nodeName: "Node name",
             details: "Details",
-            parentNode: "Parent node"
+            ancestor: "Parent node"
         }
     },
     userOptions: {
@@ -653,7 +653,7 @@ const <span class="text-app-blue">config: VueUiMoleculeConfig</span> = {
         translations: {
             nodeName: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.translations.nodeName"><input v-else type="text" v-model="mutableConfig.table.translations.nodeName">, (default: "Node name")
             details: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.translations.details"><input v-else type="text" v-model="mutableConfig.table.translations.details">, (default: "Details")
-            parentNode: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.translations.parentNode"><input v-else type="text" v-model="mutableConfig.table.translations.parentNode">, (default: "Parent node")
+            ancestor: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.table.translations.ancestor"><input v-else type="text" v-model="mutableConfig.table.translations.ancestor">, (default: "Parent node")
         }
     },
     userOptions: {
