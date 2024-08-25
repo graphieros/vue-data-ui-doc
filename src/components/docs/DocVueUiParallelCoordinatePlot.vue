@@ -48,7 +48,8 @@ const dataset = ref([
         series: [
             {
                 name: 'Item 2.1',
-                values: [2300, 230, 23, 2.3]
+                values: [2300, 230, 23, 2.3],
+                comments: ['', 'A comment for this specific datapoint', '', '']
             },
             {
                 name: 'Item 2.2',
@@ -145,6 +146,13 @@ const config = ref({
                     fontSize: 16,
                     bold: false
                 }
+            },
+            comments: {
+                show: true,
+                showInTooltip: true,
+                width: 200,
+                offsetX: 0,
+                offsetY: 0
             },
             legend: {
                 backgroundColor: "#F3F4F6",
@@ -269,6 +277,13 @@ const darkModeConfig = ref({
                     bold: false
                 }
             },
+            comments: {
+                show: true,
+                showInTooltip: true,
+                width: 200,
+                offsetX: 0,
+                offsetY: 0
+            },
             legend: {
                 backgroundColor: "#1A1A1A",
                 color: "#CCCCCC",
@@ -378,6 +393,11 @@ function fixChart() {
             </div>
             <VueDataUi component="VueUiParallelCoordinatePlot" :dataset="dataset"
                 :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                <template #plot-comment="{ plot }">
+                    <div :style="`width: 100%;`">
+                        {{  plot.comment }}
+                    </div>
+                </template>
             </VueDataUi>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
@@ -559,6 +579,14 @@ const <span class="text-app-blue">config: VueUiParallelCoordinatePlotConfig</spa
                     bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.title.subtitle.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.title.subtitle.bold" @change="forceChartUpdate()">, (default: false)
                 }
             },
+            // Check out the slots tab for instructions to use comments
+            comments: {
+                show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.comments.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.comments.show">, (default: true)
+                showInTooltip: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.comments.showInTooltip"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.comments.showInTooltip">, (default: true)
+                width: <input v-if="isDarkMode" type="number" min="50" max="400" v-model="mutableConfigDarkMode.style.chart.comments.width"><input v-else type="number" min="50" max="400" v-model="mutableConfig.style.chart.comments.width">, (default: 200)
+                offsetX: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.style.chart.comments.offsetX"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.style.chart.comments.offsetX">, (default: 0)
+                offsetY: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.style.chart.comments.offsetY"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.style.chart.comments.offsetY">, (default: 0)
+            },
             legend: {
                     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.show" @change="forceChartUpdate()">, (default: true)
                     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.legend.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.legend.backgroundColor">, (default: "#FFFFFF")
@@ -731,6 +759,23 @@ const <span class="text-app-blue">config: VueUiParallelCoordinatePlotConfig</spa
 
             <!-- SLOTS -->
             <template #tab3>
+                <div class="text-gray-500">
+    If your dataset contains a comments attribute, you can display comments on the chart using the #plot-comment slot.
+</div>
+
+<pre>
+<code>
+    &lt;VueUiParallelCoordinatePlot
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #plot-comment="{ plot }"&gt;
+            &lt;div :style="`width:100%; text-align:center; color:${plot.color}`"&gt;<span v-pre>{{ plot.comment }}</span>&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiParallelCoordinatePlot&gt;
+</code>
+</pre>
+
                 <div class="text-gray-500">
     {{ translations.slots.presentation[store.lang]  }}
 </div>

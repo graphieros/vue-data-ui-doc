@@ -32,7 +32,7 @@ const dataset = ref([
     {
         name: "Serie 1",
         color: "#5f8bee",
-        values: [100]
+        values: [100],
     },
     {
         name: "Serie 2",
@@ -42,7 +42,8 @@ const dataset = ref([
     {
         name: "Serie 3",
         color: "#ff6400",
-        values: [300, 1]
+        values: [300, 1],
+        comment: "A comment for this specific datapoint"
     },
 ]);
 
@@ -124,6 +125,13 @@ const darkModeConfig = ref({
                     useShadow: false,
                     shadowColor: '#1A1A1A',
                 },
+            },
+            comments: {
+                show: true,
+                showInTooltip: true,
+                width: 100,
+                offsetX: 0,
+                offsetY: 0
             },
             legend: {
                     backgroundColor: "#1A1A1A",
@@ -275,6 +283,13 @@ const config = ref({
                     useShadow: false,
                     shadowColor: '#1A1A1A',
                 },
+            },
+            comments: {
+                show: true,
+                showInTooltip: true,
+                width: 100,
+                offsetX: 0,
+                offsetY: 0
             },
             legend: {
                     backgroundColor: "#F3F4F6",
@@ -568,7 +583,13 @@ const slotOption = ref(slotOptions.value[0])
                 <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
                 <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
-            <VueDataUi component="VueUiDonut" :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <VueDataUi component="VueUiDonut" :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                <template #plot-comment="{ plot }">
+                    <div :style="`text-align:${plot.textAlign};font-size: 10px; padding: 6px;`">
+                        {{ plot.comment }}
+                    </div>
+                </template>
+            </VueDataUi>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_donut)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
@@ -709,6 +730,14 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
                         useShadow: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.donut.useShadow" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.donut.useShadow" @change="forceChartUpdate()">, (default: false)
                         shadowColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.donut.shadowColor"><input v-else type="color" v-model="mutableConfig.style.chart.layout.donut.shadowColor">, (default: "#2D353C")
                     }
+                },
+                // Check out the slots tab for instructions to use comments
+                comments: {
+                    show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.comments.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.comments.show">, (default: true)
+                    showInTooltip: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.comments.showInTooltip"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.comments.showInTooltip">, (default: true)
+                    width: <input v-if="isDarkMode" type="number" min="50" max="400" v-model="mutableConfigDarkMode.style.chart.comments.width"><input v-else type="number" min="50" max="400" v-model="mutableConfig.style.chart.comments.width">, (default: 100)
+                    offsetX: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.style.chart.comments.offsetX"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.style.chart.comments.offsetX">, (default: 0)
+                    offsetY: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.style.chart.comments.offsetY"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.style.chart.comments.offsetY">, (default: 0)
                 },
                 legend: {
                     show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.show" @change="forceChartUpdate()">, (default: true)
@@ -910,6 +939,23 @@ const <span class="text-app-blue">config: VueUiDonutConfig</span> = {
             </template>
 
             <template #tab3>
+                <div class="text-gray-500">
+    If your dataset contains a comments attribute, you can display comments on the chart using the #plot-comment slot.
+</div>
+
+<pre>
+<code>
+    &lt;VueUiDonut
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #plot-comment="{ plot }"&gt;
+            &lt;div :style="`width:100%; text-align:${plot.textAlign}; color:${plot.color}`"&gt;<span v-pre>{{ plot.comment }}</span>&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiDonut&gt;
+</code>
+</pre>
+
 <div class="text-gray-500">
     {{ translations.slots.donutDataLabels[store.lang]  }}
 Set <code class="text-app-orange">config.style.chart.layout.labels.dataLabels.useLabelSlots</code> to true. 

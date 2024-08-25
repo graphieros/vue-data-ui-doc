@@ -4349,6 +4349,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "plot-comment",
+                "description": "Use this slot to display plot comments"
             }
         ]
     },
@@ -5148,6 +5152,10 @@
             {
                 "name": "reset-action",
                 "description": "Use this slot to customize the reset button of the zoom slider."
+            },
+            {
+                "name": "plot-comment",
+                "description": "Use this slot to display plot comments"
             }
         ]
     },
