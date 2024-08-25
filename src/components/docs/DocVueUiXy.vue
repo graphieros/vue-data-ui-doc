@@ -57,7 +57,8 @@ const dataset = ref([
     },
     {
         name: "Series 4",
-        series: [ 0, 1, -2, 3, -4, 5, -6, 7, -8, 9, -10, 11, -12, 13, -14, 15, -16, 17, -18, 19, -20],
+        series: [ 0, 1, -2, 3, -4, 5, -6, 7, -8, 9, -10, 36, -12, 13, -14, 15, -16, 17, -18, 19, -20],
+        comments: ["", "", "", "", "", "", "", "", "", "", "", "A comment for this specific datapoint"],
         type: "line",
         smooth: true,
         useArea: false,
@@ -174,6 +175,13 @@ const config = ref({
                     modulo: 12
                 }
             }
+        },
+        comments: {
+            show: true,
+            showInTooltip: true,
+            width: 200,
+            offsetX: 0,
+            offsetY: 0
         },
         labels: {
             fontSize: 20,
@@ -387,6 +395,13 @@ const darkModeConfig = ref({
                 }
             }
         },
+        comments: {
+            show: true,
+            showInTooltip: true,
+            width: 200,
+            offsetX: 0,
+            offsetY: -64
+        },
         labels: {
             fontSize: 20,
             prefix: "",
@@ -585,7 +600,13 @@ const shapeOptions = ref([
                 <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
                 <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
-            <VueUiXy :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <VueUiXy :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                <template #plotComment="{plot}">
+                    <div style="width:100%;text-align:center">
+                        {{ plot.comment }}
+                    </div>
+                </template>
+            </VueUiXy>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_xy)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
@@ -693,6 +714,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
     {
         name: <span class="text-app-yellow">"Series 4",</span>
         series: <span class="text-app-yellow">[0, 1, -2, 3, -4, 5, -6, 7, -8, 9, -10, 11, -12, 13, -14, 15, -16, 17, -18, 19, -20],</span>
+        comments: ["", "", "", "", "", "", "", "", "", "", "", "A comment for this specific datapoint"],
         type:<span class="text-app-yellow"><select v-model="mutableDataset[3].type">
             <option>bar</option>
             <option>line</option>
@@ -836,6 +858,14 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                         modulo: <input v-if="isDarkMode" type="number" min="2" max="100" v-model="mutableConfigDarkMode.chart.grid.labels.xAxisLabels.modulo"><input v-else type="number" min="2" max="100" v-model="mutableConfig.chart.grid.labels.xAxisLabels.modulo">, (default: 12)
                     }
                 }
+            },
+            // Check out the slots tab for instructions to use comments
+            comments: {
+                show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.comments.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.comments.show">, (default: true)
+                showInTooltip: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.comments.showInTooltip"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.comments.showInTooltip">, (default: true)
+                width: <input v-if="isDarkMode" type="number" min="50" max="400" v-model="mutableConfigDarkMode.chart.comments.width"><input v-else type="number" min="50" max="400" v-model="mutableConfig.chart.comments.width">, (default: 200)
+                offsetX: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.chart.comments.offsetX"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.chart.comments.offsetX">, (default: 0)
+                offsetY: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.chart.comments.offsetY"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.chart.comments.offsetY">, (default: 0)
             },
             labels: {
                 fontSize: <input v-if="isDarkMode" type="number" min="1" max="50" v-model="mutableConfigDarkMode.chart.labels.fontSize"><input v-else type="number" min="1" max="50" v-model="mutableConfig.chart.labels.fontSize">, (default: 10),
@@ -1086,6 +1116,24 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
             </template>
 
             <template #tab3>
+<div class="text-gray-500">
+    If your dataset contains a comments attribute, you can display comments on the chart using the #plotComment slot.
+</div>
+
+<pre>
+<code>
+    &lt;VueUiXy
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #plotComment="{ plot }"&gt;
+            &lt;div :style="`width:100%; text-align:center; color:${plot.color}`"&gt;<span v-pre>{{ plot.comment }}</span>&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiXy&gt;
+</code>
+</pre>
+
+
                 <div class="text-gray-500">
                     {{ translations.slots.presentation[store.lang]  }}
                 </div>
