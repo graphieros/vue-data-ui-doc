@@ -252,7 +252,7 @@
                 "description": "Use this slot to customize the reset button of the zoom slider."
             },
             {
-                "name": "plotComment",
+                "name": "plot-comment",
                 "description": "Use this slot to display plot comments"
             }
         ]

@@ -601,7 +601,7 @@ const shapeOptions = ref([
                 <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
             <VueUiXy :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                <template #plotComment="{plot}">
+                <template #plot-comment="{plot}">
                     <div style="width:100%;text-align:center">
                         {{ plot.comment }}
                     </div>
@@ -1117,7 +1117,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
 
             <template #tab3>
 <div class="text-gray-500">
-    If your dataset contains a comments attribute, you can display comments on the chart using the #plotComment slot.
+    If your dataset contains a comments attribute, you can display comments on the chart using the #plot-comment slot.
 </div>
 
 <pre>
@@ -1126,7 +1126,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
         :config="config"
         :dataset="dataset"
     &gt;
-        &lt;template #plotComment="{ plot }"&gt;
+        &lt;template #plot-comment="{ plot }"&gt;
             &lt;div :style="`width:100%; text-align:center; color:${plot.color}`"&gt;<span v-pre>{{ plot.comment }}</span>&lt;/div&gt;
         &lt;/template&gt;
     &lt;/VueUiXy&gt;
