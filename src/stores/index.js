@@ -640,14 +640,14 @@ export const useMainStore = defineStore("main", {
                         ko: "다음에 대한 결과"
                     },
                     placeholder: {
-                        en: "Search config...",
-                        fr: "Rechercher une config...",
-                        pt: "Configuração de pesquisa...",
-                        de: "Konfiguration durchsuchen...",
-                        zh: "搜索配置",
-                        jp: "検索構成",
-                        es: "Configuración de búsqueda...",
-                        ko: "검색 구성.."
+                        en: "Search config... ex: 'tootlip'",
+                        fr: "Recherche config... ex: 'tooltip'",
+                        pt: "Configuração... ex: 'tootlip'",
+                        de: "Suchkonfiguration... z. B.: „tootlip“",
+                        zh: "搜索配置...例如：'tootlip'",
+                        jp: "設定を検索...例: 'tootlip'",
+                        es: "Configuración... ej: 'tootlip'",
+                        ko: "검색 구성... 예: 'tootlip'"
                     }
                 },
                 types: {

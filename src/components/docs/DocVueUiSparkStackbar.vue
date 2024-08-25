@@ -221,7 +221,7 @@ function fixChart() {
                 <MakerLink to="VueUiSparkStackbar"/>
             </div>
         </div>
-        <Box showEmits showThemes>
+        <Box showEmits showThemes schema="vue_ui_sparkstackbar">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

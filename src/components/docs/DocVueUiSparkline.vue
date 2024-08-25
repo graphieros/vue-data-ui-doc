@@ -288,7 +288,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-sparkline"/>
             <MakerLink to="VueUiSparkline"/>
         </div>
-        <Box showSlots showEmits showUseCases showThemes>
+        <Box showSlots showEmits showUseCases showThemes schema="vue_ui_sparkline">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">

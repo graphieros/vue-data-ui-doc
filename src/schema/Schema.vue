@@ -45,11 +45,12 @@ onMounted(() => {
 
 <template>
     <div class="schema p-4 w-full max-w-[600px]">
-        <div class="mb-4">
+        <div class="mb-4 flex flex-row gap-4">
             <VueUiIcon :name="selectedComponent.icon" :stroke="isDarkMode ? '#FFFFFF' : '#1A1A1A'"/>
+            <div class="text-xl">{{ selectedComponent.name }}</div>
         </div>
         <div class="mb-4">
-            <BaseText :label="translations.overview.component[store.lang]" :text="`${selectedComponent.name}`" />
+
             <BaseText :label="translations.overview.description[store.lang]" :text="selectedComponent.description" />
             <BaseText v-if="selectedComponent.props.includes('dataset')" label="Dataset TS type" isCode :text="selectedComponent.types.dataset" />
             <BaseText v-if="selectedComponent.props.includes('dataset')" label="Config TS type" isCode :text="selectedComponent.types.config" />

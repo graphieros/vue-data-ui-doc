@@ -198,7 +198,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-sparkbar"/>
             <MakerLink to="VueUiSparkbar" />
         </div>
-        <Box showEmits showThemes>
+        <Box showEmits showThemes schema="vue_ui_sparkbar">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

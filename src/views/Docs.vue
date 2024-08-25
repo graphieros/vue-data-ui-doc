@@ -802,7 +802,6 @@ onMounted(playShowcase);
     <SideMenu @toggle="toggleMenu"/>
     
     <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`">
-        <DeepSearch/>
         <div :class="`px-2 pt-6 sm:pt-0 ${isOpen ? `xl:w-5/6 hidden sm:block` : ''}`">
             <DocVueUiTableSparkline v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-table-sparkline'"/>
             <DocVueUiXy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy'" />

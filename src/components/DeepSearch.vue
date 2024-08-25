@@ -3,6 +3,8 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useMainStore } from "../stores";
 import { SearchIcon, XIcon, InfoCircleIcon } from "vue-tabler-icons";
 import config from "../assets/default_configs.json";
+import Prism from "prismjs"
+
 
 const store = useMainStore();
 
@@ -12,6 +14,8 @@ const props = defineProps({
     default: true,
   },
 });
+
+const isDarkMode = computed(() => store.isDarkMode);
 
 const searchTerm = ref("");
 const currentResults = ref([]);
@@ -148,6 +152,10 @@ function clearSearch() {
 }
 
 onMounted(() => {
+  window.Prism = window.Prism || {}
+    window.Prism.manual = true
+    Prism.highlightAll()
+
   document.addEventListener("keyup", (e) => {
     e.preventDefault();
     if (e.key === "Escape") {
@@ -177,6 +185,33 @@ function handleArrowKeys(event) {
 onUnmounted(() => {
   document.removeEventListener("keyup", handleArrowKeys);
 });
+
+const accordionConfig = computed(() => {
+  return {
+    open: false,
+    maxHeight: 10000,
+    head: {
+      backgroundColor: 'transparent'
+    },
+    body: {
+      backgroundColor: 'transparent'
+    }
+  }
+})
+const accordionConfigDarkMode = computed(() => {
+  return {
+    open: false,
+    maxHeight: 10000,
+    head: {
+      backgroundColor: 'transparent'
+    },
+    body: {
+      backgroundColor: 'transparent',
+      color: '#CCCCCC'
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -190,7 +225,7 @@ onUnmounted(() => {
         <input
           @input="handleInput"
           type="text"
-          class="p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green"
+          class="p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green w-[280px] dark:bg-[#42d39220]"
           style="text-align: left !important"
           v-model="searchTerm"
           :placeholder="store.translations.search.placeholder[store.lang]"
@@ -211,8 +246,8 @@ onUnmounted(() => {
         </button>
       </div>
       <ul
-        v-if="showSuggestions"
-        class="absolute bg-white dark:bg-black-100 border border-gray-300 mt-1 rounded-md shadow-lg z-10 max-h-[500px] overflow-auto"
+        v-if="showSuggestions && filteredSuggestions.length"
+        class="absolute bg-white dark:bg-black-100 border border-gray-300 top-0 -mt-[300px] rounded-md shadow-lg z-10 h-[300px] overflow-auto min-w-[280px]"
       >
         <li
           tabindex="0"
@@ -312,8 +347,11 @@ onUnmounted(() => {
           v-for="res in currentResults"
           class="p-2 border border-gray-300 dark:border-[#2A2A2A] my-2 rounded-md hover:bg-gray-100 dark:hover:bg-[#FFFFFF11]"
         >
-          <details>
-            <summary class="select-none cursor-pointer">
+          <VueDataUi
+            component="VueUiAccordion"
+            :config="isDarkMode ? accordionConfigDarkMode : accordionConfig"
+          >
+            <template #title="{ color }">
               <span
                 v-html="
                   res.path.replace(
@@ -322,26 +360,29 @@ onUnmounted(() => {
                   )
                 "
               ></span>
-            </summary>
-            <div class="flex flex-col w-full">
-              <div>Type: {{ res.type }}</div>
-              <div>
-                {{ store.translations.search.defaultValue[store.lang] }} :
-                <div class="flex flex-row gap-2 place-items-center">
-                    <span class="text-app-blue font-black">{{
-                    res.type === "string" ? `"${res.value}"` : res.value
-                    }}</span>
-                    <div v-if="res.type === 'string' && res.value.includes('#')" :style="`background:${res.value}`" class="h-6 w-6 rounded border border-gray-400"/>
-                </div>
-              </div>
-            </div>
+            </template>
 
-            <router-link :to="`/docs#${res.route}`" @click="useModal('close')">
-              <div class="hover:underline dark:text-app-green font-black mt-2">
-                {{ store.translations.search.viewComponent[store.lang] }}
+            <template #content>
+              <div class="flex flex-col w-full">
+                <div>Type: <code class="text-app-blue">{{ res.type }}</code></div>
+                {{ store.translations.search.defaultValue[store.lang] }} :
+                <div class="bg-[#272822] p-4 rounded">
+                  <code class="language-javascript" style="white-space: pre-wrap;">
+                      <span >{{
+                      res.type === "string" ? `"${res.value}"` : res.value
+                      }}</span>
+                      <div v-if="res.type === 'string' && res.value.includes('#')" :style="`background:${res.value}`" class="h-6 w-6 rounded border border-gray-400"/>
+                  </code>
+                </div>
+                <router-link :to="`/docs#${res.route}`" @click="useModal('close')">
+                  <div class="hover:underline dark:text-app-green font-black mt-2">
+                    {{ store.translations.search.viewComponent[store.lang] }}
+                  </div>
+                </router-link>
               </div>
-            </router-link>
-          </details>
+
+            </template>
+          </VueDataUi>
         </div>
       </div>
     </div>

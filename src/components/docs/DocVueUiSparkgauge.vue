@@ -213,7 +213,7 @@ function fixChart() {
             <MakerLink to="VueUiSparkgauge"/>
         </div>
 
-        <Box showThemes>
+        <Box showThemes schema="vue_ui_sparkgauge">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

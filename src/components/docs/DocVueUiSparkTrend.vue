@@ -204,7 +204,7 @@ function fixChart() {
             <GitHubLink link="vue-ui-spark-trend"/>
             <!-- <MakerLink to="VueUiSparkline"/> -->
         </div>
-        <Box showThemes>
+        <Box showThemes schema="vue_ui_spark_trend">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="border-b my-6 pb-6 border-gray-700">

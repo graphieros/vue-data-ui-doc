@@ -340,7 +340,7 @@ function fixChart() {
             <MakerLink to="VueUiSparkHistogram"/>
         </div>
 
-        <Box showEmits showThemes>
+        <Box showEmits showThemes schema="vue_ui_sparkhistogram">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

@@ -42,13 +42,13 @@ const config = ref({
     maxHeight: 10000,
   head: {
     useArrowSlot: false,
-    backgroundColor: "#e1e5e8",
+    backgroundColor: "#5f8bee20",
     color: "#2D353C",
     iconColor: "#5f8bee",
     padding: "12px 6px"
   },
   body: {
-    backgroundColor: "#e1e5e8",
+    backgroundColor: "#5f8bee20",
     color: "#2D353C"
   }
 })
