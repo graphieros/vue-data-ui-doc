@@ -137,6 +137,16 @@ export const useMakerStore = defineStore('maker', {
                     ko: "구성 요소 코드"
                 },
                 categories: {
+                    userOptions: {
+                        en: 'User options',
+                        fr: 'Options utilisateur',
+                        pt: 'Opções do usuário',
+                        de: 'Benutzeroptionen',
+                        zh: '用户选项',
+                        jp: 'ユーザーオプション',
+                        es: 'Opciones de usuario',
+                        ko: '사용자 옵션'
+                    },
                     container: {
                         en: "Container",
                         fr: "Conteneur",

@@ -46,6 +46,10 @@ const CONFIG_CATEGORIES = computed(() => {
         title: xyTranslations.value.categories.general[store.lang]
     },
     {
+        key: 'userOptions',
+        title: xyTranslations.value.categories.userOptions[store.lang]
+    },
+    {
         key: 'padding',
         title: xyTranslations.value.categories.padding[store.lang]
     },
