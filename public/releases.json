@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.71",
+    "date": "2024-08-26",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fixed size issue occurring when changing dimensions in config",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.70",
     "date": "2024-08-26",
     "updates": [
