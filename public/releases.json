@@ -1,5 +1,176 @@
 [
   {
+    "version": "v 2.2.70",
+    "date": "2024-08-26",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiWordCloud",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-word-cloud"
+      },
+      {
+        "component": "VueUiWheel",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-wheel"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiTiremarks",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-tiremarks"
+      },
+      {
+        "component": "VueUiThermometer",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-thermometer"
+      },
+      {
+        "component": "VueUiTableSparkline",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-table-sparkline"
+      },
+      {
+        "component": "VueUiTableHeatmap",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-table-heatmap"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-relation-circle"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiMoodRadar",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-mood-radar"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiGauge",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-gauge"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiFlow",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-flow"
+      },
+      {
+        "component": "VueUiDumbbell",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-dumbbell"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-chestnut"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUi3dBar",
+        "description": "Added user options configurable button titles for accessibility",
+        "link": "/docs#vue-ui-3d-bar"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.69",
     "date": "2024-08-25",
     "updates": [

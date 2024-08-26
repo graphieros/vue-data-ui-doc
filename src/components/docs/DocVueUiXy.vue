@@ -229,6 +229,18 @@ const config = ref({
                 labels: true,
                 stack: true,
                 fullscreen: true
+            },
+            buttonTitles: {
+                open: "Open options",
+                close: "Close options",
+                tooltip: "Toggle tooltip",
+                pdf: "Download PDF",
+                csv: "Download CSV",
+                img: "Download PNG",
+                table: "Toggle table",
+                labels: "Toggle labels",
+                fullscreen: "Toggle fullscreen",
+                stack: "Toggle stack mode"
             }
         },
     },
@@ -448,6 +460,18 @@ const darkModeConfig = ref({
                 labels: true,
                 stack: true,
                 fullscreen: true
+            },
+            buttonTitles: {
+                open: "Open options",
+                close: "Close options",
+                tooltip: "Toggle tooltip",
+                pdf: "Download PDF",
+                csv: "Download CSV",
+                img: "Download PNG",
+                table: "Toggle table",
+                labels: "Toggle labels",
+                fullscreen: "Toggle fullscreen",
+                stack: "Toggle stack mode"
             }
         },
     },
@@ -914,6 +938,18 @@ const <span class="text-black dark:text-app-blue">config: VueUiXyConfig</span> =
                     labels: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.buttons.labels" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.buttons.labels" @change="forceChartUpdate()">, (default: true)
                     stack: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.buttons.stack" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.buttons.stack" @change="forceChartUpdate()">, (default: true)
                     fullscreen: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.buttons.fullscreen" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.buttons.fullscreen" @change="forceChartUpdate()">, (default: true)
+                },
+                buttonTitles: {
+                    open: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.buttonTitles.open"><input v-else type="text" v-model="mutableConfig.chart.userOptions.buttonTitles.open">, (default: "Open options")
+                    close: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.buttonTitles.close"><input v-else type="text" v-model="mutableConfig.chart.userOptions.buttonTitles.close">, (default: "Close options")
+                    tooltip: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.buttonTitles.tooltip"><input v-else type="text" v-model="mutableConfig.chart.userOptions.buttonTitles.tooltip">, (default: "Toggle tooltip")
+                    pdf: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.buttonTitles.pdf"><input v-else type="text" v-model="mutableConfig.chart.userOptions.buttonTitles.pdf">, (default: "Download PDF")
+                    csv: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.buttonTitles.csv"><input v-else type="text" v-model="mutableConfig.chart.userOptions.buttonTitles.csv">, (default: "Download CSV")
+                    img: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.buttonTitles.img"><input v-else type="text" v-model="mutableConfig.chart.userOptions.buttonTitles.img">, (default: "Download PNG")
+                    table: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.buttonTitles.table"><input v-else type="text" v-model="mutableConfig.chart.userOptions.buttonTitles.table">, (default: "Toggle table")
+                    labels: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.buttonTitles.labels"><input v-else type="text" v-model="mutableConfig.chart.userOptions.buttonTitles.labels">, (default: "Toggle labels")
+                    fullscreen: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.buttonTitles.fullscreen"><input v-else type="text" v-model="mutableConfig.chart.userOptions.buttonTitles.fullscreen">, (default: "Toggle fullscreen")
+                    stack: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.chart.userOptions.buttonTitles.stack"><input v-else type="text" v-model="mutableConfig.chart.userOptions.buttonTitles.stack">, (default: "Toggle stack mode")
                 }
             },
         },

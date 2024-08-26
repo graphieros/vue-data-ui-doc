@@ -229,7 +229,11 @@ const accordionConfigDarkMode = computed(() => {
           style="text-align: left !important"
           v-model="searchTerm"
           :placeholder="store.translations.search.placeholder[store.lang]"
+          list="attrSearch"
         />
+        <!-- <datalist id="attrSearch" v-if="searchTerm.length > 2">
+          <option v-for="suggestion in filteredSuggestions" :value="suggestion"/>
+        </datalist> -->
         <button
           :disabled="!searchTerm"
           class="h-[36px] w-[36px] flex place-items-center justify-center border border-gray-600 rounded-lg hover:bg-gradient-to-br hover:from-app-green hover:to-green-700 hover:border-app-green text-black dark:text-app-green dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
