@@ -224,15 +224,17 @@ function formatSuggestion(word) {
   >
     <form autocomplete="off" onsubmit="return false">
       <div class="flex flex-row gap-2">
-        <input
-          @input="handleInput"
-          type="text"
-          class="p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green w-[280px] dark:bg-[#42d39220]"
-          style="text-align: left !important"
-          v-model="searchTerm"
-          :placeholder="store.translations.search.placeholder[store.lang]"
-          list="attrSearch"
-        />
+        <div class="anim-wrapper w-[280px] rounded-lg -mt-[1px]">
+          <input
+            @input="handleInput"
+            type="text"
+            class="inner p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green w-[280px] bg-white dark:bg-[#1A1A1A]"
+            style="text-align: left !important"
+            v-model="searchTerm"
+            :placeholder="store.translations.search.placeholder[store.lang]"
+            list="attrSearch"
+          />
+        </div>
         <!-- <datalist id="attrSearch" v-if="searchTerm.length > 2">
           <option v-for="suggestion in filteredSuggestions" :value="suggestion"/>
         </datalist> -->
@@ -288,14 +290,14 @@ function formatSuggestion(word) {
     <div class="w-full overflow-y-auto mt-12 max-h-[400px] pr-4">
       <form autocomplete="off" onsubmit="return false">
         <div class="flex flex-row gap-2">
-          <input
-            @input="handleInput"
-            type="text"
-            class="p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green"
-            style="text-align: left !important"
-            v-model="searchTerm"
-            :placeholder="store.translations.search.placeholder[store.lang]"
-          />
+            <input
+              @input="handleInput"
+              type="text"
+              class="p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green"
+              style="text-align: left !important"
+              v-model="searchTerm"
+              :placeholder="store.translations.search.placeholder[store.lang]"
+            />
           <button
             :disabled="!searchTerm"
             class="h-[36px] w-[36px] flex place-items-center justify-center border border-gray-600 rounded-lg hover:bg-gradient-to-br hover:from-app-green hover:to-green-700 hover:border-app-green text-black dark:text-app-green dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
@@ -459,5 +461,52 @@ dialog {
         transform: translateY(5px) scale(0.95, 0.95);
         opacity: 0;
     }
+}
+
+.anim-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anim-wrapper .inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.anim-wrapper .inner {
+  margin: 2px;
+}
+
+.anim-wrapper::before {
+  content: "";
+  display: block;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    #42d392 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  height: 500px;
+  width: 40px;
+  transform: translate(0);
+  position: absolute;
+  animation: rotate 5s linear forwards infinite;
+  z-index: 0;
+  top: 50%;
+  transform-origin: top center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
