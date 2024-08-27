@@ -31,14 +31,11 @@ function flattenAttributes(obj) {
     for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
         const newPath = path ? `${path}.${key}` : key;
-
+        
+        const attribute = newPath.split(".").pop(); // Get only the attribute name
+        attributes.push(attribute);
         if (typeof obj[key] === "object" && obj[key] !== null) {
           flatten(obj[key], newPath);
-        } else {
-          const attribute = newPath.split(".").pop(); // Get only the attribute name
-          if (!attributes.includes(attribute)) {
-            attributes.push(attribute);
-          }
         }
       }
     }
@@ -51,13 +48,13 @@ function flattenAttributes(obj) {
 const allAttributes = flattenAttributes(config);
 
 const filteredSuggestions = computed(() => {
-  return allAttributes
+  return [...new Set(allAttributes
     .filter(
       (attr) =>
-        attr.toLowerCase().includes(searchTerm.value.toLowerCase()) &&
-        !["0", "1", "2", "3", "4"].includes(attr)
+        attr.toUpperCase().includes(searchTerm.value.toUpperCase()) &&
+        !["0", "1", "2", "3", "4", "5"].includes(attr)
     )
-    .sort();
+    .sort())].filter(s => !s.includes('_'))
 });
 
 function handleInput() {
@@ -212,6 +209,11 @@ const accordionConfigDarkMode = computed(() => {
   }
 })
 
+function formatSuggestion(word) {
+    const escapedSearchTerm = searchTerm.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escapedSearchTerm})`, 'i');
+    return word.replace(regex, '<span style="background:#42d39250;">$1</span>');
+}
 </script>
 
 <template>
@@ -261,7 +263,7 @@ const accordionConfigDarkMode = computed(() => {
           @click="selectSuggestion(suggestion)"
           @keyup.enter="selectSuggestion(suggestion)"
         >
-          {{ suggestion }}
+          <span v-html="formatSuggestion(suggestion)" />
         </li>
       </ul>
     </form>
@@ -330,6 +332,7 @@ const accordionConfigDarkMode = computed(() => {
             <XIcon />
           </button>
         </div>
+
         <ul
           v-if="showSuggestions"
           class="absolute bg-white dark:bg-black-100 border border-gray-300 mt-1 rounded-md shadow-lg z-10 max-h-[300px] overflow-auto"
@@ -342,7 +345,7 @@ const accordionConfigDarkMode = computed(() => {
             @click="selectSuggestion(suggestion)"
             @keyup.enter="selectSuggestion(suggestion)"
           >
-            {{ suggestion }}
+            <span v-html="formatSuggestion(suggestion)"/>
           </li>
         </ul>
       </form>
@@ -411,7 +414,7 @@ const accordionConfigDarkMode = computed(() => {
 
 <style>
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.3);
+  background: radial-gradient(at top left, #313131, #1A1A1A);
   animation: backdrop-appear 0.15s ease-in forwards;
 }
 dialog {

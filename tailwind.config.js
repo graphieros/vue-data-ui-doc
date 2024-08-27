@@ -14,10 +14,10 @@ export default {
       colors: {
         "black": "rgb(26,26,26)",
         "black-100" : "rgb(36,36,36)",
-        "app-green": "rgb(66,211,146)",
-        "app-blue": "rgb(95,139,238)",
-        "app-orange": "rgb(255,100,0)",
-        "app-yellow": "rgb(200,200,50)",
+        "app-green": "#42d392",
+        "app-blue": "#5f8aee",
+        "app-orange": "#ff6600",
+        "app-yellow": "#c8c832",
         "app-gold" : "#fdd663"
       }
     },
