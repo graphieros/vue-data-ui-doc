@@ -37,6 +37,10 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.general[store.lang]
         },
         {
+            key: 'userOptions',
+            title: makerTranslations.value.categories.userOptions[store.lang]
+        },
+        {
             key: 'labels',
             title: makerTranslations.value.categories.labels[store.lang]
         },
@@ -142,10 +146,12 @@ const finalConfig = computed(() => {
 })
 
 function getLabel(label) {
-    return Array.isArray(label) ? label.map(l => makerTranslations.value.labels[l][store.lang]).join(" ") :
+    return Array.isArray(label) ? label.map(l => {
+        if(! makerTranslations.value.labels[l]) return l
+        return  makerTranslations.value.labels[l][store.lang]
+    }).join(" ") :
     makerTranslations.value.labels[label][store.lang]
 }
-
 </script>
 
 <template>
