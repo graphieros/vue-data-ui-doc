@@ -9,6 +9,7 @@ import MakerLink from "../MakerLink.vue";
 import ucXy from "../useCases/uc-xy.vue";
 import ThemesVueUiXy from "../themes/ThemesVueUiXy.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -632,11 +633,11 @@ const shapeOptions = ref([
                 </template>
             </VueUiXy>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_xy)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-xy"/>
-            <MakerLink to="VueUiXy"/>
-        </div>
+        <BaseDocActions
+            targetLink="vue-ui-xy"
+            targetMaker="VueUiXy"
+            :configSource="mainConfig.vue_ui_xy"
+        />
 
         <div class="w-full mx-auto max-w-[500px] flex flex-col p-6 border border-app-blue rounded-md bg-[#5f8bee12]">
             <span class="dark:text-blue-300">

@@ -971,7 +971,17 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: "color", label: 'textColor', category: 'subtitle' },
                     { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle' },
                     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
-                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' }
+                    
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+
+                    {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.pdf', def: 'Download PDF', type: 'text', label: ['button', 'pdf', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_chestnut: {

@@ -10,6 +10,7 @@ import ConfigAttribute from "../ConfigAttribute.vue";
 import UcDonut from "../useCases/uc-donut.vue";
 import ThemesVueUiDonut from "../themes/ThemesVueUiDonut.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -613,11 +614,13 @@ const slotOption = ref(slotOptions.value[0])
                 </template>
             </VueDataUi>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_donut)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-donut"/>
-            <MakerLink to="VueUiDonut"/>
-        </div>
+
+        <BaseDocActions
+            targetLink="vue-ui-donut"
+            targetMaker="VueUiDonut"
+            :configSource="mainConfig.vue_ui_donut"
+        />
+
         <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive schema="vue_ui_donut">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
