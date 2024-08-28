@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ThemesVueUiSparkStackbar from "../themes/ThemesVueUiSparkStackbar.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -214,13 +215,13 @@ function fixChart() {
                 <VueUiSparkStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
             </div>
         </div>
-        <div class="mx-auto">
-          <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-                <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_sparkstackbar)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-                <GitHubLink link="vue-ui-sparkstackbar"/>
-                <MakerLink to="VueUiSparkStackbar"/>
-            </div>
-        </div>
+
+        <BaseDocActions
+          targetLink="vue-ui-sparkstackbar"
+          targetMaker="VueUiSparkStackbar"
+          :configSource="mainConfig.vue_ui_sparkstackbar"
+        />
+
         <Box showEmits showThemes schema="vue_ui_sparkstackbar">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}

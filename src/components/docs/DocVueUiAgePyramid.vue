@@ -8,6 +8,7 @@ import GitHubLink from "../GitHubLink.vue";
 import MakerLink from '../MakerLink.vue';
 import ThemesVueUiAgePyramid from "../themes/ThemesVueUiAgePyramid.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -965,11 +966,13 @@ function fixChart() {
             </div>
             <VueUiAgePyramid :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_age_pyramid)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-age-pyramid"/>
-            <MakerLink to="VueUiAgePyramid"/>
-        </div>
+
+        <BaseDocActions
+          targetLink="vue-ui-age-pyramid"
+          targetMaker="VueUiAgePyramid"
+          :configSource="mainConfig.vue_ui_age_pyramid"
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_age_pyramid">
             <template #tab0>
                 {{ translations.docs.example[store.lang] }}:

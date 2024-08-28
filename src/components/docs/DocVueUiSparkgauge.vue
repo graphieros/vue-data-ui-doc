@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ThemesVueUiSparkgauge from "../themes/ThemesVueUiSparkgauge.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -207,11 +208,12 @@ function fixChart() {
                 </div>
             </div>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_sparkgauge)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-sparkgauge"/>
-            <MakerLink to="VueUiSparkgauge"/>
-        </div>
+
+        <BaseDocActions
+            targetLink="vue-ui-sparkgauge"
+            targetMaker="VueUiSparkgauge"
+            :configSource="mainConfig.vue_ui_sparkgauge"
+        />
 
         <Box showThemes schema="vue_ui_sparkgauge">
             <template #tab0>

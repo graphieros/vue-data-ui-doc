@@ -8,6 +8,7 @@ import GitHubLink from "../GitHubLink.vue";
 import ucXyCanvas from "../../components/useCases/ux-xy-canvas.vue"
 import ThemesVueUiXyCanvas from "../themes/ThemesVueUiXyCanvas.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -482,15 +483,11 @@ function fixChart() {
                     }
                 }" :key="key" />
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button
-                class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all"
-                @click="copyToClipboard(mainConfig.vue_ui_xy_canvas)">
-                <CopyIcon /> {{ translations.docs.copyDefaultConfig[store.lang] }}
-            </button>
-            <GitHubLink link="vue-ui-xy-canvas" />
-            <!-- <MakerLink to="VueUiXy"/> -->
-        </div>
+
+        <BaseDocActions
+            targetLink="vue-ui-xy-canvas"
+            :configSource="mainConfig.vue_ui_xy_canvas"
+        />
 
         <Box showEmits showSlots showUseCases showThemes showTooltip showResponsive schema="vue_ui_xy_canvas">
             <template #tab0>

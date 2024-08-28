@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.72",
+    "date": "2024-08-28",
+    "updates": [
+      {
+        "component": "VueUiGauge",
+        "description": "Fixed pointer y offset when in rounded mode",
+        "link": "/docs#vue-ui-gauge"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.71",
     "date": "2024-08-26",
     "updates": [

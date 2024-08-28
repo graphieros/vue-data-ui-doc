@@ -7,6 +7,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ThemesVueUiHeatmap from "../themes/ThemesVueUiHeatmap.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -359,11 +360,13 @@ function fixChart() {
             </div>
             <VueUiHeatmap :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_heatmap)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-heatmap"/>
-            <MakerLink to="VueUiHeatmap" />
-        </div>
+
+        <BaseDocActions
+          targetLink="vue-ui-heatmap"
+          targetMaker="VueUiHeatmap"
+          :configSource="mainConfig.vue_ui_heatmap"
+        />
+
         <Box showEmits showSlots showTooltip showThemes schema="vue_ui_heatmap">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}

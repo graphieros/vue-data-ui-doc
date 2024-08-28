@@ -8,6 +8,7 @@ import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue"
 import ThemesVueUiGauge from "../themes/ThemesVueUiGauge.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -295,11 +296,13 @@ function fixChart() {
                 <VueUiGauge :dataset="dataset2" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_2_${key}`"/>
             </div>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_gauge)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-gauge"/>
-            <MakerLink to="VueUiGauge"/>
-        </div>
+
+        <BaseDocActions
+            targetLink="vue-ui-gauge"
+            targetMaker="VueUiGauge"
+            :configSource="mainConfig.vue_ui_gauge"
+        />
+
         <Box showEmits showSlots showThemes showResponsive schema="vue_ui_gauge">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
