@@ -6,6 +6,7 @@ import { SunFilledIcon, MoonStarsIcon, LanguageIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import ChartMaker from "./ChartMaker.vue";
 import releases from "../../public/releases.json";
+import HeaderDropdownItem from "./HeaderDropdownItem.vue";
 
 const router = useRouter();
 const store = useMainStore();
@@ -118,6 +119,19 @@ const selectedLanguage = computed({
         return val;
     },
 });
+
+const dropdownItems = computed(() => {
+    return [
+        { link: '/installation', title: translations.value.menu.installation[store.lang] },
+        { link: '/docs', title: translations.value.menu.docs[store.lang] },
+        { link: '/chart-builder', title: translations.value.menu.chartBuilder[store.lang] },
+        { link: '/examples', title: translations.value.menu.examples[store.lang] },
+        { link: '/customization', title: translations.value.menu.customization[store.lang] },
+        { link: '/versions', title: translations.value.menu.versions[store.lang] },
+        { link: '/about', title: translations.value.menu.about[store.lang] },
+    ]
+})
+
 </script>
 
 <template>
@@ -142,6 +156,7 @@ const selectedLanguage = computed({
                 <!-- <button @click="openChartMaker">
                     <ToolIcon/>
                 </button> -->
+
                 <router-link data-cy="link-installation" to="/installation">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/installation')
                                 ? 'text-[#277753] dark:text-app-green hover:cursor-default bg-[#42d39233] shadow-md'
@@ -223,51 +238,12 @@ const selectedLanguage = computed({
                     class="absolute top-full mt-2 right-0 bg-white dark:bg-black rounded-lg border border-gray-700 shadow-2xl px-2 pl-3 py-3 w-[180px] text-right"
                     v-if="isOpen">
                     <ul>
-                        <!-- <button @click="openChartMaker">
-                            <ToolIcon/>
-                        </button> -->
-                        <router-link to="/installation">
-                            <span @click="isOpen = false"
-                                class="block dark:text-app-green w-full py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-green hover:shadow-xl">
-                                {{ translations.menu.installation[store.lang] }}
-                            </span>
-                        </router-link>
-                        <router-link to="/docs">
-                            <span @click="isOpen = false"
-                                class="block w-full dark:text-app-blue py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
-                                {{ translations.menu.docs[store.lang] }}
-                            </span>
-                        </router-link>
-                        <router-link to="/chart-builder">
-                            <span @click="isOpen = false"
-                                class="block w-full dark:text-gray-200 py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-gray-200 hover:shadow-xl">
-                                {{ translations.menu.chartBuilder[store.lang] }}
-                            </span>
-                        </router-link>
-                        <router-link to="/examples">
-                            <span @click="isOpen = false"
-                                class="block w-full dark:text-gray-400 py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
-                                {{ translations.menu.examples[store.lang] }}
-                            </span>
-                        </router-link>
-                        <router-link to="/customization">
-                            <span @click="isOpen = false"
-                                class="block w-full dark:text-gray-400 py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
-                                {{ translations.menu.customization[store.lang] }}
-                            </span>
-                        </router-link>
-                        <router-link to="/versions">
-                            <span @click="isOpen = false"
-                                class="block w-full dark:text-gray-400 py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
-                                {{ translations.menu.versions[store.lang] }}
-                            </span>
-                        </router-link>
-                        <router-link to="/about">
-                            <span @click="isOpen = false"
-                                class="block w-full dark:text-gray-400 py-1 pr-4 rounded-md cursor-pointer hover:outline hover:outline-app-blue hover:shadow-xl">
-                                {{ translations.menu.about[store.lang] }}
-                            </span>
-                        </router-link>
+                        <HeaderDropdownItem
+                            v-for="item in dropdownItems"
+                            v-bind="item"
+                            @click="isOpen = false"
+                        />
+
                         <button @click="changeTheme" id="themeToggle"
                             class="flex place-items-center place-content-end w-full py-1 pr-4 text-center">
                             <SunFilledIcon v-if="store.isDarkMode" class="text-[#fdd663]" />
@@ -307,5 +283,10 @@ const selectedLanguage = computed({
         transform: scale(1, 1);
         opacity: 1;
     }
+}
+
+.link-disabled {
+    pointer-events: none;
+    cursor: default;
 }
 </style>
