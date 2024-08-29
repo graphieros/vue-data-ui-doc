@@ -2026,6 +2026,18 @@ export const useMainStore = defineStore("main", {
                         ko: "예"
                     },                    
                     comments: {
+                        sparkbar: {
+                            target: {
+                                en: 'Set individual target. The length of the bar will be the ratio of its value to this target.',
+                                fr: 'Fixez un objectif individuel. La longueur de la barre sera le rapport de sa valeur à cet objectif.',
+                                pt: 'Defina uma meta individual. O comprimento da barra será a razão entre seu valor e esse alvo.',
+                                de: 'Individuelles Ziel festlegen. Die Länge des Balkens entspricht dem Verhältnis seines Wertes zu diesem Ziel.',
+                                zh: '设定个人目标。条形的长度将是其值与该目标的比率。',
+                                jp: '個別の目標を設定します。バーの長さは、このターゲットに対する値の比率になります。',
+                                es: 'Establecer un objetivo individual. La longitud de la barra será la relación entre su valor y este objetivo.',
+                                ko: '개별 목표를 설정하세요. 막대의 길이는 이 목표에 대한 값의 비율이 됩니다.'
+                            }
+                        },
                         quickChartKeys: {
                             en: "You can provide a simple array of numbers. Depending on its length, either a line chart or a bar chart will be generated. The threshold between bar and line is manageable in the configuration options. You can also provide an array of objects. Here are the sets of accepted keys for serie names and data:",
                             fr: "Vous pouvez fournir un tableau simple de nombres. En fonction de sa longueur, un graphique linéaire ou un graphique à barres sera généré. Le seuil entre barre et ligne est gérable dans les options de configuration. Vous pouvez également fournir un tableau d'objets. Voici les ensembles de clés acceptées pour les noms de séries et les données :",

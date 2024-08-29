@@ -1,5 +1,27 @@
 [
   {
+    "version": "v 2.2.74",
+    "date": "2024-08-29",
+    "updates": [
+      {
+        "component": "VueUiSparkbar",
+        "description": "Added optional individual dataset target attribute",
+        "link": "/docs#vue-ui-sparkbar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.2.73",
+    "date": "2024-08-29",
+    "updates": [
+      {
+        "component": "VueUiGauge",
+        "description": "Fixed config option marker.offsetY not applied",
+        "link": "/docs#vue-ui-gauge"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.72",
     "date": "2024-08-28",
     "updates": [

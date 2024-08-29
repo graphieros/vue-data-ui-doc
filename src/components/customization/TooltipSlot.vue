@@ -118,7 +118,7 @@ const darkModeConfig = ref({
                     }
                 },
                 donut: {
-                    strokeWidth: 84,
+                    strokeWidth: 54,
                     borderWidth: 2,
                 },
             },
@@ -255,7 +255,7 @@ const config = ref({
                     }
                 },
                 donut: {
-                    strokeWidth: 84,
+                    strokeWidth: 54,
                     borderWidth: 2
                 },
             },

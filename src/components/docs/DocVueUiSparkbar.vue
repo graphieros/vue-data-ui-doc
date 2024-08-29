@@ -216,6 +216,7 @@ function fixChart() {
             prefix?: string; <span class="text-gray-500">// {{ translations.docs.comments.onion.prefix[store.lang] }}</span>
             suffix?: string; <span class="text-gray-500">// {{ translations.docs.comments.onion.suffix[store.lang] }}</span>
             rounding?: number;
+            target?: number; <span class="text-gray-500">// {{ translations.docs.comments.sparkbar.target[store.lang] }}</span>
         }
     ]
 </code>
