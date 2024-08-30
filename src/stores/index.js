@@ -775,6 +775,36 @@ export const useMainStore = defineStore("main", {
                     ko: "어두운 모드로 전환"
                 },
                 menu: {
+                    docsComment: {
+                        en: 'Detailed interactive and thorough documentation with examples',
+                        fr: 'Documentation détaillée, interactive et complète avec des exemples',
+                        pt: 'Documentação detalhada, interativa e completa com exemplos',
+                        de: 'Detaillierte interaktive und ausführliche Dokumentation mit Beispielen',
+                        zh: '详细的交互式和完整的文档以及示例',
+                        jp: '例を含む詳細なインタラクティブで徹底的なドキュメント',
+                        es: 'Documentación detallada, interactiva y exhaustiva con ejemplos.',
+                        ko: '예제가 포함된 자세한 대화형 및 철저한 문서화'
+                    },
+                    builderComment: {
+                        en: 'Quickly scaffold a chart and copy the component code',
+                        fr: 'Élaborez rapidement un graphique et copiez le code du composant',
+                        pt: 'Crie rapidamente um gráfico e copie o código do componente',
+                        de: 'Erstellen Sie schnell ein Diagrammgerüst und kopieren Sie den Komponentencode',
+                        zh: '快速搭建图表并复制组件代码',
+                        jp: 'チャートを素早くスキャフォールディングしてコンポーネントコードをコピーする',
+                        es: 'Cree rápidamente un gráfico y copie el código del componente',
+                        ko: '신속하게 차트를 스캐폴드하고 구성 요소 코드를 복사합니다.'
+                    },
+                    customizationComment: {
+                        en: 'Options, tooltip, legend... customize everything',
+                        fr: 'Options, info-bulle, légende... personnalisez tout',
+                        pt: 'Opções, dica de ferramenta, legenda... personalize tudo',
+                        de: 'Optionen, Tooltip, Legende ... passen Sie alles an',
+                        zh: '选项、工具提示、图例...自定义一切',
+                        jp: 'オプション、ツールチップ、凡例...すべてをカスタマイズ',
+                        es: 'Opciones, información sobre herramientas, leyenda... personaliza todo',
+                        ko: '옵션, 툴팁, 범례... 모든 것을 사용자 정의하세요'
+                    },
                     examples: {
                         en: "Examples",
                         fr: "Exemples",
@@ -2030,7 +2060,7 @@ export const useMainStore = defineStore("main", {
                             target: {
                                 en: 'Set individual target. The length of the bar will be the ratio of its value to this target.',
                                 fr: 'Fixez un objectif individuel. La longueur de la barre sera le rapport de sa valeur à cet objectif.',
-                                pt: 'Defina uma meta individual. O comprimento da barra será a razão entre seu valor e esse alvo.',
+                                pt: 'Defina uma meta individual. O comprimento da barra será a razão enqtre seu valor e esse alvo.',
                                 de: 'Individuelles Ziel festlegen. Die Länge des Balkens entspricht dem Verhältnis seines Wertes zu diesem Ziel.',
                                 zh: '设定个人目标。条形的长度将是其值与该目标的比率。',
                                 jp: '個別の目標を設定します。バーの長さは、このターゲットに対する値の比率になります。',

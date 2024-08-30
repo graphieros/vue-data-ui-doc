@@ -133,8 +133,6 @@ function setClientPosition({ clientX, clientY, ...rest }) {
 }
 
 onMounted(() => {
-  // isLoading.value = true;
-  // store.isFetching = true;
   const resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
             const { width, height } = entry.contentRect;
@@ -145,35 +143,6 @@ onMounted(() => {
         resizeObserver.observe(resizeContainer.value)
     }
     
-  // fetch(`https://api.github.com/repos/${owner}/${repo}`)
-  // .then(response => {
-  //   if (!response.ok) {
-  //     throw new Error('Network response was not ok');
-  //   }
-  //   return response.json();
-  // })
-  // .then(data => {
-  //   const starsCount = data.stargazers_count;
-  //   stars.value = starsCount;
-  // })
-  // .catch(error => {
-  //   console.error('There was a problem fetching the data:', error);
-  // }).finally(() => {
-  //   isLoading.value = false;
-  //   store.isFetching = false;
-  // })
-
-  // fetch(downloadsUrl.value, {
-  //   method: 'GET',
-  //   cache: 'default',
-  // }).then((response) => {
-  //   return response.json()
-  // }).then(data => {
-  //   downloads.value = data.downloads.map(d => d.downloads).reduce((a,b) => a + b, 0)
-  // }).catch(err => {
-  //   console.error(err.message)
-  // })
-
   fetch(versionsUrl.value, {
     method: 'GET',
     cache: 'default',
@@ -264,17 +233,6 @@ const sparklineConfig = ref({
   }
 });
 
-const digitConfig = computed(() => {
-  return {
-    height: "100%",
-    backgroundColor: 'transparent',
-    digits: {
-      color: isDarkMode.value ? '#42d392' : '#1A1A1A',
-      skeletonColor: isDarkMode.value ? '#3A3A3A' : '#e1e5e8'
-    }
-  }
-})
-
 const digitConfigStars = computed(() => {
   return {
     height: "100%",
@@ -306,22 +264,26 @@ const datasetDonutMenu = computed(() => {
         {
             name: translations.value.menu.installation[store.lang],
             values: [1],
-            color: "#42d392"
+            color: "#42d392",
+            comment: "Vue 3, Nuxt"
         },
         {
             name: translations.value.menu.docs[store.lang],
             values: [1],
-            color: "#5f8bee"
+            color: "#5f8bee",
+            comment: translations.value.menu.docsComment[store.lang]
         },
         {
             name: translations.value.menu.chartBuilder[store.lang],
             values: [1],
-            color: "#fdd663"
+            color: "#fdd663",
+            comment: translations.value.menu.builderComment[store.lang]
         },
         {
             name: translations.value.menu.customization[store.lang],
             values: [0.5],
-            color: "#de8b37"
+            color: "#de8b37",
+            comment: translations.value.menu.customizationComment[store.lang]
         },
         {
             name: translations.value.menu.versions[store.lang],
@@ -344,15 +306,18 @@ const configDonutMenu = computed(() => {
                 legend: {
                     show: false
                 },
+                comments: {
+                  width: 150
+                },
                 tooltip: {
                     show: false,
                 },
                 layout: {
-                    donut: {
-                        borderWidth: 0.8,
-                        useShadow: true,
-                        shadowColor: '#000000'
-                    },
+                  donut: {
+                    borderWidth: 0.8,
+                    useShadow: true,
+                    shadowColor: '#000000'
+                  },
                     labels: {
                       value: {
                         show: false,
@@ -486,7 +451,13 @@ const componentTranslation = ref({
     </div>
 
     <div class="w-[400px] max-w-[400px] lg:w-[500px] lg:min-w-[500px] 2xl:w-[900px] 2xl:min-w-[900px] relative">
-        <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu"/>
+        <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu">
+          <template #plot-comment="{ plot }">
+            <div :title="plot.comment" @click="selectMenu({index: plot.seriesIndex})" :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" :class="`px-2 cursor-pointer`">
+              {{ plot.comment }}
+            </div>
+          </template>
+        </VueUiDonut>
         <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[500px] place-items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20px]"> 
             <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${-deviationX * 20}deg);`">
                 <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[80px] mx-auto drop-shadow-xl">
