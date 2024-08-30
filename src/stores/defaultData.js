@@ -1502,7 +1502,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         suffix: '%',
                         rounding: 1,
                         color: '#6376DD',
-                        id: '1'
+                        id: '1',
                     },
                     {
                         name: 'KPI 2',

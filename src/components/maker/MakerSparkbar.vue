@@ -55,7 +55,8 @@ const options = ref({
         value: 0,
         prefix: '',
         suffix: '%',
-        color: '#CCCCCC'
+        color: '#CCCCCC',
+        target: null
     }
 })
 
@@ -79,6 +80,7 @@ onMounted(() => {
 function saveDatasetToLocalStorage() {
     localStorage.sparkbarDataset = JSON.stringify(datasetItems.value);
     clearStep.value += 1;
+    step.value += 1;
 }
 
 function saveConfigToLocalStorage() {
@@ -102,7 +104,6 @@ function forceChartUpdate() {
 
 function addDatasetItem() {
     datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.dataset)), id: createUid()});
-    step.value += 1;
     saveDatasetToLocalStorage()
 }
 
@@ -159,6 +160,7 @@ function getLabel(label) {
                     <th class="text-left text-xs">{{ makerTranslations.labels.rounding[store.lang] }}</th>
                     <th class="text-left text-xs">{{ makerTranslations.labels.prefix[store.lang] }}</th>
                     <th class="text-left text-xs">{{ makerTranslations.labels.suffix[store.lang] }}</th>
+                    <th class="text-left text-xs">Target</th>
                 </thead>
                 <tbody>
                     <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
@@ -167,6 +169,7 @@ function getLabel(label) {
                     <td><input class="h-[36px]" type="number" v-model="ds.rounding" min="0" max="6" @change="saveDatasetToLocalStorage"></td>
                     <td><input class="h-[36px] w-[82px]" type="text" v-model="ds.prefix" @change="saveDatasetToLocalStorage"></td>
                     <td><input class="h-[36px] w-[82px]" type="text" v-model="ds.suffix" @change="saveDatasetToLocalStorage"></td>
+                    <td><input class="h-[36px] w-[82px]" type="number" v-model="ds.target" @change="saveDatasetToLocalStorage()"></td>
                 </tbody>
             </table>
         </div>
