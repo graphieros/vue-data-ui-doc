@@ -879,6 +879,7 @@ onMounted(playShowcase);
 </code>
 </pre>
 </div>
+<RouterLink to="/universal-component">
 <div class="mt-6">
     {{ translations.installation.comments.or[store.lang] }}
 </div>
@@ -893,6 +894,7 @@ onMounted(playShowcase);
 </code>
 </pre>
 </div>
+</RouterLink>
 
 <div class="w-full px-2 sm:px-0 sm:w-1/2 text-left mx-auto my-6 text-xs sm:text-lg">
     {{ translations.docs.p1[store.lang] }}

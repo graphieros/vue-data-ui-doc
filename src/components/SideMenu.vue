@@ -672,7 +672,14 @@ const sideMenuItems = computed(() => {
         <ChevronRightIcon class="text-black dark:text-app-green animate-ping sm:animate-none"/>
     </button>
     <template v-if="isOpen">
-        <div class="mt-6">
+        <div class="mt-8">
+            <RouterLink to="/universal-component">
+                <div class="p-2 rounded text-center relative text-sm hover:bg-[#42d39220]" :style="`background:${router.currentRoute.value.fullPath === '/universal-component' ? '#42d39230' : ''}`">
+                    VueDataUi universal component
+                    <div :class="`is-item-selected bg-app-green ${router.currentRoute.value.fullPath === '/universal-component' ? 'is-active' : ''}`"></div>
+                </div>
+                <div class="w-full mt-6 mb-2 border-b border-gray-500"></div>
+            </RouterLink>
             <Dropdown 
                 v-for="menu in sideMenuItems"
                 :title="menu.title"

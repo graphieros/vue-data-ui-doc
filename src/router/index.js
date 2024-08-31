@@ -49,6 +49,11 @@ const routes = [
         component: () => import("../views/Examples.vue")
     },
     {
+        path: "/universal-component",
+        name: "Universal component",
+        component: () => import("../views/UniversalComponent.vue")
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound
     }
