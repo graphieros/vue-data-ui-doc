@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.2.78",
+    "date": "2024-09-01",
+    "updates": [
+      {
+        "component": "",
+        "description": "Removed empty space before colon in data labels and legends"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.74",
     "date": "2024-08-29",
     "updates": [
