@@ -12,6 +12,8 @@ import BaseFooter from "./components/BaseFooter.vue";
 const store = useMainStore();
 const router = useRouter();
 
+const isDarkMode = computed(() => store.isDarkMode)
+
 const currentRoute = computed(() => {
     return router.currentRoute.value.fullPath;
 });
@@ -40,6 +42,8 @@ onMounted(() => {
 <template>
   <Header/>
   <HelpCenter v-if="currentRoute !== '/'"/>
+  <div v-if="!isDarkMode" class="underlay-paper"></div>
+  <div v-if="isDarkMode" class="underlay-paper--dark"></div>
   <div id="vdui" class="font-satoshi bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors mb-[100px]">
     <router-view />
     <UpToTop/>

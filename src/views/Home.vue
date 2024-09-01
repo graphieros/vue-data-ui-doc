@@ -372,8 +372,8 @@ const componentTranslation = ref({
 </script>
 
 <template>
-    <div v-if="!isDarkMode" class="underlay-paper"></div>
-    <div v-if="isDarkMode" class="underlay-paper--dark"></div>
+    <!-- <div v-if="!isDarkMode" class="underlay-paper"></div>
+    <div v-if="isDarkMode" class="underlay-paper--dark"></div> -->
       <div class="underlay"></div>
       <div ref="resizeContainer" class="absolute top-0 left-0" style="width:100%;height:100%;overflow: hidden" @mousemove="setClientPosition($event)">
 
@@ -560,6 +560,7 @@ const componentTranslation = ref({
   background-image: url('../assets/paper.png');
   background-size: 30%;
   opacity: 0.02;
+  pointer-events: none;
 }
 
 .underlay-paper {
@@ -570,6 +571,7 @@ const componentTranslation = ref({
   height: 100vh;
   background-image: url('../assets/paper.png');
   background-size: 30%;
-  opacity: 0.5;
+  opacity: 0.2;
+  pointer-events: none;
 }
 </style>
