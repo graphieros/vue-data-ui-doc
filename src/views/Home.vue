@@ -372,6 +372,8 @@ const componentTranslation = ref({
 </script>
 
 <template>
+    <div v-if="!isDarkMode" class="underlay-paper"></div>
+    <div v-if="isDarkMode" class="underlay-paper--dark"></div>
       <div class="underlay"></div>
       <div ref="resizeContainer" class="absolute top-0 left-0" style="width:100%;height:100%;overflow: hidden" @mousemove="setClientPosition($event)">
 
@@ -453,7 +455,7 @@ const componentTranslation = ref({
     <div class="w-[400px] max-w-[400px] lg:w-[500px] lg:min-w-[500px] 2xl:w-[900px] 2xl:min-w-[900px] relative">
         <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu">
           <template #plot-comment="{ plot }">
-            <div :title="plot.comment" @click="selectMenu({index: plot.seriesIndex})" :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" :class="`px-2 cursor-pointer`">
+            <div style="pointer-events: all !important;" :title="plot.comment" @click="selectMenu({index: plot.seriesIndex})" :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" :class="`px-2 cursor-pointer`">
               {{ plot.comment }}
             </div>
           </template>
@@ -547,5 +549,27 @@ const componentTranslation = ref({
   width: 100vw;
   height: 100vh;
   background: radial-gradient(at top left, #FFFFFF07, transparent, transparent);
+}
+
+.underlay-paper--dark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/paper.png');
+  background-size: 30%;
+  opacity: 0.02;
+}
+
+.underlay-paper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/paper.png');
+  background-size: 30%;
+  opacity: 0.5;
 }
 </style>
