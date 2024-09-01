@@ -23,6 +23,26 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                noResultsFor: {
+                    en: 'No results for:',
+                    fr: 'Aucun résultat pour :',
+                    pt: 'Nenhum resultado para:',
+                    de: 'Keine Ergebnisse für:',
+                    zh: '没有结果：',
+                    jp: '次の結果はありません:',
+                    es: 'No hay resultados para:',
+                    ko: '다음에 대한 검색결과가 없습니다:'
+                },
+                searchResultFor: {
+                    en: 'Search results for:',
+                    fr: 'Résultats de recherche pour :',
+                    pt: 'Resultados da pesquisa para:',
+                    de: 'Suchergebnisse für:',
+                    zh: '搜索结果：',
+                    jp: 'の検索結果:',
+                    es: 'Resultados de búsqueda para:',
+                    ko: '다음에 대한 검색 결과:'
+                },
                 quickOverview: {
                     en: 'Quick overview - Technical specs',
                     fr: 'Aperçu rapide - Spécifications techniques',

@@ -4,9 +4,11 @@ import { useMainStore } from "../stores";
 import { SearchIcon, XIcon, InfoCircleIcon } from "vue-tabler-icons";
 import config from "../assets/default_configs.json";
 import Prism from "prismjs"
+import { useRouter } from "vue-router";
 
 
 const store = useMainStore();
+const router = useRouter()
 
 const props = defineProps({
   fixed: {
@@ -73,45 +75,51 @@ const objNames = ref([]);
 const selectedObjName = ref("");
 
 function search() {
-  const results = [];
-  objNames.value = [];
-
-  function searchObject(obj, objName = "", path = "") {
-    for (let key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        const newPath = path ? `${path} ➜ ${key}` : key;
-        const fullPath = objName ? `${formatString(objName)} : ${newPath}` : newPath;
-
-        if (key === searchTerm.value) {
-          results.push({
-            path: fullPath,
-            value: obj[key],
-            type: typeof obj[key],
-            route: objName.replaceAll("_", "-"),
-          });
-          if (objName && !objNames.value.includes(formatString(objName))) {
-            objNames.value.push(formatString(objName));
-          }
-        }
-
-        if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
-          searchObject(obj[key], objName || key, newPath);
-        }
-      }
-    }
+  if (searchTerm.value) {
+    router.push({ name: 'Search', query: { q: searchTerm.value } });
   }
-  Object.keys(config).forEach((key) => {
-    searchObject(config[key], key);
-  });
-  hasResults.value = results.length > 0;
-  currentResults.value = results.filter((r) => {
-    if (!selectedObjName.value) return r;
-    return r.path.toUpperCase().includes(selectedObjName.value.toUpperCase());
-  });
-
-  useModal("open");
-  return results;
 }
+
+// function search() {
+//   const results = [];
+//   objNames.value = [];
+
+//   function searchObject(obj, objName = "", path = "") {
+//     for (let key in obj) {
+//       if (obj.hasOwnProperty(key)) {
+//         const newPath = path ? `${path} ➜ ${key}` : key;
+//         const fullPath = objName ? `${formatString(objName)} : ${newPath}` : newPath;
+
+//         if (key === searchTerm.value) {
+//           results.push({
+//             path: fullPath,
+//             value: obj[key],
+//             type: typeof obj[key],
+//             route: objName.replaceAll("_", "-"),
+//           });
+//           if (objName && !objNames.value.includes(formatString(objName))) {
+//             objNames.value.push(formatString(objName));
+//           }
+//         }
+
+//         if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+//           searchObject(obj[key], objName || key, newPath);
+//         }
+//       }
+//     }
+//   }
+//   Object.keys(config).forEach((key) => {
+//     searchObject(config[key], key);
+//   });
+//   hasResults.value = results.length > 0;
+//   currentResults.value = results.filter((r) => {
+//     if (!selectedObjName.value) return r;
+//     return r.path.toUpperCase().includes(selectedObjName.value.toUpperCase());
+//   });
+
+//   useModal("open");
+//   return results;
+// }
 
 function formatString(str) {
   return str
