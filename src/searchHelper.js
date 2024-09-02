@@ -9,7 +9,7 @@ export function searchInConfig(searchTerm) {
                 const newPath = path ? `${path} ➜ ${key}` : key;
                 const fullPath = objName ? `${formatString(objName)} : ${newPath}` : newPath;
 
-                if (key === searchTerm) {
+                if (key.toUpperCase() === searchTerm.toUpperCase()) {
                     results.push({
                         path: fullPath,
                         value: obj[key],

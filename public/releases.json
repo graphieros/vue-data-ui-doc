@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.79",
+    "date": "2024-09-02",
+    "updates": [
+      {
+        "component": "VueUiSparkbar",
+        "description": "Added scoped slot data-label and config options for target display",
+        "link": "/docs#vue-ui-sparkbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.78",
     "date": "2024-09-01",
     "updates": [

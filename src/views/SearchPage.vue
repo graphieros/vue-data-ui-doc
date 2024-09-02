@@ -158,7 +158,7 @@ const iconMap = ref({
             <select
                 v-if="(searchTerm || showSuggestions) && availableComponents.length > 1"
                 v-model="selectedComponent"
-                class="p-2 h-[36px] rounded-lg border border-gray-600 text-black"
+                class="p-2 h-[40px] rounded-lg border border-gray-600 text-black"
             >
                 <option value="" disabled selected>
                     {{ store.translations.search.componentSelect[store.lang] }}
@@ -177,7 +177,7 @@ const iconMap = ref({
 
         <div
             v-for="res in filteredResults"
-            class="p-2 border border-gray-300 dark:border-[#2A2A2A] my-2 rounded-md hover:bg-gray-100 dark:hover:bg-[#FFFFFF11]"
+            class="p-2 border dark:bg-[#1A1A1A] bg-white border-gray-300 dark:border-[#2A2A2A] my-2 rounded-md hover:bg-gray-100 dark:hover:bg-[#FFFFFF11]"
         >
             <VueDataUi
             component="VueUiAccordion"

@@ -281,7 +281,7 @@ function fixChart() {
     <div
       :class="`transition-all mx-auto ${
         isFixed
-          ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl'
+          ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl'
           : 'w-3/4'
       }`"
     >

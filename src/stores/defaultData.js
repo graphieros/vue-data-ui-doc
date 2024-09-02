@@ -1503,6 +1503,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         rounding: 1,
                         color: '#6376DD',
                         id: '1',
+                        target: null
                     },
                     {
                         name: 'KPI 2',
@@ -1511,7 +1512,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         suffix: '%',
                         rounding: 1,
                         color: '#42d392',
-                        id: '2'
+                        id: '2',
+                        target: null
                     },
                     {
                         name: 'KPI 3',
@@ -1520,7 +1522,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         suffix: '%',
                         rounding: 1,
                         color: '#ff6400',
-                        id: '3'
+                        id: '3',
+                        target: null
                     },
                 ],
                 model: [
@@ -1543,7 +1546,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.labels.name.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'labels' },
                     { key: 'style.labels.name.bold', def: true, type: 'checkbox', label: ['name', 'is', 'bold'], category: 'labels' },
                     { key: 'style.labels.value.show', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'labels' },
-                    { key: 'style.labels.value.bold', def: true, type: 'checkbox', label: ['value', 'is', 'bold'], category: 'labels' }
+                    { key: 'style.labels.value.bold', def: true, type: 'checkbox', label: ['value', 'is', 'bold'], category: 'labels' },
+                    { key: 'style.layout.showTargetValue', def: false, type: 'checkbox', label: ['target', 'value', "is", 'show'], category: 'general'},
+                    { key: 'style.layout.targetValueText', def: '', type: 'text', label: ['target', 'value', 'is', 'textContent'], category: 'general'},
                 ]
             },
             vue_ui_sparkhistogram: {

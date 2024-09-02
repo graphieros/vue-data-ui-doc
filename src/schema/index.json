@@ -1598,7 +1598,7 @@
         "path": "/docs#vue-ui-sparkbar",
         "description": "Show kpi performance with a tiny vertical bar chart.",
         "hasThemes": true,
-        "hasSlots": false,
+        "hasSlots": true,
         "hasEmits": true,
         "hasExposed": false,
         "responsive": false,
@@ -1632,6 +1632,12 @@
                         "suffix": "%"
                     }
                 ]
+            }
+        ],
+        "slots": [
+            {
+                "name": "data-label",
+                "description": "Use this slot to customize data labels."
             }
         ],
         "emits": [

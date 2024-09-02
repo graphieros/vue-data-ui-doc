@@ -60,6 +60,8 @@ const darkModeConfig = ref(
                 independant: true,
                 percentage: true,
                 target: 0,
+                showTargetValue: false,
+                targetValueText: ''
             },
             gutter: {
                 backgroundColor: "#3A3A3A",
@@ -101,7 +103,9 @@ const config = ref(
             layout: {
                 independant: true,
                 percentage: true,
-                target: 0
+                target: 0,
+                showTargetValue: false,
+                targetValueText: ''
             },
             gutter: {
                 backgroundColor: "#e1e5e8",
@@ -175,7 +179,7 @@ function fixChart() {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.sparkbar[store.lang] }}
         </p>
-        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-0 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'sm:w-1/2'}`">
+        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'sm:w-1/2'}`">
             <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                     <PinnedOffIcon v-if="isFixed"/>
                     <div v-else class="relative overflow-visible">
@@ -200,7 +204,7 @@ function fixChart() {
             :configSource="mainConfig.vue_ui_sparkbar"
         />
 
-        <Box showEmits showThemes schema="vue_ui_sparkbar">
+        <Box showSlots showEmits showThemes schema="vue_ui_sparkbar">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -272,7 +276,9 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkbarConfig</s
         layout: {
             independant: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.independant" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.independant" @change="forceChartUpdate()">, (default: true)
             percentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.percentage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.percentage" @change="forceChartUpdate()">, (default: true)
-            target: 0
+            target: 0,
+            showTargetValue: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.showTargetValue" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.showTargetValue" @change="forceChartUpdate()">, (default: false)
+            targetValueText: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.layout.targetValueText"><input v-else type="text" v-model="mutableConfig.style.layout.targetValueText">, (default: "")
         },
         gutter: {
             backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.gutter.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.gutter.backgroundColor">, (default: "#e1e5e8")
@@ -335,6 +341,26 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkbarConfig</s
 </code>
 </pre>
 
+            </template>
+
+            <template #tab3>
+                <div class="text-gray-500">
+                    {{ translations.slots.dataLabel[store.lang]  }}
+                </div>
+                <pre>
+<code>
+    &lt;VueUiSparkbar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #data-label="{ bar }"&gt;
+            &lt;div style="width:100%"&gt;
+                <span v-pre>{{ bar.name }}: {{ bar.labelValue }} / {{ bar.labelTarget }}</span>
+            &lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiSparkbar&gt;
+</code>
+</pre>
             </template>
 
             <template #tab6>

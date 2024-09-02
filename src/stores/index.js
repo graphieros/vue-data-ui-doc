@@ -477,6 +477,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    dataLabel: {
+                        en: `This component contains a #data-label 'slot' exposing data to customize data labels.`,
+                        fr: `Ce composant contient un slot #data-label exposant des données pour personnaliser les étiquettes de données.`,
+                        pt: `Este componente contém um 'slot' #data-label expondo dados para personalizar rótulos de dados.`,
+                        de: 'Diese Komponente enthält einen #data-label-Slot, der Daten zur Anpassung von Datenbeschriftungen verfügbar macht.',
+                        zh: '该组件包含一个#data-label“槽”，用于公开数据以自定义数据标签。',
+                        jp: `このコンポーネントには、データ ラベルをカスタマイズするためのデータを公開する #data-label 'slot' が含まれています。`,
+                        es: `Este componente contiene una 'slot' #data-label que expone datos para personalizar etiquetas de datos.`,
+                        ko: `이 구성 요소에는 데이터 레이블을 맞춤설정하기 위해 데이터를 노출하는 #data-label '슬롯'이 포함되어 있습니다.`
+                    },
                     sparklineBefore: {
                         en: "This component contains a #before 'slot' exposing data you can use to customize labels for your chart: details of the selected datapoint, sum, average, median, trend, latest value.",
                         fr: "Ce composant contient un 'slot' #before exposant les données que vous pouvez utiliser pour personnaliser les étiquettes de votre graphique : détails du point de données sélectionné, somme, moyenne, médiane, tendance, dernière valeur.",
