@@ -1590,8 +1590,6 @@ const xyCanvasConfig = computed({
                 <div class="w-full max-w-[800px] mx-auto mt-12">
                   <VueUiTable :key="`table_${step}`" v-if="!isLoadingLine && !!data" :dataset="tableDataset" :config="isDarkMode ? tableConfigDarkMode: tableConfig"/>
                 </div>
-
-
             </div>
         </div>
     </div>
