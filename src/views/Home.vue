@@ -498,8 +498,8 @@ const componentTranslation = ref({
           </a>
 </div>
 <button @click="changeTheme" id="themeToggle" class=" flex place-items-center place-content-end w-full py-1 pr-4 text-center absolute top-3 right-2">
-<BrightnessUpIcon v-if="isDarkMode" class="text-chalk"/>
-<MoonIcon v-else class="text-board-2"/>
+  <BrightnessUpIcon v-if="isDarkMode" class="text-chalk"/>
+  <MoonIcon v-else class="text-board-2"/>
 </button>
 </div>
 
