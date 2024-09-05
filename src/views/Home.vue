@@ -468,34 +468,33 @@ const componentTranslation = ref({
     </div>
 
     <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 lg:hidden mt-6">
-            <button class="relative flex flex-row place-content-center place-items-center bg-transparent dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue gap-3 transition-all">
-              <BrandGithubFilledIcon/>
-              <span>
-                {{ translations.github[store.lang] }}
-              </span>
-              <div class="w-[25px]" v-if="store.isFetching">              
-                <VueUiMiniLoader 
-                  :config="{
-                    onion: {
-                      gutterColor: '#CCCCCC',
-                      gutterOpacity: 0.3,
-                      gutterBlur: 0,
-                      trackHueRotate: 360,
-                      trackBlur: 1,
-                      trackColor: '#42d392'
-                    }
-                  }"
-                />
-              </div>
-              <div class="flex flex-row gap-2 place-items-center" v-if="store.stars && !store.isFetching">
-                <StarFilledIcon class="text-[#fdd663] drop-shadow"/>
-                <span class="text-xs dark:text-[#fdd663] h-[20px]">
-                  <VueUiDigits :dataset="store.stars" :config="digitConfigStars"/>
-                </span>
-              </div>
-
-            </button>
-          </a>
+      <button class="relative flex flex-row place-content-center place-items-center bg-transparent dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue gap-3 transition-all">
+        <BrandGithubFilledIcon/>
+        <span>
+          {{ translations.github[store.lang] }}
+        </span>
+        <div class="w-[25px]" v-if="store.isFetching">              
+          <VueUiMiniLoader 
+            :config="{
+              onion: {
+                gutterColor: '#CCCCCC',
+                gutterOpacity: 0.3,
+                gutterBlur: 0,
+                trackHueRotate: 360,
+                trackBlur: 1,
+                trackColor: '#42d392'
+              }
+            }"
+          />
+        </div>
+        <div class="flex flex-row gap-2 place-items-center" v-if="store.stars && !store.isFetching">
+          <StarFilledIcon class="text-[#fdd663] drop-shadow"/>
+          <span class="text-xs dark:text-[#fdd663] h-[20px]">
+            <VueUiDigits :dataset="store.stars" :config="digitConfigStars"/>
+          </span>
+        </div>
+      </button>
+    </a>
 </div>
 <button @click="changeTheme" id="themeToggle" class=" flex place-items-center place-content-end w-full py-1 pr-4 text-center absolute top-3 right-2">
   <BrightnessUpIcon v-if="isDarkMode" class="text-chalk"/>
