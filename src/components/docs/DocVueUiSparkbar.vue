@@ -87,6 +87,21 @@ const darkModeConfig = ref(
                     bold: true
                 }
             },
+            title: {
+                backgroundColor: '#1A1A1A',
+                text: 'Title',
+                color: '#FAFAFA',
+                fontSize: 20,
+                bold: true,
+                textAlign: "left",
+                margin: '0 0 12px 0',
+                subtitle: {
+                    color: '#CCCCCC',
+                    text: 'Subtitle',
+                    fontSize: 16,
+                    bold: false,
+                }
+            },
             gap: 4
         }
     }
@@ -129,6 +144,21 @@ const config = ref(
                 value: {
                     show: true,
                     bold: true
+                }
+            },
+            title: {
+                backgroundColor: '#F3F4F6',
+                text: 'Title',
+                color: '#1A1A1A',
+                fontSize: 20,
+                bold: true,
+                textAlign: "left",
+                margin: '0 0 12px 0',
+                subtitle: {
+                    color: '#CCCCCC',
+                    text: 'Subtitle',
+                    fontSize: 16,
+                    bold: false,
                 }
             },
             gap: 4
@@ -310,6 +340,22 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkbarConfig</s
                 bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.labels.value.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.labels.value.bold" @change="forceChartUpdate()">, (default: true)
             }
         },
+        title: {
+            backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.title.backgroundColor">, (default: "#FFFFFF")
+            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.color"><input v-else type="color" v-model="mutableConfig.style.title.color">, (default: "#2D353C")
+            text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.text"><input v-else type="text" v-model="mutableConfig.style.title.text">, (default: "")
+            fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.title.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.title.fontSize">, (default: 20)
+            bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.bold" @change="forceChartUpdate()">, (default: true)
+            textAlign: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.textAlign"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.style.title.textAlign"><option>left</option><option>center</option><option>right</option></select>, (default: "left")
+            margin: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.margin"><input v-else type="text" v-model="mutableConfig.style.title.margin">, (default: "0 auto")
+            subtitle: {
+                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.subtitle.color"><input v-else type="color" v-model="mutableConfig.style.title.subtitle.color">, (default: "#CCCCCC")
+                text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.subtitle.text"><input v-else type="text" v-model="mutableConfig.style.title.subtitle.text">, (default: "")
+                fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.title.subtitle.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.title.subtitle.fontSize">, (default: 20)
+                bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.subtitle.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.subtitle.bold" @change="forceChartUpdate()">, (default: true)
+            }
+
+        },
         gap: <input v-if="isDarkMode" type="number" min="0" max="64" v-model="mutableConfigDarkMode.style.gap"><input v-else type="number" min="8" max="64" v-model="mutableConfig.style.gap">, (default: 4)
     }
 }
@@ -357,6 +403,22 @@ const <span class="text-black dark:text-app-blue">config: VueUiSparkbarConfig</s
             &lt;div style="width:100%"&gt;
                 <span v-pre>{{ bar.name }}: {{ bar.labelValue }} / {{ bar.labelTarget }}</span>
             &lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiSparkbar&gt;
+</code>
+</pre>
+                <div class="text-gray-500">
+                    {{ translations.slots.title[store.lang]  }}
+                </div>
+                <pre>
+<code>
+    &lt;VueUiSparkbar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #title="{ title }"&gt;
+            &lt;div&gt;<span v-pre>{{ title.title }}</span>&lt;/div&gt;
+            &lt;div&gt;<span v-pre>{{ title.subtitle }}</span>&lt;/div&gt;
         &lt;/template&gt;
     &lt;/VueUiSparkbar&gt;
 </code>

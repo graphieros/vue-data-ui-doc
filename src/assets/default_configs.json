@@ -2690,6 +2690,21 @@
                     "bold": true
                 }
             },
+            "title": {
+                "backgroundColor": "#FFFFFF",
+                "text": "",
+                "color": "#2D353C",
+                "fontSize": 20,
+                "bold": true,
+                "textAlign": "left",
+                "margin": "0 auto",
+                "subtitle": {
+                    "color": "#A1A1A1",
+                    "text": "",
+                    "fontSize": 16,
+                    "bold": false
+                }
+            },
             "gap": 4
         }
     },

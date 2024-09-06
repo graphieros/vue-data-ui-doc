@@ -44,6 +44,14 @@ const CONFIG_CATEGORIES = computed(() => {
             key: 'labels',
             title: makerTranslations.value.categories.labels[store.lang]
         },
+        {
+            key: 'title',
+            title: makerTranslations.value.categories.title[store.lang]
+        },
+        {
+            key: 'subtitle',
+            title: makerTranslations.value.categories.subtitle[store.lang]
+        },
     ]
 })
 

@@ -1549,6 +1549,17 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.labels.value.bold', def: true, type: 'checkbox', label: ['value', 'is', 'bold'], category: 'labels' },
                     { key: 'style.layout.showTargetValue', def: false, type: 'checkbox', label: ['target', 'value', "is", 'show'], category: 'general'},
                     { key: 'style.layout.targetValueText', def: '', type: 'text', label: ['target', 'value', 'is', 'textContent'], category: 'general'},
+                    { key: 'style.title.text', def: '', type: 'text', label: ['title', 'is', 'textContent'], category: 'title'},
+                    { key: "style.title.backgroundColor", def: '#FFFFFF', type: 'color', label: ['title', 'is', 'backgroundColor'], category:'title'},
+                    { key: 'style.title.color', def: '#1A1A1A', type: 'color', label: ['title', 'is', 'textColor'], category: 'title'},
+                    { key: 'style.title.fontSize', def: 20, type: 'number', min: 8, max: 48, label: ['title', 'is', 'fontSize'], category: 'title'},
+                    { key: 'style.title.bold', def: true, type: 'checkbox', label: ['title', 'is', 'bold'], category: 'title'},
+                    { key: 'style.title.textAlign', def: 'left', type: 'select', options: ['left', 'center', 'right'], label: ['title', 'is', 'textAlign'], category: 'title'},
+                    { key: 'style.title.margin', def: '0 0 6px 0', type: 'text', label: ['title', 'is', 'margin'], category: 'title'},
+                    { key: 'style.title.subtitle.text', def: '', type: 'text', label: ['subtitle', 'is', 'textContent'], category: 'subtitle'},
+                    { key: 'style.title.subtitle.color', def: '#CCCCCC', type: 'color', label: ['subtitle', 'is', 'textColor'], category: 'subtitle'},
+                    { key: 'style.title.subtitle.fontSize', def: 16, type: 'number', min: 8, max: 48, label: ['subtitle', 'is', 'fontSize'], category: 'subtitle'},
+                    { key: 'style.title.subtitle.bold', def: false, type: 'checkbox', label: ['subtitle', 'is', 'bold'], category: 'subtitle'}
                 ]
             },
             vue_ui_sparkhistogram: {

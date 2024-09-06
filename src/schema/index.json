@@ -1638,6 +1638,10 @@
             {
                 "name": "data-label",
                 "description": "Use this slot to customize data labels."
+            },
+            {
+                "name": "title",
+                "description": "Use this slot to customize the chart's title"
             }
         ],
         "emits": [

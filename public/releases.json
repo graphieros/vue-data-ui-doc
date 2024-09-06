@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.84",
+    "date": "2024-09-06",
+    "updates": [
+      {
+        "component": "VueUiSparkbar",
+        "description": "Added optional title",
+        "link": "/docs#vue-ui-sparkbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.82",
     "date": "2024-09-05",
     "updates": [

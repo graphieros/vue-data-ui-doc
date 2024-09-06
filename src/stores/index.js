@@ -477,6 +477,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    title: {
+                        en: `This component contains a #title 'slot' exposing data to customize the chart title.`,
+                        fr: `Ce composant contient un slot #title exposant des données pour personnaliser le titre du graphique.`,
+                        pt: `Este componente contém um 'slot' #title que expõe dados para personalizar o título do gráfico.`,
+                        de: 'Diese Komponente enthält einen #title-Slot, der Daten zur Anpassung des Diagrammtitels bereitstellt.',
+                        zh: '该组件包含一个#title“槽”，公开数据以自定义图表标题。',
+                        jp: `このコンポーネントには、グラフのタイトルをカスタマイズするためのデータを公開する #title 'スロット' が含まれています。`,
+                        es: `Este componente contiene una 'slot' #title que expone datos para personalizar el título del gráfico.`,
+                        ko: `이 구성 요소에는 차트 제목을 맞춤설정하기 위해 데이터를 노출하는 #title '슬롯'이 포함되어 있습니다.`
+                    },
                     dataLabel: {
                         en: `This component contains a #data-label 'slot' exposing data to customize data labels.`,
                         fr: `Ce composant contient un slot #data-label exposant des données pour personnaliser les étiquettes de données.`,
