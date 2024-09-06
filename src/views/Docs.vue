@@ -62,6 +62,7 @@ import DocsVueUiWordCloud from "../components/docs/DocsVueUiWordCloud.vue";
 import DocVueUiXyCanvas from "../components/docs/DocVueUiXyCanvas.vue";
 import DocVueUiFlow from "../components/docs/DocVueUiFlow.vue";
 import DocVueUiParallelCoordinatePlot from "../components/docs/DocVueUiParallelCoordinatePlot.vue";
+import DocVueUiTimer from "../components/docs/DocVueUiTimer.vue";
 import Schema from "../schema/Schema.vue";
 
 const store = useMainStore();
@@ -768,6 +769,17 @@ const menuItems = computed(() => [
         hasTableCss: true,
         hasLegend: true
     },
+    {
+        name: 'Timer',
+        icon: 'lap',
+        tooltip: translations.value.docs.tooltips.timer[store.lang],
+        link: '/docs#vue-ui-timer',
+        type: 'tool',
+        hasSlot: true,
+        hasLegend: false,
+        thumb: new URL('../assets/thumb_timer.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_timer_light.png', import.meta.url).href,
+    }
 ]);
 
 const currentShowcase = ref('VueUiXy')
@@ -856,6 +868,7 @@ onMounted(playShowcase);
             <DocVueUiXyCanvas v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy-canvas'" />
             <DocVueUiFlow v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-flow'" />
             <DocVueUiParallelCoordinatePlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-parallel-coordinate-plot'" />
+            <DocVueUiTimer v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-timer'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">

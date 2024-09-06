@@ -519,6 +519,13 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: 'Kpi',
     },
+    {
+        route: '/docs#vue-ui-timer',
+        icon: 'lap',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Timer'
+    }
 ])
 
 const isTooltip = ref(false);
@@ -656,6 +663,7 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-cursor', componentName: 'Cursor', icon: 'cursor' },
             { route: '/docs#vue-ui-mini-loader', componentName: 'MiniLoader', icon: 'chartWheel' },
             { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' },
+            { route: '/docs#vue-ui-timer', componentName: 'Timer', icon: 'lap'}
         ]
     },
 ]

@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.2.82",
+    "date": "2024-09-05",
+    "updates": [
+      {
+        "component": "VueUiTimer",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-timer"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Added new icons",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.79",
     "date": "2024-09-02",
     "updates": [

@@ -1198,6 +1198,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        timer: {
+                            en: 'A customizable stopwatch component',
+                            fr: 'Un composant chronomètre élégant et personnalisable',
+                            pt: 'Um componente de cronômetro lindo e personalizável',
+                            de: 'Eine wunderschöne und anpassbare Stoppuhrkomponente',
+                            zh: '一个华丽且可定制的秒表组件',
+                            jp: '豪華でカスタマイズ可能なストップウォッチ コンポーネント',
+                            es: 'Un componente de cronómetro magnífico y personalizable',
+                            ko: '멋지고 사용자 정의가 가능한 스톱워치 구성 요소'
+                        },
                         pcp: {
                             en: 'Each data point is depicted as a line traversing a series of parallel axes, corresponding to a specific variable or dimension. This arrangement allows for the exploration of relationships, trends, and variations that might be obscured in raw data.',
                             fr: `Chaque point de données est représenté comme une ligne traversant une série d'axes parallèles, correspondant à une variable ou dimension spécifique. Cette disposition permet d'explorer les relations, les tendances et les variations qui pourraient être obscurcies dans les données brutes.`,
