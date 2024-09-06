@@ -32,13 +32,13 @@ const config = ref({
         height: 300,
         width: 300,
         title: {
-            text: "",
+            text: "Title",
             color: "#2D353C",
             fontSize: 20,
             bold: true,
             subtitle: {
                 color: "#A1A1A1",
-                text: "",
+                text: "Subtitle",
                 fontSize: 16,
                 bold: false
             }
@@ -112,13 +112,13 @@ const darkModeConfig = ref({
         height: 300,
         width: 300,
         title: {
-            text: "",
+            text: "Title",
             color: "#2D353C",
             fontSize: 20,
             bold: true,
             subtitle: {
                 color: "#A1A1A1",
-                text: "",
+                text: "Subtitle",
                 fontSize: 16,
                 bold: false
             }
@@ -273,7 +273,98 @@ function updateLaps(laps) {
         <Box showEmits showSlots :activeTab="1">
             <template #tab0>{{ translations.docs.comments.noDataset[store.lang] }}</template>
             <template #tab1>
-                We are currently working on the docs :)
+                <div class="w-full overflow-x-auto">
+                    <div class="flex gap-2">
+                        <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
+                        <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
+                    </div>
+                    <div class="mt-4">
+                        TS type: <code class="text-app-blue">VueUiTimerConfig</code>
+                    </div>
+<pre>
+<code>
+const <span class="text-black dark:text-app-blue">config: VueUiTimerConfig</span> =  {
+    type: "stopwatch",
+    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
+    style: {
+        backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
+        fontFamily: "inherit",
+        height: 300,
+        width: 300,
+        title: {
+            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.color"><input v-else type="color" v-model="mutableConfig.style.title.color">, (default: "#2D353C")
+            text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.text"><input v-else type="text" v-model="mutableConfig.style.title.text">, (default: "")
+            fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.title.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.title.fontSize">, (default: 20)
+            bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.bold" @change="forceChartUpdate()">, (default: true)
+            subtitle: {
+                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.subtitle.color"><input v-else type="color" v-model="mutableConfig.style.title.subtitle.color">, (default: "#A1A1A1")
+                text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.subtitle.text"><input v-else type="text" v-model="mutableConfig.style.title.subtitle.text">, (default: "")
+                fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.title.subtitle.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.title.subtitle.fontSize">, (default: 16)
+                bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.subtitle.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.subtitle.bold" @change="forceChartUpdate()">, (default: false)
+            }
+        },
+    },
+    stopwatch: {
+        showHours: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.showHours" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.showHours" @change="forceChartUpdate()">, (default: false)
+        showHundredth: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.showHundredth" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.showHundredth" @change="forceChartUpdate()">, (default: true)
+        cycleSeconds: <input v-if="isDarkMode" type="number" min="1" max="60" v-model="mutableConfigDarkMode.stopwatch.cycleSeconds"><input v-else type="number" min="1" max="60" v-model="mutableConfig.stopwatch.cycleSeconds">, (default: 5)
+        track: {
+            radiusRatio: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0.4" max="1" v-model="mutableConfigDarkMode.stopwatch.track.radiusRatio" step="0.01"><input v-else type="range" class="accent-app-blue" min="0.4" max="1" v-model="mutableConfig.stopwatch.track.radiusRatio" step="0.01">, (default: 1)
+            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.track.stroke"><input v-else type="color" v-model="mutableConfig.stopwatch.track.stroke">, (default: "#e1e5e8")
+            fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.track.fill"><input v-else type="color" v-model="mutableConfig.stopwatch.track.fill">, (default: "#FFFFFF")
+            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.stopwatch.track.strokeWidth"><input v-else type="number" min="0" max="24" v-model="mutableConfig.stopwatch.track.strokeWidth">, (default: 2)
+        },
+        tracker: {
+            radiusRatio: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0.4" max="2" v-model="mutableConfigDarkMode.stopwatch.tracker.radiusRatio" step="0.01" @change="forceChartUpdate()"><input v-else type="range" class="accent-app-blue" min="0.4" max="2" v-model="mutableConfig.stopwatch.tracker.radiusRatio" step="0.01" @change="forceChartUpdate()">, (default: 1)
+            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.tracker.stroke"><input v-else type="color" v-model="mutableConfig.stopwatch.tracker.stroke">, (default: "#FFFFFF")
+            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.stopwatch.tracker.strokeWidth"><input v-else type="number" min="0" max="24" v-model="mutableConfig.stopwatch.tracker.strokeWidth">, (default: 1)
+            fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.tracker.fill"><input v-else type="color" v-model="mutableConfig.stopwatch.tracker.fill">, (default: "#2D353C")
+            gradient: {
+                show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.tracker.gradient.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.tracker.gradient.show" @change="forceChartUpdate()">, (default: true)
+                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.tracker.gradient.color"><input v-else type="color" v-model="mutableConfig.stopwatch.tracker.gradient.color">, (default: "#FFFFFF")
+            },
+            aura: {
+                show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.tracker.aura.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.tracker.aura.show" @change="forceChartUpdate()">, (default: true)
+                radiusRatio: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0.4" max="2" v-model="mutableConfigDarkMode.stopwatch.tracker.aura.radiusRatio" step="0.01" @change="forceChartUpdate()"><input v-else type="range" class="accent-app-blue" min="0.4" max="2" v-model="mutableConfig.stopwatch.tracker.aura.radiusRatio" step="0.01" @change="forceChartUpdate()">, (default: 1)
+                fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.tracker.aura.fill"><input v-else type="color" v-model="mutableConfig.stopwatch.tracker.aura.fill">, (default: "#2D353C")
+                stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.tracker.aura.stroke"><input v-else type="color" v-model="mutableConfig.stopwatch.tracker.aura.stroke">, (default: "#FFFFFF")
+                strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.stopwatch.tracker.aura.strokeWidth"><input v-else type="number" min="0" max="24" v-model="mutableConfig.stopwatch.tracker.aura.strokeWidth">, (default: 0)
+            }
+        },
+        cycleTrack: {
+            show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.cycleTrack.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.cycleTrack.show" @change="forceChartUpdate()">, (default: true)
+            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.cycleTrack.stroke"><input v-else type="color" v-model="mutableConfig.stopwatch.cycleTrack.stroke">, (default: "#2D353C")
+            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.stopwatch.cycleTrack.strokeWidth"><input v-else type="number" min="0" max="24" v-model="mutableConfig.stopwatch.cycleTrack.strokeWidth">, (default: 3)
+        },
+        label: {
+            fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.stopwatch.label.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.stopwatch.label.fontSize">, (default: 24)
+            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.label.color"><input v-else type="color" v-model="mutableConfig.stopwatch.label.color">, (default: "#2D353C")
+            bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.label.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.label.bold" @change="forceChartUpdate()">, (default: false)
+        },
+        legend: {
+            backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.legend.backgroundColor"><input v-else type="color" v-model="mutableConfig.stopwatch.legend.backgroundColor">, (default: "#FFFFFF")
+            buttons: {
+                start: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.start" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.legend.buttons.start" @change="forceChartUpdate()">, (default: true)
+                pause: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.pause" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.legend.buttons.pause" @change="forceChartUpdate()">, (default: true)
+                reset: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.reset" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.legend.buttons.reset" @change="forceChartUpdate()">, (default: true)
+                restart: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.restart" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.legend.buttons.restart" @change="forceChartUpdate()">, (default: true)
+                lap: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.lap" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.legend.buttons.lap" @change="forceChartUpdate()">, (default: true)
+                iconColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.iconColor"><input v-else type="color" v-model="mutableConfig.stopwatch.legend.buttons.iconColor">, (default: "#2D353C")
+            },
+            buttonTitles: {
+                start: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.start"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.start">, (default: "Start")
+                pause: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.pause"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.pause">, (default: "Pause")
+                resume: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.resume"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.resume">, (default: "Resume")
+                reset: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.reset"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.reset">, (default: "Reset")
+                restart: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.restart"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.restart">, (default: "Restart")
+                lap: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.lap"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.lap">, (default: "Lap")
+            }
+        }
+    }
+}
+</code>
+</pre>                    
+                </div> 
             </template>
             <!-- EMITS -->
             <template #tab2>
