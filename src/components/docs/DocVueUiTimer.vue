@@ -368,11 +368,82 @@ const <span class="text-black dark:text-app-blue">config: VueUiTimerConfig</span
             </template>
             <!-- EMITS -->
             <template #tab2>
-                We are currently working on the docs :)
+<pre>
+<code>
+    &lt;VueUiTimer
+        :config="config"
+        @start="start"
+        @pause="pause"
+        @reset="reset"
+        @restart="restart"
+        @lap="lap" // returns an array of lap records
+    /&gt;
+</code>
+</pre>
             </template>
             <!-- SLOTS -->
             <template #tab3>
-                We are currently working on the docs :)
+                Use the #time slot to customize the time label
+<pre>
+<code>
+    &lt;VueUiTimer
+        :config="config"
+    &gt;
+        &lt;template #time="{ timestamp, elapsed, formatted }"&gt;
+            &lt;div&gt;<span v-pre>{{ formatted }}</span>&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiTimer&gt;
+</code>
+</pre>
+
+Use the #controls slot to customize control buttons:
+
+<pre>
+<code>
+    &lt;VueUiTimer
+        :config="config"
+    &gt;
+        &lt;template #controls="{ 
+            start,
+            pause,
+            reset,
+            restart,
+            lap,
+            laps,
+            isRunning,
+            isPaused,
+            timestamp,
+            elapsed,
+            formatted
+         }"&gt;
+            &lt;button @click="start()"&gt;<span v-pre>START</span>&lt;/button&gt;
+        &lt;/template&gt;
+    &lt;/VueUiTimer&gt;
+</code>
+</pre>
+
+Use the #laps slot to show the stack of laps when using the lap button:
+
+<pre>
+<code>
+    &lt;VueUiTimer
+        :config="config"
+    &gt;
+        &lt;template #laps="{
+            lap, 
+            laps, 
+            isRunning, 
+            isPaused,
+            timestamp,
+            elapsed,
+            formatted 
+        }"&gt;
+            &lt;div v-for="(record in laps)"&gt;<span v-pre>{{ record }}</span>&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiTimer&gt;
+</code>
+</pre>
+
             </template>
         </Box>
     </div>
