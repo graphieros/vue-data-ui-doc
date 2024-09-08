@@ -52,7 +52,6 @@ const selectedLanguage = computed({
 
 const versionsList = ref([]);
 const versionsUrl = ref('https://vue-data-ui.graphieros.com/releases.json');
-
 const sparklineDataset = ref(generateSparkline())
 const sparklineDataset2 = ref(generateSparkline())
 
