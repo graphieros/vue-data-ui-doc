@@ -2,10 +2,11 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useMainStore } from "../stores";
 import { SearchIcon, XIcon, InfoCircleIcon } from "vue-tabler-icons";
-import config from "../assets/default_configs.json";
+import {useConfig} from "../assets/useConfig";
 import Prism from "prismjs"
 import { useRouter } from "vue-router";
 
+const config = useConfig()
 
 const store = useMainStore();
 const router = useRouter()

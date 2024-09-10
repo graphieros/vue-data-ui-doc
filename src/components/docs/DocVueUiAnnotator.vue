@@ -2,10 +2,12 @@
 import { ref, computed, watch, nextTick, onBeforeMount } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon, InfoTriangleIcon } from "vue-tabler-icons";
-import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import { donutConfig, donutDataset } from "./dash";
 import GitHubLink from "../GitHubLink.vue";
+import { useConfig } from "../../assets/useConfig";
+
+const mainConfig = useConfig()
 
 const store = useMainStore();
 const key = ref(0);

@@ -1,4 +1,6 @@
-import config from "./assets/default_configs.json";
+import { useConfig } from "./assets/useConfig";
+
+const config = useConfig()
 
 export function searchInConfig(searchTerm) {
     const results = [];

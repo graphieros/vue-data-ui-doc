@@ -1,7 +1,9 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useMainStore } from "../../../stores";
-import CONFIG from "../../../assets/default_configs.json";
+import { useConfig } from "../../../assets/useConfig";
+
+const CONFIG = useConfig()
 
 const store = useMainStore();
 const lang = computed(() => store.lang);

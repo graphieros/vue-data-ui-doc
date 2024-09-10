@@ -2,9 +2,11 @@
 import { ref, computed, onMounted, watch, nextTick } from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useMainStore } from "../stores";
-import globalConfig from "../assets/default_configs.json";
 import staticReleases from "../../public/releases.json"
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui"
+import { useConfig } from "../assets/useConfig";
+
+const globalConfig = useConfig()
 
 const store = useMainStore();
 const translations = computed(() => store.translations)

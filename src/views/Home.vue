@@ -5,7 +5,9 @@ import { useMainStore } from "../stores";
 import { BrightnessUpIcon, MoonIcon, StarFilledIcon } from "vue-tabler-icons";
 import router from "../router"
 import staticReleases from "../../public/releases.json"
-import configs from "../assets/default_configs.json";
+import { useConfig } from "../assets/useConfig";
+
+const configs = useConfig()
 
 const store = useMainStore();
 function changeTheme() {

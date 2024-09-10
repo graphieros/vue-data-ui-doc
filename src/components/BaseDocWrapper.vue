@@ -3,7 +3,9 @@ import { computed } from "vue"
 import BaseButton from './BaseButton.vue';
 import { useMainStore } from "../stores";
 import { CopyIcon, PinIcon, PinnedOffIcon } from "vue-tabler-icons";
-import mainConfig from "../assets/default_configs.json";
+import { useConfig } from "../assets/useConfig";
+
+const mainConfig = useConfig()
 
 const props = defineProps(['title', 'subtitle', 'isFixed', 'config', 'callbacks', 'updateKey', 'jsonConfig'])
 

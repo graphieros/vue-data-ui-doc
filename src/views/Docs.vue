@@ -46,7 +46,6 @@ import DocVueUiSparkgauge from "../components/docs/DocVueUiSparkgauge.vue";
 import DocVueUiGalaxy from "../components/docs/DocVueUiGalaxy.vue";
 import DocVueUiKpi from "../components/docs/DocVueUiKpi.vue";
 import { getVueDataUiConfig, getThemeConfig } from "vue-data-ui";
-import mainConfig from "../assets/default_configs.json";
 import { CheckIcon, SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import Wheeler from "../components/Wheeler.vue";
@@ -64,6 +63,9 @@ import DocVueUiFlow from "../components/docs/DocVueUiFlow.vue";
 import DocVueUiParallelCoordinatePlot from "../components/docs/DocVueUiParallelCoordinatePlot.vue";
 import DocVueUiTimer from "../components/docs/DocVueUiTimer.vue";
 import Schema from "../schema/Schema.vue";
+import { useConfig } from "../assets/useConfig";
+
+const mainConfig = useConfig()
 
 const store = useMainStore();
 const translations = computed(() => {

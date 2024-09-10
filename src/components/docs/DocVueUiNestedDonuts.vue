@@ -2,13 +2,15 @@
 import { ref, watch, nextTick, computed } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
-import mainConfig from "../../assets/default_configs.json";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import MakerLink from "../MakerLink.vue";
 import ThemesVueUiNestedDonuts from "../themes/ThemesVueUiNestedDonuts.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseDocActions from "./BaseDocActions.vue";
+import { useConfig } from "../../assets/useConfig";
+
+const mainConfig = useConfig()
 
 const store = useMainStore();
 const key = ref(0);
