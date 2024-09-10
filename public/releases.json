@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.88",
+    "date": "2024-09-10",
+    "updates": [
+      {
+        "component": "VueUiTimer",
+        "description": "Use a web worker to keep the timer running normally when used on a sleeping browser tab",
+        "link": "/docs#vue-ui-timer"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.87",
     "date": "2024-09-10",
     "updates": [
