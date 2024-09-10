@@ -22,12 +22,17 @@ function useMenu() {
 
 const lastVersion = computed(() => {
     console.log(`
-               _                   ___ 
- \\  /     _   | \\  _. _|_  _.  | |  |  
-  \\/ |_| (/_  |_/ (_|  |_ (_|  |_| _|_ 
+\\ \\      /\\
+ \\ \\    /  \\
+  \\ \\  / /\\ \\
+   \\ \\/ /
+    \\  /
+     \\/ ${releases[0].version}
+     
 
-   ${releases[0].version}
-    `);
+Vue Data UI is an open source library.
+Feel free to make it better with us ^^
+     `);
     return releases[0].version.replace("v", "").split("").slice(1);
 });
 
