@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 2.2.87",
+    "date": "2024-09-10",
+    "updates": [
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Fixed non blocking error when canvas is loading and has no dimensions yet",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Fixed non blocking error in responsive mode when svg wrapper has a size of zero",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Removed non blocking error in responsive mode when svg wrapper has a size of zero",
+        "link": "/docs#vue-ui-nested-donuts"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.86",
     "date": "2024-09-06",
     "updates": [
