@@ -22,6 +22,7 @@ function useMenu() {
 
 const lastVersion = computed(() => {
     console.log(`
+    
 \\ \\      /\\
  \\ \\    /  \\
   \\ \\  / /\\ \\
