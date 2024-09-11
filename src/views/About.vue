@@ -241,11 +241,11 @@ const skeletonsDarkMode = [
 const componentTypes = ref([
   {
     name: "Charts",
-    value: 25
+    value: 32
   },
   {
     name: "Utilities",
-    value: 10
+    value: 11
   },
   {
     name: 'Mini charts',
@@ -260,6 +260,7 @@ const componentTypes = ref([
     value: 2
   },
 ])
+
 
 const donut = computed(() => {
   return componentTypes.value.map(t => {
