@@ -143,7 +143,7 @@ export function useCase() {
                     },
                     layout: {
                         donut: {
-                            strokeWidth: 130
+                            strokeWidth: 120
                         },
                         labels: {
                             percentage: {

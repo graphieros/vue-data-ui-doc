@@ -13,6 +13,10 @@
         equal: {
             type: Boolean,
             default: false,
+        },
+        title: {
+            type: String,
+            default: ''
         }
     })
     
@@ -31,7 +35,7 @@
 
 <template>
     <details ref="det" :style="level ? `margin-left:0px` : ''" class="border-l border-gray-500 rounded-md pl-2 bg-[#1A1A1A05] dark:bg-[#FFFFFF05] mb-2 shadow">
-        <summary class="cursor-pointer font-black hover:bg-[#5f8aee20] dark:hover:bg-[#FFFFFF10]">{{ attr }} {{ equal ? '=' : ':' }} {{ isOpen ? `{` : `{ ... }`}}</summary>
+        <summary :title="title" class="cursor-pointer font-black hover:bg-[#5f8aee20] dark:hover:bg-[#FFFFFF10]">{{ attr }} {{ equal ? '=' : ':' }} {{ isOpen ? `{` : `{ ... }`}}</summary>
         <code class="pl-6 flex flex-col">
             <slot/>
         </code>
