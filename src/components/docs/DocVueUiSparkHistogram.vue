@@ -8,6 +8,7 @@ import MakerLink from "../MakerLink.vue";
 import ThemesVueUiSparkHistogram from "../themes/ThemesVueUiSparkHistogram.vue";
 import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
+import BaseDetails from "../BaseDetails.vue";
 
 const mainConfig = useConfig()
 
@@ -308,6 +309,21 @@ function fixChart() {
     isFixed.value = !isFixed.value;
 } 
 
+const configCode = ref(null)
+const showAllConfig = ref(false);
+
+watch(() => showAllConfig.value, (v) => {
+    if (v) {
+        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => d.setAttribute('open', 'true'))
+    } else {
+        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => {
+            if (d.hasAttribute('open')) {
+                d.removeAttribute('open')
+            }
+        })
+    }
+})
+
 </script>
 
 <template>
@@ -467,85 +483,90 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkHistogramD
                   TS type: <code class="text-app-blue">VueUiSparkHistogramConfig</code>
                 </div>
 
-<pre>
-<code>
-const <span class="text-black dark:text-app-blue">config: VueUiSparkHistogramConfig</span> = {
-    theme: ""; ("zen" | "hack" | "concrete" | "")
-    style: {
-        backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
-        fontFamily: "inherit",
-        animation: {
-          show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.animation.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.animation.show" @change="forceChartUpdate()">, (default: true)
-          speedMs: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="1000" v-model="mutableConfigDarkMode.style.animation.speedMs"><input v-else type="number" class="accent-app-blue" min="0" max="1000" v-model="mutableConfig.style.animation.speedMs">, (default: 500)
-        },
-        layout: {
-            height: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="64" max="600" v-model="mutableConfigDarkMode.style.layout.height"><input v-else type="range" class="accent-app-blue" min="64" max="600" v-model="mutableConfig.style.layout.height">, (default: 96)
-            width: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="200" max="1600" v-model="mutableConfigDarkMode.style.layout.width"><input v-else type="range" class="accent-app-blue" min="200" max="1600" v-model="mutableConfig.style.layout.width">, (default: 640)
-            padding: {
-                top: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.top"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.top">, (default: 24)
-                right: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.right"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.right">, (default: 0)
-                left: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.left"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.left">, (default: 0)
-                bottom: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.bottom"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.bottom">, (default: 36)
-            }
-        },
-        bars: {
-            shape: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.bars.shape" @change="forceChartUpdate"><option v-for="shape in shapes">{{ shape }}</option></select><select v-else v-model="mutableConfig.style.bars.shape" @change="forceChartUpdate"><option v-for="shape in shapes">{{ shape }}</option></select>
-            strokeWidth: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.bars.strokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.bars.strokeWidth">, (default: 0)
-            colors: {
-                positive: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.bars.colors.positive"><input v-else type="color" v-model="mutableConfig.style.bars.colors.positive">, (default: "#3366cc")
-                negative: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.bars.colors.negative"><input v-else type="color" v-model="mutableConfig.style.bars.colors.negative">, (default: "#dc3912")
-                gradient: {
-                    show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.bars.colors.gradient.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.bars.colors.gradient.show" @change="forceChartUpdate()">, (default: true)
-                }
-            },
-            borderRadius: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.bars.borderRadius"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.bars.borderRadius">, (default: 24)
-            gap: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.bars.gap"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.bars.gap">, (default: 12)
-        },
-        labels: {
-            value: {
-                fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.labels.value.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.labels.value.fontSize">, (default: 14)
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.labels.value.color"><input v-else type="color" v-model="mutableConfig.style.labels.value.color">, (default: "#2D353C")
-                bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.labels.value.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.labels.value.bold" @change="forceChartUpdate()">, (default: true)
-                rounding: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.labels.value.rounding"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.labels.value.rounding">, (default: 1)
-                prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.labels.value.prefix"><input v-else type="text" v-model="mutableConfig.style.labels.value.prefix">, (default: "")
-                suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.labels.value.suffix"><input v-else type="text" v-model="mutableConfig.style.labels.value.suffix">, (default: "")
-                offsetY: <input v-if="isDarkMode" type="number" v-model="mutableConfigDarkMode.style.labels.value.offsetY"><input v-else type="number" v-model="mutableConfig.style.labels.value.offsetY">, (default: 0)
-            },
-            valueLabel: {
-                fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.labels.valueLabel.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.labels.valueLabel.fontSize">, (default: 14)
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.labels.valueLabel.color"><input v-else type="color" v-model="mutableConfig.style.labels.valueLabel.color">, (default: "#2D353C")
-                bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.labels.valueLabel.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.labels.valueLabel.bold" @change="forceChartUpdate()">, (default: false)
-            },
-            timeLabel: {
-                fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.labels.timeLabel.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.labels.timeLabel.fontSize">, (default: 12)
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.labels.timeLabel.color"><input v-else type="color" v-model="mutableConfig.style.labels.timeLabel.color">, (default: "#2D353C")
-                bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.labels.timeLabel.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.labels.timeLabel.bold" @change="forceChartUpdate()">, (default: false)
-            }
-        },
-        selector: { <span class="text-gray-500">// since v.1.9.20</span>
-          stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.selector.stroke"><input v-else type="color" v-model="mutableConfig.style.selector.stroke">, (default: "#3366cc")
-          strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="6" v-model="mutableConfigDarkMode.style.selector.strokeWidth"><input v-else type="number" min="0" max="6" v-model="mutableConfig.style.selector.strokeWidth">, (default: 2)
-          strokeDasharray: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.style.selector.strokeDasharray"><input v-else type="number" min="0" max="6" v-model="mutableConfig.style.selector.strokeDasharray">, (default: 0)
-          borderRadius: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.selector.borderRadius"><input v-else type="number" min="0" max="6" v-model="mutableConfig.style.selector.borderRadius">, (default: 2)
-        },
-        title: {
-            textAlign: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.textAlign"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.style.title.textAlign"><option>left</option><option>center</option><option>right</option></select>, (default: "left")
-            text: <input v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.text"><input v-else v-model="mutableConfig.style.title.text">, (default: "")
-            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.color"><input v-else type="color" v-model="mutableConfig.style.title.color">, (default: "#2D353C")
-            fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.title.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.title.fontSize">, (default: 16)
-            bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.bold" @change="forceChartUpdate()">, (default: true)
-            margin: <input v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.margin"><input v-else v-model="mutableConfig.style.title.margin">, (default: "")
-            subtitle: {
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.subtitle.color"><input v-else type="color" v-model="mutableConfig.style.title.subtitle.color">,(default: "#A1A1A1")
-                text: <input v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.subtitle.text"><input v-else v-model="mutableConfig.style.title.subtitle.text">, (default: "")
-                fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.title.subtitle.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.title.subtitle.fontSize">, (default: 12)
-                bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.subtitle.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.subtitle.bold" @change="forceChartUpdate()">, (default: false)
-            }
-        }
-    }
-}
+<div class="my-4">
+  Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+</div>
+
+<code ref="configCode">
+  <BaseDetails attr="const config: VueUiSparkHistogramConfig" equal>
+    <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+    <BaseDetails attr="style" :level="1">
+      <span>fontFamily: "inherit",</span>
+      <span>backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")</span>
+      <BaseDetails attr="animation" :level="2" title="style.animation">
+        <span>show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.animation.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.animation.show" @change="forceChartUpdate()">, (default: true)</span>
+        <span>speedMs: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="1000" v-model="mutableConfigDarkMode.style.animation.speedMs"><input v-else type="number" class="accent-app-blue" min="0" max="1000" v-model="mutableConfig.style.animation.speedMs">, (default: 500)</span>
+      </BaseDetails>
+      <BaseDetails attr="bars" :level="2" title="style.bars">
+        <span>shape: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.bars.shape" @change="forceChartUpdate"><option v-for="shape in shapes">{{ shape }}</option></select><select v-else v-model="mutableConfig.style.bars.shape" @change="forceChartUpdate"><option v-for="shape in shapes">{{ shape }}</option></select>, (default: "square")</span>
+        <span>strokeWidth: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.bars.strokeWidth"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.bars.strokeWidth">, (default: 0)</span>
+        <span>borderRadius: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.bars.borderRadius"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.bars.borderRadius">, (default: 24)</span>
+        <span>gap: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.bars.gap"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.bars.gap">, (default: 12)</span>
+        <BaseDetails attr="colors" :level="3" title="style.bars.colors">
+          <span> positive: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.bars.colors.positive"><input v-else type="color" v-model="mutableConfig.style.bars.colors.positive">, (default: "#5F8BEE")</span>
+          <span>negative: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.bars.colors.negative"><input v-else type="color" v-model="mutableConfig.style.bars.colors.negative">, (default: "#DC3912")</span>
+          <BaseDetails attr="gradient" :level="4" title="style.bars.colors.gradient">
+            <span>show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.bars.colors.gradient.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.bars.colors.gradient.show" @change="forceChartUpdate()">, (default: true)</span>
+          </BaseDetails>
+        </BaseDetails>
+      </BaseDetails>
+      <BaseDetails attr="labels" :level="2" title="style.labels">
+        <BaseDetails attr="timeLabel" :level="3" title="style.labels.timeLabel">
+          <span>fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.labels.timeLabel.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.labels.timeLabel.fontSize">, (default: 12)</span>
+          <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.labels.timeLabel.color"><input v-else type="color" v-model="mutableConfig.style.labels.timeLabel.color">, (default: "#2D353C")</span>
+          <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.labels.timeLabel.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.labels.timeLabel.bold" @change="forceChartUpdate()">, (default: false)</span>
+        </BaseDetails>
+        <BaseDetails attr="value" :level="3" title="style.labels.value">
+          <span>fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.labels.value.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.labels.value.fontSize">, (default: 14)</span>
+          <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.labels.value.color"><input v-else type="color" v-model="mutableConfig.style.labels.value.color">, (default: "#2D353C")</span>
+          <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.labels.value.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.labels.value.bold" @change="forceChartUpdate()">, (default: true)</span>
+          <span>rounding: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.labels.value.rounding"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.labels.value.rounding">, (default: 1)</span>
+          <span>prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.labels.value.prefix"><input v-else type="text" v-model="mutableConfig.style.labels.value.prefix">, (default: "")</span>
+          <span>suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.labels.value.suffix"><input v-else type="text" v-model="mutableConfig.style.labels.value.suffix">, (default: "")</span>
+          <span>offsetY: <input v-if="isDarkMode" type="number" v-model="mutableConfigDarkMode.style.labels.value.offsetY"><input v-else type="number" v-model="mutableConfig.style.labels.value.offsetY">, (default: 0)</span>
+        </BaseDetails>
+        <BaseDetails attr="valueLabel" :level="3" title="style.labels.valueLabel">
+          <span>fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.labels.valueLabel.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.labels.valueLabel.fontSize">, (default: 14)</span>
+          <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.labels.valueLabel.color"><input v-else type="color" v-model="mutableConfig.style.labels.valueLabel.color">, (default: "#2D353C")</span>
+          <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.labels.valueLabel.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.labels.valueLabel.bold" @change="forceChartUpdate()">, (default: false)</span>
+          <span></span>
+          <span>rounding: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.labels.valueLabel.rounding"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.labels.valueLabel.rounding">, (default: 1)</span>
+        </BaseDetails>
+      </BaseDetails>
+      <BaseDetails attr="layout" :level="2" title="style.layout">
+        <span>height: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="64" max="600" v-model="mutableConfigDarkMode.style.layout.height"><input v-else type="range" class="accent-app-blue" min="64" max="600" v-model="mutableConfig.style.layout.height">, (default: 96)</span>
+        <span>width: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="200" max="1600" v-model="mutableConfigDarkMode.style.layout.width"><input v-else type="range" class="accent-app-blue" min="200" max="1600" v-model="mutableConfig.style.layout.width">, (default: 640)</span>
+        <BaseDetails attr="padding" :level="3" title="style.layout.padding">
+          <span>top: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.top"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.top">, (default: 24)</span>
+          <span>right: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.right"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.right">, (default: 0)</span>
+          <span>bottom: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.bottom"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.bottom">, (default: 36)</span>
+          <span>left: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.layout.padding.left"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.layout.padding.left">, (default: 0)</span>
+        </BaseDetails>
+      </BaseDetails>
+      <BaseDetails attr="selector" :level="2" title="style.selector">
+        <span>stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.selector.stroke"><input v-else type="color" v-model="mutableConfig.style.selector.stroke">, (default: "#5F8BEE")</span>
+        <span>strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="6" v-model="mutableConfigDarkMode.style.selector.strokeWidth"><input v-else type="number" min="0" max="6" v-model="mutableConfig.style.selector.strokeWidth">, (default: 2)</span>
+        <span>strokeDasharray: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.style.selector.strokeDasharray"><input v-else type="number" min="0" max="6" v-model="mutableConfig.style.selector.strokeDasharray">, (default: 0)</span>
+        <span>borderRadius: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.selector.borderRadius"><input v-else type="number" min="0" max="6" v-model="mutableConfig.style.selector.borderRadius">, (default: 2)</span>
+      </BaseDetails>
+      <BaseDetails attr="title" :level="2" title="style.title">
+        <span>textAlign: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.textAlign"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.style.title.textAlign"><option>left</option><option>center</option><option>right</option></select>, (default: "left")</span>
+        <span>text: <input v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.text"><input v-else v-model="mutableConfig.style.title.text">, (default: "")</span>
+        <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.color"><input v-else type="color" v-model="mutableConfig.style.title.color">, (default: "#2D353C")</span>
+        <span>fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.title.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.title.fontSize">, (default: 20)</span>
+        <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.bold" @change="forceChartUpdate()">, (default: true)</span>
+        <span>margin: <input v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.margin"><input v-else v-model="mutableConfig.style.title.margin">, (default: "")</span>
+        <BaseDetails attr="subtitle" :level="3" title="style.title.subtitle">
+          <span> color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.subtitle.color"><input v-else type="color" v-model="mutableConfig.style.title.subtitle.color">,(default: "#A1A1A1")</span>
+          <span>text: <input v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.subtitle.text"><input v-else v-model="mutableConfig.style.title.subtitle.text">, (default: "")</span>
+          <span>fontSize: <input v-if="isDarkMode" type="number" min="6" max="48" v-model="mutableConfigDarkMode.style.title.subtitle.fontSize"><input v-else type="number" min="6" max="48" v-model="mutableConfig.style.title.subtitle.fontSize">, (default: 16)</span>
+          <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.subtitle.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.subtitle.bold" @change="forceChartUpdate()">, (default: false)</span>
+        </BaseDetails>
+      </BaseDetails>
+    </BaseDetails>
+  </BaseDetails> 
 </code>
-</pre>
+
             </template>
             <template #tab2>
 @selectDatapoint<br><br>
