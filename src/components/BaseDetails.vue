@@ -7,7 +7,7 @@
             default: ''
         },
         level: {
-            type: Number,
+            type: [Number, String],
             default: ''
         },
         equal: {
