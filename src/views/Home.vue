@@ -412,7 +412,7 @@ const componentTranslation = ref({
         </h1>
         <p class="text-board-2 text-xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
 
-        <div class="flex flex-row gap-2 text-gray-500">
+        <div class="flex flex-row gap-2 text-gray-500" :title="componentsLen + ' components'">
           {{ componentTranslation[store.lang] }}: 
           <div class="h-[22px]">
             <VueUiDigits :dataset="componentsLen" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#5f8bee' : '#1A1A1A' }  }"/>
@@ -448,7 +448,7 @@ const componentTranslation = ref({
 
             </button>
           </a>
-          <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center">
+          <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center" :title="'Version ' + staticReleases[0].version.replace('v', '')">
           <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
         </div>
     </div>

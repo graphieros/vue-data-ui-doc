@@ -161,6 +161,7 @@ const isHome = computed(() => {
                     </div>
                 </div>
             </router-link>
+            <div v-else/>
 
             <nav class="hidden xl:flex flex-row gap-1 justify-end w-full place-items-center">
                 <!-- <button @click="openChartMaker">

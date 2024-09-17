@@ -6,6 +6,7 @@ import { useMainStore } from "../stores";
 import Prism from "prismjs"
 import "prismjs/themes/prism-okaidia.css"
 import DocLink from "../components/DocLink.vue";
+import { CopyIcon } from "vue-tabler-icons";
 
 const store = useMainStore()
 
@@ -41,6 +42,38 @@ onMounted(() => {
 
 // TODO: add tables for emits & exposed methods
 
+function copyToClipboard(el) {
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    if(typeof el === 'object') {
+        selBox.value = JSON.stringify(conf);
+    } else {
+        selBox.value = el;
+    }
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    store.copy();
+}
+
+const codeContent = ref(null);
+
+function copyContent() {
+    const content = codeContent.value.innerText;
+    copyToClipboard(content);
+}
+
+const isTs = ref(true);
+
+const excl1 = 'Array<Array<string | number>>';
+const excl2 = 'number[]';
+const excl3 = ' | string'
+
 </script>
 
 <template>
@@ -52,10 +85,51 @@ onMounted(() => {
         <div class="mb-4">
 
             <BaseText :label="translations.overview.description[store.lang]" :text="selectedComponent.description" />
-            <BaseText v-if="selectedComponent.props.includes('dataset')" label="Dataset TS type" isCode :text="selectedComponent.types.dataset" />
-            <BaseText v-if="selectedComponent.props.includes('dataset')" label="Config TS type" isCode :text="selectedComponent.types.config" />
+            <div class="flex flew-row gap-2 place-items-center">
+                <BaseText v-if="selectedComponent.props.includes('dataset')" label="Dataset TS type" isCode :text="selectedComponent.types.dataset" /> 
+                <button title="Copy" class="dark:text-app-green" @click="copyToClipboard(selectedComponent.types.dataset)"><CopyIcon/></button>
+            </div>
+            <div class="flex flew-row gap-2 place-items-center">
+                <BaseText v-if="selectedComponent.props.includes('dataset')" label="Config TS type" isCode :text="selectedComponent.types.config" />
+                <button title="Copy" class="dark:text-app-green" @click="copyToClipboard(selectedComponent.types.config)"><CopyIcon/></button>
+            </div>
             <div class="mt-8" v-if="showLink">
                 <DocLink :to="selectedComponent.path.replace('/docs#', '')"/>
+            </div>
+
+            <div class="mt-8 mb-2">VueDataUi universal component boilerplate:</div>
+            <div class="flex flex-row gap-2 place-items-center mb-2">
+                <label for="useTS">Use Typescript:</label><input type="checkbox" v-model="isTs" id="useTS">
+            </div>
+            <div class="bg-black text-gray-400 p-2 sm:p-6 rounded relative">
+                <button title="Copy" class="text-app-green absolute right-4 top-4" @click="copyContent"><CopyIcon/></button>
+<pre>
+<code class="text-xs" ref="codeContent">
+&lt;script setup<span v-if="isTs"> lang="ts"</span>&gt;
+    import { ref } from "vue";<span v-if="isTs">
+    import <span v-pre>{
+        </span>VueDataUi,<span v-if="selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').length">
+        {{ selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '') }}, 
+        </span>{{ selectedComponent.types.config }} <span v-pre>
+    }</span> from "vue-data-ui";
+    import "vue-data-ui/style.css";
+    </span>
+    <span v-if="!isTs">import { VueDataUi } from "vue-data-ui";
+    import "vue-data-ui/style.css";
+    </span>
+    const dataset = ref<span v-if="isTs"><{{ selectedComponent.types.dataset }}></span>();
+    const config = ref<span v-if="isTs"><{{ selectedComponent.types.config }}></span>();
+&lt;/script&gt;
+
+&lt;template&gt;
+    &lt;VueDataUi
+        component="{{ selectedComponent.name }}"
+        :dataset="dataset"
+        :config="config"
+    /&gt;
+&lt;/template&gt;
+</code>
+</pre>
             </div>
 
         </div>
