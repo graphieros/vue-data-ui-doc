@@ -1504,10 +1504,8 @@ const xyCanvasConfig = computed({
     <SideMenu @toggle="toggleMenu"/>
     <div :class="`${isOpen ? 'pl-[348px] pr-[48px] hidden sm:block' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden`">
         <div :class="`${isOpen ? 'xl:w-5/6' : ''}`">
-            <h1 class="flex flex-row gap-4 place-items-center justify-center text-3xl text-center mb-12">
-                <img src="../assets/logo.png" class="h-6">
-                {{ translations.menu.versions[store.lang] }}
-            </h1>
+          <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.versions[store.lang] }}</h1>
+
             <div class="max-w-[800px] mx-auto px-6">
                 <div class="max-w-[500px] mx-auto my-6">
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>

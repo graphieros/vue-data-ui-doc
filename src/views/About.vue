@@ -280,10 +280,8 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
 <template>
   
     <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto">
-      <h1 class="flex flex-row gap-4 place-items-center justify-center text-3xl text-center mb-12">
-                <img src="../assets/logo.png" class="h-6">
-                {{ translations.menu.about[store.lang] }}
-            </h1>
+      <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.about[store.lang] }}</h1>
+
         <div v-if="isDarkMode" class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px]">
             <div v-for="skeleton in skeletonsDarkMode.slice(0,3)" class="max-w-1/3">
                 <VueUiSkeleton :config="skeleton"/>

@@ -17,7 +17,13 @@ const translations = computed(() => {
         <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'"/>
         <AppSkeletons/>
       </div>
-        <div class="z-10 p-6 border border-gray-700 rounded-lg flex flex-col text-start text-gray-800 bg-gray-200 dark:text-app-green dark:bg-[rgb(26,26,26)]">
+
+      <h1 class="text-[64px] sm:text-[96px] text-center">
+          {{ translations.menu.installation[store.lang] }}
+      </h1>
+
+
+        <div class="z-10 mt-10 p-6 border border-gray-700 rounded-lg flex flex-col text-start text-gray-800 bg-gray-200 dark:text-app-green dark:bg-[rgb(26,26,26)]">
             <code>npm i vue-data-ui</code>
             <code>yarn add vue-data-ui</code>
         </div>
@@ -59,7 +65,7 @@ const translations = computed(() => {
                &nbsp;&nbsp;import { <span class="text-gray-800 dark:text-app-green">VueUiRadar, VueUiXy</span> } from "vue-data-ui";<br>
                
                &lt;/script&gt;<br><br>
-               <span class="text-gray-600 dark:text-gray-500 text-left">// {{ translations.installation.comments.types[store.lang] }}</span><br><br>
+               <span class="text-gray-600 dark:text-gray-500 text-left">// Typescript</span><br><br>
                &lt;script setup&gt;<br>
                &nbsp;&nbsp;import { ref } from "vue";<br>
                &nbsp;&nbsp;import { <br>

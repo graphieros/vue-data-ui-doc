@@ -138,14 +138,18 @@ const dropdownItems = computed(() => {
     ]
 })
 
+const isHome = computed(() => {
+    return currentRoute.value === '/'
+})
+
 </script>
 
 <template>
     <ChartMaker ref="chartMkr" />
     <header data-cy="app-header"
-        class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] transition-all">
+        class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A]">
         <div class="mx-auto w-5/6 py-3 flex justify-between place-items-center">
-            <router-link data-cy="link-home" to="/">
+            <router-link data-cy="link-home" to="/" v-if="!isHome">
                 <div class="flex flex-row gap-3">
                     <div data-cy="header-app-name" class="flex flex-row gap-3 w-full whitespace-nowrap">
                         <img data-cy="header-logo" src="../assets/logo.png" class="h-5" />

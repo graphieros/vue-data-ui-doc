@@ -30,10 +30,7 @@ const menu = ref([
 
 <template>
     <div class="my-12 w-full mx-auto text-center">
-        <h1 class="text-3xl flex flex-row gap-4 place-items-center justify-center">
-            <img src="../assets/logo.png" class="h-6">
-            {{ translations.menu.customization[store.lang] }}
-        </h1>
+        <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.customization[store.lang] }}</h1>
         <div class="flex flex-row flex-wrap gap-4 place-items-center justify-center my-12">
             <button :class="`transition-colorsrounded py-2 px-4 ${selectedMenu === menuItem.name ? 'bg-[#5f8bee20] text-app-blue border-b border-app-blue' : 'hover:bg-[#5f8bee10]'}`" v-for="menuItem in menu" @click="selectedMenu = menuItem.name">{{ menuItem.label }}</button>
         </div>

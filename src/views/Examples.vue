@@ -16,11 +16,9 @@ const currentMenu = ref('mini')
 
 <template>
     <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative my-12">
-        <h1 class="flex flex-row gap-4 place-items-center justify-center text-3xl text-center mb-12">
-            <img src="../assets/logo.png" class="h-6">
-            {{ translations.menu.examples[lang] }}
-        </h1>
-        <div class="flex gap-4 place-items-center justify-center">
+        <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.examples[lang] }}</h1>
+
+        <div class="flex gap-4 place-items-center justify-center mt-10">
             <ExampleButton @click="currentMenu = 'mini'" :selected="currentMenu === 'mini'" :isDarkMode="isDarkMode">
                 <div class="flex flex-row gap-2 place-items-center">
                     <VueUiIcon name="chartSparkline" :stroke="currentMenu === 'mini' ? '#1A1A1A' : isDarkMode ? '#42d392' : '#1A1A1A'"/>

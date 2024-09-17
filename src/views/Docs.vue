@@ -874,44 +874,32 @@ onMounted(playShowcase);
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">
-                        <img src="../assets/logo.png" class="h-6">
-                        <h1 class="text-3xl text-center">{{ translations.menu.docs[store.lang] }}</h1>
-                    </div>
-                    <h2>{{ translations.docs.props[store.lang] }}</h2>
-                    <div class="w-[100px] rounded-full overflow-hidden flex place-items-center justify-center shadow-md">
-                        <!-- <Sprinter :value="count" :key="`sprinter_${count}`"/> -->
-                        <Wheeler :value="wheelerValue" :key="`wheeler_${count}`"/>
+                        <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.docs[store.lang] }}</h1>
                     </div>
                 </div>
-
-<div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 bg-gray-200 dark:bg-[rgb(30,30,30)] shadow-md">
-<pre>
-<code class="text-gray-500 text-md">
-&lt;VueUi<span class="dark:text-gray-200">{{ currentShowcase }}</span>
-    <span class="text-black dark:text-app-green">:dataset</span>="{{ translations.docs.dataset[store.lang] }}"
-    <span class="text-black dark:text-app-blue">:config</span>="{{ translations.docs.config[store.lang] }}"
-/&gt;
-</code>
-</pre>
-</div>
-<RouterLink to="/universal-component">
-<div class="mt-6">
-    {{ translations.installation.comments.or[store.lang] }}
-</div>
-<div class="w-fit mx-auto border border-gray-700 rounded-md py-1 px-6 sm:px-10 mt-6 bg-gray-200 dark:bg-[rgb(30,30,30)] shadow-md">
+<div class="flex flex-col sm:flex-row place-items-center gap-2 justify-center w-full mx-auto">
+    <div class="flex flex-col gap-2 place-items-center place-content-center border-r border-gray-500 pr-6">
+        <div class="text-xl sm:text-4xl w-full text-end">1 import</div>
+        <div class="text-xl sm:text-4xl w-full text-end">3 props</div>
+        <div class="text-xl sm:text-4xl w-full text-end">{{ Object.keys(mainConfig).length + 1 }} components</div>
+    </div>
+    
+    <RouterLink class="w-[360px]" to="/universal-component">
+    <div title="Checkout how to use the VueDataUi universal component" class="mx-auto  rounded-md py-1 px-6 sm:px-10">
 <pre>
 <code class="text-gray-500 text-md">
 &lt;<span class="dark:text-gray-200">VueDataUi</span>
-    <span class="text-black dark:text-app-orange">component</span>="VueUiXy"
+    <span class="text-black dark:text-app-orange">component</span>="VueUi{{ currentShowcase }}"
     <span class="text-black dark:text-app-green">:dataset</span>="{{ translations.docs.dataset[store.lang] }}"
     <span class="text-black dark:text-app-blue">:config</span>="{{ translations.docs.config[store.lang] }}"
 /&gt;
 </code>
 </pre>
+    </div>
+    </RouterLink>
 </div>
-</RouterLink>
 
-<div class="w-full px-2 sm:px-0 sm:w-1/2 text-left mx-auto my-6 text-xs sm:text-lg">
+<div class="w-full px-2 sm:px-0 max-w-[72ch] text-left mx-auto mb-12 mt-12 text-xs sm:text-lg">
     {{ translations.docs.p1[store.lang] }}
 </div>
 

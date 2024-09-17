@@ -114,22 +114,8 @@ function selectChart(opt) {
     </div>
     <div class="w-full max-w-[1400px] mx-auto overflow-visible">
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
-            <img src="../assets/logo.png" class="h-6">
-            <h1 class="text-3xl text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
+            <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>
-
-        <!-- <div class="mx-auto max-w-[400px] dark:text-app-green mt-6 flex flex-row gap-2">
-            <div class="h-[40px] w-[40px]">
-                <InfoSquareRoundedIcon/>
-            </div>
-            <div>
-            
-            <span>{{ makerTranslations.atWork[store.lang] }} : </span>
-            <router-link to="/docs" class="text-app-blue underline">
-                {{ translations.menu.docs[store.lang] }}
-            </router-link>
-            </div>
-        </div> -->
 
         <div class="w-full max-w-[400px] flex flex-row flex-wrap gap-2 mx-auto justify-center my-12">
             <div v-for="option in options" class="relative">
