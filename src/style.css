@@ -64,6 +64,10 @@ html.dark input[type="text"] {
   padding-left: 8px;
 }
 
+.numinput {
+  border-radius: 0px !important;
+}
+
 input[type="color"] {
   border: none;
 }
