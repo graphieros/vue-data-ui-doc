@@ -186,8 +186,8 @@ const isHome = computed(() => {
                 </router-link>
                 <router-link data-cy="link-docs" to="/chart-builder">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/chart-builder')
-                                ? 'text-black dark:text-gray-200 hover:cursor-default bg-[#FFFFFF33] shadow-md'
-                                : 'text-gray-800 dark:text-gray-200 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-[#FFFFFF33] shadow-md'
+                                : 'text-gray-800 dark:text-[#ffe596] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
                         {{ translations.menu.chartBuilder[store.lang] }}
                     </span>
