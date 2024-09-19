@@ -114,7 +114,7 @@ const darkModeConfig = ref({
         width: 300,
         title: {
             text: "Title",
-            color: "#2D353C",
+            color: "#FAFAFA",
             fontSize: 20,
             bold: true,
             subtitle: {

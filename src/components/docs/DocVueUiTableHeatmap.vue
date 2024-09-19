@@ -4,8 +4,8 @@ import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon, InfoTriangleFilledIcon  } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue";
 import { useConfig } from "../../assets/useConfig";
+import BaseNumberInput from "../BaseNumberInput.vue";
 
 const mainConfig = useConfig()
 
@@ -205,7 +205,9 @@ function fixChart() {
                 </template>
 
                 <template #head="{ value, rowIndex, type }">
-                    {{ value }}
+                    <div class="text-black dark:text-gray-300">
+                        {{ value }}
+                    </div>
                 </template>
 
                 <template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }">
@@ -339,7 +341,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiTableHeatmapConfi
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
         color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.color"><input v-else type="color" v-model="mutableConfig.style.color">, (default"#2D353C")
         fontFamily: "inherit",
-        shapeSize: <input v-if="isDarkMode" type="number" min="8" max="36" v-model="mutableConfigDarkMode.style.shapeSize"><input v-else type="number" min="8" max="36" v-model="mutableConfig.style.shapeSize">, (default: 14)
+        shapeSize: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.shapeSize" :min="8" :max="36"/><BaseNumberInput v-else v-model:value="mutableConfig.style.shapeSize" :min="8" :max="36"/>, (default: 14)
         heatmapColors: {
             useIndividualScale: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.heatmapColors.useIndividualScale" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.heatmapColors.useIndividualScale" @change="forceChartUpdate()">, (default: false)
             min: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.heatmapColors.min"><input v-else type="color" v-model="mutableConfig.style.heatmapColors.min">, (default: "#FFFFFF")
@@ -348,7 +350,7 @@ const <span class="text-black dark:text-app-blue">config: VueUiTableHeatmapConfi
     },
     table: {
         responsiveBreakpoint: 300,
-        borderWidth: <input v-if="isDarkMode" type="number" min="0" max="12" v-model="mutableConfigDarkMode.table.borderWidth"><input v-else type="number" min="0" max="12" v-model="mutableConfig.table.borderWidth">, (default: 1)
+        borderWidth: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.table.borderWidth" :min="0" :max="12"/><BaseNumberInput v-else v-model:value="mutableConfig.style.table.borderWidthshapeSize" :min="0" :max="12"/>, (default: 1)
         showSum: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.showSum" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.showSum" @change="forceChartUpdate()">, (default: false)
         showAverage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.showAverage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.showAverage" @change="forceChartUpdate()">, (default: false)
         showMedian: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.showMedian" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.showMedian" @change="forceChartUpdate()">, (default: false)
