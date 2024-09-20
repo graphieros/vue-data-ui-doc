@@ -667,7 +667,7 @@ const sideMenuItems = computed(() => {
         ]
     },
 ]
-})
+});
 
 </script>
 
@@ -682,8 +682,13 @@ const sideMenuItems = computed(() => {
     <template v-if="isOpen">
         <div class="mt-8">
             <RouterLink to="/universal-component">
-                <div class="p-2 rounded text-center relative text-sm hover:bg-[#42d39220]" :style="`background:${router.currentRoute.value.fullPath === '/universal-component' ? '#42d39230' : ''}`">
-                    VueDataUi universal component
+                <div class="py-2 rounded text-center relative text-sm hover:bg-[#42d39220]" :style="`background:${router.currentRoute.value.fullPath === '/universal-component' ? '#42d39230' : ''}`">
+                    <div class="flex flex-row place-items-center">
+                        <VueUiIcon name="vueDataUi" stroke="#6A6A6A"/>
+                        <div class="w-full" style="white-space: nowrap;">
+                            VueDataUi universal component
+                        </div>
+                    </div>
                     <div :class="`is-item-selected bg-app-green ${router.currentRoute.value.fullPath === '/universal-component' ? 'is-active' : ''}`"></div>
                 </div>
                 <div class="w-full mt-6 mb-2 border-b border-gray-500"></div>
