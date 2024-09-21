@@ -23,6 +23,16 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                clipboard: {
+                    en: 'Copied to clipboard',
+                    fr: 'Copié sur le presse-papier',
+                    pt: 'Copiado para a área de transferência',
+                    de: 'In die Zwischenablage kopiert',
+                    zh: '已复制到剪贴板',
+                    jp: 'クリップボードにコピーされました',
+                    es: 'Copiado al portapapeles',
+                    ko: '클립보드에 복사됨'
+                },
                 noResultsFor: {
                     en: 'No results for:',
                     fr: 'Aucun résultat pour :',
@@ -3150,7 +3160,7 @@ export const useMainStore = defineStore("main", {
             this.isCopy = true;
             setTimeout(() => {
                 this.isCopy = false;
-            }, 500);
+            }, 1000);
         }
     }
 })
