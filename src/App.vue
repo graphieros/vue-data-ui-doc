@@ -49,7 +49,7 @@ onMounted(() => {
     <UpToTop/>
     <GithubButton v-if="currentRoute !== '/'"/>
   </div>
-  <Follower v-if="!['/', '/docs#vue-ui-cursor'].includes(currentRoute)"/>
+  <!-- <Follower v-if="!['/', '/docs#vue-ui-cursor'].includes(currentRoute)"/> -->
   <BaseFooter v-if="!['/'].includes(currentRoute)"/>
 </template>
 
