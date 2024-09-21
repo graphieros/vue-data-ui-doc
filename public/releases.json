@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.2.89",
+    "date": "2024-09-21",
+    "updates": [
+      {
+        "component": "",
+        "description": "Added tooltips to user option buttons"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.88",
     "date": "2024-09-10",
     "updates": [
