@@ -12,8 +12,8 @@ export default {
         "satoshi-bold": ["SatoshiBold"],
       },
       colors: {
-        "black": "rgb(26,26,26)",
-        "black-100" : "rgb(36,36,36)",
+        "black": "#1a1a1a",
+        "black-100" : "#242424",
         "app-green": "#42d392",
         "app-blue": "#5f8aee",
         "app-orange": "#ff6600",
