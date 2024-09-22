@@ -2,12 +2,10 @@
 import { ref, computed } from "vue";
 import {adaptColorToBackground} from '../maker/lib'
 import { useMainStore } from "../../stores";
-import { CheckIcon } from "vue-tabler-icons";
 import { getPalette } from "vue-data-ui";
 import ConfirmCopy from "../ConfirmCopy.vue";
 
 const store = useMainStore()
-const isCopy = computed(() => store.isCopy);
 const translations = computed(() => {
     return store.translations;
 })

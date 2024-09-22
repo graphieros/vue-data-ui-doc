@@ -51,9 +51,25 @@ import { useMainStore } from "../stores";
         </details>
         <div v-if="isSelected && title" class="text-black dark:text-gray-300 hidden sm:flex -top-12 left-0 place-items-center justify-center absolute z-10 bg-white shadow-xl dark:bg-black-100 text-xs text-left p-2 rounded border-2 border-black dark:border-app-green">
             {{ title }}
-            <svg class="absolute -left-4 top-1/2" viewBox="0 0 64 64" height="50" width="50" style="overflow:visible; pointer-events: none;">
-                <path v-if="isDarkMode" d="M 17,0 0,0 0,56 17,56" stroke="#42d392" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                <path v-else d="M 17,0 0,0 0,56 17,56" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <svg v-if="isOpen" class="absolute -left-4 top-1/2" viewBox="0 0 64 64" height="50" width="50" style="overflow:visible; pointer-events: none;">
+                <path v-if="isDarkMode" d="M 17,0 0,0 0,53.5 17,53.5" stroke="#42d392" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                <path v-else d="M 17,0 0,0 0,53.5 17,53.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            </svg>
+            <svg v-else class="absolute -left-4 top-1/2" viewBox="0 0 64 64" height="50" width="50" style="overflow:visible; pointer-events: none;">
+                <g v-if="isDarkMode">
+                    <path d="M 17,0 0,0 0,10" stroke="#42d392" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                    <circle cx="0" cy="20" fill="#42d392" r="2"/>
+                    <circle cx="0" cy="28" fill="#42d392" r="2"/>
+                    <circle cx="0" cy="36" fill="#42d392" r="2"/>
+                    <path d="M 0,45 0,53.5 17,53.5" stroke="#42d392" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                </g>
+                <g v-else>
+                    <path d="M 17,0 0,0 0,10" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                    <circle cx="0" cy="20" fill="#1A1A1A" r="2"/>
+                    <circle cx="0" cy="28" fill="#1A1A1A" r="2"/>
+                    <circle cx="0" cy="36" fill="#1A1A1A" r="2"/>
+                    <path d="M 0,45 0,53.5 17,53.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                </g>
             </svg>
         </div>
     </div>
