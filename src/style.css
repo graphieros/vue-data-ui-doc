@@ -69,21 +69,25 @@ html.dark input[type="text"] {
 }
 
 input[type="color"] {
-  border: none;
+  border-radius: 8px !important;
+  padding: 0 2px;
+  background: transparent !important;
+  color: transparent !important;
 }
 
 input[type="color"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 32px;
-  height: 35px;
-  background-color: transparent;
+  width: 100px;
+  height: 28px;
+  background-color: transparent !important;
+  border:none !important;
   border: none !important;
   cursor: pointer;
 }
 input[type="color"]::-webkit-color-swatch {
-  border-radius: 50%;
+  border-radius: 4px;
   border: 1px solid #C4C4C4;
   box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
