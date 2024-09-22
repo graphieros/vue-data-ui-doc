@@ -237,7 +237,7 @@ function formatSuggestion(word) {
           <input
             @input="handleInput"
             type="text"
-            class="inner p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green w-[280px] bg-white dark:bg-[#1A1A1A]"
+            class="inner p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green w-[280px] bg-white dark:bg-[#252525]"
             style="text-align: left !important"
             v-model="searchTerm"
             :placeholder="store.translations.search.placeholder[store.lang]"
