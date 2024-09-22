@@ -43,7 +43,7 @@ import { useMainStore } from "../stores";
 <template>
     <div class="relative">
         <details ref="det" :style="level ? `margin-left:0px` : ''" :class="`border-l ${isSelected ? 'border-app-blue dark:border-app-green' : 'border-gray-500'} rounded-md pl-2 bg-[#1A1A1A05] dark:bg-[#FFFFFF05] mb-2 shadow`">
-            <summary @mouseenter="isSelected=true" @mouseout="isSelected=false" class="cursor-pointer font-black hover:bg-[#5f8aee20] dark:hover:bg-[#42d39220] transition-colors">{{ attr }} {{ equal ? '=' : ':' }} {{ isOpen ? `{` : `{ ... }`}}</summary>
+            <summary @mouseenter="isSelected=true" @mouseout="isSelected=false" class="cursor-pointer -ml-2 pl-2 font-black hover:bg-[#5f8aee20] dark:hover:bg-[#42d39220] transition-colors">{{ attr }} {{ equal ? '=' : ':' }} {{ isOpen ? `{` : `{ ... }`}}</summary>
             <code class="pl-6 flex flex-col">
                 <slot/>
             </code>
