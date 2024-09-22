@@ -28,6 +28,7 @@ function performSearch() {
         hasResults.value = false;
         searchResults.value = [];
     }
+    window.scrollTo({ top: 0});
 }
 
 watch(searchTerm, (newTerm) => {
