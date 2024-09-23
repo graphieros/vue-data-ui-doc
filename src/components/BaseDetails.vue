@@ -1,42 +1,42 @@
 <script setup>
-    import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useMainStore } from "../stores";
-    
-    const store = useMainStore()
 
-    const isDarkMode = computed(() => store.isDarkMode);
+const store = useMainStore()
 
-    defineProps({
-        attr: {
-            type: String,
-            default: ''
-        },
-        level: {
-            type: [Number, String],
-            default: ''
-        },
-        equal: {
-            type: Boolean,
-            default: false,
-        },
-        title: {
-            type: String,
-            default: ''
-        }
-    })
-    
-    const det = ref(null);
-    const isOpen = ref(false);
+const isDarkMode = computed(() => store.isDarkMode);
 
-    onMounted(() => {
-        if (det.value) {
-            det.value.addEventListener('toggle', () => {
-                isOpen.value = !isOpen.value;
-            })
-        }
-    })
+defineProps({
+    attr: {
+        type: String,
+        default: ''
+    },
+    level: {
+        type: [Number, String],
+        default: ''
+    },
+    equal: {
+        type: Boolean,
+        default: false,
+    },
+    title: {
+        type: String,
+        default: ''
+    }
+})
 
-    const isSelected = ref(false);
+const det = ref(null);
+const isOpen = ref(false);
+
+onMounted(() => {
+    if (det.value) {
+        det.value.addEventListener('toggle', () => {
+            isOpen.value = !isOpen.value;
+        })
+    }
+})
+
+const isSelected = ref(false);
 
 </script>
 
