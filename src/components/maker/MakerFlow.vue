@@ -16,15 +16,15 @@ const clearStep = ref(0)
 
 const isMobile = computed(() => {
     return window.innerWidth < 800;
-})
+});
 
 const translations = computed(() => {
     return store.translations;
-})
+});
 
 const makerTranslations = computed(() => {
     return makerStore.translations;
-})
+});
 
 const isFixed = ref(!isMobile.value);
 
@@ -51,13 +51,13 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.table[store.lang]
         }
     ]
-})
+});
 
 const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_flow.model)))
 
 const options = ref({
     datasetItem: ['', '', 0]
-})
+});
 
 const datasetItems = ref(defaultData.vue_ui_flow.dataset);
 
@@ -73,7 +73,7 @@ onMounted(() => {
         localStorage.setItem('flowDataset', JSON.stringify(defaultData.vue_ui_flow.dataset))
     }
     step.value += 1;
-})
+});
 
 function saveDatasetToLocalStorage() {
     localStorage.flowDataset = JSON.stringify(datasetItems.value);
@@ -112,7 +112,7 @@ function deleteDatasetItem(index) {
 
 const finalConfig = computed(() => {
     return convertArrayToObject(CONFIG_MODEL.value)
-})
+});
 
 function getLabel(label) {
     return Array.isArray(label) ? label.map(l => {
