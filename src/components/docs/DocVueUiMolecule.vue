@@ -222,7 +222,8 @@ const config = ref({
                 customFormat: null,
                 borderRadius: 4,
                 borderColor:"#e1e5e8",
-                borderWidth: 1
+                borderWidth: 1,
+                backgroundOpacity: 100
             },
             zoom: {
                 speed: 1
@@ -306,7 +307,8 @@ const darkModeConfig = ref({
                 customFormat: null,
                 borderRadius: 4,
                 borderColor:"#3A3A3A",
-                borderWidth: 1
+                borderWidth: 1,
+                backgroundOpacity: 100
             },
             zoom: {
                 speed: 1
@@ -673,6 +675,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiMoleculeDataset
                     <span>borderRadius: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.chart.tooltip.borderRadius" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.chart.tooltip.borderRadius" @change="forceChartUpdate()">, (default: 4)</span>
                     <span>borderColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.tooltip.borderColor"><input v-else type="color" v-model="mutableConfig.style.chart.tooltip.borderColor">, (default: "#e1e5e8")</span>
                     <span>borderWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.chart.tooltip.borderWidth" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.chart.tooltip.borderWidth" @change="forceChartUpdate()">, (default: 1)</span>
+                    <span>backgroundOpacity: <input v-if="isDarkMode" type="range" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.backgroundOpacity" min="0" max="100"><input v-else type="range" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.backgroundOpacity" min="0" max="100">, (default: 100)</span>
                 </BaseDetails>
                 <BaseDetails attr="zoom" :level="3" title="style.chart.zoom">
                     <span>speed: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="2" step="0.1" v-model="mutableConfigDarkMode.style.chart.zoom.speed"><input v-else type="number" class="accent-app-blue" min="0" max="2" step="0.1" v-model="mutableConfig.style.chart.zoom.speed">, (default: 1)</span>

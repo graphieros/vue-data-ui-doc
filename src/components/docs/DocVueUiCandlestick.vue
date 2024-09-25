@@ -148,7 +148,8 @@ const config = ref({
       customFormat: null,
       borderRadius: 4,
       borderColor:"#e1e5e8",
-      borderWidth: 1
+      borderWidth: 1,
+      backgroundOpacity: 100,
     }
   },
   translations: {
@@ -301,7 +302,8 @@ const darkModeConfig = ref({
       customFormat: null,
       borderRadius: 4,
       borderColor:"#3A3A3A",
-      borderWidth: 1
+      borderWidth: 1,
+      backgroundOpacity: 100,
     }
   },
   translations: {
@@ -614,6 +616,7 @@ const <span class="text-black dark:text-app-green">dataset: Array&lt;Array&lt;st
         <span>borderRadius: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.tooltip.borderRadius" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.tooltip.borderRadius" @change="forceChartUpdate()">, (default: 4)</span>
         <span>borderColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.borderColor"><input v-else type="color" v-model="mutableConfig.style.tooltip.borderColor">, (default: "#e1e5e8"),</span>
         <span>borderWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.tooltip.borderWidth" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.tooltip.borderWidth" @change="forceChartUpdate()">, (default: 1)</span>
+        <span>backgroundOpacity: <input v-if="isDarkMode" v-model="mutableConfigDarkMode.style.tooltip.backgroundOpacity" type="range" class="accent-app-blue" min="0" max="100"/><input v-else v-model="mutableConfig.style.tooltip.backgroundOpacity" type="range" class="accent-app-blue" min="0" max="100"/>, (default: 100)</span>
       </BaseDetails>
       <BaseDetails attr="zoom" :level="2" title="style.zoom">
         <span>show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.zoom.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.zoom.show" @change="forceChartUpdate()">, (default: true)</span>

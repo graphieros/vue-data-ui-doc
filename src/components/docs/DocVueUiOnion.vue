@@ -175,7 +175,8 @@ const config = ref({
                 borderColor:"#e1e5e8",
                 borderWidth: 1,
                 showValue: true,
-                showPercentage: true
+                showPercentage: true,
+                backgroundOpacity: 100
             }
         }
     },
@@ -293,7 +294,8 @@ const darkModeConfig = ref({
                 borderColor:"#3A3A3A",
                 borderWidth: 1,
                 showValue: true,
-                showPercentage: true
+                showPercentage: true,
+                backgroundOpacity: 100
             }
         }
     },
@@ -576,6 +578,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiOnionDatasetIte
                     <span>borderWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.style.chart.tooltip.borderWidth" @change="forceChartUpdate()"><input v-else type="number" min="0" max="24" v-model="mutableConfig.style.chart.tooltip.borderWidth" @change="forceChartUpdate()">, (default: 1)</span>
                     <span>showPercentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.showPercentage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showPercentage" @change="forceChartUpdate()">, (default: true)</span>
                     <span>showValue: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.showValue" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showValue" @change="forceChartUpdate()">, (default: true)</span>
+                    <span>backgroundOpacity: <input v-if="isDarkMode" type="range" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.backgroundOpacity" min="0" max="100"><input v-else type="range" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.backgroundOpacity" min="0" max="100">, (default: 100)</span>
                 </BaseDetails>
             </BaseDetails>
         </BaseDetails>

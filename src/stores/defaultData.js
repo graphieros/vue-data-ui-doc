@@ -166,6 +166,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
 
                     { key: 'chart.userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'chart.userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
@@ -342,6 +343,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
@@ -412,6 +414,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend' },
                     { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend' },
@@ -531,6 +534,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'tooltip' },
                     { key: 'style.chart.tooltip.animation.show', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.animation.animationFrames', def: 60, type: 'number', min: 0, max: 300, label: ['animation', 'is', 'speed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: "color", label: 'backgroundColor', category: 'legend' },
                     { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend' },
@@ -726,6 +731,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
@@ -1229,6 +1235,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table' },
@@ -1853,6 +1861,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -2021,6 +2031,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: "checkbox", label: 'showUserOptions', category: 'general' },
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
@@ -2108,6 +2119,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'translations.age', def: 'age', type: 'text', label: 'age', category: 'translations' },
                     { key: 'translations.total', def: 'total', type: 'text', label: 'total', category: 'translations' },
@@ -2467,6 +2479,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip' },
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table' },
@@ -2584,6 +2597,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -2741,6 +2755,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 300, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table' },

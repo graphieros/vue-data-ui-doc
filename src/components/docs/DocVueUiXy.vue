@@ -221,7 +221,8 @@ const config = ref({
             borderRadius: 4,
             borderColor:"#e1e5e8",
             borderWidth: 1,
-            fontSize: 14
+            fontSize: 14,
+            backgroundOpacity: 100
         },
         userOptions: {
             show: true,
@@ -457,7 +458,8 @@ const darkModeConfig = ref({
             borderRadius: 4,
             borderColor:"#3A3A3A",
             borderWidth: 1,
-            fontSize: 14
+            fontSize: 14,
+            backgroundOpacity: 100
         },
         userOptions: {
             show: true,
@@ -939,6 +941,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <span>borderRadius: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.chart.tooltip.borderRadius" :min="0" :max="24"/><BaseNumberInput v-else v-model:value="mutableConfig.chart.tooltip.borderRadius" :min="0" :max="24"/>, (default: 4)</span>
                 <span>borderColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.tooltip.borderColor"><input v-else type="color" v-model="mutableConfig.chart.tooltip.borderColor">, (default: "#e1e5e8")</span>
                 <span>borderWidth: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.chart.tooltip.borderWidth" :min="0" :max="24"/><BaseNumberInput v-else v-model:value="mutableConfig.chart.tooltip.borderWidth" :min="0" :max="24"/>, (default: 1)</span>
+                <span>backgroundOpacity: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.chart.tooltip.backgroundOpacity"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.chart.tooltip.backgroundOpacity">, (default: 100)</span>
             </BaseDetails>
             <BaseDetails attr="userOptions" :level="2" title="chart.userOptions">
                 <span>show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.userOptions.show"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.userOptions.show">, (default: true)</span>

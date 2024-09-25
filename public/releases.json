@@ -1,5 +1,106 @@
 [
   {
+    "version": "v 2.2.90",
+    "date": "2024-09-25",
+    "updates": [
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Added tooltipBackgroundOpacity config option",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Added backgroundOpacity tooltip config option",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.89",
     "date": "2024-09-21",
     "updates": [
