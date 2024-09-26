@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.96",
+    "date": "2024-09-26",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Fix TS typo for config.style.chart.words.usePalette",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.95",
     "date": "2024-09-25",
     "updates": [
