@@ -218,6 +218,7 @@ function getLabel(label) {
             :dataset="datasetItems.map(({name, values, color}) => { return {name, values, color}})"
             :config="finalConfig"
             componentName="VueUiGalaxy"
+            configName="vue_ui_galaxy"
             @click="() => copyComponent('componentContent', store)"
         />          
     </div>

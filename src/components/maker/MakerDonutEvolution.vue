@@ -253,6 +253,7 @@ const maxSeries = computed(() => {
         :dataset="datasetItems.map(({name, values, color}) => {return {name, values, color}})"
         :config="finalConfig"
         componentName="VueUiDonutEvolution"
+        configName="vue_ui_donut_evolution"
         @click="() => copyComponent('componentContent', store)"
     />            
 </div>

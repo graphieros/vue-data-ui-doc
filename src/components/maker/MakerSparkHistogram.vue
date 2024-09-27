@@ -223,6 +223,7 @@ function getLabel(label) {
         :dataset="datasetItems.map(({value, valueLabel, timeLabel, intensity}) => {return {value, valueLabel, timeLabel, intensity}})"
         :config="finalConfig"
         componentName="VueUiSparkHistogram"
+        configName="vue_ui_sparkhistogram"
         @click="() => copyComponent('componentContent', store)"
     />            
 </div>

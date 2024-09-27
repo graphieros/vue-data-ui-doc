@@ -192,6 +192,7 @@ function getLabel(label) {
             :dataset="datasetItems"
             :config="finalConfig"
             componentName="VueUiSparkgauge"
+            configName="vue_ui_sparkgauge"
             @click="() => copyComponent('componentContent', store)"
         />            
     </div>

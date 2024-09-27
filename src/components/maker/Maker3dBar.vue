@@ -285,6 +285,7 @@ function deleteSubSerie(parentId, serieId) {
             :dataset="isStack ? { series: dataset.series } : { percentage: dataset.percentage }"
             :config="finalConfig"
             componentName="VueUi3dBar"
+            configName="vue_ui_3d_bar"
             @click="() => copyComponent('componentContent', store)"
         /> 
     </div>

@@ -20,12 +20,13 @@ const props = defineProps({
     configName: {
         type: String,
         default: ''
-    }
+    },
 })
 
 const emit = defineEmits(['click'])
 
 const isComputed = ref(false);
+const isUniversal = ref(false);
 
 const finalConfig = computed(() => {
     if(!props.configName) return props.config
@@ -43,14 +44,19 @@ const finalConfig = computed(() => {
 
 <template>
     <div class="mb-4 flex flex-row gap-4 place-items-center">
-        <input type="checkbox" v-model="isComputed">
-        <span class="text-sm">Use computed instead of ref</span>
+        <input id="comp" type="checkbox" v-model="isComputed">
+        <label for="comp" class="text-sm cursor-pointer">Use computed instead of ref</label>
     </div>
+    <div class="mb-4 flex flex-row gap-4 place-items-center">
+        <input id="univ" type="checkbox" v-model="isUniversal">
+        <label for="univ" class="text-sm cursor-pointer">Use VueDataUi universal component</label>
+    </div>
+    
 <pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer border border-transparent hover:border-app-blue transition-colors mb-12"  @click="emit('click')">
 <code id="componentContent">
 &lt;script setup&gt;
     import { {{ isComputed ? 'computed' : 'ref' }} } from "vue";
-    import { {{ componentName }} } from "vue-data-ui";
+    import { {{ isUniversal ? 'VueDataUi' : componentName }} } from "vue-data-ui";
     import "vue-data-ui/style.css"
     <template v-if="isComputed">
     const config = computed(() => {
@@ -72,7 +78,7 @@ const finalConfig = computed(() => {
 
 &lt;template&gt;
     &lt;div style="width:600px"&gt;
-        &lt;{{ componentName }} :config="config" :dataset="dataset" /&gt;
+        &lt;{{ isUniversal ? 'VueDataUi' : componentName }}{{ isUniversal ? ` component="${componentName}"` : '' }} :config="config" :dataset="dataset" /&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 

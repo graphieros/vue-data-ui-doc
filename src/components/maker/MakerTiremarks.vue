@@ -186,6 +186,7 @@ function getLabel(label) {
             :dataset="currentDataset"
             :config="finalConfig"
             componentName="VueUiTiremarks"
+            configName="vue_ui_tiremarks"
             @click="() => copyComponent('componentContent', store)"
         />            
     </div>

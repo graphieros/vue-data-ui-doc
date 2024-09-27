@@ -271,6 +271,7 @@ function getLabel(label) {
         :dataset="datasetItems.map(({name, shape, color, series}) => {return {name, shape, color, series}})"
         :config="finalConfig"
         componentName="VueUiQuadrant"
+        configName="vue_ui_quadrant"
         @click="() => copyComponent('componentContent', store)"
     />           
 </div>

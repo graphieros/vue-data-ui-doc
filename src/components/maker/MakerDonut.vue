@@ -237,6 +237,7 @@ function getLabel(label) {
             :dataset="datasetItems.map(({name, values, color}) => { return {name, values, color}})"
             :config="finalConfig"
             componentName="VueUiDonut"
+            configName="vue_ui_donut"
             @click="() => copyComponent('componentContent', store)"
         />          
     </div>

@@ -315,6 +315,7 @@ const dataset = computed(() => {
             }"
             :config="finalConfig"
             componentName="VueUiRadar"
+            configName="vue_ui_radar"
             @click="() => copyComponent('componentContent', store)"
         />     
     </div>

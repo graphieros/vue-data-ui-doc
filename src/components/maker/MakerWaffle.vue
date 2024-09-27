@@ -232,6 +232,7 @@ function getLabel(label) {
             :dataset="datasetItems.map(({name, values, color }) => {return {name, values, color}})"
             :config="finalConfig"
             componentName="VueUiWaffle"
+            configName="vue_ui_waffle"
             @click="() => copyComponent('componentContent', store)"
         />    
     </div>

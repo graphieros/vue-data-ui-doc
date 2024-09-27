@@ -333,6 +333,7 @@ function composeLabel(labels) {
             }})"
         :config="finalConfig"
         componentName="VueUiChestnut"
+        configName="vue_ui_chestnut"
         @click="() => copyComponent('componentContent', store)"
     />            
 </div>

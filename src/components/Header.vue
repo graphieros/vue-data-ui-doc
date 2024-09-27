@@ -110,7 +110,7 @@ const languageOptions = ref([
     { value: "de", text: "Deutsch" },
     { value: "es", text: "Español" },
     { value: "pt", text: "Portugues" },
-    { value: "zh", text: "中国人" },
+    { value: "zh", text: "中文" },
     { value: "jp", text: "日本語" },
     { value: "ko", text: "한국인" },
 ]);

@@ -196,6 +196,7 @@ function getLabel(label) {
             :dataset="dataset"
             :config="finalConfig"
             componentName="VueUiThermometer"
+            configName="vue_ui_thermometer"
             @click="() => copyComponent('componentContent', store)"
         />    
     </div>

@@ -231,6 +231,7 @@ const usableDataset = computed(() => {
             :dataset="usableDataset"
             :config="finalConfig"
             componentName="VueUiGauge"
+            configName="vue_ui_gauge"
             @click="() => copyComponent('componentContent', store)"
         />
     </div>

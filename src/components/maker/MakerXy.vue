@@ -367,6 +367,7 @@ const accordionConfig = ref(
                         return { name, series, color, type, shape, useArea, useProgression, dataLabels, smooth, dashed, useTag }})"
                     :config="finalConfig"
                     componentName="VueUiXy"
+                    configName="vue_ui_xy"
                     @click="() => copyComponent('componentContent', store)"
                 />
             </div>

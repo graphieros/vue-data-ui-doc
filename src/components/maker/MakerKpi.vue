@@ -194,6 +194,7 @@ const accordionConfig = ref(
             :dataset="datasetItems"
             :config="finalConfig"
             componentName="VueUiKpi"
+            configName="vue_ui_kpi"
             @click="() => copyComponent('componentContent', store)"
         />          
     </div>

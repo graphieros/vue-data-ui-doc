@@ -207,6 +207,7 @@ function getLabel(label) {
             :dataset="datasetItems"
             :config="finalConfig"
             componentName="VueUiMoodRadar"
+            configName="vue_ui_mood_radar"
             @click="() => copyComponent('componentContent', store)"
         />
     </div>

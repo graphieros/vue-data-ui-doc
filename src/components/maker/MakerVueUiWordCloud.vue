@@ -169,6 +169,7 @@ function getLabel(label) {
             :dataset="createWordCloudDatasetFromPlainText(datasetItems, word => word.toLowerCase()).sort((a, b) => b.value - a.value)"
             :config="finalConfig"
             componentName="VueUiWordCloud"
+            configName="vue_ui_word_cloud"
             @click="() => copyComponent('componentContent', store)"
         />          
     </div>

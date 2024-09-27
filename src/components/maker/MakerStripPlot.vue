@@ -263,6 +263,7 @@ function getLabel(label) {
             })}})"
             :config="finalConfig"
             componentName="VueUiStripPlot"
+            configName="vue_ui_strip_plot"
             @click="() => copyComponent('componentContent', store)"
         />          
     </div>

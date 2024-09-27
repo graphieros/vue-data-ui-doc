@@ -220,6 +220,7 @@ function getLabel(label) {
             :dataset="datasetItems.map(({period, value}) => {return {period, value}})"
             :config="finalConfig"
             componentName="VueUiSparkline"
+            configName="vue_ui_sparkline"
             @click="() => copyComponent('componentContent', store)"
         />     
     </div>

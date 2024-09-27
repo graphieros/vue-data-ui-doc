@@ -184,6 +184,7 @@ function getLabel(label) {
             :dataset="currentDataset"
             :config="finalConfig"
             componentName="VueUiWheel"
+            configName="vue_ui_wheel"
             @click="() => copyComponent('componentContent', store)"
         />        
     </div>

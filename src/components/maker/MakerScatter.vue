@@ -315,6 +315,7 @@ function getLabel(label) {
             }})"
             :config="finalConfig"
             componentName="VueUiScatter"
+            configName="vue_ui_scatter"
             @click="() => copyComponent('componentContent', store)"
         />     
     </div>

@@ -276,6 +276,7 @@ function getLabel(label) {
             })"
             :config="finalConfig"
             componentName="VueUiNestedDonuts"
+            configName="vue_ui_nested_donuts"
             @click="() => copyComponent('componentContent', store)"
         />  
     </div>

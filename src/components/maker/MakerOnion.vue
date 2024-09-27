@@ -231,6 +231,7 @@ function getLabel(label) {
             :dataset="datasetItems.map(({name, value, color, percentage, prefix, suffix}) => {return {name, percentage, color, value, prefix, suffix}})"
             :config="finalConfig"
             componentName="VueUiOnion"
+            configName="vue_ui_onion"
             @click="() => copyComponent('componentContent', store)"
         />           
     </div>

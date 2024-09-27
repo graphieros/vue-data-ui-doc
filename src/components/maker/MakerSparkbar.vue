@@ -221,6 +221,7 @@ function getLabel(label) {
             :dataset="datasetItems.map(({name, value, color, prefix, suffix, rounding}) => {return {name, value, color, prefix, suffix, rounding}})"
             :config="finalConfig"
             componentName="VueUiSparkbar"
+            configName="vue_ui_sparkbar"
             @click="() => copyComponent('componentContent', store)"
         />            
     </div>

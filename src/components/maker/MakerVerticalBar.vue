@@ -283,6 +283,7 @@ function updateParent({parentId}) {
             :dataset="datasetItems.map(({name, value, color, children}) => {return {name, value, color, children}})"
             :config="finalConfig"
             componentName="VueUiChestnut"
+            configName="vue_ui_vertical_bar"
             @click="() => copyComponent('componentContent', store)"
         />            
     </div>

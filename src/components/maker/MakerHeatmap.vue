@@ -248,6 +248,7 @@ function getLabel(label) {
             :dataset="currentDataset.map(({name, values}) => {return {name, values}})"
             :config="finalConfig"
             componentName="VueUiHeatmap"
+            configName="vue_ui_heatmap"
             @click="() => copyComponent('componentContent', store)"
         />            
     </div>
