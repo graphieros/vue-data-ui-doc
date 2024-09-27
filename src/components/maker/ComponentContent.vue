@@ -1,10 +1,43 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useConfig } from '../../assets/useConfig';
+import { useNestedProp } from "../../useNestedProp";
 
-defineProps(['dataset', 'config', 'componentName'])
+const props = defineProps({
+    dataset: {
+        type: [Array, Object, Number, String]
+    },
+    config: {
+        type: Object,
+        default() {
+            return {}
+        }
+    },
+    componentName: {
+        type: String,
+        default: ''
+    },
+    configName: {
+        type: String,
+        default: ''
+    }
+})
+
 const emit = defineEmits(['click'])
 
 const isComputed = ref(false);
+
+const finalConfig = computed(() => {
+    if(!props.configName) return props.config
+    const defaultConfig = useConfig()[props.configName];
+
+    const final = useNestedProp({
+        userConfig: props.config,
+        defaultConfig
+    })
+
+    return final
+})
 
 </script>
 
@@ -21,11 +54,11 @@ const isComputed = ref(false);
     import "vue-data-ui/style.css"
     <template v-if="isComputed">
     const config = computed(() => {
-        return {{ config }}
+        return {{ finalConfig }}
     })
     </template>
     <template v-else>
-    const config = ref({{ config }});
+    const config = ref({{ finalConfig }});
     </template>
     <template v-if="isComputed">
     const dataset = computed(() => {

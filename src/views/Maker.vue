@@ -36,6 +36,7 @@ import MakerVueUiWordCloud from "../components/maker/MakerVueUiWordCloud.vue";
 import MakerFlow from "../components/maker/MakerFlow.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
+import MakerPcp from "../components/maker/MakerPcp.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -85,6 +86,7 @@ const options = ref([
     { name: "VueUiGalaxy", icon: "chartGalaxy", thumb: new URL('../assets/thumb_galaxy_light.png', import.meta.url).href},
     { name: "VueUiWordCloud", icon: "chartWordCloud", thumb: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href},
     { name: "VueUiFlow", icon: "chartFlow", thumb: new URL('../assets/thumb_flow_light.png', import.meta.url).href},
+    { name: "VueUiParallelCoordinatePlot", icon: "chartParallelCoordinatePlot", thumb: new URL('../assets/thumb_pcp_light.png', import.meta.url).href},
     { name: "VueUiKpi", icon: "legend", thumb: ""},
 ])
 
@@ -191,5 +193,6 @@ function selectChart(opt) {
         <MakerStripPlot v-if="selectedChart.name === 'VueUiStripPlot'" />
         <MakerVueUiWordCloud v-if="selectedChart.name === 'VueUiWordCloud'" />
         <MakerFlow v-if="selectedChart.name === 'VueUiFlow'" />
+        <MakerPcp v-if="selectedChart.name === 'VueUiParallelCoordinatePlot'" />
     </div>
 </template>

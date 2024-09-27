@@ -11,6 +11,7 @@ import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
+import BaseShape from "../BaseShape.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -288,7 +289,7 @@ const accordionConfig = ref(
                                     <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
                                     <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
                                     <td>
-                                        <select class="h-[36px]" v-model="datasetItems[i].type" @change="saveDatasetToLocalStorage"><option v-for="type in selectedChart.types">{{ type }}</option></select>
+                                        <select class="h-[36px]" v-model="datasetItems[i].type" @change="saveDatasetToLocalStorage"><option v-for="t in selectedChart.types">{{ t }}</option></select>
                                     </td>
                                     <td><input type="checkbox" v-model="datasetItems[i].dataLabels" @change="saveDatasetToLocalStorage"></td>
                                     <td v-if="datasetItems[i].type !== 'bar'"><select class="h-[36px]" v-model="datasetItems[i].useTag" @change="saveDatasetToLocalStorage"><option v-for="tag in selectedChart.useTag">{{ tag }}</option></select></td>
@@ -298,7 +299,12 @@ const accordionConfig = ref(
                                     <td v-if="datasetItems[i].type === 'line'"><input type="checkbox" v-model="datasetItems[i].dashed" @change="saveDatasetToLocalStorage"></td>
                                     <td v-if="datasetItems[i].type !== 'bar'"><input type="checkbox" v-model="datasetItems[i].useProgression" @change="saveDatasetToLocalStorage"></td>
                                     <td v-if="datasetItems[i].type !== 'bar'">
-                                        <select class="h-[36px]" v-model="datasetItems[i].shape" @change="saveDatasetToLocalStorage"><option v-for="shape in selectedChart.shapes">{{ shape }}</option></select>
+                                        <div class="flex flex-row place-items-center gap-2">
+                                                <select class="h-[36px]" v-model="datasetItems[i].shape" @change="saveDatasetToLocalStorage"><option v-for="shape in selectedChart.shapes">{{ shape }}</option></select>
+                                                <div class="w-[40px]">
+                                                    <BaseShape :shape="datasetItems[i].shape" :color="datasetItems[i].color" />
+                                                </div>
+                                            </div>
                                     </td>
                                     <td v-for="(val, j) in datasetItems[i].series">
                                         <div class="relative">

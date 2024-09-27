@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.97",
+    "date": "2024-09-26",
+    "updates": [
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Fix errors occurring when passing incomplete dataset series",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.96",
     "date": "2024-09-26",
     "updates": [
@@ -148,12 +159,12 @@
     "updates": [
       {
         "component": "VueUiXyCanvas",
-        "description": "Fixed non blocking error when canvas is loading and has no dimensions yet",
+        "description": "Fix non blocking error when canvas is loading and has no dimensions yet",
         "link": "/docs#vue-ui-xy-canvas"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Fixed non blocking error in responsive mode when svg wrapper has a size of zero",
+        "description": "Fix non blocking error in responsive mode when svg wrapper has a size of zero",
         "link": "/docs#vue-ui-quadrant"
       },
       {
@@ -238,7 +249,7 @@
     "updates": [
       {
         "component": "VueUiGauge",
-        "description": "Fixed config option marker.offsetY not applied",
+        "description": "Fix config option marker.offsetY not applied",
         "link": "/docs#vue-ui-gauge"
       }
     ]
@@ -249,7 +260,7 @@
     "updates": [
       {
         "component": "VueUiGauge",
-        "description": "Fixed pointer y offset when in rounded mode",
+        "description": "Fix pointer y offset when in rounded mode",
         "link": "/docs#vue-ui-gauge"
       }
     ]
@@ -260,7 +271,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Fixed size issue occurring when changing dimensions in config",
+        "description": "Fix size issue occurring when changing dimensions in config",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -592,7 +603,7 @@
     "updates": [
       {
         "component": "",
-        "description": "Fixed type errors in VueUiXyConfig type"
+        "description": "Fix type errors in VueUiXyConfig type"
       }
     ]
   },
@@ -1173,7 +1184,7 @@
     "updates": [
       {
         "component": "VueUiNestedDonuts",
-        "description": "Fixed error when unsegregating series",
+        "description": "Fix error when unsegregating series",
         "link": "/docs#vue-ui-nested-donuts"
       }
     ]
@@ -1184,12 +1195,12 @@
     "updates": [
       {
         "component": "VueUiNestedDonuts",
-        "description": "Fixed chart not updating when dataset is mutated",
+        "description": "Fix chart not updating when dataset is mutated",
         "link": "/docs#vue-ui-nested-donuts"
       },
       {
         "component": "VueUiDonut",
-        "description": "Fixed chart not updating when dataset is mutated",
+        "description": "Fix chart not updating when dataset is mutated",
         "link": "/docs#vue-ui-donut"
       }
     ]
@@ -1253,7 +1264,7 @@
     "updates": [
       {
         "component": "VueUiXyCanvas",
-        "description": "Fixed various issues",
+        "description": "Fix various issues",
         "link": "/docs#vue-ui-xy-canvas"
       }
     ]
@@ -1275,7 +1286,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Fixed console warning wrongly displayed",
+        "description": "Fix console warning wrongly displayed",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -1307,7 +1318,7 @@
       },
       {
         "component": "VueUiIcon",
-        "description": "Fixed shape fill on certain icons",
+        "description": "Fix shape fill on certain icons",
         "link": "/docs#vue-ui-icon"
       },
       {
@@ -1378,22 +1389,22 @@
     "updates": [
       {
         "component": "VueUiWheel",
-        "description": "Fixed component reactivity when value changes",
+        "description": "Fix component reactivity when value changes",
         "link": "/docs#vue-ui-wheel"
       },
       {
         "component": "VueUiTiremarks",
-        "description": "Fixed component reactivity when value changes",
+        "description": "Fix component reactivity when value changes",
         "link": "/docs#vue-ui-tiremarks"
       },
       {
         "component": "VueUiSparkgauge",
-        "description": "Fixed component reactivity when value changes",
+        "description": "Fix component reactivity when value changes",
         "link": "/docs#vue-ui-sparkgauge"
       },
       {
         "component": "VueUiGauge",
-        "description": "Fixed component reactivity when value changes",
+        "description": "Fix component reactivity when value changes",
         "link": "/docs#vue-ui-gauge"
       }
     ]
@@ -1887,12 +1898,12 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Fixed bar starting base when all datapoints are negative",
+        "description": "Fix bar starting base when all datapoints are negative",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiQuickChart",
-        "description": "Fixed bar starting base when all datapoints are negative",
+        "description": "Fix bar starting base when all datapoints are negative",
         "link": "/docs#vue-ui-quick-chart"
       },
       {
@@ -1967,12 +1978,12 @@
     "updates": [
       {
         "component": "VueUiTreemap",
-        "description": "Fixed cell colors not showing on Safari when using zoom",
+        "description": "Fix cell colors not showing on Safari when using zoom",
         "link": "/docs#vue-ui-treemap"
       },
       {
         "component": "VueUiGalaxy",
-        "description": "Fixed gradient not showing on Safari",
+        "description": "Fix gradient not showing on Safari",
         "link": "/docs#vue-ui-galaxy"
       }
     ]
@@ -2005,7 +2016,7 @@
     "updates": [
       {
         "component": "VueUiTableSparkline",
-        "description": "Fixed wrong sparkline order when ordering columns",
+        "description": "Fix wrong sparkline order when ordering columns",
         "link": "/docs#vue-ui-table-sparkline"
       }
     ]
@@ -2038,7 +2049,7 @@
     "updates": [
       {
         "component": "VueUiStripPlot",
-        "description": "Fixed wrong scaling",
+        "description": "Fix wrong scaling",
         "link": "/docs#vue-ui-strip-plot"
       }
     ]
@@ -2091,7 +2102,7 @@
     "updates": [
       {
         "component": "VueUiRadar",
-        "description": "Fixed tooltip embedded chart not showing if tooltip.customFormat is null (which is the default btw)",
+        "description": "Fix tooltip embedded chart not showing if tooltip.customFormat is null (which is the default btw)",
         "link": "/docs#vue-ui-radar"
       }
     ]
@@ -2102,12 +2113,12 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Fixed zoom.color config option not applied",
+        "description": "Fix zoom.color config option not applied",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiSparkStackbar",
-        "description": "Fixed bold config option on legend name not applied",
+        "description": "Fix bold config option on legend name not applied",
         "link": "/docs#vue-ui-sparkstackbar"
       }
     ]
@@ -2118,12 +2129,12 @@
     "updates": [
       {
         "component": "VueUiCandlestick",
-        "description": "Fixed Y axis scale config option not applied",
+        "description": "Fix Y axis scale config option not applied",
         "link": "/docs#vue-ui-candlestick"
       },
       {
         "component": "VueUiGauge",
-        "description": "Fixed harmless console error related to pointy arrow path painted before data is computed when animation is enabled",
+        "description": "Fix harmless console error related to pointy arrow path painted before data is computed when animation is enabled",
         "link": "/docs#vue-ui-gauge"
       }
     ]
@@ -2134,12 +2145,12 @@
     "updates": [
       {
         "component": "VueUiHeatmap",
-        "description": "Fixed border radius config option not applied on bottom legend",
+        "description": "Fix border radius config option not applied on bottom legend",
         "link": "/docs#vue-ui-heatmap"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Fixed @selectSide emit not applied",
+        "description": "Fix @selectSide emit not applied",
         "link": "/docs#vue-ui-quadrant"
       }
     ]
@@ -2161,7 +2172,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Fixed wrong behaviors in stack mode when any datapoint contains a null value",
+        "description": "Fix wrong behaviors in stack mode when any datapoint contains a null value",
         "link": "/docs#vue-ui-xy"
       },
       {
@@ -2171,7 +2182,7 @@
       },
       {
         "component": "VueUiRadar",
-        "description": "Fixed polygons still showing when segregating series, when useCssAnimation is set to false",
+        "description": "Fix polygons still showing when segregating series, when useCssAnimation is set to false",
         "link": "/docs#vue-ui-radar"
       }
     ]
@@ -2182,7 +2193,7 @@
     "updates": [
       {
         "component": "All components with tooltips",
-        "description": "Fixed config option tooltip.fontSize not applied"
+        "description": "Fix config option tooltip.fontSize not applied"
       }
     ]
   },
@@ -2235,7 +2246,7 @@
     "updates": [
       {
         "component": "VueUiDonut",
-        "description": "Fixed donut thickness config not applied",
+        "description": "Fix donut thickness config not applied",
         "link": "/docs#vue-ui-donut"
       }
     ]
@@ -2246,12 +2257,12 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Fixed harmless console errors when using time zoom with series that have no datapoint in the timeframe",
+        "description": "Fix harmless console errors when using time zoom with series that have no datapoint in the timeframe",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiSparkStackbar",
-        "description": "Fixed TS typo in component name",
+        "description": "Fix TS typo in component name",
         "link": "/docs#vue-ui-sparkstackbar"
       }
     ]
@@ -2284,7 +2295,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Fixed yLabel positioning issues. Fixed data table behavior when toggling time range.",
+        "description": "Fix yLabel positioning issues. Fix data table behavior when toggling time range.",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -2385,7 +2396,7 @@
       },
       {
         "component": "VueUiDonutEvolution",
-        "description": "Fixed zoomed donut breaking when segregating series",
+        "description": "Fix zoomed donut breaking when segregating series",
         "link": "/docs#vue-ui-donut-evolution"
       }
     ]
@@ -2552,12 +2563,12 @@
     "updates": [
       {
         "component": "VueUiQuickChart",
-        "description": "Fixed offset zero axis with negative values on line & bar charts.",
+        "description": "Fix offset zero axis with negative values on line & bar charts.",
         "link": "/docs#vue-ui-quick-chart"
       },
       {
         "component": "VueUiDonut",
-        "description": "Fixed useCssAnimation config option not applied on dataLabels",
+        "description": "Fix useCssAnimation config option not applied on dataLabels",
         "link": "/docs#vue-ui-donut"
       }
     ]
@@ -2601,7 +2612,7 @@
     "updates": [
       {
         "component": "VueUiQuickChart",
-        "description": "Fixed errors when a daatapoint has a 0 value",
+        "description": "Fix errors when a daatapoint has a 0 value",
         "link": "/docs#vue-ui-quick-chart"
       }
     ]
@@ -2656,7 +2667,7 @@
     "updates": [
       {
         "component": "VueUiQuickChart",
-        "description": "Fixed issues in fullscreen mode (tooltip & legend not visible)",
+        "description": "Fix issues in fullscreen mode (tooltip & legend not visible)",
         "link": "/docs#vue-ui-quick-chart"
       }
     ]
@@ -2704,7 +2715,7 @@
     "updates": [
       {
         "component": "VueUi3dBar",
-        "description": "Fixed Safari css problems affecting legend labels",
+        "description": "Fix Safari css problems affecting legend labels",
         "link": "/docs#vue-ui-3d-bar"
       }
     ]
@@ -2747,7 +2758,7 @@
     "updates": [
       {
         "component": "VueUiSparkStackbar",
-        "description": "Fixed a bug when no colors are provided in dataset and animation is activated",
+        "description": "Fix a bug when no colors are provided in dataset and animation is activated",
         "link": "/docs#vue-ui-sparkstackbar"
       }
     ]
@@ -2813,17 +2824,17 @@
     "updates": [
       {
         "component": "VueUiDonut",
-        "description": "Fixed blur effect not working on Safari",
+        "description": "Fix blur effect not working on Safari",
         "link": "/docs#vue-ui-donut"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Fixed blur effect not working on Safari",
+        "description": "Fix blur effect not working on Safari",
         "link": "/docs#vue-ui-waffle"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Fixed blur effect not working on Safari",
+        "description": "Fix blur effect not working on Safari",
         "link": "/docs#vue-ui-nested-donuts"
       }
     ]
@@ -3131,7 +3142,7 @@
     "updates": [
       {
         "component": "VueUiWaffle",
-        "description": "Fixed edge case bug on serie segregation when data labels are enabled"
+        "description": "Fix edge case bug on serie segregation when data labels are enabled"
       }
     ]
   },
@@ -3245,7 +3256,7 @@
       },
       {
         "component": ".d.ts file",
-        "description": "Fixed typos"
+        "description": "Fix typos"
       }
     ]
   },
@@ -3345,7 +3356,7 @@
     "updates": [
       {
         "component": "VueUiOnion",
-        "description": "Fixed tooltip issues when gradient is enabled"
+        "description": "Fix tooltip issues when gradient is enabled"
       }
     ]
   },
@@ -3375,7 +3386,7 @@
     "updates": [
       {
         "component": "VueUiHeatmap",
-        "description": "Fixed bottom legend label colors not applied"
+        "description": "Fix bottom legend label colors not applied"
       }
     ]
   },
@@ -3385,7 +3396,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Fixed edge case breaking the chart when data is not ready and slider option is used"
+        "description": "Fix edge case breaking the chart when data is not ready and slider option is used"
       }
     ]
   },
@@ -3405,7 +3416,7 @@
     "updates": [
       {
         "component": "VueUiScatter",
-        "description": "Fixed minor axis issue when all values were positive and > 0"
+        "description": "Fix minor axis issue when all values were positive and > 0"
       }
     ]
   },
@@ -3497,7 +3508,7 @@
     "updates": [
       {
         "component": "VueUiQuadrant",
-        "description": "Fixed a bug causing negative datapoints overflow in auto mode"
+        "description": "Fix a bug causing negative datapoints overflow in auto mode"
       },
       {
         "component": "VueUiHeatmap",
@@ -3511,7 +3522,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Fixed a bug introduced in previous release"
+        "description": "Fix a bug introduced in previous release"
       }
     ]
   },
@@ -3531,7 +3542,7 @@
     "updates": [
       {
         "component": "VueUiHeatmap",
-        "description": "Fixed viewBox size issues ocurring with small datasets"
+        "description": "Fix viewBox size issues ocurring with small datasets"
       }
     ]
   },
@@ -3545,7 +3556,7 @@
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Fixed y position of multiple series parent label"
+        "description": "Fix y position of multiple series parent label"
       }
     ]
   },
