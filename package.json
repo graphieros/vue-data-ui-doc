@@ -1,7 +1,8 @@
 {
   "name": "vue-data-ui-doc",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.1",
+  "author": "Alec Lloyd Probert",
   "type": "module",
   "scripts": {
     "dev": "vite",
