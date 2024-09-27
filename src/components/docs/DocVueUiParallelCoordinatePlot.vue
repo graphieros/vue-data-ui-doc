@@ -444,6 +444,7 @@ watch(() => showAllConfig.value, (v) => {
 
         <BaseDocActions
             targetLink="vue-ui-parallel-coordinate-plot"
+            targetMaker="VueUiParallelCoordinatePlot"
             :configSource="mainConfig.vue_ui_parallel_coordinate_plot"
         />
 
