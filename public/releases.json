@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.98",
+    "date": "2024-09-27",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Fix legend values not updating when zooming",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.97",
     "date": "2024-09-26",
     "updates": [
