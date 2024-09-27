@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
-import { useConfig } from '../../assets/useConfig';
 import { useNestedProp } from "../../useNestedProp";
+import { getVueDataUiConfig } from "vue-data-ui";
 
 const props = defineProps({
     dataset: {
@@ -30,7 +30,7 @@ const isUniversal = ref(false);
 
 const finalConfig = computed(() => {
     if(!props.configName) return props.config
-    const defaultConfig = useConfig()[props.configName];
+    const defaultConfig = getVueDataUiConfig(props.configName);
 
     const final = useNestedProp({
         userConfig: props.config,
