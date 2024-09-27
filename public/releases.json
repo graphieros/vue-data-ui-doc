@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.2.99",
+    "date": "2024-09-27",
+    "updates": [
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Fix font issue when 'inherit' is used as font",
+        "link": "/docs#vue-ui-xy-canvas"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.98",
     "date": "2024-09-27",
     "updates": [

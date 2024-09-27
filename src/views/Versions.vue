@@ -1431,9 +1431,8 @@ table: {
   }
 })
 
-const xyCanvasConfig = computed({
-  get() {
-    return {
+const xyCanvasConfig = computed(() => {
+  return {
       customPalette: ['#42d392'],
       style: {
         chart: {
@@ -1470,6 +1469,7 @@ const xyCanvasConfig = computed({
               axisName: 'Downloads',
               axisLabels: {
                 color: isDarkMode.value ? '#6A6A6A' : '#1A1A1A',
+                fontSizeRatio: 1,
               },
               verticalLines: {
                 show: false
@@ -1477,7 +1477,7 @@ const xyCanvasConfig = computed({
               timeLabels: {
                 color: isDarkMode.value ? '#6A6A6A' : '#1A1A1A',
                 values: fDates.value,
-                fontSizeRatio: 0.5,
+                fontSizeRatio: 0.8,
                 rotation: -20
               }
             },
@@ -1490,12 +1490,7 @@ const xyCanvasConfig = computed({
             }
           }
         }
-      }
-  }
-  },
-  set(v) {
-    return v
-  }
+      }}
 })
 
 const KPIS = computed(() => {
