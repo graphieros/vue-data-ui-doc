@@ -1,1 +1,1 @@
-use tresshake for configs in makers
+. update all number inputs with BaseInputNumber component
