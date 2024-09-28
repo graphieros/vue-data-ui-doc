@@ -20,7 +20,7 @@ const props = defineProps({
     }
 });
 
-const emit = defineEmits(['update:value']);
+const emit = defineEmits(['update:value', 'change']);
 
 function decrement() {
     const newVal = props.value - props.step;
@@ -41,7 +41,7 @@ function increment() {
 <template>
     <div class="inline-flex flex-row place-items-center">
         <button class="btn-left bg-app-blue w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all text-white hover:shadow-md" @click="decrement">-</button>
-        <input class="numinput pl-2 min-w-[74px]" type="number" :min="min" :max="max" :step="step" :value="value" @input="emit('update:value', $event.target.value)">
+        <input class="numinput pl-2 min-w-[74px]" type="number" :min="min" :max="max" :step="step" :value="Number(value)" @input="emit('update:value', $event.target.value)" @change="emit('change')">
         <button class="btn-right bg-app-blue w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all text-white hover:shadow-md" @click="increment">+</button>
     </div>
 </template>
