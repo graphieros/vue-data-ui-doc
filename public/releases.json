@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.0",
+    "date": "2024-09-28",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Improve selected cell border visibility",
+        "link": "/docs#vue-ui-heatmap"
+      }
+    ]
+  },
+  {
     "version": "v 2.2.99",
     "date": "2024-09-27",
     "updates": [
