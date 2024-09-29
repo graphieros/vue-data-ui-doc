@@ -214,9 +214,30 @@ watch(() => showAllConfig.value, (v) => {
                 <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
             <div class="flex flex-col gap-4 max-w-[350px] mx-auto">
-                <VueDataUi component="VueUiSparkTrend" :dataset="positiveDs" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
-                <VueDataUi component="VueUiSparkTrend" :dataset="neutralDs" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
-                <VueDataUi component="VueUiSparkTrend" :dataset="negativeDs" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                <Suspense>
+                    <template #default>
+                        <VueDataUi component="VueUiSparkTrend" :dataset="positiveDs" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                    </template>
+                    <template #fallback>
+                        <div class="min-h-[200px]"></div>
+                    </template>
+                </Suspense>
+                <Suspense>
+                    <template #default>
+                        <VueDataUi component="VueUiSparkTrend" :dataset="neutralDs" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                    </template>
+                    <template #fallback>
+                        <div class="min-h-[200px]"></div>
+                    </template>
+                </Suspense>
+                <Suspense>
+                    <template #default>
+                        <VueDataUi component="VueUiSparkTrend" :dataset="negativeDs" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                    </template>
+                    <template #fallback>
+                        <div class="min-h-[200px]"></div>
+                    </template>
+                </Suspense>
             </div>
         </div>
 

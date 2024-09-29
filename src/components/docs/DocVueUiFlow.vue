@@ -302,8 +302,15 @@ watch(() => showAllConfig.value, (v) => {
                     <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
                 </button>
             </div>
-            <VueDataUi component="VueUiFlow" :dataset="dataset"
-                :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+            <Suspense>
+                <template #default>
+                    <VueDataUi component="VueUiFlow" :dataset="dataset"
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                </template>
+                <template #fallback>
+                    <div class="min-h-[400px]"></div>
+                </template>
+            </Suspense>
         </div>
 
         <BaseDocActions

@@ -345,11 +345,18 @@ function fixChart() {
         </div>
         <div class="grid md:grid-cols-2 gap-4">
                 <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                    <VueUiQuickChart :dataset="quickDatasetSimpleLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                        <template #reset-action="{ reset }">
-                            <button @click="reset()">CUSTOM RESET</button>
+                    <Suspense>
+                        <template #default>
+                            <VueUiQuickChart :dataset="quickDatasetSimpleLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                                <template #reset-action="{ reset }">
+                                    <button @click="reset()">CUSTOM RESET</button>
+                                </template>
+                            </VueUiQuickChart>
                         </template>
-                    </VueUiQuickChart>
+                        <template #fallback>
+                            <div class="min-h-[500px]"></div>
+                        </template>
+                    </Suspense>
 
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89])
@@ -397,7 +404,14 @@ function fixChart() {
                 
             </div>
             <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                <VueUiQuickChart :dataset="quickDatasetSimpleBar" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <Suspense>
+                    <template #default>
+                        <VueUiQuickChart :dataset="quickDatasetSimpleBar" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    </template>
+                    <template #fallback>
+                        <div class="min-h-[500px]"></div>
+                    </template>
+                </Suspense>
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([1, 2, -3, 5, 8])
                 </code>
@@ -442,7 +456,14 @@ function fixChart() {
                 </VueDataUi>                          
             </div>
             <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                <VueUiQuickChart :dataset="quickDatasetLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <Suspense>
+                    <template #default>
+                        <VueUiQuickChart :dataset="quickDatasetLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    </template>
+                    <template #fallback>
+                        <div class="min-h-[500px]"></div>
+                    </template>
+                </Suspense>
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([<br>
                     &nbsp;&nbsp;{<br>
@@ -513,7 +534,14 @@ function fixChart() {
                 </VueDataUi>                  
             </div>
             <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                <VueUiQuickChart :dataset="quickDatasetDonut" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <Suspense>
+                    <template #default>
+                        <VueUiQuickChart :dataset="quickDatasetDonut" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    </template>
+                    <template #fallback>
+                        <div class="min-h-[500px]"></div>
+                    </template>
+                </Suspense>
                 <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
                     const dataset = ref([<br>
                     &nbsp;&nbsp;{<br>

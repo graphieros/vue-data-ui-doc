@@ -1,5 +1,20 @@
 [
   {
+    "version": "v 2.3.4",
+    "date": "2024-09-29",
+    "updates": [
+      {
+        "component": "VueUiDonut, VueUiOnion",
+        "description": "Improve components treeshaking"
+      },
+      {
+        "component": "VueUiTableHeatmap",
+        "description": "Fix UserOption positioning",
+        "link": "/docs#vue-ui-table-heatmap"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.3",
     "date": "2024-09-29",
     "updates": [

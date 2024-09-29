@@ -214,13 +214,34 @@ watch(() => showAllConfig.value, (v) => {
                 </div>
                 <div class="flex flex-row gap-4">
                     <div class="w-[100px]">
-                        <VueUiSparkgauge :dataset="dataset1" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                        <Suspense>
+                            <template #default>
+                                <VueUiSparkgauge :dataset="dataset1" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                            </template>
+                            <template #fallback>
+                                <div class="min-h-[100px]"></div>
+                            </template>
+                        </Suspense>
                     </div>
                     <div class="w-[100px]">
-                        <VueUiSparkgauge :dataset="dataset2" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                        <Suspense>
+                            <template #default>
+                                <VueUiSparkgauge :dataset="dataset2" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                            </template>
+                            <template #fallback>
+                                <div class="min-h-[100px]"></div>
+                            </template>
+                        </Suspense>
                     </div>
                     <div class="w-[100px]">
-                        <VueUiSparkgauge :dataset="dataset3" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                        <Suspense>
+                            <template #default>
+                                <VueUiSparkgauge :dataset="dataset3" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                            </template>
+                            <template #fallback>
+                                <div class="min-h-[100px]"></div>
+                            </template>
+                        </Suspense>
                     </div>
                 </div>
             </div>

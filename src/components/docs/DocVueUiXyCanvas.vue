@@ -488,20 +488,27 @@ watch(() => showAllConfig.value, (v) => {
                     <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
                 </button>
             </div>
-            <VueDataUi component="VueUiXyCanvas" :dataset="dataset"
-                :config="isDarkMode ? {
-                    ...mutableConfigDarkMode,
-                    style: {
-                        ...mutableConfigDarkMode.style,
-                        fontFamily: 'Satoshi'
-                    }
-                } : {
-                    ...mutableConfig,
-                    style: {
-                        ...mutableConfig.style,
-                        fontFamily: 'Satoshi' 
-                    }
-                }" :key="key" />
+            <Suspense>
+                <template #default>
+                    <VueDataUi component="VueUiXyCanvas" :dataset="dataset"
+                        :config="isDarkMode ? {
+                            ...mutableConfigDarkMode,
+                            style: {
+                                ...mutableConfigDarkMode.style,
+                                fontFamily: 'Satoshi'
+                            }
+                        } : {
+                            ...mutableConfig,
+                            style: {
+                                ...mutableConfig.style,
+                                fontFamily: 'Satoshi' 
+                            }
+                        }" :key="key" />
+                </template>
+                <template #fallback>
+                    <div class="min-h-[500px]"></div>
+                </template>
+            </Suspense>
         </div>
 
         <BaseDocActions

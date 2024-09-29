@@ -280,8 +280,15 @@ watch(() => showAllConfig.value, (v) => {
                     <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
                 </button>
             </div>
-            <VueDataUi component="VueUiWordCloud" :dataset="dataset"
-                :config="isDarkMode ? {...mutableConfigDarkMode, theme: selectedTheme } : {...mutableConfig, theme: selectedTheme}" :key="key" />
+            <Suspense>
+                <template #default>
+                    <VueDataUi component="VueUiWordCloud" :dataset="dataset"
+                        :config="isDarkMode ? {...mutableConfigDarkMode, theme: selectedTheme } : {...mutableConfig, theme: selectedTheme}" :key="key" />
+                </template>
+                <template #fallback>
+                    <div class="min-h-[500px]"></div>
+                </template>
+            </Suspense>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button

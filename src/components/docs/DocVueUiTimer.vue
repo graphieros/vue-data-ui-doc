@@ -250,15 +250,22 @@ function updateLaps(laps) {
                 <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
                 <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
-            <VueDataUi 
-                @lap="updateLaps" 
-                @reset="timerLaps = []"
-                @restart="timerLaps = []"
-                ref="timer" 
-                component="VueUiTimer" 
-                :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
-                :key="key"
-            />
+            <Suspense>
+                <template #default>
+                    <VueDataUi 
+                        @lap="updateLaps" 
+                        @reset="timerLaps = []"
+                        @restart="timerLaps = []"
+                        ref="timer" 
+                        component="VueUiTimer" 
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
+                        :key="key"
+                    />
+                </template>
+                <template #fallback>
+                    <div class="min-h-[500px]"></div>
+                </template>
+            </Suspense>
             <div class="flex flex-col py-6" v-if="timerLaps.length">
                 Laps:
                 <div v-for="lap in timerLaps">

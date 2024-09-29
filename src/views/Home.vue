@@ -442,25 +442,43 @@ const componentTranslation = ref({
               <div class="flex flex-row gap-2 place-items-center" v-if="store.stars && !store.isFetching">
                 <StarFilledIcon class="text-[#fdd663]"/>
                 <span class="text-xs dark:text-[#fdd663] h-[20px]">
-                  <VueUiDigits :dataset="store.stars" :config="digitConfigStars"/>
+                  <Suspense>
+                    <template #default>
+                      <VueUiDigits :dataset="store.stars" :config="digitConfigStars"/>
+                    </template>
+                    <template #fallback>
+                    <div class="min-h-[20px]"></div>
+                </template>
+                  </Suspense>
                 </span>
               </div>
 
             </button>
           </a>
           <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center" :title="'Version ' + staticReleases[0].version.replace('v', '')">
-          <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
+            <Suspense>
+              <template #default>
+                <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
+              </template>
+              <template #fallback>
+                    <div class="min-h-[50px]"></div>
+                </template>
+            </Suspense>
         </div>
     </div>
 
     <div class="w-[400px] max-w-[400px] lg:w-[500px] lg:min-w-[500px] 2xl:w-[900px] 2xl:min-w-[900px] relative">
-        <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu">
-          <template #plot-comment="{ plot }">
-            <div style="pointer-events: all !important;" :title="plot.comment" @click="selectMenu({index: plot.seriesIndex})" :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" :class="`px-2 cursor-pointer`">
-              {{ plot.comment }}
-            </div>
+        <Suspense>
+          <template #default>
+            <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu">
+              <template #plot-comment="{ plot }">
+                <div style="pointer-events: all !important;" :title="plot.comment" @click="selectMenu({index: plot.seriesIndex})" :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" :class="`px-2 cursor-pointer`">
+                  {{ plot.comment }}
+                </div>
+              </template>
+            </VueUiDonut>
           </template>
-        </VueUiDonut>
+        </Suspense>
         <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[500px] place-items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20px]"> 
             <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${-deviationX * 20}deg);`">
                 <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[80px] mx-auto drop-shadow-xl logo-shape">

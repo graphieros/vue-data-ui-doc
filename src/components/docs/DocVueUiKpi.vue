@@ -113,11 +113,18 @@ function copyToClipboard(conf) {
         </p>
 
         <div class="w-full mx-auto flex flex-row gap-4 flex-grow place-items-center justify-center">
-            <VueDataUi component="VueUiKpi" :dataset="dataset0" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`kpi0_${key}`">
-                <template #comment-before>
-                    <div class="max-w-[300px] text-[10px] mt-2 text-gray-500">According to the special theory of relativity, c is the upper limit for the speed at which conventional matter or energy (and thus any signal carrying information) can travel through space</div>
+            <Suspense>
+                <template #default>
+                    <VueDataUi component="VueUiKpi" :dataset="dataset0" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`kpi0_${key}`">
+                        <template #comment-before>
+                            <div class="max-w-[300px] text-[10px] mt-2 text-gray-500">According to the special theory of relativity, c is the upper limit for the speed at which conventional matter or energy (and thus any signal carrying information) can travel through space</div>
+                        </template>
+                    </VueDataUi>
                 </template>
-            </VueDataUi>
+                <template #fallback>
+                    <div class="min-h-[300px]"></div>
+                </template>
+            </Suspense>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_kpi)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>

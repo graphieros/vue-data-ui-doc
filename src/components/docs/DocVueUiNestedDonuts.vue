@@ -407,8 +407,15 @@ watch(() => showAllConfig.value, (v) => {
                     <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
                 </button>
             </div>
-            <VueUiNestedDonuts :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-                :key="key" />
+            <Suspense>
+                <template #default>
+                    <VueUiNestedDonuts :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
+                        :key="key" />
+                </template>
+                <template #fallback>
+                    <div class="min-h-[500px]"></div>
+                </template>
+            </Suspense>
         </div>
 
         <BaseDocActions

@@ -432,14 +432,21 @@ watch(() => showAllConfig.value, (v) => {
                     <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
                 </button>
             </div>
-            <VueDataUi component="VueUiParallelCoordinatePlot" :dataset="dataset"
-                :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                <template #plot-comment="{ plot }">
-                    <div :style="`width: 100%;`">
-                        {{  plot.comment }}
-                    </div>
+            <Suspense>
+                <template #default>
+                    <VueDataUi component="VueUiParallelCoordinatePlot" :dataset="dataset"
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                        <template #plot-comment="{ plot }">
+                            <div :style="`width: 100%;`">
+                                {{  plot.comment }}
+                            </div>
+                        </template>
+                    </VueDataUi>
                 </template>
-            </VueDataUi>
+                <template #fallback>
+                    <div class="min-h-[500px]"></div>
+                </template>
+            </Suspense>
         </div>
 
         <BaseDocActions

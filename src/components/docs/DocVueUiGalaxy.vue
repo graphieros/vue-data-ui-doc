@@ -375,12 +375,19 @@ watch(() => showAllConfig.value, (v) => {
           <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
         </button>
       </div>
-      <VueDataUi
-        component="VueUiGalaxy"
-        :dataset="mutableDataset"
-        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-        :key="key"
-      />
+      <Suspense>
+        <template #default>
+          <VueDataUi
+            component="VueUiGalaxy"
+            :dataset="mutableDataset"
+            :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
+            :key="key"
+          />
+        </template>
+        <template #fallback>
+            <div class="min-h-[500px]"></div>
+        </template>
+      </Suspense>
     </div>
 
     <BaseDocActions

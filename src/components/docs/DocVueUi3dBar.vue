@@ -425,8 +425,14 @@ watch(() => showAllConfig.value, (v) => {
                 <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
             <div :class="`mx-auto ${isFixed ? 'max-w-[150px]' : 'w-full'}`">
-            
-                <VueUi3dBar :dataset="isSeries ? dataset : { percentage: dataset.percentage }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <Suspense>
+                    <template #default>
+                        <VueUi3dBar :dataset="isSeries ? dataset : { percentage: dataset.percentage }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    </template>
+                    <template #fallback>
+                        <div class="min-h-[500px]"></div>
+                    </template>
+                </Suspense>
             </div>
             <div class="w-full mx-auto flex flex-row place-items-center justify-center mt-10 gap-3">
                 <label for="is_series">Stack mode</label>
