@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.3",
+    "date": "2024-09-29",
+    "updates": [
+      {
+        "component": "VueUiRings",
+        "description": "Added optional ring borders",
+        "link": "/docs#vue-ui-rings"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.2",
     "date": "2024-09-29",
     "updates": [

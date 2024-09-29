@@ -91,7 +91,7 @@ const darkModeConfig = ref({
         <div tabindex="0" :class="`w-fit select-none cursor-pointer text-black dark:text-app-green font-satoshi-bold p-3  ${activeTab === 0 ? 'bg-gray-200 dark:bg-black-100 border-b border-b-app-green' : 'border-b border-b-transparent'} hover:border-b hover:border-b-app-green`" @click="activeTab = 0" @keypress.enter="activeTab = 0">
             <div class="flex flex-row place-items-center gap-2 w-fit whitespace-nowrap">
                 <VueUiIcon name="ratio" :size="18" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
-                dataset
+                Dataset
             </div>
         </div>
         <div tabindex="0" :class="`w-fit select-none cursor-pointer text-black dark:text-app-blue font-satoshi-bold p-3 border-b   ${activeTab === 1 ? 'bg-gray-200 dark:bg-black-100 border-b-app-blue' : 'border-b-transparent'} hover:border-b hover:border-b-app-blue`" @click="activeTab = 1" @keypress.enter="activeTab = 1">

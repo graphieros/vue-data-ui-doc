@@ -4,8 +4,9 @@ import { useNestedProp } from "../../useNestedProp";
 import { getVueDataUiConfig } from "vue-data-ui";
 import { copyText } from "./lib";
 import { useMainStore } from "../../stores";
-import { SettingsIcon, NumbersIcon } from "vue-tabler-icons";
+import { NumbersIcon } from "vue-tabler-icons";
 import { useMakerStore } from "../../stores/maker";
+import IconSettings from "../IconSettings.vue";
 
 const props = defineProps({
     dataset: {
@@ -30,6 +31,7 @@ const props = defineProps({
 const store = useMainStore()
 const makerStore = useMakerStore()
 const makerTranslations = computed(() => makerStore.translations)
+const isDarkMode = computed(() => store.isDarkMode)
 
 const emit = defineEmits(['click'])
 
@@ -101,13 +103,13 @@ function copyDatasetOnly() {
 <template>
     <div class="flex flex-col sm:flex-row gap-4">
         <button class="flex gap-1 bg-app-blue py-3 px-5 rounded-md opacity-80 hover:opacity-100 text-white dark:text-black hover:shadow-xl font-satoshi-bold transition-all place-items-center text-sm mb-4" @click="copyConfigOnly">
-          <SettingsIcon/>
-          {{ makerTranslations.copyConfigOnly[store.lang] }}
+            <IconSettings :size="28" :strokeWidth="1.4" :stroke="isDarkMode ? '#1A1A1A' : '#FFFFFF'"/>
+            {{ makerTranslations.copyConfigOnly[store.lang] }}
         </button>
         <button class="flex gap-1 bg-app-green py-3 px-5 rounded-md opacity-80 hover:opacity-100 text-black hover:shadow-xl font-satoshi-bold transition-all place-items-center text-sm mb-4" @click="copyDatasetOnly">
             <NumbersIcon />
             {{ makerTranslations.copyDatasetOnly[store.lang] }}
-      </button>
+        </button>
     </div>
     <div class="mb-4 flex flex-row gap-4 place-items-center">
         <input id="comp" type="checkbox" v-model="isComputed">
