@@ -126,15 +126,35 @@ export const useMakerStore = defineStore('maker', {
                     es: "Conjunto de datos",
                     ko: "데이터세트"
                 },
+                copyConfigOnly: {
+                    en: 'Copy config only',
+                    fr: 'Copier la configuration uniquement',
+                    pt: 'Copiar apenas configuração',
+                    de: 'Nur Konfiguration kopieren',
+                    zh: '仅复制配置',
+                    jp: '設定のみをコピー',
+                    es: 'Copiar solo la configuración',
+                    ko: '구성만 복사'
+                },
+                copyDatasetOnly: {
+                    en: 'Copy dataset only',
+                    fr: `Copier l'ensemble de données uniquement`,
+                    pt: 'Copiar apenas conjunto de dados',
+                    de: 'Nur Datensatz kopieren',
+                    zh: '仅复制数据集',
+                    jp: 'データセットのみをコピーする',
+                    es: 'Copiar solo conjunto de datos',
+                    ko: '데이터세트만 복사'
+                },
                 componentCode: {
-                    en: "Component code",
-                    fr: "Code composant",
-                    pt: "Código do componente",
-                    de: "Komponentencode",
-                    zh: "组件代码",
-                    jp: "コンポーネントコード",
-                    es: "Código de componente",
-                    ko: "구성 요소 코드"
+                    en: "Copy the full component",
+                    fr: "Copiez le composant complet",
+                    pt: "Copie o componente completo",
+                    de: "Kopieren Sie die vollständige Komponente",
+                    zh: "复制完整组件",
+                    jp: "コンポーネント全体をコピーする",
+                    es: "Copia el componente completo",
+                    ko: "전체 구성요소 복사"
                 },
                 categories: {
                     userOptions: {
