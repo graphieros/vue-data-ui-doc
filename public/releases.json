@@ -1,5 +1,20 @@
 [
   {
+    "version": "v 2.3.2",
+    "date": "2024-09-29",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Increase default font size for axis labels",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "All components with user options",
+        "description": "Fix color of button labels not applied"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.1",
     "date": "2024-09-28",
     "updates": [

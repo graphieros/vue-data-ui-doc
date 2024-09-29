@@ -224,13 +224,13 @@ export function useConfig() {
                 labels: {
                     show: true,
                     color: COLOR_BLACK,
-                    fontSize: FONT._12,
+                    fontSize: FONT._16,
                     axis: {
                         yLabel: '',
                         yLabelOffsetX: 0,
                         xLabel: '',
-                        xLabelOffsetY: 0,
-                        fontSize: FONT._12
+                        xLabelOffsetY: 14,
+                        fontSize: FONT._14
                     },
                     zeroLine: {
                         show: true
@@ -250,7 +250,7 @@ export function useConfig() {
                         color: COLOR_BLACK,
                         show: true,
                         values: [],
-                        fontSize: FONT._10,
+                        fontSize: FONT._14,
                         showOnlyFirstAndLast: false,
                         showOnlyAtModulo: false,
                         modulo: 12,
@@ -1408,7 +1408,7 @@ export function useConfig() {
                     },
                     spacing: 2,
                     selected: {
-                        border: 2,
+                        border: 4,
                         color: COLOR_BLACK
                     }
                 },
