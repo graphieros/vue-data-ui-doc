@@ -110,8 +110,8 @@ const excl4 = '[]';
     import { ref } from "vue";<span v-if="isTs">
     import <span v-pre>{
         </span>VueDataUi,<span v-if="selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').replace(excl4, '').length">
-        {{ selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').replace(excl4, '') }}, 
-        </span>{{ selectedComponent.types.config }} <span v-pre>
+        type {{ selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').replace(excl4, '') }}, 
+        </span>type {{ selectedComponent.types.config }} <span v-pre>
     }</span> from "vue-data-ui";
     import "vue-data-ui/style.css";
     </span>
