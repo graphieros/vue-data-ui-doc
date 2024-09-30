@@ -72,7 +72,8 @@ const isTs = ref(true);
 
 const excl1 = 'Array<Array<string | number>>';
 const excl2 = 'number[]';
-const excl3 = ' | string'
+const excl3 = ' | string';
+const excl4 = '[]';
 
 </script>
 
@@ -108,8 +109,8 @@ const excl3 = ' | string'
 &lt;script setup<span v-if="isTs"> lang="ts"</span>&gt;
     import { ref } from "vue";<span v-if="isTs">
     import <span v-pre>{
-        </span>VueDataUi,<span v-if="selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').length">
-        {{ selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '') }}, 
+        </span>VueDataUi,<span v-if="selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').replace(excl4, '').length">
+        {{ selectedComponent.types.dataset.replace(excl1, '').replace(excl2, '').replace(excl3, '').replace(excl4, '') }}, 
         </span>{{ selectedComponent.types.config }} <span v-pre>
     }</span> from "vue-data-ui";
     import "vue-data-ui/style.css";
