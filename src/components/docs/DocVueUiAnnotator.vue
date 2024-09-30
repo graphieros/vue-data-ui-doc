@@ -6,6 +6,7 @@ import { useMainStore } from "../../stores";
 import { donutConfig, donutDataset } from "./dash";
 import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
+import SuspenseWrapper from "../SuspenseWrapper.vue";
 
 const mainConfig = useConfig()
 
@@ -243,16 +244,19 @@ function saveAnnotations({ shapes, lastSelectedShape }) {
         <div v-else class="py-2">
           {{ translations.docs.comments.annotator.closedState[store.lang] }}
         </div>
-        <VueUiAnnotator 
-          :dataset="{ shapes, lastSelectedShape }"
-          :config="mutableConfig"
-          @toggleOpenState="toggleOpenState" 
-          @saveAnnotations="saveAnnotations"
-        >
-            <div>
-                <VueUiDonut :config="{...donutConfig, useCssAnimation: !isAnnotatorOpen }" :dataset="donutDataset"></VueUiDonut>
-            </div>
-        </VueUiAnnotator>
+
+        <SuspenseWrapper :width="200" :height="200">
+          <VueUiAnnotator 
+            :dataset="{ shapes, lastSelectedShape }"
+            :config="mutableConfig"
+            @toggleOpenState="toggleOpenState" 
+            @saveAnnotations="saveAnnotations"
+          >
+              <div>
+                  <VueUiDonut :config="{...donutConfig, useCssAnimation: !isAnnotatorOpen }" :dataset="donutDataset"></VueUiDonut>
+              </div>
+          </VueUiAnnotator>
+        </SuspenseWrapper>
         </div>
         <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
             <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_annotator)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
