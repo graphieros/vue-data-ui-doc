@@ -490,7 +490,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
         },
         {
             name: "category 2",
-            color: "#42d392
+            color: "#42d392"
         },
         {
             name: "category 3",
