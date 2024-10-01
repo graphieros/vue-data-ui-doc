@@ -19,7 +19,7 @@ const props = defineProps({
         default() {
             return {}
         }
-    }
+    },
 });
 
 const store = useMainStore();

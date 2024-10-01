@@ -432,6 +432,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_table_light.png', import.meta.url).href,
     },
     {
+        route: '/docs#vue-ui-carousel-table',
+        icon: 'chartTable',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'CarouselTable',
+        thumb: new URL('../assets/thumb_carousel_table.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href,
+    },
+    {
         route: '/docs#vue-ui-rating',
         icon: 'star',
         cssClasses: '',
@@ -641,6 +650,7 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-table-sparkline', componentName: 'TableSparkline', icon: 'chartTable' },
             { route: '/docs#vue-ui-table-heatmap', componentName: 'TableHeatmap', icon: 'chartTable' },
             { route: '/docs#vue-ui-table', componentName: 'Table', icon: 'chartTable' },
+            { route: '/docs#vue-ui-carousel-table', componentName: 'CarouselTable', icon: 'chartTable' },
         ]
     },
     {

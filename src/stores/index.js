@@ -488,6 +488,36 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    caption: {
+                        en: 'Use this slot to customize the caption element.',
+                        fr: `Utilisez cet emplacement pour personnaliser l'élément de légende.`,
+                        pt: 'Use este slot para personalizar o elemento de legenda.',
+                        de: 'Verwenden Sie diesen Slot, um das Beschriftungselement anzupassen.',
+                        zh: '使用此槽来自定义标题元素。',
+                        jp: 'このスロットを使用して、キャプション要素をカスタマイズします。',
+                        es: 'Utilice esta ranura para personalizar el elemento de título.',
+                        ko: '캡션 요소를 사용자 정의하려면 이 슬롯을 사용하십시오.'
+                    },
+                    th: {
+                        en: 'Use this slot to customize the table header cells.',
+                        fr: `Utilisez cet emplacement pour personnaliser les cellules d'en-tête du tableau.`,
+                        pt: 'Use este slot para personalizar as células do cabeçalho da tabela.',
+                        de: 'Verwenden Sie diesen Slot, um die Tabellenkopfzellen anzupassen.',
+                        zh: '使用此插槽可以自定义表格标题单元格。',
+                        jp: 'このスロットを使用して、テーブルのヘッダー セルをカスタマイズします。',
+                        es: 'Utilice esta ranura para personalizar las celdas del encabezado de la tabla.',
+                        ko: '이 슬롯을 사용하여 테이블 헤더 셀을 사용자 정의합니다.'
+                    },
+                    td: {
+                        en: 'Use this slot to customize the table body cells.',
+                        fr: 'Utilisez cet emplacement pour personnaliser les cellules du corps du tableau.',
+                        pt: 'Use este slot para personalizar as células do corpo da tabela.',
+                        de: 'Verwenden Sie diesen Steckplatz, um die Tabellenkörperzellen anzupassen.',
+                        zh: '使用此插槽可以自定义表格主体单元格。',
+                        jp: 'このスロットを使用して、テーブル本体のセルをカスタマイズします。',
+                        es: 'Utilice esta ranura para personalizar las celdas del cuerpo de la tabla.',
+                        ko: '이 슬롯을 사용하여 테이블 본문 셀을 사용자 정의합니다.'
+                    },
                     title: {
                         en: `This component contains a #title 'slot' exposing data to customize the chart title.`,
                         fr: `Ce composant contient un slot #title exposant des données pour personnaliser le titre du graphique.`,
@@ -1219,6 +1249,16 @@ export const useMainStore = defineStore("main", {
                         ko: "문서 페이지에서는 구성을 조정하고 이를 JSON으로 저장할 수 있는 구성 탭을 제공합니다. 어두운 테마에서 밝은 테마로 전환하여 두 모드 모두에 대한 구성을 저장할 수도 있습니다."
                     },
                     tooltips: {
+                        carouselTable: {
+                            en: 'A flexible table component with carousel features. Animation is opt-in, and pauses when user hovers on the table.',
+                            fr: `Un composant de table flexible avec des fonctionnalités de carrousel. L'animation est facultative et s'arrête lorsque l'utilisateur survole la table.`,
+                            pt: 'Um componente de tabela flexível com recursos de carrossel. A animação é opcional e pausa quando o usuário passa o mouse sobre a mesa.',
+                            de: 'Eine flexible Tischkomponente mit Karussellfunktionen. Die Animation ist optional und wird angehalten, wenn der Benutzer mit der Maus über den Tisch fährt.',
+                            zh: '具有轮播功能的灵活表格组件。动画是可选的，当用户将鼠标悬停在桌子上时会暂停。',
+                            jp: 'カルーセル機能を備えた柔軟なテーブル コンポーネント。アニメーションはオプトインであり、ユーザーがテーブル上にホバーすると一時停止します。',
+                            es: 'Un componente de mesa flexible con funciones de carrusel. La animación es voluntaria y se detiene cuando el usuario se desplaza sobre la mesa.',
+                            ko: '캐러셀 기능을 갖춘 유연한 테이블 구성 요소입니다. 애니메이션은 선택되어 있으며 사용자가 테이블 위에 마우스를 올리면 일시중지됩니다.'
+                        },
                         timer: {
                             en: 'A customizable stopwatch component',
                             fr: 'Un composant chronomètre élégant et personnalisable',
@@ -1870,6 +1910,36 @@ export const useMainStore = defineStore("main", {
                             jp: "コンポーネント上でこのイベントを使用して、クリック時に選択されたデータポイントとインデックスを取得します。",
                             es: "Utilice este evento en el componente para obtener el punto de datos seleccionado y el índice al hacer clic",
                             ko: "클릭 시 선택한 데이터 포인트와 인덱스를 가져오려면 구성 요소에서 이 이벤트를 사용하세요."
+                        },
+                        pauseAnimation: {
+                            en: 'Call this method from the parent component to pause the carousel animation.',
+                            fr: `Appelez cette méthode à partir du composant parent pour suspendre l'animation du carrousel.`,
+                            pt: 'Chame esse método do componente pai para pausar a animação do carrossel.',
+                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation anzuhalten.',
+                            zh: '从父组件调用此方法可以暂停轮播动画。',
+                            jp: 'カルーセル アニメーションを一時停止するには、親コンポーネントからこのメソッドを呼び出します。',
+                            es: 'Llame a este método desde el componente principal para pausar la animación del carrusel.',
+                            ko: '캐러셀 애니메이션을 일시중지하려면 상위 구성요소에서 이 메소드를 호출하세요.'
+                        },
+                        resumeAnimation: {
+                            en: 'Call this method from the parent component to resume the carousel animation after it was paused.',
+                            fr: `Appelez cette méthode à partir du composant parent pour reprendre l'animation du carrousel après sa pause.`,
+                            pt: 'Chame esse método do componente pai para retomar a animação do carrossel após ela ter sido pausada.',
+                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation fortzusetzen, nachdem sie angehalten wurde.',
+                            zh: '从父组件调用此方法可在暂停后恢复轮播动画。',
+                            jp: '一時停止したカルーセル アニメーションを再開するには、親コンポーネントからこのメソッドを呼び出します。',
+                            es: 'Llame a este método desde el componente principal para reanudar la animación del carrusel después de que se detuvo.',
+                            ko: '회전식 애니메이션이 일시 중지된 후 다시 시작하려면 상위 구성 요소에서 이 메서드를 호출하세요.'
+                        },
+                        toggleAnimation: {
+                            en: 'Call this method from the parent component to toggle the carousel animation.',
+                            fr: `Appelez cette méthode à partir du composant parent pour activer/désactiver l'animation du carrousel.`,
+                            pt: 'Chame esse método do componente pai para alternar a animação do carrossel.',
+                            de: 'Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um die Karussell-Animation umzuschalten.',
+                            zh: '从父组件调用此方法来切换轮播动画。',
+                            jp: 'カルーセル アニメーションを切り替えるには、親コンポーネントからこのメソッドを呼び出します。',
+                            es: 'Llame a este método desde el componente principal para alternar la animación del carrusel.',
+                            ko: '캐러셀 애니메이션을 전환하려면 상위 구성요소에서 이 메소드를 호출하세요.'
                         },
                         generateImage: {
                             en: "Call this method from the parent component to download as png image. This is especially useful if user options are hidden.",

@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.6",
+    "date": "2024-10-01",
+    "updates": [
+      {
+        "component": "VueUiCarouselTable",
+        "description": "Added new component",
+        "link": "/docs#vue-ui-carousel-table"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.4",
     "date": "2024-09-29",
     "updates": [

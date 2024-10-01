@@ -22,6 +22,7 @@ type BoxProps = {
     showResponsive?: boolean;
     activeTab?: number;
     schema?: string;
+    hideSchemaDisclaimer?: boolean;
 }
 
 const props = withDefaults(defineProps<BoxProps>(), {
@@ -32,7 +33,8 @@ const props = withDefaults(defineProps<BoxProps>(), {
     showThemes: false,
     showResponsive: false,
     activeTab: 0,
-    schema: ''
+    schema: '',
+    hideSchemaDisclaimer: false,
 })
 
 const activeTab = ref(props.activeTab);
@@ -82,7 +84,7 @@ const darkModeConfig = ref({
                 {{ translations.quickOverview[store.lang] }}</div>
             </template>
             <template #content>
-                <Schema :component="schema" :showLink="false"/>
+                <Schema :component="schema" :showLink="false" :hideDisclaimer="hideSchemaDisclaimer"/>
             </template>
         </VueDataUi>
     </div>

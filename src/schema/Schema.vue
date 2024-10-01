@@ -26,6 +26,10 @@ const props = defineProps({
     showLink: {
         type: Boolean,
         default: true
+    },
+    hideDisclaimer: {
+        type: Boolean,
+        default: false
     }
 }) 
 
@@ -145,7 +149,7 @@ const excl4 = '[]';
                     <th class="border border-slate-600 p-2">Slots</th>
                     <th class="border border-slate-600 p-2">Emits</th>
                     <th class="border border-slate-600 p-2">{{ translations.overview.exposedMethods[store.lang] }}</th>
-                    <th class="border border-slate-600 p-2">Responsive<sup>1</sup></th>
+                    <th class="border border-slate-600 p-2">Responsive<sup v-if="!hideDisclaimer">1</sup></th>
                 </tr>
 
             </thead>
@@ -179,7 +183,9 @@ const excl4 = '[]';
                 </tr>
             </tbody>
         </table>
-        1. {{ translations.responsiveUsage[store.lang] }} {{ translations.responsive[store.lang] }}
+        <span v-if="!hideDisclaimer">
+            1. {{ translations.responsiveUsage[store.lang] }} {{ translations.responsive[store.lang] }}
+        </span>
 
         <table v-if="selectedComponent.userOptions" class="table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left">

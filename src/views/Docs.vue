@@ -62,6 +62,7 @@ import DocVueUiXyCanvas from "../components/docs/DocVueUiXyCanvas.vue";
 import DocVueUiFlow from "../components/docs/DocVueUiFlow.vue";
 import DocVueUiParallelCoordinatePlot from "../components/docs/DocVueUiParallelCoordinatePlot.vue";
 import DocVueUiTimer from "../components/docs/DocVueUiTimer.vue";
+import DocVueUiCarouselTable from "../components/docs/DocVueUiCarouselTable.vue";
 import Schema from "../schema/Schema.vue";
 import { useConfig } from "../assets/useConfig";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
@@ -145,7 +146,8 @@ const themeKeys = computed(() => {
             "vue_ui_digits",
             "vue_ui_cursor",
             "vue_ui_mini_loader",
-            "vue_ui_kpi"
+            "vue_ui_kpi",
+            "vue_ui_carousel_table"
         ].includes(key)
     });
 });
@@ -569,6 +571,17 @@ const menuItems = computed(() => [
         hasTableCss: false,
     },
     {
+        name: "CarouselTable",
+        icon: "chartTable",
+        tooltip: translations.value.docs.tooltips.carouselTable[store.lang],
+        link: "/docs#vue-ui-carousel-table",
+        type: "table",
+        thumb: new URL('../assets/thumb_carousel_table.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: false,
+    },
+    {
         name: "Rating",
         icon: "star",
         tooltip: translations.value.docs.tooltips.rating[store.lang],
@@ -871,6 +884,7 @@ onMounted(playShowcase);
             <DocVueUiFlow v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-flow'" />
             <DocVueUiParallelCoordinatePlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-parallel-coordinate-plot'" />
             <DocVueUiTimer v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-timer'" />
+            <DocVueUiCarouselTable v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-carousel-table'" />
             <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
                 <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                     <div class="flex flex-row gap-4 place-items-center">
