@@ -572,7 +572,7 @@ const menuItems = computed(() => [
     },
     {
         name: "CarouselTable",
-        icon: "chartTable",
+        icon: "carouselTable",
         tooltip: translations.value.docs.tooltips.carouselTable[store.lang],
         link: "/docs#vue-ui-carousel-table",
         type: "table",

@@ -1,7 +1,7 @@
 {
     "vue_ui_carousel_table": {
         "name": "VueUiCarouselTable",
-        "icon": "chartTable",
+        "icon": "carouselTable",
         "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-carousel-table",
         "path": "/docs#vue-ui-carousel-table",
         "description": "A flexible table component with carousel features. Animation is opt-in, and pauses when user hovers on the table.",

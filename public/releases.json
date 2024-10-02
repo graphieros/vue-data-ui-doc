@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.3.7",
+    "date": "2024-10-02",
+    "updates": [
+      {
+        "component": "VueUiCarouselTable",
+        "description": "Added touch events",
+        "link": "/docs#vue-ui-carousel-table"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Added carouselTable icon",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.6",
     "date": "2024-10-01",
     "updates": [
