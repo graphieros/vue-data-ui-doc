@@ -578,7 +578,7 @@ const menuItems = computed(() => [
         type: "table",
         thumb: new URL('../assets/thumb_carousel_table.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href,
-        hasSlot: true,
+        hasSlot: false,
         hasTableCss: false,
     },
     {
@@ -792,7 +792,7 @@ const menuItems = computed(() => [
         tooltip: translations.value.docs.tooltips.timer[store.lang],
         link: '/docs#vue-ui-timer',
         type: 'tool',
-        hasSlot: true,
+        hasSlot: false,
         hasLegend: false,
         thumb: new URL('../assets/thumb_timer.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_timer_light.png', import.meta.url).href,
