@@ -374,6 +374,7 @@ watch(() => showAllConfig.value, (v) => {
 
         <BaseDocActions
             targetLink="vue-ui-carousel-table"
+            targetMaker="VueUiCarouselTable"
             :configSource="mainConfig.vue_ui_carousel_table"
         />
 

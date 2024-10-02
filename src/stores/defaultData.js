@@ -3,6 +3,89 @@ import { defineStore } from "pinia";
 export const useDefaultDataStore = defineStore('defaultData', {
     state: () => {
         return {
+            vue_ui_carousel_table: {
+                dataset: {
+                    head: ['col1', 'col2'],
+                    body: [
+                        [0, 1],
+                        [1, 2],
+                        [2, 3],
+                        [3, 4],
+                        [4, 5],
+                        [5, 6],
+                        [6, 7],
+                        [7, 8],
+                        [8, 9],
+                    ]
+                },
+                model: [
+                    { key: 'responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'general'},
+
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'show', category: 'userOptions'},
+                    { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.animation', def: true, type: 'checkbox', label: ['button', 'animation', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.pdf', def: 'Download PDF', type: 'text', label: ['button', 'pdf', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.csv', def: 'Download CSV', type: 'text', label: ['button', 'csv', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.animation', def: 'Toggle animation', type: 'text', label: ['button', 'animation', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+
+                    { key: 'animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'animation.speedMs', def: 1000, type: 'number', min: 500, max: 5000, step: 100, label: ['animation', 'is', 'speed'], category: 'general'},
+                    { key: 'animation.pauseOnHover', def: true, type: 'checkbox', label: ['animation', 'is', 'pause on hover'], category: 'general'},
+
+                    { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: ['backgroundColor'], category: 'userOptions'},
+                    { key: 'style.color', def: '#1A1A1A', type: 'color', label: ['textColor'], category: 'userOptions'},
+                    { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
+
+                    { key: 'caption.text', def: 'Table title', type: 'text', label: 'textContent', category: 'title'},
+                    { key: 'caption.padding.top', def: 12, type: 'number', min: 0, max: 48, label: ['padding', 'is', 'top'], category: 'title'},
+                    { key: 'caption.padding.right', def: 12, type: 'number', min: 0, max: 48, label: ['padding', 'is', 'right'], category: 'title'},
+                    { key: 'caption.padding.bottom', def: 12, type: 'number', min: 0, max: 48, label: ['padding', 'is', 'bottom'], category: 'title'},
+                    { key: 'caption.padding.left', def: 12, type: 'number', min: 0, max: 48, label: ['padding', 'is', 'left'], category: 'title'},
+                    
+                    { key: 'caption.style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'title'},
+                    { key: 'caption.style.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
+                    { key: 'caption.style.fontSize', def: '16px', type: 'text', label: 'fontSize', category: 'title'},
+                    { key: 'caption.style.fontWeight', def: 'bold', type: 'text', label: 'fontWeight', category: 'title'},
+                    { key: 'caption.style.textAlign', def: 'left', type: 'select', options: ['left', 'center', 'right'], label: ['textAlign'], category: 'title'},
+
+                    { key: 'thead.tr.height', def: 32, type: 'number', min: 32, max: 64, label: ['thead', 'TR', 'is', 'height'], category: 'table'},
+                    { key: 'thead.tr.style.backgroundColor', def: '#FFFFFF', type: 'color', label: ['thead', 'TR', 'is', 'backgroundColor'], category: 'table'},
+                    { key: 'thead.tr.style.color', def: '#1A1A1A', type: 'color', label: ['thead', 'TR', 'is', 'textColor'], category: 'table'},
+                    { key: 'thead.tr.style.boxShadow', def: '0px 6px 12px -6px #1A1A1A50', type: 'text', label: ['thead', 'TR', 'is', 'shadow'], category: 'table'},
+
+                    { key: 'thead.tr.th.padding.top', def: 0, type: 'number', min: 0, max: 48, label: ['thead', 'TH', 'padding', 'is', 'top'], category: 'table'},
+                    { key: 'thead.tr.th.padding.right', def: 12, type: 'number', min: 0, max: 48, label: ['thead', 'TH', 'padding', 'is', 'right'], category: 'table'},
+                    { key: 'thead.tr.th.padding.bottom', def: 0, type: 'number', min: 0, max: 48, label: ['thead', 'TH', 'padding', 'is', 'bottom'], category: 'table'},
+                    { key: 'thead.tr.th.padding.left', def: 0, type: 'number', min: 0, max: 48, label: ['thead', 'TH', 'padding', 'is', 'left'], category: 'table'},
+
+                    { key: 'thead.tr.th.style.textAlign', def: 'right', type: 'select', options: ['left', 'center', 'right'], label: ['thead', 'TH', 'is', 'textAlign'], category: 'table'},
+                    { key: 'thead.tr.th.style.fontVariantNumeric', def: 'tabular-nums', type: 'select', options: ['tabular-nums', 'normal', 'slashed-zero', 'oldstyle-nums'], label: ['thead', 'TH', 'is', 'fontVariantNumeric'], category: 'table'},
+                    
+                    { key: 'tbody.tr.visible', def: 5, type: 'number', min:1, max: 12, label: ['rows', 'is', 'visible'], category: 'table'},
+                    { key: 'tbody.tr.height', def: 32, type: 'number', min: 32, max: 64, label: ['tbody', 'TR', 'is', 'height'], category: 'table'},
+                    { key: 'tbody.tr.style.backgroundColor', def: '#FFFFFF', type: 'color', label: ['tbody', 'TR', 'is', 'backgroundColor'], category: 'table'},
+                    { key: 'tbody.tr.style.color', def: '#1A1A1A', type: 'color', label: ['tbody', 'TR', 'is', 'textColor'], category: 'table'},
+
+                    { key: 'tbody.tr.td.alternateColor', def: true, type: 'checkbox', label: ['tbody', 'TD', 'is', 'alternate', 'backgroundColor'], category: 'table'},
+                    { key: 'tbody.tr.td.alternateOpacity', def: 0.5, type: 'number', min: 0, max: 1, step: 0.01, label: ['tbody', 'TD', 'is', 'alternate', 'opacity'], category: 'table'},
+
+                    { key: 'tbody.tr.td.padding.top', def: 0, type: 'number', min: 0, max: 48, label: ['tbody', 'TD', 'padding', 'is', 'top'], category: 'table'},
+                    { key: 'tbody.tr.td.padding.right', def: 12, type: 'number', min: 0, max: 48, label: ['tbody', 'TD', 'padding', 'is', 'right'], category: 'table'},
+                    { key: 'tbody.tr.td.padding.bottom', def: 0, type: 'number', min: 0, max: 48, label: ['tbody', 'TD', 'padding', 'is', 'bottom'], category: 'table'},
+                    { key: 'tbody.tr.td.padding.left', def: 0, type: 'number', min: 0, max: 48, label: ['tbody', 'TD', 'padding', 'is', 'left'], category: 'table'},
+
+                    { key: 'tbody.tr.td.style.textAlign', def: 'right', type: 'select', options: ['left', 'center', 'right'], label: ['tbody', 'TD', 'is', 'textAlign'], category: 'table'},
+                    { key: 'tbody.tr.td.style.fontVariantNumeric', def: 'tabular-nums', type: 'select', options: ['tabular-nums', 'normal', 'slashed-zero', 'oldstyle-nums'], label: ['tbody', 'TD', 'is', 'fontVariantNumeric'], category: 'table'},
+                    { key: 'tbody.tr.td.style.backgroundColor', def: '#FFFFFF', type: 'color', label: ['tbody', 'TD', 'is', 'backgroundColor'], category: 'table'}
+                ]
+            },
             vue_ui_parallel_coordinate_plot: {
                 dataset: [
                     {

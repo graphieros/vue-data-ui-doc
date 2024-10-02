@@ -37,6 +37,7 @@ import MakerFlow from "../components/maker/MakerFlow.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
 import MakerPcp from "../components/maker/MakerPcp.vue";
+import MakerCarouselTable from "../components/maker/MakerCarouselTable.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -88,6 +89,7 @@ const options = ref([
     { name: "VueUiFlow", icon: "chartFlow", thumb: new URL('../assets/thumb_flow_light.png', import.meta.url).href},
     { name: "VueUiParallelCoordinatePlot", icon: "chartParallelCoordinatePlot", thumb: new URL('../assets/thumb_pcp_light.png', import.meta.url).href},
     { name: "VueUiKpi", icon: "legend", thumb: ""},
+    { name: "VueUiCarouselTable", icon: "carouselTable", thumb: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -194,5 +196,6 @@ function selectChart(opt) {
         <MakerVueUiWordCloud v-if="selectedChart.name === 'VueUiWordCloud'" />
         <MakerFlow v-if="selectedChart.name === 'VueUiFlow'" />
         <MakerPcp v-if="selectedChart.name === 'VueUiParallelCoordinatePlot'" />
+        <MakerCarouselTable v-if="selectedChart.name === 'VueUiCarouselTable'" />
     </div>
 </template>

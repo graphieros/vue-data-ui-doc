@@ -14,6 +14,26 @@ export const useMakerStore = defineStore('maker', {
                 ko: ""
             },
             translations: {
+                tableHeader: {
+                    en: 'Table header cells',
+                    fr: `Cellules d'en-tête de tableau`,
+                    pt: 'Células de cabeçalho da tabela',
+                    de: 'Tabellenkopfzellen',
+                    zh: '表格标题单元格',
+                    jp: 'テーブルヘッダーセル',
+                    es: 'Celdas del encabezado de la tabla',
+                    ko: '테이블 머리글 셀'
+                },
+                tableBody: {
+                    en: 'Table body cells',
+                    fr: 'Cellules du corps de tableau',
+                    pt: 'Células do corpo da tabela',
+                    de: 'Tabellenzellen',
+                    zh: '表格主体单元格',
+                    jp: 'テーブルの本体セル',
+                    es: 'Celdas del cuerpo de la tabla',
+                    ko: '테이블 본문 셀'
+                },
                 activeRelations: {
                     en: 'Active relations',
                     fr: "Relations actives",
