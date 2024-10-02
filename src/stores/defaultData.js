@@ -83,7 +83,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
 
                     { key: 'tbody.tr.td.style.textAlign', def: 'right', type: 'select', options: ['left', 'center', 'right'], label: ['tbody', 'TD', 'is', 'textAlign'], category: 'table'},
                     { key: 'tbody.tr.td.style.fontVariantNumeric', def: 'tabular-nums', type: 'select', options: ['tabular-nums', 'normal', 'slashed-zero', 'oldstyle-nums'], label: ['tbody', 'TD', 'is', 'fontVariantNumeric'], category: 'table'},
-                    { key: 'tbody.tr.td.style.backgroundColor', def: '#FFFFFF', type: 'color', label: ['tbody', 'TD', 'is', 'backgroundColor'], category: 'table'}
+                    { key: 'tbody.tr.td.style.backgroundColor', def: '#e1e5e8', type: 'color', label: ['tbody', 'TD', 'is', 'backgroundColor'], category: 'table'}
                 ]
             },
             vue_ui_parallel_coordinate_plot: {
