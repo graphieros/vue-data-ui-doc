@@ -1358,7 +1358,7 @@ const wordCloudDataset = computed(() => {
     if(!uselessWords.value.includes(ds.name.toUpperCase())) {
       return ds
     }
-  })
+  }).filter(el => el.value > 20)
 })
 
 const wordCloudConfig = computed(() => {
