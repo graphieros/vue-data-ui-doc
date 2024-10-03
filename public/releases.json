@@ -1,5 +1,20 @@
 [
   {
+    "version": "v 2.3.8",
+    "date": "2024-10-03",
+    "updates": [
+      {
+        "component": "VueUiCarouselTable",
+        "description": "Remove harmless error when animation runs on unmounted component",
+        "link": "/docs#vue-ui-carousel-table"
+      },
+      {
+        "component": "VueUiHeatmap",
+        "description": "Base legend gauge line color on selected cell color & remove log"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.7",
     "date": "2024-10-02",
     "updates": [

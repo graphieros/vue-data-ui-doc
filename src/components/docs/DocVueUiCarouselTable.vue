@@ -351,11 +351,7 @@ watch(() => showAllConfig.value, (v) => {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.carouselTable[store.lang] }}
         </p>
-        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-full'} overflow`">
-            <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
-                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
-            </div>
+        <div :class="`transition-all mx-auto w-full overflow`">
             <Suspense>
                 <template #default>
                     <VueUiCarouselTable :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
@@ -432,7 +428,7 @@ cosnt <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDa
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiCarouselTableConfig" equal>
-        <span>responsiveBreakpoint: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.responsiveBreakpoint" :min="300" :max="800"/><BaseNumerbInput v-else v-model:value="mutableConfig.responsiveBreakpoint" :min="300" :max="800"/> (default: 400)</span>
+        <span>responsiveBreakpoint: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.responsiveBreakpoint" :min="300" :max="800"/><BaseNumberInput v-else v-model:value="mutableConfig.responsiveBreakpoint" :min="300" :max="800"/> (default: 400)</span>
         <BaseDetails attr="userOptions" :level="1">
             <span>show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)</span>
             <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
