@@ -97,8 +97,9 @@ const config = computed(() => {
         }
     },
     "bar": {
-        "borderRadius": 2,
+        "borderRadius": 4,
         "useGradient": true,
+        "periodGap": 0,
         "labels": {
             "show": true,
             "offsetY": -8,
@@ -213,7 +214,7 @@ const dataset = ref([
         "dashed": false,
         "useTag": "none"
     }
-]);
+].sort((a, b) => b.series[0] - a.series[0]))
 
 function getData(){
     return {
