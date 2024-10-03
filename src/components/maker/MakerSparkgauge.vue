@@ -10,6 +10,7 @@ import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
 import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
+import MakerKnobs from "./MakerKnobs.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -167,23 +168,11 @@ function getLabel(label) {
             <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
         </div>
 
-        <template v-for="category in CONFIG_CATEGORIES">
-        
-            <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4">
-                <h4>{{ category.title }}</h4> 
-                <div class="flex flex-row gap-4 place-items-center flex-wrap">
-                    <div v-for="knob in CONFIG_MODEL.filter(k => k.category === category.key)" class="flex flex-col justify-start">
-                        <label class="text-xs">{{ getLabel(knob.label) }}</label>
-                        <div class="flex place-items-center justify-start h-[40px]">
-                            <input class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :step="knob.step ?? 1" :type="knob.type" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def" @change="forceChartUpdate">
-                            <select v-if="knob.type === 'select'" v-model="knob.def" @change="forceChartUpdate" class="h-[32px] px-2">
-                                <option v-for="opt in knob.options">{{ opt }}</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </template>
+        <MakerKnobs
+            :categories="CONFIG_CATEGORIES"
+            :model="CONFIG_MODEL"
+            @change="forceChartUpdate"
+        />
     </details>
 
     <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
