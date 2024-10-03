@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.3.9",
+    "date": "2024-10-03",
+    "updates": [
+      {
+        "component": "VueUiCarouselTable",
+        "description": "Allow for any cell size",
+        "link": "/docs#vue-ui-carousel-table"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Keep cells centered when applying spaceBetween",
+        "link": "/docs#vue-ui-waffle"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.8",
     "date": "2024-10-03",
     "updates": [
