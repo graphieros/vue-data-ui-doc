@@ -180,7 +180,7 @@ const dataset = ref([
         ],
         "color": "#f5ee38"
     }
-]);
+].sort((a,b) => b.values[0] - a.values[0]));
 
 function getData(){
     return {
