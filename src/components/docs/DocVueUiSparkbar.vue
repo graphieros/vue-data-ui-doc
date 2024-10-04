@@ -79,7 +79,7 @@ const darkModeConfig = ref(
             labels: {
                 fontSize: 16,
                 name: {
-                    position: "top",
+                    position: "top-left",
                     width: "100%",
                     color: "#BABABA",
                     bold: false
@@ -138,7 +138,7 @@ const config = ref(
             labels: {
                 fontSize: 16,
                 name: {
-                    position: "top",
+                    position: "top-left",
                     width: "100%",
                     color: "#2D353C",
                     bold: false
@@ -347,7 +347,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkbarDataset
             <BaseDetails attr="labels" :level="2" title="style.labels">
                 <span>fontSize: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.labels.fontSize" :min="8" :max="42"/><BaseNumberInput v-else v-model:value="mutableConfig.style.labels.fontSize" :min="8" :max="42"/>, (default: 16)</span>
                 <BaseDetails attr="name" :level="3" title="style.labels.name">
-                    <span>position: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.labels.name.position"><option>top</option><option>left</option></select><select v-else v-model="mutableConfig.style.labels.name.position"><option>top</option><option>left</option></select>, (default: "top")</span>
+                    <span>position: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.labels.name.position"><option>left</option><option>top-left</option><option>top-center</option><option>top-right</option><option>right</option></select><select v-else v-model="mutableConfig.style.labels.name.position"><option>left</option><option>top-left</option><option>top-center</option><option>top-right</option><option>right</option></select>, (default: "top-left")</span>
                     <span>width: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.labels.name.width"><input v-else type="text" v-model="mutableConfig.style.labels.name.width">, (default: "100%")</span>
                     <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.labels.name.color"><input v-else type="color" v-model="mutableConfig.style.labels.name.color">, (default: "#2D353C")</span>
                     <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.labels.name.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.labels.name.bold" @change="forceChartUpdate()">, (default: false)</span>

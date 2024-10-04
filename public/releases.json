@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.3.13",
+    "date": "2024-10-04",
+    "updates": [
+      {
+        "component": "VueUiSparkbar",
+        "description": "Add more data label positioning options",
+        "link": "/docs#vue-ui-sparkbar"
+      },
+      {
+        "component": "VueUiSparkHistogram",
+        "description": "Add color dataset option for individual datapoint coloring",
+        "link": "/docs#vue-ui-sparkhistogram"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.11",
     "date": "2024-10-04",
     "updates": [
