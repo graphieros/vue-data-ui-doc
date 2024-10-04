@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.11",
+    "date": "2024-10-04",
+    "updates": [
+      {
+        "component": "VueUiSparkbar",
+        "description": "Fix TS type errors",
+        "link": "/docs#vue-ui-sparkbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.10",
     "date": "2024-10-04",
     "updates": [
