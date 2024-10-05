@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.14",
+    "date": "2024-10-05",
+    "updates": [
+      {
+        "component": "VueUiSparkbar",
+        "description": "Fix bar overflow when >100 in percentage mode",
+        "link": "/docs#vue-ui-sparkbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.13",
     "date": "2024-10-04",
     "updates": [
@@ -74,12 +85,12 @@
     "updates": [
       {
         "component": "VueUiCarouselTable",
-        "description": "Added touch events",
+        "description": "Add touch events",
         "link": "/docs#vue-ui-carousel-table"
       },
       {
         "component": "VueUiIcon",
-        "description": "Added carouselTable icon",
+        "description": "Add carouselTable icon",
         "link": "/docs#vue-ui-icon"
       }
     ]
@@ -90,7 +101,7 @@
     "updates": [
       {
         "component": "VueUiCarouselTable",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-carousel-table"
       }
     ]
@@ -116,7 +127,7 @@
     "updates": [
       {
         "component": "VueUiRings",
-        "description": "Added optional ring borders",
+        "description": "Add optional ring borders",
         "link": "/docs#vue-ui-rings"
       }
     ]
@@ -207,97 +218,97 @@
     "updates": [
       {
         "component": "VueUiAgePyramid",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-age-pyramid"
       },
       {
         "component": "VueUiCandlestick",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-candlestick"
       },
       {
         "component": "VueUiDonut",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-donut"
       },
       {
         "component": "VueUiGalaxy",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-galaxy"
       },
       {
         "component": "VueUiMolecule",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-molecule"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-nested-donuts"
       },
       {
         "component": "VueUiOnion",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-onion"
       },
       {
         "component": "VueUiParallelCoordinatePlot",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-parallel-coordinate-plot"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-quadrant"
       },
       {
         "component": "VueUiQuickChart",
-        "description": "Added tooltipBackgroundOpacity config option",
+        "description": "Add tooltipBackgroundOpacity config option",
         "link": "/docs#vue-ui-quick-chart"
       },
       {
         "component": "VueUiRadar",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-radar"
       },
       {
         "component": "VueUiRings",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-rings"
       },
       {
         "component": "VueUiScatter",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-scatter"
       },
       {
         "component": "VueUiStripPlot",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-strip-plot"
       },
       {
         "component": "VueUiTreemap",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-treemap"
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-vertical-bar"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-waffle"
       },
       {
         "component": "VueUiXyCanvas",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-xy-canvas"
       },
       {
         "component": "VueUiXy",
-        "description": "Added backgroundOpacity tooltip config option",
+        "description": "Add backgroundOpacity tooltip config option",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -308,7 +319,7 @@
     "updates": [
       {
         "component": "",
-        "description": "Added tooltips to user option buttons"
+        "description": "Add tooltips to user option buttons"
       }
     ]
   },
@@ -360,7 +371,7 @@
     "updates": [
       {
         "component": "VueUiSparkbar",
-        "description": "Added optional title",
+        "description": "Add optional title",
         "link": "/docs#vue-ui-sparkbar"
       }
     ]
@@ -371,12 +382,12 @@
     "updates": [
       {
         "component": "VueUiTimer",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-timer"
       },
       {
         "component": "VueUiIcon",
-        "description": "Added new icons",
+        "description": "Add new icons",
         "link": "/docs#vue-ui-icon"
       }
     ]
@@ -387,7 +398,7 @@
     "updates": [
       {
         "component": "VueUiSparkbar",
-        "description": "Added scoped slot data-label and config options for target display",
+        "description": "Add scoped slot data-label and config options for target display",
         "link": "/docs#vue-ui-sparkbar"
       }
     ]
@@ -408,7 +419,7 @@
     "updates": [
       {
         "component": "VueUiSparkbar",
-        "description": "Added optional individual dataset target attribute",
+        "description": "Add optional individual dataset target attribute",
         "link": "/docs#vue-ui-sparkbar"
       }
     ]
@@ -452,167 +463,167 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiXyCanvas",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-xy-canvas"
       },
       {
         "component": "VueUiWordCloud",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-word-cloud"
       },
       {
         "component": "VueUiWheel",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-wheel"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-waffle"
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-vertical-bar"
       },
       {
         "component": "VueUiTreemap",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-treemap"
       },
       {
         "component": "VueUiTiremarks",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-tiremarks"
       },
       {
         "component": "VueUiThermometer",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-thermometer"
       },
       {
         "component": "VueUiTableSparkline",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-table-sparkline"
       },
       {
         "component": "VueUiTableHeatmap",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-table-heatmap"
       },
       {
         "component": "VueUiStripPlot",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-strip-plot"
       },
       {
         "component": "VueUiScatter",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-scatter"
       },
       {
         "component": "VueUiRings",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-rings"
       },
       {
         "component": "VueUiRelationCircle",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-relation-circle"
       },
       {
         "component": "VueUiRadar",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-radar"
       },
       {
         "component": "VueUiQuickChart",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-quick-chart"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-quadrant"
       },
       {
         "component": "VueUiParallelCoordinatePlot",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-parallel-coordinate-plot"
       },
       {
         "component": "VueUiOnion",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-onion"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-nested-donuts"
       },
       {
         "component": "VueUiMoodRadar",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-mood-radar"
       },
       {
         "component": "VueUiMolecule",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-molecule"
       },
       {
         "component": "VueUiGauge",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-gauge"
       },
       {
         "component": "VueUiGalaxy",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-galaxy"
       },
       {
         "component": "VueUiFlow",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-flow"
       },
       {
         "component": "VueUiDumbbell",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-dumbbell"
       },
       {
         "component": "VueUiDonut",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-donut"
       },
       {
         "component": "VueUiDonutEvolution",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-donut-evolution"
       },
       {
         "component": "VueUiChestnut",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-chestnut"
       },
       {
         "component": "VueUiCandlestick",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-candlestick"
       },
       {
         "component": "VueUiAgePyramid",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-age-pyramid"
       },
       {
         "component": "VueUi3dBar",
-        "description": "Added user options configurable button titles for accessibility",
+        "description": "Add user options configurable button titles for accessibility",
         "link": "/docs#vue-ui-3d-bar"
       }
     ]
@@ -623,7 +634,7 @@
     "updates": [
       {
         "component": "VueUiDonut",
-        "description": "Added optional dataset series comment attribute",
+        "description": "Add optional dataset series comment attribute",
         "link": "/docs#vue-ui-donut"
       }
     ]
@@ -645,7 +656,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added optional dataset comments attribute",
+        "description": "Add optional dataset comments attribute",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -667,102 +678,102 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiXyCanvas",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-xy-canvas"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-waffle"
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-vertical-bar"
       },
       {
         "component": "VueUiTreemap",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-treemap"
       },
       {
         "component": "VueUiStripPlot",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-strip-plot"
       },
       {
         "component": "VueUiScatter",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-scatter"
       },
       {
         "component": "VueUiRings",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-rings"
       },
       {
         "component": "VueUiRadar",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-radar"
       },
       {
         "component": "VueUiQuickChart",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-quick-chart"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-quadrant"
       },
       {
         "component": "VueUiParallelCoordinatePlot",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-parallel-coordinate-plot"
       },
       {
         "component": "VueUiOnion",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-onion"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-nested-donuts"
       },
       {
         "component": "VueUiMolecule",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-molecule"
       },
       {
         "component": "VueUiGalaxy",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-galaxy"
       },
       {
         "component": "VueUiDonut",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-donut"
       },
       {
         "component": "VueUiCandlestick",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-candlestick"
       },
       {
         "component": "VueUiAgePyramid",
-        "description": "Added toggle tooltip user option",
+        "description": "Add toggle tooltip user option",
         "link": "/docs#vue-ui-age-pyramid"
       },
       {
         "component": "VueUiIcon",
-        "description": "Added tooltipDisabled icon",
+        "description": "Add tooltipDisabled icon",
         "link": "/docs#vue-ui-icon"
       }
     ]
@@ -825,7 +836,7 @@
     "updates": [
       {
         "component": "VueUiXyCanvas",
-        "description": "Added modulo config attribute to manage the number of time labels to display",
+        "description": "Add modulo config attribute to manage the number of time labels to display",
         "link": "/docs#vue-ui-xy-canvas"
       }
     ]
@@ -847,7 +858,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added config attributes to show time labels at a given mod position",
+        "description": "Add config attributes to show time labels at a given mod position",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -1153,7 +1164,7 @@
       },
       {
         "component": "VueUiSkeleton",
-        "description": "Added flow and parallelCoordinate plot skeletons",
+        "description": "Add flow and parallelCoordinate plot skeletons",
         "link": "/docs#vue-ui-skeleton"
       }
     ]
@@ -1289,12 +1300,12 @@
       },
       {
         "component": "VueUiAgePyramid",
-        "description": "Added toggleTable exposed method",
+        "description": "Add toggleTable exposed method",
         "link": "/docs#vue-ui-age-pyramid"
       },
       {
         "component": "VueUi3dBar",
-        "description": "Added toggleTable exposed method",
+        "description": "Add toggleTable exposed method",
         "link": "/docs#vue-ui-3d-bar"
       },
       {
@@ -1310,7 +1321,7 @@
     "updates": [
       {
         "component": "VueUiQuickChart",
-        "description": "Added optional animations",
+        "description": "Add optional animations",
         "link": "/docs#vue-ui-quick-chart"
       }
     ]
@@ -1332,7 +1343,7 @@
     "updates": [
       {
         "component": "VueUiParallelCoordinatePlot",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-parallel-coordinate-plot"
       }
     ]
@@ -1343,7 +1354,7 @@
     "updates": [
       {
         "component": "VueUiOnion",
-        "description": "Added optional start animation, added max track thickness config option",
+        "description": "Add optional start animation, added max track thickness config option",
         "link": "/docs#vue-ui-onion"
       }
     ]
@@ -1381,7 +1392,7 @@
     "updates": [
       {
         "component": "VueUiDashboard",
-        "description": "Added a togglable lock config option",
+        "description": "Add a togglable lock config option",
         "link": "/docs#vue-ui-dashboard"
       },
       {
@@ -1407,12 +1418,12 @@
     "updates": [
       {
         "component": "VueUiFLow",
-        "description": "Added new chart component",
+        "description": "Add new chart component",
         "link": "/docs#vue-ui-flow"
       },
       {
         "component": "VueUiIcon",
-        "description": "Added new chartFlow icon",
+        "description": "Add new chartFlow icon",
         "link": "/docs#vue-ui-icon"
       }
     ]
@@ -1423,7 +1434,7 @@
     "updates": [
       {
         "component": "VueUiXyCanvas",
-        "description": "Added skeleton loader fallback when dataset is absent or empty",
+        "description": "Add skeleton loader fallback when dataset is absent or empty",
         "link": "/docs#vue-ui-xy-canvas"
       }
     ]
@@ -1478,12 +1489,12 @@
     "updates": [
       {
         "component": "VueUiQuickChart",
-        "description": "Added shadow config options for donut",
+        "description": "Add shadow config options for donut",
         "link": "/docs#vue-ui-quick-chart"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added shadow config options",
+        "description": "Add shadow config options",
         "link": "/docs#vue-ui-nested-donuts"
       },
       {
@@ -1504,7 +1515,7 @@
     "updates": [
       {
         "component": "VueUiDonut",
-        "description": "Added shadow config option",
+        "description": "Add shadow config option",
         "link": "/docs#vue-ui-donut"
       }
     ]
@@ -1526,7 +1537,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added stacked mode toggle user action",
+        "description": "Add stacked mode toggle user action",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -1537,7 +1548,7 @@
     "updates": [
       {
         "component": "VueUiXyCanvas",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-xy-canvas"
       }
     ]
@@ -1595,7 +1606,7 @@
     "updates": [
       {
         "component": "VueUiWordCloud",
-        "description": "Added optional callback parameter to createWordCloudDatasetFromPlainText function to format text output",
+        "description": "Add optional callback parameter to createWordCloudDatasetFromPlainText function to format text output",
         "link": "/docs#vue-ui-word-cloud"
       }
     ]
@@ -1617,7 +1628,7 @@
     "updates": [
       {
         "component": "VueUiWordCloud",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-word-cloud"
       }
     ]
@@ -1638,87 +1649,87 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-waffle"
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-vertical-bar"
       },
       {
         "component": "VueUiTreemap",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-treemap"
       },
       {
         "component": "VueUiStripPlot",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-strip-plot"
       },
       {
         "component": "VueUiScatter",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-scatter"
       },
       {
         "component": "VueUiRings",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-rings"
       },
       {
         "component": "VueUiRadar",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-radar"
       },
       {
         "component": "VueUiQuickChart",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-quick-chart"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-quadrant"
       },
       {
         "component": "VueUiOnion",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-onion"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-nested-donuts"
       },
       {
         "component": "VueUiMolecule",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-molecule"
       },
       {
         "component": "VueUiGalaxy",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-galaxy"
       },
       {
         "component": "VueUiDonut",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-donut"
       },
       {
         "component": "VueUiCandlestick",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-candlestick"
       },
       {
         "component": "VueUiAgePyramid",
-        "description": "Added tooltip border config options",
+        "description": "Add tooltip border config options",
         "link": "/docs#vue-ui-age-pyramid"
       }
     ]
@@ -1729,7 +1740,7 @@
     "updates": [
       {
         "component": "",
-        "description": "Added themes to all chart components"
+        "description": "Add themes to all chart components"
       }
     ]
   },
@@ -1739,7 +1750,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added config options to hide or show axes and zero lines",
+        "description": "Add config options to hide or show axes and zero lines",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -1750,7 +1761,7 @@
     "updates": [
       {
         "component": "All components using color palettes",
-        "description": "Added customPalette config attribute to customize color palette."
+        "description": "Add customPalette config attribute to customize color palette."
       }
     ]
   },
@@ -1771,107 +1782,107 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-waffle"
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-vertical-bar"
       },
       {
         "component": "VueUiTreemap",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-treemap"
       },
       {
         "component": "VueUiStripPlot",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-strip-plot"
       },
       {
         "component": "VueUiScatter",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-scatter"
       },
       {
         "component": "VueUiRings",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-rings"
       },
       {
         "component": "VueUiRadar",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-radar"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-quadrant"
       },
       {
         "component": "VueUiOnion",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-onion"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-nested-donuts"
       },
       {
         "component": "VueUiMoodRadar",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-mood-radar"
       },
       {
         "component": "VueUiMolecule",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-molecule"
       },
       {
         "component": "VueUiGalaxy",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-galaxy"
       },
       {
         "component": "VueUiDumbbell",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-dumbbell"
       },
       {
         "component": "VueUiDonut",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-donut"
       },
       {
         "component": "VueUiDonutEvolution",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-donut-evolution"
       },
       {
         "component": "VueUiChestnut",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-chestnut"
       },
       {
         "component": "VueUiCandlestick",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-candlestick"
       },
       {
         "component": "VueUiAgePyramid",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-age-pyramid"
       },
       {
         "component": "VueUi3dBar",
-        "description": "Added data table inside an accordion for smoother open transition",
+        "description": "Add data table inside an accordion for smoother open transition",
         "link": "/docs#vue-ui-3d-bar"
       }
     ]
@@ -1882,7 +1893,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added dataset option to display serie name at start or end of lines and plot type series",
+        "description": "Add dataset option to display serie name at start or end of lines and plot type series",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -1893,107 +1904,107 @@
     "updates": [
       {
         "component": "VueUi3dBar",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-3d-bar"
       },
       {
         "component": "VueUiAgePyramid",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-age-pyramid"
       },
       {
         "component": "VueUiCandlestick",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-candlestick"
       },
       {
         "component": "VueUiChestnut",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-chestnut"
       },
       {
         "component": "VueUiDonutEvolution",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-donut-evolution"
       },
       {
         "component": "VueUiDonut",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-donut"
       },
       {
         "component": "VueUiDumbbell",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-dumbbell"
       },
       {
         "component": "VueUiGalaxy",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-galaxy"
       },
       {
         "component": "VueUiMolecule",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-molecule"
       },
       {
         "component": "VueUiMoodRadar",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-mood-radar"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-nested-donuts"
       },
       {
         "component": "VueUiOnion",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-onion"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-quadrant"
       },
       {
         "component": "VueUiRadar",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-radar"
       },
       {
         "component": "VueUiRings",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-rings"
       },
       {
         "component": "VueUiScatter",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-scatter"
       },
       {
         "component": "VueUiStripPlot",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-strip-plot"
       },
       {
         "component": "VueUiTreemap",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-treemap"
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-vertical-bar"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-waffle"
       },
       {
         "component": "VueUiXy",
-        "description": "Added close button on table",
+        "description": "Add close button on table",
         "link": "/docs#vue-ui-xy"
       },
       {
@@ -2009,17 +2020,17 @@
     "updates": [
       {
         "component": "VueUiWaffle",
-        "description": "Added optional animation on serie segregation",
+        "description": "Add optional animation on serie segregation",
         "link": "/docs#vue-ui-waffle"
       },
       {
         "component": "VueUiStripPlot",
-        "description": "Added discrete animation on datapoint hover",
+        "description": "Add discrete animation on datapoint hover",
         "link": "/docs#vue-ui-strip-plot"
       },
       {
         "component": "VueUiDonutEvolution",
-        "description": "Added discrete animation on datapoint selection zoom",
+        "description": "Add discrete animation on datapoint selection zoom",
         "link": "/docs#vue-ui-donut-evolution"
       }
     ]
@@ -2041,7 +2052,7 @@
     "updates": [
       {
         "component": "VueUiScatter",
-        "description": "Added useDistanceOpacity plot config option",
+        "description": "Add useDistanceOpacity plot config option",
         "link": "/docs#vue-ui-scatter"
       }
     ]
@@ -2057,7 +2068,7 @@
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added a warning when using negative values",
+        "description": "Add a warning when using negative values",
         "link": "/docs#vue-ui-vertical-bar"
       }
     ]
@@ -2126,7 +2137,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added optional bar gap between periods on bar types",
+        "description": "Add optional bar gap between periods on bar types",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -2137,7 +2148,7 @@
     "updates": [
       {
         "component": "VueUiScatter",
-        "description": "Added optional selectors on datapoint hover",
+        "description": "Add optional selectors on datapoint hover",
         "link": "/docs#vue-ui-scatter"
       }
     ]
@@ -2164,7 +2175,7 @@
     "updates": [
       {
         "component": "VueUiSparkline",
-        "description": "Added #before slot",
+        "description": "Add #before slot",
         "link": "/docs#vue-ui-sparkline"
       }
     ]
@@ -2175,7 +2186,7 @@
     "updates": [
       {
         "component": "VueUiDonutEvolution",
-        "description": "Added zoom feature",
+        "description": "Add zoom feature",
         "link": "/docs#vue-ui-donut-evolution"
       }
     ]
@@ -2208,7 +2219,7 @@
     "updates": [
       {
         "component": "VueUiQuickChart",
-        "description": "Added zoom component, usable on line and bar types",
+        "description": "Add zoom component, usable on line and bar types",
         "link": "/docs#vue-ui-quick-chart"
       }
     ]
@@ -2240,12 +2251,12 @@
       },
       {
         "component": "VueUiDonutEvolution",
-        "description": "Added config options to rotate xAxis time labels",
+        "description": "Add config options to rotate xAxis time labels",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiCandlestick",
-        "description": "Added config options to rotate xAxis time labels",
+        "description": "Add config options to rotate xAxis time labels",
         "link": "/docs#vue-ui-candlestick"
       }
     ]
@@ -2373,7 +2384,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added optional timeTag on serie hover",
+        "description": "Add optional timeTag on serie hover",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -2384,7 +2395,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added more datapoint options to further customize stacked mode",
+        "description": "Add more datapoint options to further customize stacked mode",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -2405,7 +2416,7 @@
     "updates": [
       {
         "component": "VueUiTableHeatmap",
-        "description": "Added optional datapoint shape & color attributes",
+        "description": "Add optional datapoint shape & color attributes",
         "link": "/docs#vue-ui-table-heatmap"
       }
     ]
@@ -2443,7 +2454,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added config option to stack series in individual scale mode",
+        "description": "Add config option to stack series in individual scale mode",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -2454,7 +2465,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added optional datapoint scaleMin & scaleMax attributes to further customize individual scales.",
+        "description": "Add optional datapoint scaleMin & scaleMax attributes to further customize individual scales.",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -2476,7 +2487,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added multiple y axis scales option",
+        "description": "Add multiple y axis scales option",
         "link": "/docs#vue-ui-xy"
       }
     ]
@@ -2487,7 +2498,7 @@
     "updates": [
       {
         "component": "VueUiDumbbell",
-        "description": "Added optional animation",
+        "description": "Add optional animation",
         "link": "/docs#vue-ui-dumbbell"
       }
     ]
@@ -2498,7 +2509,7 @@
     "updates": [
       {
         "component": "VueUiDumbbell",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-dumbbell"
       }
     ]
@@ -2509,7 +2520,7 @@
     "updates": [
       {
         "component": "VueUiStripPlot",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-strip-plot"
       }
     ]
@@ -2530,7 +2541,7 @@
     "updates": [
       {
         "component": "VueUiGauge",
-        "description": "Added config option to change the pointer type (rounded or pointy)",
+        "description": "Add config option to change the pointer type (rounded or pointy)",
         "link": "/docs#vue-ui-gauge"
       }
     ]
@@ -2551,17 +2562,17 @@
     "updates": [
       {
         "component": "VueUiRadar",
-        "description": "Added smooth animation on category segregation",
+        "description": "Add smooth animation on category segregation",
         "link": "/docs#vue-ui-radar"
       },
       {
         "component": "VueUiOnion",
-        "description": "Added smooth animation on series segregation",
+        "description": "Add smooth animation on series segregation",
         "link": "/docs#vue-ui-onion"
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added smooth animation on series segregation",
+        "description": "Add smooth animation on series segregation",
         "link": "/docs#vue-ui-vertical-bar"
       },
       {
@@ -2577,22 +2588,22 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added a border to lines of same color as background",
+        "description": "Add a border to lines of same color as background",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiQuickChart",
-        "description": "Added a border to lines of same color as background",
+        "description": "Add a border to lines of same color as background",
         "link": "/docs#vue-ui-quick-chart"
       },
       {
         "component": "VueUiChestnut",
-        "description": "Added opacity transition on serie selection",
+        "description": "Add opacity transition on serie selection",
         "link": "/docs#vue-ui-chestnut"
       },
       {
         "component": "VueUiSparkStackbar",
-        "description": "Added smooth animation on serie segregation",
+        "description": "Add smooth animation on serie segregation",
         "link": "/docs#vue-ui-sparkstackbar"
       }
     ]
@@ -2603,7 +2614,7 @@
     "updates": [
       {
         "component": "VueUiScatter",
-        "description": "Added marginal lines config option",
+        "description": "Add marginal lines config option",
         "link": "/docs#vue-ui-scatter"
       }
     ]
@@ -2614,7 +2625,7 @@
     "updates": [
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added smooth animation on series segregation",
+        "description": "Add smooth animation on series segregation",
         "link": "/docs#vue-ui-nested-donuts"
       }
     ]
@@ -2625,7 +2636,7 @@
     "updates": [
       {
         "component": "VueUiScatter",
-        "description": "Added marginal bars config option",
+        "description": "Add marginal bars config option",
         "link": "/docs#vue-ui-scatter"
       }
     ]
@@ -2636,7 +2647,7 @@
     "updates": [
       {
         "component": "",
-        "description": "Added a documentation directory in the dist directory."
+        "description": "Add a documentation directory in the dist directory."
       }
     ]
   },
@@ -2662,17 +2673,17 @@
     "updates": [
       {
         "component": "VueUiDonutEvolution",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-donut-evolution"
       },
       {
         "component": "VueUiXy",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiDonut",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-donut"
       },
       {
@@ -2682,47 +2693,47 @@
       },
       {
         "component": "VueUiGalaxy",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-galaxy"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-nested-donuts"
       },
       {
         "component": "VueUiOnion",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-onion"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-quadrant"
       },
       {
         "component": "VueUiRadar",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-radar"
       },
       {
         "component": "VueUiRings",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-rings"
       },
       {
         "component": "VueUiScatter",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-scatter"
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-vertical-bar"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Added segregation reactivity to #legend slot",
+        "description": "Add segregation reactivity to #legend slot",
         "link": "/docs#vue-ui-waffle"
       }
     ]
@@ -2749,7 +2760,7 @@
     "updates": [
       {
         "component": "VueUiSparkTrend",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-spark-trend"
       }
     ]
@@ -2760,7 +2771,7 @@
     "updates": [
       {
         "component": "VueUiDonut",
-        "description": "Added smooth animation on serie segregation",
+        "description": "Add smooth animation on serie segregation",
         "link": "/docs#vue-ui-donut"
       }
     ]
@@ -2771,7 +2782,7 @@
     "updates": [
       {
         "component": "VueUiQuickChart",
-        "description": "Added donut smooth animation on serie segregation",
+        "description": "Add donut smooth animation on serie segregation",
         "link": "/docs#vue-ui-quick-chart"
       }
     ]
@@ -2793,7 +2804,7 @@
     "updates": [
       {
         "component": "VueUiQuickChart",
-        "description": "Added optional axis labels",
+        "description": "Add optional axis labels",
         "link": "/docs#vue-ui-quick-chart"
       }
     ]
@@ -2804,7 +2815,7 @@
     "updates": [
       {
         "component": "VueUiQuadrant",
-        "description": "Added smooth zoom animation.",
+        "description": "Add smooth zoom animation.",
         "link": "/docs#vue-ui-quadrant"
       }
     ]
@@ -2826,7 +2837,7 @@
     "updates": [
       {
         "component": "VueUiCursor",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-cursor"
       }
     ]
@@ -2848,12 +2859,12 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added time label rotation config option",
+        "description": "Add time label rotation config option",
         "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiQuickChart",
-        "description": "Added time label rotation config option",
+        "description": "Add time label rotation config option",
         "link": "/docs#vue-ui-quick-chart"
       }
     ]
@@ -2864,7 +2875,7 @@
     "updates": [
       {
         "component": "VueUiQuickChart",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-quick-chart"
       }
     ]
@@ -2896,7 +2907,7 @@
     "updates": [
       {
         "component": "VueUiDonut",
-        "description": "Added #dataLabel scoped slot to enable custom data labels.",
+        "description": "Add #dataLabel scoped slot to enable custom data labels.",
         "link": "/docs#vue-ui-donut"
       }
     ]
@@ -2907,7 +2918,7 @@
     "updates": [
       {
         "component": "VueUiAccordion",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-accordion"
       }
     ]
@@ -2939,7 +2950,7 @@
     "updates": [
       {
         "component": "VueUiTableHeatmap",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-table-heatmap"
       }
     ]
@@ -2950,7 +2961,7 @@
     "updates": [
       {
         "component": "VueUiSparkStackbar",
-        "description": "Added serie segregation when selecting a legend item",
+        "description": "Add serie segregation when selecting a legend item",
         "link": "/docs#vue-ui-sparkstackbar"
       }
     ]
@@ -2961,7 +2972,7 @@
     "updates": [
       {
         "component": "VueUiIcon",
-        "description": "Added more icons",
+        "description": "Add more icons",
         "link": "/docs#vue-ui-icon"
       }
     ]
@@ -2972,7 +2983,7 @@
     "updates": [
       {
         "component": "VueUiScatter",
-        "description": "Added giftWrap plot config option to display the max area occupied by dataset's plots",
+        "description": "Add giftWrap plot config option to display the max area occupied by dataset's plots",
         "link": "/docs#vue-ui-scatter"
       }
     ]
@@ -3026,7 +3037,7 @@
     "updates": [
       {
         "component": "VueUiScatter",
-        "description": "Added dataset value.weight option to make a bubble chart.",
+        "description": "Add dataset value.weight option to make a bubble chart.",
         "link": "/docs#vue-ui-scatter"
       }
     ]
@@ -3037,7 +3048,7 @@
     "updates": [
       {
         "component": "VueUiIcon",
-        "description": "Added icons",
+        "description": "Add icons",
         "link": "/docs#vue-ui-icon"
       }
     ]
@@ -3048,7 +3059,7 @@
     "updates": [
       {
         "component": "VueUiWaffle",
-        "description": "Added the #cell scoped slot for custom cell contents.",
+        "description": "Add the #cell scoped slot for custom cell contents.",
         "link": "/docs#vue-ui-waffle"
       }
     ]
@@ -3059,7 +3070,7 @@
     "updates": [
       {
         "component": "VueUi3dBar",
-        "description": "Added the 'breakdown 'dataset option that will display donuts in the legend in stack mode.",
+        "description": "Add the 'breakdown 'dataset option that will display donuts in the legend in stack mode.",
         "link": "/docs#vue-ui-3d-bar"
       }
     ]
@@ -3070,7 +3081,7 @@
     "updates": [
       {
         "component": "VueUi3dBar",
-        "description": "Added stack mode through a new 'series' dataset option",
+        "description": "Add stack mode through a new 'series' dataset option",
         "link": "/docs#vue-ui-3d-bar"
       }
     ]
@@ -3103,7 +3114,7 @@
     "updates": [
       {
         "component": "VueUiQuadrant",
-        "description": "Added zoom & minimap",
+        "description": "Add zoom & minimap",
         "link": "/docs#vue-ui-quadrant"
       }
     ]
@@ -3114,7 +3125,7 @@
     "updates": [
       {
         "component": "VueUiTreemap",
-        "description": "Added new component",
+        "description": "Add new component",
         "link": "/docs#vue-ui-treemap"
       }
     ]
@@ -3135,7 +3146,7 @@
     "updates": [
       {
         "component": "VueUiSparkline",
-        "description": "Added config options to control chart width and dataLabel display",
+        "description": "Add config options to control chart width and dataLabel display",
         "link": "/docs#vue-ui-sparkline"
       }
     ]
@@ -3146,7 +3157,7 @@
     "updates": [
       {
         "component": "All components with tooltips",
-        "description": "Added exposed data in #tooltip-before & #tooltip-after scoped slots"
+        "description": "Add exposed data in #tooltip-before & #tooltip-after scoped slots"
       }
     ]
   },
@@ -3156,7 +3167,7 @@
     "updates": [
       {
         "component": "VueUiGalaxy",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       }
     ]
   },
@@ -3166,59 +3177,59 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiDonut",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiRadar",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiOnion",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiHeatmap",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiScatter",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiCandlestick",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiAgePyramid",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiRings",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiMolecule",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added #tooltip-before & #tooltip-after named slots"
+        "description": "Add #tooltip-before & #tooltip-after named slots"
       },
       {
         "component": "VueUiSparkStackbar",
@@ -3236,15 +3247,15 @@
       },
       {
         "component": "VueUiRadar",
-        "description": "Added config options to control the animation of the tooltip bar charts"
+        "description": "Add config options to control the animation of the tooltip bar charts"
       },
       {
         "component": "VueUiTableSparkline",
-        "description": "Added config options to control sparkline animations"
+        "description": "Add config options to control sparkline animations"
       },
       {
         "component": "VueUiSparkHistogram",
-        "description": "Added optional animation"
+        "description": "Add optional animation"
       }
     ]
   },
@@ -3254,15 +3265,15 @@
     "updates": [
       {
         "component": "VueUiSparkline",
-        "description": "Added optional animation"
+        "description": "Add optional animation"
       },
       {
         "component": "VueUiSparkbar",
-        "description": "Added optional animation"
+        "description": "Add optional animation"
       },
       {
         "component": "VueUiSparkStackbar",
-        "description": "Added optional animation"
+        "description": "Add optional animation"
       }
     ]
   },
@@ -3272,7 +3283,7 @@
     "updates": [
       {
         "component": "VueUiKpi",
-        "description": "Added new component"
+        "description": "Add new component"
       }
     ]
   },
@@ -3302,7 +3313,7 @@
     "updates": [
       {
         "component": "VueUiGalaxy",
-        "description": "Added new component"
+        "description": "Add new component"
       }
     ]
   },
@@ -3342,67 +3353,67 @@
     "updates": [
       {
         "component": "VueUiAgePyramid",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiCandlestick",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiChestnut",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiDonut",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiDonutEvolution",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiGauge",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiMoodRadar",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiOnion",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiQuadrant",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiRadar",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiRings",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiScatter",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiVerticalBar",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       },
       {
         "component": "VueUiXy",
-        "description": "Added #legend slot"
+        "description": "Add #legend slot"
       }
     ]
   },
@@ -3412,7 +3423,7 @@
     "updates": [
       {
         "component": "VueUiIcon",
-        "description": "Added new icons"
+        "description": "Add new icons"
       }
     ]
   },
@@ -3422,7 +3433,7 @@
     "updates": [
       {
         "component": "VueUiSparkgauge",
-        "description": "Added config option colors.showGradient"
+        "description": "Add config option colors.showGradient"
       },
       {
         "component": ".d.ts file",
@@ -3436,7 +3447,7 @@
     "updates": [
       {
         "component": "VueDataUi",
-        "description": "Added universal component 'VueDataUi', which can be used instead of individual components, by specifying the component name in the props."
+        "description": "Add universal component 'VueDataUi', which can be used instead of individual components, by specifying the component name in the props."
       }
     ]
   },
@@ -3446,7 +3457,7 @@
     "updates": [
       {
         "component": "VueUiVerticalBar",
-        "description": "Added missing prefix & suffix on parent category labels"
+        "description": "Add missing prefix & suffix on parent category labels"
       }
     ]
   },
@@ -3476,7 +3487,7 @@
     "updates": [
       {
         "component": "VueUiSparkgauge",
-        "description": "Added component"
+        "description": "Add component"
       }
     ]
   },
@@ -3486,7 +3497,7 @@
     "updates": [
       {
         "component": "VueUiWaffle",
-        "description": "Added config option 'caption' to display series info directly onto the chart only in horizontal mode (default)"
+        "description": "Add config option 'caption' to display series info directly onto the chart only in horizontal mode (default)"
       }
     ]
   },
@@ -3496,7 +3507,7 @@
     "updates": [
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added optional display of donut names"
+        "description": "Add optional display of donut names"
       }
     ]
   },
@@ -3506,7 +3517,7 @@
     "updates": [
       {
         "component": "VueUiNestedDonuts",
-        "description": "Added component"
+        "description": "Add component"
       }
     ]
   },
@@ -3516,7 +3527,7 @@
     "updates": [
       {
         "component": "VueUiDonut",
-        "description": "Added @selectDatapoint emit"
+        "description": "Add @selectDatapoint emit"
       }
     ]
   },
@@ -3536,7 +3547,7 @@
     "updates": [
       {
         "component": "VueUiOnion",
-        "description": "Added tooltip"
+        "description": "Add tooltip"
       }
     ]
   },
@@ -3546,7 +3557,7 @@
     "updates": [
       {
         "component": "VueUiAgePyramid",
-        "description": "Added offsetY option to serie titles"
+        "description": "Add offsetY option to serie titles"
       }
     ]
   },
@@ -3616,19 +3627,19 @@
     "updates": [
       {
         "component": "VueUiSparkline",
-        "description": "Added @selectDatapoint event"
+        "description": "Add @selectDatapoint event"
       },
       {
         "component": "VueUiSparkbar",
-        "description": "Added @selectDatapoint event"
+        "description": "Add @selectDatapoint event"
       },
       {
         "component": "VueUiSparkStackbar",
-        "description": "Added @selectDatapoint event"
+        "description": "Add @selectDatapoint event"
       },
       {
         "component": "VueUiSparkHistogram",
-        "description": "Added @selectDatapoint event"
+        "description": "Add @selectDatapoint event"
       }
     ]
   },
@@ -3638,7 +3649,7 @@
     "updates": [
       {
         "component": "",
-        "description": "Added customizable tooltips for all charts bearing tooltip config options."
+        "description": "Add customizable tooltips for all charts bearing tooltip config options."
       }
     ]
   },
@@ -3648,7 +3659,7 @@
     "updates": [
       {
         "component": "VueUiQuadrant",
-        "description": "Added showAsTag plotLabel option"
+        "description": "Add showAsTag plotLabel option"
       }
     ]
   },
@@ -3702,7 +3713,7 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added optional display of data table with sparklines"
+        "description": "Add optional display of data table with sparklines"
       }
     ]
   },
@@ -3722,7 +3733,7 @@
     "updates": [
       {
         "component": "VueUiHeatmap",
-        "description": "Added dynamic indicator on side legend showing on cell hover"
+        "description": "Add dynamic indicator on side legend showing on cell hover"
       },
       {
         "component": "VueUiVerticalBar",
@@ -3736,7 +3747,7 @@
     "updates": [
       {
         "component": "",
-        "description": "Added getVueDataUi config utility function to get the template of the config object for any component"
+        "description": "Add getVueDataUi config utility function to get the template of the config object for any component"
       }
     ]
   },
@@ -3766,31 +3777,31 @@
     "updates": [
       {
         "component": "VueUiXy",
-        "description": "Added prefix & suffix data label options"
+        "description": "Add prefix & suffix data label options"
       },
       {
         "component": "VueUiHeatmap",
-        "description": "Added prefix & suffix data label options"
+        "description": "Add prefix & suffix data label options"
       },
       {
         "component": "VueUiDonut",
-        "description": "Added prefix & suffix data label options"
+        "description": "Add prefix & suffix data label options"
       },
       {
         "component": "VueUiRings",
-        "description": "Added prefix & suffix data label options"
+        "description": "Add prefix & suffix data label options"
       },
       {
         "component": "VueUiSparkline",
-        "description": "Added prefix & suffix data label options"
+        "description": "Add prefix & suffix data label options"
       },
       {
         "component": "VueUiThermometer",
-        "description": "Added prefix & suffix data label options"
+        "description": "Add prefix & suffix data label options"
       },
       {
         "component": "VueUiWaffle",
-        "description": "Added prefix & suffix data label options"
+        "description": "Add prefix & suffix data label options"
       }
     ]
   },
@@ -4016,7 +4027,7 @@
     "updates": [
       {
         "component": "",
-        "description": "Added fullscreen toggle user option"
+        "description": "Add fullscreen toggle user option"
       }
     ]
   },
@@ -4026,7 +4037,7 @@
     "updates": [
       {
         "component": "VueUiSkeleton",
-        "description": "Added donutEvolution type"
+        "description": "Add donutEvolution type"
       }
     ]
   },
@@ -4076,7 +4087,7 @@
     "updates": [
       {
         "component": "VueUi3dBar",
-        "description": "Added tube shape option"
+        "description": "Add tube shape option"
       }
     ]
   },
@@ -4096,7 +4107,7 @@
     "updates": [
       {
         "component": "",
-        "description": "Added a #svg slot in most chart components, enabling customized svg extensions."
+        "description": "Add a #svg slot in most chart components, enabling customized svg extensions."
       }
     ]
   },
@@ -4126,7 +4137,7 @@
     "updates": [
       {
         "component": "VueUiIcon",
-        "description": "Added icons for all chart types"
+        "description": "Add icons for all chart types"
       }
     ]
   },
