@@ -42,11 +42,17 @@ function increment() {
         emit('change')
     }
 }
+
+const valueRatio = computed(() => (props.value - props.min) / (props.max - props.min));
     
 </script>
 
 <template>
-    <div class="inline-flex flex-row place-items-center">
+    <div class="inline-flex flex-row place-items-center relative">
+        <div style="position: absolute; top: 0; left: 24px; width: calc(100% - 48px); pointer-events: none;">
+            <div :style="{ width: `${valueRatio * 100}%`, background: buttonColor, height: '3px', position: 'absolute', top: '-2px', borderRadius: '3px' }"/>
+            <div :style="{ width: `${valueRatio * 100}%`, background: buttonColor, height: '24px', position: 'absolute', top: '2px', borderRadius: '3px', opacity: 0.2 }"/>
+        </div>
         <button :style="{ background: buttonColor, color: adaptColorToBackground(buttonColor) }" class="btn-left w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md" @click="decrement">-</button>
         <input class="numinput pl-2 min-w-[74px] max-w-[120px]" type="number" :min="min" :max="max" :step="step" :value="Math.round(Number(value) * 1000) / 1000" @input="emit('update:value', $event.target.value)" @change="emit('change')">
         <button :style="{ background: buttonColor, color: adaptColorToBackground(buttonColor) }" class="btn-right w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md" @click="increment">+</button>
