@@ -253,7 +253,7 @@ const componentTypes = ref([
   },
   {
     name: "Tables",
-    value: 3,
+    value: 4,
   },
   {
     name: "Rating",
@@ -324,7 +324,7 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
             </div>
         </div>
 
-        <!-- <div class="w-full my-12">
+         <!-- <div class="w-full my-12">
           <h3>Contributors</h3>
           <div class="flex flex-row flew-wrap gap-4 palce-items-center justify-center">
             <div v-for="contributor in contributors" class="flex flex-col gap-2 place-items-center justify-center">

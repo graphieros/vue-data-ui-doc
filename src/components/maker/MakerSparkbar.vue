@@ -11,6 +11,7 @@ import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
+import BaseNumberInput from "../BaseNumberInput.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -173,12 +174,12 @@ function getLabel(label) {
                 </thead>
                 <tbody>
                     <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="h-[36px]" type="number" v-model="ds.value" min="0" max="100" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="h-[36px]" type="number" v-model="ds.rounding" min="0" max="6" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="h-[36px] w-[82px]" type="text" v-model="ds.prefix" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="h-[36px] w-[82px]" type="text" v-model="ds.suffix" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="h-[36px] w-[82px]" type="number" v-model="ds.target" @change="saveDatasetToLocalStorage()"></td>
+                    <td><input class="h-[28px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                    <td><BaseNumberInput :buttonColor="ds.color" v-model:value="ds.value" :min="0" @change="saveDatasetToLocalStorage"/></td>
+                    <td><BaseNumberInput :buttonColor="ds.color" v-model:value="ds.rounding" :min="0" :max="12" @change="saveDatasetToLocalStorage"/></td>
+                    <td><input class="h-[28px] w-[82px]" type="text" v-model="ds.prefix" @change="saveDatasetToLocalStorage"></td>
+                    <td><input class="h-[28px] w-[82px]" type="text" v-model="ds.suffix" @change="saveDatasetToLocalStorage"></td>
+                    <td><BaseNumberInput :buttonColor="ds.color" v-model:value="ds.target" @change="saveDatasetToLocalStorage"/></td>
                 </tbody>
             </table>
         </div>
