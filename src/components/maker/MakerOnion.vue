@@ -11,6 +11,7 @@ import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
+import BaseNumberInput from "../BaseNumberInput.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -183,11 +184,11 @@ function getLabel(label) {
                     </thead>
                     <tbody>
                         <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[36px] w-[82px]" type="number" min="0" max="100" v-model="ds.percentage" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[36px] w-[82px]" type="number"  v-model="ds.value" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[36px] w-[48px]" type="text" v-model="ds.prefix" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[36px] w-[48px]" type="text" v-model="ds.suffix" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[28px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                        <td><BaseNumberInput :buttonColor="ds.color" v-model:value="ds.percentage" :min="0" :max="100"@change="saveDatasetToLocalStorage"/></td>
+                        <td><BaseNumberInput :buttonColor="ds.color" v-model:value="ds.value" @change="saveDatasetToLocalStorage"/></td>
+                        <td><input class="h-[28px] w-[100px]" type="text" v-model="ds.prefix" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[28px] w-[100px]" type="text" v-model="ds.suffix" @change="saveDatasetToLocalStorage"></td>
                     </tbody>
                 </table>
             </div>

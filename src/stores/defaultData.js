@@ -1762,7 +1762,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.animation.show', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
                     { key: 'style.animation.animationFrames', def: 60, type: 'range', min: 0, max: 300, label: ['animation', 'is', 'speed'], category: 'general' },
                     { key: 'style.labels.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'labels' },
-                    { key: 'style.labels.name.position', def: 'top', type: 'select', options: ['top', 'left'], label: 'position', category: 'labels' },
+                    { key: 'style.labels.name.position', def: 'top-left', type: 'select', options: ['left', 'top-left', 'top-center', 'top-right', 'right'], label: 'position', category: 'labels' },
                     { key: 'style.labels.name.width', def: '100%', type: 'text', label: ['width', '(', '%', '|', 'px', '|', 'rem', '|', 'em', ')'], category: 'labels' },
                     { key: 'style.labels.name.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'labels' },
                     { key: 'style.labels.name.bold', def: true, type: 'checkbox', label: ['name', 'is', 'bold'], category: 'labels' },
