@@ -185,106 +185,109 @@ function deleteValue(seriesIndex, itemIndex, valueIndex) {
 </script>
 
 <template>
-    <ClearStorageAndRefresh keyConfig="pcpConfig" keyDataset="pcpDataset" :key="`clear_${clearStep}`"/>
-    <DocLink to="vue-ui-parallel-coordinate-plot" name="VueUiParallelCoordinatePlot"/>
+    <div>
 
-    <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-        <transition name="fade">                
-            <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`" v-if="datasetItems.length">
-                <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
-                    <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
-                        <PinnedOffIcon v-if="isFixed"/>
-                        <PinIcon v-else/>
-                    </button>
-                    <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+        <ClearStorageAndRefresh keyConfig="pcpConfig" keyDataset="pcpDataset" :key="`clear_${clearStep}`"/>
+        <DocLink to="vue-ui-parallel-coordinate-plot" name="VueUiParallelCoordinatePlot"/>
+    
+        <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
+            <transition name="fade">                
+                <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`" v-if="datasetItems.length">
+                    <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
+                        <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
+                            <PinnedOffIcon v-if="isFixed"/>
+                            <PinIcon v-else/>
+                        </button>
+                        <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+                    </div>
+                    <VueDataUi component="VueUiParallelCoordinatePlot" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
                 </div>
-                <VueDataUi component="VueUiParallelCoordinatePlot" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-            </div>
-        </transition>
-    </div>
-
-    <details open>
-        <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-        <div class="flex flex-col gap-2">
-            <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
-                <button tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
-                <table>
-                    <thead>
-                        <th class="text-left text-xs h-[40px] px-2">Series name</th>
-                        <th class="text-left text-xs h-[40px] px-2">Color</th>
-                        <th class="text-left text-xs h-[40px] px-2">Shape</th>
-                        <th class="text-left text-xs h-[40px] px-2">Items</th>
-                    </thead>
-                    <tbody>
-                        <td><input type="text" v-model="datasetItems[i].name" @change="saveDatasetToLocalStorage"></td>
-                        <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                        <td>
-                            <div class="flex flex-row gap-2 place-items-center mr-2">
-                                <select v-model="datasetItems[i].shape">
-                                    <option>circle</option>
-                                    <option>triangle</option>
-                                    <option>diamond</option>
-                                    <option>square</option>
-                                    <option>pentagon</option>
-                                    <option>hexagon</option>
-                                    <option>star</option>
-                                </select>
-                                <div class="w-[40px]">
-                                    <BaseShape :shape="ds.shape" :color="ds.color" />
-                                </div>
-                            </div>
-                        </td>
-                        <td class="bg-[#FFFFFF10] p-2 rounded-md ">
-                            <div v-for="(item, j) in ds.series" class="flex flex-row gap-2 place-items-center justify-start">
-                                <button tabindex="0" @click="deleteItem(i,j)"><VueUiIcon name="close" stroke="#ff6400" :size="24" class="cursor-pointer" /></button>
-                                <div>
-                                    <label :for="`item_${i}_${j}`" class="text-xs mr-2">Item name:</label>
-                                    <input :id="`item_${i}_${j}`" type="text" v-model="datasetItems[i].series[j].name" @change="saveDatasetToLocalStorage">
-                                </div>
-                                <div class="flex flex-row gap-2 place-items-center">
-                                    <div v-for="(val, k) in item.values" class="relative mr-4">
-                                        <label :for="`item_${i}_${j}_${k}`" class="text-xs mr-2">Y Axis {{ k +1 }}</label>
-                                        <input class="w-[100px]" :id="`item_${i}_${j}_${k}`" type="number" v-model="datasetItems[i].series[j].values[k]" @change="saveDatasetToLocalStorage">
-                                        <button tabindex="0" @click="deleteValue(i,j,k)"><VueUiIcon name="close" stroke="#ff6400" :size="16" class="cursor-pointer absolute top-1/2 -translate-y-1/2 -right-4" /></button>
+            </transition>
+        </div>
+    
+        <details open>
+            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+            <div class="flex flex-col gap-2">
+                <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+                    <button tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
+                    <table>
+                        <thead>
+                            <th class="text-left text-xs h-[40px] px-2">Series name</th>
+                            <th class="text-left text-xs h-[40px] px-2">Color</th>
+                            <th class="text-left text-xs h-[40px] px-2">Shape</th>
+                            <th class="text-left text-xs h-[40px] px-2">Items</th>
+                        </thead>
+                        <tbody>
+                            <td><input type="text" v-model="datasetItems[i].name" @change="saveDatasetToLocalStorage"></td>
+                            <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                            <td>
+                                <div class="flex flex-row gap-2 place-items-center mr-2">
+                                    <select v-model="datasetItems[i].shape">
+                                        <option>circle</option>
+                                        <option>triangle</option>
+                                        <option>diamond</option>
+                                        <option>square</option>
+                                        <option>pentagon</option>
+                                        <option>hexagon</option>
+                                        <option>star</option>
+                                    </select>
+                                    <div class="w-[40px]">
+                                        <BaseShape :shape="ds.shape" :color="ds.color" />
                                     </div>
-                                    <button class="h-[24px] w-[24px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addValue(i, j)"><PlusIcon/></button>
                                 </div>
-                            </div>
-                            <button class="mt-4 h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addItem(i)"><PlusIcon/></button>
-                        </td>
-                    </tbody>
-                </table>
+                            </td>
+                            <td class="bg-[#FFFFFF10] p-2 rounded-md ">
+                                <div v-for="(item, j) in ds.series" class="flex flex-row gap-2 place-items-center justify-start">
+                                    <button tabindex="0" @click="deleteItem(i,j)"><VueUiIcon name="close" stroke="#ff6400" :size="24" class="cursor-pointer" /></button>
+                                    <div>
+                                        <label :for="`item_${i}_${j}`" class="text-xs mr-2">Item name:</label>
+                                        <input :id="`item_${i}_${j}`" type="text" v-model="datasetItems[i].series[j].name" @change="saveDatasetToLocalStorage">
+                                    </div>
+                                    <div class="flex flex-row gap-2 place-items-center">
+                                        <div v-for="(val, k) in item.values" class="relative mr-4">
+                                            <label :for="`item_${i}_${j}_${k}`" class="text-xs mr-2">Y Axis {{ k +1 }}</label>
+                                            <input class="w-[100px]" :id="`item_${i}_${j}_${k}`" type="number" v-model="datasetItems[i].series[j].values[k]" @change="saveDatasetToLocalStorage">
+                                            <button tabindex="0" @click="deleteValue(i,j,k)"><VueUiIcon name="close" stroke="#ff6400" :size="16" class="cursor-pointer absolute top-1/2 -translate-y-1/2 -right-4" /></button>
+                                        </div>
+                                        <button class="h-[24px] w-[24px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addValue(i, j)"><PlusIcon/></button>
+                                    </div>
+                                </div>
+                                <button class="mt-4 h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addItem(i)"><PlusIcon/></button>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex flex-row gap-4 mt-4 mb-6">
+                <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
+                    <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
+                </Tooltip>
             </div>
-            <div class="flex flex-row gap-4 mt-4 mb-6">
-            <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-            </Tooltip>
+            </div>
+        </details>
+    
+        <details open class="mt-6" v-if="makerTranslations.labels">
+            <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+    
+            <div class="flex justify-end">
+                <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+            </div>
+    
+            <MakerKnobs
+                :categories="CONFIG_CATEGORIES"
+                :model="CONFIG_MODEL"
+                @change="forceChartUpdate"
+            />
+        </details>
+    
+        <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+            <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+            <ComponentContent
+                :dataset="datasetItems"
+                :config="finalConfig"
+                componentName="VueUiParallelCoordinatePlot"
+                configName="vue_ui_parallel_coordinate_plot"
+                @click="() => copyComponent('componentContent', store)"
+            />          
         </div>
-        </div>
-    </details>
-
-    <details open class="mt-6" v-if="makerTranslations.labels">
-        <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-
-        <div class="flex justify-end">
-            <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
-        </div>
-
-        <MakerKnobs
-            :categories="CONFIG_CATEGORIES"
-            :model="CONFIG_MODEL"
-            @change="forceChartUpdate"
-        />
-    </details>
-
-    <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
-        <ComponentContent
-            :dataset="datasetItems"
-            :config="finalConfig"
-            componentName="VueUiParallelCoordinatePlot"
-            configName="vue_ui_parallel_coordinate_plot"
-            @click="() => copyComponent('componentContent', store)"
-        />          
     </div>
 </template>

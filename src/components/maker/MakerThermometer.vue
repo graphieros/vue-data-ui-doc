@@ -119,75 +119,78 @@ function getLabel(label) {
 </script>
 
 <template>
-    <ClearStorageAndRefresh keyConfig="thermometerConfig" keyDataset="thermometerDataset" :key="`clear_${clearStep}`"/>
-    <DocLink to="vue-ui-thermometer" name="VueUiThermometer"/>
+    <div>
 
-<div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-    <transition name="fade">                
-        <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[250px]' : 'w-full mx-auto max-w-[250px]'}`">
-            <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
-                <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
-                    <PinnedOffIcon v-if="isFixed"/>
-                    <PinIcon v-else/>
-                </button>
+        <ClearStorageAndRefresh keyConfig="thermometerConfig" keyDataset="thermometerDataset" :key="`clear_${clearStep}`"/>
+        <DocLink to="vue-ui-thermometer" name="VueUiThermometer"/>
+    
+    <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
+        <transition name="fade">                
+            <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[250px]' : 'w-full mx-auto max-w-[250px]'}`">
+                <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
+                    <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
+                        <PinnedOffIcon v-if="isFixed"/>
+                        <PinIcon v-else/>
+                    </button>
+                    <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+                </div>
+                <VueUiThermometer :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
+            </div>
+        </transition>
+    </div>
+    
+    <details open>
+        <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+        <div class="flex flex-col gap-2">
+            <div :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`">
+                <table>
+                    <thead>
+                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.value[store.lang] }}</th>
+                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.from[store.lang] }}</th>
+                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.to[store.lang] }}</th>
+                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.scale[store.lang] }}</th>
+                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }} : {{ makerTranslations.labels.from[store.lang] }}</th>
+                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }} : {{ makerTranslations.labels.to[store.lang] }}</th>
+    
+                    </thead>
+                    <tbody>
+                        <td><input class="w-[82px]" type="number" v-model="dataset.value" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="w-[82px]" type="number" v-model="dataset.from" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="w-[82px]" type="number" v-model="dataset.to" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="w-[82px]" type="number" v-model="dataset.steps" @change="saveDatasetToLocalStorage"></td>
+                        <td><input type="color" v-model="dataset.colors.from" @change="saveDatasetToLocalStorage"></td>
+                        <td><input type="color" v-model="dataset.colors.to" @change="saveDatasetToLocalStorage"></td>
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </details>
+    
+    <details open class="mt-6" v-if="makerTranslations.labels">
+            <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+    
+            <div class="flex justify-end">
                 <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
             </div>
-            <VueUiThermometer :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
+    
+            <MakerKnobs
+                :categories="CONFIG_CATEGORIES"
+                :model="CONFIG_MODEL"
+                @change="forceChartUpdate"
+            />
+        </details>
+    
+        <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+            <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+            <ComponentContent
+                :dataset="dataset"
+                :config="finalConfig"
+                componentName="VueUiThermometer"
+                configName="vue_ui_thermometer"
+                @click="() => copyComponent('componentContent', store)"
+            />    
         </div>
-    </transition>
-</div>
-
-<details open>
-    <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-    <div class="flex flex-col gap-2">
-        <div :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`">
-            <table>
-                <thead>
-                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.value[store.lang] }}</th>
-                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.from[store.lang] }}</th>
-                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.to[store.lang] }}</th>
-                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.scale[store.lang] }}</th>
-                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }} : {{ makerTranslations.labels.from[store.lang] }}</th>
-                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }} : {{ makerTranslations.labels.to[store.lang] }}</th>
-
-                </thead>
-                <tbody>
-                    <td><input class="w-[82px]" type="number" v-model="dataset.value" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="w-[82px]" type="number" v-model="dataset.from" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="w-[82px]" type="number" v-model="dataset.to" @change="saveDatasetToLocalStorage"></td>
-                    <td><input class="w-[82px]" type="number" v-model="dataset.steps" @change="saveDatasetToLocalStorage"></td>
-                    <td><input type="color" v-model="dataset.colors.from" @change="saveDatasetToLocalStorage"></td>
-                    <td><input type="color" v-model="dataset.colors.to" @change="saveDatasetToLocalStorage"></td>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-</details>
-
-<details open class="mt-6" v-if="makerTranslations.labels">
-        <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-
-        <div class="flex justify-end">
-            <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
-        </div>
-
-        <MakerKnobs
-            :categories="CONFIG_CATEGORIES"
-            :model="CONFIG_MODEL"
-            @change="forceChartUpdate"
-        />
-    </details>
-
-    <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
-        <ComponentContent
-            :dataset="dataset"
-            :config="finalConfig"
-            componentName="VueUiThermometer"
-            configName="vue_ui_thermometer"
-            @click="() => copyComponent('componentContent', store)"
-        />    
     </div>
     
 </template>

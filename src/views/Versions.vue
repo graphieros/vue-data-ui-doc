@@ -1621,6 +1621,10 @@ const KPIS = computed(() => {
                 <div class="w-full max-w-[800px] mx-auto mt-12">
                   <VueUiTable :key="`table_${step}`" v-if="!isLoadingLine && !!data" :dataset="tableDataset" :config="isDarkMode ? tableConfigDarkMode: tableConfig"/>
                 </div>
+
+                <div class="w-full max-w-[800] mx-auto py-6">
+                  :)
+                </div>
             </div>
         </div>
     </div>

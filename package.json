@@ -9,12 +9,14 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "npx cypress open",
-    "upgrade": "node upgrade.cjs"
+    "upgrade": "node upgrade.cjs",
+    "site": "node publish-site.cjs"
   },
   "dependencies": {
     "cypress": "^13.4.0",
     "pinia": "^2.1.6",
     "prismjs": "^1.29.0",
+    "ssh2": "^1.16.0",
     "vue": "^3.3.4",
     "vue-data-ui": "^2.3.14",
     "vue-router": "^4.0.13",

@@ -1,43 +1,43 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, defineAsyncComponent } from "vue";
 import { useMainStore } from "../stores";
 import { useMakerStore } from "../stores/maker"
-import { CheckIcon, InfoSquareRoundedIcon } from "vue-tabler-icons"
-import MakerXy from "../components/maker/MakerXy.vue"
-import MakerDonut from "../components/maker/MakerDonut.vue"
-import MakerWaffle from "../components/maker/MakerWaffle.vue"
-import MakerRadar from "../components/maker/MakerRadar.vue"
-import MakerGauge from "../components/maker/MakerGauge.vue"
-import MakerOnion from "../components/maker/MakerOnion.vue"
-import MakerQuadrant from "../components/maker/MakerQuadrant.vue"
-import MakerWheel from "../components/maker/MakerWheel.vue"
-import MakerTiremarks from "../components/maker/MakerTiremarks.vue"
-import MakerChestnut from "../components/maker/MakerChestnut.vue"
-import MakerVerticalBar from "../components/maker/MakerVerticalBar.vue";
-import MakerHeatmap from "../components/maker/MakerHeatmap.vue";
-import MakerSparkline from "../components/maker/MakerSparkline.vue";
-import MakerSparkStackbar from "../components/maker/MakerSparkStackbar.vue";
-import MakerSparkbar from "../components/maker/MakerSparkbar.vue";
-import MakerSparkHistogram from "../components/maker/MakerSparkHistogram.vue";
-import MakerDonutEvolution from "../components/maker/MakerDonutEvolution.vue";
-import MakerRings from "../components/maker/MakerRings.vue";
-import MakerScatter from "../components/maker/MakerScatter.vue";
-import MakerPyramid from "../components/maker/MakerPyramid.vue";
-import MakerMoodRadar from "../components/maker/MakerMoodRadar.vue";
-import MakerRelationCircle from "../components/maker/MakerRelationCircle.vue";
-import MakerThermometer from "../components/maker/MakerThermometer.vue";
-import Maker3dBar from "../components/maker/Maker3dBar.vue";
-import MakerNestedDonuts from "../components/maker/MakerNestedDonuts.vue";
-import MakerSparkgauge from "../components/maker/MakerSparkgauge.vue";
-import MakerGalaxy from "../components/maker/MakerGalaxy.vue";
-import MakerKpi from "../components/maker/MakerKpi.vue";
-import MakerStripPlot from "../components/maker/MakerStripPlot.vue";
-import MakerVueUiWordCloud from "../components/maker/MakerVueUiWordCloud.vue";
-import MakerFlow from "../components/maker/MakerFlow.vue";
 import Tooltip from "../components/FlexibleTooltip.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
-import MakerPcp from "../components/maker/MakerPcp.vue";
-import MakerCarouselTable from "../components/maker/MakerCarouselTable.vue";
+
+const MakerXy = defineAsyncComponent(() => import('../components/maker/MakerXy.vue'));
+const MakerDonut = defineAsyncComponent(() => import('../components/maker/MakerDonut.vue'));
+const MakerWaffle = defineAsyncComponent(() => import('../components/maker/MakerWaffle.vue'));
+const MakerRadar = defineAsyncComponent(() => import('../components/maker/MakerRadar.vue'));
+const MakerGauge = defineAsyncComponent(() => import('../components/maker/MakerGauge.vue'));
+const MakerOnion = defineAsyncComponent(() => import('../components/maker/MakerOnion.vue'));
+const MakerQuadrant = defineAsyncComponent(() => import('../components/maker/MakerQuadrant.vue'));
+const MakerWheel = defineAsyncComponent(() => import('../components/maker/MakerWheel.vue'));
+const MakerTiremarks = defineAsyncComponent(() => import('../components/maker/MakerTiremarks.vue'));
+const MakerChestnut = defineAsyncComponent(() => import('../components/maker/MakerChestnut.vue'));
+const MakerVerticalBar = defineAsyncComponent(() => import('../components/maker/MakerVerticalBar.vue'));
+const MakerHeatmap = defineAsyncComponent(() => import('../components/maker/MakerHeatmap.vue'));
+const MakerSparkline = defineAsyncComponent(() => import('../components/maker/MakerSparkline.vue'));
+const MakerSparkStackbar = defineAsyncComponent(() => import('../components/maker/MakerSparkStackbar.vue'));
+const MakerSparkbar = defineAsyncComponent(() => import('../components/maker/MakerSparkbar.vue'));
+const MakerSparkHistogram = defineAsyncComponent(() => import('../components/maker/MakerSparkHistogram.vue'));
+const MakerDonutEvolution = defineAsyncComponent(() => import('../components/maker/MakerDonutEvolution.vue'));
+const MakerRings = defineAsyncComponent(() => import('../components/maker/MakerRings.vue'));
+const MakerScatter = defineAsyncComponent(() => import('../components/maker/MakerScatter.vue'));
+const MakerPyramid = defineAsyncComponent(() => import('../components/maker/MakerPyramid.vue'));
+const MakerMoodRadar = defineAsyncComponent(() => import('../components/maker/MakerMoodRadar.vue'));
+const MakerRelationCircle = defineAsyncComponent(() => import('../components/maker/MakerRelationCircle.vue'));
+const MakerThermometer = defineAsyncComponent(() => import('../components/maker/MakerThermometer.vue'));
+const Maker3dBar = defineAsyncComponent(() => import('../components/maker/Maker3dBar.vue'));
+const MakerNestedDonuts = defineAsyncComponent(() => import('../components/maker/MakerNestedDonuts.vue'));
+const MakerSparkgauge = defineAsyncComponent(() => import('../components/maker/MakerSparkgauge.vue'));
+const MakerGalaxy = defineAsyncComponent(() => import('../components/maker/MakerGalaxy.vue'));
+const MakerKpi = defineAsyncComponent(() => import('../components/maker/MakerKpi.vue'));
+const MakerStripPlot = defineAsyncComponent(() => import('../components/maker/MakerStripPlot.vue'));
+const MakerVueUiWordCloud = defineAsyncComponent(() => import('../components/maker/MakerVueUiWordCloud.vue'));
+const MakerFlow = defineAsyncComponent(() => import('../components/maker/MakerFlow.vue'));
+const MakerCarouselTable = defineAsyncComponent(() => import('../components/maker/MakerCarouselTable.vue'));
+const MakerPcp = defineAsyncComponent(() => import('../components/maker/MakerPcp.vue'));
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -116,7 +116,7 @@ function selectChart(opt) {
 <template>
     <ConfirmCopy />
 
-    <div class="w-full max-w-[1400px] mx-auto overflow-visible">
+    <div class="w-full max-w-[1400px] mx-auto overflow-visible min-h-[3000px]">
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
             <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>
@@ -163,39 +163,105 @@ function selectChart(opt) {
                 </div>
 
         </div>
-
-        <MakerXy v-if="selectedChart.name === 'VueUiXy'"/>
-        <MakerDonut v-if="selectedChart.name === 'VueUiDonut'"/>
-        <MakerWaffle v-if="selectedChart.name === 'VueUiWaffle'"/>
-        <MakerRadar v-if="selectedChart.name === 'VueUiRadar'"/>
-        <MakerGauge v-if="selectedChart.name === 'VueUiGauge'"/>
-        <MakerOnion v-if="selectedChart.name === 'VueUiOnion'"/>
-        <MakerQuadrant v-if="selectedChart.name === 'VueUiQuadrant'"/>
-        <MakerWheel v-if="selectedChart.name === 'VueUiWheel'"/>
-        <MakerTiremarks v-if="selectedChart.name === 'VueUiTiremarks'"/>
-        <MakerChestnut v-if="selectedChart.name === 'VueUiChestnut'"/>
-        <MakerVerticalBar v-if="selectedChart.name === 'VueUiVerticalBar'"/>
-        <MakerHeatmap v-if="selectedChart.name === 'VueUiHeatmap'"/>
-        <MakerSparkline v-if="selectedChart.name === 'VueUiSparkline'"/>
-        <MakerSparkStackbar v-if="selectedChart.name === 'VueUiSparkStackbar'"/>
-        <MakerSparkbar v-if="selectedChart.name === 'VueUiSparkbar'"/>
-        <MakerSparkHistogram v-if="selectedChart.name === 'VueUiSparkHistogram'"/>
-        <MakerDonutEvolution v-if="selectedChart.name === 'VueUiDonutEvolution'"/>
-        <MakerRings v-if="selectedChart.name === 'VueUiRings'"/>
-        <MakerScatter v-if="selectedChart.name === 'VueUiScatter'"/>
-        <MakerPyramid v-if="selectedChart.name === 'VueUiAgePyramid'"/>
-        <MakerMoodRadar v-if="selectedChart.name === 'VueUiMoodRadar'"/>
-        <MakerRelationCircle v-if="selectedChart.name === 'VueUiRelationCircle'"/>
-        <MakerThermometer v-if="selectedChart.name === 'VueUiThermometer'" />
-        <Maker3dBar v-if="selectedChart.name === 'VueUi3dBar'" />
-        <MakerNestedDonuts v-if="selectedChart.name === 'VueUiNestedDonuts'" />
-        <MakerSparkgauge v-if="selectedChart.name === 'VueUiSparkgauge'" />
-        <MakerGalaxy v-if="selectedChart.name === 'VueUiGalaxy'" />
-        <MakerKpi v-if="selectedChart.name === 'VueUiKpi'" />
-        <MakerStripPlot v-if="selectedChart.name === 'VueUiStripPlot'" />
-        <MakerVueUiWordCloud v-if="selectedChart.name === 'VueUiWordCloud'" />
-        <MakerFlow v-if="selectedChart.name === 'VueUiFlow'" />
-        <MakerPcp v-if="selectedChart.name === 'VueUiParallelCoordinatePlot'" />
-        <MakerCarouselTable v-if="selectedChart.name === 'VueUiCarouselTable'" />
+        
+        <Transition name="fade">
+            <MakerXy v-if="selectedChart.name === 'VueUiXy'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerDonut v-if="selectedChart.name === 'VueUiDonut'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerWaffle v-if="selectedChart.name === 'VueUiWaffle'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerRadar v-if="selectedChart.name === 'VueUiRadar'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerGauge v-if="selectedChart.name === 'VueUiGauge'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerOnion v-if="selectedChart.name === 'VueUiOnion'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerQuadrant v-if="selectedChart.name === 'VueUiQuadrant'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerWheel v-if="selectedChart.name === 'VueUiWheel'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerTiremarks v-if="selectedChart.name === 'VueUiTiremarks'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerChestnut v-if="selectedChart.name === 'VueUiChestnut'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerVerticalBar v-if="selectedChart.name === 'VueUiVerticalBar'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerHeatmap v-if="selectedChart.name === 'VueUiHeatmap'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerStripPlot v-if="selectedChart.name === 'VueUiStripPlot'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerSparkline v-if="selectedChart.name === 'VueUiSparkline'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerSparkStackbar v-if="selectedChart.name === 'VueUiSparkStackbar'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerSparkbar v-if="selectedChart.name === 'VueUiSparkbar'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerSparkHistogram v-if="selectedChart.name === 'VueUiSparkHistogram'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerDonutEvolution v-if="selectedChart.name === 'VueUiDonutEvolution'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerRings v-if="selectedChart.name === 'VueUiRings'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerScatter v-if="selectedChart.name === 'VueUiScatter'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerPyramid v-if="selectedChart.name === 'VueUiAgePyramid'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerMoodRadar v-if="selectedChart.name === 'VueUiMoodRadar'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerRelationCircle v-if="selectedChart.name === 'VueUiRelationCircle'"/>
+        </Transition>
+        <Transition name="fade">
+            <MakerThermometer v-if="selectedChart.name === 'VueUiThermometer'" />
+        </Transition>
+        <Transition name="fade">
+            <Maker3dBar v-if="selectedChart.name === 'VueUi3dBar'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerNestedDonuts v-if="selectedChart.name === 'VueUiNestedDonuts'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerSparkgauge v-if="selectedChart.name === 'VueUiSparkgauge'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerGalaxy v-if="selectedChart.name === 'VueUiGalaxy'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerKpi v-if="selectedChart.name === 'VueUiKpi'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerVueUiWordCloud v-if="selectedChart.name === 'VueUiWordCloud'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerFlow v-if="selectedChart.name === 'VueUiFlow'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerPcp v-if="selectedChart.name === 'VueUiParallelCoordinatePlot'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerCarouselTable v-if="selectedChart.name === 'VueUiCarouselTable'" />
+        </Transition>
     </div>
 </template>

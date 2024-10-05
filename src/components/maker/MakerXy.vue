@@ -232,7 +232,7 @@ const accordionConfig = ref(
 </script>
 
 <template>
-
+    <div>
         <ClearStorageAndRefresh keyConfig="xyConfig" keyDataset="xyDataset" :key="`clear_${clearStep}`"/>
         <DocLink to="vue-ui-xy" name="VueUiXy"/>
 
@@ -360,6 +360,7 @@ const accordionConfig = ref(
                 />
             </div>
         </div>
+    </div>
 </template>
 
 <style scoped>

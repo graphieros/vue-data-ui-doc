@@ -139,83 +139,85 @@ function getLabel(label) {
 </script>
 
 <template>
+    <div>
 
-<ClearStorageAndRefresh keyConfig="sparkHistogramConfig" keyDataset="sparkHistogramDataset" :key="`clear_${clearStep}`"/>
-<DocLink to="vue-ui-sparkhistogram" name="VueUiSparkHistogram"/>
-
-<div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-    <transition name="fade">                
-        <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`" v-if="datasetItems.length">
-            <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
-                <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
-                    <PinnedOffIcon v-if="isFixed"/>
-                    <PinIcon v-else/>
-                </button>
+        <ClearStorageAndRefresh keyConfig="sparkHistogramConfig" keyDataset="sparkHistogramDataset" :key="`clear_${clearStep}`"/>
+        <DocLink to="vue-ui-sparkhistogram" name="VueUiSparkHistogram"/>
+        
+        <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
+            <transition name="fade">                
+                <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`" v-if="datasetItems.length">
+                    <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
+                        <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
+                            <PinnedOffIcon v-if="isFixed"/>
+                            <PinIcon v-else/>
+                        </button>
+                        <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+                    </div>
+                    <div class="w-full bg-white p-2">
+                        <VueUiSparkHistogram :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                    </div>
+                </div>
+            </transition>
+        </div>
+        
+        <details open>
+            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+            <div class="flex flex-row gap-2 w-full overflow-auto">
+                <div v-for="(ds, i) in datasetItems" :class="`shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`" :style="`background:${ds.color}30`">
+                    <div class="relative flex flex-col gap-2">
+                        <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2 -right-2" /></button>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm text-left">{{ translations.maker.labels.period[store.lang] }} : {{ makerTranslations.labels.labels[store.lang] }}</label>
+                            <input class="h-[36px] w-[100px]" type="text" v-model="ds.timeLabel" @change="saveDatasetToLocalStorage">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm text-left">{{ makerTranslations.labels.value[store.lang] }} : {{ makerTranslations.labels.labels[store.lang] }}</label>
+                            <input class="h-[36px] w-[100px]" type="text" v-model="ds.valueLabel" @change="saveDatasetToLocalStorage">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm text-left">{{ makerTranslations.labels.value[store.lang] }}</label>
+                            <input class="h-[36px] w-[100px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm text-left">{{ makerTranslations.labels.opacity[store.lang] }} : {{ ds.intensity }} </label>
+                            <input class="h-[36px] w-[100px] accent-app-blue" type="range" min="0" max="1" step="0.01" v-model="ds.intensity" @change="saveDatasetToLocalStorage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-4 mt-4 mb-6">
+                <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
+                    <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
+                </Tooltip>
+            </div>
+        </details>
+        
+        <details open class="mt-6" v-if="makerTranslations.labels">
+            <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+        
+            <div class="flex justify-end">
                 <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
             </div>
-            <div class="w-full bg-white p-2">
-                <VueUiSparkHistogram :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-            </div>
-        </div>
-    </transition>
-</div>
-
-<details open>
-    <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-    <div class="flex flex-row gap-2 w-full overflow-auto">
-        <div v-for="(ds, i) in datasetItems" :class="`shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`" :style="`background:${ds.color}30`">
-            <div class="relative flex flex-col gap-2">
-                <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2 -right-2" /></button>
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm text-left">{{ translations.maker.labels.period[store.lang] }} : {{ makerTranslations.labels.labels[store.lang] }}</label>
-                    <input class="h-[36px] w-[100px]" type="text" v-model="ds.timeLabel" @change="saveDatasetToLocalStorage">
-                </div>
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm text-left">{{ makerTranslations.labels.value[store.lang] }} : {{ makerTranslations.labels.labels[store.lang] }}</label>
-                    <input class="h-[36px] w-[100px]" type="text" v-model="ds.valueLabel" @change="saveDatasetToLocalStorage">
-                </div>
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm text-left">{{ makerTranslations.labels.value[store.lang] }}</label>
-                    <input class="h-[36px] w-[100px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage">
-                </div>
-                <div class="flex flex-col gap-2">
-                    <label class="text-sm text-left">{{ makerTranslations.labels.opacity[store.lang] }} : {{ ds.intensity }} </label>
-                    <input class="h-[36px] w-[100px] accent-app-blue" type="range" min="0" max="1" step="0.01" v-model="ds.intensity" @change="saveDatasetToLocalStorage">
-                </div>
-            </div>
+        
+            <MakerKnobs
+                :categories="CONFIG_CATEGORIES"
+                :model="CONFIG_MODEL"
+                @change="forceChartUpdate"
+            />
+        </details>
+        
+        <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+            <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+            <ComponentContent
+                :dataset="datasetItems.map(({value, valueLabel, timeLabel, intensity}) => {return {value, valueLabel, timeLabel, intensity}})"
+                :config="finalConfig"
+                componentName="VueUiSparkHistogram"
+                configName="vue_ui_sparkhistogram"
+                @click="() => copyComponent('componentContent', store)"
+            />            
         </div>
     </div>
-    <div class="flex flex-row gap-4 mt-4 mb-6">
-        <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-            <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-        </Tooltip>
-    </div>
-</details>
-
-<details open class="mt-6" v-if="makerTranslations.labels">
-    <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-
-    <div class="flex justify-end">
-        <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
-    </div>
-
-    <MakerKnobs
-        :categories="CONFIG_CATEGORIES"
-        :model="CONFIG_MODEL"
-        @change="forceChartUpdate"
-    />
-</details>
-
-<div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-    <CopyComponent @click="() => copyComponent('componentContent', store)"/>
-    <ComponentContent
-        :dataset="datasetItems.map(({value, valueLabel, timeLabel, intensity}) => {return {value, valueLabel, timeLabel, intensity}})"
-        :config="finalConfig"
-        componentName="VueUiSparkHistogram"
-        configName="vue_ui_sparkhistogram"
-        @click="() => copyComponent('componentContent', store)"
-    />            
-</div>
     
 </template>
 

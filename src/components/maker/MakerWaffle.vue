@@ -156,8 +156,8 @@ function getLabel(label) {
 </script>
 
 <template>
-
-<ClearStorageAndRefresh keyConfig="waffleConfig" keyDataset="waffleDataset" :key="`clear_${clearStep}`"/>
+    <div>
+        <ClearStorageAndRefresh keyConfig="waffleConfig" keyDataset="waffleDataset" :key="`clear_${clearStep}`"/>
 <DocLink to="vue-ui-waffle" name="VueUiWaffle"/>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
@@ -226,7 +226,7 @@ function getLabel(label) {
             @click="() => copyComponent('componentContent', store)"
         />    
     </div>
-        
+    </div>
 </template>
 
 <style scoped>

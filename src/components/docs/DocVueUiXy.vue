@@ -665,7 +665,7 @@ watch(() => showAllConfig.value, (v) => {
                     </VueUiXy>
                 </template>
                 <template #fallback>
-                    <div class="min-h-[500px]"></div>
+                    <div class="h-screen relative w-full"/>
                 </template>
             </Suspense>
         </div>

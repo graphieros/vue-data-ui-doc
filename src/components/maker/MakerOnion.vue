@@ -148,8 +148,8 @@ function getLabel(label) {
 </script>
 
 <template>
-
-<ClearStorageAndRefresh keyConfig="onionConfig" keyDataset="onionDataset" :key="`clear_${clearStep}`"/>
+    <div>
+        <ClearStorageAndRefresh keyConfig="onionConfig" keyDataset="onionDataset" :key="`clear_${clearStep}`"/>
 <DocLink to="vue-ui-onion" name="VueUiOnion"/>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
@@ -225,7 +225,7 @@ function getLabel(label) {
             @click="() => copyComponent('componentContent', store)"
         />           
     </div>
-    
+    </div>    
 </template>
 
 <style scoped>

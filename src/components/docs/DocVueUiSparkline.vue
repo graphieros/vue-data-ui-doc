@@ -304,8 +304,8 @@ watch(() => showAllConfig.value, (v) => {
                 <VueUiSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
               </template>
               <template #fallback>
-                    <div class="min-h-[300px]"></div>
-                </template>
+                  <div class="h-screen relative w-full"/>
+              </template>
             </Suspense>
         </div>
 

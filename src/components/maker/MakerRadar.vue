@@ -213,7 +213,8 @@ const dataset = computed(() => {
 </script>
 
 <template>
-<ClearStorageAndRefresh keyConfig="radarConfig" keyDataset="radarDataset" :key="`clear_${clearStep}`"/>
+    <div>
+        <ClearStorageAndRefresh keyConfig="radarConfig" keyDataset="radarDataset" :key="`clear_${clearStep}`"/>
 <DocLink to="vue-ui-radar" name="VueUiRadar"/>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
@@ -308,7 +309,7 @@ const dataset = computed(() => {
             @click="() => copyComponent('componentContent', store)"
         />     
     </div>
-    
+    </div>
 </template>
 
 <style scoped>

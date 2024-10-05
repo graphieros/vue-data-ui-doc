@@ -196,117 +196,120 @@ function getLabel(label) {
 </script>
 
 <template>
-<ClearStorageAndRefresh keyConfig="scatterConfig" keyDataset="scatterDataset" :key="`clear_${clearStep}`"/>
-<DocLink to="vue-ui-scatter" name="VueUiScatter"/>
+    <div>
 
-<div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-    <transition name="fade">                
-        <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`" v-if="datasetItems.length">
-            <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
-                <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
-                    <PinnedOffIcon v-if="isFixed"/>
-                    <PinIcon v-else/>
-                </button>
-                <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+        <ClearStorageAndRefresh keyConfig="scatterConfig" keyDataset="scatterDataset" :key="`clear_${clearStep}`"/>
+        <DocLink to="vue-ui-scatter" name="VueUiScatter"/>
+        
+        <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
+            <transition name="fade">                
+                <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`" v-if="datasetItems.length">
+                    <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
+                        <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
+                            <PinnedOffIcon v-if="isFixed"/>
+                            <PinIcon v-else/>
+                        </button>
+                        <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+                    </div>
+                    <VueUiScatter :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                </div>
+            </transition>
+        </div>
+        
+        <details open>
+            <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
+            <div class="flex flex-col gap-2">
+                <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row place-items-center gap-3`" :style="`background:${ds.color}30`">
+                    <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
+                    <table>
+                        <thead>
+                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.shape[store.lang] }}</th>
+                            <th class="text-left text-xs" v-for="dp in ds.values">
+                                <div class="flex flex-col gap-2 relative">
+                                    <label class="text-xs text-left">{{ makerTranslations.labels.datapoint[store.lang] }} : {{ makerTranslations.labels.name[store.lang] }}</label>
+                                    <input class="h-[32px]" type="text" v-model="dp.name">
+                                    <button tabindex="0" @click="deleteDatapoint(ds.id, dp.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-0 right-0" /></button>
+                                </div>
+                            </th>
+        
+                        </thead>
+                        <tbody>
+                            <tr>                    
+                                <td>
+                                    <input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage">
+                                </td>
+                                <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                                <td><select class="h-[36px] pl-2" v-model="ds.shape" @change="saveDatasetToLocalStorage"><option v-for="opt in shapeOptions">{{ opt }}</option>
+                                        </select></td>
+                                <td v-for="dp in ds.values">
+                                    <div class="flex flex-col gap-2"> 
+                                        <div class="flex flex-col gap-2 mt-2">
+                                            <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }} X</label>
+                                            <input class="h-[32px]" type="number" v-model="dp.x">
+                                        </div>
+                                        <div class="flex flex-col gap-2 mt-2">
+                                            <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }} Y</label>
+                                            <input class="h-[32px]" type="number" v-model="dp.y">
+                                        </div>
+                                        <div class="flex flex-col gap-2 mt-2">
+                                            <label class="text-left text-xs">{{ makerTranslations.labels.weight[store.lang] }}</label>
+                                            <input class="h-[32px]" type="number" v-model="dp.weight">
+                                        </div>
+                                    </div>
+                                </td>
+        
+                            </tr>
+                        </tbody>
+                    </table>
+                        <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
+                            <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatapoint(ds.id)"><PlusIcon/></button>
+                        </Tooltip>
+                    
+                </div>
             </div>
-            <VueUiScatter :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-        </div>
-    </transition>
-</div>
-
-<details open>
-    <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
-    <div class="flex flex-col gap-2">
-        <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row place-items-center gap-3`" :style="`background:${ds.color}30`">
-            <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
-            <table>
-                <thead>
-                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                    <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                    <th class="text-left text-xs">{{ makerTranslations.labels.shape[store.lang] }}</th>
-                    <th class="text-left text-xs" v-for="dp in ds.values">
-                        <div class="flex flex-col gap-2 relative">
-                            <label class="text-xs text-left">{{ makerTranslations.labels.datapoint[store.lang] }} : {{ makerTranslations.labels.name[store.lang] }}</label>
-                            <input class="h-[32px]" type="text" v-model="dp.name">
-                            <button tabindex="0" @click="deleteDatapoint(ds.id, dp.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-0 right-0" /></button>
-                        </div>
-                    </th>
-
-                </thead>
-                <tbody>
-                    <tr>                    
-                        <td>
-                            <input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage">
-                        </td>
-                        <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                        <td><select class="h-[36px] pl-2" v-model="ds.shape" @change="saveDatasetToLocalStorage"><option v-for="opt in shapeOptions">{{ opt }}</option>
-                                </select></td>
-                        <td v-for="dp in ds.values">
-                            <div class="flex flex-col gap-2"> 
-                                <div class="flex flex-col gap-2 mt-2">
-                                    <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }} X</label>
-                                    <input class="h-[32px]" type="number" v-model="dp.x">
-                                </div>
-                                <div class="flex flex-col gap-2 mt-2">
-                                    <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }} Y</label>
-                                    <input class="h-[32px]" type="number" v-model="dp.y">
-                                </div>
-                                <div class="flex flex-col gap-2 mt-2">
-                                    <label class="text-left text-xs">{{ makerTranslations.labels.weight[store.lang] }}</label>
-                                    <input class="h-[32px]" type="number" v-model="dp.weight">
-                                </div>
-                            </div>
-                        </td>
-
-                    </tr>
-                </tbody>
-            </table>
-                <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
-                    <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatapoint(ds.id)"><PlusIcon/></button>
+            <div class="flex flex-row gap-4 mt-4 mb-6">
+                <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
+                    <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
                 </Tooltip>
-            
-        </div>
-    </div>
-    <div class="flex flex-row gap-4 mt-4 mb-6">
-        <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-            <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-        </Tooltip>
-    </div>
-</details>
-
-<details open class="mt-6" v-if="makerTranslations.labels">
-        <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
-
-        <div class="flex justify-end">
-            <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
-        </div>
-
-        <MakerKnobs
-            :categories="CONFIG_CATEGORIES"
-            :model="CONFIG_MODEL"
-            @change="forceChartUpdate"
-        />
-    </details>
-
-    <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
-        <ComponentContent
-            :dataset="datasetItems.map(({name, values, color, shape}) => {
-            return {
-                name, values:values.map((v) => {
+            </div>
+        </details>
+        
+        <details open class="mt-6" v-if="makerTranslations.labels">
+                <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
+        
+                <div class="flex justify-end">
+                    <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
+                </div>
+        
+                <MakerKnobs
+                    :categories="CONFIG_CATEGORIES"
+                    :model="CONFIG_MODEL"
+                    @change="forceChartUpdate"
+                />
+            </details>
+        
+            <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
+                <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                <ComponentContent
+                    :dataset="datasetItems.map(({name, values, color, shape}) => {
                     return {
-                        x: v.x,
-                        y: v.y,
-                        name: v.name,
-                        weight: v.weight
-                    }
-                }), color, shape
-            }})"
-            :config="finalConfig"
-            componentName="VueUiScatter"
-            configName="vue_ui_scatter"
-            @click="() => copyComponent('componentContent', store)"
-        />     
+                        name, values:values.map((v) => {
+                            return {
+                                x: v.x,
+                                y: v.y,
+                                name: v.name,
+                                weight: v.weight
+                            }
+                        }), color, shape
+                    }})"
+                    :config="finalConfig"
+                    componentName="VueUiScatter"
+                    configName="vue_ui_scatter"
+                    @click="() => copyComponent('componentContent', store)"
+                />     
+            </div>
     </div>
     
 </template>

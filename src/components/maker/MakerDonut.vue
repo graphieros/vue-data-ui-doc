@@ -153,8 +153,8 @@ const finalConfig = computed(() => {
 </script>
 
 <template>
-
-    <ClearStorageAndRefresh keyConfig="donutConfig" keyDataset="donutDataset" :key="`clear_${clearStep}`"/>
+    <div>
+        <ClearStorageAndRefresh keyConfig="donutConfig" keyDataset="donutDataset" :key="`clear_${clearStep}`"/>
     <DocLink to="vue-ui-donut" name="VueUiDonut"/>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
@@ -222,7 +222,7 @@ const finalConfig = computed(() => {
             @click="() => copyComponent('componentContent', store)"
         />          
     </div>
-    
+    </div>
 </template>
 
 <style scoped>

@@ -826,384 +826,497 @@ onMounted(playShowcase);
     <div :class="{'vdui': isDarkMode}"/>
     <ConfirmCopy/>
     <SideMenu @toggle="toggleMenu"/>
-    
-    <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`">
+
+    <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1 min-h-[3000px]`">
         <div :class="`px-2 pt-6 sm:pt-0 ${isOpen ? `xl:w-5/6 hidden sm:block` : ''}`">
-            <DocVueUiTableSparkline v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-table-sparkline'"/>
-            <DocVueUiXy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy'" />
-            <DocVueUiTable v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table'"/>
-            <DocVueUiDonut v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-donut'"/>
-            <DocVueUiWaffle v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-waffle'"/>
-            <DocVueUiRadar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-radar'"/>
-            <DocVueUiQuadrant v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-quadrant'"/>
-            <DocVueUiGauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-gauge'"/>
-            <DocVueUiChestnut v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-chestnut'"/>
-            <DocVueUiOnion v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-onion'"/>
-            <DocVueUiVerticalBar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-vertical-bar'"/>
-            <DocVueUiScreenshot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-screenshot'"/>
-            <DocVueUiRating v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-rating'"/>
-            <DocVueUiSkeleton v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-skeleton'"/>
-            <DocVueUiSparkline v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkline'"/>
-            <DocVueUiHeatmap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-heatmap'"/>
-            <DocVueUiScatter v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-scatter'"/>
-            <DocVueUiCandlestick v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-candlestick'"/>
-            <DocVueUiAgePyramid v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-age-pyramid'"/>
-            <DocVueUiSparkbar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkbar'"/>
-            <DocVueUiDashboard v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-dashboard'"/>
-            <DocVueUiAnnotator v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-annotator'"/>
-            <DocVueUiSmiley v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-smiley'"/>
-            <DocVueUiRings v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-rings'"/>
-            <DocVueUiRelationCircle v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-relation-circle'"/>
-            <DocVueUiThermometer v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-thermometer'"/>
-            <DocVueUiSparkStackbar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-sparkstackbar'"/>
-            <DocVueUiSparkHistogram v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-sparkhistogram'"/>
-            <DocVueUiWheel v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-wheel'"/>
-            <DocVueUiTiremarks v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-tiremarks'"/>
-            <DocVueUiDonutEvolution v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-donut-evolution'"/>
-            <DocVueUiIcon v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-icon'"/>
-            <DocVueUiMoodRadar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-mood-radar'"/>
-            <DocVueUi3dBar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-3d-bar'"/>
-            <DocVueUiDigits v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-digits'"/>
-            <DocVueUiMolecule v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-molecule'"/>
-            <DocVueUiMiniLoader v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-mini-loader'"/>
-            <DocVueUiNestedDonuts v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-nested-donuts'"/>
-            <DocVueUiSparkgauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkgauge'"/>
-            <DocVueUiGalaxy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-galaxy'"/>
-            <DocVueUiKpi v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-kpi'"/>
-            <DocVueUiTreemap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-treemap'" />
-            <DocVueUiTableHeatmap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table-heatmap'" />
-            <DocVueUiAccordion v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-accordion'" />
-            <DocVueUiQuickChart v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-quick-chart'" />
-            <DocVueUiCursor v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-cursor'" />
-            <DocVueUiSparkTrend v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-spark-trend'" />
-            <DocVueUiStripPlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-strip-plot'" />
-            <DocVueUiDumbbell v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-dumbbell'" />
-            <DocsVueUiWordCloud v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-word-cloud'" />
-            <DocVueUiXyCanvas v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy-canvas'" />
-            <DocVueUiFlow v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-flow'" />
-            <DocVueUiParallelCoordinatePlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-parallel-coordinate-plot'" />
-            <DocVueUiTimer v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-timer'" />
-            <DocVueUiCarouselTable v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-carousel-table'" />
-            <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
-                <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
-                    <div class="flex flex-row gap-4 place-items-center">
-                        <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.docs[store.lang] }}</h1>
+            <Transition name="fade">
+                <DocVueUiTableSparkline v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-table-sparkline'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiXy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiTable v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiDonut v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-donut'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiWaffle v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-waffle'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiRadar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-radar'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiQuadrant v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-quadrant'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiGauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-gauge'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiChestnut v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-chestnut'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiOnion v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-onion'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiVerticalBar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-vertical-bar'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiScreenshot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-screenshot'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiRating v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-rating'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiSkeleton v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-skeleton'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiSparkline v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkline'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiHeatmap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-heatmap'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiScatter v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-scatter'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiCandlestick v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-candlestick'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiAgePyramid v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-age-pyramid'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiSparkbar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkbar'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiDashboard v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-dashboard'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiAnnotator v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-annotator'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiSmiley v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-smiley'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiRings v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-rings'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiRelationCircle v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-relation-circle'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiThermometer v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-thermometer'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiSparkStackbar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-sparkstackbar'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiSparkHistogram v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-sparkhistogram'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiWheel v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-wheel'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiTiremarks v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-tiremarks'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiDonutEvolution v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-donut-evolution'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiIcon v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-icon'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiMoodRadar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-mood-radar'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUi3dBar v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-3d-bar'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiDigits v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-digits'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiMolecule v-if="router.currentRoute.value.fullPath ===  '/docs#vue-ui-molecule'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiMiniLoader v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-mini-loader'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiNestedDonuts v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-nested-donuts'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiSparkgauge v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-sparkgauge'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiGalaxy v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-galaxy'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiKpi v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-kpi'"/>
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiTreemap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-treemap'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiTableHeatmap v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-table-heatmap'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiAccordion v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-accordion'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiQuickChart v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-quick-chart'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiCursor v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-cursor'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiSparkTrend v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-spark-trend'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiStripPlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-strip-plot'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiDumbbell v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-dumbbell'" />
+            </Transition>
+            <Transition name="fade">
+                <DocsVueUiWordCloud v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-word-cloud'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiXyCanvas v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-xy-canvas'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiFlow v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-flow'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiParallelCoordinatePlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-parallel-coordinate-plot'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiTimer v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-timer'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiCarouselTable v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-carousel-table'" />
+            </Transition>
+
+            <Transition name="fade">
+                <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
+                    <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
+                        <div class="flex flex-row gap-4 place-items-center">
+                            <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.docs[store.lang] }}</h1>
+                        </div>
                     </div>
-                </div>
-<div class="flex flex-col sm:flex-row place-items-center gap-2 justify-center w-full mx-auto">
-    <div class="flex flex-col gap-2 place-items-center place-content-center border-r border-gray-500 pr-6">
-        <div class="text-xl sm:text-4xl w-full text-end">1 import</div>
-        <div class="text-xl sm:text-4xl w-full text-end">3 props</div>
-        <div class="text-xl sm:text-4xl w-full text-end">{{ Object.keys(mainConfig).length + 1 }} components</div>
+    <div class="flex flex-col sm:flex-row place-items-center gap-2 justify-center w-full mx-auto">
+        <div class="flex flex-col gap-2 place-items-center place-content-center border-r border-gray-500 pr-6">
+            <div class="text-xl sm:text-4xl w-full text-end">1 import</div>
+            <div class="text-xl sm:text-4xl w-full text-end">3 props</div>
+            <div class="text-xl sm:text-4xl w-full text-end">{{ Object.keys(mainConfig).length + 1 }} components</div>
+        </div>
+        
+        <RouterLink class="w-[360px]" to="/universal-component">
+        <div title="Checkout how to use the VueDataUi universal component" class="mx-auto  rounded-md py-1 px-6 sm:px-10">
+    <pre>
+    <code class="text-gray-500 text-md">
+    &lt;<span class="dark:text-gray-200">VueDataUi</span>
+        <span class="text-black dark:text-app-orange">component</span>="VueUi{{ currentShowcase }}"
+        <span class="text-black dark:text-app-green">:dataset</span>="{{ translations.docs.dataset[store.lang] }}"
+        <span class="text-black dark:text-app-blue">:config</span>="{{ translations.docs.config[store.lang] }}"
+    /&gt;
+    </code>
+    </pre>
+        </div>
+        </RouterLink>
     </div>
     
-    <RouterLink class="w-[360px]" to="/universal-component">
-    <div title="Checkout how to use the VueDataUi universal component" class="mx-auto  rounded-md py-1 px-6 sm:px-10">
-<pre>
-<code class="text-gray-500 text-md">
-&lt;<span class="dark:text-gray-200">VueDataUi</span>
-    <span class="text-black dark:text-app-orange">component</span>="VueUi{{ currentShowcase }}"
-    <span class="text-black dark:text-app-green">:dataset</span>="{{ translations.docs.dataset[store.lang] }}"
-    <span class="text-black dark:text-app-blue">:config</span>="{{ translations.docs.config[store.lang] }}"
-/&gt;
-</code>
-</pre>
+    <div class="w-full px-2 sm:px-0 max-w-[72ch] text-left mx-auto mb-12 mt-12 text-xs sm:text-lg">
+        {{ translations.docs.p1[store.lang] }}
     </div>
-    </RouterLink>
-</div>
-
-<div class="w-full px-2 sm:px-0 max-w-[72ch] text-left mx-auto mb-12 mt-12 text-xs sm:text-lg">
-    {{ translations.docs.p1[store.lang] }}
-</div>
-
-<div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
-    <div class="w-full text-left text-lg">
-        {{ translations.overview.title[store.lang] }}
+    
+    <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
+        <div class="w-full text-left text-lg">
+            {{ translations.overview.title[store.lang] }}
+        </div>
+        <div>
+            <select class="mb-4 h-8 px-2" v-model="schemaSelect"><option v-for="opt in chartKeys">{{ opt }}</option> </select>
+        </div>
+        <Schema :component="schemaSelect"/>
     </div>
-    <div>
-        <select class="mb-4 h-8 px-2" v-model="schemaSelect"><option v-for="opt in chartKeys">{{ opt }}</option> </select>
-    </div>
-    <Schema :component="schemaSelect"/>
-</div>
-
-                <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
-                    <div class="mb-4">{{ translations.getTheme[store.lang] }}</div>
-                    <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
-                    <CopyIcon class="absolute right-2 top-2"/>
-                        import { getThemeConfig } from "vue-data-ui";<br>
-
-                        const {{ themeSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_themes = getThemeConfig("{{ themeSelect }}");
-                    </code>
-                    <select class="mb-4 h-8 px-2" v-model="themeSelect"><option v-for="opt in themeKeys">{{ opt }}</option> </select>
-
-                    <VueDataUi component="VueUiAccordion" :config="{
-                        head: {
-                            useArrowSlot: true,
-                            backgroundColor: 'transparent'
-                        },
-                        body: {
-                            backgroundColor: 'transparent',
-                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                        }
-                    }">
-                        <template #arrow="{ iconColor }">
-                            <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
-                        </template>
-                        <template #title>
-                            {{ translations.viewSelectedTheme[store.lang] }}
-                        </template>
-                        <template #content>
-                            <div class="text-xs text-left mt-6 cursor-pointer" @click="copyToClipboard(selectedTheme)">
-                                <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
-                                {{ selectedTheme }}
+    
+                    <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
+                        <div class="mb-4">{{ translations.getTheme[store.lang] }}</div>
+                        <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
+                        <CopyIcon class="absolute right-2 top-2"/>
+                            import { getThemeConfig } from "vue-data-ui";<br>
+    
+                            const {{ themeSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_themes = getThemeConfig("{{ themeSelect }}");
+                        </code>
+                        <select class="mb-4 h-8 px-2" v-model="themeSelect"><option v-for="opt in themeKeys">{{ opt }}</option> </select>
+    
+                        <VueDataUi component="VueUiAccordion" :config="{
+                            head: {
+                                useArrowSlot: true,
+                                backgroundColor: 'transparent'
+                            },
+                            body: {
+                                backgroundColor: 'transparent',
+                                color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                            }
+                        }">
+                            <template #arrow="{ iconColor }">
+                                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                            </template>
+                            <template #title>
+                                {{ translations.viewSelectedTheme[store.lang] }}
+                            </template>
+                            <template #content>
+                                <div class="text-xs text-left mt-6 cursor-pointer" @click="copyToClipboard(selectedTheme)">
+                                    <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
+                                    {{ selectedTheme }}
+                                </div>
+                            </template>
+                        </VueDataUi>
+                    </div>
+    
+                    <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
+                        <div class="mb-4">{{ translations.getConfig[store.lang] }}</div>
+                        <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
+                        <CopyIcon class="absolute right-2 top-2"/>
+                            import { getVueDataUiConfig } from "vue-data-ui";<br>
+    
+                            const {{ configSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_config = getVueDataUiConfig("{{ configSelect }}");
+                        </code>
+                        <select class="mb-4 h-8 px-2" v-model="configSelect"><option v-for="opt in configKeys">{{ opt }}</option> </select>
+    
+                        <VueDataUi component="VueUiAccordion" :config="{
+                            head: {
+                                useArrowSlot: true,
+                                backgroundColor: 'transparent'
+                            },
+                            body: {
+                                backgroundColor: 'transparent',
+                                color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                            }
+                        }">
+                            <template #arrow="{ iconColor }">
+                                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                            </template>
+                            <template #title>
+                                {{ translations.viewSelectedConfig[store.lang] }}
+                            </template>
+                            <template #content>
+                                <div class="text-xs text-left mt-6 cursor-pointer" @click="copyToClipboard(selectedConfig)">
+                                    <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
+                                    {{ selectedConfig }}
+                                </div>
+                            </template>
+                        </VueDataUi>
+                    </div>
+    
+                    <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col md:flex-row gap-4">
+                    
+                        <div class="w-full border border-gray-400 bg-[#FFFFFF10] p-4 rounded-lg flex flex-col gap-6 place-items-center">
+                        <div class="flex flex-row gap-6 place-items-center">
+                            <div class="h-[40px] w-[40px] flex place-items-center justify-center">
+                            <SquareRoundedLetterSIcon class="bg-white dark:bg-black rounded-md text-app-blue"/>
                             </div>
-                        </template>
-                    </VueDataUi>
-                </div>
-
-                <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
-                    <div class="mb-4">{{ translations.getConfig[store.lang] }}</div>
-                    <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
-                    <CopyIcon class="absolute right-2 top-2"/>
-                        import { getVueDataUiConfig } from "vue-data-ui";<br>
-
-                        const {{ configSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_config = getVueDataUiConfig("{{ configSelect }}");
-                    </code>
-                    <select class="mb-4 h-8 px-2" v-model="configSelect"><option v-for="opt in configKeys">{{ opt }}</option> </select>
-
-                    <VueDataUi component="VueUiAccordion" :config="{
-                        head: {
-                            useArrowSlot: true,
-                            backgroundColor: 'transparent'
-                        },
-                        body: {
-                            backgroundColor: 'transparent',
-                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                        }
-                    }">
-                        <template #arrow="{ iconColor }">
-                            <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
-                        </template>
-                        <template #title>
-                            {{ translations.viewSelectedConfig[store.lang] }}
-                        </template>
-                        <template #content>
-                            <div class="text-xs text-left mt-6 cursor-pointer" @click="copyToClipboard(selectedConfig)">
-                                <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
-                                {{ selectedConfig }}
+                            {{ translations.slots.summary[store.lang] }}
+                        </div>
+                        <div class="flex flex-row gap-6 place-items-center">
+                            <div class="h-[40px] w-[40px] flex place-items-center justify-center">
+                            <SquareRoundedLetterLIcon class="bg-white dark:bg-black rounded-md text-app-orange"/>
                             </div>
-                        </template>
-                    </VueDataUi>
-                </div>
-
-                <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col md:flex-row gap-4">
-                
-                    <div class="w-full border border-gray-400 bg-[#FFFFFF10] p-4 rounded-lg flex flex-col gap-6 place-items-center">
-                    <div class="flex flex-row gap-6 place-items-center">
-                        <div class="h-[40px] w-[40px] flex place-items-center justify-center">
-                        <SquareRoundedLetterSIcon class="bg-white dark:bg-black rounded-md text-app-blue"/>
+                            {{ translations.slots.legend[store.lang] }}
                         </div>
-                        {{ translations.slots.summary[store.lang] }}
-                    </div>
-                    <div class="flex flex-row gap-6 place-items-center">
-                        <div class="h-[40px] w-[40px] flex place-items-center justify-center">
-                        <SquareRoundedLetterLIcon class="bg-white dark:bg-black rounded-md text-app-orange"/>
-                        </div>
-                        {{ translations.slots.legend[store.lang] }}
-                    </div>
-                        <div class="w-full flex justify-center">
-                        <router-link to="/customization">
-                            <button class="py-2 px-6 bg-app-blue text-white dark:text-black rounded shadow hover:outline hover:outline-gray-400">{{ translations.docs.example[store.lang] }}</button>
-                        </router-link>
-                        </div>
-                    </div>
-
-                    <div class="w-full border border-gray-400 bg-[#FFFFFF10] p-4 rounded-lg flex flex-row gap-6 place-items-center">
-                        <div class="h-[40px] w-[40px] flex place-items-center justify-center">
-                        <SquareRoundedLetterTIcon class="bg-white dark:bg-black rounded-md text-app-green"/>
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            {{ translations.tableCss.summary[store.lang] }}
-
-                            <VueDataUi component="VueUiAccordion" :config="{
-                                    head: {
-                                        useArrowSlot: true,
-                                        backgroundColor: 'transparent',
-                                        iconColor: '#42d392'
-                                    },
-                                    body: {
-                                        backgroundColor: 'transparent',
-                                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                                    }
-                                }">
-                                    <template #arrow="{ iconColor }">
-                                        <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
-                                    </template>
-                                    <template #title>
-                                        {{ translations.tableCss.cta[store.lang] }}
-                                    </template>
-                                    <template #content>
-                                        <div class="mt-2">
-                                            <code>
-                                                <ul>
-                                                    <li v-for="cssClass in cssTableClasses">
-                                                        {{  cssClass }}
-                                                    </li>
-                                                </ul>
-                                            </code>
-                                        </div>
-                                    </template>
-                                </VueDataUi>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-6 mb-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                    <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                        {{ translations.types.classic[store.lang] }}
-                    </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'classic')" :icon="item.icon" :link="item.link" :item="item">
-                        <template #name>
-                            {{ item.name }}
-                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                            <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                        </template>
-                        <template #tooltip>
-                            <div class="flex flex-col place-items-center justify-center">
-                            <img v-if="item.thumb" :src="item.thumb">
-                            {{ item.tooltip }}
+                            <div class="w-full flex justify-center">
+                            <router-link to="/customization">
+                                <button class="py-2 px-6 bg-app-blue text-white dark:text-black rounded shadow hover:outline hover:outline-gray-400">{{ translations.docs.example[store.lang] }}</button>
+                            </router-link>
                             </div>
-                        </template>
-                    </MenuDetail>
-                </div>  
-
-                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                    <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                        {{ translations.types.measure[store.lang] }}
+                        </div>
+    
+                        <div class="w-full border border-gray-400 bg-[#FFFFFF10] p-4 rounded-lg flex flex-row gap-6 place-items-center">
+                            <div class="h-[40px] w-[40px] flex place-items-center justify-center">
+                            <SquareRoundedLetterTIcon class="bg-white dark:bg-black rounded-md text-app-green"/>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                {{ translations.tableCss.summary[store.lang] }}
+    
+                                <VueDataUi component="VueUiAccordion" :config="{
+                                        head: {
+                                            useArrowSlot: true,
+                                            backgroundColor: 'transparent',
+                                            iconColor: '#42d392'
+                                        },
+                                        body: {
+                                            backgroundColor: 'transparent',
+                                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                                        }
+                                    }">
+                                        <template #arrow="{ iconColor }">
+                                            <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                                        </template>
+                                        <template #title>
+                                            {{ translations.tableCss.cta[store.lang] }}
+                                        </template>
+                                        <template #content>
+                                            <div class="mt-2">
+                                                <code>
+                                                    <ul>
+                                                        <li v-for="cssClass in cssTableClasses">
+                                                            {{  cssClass }}
+                                                        </li>
+                                                    </ul>
+                                                </code>
+                                            </div>
+                                        </template>
+                                    </VueDataUi>
+                            </div>
+                        </div>
                     </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'measure')" :icon="item.icon" :link="item.link" :item="item">
-                        <template #name>
-                            {{ item.name }}
-                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                            <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                        </template>
-                        <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                            <img v-if="item.thumb" :src="item.thumb">
-                            {{ item.tooltip }}
-                            </div></template>
-                    </MenuDetail>
+    
+                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-6 mb-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
+                            {{ translations.types.classic[store.lang] }}
+                        </div>
+                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'classic')" :icon="item.icon" :link="item.link" :item="item">
+                            <template #name>
+                                {{ item.name }}
+                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
+                            </template>
+                            <template #tooltip>
+                                <div class="flex flex-col place-items-center justify-center">
+                                <img v-if="item.thumb" :src="item.thumb">
+                                {{ item.tooltip }}
+                                </div>
+                            </template>
+                        </MenuDetail>
+                    </div>  
+    
+                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
+                            {{ translations.types.measure[store.lang] }}
+                        </div>
+                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'measure')" :icon="item.icon" :link="item.link" :item="item">
+                            <template #name>
+                                {{ item.name }}
+                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
+                            </template>
+                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
+                                <img v-if="item.thumb" :src="item.thumb">
+                                {{ item.tooltip }}
+                                </div></template>
+                        </MenuDetail>
+                    </div>
+    
+                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
+                            {{ translations.types.mini[store.lang] }}
+                        </div>
+                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'mini')" :icon="item.icon" :link="item.link" :item="item">
+                            <template #name>
+                                {{ item.name }}
+                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
+                            </template>
+                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
+                                <img v-if="item.thumb" :src="item.thumb">
+                                {{ item.tooltip }}
+                                </div></template>
+                        </MenuDetail>
+                    </div>
+    
+                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
+                            3D
+                        </div>
+                        <MenuDetail v-for="item in menuItems.filter(item => item.type === '3d')" :icon="item.icon" :link="item.link" :item="item">
+                            <template #name>
+                                {{ item.name }}
+                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
+                            </template>
+                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
+                                <img v-if="item.thumb" :src="item.thumb">
+                                {{ item.tooltip }}
+                                </div></template>
+                        </MenuDetail>
+                    </div>
+    
+                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
+                            {{ translations.types.combined[store.lang] }}
+                        </div>
+                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'combined')" :icon="item.icon" :link="item.link" :item="item">
+                            <template #name>
+                                {{ item.name }}
+                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
+                            </template>
+                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
+                                <img v-if="item.thumb" :src="item.thumb">
+                                {{ item.tooltip }}
+                                </div></template>
+                        </MenuDetail>
+                    </div>
+    
+                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
+                            {{ translations.types.table[store.lang] }}
+                        </div>
+                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'table')" :icon="item.icon" :link="item.link" :item="item">
+                            <template #name>
+                                {{ item.name }}
+                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
+                            </template>
+                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
+                                <img v-if="item.thumb" :src="item.thumb">
+                                {{ item.tooltip }}
+                                </div></template>
+                        </MenuDetail>
+                    </div>       
+    
+                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
+                            {{ translations.types.semantic[store.lang] }}
+                        </div>
+                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'semantic')" :icon="item.icon" :link="item.link" :item="item">
+                            <template #name>
+                                {{ item.name }}
+                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
+                            </template>
+                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
+                                <img v-if="item.thumb" :src="item.thumb">
+                                {{ item.tooltip }}
+                                </div></template>
+                        </MenuDetail>
+                    </div> 
+    
+                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
+                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
+                            {{ translations.types.tool[store.lang] }}
+                        </div>
+                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'tool')" :icon="item.icon" :link="item.link" :item="item">
+                            <template #name>
+                                {{ item.name }}
+                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
+                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
+                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
+                            </template>
+                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
+                                <img v-if="item.thumb" :src="item.thumb">
+                                {{ item.tooltip }}
+                                </div></template>
+                        </MenuDetail>
+                    </div>                
                 </div>
-
-                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                    <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                        {{ translations.types.mini[store.lang] }}
-                    </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'mini')" :icon="item.icon" :link="item.link" :item="item">
-                        <template #name>
-                            {{ item.name }}
-                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                            <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                        </template>
-                        <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                            <img v-if="item.thumb" :src="item.thumb">
-                            {{ item.tooltip }}
-                            </div></template>
-                    </MenuDetail>
-                </div>
-
-                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                    <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                        3D
-                    </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === '3d')" :icon="item.icon" :link="item.link" :item="item">
-                        <template #name>
-                            {{ item.name }}
-                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                            <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                        </template>
-                        <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                            <img v-if="item.thumb" :src="item.thumb">
-                            {{ item.tooltip }}
-                            </div></template>
-                    </MenuDetail>
-                </div>
-
-                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                    <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                        {{ translations.types.combined[store.lang] }}
-                    </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'combined')" :icon="item.icon" :link="item.link" :item="item">
-                        <template #name>
-                            {{ item.name }}
-                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                            <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                        </template>
-                        <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                            <img v-if="item.thumb" :src="item.thumb">
-                            {{ item.tooltip }}
-                            </div></template>
-                    </MenuDetail>
-                </div>
-
-                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                    <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                        {{ translations.types.table[store.lang] }}
-                    </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'table')" :icon="item.icon" :link="item.link" :item="item">
-                        <template #name>
-                            {{ item.name }}
-                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                            <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                        </template>
-                        <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                            <img v-if="item.thumb" :src="item.thumb">
-                            {{ item.tooltip }}
-                            </div></template>
-                    </MenuDetail>
-                </div>       
-
-                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                    <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                        {{ translations.types.semantic[store.lang] }}
-                    </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'semantic')" :icon="item.icon" :link="item.link" :item="item">
-                        <template #name>
-                            {{ item.name }}
-                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                            <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                        </template>
-                        <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                            <img v-if="item.thumb" :src="item.thumb">
-                            {{ item.tooltip }}
-                            </div></template>
-                    </MenuDetail>
-                </div> 
-
-                <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                    <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                        {{ translations.types.tool[store.lang] }}
-                    </div>
-                    <MenuDetail v-for="item in menuItems.filter(item => item.type === 'tool')" :icon="item.icon" :link="item.link" :item="item">
-                        <template #name>
-                            {{ item.name }}
-                            <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                            <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                            <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                        </template>
-                        <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                            <img v-if="item.thumb" :src="item.thumb">
-                            {{ item.tooltip }}
-                            </div></template>
-                    </MenuDetail>
-                </div>                
-            </div>
+            </Transition>
         </div>
     </div>
 </template>

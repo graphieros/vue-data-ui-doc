@@ -149,8 +149,8 @@ const usableDataset = computed(() => {
 </script>
 
 <template>
-
-<ClearStorageAndRefresh keyConfig="gaugeConfig" keyDataset="gaugeDataset" :key="`clear_${clearStep}`"/>
+    <div>
+        <ClearStorageAndRefresh keyConfig="gaugeConfig" keyDataset="gaugeDataset" :key="`clear_${clearStep}`"/>
 <DocLink to="vue-ui-gauge" name="VueUiGauge"/>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
@@ -224,7 +224,7 @@ const usableDataset = computed(() => {
             @click="() => copyComponent('componentContent', store)"
         />
     </div>
-
+    </div>
 </template>
 
 <style scoped>
