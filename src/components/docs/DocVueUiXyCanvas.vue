@@ -116,7 +116,7 @@ const config = ref({
                 borderRadius: 4,
                 borderColor: "#e1e5e8",
                 borderWidth: 1,
-                backgroundOpacity: 100
+                backgroundOpacity: 90
             },
             legend: {
                 backgroundColor: "#F3F4F6",
@@ -291,7 +291,7 @@ const darkModeConfig = ref({
                 borderRadius: 4,
                 borderColor: "#8A8A8A",
                 borderWidth: 1,
-                backgroundOpacity: 100
+                backgroundOpacity: 90
             },
             legend: {
                 backgroundColor: "#1A1A1A",

@@ -130,7 +130,8 @@ const config = ref({
       customFormat: null,
       borderRadius: 4,
       borderColor:"#e1e5e8",
-      borderWidth: 1
+      borderWidth: 1,
+      backgroundOpacity: 90,
     }
   },
   userOptions: {
@@ -259,7 +260,8 @@ const darkModeConfig = ref({
       customFormat: null,
       borderRadius: 4,
       borderColor:"#3A3A3A",
-      borderWidth: 1
+      borderWidth: 1,
+      backgroundOpacity: 90
     }
   },
   userOptions: {

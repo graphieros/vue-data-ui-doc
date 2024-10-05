@@ -177,7 +177,7 @@ const config = ref({
                 borderWidth: 1,
                 showValue: true,
                 showPercentage: true,
-                backgroundOpacity: 100
+                backgroundOpacity: 90
             }
         }
     },
@@ -296,7 +296,7 @@ const darkModeConfig = ref({
                 borderWidth: 1,
                 showValue: true,
                 showPercentage: true,
-                backgroundOpacity: 100
+                backgroundOpacity: 90
             }
         }
     },

@@ -222,7 +222,7 @@ const config = ref({
             borderColor:"#e1e5e8",
             borderWidth: 1,
             fontSize: 14,
-            backgroundOpacity: 100
+            backgroundOpacity: 90
         },
         userOptions: {
             show: true,
@@ -459,7 +459,7 @@ const darkModeConfig = ref({
             borderColor:"#3A3A3A",
             borderWidth: 1,
             fontSize: 14,
-            backgroundOpacity: 100
+            backgroundOpacity: 90
         },
         userOptions: {
             show: true,

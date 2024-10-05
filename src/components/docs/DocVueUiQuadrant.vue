@@ -223,7 +223,7 @@ const config = ref({
                 borderRadius: 4,
                 borderColor:"#e1e5e8",
                 borderWidth: 1,
-                backgroundOpacity: 100
+                backgroundOpacity: 90
             },
             legend: {
                 tooltip: true,
@@ -397,7 +397,7 @@ const darkModeConfig = ref({
                 borderRadius: 4,
                 borderColor:"#3A3A3A",
                 borderWidth: 1,
-                backgroundOpacity: 100
+                backgroundOpacity: 90
             },
             legend: {
                 tooltip: true,
