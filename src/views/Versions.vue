@@ -5,7 +5,7 @@ import { useMainStore } from "../stores";
 import staticReleases from "../../public/releases.json"
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui"
 import { useConfig } from "../assets/useConfig";
-import { useIconMap } from "../useIconMap";
+import { useIconMap, isValidComponent } from "../useIconMap";
 
 const globalConfig = useConfig()
 
@@ -1513,6 +1513,87 @@ const KPIS = computed(() => {
   }).filter(el => el && el.name)
 })
 
+function convertVersionsToTreemap(ds) {
+  const componentCountMap = {};
+  ds.forEach(entry => {
+    entry.updates.forEach(update => {
+      const component = update.component;
+      if (isValidComponent(component.toString())) {
+        if (componentCountMap[component]) {
+          componentCountMap[component]++;
+        } else {
+          componentCountMap[component] = 1;
+        }
+      }
+    });
+  });
+  return Object.entries(componentCountMap).map(([name, value]) => ({ name, value }));
+}
+
+const versionTreemap = computed(() => {
+  return [
+    {
+      name: 'Releases',
+      value: convertVersionsToTreemap(versionsList.value).map(e => e.value).reduce((a, b) => a+b, 0),
+      children: !versionsList.value ? [] : convertVersionsToTreemap(versionsList.value),
+    }
+  ]
+})
+
+const treemapConfig = computed(() => {
+  return {
+    table: {
+      columnNames: {
+        series: 'Components',
+        value: 'Updates'
+      },
+      th: {
+        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+      },
+      td: {
+        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+        roundingPercentage: 1
+      }
+    },
+    style: {
+      chart: {
+        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+        tooltip: {
+          backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+          backgroundOpacity: 90
+        },
+        layout: {
+          labels: {
+            fontSize: 100,
+            hideUnderProportion: 0.001,
+          },
+          rects: {
+            stroke: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+            colorRatio: 0,
+            gradient: {
+              intensity: 10,
+            },
+            selected: {
+              stroke: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+            }
+          }
+        },
+        title: {
+          text: 'Updates per component',
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+        },
+        legend: {
+          show: false,
+        }
+      }
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -1624,6 +1705,10 @@ const KPIS = computed(() => {
                             </div>
                         </li>
                     </ul>
+                </div>
+
+                <div class="w-full p-4 bg-gray-200 dark:bg-[#FFFFFF10] shadow-md rounded-md my-6">
+                  <VueDataUi v-if="versionsList.length" component="VueUiTreemap" :dataset="versionTreemap" :config="treemapConfig"/>
                 </div>
 
                 <div class="w-full max-w-[800px] mx-auto mt-12">
