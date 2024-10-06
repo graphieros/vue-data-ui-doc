@@ -5,6 +5,7 @@ import { SearchIcon, XIcon, InfoCircleIcon } from "vue-tabler-icons";
 import {useConfig} from "../assets/useConfig";
 import Prism from "prismjs"
 import { useRouter } from "vue-router";
+import vClickOutside from "../directives/vClickOutside"
 
 const config = useConfig()
 
@@ -223,6 +224,11 @@ function formatSuggestion(word) {
     const regex = new RegExp(`(${escapedSearchTerm})`, 'i');
     return word.replace(regex, '<span style="background:#42d39250;">$1</span>');
 }
+
+function closeList() {
+  showSuggestions.value = false;
+}
+
 </script>
 
 <template>
@@ -261,6 +267,7 @@ function formatSuggestion(word) {
       </div>
       <ul
         v-if="showSuggestions && filteredSuggestions.length"
+        v-click-outside="closeList"
         class="absolute bg-white dark:bg-black-100 border border-gray-300 top-0 -mt-[300px] rounded-md shadow-lg z-10 h-[300px] overflow-auto min-w-[280px]"
       >
         <li
