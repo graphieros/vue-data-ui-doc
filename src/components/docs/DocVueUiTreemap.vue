@@ -32,8 +32,8 @@ const isDarkMode = computed(() => {
 });
 
 const dataset = ref(
-[
-{
+    [
+        {
             name: "Parent 1",
             value: 100,
             children: [
@@ -51,7 +51,73 @@ const dataset = ref(
                 },
             ]
         },
-]
+        {
+            name: "Parent 2",
+            value: 110,
+            children: [
+                {
+                    name: "P2 C1",
+                    value: 80,
+                },
+                {
+                    name: 'P2 C2',
+                    value: 20
+                },
+                {
+                    name: 'P2 C3',
+                    value: 10,
+                },
+            ]
+        },
+        {
+            name: "Parent 3",
+            value: 75,
+            children: [
+                {
+                    name: "P3 C1",
+                    value: 20,
+                },
+                {
+                    name: 'P3 C2',
+                    value: 10
+                },
+                {
+                    name: 'P3 C3',
+                    value: 10
+                },
+                {
+                    name: 'P3 C4',
+                    value: 5
+                },
+                {
+                    name: 'P3 C5',
+                    value: 5
+                },
+                {
+                    name: 'P3 C6',
+                    value: 10
+                },
+                {
+                    name: 'P3 C7',
+                    value: 5
+                },
+                {
+                    name: 'P3 C8',
+                    value: 10,
+                    children: [
+                        {
+                            name: 'P3 C8 CC1',
+                            value: 5,
+                        },
+                        {
+                            name: 'P3 C8 CC2',
+                            value: 5,
+                        },
+                    ]
+                },
+            ]
+        },
+    ]
 )
 
 const config = ref({
