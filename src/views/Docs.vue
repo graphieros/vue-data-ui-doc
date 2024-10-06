@@ -9,6 +9,7 @@ import { useMainStore } from "../stores";
 import Schema from "../schema/Schema.vue";
 import { useConfig } from "../assets/useConfig";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
+import BaseMenuCategory from "../components/BaseMenuCategory.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -192,7 +193,7 @@ const menuItems = computed(() => [
         icon: "chartLine",
         tooltip: translations.value.docs.tooltips.xy[store.lang],
         link: "/docs#vue-ui-xy",
-        type: "classic",
+        type: "xy",
         thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
         hasSlot: true,
@@ -204,7 +205,7 @@ const menuItems = computed(() => [
         icon: "chartLine",
         tooltip: translations.value.docs.tooltips.xyCanvas[store.lang],
         link: "/docs#vue-ui-xy-canvas",
-        type: "classic",
+        type: "xy",
         thumb: new URL('../assets/thumb_xy_canvas.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_xy_canvas_light.png', import.meta.url).href,
         hasSlot: true,
@@ -216,7 +217,7 @@ const menuItems = computed(() => [
         icon: "chartDonut",
         tooltip: translations.value.docs.tooltips.donut[store.lang],
         link: "/docs#vue-ui-donut",
-        type: "classic",
+        type: "donuts",
         thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
         hasSlot: true,
@@ -228,7 +229,7 @@ const menuItems = computed(() => [
         icon: "chartTreemap",
         tooltip: translations.value.docs.tooltips.treemap[store.lang],
         link: "/docs#vue-ui-treemap",
-        type: "classic",
+        type: "donuts",
         thumb: new URL('../assets/thumb_treemap.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_treemap_light.png', import.meta.url).href,
         hasSlot: true,
@@ -240,7 +241,7 @@ const menuItems = computed(() => [
         icon: "chartGalaxy",
         tooltip: translations.value.docs.tooltips.galaxy[store.lang],
         link: "/docs#vue-ui-galaxy",
-        type: "classic",
+        type: "donuts",
         thumb: new URL('../assets/thumb_galaxy.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_galaxy_light.png', import.meta.url).href,
         hasSlot: true,
@@ -252,7 +253,7 @@ const menuItems = computed(() => [
         icon: "chartNestedDonuts",
         tooltip: translations.value.docs.tooltips.nestedDonuts[store.lang],
         link: "/docs#vue-ui-nested-donuts",
-        type: "classic",
+        type: "donuts",
         thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
         hasSlot: false,
@@ -264,7 +265,7 @@ const menuItems = computed(() => [
         icon: "chartDonutEvolution",
         tooltip: translations.value.docs.tooltips.donutEvolution[store.lang],
         link: "/docs#vue-ui-donut-evolution",
-        type: "combined",
+        type: ['donuts', 'xy'],
         thumb: new URL('../assets/thumb_donut_evolution.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_donut_evolution_light.png', import.meta.url).href,
         hasSlot: true,
@@ -276,7 +277,7 @@ const menuItems = computed(() => [
         icon: "chartWaffle",
         tooltip: translations.value.docs.tooltips.waffle[store.lang],
         link: "/docs#vue-ui-waffle",
-        type: "classic",
+        type: "donuts",
         thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
         hasSlot: true,
@@ -288,7 +289,7 @@ const menuItems = computed(() => [
         icon: "chartRings",
         tooltip: translations.value.docs.tooltips.rings[store.lang],
         link: "/docs#vue-ui-rings",
-        type: "classic",
+        type: "donuts",
         thumb: new URL('../assets/thumb_rings.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_rings_light.png', import.meta.url).href,
         hasSlot: true,
@@ -300,7 +301,7 @@ const menuItems = computed(() => [
         icon: "chartRadar",
         tooltip: translations.value.docs.tooltips.radar[store.lang],
         link: "/docs#vue-ui-radar",
-        type: "classic",
+        type: "radar",
         thumb: new URL('../assets/thumb_radar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_radar_light.png', import.meta.url).href,
         hasSlot: true,
@@ -312,7 +313,7 @@ const menuItems = computed(() => [
         icon: "chartQuadrant",
         tooltip: translations.value.docs.tooltips.quadrant[store.lang],
         link: "/docs#vue-ui-quadrant",
-        type: "classic",
+        type: "misc",
         thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href,
         hasSlot: true,
@@ -324,7 +325,7 @@ const menuItems = computed(() => [
         icon: "chartGauge",
         tooltip: translations.value.docs.tooltips.gauge[store.lang],
         link: "/docs#vue-ui-gauge",
-        type: "measure",
+        type: "gauge",
         thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
         hasSlot: true,
@@ -336,7 +337,7 @@ const menuItems = computed(() => [
         icon: "chartWheel",
         tooltip: translations.value.docs.tooltips.wheel[store.lang],
         link: "/docs#vue-ui-wheel",
-        type: "measure",
+        type: "gauge",
         thumb: new URL('../assets/thumb_wheel.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_wheel_light.png', import.meta.url).href,
         hasSlot: true,
@@ -347,7 +348,7 @@ const menuItems = computed(() => [
         icon: "chartTiremarks",
         tooltip: translations.value.docs.tooltips.tiremarks[store.lang],
         link: "/docs#vue-ui-tiremarks",
-        type: "measure",
+        type: "gauge",
         thumb: new URL('../assets/thumb_tiremarks.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_tiremarks_light.png', import.meta.url).href,
         hasSlot: true,
@@ -358,7 +359,7 @@ const menuItems = computed(() => [
         icon: "chartChestnut",
         tooltip: translations.value.docs.tooltips.chestnut[store.lang],
         link: "/docs#vue-ui-chestnut",
-        type: "combined",
+        type: ['xy', 'donuts', 'misc'],
         thumb: new URL('../assets/thumb_chestnut.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href,
         hasSlot: true,
@@ -370,7 +371,7 @@ const menuItems = computed(() => [
         icon: "chartOnion",
         tooltip: translations.value.docs.tooltips.onion[store.lang],
         link: "/docs#vue-ui-onion",
-        type: "classic",
+        type: "gauge",
         thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
         hasSlot: true,
@@ -382,7 +383,7 @@ const menuItems = computed(() => [
         icon: "chartVerticalBar",
         tooltip: translations.value.docs.tooltips.verticalBar[store.lang],
         link: "/docs#vue-ui-vertical-bar",
-        type: "classic",
+        type: "xy",
         thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
         hasSlot: true,
@@ -394,7 +395,7 @@ const menuItems = computed(() => [
         icon: "chartHeatmap",
         tooltip: translations.value.docs.tooltips.heatmap[store.lang],
         link: "/docs#vue-ui-heatmap",
-        type: "classic",
+        type: "donuts",
         thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
         hasSlot: true,
@@ -405,7 +406,7 @@ const menuItems = computed(() => [
         icon: "chartScatter",
         tooltip: translations.value.docs.tooltips.scatter[store.lang],
         link: "/docs#vue-ui-scatter",
-        type: "classic",
+        type: "misc",
         thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_scatter_light.png', import.meta.url).href,
         hasSlot: true,
@@ -417,7 +418,7 @@ const menuItems = computed(() => [
         icon: "chartCandlestick",
         tooltip: translations.value.docs.tooltips.candlestick[store.lang],
         link: "/docs#vue-ui-candlestick",
-        type: "classic",
+        type: "xy",
         thumb: new URL('../assets/thumb_candlestick.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_candlestick_light.png', import.meta.url).href,
         hasSlot: true,
@@ -429,7 +430,7 @@ const menuItems = computed(() => [
         icon: "chartAgePyramid",
         tooltip: translations.value.docs.tooltips.agePyramid[store.lang],
         link: "/docs#vue-ui-age-pyramid",
-        type: "classic",
+        type: "xy",
         thumbLight: new URL('../assets/thumb_age_pyramid_light.png', import.meta.url).href,
         thumb: new URL('../assets/thumb_age_pyramid.png', import.meta.url).href,
         hasSlot: true,
@@ -507,7 +508,7 @@ const menuItems = computed(() => [
         icon: "vueDataUi",
         tooltip: translations.value.docs.tooltips.quickChart[store.lang], 
         link: "/docs#vue-ui-quick-chart",
-        type: "mini",
+        type: ['mini', 'xy'],
         thumb: new URL('../assets/thumb_quick_chart.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_quick_chart_light.png', import.meta.url).href,
         hasSlot: false,
@@ -530,7 +531,7 @@ const menuItems = computed(() => [
         icon: "chartThermometer",
         tooltip: translations.value.docs.tooltips.thermometer[store.lang],
         link: "/docs#vue-ui-thermometer",
-        type: "measure",
+        type: "gauge",
         thumb: new URL('../assets/thumb_thermometer.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_thermometer_light.png', import.meta.url).href,
         hasSlot: true,
@@ -585,7 +586,7 @@ const menuItems = computed(() => [
         icon: "star",
         tooltip: translations.value.docs.tooltips.rating[store.lang],
         link: "/docs#vue-ui-rating",
-        type: "measure",
+        type: "rating",
         thumb: new URL('../assets/thumb_rating.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_rating_light.png', import.meta.url).href,
         hasSlot: false,
@@ -596,7 +597,7 @@ const menuItems = computed(() => [
         icon: "smiley",
         tooltip: translations.value.docs.tooltips.smiley[store.lang],
         link: "/docs#vue-ui-smiley",
-        type: "measure",
+        type: "rating",
         thumb: new URL('../assets/thumb_smiley.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_smiley_light.png', import.meta.url).href,
         hasSlot: false,
@@ -679,7 +680,7 @@ const menuItems = computed(() => [
         icon: "chartMoodRadar",
         tooltip: translations.value.docs.tooltips.moodRadar[store.lang],
         link: "/docs#vue-ui-mood-radar",
-        type: "measure",
+        type: "radar",
         thumb: new URL('../assets/thumb_mood_radar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_mood_radar_light.png', import.meta.url).href,
         hasSlot: true,
@@ -722,7 +723,7 @@ const menuItems = computed(() => [
         thumb: new URL('../assets/thumb_molecule.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_molecule_light.png', import.meta.url).href,
         link: "/docs#vue-ui-molecule",
-        type: "classic",
+        type: "misc",
         hasSlot: true,
         hasTableCss: false,
     },
@@ -731,7 +732,7 @@ const menuItems = computed(() => [
         icon: "chartStripPlot",
         tooltip: translations.value.docs.tooltips.stripPlot[store.lang],
         link: "/docs#vue-ui-strip-plot",
-        type: "classic",
+        type: ['donuts', 'misc'],
         thumb: new URL('../assets/thumb_strip_plot.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href,
         hasSlot: true,
@@ -742,7 +743,7 @@ const menuItems = computed(() => [
         icon: "chartDumbbell",
         tooltip: translations.value.docs.tooltips.dumbbell[store.lang],
         link: "/docs#vue-ui-dumbbell",
-        type: "classic",
+        type: ['xy', 'misc'],
         thumb: new URL('../assets/thumb_dumbbell.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_dumbbell_light.png', import.meta.url).href,
         hasSlot: true,
@@ -754,7 +755,7 @@ const menuItems = computed(() => [
         icon: "chartWordCloud",
         tooltip: translations.value.docs.tooltips.wordCloud[store.lang],
         link: "/docs#vue-ui-word-cloud",
-        type: "classic",
+        type: "semantic",
         thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
         hasSlot: true,
@@ -766,7 +767,7 @@ const menuItems = computed(() => [
         icon: "chartFlow",
         tooltip: translations.value.docs.tooltips.flow[store.lang],
         link: "/docs#vue-ui-flow",
-        type: "classic",
+        type: "xy",
         thumb: new URL('../assets/thumb_flow.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_flow_light.png', import.meta.url).href,
         hasSlot: true,
@@ -778,7 +779,7 @@ const menuItems = computed(() => [
         icon: "chartParallelCoordinatePlot",
         tooltip: translations.value.docs.tooltips.pcp[store.lang],
         link: "/docs#vue-ui-parallel-coordinate-plot",
-        type: "classic",
+        type: "xy",
         thumb: new URL('../assets/thumb_pcp.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_pcp_light.png', import.meta.url).href,
         hasSlot: true,
@@ -790,7 +791,7 @@ const menuItems = computed(() => [
         icon: 'lap',
         tooltip: translations.value.docs.tooltips.timer[store.lang],
         link: '/docs#vue-ui-timer',
-        type: 'tool',
+        type: 'gauge',
         hasSlot: false,
         hasLegend: false,
         thumb: new URL('../assets/thumb_timer.png', import.meta.url).href,
@@ -819,6 +820,55 @@ function playShowcase() {
 };
 
 onMounted(playShowcase);
+
+const menuCategories = computed(() => {
+    return [
+        {
+            filterBy: 'mini',
+            title: translations.value.sideMenu.miniCharts[store.lang]
+        },
+        {
+            filterBy: 'xy',
+            title: translations.value.sideMenu.lineAndBars[store.lang]
+        },
+        {
+            filterBy: 'donuts',
+            title: translations.value.sideMenu.donuts[store.lang]
+        },
+        {
+            filterBy: 'gauge',
+            title: translations.value.sideMenu.gauges[store.lang]
+        },
+        {
+            filterBy: 'semantic',
+            title: translations.value.types.semantic[store.lang]
+        },
+        {
+            filterBy: 'radar',
+            title: translations.value.sideMenu.radars[store.lang]
+        },
+        {
+            filterBy: 'misc',
+            title: translations.value.sideMenu.misc[store.lang]
+        },
+        {
+            filterBy: '3d',
+            title: '3D'
+        },
+        {
+            filterBy: 'table',
+            title: translations.value.sideMenu.tables[store.lang]
+        },
+        {
+            filterBy: 'rating',
+            title: translations.value.sideMenu.rating[store.lang]
+        },
+        {
+            filterBy: 'tool',
+            title: translations.value.sideMenu.utilities[store.lang]
+        },
+    ]
+})
 
 </script>
 
@@ -1108,7 +1158,7 @@ onMounted(playShowcase);
                         </VueDataUi>
                     </div>
     
-                    <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col md:flex-row gap-4">
+                    <div class="w-full max-w-[1000px] mx-auto mt-6 mb-4 text-xs sm:text-sm flex flex-col md:flex-row gap-6">
                     
                         <div class="w-full border border-gray-400 bg-[#FFFFFF10] p-4 rounded-lg flex flex-col gap-6 place-items-center">
                         <div class="flex flex-row gap-6 place-items-center">
@@ -1169,152 +1219,12 @@ onMounted(playShowcase);
                             </div>
                         </div>
                     </div>
-    
-                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-6 mb-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                            {{ translations.types.classic[store.lang] }}
-                        </div>
-                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'classic')" :icon="item.icon" :link="item.link" :item="item">
-                            <template #name>
-                                {{ item.name }}
-                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                            </template>
-                            <template #tooltip>
-                                <div class="flex flex-col place-items-center justify-center">
-                                <img v-if="item.thumb" :src="item.thumb">
-                                {{ item.tooltip }}
-                                </div>
-                            </template>
-                        </MenuDetail>
-                    </div>  
-    
-                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                            {{ translations.types.measure[store.lang] }}
-                        </div>
-                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'measure')" :icon="item.icon" :link="item.link" :item="item">
-                            <template #name>
-                                {{ item.name }}
-                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                            </template>
-                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                                <img v-if="item.thumb" :src="item.thumb">
-                                {{ item.tooltip }}
-                                </div></template>
-                        </MenuDetail>
-                    </div>
-    
-                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                            {{ translations.types.mini[store.lang] }}
-                        </div>
-                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'mini')" :icon="item.icon" :link="item.link" :item="item">
-                            <template #name>
-                                {{ item.name }}
-                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                            </template>
-                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                                <img v-if="item.thumb" :src="item.thumb">
-                                {{ item.tooltip }}
-                                </div></template>
-                        </MenuDetail>
-                    </div>
-    
-                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                            3D
-                        </div>
-                        <MenuDetail v-for="item in menuItems.filter(item => item.type === '3d')" :icon="item.icon" :link="item.link" :item="item">
-                            <template #name>
-                                {{ item.name }}
-                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                            </template>
-                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                                <img v-if="item.thumb" :src="item.thumb">
-                                {{ item.tooltip }}
-                                </div></template>
-                        </MenuDetail>
-                    </div>
-    
-                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                            {{ translations.types.combined[store.lang] }}
-                        </div>
-                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'combined')" :icon="item.icon" :link="item.link" :item="item">
-                            <template #name>
-                                {{ item.name }}
-                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                            </template>
-                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                                <img v-if="item.thumb" :src="item.thumb">
-                                {{ item.tooltip }}
-                                </div></template>
-                        </MenuDetail>
-                    </div>
-    
-                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                            {{ translations.types.table[store.lang] }}
-                        </div>
-                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'table')" :icon="item.icon" :link="item.link" :item="item">
-                            <template #name>
-                                {{ item.name }}
-                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                            </template>
-                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                                <img v-if="item.thumb" :src="item.thumb">
-                                {{ item.tooltip }}
-                                </div></template>
-                        </MenuDetail>
-                    </div>       
-    
-                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                            {{ translations.types.semantic[store.lang] }}
-                        </div>
-                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'semantic')" :icon="item.icon" :link="item.link" :item="item">
-                            <template #name>
-                                {{ item.name }}
-                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                            </template>
-                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                                <img v-if="item.thumb" :src="item.thumb">
-                                {{ item.tooltip }}
-                                </div></template>
-                        </MenuDetail>
-                    </div> 
-    
-                    <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-12">
-                        <div class="absolute top-3 left-4 text-app-blue font-black text-xl">
-                            {{ translations.types.tool[store.lang] }}
-                        </div>
-                        <MenuDetail v-for="item in menuItems.filter(item => item.type === 'tool')" :icon="item.icon" :link="item.link" :item="item">
-                            <template #name>
-                                {{ item.name }}
-                                <SquareRoundedLetterSIcon v-if="item.hasSlot" class="bg-white dark:bg-black rounded-md absolute -top-1 right-0 text-app-blue" size="16"/>
-                                <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
-                                <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
-                            </template>
-                            <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                                <img v-if="item.thumb" :src="item.thumb">
-                                {{ item.tooltip }}
-                                </div></template>
-                        </MenuDetail>
-                    </div>                
+
+                    <BaseMenuCategory
+                        v-for="cat in menuCategories"
+                        :menuItems="menuItems"
+                        v-bind="cat"
+                    />
                 </div>
             </Transition>
         </div>

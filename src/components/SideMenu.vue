@@ -610,6 +610,7 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-wheel', componentName: 'Wheel', icon: 'chartWheel' },
             {route: '/docs#vue-ui-tiremarks', componentName: 'Tiremarks', icon: 'chartTiremarks' },
             {route: '/docs#vue-ui-thermometer', componentName: 'Thermometer', icon: 'chartThermometer' },
+            { route: '/docs#vue-ui-timer', componentName: 'Timer', icon: 'lap'}
         ]
     },
     {
@@ -672,8 +673,7 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-digits', componentName: 'Digits', icon: 'digit8' },
             { route: '/docs#vue-ui-cursor', componentName: 'Cursor', icon: 'cursor' },
             { route: '/docs#vue-ui-mini-loader', componentName: 'MiniLoader', icon: 'chartWheel' },
-            { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' },
-            { route: '/docs#vue-ui-timer', componentName: 'Timer', icon: 'lap'}
+            { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' }
         ]
     },
 ]
