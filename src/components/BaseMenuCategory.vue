@@ -24,7 +24,7 @@ defineProps({
 
 <template>
     <div class="w-full max-w-[1000px] mx-auto text-xs sm:text-sm grid grid-cols-2 xl:grid-cols-3 gap-2 my-2 bg-gray-200 dark:bg-[rgb(30,30,30)] p-2 sm:p-4 rounded-md border border-gray-700 relative pt-12 sm:pt-16">
-        <div class="absolute text-white bg-gradient-to-r from-gray-600 to-transparent w-full font-black text-xl rounded-tl-md rounded-tr-md py-2 px-4">
+        <div class="absolute text-white bg-gradient-to-r from-gray-600 to-transparent w-full font-black text-xl rounded-tl-sm rounded-tr-sm py-2 px-4">
             {{ title }}
         </div>
         <MenuDetail v-for="item in menuItems.filter(item => Array.isArray(item.type) ? item.type.includes(filterBy) : item.type === filterBy)" :icon="item.icon" :link="item.link" :item="item">
