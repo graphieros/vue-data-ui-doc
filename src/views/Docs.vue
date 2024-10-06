@@ -1090,7 +1090,7 @@ const menuCategories = computed(() => {
     
                     <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
                         <div class="mb-4">{{ translations.getTheme[store.lang] }}</div>
-                        <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
+                        <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-300 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
                         <CopyIcon class="absolute right-2 top-2"/>
                             import { getThemeConfig } from "vue-data-ui";<br>
     
@@ -1115,9 +1115,11 @@ const menuCategories = computed(() => {
                                 {{ translations.viewSelectedTheme[store.lang] }}
                             </template>
                             <template #content>
-                                <div class="text-xs text-left mt-6 cursor-pointer" @click="copyToClipboard(selectedTheme)">
+                                <div class="text-xs text-left mt-6 cursor-pointer bg-black text-green-300 px-6 py-4 rounded" @click="copyToClipboard(selectedTheme)">
                                     <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
-                                    {{ selectedTheme }}
+                                    <code>
+                                        {{ selectedTheme }}
+                                    </code>
                                 </div>
                             </template>
                         </VueDataUi>
@@ -1125,7 +1127,7 @@ const menuCategories = computed(() => {
     
                     <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
                         <div class="mb-4">{{ translations.getConfig[store.lang] }}</div>
-                        <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-400 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
+                        <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-300 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
                         <CopyIcon class="absolute right-2 top-2"/>
                             import { getVueDataUiConfig } from "vue-data-ui";<br>
     
@@ -1150,9 +1152,11 @@ const menuCategories = computed(() => {
                                 {{ translations.viewSelectedConfig[store.lang] }}
                             </template>
                             <template #content>
-                                <div class="text-xs text-left mt-6 cursor-pointer" @click="copyToClipboard(selectedConfig)">
+                                <div class="text-xs text-left mt-6 cursor-pointer bg-black text-green-300 px-6 py-4 rounded" @click="copyToClipboard(selectedConfig)">
                                     <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
-                                    {{ selectedConfig }}
+                                    <code>
+                                        {{ selectedConfig }}
+                                    </code>
                                 </div>
                             </template>
                         </VueDataUi>
