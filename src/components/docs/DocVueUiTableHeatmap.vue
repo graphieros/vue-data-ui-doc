@@ -6,6 +6,8 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import BaseSpinner from "../BaseSpinner.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const mainConfig = useConfig()
 
@@ -195,64 +197,65 @@ function fixChart() {
                 </button>
             </div>
 
-
-            <VueDataUi component="VueUiTableHeatmap" :dataset="dataset"
-                :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                <template #caption>
-                    <div style="width: 100%; height: 40px" class="pb-8 font-black text-2xl text-left pl-2">
-                        TITLE
-                    </div>
+            <Suspense>
+                <template #default>
+                    <VueDataUi component="VueUiTableHeatmap" :dataset="dataset"
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                        <template #caption>
+                            <div style="width: 100%; height: 40px" class="pb-8 font-black text-2xl text-left pl-2">
+                                TITLE
+                            </div>
+                        </template>
+        
+                        <template #head="{ value, rowIndex, type }">
+                            <div class="text-black dark:text-gray-300">
+                                {{ value }}
+                            </div>
+                        </template>
+        
+                        <template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }">
+                            <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-start; padding: 0 6px;font-weight:${isResponsive ? 'bold' : 'normal'}`"
+                                class="bg-gray-200 dark:bg-[#2A2A2A] w-full">
+                                {{ value }}
+                            </div>
+                        </template>
+                        <template #cell="{ value, rowIndex, colIndex, type, color, textColor }">
+                            <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-end; padding: 0 6px;background:${color};color:${textColor}`"
+                                class="relative">
+                                {{ value }}
+                            </div>
+                        </template>
+                        <template #sum="{ value }">
+                            <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+                                class="bg-gray-200 dark:bg-[#2A2A2A]">
+                                {{ value }}
+                            </div>
+                        </template>
+                        <template #average="{ value }">
+                            <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+                                class="bg-gray-200 dark:bg-[#2A2A2A]">
+                                {{ value.toFixed(1) }}
+                            </div>
+                        </template>
+                        <template #median="{ value }">
+                            <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+                                class="bg-gray-200 dark:bg-[#2A2A2A]">
+                                {{ value.toFixed(1) }}
+                            </div>
+                        </template>
+                    </VueDataUi>
                 </template>
 
-                <template #head="{ value, rowIndex, type }">
-                    <div class="text-black dark:text-gray-300">
-                        {{ value }}
-                    </div>
+                <template #fallback>
+                    <BaseSpinner/>
                 </template>
-
-                <template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }">
-                    <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-start; padding: 0 6px;font-weight:${isResponsive ? 'bold' : 'normal'}`"
-                        class="bg-gray-200 dark:bg-[#2A2A2A] w-full">
-                        {{ value }}
-                    </div>
-                </template>
-                <template #cell="{ value, rowIndex, colIndex, type, color, textColor }">
-                    <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-end; padding: 0 6px;background:${color};color:${textColor}`"
-                        class="relative">
-                        {{ value }}
-                    </div>
-                </template>
-                <template #sum="{ value }">
-                    <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                        class="bg-gray-200 dark:bg-[#2A2A2A]">
-                        {{ value }}
-                    </div>
-                </template>
-                <template #average="{ value }">
-                    <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                        class="bg-gray-200 dark:bg-[#2A2A2A]">
-                        {{ value.toFixed(1) }}
-                    </div>
-                </template>
-                <template #median="{ value }">
-                    <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                        class="bg-gray-200 dark:bg-[#2A2A2A]">
-                        {{ value.toFixed(1) }}
-                    </div>
-                </template>
-            </VueDataUi>
-
-
+            </Suspense>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button
-                class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all"
-                @click="copyToClipboard(mainConfig.vue_ui_table_heatmap)">
-                <CopyIcon /> {{ translations.docs.copyDefaultConfig[store.lang] }}
-            </button>
-            <GitHubLink link="vue-ui-table-heatmap" />
-            <!-- <MakerLink to="VueUiTableHeatmap"/> -->
-        </div>
+
+        <BaseDocActions
+            targetLink="vue-ui-table-heatmap"
+            :configSource="mainConfig.vue_ui_table_heatmap"
+        />
 
         <Box showSlots>
             <template #warning>

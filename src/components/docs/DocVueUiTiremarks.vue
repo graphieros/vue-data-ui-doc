@@ -9,6 +9,8 @@ import ThemesVueUiTiremarks from "../themes/ThemesVueUiTiremarks.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import BaseDocActions from "./BaseDocActions.vue";
+import BaseSpinner from "../BaseSpinner.vue";
 
 const mainConfig = useConfig()
 
@@ -245,15 +247,16 @@ watch(() => showAllConfig.value, (v) => {
                 <VueUiTiremarks :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
               </template>
               <template #fallback>
-                    <div class="min-h-[300px]"></div>
-                </template>
+                <BaseSpinner/>
+              </template>
             </Suspense>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_tiremarks)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-tiremarks"/>
-            <MakerLink to="VueUiTiremarks" />
-        </div>
+
+        <BaseDocActions
+          targetLink="vue-ui-tiremarks"
+          targetMaker="VueUiTiremarks"
+          :configSource="mainConfig.vue_ui_tiremarks"
+        />
 
         <Box showEmits showSlots showThemes schema="vue_ui_tiremarks">
             <template #tab0>

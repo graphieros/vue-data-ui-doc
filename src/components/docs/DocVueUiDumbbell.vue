@@ -3,11 +3,12 @@ import { ref, watch, nextTick, computed } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import GitHubLink from "../GitHubLink.vue";
 import ThemesVueUiDumbbell from "../themes/ThemesVueUiDumbbell.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
+import BaseSpinner from "../BaseSpinner.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const mainConfig = useConfig()
 
@@ -415,15 +416,16 @@ watch(() => showAllConfig.value, (v) => {
                     <VueDataUi component="VueUiDumbbell" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
                 </template>
                 <template #fallback>
-                    <div class="min-h-[500px]"></div>
+                    <BaseSpinner/>
                 </template>
             </Suspense>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_dumbbell)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-dumbbell"/>
-            <!-- <MakerLink to="VueUiStripPlot"/> -->
-        </div>
+
+        <BaseDocActions
+            targetLink="vue-ui-dumbbell"
+            :configSource="mainConfig.vue_ui_dumbbell"
+        />
+
         <Box showEmits showSlots showThemes showResponsive schema="vue_ui_dumbbell">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}

@@ -8,6 +8,7 @@ import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import BaseSpinner from "../BaseSpinner.vue";
 
 const mainConfig = useConfig()
 
@@ -354,7 +355,7 @@ function fixChart() {
                             </VueUiQuickChart>
                         </template>
                         <template #fallback>
-                            <div class="min-h-[500px]"></div>
+                            <BaseSpinner/>
                         </template>
                     </Suspense>
 

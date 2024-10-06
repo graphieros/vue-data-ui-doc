@@ -3,13 +3,13 @@ import { ref, computed, watch, nextTick } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue"
 import ThemesVueUiOnion from "../themes/ThemesVueUiOnion.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import BaseDocActions from "./BaseDocActions.vue";
+import BaseSpinner from "../BaseSpinner.vue";
 
 const mainConfig = useConfig()
 
@@ -428,7 +428,7 @@ watch(() => showAllConfig.value, (v) => {
                     <VueUiOnion :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
                 </template>
                 <template #fallback>
-                    <div class="min-h-[500px]"></div>
+                    <BaseSpinner/>
                 </template>
             </Suspense>
         </div>
@@ -437,11 +437,13 @@ watch(() => showAllConfig.value, (v) => {
             <label for="player">{{ translations.docs.showMoreSeries[store.lang] }} </label>
             <input id="player" type="range" :min="1" :max="10" v-model="slicer" @input="updateDataset" class="accent-app-green max-w-[200px]">
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_onion)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-onion"/>
-            <MakerLink to="VueUiOnion"/>
-        </div>
+
+        <BaseDocActions
+            targetLink="vue-ui-onion"
+            targetMaker="VueUiOnion"
+            :configSource="mainConfig.vue_ui_onion"
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_onion">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}

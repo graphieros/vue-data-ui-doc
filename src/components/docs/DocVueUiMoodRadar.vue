@@ -3,11 +3,11 @@ import { ref, watch, nextTick, computed } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue";
 import ThemesVueUiMoodRadar from "../themes/ThemesVueUiMoodRadar.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
+import BaseDocActions from "./BaseDocActions.vue";
+import BaseSpinner from "../BaseSpinner.vue";
 
 const mainConfig = useConfig()
 
@@ -328,15 +328,16 @@ watch(() => showAllConfig.value, (v) => {
                     <VueUiMoodRadar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
                 </template>
                 <template #fallback>
-                    <div class="min-h-[500px]"></div>
+                    <BaseSpinner/>
                 </template>
             </Suspense>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_mood_radar)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-mood-radar"/>
-            <MakerLink to="VueUiMoodRadar"/>
-        </div>
+
+        <BaseDocActions
+            targetLink="vue-ui-mood-radar"
+            targetMaker="VueUiMoodRadar"
+            :configSource="mainConfig.vue_ui_mood_radar"
+        />
 
         <Box showEmits showSlots showThemes schema="vue_ui_mood_radar">
             <template #tab0>

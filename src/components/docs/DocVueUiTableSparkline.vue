@@ -3,10 +3,11 @@ import { ref, watch, nextTick, computed } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseDetails from "../BaseDetails.vue";
+import BaseSpinner from "../BaseSpinner.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const mainConfig = useConfig()
 
@@ -21,7 +22,6 @@ watch(() => store.isDarkMode, (val) => {
         key.value += 1;
     })
 });
-
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
@@ -291,14 +291,16 @@ watch(() => showAllConfig.value, (v) => {
                 <VueUiTableSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
               </template>
               <template #fallback>
-                    <div class="min-h-[500px]"></div>
-                </template>
+                  <BaseSpinner/>
+              </template>
             </Suspense>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_table_sparkline)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-table-sparkline"/>
-        </div>
+
+        <BaseDocActions
+          targetLink="vue-ui-table-sparkline"
+          :configSource="mainConfig.vue_ui_table_sparkline"
+        />
+
         <Box showEmits>
           <template #tab0>
             {{ translations.docs.datastructure[store.lang] }}

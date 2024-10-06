@@ -3,14 +3,13 @@ import { ref, computed, watch, nextTick } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue"
 import ThemesVueUiGauge from "../themes/ThemesVueUiGauge.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import BaseSpinner from "../BaseSpinner.vue";
 
 const mainConfig = useConfig()
 
@@ -314,7 +313,7 @@ watch(() => showAllConfig.value, (v) => {
                         <VueUiGauge :dataset="dataset1" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
                     </template>
                     <template #fallback>
-                        <div class="min-h-[500px]"></div>
+                        <BaseSpinner/>
                     </template>
                 </Suspense>
             </div>

@@ -5,6 +5,7 @@ import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const mainConfig = useConfig()
 
@@ -113,10 +114,12 @@ function fixChart() {
                 <VueUiMiniLoader :config="mutableConfig" :key="key"/>
             </div>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_mini_loader)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-mini-loader"/>
-        </div>
+
+        <BaseDocActions
+            targetLink="vue-ui-mini-loader"
+            :configSource="mainConfig.vue_ui_mini_loader"
+        />
+
         <Box :activeTab="1">
             <template #tab0>
                 {{ translations.docs.comments.noDataset[store.lang] }}

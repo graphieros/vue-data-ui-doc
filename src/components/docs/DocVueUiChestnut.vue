@@ -8,6 +8,7 @@ import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import BaseSpinner from "../BaseSpinner.vue";
 
 const mainConfig = useConfig()
 
@@ -689,8 +690,8 @@ watch(() => showAllConfig.value, (v) => {
                 <VueUiChestnut :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
               </template>
               <template #fallback>
-                    <div class="min-h-[500px]"></div>
-                </template>
+                <BaseSpinner />    
+              </template>
             </Suspense>
         </div>
 

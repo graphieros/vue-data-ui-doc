@@ -6,6 +6,8 @@ import { useMainStore } from "../../stores";
 import { xyConfig, xyDataset, donutConfig, donutDataset, waffleConfig, waffleDataset, radarConfig, radarDataset, chestnutConfig, chestnutDataset } from "./dash";
 import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
+import BaseSpinner from "../BaseSpinner.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const mainConfig = useConfig()
 
@@ -88,17 +90,26 @@ const dashboardComponents = computed(() => {
             {{ translations.docs.comments.dashboard.p1[store.lang] }}
         </div>
 
-        <VueUiDashboard :dataset="dashboardComponents" :config="mutableConfig" :key="key">
-            <template #content="{ item }">
-                <div style="padding: 12px">
-                    <component :is="item.component" v-bind="item.props"/>
-                </div>
+        <Suspense>
+            <template #default>
+                <VueUiDashboard :dataset="dashboardComponents" :config="mutableConfig" :key="key">
+                    <template #content="{ item }">
+                        <div style="padding: 12px">
+                            <component :is="item.component" v-bind="item.props"/>
+                        </div>
+                    </template>
+                </VueUiDashboard>
             </template>
-        </VueUiDashboard>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_dashboard)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-dashboard"/>
-        </div>
+            <template #fallback>
+                <BaseSpinner/>
+            </template>
+        </Suspense>
+
+        <BaseDocActions
+            targetLink="vue-ui-dashboard"
+            :configSource="mainConfig.vue_ui_dashboard"
+        />
+
         <Box showEmits showSlots>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}

@@ -5,6 +5,8 @@ import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
+import BaseSpinner from "../BaseSpinner.vue";
+import BaseDocActions from "./BaseDocActions.vue";
 
 const mainConfig = useConfig()
 
@@ -265,15 +267,17 @@ function showRating(r) {
                         <VueUiSmiley ref="rating" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" @rate="showRating"/>
                     </template>
                     <template #fallback>
-                        <div class="min-h-[300px]"></div>
+                        <BaseSpinner />
                     </template>
                 </Suspense>
             </div>
         </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_smiley)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-smiley"/>
-        </div>
+
+        <BaseDocActions
+            targetLink="vue-ui-smiley"
+            :configSource="mainConfig.vue_ui_smiley"
+        />
+
         <Box showEmits>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
