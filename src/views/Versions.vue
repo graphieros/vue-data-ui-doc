@@ -5,6 +5,7 @@ import { useMainStore } from "../stores";
 import staticReleases from "../../public/releases.json"
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui"
 import { useConfig } from "../assets/useConfig";
+import { useIconMap } from "../useIconMap";
 
 const globalConfig = useConfig()
 
@@ -1602,15 +1603,22 @@ const KPIS = computed(() => {
                 </div>
                 <div class="w-full max-h-[500px] overflow-y-auto dark:bg-[#1E1E1E] p-4">
                     <ul>
-                        <li v-for="log in versionsList">
-                            {{ log.date }} | <span class="text-app-green">{{ log.version }}</span><br>
+                        <li v-for="log in versionsList" class="border-l border-gray-500 mb-4">
+                          <div class="bg-gray-200 dark:bg-[#FFFFFF10] pl-6 py-2 mb-2">
+                            {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
+                          </div>
                             <div class="pl-6" v-if="log.updates">
                                 <template v-for="update in log.updates">
-                                    <span class="text-gray-500">
-                                          <a class="text-app-blue hover:underline text-bold" v-if="update.component && update.link" :href="update.link">{{ update.component }}</a>
-                                        <span v-else-if="update.component" class="text-app-blue">{{ update.component }}</span>
+                                    <div class="text-gray-500">
+                                          <a class="text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
+                                            <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                                            {{ update.component }}</a>
+                                        <span v-else-if="update.component" class="text-app-blue flex flex-row gap-2 flex-wrap">
+                                          <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                                          {{ update.component }}
+                                        </span>
                                         {{ update.description }}
-                                    </span>
+                                    </div>
                                     <br>
                                 </template>
                             </div>

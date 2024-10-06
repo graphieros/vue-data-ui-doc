@@ -16,49 +16,45 @@ const isDarkMode = computed(() => {
 </template>
 
 <style scoped>
+
+.loader-dark {
+    border-top: 4px solid #FFF;
+}
+
+.loader-light {
+    border-top: 4px solid #1A1A1A;
+}
+
 .loader {
     width: 120px;
     height: 120px;
-    display: inline-block;
-    position: relative;
-}
-
-.loader-dark::after,
-.loader-dark::before {
-    border: 3px solid #FFF;
-}
-
-.loader-light::after,
-.loader-light::before {
-    border: 3px solid #1A1A1A;
-}
-
-.loader::after,
-.loader::before {
-    content: '';
-    box-sizing: border-box;
-    width: 120px;
-    height: 120px;
     border-radius: 50%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    animation: animloader 2s linear infinite;
+    display: inline-block;
+    border-right: 4px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
 }
 
 .loader::after {
-    animation-delay: 1s;
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border-bottom: 4px solid #42d392;
+    border-left: 4px solid transparent;
 }
 
-@keyframes animloader {
+@keyframes rotation {
     0% {
-        transform: scale(0);
-        opacity: 1;
+        transform: rotate(0deg);
     }
 
     100% {
-        transform: scale(1);
-        opacity: 0;
+        transform: rotate(360deg);
     }
 }
 </style>
