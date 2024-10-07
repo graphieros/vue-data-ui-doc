@@ -21,17 +21,20 @@ const isDarkMode = computed(() => {
 const icons = ref([
     "close",
     "excel",
+    "exitFullscreen",
+    "fullscreen",
     "image",
     "labelClose",
     "labelOpen",
     "menu",
+    "pause",
     "pdf",
+    "play",
     "sort",
     "spin",
     "tableClose",
     "tableOpen",
-    "fullscreen",
-    "exitFullscreen"
+    "tooltip"
 ]);
 
 const specialIcons = ref([
@@ -124,11 +127,9 @@ const specialIcons = ref([
     "moodWink",
     "mu",
     "numbers",
-    "pause",
     "pentagon",
     "pentagonFill",
     "people",
-    "play",
     "ratio",
     "restart",
     "screenshot",
@@ -144,7 +145,6 @@ const specialIcons = ref([
     "star",
     "starFill",
     "stop",
-    "tooltip",
     "trend",
     "trendDown",
     "trendUp",
