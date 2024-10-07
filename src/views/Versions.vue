@@ -1568,6 +1568,7 @@ const treemapConfig = computed(() => {
         },
         layout: {
           labels: {
+            showDefaultLabels: false,
             fontSize: 100,
             hideUnderProportion: 0.001,
           },
@@ -1584,7 +1585,9 @@ const treemapConfig = computed(() => {
         },
         title: {
           text: 'Updates per component',
-          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+          textAlign: 'left',
+          paddingLeft: 12
         },
         legend: {
           show: false,
@@ -1707,8 +1710,15 @@ const treemapConfig = computed(() => {
                     </ul>
                 </div>
 
-                <div class="w-full p-4 bg-gray-200 dark:bg-[#FFFFFF10] shadow-md rounded-md my-6">
-                  <VueDataUi v-if="versionsList.length" component="VueUiTreemap" :dataset="versionTreemap" :config="treemapConfig"/>
+                <div class="w-full p-4 bg-gray-200 dark:bg-[#FFFFFF10] shadow-md rounded-md my-6 treemap-wrapper">
+                  <VueDataUi v-if="versionsList.length" component="VueUiTreemap" :dataset="versionTreemap" :config="treemapConfig">
+                    <template #rect="{ rect, fontSize }">
+                      <div class="h-full w-full flex flex-col place-items-center justify-center treemap-icon">
+                        <VueUiIcon :name="useIconMap(rect.name)" stroke="white"/>
+
+                      </div>
+                    </template>
+                  </VueDataUi>
                 </div>
 
                 <div class="w-full max-w-[800px] mx-auto mt-12">
@@ -1722,3 +1732,10 @@ const treemapConfig = computed(() => {
         </div>
     </div>
 </template>
+
+<style>
+.treemap-icon svg {
+  height: unset;
+  width: 50%;
+}
+</style>

@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 2.3.17",
+    "date": "2024-10-06",
+    "updates": [
+      {
+        "component": "VueUiGauge",
+        "description": "Fix title alignment options not applied",
+        "link": "/docs#vue-ui-gauge"
+      }
+    ]
+  },
+  {
+    "version": "v 2.3.16",
+    "date": "2024-10-06",
+    "updates": [
+      {
+        "component": "All charts with titles",
+        "description": "Add textAlign, paddingLeft and paddingRight config options to titles."
+      }
+    ]
+  },
+  {
     "version": "v 2.3.14",
     "date": "2024-10-05",
     "updates": [

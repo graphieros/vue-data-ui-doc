@@ -204,6 +204,9 @@ const config = ref({
            color: "#1A1A1A",
            fontSize: 20,
            bold: true,
+           textAlign: 'center',
+           paddingLeft: 0,
+           paddingRight: 0,
            subtitle: {
             fontSize: 16,
             color: "#565656",
@@ -441,6 +444,9 @@ const darkModeConfig = ref({
            color: "#c8c8c8",
            fontSize: 20,
            bold: true,
+           textAlign: 'center',
+           paddingLeft: 0,
+           paddingRight: 0,
            subtitle: {
             fontSize: 16,
             color: "#c8c8c8",
@@ -930,6 +936,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.title.color"><input v-else type="color" v-model="mutableConfig.chart.title.color">, (default: "#2D353C")</span>
                 <span>fontSize: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.chart.title.fontSize" :min="8" :max="42"/><BaseNumberInput v-else v-model:value="mutableConfig.chart.title.fontSize" :min="8" :max="42"/>, (default: 20)</span>
                 <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.chart.title.bold"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.chart.title.bold">, (default: true)</span>
+                <span>textAlign: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.chart.title.textAlign" @change="forceChartUpdate()"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.chart.title.textAlign" @change="forceChartUpdate()"><option>left</option><option>center</option><option>right</option></select></span>
+                <span>paddingLeft: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.chart.title.paddingLeft" :min="0" :max="48" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.chart.title.paddingLeft" :min="0" :max="48" @change="forceChartUpdate()"/>, (default: 0)</span>
+                <span>paddingRight: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.chart.title.paddingRight" :min="0" :max="48" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.chart.title.paddingRight" :min="0" :max="48" @change="forceChartUpdate()"/>, (default: 0)</span>
                 <BaseDetails attr="subtitle" :level="3" title="chart.title.subtitle">
                     <span>fontSize: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.chart.title.subtitle.fontSize" :min="8" :max="42"/><BaseNumberInput v-else v-model:value="mutableConfig.chart.title.subtitle.fontSize" :min="8" :max="42"/>, (default: 16)</span>
                     <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.chart.title.subtitle.color"><input v-else type="color" v-model="mutableConfig.chart.title.subtitle.color">, (default: "#A1A1A1")</span>
