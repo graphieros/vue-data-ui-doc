@@ -597,7 +597,7 @@ cosnt <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDa
             <span v-pre>{{ colIndex }} - {{ th }}</span>
         &lt;/template&gt;
 
-        &lt;template #td="{ th, colIndex, rowIndex }"&gt;
+        &lt;template #td="{ td, colIndex, rowIndex }"&gt;
             <span v-pre>{{ colIndex }} - {{ rowIndex }} - {{ td }}</span>
         &lt;/template&gt;
     &lt;/VueUiCarouselTable&gt;
