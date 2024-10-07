@@ -1,5 +1,166 @@
 [
   {
+    "version": "v 2.3.19",
+    "date": "2024-10-07",
+    "updates": [
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUi3dBar",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-3d-bar"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-chestnut"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiDumbbell",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-dumbbell"
+      },
+      {
+        "component": "VueUiFlow",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-flow"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiGauge",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-gauge"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiMoodRadar",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-mood-radar"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-relation-circle"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiThermometer",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-thermometer"
+      },
+      {
+        "component": "VueUiTiremarks",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-tiremarks"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiWheel",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-wheel"
+      },
+      {
+        "component": "VueUiWordCloud",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-word-cloud"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Add watermark slot",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.17",
     "date": "2024-10-06",
     "updates": [

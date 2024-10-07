@@ -488,6 +488,16 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    watermark: {
+                        en: `Use this 'slot' to add a watermark to your chart`,
+                        fr: `Utilisez ce slot pour ajouter un filigrane à votre graphique`,
+                        pt: `Use este 'slot' para adicionar uma marca d'água ao seu gráfico`,
+                        de: `Verwenden Sie diesen „Slot“, um Ihrem Diagramm ein Wasserzeichen hinzuzufügen`,
+                        zh: `使用此“插槽”向您的图表添加水印`,
+                        jp: `この「スロット」を使用して、チャートに透かしを追加します。`,
+                        es: `Utilice esta "slot" para agregar una marca de agua al gráfico`,
+                        ko: `차트에 워터마크를 추가하려면 이 "슬롯"을 사용하십시오.`
+                    },
                     caption: {
                         en: 'Use this slot to customize the caption element.',
                         fr: `Utilisez cet emplacement pour personnaliser l'élément de légende.`,

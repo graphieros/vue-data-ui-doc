@@ -755,6 +755,23 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWaffleDatasetIt
     &lt;/VueUiWaffle&gt;
 </code>
 </pre> 
+
+<div class="text-gray-500">
+    {{ translations.slots.watermark[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiWaffle
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #watermark="{ isPrinting }"&gt;
+            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiWaffle&gt;
+</code>
+</pre>
             </template>
             <template #tab4>
 <pre>

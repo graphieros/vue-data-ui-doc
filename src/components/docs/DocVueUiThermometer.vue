@@ -437,7 +437,24 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
         &lt;/template&gt;
     &lt;/VueUiThermometer&gt;
 </code>
-</pre>                    
+</pre> 
+
+<div class="text-gray-500">
+    {{ translations.slots.watermark[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiThermometer
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #watermark="{ isPrinting }"&gt;
+            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiThermometer&gt;
+</code>
+</pre>
 
             </template>
 

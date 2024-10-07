@@ -404,7 +404,24 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
         &lt;/template&gt;
     &lt;/VueUiWheel&gt;
 </code>
-</pre>                    
+</pre>     
+
+<div class="text-gray-500">
+    {{ translations.slots.watermark[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiWheel
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #watermark="{ isPrinting }"&gt;
+            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiWheel&gt;
+</code>
+</pre>
 
             </template>
 

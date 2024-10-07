@@ -835,7 +835,24 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
         &lt;/template&gt;
     &lt;/VueUiQuickChart&gt;
 </code>
-</pre>     
+</pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.watermark[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiQuickChart
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #watermark="{ isPrinting }"&gt;
+            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiQuickChart&gt;
+</code>
+</pre>
             </template>
             <template #tab4>
                 <pre>
