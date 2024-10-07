@@ -311,6 +311,24 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
           <VueUiSparkStackbar :dataset="componentTypes" :config="isDarkMode ? stackConfigDarkMode :stackConfig" />
         </div>
 
+        <a href="https://github.com/graphieros/vue-data-ui/graphs/contributors" target="_blank" v-if="contributors" class="w-full mt-12 flex flex-row gap-4 place-items-center justify-center">
+          <div class="mx-auto flex flex-row gap-4 p-4 bg-gray-200 shadow-md dark:bg-[#FFFFFF10] place-items-center rounded-md">
+            <div class="h-[40px]">
+              <VueUiDigits 
+                :dataset="contributors.length"
+                :config="{
+                  backgroundColor: 'transparent',
+                  digits: {
+                    color: isDarkMode ? '#42d392' : '#1A1A1A',
+                    skeletonColor: isDarkMode ? '#3A3A3A' : '#e1e5e8'
+                  }
+                }"
+              />
+            </div>
+            {{ translations.about.contributors[store.lang] }}
+          </div>
+        </a>
+
         <div class="text-center w-full text-app-blue font-satoshi-bold text-2xl mt-12">
             {{ translations.about.maintainers[store.lang] }}
         </div>
@@ -323,16 +341,6 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
                 </p>
             </div>
         </div>
-
-         <!-- <div class="w-full my-12">
-          <h3>Contributors</h3>
-          <div class="flex flex-row flew-wrap gap-4 palce-items-center justify-center">
-            <div v-for="contributor in contributors" class="flex flex-col gap-2 place-items-center justify-center">
-              <img :src="contributor.avatar_url" class="h-[40px] w-[40px] rounded-full" :alt="contributor.login"/>
-              <div class="text-[9px]">{{ contributor.contributions }}</div>
-            </div>
-          </div>
-        </div> -->
 
         <div v-if="isDarkMode" class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px] mb-12">
             <div v-for="skeleton in skeletonsDarkMode.slice(3, skeletons.length)" class="max-w-1/3">

@@ -1186,6 +1186,16 @@ export const useMainStore = defineStore("main", {
                         es: "Para que la experiencia de sus paneles sea lo más fluida posible, Vue Data UI también incluye un conjunto de utilidades, como",
                         ko: "대시보드 경험을 최대한 원활하게 만들기 위해 Vue Data UI에는 다음과 같은 유틸리티 세트도 함께 제공됩니다."
                     },
+                    contributors: {
+                        en: 'Contributors',
+                        fr: 'Contributeurs',
+                        pt: 'Contribuidores',
+                        de: 'Mitwirkende',
+                        zh: '贡献者',
+                        jp: '貢献者',
+                        es: 'Colaboradores',
+                        ko: '기여자'
+                    },
                     maintainers: {
                         en: "Maintainer",
                         fr: "Mainteneur",
