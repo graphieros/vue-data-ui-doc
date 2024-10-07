@@ -6,6 +6,7 @@ import { BrightnessUpIcon, MoonIcon, StarFilledIcon } from "vue-tabler-icons";
 import router from "../router"
 import staticReleases from "../../public/releases.json"
 import { useConfig } from "../assets/useConfig";
+import BaseSpinner from "../components/BaseSpinner.vue";
 
 const configs = useConfig()
 
@@ -477,6 +478,9 @@ const componentTranslation = ref({
                 </div>
               </template>
             </VueUiDonut>
+          </template>
+          <template #fallback>
+            <BaseSpinner />
           </template>
         </Suspense>
         <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[500px] place-items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20px]"> 
