@@ -34,7 +34,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: '表格主体单元格',
                     jp: 'テーブルの本体セル',
                     es: 'Celdas del cuerpo de la tabla',
-                    ko: '테이블 본문 셀'
+                    ko: '테이블 본문 셀',
+                    ar: 'خلايا الجسم الجدول'
                 },
                 activeRelations: {
                     en: 'Active relations',
@@ -44,7 +45,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: "积极的关系",
                     jp: "活発な関係",
                     es: "Relaciones activas",
-                    ko: "적극적인 관계"
+                    ko: "적극적인 관계",
+                    ar: 'علاقات نشطة'
                 },
                 addRelations: {
                     en: 'Add relations',
@@ -54,7 +56,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: "添加关系",
                     jp: "リレーションの追加",
                     es: "Agregar relaciones",
-                    ko: "관계 추가"
+                    ko: "관계 추가",
+                    ar: 'أضف العلاقات'
                 },
                 clearStorage: {
                     en: 'Clear local storage for this chart',
@@ -65,6 +68,7 @@ export const useMakerStore = defineStore('maker', {
                     jp: "このチャートのローカル ストレージをクリアします",
                     es: "Borrar almacenamiento local para este gráfico",
                     ko: "이 차트의 로컬 저장소 지우기",
+                    ar: 'مسح التخزين المحلي لهذا المخطط'
                 },
                 reset: {
                     en: "Reset config",
@@ -74,7 +78,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: "重置配置",
                     jp: "設定をリセットする",
                     es: "Restablecer config",
-                    ko: "구성 재설정"
+                    ko: "구성 재설정",
+                    ar: 'إعادة ضبط التكوين'
                 },
                 atWork: {
                     en: "We are currently working on adding all the components here. If you don't find the one you need, you can still check out the docs page.",
@@ -84,7 +89,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: "我们目前正在努力在此处添加所有组件。如果您找不到所需的内容，您仍然可以查看文档页面。",
                     jp: "現在、すべてのコンポーネントをここに追加する作業を行っています。必要なものが見つからない場合でも、ドキュメント ページをチェックしてください。",
                     es: "Actualmente estamos trabajando para agregar todos los componentes aquí. Si no encuentra el que necesita, aún puede consultar la página de documentos.",
-                    ko: "현재 여기에 모든 구성요소를 추가하는 작업이 진행 중입니다. 필요한 것을 찾지 못한 경우에도 문서 페이지를 확인하실 수 있습니다."
+                    ko: "현재 여기에 모든 구성요소를 추가하는 작업이 진행 중입니다. 필요한 것을 찾지 못한 경우에도 문서 페이지를 확인하실 수 있습니다.",
+                    ar: 'نحن نعمل حاليًا على إضافة جميع المكونات هنا. إذا لم تجد ما تحتاجه، فلا يزال بإمكانك مراجعة صفحة المستندات.'
                 },
                 steps: {
                     one: {
@@ -95,7 +101,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "编写数据集",
                         jp: "データセットを構成する",
                         es: "Redacte su conjunto de datos",
-                        ko: "데이터세트를 구성하세요"
+                        ko: "데이터세트를 구성하세요",
+                        ar: 'قم بتكوين مجموعة البيانات الخاصة بك'
                     },
                     two: {
                         en: "Tweak configuration settings",
@@ -105,7 +112,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "调整配置设置",
                         jp: "構成設定を微調整する",
                         es: "Modificar los ajustes de configuración",
-                        ko: "구성 설정 조정"
+                        ko: "구성 설정 조정",
+                        ar: 'تعديل إعدادات التكوين'
                     },
                     three: {
                         en: "Copy the component code",
@@ -115,7 +123,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "复制组件代码",
                         jp: "コンポーネントコードをコピーします",
                         es: "Copia el código del componente",
-                        ko: "구성요소 코드 복사"
+                        ko: "구성요소 코드 복사",
+                        ar: 'انسخ رمز المكون'
                     },
                 },
                 config: {
@@ -126,7 +135,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: "配置",
                     jp: "構成",
                     es: "Configuración",
-                    ko: "구성"
+                    ko: "구성",
+                    ar: 'إعدادات'
                 },
                 categoriesLabel: {
                     en: 'Categories',
@@ -136,7 +146,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: "类别",
                     jp: "カテゴリー",
                     es: "Categorías",
-                    ko: "카테고리"
+                    ko: "카테고리",
+                    ar: 'فئات'
                 },
                 dataset: {
                     en: "Dataset",
@@ -146,7 +157,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: "数据集",
                     jp: "データセット",
                     es: "Conjunto de datos",
-                    ko: "데이터세트"
+                    ko: "데이터세트",
+                    ar: 'مجموعة البيانات'
                 },
                 copyConfigOnly: {
                     en: 'Copy config only',
@@ -156,7 +168,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: '仅复制配置',
                     jp: '設定のみをコピー',
                     es: 'Copiar solo la configuración',
-                    ko: '구성만 복사'
+                    ko: '구성만 복사',
+                    ar: 'نسخ التكوين فقط'
                 },
                 copyDatasetOnly: {
                     en: 'Copy dataset only',
@@ -166,7 +179,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: '仅复制数据集',
                     jp: 'データセットのみをコピーする',
                     es: 'Copiar solo conjunto de datos',
-                    ko: '데이터세트만 복사'
+                    ko: '데이터세트만 복사',
+                    ar: 'نسخ مجموعة البيانات فقط'
                 },
                 componentCode: {
                     en: "Copy the full component",
@@ -176,7 +190,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: "复制完整组件",
                     jp: "コンポーネント全体をコピーする",
                     es: "Copia el componente completo",
-                    ko: "전체 구성요소 복사"
+                    ko: "전체 구성요소 복사",
+                    ar: 'انسخ المكون بالكامل'
                 },
                 categories: {
                     userOptions: {
@@ -187,7 +202,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '用户选项',
                         jp: 'ユーザーオプション',
                         es: 'Opciones de usuario',
-                        ko: '사용자 옵션'
+                        ko: '사용자 옵션',
+                        ar: 'خيارات المستخدم'
                     },
                     container: {
                         en: "Container",
@@ -197,7 +213,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "容器",
                         jp: "容器",
                         es: "Envase",
-                        ko: "컨테이너"
+                        ko: "컨테이너",
+                        ar: 'حاوية'
                     },
                     correlation: {
                         en: 'Correlation',
@@ -207,7 +224,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "相关性",
                         jp: "相関",
                         es: "Correlación",
-                        ko: "상관관계"
+                        ko: "상관관계",
+                        ar: 'علاقة'
                     },
                     datapoints: {
                         en: "Datapoints",
@@ -217,7 +235,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "数据点",
                         jp: "データポイント",
                         es: "Puntos de datos",
-                        ko: "데이터 점수"
+                        ko: "데이터 점수",
+                        ar: 'نقاط البيانات'
                     },
                     donut: {
                         en: 'Arcs',
@@ -227,7 +246,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "弧线",
                         jp: "円弧",
                         es: "Arcos",
-                        ko: "호"
+                        ko: "호",
+                        ar: 'أقواس'
                     },
                     general: {
                         en: "General settings",
@@ -237,7 +257,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "常规设置",
                         jp: "一般設定",
                         es: "Configuración general",
-                        ko: "일반 설정"
+                        ko: "일반 설정",
+                        ar: 'الإعدادات العامة'
                     },
                     padding: {
                         en: "Padding",
@@ -247,7 +268,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "图表填充",
                         jp: "チャートのパディング",
                         es: "Padding",
-                        ko: "차트 패딩"
+                        ko: "차트 패딩",
+                        ar: 'حشوة'
                     },
                     highlight: {
                         en: "Highlight period area",
@@ -257,7 +279,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "高亮框",
                         jp: "ハイライトボックス",
                         es: "cuadro resaltado",
-                        ko: "하이라이트 상자"
+                        ko: "하이라이트 상자",
+                        ar: 'تسليط الضوء على منطقة الفترة'
                     },
                     grid: {
                         en: "Grid settings",
@@ -267,7 +290,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "网格设置",
                         jp: "グリッド設定",
                         es: "Configuración de cuadrícula",
-                        ko: "그리드 설정"
+                        ko: "그리드 설정",
+                        ar: 'إعدادات الشبكة'
                     },
                     labels: {
                         en: "Data labels",
@@ -277,7 +301,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "数据标签",
                         jp: "データラベル",
                         es: "Etiquetas de datos",
-                        ko: "데이터 라벨"
+                        ko: "데이터 라벨",
+                        ar: 'تسميات البيانات'
                     },
                     legend: {
                         en: "Chart legend",
@@ -287,7 +312,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "图表图例",
                         jp: "チャートの凡例",
                         es: "Leyenda del gráfico",
-                        ko: "차트 범례"
+                        ko: "차트 범례",
+                        ar: 'أسطورة الرسم البياني'
                     },
                     title: {
                         en: "Chart title",
@@ -297,7 +323,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "图表标题",
                         jp: "チャートのタイトル",
                         es: "Titulo del gráfico",
-                        ko: "차트 제목"
+                        ko: "차트 제목",
+                        ar: 'عنوان الرسم البياني'
                     },
                     subtitle: {
                         en: "Chart subtitle",
@@ -307,7 +334,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "图表副标题",
                         jp: "チャートのサブタイトル",
                         es: "Subtítulo del gráfico",
-                        ko: "차트 부제"
+                        ko: "차트 부제",
+                        ar: 'العنوان الفرعي للرسم البياني'
                     },
                     tooltip: {
                         en: "Tooltip settings",
@@ -317,7 +345,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "工具提示设置",
                         jp: "ツールチップの設定",
                         es: "Configuración de información sobre herramientas",
-                        ko: "툴팁 설정"
+                        ko: "툴팁 설정",
+                        ar: 'إعدادات تلميح الأدوات'
                     },
                     bar: {
                         en: "Bar types specific settings",
@@ -327,7 +356,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "条形数据集的特定设置",
                         jp: "バータイプのデータセットの特定の設定",
                         es: "Configuraciones específicas para conjuntos de datos escritos con barras",
-                        ko: "막대 유형 데이터세트에 대한 특정 설정"
+                        ko: "막대 유형 데이터세트에 대한 특정 설정",
+                        ar: 'أنواع الشريط إعدادات محددة'
                     },
                     bars: {
                         en: 'Bars',
@@ -337,7 +367,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "酒吧",
                         jp: "バー",
                         es: "Barras",
-                        ko: "바"
+                        ko: "바",
+                        ar: 'شريط'
                     },
                     line: {
                         en: "Line types specific settings",
@@ -347,7 +378,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "线型数据集的特定设置",
                         jp: "線タイプのデータセットの特定の設定",
                         es: "Configuraciones específicas para conjuntos de datos escritos en línea",
-                        ko: "선 유형 데이터세트에 대한 특정 설정"
+                        ko: "선 유형 데이터세트에 대한 특정 설정",
+                        ar: 'إعدادات محددة لأنواع الخطوط'
                     },
                     plot: {
                         en: "Plot types specific settings",
@@ -357,7 +389,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "点类型数据集的特定设置",
                         jp: "ポイント型データセットの特定の設定",
                         es: "Configuraciones específicas para conjuntos de datos escritos por puntos",
-                        ko: "포인트 유형 데이터세트에 대한 특정 설정"
+                        ko: "포인트 유형 데이터세트에 대한 특정 설정",
+                        ar: 'أنواع المؤامرة إعدادات محددة'
                     },
                     table: {
                         en: "Data table settings",
@@ -367,7 +400,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "数据表设置",
                         jp: "データテーブルの設定",
                         es: "Configuración de la tabla de datos",
-                        ko: "데이터 테이블 설정"
+                        ko: "데이터 테이블 설정",
+                        ar: 'إعدادات جدول البيانات'
                     },
                     roots: {
                         en: 'Roots',
@@ -377,7 +411,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "根源",
                         jp: "ルーツ",
                         es: "Raíces",
-                        ko: "뿌리"
+                        ko: "뿌리",
+                        ar: 'الجذور'
                     },
                     branches: {
                         en: 'Branches',
@@ -387,7 +422,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "树枝",
                         jp: "小枝",
                         es: "Ramas",
-                        ko: "나뭇가지"
+                        ko: "나뭇가지",
+                        ar: 'الفروع'
                     },
                     donutCharts: {
                         en: 'Donut charts',
@@ -397,7 +433,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '圆环图',
                         jp: 'ドーナツチャート',
                         es: 'Gráficos de anillos',
-                        ko: '도넛 차트'
+                        ko: '도넛 차트',
+                        ar: 'المخططات الدائرية'
                     },
                     translations: {
                         en: 'Translations',
@@ -407,7 +444,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '翻译',
                         jp: '翻訳',
                         es: 'Traducciones',
-                        ko: '번역'
+                        ko: '번역',
+                        ar: 'ترجمات'
                     },
                     serieLabels: {
                         en: 'Serie labels',
@@ -417,7 +455,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "Serienetiketten",
                         jp: "シリーズラベル",
                         es: "Etiquetas de serie",
-                        ko: "시리즈 라벨"
+                        ko: "시리즈 라벨",
+                        ar: 'تسميات السلسلة'
                     },
                     selector: {
                         en: 'Selector',
@@ -427,7 +466,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "选择器",
                         jp: "セレクタ",
                         es: "Selector",
-                        ko: "선택자"
+                        ko: "선택자",
+                        ar: 'محدد'
                     }
                 },
                 labels: {
@@ -439,7 +479,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "缩写",
                         jp: "略語",
                         es: "Abreviatura",
-                        ko: "약어"
+                        ko: "약어",
+                        ar: 'اختصار'
                     },
                     acceleration: {
                         en: 'Acceleration',
@@ -449,7 +490,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "加速",
                         jp: "加速度",
                         es: "Aceleración",
-                        ko: "가속"
+                        ko: "가속",
+                        ar: 'تسريع'
                     },
                     active: {
                         en: 'Active',
@@ -459,7 +501,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "积极的",
                         jp: "アクティブ",
                         es: "Activo",
-                        ko: "활동적인"
+                        ko: "활동적인",
+                        ar: 'نشيط'
                     },
                     add: {
                         en: 'Add',
@@ -469,7 +512,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "添加",
                         jp: "追加",
                         es: "Agregar",
-                        ko: "추가하다"
+                        ko: "추가하다",
+                        ar: 'يضيف'
                     },
                     age: {
                         en: 'Age',
@@ -479,7 +523,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "年龄",
                         jp: "年",
                         es: "Edad",
-                        ko: "나이"
+                        ko: "나이",
+                        ar: 'عمر'
                     },
                     angle: {
                         en: "Angle",
@@ -489,7 +534,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "角落",
                         jp: "コーナー",
                         es: "Esquina",
-                        ko: "모서리"
+                        ko: "모서리",
+                        ar: 'زاوية'
                     },
                     animation: {
                         en: "Animation",
@@ -499,7 +545,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "动画片",
                         jp: "アニメーション",
                         es: "Animación",
-                        ko: "생기"
+                        ko: "생기",
+                        ar: 'الرسوم المتحركة'
                     },
                     area: {
                         en: "Area",
@@ -509,7 +556,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "区",
                         jp: "エリア",
                         es: "Área",
-                        ko: "영역"
+                        ko: "영역",
+                        ar: 'منطقة'
                     },
                     auto: {
                         en: 'Auto',
@@ -519,7 +567,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "自动的",
                         jp: "自動",
                         es: "Auto",
-                        ko: "자동적 인"
+                        ko: "자동적 인",
+                        ar: 'تلقائي'
                     },
                     arrow: {
                         en: 'Arrow',
@@ -529,7 +578,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "箭",
                         jp: "矢印",
                         es: "Flecha",
-                        ko: "화살"
+                        ko: "화살",
+                        ar: 'سهم'
                     },
                     average: {
                         en: 'Average',
@@ -539,7 +589,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "平均的",
                         jp: "平均",
                         es: "Promedio",
-                        ko: "평균"
+                        ko: "평균",
+                        ar: 'متوسط'
                     },
                     axis: {
                         en: 'Axis',
@@ -549,7 +600,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "轴",
                         jp: "軸",
                         es: "Ejes",
-                        ko: "축"
+                        ko: "축",
+                        ar: 'محور'
                     },
                     backgroundColor: {
                         en: "Background color",
@@ -559,7 +611,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "背景颜色",
                         jp: "背景色",
                         es: "Color de fondo",
-                        ko: "배경색"
+                        ko: "배경색",
+                        ar: 'لون الخلفية'
                     },
                     backgroundColorHeader: {
                         en: "Header background color",
@@ -569,7 +622,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "标题背景颜色",
                         jp: "ヘッダーの背景色",
                         es: "Color de fondo del encabezado",
-                        ko: "헤더 배경색"
+                        ko: "헤더 배경색",
+                        ar: 'لون خلفية الرأس'
                     },
                     backgroundColorRow: {
                         en: "Rows background color",
@@ -579,7 +633,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "行背景颜色",
                         jp: "行の背景色",
                         es: "Color de fondo de las filas",
-                        ko: "행 배경색"
+                        ko: "행 배경색",
+                        ar: 'لون خلفية الصفوف'
                     },
                     between: {
                         en: "Intermediate",
@@ -589,7 +644,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "中间的",
                         jp: "中級",
                         es: "Intermedio",
-                        ko: "중급"
+                        ko: "중급",
+                        ar: 'متوسط'
                     },
                     bold: {
                         en: "Bold",
@@ -599,7 +655,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "粗体",
                         jp: "太字フォント",
                         es: "Negrita",
-                        ko: "볼드체"
+                        ko: "볼드체",
+                        ar: 'عريض'
                     },
                     border: {
                         en: "Border",
@@ -609,7 +666,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "边缘",
                         jp: "角",
                         es: "Borde",
-                        ko: "가장자리"
+                        ko: "가장자리",
+                        ar: 'حدود'
                     },
                     borderRadius: {
                         en: "Border radius",
@@ -619,7 +677,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "圆角",
                         jp: "角の丸み",
                         es: "redondeo de esquinas",
-                        ko: "코너 라운딩"
+                        ko: "코너 라운딩",
+                        ar: "نصف قطر الحدود"
                     },
                     bottom: {
                         en: "Bottom",
@@ -629,7 +688,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "底部",
                         jp: "底",
                         es: "Abajo",
-                        ko: "맨 아래"
+                        ko: "맨 아래",
+                        ar: 'قاع'
                     },
                     branch: {
                         en: 'Branch',
@@ -639,7 +699,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "枝条",
                         jp: "小枝",
                         es: "Ramita",
-                        ko: "작은 가지"
+                        ko: "작은 가지",
+                        ar: 'فرع'
                     },
                     breakdown: {
                         en: 'Breakdown',
@@ -649,7 +710,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "分配",
                         jp: "分布",
                         es: "Distribución",
-                        ko: "분포"
+                        ko: "분포",
+                        ar: 'انفصال'
                     },
                     caption: {
                         en: "Caption",
@@ -659,7 +721,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "标题",
                         jp: "キャプション",
                         es: "Subtítulo",
-                        ko: "표제"
+                        ko: "표제",
+                        ar: 'التسمية التوضيحية'
                     },
                     captionPadding: {
                         en: "Caption padding",
@@ -669,7 +732,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "标题间距",
                         jp: "キャプションの間隔",
                         es: "Espaciado de subtítulos",
-                        ko: "캡션 간격"
+                        ko: "캡션 간격",
+                        ar: 'حشوة التسمية التوضيحية'
                     },
                     captionWidth: {
                         en: "Caption width",
@@ -679,7 +743,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "标题宽度",
                         jp: "キャプションの幅",
                         es: "Ancho de título",
-                        ko: "캡션 너비"
+                        ko: "캡션 너비",
+                        ar: 'عرض التسمية التوضيحية'
                     },
                     category: {
                         en: 'Category',
@@ -689,7 +754,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "类别",
                         jp: "カテゴリー",
                         es: "Categoría",
-                        ko: "범주"
+                        ko: "범주",
+                        ar: 'فئة'
                     },
                     categoryName: {
                         en: "Category name",
@@ -699,7 +765,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "分类名称",
                         jp: "種別名",
                         es: "Nombre de la categoría",
-                        ko: "카테고리 이름"
+                        ko: "카테고리 이름",
+                        ar: 'اسم الفئة'
                     },
                     cell: {
                         en: 'Cell',
@@ -709,7 +776,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "细胞",
                         jp: "細胞",
                         es: "Celúla",
-                        ko: "셀"
+                        ko: "셀",
+                        ar: 'خلية'
                     },
                     circle: {
                         en: "Circle",
@@ -719,7 +787,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "圆圈",
                         jp: "丸",
                         es: "Círculo",
-                        ko: "원"
+                        ko: "원",
+                        ar: 'دائرة'
                     },
                     cold: {
                         en: 'Cold',
@@ -729,7 +798,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "寒冷的",
                         jp: "寒い",
                         es: "Frío",
-                        ko: "추운"
+                        ko: "추운",
+                        ar: 'بارد'
                     },
                     color: {
                         en: "Color",
@@ -739,7 +809,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "颜色",
                         jp: "色",
                         es: "Color",
-                        ko: "색상"
+                        ko: "색상",
+                        ar: 'لون'
                     },
                     colorName: {
                         en: "Serie name color",
@@ -748,7 +819,8 @@ export const useMakerStore = defineStore('maker', {
                         de: "Farbe des Seriennamens",
                         zh: "系列名称 颜色",
                         jp: "シリーズ名カラー",
-                        ko: "시리즈명 색상"
+                        ko: "시리즈명 색상",
+                        ar: 'لون اسم المسلسل'
                     },
                     colorPercentage: {
                         en: "% label color",
@@ -758,7 +830,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "% 标签颜色",
                         jp: "% ラベルの色",
                         es: "% color de etiqueta",
-                        ko: "% 라벨 색상"
+                        ko: "% 라벨 색상",
+                        ar: '% لون التسمية'
                     },
                     columnName: {
                         en: "Column name",
@@ -768,7 +841,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "列名称",
                         jp: "列名",
                         es: "Nombre de columna",
-                        ko: "열 이름"
+                        ko: "열 이름",
+                        ar: 'اسم العمود'
                     },
                     columnNamePeriod: {
                         en: "Column name: Period",
@@ -778,7 +852,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "列名称：期间",
                         jp: "列名: 期間",
                         es: "Nombre de columna: Período",
-                        ko: "열 이름: 기간"
+                        ko: "열 이름: 기간",
+                        ar: 'اسم العمود: الفترة'
                     },
                     columnNameTotal: {
                         en: "Column name: Total",
@@ -788,7 +863,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "列名称：总计",
                         jp: "列名: 合計",
                         es: "Nombre de columna: Total",
-                        ko: "열 이름: 합계"
+                        ko: "열 이름: 합계",
+                        ar: 'اسم العمود: الإجمالي'
                     },
                     correlation: {
                         en: 'Correlation',
@@ -798,7 +874,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "相关性",
                         jp: "相関",
                         es: "Correlación",
-                        ko: "상관관계"
+                        ko: "상관관계",
+                        ar: 'علاقة'
                     },
                     crescendo: {
                         en: 'Crescendo',
@@ -808,7 +885,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '渐强',
                         jp: 'クレッシェンド',
                         es: 'Crescendo',
-                        ko: '진전'
+                        ko: '진전',
+                        ar: 'تصعيد'
                     },
                     cssClass: {
                         en: 'CSS classes',
@@ -818,7 +896,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "CSS 类",
                         jp: "CSSクラス",
                         es: "Clases CSS",
-                        ko: "CSS 클래스"
+                        ko: "CSS 클래스",
+                        ar: 'فئات CSS'
                     },
                     curve: {
                         en: 'Curve',
@@ -828,7 +907,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "曲线",
                         jp: "曲線",
                         es: "Curva",
-                        ko: "곡선"
+                        ko: "곡선",
+                        ar: 'منحنى'
                     },
                     dashed: {
                         en: "Dashed",
@@ -838,7 +918,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "点状",
                         jp: "点在",
                         es: "Punteado",
-                        ko: "점이 찍힌"
+                        ko: "점이 찍힌",
+                        ar: 'منقط'
                     },
                     dataLabels: {
                         en: 'Data labels',
@@ -848,7 +929,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "数据标签",
                         jp: "データラベル",
                         es: "Etiquetas de datos",
-                        ko: "데이터 라벨"
+                        ko: "데이터 라벨",
+                        ar: 'تسميات البيانات'
                     },
                     datapoint: {
                         en: "Datapoint",
@@ -858,7 +940,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "数据点",
                         jp: "データポイント",
                         es: "Punto de datos",
-                        ko: "데이터 포인트"
+                        ko: "데이터 포인트",
+                        ar: 'نقطة البيانات'
                     },
                     dataPolygon: {
                         en: 'Data polygon',
@@ -868,7 +951,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "数据多边形",
                         jp: "データポリゴン",
                         es: "polígono de datos",
-                        ko: "데이터 폴리곤"
+                        ko: "데이터 폴리곤",
+                        ar: 'مضلع البيانات'
                     },
                     deviation: {
                         en: "Deviation",
@@ -878,7 +962,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "偏差",
                         jp: "偏差",
                         es: "Desviación",
-                        ko: "편차"
+                        ko: "편차",
+                        ar: 'انحراف'
                     },
                     deviationThreshold: {
                         en: 'Deviation threshold',
@@ -888,7 +973,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "偏差阈值",
                         jp: "偏差閾値",
                         es: "Umbral de desviación",
-                        ko: "편차 임계값"
+                        ko: "편차 임계값",
+                        ar: 'عتبة الانحراف'
                     },
                     display: {
                         en: 'Display',
@@ -898,7 +984,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "展示",
                         jp: "画面",
                         es: "Mostrar",
-                        ko: "표시하다"
+                        ko: "표시하다",
+                        ar: 'عرض'
                     },
                     fill: {
                         en: 'Fill',
@@ -908,7 +995,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "填充",
                         jp: "充填",
                         es: "Relleno",
-                        ko: "충전재"
+                        ko: "충전재",
+                        ar: 'تعبئة'
                     },
                     fontFamily: {
                         en: "Font family",
@@ -918,7 +1006,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "字体系列",
                         jp: "フォントファミリー",
                         es: "Familia tipográfica",
-                        ko: "글꼴 계열"
+                        ko: "글꼴 계열",
+                        ar: 'عائلة الخطوط'
                     },
                     fontSize: {
                         en: "Font size",
@@ -928,7 +1017,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "字体大小",
                         jp: "フォントサイズ",
                         es: "Tamaño de fuente",
-                        ko: "글꼴 크기"
+                        ko: "글꼴 크기",
+                        ar: 'حجم الخط'
                     },
                     fontSizePeriodLabels: {
                         en: "Period labels font size",
@@ -938,7 +1028,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "句号标签字体大小",
                         jp: "期間ラベルのフォントサイズ",
                         es: "Tamaño de fuente de las etiquetas de período",
-                        ko: "기간 레이블 글꼴 크기"
+                        ko: "기간 레이블 글꼴 크기",
+                        ar: 'حجم خط تسميات الفترة'
                     },
                     from: {
                         en: "From",
@@ -948,7 +1039,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "自",
                         jp: "より",
                         es: "Desde",
-                        ko: "부터"
+                        ko: "부터",
+                        ar: 'من'
                     },
                     giftWrap: {
                         en: 'Gift wrap algorithm',
@@ -958,7 +1050,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "礼品包装算法",
                         jp: "ギフト包装アルゴリズム",
                         es: "algoritmo de envoltura de regalo",
-                        ko: "선물 포장 알고리즘"
+                        ko: "선물 포장 알고리즘",
+                        ar: 'خوارزمية تغليف الهدايا'
                     },
                     gradient: {
                         en: 'Gradient',
@@ -968,7 +1061,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "坡度",
                         jp: "勾配",
                         es: "Degradado",
-                        ko: "구배"
+                        ko: "구배",
+                        ar: 'التدرج'
                     },
                     gradientIntensity: {
                         en: 'Gradient intensity',
@@ -977,7 +1071,8 @@ export const useMakerStore = defineStore('maker', {
                         de: "Gradientenintensität",
                         zh: "梯度强度",
                         jp: "勾配強度",
-                        ko: "그라데이션 강도"
+                        ko: "그라데이션 강도",
+                        ar: 'شدة التدرج'
                     },
                     grid: {
                         en: 'Grid',
@@ -987,7 +1082,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "网格",
                         jp: "グリッド",
                         es: "cuadricula",
-                        ko: "그리드"
+                        ko: "그리드",
+                        ar: 'شبكة'
                     },
                     gutter: {
                         en: 'Gutter',
@@ -997,7 +1093,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "排水沟",
                         jp: "側溝",
                         es: "Canal",
-                        ko: "홈통"
+                        ko: "홈통",
+                        ar: 'مزراب'
                     },
                     height: {
                         en: "Height",
@@ -1007,7 +1104,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "高度",
                         jp: "縦",
                         es: "Altura",
-                        ko: "키"
+                        ko: "키",
+                        ar: 'ارتفاع'
                     },
                     hideUnder: {
                         en: "Hide under",
@@ -1027,7 +1125,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "隐藏在%下",
                         jp: "% の下に隠す",
                         es: "Ocultar en %",
-                        ko: "% 아래에 숨기기"
+                        ko: "% 아래에 숨기기",
+                        ar: 'إخفاء تحت'
                     },
                     highlighterColor: {
                         en: "Highlighter color",
@@ -1037,7 +1136,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "荧光笔颜色",
                         jp: "ハイライターの色",
                         es: "color resaltador",
-                        ko: "형광펜 색상"
+                        ko: "형광펜 색상",
+                        ar: 'لون تمييز'
                     },
                     highlighterOpacity: {
                         en: "Highlighter opacity",
@@ -1047,7 +1147,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "荧光笔不透明度",
                         jp: "ハイライターの不透明度",
                         es: "Opacidad del resaltador",
-                        ko: "형광펜 불투명도"
+                        ko: "형광펜 불투명도",
+                        ar: 'عتامة التمييز'
                     },
                     hollow: {
                         en: "Hollow",
@@ -1057,7 +1158,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "空洞的",
                         jp: "中空",
                         es: "Hueco",
-                        ko: "구멍"
+                        ko: "구멍",
+                        ar: 'أجوف'
                     },
                     horizontal: {
                         en: 'Horizontal',
@@ -1067,7 +1169,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "水平的",
                         jp: "水平",
                         es: "Horizontal",
-                        ko: "수평의"
+                        ko: "수평의",
+                        ar: 'أفقي'
                     },
                     hot: {
                         en: 'Hot',
@@ -1077,7 +1180,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "热的",
                         jp: "熱い",
                         es: "Caliente",
-                        ko: "더운"
+                        ko: "더운",
+                        ar: 'حار'
                     },
                     hoverEffect: {
                         en: 'Hover effect',
@@ -1087,7 +1191,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "悬停效果",
                         jp: "ホバー効果",
                         es: "efecto de desplazamiento",
-                        ko: "호버 효과"
+                        ko: "호버 효과",
+                        ar: 'تأثير التحويم'
                     },
                     icons: {
                         en: 'Icons',
@@ -1097,7 +1202,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "图标",
                         jp: "アイコン",
                         es: "Iconos",
-                        ko: "아이콘"
+                        ko: "아이콘",
+                        ar: 'أيقونات'
                     },
                     inactive: {
                         en: 'Inactive',
@@ -1107,7 +1213,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "不活跃",
                         jp: "非活性",
                         es: "Inactivo",
-                        ko: "비활성"
+                        ko: "비활성",
+                        ar: 'غير نشط'
                     },
                     independant: {
                         en: 'Independant',
@@ -1117,7 +1224,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "独立",
                         jp: "独立した",
                         es: "independiente",
-                        ko: "독립"
+                        ko: "독립",
+                        ar: 'مستقل'
                     },
                     is: {
                         en: ':',
@@ -1127,7 +1235,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: ':',
                         jp: ":",
                         es: ":",
-                        ko: ":"
+                        ko: ":",
+                        ar: ":"
                     },
                     labels: {
                         en: 'Labels',
@@ -1137,7 +1246,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "标签",
                         jp: "ラベル",
                         es: "Etiquetas",
-                        ko: "라벨"
+                        ko: "라벨",
+                        ar: 'التسميات'
                     },
                     left: {
                         en: "Left",
@@ -1147,7 +1257,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "左边",
                         jp: "左",
                         es: "Izquierda",
-                        ko: "왼쪽"
+                        ko: "왼쪽",
+                        ar: 'غادر'
                     },
                     limit: {
                         en: 'Max number of datapoints',
@@ -1157,7 +1268,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "最大数据点数量",
                         jp: "データポイントの最大数",
                         es: "Número máximo de puntos de datos",
-                        ko: "최대 데이터 포인트 수"
+                        ko: "최대 데이터 포인트 수",
+                        ar: 'الحد الأقصى لعدد نقاط البيانات'
                     },
                     line: {
                         en: 'Line',
@@ -1167,7 +1279,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "线",
                         jp: "ライン",
                         es: "Linea",
-                        ko: "선"
+                        ko: "선",
+                        ar: 'خط'
                     },
                     lineColor: {
                         en: "Line color",
@@ -1177,7 +1290,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "线条颜色",
                         jp: "線の色",
                         es: "Color de linea",
-                        ko: "선 색상"
+                        ko: "선 색상",
+                        ar: 'لون الخط'
                     },
                     links: {
                         en: 'Links',
@@ -1187,7 +1301,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '链接',
                         jp: 'リンク',
                         es: 'Enlaces',
-                        ko: '연결'
+                        ko: '연결',
+                        ar: 'روابط'
                     },
                     markers: {
                         en: "Markers",
@@ -1197,7 +1312,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "标志",
                         jp: "記号",
                         es: "Señal",
-                        ko: "징후"
+                        ko: "징후",
+                        ar: 'علامات'
                     },
                     margin: {
                         en: 'Margin',
@@ -1207,7 +1323,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "边",
                         jp: "余白",
                         es: "Márgenes",
-                        ko: "가장자리"
+                        ko: "가장자리",
+                        ar: 'هامِش'
                     },
                     max: {
                         en: "Maximum",
@@ -1217,7 +1334,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "最大限度",
                         jp: "最大",
                         es: "Máximo",
-                        ko: "최저한의"
+                        ko: "최저한의",
+                        ar: 'الحد الأقصى'
                     },
                     min: {
                         en: 'Minimum',
@@ -1227,7 +1345,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "最低限度",
                         jp: "最小",
                         es: "Mínimo",
-                        ko: "최저한의"
+                        ko: "최저한의",
+                        ar: 'Minimum'
                     },
                     name: {
                         en: 'Name',
@@ -1237,7 +1356,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "姓名",
                         jp: "名前",
                         es: "Nombre",
-                        ko: "이름"
+                        ko: "이름",
+                        ar: "اسم"
                     },
                     negative: {
                         en: 'Negative',
@@ -1247,7 +1367,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "消极的",
                         jp: "ネガティブ",
                         es: "Negativo",
-                        ko: "부정적인"
+                        ko: "부정적인",
+                        ar: 'سلبي'
                     },
                     offsetX: {
                         en: "Offset X",
@@ -1257,7 +1378,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "偏移 X",
                         jp: "オフセット X",
                         es: "Desplazamiento X",
-                        ko: "오프셋 X"
+                        ko: "오프셋 X",
+                        ar: 'الإزاحة X'
                     },
                     offsetY: {
                         en: "Offset Y",
@@ -1267,7 +1389,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "偏移 Y",
                         jp: "オフセット Y",
                         es: "Desplazamiento Y",
-                        ko: "오프셋 Y"
+                        ko: "오프셋 Y",
+                        ar: 'الإزاحة Y'
                     },
                     offsetYDataLabels: {
                         en: "Offset Y: data labels",
@@ -1277,7 +1400,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "偏移 Y：数据标签",
                         jp: "オフセット Y: データ ラベル",
                         es: "Desplazamiento Y: etiquetas de datos",
-                        ko: "오프셋 Y: 데이터 레이블"
+                        ko: "오프셋 Y: 데이터 레이블",
+                        ar: 'الإزاحة Y: تسميات البيانات'
                     },
                     offsetYPeriodLabels: {
                         en: "Offset Y: period labels",
@@ -1287,7 +1411,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "偏移量 Y：周期标签",
                         jp: "オフセット Y: 期間ラベル",
                         es: "Compensación Y: etiquetas de período",
-                        ko: "오프셋 Y: 기간 레이블"
+                        ko: "오프셋 Y: 기간 레이블",
+                        ar: 'الإزاحة Y: تسميات الفترة'
                     },
                     opacity: {
                         en: "Opacity",
@@ -1297,7 +1422,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "不透明度",
                         jp: "不透明度",
                         es: "Opacidad",
-                        ko: "불투명"
+                        ko: "불투명",
+                        ar: 'العتامة'
                     },
                     outerPolygon: {
                         en: 'Outer polygon',
@@ -1307,7 +1433,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "外多边形",
                         jp: "外側の多角形",
                         es: "Polígono exterior",
-                        ko: "외부 다각형"
+                        ko: "외부 다각형",
+                        ar: 'المضلع الخارجي'
                     },
                     outlineHeader: {
                         en: "Header border",
@@ -1317,7 +1444,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "标题边框",
                         jp: "ヘッダーの境界線",
                         es: "Borde del encabezado",
-                        ko: "헤더 테두리"
+                        ko: "헤더 테두리",
+                        ar: 'حد الرأس'
                     },
                     outlineRow: {
                         en: "Row border",
@@ -1327,7 +1455,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "线条边框",
                         jp: "線の境界線",
                         es: "borde de línea",
-                        ko: "선 테두리"
+                        ko: "선 테두리",
+                        ar: 'حدود الصف'
                     },
                     padding: {
                         en: "Padding",
@@ -1337,7 +1466,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "图表填充",
                         jp: "チャートのパディング",
                         es: "Padding",
-                        ko: "차트 패딩"
+                        ko: "차트 패딩",
+                        ar: 'حشوة'
                     },
                     parent: {
                         en: 'Parent',
@@ -1347,7 +1477,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "父母亲",
                         jp: "親",
                         es: "Padre",
-                        ko: "원인이 되는 것"
+                        ko: "원인이 되는 것",
+                        ar: 'أصل'
                     },
                     percentage: {
                         en: 'Percentage',
@@ -1357,7 +1488,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '百分比',
                         jp: 'パーセント',
                         es: 'Porcentaje',
-                        ko: '백분율'
+                        ko: '백분율',
+                        ar: 'نسبة مئوية'
                     },
                     percentageRounding: {
                         en: "Rounding: percentage",
@@ -1367,7 +1499,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "四舍五入：百分比",
                         jp: "四捨五入: パーセント",
                         es: "Redondeo: porcentaje",
-                        ko: "반올림: 백분율"
+                        ko: "반올림: 백분율",
+                        ar: 'التقريب: النسبة المئوية'
                     },
                     period: {
                         en: "Period",
@@ -1377,7 +1510,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "时期",
                         jp: "期間",
                         es: "Período",
-                        ko: "기간"
+                        ko: "기간",
+                        ar: 'فترة'
                     },
                     perspective: {
                         en: 'Perspective',
@@ -1387,7 +1521,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "看法",
                         jp: "遠近",
                         es: "Perspectiva",
-                        ko: "배경"
+                        ko: "배경",
+                        ar: 'وجهة نظر'
                     },
                     plots: {
                         en: 'Plots',
@@ -1397,7 +1532,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '点',
                         jp: 'ドット',
                         es: "Puntos",
-                        ko: '도트'
+                        ko: '도트',
+                        ar: 'قطعة أرض'
                     },
                     pointer: {
                         en: "Pointer",
@@ -1407,7 +1543,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "指针",
                         jp: "ポインタ",
                         es: "Puntero",
-                        ko: "바늘"
+                        ko: "바늘",
+                        ar: 'المؤشر'
                     },
                     position: {
                         en: 'Position',
@@ -1417,7 +1554,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '位置',
                         jp: "位置",
                         es: "Posición",
-                        ko: "위치"
+                        ko: "위치",
+                        ar: 'موضع'
                     },
                     positive: {
                         en: 'Positive',
@@ -1427,7 +1565,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "积极的",
                         jp: "ポジティブ",
                         es: "Positivo",
-                        ko: "긍정적인"
+                        ko: "긍정적인",
+                        ar: "إيجابي"
                     },
                     prefix: {
                         en: "Prefix",
@@ -1437,7 +1576,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "字首",
                         jp: "プレフィックス",
                         es: "Prefijo",
-                        ko: "접두사"
+                        ko: "접두사",
+                        ar: "بادئة"
                     },
                     progression: {
                         en: "Progression",
@@ -1447,7 +1587,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "进步",
                         jp: "進捗",
                         es: "Progreso",
-                        ko: "진전"
+                        ko: "진전",
+                        ar: 'التقدم'
                     },
                     quadrant: {
                         en: 'Quadrant',
@@ -1457,7 +1598,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "象限",
                         jp: "四分円",
                         es: "Cuadrante",
-                        ko: "사분면"
+                        ko: "사분면",
+                        ar: 'رباعي'
                     },
                     quadrantSide: {
                         en: 'Quadrant side',
@@ -1467,7 +1609,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "象限边",
                         jp: "象限側",
                         es: "Lado del cuadrante",
-                        ko: "사분면"
+                        ko: "사분면",
+                        ar: "الجانب الرباعي"
                     },
                     quantity: {
                         en: "Quantity",
@@ -1477,7 +1620,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "数量",
                         jp: "量",
                         es: "Cantidad",
-                        ko: "수량"
+                        ko: "수량",
+                        ar: "كمية"
                     },
                     radius: {
                         en: "Radius",
@@ -1487,7 +1631,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "半径",
                         jp: "半径",
                         es: "Radio",
-                        ko: "반지름"
+                        ko: "반지름",
+                        ar: "نصف القطر"
                     },
                     ratio: {
                         en: 'Ratio',
@@ -1497,7 +1642,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "比率",
                         jp: "比率",
                         es: "Relación",
-                        ko: "비율"
+                        ko: "비율",
+                        ar: "نسبة"
                     },
                     responsiveBreakpoint: {
                         en: "Responsive breakpoint",
@@ -1507,7 +1653,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "响应断点",
                         jp: "レスポンシブブレークポイント",
                         es: "Punto de interrupción responsivo",
-                        ko: "반응형 중단점"
+                        ko: "반응형 중단점",
+                        ar: "نقطة توقف استجابة"
                     },
                     right: {
                         en: "Right",
@@ -1517,7 +1664,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "正确的",
                         jp: "右",
                         es: "Derecha",
-                        ko: "오른쪽"
+                        ko: "오른쪽",
+                        ar: 'يمين'
                     },
                     root: {
                         en: 'Root',
@@ -1527,7 +1675,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "根",
                         jp: "根",
                         es: "Raíz",
-                        ko: "뿌리"
+                        ko: "뿌리",
+                        ar: 'جذر'
                     },
                     rounding: {
                         en: "Rounding",
@@ -1537,7 +1686,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "四舍五入",
                         jp: "丸める",
                         es: "redondeo",
-                        ko: "반올림"
+                        ko: "반올림",
+                        ar: 'التقريب'
                     },
                     rotation: {
                         en: "Rotation",
@@ -1547,7 +1697,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "回转",
                         jp: "回転",
                         es: "Rotación",
-                        ko: "회전"
+                        ko: "회전",
+                        ar: 'تناوب'
                     },
                     scale: {
                         en: 'Scale',
@@ -1557,7 +1708,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "规模",
                         jp: "規模",
                         es: "Escala",
-                        ko: "규모"
+                        ko: "규모",
+                        ar: 'حجم'
                     },
                     selected: {
                         en: 'Selected',
@@ -1567,7 +1719,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '已选择',
                         jp: '選択済み',
                         es: 'Seleccionado',
-                        ko: '선택된'
+                        ko: '선택된',
+                        ar: 'مختارة'
                     },
                     selectChartType: {
                         en: "Select chart type:",
@@ -1577,7 +1730,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "选择图表类型：",
                         jp: "チャートの種類を選択してください:",
                         es: "Seleccione el tipo de gráfico:",
-                        ko: "차트 유형 선택:"
+                        ko: "차트 유형 선택:",
+                        ar: ':حدد نوع المخطط'
                     },
                     separator: {
                         en: 'Separator',
@@ -1587,7 +1741,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '分隔器',
                         jp: "セパレータ",
                         es: "Separador",
-                        ko: "분리 기호"
+                        ko: "분리 기호",
+                        ar: "فاصل"
                     },
                     series: {
                         en: 'Series',
@@ -1597,7 +1752,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '系列',
                         jp: 'シリーズ',
                         es: 'Serie',
-                        ko: '시리즈'
+                        ko: '시리즈',
+                        ar: 'مجموعة'
                     },
                     serieName: {
                         en: "Serie name",
@@ -1607,7 +1763,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "系列名称",
                         jp: "シリーズ名",
                         es: "Nombre de la serie",
-                        ko: "시리즈 이름"
+                        ko: "시리즈 이름",
+                        ar: 'اسم المسلسل'
                     },
                     shadow: {
                         en: "Shadow",
@@ -1617,7 +1774,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "阴影",
                         jp: "影",
                         es: "Sombra",
-                        ko: "그림자"
+                        ko: "그림자",
+                        ar: 'الظل'
                     },
                     shape: {
                         en: "Shape",
@@ -1627,7 +1785,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "形状",
                         jp: "形",
                         es: "Forma",
-                        ko: "모양"
+                        ko: "모양",
+                        ar: 'شكل'
                     },
                     shiftHue: {
                         en: 'Shift hue',
@@ -1637,7 +1796,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "颜色变化",
                         jp: "色変更",
                         es: "tono de cambio",
-                        ko: "색상 변경"
+                        ko: "색상 변경",
+                        ar: 'التحول هوى'
                     },
                     show: {
                         en: "Show",
@@ -1647,7 +1807,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "以显示",
                         jp: "見せるために",
                         es: "Mostrar",
-                        ko: "보여주기 위해"
+                        ko: "보여주기 위해",
+                        ar: 'يعرض'
                     },
                     showAllItemsAtIndex: {
                         en: 'Show all items at index',
@@ -1657,7 +1818,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "显示索引处的所有项目",
                         jp: "インデックスにあるすべてのアイテムを表示",
                         es: "Mostrar todos los elementos en el índice",
-                        ko: "색인의 모든 항목 표시"
+                        ko: "색인의 모든 항목 표시",
+                        ar: 'إظهار كافة العناصر في الفهرس'
                     },
                     showDataLabels: {
                         en: "Show data labels",
@@ -1667,7 +1829,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "显示数据标签",
                         jp: "データラベルを表示する",
                         es: "Mostrar etiquetas de datos",
-                        ko: "데이터 라벨 표시"
+                        ko: "데이터 라벨 표시",
+                        ar: 'إظهار تسميات البيانات'
                     },
                     showLabels: {
                         en: "Show labels",
@@ -1677,7 +1840,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "显示标签",
                         jp: "ラベルを表示する",
                         es: "Mostrar etiquetas",
-                        ko: "라벨 표시"
+                        ko: "라벨 표시",
+                        ar: 'إظهار التسميات'
                     },
                     showOnlyFirstAndLast: {
                         en: "Show only first and last",
@@ -1687,7 +1851,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "只显示第一个和最后一个",
                         jp: "最初と最後だけを表示",
                         es: "Mostrar solo primera y ultima",
-                        ko: "처음과 마지막만 표시"
+                        ko: "처음과 마지막만 표시",
+                        ar: 'عرض الأول والأخير فقط'
                     },
                     showPercentage: {
                         en: "Show percentage",
@@ -1697,7 +1862,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "显示百分比",
                         jp: "パーセンテージを表示",
                         es: "Mostrar porcentaje",
-                        ko: "백분율 표시"
+                        ko: "백분율 표시",
+                        ar: 'إظهار النسبة المئوية'
                     },
                     showPeriodLabels: {
                         en: "Show period labels",
@@ -1707,7 +1873,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "显示期间标签",
                         jp: "期間ラベルを表示する",
                         es: "Mostrar etiquetas de período",
-                        ko: "생리 라벨 표시"
+                        ko: "생리 라벨 표시",
+                        ar: 'إظهار تسميات الفترة'
                     },
                     showPlusSymbol: {
                         en: 'Show plus symbol',
@@ -1717,7 +1884,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "显示加号",
                         jp: "プラス記号を表示",
                         es: "Mostrar símbolo más",
-                        ko: "더하기 기호 표시"
+                        ko: "더하기 기호 표시",
+                        ar: 'إظهار رمز الزائد'
                     },
                     showUserOptions: {
                         en: "Show user options",
@@ -1727,7 +1895,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "显示用户选项",
                         jp: "ユーザーオプションを表示",
                         es: "Mostrar opciones de usuario",
-                        ko: "사용자 옵션 표시"
+                        ko: "사용자 옵션 표시",
+                        ar: 'إظهار خيارات المستخدم'
                     },
                     showValue: {
                         en: "Show value",
@@ -1737,7 +1906,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "显示价值",
                         jp: "値を表示",
                         es: "Mostrar valor",
-                        ko: "값 표시"
+                        ko: "값 표시",
+                        ar: 'إظهار القيمة'
                     },
                     significance: {
                         en: 'Significance',
@@ -1747,7 +1917,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "意义",
                         jp: "意義",
                         es: "Significado",
-                        ko: "중요성"
+                        ko: "중요성",
+                        ar: 'دلالة'
                     },
                     size: {
                         en: "Size",
@@ -1757,7 +1928,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "尺寸",
                         jp: "サイズ",
                         es: "Tamaño",
-                        ko: "크기"
+                        ko: "크기",
+                        ar: "مقاس"
                     },
                     smooth: {
                         en: "Curved line",
@@ -1767,7 +1939,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "曲线",
                         jp: "曲線",
                         es: "Línea curva",
-                        ko: "곡선"
+                        ko: "곡선",
+                        ar: "خط منحني"
                     },
                     sortingOrder: {
                         en: 'Sorting order',
@@ -1777,7 +1950,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "排序顺序",
                         jp: "並べ替え順序",
                         es: "Orden de clasificación",
-                        ko: "정렬 순서"
+                        ko: "정렬 순서",
+                        ar: "ترتيب الفرز"
                     },
                     spacing: {
                         en: "Spacing",
@@ -1787,7 +1961,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "间距",
                         jp: "間隔",
                         es: "Espaciado",
-                        ko: "간격"
+                        ko: "간격",
+                        ar: "تباعد"
                     },  
                     sparkline: {
                         en: "Sparkline chart",
@@ -1797,7 +1972,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "迷你图",
                         jp: "スパークラインチャート",
                         es: "Minigráfico",
-                        ko: "스파크라인 차트"
+                        ko: "스파크라인 차트",
+                        ar: "مخطط خط المؤشرات"
                     },
                     speed: {
                         en: 'Speed',
@@ -1807,7 +1983,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "速度",
                         jp: "スピード",
                         es: "Velocidad",
-                        ko: "속도"
+                        ko: "속도",
+                        ar: "سرعة"
                     },
                     suffix: {
                         en: "Suffix",
@@ -1817,7 +1994,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "后缀",
                         jp: "サフィックス",
                         es: "Sufijo",
-                        ko: "접미사"
+                        ko: "접미사",
+                        ar: "لاحقة"
                     },
                     tag: {
                         en: "Tag",
@@ -1827,7 +2005,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "标签",
                         jp: "鬼ごっこ",
                         es: "Etiqueta",
-                        ko: "꼬리표"
+                        ko: "꼬리표",
+                        ar: "علامة"
                     },
                     target: {
                         en: "Target",
@@ -1837,7 +2016,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "目标",
                         jp: "目標",
                         es: "Objetivo",
-                        ko: "표적"
+                        ko: "표적",
+                        ar: "هدف"
                     },
                     textAlign: {
                         en: "Text alignment",
@@ -1847,7 +2027,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "文本对齐",
                         jp: "テキストの配置",
                         es: "Alineación del texto",
-                        ko: "텍스트 정렬"
+                        ko: "텍스트 정렬",
+                        ar: "محاذاة النص"
                     },
                     textColor: {
                         en: "Text color",
@@ -1857,7 +2038,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "文字颜色",
                         jp: "テキストの色",
                         es: "Color de texto",
-                        ko: "텍스트 색상"
+                        ko: "텍스트 색상",
+                        ar: "لون النص"
                     },
                     textColorHeader: {
                         en: "Header: text color",
@@ -1867,7 +2049,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "标题：文字颜色",
                         jp: "ヘッダー: 文字色",
                         es: "Encabezado: color del texto",
-                        ko: "헤더: 텍스트 색상"
+                        ko: "헤더: 텍스트 색상",
+                        ar: "العنوان: لون النص"
                     },
                     textColorRow: {
                         en: "Rows: text color",
@@ -1877,7 +2060,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "行：文字颜色",
                         jp: "行: テキストの色",
                         es: "Filas: color del texto",
-                        ko: "행: 텍스트 색상"
+                        ko: "행: 텍스트 색상",
+                        ar: "الصفوف: لون النص"
                     },
                     textContent: {
                         en: "Text content",
@@ -1887,7 +2071,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "文字内容",
                         jp: "テキストの内容",
                         es: "Contenido del texto",
-                        ko: "텍스트 내용"
+                        ko: "텍스트 내용",
+                        ar: "محتوى النص"
                     },
                     textColorPeriodLabels: {
                         en: "Period labels: text color",
@@ -1897,7 +2082,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "期间标签：文字颜色",
                         jp: "期間ラベル: 文字色",
                         es: "Etiquetas de período: color del texto",
-                        ko: "기간 라벨: 텍스트 색상"
+                        ko: "기간 라벨: 텍스트 색상",
+                        ar: "تسميات الفترة: لون النص"
                     },
                     thickness: {
                         en: "Thickness",
@@ -1907,7 +2093,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "厚度",
                         jp: "厚さ",
                         es: "Espesor",
-                        ko: "두께"
+                        ko: "두께",
+                        ar: 'سماكة'
                     },
                     ticks: {
                         en: 'Ticks',
@@ -1917,7 +2104,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "品牌",
                         jp: "ブランド",
                         es: "Marcas",
-                        ko: "순간"
+                        ko: "순간",
+                        ar: "علامة"
                     },
                     to: {
                         en: "To",
@@ -1927,7 +2115,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "直到",
                         jp: "それまで",
                         es: "Hasta",
-                        ko: "까지"
+                        ko: "까지",
+                        ar: "حتى"
                     },
                     top: {
                         en: "Top",
@@ -1937,7 +2126,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "顶部",
                         jp: "上",
                         es: "Arriba",
-                        ko: "맨 위"
+                        ko: "맨 위",
+                        ar: "قمة"
                     },
                     total: {
                         en: 'Total',
@@ -1947,7 +2137,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "全部的",
                         jp: "合計",
                         es: "Total",
-                        ko: "총"
+                        ko: "총",
+                        ar: "المجموع"
                     },
                     track: {
                         en: 'Track',
@@ -1957,7 +2148,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "追踪",
                         jp: "追跡",
                         es: "Pista",
-                        ko: "길"
+                        ko: "길",
+                        ar: "مسار"
                     },
                     translation: {
                         en: 'Translation',
@@ -1967,7 +2159,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "翻译",
                         jp: "翻訳",
                         es: "Traducción",
-                        ko: "번역"
+                        ko: "번역",
+                        ar: "ترجمة"
                     },
                     transparent: {
                         en: 'Transparent',
@@ -1977,7 +2170,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: '透明的',
                         jp: "透明",
                         es: "Transparente",
-                        ko: "투명한"
+                        ko: "투명한",
+                        ar: "شفاف"
                     },
                     type: {
                         en: "Type",
@@ -1987,7 +2181,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "类型",
                         jp: "タイプ",
                         es: "タイプ",
-                        ko: "유형"
+                        ko: "유형",
+                        ar: "يكتب"
                     },
                     useBlurOnHover: {
                         en: "Blur on hover",
@@ -1997,7 +2192,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "Unschärfe beim Schweben",
                         jp: "ホバー時にぼかし",
                         es: "Desenfoque al pasar el cursor",
-                        ko: "마우스를 올리면 흐림"
+                        ko: "마우스를 올리면 흐림",
+                        ar: "طمس عند التمرير"
                     },
                     useCssAnimation: {
                         en: "Use css animation",
@@ -2007,7 +2203,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "使用CSS动画",
                         jp: "CSSアニメーションを使用する",
                         es: "Usar animación CSS",
-                        ko: "CSS 애니메이션 사용"
+                        ko: "CSS 애니메이션 사용",
+                        ar: "استخدم الرسوم المتحركة CSS"
                     },
                     useGradient: {
                         en: "Use gradient",
@@ -2017,7 +2214,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "使用渐变",
                         jp: "グラデーションを使用する",
                         es: "Usar gradiente",
-                        ko: "그라데이션 사용"
+                        ko: "그라데이션 사용",
+                        ar: "استخدم التدرج"
                     },
                     value: {
                         en: "Value",
@@ -2027,7 +2225,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "价格",
                         jp: "値",
                         es: "Valor",
-                        ko: "값"
+                        ko: "값",
+                        ar: "قيمة"
                     },
                     valueRounding: {
                         en: "Value rounding",
@@ -2037,7 +2236,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "值四舍五入",
                         jp: "値の四捨五入",
                         es: "Redondeo de valor",
-                        ko: "값 반올림"
+                        ko: "값 반올림",
+                        ar: "تقريب القيمة"
                     },
                     vertical: {
                         en: "Vertical",
@@ -2047,7 +2247,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "垂直的",
                         jp: "垂直",
                         es: "Vertical",
-                        ko: "수직의"
+                        ko: "수직의",
+                        ar: "رَأسِيّ"
                     },
                     verticalLines: {
                         en: "Vertical lines",
@@ -2057,7 +2258,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "垂直线",
                         jp: "縦線",
                         es: "Líneas verticales",
-                        ko: "수직선"
+                        ko: "수직선",
+                        ar: "خطوط عمودية"
                     },
                     weight: {
                         en: 'Weight',
@@ -2067,7 +2269,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "重量",
                         jp: "重さ",
                         es: "Peso",
-                        ko: "무게"
+                        ko: "무게",
+                        ar: "وزن"
                     },
                     width: {
                         en: "Width",
@@ -2077,7 +2280,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "宽度",
                         jp: "幅",
                         es: "Ancho",
-                        ko: "너비"
+                        ko: "너비",
+                        ar: 'عرض'
                     },
                     x: {
                         en: 'X',
@@ -2087,7 +2291,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "X",
                         jp: "X", 
                         es: "X",
-                        ko: "X"
+                        ko: "X",
+                        ar: 'X'
                     },
                     xAxisLabel: {
                         en: "X axis labels",
@@ -2097,7 +2302,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "X 轴标签",
                         jp: "X 軸のラベル",
                         es: "Etiquetas del eje X",
-                        ko: "X축 라벨"
+                        ko: "X축 라벨",
+                        ar: 'تسميات المحور X'
                     },
                     y: {
                         en: 'Y',
@@ -2107,7 +2313,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "Y",
                         jp: "Y", 
                         es: "Y",
-                        ko: "Y"
+                        ko: "Y",
+                        ar: 'Y'
                     },
                     yAxisLabel: {
                         en: "Y axis labels",
@@ -2117,7 +2324,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "Y 轴标签",
                         jp: "Y 軸のラベル",
                         es: "Etiquetas del eje Y",
-                        ko: "Y축 라벨"
+                        ko: "Y축 라벨",
+                        ar: 'تسميات المحور Y'
                     },
                     zeroAxis: {
                         en: 'Zero axis',
@@ -2127,7 +2335,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "零轴",
                         jp: "ゼロ軸",
                         es: "Eje cero",
-                        ko: "영축"
+                        ko: "영축",
+                        ar: "محور الصفر"
                     },
                     zoom: {
                         en: "Show zoom inputs",
@@ -2137,7 +2346,8 @@ export const useMakerStore = defineStore('maker', {
                         zh: "显示缩放输入",
                         jp: "ズーム入力を表示",
                         es: "Mostrar entradas de zoom",
-                        ko: "확대/축소 입력 표시"
+                        ko: "확대/축소 입력 표시",
+                        ar: "إظهار مدخلات التكبير/التصغير"
                     }
                 }
             }
