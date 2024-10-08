@@ -28,7 +28,7 @@ function scrollToTop() {
                     <span>VueUi<span class="text-gray-600 dark:text-app-green"><slot name="name"></slot></span></span>
                 </div>
                 <img v-if="item.thumb" :src="isDarkMode ? item.thumb : item.thumbLight"/>
-                <small>
+                <small >
                     {{ item.tooltip }}
                 </small>
             </div>

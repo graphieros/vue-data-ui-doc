@@ -1,9 +1,8 @@
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, nextTick, onMounted, watch } from "vue";
 import Header from "./components/Header.vue";
 import UpToTop from "./components/UpToTop.vue";
-import { useRouter } from "vue-router";
-import Follower from "./components/examples/components/Follower.vue";
+import { useRoute, useRouter } from "vue-router";
 import GithubButton from "./components/examples/components/GithubButton.vue";
 import { useMainStore } from "./stores";
 import HelpCenter from "./components/helpCenter/HelpCenter.vue";
@@ -38,6 +37,7 @@ onMounted(() => {
     store.isFetching = false;
   })
 });
+
 </script>
 
 <template>

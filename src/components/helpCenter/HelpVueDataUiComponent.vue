@@ -21,7 +21,8 @@ const title = ref({
     zh: "VueDataUi通用组件",
     jp: "VueDataUi ユニバーサル コンポーネント",
     es: "Componente universal VueDataUi",
-    ko: "VueDataUi 범용 구성 요소"
+    ko: "VueDataUi 범용 구성 요소",
+    ar: 'VueDataUi مكون عالمي'
 })
 
 const content = ref({
@@ -31,7 +32,8 @@ const content = ref({
     de: "Sie können Komponenten entweder einzeln importieren oder die universelle VueDataUi-Komponente verwenden, die nur die Komponente importiert, die Sie benötigen. Geben Sie unbedingt an, für welche Komponente Sie es verwenden möchten, und übergeben Sie die entsprechenden „Dataset“- und „Config“-Requisiten.",
     zh: "您可以单独导入组件，也可以使用 VueDataUi 通用组件，它只会导入您需要的组件。请务必指明您希望将其用于哪个组件，并传递适当的“数据集”和“配置”道具。",
     es: "Puede importar componentes individualmente o utilizar el componente universal VueDataUi, que solo importará el que necesita. Asegúrese de indicar para qué componente desea usarlo y pase los accesorios 'dataset' y 'config' apropiados.",
-    ko: "구성 요소를 개별적으로 가져오거나 필요한 구성 요소만 가져오는 VueDataUi 범용 구성 요소를 사용할 수 있습니다. 어떤 구성요소에 사용할 것인지 지정하고 적절한 'dataset' 및 'config' props를 전달하십시오."
+    ko: "구성 요소를 개별적으로 가져오거나 필요한 구성 요소만 가져오는 VueDataUi 범용 구성 요소를 사용할 수 있습니다. 어떤 구성요소에 사용할 것인지 지정하고 적절한 'dataset' 및 'config' props를 전달하십시오.",
+    ar: 'يمكنك إما استيراد المكونات بشكل فردي، أو استخدام المكون العالمي VueDataUi، والذي سيقوم فقط باستيراد المكون الذي تحتاجه. تأكد من تحديد المكون الذي ترغب في استخدامه من أجله، وقم بتمرير خاصيتي "dataset" و"config" المناسبتين'
 })
 
 const usage = ref({
@@ -42,7 +44,8 @@ const usage = ref({
     zh: "目标组件的所有事件和槽都在 VueDataUi 组件中可用。您可以查看文档页面以了解有关所有插槽和发出的事件的更多信息。",
     jp: "ターゲット コンポーネントのすべてのイベントとスロットは、VueDataUi コンポーネントで使用できます。発行されるすべてのスロットとイベントの詳細については、ドキュメント ページを参照してください。",
     es: "Todos los eventos y espacios del componente de destino están disponibles en el componente VueDataUi. Puede consultar las páginas de documentación para saber más sobre todos los espacios y eventos emitidos.",
-    ko: "대상 구성 요소의 모든 이벤트와 슬롯은 VueDataUi 구성 요소에서 사용할 수 있습니다. 발생하는 모든 슬롯과 이벤트에 대해 자세히 알아보려면 설명서 페이지를 확인하세요."
+    ko: "대상 구성 요소의 모든 이벤트와 슬롯은 VueDataUi 구성 요소에서 사용할 수 있습니다. 발생하는 모든 슬롯과 이벤트에 대해 자세히 알아보려면 설명서 페이지를 확인하세요.",
+    ar: 'جميع الأحداث والفتحات الخاصة بالمكون المستهدف متوفرة في مكون VueDataUi. يمكنك مراجعة صفحات الوثائق لمعرفة المزيد عن جميع الفتحات والأحداث المنبعثة'
 })
 
 const warning = ref({
@@ -53,7 +56,8 @@ const warning = ref({
     zh: "您必须提供 'component' 属性，以及您要使用的组件的确切名称和大小写。如果该组件不存在或包含拼写错误，控制台中将显示一条警告，显示可与 VueDataUi 通用组件一起使用的组件列表。",
     jp: "使用するコンポーネントの正確な名前と大文字小文字を含む「component」プロパティを指定する必要があります。コンポーネントが存在しないかタイプミスがある場合は、コンソールに警告が表示され、VueDataUi ユニバーサル コンポーネントで使用できるコンポーネントのリストが表示されます。",
     es: "Debe proporcionar el accesorio 'componente', con el nombre exacto y la carcasa del componente que desea utilizar. Si el componente no existe o contiene un error tipográfico, aparecerá una advertencia en la consola que le mostrará la lista de componentes que puede usar con el componente universal VueDataUi.",
-    ko: "사용하려는 구성요소의 정확한 이름과 대소문자를 포함하여 '구성요소' 소품을 제공해야 합니다. 구성 요소가 존재하지 않거나 오타가 포함된 경우 콘솔에 경고가 표시되어 VueDataUi 범용 구성 요소와 함께 사용할 수 있는 구성 요소 목록을 보여줍니다."
+    ko: "사용하려는 구성요소의 정확한 이름과 대소문자를 포함하여 '구성요소' 소품을 제공해야 합니다. 구성 요소가 존재하지 않거나 오타가 포함된 경우 콘솔에 경고가 표시되어 VueDataUi 범용 구성 요소와 함께 사용할 수 있는 구성 요소 목록을 보여줍니다.",
+    ar: `يجب عليك توفير خاصية "المكون" مع الاسم الدقيق وحالة المكون الذي ترغب في استخدامه. إذا كان المكون غير موجود أو يحتوي على خطأ مطبعي، فسيظهر تحذير في وحدة التحكم، يوضح لك قائمة المكونات التي يمكنك استخدامها مع المكون العالمي VueDataUi`
 })
 
 const code = ref(`

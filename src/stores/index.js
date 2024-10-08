@@ -1029,7 +1029,7 @@ export const useMainStore = defineStore("main", {
                         jp: "ドキュメンテーション",
                         es: "Documentación",
                         ko: "선적 서류 비치",
-                        aar: 'الوثائق'
+                        ar: 'الوثائق'
                     },
                     dashboard: {
                         en: "Dashboard",

@@ -39,7 +39,8 @@ const languageOptions = ref([
   { value: "pt", text: "Portugues" },
   { value: "zh", text: "中国人" },
   { value: "jp", text: "日本語" },
-  { value: "ko", text: "한국인"}
+  { value: "ko", text: "한국인"},
+  { value: "ar", text: 'عربي'}
 ])
 
 const selectedLanguage = computed({
@@ -368,7 +369,8 @@ const componentTranslation = ref({
   zh: '成分',
   jp: 'コンポーネント',
   es: 'Componentes',
-  ko: '구성요소'
+  ko: '구성요소',
+  ar: 'عناصر'
 })
 
 </script>
