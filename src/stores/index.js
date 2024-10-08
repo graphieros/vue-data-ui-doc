@@ -19,7 +19,8 @@ export const useMainStore = defineStore("main", {
                     zh: "将图表固定在左侧，以便您在滚动时可以直观地看到配置更改。",
                     jp: "グラフを左側に固定すると、スクロール時に構成の変更を視覚化できます。",
                     es: "Fije el gráfico a la izquierda para que pueda visualizar los cambios de configuración cuando se desplaza.",
-                    ko: "스크롤할 때 구성 변경 사항을 시각화할 수 있도록 차트를 왼쪽에 고정합니다."
+                    ko: "스크롤할 때 구성 변경 사항을 시각화할 수 있도록 차트를 왼쪽에 고정합니다.",
+                    ar: "ثبت المخطط إلى اليسار حتى تتمكن من رؤية التغييرات في الإعدادات أثناء التمرير."
                 }
             },
             lang: "en",
@@ -32,7 +33,8 @@ export const useMainStore = defineStore("main", {
                     zh: '已复制到剪贴板',
                     jp: 'クリップボードにコピーされました',
                     es: 'Copiado al portapapeles',
-                    ko: '클립보드에 복사됨'
+                    ko: '클립보드에 복사됨',
+                    ar: 'تم النسخ إلى الحافظة.'
                 },
                 noResultsFor: {
                     en: 'No results for:',
@@ -42,7 +44,8 @@ export const useMainStore = defineStore("main", {
                     zh: '没有结果：',
                     jp: '次の結果はありません:',
                     es: 'No hay resultados para:',
-                    ko: '다음에 대한 검색결과가 없습니다:'
+                    ko: '다음에 대한 검색결과가 없습니다:',
+                    ar: ':لا توجد نتائج لـ'
                 },
                 searchResultFor: {
                     en: 'Search results for:',
@@ -52,7 +55,8 @@ export const useMainStore = defineStore("main", {
                     zh: '搜索结果：',
                     jp: 'の検索結果:',
                     es: 'Resultados de búsqueda para:',
-                    ko: '다음에 대한 검색 결과:'
+                    ko: '다음에 대한 검색 결과:',
+                    ar: ':نتائج البحث عن'
                 },
                 quickOverview: {
                     en: 'Quick overview - Technical specs',
@@ -62,7 +66,8 @@ export const useMainStore = defineStore("main", {
                     zh: '快速概述 - 技术规格',
                     jp: '概要 - 技術仕様',
                     es: 'Descripción rápida: especificaciones técnicas',
-                    ko: '빠른 개요 - 기술 사양'
+                    ko: '빠른 개요 - 기술 사양',
+                    ar: 'نظرة سريعة - المواصفات التقنية'
                 },
                 responsiveUnitPresentation: {
                     en: `This chart can be made 'responsive'. Place the chart inside a resizable container, or a container with fixed dimensions. Set the config attribute`,
@@ -72,7 +77,8 @@ export const useMainStore = defineStore("main", {
                     zh: '该图表可以设为“响应式”。将图表放置在可调整大小的容器或具有固定尺寸的容器内。设置配置属性',
                     jp: 'このチャートは「レスポンシブ」にすることができます。サイズ変更可能なコンテナまたは固定寸法のコンテナ内にグラフを配置します。構成属性を設定する',
                     es: 'Este gráfico se puede hacer "responsive". Coloque el gráfico dentro de un contenedor de tamaño variable o un contenedor con dimensiones fijas. Establecer el atributo de configuración',
-                    ko: `이 차트는 '반응형'으로 만들 수 있습니다. 크기 조정 가능한 컨테이너나 고정된 크기의 컨테이너 안에 차트를 배치합니다. 구성 속성 설정`
+                    ko: `이 차트는 '반응형'으로 만들 수 있습니다. 크기 조정 가능한 컨테이너나 고정된 크기의 컨테이너 안에 차트를 배치합니다. 구성 속성 설정`,
+                    ar: `يمكن جعل هذا المخطط "متجاوبًا". ضع المخطط داخل حاوية قابلة لتغيير الحجم أو حاوية بأبعاد ثابتة. قم بتعيين خاصية التكوين (config).`
                 },
                 responsiveHandle: {
                     en: `Use the resize handle to check out 'responsive' behaviour:`,
@@ -82,17 +88,19 @@ export const useMainStore = defineStore("main", {
                     zh: '使用调整大小手柄来检查“响应”行为：',
                     jp: 'サイズ変更ハンドルを使用して「応答性」の動作を確認します。',
                     es: 'Utilice el controlador de cambio de tamaño para comprobar el comportamiento "receptivo":',
-                    ko: '반응형 동작을 확인하려면 크기 조정 핸들을 사용하세요.'
+                    ko: '반응형 동작을 확인하려면 크기 조정 핸들을 사용하세요.',
+                    ar: ':استخدم مقبض التغيير للتحقق من سلوك التجاوب'
                 },
                 responsiveUsage: {
-                    en: 'By default, all charts will scale based on the width of the parent container. Charts with the responsive configuration option have it disabled by default. If a chart has the responsive configuration option available : ',
+                    en: 'By default, all charts will scale based on the width of the parent container. Charts with the responsive configuration option have it disabled by default. If a chart has the responsive configuration option available ',
                     fr: `Par défaut, tous les graphiques seront mis à l'échelle en fonction de la largeur du conteneur parent. Les graphiques avec l'option de configuration responsive l'ont désactivé par défaut. Si un graphique dispose de l'option de configuration responsive :`,
                     pt: `Por padrão, todos os gráficos serão dimensionados com base na largura do contêiner pai. Gráficos com opção de configuração 'responsiva' estão desabilitados por padrão. Se um gráfico tiver a opção de configuração 'responsiva' disponível:`,
                     de: 'Standardmäßig werden alle Diagramme basierend auf der Breite des übergeordneten Containers skaliert. Bei Diagrammen mit der Konfigurationsoption „responsiv“ ist diese standardmäßig deaktiviert. Wenn für ein Diagramm die Konfigurationsoption „Responsiv“ verfügbar ist:',
                     zh: '默认情况下，所有图表都将根据父容器的宽度进行缩放。具有“响应式”配置选项的图表默认情况下处于禁用状态。如果图表具有可用的“响应式”配置选项：',
                     jp: 'デフォルトでは、すべてのグラフは親コンテナの幅に基づいて拡大縮小されます。 「応答性」構成オプションを含むチャートでは、デフォルトで無効になっています。チャートに「レスポンシブ」構成オプションが利用可能な場合:',
                     es: 'De forma predeterminada, todos los gráficos se escalarán según el ancho del contenedor principal. Los gráficos con la opción de configuración "responsive" la tienen deshabilitada de forma predeterminada. Si un gráfico tiene disponible la opción de configuración "responsive":',
-                    ko: `기본적으로 모든 차트는 상위 컨테이너의 너비를 기준으로 크기가 조정됩니다. '반응형' 구성 옵션이 있는 차트에서는 기본적으로 비활성화되어 있습니다. 차트에 '반응형' 구성 옵션을 사용할 수 있는 경우:`
+                    ko: `기본적으로 모든 차트는 상위 컨테이너의 너비를 기준으로 크기가 조정됩니다. '반응형' 구성 옵션이 있는 차트에서는 기본적으로 비활성화되어 있습니다. 차트에 '반응형' 구성 옵션을 사용할 수 있는 경우:`,
+                    ar: ':بشكل افتراضي، سيتم ضبط حجم جميع المخططات بناءً على عرض الحاوية الرئيسية. يتم تعطيل خيار التكوين الخاص بالتجاوب افتراضيًا. إذا كان المخطط يحتوي على خيار التكوين الخاص بالتجاوب متاحًا'
                 },
                 responsive: {
                     en: 'Set this attribute to true when the chart is placed inside a resizable container, or when the container has fixed dimensions. Never use when no height is set on the parent container, this will cause infinite height growth of the chart.',
@@ -102,7 +110,8 @@ export const useMainStore = defineStore("main", {
                     zh: '当图表放置在可调整大小的容器内或容器具有固定尺寸时，请将此属性设置为 true。父容器未设置高度时切勿使用，这将导致图表的高度无限增长',
                     jp: 'チャートがサイズ変更可能なコンテナー内に配置される場合、またはコンテナーの寸法が固定されている場合は、この属性を true に設定します。親コンテナに高さが設定されていない場合は決して使用しないでください。これにより、チャートの高さが無限に増加します。',
                     es: 'Establezca este atributo en verdadero cuando el gráfico se coloque dentro de un contenedor de tamaño variable o cuando el contenedor tenga dimensiones fijas. Nunca lo use cuando no se haya establecido ninguna altura en el contenedor principal, esto provocará un crecimiento infinito de la altura del gráfico.',
-                    ko: '차트가 크기 조정 가능한 컨테이너 내에 배치되거나 컨테이너에 고정 크기가 있는 경우 이 특성을 true로 설정합니다. 상위 컨테이너에 높이가 설정되지 않은 경우에는 사용하지 마십시오. 이로 인해 차트의 높이가 무한히 증가합니다.'
+                    ko: '차트가 크기 조정 가능한 컨테이너 내에 배치되거나 컨테이너에 고정 크기가 있는 경우 이 특성을 true로 설정합니다. 상위 컨테이너에 높이가 설정되지 않은 경우에는 사용하지 마십시오. 이로 인해 차트의 높이가 무한히 증가합니다.',
+                    ar: 'قم بتعيين هذه الخاصية إلى "true" عندما يتم وضع المخطط داخل حاوية قابلة لتغيير الحجم أو عندما تكون للحاوية أبعاد ثابتة. لا تستخدم هذه الخاصية عندما لا يتم تحديد ارتفاع للحاوية الرئيسية، لأن هذا سيؤدي إلى نمو غير محدود في ارتفاع المخطط.'
                 },
                 overview: {
                     icon: {
@@ -113,7 +122,8 @@ export const useMainStore = defineStore("main", {
                         zh: '图标',
                         jp: 'アイコン',
                         es: 'Icono',
-                        ko: '상'
+                        ko: '상',
+                        ar: 'أيقونة'
                     },
                     userOptions: {
                         en: 'User options',
@@ -123,7 +133,8 @@ export const useMainStore = defineStore("main", {
                         zh: '用户选项',
                         jp: 'ユーザーオプション',
                         es: 'Opciones de usuario',
-                        ko: '사용자 옵션'
+                        ko: '사용자 옵션',
+                        ar: 'خيارات المستخدم'
                     },
                     themes: {
                         en: 'Themes',
@@ -133,7 +144,8 @@ export const useMainStore = defineStore("main", {
                         zh: '主题',
                         jp: 'テーマ',
                         es: 'Temas',
-                        ko: '테마'
+                        ko: '테마',
+                        ar: 'سمات'
                     },
                     component: {
                         en: 'Component',
@@ -143,7 +155,8 @@ export const useMainStore = defineStore("main", {
                         zh: '成分',
                         jp: '成分',
                         es: 'Componente',
-                        ko: '요소'
+                        ko: '요소',
+                        ar: 'مكون'
                     },
                     description: {
                         en: 'Description',
@@ -153,7 +166,8 @@ export const useMainStore = defineStore("main", {
                         zh: '描述',
                         jp: '説明',
                         es: 'Descripción',
-                        ko: '설명'
+                        ko: '설명',
+                        ar: 'وصف'
                     },
                     features: {
                         en: 'Features',
@@ -163,7 +177,8 @@ export const useMainStore = defineStore("main", {
                         zh: '特征',
                         jp: '特徴',
                         es: 'Características',
-                        ko: '특징'
+                        ko: '특징',
+                        ar: 'ميزات'
                     },
                     exposedMethods: {
                         en: 'Exposed methods',
@@ -173,7 +188,8 @@ export const useMainStore = defineStore("main", {
                         zh: '暴露方法',
                         jp: '公開されたメソッド',
                         es: 'Métodos expuestos',
-                        ko: '노출된 방법'
+                        ko: '노출된 방법',
+                        ar: 'الطرق المعرضة'
                     },
                     basicRendering: {
                         en: 'Basic rendering',
@@ -183,7 +199,8 @@ export const useMainStore = defineStore("main", {
                         zh: '基础渲染',
                         jp: '基本レンダリング',
                         es: 'Representación básica',
-                        ko: '기본 렌더링'
+                        ko: '기본 렌더링',
+                        ar: 'الرسم الأساسي'
                     },
                     viewSampleDataset: {
                         en: 'View sample dataset',
@@ -193,7 +210,8 @@ export const useMainStore = defineStore("main", {
                         zh: '查看示例数据集',
                         jp: 'サンプル データセットを表示する',
                         es: 'Ver conjunto de datos de muestra',
-                        ko: '샘플 데이터세트 보기'
+                        ko: '샘플 데이터세트 보기',
+                        ar: 'عرض مجموعة بيانات عينة'
                     },
                     title: {
                         en: 'Quick components overview',
@@ -203,7 +221,8 @@ export const useMainStore = defineStore("main", {
                         zh: '组件快速概览',
                         jp: 'コンポーネントの簡単な概要',
                         es: 'Descripción rápida de los componentes',
-                        ko: '빠른 구성 요소 개요'
+                        ko: '빠른 구성 요소 개요',
+                        ar: 'نظرة سريعة على المكونات'
                     }
                 },
                 wordCloud: {
@@ -215,7 +234,8 @@ export const useMainStore = defineStore("main", {
                         zh: "您可以将纯文本传递到 dataset 属性中。该组件将计算字数。您还可以从“vue-data-ui”导入方法“createWordCloudDatasetFromPlainText”，将纯文本转换为数据集对象以传递给“dataset”属性。",
                         jp: "プレーンテキストをデータセットプロップに渡すことができます。コンポーネントは単語数を計算します。また、「vue-data-ui」から「createWordCloudDatasetFromPlainText」メソッドをインポートして、プレーン テキストをデータセット オブジェクトに変換し、「dataset」プロパティに渡すこともできます。",
                         es: "Puede pasar texto sin formato al dataset prop. El componente calculará el recuento de palabras. También puede importar el método 'createWordCloudDatasetFromPlainText' desde 'vue-data-ui' para convertir texto sin formato en un objeto de conjunto de datos para pasarlo a la prop 'dataset'.",
-                        ko: "데이터세트 소품에 일반 텍스트를 전달할 수 있습니다. 구성 요소는 단어 수를 계산합니다. 또한 'vue-data-ui'에서 'createWordCloudDatasetFromPlainText' 메소드를 가져와서 일반 텍스트를 데이터세트 객체로 변환하여 'dataset' prop에 전달할 수도 있습니다."
+                        ko: "데이터세트 소품에 일반 텍스트를 전달할 수 있습니다. 구성 요소는 단어 수를 계산합니다. 또한 'vue-data-ui'에서 'createWordCloudDatasetFromPlainText' 메소드를 가져와서 일반 텍스트를 데이터세트 객체로 변환하여 'dataset' prop에 전달할 수도 있습니다.",
+                        ar: `يمكنك تمرير نص عادي إلى خاصية مجموعة البيانات (dataset prop). سيقوم المكون بحساب عدد الكلمات. يمكنك أيضًا استيراد الطريقة 'createWordCloudDatasetFromPlainText' من 'vue-data-ui' لتحويل النص العادي إلى كائن مجموعة بيانات (dataset object) لتمريره إلى خاصية 'dataset' (prop)`
                     }
                 },
                 sideMenu: {
@@ -227,7 +247,8 @@ export const useMainStore = defineStore("main", {
                         zh: '线条和条形',
                         jp: '線と棒',
                         es: 'Líneas y barras',
-                        ko: '선과 막대'
+                        ko: '선과 막대',
+                        ar: 'الخطوط والأشرطة'
                     },
                     donuts: {
                         en: `Donuts / Proportions`,
@@ -237,7 +258,8 @@ export const useMainStore = defineStore("main", {
                         zh: '甜甜圈/比例',
                         jp: 'ドーナツ / プロポーション',
                         es: 'Donuts / Proporciones',
-                        ko: '도넛 / 비율'
+                        ko: '도넛 / 비율',
+                        ar: 'الدونات / النسب'
                     },
                     gauges: {
                         en: `Gauges`,
@@ -247,7 +269,8 @@ export const useMainStore = defineStore("main", {
                         zh: '仪表',
                         jp: 'ゲージ',
                         es: 'Medidores',
-                        ko: '게이지'
+                        ko: '게이지',
+                        ar: 'عدادات'
                     },
                     radars: {
                         en: `Radar`,
@@ -257,7 +280,8 @@ export const useMainStore = defineStore("main", {
                         zh: '雷达',
                         jp: 'レーダー',
                         es: 'Radar',
-                        ko: '레이더'
+                        ko: '레이더',
+                        ar: 'رادار'
                     },
                     semantic: {
                         en: 'Semantic',
@@ -267,7 +291,8 @@ export const useMainStore = defineStore("main", {
                         zh: '语义学',
                         jp: 'セマンティック',
                         es: 'Semántico',
-                        ko: '의미론적'
+                        ko: '의미론적',
+                        ar: 'دلالي'
                     },
                     misc: {
                         en: `Misc charts`,
@@ -277,7 +302,8 @@ export const useMainStore = defineStore("main", {
                         zh: '杂项',
                         jp: 'その他',
                         es: 'Varios',
-                        ko: '기타'
+                        ko: '기타',
+                        ar: 'مخططات متنوعة'
                     },
                     miniCharts: {
                         en: "Mini charts",
@@ -288,6 +314,7 @@ export const useMainStore = defineStore("main", {
                         jp: "ミニチャート",
                         es: "Mini gráficos",
                         ko: "미니 차트",
+                        ar: 'مخططات مصغرة'
                     },
                     charts: {
                         en: "Charts",
@@ -298,6 +325,7 @@ export const useMainStore = defineStore("main", {
                         jp: "チャート",
                         es: "Gráficos",
                         ko: "차트",
+                        ar: 'مخططات'
                     },
                     charts3d: {
                         en: "3d charts",
@@ -308,6 +336,7 @@ export const useMainStore = defineStore("main", {
                         jp: "3Dチャート",
                         es: "3d Gráficos",
                         ko: "3D 차트",
+                        ar: 'مخططات ثلاثية الأبعاد'
                     },
                     tables: {
                         en: "Data tables",
@@ -318,6 +347,7 @@ export const useMainStore = defineStore("main", {
                         jp: "データテーブル",
                         es: "Tablas de datos",
                         ko: "데이터 테이블",
+                        ar: 'جداول البيانات'
                     },
                     rating: {
                         en: "Rating",
@@ -328,6 +358,7 @@ export const useMainStore = defineStore("main", {
                         jp: "評価",
                         es: "Clasificación",
                         ko: "평가",
+                        ar: 'تقييم'
                     },
                     utilities: {
                         en: "Utilities",
@@ -338,6 +369,7 @@ export const useMainStore = defineStore("main", {
                         jp: "公共事業",
                         es: "Utilidades",
                         ko: "유용",
+                        ar: 'الأدوات'
                     }
                 },
                 maker: {
@@ -350,7 +382,8 @@ export const useMainStore = defineStore("main", {
                             zh: "时期",
                             jp: "期間",
                             es: "Período",
-                            ko: "기간"
+                            ko: "기간",
+                            ar: 'فترة'
                         }
                     },
                     tooltips: {
@@ -362,7 +395,8 @@ export const useMainStore = defineStore("main", {
                             zh: "添加类别",
                             jp: "カテゴリを追加する",
                             es: "Añadir una categoría",
-                            ko: "카테고리 추가"
+                            ko: "카테고리 추가",
+                            ar: 'إضافة فئة'
                         },
                         addDataset: {
                             en: "Add dataset",
@@ -372,7 +406,8 @@ export const useMainStore = defineStore("main", {
                             zh: "添加数据集",
                             jp: "データセットの追加",
                             es: "Agregar conjunto de datos",
-                            ko: "데이터 세트 추가"
+                            ko: "데이터 세트 추가",
+                            ar: 'إضافة مجموعة بيانات'
                         },
                         addData: {
                             en: "Add data",
@@ -381,7 +416,8 @@ export const useMainStore = defineStore("main", {
                             de: "Daten hinzufügen",
                             zh: "添加数据",
                             jp: "データの追加",
-                            ko: "データの追加"
+                            ko: "データの追加",
+                            ar: 'إضافة بيانات'
                         },
                         delete: {
                             en: "Delete",
@@ -391,7 +427,8 @@ export const useMainStore = defineStore("main", {
                             zh: "删除",
                             jp: "消去",
                             es: "Borrar",
-                            ko: "삭제"
+                            ko: "삭제",
+                            ar: 'حذف'
                         }
                     }
                 },
@@ -403,7 +440,8 @@ export const useMainStore = defineStore("main", {
                     zh: `从版本 2.2.9 开始，您可以将 3 个主题中的一个应用到所有图表。只需将“主题”配置属性设置为“”、“zen”、“hack”或“concrete”即可。可以通过导入并调用 getThemeConfig 函数来检索主题对象，并将与组件对应的键作为参数传递。`,
                     jp: `バージョン 2.2.9 以降、3 つのテーマのいずれかをすべてのチャートに適用できるようになりました。 「テーマ」構成属性を「」、「zen」、「hack」、「concrete」のいずれかに設定するだけです。テーマ オブジェクトは、getThemeConfig 関数をインポートして呼び出し、コンポーネントに対応するキーをパラメータとして渡すことで取得できます。`,
                     es: `Desde la versión 2.2.9, puede aplicar uno de los 3 temas a todos los gráficos. Simplemente configure el atributo de configuración 'tema' en "", "zen", "hack" o "concrete". Los objetos del tema se pueden recuperar importando y llamando a la función getThemeConfig, pasando como parámetro la clave correspondiente al componente.`,
-                    ko: `버전 2.2.9부터 3가지 테마 중 하나를 모든 차트에 적용할 수 있습니다. 'theme' 구성 속성을 "", "zen", "hack" 또는 "concrete"로 설정하기만 하면 됩니다. 테마 개체는 getThemeConfig 함수를 가져오고 호출하여 구성 요소에 해당하는 키를 매개 변수로 전달하여 검색할 수 있습니다.`
+                    ko: `버전 2.2.9부터 3가지 테마 중 하나를 모든 차트에 적용할 수 있습니다. 'theme' 구성 속성을 "", "zen", "hack" 또는 "concrete"로 설정하기만 하면 됩니다. 테마 개체는 getThemeConfig 함수를 가져오고 호출하여 구성 요소에 해당하는 키를 매개 변수로 전달하여 검색할 수 있습니다.`,
+                    ar: `منذ الإصدار 2.2.9، يمكنك تطبيق واحدة من 3 سمات على جميع المخططات. فقط قم بتعيين خاصية التكوين 'theme' إلى إما "" أو "zen" أو "hack" أو "concrete". يمكن استرجاع كائنات السمات عن طريق الاستيراد واستدعاء دالة getThemeConfig، مع تمرير المفتاح المقابل للمكون كمعامل.`
                 },
                 getConfig: {
                     en: "Since version v.1.9.93 you can get any configuration object by importing and calling the getVueDataUiConfig function, passing as a parameter the key corresponding to the component.",
@@ -413,7 +451,8 @@ export const useMainStore = defineStore("main", {
                     zh: "从 v.1.9.93 版本开始，您可以通过导入并调用 getVueDataUiConfig 函数来获取任何配置对象，并将与组件对应的键作为参数传递。",
                     jp: "バージョン v.1.9.93 以降、getVueDataUiConfig 関数をインポートして呼び出し、コンポーネントに対応するキーをパラメータとして渡すことで、任意の構成オブジェクトを取得できます。",
                     es: "Desde la versión v.1.9.93 se puede obtener cualquier objeto de configuración importando y llamando a la función getVueDataUiConfig, pasando como parámetro la clave correspondiente al componente.",
-                    ko: "버전 v.1.9.93부터 getVueDataUiConfig 함수를 가져오고 호출하여 구성 요소에 해당하는 키를 매개 변수로 전달하여 구성 개체를 얻을 수 있습니다."
+                    ko: "버전 v.1.9.93부터 getVueDataUiConfig 함수를 가져오고 호출하여 구성 요소에 해당하는 키를 매개 변수로 전달하여 구성 개체를 얻을 수 있습니다.",
+                    ar: `منذ الإصدار v.1.9.93، يمكنك الحصول على أي كائن تكوين عن طريق الاستيراد واستدعاء دالة getVueDataUiConfig، مع تمرير المفتاح المقابل للمكون كمعامل`
                 },
                 viewSelectedTheme: {
                     en: "View selected themes",
@@ -423,7 +462,8 @@ export const useMainStore = defineStore("main", {
                     zh: "查看选定的主题",
                     jp: "選択したテーマを表示する",
                     es: "Ver temas seleccionados",
-                    ko: "선택한 테마 보기"
+                    ko: "선택한 테마 보기",
+                    ar: 'عرض السمات المحددة'
                 },
                 viewSelectedConfig: {
                     en: "View selected config",
@@ -433,7 +473,8 @@ export const useMainStore = defineStore("main", {
                     zh: "查看选定的配置",
                     jp: "選択した構成を表示する",
                     es: "Ver configuración seleccionada",
-                    ko: "선택한 구성 보기"
+                    ko: "선택한 구성 보기",
+                    ar: 'عرض التكوين المحدد'
                 },
                 clickToCopy: {
                     en: "Click to copy",
@@ -443,7 +484,8 @@ export const useMainStore = defineStore("main", {
                     zh: "点击复制",
                     jp: "クリックしてコピー",
                     es: "Haga clic para copiar",
-                    ko: "복사하려면 클릭하세요."
+                    ko: "복사하려면 클릭하세요.",
+                    ar: 'انقر لنسخ'
                 },
                 githubCode: {
                     en: "View source code",
@@ -453,7 +495,8 @@ export const useMainStore = defineStore("main", {
                     zh: "查看源代码",
                     jp: "ソースコードを表示する",
                     es: "Ver código fuente",
-                    ko: "소스 코드 보기"
+                    ko: "소스 코드 보기",
+                    ar: 'عرض كود المصدر'
                 },
                 downloads: {
                     en: "Downloads:",
@@ -463,7 +506,8 @@ export const useMainStore = defineStore("main", {
                     zh: "下载次数：",
                     jp: "ダウンロード:",
                     es: "Descargas:",
-                    ko: "다운로드:"
+                    ko: "다운로드:",
+                    ar: ':التحميلات'
                 },
                 tableCss: {
                     summary: {
@@ -474,7 +518,8 @@ export const useMainStore = defineStore("main", {
                         zh: "标有此图标的组件包括一个切换数据表（如果启用用户选项则可用，默认情况下），以及公开的 css 类以适应您的设计系统。",
                         jp: "このアイコンでマークされたコンポーネントには、デザイン システムに合わせて調整する公開 CSS クラスを備えた切り替え dataTable (ユーザー オプションがデフォルトで有効になっている場合に使用可能) が含まれています。",
                         es: "Los componentes marcados con este icono incluyen una tabla de datos de alternancia (que se puede utilizar si las opciones del usuario están habilitadas, lo cual es lo predeterminado), con clases CSS expuestas para ajustarse a su sistema de diseño.",
-                        ko: "이 아이콘으로 표시된 구성 요소에는 토글 dataTable(기본적으로 사용자 옵션이 활성화된 경우 사용 가능)과 디자인 시스템에 맞게 조정하기 위한 노출된 CSS 클래스가 포함됩니다."
+                        ko: "이 아이콘으로 표시된 구성 요소에는 토글 dataTable(기본적으로 사용자 옵션이 활성화된 경우 사용 가능)과 디자인 시스템에 맞게 조정하기 위한 노출된 CSS 클래스가 포함됩니다.",
+                        ar: 'المكونات المميزة بهذه الأيقونة تتضمن جدول بيانات قابل للتبديل (قابل للاستخدام إذا كانت خيارات المستخدم مفعلة، وهي مفعلة بشكل افتراضي)، مع فئات CSS معروضة لتعديلها لتناسب نظام تصميمك.'
                     },
                     cta: {
                         en: "View css classes",
@@ -484,7 +529,8 @@ export const useMainStore = defineStore("main", {
                         zh: "查看暴露的CSS",
                         jp: "公開された CSS を表示する",
                         es: "Ver CSS expuesto",
-                        ko: "CSS 수업 보기"
+                        ko: "CSS 수업 보기",
+                        ar: 'عرض فئات CSS'
                     }
                 },
                 slots: {
@@ -496,7 +542,8 @@ export const useMainStore = defineStore("main", {
                         zh: `使用此“插槽”向您的图表添加水印`,
                         jp: `この「スロット」を使用して、チャートに透かしを追加します。`,
                         es: `Utilice esta "slot" para agregar una marca de agua al gráfico`,
-                        ko: `차트에 워터마크를 추가하려면 이 "슬롯"을 사용하십시오.`
+                        ko: `차트에 워터마크를 추가하려면 이 "슬롯"을 사용하십시오.`,
+                        ar: `استخدم هذا 'slot' لإضافة علامة مائية إلى المخطط الخاص بك.`
                     },
                     caption: {
                         en: 'Use this slot to customize the caption element.',
@@ -506,7 +553,8 @@ export const useMainStore = defineStore("main", {
                         zh: '使用此槽来自定义标题元素。',
                         jp: 'このスロットを使用して、キャプション要素をカスタマイズします。',
                         es: 'Utilice esta ranura para personalizar el elemento de título.',
-                        ko: '캡션 요소를 사용자 정의하려면 이 슬롯을 사용하십시오.'
+                        ko: '캡션 요소를 사용자 정의하려면 이 슬롯을 사용하십시오.',
+                        ar: `استخدم هذا الـ "slot" لتخصيص عنصر التسمية.`
                     },
                     th: {
                         en: 'Use this slot to customize the table header cells.',
@@ -516,7 +564,8 @@ export const useMainStore = defineStore("main", {
                         zh: '使用此插槽可以自定义表格标题单元格。',
                         jp: 'このスロットを使用して、テーブルのヘッダー セルをカスタマイズします。',
                         es: 'Utilice esta ranura para personalizar las celdas del encabezado de la tabla.',
-                        ko: '이 슬롯을 사용하여 테이블 헤더 셀을 사용자 정의합니다.'
+                        ko: '이 슬롯을 사용하여 테이블 헤더 셀을 사용자 정의합니다.',
+                        ar: `استخدم هذا الـ "slot" لتخصيص خلايا رأس الجدول.`
                     },
                     td: {
                         en: 'Use this slot to customize the table body cells.',
@@ -526,7 +575,8 @@ export const useMainStore = defineStore("main", {
                         zh: '使用此插槽可以自定义表格主体单元格。',
                         jp: 'このスロットを使用して、テーブル本体のセルをカスタマイズします。',
                         es: 'Utilice esta ranura para personalizar las celdas del cuerpo de la tabla.',
-                        ko: '이 슬롯을 사용하여 테이블 본문 셀을 사용자 정의합니다.'
+                        ko: '이 슬롯을 사용하여 테이블 본문 셀을 사용자 정의합니다.',
+                        ar: `استخدم هذا الـ "slot" لتخصيص خلايا جسم الجدول.`
                     },
                     title: {
                         en: `This component contains a #title 'slot' exposing data to customize the chart title.`,
@@ -536,7 +586,8 @@ export const useMainStore = defineStore("main", {
                         zh: '该组件包含一个#title“槽”，公开数据以自定义图表标题。',
                         jp: `このコンポーネントには、グラフのタイトルをカスタマイズするためのデータを公開する #title 'スロット' が含まれています。`,
                         es: `Este componente contiene una 'slot' #title que expone datos para personalizar el título del gráfico.`,
-                        ko: `이 구성 요소에는 차트 제목을 맞춤설정하기 위해 데이터를 노출하는 #title '슬롯'이 포함되어 있습니다.`
+                        ko: `이 구성 요소에는 차트 제목을 맞춤설정하기 위해 데이터를 노출하는 #title '슬롯'이 포함되어 있습니다.`,
+                        ar: `يحتوي هذا المكون على "slot" #title يعرض بيانات لتخصيص عنوان المخطط.`
                     },
                     dataLabel: {
                         en: `This component contains a #data-label 'slot' exposing data to customize data labels.`,
@@ -546,7 +597,8 @@ export const useMainStore = defineStore("main", {
                         zh: '该组件包含一个#data-label“槽”，用于公开数据以自定义数据标签。',
                         jp: `このコンポーネントには、データ ラベルをカスタマイズするためのデータを公開する #data-label 'slot' が含まれています。`,
                         es: `Este componente contiene una 'slot' #data-label que expone datos para personalizar etiquetas de datos.`,
-                        ko: `이 구성 요소에는 데이터 레이블을 맞춤설정하기 위해 데이터를 노출하는 #data-label '슬롯'이 포함되어 있습니다.`
+                        ko: `이 구성 요소에는 데이터 레이블을 맞춤설정하기 위해 데이터를 노출하는 #data-label '슬롯'이 포함되어 있습니다.`,
+                        ar: 'يحتوي هذا المكون على "slot" #data-label يعرض بيانات لتخصيص تسميات البيانات.'
                     },
                     sparklineBefore: {
                         en: "This component contains a #before 'slot' exposing data you can use to customize labels for your chart: details of the selected datapoint, sum, average, median, trend, latest value.",
@@ -556,7 +608,8 @@ export const useMainStore = defineStore("main", {
                         zh: "该组件包含一个#before“槽”，公开可用于自定义图表标签的数据：所选数据点的详细信息、总和、平均值、中值、趋势、最新值。",
                         jp: "このコンポーネントには、チャートのラベルをカスタマイズするために使用できるデータを公開する #before 'slot' が含まれています: 選択したデータポイントの詳細、合計、平均、中央値、トレンド、最新値。",
                         es: "Este componente contiene un 'espacio' #before que expone datos que puede usar para personalizar etiquetas para su gráfico: detalles del punto de datos seleccionado, suma, promedio, mediana, tendencia, valor más reciente.",
-                        ko: "이 구성 요소에는 차트 레이블을 사용자 정의하는 데 사용할 수 있는 데이터(선택한 데이터 포인트, 합계, 평균, 중앙값, 추세, 최신 값)에 대한 세부 정보를 노출하는 #before '슬롯'이 포함되어 있습니다."
+                        ko: "이 구성 요소에는 차트 레이블을 사용자 정의하는 데 사용할 수 있는 데이터(선택한 데이터 포인트, 합계, 평균, 중앙값, 추세, 최신 값)에 대한 세부 정보를 노출하는 #before '슬롯'이 포함되어 있습니다.",
+                        ar: `يحتوي هذا المكون على "slot" #before يعرض بيانات يمكنك استخدامها لتخصيص التسميات لمخططك: تفاصيل نقطة البيانات المحددة، المجموع، المتوسط، الوسيط، الاتجاه، وآخر قيمة.`
                     },
                     warning: {
                         en: "This component works with 'slots'. See the 'slots' tab for an example.",
@@ -566,7 +619,8 @@ export const useMainStore = defineStore("main", {
                         zh: "该组件与“槽”一起使用。有关示例，请参阅“插槽”选项卡。",
                         jp: "このコンポーネントは「スロット」で動作します。例については、「スロット」タブを参照してください。",
                         es: "Este componente funciona con 'slots'. Consulte la pestaña 'slots' para ver un ejemplo.",
-                        ko: "이 구성요소는 '슬롯'과 함께 작동합니다. 예시는 '슬롯' 탭을 참조하세요."
+                        ko: "이 구성요소는 '슬롯'과 함께 작동합니다. 예시는 '슬롯' 탭을 참조하세요.",
+                        ar: `يعمل هذا المكون مع "slots". راجع علامة التبويب "slots" لرؤية مثال.`
                     },
                     resetButton: {
                         en: 'This component contains a zoom slider, which reset button can be customized through the #reset-action slot.',
@@ -576,7 +630,8 @@ export const useMainStore = defineStore("main", {
                         zh: "该组件包含一个缩放滑块，可以通过 #reset-action 插槽自定义重置按钮。",
                         jp: "このコンポーネントにはズーム スライダーが含まれており、このリセット ボタンは #reset-action スロットを通じてカスタマイズできます。",
                         es: "Este componente contiene un control deslizante de zoom, cuyo botón de reinicio se puede personalizar a través de la ranura #reset-action.",
-                        ko: "이 구성 요소에는 #reset-action 슬롯을 통해 재설정 버튼을 사용자 정의할 수 있는 확대/축소 슬라이더가 포함되어 있습니다."
+                        ko: "이 구성 요소에는 #reset-action 슬롯을 통해 재설정 버튼을 사용자 정의할 수 있는 확대/축소 슬라이더가 포함되어 있습니다.",
+                        ar: `يحتوي هذا المكون على شريط تمرير للتكبير، ويمكن تخصيص زر إعادة الضبط من خلال "slot" #reset-action.`
                     },
                     donutDataLabels: {
                         en: "Custom datalabels can be obtained using the #dataLabel scoped slot. You can place anything you want inside this slot (icon, image, another chart...).",
@@ -586,7 +641,8 @@ export const useMainStore = defineStore("main", {
                         zh: "可以使用 #dataLabel 范围槽获取自定义数据标签。您可以在此槽中放置任何您想要的内容（图标、图像、另一个图表...）。",
                         jp: "カスタム データラベルは、#dataLabel スコープ スロットを使用して取得できます。このスロット内には何でも配置できます (アイコン、画像、別のグラフなど)。",
                         es: "Se pueden obtener etiquetas de datos personalizadas utilizando la ranura con alcance #dataLabel. Puedes colocar lo que quieras dentro de esta ranura (icono, imagen, otro gráfico...).",
-                        ko: "#dataLabel 범위 슬롯을 사용하여 사용자 정의 데이터 라벨을 얻을 수 있습니다. 이 슬롯에는 원하는 것은 무엇이든 넣을 수 있습니다(아이콘, 이미지, 다른 차트...)."
+                        ko: "#dataLabel 범위 슬롯을 사용하여 사용자 정의 데이터 라벨을 얻을 수 있습니다. 이 슬롯에는 원하는 것은 무엇이든 넣을 수 있습니다(아이콘, 이미지, 다른 차트...).",
+                        ar: `يمكن الحصول على تسميات بيانات مخصصة باستخدام "slot" #dataLabel المقيد. يمكنك وضع أي شيء تريده داخل هذا الـ "slot" (أيقونة، صورة، مخطط آخر...).`
                     },
                     rect: {
                         en: "This component contains a #rect slot to customize the treemap's cells contents. Be sure to set the config option style.chart.layout.labels.showDefaultLabels to 'false'.",
@@ -596,7 +652,8 @@ export const useMainStore = defineStore("main", {
                         zh: "该组件包含一个#rect 槽来自定义树形图的单元格内容。请务必将配置选项 style.chart.layout.labels.showDefaultLabels 设置为“false”。",
                         jp: "このコンポーネントには、ツリーマップのセルの内容をカスタマイズするための #rect スロットが含まれています。構成オプション style.chart.layout.labels.showDefaultLabels を必ず「false」に設定してください。",
                         es: "Este componente contiene una ranura #rect para personalizar el contenido de las celdas del mapa de árbol. Asegúrese de configurar la opción de configuración style.chart.layout.labels.showDefaultLabels en 'falso'.",
-                        ko: "이 구성 요소에는 트리맵의 셀 내용을 사용자 정의하기 위한 #ect 슬롯이 포함되어 있습니다. 구성 옵션 style.chart.layout.labels.showDefaultLabels를 'false'로 설정하세요."
+                        ko: "이 구성 요소에는 트리맵의 셀 내용을 사용자 정의하기 위한 #ect 슬롯이 포함되어 있습니다. 구성 옵션 style.chart.layout.labels.showDefaultLabels를 'false'로 설정하세요.",
+                        ar: `يحتوي هذا المكون على "slot" #rect لتخصيص محتويات خلايا خريطة الشجرة. تأكد من تعيين خيار التكوين style.chart.layout.labels.showDefaultLabels إلى 'false'`
                     },
                     tooltip: {
                         en: 'This component contains a #tooltip-before and #tooltip-after slots, to customize the tooltip contents. Through these slots, you can inject images, charts, text etc.',
@@ -606,7 +663,8 @@ export const useMainStore = defineStore("main", {
                         zh: "该组件包含 #tooltip-before 和 #tooltip-after 插槽，用于自定义工具提示内容。通过这些插槽，您可以注入图像、图表、文本等。",
                         jp: "このコンポーネントには、ツールチップの内容をカスタマイズするための #tooltip-before スロットと #tooltip-after スロットが含まれています。これらのスロットを通じて、画像、グラフ、テキストなどを挿入できます。",
                         es: "Este componente contiene espacios #tooltip-before y #tooltip-after, para personalizar el contenido de la información sobre herramientas. A través de estas ranuras, puede inyectar imágenes, gráficos, texto, etc.",
-                        ko: "이 구성 요소에는 도구 설명 내용을 사용자 정의하기 위한 #tooltip-before 및 #tooltip-after 슬롯이 포함되어 있습니다. 이 슬롯을 통해 이미지, 차트, 텍스트 등을 삽입할 수 있습니다."
+                        ko: "이 구성 요소에는 도구 설명 내용을 사용자 정의하기 위한 #tooltip-before 및 #tooltip-after 슬롯이 포함되어 있습니다. 이 슬롯을 통해 이미지, 차트, 텍스트 등을 삽입할 수 있습니다.",
+                        ar: `يحتوي هذا المكون على "slots" #tooltip-before و#tooltip-after لتخصيص محتويات التلميح. من خلال هذه الـ "slots"، يمكنك إدخال صور، مخططات، نصوص، إلخ.`
                     },
                     legendDetail: {
                         en: "This component contains a #legend slot you can use to customize your own legend. The slot provides formatted data you can use to ease the process.",
@@ -616,7 +674,8 @@ export const useMainStore = defineStore("main", {
                         zh: "该组件包含一个 #legend 插槽，您可以使用它来自定义您自己的图例。该插槽提供了可用于简化该过程的格式化数据。",
                         jp: "このコンポーネントには、独自の凡例をカスタマイズするために使用できる #legend スロットが含まれています。スロットは、プロセスを容易にするために使用できるフォーマットされたデータを提供します。",
                         es: "Este componente contiene una ranura #legend que puede utilizar para personalizar su propia leyenda. La ranura proporciona datos formateados que puede utilizar para facilitar el proceso.",
-                        ko: "이 구성 요소에는 자신만의 범례를 사용자 정의하는 데 사용할 수 있는 #legend 슬롯이 포함되어 있습니다. 슬롯은 프로세스를 쉽게 하는 데 사용할 수 있는 형식화된 데이터를 제공합니다."
+                        ko: "이 구성 요소에는 자신만의 범례를 사용자 정의하는 데 사용할 수 있는 #legend 슬롯이 포함되어 있습니다. 슬롯은 프로세스를 쉽게 하는 데 사용할 수 있는 형식화된 데이터를 제공합니다.",
+                        ar: `يحتوي هذا المكون على "slot" #legend يمكنك استخدامه لتخصيص الأسطورة الخاصة بك. يوفر الـ "slot" بيانات مُنسقة يمكنك استخدامها لتسهيل العملية`
                     },
                     legend: {
                         en: "Components marked with this icon provide a #legend slot to create your own custom legend.",
@@ -626,7 +685,8 @@ export const useMainStore = defineStore("main", {
                         zh: "标有此图标的组件提供#legend 插槽来创建您自己的自定义图例。",
                         jp: "このアイコンの付いたコンポーネントは、独自のカスタム凡例を作成するための #legend スロットを提供します。",
                         es: "Los componentes marcados con este ícono proporcionan una ranura #legend para crear su propia leyenda personalizada.",
-                        ko: "이 아이콘이 표시된 구성요소는 사용자 정의 범례를 생성할 수 있는 #legend 슬롯을 제공합니다."
+                        ko: "이 아이콘이 표시된 구성요소는 사용자 정의 범례를 생성할 수 있는 #legend 슬롯을 제공합니다.",
+                        ar: `تقدم المكونات المميزة بهذه الأيقونة "slot" #legend لإنشاء أسطورتك المخصصة.`
                     },
                     summary: {
                         en: "Components marked with this icon provide a #svg slot to extend the svg with custom elements.",
@@ -636,7 +696,8 @@ export const useMainStore = defineStore("main", {
                         zh: "标有此图标的组件提供 #svg 槽，以使用自定义元素扩展 svg。",
                         jp: "このアイコンの付いたコンポーネントは、カスタム要素で svg を拡張するための #svg スロットを提供します。",
                         es: "Los componentes marcados con este icono proporcionan una ranura (slot) #svg para ampliar el archivo svg con elementos personalizados.",
-                        ko: "이 아이콘으로 표시된 구성 요소는 사용자 정의 요소로 svg를 확장할 수 있는 #svg 슬롯을 제공합니다."
+                        ko: "이 아이콘으로 표시된 구성 요소는 사용자 정의 요소로 svg를 확장할 수 있는 #svg 슬롯을 제공합니다.",
+                        ar: `تقدم المكونات المميزة بهذه الأيقونة "slot" #svg لتوسيع الـ SVG بعناصر مخصصة.`
                     },
                     summaryLink: {
                         en: "View an example",
@@ -646,7 +707,8 @@ export const useMainStore = defineStore("main", {
                         zh: "查看示例",
                         jp: "例を見る",
                         es: "Ver un ejemplo",
-                        ko: "예시 보기"
+                        ko: "예시 보기",
+                        ar: 'عرض مثال'
                     },
                     presentation: {
                         en: "This component contains a #svg slot you can use to introduce your own customized svg elements into the chart, and through which the dimensions of the svg viewBox are exposed. Any svg element added in this slot will be displayed on the last layer of the svg, enabling any mouse or touch events you might want to use, however possibly hindering the component's own mouse events.",
@@ -656,7 +718,8 @@ export const useMainStore = defineStore("main", {
                         zh: "该组件包含一个 #svg 插槽，您可以使用它来将您自己的自定义 svg 元素引入到图表中，并通过它公开 svg viewBox 的尺寸。在此槽中添加的任何 svg 元素都将显示在 svg 的最后一层上，从而启用您可能想要使用的任何鼠标或触摸事件，但可能会阻碍组件自己的鼠标事件。",
                         jp: "このコンポーネントには、独自にカスタマイズした svg 要素をチャートに導入するために使用できる #svg スロットが含まれており、これを通じて svg viewBox の寸法が公開されます。このスロットに追加された svg 要素はすべて svg の最後のレイヤーに表示され、使用したいマウス イベントやタッチ イベントが有効になりますが、コンポーネント自体のマウス イベントが妨げられる可能性があります。",
                         es: "Este componente contiene una ranura #svg que puede utilizar para introducir sus propios elementos svg personalizados en el gráfico y a través de la cual se exponen las dimensiones del viewBox svg. Cualquier elemento svg agregado en esta ranura se mostrará en la última capa del svg, lo que permitirá cualquier evento táctil o de mouse que desee usar, aunque posiblemente obstaculice los eventos de mouse propios del componente.",
-                        ko: "이 구성 요소에는 사용자 정의된 svg 요소를 차트에 도입하고 svg viewBox의 크기가 노출되는 데 사용할 수 있는 #svg 슬롯이 포함되어 있습니다. 이 슬롯에 추가된 모든 svg 요소는 svg의 마지막 레이어에 표시되어 사용하려는 마우스 또는 터치 이벤트를 활성화하지만 구성 요소 자체의 마우스 이벤트를 방해할 수도 있습니다."
+                        ko: "이 구성 요소에는 사용자 정의된 svg 요소를 차트에 도입하고 svg viewBox의 크기가 노출되는 데 사용할 수 있는 #svg 슬롯이 포함되어 있습니다. 이 슬롯에 추가된 모든 svg 요소는 svg의 마지막 레이어에 표시되어 사용하려는 마우스 또는 터치 이벤트를 활성화하지만 구성 요소 자체의 마우스 이벤트를 방해할 수도 있습니다.",
+                        ar: `يحتوي هذا المكون على "slot" #svg يمكنك استخدامه لإدخال عناصر SVG مخصصة في المخطط، ومن خلاله يتم الكشف عن أبعاد viewBox الخاصة بـ SVG. سيتم عرض أي عنصر SVG مضاف في هذا الـ "slot" على آخر طبقة من الـ SVG، مما يمكّن أي أحداث للماوس أو اللمس قد ترغب في استخدامها، ولكنه قد يعيق أحداث الماوس الخاصة بالمكون نفسه.`
                     }
                 },
                 search: {
@@ -668,7 +731,8 @@ export const useMainStore = defineStore("main", {
                         zh: "选择组件...",
                         jp: "コンポーネントを選択...",
                         es: "Seleccionar componente...",
-                        ko: "구성품을 선택하세요.."
+                        ko: "구성품을 선택하세요..",
+                        ar: '...اختر مكونًا'
                     },
                     noResults: {
                         en: "No results found",
@@ -678,7 +742,8 @@ export const useMainStore = defineStore("main", {
                         zh: "未找到结果",
                         jp: "結果が見つかりません",
                         es: "No se han encontrado resultados" ,
-                        ko: "검색 결과가 없습니다"
+                        ko: "검색 결과가 없습니다",
+                        ar: 'لم يتم العثور على نتائج'
                     },
                     viewComponentCode: {
                         en: "View component code",
@@ -688,7 +753,8 @@ export const useMainStore = defineStore("main", {
                         zh: "查看组件代码",
                         jp: "コンポーネントコードを表示する",
                         es: "Ver código de componente",
-                        ko: "구성요소 코드 보기"
+                        ko: "구성요소 코드 보기",
+                        ar: 'عرض كود المكون'
                     },
                     viewComponent: {
                         en: "View component",
@@ -698,7 +764,8 @@ export const useMainStore = defineStore("main", {
                         zh: "查看组件",
                         jp: "ビューコンポーネント",
                         es: "Ver componente",
-                        ko: "구성요소 보기"
+                        ko: "구성요소 보기",
+                        ar: 'عرض المكون'
                     },
                     defaultValue: {
                         en: "Default value",
@@ -708,7 +775,8 @@ export const useMainStore = defineStore("main", {
                         zh: "默认值",
                         jp: "デフォルト値",
                         es: "Valor por defecto",
-                        ko: "기본값"
+                        ko: "기본값",
+                        ar: 'القيمة الافتراضية'
                     },
                     close: {
                         en: "Close",
@@ -718,7 +786,8 @@ export const useMainStore = defineStore("main", {
                         zh: "关闭",
                         jp: "近い",
                         es: "Cerca",
-                        ko: "닫다"
+                        ko: "닫다",
+                        ar: 'إغلاق'
                     },
                     term: {
                         en: "Results for",
@@ -728,7 +797,8 @@ export const useMainStore = defineStore("main", {
                         zh: "结果",
                         jp: "の結果",
                         es: "Resultados para",
-                        ko: "다음에 대한 결과"
+                        ko: "다음에 대한 결과",
+                        ar: 'النتائج لـ'
                     },
                     placeholder: {
                         en: "Search config... ex: 'tootlip'",
@@ -738,7 +808,8 @@ export const useMainStore = defineStore("main", {
                         zh: "搜索配置...例如：'tootlip'",
                         jp: "設定を検索...例: 'tootlip'",
                         es: "Configuración... ej: 'tootlip'",
-                        ko: "검색 구성... 예: 'tootlip'"
+                        ko: "검색 구성... 예: 'tootlip'",
+                        ar: ''
                     }
                 },
                 types: {
