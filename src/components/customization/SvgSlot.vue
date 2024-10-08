@@ -75,7 +75,7 @@ const donutConfig = ref({
             <a href="#arrow" class="flex flex-row gap-2 place-items-center justify-center text-center text-xs py-2 px-4 bg-white dark:bg-[#2A2A2A] rounded-md hover:shadow-xl hover:outline hover:outline-app-green transition-colors"><VueUiIcon name="sort" stroke="#42d392"/> {{ translations.customization.arrow[store.lang] }}</a>
         </div>
 
-        <p class="my-6" >{{ translations.customization.p1[store.lang] }}</p>
+        <p class="my-6" dir="auto">{{ translations.customization.p1[store.lang] }}</p>
         <hr id="comment" class="mb-[120px]">
         <div class="w-full">
             <p class="text-lg dark:text-app-green">1. {{ translations.customization.comment[store.lang] }}</p>

@@ -28,14 +28,16 @@ const translations = computed(() => {
             <code>yarn add vue-data-ui</code>
         </div>
 
-        <div class="mt-4 z-10">
+        <div class="mt-4 z-10" dir="auto">
             {{ translations.installation.tsUsers[store.lang] }}
         </div>
 
         <div class="mt-4 z-10">
 
             <a href="https://github.com/graphieros/vue-data-ui-nuxt" class="underline" target="_blank">
-                {{ translations.nuxt.implementation[store.lang] }}
+                <div dir="auto">
+                    {{ translations.nuxt.implementation[store.lang] }}
+                </div>
             </a>
         </div>
         
@@ -47,7 +49,7 @@ const translations = computed(() => {
                 <span class="text-red-600 dark:text-gray-500">// {{ translations.installation.comments.includeCss[store.lang] }}</span><br>
                 import "<span class="text-gray-800 dark:text-app-green">vue-data-ui/style.css</span>"<br><br>
                 
-                <span class="text-gray-600 dark:text-gray-500">// {{ translations.installation.comments.global[store.lang] }}</span><br>
+                <span class="text-gray-600 dark:text-gray-500">// <span dir="auto">{{ translations.installation.comments.global[store.lang] }}</span></span><br>
                 import { <span class="text-gray-800 dark:text-app-green">VueUiRadar</span> } from "vue-data-ui"<br><br>
 
                 const app = createApp(App)<br><br>
@@ -56,7 +58,7 @@ const translations = computed(() => {
 
                 app.mount('#app')<br><br>
 
-                <span class="text-gray-600 dark:text-gray-500">// {{ translations.installation.comments.import[store.lang] }}</span><br>
+                <span class="text-gray-600 dark:text-gray-500">// <span dir="auto">{{ translations.installation.comments.import[store.lang] }}</span></span><br>
             </code>
 
             <span class="text-app-blue">MyComponent.vue</span>
@@ -81,7 +83,7 @@ const translations = computed(() => {
                 })<br>
                &lt;/script&gt;<br><br>
 
-               <span class="text-gray-600 dark:text-gray-500">// {{ translations.installation.comments.universalComponent[store.lang] }}</span><br>
+               <span class="text-gray-600 dark:text-gray-500">// <span dir="auto">{{ translations.installation.comments.universalComponent[store.lang] }}</span></span><br>
             </code>
 
             <span class="text-app-blue">MyComponent.vue</span>

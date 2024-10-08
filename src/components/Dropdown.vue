@@ -57,7 +57,7 @@ const config = computed(() => {
             </template>
             <template #title="{ isOpen }">
                 <div class="relative w-full py-2 pl-2 rounded hover:bg-[#1A1A1A10] dark:hover:bg-[#FFFFFF10] transition-colors" :style="`background: ${isOpen ? '#5f8aee30' : ''}`">
-                    {{ title }}
+                    <div>{{ title }}</div>
                     <div class="shadow absolute top-1/2 right-2 -translate-y-1/2 text-xs rounded-full bg-gradient-to-b from-[#8eabed] to-[#5f8aee] text-black w-[24px] h-[24px] flex place-items-center justify-center">{{ items.length }}</div>
                 </div>
             </template>

@@ -136,7 +136,7 @@ const waffleConfig = computed(() => {
 <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
     <h2 class="mb-4 text-xl text-left w-full">&lt;VueUiWaffle /&gt;</h2>
     <h3 class="w-full text-left text-xl mb-2">#cell slot</h3>
-    <p class="text-left">
+    <p class="text-left" dir="auto">
         {{ translations.customization.otherSlots.waffle[store.lang] }}
     </p>
     <div class="w-full text-left py-4 my-4 px-4 bg-gray-200 dark:bg-gray-800">

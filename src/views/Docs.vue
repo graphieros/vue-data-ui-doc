@@ -1091,7 +1091,7 @@ const menuCategories = computed(() => {
         </RouterLink>
     </div>
     
-    <div  class="w-full px-2 sm:px-0 max-w-[72ch] text-left mx-auto mb-12 mt-12 text-xs sm:text-lg">
+    <div dir="auto" class="w-full px-2 sm:px-0 max-w-[72ch] text-left mx-auto mb-12 mt-12 text-xs sm:text-lg">
         {{ translations.docs.p1[store.lang] }}
     </div>
     
@@ -1106,7 +1106,7 @@ const menuCategories = computed(() => {
     </div>
     
                     <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
-                        <div  class="mb-4">{{ translations.getTheme[store.lang] }}</div>
+                        <div dir="auto" class="mb-4">{{ translations.getTheme[store.lang] }}</div>
                         <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-300 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
                         <CopyIcon class="absolute right-2 top-2"/>
                             import { getThemeConfig } from "vue-data-ui";<br>
@@ -1143,7 +1143,7 @@ const menuCategories = computed(() => {
                     </div>
     
                     <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
-                        <div  class="mb-4">{{ translations.getConfig[store.lang] }}</div>
+                        <div dir="auto" class="mb-4">{{ translations.getConfig[store.lang] }}</div>
                         <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-300 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
                         <CopyIcon class="absolute right-2 top-2"/>
                             import { getVueDataUiConfig } from "vue-data-ui";<br>
@@ -1186,13 +1186,17 @@ const menuCategories = computed(() => {
                             <div class="h-[40px] w-[40px] flex place-items-center justify-center">
                             <SquareRoundedLetterSIcon class="bg-white dark:bg-black rounded-md text-app-blue"/>
                             </div>
-                            {{ translations.slots.summary[store.lang] }}
+                            <div dir="auto">
+                                {{ translations.slots.summary[store.lang] }}
+                            </div>
                         </div>
                         <div class="flex flex-row gap-6 place-items-center">
                             <div class="h-[40px] w-[40px] flex place-items-center justify-center">
                             <SquareRoundedLetterLIcon class="bg-white dark:bg-black rounded-md text-app-orange"/>
                             </div>
-                            {{ translations.slots.legend[store.lang] }}
+                            <div dir="auto">
+                                {{ translations.slots.legend[store.lang] }}
+                            </div>
                         </div>
                             <div class="w-full flex justify-center">
                             <router-link to="/customization">
@@ -1205,8 +1209,10 @@ const menuCategories = computed(() => {
                             <div class="h-[40px] w-[40px] flex place-items-center justify-center">
                             <SquareRoundedLetterTIcon class="bg-white dark:bg-black rounded-md text-app-green"/>
                             </div>
-                            <div dir="ltr" class="flex flex-col gap-2">
-                                {{ translations.tableCss.summary[store.lang] }}
+                            <div class="flex flex-col gap-2">
+                                <div dir="auto">
+                                    {{ translations.tableCss.summary[store.lang] }}
+                                </div>
     
                                 <VueDataUi component="VueUiAccordion" :config="{
                                         head: {

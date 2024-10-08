@@ -183,7 +183,7 @@ const excl4 = '[]';
                 </tr>
             </tbody>
         </table>
-        <span v-if="!hideDisclaimer">
+        <span v-if="!hideDisclaimer" dir="auto">
             1. {{ translations.responsiveUsage[store.lang] }} {{ translations.responsive[store.lang] }}
         </span>
 

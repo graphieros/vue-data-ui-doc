@@ -36,8 +36,8 @@ const allowedComponents = ref([
 
 <template>
 <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
-    <p class="my-6">{{ translations.customization.legend[store.lang] }}</p>
-    <p class="my-6">{{ translations.customization.legendAllowed[store.lang] }}</p>
+    <p class="my-6" dir="auto">{{ translations.customization.legend[store.lang] }}</p>
+    <p class="my-6" dir="auto">{{ translations.customization.legendAllowed[store.lang] }}</p>
     <ul>
         <RouterLink v-for="allowed in allowedComponents" :to="allowed.link">        
             <li class="flex flex-row gap-2 py-1 px-2 rounded text-xs hover:bg-[#5f8bee20]">

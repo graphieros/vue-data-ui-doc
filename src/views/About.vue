@@ -292,18 +292,18 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
                 <VueUiSkeleton :config="skeleton"/>
             </div>
         </div>
-        <p class="mt-12 mb-3">
+        <p class="mt-12 mb-3" dir="auto">
             {{ translations.about.p1[store.lang] }}
         </p>
-        <p class="my-3">
+        <p class="my-3" dir="auto">
           {{ translations.about.p2[store.lang] }}
         </p>
 
-        <p class="my-3">
+        <p class="my-3" dir="auto">
             {{ translations.about.p3[store.lang] }} <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-chestnut">VueUiChestnut</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-quadrant">VueUiQuadrant</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-table">VueUiTable</router-link></span>.
         </p>
 
-        <p class="my-3">
+        <p class="my-3" dir="auto">
             {{ translations.about.p4[store.lang] }}<span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-screenshot">VueUiScreenshot</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-skeleton">VueUiSkeleton</router-link></span>
         </p>
 
@@ -335,7 +335,7 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
         <div class="w-full mt-12 flex place-items-center place-content-center">
             <div class="flex gap-6 flex-col md:flex-row place-items-center place-content-center">            
                 <img src="../assets/alec_lloyd_probert.png" class="h-[200px] rounded" alt="A picture of Alec Lloyd Probert">
-                <p>
+                <p dir="auto">
                     {{ translations.about.alp[store.lang] }}<br><br>
                     <a class="text-app-blue hover:underline" href="https://github.com/graphieros" target="_blank">GitHub</a>
                 </p>

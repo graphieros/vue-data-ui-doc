@@ -44,7 +44,7 @@ function getLabel(label) {
         <h4>{{ category.title }}</h4> 
         <div class="flex flex-row gap-4 place-items-center flex-wrap">
             <div v-for="knob in model.filter(k => k.category === category.key)" class="flex flex-col justify-start">
-                <label class="text-xs">{{ getLabel(knob.label) }}</label>
+                <label class="text-xs" dir="auto">{{ getLabel(knob.label) }}</label>
                 <div class="flex place-items-center justify-start h-[40px]">
                     <BaseNumberInput v-if="knob.type === 'number'" v-model:value="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" @change="emit('change')"/>
                     <input v-else class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :step="knob.step ?? 1" :type="knob.type" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def" @change="emit('change')">

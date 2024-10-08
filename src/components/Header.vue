@@ -113,7 +113,7 @@ const languageOptions = ref([
     { value: "zh", text: "中文" },
     { value: "jp", text: "日本語" },
     { value: "ko", text: "한국인" },
-    // { value: "ar", text: "عربي"}
+    { value: "ar", text: "عربي"}
 ]);
 
 const selectedLanguage = computed({

@@ -34,10 +34,12 @@ defineProps({
                 <SquareRoundedLetterTIcon v-if="item.hasTableCss" class="bg-white dark:bg-black rounded-md absolute top-4 right-0 text-app-green" size="16"/>
                 <SquareRoundedLetterLIcon v-if="item.hasLegend" class="bg-white dark:bg-black rounded-md absolute top-9 right-0 text-app-orange" size="16"/>
             </template>
-            <template #tooltip><div class="flex flex-col place-items-center justify-center">
-                <img v-if="item.thumb" :src="item.thumb">
-                {{ item.tooltip }}
-                </div></template>
+            <template #tooltip>
+                <div class="flex flex-col place-items-center justify-center">
+                    <img v-if="item.thumb" :src="item.thumb">
+                    {{ item.tooltip }}
+                </div>
+            </template>
         </MenuDetail>
     </div>
 </template>
