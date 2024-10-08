@@ -46,6 +46,7 @@ const specialIcons = ref([
     "arrowLeft",
     "arrowRight",
     "arrowTop",
+    "battery",
     "carouselTable",
     "chart3dBar",
     "chartAgePyramid",

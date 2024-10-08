@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.3.20",
+    "date": "2024-10-08",
+    "updates": [
+      {
+        "component": "VueUiGizmo",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-gizmo"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Added battery icon",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.19",
     "date": "2024-10-07",
     "updates": [

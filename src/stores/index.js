@@ -1495,6 +1495,17 @@ export const useMainStore = defineStore("main", {
                             ko: "모바일에서도 작동하는 멋진 장식용 마우스 커서입니다.",
                             ar: 'مؤشر ماوس مزخرف فاخر يعمل أيضًا على الهاتف المحمول.'
                         },
+                        gizmo: {
+                            en: 'A microscopic chart to visualize a percentage.',
+                            fr: 'Un graphique microscopique pour visualiser un pourcentage.',
+                            pt: 'Um gráfico microscópico para visualizar uma porcentagem.',
+                            de: 'Ein mikroskopisches Diagramm zur Visualisierung eines Prozentsatzes.',
+                            zh: '可视化百分比的微观图表。',
+                            jp: 'パーセンテージを視覚化する顕微鏡チャート。',
+                            es: 'Un gráfico microscópico para visualizar un porcentaje.',
+                            ko: '백분율을 시각화하는 미세한 차트입니다.',
+                            ar: 'مخطط مجهري لتصور النسبة المئوية.'
+                        },
                         quickChart: {
                             en: 'A flexible component that will provide the most adapted chart type to your dataset.',
                             fr: "Un composant flexible qui fournira le type de graphique le plus adapté à votre ensemble de données.",

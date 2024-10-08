@@ -66,6 +66,7 @@ const DocVueUiFlow = defineAsyncComponent(() => import('../components/docs/DocVu
 const DocVueUiParallelCoordinatePlot = defineAsyncComponent(() => import('../components/docs/DocVueUiParallelCoordinatePlot.vue'));
 const DocVueUiTimer = defineAsyncComponent(() => import('../components/docs/DocVueUiTimer.vue'));
 const DocVueUiCarouselTable = defineAsyncComponent(() => import('../components/docs/DocVueUiCarouselTable.vue'));
+const DocVueUiGizmo = defineAsyncComponent(() => import('../components/docs/DocVueUiGizmo.vue'));
 
 const mainConfig = useConfig()
 
@@ -147,7 +148,8 @@ const themeKeys = computed(() => {
             "vue_ui_cursor",
             "vue_ui_mini_loader",
             "vue_ui_kpi",
-            "vue_ui_carousel_table"
+            "vue_ui_carousel_table",
+            "vue_ui_gizmo"
         ].includes(key)
     });
 });
@@ -171,6 +173,7 @@ const chartKeys = computed(() => {
             "vue_ui_table_heatmap",
             "vue_ui_table",
             "vue_ui_timer",
+            "vue_ui_gizmo"
         ].includes(key)
     })
 })
@@ -500,6 +503,17 @@ const menuItems = computed(() => [
         type: "mini",
         thumb: new URL('../assets/thumb_spark_trend.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_spark_trend_light.png', import.meta.url).href,
+        hasSlot: false,
+        hasTableCss: false,
+    },
+    {
+        name: "Gizmo",
+        icon: "battery",
+        tooltip: translations.value.docs.tooltips.gizmo[store.lang],
+        link: "/docs#vue-ui-gizmo",
+        type: "mini",
+        thumb: new URL('../assets/thumb_gizmo.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_gizmo_light.png', import.meta.url).href,
         hasSlot: false,
         hasTableCss: false,
     },
@@ -1043,6 +1057,9 @@ const menuCategories = computed(() => {
             </Transition>
             <Transition name="fade">
                 <DocVueUiCarouselTable v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-carousel-table'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiGizmo v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-gizmo'" />
             </Transition>
 
             <Transition name="fade">

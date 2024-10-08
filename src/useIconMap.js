@@ -57,6 +57,7 @@ export function useIconMap(componentName) {
         VueUiWordCloud: 'chartWordCloud',
         VueUiXy: 'chartLine',
         VueUiXyCanvas: 'chartLine',
+        VueUiGizmo: 'battery'
     }
 
     return mapping[componentName] || 'clipBoard';
@@ -119,6 +120,7 @@ export function isValidComponent(content) {
         'VueUiWordCloud',
         'VueUiXy',
         'VueUiXyCanvas',
+        'VueUiGizmo'
     ];
 
     return valid.includes(content);
