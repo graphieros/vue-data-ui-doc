@@ -34,7 +34,7 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 })
 
-const isFixed = ref(!isMobile.value);
+const isFixed = ref(false);
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
