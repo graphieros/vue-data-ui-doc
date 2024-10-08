@@ -11,7 +11,8 @@ export const useMakerStore = defineStore('maker', {
                 zh: "",
                 jp: "",
                 es: "",
-                ko: ""
+                ko: "",
+                ar: ""
             },
             translations: {
                 tableHeader: {
@@ -22,7 +23,8 @@ export const useMakerStore = defineStore('maker', {
                     zh: '表格标题单元格',
                     jp: 'テーブルヘッダーセル',
                     es: 'Celdas del encabezado de la tabla',
-                    ko: '테이블 머리글 셀'
+                    ko: '테이블 머리글 셀',
+                    ar: 'خلايا رأس الجدول'
                 },
                 tableBody: {
                     en: 'Table body cells',

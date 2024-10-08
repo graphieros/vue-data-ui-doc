@@ -11,7 +11,8 @@ export const useHelpStore = defineStore('help', {
                 zh: "帮助中心",
                 jp: "ヘルプセンター",
                 es: "CENTRO DE AYUDA",
-                ko: "지원 센터"
+                ko: "지원 센터",
+                ar: 'مركز المساعدة'
             }
         }
     }
