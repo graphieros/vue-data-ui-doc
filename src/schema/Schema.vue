@@ -299,9 +299,11 @@ const excl4 = '[]';
                 {{ translations.overview.viewSampleDataset[store.lang] }}
             </template>
             <template #content>
-                <code class="language-javascript" style="white-space: pre-wrap; background: transparent">
-                    const dataset = ref<{{ selectedComponent.types.dataset }}>({{ typeof selectedComponent.examples[0].dataset === 'string' ? `"${selectedComponent.examples[0].dataset}"`: selectedComponent.examples[0].dataset }})
-                </code>
+                <div class="bg-[#272822] p-4 rounded-md">
+                    <code class="language-javascript" style="white-space: pre-wrap;">
+                        const dataset = ref<{{ selectedComponent.types.dataset }}>({{ typeof selectedComponent.examples[0].dataset === 'string' ? `"${selectedComponent.examples[0].dataset}"`: selectedComponent.examples[0].dataset }})
+                    </code>
+                </div>
             </template>
         </VueDataUi>
     </div>
