@@ -1,4 +1,30 @@
 {
+    "vue_ui_gizmo": {
+        "name": "VueUiGizmo",
+        "icon": "battery",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-gizmo",
+        "path": "/docs#vue-ui-gizmo",
+        "description": "A microscopic chart to visualize a percentage",
+        "hasThemes": false,
+        "hasSlots": false,
+        "hasEmits": false,
+        "hasExposed": false,
+        "responsive": false,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiGizmoConfig",
+            "dataset": "VueUiGizmoDataset"
+        },
+        "examples": [
+            {
+                "dataset": 66.5,
+                "config": {}
+            }
+        ]
+    },
     "vue_ui_carousel_table": {
         "name": "VueUiCarouselTable",
         "icon": "carouselTable",

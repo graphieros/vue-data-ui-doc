@@ -172,8 +172,7 @@ const chartKeys = computed(() => {
             "vue_ui_table_sparkline",
             "vue_ui_table_heatmap",
             "vue_ui_table",
-            "vue_ui_timer",
-            "vue_ui_gizmo"
+            "vue_ui_timer"
         ].includes(key)
     })
 })

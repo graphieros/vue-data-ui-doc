@@ -143,7 +143,7 @@ watch(() => showAllConfig.value, (v) => {
             :configSource="mainConfig.vue_ui_gizmo"
         />
 
-        <Box>
+        <Box schema="vue_ui_gizmo">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="my-4">
