@@ -136,6 +136,8 @@ const config = ref({
       borderColor:"#e1e5e8",
       borderWidth: 1,
       backgroundOpacity: 90,
+      position: 'center',
+      offsetY: 24
     }
   },
   userOptions: {
@@ -268,7 +270,9 @@ const darkModeConfig = ref({
       borderRadius: 4,
       borderColor:"#3A3A3A",
       borderWidth: 1,
-      backgroundOpacity: 90
+      backgroundOpacity: 90,
+      position: 'center',
+      offsetY: 24
     }
   },
   userOptions: {
@@ -547,6 +551,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiHeatmapDatasetI
           <span>borderRadius: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.tooltip.borderRadius" :min="0" :max="24"/><BaseNumberInput v-else v-model:value="mutableConfig.style.tooltip.borderRadius" :min="0" :max="24"/>, (default: 4)</span>
           <span>borderColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.tooltip.borderColor"><input v-else type="color" v-model="mutableConfig.style.tooltip.borderColor">, (default: "#e1e5e8"),</span>
           <span>borderWidth: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.tooltip.borderWidth" :min="0" :max="24"/><BaseNumberInput v-else v-model:value="mutableConfig.style.tooltip.borderWidth" :min="0" :max="24"/>, (default: 1)</span>
+          <span>position: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.tooltip.position"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.style.tooltip.position"><option>left</option><option>center</option><option>right</option></select></span>
+          <span>offsetY: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.tooltip.offsetY" :min="0" :max="64"/><BaseNumberInput v-else v-model:value="mutableConfig.style.tooltip.offsetY" :min="0" :max="64"/></span>
         </BaseDetails>
       </BaseDetails>
       <BaseDetails attr="table" :level="1">

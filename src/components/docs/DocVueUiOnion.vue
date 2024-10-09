@@ -180,7 +180,9 @@ const config = ref({
                 borderWidth: 1,
                 showValue: true,
                 showPercentage: true,
-                backgroundOpacity: 90
+                backgroundOpacity: 90,
+                position: 'center',
+                offsetY: 24
             }
         }
     },
@@ -302,7 +304,9 @@ const darkModeConfig = ref({
                 borderWidth: 1,
                 showValue: true,
                 showPercentage: true,
-                backgroundOpacity: 90
+                backgroundOpacity: 90,
+                position: 'center',
+                offsetY: 24
             }
         }
     },
@@ -598,6 +602,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiOnionDatasetIte
                     <span>showPercentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.showPercentage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showPercentage" @change="forceChartUpdate()">, (default: true)</span>
                     <span>showValue: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.showValue" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.showValue" @change="forceChartUpdate()">, (default: true)</span>
                     <span>backgroundOpacity: <input v-if="isDarkMode" type="range" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.tooltip.backgroundOpacity" min="0" max="100"><input v-else type="range" class="accent-app-blue" v-model="mutableConfig.style.chart.tooltip.backgroundOpacity" min="0" max="100">, (default: 100)</span>
+                    <span>position: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.chart.tooltip.position"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.style.chart.tooltip.position"><option>left</option><option>center</option><option>right</option></select></span>
+                    <span>offsetY: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.tooltip.offsetY" :min="0" :max="64"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.tooltip.offsetY" :min="0" :max="64"/></span>
                 </BaseDetails>
             </BaseDetails>
         </BaseDetails>

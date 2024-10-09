@@ -171,6 +171,8 @@ const config = ref({
     tooltipBorderWidth: 1,
     tooltipFontSize: 14,
     tooltipBackgroundOpacity: 90,
+    tooltipPosition: 'center',
+    tooltipOffsetY: 24,
     useCustomLegend: false,
     valuePrefix: "",
     valueSuffix: "",
@@ -263,6 +265,8 @@ const darkModeConfig = ref({
     tooltipBorderWidth: 1,
     tooltipFontSize: 14,
     tooltipBackgroundOpacity: 90,
+    tooltipPosition: 'center',
+    tooltipOffsetY: 24,
     useCustomLegend: false,
     valuePrefix: "",
     valueSuffix: "",
@@ -740,6 +744,8 @@ const <span class="text-app-blue">config: VueUiQuickChartConfig</span> = {
     useCustomLegend: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCustomLegend" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCustomLegend" @change="forceChartUpdate()">, (default: false) // Use #legend slot to make a custom legend
     tooltipFontSize: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.tooltipFontSize" :min="8" :max="42"/><BaseNumberInput v-else v-model:value="mutableConfig.tooltipFontSize" :min="8" :max="42"/>, (default: 14)
     tooltipBackgroundOpacity: <input v-if="isDarkMode" type="range" min="0" max="100" class="accent-app-blue" v-model="mutableConfigDarkMode.tooltipBackgroundOpacity"><input v-else type="range" min="0" max="100" class="accent-app-blue" v-model="mutableConfig.tooltipBackgroundOpacity">, (default: 100)
+    tooltipPosition: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.tooltipPosition"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.tooltipPosition"><option>left</option><option>center</option><option>right</option></select>
+    tooltipOffsetY: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.tooltipOffsetY" :min="0" :max="64"/><BaseNumberInput v-else v-model:value="mutableConfig.tooltipOffsetY" :min="0" :max="64"/>
     valuePrefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.valuePrefix"><input v-else type="text" v-model="mutableConfig.valuePrefix">, (default: "")
     valueSuffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.valueSuffix"><input v-else type="text" v-model="mutableConfig.valueSuffix">, (default: "")
     width: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="200" max="1000" v-model="mutableConfigDarkMode.width"><input v-else type="range" class="accent-app-blue" min="200" max="1000" v-model="mutableConfig.width">, (default: 512)

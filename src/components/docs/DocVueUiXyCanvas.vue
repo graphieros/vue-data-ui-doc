@@ -117,7 +117,9 @@ const config = ref({
                 borderRadius: 4,
                 borderColor: "#e1e5e8",
                 borderWidth: 1,
-                backgroundOpacity: 90
+                backgroundOpacity: 90,
+                position: 'center',
+                offsetY: 24,
             },
             legend: {
                 backgroundColor: "#F3F4F6",
@@ -295,7 +297,9 @@ const darkModeConfig = ref({
                 borderRadius: 4,
                 borderColor: "#8A8A8A",
                 borderWidth: 1,
-                backgroundOpacity: 90
+                backgroundOpacity: 90,
+                position: 'center',
+                offsetY: 24,
             },
             legend: {
                 backgroundColor: "#1A1A1A",
@@ -730,6 +734,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                     <span>borderColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.tooltip.borderColor" @input="forceChartUpdate"><input v-else type="borderColor" v-model="mutableConfig.style.chart.tooltip.e1e5e8r" @input="forceChartUpdate">, (default: "#e1e5e8") </span>
                     <span>borderWidth:<BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.tooltip.borderWidth" :min="0" :max="24"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.tooltip.borderWidth" :min="0" :max="24"/>, (default: 1)</span>
                     <span>backgroundOpacity: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.chart.tooltip.backgroundOpacity"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.chart.tooltip.backgroundOpacity">, (default: 100)</span>
+                    <span>position: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.chart.tooltip.position"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.style.chart.tooltip.position"><option>left</option><option>center</option><option>right</option></select></span>
+                    <span>offsetY: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.tooltip.offsetY" :min="0" :max="64"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.tooltip.offsetY" :min="0" :max="64"/></span>
                 </BaseDetails>
                 <BaseDetails attr="zoom" :level="3" title="style.chart.zoom">
                     <span>show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.zoom.show" @change="forceChartUpdate"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.zoom.show" @change="forceChartUpdate">, (default: true)</span>

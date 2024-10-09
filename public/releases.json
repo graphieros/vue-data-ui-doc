@@ -1,5 +1,106 @@
 [
   {
+    "version": "v 2.3.22",
+    "date": "2024-10-09",
+    "updates": [
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Add tooltip positioning config options",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.21",
     "date": "2024-10-09",
     "updates": [
