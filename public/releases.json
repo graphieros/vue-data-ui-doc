@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.21",
+    "date": "2024-10-09",
+    "updates": [
+      {
+        "component": "VueUiGizmo",
+        "description": "Fix gauge proportion not exact",
+        "link": "/docs#vue-ui-gizmo"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.20",
     "date": "2024-10-08",
     "updates": [
