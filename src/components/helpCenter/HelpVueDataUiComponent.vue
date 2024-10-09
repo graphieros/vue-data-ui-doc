@@ -80,23 +80,25 @@ const code = ref(`
         :title="title[store.lang]"
     >
         <template #content>
-            <div class="flex flex-row place-items-center w-full px-[11px] gap-4">
-                <div class="w-[40px]">
-                    <VueUiIcon name="circleFill" stroke="#ff6400" :size="14"/>
+            <div dir="auto">
+                <div class="flex flex-row place-items-center w-full px-[11px] gap-4">
+                    <div class="w-[40px]">
+                        <VueUiIcon name="circleFill" stroke="#ff6400" :size="14"/>
+                    </div>
+                    {{ content[store.lang] }}
                 </div>
-                {{ content[store.lang] }}
-            </div>
-            <div class="flex flex-row place-items-center w-full px-[11px] gap-4 mt-4">
-                <div class="w-[40px]">
-                    <VueUiIcon name="circleFill" stroke="#ff6400" :size="14"/>
+                <div class="flex flex-row place-items-center w-full px-[11px] gap-4 mt-4">
+                    <div class="w-[40px]">
+                        <VueUiIcon name="circleFill" stroke="#ff6400" :size="14"/>
+                    </div>
+                    {{ warning[store.lang] }}
                 </div>
-                {{ warning[store.lang] }}
-            </div>
-            <div class="flex flex-row place-items-center w-full px-[11px] gap-4 mt-4">
-                <div class="w-[40px]">
-                    <VueUiIcon name="circleFill" stroke="#ff6400" :size="14"/>
+                <div class="flex flex-row place-items-center w-full px-[11px] gap-4 mt-4">
+                    <div class="w-[40px]">
+                        <VueUiIcon name="circleFill" stroke="#ff6400" :size="14"/>
+                    </div>
+                    {{ usage[store.lang] }}
                 </div>
-                {{ usage[store.lang] }}
             </div>
             <div class="px-[11px] w-full bg-[#272822] pb-8">
                 <code class="language-html" style="white-space: pre-wrap;">

@@ -36,11 +36,13 @@ const mandatory = ref({
         :title="title[store.lang]"
     >
         <template #content>
-            <div class="flex flex-row place-items-center w-full px-[11px] gap-4">
+            <div class="flex flex-row place-items-center w-full px-[11px] gap-4" dir="auto">
                 <div class="w-[40px]">
                     <VueUiIcon name="circleFill" stroke="#ff6400" :size="14"/>
                 </div>
-                {{ mandatory[store.lang] }}
+                <div>
+                    {{ mandatory[store.lang] }}
+                </div>
             </div>
         </template>
     </HelpUnit>

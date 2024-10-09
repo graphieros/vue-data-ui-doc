@@ -50,7 +50,7 @@ const darkModeConfig = ref({
 <template>
     <VueDataUi component="VueUiAccordion" :config="isDarkMode ? darkModeConfig : config">
         <template #title="{color}">
-            <div :style="`color:${color}`">{{ title }}</div>
+            <div dir="auto" :style="`color:${color}`">{{ title }}</div>
         </template>
         <template #content>
             <div class="pb-3 bg-[#FFFFFF40] dark:bg-[#FFFFFF10] py-4 rounded">
