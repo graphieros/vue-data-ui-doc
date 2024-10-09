@@ -140,6 +140,7 @@ watch(() => showAllConfig.value, (v) => {
 
         <BaseDocActions
             targetLink="vue-ui-gizmo"
+            targetMaker="VueUiGizmo"
             :configSource="mainConfig.vue_ui_gizmo"
         />
 
