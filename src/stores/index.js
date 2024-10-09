@@ -25,6 +25,28 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                useTs: {
+                    en: 'Use Typescript:',
+                    fr: 'Avec Typescript',
+                    pt: 'Usar TypeScript:',
+                    de: 'Verwenden Sie TypeScript:',
+                    zh: 'TypeScript 使用',
+                    jp: '「TypeScript」を使用する:',
+                    es: 'Usando TypeScript',
+                    ko: 'TypeScript 사용',
+                    ar: 'TypeScript باستخدام'
+                },
+                universalBoilerplate: {
+                    en: 'VueDataUi universal component boilerplate:',
+                    fr: 'Modèle standard de composant universel VueDataUi:',
+                    pt: 'Padrão de componente universal VueDataUi:',
+                    de: 'VueDataUi-Universalkomponenten-Boilerplate:',
+                    zh: 'VueDataUi 通用组件样板：',
+                    jp: 'VueDataUi ユニバーサル コンポーネントのボイラープレート:',
+                    es: 'Texto estándar del componente universal de VueDataUi:',
+                    ko: 'VueDataUi 범용 구성 요소 상용구:',
+                    ar: 'نموذج VueDataUi للمكونات العالمية:'
+                },
                 clipboard: {
                     en: 'Copied to clipboard',
                     fr: 'Copié sur le presse-papier',

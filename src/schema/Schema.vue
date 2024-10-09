@@ -88,8 +88,7 @@ const excl4 = '[]';
             <div class="text-xl">{{ selectedComponent.name }}</div>
         </div>
         <div class="mb-4">
-
-            <BaseText :label="translations.overview.description[store.lang]" :text="selectedComponent.description" />
+            <BaseText :label="translations.overview.description[store.lang]" :text="translations.docs.tooltips[selectedComponent.description][store.lang]" />
             <div class="flex flew-row gap-2 place-items-center">
                 <BaseText v-if="selectedComponent.props.includes('dataset')" label="Dataset TS type" isCode :text="selectedComponent.types.dataset" /> 
                 <button title="Copy" class="dark:text-app-green" @click="copyToClipboard(selectedComponent.types.dataset)"><CopyIcon/></button>
@@ -102,9 +101,9 @@ const excl4 = '[]';
                 <DocLink :to="selectedComponent.path.replace('/docs#', '')"/>
             </div>
 
-            <div class="mt-8 mb-2">VueDataUi universal component boilerplate:</div>
-            <div class="flex flex-row gap-2 place-items-center mb-2">
-                <label for="useTS">Use Typescript:</label><input type="checkbox" v-model="isTs" id="useTS">
+            <div class="mt-8 mb-2" dir="auto">{{ translations.universalBoilerplate[store.lang] }}</div>
+            <div class="flex flex-row gap-2 place-items-center mb-2" dir="auto">
+                <label for="useTS">{{ translations.useTs[store.lang] }}</label><input type="checkbox" v-model="isTs" id="useTS">
             </div>
             <div class="bg-black text-gray-400 p-2 sm:p-6 rounded relative">
                 <button title="Copy" class="text-app-green absolute right-4 top-4" @click="copyContent"><CopyIcon/></button>
