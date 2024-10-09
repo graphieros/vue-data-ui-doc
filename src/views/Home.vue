@@ -475,7 +475,7 @@ const componentTranslation = ref({
           <template #default>
             <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu">
               <template #plot-comment="{ plot }">
-                <div style="pointer-events: all !important;" :title="plot.comment" @click="selectMenu({index: plot.seriesIndex})" :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" :class="`px-2 cursor-pointer`">
+                <div dir="auto" style="pointer-events: all !important;" :title="plot.comment" @click="selectMenu({index: plot.seriesIndex})" :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" :class="`px-2 cursor-pointer`">
                   {{ plot.comment }}
                 </div>
               </template>
