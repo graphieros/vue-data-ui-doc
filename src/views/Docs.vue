@@ -886,7 +886,7 @@ const menuCategories = computed(() => {
 </script>
 
 <template>
-    <div :class="{'vdui': isDarkMode}"/>
+    <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
     <ConfirmCopy/>
     <SideMenu @toggle="toggleMenu"/>
 

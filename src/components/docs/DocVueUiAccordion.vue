@@ -6,6 +6,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseNumberInput from "../BaseNumberInput.vue";
 
 const mainConfig = useConfig();
 
@@ -148,7 +149,7 @@ const skeletonConfig = computed(() => {
 <code>
 const <span class="text-black dark:text-app-blue">config: VueUiAccordionConfig</span> = {
     open: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.open" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.open" @change="forceChartUpdate()">, (default: false) 
-    maxHeight: <input v-if="isDarkMode" type="number" min="800" max="5000" v-model="mutableConfigDarkMode.maxHeight"><input v-else type="number" min="800" max="5000" v-model="mutableConfig.maxHeight">, (default: 2000)
+    maxHeight: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.maxHeight" :min="2000" :max="20000" :step="100"/><BaseNumberInput v-else v-model:value="mutableConfig.maxHeight" :min="2000" :max="20000" :step="100"/>, (default: 2000)
     head: {
         useArrowSlot: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.head.useArrowSlot" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.head.useArrowSlot" @change="forceChartUpdate()">, (default: true) 
         backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.head.backgroundColor"><input v-else type="color" v-model="mutableConfig.head.backgroundColor">, (default: "#FFFFFF")
