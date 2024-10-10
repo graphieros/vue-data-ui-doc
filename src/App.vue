@@ -11,6 +11,7 @@ import FootInfo from "./components/FootInfo.vue";
 
 const store = useMainStore();
 const router = useRouter();
+const route = useRoute();
 
 const isDarkMode = computed(() => store.isDarkMode)
 
@@ -43,14 +44,14 @@ onMounted(() => {
 
 <template>
   <Header/>
-  <HelpCenter v-if="currentRoute !== '/'"/>
+  <HelpCenter v-if="route.name !== 'Home'"/>
   <div v-if="!isDarkMode && !['/versions'].includes(currentRoute)" class="underlay-paper"></div>
   <div v-if="isDarkMode" class="underlay-paper--dark"></div>
   <div id="vdui" class="font-satoshi bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors mb-[60px]">
     <router-view />
     <UpToTop/>
-    <GithubButton v-if="currentRoute !== '/'"/>
-    <FootInfo v-if="currentRoute !== '/'"/>
+    <GithubButton v-if="route.name !== 'Home'"/>
+    <FootInfo v-if="route.name !== 'Home'"/>
   </div>
   <!-- <Follower v-if="!['/', '/docs#vue-ui-cursor'].includes(currentRoute)"/> -->
   <BaseFooter v-if="!['/'].includes(currentRoute)"/>
