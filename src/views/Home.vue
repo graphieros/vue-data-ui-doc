@@ -461,7 +461,12 @@ const componentTranslation = ref({
           <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center" :title="'Version ' + staticReleases[0].version.replace('v', '')">
             <Suspense>
               <template #default>
-                <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
+                  <div class="h-full flex flex-row place-items-center justify-center">
+                    <svg style="height:100%" viewBox="-6 -6 22 22">
+                      <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
+                  </div>
               </template>
               <template #fallback>
                     <div class="min-h-[50px]"></div>
