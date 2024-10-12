@@ -717,11 +717,11 @@ watch(() => showAllConfig.value, (v) => {
         <BaseAttr name="color" attr="color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>customPalette: []; <span class="text-app-blue break-keep text-xs">// string[]</span></span>
         <BaseAttr name="dataLabelFontSize" attr="dataLabelFontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="dataLabelRoundingPercentage" attr="dataLabelRoundingPercentage" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="dataLabelRoundingValue" attr="dataLabelRoundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <div class="py-4 bg-gray-200 dark:bg-[#FFFFFF10] rounded-md px-4 pl-8 border-l border-black dark:border-app-blue my-2">
             <span class="font-black text-black dark:text-app-blue inline-flex gap-2"><VueUiIcon name="chartDonut" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/> Donut specific attributes:</span>
             <BaseAttr name="blurOnHover" attr="blurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-            <BaseAttr name="dataLabelRoundingPercentage" attr="dataLabelRoundingPercentage" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-            <BaseAttr name="dataLabelRoundingValue" attr="dataLabelRoundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutHideLabelUnderPercentage" attr="donutHideLabelUnderPercentage" type="number" defaultVal="3" :min="1" :max="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutLabelMarkerStrokeWidth" attr="donutLabelMarkerStrokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutRadiusRatio" attr="donutRadiusRatio" type="range" defaultVal="0.4" :min="0.2" :max="0.5" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
