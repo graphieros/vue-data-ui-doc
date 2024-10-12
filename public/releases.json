@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.3.23",
+    "date": "2024-10-12",
+    "updates": [
+      {
+        "component": "",
+        "description": "Fix typo in .d.ts"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.22",
     "date": "2024-10-09",
     "updates": [
