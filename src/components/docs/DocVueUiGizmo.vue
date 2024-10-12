@@ -8,6 +8,7 @@ import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
+import BaseAttr from "../BaseAttr.vue";
 
 const mainConfig = useConfig()
 
@@ -174,14 +175,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiGizmoDataset</s
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiGizmoConfig" equal>
-        <span>type: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.type"><option>battery</option><option>gauge</option></select><select v-else v-model="mutableConfig.type"><option>battery</option><option>gauge</option></select>, (default: "battery")</span>
-        <span>size: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.size" :min="12" :max="128"/><BaseNumberInput v-else v-model:value="mutableConfig.size" :min="12" :max="128"/>, (default: 64)</span>
-        <span>stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stroke"/><input v-else type="color" v-model="mutableConfig.stroke"/>, (default: "#CCCCCC")</span>
-        <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.color"/><input v-else type="color" v-model="mutableConfig.color"/>, (default: "#5f8bee")</span>
-        <span>useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useGradient" @change="forceChartUpdate()">, (default: true)</span>
-        <span>gradientColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.gradientColor"/><input v-else type="color" v-model="mutableConfig.gradientColor"/>, (default: "#9db5ed")</span>
-        <span>showPercentage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showPercentage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showPercentage" @change="forceChartUpdate()">, (default: true)</span>
-        <span>textColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.textColor"/><input v-else type="color" v-model="mutableConfig.textColor"/>, (default: "#2D353C")</span>
+        <BaseAttr name="type" attr="type" type="select" defaultVal="battery" :options="['battery', 'gauge']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="size" attr="size" type="number" defaultVal="64" :min="12" :max="128" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="stroke" attr="stroke" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseAttr name="color" attr="color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseAttr name="useGradient" attr="useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="gradientColor" attr="gradientColor" type="color" defaultVal="#9DB5ED" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="showPercentage" attr="showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="textColor" attr="textColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
     </BaseDetails>
 </code>
             </template>
