@@ -144,7 +144,10 @@ const isSelected = ref(false);
             <input type="color" v-model="nestedAttribute" @change="emit('change')">
         </template>
         <template v-if="type === 'range'">
-            <input type="range" v-model="nestedAttribute" :min="min" :max="max" :step="step" class="accent-app-blue" @change="emit('change')">
+            <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                <div class="absolute left-1/2 -top-1 text-xs -translate-x-1/2 z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black dark:border-t dark:border-[#6A6A6A] px-2 rounded-tl rounded-tr min-w-[64px] text-center text-white">{{ nestedAttribute }}</div>
+                <input type="range" v-model="nestedAttribute" :min="min" :max="max" :step="step" class="accent-app-blue z-10" @change="emit('change')">
+            </div>
         </template>
         <template v-if="type === 'checkbox'">
             <input 
