@@ -156,7 +156,7 @@ const isHome = computed(() => {
                         <img data-cy="header-logo" src="../assets/logo.png" class="h-5" />
                         <span>Vue Data UI</span>
                     </div>
-                    <div class="h-[20px] flex flex-row align-center">
+                    <div class="h-[20px] flex flex-row align-center sm:ml-4">
                         <svg style="height:100%" viewBox="-6 -6 22 22">
                             <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
