@@ -46,9 +46,16 @@ function getLabel(label) {
             <div v-for="knob in model.filter(k => k.category === category.key)" class="flex flex-col justify-start">
                 <label class="text-xs" dir="auto">{{ getLabel(knob.label) }}</label>
                 <div class="flex place-items-center justify-start h-[40px]">
+                    
                     <BaseNumberInput v-if="knob.type === 'number'" v-model:value="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" @change="emit('change')"/>
-                    <input v-else class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :step="knob.step ?? 1" :type="knob.type" :min="knob.min ?? 0" :max="knob.max ?? 0" v-model="knob.def" @change="emit('change')">
-                    <select v-if="knob.type === 'select'" v-model="knob.def" @change="emit('change')" class="h-[32px] px-2">
+                    <template v-if="knob.type === 'range'">
+                        <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                            <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white">{{ knob.def }}</div>
+                            <input type="range" v-model="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" class="accent-app-blue z-10" @change="emit('change')">
+                        </div>
+                    </template>
+                    <input v-else-if="!['number', 'range', 'select'].includes(knob.type)" class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" v-model="knob.def" @change="emit('change')">
+                    <select v-else-if="knob.type === 'select'" v-model="knob.def" @change="emit('change')" class="h-[32px] px-2">
                         <option v-for="opt in knob.options">{{ opt }}</option>
                     </select>
                 </div>
