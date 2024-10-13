@@ -31,6 +31,7 @@ Translations are setup on a Pinia store (useMainStore), and serve translations f
 <li>Korean</li>
 <li>Portuguese</li>
 <li>Spanish</li>
+<li>Arabic</li>
 </ul>
 
 The quality of translations is probably dubious, as most of them were generated with Google translate.
