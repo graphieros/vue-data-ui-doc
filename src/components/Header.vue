@@ -156,7 +156,10 @@ const isHome = computed(() => {
                         <img data-cy="header-logo" src="../assets/logo.png" class="h-5" />
                         <span>Vue Data UI</span>
                     </div>
-                    <div class="w-[70px] flex flex-row align-center">
+                    <div class="h-[20px] flex flex-row align-center">
+                        <svg style="height:100%" viewBox="-6 -6 22 22">
+                            <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                         <VueUiDigits v-for="d in lastVersion" :config="digitsConfigVersion"
                             :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.5rem]' : ''" />
                     </div>
