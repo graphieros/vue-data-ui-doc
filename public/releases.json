@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.24",
+    "date": "2024-10-13",
+    "updates": [
+      {
+        "component": "VueUiCarouselTable",
+        "description": "Hide rows when out of view to avoid overflowing on thead when transparent background.",
+        "link": "/docs#vue-ui-carousel-table"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.23",
     "date": "2024-10-12",
     "updates": [
