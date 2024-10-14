@@ -45,7 +45,8 @@ onMounted(() => {
 <template>
   <Header/>
   <HelpCenter v-if="route.name !== 'Home'"/>
-  <div v-if="!isDarkMode && !['/versions', '/customization'].includes(currentRoute)" class="underlay-paper"></div>
+  <div v-if="!isDarkMode && !['/versions'].includes(currentRoute) && !currentRoute.startsWith('/customization')" class="underlay-paper"></div>
+
   <div v-if="isDarkMode" class="underlay-paper--dark"></div>
   <div id="vdui" class="font-satoshi bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors mb-[60px]">
     <router-view />
