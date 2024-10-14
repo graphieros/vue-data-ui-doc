@@ -69,10 +69,11 @@ const menu = ref([
     <div
       class="flex flex-row flex-wrap gap-4 place-items-center justify-center my-12"
     >
-      <router-link v-for="menuItem in menu" :to="menuItem.link">
+      <router-link v-for="(menuItem, i) in menu" :to="menuItem.link">
         <button
           :class="`transition-colorsrounded py-2 px-4 ${
-            currentRoute === menuItem.link
+            currentRoute === menuItem.link ||
+            (i === 0 && currentRoute === '/customization')
               ? 'bg-[#5f8bee20] text-app-blue border-b border-app-blue'
               : 'hover:bg-[#5f8bee10]'
           }`"
@@ -83,7 +84,12 @@ const menu = ref([
       </router-link>
     </div>
   </div>
-  <SvgSlot v-if="currentRoute === '/customization#svg-slot'" />
+  <SvgSlot
+    v-if="
+      currentRoute === '/customization#svg-slot' ||
+      currentRoute === '/customization'
+    "
+  />
 
   <LegendSlot v-if="currentRoute === '/customization#legend-slot'" />
   <TooltipSlot v-if="currentRoute === '/customization#tooltip-slot'" />
