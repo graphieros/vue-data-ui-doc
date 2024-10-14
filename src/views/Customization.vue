@@ -8,6 +8,7 @@ import OtherSlots from "../components/customization/OtherSlots.vue";
 import ColorPalette from "../components/customization/ColorPalette.vue";
 import CustomMenu from "../components/customization/CustomMenu.vue";
 import MenuSlots from "../components/customization/MenuSlots.vue";
+import Watermark from "../components/customization/Watermark.vue";
 
 const store = useMainStore();
 
@@ -23,7 +24,8 @@ const menu = ref([
     { name: 'otherSlots', label: 'other slots'},
     { name: 'colorPalette', label: 'palette'},
     { name: 'menuSlots', label: 'menu slots'},
-    { name: 'customMenu', label: 'custom menu'}
+    { name: 'customMenu', label: 'custom menu'},
+    { name: 'watermark', label: 'watermark'},
 ]);
 
 </script>
@@ -42,4 +44,5 @@ const menu = ref([
     <ColorPalette v-if="selectedMenu === 'colorPalette'" />
     <MenuSlots v-if="selectedMenu === 'menuSlots'" />
     <CustomMenu v-if="selectedMenu === 'customMenu'" />
+    <Watermark v-if="selectedMenu === 'watermark'"/>
 </template>
