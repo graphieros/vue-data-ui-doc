@@ -2931,7 +2931,7 @@ export const useMainStore = defineStore("main", {
                                 jp: "この値の下のデータラベルを非表示にします",
                                 es: "ocultar etiquetas de datos bajo este valor",
                                 ko: "이 값 아래에 데이터 라벨 숨기기",
-                                ar: 'عرض العنوان والأسطورة خارج ملف svg'
+                                ar: 'إخفاء datalabels تحت هذه القيمة'
                             }
                         },
                         waffle: {
