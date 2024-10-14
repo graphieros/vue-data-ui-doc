@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.25",
+    "date": "2024-10-14",
+    "updates": [
+      {
+        "component": "VueUiKpi",
+        "description": "Fix dataset reactivity issue",
+        "link": "/docs#vue-ui-kpi"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.24",
     "date": "2024-10-13",
     "updates": [
