@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, nextTick } from "vue";
 import { useMainStore } from "../../stores";
 import { PlusIcon, PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
@@ -78,7 +78,7 @@ const options = ref({
     datasetItems: {
         name: "name",
         values: [],
-        color: "#42d392"
+        color: "#CCCCCC"
     },
     dataset: [],
     config: {}
@@ -102,7 +102,10 @@ onMounted(() => {
 
 function saveDatasetToLocalStorage() {
     localStorage.waffleDataset = JSON.stringify(datasetItems.value);
-    clearStep.value += 1;
+    nextTick(() => {
+        clearStep.value += 1;
+        step.value += 1;
+    })
 }
 
 function saveConfigToLocalStorage() {
@@ -126,8 +129,10 @@ function forceChartUpdate() {
 
 function addDatasetItem() {
     datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.datasetItems)), id: createUid()});
-    step.value += 1;
     saveDatasetToLocalStorage()
+    nextTick(() => {
+        step.value += 1;
+    })
 }
 
 function deleteDatasetItem(id) {

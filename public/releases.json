@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.26",
+    "date": "2024-10-15",
+    "updates": [
+      {
+        "component": "VueUiWaffle",
+        "description": "Fix bad proportion calculations",
+        "link": "/docs#vue-ui-waffle"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.25",
     "date": "2024-10-14",
     "updates": [
