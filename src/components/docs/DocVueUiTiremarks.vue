@@ -6,7 +6,6 @@ import { useMainStore } from "../../stores";
 import ThemesVueUiTiremarks from "../themes/ThemesVueUiTiremarks.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
-import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseDocActions from "./BaseDocActions.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
