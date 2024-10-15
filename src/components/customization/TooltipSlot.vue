@@ -544,7 +544,7 @@ const configSparkline = ref({
     &lt;template #tooltip-before={ datapoint, seriesindex, series, config }"&gt;
       This content shows first
     &lt;/template&gt;
-    &lt;template #tooltip-after="{ datapoint, seriesIndex, seris, config }"&gt;
+    &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
       This content shows last
     &lt;/template&gt;
   &lt;/VueUiDOnut&gt;
