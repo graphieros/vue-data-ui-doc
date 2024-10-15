@@ -724,7 +724,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
         theme: ""; ("zen" | "hack" | "concrete" | "")<br>
         <span>customPalette: []; <span class="text-xs text-app-blue">// string[]</span></span>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="style" :level="1">
             fontFamily: "inherit";
             <BaseDetails attr="chart" :level="2" title="style.chart">
