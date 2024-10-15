@@ -10,6 +10,8 @@ import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
+import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -243,6 +245,7 @@ const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value
 function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
     mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
+    forceChartUpdate();
 }
 
 function forceChartUpdate() {
@@ -437,89 +440,89 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiGaugeConfig" equal>
-        <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-        <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
-        <span>customPalette: []; // string[]</span>
+        <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+        <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
+        <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
-                <span>backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">,  (default: "#FFFFFF")</span>
-                <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")</span>
+                <BaseAttr name="backgroundColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.backgroundColor" defaultVal="#FFFFFF"/>                
+                <BaseAttr name="color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.color" defaultVal="#2D353C"/>
                 <BaseDetails attr="animation" :level="3" title="style.chart.animation">
-                    <span>use: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.animation.use" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.animation.use" @change="forceChartUpdate()">, (default: true)</span>
-                    <span>speed: 1,</span>
-                    <span>acceleration: 1,</span>
+                    <BaseAttr name="use" attr="style.chart.animation.use" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="speed" attr="style.chart.animation.speed" type="range" defaultVal="1" :min="1" :max="100" :step="1" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="acceleration" attr="style.chart.animation.acceleration" type="range" defaultVal="1" :min="0.1" :max="5" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 </BaseDetails>
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">
                     <BaseDetails attr="markers" :level="4" title="style.chart.layout.markers">
-                        <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.markers.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.markers.color">, (default: "#2D353C")</span>
-                        <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.markers.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.markers.bold" @change="forceChartUpdate()">, (default: true)</span>
-                        <span>fontSizeRatio: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.layout.markers.fontSizeRatio" :min="0.5" :max="2" :step="0.1"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.layout.markers.fontSizeRatio" :min="0.5" :max="2" :step="0.1"/>, (default: 1)</span>
-                        <span>offsetY: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.layout.markers.offsetY" :min="-100" :max="100" @change="forceChartUpdate()" /><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.layout.markers.offsetY" :min="-100" :max="100" @change="forceChartUpdate()"/>, (default: 0)</span>
-                        <span>roundingValue: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.layout.markers.roundingValue" :min="0" :max="6" /><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.layout.markers.roundingValue" :min="0" :max="6" />, (default: 0)</span>
+                        <BaseAttr name="color" attr="style.chart.layout.markers.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="bold" attr="style.chart.layout.markers.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="fontSizeRatio" attr="style.chart.layout.markers.fontSizeRatio" type="range" defaultVal="1" :min="0.5" :max="2" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="offsetY" attr="style.chart.layout.markers.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                        <BaseAttr name="roundingValue" attr="style.chart.layout.markers.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="pointer" :level="4" title="style.chart.layout.pointer">
-                        <span>type: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.chart.layout.pointer.type"><option>rounded</option><option>pointy</option></select><select v-else v-model="mutableConfig.style.chart.layout.pointer.type"><option>rounded</option><option>pointy</option></select>, (default: "rounded")</span>
-                        <span>size: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.layout.pointer.size" :min="0.5" :max="2" :step="0.1" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.layout.pointer.size" :min="0.5" :max="2" :step="0.1" @change="forceChartUpdate()"/>, (default: 1)</span>
-                        <span>stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.pointer.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.pointer.stroke">, (default: "#2D353C")</span>
-                        <span>strokeWidth: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.layout.pointer.strokeWidth" :min="0" :max="12"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.layout.pointer.strokeWidth" :min="0" :max="12"/>, (default: 12)</span>
-                        <span>useRatingColor: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.pointer.useRatingColor" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.pointer.useRatingColor" @change="forceChartUpdate()">, (default: true)</span>
-                        <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.pointer.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.pointer.color">, (default: "#CCCCCC")<span class="text-app-blue text-xs"> // Active if useRatingColor is false</span></span>
+                        <BaseAttr name="type" attr="style.chart.layout.pointer.type" type="select" defaultVal="rounded" :options="['rounded', 'pointy']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="size" attr="style.chart.layout.pointer.size" type="range" defaultVal="1" :min="0.5" :max="1.4" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                        <BaseAttr name="stroke" attr="style.chart.layout.pointer.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.layout.pointer.strokeWidth" type="number" defaultVal="12" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="Usable with pointer type rounded"/>
+                        <BaseAttr name="useRatingColor" attr="style.chart.layout.pointer.useRatingColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.chart.layout.pointer.color" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="With useRatingColor set to false"/>
                         <BaseDetails attr="circle" :level="5" title="style.chart.layout.pointer.circle">
-                            <span>radius: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.layout.pointer.circle.radius" :min="0" :max="24" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.layout.pointer.circle.radius" :min="0" :max="24" @change="forceChartUpdate()"/>, (default: 10)</span>
-                            <span>stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.pointer.circle.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.pointer.circle.stroke">, (default: "#2D353C")</span>
-                            <span>strokeWidth:  <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.layout.pointer.circle.strokeWidth" :min="0" :max="24" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.layout.pointer.circle.strokeWidth" :min="0" :max="24" @change="forceChartUpdate()"/>, (default: 2)</span>
-                            <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.pointer.circle.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.pointer.circle.color">, (default: "#FFFFFF")</span>
+                            <BaseAttr name="radius" attr="style.chart.layout.pointer.circle.radius" type="number" defaultVal="10" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                            <BaseAttr name="stroke" attr="style.chart.layout.pointer.circle.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="strokeWidth" attr="style.chart.layout.pointer.circle.strokeWidth" type="number" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.chart.layout.pointer.circle.color" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                         </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="track" :level="4" title="style.chart.layout.track">
-                        <span>size: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.layout.track.size" :min="0.5" :max="2" :step="0.1" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.layout.track.size" :min="0.5" :max="2" :step="0.1" @change="forceChartUpdate()"/>, (default: 1)</span>
-                        <span>useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.track.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.track.useGradient" @change="forceChartUpdate()">, (default: true)</span>
-                        <span>gradientIntensity: <input v-if="isDarkMode" type="range" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.track.gradientIntensity" :min="1" :max="20"/><input type="range" class="accent-app-blue" v-else v-model="mutableConfig.style.chart.layout.track.gradientIntensity" :min="1" :max="20"/>, (default: 20)</span>
+                        <BaseAttr name="size" attr="style.chart.layout.track.size" type="range" defaultVal="1" :min="0.5" :max="4.5" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                        <BaseAttr name="useGradient" attr="style.chart.layout.track.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="gradientIntensity" attr="style.chart.layout.track.gradientIntensity" type="range" defaultVal="20" :min="8" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="legend" :level="3" title="style.chart.legend">
-                    <span>fontSize: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.legend.fontSize" :min="8" :max="100" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.legend.fontSize" :min="8" :max="100" @change="forceChartUpdate()"/>, (default: 48)</span>
-                    <span>prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.legend.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.legend.prefix">, (default: "")</span>
-                    <span>suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.legend.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.legend.suffix">, (default: "")</span>
-                    <span>roundingValue: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.legend.roundingValue" :min="0" :max="6"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.legend.roundingValue" :min="0" :max="6"/>, (default: 0)</span>
-                    <span>showPlusSymbol: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.showPlusSymbol" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.showPlusSymbol" @change="forceChartUpdate()">, (default: true)</span>
-                    <span>useRatingColor: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.useRatingColor" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.useRatingColor" @change="forceChartUpdate()">, (default: true)</span>
-                    <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.legend.color"><input v-else type="color" v-model="mutableConfig.style.chart.legend.color">, (default: "#2D353C")<span class="text-app-blue text-xs"> // Active if useRatingColor is false</span></span>
+                    <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="48" :min="8" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="prefix" attr="style.chart.legend.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="suffix" attr="style.chart.legend.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="roundingValue" attr="style.chart.legend.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="showPlusSymbol" attr="style.chart.legend.showPlusSymbol" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="useRatingColor" attr="style.chart.legend.useRatingColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="With useRatingColor set to false" />
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
-                    <span>text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.title.text"><input v-else type="text" v-model="mutableConfig.style.chart.title.text">, (default: "")</span>
-                    <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.title.color"><input v-else type="color" v-model="mutableConfig.style.chart.title.color">, (default: "#2D353C")</span>
-                    <span>fontSize: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.title.fontSize" :min="8" :max="42"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.title.fontSize" :min="8" :max="42"/>, (default: 20)</span>
-                    <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.title.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.title.bold" @change="forceChartUpdate()">, (default: true)</span>
-                    <span>textAlign: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.chart.title.textAlign" @change="forceChartUpdate()"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.style.chart.title.textAlign" @change="forceChartUpdate()"><option>left</option><option>center</option><option>right</option></select></span>
-                    <span>paddingLeft: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.title.paddingLeft" :min="0" :max="48" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.title.paddingLeft" :min="0" :max="48" @change="forceChartUpdate()"/>, (default: 0)</span>
-                    <span>paddingRight: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.title.paddingRight" :min="0" :max="48" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.title.paddingRight" :min="0" :max="48" @change="forceChartUpdate()"/>, (default: 0)</span>
+                    <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="text" attr="style.chart.title.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="fontSize" attr="style.chart.title.fontSize" type="number" defaultVal="20" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="bold" attr="style.chart.title.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="textAlign" attr="style.chart.title.textAlign" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="paddingLeft" attr="style.chart.title.paddingLeft" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="paddingRight" attr="style.chart.title.paddingRight" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseDetails attr="subtitle" :level="4" title="style.chart.title.subtitle">
-                        <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.title.subtitle.color"><input v-else type="color" v-model="mutableConfig.style.chart.title.subtitle.color">, (default: "#A1A1A1")</span>
-                        <span>text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.title.subtitle.text"><input v-else type="text" v-model="mutableConfig.style.chart.title.subtitle.text">, (default: "")</span>
-                        <span>fontSize: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.title.subtitle.fontSize" :min="8" :max="42"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.title.subtitle.fontSize" :min="8" :max="42"/>, (default: 16)</span>
-                        <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.title.subtitle.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.title.subtitle.bold" @change="forceChartUpdate()">, (default: false)</span>
+                        <BaseAttr name="color" attr="style.chart.title.subtitle.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                        <BaseAttr name="text" attr="style.chart.title.subtitle.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                        <BaseAttr name="fontSize" attr="style.chart.title.subtitle.fontSize" type="number" defaultVal="20" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                        <BaseAttr name="bold" attr="style.chart.title.subtitle.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     </BaseDetails>
-                </BaseDetails>
+                    </BaseDetails>
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="translations" :level="1">
-            <span>base: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.base"><input v-else type="text" v-model="mutableConfig.translations.base">, (default: "Base")</span>
+            <BaseAttr name="base" attr="translations.base" type="text" defaultVal="Base" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseDetails attr="userOptions" :level="1">
-            <span>show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: true)</span>
+            <BaseAttr name="show" attr="userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
             <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
-                <span>pdf: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.pdf" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.pdf" @change="forceChartUpdate()">, (default: true)</span>
-                <span>img: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.img" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.img" @change="forceChartUpdate()">, (default: true)</span>
-                <span>fullscreen: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.fullscreen" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.fullscreen" @change="forceChartUpdate()">, (default: true)</span>
+                <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="img" attr="userOptions.buttons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="fullscreen" attr="userOptions.buttons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             </BaseDetails>
             <BaseDetails attr="buttonTitles" :level="2" title="userOptions.buttonTitles">
-                <span>open: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.buttonTitles.open"><input v-else type="text" v-model="mutableConfig.userOptions.buttonTitles.open">, (default: "Open options")</span>
-                <span>close: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.buttonTitles.close"><input v-else type="text" v-model="mutableConfig.userOptions.buttonTitles.close">, (default: "Close options")</span>
-                <span>pdf: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.buttonTitles.pdf"><input v-else type="text" v-model="mutableConfig.userOptions.buttonTitles.pdf">, (default: "Download PDF")</span>
-                <span>img: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.buttonTitles.img"><input v-else type="text" v-model="mutableConfig.userOptions.buttonTitles.img">, (default: "Download PNG")</span>
-                <span>fullscreen: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.userOptions.buttonTitles.fullscreen"><input v-else type="text" v-model="mutableConfig.userOptions.buttonTitles.fullscreen">, (default: "Toggle fullscreen")</span>
+                <BaseAttr name="open" attr="userOptions.buttonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+                <BaseAttr name="close" attr="userOptions.buttonTitles.close" type="text" defaultVal="Close options" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+                <BaseAttr name="pdf" attr="userOptions.buttonTitles.pdf" type="text" defaultVal="Download PDF" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+                <BaseAttr name="img" attr="userOptions.buttonTitles.img" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+                <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
             </BaseDetails>
         </BaseDetails>
     </BaseDetails>
