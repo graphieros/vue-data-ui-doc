@@ -114,7 +114,7 @@ const usableWeekData = computed(() => {
     weeklyData.push({ period: `week ${currentWeek}`, value: weeklySum, short: `w${currentWeek}` });
   }
 
-  return weeklyData;
+  return weeklyData.slice(-52)
 });
 
 const heatmapConfig = computed(() => {
@@ -1627,7 +1627,7 @@ const treemapConfig = computed(() => {
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                     <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="JSON.parse(JSON.stringify(data)).slice(-100)" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig"/>
-                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="usableWeekData" :config="isDarkMode ? {...darkModeSparklineConfig, type: 'bar', style: {...darkModeSparklineConfig.style, line: {...darkModeSparklineConfig.style.line, color: '#5f8bee'}, area: {...darkModeSparklineConfig.style.area, color: '#5f8bee'}, dataLabel: {...darkModeSparklineConfig.style.dataLabel, color: '#5f8bee'}, verticalIndicator:{...darkModeSparklineConfig.style.verticalIndicator, color: '#42d392'}, title: {...darkModeSparklineConfig.style.title, text: 'Weekly downloads'}}} : {...sparklineConfig, type: 'bar', style: {...sparklineConfig.style, line: {...sparklineConfig.style.line, color: '#5f8bee'}, area: {...sparklineConfig.style.area, color: '#5f8bee'}, title: {...sparklineConfig.style.title, text: 'Weekly downloads'}}} "/>
+                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="usableWeekData" :config="isDarkMode ? {...darkModeSparklineConfig, type: 'bar', style: {...darkModeSparklineConfig.style, line: {...darkModeSparklineConfig.style.line, color: '#5f8bee'}, area: {...darkModeSparklineConfig.style.area, color: '#5f8bee'}, dataLabel: {...darkModeSparklineConfig.style.dataLabel, color: '#5f8bee'}, verticalIndicator:{...darkModeSparklineConfig.style.verticalIndicator, color: '#42d392'}, title: {...darkModeSparklineConfig.style.title, text: 'Weekly downloads - Last 52 weeks'}}} : {...sparklineConfig, type: 'bar', style: {...sparklineConfig.style, line: {...sparklineConfig.style.line, color: '#5f8bee'}, area: {...sparklineConfig.style.area, color: '#5f8bee'}, title: {...sparklineConfig.style.title, text: 'Weekly downloads - Last 52 weeks'}}} "/>
                 </div>
                 <div class="max-w-[300px] mx-auto px-6 mb-6">
                     <div class="pb-2 mb-2">
