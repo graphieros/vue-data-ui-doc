@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
+import BaseCustomizationBox from "./BaseCustomizationBox.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -10,317 +11,317 @@ const translations = computed(() => {
 })
 
 const allowedComponents = ref([
-    {name: "VueUiAgePyramid", icon: 'chartAgePyramid', link: '/docs#vue-ui-age-pyramid'},
-    {name: "VueUiCandlestick", icon: 'chartCandlestick', link: '/docs#vue-ui-candlestick'},
-    {name: "VueUiDonut", icon: 'chartDonut', link: '/docs#vue-ui-donut'},
-    {name: 'VueUiGalaxy', icon: 'chartGalaxy', link: '/docs#vue-ui-galaxy'},
-    {name: "VueUiHeatmap", icon: "chartHeatmap", link: '/docs#vue-ui-heatmap'},
-    {name: "VueUiMolecule", icon: 'chartCluster', link: '/docs#vue-ui-molecule'},
-    {name: "VueUiNestedDonuts", icon: 'chartNestedDonuts', link: '/docs#vue-ui-nested-donuts'},
-    {name: "VueUiOnion", icon: 'chartOnion', link: '/docs#vue-ui-onion'},
-    {name: "VueUiParallelCoordinatePlot", icon: "chartParallelCoordinatePlot", link: '/docs#vue-ui-parallel-coordinate-plot'},
-    {name: "VueUiQuadrant", icon: 'chartQuadrant', link: '/docs#vue-ui-quadrant'},
-    {name: "VueUiQuickChart", icon: 'vueDataUi', link: '/docs#vue-ui-quick-chart'},
-    {name: "VueUiRadar", icon: 'chartRadar', link: '/docs#vue-ui-radar'},
-    {name: "VueUiRings", icon: 'chartRings', link: '/docs#vue-ui-rings'},
-    {name: "VueUiScatter", icon: 'chartScatter', link: '/docs#vue-ui-scatter'},
-    {name: "VueUiVerticalBar", icon: 'chartBar', link: '/docs#vue-ui-vertical-bar'},
-    {name: "VueUiWaffle", icon: 'chartWaffle', link: '/docs#vue-ui-waffle'},
-    {name: 'VueUiXy', icon: 'chartLine', link: '/docs#vue-ui-xy'},
-    {name: 'VueUiXyCanvas', icon: 'chartLine', link: '/docs#vue-ui-xy-canvas'},
+  { name: "VueUiAgePyramid", icon: 'chartAgePyramid', link: '/docs#vue-ui-age-pyramid' },
+  { name: "VueUiCandlestick", icon: 'chartCandlestick', link: '/docs#vue-ui-candlestick' },
+  { name: "VueUiDonut", icon: 'chartDonut', link: '/docs#vue-ui-donut' },
+  { name: 'VueUiGalaxy', icon: 'chartGalaxy', link: '/docs#vue-ui-galaxy' },
+  { name: "VueUiHeatmap", icon: "chartHeatmap", link: '/docs#vue-ui-heatmap' },
+  { name: "VueUiMolecule", icon: 'chartCluster', link: '/docs#vue-ui-molecule' },
+  { name: "VueUiNestedDonuts", icon: 'chartNestedDonuts', link: '/docs#vue-ui-nested-donuts' },
+  { name: "VueUiOnion", icon: 'chartOnion', link: '/docs#vue-ui-onion' },
+  { name: "VueUiParallelCoordinatePlot", icon: "chartParallelCoordinatePlot", link: '/docs#vue-ui-parallel-coordinate-plot' },
+  { name: "VueUiQuadrant", icon: 'chartQuadrant', link: '/docs#vue-ui-quadrant' },
+  { name: "VueUiQuickChart", icon: 'vueDataUi', link: '/docs#vue-ui-quick-chart' },
+  { name: "VueUiRadar", icon: 'chartRadar', link: '/docs#vue-ui-radar' },
+  { name: "VueUiRings", icon: 'chartRings', link: '/docs#vue-ui-rings' },
+  { name: "VueUiScatter", icon: 'chartScatter', link: '/docs#vue-ui-scatter' },
+  { name: "VueUiVerticalBar", icon: 'chartBar', link: '/docs#vue-ui-vertical-bar' },
+  { name: "VueUiWaffle", icon: 'chartWaffle', link: '/docs#vue-ui-waffle' },
+  { name: 'VueUiXy', icon: 'chartLine', link: '/docs#vue-ui-xy' },
+  { name: 'VueUiXyCanvas', icon: 'chartLine', link: '/docs#vue-ui-xy-canvas' },
 ]);
 
 const dataset = ref([
-    {
-        name: "Serie 1",
-        color: "#5f8bee",
-        values: [100]
-    },
-    {
-        name: "Serie 2",
-        color: "#42d392",
-        values: [200]
-    },
-    {
-        name: "Serie 3",
-        color: "#ff6400",
-        values: [300, 1]
-    },
+  {
+    name: "Serie 1",
+    color: "#5f8bee",
+    values: [100]
+  },
+  {
+    name: "Serie 2",
+    color: "#42d392",
+    values: [200]
+  },
+  {
+    name: "Serie 3",
+    color: "#ff6400",
+    values: [300, 1]
+  },
 ]);
 
 const darkModeConfig = ref({
-    useBlurOnHover: true,
-    useCssAnimation: true,
-    style: {
-        fontFamily: "inherit",
-        chart: {
-            useGradient: true,
-            gradientIntensity: 40,
-            backgroundColor: "#1A1A1A",
+  useBlurOnHover: true,
+  useCssAnimation: true,
+  style: {
+    fontFamily: "inherit",
+    chart: {
+      useGradient: true,
+      gradientIntensity: 40,
+      backgroundColor: "#1A1A1A",
+      color: "#CCCCCC",
+      layout: {
+        labels: {
+          dataLabels: {
+            show: true,
+            hideUnderValue: 3,
+            prefix: "",
+            suffix: ""
+          },
+          value: {
+            rounding: 0,
+            show: true,
+          },
+          percentage: {
             color: "#CCCCCC",
-            layout: {
-                labels: {
-                    dataLabels: {
-                        show: true,
-                        hideUnderValue: 3,
-                        prefix: "",
-                        suffix: ""
-                    },
-                    value: {
-                        rounding: 0,
-                        show: true,
-                    },
-                    percentage: {
-                        color: "#CCCCCC",
-                        bold: true,
-                        fontSize: 18
-                    },
-                    name: {
-                        color: "#CCCCCC",
-                        bold: false,
-                        fontSize: 14,
-                    },
-                    hollow: {
-                        total: {
-                            show: true,
-                            bold: false,
-                            fontSize: 18,
-                            color: "#CCCCCC",
-                            text:  "Total",
-                            offsetY: -16,
-                            value: {
-                                color: "#CCCCCC",
-                                fontSize: 18,
-                                bold: true,
-                                suffix: "",
-                                prefix: "",
-                                offsetY: -12,
-                                rounding: 0,
-                            }
-                        },
-                        average: {
-                            show: true,
-                            bold: false,
-                            fontSize: 18,
-                            color: "#CCCCCC",
-                            text:  "Average",
-                            offsetY: 0,
-                            value: {
-                                color: "#CCCCCC",
-                                fontSize: 18,
-                                bold: true,
-                                suffix: "",
-                                prefix: "",
-                                offsetY: 6,
-                                rounding: 0,
-                            }
-                        }
-                    }
-                },
-                donut: {
-                    strokeWidth: 54,
-                    borderWidth: 2,
-                },
-            },
-            legend: {
-                    backgroundColor: "#1A1A1A",
-                    color: "#CCCCCC",
-                    show: true,
-                    fontSize: 16,
-                    bold: false,
-                    roundingValue: 0,
-                    roundingPercentage: 0,
-                },
-            title: {
-                text: "",
-                color: "#FAFAFA",
-                fontSize: 20,
-                bold: true,
-                subtitle: {
-                    color: "#CCCCCC",
-                    text: "",
-                    fontSize: 16,
-                    bold: false
-                }
-            },
-            tooltip: {
-                show: true,
+            bold: true,
+            fontSize: 18
+          },
+          name: {
+            color: "#CCCCCC",
+            bold: false,
+            fontSize: 14,
+          },
+          hollow: {
+            total: {
+              show: true,
+              bold: false,
+              fontSize: 18,
+              color: "#CCCCCC",
+              text: "Total",
+              offsetY: -16,
+              value: {
                 color: "#CCCCCC",
-                backgroundColor: "#1A1A1A",
-                fontSize: 14,
-                showValue: true,
-                showPercentage: true,
-                roundingValue: 0,
-                roundingPercentage: 0,
+                fontSize: 18,
+                bold: true,
+                suffix: "",
+                prefix: "",
+                offsetY: -12,
+                rounding: 0,
+              }
+            },
+            average: {
+              show: true,
+              bold: false,
+              fontSize: 18,
+              color: "#CCCCCC",
+              text: "Average",
+              offsetY: 0,
+              value: {
+                color: "#CCCCCC",
+                fontSize: 18,
+                bold: true,
+                suffix: "",
+                prefix: "",
+                offsetY: 6,
+                rounding: 0,
+              }
             }
-        }
-    },
-    userOptions: {
-        show: false
-    },
-    translations: {
-        total: "Total",
-        average: "Average",
-    },
-    table: {
-        show: false,
-        responsiveBreakpoint: 300,
-        columnNames: {
-            series: "Series",
-            value: "Value",
-            percentage: "Percentage"
+          }
         },
-        th: {
-            backgroundColor: "#1A1A1A",
-            color: "#CCCCCC",
-            outline: "none"
+        donut: {
+          strokeWidth: 54,
+          borderWidth: 2,
         },
-        td: {
-            backgroundColor: "#1A1A1A",
-            color: "#CCCCCC",
-            outline: "none",
-            roundingValue: 0,
-            roundingPercentage: 0
+      },
+      legend: {
+        backgroundColor: "#1A1A1A",
+        color: "#CCCCCC",
+        show: true,
+        fontSize: 16,
+        bold: false,
+        roundingValue: 0,
+        roundingPercentage: 0,
+      },
+      title: {
+        text: "",
+        color: "#FAFAFA",
+        fontSize: 20,
+        bold: true,
+        subtitle: {
+          color: "#CCCCCC",
+          text: "",
+          fontSize: 16,
+          bold: false
         }
+      },
+      tooltip: {
+        show: true,
+        color: "#CCCCCC",
+        backgroundColor: "#1A1A1A",
+        fontSize: 14,
+        showValue: true,
+        showPercentage: true,
+        roundingValue: 0,
+        roundingPercentage: 0,
+      }
     }
+  },
+  userOptions: {
+    show: false
+  },
+  translations: {
+    total: "Total",
+    average: "Average",
+  },
+  table: {
+    show: false,
+    responsiveBreakpoint: 300,
+    columnNames: {
+      series: "Series",
+      value: "Value",
+      percentage: "Percentage"
+    },
+    th: {
+      backgroundColor: "#1A1A1A",
+      color: "#CCCCCC",
+      outline: "none"
+    },
+    td: {
+      backgroundColor: "#1A1A1A",
+      color: "#CCCCCC",
+      outline: "none",
+      roundingValue: 0,
+      roundingPercentage: 0
+    }
+  }
 });
 
 const config = ref({
-    useBlurOnHover: true,
-    useCssAnimation: true,
-    style: {
-        fontFamily: "inherit",
-        chart: {
-            useGradient: true,
-            gradientIntensity: 40,
-            backgroundColor: "#F3F4F6",
+  useBlurOnHover: true,
+  useCssAnimation: true,
+  style: {
+    fontFamily: "inherit",
+    chart: {
+      useGradient: true,
+      gradientIntensity: 40,
+      backgroundColor: "#F3F4F6",
+      color: "#1A1A1A",
+      layout: {
+        labels: {
+          dataLabels: {
+            show: true,
+            hideUnderValue: 3,
+            prefix: "",
+            suffix: ""
+          },
+          value: {
+            rounding: 0,
+            show: true
+          },
+          percentage: {
             color: "#1A1A1A",
-            layout: {
-                labels: {
-                    dataLabels: {
-                        show: true,
-                        hideUnderValue: 3,
-                        prefix: "",
-                        suffix: ""
-                    },
-                    value: {
-                        rounding: 0,
-                        show: true
-                    },
-                    percentage: {
-                        color: "#1A1A1A",
-                        bold: true,
-                        fontSize: 18
-                    },
-                    name: {
-                        color: "#1A1A1A",
-                        bold: false,
-                        fontSize: 14,
-                    },
-                    hollow: {
-                        total: {
-                            show: true,
-                            bold: false,
-                            fontSize: 18,
-                            color: "#1A1A1A",
-                            text:  "Total",
-                            offsetY: -16,
-                            value: {
-                                color: "#1A1A1A",
-                                fontSize: 18,
-                                bold: true,
-                                suffix: "",
-                                prefix: "",
-                                offsetY: -12,
-                                rounding: 0,
-                            }
-                        },
-                        average: {
-                            show: true,
-                            bold: false,
-                            fontSize: 18,
-                            color: "#1A1A1A",
-                            text:  "Average",
-                            offsetY: 0,
-                            value: {
-                                color: "#1A1A1A",
-                                fontSize: 18,
-                                bold: true,
-                                suffix: "",
-                                prefix: "",
-                                offsetY: 6,
-                                rounding: 0,
-                            }
-                        }
-                    }
-                },
-                donut: {
-                    strokeWidth: 54,
-                    borderWidth: 2
-                },
-            },
-            legend: {
-                    backgroundColor: "#F3F4F6",
-                    color: "#1A1A1A",
-                    show: true,
-                    fontSize: 16,
-                    bold: false,
-                    roundingValue: 0,
-                    roundingPercentage: 0,
-                },
-            title: {
-                text: "",
+            bold: true,
+            fontSize: 18
+          },
+          name: {
+            color: "#1A1A1A",
+            bold: false,
+            fontSize: 14,
+          },
+          hollow: {
+            total: {
+              show: true,
+              bold: false,
+              fontSize: 18,
+              color: "#1A1A1A",
+              text: "Total",
+              offsetY: -16,
+              value: {
                 color: "#1A1A1A",
-                fontSize: 20,
+                fontSize: 18,
                 bold: true,
-                subtitle: {
-                    color: "#565656",
-                    text: '',
-                    fontSize: 16,
-                    bold: false
-                }
+                suffix: "",
+                prefix: "",
+                offsetY: -12,
+                rounding: 0,
+              }
             },
-            tooltip: {
-                show: true,
+            average: {
+              show: true,
+              bold: false,
+              fontSize: 18,
+              color: "#1A1A1A",
+              text: "Average",
+              offsetY: 0,
+              value: {
                 color: "#1A1A1A",
-                backgroundColor: "#F3F4F6",
-                fontSize: 14,
-                showValue: true,
-                showPercentage: true,
-                roundingValue: 0,
-                roundingPercentage: 0,
-                customFormat: null
+                fontSize: 18,
+                bold: true,
+                suffix: "",
+                prefix: "",
+                offsetY: 6,
+                rounding: 0,
+              }
             }
-        }
-    },
-    userOptions: {
-        show: false
-    },
-    translations: {
-        total: "Total",
-        average: "Average",
-    },
-    table: {
-        show: false,
-        responsiveBreakpoint: 300,
-        columnNames: {
-            series: "Series",
-            value: "Value",
-            percentage: "Percentage"
+          }
         },
-        th: {
-            backgroundColor: "#F3F4F6",
-            color: "#1A1A1A",
-            outline: "none"
+        donut: {
+          strokeWidth: 54,
+          borderWidth: 2
         },
-        td: {
-            backgroundColor: "#F3F4F6",
-            color: "#1A1A1A",
-            outline: "none",
-            roundingValue: 0,
-            roundingPercentage: 0
+      },
+      legend: {
+        backgroundColor: "#F3F4F6",
+        color: "#1A1A1A",
+        show: true,
+        fontSize: 16,
+        bold: false,
+        roundingValue: 0,
+        roundingPercentage: 0,
+      },
+      title: {
+        text: "",
+        color: "#1A1A1A",
+        fontSize: 20,
+        bold: true,
+        subtitle: {
+          color: "#565656",
+          text: '',
+          fontSize: 16,
+          bold: false
         }
+      },
+      tooltip: {
+        show: true,
+        color: "#1A1A1A",
+        backgroundColor: "#F3F4F6",
+        fontSize: 14,
+        showValue: true,
+        showPercentage: true,
+        roundingValue: 0,
+        roundingPercentage: 0,
+        customFormat: null
+      }
     }
+  },
+  userOptions: {
+    show: false
+  },
+  translations: {
+    total: "Total",
+    average: "Average",
+  },
+  table: {
+    show: false,
+    responsiveBreakpoint: 300,
+    columnNames: {
+      series: "Series",
+      value: "Value",
+      percentage: "Percentage"
+    },
+    th: {
+      backgroundColor: "#F3F4F6",
+      color: "#1A1A1A",
+      outline: "none"
+    },
+    td: {
+      backgroundColor: "#F3F4F6",
+      color: "#1A1A1A",
+      outline: "none",
+      roundingValue: 0,
+      roundingPercentage: 0
+    }
+  }
 });
 
 const sparklineDataset = ref([
@@ -518,49 +519,55 @@ const configSparkline = ref({
 </script>
 
 <template>
-<div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
-    <p class="my-6" dir="auto">{{ translations.customization.tooltipSlot[store.lang] }}</p>
+  <div class="px-4 max-w-[1200px] mx-auto mt-4 mb-8" dir="auto">
+    {{ translations.customization.tooltipSlot[store.lang] }}
+  </div>
+  <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
     <ul>
-        <RouterLink v-for="allowed in allowedComponents" :to="allowed.link">        
-            <li class="flex flex-row gap-2 py-1 px-2 rounded text-xs hover:bg-[#5f8bee20]">
-                <VueUiIcon :name="allowed.icon" :size="16" :stroke="isDarkMode ? '#5f8bee' : '#3A3A3A'"/>
-                <span>{{ allowed.name }}</span>
-            </li>
-        </RouterLink>
+      <RouterLink v-for="allowed in allowedComponents" :to="allowed.link">
+        <li class="flex flex-row gap-2 py-1 px-2 rounded text-xs hover:bg-[#5f8bee20]">
+          <VueUiIcon :name="allowed.icon" :size="16" :stroke="isDarkMode ? '#5f8bee' : '#3A3A3A'" />
+          <span>{{ allowed.name }}</span>
+        </li>
+      </RouterLink>
     </ul>
-</div>
-<div class="w-5/6 sm:w-1/2 mx-auto bg-gray-200 dark:bg-[#FFFFFF10] p-2 rounded mb-12">
-    <code class="text-left text-xs">
-        &lt;template&gt;<br>
-        &nbsp;&nbsp;&lt;VueUiDonut<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
-        &nbsp;&nbsp;&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;template #tooltip-before={ datapoint, seriesindex, series, config }"&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This content shows first<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/template&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;template #tooltip-after="{ datapoint, seriesIndex, seris, config }"&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This content shows last<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/template&gt;<br>
-        &nbsp;&nbsp;&lt;/VueUiDOnut&gt;<br>
-        &lt;/template&gt;
-    </code>
-</div>
-<div class="w-full max-w-[500px] mx-auto mb-24 px-12">
-    <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">
+  </div>
+
+  <BaseCustomizationBox>
+    <template #code>
+      <pre>
+&lt;template&gt;
+  &lt;VueUiDonut
+    :dataset="dataset"
+    :config="config"
+  &gt;
+    &lt;template #tooltip-before={ datapoint, seriesindex, series, config }"&gt;
+      This content shows first
+    &lt;/template&gt;
+    &lt;template #tooltip-after="{ datapoint, seriesIndex, seris, config }"&gt;
+      This content shows last
+    &lt;/template&gt;
+  &lt;/VueUiDOnut&gt;
+&lt;/template&gt;
+</pre>
+    </template>
+    <template #chart>
+      <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">
         <template #tooltip-before>
-            <div class="text-xs max-w-[200px] text-left border-b pb-2 mb-2">
-                This comment was added inside the #tooltip-before slot.
-            </div>
+          <div class="text-xs max-w-[200px] text-left border-b pb-2 mb-2">
+            This comment was added inside the #tooltip-before slot.
+          </div>
         </template>
         <template #tooltip-after>
-            <div class="w-full max-w-[200px]">
-                <div class="text-xs max-w-[200px] text-left pb-2 mb-2">
-                    This comment and chart are added inside the #tooltip-after slot.
-                </div>
-                <VueDataUi component="VueUiSparkline" :dataset="sparklineDataset" :config="isDarkMode ? darkModeConfigSparkline : configSparkline"></VueDataUi>
+          <div class="w-full max-w-[200px]">
+            <div class="text-xs max-w-[200px] text-left pb-2 mb-2">
+              This comment and chart are added inside the #tooltip-after slot.
             </div>
-        </template> 
-    </VueDataUi>
-</div>
+            <VueDataUi component="VueUiSparkline" :dataset="sparklineDataset"
+              :config="isDarkMode ? darkModeConfigSparkline : configSparkline"></VueDataUi>
+          </div>
+        </template>
+      </VueDataUi>
+    </template>
+  </BaseCustomizationBox>
 </template>
