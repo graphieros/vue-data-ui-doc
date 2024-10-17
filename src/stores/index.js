@@ -1407,6 +1407,17 @@ export const useMainStore = defineStore("main", {
                         ar: 'تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين'
                     },
                     tooltips: {
+                        stackbarBig: {
+                            en: 'Visualize cumulative totals on stacked bars, to easily compare parts of a whole across different categories.',
+                            fr: 'Visualisez les totaux cumulatifs sur des barres empilées, pour comparer facilement les parties d’un tout à travers différentes catégories.',
+                            pt: 'Visualize totais cumulativos em barras empilhadas, para comparar facilmente partes de um todo em diferentes categorias.',
+                            de: 'Visualisieren Sie kumulative Summen auf gestapelten Balken, um Teile eines Ganzen in verschiedenen Kategorien leicht zu vergleichen.',
+                            zh: '在堆叠条形图上可视化累积总数，轻松比较不同类别的部分。',
+                            jp: '積み上げ棒グラフで累積合計を視覚化し、異なるカテゴリ間で全体の一部を簡単に比較します。',
+                            es: 'Visualiza los totales acumulativos en barras apiladas, para comparar fácilmente partes de un todo a través de diferentes categorías.',
+                            ko: '누적 막대 차트에서 누적 합계를 시각화하여 다양한 카테고리 간에 전체의 일부를 쉽게 비교합니다.',
+                            ar: 'تصور المجاميع التراكمية على الأشرطة المكدسة، لتسهيل مقارنة الأجزاء ضمن الكل عبر الفئات المختلفة.'
+                        },
                         carouselTable: {
                             en: 'A flexible table component with carousel features. Animation is opt-in, and pauses when user hovers on the table.',
                             fr: `Un composant de table flexible avec des fonctionnalités de carrousel. L'animation est facultative et s'arrête lorsque l'utilisateur survole la table.`,

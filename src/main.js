@@ -51,7 +51,8 @@ import {
     VueUiWordCloud,
     VueUiXyCanvas,
     VueUiCarouselTable,
-    VueUiGizmo
+    VueUiGizmo,
+    VueUiStackbar
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -107,5 +108,7 @@ app.component("VueUiWordCloud", VueUiWordCloud)
 app.component("VueUiXyCanvas", VueUiXyCanvas)
 app.component("VueUiCarouselTable", VueUiCarouselTable)
 app.component("VueUiGizmo", VueUiGizmo)
+app.component("VueUiStackbar", VueUiStackbar)
+
 
 app.mount('#app')

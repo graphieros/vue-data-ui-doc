@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.3.27",
+    "date": "2024-10-17",
+    "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-stackbar"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Add chartStackbar icon",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.26",
     "date": "2024-10-15",
     "updates": [

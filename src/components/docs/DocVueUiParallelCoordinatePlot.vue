@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, nextTick, computed } from "vue";
+import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
@@ -24,6 +24,8 @@ watch(() => store.isDarkMode, (val) => {
         key.value += 1;
     })
 });
+
+onMounted(() => console.log(mainConfig.vue_ui_stackbar))
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;

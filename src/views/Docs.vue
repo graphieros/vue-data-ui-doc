@@ -67,6 +67,7 @@ const DocVueUiParallelCoordinatePlot = defineAsyncComponent(() => import('../com
 const DocVueUiTimer = defineAsyncComponent(() => import('../components/docs/DocVueUiTimer.vue'));
 const DocVueUiCarouselTable = defineAsyncComponent(() => import('../components/docs/DocVueUiCarouselTable.vue'));
 const DocVueUiGizmo = defineAsyncComponent(() => import('../components/docs/DocVueUiGizmo.vue'));
+const DocVueUiStackbar = defineAsyncComponent(() => import('../components/docs/DocVueUiStackbar.vue'));
 
 const mainConfig = useConfig()
 
@@ -210,6 +211,18 @@ const menuItems = computed(() => [
         type: "xy",
         thumb: new URL('../assets/thumb_xy_canvas.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_xy_canvas_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: true
+    },
+    {
+        name: "Stackbar",
+        icon: "chartStackbar",
+        tooltip: translations.value.docs.tooltips.stackbarBig[store.lang],
+        link: "/docs#vue-ui-stackbar",
+        type: ['xy'],
+        thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
         hasLegend: true
@@ -1059,6 +1072,9 @@ const menuCategories = computed(() => {
             </Transition>
             <Transition name="fade">
                 <DocVueUiGizmo v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-gizmo'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiStackbar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-stackbar'" />
             </Transition>
 
             <Transition name="fade">
