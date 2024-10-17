@@ -534,7 +534,7 @@ watch(() => showAllConfig.value, (v) => {
             :configSource="mainConfig.vue_ui_stackbar"
         />
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive>
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_stackbar">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

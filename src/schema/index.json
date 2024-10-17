@@ -1,4 +1,126 @@
 {
+    "vue_ui_stackbar": {
+        "name": "VueUiStackbar",
+        "icon": "chartStackbar",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-stackbar",
+        "path": "/docs#vue-ui-stackbar",
+        "description": "stackbarBig",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "responsive": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiStackbarConfig",
+            "dataset": "VueUiStackbarDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    {
+                        "name": "Serie 1",
+                        "series": [19, 20.07, 30, 40, 60, 25]
+                    },
+                    {
+                        "name": "Serie 2",
+                        "series": [13, 8, 9, 13, 25, 27]
+                    }
+                ],
+                "config": {}
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Data labels",
+                "description": "Toggles data labels visibility.",
+                "icon": "labelOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click"
+            },
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "plot-comment",
+                "description": "Use this slot to display plot comments"
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
+            }
+        ]
+    },
     "vue_ui_gizmo": {
         "name": "VueUiGizmo",
         "icon": "battery",
@@ -224,6 +346,10 @@
             {
                 "name": "svg",
                 "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -387,6 +513,10 @@
             {
                 "name": "plot-comment",
                 "description": "Use this slot to display plot comments"
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -462,6 +592,10 @@
             {
                 "name": "svg",
                 "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ],
         "examples": [
@@ -528,6 +662,10 @@
             {
                 "name": "svg",
                 "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -659,6 +797,10 @@
             {
                 "name": "cell",
                 "description": "Use this slot to customize cells rendering"
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -820,6 +962,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -972,6 +1118,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -1033,6 +1183,10 @@
             {
                 "name": "svg",
                 "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -1101,6 +1255,10 @@
             {
                 "name": "svg",
                 "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -1434,6 +1592,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -1991,6 +2153,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -2132,6 +2298,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -2373,6 +2543,10 @@
             {
                 "name": "svg",
                 "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -2551,6 +2725,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -2634,6 +2812,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -2832,6 +3014,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -2960,6 +3146,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -3127,6 +3317,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -3217,6 +3411,10 @@
             {
                 "name": "legend",
                 "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -3632,6 +3830,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -3866,6 +4068,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -3943,6 +4149,10 @@
             {
                 "name": "legend",
                 "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -4080,6 +4290,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -4195,6 +4409,10 @@
             {
                 "name": "legend",
                 "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -4349,6 +4567,10 @@
             {
                 "name": "reset-action",
                 "description": "Use this slot to customize the reset button of the zoom slider."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -4497,6 +4719,10 @@
             {
                 "name": "plot-comment",
                 "description": "Use this slot to display plot comments"
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -4662,6 +4888,10 @@
             {
                 "name": "legend",
                 "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -4897,6 +5127,10 @@
             {
                 "name": "reset-action",
                 "description": "Use this slot to customize the reset button of the zoom slider."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -5027,6 +5261,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -5140,6 +5378,10 @@
             {
                 "name": "svg",
                 "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -5300,6 +5542,10 @@
             {
                 "name": "plot-comment",
                 "description": "Use this slot to display plot comments"
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     },
@@ -5445,6 +5691,10 @@
             {
                 "name": "reset-action",
                 "description": "Use this slot to customize the reset button of the zoom slider."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
             }
         ]
     }
