@@ -3,7 +3,7 @@ import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-// import ThemesVueUiParallelCoordinatePlot from "../themes/ThemesVueUiParallelCoordinatePlot.vue";
+import ThemesVueUiStackbar from "../themes/ThemesVueUiStackbar.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
@@ -484,6 +484,7 @@ watch(() => showAllConfig.value, (v) => {
     }
 })
 
+const responsiveTabLoaded = ref(false);
 
 </script>
 
@@ -534,7 +535,7 @@ watch(() => showAllConfig.value, (v) => {
             :configSource="mainConfig.vue_ui_stackbar"
         />
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_stackbar">
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_stackbar" @onResponsiveTab="responsiveTabLoaded = true" @onNonResponsiveTab="responsiveTabLoaded = false">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -793,22 +794,206 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
             </template>
 
             <template #tab2>
-                We are currently working on the docs :)
+                @selectDatapoint<br><br>
+
+{{ translations.docs.emits.selectDatapoint[store.lang] }}
+<br><br>
+<pre>
+<code>
+&lt;template&gt;
+  &lt;VueUiStackbar
+    :dataset="dataset"
+    :config="config"
+    @selectDatapoint="selectDatapoint"
+  /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+  function selectDatapoint({ datapoint, period }) {
+    console.log({ datapoint, period })
+  }
+&lt;/script&gt;
+</code>
+</pre>
+
+                <div><code><b>@selectLegend</b></code></div>
+                <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
+    <pre>
+    <code>
+    [
+        {
+            name: string;
+            value: number;
+            color: string;
+        },
+        {...}
+    ]
+    </code>
+    </pre>
+    <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>getData</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
+    <pre>
+    <span class="text-black dark:text-app-green">Using composition API:</span>
+    <code>
+        <span class="text-gray-400">&lt;script setup&gt;</span>
+            import { ref, onMounted } from "vue";
+
+            const stackbarChart = ref(null);
+            const stackbarDatasett = ref([]);
+
+            onMounted(() => {
+                stackbarDatasett.value = stackbarChart.value.getData();
+            });
+
+            const config = ref({
+                <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
+            });
+            const dataset = ref([
+                <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
+            ]);
+
+        <span class="text-gray-400">&lt;/script&gt;</span>
+
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiStackbar
+                ref="stackbarChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+    </code>
+    <span class="text-black dark:text-app-green">Using options API:</span>
+    <code>
+        <span class="text-gray-400">&lt;template&gt;</span>
+            &lt;VueUiStackbar
+                ref="stackbarChart"
+                :config="config"
+                :dataset="dataset"
+            /&gt;
+        <span class="text-gray-400">&lt;/template&gt;</span>
+
+        <span class="text-gray-400">&lt;script&gt;</span>
+            export default {
+                data() {
+                    return {
+                        stackbarDatasett: [],
+                        config: {
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourConfigHere[store.lang] }}</span>
+                        },
+                        dataset: [
+                            <span class="text-gray-500">// {{ translations.docs.comments.yourDatasetHere[store.lang] }}</span>
+                        ]
+                    }
+                },
+                mounted () {
+                    this.stackbarDatasett = this.$refs.stackbarChart.getData();
+                }
+            }
+        <span class="text-gray-400">&lt;/script&gt;</span>
+    </code>
+    </pre>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generatePdf</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generatePdf[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generateCsv</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateCsv[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>generateImage</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>toggleTable</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleTable[store.lang] }}</div>
+                </div>
+                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
+                    <div><code>toggleLabels</code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleLabels[store.lang] }}</div>
+                </div>
+                </div>
             </template>
             <template #tab3>
-                We are currently working on the docs :)
+                <div class="text-gray-500">
+                    {{ translations.slots.presentation[store.lang]  }}
+                </div>
+<pre>
+<code>
+    &lt;VueUiStackbar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #svg="{ svg }"&gt;
+            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
+        &lt;/template&gt;
+    &lt;/VueUiStackbar&gt;
+</code>
+</pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.tooltip[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiStackbar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #tooltip-before="{ datapoint, series, config }"&gt;
+            ...your content here
+        &lt;/template&gt;
+        &lt;template #tooltip-after="{ datapoint, series, config }"&gt;
+            ...your content here
+        &lt;/template&gt;
+    &lt;/VueUiStackbar&gt;
+</code>
+</pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.watermark[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiStackbar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #watermark="{ isPrinting }"&gt;
+            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiXy&gt;
+</code>
+</pre>
             </template>
             <template #tab4>
-                We are currently working on the docs :)
-            </template>
-            <template #tab5>
-                We are currently working on the docs :)
+                <pre>
+<code>
+<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, config</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre> 
+Using custom mode, the tooltip will be headless.
+Target the following css class to apply custom styles:
+<pre>
+<code>
+.vue-data-ui-custom-tooltip
+</code>
+</pre>  
             </template>
             <template #tab6>
-                We are currently working on the docs :)
+                <ThemesVueUiStackbar/>
             </template>
             <template #tab7>
-                <ResponsiveUnit height="500px">
+                <ResponsiveUnit height="500px" v-if="responsiveTabLoaded">
                     <template #chart>
                         <VueDataUi 
                             component="VueUiStackbar" 

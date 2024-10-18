@@ -890,7 +890,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiMoleculeDataset
         &lt;template #watermark="{ isPrinting }"&gt;
             &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
         &lt;/template&gt;
-    &lt;/VueUiXy&gt;
+    &lt;/VueUiMolecule&gt;
 </code>
 </pre>
             </template>
