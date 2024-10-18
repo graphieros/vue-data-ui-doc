@@ -381,7 +381,7 @@ function fixChart() {
     <div>
       <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="skeleton" stroke="#42d392" :strokeWidth="1.5" />
-            VueUiSkeleton
+            <span>VueUi<span class="text-black dark:text-app-blue-light">Skeleton</span></span>
         </h1>
         <h2 class="text-center text-gray-500">
             {{ translations.docs.comments.skeleton.p1[store.lang] }}<br><br>

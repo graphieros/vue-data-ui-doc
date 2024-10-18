@@ -67,7 +67,7 @@ export const useMainStore = defineStore("main", {
                     jp: '次の結果はありません:',
                     es: 'No hay resultados para:',
                     ko: '다음에 대한 검색결과가 없습니다:',
-                    ar: ':لا توجد نتائج لـ'
+                    ar: 'لا توجد نتائج لـ'
                 },
                 searchResultFor: {
                     en: 'Search results for:',
@@ -78,7 +78,7 @@ export const useMainStore = defineStore("main", {
                     jp: 'の検索結果:',
                     es: 'Resultados de búsqueda para:',
                     ko: '다음에 대한 검색 결과:',
-                    ar: ':نتائج البحث عن'
+                    ar: 'نتائج البحث عن'
                 },
                 quickOverview: {
                     en: 'Quick overview - Technical specs',

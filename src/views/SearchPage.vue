@@ -141,17 +141,17 @@ const iconMap = ref({
 
 <template>
     <SideMenu @toggle="toggleMenu"/>
-    <div v-if="!hasResults" :class="`mx-auto max-w-[1200px] ${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] pr-12 sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`">
-        <h1 class="text-2xl border-b border-gray-600 pb-10">
+    <div v-if="!hasResults" :class="`mx-auto max-w-[1200px] h-screen ${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] pr-12 sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`">
+        <h1 class="text-2xl border-b border-gray-600 pb-10" dir="auto">
             {{ translations.noResultsFor[store.lang] }} <span class="dark:text-app-blue">{{ searchTerm }}</span>
         </h1>
         <div class="flex flex-row place-items-center justify-center h-[200px]">
             <ZoomCancelIcon size="64" class="text-gray-600"/>
         </div>
     </div>
-    <div v-else :class="`mx-auto max-w-[1200px] ${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] pr-12 sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`">
+    <div v-else :class="`mx-auto max-w-[1200px] min-h-screen ${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] pr-12 sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`">
 
-        <h1 class="text-2xl mb-6">
+        <h1 class="text-2xl mb-6" dir="auto">
             {{ translations.searchResultFor[store.lang] }} <span class="dark:text-app-blue">{{ searchTerm }}</span> <span class="text-gray-500">({{ filteredResults.length }})</span>
         </h1>
 

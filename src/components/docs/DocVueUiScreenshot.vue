@@ -335,7 +335,7 @@ function copyDefaultConf(conf) {
     <div>
       <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="screenshot" stroke="#42d392" :strokeWidth="1.5" />
-            VueUiScreenshot
+            <span>VueUi<span class="text-black dark:text-app-blue-light">Screenshot</span></span>
         </h1>
         <div class="w-full flex flex-col gap-6 place-items-center place-content-center">
             <h2 class="text-center text-gray-500">

@@ -532,7 +532,7 @@ watch(() => showAllConfig.value, (v) => {
     <div>
         <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="chartQuadrant" stroke="#42d392" :strokeWidth="1.5" />
-            VueUiQuadrant
+            <span>VueUi<span class="text-black dark:text-app-blue-light">Quadrant</span></span>
         </h1>
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.quadrant[store.lang] }}

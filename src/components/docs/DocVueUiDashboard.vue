@@ -84,7 +84,7 @@ const dashboardComponents = computed(() => {
     <div>
         <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="dashboard" stroke="#42d392" :strokeWidth="1.5" />
-            VueUiDashboard
+            <span>VueUi<span class="text-black dark:text-app-blue-light">Dashboard</span></span>
         </h1>
         <div class="w-full max-w-[300px] mx-auto text-gray-500 text-center">
             {{ translations.docs.comments.dashboard.p1[store.lang] }}

@@ -419,7 +419,7 @@ watch(() => showAllConfig.value, (v) => {
         <h1
             class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="chartParallelCoordinatePlot" stroke="#42d392" :strokeWidth="1.5" />
-            VueUiParallelCoordinatePlot
+            <span>VueUi<span class="text-black dark:text-app-blue-light">ParallelCoordinatePlot</span></span>
         </h1>
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.pcp[store.lang] }}
@@ -561,7 +561,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiParallelCoordin
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiParallelCoordinatePlotConfig" equal>
         <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
-        <span>customPalette: []; // string[]</span>
+        <span>customPalette: [], // string[]</span>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>

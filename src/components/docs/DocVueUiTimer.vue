@@ -3,11 +3,13 @@ import { ref, watch, nextTick, computed } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import BaseDetails from "../BaseDetails.vue";
+import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -234,13 +236,28 @@ function updateLaps(laps) {
     timerLaps.value = laps
 }
 
+const configCode = ref(null)
+const showAllConfig = ref(false);
+
+watch(() => showAllConfig.value, (v) => {
+    if (v) {
+        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => d.setAttribute('open', 'true'))
+    } else {
+        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => {
+            if (d.hasAttribute('open')) {
+                d.removeAttribute('open')
+            }
+        })
+    }
+})
+
 </script>
 
 <template>
     <div class="overflow-x-auto">
         <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="lap" stroke="#42d392" :strokeWidth="1.5" />
-            VueUiTimer
+            <span>VueUi<span class="text-black dark:text-app-blue-light">Timer</span></span>
         </h1>
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.timer[store.lang] }}
@@ -299,92 +316,95 @@ function updateLaps(laps) {
                     <div class="mt-4">
                         TS type: <code class="text-app-blue">VueUiTimerConfig</code>
                     </div>
-<pre>
-<code>
-const <span class="text-black dark:text-app-blue">config: VueUiTimerConfig</span> =  {
-    type: "stopwatch",
-    responsive: false; <span class="text-app-orange break-keep text-xs">// {{ translations.responsive[store.lang] }}</span>
-    style: {
-        backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
-        fontFamily: "inherit",
-        height: 300,
-        width: 300,
-        title: {
-            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.color"><input v-else type="color" v-model="mutableConfig.style.title.color">, (default: "#2D353C")
-            text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.text"><input v-else type="text" v-model="mutableConfig.style.title.text">, (default: "")
-            fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.title.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.title.fontSize">, (default: 20)
-            bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.bold" @change="forceChartUpdate()">, (default: true)
-            <span>textAlign: <select v-if="isDarkMode" v-model="mutableConfigDarkMode.style.title.textAlign" @change="forceChartUpdate()"><option>left</option><option>center</option><option>right</option></select><select v-else v-model="mutableConfig.style.title.textAlign" @change="forceChartUpdate()"><option>left</option><option>center</option><option>right</option></select></span>
-            <span>paddingLeft: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.title.paddingLeft" :min="0" :max="48" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.style.title.paddingLeft" :min="0" :max="48" @change="forceChartUpdate()"/>, (default: 0)</span>
-            <span>paddingRight: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.title.paddingRight" :min="0" :max="48" @change="forceChartUpdate()"/><BaseNumberInput v-else v-model:value="mutableConfig.style.title.paddingRight" :min="0" :max="48" @change="forceChartUpdate()"/>, (default: 0)</span>
-            subtitle: {
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.subtitle.color"><input v-else type="color" v-model="mutableConfig.style.title.subtitle.color">, (default: "#A1A1A1")
-                text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.subtitle.text"><input v-else type="text" v-model="mutableConfig.style.title.subtitle.text">, (default: "")
-                fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.title.subtitle.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.title.subtitle.fontSize">, (default: 16)
-                bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.title.subtitle.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.title.subtitle.bold" @change="forceChartUpdate()">, (default: false)
-            }
-        },
-    },
-    stopwatch: {
-        showHours: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.showHours" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.showHours" @change="forceChartUpdate()">, (default: false)
-        showHundredth: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.showHundredth" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.showHundredth" @change="forceChartUpdate()">, (default: true)
-        cycleSeconds: <input v-if="isDarkMode" type="number" min="1" max="60" v-model="mutableConfigDarkMode.stopwatch.cycleSeconds"><input v-else type="number" min="1" max="60" v-model="mutableConfig.stopwatch.cycleSeconds">, (default: 5)
-        track: {
-            radiusRatio: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0.4" max="1" v-model="mutableConfigDarkMode.stopwatch.track.radiusRatio" step="0.01"><input v-else type="range" class="accent-app-blue" min="0.4" max="1" v-model="mutableConfig.stopwatch.track.radiusRatio" step="0.01">, (default: 1)
-            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.track.stroke"><input v-else type="color" v-model="mutableConfig.stopwatch.track.stroke">, (default: "#e1e5e8")
-            fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.track.fill"><input v-else type="color" v-model="mutableConfig.stopwatch.track.fill">, (default: "#FFFFFF")
-            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.stopwatch.track.strokeWidth"><input v-else type="number" min="0" max="24" v-model="mutableConfig.stopwatch.track.strokeWidth">, (default: 2)
-        },
-        tracker: {
-            radiusRatio: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0.4" max="2" v-model="mutableConfigDarkMode.stopwatch.tracker.radiusRatio" step="0.01" @change="forceChartUpdate()"><input v-else type="range" class="accent-app-blue" min="0.4" max="2" v-model="mutableConfig.stopwatch.tracker.radiusRatio" step="0.01" @change="forceChartUpdate()">, (default: 1)
-            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.tracker.stroke"><input v-else type="color" v-model="mutableConfig.stopwatch.tracker.stroke">, (default: "#FFFFFF")
-            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.stopwatch.tracker.strokeWidth"><input v-else type="number" min="0" max="24" v-model="mutableConfig.stopwatch.tracker.strokeWidth">, (default: 1)
-            fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.tracker.fill"><input v-else type="color" v-model="mutableConfig.stopwatch.tracker.fill">, (default: "#2D353C")
-            gradient: {
-                show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.tracker.gradient.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.tracker.gradient.show" @change="forceChartUpdate()">, (default: true)
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.tracker.gradient.color"><input v-else type="color" v-model="mutableConfig.stopwatch.tracker.gradient.color">, (default: "#FFFFFF")
-            },
-            aura: {
-                show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.tracker.aura.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.tracker.aura.show" @change="forceChartUpdate()">, (default: true)
-                radiusRatio: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0.4" max="2" v-model="mutableConfigDarkMode.stopwatch.tracker.aura.radiusRatio" step="0.01" @change="forceChartUpdate()"><input v-else type="range" class="accent-app-blue" min="0.4" max="2" v-model="mutableConfig.stopwatch.tracker.aura.radiusRatio" step="0.01" @change="forceChartUpdate()">, (default: 1)
-                fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.tracker.aura.fill"><input v-else type="color" v-model="mutableConfig.stopwatch.tracker.aura.fill">, (default: "#2D353C")
-                stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.tracker.aura.stroke"><input v-else type="color" v-model="mutableConfig.stopwatch.tracker.aura.stroke">, (default: "#FFFFFF")
-                strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.stopwatch.tracker.aura.strokeWidth"><input v-else type="number" min="0" max="24" v-model="mutableConfig.stopwatch.tracker.aura.strokeWidth">, (default: 0)
-            }
-        },
-        cycleTrack: {
-            show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.cycleTrack.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.cycleTrack.show" @change="forceChartUpdate()">, (default: true)
-            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.cycleTrack.stroke"><input v-else type="color" v-model="mutableConfig.stopwatch.cycleTrack.stroke">, (default: "#2D353C")
-            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="24" v-model="mutableConfigDarkMode.stopwatch.cycleTrack.strokeWidth"><input v-else type="number" min="0" max="24" v-model="mutableConfig.stopwatch.cycleTrack.strokeWidth">, (default: 3)
-        },
-        label: {
-            fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.stopwatch.label.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.stopwatch.label.fontSize">, (default: 24)
-            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.label.color"><input v-else type="color" v-model="mutableConfig.stopwatch.label.color">, (default: "#2D353C")
-            bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.label.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.label.bold" @change="forceChartUpdate()">, (default: false)
-        },
-        legend: {
-            backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.legend.backgroundColor"><input v-else type="color" v-model="mutableConfig.stopwatch.legend.backgroundColor">, (default: "#FFFFFF")
-            buttons: {
-                start: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.start" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.legend.buttons.start" @change="forceChartUpdate()">, (default: true)
-                pause: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.pause" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.legend.buttons.pause" @change="forceChartUpdate()">, (default: true)
-                reset: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.reset" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.legend.buttons.reset" @change="forceChartUpdate()">, (default: true)
-                restart: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.restart" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.legend.buttons.restart" @change="forceChartUpdate()">, (default: true)
-                lap: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.lap" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.stopwatch.legend.buttons.lap" @change="forceChartUpdate()">, (default: true)
-                iconColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.stopwatch.legend.buttons.iconColor"><input v-else type="color" v-model="mutableConfig.stopwatch.legend.buttons.iconColor">, (default: "#2D353C")
-            },
-            buttonTitles: {
-                start: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.start"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.start">, (default: "Start")
-                pause: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.pause"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.pause">, (default: "Pause")
-                resume: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.resume"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.resume">, (default: "Resume")
-                reset: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.reset"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.reset">, (default: "Reset")
-                restart: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.restart"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.restart">, (default: "Restart")
-                lap: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.stopwatch.legend.buttonTitles.lap"><input v-else type="text" v-model="mutableConfig.stopwatch.legend.buttonTitles.lap">, (default: "Lap")
-            }
-        }
-    }
-}
+
+<div class="my-4">
+    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+</div>
+
+<code ref="configCode">
+    <BaseDetails attr="const config: VueUiTimerConfig" equal>
+        <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment> </span>
+        <BaseDetails attr="style" :level="1">
+            <span>fontFamily: "inherit",</span>
+            <BaseAttr name="backgroundColor" attr="style.backgroundColor"  type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+            <BaseAttr name="height" attr="style.height" type="number" defaultVal="300" :min="100" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="width" attr="style.width" type="number" defaultVal="300" :min="100" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseDetails attr="title" :level="2" title="style.title">
+                <BaseAttr name="color" attr="style.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="text" attr="style.title.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="fontSize" attr="style.title.fontSize" type="number" defaultVal="20" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="bold" attr="style.title.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="textAlign" attr="style.title.textAlign" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="paddingLeft" attr="style.title.paddingLeft" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="paddingRight" attr="style.title.paddingRight" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseDetails attr="subtitle" :level="3" title="style.title.subtitle">
+                    <BaseAttr name="color" attr="style.title.subtitle.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="text" attr="style.title.subtitle.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="fontSize" attr="style.title.subtitle.fontSize" type="number" defaultVal="20" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="bold" attr="style.title.subtitle.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                </BaseDetails>
+            </BaseDetails>
+        </BaseDetails>
+        <BaseDetails attr="stopwatch" :level="1">
+            <BaseAttr name="showHours" attr="stopwatch.showHours" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="showHundredth" attr="stopwatch.showHundredth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="cycleSeconds" attr="stopwatch.cycleSeconds" type="number" defaultVal="5" :min="1" :max="60" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseDetails attr="track" :level="2" title="stopwatch.track">
+                <BaseAttr name="radiusRatio" attr="stopwatch.track.radiusRatio" type="range" defaultVal="1" :min="0.4" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="stroke" attr="stopwatch.track.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="strokeWidth" attr="stopwatch.track.strokeWidth" type="range" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="fill" attr="stopwatch.track.fill" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+            <BaseDetails attr="tracker" :level="2" title="stopwatch.tracker">
+                <BaseAttr name="radiusRatio" attr="stopwatch.tracker.radiusRatio" type="range" defaultVal="1" :min="0.4" :max="2" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="stroke" attr="stopwatch.tracker.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="strokeWidth" attr="stopwatch.tracker.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="fill" attr="stopwatch.tracker.fill" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="gradient" :level="3" title="stopwatch.tracker.gradient">
+                    <BaseAttr name="show" attr="stopwatch.tracker.gradient.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="stopwatch.tracker.gradient.color" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+                <BaseDetails attr="aura" :level="3" title="stopwatch.tracker.aura">
+                    <BaseAttr name="show" attr="stopwatch.tracker.aura.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="radiusRatio" attr="stopwatch.tracker.aura.radiusRatio" type="range" defaultVal="1" :min="0.4" :max="3" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="fill" attr="stopwatch.tracker.aura.fill" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="stroke" attr="stopwatch.tracker.aura.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="strokeWidth" attr="stopwatch.tracker.aura.strokeWidth" type="number" defaultVal="0" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+            </BaseDetails>
+            <BaseDetails attr="cycleTrack" :level="2" title="stopwatch.cycleTrack">
+                <BaseAttr name="show" attr="stopwatch.cycleTrack.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="stroke" attr="stopwatch.cycleTrack.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="strokeWidth" attr="stopwatch.cycleTrack.strokeWidth" type="number" defaultVal="3" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+            <BaseDetails attr="label" :level="2" title="stopwatch.label">
+                <BaseAttr name="fontSize" attr="stopwatch.label.fontSize" type="number" defaultVal="24" :min="8" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="color" attr="stopwatch.label.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="bold" attr="stopwatch.label.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+            <BaseDetails attr="legend" :level="2" title="stopwatch.legend">
+                <BaseAttr name="backgroundColor" attr="stopwatch.legend.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="buttons" :level="3" title="stopwatch.legend.buttons">
+                    <BaseAttr name="start" attr="stopwatch.legend.buttons.start" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="pause" attr="stopwatch.legend.buttons.pause" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="reset" attr="stopwatch.legend.buttons.reset" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="restart" attr="stopwatch.legend.buttons.restart" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="lap" attr="stopwatch.legend.buttons.lap" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="iconColor" attr="stopwatch.legend.buttons.iconColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+                <BaseDetails attr="buttonTitles" :level="3" title="stopwatch.legend.buttonTitles">
+                    <BaseAttr name="start" attr="stopwatch.legend.buttonTitles.start" type="text" defaultVal="Start" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="pause" attr="stopwatch.legend.buttonTitles.pause" type="text" defaultVal="Pause" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="resume" attr="stopwatch.legend.buttonTitles.resume" type="text" defaultVal="Resume" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="reset" attr="stopwatch.legend.buttonTitles.reset" type="text" defaultVal="Reset" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="restart" attr="stopwatch.legend.buttonTitles.restart" type="text" defaultVal="Restart" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="lap" attr="stopwatch.legend.buttonTitles.lap" type="text" defaultVal="Lap" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+            </BaseDetails>
+        </BaseDetails>
+    </BaseDetails>
 </code>
-</pre>                    
+
                 </div> 
             </template>
             <!-- EMITS -->
