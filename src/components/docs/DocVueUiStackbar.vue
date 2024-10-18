@@ -486,6 +486,31 @@ watch(() => showAllConfig.value, (v) => {
 
 const responsiveTabLoaded = ref(false);
 
+const innerTranslations = ref({
+    distributed: {
+        en: 'This bar chart has a config option to show distributed bars. In this mode, all bars take the full height of the chart, and show proportions of each datapoint.',
+        fr: 'Ce graphique à barres dispose d’une option de configuration pour afficher des barres réparties. Dans ce mode, toutes les barres occupent la pleine hauteur du graphique et montrent les proportions de chaque point de données.',
+        pt: 'Este gráfico de barras possui uma opção de configuração para mostrar barras distribuídas. Neste modo, todas as barras ocupam a altura total do gráfico e mostram as proporções de cada ponto de dados.',
+        de: 'Dieses Balkendiagramm hat eine Konfigurationsoption, um verteilte Balken anzuzeigen. In diesem Modus nehmen alle Balken die volle Höhe des Diagramms ein und zeigen die Anteile jedes Datenpunkts.',
+        zh: '该条形图有一个配置选项，可以显示分布的条形。在此模式下，所有条形占据图表的全部高度，并显示每个数据点的比例。',
+        jp: 'この棒グラフには、バーを分布表示するための設定オプションがあります。このモードでは、すべてのバーがグラフの全高を占め、各データポイントの割合を示します。',
+        es: 'Este gráfico de barras tiene una opción de configuración para mostrar barras distribuidas. En este modo, todas las barras ocupan toda la altura del gráfico y muestran las proporciones de cada punto de datos.',
+        ko: '이 막대 차트에는 분포된 막대를 표시하는 구성 옵션이 있습니다. 이 모드에서는 모든 막대가 차트의 전체 높이를 차지하며 각 데이터 포인트의 비율을 보여줍니다.',
+        ar: 'يحتوي مخطط الأعمدة هذا على خيار تكوين لعرض الأعمدة الموزعة. في هذا الوضع، تأخذ جميع الأعمدة الارتفاع الكامل للمخطط وتعرض نسب كل نقطة بيانات.'
+    },
+    toggle: {
+        en: 'Toggle distributed mode',
+        fr: 'Basculer en mode distribué',
+        pt: 'Alternar para o modo distribuído',
+        de: 'Verteilten Modus umschalten',
+        zh: '切换分布模式',
+        jp: '分布モードを切り替える',
+        es: 'Alternar modo distribuido',
+        ko: '분포 모드 전환',
+        ar: 'تبديل وضع التوزيع'
+    }
+})
+
 </script>
 
 <template>
@@ -522,12 +547,21 @@ const responsiveTabLoaded = ref(false);
             </div>
             <Suspense>
                 <template #default>
-                    <VueUiStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    <div>
+                        <VueUiStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    </div>
                 </template>
                 <template #fallback>
                     <BaseSpinner />
                 </template>
             </Suspense>
+        </div>
+
+        <div class="w-full mt-6 pt-6 border-t border-gray-500 max-w-[600px] mx-auto">
+            <div dir="auto">{{ innerTranslations.distributed[store.lang] }}</div>
+            <code class="mt-4 flex flex-row place-items-center gap-4">
+                <BaseAttr name="distributed" attr="style.chart.bars.distributed" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </code>
         </div>
 
         <BaseDocActions
