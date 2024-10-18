@@ -3,6 +3,156 @@ import { defineStore } from "pinia";
 export const useDefaultDataStore = defineStore('defaultData', {
     state: () => {
         return {
+            vue_ui_stackbar: {
+                dataset: [
+                    {
+                        name: 'Series 1',
+                        series: [10, 20, 30],
+                        color: '#5f8aee'
+                    },
+                    {
+                        name: 'Series 2',
+                        series: [20, 40, 60],
+                        color: '#42d392'
+                    }
+                ],
+                model: [
+                    { key: 'style.chart.grid.x.timeLabels.values', def: ['JAN', 'FEB', 'MAR'], type: 'none', label: 'fontSize' },
+                    { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
+
+                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'show', category: 'userOptions'},
+                    { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.labels', def: true, type: 'checkbox', label: ['button', 'labels', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.pdf', def: 'Download PDF', type: 'text', label: ['button', 'pdf', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.csv', def: 'Download CSV', type: 'text', label: ['button', 'csv', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.labels', def: 'Toggle labels', type: 'text', label: ['button', 'labels', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+
+                    { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
+                    { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, step: 10, label: 'responsiveBreakpoint', category: 'table'},
+                    { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'},
+                    { key: 'table.columnNames.period', def: 'Period', type: 'text', label: ['columnName', 'is', 'period'], category: 'table'},
+                    { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table'},
+                    { key: 'table.th.color', def: '#1A1A1A', type: 'color', label: 'textColorHeader', category: 'table'},
+                    { key: 'table.th.outline', def: 'none', type: 'text', label: 'outlineHeader', category: 'table' },
+                    { key: 'table.td.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorRow', category: 'table' },
+                    { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', category: 'table' },
+                    { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table' },
+                    { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'table' },
+
+                    { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 24, label: 'fontSize', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.showValue', def: true, type: 'checkbox', label: 'showValue', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'tooltip' },
+                    { key: 'style.chart.tooltip.showPercentage', def: true, type: 'checkbox', label: 'showPercentage', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: 'percentageRounding', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+
+                    { key: 'style.chart.title.text', def: 'Title', type: 'text', label: ['textContent'], category: 'title'},
+                    { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: ['textColor'], category: 'title'},
+                    { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'title'},
+                    { key: 'style.chart.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title'},
+                    { key: 'style.chart.title.textAlign', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'textAlign', category: 'title'},
+                    { key: 'style.chart.title.paddingLeft', def: 0, type: 'number', min: 0, max: 24, label: ['padding', 'is', 'left'], category: 'title'},
+                    { key: 'style.chart.title.paddingRight', def: 0, type: 'number', min: 0, max: 24, label: ['padding', 'is', 'right'], category: 'title'},
+                    
+                    { key: 'style.chart.title.subtitle.text', def: 'Subtitle', type: 'text', label: 'textContent', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'subtitle'},
+                    { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle'},
+
+                    { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend'},
+                    { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend'},
+                    { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
+                    { key: 'style.chart.legend.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'legend'},
+                    { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
+
+                    { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
+                    { key: 'style.chart.padding.right', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
+                    { key: 'style.chart.padding.bottom', def: 36, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'padding'},
+                    { key: 'style.chart.padding.left', def: 48, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'padding'},
+
+                    { key: 'style.chart.highlighter.color', def: '#1A1A1A', type: 'color', label: 'highlighterColor', category: "highlight" },
+                    { key: 'style.chart.highlighter.opacity', def: 5, type: 'range', min: 0, max: 30, label: 'highlighterOpacity', category: 'highlight' },
+
+                    { key: 'style.chart.zoom.show', def: true, type: 'checkbox', label: 'zoom', category: 'general' },
+                    { key: 'style.chart.zoom.color', def: '#CCCCCC', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
+                    { key: 'style.chart.zoom.highlightColor', def: '#4A4A4A', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
+                    { key: 'style.chart.zoom.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['zoom',  'is', 'fontSize'], category: 'general'},
+
+                    { key: 'style.chart.bars.gapRatio', def: 0.5, type: 'range', min: 0, max: 1, step:0.01, label: ['gap', 'is', 'ratio'], category: 'bar'},
+                    { key: 'style.chart.bars.distributed', def: false, type: 'checkbox', label: ['distributed'], category: 'bar'},
+                    { key: 'style.chart.bars.showDistributedPercentage', def: true, type: 'checkbox', label: ['distributed', 'percentage', 'is', 'show'], category: 'bar'},
+                    { key: 'style.chart.bars.borderRadius', def: 0, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'bar'},
+                    { key: 'style.chart.bars.strokeWidth', def: 1, type: 'number', min: 0, max: 6, label: ['border', 'is', 'thickness'], category: 'bar'},
+                    { key: 'style.chart.bars.gradient.show', def: true, type: 'checkbox', label: ['gradient', 'is', 'show'], category: 'bar'},
+                    { key: 'style.chart.bars.gradient.intensity', def: 20, type: 'range', min:0, max: 50, label: ['gradient', 'is', 'intensity'], category: 'bar'},
+                    { key: 'style.chart.bars.totalValues.show', def: true, type: 'checkbox', label: ['total', 'value', 'is', 'show'], category: 'bar'},
+                    { key: 'style.chart.bars.totalValues.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['total', 'value', 'is', 'offsetY'], category: 'bar'},
+                    { key: 'style.chart.bars.totalValues.fontSize', def: 16, type: 'number', min: 8, max: 42, label: ['total', 'value', 'is', 'fontSize'], category: 'bar'},
+                    { key: 'style.chart.bars.totalValues.bold', def: false, type: 'checkbox', label: ['total', 'value', 'is', 'bold'], category: 'bar'},
+                    { key: 'style.chart.bars.totalValues.color', def: '#1A1A1A', type: 'color', label: ['total', 'value', 'is', 'textColor'], category: 'bar'},
+
+                    { key: 'style.chart.bars.dataLabels.show', def: true, type: 'checkbox', label: 'show', category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.adaptColorToBackground', def: true, type: 'checkbox', label: ['textColor', 'is', 'auto'], category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.color', def: '#1A1A1A', type: 'color', label: ['textColor', 'is', 'default'], category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['fonSize'], category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.bold', def: false, type: 'checkbox', label: 'bold', category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels'},
+
+                    { key: 'style.chart.grid.scale.ticks', def: 10, type: 'select', options: [2, 5, 10, 20], label: ['scale', 'is', 'ticks'], category: 'grid'},
+                    { key: 'style.chart.grid.x.showAxis', def: true, type: 'checkbox', label: ['xAxis', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.x.showHorizontalLines', def: false, type: 'checkbox', label: ['horizontal', 'lines', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.x.axisColor', def: '#E1E5E8', type: 'color', label: ['xAxis', 'is', 'color'], category: 'grid'},
+                    { key: 'style.chart.grid.x.axisThickness', def: 2, type: 'number', min: 0, max: 6, label: ['xAxis', 'is', 'thickness'], category: 'grid'},
+                    { key: 'style.chart.grid.x.axisName.show', def: true, type: 'checkbox', label: ['xAxis', 'name', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.x.axisName.text', def: 'X axis', type: 'text', label: ['xAxis', 'name', 'is', 'textContent'], category: 'grid'},
+                    { key: 'style.chart.grid.x.axisName.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['xAxis', 'name', 'is', 'fontSize'], category: 'grid'},
+                    { key: 'style.chart.grid.x.axisName.color', def: '#1A1A1A', type: 'color', label: ['xAxis', 'name', 'is', 'textColor'], category: 'grid'},
+                    { key: 'style.chart.grid.x.axisName.bold', def: false, type: 'checkbox', label: ['xAxis', 'name', 'is', 'bold'], category: 'grid'},
+                    { key: 'style.chart.grid.x.axisName.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['xAxis', 'name', 'is', 'offsetY'], category: 'grid'},
+
+                    { key: 'style.chart.grid.x.timeLabels.show', def: true, type: 'checkbox', label: ['time', 'labels', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.x.timeLabels.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['time', 'labels', 'is', 'offsetY'], category: 'grid'},
+                    { key: 'style.chart.grid.x.timeLabels.rotation', def: 0, type: 'range', min: -90, max: 90, label: ['time', 'labels', 'is', 'rotation'], category: 'grid'},
+                    { key: 'style.chart.grid.x.timeLabels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['time', 'labels', 'is', 'fontSize'], category: 'grid'},
+                    { key: 'style.chart.grid.x.timeLabels.color', def: '#1A1A1A', type: 'color', label: ['time', 'labels', 'is', 'textColor'], category: 'grid'},
+                    { key: 'style.chart.grid.x.timeLabels.bold', def: false, type: 'checkbox', label: ['time', 'labels', 'is', 'bold'], category: 'grid'},
+
+                    { key: 'style.chart.grid.y.showAxis', def: true, type: 'checkbox', label: ['yAxis', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.y.showVerticalLines', def: false, type: 'checkbox', label: ['verticalLines', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisColor', def: '#E1E5E8', type: 'color', label: ['yAxis', 'is', 'color'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisThickness', def: 2, type: 'number', min: 0, max: 6, label: ['yAxis', 'is', 'thickness'], category: 'grid'},
+
+                    { key: 'style.chart.grid.y.axisName.show', def: true, type: 'checkbox', label: ['yAxis', 'name', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisName.text', def: 'Y axis', type: 'text', label: ['yAxis', 'name', 'is', 'textContent'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisName.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['yAxis', 'name', 'is', 'fontSize'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisName.color', def: '#1A1A1A', type: 'color', label: ['yAxis', 'name', 'is', 'textColor'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisName.bold', def: false, type: 'checkbox', label: ['yAxis', 'name', 'is', 'bold'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisName.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['yAxis', 'name', 'is', 'offsetY'], category: 'grid'},
+
+                    { key: 'style.chart.grid.y.axisLabels.show', def: true, type: 'checkbox', label: ['scale', 'labels', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisLabels.color', def: '#1A1A1A', type: 'color', label: ['scale', 'labels', 'is', 'textColor'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisLabels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['scale', 'labels', 'is', 'fontSize'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisLabels.bold', def: false, type: 'checkbox', label: ['scale', 'labels', 'is', 'bold'], category: 'grid'}
+
+                ]
+            },
             vue_ui_gizmo: {
                 dataset: 66.5,
                 model: [

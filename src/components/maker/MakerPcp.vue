@@ -150,6 +150,8 @@ function getLabel(label) {
 
 function deleteDatasetItem(index) {
     datasetItems.value.splice(index, 1)
+    step.value += 1;
+    saveDatasetToLocalStorage()
 }
 
 function addDatasetItem() {

@@ -566,6 +566,7 @@ const innerTranslations = ref({
 
         <BaseDocActions
             targetLink="vue-ui-stackbar"
+            targetMaker="VueUiStackbar"
             :configSource="mainConfig.vue_ui_stackbar"
         />
 

@@ -39,6 +39,7 @@ const MakerFlow = defineAsyncComponent(() => import('../components/maker/MakerFl
 const MakerCarouselTable = defineAsyncComponent(() => import('../components/maker/MakerCarouselTable.vue'));
 const MakerPcp = defineAsyncComponent(() => import('../components/maker/MakerPcp.vue'));
 const MakerGizmo = defineAsyncComponent(() => import('../components/maker/MakerGizmo.vue'));
+const MakerStackbar = defineAsyncComponent(() => import('../components/maker/MakerVueUiStackbar.vue'));
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -92,6 +93,7 @@ const options = ref([
     { name: "VueUiKpi", icon: "legend", thumb: ""},
     { name: "VueUiCarouselTable", icon: "carouselTable", thumb: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href},
     { name: "VueUiGizmo", icon: "battery", thumb: new URL('../assets/thumb_gizmo_light.png', import.meta.url).href},
+    { name: "VueUiStackbar", icon: "chartStackbar", thumb: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -267,6 +269,9 @@ function selectChart(opt) {
         </Transition>
         <Transition name="fade">
             <MakerGizmo v-if="selectedChart.name === 'VueUiGizmo'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerStackbar v-if="selectedChart.name === 'VueUiStackbar'" />
         </Transition>
     </div>
 </template>
