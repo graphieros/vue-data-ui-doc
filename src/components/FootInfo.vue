@@ -7,6 +7,8 @@ const store = useMainStore();
 const router = useRouter()
 const translations = computed(() => store.translations);
 
+const isDarkMode = computed(() => store.isDarkMode);
+
 const currentRoute = computed(() => {
     return router.currentRoute.value.path;
 });
@@ -32,7 +34,7 @@ const menuItems = computed(() => {
 </script>
 s
 <template>
-    <div :class="`mt-12 justify-center py-12 border-t border-gray-500 bg-gray-200 dark:bg-[#FFFFFF10] ${isMenuOpen ? 'hidden sm:flex' : 'flex'} ${isMenuOpen && (isSelected('/docs') || isSelected('/versions')) ? 'pl-[48px] sm:pl-[348px] sm:pr-[48px]' : ''}`">
+    <div :class="`mt-12 justify-center py-12 border-t border-gray-500 ${isDarkMode ? 'bg-gradient-to-r from-transparent to-[#FFFFFF10]' : 'bg-gray-200'}   ${isMenuOpen ? 'hidden sm:flex' : 'flex'} ${isMenuOpen && (isSelected('/docs') || isSelected('/versions')) ? 'pl-[48px] sm:pl-[348px] sm:pr-[48px]' : ''}`">
 
         <div :class="`mx-auto max-w-[800px] flex flex-col sm:flex-row gap-12 place-items-center justify-center`">
             <div class="flex flex-col gap-2 place-items-center justify-center min-w-[200px]">
