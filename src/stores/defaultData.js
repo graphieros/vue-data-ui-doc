@@ -3303,6 +3303,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.paddingLeft', def: 0, type: 'number', min: 0, max: 24, label: ['padding', 'is', 'left'], category: 'title'},
                     { key: 'style.chart.title.paddingRight', def: 0, type: 'number', min: 0, max: 24, label: ['padding', 'is', 'right'], category: 'title'},
 
+                    { key: 'style.chart.zoom.show', def: true, type: 'checkbox', label: 'zoom', category: 'general' },
+                    { key: 'style.chart.zoom.color', def: '#CCCCCC', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
+                    { key: 'style.chart.zoom.highlightColor', def: '#4A4A4A', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
+
                     { key: 'style.chart.title.subtitle.text', def: 'Subtitle', type: 'text', label: 'textContent', category: 'subtitle'},
                     { key: 'style.chart.title.subtitle.color', def: '#CCCCCC', type: 'color', label: 'textColor', category: 'subtitle'},
                     { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 8, max: 48, label: 'fontSize', category: 'subtitle'},

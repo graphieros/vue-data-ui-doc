@@ -1022,7 +1022,20 @@ Target the following css class to apply custom styles:
 <code>
 .vue-data-ui-custom-tooltip
 </code>
-</pre>  
+</pre>
+
+<pre>
+<code>
+    &lt;VueUiStackbar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #reset-action="{ reset }"&gt;
+            &lt;button @click="reset()"&gt;Refresh&lt;/button&gt;
+        &lt;/template&gt;
+    &lt;/VueUiWordCloud&gt;
+</code>
+</pre>
             </template>
             <template #tab6>
                 <ThemesVueUiStackbar/>
