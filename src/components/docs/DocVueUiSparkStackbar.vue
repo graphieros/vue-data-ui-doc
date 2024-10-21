@@ -10,6 +10,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -345,6 +346,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkStackBarDa
           <BaseAttr name="rounding" attr="style.legend.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="prefix" attr="style.legend.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>          
           <BaseAttr name="suffix" attr="style.legend.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
         </BaseDetails>
       </BaseDetails>
       <BaseDetails attr="title" :level="2" title="style.title">

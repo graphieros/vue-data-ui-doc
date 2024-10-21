@@ -514,6 +514,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDumbbellDataset
                 <BaseDetails attr="labels" :level="3" title="style.chart.labels">
                     <span>prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.labels.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.labels.prefix">, (default: "")</span>
                     <span>suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.labels.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.labels.suffix">, (default: "")</span>
+                    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                     <BaseDetails attr="endLabels" :level="4" title="style.chart.labels.endLabels">
                         <span> show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.labels.endLabels.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.labels.endLabels.show" @change="forceChartUpdate()">, (default: true) </span>
                         <span>fontSize: <input v-if="isDarkMode" type="number" min="6" max="42" v-model="mutableConfigDarkMode.style.chart.labels.endLabels.fontSize"><input v-else type="number" min="6" max="42" v-model="mutableConfig.style.chart.labels.endLabels.fontSize">, (default: 10)</span>

@@ -11,6 +11,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from '../BaseNumberInput.vue';
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -461,6 +462,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
         <BaseAttr name="valueType" attr="style.dataLabel.valueType" type="select" defaultVal="latest" :options="['latest', 'sum', 'average']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="prefix" attr="style.dataLabel.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="suffix" attr="style.dataLabel.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
       </BaseDetails>
       <BaseDetails attr="line" :level="2" title="style.line">
         <BaseAttr name="color" attr="style.line.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

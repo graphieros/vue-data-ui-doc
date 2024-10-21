@@ -488,6 +488,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                     <BaseAttr name="showPlusSymbol" attr="style.chart.legend.showPlusSymbol" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="useRatingColor" attr="style.chart.legend.useRatingColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="With useRatingColor set to false" />
+                    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
                     <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

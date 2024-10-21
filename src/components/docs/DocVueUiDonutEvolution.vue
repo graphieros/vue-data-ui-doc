@@ -496,6 +496,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionD
                         <BaseAttr name="prefix" attr="style.chart.layout.dataLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="suffix" attr="style.chart.layout.dataLabels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="offsetY" attr="style.chart.layout.dataLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                     </BaseDetails>
                     <BaseDetails attr="grid" :level="4" title="style.chart.layout.grid">
                         <BaseAttr name="show" attr="style.chart.layout.grid.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

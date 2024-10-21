@@ -486,6 +486,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiHeatmapDatasetI
               <BaseAttr name="bold" attr="style.layout.cells.value.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="roundingValue" attr="style.layout.cells.value.roundingValue" type="number" defaulVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="color" attr="style.layout.cells.value.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
             </BaseDetails>
           </BaseDetails>
           <BaseDetails attr="dataLabels" :level="3" title="style.layout.dataLabels">

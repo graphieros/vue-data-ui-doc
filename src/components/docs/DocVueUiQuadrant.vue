@@ -12,6 +12,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseDocActions from "./BaseDocActions.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -155,6 +156,12 @@ const config = ref({
                         fontSize: 10,
                         color: "#1A1A1A",
                         offsetY: 10,
+                        x: {
+                            formatter: null,
+                        },
+                        y: {
+                            formatter: null
+                        }
                     },
                     axisLabels: {
                         show: true,
@@ -334,6 +341,12 @@ const darkModeConfig = ref({
                         fontSize: 10,
                         color: "#CCCCCC",
                         offsetY: 10,
+                        x: {
+                            formatter: null,
+                        },
+                        y: {
+                            formatter: null
+                        }
                     },
                     axisLabels: {
                         show: true,
@@ -758,6 +771,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
                             <span>fontSize: <input v-if="isDarkMode" type="number" min="6" max="30" v-model="mutableConfigDarkMode.style.chart.layout.labels.plotLabels.fontSize"><input v-else type="number" min="6" max="30" v-model="mutableConfig.style.chart.layout.labels.plotLabels.fontSize">, (default: 10)</span>
                             <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.labels.plotLabels.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.labels.plotLabels.color">, (default: "#2D353C") </span>
                             <span>offsetY: <input v-if="isDarkMode" type="number" min="6" max="30" v-model="mutableConfigDarkMode.style.chart.layout.labels.plotLabels.offsetY"><input v-else type="number" min="6" max="30" v-model="mutableConfig.style.chart.layout.labels.plotLabels.offsetY">, (default: 8)</span>
+                            <BaseDetails attr="x" :level="6" title="style.chart.layout.labels.plotLabels.x">
+                                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                            </BaseDetails>
+                            <BaseDetails attr="y" :level="6" title="style.chart.layout.labels.plotLabels.y">
+                                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                            </BaseDetails>
                         </BaseDetails>
                         <BaseDetails attr="quadrantLabels" :level="5" title="style.chart.layout.labels.quadrantLabels">
                             <span>show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.labels.quadrantLabels.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.labels.quadrantLabels.show" @change="forceChartUpdate()">, (default: true)</span>

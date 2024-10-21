@@ -329,6 +329,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
             <BaseAttr name="fontSize" attr="style.chart.layout.percentage.fontSize" type="number" defaultVal="48" :min="8" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="rounding" attr="style.chart.layout.percentage.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="bold" attr="style.chart.layout.percentage.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
           </BaseDetails>
           <BaseDetails attr="wheel" :level="4" title="style.chart.layout.wheel">
             <BaseDetails attr="ticks" :level="5" title="style.chart.layout.wheel.ticks">

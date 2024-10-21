@@ -10,6 +10,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -136,7 +137,13 @@ const darkModeConfig = ref({
               bold: false,
               showName: true,
               prefix: "",
-              suffix: ""
+              suffix: "",
+              x: {
+                formatter: null
+              },
+              y: {
+                formatter: null
+              }
             },
             markers: {
               radius: 1.5,
@@ -334,7 +341,13 @@ const config = ref({
               bold: false,
               showName: true,
               prefix: "",
-              suffix: ""
+              suffix: "",
+              x: {
+                formatter: null
+              },
+              y: {
+                formatter: null
+              }
             },
             markers: {
               radius: 1.5,
@@ -746,6 +759,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiScatterDatasetI
               <span>showName: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.layout.plots.selectors.labels.showName"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.layout.plots.selectors.labels.showName">, (default: true)</span>
               <span>prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.layout.plots.selectors.labels.prefix"><input v-else type="text" v-model="mutableConfig.style.layout.plots.selectors.labels.prefix">, (default: "")</span>
               <span>suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.layout.plots.selectors.labels.suffix"><input v-else type="text" v-model="mutableConfig.style.layout.plots.selectors.labels.suffix">, (default: "")</span>
+              <BaseDetails attr="x" :level="6" title="style.layout.plots.selectors.labels.x">
+                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+              </BaseDetails>
+              <BaseDetails attr="y" :level="6" title="style.layout.plots.selectors.labels.y">
+                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+              </BaseDetails>
             </BaseDetails>
             <BaseDetails attr="markers" :level="5" title="style.layout.plots.selectors.markers">
               <span>radius: <input v-if="isDarkMode" type="number" min="0" max="32" v-model="mutableConfigDarkMode.style.layout.plots.selectors.markers.radius"><input v-else type="number" min="0" max="32" v-model="mutableConfig.style.layout.plots.selectors.markers.radius">, (default: 12)</span>

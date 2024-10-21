@@ -660,6 +660,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStripPlotDatase
                 <BaseDetails attr="labels" :level="3" title="style.chart.labels">
                     <span>prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.labels.prefix"><input v-else type="text" v-model="mutableConfig.style.chart.labels.prefix">, (default: "")</span>
                     <span>suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.labels.suffix"><input v-else type="text" v-model="mutableConfig.style.chart.labels.suffix">, (default: "")</span>
+                    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                     <BaseDetails attr="axis" :level="4" title="style.chart.labels.axis">
                         <span>xLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.chart.labels.axis.xLabel"><input v-else type="text" v-model="mutableConfig.style.chart.labels.axis.xLabel">, (default: "")</span>
                         <span>xLabelOffsetY: <input v-if="isDarkMode" type="number" min="-50" max="50" v-model="mutableConfigDarkMode.style.chart.labels.axis.xLabelOffsetY"><input v-else type="number" min="-50" max="50" v-model="mutableConfig.style.chart.labels.axis.xLabelOffsetY">, (default: 0)</span>

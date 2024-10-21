@@ -495,6 +495,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWaffleDatasetIt
                         <BaseDetails attr="dataLabels" :level="5" title="style.chart.layout.labels.dataLabels">
                             <BaseAttr name="prefix" attr="style.chart.layout.labels.dataLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="suffix" attr="style.chart.layout.labels.dataLabels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                         </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="rect" :level="4" title="style.chart.layout.rect">

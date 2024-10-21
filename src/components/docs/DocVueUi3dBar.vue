@@ -11,6 +11,7 @@ import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseDetails from "../BaseDetails.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -615,6 +616,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                     <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.dataLabel.color"><input v-else type="color" v-model="mutableConfig.style.chart.dataLabel.color">,  (default: "#5f8bee") <span class="text-app-blue text-xs">// percentage mode only</span></span>
                     <span>fontSize: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.dataLabel.fontSize" :min="8" :max="42"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.dataLabel.fontSize" :min="8" :max="42"/>, (default: 12) <span class="text-app-blue text-xs">// percentage mode only</span></span>
                     <span>rounding: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.chart.dataLabel.rounding" :min="0" :max="6"/><BaseNumberInput v-else v-model:value="mutableConfig.style.chart.dataLabel.rounding" :min="0" :max="6"/>, (default: 12) <span class="text-app-blue text-xs">// percentage mode only</span></span>
+                    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                 </BaseDetails>
                 <BaseDetails attr="legend" :level="3" title="style.chart.legend">
                     <span>showDefault: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.legend.showDefault" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.legend.showDefault" @change="forceChartUpdate()">, (default: true) <span class="text-app-blue text-xs">// stack mode only</span></span>

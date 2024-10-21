@@ -9,6 +9,7 @@ import ColorPalette from "../components/customization/ColorPalette.vue";
 import CustomMenu from "../components/customization/CustomMenu.vue";
 import MenuSlots from "../components/customization/MenuSlots.vue";
 import Watermark from "../components/customization/Watermark.vue";
+import LabelFormatter from "../components/customization/LabelFormatter.vue";
 import { useRouter } from "vue-router";
 import BaseCustomizationBox from "../components/customization/BaseCustomizationBox.vue";
 
@@ -58,6 +59,11 @@ const menu = ref([
     label: "watermark",
     link: "/customization#watermark-slot",
   },
+  {
+    name: "formatter",
+    label: "formatter",
+    link: "/customization#formatter",
+  },
 ]);
 </script>
 
@@ -98,4 +104,5 @@ const menu = ref([
   <MenuSlots v-if="currentRoute === '/customization#menu-slots'" />
   <CustomMenu v-if="currentRoute === '/customization#custom-menu'" />
   <Watermark v-if="currentRoute === '/customization#watermark-slot'" />
+  <LabelFormatter v-if="currentRoute === '/customization#formatter'" />
 </template>

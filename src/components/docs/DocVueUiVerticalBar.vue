@@ -11,6 +11,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -617,6 +618,7 @@ const <span class="text-app-green">dataset: VueUiVerticalBarDatasetItem[]</span>
                 <BaseAttr name="roundingValue" attr="style.chart.layout.bars.dataLabels.value.roundingValue" type="number" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="prefix" attr="style.chart.layout.bars.dataLabels.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="suffix" attr="style.chart.layout.bars.dataLabels.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
               </BaseDetails>
             </BaseDetails>
             <BaseDetails attr="nameLabels" :level="5" title="style.chart.layout.bars.nameLabels">

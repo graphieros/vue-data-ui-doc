@@ -9,6 +9,8 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseDocActions from "./BaseDocActions.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -75,7 +77,9 @@ const darkModeConfig = ref({
                     color: "#CCCCCC",
                     roundingPercentage: 0,
                     roundingValue: 0,
-                    bold: true
+                    bold: true,
+                    prefix: '',
+                    suffix: ''
                 }
             },
             title: {
@@ -186,7 +190,9 @@ const config = ref({
                     color: "#2D353C",
                     roundingPercentage: 0,
                     roundingValue: 0,
-                    bold: true
+                    bold: true,
+                    prefix: '',
+                    suffix: ''
                 }
             },
             title: {
@@ -395,46 +401,48 @@ watch(() => showAllConfig.value, (v) => {
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiMoodRadarConfig" equal>
-        <span>theme: ""; ("zen" | "hack" | "concrete" | "")</span>
+        <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
-                <span>backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")</span>
-                <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")</span>
+                <BaseAttr name="backgroundColor" attr="style.chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">
                     <BaseDetails attr="dataLabel" :level="4" title="style.chart.layout.dataLabel">
-                        <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.dataLabel.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.dataLabel.color">, (default: "#2D353C")</span>
-                        <span>roundingPercentage: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.layout.dataLabel.roundingPercentage"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.layout.dataLabel.roundingPercentage">, (default: 0)</span>
-                        <span>roundingValue: <input v-if="isDarkMode" type="number" min="0" max="3" v-model="mutableConfigDarkMode.style.chart.layout.dataLabel.roundingValue"><input v-else type="number" min="0" max="3" v-model="mutableConfig.style.chart.layout.dataLabel.roundingValue">, (default: 0)</span>
-                        <span>bold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.dataLabel.bold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.dataLabel.bold" @change="forceChartUpdate()">, (default: true)</span>
+                        <BaseAttr name="color" attr="style.chart.layout.dataLabel.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="roundingValue" attr="style.chart.layout.dataLabel.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="roundingPercentage" attr="style.chart.layout.dataLabel.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="bold" attr="style.chart.layout.dataLabel.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="prefix" attr="style.chart.layout.dataLabel.prefix" type="text" defaultval="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="suffix" attr="style.chart.layout.dataLabel.suffix" type="text" defaultval="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                     </BaseDetails>
                     <BaseDetails attr="dataPolygon" :level="4" title="style.chart.layout.dataPolygon">
-                        <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.dataPolygon.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.dataPolygon.color">, (default: "#5f8bee")</span>
-                        <span> opacity: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.chart.layout.dataPolygon.opacity"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.chart.layout.dataPolygon.opacity">, (default: 60)</span>
-                        <span> stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.dataPolygon.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.dataPolygon.stroke">, (default: "#5f8bee")</span>
-                        <span>strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="12" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.dataPolygon.strokeWidth"><input v-else type="number" min="0" max="6" step="0.1" v-model="mutableConfig.style.chart.layout.dataPolygon.strokeWidth">, (default: 0)</span>
+                        <BaseAttr name="color" attr="style.chart.layout.dataPolygon.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="opacity" attr="style.chart.layout.dataPolygon.opacity" type="range" defaultVal="60" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="stroke" attr="style.chart.layout.dataPolygon.stroke" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.layout.dataPolygon.strokeWidth" type="number" defaultVal="0" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseDetails attr="gradient" :level="5" title="style.chart.layout.dataPolygon.gradient">
-                            <span>show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.dataPolygon.gradient.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.dataPolygon.gradient.show" @change="forceChartUpdate()">, (default: true)</span>
-                            <span>intensity: <input v-if="isDarkMode" type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.style.chart.layout.dataPolygon.gradient.intensity"><input v-else type="range" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.style.chart.layout.dataPolygon.gradient.intensity">, (default: 5)</span>
+                            <BaseAttr name="show" attr="style.chart.layout.dataPolygon.gradient.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="intensity" attr="style.chart.layout.dataPolygon.gradient.intensity" type="range" defaultVal="5" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="grid" :level="4" title="style.chart.layout.grid">
-                        <span>show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.chart.layout.grid.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.chart.layout.grid.show" @change="forceChartUpdate()">, (default: true)</span>
-                        <span>stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.grid.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.grid.stroke">, (default: "#e1e5e8")</span>
-                        <span>strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="12" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.grid.strokeWidth"><input v-else type="number" min="0" max="6" step="0.1" v-model="mutableConfig.style.chart.layout.grid.strokeWidth">, (default: 0.5)</span>
+                        <BaseAttr name="show" attr="style.chart.layout.grid.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="stroke" attr="style.chart.layout.grid.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.layout.grid.strokeWidth" type="number" defaultVal="0.5" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="outerPolygon" :level="4" title="style.chart.layout.outerPolygon">
-                        <span>stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.outerPolygon.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.outerPolygon.stroke">, (default: "#e1e5e8")</span>
-                        <span>strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="12" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.outerPolygon.strokeWidth"><input v-else type="number" min="0" max="6" step="0.1" v-model="mutableConfig.style.chart.layout.outerPolygon.strokeWidth">, (default: 1)</span>
+                        <BaseAttr name="stroke" attr="style.chart.layout.outerPolygon.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.layout.outerPolygon.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="smileys" :level="4" title="style.chart.layout.smileys">
-                        <span>strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="12" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.smileys.strokeWidth"><input v-else type="number" min="0" max="6" step="0.1" v-model="mutableConfig.style.chart.layout.smileys.strokeWidth">, (default: 1)</span>
                         <BaseDetails attr="colors" :level="5" title="style.chart.layout.smileys.colors">
-                            <span>"1": <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.smileys.colors['1']"><input v-else type="color" v-model="mutableConfig.style.chart.layout.smileys.colors['1']">, (default: "#e20001")</span>
-                            <span>"2": <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.smileys.colors['2']"><input v-else type="color" v-model="mutableConfig.style.chart.layout.smileys.colors['2']">, (default: "#ff9f03")</span>
-                            <span>"3": <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.smileys.colors['3']"><input v-else type="color" v-model="mutableConfig.style.chart.layout.smileys.colors['3']">, (default: "#ffd004")</span>
-                            <span>"4": <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.smileys.colors['4']"><input v-else type="color" v-model="mutableConfig.style.chart.layout.smileys.colors['4']">, (default: "#9ac900")</span>
-                            <span>"5": <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.smileys.colors['5']"><input v-else type="color" v-model="mutableConfig.style.chart.layout.smileys.colors['5']">, (default: "#059f00")</span>
+                            <BaseAttr name="'1'" :attr="`style.chart.layout.smileys.colors.1`" type="color" defaultVal="#E20001" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="'2'" :attr="`style.chart.layout.smileys.colors.2`" type="color" defaultVal="#FF9F03" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="'3'" :attr="`style.chart.layout.smileys.colors.3`" type="color" defaultVal="#FFD004" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="'4'" :attr="`style.chart.layout.smileys.colors.4`" type="color" defaultVal="#9AC900" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="'5'" :attr="`style.chart.layout.smileys.colors.5`" type="color" defaultVal="#059F00" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
                     </BaseDetails>
                 </BaseDetails>

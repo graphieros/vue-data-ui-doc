@@ -11,6 +11,7 @@ import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseDetails from "../BaseDetails.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -735,6 +736,7 @@ watch(() => showAllConfig.value, (v) => {
         </div>
 
         fontFamily: "inherit",
+        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
         <BaseAttr name="height" attr="height" type="number" defaultVal="338" :min="100" :max="600" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="legendFontSize" attr="legendFontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="legendIcon" attr="legendIcon" type="select" defaultVal="circleFill" :options="icons" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

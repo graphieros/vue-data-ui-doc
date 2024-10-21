@@ -8,6 +8,8 @@ import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseDetails from "../BaseDetails.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -67,6 +69,9 @@ const config = ref({
   showSparklines: true,
   fontFamily: "inherit",
   colNames: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN"],
+  prefix: '',
+  suffix: '',
+  formatter: null,
   sparkline: {
     useGradient: true,
     showArea: true,
@@ -146,6 +151,9 @@ const darkModeConfig = ref({
   showSparklines: true,
   fontFamily: "inherit",
   colNames: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN"],
+  prefix: '',
+  suffix: '',
+  formater: null,
   sparkline: {
     useGradient: true,
     showArea: true,
@@ -385,6 +393,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
     <span>showSparklines: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showSparklines" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showSparklines" @change="forceChartUpdate()">, (default: true)</span>
     <span>showTotal: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.showTotal" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.showTotal" @change="forceChartUpdate()">, (default: true)</span>
     <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+    <BaseAttr name="prefix" attr="prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="suffix" attr="suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
     <BaseDetails attr="sparkline" :level="1">
       <span> useGradient: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.sparkline.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.sparkline.useGradient" @change="forceChartUpdate()">, (default: true)</span>
       <span> showArea: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.sparkline.showArea" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.sparkline.showArea" @change="forceChartUpdate()">, (default: true)</span>

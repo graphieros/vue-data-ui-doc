@@ -12,6 +12,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -634,6 +635,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                     <BaseAttr name="useSerieColor" attr="style.chart.dataLabels.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="color" attr="style.chart.dataLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="offsetY" attr="style.chart.dataLabels.offsetY" type="number" defaultVal="-12" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                 </BaseDetails>
                 <BaseDetails attr="grid" :level="3" title="style.chart.grid">
                     <BaseDetails attr="x" :level="4" title="style.chart.grid.x">

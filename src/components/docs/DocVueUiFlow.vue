@@ -10,6 +10,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -406,6 +407,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiFlowDatasetItem
                         <BaseAttr name="fontSize" attr="style.chart.nodes.labels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="prefix" attr="style.chart.node.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="suffix" attr="style.chart.node.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                         <BaseAttr name="rounding" attr="style.chart.nodes.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseDetails attr="abbreviation" :level="5" title="style.chart.nodes.labels.abbreviation">
                             <BaseAttr name="use" attr="style.chart.nodes.labels.abbreviation.use" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

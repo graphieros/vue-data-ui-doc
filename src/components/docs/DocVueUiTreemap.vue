@@ -588,6 +588,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTreemapDatasetI
                         <BaseAttr name="prefix" attr="style.chart.layout.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="suffix" attr="style.chart.layout.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="rounding" attr="style.chart.layout.labels.rounding" type="number" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                     </BaseDetails>
                     <BaseDetails attr="rects" :level="4" title="style.chart.layout.rects">
                         <BaseAttr name="stroke" attr="style.chart.layout.rects.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

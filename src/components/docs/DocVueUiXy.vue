@@ -12,6 +12,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -879,6 +880,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                         <BaseAttr name="stacked" attr="chart.grid.labels.yAxis.stacked" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Always use in combination with useIndividualScale: true" @change="forceChartUpdate()"/>
                         <BaseAttr name="gap" attr="chart.grid.labels.yAxis.gap" type="number" defaultVal="64" :min="20" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="To be used with useIndividualScale: true && stacked: true"/>
                         <BaseAttr name="showBaseline" attr="chart.grid.labels.yAxis.showBaseline" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                     </BaseDetails>
                     <BaseDetails attr="zeroLine" :level="4" title="chart.grid.labels.zeroLine">
                         <BaseAttr name="show" attr="chart.grid.labels.zeroLine.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/> 
@@ -1014,6 +1016,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="offsetY" attr="bar.labels.offsetY" type="number" defaultVal="-6" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="rounding" attr="bar.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="bar.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
             </BaseDetails>
             <BaseDetails attr="serieName" :level="2" title="bar.serieName">
                 <BaseAttr name="show" attr="bar.serieName.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1037,6 +1040,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="offsetY" attr="line.labels.offsetY" type="number" defaultVal="-6" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="rounding" attr="line.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="line.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="plot" :level="1">
@@ -1047,6 +1051,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="offsetY" attr="plot.labels.offsetY" type="number" defaultVal="-6" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="rounding" attr="plot.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="plot.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="table" :level="1">

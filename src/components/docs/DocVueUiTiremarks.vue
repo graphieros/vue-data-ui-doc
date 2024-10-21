@@ -339,6 +339,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
           <BaseAttr name="rounding" attr="style.chart.percentage.rounding" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="verticalPosition" attr="style.chart.percentage.verticalPosition" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="horizontalPosition" attr="style.chart.percentage.horizontalPosition" type="select" defaultVal="left" :options="['left', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
         </BaseDetails>
         <BaseDetails attr="title" :level="3" title="style.chart.title">
           <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

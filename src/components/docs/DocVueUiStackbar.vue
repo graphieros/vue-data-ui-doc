@@ -729,6 +729,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                             <BaseAttr name="rounding" attr="style.chart.bars.dataLabels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="prefix" attr="style.chart.bars.dataLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="suffix" attr="style.chart.bars.dataLabels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                         </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="grid" :level="3" title="style.chart.grid">

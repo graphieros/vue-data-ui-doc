@@ -10,6 +10,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -273,10 +274,11 @@ watch(() => showAllConfig.value, (v) => {
         {
             name: string;
             value: number;
-            prefix?: string; <span class="text-gray-500">// {{ translations.docs.comments.onion.prefix[store.lang] }}</span>
-            suffix?: string; <span class="text-gray-500">// {{ translations.docs.comments.onion.suffix[store.lang] }}</span>
+            prefix?: string; <BaseComment>{{ translations.docs.comments.onion.prefix[store.lang] }}</BaseComment>
+            suffix?: string; <BaseComment>{{ translations.docs.comments.onion.suffix[store.lang] }}</BaseComment>
             rounding?: number;
-            target?: number; <span class="text-gray-500">// {{ translations.docs.comments.sparkbar.target[store.lang] }}</span>
+            target?: number; <BaseComment>{{ translations.docs.comments.sparkbar.target[store.lang] }}</BaseComment>
+            formatter?: null | ({ value: number; config?: any }) => number | string <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment>
         }
     ]
 </code>
@@ -289,19 +291,19 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkbarDataset
         name: "quality",
         value: 61.953,
         rounding: 2,
-        suffix: "%"
+        suffix: "%",
     },
     {
         name: "popularity",
         value: 2.0412,
         rounding: 2,
-        suffix: "%"
+        suffix: "%",
     },
     {
         name: "maintenance",
         value: 33.3291,
         rounding: 2,
-        suffix: "%"
+        suffix: "%",
     },
 ]
 </code>

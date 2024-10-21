@@ -559,6 +559,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiOnionDatasetIte
                         </BaseDetails>
                         <BaseDetails attr="value" :level="5" title="style.chart.layout.labels.value">
                             <BaseAttr name="show" attr="style.chart.layout.labels.value.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                         </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="track" :level="4" title="style.chart.layout.track">

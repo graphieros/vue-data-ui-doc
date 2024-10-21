@@ -25,6 +25,28 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                formatter: {
+                    en: 'Chart data labels can be customized using the formatter config attribute. (Check component documentations under the config tab to see where the formatter attributes are located).',
+                    fr: 'Les étiquettes de données du graphique peuvent être personnalisées en utilisant l\'attribut de configuration du formateur. (Consultez la documentation des composants sous l\'onglet de configuration pour voir où se trouvent les attributs du formateur).',
+                    pt: 'Os rótulos de dados do gráfico podem ser personalizados usando o atributo de configuração do formatador. (Verifique a documentação do componente na guia de configuração para ver onde os atributos do formatador estão localizados).',
+                    de: 'Diagrammdatentitel können mit dem Formatter-Konfigurationsattribut angepasst werden. (Überprüfen Sie die Komponentendokumentation unter dem Konfigurationsreiter, um zu sehen, wo sich die Formatter-Attribute befinden).',
+                    zh: '图表数据标签可以使用格式化器配置属性进行自定义。 （查看组件文档的配置选项卡，以了解格式化器属性的位置）。',
+                    jp: 'グラフのデータラベルは、フォーマッターの設定属性を使用してカスタマイズできます。（設定タブのコンポーネントドキュメントで、フォーマッター属性がどこにあるか確認してください）。',
+                    es: 'Las etiquetas de datos del gráfico se pueden personalizar utilizando el atributo de configuración del formateador. (Consulta la documentación del componente en la pestaña de configuración para ver dónde se encuentran los atributos del formateador).',
+                    ko: '차트 데이터 라벨은 포매터 설정 속성을 사용하여 사용자 정의할 수 있습니다. (설정 탭 아래의 구성 요소 문서에서 포매터 속성의 위치를 확인하세요).',
+                    ar: 'يمكن تخصيص تسميات بيانات الرسم البياني باستخدام سمة تكوين المنسق. (تحقق من وثائق المكون ضمن علامة تبويب التكوين لمعرفة مكان وجود سمات المنسق).'
+                },
+                formatterLink: {
+                    en: 'Check out the customization page to see how to use the formatter callback function.',
+                    fr: 'Consultez la page de personnalisation pour voir comment utiliser la fonction de rappel du formateur.',
+                    pt: 'Confira a página de personalização para ver como usar a função de retorno de chamada do formatador.',
+                    de: 'Schauen Sie sich die Anpassungsseite an, um zu sehen, wie Sie die Formatter-Callback-Funktion verwenden.',
+                    zh: '查看自定义页面，了解如何使用格式化回调函数。',
+                    jp: 'フォーマッターのコールバック関数の使い方については、カスタマイズページをご覧ください。',
+                    es: 'Consulta la página de personalización para ver cómo usar la función de devolución de llamada del formateador.',
+                    ko: '포매터 콜백 함수 사용 방법은 사용자 정의 페이지를 확인하세요.',
+                    ar: 'اطّلع على صفحة التخصيص لمعرفة كيفية استخدام دالة رد الاستدعاء الخاصة بالمنسّق.'
+                },
                 useTs: {
                     en: 'Use Typescript:',
                     fr: 'Avec Typescript',

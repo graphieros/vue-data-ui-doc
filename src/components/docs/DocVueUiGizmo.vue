@@ -9,6 +9,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -183,6 +184,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiGizmoDataset</s
         <BaseAttr name="gradientColor" attr="gradientColor" type="color" defaultVal="#9DB5ED" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="showPercentage" attr="showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="textColor" attr="textColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
     </BaseDetails>
 </code>
             </template>

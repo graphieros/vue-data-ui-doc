@@ -11,6 +11,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -1100,6 +1101,7 @@ watch(() => showAllConfig.value, (v) => {
             <BaseAttr name="bold" attr="style.layout.dataLabels.xAxis.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="scale" attr="style.layout.dataLabels.xAxis.scale" type="select" defaultVal="1000" :options="['1', '10', '100', '1000', '10000', '100000']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="translation" attr="style.layout.dataLabels.xAxis.translation" type="text" defaultVal="in thousands" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
           </BaseDetails>
           <BaseDetails attr="yAxis" :level="4" title="style.layout.dataLabels.yAxis">
             <BaseAttr name="show" attr="style.layout.dataLabels.yAxis.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1108,6 +1110,7 @@ watch(() => showAllConfig.value, (v) => {
             <BaseAttr name="color" attr="style.layout.dataLabels.yAxis.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="bold" attr="style.layout.dataLabels.yAxis.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="showEvery" attr="style.layout.dataLabels.yAxis.showEvery" type="select" defaultVal="5" :options="['1', '5', '10']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
           </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="grid" :level="3" title="style.layout.grid">

@@ -10,6 +10,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -532,6 +533,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkHistogramD
           <BaseAttr name="prefix" attr="style.labels.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="suffix" attr="style.labels.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="offsetY" attr="style.labels.value.offsetY" type="number" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
         </BaseDetails>
         <BaseDetails attr="valueLabel" :level="3" title="style.labels.valueLabel">
           <BaseAttr name="fontSize" attr="style.labels.valueLabel.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

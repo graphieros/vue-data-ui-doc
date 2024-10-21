@@ -484,6 +484,7 @@ watch(() => showAllConfig.value, (v) => {
                 name: string;
                 values: number[]; <span class="text-gray-600 dark:text-app-green">// {{  translations.docs.comments.radar.seriesValues[store.lang]  }}</span>
                 target: number; <span class="text-gray-600 dark:text-app-green">// {{  translations.docs.comments.radar.target[store.lang] }}</span>
+                formatter?: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment>
             },
             {...} <span class="text-gray-600 dark:text-app-orange">// {{  translations.docs.comments.radar.polygon[store.lang]  }}</span>
         ]

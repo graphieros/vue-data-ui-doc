@@ -570,6 +570,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiNestedDonutsDat
                             <BaseAttr name="donutNameAbbreviation" attr="style.chart.layout.labels.dataLabels.donutNameAbbreviation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="donutNameMaxAbbreviationSize" attr="style.chart.layout.labels.dataLabels.donutNameMaxAbbreviationSize" type="number" defaultVal="3" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
                             <BaseAttr name="donutNameOffsetY" attr="style.chart.layout.labels.dataLabels.donutNameOffsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                         </BaseDetails>
                     </BaseDetails>
                 </BaseDetails>

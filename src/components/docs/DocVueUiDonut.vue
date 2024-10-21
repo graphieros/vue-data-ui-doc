@@ -12,6 +12,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -78,7 +79,8 @@ const darkModeConfig = ref({
                     percentage: {
                         color: "#CCCCCC",
                         bold: true,
-                        fontSize: 18
+                        fontSize: 18,
+                        rounding: 0,
                     },
                     name: {
                         color: "#CCCCCC",
@@ -253,7 +255,8 @@ const config = ref({
                     percentage: {
                         color: "#1A1A1A",
                         bold: true,
-                        fontSize: 18
+                        fontSize: 18,
+                        rounding: 0,
                     },
                     name: {
                         color: "#1A1A1A",
@@ -754,10 +757,17 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
                             <BaseAttr name="prefix" :light="mutableConfig" :dark="mutableConfigDarkMode" type="text" attr="style.chart.layout.labels.dataLabels.prefix" defaultVal="''"/>
                             <BaseAttr name="suffix" :light="mutableConfig" :dark="mutableConfigDarkMode" type="text" attr="style.chart.layout.labels.dataLabels.suffix" defaultVal="''"/>
                         </BaseDetails>
+                        <BaseDetails attr="value" :level="5" title="style.chart.layout.labels.value">
+                            <BaseAttr name="show" attr="style.chart.layout.labels.value.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="rounding" attr="style.chart.layout.labels.value.rounding" type="number" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                        </BaseDetails>
                         <BaseDetails attr="percentage" :level="5" title="style.chart.layout.labels.percentage">
                             <BaseAttr name="color" attr="style.chart.layout.labels.percentage.color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" defaultVal="#2D353C"/>
                             <BaseAttr name="bold" attr="style.chart.layout.labels.percentage.bold" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" defaultVal="true"/>
                             <BaseAttr name="fontSize" attr="style.chart.layout.labels.percentage.fontSize" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="8" :max="42" defaultVal="18"/>
+                            <BaseAttr name="rounding" attr="style.chart.layout.labels.percentage.rounding" type="number" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                         </BaseDetails>
                         <BaseDetails attr="name" :level="5" title="style.chart.layout.labels.name">
                             <BaseAttr name="color" attr="style.chart.layout.labels.name.color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" defaultVal="#2D353C"/>
@@ -781,6 +791,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
                                     <BaseAttr name="rounding" attr="style.chart.layout.labels.hollow.average.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="prefix" attr="style.chart.layout.labels.hollow.average.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="suffix" attr="style.chart.layout.labels.hollow.average.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                                 </BaseDetails>
                             </BaseDetails>
                             <BaseDetails attr="total" :level="6" title="style.chart.layout.labels.hollow.total">
@@ -798,6 +809,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
                                     <BaseAttr name="rounding" attr="style.chart.layout.labels.hollow.total.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="prefix" attr="style.chart.layout.labels.hollow.total.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="suffix" attr="style.chart.layout.labels.hollow.total.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                                 </BaseDetails>
                             </BaseDetails>
                         </BaseDetails>

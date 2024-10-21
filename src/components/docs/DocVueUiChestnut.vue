@@ -863,6 +863,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiChestnutDataset
                 <BaseAttr name="roundingPercentage" attr="style.chart.layout.branches.labels.dataLabels.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="prefix" attr="style.chart.layout.branches.labels.dataLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="suffix" attr="style.chart.layout.branches.labels.dataLabels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
               </BaseDetails>
             </BaseDetails>
           </BaseDetails>
@@ -876,6 +877,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiChestnutDataset
             <BaseAttr name="color" attr="style.chart.layout.grandTotal.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="text" attr="style.chart.layout.grandTotal.text" type="text" defaultVal="'Grand total'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="offsetY" attr="style.chart.layout.grandTotal.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
           </BaseDetails>
           <BaseDetails attr="legend" :level="4" title="style.chart.layout.legend">
             <BaseAttr name="fontSize" attr="style.chart.layout.legend.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -920,6 +922,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiChestnutDataset
                   <BaseAttr name="bold" attr="style.chart.layout.nuts.selected.labels.dataLabels.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                   <BaseAttr name="prefix" attr="style.chart.layout.nuts.selected.labels.dataLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                   <BaseAttr name="suffix" attr="style.chart.layout.nuts.selected.labels.dataLabels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                 </BaseDetails>
               </BaseDetails>
             </BaseDetails>
@@ -939,6 +942,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiChestnutDataset
               <BaseAttr name="roundingValue" attr="style.chart.layout.roots.labels.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="prefix" attr="style.chart.layout.roots.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="suffix" attr="style.chart.layout.roots.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
               <BaseDetails attr="name" :level="6" title="style.chart.layout.roots.labels.name">
                 <BaseAttr name="color" attr="style.chart.layout.roots.labels.name.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="style.chart.layout.roots.labels.name.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

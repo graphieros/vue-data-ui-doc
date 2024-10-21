@@ -365,6 +365,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
           <BaseAttr name="color" attr="style.chart.label.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="prefix" attr="style.chart.label.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="suffix" attr="style.chart.label.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
         </BaseDetails>
         <BaseDetails attr="padding" :level="3" title="style.chart.padding">
           <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
