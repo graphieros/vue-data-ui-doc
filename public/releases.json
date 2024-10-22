@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.3.31",
+    "date": "2024-10-21",
+    "updates": [
+      {
+        "component": "VueUiWaffle",
+        "description": "Fix regression causing #cell slot to be unusable",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Add formatters",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.30",
     "date": "2024-10-21",
     "updates": [
