@@ -641,6 +641,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiParallelCoordin
                         <span>roundings: [], <span class="text-app-blue text-xs">// number[], rounding for each axis</span> </span>
                         <span>prefixes: [], <span class="text-app-blue text-xs">// number[], prefixes for each axis</span></span>
                         <span>suffixes: [], <span class="text-app-blue text-xs">// number[], suffixes for each axis</span></span>
+                        <span>formatter: [], // Formatter[] {{ translations.formatterLink[store.lang] }}</span>
                         <BaseDetails attr="datapoints" :level="5" title="style.chart.yAxis.labels.datapoints">
                             <BaseAttr name="show" attr="style.chart.yAxis.labels.datapoints.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="fontSize" attr="style.chart.yAxis.labels.datapoints.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

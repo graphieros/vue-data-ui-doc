@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.3.33",
+    "date": "2024-10-22",
+    "updates": [
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Add support for negative values",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Add support for negative values",
+        "link": "/docs#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.31",
     "date": "2024-10-21",
     "updates": [

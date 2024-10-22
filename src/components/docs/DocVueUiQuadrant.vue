@@ -2,8 +2,6 @@
 import { ref, computed, nextTick, watch } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
-import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue"
 import { useMainStore } from "../../stores";
 import ThemesVueUiQuadrant from "../themes/ThemesVueUiQuadrant.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
@@ -13,6 +11,7 @@ import BaseDocActions from "./BaseDocActions.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseComment from "../BaseComment.vue";
+import BaseAttr from "../BaseAttr.vue";
 
 const mainConfig = useConfig()
 
@@ -712,36 +711,36 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiQuadrantConfig" equal>
-        <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-        <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
-        <span>customPalette: []; // string[]</span>
-        <span>useCssAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useCssAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useCssAnimation" @change="forceChartUpdate()">, (default: true)</span>
-        <span>zoomAnimationFrames: <input v-if="isDarkMode" type="number" min="5" max="40" v-model="mutableConfigDarkMode.zoomAnimationFrames"><input v-else type="number" min="5" max="40" v-model="mutableConfig.zoomAnimationFrames">, (default: 20)</span>
+        <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+        <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
+        <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
+        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="zoomAnimationFrames" attr="zoomAnimationFrames" type="range" defaultVal="20" :min="5" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
-                <span>backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.backgroundColor">, (default: "#FFFFFF")</span>
-                <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.color"><input v-else type="color" v-model="mutableConfig.style.chart.color">, (default: "#2D353C")</span>
-                <span>height: <input v-if="isDarkMode" type="number" min="100" max="1000" v-model="mutableConfigDarkMode.style.chart.height" @change="forceChartUpdate()"><input v-else type="number" min="100" max="1000" v-model="mutableConfig.style.chart.height" @change="forceChartUpdate()">, (default: 512)</span>
-                <span>width: <input v-if="isDarkMode" type="number" min="100" max="1000" v-model="mutableConfigDarkMode.style.chart.width" @change="forceChartUpdate()"><input v-else type="number" min="100" max="1000" v-model="mutableConfig.style.chart.width" @change="forceChartUpdate()">, (default: 512)</span>
+                <BaseAttr name="backgroundColor" attr="style.chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="height" attr="style.chart.height" type="number" defaultVal="512" :min="300" :max="1000" :step="24" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="width" attr="style.chart.width" type="number" defaultVal="512" :min="300" :max="1000" :step="24" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">
                     <BaseDetails attr="areas" :level="4" title="style.chart.layout.areas">
-                        <span>show: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.areas.show" @change="forceChartUpdate()"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.areas.show" @change="forceChartUpdate()">, (default: true)</span>
-                        <span>opacity: <input v-if="isDarkMode" type="range" min="0" max="100" v-model="mutableConfigDarkMode.style.chart.layout.areas.opacity"><input v-else type="range" min="0" max="100" v-model="mutableConfig.style.chart.layout.areas.opacity">, (default: 40)</span>
-                        <span>useGradient: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.areas.useGradient" @change="forceChartUpdate()"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.areas.useGradient" @change="forceChartUpdate()">, (default: true)</span>
+                        <BaseAttr name="show" attr="style.chart.layout.areas.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="opacity" attr="style.chart.layout.areas.opacity" type="range" defaultVal="40" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="useGradient" attr="style.chart.layout.areas.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="grid" :level="4" title="style.chart.layout.grid">
-                        <span> stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.grid.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.grid.stroke">, (default: "#e1e5e8")</span>
-                        <span>strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.grid.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.chart.layout.grid.strokeWidth">, (default: 1.5)</span>
-                        <span>showArrows: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.grid.showArrows" @change="forceChartUpdate()"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.grid.showArrows" @change="forceChartUpdate()">, (default: true)</span>
+                        <BaseAttr name="stroke" attr="style.chart.layout.grid.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.layout.grid.strokeWidth" type="number" defaultVal="1.5" :min="0.1" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="showArrows" attr="style.chart.layout.grid.showArrows" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseDetails attr="graduations" :level="5" title="style.chart.layout.grid.graduations">
-                            <span>show: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.grid.graduations.show" @change="forceChartUpdate()"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.grid.graduations.show" @change="forceChartUpdate()">, (default: true)</span>
-                            <span>stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.grid.graduations.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.grid.graduations.stroke">, (default: "#e1e5e8")</span>
-                            <span>strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.1" v-model="mutableConfigDarkMode.style.chart.layout.grid.graduations.strokeWidth"><input v-else type="number" min="0" max="10" step="0.1" v-model="mutableConfig.style.chart.layout.grid.graduations.strokeWidth">, (default: 0.5)</span>
-                            <span>steps: <input v-if="isDarkMode" type="number" min="0" max="20" step="1" v-model="mutableConfigDarkMode.style.chart.layout.grid.graduations.steps"><input v-else type="number" min="0" max="20" step="1" v-model="mutableConfig.style.chart.layout.grid.graduations.steps">, (default: 5)</span>
-                            <span>fill: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.grid.graduations.fill" @change="forceChartUpdate()"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.grid.graduations.fill" @change="forceChartUpdate()">, (default: true)</span>
-                            <span>color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.grid.graduations.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.grid.graduations.color">, (default: "#e1e5e8")</span>
-                            <span>roundingForce: <input v-if="isDarkMode" type="range" min="0" max="200" v-model="mutableConfigDarkMode.style.chart.layout.grid.graduations.roundingForce"><input v-else type="range" min="0" max="200" v-model="mutableConfig.style.chart.layout.grid.graduations.roundingForce">, (default: 10)</span>
+                            <BaseAttr name="show" attr="style.chart.layout.grid.graduations.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="stroke" attr="style.chart.layout.grid.graduations.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="strokeWidth" attr="style.chart.layout.grid.graduations.strokeWidth" type="number" defaultVal="0.5" :min="0.1" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="steps" attr="style.chart.layout.grid.graduations.steps" type="select" defaultVal="5" :options="[1, 2, 3, 4, 5]" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="fill" attr="style.chart.layout.grid.graduations.fill" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.chart.layout.grid.graduations.color" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="roundingForce" attr="style.chart.layout.grid.graduations.roundingForce" type="range" defaultVal="10" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
                         <BaseDetails attr="xAxis" :level="5" title="style.chart.layout.grid.xAxis">
                             <span> min: <input v-if="isDarkMode" type="number" step="1" v-model="mutableConfigDarkMode.style.chart.layout.grid.xAxis.min"><input v-else type="number" step="1" v-model="mutableConfig.style.chart.layout.grid.xAxis.min">, (default: -100) <span class="text-app-blue text-xs">// {{ translations.docs.comments.quadrant.useWhenAutoFalse[store.lang] }}</span></span>
