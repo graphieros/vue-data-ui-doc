@@ -116,6 +116,21 @@ function copyToClipboard(conf) {
     store.copy();
 }
 
+const configCode = ref(null)
+const showAllConfig = ref(false);
+
+watch(() => showAllConfig.value, (v) => {
+    if (v) {
+        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => d.setAttribute('open', 'true'))
+    } else {
+        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => {
+            if (d.hasAttribute('open')) {
+                d.removeAttribute('open')
+            }
+        })
+    }
+})
+
 </script>
 
 <template>
@@ -173,40 +188,40 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
                 <div class="mt-4">
                     TS type: <code class="text-app-blue">VueUiKpiConfig</code>
                 </div>
-                <div class="overflow-w-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-blue">config: VueUiKpiConfig</span> = {
-    animationFrames: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="1000" v-model="mutableConfigDarkMode.animationFrames" @change="forceChartUpdate()"><input v-else type="number" class="accent-app-blue" min="0" max="1000" v-model="mutableConfig.animationFrames" @change="forceChartUpdate()">, (default: 60)
-    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.backgroundColor"><input v-else type="color" v-model="mutableConfig.backgroundColor">,  (default: "#FFFFFF")
-    fontFamily: "inherit",
-    layoutClass: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.layoutClass"><input v-else type="text" v-model="mutableConfig.layoutClass">, (default: "")
-    layoutCss: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.layoutCss"><input v-else type="text" v-model="mutableConfig.layoutCss">, (default: "")
-    prefix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.prefix"><input v-else type="text" v-model="mutableConfig.prefix">, (default: "")
-    suffix: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.suffix"><input v-else type="text" v-model="mutableConfig.suffix">, (default: "")
-    title: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.title"><input v-else type="text" v-model="mutableConfig.title">, (default: "")
-    titleBold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.titleBold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.titleBold" @change="forceChartUpdate()">, (default: true)
-    titleColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.titleColor"><input v-else type="color" v-model="mutableConfig.titleColor">,  (default: "#2D353C")
-    titleClass: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.titleClass"><input v-else type="text" v-model="mutableConfig.titleClass">, (default: "")
-    titleCss: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.titleCss"><input v-else type="text" v-model="mutableConfig.titleCss">, (default: "")
-    titleFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="100" v-model="mutableConfigDarkMode.titleFontSize"><input v-else type="number" class="accent-app-blue" min="0" max="100" v-model="mutableConfig.titleFontSize">, (default: 16)
-    useAnimation: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useAnimation" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useAnimation" @change="forceChartUpdate()">, (default: true)
-    valueBold: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.valueBold" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.valueBold" @change="forceChartUpdate()">, (default: true)
-    valueColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.valueColor"><input v-else type="color" v-model="mutableConfig.valueColor">,  (default: "#6376DD")
-    valueClass: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.valueClass"><input v-else type="text" v-model="mutableConfig.valueClass">, (default: "")
-    valueCss: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.valueCss"><input v-else type="text" v-model="mutableConfig.valueCss">, (default: "")
-    valueFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="100" v-model="mutableConfigDarkMode.valueFontSize"><input v-else type="number" class="accent-app-blue" min="6" max="100" v-model="mutableConfig.valueFontSize">, (default: 32)
-    valueRounding: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="3" v-model="mutableConfigDarkMode.valueRounding"><input v-else type="number" class="accent-app-blue" min="0" max="3" v-model="mutableConfig.valueRounding">, (default: 0)
-    analogDigits: {
-        <BaseAttr name="show" attr="analogDigits.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-        <BaseAttr name="height" attr="analogDigits.height" type="number" defaultVal="40" :min="20" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="color" attr="analogDigits.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="skeletonColor" attr="analogDigits.skeletonColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-    }
-}
+
+<div class="my-4">
+    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+</div>
+
+<code ref="configCode">
+    <BaseDetails attr="const config: VueUiKpiConfig" equal>
+        <BaseAttr name="animationFrames" attr="animationFrames" type="number" defaultVal="60" :min="0" :max="1000" :step="20" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+        <BaseAttr name="backgroundColor" attr="backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <span>fontFamily: "inherit",</span>
+        <BaseAttr name="layoutClass" attr="layoutClass" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="layoutCss" attr="layoutCss" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="prefix" attr="prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="suffix" attr="suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="title" attr="title" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="titleBold" attr="titleBold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="titleColor" attr="titleColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="titleClass" attr="titleClass" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="titleCss" attr="titleCss" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="titleFontSize" attr="titleFontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="useAnimation" attr="useAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="valueBold" attr="valueBold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="valueClass" attr="valueClass" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="valueCss" attr="valueCss" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="valueFontSize" attr="valueFontSize" type="number" defaultVal="32" :min="8" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="valueRounding" attr="valueRounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseDetails attr="analogDigits" :level="1">
+            <BaseAttr name="show" attr="analogDigits.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="height" attr="analogDigits.height" type="number" defaultVal="40" :min="20" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="color" attr="analogDigits.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="skeletonColor" attr="analogDigits.skeletonColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        </BaseDetails>
+    </BaseDetails>
 </code>
-</pre>                    
-                </div>
             </template>
 
             <template #tab3>
