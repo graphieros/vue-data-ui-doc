@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.35",
+    "date": "2024-10-23",
+    "updates": [
+      {
+        "component": "VueUiKpi",
+        "description": "Add option to display value as analog numbers",
+        "link": "/docs#vue-ui-kpi"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.34",
     "date": "2024-10-22",
     "updates": [

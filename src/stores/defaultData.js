@@ -3137,7 +3137,11 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'valueClass', def: '', type: 'text', label: ['value', 'is', 'cssClass'], category: 'general'},
                     { key: 'valueCss', def: '', type: 'text', label: ['value', 'is', 'CSS'], category: 'general'},
                     { key: 'valueFontSize', def: 32, type: 'number', min: 8, max: 120, label: ['value', 'is', 'fontSize'], category: 'general' },
-                    { key: 'valueRounding', def: 0, type: 'number', min: 0, max: 12, label: ['value', 'is', 'rounding'], category: 'general'}
+                    { key: 'valueRounding', def: 0, type: 'number', min: 0, max: 12, label: ['value', 'is', 'rounding'], category: 'general'},
+                    { key: 'analogDigits.show', def: false, type: 'checkbox', label: ['value', 'is', 'analog'], category: 'general'},
+                    { key: 'analogDigits.height', def: 40, type: 'number', min:20, max: 100, label: ['value', 'analog', 'is', 'height'], category: "general"},
+                    { key: 'analogDigits.color', def: '#1A1A1A', type: "color", label: ['value', 'analog', "is", 'color'], category: 'general'},
+                    { key: 'analogDigits.skeletonColor', def: '#E1E5E8', type: 'color', label: ['value', 'analog', 'skeleton', 'is', 'color'], category: 'general'}
                 ]
             },
             vue_ui_strip_plot: {

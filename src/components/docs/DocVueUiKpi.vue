@@ -8,6 +8,8 @@ import MakerLink from "../MakerLink.vue"
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseAttr from "../BaseAttr.vue";
+import BaseDetails from "../BaseDetails.vue";
 
 const mainConfig = useConfig()
 
@@ -50,7 +52,13 @@ const config = ref({
     valueClass: "tabular-nums",
     valueCss: "",
     valueFontSize: 32,
-    valueRounding: 0
+    valueRounding: 0,
+    analogDigits: {
+        show: false,
+        height: 40,
+        color: '#1A1A1A',
+        skeletonColor: "#E1E5E8"
+    }
 })
 
 const darkModeConfig = ref({
@@ -73,7 +81,13 @@ const darkModeConfig = ref({
     valueClass: "tabular-nums",
     valueCss: "",
     valueFontSize: 32,
-    valueRounding: 0
+    valueRounding: 0,
+    analogDigits: {
+        show: false,
+        height: 40,
+        color: '#6376DD',
+        skeletonColor: "#2A2A2A"
+    }
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -183,6 +197,12 @@ const <span class="text-black dark:text-app-blue">config: VueUiKpiConfig</span> 
     valueCss: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.valueCss"><input v-else type="text" v-model="mutableConfig.valueCss">, (default: "")
     valueFontSize: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="6" max="100" v-model="mutableConfigDarkMode.valueFontSize"><input v-else type="number" class="accent-app-blue" min="6" max="100" v-model="mutableConfig.valueFontSize">, (default: 32)
     valueRounding: <input v-if="isDarkMode" type="number" class="accent-app-blue" min="0" max="3" v-model="mutableConfigDarkMode.valueRounding"><input v-else type="number" class="accent-app-blue" min="0" max="3" v-model="mutableConfig.valueRounding">, (default: 0)
+    analogDigits: {
+        <BaseAttr name="show" attr="analogDigits.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="height" attr="analogDigits.height" type="number" defaultVal="40" :min="20" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="color" attr="analogDigits.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="skeletonColor" attr="analogDigits.skeletonColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    }
 }
 </code>
 </pre>                    
