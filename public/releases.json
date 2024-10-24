@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.3.37",
+    "date": "2024-10-24",
+    "updates": [
+      {
+        "component": "All components",
+        "description": "Fix TS type errors and mishaps, fix some config defaults"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.35",
     "date": "2024-10-23",
     "updates": [

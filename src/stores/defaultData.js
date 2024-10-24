@@ -1210,7 +1210,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 ],
                 model: [
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
-                    { key: 'zoomAnimationFrames', def: true, type: 'number', min: 5, max: 40, label: ['zoom animation', 'is', 'speed'], category: 'general' },
+                    { key: 'zoomAnimationFrames', def: 20, type: 'number', min: 5, max: 40, label: ['zoom animation', 'is', 'speed'], category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
@@ -2326,7 +2326,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.td.color', def: '#1A1A1A', type: 'color', label: 'textColorRow', cateogry: 'table' },
                     { key: 'table.td.outline', def: 'none', type: 'text', label: 'outlineRow', category: 'table' },
                     { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'table' },
-                    { key: 'table.td.rondingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'table' },
+                    { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'table' },
                     { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table' },
                     { key: 'table.columnNames.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table' },
                     { key: 'table.columnNames.percentage', def: 'Percentage', type: 'text', label: ['columnName', 'is', 'percentage'], category: 'table' }

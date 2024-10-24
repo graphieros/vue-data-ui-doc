@@ -393,7 +393,7 @@ watch(() => showAllConfig.value, (v) => {
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>
-cosnt <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDataset</span> = {
+const <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDataset</span> = {
     head: ["col1", "col2", "col3", "col4", "col5"],
     body: [
         [10000, 1000, 100, 10, 0],

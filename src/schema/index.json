@@ -1875,7 +1875,7 @@
         ],
         "types": {
             "dataset": "VueUiSparkgaugeDataset",
-            "config": "VueUiGaugeConfig"
+            "config": "VueUiSparkgaugeConfig"
         },
         "examples": [
             {

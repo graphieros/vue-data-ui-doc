@@ -83,7 +83,7 @@ const config = computed(() => {
             "color": isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             "outline": "none",
             "roundingValue": 0,
-            "rondingPercentage": 0
+            "roundingPercentage": 0
         },
         "columnNames": {
             "series": "Series",

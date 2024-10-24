@@ -426,7 +426,7 @@ export function useConfig() {
                 ...TOOLTIP,
                 showValue: true,
                 showPercentage: true,
-                rondingValue: 0,
+                roundingValue: 0,
                 roundingPercentage: 0
             },
             userOptions: USER_OPTIONS({
@@ -760,7 +760,7 @@ export function useConfig() {
                     },
                     rect: {
                         rounded: true,
-                        ronding: 2,
+                        rounding: 2,
                         stroke: COLOR_BLACK,
                         strokeWidth: 1,
                         useGradient: true,
