@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.39",
+    "date": "2024-10-24",
+    "updates": [
+      {
+        "component": "VueUiKpi",
+        "description": "Fix rounding error",
+        "link": "/docs#vue-ui-kpi"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.37",
     "date": "2024-10-24",
     "updates": [

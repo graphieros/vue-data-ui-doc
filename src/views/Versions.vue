@@ -1606,8 +1606,8 @@ const treemapConfig = computed(() => {
         <div :class="`${isOpen ? 'xl:w-5/6' : ''}`">
           <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.versions[store.lang] }}</h1>
 
-          <div class="flex flex-row gap-4 flex-wrap mx-auto max-w-[1200px] px-4">
-          <div class="flex-1 min-w-[200px]" v-for="kpi in KPIS" >
+          <div class="flex flex-row gap-4 flex-wrap mx-auto max-w-[1200px] px-4 justify-center">
+          <div class="flex-1 w-[200px] min-w-[200px]" v-for="kpi in KPIS" >
             <VueDataUi 
               component="VueUiKpi" 
               :dataset="kpi.value"
@@ -1616,7 +1616,13 @@ const treemapConfig = computed(() => {
                 layoutClass: 'p-4 rounded-md shadow-md',
                 title: kpi.name,
                 titleColor: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                valueClass: 'tabular-nums'
+                valueClass: 'tabular-nums mt-2',
+                analogDigits: {
+                  show: true,
+                  height: 40,
+                  color: isDarkMode ? '#5f8aee' : '#1A1A1A',
+                  skeletonColor: isDarkMode ? '#3A3A3A' : '#E1E5E8'
+                }
               }"
             />
           </div>
