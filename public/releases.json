@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.43",
+    "date": "2024-10-25",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add scaleMin and scaleMax yAxis scale overriding config attributes",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.41",
     "date": "2024-10-25",
     "updates": [
