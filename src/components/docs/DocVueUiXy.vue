@@ -913,8 +913,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                         <BaseAttr name="gap" attr="chart.grid.labels.yAxis.gap" type="number" defaultVal="64" :min="20" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="To be used with useIndividualScale: true && stacked: true"/>
                         <BaseAttr name="showBaseline" attr="chart.grid.labels.yAxis.showBaseline" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
-                        <span>scaleMin: null, <BaseComment>Force the min scale for the whole chart</BaseComment></span>
-                        <span>scaleMax: null, <BaseComment>Force the max scale for the whole chart</BaseComment></span>
+                        <BaseAttr name="scaleMin" attr="chart.grid.labels.yAxis.scaleMin" type="number" defaultVal="null" :min="-1000" :max="0" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Force the min scale for the whole chart"/>
+                        <BaseAttr name="scaleMax" attr="chart.grid.labels.yAxis.scaleMax" type="number" defaultVal="null" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Force the max scale for the whole chart"/>
                     </BaseDetails>
                     <BaseDetails attr="zeroLine" :level="4" title="chart.grid.labels.zeroLine">
                         <BaseAttr name="show" attr="chart.grid.labels.zeroLine.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/> 
