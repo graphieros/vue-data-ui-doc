@@ -498,6 +498,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
 
                     { key: 'chart.grid.stroke', def: '#e1e5e8', type: 'color', label: 'lineColor', category: 'grid' },
                     { key: 'chart.grid.showVerticalLines', def: false, type: 'checkbox', label: 'verticalLines', category: 'grid' },
+                    { key: 'chart.grid.position', def: 'middle', type: 'select', options: ['middle', 'start'], label: 'position', category: 'grid'},
+
+                    { key: 'chart.grid.frame.show', def: false, type: 'checkbox', label: ['frame', 'is', 'show'], category: 'grid'},
+                    { key: 'chart.grid.frame.stroke', def: '#E1E5E8', type: 'color', label: ['frame', 'is', 'color'], category: 'grid'},
+                    { key: 'chart.grid.frame.strokeWidth', def: 2, type: 'number', min: 0, max: 12, label: ['frame', 'is', 'thickness'], category: 'grid'},
+                    { key: 'chart.grid.frame.strokeLinecap', def: 'round', type: 'select', options: ['round', 'square', 'butt'], label: ['frame', 'is', 'strokeLinecap'], category: 'grid'},
+                    { key: 'chart.grid.frame.strokeDasharray', def: 0, type: 'number', min: 0, max: 100, label: ['frame', 'is', 'strokeDasharray'], category: 'grid'},
+
                     { key: 'chart.grid.labels.show', def: true, type: 'checkbox', label: 'showLabels', category: 'grid' },
                     { key: 'chart.grid.labels.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'grid' },
                     { key: 'chart.grid.labels.fontSize', def: 12, type: 'number', min: 4, max: 30, label: 'fontSize', category: 'grid' },

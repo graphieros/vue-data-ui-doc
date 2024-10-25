@@ -24,6 +24,27 @@ export function useConfig() {
         _48: 48
     }
 
+    // -------------------------
+    // COMBOS TO APPLY
+
+    /**
+     * Sets background and text color.
+     * 
+     * @param {string} [backgroundColor] - Background color (default is #FFFFFF).
+     * @param {string} [color] - Text color (default is #2D353C).
+     * @returns {{backgroundColor: string, color: string}} An object with the background color and text color.
+     */
+    const BG_AND_COLOR = (backgroundColor = COLOR_WHITE, color = COLOR_BLACK) => {
+        return { backgroundColor, color }
+    }
+
+    const PREFIX_SUFFIX = {
+        prefix: '',
+        suffix: ''
+    }
+
+    // --------------------------
+
     const SHAPE = {
         LINE: 'line',
         SQUARE: 'square',
@@ -321,7 +342,7 @@ export function useConfig() {
             height: 600,
             width: 1000,
             zoom: ZOOM,
-            padding: PADDING([36, 24, 24, 48]),
+            padding: PADDING([36, 24, 64, 48]),
             highlighter: {
                 color: COLOR_BLACK,
                 opacity: 5,
@@ -329,6 +350,8 @@ export function useConfig() {
                 lineDasharray: 2,
                 lineWidth: 1
             },
+            // Highlight area was initially a single object of type VueUiXyHighlightArea.
+            // It now also works with a type VueUiXyHighlightArea[]
             highlightArea: {
                 show: false,
                 from: 0,
@@ -360,6 +383,15 @@ export function useConfig() {
                 stroke: COLOR_GREY_LIGHT,
                 showVerticalLines: false,
                 showHorizontalLines: false,
+                position: 'middle', // or 'start'
+                frame: {
+                    show: false,
+                    stroke: COLOR_GREY_LIGHT,
+                    strokeWidth: 2,
+                    strokeLinecap: 'round',
+                    strokeLinejoin: 'round',
+                    strokeDasharray: 0
+                },
                 labels: {
                     show: true,
                     color: COLOR_BLACK,
@@ -375,7 +407,7 @@ export function useConfig() {
                         show: true
                     },
                     xAxis: {
-                        showBaseline: false
+                        showBaseline: false,
                     },
                     yAxis: {
                         showBaseline: true,
@@ -394,7 +426,7 @@ export function useConfig() {
                         showOnlyFirstAndLast: false,
                         showOnlyAtModulo: false,
                         modulo: 12,
-                        yOffset: 0,
+                        yOffset: 24,
                         rotation: 0
                     }
                 }
@@ -419,8 +451,6 @@ export function useConfig() {
             title: {
                 ...TITLE,
                 show: true,
-                offsetX: 0,
-                offsetY: 0
             },
             tooltip: {
                 ...TOOLTIP,
@@ -535,7 +565,7 @@ export function useConfig() {
                 roundingPercentage: 0,
             },
             columnNames: {
-                serie: 'Series',
+                series: 'Series',
                 value: 'Value',
                 percentage: 'Percentage'
             }
@@ -2004,9 +2034,18 @@ export function useConfig() {
                 }
             },
             title: {
-                ...TITLE,
+                text: '',
+                color: COLOR_BLACK,
+                fontSize: FONT._16,
+                bold: true,
                 textAlign: POSITION.LEFT,
-                margin: '0 auto'
+                margin: '0 0 6px 0',
+                subtitle: { 
+                    color: COLOR_GREY,
+                    text: '', 
+                    fontSize: FONT._12, 
+                    bold: false 
+                },
             },
             gap: 4
         }
@@ -2119,9 +2158,18 @@ export function useConfig() {
                 borderRadius: 2
             },
             title: {
-                ...TITLE,
+                text: '',
+                color: COLOR_BLACK,
+                fontSize: FONT._16,
+                bold: true,
                 textAlign: POSITION.LEFT,
-                margin: '0 0 6px 0'
+                subtitle: { 
+                    color: COLOR_GREY,
+                    text: '', 
+                    fontSize: FONT._12, 
+                    bold: false 
+                },
+                margin: '0 0 6px 0',
             }
         }
     }
@@ -3285,9 +3333,18 @@ export function useConfig() {
             chart: 'Evolution'
         },
         title: {
-            ...TITLE,
-            textAlign: POSITION.CENTER,
-            backgroundColor: COLOR_WHITE
+            text: '',
+            color: COLOR_BLACK,
+            fontSize: FONT._20,
+            bold: true,
+            textAlign: 'center',
+            backgroundColor: COLOR_WHITE,
+            subtitle: { 
+                color: COLOR_GREY,
+                text: '', 
+                fontSize: FONT._16, 
+                bold: false 
+            },
         },
         thead: {
             backgroundColor: COLOR_WHITE,
@@ -3367,8 +3424,10 @@ export function useConfig() {
                 height: 300,
                 width: 512,
                 zoom: {
-                    ...ZOOM,
-                    show: false
+                    show: false,
+                    color: COLOR_GREY_MID,
+                    highlightColor: COLOR_GREY_DARK,
+                    useResetSlot: false
                 },
                 words: {
                     maxFontSize: 100,

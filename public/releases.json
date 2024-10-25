@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.40",
+    "date": "2024-10-25",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Show extremes on scale, add optional frame, support multiple highlight areas, add optional vertical offset positioning",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.39",
     "date": "2024-10-24",
     "updates": [

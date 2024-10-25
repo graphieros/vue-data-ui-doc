@@ -145,6 +145,15 @@ const config = ref({
             stroke: "#C4C4C4",
             showVerticalLines: false,
             showHorizontalLines: false,
+            position: 'middle',
+            frame: {
+                show: false,
+                stroke: '#E1E5E8',
+                strokeWidth: 2,
+                strokeLinecap: 'round',
+                strokeLinejoin: 'round',
+                strokeDasharray: 0
+            },
             labels: {
                 show: true,
                 color: "#1A1A1A",
@@ -387,6 +396,15 @@ const darkModeConfig = ref({
             stroke: "#e1e5e8",
             showVerticalLines: false,
             showHorizontalLines: false,
+            position: 'middle',
+            frame: {
+                show: false,
+                stroke: '#E1E5E8',
+                strokeWidth: 2,
+                strokeLinecap: 'round',
+                strokeLinejoin: 'round',
+                strokeDasharray: 0
+            },
             labels: {
                 show: true,
                 color: "#c8c8c8",
@@ -859,6 +877,16 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="stroke" attr="chart.grid.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="showVerticalLines" attr="chart.grid.showVerticalLines" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="showHorizontalLines" attr="chart.grid.showHorizontalLines" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="position" attr="chart.grid.position" type="select" defaultVal="middle" :options="['middle', 'start']" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.3.40"/>
+                <BaseDetails attr="frame" :level="3" title="chart.grid.frame">
+                    <span><BaseComment>Since v2.3.40</BaseComment></span>
+                    <BaseAttr name="show" attr="chart.grid.frame.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="stroke" attr="chart.grid.frame.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="strokeWidth" attr="chart.grid.frame.strokeWidth" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="strokeLinecap" attr="chart.grid.frame.strokeLinecap" type="select" defaultVal="round" :options="['round', 'square', 'butt']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="strokeLinejoin" attr="chart.grid.frame.strokeLinejoin" type="select" defaultVal="round" :options="['round', 'arcs', 'bevel', 'miter', 'miter-clip']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="strokeDasharray" attr="chart.grid.frame.strokeDasharray" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
                 <BaseDetails attr="labels" :level="3" title="chart.grid.labels">
                     <BaseAttr name="show" attr="chart.grid.labels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="chart.grid.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -888,6 +916,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 </BaseDetails>
             </BaseDetails>
             <BaseDetails attr="highlightArea" :level="2" title="chart.highlightArea">
+                <span><BaseComment>Since v2.3.40, you can pass an array of highlighter objects in here for multiple highlight areas</BaseComment></span>
                 <BaseAttr name="show" attr="chart.highlightArea.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="from" attr="chart.highlightArea.from" type="number" defaultVal="0" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="to" attr="chart.highlightArea.to" type="number" defaultVal="0" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -923,8 +952,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
             </BaseDetails>
             <BaseDetails attr="padding" :level="2" title="chart.padding">
                 <BaseAttr name="top" attr="chart.padding.top" type="number" defaultVal="36" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="right" attr="chart.padding.right" type="number" defaultVal="12" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="bottom" attr="chart.padding.bottom" type="number" defaultVal="12" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="right" attr="chart.padding.right" type="number" defaultVal="24" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="bottom" attr="chart.padding.bottom" type="number" defaultVal="64" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="left" attr="chart.padding.left" type="number" defaultVal="48" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
             <BaseDetails attr="timeTag" :level="2" title="chart.timeTag">
