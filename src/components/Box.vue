@@ -85,7 +85,7 @@ function closeResponsiveTab() {
 </script>
 
 <template>
-    <div v-if="schema" class="border px-4 border-gray-700 rounded-md my-6 relative overflow-x-auto">
+    <div v-if="schema" class="border px-4 border-gray-700 rounded-md my-6 relative overflow-x-auto bg-gray-200 dark:bg-[#FFFFFF05]">
         <VueDataUi
             component="VueUiAccordion"
             :config="isDarkMode ? darkModeConfig : config"
