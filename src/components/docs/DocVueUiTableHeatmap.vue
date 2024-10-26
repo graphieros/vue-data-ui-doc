@@ -3,11 +3,13 @@ import { ref, watch, nextTick, computed } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon, InfoTriangleFilledIcon  } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseDetails from "../BaseDetails.vue";
+import BaseAttr from "../BaseAttr.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -75,7 +77,7 @@ const config = ref({
         },
     },
     table: {
-        responsiveBreakpoint: 300,
+        responsiveBreakpoint: 400,
         borderWidth: 1,
         showSum: true,
         showAverage: true,
@@ -92,6 +94,14 @@ const config = ref({
             img: true,
             csv: true,
             fullscreen: true
+        },
+        buttonTitles: {
+            open: 'Open options',
+            close: 'Close options',
+            pdf: 'Download PDF',
+            csv: 'Download CSV',
+            img: 'Download PNG',
+            fullscreen: 'Toggle fullscreen'
         }
     },
 });
@@ -109,7 +119,7 @@ const darkModeConfig = ref({
         },
     },
     table: {
-        responsiveBreakpoint: 300,
+        responsiveBreakpoint: 400,
         borderWidth: 1,
         showSum: true,
         showAverage: true,
@@ -126,6 +136,14 @@ const darkModeConfig = ref({
             img: true,
             csv: true,
             fullscreen: true
+        },
+        buttonTitles: {
+            open: 'Open options',
+            close: 'Close options',
+            pdf: 'Download PDF',
+            csv: 'Download CSV',
+            img: 'Download PNG',
+            fullscreen: 'Toggle fullscreen'
         }
     },
 });
@@ -161,6 +179,21 @@ const isFixed = ref(false);
 function fixChart() {
     isFixed.value = !isFixed.value;
 }
+
+const configCode = ref(null)
+const showAllConfig = ref(false);
+
+watch(() => showAllConfig.value, (v) => {
+    if (v) {
+        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => d.setAttribute('open', 'true'))
+    } else {
+        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => {
+            if (d.hasAttribute('open')) {
+                d.removeAttribute('open')
+            }
+        })
+    }
+})
 
 </script>
 
@@ -337,43 +370,54 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableHeatmapDat
                 <div class="mt-4">
                     TS type: <code class="text-app-blue">VueUiTableHeatmapConfig</code>
                 </div>
-                <pre>
-<code>
-const <span class="text-black dark:text-app-blue">config: VueUiTableHeatmapConfig</span> = {
-    style: {
-        backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
-        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.color"><input v-else type="color" v-model="mutableConfig.style.color">, (default"#2D353C")
-        fontFamily: "inherit",
-        shapeSize: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.style.shapeSize" :min="8" :max="36"/><BaseNumberInput v-else v-model:value="mutableConfig.style.shapeSize" :min="8" :max="36"/>, (default: 14)
-        heatmapColors: {
-            useIndividualScale: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.heatmapColors.useIndividualScale" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.heatmapColors.useIndividualScale" @change="forceChartUpdate()">, (default: false)
-            min: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.heatmapColors.min"><input v-else type="color" v-model="mutableConfig.style.heatmapColors.min">, (default: "#FFFFFF")
-            max: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.heatmapColors.max"><input v-else type="color" v-model="mutableConfig.style.heatmapColors.max">, (default: "#5f8bee")
-        }
-    },
-    table: {
-        responsiveBreakpoint: 300,
-        borderWidth: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.table.borderWidth" :min="0" :max="12"/><BaseNumberInput v-else v-model:value="mutableConfig.style.table.borderWidthshapeSize" :min="0" :max="12"/>, (default: 1)
-        showSum: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.showSum" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.showSum" @change="forceChartUpdate()">, (default: false)
-        showAverage: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.showAverage" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.showAverage" @change="forceChartUpdate()">, (default: false)
-        showMedian: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.table.showMedian" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.table.showMedian" @change="forceChartUpdate()">, (default: false)
-        head: {
-            backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.table.head.backgroundColor"><input v-else type="color" v-model="mutableConfig.table.head.backgroundColor">, (default: "#FFFFFF")
-            values: string[]
-        }
-    },
-    userOptions: {
-        show: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.show" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.show" @change="forceChartUpdate()">, (default: false)
-        buttons: {
-            pdf: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.pdf" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.pdf" @change="forceChartUpdate()">, (default: true)
-            img: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.img" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.img" @change="forceChartUpdate()">, (default: true)
-            csv: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.csv" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.csv" @change="forceChartUpdate()">, (default: true)
-            fullscreen: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.userOptions.buttons.fullscreen" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.userOptions.buttons.fullscreen" @change="forceChartUpdate()">, (default: true)
-        }
-    }
-}
+
+<div class="my-4">
+    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+</div>
+
+<code ref="configCode">
+    <BaseDetails attr="const config: VueUiTableHeatmapConfig" equal>
+        <BaseDetails attr="style" :level="1">
+            <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="color" attr="style.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <span>fontFamily: "inherit",</span>
+            <BaseAttr name="shapeSize" attr="style.shapeSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseDetails attr="heatmapColors" :level="2" title="style.heatmapColors">
+                <BaseAttr name="useIndividualScale" attr="style.heatmapColors.useIndividualScale" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="min" attr="style.heatmapColors.min" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="max" attr="style.heatmapColors.max" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+        </BaseDetails>
+        <BaseDetails attr="table" :level="1">
+            <BaseAttr name="responsiveBreakpoint" attr="table.responsiveBreakpoint" type="number" defaultVal="400" :min="300" :max="800" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="borderWidth" attr="table.borderWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="showSum" attr="table.showSum" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="showAverage" attr="table.showAverage" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="showMedian" attr="table.showMedian" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseDetails attr="head" :level="2" title="table.head">
+                <BaseAttr name="backgroundColor" attr="table.head.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <span>values: [], <BaseComment>String[]</BaseComment></span>
+            </BaseDetails>
+        </BaseDetails>
+        <BaseDetails attr="userOptions" :level="1">
+            <BaseAttr name="show" attr="userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
+                <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultval="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="img" attr="userOptions.buttons.img" type="checkbox" defaultval="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="csv" attr="userOptions.buttons.csv" type="checkbox" defaultval="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="fullscreen" attr="userOptions.buttons.fullscreen" type="checkbox" defaultval="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+            <BaseDetails attr="buttonTitles" :level="2" title="userOptions.buttonTitles">
+                <BaseAttr name="open" attr="userOptions.buttonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="close" attr="userOptions.buttonTitles.close" type="text" defaultVal="Close options" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="pdf" attr="userOptions.buttonTitles.pdf" type="text" defaultVal="Download PDF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="img" attr="userOptions.buttonTitles.img" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="csv" attr="userOptions.buttonTitles.csv" type="text" defaultVal="Download CSV" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+        </BaseDetails>
+    </BaseDetails>
 </code>
-</pre>
             </template>
 
             <template #tab3>
