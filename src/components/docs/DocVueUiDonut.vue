@@ -617,6 +617,16 @@ watch(() => showAllConfig.value, (v) => {
 </script>
 
 <template>
+    <!-- <BaseHeaderChart
+        componentName="Donut"
+        icon="chartDonut"
+        :description="translations.docs.tooltips.donut[store.lang]"
+        targetLink="vue-ui-donut"
+        targetMaker="VueUiDonut"
+        :configSource="mainConfig.vue_ui_donut"
+        schema="vue_ui_donut"
+    >
+    </BaseHeaderChart> -->
     <div>
         <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="chartDonut" stroke="#42d392" :strokeWidth="1.5" />

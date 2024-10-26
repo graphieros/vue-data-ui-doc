@@ -84,6 +84,7 @@ const isOpen = ref(window.innerWidth > 768);
 
 function toggleMenu(state) {
     isOpen.value = state;
+    store.isMenuOpen = state
 }
 
 const cssTableClasses = ref([

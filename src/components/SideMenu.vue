@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import { ChevronLeftIcon, ChevronRightIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import LinkTooltip from "../components/LinkTooltip.vue";
@@ -22,6 +22,12 @@ const isDarkMode = computed(() => {
 const translations = computed(() => store.translations)
 
 const isOpen = ref(window.innerWidth > 768);
+
+onMounted(() => {
+    if (window.innerWidth > 768) {
+        emit('toggle', true)
+    }
+})
 
 const emit = defineEmits(['toggle']);
 
@@ -702,7 +708,7 @@ const sideMenuItems = computed(() => {
 </script>
 
 <template>
-    <aside :class="`transition-all fixed left-0 top-[49px] ${isOpen ? 'w-[300px]' : 'w-[59px]'} h-[calc(100svh_-_114px)] bg-gray-200 dark:bg-black overflow-y-auto border-r dark:border-[#2A2A2A] p-6 shadow-2xl z-10`">
+    <aside :class="`transition-all fixed left-0 top-[49px] ${isOpen ? 'w-[300px]' : 'w-[59px]'} h-[calc(100svh_-_114px)] bg-gray-200 dark:bg-black overflow-y-auto border-r dark:border-[#2A2A2A] p-6 shadow-2xl z-20`">
     <button class="absolute right-4 top-4" v-if="isOpen" @click="toggle">
         <ChevronLeftIcon class="text-black dark:text-app-green"/>
     </button>
