@@ -12,6 +12,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -307,6 +308,13 @@ watch(() => showAllConfig.value, (v) => {
     <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.relationCircle[store.lang] }}
         </p>
+
+    <BaseDocHeaderActions
+      targetLink="vue-ui-relation-circle"
+      targetMaker="VueUiRelationCircle"
+      :configSource="mainConfig.vue_ui_relation_circle"
+    />
+
     <div
       :class="`transition-all mx-auto ${
         isFixed
@@ -355,12 +363,6 @@ watch(() => showAllConfig.value, (v) => {
         </template>
       </Suspense>
     </div>
-
-    <BaseDocActions
-      targetLink="vue-ui-relation-circle"
-      targetMaker="VueUiRelationCircle"
-      :configSource="mainConfig.vue_ui_relation_circle"
-    />
 
     <Box showEmits showSlots showThemes showResponsive schema="vue_ui_relation_circle">
       <template v-slot:tab0>

@@ -45,7 +45,7 @@ function copyToClipboard(conf) {
 </script>
 
 <template>
-    <div class="flex flex-row gap-4 w-full justify-center sm:justify-start">
+    <div class="flex flex-row gap-4 w-full justify-center my-4">
         <div class="relative">
             <FlexibleTooltip position="bottom" :content="translations.docs.copyDefaultConfig[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
                 <button @click="copyToClipboard(configSource)" class="h-[50px] w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">

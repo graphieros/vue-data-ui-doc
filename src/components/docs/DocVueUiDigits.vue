@@ -5,6 +5,7 @@ import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -90,6 +91,12 @@ function fixChart() {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.digits[store.lang] }}
         </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-digits"
+            :configSource="mainConfig.vue_ui_digits"
+        />
+
         <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`">
             <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
@@ -112,10 +119,6 @@ function fixChart() {
                 {{ translations.docs.comments.screenshot.tryIt[store.lang] }}:
                 <input type="number" v-model="dataset">
             </div>
-        </div>
-        <div class="w-full flex place-items-center place-content-center my-6 gap-4 flex-col sm:flex-row">
-            <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" @click="copyToClipboard(mainConfig.vue_ui_digits)"><CopyIcon/> {{ translations.docs.copyDefaultConfig[store.lang]}}</button>
-            <GitHubLink link="vue-ui-digits"/>
         </div>
 
         <Box>

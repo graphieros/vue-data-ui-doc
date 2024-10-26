@@ -10,6 +10,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseDetails from "../BaseDetails.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -143,6 +144,12 @@ watch(() => showAllConfig.value, (v) => {
             {{ translations.docs.tooltips.kpi[store.lang] }}
         </p>
 
+        <BaseDocHeaderActions
+            targetLink="vue-ui-kpi"
+            targetMaker="VueUiKpi"
+            :configSource="mainConfig.vue_ui_kpi"
+        />
+
         <div class="w-full mx-auto flex flex-row gap-4 flex-grow place-items-center justify-center">
             <Suspense>
                 <template #default>
@@ -157,12 +164,6 @@ watch(() => showAllConfig.value, (v) => {
                 </template>
             </Suspense>
         </div>
-
-        <BaseDocActions
-            targetLink="vue-ui-kpi"
-            targetMaker="VueUiKpi"
-            :configSource="mainConfig.vue_ui_kpi"
-        />
 
         <Box showSlots>
             <template #tab0>

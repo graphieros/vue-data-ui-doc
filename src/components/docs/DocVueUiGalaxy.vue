@@ -10,6 +10,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -352,6 +353,13 @@ watch(() => showAllConfig.value, (v) => {
     >
       {{ translations.docs.tooltips.galaxy[store.lang] }}
     </p>
+
+    <BaseDocHeaderActions
+      targetLink="vue-ui-galaxy"
+      targetMaker="VueUiGalaxy"
+      :configSource="mainConfig.vue_ui_galaxy"
+    />
+
     <div
       :class="`transition-all mx-auto ${
         isFixed
@@ -401,12 +409,6 @@ watch(() => showAllConfig.value, (v) => {
         </template>
       </Suspense>
     </div>
-
-    <BaseDocActions
-      targetLink="vue-ui-galaxy"
-      targetMaker="VueUiGalaxy"
-      :configSource="mainConfig.vue_ui_galaxy"
-    />
 
     <Box showEmits showSlots showTooltip showThemes schema="vue_ui_galaxy">
       <template #tab0>

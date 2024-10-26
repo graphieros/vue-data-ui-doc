@@ -10,6 +10,7 @@ import BaseDocActions from "./BaseDocActions.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -233,6 +234,13 @@ watch(() => showAllConfig.value, (v) => {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.tiremarks[store.lang] }}
         </p>
+
+        <BaseDocHeaderActions
+          targetLink="vue-ui-tiremarks"
+          targetMaker="VueUiTiremarks"
+          :configSource="mainConfig.vue_ui_tiremarks"
+        />
+
         <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[450px]'} ${(mutableConfigDarkMode.style.chart.layout.display === 'vertical' && isDarkMode) || (mutableConfig.style.chart.layout.display === 'vertical' && !isDarkMode) ? 'max-w-[100px]' : ''}`">
             <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
@@ -256,12 +264,6 @@ watch(() => showAllConfig.value, (v) => {
               </template>
             </Suspense>
         </div>
-
-        <BaseDocActions
-          targetLink="vue-ui-tiremarks"
-          targetMaker="VueUiTiremarks"
-          :configSource="mainConfig.vue_ui_tiremarks"
-        />
 
         <Box showEmits showSlots showThemes schema="vue_ui_tiremarks">
             <template #tab0>

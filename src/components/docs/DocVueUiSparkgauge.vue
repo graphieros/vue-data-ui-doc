@@ -11,6 +11,7 @@ import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -197,6 +198,13 @@ watch(() => showAllConfig.value, (v) => {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.gauge[store.lang] }}
         </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-sparkgauge"
+            targetMaker="VueUiSparkgauge"
+            :configSource="mainConfig.vue_ui_sparkgauge"
+        />
+
         <button v-if="!isFixed" @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
             <div class="relative overflow-visible">
                     <PinIcon class="peer overflow-visible"/>
@@ -249,12 +257,6 @@ watch(() => showAllConfig.value, (v) => {
                 </div>
             </div>
         </div>
-
-        <BaseDocActions
-            targetLink="vue-ui-sparkgauge"
-            targetMaker="VueUiSparkgauge"
-            :configSource="mainConfig.vue_ui_sparkgauge"
-        />
 
         <Box showThemes schema="vue_ui_sparkgauge">
             <template #tab0>

@@ -13,6 +13,7 @@ import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -675,6 +676,13 @@ watch(() => showAllConfig.value, (v) => {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.xy[store.lang] }}
         </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-xy"
+            targetMaker="VueUiXy"
+            :configSource="mainConfig.vue_ui_xy"
+        />
+
         <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-2/3'}`">
             <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
@@ -704,13 +712,8 @@ watch(() => showAllConfig.value, (v) => {
                 </template>
             </Suspense>
         </div>
-        <BaseDocActions
-            targetLink="vue-ui-xy"
-            targetMaker="VueUiXy"
-            :configSource="mainConfig.vue_ui_xy"
-        />
 
-        <div class="w-full mx-auto max-w-[500px] flex flex-col p-6 border border-app-blue rounded-md bg-[#5f8bee12]">
+        <!-- <div class="w-full mx-auto max-w-[500px] flex flex-col p-6 border border-app-blue rounded-md bg-[#5f8bee12]">
             <span class="dark:text-blue-300">
                 v2.1.52 : {{ translations.docs.comments.xy.individualScales[store.lang] }}
             </span>
@@ -719,7 +722,7 @@ watch(() => showAllConfig.value, (v) => {
                 <input id="useCanvas" class="accent-app-blue" type="checkbox" @change="toggleUseIndividualScale">
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
             </div>
-        </div>
+        </div> -->
         <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive schema="vue_ui_xy">
             <template v-slot:tab0>
 

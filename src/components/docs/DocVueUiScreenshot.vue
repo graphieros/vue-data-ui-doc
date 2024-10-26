@@ -6,6 +6,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -341,6 +342,12 @@ function copyDefaultConf(conf) {
             <h2 class="text-center text-gray-500">
                 {{ translations.docs.comments.screenshot.p1[store.lang] }}
             </h2>
+
+        <BaseDocHeaderActions
+          targetLink="vue-ui-screenshot"
+          :configSource="mainConfig.vue_ui_screenshot"
+        />
+
             <div class="flex flex-row gap-6">
                 <div class="flex flex-row gap-1">
                     <input type="radio" id="ss-post" name="ss-option" value="post" v-model="mode" class="accent-app-green">
@@ -364,11 +371,6 @@ function copyDefaultConf(conf) {
                 </div>
             </div>
         </div>
-
-        <BaseDocActions
-          targetLink="vue-ui-screenshot"
-          :configSource="mainConfig.vue_ui_screenshot"
-        />
 
         <Box showEmits :activeTab="1">
             <template v-slot:tab0>

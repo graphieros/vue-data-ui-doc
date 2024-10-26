@@ -12,6 +12,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseDetails from "../BaseDetails.vue";
 import BaseComment from "../BaseComment.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -360,6 +361,12 @@ watch(() => showAllConfig.value, (v) => {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-4 text-center">
             {{ translations.docs.tooltips.quickChart[store.lang] }}
         </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-quick-chart"
+            :configSource="mainConfig.vue_ui_quick_chart"
+        />
+
         <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-full'}`">
             <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
                 <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
@@ -651,11 +658,6 @@ watch(() => showAllConfig.value, (v) => {
                 </VueDataUi>                         
             </div>
         </div>
-
-        <BaseDocActions
-            targetLink="vue-ui-quick-chart"
-            :configSource="mainConfig.vue_ui_quick_chart"
-        />
 
         <Box showSlots showTooltip showEmits showThemes showResponsive schema="vue_ui_quick_chart">
             <template #tab0>

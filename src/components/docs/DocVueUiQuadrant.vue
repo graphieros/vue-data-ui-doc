@@ -7,11 +7,10 @@ import ThemesVueUiQuadrant from "../themes/ThemesVueUiQuadrant.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
-import BaseDocActions from "./BaseDocActions.vue";
 import BaseSpinner from "../BaseSpinner.vue";
-import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -549,6 +548,13 @@ watch(() => showAllConfig.value, (v) => {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.quadrant[store.lang] }}
         </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-quadrant"
+            targetMaker="VueUiQuadrant"
+            :configSource="mainConfig.vue_ui_quadrant"
+        />
+
         <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`">
             <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
@@ -572,12 +578,6 @@ watch(() => showAllConfig.value, (v) => {
                 </template>
             </Suspense>
         </div>
-
-        <BaseDocActions
-            targetLink="vue-ui-quadrant"
-            targetMaker="VueUiQuadrant"
-            :configSource="mainConfig.vue_ui_quadrant"
-        />
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_quadrant">
             <template v-slot:tab0>

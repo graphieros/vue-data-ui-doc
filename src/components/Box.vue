@@ -85,7 +85,7 @@ function closeResponsiveTab() {
 </script>
 
 <template>
-    <div v-if="schema" class="border p-4 border-app-blue rounded-lg bg-[#5f8bee20] my-6 relative overflow-x-auto">
+    <div v-if="schema" class="border px-4 border-gray-700 rounded-md my-6 relative overflow-x-auto">
         <VueDataUi
             component="VueUiAccordion"
             :config="isDarkMode ? darkModeConfig : config"
@@ -100,7 +100,17 @@ function closeResponsiveTab() {
         </VueDataUi>
     </div>
     <div class="p-6 rounded-md border border-gray-700 my-6 relative overflow-x-auto">
-    <div class="flex flex-row border w-full border-gray-700 mb-6 rounded overflow-auto">
+        <h2 class="mb-6 flex flex-row place-items-center gap-3" dir="auto">
+
+        <VueUiIcon
+            name="clipBoard"
+            :size="24"
+            stroke="#5F8BEE"
+        />
+    
+            {{ translations.detailedDocumentation[store.lang] }}
+        </h2>
+        <div class="flex flex-row border w-full border-gray-700 mb-6 rounded overflow-auto">
         <div tabindex="0" :class="`w-fit select-none cursor-pointer text-black dark:text-app-green font-satoshi-bold p-3  ${activeTab === 0 ? 'bg-gray-200 dark:bg-black-100 border-b border-b-app-green' : 'border-b border-b-transparent'} hover:border-b hover:border-b-app-green`" @click="activeTab = 0; emit('onNonResponsiveTab')" @keypress.enter="activeTab = 0; emit('onNonResponsiveTab')">
             <div class="flex flex-row place-items-center gap-2 w-fit whitespace-nowrap">
                 <VueUiIcon name="ratio" :size="18" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>

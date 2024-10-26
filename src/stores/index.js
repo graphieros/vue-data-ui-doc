@@ -25,6 +25,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                detailedDocumentation: {
+                    en: 'Detailed documentation',
+                    fr: 'Documentation détaillée',
+                    pt: 'Documentação detalhada',
+                    de: 'Ausführliche Dokumentation',
+                    zh: '详细文档',
+                    jp: '詳細なドキュメント',
+                    ko: '자세한 문서',
+                    es: 'Documentación detallada',
+                    ar: 'وثائق مفصلة'
+                },
                 formatter: {
                     en: 'Chart data labels can be customized using the formatter config attribute. (Check component documentations under the config tab to see where the formatter attributes are located).',
                     fr: 'Les étiquettes de données du graphique peuvent être personnalisées en utilisant l\'attribut de configuration du formateur. (Consultez la documentation des composants sous l\'onglet de configuration pour voir où se trouvent les attributs du formateur).',

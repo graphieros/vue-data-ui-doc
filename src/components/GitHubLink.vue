@@ -30,7 +30,7 @@ const translations = computed(() => store.translations);
         <FlexibleTooltip position="bottom" :content="translations.githubCode[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
             <a  :href="`https://github.com/graphieros/vue-data-ui/blob/master/src/components/${link}.vue`" target="_blank">
                 <button class="h-[50px] w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">
-                    <BrandGithubFilledIcon class="text-app-blue"/>
+                    <BrandGithubFilledIcon />
                 </button>
             </a>
         </FlexibleTooltip>

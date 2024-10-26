@@ -6,6 +6,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -94,6 +95,12 @@ function fixChart() {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.miniLoader[store.lang] }}
         </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-mini-loader"
+            :configSource="mainConfig.vue_ui_mini_loader"
+        />
+
         <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`">
             <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
@@ -114,11 +121,6 @@ function fixChart() {
                 <VueUiMiniLoader :config="mutableConfig" :key="key"/>
             </div>
         </div>
-
-        <BaseDocActions
-            targetLink="vue-ui-mini-loader"
-            :configSource="mainConfig.vue_ui_mini_loader"
-        />
 
         <Box :activeTab="1">
             <template #tab0>

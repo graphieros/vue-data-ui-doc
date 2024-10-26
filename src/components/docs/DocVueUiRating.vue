@@ -7,6 +7,7 @@ import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -216,6 +217,11 @@ function showRating(r) {
             {{ translations.docs.comments.rating.p2[store.lang] }}
         </h2>
 
+        <BaseDocHeaderActions
+            targetLink="vue-ui-rating"
+            :configSource="mainConfig.vue_ui_rating"
+        />
+
         <div class="flex flex-row gap-6 justify-center mt-6">
                 <div class="flex flex-row gap-1">
                     <input type="radio" id="r-read" name="r-readonly" value="readonly" v-model="mode" class="accent-app-green" @change="setReadonly(true)">
@@ -226,6 +232,7 @@ function showRating(r) {
                     <label for="r-act">{{ translations.docs.comments.rating.active[store.lang] }}</label>
                 </div>
             </div>
+
             <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-fit'}`">
                 <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
@@ -249,11 +256,6 @@ function showRating(r) {
                 </template>
             </Suspense>
         </div>
-
-        <BaseDocActions
-            targetLink="vue-ui-rating"
-            :configSource="mainConfig.vue_ui_rating"
-        />
 
         <Box showEmits>
             <template v-slot:tab0>

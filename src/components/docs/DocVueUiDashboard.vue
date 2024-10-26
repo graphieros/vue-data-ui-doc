@@ -8,6 +8,7 @@ import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -90,6 +91,11 @@ const dashboardComponents = computed(() => {
             {{ translations.docs.comments.dashboard.p1[store.lang] }}
         </div>
 
+        <BaseDocHeaderActions
+            targetLink="vue-ui-dashboard"
+            :configSource="mainConfig.vue_ui_dashboard"
+        />
+
         <Suspense>
             <template #default>
                 <VueUiDashboard :dataset="dashboardComponents" :config="mutableConfig" :key="key">
@@ -104,11 +110,6 @@ const dashboardComponents = computed(() => {
                 <BaseSpinner/>
             </template>
         </Suspense>
-
-        <BaseDocActions
-            targetLink="vue-ui-dashboard"
-            :configSource="mainConfig.vue_ui_dashboard"
-        />
 
         <Box showEmits showSlots>
             <template #tab0>

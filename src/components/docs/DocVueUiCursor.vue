@@ -8,6 +8,7 @@ import MakerLink from "../MakerLink.vue"
 import ConfigAttribute from "../ConfigAttribute.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -129,6 +130,12 @@ const isActive = ref(true);
             <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
                 {{ translations.docs.tooltips.cursor[store.lang] }}
             </p>
+
+            <BaseDocHeaderActions
+                targetLink="vue-ui-cursor"
+                :configSource="mainConfig.vue_ui_cursor"
+            />
+
             <div class="my-12 w-full flex place-items-center justify-center">
                 <button :class="`select-none flex flex-col gap-2 place-items-center justify-center h-[100px] w-[100px] rounded-full text-black shadow-md cursor-pointer ${isActive ? 'bg-app-orange' : 'bg-app-green'} transition-colors`" @click="isActive = !isActive">
                     <VueUiIcon :name="isActive ? 'squareFill' : 'arrowRight'" stroke="#1A1A1A"/>
@@ -142,11 +149,6 @@ const isActive = ref(true);
                     <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                 </div>
             </div>
-
-            <BaseDocActions
-                targetLink="vue-ui-cursor"
-                :configSource="mainConfig.vue_ui_cursor"
-            />
 
             <Box :activeTab="1" >
                 <template #tab0>

@@ -8,6 +8,7 @@ import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import SuspenseWrapper from "../SuspenseWrapper.vue";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -235,6 +236,12 @@ function saveAnnotations({ shapes, lastSelectedShape }) {
         <div class="mx-auto w-full max-w-[400px] text-center mb-4">
             {{ translations.docs.comments.annotator.description[store.lang] }}<br>
         </div>
+
+        <BaseDocHeaderActions
+          targetLink="vue-ui-annotator"
+          :configSource="mainConfig.vue_ui_annotator"
+        />
+
             <div class="text-app-orange flex flex-row gap-2 mx-auto text-center w-full place-items-center justify-center">
               <InfoTriangleIcon/> {{ translations.docs.comments.annotator.warning[store.lang] }}
             </div>
@@ -259,11 +266,6 @@ function saveAnnotations({ shapes, lastSelectedShape }) {
           </VueUiAnnotator>
         </SuspenseWrapper>
         </div>
-
-        <BaseDocActions
-          targetLink="vue-ui-annotator"
-          :configSource="mainConfig.vue_ui_annotator"
-        />
 
         <Box showEmits>
           <template #tab0>

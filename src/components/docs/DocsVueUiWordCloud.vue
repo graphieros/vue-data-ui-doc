@@ -13,6 +13,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -279,6 +280,13 @@ watch(() => showAllConfig.value, (v) => {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.wordCloud[store.lang] }}
         </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-word-cloud"
+            targetMaker="VueUiWordCloud"
+            :configSource="mainConfig.vue_ui_word_cloud"
+        />
+
         <div
             :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`">
             <button @click="fixChart"
@@ -311,12 +319,6 @@ watch(() => showAllConfig.value, (v) => {
                 </template>
             </Suspense>
         </div>
-
-        <BaseDocActions
-            targetLink="vue-ui-word-cloud"
-            targetMaker="VueUiWordCloud"
-            :configSource="mainConfig.vue_ui_word_cloud"
-        />
 
         <Box showSlots showEmits showThemes showResponsive schema="vue_ui_word_cloud">
             <template #tab0>

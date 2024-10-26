@@ -12,6 +12,7 @@ import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -523,6 +524,13 @@ const innerTranslations = ref({
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.stackbarBig[store.lang] }}
         </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-stackbar"
+            targetMaker="VueUiStackbar"
+            :configSource="mainConfig.vue_ui_stackbar"
+        />
+        
         <div
             :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-3/4'}`">
             <button @click="fixChart"
@@ -563,12 +571,6 @@ const innerTranslations = ref({
                 <BaseAttr name="distributed" attr="style.chart.bars.distributed" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </code>
         </div>
-
-        <BaseDocActions
-            targetLink="vue-ui-stackbar"
-            targetMaker="VueUiStackbar"
-            :configSource="mainConfig.vue_ui_stackbar"
-        />
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_stackbar" @onResponsiveTab="responsiveTabLoaded = true" @onNonResponsiveTab="responsiveTabLoaded = false">
             <template #tab0>

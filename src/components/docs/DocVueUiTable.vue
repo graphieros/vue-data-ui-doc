@@ -7,6 +7,7 @@ import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -592,6 +593,11 @@ function copyToClipboard(conf) {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-4 text-center">
                 {{ translations.docs.tooltips.table[store.lang] }}
             </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-table"
+            :configSource="mainConfig.vue_ui_table"
+        />
     
         <Suspense>
             <template #default>
@@ -602,11 +608,6 @@ function copyToClipboard(conf) {
                 <BaseSpinner/>
             </template>
         </Suspense>   
-    
-        <BaseDocActions
-            targetLink="vue-ui-table"
-            :configSource="mainConfig.vue_ui_table"
-        />
     
         <Box>
             <template v-slot:tab0>

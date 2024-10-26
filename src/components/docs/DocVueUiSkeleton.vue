@@ -6,6 +6,7 @@ import { useMainStore } from "../../stores";
 import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const  mainConfig = useConfig()
 
@@ -386,6 +387,12 @@ function fixChart() {
         <h2 class="text-center text-gray-500">
             {{ translations.docs.comments.skeleton.p1[store.lang] }}<br><br>
         </h2>
+
+        <BaseDocHeaderActions
+          targetLink="vue-ui-skeleton"
+          :configSource="mainConfig.vue_ui_skeleton"
+        />
+
         <div class="flex flex-row gap-6 justify-center mt-6 mb-6">
             <select v-model="type" class="h-10 px-2 border border-app-green" @change="setType">
                 <option v-for="option in options" :value="option" >
@@ -415,11 +422,6 @@ function fixChart() {
               </label>
             </div>
         </div>
-
-        <BaseDocActions
-          targetLink="vue-ui-skeleton"
-          :configSource="mainConfig.vue_ui_skeleton"
-        />
 
         <Box :activeTab="1">
             <template v-slot:tab0>

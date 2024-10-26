@@ -7,6 +7,7 @@ import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocActions from "./BaseDocActions.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -237,6 +238,12 @@ function showRating(r) {
             {{ translations.docs.comments.rating.p2[store.lang] }}
         </h2>
 
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-smiley"
+            :configSource="mainConfig.vue_ui_smiley"
+        />
+
         <div class="flex flex-row gap-6 justify-center mt-6">
                 <div class="flex flex-row gap-1">
                     <input type="radio" id="r-read" name="r-readonly" value="readonly" v-model="mode" class="accent-app-green" @change="setReadonly(true)">
@@ -272,11 +279,6 @@ function showRating(r) {
                 </Suspense>
             </div>
         </div>
-
-        <BaseDocActions
-            targetLink="vue-ui-smiley"
-            :configSource="mainConfig.vue_ui_smiley"
-        />
 
         <Box showEmits>
             <template v-slot:tab0>

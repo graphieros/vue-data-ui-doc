@@ -8,6 +8,7 @@ import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
@@ -350,6 +351,13 @@ watch(() => showAllConfig.value, (v) => {
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.carouselTable[store.lang] }}
         </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-carousel-table"
+            targetMaker="VueUiCarouselTable"
+            :configSource="mainConfig.vue_ui_carousel_table"
+        />
+
         <div :class="`transition-all mx-auto w-full overflow`">
             <Suspense>
                 <template #default>
@@ -366,12 +374,6 @@ watch(() => showAllConfig.value, (v) => {
                 </template>
             </Suspense>
         </div>
-
-        <BaseDocActions
-            targetLink="vue-ui-carousel-table"
-            targetMaker="VueUiCarouselTable"
-            :configSource="mainConfig.vue_ui_carousel_table"
-        />
 
         <Box showEmits showSlots schema="vue_ui_carousel_table" hideSchemaDisclaimer>
             <template #tab0>
