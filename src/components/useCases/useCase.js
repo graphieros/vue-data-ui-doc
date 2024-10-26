@@ -11,6 +11,10 @@ export function useCase() {
         return isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
     });
 
+    const bgGreyColor = computed(() => {
+        return isDarkMode.value ? '#3A3A3A' : '#CCCCCC'
+    })
+
     const SPARKLINE_SLOT_DATASET = ref([
         {
             period: "period 1",
@@ -319,6 +323,78 @@ export function useCase() {
         }
     });
 
+    const XY_FIXED_SCALE_DATASET = ref([
+        {
+            name: "Serie 1",
+            series: [-87, -80, -60, -30, 0, 30, 60, 80, 87, 80, 60, 30, 0, -30, -60, -80, -87],
+            type: "line",
+            smooth: true,
+            useArea: false,
+        },
+    ])
+
+    const XY_FIXED_SCALE_CONFIG = computed(() => {
+        return {
+            line: {
+                radius: 6,
+                useGradient: false,
+                labels: {
+                    show: true,
+                    color: textColor.value,
+                    offsetY: -12
+                }
+            },
+            chart: {
+                backgroundColor: bgColor.value,
+                color: textColor.value,
+                labels: {
+                    fontSize: 16,
+                },
+                highlighter: {
+                    useLine: true,
+                    color: textColor.value,
+                    opacity: 0,
+                    lineDasharray: 0
+                },
+                grid: {
+                    stroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                    position: 'start',
+                    labels: {
+                        color: textColor.value,
+                        fontSize: 16,
+                        yAxis: {
+                            scaleMin: -120,
+                            scaleMax: 120
+                        },
+                        xAxisLabels: {
+                            show: false,
+                            values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12', 'T13', 'T14', 'T15', 'T16']
+                        }
+                    }
+                },
+                title: {
+                    text: "Position",
+                    color: textColor.value
+                },
+                timeTag: {
+                    show: true,
+                    backgroundColor: bgGreyColor.value,
+                    color: textColor,
+                    fontSize: 16
+                },
+                tooltip: {
+                    show: false,
+                },
+                legend: {
+                    color: textColor.value
+                },
+                padding: {
+                    bottom: 48
+                },
+            }
+        }
+    })
+
 
 
     const XY_MULTIPLE_Y_AXES_DATASET = ref([
@@ -482,16 +558,18 @@ export function useCase() {
     ]
 
     return {
-        SPARKLINE_SLOT_DATASET,
+        DONUT_PIE_CONFIG,
+        DONUT_PIE_DATASET,
         SPARKLINE_SLOT_CONFIG,
-        XY_STACKED_DATASET_WITH_AUTOSCALE,
+        SPARKLINE_SLOT_DATASET,
+        XY_CANVAS_CONFIG,
+        XY_CANVAS_DS,
+        XY_FIXED_SCALE_CONFIG,
+        XY_FIXED_SCALE_DATASET,
         XY_MULTIPLE_Y_AXES_CONFIG,
         XY_MULTIPLE_Y_AXES_DATASET,
         XY_STACKED_CONFIG,
         XY_STACKED_DATASET,
-        DONUT_PIE_CONFIG,
-        DONUT_PIE_DATASET,
-        XY_CANVAS_DS,
-        XY_CANVAS_CONFIG
+        XY_STACKED_DATASET_WITH_AUTOSCALE,
     }
 }

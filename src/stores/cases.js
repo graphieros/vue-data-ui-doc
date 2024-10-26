@@ -14,6 +14,19 @@ export const useCaseStore = defineStore("cases", {
                 ko: "코드 보기",
                 ar: 'عرض الرمز'
             },
+            XY_FIXED_SCALE: {
+                title: {
+                    en: 'Force min and max yAxis scales',
+                    fr: 'Forcer les échelles min et max de l\'axe des ordonnées',
+                    pt: 'Forçar escalas mínimas e máximas do eixo Y',
+                    de: 'Minimale und maximale y-Achsen-Skalen erzwingen',
+                    zh: '强制最小和最大 y 轴刻度',
+                    jp: 'Y軸の最小値と最大値のスケールを強制する',
+                    es: 'Forzar escalas mínimas y máximas del eje Y',
+                    ko: 'y축 최소 및 최대 스케일 강제 설정',
+                    ar: 'فرض الحد الأدنى والأقصى لمقاييس المحور Y'
+                },
+            },
             SPARKLINE_SLOT: {
                 title: {
                     en: "Usage of the #before 'slot'",
