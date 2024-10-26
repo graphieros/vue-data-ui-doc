@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.44",
+    "date": "2024-10-26",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Add responsive config attribute",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.43",
     "date": "2024-10-25",
     "updates": [

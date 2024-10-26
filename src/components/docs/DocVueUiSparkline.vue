@@ -432,6 +432,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiSparklineConfig" equal>
+    <span>responsive: false, <BaseComment>Since v2.3.44 - {{ translations.responsive[store.lang] }}</BaseComment></span>
     <span>theme: "", ("" | "zen" | "hack" | "concrete")</span>
     <BaseAttr name="type" attr="type" type="select" defaultVal="line" :options="['line', 'bar']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseDetails attr="style" :level="1">
