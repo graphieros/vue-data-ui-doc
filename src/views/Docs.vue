@@ -168,7 +168,6 @@ const chartKeys = computed(() => {
             "vue_ui_digits",
             "vue_ui_cursor",
             "vue_ui_mini_loader",
-            "vue_ui_kpi",
             "vue_ui_rating",
             "vue_ui_smiley",
             "vue_ui_table_sparkline",

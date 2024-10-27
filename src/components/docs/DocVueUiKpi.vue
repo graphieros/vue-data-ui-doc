@@ -165,7 +165,7 @@ watch(() => showAllConfig.value, (v) => {
             </Suspense>
         </div>
 
-        <Box showSlots>
+        <Box showSlots schema="vue_ui_kpi">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="my-4">

@@ -1,4 +1,48 @@
 {
+    "vue_ui_kpi": {
+        "name": "VueUiKpi",
+        "icon": "kpiBox",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-kpi",
+        "path": "/docs#vue-ui-kpi",
+        "description": "kpi",
+        "hasThemes": false,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": false,
+        "responsive": false,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiKpiConfig",
+            "dataset": "number"
+        },
+        "examples": [
+            {
+                "dataset": "299792458",
+                "config": {}
+            }
+        ],
+        "slots": [
+            {
+                "name": "title",
+                "description": "Title slot"
+            },
+            {
+                "name": "value",
+                "description": "Value slot"
+            },
+            {
+                "name": "comment-before",
+                "description": "Use this slot to add content before the kpi value."
+            },
+            {
+                "name": "comment-after",
+                "description": "Use this slot to add content after the kpi value."
+            }
+        ]
+    },
     "vue_ui_stackbar": {
         "name": "VueUiStackbar",
         "icon": "chartStackbar",
