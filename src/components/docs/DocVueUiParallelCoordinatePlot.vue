@@ -26,8 +26,6 @@ watch(() => store.isDarkMode, (val) => {
     })
 });
 
-onMounted(() => console.log(mainConfig.vue_ui_stackbar))
-
 const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
