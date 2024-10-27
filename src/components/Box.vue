@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
-import { BracketsContainIcon } from "vue-tabler-icons";
-import IconSettings from "./IconSettings.vue";
 import Schema from "../schema/Schema.vue";
 import BaseTabsMenu from "./BaseTabsMenu.vue";
 
@@ -83,59 +81,153 @@ function closeResponsiveTab() {
     emit("onNonResponsiveTab");
 }
 
+const menuTranslations = computed(() => {
+    return {
+        dataset: {
+            fr: 'Jeu de données',
+            en: 'Dataset',
+            pt: 'Conjunto de dados',
+            de: 'Datensatz',
+            zh: '数据集',
+            jp: 'データセット',
+            es: 'Conjunto de datos',
+            ko: '데이터셋',
+            ar: 'مجموعة البيانات'
+        },
+        config: {
+            fr: 'Config',
+            en: 'Config',
+            pt: 'Configuração',
+            de: 'Konfiguration',
+            zh: '配置',
+            jp: '設定',
+            es: 'Configuración',
+            ko: '구성',
+            ar: 'إعدادات'
+        },
+        emits: {
+            fr: 'Emits',
+            en: 'Emits',
+            pt: 'Emissões',
+            de: 'Ereignisse',
+            zh: '触发',
+            jp: 'エミット',
+            es: 'Emisiones',
+            ko: '이밋',
+            ar: 'إطلاقات'
+        },
+        slots: {
+            fr: 'Slots',
+            en: 'Slots',
+            pt: 'Slots',
+            de: 'Slots',
+            zh: '插槽',
+            jp: 'スロット',
+            es: 'Slots',
+            ko: '슬롯',
+            ar: 'فتحات'
+        },
+        customTooltip: {
+            fr: 'Custom tooltip',
+            en: 'Custom tooltip',
+            pt: 'Tooltip personalizada',
+            de: 'Benutzerdefinierter Tooltip',
+            zh: '自定义提示',
+            jp: 'カスタムツールチップ',
+            es: 'Tooltip personalizado',
+            ko: '사용자 정의 툴팁',
+            ar: 'تولتيب مخصص'
+        },
+        useCases: {
+            fr: 'Cas d\'utilisation',
+            en: 'Use cases',
+            pt: 'Casos de uso',
+            de: 'Anwendungsfälle',
+            zh: '用例',
+            jp: 'ユースケース',
+            es: 'Casos de uso',
+            ko: '사용 사례',
+            ar: 'حالات الاستخدام'
+        },
+        themes: {
+            fr: 'Themes',
+            en: 'Themes',
+            pt: 'Temas',
+            de: 'Themen',
+            zh: '主题',
+            jp: 'テーマ',
+            es: 'Temas',
+            ko: '테마',
+            ar: 'السمات'
+        },
+        responsive: {
+            fr: 'Responsive',
+            en: 'Responsive',
+            pt: 'Responsivo',
+            de: 'Responsive',
+            zh: '响应式',
+            jp: 'レスポンシブ',
+            es: 'Responsivo',
+            ko: '반응형',
+            ar: 'متجاوب'
+        }
+    }
+})
+
+
 const menuItems = computed(() => {
     return [
         {
-            name: 'Dataset',
+            name: menuTranslations.value.dataset[store.lang],
             icon: 'ratio',
             color: isDarkMode.value ? '#42d392' : '#1A1A1A',
             active: true,
             order: 0
         },
         {
-            name: 'Config',
+            name: menuTranslations.value.config[store.lang],
             icon: 'settings',
             color: isDarkMode.value ? '#5F8BEE' : '#1A1A1A',
             active: true,
             order: 1
         },
         {
-            name: 'Emits',
+            name: menuTranslations.value.emits[store.lang],
             icon: 'func',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             active: props.showEmits,
             order: 2
         },
         {
-            name: 'Slots',
+            name: menuTranslations.value.slots[store.lang],
             icon: 'skeleton',
             color: isDarkMode.value ? '#ff6600' : '#1A1A1A',
             active: props.showSlots,
             order: 3
         },
         {
-            name: 'Custom tooltip',
+            name: menuTranslations.value.customTooltip[store.lang],
             icon: 'tooltip',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             active: props.showTooltip,
             order: 4
         },
         {
-            name: 'Use cases',
+            name: menuTranslations.value.useCases[store.lang],
             icon: 'clipboardLine',
             color: isDarkMode.value ? '#fdd663' : '#1A1A1A',
             active: props.showUseCases,
             order: 5
         },
         {
-            name: 'Themes',
+            name: menuTranslations.value.themes[store.lang],
             icon: 'clipboardBar',
             color: isDarkMode.value ? '#ddaaFF' : '#1A1A1A',
             active: props.showThemes,
             order: 6
         },
         {
-            name: 'Responsive',
+            name: menuTranslations.value.responsive[store.lang],
             icon: 'fullscreen',
             color: isDarkMode.value ? '#40b3c7' : '#1A1A1A',
             active: props.showResponsive,
