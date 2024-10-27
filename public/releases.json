@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.45",
+    "date": "2024-10-27",
+    "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Add orientation config option to display bars horizontally or vertically",
+        "link": "/docs#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.44",
     "date": "2024-10-26",
     "updates": [

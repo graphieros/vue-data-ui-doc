@@ -56,6 +56,7 @@ const config = ref({
     responsive: false,
     customPalette: [],
     useCssAnimation: true,
+    orientation: 'vertical',
     table: {
         show: false,
         responsiveBreakpoint: 400,
@@ -249,6 +250,7 @@ const darkModeConfig = ref({
     responsive: false,
     customPalette: [],
     useCssAnimation: true,
+    orientation: 'vertical',
     table: {
         show: false,
         responsiveBreakpoint: 400,
@@ -570,6 +572,9 @@ const innerTranslations = ref({
             <code class="mt-4 flex flex-row place-items-center gap-4">
                 <BaseAttr name="distributed" attr="style.chart.bars.distributed" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </code>
+            <code class="mt-4 flex flex-row place-items-center gap-4">
+                <BaseAttr name="orientation" attr="orientation" type="select" defaultVal="vertical" :options="['vertical', 'horizontal']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="Since v2.3.45"/>
+            </code>
         </div>
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_stackbar" @onResponsiveTab="responsiveTabLoaded = true" @onNonResponsiveTab="responsiveTabLoaded = false">
@@ -643,6 +648,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
         <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="orientation" attr="orientation" type="select" defaultVal="vertical" :options="['vertical', 'horizontal']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="Since v2.3.45"/>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
