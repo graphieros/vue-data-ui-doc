@@ -190,7 +190,7 @@ function closeResponsiveTab() {
         <div v-show="activeTab === 6">
             <slot name="tab6"/>
         </div>
-        <div v-show="activeTab === 7">
+        <div v-if="activeTab === 7">
             <slot name="tab7"/>
         </div>
     </div>
