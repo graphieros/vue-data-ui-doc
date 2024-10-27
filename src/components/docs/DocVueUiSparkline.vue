@@ -11,6 +11,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const mainConfig = useConfig()
 
@@ -318,7 +319,7 @@ watch(() => showAllConfig.value, (v) => {
             </Suspense>
         </div>
 
-        <Box showSlots showEmits showUseCases showThemes schema="vue_ui_sparkline">
+        <Box showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">
@@ -574,6 +575,26 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
 
             <template #tab6>
               <ThemesVueUiSparkline />
+            </template>
+
+            <template #tab7>
+              <ResponsiveUnit minHeight="100px">
+                <template #chart>
+                  <VueUiSparkline 
+                    :dataset="dataset" 
+                    :config="isDarkMode ? 
+                      {
+                        ...mutableConfigDarkMode,
+                        responsive: true
+                      } 
+                      : {
+                        ...mutableConfig,
+                        responsive: true
+                        }" 
+                    :key="key"
+                  />
+                </template>
+              </ResponsiveUnit>
             </template>
         </Box>
     </div>

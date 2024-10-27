@@ -54,7 +54,6 @@ defineProps({
     max-width: 100%;
     resize: both;
     overflow: auto;
-    padding: 24px;
     position: relative;
 }
 </style>
