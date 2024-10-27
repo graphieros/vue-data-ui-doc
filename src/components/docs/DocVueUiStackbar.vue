@@ -487,8 +487,6 @@ watch(() => showAllConfig.value, (v) => {
     }
 })
 
-const responsiveTabLoaded = ref(false);
-
 const innerTranslations = ref({
     distributed: {
         en: 'This bar chart has a config option to show distributed bars. In this mode, all bars take the full height of the chart, and show proportions of each datapoint.',
@@ -577,7 +575,7 @@ const innerTranslations = ref({
             </code>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_stackbar" @onResponsiveTab="responsiveTabLoaded = true" @onNonResponsiveTab="responsiveTabLoaded = false">
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_stackbar">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -1050,7 +1048,7 @@ Target the following css class to apply custom styles:
                 <ThemesVueUiStackbar/>
             </template>
             <template #tab7>
-                <ResponsiveUnit height="500px" v-if="responsiveTabLoaded">
+                <ResponsiveUnit height="500px">
                     <template #chart>
                         <VueDataUi 
                             component="VueUiStackbar" 

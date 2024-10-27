@@ -11,7 +11,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 const config = computed(() => {
     return {
-        "responsive": true,
+        "responsive": false,
         "useCssAnimation": true,
         "chart": {
             "fontFamily": "inherit",
@@ -50,6 +50,7 @@ const config = computed(() => {
                 }
             },
             "grid": {
+                position: "start",
                 "stroke": "#e1e5e8",
                 "showVerticalLines": false,
                 "labels": {
@@ -60,6 +61,11 @@ const config = computed(() => {
                         "yLabel": "",
                         "xLabel": "",
                         "fontSize": 12
+                    },
+                    "yAxis":
+                    {
+                        "commonScaleSteps": 5,
+                        "scaleMax": 100,
                     },
                     "xAxisLabels": {
                         "show": true,
@@ -192,17 +198,17 @@ const dataset = ref([
     {
         "name": "France",
         "series": [
-            45,
-            75,
-            64,
-            34,
-            32,
-            27,
-            67,
-            83,
+            25,
             35,
+            44,
+            24,
+            22,
+            27,
+            47,
+            43,
             55,
-            78,
+            81,
+            89,
             92
         ],
         "color": "#6376DD",

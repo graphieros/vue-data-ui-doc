@@ -368,7 +368,7 @@ onMounted(() => {
                         <VueUiIcon name="chartWheel" stroke="#5f8bee"/>
                     </template>  
                 </TokoTsubo>
-                <div class="grid grid-cols-2 gap-0 mt-12 place-content-center place-items-center">
+                <div class="grid grid-cols-2 gap-0 mt-12 place-content-center place-items-center w-full">
                     <div class="w-full max-w-[200px]">
                         <DetailedSatisfaction :value="87.6" title="Europe 2025" :isModel="true" ref="detailedSatisfaction" />
                     </div>

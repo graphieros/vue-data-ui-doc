@@ -18,6 +18,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 ],
                 model: [
                     { key: 'style.chart.grid.x.timeLabels.values', def: ['JAN', 'FEB', 'MAR'], type: 'none', label: 'fontSize' },
+                    { key: 'orientation', def: 'vertical', type:'select', options:['vertical', 'horizontal'], label: 'orientation', category: 'general'},
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'show', category: 'userOptions'},
