@@ -5,10 +5,8 @@ import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import ucSparkline from "../useCases/uc-sparkline.vue"
 import ThemesVueUiSparkline from "../themes/ThemesVueUiSparkline.vue";
-import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
-import BaseNumberInput from '../BaseNumberInput.vue';
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";

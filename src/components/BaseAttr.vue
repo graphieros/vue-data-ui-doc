@@ -4,6 +4,7 @@ import { useMainStore } from "../stores";
 import BaseNumberInput from "./BaseNumberInput.vue";
 import { RefreshDotIcon } from "vue-tabler-icons";
 import BaseComment from "./BaseComment.vue";
+import BaseColorInfo from "./BaseColorInfo.vue";
 
 const props = defineProps({
     light: {
@@ -163,8 +164,13 @@ const isSelected = ref(false);
                 <option v-for="o in options" :key="o" :value="o">{{ o }}</option>
             </select>
         </template>
-        <span dir="auto" class="pl-2 text-gray-600 dark:text-gray-400"> <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span> <span dir="ltr" class="text-black dark:text-white pl-1">{{ defaultVal }}</span>
-        <div v-if="type === 'color'" class="h-[24px] w-[24px] inline-block ml-4 border border-white rounded" :style="`background:${defaultVal}`"/></span>
+        <span dir="auto" class="pl-2 text-gray-600 dark:text-gray-400"> 
+            <span class="text-xs">{{ defaultValueTranslation[store.lang] }}</span> 
+            <span dir="ltr" class="text-black dark:text-white pl-1">{{ defaultVal }}</span>
+            <span class="ml-4">
+                <BaseColorInfo v-if="type === 'color'" :color="defaultVal"/>
+            </span>
+        </span>
         <BaseComment v-if="comment">{{ comment }}</BaseComment>
         <Transition name="fade">
         <button
