@@ -3,11 +3,12 @@ import { ref, watch, nextTick, computed } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
-import BaseDocActions from "./BaseDocActions.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import BaseDetails from "../BaseDetails.vue";
+import BaseAttr from "../BaseAttr.vue";
+import { useConfigCode } from "../../useConfigCode";
 
 const mainConfig = useConfig();
 
@@ -100,6 +101,8 @@ const skeletonConfig = computed(() => {
     }
 })
 
+const { configCode, showAllConfig } = useConfigCode()
+
 </script>
 
 <template>
@@ -126,6 +129,9 @@ const skeletonConfig = computed(() => {
                 <template #title="{color}">
                     <div :style="`color:${color}`">Title</div>
                 </template>
+                <template #arrow="{ backgroundColor, color, iconColor, isOpen }">
+                    <span class="text-gray-500">[your slot content here]</span>
+                </template>
                 <template #content>
                     <VueUiSkeleton :config="skeletonConfig"/>
                     <div class="pb-3 text-xs">
@@ -147,25 +153,28 @@ const skeletonConfig = computed(() => {
                 <div class="mt-4">
                     TS type: <code class="text-app-blue">VueUiAccordionConfig</code>
                 </div>
-<pre>
-<code>
-const <span class="text-black dark:text-app-blue">config: VueUiAccordionConfig</span> = {
-    open: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.open" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.open" @change="forceChartUpdate()">, (default: false) 
-    maxHeight: <BaseNumberInput v-if="isDarkMode" v-model:value="mutableConfigDarkMode.maxHeight" :min="2000" :max="20000" :step="100"/><BaseNumberInput v-else v-model:value="mutableConfig.maxHeight" :min="2000" :max="20000" :step="100"/>, (default: 2000)
-    head: {
-        useArrowSlot: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.head.useArrowSlot" @change="forceChartUpdate()"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.head.useArrowSlot" @change="forceChartUpdate()">, (default: true) 
-        backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.head.backgroundColor"><input v-else type="color" v-model="mutableConfig.head.backgroundColor">, (default: "#FFFFFF")
-        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.head.color"><input v-else type="color" v-model="mutableConfig.head.color">, (default: "#2D353C")
-        iconColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.head.iconColor"><input v-else type="color" v-model="mutableConfig.head.iconColor">, (default: "#5f8bee")
-        padding: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.head.padding"><input v-else type="text" v-model="mutableConfig.head.padding">, (default: "12px 6px") 
-    },
-    body: {
-        backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.body.backgroundColor"><input v-else type="color" v-model="mutableConfig.body.backgroundColor">, (default: "#FFFFFF")
-        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.body.color"><input v-else type="color" v-model="mutableConfig.body.color">, (default: "#2D353C")
-    }
-}
-</code>
-</pre>
+
+                <div class="my-4">
+                    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+                </div>
+
+                <code ref="configCode">
+                    <BaseDetails attr="const config:VueUiAccordionConfig" equal>
+                        <BaseAttr name="open" attr="open" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+                        <BaseAttr name="maxHeight" attr="maxHeight" type="number" defaultVal="2000" :min="2000" :max="20000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseDetails attr="head" :level="1">
+                            <BaseAttr name="useArrowSlot" attr="head.useArrowSlot" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="backgroundColor" attr="head.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                            <BaseAttr name="color" attr="head.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="iconColor" attr="head.iconColor" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="padding" attr="head.padding" type="text" defaultVal="12px 6px" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                        <BaseDetails attr="body" :level="1">
+                            <BaseAttr name="backgroundColor" attr="body.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="body.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                    </BaseDetails>
+                </code>
             </template>
             <template #tab3>
                 <ul class="mb-6">
