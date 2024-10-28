@@ -5,11 +5,10 @@ import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
-import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
-import BaseComment from "../BaseComment.vue";
 import BaseAttr from "../BaseAttr.vue";
+import { useConfigCode } from "../../useConfigCode";
 
 const mainConfig = useConfig()
 
@@ -326,25 +325,12 @@ function copyToClipboard(conf) {
     store.copy();
 }
 
-const configCode = ref(null)
-const showAllConfig = ref(false);
-
-watch(() => showAllConfig.value, (v) => {
-    if (v) {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => d.setAttribute('open', 'true'))
-    } else {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => {
-            if (d.hasAttribute('open')) {
-                d.removeAttribute('open')
-            }
-        })
-    }
-})
+const { configCode, showAllConfig } = useConfigCode()
 
 </script>
 
 <template>
-   <div>
+    <div>
         <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="carouselTable" stroke="#42d392" :strokeWidth="1.5" />
             <span>VueUi<span class="text-black dark:text-app-blue-light">CarouselTable</span></span>

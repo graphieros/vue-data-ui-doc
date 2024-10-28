@@ -6,13 +6,13 @@ import { useMainStore } from "../../stores";
 import UcDonut from "../useCases/uc-donut.vue";
 import ThemesVueUiDonut from "../themes/ThemesVueUiDonut.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
-import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import { useConfigCode } from "../../useConfigCode";
 
 const mainConfig = useConfig()
 
@@ -599,20 +599,7 @@ const slotOptions = ref([
 
 const slotOption = ref(slotOptions.value[0])
 
-const configCode = ref(null)
-const showAllConfig = ref(false);
-
-watch(() => showAllConfig.value, (v) => {
-    if (v) {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => d.setAttribute('open', 'true'))
-    } else {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => {
-            if (d.hasAttribute('open')) {
-                d.removeAttribute('open')
-            }
-        })
-    }
-})
+const { configCode, showAllConfig } = useConfigCode()
 
 </script>
 

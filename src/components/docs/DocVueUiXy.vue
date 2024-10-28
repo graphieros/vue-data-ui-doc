@@ -6,14 +6,13 @@ import { useMainStore } from "../../stores";
 import ucXy from "../useCases/uc-xy.vue";
 import ThemesVueUiXy from "../themes/ThemesVueUiXy.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
-import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
-import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import { useConfigCode } from "../../useConfigCode";
 
 const mainConfig = useConfig()
 
@@ -650,20 +649,7 @@ const shapeOptions = ref([
     'star'
 ]);
 
-const configCode = ref(null)
-const showAllConfig = ref(false);
-
-watch(() => showAllConfig.value, (v) => {
-    if (v) {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => d.setAttribute('open', 'true'))
-    } else {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => {
-            if (d.hasAttribute('open')) {
-                d.removeAttribute('open')
-            }
-        })
-    }
-})
+const { configCode, showAllConfig } = useConfigCode()
 
 </script>
 

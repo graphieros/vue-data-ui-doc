@@ -7,12 +7,11 @@ import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
-import BaseDocActions from "./BaseDocActions.vue";
 import BaseSpinner from "../BaseSpinner.vue";
-import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import { useConfigCode } from "../../useConfigCode";
 
 const mainConfig = useConfig()
 
@@ -32,82 +31,82 @@ const isDarkMode = computed(() => {
 })
 
 const dataset = ref({
-  categories: [
-    {
-      name: "category 1",
-      color: "#5f8bee",
-    },
-    {
-      name: "category 2",
-      color: "#42d392",
-    },
-    {
-      name: "category 3",
-      color: "#ff6400",
-    }
-],
-  series: [
-    {
-      name: "Serie 1",
-      values: [65, 45, 12],
-      color: "",
-      target: 100
-    },
-    {
-      name: "Serie 2",
-      values: [2525, 3472, 4950],
-      color: "",
-      target: 10000
-    },
-    {
-      name: "Serie 3",
-      values: [4.7, 1, 3],
-      color: "",
-      target: 5
-    },
-    {
-      name: "Serie 4",
-      values: [400, 250, 325],
-      color: "",
-      target: 500
-    },
-    {
-      name: "Serie 5",
-      values: [53, 95, 67],
-      color: "",
-      target: 100
-    },
-    {
-      name: "Serie 6",
-      values: [166, 107, 75],
-      color: "",
-      target: 200
-    },
-    {
-      name: "Serie 7",
-      values: [6, 7, 10],
-      color: "",
-      target: 10
-    },
-    {
-      name: "Serie 8",
-      values: [6, 3, 10],
-      color: "",
-      target: 10
-    },
-    {
-      name: "Serie 9",
-      values: [2, 7, 9],
-      color: "",
-      target: 10
-    },
-    {
-      name: "Serie 10",
-      values: [6, 7, 8],
-      color: "",
-      target: 10
-    },
-  ]
+    categories: [
+        {
+            name: "category 1",
+            color: "#5f8bee",
+        },
+        {
+            name: "category 2",
+            color: "#42d392",
+        },
+        {
+            name: "category 3",
+            color: "#ff6400",
+        }
+    ],
+    series: [
+        {
+            name: "Serie 1",
+            values: [65, 45, 12],
+            color: "",
+            target: 100
+        },
+        {
+            name: "Serie 2",
+            values: [2525, 3472, 4950],
+            color: "",
+            target: 10000
+        },
+        {
+            name: "Serie 3",
+            values: [4.7, 1, 3],
+            color: "",
+            target: 5
+        },
+        {
+            name: "Serie 4",
+            values: [400, 250, 325],
+            color: "",
+            target: 500
+        },
+        {
+            name: "Serie 5",
+            values: [53, 95, 67],
+            color: "",
+            target: 100
+        },
+        {
+            name: "Serie 6",
+            values: [166, 107, 75],
+            color: "",
+            target: 200
+        },
+        {
+            name: "Serie 7",
+            values: [6, 7, 10],
+            color: "",
+            target: 10
+        },
+        {
+            name: "Serie 8",
+            values: [6, 3, 10],
+            color: "",
+            target: 10
+        },
+        {
+            name: "Serie 9",
+            values: [2, 7, 9],
+            color: "",
+            target: 10
+        },
+        {
+            name: "Serie 10",
+            values: [6, 7, 8],
+            color: "",
+            target: 10
+        },
+    ]
 });
 
 const config = ref({
@@ -176,7 +175,7 @@ const config = ref({
                     animationFrames: 60
                 },
                 borderRadius: 4,
-                borderColor:"#e1e5e8",
+                borderColor: "#e1e5e8",
                 borderWidth: 1,
                 backgroundOpacity: 90,
                 position: 'center',
@@ -302,7 +301,7 @@ const darkModeConfig = ref({
                     animationFrames: 60
                 },
                 borderRadius: 4,
-                borderColor:"#3A3A3A",
+                borderColor: "#3A3A3A",
                 borderWidth: 1,
                 backgroundOpacity: 90,
                 position: 'center',
@@ -378,7 +377,7 @@ function forceChartUpdate() {
 }
 
 function updateDataset() {
-    mutableDataset.value = JSON.parse(JSON.stringify({...dataset.value, series: dataset.value.series.slice(0,slicer.value)}));
+    mutableDataset.value = JSON.parse(JSON.stringify({ ...dataset.value, series: dataset.value.series.slice(0, slicer.value) }));
 }
 
 function copyToClipboard(conf) {
@@ -400,28 +399,16 @@ const isFixed = ref(false);
 
 function fixChart() {
     isFixed.value = !isFixed.value;
-} 
+}
 
-const configCode = ref(null)
-const showAllConfig = ref(false);
-
-watch(() => showAllConfig.value, (v) => {
-    if (v) {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => d.setAttribute('open', 'true'))
-    } else {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => {
-            if (d.hasAttribute('open')) {
-                d.removeAttribute('open')
-            }
-        })
-    }
-})
+const { configCode, showAllConfig } = useConfigCode()
 
 </script>
 
 <template>
     <div>
-        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
+        <h1
+            class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="chartRadar" stroke="#42d392" :strokeWidth="1.5" />
             <span>VueUi<span class="text-black dark:text-app-blue-light">Radar</span></span>
         </h1>
@@ -429,39 +416,46 @@ watch(() => showAllConfig.value, (v) => {
             {{ translations.docs.tooltips.radar[store.lang] }}
         </p>
 
-        <BaseDocHeaderActions
-            targetLink="vue-ui-radar"
-            targetMaker="VueUiRadar"
-            :configSource="mainConfig.vue_ui_radar"
-        />
+        <BaseDocHeaderActions targetLink="vue-ui-radar" targetMaker="VueUiRadar"
+            :configSource="mainConfig.vue_ui_radar" />
 
-        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`">
-            <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                <PinnedOffIcon v-if="isFixed"/>
+        <div
+            :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`">
+            <button @click="fixChart"
+                class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                <PinnedOffIcon v-if="isFixed" />
                 <div v-else class="relative overflow-visible">
-                    <PinIcon class="peer overflow-visible"/>
-                    <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
+                    <PinIcon class="peer overflow-visible" />
+                    <div
+                        class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
                         {{ hintPin[store.lang] }}
                     </div>
                 </div>
             </button>
             <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
-                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
+                <button @click="resetDefault"
+                    class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{
+                translations.docs.reset[store.lang] }}</button>
+                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+                    class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">
+                    <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
+                </button>
             </div>
             <Suspense>
                 <template #default>
-                    <VueUiRadar :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    <VueUiRadar :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
+                        :key="key" />
                 </template>
                 <template #fallback>
-                    <BaseSpinner/>
+                    <BaseSpinner />
                 </template>
             </Suspense>
         </div>
 
         <div class="mt-6 flex flex-col gap-3">
-            <label for="player">{{  translations.docs.showMoreSeries[store.lang] }}</label>
-            <input id="player" type="range" :min="3" :max="10" v-model="slicer" @input="updateDataset" class="accent-app-green max-w-[200px]">
+            <label for="player">{{ translations.docs.showMoreSeries[store.lang] }}</label>
+            <input id="player" type="range" :min="3" :max="10" v-model="slicer" @input="updateDataset"
+                class="accent-app-green max-w-[200px]">
         </div>
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_radar">
@@ -471,7 +465,7 @@ watch(() => showAllConfig.value, (v) => {
                     TS type: <code class="text-app-green">VueUiRadarDataset</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
+                    <pre>
 <code>
     {
         categories: [
@@ -484,11 +478,11 @@ watch(() => showAllConfig.value, (v) => {
         series: [
             {
                 name: string;
-                values: number[]; <span class="text-gray-600 dark:text-app-green">// {{  translations.docs.comments.radar.seriesValues[store.lang]  }}</span>
-                target: number; <span class="text-gray-600 dark:text-app-green">// {{  translations.docs.comments.radar.target[store.lang] }}</span>
+                values: number[]; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.radar.seriesValues[store.lang] }}</span>
+                target: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.radar.target[store.lang] }}</span>
                 formatter?: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment>
             },
-            {...} <span class="text-gray-600 dark:text-app-orange">// {{  translations.docs.comments.radar.polygon[store.lang]  }}</span>
+            {...} <span class="text-gray-600 dark:text-app-orange">// {{ translations.docs.comments.radar.polygon[store.lang] }}</span>
         ]
     }
 </code>
@@ -497,7 +491,7 @@ watch(() => showAllConfig.value, (v) => {
 
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-<pre>
+                    <pre>
 <code>
 const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</span> = {
     categories: [
@@ -555,25 +549,30 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
     ]
 }
 </code>
-</pre>                
+</pre>
                 </div>
             </template>
 
             <template v-slot:tab1>
                 <div class="w-full overflow-x-auto">
                     <div class="flex gap-2">
-                        <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
-                        <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
+                        <button @click="resetDefault"
+                            class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{
+                translations.docs.reset[store.lang] }}</button>
+                        <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)"
+                            class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all">
+                            <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
+                        </button>
                     </div>
                     <div class="mt-6">
                         TS type: <code class="text-app-blue">VueUiRadarConfig</code>
                     </div>
 
-<div class="my-4">
-    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
-</div>
+                    <div class="my-4">
+                        Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+                    </div>
 
-<code ref="configCode">
+                    <code ref="configCode">
     <BaseDetails attr="const config: VueUiRadarConfig" equal>
         <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
         <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
@@ -704,14 +703,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
         </BaseDetails>
     </BaseDetails>
 </code>
-                    
+
                 </div>
             </template>
 
             <template v-slot:tab2>
                 <div><code><b>@selectLegend</b></code></div>
                 <div class="text-gray-400 pl-5">{{ translations.docs.emits.xy.selectLegend[store.lang] }}</div>
-    <pre>
+                <pre>
     <code>
     [
         {
@@ -726,7 +725,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
                 <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
-    <pre>
+                    <pre>
     <span class="text-black dark:text-app-green">Using composition API:</span>
     <code>
         <span class="text-gray-400">&lt;script setup&gt;</span>
@@ -807,9 +806,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
 
             <template #tab3>
                 <div class="text-gray-500">
-                    {{ translations.slots.presentation[store.lang]  }}
+                    {{ translations.slots.presentation[store.lang] }}
                 </div>
-<pre>
+                <pre>
 <code>
     &lt;VueUiRadar
         :config="config"
@@ -820,11 +819,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
         &lt;/template&gt;
     &lt;/VueUiRadar&gt;
 </code>
-</pre>                    
-<div class="text-gray-500">
-                    {{ translations.slots.legendDetail[store.lang]  }}
+</pre>
+                <div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang] }}
                 </div>
-<pre>
+                <pre>
 <code>
     &lt;VueUiRadar
         :config="config"
@@ -837,11 +836,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
 </code>
 </pre>
 
-<div class="text-gray-500">
-    {{ translations.slots.tooltip[store.lang]  }}
-</div>
+                <div class="text-gray-500">
+                    {{ translations.slots.tooltip[store.lang] }}
+                </div>
 
-<pre>
+                <pre>
 <code>
     &lt;VueUiRadar
         :config="config"
@@ -855,13 +854,13 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
         &lt;/template&gt;
     &lt;/VueUiRadar&gt;
 </code>
-</pre> 
+</pre>
 
-<div class="text-gray-500">
-    {{ translations.slots.watermark[store.lang]  }}
-</div>
+                <div class="text-gray-500">
+                    {{ translations.slots.watermark[store.lang] }}
+                </div>
 
-<pre>
+                <pre>
 <code>
     &lt;VueUiRadar
         :config="config"
@@ -875,7 +874,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</s
 </pre>
             </template>
             <template #tab4>
-<pre>
+                <pre>
 <code>
 <span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
 
@@ -886,13 +885,13 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
 }
 </code>
 </pre>
-Using custom mode, the tooltip will be headless.
-Target the following css class to apply custom styles:
-<pre>
+                Using custom mode, the tooltip will be headless.
+                Target the following css class to apply custom styles:
+                <pre>
 <code>
 .vue-data-ui-custom-tooltip
 </code>
-</pre>            
+</pre>
             </template>
 
             <template #tab6>
@@ -902,21 +901,16 @@ Target the following css class to apply custom styles:
             <template #tab7>
                 <ResponsiveUnit>
                     <template #chart>
-                        <VueUiRadar 
-                            :dataset="mutableDataset" 
-                            :config="
-                                isDarkMode 
-                                    ? {
-                                        ...mutableConfigDarkMode,
-                                        responsive: true
-                                    } 
-                                    : {
-                                        ...mutableConfig,
-                                        responsive: true
-                                    }
-                                " 
-                            :key="key"
-                        />
+                        <VueUiRadar :dataset="mutableDataset" :config="isDarkMode
+                    ? {
+                        ...mutableConfigDarkMode,
+                        responsive: true
+                    }
+                    : {
+                        ...mutableConfig,
+                        responsive: true
+                    }
+                                " :key="key" />
                     </template>
                 </ResponsiveUnit>
             </template>

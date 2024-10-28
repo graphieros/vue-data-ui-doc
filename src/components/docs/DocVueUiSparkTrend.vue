@@ -12,6 +12,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import { useConfigCode } from "../../useConfigCode";
 
 const mainConfig = useConfig()
 
@@ -176,26 +177,13 @@ function fixChart() {
     isFixed.value = !isFixed.value;
 } 
 
-const configCode = ref(null)
-const showAllConfig = ref(false);
-
-watch(() => showAllConfig.value, (v) => {
-    if (v) {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => d.setAttribute('open', 'true'))
-    } else {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => {
-            if (d.hasAttribute('open')) {
-                d.removeAttribute('open')
-            }
-        })
-    }
-})
+const { configCode, showAllConfig } = useConfigCode()
 
 </script>
 
 <template>
     <div>
-      <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
+        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="trend" stroke="#42d392" :strokeWidth="1.5" />
             <span>VueUi<span class="text-black dark:text-app-blue-light">SparkTrend</span></span>
         </h1>
@@ -209,7 +197,7 @@ watch(() => showAllConfig.value, (v) => {
         />
 
         <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`">
-          <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+            <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
                 <div v-else class="relative overflow-visible">
                     <PinIcon class="peer overflow-visible"/>

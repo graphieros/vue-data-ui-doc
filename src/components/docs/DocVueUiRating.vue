@@ -9,7 +9,6 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
-import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 

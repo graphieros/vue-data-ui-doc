@@ -37,6 +37,7 @@ function copyContent(color) {
     document.body.removeChild(selBox);
     store.copy();
 }
+
 </script>
 
 <template>
@@ -47,7 +48,7 @@ function copyContent(color) {
             You can use config.customPalette (string[]]) to use your own color palette. Colors provided in datasets will always override custom and default palettes. Allowed color formats: HEX, RGB, HSL, named colors.
             The config.customPalette attribute can be used on the following components:
         </p>
-        <ul>
+        <ul class="grid grid-cols-1 sm:grid-cols-2">
             <li class="flex flex-row gap-2 place-items-center">
                 <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUi3dBar
             </li>
@@ -128,6 +129,12 @@ function copyContent(color) {
             </li>
             <li class="flex flex-row gap-2 place-items-center">
                 <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiXyCanvas
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiStackbar
+            </li>
+            <li class="flex flex-row gap-2 place-items-center">
+                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiFlow
             </li>
         </ul>
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>

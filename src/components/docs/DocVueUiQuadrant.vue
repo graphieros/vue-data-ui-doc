@@ -11,6 +11,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import { useConfigCode } from "../../useConfigCode";
 
 const mainConfig = useConfig()
 
@@ -31,81 +32,81 @@ const isDarkMode = computed(() => {
 
 const dataset = ref([
     {
-    name: "Stars",
-    shape: "star",
-    color: "#5f8bee",
-    series: [
-      {
-        name: "Star 1",
-        x: 50,
-        y: 50
-      },
-      {
-        name: "Star 2",
-        x: -10,
-        y: -10
-      },
-      {
-        name: "Star 3",
-        x: -15,
-        y: 20
-      },
-      {
-        name: "Star 4",
-        x: 15,
-        y: -20
-      },
-    ]
-  },
-  {
-    name: "Triangles",
-    shape: "triangle",
-    color: "#42d392",
-    series: [
-      {
-        name: "Triangle 1",
-        x: -50,
-        y: -50
-      },
-      {
-        name: "Triangle 2",
-        x: 25,
-        y: -25
-      },
-      {
-        name: "Triangle 3",
-        x: -25,
-        y: 25
-      },
-      {
-        name: "Triangle 4",
-        x: 10,
-        y: 10
-      }
-    ]
-  },
-  {
-    name: "Hexagons",
-    shape: "hexagon",
-    color: "#ff6400",
-    series: [
-      {
-        name: "Hexagon 1",
-        x: -39,
-        y: 39
-      },
-      {
-        name: "Hexagon 2",
-        x: -2,
-        y: 45
-      },
-      {
-        name: "Hexagon 3",
-        x: -15,
-        y: 30
-      },
-    ]
-  },
+        name: "Stars",
+        shape: "star",
+        color: "#5f8bee",
+        series: [
+            {
+                name: "Star 1",
+                x: 50,
+                y: 50
+            },
+            {
+                name: "Star 2",
+                x: -10,
+                y: -10
+            },
+            {
+                name: "Star 3",
+                x: -15,
+                y: 20
+            },
+            {
+                name: "Star 4",
+                x: 15,
+                y: -20
+            },
+        ]
+    },
+    {
+        name: "Triangles",
+        shape: "triangle",
+        color: "#42d392",
+        series: [
+            {
+                name: "Triangle 1",
+                x: -50,
+                y: -50
+            },
+            {
+                name: "Triangle 2",
+                x: 25,
+                y: -25
+            },
+            {
+                name: "Triangle 3",
+                x: -25,
+                y: 25
+            },
+            {
+                name: "Triangle 4",
+                x: 10,
+                y: 10
+            }
+        ]
+    },
+    {
+        name: "Hexagons",
+        shape: "hexagon",
+        color: "#ff6400",
+        series: [
+            {
+                name: "Hexagon 1",
+                x: -39,
+                y: 39
+            },
+            {
+                name: "Hexagon 2",
+                x: -2,
+                y: 45
+            },
+            {
+                name: "Hexagon 3",
+                x: -15,
+                y: 30
+            },
+        ]
+    },
 ]);
 
 const config = ref({
@@ -232,7 +233,7 @@ const config = ref({
                 customFormat: null,
                 showShape: true,
                 borderRadius: 4,
-                borderColor:"#e1e5e8",
+                borderColor: "#e1e5e8",
                 borderWidth: 1,
                 backgroundOpacity: 90,
                 position: 'center',
@@ -417,7 +418,7 @@ const darkModeConfig = ref({
                 customFormat: null,
                 showShape: true,
                 borderRadius: 4,
-                borderColor:"#3A3A3A",
+                borderColor: "#3A3A3A",
                 borderWidth: 1,
                 backgroundOpacity: 90,
                 position: 'center',
@@ -520,28 +521,16 @@ const isFixed = ref(false);
 
 function fixChart() {
     isFixed.value = !isFixed.value;
-} 
+}
 
-const configCode = ref(null)
-const showAllConfig = ref(false);
-
-watch(() => showAllConfig.value, (v) => {
-    if (v) {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => d.setAttribute('open', 'true'))
-    } else {
-        Array.from(configCode.value.getElementsByTagName('details')).forEach(d => {
-            if (d.hasAttribute('open')) {
-                d.removeAttribute('open')
-            }
-        })
-    }
-})
+const { configCode, showAllConfig } = useConfigCode()
 
 </script>
 
 <template>
     <div>
-        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
+        <h1
+            class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
             <VueUiIcon name="chartQuadrant" stroke="#42d392" :strokeWidth="1.5" />
             <span>VueUi<span class="text-black dark:text-app-blue-light">Quadrant</span></span>
         </h1>
@@ -549,32 +538,38 @@ watch(() => showAllConfig.value, (v) => {
             {{ translations.docs.tooltips.quadrant[store.lang] }}
         </p>
 
-        <BaseDocHeaderActions
-            targetLink="vue-ui-quadrant"
-            targetMaker="VueUiQuadrant"
-            :configSource="mainConfig.vue_ui_quadrant"
-        />
+        <BaseDocHeaderActions targetLink="vue-ui-quadrant" targetMaker="VueUiQuadrant"
+            :configSource="mainConfig.vue_ui_quadrant" />
 
-        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`">
-            <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                <PinnedOffIcon v-if="isFixed"/>
+        <div
+            :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-1/2'}`">
+            <button @click="fixChart"
+                class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                <PinnedOffIcon v-if="isFixed" />
                 <div v-else class="relative overflow-visible">
-                    <PinIcon class="peer overflow-visible"/>
-                    <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
+                    <PinIcon class="peer overflow-visible" />
+                    <div
+                        class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
                         {{ hintPin[store.lang] }}
                     </div>
                 </div>
             </button>
             <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
-                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
+                <button @click="resetDefault"
+                    class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{
+                translations.docs.reset[store.lang] }}</button>
+                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+                    class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">
+                    <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
+                </button>
             </div>
             <Suspense>
                 <template #default>
-                    <VueUiQuadrant :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    <VueUiQuadrant :dataset="mutableDataset"
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
                 </template>
                 <template #fallback>
-                    <BaseSpinner/>
+                    <BaseSpinner />
                 </template>
             </Suspense>
         </div>
@@ -586,7 +581,7 @@ watch(() => showAllConfig.value, (v) => {
                     TS type: <code class="text-app-green">VueUiQuadrantDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
+                    <pre>
 <code>
     [
         {
@@ -605,12 +600,12 @@ watch(() => showAllConfig.value, (v) => {
         {...}
     ]
 </code>
-</pre>                
+</pre>
                 </div>
 
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-<pre>
+                    <pre>
 <code>
 const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDatasetItem[]</span> = [
     {
@@ -691,25 +686,30 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
   },
 ]
 </code>
-</pre>                
+</pre>
                 </div>
             </template>
 
             <template v-slot:tab1>
                 <div class="w-full overflow-x-auto">
                     <div class="flex gap-2">
-                        <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
-                        <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
+                        <button @click="resetDefault"
+                            class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{
+                translations.docs.reset[store.lang] }}</button>
+                        <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)"
+                            class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all">
+                            <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
+                        </button>
                     </div>
                     <div class="mt-4">
                         TS type: <code class="text-app-blue">VueUiQuadrantConfig</code>
                     </div>
 
-<div class="my-4">
-    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
-</div>
+                    <div class="my-4">
+                        Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+                    </div>
 
-<code ref="configCode">
+                    <code ref="configCode">
     <BaseDetails attr="const config: VueUiQuadrantConfig" equal>
         <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
         <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
@@ -895,16 +895,16 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
         </BaseDetails>
     </BaseDetails>
 </code>
-                
+
                 </div>
             </template>
-            
+
             <template v-slot:tab2>
-            
-                <div class="overflow-auto">                
-                <div><code><b>@selectLegend</b></code></div>
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.quadrant.selectLegend[store.lang]}}</div>
-<pre>
+
+                <div class="overflow-auto">
+                    <div><code><b>@selectLegend</b></code></div>
+                    <div class="text-gray-400 pl-5">{{ translations.docs.emits.quadrant.selectLegend[store.lang] }}</div>
+                    <pre>
 <code>
     [
         {
@@ -926,9 +926,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
     ]
 </code>
 </pre>
-                <div class="pt-6 border-t border-gray-700"><code><b>@selectPlot</b></code></div>
-                <div class="text-gray-400 pl-5">{{ translations.docs.emits.quadrant.selectPlot[store.lang] }}</div>    
-<pre>
+                    <div class="pt-6 border-t border-gray-700"><code><b>@selectPlot</b></code></div>
+                    <div class="text-gray-400 pl-5">{{ translations.docs.emits.quadrant.selectPlot[store.lang] }}</div>
+                    <pre>
 <code>
     {
         category: string;
@@ -940,9 +940,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
     }
 </code>
 </pre>
-                <div class="pt-6 border-t border-gray-700"><code><b>@selectSide</b></code></div>
-                <div class="text-gray-400 pl-5">{{  translations.docs.emits.quadrant.selectSide[store.lang] }}</div>
-<pre>
+                    <div class="pt-6 border-t border-gray-700"><code><b>@selectSide</b></code></div>
+                    <div class="text-gray-400 pl-5">{{ translations.docs.emits.quadrant.selectSide[store.lang] }}</div>
+                    <pre>
 <code>
     {
         quadrantSide: "tl" | "tr" | "br" | "bl";
@@ -959,9 +959,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
     }
 </code>
 </pre>
-                <div class="pt-6 border-t border-gray-700"><code><b>getData</b></code></div>
-                <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
-    <pre>
+                    <div class="pt-6 border-t border-gray-700"><code><b>getData</b></code></div>
+                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
+                    <pre>
     <span class="text-black dark:text-app-green">Using composition API:</span>
     <code>
         <span class="text-gray-400">&lt;script setup&gt;</span>
@@ -1046,9 +1046,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
 
             <template #tab3>
                 <div class="text-gray-500">
-                    {{ translations.slots.presentation[store.lang]  }}
+                    {{ translations.slots.presentation[store.lang] }}
                 </div>
-<pre>
+                <pre>
 <code>
     &lt;VueUiQuadrant
         :config="config"
@@ -1059,11 +1059,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
         &lt;/template&gt;
     &lt;/VueUiQuadrant&gt;
 </code>
-</pre>                    
-<div class="text-gray-500">
-                    {{ translations.slots.legendDetail[store.lang]  }}
+</pre>
+                <div class="text-gray-500">
+                    {{ translations.slots.legendDetail[store.lang] }}
                 </div>
-<pre>
+                <pre>
 <code>
     &lt;VueUiQuadrant
         :config="config"
@@ -1076,11 +1076,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
 </code>
 </pre>
 
-<div class="text-gray-500">
-    {{ translations.slots.tooltip[store.lang]  }}
-</div>
+                <div class="text-gray-500">
+                    {{ translations.slots.tooltip[store.lang] }}
+                </div>
 
-<pre>
+                <pre>
 <code>
     &lt;VueUiQuadrant
         :config="config"
@@ -1094,13 +1094,13 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
         &lt;/template&gt;
     &lt;/VueUiQuadrant&gt;
 </code>
-</pre> 
+</pre>
 
-<div class="text-gray-500">
-    {{ translations.slots.watermark[store.lang]  }}
-</div>
+                <div class="text-gray-500">
+                    {{ translations.slots.watermark[store.lang] }}
+                </div>
 
-<pre>
+                <pre>
 <code>
     &lt;VueUiQuadrant
         :config="config"
@@ -1114,7 +1114,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
 </pre>
             </template>
             <template #tab4>
-<pre>
+                <pre>
 <code>
 <span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
 
@@ -1124,14 +1124,14 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
     return `&lt;div&gt;${content}&lt;/div&gt;`
 }
 </code>
-</pre> 
-Using custom mode, the tooltip will be headless.
-Target the following css class to apply custom styles:
-<pre>
+</pre>
+                Using custom mode, the tooltip will be headless.
+                Target the following css class to apply custom styles:
+                <pre>
 <code>
 .vue-data-ui-custom-tooltip
 </code>
-</pre>           
+</pre>
             </template>
 
             <template #tab6>
@@ -1141,21 +1141,16 @@ Target the following css class to apply custom styles:
             <template #tab7>
                 <ResponsiveUnit width="300px">
                     <template #chart>
-                        <VueUiQuadrant 
-                            :dataset="mutableDataset" 
-                            :config="
-                                isDarkMode 
-                                    ? {
-                                        ...mutableConfigDarkMode,
-                                        responsive: true
-                                    } 
-                                    : {
-                                        ...mutableConfig,
-                                        responsive: true
-                                    }
-                                " 
-                            :key="key"
-                        />
+                        <VueUiQuadrant :dataset="mutableDataset" :config="isDarkMode
+                    ? {
+                        ...mutableConfigDarkMode,
+                        responsive: true
+                    }
+                    : {
+                        ...mutableConfig,
+                        responsive: true
+                    }
+                                " :key="key" />
                     </template>
                 </ResponsiveUnit>
             </template>
