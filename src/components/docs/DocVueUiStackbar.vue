@@ -660,7 +660,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                         <BaseAttr name="color" attr="style.chart.title.subtitle.color" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="text" attr="style.chart.title.subtitle.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
-                    <BaseDetails attr="legend" :level="3" title="style.chart.legend">
+                </BaseDetails>
+                <BaseDetails attr="legend" :level="3" title="style.chart.legend">
                         <BaseAttr name="show" attr="style.chart.legend.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="backgroundColor" attr="style.chart.legend.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                         <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
@@ -772,7 +773,6 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                             </BaseDetails>
                         </BaseDetails>
                     </BaseDetails>
-                </BaseDetails>
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="table" :level="1">
