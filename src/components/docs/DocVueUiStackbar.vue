@@ -627,7 +627,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
 </div>
 
 <code ref="configCode">
-    <BaseDetails attr="const condif: VueUiStackbarConfig" equal>
+    <BaseDetails attr="const config: VueUiStackbarConfig" equal>
         <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
         <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
