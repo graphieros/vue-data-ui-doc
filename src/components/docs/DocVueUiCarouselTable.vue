@@ -502,10 +502,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDa
                         <BaseAttr name="color" attr="tbody.tr.td.border.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="padding" :level="4" title="tbody.tr.td.padding">
-                        <BaseAttr name="top" attr="tbody.tr.td.padding.top" type="number" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="right" attr="tbody.tr.td.padding.right" type="number" defaultVal="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="bottom" attr="tbody.tr.td.padding.bottom" type="number" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="left" attr="tbody.tr.td.padding.left" type="number" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="top" attr="tbody.tr.td.padding.top" type="number" defaultVal="0"  :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="right" attr="tbody.tr.td.padding.right" type="number" defaultVal="12" :min="0" :max="24"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="bottom" attr="tbody.tr.td.padding.bottom" type="number" defaultVal="0" :min="0" :max="24"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="left" attr="tbody.tr.td.padding.left" type="number" defaultVal="0" :min="0" :max="24"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="style" :level="4" title="tbody.tr.td.style">
                         <BaseAttr name="textAlign" attr="tbody.tr.td.style.textAlign" type="select" defaultVal="right" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
