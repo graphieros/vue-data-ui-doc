@@ -193,7 +193,7 @@ const finalConfig = computed(() => {
                 <button tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                 <table>
                     <thead>
-                        <th class="text-left text-xs h-[40px] px-2">Series name</th>
+                        <th class="text-left text-xs h-[40px] px-2">Serie name</th>
                             <th class="text-left text-xs h-[40px] px-2">Color</th>
                             <th class="text-left text-xs h-[40px] px-2">Items</th>
                     </thead>
@@ -218,6 +218,11 @@ const finalConfig = computed(() => {
                             </td>
                     </tbody>
                 </table>
+            </div>
+            <div class="flex flex-row gap-4 mt-4 mb-6">
+                <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
+                    <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
+                </Tooltip>
             </div>
         </details>
 
