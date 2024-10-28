@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.46",
+    "date": "2024-10-28",
+    "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Add scaleMin and scaleMax config attributes to force scale",
+        "link": "/docs#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.45",
     "date": "2024-10-27",
     "updates": [

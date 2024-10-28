@@ -728,6 +728,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                     <BaseDetails attr="grid" :level="3" title="style.chart.grid">
                         <BaseDetails attr="scale" :level="4" title="style.chart.grid.scale">
                             <BaseAttr name="ticks" attr="style.chart.grid.scale.ticks" type="select" defaultVal="10" :options="[2, 5, 10, 20]" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="scaleMin" attr="style.chart.grid.scale.scaleMin" type="number" defaultVal="null" :min="-10000" :max="10000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="scaleMax" attr="style.chart.grid.scale.scaleMax" type="number" defaultVal="null" :min="-10000" :max="10000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
                         <BaseDetails attr="x" :level="4" title="style.chart.grid.x">
                             <BaseAttr name="showAxis" attr="style.chart.grid.x.showAxis" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

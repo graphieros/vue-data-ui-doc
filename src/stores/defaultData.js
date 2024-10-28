@@ -117,6 +117,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.bars.dataLabels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels'},
 
                     { key: 'style.chart.grid.scale.ticks', def: 10, type: 'select', options: [2, 5, 10, 20], label: ['scale', 'is', 'ticks'], category: 'grid'},
+                    { key: 'style.chart.grid.scale.scaleMin', def: null, type: 'number', min: -10000, max: 10000, label: ['scale', 'is', 'min'], category: 'grid'},
+                    { key: 'style.chart.grid.scale.scaleMax', def: null, type: 'number', min: -10000, max: 10000, label: ['scale', 'is', 'max'], category: 'grid'},
                     { key: 'style.chart.grid.x.showAxis', def: true, type: 'checkbox', label: ['xAxis', 'is', 'show'], category: 'grid'},
                     { key: 'style.chart.grid.x.showHorizontalLines', def: false, type: 'checkbox', label: ['horizontal', 'lines', 'is', 'show'], category: 'grid'},
                     { key: 'style.chart.grid.x.axisColor', def: '#E1E5E8', type: 'color', label: ['xAxis', 'is', 'color'], category: 'grid'},
