@@ -108,7 +108,8 @@ onMounted(() => {
 const options = ref({
     datasetItem: {
         name: '...',
-        series: []
+        color: '#CCCCCC',
+        series: [0]
     }
 })
 
@@ -136,7 +137,7 @@ function forceChartUpdate() {
     step.value += 1;
 }
 
-function addDatasetItem() {
+function addSeries() {
     datasetItems.value.push({...JSON.parse(JSON.stringify(options.value.datasetItem))});
     step.value += 1;
     saveDatasetToLocalStorage()
@@ -219,9 +220,10 @@ const finalConfig = computed(() => {
                     </tbody>
                 </table>
             </div>
+            <button class="mt-6 h-[40px] w-[40px] ml-2 rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSeries()"><PlusIcon/></button>
         </details>
 
-        <details open class="mt-6" v-if="makerTranslations.labels">
+        <details open class="mt-12" v-if="makerTranslations.labels">
             <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
     
             <div class="flex justify-end">
