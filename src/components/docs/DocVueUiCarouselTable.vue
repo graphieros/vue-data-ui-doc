@@ -468,10 +468,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDa
                         <BaseAttr name="color" attr="thead.tr.th.border.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="padding" :level="4" title="thead.tr.th.padding">
-                        <BaseAttr name="top" attr="thead.tr.th.padding.top" type="number" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="right" attr="thead.tr.th.padding.right" type="number" defaultVal="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="bottom" attr="thead.tr.th.padding.bottom" type="number" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="left" attr="thead.tr.th.padding.left" type="number" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="top" attr="thead.tr.th.padding.top" type="number" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="right" attr="thead.tr.th.padding.right" type="number" defaultVal="12" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="bottom" attr="thead.tr.th.padding.bottom" type="number" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="left" attr="thead.tr.th.padding.left" type="number" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="style" :level="4" title="thead.tr.th.style">
                         <BaseAttr name="borderSpacing" attr="thead.tr.th.style.borderSpacing" type="number" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
