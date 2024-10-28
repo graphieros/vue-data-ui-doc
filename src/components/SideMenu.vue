@@ -597,6 +597,7 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-spark-trend', componentName: 'SparkTrend', icon: 'trend' },
             { route: '/docs#vue-ui-gizmo', componentName: 'Gizmo', icon: 'battery' },
             { route: '/docs#vue-ui-quick-chart', componentName: 'QuickChart', icon: 'vueDataUi' },
+            { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' },
         ],
     },
     {
