@@ -100,7 +100,7 @@ const dashboardComponents = computed(() => {
             <template #default>
                 <VueUiDashboard :dataset="dashboardComponents" :config="mutableConfig" :key="key">
                     <template #content="{ item }">
-                        <div style="padding: 12px">
+                        <div style="padding: 12px; width: 100%; height: 100%">
                             <component :is="item.component" v-bind="item.props"/>
                         </div>
                     </template>

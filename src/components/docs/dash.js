@@ -31,6 +31,7 @@ export const xyDataset = [
 ];
 
 export const xyConfig = {
+    responsive: true,
     chart: {
         backgroundColor: "transparent",
         color: "#1A1A1A",
@@ -171,6 +172,7 @@ export const donutDataset = [
 ];
 
 export const donutConfig = {
+    responsive: true,
     style: {
         fontFamily: "inherit",
         chart: {
@@ -196,7 +198,7 @@ export const donutConfig = {
                     },
                     hollow: {
                         total: {
-                            show: true,
+                            show: false,
                             bold: false,
                             fontSize: 18,
                             color: "#1A1A1A",
@@ -213,7 +215,7 @@ export const donutConfig = {
                             }
                         },
                         average: {
-                            show: true,
+                            show: false,
                             bold: false,
                             fontSize: 18,
                             color: "#1A1A1A",
@@ -311,6 +313,7 @@ export const waffleDataset = [
 ];
 
 export const waffleConfig = {
+    responsive: true,
     style: {
         fontFamily: "inherit",
         chart: {
@@ -464,6 +467,7 @@ export const radarDataset = {
   };
 
 export const radarConfig = {
+    responsive: true,
     style: {
         fontFamily: "inherit",
         chart: {
