@@ -22,9 +22,6 @@ const tabsContainer = ref(null);
 const canScrollLeft = ref(false);
 const canScrollRight = ref(false);
 
-const touchStartX = ref(0);
-const scrollStartX = ref(0);
-
 const updateScrollButtons = () => {
     const container = tabsContainer.value;
     if (container) {
@@ -45,22 +42,16 @@ const scrollRight = () => {
     tabsContainer.value.scrollBy({ left: 100, behavior: 'smooth' });
 };
 
-const onTouchStart = (event) => {
-    touchStartX.value = event.touches[0].clientX;
-    scrollStartX.value = tabsContainer.value.scrollLeft;
-};
+const resizeObserver = ref(null)
 
-const onTouchMove = (event) => {
-    const deltaX = touchStartX.value - event.touches[0].clientX;
-    tabsContainer.value.scrollLeft = scrollStartX.value + deltaX;
-};
-
-const onTouchEnd = () => {
+onMounted(() => {
     updateScrollButtons();
-};
+    if (tabsContainer.value) {
+        resizeObserver.value = new ResizeObserver(updateScrollButtons);
+        resizeObserver.value.observe(tabsContainer.value)
+    }
+});
 
-
-onMounted(updateScrollButtons);
 watch(tabsContainer, updateScrollButtons);
 
 const emit = defineEmits(['tabSelected']);
@@ -70,11 +61,10 @@ const selectTab = (item) => {
 </script>
 
 <template>
-    <div class="relative w-full flex items-center border-gray-700 border-b">
+    <div class="relative w-full flex items-center border-gray-700">
         <button v-if="canScrollLeft" @click="scrollLeft"
-            class="absolute -left-4 p-2 bg-gray-100 dark:bg-[#3A3A3A] rounded-full shadow-md z-10 border-l-2 border-app-blue dark:border-[#8A8A8A]">
-            <VueUiIcon name="arrowLeft" :stroke="isDarkMode ? '#CCCCCC' : '#5A5A5A'"/>
-            <i class="fas fa-chevron-left"></i>
+            class="absolute -left-4 p-2 bg-gradient-to-b bg-gray-200 dark:bg-[#2A2A2A] rounded-tr rounded-br shadow-md z-10 h-full hover:bg-[#abc2f6] dark:hover:bg-[#3A3A3A] transition-colors">
+            <VueUiIcon name="arrowLeft" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
         </button>
 
         <div ref="tabsContainer" class="flex select-none overflow-x-auto space-x-4 scrollbar-hide w-full px-8" @scroll="onScroll">
@@ -87,8 +77,8 @@ const selectTab = (item) => {
         </div>
 
         <button v-if="canScrollRight" @click="scrollRight"
-            class="absolute -right-4 p-2 bg-gray-100 dark:bg-[#3A3A3A] rounded-full shadow-md z-10 border-r-2 border-app-blue dark:border-[#8A8A8A]">
-            <VueUiIcon name="arrowRight" :stroke="isDarkMode ? '#CCCCCC' : '#5A5A5A'"/>
+            class="absolute -right-4 p-2 bg-gradient-to-b bg-gray-200 dark:bg-[#2A2A2A] rounded-tl rounded-bl shadow-md z-10 h-full hover:bg-[#abc2f6] dark:hover:bg-[#3A3A3A] transition-colors">
+            <VueUiIcon name="arrowRight" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
         </button>
     </div>
 </template>
