@@ -720,9 +720,9 @@ const sideMenuItems = computed(() => {
         <div class="mt-8">
             <RouterLink to="/universal-component">
                 <div class="py-2 rounded text-center relative text-sm hover:bg-[#42d39220]" :style="`background:${router.currentRoute.value.fullPath === '/universal-component' ? '#42d39230' : ''}`">
-                    <div class="flex flex-row place-items-center">
+                    <div class="flex flex-row place-items-center justify-center gap-2">
                         <VueUiIcon name="vueDataUi" stroke="#6A6A6A"/>
-                        <div class="w-full" style="white-space: nowrap;">
+                        <div style="white-space: nowrap;">
                             VueDataUi universal component
                         </div>
                     </div>
