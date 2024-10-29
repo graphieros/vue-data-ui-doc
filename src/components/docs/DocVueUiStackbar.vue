@@ -745,7 +745,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                                 <BaseAttr name="offsetY" attr="style.chart.grid.x.axisName.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             </BaseDetails>
                             <BaseDetails attr="timeLabels" :level="5" title="style.chart.grid.x.timeLabels">
-                                <BaseAttr name="show" attr="style.chart.grid.x.tileLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="show" attr="style.chart.grid.x.timeLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <span>values: string[],</span>
                                 <BaseAttr name="fontSize" attr="style.chart.grid.x.timeLabels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="color" attr="style.chart.grid.x.timeLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -768,7 +768,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                                 <BaseAttr name="offsetX" attr="style.chart.grid.y.axisName.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             </BaseDetails>
                             <BaseDetails attr="axisLabels" :level="5" title="style.chart.grid.y.axisLabels">
-                                <BaseAttr name="show" attr="style.chart.grid.y.tileLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="show" attr="style.chart.grid.y.axisLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="fontSize" attr="style.chart.grid.y.axisLabels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="color" attr="style.chart.grid.y.axisLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="bold" attr="style.chart.grid.y.axisLabels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
