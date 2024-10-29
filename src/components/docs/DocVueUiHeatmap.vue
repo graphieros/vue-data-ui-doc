@@ -394,7 +394,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes schema="vue_ui_heatmap">
+        <Box showEmits showSlots showTooltip showThemes schema="vue_ui_heatmap" signInfo="both">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">

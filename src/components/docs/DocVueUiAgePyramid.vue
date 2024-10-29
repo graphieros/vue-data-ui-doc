@@ -1000,7 +1000,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_age_pyramid">
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_age_pyramid" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.example[store.lang] }}:
                 <br>

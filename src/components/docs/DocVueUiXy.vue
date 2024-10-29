@@ -709,7 +709,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
             </div>
         </div> -->
-        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive schema="vue_ui_xy">
+        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive schema="vue_ui_xy" signInfo="both">
             <template v-slot:tab0>
 
             {{ translations.docs.datastructure[store.lang] }}

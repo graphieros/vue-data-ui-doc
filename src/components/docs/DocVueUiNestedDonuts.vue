@@ -423,7 +423,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box showEmits showTooltip showSlots showThemes showResponsive schema="vue_ui_nested_donuts">
+        <Box showEmits showTooltip showSlots showThemes showResponsive schema="vue_ui_nested_donuts" signInfo="positiveOrNegativeOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

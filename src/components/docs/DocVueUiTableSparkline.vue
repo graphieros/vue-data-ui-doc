@@ -297,7 +297,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box showEmits>
+        <Box showEmits signInfo="both">
           <template #tab0>
             {{ translations.docs.datastructure[store.lang] }}
             <div class="mt-4">

@@ -252,7 +252,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box showEmits showSlots showThemes schema="vue_ui_tiremarks">
+        <Box showEmits showSlots showThemes schema="vue_ui_tiremarks" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

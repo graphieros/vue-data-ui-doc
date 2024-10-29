@@ -397,7 +397,7 @@ const { configCode, showAllConfig } = useConfigCode()
       </Suspense>
     </div>
 
-    <Box showEmits showSlots showTooltip showThemes schema="vue_ui_galaxy">
+    <Box showEmits showSlots showTooltip showThemes schema="vue_ui_galaxy" signInfo="positiveOrNegativeOnly">
       <template #tab0>
         {{ translations.docs.datastructure[store.lang] }}
         <div>

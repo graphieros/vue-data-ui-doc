@@ -445,7 +445,7 @@ const { configCode, showAllConfig } = useConfigCode()
             {{ translations.docs.comments.bar3d.mode[store.lang] }}
         </div>
 
-        <Box showEmits showSlots showThemes schema="vue_ui_3d_bar">
+        <Box showEmits showSlots showThemes schema="vue_ui_3d_bar" signInfo="positiveOrNegativeOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

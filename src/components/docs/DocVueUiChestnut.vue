@@ -691,7 +691,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box showEmits showSlots showThemes schema="vue_ui_chestnut">
+        <Box showEmits showSlots showThemes schema="vue_ui_chestnut" signInfo="positiveOnly">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

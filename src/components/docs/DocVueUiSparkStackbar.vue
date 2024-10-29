@@ -239,7 +239,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </div>
         </div>
 
-        <Box showEmits showThemes schema="vue_ui_sparkstackbar">
+        <Box showEmits showThemes schema="vue_ui_sparkstackbar" signInfo="positiveOrNegativeOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

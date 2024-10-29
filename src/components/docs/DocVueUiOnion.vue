@@ -444,7 +444,7 @@ const { configCode, showAllConfig } = useConfigCode()
             <input id="player" type="range" :min="1" :max="10" v-model="slicer" @input="updateDataset" class="accent-app-green max-w-[200px]">
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_onion">
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_onion" signInfo="positiveOnly">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

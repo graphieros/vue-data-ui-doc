@@ -251,7 +251,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </div>
         </div>
 
-        <Box showSlots showEmits showThemes schema="vue_ui_sparkbar">
+        <Box showSlots showEmits showThemes schema="vue_ui_sparkbar" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

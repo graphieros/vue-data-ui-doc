@@ -437,7 +437,7 @@ watch(() => showAllConfig.value, (v) => {
             </Suspense>
         </div>
 
-        <Box showEmits showSlots showThemes showResponsive schema="vue_ui_dumbbell">
+        <Box showEmits showSlots showThemes showResponsive schema="vue_ui_dumbbell" signInfo="both">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

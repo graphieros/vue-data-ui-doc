@@ -439,7 +439,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_candlestick">
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_candlestick" signInfo="positiveOnly">
             <template #tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">

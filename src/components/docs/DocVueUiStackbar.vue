@@ -561,7 +561,7 @@ const innerTranslations = ref({
             </code>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_stackbar">
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_stackbar" signInfo="both">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

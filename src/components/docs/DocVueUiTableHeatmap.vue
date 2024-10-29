@@ -278,7 +278,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box showSlots>
+        <Box showSlots signInfo="both">
             <template #warning>
                 <InfoTriangleFilledIcon/>
                 {{ translations.slots.warning[store.lang] }}

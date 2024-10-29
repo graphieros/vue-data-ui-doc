@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import Schema from "../schema/Schema.vue";
 import BaseTabsMenu from "./BaseTabsMenu.vue";
+import BaseSignInfo from "./BaseSignInfo.vue";
 
 const store = useMainStore();
 
@@ -12,9 +13,6 @@ const translations = computed(() => store.translations);
 const emit = defineEmits(["onResponsiveTab", "onNonResponsiveTab"]);
 
 type BoxProps = {
-    /**
-     * @description - FUKK
-     */
     showEmits?: boolean;
     showSlots?: boolean;
     showTooltip?: boolean;
@@ -24,6 +22,7 @@ type BoxProps = {
     activeTab?: number;
     schema?: string;
     hideSchemaDisclaimer?: boolean;
+    signInfo?: string;
 };
 
 const props = withDefaults(defineProps<BoxProps>(), {
@@ -36,6 +35,7 @@ const props = withDefaults(defineProps<BoxProps>(), {
     activeTab: 0,
     schema: "",
     hideSchemaDisclaimer: false,
+    signInfo: ''
 });
 
 const activeTab = ref(props.activeTab);
@@ -271,6 +271,7 @@ const menuItems = computed(() => {
         </div>
 
         <div v-show="activeTab === 0">
+            <BaseSignInfo :type="signInfo"/>
             <slot name="tab0" />
         </div>
         <div v-show="activeTab === 1">

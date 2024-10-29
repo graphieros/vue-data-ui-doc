@@ -458,7 +458,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 class="accent-app-green max-w-[200px]">
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_radar">
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_radar" signInfo="both">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">

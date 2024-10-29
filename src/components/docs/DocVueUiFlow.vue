@@ -316,7 +316,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box showSlots showThemes showEmits schema="vue_ui_flow">
+        <Box showSlots showThemes showEmits schema="vue_ui_flow" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>

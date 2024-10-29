@@ -136,7 +136,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box schema="vue_ui_gizmo">
+        <Box schema="vue_ui_gizmo" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="my-4">
