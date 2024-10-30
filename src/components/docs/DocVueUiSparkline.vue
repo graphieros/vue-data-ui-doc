@@ -566,7 +566,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
             </template>
 
             <template #tab7>
-              <ResponsiveUnit minHeight="100px">
+              <ResponsiveUnit minHeight="100px" height="150px">
                 <template #chart>
                   <VueUiSparkline 
                     :dataset="dataset" 

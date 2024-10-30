@@ -22,7 +22,8 @@ const translations = computed(() => store.translations);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
-        key.value += 1;
+        // For some weird reason, toggling theme f's up the chart. It does not do that on the maker page.
+        window.location.reload()
     })
 });
 
