@@ -896,6 +896,8 @@ const menuCategories = computed(() => {
     ]
 })
 
+const stackbarKey = ref(0);
+
 </script>
 
 <template>
@@ -1074,7 +1076,7 @@ const menuCategories = computed(() => {
                 <DocVueUiGizmo v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-gizmo'" />
             </Transition>
             <Transition name="fade">
-                <DocVueUiStackbar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-stackbar'" />
+                <DocVueUiStackbar :key="`stackbar_${stackbarKey}`" v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-stackbar'" @forceDocReload="stackbarKey += 1" />
             </Transition>
 
             <Transition name="fade">

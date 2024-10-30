@@ -20,11 +20,10 @@ const key = ref(0);
 const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
 
+const emit = defineEmits(['forceDocReload'])
+
 watch(() => store.isDarkMode, (val) => {
-    nextTick(() => {
-        // For some weird reason, toggling theme f's up the chart. It does not do that on the maker page.
-        window.location.reload()
-    })
+    emit('forceDocReload');
 });
 
 const isDarkMode = computed(() => {
