@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.47",
+    "date": "2024-10-30",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Improve responsive proportions resizing",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.46",
     "date": "2024-10-28",
     "updates": [
