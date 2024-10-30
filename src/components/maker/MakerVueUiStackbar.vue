@@ -190,7 +190,7 @@ const finalConfig = computed(() => {
         <details open>
             <summary class="cursor-pointer mb-4">{{ makerTranslations.dataset[store.lang] }}</summary>
 
-            <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+            <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 mb-2`" :style="`background:${ds.color}30`">
                 <button tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                 <table>
                     <thead>
