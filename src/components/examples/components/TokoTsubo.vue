@@ -1,6 +1,4 @@
 <script setup>
-import MakerLink from '../../MakerLink.vue';
-import DocLink from '../../DocLink.vue';
 import Grabber from '../Grabber.vue';
 import BaseDocHeaderActions from '../../BaseDocHeaderActions.vue';
 

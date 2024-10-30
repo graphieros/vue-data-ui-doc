@@ -6,6 +6,8 @@ import StackRespondents from "./components/StackRespondents.vue";
 import MiniBar from "./components/MiniBar.vue";
 import SparkRevenue from "./components/SparkRevenue.vue";
 import BoutiqueVisitors from "./components/BoutiqueVisitors.vue";
+import DocLink from "../DocLink.vue";
+import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const store = useMainStore();
 const lang = computed(() => store.lang);
@@ -18,6 +20,14 @@ const isDarkMode = computed(() => store.isDarkMode);
     <div class="mt-12 flex flex-col gap-6">
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkgauge"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkgauge"
+                    />
+                </div>
+
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl">
@@ -35,6 +45,14 @@ const isDarkMode = computed(() => store.isDarkMode);
                 </div>
             </div>
             <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkgauge"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkgauge"
+                    />
+                </div>
+
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl">
@@ -54,6 +72,14 @@ const isDarkMode = computed(() => store.isDarkMode);
         </div>
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkstackbar"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkStackbar"
+                    />
+                </div>
+
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
@@ -67,6 +93,13 @@ const isDarkMode = computed(() => store.isDarkMode);
                 </div>
             </div>
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkstackbar"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkStackbar"
+                    />
+                </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
@@ -80,6 +113,13 @@ const isDarkMode = computed(() => store.isDarkMode);
                 </div>
             </div>
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkstackbar"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkStackbar"
+                    />
+                </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
@@ -96,6 +136,13 @@ const isDarkMode = computed(() => store.isDarkMode);
 
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkgauge"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkgauge"
+                    />
+                </div>
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl">
@@ -113,6 +160,13 @@ const isDarkMode = computed(() => store.isDarkMode);
                 </div>
             </div>
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkgauge"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkgauge"
+                    />
+                </div>
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl">
@@ -130,6 +184,13 @@ const isDarkMode = computed(() => store.isDarkMode);
                 </div>
             </div>
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkgauge"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkgauge"
+                    />
+                </div>
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl">
@@ -150,16 +211,37 @@ const isDarkMode = computed(() => store.isDarkMode);
 
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkline"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkline"
+                    />
+                </div>
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <SparkRevenue title="Expected sales France 2025" :values="[320, 289, 275, 212, 288, 312, 180, 169, 256, 413, 420, 512]" />
                 </div>
             </div>
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkline"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkline"
+                    />
+                </div>
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <SparkRevenue title="Expected sales Germany 2025" :values="[280, 125, 300, 166, 300, 100, 80, 66, 320, 550, 660, 900]" />
                 </div>
             </div>
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkline"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkline"
+                    />
+                </div>
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <SparkRevenue title="Expected sales Brazil 2025" :values="[800, 650, 120, 98, 78, 125, 147, 212, 127, 315, 712, 840]" />
                 </div>
@@ -169,6 +251,13 @@ const isDarkMode = computed(() => store.isDarkMode);
 
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkbar"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkbar"
+                    />
+                </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
@@ -182,6 +271,13 @@ const isDarkMode = computed(() => store.isDarkMode);
                 </div>
             </div>
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkbar"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkbar"
+                    />
+                </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
@@ -195,6 +291,13 @@ const isDarkMode = computed(() => store.isDarkMode);
                 </div>
             </div>
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkbar"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkbar"
+                    />
+                </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
@@ -211,6 +314,13 @@ const isDarkMode = computed(() => store.isDarkMode);
 
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkhistogram"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkHistogram"
+                    />
+                </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
@@ -224,6 +334,13 @@ const isDarkMode = computed(() => store.isDarkMode);
                 </div>
             </div>
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkhistogram"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkHistogram"
+                    />
+                </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
@@ -237,6 +354,13 @@ const isDarkMode = computed(() => store.isDarkMode);
                 </div>
             </div>
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-sparkhistogram"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkHistogram"
+                    />
+                </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
                         <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
