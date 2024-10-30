@@ -5,6 +5,7 @@ import { useMakerStore } from "../stores/maker"
 import { ClipboardTextIcon } from "vue-tabler-icons";
 
 import { useRouter } from "vue-router"
+import FlexibleTooltip from "./FlexibleTooltip.vue";
 
 const store = useMainStore();
 const router = useRouter()
@@ -25,6 +26,10 @@ const props = defineProps({
     iconSize: {
         type: Number,
         default: 20
+    },
+    simple: {
+        type: Boolean,
+        default: false,
     }
 })
 function goToDocs() {
@@ -37,5 +42,12 @@ function goToDocs() {
 </script>
 
 <template>
-    <button @click="goToDocs" :class="`flex flex-row gap-2 place-items-center rounded-md border border-black dark:border-app-green ${props.size} hover:bg-[#42d39233] hover:shadow-xl`"><VueUiIcon name="clipBoard" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" :size="iconSize"/> {{ props.name }} {{ translations.menu.docs[store.lang] }}</button>
+    <div class="relative" v-if="simple">
+        <FlexibleTooltip position="bottom" :content="translations.menu.docs[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
+            <button @click="goToDocs" class="h-[50px] w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">
+                <VueUiIcon name="clipBoard" :stroke="isDarkMode ? '#FFFFFF' : '#1A1A1A'" :size="iconSize"/>
+            </button>
+        </FlexibleTooltip>
+    </div>
+    <button v-else @click="goToDocs" :class="`flex flex-row gap-2 place-items-center rounded-md border border-black dark:border-app-green ${props.size} hover:bg-[#42d39233] hover:shadow-xl`"><VueUiIcon name="clipBoard" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" :size="iconSize"/> {{ props.name }} {{ translations.menu.docs[store.lang] }}</button>
 </template>

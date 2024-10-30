@@ -5,6 +5,7 @@ import { BrandGithubFilledIcon, CopyIcon } from "vue-tabler-icons";
 import GitHubLink from "./GitHubLink.vue";
 import MakerLink from "./MakerLink.vue";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
+import DocLink from "./DocLink.vue";
 
 const props = defineProps({
     targetLink: {
@@ -21,6 +22,14 @@ const props = defineProps({
             return {}
         }
     },
+    defaultConfig: {
+        type: Boolean,
+        default: true
+    },
+    targetDoc: {
+        type: String,
+        default: ''
+    }
 });
 
 const store = useMainStore();
@@ -46,7 +55,7 @@ function copyToClipboard(conf) {
 
 <template>
     <div class="flex flex-row gap-4 w-full justify-center my-4">
-        <div class="relative">
+        <div class="relative" v-if="defaultConfig">
             <FlexibleTooltip position="bottom" :content="translations.docs.copyDefaultConfig[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
                 <button @click="copyToClipboard(configSource)" class="h-[50px] w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">
                     <CopyIcon/> 
@@ -55,5 +64,7 @@ function copyToClipboard(conf) {
         </div>
         <MakerLink v-if="targetMaker" :to="targetMaker" simple/>
         <GitHubLink v-if="targetLink" :link="targetLink" simple/>
+        <DocLink v-if="targetDoc" :to="targetDoc" simple/>
+        <slot name="grabber"/>
     </div>
 </template>

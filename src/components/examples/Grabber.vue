@@ -4,6 +4,7 @@ import { useMainStore } from "../../stores/index";
 import { useMakerStore } from "../../stores/maker";
 import { XIcon, CopyIcon, CheckIcon } from "vue-tabler-icons";
 import { copyText } from "../maker/lib";
+import FlexibleTooltip from "../FlexibleTooltip.vue";
 
 const props = defineProps(['config', 'dataset', 'componentName', 'id'])
 
@@ -62,10 +63,13 @@ function copy() {
 </script>
 
 <template>
-    <button @click="useModal('open')" class="border border-app-blue pr-4 pl-3 py-1 rounded-md text-app-blue shadow-md hover:bg-[#5f8bee20] transition-colors flex flex-row place-items-center gap-2">
-        <slot name="icon"></slot>
-        {{ translations.componentCode[lang] }}
-    </button>
+    <div class="relative">
+        <FlexibleTooltip position="bottom" :content="translations.componentCode[lang]" width="w-fit min-w-[120px]" delay="delay-150">
+            <button @click="useModal('open')" class="h-[50px] w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">
+                <CopyIcon/>
+            </button>
+        </FlexibleTooltip>
+    </div>
 
     <dialog :id="props.id" class="glass fixed h-screen max-h-[700px] w-full max-w-[900px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-[#2A2A2A]">
         <button class="absolute top-2 right-2" @click="useModal('close')">
