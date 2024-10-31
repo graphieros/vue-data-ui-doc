@@ -462,10 +462,17 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'chart.height', def: 600, type: 'range', min: 300, max: 1000, label: 'height', category: 'general' },
                     { key: 'chart.width', def: 1000, type: 'range', min: 300, max: 2000, label: 'width', category: 'general' },
-                    { key: 'chart.zoom.show', def: false, type: 'checkbox', label: 'zoom', category: 'general' },
+                    { key: 'chart.zoom.show', def: true, type: 'checkbox', label: 'zoom', category: 'general' },
                     { key: 'chart.zoom.color', def: '#CCCCCC', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.highlightColor', def: '#4A4A4A', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['zoom',  'is', 'fontSize'], category: 'general'},
+
+                    { key: 'chart.zoom.minimap.show', def: true, type: 'checkbox', label: ['zoom', 'minimap', 'is', 'show'], category: 'general'},
+                    { key: 'chart.zoom.minimap.smooth', def: true, type: 'checkbox', label: ['zoom', 'minimap', 'is', 'smooth'], category: 'geenral'},
+                    { key: 'chart.zoom.minimap.selectedColor', def: '#1F77B4', type: 'color', label: ['zoom', 'minimap', 'selected', 'is', 'color'], category: 'general'},
+                    { key: 'chart.zoom.minimap.selectedColorOpacity', def: 0.2, type: 'range', min: 0.1, max: 0.5, step: 0.01, label: ['zoom', 'minimap', 'selected', 'is', 'opacity'], category: 'general'},
+                    { key: 'chart.zoom.minimap.lineColor', def: '#1A1A1A', type: 'color', label: ['zoom', 'minimap', 'line', 'is', 'color'], category: 'geenral'},
+                    { key: 'chart.zoom.minimap.selectionRadius', def: 2, type: 'range', min: 0, max: 24, label: ['zoom', 'minimap', 'selection', 'is', 'radius'], category: 'general'},
 
                     { key: 'chart.padding.top', def: 36, type: 'number', min: 0, max: 100, label: "top", category: 'padding' },
                     { key: 'chart.padding.right', def: 24, type: 'number', min: 0, max: 100, label: 'right', category: 'padding' },
