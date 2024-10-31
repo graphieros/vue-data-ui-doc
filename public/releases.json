@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.56",
+    "date": "2024-10-31",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Add optional minimap to zoom inputs",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.55",
     "date": "2024-10-31",
     "updates": [

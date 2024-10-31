@@ -207,7 +207,15 @@ const config = ref({
     zoomColor: '#CCCCCC',
     zoomHighlightColor: '#4A4A4A',
     zoomFontSize: 14,
-    zoomUseResetSlot: false
+    zoomUseResetSlot: false,
+    zoomMinimap: {
+        show: true,
+        smooth: true,
+        selectedColor: "#1f77b4",
+        selectedColorOpacity: 0.2,
+        lineColor: "#1f77b4",
+        selectionRadius: 2
+    }
 })
 
 const darkModeConfig = ref({
@@ -301,7 +309,15 @@ const darkModeConfig = ref({
     zoomColor: '#CCCCCC',
     zoomHighlightColor: '#4A4A4A',
     zoomFontSize: 14,
-    zoomUseResetSlot: false
+    zoomUseResetSlot: false,
+    zoomMinimap: {
+        show: true,
+        smooth: true,
+        selectedColor: "#8A8A8A",
+        selectedColorOpacity: 0.2,
+        lineColor: "#1f77b4",
+        selectionRadius: 2
+    }
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -799,6 +815,15 @@ const { configCode, showAllConfig } = useConfigCode()
             <BaseAttr name="zoomHighlightColor" attr="zoomHighlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="zoomFontSize" attr="zoomFontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="zoomUseResetSlot" attr="zoomUseResetSlot" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseDetails attr="zoomMinimap" :level="1">
+                <span><BaseComment>Since v2.3.56</BaseComment></span>
+                <BaseAttr name="show" attr="zoomMinimap.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="smooth" attr="zoomMinimap.smooth" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="selectedColor" attr="zoomMinimap.selectedColor" type="color" defaultVal="#1f77b4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="selectedColorOpacity" attr="zoomMinimap.selectedColorOpacity" type="range" defaultVal="0.2" :min="0" :max="0.5" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="lineColor" attr="zoomMinimap.lineColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="selectionRadius" attr="zoomMinimap.selectionRadius" type="range" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
         </div>
     </BaseDetails>
 </code>
