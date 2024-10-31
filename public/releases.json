@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.49",
+    "date": "2024-10-31",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add optional minimap to zoom inputs",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.47",
     "date": "2024-10-30",
     "updates": [

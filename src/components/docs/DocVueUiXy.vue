@@ -134,6 +134,13 @@ const config = ref({
             highlightColor: "#4A4A4A",
             fontSize: 14,
             useResetSlot: false,
+            minimap: {
+                show: true,
+                smooth: true,
+                selectedColor: '#8A8A8A',
+                lineColor: "#1F77B4",
+                selectionRadius: 12
+            }
         },
         padding: {
             top:  36,
@@ -387,6 +394,13 @@ const darkModeConfig = ref({
             highlightColor: "#4A4A4A",
             fontSize: 14,
             useResetSlot: false,
+            minimap: {
+                show: true,
+                smooth: true,
+                lineColor: "#1F77B4",
+                selectedColor: '#8A8A8A',
+                selectionRadius: 12
+            }
         },
         padding: {
             top:  36,
@@ -1024,6 +1038,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="highlightColor" attr="chart.zoom.highlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="chart.zoom.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <span>useResetSlot: false, <span class="text-app-blue break-keep text-xs">// To use a custom slot for the reset feature (see slots tab)</span></span>
+                <BaseDetails attr="minimap" :level="3" title="chart.zoom.minimap">
+                    <span><BaseComment>Since v2.3.49</BaseComment></span>
+                    <BaseAttr name="show" attr="chart.zoom.minimap.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="smooth" attr="chart.zoom.minimap.smooth" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="lineColor" attr="chart.zoom.minimap.lineColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="selectedColor" attr="chart.zoom.minimap.selectedColor" type="color" defaultVal="#1F77B4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="selectionRadius" attr="chart.zoom.minimap.selectionRadius" type="range" defaultVal="12" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="bar" :level="1">

@@ -200,6 +200,14 @@ export function useConfig() {
         useResetSlot: false
     }
 
+    const MINIMAP = {
+        show: false,
+        smooth: false,
+        selectedColor: '#1f77b4',
+        lineColor: '#2D353C',
+        selectionRadius: 12
+    }
+
     const vue_ui_stackbar = {
         theme: '',
         responsive: false,
@@ -344,7 +352,10 @@ export function useConfig() {
             color: COLOR_BLACK,
             height: 600,
             width: 1000,
-            zoom: ZOOM,
+            zoom: {
+                ...ZOOM,
+                minimap: MINIMAP,
+            },
             padding: PADDING([36, 24, 64, 48]),
             highlighter: {
                 color: COLOR_BLACK,

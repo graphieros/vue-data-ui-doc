@@ -391,6 +391,14 @@ export function useCase() {
                 padding: {
                     bottom: 48
                 },
+                zoom: {
+                    minimap: {
+                        show: true,
+                        smooth: true,
+                        lineColor: "#1F77B4",
+                        selectedColor: isDarkMode.value ? '#8A8A8A' : '#8A8A8A'
+                    }
+                }
             }
         }
     })
