@@ -89,7 +89,9 @@ const config = ref({
           color: "#1A1A1A",
           bold: false,
           offsetX: 0,
-          offsetY: 0
+          offsetY: 0,
+          showOnlyAtModulo: null,
+          rotation: 0
         },
         yAxis: {
           show: true,
@@ -224,7 +226,9 @@ const darkModeConfig = ref({
           color: "#CCCCCC",
           bold: false,
           offsetX: 0,
-          offsetY: 0
+          offsetY: 0,
+          showOnlyAtModulo: null,
+          rotation: 0
         },
         yAxis: {
           show: true,
@@ -488,6 +492,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiHeatmapDatasetI
               <BaseAttr name="bold" attr="style.layout.dataLabels.xAxis.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="offsetX" attr="style.layout.dataLabels.xAxis.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="offsetY" attr="style.layout.dataLabels.xAxis.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="rotation" attr="style.layout.dataLabels.xAxis.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="showOnlyAtModulo" attr="style.layout.dataLabels.xAxis.showOnlyAtModulo" type="number" defaultVal="null" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
             <BaseDetails attr="yAxis" :level="4" title="style.layout.dataLabels.yAxis">
               <BaseAttr name="show" attr="style.layout.dataLabels.yAxis.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

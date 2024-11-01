@@ -69,13 +69,13 @@ const usableHeatmapData = computed(() => {
   if (!data.value) return [];
 
   const result = [
-    { name: "Sun", values: [] },
-    { name: "Mon", values: [] },
-    { name: "Tue", values: [] },
-    { name: "Wed", values: [] },
-    { name: "Thu", values: [] },
-    { name: "Fri", values: [] },
-    { name: "Sat", values: [] },
+    { name: "SUN", values: [] },
+    { name: "MON", values: [] },
+    { name: "TUE", values: [] },
+    { name: "WED", values: [] },
+    { name: "THU", values: [] },
+    { name: "FRI", values: [] },
+    { name: "SAT", values: [] },
   ];
 
   data.value.forEach(item => {
@@ -160,7 +160,7 @@ const heatmapConfig = computed(() => {
         xAxis: {
           show: true,
           values: usableWeekData.value.map(p => p.short),
-          fontSize: 8,
+          fontSize: 14,
           color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
           bold: false,
           offsetX: 0,
@@ -169,7 +169,7 @@ const heatmapConfig = computed(() => {
         yAxis: {
           show: true,
           values: [],
-          fontSize: 8,
+          fontSize: 14,
           color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
           bold: false,
           offsetY: 0,

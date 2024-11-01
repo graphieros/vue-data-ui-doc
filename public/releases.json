@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.61",
+    "date": "2024-11-01",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Add config options to rotate xAxis labels and show them only at given modulo",
+        "link": "/docs#vue-ui-heatmap"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.58",
     "date": "2024-10-31",
     "updates": [

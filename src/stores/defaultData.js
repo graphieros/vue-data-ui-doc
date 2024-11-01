@@ -1797,6 +1797,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.dataLabels.xAxis.bold', def: false, type: 'checkbox', label: ['xAxisLabel', 'is', 'bold'], cateogry: 'labels' },
                     { key: 'style.layout.dataLabels.xAxis.offsetX', def: 0, type: 'number', min: -100, max: 100, step: 0.1, label: ['xAxisLabel', 'is', 'offsetX'], category: 'labels' },
                     { key: 'style.layout.dataLabels.xAxis.offsetY', def: 0, type: 'number', min: -100, max: 100, step: 0.1, label: ['xAxisLabel', 'is', 'offsetY'], category: 'labels' },
+                    { key: 'style.layout.dataLabels.xAxis.rotation', def: 0, type: 'range', min: -90, max: 90, label: ['xAxisLabel', 'is', 'rotation'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.showOnlyAtModulo', def: null, type: 'number', min: 0, max: 12, label: ['xAxisLabel', 'is', 'show only at modulo'], category: 'labels'},
+
                     { key: 'style.layout.dataLabels.yAxis.show', def: true, type: 'checkbox', label: ['yAxisLabel', 'is', 'show'], category: 'labels' },
                     { key: 'style.layout.dataLabels.yAxis.fontSize', def: 12, type: 'number', min: 6, max: 24, label: ['yAxisLabel', 'is', 'fontSize'], category: 'labels' },
                     { key: 'style.layout.dataLabels.yAxis.color', def: '#1A1A1A', type: 'color', label: ['yAxisLabel', 'is', 'textColor'], category: 'labels' },
