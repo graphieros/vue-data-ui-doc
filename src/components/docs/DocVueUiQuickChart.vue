@@ -959,3 +959,9 @@ Target the following css class to apply custom styles:
         </Box>
     </div>
 </template>
+
+<style>
+.vue-ui-quick-chart-legend {
+    margin-top: 12px !important;
+}
+</style>

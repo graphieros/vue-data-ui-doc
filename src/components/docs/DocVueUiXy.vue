@@ -685,7 +685,7 @@ const { configCode, showAllConfig } = useConfigCode()
             :configSource="mainConfig.vue_ui_xy"
         />
 
-        <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-2/3'}`">
+        <div :class="`doc-whart-wrapper transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-2/3'}`">
             <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
                 <PinnedOffIcon v-if="isFixed"/>
                 <div v-else class="relative overflow-visible">
@@ -1424,3 +1424,9 @@ Target the following css class to apply custom styles:
         </Box>
     </div>
 </template>
+
+<style>
+.vue-ui-xy-legend {
+    margin-top: 12px !important;
+}
+</style>
