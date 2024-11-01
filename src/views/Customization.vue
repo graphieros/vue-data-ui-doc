@@ -78,11 +78,11 @@ function updateCrumb() {
     const hash = router.currentRoute.value.hash || null
     if (docsCrumbs.value.length === 2) {
         docsCrumbs.value.push({
-            description: hash
+            description: (hash || '').replace('#', '').replace('-', ' ')
         })
     } else {
         docsCrumbs.value[2] = {
-            description: hash
+            description: (hash || '').replace('#', '').replace('-', ' ')
         }
     }
 }
