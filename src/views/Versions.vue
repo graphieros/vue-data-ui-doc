@@ -82,8 +82,14 @@ const usableHeatmapData = computed(() => {
     const dayOfWeek = new Date(item.period).getDay();
     result[dayOfWeek].values.push(item.value);
   });
+  
 
-  return result;
+  return result.map(r => {
+    return {
+      ...r,
+      values: r.values.slice(-52)
+    }
+  })
 });
 
 const usableWeekData = computed(() => {
@@ -147,7 +153,7 @@ const heatmapConfig = computed(() => {
         spacing: 0,
         selected: {
           border: 2,
-          color: "#2D353C"
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
         }
       },
       dataLabels: {
@@ -172,7 +178,7 @@ const heatmapConfig = computed(() => {
       }
     },
     title: {
-      text: "Downloads heatmap",
+      text: "Downloads heatmap - Last 52 weeks",
       color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
       fontSize: 16,
       bold: true,
@@ -192,9 +198,9 @@ const heatmapConfig = computed(() => {
       color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
       fontSize: 14,
       roundingValue: 0,
-      customFormat: ({datapoint}) => {
-        return `<div style="border-radius:50%;background:${datapoint.color};display:flex;align-items:center;justify-content:center;height: 64px;width:64px;box-shadow:0 12px 24px -12px rgba(0,0,0,0.3)">${datapoint.value}</div>`
-      }
+      // customFormat: ({datapoint}) => {
+      //   return `<div style="border-radius:50%;background:${datapoint.color};display:flex;align-items:center;justify-content:center;height: 64px;width:64px;box-shadow:0 12px 24px -12px rgba(0,0,0,0.3)">${datapoint.value}</div>`
+      // }
     }
   },
   userOptions: {
@@ -1645,7 +1651,19 @@ const treemapConfig = computed(() => {
                 <div class="flex flew-row gap-2 justify-center mb-6">
                   <div class="w-[100px] sm:w-[150px]" v-for="(wheel, i) in sparkbarDataset">
                     <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'wheel', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6'} }" />
-                    <VueUiWheel v-else :dataset="{ percentage: wheel.value }" :config="{...wheelConfig, style: {...wheelConfig.style, chart: {...wheelConfig.style.chart, title: {...wheelConfig.style.chart.title, text: i === 0 ? 'Quality' : i === 1 ? 'Popularity' : 'Maintenance'}}}}"/>
+                    <div v-else class="flex place-items-center flex-col">
+                      <div class="w-full py-6 flex justify-end pr-2">
+                        <VueUiGizmo 
+                          :dataset="wheel.value"
+                          :config="{
+                            size: 100,
+                            textColor: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                            stroke: isDarkMode ? '#8A8A8A': '#4A4A4A'
+                          }"
+                        />
+                      </div>
+                      <VueUiWheel :dataset="{ percentage: wheel.value }" :config="{...wheelConfig, style: {...wheelConfig.style, chart: {...wheelConfig.style.chart, title: {...wheelConfig.style.chart.title, text: i === 0 ? 'Quality' : i === 1 ? 'Popularity' : 'Maintenance'}}}}"/>
+                    </div>
                   </div>
                 </div>
                 <div class="flex flew-row gap-2 justify-center mb-6">
