@@ -1,8 +1,7 @@
 <script setup>
-import {ref, computed, onMounted, defineAsyncComponent } from "vue";
+import {ref, computed, onMounted, defineAsyncComponent, watch } from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useRouter } from "vue-router";
-import MenuDetail from "../components/MenuDetail.vue";
 import { getVueDataUiConfig, getThemeConfig } from "vue-data-ui";
 import { SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
@@ -10,6 +9,7 @@ import Schema from "../schema/Schema.vue";
 import { useConfig } from "../assets/useConfig";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseMenuCategory from "../components/BaseMenuCategory.vue";
+import BaseCrumbs from "../components/BaseCrumbs.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -76,11 +76,36 @@ const translations = computed(() => {
     return store.translations;
 })
 
-const isCopy = computed(() => store.isCopy);
 const isDarkMode = computed(() => store.isDarkMode);
 
 const router = useRouter();
 const isOpen = ref(window.innerWidth > 768);
+
+const docsCrumbs = ref([
+    {
+        description: translations.value.menu.docs[store.lang],
+        link: '/docs'
+    }
+])
+
+function updateCrumb() {
+    window.scrollTo(0,0);
+    function capitalizeFirstLetter(val) {
+        return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+    }
+    const hash = router.currentRoute.value.hash ? router.currentRoute.value.hash.replace('#', '').split('-').map(s => capitalizeFirstLetter(s)).join('') : null
+    if (docsCrumbs.value.length === 1) {
+        docsCrumbs.value.push({
+            description: hash,
+        })
+    } else {
+        docsCrumbs.value[1] = {
+            description: hash
+        }
+    }
+}
+
+watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: true });
 
 function toggleMenu(state) {
     isOpen.value = state;
@@ -901,6 +926,8 @@ const stackbarKey = ref(0);
 </script>
 
 <template>
+    <BaseCrumbs :tree="docsCrumbs"/>
+    
     <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
     <ConfirmCopy/>
     <SideMenu @toggle="toggleMenu"/>

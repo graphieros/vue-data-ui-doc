@@ -40,7 +40,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <button @click="openHelpCenter" class="fixed z-50 right-2 top-[79px] flex place-items-center justify-center rounded-full bg-gradient-to-b from-[#ffa793] to-[#dd7963] h-[42px] w-[42px] hover:-translate-y-[2px] transition-all">
+    <button @click="openHelpCenter" class="fixed z-50 right-2 top-[92px] flex place-items-center justify-center rounded-full bg-gradient-to-b from-[#ffa793] to-[#dd7963] h-[42px] w-[42px] hover:-translate-y-[2px] transition-all">
         <VueUiIcon name="circleQuestion" stroke="#1A1A1A"/>
         <div class="absolute -bottom-5 text-xs text-app-orange">HELP</div>
     </button>

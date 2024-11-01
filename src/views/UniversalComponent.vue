@@ -40,21 +40,23 @@ onMounted(() => {
             {{ translations.features[store.lang] }}
         </p>
 
-        <div class="mx-auto my-6 bg-[#272822] p-4 rounded-md">
-            <code class="language-javascript" style="white-space: pre-wrap;">
+        <div class="mx-auto mt-6 bg-[#1A1A1A] p-4 rounded-md">
+            <code class="language-javascript" style="white-space: pre-wrap; background: #1A1A1A !important">
 <pre>
-    import { VueDataUi } from "vue-data-ui";
-
-    const lineConfig = ref({}); // A config corresponding to VueUiXy specs
-    const donutConfig  = ref({}); // A config corresponding to VueUiDonut specs
-
-    const lineDataset = ref([]); // A dataset corresponding to VueUiXy specs
-    const donutDataset = ref([]); // A dataset corresponding to VueUiDonut specs
+    &lt;script setup&gt;
+        import { VueDataUi } from "vue-data-ui";
+        
+        const lineConfig = ref({}); // A config corresponding to VueUiXy specs
+        const donutConfig  = ref({}); // A config corresponding to VueUiDonut specs
+        
+        const lineDataset = ref([]); // A dataset corresponding to VueUiXy specs
+        const donutDataset = ref([]); // A dataset corresponding to VueUiDonut specs
+    &lt;/script&gt;
 </pre>
             </code>
         </div>
-        <div class="mx-auto my-6 bg-[#272822] p-4 rounded-md">
-            <code class="language-html" style="white-space: pre-wrap;">
+        <div class="mx-auto mb-6 bg-[#1A1A1A] p-4 rounded-md">
+            <code class="language-html" style="white-space: pre-wrap; background: #1A1A1A !important">
 <pre>
     &lt;template&gt;
         &lt;VueDataUi

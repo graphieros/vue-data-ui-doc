@@ -129,13 +129,13 @@ const selectedLanguage = computed({
 
 const dropdownItems = computed(() => {
     return [
-        { link: '/installation', title: translations.value.menu.installation[store.lang] },
-        { link: '/docs', title: translations.value.menu.docs[store.lang] },
-        { link: '/chart-builder', title: translations.value.menu.chartBuilder[store.lang] },
-        { link: '/examples', title: translations.value.menu.examples[store.lang] },
-        { link: '/customization', title: translations.value.menu.customization[store.lang] },
-        { link: '/versions', title: translations.value.menu.versions[store.lang] },
-        { link: '/about', title: translations.value.menu.about[store.lang] },
+        { link: '/installation', title: translations.value.menu.installation[store.lang], clickableWhenActive: false},
+        { link: '/docs', title: translations.value.menu.docs[store.lang], clickableWhenActive: true },
+        { link: '/chart-builder', title: translations.value.menu.chartBuilder[store.lang], clickableWhenActive: false },
+        { link: '/examples', title: translations.value.menu.examples[store.lang], clickableWhenActive: false },
+        { link: '/customization', title: translations.value.menu.customization[store.lang], clickableWhenActive: false },
+        { link: '/versions', title: translations.value.menu.versions[store.lang], clickableWhenActive: false },
+        { link: '/about', title: translations.value.menu.about[store.lang], clickableWhenActive: false },
     ]
 })
 
@@ -257,6 +257,7 @@ const isHome = computed(() => {
                             v-for="item in dropdownItems"
                             v-bind="item"
                             @click="isOpen = false"
+                            :clickableWhenActive="item.clickableWhenActive"
                         />
 
                         <button @click="changeTheme" id="themeToggle"

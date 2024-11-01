@@ -1,8 +1,7 @@
 <script setup>
 import { ref, computed, watch } from "vue";
 import { useMainStore } from "../stores";
-import BaseDocHeaderActions from "./BaseDocHeaderActions.vue"
-import Schema from "../schema/Schema.vue";
+import BaseDocHeaderActions from "./BaseDocHeaderActions.vue";
 
 const props = defineProps({
     componentName: {
@@ -37,9 +36,7 @@ const props = defineProps({
 })
 
 const store = useMainStore();
-const isMenuOpen = ref(store.isMenuOpen)
-
-const translations = computed(() => store.translations)
+const isMenuOpen = ref(store.isMenuOpen);
 
 watch(() => store.isMenuOpen, (state) => {
     isMenuOpen.value = state

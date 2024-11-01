@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { useMainStore } from "../stores";
 import SvgSlot from "../components/customization/SvgSlot.vue";
 import LegendSlot from "../components/customization/LegendSlot.vue";
@@ -11,7 +11,7 @@ import MenuSlots from "../components/customization/MenuSlots.vue";
 import Watermark from "../components/customization/Watermark.vue";
 import LabelFormatter from "../components/customization/LabelFormatter.vue";
 import { useRouter } from "vue-router";
-import BaseCustomizationBox from "../components/customization/BaseCustomizationBox.vue";
+import BaseCrumbs from "../components/BaseCrumbs.vue";
 
 const store = useMainStore();
 
@@ -24,10 +24,6 @@ const currentRoute = computed(() => {
 const translations = computed(() => {
   return store.translations;
 });
-
-function isSelected(route) {
-  return currentRoute.value === route;
-}
 
 const selectedMenu = ref("svgSlot");
 const menu = ref([
@@ -65,9 +61,38 @@ const menu = ref([
     link: "/customization#formatter",
   },
 ]);
+
+const docsCrumbs = ref([
+    {
+        description: translations.value.menu.docs[store.lang],
+        link: '/docs'
+    },
+    {
+        description: translations.value.menu.customization[store.lang],
+        link: '/customization'
+    },
+])
+
+function updateCrumb() {
+    window.scrollTo(0,0);
+    const hash = router.currentRoute.value.hash || null
+    if (docsCrumbs.value.length === 2) {
+        docsCrumbs.value.push({
+            description: hash
+        })
+    } else {
+        docsCrumbs.value[2] = {
+            description: hash
+        }
+    }
+}
+
+watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: true });
+
 </script>
 
 <template>
+  <BaseCrumbs :tree="docsCrumbs" noMargin/>
   <div class="my-12 w-full mx-auto text-center">
     <h1 class="text-[64px] sm:text-[96px] text-center">
       {{ translations.menu.customization[store.lang] }}
