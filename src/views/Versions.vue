@@ -147,7 +147,7 @@ const heatmapConfig = computed(() => {
         },
         colors: {
           hot: "#42d392",
-          cold: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
+          cold: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
           underlayer: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
         },
         spacing: 0,

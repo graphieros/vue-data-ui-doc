@@ -62,16 +62,18 @@ const config = computed(() => {
                 </div>
             </template>
             <template #content>
-                <div class="dark:bg-[#1F1F1F] bg-[#EEEEEE] py-2 rounded-b-md shadow">
-                <SideMenuItem 
-                    v-for="item in items"
-                    :itsRoute="item.route"
-                    :componentName="item.componentName"
-                    :icon="item.icon"
-                    @close="close"
-                    @scrollToTop="scrollToTop"
-                />
-            </div>
+                <div class="py-2 pb-2 -mt-2">
+                    <div class="dark:bg-[#1F1F1F] bg-[#EEEEEE] shadow-md">
+                        <SideMenuItem 
+                            v-for="item in items"
+                            :itsRoute="item.route"
+                            :componentName="item.componentName"
+                            :icon="item.icon"
+                            @close="close"
+                            @scrollToTop="scrollToTop"
+                        />
+                    </div>
+                </div>
             </template>
         </VueDataUi>
     </div>

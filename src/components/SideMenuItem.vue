@@ -54,13 +54,13 @@ function getIconColor(route) {
 
 <template>
     <router-link :to="itsRoute" @click="emit('scrollToTop')">
-        <div :class="`text-sm relative ${isSelected(itsRoute) ? 'bg-[#42d39220]' : ''} flex place-items-center transition-all hover:bg-[#42d39220] py-1 gap-1 pl-6 ${isSelected(itsRoute) ? 'text-app-blue dark:text-app-green hover:cursor-default font-bold' : ''}`" @click="emit('close')">
+        <div :class="`my-1 text-sm relative ${isSelected(itsRoute) ? isDarkMode ? `bg-[#42d39220] shadow` : 'bg-[#5f8bee20] shadow' : ''} flex place-items-center transition-all ${isDarkMode ? 'hover:bg-[#42d39220]' : 'hover:bg-[#5f8bee20]'} py-1 gap-1 pl-6 ${isSelected(itsRoute) ? 'text-app-blue dark:text-app-green hover:cursor-default font-bold' : ''}`" @click="emit('close')">
             <VueUiIcon :size="18" :name="icon" :stroke="getIconColor(itsRoute)"/>
             <span class="text-gray-500">VueUi</span>
             <span class="text-gray-800 dark:text-gray-300">
                 {{ componentName }}
             </span>
-            <div :class="`is-item-selected bg-app-green ${isSelected(itsRoute) ? 'is-active' : ''}`"></div>
+            <div :class="`is-item-selected ${isDarkMode ? 'bg-app-green' : 'bg-app-blue'} ${isSelected(itsRoute) ? 'is-active' : ''}`"></div>
         </div>
     </router-link>
 </template>
