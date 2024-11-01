@@ -164,7 +164,8 @@ const heatmapConfig = computed(() => {
           color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
           bold: false,
           offsetX: 0,
-          offsetY: 0
+          offsetY: 0,
+          showOnlyAtModulo: 4
         },
         yAxis: {
           show: true,
@@ -187,7 +188,7 @@ const heatmapConfig = computed(() => {
       show: true,
       backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
       color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
-      fontSize: 6,
+      fontSize: 12,
       bold: true,
       roundingValue: 0,
       position: 'bottom'
