@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.3.66",
+    "date": "2024-11-02",
+    "updates": [
+      {
+        "component": "All chart components",
+        "description": "Improve charts stability when unprocessable values are provided in datasets (NaN, undefined, Infinity, -Infinity, null)"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.61",
     "date": "2024-11-01",
     "updates": [
