@@ -214,7 +214,8 @@ const config = ref({
         selectedColor: "#1f77b4",
         selectedColorOpacity: 0.2,
         lineColor: "#1f77b4",
-        selectionRadius: 2
+        selectionRadius: 2,
+        indicatorColor: '#1A1A1A'
     }
 })
 
@@ -316,7 +317,8 @@ const darkModeConfig = ref({
         selectedColor: "#8A8A8A",
         selectedColorOpacity: 0.2,
         lineColor: "#1f77b4",
-        selectionRadius: 2
+        selectionRadius: 2,
+        indicatorColor: '#CCCCCC'
     }
 })
 
@@ -823,6 +825,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 <BaseAttr name="selectedColorOpacity" attr="zoomMinimap.selectedColorOpacity" type="range" defaultVal="0.2" :min="0" :max="0.5" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="lineColor" attr="zoomMinimap.lineColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="selectionRadius" attr="zoomMinimap.selectionRadius" type="range" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="indicatorColor" attr="zoomMinimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
         </div>
     </BaseDetails>

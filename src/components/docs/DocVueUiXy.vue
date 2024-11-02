@@ -140,7 +140,8 @@ const config = ref({
                 selectedColor: '#8A8A8A',
                 selectedColorOpacity: 0.2,
                 lineColor: "#1F77B4",
-                selectionRadius: 2
+                selectionRadius: 2,
+                indicatorColor: '#1A1A1A'
             }
         },
         padding: {
@@ -401,7 +402,8 @@ const darkModeConfig = ref({
                 lineColor: "#1F77B4",
                 selectedColorOpacity: 0.2,
                 selectedColor: '#8A8A8A',
-                selectionRadius: 2
+                selectionRadius: 2,
+                indicatorColor: '#CCCCCC'
             }
         },
         padding: {
@@ -1048,6 +1050,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                     <BaseAttr name="selectedColor" attr="chart.zoom.minimap.selectedColor" type="color" defaultVal="#1F77B4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="selectedColorOpacity" attr="chart.zoom.minimap.selectedColorOpacity" type="range" defaultVal="0.2" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="selectionRadius" attr="chart.zoom.minimap.selectionRadius" type="range" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="indicatorColor" attr="chart.zoom.minimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
             </BaseDetails>
         </BaseDetails>
