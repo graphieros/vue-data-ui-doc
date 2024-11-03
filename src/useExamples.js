@@ -325,6 +325,54 @@ export default function useExamples() {
         ]
     });
 
+    //-------------- VUE-UI-SPARKLINE ------------- //
+    const CONFIG_SPARKLINE_BASE = computed(() => {
+        return {
+            style: {
+                backgroundColor: colors.value.bg,
+                chartWidth: 350,
+                area: {
+                    show: false,
+                },
+                dataLabel: {
+                    fontSize: 64,
+                    color: colors.value.textColor
+                },
+                line: {
+                    color: '#1F77B4',
+                },
+                title: {
+                    color: '#6A6A6A',
+                    text: 'Title'
+                }
+            }
+        }
+    });
+
+    const DATASET_SPARKLINE = ref([
+        { period: 'T1', value: 55 },
+        { period: 'T0', value: 89 },
+        { period: 'T3', value: 21 },
+        { period: 'T2', value: 34 },
+        { period: 'T4', value: 13 },
+        { period: 'T6', value: 5 },
+        { period: 'T5', value: 8 },
+        { period: 'T9', value: 11 },
+        { period: 'T7', value: 31 },
+        { period: 'T8', value: 12 },
+        { period: 'T11', value: 11 },
+        { period: 'T10', value: 7 },
+        { period: 'T17', value: 21 },
+        { period: 'T12', value: 6 },
+        { period: 'T13', value: 9 },
+        { period: 'T18', value: 34 },
+        { period: 'T20', value: 89 },
+        { period: 'T14', value: 5 },
+        { period: 'T16', value: 13 },
+        { period: 'T15', value: 8 },
+        { period: 'T19', value: 55 },
+    ])
+
     const examples = computed(() => {
         return [
             { 
@@ -525,6 +573,215 @@ export default function useExamples() {
                     es: 'Con comentarios individuales en el conjunto de datos',
                     ko: '데이터 세트에 개별 댓글 포함',
                     ar: 'مع تعليقات فردية في مجموعة البيانات'
+                }
+            },
+            {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: {
+                    ...CONFIG_DONUT_BASE.value,
+                    style: {
+                        ...CONFIG_DONUT_BASE.value.style,
+                        chart: {
+                            ...CONFIG_DONUT_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_DONUT_BASE.value.style.chart.layout,
+                                donut:{
+                                    strokeWidth: 120,
+                                },
+                                labels: {
+                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    hollow: {
+                                        show: false,
+                                        average: {
+                                            show: false,
+                                        },
+                                        total: {
+                                            show: false
+                                        }
+                                    },
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'pie',
+                link: 'vue-ui-donut',
+                description: {
+                    en: 'Pie chart',
+                    fr: 'Diagramme circulaire',
+                    pt: 'Gráfico de pizza',
+                    de: 'Kreisdiagramm',
+                    zh: '饼图',
+                    jp: '円グラフ',
+                    es: 'Gráfico de pastel',
+                    ko: '파이 차트',
+                    ar: 'مخطط دائري'
+                }                
+            },
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: CONFIG_SPARKLINE_BASE.value,
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-basic',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: 'Basic sparkline chart',
+                    fr: 'Graphique sparkline de base',
+                    pt: 'Gráfico sparkline básico',
+                    de: 'Grundlegendes Sparkline-Diagramm',
+                    zh: '基本迷你图',
+                    jp: '基本スパークラインチャート',
+                    es: 'Gráfico sparkline básico',
+                    ko: '기본 스파크라인 차트',
+                    ar: 'مخطط الشرارة الأساسي'
+                }
+            },
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: {
+                    ...CONFIG_SPARKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_SPARKLINE_BASE.value.style,
+                        area: {
+                            show: true,
+                            color: '#1F77B4',
+                        }
+                    }
+                },
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-area',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: 'Sparkline area chart',
+                    fr: 'Graphique sparkline avec aire',
+                    pt: 'Gráfico de área sparkline',
+                    de: 'Sparkline-Flächendiagramm',
+                    zh: '迷你面积图',
+                    jp: 'スパークライン面積チャート',
+                    es: 'Gráfico de área sparkline',
+                    ko: '스파크라인 영역 차트',
+                    ar: 'مخطط منطقة الشرارة'
+                }
+            },
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: {
+                    ...CONFIG_SPARKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_SPARKLINE_BASE.value.style,
+                        line: {
+                            ...CONFIG_SPARKLINE_BASE.value.style.line,
+                            smooth: true
+                        }
+                    }
+                },
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-smooth',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: 'Smooth line',
+                    fr: 'Ligne lissée',
+                    pt: 'Linha suave',
+                    de: 'Geglättete Linie',
+                    zh: '平滑线',
+                    jp: '滑らかな線',
+                    es: 'Línea suave',
+                    ko: '부드러운 선',
+                    ar: 'خط سلس'
+                },
+            },
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: {
+                    ...CONFIG_SPARKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_SPARKLINE_BASE.value.style,
+                        line: {
+                            ...CONFIG_SPARKLINE_BASE.value.style.line,
+                            smooth: true
+                        },
+                        area: {
+                            show: true,
+                            color: '#1F77B4',
+                        }
+                    }
+                },
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-smooth-area',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: 'Smooth line with area',
+                    fr: 'Ligne lissée avec aire',
+                    pt: 'Linha suave com área',
+                    de: 'Geglättete Linie mit Fläche',
+                    zh: '带区域的平滑线',
+                    jp: '面積を含む滑らかな線',
+                    es: 'Línea suave con área',
+                    ko: '영역이 포함된 부드러운 선',
+                    ar: 'خط سلس مع منطقة'
+                }
+            },
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: {
+                    ...CONFIG_SPARKLINE_BASE.value,
+                    type: 'bar',
+                    style: {
+                        ...CONFIG_SPARKLINE_BASE.value.style,
+                        bar: {
+                            color: '#1F77B4'
+                        }
+                    }
+                },
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-bar',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: 'Basic sparkline bars',
+                    fr: 'Barres sparkline de base',
+                    pt: 'Barras sparkline básicas',
+                    de: 'Grundlegende Sparkline-Balken',
+                    zh: '基本迷你柱状图',
+                    jp: '基本スパークラインバー',
+                    es: 'Barras sparkline básicas',
+                    ko: '기본 스파크라인 막대',
+                    ar: 'أعمدة الشرارة الأساسية'
+                }
+            },
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: {
+                    ...CONFIG_SPARKLINE_BASE.value,
+                    type: 'bar',
+                    style: {
+                        ...CONFIG_SPARKLINE_BASE.value.style,
+                        bar: {
+                            color: '#1F77B4',
+                            borderRadius: 10
+                        }
+                    }
+                },
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-bar-radius',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: 'Rounded bars',
+                    fr: 'Barres arrondies',
+                    pt: 'Barras arredondadas',
+                    de: 'Abgerundete Balken',
+                    zh: '圆角柱状图',
+                    jp: '丸みを帯びたバー',
+                    es: 'Barras redondeadas',
+                    ko: '둥근 막대',
+                    ar: 'أعمدة مستديرة'
                 }
             },
         ]

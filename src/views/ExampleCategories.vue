@@ -66,6 +66,13 @@ const categories = ref([
         component: 'VueUiDonut',
         thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
+    },
+    {
+        link: 'vue-ui-sparkline',
+        icon: 'chartSparkline',
+        component: 'VueUiSparkline',
+        thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
     }
 ]);
 
@@ -116,7 +123,7 @@ const hoveredLink = ref(null);
                 <template #content>
                     <div v-for="category in categories" class="relative rounded w-[100px] sm:w-[150px] h-[100px] sm:h-[100px] flex-shrink-0 bg-[#F2F3F6] dark:bg-[#232323]" @mouseover="hoveredLink = category" @mouseleave="hoveredLink = null">
                         <button @click="updateHash(category.link)" :class="`p-2 flex flex-col place-items-center justify-center h-full w-full rounded border ${selectedLink === category.link ? 'border-app-blue' : 'border-transparent'}`">
-                            <img class="h-full rounded" :src="isDarkMode ? category.thumb : category.thumbLight">
+                            <img class="w-full h-full object-contain rounded" :src="isDarkMode ? category.thumb : category.thumbLight">
                         </button>
                         <Transition name="fade">
                             <div style="width: calc(100% - 2px)" class="text-shadow-md absolute top-0 left-[1px] pointer-events-none bg-[#1A1A1A10] dark:bg-[#FFFFFF10] h-full flex place-items-end justify-center" v-if="(hoveredLink && hoveredLink.link === category.link) || selectedLink === category.link">
