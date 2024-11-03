@@ -6,6 +6,7 @@ import { useMainStore } from "../stores";
 import BaseDocHeaderActions from "../components/BaseDocHeaderActions.vue";
 import BaseTabContainer from "../components/BaseTabContainer.vue";
 import { useRoute, useRouter } from "vue-router";
+import BaseSpinner from "../components/BaseSpinner.vue";
 
 const { examples } = useExamples()
 const store = useMainStore()
@@ -134,31 +135,43 @@ const hoveredLink = ref(null);
         <VueUiIcon name="annotator" :stroke="isDarkMode ? '#ff6600' : '#1A1A1A'" />
         {{ inProgress[store.lang] }}
     </div>
-
-    <!-- EXAMPLES DISPLAY -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap place-items-center px-4 sm:px-16 mt-12 sm:mt-20">
-        <div v-for="example in filteredExamples" :key="`${example.id}_${key}`" class=" flex-col inline-flex w-full bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded shadow-md" :id="example.id">
-            <div dir="auto" class="bg-gray-200 dark:bg-[rgb(35,35,35)] p-4 rounded-t">
-                <div class="flex flex-row gap-4 place-items-center">
-                    <div class="flex flex-row gap-2 place-items-center pb-5 border-b w-fit border-app-blue dark:border-[#6A6A6A]">
-                        <VueUiIcon :name="example.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                        <h2 class="text-gray-800 dark:text-[#1F77B4]">{{ example.component }}</h2>
+    <div class="min-h-[1000px]">
+        <!-- EXAMPLES DISPLAY -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap place-items-center px-4 sm:px-16 mt-12 sm:mt-20">
+            <div v-for="example in filteredExamples" :key="`${example.id}_${key}`" class=" flex-col inline-flex w-full bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded shadow-md" :id="example.id">
+                <div dir="auto" class="bg-gray-200 dark:bg-[rgb(35,35,35)] p-4 rounded-t">
+                    <div class="flex flex-row gap-4 place-items-center">
+                        <div class="flex flex-row gap-2 place-items-center pb-5 border-b w-fit border-app-blue dark:border-[#6A6A6A]">
+                            <VueUiIcon :name="example.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                            <h2 class="text-gray-800 dark:text-[#1F77B4]">{{ example.component }}</h2>
+                        </div>
+                        <BaseDocHeaderActions
+                            :defaultConfig="false"
+                            :customConfig="example.config"
+                            :customDataset="example.dataset"
+                            justify="justify-start"
+                        />
                     </div>
-                    <BaseDocHeaderActions
-                        :defaultConfig="false"
-                        :customConfig="example.config"
-                        :customDataset="example.dataset"
-                        justify="justify-start"
-                    />
+                    <p class="text-sm dark:text-[#9dcbeb]">{{  example.description[store.lang] }}</p>
                 </div>
-                <p class="text-sm">{{  example.description[store.lang] }}</p>
+    
+                <Suspense>
+                    <template #default>
+                        <div class="w-full p-4">
+                            <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
+                                <template #plot-comment="{ plot }">
+                                    <div :style="`text-align:${plot.textAlign}; color:${plot.color}; font-size: 10px; padding: 6px;`">
+                                        {{ plot.comment }}
+                                    </div>
+                                </template>
+                            </VueDataUi>
+                        </div>
+                    </template>
+                    <template #fallback>
+                        <BaseSpinner/>
+                    </template>
+                </Suspense>
             </div>
-
-            <Suspense>
-                <div class="w-full p-4">
-                    <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config"/>
-                </div>
-            </Suspense>
         </div>
     </div>
 </template>

@@ -24,6 +24,8 @@ export default function useExamples() {
         return arr;
     }
 
+    //-------------- VUE-UI-XY --------------//
+
     const LINESET = ref([
         -89, -55, -34, -21, -13, -8, -5, -3, -2, -1, 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
     ]);
@@ -218,6 +220,111 @@ export default function useExamples() {
         }
     })
 
+    //-------------- VUE-UI-DONUT------------- //
+
+    const CONFIG_DONUT_BASE = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        showPercentage: false,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30,
+                        showPercentage: true,
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddingLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                    layout: {
+                        labels: {
+                            percentage: {
+                                color: colors.value.textColor,
+                            },
+                            name: {
+                                color: '#6A6A6A'
+                            },
+                            hollow: {
+                                average: {
+                                    color: '#6A6A6A',
+                                    value: {
+                                        color: colors.value.textColor,
+                                    }
+                                },
+                                total: {
+                                    color: '#6A6A6A',
+                                    offsetY: -6,
+                                    value: {
+                                        color: colors.value.textColor,
+                                        offsetY: -6
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+
+    const DATASET_DONUT_BASIC = computed(() => {
+        return [
+            {
+                name: 'Series 1',
+                values: [100]
+            },
+            {
+                name: 'Series 2',
+                values: [50]
+            },
+            {
+                name: 'Series 3',
+                values: [25]
+            },
+            {
+                name: 'Series 4',
+                values: [12.5]
+            },
+        ]
+    });
+
+    const DATASET_DONUT_COMMENT = computed(() => {
+        return [
+            {
+                name: 'Series 1',
+                values: [100],
+                comment: 'This is a comment for Series 1'
+            },
+            {
+                name: 'Series 2',
+                values: [50],
+                comment: 'This is a comment for Series 2'
+            },
+            {
+                name: 'Series 3',
+                values: [25],
+                comment: 'This is a comment for Series 3'
+            },
+            {
+                name: 'Series 4',
+                values: [12.5]
+            },
+        ]
+    });
+
     const examples = computed(() => {
         return [
             { 
@@ -369,6 +476,55 @@ export default function useExamples() {
                     es: 'Escala fija, punto de partida',
                     ko: '고정 스케일, 시작점',
                     ar: 'مقياس ثابت، نقطة البداية'
+                }
+            },
+            {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: CONFIG_DONUT_BASE.value,
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'donut-basic',
+                link: 'vue-ui-donut',
+                description: {
+                    en: 'Basic donut chart',
+                    fr: 'Graphique en anneau de base',
+                    pt: 'Gráfico de rosca básico',
+                    de: 'Grundlegendes Donut-Diagramm',
+                    zh: '基础甜甜圈图表',
+                    jp: '基本的なドーナツチャート',
+                    es: 'Gráfico de rosquilla básico',
+                    ko: '기본 도넛 차트',
+                    ar: 'مخطط دائري أساسي'
+                }
+            },
+            {
+                dataset: DATASET_DONUT_COMMENT.value,
+                config: {
+                    ...CONFIG_DONUT_BASE.value,
+                    style: {
+                        ...CONFIG_DONUT_BASE.value.style,
+                        chart: {
+                            ...CONFIG_DONUT_BASE.value.style.chart,
+                            comments: {
+                                show: true
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'donut-comment',
+                link: 'vue-ui-donut',
+                description: {
+                    en: 'With individual comments in the dataset',
+                    fr: 'Avec des commentaires individuels dans le jeu de données',
+                    pt: 'Com comentários individuais no conjunto de dados',
+                    de: 'Mit individuellen Kommentaren im Datensatz',
+                    zh: '数据集中包含单独的注释',
+                    jp: 'データセットに個別のコメント付き',
+                    es: 'Con comentarios individuales en el conjunto de datos',
+                    ko: '데이터 세트에 개별 댓글 포함',
+                    ar: 'مع تعليقات فردية في مجموعة البيانات'
                 }
             },
         ]

@@ -5,6 +5,7 @@ import ExampleButton from "../components/examples/ExampleButton.vue";
 import ExampleSpark from "../components/examples/ExampleSpark.vue";
 import ExampleCharts from "../components/examples/ExampleCharts.vue";
 import ExampleKpi from "../components/examples/ExampleKpi.vue";
+import BaseCrumbs from "../components/BaseCrumbs.vue";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -12,9 +13,20 @@ const lang = computed(() => store.lang);
 const isDarkMode = computed(() => store.isDarkMode);
 const currentMenu = ref('mini')
 
+const crumbs = ref([
+    {
+        description: translations.value.menu.docs[store.lang],
+        link: '/docs'
+    },
+    {
+        description: translations.value.menu.examples[store.lang],
+    }
+]);
+
 </script>
 
 <template>
+    <BaseCrumbs :tree="crumbs" noMargin showMobile/>
     <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative my-12">
         <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.examples[lang] }}</h1>
 

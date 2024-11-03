@@ -672,6 +672,7 @@ const { configCode, showAllConfig } = useConfigCode()
             name: string;
             color: string;
             values: number[];
+            comment?: string;
         },
         {...}
     ]
