@@ -18,6 +18,10 @@ const props = defineProps({
     noMargin: {
         type: Boolean,
         default: false
+    },
+    showMobile: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -33,8 +37,7 @@ const validLinks = computed(() => {
 
 <template>
     <div :class="`
-            hidden 
-            sm:flex 
+            ${showMobile ? 'flex' : 'hidden'}
             z-10 
             flex-row 
             gap-3 
