@@ -471,7 +471,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.zoom.minimap.smooth', def: true, type: 'checkbox', label: ['zoom', 'minimap', 'is', 'smooth'], category: 'geenral'},
                     { key: 'chart.zoom.minimap.selectedColor', def: '#1F77B4', type: 'color', label: ['zoom', 'minimap', 'selected', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.minimap.selectedColorOpacity', def: 0.2, type: 'range', min: 0.1, max: 0.5, step: 0.01, label: ['zoom', 'minimap', 'selected', 'is', 'opacity'], category: 'general'},
-                    { key: 'chart.zoom.minimap.lineColor', def: '#1A1A1A', type: 'color', label: ['zoom', 'minimap', 'line', 'is', 'color'], category: 'geenral'},
+                    { key: 'chart.zoom.minimap.lineColor', def: '#1A1A1A', type: 'color', label: ['zoom', 'minimap', 'line', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.minimap.selectionRadius', def: 2, type: 'range', min: 0, max: 24, label: ['zoom', 'minimap', 'selection', 'is', 'radius'], category: 'general'},
                     { key: 'chart.zoom.minimap.indicatorColor', def: '#1A1A1A', type: 'color', label: ['zoom', 'minimap', 'indicator', 'is', 'color'], category: 'general'},
 

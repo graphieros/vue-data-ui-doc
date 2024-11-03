@@ -306,7 +306,8 @@ export function useCase() {
                 tooltip: {
                     backgroundColor: bgColor.value,
                     color: textColor.value,
-                    roundingValue: 1
+                    roundingValue: 1,
+                    backgroundOpacity: 30,
                 },
             },
             table: {
@@ -482,7 +483,8 @@ export function useCase() {
                 tooltip: {
                     backgroundColor: bgColor.value,
                     color: textColor.value,
-                    roundingValue: 1
+                    roundingValue: 1,
+                    backgroundOpacity: 30
                 },
             },
             table: {
@@ -516,6 +518,9 @@ export function useCase() {
                     legend: {
                         backgroundColor: bgColor.value,
                         color: textColor.value
+                    },
+                    tooltip: {
+                        backgroundOpacity: 30,
                     },
                     grid: {
                         y: {

@@ -1571,7 +1571,7 @@ const treemapConfig = computed(() => {
         tooltip: {
           backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
           color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-          backgroundOpacity: 90
+          backgroundOpacity: 30
         },
         layout: {
           labels: {

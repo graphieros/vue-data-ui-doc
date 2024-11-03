@@ -182,7 +182,7 @@ const config = ref({
                 borderWidth: 1,
                 showValue: true,
                 showPercentage: true,
-                backgroundOpacity: 90,
+                backgroundOpacity: 30,
                 position: 'center',
                 offsetY: 24
             }
@@ -306,7 +306,7 @@ const darkModeConfig = ref({
                 borderWidth: 1,
                 showValue: true,
                 showPercentage: true,
-                backgroundOpacity: 90,
+                backgroundOpacity: 30,
                 position: 'center',
                 offsetY: 24
             }

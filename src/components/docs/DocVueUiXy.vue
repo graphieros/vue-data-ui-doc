@@ -137,7 +137,7 @@ const config = ref({
             minimap: {
                 show: true,
                 smooth: true,
-                selectedColor: '#8A8A8A',
+                selectedColor: '#1F77B4',
                 selectedColorOpacity: 0.2,
                 lineColor: "#1F77B4",
                 selectionRadius: 2,
@@ -221,19 +221,19 @@ const config = ref({
             fontSize: 16
         },
         title: {
-           show:true,
-           text: "Title",
-           color: "#1A1A1A",
-           fontSize: 20,
-           bold: true,
-           textAlign: 'center',
-           paddingLeft: 0,
-           paddingRight: 0,
-           subtitle: {
-            fontSize: 16,
-            color: "#565656",
-            text: "Subtitle"
-           }
+            show:true,
+            text: "Title",
+            color: "#1A1A1A",
+            fontSize: 20,
+            bold: true,
+            textAlign: 'center',
+            paddingLeft: 0,
+            paddingRight: 0,
+            subtitle: {
+                fontSize: 16,
+                color: "#565656",
+                text: "Subtitle"
+            }
         },
         tooltip: {
             color: "#1A1A1A",
@@ -248,7 +248,7 @@ const config = ref({
             borderColor:"#e1e5e8",
             borderWidth: 1,
             fontSize: 14,
-            backgroundOpacity: 90,
+            backgroundOpacity: 30,
             position: "center",
             offsetY: 24
         },
@@ -483,19 +483,19 @@ const darkModeConfig = ref({
             fontSize: 16
         },
         title: {
-           show:true,
-           text: "Title",
-           color: "#c8c8c8",
-           fontSize: 20,
-           bold: true,
-           textAlign: 'center',
-           paddingLeft: 0,
-           paddingRight: 0,
-           subtitle: {
-            fontSize: 16,
+            show:true,
+            text: "Title",
             color: "#c8c8c8",
-            text: "Subtitle"
-           }
+            fontSize: 20,
+            bold: true,
+            textAlign: 'center',
+            paddingLeft: 0,
+            paddingRight: 0,
+            subtitle: {
+                fontSize: 16,
+                color: "#c8c8c8",
+                text: "Subtitle"
+            }
         },
         tooltip: {
             color: "#CCCCCC",
@@ -510,7 +510,7 @@ const darkModeConfig = ref({
             borderColor:"#3A3A3A",
             borderWidth: 1,
             fontSize: 14,
-            backgroundOpacity: 90,
+            backgroundOpacity: 30,
             position: "center",
             offsetY: 24
         },

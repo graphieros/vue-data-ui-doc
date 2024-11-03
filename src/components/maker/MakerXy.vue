@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, nextTick } from "vue";
 import { useMainStore } from "../../stores";
 import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
@@ -229,6 +229,13 @@ const accordionConfig = ref(
         }
 )
 
+function fixChart() {
+    isFixed.value = !isFixed.value;
+    setTimeout(() => {
+        step.value += 1;
+    }, 100)
+}
+
 </script>
 
 <template>
@@ -240,7 +247,7 @@ const accordionConfig = ref(
             <transition name="fade">                
                 <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? 'fixed top-[64px] right-6 z-20 w-[300px]' : 'w-full mx-auto max-w-[600px]'}`">
                     <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
-                        <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
+                        <button @click="fixChart" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
                             <PinnedOffIcon v-if="isFixed"/>
                             <PinIcon v-else/>
                         </button>

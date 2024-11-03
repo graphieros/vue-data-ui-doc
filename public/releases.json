@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.3.68",
+    "date": "2024-11-03",
+    "updates": [
+      {
+        "component": "Tooltips",
+        "description": "Use glassmorphism effect when tooltip when tooltip.backgroundOpacity < 100"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.67",
     "date": "2024-11-02",
     "updates": [
