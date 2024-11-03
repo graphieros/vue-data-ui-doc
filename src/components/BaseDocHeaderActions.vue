@@ -29,10 +29,27 @@ const props = defineProps({
     targetDoc: {
         type: String,
         default: ''
+    },
+    customConfig: {
+        type: Object,
+        default() {
+            return null
+        }
+    },
+    customDataset: {
+        type: [Array, Object],
+        default() {
+            return null
+        }
+    },
+    justify: {
+        type: String,
+        default: 'justify-center'
     }
 });
 
 const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
 
 const translations = computed(() => store.translations);
 
@@ -54,11 +71,25 @@ function copyToClipboard(conf) {
 </script>
 
 <template>
-    <div class="flex flex-row gap-4 w-full justify-center my-4">
+    <div :class="`flex flex-row gap-4 w-full my-4 ${justify}`">
         <div class="relative" v-if="defaultConfig">
             <FlexibleTooltip position="bottom" :content="translations.docs.copyDefaultConfig[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
                 <button @click="copyToClipboard(configSource)" class="h-[50px] w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">
                     <CopyIcon/> 
+                </button>
+            </FlexibleTooltip>
+        </div>
+        <div class="relative" v-if="customConfig">
+            <FlexibleTooltip position="bottom" :content="translations.docs.copyThisConfig[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
+                <button @click="copyToClipboard(customConfig)" class="h-[50px] w-[50px] border border-gray-500 flex place-items-center justify-center rounded bg-white dark:bg-[#FFFFFF05] hover:bg-[#5f8bee20] dark:hover:bg-[#5f8bee20] transition-colors">
+                    <VueUiIcon name="settings" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" />
+                </button>
+            </FlexibleTooltip>
+        </div>
+        <div class="relative" v-if="customDataset">
+            <FlexibleTooltip position="bottom" :content="translations.docs.copyThisDataset[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
+                <button @click="copyToClipboard(customDataset)" class="h-[50px] w-[50px] border border-gray-500 flex place-items-center justify-center rounded bg-white dark:bg-[#FFFFFF05] hover:bg-[#5f8bee20] dark:hover:bg-[#5f8bee20] transition-colors">
+                    <VueUiIcon name="numbers" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" />
                 </button>
             </FlexibleTooltip>
         </div>
@@ -68,3 +99,9 @@ function copyToClipboard(conf) {
         <slot name="grabber"/>
     </div>
 </template>
+
+<style>
+.vue-ui-xy-legend {
+    margin-top: 12px !important;
+}
+</style>

@@ -56,6 +56,11 @@ const routes = [
         component: () => import("../views/Examples.vue")
     },
     {
+        path: "/examples/categories",
+        name: "Example Categories",
+        component: () => import("../views/ExampleCategories.vue")
+    },
+    {
         path: "/universal-component",
         name: "Universal component",
         component: () => import("../views/UniversalComponent.vue")

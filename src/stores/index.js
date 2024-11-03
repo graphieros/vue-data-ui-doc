@@ -2111,6 +2111,28 @@ export const useMainStore = defineStore("main", {
                         ko: "이 구성을 JSON으로 복사",
                         ar: 'انسخ هذا التكوين كـ JSON'
                     },
+                    copyThisDataset: {
+                        en: 'Copy this dataset as JSON',
+                        fr: 'Copier cet ensemble de données en JSON',
+                        pt: 'Copiar este conjunto de dados como JSON',
+                        de: 'Diesen Datensatz als JSON kopieren',
+                        zh: '将此数据集复制为 JSON',
+                        jp: 'このデータセットをJSONとしてコピー',
+                        es: 'Copiar este conjunto de datos como JSON',
+                        ko: '이 데이터셋을 JSON으로 복사',
+                        ar: 'نسخ مجموعة البيانات هذه كـ JSON'
+                    },
+                    moreExamples: {
+                        en: 'More examples',
+                        fr: 'Plus d\'exemples',
+                        pt: 'Mais exemplos',
+                        de: 'Weitere Beispiele',
+                        zh: '更多示例',
+                        jp: 'さらに多くの例',
+                        es: 'Más ejemplos',
+                        ko: '더 많은 예제',
+                        ar: 'المزيد من الأمثلة'
+                    },
                     reset: {
                         en: "Reset",
                         fr: "Réinitialiser",
