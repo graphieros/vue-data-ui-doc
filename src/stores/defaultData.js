@@ -442,7 +442,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 dataset: [
                     {
                         name: "name",
-                        series: [1, 10, 20, 30, 25, 20, 12, 16, 19, 21],
+                        series: [1, 2, 3, 5, 8, 13, 21, 13, 8, 5, 3, 2, 1],
                         color: "#6376DD",
                         type: "line",
                         shape: 'circle',
