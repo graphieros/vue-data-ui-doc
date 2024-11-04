@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.3.72",
+    "date": "2024-11-04",
+    "updates": [
+      {
+        "component": "",
+        "description": "Renamed a couple of types in .d.ts file to comply to naming convention"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.71",
     "date": "2024-11-04",
     "updates": [
