@@ -850,6 +850,52 @@ export default function useExamples() {
                 }                
             },
             {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: {
+                    ...CONFIG_DONUT_BASE.value,
+                    style: {
+                        ...CONFIG_DONUT_BASE.value.style,
+                        chart: {
+                            ...CONFIG_DONUT_BASE.value.style.chart,
+                            useGradient: false,
+                            layout: {
+                                ...CONFIG_DONUT_BASE.value.style.chart.layout,
+                                donut:{
+                                    strokeWidth: 120,
+                                },
+                                labels: {
+                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    hollow: {
+                                        show: false,
+                                        average: {
+                                            show: false,
+                                        },
+                                        total: {
+                                            show: false
+                                        }
+                                    },
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'pie',
+                link: 'vue-ui-donut',
+                description: {
+                    en: 'Pie chart, no gradient',
+                    fr: 'Graphique en secteurs, sans dégradé',
+                    pt: 'Gráfico de torta, sem gradiente',
+                    de: 'Kreisdiagramm, ohne Verlauf',
+                    zh: '饼图，无渐变',
+                    jp: '円グラフ、グラデーションなし',
+                    es: 'Gráfico de pastel, sin degradado',
+                    ko: '파이 차트, 그라디언트 없음',
+                    ar: 'مخطط دائري، بدون تدرج'
+                }              
+            },
+            {
                 dataset: DATASET_SPARKLINE.value,
                 config: CONFIG_SPARKLINE_BASE.value,
                 component: 'VueUiSparkline',
