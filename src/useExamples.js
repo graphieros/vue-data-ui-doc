@@ -46,6 +46,9 @@ export default function useExamples() {
     const BINARYSET2 = ref([
         0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0
     ])
+    const KRACHSET = ref([
+        65, 68, 72, 88, 93, 94, 92, 97, 98, 100, 99, 106, 119, 140, 12, 9, 7, 5, 12, 18, 29
+    ])
 
     const DATASET_XY_BASIC_LINE = ref([
         {
@@ -53,6 +56,16 @@ export default function useExamples() {
             type: 'line',
             dataLabels: true,
             series: LINESET
+        }
+    ]);
+
+    const DATASET_XY_COMMENTS = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            dataLabels: true,
+            series: KRACHSET,
+            comments: ['','','','','','','','','','','','', '', '', 'OMG!',]
         }
     ]);
 
@@ -928,6 +941,36 @@ export default function useExamples() {
                     es: 'Series apiladas',
                     ko: '스택 시리즈',
                     ar: 'سلاسل مكدسة'
+                }
+            },
+            // XY LINE WITH COMMENT
+            { 
+                dataset: DATASET_XY_COMMENTS.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        comments: {
+                            showInTooltip: true,
+                            width: 100,
+                            offsetY: -120
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'basic-line',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'With an individual datapoint comment',
+                    fr: 'Avec un commentaire sur un point de données individuel',
+                    pt: 'Com um comentário de ponto de dados individual',
+                    de: 'Mit einem Kommentar zu einem einzelnen Datenpunkt',
+                    zh: '带有单个数据点评论',
+                    jp: '個別データポイントのコメント付き',
+                    es: 'Con un comentario de punto de datos individual',
+                    ko: '개별 데이터 포인트에 대한 주석 포함',
+                    ar: 'مع تعليق على نقطة بيانات فردية'
                 }
             },
             // DONUT BASIC

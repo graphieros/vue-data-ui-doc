@@ -189,7 +189,11 @@ const hoveredLink = ref(null);
                         <div class="w-full p-4">
                             <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
                                 <template #plot-comment="{ plot }">
-                                    <div :style="`text-align:${plot.textAlign}; color:${plot.color}; font-size: 10px; padding: 6px;`">
+                                    <div v-if="example.component === 'VueUiXy'" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow border border-app-orange">
+                                        <VueUiIcon name="moodFlat" stroke="#FF6600" :size="30"/>
+                                        {{ plot.comment }}
+                                    </div>
+                                    <div v-else :style="`text-align:${plot.textAlign}; color:${plot.color}; font-size: 10px; padding: 6px;`">
                                         {{ plot.comment }}
                                     </div>
                                 </template>
