@@ -881,7 +881,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiDonut',
                 icon: 'chartDonut',
-                id: 'pie',
+                id: 'pie-no-gradient',
                 link: 'vue-ui-donut',
                 description: {
                     en: 'Pie chart, no gradient',
@@ -894,6 +894,87 @@ export default function useExamples() {
                     ko: '파이 차트, 그라디언트 없음',
                     ar: 'مخطط دائري، بدون تدرج'
                 }              
+            },
+            {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: {
+                    ...CONFIG_DONUT_BASE.value,
+                    style: {
+                        ...CONFIG_DONUT_BASE.value.style,
+                        chart: {
+                            ...CONFIG_DONUT_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_DONUT_BASE.value.style.chart.layout,
+                                donut: {
+                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.donut,
+                                    useShadow: true
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'donut-shadow',
+                link: 'vue-ui-donut',
+                description: {
+                    en: 'With shadow',
+                    fr: 'Avec ombre',
+                    pt: 'Com sombra',
+                    de: 'Mit Schatten',
+                    zh: '带阴影',
+                    jp: '影付き',
+                    es: 'Con sombra',
+                    ko: '그림자 포함',
+                    ar: 'مع ظل'
+                }
+            },
+            {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: {
+                    ...CONFIG_DONUT_BASE.value,
+                    style: {
+                        ...CONFIG_DONUT_BASE.value.style,
+                        chart: {
+                            ...CONFIG_DONUT_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_DONUT_BASE.value.style.chart.layout,
+                                donut: {
+                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.donut,
+                                    useShadow: true,
+                                    strokeWidth: 120,
+                                },
+                                labels: {
+                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    hollow: {
+                                        show: false,
+                                        average: {
+                                            show: false,
+                                        },
+                                        total: {
+                                            show: false
+                                        }
+                                    },
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'pie-shadow',
+                link: 'vue-ui-donut',
+                description: {
+                    en: 'Pie chart with shadow',
+                    fr: 'Graphique en secteurs avec ombre',
+                    pt: 'Gráfico de torta com sombra',
+                    de: 'Kreisdiagramm mit Schatten',
+                    zh: '带阴影的饼图',
+                    jp: '影付きの円グラフ',
+                    es: 'Gráfico de pastel con sombra',
+                    ko: '그림자가 있는 파이 차트',
+                    ar: 'مخطط دائري مع ظل'
+                }
             },
             {
                 dataset: DATASET_SPARKLINE.value,
