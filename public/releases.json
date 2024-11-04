@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.69",
+    "date": "2024-11-04",
+    "updates": [
+      {
+        "component": "VueUiOnion",
+        "description": "Fix incorrect path calculation",
+        "link": "/docs/#vue-ui-onion"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.68",
     "date": "2024-11-03",
     "updates": [
