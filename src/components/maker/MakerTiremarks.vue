@@ -152,7 +152,7 @@ function randomVal() {
                                 <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.percentage[store.lang] }}</th>
                             </thead>
                             <tbody>
-                                <button class="py-2 px-5 rounded border" @click="randomVal">Random value</button> : {{ currentDataset.percentage.toFixed(2) }}
+                                <button class="py-2 px-5 rounded border border-black dark:border-app-blue hover:bg-[#5f8aee20] transition-colors" @click="randomVal">Random value</button> : {{ currentDataset.percentage.toFixed(2) }}
                             </tbody>
                         </table>
                     </div>
