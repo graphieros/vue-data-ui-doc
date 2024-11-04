@@ -80,7 +80,14 @@ const categories = ref([
         component: 'VueUiStackbar',
         thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
-    }
+    },
+    { 
+        link: 'vue-ui-nested-donuts', 
+        icon: 'chartNestedDonuts', 
+        component: 'VueUiNestedDonuts',
+        thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
+    },
 ]);
 
 const inProgress = ref({

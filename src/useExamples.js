@@ -455,6 +455,153 @@ export default function useExamples() {
         },
     ])
 
+    //-------------- VUE-UI-NESTED-DONUTS --------------//
+    const CONFIG_NESTED_DONUTS_BASE = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    layout: {
+                        labels: {
+                            dataLabels: {
+                                color: colors.value.textColor
+                            }
+                        }
+                    },
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddintLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                }
+            }
+        }
+    })
+
+    const DATASET_NESTED_DONUTS_BASIC = ref([
+        {
+            name: "Group 1",
+            series: [
+                {
+                    name: 'Serie 1',
+                    values: [50]
+                },
+                {
+                    name: 'Serie 2',
+                    values: [30]
+                },
+                {
+                    name: 'Serie 3',
+                    values: [20]
+                },
+            ]
+        },
+        {
+            name: "Group 2",
+            series: [
+                {
+                    name: 'Serie 1',
+                    values: [40]
+                },
+                {
+                    name: 'Serie 2',
+                    values: [40]
+                },
+                {
+                    name: 'Serie 3',
+                    values: [30]
+                },
+            ]
+        },
+    ])
+
+    const DATASET_NESTED_DONUTS_QUAD = ref([
+        {
+            name: "Group 1",
+            series: [
+                {
+                    name: 'Serie 1',
+                    values: [50]
+                },
+                {
+                    name: 'Serie 2',
+                    values: [30]
+                },
+                {
+                    name: 'Serie 3',
+                    values: [20]
+                },
+            ]
+        },
+        {
+            name: "Group 2",
+            series: [
+                {
+                    name: 'Serie 1',
+                    values: [40]
+                },
+                {
+                    name: 'Serie 2',
+                    values: [40]
+                },
+                {
+                    name: 'Serie 3',
+                    values: [30]
+                },
+            ]
+        },
+        {
+            name: "Group 3",
+            series: [
+                {
+                    name: 'Serie 1',
+                    values: [12]
+                },
+                {
+                    name: 'Serie 2',
+                    values: [27]
+                },
+                {
+                    name: 'Serie 3',
+                    values: [100]
+                },
+            ]
+        },
+        {
+            name: "Group 4",
+            series: [
+                {
+                    name: 'Serie 1',
+                    values: [55]
+                },
+                {
+                    name: 'Serie 2',
+                    values: [55]
+                },
+                {
+                    name: 'Serie 3',
+                    values: [55]
+                },
+            ]
+        },
+    ])
+
+
     const examples = computed(() => {
         return [
             { 
@@ -969,6 +1116,140 @@ export default function useExamples() {
                     es: 'Barra apilada horizontal distribuida',
                     ko: '분산형 수평 스택 막대',
                     ar: 'شريط مكدس أفقي موزع'
+                }
+            },
+            { 
+                dataset: DATASET_NESTED_DONUTS_BASIC.value, 
+                config: CONFIG_NESTED_DONUTS_BASE.value,
+                component: 'VueUiNestedDonuts',
+                icon: 'chartNestedDonuts',
+                id: 'nested-donuts-basic',
+                link: 'vue-ui-nested-donuts',
+                description: {
+                    en: 'Basic nested donuts chart',
+                    fr: 'Graphique de beignets imbriqués de base',
+                    pt: 'Gráfico de rosquinhas aninhadas básico',
+                    de: 'Grundlegendes verschachteltes Donut-Diagramm',
+                    zh: '基本嵌套圆环图',
+                    jp: '基本的なネストドーナツチャート',
+                    es: 'Gráfico de donas anidadas básico',
+                    ko: '기본 중첩 도넛 차트',
+                    ar: 'مخطط الكعكات المتداخلة الأساسي'
+                }
+            },
+            { 
+                dataset: DATASET_NESTED_DONUTS_BASIC.value, 
+                config: {
+                    ...CONFIG_NESTED_DONUTS_BASE.value,
+                    style: {
+                        ...CONFIG_NESTED_DONUTS_BASE.value.style,
+                        chart: {
+                            ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                donut: {
+                                    spacingRatio: 1
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiNestedDonuts',
+                icon: 'chartNestedDonuts',
+                id: 'nested-pies',
+                link: 'vue-ui-nested-donuts',
+                description: {
+                    en: 'Nested pies chart',
+                    fr: 'Graphique de secteurs imbriqués',
+                    pt: 'Gráfico de tortas aninhadas',
+                    de: 'Verschachteltes Kreisdiagramm',
+                    zh: '嵌套饼图',
+                    jp: 'ネストされた円グラフ',
+                    es: 'Gráfico de tartas anidadas',
+                    ko: '중첩 파이 차트',
+                    ar: 'مخطط الفطائر المتداخلة'
+                }
+            },
+            { 
+                dataset: DATASET_NESTED_DONUTS_QUAD.value, 
+                config: {
+                    ...CONFIG_NESTED_DONUTS_BASE.value,
+                    style: {
+                        ...CONFIG_NESTED_DONUTS_BASE.value.style,
+                        chart: {
+                            ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                labels: {
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    dataLabels: {
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
+                                        offsetX: -10,
+                                        offsetY: -10,
+                                        donutNameOffsetY: 10
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiNestedDonuts',
+                icon: 'chartNestedDonuts',
+                id: 'nested-donuts-quad',
+                link: 'vue-ui-nested-donuts',
+                description: {
+                    en: 'With more series',
+                    fr: 'Avec plus de séries',
+                    pt: 'Com mais séries',
+                    de: 'Mit mehr Serien',
+                    zh: '含更多系列',
+                    jp: 'より多くのシリーズで',
+                    es: 'Con más series',
+                    ko: '더 많은 시리즈 포함',
+                    ar: 'مع المزيد من السلاسل'
+                }
+            },
+            { 
+                dataset: DATASET_NESTED_DONUTS_QUAD.value, 
+                config: {
+                    ...CONFIG_NESTED_DONUTS_BASE.value,
+                    style: {
+                        ...CONFIG_NESTED_DONUTS_BASE.value.style,
+                        chart: {
+                            ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
+                            useGradient: false,
+                            layout: {
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                donut: {
+                                    spacingRatio: 1
+                                },
+                                labels: {
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    dataLabels: {
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
+                                        offsetX: -20,
+                                        offsetY: -20,
+                                        donutNameOffsetY: 10
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiNestedDonuts',
+                icon: 'chartNestedDonuts',
+                id: 'nested-pies-quad-no-gradient',
+                link: 'vue-ui-nested-donuts',
+                description: {
+                    en: 'With more series, pies, no gradient',
+                    fr: 'Avec plus de séries, secteurs, sans dégradé',
+                    pt: 'Com mais séries, tortas, sem gradiente',
+                    de: 'Mit mehr Serien, Kreise, ohne Verlauf',
+                    zh: '含更多系列、饼图、无渐变',
+                    jp: 'より多くのシリーズ、円グラフ、グラデーションなし',
+                    es: 'Con más series, tartas, sin degradado',
+                    ko: '더 많은 시리즈, 파이, 그라디언트 없음',
+                    ar: 'مع المزيد من السلاسل والفطائر، بدون تدرج'
                 }
             },
         ]
