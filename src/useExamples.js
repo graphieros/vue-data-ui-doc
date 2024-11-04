@@ -40,6 +40,12 @@ export default function useExamples() {
     const LINESET_FIXED_1 = ref([
         -60, 58, -56, 54, -52, 50, -48, 46, -44, 42, -40, 38, -36, 34, -32, 30, -28, 26, -24, 22
     ])
+    const BINARYSET = ref([
+        1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1
+    ])
+    const BINARYSET2 = ref([
+        0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0
+    ])
 
     const DATASET_XY_BASIC_LINE = ref([
         {
@@ -98,6 +104,39 @@ export default function useExamples() {
             type: 'bar',
             dataLabels: true,
             series: BARSET
+        }
+    ]);
+
+    const DATASET_XY_BASIC_COMBINED_STACK = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            dataLabels: false,
+            series: LINESET,
+            scaleSteps: 5
+        },
+        {
+            name: 'Serie 2',
+            type: 'bar',
+            dataLabels: false,
+            series: BARSET,
+            scaleSteps: 4
+        },
+        {
+            name: 'Serie 3',
+            type: 'line',
+            dataLabels: false,
+            series: BINARYSET,
+            stackRatio: 0.1,
+            scaleSteps: 2
+        },
+        {
+            name: 'Serie 2',
+            type: 'line',
+            dataLabels: false,
+            series: BINARYSET2,
+            stackRatio: 0.1,
+            scaleSteps: 2
         }
     ]);
 
@@ -634,6 +673,7 @@ export default function useExamples() {
 
     const examples = computed(() => {
         return [
+            // XY BASIC LINE
             { 
                 dataset: DATASET_XY_BASIC_LINE.value, 
                 config: BASE_XY_CONFIG.value,
@@ -653,6 +693,7 @@ export default function useExamples() {
                     ar: 'مخطط خطي أساسي'
                 }
             },
+            // XY LINE SMOOTH
             { 
                 dataset: DATASET_XY_BASIC_LINE_SMOOTH.value, 
                 config: {
@@ -684,6 +725,7 @@ export default function useExamples() {
                     ar: 'مخطط خطي ناعم أساسي'
                 }
             },
+            // XY BASIC BAR
             { 
                 dataset: DATASET_XY_BASIC_BAR.value, 
                 config: BASE_XY_CONFIG.value,
@@ -703,6 +745,7 @@ export default function useExamples() {
                     ar: 'مخطط مدرج تكراري أساسي'
                 }
             },
+            // XY COMBINED
             { 
                 dataset: DATASET_XY_BASIC_COMBINED.value, 
                 config: BASE_XY_CONFIG.value,
@@ -722,6 +765,7 @@ export default function useExamples() {
                     ar: 'مركب'
                 }
             },
+            // XY MULTIBAR
             { 
                 dataset: DATASET_XY_BASIC_MULTIBAR.value, 
                 config: BASE_XY_CONFIG.value,
@@ -741,6 +785,7 @@ export default function useExamples() {
                     ar: 'سلاسل شريطية متعددة'
                 }
             },
+            // XY FIXED SCALE
             { 
                 dataset: DATASET_XY_LINE_FIXED.value, 
                 config: {
@@ -785,6 +830,107 @@ export default function useExamples() {
                     ar: 'مقياس ثابت، نقطة البداية'
                 }
             },
+            // XY HIGHLIGHT AREAS
+            { 
+                dataset: DATASET_XY_BASIC_LINE.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        highlightArea: [
+                            {
+                                show: true,
+                                from: 2,
+                                to: 4,
+                                color: '#ff6600',
+                                opacity: 10,
+                                caption: {
+                                    text: 'This period is interesting for some reason.',
+                                    color: colors.value.textColor,
+                                    fontSize: 16,
+                                    offsetY: 24,
+                                    width: 'auto',
+                                    textAlign: 'center',
+                                    padding: 3
+                                }
+                            },
+                            {
+                                show: true,
+                                from: 12,
+                                to: 18,
+                                color: '#42d392',
+                                opacity: 10,
+                                caption: {
+                                    text: 'This period is also kind of interesting too.',
+                                    color: colors.value.textColor,
+                                    fontSize: 16,
+                                    offsetY: 24,
+                                    width: 'auto',
+                                    textAlign: 'center',
+                                    padding: 3
+                                }
+                            }
+                        ]
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-highlight-areas',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'Multiple highlight areas',
+                    fr: 'Plusieurs zones en surbrillance',
+                    pt: 'Múltiplas áreas de destaque',
+                    de: 'Mehrere Hervorhebungsbereiche',
+                    zh: '多个高亮区域',
+                    jp: '複数のハイライト領域',
+                    es: 'Múltiples áreas destacadas',
+                    ko: '여러 강조 영역',
+                    ar: 'مناطق تمييز متعددة'
+                }
+            },
+            // XY STACKED
+            { 
+                dataset: DATASET_XY_BASIC_COMBINED_STACK.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            showHorizontalLines: true,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    useIndividualScale: true,
+                                    stacked: true,
+                                    gap: 24
+                                }
+                            }
+                        }
+                    },
+                    line: {
+                        ...BASE_XY_CONFIG.value.line,
+                        radius: 2
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-stacked',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'Stacked series',
+                    fr: 'Séries empilées',
+                    pt: 'Séries empilhadas',
+                    de: 'Gestapelte Serien',
+                    zh: '堆叠系列',
+                    jp: '積み重ねられたシリーズ',
+                    es: 'Series apiladas',
+                    ko: '스택 시리즈',
+                    ar: 'سلاسل مكدسة'
+                }
+            },
+            // DONUT BASIC
             {
                 dataset: DATASET_DONUT_BASIC.value,
                 config: CONFIG_DONUT_BASE.value,
@@ -804,6 +950,7 @@ export default function useExamples() {
                     ar: 'مخطط دائري أساسي'
                 }
             },
+            // DONUT COMMENTS
             {
                 dataset: DATASET_DONUT_COMMENT.value,
                 config: {
@@ -834,6 +981,7 @@ export default function useExamples() {
                     ar: 'مع تعليقات فردية في مجموعة البيانات'
                 }
             },
+            // PIE
             {
                 dataset: DATASET_DONUT_BASIC.value,
                 config: {
@@ -879,6 +1027,7 @@ export default function useExamples() {
                     ar: 'مخطط دائري'
                 }                
             },
+            // PIE NO GRADIENT
             {
                 dataset: DATASET_DONUT_BASIC.value,
                 config: {
@@ -925,6 +1074,7 @@ export default function useExamples() {
                     ar: 'مخطط دائري، بدون تدرج'
                 }              
             },
+            // DONUT SHADOW
             {
                 dataset: DATASET_DONUT_BASIC.value,
                 config: {
@@ -959,6 +1109,7 @@ export default function useExamples() {
                     ar: 'مع ظل'
                 }
             },
+            // PIE SHADOW
             {
                 dataset: DATASET_DONUT_BASIC.value,
                 config: {
@@ -1006,6 +1157,7 @@ export default function useExamples() {
                     ar: 'مخطط دائري مع ظل'
                 }
             },
+            // SPARKLINE BASIX
             {
                 dataset: DATASET_SPARKLINE.value,
                 config: CONFIG_SPARKLINE_BASE.value,
@@ -1025,6 +1177,7 @@ export default function useExamples() {
                     ar: 'مخطط الشرارة الأساسي'
                 }
             },
+            // SPARKLINE AREA
             {
                 dataset: DATASET_SPARKLINE.value,
                 config: {
@@ -1053,6 +1206,7 @@ export default function useExamples() {
                     ar: 'مخطط منطقة الشرارة'
                 }
             },
+            // SPARKLINE SMOOTH
             {
                 dataset: DATASET_SPARKLINE.value,
                 config: {
@@ -1081,6 +1235,7 @@ export default function useExamples() {
                     ar: 'خط سلس'
                 },
             },
+            // SPARKLINE AREA SMOOTH
             {
                 dataset: DATASET_SPARKLINE.value,
                 config: {
@@ -1113,6 +1268,7 @@ export default function useExamples() {
                     ar: 'خط سلس مع منطقة'
                 }
             },
+            // SPARKLINE BAR
             {
                 dataset: DATASET_SPARKLINE.value,
                 config: {
@@ -1141,6 +1297,7 @@ export default function useExamples() {
                     ar: 'أعمدة الشرارة الأساسية'
                 }
             },
+            // SPARKLINE BAR ROUNDED
             {
                 dataset: DATASET_SPARKLINE.value,
                 config: {
@@ -1170,6 +1327,7 @@ export default function useExamples() {
                     ar: 'أعمدة مستديرة'
                 }
             },
+            // STACBAR BASIC
             { 
                 dataset: DATASET_STACKBAR_BASIC.value, 
                 config: CONFIG_STACKBAR_BASE.value,
@@ -1189,6 +1347,7 @@ export default function useExamples() {
                     ar: 'مخطط الأعمدة المتراكمة الأساسي'
                 }
             },
+            // STACKBAR HORIZONTAL
             { 
                 dataset: DATASET_STACKBAR_BASIC.value, 
                 config: {
@@ -1212,6 +1371,7 @@ export default function useExamples() {
                     ar: 'تخطيط أفقي'
                 }
             },
+            // STACKBAR DISTRIBUTED
             { 
                 dataset: DATASET_STACKBAR_BASIC.value, 
                 config: {
@@ -1243,6 +1403,7 @@ export default function useExamples() {
                     ar: 'شريط مكدس رأسي موزع'
                 }
             },
+            // STACKBAR HORIZONTAL DISTRIBUTED
             { 
                 dataset: DATASET_STACKBAR_BASIC.value, 
                 config: {
@@ -1275,6 +1436,7 @@ export default function useExamples() {
                     ar: 'شريط مكدس أفقي موزع'
                 }
             },
+            // NESTED DONUTS BASIC
             { 
                 dataset: DATASET_NESTED_DONUTS_BASIC.value, 
                 config: CONFIG_NESTED_DONUTS_BASE.value,
@@ -1294,6 +1456,7 @@ export default function useExamples() {
                     ar: 'مخطط الكعكات المتداخلة الأساسي'
                 }
             },
+            // NESTED PIES
             { 
                 dataset: DATASET_NESTED_DONUTS_BASIC.value, 
                 config: {
@@ -1327,6 +1490,7 @@ export default function useExamples() {
                     ar: 'مخطط الفطائر المتداخلة'
                 }
             },
+            // NESTED DONUTS QUAD
             { 
                 dataset: DATASET_NESTED_DONUTS_QUAD.value, 
                 config: {
@@ -1366,6 +1530,7 @@ export default function useExamples() {
                     ar: 'مع المزيد من السلاسل'
                 }
             },
+            // NESTED PIES QUAD
             { 
                 dataset: DATASET_NESTED_DONUTS_QUAD.value, 
                 config: {
@@ -1409,6 +1574,7 @@ export default function useExamples() {
                     ar: 'مع المزيد من السلاسل والفطائر، بدون تدرج'
                 }
             },
+            // WAFFLE BASIC
             { 
                 dataset: DATASET_DONUT_BASIC.value, 
                 config: CONFIG_WAFFLE_BASE.value,
@@ -1428,6 +1594,7 @@ export default function useExamples() {
                     ar: 'مخطط الوافل الأساسي'
                 }
             },
+            // WAFFLE VERTICAL
             { 
                 dataset: DATASET_DONUT_BASIC.value, 
                 config: {
@@ -1460,6 +1627,7 @@ export default function useExamples() {
                     ar: 'تخطيط عمودي'
                 }
             },
+            // WAFFLE MORE CELLS
             { 
                 dataset: DATASET_DONUT_BASIC.value, 
                 config: {
@@ -1497,6 +1665,7 @@ export default function useExamples() {
                     ar: 'مزيد من الخلايا، بدون تدرج'
                 }
             },
+            // WAFFLE ROUNDED CELLS
             { 
                 dataset: DATASET_DONUT_BASIC.value, 
                 config: {
@@ -1534,6 +1703,7 @@ export default function useExamples() {
                     ar: 'خلايا مستديرة'
                 }
             },
+            // WAFFLE LABELS
             { 
                 dataset: DATASET_DONUT_BASIC.value, 
                 config: {
