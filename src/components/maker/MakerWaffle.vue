@@ -29,6 +29,10 @@ const makerTranslations = computed(() => {
     return makerStore.translations;
 })
 
+const isDarkMode = computed(() => {
+    return store.isDarkMode;
+})
+
 const isFixed = ref(!isMobile.value);
 
 const CONFIG_CATEGORIES = computed(() => {
@@ -163,7 +167,16 @@ function getLabel(label) {
 <template>
     <div>
         <ClearStorageAndRefresh keyConfig="waffleConfig" keyDataset="waffleDataset" :key="`clear_${clearStep}`"/>
-<DocLink to="vue-ui-waffle" name="VueUiWaffle"/>
+
+        <div class="flex flex-row flex-wrap gap-4 place-items-center">
+            <DocLink to="vue-ui-waffle" name="VueUiWaffle"/>
+            <RouterLink to="/examples/categories#vue-ui-waffle">
+                <button class="flex flex-row gap-2 place-items-center rounded-md border border-black dark:border-app-green py-3 px-4 hover:bg-[#42D39233] hover:shadow-xl">
+                    <VueUiIcon name="clipboardLine" :stroke="isDarkMode ? '#42D392' : '#1A1A1A'" :size="20"/>
+                    {{ translations.viewExamples[store.lang] }}
+                </button>
+            </RouterLink>
+        </div>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <transition name="fade">                

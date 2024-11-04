@@ -599,8 +599,38 @@ export default function useExamples() {
                 },
             ]
         },
-    ])
+    ]);
 
+    //-------------- VUE-UI-NESTED-DONUTS --------------//
+    const CONFIG_WAFFLE_BASE = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddintLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                }
+            }
+        }
+    });
 
     const examples = computed(() => {
         return [
@@ -1377,6 +1407,167 @@ export default function useExamples() {
                     es: 'Con más series, tartas, sin degradado',
                     ko: '더 많은 시리즈, 파이, 그라디언트 없음',
                     ar: 'مع المزيد من السلاسل والفطائر، بدون تدرج'
+                }
+            },
+            { 
+                dataset: DATASET_DONUT_BASIC.value, 
+                config: CONFIG_WAFFLE_BASE.value,
+                component: 'VueUiWaffle',
+                icon: 'chartWaffle',
+                id: 'waffle-basic',
+                link: 'vue-ui-waffle',
+                description: {
+                    en: 'Basic waffle chart',
+                    fr: 'Graphique en gaufre de base',
+                    pt: 'Gráfico de waffle básico',
+                    de: 'Grundlegendes Waffeldiagramm',
+                    zh: '基本华夫图',
+                    jp: '基本ワッフルチャート',
+                    es: 'Gráfico de waffle básico',
+                    ko: '기본 와플 차트',
+                    ar: 'مخطط الوافل الأساسي'
+                }
+            },
+            { 
+                dataset: DATASET_DONUT_BASIC.value, 
+                config: {
+                    ...CONFIG_WAFFLE_BASE.value,
+                    style: {
+                        ...CONFIG_WAFFLE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_WAFFLE_BASE.value.style.chart,
+                            layout: {
+                                grid: {
+                                    vertical: true
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWaffle',
+                icon: 'chartWaffle',
+                id: 'waffle-vertical',
+                link: 'vue-ui-waffle',
+                description: {
+                    en: 'Vertical layout',
+                    fr: 'Disposition verticale',
+                    pt: 'Layout vertical',
+                    de: 'Vertikales Layout',
+                    zh: '垂直布局',
+                    jp: '縦向きレイアウト',
+                    es: 'Distribución vertical',
+                    ko: '세로 레이아웃',
+                    ar: 'تخطيط عمودي'
+                }
+            },
+            { 
+                dataset: DATASET_DONUT_BASIC.value, 
+                config: {
+                    ...CONFIG_WAFFLE_BASE.value,
+                    style: {
+                        ...CONFIG_WAFFLE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_WAFFLE_BASE.value.style.chart,
+                            layout: {
+                                grid: {
+                                    size: 20,
+                                    spaceBetween: 0
+                                },
+                                rect: {
+                                    useGradient: false,
+                                    rounding: 0,
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWaffle',
+                icon: 'chartWaffle',
+                id: 'waffle-no-gradient',
+                link: 'vue-ui-waffle',
+                description: {
+                    en: 'More cells, no gradient',
+                    fr: 'Plus de cellules, sans dégradé',
+                    pt: 'Mais células, sem gradiente',
+                    de: 'Mehr Zellen, ohne Verlauf',
+                    zh: '更多单元格，无渐变',
+                    jp: 'セルを増やして、グラデーションなし',
+                    es: 'Más celdas, sin degradado',
+                    ko: '더 많은 셀, 그라디언트 없음',
+                    ar: 'مزيد من الخلايا، بدون تدرج'
+                }
+            },
+            { 
+                dataset: DATASET_DONUT_BASIC.value, 
+                config: {
+                    ...CONFIG_WAFFLE_BASE.value,
+                    style: {
+                        ...CONFIG_WAFFLE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_WAFFLE_BASE.value.style.chart,
+                            layout: {
+                                grid: {
+                                    size: 10,
+                                    spaceBetween: 10
+                                },
+                                rect: {
+                                    useGradient: true,
+                                    rounding: 24,
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWaffle',
+                icon: 'chartWaffle',
+                id: 'waffle-rounded',
+                link: 'vue-ui-waffle',
+                description: {
+                    en: 'Rounded cells',
+                    fr: 'Cellules arrondies',
+                    pt: 'Células arredondadas',
+                    de: 'Abgerundete Zellen',
+                    zh: '圆角单元格',
+                    jp: '丸みのあるセル',
+                    es: 'Celdas redondeadas',
+                    ko: '둥근 셀',
+                    ar: 'خلايا مستديرة'
+                }
+            },
+            { 
+                dataset: DATASET_DONUT_BASIC.value, 
+                config: {
+                    ...CONFIG_WAFFLE_BASE.value,
+                    style: {
+                        ...CONFIG_WAFFLE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_WAFFLE_BASE.value.style.chart,
+                            layout: {
+                                labels: {
+                                    captions: {
+                                        show: true,
+                                        showSerieName: true,
+                                        fontSize: 16
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWaffle',
+                icon: 'chartWaffle',
+                id: 'waffle-labels',
+                link: 'vue-ui-waffle',
+                description: {
+                    en: 'With labels',
+                    fr: 'Avec étiquettes',
+                    pt: 'Com etiquetas',
+                    de: 'Mit Beschriftungen',
+                    zh: '带标签',
+                    jp: 'ラベル付き',
+                    es: 'Con etiquetas',
+                    ko: '레이블 포함',
+                    ar: 'مع تسميات'
                 }
             },
         ]

@@ -88,6 +88,13 @@ const categories = ref([
         thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
     },
+    {
+        link: 'vue-ui-waffle',
+        icon: 'chartWaffle',
+        component: 'VueUiWaffle',
+        thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
+    }
 ]);
 
 const inProgress = ref({
