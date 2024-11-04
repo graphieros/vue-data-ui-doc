@@ -1,22 +1,22 @@
 [
   {
-    "version": "v 2.3.72",
-    "date": "2024-11-04",
-    "updates": [
-      {
-        "component": "",
-        "description": "Renamed a couple of types in .d.ts file to comply to naming convention"
-      }
-    ]
-  },
-  {
-    "version": "v 2.3.71",
+    "version": "v 2.3.73",
     "date": "2024-11-04",
     "updates": [
       {
         "component": "VueUiXy",
         "description": "Fix a few regressions",
         "link": "/docs/#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 2.3.72",
+    "date": "2024-11-04",
+    "updates": [
+      {
+        "component": "",
+        "description": "Renamed a couple of types in .d.ts file to comply to naming convention"
       }
     ]
   },
