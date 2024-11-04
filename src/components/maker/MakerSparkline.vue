@@ -140,7 +140,15 @@ function getLabel(label) {
     <div>
 
         <ClearStorageAndRefresh keyConfig="sparklineConfig" keyDataset="sparklineDataset" :key="`clear_${clearStep}`"/>
-        <DocLink to="vue-ui-sparkline" name="VueUiSparkline"/>
+        <div class="flex flex-row flex-wrap gap-4 place-items-center">
+            <DocLink to="vue-ui-sparkline" name="VueUiSparkline"/>
+            <RouterLink to="/examples/categories#vue-ui-sparkline">
+                <button class="flex flex-row gap-2 place-items-center rounded-md border border-black dark:border-app-green py-3 px-4 hover:bg-[#42D39233] hover:shadow-xl">
+                    <VueUiIcon name="clipboardLine" :stroke="isDarkMode ? '#42D392' : '#1A1A1A'" :size="20"/>
+                    {{ translations.viewExamples[store.lang] }}
+                </button>
+            </RouterLink>
+        </div>
     
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <transition name="fade">                

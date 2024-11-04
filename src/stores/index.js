@@ -25,6 +25,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                viewExamples: {
+                    en: 'View examples',
+                    fr: 'Voir des exemples',
+                    pt: 'Ver exemplos',
+                    de: 'Beispiele ansehen',
+                    zh: '查看示例',
+                    jp: '例を見る',
+                    ko: '예시 보기',
+                    es: 'Ver ejemplos',
+                    ar: 'عرض الأمثلة'
+                },
                 detailedDocumentation: {
                     en: 'Detailed documentation',
                     fr: 'Documentation détaillée',
