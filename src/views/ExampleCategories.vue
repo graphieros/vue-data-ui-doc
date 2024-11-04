@@ -73,6 +73,13 @@ const categories = ref([
         component: 'VueUiSparkline',
         thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
+    },
+    {
+        link: 'vue-ui-stackbar',
+        icon: 'chartStackbar',
+        component: 'VueUiStackbar',
+        thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
     }
 ]);
 
@@ -127,7 +134,7 @@ const hoveredLink = ref(null);
                         </button>
                         <Transition name="fade">
                             <div style="width: calc(100% - 2px)" class="text-shadow-md absolute top-0 left-[1px] pointer-events-none bg-[#1A1A1A10] dark:bg-[#FFFFFF10] h-full flex place-items-end justify-center" v-if="(hoveredLink && hoveredLink.link === category.link) || selectedLink === category.link">
-                                <div class="w-full pb-3 pt-2 text-center bg-[#1A1A1A80] text-white">
+                                <div class="text-xs sm:text-md w-full pb-2 pt-1 text-center bg-[#1A1A1A80] text-white">
                                     {{ category.component }}
                                 </div>
                             </div>
@@ -156,6 +163,7 @@ const hoveredLink = ref(null);
                             :defaultConfig="false"
                             :customConfig="example.config"
                             :customDataset="example.dataset"
+                            :targetDoc="example.link"
                             justify="justify-start"
                         />
                     </div>

@@ -344,7 +344,7 @@ export default function useExamples() {
                 title: {
                     color: '#6A6A6A',
                     text: 'Title'
-                }
+                },
             }
         }
     });
@@ -371,6 +371,88 @@ export default function useExamples() {
         { period: 'T16', value: 13 },
         { period: 'T15', value: 8 },
         { period: 'T19', value: 55 },
+    ]);
+
+    //-------------- VUE-UI-STACKBAR --------------//
+    const CONFIG_STACKBAR_BASE = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    grid: {
+                        x: {
+                            axisColor: colors.value.gridStroke,
+                            axisName: {
+                                text: 'xAxis',
+                                color: colors.value.textColor
+                            },
+                            timeLabels: {
+                                color: colors.value.textColor,
+                                values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5']
+                            }
+                        },
+                        y: {
+                            axisColor: colors.value.gridStroke,
+                            axisName: {
+                                text: 'yAxis',
+                                color: colors.value.textColor
+                            },
+                            axisLabels: {
+                                color: colors.value.textColor
+                            }
+                        }
+                    },
+                    highlighter: {
+                        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                        opacity: 5
+                    },
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddintLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                    bars: {
+                        totalValues: {
+                            color: colors.value.textColor
+                        }
+                    },
+                }
+            }
+        }
+    });
+
+    const DATASET_STACKBAR_BASIC = ref([
+        {
+            name: "Serie 1",
+            series: [19, 20.07, 30, 40, 50, 60],
+        },
+        {
+            name: "Serie 2",
+            series: [13, 8, 9, 13, 25, 27],
+        },
+        {
+            name: "Serie 3",
+            series: [13, 10, 9, 13, 25, 19],
+        },
+        {
+            name: "Serie 4",
+            series: [25, 23, 9, 13, 25, 31],
+        },
     ])
 
     const examples = computed(() => {
@@ -782,6 +864,111 @@ export default function useExamples() {
                     es: 'Barras redondeadas',
                     ko: '둥근 막대',
                     ar: 'أعمدة مستديرة'
+                }
+            },
+            { 
+                dataset: DATASET_STACKBAR_BASIC.value, 
+                config: CONFIG_STACKBAR_BASE.value,
+                component: 'VueUiStackbar',
+                icon: 'chartStackbar',
+                id: 'stack-bar-basic',
+                link: 'vue-ui-stackbar',
+                description: {
+                    en: 'Basic stacked bar chart',
+                    fr: 'Graphique à barres empilées de base',
+                    pt: 'Gráfico de barras empilhadas básico',
+                    de: 'Grundlegendes gestapeltes Balkendiagramm',
+                    zh: '基本堆叠柱状图',
+                    jp: '基本的な積み上げ棒グラフ',
+                    es: 'Gráfico de barras apiladas básico',
+                    ko: '기본 스택형 막대 차트',
+                    ar: 'مخطط الأعمدة المتراكمة الأساسي'
+                }
+            },
+            { 
+                dataset: DATASET_STACKBAR_BASIC.value, 
+                config: {
+                    ...CONFIG_STACKBAR_BASE.value,
+                    orientation: 'horizontal'
+                    
+                },
+                component: 'VueUiStackbar',
+                icon: 'chartStackbar',
+                id: 'stack-bar-horizontal',
+                link: 'vue-ui-stackbar',
+                description: {
+                    en: 'Horizontal layout',
+                    fr: 'Disposition horizontale',
+                    pt: 'Layout horizontal',
+                    de: 'Horizontale Anordnung',
+                    zh: '水平布局',
+                    jp: '水平レイアウト',
+                    es: 'Distribución horizontal',
+                    ko: '수평 레이아웃',
+                    ar: 'تخطيط أفقي'
+                }
+            },
+            { 
+                dataset: DATASET_STACKBAR_BASIC.value, 
+                config: {
+                    ...CONFIG_STACKBAR_BASE.value,
+                    style: {
+                        ...CONFIG_STACKBAR_BASE.value.style,
+                        chart: {
+                            ...CONFIG_STACKBAR_BASE.value.style.chart,
+                            bars: {
+                                ...CONFIG_STACKBAR_BASE.value.style.chart.bars,
+                                distributed: true
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStackbar',
+                icon: 'chartStackbar',
+                id: 'stack-bar-basic-distributed',
+                link: 'vue-ui-stackbar',
+                description: {
+                    en: 'Distributed vertical stack bar',
+                    fr: 'Barre empilée verticale distribuée',
+                    pt: 'Barra empilhada vertical distribuída',
+                    de: 'Verteilte vertikale Stapelleiste',
+                    zh: '分布式垂直堆叠柱状图',
+                    jp: '分散型垂直スタックバー',
+                    es: 'Barra apilada vertical distribuida',
+                    ko: '분산형 수직 스택 막대',
+                    ar: 'شريط مكدس رأسي موزع'
+                }
+            },
+            { 
+                dataset: DATASET_STACKBAR_BASIC.value, 
+                config: {
+                    ...CONFIG_STACKBAR_BASE.value,
+                    orientation: 'horizontal',
+                    style: {
+                        ...CONFIG_STACKBAR_BASE.value.style,
+                        chart: {
+                            ...CONFIG_STACKBAR_BASE.value.style.chart,
+                            bars: {
+                                ...CONFIG_STACKBAR_BASE.value.style.chart.bars,
+                                distributed: true
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStackbar',
+                icon: 'chartStackbar',
+                id: 'stack-bar-basic-distributed',
+                link: 'vue-ui-stackbar',
+                description: {
+                    en: 'Distributed horizontal stack bar',
+                    fr: 'Barre empilée horizontale distribuée',
+                    pt: 'Barra empilhada horizontal distribuída',
+                    de: 'Verteilte horizontale Stapelleiste',
+                    zh: '分布式水平堆叠柱状图',
+                    jp: '分散型水平スタックバー',
+                    es: 'Barra apilada horizontal distribuida',
+                    ko: '분산형 수평 스택 막대',
+                    ar: 'شريط مكدس أفقي موزع'
                 }
             },
         ]
