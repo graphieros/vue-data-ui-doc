@@ -115,6 +115,10 @@ function getLabel(label) {
     makerTranslations.value.labels[label][store.lang]
 }
 
+function randomVal() {
+    currentDataset.value.percentage = Math.random() * 100; 
+}
+
 </script>
 
 <template>
@@ -148,7 +152,7 @@ function getLabel(label) {
                                 <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.percentage[store.lang] }}</th>
                             </thead>
                             <tbody>
-                                <td><input type="number" min="0" max="100" step="0.1" v-model="currentDataset.percentage" @change="saveDatasetToLocalStorage"></td>
+                                <button class="py-2 px-5 rounded border" @click="randomVal">Random value</button> : {{ currentDataset.percentage.toFixed(2) }}
                             </tbody>
                         </table>
                     </div>
