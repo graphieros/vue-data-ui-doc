@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.71",
+    "date": "2024-11-04",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix a few regressions",
+        "link": "/docs/#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.70",
     "date": "2024-11-04",
     "updates": [
