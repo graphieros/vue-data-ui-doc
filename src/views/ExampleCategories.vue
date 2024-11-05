@@ -191,7 +191,7 @@ const hoveredLink = ref(null);
     </div>
     <div class="min-h-[1000px]">
         <!-- EXAMPLES DISPLAY -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap place-items-center px-4 sm:px-16 mt-12 sm:mt-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap px-4 sm:px-16 mt-12 sm:mt-20">
             <div v-for="example in filteredExamples" :key="`${example.id}_${key}`" class=" flex-col inline-flex w-full bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded shadow-md" :id="example.id">
                 <div dir="auto" class="bg-gray-200 dark:bg-[rgb(35,35,35)] p-4 rounded-t">
                     <div class="flex flex-row gap-4 place-items-center">

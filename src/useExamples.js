@@ -522,6 +522,24 @@ export default function useExamples() {
             series: [25, 23, 9, 13, 25, 31],
         },
     ])
+    const DATASET_STACKBAR_MIXED = ref([
+        {
+            name: "Serie 1",
+            series: [-19, -20.07, -30, -40, -50, -60],
+        },
+        {
+            name: "Serie 2",
+            series: [13, 8, 9, 13, 25, 27],
+        },
+        {
+            name: "Serie 3",
+            series: [13, 10, 9, 13, 25, 19],
+        },
+        {
+            name: "Serie 4",
+            series: [-25, -23, -9, -13, -25, -31],
+        },
+    ])
 
     //-------------- VUE-UI-NESTED-DONUTS --------------//
     const CONFIG_NESTED_DONUTS_BASE = computed(() => {
@@ -1633,6 +1651,41 @@ export default function useExamples() {
                     es: 'Barra apilada horizontal distribuida',
                     ko: '분산형 수평 스택 막대',
                     ar: 'شريط مكدس أفقي موزع'
+                }
+            },
+            // STACBAR MIXED
+            { 
+                dataset: DATASET_STACKBAR_MIXED.value, 
+                config: {
+                    ...CONFIG_STACKBAR_BASE.value,
+                    style: {
+                        ...CONFIG_STACKBAR_BASE.value.style,
+                        chart: {
+                            ...CONFIG_STACKBAR_BASE.value.style.chart,
+                            grid: {
+                                ...CONFIG_STACKBAR_BASE.value.style.chart.grid,
+                                x: {
+                                    ...CONFIG_STACKBAR_BASE.value.style.chart.grid.x,
+                                    showHorizontalLines: true
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStackbar',
+                icon: 'chartStackbar',
+                id: 'stack-bar-mixed',
+                link: 'vue-ui-stackbar',
+                description: {
+                    en: 'Positive and negative values',
+                    fr: 'Valeurs positives et négatives',
+                    pt: 'Valores positivos e negativos',
+                    de: 'Positive und negative Werte',
+                    zh: '正值和负值',
+                    jp: '正の値と負の値',
+                    es: 'Valores positivos y negativos',
+                    ko: '양수와 음수',
+                    ar: 'قيم موجبة وسالبة'
                 }
             },
             // NESTED DONUTS BASIC
