@@ -758,6 +758,15 @@ export default function useExamples() {
                         borderColor: colors.value.gridStroke,
                         backgroundOpacity: 30
                     },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddintLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
                 }
             }
         }
@@ -856,6 +865,85 @@ export default function useExamples() {
                 },
             ]
         }
+    ])
+
+    //-------------- VUE-UI-HEATMAP --------------//
+    const CONFIG_HEATMAP_BASIC = computed(() => {
+        return {
+            table: TABLE.value,
+            style: {
+                backgroundColor: colors.value.bg,
+                color: colors.value.textColor,
+                layout: {
+                    cells: {
+                        colors: {
+                            hot: isDarkMode.value ? '#5f8aee' : '#1d7318',
+                            cold: isDarkMode.value ? '#3A3A3A' : '#FFFFFF'
+                        },
+                        selected: {
+                            color: colors.value.textColor,
+                            border: 1.5
+                        }
+                    },
+                    dataLabels: {
+                        xAxis: {
+                            values: makeHeatmapLabels(24),
+                            color: colors.value.textColor
+                        },
+                        yAxis: {
+                            color: colors.value.textColor
+
+                        }
+                    }
+                },
+                legend: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    fontSize: 8
+                },
+                tooltip: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    borderColor: colors.value.gridStroke,
+                    backgroundOpacity: 30
+                },
+                title: {
+                    text: 'Title',
+                    color: colors.value.textColor,
+                    textAlign: 'left',
+                    paddintLeft: 24,
+                    subtitle: {
+                        text: 'Subtitle'
+                    }
+                },
+            }
+        }
+    })
+
+    function makeHeatmapDs(n, m) {
+        const arr = [];
+        for(let i = 0; i < n; i += 1) {
+            arr.push(Math.round(Math.random() * m))
+        }
+        return arr;
+    }
+
+    function makeHeatmapLabels(n) {
+        const arr = []
+        for(let i = 0; i < n; i += 1) {
+            arr.push(`W${i}`)
+        }
+        return arr
+    } 
+
+    const DATASET_HEATMAP_BASE = ref([
+        { name: 'SUN', values: makeHeatmapDs(24, 10)},
+        { name: 'MON', values: makeHeatmapDs(24, 110)},
+        { name: 'TUE', values: makeHeatmapDs(24, 100)},
+        { name: 'WED', values: makeHeatmapDs(24, 110)},
+        { name: 'THU', values: makeHeatmapDs(24, 110)},
+        { name: 'FRI', values: makeHeatmapDs(24, 90)},
+        { name: 'SAT', values: makeHeatmapDs(24, 30)},
     ])
 
     const examples = computed(() => {
@@ -1653,7 +1741,7 @@ export default function useExamples() {
                     ar: 'شريط مكدس أفقي موزع'
                 }
             },
-            // STACBAR MIXED
+            // STACKBAR MIXED
             { 
                 dataset: DATASET_STACKBAR_MIXED.value, 
                 config: {
@@ -2104,6 +2192,87 @@ export default function useExamples() {
                     es: 'Barras más delgadas, orden inverso',
                     ko: '더 얇은 막대, 역순 정렬',
                     ar: 'أعمدة أرق، ترتيب عكسي'
+                }
+            },
+            // HEATMAP BASIC
+            { 
+                dataset: DATASET_HEATMAP_BASE.value, 
+                config: CONFIG_HEATMAP_BASIC.value,
+                component: 'VueUiHeatmap',
+                icon: 'chartHeatmap',
+                id: 'basic-heatmap',
+                link: 'vue-ui-heatmap',
+                description: {
+                    en: 'Basic heatmap chart',
+                    fr: 'Graphique de carte thermique de base',
+                    pt: 'Gráfico de mapa de calor básico',
+                    de: 'Grundlegendes Heatmap-Diagramm',
+                    zh: '基本热图图表',
+                    jp: '基本的なヒートマップチャート',
+                    es: 'Gráfico de mapa de calor básico',
+                    ko: '기본 히트맵 차트',
+                    ar: 'مخطط خريطة حرارية أساسي'
+                }
+            },
+            // HEATMAP NO GAP
+            { 
+                dataset: DATASET_HEATMAP_BASE.value, 
+                config: {
+                    ...CONFIG_HEATMAP_BASIC.value,
+                    style: {
+                        ...CONFIG_HEATMAP_BASIC.value.style,
+                        layout: {
+                            ...CONFIG_HEATMAP_BASIC.value.style.layout,
+                            cells: {
+                                ...CONFIG_HEATMAP_BASIC.value.style.layout.cells,
+                                spacing: 0
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiHeatmap',
+                icon: 'chartHeatmap',
+                id: 'heatmap-no-gap',
+                link: 'vue-ui-heatmap',
+                description: {
+                    en: 'No gap',
+                    fr: 'Sans interstice',
+                    pt: 'Sem intervalo',
+                    de: 'Ohne Lücke',
+                    zh: '无间隙',
+                    jp: '隙間なし',
+                    es: 'Sin espacio',
+                    ko: '간격 없음',
+                    ar: 'بدون فجوة'
+                }
+            },
+            // HEATMAP BASIC
+            { 
+                dataset: DATASET_HEATMAP_BASE.value, 
+                config: {
+                    ...CONFIG_HEATMAP_BASIC.value,
+                    style: {
+                        ...CONFIG_HEATMAP_BASIC.value.style,
+                        legend: {
+                            ...CONFIG_HEATMAP_BASIC.value.style.legend,
+                            position: 'bottom',
+                        }
+                    }
+                },
+                component: 'VueUiHeatmap',
+                icon: 'chartHeatmap',
+                id: 'heatmap-legend-below',
+                link: 'vue-ui-heatmap',
+                description: {
+                    en: 'With legend below',
+                    fr: 'Avec légende en dessous',
+                    pt: 'Com legenda abaixo',
+                    de: 'Mit Legende unten',
+                    zh: '带有下方图例',
+                    jp: '下に凡例付き',
+                    es: 'Con leyenda abajo',
+                    ko: '아래에 범례 포함',
+                    ar: 'مع وسيلة إيضاح في الأسفل'
                 }
             },
         ]
