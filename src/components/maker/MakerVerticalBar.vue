@@ -190,7 +190,15 @@ function updateParent({parentId}) {
     <div>
 
         <ClearStorageAndRefresh keyConfig="verticalBarConfig" keyDataset="verticalBarDataset" :key="`clear_${clearStep}`"/>
-        <DocLink to="vue-ui-vertical-bar" name="VueUiVerticalBar"/>
+        <div class="flex flex-row flex-wrap gap-4 place-items-center">
+            <DocLink to="vue-ui-vertical-bar" name="VueUiVerticalBar"/>
+            <RouterLink to="/examples/categories#vue-ui-vertical-bar">
+                <button class="flex flex-row gap-2 place-items-center rounded-md border border-black dark:border-app-green py-3 px-4 hover:bg-[#42D39233] hover:shadow-xl">
+                    <VueUiIcon name="clipboardLine" :stroke="isDarkMode ? '#42D392' : '#1A1A1A'" :size="20"/>
+                    {{ translations.viewExamples[store.lang] }}
+                </button>
+            </RouterLink>
+        </div>
     
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <transition name="fade">                

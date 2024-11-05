@@ -108,6 +108,13 @@ const categories = ref([
         component: 'VueUiHeatmap',
         thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
+    },
+    {
+        link: 'vue-ui-gauge',
+        icon: 'chartGauge',
+        component: 'VueUiGauge',
+        thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
     }
 ]);
 

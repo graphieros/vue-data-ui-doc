@@ -946,6 +946,55 @@ export default function useExamples() {
         { name: 'SAT', values: makeHeatmapDs(24, 30)},
     ])
 
+    //-------------- VUE-UI-GAUGE --------------//
+    const CONFIG_GAUGE_BASE = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    layout: {
+                        markers: {
+                            color: colors.value.textColor
+                        },
+                        pointer: {
+                            stroke: colors.value.bg,
+                            circle: {
+                                color: isDarkMode.value ? '#6A6A6A' : '#FFFFFF'
+                            }
+                        }
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddintLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                }
+            }
+        }
+    });
+
+    const DATASET_GAUGE_BASIC = ref({
+        value: 7,
+        series: [
+            { from: 0, to: 4, color: '#c96747' },
+            { from: 4, to: 6, color: '#c7c34c' },
+            { from: 6, to: 10, color: '#54b840' }
+        ]
+    })
+
+    const DATASET_GAUGE_MIXED = ref({
+        value: -20,
+        series: [
+            { from: -100, to: 0, color: '#c96747' },
+            { from: 0, to: 100, color: '#54b840' }
+        ]
+    })
+
     const examples = computed(() => {
         return [
             // XY BASIC LINE
@@ -1632,7 +1681,7 @@ export default function useExamples() {
                     ar: 'أعمدة مستديرة'
                 }
             },
-            // STACBAR BASIC
+            // STACKBAR BASIC
             { 
                 dataset: DATASET_STACKBAR_BASIC.value, 
                 config: CONFIG_STACKBAR_BASE.value,
@@ -2246,7 +2295,7 @@ export default function useExamples() {
                     ar: 'بدون فجوة'
                 }
             },
-            // HEATMAP BASIC
+            // HEATMAP LEGEND BELOW
             { 
                 dataset: DATASET_HEATMAP_BASE.value, 
                 config: {
@@ -2273,6 +2322,120 @@ export default function useExamples() {
                     es: 'Con leyenda abajo',
                     ko: '아래에 범례 포함',
                     ar: 'مع وسيلة إيضاح في الأسفل'
+                }
+            },
+            // GAUGE BASIC
+            { 
+                dataset: DATASET_GAUGE_BASIC.value, 
+                config: CONFIG_GAUGE_BASE.value,
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'basic-gauge',
+                link: 'vue-ui-gauge',
+                description: {
+                    en: 'Basic gauge chart',
+                    fr: 'Graphique de jauge de base',
+                    pt: 'Gráfico de medidor básico',
+                    de: 'Grundlegendes Messdiagramm',
+                    zh: '基础仪表图',
+                    jp: '基本ゲージチャート',
+                    es: 'Gráfico de medidor básico',
+                    ko: '기본 게이지 차트',
+                    ar: 'مخطط عداد أساسي'
+                }
+            },
+            // GAUGE MIXED
+            { 
+                dataset: DATASET_GAUGE_MIXED.value, 
+                config: CONFIG_GAUGE_BASE.value,
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gauge-mixed-scale',
+                link: 'vue-ui-gauge',
+                description: {
+                    en: 'Gauge chart with mixed scale',
+                    fr: 'Graphique de jauge avec échelle mixte',
+                    pt: 'Gráfico de medidor com escala mista',
+                    de: 'Messdiagramm mit gemischter Skala',
+                    zh: '带混合刻度的仪表图',
+                    jp: '混合スケールのゲージチャート',
+                    es: 'Gráfico de medidor con escala mixta',
+                    ko: '혼합 스케일 게이지 차트',
+                    ar: 'مخطط عداد بمقياس مختلط'
+                }
+            },
+            // GAUGE ROUNDED POINTER
+            { 
+                dataset: DATASET_GAUGE_BASIC.value, 
+                config: {
+                    ...CONFIG_GAUGE_BASE.value,
+                    style: {
+                        ...CONFIG_GAUGE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_GAUGE_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_GAUGE_BASE.value.style.chart.layout,
+                                pointer: {
+                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.pointer,
+                                    type: 'rounded'
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gauge-pointer-rounded',
+                link: 'vue-ui-gauge',
+                description: {
+                    en: 'With rounded pointer',
+                    fr: 'Avec pointeur arrondi',
+                    pt: 'Com ponteiro arredondado',
+                    de: 'Mit abgerundetem Zeiger',
+                    zh: '带圆形指针',
+                    jp: '丸みを帯びたポインタ付き',
+                    es: 'Con puntero redondeado',
+                    ko: '둥근 포인터 포함',
+                    ar: 'بمؤشر دائري'
+                }
+            },
+            // GAUGE LARGER
+            { 
+                dataset: DATASET_GAUGE_BASIC.value, 
+                config: {
+                    ...CONFIG_GAUGE_BASE.value,
+                    style: {
+                        ...CONFIG_GAUGE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_GAUGE_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_GAUGE_BASE.value.style.chart.layout,
+                                track: {
+                                    size: 5
+                                },
+                                pointer: {
+                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.pointer,
+                                    useRatingColor: false,
+                                    color: isDarkMode.value ? colors.value.bg : '#3A3A3A'
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gauge-larger',
+                link: 'vue-ui-gauge',
+                description: {
+                    en: 'Wider',
+                    fr: 'Plus large',
+                    pt: 'Mais largo',
+                    de: 'Breiter',
+                    zh: '更宽',
+                    jp: 'より広い',
+                    es: 'Más ancho',
+                    ko: '더 넓은',
+                    ar: 'أوسع'
                 }
             },
         ]
