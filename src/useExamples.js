@@ -684,6 +684,93 @@ export default function useExamples() {
         }
     });
 
+    //-------------- VUE-UI-VERTICAL-BAR --------------//
+    const CONFIG_VERTICAL_BAR_BASIC = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    layout: {
+                        bars: {
+                            dataLabels: {
+                                color: colors.value.textColor
+                            },
+                            nameLabels: {
+                                color: colors.value.textColor
+                            },
+                            parentLabels: {
+                                color: colors.value.textColor
+                            }
+                        },
+                        highlighter: {
+                            color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                            opacity: 5
+                        },
+                        separators: {
+                            color: colors.value.gridStroke
+                        }
+                    },
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                }
+            }
+        }
+    })
+
+    const DATASET_VERTICAL_BAR_BASE = ref([
+        {
+            name: "Parent 1",
+            children: [
+            {
+                name: "Parent 1 Child 1",
+                value: 80
+            },
+            {
+                name: "Parent 1 Child 2",
+                value: 20
+            },
+            ]
+        },
+        {
+            name: "Parent 2",
+            value: 345,
+        },
+        {
+            name: "Parent 3",
+            value: 210,
+        },
+        {
+            name: "Parent 4",
+            value: 188,
+        },
+        {
+            name: "Parent 5",
+            children: [
+            {
+                name: "Parent 5 Child 1",
+                value: 60,
+            },
+            {
+                name: "Parent 5 Child 2",
+                value: 20,
+            },
+            {
+                name: "Parent 5 Child 3",
+                value: 40,
+            },
+            ]
+        }
+    ])
+
     const examples = computed(() => {
         return [
             // XY BASIC LINE
@@ -1781,6 +1868,26 @@ export default function useExamples() {
                     es: 'Con etiquetas',
                     ko: '레이블 포함',
                     ar: 'مع تسميات'
+                }
+            },
+            // VERTICAL BAR BASIC
+            { 
+                dataset: DATASET_VERTICAL_BAR_BASE.value, 
+                config: CONFIG_VERTICAL_BAR_BASIC.value,
+                component: 'VueUiVerticalBar',
+                icon: 'chartVerticalBar',
+                id: 'vertical-bar-basic',
+                link: 'vue-ui-vertical-bar',
+                description: {
+                    en: 'Sorted vertical histogram',
+                    fr: 'Histogramme vertical classé',
+                    pt: 'Histograma vertical ordenado',
+                    de: 'Sortiertes vertikales Histogramm',
+                    zh: '排序的垂直直方图',
+                    jp: 'ソート済み縦ヒストグラム',
+                    es: 'Histograma vertical ordenado',
+                    ko: '정렬된 세로 히스토그램',
+                    ar: 'مدرج تكراري عمودي مرتب'
                 }
             },
         ]

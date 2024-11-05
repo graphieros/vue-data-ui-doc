@@ -94,20 +94,39 @@ const categories = ref([
         component: 'VueUiWaffle',
         thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
+    },
+    {
+        link: 'vue-ui-vertical-bar',
+        icon: 'chartVerticalBar',
+        component: 'VueUiVerticalBar',
+        thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
     }
 ]);
 
 const inProgress = ref({
-    en: 'This page is new, many more examples will be added and organized.',
-    fr: 'Cette page est nouvelle, de nombreux autres exemples seront ajoutés et organisés.',
-    pt: 'Esta página é nova, muitos mais exemplos serão adicionados e organizados.',
-    de: 'Diese Seite ist neu, viele weitere Beispiele werden hinzugefügt und organisiert.',
-    zh: '此页面为新建，将会添加和整理更多示例。',
-    jp: 'このページは新しく、多くの例が追加され、整理される予定です。',
-    es: 'Esta página es nueva, se agregarán y organizarán muchos más ejemplos.',
-    ko: '이 페이지는 새로 만들어졌으며, 더 많은 예제가 추가되고 정리될 예정입니다.',
-    ar: 'هذه الصفحة جديدة، سيتم إضافة وتنظيم المزيد من الأمثلة.'
+    en: 'A selection of examples to showcase Vue Data UI flexibility',
+    fr: 'Une sélection d’exemples pour montrer la flexibilité de Vue Data UI',
+    pt: 'Uma seleção de exemplos para demonstrar a flexibilidade do Vue Data UI',
+    de: 'Eine Auswahl an Beispielen zur Veranschaulichung der Flexibilität von Vue Data UI',
+    zh: '一组示例展示 Vue Data UI 的灵活性',
+    jp: 'Vue Data UI の柔軟性を示す例のセレクション',
+    es: 'Una selección de ejemplos para mostrar la flexibilidad de Vue Data UI',
+    ko: 'Vue Data UI의 유연성을 보여주는 예제 모음',
+    ar: 'مجموعة مختارة من الأمثلة لعرض مرونة Vue Data UI'
 });
+
+const checkTheDocs = ref({
+    en: 'Check the docs page to see the list of all available components',
+    fr: 'Consultez la page de documentation pour voir la liste de tous les composants disponibles',
+    pt: 'Verifique a página de documentação para ver a lista de todos os componentes disponíveis',
+    de: 'Überprüfen Sie die Dokumentationsseite, um die Liste aller verfügbaren Komponenten zu sehen',
+    zh: '查看文档页面以获取所有可用组件的列表',
+    jp: 'すべての利用可能なコンポーネントのリストは、ドキュメントページを確認してください',
+    es: 'Consulta la página de documentación para ver la lista de todos los componentes disponibles',
+    ko: '사용 가능한 모든 구성 요소 목록은 문서 페이지를 확인하세요',
+    ar: 'تحقق من صفحة الوثائق لرؤية قائمة جميع المكونات المتاحة'
+})
 
 const selectedLink = ref('');
 
@@ -159,9 +178,16 @@ const hoveredLink = ref(null);
         </div>
     </div>
 
-    <div class="px-16 my-12 mx-auto text-center max-w-[60ch] flex flex-col place-items-center gap-4 mt-[200px]" dir="auto">
-        <VueUiIcon name="annotator" :stroke="isDarkMode ? '#ff6600' : '#1A1A1A'" />
-        {{ inProgress[store.lang] }}
+    <div class="px-16 my-12 mx-auto text-center max-w-[80ch] flex flex-col place-items-center gap-4 mt-[200px]" dir="auto">
+        <span class="text-xl">{{ inProgress[store.lang] }}</span>
+        <div dir="auto" class="flex flex-row gap-4 place-items-center justify-center flex-wrap">
+            <span dir="auto" class="text-gray-500">{{ checkTheDocs[store.lang] }}</span>
+            <RouterLink to="/docs">
+                <button dir="auto" class="py-2 px-4 rounded border bg-[#5f8aee30] border-app-blue hover:bg-[#5f8aee50] transition-colors">
+                    {{ translations.menu.docs[store.lang]  }}
+                </button>
+            </RouterLink>
+        </div>
     </div>
     <div class="min-h-[1000px]">
         <!-- EXAMPLES DISPLAY -->

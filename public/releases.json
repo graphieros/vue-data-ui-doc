@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.74",
+    "date": "2024-11-05",
+    "updates": [
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Fix parent data labels showing the wrong sign when total is negative",
+        "link": "/docs/#vue-ui-vertical-bar"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.73",
     "date": "2024-11-04",
     "updates": [

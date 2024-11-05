@@ -289,7 +289,7 @@ const datasetDonutMenu = computed(() => {
             comment: translations.value.menu.customizationComment[store.lang]
         },
         {
-            name: translations.value.menu.versions[store.lang],
+            name: translations.value.menu.examples[store.lang],
             values: [0.5],
             color: "#de6937"
         },
@@ -354,7 +354,7 @@ const menuRoutes = ref([
     '/docs',
     '/chart-builder',
     '/customization',
-    '/versions'
+    '/examples/categories'
 ])
 
 function selectMenu({ datapoint, index }) {
