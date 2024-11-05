@@ -24,6 +24,19 @@ export default function useExamples() {
         return arr;
     }
 
+    const TABLE = computed(() => {
+        return {
+            th: {
+                backgroundColor: colors.value.bg,
+                color: colors.value.textColor
+            },
+            td: {
+                backgroundColor: colors.value.bg,
+                color: colors.value.textColor
+            },
+        }
+    })
+
     //-------------- VUE-UI-XY --------------//
 
     const LINESET = ref([
@@ -176,6 +189,7 @@ export default function useExamples() {
 
     const BASE_XY_CONFIG = computed(() => {
         return {
+            table: TABLE.value,
             chart: {
                 backgroundColor: colors.value.bg,
                 color: colors.value.textColor,
@@ -276,6 +290,7 @@ export default function useExamples() {
 
     const CONFIG_DONUT_BASE = computed(() => {
         return {
+            table: TABLE.value,
             style: {
                 chart: {
                     backgroundColor: colors.value.bg,
@@ -428,6 +443,7 @@ export default function useExamples() {
     //-------------- VUE-UI-STACKBAR --------------//
     const CONFIG_STACKBAR_BASE = computed(() => {
         return {
+            table: TABLE.value,
             style: {
                 chart: {
                     backgroundColor: colors.value.bg,
@@ -510,6 +526,7 @@ export default function useExamples() {
     //-------------- VUE-UI-NESTED-DONUTS --------------//
     const CONFIG_NESTED_DONUTS_BASE = computed(() => {
         return {
+            table: TABLE.value,
             style: {
                 chart: {
                     backgroundColor: colors.value.bg,
@@ -656,6 +673,7 @@ export default function useExamples() {
     //-------------- VUE-UI-NESTED-DONUTS --------------//
     const CONFIG_WAFFLE_BASE = computed(() => {
         return {
+            table: TABLE.value,
             style: {
                 chart: {
                     backgroundColor: colors.value.bg,
@@ -687,6 +705,7 @@ export default function useExamples() {
     //-------------- VUE-UI-VERTICAL-BAR --------------//
     const CONFIG_VERTICAL_BAR_BASIC = computed(() => {
         return {
+            table: TABLE.value,
             style: {
                 chart: {
                     backgroundColor: colors.value.bg,
@@ -767,6 +786,56 @@ export default function useExamples() {
                 name: "Parent 5 Child 3",
                 value: 40,
             },
+            ]
+        }
+    ])
+
+    const DATASET_VERTICAL_BAR_MIXED = ref([
+        {
+            name: "Parent 1",
+            children: [
+            {
+                name: "Parent 1 Child 1",
+                value: 80
+            },
+            {
+                name: "Parent 1 Child 2",
+                value: 20
+            },
+            ]
+        },
+        {
+            name: "Parent 2",
+            children: [
+                {
+                    name: 'Parent 2 Child 1',
+                    value: -92
+                },
+                {
+                    name: 'Parent 2 Child 2',
+                    value: -65
+                },
+                {
+                    name: 'Parent 2 Child 3',
+                    value: -36
+                },
+            ]
+        },
+        {
+            name: "Parent 3",
+            value: 112,
+        },
+        {
+            name: "Parent 4",
+            children: [
+                {
+                    name: "Parent 4 Child 1",
+                    value: 60,
+                },
+                {
+                    name: "Parent 4 Child 2",
+                    value: 20,
+                },
             ]
         }
     ])
@@ -1888,6 +1957,100 @@ export default function useExamples() {
                     es: 'Histograma vertical ordenado',
                     ko: '정렬된 세로 히스토그램',
                     ar: 'مدرج تكراري عمودي مرتب'
+                }
+            },
+            // VERTICAL BAR MIXED
+            { 
+                dataset: DATASET_VERTICAL_BAR_MIXED.value, 
+                config: CONFIG_VERTICAL_BAR_BASIC.value,
+                component: 'VueUiVerticalBar',
+                icon: 'chartVerticalBar',
+                id: 'vertical-bar-mixed',
+                link: 'vue-ui-vertical-bar',
+                description: {
+                    en: 'Positive and negative values',
+                    fr: 'Valeurs positives et négatives',
+                    pt: 'Valores positivos e negativos',
+                    de: 'Positive und negative Werte',
+                    zh: '正值和负值',
+                    jp: '正の値と負の値',
+                    es: 'Valores positivos y negativos',
+                    ko: '양수와 음수 값',
+                    ar: 'قيم موجبة وسالبة'
+                }
+            },
+            // VERTICAL BAR NO GAP NO GRADIENT
+            { 
+                dataset: DATASET_VERTICAL_BAR_BASE.value, 
+                config: {
+                    ...CONFIG_VERTICAL_BAR_BASIC.value,
+                    style: {
+                        ...CONFIG_VERTICAL_BAR_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart.layout,
+                                bars: {
+                                    ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart.layout.bars,
+                                    useGradient: false,
+                                    gap: 0,
+                                    borderRadius: 0
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiVerticalBar',
+                icon: 'chartVerticalBar',
+                id: 'vertical-bar-no-gap-no-gradient',
+                link: 'vue-ui-vertical-bar',
+                description: {
+                    en: 'No gap, no gradient',
+                    fr: 'Pas d’interstice, pas de dégradé',
+                    pt: 'Sem espaço, sem gradiente',
+                    de: 'Kein Abstand, kein Verlauf',
+                    zh: '无间隙，无渐变',
+                    jp: '隙間なし、グラデーションなし',
+                    es: 'Sin espacio, sin degradado',
+                    ko: '간격 없음, 그라데이션 없음',
+                    ar: 'بدون فجوة، بدون تدرج'
+                }
+            },
+            // VERTICAL BAR NO GAP NO GRADIENT SORTED ASC
+            { 
+                dataset: DATASET_VERTICAL_BAR_BASE.value, 
+                config: {
+                    ...CONFIG_VERTICAL_BAR_BASIC.value,
+                    style: {
+                        ...CONFIG_VERTICAL_BAR_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart.layout,
+                                bars: {
+                                    ...CONFIG_VERTICAL_BAR_BASIC.value.style.chart.layout.bars,
+                                    borderRadius: 3,
+                                    height: 20,
+                                    sort: 'asc'
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiVerticalBar',
+                icon: 'chartVerticalBar',
+                id: 'vertical-bar-no-gap-no-gradient-inverse-sort',
+                link: 'vue-ui-vertical-bar',
+                description: {
+                    en: 'Thinner bars, inverse sort',
+                    fr: 'Barres plus fines, tri inversé',
+                    pt: 'Barras mais finas, ordenação inversa',
+                    de: 'Dünnere Balken, umgekehrte Sortierung',
+                    zh: '更细的条形，逆序排列',
+                    jp: '細いバー、逆順ソート',
+                    es: 'Barras más delgadas, orden inverso',
+                    ko: '더 얇은 막대, 역순 정렬',
+                    ar: 'أعمدة أرق، ترتيب عكسي'
                 }
             },
         ]
