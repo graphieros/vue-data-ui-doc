@@ -146,6 +146,21 @@ const usableDataset = computed(() => {
     }
 })
 
+const currentValue = ref(randomVal());
+
+function makeRandomVal() {
+    currentValue.value = randomVal();
+    options.value.value = currentValue.value;
+}
+
+function randomVal() {
+    const min = Math.min(...datasetItems.value.map(d => d.from));
+    const max = Math.max(...datasetItems.value.map(d => d.to));
+    const rand = Math.random() * max
+    return rand < min ? min : rand > max ? max : rand
+}
+
+
 </script>
 
 <template>
@@ -182,7 +197,9 @@ const usableDataset = computed(() => {
             <div class="flex flex-row gap-4 place-items-center pl-16">
                 <div class="flex flex-col gap-2">
                     <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</label>
-                    <input type="number" class="w-[82px] h-[32px]" v-model="options.value" @change="forceChartUpdate">
+                    <tbody>
+                                <button class="py-2 px-5 rounded border border-black dark:border-app-blue hover:bg-[#5f8aee20] transition-colors" @click="makeRandomVal">Random value</button> : {{ currentValue }}
+                            </tbody>
                 </div>
             </div>
             <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
