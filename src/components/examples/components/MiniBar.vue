@@ -55,32 +55,34 @@ const config = computed(() => {
 }
 })
 
-const dataset = ref([
-    {
-        "name": "Accessories",
-        "value": props.detail[0],
-        "color": "#6376DD",
-        "prefix": "k$ ",
-        "suffix": "",
-        "rounding": 1
-    },
-    {
-        "name": "Hardware",
-        "value": props.detail[1],
-        "color": "#42d392",
-        "prefix": "k$ ",
-        "suffix": "",
-        "rounding": 1
-    },
-    {
-        "name": "Software",
-        "value": props.detail[2],
-        "color": "#ff6400",
-        "prefix": "k$ ",
-        "suffix": "",
-        "rounding": 1
-    }
-]);
+const dataset = computed(() => {
+    return [
+        {
+            "name": "Accessories",
+            "value": props.detail[0],
+            "color": "#6376DD",
+            "prefix": "k$ ",
+            "suffix": "",
+            "rounding": 1
+        },
+        {
+            "name": "Hardware",
+            "value": props.detail[1],
+            "color": "#42d392",
+            "prefix": "k$ ",
+            "suffix": "",
+            "rounding": 1
+        },
+        {
+            "name": "Software",
+            "value": props.detail[2],
+            "color": "#ff6400",
+            "prefix": "k$ ",
+            "suffix": "",
+            "rounding": 1
+        }
+    ]
+})
 </script>
 
 <template>

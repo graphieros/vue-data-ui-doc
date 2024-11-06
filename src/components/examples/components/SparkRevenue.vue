@@ -79,7 +79,8 @@ const config = computed(() => {
 }
 })
 
-const dataset = ref([
+const dataset = computed(() => {
+    return [
     {
         "period": "JAN",
         "value": props.values[0]
@@ -128,7 +129,8 @@ const dataset = ref([
         "period": "DEC",
         "value": props.values[11]
     }
-]);
+    ]
+})
 </script>
 
 <template>

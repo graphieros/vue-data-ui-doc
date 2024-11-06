@@ -79,7 +79,8 @@ const config = computed(() => {
 }
 })
 
-const dataset = ref([
+const dataset = computed(() => {
+    return [
     {
         "value": props.values[0],
         "valueLabel": "",
@@ -152,7 +153,8 @@ const dataset = ref([
         "timeLabel": "20:00",
         "intensity": "1"
     }
-]);
+]
+})
 </script>
 
 <template>

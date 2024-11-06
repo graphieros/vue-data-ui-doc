@@ -57,29 +57,32 @@ const config = computed(() => {
     }
 }
 })
+const dataset = computed(() => {
+    return [
+        {
+            "name": "18-29",
+            "value": props.detail[0],
+            "color": "#6376DD"
+        },
+        {
+            "name": "30-39",
+            "value": props.detail[1],
+            "color": "#42d392"
+        },
+        {
+            "name": "40-49",
+            "value": props.detail[2],
+            "color": "#ff6400"
+        },
+        {
+            "name": "50+",
+            "value": props.detail[3],
+            "color": "#ffdd00"
+        }
+    ]
+})
 
-const dataset = ref([
-    {
-        "name": "18-29",
-        "value": props.detail[0],
-        "color": "#6376DD"
-    },
-    {
-        "name": "30-39",
-        "value": props.detail[1],
-        "color": "#42d392"
-    },
-    {
-        "name": "40-49",
-        "value": props.detail[2],
-        "color": "#ff6400"
-    },
-    {
-        "name": "50+",
-        "value": props.detail[3],
-        "color": "#ffdd00"
-    }
-]);
+
 </script>
 
 <template>
