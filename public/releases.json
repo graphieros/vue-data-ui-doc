@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.3.75",
+    "date": "2024-11-06",
+    "updates": [
+      {
+        "component": "All chart components",
+        "description": "All chart components were reviewed to ensure reactivity when props are modified."
+      }
+    ]
+  },
+  {
     "version": "v 2.3.74",
     "date": "2024-11-05",
     "updates": [
