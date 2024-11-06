@@ -869,8 +869,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
         <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
         <span>theme: ""; ("zen" | "hack" | "concrete" | "")</span>
         <span>customPalette: []; <span class="text-app-blue text-xs">// string[]</span></span>
-        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-        <BaseAttr name="showTable" attr="showTable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseAttr name="showTable" attr="showTable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseDetails attr="chart" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseAttr name="backgroundColor" attr="chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -920,14 +920,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                         <BaseAttr name="fontSize" attr="chart.grid.labels.xAxisLabels.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="yOffset" attr="chart.grid.labels.xAxisLabels.yOffset" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="rotation" attr="chart.grid.labels.xAxisLabels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="showOnlyAtModulo" attr="chart.grid.labels.xAxisLabels.showOnlyAtModulo" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                        <BaseAttr name="modulo" attr="chart.grid.labels.xAxisLabels.modulo" type="number" defaultVal="12" :min="1" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                        <BaseAttr name="showOnlyAtModulo" attr="chart.grid.labels.xAxisLabels.showOnlyAtModulo" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                        <BaseAttr name="modulo" attr="chart.grid.labels.xAxisLabels.modulo" type="number" defaultVal="12" :min="1" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     </BaseDetails>
                     <BaseDetails attr="yAxis" :level="4" title="chart.grid.labels.yAxis">
                         <BaseAttr name="commonScaleSteps" attr="chart.grid.labels.yAxis.commonScaleSteps" type="number" defaultVal="10" :min="2" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="useIndividualScale" attr="chart.grid.labels.yAxis.useIndividualScale" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                        <BaseAttr name="useIndividualScale" attr="chart.grid.labels.yAxis.useIndividualScale" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                         <BaseAttr name="labelWidth" attr="chart.grid.labels.yAxis.labelWidth" type="number" defaultVal="40" :min="40" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="stacked" attr="chart.grid.labels.yAxis.stacked" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Always use in combination with useIndividualScale: true" @change="forceChartUpdate()"/>
+                        <BaseAttr name="stacked" attr="chart.grid.labels.yAxis.stacked" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Always use in combination with useIndividualScale: true" />
                         <BaseAttr name="gap" attr="chart.grid.labels.yAxis.gap" type="number" defaultVal="64" :min="20" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="To be used with useIndividualScale: true && stacked: true"/>
                         <BaseAttr name="showBaseline" attr="chart.grid.labels.yAxis.showBaseline" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
@@ -935,13 +935,13 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                         <BaseAttr name="scaleMax" attr="chart.grid.labels.yAxis.scaleMax" type="number" defaultVal="null" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Force the max scale for the whole chart"/>
                     </BaseDetails>
                     <BaseDetails attr="zeroLine" :level="4" title="chart.grid.labels.zeroLine">
-                        <BaseAttr name="show" attr="chart.grid.labels.zeroLine.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/> 
+                        <BaseAttr name="show" attr="chart.grid.labels.zeroLine.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" /> 
                     </BaseDetails>
                 </BaseDetails>
             </BaseDetails>
             <BaseDetails attr="highlightArea" :level="2" title="chart.highlightArea">
                 <span><BaseComment>Since v2.3.40, you can pass an array of highlighter objects in here for multiple highlight areas</BaseComment></span>
-                <BaseAttr name="show" attr="chart.highlightArea.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="show" attr="chart.highlightArea.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="from" attr="chart.highlightArea.from" type="number" defaultVal="0" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="to" attr="chart.highlightArea.to" type="number" defaultVal="0" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="chart.highlightArea.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -960,7 +960,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
             <BaseDetails attr="highlighter" :level="2" title="chart.highlighter">
                 <BaseAttr name="color" attr="chart.highlighter.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="opacity" attr="chart.highlighter.opacity" type="range" defaultVal="5" :min="0" :max="30" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                <BaseAttr name="useLine" attr="chart.highlighter.useLine" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="useLine" attr="chart.highlighter.useLine" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="lineDasharray" attr="chart.highlighter.lineDasharray" type="number" defaultVal="2" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="lineWidth" attr="chart.highlighter.lineWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
@@ -981,7 +981,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="left" attr="chart.padding.left" type="number" defaultVal="48" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
             <BaseDetails attr="timeTag" :level="2" title="chart.timeTag">
-                <BaseAttr name="show" attr="chart.timeTag.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="show" attr="chart.timeTag.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="backgroundColor" attr="chart.timeTag.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="chart.timeTag.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="chart.timeTag.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -996,9 +996,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="color" attr="chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="chart.title.fontSize" type="number" defaultVal="20" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="bold" attr="chart.title.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="textAlign" attr="chart.title.textAlign" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                <BaseAttr name="paddingLeft" attr="chart.title.paddingLeft" type="number" defaultVal="0" :min="0" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                <BaseAttr name="paddingRight" attr="chart.title.paddingRight" type="number" defaultVal="0" :min="0" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="textAlign" attr="chart.title.textAlign" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                <BaseAttr name="paddingLeft" attr="chart.title.paddingLeft" type="number" defaultVal="0" :min="0" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                <BaseAttr name="paddingRight" attr="chart.title.paddingRight" type="number" defaultVal="0" :min="0" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseDetails attr="subtitle" :level="3" title="chart.title.subtitle">
                     <BaseAttr name="fontSize" attr="chart.title.subtitle.fontSize" type="number" defaultVal="16" :min="8" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="chart.title.subtitle.color" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1025,14 +1025,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
             <BaseDetails attr="userOptions" :level="2" title="chart.userOptions">
                 <BaseAttr name="show" attr="chart.userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseDetails attr="buttons" :level="3" title="chart.userOptions.buttons">
-                    <BaseAttr name="tooltip" attr="chart.userOptions.buttons.tooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="pdf" attr="chart.userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="img" attr="chart.userOptions.buttons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="csv" attr="chart.userOptions.buttons.csv" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="table" attr="chart.userOptions.buttons.table" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="labels" attr="chart.userOptions.buttons.labels" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="stack" attr="chart.userOptions.buttons.stack" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="fullscreen" attr="chart.userOptions.buttons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="tooltip" attr="chart.userOptions.buttons.tooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="pdf" attr="chart.userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="img" attr="chart.userOptions.buttons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="csv" attr="chart.userOptions.buttons.csv" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="table" attr="chart.userOptions.buttons.table" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="labels" attr="chart.userOptions.buttons.labels" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="stack" attr="chart.userOptions.buttons.stack" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="fullscreen" attr="chart.userOptions.buttons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 </BaseDetails>
                 <BaseDetails attr="buttonTitles" :level="3" title="chart.userOptions.buttonTitles">
                     <BaseAttr name="open" attr="chart.userOptions.buttonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
