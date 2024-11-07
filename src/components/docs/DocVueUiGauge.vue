@@ -12,6 +12,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 
 const mainConfig = useConfig()
 
@@ -330,6 +331,10 @@ const { configCode, showAllConfig } = useConfigCode()
                     </template>
                 </Suspense>
             </div>
+        </div>
+
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-gauge"/>
         </div>
 
         <Box showEmits showSlots showThemes showResponsive schema="vue_ui_gauge">

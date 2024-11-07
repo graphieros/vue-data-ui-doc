@@ -13,6 +13,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 
 const mainConfig = useConfig()
 
@@ -658,6 +659,11 @@ const { configCode, showAllConfig } = useConfigCode()
                 </template>
             </Suspense>
         </div>
+
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-donut"/>
+        </div>
+
         <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive schema="vue_ui_donut" signInfo="positiveOrNegativeOnly">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}

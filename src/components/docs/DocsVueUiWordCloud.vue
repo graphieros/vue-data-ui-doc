@@ -13,6 +13,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 
 const mainConfig = useConfig()
 
@@ -304,6 +305,10 @@ const { configCode, showAllConfig } = useConfigCode()
                     <BaseSpinner/>
                 </template>
             </Suspense>
+        </div>
+
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-word-cloud"/>
         </div>
 
         <Box showSlots showEmits showThemes showResponsive schema="vue_ui_word_cloud">

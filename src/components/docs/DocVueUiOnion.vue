@@ -12,6 +12,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 
 const mainConfig = useConfig()
 
@@ -439,9 +440,13 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <div class="mt-6 flex flex-col gap-3">
+        <div class="mt-6 flex flex-col gap-3 mx-auto justify-center place-items-center">
             <label for="player">{{ translations.docs.showMoreSeries[store.lang] }} </label>
             <input id="player" type="range" :min="1" :max="10" v-model="slicer" @input="updateDataset" class="accent-app-green max-w-[200px]">
+        </div>
+
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-onion"/>
         </div>
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_onion" signInfo="positiveOnly">

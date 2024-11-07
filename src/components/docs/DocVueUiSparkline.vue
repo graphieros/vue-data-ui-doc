@@ -13,6 +13,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 
 const mainConfig = useConfig()
 
@@ -305,6 +306,10 @@ const { configCode, showAllConfig } = useConfigCode()
                   <BaseSpinner />
               </template>
             </Suspense>
+        </div>
+
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-sparkline"/>
         </div>
 
         <Box showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline" signInfo="both">
