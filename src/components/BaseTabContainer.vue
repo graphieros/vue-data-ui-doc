@@ -1,6 +1,13 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, nextTick } from "vue";
 import { useMainStore } from "../stores";
+
+const props = defineProps({
+    selectedIndexOnLoad: {
+        type: Number,
+        default: null
+    }
+})
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -65,6 +72,15 @@ const onScroll = () => {
 
 onMounted(() => {
     updateScrollButtons();
+    nextTick(() => {
+        if (props.selectedIndexOnLoad !== null && tabsContainer.value) {
+            const children = Array.from(tabsContainer.value.children);
+            tabsContainer.value.scrollTo({
+                left: children[props.selectedIndexOnLoad].offsetLeft - 24,
+                behavior: "smooth",
+            });
+        }
+    })
 });
 
 </script>

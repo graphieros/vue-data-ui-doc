@@ -3,7 +3,7 @@ import {ref, computed, onMounted, defineAsyncComponent, watch } from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useRouter } from "vue-router";
 import { getVueDataUiConfig, getThemeConfig } from "vue-data-ui";
-import { SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon } from "vue-tabler-icons";
+import { SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon, StarFilledIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import Schema from "../schema/Schema.vue";
 import { useConfig } from "../assets/useConfig";
@@ -1132,6 +1132,16 @@ const stackbarKey = ref(0);
     </code>
     </pre>
         </div>
+        </RouterLink>
+    </div>
+
+    <div class="w-full px-12 mx-auto flex flex-row justify-center">
+        <RouterLink to="/examples/categories">
+            <button dir="auto" class="rounded-full h-[60px] px-6 border border-app-green bg-[#42d39220] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-[#42D39230] transition-all">
+                <StarFilledIcon class="text-app-green"/>
+                {{ translations.checkOutNewExamplePage[store.lang] }}
+                <StarFilledIcon class="text-app-green"/>
+            </button>
         </RouterLink>
     </div>
     

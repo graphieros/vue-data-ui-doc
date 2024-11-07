@@ -25,6 +25,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                checkOutNewExamplePage: {
+                    en: 'Checkout the new example page !',
+                    fr: 'Découvrez la nouvelle page d\'exemples !',
+                    pt: 'Confira a nova página de exemplos !',
+                    de: 'Schauen Sie sich die neue Beispielseite an !',
+                    zh: '查看新的示例页面!',
+                    jp: '新しい例のページをご覧ください!',
+                    es: '¡Visita la nueva página de ejemplos!',
+                    ko: '새로운 예제 페이지를 확인하세요!',
+                    ar: 'اطلع على صفحة الأمثلة الجديدة!'
+                },
                 viewExamples: {
                     en: 'View examples',
                     fr: 'Voir des exemples',

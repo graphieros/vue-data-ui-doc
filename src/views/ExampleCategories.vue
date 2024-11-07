@@ -59,6 +59,7 @@ const categories = ref([
         component: 'VueUiXy',
         thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
+        order: 0,
     },
     { 
         link: 'vue-ui-donut', 
@@ -66,6 +67,7 @@ const categories = ref([
         component: 'VueUiDonut',
         thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
+        order: 1
     },
     {
         link: 'vue-ui-sparkline',
@@ -73,6 +75,7 @@ const categories = ref([
         component: 'VueUiSparkline',
         thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
+        order: 2
     },
     {
         link: 'vue-ui-stackbar',
@@ -80,6 +83,7 @@ const categories = ref([
         component: 'VueUiStackbar',
         thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
+        order: 3
     },
     { 
         link: 'vue-ui-nested-donuts', 
@@ -87,6 +91,7 @@ const categories = ref([
         component: 'VueUiNestedDonuts',
         thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
+        order: 4
     },
     {
         link: 'vue-ui-waffle',
@@ -94,6 +99,7 @@ const categories = ref([
         component: 'VueUiWaffle',
         thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
+        order: 5
     },
     {
         link: 'vue-ui-vertical-bar',
@@ -101,6 +107,7 @@ const categories = ref([
         component: 'VueUiVerticalBar',
         thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
+        order: 6
     },
     {
         link: 'vue-ui-heatmap',
@@ -108,6 +115,7 @@ const categories = ref([
         component: 'VueUiHeatmap',
         thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
+        order: 7
     },
     {
         link: 'vue-ui-gauge',
@@ -115,6 +123,7 @@ const categories = ref([
         component: 'VueUiGauge',
         thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
+        order: 8
     },
     {
         link: 'vue-ui-onion',
@@ -122,6 +131,7 @@ const categories = ref([
         component: 'VueUiOnion',
         thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
+        order: 9
     }
 ]);
 
@@ -150,10 +160,12 @@ const checkTheDocs = ref({
 })
 
 const selectedLink = ref('');
+const selectedOrder = ref(null);
 
 onMounted(() => {
     if (route.hash) {
         selectedLink.value = route.hash.replace('#', '');
+        selectedOrder.value = categories.value.find(c => c.link === selectedLink.value).order;
         updateCrumb();
     } else {
         updateHash('vue-ui-xy');
@@ -180,7 +192,7 @@ const hoveredLink = ref(null);
     <!-- CHART TYPE SELECTION -->
     <div class="fixed top-[87px] left-0 w-full bg-[#F2F3F6] dark:bg-[#232323] z-50 py-4 drop-shadow-md">
         <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-12">
-            <BaseTabContainer>
+            <BaseTabContainer :selected-index-on-load="selectedOrder">
                 <template #content>
                     <div v-for="category in categories" class="relative rounded w-[100px] sm:w-[150px] h-[100px] sm:h-[100px] flex-shrink-0 bg-[#F2F3F6] dark:bg-[#232323]" @mouseover="hoveredLink = category" @mouseleave="hoveredLink = null">
                         <button @click="updateHash(category.link)" :class="`p-2 flex flex-col place-items-center justify-center h-full w-full rounded border ${selectedLink === category.link ? 'border-app-blue' : 'border-transparent'}`">
