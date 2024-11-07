@@ -65,6 +65,10 @@ export default function useExamples() {
         65, 68, 72, 88, 93, 94, 92, 97, 98, 100, 99, 106, 119, 140, 12, 9, 7, 5, 12, 18, 29
     ])
 
+    const CHANGESET = ref([
+        12, 10, 9, 11, 7, 4, 10, 11, 8, 9, 7, 19, 27, 25, 32, 29, 37, 48, 52, 51, 64
+    ]);
+
     const DATASET_XY_BASIC_LINE = ref([
         {
             name: 'Serie 1',
@@ -73,6 +77,15 @@ export default function useExamples() {
             series: LINESET
         }
     ]);
+
+    const DATASET_XY_CHANGE = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            dataLabels: true,
+            series: CHANGESET
+        }
+    ])
 
     const DATASET_XY_COMMENTS = ref([
         {
@@ -1294,7 +1307,7 @@ export default function useExamples() {
             },
             // XY HIGHLIGHT AREAS
             { 
-                dataset: DATASET_XY_BASIC_LINE.value, 
+                dataset: DATASET_XY_CHANGE.value, 
                 config: {
                     ...BASE_XY_CONFIG.value,
                     chart: {
@@ -1302,12 +1315,12 @@ export default function useExamples() {
                         highlightArea: [
                             {
                                 show: true,
-                                from: 2,
-                                to: 4,
+                                from: 0,
+                                to: 10,
                                 color: '#ff6600',
                                 opacity: 10,
                                 caption: {
-                                    text: 'This period is interesting for some reason.',
+                                    text: 'Before the change',
                                     color: colors.value.textColor,
                                     fontSize: 16,
                                     offsetY: 24,
@@ -1318,12 +1331,12 @@ export default function useExamples() {
                             },
                             {
                                 show: true,
-                                from: 12,
-                                to: 18,
+                                from: 11,
+                                to: 20,
                                 color: '#42d392',
                                 opacity: 10,
                                 caption: {
-                                    text: 'This period is also kind of interesting too.',
+                                    text: 'After the change',
                                     color: colors.value.textColor,
                                     fontSize: 16,
                                     offsetY: 24,
