@@ -1,6 +1,8 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "./stores";
 
+// nested donuts où l'externe est le détail de l'interne, (mêmes couleurs)
+
 
 export default function useExamples() {
     
@@ -687,6 +689,79 @@ export default function useExamples() {
             ]
         },
     ]);
+
+    const DATASET_NESTED_DONUTS_BREADKDOWN = ref([
+        {
+            name: "Group 2",
+            series: [
+                {
+                    name: 'Breadkdown 1.1',
+                    values: [30],
+                    color: '#1f77b4'
+                },
+                {
+                    name: 'Breadkdown 1.2',
+                    values: [15],
+                    color: '#1f77b4'
+                },
+                {
+                    name: 'Breadkdown 1.3',
+                    values: [5],
+                    color: '#1f77b4'
+                },
+                {
+                    name: 'Breadkdown 2.1',
+                    values: [12],
+                    color: '#aec7e8'
+                },
+                {
+                    name: 'Breadkdown 2.2',
+                    values: [10],
+                    color: '#aec7e8'
+                },
+                {
+                    name: 'Breadkdown 2.3',
+                    values: [8],
+                    color: '#aec7e8'
+                },
+                {
+                    name: 'Breadkdown 3.1',
+                    values: [8],
+                    color: '#ff7f0e'
+                },
+                {
+                    name: 'Breadkdown 3.2',
+                    values: [7],
+                    color: '#ff7f0e'
+                },
+                {
+                    name: 'Breadkdown 3.3',
+                    values: [5],
+                    color: '#ff7f0e'
+                },
+            ]
+        },
+        {
+            name: "Group 1",
+            series: [
+                {
+                    name: 'Serie 1',
+                    values: [50],
+                    color: '#1f77b4'
+                },
+                {
+                    name: 'Serie 2',
+                    values: [30],
+                    color: '#aec7e8'
+                },
+                {
+                    name: 'Serie 3',
+                    values: [20],
+                    color: '#ff7f0e'
+                },
+            ]
+        },
+    ])
 
     //-------------- VUE-UI-NESTED-DONUTS --------------//
     const CONFIG_WAFFLE_BASE = computed(() => {
@@ -1961,6 +2036,38 @@ export default function useExamples() {
                     es: 'Con más series, tartas, sin degradado',
                     ko: '더 많은 시리즈, 파이, 그라디언트 없음',
                     ar: 'مع المزيد من السلاسل والفطائر، بدون تدرج'
+                }
+            },
+            // NESTED DONUTS BREAKDOWN
+            { 
+                dataset: DATASET_NESTED_DONUTS_BREADKDOWN.value, 
+                config: {
+                    ...CONFIG_NESTED_DONUTS_BASE.value,
+                    style: {
+                        ...CONFIG_NESTED_DONUTS_BASE.value.style,
+                        chart: {
+                            ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
+                            tooltip: {
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.tooltip,
+                                showAllItemsAtIndex: false
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiNestedDonuts',
+                icon: 'chartNestedDonuts',
+                id: 'nested-donuts-basic',
+                link: 'vue-ui-nested-donuts',
+                description: {
+                    en: 'Breakdown on the external ring',
+                    fr: 'Répartition sur l\'anneau extérieur',
+                    pt: 'Detalhamento no anel externo',
+                    de: 'Aufschlüsselung auf dem äußeren Ring',
+                    zh: '在外环上的分解',
+                    jp: '外側リングの内訳',
+                    es: 'Desglose en el anillo externo',
+                    ko: '외부 링의 분해',
+                    ar: 'تفصيل على الحلقة الخارجية'
                 }
             },
             // WAFFLE BASIC
