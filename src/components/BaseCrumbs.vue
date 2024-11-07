@@ -37,7 +37,7 @@ const validLinks = computed(() => {
 
 <template>
     <div :class="`
-            ${showMobile ? 'flex' : 'hidden'}
+            ${showMobile ? 'flex' : 'hidden sm:flex'}
             z-10 
             flex-row 
             gap-3 
