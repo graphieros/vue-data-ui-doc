@@ -1,5 +1,6 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "./stores";
+import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
 
 // nested donuts où l'externe est le détail de l'interne, (mêmes couleurs)
 
@@ -1145,6 +1146,41 @@ export default function useExamples() {
             value: 1280
         }
     ])
+
+    //-------------- VUE-UI-WORD-CLOUD --------------//
+
+    const CONFIG_WORD_WLOUD_BASIC = computed(() => {
+        return {
+            table: TABLE.value,
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor
+                }
+            }
+        }
+    })
+
+    const DATASET_WORDCLOUD_CHINESE = computed(() => {
+        const data = createWordCloudDatasetFromPlainText('编程，是一门艺术与科学的结合。对于那些热爱技术和解决问题的人来说，编程不仅仅是一项技能，更是一种带来无尽乐趣的活动。在这不断变化的数字世界中，编程已成为塑造未来的重要工具，而它所带来的满足感和成就感则是无与伦比的。首先，编程带来最大的乐趣之一就是创造的自由。编程就像在一片空白的画布上作画，程序员可以随心所欲地构建自己的“作品”。无论是一个简单的网页，还是一个复杂的数据处理系统，编程都为创作者提供了实现想法的工具。写代码的过程充满挑战，但每当一个新的功能实现或者一个棘手的错误被成功解决时，那种心满意足的感觉是无与伦比的。编程的过程犹如解谜。每个程序都是由无数个小问题和挑战组成，程序员需要一步步地寻找解决方案。这就像一个庞大的谜题，每当找到合适的解法时，都会感到兴奋和满足。编程中的调试过程尤为如此。当代码中存在错误时，找到原因并解决问题仿佛在黑暗中找到了光明，这种喜悦总能让人重新振作并继续前行。此外，编程还能让人感受到逻辑思维的美妙。编写一个程序需要精确的思考和合理的逻辑结构，这种思维训练不仅可以帮助人们提高解决问题的能力，还可以在生活的各个方面带来启示。例如，在遇到复杂的生活问题时，程序员常常会运用编程思维，将大问题拆分成更小的可解决部分，然后逐步解决。这种技能不仅让编程充满乐趣，还能让人受益终生。编程还让人体验到学习和成长的乐趣。技术在不断演进，新语言、新框架、新工具层出不穷，这意味着程序员总有新的东西可以学习。尽管这种学习过程有时会令人感到挫败，但每次掌握新技能后的成就感却无比令人满足。编程让人意识到，学习是一种永无止境的过程，正是在这种不断挑战自我的过程中，程序员才能不断进步，并体验到成长的喜悦。团队合作也是编程中一大乐趣所在。在许多项目中，程序员需要与其他开发者、设计师、产品经理甚至客户紧密合作。这种合作不仅让人学会如何更好地沟通和分享想法，还能带来共同创造的喜悦。当一个团队一起努力完成一个项目，并看到它最终成功上线时，那种集体成就感让人感到无比欣慰和骄傲。编程还提供了无限的可能性和探索的空间。一个程序员可以开发应用程序来简化日常任务、构建网站来分享自己的想法，甚至开发游戏来娱乐大众。编程让人体验到创造力的释放，每个人都可以成为自己世界的“建造者”。正是这种无限的可能性，让人们在编程中找到属于自己的乐趣和意义。另一方面，编程的乐趣还来自于它对社会的积极影响。通过编写有用的软件，程序员可以真正改变世界。无论是开发一款改善人们生活质量的健康应用，还是构建一个帮助学生学习的新平台，编程的成果可以直接影响成千上万人的生活。这种贡献社会的满足感，常常成为程序员继续前行的重要动力。编程的挑战也不可忽视，但正是这些挑战让编程更加有趣。每个程序员都会遇到让人头疼的错误，或是面对看似无法解决的难题。然而，正是这些困难让编程过程充满刺激和挑战。当一个复杂的算法终于成功运行，或者一个系统终于稳定下来时，那种如释重负的快感让一切努力都变得值得。最后，编程的乐趣还体现在其独特的灵活性和无限的创造空间。一个程序员可以随时随地用自己的笔记本电脑编写代码，可以自由选择自己感兴趣的项目和技术领域。这种自由和灵活性让编程成为一项能够完全适应个人兴趣和生活方式的活动，无论你是在家里、咖啡馆，还是在旅途中，都可以体验编程的乐趣。总而言之，编程是一项充满乐趣和挑战的活动，它结合了逻辑与创造，让人体验到解决问题的快感、成长的满足感以及创造的喜悦。无论是初学者还是经验丰富的开发者，编程总能为人们带来新鲜和激动人心的体验。正因为如此，编程不仅仅是一项技能，更是一种充满无限可能的乐趣源泉。在这条不断学习和探索的道路上，每个程序员都可以找到自己的快乐和成就感。')
+
+        return data.filter(el => el.value > 4)
+    })
+
+    const DATASET_WORDCLOUD_ENGLISH = computed(() => {
+        const data = createWordCloudDatasetFromPlainText(`Programming is a combination of art and science. For those who love technology and problem-solving, programming is more than just a skill; it’s an activity that brings endless joy. In this ever-changing digital world, programming has become a vital tool for shaping the future, and the sense of fulfillment and achievement it brings is unparalleled. One of the greatest joys of programming is the freedom of creation. Programming is like painting on a blank canvas, where programmers can build their "works" as they wish. Whether it’s a simple webpage or a complex data processing system, programming provides creators with the tools to realize their ideas. The process of writing code is full of challenges, but the feeling of satisfaction when a new feature is completed or a tricky bug is fixed is incomparable. Programming is like solving puzzles. Every program consists of countless small problems and challenges, and programmers need to find solutions step by step. It’s like a grand puzzle, and every time a suitable solution is found, there’s excitement and satisfaction. Debugging is especially true. When there’s a bug in the code, finding the cause and solving the problem feels like finding light in the darkness, and this joy always reignites motivation and the drive to move forward. Additionally, programming allows people to appreciate the beauty of logical thinking. Writing a program requires precise thought and logical structure. This kind of mental training not only helps people improve their problem-solving skills but also provides insights in various aspects of life. For example, when facing complex life problems, programmers often apply programming thinking, breaking down big problems into smaller, solvable parts and then addressing them step by step. This skill not only makes programming enjoyable but also brings lifelong benefits. Programming also offers the joy of learning and growth. Technology is continuously evolving, with new languages, frameworks, and tools emerging constantly, meaning programmers always have something new to learn. Although the learning process can sometimes be frustrating, the sense of accomplishment after mastering a new skill is incredibly satisfying. Programming makes people realize that learning is a never-ending journey, and it is through this continuous self-challenge that programmers make progress and experience the joy of growth. Teamwork is another aspect of programming that brings great joy. In many projects, programmers need to collaborate closely with other developers, designers, product managers, and even clients. This collaboration not only teaches people how to communicate better and share ideas but also brings the joy of collective creation. When a team works together to complete a project and sees it successfully launched, the sense of collective achievement is deeply gratifying and proud. Programming offers endless possibilities and areas to explore. A programmer can develop apps to simplify daily tasks, build websites to share ideas, or even create games to entertain people. Programming allows for the release of creativity, and everyone can become a "builder" of their own world. This sense of infinite possibility lets people find their own joy and meaning in programming. On the other hand, the joy of programming also comes from its positive impact on society. By writing useful software, programmers can truly change the world. Whether it’s developing a health app to improve quality of life or building a new platform to help students learn, the results of programming can directly affect the lives of thousands. This sense of contributing to society often serves as a significant motivation for programmers to keep moving forward. The challenges of programming shouldn’t be ignored, but it is these challenges that make programming more exciting. Every programmer will encounter headaches or seemingly unsolvable problems. However, these difficulties make the process stimulating and challenging. When a complex algorithm finally runs successfully or a system stabilizes, the feeling of relief makes all the effort worthwhile. Finally, the joy of programming lies in its unique flexibility and limitless creative space. A programmer can write code anytime, anywhere, with a laptop, and choose projects and technologies that interest them. This freedom and flexibility make programming an activity that can perfectly align with personal interests and lifestyles. Whether at home, in a café, or while traveling, you can always experience the joy of programming. In summary, programming is an activity full of fun and challenges. It combines logic and creativity, allowing people to experience the thrill of problem-solving, the satisfaction of growth, and the joy of creation. Whether a beginner or an experienced developer, programming always brings fresh and exciting experiences. It’s more than just a skill; it’s a source of endless possibilities and joy. On this journey of continuous learning and exploration, every programmer can find their happiness and sense of achievement.`)
+
+        return data.filter(el => el.value > 3)
+    })
+
+    const DATASET_WORDCLOUD_ARABIC = computed(() => {
+        const data = createWordCloudDatasetFromPlainText(
+            'البرمجة هي مزيج من الفن والعلم. بالنسبة لأولئك الذين يحبون التكنولوجيا وحل المشكلات، البرمجة ليست مجرد مهارة؛ إنها نشاط يجلب فرحة لا تنتهي. في هذا العالم الرقمي المتغير باستمرار، أصبحت البرمجة أداة حيوية لتشكيل المستقبل، والإحساس بالرضا والإنجاز الذي تجلبه لا مثيل له. واحدة من أعظم متع البرمجة هي حرية الإبداع. البرمجة تشبه الرسم على لوحة فارغة، حيث يمكن للمبرمجين بناء "أعمالهم" كما يشاؤون. سواء كان ذلك موقعًا إلكترونيًا بسيطًا أو نظام معالجة بيانات معقد، توفر البرمجة للمبدعين الأدوات لتحقيق أفكارهم. عملية كتابة الشيفرة مليئة بالتحديات، ولكن شعور الرضا عند إتمام ميزة جديدة أو حل خطأ معقد لا يوصف. البرمجة تشبه حل الألغاز. كل برنامج يتكون من عدد لا يحصى من المشكلات الصغيرة والتحديات، ويحتاج المبرمجون إلى إيجاد الحلول خطوة بخطوة. إنها مثل لغز ضخم، وكلما تم العثور على الحل المناسب، يكون هناك شعور بالإثارة والرضا. عملية التصحيح (debugging) تجسد ذلك بشكل خاص. عندما يكون هناك خطأ في الشيفرة، فإن العثور على السبب وحل المشكلة يشبه العثور على الضوء في الظلام، وهذه الفرحة دائمًا ما تعيد الدافع وتحث على المضي قدمًا. بالإضافة إلى ذلك، تتيح البرمجة للناس تقدير جمال التفكير المنطقي. كتابة برنامج تتطلب تفكيرًا دقيقًا وبنية منطقية. هذا النوع من التدريب العقلي لا يساعد الناس فقط على تحسين مهارات حل المشكلات، بل يوفر رؤى في مختلف جوانب الحياة. على سبيل المثال، عند مواجهة مشكلات حياتية معقدة، غالبًا ما يطبق المبرمجون التفكير البرمجي، حيث يقومون بتقسيم المشكلة الكبيرة إلى أجزاء أصغر قابلة للحل ثم معالجتها تدريجيًا. هذه المهارة لا تجعل البرمجة ممتعة فحسب، بل تجلب فوائد مدى الحياة. البرمجة تقدم أيضًا متعة التعلم والنمو. التكنولوجيا في تطور مستمر، مع ظهور لغات جديدة، وأطر عمل، وأدوات بشكل مستمر، مما يعني أن المبرمجين دائمًا لديهم شيء جديد ليتعلموه. على الرغم من أن عملية التعلم قد تكون محبطة في بعض الأحيان، فإن شعور الإنجاز بعد إتقان مهارة جديدة لا يقدر بثمن. تجعل البرمجة الناس يدركون أن التعلم عملية لا تنتهي، ومن خلال هذا التحدي المستمر لأنفسهم، يتمكن المبرمجون من التقدم وتجربة فرحة النمو. العمل الجماعي هو جانب آخر من البرمجة يجلب الكثير من الفرح. في العديد من المشاريع، يحتاج المبرمجون إلى التعاون الوثيق مع مطورين آخرين، ومصممين، ومديري منتجات، وحتى العملاء. هذا التعاون لا يعلم الناس كيفية التواصل بشكل أفضل ومشاركة الأفكار فحسب، بل يجلب أيضًا فرحة الإبداع الجماعي. عندما يعمل الفريق معًا لإكمال مشروع ويرى أنه تم إطلاقه بنجاح، فإن شعور الإنجاز الجماعي يكون عميقًا للغاية ومليئًا بالفخر. البرمجة توفر إمكانيات لا حصر لها ومجالات للاستكشاف. يمكن للمبرمج تطوير تطبيقات لتبسيط المهام اليومية، أو بناء مواقع لمشاركة أفكاره، أو حتى إنشاء ألعاب لتسلية الجمهور. تتيح البرمجة إطلاق العنان للإبداع، ويمكن للجميع أن يصبحوا "بناة" لعالمهم الخاص. هذه الإمكانية اللانهائية تجعل الناس يجدون متعتهم ومعناهم في البرمجة. من ناحية أخرى، تأتي متعة البرمجة أيضًا من تأثيرها الإيجابي على المجتمع. من خلال كتابة البرامج المفيدة، يمكن للمبرمجين حقًا تغيير العالم. سواء كان ذلك تطوير تطبيق صحي يحسن نوعية الحياة، أو بناء منصة جديدة تساعد الطلاب على التعلم، يمكن أن تؤثر نتائج البرمجة مباشرة على حياة الآلاف. هذا الإحساس بالمساهمة في المجتمع غالبًا ما يكون دافعًا مهمًا للمبرمجين لمواصلة التقدم. لا ينبغي تجاهل تحديات البرمجة، ولكن هذه التحديات هي ما يجعل البرمجة أكثر إثارة. كل مبرمج سيواجه أخطاء تسبب الصداع، أو يواجه مشكلات تبدو غير قابلة للحل. لكن هذه الصعوبات تجعل العملية مليئة بالإثارة والتحدي. عندما يعمل خوارزم معقد بنجاح أخيرًا، أو يستقر نظام بعد جهد طويل، فإن شعور الراحة يجعل كل الجهد يستحق العناء. أخيرًا، تتمثل متعة البرمجة في مرونتها الفريدة ومساحة الإبداع غير المحدودة. يمكن للمبرمج كتابة الشيفرة في أي وقت وأي مكان، باستخدام جهاز كمبيوتر محمول، ويمكنه اختيار المشاريع والمجالات التقنية التي تهمه. هذه الحرية والمرونة تجعل البرمجة نشاطًا يمكن أن يتكيف تمامًا مع اهتمامات الفرد وأسلوب حياته. سواء كنت في المنزل، أو في مقهى، أو في رحلة، يمكنك دائمًا الاستمتاع بمتعة البرمجة. باختصار، البرمجة نشاط مليء بالمتعة والتحديات. إنها تجمع بين المنطق والإبداع، مما يتيح للناس تجربة إثارة حل المشكلات، ورضا النمو، ومتعة الإبداع. سواء كنت مبتدئًا أو مطورًا ذو خبرة، فإن البرمجة دائمًا ما تجلب تجارب جديدة ومثيرة. إنها أكثر من مجرد مهارة؛ إنها مصدر لإمكانيات وفرح لا تنتهي. في هذه الرحلة المستمرة من التعلم والاستكشاف، يمكن لكل مبرمج أن يجد سعادته وإحساسه بالإنجاز.'
+            )
+
+            return data.filter(el => el.value > 2)
+    })
+
 
     const examples = computed(() => {
         return [
@@ -2716,6 +2752,66 @@ export default function useExamples() {
                     es: 'Con pistas más delgadas',
                     ko: '더 얇은 트랙으로',
                     ar: 'مع مسارات أرق'
+                }
+            },
+            // WORD CLOUD CHINESE
+            { 
+                dataset: DATASET_WORDCLOUD_CHINESE.value, 
+                config: CONFIG_WORD_WLOUD_BASIC.value,
+                component: 'VueUiWordCloud',
+                icon: 'chartWordCloud',
+                id: 'word-cloud-chinese',
+                link: 'vue-ui-word-cloud',
+                description: {
+                    en: "Word cloud based on a Chinese text",
+                    fr: "Nuage de mots basé sur un texte chinois",
+                    pt: "Nuvem de palavras baseada em um texto chinês",
+                    de: "Wortwolke basierend auf einem chinesischen Text",
+                    zh: "基于中文文本的词云",
+                    jp: "中国語のテキストに基づいたワードクラウド",
+                    es: "Nube de palabras basada en un texto chino",
+                    ko: "중국어 텍스트를 기반으로 한 워드 클라우드",
+                    ar: "سحابة كلمات مستندة إلى نص صيني"
+                }
+            },
+            // WORD CLOUD ENGLISH
+            { 
+                dataset: DATASET_WORDCLOUD_ENGLISH.value, 
+                config: CONFIG_WORD_WLOUD_BASIC.value,
+                component: 'VueUiWordCloud',
+                icon: 'chartWordCloud',
+                id: 'word-cloud-english',
+                link: 'vue-ui-word-cloud',
+                description: {
+                    en: "Word cloud based on an English text",
+                    fr: "Nuage de mots basé sur un texte en anglais",
+                    pt: "Nuvem de palavras baseada em um texto em inglês",
+                    de: "Wortwolke basierend auf einem englischen Text",
+                    zh: "基于英文文本的词云",
+                    jp: "英語のテキストに基づくワードクラウド",
+                    es: "Nube de palabras basada en un texto en inglés",
+                    ko: "영어 텍스트를 기반으로 한 단어 구름",
+                    ar: "سحابة كلمات مستندة إلى نص إنجليزي"
+                }
+            },
+            // WORD CLOUD ARABIC
+            { 
+                dataset: DATASET_WORDCLOUD_ARABIC.value, 
+                config: CONFIG_WORD_WLOUD_BASIC.value,
+                component: 'VueUiWordCloud',
+                icon: 'chartWordCloud',
+                id: 'word-cloud-arabic',
+                link: 'vue-ui-word-cloud',
+                description: {
+                    en: "Word cloud based on an Arabic text",
+                    fr: "Nuage de mots basé sur un texte en arabe",
+                    pt: "Nuvem de palavras baseada em um texto em árabe",
+                    de: "Wortwolke basierend auf einem arabischen Text",
+                    zh: "基于阿拉伯文本的词云",
+                    jp: "アラビア語のテキストに基づくワードクラウド",
+                    es: "Nube de palabras basada en un texto en árabe",
+                    ko: "아랍어 텍스트를 기반으로 한 단어 구름",
+                    ar: "سحابة كلمات مستندة إلى نص عربي"
                 }
             },
         ]

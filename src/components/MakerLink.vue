@@ -44,7 +44,7 @@ function returnToMaker() {
 <template>
     <div class="relative" v-if="simple">
         <FlexibleTooltip position="bottom" :content="translations.menu.chartBuilder[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
-            <button @click="returnToMaker" class="h-[50px] w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">
+            <button @click="returnToMaker" class="h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">
                 <ToolIcon/>
             </button>
         </FlexibleTooltip>

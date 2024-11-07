@@ -132,6 +132,13 @@ const categories = ref([
         thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
         order: 9
+    },
+    {
+        link: 'vue-ui-word-cloud',
+        icon: 'chartWordCloud',
+        component: 'VueUiWordCloud',
+        thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
     }
 ]);
 
