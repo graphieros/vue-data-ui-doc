@@ -139,6 +139,7 @@ const categories = ref([
         component: 'VueUiWordCloud',
         thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
+        order: 10
     }
 ]);
 
