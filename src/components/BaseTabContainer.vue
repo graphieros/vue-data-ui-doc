@@ -1,109 +1,89 @@
 <script setup>
-import { ref, watch, onMounted, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../stores";
 
-
-const store = useMainStore()
-const isDarkMode = computed(() => store.isDarkMode)
+const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
 
 const tabsContainer = ref(null);
 const canScrollLeft = ref(false);
 const canScrollRight = ref(false);
 
-const isDragging = ref(false);
-const startX = ref(0);
-const scrollLeft = ref(0);
-
 const updateScrollButtons = () => {
     const container = tabsContainer.value;
     if (container) {
         canScrollLeft.value = container.scrollLeft > 0;
-        canScrollRight.value = container.scrollLeft < container.scrollWidth - container.clientWidth;
+        canScrollRight.value =
+            container.scrollLeft < container.scrollWidth - container.clientWidth;
     }
 };
+
+const scrollToNearestElement = (direction) => {
+    const container = tabsContainer.value;
+    if (!container) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const children = Array.from(container.children);
+
+    if (direction === "left") {
+        for (let i = children.length - 1; i >= 0; i -= 1) {
+            const childRect = children[i].getBoundingClientRect();
+            if ((childRect.left + 24) < (containerRect.left)) {
+                container.scrollTo({
+                    left: children[i].offsetLeft - 24,
+                    behavior: "smooth",
+                });
+                break;
+            }
+        }
+    } else if (direction === "right") {
+        for (const child of children) {
+            const childRect = child.getBoundingClientRect();
+            if ((childRect.right + 20) > containerRect.right) {
+                container.scrollTo({
+                    left: child.offsetLeft - container.clientWidth + child.clientWidth + 24,
+                    behavior: "smooth",
+                });
+                break;
+            }
+        }
+    }
+};
+
+function scrollLeftButton() {
+    scrollToNearestElement("left")
+}
+
+function scrollRightButton() {
+    scrollToNearestElement("right")
+}
+
 
 const onScroll = () => {
     updateScrollButtons();
 };
 
-const scrollLeftButton = () => {
-    tabsContainer.value.scrollBy({ left: -100, behavior: 'smooth' });
-};
-
-const scrollRightButton = () => {
-    tabsContainer.value.scrollBy({ left: 100, behavior: 'smooth' });
-};
-
-const onMouseDown = (event) => {
-    isDragging.value = true;
-    startX.value = event.pageX - tabsContainer.value.offsetLeft;
-    scrollLeft.value = tabsContainer.value.scrollLeft;
-};
-
-const onMouseMove = (event) => {
-    if (!isDragging.value) return;
-    const x = event.pageX - tabsContainer.value.offsetLeft;
-    const dragVal = (x - startX.value) * 1.3;
-    tabsContainer.value.scrollLeft = scrollLeft.value - dragVal;
-    updateScrollButtons();
-};
-
-const onMouseUpOrLeave = () => {
-    isDragging.value = false;
-};
-
-const onTouchStart = (event) => {
-    startX.value = event.touches[0].clientX;
-    scrollLeft.value = tabsContainer.value.scrollLeft;
-    isDragging.value = true;
-};
-
-const onTouchMove = (event) => {
-    if (!isDragging.value) return;
-    const deltaX = startX.value - event.touches[0].clientX;
-    tabsContainer.value.scrollLeft = scrollLeft.value + deltaX;
-};
-
-const onTouchEnd = () => {
-    isDragging.value = false;
-    updateScrollButtons();
-};
-
 onMounted(() => {
     updateScrollButtons();
-    if (tabsContainer.value) {
-        tabsContainer.value.addEventListener("mousedown", onMouseDown);
-        tabsContainer.value.addEventListener("mousemove", onMouseMove);
-        tabsContainer.value.addEventListener("mouseup", onMouseUpOrLeave);
-        tabsContainer.value.addEventListener("mouseleave", onMouseUpOrLeave);
-    }
 });
-
-watch(tabsContainer, updateScrollButtons);
 
 </script>
 
 <template>
-    <div class="relative w-full flex items-center border-gray-700">
+    <div class="relative w-full flex items-center border-gray-700 px-6">
         <button v-if="canScrollLeft" @click="scrollLeftButton"
             class="absolute -left-4 p-2 bg-gradient-to-b bg-gray-200 dark:bg-[#2A2A2A] rounded-tr rounded-br shadow-md z-10 h-full hover:bg-[#abc2f6] dark:hover:bg-[#3A3A3A] transition-colors">
-            <VueUiIcon name="arrowLeft" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
+            <VueUiIcon name="arrowLeft" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'" />
         </button>
 
-        <div
-            ref="tabsContainer"
-            class="flex select-none overflow-x-auto space-x-4 scrollbar-hide w-full px-8"
-            @scroll="onScroll"
-            @touchstart="onTouchStart"
-            @touchmove="onTouchMove"
-            @touchend="onTouchEnd"
-        >
-            <slot name="content"/>
+        <div ref="tabsContainer" class="flex select-none overflow-x-auto space-x-4 scrollbar-hide w-full px-8"
+            @scroll="onScroll">
+            <slot name="content" />
         </div>
 
         <button v-if="canScrollRight" @click="scrollRightButton"
             class="absolute -right-4 p-2 bg-gradient-to-b bg-gray-200 dark:bg-[#2A2A2A] rounded-tl rounded-bl shadow-md z-10 h-full hover:bg-[#abc2f6] dark:hover:bg-[#3A3A3A] transition-colors">
-            <VueUiIcon name="arrowRight" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
+            <VueUiIcon name="arrowRight" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'" />
         </button>
     </div>
 </template>
@@ -113,6 +93,7 @@ watch(tabsContainer, updateScrollButtons);
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }

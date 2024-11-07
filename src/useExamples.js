@@ -2056,7 +2056,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiNestedDonuts',
                 icon: 'chartNestedDonuts',
-                id: 'nested-donuts-basic',
+                id: 'nested-donuts-breakdown',
                 link: 'vue-ui-nested-donuts',
                 description: {
                     en: 'Breakdown on the external ring',
