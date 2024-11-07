@@ -1070,6 +1070,69 @@ export default function useExamples() {
         ]
     })
 
+     //-------------- VUE-UI-ONION --------------//
+    const CONFIG_ONION_BASIC = computed(() => {
+        return {
+            table: TABLE.value,
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                    },
+                    layout: {
+                        gutter: {
+                            color: isDarkMode.value ? '#3A3A3A' : '#E1E5E8'
+                        },
+                        labels: {
+                            color: colors.value.textColor,
+                        }
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddintLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                }
+            }
+        }
+    })
+
+    const DATASET_ONION_BASE = ref([
+        {
+            name: "Serie 1",
+            percentage: 21,
+            value: 1200,
+        },
+        {
+            name: "Serie 2",
+            percentage: 34,
+            value: 1000,
+        },
+        {
+            name: "Serie 3",
+            percentage: 55,
+            value: 500
+        },
+        {
+            name: "Serie 4",
+            percentage: 79,
+            value: 1280
+        }
+    ])
+
     const examples = computed(() => {
         return [
             // XY BASIC LINE
@@ -2543,6 +2606,103 @@ export default function useExamples() {
                     es: 'Más ancho',
                     ko: '더 넓은',
                     ar: 'أوسع'
+                }
+            },
+            // ONION BASIC
+            { 
+                dataset: DATASET_ONION_BASE.value, 
+                config: CONFIG_ONION_BASIC.value,
+                component: 'VueUiOnion',
+                icon: 'chartOnion',
+                id: 'onion-basic',
+                link: 'vue-ui-onion',
+                description: {
+                    en: 'Basic radial bar chart',
+                    fr: 'Diagramme à barres radial de base',
+                    pt: 'Gráfico de barras radial básico',
+                    de: 'Grundlegendes Radialbalkendiagramm',
+                    zh: '基本径向条形图',
+                    jp: '基本的な放射状バー チャート',
+                    es: 'Gráfico de barras radial básico',
+                    ko: '기본 방사형 막대 차트',
+                    ar: 'مخطط شريطي شعاعي أساسي'
+                }
+            },
+            // ONION NO SPACING NO GRADIENT
+            { 
+                dataset: DATASET_ONION_BASE.value, 
+                config: {
+                    ...CONFIG_ONION_BASIC.value,
+                    style: {
+                        ...CONFIG_ONION_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_ONION_BASIC.value.style.chart,
+                            useGradient: false,
+                            layout: {
+                                ...CONFIG_ONION_BASIC.value.style.chart.layout,
+                                gutter: {
+                                    ...CONFIG_ONION_BASIC.value.style.chart.layout.gutter,
+                                    width: 0.85
+                                },
+                                track: {
+                                    width: 0.85
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiOnion',
+                icon: 'chartOnion',
+                id: 'onion-no-spacing-no-gradient',
+                link: 'vue-ui-onion',
+                description: {
+                    en: 'No spacing, no gradient',
+                    fr: 'Pas d\'espacement, pas de dégradé',
+                    pt: 'Sem espaçamento, sem gradiente',
+                    de: 'Kein Abstand, kein Farbverlauf',
+                    zh: '无间距，无渐变',
+                    jp: '間隔なし、グラデーションなし',
+                    es: 'Sin espaciado, sin degradado',
+                    ko: '간격 없음, 그라데이션 없음',
+                    ar: 'بدون مسافات، بدون تدرج'
+                }
+            },
+            // ONION THINNER TRACKS
+            { 
+                dataset: DATASET_ONION_BASE.value, 
+                config: {
+                    ...CONFIG_ONION_BASIC.value,
+                    style: {
+                        ...CONFIG_ONION_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_ONION_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_ONION_BASIC.value.style.chart.layout,
+                                gutter: {
+                                    ...CONFIG_ONION_BASIC.value.style.chart.layout.gutter,
+                                    width: 0.9
+                                },
+                                track: {
+                                    width: 0.2
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiOnion',
+                icon: 'chartOnion',
+                id: 'onion-thinner-tracks',
+                link: 'vue-ui-onion',
+                description: {
+                    en: 'With thinner tracks',
+                    fr: 'Avec des pistes plus fines',
+                    pt: 'Com trilhas mais finas',
+                    de: 'Mit dünneren Spuren',
+                    zh: '带有更细的轨道',
+                    jp: 'より細いトラック付き',
+                    es: 'Con pistas más delgadas',
+                    ko: '더 얇은 트랙으로',
+                    ar: 'مع مسارات أرق'
                 }
             },
         ]

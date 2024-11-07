@@ -115,6 +115,13 @@ const categories = ref([
         component: 'VueUiGauge',
         thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
+    },
+    {
+        link: 'vue-ui-onion',
+        icon: 'chartOnion',
+        component: 'VueUiOnion',
+        thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
     }
 ]);
 
