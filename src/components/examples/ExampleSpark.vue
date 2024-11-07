@@ -167,6 +167,60 @@ onBeforeUnmount(() => {
     clearTimeout(to1.value);
 })
 
+const carouselDataset = ref({
+    head: ['Country', 'Total', 'Average', 'Visitors', 'Satisfaction'],
+    body: [
+        ['France', 3900, 350, 3715, '65%'],
+        ['China', 12440, 312, 24552, '73%'],
+        ['USA', 11450, 319, 22350, '71%'],
+        ['Brazil', 7210, 215, 13411, '77%'],
+        ['Spain', 2318, 290, 2950, '68%'],
+        ['Portugal', 1313, 195, 1912, '74%'],
+        ['Germany', 4522, 415, 5200, '69%'],
+        ['Canada', 8201, 319, 7600, '89%'],
+        ['India', 14500, 159, 27200, '58%'],
+        ['Australia', 9420, 255, 10258, '72%'],
+    ]
+})
+
+const carouselConfig = computed(() => {
+    return {
+        style: {
+            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+        },
+        caption: {
+            text: 'Current stats',
+            style: {
+                fontSize: '32px',
+                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+            }
+        },
+        thead: {
+            tr: {
+                style: {
+                    backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                }
+            }
+        },
+        tbody: {
+            tr: {
+                style: {
+                    backgroundColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                },
+                td: {
+                    style: {
+                        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                    }
+                }
+            },
+        }
+    }
+})
+
 </script>
 
 <template>
@@ -223,6 +277,25 @@ onBeforeUnmount(() => {
                 </div>
             </div>
         </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+
+                <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+                    <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-carousel-table"
+                            :defaultConfig="false"
+                            targetMaker="VueUiCarouselTable"
+                        />
+                    </div>
+
+                    <div class="w-full">
+                        <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig"/>
+                    </div>
+                </div>
+
+        </div>
+
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
                 <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
