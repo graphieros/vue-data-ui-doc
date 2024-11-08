@@ -221,6 +221,14 @@ const carouselConfig = computed(() => {
     }
 })
 
+const trendConfig = computed(() => {
+    return {
+        style: {
+            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+        }
+    }
+})
+
 </script>
 
 <template>
@@ -470,6 +478,45 @@ const carouselConfig = computed(() => {
                 </div>
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <SparkRevenue title="Expected sales Brazil 2025" :values="line3" />
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-spark-trend"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkTrend"
+                    />
+                </div>
+                <div class="flex flex-row gap-4 justify-between place-items-center mt-2">
+                    <VueDataUi component="VueUiSparkTrend" :dataset="line1" :config="trendConfig"/>
+                </div>
+            </div>
+            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-spark-trend"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkTrend"
+                    />
+                </div>
+                <div class="flex flex-row gap-4 justify-between place-items-center mt-2">
+                    <VueDataUi component="VueUiSparkTrend" :dataset="line2" :config="trendConfig"/>
+                </div>
+            </div>
+            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
+                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+                    <BaseDocHeaderActions
+                        targetDoc="vue-ui-spark-trend"
+                        :defaultConfig="false"
+                        targetMaker="VueUiSparkTrend"
+                    />
+                </div>
+                <div class="flex flex-row gap-4 justify-between place-items-center mt-2">
+                    <VueDataUi component="VueUiSparkTrend" :dataset="line3" :config="trendConfig"/>
                 </div>
             </div>
         </div>

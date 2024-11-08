@@ -1609,6 +1609,10 @@ const parsedData = computed(() => {
   return JSON.parse(JSON.stringify(data.value)).slice(-100)
 })
 
+const trendData = computed(() => {
+  return data.value.map(d => d.value)
+})
+
 </script>
 
 <template>
@@ -1693,15 +1697,15 @@ const parsedData = computed(() => {
                 <div class="max-w-[400px] mx-auto my-6 flex flex-col gap-2">
                   Overall trend
                   <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
-                    <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="data.map(d => d.value)" :config="trendConfig"/>
+                    <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="trendConfig"/>
                   </div>
                     N - 1
                     <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
-                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="data.map(d => d.value)" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'n-1'}}}"/>
+                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'n-1'}}}"/>
                     </div>
                     Last to First
                     <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
-                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="data.map(d => d.value)" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'lastToFirst'}}}"/>
+                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'lastToFirst'}}}"/>
                     </div>
                 </div>
                 <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
