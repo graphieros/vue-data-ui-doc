@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.76",
+    "date": "2024-11-07",
+    "updates": [
+      {
+        "component": "VueUiCarouselTable",
+        "description": "Fix tr offset when resizing in animated mode under the mobile breakpoint",
+        "link": "/docs/#vue-ui-carousel-table"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.75",
     "date": "2024-11-06",
     "updates": [

@@ -278,7 +278,7 @@ const carouselConfig = computed(() => {
             </div>
         </div>
 
-        <div class="hidden sm:flex flex-row flex-wrap sm:flex-nowrap gap-6">
+        <div class="sm:flex flex-row flex-wrap sm:flex-nowrap gap-6">
 
                 <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
                     <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
