@@ -1148,7 +1148,6 @@ export default function useExamples() {
     ])
 
     //-------------- VUE-UI-WORD-CLOUD --------------//
-
     const CONFIG_WORD_WLOUD_BASIC = computed(() => {
         return {
             table: TABLE.value,
@@ -1187,6 +1186,125 @@ export default function useExamples() {
         return data.filter(el => el.value > 4)
     })
 
+    //-------------- VUE-UI-SCATTER --------------//
+    const CONFIG_SCATTER_BASIC = computed(() => {
+        return {
+            table: TABLE.value,
+            style: {
+                backgroundColor: colors.value.bg,
+                color: colors.value.textColor,
+                layout: {
+                    axis: {
+                        stroke: colors.value.gridStroke
+                    },
+                    dataLabels: {
+                        xAxis: {
+                            color: colors.value.textColor,
+                        },
+                        yAxis: {
+                            color: colors.value.textColor
+                        }
+                    },
+                    plots: {
+                        radius: 4,
+                        stroke: colors.value.bg,
+                        selectors:  {
+                            stroke: colors.value.gridStroke,
+                            labels: {
+                                color: colors.value.textColor
+                            },
+                            markers: {
+                                fill: colors.value.gridStroke
+                            }
+                        },
+                        significance: {
+                            deviationThreshold: 30
+                        }
+                    }
+                },
+                legend: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor
+                },
+                title: {
+                    text: 'Title',
+                    color: colors.value.textColor,
+                    textAlign: 'left',
+                    paddingLeft: 24,
+                    subtitle: {
+                        text: 'Subtitle'
+                    }
+                },
+                tooltip: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    borderColor: colors.value.gridStroke,
+                    backgroundOpacity: 30
+                },
+            }
+        }
+    })
+
+    function makeScatterSet({ min, max, n, clusterName, weight = false }) {
+        const arr = [];
+        for(let i = 0; i < n; i += 1) {
+            arr.push({
+                y: (Math.random() > 0.4 ? max / 2 : max / 10) + Math.random() * (max - min) + min,
+                x: (Math.random() > 0.4 ? max / 2 : max / 10) + Math.random() * (max - min) + min,
+                name: `plot_${i}_${clusterName}`,
+                weight: weight ? Math.random() * 20 : undefined
+            })
+        }
+        return arr;
+    }
+
+    const DATASET_SCATTER_BASIC = ref([
+        {
+            name: 'Serie',
+            values: makeScatterSet({
+                min: 0,
+                max: 100,
+                n: 100,
+                clusterName: 'Serie',
+            })
+        }
+    ]);
+
+    const DATASET_SCATTER_BUBBLE = ref([
+        {
+            name: 'Serie',
+            values: makeScatterSet({
+                min: 0,
+                max: 100,
+                n: 100,
+                clusterName: 'Serie',
+                weight: true
+            })
+        }
+    ]);
+
+    const DATASET_SCATTER_MULTIPLE = ref([
+        {
+            name: 'Serie1',
+            color: '#1f77b4',
+            values: makeScatterSet({
+                min: 0,
+                max: 100,
+                n: 100,
+                clusterName: 'Serie1',
+            })
+        },
+        {
+            name: 'Serie2',
+            color: '#ff7f0e',
+            values: makeScatterSet({
+                min: -200,
+                max: 100,
+                n: 100,
+                clusterName: 'Serie2',
+            })
+        },
+    ]);
 
     const examples = computed(() => {
         return [
@@ -2838,6 +2956,186 @@ export default function useExamples() {
                     es: "Nube de palabras basada en un texto en hindi",
                     ko: "힌디어 텍스트를 기반으로 한 워드 클라우드",
                     ar: "سحابة الكلمات بناءً على نص باللغة الهندية"
+                }
+            },
+            // SCATTER BASIC
+            { 
+                dataset: DATASET_SCATTER_BASIC.value, 
+                config: CONFIG_SCATTER_BASIC.value,
+                component: 'VueUiScatter',
+                icon: 'chartScatter',
+                id: 'scatter-basic',
+                link: 'vue-ui-scatter',
+                description: {
+                    en: "Basic scatter plot chart",
+                    fr: "Graphique de dispersion de base",
+                    pt: "Gráfico de dispersão básico",
+                    de: "Einfaches Streudiagramm",
+                    zh: "基础散点图",
+                    jp: "基本的な散布図",
+                    es: "Gráfico de dispersión básico",
+                    ko: "기본 산점도 차트",
+                    ar: "مخطط مبعثر أساسي"
+                }
+            },
+            // SCATTER BUBBLE
+            { 
+                dataset: DATASET_SCATTER_BUBBLE.value, 
+                config: CONFIG_SCATTER_BASIC.value,
+                component: 'VueUiScatter',
+                icon: 'chartScatter',
+                id: 'scatter-bubble',
+                link: 'vue-ui-scatter',
+                description: {
+                    en: "Bubble chart",
+                    fr: "Graphique à bulles",
+                    pt: "Gráfico de bolhas",
+                    de: "Blasendiagramm",
+                    zh: "气泡图",
+                    jp: "バブルチャート",
+                    es: "Gráfico de burbujas",
+                    ko: "버블 차트",
+                    ar: "مخطط الفقاعات"
+                }
+            },
+            // SCATTER GIFT WRAP
+            { 
+                dataset: DATASET_SCATTER_BASIC.value, 
+                config: {
+                    ...CONFIG_SCATTER_BASIC.value,
+                    style: {
+                        ...CONFIG_SCATTER_BASIC.value.style,
+                        layout: {
+                            ...CONFIG_SCATTER_BASIC.value.style.layout,
+                            plots: {
+                                ...CONFIG_SCATTER_BASIC.value.style.layout.plots,
+                                giftWrap: {
+                                    show: true
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiScatter',
+                icon: 'chartScatter',
+                id: 'scatter-gift-wrap',
+                link: 'vue-ui-scatter',
+                description: {
+                    en: "With gift wrap algorithm",
+                    fr: "Avec l'algorithme de cerclage",
+                    pt: "Com algoritmo de embrulho de presente",
+                    de: "Mit Geschenkverpackungsalgorithmus",
+                    zh: "使用礼品包装算法",
+                    jp: "ギフトラップアルゴリズムを使用",
+                    es: "Con algoritmo de envoltura de regalo",
+                    ko: "선물 포장 알고리즘 사용",
+                    ar: "مع خوارزمية تغليف الهدايا"
+                }
+            },
+            // SCATTER MARGINAL BARS
+            { 
+                dataset: DATASET_SCATTER_BASIC.value, 
+                config: {
+                    ...CONFIG_SCATTER_BASIC.value,
+                    style: {
+                        ...CONFIG_SCATTER_BASIC.value.style,
+                        layout: {
+                            ...CONFIG_SCATTER_BASIC.value.style.layout,
+                            padding: {
+                                top: 0,
+                            },
+                            marginalBars: {
+                                show: true,
+                                fill: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                                showLines: true,
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiScatter',
+                icon: 'chartScatter',
+                id: 'scatter-marginal-bars',
+                link: 'vue-ui-scatter',
+                description: {
+                    en: "With marginal bars",
+                    fr: "Avec des barres marginales",
+                    pt: "Com barras marginais",
+                    de: "Mit Randbalken",
+                    zh: "带有边缘条",
+                    jp: "マージナルバー付き",
+                    es: "Con barras marginales",
+                    ko: "여백 막대 포함",
+                    ar: "مع أشرطة هامشية"
+                }
+            },
+            // SCATTER MULTIPLE SERIES WITH MIXED VALUES
+            { 
+                dataset: DATASET_SCATTER_MULTIPLE.value, 
+                config: {
+                    ...CONFIG_SCATTER_BASIC.value,
+                    style: {
+                        ...CONFIG_SCATTER_BASIC.value.style,
+                        layout: {
+                            ...CONFIG_SCATTER_BASIC.value.style.layout,
+                            padding: {
+                                top: 0,
+                            },
+                            marginalBars: {
+                                show: true,
+                                fill: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                                showLines: true,
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiScatter',
+                icon: 'chartScatter',
+                id: 'scatter-multiple-mixed',
+                link: 'vue-ui-scatter',
+                description: {
+                    en: "Multiple series, with mixed values",
+                    fr: "Séries multiples, avec des valeurs mixtes",
+                    pt: "Séries múltiplas, com valores mistos",
+                    de: "Mehrere Reihen, mit gemischten Werten",
+                    zh: "多个系列，包含混合值",
+                    jp: "複数のシリーズ、混合値あり",
+                    es: "Múltiples series, con valores mixtos",
+                    ko: "여러 시리즈, 혼합된 값 포함",
+                    ar: "سلاسل متعددة، بقيم مختلطة"
+                }
+            },
+            // SCATTER GIFT WRAP
+            { 
+                dataset: DATASET_SCATTER_MULTIPLE.value, 
+                config: {
+                    ...CONFIG_SCATTER_BASIC.value,
+                    style: {
+                        ...CONFIG_SCATTER_BASIC.value.style,
+                        layout: {
+                            ...CONFIG_SCATTER_BASIC.value.style.layout,
+                            plots: {
+                                ...CONFIG_SCATTER_BASIC.value.style.layout.plots,
+                                giftWrap: {
+                                    show: true
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiScatter',
+                icon: 'chartScatter',
+                id: 'scatter-gift-wrap',
+                link: 'vue-ui-scatter',
+                description: {
+                    en: "Multiple series, with mixed values and gift wrap algorithm",
+                    fr: "Séries multiples, avec des valeurs mixtes et un algorithme de cerclage",
+                    pt: "Séries múltiplas, com valores mistos e algoritmo de envoltório",
+                    de: "Mehrere Reihen, mit gemischten Werten und Geschenkverpackungsalgorithmus",
+                    zh: "多个系列，包含混合值和凸包算法",
+                    jp: "複数のシリーズ、混合値とギフトラップアルゴリズムあり",
+                    es: "Múltiples series, con valores mixtos y algoritmo de envoltura de regalo",
+                    ko: "여러 시리즈, 혼합된 값 및 기프트 랩 알고리즘 포함",
+                    ar: "سلاسل متعددة، بقيم مختلطة وخوارزمية التغليف"
                 }
             },
         ]

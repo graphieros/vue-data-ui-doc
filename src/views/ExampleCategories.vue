@@ -52,96 +52,99 @@ function updateCrumb() {
     }
 }
 
-const categories = ref([
-    { 
-        link: 'vue-ui-xy', 
-        icon: 'chartLine', 
-        component: 'VueUiXy',
-        thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
-        order: 0,
-    },
-    { 
-        link: 'vue-ui-donut', 
-        icon: 'chartDonut', 
-        component: 'VueUiDonut',
-        thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
-        order: 1
-    },
-    {
-        link: 'vue-ui-sparkline',
-        icon: 'chartSparkline',
-        component: 'VueUiSparkline',
-        thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
-        order: 2
-    },
-    {
-        link: 'vue-ui-stackbar',
-        icon: 'chartStackbar',
-        component: 'VueUiStackbar',
-        thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
-        order: 3
-    },
-    { 
-        link: 'vue-ui-nested-donuts', 
-        icon: 'chartNestedDonuts', 
-        component: 'VueUiNestedDonuts',
-        thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
-        order: 4
-    },
-    {
-        link: 'vue-ui-waffle',
-        icon: 'chartWaffle',
-        component: 'VueUiWaffle',
-        thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
-        order: 5
-    },
-    {
-        link: 'vue-ui-vertical-bar',
-        icon: 'chartVerticalBar',
-        component: 'VueUiVerticalBar',
-        thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
-        order: 6
-    },
-    {
-        link: 'vue-ui-heatmap',
-        icon: 'chartHeatmap',
-        component: 'VueUiHeatmap',
-        thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
-        order: 7
-    },
-    {
-        link: 'vue-ui-gauge',
-        icon: 'chartGauge',
-        component: 'VueUiGauge',
-        thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
-        order: 8
-    },
-    {
-        link: 'vue-ui-onion',
-        icon: 'chartOnion',
-        component: 'VueUiOnion',
-        thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
-        order: 9
-    },
-    {
-        link: 'vue-ui-word-cloud',
-        icon: 'chartWordCloud',
-        component: 'VueUiWordCloud',
-        thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
-        order: 10
-    }
-]);
+const categories = computed(() => {
+    return  [
+        { 
+            link: 'vue-ui-xy', 
+            icon: 'chartLine', 
+            component: 'VueUiXy',
+            thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
+        },
+        { 
+            link: 'vue-ui-donut', 
+            icon: 'chartDonut', 
+            component: 'VueUiDonut',
+            thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
+        },
+        {
+            link: 'vue-ui-sparkline',
+            icon: 'chartSparkline',
+            component: 'VueUiSparkline',
+            thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
+        },
+        {
+            link: 'vue-ui-stackbar',
+            icon: 'chartStackbar',
+            component: 'VueUiStackbar',
+            thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
+        },
+        { 
+            link: 'vue-ui-nested-donuts', 
+            icon: 'chartNestedDonuts', 
+            component: 'VueUiNestedDonuts',
+            thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
+        },
+        {
+            link: 'vue-ui-waffle',
+            icon: 'chartWaffle',
+            component: 'VueUiWaffle',
+            thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
+        },
+        {
+            link: 'vue-ui-vertical-bar',
+            icon: 'chartVerticalBar',
+            component: 'VueUiVerticalBar',
+            thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
+        },
+        {
+            link: 'vue-ui-heatmap',
+            icon: 'chartHeatmap',
+            component: 'VueUiHeatmap',
+            thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
+        },
+        {
+            link: 'vue-ui-gauge',
+            icon: 'chartGauge',
+            component: 'VueUiGauge',
+            thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
+        },
+        {
+            link: 'vue-ui-onion',
+            icon: 'chartOnion',
+            component: 'VueUiOnion',
+            thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
+        },
+        {
+            link: 'vue-ui-word-cloud',
+            icon: 'chartWordCloud',
+            component: 'VueUiWordCloud',
+            thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
+        },
+        {
+            link: "vue-ui-scatter",
+            icon: 'chartScatter',
+            component: 'VueUiScatter',
+            thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_scatter_light.png', import.meta.url).href,
+        }
+    ].map((c, i) => {
+        return {
+            ...c,
+            order: i
+        }
+    })
+})
 
 const inProgress = ref({
     en: 'A selection of examples to showcase Vue Data UI flexibility',
