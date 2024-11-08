@@ -305,7 +305,7 @@ const trendConfig = computed(() => {
         </div>
 
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md min-h-[400px]">
                 <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
                     <BaseDocHeaderActions
                         targetDoc="vue-ui-sparkstackbar"
@@ -326,7 +326,7 @@ const trendConfig = computed(() => {
                         <StackRespondents :detail="resp1"/>
                 </div>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md min-h-[400px]">
                 <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
                     <BaseDocHeaderActions
                         targetDoc="vue-ui-sparkstackbar"
@@ -346,7 +346,7 @@ const trendConfig = computed(() => {
                         <StackRespondents :detail="resp2"/>
                 </div>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
+            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md min-h-[400px]">
                 <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
                     <BaseDocHeaderActions
                         targetDoc="vue-ui-sparkstackbar"
