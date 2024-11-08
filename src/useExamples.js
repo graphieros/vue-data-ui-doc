@@ -13,7 +13,12 @@ export default function useExamples() {
         return {
             bg: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
             textColor: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-            gridStroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+            gridStroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+            grey: '#6A6A6A',
+            blue: '#1f77b4',
+            green: '#98df8a',
+            orange: '#ff7f0e',
+            yellow: '#e7ba52'
         }
     });
     
@@ -1340,6 +1345,135 @@ export default function useExamples() {
     const DATASET_WHEEL_BASIC = ref({
         percentage: 80
     })
+
+    //-------------- VUE-UI-SPARKHISTOGRAM --------------//
+    const CONFIG_SPARKHISTOGRAM_BASIC = computed(() => {
+        return {
+            style: {
+                backgroundColor: colors.value.bg,
+                bars: {
+                    colors: {
+                        positive: colors.value.blue
+                    }
+                },
+                labels: {
+                    timeLabel: {
+                        color: colors.value.grey
+                    },
+                    value: {
+                        color: colors.value.textColor
+                    },
+                    valueLabel: {
+                        color: colors.value.textColor
+                    }
+                },
+                selector: {
+                    stroke: colors.value.blue
+                },
+                title: {
+                    textAlign: "left",
+                    text: "Rainfall in mm",
+                    color: colors.value.textColor,
+                    fontSize: 24,
+                    bold: true,
+                    margin: "0 0 6px 0",
+                        subtitle: {
+                            color: "#A1A1A1",
+                            text: "",
+                            fontSize: 12,
+                            bold: false
+                        }
+                    }
+            }
+        }
+    })
+
+    const DATASET_SPARKHISTOGRAM_BASE = ref([
+        {
+            value: 1.2,
+            valueLabel: "20%",
+            timeLabel: "09:00",
+            intensity: 0.2,
+        },
+        {
+            value: 1.3,
+            valueLabel: "50%",
+            timeLabel: "10:00",
+            intensity: 0.5,
+    
+        },
+        {
+            value: 1.1,
+            valueLabel: "60%",
+            timeLabel: "11:00",
+            intensity: 0.6,
+    
+        },
+        {
+            value: 0.8,
+            valueLabel: "70%",
+            timeLabel: "12:00",
+            intensity: 0.7,
+    
+        },
+        {
+            value: 2,
+            valueLabel: "100%",
+            timeLabel: "13:00",
+            intensity: 1,
+    
+        },
+        {
+            value: 2.1,
+            valueLabel: "100%",
+            timeLabel: "14:00",
+            intensity: 1,
+    
+        },
+        {
+            value: 2.3,
+            valueLabel: "80%",
+            timeLabel: "15:00",
+            intensity: 0.8,
+    
+        },
+        {
+            value: 2.1,
+            valueLabel: "70%",
+            timeLabel: "16:00",
+            intensity: 0.7,
+    
+        },
+        {
+            value: 0.9,
+            valueLabel: "60%",
+            timeLabel: "17:00",
+            intensity: 0.6,
+    
+        },
+        {
+            value: 0.7,
+            valueLabel: "50%",
+            timeLabel: "18:00",
+            intensity: 0.5,
+    
+        },
+        {
+            value: 0.3,
+            valueLabel: "30%",
+            timeLabel: "19:00",
+            intensity: 0.3,
+    
+        },
+        {
+            value: 0.2,
+            valueLabel: "20%",
+            timeLabel: "20:00",
+            intensity: 0.2,
+    
+        },
+    ])
+
 
     const examples = computed(() => {
         return [
@@ -3238,6 +3372,100 @@ export default function useExamples() {
                     es: "Menos gradiente, marcas rectangulares",
                     ko: "더 적은 그라데이션, 직사각형 눈금",
                     ar: "تدرج أقل، علامات مستطيلة"
+                }
+            },
+            // SPARKHISTOGRAM BASIC
+            { 
+                dataset: DATASET_SPARKHISTOGRAM_BASE.value, 
+                config: CONFIG_SPARKHISTOGRAM_BASIC.value,
+                component: 'VueUiSparkHistogram',
+                icon: 'chartSparkHistogram',
+                id: 'sparkhistogram-basic',
+                link: 'vue-ui-sparkhistogram',
+                description: {
+                    en: "Basic spark histogram chart",
+                    fr: "Histogramme compact de base",
+                    pt: "Histograma compacto básico",
+                    de: "Grundlegendes kompaktes Histogrammdiagramm",
+                    zh: "基础紧凑型直方图",
+                    jp: "基本コンパクトヒストグラムチャート",
+                    es: "Histograma compacto básico",
+                    ko: "기본 소형 히스토그램 차트",
+                    ar: "مخطط المدرج التكراري المضغوط الأساسي"
+                }
+            },
+            // SPARKHISTOGRAM SHAPE STAR
+            { 
+                dataset: DATASET_SPARKHISTOGRAM_BASE.value, 
+                config: {
+                    ...CONFIG_SPARKHISTOGRAM_BASIC.value,
+                    style: {    
+                        ...CONFIG_SPARKHISTOGRAM_BASIC.value.style,
+                        bars: {
+                            ...CONFIG_SPARKHISTOGRAM_BASIC.value.style.bars,
+                            shape: 'star',
+                            colors: {
+                                positive: colors.value.yellow
+                            }
+                        },
+                        selector: {
+                            stroke: colors.value.yellow
+                        }
+                    }
+                },
+                component: 'VueUiSparkHistogram',
+                icon: 'chartSparkHistogram',
+                id: 'sparkhistogram-star',
+                link: 'vue-ui-sparkhistogram',
+                description: {
+                    en: "With stars",
+                    fr: "Avec des étoiles",
+                    pt: "Com estrelas",
+                    de: "Mit Sternen",
+                    zh: "带星星",
+                    jp: "星付き",
+                    es: "Con estrellas",
+                    ko: "별 포함",
+                    ar: "مع نجوم"
+                }
+            },
+            // SPARKHISTOGRAM STRECHED, SDQUARED, NO GAP
+            { 
+                dataset: DATASET_SPARKHISTOGRAM_BASE.value, 
+                config: {
+                    ...CONFIG_SPARKHISTOGRAM_BASIC.value,
+                    style: {
+                        ...CONFIG_SPARKHISTOGRAM_BASIC.value.style,
+                        bars: {
+                            ...CONFIG_SPARKHISTOGRAM_BASIC.value.style.bars,
+                            borderRadius: 0,
+                            gap: 1,
+                            colors: {
+                                positive: colors.value.orange
+                            }
+                        },
+                        layout: {
+                            height: 300
+                        },
+                        selector: {
+                            stroke: colors.value.orange
+                        }
+                    }
+                },
+                component: 'VueUiSparkHistogram',
+                icon: 'chartSparkHistogram',
+                id: 'sparkhistogram-stretched',
+                link: 'vue-ui-sparkhistogram',
+                description: {
+                    en: "Stretched, no border radius, no space between",
+                    fr: "Étiré, sans rayon de bordure, sans intervalle",
+                    pt: "Esticado, sem raio de borda, sem espaço entre",
+                    de: "Gestreckt, ohne Randradius, ohne Zwischenraum",
+                    zh: "拉伸，无边框半径，无间隙",
+                    jp: "伸縮、境界半径なし、間隔なし",
+                    es: "Estirado, sin radio de borde, sin espacio entre",
+                    ko: "늘어진, 테두리 반지름 없음, 간격 없음",
+                    ar: "ممتد، بدون نصف قطر الحدود، بدون مسافة بين"
                 }
             },
         ]
