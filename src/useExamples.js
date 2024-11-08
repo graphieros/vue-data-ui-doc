@@ -1306,6 +1306,41 @@ export default function useExamples() {
         },
     ]);
 
+    //-------------- VUE-UI-WHEEL --------------//
+    const CONFIG_WHEEL_BASIC = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    layout: {
+                        innerCircle: {
+                            stroke: colors.value.gridStroke
+                        },
+                        wheel: {
+                            ticks: {
+                                inactiveColor: colors.value.gridStroke
+                            }
+                        }
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddingLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    }    
+                }
+            }
+        }
+    })
+
+    const DATASET_WHEEL_BASIC = ref({
+        percentage: 80
+    })
+
     const examples = computed(() => {
         return [
             // XY BASIC LINE
@@ -3136,6 +3171,73 @@ export default function useExamples() {
                     es: "Múltiples series, con valores mixtos y algoritmo de envoltura de regalo",
                     ko: "여러 시리즈, 혼합된 값 및 기프트 랩 알고리즘 포함",
                     ar: "سلاسل متعددة، بقيم مختلطة وخوارزمية التغليف"
+                }
+            },
+            // WHEEL BASIC
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: CONFIG_WHEEL_BASIC.value,
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-basic',
+                link: 'vue-ui-wheel',
+                description: {
+                    en: "Wheel gauge chart basic",
+                    fr: "Jauge en forme de roue basique",
+                    pt: "Gráfico de medidor de roda básico",
+                    de: "Grundlegendes Radmessgerät-Diagramm",
+                    zh: "基本轮式仪表图",
+                    jp: "基本ホイールゲージチャート",
+                    es: "Gráfico de medidor de rueda básico",
+                    ko: "기본 휠 게이지 차트",
+                    ar: "مخطط عداد عجلة أساسي"
+                }
+            },
+            // WHEEL LESS GRADIENT SQUARED TICKS
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: {
+                    ...CONFIG_WHEEL_BASIC.value,
+                    style: {
+                        ...CONFIG_WHEEL_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_WHEEL_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_WHEEL_BASIC.value.style.chart.layout,
+                                innerCircle: {
+                                    show: false,
+                                },
+                                percentage: {
+                                    fontSize: 90,
+                                },
+                                wheel: {
+                                    ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel,
+                                    ticks: {
+                                        ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel.ticks,
+                                        rounded: false,
+                                        gradient: {
+                                            show: false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-less-gradient-squared',
+                link: 'vue-ui-wheel',
+                description: {
+                    en: "Less gradient, rectangular ticks",
+                    fr: "Moins de dégradé, graduations rectangulaires",
+                    pt: "Menos gradiente, marcações retangulares",
+                    de: "Weniger Verlauf, rechteckige Markierungen",
+                    zh: "减少渐变，矩形刻度",
+                    jp: "勾配を少なくし、長方形の目盛り",
+                    es: "Menos gradiente, marcas rectangulares",
+                    ko: "더 적은 그라데이션, 직사각형 눈금",
+                    ar: "تدرج أقل، علامات مستطيلة"
                 }
             },
         ]
