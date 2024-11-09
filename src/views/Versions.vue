@@ -1746,6 +1746,10 @@ const carouselDataset = computed(() => {
     body: arr }
 })
 
+const versionsReleases = computed(() => {
+  return JSON.parse(JSON.stringify(sparklineReleases.value)).reverse()
+})
+
 </script>
 
 <template>
@@ -1845,7 +1849,7 @@ const carouselDataset = computed(() => {
                     </div>
                 </div>
                 <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
-                  <VueUiSparkline :dataset="JSON.parse(JSON.stringify(sparklineReleases)).reverse()" :config="sparklineConfigForReleases"/>
+                  <VueUiSparkline :dataset="versionsReleases" :config="sparklineConfigForReleases"/>
                   <div style="height: 48px"/>
                   <div class="w-full shadow-lg">
                     <VueDataUi v-if="done" component="VueUiWordCloud" :dataset="wordCloudDataset" :config="wordCloudConfig"/>
