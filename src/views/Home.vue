@@ -8,6 +8,7 @@ import staticReleases from "../../public/releases.json"
 import { useConfig } from "../assets/useConfig";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseColorInput from "../components/BaseColorInput.vue";
+import updates from '../../public/releases.json'
 
 const configs = useConfig()
 
@@ -477,7 +478,6 @@ const componentTranslation = ref({
     </div>
 
     <div class="w-[400px] max-w-[400px] lg:w-[500px] lg:min-w-[500px] 2xl:w-[900px] 2xl:min-w-[900px] relative">
-      <BaseColorInput/>
         <Suspense>
           <template #default>
             <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu">
@@ -536,7 +536,14 @@ const componentTranslation = ref({
 
 </template>
 
+<style>
+.carousel thead {
+  font-size: 12px !important;
+}
+</style>
+
 <style scoped>
+
 .home-perspective-wrapper {
   perspective-origin: center;
   perspective: 400px;

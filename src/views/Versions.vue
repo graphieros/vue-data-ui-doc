@@ -6,6 +6,7 @@ import staticReleases from "../../public/releases.json"
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui"
 import { useConfig } from "../assets/useConfig";
 import { useIconMap, isValidComponent } from "../useIconMap";
+import updates from "../../public/releases.json"
 
 const globalConfig = useConfig()
 
@@ -1613,13 +1614,148 @@ const trendData = computed(() => {
   return data.value.map(d => d.value)
 })
 
+const carouselConfig = computed(() => {
+  return {
+    responsiveBreakpoint: 400,
+    userOptions: {
+        show: false,
+    },
+    animation: {
+        use: true,
+        speedMs: 2000,
+        pauseOnHover: true
+    },
+    style: {
+        backgroundColor: isDarkMode.value ? "#2A2A2A" : '#F3F4F6',
+        color: "#CCCCCC",
+        fontFamily: "inherit"
+    },
+    border: {
+        size: 0,
+        color: "#2D353C"
+    },
+    caption: {
+        text: "Latest updates",
+        padding: {
+            top: 6,
+            right: 12,
+            bottom: 6,
+            left: 12
+        },
+        style: {
+            backgroundColor: isDarkMode.value ? "#2A2A2A" : '#F3F4F6',
+            color: isDarkMode.value ? "#42d392" : '#1A1A1A',
+            fontSize: "16px",
+            fontWeight: "bold",
+            textAlign: "left"
+        }
+    },
+    thead: {
+        style: {
+            verticalAlign: "middle"
+        },
+        tr: {
+            height: 0,
+            border: {
+                size: 0,
+                color: "#2D353C"
+            },
+            style: {
+                backgroundColor: isDarkMode.value ? "#3A3A3A" : '#FFFFFF',
+                color: isDarkMode.value ? "#8A8A8A" : '#1A1A1A',
+                boxShadow: "0px 6px 12px -6px #1A1A1A"
+            },
+            th: {
+                border: {
+                    size: 0,
+                    color: "#2D353C"
+                },
+                padding: {
+                    top: 0,
+                    right: 12,
+                    bottom: 0,
+                    left: 12
+                },
+                style: {
+                    borderSpacing: 0,
+                    border: "none",
+                    textAlign: "left",
+                    fontVariantNumeric: "tabular-nums"
+                }
+            }
+        }
+    },
+    tbody: {
+        tr: {
+            visible: 1,
+            height: 32,
+            border: {
+                size: 0,
+                color: "#2D353C"
+            },
+            style: {
+                backgroundColor: isDarkMode.value ? "#4A4A4A" : '#E1E5E8',
+                color: isDarkMode.value ? "#CCCCCC" : '#1A1A1A'
+            },
+            td: {
+                alternateColor: true,
+                alternateOpacity: 0.8,
+                border: {
+                    size: 0,
+                    color: "#2D353C"
+                },
+                padding: {
+                    top: 0,
+                    right: 12,
+                    bottom: 0,
+                    left: 12
+                },
+                style: {
+                    fontVariantNumeric: "tabular-nums",
+                    textAlign: "left",
+                    backgroundColor: isDarkMode.value ? "#2A2A2A" : '#E1E5E8'
+                }
+            }
+        }
+    }
+}
+})
+
+const carouselDataset = computed(() => {
+
+  const arr = [];
+  updates.slice(0, 5).forEach(u => {
+    for(let i = 0; i < u.updates.length; i += 1) {
+        arr.push([
+          u.date,
+          u.version,
+          u.updates[i].component,
+          u.updates[i].description
+        ])
+      }
+  })
+
+  return {
+    head: [
+      'Date',
+      'Version',
+      'Component',
+      'Description',
+    ],
+
+    body: arr }
+})
+
 </script>
 
 <template>
-    <SideMenu @toggle="toggleMenu"/>
-    <div :class="`${isOpen ? 'pl-[348px] pr-[48px] hidden sm:block' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden`">
+      <div class="carousel hidden sm:block fixed top-[55px] left-0 w-full" style="z-index: 10">
+        <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig"/>
+      </div>
+    <!-- <SideMenu @toggle="toggleMenu"/> -->
+    <div :class="`pt-9 sm:pt-24 overflow-x-hidden`">
 
-        <div :class="`${isOpen ? 'xl:w-5/6' : ''}`">
+        <div :class="``">
           <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.versions[store.lang] }}</h1>
 
           <div class="flex flex-row gap-4 flex-wrap mx-auto max-w-[1200px] px-4 justify-center">
@@ -1771,5 +1907,10 @@ const trendData = computed(() => {
 .treemap-icon svg {
   height: unset;
   width: 50%;
+}
+.carousel td {
+  width: fit-content;
+  min-width: 120px;
+  font-size: 14px;
 }
 </style>

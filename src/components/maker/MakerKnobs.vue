@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import { useMainStore } from "../../stores";
 import { useMakerStore } from "../../stores/maker";
+import BaseColorInput from "../BaseColorInput.vue";
 
 const props = defineProps({
     categories: {
@@ -54,6 +55,7 @@ function getLabel(label) {
                             <input type="range" v-model="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" class="accent-app-blue z-10" @change="emit('change')">
                         </div>
                     </template>
+                    <BaseColorInput v-else-if="knob.type === 'color'" :rgba="true" v-model:value="knob.def"/>
                     <input v-else-if="!['number', 'range', 'select'].includes(knob.type)" class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" v-model="knob.def" @change="emit('change')">
                     <select v-else-if="knob.type === 'select'" v-model="knob.def" @change="emit('change')" class="h-[32px] px-2">
                         <option v-for="opt in knob.options">{{ opt }}</option>
