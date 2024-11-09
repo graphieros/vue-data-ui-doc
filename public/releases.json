@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.3.77",
+    "date": "2024-11-09",
+    "updates": [
+      {
+        "component": "All components",
+        "description": "It is now possible to use colors containing alpha channel in props (dataset, config)"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.76",
     "date": "2024-11-07",
     "updates": [
