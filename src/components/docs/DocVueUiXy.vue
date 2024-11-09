@@ -949,7 +949,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="show" attr="chart.highlightArea.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="from" attr="chart.highlightArea.from" type="number" defaultVal="0" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="to" attr="chart.highlightArea.to" type="number" defaultVal="0" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="color" attr="chart.highlightArea.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="color" attr="chart.highlightArea.color" type="color" :rgba="false" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="opacity" attr="chart.highlightArea.opacity" type="range" defaultVal="20" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseDetails attr="caption" :level="3" title="chart.highlightArea.caption">
                     <BaseAttr name="text" attr="chart.highlightArea.caption.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -963,7 +963,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 </BaseDetails>
             </BaseDetails>
             <BaseDetails attr="highlighter" :level="2" title="chart.highlighter">
-                <BaseAttr name="color" attr="chart.highlighter.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="color" attr="chart.highlighter.color" type="color" :rgba="false" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="opacity" attr="chart.highlighter.opacity" type="range" defaultVal="5" :min="0" :max="30" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="useLine" attr="chart.highlighter.useLine" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="lineDasharray" attr="chart.highlighter.lineDasharray" type="number" defaultVal="2" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1012,8 +1012,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
             </BaseDetails>
             <BaseDetails attr="tooltip" :level="2" title="chart.tooltip">
                 <BaseAttr name="show" attr="chart.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="color" attr="chart.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="backgroundColor" attr="chart.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                <BaseAttr name="color" attr="chart.tooltip.color" type="color" defaultVal="#2D353C" :rgba="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="backgroundColor" attr="chart.tooltip.backgroundColor" :rgba="false" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="showValue" attr="chart.tooltip.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="showPercentage" attr="chart.tooltip.showPercentage" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <span>customFormat: null, <span class="text-app-blue break-keep text-xs">// default behavior. To customize, check out the 'custom tooltip' tab</span></span>

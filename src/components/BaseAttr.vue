@@ -5,6 +5,7 @@ import BaseNumberInput from "./BaseNumberInput.vue";
 import { RefreshDotIcon } from "vue-tabler-icons";
 import BaseComment from "./BaseComment.vue";
 import BaseColorInfo from "./BaseColorInfo.vue";
+import BaseColorInput from "./BaseColorInput.vue";
 
 const props = defineProps({
     light: {
@@ -56,6 +57,10 @@ const props = defineProps({
     comment: {
         type: String,
         default: ''
+    },
+    rgba: {
+        type: Boolean,
+        default: false
     }
 })
 
@@ -144,7 +149,8 @@ const isSelected = ref(false);
             <input type="text" v-model="nestedAttribute" @change="emit('change')">
         </template>
         <template v-if="type === 'color'">
-            <input type="color" v-model="nestedAttribute" @change="emit('change')">
+            <BaseColorInput v-if="rgba" v-model:value="nestedAttribute" @change="emit('change')"/>
+            <input v-else type="color" v-model="nestedAttribute" @change="emit('change')">
         </template>
         <template v-if="type === 'range'">
             <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
