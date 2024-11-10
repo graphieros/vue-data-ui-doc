@@ -22,6 +22,8 @@ const isMobile = computed(() => {
     return window.innerWidth < 800;
 })
 
+const isDarkMode = computed(() => store.isDarkMode);
+
 const translations = computed(() => {
     return store.translations;
 })
@@ -150,7 +152,15 @@ function getLabel(label) {
 <template>
     <div>
         <ClearStorageAndRefresh keyConfig="onionConfig" keyDataset="onionDataset" :key="`clear_${clearStep}`"/>
-<DocLink to="vue-ui-onion" name="VueUiOnion"/>
+        <div class="flex flex-row flex-wrap gap-4 place-items-center">
+            <DocLink to="vue-ui-onion" name="VueUiOnion"/>
+            <RouterLink to="/examples/categories#vue-ui-onion">
+                <button class="flex flex-row gap-2 place-items-center rounded-md border border-black dark:border-app-green py-3 px-4 hover:bg-[#42D39233] hover:shadow-xl">
+                    <VueUiIcon name="clipboardLine" :stroke="isDarkMode ? '#42D392' : '#1A1A1A'" :size="20"/>
+                    {{ translations.viewExamples[store.lang] }}
+                </button>
+            </RouterLink>
+        </div>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <transition name="fade">                
