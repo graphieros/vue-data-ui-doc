@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.3.79",
+    "date": "2024-11-10",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Fix bleeding gradient on transparent background",
+        "link": "/docs/#vue-ui-donut"
+      },
+      {
+        "component": "VueUiGauge",
+        "description": "Fix bleeding gradient on transparent background",
+        "link": "/docs/#vue-ui-gauge"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.77",
     "date": "2024-11-09",
     "updates": [

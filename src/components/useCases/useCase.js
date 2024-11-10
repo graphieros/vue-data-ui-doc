@@ -397,7 +397,8 @@ export function useCase() {
                         show: true,
                         smooth: true,
                         lineColor: "#1F77B4",
-                        selectedColor: isDarkMode.value ? '#8A8A8A' : '#8A8A8A'
+                        selectedColor: isDarkMode.value ? '#8A8A8A' : '#8A8A8A',
+                        indicatorColor: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
                     }
                 }
             }
