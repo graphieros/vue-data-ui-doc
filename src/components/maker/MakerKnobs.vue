@@ -42,7 +42,7 @@ function getLabel(label) {
 
 <template>
     <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4" v-for="category in categories">
-        <div class="w-full bg-gradient-to-r from-app-blue-light dark:from-app-blue to-transparent pl-3 py-2 rounded text-black dark:text-white">
+        <div class="w-full bg-gradient-to-r from-app-blue-light dark:from-app-blue-dark to-transparent pl-3 py-2 rounded text-black dark:text-white">
             <h4>{{ category.title }}</h4> 
         </div>
         <div class="flex flex-row gap-4 place-items-center flex-wrap">

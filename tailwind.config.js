@@ -16,6 +16,7 @@ export default {
         "black-100" : "#242424",
         "app-green": "#42d392",
         "app-blue": "#5f8aee",
+        "app-blue-dark": "#314063",
         "app-blue-light": "#abc2f6",
         "app-orange": "#ff6600",
         "app-red": "#ff3700",
