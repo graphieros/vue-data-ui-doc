@@ -60,6 +60,7 @@ const categories = computed(() => {
             component: 'VueUiXy',
             thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.xy
         },
         { 
             link: 'vue-ui-donut', 
@@ -67,6 +68,7 @@ const categories = computed(() => {
             component: 'VueUiDonut',
             thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.donut
         },
         {
             link: 'vue-ui-sparkline',
@@ -74,6 +76,7 @@ const categories = computed(() => {
             component: 'VueUiSparkline',
             thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.sparkline
         },
         {
             link: 'vue-ui-stackbar',
@@ -81,6 +84,7 @@ const categories = computed(() => {
             component: 'VueUiStackbar',
             thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.stackbar
         },
         { 
             link: 'vue-ui-nested-donuts', 
@@ -88,6 +92,7 @@ const categories = computed(() => {
             component: 'VueUiNestedDonuts',
             thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.nestedDonuts
         },
         {
             link: 'vue-ui-waffle',
@@ -95,6 +100,7 @@ const categories = computed(() => {
             component: 'VueUiWaffle',
             thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.waffle
         },
         {
             link: 'vue-ui-vertical-bar',
@@ -102,6 +108,7 @@ const categories = computed(() => {
             component: 'VueUiVerticalBar',
             thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.verticalBar
         },
         {
             link: 'vue-ui-heatmap',
@@ -109,6 +116,7 @@ const categories = computed(() => {
             component: 'VueUiHeatmap',
             thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.heatmap
         },
         {
             link: 'vue-ui-gauge',
@@ -116,6 +124,7 @@ const categories = computed(() => {
             component: 'VueUiGauge',
             thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.gauge
         },
         {
             link: 'vue-ui-onion',
@@ -123,6 +132,7 @@ const categories = computed(() => {
             component: 'VueUiOnion',
             thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.onion
         },
         {
             link: 'vue-ui-word-cloud',
@@ -130,6 +140,7 @@ const categories = computed(() => {
             component: 'VueUiWordCloud',
             thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.wordCloud
         },
         {
             link: "vue-ui-scatter",
@@ -137,6 +148,7 @@ const categories = computed(() => {
             component: 'VueUiScatter',
             thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_scatter_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.scatter
         },
         {
             link: 'vue-ui-wheel',
@@ -144,6 +156,7 @@ const categories = computed(() => {
             component: 'VueUiWheel',
             thumb: new URL('../assets/thumb_wheel.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_wheel_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.wheel
         },
         {
             link: 'vue-ui-sparkhistogram',
@@ -151,6 +164,7 @@ const categories = computed(() => {
             component: 'VueUiSparkHistogram',
             thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_histogram_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.histogram
         },
         {
             link: 'vue-ui-quadrant',
@@ -158,6 +172,7 @@ const categories = computed(() => {
             component: 'VueUiQuadrant',
             thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.quadrant
         }
     ].map((c, i) => {
         return {
@@ -193,20 +208,24 @@ const checkTheDocs = ref({
 
 const selectedLink = ref('');
 const selectedOrder = ref(null);
+const selectedType = ref(null);
 
 onMounted(() => {
     if (route.hash) {
         selectedLink.value = route.hash.replace('#', '');
         selectedOrder.value = categories.value.find(c => c.link === selectedLink.value).order;
+        selectedType.value = categories.value.find(c => c.link === selectedLink.value);
         updateCrumb();
     } else {
         updateHash('vue-ui-xy');
+        selectedType.value = categories.value.find(c => c.link === 'vue-ui-xy')
     }
 });
 
 function updateHash(link) {
     router.push({ path: route.path, hash: link ? `#${link}` : '' });
     selectedLink.value = link;
+    selectedType.value = categories.value.find(c => c.link === link);
     setTimeout(updateCrumb, 100)
 }
 
@@ -254,6 +273,18 @@ const hoveredLink = ref(null);
             </RouterLink>
         </div>
     </div>
+
+    <div v-if="selectedType && selectedType.description" class="max-w-[1270px] px-12 my-12 pt-12 mx-auto text-center border-t border-gray-500 flex flex-col justify-center gap-2">
+        <div class="flex flex-row gap-4 place-items-center justify-center">
+            <VueUiIcon :name="selectedType.icon" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'" :size="50"/>
+            <span class="text-black dark:text-app-blue-light text-4xl">
+                <span class="text-gray-500 dark:text-app-blue">VueUi</span>
+                <span class="dark:text-app-blue-light">{{ selectedType.component.replace('VueUi', '') }}</span>
+            </span>
+        </div>
+        <div class="text-gray-500 mx-auto max-w-[60ch]" dir="auto">{{ selectedType.description[store.lang] }}</div>
+    </div>
+
     <div class="min-h-[1000px]">
         <!-- EXAMPLES DISPLAY -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap px-4 sm:px-16 mt-12 sm:mt-20">
