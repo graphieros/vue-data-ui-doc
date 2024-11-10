@@ -37,10 +37,26 @@ function getLabel(label) {
     makerTranslations.value.labels[label] ?
     makerTranslations.value.labels[label][store.lang] : label
 }
+
+const warningColorAlpha = ref({
+    en: "Transparent colors are usable since v2.3.77",
+    fr: "Les couleurs transparentes sont utilisables depuis la version v2.3.77",
+    pt: "Cores transparentes são utilizáveis desde a v2.3.77",
+    de: "Transparente Farben sind seit Version v2.3.77 verwendbar",
+    zh: "自 v2.3.77 起可使用透明颜色",
+    jp: "v2.3.77から透明な色が使用可能です",
+    es: "Los colores transparentes son utilizables desde la v2.3.77",
+    ko: "투명 색상은 v2.3.77부터 사용할 수 있습니다",
+    ar: "الألوان الشفافة قابلة للاستخدام منذ الإصدار v2.3.77"
+})
     
 </script>
 
 <template>
+    <div class="w-full border border-app-orange p-4 rounded mt-6 flex flex-row gap-2 bg-[#ff660020] text-black dark:text-white" dir="auto">
+        <VueUiIcon name="circleExclamation" stroke="#ff6600"/>
+        {{ warningColorAlpha[store.lang] }}
+    </div>
     <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4" v-for="category in categories">
         <div class="w-full bg-gradient-to-r from-app-blue-light dark:from-app-blue-dark to-transparent pl-3 py-2 rounded text-black dark:text-white">
             <h4>{{ category.title }}</h4> 
