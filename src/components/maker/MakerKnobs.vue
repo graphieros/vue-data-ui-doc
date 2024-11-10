@@ -42,10 +42,12 @@ function getLabel(label) {
 
 <template>
     <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4" v-for="category in categories">
-        <h4>{{ category.title }}</h4> 
+        <div class="w-full bg-gradient-to-r from-app-blue-light dark:from-app-blue to-transparent pl-3 py-2 rounded text-black dark:text-white">
+            <h4>{{ category.title }}</h4> 
+        </div>
         <div class="flex flex-row gap-4 place-items-center flex-wrap">
             <div v-for="knob in model.filter(k => k.category === category.key)" class="flex flex-col justify-start my-2">
-                <label v-if="knob.type !== 'color'" class="text-xs" dir="auto">{{ getLabel(knob.label) }}</label>
+                <label v-if="knob.type !== 'color'" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }}</label>
                 <div class="flex place-items-center justify-start h-[40px]">
                     <BaseNumberInput v-if="knob.type === 'number'" v-model:value="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" @change="emit('change')"/>
                     <template v-if="knob.type === 'range'">
