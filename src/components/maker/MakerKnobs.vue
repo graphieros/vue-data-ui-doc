@@ -45,7 +45,7 @@ function getLabel(label) {
         <h4>{{ category.title }}</h4> 
         <div class="flex flex-row gap-4 place-items-center flex-wrap">
             <div v-for="knob in model.filter(k => k.category === category.key)" class="flex flex-col justify-start my-2">
-                <label :class="`text-xs ${knob.type === 'color' ? 'pl-4' : ''}`" dir="auto">{{ getLabel(knob.label) }}</label>
+                <label v-if="knob.type !== 'color'" class="text-xs" dir="auto">{{ getLabel(knob.label) }}</label>
                 <div class="flex place-items-center justify-start h-[40px]">
                     <BaseNumberInput v-if="knob.type === 'number'" v-model:value="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" @change="emit('change')"/>
                     <template v-if="knob.type === 'range'">
@@ -54,7 +54,7 @@ function getLabel(label) {
                             <input type="range" v-model="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" class="accent-app-blue z-10" @change="emit('change')">
                         </div>
                     </template>
-                    <BaseColorInput v-else-if="knob.type === 'color'" :rgba="true" v-model:value="knob.def"/>
+                    <BaseColorInput v-else-if="knob.type === 'color'" :label="getLabel(knob.label)" :rgba="true" v-model:value="knob.def"/>
                     <input v-else-if="!['number', 'range', 'select'].includes(knob.type)" class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" v-model="knob.def" @change="emit('change')">
                     <select v-else-if="knob.type === 'select'" v-model="knob.def" @change="emit('change')" class="h-[32px] px-2">
                         <option v-for="opt in knob.options">{{ opt }}</option>

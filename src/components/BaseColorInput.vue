@@ -1,5 +1,6 @@
 <template>
-    <div class="inline-flex flex-wrap border-l border-r border-b border-black dark:border-[#8A8A8A] px-2 mt-2 rounded py-2 bg-[#FFFFFF10]">
+    <div class="inline-flex flex-col flex-wrap border-l border-r border-b border-black dark:border-[#8A8A8A] px-2 mt-2 rounded-md pb-2 bg-[#FFFFFF10]">
+        <label class="text-xs">{{ label }}</label>
         <div class="color-picker flex flex-row">
             <div class="flex flex-col place-items-center">
                 <input type="color" style="width: 120px !important" v-model="hexColor" @input="updateColorFromHex" />
@@ -22,6 +23,10 @@ const props = defineProps({
         type: String,
         default: 'rgba(255, 0, 0, 0)', 
     },
+    label: {
+        type: String,
+        default: ''
+    }
 })
 
 const emit = defineEmits(['update:value', 'change'])
