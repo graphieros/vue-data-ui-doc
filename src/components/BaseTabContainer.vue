@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, nextTick, onUnmounted } from "vue";
+import { ref, computed, onMounted, nextTick, onUnmounted, onBeforeUnmount } from "vue";
 import { useMainStore } from "../stores";
 
 const props = defineProps({
@@ -76,7 +76,9 @@ const onScroll = () => {
     updateScrollButtons();
 };
 
-onMounted(() => {
+const menu = ref(null);
+
+function updateMenu() {
     updateScrollButtons();
     nextTick(() => {
         if (props.selectedIndexOnLoad !== null && tabsContainer.value) {
@@ -87,15 +89,34 @@ onMounted(() => {
             });
         }
     });
+}
+
+const resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+            updateMenu()
+        }
+    })
+
+onMounted(() => {
+    updateMenu();
+
+    if (menu.value) {
+        resizeObserver.observe(menu.value)
+    }
 });
+
+onBeforeUnmount(() => {
+    resizeObserver.disconnect()
+})
 
 onUnmounted(() => {
     stopScrolling();
 });
+
 </script>
 
 <template>
-    <div class="relative w-full flex items-center border-gray-700 px-6">
+    <div ref="menu" class="relative w-full flex items-center border-gray-700 px-6">
         <button v-if="canScrollLeft" 
             @click="scrollToNearestElement('left')" 
             @mousedown="startScrolling('left')" 
