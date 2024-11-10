@@ -41,7 +41,7 @@ onMounted(() => {
 });
 
 const showUnderlay = computed(() => {
-  return (!isDarkMode.value && !['/versions'].includes(currentRoute.value) && !currentRoute.value.startsWith('/customization'))
+  return !currentRoute.value.startsWith('/chart-builder') && (!isDarkMode.value && !['/versions'].includes(currentRoute.value) && !currentRoute.value.startsWith('/customization'))
 })
 
 </script>
