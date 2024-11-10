@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, nextTick } from "vue";
+import { ref, computed, onMounted, nextTick, onUnmounted } from "vue";
 import { useMainStore } from "../stores";
 
 const props = defineProps({
@@ -7,7 +7,7 @@ const props = defineProps({
         type: Number,
         default: null
     }
-})
+});
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -15,6 +15,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 const tabsContainer = ref(null);
 const canScrollLeft = ref(false);
 const canScrollRight = ref(false);
+let scrollInterval = null;
 
 const updateScrollButtons = () => {
     const container = tabsContainer.value;
@@ -35,7 +36,7 @@ const scrollToNearestElement = (direction) => {
     if (direction === "left") {
         for (let i = children.length - 1; i >= 0; i -= 1) {
             const childRect = children[i].getBoundingClientRect();
-            if ((childRect.left + 24) < (containerRect.left)) {
+            if ((childRect.left + 24) < containerRect.left) {
                 container.scrollTo({
                     left: children[i].offsetLeft - 24,
                     behavior: "smooth",
@@ -57,14 +58,19 @@ const scrollToNearestElement = (direction) => {
     }
 };
 
-function scrollLeftButton() {
-    scrollToNearestElement("left")
-}
+const startScrolling = (direction) => {
+    if (scrollInterval) return;
+    scrollInterval = setInterval(() => {
+        scrollToNearestElement(direction);
+    }, 100);
+};
 
-function scrollRightButton() {
-    scrollToNearestElement("right")
-}
-
+const stopScrolling = () => {
+    if (scrollInterval) {
+        clearInterval(scrollInterval);
+        scrollInterval = null;
+    }
+};
 
 const onScroll = () => {
     updateScrollButtons();
@@ -80,14 +86,23 @@ onMounted(() => {
                 behavior: "smooth",
             });
         }
-    })
+    });
 });
 
+onUnmounted(() => {
+    stopScrolling();
+});
 </script>
 
 <template>
     <div class="relative w-full flex items-center border-gray-700 px-6">
-        <button v-if="canScrollLeft" @click="scrollLeftButton"
+        <button v-if="canScrollLeft" 
+            @click="scrollToNearestElement('left')" 
+            @mousedown="startScrolling('left')" 
+            @mouseup="stopScrolling" 
+            @mouseleave="stopScrolling"
+            @touchstart="startScrolling('left')" 
+            @touchend="stopScrolling"
             class="absolute -left-4 p-2 bg-gradient-to-b bg-gray-200 dark:bg-[#2A2A2A] rounded-tr rounded-br shadow-md z-10 h-full hover:bg-[#abc2f6] dark:hover:bg-[#3A3A3A] transition-colors">
             <VueUiIcon name="arrowLeft" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'" />
         </button>
@@ -97,7 +112,13 @@ onMounted(() => {
             <slot name="content" />
         </div>
 
-        <button v-if="canScrollRight" @click="scrollRightButton"
+        <button v-if="canScrollRight" 
+            @click="scrollToNearestElement('right')" 
+            @mousedown="startScrolling('right')" 
+            @mouseup="stopScrolling" 
+            @mouseleave="stopScrolling"
+            @touchstart="startScrolling('right')" 
+            @touchend="stopScrolling"
             class="absolute -right-4 p-2 bg-gradient-to-b bg-gray-200 dark:bg-[#2A2A2A] rounded-tl rounded-bl shadow-md z-10 h-full hover:bg-[#abc2f6] dark:hover:bg-[#3A3A3A] transition-colors">
             <VueUiIcon name="arrowRight" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'" />
         </button>
