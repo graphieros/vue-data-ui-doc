@@ -151,6 +151,13 @@ const categories = computed(() => {
             component: 'VueUiSparkHistogram',
             thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_histogram_light.png', import.meta.url).href,
+        },
+        {
+            link: 'vue-ui-quadrant',
+            icon: 'chartQuadrant',
+            component: 'VueUiQuadrant',
+            thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href,
         }
     ].map((c, i) => {
         return {

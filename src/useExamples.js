@@ -18,7 +18,8 @@ export default function useExamples() {
             blue: '#1f77b4',
             green: '#98df8a',
             orange: '#ff7f0e',
-            yellow: '#e7ba52'
+            yellow: '#e7ba52',
+            red: '#ff3700'
         }
     });
     
@@ -1472,8 +1473,142 @@ export default function useExamples() {
             intensity: 0.2,
     
         },
-    ])
+    ]);
 
+    //-------------- VUE-UI-QUADRANT --------------//
+    const CONFIG_QUADRANT_BASIC = computed(() => {
+        return {
+            table: TABLE.value,
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    layout: {
+                        areas: {
+                            show: false,
+                        },
+                        grid: {
+                            stroke: colors.value.gridStroke,
+                            graduations: {
+                                stroke: colors.value.gridStroke,
+                                color: colors.value.gridStroke,
+                            },      
+                            xAxis: {
+                                name: 'xAxis',
+                            },
+                            yAxis: {
+                                name: 'yAxis'
+                            }
+                        },
+                        labels: {
+                            axisLabels: {
+                                color: {
+                                    positive: colors.value.textColor,
+                                    negative: colors.value.textColor,
+                                },
+                            },
+                            plotLabels: {
+                                color: colors.value.textColor,
+                                offsetY: 16
+                            },
+                            quadrantLabels: {
+                                bl: {
+                                    text: 'Bottom left',
+                                    color: colors.value.red
+                                },
+                                br: {
+                                    text: 'Bottom right',
+                                    color: colors.value.blue
+                                },
+                                tl: {
+                                    text: 'Top left',
+                                    color: colors.value.yellow
+                                },
+                                tr: {
+                                    text: 'Top right',
+                                    color: colors.value.green
+                                }
+                            }
+                        },
+                        plots: {
+                            outlineColor: colors.value.bg
+                        }
+                    },
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddingLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                }
+            }
+        }
+    });
+
+    const DATASET_QUADRANT_BASE = ref([
+        {
+            name: 'Stars',
+            shape: 'star',
+            color: colors.value.blue,
+            series: [
+                {
+                    name: "Star 1",
+                    x: 50,
+                    y: 50
+                },
+                {
+                    name: "Star 2",
+                    x: -10,
+                    y: -10
+                },
+                {
+                    name: "Star 3",
+                    x: -15,
+                    y: 20
+                },
+                {
+                    name: "Star 4",
+                    x: 15,
+                    y: -20
+                },
+            ]
+        },
+        {
+            name: 'Hexagons',
+            shape: 'hexagon',
+            color: colors.value.orange,
+            series: [
+                {
+                    name: "Hexagon 1",
+                    x: -39,
+                    y: 39
+                },
+                {
+                    name: "Hexagon 2",
+                    x: -2,
+                    y: 45
+                },
+                {
+                    name: "Hexagon 3",
+                    x: -15,
+                    y: 30
+                },
+            ]
+        }
+    ])
 
     const examples = computed(() => {
         return [
@@ -3466,6 +3601,60 @@ export default function useExamples() {
                     es: "Estirado, sin radio de borde, sin espacio entre",
                     ko: "늘어진, 테두리 반지름 없음, 간격 없음",
                     ar: "ممتد، بدون نصف قطر الحدود، بدون مسافة بين"
+                }
+            },
+            // QUADRANT BASIC
+            { 
+                dataset: DATASET_QUADRANT_BASE.value, 
+                config: CONFIG_QUADRANT_BASIC.value,
+                component: 'VueUiQuadrant',
+                icon: 'chartQuadrant',
+                id: 'quadrant-basic',
+                link: 'vue-ui-quadrant',
+                description: {
+                    en: "Basic quadrant chart",
+                    fr: "Graphique de quadrant de base",
+                    pt: "Gráfico de quadrante básico",
+                    de: "Grundlegendes Quadrantendiagramm",
+                    zh: "基本象限图",
+                    jp: "基本的な象限チャート",
+                    es: "Gráfico de cuadrantes básico",
+                    ko: "기본 사분면 차트",
+                    ar: "مخطط ربعي أساسي"
+                }
+            },
+            // QUADRANT WITH AREAS
+            { 
+                dataset: DATASET_QUADRANT_BASE.value, 
+                config: {
+                    ...CONFIG_QUADRANT_BASIC.value,
+                    style: {
+                        ...CONFIG_QUADRANT_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_QUADRANT_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_QUADRANT_BASIC.value.style.chart.layout,
+                                areas: {
+                                    show: true
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiQuadrant',
+                icon: 'chartQuadrant',
+                id: 'quadrant-areas',
+                link: 'vue-ui-quadrant',
+                description: {
+                    en: "With gift wrap algorithm",
+                    fr: "Avec l'algorithme de l'emballage cadeau",
+                    pt: "Com algoritmo de embrulho de presente",
+                    de: "Mit Geschenkverpackungsalgorithmus",
+                    zh: "使用礼品包装算法",
+                    jp: "ギフトラッピングアルゴリズム付き",
+                    es: "Con algoritmo de envoltura de regalos",
+                    ko: "선물 포장 알고리즘 포함",
+                    ar: "مع خوارزمية التغليف الهدي"
                 }
             },
         ]
