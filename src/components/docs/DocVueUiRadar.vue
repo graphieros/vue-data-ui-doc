@@ -12,6 +12,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 
 const mainConfig = useConfig()
 
@@ -450,6 +451,10 @@ const { configCode, showAllConfig } = useConfigCode()
                     <BaseSpinner />
                 </template>
             </Suspense>
+        </div>
+
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-radar"/>
         </div>
 
         <div class="mt-6 flex flex-col gap-3">

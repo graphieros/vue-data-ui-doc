@@ -173,6 +173,14 @@ const categories = computed(() => {
             thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href,
             description: translations.value.docs.tooltips.quadrant
+        },
+        {
+            link: 'vue-ui-radar',
+            icon: 'chartRadar',
+            component: 'VueUiRadar',
+            thumb: new URL('../assets/thumb_radar.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_radar_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.radar[store.lang]
         }
     ].map((c, i) => {
         return {

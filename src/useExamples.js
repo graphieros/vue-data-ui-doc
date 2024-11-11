@@ -15,6 +15,7 @@ export default function useExamples() {
             textColor: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             gridStroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
             grey: '#6A6A6A',
+            gridStrokeLight: isDarkMode.value ? '#7A7A7A' : '#BBBBBB',
             blue: '#1f77b4',
             green: '#98df8a',
             orange: '#ff7f0e',
@@ -1609,6 +1610,131 @@ export default function useExamples() {
             ]
         }
     ])
+
+    //-------------- VUE-UI-RADAR --------------//
+    const CONFIG_RADAR_BASIC = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    layout: {
+                        dataPolygon: {
+                            transparent: true
+                        },
+                        grid: {
+                            stroke: colors.value.gridStroke
+                        },
+                        labels: {
+                            dataLabels: {
+                                color: colors.value.textColor
+                            }
+                        },
+                        outerPolygon: {
+                            stroke: colors.value.gridStrokeLight
+                        }
+                    },
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddingLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                }
+            }
+        }
+    })
+
+    const DATASET_RADAR_BASE = ref({
+        categories: [
+            { name: 'Single category' },
+        ],
+        series: [
+            {
+                name: 'KPI 1',
+                values: [80],
+                target: 100
+            },
+            {
+                name: 'KPI 2',
+                values: [600],
+                target: 2000
+            },
+            {
+                name: 'KPI 3',
+                values: [10320],
+                target: 15000
+            },
+            {
+                name: 'KPI 4',
+                values: [1.8],
+                target: 2
+            },
+            {
+                name: 'KPI 5',
+                values: [120000],
+                target: 500000
+            },
+            {
+                name: 'KPI 6',
+                values: [3700],
+                target: 3700
+            }
+        ]
+    })
+
+    const DATASET_RADAR_MULTIPLE = ref({
+        categories: [
+            { name: 'Category 1' },
+            { name: 'Category 2' },
+            { name: 'Category 3' },
+        ],
+        series: [
+            {
+                name: 'KPI 1',
+                values: [80, 60,  70],
+                target: 100
+            },
+            {
+                name: 'KPI 2',
+                values: [600, 320, 1000],
+                target: 2000
+            },
+            {
+                name: 'KPI 3',
+                values: [10320, 8500, 12400],
+                target: 15000
+            },
+            {
+                name: 'KPI 4',
+                values: [1.8, 1.9, 1.2],
+                target: 2
+            },
+            {
+                name: 'KPI 5',
+                values: [120000, 300000, 450000],
+                target: 500000
+            },
+            {
+                name: 'KPI 6',
+                values: [3700, 2900, 1300],
+                target: 3700
+            }
+        ]
+    })
 
     const examples = computed(() => {
         return [
@@ -3655,6 +3781,118 @@ export default function useExamples() {
                     es: "Con algoritmo de envoltura de regalos",
                     ko: "선물 포장 알고리즘 포함",
                     ar: "مع خوارزمية التغليف الهدي"
+                }
+            },
+            // RADAR BASIC
+            { 
+                dataset: DATASET_RADAR_BASE.value, 
+                config: CONFIG_RADAR_BASIC.value,
+                component: 'VueUiRadar',
+                icon: 'chartRadar',
+                id: 'radar-basic',
+                link: 'vue-ui-radar',
+                description: {
+                    en: "Basic radar chart",
+                    fr: "Diagramme radar de base",
+                    pt: "Gráfico de radar básico",
+                    de: "Einfaches Radar-Diagramm",
+                    zh: "基础雷达图",
+                    jp: "基本レーダーチャート",
+                    es: "Gráfico de radar básico",
+                    ko: "기본 레이더 차트",
+                    ar: "مخطط رادار أساسي"
+                }
+            },
+            // RADAR FILLED
+            { 
+                dataset: DATASET_RADAR_BASE.value, 
+                config: {
+                    ...CONFIG_RADAR_BASIC.value,
+                    style: {
+                        ...CONFIG_RADAR_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_RADAR_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_RADAR_BASIC.value.style.chart.layout,
+                                dataPolygon: {
+                                    transparent: false,
+                                    opacity: 70
+                                }
+                            }
+                        }
+                    }
+
+                },
+                component: 'VueUiRadar',
+                icon: 'chartRadar',
+                id: 'radar-filled',
+                link: 'vue-ui-radar',
+                description: {
+                    en: "Filled polygon",
+                    fr: "Polygone rempli",
+                    pt: "Polígono preenchido",
+                    de: "Gefülltes Polygon",
+                    zh: "填充多边形",
+                    jp: "塗りつぶされたポリゴン",
+                    es: "Polígono relleno",
+                    ko: "채워진 다각형",
+                    ar: "مضلع مملوء"
+                }
+            },
+            // RADAR BASIC MULTIPLE
+            { 
+                dataset: DATASET_RADAR_MULTIPLE.value, 
+                config: CONFIG_RADAR_BASIC.value,
+                component: 'VueUiRadar',
+                icon: 'chartRadar',
+                id: 'radar-basic-multiple',
+                link: 'vue-ui-radar',
+                description: {
+                    en: "With multiple categories",
+                    fr: "Avec plusieurs catégories",
+                    pt: "Com várias categorias",
+                    de: "Mit mehreren Kategorien",
+                    zh: "包含多个类别",
+                    jp: "複数のカテゴリー付き",
+                    es: "Con múltiples categorías",
+                    ko: "여러 카테고리 포함",
+                    ar: "مع فئات متعددة"
+                }
+            },
+            // RADAR FILLED MULTIPLE
+            { 
+                dataset: DATASET_RADAR_MULTIPLE.value, 
+                config: {
+                    ...CONFIG_RADAR_BASIC.value,
+                    style: {
+                        ...CONFIG_RADAR_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_RADAR_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_RADAR_BASIC.value.style.chart.layout,
+                                dataPolygon: {
+                                    transparent: false,
+                                    opacity: 50
+                                }
+                            }
+                        }
+                    }
+
+                },
+                component: 'VueUiRadar',
+                icon: 'chartRadar',
+                id: 'radar-filled-multiple',
+                link: 'vue-ui-radar',
+                description: {
+                    en: "Multiple categories with filled polygons",
+                    fr: "Plusieurs catégories avec des polygones remplis",
+                    pt: "Múltiplas categorias com polígonos preenchidos",
+                    de: "Mehrere Kategorien mit gefüllten Polygonen",
+                    zh: "包含多个类别的填充多边形",
+                    jp: "塗りつぶされたポリゴンを含む複数のカテゴリー",
+                    es: "Múltiples categorías con polígonos rellenos",
+                    ko: "채워진 다각형이 포함된 여러 카테고리",
+                    ar: "فئات متعددة مع مضلعات ممتلئة"
                 }
             },
         ]
