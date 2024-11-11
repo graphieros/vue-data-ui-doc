@@ -86,6 +86,27 @@ export default function useExamples() {
         }
     ]);
 
+    const DATASET_XY_DUAL = ref([
+        {
+            name: 'Serie 1',
+            type: 'bar',
+            dataLabels: true,
+            series: [3200, 2450, 3442, 3229, 4274, 1292, 1912, 2915, 3925, 4100, 3300, 4250],
+            prefix: '$',
+            scaleMin: 0,
+            scaleMax: 5000,
+        },
+        {
+            name: 'Serie 2',
+            type: 'line',
+            dataLabels: true,
+            series: [65, 75, 82, 67, 55, 89, 86, 80, 75, 72, 78, 92],
+            suffix: '%',
+            scaleMin: 0,
+            scaleMax: 100,
+        },
+    ])
+
     const DATASET_XY_CHANGE = ref([
         {
             name: 'Serie 1',
@@ -2024,6 +2045,58 @@ export default function useExamples() {
                     es: 'Con un comentario de punto de datos individual',
                     ko: '개별 데이터 포인트에 대한 주석 포함',
                     ar: 'مع تعليق على نقطة بيانات فردية'
+                }
+            },
+            // XY INDIVIDUAL SCALE
+            { 
+                dataset: DATASET_XY_DUAL.value,
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    table: {
+                        ...BASE_XY_CONFIG.value.table,
+                        showSum: false,
+                    },
+                    bar: {
+                        ...BASE_XY_CONFIG.value.bar,
+                        labels: {
+                            ...BASE_XY_CONFIG.value.bar.labels,
+                            color: '#6A6A6A'
+                        }
+                    },
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                
+                                yAxis: {
+                                    useIndividualScale: true,
+                                    labelWidth: 80
+                                },
+                                xAxisLabels: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
+                                    values: ['01-25', '02-25', '03-25', '04-25', '05-25', '06-25', '07-25', '08-25', '09-25', '10-25', '11-25', '12-25'],
+                                    rotation: 0
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-dual',
+                link: 'vue-ui-xy',
+                description: {
+                    en: "Multiple series with individual scales",
+                    fr: "Séries multiples avec des échelles individuelles",
+                    pt: "Múltiplas séries com escalas individuais",
+                    de: "Mehrere Serien mit individuellen Skalen",
+                    zh: "具有单独刻度的多系列",
+                    jp: "個別のスケールを持つ複数のシリーズ",
+                    es: "Múltiples series con escalas individuales",
+                    ko: "개별 스케일이 있는 여러 시리즈",
+                    ar: "سلاسل متعددة بمقاييس فردية"
                 }
             },
             // DONUT BASIC

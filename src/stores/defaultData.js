@@ -636,6 +636,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 350, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'table' },
                     { key: 'table.sparkline', def: true, type: 'checkbox', label: 'sparkline', category: 'table' },
+                    { key: 'table.showSum', def: true, type: 'checkbox', label: ['sum', 'is', 'show'], category: 'table' },
                     { key: 'table.columnNames.period', def: 'Period', type: 'text', label: 'columnNamePeriod', category: 'table' },
                     { key: 'table.columnNames.total', def: 'Total', type: 'text', label: 'columnNameTotal', category: 'table' },
                     { key: 'table.th.backgroundColor', def: '#FAFAFA', type: 'color', label: 'backgroundColorHeader', category: 'table' },

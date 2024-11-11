@@ -333,6 +333,7 @@ const config = ref({
         rounding: 0,
         responsiveBreakpoint: 400,
         sparkline: true,
+        showSum: true,
         th: {
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
@@ -595,6 +596,7 @@ const darkModeConfig = ref({
         rounding: 0,
         responsiveBreakpoint: 400,
         sparkline: true,
+        showSum: true,
         th: {
             backgroundColor: "#1A1A1A",
             color: "#c8c8c8",
@@ -1128,6 +1130,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
         <BaseDetails attr="table" :level="1">
             <BaseAttr name="responsiveBreakpoint" attr="table.responsiveBreakpoint" type="number" defaultVal="400" :min="300" :max="800" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="rounding" attr="table.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="showSum" attr="table.showSul" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.3.84"/>
             <BaseDetails attr="columnNames" :level="2" title="table.columnNames">
                 <BaseAttr name="period" attr="table.columnNames.period" type="text" defaultVal="Period" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="total" attr="table.columnNames.total" type="text" defaultVal="Total" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
