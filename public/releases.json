@@ -19,7 +19,7 @@
         "link": "/docs/#vue-ui-donut"
       },
       {
-        "component": "VueUiDOnutEvolution",
+        "component": "VueUiDonutEvolution",
         "description": "Fix maker links too short in hover mode",
         "link": "/docs/#vue-ui-donut-evolution"
       }

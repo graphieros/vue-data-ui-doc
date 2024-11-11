@@ -161,7 +161,7 @@ export function convertNameColorToHex(colorName) {
     return colorMap[colorName.toUpperCase()] || colorName;
 }
 
-export function hslToRgb(h, s, l) {
+export function hslToRgba(h, s, l, alpha = 1) {
     h /= 360;
     s /= 100;
     l /= 100;
@@ -169,7 +169,7 @@ export function hslToRgb(h, s, l) {
     let r, g, b;
 
     if (s === 0) {
-        r = g = b = l;
+        r = g = b = l; // Achromatic (gray)
     } else {
         const hueToRgb = (p, q, t) => {
             if (t < 0) t += 1;
@@ -191,35 +191,41 @@ export function hslToRgb(h, s, l) {
         Math.round(r * 255),
         Math.round(g * 255),
         Math.round(b * 255),
+        alpha,
     ];
 }
 
 export function convertColorToHex(color) {
-    const hexRegex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
-    const rgbRegex = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)$/i;
-    const hslRegex = /^hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%(?:,\s*[\d.]+)?\)$/i;
+    const hexRegex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i;
+    const rgbRegex = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)$/i;
+    const hslRegex = /^hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%(?:,\s*([\d.]+))?\)$/i;
 
     if ([undefined, null, NaN].includes(color)) {
         return null;
     }
-    color = convertNameColorToHex(color)
+
+    color = convertNameColorToHex(color);
 
     if (color === 'transparent') {
         return "#FFFFFF00";
     }
 
     let match;
+    let alpha = 1;
 
     if ((match = color.match(hexRegex))) {
-        const [, r, g, b] = match;
-        return `#${r}${g}${b}`;
+        const [, r, g, b, a] = match;
+        alpha = a ? parseInt(a, 16) / 255 : 1;
+        return `#${r}${g}${b}${decimalToHex(Math.round(alpha * 255))}`;
     } else if ((match = color.match(rgbRegex))) {
-        const [, r, g, b] = match;
-        return `#${decimalToHex(r)}${decimalToHex(g)}${decimalToHex(b)}`;
+        const [, r, g, b, a] = match;
+        alpha = a ? parseFloat(a) : 1;
+        return `#${decimalToHex(r)}${decimalToHex(g)}${decimalToHex(b)}${decimalToHex(Math.round(alpha * 255))}`;
     } else if ((match = color.match(hslRegex))) {
-        const [, h, s, l] = match;
-        const rgb = hslToRgb(Number(h), Number(s), Number(l));
-        return `#${decimalToHex(rgb[0])}${decimalToHex(rgb[1])}${decimalToHex(rgb[2])}`;
+        const [, h, s, l, a] = match;
+        alpha = a ? parseFloat(a) : 1;
+        const rgb = hslToRgba(Number(h), Number(s), Number(l));
+        return `#${decimalToHex(rgb[0])}${decimalToHex(rgb[1])}${decimalToHex(rgb[2])}${decimalToHex(Math.round(alpha * 255))}`;
     }
 
     return null;
