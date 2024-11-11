@@ -1,19 +1,13 @@
 [
   {
-    "version": "v 2.3.81",
+    "version": "v 2.3.82",
     "date": "2024-11-11",
     "updates": [
       {
         "component": "VueUiQuickChart",
         "description": "Fix marker links too short in donut mode",
         "link": "/docs/#vue-ui-quick-chart"
-      }
-    ]
-  },
-  {
-    "version": "v 2.3.80",
-    "date": "2024-11-11",
-    "updates": [
+      },
       {
         "component": "VueUiNestedDonuts",
         "description": "Improve gradient layout",
@@ -23,6 +17,11 @@
         "component": "VueUiDonut",
         "description": "Force minimum donut thickness",
         "link": "/docs/#vue-ui-donut"
+      },
+      {
+        "component": "VueUiDOnutEvolution",
+        "description": "Fix maker links too short in hover mode",
+        "link": "/docs/#vue-ui-donut-evolution"
       }
     ]
   },
