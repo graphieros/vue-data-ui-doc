@@ -1614,6 +1614,7 @@ export default function useExamples() {
     //-------------- VUE-UI-RADAR --------------//
     const CONFIG_RADAR_BASIC = computed(() => {
         return {
+            table: TABLE.value,
             style: {
                 chart: {
                     backgroundColor: colors.value.bg,
