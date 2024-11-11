@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.83",
+    "date": "2024-11-11",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add optional dataset attributes (prefix, suffix) to be used with useIndividualScale set to true",
+        "link": "/docs/#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.82",
     "date": "2024-11-11",
     "updates": [

@@ -763,6 +763,8 @@ const { configCode, showAllConfig } = useConfigCode()
             autoScaling?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.autoScaling[store.lang] }}</span>
             stackRatio?: number; (0 to 1) <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.stackRatio[store.lang] }}</span>
             showSerieName?: "start" | "end"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.showSerieName[store.lang] }}</span>
+            prefix?: string; <span class="text-gray-600 dark:text-app-green">// since v2.3.83</span>
+            suffix?: string; <span class="text-gray-600 dark:text-app-green">// since v2.3.83</span>
 
         },
         {...}
