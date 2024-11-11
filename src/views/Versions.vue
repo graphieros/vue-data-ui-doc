@@ -411,17 +411,6 @@ onMounted(() => {
       info.value = json.objects.find(el => el.package.name === 'vue-data-ui').score.detail;
     })
 
-    fetch('https://api.npms.io/v2/search?q=vue-data-ui&from=25', {
-      method: 'GET',
-      cache: 'default'
-    }).then((response) => {
-      return response.json()
-    }).then(data => {
-      console.log(data.results.map(r => r.package.name).includes('vue-data-ui'))
-    }).catch(err => {
-      console.error(err.message)
-    })
-
     fetch(versionsUrl.value, {
     method: 'GET',
     cache: 'default',

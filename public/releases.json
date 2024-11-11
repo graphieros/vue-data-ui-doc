@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.3.80",
+    "date": "2024-11-11",
+    "updates": [
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Improve gradient layout",
+        "link": "/docs/#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Force minimum donut thickness",
+        "link": "/docs/#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.79",
     "date": "2024-11-10",
     "updates": [
