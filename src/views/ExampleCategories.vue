@@ -180,7 +180,7 @@ const categories = computed(() => {
             component: 'VueUiRadar',
             thumb: new URL('../assets/thumb_radar.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_radar_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.radar[store.lang]
+            description: translations.value.docs.tooltips.radar
         }
     ].map((c, i) => {
         return {
