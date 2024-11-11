@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.81",
+    "date": "2024-11-11",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Fix marker links too short in donut mode",
+        "link": "/docs/#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.80",
     "date": "2024-11-11",
     "updates": [
