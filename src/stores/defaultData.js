@@ -58,7 +58,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -372,7 +372,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', 'is', 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.5, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 1, type: 'number', min: 0, max: 1, step: 0.01, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'number', min: 0, max: 1, step: 0.01, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -572,7 +572,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -709,7 +709,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.hollow.average.value.suffix', def: '', type: 'text', label: ['hollow', 'average', 'value', 'is', 'suffix'], category: 'labels' },
                     { key: 'style.chart.layout.labels.hollow.average.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'average', 'value', 'is', 'offsetY'], category: 'labels' },
                     { key: 'style.chart.layout.labels.hollow.average.value.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['hollow', 'average', 'value', 'is', 'rounding'], category: 'labels' },
-                    { key: 'style.chart.layout.donut.strokeWidth', def: 64, type: 'range', min: 3, max: 130, label: 'thickness', category: 'donut' },
+                    { key: 'style.chart.layout.donut.strokeWidth', def: 55, type: 'range', min: 3, max: 130, label: 'thickness', category: 'donut' },
                     { key: 'style.chart.layout.donut.borderWidth', def: 1, type: 'range', min: 0, max: 36, label: ['border', 'is', 'thickness'], category: 'donut' },
                     { key: 'style.chart.layout.donut.useShadow', def: false, type: 'checkbox', label: ['shadow', 'is', 'show'], category: 'donut'},
                     { key: 'style.chart.layout.donut.shadowColor', def: '#1A1A1A', type: 'color', label: ['shadow', 'is', 'color'], category: 'donut'},
@@ -756,7 +756,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -833,7 +833,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -960,7 +960,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'tooltip' },
                     { key: 'style.chart.tooltip.animation.show', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.animation.animationFrames', def: 60, type: 'number', min: 0, max: 300, label: ['animation', 'is', 'speed'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -1167,7 +1167,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -1307,6 +1307,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['tooltip', 'background', 'is', 'opacity'], category: 'tooltip'},
 
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend' },
@@ -1692,7 +1693,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -1836,6 +1837,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['tooltip', 'background', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.colNames.xAxis', def: 'X', type: 'text', label: 'columnNamePeriod', category: 'table' },
@@ -2335,7 +2337,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -2511,7 +2513,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -2605,7 +2607,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -2988,7 +2990,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip' },
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip' },
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -3113,7 +3115,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
@@ -3282,7 +3284,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 

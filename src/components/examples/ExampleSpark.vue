@@ -585,7 +585,7 @@ const trendConfig = computed(() => {
             </div>
         </div>
 
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6 visitors">
             <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
                 <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
                     <BaseDocHeaderActions
@@ -649,3 +649,9 @@ const trendConfig = computed(() => {
         </div>
     </div>
 </template>
+
+<style>
+.visitors rect {
+    transition: all 0.2s ease-in-out !important;
+}
+</style>
