@@ -1033,7 +1033,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.markers.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['markers', 'is', 'offsetY'], category: 'general' },
                     { key: 'style.chart.layout.markers.roundingValue', def: 0, type: 'number', min: 0, max: 3, label: ['markers', 'is', 'rounding'], category: 'general' },
                     { key: 'style.chart.layout.pointer.type', def: 'pointy', type:'select', options: ['pointy', 'rounded'], label: ['pointer', 'is', 'shape'], category: 'general'},
-                    { key: 'style.chart.layout.pointer.size', def: 1, type: 'number', min: 0, max: 2, label: ['pointer', 'is', 'size'], category: 'general' },
+                    { key: 'style.chart.layout.pointer.size', def: 1, type: 'number', min: 0, max: 1.5, step: 0.01, label: ['pointer', 'is', 'size'], category: 'general' },
                     { key: 'style.chart.layout.pointer.stroke', def: '#1A1A1A', type: 'color', label: ['pointer', 'border', 'is', 'color'], category: 'general' },
                     { key: 'style.chart.layout.pointer.strokeWidth', def: 12, type: 'number', min: 1, max: 48, label: ['pointer', 'is', 'thickness'], category: 'general' },
                     { key: 'style.chart.layout.pointer.useRatingColor', def: true, type: 'checkbox', label: ['pointer', 'color', 'is', 'auto'], category: 'general' },
