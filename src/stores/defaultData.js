@@ -1026,7 +1026,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.animation.acceleration', def: 1, min: 0, max: 10, type: 'range', label: ['animation', 'is', 'acceleration'], category: 'general' },
                     { key: 'style.chart.layout.track.size', def: 1, type: 'number', min: 1, max: 3, label: ['track', 'is', 'thickness'], category: 'general' },
                     { key: 'style.chart.layout.track.useGradient', def: true, type: 'checkbox', label: ['track', 'is', 'useGradient'], category: 'general' },
-                    { key: 'style.chart.layout.track.gradientIntensity', def: 20, min: 0, max: 100, type: 'range', label: ['track', 'is', 'gradientIntensity'], category: 'general' },
+                    { key: 'style.chart.layout.track.gradientIntensity', def: 20, min: 1, max: 30, type: 'range', label: ['track', 'is', 'gradientIntensity'], category: 'general' },
                     { key: 'style.chart.layout.markers.color', def: '#1A1A1A', type: 'color', label: ['markers', 'is', 'textColor'], category: 'general' },
                     { key: 'style.chart.layout.markers.bold', def: true, type: 'checkbox', label: ['markers', 'is', 'bold'], category: 'general' },
                     { key: 'style.chart.layout.markers.fontSizeRatio', def: 1, type: 'number', min: 0, max: 3, label: ['markers', 'fontSize', 'is', 'ratio'], category: 'general' },
