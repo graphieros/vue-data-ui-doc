@@ -1879,6 +1879,9 @@ export default function useExamples() {
                     ...BASE_XY_CONFIG.value,
                     chart: {
                         ...BASE_XY_CONFIG.value.chart,
+                        highlightArea: {
+                            show: false,
+                        },
                         zoom: {
                             ...BASE_XY_CONFIG.value.chart.zoom,
                             minimap: {
