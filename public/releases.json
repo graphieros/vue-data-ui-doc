@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.3.85",
+    "date": "2024-11-12",
+    "updates": [
+      {
+        "component": "All components",
+        "description": "Set svg background color to transparent"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.84",
     "date": "2024-11-11",
     "updates": [
