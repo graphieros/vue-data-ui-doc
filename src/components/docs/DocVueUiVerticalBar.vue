@@ -13,6 +13,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -435,6 +436,21 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+  dataset.value[0].children[0].value = Math.random() * 100;
+  dataset.value[0].children[1].value = Math.random() * 65;
+  dataset.value[0].value = dataset.value[0].children.map(c => c.value).reduce((a, b) => a + b, 0)
+  
+  dataset.value[1].value = Math.random() * 300;
+  dataset.value[2].value = Math.random() * 250;
+  dataset.value[3].value = Math.random() * 200;
+  
+  dataset.value[4].children[0].value = Math.random() * 100;
+  dataset.value[4].children[1].value = Math.random() * 100;
+  dataset.value[4].children[2].value = Math.random() * 100;
+  dataset.value[4].value = dataset.value[4].children.map(c => c.value).reduce((a, b) => a + b, 0)
+}
+
 </script>
 
 <template>
@@ -475,6 +491,7 @@ const { configCode, showAllConfig } = useConfigCode()
                   <BaseSpinner/>
               </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <div class="w-full flex justify-center mt-6">

@@ -13,6 +13,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -175,6 +176,16 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function getRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function randomizeData() {
+    dataset1.value.value = getRandomNumber(-10, 10);
+    dataset2.value.value = getRandomNumber(-10, 10);
+    dataset3.value.value = getRandomNumber(-10, 10);
+}
+
 </script>
 
 <template>
@@ -243,6 +254,7 @@ const { configCode, showAllConfig } = useConfigCode()
                         </Suspense>
                     </div>
                 </div>
+                <BaseRandomButton @click="randomizeData"/>
             </div>
         </div>
 

@@ -4,15 +4,14 @@ import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import ThemesVueUiSparkStackbar from "../themes/ThemesVueUiSparkStackbar.vue";
-import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
-import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -195,6 +194,12 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+  dataset.value[0].value = Math.random() * 200;
+  dataset.value[1].value = Math.random() * 150;
+  dataset.value[2].value = Math.random() * 100;
+}
+
 </script>
 
 <template>
@@ -237,6 +242,7 @@ const { configCode, showAllConfig } = useConfigCode()
                   </template>
                 </Suspense>
             </div>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <Box showEmits showThemes schema="vue_ui_sparkstackbar" signInfo="positiveOrNegativeOnly">

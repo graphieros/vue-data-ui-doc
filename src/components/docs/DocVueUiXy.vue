@@ -14,6 +14,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -674,6 +675,21 @@ const shapeOptions = ref([
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+    function makeSet(n ,m) {
+        const arr = [];
+        for (let i = 0; i < n; i += 1) {
+            arr.push(Math.random() * m)
+        }
+        return arr
+    }
+
+    mutableDataset.value[0].series = makeSet(21, 100);
+    mutableDataset.value[1].series = makeSet(21, 90);
+    mutableDataset.value[2].series = makeSet(21, 80);
+    mutableDataset.value[3].series = makeSet(21, 40);
+}
+
 </script>
 
 <template>
@@ -720,6 +736,7 @@ const { configCode, showAllConfig } = useConfigCode()
                     <BaseSpinner/>
                 </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <div class="w-full flex justify-center mt-6">

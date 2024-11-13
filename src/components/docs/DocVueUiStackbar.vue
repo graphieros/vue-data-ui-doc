@@ -13,6 +13,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -501,6 +502,41 @@ const innerTranslations = ref({
     }
 })
 
+function randomizeData() {
+    dataset.value[0].series = [
+        Math.random() * 20,
+        Math.random() * 25,
+        Math.random() * 18,
+        Math.random() * 50,
+        Math.random() * 40,
+        Math.random() * 55,
+    ];
+    dataset.value[1].series = [
+        Math.random() * 20,
+        Math.random() * 25,
+        Math.random() * 18,
+        Math.random() * 55,
+        Math.random() * 50,
+        Math.random() * 40,
+    ];
+    dataset.value[2].series = [
+        Math.random() * 20,
+        Math.random() * 18,
+        Math.random() * 50,
+        Math.random() * 55,
+        Math.random() * 40,
+        Math.random() * 25,
+    ];
+    dataset.value[3].series = [
+        Math.random() * 20,
+        Math.random() * 18,
+        Math.random() * 25,
+        Math.random() * 50,
+        Math.random() * 55,
+        Math.random() * 40,
+    ];
+}
+
 </script>
 
 <template>
@@ -552,6 +588,7 @@ const innerTranslations = ref({
                     <BaseSpinner />
                 </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <div class="w-full flex justify-center mt-6">

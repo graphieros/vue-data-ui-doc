@@ -14,6 +14,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -415,6 +416,12 @@ function resetDefault() {
     mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
 }
 
+function randomizeData() {
+    mutableDataset.value[0].values = [Math.random()*100];
+    mutableDataset.value[1].values = [Math.random()*200];
+    mutableDataset.value[2].values = [Math.random()*300];
+}
+
 function forceChartUpdate() {
     key.value += 1;
 }
@@ -660,6 +667,7 @@ const { configCode, showAllConfig } = useConfigCode()
                     <BaseSpinner/>
                 </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <div class="w-full flex justify-center mt-6">

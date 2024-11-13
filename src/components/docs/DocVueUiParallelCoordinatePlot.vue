@@ -11,6 +11,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -399,6 +400,46 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+    dataset.value[0].series[0].values = [
+        Math.random() * 1000,
+        Math.random() * 300,
+        Math.random() * 50,
+        Math.random() * 2
+    ]
+    dataset.value[0].series[1].values = [
+        Math.random() * 900,
+        Math.random() * 250,
+        Math.random() * 45,
+        Math.random() * 2
+    ]
+    dataset.value[0].series[2].values = [
+        Math.random() * 800,
+        Math.random() * 200,
+        Math.random() * 40,
+        Math.random() * 1.5
+    ]
+
+    dataset.value[1].series[0].values = [
+        Math.random() * 2000,
+        Math.random() * 600,
+        Math.random() * 100,
+        Math.random() * 4
+    ]
+    dataset.value[1].series[1].values = [
+        Math.random() * 2200,
+        Math.random() * 700,
+        Math.random() * 150,
+        Math.random() * 5
+    ]
+    dataset.value[1].series[2].values = [
+        Math.random() * 2500,
+        Math.random() * 800,
+        Math.random() * 200,
+        Math.random() * 7
+    ]
+}
+
 </script>
 
 <template>
@@ -455,6 +496,7 @@ const { configCode, showAllConfig } = useConfigCode()
                     <BaseSpinner />
                 </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_parallel_coordinate_plot" signInfo="both">

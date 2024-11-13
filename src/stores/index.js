@@ -25,6 +25,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                randomData: {
+                    en: "Show random dataset",
+                    fr: "Afficher un ensemble de données aléatoire",
+                    pt: "Mostrar conjunto de dados aleatório",
+                    de: "Zufälliges Dataset anzeigen",
+                    zh: "显示随机数据集",
+                    jp: "ランダムなデータセットを表示",
+                    es: "Mostrar conjunto de datos aleatorio",
+                    ko: "무작위 데이터 세트 표시",
+                    ar: "عرض مجموعة بيانات عشوائية"
+                },
                 checkOutNewExamplePage: {
                     en: 'Checkout the new example page !',
                     fr: 'Découvrez la nouvelle page d\'exemples !',

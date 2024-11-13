@@ -14,6 +14,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -266,6 +267,17 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+  const arr = []
+  for(let i = 0; i < 17; i += 1) {
+    arr.push({
+      period: `Period ${i+1}`,
+      value: Math.random() * 100
+    })
+  }
+  dataset.value = arr;
+}
+
 </script>
 
 <template>
@@ -306,6 +318,7 @@ const { configCode, showAllConfig } = useConfigCode()
                   <BaseSpinner />
               </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <div class="w-full flex justify-center mt-6">
