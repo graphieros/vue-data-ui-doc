@@ -22,6 +22,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'show', category: 'userOptions'},
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
@@ -200,6 +201,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
                     { key: 'userOptions.buttonTitles.animation', def: 'Toggle animation', type: 'text', label: ['button', 'animation', 'title', 'is', 'textContent'], category: 'userOptions'},
                     { key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
 
                     { key: 'animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
                     { key: 'animation.speedMs', def: 1000, type: 'number', min: 500, max: 5000, step: 100, label: ['animation', 'is', 'speed'], category: 'general'},
@@ -287,7 +289,6 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 ],
                 model: [
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
-                    { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: ['backgroundColor'], category: 'general'},
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: ['textColor'], category: 'general'},
                     { key: 'style.chart.height', def: 600, type: 'number', min: 300, max: 1000, label: ['height'], category: 'general'},
@@ -299,6 +300,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.padding.left', def: 36, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'padding'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
@@ -396,6 +398,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 ],
                 model: [
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
+
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
@@ -577,6 +581,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
                     { key: 'chart.userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'chart.userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'chart.userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
                     { key: 'chart.userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'chart.userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
@@ -761,6 +766,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
@@ -870,6 +876,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.captions.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['caption', 'is', 'offsetY'], category: 'labels' },
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
@@ -985,6 +992,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'table' },
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
@@ -1063,6 +1071,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
@@ -1172,6 +1181,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
@@ -1328,6 +1338,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'translations.side', def: 'Side', type: 'text', label: ['columnName', 'is', 'quadrantSide'], category: 'table' },
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
@@ -1359,6 +1370,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.wheel.ticks.rounded', def: true, type: 'checkbox', label: ['ticks', 'is', 'borderRadius'], category: 'general' },
                     { key: 'style.chart.layout.wheel.ticks.inactiveColor', def: '#e1e5e8', type: 'color', label: ['ticks', 'color', 'is', 'inactive'], category: 'general' },
                     { key: 'style.chart.layout.wheel.ticks.activeColor', def: '#6376DD', type: 'color', label: ['ticks', 'color', 'is', 'active'], category: 'general' },
+                    { key: 'style.chart.layout.wheel.ticks.sizeRatio', def: 0.9, type: 'range', min: 0, max: 1, step: 0.01, label: ['ticks', 'is', 'size ratio'], category: 'general'},
                     { key: 'style.chart.layout.wheel.ticks.gradient.show', def: true, type: 'checkbox', label: ['ticks', 'is', 'useGradient'], category: 'general' },
                     { key: 'style.chart.layout.wheel.ticks.gradient.shiftHueIntensity', def: 10, type: 'range', min: 0, max: 100, label: ['ticks', 'is', 'shiftHue'], category: 'general' },
                     { key: 'style.chart.layout.innerCircle.show', def: true, type: 'checkbox', label: ['hollow', 'circle', 'is', 'show'], category: 'general' },
@@ -1382,6 +1394,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
@@ -1433,6 +1446,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
                     
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
@@ -1716,6 +1730,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'translations.percentageToSerie', def: '% / group', type: 'text', label: ['%', '/', 'parent'], category: 'translations' },
                     
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
                     { key: 'userOptions.buttons.tooltip', def: true, type: 'checkbox', label: ['button', 'tooltip', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
@@ -1839,6 +1854,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
                     { key: 'style.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['tooltip', 'background', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.colNames.xAxis', def: 'X', type: 'text', label: 'columnNamePeriod', category: 'table' },
                     { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table' },
@@ -2207,6 +2223,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 model: [
                     { key: 'style.chart.layout.grid.xAxis.dataLabels.values', def: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG'], type: 'none' },
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
@@ -2342,6 +2359,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table' },
@@ -2518,6 +2536,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: "checkbox", label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table' },
@@ -2612,6 +2631,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'translations.age', def: 'age', type: 'text', label: 'age', category: 'translations' },
                     { key: 'translations.total', def: 'total', type: 'text', label: 'total', category: 'translations' },
                     { key: 'translations.year', def: 'year', type: 'text', label: 'period', category: 'translations' },
@@ -2678,6 +2698,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'legend' },
                     { key: 'style.chart.legend.roundingpercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'legend' },
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table' },
@@ -2736,6 +2757,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.plot.radius', def: 2, type: 'number', min: 0, max: 24, label: ['plots', 'is', 'radius'], category: 'datapoints' },
                     { key: 'style.plot.color', def: '#1A1A1A', type: 'color', label: ['plots', 'is', 'color'], category: 'datapoints' },
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'style.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
                     { key: 'style.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title' },
@@ -2767,6 +2789,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.height', def: 360, type: 'number', min: 200, max: 800, label: 'height', category: 'general' },
                     { key: 'style.chart.thermometer.width', def: 48, type: 'number', min: 12, max: 100, label: 'width', category: 'general' },
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'style.chart.animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general' },
                     { key: 'style.chart.animation.speedMs', def: 1000, type: 'number', min: 100, max: 2000, label: ['animation', 'is', 'speed'], category: 'general' },
                     { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label: 'top', category: 'padding' },
@@ -2867,6 +2890,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle' },
                     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'geenral'},
+
                     { key: 'style.chart.legend.showDefault', def: true, type: 'checkbox', label: 'show', category: 'legend'},
                     { key: 'style.chart.legend.fontSize', def: 10,  type: 'number', min: 6, max: 20, label: 'fontSize', category: 'legend'},
                     { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend'},
@@ -2934,6 +2959,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: "general" },
                     { key: 'useBlurOnHover', def: true, type: 'checkbox', label: 'useBlurOnHover', category: 'general' },
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
@@ -3120,6 +3146,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table' },
@@ -3214,6 +3241,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 model: [
                     { key: 'useCssAnmation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'color', category: 'general'},
                     { key: 'style.chart.height', def: 600, type: 'range', min: 200, max: 1000, label: 'height', category: 'general'},
@@ -3312,6 +3340,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: "theme", def: '', type: "select", options: ['', 'zen', 'hack', 'concrete'], label: "theme", category: "general"},
                     { key: 'animationDelayMs', def: 20, type: 'number', min: 0, max: 100, label: ['animation', 'is', 'delay'], category: 'general'},
                     { key: 'userOptions.show', def: true, type: "checkbox", label: "showUserOptions", category: 'general'},
+                    { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'color', category: 'general'},

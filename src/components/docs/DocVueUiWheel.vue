@@ -56,6 +56,7 @@ const config = ref({
             rounded: true,
             inactiveColor: "#e1e5e8",
             activeColor: "#5f8bee",
+            sizeRatio: 0.9,
             gradient: {
               show: true,
               shiftHueIntensity: 100,
@@ -93,6 +94,7 @@ const config = ref({
   },
   userOptions: {
     show: true,
+    position: 'right',
     buttons: {
             pdf: true,
             img: true,
@@ -126,6 +128,7 @@ const darkModeConfig = ref({
             rounded: true,
             inactiveColor: "#3A3A3A",
             activeColor: "#5f8bee",
+            sizeRatio: 0.9,
             gradient: {
               show: true,
               shiftHueIntensity: 100,
@@ -163,6 +166,7 @@ const darkModeConfig = ref({
   },
   userOptions: {
     show: true,
+    position: 'right',
     buttons: {
             pdf: true,
             img: true,
@@ -330,6 +334,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
               <BaseAttr name="rounded" attr="style.chart.layout.wheel.ticks.rounded" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="inactiveColor" attr="style.chart.layout.wheel.ticks.inactiveColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="activeColor" attr="style.chart.layout.wheel.ticks.activeColor" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="sizeRatio" attr="style.chart.layout.wheel.ticks.sizeRatio" type="range" defaultVal="0.9" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseDetails attr="gradient" :level="6" title="style.chart.layout.wheel.ticks.gradient">
                 <BaseAttr name="show" attr="style.chart.layout.wheel.ticks.gradient.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="shiftHueIntensity" attr="style.chart.layout.wheel.ticks.gradient.shiftHueIntensity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -356,6 +361,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
     </BaseDetails>
     <BaseDetails attr="userOptions" :level="1">
       <BaseAttr name="show" attr="userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+      <BaseAttr name="position" attr="userOptions.position" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
         <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="img" attr="userOptions.buttons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

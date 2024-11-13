@@ -1,18 +1,27 @@
 [
   {
+    "version": "v 2.3.86",
+    "date": "2024-11-12",
+    "updates": [
+      {
+        "component": "Components with menu",
+        "description": "Add optional config attribute to position menu on the right or left"
+      },
+      {
+        "component": "VueUiWheel",
+        "description": "Add optional config attribute to set the ticks size",
+        "link": "/docs/#vue-ui-wheel"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.85",
     "date": "2024-11-12",
     "updates": [
       {
         "component": "All components",
         "description": "Set svg background color to transparent"
-      }
-    ]
-  },
-  {
-    "version": "v 2.3.84",
-    "date": "2024-11-11",
-    "updates": [
+      },
       {
         "component": "VueUiXy",
         "description": "Add optional dataset attributes (prefix, suffix) to be used with useIndividualScale set to true",

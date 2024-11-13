@@ -234,6 +234,7 @@ const darkModeConfig = ref({
   },
   userOptions: {
     show: true,
+    position: 'right',
     buttons: {
       tooltip: true,
       pdf: true,
@@ -438,6 +439,7 @@ const config = ref({
   },
   userOptions: {
     show: true,
+    position: 'right',
     buttons: {
       tooltip: true,
       pdf: true,
@@ -839,6 +841,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiScatterDatasetI
     </BaseDetails>
     <BaseDetails attr="userOptions" :level="1">
       <BaseAttr name="show" attr="userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+      <BaseAttr name="position" attr="userOptions.position" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
         <BaseAttr name="tooltip" attr="userOptions.buttons.tooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

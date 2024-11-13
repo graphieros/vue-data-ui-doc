@@ -47,6 +47,7 @@ const config = ref({
     animationSpeed: 2,
     userOptions: {
         show: true,
+        position: 'right',
         buttons: {
             pdf: true,
             img: true,
@@ -201,6 +202,7 @@ const darkModeConfig = ref({
     animationSpeed: 2,
     userOptions: {
         show: true,
+        position: 'right',
         buttons: {
             pdf: true,
             img: true,
@@ -624,6 +626,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDumbbellDataset
         </BaseDetails>
         <BaseDetails attr="userOptions" :level="1">
             <BaseAttr name="show" attr="userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+            <BaseAttr name="position" attr="userOptions.position" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
                 <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="img" attr="userOptions.buttons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

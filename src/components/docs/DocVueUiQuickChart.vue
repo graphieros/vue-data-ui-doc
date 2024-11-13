@@ -203,6 +203,7 @@ const config = ref({
     yAxisLabel: 'Quantity',
     xAxisLabel: 'Time',
     axisLabelsFontSize: 12,
+    userOptionsPosition: 'right',
     zoomXy: true,
     zoomColor: '#CCCCCC',
     zoomHighlightColor: '#4A4A4A',
@@ -311,6 +312,7 @@ const darkModeConfig = ref({
     zoomHighlightColor: '#4A4A4A',
     zoomFontSize: 14,
     zoomUseResetSlot: false,
+    userOptionsPosition: 'right',
     zoomMinimap: {
         show: true,
         smooth: true,
@@ -759,7 +761,8 @@ const { configCode, showAllConfig } = useConfigCode()
         <BaseAttr name="showDataLabels" attr="showDataLabels" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="showLegend" attr="showLegend" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="showTooltip" attr="showTooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="showUserOptions" attr="showUserOptions" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="showUserOptions" attr="showUserOptions" defaultVal="true" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="userOptionsPosition" attr="userOptionsPosition" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseDetails attr="userOptionsButtons" :level="1">
             <BaseAttr name="tooltip" attr="userOptionsButtons.tooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="pdf" attr="userOptionsButtons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
