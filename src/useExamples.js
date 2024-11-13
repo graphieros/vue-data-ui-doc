@@ -3712,6 +3712,91 @@ export default function useExamples() {
                     ar: "تدرج أقل، علامات مستطيلة"
                 }
             },
+            // WHEEL SMALL TICKS
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: {
+                    ...CONFIG_WHEEL_BASIC.value,
+                    style: {
+                        ...CONFIG_WHEEL_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_WHEEL_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_WHEEL_BASIC.value.style.chart.layout,
+                                wheel: {
+                                    ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel,
+                                    ticks: {
+                                        ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel.ticks,
+                                        sizeRatio: 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-small-ticks',
+                link: 'vue-ui-wheel',
+                description: {
+                    en: "Smaller tick size",
+                    fr: "Taille de graduation réduite",
+                    pt: "Tamanho de marca menor",
+                    de: "Kleinere Tick-Größe",
+                    zh: "较小的刻度尺寸",
+                    jp: "より小さい目盛サイズ",
+                    es: "Tamaño de marca más pequeño",
+                    ko: "작은 눈금 크기",
+                    ar: "حجم تدريج أصغر"
+                }
+            },
+            // WHEEL BIG TICKS
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: {
+                    ...CONFIG_WHEEL_BASIC.value,
+                    style: {
+                        ...CONFIG_WHEEL_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_WHEEL_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_WHEEL_BASIC.value.style.chart.layout,
+                                percentage: {
+                                    show: false,
+                                },
+                                innerCircle: {
+                                    show: false,
+                                },
+                                wheel: {
+                                    ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel,
+                                    ticks: {
+                                        ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel.ticks,
+                                        sizeRatio: 0,
+                                        gradient: {
+                                            shiftHueIntensity: -5
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-big-ticks',
+                link: 'vue-ui-wheel',
+                description: {
+                    en: "Bigger tick size",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    jp: "",
+                    es: "",
+                    ko: "",
+                    ar: ''
+                }
+            },
             // SPARKHISTOGRAM BASIC
             { 
                 dataset: DATASET_SPARKHISTOGRAM_BASE.value, 
