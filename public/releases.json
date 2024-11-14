@@ -1,5 +1,20 @@
 [
   {
+    "version": "v 2.3.90",
+    "date": "2024-11-14",
+    "updates": [
+      {
+        "component": "PDF and IMG generation",
+        "description": "Use dynamic import of  html2canvas and JsPdf only when print is used."
+      },
+      {
+        "component": "VueUiSparkStackbar",
+        "description": "Fix NaN values in legend labels, show an empty bar if total is 0",
+        "link": "/docs#vue-ui-sparkstackbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.88",
     "date": "2024-11-14",
     "updates": [
