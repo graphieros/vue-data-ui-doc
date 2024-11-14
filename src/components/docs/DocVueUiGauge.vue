@@ -13,6 +13,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -278,6 +279,16 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function getRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function randomizeData() {
+    dataset1.value.value = getRandomNumber(1, 5);
+    dataset2.value.value = getRandomNumber(-100, 100);
+}
+
+
 </script>
 
 <template>
@@ -334,6 +345,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 </Suspense>
             </div>
         </div>
+        <BaseRandomButton @click="randomizeData"/>
 
         <div class="w-full flex justify-center mt-6">
             <BaseViewExampleButton link="/examples/categories#vue-ui-gauge"/>
