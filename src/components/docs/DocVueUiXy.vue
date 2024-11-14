@@ -310,6 +310,11 @@ const config = ref({
         radius: 3,
         useGradient: true,
         strokeWidth: 2,
+        dot: {
+            useSerieColor: true,
+            fill: '#FFFFFF',
+            strokeWidth: 0.5
+        },
         labels: {
             show: true,
             offsetY: -6,
@@ -324,6 +329,11 @@ const config = ref({
     plot: {
         radius: 3,
         useGradient: true,
+        dot: {
+            useSerieColor: true,
+            fill: '#FFFFFF',
+            strokeWidth: 0.5
+        },
         labels: {
             show: false,
             offsetY: -6,
@@ -574,6 +584,11 @@ const darkModeConfig = ref({
         radius: 3,
         useGradient: true,
         strokeWidth: 2,
+        dot: {
+            useSerieColor: true,
+            fill: '#FFFFFF',
+            strokeWidth: 0.5
+        },
         labels: {
             show: true,
             offsetY: -6,
@@ -588,6 +603,11 @@ const darkModeConfig = ref({
     plot: {
         radius: 3,
         useGradient: true,
+        dot: {
+            useSerieColor: true,
+            fill: '#FFFFFF',
+            strokeWidth: 0.5
+        },
         labels: {
             show: false,
             offsetY: -6,
@@ -1124,6 +1144,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
             <BaseAttr name="radius" attr="line.radius" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="useGradient" attr="line.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="strokeWidth" attr="line.strokeWidth" type="number" defaultVal="2" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseDetails attr="dot" :level="2" title="line.dot">
+                <BaseAttr name="useSerieColor" attr="line.dot.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="fill" attr="line.dot.fill" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="strokeWidth" attr="line.dot.strokeWidth" type="number" defaultVal="0.5" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
             <BaseDetails attr="area" :level="2" title="line.area">
                 <BaseAttr name="useGradient" attr="line.area.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="opacity" attr="line.area.opacity" type="range" defaultVal="30" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1139,6 +1164,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
         <BaseDetails attr="plot" :level="1">
             <BaseAttr name="radius" attr="plot.radius" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="useGradient" attr="plot.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseDetails attr="dot" :level="2" title="plot.dot">
+                <BaseAttr name="useSerieColor" attr="plot.dot.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="fill" attr="plot.dot.fill" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="strokeWidth" attr="plot.dot.strokeWidth" type="number" defaultVal="0.5" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
             <BaseDetails attr="labels" :level="2" title="plot.labels">
                 <BaseAttr name="show" attr="plot.labels.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="offsetY" attr="plot.labels.offsetY" type="number" defaultVal="-6" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

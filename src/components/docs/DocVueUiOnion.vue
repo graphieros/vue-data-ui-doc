@@ -13,6 +13,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -400,6 +401,14 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+
+    for (let i = 0; i < mutableDataset.value.length; i += 1) {
+        mutableDataset.value[i].value = Math.random() * 2000;
+        mutableDataset.value[i].percentage = Math.random() * 100;
+    }
+}
+
 </script>
 
 <template>
@@ -440,7 +449,9 @@ const { configCode, showAllConfig } = useConfigCode()
                     <BaseSpinner/>
                 </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
+
 
         <div class="mt-6 flex flex-col gap-3 mx-auto justify-center place-items-center">
             <label for="player">{{ translations.docs.showMoreSeries[store.lang] }} </label>

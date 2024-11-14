@@ -11,7 +11,7 @@ const emit = defineEmits(['click'])
 
 <template>
     <div class="w-full flex justify-end mt-4">
-        <button @click="emit('click')" dir="auto" class="flex flex-row gap-3 place-items-center justify-center py-2 px-6 rounded-full border border-app-blue bg-[#5f8aee10] hover:bg-[#5f8aee20] transition-colors w-full">
+        <button @click="emit('click')" dir="auto" class="flex flex-row flex-wrap gap-3 place-items-center justify-center py-2 px-6 rounded-full border border-app-blue bg-[#5f8aee10] hover:bg-[#5f8aee20] transition-colors w-full mx-auto max-w-[350px] text-xs">
             <VueUiIcon name="numbers" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'"/>
             <VueUiIcon name="restart" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'"/>
             {{ translations.randomData[store.lang] }}

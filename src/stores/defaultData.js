@@ -472,7 +472,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.zoom.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['zoom',  'is', 'fontSize'], category: 'general'},
 
                     { key: 'chart.zoom.minimap.show', def: true, type: 'checkbox', label: ['zoom', 'minimap', 'is', 'show'], category: 'general'},
-                    { key: 'chart.zoom.minimap.smooth', def: false, type: 'checkbox', label: ['zoom', 'minimap', 'is', 'smooth'], category: 'geenral'},
+                    { key: 'chart.zoom.minimap.smooth', def: false, type: 'checkbox', label: ['zoom', 'minimap', 'is', 'smooth'], category: 'general'},
                     { key: 'chart.zoom.minimap.selectedColor', def: '#1F77B4', type: 'color', label: ['zoom', 'minimap', 'selected', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.minimap.selectedColorOpacity', def: 0.2, type: 'range', min: 0.1, max: 0.5, step: 0.01, label: ['zoom', 'minimap', 'selected', 'is', 'opacity'], category: 'general'},
                     { key: 'chart.zoom.minimap.lineColor', def: '#1A1A1A', type: 'color', label: ['zoom', 'minimap', 'line', 'is', 'color'], category: 'general'},
@@ -622,6 +622,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'line.radius', def: 6, type: 'number', min: 0, max: 20, label: 'radius', category: 'line' },
                     { key: 'line.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'line' },
                     { key: 'line.strokeWidth', def: 2, type: 'number', min: 1, max: 20, label: 'thickness', category: 'line' },
+                    { key: 'line.dot.useSerieColor', def: true, type: 'checkbox', label: ['dot', 'is', 'serie color'], category: 'line'},
+                    { key: 'line.dot.fill', def: '#FFFFFF', type: 'color', label: ['dot', 'is', 'fill'], category: 'line'},
+                    { key: 'line.dot.strokeWidth', def: 0.5, type: 'number', min: 0, max: 12, step: 0.1, label: ['dot', 'is', 'strokeWidth'], category: 'line'},
+
                     { key: 'line.labels.show', def: true, type: 'checkbox', label: 'showDataLabels', category: 'line' },
                     { key: 'line.labels.offsetY', def: -8, type: 'number', min: -100, max: 100, label: 'offsetYDataLabels', category: 'line' },
                     { key: 'line.labels.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'line' },
@@ -632,6 +636,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'plot.radius', def: 6, type: 'number', min: 0, max: 20, label: 'radius', category: 'plot' },
                     { key: 'plot.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'plot' },
                     { key: 'plot.strokeWidth', def: 2, type: 'number', min: 1, max: 20, label: 'thickness', category: 'plot' },
+                    { key: 'plot.dot.useSerieColor', def: true, type: 'checkbox', label: ['dot', 'is', 'serie color'], category: 'line'},
+                    { key: 'plot.dot.fill', def: '#FFFFFF', type: 'color', label: ['dot', 'is', 'fill'], category: 'line'},
+                    { key: 'plot.dot.strokeWidth', def: 0.5, type: 'number', min: 0, max: 12, step: 0.1, label: ['dot', 'is', 'strokeWidth'], category: 'line'},
+
                     { key: 'plot.labels.show', def: true, type: 'checkbox', label: 'showDataLabels', category: 'plot' },
                     { key: 'plot.labels.offsetY', def: -8, type: 'number', min: -100, max: 100, label: 'offsetYDataLabels', category: 'plot' },
                     { key: 'plot.labels.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'plot' },

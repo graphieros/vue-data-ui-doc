@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.3.88",
+    "date": "2024-11-14",
+    "updates": [
+      {
+        "component": "Components with smooth lines",
+        "description": "Improved smooth line generation to avoid weird dips in some cases."
+      }
+    ]
+  },
+  {
     "version": "v 2.3.86",
     "date": "2024-11-12",
     "updates": [
