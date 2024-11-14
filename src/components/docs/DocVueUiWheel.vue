@@ -13,6 +13,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -217,6 +218,10 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+  dataset.value.percentage = Math.random() * 100;
+}
+
 </script>
 
 <template>
@@ -258,6 +263,8 @@ const { configCode, showAllConfig } = useConfigCode()
               </template>
             </Suspense>
         </div>
+
+        <BaseRandomButton @click="randomizeData"/>
 
         <div class="w-full flex justify-center mt-6">
             <BaseViewExampleButton link="/examples/categories#vue-ui-wheel"/>
