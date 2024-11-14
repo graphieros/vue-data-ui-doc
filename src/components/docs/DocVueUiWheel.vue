@@ -463,3 +463,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
         </Box>
     </div>
 </template>
+
+<style>
+.vue-ui-wheel * {
+  font-variant-numeric:tabular-nums !important;
+}
+</style>
