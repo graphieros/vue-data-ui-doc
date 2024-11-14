@@ -12,6 +12,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -415,6 +416,28 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+    dataset.value[0].children[0].value = Math.random() * 100
+    dataset.value[0].children[1].value = Math.random() * 100
+    dataset.value[0].children[2].value = Math.random() * 100
+    dataset.value[0].value = dataset.value[0].children.map(c => c.value).reduce((a, b) => a + b, 0)
+    
+    dataset.value[1].children[0].value = Math.random() * 100
+    dataset.value[1].children[1].value = Math.random() * 100
+    dataset.value[1].children[2].value = Math.random() * 100
+    dataset.value[1].value = dataset.value[1].children.map(c => c.value).reduce((a, b) => a + b, 0)
+    
+    dataset.value[2].children[0].value = Math.random() * 30
+    dataset.value[2].children[1].value = Math.random() * 30
+    dataset.value[2].children[2].value = Math.random() * 30
+    dataset.value[2].children[3].value = Math.random() * 30
+    dataset.value[2].children[4].value = Math.random() * 30
+    dataset.value[2].children[5].value = Math.random() * 30
+    dataset.value[2].children[6].value = Math.random() * 30
+    dataset.value[2].value = dataset.value[2].children.map(c => c.value).reduce((a, b) => a + b, 0)
+
+}
+
 </script>
 
 <template>
@@ -467,6 +490,7 @@ const { configCode, showAllConfig } = useConfigCode()
                     <BaseSpinner/>
                 </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <Box showEmits showSlots showTooltip :showThemes="false" showResponsive schema="vue_ui_treemap" signInfo="positiveOnly">
