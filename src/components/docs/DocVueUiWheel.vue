@@ -262,9 +262,9 @@ function randomizeData() {
                 <BaseSpinner/>    
               </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
-        <BaseRandomButton @click="randomizeData"/>
 
         <div class="w-full flex justify-center mt-6">
             <BaseViewExampleButton link="/examples/categories#vue-ui-wheel"/>
