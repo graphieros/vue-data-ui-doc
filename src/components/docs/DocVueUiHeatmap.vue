@@ -12,6 +12,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -30,8 +31,8 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 })
 
-const dataset = computed(() => {
-    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+function initDataset() {
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     const arr = [];
     const dsLen = 26;
     const serieLen = days.length;
@@ -46,7 +47,9 @@ const dataset = computed(() => {
         })
     }
     return arr
-});
+}
+
+const dataset = ref(initDataset());
 
 const config = ref({
   style: {
@@ -359,6 +362,24 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    const arr = [];
+    const dsLen = 26;
+    const serieLen = days.length;
+    for (let i = 0; i < serieLen; i += 1) {
+        const values = [];
+        for (let j = 0; j < dsLen; j += 1) {
+        values.push(Math.random() * 100)
+        }
+        arr.push({
+            name: `${days[i]}`,
+            values
+        })
+    }
+    dataset.value = arr
+}
+
 </script>
 
 <template>
@@ -399,6 +420,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 <BaseSpinner/>    
               </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <div class="w-full flex justify-center mt-6">
@@ -686,3 +708,9 @@ Target the following css class to apply custom styles:
         </Box>
     </div>
 </template>
+
+<style>
+.vue-ui-heatmap rect {
+  transition: all 0.2s ease-in-out !important;
+}
+</style>
