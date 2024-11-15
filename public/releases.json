@@ -1,5 +1,20 @@
 [
   {
+    "version": "v 2.3.91",
+    "date": "2024-11-15",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Remove excess % sign in tooltip",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "Version name",
+        "description": "Show version of the library in a desc element of svgs"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.90",
     "date": "2024-11-14",
     "updates": [
