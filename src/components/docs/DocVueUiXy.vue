@@ -936,7 +936,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="stroke" attr="chart.grid.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="showVerticalLines" attr="chart.grid.showVerticalLines" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="showHorizontalLines" attr="chart.grid.showHorizontalLines" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="position" attr="chart.grid.position" type="select" defaultVal="middle" :options="['middle', 'start']" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.3.40"/>
+                <BaseAttr name="position" attr="chart.grid.position" type="select" defaultVal="middle" :options="['middle', 'start']" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.3.40" :tooltip="translations.docTooltips.xy.gridPosition[store.lang]"/>
                 <BaseDetails attr="frame" :level="3" title="chart.grid.frame">
                     <span><BaseComment>Since v2.3.40</BaseComment></span>
                     <BaseAttr name="show" attr="chart.grid.frame.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -947,13 +947,13 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                     <BaseAttr name="strokeDasharray" attr="chart.grid.frame.strokeDasharray" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="labels" :level="3" title="chart.grid.labels">
-                    <BaseAttr name="show" attr="chart.grid.labels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="show" attr="chart.grid.labels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" :tooltip="translations.docTooltips.xy.labelsShow[store.lang]"/>
                     <BaseAttr name="color" attr="chart.grid.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="fontSize" attr="chart.grid.labels.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseDetails attr="axis" :level="4" title="chart.grid.labels.axis">
-                        <BaseAttr name="yLabel" attr="chart.grid.labels.axis.yLabel" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="yLabel" attr="chart.grid.labels.axis.yLabel" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" :tooltip="translations.docTooltips.xy.axisLabels[store.lang]"/>
                         <BaseAttr name="yLabelOffsetX" attr="chart.grid.labels.axis.yLabelOffsetX" type="number" defaultVal="0" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="xLabel" attr="chart.grid.labels.axis.xLabel" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="xLabel" attr="chart.grid.labels.axis.xLabel" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" :tooltip="translations.docTooltips.xy.axisLabels[store.lang]"/>
                         <BaseAttr name="xLabelOffsetY" attr="chart.grid.labels.axis.xLabelOffsetY" type="number" defaultVal="0" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSize" attr="chart.grid.labels.axis.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>

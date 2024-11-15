@@ -21,6 +21,10 @@ const props = defineProps({
     position: {
         type: String,
         default: 'top'
+    },
+    mute: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -39,7 +43,7 @@ const tpClass = computed(() => {
     <div class="group cursor-pointer relative inline-block overflow-visible">
         <slot />
         <div
-            :class="tpClass">
+            :class="tpClass" v-if="!mute">
             <div class="flex flex-col gap-2">
                 <img v-if="img" :src="img" class="rounded shadow"/>
                 <div class="flex flex-row place-items-center gap-1" @click="emit('click')">

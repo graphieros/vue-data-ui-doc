@@ -25,6 +25,43 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                docTooltips: {
+                    xy: {
+                        gridPosition: {
+                            en: "You should avoid setting position to 'start' when using bars.",
+                            fr: "Vous devriez éviter de définir la position sur 'début' lorsque vous utilisez des barres.",
+                            pt: "Você deve evitar definir a posição como 'início' ao usar barras.",
+                            de: "Sie sollten vermeiden, die Position auf 'Start' zu setzen, wenn Sie Balken verwenden.",
+                            zh: "使用条形图时，应避免将位置设置为“开始”。",
+                            jp: "バーを使用する場合、位置を「開始」に設定するのは避けるべきです。",
+                            es: "Debe evitar configurar la posición en 'inicio' al usar barras.",
+                            ko: "막대를 사용할 때 위치를 '시작'으로 설정하지 않는 것이 좋습니다.",
+                            ar: "يجب تجنب ضبط الموضع على 'البدء' عند استخدام القضبان."
+                        },
+                        labelsShow: {
+                            en: "Show or hide yAxis labels",
+                            fr: "Afficher ou masquer les étiquettes de l'axe y",
+                            pt: "Mostrar ou ocultar rótulos do eixo y",
+                            de: "y-Achsenbeschriftungen anzeigen oder ausblenden",
+                            zh: "显示或隐藏 y 轴标签",
+                            jp: "y軸ラベルを表示または非表示にする",
+                            es: "Mostrar u ocultar etiquetas del eje y",
+                            ko: "y축 레이블 표시 또는 숨기기",
+                            ar: "عرض أو إخفاء تسميات المحور y"
+                        },
+                        axisLabels: {
+                            en: "Axis label will show only if a content is set. If the label appears cropped, you can tweak chart padding values.",
+                            fr: "L'étiquette de l'axe s'affichera uniquement si un contenu est défini. Si l'étiquette apparaît coupée, vous pouvez ajuster les valeurs d'espacement du graphique.",
+                            pt: "O rótulo do eixo aparecerá apenas se um conteúdo estiver definido. Se o rótulo aparecer cortado, você pode ajustar os valores de preenchimento do gráfico.",
+                            de: "Die Achsenbeschriftung wird nur angezeigt, wenn ein Inhalt festgelegt ist. Wenn die Beschriftung abgeschnitten erscheint, können Sie die Abstandswerte des Diagramms anpassen.",
+                            zh: "轴标签只有在设置了内容时才会显示。如果标签显示不完整，您可以调整图表的边距值。",
+                            jp: "軸ラベルはコンテンツが設定されている場合にのみ表示されます。ラベルが切れて表示される場合は、チャートのパディング値を調整できます。",
+                            es: "La etiqueta del eje solo se mostrará si se ha establecido un contenido. Si la etiqueta aparece recortada, puedes ajustar los valores de margen del gráfico.",
+                            ko: "축 레이블은 콘텐츠가 설정된 경우에만 표시됩니다. 레이블이 잘리는 경우 차트 여백 값을 조정할 수 있습니다.",
+                            ar: "سيظهر ملصق المحور فقط إذا تم تعيين محتوى. إذا ظهر الملصق مقطوعًا، يمكنك تعديل قيم الحشو في المخطط."
+                        }
+                    }
+                },
                 randomData: {
                     en: "Show random dataset",
                     fr: "Afficher un ensemble de données aléatoire",
