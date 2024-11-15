@@ -12,6 +12,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -324,6 +325,14 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+  dataset.value[0].values = [Math.random() * 100];
+  dataset.value[1].values = [Math.random() * 200];
+  dataset.value[2].values = [Math.random() * 300];
+  dataset.value[3].values = [Math.random() * 50];
+  dataset.value[4].values = [Math.random() * 25];
+}
+
 </script>
 
 <template>
@@ -364,6 +373,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 <BaseSpinner/>      
               </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_rings" signInfo="positiveOnly">

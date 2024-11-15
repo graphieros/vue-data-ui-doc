@@ -11,6 +11,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
@@ -212,6 +213,10 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+function randomizeData() {
+  dataset.value.percentage = Math.random() * 100;
+}
+
 </script>
 
 <template>
@@ -252,6 +257,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 <BaseSpinner/>
               </template>
             </Suspense>
+            <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <Box showEmits showSlots showThemes schema="vue_ui_tiremarks" signInfo="positiveOnly">
