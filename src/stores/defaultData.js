@@ -3390,6 +3390,18 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'table' },
                     { key: 'table.td.prefix', def: "", type: 'text', label: 'prefix', category: 'table'},
                     { key: 'table.td.suffix', def: "", type: 'text', label: 'suffix', category: 'table'},
+
+                    { key: 'style.chart.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 24, label: 'fontSize', category: 'tooltip' },
+                    { key: 'style.chart.tooltip.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'tooltip' },
+                    { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
                 ]
             }
         }

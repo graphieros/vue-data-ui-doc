@@ -56,6 +56,7 @@ const config = ref({
         show: true,
         position: 'right',
         buttons: {
+            tooltip: true,
             pdf: true,
             img: true,
             csv: true,
@@ -65,6 +66,7 @@ const config = ref({
         buttonTitles: {
             open: "Open options",
             close: "Close options",
+            tooltip: "Toggle tooltip",
             pdf: "Download PDF",
             csv: "Download CSV",
             img: "Download PNG",
@@ -108,6 +110,20 @@ const config = ref({
                     fontSize: 16,
                     bold: false
                 }
+            },
+            tooltip: {
+                show: true,
+                color: "#1A1A1A",
+                backgroundColor: "#F3F4F6",
+                fontSize: 14,
+                roundingValue: 0,
+                customFormat: null,
+                borderRadius: 4,
+                borderColor:"#e1e5e8",
+                borderWidth: 1,
+                backgroundOpacity: 30,
+                position: "center",
+                offsetY: 24
             }
         }
     },
@@ -144,6 +160,7 @@ const darkModeConfig = ref({
         show: true,
         position: 'right',
         buttons: {
+            tooltip: true,
             pdf: true,
             img: true,
             csv: true,
@@ -153,6 +170,7 @@ const darkModeConfig = ref({
         buttonTitles: {
             open: "Open options",
             close: "Close options",
+            tooltip: "Toggle tooltip",
             pdf: "Download PDF",
             csv: "Download CSV",
             img: "Download PNG",
@@ -196,6 +214,20 @@ const darkModeConfig = ref({
                     fontSize: 16,
                     bold: false
                 }
+            },
+            tooltip: {
+                show: true,
+                color: "#CCCCCC",
+                backgroundColor: "#1A1A1A",
+                fontSize: 14,
+                roundingValue: 0,
+                customFormat: null,
+                borderRadius: 4,
+                borderColor:"#3A3A3A",
+                borderWidth: 1,
+                backgroundOpacity: 30,
+                position: "center",
+                offsetY: 24
             }
         }
     },
@@ -382,7 +414,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="height" attr="style.chart.height" type="number" defaultVal="300" :min="300" :max="2000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="width" attr="style.chart.width" type="number" defaultVal="512" :min="300" :max="2000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                <BaseDetails attr="zoom" :level="3" tite="style.chart.zoom">
+                <BaseDetails attr="zoom" :level="3" title="style.chart.zoom">
                     <BaseAttr name="show" attr="style.chart.zoom.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="style.chart.zoom.color" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="style.chart.zoom.highlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -412,6 +444,20 @@ const { configCode, showAllConfig } = useConfigCode()
                     <BaseAttr name="bold" attr="style.chart.words.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="usePalette" attr="style.chart.words.usePalette" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 </BaseDetails>
+                <BaseDetails attr="tooltip" :level="3" title="style.chart.tooltip">
+                    <BaseAttr name="show" attr="style.chart.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="backgroundColor" attr="style.chart.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.chart.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="fontSize" attr="style.chart.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="roundingValue" attr="style.chart.tooltip.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <span>customFormat: null, <span class="text-gray-600 dark:text-app-blue text-xs">// default behavior. To customize content, see 'custom tooltip' tab</span></span>
+                    <BaseAttr name="borderRadius" attr="style.chart.tooltip.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="borderColor" attr="style.chart.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="borderWidth" attr="style.chart.tooltip.borderWidth" type="number" defaultVal="1" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="backgroundOpacity" attr="style.chart.tooltip.backgroundOpacity" type="number" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="position" attr="style.chart.tooltip.position" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="offsetY" attr="style.chart.tooltip.offsetY" type="number" defaultVal="24" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="table" :level="1">
@@ -439,6 +485,7 @@ const { configCode, showAllConfig } = useConfigCode()
             <BaseAttr name="show" attr="userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
             <BaseAttr name="position" attr="userOptions.position" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
+                <BaseAttr name="tooltip" attr="userOptions.buttons.tooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="img" attr="userOptions.buttons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="csv" attr="userOptions.buttons.csv" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -446,6 +493,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 <BaseAttr name="fullscreen" attr="userOptions.buttons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             </BaseDetails>
             <BaseDetails attr="buttonTitles" :level="2" title="userOptions.buttonTitles">
+                <BaseAttr name="tooltip" attr="userOptions.buttonTitles.tooltip" type="text" defaultVal="Toggle tooltip" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="open" attr="userOptions.buttonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="close" attr="userOptions.buttonTitles.close" type="text" defaultVal="Close options" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="pdf" attr="userOptions.buttonTitles.pdf" type="text" defaultVal="Download PDF" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />

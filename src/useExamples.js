@@ -1182,7 +1182,13 @@ export default function useExamples() {
             style: {
                 chart: {
                     backgroundColor: colors.value.bg,
-                    color: colors.value.textColor
+                    color: colors.value.textColor,
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30,
+                    },
                 }
             }
         }

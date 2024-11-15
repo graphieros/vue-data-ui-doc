@@ -585,6 +585,11 @@
         },
         "userOptions": [
             {
+                "name": "tooltip",
+                "description": "Toggles tooltip visibility",
+                "icon": "tooltip"
+            },
+            {
                 "name": "pdf",
                 "description": "Triggers pdf download.",
                 "icon": "pdf"
@@ -630,6 +635,10 @@
             {
                 "name": "toggleTable",
                 "description": "Triggers toggling of the data table visibility"
+            },
+            {
+                "name": "toggleTooltip",
+                "description": "Triggers toggling of the tooltip visibility"
             }
         ],
         "slots": [
@@ -640,6 +649,14 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
             }
         ],
         "examples": [

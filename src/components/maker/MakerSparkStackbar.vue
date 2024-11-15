@@ -165,7 +165,7 @@ function getLabel(label) {
                     <tbody>
                         <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
                         <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[36px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage"></td>
+                        <td><input class="h-[36px]" type="number" :min="0" v-model="ds.value" @change="saveDatasetToLocalStorage"></td>
                     </tbody>
                 </table>
             </div>

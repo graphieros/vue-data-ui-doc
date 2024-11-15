@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.3.93",
+    "date": "2024-11-15",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Add tooltip; improve zoom functionality",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.91",
     "date": "2024-11-15",
     "updates": [
