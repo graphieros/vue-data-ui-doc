@@ -3,18 +3,18 @@
         <label class="text-xs text-black dark:text-white">{{ label }}</label>
         <div class="color-picker flex flex-row">
             <div class="flex flex-col place-items-center">
-                <input type="color" style="width: 120px !important" v-model="hexColor" @input="updateColorFromHex" />
+                <input :id="id" :aria-labelledby="labelId" type="color" style="width: 120px !important" v-model="hexColor" @input="updateColorFromHex" />
                 
                 <div class="inline-flex place-items-center justify-center gap-2 relative h-[20px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                    <input type="range" class="w-full accent-app-blue" v-model="alpha" min="0" max="1" step="0.01" @input="updateColorFromAlpha" />
+                    <input aria-label="Alpha channel" type="range" class="w-full accent-app-blue" v-model="alpha" min="0" max="1" step="0.01" @input="updateColorFromAlpha" />
                 </div>
             </div>
             <div class="color-preview" :style="{ backgroundColor: rgbaColor }"></div>
-            <input type="text" class="text-xs h-[36px] w-[200px]" v-model="colorValue" @input="updateColorFromInput" placeholder="Enter RGBA" />
+            <input :aria-labelledby="labelId" :id="id" type="text" class="text-xs h-[36px] w-[200px]" v-model="colorValue" @input="updateColorFromInput" placeholder="Enter RGBA" />
         </div>
     </div>
 </template>
-
+ 
 <script setup>
 import { ref, computed, watch, toRefs } from 'vue'
 
@@ -24,6 +24,14 @@ const props = defineProps({
         default: 'rgba(255, 0, 0, 0)', 
     },
     label: {
+        type: String,
+        default: ''
+    },
+    labelId: {
+        type: String,
+        default: ''
+    },
+    id: {
         type: String,
         default: ''
     }

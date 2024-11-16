@@ -7,6 +7,7 @@ import BaseComment from "./BaseComment.vue";
 import BaseColorInfo from "./BaseColorInfo.vue";
 import BaseColorInput from "./BaseColorInput.vue";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
+import { createUid } from "./maker/lib";
 
 const props = defineProps({
     light: {
@@ -80,6 +81,8 @@ function getNestedAttribute(obj, path) {
     return path.split('.').reduce((acc, part) => acc && acc[part], obj);
 }
 
+const id = createUid();
+
 function setNestedAttribute(obj, path, value) {
     console.log(obj, path, value)
     const parts = path.split('.');
@@ -147,25 +150,27 @@ const isSelected = ref(false);
 <template>
     <div class="relative min-h-[32px] py-1" @mouseenter="isSelected=true" @mouseout="isSelected=false">
         <FlexibleTooltip position="bottom" :mute="!tooltip" :content="tooltip" width="min-w-[100px] max-w-[300px]">
-            {{ name }}:
+            <label :for="`i_${id}`" :id="id" class="pr-1">{{ name }}:</label> 
             <template v-if="type === 'number'">
-                <BaseNumberInput v-model:value="nestedAttribute" :min="min" :max="max" :step="step" @change="emit('change')"/>
+                <BaseNumberInput v-model:value="nestedAttribute" :min="min" :max="max" :step="step" @change="emit('change')" :labelId="id" :id="`i_${id}`"/>
             </template>
             <template v-if="type === 'text'">
-                <input type="text" v-model="nestedAttribute" @change="emit('change')">
+                <input type="text" v-model="nestedAttribute" @change="emit('change')" :id="`i_${id}`">
             </template>
             <template v-if="type === 'color'">
-                <BaseColorInput v-if="rgba" v-model:value="nestedAttribute" @change="emit('change')"/>
-                <input v-else type="color" v-model="nestedAttribute" @change="emit('change')">
+                <BaseColorInput v-if="rgba" v-model:value="nestedAttribute" @change="emit('change')" :labelId="id" :id="`i_${id}`"/>
+                <input :aria-labelledby="id" v-else type="color" v-model="nestedAttribute" @change="emit('change')" :id="`i_${id}`">
             </template>
             <template v-if="type === 'range'">
                 <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
                     <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ nestedAttribute }}</div>
-                    <input :title="nestedAttribute" type="range" v-model="nestedAttribute" :min="min" :max="max" :step="step" class="accent-app-blue z-10" @change="emit('change')">
+                    <input :id="`i_${id}`" :aria-labelledby="id" :title="nestedAttribute" type="range" v-model="nestedAttribute" :min="min" :max="max" :step="step" class="accent-app-blue z-10" @change="emit('change')">
                 </div>
             </template>
             <template v-if="type === 'checkbox'">
-                <input 
+                <input
+                    :aria-labelledby="id" 
+                    :id="`i_${id}`"
                     type="checkbox" 
                     :checked="nestedAttribute === true" 
                     @change="nestedAttribute = $event.target.checked; emit('change')"
@@ -173,7 +178,7 @@ const isSelected = ref(false);
                 />
             </template>
             <template v-if="type === 'select'">
-                <select :value="nestedAttribute" @change="updateSelectValue" class="h-[28px]">
+                <select :value="nestedAttribute" @change="updateSelectValue" class="h-[28px]" :id="`i_${id}`" :aria-labelledby="id">
                     <option v-for="o in options" :key="o" :value="o">{{ o }}</option>
                 </select>
             </template>

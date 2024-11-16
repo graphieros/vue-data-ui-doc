@@ -682,7 +682,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
-                    { key: 'type', def: 'classic', type: 'select', options: ['classic', 'polar'], category: 'general'},
+                    { key: 'type', def: 'classic', type: 'select', options: ['classic', 'polar'], label:'type', category: 'general'},
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'useBlurOnHover', def: true, type: 'checkbox', label: "useBlurOnHover", category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: "fontFamily", category: 'general' },

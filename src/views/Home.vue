@@ -449,7 +449,7 @@ const componentTranslation = ref({
                 <div class="relative">
                   <StarFilledIcon class="text-[#fdd663]"/>
                   <svg viewBox="0 0 20 20" height="16" class="absolute top-[6px] left-1">
-                    <path d="M 5 5 A 1 1 0 0 0 7 5 A 1 1 0 0 0 5 5 M 13 5 A 1 1 0 0 0 15 5 A 1 1 0 0 0 13 5 Z M 5 9 C 7 14 13 14 15 9" fill="none" stroke="black" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M 7 7 L 7 4 M 13 7 L 13 4 Z M 5 9 C 7 14 13 14 15 9" fill="none" stroke="black" stroke-width="1.3" stroke-linecap="round"/>
                   </svg>
                 </div>
                 <span class="text-xs dark:text-[#fdd663] h-[20px]">
@@ -541,7 +541,7 @@ const componentTranslation = ref({
           <div class="relative">
             <StarFilledIcon class="text-[#fdd663] drop-shadow"/>
             <svg viewBox="0 0 20 20" height="16" class="absolute top-[6px] left-1">
-              <path d="M 5 5 A 1 1 0 0 0 7 5 A 1 1 0 0 0 5 5 M 13 5 A 1 1 0 0 0 15 5 A 1 1 0 0 0 13 5 Z M 5 9 C 7 14 13 14 15 9" fill="none" stroke="black" stroke-width="1" stroke-linecap="round"/>
+              <path d="M 7 7 L 7 4 M 13 7 L 13 4 Z M 5 9 C 7 14 13 14 15 9" fill="none" stroke="black" stroke-width="1.3" stroke-linecap="round"/>
             </svg>
           </div>
           <span class="text-xs dark:text-[#fdd663] h-[20px]">
