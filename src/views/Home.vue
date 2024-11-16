@@ -313,7 +313,7 @@ const configDonutMenu = computed(() => {
                     show: false
                 },
                 comments: {
-                  width: 150
+                  width: 130
                 },
                 tooltip: {
                     show: false,
