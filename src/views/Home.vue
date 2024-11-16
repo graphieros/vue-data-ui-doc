@@ -446,7 +446,12 @@ const componentTranslation = ref({
                 />
               </div>
               <div class="flex flex-row gap-2 place-items-center" v-if="store.stars && !store.isFetching">
-                <StarFilledIcon class="text-[#fdd663]"/>
+                <div class="relative">
+                  <StarFilledIcon class="text-[#fdd663]"/>
+                  <svg viewBox="0 0 20 20" height="16" class="absolute top-[6px] left-1">
+                    <path d="M 5 5 A 1 1 0 0 0 7 5 A 1 1 0 0 0 5 5 M 13 5 A 1 1 0 0 0 15 5 A 1 1 0 0 0 13 5 Z M 5 9 C 7 14 13 14 15 9" fill="none" stroke="black" stroke-width="1" stroke-linecap="round"/>
+                  </svg>
+                </div>
                 <span class="text-xs dark:text-[#fdd663] h-[20px]">
                   <Suspense>
                     <template #default>
@@ -533,7 +538,12 @@ const componentTranslation = ref({
           />
         </div>
         <div class="flex flex-row gap-2 place-items-center" v-if="store.stars && !store.isFetching">
-          <StarFilledIcon class="text-[#fdd663] drop-shadow"/>
+          <div class="relative">
+            <StarFilledIcon class="text-[#fdd663] drop-shadow"/>
+            <svg viewBox="0 0 20 20" height="16" class="absolute top-[6px] left-1">
+              <path d="M 5 5 A 1 1 0 0 0 7 5 A 1 1 0 0 0 5 5 M 13 5 A 1 1 0 0 0 15 5 A 1 1 0 0 0 13 5 Z M 5 9 C 7 14 13 14 15 9" fill="none" stroke="black" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
           <span class="text-xs dark:text-[#fdd663] h-[20px]">
             <VueUiDigits :dataset="store.stars" :config="digitConfigStars"/>
           </span>
