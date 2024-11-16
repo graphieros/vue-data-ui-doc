@@ -507,7 +507,7 @@ const componentTranslation = ref({
         </Suspense>
         <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[500px] place-items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20px] pointer-events-none"> 
             <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${-deviationX * 20}deg);`">
-                <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[80px] mx-auto drop-shadow-xl logo-shape">
+                <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[48px] mx-auto drop-shadow-xl logo-shape mt-2 ml-1">
             </div>
         </div>
     </div>
