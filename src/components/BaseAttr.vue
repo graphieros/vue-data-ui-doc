@@ -187,7 +187,7 @@ const isSelected = ref(false);
             <BaseComment v-if="comment">{{ comment }}</BaseComment>
             <Transition name="fade">
                 <button
-                    class="h-[24px] w-[24px] absolute flex -left-[26px] top-1/2 -translate-y-1/2 place-items-center justify-center p-0.5 rounded-full bg-gradient-to-b from-app-gold to-app-orange text-black hover:-rotate-90 shadow-md transition-all border border-white"
+                    class="h-[24px] w-[24px] absolute flex -left-[26px] top-1/2 -translate-y-1/2 place-items-center justify-center p-0.5 rounded-full bg-gradient-to-b from-app-gold to-app-orange text-black hover:-rotate-90 shadow-md transition-all border border-white dark:border-black"
                     v-if="showResetButton && type !== 'checkbox'" 
                     @click="resetValue"
                 >
