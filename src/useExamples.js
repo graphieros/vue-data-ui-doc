@@ -2205,6 +2205,29 @@ export default function useExamples() {
                     ar: 'مخطط دائري'
                 }                
             },
+            // POLAR
+            {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: {
+                    ...CONFIG_DONUT_BASE.value,
+                    type: 'polar'
+                },
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'donut-polar',
+                link: 'vue-ui-donut',
+                description: {
+                    en: "Polar area chart",
+                    fr: "Diagramme en aires polaires",
+                    pt: "Gráfico de área polar",
+                    de: "Polarer Flächendiagramm",
+                    zh: "极区面积图",
+                    jp: "ポーラーエリアチャート",
+                    es: "Gráfico de área polar",
+                    ko: "극 영역 차트",
+                    ar: "مخطط المساحة القطبية"
+                }
+            },
             // PIE NO GRADIENT
             {
                 dataset: DATASET_DONUT_BASIC.value,

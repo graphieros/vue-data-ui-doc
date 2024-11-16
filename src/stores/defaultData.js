@@ -664,18 +664,25 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 dataset: [
                     {
                         name: "series 1",
-                        values: [30],
-                        color: '#42d392',
+                        values: [100],
+                        color: '#1f77b4',
                         id: "111"
                     },
                     {
                         name: "series 2",
-                        values: [70],
-                        color: '#6376DD',
+                        values: [50],
+                        color: '#aec7e8',
                         id: "222"
+                    },
+                    {
+                        name: "series 3",
+                        values: [25],
+                        color: '#ff7f0e',
+                        id: "333"
                     }
                 ],
                 model: [
+                    { key: 'type', def: 'classic', type: 'select', options: ['classic', 'polar'], category: 'general'},
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'useBlurOnHover', def: true, type: 'checkbox', label: "useBlurOnHover", category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: "fontFamily", category: 'general' },

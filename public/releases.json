@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.3.95",
+    "date": "2024-11-16",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add new polar display option",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Fix display bug in data table causing NaN% values",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.93",
     "date": "2024-11-15",
     "updates": [

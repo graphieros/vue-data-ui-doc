@@ -55,6 +55,7 @@ const dataset = ref([
 ]);
 
 const darkModeConfig = ref({
+    type: 'classic',
     responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
@@ -232,6 +233,7 @@ const darkModeConfig = ref({
 });
 
 const config = ref({
+    type: 'classic',
     responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
@@ -737,6 +739,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
 </div>
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiDonutConfig" equal>
+        <BaseAttr name="type" attr="type" type="select" defaultVal="classic" :options="['classic', 'polar']" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <span>responsive: false, <span class="text-gray-600 dark:text-app-blue text-xs">// {{ translations.responsive[store.lang] }}</span></span>
         theme: "", ("zen" | "hack" | "concrete" | "")<br>
         <span>customPalette: [], <span class="text-xs text-app-blue">// string[]</span></span>
