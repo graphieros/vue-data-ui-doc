@@ -7,6 +7,7 @@ import { createWordCloudDatasetFromPlainText } from "vue-data-ui"
 import { useConfig } from "../assets/useConfig";
 import { useIconMap, isValidComponent } from "../useIconMap";
 import updates from "../../public/releases.json"
+import GithubIssues from "../components/GithubIssues.vue";
 
 const globalConfig = useConfig()
 
@@ -1747,7 +1748,6 @@ const versionsReleases = computed(() => {
       </div>
     <!-- <SideMenu @toggle="toggleMenu"/> -->
     <div :class="`pt-9 sm:pt-24 overflow-x-hidden`">
-
         <div :class="``">
           <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.versions[store.lang] }}</h1>
 
@@ -1889,7 +1889,7 @@ const versionsReleases = computed(() => {
                 </div>
 
                 <div class="w-full max-w-[800] mx-auto py-6">
-                  :)
+                  <GithubIssues/>
                 </div>
             </div>
         </div>
