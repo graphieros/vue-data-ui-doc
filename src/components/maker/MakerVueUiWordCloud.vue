@@ -169,14 +169,18 @@ function getLabel(label) {
         </details>
     
         <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-            <CopyComponent @click="() => copyComponent('componentContent', store)"/>
             <ComponentContent
                 :dataset="createWordCloudDatasetFromPlainText(datasetItems, word => word.toLowerCase()).sort((a, b) => b.value - a.value)"
                 :config="finalConfig"
                 componentName="VueUiWordCloud"
                 configName="vue_ui_word_cloud"
                 @click="() => copyComponent('componentContent', store)"
-            />          
+                :copyComponentFunc="() => copyComponent('componentContent', store)"
+            >
+                <template #component-copy>
+                    <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                </template>
+            </ComponentContent>          
         </div>
     </div>
 </template>

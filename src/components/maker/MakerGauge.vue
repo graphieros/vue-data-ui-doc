@@ -240,14 +240,18 @@ function randomVal() {
     </details>
 
     <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
         <ComponentContent
             :dataset="usableDataset"
             :config="finalConfig"
             componentName="VueUiGauge"
             configName="vue_ui_gauge"
             @click="() => copyComponent('componentContent', store)"
-        />
+            :copyComponentFunc="() => copyComponent('componentContent', store)"
+        >
+        <template #component-copy>
+            <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+        </template>
+        </ComponentContent>
     </div>
     </div>
 </template>

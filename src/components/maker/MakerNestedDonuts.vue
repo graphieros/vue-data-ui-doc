@@ -259,7 +259,6 @@ function getLabel(label) {
         </details>
     
         <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-            <CopyComponent @click="() => copyComponent('componentContent', store)"/>
             <ComponentContent
                 :dataset="datasetItems.map(({name, series}) => {
                     return {
@@ -277,7 +276,12 @@ function getLabel(label) {
                 componentName="VueUiNestedDonuts"
                 configName="vue_ui_nested_donuts"
                 @click="() => copyComponent('componentContent', store)"
-            />  
+                :copyComponentFunc="() => copyComponent('componentContent', store)"
+            >
+                <template #component-copy>
+                    <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                </template>   
+            </ComponentContent> 
         </div>
     </div>
     

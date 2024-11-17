@@ -277,14 +277,18 @@ function updateParent({parentId}) {
         </details>
     
         <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-            <CopyComponent @click="() => copyComponent('componentContent', store)"/>
             <ComponentContent
                 :dataset="datasetItems.map(({name, value, color, children}) => {return {name, value, color, children}})"
                 :config="finalConfig"
                 componentName="VueUiChestnut"
                 configName="vue_ui_vertical_bar"
                 @click="() => copyComponent('componentContent', store)"
-            />            
+                :copyComponentFunc="() => copyComponent('componentContent', store)"
+            >
+                <template #component-copy>
+                    <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                </template>
+            </ComponentContent>     
         </div>
     </div>
     

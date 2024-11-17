@@ -180,14 +180,18 @@ const accordionConfig = ref(
         
         
             <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-                <CopyComponent @click="() => copyComponent('componentContent', store)"/>
                 <ComponentContent
                     :dataset="datasetItems"
                     :config="finalConfig"
                     componentName="VueUiKpi"
                     configName="vue_ui_kpi"
                     @click="() => copyComponent('componentContent', store)"
-                />          
+                    :copyComponentFunc="() => copyComponent('componentContent', store)"
+                >
+                    <template #component-copy>
+                        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                    </template>
+                </ComponentContent>          
             </div>
     </div>
     

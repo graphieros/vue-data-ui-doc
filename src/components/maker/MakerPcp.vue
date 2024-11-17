@@ -282,14 +282,18 @@ function deleteValue(seriesIndex, itemIndex, valueIndex) {
         </details>
     
         <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-            <CopyComponent @click="() => copyComponent('componentContent', store)"/>
             <ComponentContent
                 :dataset="datasetItems"
                 :config="finalConfig"
                 componentName="VueUiParallelCoordinatePlot"
                 configName="vue_ui_parallel_coordinate_plot"
                 @click="() => copyComponent('componentContent', store)"
-            />          
+                :copyComponentFunc="() => copyComponent('componentContent', store)"
+            >
+                <template #component-copy>
+                    <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                </template>
+            </ComponentContent>         
         </div>
     </div>
 </template>

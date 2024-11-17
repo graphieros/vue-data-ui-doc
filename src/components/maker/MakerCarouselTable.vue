@@ -231,14 +231,18 @@ const colDeleteIndexIndicator = ref(null);
         </details>
     
         <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-            <CopyComponent @click="() => copyComponent('componentContent', store)"/>
             <ComponentContent
                 :dataset="currentDataset"
                 :config="finalConfig"
                 componentName="VueUiCarouselTable"
                 configName="vue_ui_carousel_table"
                 @click="() => copyComponent('componentContent', store)"
-            />          
+                :copyComponentFunc="() => copyComponent('componentContent', store)"
+            >
+                <template #component-copy>
+                    <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                </template>
+            </ComponentContent>          
         </div>
     </div>
 </template>

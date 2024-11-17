@@ -271,14 +271,18 @@ function deleteSubSerie(parentId, serieId) {
           </details>
       
           <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-              <CopyComponent @click="() => copyComponent('componentContent', store)"/>
               <ComponentContent
                   :dataset="isStack ? { series: dataset.series } : { percentage: dataset.percentage }"
                   :config="finalConfig"
                   componentName="VueUi3dBar"
                   configName="vue_ui_3d_bar"
                   @click="() => copyComponent('componentContent', store)"
-              /> 
+                  :copyComponentFunc="() => copyComponent('componentContent', store)"
+              >
+              <template #component-copy>
+                        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                    </template>
+            </ComponentContent>
           </div>
     </div>
     

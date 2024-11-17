@@ -226,14 +226,18 @@ function getLabel(label) {
 
 
     <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
         <ComponentContent
             :dataset="datasetItems.map(({name, value, color, percentage, prefix, suffix}) => {return {name, percentage, color, value, prefix, suffix}})"
             :config="finalConfig"
             componentName="VueUiOnion"
             configName="vue_ui_onion"
             @click="() => copyComponent('componentContent', store)"
-        />           
+            :copyComponentFunc="() => copyComponent('componentContent', store)"
+        >
+            <template #component-copy>
+                <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+            </template>
+        </ComponentContent>           
     </div>
     </div>    
 </template>

@@ -308,7 +308,6 @@ function composeLabel(labels) {
     </details>
     
     <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
         <ComponentContent 
             :dataset="datasetItems.map(ds => {
                 return {
@@ -326,7 +325,12 @@ function composeLabel(labels) {
             componentName="VueUiChestnut"
             configName="vue_ui_chestnut"
             @click="() => copyComponent('componentContent', store)"
-        />            
+            :copyComponentFunc="() => copyComponent('componentContent', store)"
+        >
+            <template #component-copy>
+                <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+            </template>    
+        </ComponentContent>            
     </div>
     </div>
     

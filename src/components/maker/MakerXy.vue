@@ -364,7 +364,6 @@ function fixChart() {
 
 
             <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-                <CopyComponent @click="() => copyComponent('componentContent', store)"/>
                 <ComponentContent
                     :dataset=" datasetItems.map(({name, series, color, type, shape, useArea, useProgression, dataLabels, smooth, dashed, useTag}) => {
                         return { name, series, color, type, shape, useArea, useProgression, dataLabels, smooth, dashed, useTag }})"
@@ -372,7 +371,12 @@ function fixChart() {
                     componentName="VueUiXy"
                     configName="vue_ui_xy"
                     @click="() => copyComponent('componentContent', store)"
-                />
+                    :copyComponentFunc="() => copyComponent('componentContent', store)"
+                >
+                    <template #component-copy>
+                        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                    </template>
+                </ComponentContent>
             </div>
         </div>
     </div>

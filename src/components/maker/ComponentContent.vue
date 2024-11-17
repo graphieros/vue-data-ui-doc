@@ -4,9 +4,11 @@ import { useNestedProp } from "../../useNestedProp";
 import { getVueDataUiConfig } from "vue-data-ui";
 import { copyText } from "./lib";
 import { useMainStore } from "../../stores";
-import { NumbersIcon } from "vue-tabler-icons";
+import { NumbersIcon, CopyIcon } from "vue-tabler-icons";
 import { useMakerStore } from "../../stores/maker";
 import IconSettings from "../IconSettings.vue";
+import BaseDragMenu from "../BaseDragMenu.vue";
+import FlexibleTooltip from "../FlexibleTooltip.vue";
 
 const props = defineProps({
     dataset: {
@@ -26,6 +28,9 @@ const props = defineProps({
         type: String,
         default: ''
     },
+    copyComponentFunc: {
+        type: Function
+    }
 })
 
 const store = useMainStore()
@@ -101,7 +106,38 @@ function copyDatasetOnly() {
 </script>
 
 <template>
-    <div class="flex flex-col sm:flex-row gap-4">
+
+    <BaseDragMenu>
+        <div class="w-[48px] flex flex-col gap-2 place-items-center justify-center">
+            <FlexibleTooltip
+                :content="makerTranslations.componentCode[store.lang]"
+                position="right"
+            >
+                <button @click="copyComponentFunc" class="p-2 rounded-md bg-gradient-to-br from-gray-300 to-white h-12 w-12 flex place-items-center justify-center shadow border border-transparent hover:border-app-blue-light">
+                    <CopyIcon class="text-[#3A3A3A]" />
+                </button>
+            </FlexibleTooltip>
+            <FlexibleTooltip
+                :content="makerTranslations.copyConfigOnly[store.lang]"
+                position="right"
+            >
+                <button @click="copyConfigOnly" class="p-2 rounded-md bg-gradient-to-br from-gray-300 to-white h-12 w-12 flex place-items-center justify-center shadow border border-transparent hover:border-app-blue-light">
+                    <IconSettings :size="28" :strokeWidth="1.4" stroke="#3A3A3A"/>
+                </button>
+            </FlexibleTooltip>
+            <FlexibleTooltip
+                :content="makerTranslations.copyDatasetOnly[store.lang]"
+                position="right"
+            >
+                <button @click="copyDatasetOnly" class="p-2 rounded-md bg-gradient-to-br from-gray-300 to-white h-12 w-12 flex place-items-center justify-center shadow border border-transparent hover:border-app-blue-light">
+                    <NumbersIcon class="text-[#3A3A3A]" />
+                </button>
+            </FlexibleTooltip>
+        </div>
+    </BaseDragMenu>
+
+    <div class="flex flex-col sm:flex-row gap-4 mt-6">
+        <slot name="component-copy"/>
         <button class="flex gap-1 bg-app-blue py-3 px-5 rounded-md opacity-80 hover:opacity-100 text-white dark:text-black hover:shadow-xl font-satoshi-bold transition-all place-items-center text-sm mb-4" @click="copyConfigOnly">
             <IconSettings :size="28" :strokeWidth="1.4" :stroke="isDarkMode ? '#1A1A1A' : '#FFFFFF'"/>
             {{ makerTranslations.copyConfigOnly[store.lang] }}

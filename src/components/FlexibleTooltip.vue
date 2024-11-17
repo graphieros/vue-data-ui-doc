@@ -33,8 +33,11 @@ const emit = defineEmits(['click'])
 const tpClass = computed(() => {
     if(props.position === 'top') {
         return `opacity-0 ${props.width} text-gray-200 bg-[#2A2A2A] dark:text-black dark:bg-[#CCCCCC] text-center text-xs rounded-lg py-2 absolute z-10 group-hover:opacity-100 transition-opacity ${props.delay} bottom-full left-1/2 -translate-x-1/2 px-3 pointer-events-none`
+    } else if(props.position === 'bottom' || !props.position) {
+        return `opacity-0 ${props.width} text-gray-200 bg-[#2A2A2A] dark:text-gray-300 dark:bg-[#3A3A3A] text-center text-xs rounded py-2 absolute z-10 group-hover:opacity-100 transition-opacity ${props.delay} top-full left-1/2 -translate-x-1/2 px-3 pointer-events-none mt-2`
+    } else if (props.position === 'right') {
+        return `opacity-0 ${props.width} text-gray-200 bg-[#2A2A2A] dark:text-gray-300 dark:bg-[#3A3A3A] text-center text-xs rounded py-2 absolute z-10 group-hover:opacity-100 transition-opacity ${props.delay} top-1/2 left-full -translate-y-1/2 pointer-events-none ml-2`
     }
-    return `opacity-0 ${props.width} text-gray-200 bg-[#2A2A2A] dark:text-gray-300 dark:bg-[#3A3A3A] text-center text-xs rounded py-2 absolute z-10 group-hover:opacity-100 transition-opacity ${props.delay} top-full left-1/2 -translate-x-1/2 px-3 pointer-events-none mt-2`
 })
 
 </script>
@@ -60,6 +63,10 @@ const tpClass = computed(() => {
             <svg v-if="position === 'bottom'" class="absolute text-[#2A2A2A] dark:text-[#3A3A3A] h-2 w-full left-0 bottom-full" x="0px" y="0px" viewBox="0 0 255 255"
                 xml:space="preserve">
                 <polygon class="fill-current" points="127.5,127.5 255,255, 0,255" />
+            </svg>
+            <svg v-if="position === 'right'" class="absolute text-[#2A2A2A] dark:text-[#3A3A3A] h-2 top-1/2 -translate-y-1/2 -left-2 bottom-full" x="0px" y="0px" viewBox="0 0 10 10"
+                xml:space="preserve">
+                <polygon class="fill-current" points="10,0 3,5 10,10" />
             </svg>
         </div>
     </div>

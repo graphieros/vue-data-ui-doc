@@ -276,14 +276,18 @@ function getRelationNodes(relationIds) {
             </details>
         
             <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-                <CopyComponent @click="() => copyComponent('componentContent', store)"/>
                 <ComponentContent
                     :dataset="datasetItems"
                     :config="finalConfig"
                     componentName="VueUiRelationCircle"
                     configName="vue_ui_relation_circle"
                     @click="() => copyComponent('componentContent', store)"
-                />    
+                    :copyComponentFunc="() => copyComponent('componentContent', store)"
+                >
+                    <template #component-copy>
+                        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+                    </template>
+                </ComponentContent>    
             </div>
     </div>
     

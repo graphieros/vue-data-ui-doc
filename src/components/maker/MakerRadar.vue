@@ -305,17 +305,21 @@ const dataset = computed(() => {
     </details>
 
     <div class="overflow-x-auto text-xs max-w-[800px] mx-auto">
-        <CopyComponent @click="() => copyComponent('componentContent', store)"/>
         <ComponentContent
-            :dataset="{
-                categories: categoryItems.map(({name, color }) => {return {name, color }}),
-                series: datasetItems.map(({ name, values, color, target}) => { return {name, values, color, target}})
-            }"
+        :dataset="{
+            categories: categoryItems.map(({name, color }) => {return {name, color }}),
+            series: datasetItems.map(({ name, values, color, target}) => { return {name, values, color, target}})
+        }"
             :config="finalConfig"
             componentName="VueUiRadar"
             configName="vue_ui_radar"
             @click="() => copyComponent('componentContent', store)"
-        />     
+            :copyComponentFunc="() => copyComponent('componentContent', store)"
+        >    
+            <template #component-copy>
+                <CopyComponent @click="() => copyComponent('componentContent', store)"/>
+            </template>
+        </ComponentContent>     
     </div>
     </div>
 </template>
