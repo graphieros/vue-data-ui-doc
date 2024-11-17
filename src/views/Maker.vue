@@ -1,9 +1,10 @@
 <script setup>
-import { ref, computed, onMounted, defineAsyncComponent } from "vue";
+import { ref, computed, onMounted, defineAsyncComponent, watch } from "vue";
 import { useMainStore } from "../stores";
 import { useMakerStore } from "../stores/maker"
 import Tooltip from "../components/FlexibleTooltip.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
+import BaseCrumbs from "../components/BaseCrumbs.vue";
 
 const MakerXy = defineAsyncComponent(() => import('../components/maker/MakerXy.vue'));
 const MakerDonut = defineAsyncComponent(() => import('../components/maker/MakerDonut.vue'));
@@ -51,12 +52,6 @@ const translations = computed(() => {
 const makerTranslations = computed(() => {
     return makerStore.translations;
 })
-
-const isDarkMode = computed(() => {
-    return store.isDarkMode;
-})
-
-const isCopy = computed(() => store.isCopy);
 
 const options = ref([
     { name: "VueUiXy", icon: "chartLine", thumb: new URL('../assets/thumb_xy_light.png', import.meta.url).href},
@@ -115,9 +110,25 @@ function selectChart(opt) {
     saveSelectedChartToLocalStorage()
 }
 
+const crumbs = computed(() => {
+    return [
+        {
+            description: translations.value.menu.docs[store.lang],
+            link: '/docs'
+        },
+        {
+            description: translations.value.menu.chartBuilder[store.lang],
+        },
+        {
+            description: selectedChart.value.name
+        }
+    ]
+})
+
 </script>
 
 <template>
+    <BaseCrumbs :tree="crumbs" noMargin showMobile/>
     <ConfirmCopy />
 
     <div class="w-full max-w-[1400px] mx-auto overflow-visible min-h-[3000px]">

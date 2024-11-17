@@ -11,6 +11,7 @@ import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
+import BaseMakerChart from "../BaseMakerChart.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -119,6 +120,13 @@ function randomVal() {
     currentDataset.value.percentage = Math.random() * 100; 
 }
 
+function fixChart() {
+    isFixed.value = !isFixed.value;
+    setTimeout(() => {
+        step.value += 1;
+    }, 100)
+}
+
 </script>
 
 <template>
@@ -127,20 +135,13 @@ function randomVal() {
         <DocLink to="vue-ui-tiremarks" name="VueUiTiremarks"/>
         
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-                <transition name="fade">                
-                    <div :class="`transition-all shadow-xl rounded p-2 ${isFixed ? `fixed top-[64px] right-6 z-20 w-[300px]` : 'w-full mx-auto max-w-[600px]'}`" v-if="currentDataset && ![undefined, null].includes(currentDataset.percentage)">
-                        <div class="flex flex-row gap-6 mb-2 w-full bg-white dark:bg-[#1A1A1A] py-2 justify-center">
-                            <button @click="isFixed = !isFixed" class="flex align-center justify-center  border border-app-blue p-2 rounded-full">
-                                <PinnedOffIcon v-if="isFixed"/>
-                                <PinIcon v-else/>
-                            </button>
-                            <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
-                        </div>
-                        <div :class="`${finalConfig.style.chart.layout.display === 'horizontal'  ? '' : 'w-[64px] mx-auto'}`">
-                            <VueUiTiremarks :dataset="currentDataset" :config="finalConfig" :key="`chart_${step}`"/>
-                        </div>
-                    </div>
-                </transition>
+            <BaseMakerChart
+                :isFixed="isFixed"
+                @fixChart="fixChart"
+                @resetModel="resetModel"
+            >
+                <VueUiTiremarks :dataset="currentDataset" :config="finalConfig" :key="`chart_${step}`"/>
+            </BaseMakerChart>
             </div>
         
             <details open>
@@ -162,10 +163,6 @@ function randomVal() {
             <details open class="mt-6" v-if="makerTranslations.labels">
                 <summary class="cursor-pointer">{{ makerTranslations.config[store.lang] }}</summary>
         
-                <div class="flex justify-end">
-                    <button class="ml-4 py-1 px-4 rounded-full border border-app-orange text-app-orange hover:bg-app-orange hover:text-black transition-colors" @click="resetModel">{{ makerTranslations.reset[store.lang] }}</button>
-                </div>
-        
                 <MakerKnobs
                     :categories="CONFIG_CATEGORIES"
                     :model="CONFIG_MODEL"
@@ -181,6 +178,8 @@ function randomVal() {
                     configName="vue_ui_tiremarks"
                     @click="() => copyComponent('componentContent', store)"
                     :copyComponentFunc="() => copyComponent('componentContent', store)"
+                    keyConfig="tiremarksConfig"
+                    keyDataset="tiremarksDataset"
                 >
                     <template #component-copy>
                         <CopyComponent @click="() => copyComponent('componentContent', store)"/>

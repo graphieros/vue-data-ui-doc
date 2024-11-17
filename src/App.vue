@@ -48,7 +48,7 @@ const showUnderlay = computed(() => {
 
 <template>
   <Header/>
-  <HelpCenter v-if="!['Home', 'Versions'].includes(route.name)"/>
+  <HelpCenter v-if="!['Home', 'Versions', 'Maker'].includes(route.name)"/>
   <div v-if="showUnderlay && !currentRoute.startsWith('/examples')" class="underlay-paper"></div>
 
   <div v-if="isDarkMode && !currentRoute.startsWith('/examples')" class="underlay-paper--dark"></div>

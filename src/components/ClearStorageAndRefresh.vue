@@ -1,6 +1,6 @@
 <script setup>
 import { computed, nextTick } from "vue"
-import { TrashIcon } from "vue-tabler-icons"
+import { RefreshDotIcon } from "vue-tabler-icons"
 import { useMainStore } from "../stores";
 import { useMakerStore } from "../stores/maker"
 
@@ -33,8 +33,8 @@ function nuke() {
 </script>
 
 <template>
-    <button class="flex flex-row place-items-center gap-2 text-app-orange border border-app-orange py-2 px-4 rounded-full mx-auto my-6 hover:bg-app-orange hover:text-black" v-if="isStored" @click="nuke">
-        <TrashIcon/>
+    <button class="flex flex-row place-items-center gap-2 py-2 px-4 rounded-full mx-auto my-6 bg-gradient-to-br from-app-gold to-app-orange transition-all text-black opacity-80 hover:opacity-100" v-if="isStored" @click="nuke">
+        <RefreshDotIcon/>
         <span>{{ makerTranslations.clearStorage[store.lang] }}</span>
     </button>
 </template>

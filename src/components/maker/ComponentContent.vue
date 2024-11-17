@@ -1,10 +1,10 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, nextTick } from "vue";
 import { useNestedProp } from "../../useNestedProp";
 import { getVueDataUiConfig } from "vue-data-ui";
 import { copyText } from "./lib";
 import { useMainStore } from "../../stores";
-import { NumbersIcon, CopyIcon } from "vue-tabler-icons";
+import { NumbersIcon, CopyIcon, RefreshDotIcon } from "vue-tabler-icons";
 import { useMakerStore } from "../../stores/maker";
 import IconSettings from "../IconSettings.vue";
 import BaseDragMenu from "../BaseDragMenu.vue";
@@ -30,6 +30,17 @@ const props = defineProps({
     },
     copyComponentFunc: {
         type: Function
+    },
+    resetFunction: {
+        type: Function
+    },
+    keyConfig: {
+        type: String,
+        default: ''
+    },
+    keyDataset: {
+        type: String,
+        default: ''
     }
 })
 
@@ -103,6 +114,16 @@ function copyDatasetOnly() {
     store.copy()
 }
 
+function nuke() {
+    if(!!localStorage[props.keyConfig]) {
+        localStorage.removeItem(props.keyConfig)
+    }
+    if(!!localStorage[props.keyDataset]) {
+        localStorage.removeItem(props.keyDataset)
+    }
+    nextTick(() => location.reload())
+}
+
 </script>
 
 <template>
@@ -131,6 +152,15 @@ function copyDatasetOnly() {
             >
                 <button @click="copyDatasetOnly" class="p-2 rounded-md bg-gradient-to-br from-gray-300 to-white h-12 w-12 flex place-items-center justify-center shadow border border-transparent hover:border-app-blue-light">
                     <NumbersIcon class="text-[#3A3A3A]" />
+                </button>
+            </FlexibleTooltip>
+            <FlexibleTooltip
+                :content="makerTranslations.clearStorage[store.lang]"
+                position="right"
+                width="w-[200px]"
+            >
+                <button @click="nuke" class="p-2 rounded-full bg-gradient-to-br from-white to-app-orange h-12 w-12 flex place-items-center justify-center shadow border border-transparent hover:border-app-blue-light">
+                    <RefreshDotIcon class="text-[#3A3A3A]" />
                 </button>
             </FlexibleTooltip>
         </div>
