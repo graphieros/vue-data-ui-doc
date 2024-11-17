@@ -125,18 +125,31 @@ function selectChart(opt) {
             <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>
 
-        <div class="w-full max-w-[400px] flex flex-row flex-wrap gap-2 mx-auto justify-center my-12">
+        <div class="w-full max-w-[420px] flex flex-row flex-wrap gap-2 mx-auto justify-center my-12 bg-gradient-to-br from-app-blue-light to-app-blue py-3 px-2 rounded-md">
             <div v-for="(option, i) in options" :class="`relative`">
                 <Tooltip :content="option.name" width="w-fit min-w-[120px]" delay="delay-150" :img="option.thumb">
-                    <button @click="selectChart(option)" :class="`border p-2 rounded hover:bg-[#42d39233] transition-colors ${selectedChart.name === option.name ? 'border-app-blue bg-[#6376DD33] hover:bg-[#6376DD33] shadow-md' : 'border-gray-400 hover:border-app-green '}`">
-                        <VueUiIcon :name="option.icon" :stroke="selectedChart.name === option.name ? '#6376DD' : isDarkMode ? '#AAAAAA' : '#1A1A1A'"></VueUiIcon>
+                    <button 
+                        @click="selectChart(option)" 
+                        :class="`
+                            p-2 
+                            rounded-md 
+                            h-12 
+                            w-12 
+                            flex 
+                            place-items-center 
+                            justify-center 
+                            shadow 
+                            border 
+                            border-transparent 
+                            ${selectedChart.name === option.name ? 'bg-gradient-to-br from-[#1A1A1A] to-[#4A4A4A]' : 'bg-gradient-to-br from-gray-300 to-white hover:border-app-blue-light'}
+
+                        `"
+                    >
+                        <VueUiIcon :name="option.icon" :stroke="selectedChart.name === option.name ? '#CCCCCC' :'#3A3A3A'"></VueUiIcon>
                     </button>
                 </Tooltip>
             </div>
-        </div>
-
-        <div class="w-full mt-6">
-            <div class="flex flex-row gap-3 place-items-end justify-center">
+            <div class="flex flex-row gap-3 place-items-end justify-center border-t w-full pt-2 mt-2">
                 <div class="flex flex-col gap-2">
                     <label for="chartType">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
                     <select @change="saveSelectedChartToLocalStorage" style="outline:1px solid #5f8bee !important;margin-left:1px" id="chartType" v-model="selectedChart" class="h-[40px] px-6">
@@ -144,9 +157,12 @@ function selectChart(opt) {
                     </select>
                 </div>
                 <div style="margin-bottom:0.3px">
-                    <VueUiIcon :size="38" :stroke-width="0.8" :name="selectedChart.icon" :stroke="isDarkMode ? '#5f8bee' : '#1A1A1A'"/>
+                    <VueUiIcon :size="38" :stroke-width="0.8" :name="selectedChart.icon" stroke="white"/>
                 </div>
             </div>
+        </div>
+
+        <div class="w-full mt-6">
 
                 <div class="font-bold flex flex-col sm:flex-row gap-4 justify-center place-items-center my-12 bg-gray-200 dark:bg-[#FFFFFF10] w-fit mx-auto p-4 rounded-full">
                     <div class="py-2 px-4 rounded-full bg-gradient-to-r from-[#42d39210] to-[#42d39230] shadow-md">1. {{ makerTranslations.steps.one[store.lang] }}</div>
