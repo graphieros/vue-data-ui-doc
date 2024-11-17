@@ -125,7 +125,7 @@ function selectChart(opt) {
             <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>
 
-        <div class="w-full max-w-[420px] flex flex-row flex-wrap gap-2 mx-auto justify-center my-12 bg-gradient-to-br from-app-blue-light to-app-blue py-3 px-2 rounded-md">
+        <div class="w-full max-w-[500px] flex flex-row flex-wrap gap-2 mx-auto justify-center my-12 bg-gradient-to-br from-app-blue-light to-app-blue py-3 px-2 rounded-md">
             <div v-for="(option, i) in options" :class="`relative`">
                 <Tooltip :content="option.name" width="w-fit min-w-[120px]" delay="delay-150" :img="option.thumb">
                     <button 
@@ -134,24 +134,35 @@ function selectChart(opt) {
                             p-2 
                             rounded-md 
                             h-12 
-                            w-12 
+                            w-20 
                             flex 
                             place-items-center 
                             justify-center 
                             shadow 
                             border 
-                            border-transparent 
+                            border-transparent
+                            relative 
                             ${selectedChart.name === option.name ? 'bg-gradient-to-br from-[#1A1A1A] to-[#4A4A4A]' : 'bg-gradient-to-br from-gray-300 to-white hover:border-app-blue-light'}
-
                         `"
                     >
-                        <VueUiIcon :name="option.icon" :stroke="selectedChart.name === option.name ? '#CCCCCC' :'#3A3A3A'"></VueUiIcon>
+                        <VueUiIcon class="-mt-2" :name="option.icon" :stroke="selectedChart.name === option.name ? '#CCCCCC' :'#3A3A3A'"></VueUiIcon>
+                        <div :class="`
+                            absolute 
+                            bottom-1 
+                            left-1/2 
+                            -translate-x-1/2 
+                            text-center 
+                            text-[7px]
+                            ${selectedChart.name === option.name ? 'text-[#CCCCCC]' : 'text-black'}
+                        `">
+                            {{ option.name.replace('VueUi', '') }}
+                        </div>
                     </button>
                 </Tooltip>
             </div>
             <div class="flex flex-row gap-3 place-items-end justify-center border-t w-full pt-2 mt-2">
                 <div class="flex flex-col gap-2">
-                    <label for="chartType">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
+                    <label for="chartType" class="text-black">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
                     <select @change="saveSelectedChartToLocalStorage" style="outline:1px solid #5f8bee !important;margin-left:1px" id="chartType" v-model="selectedChart" class="h-[40px] px-6">
                         <option class="text-left" v-for="option in options" :value="option">{{ option.name }}</option>
                     </select>
