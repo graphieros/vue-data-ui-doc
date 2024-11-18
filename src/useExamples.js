@@ -231,6 +231,16 @@ export default function useExamples() {
         },
     ]);
 
+    const DATASET_XY_SINUSOID = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            smooth: true,
+            dataLabels: false,
+            series: [0, -80, 0, 80, 0, -80, 0, 80, 0, -80, 0]
+        }
+    ])
+
     const BASE_XY_CONFIG = computed(() => {
         return {
             table: TABLE.value,
@@ -2106,6 +2116,119 @@ export default function useExamples() {
                     es: "Múltiples series con escalas individuales",
                     ko: "개별 스케일이 있는 여러 시리즈",
                     ar: "سلاسل متعددة بمقاييس فردية"
+                }
+            },
+            // XY STYLED MARKERS
+            { 
+                dataset: DATASET_XY_SINUSOID.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    line: {
+                        ...BASE_XY_CONFIG.value.line,
+                        radius: 6,
+                        useGradient: false,
+                        strokeWidth: 2,
+                        dot: {
+                            useSerieColor: false,
+                            fill: '#fdd663',
+                            strokeWidth: 2
+                        }
+                    },
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: -100,
+                                    scaleMax: 100
+                                },
+                                xAxisLabels: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
+                                    rotation: 0
+                                }
+                            }
+                        },
+                        zoom: {
+                            ...BASE_XY_CONFIG.value.chart.zoom,
+                            minimap: {
+                                ...BASE_XY_CONFIG.value.chart.zoom.minimap,
+                                smooth: true
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'line-styled-markers',
+                link: 'vue-ui-xy',
+                description: {
+                    en: "Styled plot markers",
+                    fr: "Marqueurs de tracé stylisés",
+                    pt: "Marcadores de plotagem estilizados",
+                    de: "Gestylte Plot-Markierungen",
+                    zh: "样式化的绘图标记",
+                    jp: "スタイル付きプロットマーカー",
+                    es: "Marcadores de trazado estilizados",
+                    ko: "스타일이 적용된 플롯 마커",
+                    ar: "علامات المؤامرة ذات نمط"
+                }
+            },
+            // XY GRID
+            { 
+                dataset: DATASET_XY_SINUSOID.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    line: {
+                        ...BASE_XY_CONFIG.value.line,
+                        radius: 6,
+                        useGradient: false,
+                        strokeWidth: 2,
+                    },
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            showVerticalLines: true,
+                            showHorizontalLines: true,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: -100,
+                                    scaleMax: 100
+                                },
+                                xAxisLabels: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
+                                    rotation: 0
+                                }
+                            }
+                        },
+                        zoom: {
+                            ...BASE_XY_CONFIG.value.chart.zoom,
+                            minimap: {
+                                ...BASE_XY_CONFIG.value.chart.zoom.minimap,
+                                smooth: true
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'line-grid',
+                link: 'vue-ui-xy',
+                description: {
+                    en: "With visible grid",
+                    fr: "Avec grille visible",
+                    pt: "Com grade visível",
+                    de: "Mit sichtbarem Raster",
+                    zh: "带可见网格",
+                    jp: "可視グリッド付き",
+                    es: "Con cuadrícula visible",
+                    ko: "보이는 그리드 포함",
+                    ar: "مع شبكة مرئية"
                 }
             },
             // DONUT BASIC
