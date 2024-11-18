@@ -1,8 +1,18 @@
 [
   {
-    "version": "v 2.3.97",
+    "version": "v 2.3.98",
     "date": "2024-11-17",
     "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Fix regression affecting smooth line on vertical marginal bar",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Expose seriesIndex and datapointIndex in #plot-comment slot",
+        "link": "/docs#vue-ui-xy"
+      },
       {
         "component": "Spline lines",
         "description": "Improved smooth line generation algorithm"
