@@ -319,7 +319,11 @@ const hoveredLink = ref(null);
                         <div class="w-full p-4">
                             <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
                                 <template #plot-comment="{ plot }">
-                                    <div v-if="example.component === 'VueUiXy'" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow border border-app-orange">
+                                    <div v-if="example.component === 'VueUiXy' && plot.value === 140" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-green">
+                                        <VueUiIcon name="smiley" stroke="#42d392" :size="30"/>
+                                        {{ plot.comment }}
+                                    </div>
+                                    <div v-else-if="example.component === 'VueUiXy' && plot.value === 12" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-orange">
                                         <VueUiIcon name="moodFlat" stroke="#FF6600" :size="30"/>
                                         {{ plot.comment }}
                                     </div>

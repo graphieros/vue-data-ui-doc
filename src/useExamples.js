@@ -122,7 +122,7 @@ export default function useExamples() {
             type: 'line',
             dataLabels: true,
             series: KRACHSET,
-            comments: ['','','','','','','','','','','','', '', '', 'OMG!',]
+            comments: ['','','','','','','','','','','','', '', 'WOW!', 'OMG!',]
         }
     ]);
 
@@ -2047,6 +2047,17 @@ export default function useExamples() {
                             showInTooltip: true,
                             width: 100,
                             offsetY: -120
+                        },
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: 0,
+                                    scaleMax: 200
+                                }
+                            }
                         }
                     }
                 },

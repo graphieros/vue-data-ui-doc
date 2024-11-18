@@ -151,7 +151,7 @@ function nuke() {
                 position="right"
             >
                 <button @click="copyDatasetOnly" class="p-2 rounded-md bg-gradient-to-br from-gray-300 to-white h-12 w-12 flex place-items-center justify-center shadow border border-transparent hover:border-app-blue-light">
-                    <NumbersIcon class="text-[#3A3A3A]" />
+                    <VueUiIcon name="numbers" :size="28" stroke="#3A3A3A"/>
                 </button>
             </FlexibleTooltip>
             <FlexibleTooltip
@@ -173,7 +173,7 @@ function nuke() {
             {{ makerTranslations.copyConfigOnly[store.lang] }}
         </button>
         <button class="flex gap-1 bg-app-green py-3 px-5 rounded-md opacity-80 hover:opacity-100 text-black hover:shadow-xl font-satoshi-bold transition-all place-items-center text-sm mb-4" @click="copyDatasetOnly">
-            <NumbersIcon />
+            <VueUiIcon name="numbers" :size="24" stroke="#3A3A3A"/>
             {{ makerTranslations.copyDatasetOnly[store.lang] }}
         </button>
     </div>
