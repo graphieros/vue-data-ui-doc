@@ -1889,6 +1889,140 @@ export default function useExamples() {
         ]
     })
 
+    //-------------- VUE-UI-STRIP-PLOT --------------//
+    const CONFIG_STRIP_PLOT_BASE = computed(() => {
+        return {
+            table: TABLE.value,
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    grid: {
+                        stroke: colors.value.gridStroke,
+                        horizontalGrid: {
+                            stroke: colors.value.gridStroke
+                        },
+                        verticalGrid: {
+                            stroke: colors.value.gridStroke
+                        }
+                    },
+                    labels: {
+                        axis: {
+                            color: colors.value.textColor,
+                            xLabel: 'Continents',
+                            yLabel: 'Population in Millions'
+                        },
+                        bestPlotLabel: {
+                            color: colors.value.textColor,
+                        },
+                        xAxisLabels: {
+                            color: colors.value.textColor,
+                        },
+                        yAxisLabels: {
+                            color: colors.value.textColor,
+                        }
+                    },
+                    plots: {
+                        stroke: colors.value.bg
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddingLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                }
+            }
+        }
+    })
+
+    const DATASET_STRIP_PLOT_BASIC = ref([
+        {
+            name: "Asia",
+            plots: [
+                { name: "Shanghai", value: 24.9 },
+                { name: "Beijing", value: 21.9 },
+                { name: "Delhi", value: 16.8 },
+                { name: "Guangzhou", value: 16.1 },
+                { name: "Istanbul", value: 15.6 },
+                { name: "Chengdu", value: 15.4 },
+                { name: "Mumbai", value: 15.4 },
+                { name: "Karachi", value: 14.9 },
+                { name: "Shenzen", value: 14.7 },
+                { name: "Tokyo", value: 14 },
+            ]
+        },
+        {
+            name: "Africa",
+            plots: [
+                { name: "Kinshasa", value: 17.1 },
+                { name: "Lagos", value: 14.9 },
+                { name: "Cairo", value: 9.3 },
+                { name: "Johannesburg", value: 5.6 },
+                { name: "Giza", value: 5.6 },
+                { name: "Khartoum", value: 5.3 },
+                { name: "Abidjan", value: 5 },
+                { name: "Alexandria", value: 4.9 },
+                { name: "Dar es Salaam", value: 4.7 },
+                { name: "Nairobi", value: 4.4 },
+            ]
+        },
+        {
+            name: "Europe",
+            plots: [
+                { name: "Moscow", value: 13 },
+                { name: "London", value: 9 },
+                { name: "Saint Petersburg", value: 5.4 },
+                { name: "Berlin", value: 3.8 },
+                { name: "Madrid", value: 3.3 },
+                { name: "Kyiv", value: 3 },
+                { name: "Rome", value: 2.7 },
+                { name: "Paris", value: 2.1 },
+                { name: "Minsk", value: 2 },
+                { name: "Vienna", value: 1.9 }
+            ]
+        },
+        {
+            name: "America",
+            plots: [
+                { name: "Sao Paulo", value: 12.2 },
+                { name: "Lima", value: 9.7 },
+                { name: "Mexico City", value: 9.2 },
+                { name: "New York", value: 8.4 },
+                { name: "Bogota", value: 8 },
+                { name: "Rio de Janeiro", value: 6.7 },
+                { name: "Santiago", value: 6.2 },
+                { name: "Los Angeles", value: 4 },
+                { name: "Buenos Aires", value: 3 },
+                { name: "Brasilia", value: 2.9 }
+            ]
+        },
+        {
+            name: "Australia & Oceania",
+            plots: [
+                { name: "Sydney", value: 5.4 },
+                { name: "Melbourne", value: 5.1 },
+                { name: "Brisbane", value: 2.6 },
+                { name: "Perth", value: 2.1 },
+                { name: "Auckland", value: 1.7 },
+                { name: "Adelaide", value: 1.4 },
+                { name: "Honolulu", value: 1 },
+                { name: "Gold Coast", value: 0.7 },
+                { name: "Newcastle-Maitland", value: 0.5 },
+                { name: "Canberra", value: 0.46 },
+            ]
+        },
+    ])
+
     const examples = computed(() => {
         return [
             // XY BASIC LINE
@@ -4411,6 +4545,96 @@ export default function useExamples() {
                     es: "Múltiples categorías con polígonos rellenos",
                     ko: "채워진 다각형이 포함된 여러 카테고리",
                     ar: "فئات متعددة مع مضلعات ممتلئة"
+                }
+            },
+            // STRIP PLOT BASIC
+            { 
+                dataset: DATASET_STRIP_PLOT_BASIC.value, 
+                config: CONFIG_STRIP_PLOT_BASE.value,
+                component: 'VueUiStripPlot',
+                icon: 'chartStripPlot',
+                id: 'strip-plot-basic',
+                link: 'vue-ui-strip-plot',
+                description: {
+                    en: "Basic strip plot chart",
+                    fr: "Diagramme de points de base",
+                    pt: "Gráfico de pontos básico",
+                    de: "Grundlegendes Punktdiagramm",
+                    zh: "基本点图",
+                    jp: "基本ストリッププロット",
+                    es: "Gráfico de puntos básico",
+                    ko: "기본 스트립 플롯",
+                    ar: "مخطط نقاط أساسي"
+                }
+            },
+            // STRIP PLOT SMALLER
+            { 
+                dataset: DATASET_STRIP_PLOT_BASIC.value, 
+                config: {
+                    ...CONFIG_STRIP_PLOT_BASE.value,
+                    style: {
+                        ...CONFIG_STRIP_PLOT_BASE.value,
+                        chart: {
+                            ...CONFIG_STRIP_PLOT_BASE.value.style.chart,
+                            plots: {
+                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart.plots,
+                                radius: 6,
+                                opacity: 1,
+                                gradient: {
+                                    show: false,
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStripPlot',
+                icon: 'chartStripPlot',
+                id: 'strip-plot-smaller',
+                link: 'vue-ui-strip-plot',
+                description: {
+                    en: "Smaller plots, no gradient, no opacity",
+                    fr: "Petits graphiques, sans dégradé, sans opacité",
+                    pt: "Gráficos menores, sem gradiente, sem opacidade",
+                    de: "Kleinere Diagramme, ohne Farbverlauf, ohne Transparenz",
+                    zh: "较小的图，无渐变，无不透明度",
+                    jp: "小さなプロット、グラデーションなし、不透明度なし",
+                    es: "Gráficos más pequeños, sin degradado, sin opacidad",
+                    ko: "작은 플롯, 그라디언트 없음, 불투명도 없음",
+                    ar: "مخططات أصغر، بدون تدرج، بدون شفافية"
+                }
+            },
+            // STRIP PLOT SHAPES
+            { 
+                dataset: DATASET_STRIP_PLOT_BASIC.value, 
+                config: {
+                    ...CONFIG_STRIP_PLOT_BASE.value,
+                    style: {
+                        ...CONFIG_STRIP_PLOT_BASE.value,
+                        chart: {
+                            ...CONFIG_STRIP_PLOT_BASE.value.style.chart,
+                            plots: {
+                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart.plots,
+                                shape: 'star',
+                                radius: 12,
+                                opacity: 1
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStripPlot',
+                icon: 'chartStripPlot',
+                id: 'strip-plot-smaller',
+                link: 'vue-ui-strip-plot',
+                description: {
+                    en: "Datapoint markers with geometric shapes",
+                    fr: "Marqueurs de points de données avec des formes géométriques",
+                    pt: "Marcadores de pontos de dados com formas geométricas",
+                    de: "Datenpunktmarkierungen mit geometrischen Formen",
+                    zh: "带有几何形状的数据点标记",
+                    jp: "幾何形状のデータポイントマーカー",
+                    es: "Marcadores de puntos de datos con formas geométricas",
+                    ko: "기하학적 모양의 데이터 포인트 마커",
+                    ar: "علامات نقاط البيانات بأشكال هندسية"
                 }
             },
         ]

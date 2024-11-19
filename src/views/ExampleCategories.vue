@@ -181,6 +181,14 @@ const categories = computed(() => {
             thumb: new URL('../assets/thumb_radar.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_radar_light.png', import.meta.url).href,
             description: translations.value.docs.tooltips.radar
+        },
+        {
+            link: 'vue-ui-strip-plot',
+            icon: 'chartStripPlot',
+            component: 'VueUiStripPlot',
+            thumb: new URL('../assets/thumb_strip_plot.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.stripPlot[store.lang]
         }
     ].map((c, i) => {
         return {
