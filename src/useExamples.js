@@ -241,6 +241,49 @@ export default function useExamples() {
         }
     ])
 
+    const DATASET_XY_SHAPES = ref([
+        {
+            name: 'stars',
+            type: 'line',
+            smooth: 'true',
+            dataLabels: false,
+            shape: 'star',
+            series: [100, 110, 100, 90, 100, 110, 100, 90, 100]
+        },
+        {
+            name: 'stars',
+            type: 'line',
+            smooth: 'true',
+            dataLabels: false,
+            shape: 'triangle',
+            series: [80, 90, 80, 70, 80, 90, 80, 70, 80]
+        },
+        {
+            name: 'stars',
+            type: 'line',
+            smooth: 'true',
+            dataLabels: false,
+            shape: 'square',
+            series: [60, 70, 60, 50, 60, 70, 60, 50, 60]
+        },
+        {
+            name: 'stars',
+            type: 'line',
+            smooth: 'true',
+            dataLabels: false,
+            shape: 'pentagon',
+            series: [40, 50, 40, 30, 40, 50, 40, 30, 40]
+        },
+        {
+            name: 'stars',
+            type: 'line',
+            smooth: 'true',
+            dataLabels: false,
+            shape: 'hexagon',
+            series: [20, 30, 20, 10, 20, 30, 20, 10, 20]
+        },
+    ])
+
     const BASE_XY_CONFIG = computed(() => {
         return {
             table: TABLE.value,
@@ -2285,6 +2328,64 @@ export default function useExamples() {
                     es: "Con cuadrícula visible",
                     ko: "보이는 그리드 포함",
                     ar: "مع شبكة مرئية"
+                }
+            },
+            // XY SHAPES
+            { 
+                dataset: DATASET_XY_SHAPES.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    line: {
+                        ...BASE_XY_CONFIG.value.line,
+                        radius: 8,
+                        useGradient: false,
+                        strokeWidth: 2,
+                        dot: {
+                            useSerieColor: false,
+                            fill: '#FFFFFF',
+                            strokeWidth: 2,
+                        }
+                    },
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: 0,
+                                    scaleMax: 120
+                                },
+                                xAxisLabels: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
+                                    rotation: 0
+                                }
+                            }
+                        },
+                        zoom: {
+                            ...BASE_XY_CONFIG.value.chart.zoom,
+                            minimap: {
+                                ...BASE_XY_CONFIG.value.chart.zoom.minimap,
+                                smooth: true
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'line-shapes',
+                link: 'vue-ui-xy',
+                description: {
+                    en: "Datapoint markers with geometric shapes",
+                    fr: "Marqueurs de points de données avec des formes géométriques",
+                    pt: "Marcadores de pontos de dados com formas geométricas",
+                    de: "Datenpunktmarkierungen mit geometrischen Formen",
+                    zh: "带有几何形状的数据点标记",
+                    jp: "幾何形状のデータポイントマーカー",
+                    es: "Marcadores de puntos de datos con formas geométricas",
+                    ko: "기하학적 모양의 데이터 포인트 마커",
+                    ar: "علامات نقاط البيانات بأشكال هندسية"
                 }
             },
             // DONUT BASIC
