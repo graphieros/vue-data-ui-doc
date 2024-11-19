@@ -1438,6 +1438,33 @@ export default function useExamples() {
         },
     ]);
 
+    const DATASET_SCATTER_SHAPES = ref(
+        [
+            {
+                name: 'Serie1',
+                color: '#1f77b4',
+                shape: 'star',
+                values: makeScatterSet({
+                    min: 0,
+                    max: 100,
+                    n: 100,
+                    clusterName: 'Serie1',
+                })
+            },
+            {
+                name: 'Serie2',
+                color: '#ff7f0e',
+                shape: 'square',
+                values: makeScatterSet({
+                    min: -200,
+                    max: 100,
+                    n: 100,
+                    clusterName: 'Serie2',
+                })
+            },
+        ]
+    )
+
     //-------------- VUE-UI-WHEEL --------------//
     const CONFIG_WHEEL_BASIC = computed(() => {
         return {
@@ -3952,6 +3979,26 @@ export default function useExamples() {
                     es: "Múltiples series, con valores mixtos y algoritmo de envoltura de regalo",
                     ko: "여러 시리즈, 혼합된 값 및 기프트 랩 알고리즘 포함",
                     ar: "سلاسل متعددة، بقيم مختلطة وخوارزمية التغليف"
+                }
+            },
+            // SCATTER WITH SHAPES
+            { 
+                dataset: DATASET_SCATTER_SHAPES.value, 
+                config: CONFIG_SCATTER_BASIC.value,
+                component: 'VueUiScatter',
+                icon: 'chartScatter',
+                id: 'scatter-shapes',
+                link: 'vue-ui-scatter',
+                description: {
+                    en: "Datapoint markers with geometric shapes",
+                    fr: "Marqueurs de points de données avec des formes géométriques",
+                    pt: "Marcadores de pontos de dados com formas geométricas",
+                    de: "Datenpunktmarkierungen mit geometrischen Formen",
+                    zh: "带有几何形状的数据点标记",
+                    jp: "幾何形状のデータポイントマーカー",
+                    es: "Marcadores de puntos de datos con formas geométricas",
+                    ko: "기하학적 모양의 데이터 포인트 마커",
+                    ar: "علامات نقاط البيانات بأشكال هندسية"
                 }
             },
             // WHEEL BASIC
