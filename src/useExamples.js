@@ -243,7 +243,7 @@ export default function useExamples() {
 
     const DATASET_XY_SHAPES = ref([
         {
-            name: 'stars',
+            name: 'Stars',
             type: 'line',
             smooth: 'true',
             dataLabels: false,
@@ -251,7 +251,7 @@ export default function useExamples() {
             series: [100, 110, 100, 90, 100, 110, 100, 90, 100]
         },
         {
-            name: 'stars',
+            name: 'Triangles',
             type: 'line',
             smooth: 'true',
             dataLabels: false,
@@ -259,7 +259,7 @@ export default function useExamples() {
             series: [80, 90, 80, 70, 80, 90, 80, 70, 80]
         },
         {
-            name: 'stars',
+            name: 'Squares',
             type: 'line',
             smooth: 'true',
             dataLabels: false,
@@ -267,7 +267,7 @@ export default function useExamples() {
             series: [60, 70, 60, 50, 60, 70, 60, 50, 60]
         },
         {
-            name: 'stars',
+            name: 'Pentagons',
             type: 'line',
             smooth: 'true',
             dataLabels: false,
@@ -275,7 +275,7 @@ export default function useExamples() {
             series: [40, 50, 40, 30, 40, 50, 40, 30, 40]
         },
         {
-            name: 'stars',
+            name: 'Hexagons',
             type: 'line',
             smooth: 'true',
             dataLabels: false,
