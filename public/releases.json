@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 2.3.99",
+    "date": "2024-11-19",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Fix bug causing series names being ignored.",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiCarouselTable",
+        "description": "Fix pause on hover not working",
+        "link": "/docs#vue-ui-carousel-table"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Improve shape of star and starFilled icons, add starFace icon",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.98",
     "date": "2024-11-17",
     "updates": [

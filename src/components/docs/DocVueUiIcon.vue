@@ -146,6 +146,7 @@ const specialIcons = ref([
     "square",
     "squareFill",
     "star",
+    "starFace",
     "starFill",
     "stop",
     "trend",
