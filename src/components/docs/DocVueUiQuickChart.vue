@@ -65,19 +65,19 @@ const quickDatasetDonut = ref([
         value: 20,
     },
     {
-        name: 'Serie 2',
+        name: 'Serie2',
         value: 10,
     },
     {
-        name: 'Serie 3',
+        name: 'Serie3',
         value: 5,
     },
     {
-        name: 'Serie 4',
+        name: 'Serie4',
         value: 2,
     },
     {
-        name: 'Serie 5',
+        name: 'Serie5',
         value: 1,
     },
 ]);

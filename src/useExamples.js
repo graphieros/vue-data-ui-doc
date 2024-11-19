@@ -446,6 +446,51 @@ export default function useExamples() {
         ]
     });
 
+    const DATASET_DONUT_POLAR = computed(() => {
+        return [
+            {
+                name: 'Series 1',
+                values: [100]
+            },
+            {
+                name: 'Series 2',
+                values: [90]
+            },
+            {
+                name: 'Series 3',
+                values: [80]
+            },
+            {
+                name: 'Series 4',
+                values: [70]
+            },
+            {
+                name: 'Series 5',
+                values: [60]
+            },
+            {
+                name: 'Series 6',
+                values: [50]
+            },
+            {
+                name: 'Series 7',
+                values: [40]
+            },
+            {
+                name: 'Series 8',
+                values: [30]
+            },
+            {
+                name: 'Series 9',
+                values: [20]
+            },
+            {
+                name: 'Series 10',
+                values: [10]
+            },
+        ]
+    });
+
     //-------------- VUE-UI-SPARKLINE ------------- //
     const CONFIG_SPARKLINE_BASE = computed(() => {
         return {
@@ -2341,7 +2386,7 @@ export default function useExamples() {
             },
             // POLAR
             {
-                dataset: DATASET_DONUT_BASIC.value,
+                dataset: DATASET_DONUT_POLAR.value,
                 config: {
                     ...CONFIG_DONUT_BASE.value,
                     type: 'polar'
