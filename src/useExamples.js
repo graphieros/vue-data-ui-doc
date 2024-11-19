@@ -4603,7 +4603,7 @@ export default function useExamples() {
                     ar: "مخططات أصغر، بدون تدرج، بدون شفافية"
                 }
             },
-            // STRIP PLOT SHAPES
+            // STRIP PLOT SHAPES STAR
             { 
                 dataset: DATASET_STRIP_PLOT_BASIC.value, 
                 config: {
@@ -4623,7 +4623,41 @@ export default function useExamples() {
                 },
                 component: 'VueUiStripPlot',
                 icon: 'chartStripPlot',
-                id: 'strip-plot-smaller',
+                id: 'strip-plot-star',
+                link: 'vue-ui-strip-plot',
+                description: {
+                    en: "Datapoint markers with geometric shapes",
+                    fr: "Marqueurs de points de données avec des formes géométriques",
+                    pt: "Marcadores de pontos de dados com formas geométricas",
+                    de: "Datenpunktmarkierungen mit geometrischen Formen",
+                    zh: "带有几何形状的数据点标记",
+                    jp: "幾何形状のデータポイントマーカー",
+                    es: "Marcadores de puntos de datos con formas geométricas",
+                    ko: "기하학적 모양의 데이터 포인트 마커",
+                    ar: "علامات نقاط البيانات بأشكال هندسية"
+                }
+            },
+            // STRIP PLOT SHAPES TRIANGLE
+            { 
+                dataset: DATASET_STRIP_PLOT_BASIC.value, 
+                config: {
+                    ...CONFIG_STRIP_PLOT_BASE.value,
+                    style: {
+                        ...CONFIG_STRIP_PLOT_BASE.value,
+                        chart: {
+                            ...CONFIG_STRIP_PLOT_BASE.value.style.chart,
+                            plots: {
+                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart.plots,
+                                shape: 'triangle',
+                                radius: 12,
+                                opacity: 1
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStripPlot',
+                icon: 'chartStripPlot',
+                id: 'strip-plot-triangle',
                 link: 'vue-ui-strip-plot',
                 description: {
                     en: "Datapoint markers with geometric shapes",
