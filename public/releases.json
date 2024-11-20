@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 2.4.0",
+    "date": "2024-11-20",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Apply shadow option in polar mode",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiRating",
+        "description": "Improved component reactivity, added label formatter",
+        "link": "/docs#vue-ui-rating"
+      },
+      {
+        "component": "VueUiSmiley",
+        "description": "Improved component reactivity, added label formatter",
+        "link": "/docs#vue-ui-smiley"
+      }
+    ]
+  },
+  {
     "version": "v 2.3.99",
     "date": "2024-11-19",
     "updates": [
