@@ -10,6 +10,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseColorInfo from "../BaseColorInfo.vue";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -83,7 +84,8 @@ const config = ref({
             roundingValue: 1,
             position: "bottom",
             offsetY: 0,
-            offsetX: 0
+            offsetX: 0,
+            formatter: null
         },
         tooltip: {
             show: true,
@@ -94,7 +96,9 @@ const config = ref({
             backgroundColor: "#FFFFFF",
             borderColor: "#e1e5e8",
             borderRadius: 4,
-            boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)"
+            boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)",
+            formatter: null,
+            roundingValue: 0
         }
     }
 });
@@ -413,6 +417,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRatingDataset</
                                 <BaseAttr name="position" attr="style.rating.position" type="select" defaultVal="bottom" :options="['top', 'right', 'bottom', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="offsetY" attr="style.rating.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="offsetX" attr="style.rating.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                             </BaseDetails>
                             <BaseDetails attr="tooltip" :level="2" title="style.tooltip">
                                 <BaseAttr name="show" attr="style.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -424,6 +429,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRatingDataset</
                                 <BaseAttr name="borderColor" attr="style.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="borderRadius" attr="style.tooltip.borderRadius" type="number" defaultVal="4" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="boxShadow" attr="style.tooltip.boxShadow" type="text" defaultVal="0 6px 12px -6px rgba(0,0,0,0.2)" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="roundingValue" attr="style.tooltip.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                             </BaseDetails>
                         </BaseDetails>
                     </BaseDetails>
