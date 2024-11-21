@@ -1,4 +1,99 @@
 {
+    "vue_ui_bullet": {
+        "name": "VueUiBullet",
+        "icon": "chartBullet",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-bullet",
+        "path": "/docs#vue-ui-bullet",
+        "description": "bullet",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "responsive": false,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiBulletConfig",
+            "dataset": "VueUiBulletDataset"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "value": 85,
+                    "target": 80,
+                    "segments": [
+                        {
+                            "name": "Low",
+                            "from": 0,
+                            "to": 50
+                        },
+                        {
+                            "name": "Medium",
+                            "from": 50,
+                            "to": 70
+                        },
+                        {
+                            "name": "High",
+                            "from": 70,
+                            "to": 100
+                        }
+                    ]
+                },
+                "config": {
+                    "userOptions": {
+                        "show": false
+                    }
+                }
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            }
+        ]
+    },
     "vue_ui_kpi": {
         "name": "VueUiKpi",
         "icon": "kpiBox",

@@ -68,6 +68,7 @@ const DocVueUiTimer = defineAsyncComponent(() => import('../components/docs/DocV
 const DocVueUiCarouselTable = defineAsyncComponent(() => import('../components/docs/DocVueUiCarouselTable.vue'));
 const DocVueUiGizmo = defineAsyncComponent(() => import('../components/docs/DocVueUiGizmo.vue'));
 const DocVueUiStackbar = defineAsyncComponent(() => import('../components/docs/DocVueUiStackbar.vue'));
+const DocVueUiBullet = defineAsyncComponent(() => import('../components/docs/DocVueUiBullet.vue'));
 
 const mainConfig = useConfig()
 
@@ -564,6 +565,17 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_quick_chart_light.png', import.meta.url).href,
         hasSlot: false,
         hasLegend: true,
+        hasTableCss: false,
+    },
+    {
+        name: "Bullet",
+        icon: "chartBullet",
+        tooltip: translations.value.docs.tooltips.bullet[store.lang],
+        link: "/docs#vue-ui-bullet",
+        type: "mini",
+        thumb: new URL('../assets/thumb_bullet.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_bullet_light.png', import.meta.url).href,
+        hasSlot: true,
         hasTableCss: false,
     },
     {
@@ -1104,6 +1116,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiStackbar :key="`stackbar_${stackbarKey}`" v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-stackbar'" @forceDocReload="stackbarKey += 1" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiBullet v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-bullet'" />
             </Transition>
 
             <Transition name="fade">

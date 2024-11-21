@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, nextTick, computed, onMounted } from "vue";
+import { ref, watch, computed } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";

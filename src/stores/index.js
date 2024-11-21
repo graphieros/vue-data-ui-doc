@@ -1510,6 +1510,17 @@ export const useMainStore = defineStore("main", {
                         ar: 'تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين'
                     },
                     tooltips: {
+                        bullet: {
+                            en: 'A space-efficient alternative to gauge charts.',
+                            fr: "Une alternative compacte aux graphiques de jauge.",
+                            pt: "Uma alternativa compacta aos gráficos de medidor.",
+                            de: "Eine platzsparende Alternative zu Tachodiagrammen.",
+                            zh: "一种节省空间的仪表图替代方案。",
+                            jp: "ゲージチャートの省スペース代替。",
+                            es: "Una alternativa eficiente en espacio a los gráficos de indicador.",
+                            ko: "게이지 차트의 공간 효율적인 대안.",
+                            ar: "بديل موفر للمساحة عن المخططات المقياسية."
+                        },
                         stackbarBig: {
                             en: 'Visualize cumulative totals on stacked bars, to easily compare parts of a whole across different categories.',
                             fr: 'Visualisez les totaux cumulatifs sur des barres empilées, pour comparer facilement les parties d’un tout à travers différentes catégories.',

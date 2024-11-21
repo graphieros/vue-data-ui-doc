@@ -746,7 +746,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="style" :level="1">
-            fontFamily: "inherit";
+            <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
                 <BaseAttr name="useGradient" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" attr="style.chart.useGradient" defaultVal="true"/>
                 <BaseAttr name="gradientIntensity" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="0" :max="100" attr="style.chart.gradientIntensity" defaultVal="40" />

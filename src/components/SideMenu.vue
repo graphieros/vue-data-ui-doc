@@ -141,6 +141,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_quick_chart_light.png', import.meta.url).href, 
     },
     {
+        route: '/docs#vue-ui-bullet',
+        icon: 'chartBullet',
+        cssClasses:'',
+        isSelected: isSelected,
+        tooltipContent: 'Bullet',
+        thumb: new URL('../assets/thumb_bullet.png', import.meta.url).href, 
+        thumbLight: new URL('../assets/thumb_bullet_light.png', import.meta.url).href, 
+    },
+    {
         route: '/docs#vue-ui-xy',
         icon: 'chartLine',
         cssClasses: '',
@@ -598,6 +607,7 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-gizmo', componentName: 'Gizmo', icon: 'battery' },
             { route: '/docs#vue-ui-quick-chart', componentName: 'QuickChart', icon: 'vueDataUi' },
             { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' },
+            { route: '/docs#vue-ui-bullet', componentName: 'Bullet', icon: 'chartBullet' }
         ],
     },
     {

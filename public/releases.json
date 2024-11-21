@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.1",
+    "date": "2024-11-21",
+    "updates": [
+      {
+        "component": "VueUiBullet",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-bullet"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.0",
     "date": "2024-11-20",
     "updates": [
