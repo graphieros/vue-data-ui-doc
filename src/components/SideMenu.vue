@@ -643,6 +643,7 @@ const sideMenuItems = computed(() => {
         title: translations.value.sideMenu.gauges[store.lang],
         items: [
             {route: '/docs#vue-ui-gauge', componentName: 'Gauge', icon: 'chartGauge' },
+            { route: '/docs#vue-ui-bullet', componentName: 'Bullet', icon: 'chartBullet' },
             {route: '/docs#vue-ui-onion', componentName: 'Onion', icon: 'chartOnion' },
             {route: '/docs#vue-ui-wheel', componentName: 'Wheel', icon: 'chartWheel' },
             {route: '/docs#vue-ui-tiremarks', componentName: 'Tiremarks', icon: 'chartTiremarks' },

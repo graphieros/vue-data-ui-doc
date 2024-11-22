@@ -572,7 +572,7 @@ const menuItems = computed(() => [
         icon: "chartBullet",
         tooltip: translations.value.docs.tooltips.bullet[store.lang],
         link: "/docs#vue-ui-bullet",
-        type: "mini",
+        type: ["mini", "gauge"],
         thumb: new URL('../assets/thumb_bullet.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_bullet_light.png', import.meta.url).href,
         hasSlot: true,

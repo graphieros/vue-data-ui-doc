@@ -189,6 +189,14 @@ const categories = computed(() => {
             thumb: new URL('../assets/thumb_strip_plot.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href,
             description: translations.value.docs.tooltips.stripPlot[store.lang]
+        },
+        {
+            link: 'vue-ui-bullet',
+            icon: 'chartBullet',
+            component: 'VueUiBullet',
+            thumb: new URL('../assets/thumb_bullet.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_bullet_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.bullet[store.lang]
         }
     ].map((c, i) => {
         return {

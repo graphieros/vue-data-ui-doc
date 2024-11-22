@@ -314,6 +314,7 @@ function randomizeData() {
 
         <BaseDocHeaderActions
             targetLink="vue-ui-bullet"
+            targetMaker="VueUiBullet"
             :configSource="mainConfig.vue_ui_bullet"
         />
 
@@ -350,6 +351,10 @@ function randomizeData() {
                 </template>
             </Suspense>
             <BaseRandomButton @click="randomizeData"/>
+        </div>
+
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-bullet"/>
         </div>
 
         <Box showEmits showSlots showThemes signInfo="both" schema="vue_ui_bullet">

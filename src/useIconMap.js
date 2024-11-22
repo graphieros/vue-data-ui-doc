@@ -2,6 +2,7 @@ import { VueUi3dBar } from "vue-data-ui";
 
 export function useIconMap(componentName) {
     const mapping = {
+        VueUiBullet: 'chartBullet',
         VueUi3dBar: 'chart3dBar',
         VueUiAccordion: 'accordion',
         VueUiAgePyramid: 'chartAgePyramid',
@@ -66,6 +67,7 @@ export function useIconMap(componentName) {
 
 export function isValidComponent(content) {
     const valid = [
+        'VueUiBullet',
         'VueUi3dBar',
         'VueUiAccordion',
         'VueUiAgePyramid',

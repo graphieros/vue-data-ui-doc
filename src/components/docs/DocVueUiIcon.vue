@@ -51,6 +51,7 @@ const specialIcons = ref([
     "chart3dBar",
     "chartAgePyramid",
     "chartBar",
+    "chartBullet",
     "chartCandlestick",
     "chartChestnut",
     "chartCluster",

@@ -41,6 +41,7 @@ const MakerCarouselTable = defineAsyncComponent(() => import('../components/make
 const MakerPcp = defineAsyncComponent(() => import('../components/maker/MakerPcp.vue'));
 const MakerGizmo = defineAsyncComponent(() => import('../components/maker/MakerGizmo.vue'));
 const MakerStackbar = defineAsyncComponent(() => import('../components/maker/MakerVueUiStackbar.vue'));
+const MakerBullet = defineAsyncComponent(() => import('../components/maker/MakerBullet.vue'));
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -89,6 +90,7 @@ const options = ref([
     { name: "VueUiCarouselTable", icon: "carouselTable", thumb: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href},
     { name: "VueUiGizmo", icon: "battery", thumb: new URL('../assets/thumb_gizmo_light.png', import.meta.url).href},
     { name: "VueUiStackbar", icon: "chartStackbar", thumb: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href},
+    { name: "VueUiBullet", icon: "chartBullet", thumb: new URL('../assets/thumb_bullet_light.png', import.meta.url).href},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -310,6 +312,9 @@ const crumbs = computed(() => {
         </Transition>
         <Transition name="fade">
             <MakerStackbar v-if="selectedChart.name === 'VueUiStackbar'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerBullet v-if="selectedChart.name === 'VueUiBullet'" />
         </Transition>
     </div>
 </template>

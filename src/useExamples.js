@@ -2023,6 +2023,86 @@ export default function useExamples() {
         },
     ])
 
+    //-------------- VUE-UI-BULLET --------------//
+    const CONFIG_BULLET_BASE = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    legend: {
+                        color: colors.value.textColor
+                    },
+                    segments: {
+                        dataLabels: {
+                            color: colors.value.textColor
+                        }
+                    },
+                    valueBar: {
+                        stroke: colors.value.bg,
+                        label: {
+                            color: colors.value.textColor
+                        }
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        subtitle: {
+                            text: 'Subtitle',
+                        }
+                    }
+                }
+            }
+        }
+    })
+
+    const DATASET_BULLET_BASIC = ref({
+        value: 80,
+        target: 75,
+        segments: [
+            {
+                name: 'Low',
+                from: 0,
+                to: 50,
+            },
+            {
+                name: 'Medium',
+                from: 50,
+                to: 70,
+            },
+            {
+                name: 'High',
+                from: 70,
+                to: 100,
+            },
+        ]
+    })
+
+    const DATASET_BULLET_COLORS = ref({
+        value: 80,
+        target: 75,
+        segments: [
+            {
+                name: 'Low',
+                from: 0,
+                to: 50,
+                color: '#cf5932'
+            },
+            {
+                name: 'Medium',
+                from: 50,
+                to: 70,
+                color: '#cc9433'
+            },
+            {
+                name: 'High',
+                from: 70,
+                to: 100,
+                color: '#52cc33'
+            },
+        ]
+    })
+
     const examples = computed(() => {
         return [
             // XY BASIC LINE
@@ -4669,6 +4749,118 @@ export default function useExamples() {
                     es: "Marcadores de puntos de datos con formas geométricas",
                     ko: "기하학적 모양의 데이터 포인트 마커",
                     ar: "علامات نقاط البيانات بأشكال هندسية"
+                }
+            },
+            // BULLET BASIC
+            { 
+                dataset: DATASET_BULLET_BASIC.value, 
+                config: CONFIG_BULLET_BASE.value,
+                component: 'VueUiBullet',
+                icon: 'chartBullet',
+                id: 'bullet-basic',
+                link: 'vue-ui-bullet',
+                description: {
+                    en: "Basic bullet chart",
+                    fr: "Graphique à barres de performance basique",
+                    pt: "Gráfico de desempenho básico",
+                    de: "Einfaches Leistungsdiagramm",
+                    zh: "基本绩效图",
+                    jp: "基本パフォーマンスチャート",
+                    es: "Gráfico básico de rendimiento",
+                    ko: "기본 성능 차트",
+                    ar: "مخطط الأداء الأساسي"
+                }
+            },
+            // BULLET COLORS
+            { 
+                dataset: DATASET_BULLET_COLORS.value, 
+                config: CONFIG_BULLET_BASE.value,
+                component: 'VueUiBullet',
+                icon: 'chartBullet',
+                id: 'bullet-colors',
+                link: 'vue-ui-bullet',
+                description: {
+                    en: "With custom segment colors",
+                    fr: "Avec des couleurs de segments personnalisées",
+                    pt: "Com cores de segmento personalizadas",
+                    de: "Mit benutzerdefinierten Segmentfarben",
+                    zh: "具有自定义分段颜色",
+                    jp: "カスタムセグメントカラー付き",
+                    es: "Con colores de segmentos personalizados",
+                    ko: "사용자 정의 세그먼트 색상",
+                    ar: "مع ألوان مقاطع مخصصة"
+                }
+            },
+            // BULLET LARGER
+            { 
+                dataset: DATASET_BULLET_BASIC.value, 
+                config: {
+                    ...CONFIG_BULLET_BASE.value,
+                    style: {
+                        ...CONFIG_BULLET_BASE.value.style,
+                        chart: {
+                            ...CONFIG_BULLET_BASE.value.style.chart,
+                            segments: {
+                                ...CONFIG_BULLET_BASE.value.style.chart.segments,
+                                baseColor: '#1f77b4'
+                            },
+                            valueBar: {
+                                ...CONFIG_BULLET_BASE.value.style.chart.valueBar,
+                                heightRatio: 0.5
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiBullet',
+                icon: 'chartBullet',
+                id: 'bullet-larger',
+                link: 'vue-ui-bullet',
+                description: {
+                    en: "With larger value bar",
+                    fr: "Avec une barre de valeur plus grande",
+                    pt: "Com barra de valor maior",
+                    de: "Mit größerer Wertleiste",
+                    zh: "具有更大数值条",
+                    jp: "より大きな値のバー付き",
+                    es: "Con barra de valor más grande",
+                    ko: "더 큰 값 막대 포함",
+                    ar: "مع شريط قيمة أكبر"
+                }
+            },
+            // BULLET THINNER
+            { 
+                dataset: DATASET_BULLET_BASIC.value, 
+                config: {
+                    ...CONFIG_BULLET_BASE.value,
+                    style: {
+                        ...CONFIG_BULLET_BASE.value.style,
+                        chart: {
+                            ...CONFIG_BULLET_BASE.value.style.chart,
+                            segments: {
+                                ...CONFIG_BULLET_BASE.value.style.chart.segments,
+                                baseColor: '#1f77b4'
+                            },
+                            valueBar: {
+                                ...CONFIG_BULLET_BASE.value.style.chart.valueBar,
+                                heightRatio: 0.15
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiBullet',
+                icon: 'chartBullet',
+                id: 'bullet-thinner',
+                link: 'vue-ui-bullet',
+                description: {
+                    en: "With thinner value bar",
+                    fr: "Avec une barre de valeur plus fine",
+                    pt: "Com barra de valor mais fina",
+                    de: "Mit dünnerer Wertleiste",
+                    zh: "具有更细的数值条",
+                    jp: "より細い値のバー付き",
+                    es: "Con barra de valor más delgada",
+                    ko: "더 얇은 값 막대 포함",
+                    ar: "مع شريط قيمة أنحف"
                 }
             },
         ]
