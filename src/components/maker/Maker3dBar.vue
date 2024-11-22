@@ -12,6 +12,7 @@ import ComponentContent from "./ComponentContent.vue";
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
+import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -177,7 +178,7 @@ function fixChart() {
     <div>
 
         <ClearStorageAndRefresh keyConfig="config3dBar" keyDataset="dataset3dBar" :key="`clear_${clearStep}`"/>
-        <DocLink to="vue-ui-3d-bar" name="VueUi3dBar"/>
+        <BaseDocExampleLink link="vue-ui-3d-bar" :example="false" componentName="VueUi3dBar"/>
       
       <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <BaseMakerChart

@@ -12,6 +12,7 @@ import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
+import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -112,7 +113,7 @@ function fixChart() {
     <div>
 
         <ClearStorageAndRefresh keyConfig="sparkgaugeConfig" keyDataset="sparkgaugeDataset" :key="`clear_${clearStep}`"/>
-            <DocLink to="vue-ui-sparkgauge" name="VueUiSparkgauge"/>
+        <BaseDocExampleLink link="vue-ui-sparkgauge" :example="false" componentName="VueUiSparkGauge"/>
         
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <BaseMakerChart

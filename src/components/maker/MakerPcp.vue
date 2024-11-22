@@ -13,6 +13,7 @@ import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
+import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -190,7 +191,7 @@ function fixChart() {
     <div>
 
         <ClearStorageAndRefresh keyConfig="pcpConfig" keyDataset="pcpDataset" :key="`clear_${clearStep}`"/>
-        <DocLink to="vue-ui-parallel-coordinate-plot" name="VueUiParallelCoordinatePlot"/>
+        <BaseDocExampleLink link="vue-ui-parallel-coordinate-plot" :example="false" componentName="VueUiParallelCoordinatePlot"/>
     
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <BaseMakerChart

@@ -11,6 +11,7 @@ import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
+import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -136,7 +137,7 @@ function fixChart() {
     <div>
 
         <ClearStorageAndRefresh keyConfig="moodRadarConfig" keyDataset="moodRadarDataset" :key="`clear_${clearStep}`"/>
-        <DocLink to="vue-ui-mood-radar" name="VueUiMoodRadar"/>
+        <BaseDocExampleLink link="vue-ui-mood-radar" :example="false" componentName="VueUiMoodRadar"/>
         
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <BaseMakerChart

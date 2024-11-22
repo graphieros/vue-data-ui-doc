@@ -189,21 +189,21 @@ const crumbs = computed(() => {
         <div class="w-full mt-6">
 
                 <div class="font-bold flex flex-col sm:flex-row gap-4 justify-center place-items-center my-12 bg-gray-200 dark:bg-[#FFFFFF10] w-fit mx-auto p-4 rounded-full">
-                    <div class="py-2 px-4 rounded-full bg-gradient-to-r from-[#42d39210] to-[#42d39230] shadow-md">1. {{ makerTranslations.steps.one[store.lang] }}</div>
+                    <div class="py-2 px-4">1. {{ makerTranslations.steps.one[store.lang] }}</div>
                     <div class="hidden sm:block">
                         <VueUiIcon name="arrowRight" stroke="#42d392" class="drop-shadow-lg" />
                     </div>
                     <div class="sm:hidden">
                         <VueUiIcon name="arrowBottom" stroke="#42d392" class="drop-shadow-lg"/>
                     </div>
-                    <div class="py-2 px-4 rounded-full bg-gradient-to-r from-[#42d39230] to-[#42d39250] shadow-md">2. {{ makerTranslations.steps.two[store.lang] }}</div>
+                    <div class="py-2 px-4">2. {{ makerTranslations.steps.two[store.lang] }}</div>
                     <div class="hidden sm:block">
                         <VueUiIcon name="arrowRight" stroke="#42d392" class="drop-shadow-lg"/>
                     </div>
                     <div class="sm:hidden">
                         <VueUiIcon name="arrowBottom" stroke="#42d392" class="drop-shadow-lg"/>
                     </div>
-                    <div class="py-2 px-4 rounded-full bg-gradient-to-r from-[#42d39250] to-[#42d39270]  shadow-md">3. {{ makerTranslations.steps.three[store.lang] }}</div>
+                    <div class="py-2 px-4">3. {{ makerTranslations.steps.three[store.lang] }}</div>
                 </div>
 
         </div>

@@ -12,6 +12,7 @@ import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
+import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -132,7 +133,7 @@ function fixChart() {
 <template>
     <div>
         <ClearStorageAndRefresh keyConfig="tiremarksConfig" keyDataset="tiremarksDataset" :key="`clear_${clearStep}`"/>
-        <DocLink to="vue-ui-tiremarks" name="VueUiTiremarks"/>
+        <BaseDocExampleLink link="vue-ui-tiremarks" :example="false" componentName="VueUiTiremarks"/>
         
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <BaseMakerChart

@@ -13,6 +13,7 @@ import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
+import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -140,7 +141,7 @@ function fixChart() {
     <div>
 
         <ClearStorageAndRefresh keyConfig="sparkbarConfig" keyDataset="sparkbarDataset" :key="`clear_${clearStep}`"/>
-        <DocLink to="vue-ui-sparkbar" name="VueUiSparkbar"/>
+        <BaseDocExampleLink link="vue-ui-sparkbar" :example="false" componentName="VueUiSparkbar"/>
     
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <BaseMakerChart

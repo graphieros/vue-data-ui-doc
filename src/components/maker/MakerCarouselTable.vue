@@ -13,6 +13,7 @@ import { VueUiCarouselTable } from "vue-data-ui";
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
+import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -155,7 +156,7 @@ function fixChart() {
     <div>
 
         <ClearStorageAndRefresh keyConfig="carouselTableConfig" keyDataset="carouselTableDataset" :key="`clear_${clearStep}`"/>
-        <DocLink to="vue-ui-carousel-table" name="VueUiCarouselTable"/>
+        <BaseDocExampleLink link="vue-ui-carousel-table" :example="false" componentName="VueUiCarouselTable"/>
     
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <BaseMakerChart

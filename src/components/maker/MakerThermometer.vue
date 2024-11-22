@@ -11,6 +11,7 @@ import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
+import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -120,9 +121,8 @@ function fixChart() {
 
 <template>
     <div>
-
         <ClearStorageAndRefresh keyConfig="thermometerConfig" keyDataset="thermometerDataset" :key="`clear_${clearStep}`"/>
-        <DocLink to="vue-ui-thermometer" name="VueUiThermometer"/>
+        <BaseDocExampleLink link="vue-ui-thermometer" :example="false" componentName="VueUiThermometer"/>
     
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <BaseMakerChart

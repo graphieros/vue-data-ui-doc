@@ -12,6 +12,7 @@ import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
+import BaseDocExampleLink from "../BaseDocExampleLink.vue";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -161,7 +162,7 @@ function fixChart() {
     <div>
 
         <ClearStorageAndRefresh keyConfig="pyramidConfig" keyDataset="pyramidDataset" :key="`clear_${clearStep}`"/>
-        <DocLink to="vue-ui-age-pyramid" name="VueUiAgePyramid"/>
+        <BaseDocExampleLink link="vue-ui-age-pyramid" :example="false" componentName="VueUiAgePyramid"/>
         
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <BaseMakerChart
