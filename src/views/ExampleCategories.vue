@@ -274,7 +274,7 @@ const hoveredLink = ref(null);
     <!-- CHART TYPE SELECTION -->
     <div class="fixed top-[87px] left-0 w-full bg-[#F2F3F6] dark:bg-[#232323] z-50 py-4 drop-shadow-md">
         <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-12">
-            <BaseTabContainer :selected-index-on-load="selectedOrder" :key="`tabs_${step}`">
+            <BaseTabContainer :selected-index-on-load="selectedOrder">
                 <template #content>
                     <div v-for="category in categories" class="relative rounded w-[100px] sm:w-[150px] h-[100px] sm:h-[100px] flex-shrink-0 bg-[#F2F3F6] dark:bg-[#232323]" @mouseover="hoveredLink = category" @mouseleave="hoveredLink = null">
                         <button @click="updateHash(category.link)" :class="`p-2 flex flex-col place-items-center justify-center h-full w-full rounded border ${selectedLink === category.link ? 'border-app-blue' : 'border-transparent'}`">

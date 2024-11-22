@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, nextTick, onUnmounted, onBeforeUnmount } from "vue";
+import { ref, computed, onMounted, nextTick, onUnmounted, onBeforeUnmount, watch } from "vue";
 import { useMainStore } from "../stores";
 
 const props = defineProps({
@@ -25,6 +25,12 @@ const updateScrollButtons = () => {
             container.scrollLeft < container.scrollWidth - container.clientWidth;
     }
 };
+
+watch(() => props.selectedIndexOnLoad, (newIndex, oldIndex) => {
+    if(newIndex !== oldIndex) {
+        updateMenu()
+    }
+})
 
 const scrollToNearestElement = (direction) => {
     const container = tabsContainer.value;
