@@ -470,7 +470,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiBulletDataset</
                     <BaseAttr name="baseColor" attr="style.chart.segments.baseColor" type="color" defaultVal="#9A9A9A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseDetails attr="dataLabels" :level="4" title="style.chart.segments.dataLabels">
                         <BaseAttr name="show" attr="style.chart.segments.dataLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr anme="color" attr="style.chart.segments.dataLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.chart.segments.dataLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSize" attr="style.chart.segments.dataLabels.fontSize" type="number" defaultVal="10" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                         <BaseAttr name="bold" attr="style.chart.segments.dataLabels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

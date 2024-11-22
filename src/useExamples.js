@@ -2103,6 +2103,31 @@ export default function useExamples() {
         ]
     })
 
+    const DATASET_BULLET_MIXED = ref({
+        value: 42,
+        target: 30,
+        segments: [
+            {
+                name: 'Cold',
+                from: -100,
+                to: 0,
+                color: '#5f8aee'
+            },
+            {
+                name: 'Temperate',
+                from: 0,
+                to: 40,
+                color: '#52cc33'
+            },
+            {
+                name: 'Hot',
+                from: 40,
+                to: 100,
+                color: '#cf5932'
+            },
+        ]
+    })
+
     const examples = computed(() => {
         return [
             // XY BASIC LINE
@@ -4861,6 +4886,42 @@ export default function useExamples() {
                     es: "Con barra de valor más delgada",
                     ko: "더 얇은 값 막대 포함",
                     ar: "مع شريط قيمة أنحف"
+                }
+            },
+            // BULLET MIXED
+            { 
+                dataset: DATASET_BULLET_MIXED.value, 
+                config: {
+                    ...CONFIG_BULLET_BASE.value,
+                    style: {
+                        ...CONFIG_BULLET_BASE.value.style,
+                        chart: {
+                            ...CONFIG_BULLET_BASE.value.style.chart,
+                            segments: {
+                                ...CONFIG_BULLET_BASE.value.style.chart.segments,
+                                dataLabels: {
+                                    ...CONFIG_BULLET_BASE.value.style.chart.dataLabels,
+                                    color: colors.value.textColor,
+                                    suffix: '°C'
+                                }
+                            },
+                        }
+                    }
+                },
+                component: 'VueUiBullet',
+                icon: 'chartBullet',
+                id: 'bullet-thinner',
+                link: 'vue-ui-bullet',
+                description: {
+                    en: "With negative and positive values",
+                    fr: "Avec des valeurs négatives et positives",
+                    pt: "Com valores negativos e positivos",
+                    de: "Mit negativen und positiven Werten",
+                    zh: "具有正负值",
+                    jp: "負と正の値付き",
+                    es: "Con valores negativos y positivos",
+                    ko: "음수와 양수 포함",
+                    ar: "مع القيم السالبة والموجبة"
                 }
             },
         ]
