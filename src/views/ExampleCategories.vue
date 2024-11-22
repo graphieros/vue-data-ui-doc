@@ -188,7 +188,7 @@ const categories = computed(() => {
             component: 'VueUiStripPlot',
             thumb: new URL('../assets/thumb_strip_plot.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.stripPlot[store.lang]
+            description: translations.value.docs.tooltips.stripPlot
         },
         {
             link: 'vue-ui-bullet',
@@ -196,7 +196,7 @@ const categories = computed(() => {
             component: 'VueUiBullet',
             thumb: new URL('../assets/thumb_bullet.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_bullet_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.bullet[store.lang]
+            description: translations.value.docs.tooltips.bullet
         }
     ].map((c, i) => {
         return {
@@ -233,6 +233,13 @@ const checkTheDocs = ref({
 const selectedLink = ref('');
 const selectedOrder = ref(null);
 const selectedType = ref(null);
+const step = ref(0);
+
+function goToExample() {
+    updateHash(selectedLink.value);
+    selectedOrder.value = categories.value.find(el => el.link === selectedLink.value).order
+    step.value += 1
+}
 
 onMounted(() => {
     if (route.hash) {
@@ -267,7 +274,7 @@ const hoveredLink = ref(null);
     <!-- CHART TYPE SELECTION -->
     <div class="fixed top-[87px] left-0 w-full bg-[#F2F3F6] dark:bg-[#232323] z-50 py-4 drop-shadow-md">
         <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-12">
-            <BaseTabContainer :selected-index-on-load="selectedOrder">
+            <BaseTabContainer :selected-index-on-load="selectedOrder" :key="`tabs_${step}`">
                 <template #content>
                     <div v-for="category in categories" class="relative rounded w-[100px] sm:w-[150px] h-[100px] sm:h-[100px] flex-shrink-0 bg-[#F2F3F6] dark:bg-[#232323]" @mouseover="hoveredLink = category" @mouseleave="hoveredLink = null">
                         <button @click="updateHash(category.link)" :class="`p-2 flex flex-col place-items-center justify-center h-full w-full rounded border ${selectedLink === category.link ? 'border-app-blue' : 'border-transparent'}`">
@@ -295,6 +302,12 @@ const hoveredLink = ref(null);
                     {{ translations.menu.docs[store.lang]  }}
                 </button>
             </RouterLink>
+        </div>
+        <div class="flex flex-col gap-2 place-items-start">
+            <label for="exampleSelect" class="text-xs">Select component:</label>
+            <select id="exampleSelect" v-model="selectedLink" @change="goToExample" class="py-2 px-2">
+                <option v-for="option in categories" :value="option.link">{{ option.component }}</option>
+            </select>
         </div>
     </div>
 
