@@ -99,12 +99,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.pdf', def: 'Download PDF', type: 'text', label: ['button', 'pdf', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_stackbar: {
@@ -132,6 +134,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.csv', def: true, type: 'checkbox', label: ['button', 'csv', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.labels', def: true, type: 'checkbox', label: ['button', 'labels', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
+
                     { key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     { key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
                     { key: 'userOptions.buttonTitles.pdf', def: 'Download PDF', type: 'text', label: ['button', 'pdf', 'title', 'is', 'textContent'], category: 'userOptions'},
@@ -139,6 +143,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
                     { key: 'userOptions.buttonTitles.labels', def: 'Toggle labels', type: 'text', label: ['button', 'labels', 'title', 'is', 'textContent'], category: 'userOptions'},
                     { key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    { key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, step: 10, label: 'responsiveBreakpoint', category: 'table'},
@@ -412,6 +417,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.table', def: true, type: 'checkbox', label: ['button', 'table', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.labels', def: true, type: 'checkbox', label: ['button', 'labels', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
@@ -422,6 +428,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.table', def: 'Toggle table', type: 'text', label: ['button', 'table', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.labels', def: 'Toggle labels', type: 'text', label: ['button', 'labels', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                     
                     { key: 'style.chart.lines.smooth', def: true, type: 'checkbox', label: ['line', 'is', 'smooth'], category: 'datapoints'},
                     { key: 'style.chart.lines.strokeWidth', def: 2, type: 'number', min: 0.5, max: 24, step: 0.5, label: ['line', 'is', 'thickness'], category: 'datapoints'},
@@ -694,6 +701,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.userOptions.buttons.labels', def: true, type: 'checkbox', label: ['button', 'labels', 'is', 'show'], category: 'userOptions'},
                     { key: 'chart.userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
                     { key: 'chart.userOptions.buttons.stack', def: true, type: 'checkbox', label: ['button', 'stack', 'is', 'show'], category: 'userOptions'},
+                    { key: 'chart.userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'chart.userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'chart.userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
@@ -705,6 +713,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'chart.userOptions.buttonTitles.labels', def: 'Toggle labels', type: 'text', label: ['button', 'labels', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'chart.userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'chart.userOptions.buttonTitles.stack', def: 'Toggle stack mode', type: 'text', label: ['button', 'stack', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'chart.userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
 
                     { key: 'bar.borderRadius', def: 2, type: 'number', min: 0, max: 120, label: 'borderRadius', category: 'bar' },
                     { key: 'bar.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'bar' },
@@ -893,6 +902,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.table', def: true, type: 'checkbox', label: ['button', 'table', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.labels', def: true, type: 'checkbox', label: ['button', 'labels', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
@@ -903,6 +913,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.table', def: 'Toggle table', type: 'text', label: ['button', 'table', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.labels', def: 'Toggle labels', type: 'text', label: ['button', 'labels', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_waffle: {
@@ -1002,6 +1013,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.table', def: true, type: 'checkbox', label: ['button', 'table', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
@@ -1011,6 +1023,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.table', def: 'Toggle table', type: 'text', label: ['button', 'table', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_radar: {
@@ -1118,6 +1131,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.table', def: true, type: 'checkbox', label: ['button', 'table', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
@@ -1127,6 +1141,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.table', def: 'Toggle table', type: 'text', label: ['button', 'table', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_gauge: {
@@ -1194,12 +1209,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.pdf', def: 'Download PDF', type: 'text', label: ['button', 'pdf', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_onion: {
@@ -1307,6 +1324,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.table', def: true, type: 'checkbox', label: ['button', 'table', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
@@ -1316,6 +1334,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.table', def: 'Toggle table', type: 'text', label: ['button', 'table', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_quadrant: {
@@ -1465,6 +1484,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.table', def: true, type: 'checkbox', label: ['button', 'table', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.labels', def: true, type: 'checkbox', label: ['button', 'labels', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
@@ -1475,6 +1495,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.table', def: 'Toggle table', type: 'text', label: ['button', 'table', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.labels', def: 'Toggle labels', type: 'text', label: ['button', 'labels', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_wheel: {
@@ -1517,12 +1538,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.pdf', def: 'Download PDF', type: 'text', label: ['button', 'pdf', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_tiremarks: {
@@ -1569,12 +1592,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.pdf', def: true, type: 'checkbox', label: ['button', 'pdf', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.img', def: true, type: 'checkbox', label: ['button', 'img', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.pdf', def: 'Download PDF', type: 'text', label: ['button', 'pdf', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.img', def: 'Download PNG', type: 'text', label: ['button', 'img', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_chestnut: {
@@ -1857,6 +1882,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttons.table', def: true, type: 'checkbox', label: ['button', 'table', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.sort', def: true, type: 'checkbox', label: ['button', 'sort', 'is', 'show'], category: 'userOptions'},
                     { key: 'userOptions.buttons.fullscreen', def: true, type: 'checkbox', label: ['button', 'fullscreen', 'is', 'show'], category: 'userOptions'},
+                    { key: 'userOptions.buttons.annotator', def: true, type: 'checkbox', label: ['button', 'annotator', 'is', 'show'], category: 'userOptions'},
 
                     {key: 'userOptions.buttonTitles.open', def: 'Open options', type: 'text', label: ['button', 'open', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.close', def: 'Close options', type: 'text', label: ['button', 'close', 'title', 'is', 'textContent'], category: 'userOptions'},
@@ -1867,6 +1893,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.table', def: 'Toggle table', type: 'text', label: ['button', 'table', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.sort', def: 'Toggle sort', type: 'text', label: ['button', 'sort', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'userOptions.buttonTitles.fullscreen', def: 'Toggle fullscreen', type: 'text', label: ['button', 'fullscreen', 'title', 'is', 'textContent'], category: 'userOptions'},
+                    {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
                 ]
             },
             vue_ui_heatmap: {
