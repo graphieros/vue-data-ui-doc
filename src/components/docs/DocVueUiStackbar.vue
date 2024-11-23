@@ -90,7 +90,8 @@ const config = ref({
             fullscreen: true,
             sort: false,
             stack: false,
-            animation: false
+            animation: false,
+            annotator: true
         },
         buttonTitles: {
             open: "Open options",
@@ -101,7 +102,8 @@ const config = ref({
             img: "Download PNG",
             table: "Toggle table",
             labels: "Toggle labels",
-            fullscreen: "Toggle fullscreen"
+            fullscreen: "Toggle fullscreen",
+            annotator: "Toggle annotator"
         }
     },
     style: {
@@ -285,7 +287,8 @@ const darkModeConfig = ref({
             fullscreen: true,
             sort: false,
             stack: false,
-            animation: false
+            animation: false,
+            annotator: true
         },
         buttonTitles: {
             open: "Open options",
@@ -296,7 +299,8 @@ const darkModeConfig = ref({
             img: "Download PNG",
             table: "Toggle table",
             labels: "Toggle labels",
-            fullscreen: "Toggle fullscreen"
+            fullscreen: "Toggle fullscreen",
+            annotator: "Toggle annotator"
         }
     },
     style: {
@@ -851,6 +855,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                 <BaseAttr name="table" attr="userOptions.buttons.table" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="labels" attr="userOptions.buttons.labels" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="fullscreen" attr="userOptions.buttons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="annotator" attr="userOptions.buttons.annotator" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             </BaseDetails>
             <BaseDetails attr="buttonTitles" :level="2" title="userOptions.buttonTitles">
                 <BaseAttr name="open" attr="userOptions.buttonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
@@ -862,6 +867,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                 <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="labels" attr="userOptions.buttonTitles.labels" type="text" defaultVal="Toggle labels" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+                <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
             </BaseDetails>
         </BaseDetails>
     </BaseDetails>

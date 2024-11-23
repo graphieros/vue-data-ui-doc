@@ -265,7 +265,8 @@ const config = ref({
                 table: true,
                 labels: true,
                 stack: true,
-                fullscreen: true
+                fullscreen: true,
+                annotator: true
             },
             buttonTitles: {
                 open: "Open options",
@@ -277,7 +278,8 @@ const config = ref({
                 table: "Toggle table",
                 labels: "Toggle labels",
                 fullscreen: "Toggle fullscreen",
-                stack: "Toggle stack mode"
+                stack: "Toggle stack mode",
+                annotator: "Toggle annotator"
             }
         },
     },
@@ -539,7 +541,8 @@ const darkModeConfig = ref({
                 table: true,
                 labels: true,
                 stack: true,
-                fullscreen: true
+                fullscreen: true,
+                annotator: true
             },
             buttonTitles: {
                 open: "Open options",
@@ -551,7 +554,8 @@ const darkModeConfig = ref({
                 table: "Toggle table",
                 labels: "Toggle labels",
                 fullscreen: "Toggle fullscreen",
-                stack: "Toggle stack mode"
+                stack: "Toggle stack mode",
+                annotator: "Toggle annotator"
             }
         },
     },
@@ -1082,6 +1086,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                     <BaseAttr name="labels" attr="chart.userOptions.buttons.labels" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="stack" attr="chart.userOptions.buttons.stack" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="fullscreen" attr="chart.userOptions.buttons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="annotator" attr="chart.userOptions.buttons.annotator" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 </BaseDetails>
                 <BaseDetails attr="buttonTitles" :level="3" title="chart.userOptions.buttonTitles">
                     <BaseAttr name="open" attr="chart.userOptions.buttonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1094,6 +1099,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                     <BaseAttr name="labels" attr="chart.userOptions.buttonTitles.labels" type="text" defaultVal="Toggle labels" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="fullscreen" attr="chart.userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="stack" attr="chart.userOptions.buttonTitles.stack" type="text" defaultVal="Toggle stack mode" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="annotator" attr="chart.userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
             </BaseDetails>
             <BaseDetails attr="zoom" :level="2" title="chart.zoom">

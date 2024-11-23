@@ -200,7 +200,8 @@ const config = ref({
         csv: true,
         table: true,
         sort: true,
-        fullscreen: true
+        fullscreen: true,
+        annotator: true
     },
     buttonTitles: {
         open: "Open options",
@@ -212,6 +213,7 @@ const config = ref({
         table: "Toggle table",
         sort: "Toggle sort",
         fullscreen: "Toggle fullscreen",
+        annotator: "Toggle annotator"
     }
   },
   table: {
@@ -361,7 +363,8 @@ const darkModeConfig = ref({
       csv: true,
       table: true,
       sort: true,
-      fullscreen: true
+      fullscreen: true,
+      annotator: true
     },
     buttonTitles: {
         open: "Open options",
@@ -373,6 +376,7 @@ const darkModeConfig = ref({
         table: "Toggle table",
         sort: "Toggle sort",
         fullscreen: "Toggle fullscreen",
+        annotator: "Toggle annotator"
     }
   },
   table: {
@@ -741,6 +745,7 @@ const <span class="text-app-green">dataset: VueUiVerticalBarDatasetItem[]</span>
         <BaseAttr name="table" attr="userOptions.buttons.table" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="sort" attr="userOptions.buttons.sort" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="fullscreen" attr="userOptions.buttons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="annotator" attr="userOptions.buttons.annotator" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
       </BaseDetails>
       <BaseDetails attr="buttonTitles" :level="2" title="userOptions.buttonTitles">
         <BaseAttr name="open" attr="userOptions.buttonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -752,6 +757,7 @@ const <span class="text-app-green">dataset: VueUiVerticalBarDatasetItem[]</span>
         <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="sort" attr="userOptions.buttonTitles.sort" type="text" defaultVal="Toggle sort" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
       </BaseDetails>
     </BaseDetails>
   </BaseDetails>

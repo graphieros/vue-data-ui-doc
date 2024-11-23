@@ -84,7 +84,6 @@ function getNestedAttribute(obj, path) {
 const id = createUid();
 
 function setNestedAttribute(obj, path, value) {
-    console.log(obj, path, value)
     const parts = path.split('.');
     let current = obj;
 

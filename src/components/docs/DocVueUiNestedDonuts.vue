@@ -83,7 +83,8 @@ const darkModeConfig = ref({
             csv: true,
             table: true,
             labels: true,
-            fullscreen: true
+            fullscreen: true,
+            annotator: true
         },
         buttonTitles: {
             open: "Open options",
@@ -95,6 +96,7 @@ const darkModeConfig = ref({
             table: "Toggle table",
             labels: "Toggle labels",
             fullscreen: "Toggle fullscreen",
+            annotator: "Toggle annotator"
         }
     },
     style: {
@@ -218,7 +220,8 @@ const config = ref({
             csv: true,
             table: true,
             labels: true,
-            fullscreen: true
+            fullscreen: true,
+            annotator: true
         },
         buttonTitles: {
             open: "Open options",
@@ -230,6 +233,7 @@ const config = ref({
             table: "Toggle table",
             labels: "Toggle labels",
             fullscreen: "Toggle fullscreen",
+            annotator: "Toggle annotator"
         }
     },
     style: {
@@ -645,6 +649,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiNestedDonutsDat
                 <BaseAttr name="table" attr="userOptions.buttons.table" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="labels" attr="userOptions.buttons.labels" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="fullscreen" attr="userOptions.buttons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="annotator" attr="userOptions.buttons.annotator" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             </BaseDetails>
             <BaseDetails attr="buttonTitles" :level="2" title="userOptions.buttonTitles">
                 <BaseAttr name="open" attr="userOptions.buttonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
@@ -656,6 +661,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiNestedDonutsDat
                 <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="labels" attr="userOptions.buttonTitles.labels" type="text" defaultVal="Toggle labels" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+                <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
             </BaseDetails>
         </BaseDetails>
     </BaseDetails>

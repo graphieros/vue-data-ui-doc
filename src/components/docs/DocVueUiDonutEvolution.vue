@@ -173,7 +173,8 @@ const config = ref({
             img: true,
             csv: true,
             table: true,
-            fullscreen: true
+            fullscreen: true,
+            annotator: true
         },
         buttonTitles: {
             open: "Open options",
@@ -183,6 +184,7 @@ const config = ref({
             img: "Download PNG",
             table: "Toggle table",
             fullscreen: "Toggle fullscreen",
+            annotator: "Toggle annotator"
         }
     }
 })
@@ -311,7 +313,8 @@ const darkModeConfig = ref({
             img: true,
             csv: true,
             table: true,
-            fullscreen: true
+            fullscreen: true,
+            annotator: true
         },
         buttonTitles: {
             open: "Open options",
@@ -321,6 +324,7 @@ const darkModeConfig = ref({
             img: "Download PNG",
             table: "Toggle table",
             fullscreen: "Toggle fullscreen",
+            annotator: "Toggle annotator"
         }
     }
 })
@@ -595,6 +599,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionD
                 <BaseAttr name="csv" attr="userOptions.buttons.csv" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="table" attr="userOptions.buttons.table" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="fullscreen" attr="userOptions.buttons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                <BaseAttr name="annotator" attr="userOptions.buttons.annotator" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
             </BaseDetails>
             <BaseDetails attr="buttonTitles" :level="2" title="userOptions.buttonTitles">
                 <BaseAttr name="open" attr="userOptions.buttonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -605,6 +610,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionD
                 <BaseAttr name="img" attr="userOptions.buttonTitles.img" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             </BaseDetails>
         </BaseDetails>
     </BaseDetails>

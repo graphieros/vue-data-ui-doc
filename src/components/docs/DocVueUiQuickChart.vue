@@ -156,7 +156,8 @@ const config = ref({
         tooltip: true,
         pdf: true,
         img: true,
-        fullscreen: true
+        fullscreen: true,
+        annotator: true,
     },
     userOptionsButtonTitles: {
         open: 'Open options',
@@ -164,7 +165,8 @@ const config = ref({
         tooltip: 'Toggle tooltip',
         pdf: 'Download PDF',
         img: 'Download PNG',
-        fullscreen: 'Toggle fullscreen'
+        fullscreen: 'Toggle fullscreen',
+        annotator: 'Toggle annotator'
     },
     title: "A quick chart",
     titleBold: true,
@@ -260,7 +262,8 @@ const darkModeConfig = ref({
         tooltip: true,
         pdf: true,
         img: true,
-        fullscreen: true
+        fullscreen: true,
+        annotator: true
     },
     userOptionsButtonTitles: {
         open: 'Open options',
@@ -268,7 +271,8 @@ const darkModeConfig = ref({
         tooltip: 'Toggle tooltip',
         pdf: 'Download PDF',
         img: 'Download PNG',
-        fullscreen: 'Toggle fullscreen'
+        fullscreen: 'Toggle fullscreen',
+        annotator: 'Toggle annotator'
     },
     title: "A quick chart",
     titleBold: true,
@@ -768,6 +772,7 @@ const { configCode, showAllConfig } = useConfigCode()
             <BaseAttr name="pdf" attr="userOptionsButtons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="img" attr="userOptionsButtons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="fullscreen" attr="userOptionsButtons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="annotator" attr="userOptionsButtons.annotator" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseDetails attr="userOptionsButtonTitles" :level="1">
             <BaseAttr name="open" attr="userOptionsButtonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -776,6 +781,7 @@ const { configCode, showAllConfig } = useConfigCode()
             <BaseAttr name="pdf" attr="userOptionsButtonTitles.pdf" type="text" defaultVal="Download PDF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="img" attr="userOptionsButtonTitles.img" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="fullscreen" attr="userOptionsButtonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="annotator" attr="userOptionsButtonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseAttr name="title" attr="title" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="titleBold" attr="titleBold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

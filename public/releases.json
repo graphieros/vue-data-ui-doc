@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.4.2",
+    "date": "2024-11-23",
+    "updates": [
+      {
+        "component": "User options",
+        "description": "Add annotator user option to most charts with user options menu."
+      }
+    ]
+  },
+  {
     "version": "v 2.4.1",
     "date": "2024-11-21",
     "updates": [

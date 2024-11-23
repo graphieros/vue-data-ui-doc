@@ -143,7 +143,8 @@ const config = ref({
         buttons: {
             pdf: true,
             img: true,
-            fullscreen: true
+            fullscreen: true,
+            annotator: true
         },
         buttonTitles: {
             open: "Open options",
@@ -151,6 +152,7 @@ const config = ref({
             pdf: "Download PDF",
             img: "Download PNG",
             fullscreen: "Toggle fullscreen",
+            annotator: "Toggle annotator"
         }
     },
     translations: {
@@ -229,7 +231,8 @@ const darkModeConfig = ref({
         buttons: {
             pdf: true,
             img: true,
-            fullscreen: true
+            fullscreen: true,
+            annotator: true
         },
         buttonTitles: {
             open: "Open options",
@@ -237,6 +240,7 @@ const darkModeConfig = ref({
             pdf: "Download PDF",
             img: "Download PNG",
             fullscreen: "Toggle fullscreen",
+            annotator: "Toggle annotator"
         }
     },
     translations: {
@@ -525,6 +529,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                 <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="img" attr="userOptions.buttons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr name="fullscreen" attr="userOptions.buttons.fullscreen" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="annotator" attr="userOptions.buttons.annotator" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             </BaseDetails>
             <BaseDetails attr="buttonTitles" :level="2" title="userOptions.buttonTitles">
                 <BaseAttr name="open" attr="userOptions.buttonTitles.open" type="text" defaultVal="Open options" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
@@ -532,6 +537,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                 <BaseAttr name="pdf" attr="userOptions.buttonTitles.pdf" type="text" defaultVal="Download PDF" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="img" attr="userOptions.buttonTitles.img" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+                <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
             </BaseDetails>
         </BaseDetails>
     </BaseDetails>
