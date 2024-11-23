@@ -19,6 +19,8 @@ const isDarkMode = computed(() => {
 })
 
 const icons = ref([
+    "annotator",
+    "annotatorDisabled",
     "close",
     "excel",
     "exitFullscreen",
@@ -33,15 +35,16 @@ const icons = ref([
     "sort",
     "spin",
     "stack",
-    "unstack",
     "tableClose",
     "tableOpen",
-    "tooltip"
+    "tooltip",
+    "unstack",
 ]);
 
 const specialIcons = ref([
     "accordion",
     "annotator",
+    "annotatorDisabled",
     "arrowBottom",
     "arrowLeft",
     "arrowRight",
@@ -132,6 +135,7 @@ const specialIcons = ref([
     "moodWink",
     "mu",
     "numbers",
+    "palette",
     "pentagon",
     "pentagonFill",
     "people",
@@ -150,6 +154,7 @@ const specialIcons = ref([
     "starFace",
     "starFill",
     "stop",
+    "trash",
     "trend",
     "trendDown",
     "trendUp",

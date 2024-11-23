@@ -63,6 +63,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "slots": [
@@ -207,6 +212,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -457,6 +467,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -582,6 +597,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -708,6 +728,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -802,6 +827,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -899,6 +929,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -1064,6 +1099,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -1216,6 +1256,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -1323,6 +1368,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -1395,6 +1445,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -1698,6 +1753,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -2265,6 +2325,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -2404,6 +2469,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -2683,6 +2753,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -2831,6 +2906,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -2938,6 +3018,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -3108,6 +3193,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -3252,6 +3342,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -3415,6 +3510,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -3535,6 +3635,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -3942,6 +4047,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -4188,6 +4298,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -4285,6 +4400,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -4392,6 +4512,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -4533,6 +4658,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -4681,6 +4811,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -4809,6 +4944,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -4998,6 +5138,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -5239,6 +5384,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -5381,6 +5531,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -5514,6 +5669,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "exposed": [
@@ -5636,6 +5796,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
@@ -5789,6 +5954,11 @@
                 "name": "Full screen",
                 "description": "Displays the chart in full screen mode.",
                 "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
             }
         ],
         "emits": [
