@@ -1777,15 +1777,33 @@ const versionsReleases = computed(() => {
                 <div class="max-w-[500px] mx-auto my-6">
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
-                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="parsedData" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig"/>
-                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="usableWeekData" :config="isDarkMode ? {...darkModeSparklineConfig, type: 'bar', style: {...darkModeSparklineConfig.style, line: {...darkModeSparklineConfig.style.line, color: '#5f8bee'}, area: {...darkModeSparklineConfig.style.area, color: '#5f8bee'}, dataLabel: {...darkModeSparklineConfig.style.dataLabel, color: '#5f8bee'}, verticalIndicator:{...darkModeSparklineConfig.style.verticalIndicator, color: '#42d392'}, title: {...darkModeSparklineConfig.style.title, text: 'Weekly downloads - Last 52 weeks'}}} : {...sparklineConfig, type: 'bar', style: {...sparklineConfig.style, line: {...sparklineConfig.style.line, color: '#5f8bee'}, area: {...sparklineConfig.style.area, color: '#5f8bee'}, title: {...sparklineConfig.style.title, text: 'Weekly downloads - Last 52 weeks'}}} "/>
-                </div>
-                <div class="max-w-[300px] mx-auto px-6 mb-6">
+                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="parsedData" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig">
+                      <template #source>
+                        <div class="text-xs text-gray-500 text-right">
+                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
+                        </div>
+                      </template>
+                    </VueUiSparkline>
+                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="usableWeekData" :config="isDarkMode ? {...darkModeSparklineConfig, type: 'bar', style: {...darkModeSparklineConfig.style, line: {...darkModeSparklineConfig.style.line, color: '#5f8bee'}, area: {...darkModeSparklineConfig.style.area, color: '#5f8bee'}, dataLabel: {...darkModeSparklineConfig.style.dataLabel, color: '#5f8bee'}, verticalIndicator:{...darkModeSparklineConfig.style.verticalIndicator, color: '#42d392'}, title: {...darkModeSparklineConfig.style.title, text: 'Weekly downloads - Last 52 weeks'}}} : {...sparklineConfig, type: 'bar', style: {...sparklineConfig.style, line: {...sparklineConfig.style.line, color: '#5f8bee'}, area: {...sparklineConfig.style.area, color: '#5f8bee'}, title: {...sparklineConfig.style.title, text: 'Weekly downloads - Last 52 weeks'}}} ">
+                      <template #source>
+                        <div class="text-xs text-gray-500 text-right">
+                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
+                        </div>
+                      </template>
+                    </VueUiSparkline>
+                  </div>
+                  <div class="max-w-[300px] mx-auto px-6 mb-6">
                     <div class="pb-2 mb-2">
                       Current NPM score:
                     </div>
                     <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkbar', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' }}" />
-                    <VueUiSparkbar v-else-if="sparkbarDataset.length" :dataset="sparkbarDataset" :config="sparkbarConfig"/>
+                    <VueUiSparkbar v-else-if="sparkbarDataset.length" :dataset="sparkbarDataset" :config="sparkbarConfig">
+                      <template #source>
+                        <div class="text-xs text-gray-500 text-right">
+                          Source: <a class="text-app-blue underline" href="https://registry.npmjs.org/-/v1/search?text=vue-data-ui">registry.npmjs.org</a>
+                        </div>
+                      </template>
+                    </VueUiSparkbar>
                 </div>
                 <div class="flex flew-row gap-2 justify-center mb-6">
                   <div class="w-[100px] sm:w-[150px]" v-for="(wheel, i) in sparkbarDataset">
@@ -1813,35 +1831,83 @@ const versionsReleases = computed(() => {
                 </div>
                 <div class="max-w-[500px] mx-auto mb-6" v-if="!!data && !isLoadingLine">
                   <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkHistogram', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' } }"/>
-                  <VueDataUi v-else component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`"/>
+                  <VueDataUi v-else component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`">
+                    <template #source>
+                        <div class="text-xs text-gray-500 text-left">
+                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
+                        </div>
+                      </template>
+                  </VueDataUi>
                 </div>
 
                 <div class="max-w-[800px] mx-auto" v-if="usableHeatmapData.length">
                   <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
-                  <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig"/>
+                  <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig">
+                    <template #source>
+                        <div class="text-xs text-gray-500 text-left mt-3 pl-2">
+                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
+                        </div>
+                      </template>
+                  </VueUiHeatmap>
                 </div>
                 <div class="max-w-[800px] mx-auto my-6" v-if="!isLoadingLine">
-                  <VueDataUi v-if="xyDataset.length" component="VueUiXyCanvas" :dataset="xyDataset" :config="xyCanvasConfig" :key="`xystep_${step}`"/>
+                  <VueDataUi v-if="xyDataset.length" component="VueUiXyCanvas" :dataset="xyDataset" :config="xyCanvasConfig" :key="`xystep_${step}`">
+                    <template #source>
+                        <div class="text-xs text-gray-500 text-left pl-2">
+                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
+                        </div>
+                      </template>
+                  </VueDataUi>
                 </div>
                 <div class="max-w-[400px] mx-auto my-6 flex flex-col gap-2">
                   Overall trend
                   <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
-                    <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="trendConfig"/>
+                    <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="trendConfig">
+                      <template #source>
+                        <div class="text-xs text-gray-500 text-left mt-3 pl-2">
+                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
+                        </div>
+                      </template>
+                    </VueDataUi>
                   </div>
                     N - 1
                     <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
-                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'n-1'}}}"/>
+                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'n-1'}}}">
+                        <template #source>
+                        <div class="text-xs text-gray-500 text-left mt-3 pl-2">
+                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
+                        </div>
+                      </template>
+                      </VueDataUi>
                     </div>
                     Last to First
                     <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
-                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'lastToFirst'}}}"/>
+                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'lastToFirst'}}}">
+                        <template #source>
+                        <div class="text-xs text-gray-500 text-left mt-3 pl-2">
+                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
+                        </div>
+                      </template>
+                      </VueDataUi>
                     </div>
                 </div>
                 <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
-                  <VueUiSparkline :dataset="versionsReleases" :config="sparklineConfigForReleases"/>
+                  <VueUiSparkline :dataset="versionsReleases" :config="sparklineConfigForReleases">
+                    <template #source>
+                        <div class="text-xs text-gray-500 text-right mt-3 pl-2">
+                          Source: Vue Data UI
+                        </div>
+                      </template>
+                  </VueUiSparkline>
                   <div style="height: 48px"/>
                   <div class="w-full shadow-lg">
-                    <VueDataUi v-if="done" component="VueUiWordCloud" :dataset="wordCloudDataset" :config="wordCloudConfig"/>
+                    <VueDataUi v-if="done" component="VueUiWordCloud" :dataset="wordCloudDataset" :config="wordCloudConfig">
+                      <template #source>
+                        <div class="text-xs text-gray-500 text-right mt-3 pl-2">
+                          Source: Vue Data UI
+                        </div>
+                      </template>
+                    </VueDataUi>
                   </div>
                 </div>
 
@@ -1881,6 +1947,11 @@ const versionsReleases = computed(() => {
 
                       </div>
                     </template>
+                    <template #source>
+                        <div class="text-xs text-gray-500 text-right pr-3">
+                          Source: Vue Data UI
+                        </div>
+                      </template>
                   </VueDataUi>
                 </div>
 
