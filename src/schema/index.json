@@ -42,9 +42,6 @@
                     ]
                 },
                 "config": {
-                    "userOptions": {
-                        "show": false
-                    }
                 }
             }
         ],
