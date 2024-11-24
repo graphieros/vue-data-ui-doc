@@ -506,16 +506,16 @@ style: {
     <template #code>
     <pre>
 &lt;template&gt;
-&lt;VueUiDonut
-    :dataset="dataset"
-    :config="config"
-&gt;
-    &lt;template #source"&gt;
-        &lt;div class="text-xs text-left px-8 pb-6 text-gray-500"&gt;
-            Source: Lorem ipsum dolor...
-        &lt;/div&gt;
-    &lt;/template&gt;
-&lt;/VueUiDOnut&gt;
+    &lt;VueUiDonut
+        :dataset="dataset"
+        :config="config"
+    &gt;
+        &lt;template #source"&gt;
+            &lt;div class="text-xs text-left px-8 pb-6 text-gray-500"&gt;
+                Source: Lorem ipsum dolor...
+            &lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiDonut&gt;
 &lt;/template&gt;
 </pre>
     </template>

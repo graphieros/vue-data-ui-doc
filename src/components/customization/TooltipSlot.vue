@@ -547,7 +547,7 @@ const configSparkline = ref({
     &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
       This content shows last
     &lt;/template&gt;
-  &lt;/VueUiDOnut&gt;
+  &lt;/VueUiDonut&gt;
 &lt;/template&gt;
 </pre>
     </template>
