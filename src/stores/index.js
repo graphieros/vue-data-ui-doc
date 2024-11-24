@@ -1202,6 +1202,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 customization: {
+                    source: {
+                        en: "You can use the #source slot to add a source caption to your chart. This slot is available on all chart components.",
+                        fr: "Vous pouvez utiliser l'emplacement #source pour ajouter une légende de source à votre graphique. Cet emplacement est disponible sur tous les composants de graphiques.",
+                        pt: "Você pode usar o slot #source para adicionar uma legenda de fonte ao seu gráfico. Este slot está disponível em todos os componentes de gráfico.",
+                        de: "Sie können den #source-Slot verwenden, um eine Quellenbeschriftung zu Ihrem Diagramm hinzuzufügen. Dieser Slot ist in allen Diagrammkomponenten verfügbar.",
+                        zh: "您可以使用 #source 插槽为您的图表添加来源说明。此插槽适用于所有图表组件。",
+                        jp: "チャートにソースキャプションを追加するには、#source スロットを使用できます。このスロットはすべてのチャートコンポーネントで利用可能です。",
+                        es: "Puedes usar el espacio #source para añadir una leyenda de fuente a tu gráfico. Este espacio está disponible en todos los componentes de gráficos.",
+                        ko: "#source 슬롯을 사용하여 차트에 소스 캡션을 추가할 수 있습니다. 이 슬롯은 모든 차트 구성 요소에서 사용할 수 있습니다.",
+                        ar: "يمكنك استخدام الفتحة #source لإضافة تعليق مصدر إلى الرسم البياني الخاص بك. هذه الفتحة متوفرة في جميع مكونات الرسوم البيانية."
+                    },
                     palette: {
                         en: 'The default color palette contains the following 40 colors, which are accessible through the getPalette method you can import from vue-data-ui:',
                         fr: 'La palette de couleurs par défaut contient les 40 couleurs suivantes, accessibles via la méthode getPalette que vous pouvez importer depuis vue-data-ui :',

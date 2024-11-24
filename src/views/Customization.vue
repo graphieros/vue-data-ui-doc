@@ -12,6 +12,7 @@ import Watermark from "../components/customization/Watermark.vue";
 import LabelFormatter from "../components/customization/LabelFormatter.vue";
 import { useRouter } from "vue-router";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
+import SourceSlot from "../components/customization/SourceSlot.vue";
 
 const store = useMainStore();
 
@@ -59,6 +60,11 @@ const menu = ref([
     name: "formatter",
     label: "formatter",
     link: "/customization#formatter",
+  },
+  {
+    name: "source",
+    label: "source",
+    link: "/customization#source",
   },
 ]);
 
@@ -130,4 +136,5 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
   <CustomMenu v-if="currentRoute === '/customization#custom-menu'" />
   <Watermark v-if="currentRoute === '/customization#watermark-slot'" />
   <LabelFormatter v-if="currentRoute === '/customization#formatter'" />
+  <SourceSlot v-if="currentRoute === '/customization#source'"/>
 </template>

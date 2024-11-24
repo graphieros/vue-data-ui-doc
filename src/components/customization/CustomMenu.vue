@@ -23,6 +23,16 @@ const dataset = ref([
 const config = ref({
     userOptions: {
         show: false
+    },
+    style: {
+        chart: {
+            title: {
+                text: 'Title',
+                subtitle: {
+                    text: 'Subtitle'
+                }
+            }
+        }
     }
 })
 
@@ -50,6 +60,10 @@ function toggleTable() {
 
 function toggleTooltip() {
     donutChart.value.toggleTooltip();
+}
+
+function toggleAnnotator() {
+    donutChart.value.toggleAnnotator();
 }
 
 </script>
@@ -104,6 +118,10 @@ function toggleTooltip() {
     function toggleTooltip() {
         donutChart.value.toggleTooltip();
     }
+
+    function toggleAnnotator() {
+        donutChart.value.toggleAnnotator();
+    }
 </code>
 </pre>
 
@@ -120,6 +138,7 @@ function toggleTooltip() {
             &lt;button @click="generateCsv"&gt;CSV&lt;/button&gt;
             &lt;button @click="toggleTable"&gt;VIEW TABLE&lt;/button&gt;
             &lt;button @click="toggleLabels"&gt;VIEW LABELS&lt;/button&gt;
+            &lt;button @click="toggleAnnotator"&gt;TOGGLE ANNOTATOR&lt;/button&gt;
         &lt;/div&gt;
 
         &lt;VueUiDonut
@@ -141,6 +160,7 @@ function toggleTooltip() {
             <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="generatePdf">PDF</button>
             <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="generateImage">IMG</button>
             <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="generateCsv">CSV</button>
+            <button class="bg-gray-100 dark:bg-[#FFFFFF10] p-2 rounded shadow-md border hover:border-app-green" @click="toggleAnnotator">TOGGLE ANNOTATOR</button>
         </div>
         <VueUiDonut ref="donutChart" :dataset="dataset" :config="config"/>
     </div>

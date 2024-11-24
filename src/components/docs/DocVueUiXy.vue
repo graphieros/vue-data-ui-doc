@@ -117,7 +117,7 @@ const config = ref({
             show: true,
             from: 5,
             to: 8,
-            color: "#FF0000",
+            color: "#1f77b4",
             opacity: 10,
             caption: {
                 text: "This area is highlighted",
@@ -393,7 +393,7 @@ const darkModeConfig = ref({
             show: true,
             from: 5,
             to: 8,
-            color: "#FF0000",
+            color: "#1f77b4",
             opacity: 10,
             caption: {
                 text: "This area is highlighted",
