@@ -238,7 +238,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </div>
         </div>
 
-        <Box showThemes schema="vue_ui_spark_trend" signInfo="both">
+        <Box showThemes showSlots schema="vue_ui_spark_trend" signInfo="both">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="border-b my-6 pb-6 border-gray-700">
@@ -324,6 +324,25 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
         </BaseDetails>
     </BaseDetails>
 </code>
+            </template>
+
+            <template #tab3>
+                <div class="text-gray-500">
+    {{ translations.slots.source[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiSparkTrend
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #source&gt;
+            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiSparkTrend&gt;
+</code>
+</pre>
             </template>
 
             <template #tab6>

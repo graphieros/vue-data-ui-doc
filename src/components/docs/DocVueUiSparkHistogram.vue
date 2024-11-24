@@ -364,7 +364,7 @@ const { configCode, showAllConfig } = useConfigCode()
             <BaseViewExampleButton link="/examples/categories#vue-ui-sparkhistogram"/>
         </div>
 
-        <Box showEmits showThemes schema="vue_ui_sparkhistogram" signInfo="positiveOnly">
+        <Box showEmits showThemes showSlots schema="vue_ui_sparkhistogram" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -594,6 +594,25 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkHistogramD
 </code>
 </pre>
 
+            </template>
+
+            <template #tab3>
+              <div class="text-gray-500">
+    {{ translations.slots.source[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiSparkHistogram
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #source&gt;
+            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiSparkHistogram&gt;
+</code>
+</pre>
             </template>
 
             <template #tab6>

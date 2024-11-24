@@ -305,15 +305,18 @@ const type = ref("line");
 const options = ref([
     "bar",
     "bar3d",
+    "bullet",
     "candlesticks",
     "chestnut",
     "donut",
     "donutEvolution",
+    "flow",
     "gauge",
     "heatmap",
     "line",
     "molecule",
     "onion",
+    "parallelCoordinatePlot",
     "pyramid",
     "quadrant",
     "radar",
@@ -330,8 +333,6 @@ const options = ref([
     "verticalBar",
     "waffle",
     "wheel",
-    "flow",
-    "parallelCoordinatePlot"
 ]);
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));

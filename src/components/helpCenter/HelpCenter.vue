@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { useMainStore } from "../../stores";
 import { useHelpStore } from "../../stores/help";
 import HelpConfiguration from "./HelpConfiguration.vue";
@@ -7,36 +7,51 @@ import HelpDataset from "./HelpDataset.vue";
 import HelpVueDataUiComponent from "./HelpVueDataUiComponent.vue";
 import HelpNuxt from "./HelpNuxt.vue";
 
-const store = useMainStore()
-const help = useHelpStore()
-const isDarkMode = computed(() => store.isDarkMode)
+const store = useMainStore();
+const help = useHelpStore();
+const isDarkMode = computed(() => store.isDarkMode);
 
-const translations = computed(() => {
-    return store.translations;
-})
+const translations = computed(() => store.translations);
 
 const helpCenter = ref(null);
 
 function openHelpCenter() {
-    helpCenter.value.showModal();
+    if (helpCenter.value) {
+        helpCenter.value.showModal();
+    }
 }
 
 function closeDialog() {
-    helpCenter.value.close();
+    if (helpCenter.value) {
+        helpCenter.value.close();
+    }
+}
+
+function handleOutsideClick(event) {
+    if (helpCenter.value) {
+        const rect = helpCenter.value.getBoundingClientRect();
+        if (
+            event.clientY < rect.top ||
+            event.clientY > rect.bottom ||
+            event.clientX < rect.left ||
+            event.clientX > rect.right
+        ) {
+            helpCenter.value.close();
+        }
+    }
 }
 
 onMounted(() => {
-    HTMLDialogElement.prototype.triggerShow = HTMLDialogElement.prototype.showModal;
-    HTMLDialogElement.prototype.showModal = function() {
-    this.triggerShow();
-    this.onclick = event => {
-        let rect = this.getBoundingClientRect();
-        if(event.clientY < rect.top || event.clientY > rect.bottom) return this.close();
-        if(event.clientX < rect.left || event.clientX > rect.right) return this.close();
+    if (helpCenter.value) {
+        helpCenter.value.addEventListener("click", handleOutsideClick);
     }
-}
-})
+});
 
+onBeforeUnmount(() => {
+    if (helpCenter.value) {
+        helpCenter.value.removeEventListener("click", handleOutsideClick);
+    }
+});
 </script>
 
 <template>

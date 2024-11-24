@@ -245,7 +245,7 @@ function randomizeData() {
             <BaseRandomButton @click="randomizeData"/>
         </div>
 
-        <Box showEmits showThemes schema="vue_ui_sparkstackbar" signInfo="positiveOrNegativeOnly">
+        <Box showEmits showThemes showSlots schema="vue_ui_sparkstackbar" signInfo="positiveOrNegativeOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -387,6 +387,25 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkStackBarDa
 </code>
 </pre>
 
+            </template>
+
+            <template #tab3>
+              <div class="text-gray-500">
+    {{ translations.slots.source[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiSparkStackbar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #source&gt;
+            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiXy&gt;
+</code>
+</pre>
             </template>
 
             <template #tab6>

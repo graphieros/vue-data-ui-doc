@@ -82,6 +82,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ],
         "exposed": [
@@ -267,6 +271,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -400,6 +408,10 @@
             {
                 "name": "td",
                 "description": "Use this slot to customize the body cells"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -504,6 +516,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -676,6 +692,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -777,6 +797,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ],
         "examples": [
@@ -852,6 +876,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -992,6 +1020,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -1162,6 +1194,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -1323,6 +1359,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -1393,6 +1433,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -1470,6 +1514,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -1812,6 +1860,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -1822,7 +1874,7 @@
         "path": "/docs#vue-ui-sparkstackbar",
         "description": "stackbar",
         "hasThemes": true,
-        "hasSlots": false,
+        "hasSlots": true,
         "hasEmits": true,
         "hasExposed": false,
         "responsive": false,
@@ -1856,6 +1908,12 @@
             {
                 "name": "selectDatapoint",
                 "description": "Emits selected datapoint on click."
+            }
+        ],
+        "slots": [
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -1966,6 +2024,10 @@
             {
                 "name": "before",
                 "description": "Use this slot to customize labels for your chart: details of the selected datapoint, sum, average, median, trend, latest value."
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -1976,7 +2038,7 @@
         "path": "/docs#vue-ui-sparkhistogram",
         "description": "histogram",
         "hasThemes": true,
-        "hasSlots": false,
+        "hasSlots": true,
         "hasEmits": true,
         "hasExposed": false,
         "responsive": false,
@@ -2071,6 +2133,12 @@
                 "name": "selectDatapoint",
                 "description": "Emits selected datapoint on click."
             }
+        ],
+        "slots": [
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
+            }
         ]
     },
     "vue_ui_sparkgauge": {
@@ -2081,7 +2149,7 @@
         "path": "/docs#vue-ui-sparkgauge",
         "description": "gauge",
         "hasThemes": true,
-        "hasSlots": false,
+        "hasSlots": true,
         "hasEmits": false,
         "hasExposed": false,
         "responsive": false,
@@ -2100,6 +2168,12 @@
                     "min": -10,
                     "max": 10
                 }
+            }
+        ],
+        "slots": [
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -2154,6 +2228,10 @@
             {
                 "name": "title",
                 "description": "Use this slot to customize the chart's title"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ],
         "emits": [
@@ -2171,7 +2249,7 @@
         "path": "/docs#vue-ui-spark-trend",
         "description": "trend",
         "hasThemes": true,
-        "hasSlots": false,
+        "hasSlots": true,
         "hasEmits": false,
         "hasExposed": false,
         "responsive": false,
@@ -2195,6 +2273,12 @@
                     21,
                     34
                 ]
+            }
+        ],
+        "slots": [
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -2378,6 +2462,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -2528,6 +2616,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -2778,6 +2870,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -2965,6 +3061,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -3057,6 +3157,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -3264,6 +3368,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -3401,6 +3509,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -3577,6 +3689,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -3676,6 +3792,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -4100,6 +4220,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -4343,6 +4467,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -4429,6 +4557,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -4575,6 +4707,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -4699,6 +4835,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -4862,6 +5002,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -5019,6 +5163,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -5193,6 +5341,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -5437,6 +5589,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -5576,6 +5732,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -5698,6 +5858,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -5867,6 +6031,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     },
@@ -6021,6 +6189,10 @@
             {
                 "name": "watermark",
                 "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
             }
         ]
     }

@@ -297,7 +297,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </Suspense>
         </div>
 
-        <Box showEmits signInfo="both">
+        <Box showEmits showSlots signInfo="both">
           <template #tab0>
             {{ translations.docs.datastructure[store.lang] }}
             <div class="mt-4">
@@ -466,6 +466,25 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
                     <div><code>generateImage</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
                 </div>
+          </template>
+
+          <template #tab3>
+            <div class="text-gray-500">
+    {{ translations.slots.source[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiTableSparkline
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #source&gt;
+            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiTableSparkline&gt;
+</code>
+</pre>
           </template>
         </Box>
     </div>

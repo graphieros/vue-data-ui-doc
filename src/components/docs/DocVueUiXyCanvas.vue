@@ -996,6 +996,23 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
     &lt;/VueUiXyCanvas&gt;
 </code>
 </pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.source[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiXyCanvas
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #source&gt;
+            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiXyCanvas&gt;
+</code>
+</pre>
             </template>
 
             <!-- TOOLTIP -->

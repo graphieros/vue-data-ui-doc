@@ -258,7 +258,7 @@ function randomizeData() {
             </div>
         </div>
 
-        <Box showThemes schema="vue_ui_sparkgauge">
+        <Box showThemes showSlots schema="vue_ui_sparkgauge">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -354,6 +354,25 @@ function randomizeData() {
 
                 <div class="overflow-w-auto">
                 </div>
+            </template>
+
+            <template #tab3>
+                <div class="text-gray-500">
+    {{ translations.slots.source[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiSparkgauge
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #source&gt;
+            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiSparkgauge&gt;
+</code>
+</pre>
             </template>
 
             <template #tab6>

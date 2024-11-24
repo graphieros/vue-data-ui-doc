@@ -1222,20 +1222,39 @@ Set <code class="text-app-orange">config.style.chart.layout.labels.dataLabels.us
 </div>
 
 <pre>
+    <code>
+        &lt;VueUiDonut
+        :config="config"
+        :dataset="dataset"
+        &gt;
+        &lt;template #tooltip-before="{ datapoint, seriesIndex, series, config }"&gt;
+        ...your content here
+        &lt;/template&gt;
+        &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
+        ...your content here
+        &lt;/template&gt;
+        &lt;/VueUiDonut&gt;
+    </code>
+</pre>
+ 
+<hr class="mb-6 border-t-gray-500">
+
+<div class="text-gray-500">
+    {{ translations.slots.source[store.lang]  }}
+</div>
+
+<pre>
 <code>
     &lt;VueUiDonut
         :config="config"
         :dataset="dataset"
     &gt;
-        &lt;template #tooltip-before="{ datapoint, seriesIndex, series, config }"&gt;
-            ...your content here
-        &lt;/template&gt;
-        &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
-            ...your content here
+        &lt;template #source&gt;
+            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
         &lt;/template&gt;
     &lt;/VueUiDonut&gt;
 </code>
-</pre> 
+</pre>
             </template>
             <template #tab4>
 <pre>

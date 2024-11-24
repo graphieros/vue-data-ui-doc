@@ -647,6 +647,23 @@ const { configCode, showAllConfig } = useConfigCode()
     &lt;/VueUiWordCloud&gt;
 </code>
 </pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.source[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiWordCloud
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #source&gt;
+            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiWordCloud&gt;
+</code>
+</pre>
             </template>
 
             <template #tab6>

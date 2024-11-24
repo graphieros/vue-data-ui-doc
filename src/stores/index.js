@@ -659,6 +659,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    source: {
+                        en: "Use this slot to add a source caption to your chart.",
+                        fr: "Utilisez cet emplacement pour ajouter une légende de source à votre graphique.",
+                        pt: "Use este slot para adicionar uma legenda de fonte ao seu gráfico.",
+                        de: "Verwenden Sie diesen Slot, um eine Quellenbeschriftung zu Ihrem Diagramm hinzuzufügen.",
+                        zh: "使用此插槽为您的图表添加来源说明。",
+                        jp: "このスロットを使用して、チャートにソースキャプションを追加します。",
+                        es: "Utiliza este espacio para añadir una leyenda de fuente a tu gráfico.",
+                        ko: "이 슬롯을 사용하여 차트에 소스 캡션을 추가하세요.",
+                        ar: "استخدم هذه الفتحة لإضافة تعليق مصدر إلى الرسم البياني الخاص بك."
+                    },
                     watermark: {
                         en: `Use this 'slot' to add a watermark to your chart`,
                         fr: `Utilisez ce slot pour ajouter un filigrane à votre graphique`,

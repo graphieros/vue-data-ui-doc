@@ -615,6 +615,23 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRelationCircleD
 </code>
 </pre>
 
+<div class="text-gray-500">
+    {{ translations.slots.source[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiRelationCircle
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #source&gt;
+            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiRelationCircle&gt;
+</code>
+</pre>
+
             </template>
 
             <template #tab6>

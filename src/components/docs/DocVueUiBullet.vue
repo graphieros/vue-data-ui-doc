@@ -670,6 +670,25 @@ const <span class="text-black dark:text-app-green">dataset: VueUiBulletDataset</
     &lt;/VueUiBullet&gt;
 </code>
 </pre>
+
+<hr class="mb-6 border-t-gray-500">
+
+<div class="text-gray-500">
+    {{ translations.slots.source[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiBullet
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #source&gt;
+            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
+        &lt;/template&gt;
+    &lt;/VueUiBullet&gt;
+</code>
+</pre>
             </template>
 
             <template #tab6>
