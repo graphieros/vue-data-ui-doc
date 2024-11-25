@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.4.6",
+    "date": "2024-11-25",
+    "updates": [
+      {
+        "component": "All chart components",
+        "description": "Improved built-in annotator: add individual color and stroke width management."
+      }
+    ]
+  },
+  {
     "version": "v 2.4.5",
     "date": "2024-11-25",
     "updates": [
