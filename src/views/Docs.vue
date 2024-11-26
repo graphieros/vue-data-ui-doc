@@ -1122,7 +1122,7 @@ const stackbarKey = ref(0);
             </Transition>
 
             <Transition name="fade">
-                <div v-if="router.currentRoute.value.fullPath === '/docs'" class="flex flex-col place-items-center place-content-center">
+                <div v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)" class="flex flex-col place-items-center place-content-center">
                     <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
                         <div class="flex flex-row gap-4 place-items-center">
                             <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.docs[store.lang] }}</h1>
@@ -1150,12 +1150,15 @@ const stackbarKey = ref(0);
         </RouterLink>
     </div>
 
-    <div class="w-full px-12 mx-auto flex flex-row justify-center">
+    <div class="p-4 rounded-full gap-4 mx-auto flex flex-row justify-center bg-gray-200 dark:bg-[#FFFFFF10] w-fit">
+        <button class="text-xs sm:text-md rounded-full h-[48px] sm:h-[60px] px-3 sm:px-6 border border-app-green bg-[#42d39280] dark:bg-[#42d39220] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-[#42D392] dark:hover:bg-[#42D39230] transition-all">
+            <a href="#list">
+                {{  translations.availableComponents[store.lang] }}
+            </a>
+        </button>
         <RouterLink to="/examples/categories">
-            <button dir="auto" class="rounded-full h-[60px] px-6 border border-app-green bg-[#42d39220] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-[#42D39230] transition-all">
-                <StarFilledIcon class="text-app-green"/>
-                {{ translations.checkOutNewExamplePage[store.lang] }}
-                <StarFilledIcon class="text-app-green"/>
+            <button class="text-xs sm:text-md rounded-full h-[48px] sm:h-[60px] px-3 sm:px-6 border border-app-blue bg-[#5f8aee80] dark:bg-[#5f8aee20] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-[#5f8aee] dark:hover:bg-[#5f8aee30] transition-all">
+                {{ translations.examplesAndVariations[store.lang] }}
             </button>
         </RouterLink>
     </div>
@@ -1247,7 +1250,9 @@ const stackbarKey = ref(0);
                             </template>
                         </VueDataUi>
                     </div>
-    
+
+                    <h2 id="list" class="pt-24 text-4xl">{{  translations.availableComponents[store.lang] }}</h2>
+
                     <div class="w-full max-w-[1000px] mx-auto mt-6 mb-4 text-xs sm:text-sm flex flex-col md:flex-row gap-6">
                     
                         <div  class="w-full border border-gray-400 bg-[#FFFFFF10] p-4 rounded-lg flex flex-col gap-6 place-items-center">

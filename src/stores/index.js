@@ -73,6 +73,28 @@ export const useMainStore = defineStore("main", {
                     ko: "무작위 데이터 세트 표시",
                     ar: "عرض مجموعة بيانات عشوائية"
                 },
+                availableComponents: {
+                    en: "Available components",
+                    fr: "Composants disponibles",
+                    pt: "Componentes disponíveis",
+                    de: "Verfügbare Komponenten",
+                    zh: "可用组件",
+                    jp: "利用可能なコンポーネント",
+                    es: "Componentes disponibles",
+                    ko: "사용 가능한 구성 요소",
+                    ar: "المكونات المتاحة"
+                },
+                examplesAndVariations: {
+                    en: "Examples and variations",
+                    fr: "Exemples et variations",
+                    pt: "Exemplos e variações",
+                    de: "Beispiele und Variationen",
+                    zh: "示例和变体",
+                    jp: "例とバリエーション",
+                    es: "Ejemplos y variaciones",
+                    ko: "예제 및 변형",
+                    ar: "أمثلة وتنوعات"
+                },
                 checkOutNewExamplePage: {
                     en: 'Checkout the new example page !',
                     fr: 'Découvrez la nouvelle page d\'exemples !',
