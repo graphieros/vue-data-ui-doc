@@ -743,6 +743,7 @@ const sideMenuItems = computed(() => {
             </RouterLink>
             <Dropdown 
                 v-for="menu in sideMenuItems"
+                :open="menu.items.some(item => item.route === router.currentRoute.value.fullPath)"
                 :title="menu.title"
                 :items="menu.items"
                 @close="closeIfOpen"

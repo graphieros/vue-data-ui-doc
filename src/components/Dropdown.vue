@@ -3,7 +3,7 @@ import { computed} from "vue"
 import SideMenuItem from './SideMenuItem.vue';
 import { useMainStore } from '../stores';
 
-defineProps({
+const props = defineProps({
     items: {
         type: Array,
         default(){
@@ -13,6 +13,10 @@ defineProps({
     title: {
         type: String,
         default: ''
+    },
+    open: {
+        type: Boolean,
+        default: false,
     }
 })
 
@@ -51,7 +55,10 @@ const config = computed(() => {
 
 <template>
     <div>
-        <VueDataUi component="VueUiAccordion" :config="config">
+        <VueDataUi component="VueUiAccordion" :config="{
+            ...config,
+            open
+        }">
             <template #arrow>
                 <VueUiIcon name="arrowRight" :size="12" :stroke="isDarkMode ? '#abc2f6' : '#5f8aee'"/>
             </template>
