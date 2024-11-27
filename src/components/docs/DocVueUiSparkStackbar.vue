@@ -100,6 +100,19 @@ const config = ref({
         fontSize: 12,
         bold: false
       }
+    },
+    tooltip: {
+        show: true,
+        color: "#1A1A1A",
+        backgroundColor: "#F3F4F6",
+        fontSize: 14,
+        customFormat: null,
+        borderRadius: 4,
+        borderColor:"#e1e5e8",
+        borderWidth: 1,
+        backgroundOpacity: 30,
+        position: "center",
+        offsetY: 24
     }
   }
 });
@@ -156,6 +169,19 @@ const darkModeConfig = ref({
         fontSize: 12,
         bold: false
       }
+    },
+    tooltip: {
+        show: true,
+        color: "#CCCCCC",
+        backgroundColor: "#1A1A1A",
+        fontSize: 14,
+        customFormat: null,
+        borderRadius: 4,
+        borderColor:"#3A3A3A",
+        borderWidth: 1,
+        backgroundOpacity: 30,
+        position: "center",
+        offsetY: 24
     }
   }
 });
@@ -359,6 +385,18 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkStackBarDa
           <BaseAttr name="bold" attr="style.title.subtitle.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails> 
       </BaseDetails>
+      <BaseDetails attr="tooltip" :level="2" title="style.tooltip">
+        <BaseAttr name="show" attr="style.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="backgroundColor" attr="style.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="color" attr="style.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="fontSize" attr="style.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <span>customFormat: null, <span class="text-gray-600 dark:text-app-blue text-xs">// default behavior. To customize content, see 'custom tooltip' tab</span></span>
+        <BaseAttr name="borderRadius" attr="style.tooltip.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="borderColor" attr="style.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="borderWidth" attr="style.tooltip.borderWidth" type="number" defaultVal="1" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="position" attr="style.tooltip.position" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseAttr name="offsetY" attr="style.tooltip.offsetY" type="number" defaultVal="24" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      </BaseDetails>
     </BaseDetails>
   </BaseDetails>
 </code>
@@ -390,6 +428,26 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkStackBarDa
             </template>
 
             <template #tab3>
+              <div class="text-gray-500">
+    {{ translations.slots.tooltip[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiSparkStackbar
+      :config="config"
+      :dataset="dataset"
+    &gt;
+      &lt;template #tooltip-before="{ datapoint, seriesIndex, series, config }"&gt;
+      ...your content here
+      &lt;/template&gt;
+      &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
+      ...your content here
+      &lt;/template&gt;
+    &lt;/VueUiSparkStackbar&gt;
+</code>
+</pre>
+
               <div class="text-gray-500">
     {{ translations.slots.source[store.lang]  }}
 </div>

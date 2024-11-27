@@ -2128,7 +2128,18 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle' },
                     { key: 'style.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle' },
                     { key: 'style.title.subtitle.fontSize', def: 12, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle' },
-                    { key: 'style.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' }
+                    { key: 'style.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
+
+                    { key: 'style.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip' },
+                    { key: 'style.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip' },
+                    { key: 'style.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip' },
+                    { key: 'style.tooltip.fontSize', def: 14, type: 'number', min: 6, max: 24, label: 'fontSize', category: 'tooltip' },
+                    { key: 'style.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
+                    { key: 'style.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
+                    { key: 'style.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
+                    { key: 'style.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
                 ]
             },
             vue_ui_sparkbar: {

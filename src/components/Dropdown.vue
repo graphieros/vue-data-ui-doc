@@ -63,7 +63,7 @@ const config = computed(() => {
                 <VueUiIcon name="arrowRight" :size="12" :stroke="isDarkMode ? '#abc2f6' : '#5f8aee'"/>
             </template>
             <template #title="{ isOpen }">
-                <div :class="`relative w-full py-2 pl-2 rounded-[24px] hover:bg-[#abc2f630] dark:hover:bg-[#abc2f610] transition-colors ${isOpen ? 'shadow-md' : ''}`" :style="`background: ${isOpen ? isDarkMode ? '#abc2f630' : '#abc2f650' : ''}`">
+                <div :class="`relative w-full py-2 pl-2 rounded-[24px] hover:bg-[#abc2f630] dark:hover:bg-[#abc2f610] transition-colors ${open && isOpen ? 'shadow-md' : ''}`" :style="`background: ${open && isOpen ? isDarkMode ? '#abc2f630' : '#abc2f650' : ''}`">
                     <div>{{ title }}</div>
                     <div class="shadow absolute top-1/2 right-2 -translate-y-1/2 text-xs rounded-full bg-gradient-to-b from-[#abc2f6] to-[#5f8aee] text-black w-[24px] h-[24px] flex place-items-center justify-center">{{ items.length }}</div>
                 </div>

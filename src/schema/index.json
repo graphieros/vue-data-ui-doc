@@ -1911,6 +1911,14 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "tooltip-before",
+                "description": "Use this slot to inject content on the top area of the tooltip."
+            },
+            {
+                "name": "tooltip-after",
+                "description": "Use this slot to inject content on the bottom area of the tooltip."
             }
         ]
     },
