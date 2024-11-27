@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch, computed } from 'vue';
+import { ref, onMounted, watch, computed, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { searchInConfig } from '../searchHelper';
 import { useMainStore } from '../stores';
@@ -10,6 +10,14 @@ const store = useMainStore();
 const route = useRoute();
 const router = useRouter();
 const searchTerm = computed(() => route.query.q || '')
+const selectedComponent = computed({
+    get: () => {
+        return route.query.f || ''
+    },
+    set: v => {
+        return v
+    }
+})
 const searchResults = ref([]);
 const hasResults = ref(false);
 const translations = computed(() => store.translations)
@@ -72,8 +80,23 @@ function toggleMenu(state) {
     isOpen.value = state;
 }
 
-const selectedComponent = ref('')
 const availableComponents = computed(() => [...new Set(searchResults.value.map(r => r.componentName))])
+
+function filterComponents(v) {
+    nextTick(() => {
+        router.replace({ query: {
+            q: searchTerm.value,
+            f: v.target.value
+        }})
+    })
+}
+
+function clearFilter(v) {
+    selectedComponent.value = '';
+    router.replace({ query: {
+        q: searchTerm.value
+    }})
+}
 
 const filteredResults = computed(() => {
     if (!selectedComponent.value) return searchResults.value.sort((a, b) => a.componentName.localeCompare(b.componentName));
@@ -163,6 +186,7 @@ const iconMap = ref({
                 v-if="(searchTerm || showSuggestions) && availableComponents.length > 1"
                 v-model="selectedComponent"
                 class="p-2 h-[40px] rounded-lg border border-gray-600 text-black"
+                @change="filterComponents"
             >
                 <option value="" disabled selected>
                     {{ store.translations.search.componentSelect[store.lang] }}
@@ -173,7 +197,7 @@ const iconMap = ref({
             <button
                 v-if="selectedComponent"
                 class="h-[36px] w-[36px] flex place-items-center justify-center border border-gray-600 rounded-lg hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
-                @click="selectedComponent = ''"
+                @click="clearFilter"
             >
                 <FilterXIcon />
             </button>
