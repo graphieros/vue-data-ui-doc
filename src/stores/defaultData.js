@@ -485,7 +485,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.borderRadius', def: 4, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', 'is', 'color'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.5, label: ['border', 'is', 'thickness'], category: 'tooltip'},
-                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'number', min: 0, max: 1, step: 0.01, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'number', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../stores";
 import ExampleButton from "../components/examples/ExampleButton.vue";
 import ExampleSpark from "../components/examples/ExampleSpark.vue";
@@ -12,6 +12,10 @@ const translations = computed(() => store.translations);
 const lang = computed(() => store.lang);
 const isDarkMode = computed(() => store.isDarkMode);
 const currentMenu = ref('mini')
+
+onMounted(() => {
+    window.scrollTo(0,0)
+})
 
 const crumbs = ref([
     {

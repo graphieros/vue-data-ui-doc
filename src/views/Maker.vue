@@ -101,6 +101,7 @@ onMounted(() => {
     } else {
         selectedChart.value = options.value.find(item => item.name === localStorage.currentChart)
     }
+    window.scrollTo(0,0)
 })
 
 function saveSelectedChartToLocalStorage() {

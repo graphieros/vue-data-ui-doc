@@ -361,6 +361,7 @@ const xyDataset = ref([]);
 const fDates = ref([])
 
 onMounted(() => {
+    window.scrollTo(0,0)
     isLoadingLine.value = true;
     isLoadingBar.value = true;
     store.isFetching = true;

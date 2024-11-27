@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import AppSkeletons from '../components/AppSkeletons.vue';
 import { useMainStore } from '../stores';
 import router from "../router";
@@ -10,9 +10,12 @@ const translations = computed(() => {
     return store.translations;
 })
 
+onMounted(() => {
+    window.scrollTo(0,0)
+})
+
 function gotoMaker() {
     router.push({ path: '/chart-builder'})
-    window.scrollTo(0,0)
 }
 
 </script>
