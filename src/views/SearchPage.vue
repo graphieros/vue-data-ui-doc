@@ -133,7 +133,10 @@ const iconMap = ref({
     VueUiDigits: 'digit8',
     VueUiCursor: 'cursor',
     VueUiMiniLoader: 'chartWheel',
-    VueUiKpi: 'kpiBox'
+    VueUiKpi: 'kpiBox',
+    VueUiSparkstackbar: 'chartSparkStackbar',
+    VueUiStackbar: 'chartStackbar',
+    VueUiBullet: 'chartBullet'
 })
 
 
