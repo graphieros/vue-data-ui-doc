@@ -2,12 +2,18 @@
 import { computed } from "vue";
 import AppSkeletons from '../components/AppSkeletons.vue';
 import { useMainStore } from '../stores';
+import router from "../router";
 const store = useMainStore();
 
 const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => {
     return store.translations;
 })
+
+function gotoMaker() {
+    router.push({ path: '/chart-builder'})
+    window.scrollTo(0,0)
+}
 
 </script>
 
@@ -105,7 +111,13 @@ const translations = computed(() => {
                 &nbsp;&nbsp;&lt;/div&gt;<br>
                 &lt;/template&gt;
             </code>
-
+        </div>
+        <div class="flex flex-row place-items-center justify-center z-10 mt-10">
+            <button dir="auto" @click="gotoMaker" class="bg-gradient-to-br from-app-blue-light to-app-blue text-black py-3 px-6 rounded-full text-xl flex flex-row gap-2 place-items-center hover:from-app-blue hover:to-app-blue-light transition-colors shadow-md">
+                <VueUiIcon name="arrowRight" class="animate-pulse" stroke="#2A2A2A"/>
+                <VueUiIcon name="clipboardBar" stroke="#2A2A2A"/>
+                {{ translations.makeNow[store.lang] }}
+            </button>
         </div>
     </div>
 </template>

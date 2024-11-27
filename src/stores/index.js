@@ -25,6 +25,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                makeNow: {
+                    en: "Build your chart, copy paste the component!",
+                    fr: "Créez votre graphique, copiez-collez le composant !",
+                    pt: "Construa seu gráfico, copie e cole o componente!",
+                    de: "Erstellen Sie Ihr Diagramm, kopieren Sie die Komponente!",
+                    zh: "构建您的图表，复制粘贴组件！",
+                    jp: "チャートを作成して、コンポーネントをコピー＆ペースト！",
+                    es: "Construye tu gráfico, copia y pega el componente.",
+                    ko: "차트를 생성하고 구성 요소를 복사하여 붙여넣으세요!",
+                    ar: "قم بإنشاء الرسم البياني الخاص بك، انسخ والصق المكون!"
+                },
                 docTooltips: {
                     xy: {
                         gridPosition: {
