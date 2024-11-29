@@ -26,7 +26,7 @@ export const useMainStore = defineStore("main", {
             lang: "en",
             translations: {
                 lttb: {
-                    en: "This component used the Largest-Triangle-Three-Bucket algorithm to downsample very large datasets above a certain threshold, while preserving the shape of the dataset. This threshold is configurable in the config object passed as props to the component.",
+                    en: "This component uses the Largest-Triangle-Three-Bucket algorithm to downsample very large datasets above a certain threshold, while preserving the shape of the dataset. This threshold is configurable in the config object passed as props to the component.",
                     fr: "Ce composant utilise l'algorithme Largest-Triangle-Three-Bucket pour réduire les grands ensembles de données au-delà d'un certain seuil, tout en préservant la forme de l'ensemble de données. Ce seuil est configurable dans l'objet de configuration passé en tant que props au composant.",
                     pt: "Este componente usa o algoritmo Largest-Triangle-Three-Bucket para reduzir conjuntos de dados muito grandes acima de um determinado limite, preservando a forma do conjunto de dados. Este limite é configurável no objeto de configuração passado como props para o componente.",
                     de: "Diese Komponente verwendet den Largest-Triangle-Three-Bucket-Algorithmus, um sehr große Datensätze oberhalb eines bestimmten Schwellenwerts zu reduzieren, wobei die Form des Datensatzes erhalten bleibt. Dieser Schwellenwert ist in dem als Props an die Komponente übergebenen Konfigurationsobjekt konfigurierbar.",
