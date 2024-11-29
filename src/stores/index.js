@@ -25,6 +25,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                lttb: {
+                    en: "This component used the Largest-Triangle-Three-Bucket algorithm to downsample very large datasets above a certain threshold, while preserving the shape of the dataset. This threshold is configurable in the config object passed as props to the component.",
+                    fr: "Ce composant utilise l'algorithme Largest-Triangle-Three-Bucket pour réduire les grands ensembles de données au-delà d'un certain seuil, tout en préservant la forme de l'ensemble de données. Ce seuil est configurable dans l'objet de configuration passé en tant que props au composant.",
+                    pt: "Este componente usa o algoritmo Largest-Triangle-Three-Bucket para reduzir conjuntos de dados muito grandes acima de um determinado limite, preservando a forma do conjunto de dados. Este limite é configurável no objeto de configuração passado como props para o componente.",
+                    de: "Diese Komponente verwendet den Largest-Triangle-Three-Bucket-Algorithmus, um sehr große Datensätze oberhalb eines bestimmten Schwellenwerts zu reduzieren, wobei die Form des Datensatzes erhalten bleibt. Dieser Schwellenwert ist in dem als Props an die Komponente übergebenen Konfigurationsobjekt konfigurierbar.",
+                    zh: "该组件使用 Largest-Triangle-Three-Bucket 算法对超过一定阈值的超大型数据集进行降采样，同时保留数据集的形状。此阈值可在传递给组件的配置对象中进行配置。",
+                    jp: "このコンポーネントは、Largest-Triangle-Three-Bucket アルゴリズムを使用して、特定のしきい値を超える非常に大きなデータセットをダウンサンプリングし、データセットの形状を保持します。このしきい値は、プロップとしてコンポーネントに渡される設定オブジェクトで設定できます。",
+                    es: "Este componente utiliza el algoritmo Largest-Triangle-Three-Bucket para reducir conjuntos de datos muy grandes por encima de un cierto umbral, preservando la forma del conjunto de datos. Este umbral es configurable en el objeto de configuración pasado como props al componente.",
+                    ko: "이 구성 요소는 Largest-Triangle-Three-Bucket 알고리즘을 사용하여 특정 임계값을 초과하는 매우 큰 데이터 세트를 다운샘플링하면서 데이터 세트의 형태를 유지합니다. 이 임계값은 구성 요소에 props로 전달되는 구성 객체에서 구성할 수 있습니다.",
+                    ar: "يستخدم هذا المكون خوارزمية Largest-Triangle-Three-Bucket لتقليل حجم مجموعات البيانات الكبيرة جدًا التي تتجاوز حدًا معينًا، مع الحفاظ على شكل مجموعة البيانات. يمكن تكوين هذا الحد في كائن التكوين الممرر كـ props إلى المكون."
+                },
                 makeNow: {
                     en: "Build your chart, copy paste the component!",
                     fr: "Créez votre graphique, copiez-collez le composant !",

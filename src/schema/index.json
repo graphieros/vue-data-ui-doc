@@ -530,6 +530,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": true,
+        "hasLttb": true,
         "responsive": true,
         "props": [
             "dataset",
@@ -1933,6 +1934,7 @@
         "hasEmits": true,
         "hasExposed": false,
         "responsive": false,
+        "hasLttb": true,
         "props": [
             "config",
             "dataset"
@@ -2258,6 +2260,7 @@
         "hasEmits": false,
         "hasExposed": false,
         "responsive": false,
+        "hasLttb": true,
         "props": [
             "config",
             "dataset"
@@ -2298,6 +2301,7 @@
         "hasEmits": false,
         "hasExposed": true,
         "responsive": true,
+        "hasLttb": true,
         "props": [
             "config",
             "dataset"
@@ -3180,6 +3184,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
+        "hasLttb": true,
         "props": [
             "config",
             "dataset"
@@ -6054,6 +6059,7 @@
         "hasEmits": true,
         "hasExposed": true,
         "responsive": true,
+        "hasLttb": true,
         "props": [
             "dataset",
             "config"

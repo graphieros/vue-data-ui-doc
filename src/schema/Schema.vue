@@ -183,9 +183,14 @@ const excl5 = 'number';
                 </tr>
             </tbody>
         </table>
+
         <span v-if="!hideDisclaimer" dir="auto">
             1. {{ translations.responsiveUsage[store.lang] }} {{ translations.responsive[store.lang] }}
         </span>
+
+        <div v-if="selectedComponent.hasLttb" class="mt-6 bg-[#42d39230] dark:bg-[#42d39210] py-2 px-4 border-l-2 border-app-green font-black" dir="auto">
+            {{ translations.lttb[store.lang] }}
+        </div>
 
         <table v-if="selectedComponent.userOptions" class="table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="caption-top py-4 text-left">
