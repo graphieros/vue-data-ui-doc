@@ -241,6 +241,28 @@ export default function useExamples() {
         }
     ])
 
+    function makeDs(n,m,label="") {
+        let arr = [];
+        for(let i = 0; i < n; i += 1){
+            if(label){
+                arr.push(`${label} ${i}`)
+            } else {
+                arr.push(Math.random()*m)
+            }
+        }
+        return arr
+    }
+
+    const DATASET_XY_LTTB = ref([
+        {
+            name: 'Serie',
+            type: 'line',
+            smooth: false,
+            series: makeDs(10000, 100),
+            dataLabels: false
+        }
+    ])
+
     const DATASET_XY_SHAPES = ref([
         {
             name: 'Stars',
@@ -2654,6 +2676,78 @@ export default function useExamples() {
                     ar: "علامات نقاط البيانات بأشكال هندسية"
                 }
             },
+            // XY LTTB
+            { 
+                dataset: DATASET_XY_LTTB.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    line: {
+                        ...BASE_XY_CONFIG.value.line,
+                        radius: 0.1,
+                        useGradient: false,
+                        strokeWidth: 2,
+                    },
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: 0,
+                                    scaleMax: 100
+                                },
+                                xAxisLabels: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
+                                    showOnlyAtModulo: true,
+                                    values: makeDs(1000,100,'T'),
+                                    modulo: 9,
+                                    rotation: 0
+                                }
+                            }
+                        },
+                        highlightArea: {
+                            show: false,
+                        },
+                        highlighter: {
+                            useLine: true,
+                            color: '#ff3700'
+                        },
+                        timeTag: {
+                            show: true,
+                            backgroundColor: '#ff3700',
+                            color: '#FFFFFF',
+                            fontSize: 14,
+                            circleMarker: {
+                                radius: 0
+                            }
+                        },
+                        zoom: {
+                            ...BASE_XY_CONFIG.value.chart.zoom,
+                            minimap: {
+                                ...BASE_XY_CONFIG.value.chart.zoom.minimap,
+                                smooth: true
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'line-lttb',
+                link: 'vue-ui-xy',
+                description: {
+                    en: "Dataset of 10000 datapoints downsampled to 500 datapoints",
+                    fr: "Ensemble de données de 10000 points réduit à 500 points",
+                    pt: "Conjunto de dados de 10000 pontos reduzido para 500 pontos",
+                    de: "Datensatz mit 10000 Datenpunkten auf 500 Datenpunkte reduziert",
+                    zh: "数据集包含10000个数据点，降采样至500个数据点",
+                    jp: "10000のデータポイントを500にダウンサンプリングしたデータセット",
+                    es: "Conjunto de datos de 10000 puntos reducido a 500 puntos",
+                    ko: "10000개의 데이터 포인트를 500개로 다운샘플링한 데이터 세트",
+                    ar: "مجموعة بيانات تحتوي على 10000 نقطة بيانات تم تقليلها إلى 500 نقطة بيانات"
+                }
+            },
             // DONUT BASIC
             {
                 dataset: DATASET_DONUT_BASIC.value,
@@ -4903,7 +4997,7 @@ export default function useExamples() {
                                     ...CONFIG_BULLET_BASE.value.style.chart.dataLabels,
                                     color: colors.value.textColor,
                                     suffix: '°C'
-                                }
+                                } 
                             },
                         }
                     }
