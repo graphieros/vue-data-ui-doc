@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.13",
+    "date": "2024-11-29",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Show time tag when hovering minimap, show data labels when hovering chart or minimap.",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.11",
     "date": "2024-11-29",
     "updates": [

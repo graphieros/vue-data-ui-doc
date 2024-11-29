@@ -2628,6 +2628,10 @@ export default function useExamples() {
                         radius: 8,
                         useGradient: false,
                         strokeWidth: 2,
+                        labels: {
+                            ...BASE_XY_CONFIG.value.line.labels,
+                            offsetY: -20
+                        },
                         dot: {
                             useSerieColor: false,
                             fill: '#FFFFFF',
