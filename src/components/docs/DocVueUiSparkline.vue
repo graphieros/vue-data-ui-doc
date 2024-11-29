@@ -106,6 +106,9 @@ const dataset = ref([
 
 const darkModeConfig = ref({
   type: 'line',
+  downsample: {
+        threshold: 500
+    },
   style: {
     backgroundColor: "#242424",
     fontFamily: "inherit",
@@ -170,6 +173,9 @@ const darkModeConfig = ref({
 });
 const config = ref({
   type: 'line',
+  downsample: {
+        threshold: 500
+    },
   style: {
     backgroundColor: "#e1e5e8",
     fontFamily: "inherit",
@@ -440,6 +446,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
     <span>responsive: false, <BaseComment>Since v2.3.44 - {{ translations.responsive[store.lang] }}</BaseComment></span>
     <span>theme: "", ("" | "zen" | "hack" | "concrete")</span>
     <BaseAttr name="type" attr="type" type="select" defaultVal="line" :options="['line', 'bar']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseDetails attr="downsample" :level="1">
+        <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
+    </BaseDetails>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

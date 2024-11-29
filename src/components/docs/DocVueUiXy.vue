@@ -93,6 +93,9 @@ const config = ref({
     responsive: false,
     useCssAnimation: true,
     showTable: false,
+    downsample: {
+        threshold: 500
+    },
     chart: {
         backgroundColor: "#F3F4F6",
         color: "#1A1A1A",
@@ -366,6 +369,9 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    downsample: {
+        threshold: 500
+    },
     responsive: false,
     useCssAnimation: true,
     showTable: false,
@@ -923,6 +929,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
         <span>customPalette: []; <span class="text-app-blue text-xs">// string[]</span></span>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="showTable" attr="showTable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseDetails attr="downsample" :level="1">
+            <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
+        </BaseDetails>
         <BaseDetails attr="chart" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseAttr name="backgroundColor" attr="chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -1793,7 +1793,7 @@ const versionsReleases = computed(() => {
                       </template>
                     </VueUiSparkline>
                   </div>
-                  <div class="max-w-[300px] mx-auto px-6 mb-6">
+                  <!-- <div class="max-w-[300px] mx-auto px-6 mb-6">
                     <div class="pb-2 mb-2">
                       Current NPM score:
                     </div>
@@ -1805,8 +1805,8 @@ const versionsReleases = computed(() => {
                         </div>
                       </template>
                     </VueUiSparkbar>
-                </div>
-                <div class="flex flew-row gap-2 justify-center mb-6">
+                </div> -->
+                <!-- <div class="flex flew-row gap-2 justify-center mb-6">
                   <div class="w-[100px] sm:w-[150px]" v-for="(wheel, i) in sparkbarDataset">
                     <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'wheel', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6'} }" />
                     <div v-else class="flex place-items-center flex-col">
@@ -1823,13 +1823,13 @@ const versionsReleases = computed(() => {
                       <VueUiWheel :dataset="{ percentage: wheel.value }" :config="{...wheelConfig, style: {...wheelConfig.style, chart: {...wheelConfig.style.chart, title: {...wheelConfig.style.chart.title, text: i === 0 ? 'Quality' : i === 1 ? 'Popularity' : 'Maintenance'}}}}"/>
                     </div>
                   </div>
-                </div>
-                <div class="flex flew-row gap-2 justify-center mb-6">
+                </div> -->
+                <!-- <div class="flex flew-row gap-2 justify-center mb-6">
                   <div class="w-[100px] sm:w-[150px]" v-for="(bar, i) in sparkbarDataset">
                     <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'bar3d', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' } }"/>
                     <VueUi3dBar v-else :dataset="{ percentage: bar.value }" :config="{...config3dBar, style: {...config3dBar.style, chart: {...config3dBar.style.chart}}}"/>
                   </div>
-                </div>
+                </div> -->
                 <div class="max-w-[500px] mx-auto mb-6" v-if="!!data && !isLoadingLine">
                   <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkHistogram', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' } }"/>
                   <VueDataUi v-else component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`">

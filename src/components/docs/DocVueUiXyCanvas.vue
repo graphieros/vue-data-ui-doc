@@ -63,6 +63,9 @@ const config = ref({
     responsive: false,
     theme: "",
     customPalette: [],
+    downsample: {
+        threshold: 10000
+    },
     userOptions: {
         show: true,
         position: 'right',
@@ -245,6 +248,9 @@ const config = ref({
 const darkModeConfig = ref({
     responsive: false,
     theme: "",
+    downsample: {
+        threshold: 10000
+    },
     customPalette: [],
     userOptions: {
         show: true,
@@ -630,6 +636,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
         <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
         <span>customPalette: []; <span class="text-app-blue text-xs">// string[]</span></span>
         <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+        <BaseDetails attr="downsample" :level="1">
+            <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="10000" :min="100" :max="20000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "Arial",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">

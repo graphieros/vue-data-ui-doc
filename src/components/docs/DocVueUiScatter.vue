@@ -73,6 +73,9 @@ const dataset = computed(() => {
 ]});
 
 const darkModeConfig = ref({
+  downsample: {
+        threshold: 500
+    },
   responsive: false,
   useCssAnimation: true,
   style: {
@@ -280,6 +283,9 @@ const darkModeConfig = ref({
   }
 });
 const config = ref({
+  downsample: {
+        threshold: 500
+    },
   responsive: false,
   useCssAnimation: true,
   style: {
@@ -665,6 +671,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiScatterDatasetI
     <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
     <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
     <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseDetails attr="downsample" :level="1">
+        <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
+    </BaseDetails>
     <BaseDetails attr="style" :level="1">
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
       <BaseAttr name="color" attr="style.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />

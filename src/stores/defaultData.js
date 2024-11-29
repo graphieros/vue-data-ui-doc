@@ -572,6 +572,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 ],
                 model: [
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
+                    { key: 'downsample.threshold', def: 500, type: 'number', min: 100, max: 5000, label: ['LTTB', 'algorithm', 'is', 'threshold'], category: 'general'},
                     { key: 'chart.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
@@ -1379,6 +1380,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 model: [
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'zoomAnimationFrames', def: 20, type: 'number', min: 5, max: 40, label: ['zoom animation', 'is', 'speed'], category: 'general' },
+                    { key: 'downsample.threshold', def: 500, type: 'number', min: 100, max: 5000, label: ['LTTB', 'algorithm', 'is', 'threshold'], category: 'general'},
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
@@ -2033,6 +2035,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 ],
                 model: [
                     { key: 'type', def: 'line', type: 'select', options: ['line', 'bar'], label: 'type', category: 'general' },
+                    { key: 'downsample.threshold', def: 500, type: 'number', min: 100, max: 5000, label: ['LTTB', 'algorithm', 'is', 'threshold'], category: 'general'},
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chartWidth', def: 290, type: 'range', min: 200, max: 400, label: 'width', category: 'general' },
@@ -2580,6 +2583,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 ],
                 model: [
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
+                    { key: 'downsample.threshold', def: 500, type: 'number', min: 100, max: 5000, label: ['LTTB', 'algorithm', 'is', 'threshold'], category: 'general'},
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },

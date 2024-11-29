@@ -36,6 +36,9 @@ const neutralDs = ref([10, 12, 8, 4, 9, 6, 7, 4, 8, 8])
 const negativeDs = ref([89, 55, 34, 21, 13, 8, 5, 3, 2, 1])
 
 const config = ref({
+    downsample: {
+        threshold: 500
+    },
     style: {
         backgroundColor: "#F3F4F6",
         fontFamily: "inherit",
@@ -91,6 +94,9 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    downsample: {
+        threshold: 500
+    },
     style: {
         backgroundColor: "#1A1A1A",
         fontFamily: "inherit",
@@ -269,6 +275,9 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiSparkTrendConfig" equal>
         <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+        <BaseDetails attr="downsample" :level="1">
+            <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />

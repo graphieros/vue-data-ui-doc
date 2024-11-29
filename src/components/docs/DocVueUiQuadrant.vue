@@ -113,6 +113,9 @@ const config = ref({
     responsive: false,
     useCssAnimation: true,
     zoomAnimationFrames: 20,
+    downsample: {
+        threshold: 500
+    },
     style: {
         fontFamily: "inherit",
         chart: {
@@ -301,6 +304,9 @@ const darkModeConfig = ref({
     responsive: false,
     useCssAnimation: true,
     zoomAnimationFrames: 20,
+    downsample: {
+        threshold: 500
+    },
     style: {
         fontFamily: "inherit",
         chart: {
@@ -722,6 +728,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="zoomAnimationFrames" attr="zoomAnimationFrames" type="range" defaultVal="20" :min="5" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+        <BaseDetails attr="downsample" :level="1">
+            <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
