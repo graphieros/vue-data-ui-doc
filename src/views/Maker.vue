@@ -123,7 +123,8 @@ const crumbs = computed(() => {
             description: translations.value.menu.chartBuilder[store.lang],
         },
         {
-            description: selectedChart.value.name
+            description: selectedChart.value.name,
+            icon: selectedChart.value.icon
         }
     ]
 })

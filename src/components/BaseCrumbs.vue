@@ -57,8 +57,20 @@ const validLinks = computed(() => {
         v-if="tree.length"
     >
         <div v-for="(branch, i) in tree" class="flex flex-row gap-3 place-items-center">
-            <RouterLink v-if="branch.link && i !== validLinks - 1" :to="branch.link" class="hover:underline hover:text-app-blue">{{ branch.description }}</RouterLink>
-            <span v-else>{{ branch.description }}</span>
+            <RouterLink 
+                v-if="branch.link && i !== validLinks - 1" 
+                :to="branch.link" 
+                class="hover:underline hover:text-app-blue"
+            >
+                <div class="flex flex-row gap-2 place-items-center">
+                    {{ branch.description }}
+                    <VueUiIcon v-if="branch.icon" :name="branch.icon" :stroke="isDarkMode ? '#ABC2F6' : '#5F8AEE'" :size="16" :strokeWidth="1"/>
+                </div>
+            </RouterLink>
+            <div v-else class="flex flex-row gap-2 place-items-center">
+                {{ branch.description }}
+                <VueUiIcon v-if="branch.icon" :name="branch.icon" :stroke="isDarkMode ? '#ABC2F6' : '#5F8AEE'" :size="16" :strokeWidth="1"/>
+            </div>
             <VueUiIcon v-if="i < validLinks - 1 && validLinks > 1" name="arrowRight" :stroke="isDarkMode ? '#abc2f6' : '#5f8aee'" :size="12" />
         </div>
     </div>

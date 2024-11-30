@@ -89,25 +89,6 @@ const docsCrumbs = ref([
     }
 ])
 
-function updateCrumb() {
-    window.scrollTo(0,0);
-    function capitalizeFirstLetter(val) {
-        return String(val).charAt(0).toUpperCase() + String(val).slice(1);
-    }
-    const hash = router.currentRoute.value.hash ? router.currentRoute.value.hash.replace('#', '').split('-').map(s => capitalizeFirstLetter(s)).join('') : null
-    if (docsCrumbs.value.length === 1) {
-        docsCrumbs.value.push({
-            description: hash,
-        })
-    } else {
-        docsCrumbs.value[1] = {
-            description: hash
-        }
-    }
-}
-
-watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: true });
-
 function toggleMenu(state) {
     isOpen.value = state;
     store.isMenuOpen = state
@@ -668,7 +649,7 @@ const menuItems = computed(() => [
     },
     {
         name: "Kpi",
-        icon: "legend",
+        icon: "kpiBox",
         tooltip: translations.value.docs.tooltips.kpi[store.lang],
         link: "/docs#vue-ui-kpi",
         type: "tool",
@@ -861,6 +842,28 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_timer_light.png', import.meta.url).href,
     }
 ]);
+
+function updateCrumb() {
+    window.scrollTo(0,0);
+    function capitalizeFirstLetter(val) {
+        return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+    }
+    const hash = router.currentRoute.value.hash ? router.currentRoute.value.hash.replace('#', '').split('-').map(s => capitalizeFirstLetter(s)).join('') : null
+    const hashLink = router.currentRoute.value.hash ? `/docs${router.currentRoute.value.hash}` : null;
+    if (docsCrumbs.value.length === 1) {
+        docsCrumbs.value.push({
+            description: hash,
+            icon: !hashLink ? undefined : menuItems.value.find(m => m.link === hashLink).icon
+        })
+    } else {
+        docsCrumbs.value[1] = {
+            description: hash,
+            icon: !hashLink ? undefined : menuItems.value.find(m => m.link === hashLink).icon
+        }
+    }
+}
+
+watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: true });
 
 const currentShowcase = ref('VueUiXy')
 const menuItemsCount = ref(40);
