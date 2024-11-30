@@ -212,9 +212,11 @@ function fixChart() {
             <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
             <table>
                 <thead>
-                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                    <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                    <th class="text-left text-xs">{{ makerTranslations.labels.shape[store.lang] }}</th>
+                    <tr>
+                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                        <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                        <th class="text-left text-xs">{{ makerTranslations.labels.shape[store.lang] }}</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>                    
@@ -232,9 +234,11 @@ function fixChart() {
                                 <button tabindex="0" @click="deleteSerieItem(ds.id, j)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2.5 left-1" /></button>
                             </div>
                         </td>
-                        <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
-                            <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSerieItem(ds.id)"><PlusIcon/></button>
-                        </Tooltip>
+                        <td>
+                            <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
+                                <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSerieItem(ds.id)"><PlusIcon/></button>
+                            </Tooltip>
+                        </td>
                     </tr>
                 </tbody>
             </table>

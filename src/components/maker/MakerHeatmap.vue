@@ -188,13 +188,15 @@ function getLabel(label) {
                         <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                         <table>
                             <thead>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                                <th v-for="(_, j) in maxSeries">
-                                    <div class="flex flex-col">
-                                        <label class="text-left text-xs flex flex-row gap-2">{{ translations.maker.labels.period[store.lang] }} - {{ j }} <AlertTriangleIcon class="text-app-orange" size="14" v-if="!CONFIG_MODEL.find(el => el.key === 'style.layout.dataLabels.xAxis.values').def[j]" /><CheckIcon class="text-app-green" v-else size="14"/></label>
-                                        <input @change="saveConfigToLocalStorage" class="w-[86px]" type="text" v-model="CONFIG_MODEL.find(el => el.key === 'style.layout.dataLabels.xAxis.values').def[j]">
-                                    </div>
-                                </th>
+                                <tr>
+                                    <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                                    <th v-for="(_, j) in maxSeries">
+                                        <div class="flex flex-col">
+                                            <label class="text-left text-xs flex flex-row gap-2">{{ translations.maker.labels.period[store.lang] }} - {{ j }} <AlertTriangleIcon class="text-app-orange" size="14" v-if="!CONFIG_MODEL.find(el => el.key === 'style.layout.dataLabels.xAxis.values').def[j]" /><CheckIcon class="text-app-green" v-else size="14"/></label>
+                                            <input @change="saveConfigToLocalStorage" class="w-[86px]" type="text" v-model="CONFIG_MODEL.find(el => el.key === 'style.layout.dataLabels.xAxis.values').def[j]">
+                                        </div>
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -204,9 +206,11 @@ function getLabel(label) {
                                             <input @change="saveDatasetToLocalStorage" type="number" style="" v-model="currentDataset[i].values[j]" class="h-[36px] w-[86px]"><button tabindex="0" @click="deleteValueFromSeries({id: ds.id, index: j})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2.5 left-1" /></button>
                                         </div>
                                     </td>
-                                    <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
-                                        <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushValueToSeries({ value: 0, id: ds.id})"><PlusIcon/></button>
-                                    </Tooltip>
+                                    <td>
+                                        <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
+                                            <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushValueToSeries({ value: 0, id: ds.id})"><PlusIcon/></button>
+                                        </Tooltip>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

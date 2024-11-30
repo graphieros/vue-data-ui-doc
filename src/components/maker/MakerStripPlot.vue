@@ -190,31 +190,35 @@ function fixChart() {
                     <button tabindex="0" @click="deleteCategory(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                     <table>
                         <thead>
-                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.categoryName[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.plots[store.lang] }}</th>
+                            <tr>
+                                <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.categoryName[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.plots[store.lang] }}</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                            <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                            <td class="flex flex-row place-items-center gap-4">
-                                <div class="flex flex-row gap-4">
-                                    <div v-for="p in datasetItems[i].plots" class="bg-[#FFFFFF10] rounded-md p-1 shadow-md flex flex-col gap-4 relative">
-                                        <div class="flex flex-col gap-2">
-                                            <label class="text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</label>
-                                            <input type="text" v-model="p.name" @change="saveDatasetToLocalStorage"/>
+                            <tr>
+                                <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                                <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                                <td class="flex flex-row place-items-center gap-4">
+                                    <div class="flex flex-row gap-4">
+                                        <div v-for="p in datasetItems[i].plots" class="bg-[#FFFFFF10] rounded-md p-1 shadow-md flex flex-col gap-4 relative">
+                                            <div class="flex flex-col gap-2">
+                                                <label class="text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</label>
+                                                <input type="text" v-model="p.name" @change="saveDatasetToLocalStorage"/>
+                                            </div>
+                                            <div class="flex flex-col gap-2">
+                                                <label class="text-xs">{{ makerTranslations.labels.value[store.lang] }}</label>
+                                                <input type="number" v-model="p.value" @change="saveDatasetToLocalStorage"/>
+                                            </div>
+                                            <button tabindex="0" @click="deletePlot(ds.id, p.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 right-1" /></button>
                                         </div>
-                                        <div class="flex flex-col gap-2">
-                                            <label class="text-xs">{{ makerTranslations.labels.value[store.lang] }}</label>
-                                            <input type="number" v-model="p.value" @change="saveDatasetToLocalStorage"/>
-                                        </div>
-                                        <button tabindex="0" @click="deletePlot(ds.id, p.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 right-1" /></button>
                                     </div>
-                                </div>
-                                <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                                    <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addPlot(ds.id)"><PlusIcon/></button>
-                                </Tooltip>
-                            </td>
+                                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
+                                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addPlot(ds.id)"><PlusIcon/></button>
+                                    </Tooltip>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

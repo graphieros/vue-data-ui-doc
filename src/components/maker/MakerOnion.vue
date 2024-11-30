@@ -179,20 +179,24 @@ function fixChart() {
                 <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                 <table>
                     <thead>
-                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                        <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                        <th class="text-left text-xs">{{ makerTranslations.labels.percentage[store.lang] }}</th>
-                        <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }} ({{ translations.docs.comments.optional[store.lang] }})</th>
-                        <th class="text-left text-xs">{{ makerTranslations.labels.prefix[store.lang] }}</th>
-                        <th class="text-left text-xs">{{ makerTranslations.labels.suffix[store.lang] }}</th>
+                        <tr>
+                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.percentage[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }} ({{ translations.docs.comments.optional[store.lang] }})</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.prefix[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.suffix[store.lang] }}</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[28px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                        <td><BaseNumberInput :buttonColor="ds.color" v-model:value="ds.percentage" :min="0" :max="100"@change="saveDatasetToLocalStorage"/></td>
-                        <td><BaseNumberInput :buttonColor="ds.color" v-model:value="ds.value" @change="saveDatasetToLocalStorage"/></td>
-                        <td><input class="h-[28px] w-[100px]" type="text" v-model="ds.prefix" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[28px] w-[100px]" type="text" v-model="ds.suffix" @change="saveDatasetToLocalStorage"></td>
+                        <tr>
+                            <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
+                            <td><input class="h-[28px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                            <td><BaseNumberInput :buttonColor="ds.color" v-model:value="ds.percentage" :min="0" :max="100"@change="saveDatasetToLocalStorage"/></td>
+                            <td><BaseNumberInput :buttonColor="ds.color" v-model:value="ds.value" @change="saveDatasetToLocalStorage"/></td>
+                            <td><input class="h-[28px] w-[100px]" type="text" v-model="ds.prefix" @change="saveDatasetToLocalStorage"></td>
+                            <td><input class="h-[28px] w-[100px]" type="text" v-model="ds.suffix" @change="saveDatasetToLocalStorage"></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

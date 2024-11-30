@@ -185,16 +185,20 @@ function randomizeValue() {
                     <button tabindex="0" @click="deleteSegment(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                     <table>
                         <thead>
-                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.name[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.from[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.color[store.lang] }}</th>
+                            <tr>
+                                <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.name[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.from[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.color[store.lang] }}</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td><input class="h-[36px]" type="text" v-model="dataset.segments[i].name" @change="saveDatasetToLocalStorage"></td>
-                            <td><input class="h-[36px]" type="number" v-model="dataset.segments[i].from" @change="saveDatasetToLocalStorage"></td>
-                            <td><input class="h-[36px]" type="number" v-model="dataset.segments[i].to" @change="saveDatasetToLocalStorage"></td>
-                            <td><input type="color" v-model="dataset.segments[i].color" @change="saveDatasetToLocalStorage"></td>
+                            <tr>
+                                <td><input class="h-[36px]" type="text" v-model="dataset.segments[i].name" @change="saveDatasetToLocalStorage"></td>
+                                <td><input class="h-[36px]" type="number" v-model="dataset.segments[i].from" @change="saveDatasetToLocalStorage"></td>
+                                <td><input class="h-[36px]" type="number" v-model="dataset.segments[i].to" @change="saveDatasetToLocalStorage"></td>
+                                <td><input type="color" v-model="dataset.segments[i].color" @change="saveDatasetToLocalStorage"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

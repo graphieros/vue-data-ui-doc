@@ -188,42 +188,46 @@ function fixChart() {
                     <button v-if="datasetItems.length > 1" tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                     <table>
                         <thead>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                            <th class="text-left text-xs" v-for="(s, j) in ds.series"><span class="pl-2">{{ makerTranslations.labels.series[store.lang] }}</span></th>
-                            <th/>
+                            <tr>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                                <th class="text-left text-xs" v-for="(s, j) in ds.series"><span class="pl-2">{{ makerTranslations.labels.series[store.lang] }}</span></th>
+                                <th/>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                            <td v-for="(s, j) in ds.series">
-                                <div class="flex flex-col gap-2 p-4 mx-2 rounded-md shadow-md relative" :style="`background:${s.color}33`">
-                                    <button v-if="ds.series.length > 1" tabindex="0" @click="deleteSeriesItem(ds.id, s.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 right-1" /></button>
-                                    <div class="flex flex-row place-items-center gap-2">
-                                        <div class="flex flex-col gap-1">
-                                            <label class="text-xs">
-                                                {{ makerTranslations.labels.color[store.lang] }}
-                                            </label>
-                                            <input type="color" v-model="s.color">
-                                        </div>
-                                        <div class="flex flex-col gap-1">
-                                            <label class="text-xs">
-                                                {{ makerTranslations.labels.name[store.lang] }}
-                                            </label>
-                                            <input class="h-[36px]" type="text" v-model="s.name">
-                                        </div>
-                                        <div class="flex flex-col gap-1">
-                                            <label class="text-xs">
-                                                {{ makerTranslations.labels.value[store.lang] }}
-                                            </label>
-                                            <input class="h-[36px] w-[64px]" type="number" v-model="s.values[0]">
+                            <tr>
+                                <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                                <td v-for="(s, j) in ds.series">
+                                    <div class="flex flex-col gap-2 p-4 mx-2 rounded-md shadow-md relative" :style="`background:${s.color}33`">
+                                        <button v-if="ds.series.length > 1" tabindex="0" @click="deleteSeriesItem(ds.id, s.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 right-1" /></button>
+                                        <div class="flex flex-row place-items-center gap-2">
+                                            <div class="flex flex-col gap-1">
+                                                <label class="text-xs">
+                                                    {{ makerTranslations.labels.color[store.lang] }}
+                                                </label>
+                                                <input type="color" v-model="s.color">
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <label class="text-xs">
+                                                    {{ makerTranslations.labels.name[store.lang] }}
+                                                </label>
+                                                <input class="h-[36px]" type="text" v-model="s.name">
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <label class="text-xs">
+                                                    {{ makerTranslations.labels.value[store.lang] }}
+                                                </label>
+                                                <input class="h-[36px] w-[64px]" type="number" v-model="s.values[0]">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                                    <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSeriesItem(ds.id)"><PlusIcon/></button>
-                                </Tooltip>
-                            </td>
+                                </td>
+                                <td>
+                                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
+                                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSeriesItem(ds.id)"><PlusIcon/></button>
+                                    </Tooltip>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -163,21 +163,25 @@ function fixChart() {
                 <div :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`">
                     <table>
                         <thead>
-                            <th class="text-left text-xs" v-for="(ds, i) in datasetItems">
-                                <div class="flex flex-col gap-2 px-1 relative">
-                                    <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-1 right-0" /></button>
-                                    <label>{{ translations.maker.labels.period[store.lang] }}</label>
-                                    <input class="h-[40px] w-[82px]" type="text" v-model="ds.period" @change="saveDatasetToLocalStorage(); forceChartUpdate()">
-                                </div>
-                            </th>
+                            <tr>
+                                <th class="text-left text-xs" v-for="(ds, i) in datasetItems">
+                                    <div class="flex flex-col gap-2 px-1 relative">
+                                        <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-1 right-0" /></button>
+                                        <label>{{ translations.maker.labels.period[store.lang] }}</label>
+                                        <input class="h-[40px] w-[82px]" type="text" v-model="ds.period" @change="saveDatasetToLocalStorage(); forceChartUpdate()">
+                                    </div>
+                                </th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td class="text-xs text-left" v-for="ds in datasetItems">
-                                <div class="flex flex-col gap-2 px-1 mt-2">
-                                    <label>{{ makerTranslations.labels.value[store.lang] }}</label>
-                                    <input class="h-[40px] w-[82px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage(); forceChartUpdate()">
-                                </div>
-                            </td>
+                            <tr>
+                                <td class="text-xs text-left" v-for="ds in datasetItems">
+                                    <div class="flex flex-col gap-2 px-1 mt-2">
+                                        <label>{{ makerTranslations.labels.value[store.lang] }}</label>
+                                        <input class="h-[40px] w-[82px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage(); forceChartUpdate()">
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

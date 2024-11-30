@@ -193,22 +193,28 @@ function fixChart() {
                 <div class="flex flex-col gap-2">
                     <label class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</label>
                     <tbody>
-                                <button class="py-2 px-5 rounded border border-black dark:border-app-blue hover:bg-[#5f8aee20] transition-colors" @click="makeRandomVal">Random value</button> : {{ currentValue }}
-                            </tbody>
+                        <tr>
+                            <button class="py-2 px-5 rounded border border-black dark:border-app-blue hover:bg-[#5f8aee20] transition-colors" @click="makeRandomVal">Random value</button> : {{ currentValue }}
+                        </tr>
+                    </tbody>
                 </div>
             </div>
             <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
                 <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                 <table>
                     <thead>
-                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                        <th class="text-left text-xs">{{ makerTranslations.labels.from[store.lang] }}</th>
-                        <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
+                        <tr>
+                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.from[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[36px]" type="number" v-model="ds.from" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[36px]" type="number" v-model="ds.to" @change="saveDatasetToLocalStorage"></td>
+                        <tr>
+                            <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                            <td><input class="h-[36px]" type="number" v-model="ds.from" @change="saveDatasetToLocalStorage"></td>
+                            <td><input class="h-[36px]" type="number" v-model="ds.to" @change="saveDatasetToLocalStorage"></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

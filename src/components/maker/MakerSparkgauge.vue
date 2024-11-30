@@ -131,26 +131,30 @@ function fixChart() {
                 <div :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`">
                     <table>
                         <thead>
-                            <th class="text-left text-xs px-2">
-                                {{ makerTranslations.labels.value[store.lang] }}
-                            </th>
-                            <th class="text-left text-xs px-2">
-                                {{ makerTranslations.labels.min[store.lang] }}
-                            </th>
-                            <th class="text-left text-xs px-2">
-                                {{ makerTranslations.labels.max[store.lang] }}
-                            </th>
+                            <tr>
+                                <th class="text-left text-xs px-2">
+                                    {{ makerTranslations.labels.value[store.lang] }}
+                                </th>
+                                <th class="text-left text-xs px-2">
+                                    {{ makerTranslations.labels.min[store.lang] }}
+                                </th>
+                                <th class="text-left text-xs px-2">
+                                    {{ makerTranslations.labels.max[store.lang] }}
+                                </th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td class="text-xs text-left px-2">
-                                <input class="h-[40px] w-[82px]" type="number" v-model="datasetItems.value" @change="saveDatasetToLocalStorage(); forceChartUpdate()">
-                            </td>
-                            <td class="text-xs text-left px-2">
-                                <input class="h-[40px] w-[82px]" type="number" v-model="datasetItems.min" @change="saveDatasetToLocalStorage(); forceChartUpdate()">
-                            </td>
-                            <td class="text-xs text-left px-2">
-                                <input class="h-[40px] w-[82px]" type="number" v-model="datasetItems.max" @change="saveDatasetToLocalStorage(); forceChartUpdate()">
-                            </td>
+                            <tr>
+                                <td class="text-xs text-left px-2">
+                                    <input class="h-[40px] w-[82px]" type="number" v-model="datasetItems.value" @change="saveDatasetToLocalStorage(); forceChartUpdate()">
+                                </td>
+                                <td class="text-xs text-left px-2">
+                                    <input class="h-[40px] w-[82px]" type="number" v-model="datasetItems.min" @change="saveDatasetToLocalStorage(); forceChartUpdate()">
+                                </td>
+                                <td class="text-xs text-left px-2">
+                                    <input class="h-[40px] w-[82px]" type="number" v-model="datasetItems.max" @change="saveDatasetToLocalStorage(); forceChartUpdate()">
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

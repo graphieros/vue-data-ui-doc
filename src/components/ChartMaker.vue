@@ -181,18 +181,20 @@ function deleteValueFromSeries({id, index, key='values'}) {
                 <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                     <table>
                         <thead>
-                            <th class="text-left text-xs h-[40px]">Color</th>
-                            <th class="text-left text-xs">Serie name</th>
-                            <th class="text-left text-xs">Type</th>
-                            <th class="text-left text-xs">Labels</th>
-                            <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Tag</th>
-                            <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Area</th>
-                            <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Smooth</th>
-                            <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Dashed</th>
-                            <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Shape</th>
-                            <th v-for="(_, i) in maxSeries">
-                                <input class="w-[86px]" type="text" v-model="selectedChart.config.chart.grid.labels.xAxisLabels.values[i]">
-                            </th>
+                            <tr>
+                                <th class="text-left text-xs h-[40px]">Color</th>
+                                <th class="text-left text-xs">Serie name</th>
+                                <th class="text-left text-xs">Type</th>
+                                <th class="text-left text-xs">Labels</th>
+                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Tag</th>
+                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Area</th>
+                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Smooth</th>
+                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Dashed</th>
+                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Shape</th>
+                                <th v-for="(_, i) in maxSeries">
+                                    <input class="w-[86px]" type="text" v-model="selectedChart.config.chart.grid.labels.xAxisLabels.values[i]">
+                                </th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -215,7 +217,9 @@ function deleteValueFromSeries({id, index, key='values'}) {
                                         <input type="number" style="" v-model="datasetItems[i].series[j]" class="h-[36px] w-[86px]"><button tabindex="0" @click="deleteValueFromSeries({id: ds.id, index: j, key: 'series'})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2 left-1" /></button>
                                     </div>
                                 </td>
-                                <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushValueToSeries({ value: 0, id: ds.id, key:'series'})"><PlusIcon/></button>
+                                <td>
+                                    <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushValueToSeries({ value: 0, id: ds.id, key:'series'})"><PlusIcon/></button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

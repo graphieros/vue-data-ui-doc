@@ -200,10 +200,14 @@ function fixChart() {
               <div v-if="!isStack" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3 bg-gray-200 dark:bg-[#FFFFFF10]`">
                   <table>
                       <thead>
-                          <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.percentage[store.lang] }}</th>
+                        <tr>
+                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.percentage[store.lang] }}</th>
+                        </tr>
                       </thead>
                       <tbody>
-                          <td><input class="w-[82px]" min="0" max="100" type="number" v-model="dataset.percentage" @change="saveDatasetToLocalStorage">%</td>
+                        <tr>
+                            <td><input class="w-[82px]" min="0" max="100" type="number" v-model="dataset.percentage" @change="saveDatasetToLocalStorage">%</td>
+                        </tr>
                       </tbody>
                   </table>
               </div>
@@ -212,34 +216,38 @@ function fixChart() {
                       <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                       <table>
                           <thead>
-                              <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                              <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                              <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</th>
-                              <th class="text-left text-xs">{{ makerTranslations.labels.breakdown[store.lang] }}</th>
-                              <th></th>
+                            <tr>
+                                <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.breakdown[store.lang] }}</th>
+                                <th></th>
+                            </tr>
                           </thead>
                           <tbody>
-                              <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
-                              <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                              <td><input class="h-[36px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage"></td>
-                              <td class="flex flex-row gap-2 place-items-center">
-                                  <div class="flex flex-col gap-2 place-items-center relative" v-for="sub in ds.breakdown" :key="sub.id">
-                                      <button tabindex="0" @click="deleteSubSerie(ds.id, sub.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-1 left-2" /></button>
-                                      <div class="flex flex-row gap-2 place-items-center">
-                                          <label class="text-xs">{{ makerTranslations.labels.name[store.lang] }}</label>
-                                          <input class="h-[36px]" type="text" v-model="sub.name">
-                                      </div>
-                                      <div class="flex flex-row gap-2 place-items-center">
-                                          <label class="text-xs">{{ makerTranslations.labels.value[store.lang] }}</label>
-                                          <input class="h-[36px]" type="number" min="0" v-model="sub.value">
-                                      </div>
-                                  </div>
-                              </td>
-                              <td>
-                                  <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                                      <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSubSerie(ds.id)"><PlusIcon/></button>
-                                  </Tooltip>
-                              </td>
+                            <tr>
+                                <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
+                                <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                                <td><input class="h-[36px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage"></td>
+                                <td class="flex flex-row gap-2 place-items-center">
+                                    <div class="flex flex-col gap-2 place-items-center relative" v-for="sub in ds.breakdown" :key="sub.id">
+                                        <button tabindex="0" @click="deleteSubSerie(ds.id, sub.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-1 left-2" /></button>
+                                        <div class="flex flex-row gap-2 place-items-center">
+                                            <label class="text-xs">{{ makerTranslations.labels.name[store.lang] }}</label>
+                                            <input class="h-[36px]" type="text" v-model="sub.name">
+                                        </div>
+                                        <div class="flex flex-row gap-2 place-items-center">
+                                            <label class="text-xs">{{ makerTranslations.labels.value[store.lang] }}</label>
+                                            <input class="h-[36px]" type="number" min="0" v-model="sub.value">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
+                                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addSubSerie(ds.id)"><PlusIcon/></button>
+                                    </Tooltip>
+                                </td>
+                            </tr>
                           </tbody>
                       </table>
                   </div>

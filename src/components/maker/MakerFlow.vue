@@ -151,14 +151,18 @@ function fixChart() {
                     <button tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                     <table>
                         <thead>
-                            <th class="text-left text-xs h-[40px]">Source</th>
-                            <th class="text-left text-xs">Target</th>
-                            <th class="text-left text-xs">Value</th>
+                            <tr>
+                                <th class="text-left text-xs h-[40px]">Source</th>
+                                <th class="text-left text-xs">Target</th>
+                                <th class="text-left text-xs">Value</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td><input type="text" v-model="datasetItems[i][0]" @change="saveDatasetToLocalStorage"></td>
-                            <td><input type="text" v-model="datasetItems[i][1]" @change="saveDatasetToLocalStorage"></td>
-                            <td><input type="number" min="0" v-model="datasetItems[i][2]" @change="saveDatasetToLocalStorage"></td>
+                            <tr>
+                                <td><input type="text" v-model="datasetItems[i][0]" @change="saveDatasetToLocalStorage"></td>
+                                <td><input type="text" v-model="datasetItems[i][1]" @change="saveDatasetToLocalStorage"></td>
+                                <td><input type="number" min="0" v-model="datasetItems[i][2]" @change="saveDatasetToLocalStorage"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

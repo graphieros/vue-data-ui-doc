@@ -145,10 +145,14 @@ function fixChart() {
                         <div  :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`">
                             <table>
                                 <thead>
-                                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.value[store.lang] }}</th>
+                                    <tr>
+                                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.value[store.lang] }}</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                    <td><input type="number" v-model="datasetItems" @change="saveDatasetToLocalStorage"></td>
+                                    <tr>
+                                        <td><input type="number" v-model="datasetItems" @change="saveDatasetToLocalStorage"></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

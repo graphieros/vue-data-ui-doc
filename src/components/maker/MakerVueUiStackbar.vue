@@ -198,14 +198,17 @@ function fixChart() {
                 <button tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                 <table>
                     <thead>
-                        <th class="text-left text-xs h-[40px] px-2">Series name</th>
+                        <tr>
+                            <th class="text-left text-xs h-[40px] px-2">Series name</th>
                             <th class="text-left text-xs h-[40px] px-2">Color</th>
                             <th class="text-left text-xs h-[40px] px-2">Items</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <td><input type="text" v-model="datasetItems[i].name" @change="saveDatasetToLocalStorage"></td>
-                        <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                        <td class="bg-[#FFFFFF10] p-2 rounded-md flex flex-row place-items-center">
+                        <tr>
+                            <td><input type="text" v-model="datasetItems[i].name" @change="saveDatasetToLocalStorage"></td>
+                            <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                            <td class="bg-[#FFFFFF10] p-2 rounded-md flex flex-row place-items-center">
                                 <div v-for="(item, j) in ds.series" class="flex flex-row gap-2 place-items-center justify-center">
                                     <div class="flex flex-col p-2 bg-[#FFFFFF10]">
                                         <button tabindex="0" @click="deleteValue(i,j)"><VueUiIcon name="close" stroke="#ff6400" :size="24" class="cursor-pointer" /></button>
@@ -221,6 +224,7 @@ function fixChart() {
                                 </div>
                                 <button class="h-[40px] w-[40px] ml-2 rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addValue(i, j)"><PlusIcon/></button>
                             </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

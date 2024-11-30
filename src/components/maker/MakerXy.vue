@@ -267,27 +267,28 @@ function fixChart() {
                     <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                         <table>
                             <thead>
-                                <th class="text-left text-xs h-[40px]">{{ xyTranslations.labels.color[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ xyTranslations.labels.serieName[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ xyTranslations.labels.type[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ xyTranslations.labels.showDataLabels[store.lang] }}</th>
-                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.tag[store.lang] }}</th>
-                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Show serie name</th>
-                                <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.area[store.lang] }}</th>
-                                <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.smooth[store.lang] }}</th>
-                                <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.dashed[store.lang] }}</th>
-                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.progression[store.lang] }}</th>
-                                <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.shape[store.lang] }}</th>
-                                <th v-for="(_, j) in maxSeries">
-                                    <div class="flex flex-col">
-                                        <label class="text-left text-xs flex flex-row gap-2">{{ translations.maker.labels.period[store.lang] }} <AlertTriangleIcon class="text-app-orange" size="14" v-if="!CONFIG_MODEL.find(el => el.key === 'chart.grid.labels.xAxisLabels.values').def[j]" /></label>
-                                        <input @change="saveConfigToLocalStorage" class="w-[86px]" type="text" v-model="CONFIG_MODEL.find(el => el.key === 'chart.grid.labels.xAxisLabels.values').def[j]">
-                                    </div>
-                                </th>
+                                <tr>
+                                    <th class="text-left text-xs h-[40px]">{{ xyTranslations.labels.color[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ xyTranslations.labels.serieName[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ xyTranslations.labels.type[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ xyTranslations.labels.showDataLabels[store.lang] }}</th>
+                                    <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.tag[store.lang] }}</th>
+                                    <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Show serie name</th>
+                                    <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.area[store.lang] }}</th>
+                                    <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.smooth[store.lang] }}</th>
+                                    <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.dashed[store.lang] }}</th>
+                                    <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.progression[store.lang] }}</th>
+                                    <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.shape[store.lang] }}</th>
+                                    <th v-for="(_, j) in maxSeries">
+                                        <div class="flex flex-col">
+                                            <label class="text-left text-xs flex flex-row gap-2">{{ translations.maker.labels.period[store.lang] }} <AlertTriangleIcon class="text-app-orange" size="14" v-if="!CONFIG_MODEL.find(el => el.key === 'chart.grid.labels.xAxisLabels.values').def[j]" /></label>
+                                            <input @change="saveConfigToLocalStorage" class="w-[86px]" type="text" v-model="CONFIG_MODEL.find(el => el.key === 'chart.grid.labels.xAxisLabels.values').def[j]">
+                                        </div>
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    
                                     <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
                                     <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
                                     <td>
@@ -313,9 +314,11 @@ function fixChart() {
                                             <input @change="saveDatasetToLocalStorage" type="number" style="" v-model="datasetItems[i].series[j]" class="h-[36px] w-[86px]"><button tabindex="0" @click="deleteValueFromSeries({id: ds.id, index: j, key: 'series'})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2.5 left-1" /></button>
                                         </div>
                                     </td>
-                                    <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
-                                        <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushValueToSeries({ value: 0, id: ds.id, key:'series'})"><PlusIcon/></button>
-                                    </Tooltip>
+                                    <td>
+                                        <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
+                                            <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushValueToSeries({ value: 0, id: ds.id, key:'series'})"><PlusIcon/></button>
+                                        </Tooltip>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

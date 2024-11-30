@@ -220,17 +220,18 @@ function fixChart() {
                     <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                     <table>
                         <thead>
-                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.shape[store.lang] }}</th>
-                            <th class="text-left text-xs" v-for="dp in ds.values">
-                                <div class="flex flex-col gap-2 relative">
-                                    <label class="text-xs text-left">{{ makerTranslations.labels.datapoint[store.lang] }} : {{ makerTranslations.labels.name[store.lang] }}</label>
-                                    <input class="h-[32px]" type="text" v-model="dp.name">
-                                    <button tabindex="0" @click="deleteDatapoint(ds.id, dp.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-0 right-0" /></button>
-                                </div>
-                            </th>
-        
+                            <tr>
+                                <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.shape[store.lang] }}</th>
+                                <th class="text-left text-xs" v-for="dp in ds.values">
+                                    <div class="flex flex-col gap-2 relative">
+                                        <label class="text-xs text-left">{{ makerTranslations.labels.datapoint[store.lang] }} : {{ makerTranslations.labels.name[store.lang] }}</label>
+                                        <input class="h-[32px]" type="text" v-model="dp.name">
+                                        <button tabindex="0" @click="deleteDatapoint(ds.id, dp.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-0 right-0" /></button>
+                                    </div>
+                                </th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>                    
@@ -256,14 +257,12 @@ function fixChart() {
                                         </div>
                                     </div>
                                 </td>
-        
                             </tr>
                         </tbody>
                     </table>
-                        <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
-                            <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatapoint(ds.id)"><PlusIcon/></button>
-                        </Tooltip>
-                    
+                    <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
+                        <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatapoint(ds.id)"><PlusIcon/></button>
+                    </Tooltip>
                 </div>
             </div>
             <div class="flex flex-row gap-4 mt-4 mb-6">

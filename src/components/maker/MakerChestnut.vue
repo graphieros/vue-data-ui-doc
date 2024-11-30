@@ -241,49 +241,57 @@ function fixChart() {
                 <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                 <table>
                     <thead>
-                        <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                        <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                        <th class="text-left text-xs">{{ makerTranslations.labels.branch[store.lang] }}</th>
+                        <tr>
+                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.branch[store.lang] }}</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                        <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                        <td v-for="(branch, j) in ds.branches">
-                            <div class="p-2 pt-8 rounded bg-[#FFFFFF33] dark:bg-[#FFFFFF10] mx-2 shadow-md relative flex flex-row place-items-center">
-                                <button v-if="ds.branches.length > 1" tabindex="0" @click="removeFromRoot({ rootId: ds.id, branchId: branch.id})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute left-2 top-2" /></button>
-                                <table>
-                                    <thead>
-                                        <th class="text-left text-xs">{{ composeLabel(['branch', 'is', 'name']) }}</th>
-                                        <th class="text-left text-xs">{{ composeLabel(['branch', 'is', 'value']) }}</th>
-                                        <th class="text-left text-xs">{{ composeLabel(['breakdown']) }}</th>
-                                    </thead>
-                                    <tbody>
-                                        <td><input v-model="branch.name" type="text" class="h-[32px]" @change="saveDatasetToLocalStorage"></td>
-                                        <td><input v-model="branch.value" type="number" class="h-[32px]" @change="saveDatasetToLocalStorage"></td>
-                                        <td v-for="(br, k) in branch.breakdown">
-                                            <div class="flex flex-col gap-4 p-2 bg-[#FFFFFF33] dark:bg-[#FFFFFF10] rounded mx-1 shadow-md relative">
-                                                <button tabindex="0" @click="removeFromBranch({ rootId: ds.id, branchId: branch.id, index: k})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-2 right-2" /></button>
-                                                <div class="flex flex-col gap-1">
-                                                    <label class="text-xs text-left">{{ composeLabel(['breakdown', 'is', 'color']) }}</label>
-                                                    <input v-model="br.color" type="color" @change="saveDatasetToLocalStorage">
-                                                </div>
-                                                <div class="flex flex-col gap-1">
-                                                    <label class="text-xs text-left">{{ composeLabel(['breakdown', 'is', 'name']) }}</label>
-                                                    <input v-model="br.name" type="text" class="h-[32px]" @change="saveDatasetToLocalStorage">
-                                                </div>
-                                                <div class="flex flex-col gap-1">
-                                                    <label class="text-xs text-left">{{ composeLabel(['breakdown', 'is', 'value']) }}</label>
-                                                    <input v-model="br.value" type="number" class="h-[32px] w-[82px]" @change="updateBranchValue({ rootId: ds.id, branchId: branch.id })">
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tbody>
-                                </table>
-                                <Tooltip :content="composeLabel(['add', 'is', 'breakdown'])">
-                                    <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushToBranch({ rootId: ds.id, branchId: branch.id})"><PlusIcon/></button>
-                                </Tooltip>
-                            </div>
-                        </td>
+                        <tr>
+                            <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                            <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                            <td v-for="(branch, j) in ds.branches">
+                                <div class="p-2 pt-8 rounded bg-[#FFFFFF33] dark:bg-[#FFFFFF10] mx-2 shadow-md relative flex flex-row place-items-center">
+                                    <button v-if="ds.branches.length > 1" tabindex="0" @click="removeFromRoot({ rootId: ds.id, branchId: branch.id})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute left-2 top-2" /></button>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="text-left text-xs">{{ composeLabel(['branch', 'is', 'name']) }}</th>
+                                                <th class="text-left text-xs">{{ composeLabel(['branch', 'is', 'value']) }}</th>
+                                                <th class="text-left text-xs">{{ composeLabel(['breakdown']) }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input v-model="branch.name" type="text" class="h-[32px]" @change="saveDatasetToLocalStorage"></td>
+                                                <td><input v-model="branch.value" type="number" class="h-[32px]" @change="saveDatasetToLocalStorage"></td>
+                                                <td v-for="(br, k) in branch.breakdown">
+                                                    <div class="flex flex-col gap-4 p-2 bg-[#FFFFFF33] dark:bg-[#FFFFFF10] rounded mx-1 shadow-md relative">
+                                                        <button tabindex="0" @click="removeFromBranch({ rootId: ds.id, branchId: branch.id, index: k})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-2 right-2" /></button>
+                                                        <div class="flex flex-col gap-1">
+                                                            <label class="text-xs text-left">{{ composeLabel(['breakdown', 'is', 'color']) }}</label>
+                                                            <input v-model="br.color" type="color" @change="saveDatasetToLocalStorage">
+                                                        </div>
+                                                        <div class="flex flex-col gap-1">
+                                                            <label class="text-xs text-left">{{ composeLabel(['breakdown', 'is', 'name']) }}</label>
+                                                            <input v-model="br.name" type="text" class="h-[32px]" @change="saveDatasetToLocalStorage">
+                                                        </div>
+                                                        <div class="flex flex-col gap-1">
+                                                            <label class="text-xs text-left">{{ composeLabel(['breakdown', 'is', 'value']) }}</label>
+                                                            <input v-model="br.value" type="number" class="h-[32px] w-[82px]" @change="updateBranchValue({ rootId: ds.id, branchId: branch.id })">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <Tooltip :content="composeLabel(['add', 'is', 'breakdown'])">
+                                        <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushToBranch({ rootId: ds.id, branchId: branch.id})"><PlusIcon/></button>
+                                    </Tooltip>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <Tooltip :content="composeLabel(['add', 'is', 'branch'])">

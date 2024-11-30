@@ -211,30 +211,38 @@ function fixChart() {
                 <div class="flex flex-col gap-2 place-items-end">
                     <table>
                         <thead>
-                            <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</th>
-                            <th class="text-left text-xs">{{ makerTranslations.labels.breakdown[store.lang] }}</th>
+                            <tr>
+                                <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</th>
+                                <th class="text-left text-xs">{{ makerTranslations.labels.breakdown[store.lang] }}</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
-                            <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                            <td><input class="h-[36px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage"></td>
-                            <td>
-                                <div v-for="(child, j) in ds.children" class="relative p-2 bg-[#FFFFFF33] dark:bg-[#FFFFFF10] rounded shadow-md mb-2">
-                                    <button tabindex="0" @click="nukeChild({ parentId: ds.id, index: j})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-2 left-1" /></button>
-                                    <table>
-                                        <thead>
-                                            <th class="text-xs text-left">{{ makerTranslations.labels.serieName[store.lang] }}</th>
-                                            <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</th>
-                                        </thead>
-                                        <tbody>
-                                            <td><input class="h-[36px]" type="text" v-model="child.name" @change="saveDatasetToLocalStorage"></td>
-                                            <td><input class="h-[36px]" type="number" v-model="child.value" @change="updateParent({parentId: ds.id})"></td>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
+                            <tr>
+                                <td><input type="color" v-model="ds.color" @change="saveDatasetToLocalStorage"></td>
+                                <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                                <td><input class="h-[36px]" type="number" v-model="ds.value" @change="saveDatasetToLocalStorage"></td>
+                                <td>
+                                    <div v-for="(child, j) in ds.children" class="relative p-2 bg-[#FFFFFF33] dark:bg-[#FFFFFF10] rounded shadow-md mb-2">
+                                        <button tabindex="0" @click="nukeChild({ parentId: ds.id, index: j})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-2 left-1" /></button>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-xs text-left">{{ makerTranslations.labels.serieName[store.lang] }}</th>
+                                                    <th class="text-left text-xs">{{ makerTranslations.labels.value[store.lang] }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input class="h-[36px]" type="text" v-model="child.name" @change="saveDatasetToLocalStorage"></td>
+                                                    <td><input class="h-[36px]" type="number" v-model="child.value" @change="updateParent({parentId: ds.id})"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <Tooltip :content="translations.maker.tooltips.addData[store.lang]">

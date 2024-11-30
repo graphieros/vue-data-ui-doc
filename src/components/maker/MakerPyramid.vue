@@ -181,16 +181,20 @@ function fixChart() {
                         <button tabindex="0" @click="deleteDatasetItem(i)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                         <table>
                             <thead>
-                                <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.period[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.age[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.left[store.lang] }}</th>
-                                <th class="text-left text-xs">{{ makerTranslations.labels.right[store.lang] }}</th>
+                                <tr>
+                                    <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.period[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ makerTranslations.labels.age[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ makerTranslations.labels.left[store.lang] }}</th>
+                                    <th class="text-left text-xs">{{ makerTranslations.labels.right[store.lang] }}</th>
+                                </tr>
                             </thead>
                             <tbody>
-                                <td><input class="h-[36px]" type="text" v-model="ds[0]" @change="saveDatasetToLocalStorage"></td>
-                                <td><input class="h-[36px]" type="number" v-model="ds[1]" @change="saveDatasetToLocalStorage"></td>
-                                <td><input class="h-[36px]" type="number" v-model="ds[2]" @change="saveDatasetToLocalStorage"></td>
-                                <td><input class="h-[36px]" type="number" v-model="ds[3]" @change="saveDatasetToLocalStorage"></td>
+                                <tr>
+                                    <td><input class="h-[36px]" type="text" v-model="ds[0]" @change="saveDatasetToLocalStorage"></td>
+                                    <td><input class="h-[36px]" type="number" v-model="ds[1]" @change="saveDatasetToLocalStorage"></td>
+                                    <td><input class="h-[36px]" type="number" v-model="ds[2]" @change="saveDatasetToLocalStorage"></td>
+                                    <td><input class="h-[36px]" type="number" v-model="ds[3]" @change="saveDatasetToLocalStorage"></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
