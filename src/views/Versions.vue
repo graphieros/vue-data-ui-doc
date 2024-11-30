@@ -8,6 +8,7 @@ import { useConfig } from "../assets/useConfig";
 import { useIconMap, isValidComponent } from "../useIconMap";
 import updates from "../../public/releases.json"
 import GithubIssues from "../components/GithubIssues.vue";
+import { shiftHue } from '../components/maker/lib'
 
 const globalConfig = useConfig()
 
@@ -1362,11 +1363,26 @@ const wordCloudDataset = computed(() => {
     if(!uselessWords.value.includes(ds.name.toUpperCase())) {
       return ds
     }
-  }).filter(el => el.value > 5)
+  }).sort((a, b) => b.value - a.value).filter(el => el.value > 5)
 })
+
+function makeColors({ colorStart, iterations, force }) {
+  let color = colorStart;
+  const arr = [colorStart];
+  for (let i = 0; i < iterations; i += 1) {
+    color = shiftHue(color, force);
+    arr.push(color)
+  }
+  return arr;
+}
 
 const wordCloudConfig = computed(() => {
   return {
+    customPalette: makeColors({
+      colorStart: '#5f8aee',
+      iterations: 200,
+      force: 0.0006
+    }),
 //     customPalette: [
 //   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
 //   "#263238", "#ECEFF1", "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A",
@@ -1430,7 +1446,7 @@ table: {
           proximity: 10,
           packingWeight: 5,
           color: isDarkMode.value ? '#8A8A8A' : '#3A3A3A',
-          usePalette: false,
+          usePalette: true,
         },
         tooltip: {
           backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
