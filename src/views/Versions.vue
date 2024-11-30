@@ -13,6 +13,7 @@ const globalConfig = useConfig()
 
 const store = useMainStore();
 const translations = computed(() => store.translations)
+const showWC = ref(false);
 
 const step = ref(0);
 watch(() => store.isDarkMode, (val) => {
@@ -425,6 +426,9 @@ onMounted(() => {
         versionsList.value = staticReleases
     }).finally(() => {
       done.value = true;
+      setTimeout(() => {
+        showWC.value = true
+      }, 1000);
     })
 });
 
@@ -1358,7 +1362,7 @@ const wordCloudDataset = computed(() => {
     if(!uselessWords.value.includes(ds.name.toUpperCase())) {
       return ds
     }
-  }).filter(el => el.value > 20)
+  }).filter(el => el.value > 5)
 })
 
 const wordCloudConfig = computed(() => {
@@ -1424,8 +1428,15 @@ table: {
         width: 500,
         words: {
           proximity: 10,
-          packingWeight: 5
-        }
+          packingWeight: 5,
+          color: isDarkMode.value ? '#8A8A8A' : '#3A3A3A',
+          usePalette: false,
+        },
+        tooltip: {
+          backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+          backgroundOpacity: 30
+        },
       }
     }
   }
@@ -1901,7 +1912,7 @@ const versionsReleases = computed(() => {
                       </template>
                   </VueUiSparkline>
                   <div style="height: 48px"/>
-                  <div class="w-full shadow-lg">
+                  <div class="w-full shadow-lg" v-if="showWC">
                     <VueDataUi v-if="done" component="VueUiWordCloud" :dataset="wordCloudDataset" :config="wordCloudConfig">
                       <template #source>
                         <div class="text-xs text-gray-500 text-right mt-3 pl-2">
