@@ -415,7 +415,7 @@ const { configCode, showAllConfig } = useConfigCode()
 &lt;/template&gt;
 
 &lt;script setup&gt;
-    const timer = ref(null)
+    const timer = ref(null);
 
     function startTimer() {
         if (!timer.value) return;
@@ -449,7 +449,7 @@ const { configCode, showAllConfig } = useConfigCode()
 &lt;template&gt;
     &lt;VueUiTimer :config="config"&gt;
         &lt;template #laps="{ laps, lap, isRunning, isPaused, timestamp, elapsed, formatted }"&lt;
-        <span class="text-gray-500">&lt;!-- Show a stack of laps --&gt;</span>
+            <span class="text-gray-500">&lt;!-- Show a stack of laps --&gt;</span>
         &lt;/template&lt;
     &lt;/VueUiTimer&gt;
 &lt;/template&gt;
