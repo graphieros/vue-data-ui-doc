@@ -397,11 +397,77 @@ const { configCode, showAllConfig } = useConfigCode()
             </template>
             <!-- EMITS -->
             <template #tab2>
-                We are currently working on the docs :)
+                Exposed methods:
+
+                <ul>
+                    <li>. start</li>
+                    <li>. pause</li>
+                    <li>. reset</li>
+                    <li>. restart</li>
+                    <li>. lap</li>
+                </ul>
+
+<pre>
+<code>
+&lt;template&gt;
+    &lt;button @click="startTimer"&gt;START&lt;/button&gt;
+    &lt;VueUiTimer ref="timer" :config="config" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+    const timer = ref(null)
+
+    function startTimer() {
+        if (!timer.value) return;
+        timer.value.start();
+    }
+
+&lt;/script&gt;  
+</code>
+</pre>                
             </template>
             <!-- SLOTS -->
             <template #tab3>
-                We are currently working on the docs :)
+                Available slots:
+
+<div class="text-xl">#controls</div>               
+<pre>
+<code>
+&lt;template&gt;
+    &lt;VueUiTimer :config="config"&gt;
+        &lt;template #controls="{ start, pause, reset, restart, lap, laps, isRunning, isPaused, timestamp, elapsed, formatted }"&lt;
+            <span class="text-gray-500">&lt;!-- Make your own menu --&gt;</span>
+        &lt;/template&lt;
+    &lt;/VueUiTimer&gt;
+&lt;/template&gt;
+</code>
+</pre>
+
+<div class="text-xl border-t border-gray-500 pt-4">#laps</div>   
+<pre>
+<code>
+&lt;template&gt;
+    &lt;VueUiTimer :config="config"&gt;
+        &lt;template #laps="{ laps, lap, isRunning, isPaused, timestamp, elapsed, formatted }"&lt;
+        <span class="text-gray-500">&lt;!-- Show a stack of laps --&gt;</span>
+        &lt;/template&lt;
+    &lt;/VueUiTimer&gt;
+&lt;/template&gt;
+</code>
+</pre>
+
+<div class="text-xl border-t border-gray-500 pt-4">#time</div>   
+<pre>
+<code>
+&lt;template&gt;
+    &lt;VueUiTimer :config="config"&gt;
+        &lt;template #time="{ timestamp, elapsed, formatted }"&lt;
+            <span class="text-gray-500">&lt;!-- Format your own time label --&gt;</span>
+        &lt;/template&lt;
+    &lt;/VueUiTimer&gt;
+&lt;/template&gt;
+</code>
+</pre>                
             </template>
         </Box>
     </div>
