@@ -1,12 +1,17 @@
 [
   {
-    "version": "v 2.4.15",
+    "version": "v 2.4.16",
     "date": "2024-12-01",
     "updates": [
       {
         "component": "VueUiParallelCoordinatePlot",
         "description": "Increase capture area of tooltip trap to facilitate user selection",
         "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiWordCloud",
+        "description": "Set text dominant-baseline to central",
+        "link": "/docs#vue-ui-word-cloud"
       },
       {
         "component": "All components with minimap in zoom",
