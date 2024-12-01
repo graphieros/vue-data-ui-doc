@@ -1,5 +1,20 @@
 [
   {
+    "version": "v 2.4.15",
+    "date": "2024-12-01",
+    "updates": [
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Increase capture area of tooltip trap to facilitate user selection",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "All components with minimap in zoom",
+        "description": "Remove occasional harmless console error"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.14",
     "date": "2024-11-30",
     "updates": [
