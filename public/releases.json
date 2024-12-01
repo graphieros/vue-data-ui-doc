@@ -1,6 +1,6 @@
 [
   {
-    "version": "v 2.4.16",
+    "version": "v 2.4.17",
     "date": "2024-12-01",
     "updates": [
       {
@@ -16,6 +16,10 @@
       {
         "component": "All components with minimap in zoom",
         "description": "Remove occasional harmless console error"
+      },
+      {
+        "component": "All components with annotator user option",
+        "description": "Improve color picker"
       }
     ]
   },
