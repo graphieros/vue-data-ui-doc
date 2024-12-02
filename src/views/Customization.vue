@@ -104,21 +104,23 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
       {{ translations.menu.customization[store.lang] }}
     </h1>
     <div
-      class="flex flex-row flex-wrap gap-4 place-items-center justify-center my-12"
+      class="my-12 max-w-[800px] mx-auto"
     >
-      <router-link v-for="(menuItem, i) in menu" :to="menuItem.link">
-        <button
-          :class="`transition-colorsrounded py-2 px-4 ${
-            currentRoute === menuItem.link ||
-            (i === 0 && currentRoute === '/customization')
-              ? 'bg-[#5f8bee20] text-app-blue border-b border-app-blue'
-              : 'hover:bg-[#5f8bee10]'
-          }`"
-          @click="selectedMenu = menuItem.name"
-        >
-          {{ menuItem.label }}
-        </button>
-      </router-link>
+      <div class="border border-gray-500 rounded-md p-4 flex flex-row flex-wrap gap-4 place-items-center justify-center mx-6">        
+        <router-link v-for="(menuItem, i) in menu" :to="menuItem.link">
+          <button
+            :class="`transition-colorsrounded py-2 px-4 ${
+              currentRoute === menuItem.link ||
+              (i === 0 && currentRoute === '/customization')
+                ? 'bg-[#5f8bee20] text-app-blue border-b border-app-blue'
+                : 'hover:bg-[#5f8bee20] bg-[#5f8bee10]'
+            }`"
+            @click="selectedMenu = menuItem.name"
+          >
+            {{ menuItem.label }}
+          </button>
+        </router-link>
+      </div>
     </div>
   </div>
   <SvgSlot
