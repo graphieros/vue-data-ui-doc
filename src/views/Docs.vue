@@ -10,6 +10,7 @@ import { useConfig } from "../assets/useConfig";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseMenuCategory from "../components/BaseMenuCategory.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
+import UserOptionsMenu from "../components/UserOptionsMenu.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -1331,6 +1332,8 @@ const stackbarKey = ref(0);
                     />
                 </div>
             </Transition>
+
+            <UserOptionsMenu v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)" />
         </div>
     </div>
 </template>
