@@ -73,9 +73,12 @@ export default function useExamples() {
     const KRACHSET = ref([
         65, 68, 72, 88, 93, 94, 92, 97, 98, 100, 99, 106, 119, 140, 12, 9, 7, 5, 12, 18, 29
     ])
+    const LIVESET = ref([
+        65, 68, 72, 88, 93, 94, 92, 97, 98, 100, 99, 95, 80, 82, 12, 9, 7, 5, 12, 18, 29
+    ])
 
     const CHANGESET = ref([
-        12, 10, 9, 11, 7, 4, 10, 11, 8, 9, 7, 19, 27, 25, 32, 29, 37, 48, 52, 51, 64
+        12, 10, 9, 11, 7, 4, 10, 11, 8, 9, 7, 19, 27, 25, 32, 29, 37, 48, 52, 51, 60
     ]);
 
     const DATASET_XY_BASIC_LINE = ref([
@@ -86,6 +89,48 @@ export default function useExamples() {
             series: LINESET
         }
     ]);
+
+    const raf = ref(null);
+    const to = ref(null);
+
+    const DATASET_XY_LIVE_DATA = computed(() => {
+
+        const ds = LIVESET.value;
+        const ds2 = JSON.parse(JSON.stringify(CHANGESET.value));
+
+        function anim() {
+            ds.shift()
+            ds2.shift()
+            ds.push(Math.random() * 100)
+            ds2.push(Math.random() * 60)
+            to.value = setTimeout(() => {
+                raf.value = requestAnimationFrame(anim)
+            }, 300)
+        }
+
+        anim()
+
+        return [
+            {
+                name: 'Channel 1',
+                type: 'line',
+                smooth: true,
+                series: ds,
+                scaleMin: 0,
+                scaleMax: 100,
+                scaleSteps: 3
+            },
+            {
+                name: 'Channel 2',
+                type: 'bar',
+                series: ds2,
+                color: colors.value.orange,
+                scaleMin: 0,
+                scaleMax: 60,
+                scaleSteps: 5
+            }
+        ]
+    })
 
     const DATASET_XY_DUAL = ref([
         {
@@ -2761,6 +2806,47 @@ export default function useExamples() {
                     es: "Conjunto de datos de 10000 puntos reducido a 500 puntos",
                     ko: "10000개의 데이터 포인트를 500개로 다운샘플링한 데이터 세트",
                     ar: "مجموعة بيانات تحتوي على 10000 نقطة بيانات تم تقليلها إلى 500 نقطة بيانات"
+                }
+            },
+            // XY LIVE DATA
+            // XY BASIC LINE
+            { 
+                dataset: DATASET_XY_LIVE_DATA.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        zoom: {
+                            show: false
+                        },
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            showHorizontalLines: true,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    useIndividualScale: true,
+                                    stacked: true,
+                                    gap: 48
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'basic-line',
+                link: 'vue-ui-xy',
+                description: {
+                    en: "Frequent data update",
+                    fr: "Mise à jour fréquente des données",
+                    pt: "Atualização frequente de dados",
+                    de: "Häufige Datenaktualisierung",
+                    zh: "频繁的数据更新",
+                    jp: "頻繁なデータ更新",
+                    es: "Actualización frecuente de datos",
+                    ko: "빈번한 데이터 업데이트",
+                    ar: "تحديث متكرر للبيانات"
                 }
             },
             // DONUT BASIC
