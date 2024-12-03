@@ -48,9 +48,9 @@ function makeDs({n, m, type, name, smooth=false}) {
 
 const dataset = computed(() => {
     return [
-        makeDs({ n: 12, m: 100, type: 'line', name: 'Serie 1', smooth: true }),
-        makeDs({ n: 12, m: 90, type: 'bar', name: 'Serie 2', smooth: true }),
-        makeDs({ n: 12, m: 80, type: 'bar', name: 'Serie 3', smooth: true }),
+        makeDs({ n: 12, m: 100, type: 'line', name: 'Serie 1', smooth: false }),
+        makeDs({ n: 12, m: 90, type: 'bar', name: 'Serie 2', smooth: false }),
+        makeDs({ n: 12, m: 80, type: 'bar', name: 'Serie 3', smooth: false }),
     ]
 })
 
