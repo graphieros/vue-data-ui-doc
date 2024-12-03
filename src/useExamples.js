@@ -2930,6 +2930,59 @@ export default function useExamples() {
                     ar: 'مخطط دائري، بدون تدرج'
                 }              
             },
+            // DONUT THIN NO GRADIENT
+            {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: {
+                    ...CONFIG_DONUT_BASE.value,
+                    style: {
+                        ...CONFIG_DONUT_BASE.value.style,
+                        chart: {
+                            ...CONFIG_DONUT_BASE.value.style.chart,
+                            useGradient: false,
+                            layout: {
+                                ...CONFIG_DONUT_BASE.value.style.chart.layout,
+                                donut:{
+                                    strokeWidth: 24,
+                                },
+                                labels: {
+                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    hollow: {
+                                        show: false,
+                                        average: {
+                                            show: false,
+                                        },
+                                        total: {
+                                            show: true,
+                                            text: '',
+                                            value: {
+                                                color: colors.value.textColor,
+                                                offsetY: 4,
+                                                fontSize: 64
+                                            }
+                                        }
+                                    },
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'donut-thin',
+                link: 'vue-ui-donut',
+                description: {
+                    en: "Donut with lower fat",
+                    fr: "Donut avec moins de gras",
+                    pt: "Rosquinha com menos gordura",
+                    de: "Donut mit weniger Fett",
+                    zh: "低脂甜甜圈",
+                    jp: "低脂肪のドーナツ",
+                    es: "Donut con menos grasa",
+                    ko: "지방이 적은 도넛",
+                    ar: "دونات منخفضة الدهون"
+                }               
+            },
             // DONUT SHADOW
             {
                 dataset: DATASET_DONUT_BASIC.value,
