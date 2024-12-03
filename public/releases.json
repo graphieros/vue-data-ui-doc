@@ -1,5 +1,20 @@
 [
   {
+    "version": "v 2.4.18",
+    "date": "2024-12-03",
+    "updates": [
+      {
+        "component": "All charts with zoom minimap",
+        "description": "Increase capture area of tooltip trap to facilitate user selection"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Add 'boxes' icon",
+        "link": "/docs#vue-ui-icon"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.17",
     "date": "2024-12-01",
     "updates": [
