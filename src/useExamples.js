@@ -2828,6 +2828,11 @@ export default function useExamples() {
                                     useIndividualScale: true,
                                     stacked: true,
                                     gap: 48
+                                },
+                                xAxisLabels: {
+                                    color: colors.value.textColor,
+                                    values: [],
+                                    rotation: -45
                                 }
                             }
                         }
