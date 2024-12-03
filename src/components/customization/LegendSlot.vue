@@ -58,7 +58,7 @@ const config = computed(() => {
     return {
         chart: {
             padding: {
-                bottom: 0,
+                bottom: 6,
             },
             legend: {
                 show: false
@@ -87,7 +87,7 @@ const config = computed(() => {
         return {
             chart: {
                 padding: {
-                    bottom: 0,
+                    bottom: 6,
                 },
                 legend: {
                     show: false
