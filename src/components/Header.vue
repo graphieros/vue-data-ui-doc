@@ -189,10 +189,11 @@ const isHome = computed(() => {
                     </span>
                 </router-link>
                 <router-link data-cy="link-docs" to="/chart-builder">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/chart-builder')
+                    <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/chart-builder')
                                 ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-[#FFFFFF33] shadow-md'
                                 : 'text-gray-800 dark:text-[#ffe596] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
+                            <VueUiIcon name="boxes" :stroke="isDarkMode ? '#ffe596' : '#1A1A1A'" :size="18" :strokeWidth="1" />
                         {{ translations.menu.chartBuilder[store.lang] }}
                     </span>
                 </router-link>
