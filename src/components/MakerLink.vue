@@ -1,14 +1,13 @@
 <script setup>
 import { computed, nextTick } from "vue";
 import { useMainStore } from "../stores";
-import { useMakerStore } from "../stores/maker"
 import { ToolIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router"
 import FlexibleTooltip from './FlexibleTooltip.vue'
 
 const store = useMainStore();
-const makerStore = useMakerStore();
-const router = useRouter()
+const router = useRouter();
+const isDarkMode = computed(() => store.isDarkMode);
 
 const translations = computed(() => store.translations);
 
@@ -45,7 +44,7 @@ function returnToMaker() {
     <div class="relative" v-if="simple">
         <FlexibleTooltip position="bottom" :content="translations.menu.chartBuilder[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
             <button @click="returnToMaker" class="h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">
-                <ToolIcon/>
+                <VueUiIcon name="boxes" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
             </button>
         </FlexibleTooltip>
     </div>
