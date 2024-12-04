@@ -41,7 +41,7 @@ onMounted(() => {
 });
 
 const showUnderlay = computed(() => {
-  return !currentRoute.value.startsWith('/chart-builder') && (!isDarkMode.value && !['/versions'].includes(currentRoute.value) && !currentRoute.value.startsWith('/customization'))
+  return currentRoute.value === '/'
 })
 
 </script>
@@ -49,9 +49,9 @@ const showUnderlay = computed(() => {
 <template>
   <Header/>
   <HelpCenter v-if="!['Home', 'Versions', 'Maker'].includes(route.name)"/>
-  <div v-if="showUnderlay && !currentRoute.startsWith('/examples')" class="underlay-paper"></div>
+  <div v-if="showUnderlay && !isDarkMode"></div>
 
-  <div v-if="isDarkMode && !currentRoute.startsWith('/examples')" class="underlay-paper--dark"></div>
+  <div v-if="showUnderlay && isDarkMode" class="underlay-paper--dark"></div>
   <div id="vdui" class="font-satoshi bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors mb-[60px]">
     <router-view />
     <UpToTop/>

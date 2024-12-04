@@ -1,5 +1,5 @@
 <template>
-    <div class="inline-flex flex-col flex-wrap border-l border-r border-b border-black dark:border-[#8A8A8A] px-2 mt-2 rounded-md pb-2 bg-[#FFFFFF10]">
+    <div class="inline-flex flex-col flex-wrap border-l border-r border-b border-[#9A9A9A] dark:border-[#4A4A4A] px-2 mt-2 rounded-md pb-2 bg-[#FFFFFF10]">
         <label class="text-xs text-black dark:text-white">{{ label }}</label>
         <div class="color-picker flex flex-row">
             <div class="flex flex-col place-items-center">
