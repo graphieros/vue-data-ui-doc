@@ -70,7 +70,7 @@ const useTransparencyLabel = ref({
 </script>
 
 <template>
-    <div class="w-full border border-app-orange p-4 rounded mt-6 bg-[#ff660020] text-black dark:text-white" dir="auto">
+    <div class="z-0 w-full border border-app-orange p-4 rounded mt-6 bg-[#ff660020] text-black dark:text-white" dir="auto">
         <div class="flex flex-col gap-2">
             <div class="flex flex-row gap-2 text-app-orange">
                 <VueUiIcon name="circleExclamation" stroke="#ff6600"/>

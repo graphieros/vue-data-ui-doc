@@ -46,6 +46,8 @@ const MakerBullet = defineAsyncComponent(() => import('../components/maker/Maker
 const store = useMainStore();
 const makerStore = useMakerStore();
 
+const isDarkMode = computed(() => store.isDarkMode);
+
 const translations = computed(() => {
     return store.translations;
 })
@@ -137,6 +139,7 @@ const crumbs = computed(() => {
 
     <div class="w-full max-w-[1400px] mx-auto overflow-visible min-h-[3000px]">
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
+            <VueUiIcon name="boxes" :size="80" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#5f8aee60' : '#CCCCCC'"/>
             <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>
 

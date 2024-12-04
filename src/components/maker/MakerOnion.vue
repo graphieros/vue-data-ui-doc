@@ -165,6 +165,7 @@ function fixChart() {
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <BaseMakerChart
+            v-if="!isFixed"
             :isFixed="isFixed"
             @fixChart="fixChart"
             @resetModel="resetModel"
@@ -235,7 +236,15 @@ function fixChart() {
             </template>
         </ComponentContent>           
     </div>
-    </div>    
+    </div>
+    <BaseMakerChart
+        v-if="isFixed"
+        :isFixed="isFixed"
+        @fixChart="fixChart"
+        @resetModel="resetModel"
+    >
+        <VueUiOnion :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+    </BaseMakerChart>
 </template>
 
 <style scoped>

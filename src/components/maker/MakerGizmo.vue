@@ -105,6 +105,7 @@ function fixChart() {
 
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <BaseMakerChart
+                v-if="!isFixed"
                 :isFixed="isFixed"
                 @fixChart="fixChart"
                 @resetModel="resetModel"
@@ -147,4 +148,15 @@ function fixChart() {
             </ComponentContent>          
         </div>
     </div>
+
+    <BaseMakerChart
+        v-if="isFixed"
+        :isFixed="isFixed"
+        @fixChart="fixChart"
+        @resetModel="resetModel"
+    >
+        <div class="w-full max-w-[300px] mx-auto bg-white flex place-items-center justify-center py-12">
+            <VueUiGizmo :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+        </div>
+    </BaseMakerChart>
 </template>

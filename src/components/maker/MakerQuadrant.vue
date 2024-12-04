@@ -1,14 +1,13 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons"
+import { PlusIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, createUid } from "./lib.js";
 import { useDefaultDataStore } from "../../stores/defaultData"
 import BaseShape from "../../components/BaseShape.vue";
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
-import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
@@ -197,6 +196,7 @@ function fixChart() {
 
 <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
     <BaseMakerChart
+        v-if="!isFixed"
         :isFixed="isFixed"
         @fixChart="fixChart"
         @resetModel="resetModel"
@@ -277,7 +277,15 @@ function fixChart() {
         </template>
     </ComponentContent>           
 </div>
-    </div>    
+    </div>
+    <BaseMakerChart
+        v-if="isFixed"
+        :isFixed="isFixed"
+        @fixChart="fixChart"
+        @resetModel="resetModel"
+    >
+        <VueUiQuadrant :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+    </BaseMakerChart>    
 </template>
 
 <style scoped>

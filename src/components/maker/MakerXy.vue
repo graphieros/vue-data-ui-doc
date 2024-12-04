@@ -206,16 +206,6 @@ const finalConfig = computed(() => {
     return convertArrayToObject(CONFIG_MODEL.value)
 })
 
-
-function getLabel(label) {
-    return Array.isArray(label) ? label.map(l => {
-        if(!xyTranslations.value.labels[l]) return l
-        return xyTranslations.value.labels[l][store.lang]
-    }).join(" ") :
-    xyTranslations.value.labels[label] ?
-    xyTranslations.value.labels[label][store.lang] : label
-}
-
 const accordionConfig = ref(
     {
             maxHeight: 5000,
@@ -245,8 +235,9 @@ function fixChart() {
         <ClearStorageAndRefresh keyConfig="xyConfig" keyDataset="xyDataset" :key="`clear_${clearStep}`"/>
         
         <BaseDocExampleLink link="vue-ui-xy" componentName="VueUiXy"/>
-        <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
+        <div class="w-full mt-[64px]" style="height:calc(100% - 64px); isolation: isolate">
             <BaseMakerChart
+                v-if="!isFixed"
                 :isFixed="isFixed"
                 @fixChart="fixChart"
                 @resetModel="resetModel"
@@ -254,83 +245,85 @@ function fixChart() {
                 <VueUiXy :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
             </BaseMakerChart>
 
-            <VueDataUi
-                component="VueUiAccordion"
-                :config="accordionConfig"
-            >
-                <template #title>
-                    {{ xyTranslations.dataset[store.lang] }}
-                </template>
-                <template #content>
-                    <div class="flex flex-col gap-2">
-                    <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
-                    <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="text-left text-xs h-[40px]">{{ xyTranslations.labels.color[store.lang] }}</th>
-                                    <th class="text-left text-xs">{{ xyTranslations.labels.serieName[store.lang] }}</th>
-                                    <th class="text-left text-xs">{{ xyTranslations.labels.type[store.lang] }}</th>
-                                    <th class="text-left text-xs">{{ xyTranslations.labels.showDataLabels[store.lang] }}</th>
-                                    <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.tag[store.lang] }}</th>
-                                    <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Show serie name</th>
-                                    <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.area[store.lang] }}</th>
-                                    <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.smooth[store.lang] }}</th>
-                                    <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.dashed[store.lang] }}</th>
-                                    <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.progression[store.lang] }}</th>
-                                    <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.shape[store.lang] }}</th>
-                                    <th v-for="(_, j) in maxSeries">
-                                        <div class="flex flex-col">
-                                            <label class="text-left text-xs flex flex-row gap-2">{{ translations.maker.labels.period[store.lang] }} <AlertTriangleIcon class="text-app-orange" size="14" v-if="!CONFIG_MODEL.find(el => el.key === 'chart.grid.labels.xAxisLabels.values').def[j]" /></label>
-                                            <input @change="saveConfigToLocalStorage" class="w-[86px]" type="text" v-model="CONFIG_MODEL.find(el => el.key === 'chart.grid.labels.xAxisLabels.values').def[j]">
-                                        </div>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
-                                    <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
-                                    <td>
-                                        <select class="h-[36px]" v-model="datasetItems[i].type" @change="saveDatasetToLocalStorage"><option v-for="t in selectedChart.types">{{ t }}</option></select>
-                                    </td>
-                                    <td><input type="checkbox" v-model="datasetItems[i].dataLabels" @change="saveDatasetToLocalStorage"></td>
-                                    <td v-if="datasetItems[i].type !== 'bar'"><select class="h-[36px]" v-model="datasetItems[i].useTag" @change="saveDatasetToLocalStorage"><option v-for="tag in selectedChart.useTag">{{ tag }}</option></select></td>
-                                    <td v-if="datasetItems[i].type !== 'bar'"><select class="h-[36px]" v-model="datasetItems[i].showSerieName" @change="saveDatasetToLocalStorage"><option v-for="tag in selectedChart.showSerieName">{{ tag }}</option></select></td>
-                                    <td v-if="datasetItems[i].type === 'line'"><input type="checkbox" v-model="datasetItems[i].useArea" @change="saveDatasetToLocalStorage"></td>
-                                    <td v-if="datasetItems[i].type === 'line'"><input type="checkbox" v-model="datasetItems[i].smooth" @change="saveDatasetToLocalStorage"></td>
-                                    <td v-if="datasetItems[i].type === 'line'"><input type="checkbox" v-model="datasetItems[i].dashed" @change="saveDatasetToLocalStorage"></td>
-                                    <td v-if="datasetItems[i].type !== 'bar'"><input type="checkbox" v-model="datasetItems[i].useProgression" @change="saveDatasetToLocalStorage"></td>
-                                    <td v-if="datasetItems[i].type !== 'bar'">
-                                        <div class="flex flex-row place-items-center gap-2">
-                                                <select class="h-[36px]" v-model="datasetItems[i].shape" @change="saveDatasetToLocalStorage"><option v-for="shape in selectedChart.shapes">{{ shape }}</option></select>
-                                                <div class="w-[40px]">
-                                                    <BaseShape :shape="datasetItems[i].shape" :color="datasetItems[i].color" />
-                                                </div>
+            <div class="relative z-0">
+                <VueDataUi
+                    component="VueUiAccordion"
+                    :config="accordionConfig"
+                >
+                    <template #title>
+                        {{ xyTranslations.dataset[store.lang] }}
+                    </template>
+                    <template #content>
+                        <div class="flex flex-col gap-2">
+                        <div v-for="(ds, i) in datasetItems" :class="`w-full overflow-x-auto overflow-y-visible relative shadow dark:shadow-md p-3 rounded flex flex-row gap-3`" :style="`background:${ds.color}30`">
+                        <button tabindex="0" @click="deleteDatasetItem(ds.id)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="text-left text-xs h-[40px]">{{ xyTranslations.labels.color[store.lang] }}</th>
+                                        <th class="text-left text-xs">{{ xyTranslations.labels.serieName[store.lang] }}</th>
+                                        <th class="text-left text-xs">{{ xyTranslations.labels.type[store.lang] }}</th>
+                                        <th class="text-left text-xs">{{ xyTranslations.labels.showDataLabels[store.lang] }}</th>
+                                        <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.tag[store.lang] }}</th>
+                                        <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">Show serie name</th>
+                                        <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.area[store.lang] }}</th>
+                                        <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.smooth[store.lang] }}</th>
+                                        <th v-if="datasetItems[i].type === 'line'" class="text-left text-xs">{{ xyTranslations.labels.dashed[store.lang] }}</th>
+                                        <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.progression[store.lang] }}</th>
+                                        <th v-if="datasetItems[i].type !== 'bar'" class="text-left text-xs">{{ xyTranslations.labels.shape[store.lang] }}</th>
+                                        <th v-for="(_, j) in maxSeries">
+                                            <div class="flex flex-col">
+                                                <label class="text-left text-xs flex flex-row gap-2">{{ translations.maker.labels.period[store.lang] }} <AlertTriangleIcon class="text-app-orange" size="14" v-if="!CONFIG_MODEL.find(el => el.key === 'chart.grid.labels.xAxisLabels.values').def[j]" /></label>
+                                                <input @change="saveConfigToLocalStorage" class="w-[86px]" type="text" v-model="CONFIG_MODEL.find(el => el.key === 'chart.grid.labels.xAxisLabels.values').def[j]">
                                             </div>
-                                    </td>
-                                    <td v-for="(val, j) in datasetItems[i].series">
-                                        <div class="relative">
-                                            <input @change="saveDatasetToLocalStorage" type="number" style="" v-model="datasetItems[i].series[j]" class="h-[36px] w-[86px]"><button tabindex="0" @click="deleteValueFromSeries({id: ds.id, index: j, key: 'series'})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2.5 left-1" /></button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
-                                            <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushValueToSeries({ value: 0, id: ds.id, key:'series'})"><PlusIcon/></button>
-                                        </Tooltip>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
+                                        <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                                        <td>
+                                            <select class="h-[36px]" v-model="datasetItems[i].type" @change="saveDatasetToLocalStorage"><option v-for="t in selectedChart.types">{{ t }}</option></select>
+                                        </td>
+                                        <td><input type="checkbox" v-model="datasetItems[i].dataLabels" @change="saveDatasetToLocalStorage"></td>
+                                        <td v-if="datasetItems[i].type !== 'bar'"><select class="h-[36px]" v-model="datasetItems[i].useTag" @change="saveDatasetToLocalStorage"><option v-for="tag in selectedChart.useTag">{{ tag }}</option></select></td>
+                                        <td v-if="datasetItems[i].type !== 'bar'"><select class="h-[36px]" v-model="datasetItems[i].showSerieName" @change="saveDatasetToLocalStorage"><option v-for="tag in selectedChart.showSerieName">{{ tag }}</option></select></td>
+                                        <td v-if="datasetItems[i].type === 'line'"><input type="checkbox" v-model="datasetItems[i].useArea" @change="saveDatasetToLocalStorage"></td>
+                                        <td v-if="datasetItems[i].type === 'line'"><input type="checkbox" v-model="datasetItems[i].smooth" @change="saveDatasetToLocalStorage"></td>
+                                        <td v-if="datasetItems[i].type === 'line'"><input type="checkbox" v-model="datasetItems[i].dashed" @change="saveDatasetToLocalStorage"></td>
+                                        <td v-if="datasetItems[i].type !== 'bar'"><input type="checkbox" v-model="datasetItems[i].useProgression" @change="saveDatasetToLocalStorage"></td>
+                                        <td v-if="datasetItems[i].type !== 'bar'">
+                                            <div class="flex flex-row place-items-center gap-2">
+                                                    <select class="h-[36px]" v-model="datasetItems[i].shape" @change="saveDatasetToLocalStorage"><option v-for="shape in selectedChart.shapes">{{ shape }}</option></select>
+                                                    <div class="w-[40px]">
+                                                        <BaseShape :shape="datasetItems[i].shape" :color="datasetItems[i].color" />
+                                                    </div>
+                                                </div>
+                                        </td>
+                                        <td v-for="(val, j) in datasetItems[i].series">
+                                            <div class="relative">
+                                                <input @change="saveDatasetToLocalStorage" type="number" style="" v-model="datasetItems[i].series[j]" class="h-[36px] w-[86px]"><button tabindex="0" @click="deleteValueFromSeries({id: ds.id, index: j, key: 'series'})"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute -top-2.5 left-1" /></button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <Tooltip :content="translations.maker.tooltips.addData[store.lang]">
+                                                <button class="ml-2 h-[36px] w-[36px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="pushValueToSeries({ value: 0, id: ds.id, key:'series'})"><PlusIcon/></button>
+                                            </Tooltip>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div class="flex flex-row gap-4 mt-4 mb-6">
-                    <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
-                        <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
-                    </Tooltip>
-                </div>
-                </template>
-            </VueDataUi>
+                    <div class="flex flex-row gap-4 mt-4 mb-6">
+                        <Tooltip :content="translations.maker.tooltips.addDataset[store.lang]">
+                            <button class="h-[40px] w-[40px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatasetItem"><PlusIcon/></button>
+                        </Tooltip>
+                    </div>
+                    </template>
+                </VueDataUi>
+            </div>
 
             <VueDataUi
                 component="VueUiAccordion"
@@ -368,6 +361,14 @@ function fixChart() {
             </div>
         </div>
     </div>
+    <BaseMakerChart
+        v-if="isFixed"
+        :isFixed="isFixed"
+        @fixChart="fixChart"
+        @resetModel="resetModel"
+    >
+        <VueUiXy :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+    </BaseMakerChart>
 </template>
 
 <style scoped>

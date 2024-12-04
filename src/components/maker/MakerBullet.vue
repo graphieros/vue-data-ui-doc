@@ -163,6 +163,7 @@ function randomizeValue() {
 
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <BaseMakerChart
+                v-if="!isFixed"
                 :isFixed="isFixed"
                 @fixChart="fixChart"
                 @resetModel="resetModel"
@@ -237,4 +238,13 @@ function randomizeValue() {
                 </ComponentContent>        
             </div>
     </div>
+
+    <BaseMakerChart
+        v-if="isFixed"
+        :isFixed="isFixed"
+        @fixChart="fixChart"
+        @resetModel="resetModel"
+    >
+        <VueDataUi component="VueUiBullet" :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
+    </BaseMakerChart>
 </template>
