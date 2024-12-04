@@ -52,11 +52,19 @@ const target = computed(() => {
         <!-- <div class="w-[64px]">
             <BaseSignature :color="isDarkMode ? '#3A3A3A' : '#CCCCCC'" :strokeWidth="7"/>
         </div> -->
-        <VueDataUi
-            v-if="currentStars"
-            component="VueUiGizmo"
-            :dataset="target"
-            :config="gizmoConfig"
-        />
+        <div class="pr-1">
+            <VueDataUi
+                v-if="currentStars"
+                component="VueUiGizmo"
+                :dataset="target"
+                :config="gizmoConfig"
+            />
+        </div>
     </footer>
 </template>
+
+<style>
+.vue-ui-gizmo {
+    overflow: visible;
+}
+</style>
