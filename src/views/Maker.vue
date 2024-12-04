@@ -137,6 +137,8 @@ const crumbs = computed(() => {
     <BaseCrumbs :tree="crumbs" noMargin showMobile/>
     <ConfirmCopy />
 
+    <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
+
     <div class="w-full max-w-[1400px] mx-auto overflow-visible min-h-[3000px]">
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
             <VueUiIcon name="boxes" :size="80" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#5f8aee60' : '#CCCCCC'"/>

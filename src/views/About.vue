@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../stores";
-import Schema from "../schema/Schema.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -279,7 +278,7 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
 </script>
 
 <template>
-  
+    <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
     <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto">
       <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.about[store.lang] }}</h1>
 

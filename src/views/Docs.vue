@@ -1349,6 +1349,6 @@ const stackbarKey = ref(0);
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(at top left, #FFFFFF07, transparent, transparent);
+    background: radial-gradient(at top left, #5f8aee20, transparent, transparent);
 }
 </style>

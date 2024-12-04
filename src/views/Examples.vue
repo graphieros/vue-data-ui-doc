@@ -31,6 +31,9 @@ const crumbs = ref([
 
 <template>
     <BaseCrumbs :tree="crumbs" noMargin showMobile/>
+
+    <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
+    
     <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative my-12">
         <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.examples[lang] }}</h1>
 

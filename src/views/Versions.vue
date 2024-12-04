@@ -1771,6 +1771,8 @@ const versionsReleases = computed(() => {
 </script>
 
 <template>
+    <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
+    
       <div class="carousel hidden sm:block fixed top-[55px] left-0 w-full" style="z-index: 10">
         <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig"/>
       </div>

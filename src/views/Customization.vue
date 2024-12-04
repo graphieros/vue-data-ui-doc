@@ -26,6 +26,8 @@ const translations = computed(() => {
   return store.translations;
 });
 
+const isDarkMode = computed(() => store.isDarkMode);
+
 const selectedMenu = ref("svgSlot");
 const menu = ref([
   { name: "svgSlot", label: "#svg slot", link: "/customization#svg-slot" },
@@ -99,6 +101,8 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
 
 <template>
   <BaseCrumbs :tree="docsCrumbs" noMargin/>
+  <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
+
   <div class="my-12 w-full mx-auto text-center">
     <h1 class="text-[64px] sm:text-[96px] text-center">
       {{ translations.menu.customization[store.lang] }}
