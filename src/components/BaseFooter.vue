@@ -53,6 +53,7 @@ const target = computed(() => {
             <BaseSignature :color="isDarkMode ? '#3A3A3A' : '#CCCCCC'" :strokeWidth="7"/>
         </div> -->
         <VueDataUi
+            v-if="currentStars"
             component="VueUiGizmo"
             :dataset="target"
             :config="gizmoConfig"
