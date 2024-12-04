@@ -2749,6 +2749,9 @@ export default function useExamples() {
                     },
                     chart: {
                         ...BASE_XY_CONFIG.value.chart,
+                        tooltip: {
+                            show: false,
+                        },
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
                             labels: {
@@ -2809,7 +2812,6 @@ export default function useExamples() {
                 }
             },
             // XY LIVE DATA
-            // XY BASIC LINE
             { 
                 dataset: DATASET_XY_LIVE_DATA.value, 
                 config: {
@@ -2840,7 +2842,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiXy',
                 icon: 'chartLine',
-                id: 'basic-line',
+                id: 'xy-live',
                 link: 'vue-ui-xy',
                 description: {
                     en: "Frequent data update",
