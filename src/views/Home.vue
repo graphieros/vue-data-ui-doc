@@ -384,7 +384,9 @@ const componentTranslation = ref({
       <div class="underlay"></div>
       <div ref="resizeContainer" class="absolute top-0 left-0" style="width:100%;height:100%;overflow: hidden" @mousemove="setClientPosition($event)">
 
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col lg:flex-row justify-center place-items-center lg:gap-[100px] w-full max-w-[1280px]">
+        <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col lg:flex-row justify-center place-items-center lg:gap-[100px] w-full max-w-[1280px]">
     <div class="flex flex-col gap-6 max-w-[360px] justify-center place-items-center text-center">
         <h1 style="font-family: SatoshiBold" class="text-[48px]">
             <span class="text-app-green">Vue </span>
@@ -641,5 +643,15 @@ const componentTranslation = ref({
 
 .logo-shape {
   filter:drop-shadow(0px 2px 2px black)
+}
+
+.vdui {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(at top left, #5f8aee20, transparent, transparent);
 }
 </style>
