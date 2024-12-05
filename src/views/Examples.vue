@@ -33,11 +33,11 @@ const crumbs = ref([
     <BaseCrumbs :tree="crumbs" noMargin showMobile/>
 
     <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
-    
+
     <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative my-12">
         <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.examples[lang] }}</h1>
 
-        <div class="flex gap-4 place-items-center justify-center mt-10 flex-wrap">
+        <div class="flex gap-4 place-items-center justify-center mt-10 flex-wrap border border-gray-500 rounded-md p-4 w-fit mx-auto">
             <ExampleButton @click="currentMenu = 'mini'" :selected="currentMenu === 'mini'" :isDarkMode="isDarkMode">
                 <div class="flex flex-row gap-2 place-items-center">
                     <VueUiIcon name="chartSparkline" :stroke="currentMenu === 'mini' ? '#1A1A1A' : isDarkMode ? '#42d392' : '#1A1A1A'"/>
