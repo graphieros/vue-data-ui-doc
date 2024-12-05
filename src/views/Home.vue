@@ -458,6 +458,8 @@ const componentTranslation = ref({
                 </template>
             </Suspense>
         </div>
+          <div v-else class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center">
+        </div>
     </div>
 
     <div class="w-[400px] max-w-[400px] lg:w-[500px] lg:min-w-[500px] 2xl:w-[900px] 2xl:min-w-[900px] relative transition-all">
