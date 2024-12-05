@@ -97,7 +97,7 @@ const useTransparencyLabel = ref({
                     <template v-if="knob.type === 'range'">
                         <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
                             <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ knob.def }}</div>
-                            <input :id="`k_${i}_${uid}_${c}`" type="range" v-model="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" class="accent-app-blue z-10" @change="emit('change')">
+                            <input :id="`k_${i}_${uid}_${c}`" type="range" v-model="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" class="accent-app-blue z-0" @change="emit('change')">
                         </div>
                     </template>
                     <BaseColorInput v-else-if="knob.type === 'color' && !useOldColorPickers" :label="getLabel(knob.label)" :rgba="true" v-model:value="knob.def" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>

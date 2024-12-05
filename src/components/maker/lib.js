@@ -168,6 +168,42 @@ export function shiftHue(hexColor, shiftAmount) {
     return shiftedHexColor + (alphaChannel || '');
 }
 
+export function convertColorToHex(color) {
+    const hexRegex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i;
+    const rgbRegex = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)$/i;
+    const hslRegex = /^hsla?\((\d+),\s*([\d.]+)%,\s*([\d.]+)%(?:,\s*([\d.]+))?\)$/i;
+
+    if ([undefined, null, NaN].includes(color)) {
+        return null;
+    }
+
+    color = convertNameColorToHex(color);
+
+    if (color === 'transparent') {
+        return "#FFFFFF00";
+    }
+
+    let match;
+    let alpha = 1;
+
+    if ((match = color.match(hexRegex))) {
+        const [, r, g, b, a] = match;
+        alpha = a ? parseInt(a, 16) / 255 : 1;
+        return `#${r}${g}${b}${decimalToHex(Math.round(alpha * 255))}`;
+    } else if ((match = color.match(rgbRegex))) {
+        const [, r, g, b, a] = match;
+        alpha = a ? parseFloat(a) : 1;
+        return `#${decimalToHex(r)}${decimalToHex(g)}${decimalToHex(b)}${decimalToHex(Math.round(alpha * 255))}`;
+    } else if ((match = color.match(hslRegex))) {
+        const [, h, s, l, a] = match;
+        alpha = a ? parseFloat(a) : 1;
+        const rgb = hslToRgba(Number(h), Number(s), Number(l));
+        return `#${decimalToHex(rgb[0])}${decimalToHex(rgb[1])}${decimalToHex(rgb[2])}${decimalToHex(Math.round(alpha * 255))}`;
+    }
+
+    return null;
+}
+
 const lib = {
     adaptColorToBackground,
     copyComponent,
@@ -175,7 +211,8 @@ const lib = {
     createUid,
     getValueByPath,
     convertArrayToObject,
-    shiftHue
+    shiftHue,
+    convertColorToHex
 }
 
 export default lib

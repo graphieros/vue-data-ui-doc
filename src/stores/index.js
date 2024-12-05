@@ -10,6 +10,7 @@ export const useMainStore = defineStore("main", {
             isDarkMode: true,
             isCopy: false,
             isFetching: false,
+            customColors: [],
             hints: {
                 pin: {
                     en: "Pin the chart to the left so you can visualize configuration changes when you scroll.",

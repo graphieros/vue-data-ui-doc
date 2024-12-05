@@ -3,20 +3,41 @@
         <label class="text-xs text-black dark:text-white">{{ label }}</label>
         <div class="color-picker flex flex-row">
             <div class="flex flex-col place-items-center">
-                <input :id="id" :aria-labelledby="labelId" type="color" style="width: 120px !important" v-model="hexColor" @input="updateColorFromHex" />
+
+                <button class="h-[20px] my-1 w-[110px] relative rounded-lg outline outline-gray-500" :style="{ background: rgbaColor }" @click="open = true" v-click-outside="close" @keydown.esc="close">
+                    <div v-if="open" class="absolute top-[100%] left-1/2 -translate-x-1/2 color-picker-dialog bg-white dark:bg-[#2A2A2A]">
+                        <div 
+                            v-for="c in defaultPalette" 
+                            class="color-picker-option"  
+                            :style="{ 
+                                backgroundColor: c,
+                                outline: `1px solid #CCCCCC`, 
+                            }" 
+                            @click="() => setColor(c)"
+                        />
+                        <div class="my-color-picker-option-empty" @click="triggerColorPicker" :style="{
+                            background: value
+                        }">
+                            <VueUiIcon name="palette" :stroke="adaptColorToBackground(convertColorToHex(value))" :size="20"/>
+                        </div>
+                    </div>
+                    <input ref="myColorInput" type="color"  v-model="hexColor" @input="updateColorFromHex" class="hidden-input"/>
+                </button>
                 
                 <div class="inline-flex place-items-center justify-center gap-2 relative h-[20px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
                     <input aria-label="Alpha channel" type="range" class="w-full accent-app-blue" v-model="alpha" min="0" max="1" step="0.01" @input="updateColorFromAlpha" />
                 </div>
             </div>
-            <div class="color-preview" :style="{ backgroundColor: rgbaColor }"></div>
             <input :aria-labelledby="labelId" :id="id" type="text" class="text-xs h-[36px] w-[200px]" v-model="colorValue" @input="updateColorFromInput" placeholder="Enter RGBA" />
         </div>
     </div>
 </template>
- 
+
 <script setup>
-import { ref, computed, watch, toRefs } from 'vue'
+import { ref, computed, watch, toRefs, onMounted } from 'vue'
+import { adaptColorToBackground } from './maker/lib';
+import vClickOutside from "../directives/vClickOutside"
+import { convertColorToHex } from '../useNestedProp';
 
 const props = defineProps({
     value: {
@@ -43,7 +64,34 @@ const { value } = toRefs(props)
 const hexColor = ref('#000000') 
 const alpha = ref(1) 
 
+const defaultPalette = ref([
+    '#000000',
+    '#FFFFFF',
+    "#D3D3D3",
+    "#A9A9A9",
+    "#808080",
+    '#FF5733',
+    '#33FF57',
+    '#3357FF',
+    '#FFC300',
+    '#800080',
+    '#FF1493',
+    '#00CED1',
+]);
+
+function close(_e){
+    open.value = false;
+}
+
+const open = ref(false);
+
 parseModelValue(value.value)
+
+const myColorInput = ref(null);
+
+const triggerColorPicker = () => {
+    myColorInput.value?.click();
+};
 
 watch(value, (newValue) => {
     parseModelValue(newValue)
@@ -61,6 +109,11 @@ watch(rgbaColor, (newColor) => {
     emit('update:value', newColor)
     emit('change')
 })
+
+function setColor(c) {
+    hexColor.value = c;
+    updateColorFromHex();
+}
 
 function updateColorFromHex() {
     colorValue.value = rgbaColor.value
@@ -152,4 +205,41 @@ function hslToRgb(h, s, l) {
 input[type="range"] {
     width: 100px;
 }
+
+.color-picker-dialog {
+    border-radius: 0px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    display: grid;
+    gap: 6px;
+    grid-template-columns: 32px 32px 32px;
+    padding: 6px;
+    z-index: 1;
+}
+
+.color-picker-option {
+    align-items:center;
+    border-radius: 0px;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    position: relative;
+    width: 32px;
+}
+
+.my-color-picker-option-empty {
+    height: 32px;
+    width: 32px;
+    border: 2px dashed #CCCCCC;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hidden-input {
+    max-height: 0px;
+    max-width: 0px;
+    visibility: hidden;
+}
+
 </style>
+
