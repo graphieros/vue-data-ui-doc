@@ -3573,7 +3573,9 @@ export function useConfig() {
                 stacked: false,
                 stackGap: 20,
                 scale: {
-                    ticks: 10
+                    ticks: 10,
+                    min: null,
+                    max: null,
                 },
                 zoom: ZOOM,
                 selector: {
@@ -3602,7 +3604,8 @@ export function useConfig() {
                         verticalLines: {
                             show: true,
                             color: COLOR_GREY_MID,
-                            hideUnderXLength: 20
+                            hideUnderXLength: 20,
+                            position: 'middle' // 'start'
                         },
                         timeLabels: {
                             show: true,

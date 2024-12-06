@@ -1,6 +1,6 @@
 [
   {
-    "version": "v 2.4.24",
+    "version": "v 2.4.25",
     "date": "2024-12-06",
     "updates": [
       {
@@ -11,6 +11,11 @@
       {
         "component": "VueUiXyCanvas",
         "description": "Add config options to force min scale and max scale.",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Show vertical lines on same modulo as time labels",
         "link": "/docs#vue-ui-xy-canvas"
       }
     ]

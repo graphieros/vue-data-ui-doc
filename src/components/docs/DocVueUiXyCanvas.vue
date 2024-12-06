@@ -185,6 +185,7 @@ const config = ref({
             show: true,
             color: "#CCCCCC",
             hideUnderXLength: 20,
+            position: 'middle'
           },
           timeLabels: {
             show: true,
@@ -373,6 +374,7 @@ const darkModeConfig = ref({
             show: true,
             color: "#4A4A4A",
             hideUnderXLength: 20,
+            position: 'middle'
           },
           timeLabels: {
             show: true,
@@ -506,85 +508,59 @@ function randomizeData() {
 <template>
   <div>
     <h1
-      class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl"
-    >
+      class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
       <VueUiIcon name="chartLine" stroke="#42d392" :strokeWidth="1.5" />
-      <span
-        >VueUi<span class="text-black dark:text-app-blue-light"
-          >XyCanvas</span
-        ></span
-      >
+      <span>VueUi<span class="text-black dark:text-app-blue-light">XyCanvas</span></span>
     </h1>
-    <p
-      class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center"
-    >
+    <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
       {{ translations.docs.tooltips.xyCanvas[store.lang] }}
     </p>
 
-    <BaseDocHeaderActions
-      targetLink="vue-ui-xy-canvas"
-      :configSource="mainConfig.vue_ui_xy_canvas"
-    />
+    <BaseDocHeaderActions targetLink="vue-ui-xy-canvas" :configSource="mainConfig.vue_ui_xy_canvas" />
 
-    <div
-      :class="`transition-all mx-auto ${
-        isFixed
+    <div :class="`transition-all mx-auto ${isFixed
           ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl'
           : 'w-2/3'
-      }`"
-    >
-      <button
-        @click="fixChart"
-        class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-      >
+        }`">
+      <button @click="fixChart"
+        class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
         <PinnedOffIcon v-if="isFixed" />
         <div v-else class="relative overflow-visible">
           <PinIcon class="peer overflow-visible" />
           <div
-            class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded"
-          >
+            class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
             {{ hintPin[store.lang] }}
           </div>
         </div>
       </button>
       <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-        <button
-          @click="resetDefault"
-          class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6"
-        >
+        <button @click="resetDefault"
+          class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">
           {{ translations.docs.reset[store.lang] }}
         </button>
-        <button
-          @click="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-          class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"
-        >
+        <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+          class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">
           <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
         </button>
       </div>
       <Suspense>
         <template #default>
-          <VueDataUi
-            component="VueUiXyCanvas"
-            :dataset="dataset"
-            :config="
-              isDarkMode
-                ? {
-                    ...mutableConfigDarkMode,
-                    style: {
-                      ...mutableConfigDarkMode.style,
-                      fontFamily: 'Satoshi',
-                    },
-                  }
-                : {
-                    ...mutableConfig,
-                    style: {
-                      ...mutableConfig.style,
-                      fontFamily: 'Satoshi',
-                    },
-                  }
-            "
-            :key="key"
-          />
+          <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="isDarkMode
+          ? {
+            ...mutableConfigDarkMode,
+            style: {
+              ...mutableConfigDarkMode.style,
+              fontFamily: 'Satoshi',
+            },
+          }
+          : {
+            ...mutableConfig,
+            style: {
+              ...mutableConfig.style,
+              fontFamily: 'Satoshi',
+            },
+          }
+        " :key="key" />
         </template>
         <template #fallback>
           <BaseSpinner />
@@ -593,16 +569,8 @@ function randomizeData() {
       <BaseRandomButton @click="randomizeData" />
     </div>
 
-    <Box
-      showEmits
-      showSlots
-      showUseCases
-      showThemes
-      showTooltip
-      showResponsive
-      schema="vue_ui_xy_canvas"
-      signInfo="both"
-    >
+    <Box showEmits showSlots showUseCases showThemes showTooltip showResponsive schema="vue_ui_xy_canvas"
+      signInfo="both">
       <template #tab0>
         {{ translations.docs.datastructure[store.lang] }}
         <div>
@@ -672,20 +640,16 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
       <template #tab1>
         <div class="w-full overflow-x-auto">
           <div class="flex gap-2">
-            <button
-              @click="resetDefault"
-              class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all"
-            >
+            <button @click="resetDefault"
+              class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">
               {{ translations.docs.reset[store.lang] }}
             </button>
-            <button
-              @click="
-                copyToClipboard(
-                  isDarkMode ? mutableConfigDarkMode : mutableConfig
-                )
-              "
-              class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"
-            >
+            <button @click="
+        copyToClipboard(
+          isDarkMode ? mutableConfigDarkMode : mutableConfig
+        )
+        "
+              class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all">
               <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
             </button>
           </div>
@@ -846,8 +810,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                     <span
                       >formatter: null,
                       <BaseComment>{{
-                        translations.formatterLink[store.lang]
-                      }}</BaseComment></span
+        translations.formatterLink[store.lang]
+      }}</BaseComment></span
                     >
                   </BaseDetails>
                   <BaseDetails attr="grid" :level="3" title="style.chart.grid">
@@ -1160,6 +1124,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                           :dark="mutableConfigDarkMode"
                           @change="forceChartUpdate()"
                         />
+                        <BaseAttr name="position" attr="style.chart.grid.y.verticalLines.position" type="select" :options="['start', 'middle']" defaultVal="middle"  :light="mutableConfig" :dark="mutableConfigDarkMode" />
                       </BaseDetails>
                     </BaseDetails>
                     <BaseDetails
@@ -2259,30 +2224,24 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
       <template #tab7>
         <ResponsiveUnit>
           <template #chart>
-            <VueDataUi
-              component="VueUiXyCanvas"
-              :dataset="dataset"
-              :config="
-                isDarkMode
-                  ? {
-                      ...mutableConfigDarkMode,
-                      responsive: true,
-                      style: {
-                        ...mutableConfigDarkMode.style,
-                        fontFamily: 'Satoshi',
-                      },
-                    }
-                  : {
-                      ...mutableConfig,
-                      responsive: true,
-                      style: {
-                        ...mutableConfig.style,
-                        fontFamily: 'Satoshi',
-                      },
-                    }
-              "
-              :key="key"
-            />
+            <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="isDarkMode
+          ? {
+            ...mutableConfigDarkMode,
+            responsive: true,
+            style: {
+              ...mutableConfigDarkMode.style,
+              fontFamily: 'Satoshi',
+            },
+          }
+          : {
+            ...mutableConfig,
+            responsive: true,
+            style: {
+              ...mutableConfig.style,
+              fontFamily: 'Satoshi',
+            },
+          }
+        " :key="key" />
           </template>
         </ResponsiveUnit>
       </template>
