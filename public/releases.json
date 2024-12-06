@@ -1,11 +1,16 @@
 [
   {
-    "version": "v 2.4.22",
+    "version": "v 2.4.24",
     "date": "2024-12-06",
     "updates": [
       {
         "component": "VueUiXyCanvas",
         "description": "Fix dataset reactivity issue",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Add config options to force min scale and max scale.",
         "link": "/docs#vue-ui-xy-canvas"
       }
     ]
