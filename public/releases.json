@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.22",
+    "date": "2024-12-06",
+    "updates": [
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Fix dataset reactivity issue",
+        "link": "/docs#vue-ui-xy-canvas"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.21",
     "date": "2024-12-04",
     "updates": [
