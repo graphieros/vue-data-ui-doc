@@ -273,7 +273,7 @@ function fixChart() {
             <ComponentContent
                 :dataset="datasetItems.map(({name, value, color, children}) => {return {name, value, color, children}})"
                 :config="finalConfig"
-                componentName="VueUiChestnut"
+                componentName="VueUiVerticalBar"
                 configName="vue_ui_vertical_bar"
                 @click="() => copyComponent('componentContent', store)"
                 :copyComponentFunc="() => copyComponent('componentContent', store)"

@@ -70,6 +70,7 @@ const DocVueUiCarouselTable = defineAsyncComponent(() => import('../components/d
 const DocVueUiGizmo = defineAsyncComponent(() => import('../components/docs/DocVueUiGizmo.vue'));
 const DocVueUiStackbar = defineAsyncComponent(() => import('../components/docs/DocVueUiStackbar.vue'));
 const DocVueUiBullet = defineAsyncComponent(() => import('../components/docs/DocVueUiBullet.vue'));
+const DocVueUiFunnel = defineAsyncComponent(() => import('../components/docs/DocVueUiFunnel.vue'));
 
 const mainConfig = useConfig()
 
@@ -841,7 +842,19 @@ const menuItems = computed(() => [
         hasLegend: false,
         thumb: new URL('../assets/thumb_timer.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_timer_light.png', import.meta.url).href,
-    }
+    },
+    {
+        name: "Funnel",
+        icon: "chartFunnel",
+        tooltip: translations.value.docs.tooltips.funnel[store.lang],
+        link: "/docs#vue-ui-funnel",
+        type: "xy",
+        thumb: new URL('../assets/thumb_funnel.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_funnel_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: false
+    },
 ]);
 
 function updateCrumb() {
@@ -1123,6 +1136,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiBullet v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-bullet'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiFunnel v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-funnel'" />
             </Transition>
 
             <Transition name="fade">

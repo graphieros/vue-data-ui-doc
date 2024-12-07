@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.26",
+    "date": "2024-12-07",
+    "updates": [
+      {
+        "component": "VueUiFunnel",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-xy-funnel"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.25",
     "date": "2024-12-06",
     "updates": [

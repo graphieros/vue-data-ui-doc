@@ -59,7 +59,8 @@ export function useIconMap(componentName) {
         VueUiXy: 'chartLine',
         VueUiXyCanvas: 'chartLine',
         VueUiGizmo: 'battery',
-        VueUiStackbar: 'chartStackbar'
+        VueUiStackbar: 'chartStackbar',
+        VueUiFunnel: 'chartFunnel'
     }
 
     return mapping[componentName] || 'clipBoard';
@@ -67,11 +68,11 @@ export function useIconMap(componentName) {
 
 export function isValidComponent(content) {
     const valid = [
-        'VueUiBullet',
         'VueUi3dBar',
         'VueUiAccordion',
         'VueUiAgePyramid',
         'VueUiAnnotator',
+        'VueUiBullet',
         'VueUiCandlestick',
         'VueUiCarouselTable',
         'VueUiChestnut',
@@ -82,8 +83,10 @@ export function isValidComponent(content) {
         'VueUiDonutEvolution',
         'VueUiDumbbell',
         'VueUiFlow',
+        'VueUiFunnel',
         'VueUiGalaxy',
         'VueUiGauge',
+        'VueUiGizmo',
         'VueUiHeatmap',
         'VueUiIcon',
         'VueUiKpi',
@@ -109,6 +112,7 @@ export function isValidComponent(content) {
         'VueUiSparkbar',
         'VueUiSparkgauge',
         'VueUiSparkline',
+        'VueUiStackbar',
         'VueUiStripPlot',
         'VueUiTable',
         'VueUiTableHeatmap',
@@ -123,8 +127,6 @@ export function isValidComponent(content) {
         'VueUiWordCloud',
         'VueUiXy',
         'VueUiXyCanvas',
-        'VueUiGizmo',
-        'VueUiStackbar'
     ];
 
     return valid.includes(content);

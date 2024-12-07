@@ -1577,6 +1577,17 @@ export const useMainStore = defineStore("main", {
                         ar: 'تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين'
                     },
                     tooltips: {
+                        funnel: {
+                            en: "Highlight the progression of attrition that occurs at each stage of a process.",
+                            fr: "Met en évidence la progression de l'attrition qui se produit à chaque étape d'un processus.",
+                            pt: "Destaca a progressão da perda que ocorre em cada etapa de um processo.",
+                            de: "Hervorhebung des Fortschritts der Abnutzung, die in jeder Phase eines Prozesses auftritt.",
+                            zh: "突出显示在每个过程阶段发生的流失进展。",
+                            jp: "プロセスの各段階で発生する減少の進行を強調します。",
+                            es: "Resalta la progresión de la pérdida que ocurre en cada etapa de un proceso.",
+                            ko: "프로세스의 각 단계에서 발생하는 감소의 진행을 강조합니다.",
+                            ar: "تسليط الضوء على تطور التآكل الذي يحدث في كل مرحلة من مراحل العملية."
+                        },
                         bullet: {
                             en: 'A space-efficient alternative to gauge charts.',
                             fr: "Une alternative compacte aux graphiques de jauge.",

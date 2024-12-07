@@ -231,6 +231,15 @@ const smallMenu = ref([
         thumbLight: new URL('../assets/thumb_donut_evolution_light.png', import.meta.url).href,
     },
     {
+        route: '/docs#vue-ui-funnel',
+        icon: 'chartFunnel',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Funnel',
+        thumb: new URL('../assets/thumb_funnel.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_funnel_light.png', import.meta.url).href,
+    },
+    {
         route: '/docs#vue-ui-donut',
         icon: 'chartDonut',
         cssClasses: '',
@@ -623,6 +632,7 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-age-pyramid', componentName: 'AgePyramid', icon: 'chartAgePyramid' },
             {route: '/docs#vue-ui-stackbar', componentName: 'Stackbar', icon: 'chartStackbar' },
             {route: '/docs#vue-ui-donut-evolution', componentName: 'DonutEvolution', icon: 'chartDonutEvolution' },
+            {route: '/docs#vue-ui-funnel', componentName: 'Funnel', icon: 'chartFunnel' },
         ]
     },
     {
