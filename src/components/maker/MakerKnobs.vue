@@ -90,7 +90,7 @@ const useTransparencyLabel = ref({
             <div v-for="(knob, i) in model.filter(k => k.category === category.key)" class="flex flex-col justify-start my-2">
 
                 <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type !== 'color'" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }}</label>
-                <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type === 'color' && useOldColorPickers" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }}</label>
+                <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type === 'color' && (useOldColorPickers || knob.old)" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }}</label>
 
                 <div class="flex place-items-center justify-start h-[40px]">
                     <BaseNumberInput v-if="knob.type === 'number'" v-model:value="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" @change="emit('change')" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>
@@ -100,7 +100,7 @@ const useTransparencyLabel = ref({
                             <input :id="`k_${i}_${uid}_${c}`" type="range" v-model="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" class="accent-app-blue z-0" @change="emit('change')">
                         </div>
                     </template>
-                    <BaseColorInput v-else-if="knob.type === 'color' && !useOldColorPickers" :label="getLabel(knob.label)" :rgba="true" v-model:value="knob.def" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>
+                    <BaseColorInput v-else-if="knob.type === 'color' && (!useOldColorPickers && !knob.old)" :label="getLabel(knob.label)" :rgba="true" v-model:value="knob.def" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>
                     <input :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`" v-else-if="!['number', 'range', 'select'].includes(knob.type)" class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" v-model="knob.def" @change="emit('change')">
                     <select v-else-if="knob.type === 'select'" v-model="knob.def" @change="emit('change')" class="h-[32px] px-2" :id="`k_${i}_${uid}_${c}`">
                         <option v-for="opt in knob.options">{{ opt }}</option>

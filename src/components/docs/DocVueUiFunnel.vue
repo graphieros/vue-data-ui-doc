@@ -110,7 +110,7 @@ const config = ref({
             width: 600,
             height: 500,
             title: {
-                text: "",
+                text: "Title",
                 color: "#2D353C",
                 fontSize: 20,
                 bold: true,
@@ -119,7 +119,7 @@ const config = ref({
                 paddingRight: 0,
                 subtitle: {
                     color: "#A1A1A1",
-                    text: "",
+                    text: "Subtitle",
                     fontSize: 16,
                     bold: false,
                 },
@@ -363,11 +363,11 @@ const { configCode, showAllConfig } = useConfigCode()
             {{ translations.docs.tooltips.funnel[store.lang] }}
         </p>
 
-        <!-- <BaseDocHeaderActions
-            targetLink="vue-ui-bullet"
+        <BaseDocHeaderActions
+            targetLink="vue-ui-funnel"
             targetMaker="VueUiFunnel"
-            :configSource="mainConfig.vue_ui_bullet"
-        /> -->
+            :configSource="mainConfig.vue_ui_funnel"
+        />
 
         <div
             :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'w-2/4'}`">
@@ -401,15 +401,14 @@ const { configCode, showAllConfig } = useConfigCode()
                     <BaseSpinner />
                 </template>
             </Suspense>
-
         </div>
 
-        <!-- <div class="w-full flex justify-center mt-6">
-            <BaseViewExampleButton link="/examples/categories#vue-ui-bullet"/>
-        </div> -->
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-funnel"/>
+        </div>
 
         <!--TODO: ADD SCHEMA -->
-        <Box showEmits showSlots showThemes signInfo="positiveOnly">
+        <Box showEmits showSlots showThemes showResponsive schema="vue_ui_funnel" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -739,6 +738,29 @@ const <span class="text-black dark:text-app-green">dataset: VueUiFunnelDatasetIt
             <!--THEMES-->
             <template #tab6>
                 <ThemesVueUiFunnel/>
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit height="500px">
+                    <template #chart>
+                        <VueDataUi 
+                            component="VueUiFunnel" 
+                            :dataset="dataset" 
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    }
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                            :key="key"
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>

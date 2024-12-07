@@ -200,6 +200,14 @@ const categories = computed(() => {
             thumb: new URL('../assets/thumb_bullet.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_bullet_light.png', import.meta.url).href,
             description: translations.value.docs.tooltips.bullet
+        },
+        {
+            link: 'vue-ui-funnel',
+            icon: 'chartFunnel',
+            component: 'VueUiFunnel',
+            thumb: new URL('../assets/thumb_funnel.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_funnel_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.funnel
         }
     ].map((c, i) => {
         return {

@@ -15,6 +15,7 @@ export default function useExamples() {
             bg: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
             textColor: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             gridStroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+            greyStroke: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
             grey: '#6A6A6A',
             gridStrokeLight: isDarkMode.value ? '#7A7A7A' : '#BBBBBB',
             blue: '#1f77b4',
@@ -2204,6 +2205,99 @@ export default function useExamples() {
                 color: '#cf5932'
             },
         ]
+    })
+
+    //-------------- VUE-UI-FUNNEL --------------//
+    const DATASET_FUNNEL_BASIC = ref([
+        {
+            name: "Lead",
+            value: 8249,
+        },
+        {
+            name: "Opportunity",
+            value: 6322,
+        },
+        {
+            name: "Qualified",
+            value: 4562,
+        },
+        {
+            name: "Sold",
+            value: 3021,
+        },
+        {
+            name: "Retained",
+            value: 1412,
+        },
+    ]);
+
+    const DATASET_FUNNEL_COLORS = ref([
+        {
+            name: "Lead",
+            value: 8249,
+            color: '#d6616b50'
+        },
+        {
+            name: "Opportunity",
+            value: 6322,
+            color: '#2ca02c50'
+        },
+        {
+            name: "Qualified",
+            value: 4562,
+            color: '#17becf50'
+        },
+        {
+            name: "Sold",
+            value: 3021,
+            color: '#ff7f0e50'
+        },
+        {
+            name: "Retained",
+            value: 1412,
+            color: '#e7ba5250'
+        },
+    ]);
+
+    const CONFIG_FUNNEL_BASIC = computed(() => {
+        return {
+            table: TABLE.value,
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    circles: {
+                        stroke: colors.value.bg
+                    },
+                    circleLinks: {
+                        color: colors.value.greyStroke
+                    },
+                    area: {
+                        color: colors.value.greyStroke
+                    },
+                    bars: {
+                        stroke: colors.value.bg,
+                        dataLabels: {
+                            name: {
+                                color: colors.value.textColor
+                            },
+                            value: {
+                                color: isDarkMode.value ? colors.value.gridStrokeLight : '#AAAAAA'
+                            }
+                        }
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddingLeft: 36,
+                        subtitle: {
+                            text: 'Subtitle',
+                        }
+                    }
+                }
+            }
+        }
     })
 
     const examples = computed(() => {
@@ -5204,6 +5298,67 @@ export default function useExamples() {
                     es: "Con valores negativos y positivos",
                     ko: "음수와 양수 포함",
                     ar: "مع القيم السالبة والموجبة"
+                }
+            },
+            // FUNNEL BASIC
+            { 
+                dataset: DATASET_FUNNEL_BASIC.value, 
+                config: CONFIG_FUNNEL_BASIC.value,
+                component: 'VueUiFunnel',
+                icon: 'chartFunnel',
+                id: 'funnel-basic',
+                link: 'vue-ui-funnel',
+                description: {
+                    en: "Basic funnel chart",
+                    fr: "Graphique en entonnoir de base",
+                    pt: "Gráfico de funil básico",
+                    de: "Einfaches Trichterdiagramm",
+                    zh: "基本漏斗图",
+                    jp: "基本的なファネルチャート",
+                    es: "Gráfico de embudo básico",
+                    ko: "기본 퍼널 차트",
+                    ar: "مخطط قمعي أساسي"
+                }
+            },
+            // FUNNEL COLORS
+            { 
+                dataset: DATASET_FUNNEL_COLORS.value, 
+                config: {
+                    ...CONFIG_FUNNEL_BASIC.value,
+                    style: {
+                        ...CONFIG_FUNNEL_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_FUNNEL_BASIC.value.style.chart,
+                            circles: {
+                                ...CONFIG_FUNNEL_BASIC.value.style.chart.circles,
+                                strokeWidth: 6,
+                                dataLabels: {
+                                    adaptColorToBackground: false,
+                                    color: colors.value.textColor
+                                }
+                            },
+                            bars: {
+                                ...CONFIG_FUNNEL_BASIC.value.style.chart.bars,
+                                borderRadius: 36,
+                                strokeWidth: 6
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiFunnel',
+                icon: 'chartFunnel',
+                id: 'funnel-basic',
+                link: 'vue-ui-funnel',
+                description: {
+                    en: "With custom colors and rounded bars",
+                    fr: "Avec des couleurs personnalisées et des barres arrondies",
+                    pt: "Com cores personalizadas e barras arredondadas",
+                    de: "Mit benutzerdefinierten Farben und abgerundeten Balken",
+                    zh: "具有自定义颜色和圆角条形图",
+                    jp: "カスタムカラーと丸みを帯びたバー付き",
+                    es: "Con colores personalizados y barras redondeadas",
+                    ko: "사용자 지정 색상 및 둥근 막대 포함",
+                    ar: "مع ألوان مخصصة وأشرطة مستديرة"
                 }
             },
         ]
