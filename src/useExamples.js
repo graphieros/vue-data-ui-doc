@@ -2300,6 +2300,127 @@ export default function useExamples() {
         }
     })
 
+    //-------------- VUE-UI-TREEMAP --------------//
+    const DATASET_TREEMAP_BASIC = ref( [
+        {
+            name: "Parent 1",
+            value: 100,
+            children: [
+                {
+                    name: "P1 C1",
+                    value: 70,
+                },
+                {
+                    name: 'P1 C2',
+                    value: 20
+                },
+                {
+                    name: 'P1 C3',
+                    value: 10,
+                },
+            ]
+        },
+        {
+            name: "Parent 2",
+            value: 110,
+            children: [
+                {
+                    name: "P2 C1",
+                    value: 80,
+                },
+                {
+                    name: 'P2 C2',
+                    value: 20
+                },
+                {
+                    name: 'P2 C3',
+                    value: 10,
+                },
+            ]
+        },
+        {
+            name: "Parent 3",
+            value: 75,
+            children: [
+                {
+                    name: "P3 C1",
+                    value: 20,
+                },
+                {
+                    name: 'P3 C2',
+                    value: 10
+                },
+                {
+                    name: 'P3 C3',
+                    value: 10
+                },
+                {
+                    name: 'P3 C4',
+                    value: 5
+                },
+                {
+                    name: 'P3 C5',
+                    value: 5
+                },
+                {
+                    name: 'P3 C6',
+                    value: 10
+                },
+                {
+                    name: 'P3 C7',
+                    value: 5
+                },
+                {
+                    name: 'P3 C8',
+                    value: 10,
+                    children: [
+                        {
+                            name: 'P3 C8 CC1',
+                            value: 5,
+                        },
+                        {
+                            name: 'P3 C8 CC2',
+                            value: 5,
+                        },
+                    ]
+                },
+            ]
+        },
+    ]);
+
+    const CONFIG_TREEMAP_BASIC = computed(() => {
+        return {
+            table: TABLE.value,
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                    },
+                    layout: {
+                        rects: {
+                            stroke: colors.value.bg,
+                            selected: {
+                                stroke: colors.value.bg
+                            }
+                        }
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddingLeft: 12,
+                        subtitle: {
+                            text: 'Subtitle',
+                        }
+                    }
+                }
+            }
+        }
+    })
+
     const examples = computed(() => {
         return [
             // XY BASIC LINE
@@ -5413,7 +5534,100 @@ export default function useExamples() {
                     ko: "콤팩트",
                     ar: "مضغوط"
                 }
-            }
+            },
+            // TREEMAP BASIC
+            { 
+                dataset: DATASET_TREEMAP_BASIC.value, 
+                config: CONFIG_TREEMAP_BASIC.value,
+                component: 'VueUiTreemap',
+                icon: 'chartTreemap',
+                id: 'treemap-basic',
+                link: 'vue-ui-treemap',
+                description: {
+                    en: "Basic treemap chart",
+                    fr: "Graphique en treemap de base",
+                    pt: "Gráfico de mapa de árvore básico",
+                    de: "Einfaches Baumkartendiagramm",
+                    zh: "基本树形图",
+                    jp: "基本的なツリーマップチャート",
+                    es: "Gráfico de mapa de árbol básico",
+                    ko: "기본 트리맵 차트",
+                    ar: "مخطط شجري أساسي"
+                }
+            },
+            // TREEMAP SPACED
+            { 
+                dataset: DATASET_TREEMAP_BASIC.value, 
+                config: {
+                    ...CONFIG_TREEMAP_BASIC.value,
+                    style: {
+                        ...CONFIG_TREEMAP_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_TREEMAP_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                rects: {
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    borderRadius: 24,
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiTreemap',
+                icon: 'chartTreemap',
+                id: 'treemap-spaced',
+                link: 'vue-ui-treemap',
+                description: {
+                    en: "Rounded corners",
+                    fr: "Coins arrondis",
+                    pt: "Cantos arredondados",
+                    de: "Abgerundete Ecken",
+                    zh: "圆角",
+                    jp: "丸い角",
+                    es: "Esquinas redondeadas",
+                    ko: "둥근 모서리",
+                    ar: "زوايا مستديرة"
+                }
+            },
+            // TREEMAP NO GRADIENT
+            { 
+                dataset: DATASET_TREEMAP_BASIC.value, 
+                config: {
+                    ...CONFIG_TREEMAP_BASIC.value,
+                    style: {
+                        ...CONFIG_TREEMAP_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_TREEMAP_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_TREEMAP_BASIC.value.style.chart.layout,
+                                rects: {
+                                    ...CONFIG_TREEMAP_BASIC.value.style.chart.layout.rects,
+                                    colorRatio: 0.4,
+                                    gradient: {
+                                        show: false,
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiTreemap',
+                icon: 'chartTreemap',
+                id: 'treemap-no-gradient',
+                link: 'vue-ui-treemap',
+                description: {
+                    en: "Without gradient",
+                    fr: "Sans dégradé",
+                    pt: "Sem gradiente",
+                    de: "Ohne Verlauf",
+                    zh: "无渐变",
+                    jp: "グラデーションなし",
+                    es: "Sin degradado",
+                    ko: "그라데이션 없음",
+                    ar: "بدون تدرج"
+                }
+            },
         ]
     })
 

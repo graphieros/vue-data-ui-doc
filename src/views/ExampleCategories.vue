@@ -208,7 +208,15 @@ const categories = computed(() => {
             thumb: new URL('../assets/thumb_funnel.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_funnel_light.png', import.meta.url).href,
             description: translations.value.docs.tooltips.funnel
-        }
+        },
+        {
+            link: 'vue-ui-treemap',
+            icon: 'chartTreemap',
+            component: 'VueUiTreemap',
+            thumb: new URL('../assets/thumb_treemap.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_treemap_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.treemap
+        },
     ].map((c, i) => {
         return {
             ...c,
@@ -356,7 +364,7 @@ const hoveredLink = ref(null);
     
                 <Suspense>
                     <template #default>
-                        <div class="w-full p-4">
+                        <div class="w-full p-4 example-wrapper">
                             <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
                                 <template #plot-comment="{ plot }">
                                     <div v-if="example.component === 'VueUiXy' && plot.value === 140" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-green">
@@ -382,3 +390,10 @@ const hoveredLink = ref(null);
         </div>
     </div>
 </template>
+
+<style>
+.example-wrapper .vue-ui-treemap-cell {
+    padding-left: 12px;
+    padding-top: 6px;
+}
+</style>
