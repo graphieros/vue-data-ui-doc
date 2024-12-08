@@ -144,7 +144,7 @@ const excl5 = 'number';
                 {{ translations.overview.features[store.lang] }}
             </caption>
             <thead>
-                <tr class="bg-[#FFFFFF05]">
+                <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
                     <th class="border border-slate-600 p-2">{{ translations.overview.themes[store.lang] }}</th>
                     <th class="border border-slate-600 p-2">Slots</th>
                     <th class="border border-slate-600 p-2">Emits</th>
@@ -154,28 +154,28 @@ const excl5 = 'number';
 
             </thead>
             <tbody>
-                <tr class="bg-[#FFFFFF10]">
-                    <td class="p-2 border border-slate-700">
+                <tr class="bg-[#FFFFFF60] dark:bg-[#FFFFFF10]">
+                    <td class="p-2 border border-slate-600">
                         <div class="w-full flex justify-center">
                             <VueUiIcon :name="selectedComponent.hasThemes ? 'circleCheck' : 'circleCancel'" :stroke="selectedComponent.hasThemes ? '#42d392' : '#ff6400'"/>
                         </div>
                     </td>
-                    <td class="p-2 border border-slate-700">
+                    <td class="p-2 border border-slate-600">
                         <div class="w-full flex justify-center">
                             <VueUiIcon :name="selectedComponent.hasSlots ? 'circleCheck' : 'circleCancel'" :stroke="selectedComponent.hasSlots ? '#42d392' : '#ff6400'"/>
                         </div>
                     </td>
-                    <td class="p-2 border border-slate-700">
+                    <td class="p-2 border border-slate-600">
                         <div class="w-full flex justify-center">
                             <VueUiIcon :name="selectedComponent.hasEmits ? 'circleCheck' : 'circleCancel'" :stroke="selectedComponent.hasEmits ? '#42d392' : '#ff6400'"/>
                         </div>
                     </td>
-                    <td class="p-2 border border-slate-700">
+                    <td class="p-2 border border-slate-600">
                         <div class="w-full flex justify-center">
                             <VueUiIcon :name="selectedComponent.hasExposed ? 'circleCheck' : 'circleCancel'" :stroke="selectedComponent.hasExposed ? '#42d392' : '#ff6400'"/>
                         </div>
                     </td>
-                    <td class="p-2 border border-slate-700">
+                    <td class="p-2 border border-slate-600">
                         <div class="w-full flex justify-center">
                             <VueUiIcon :name="selectedComponent.responsive ? 'circleCheck' : 'circleCancel'" :stroke="selectedComponent.responsive ? '#42d392' : '#ff6400'"/>
                         </div>
@@ -197,19 +197,19 @@ const excl5 = 'number';
                 {{ translations.overview.userOptions[store.lang] }}
             </caption>
             <thead>
-                <tr class="bg-[#FFFFFF05]">
+                <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
                     <th class="border border-slate-600 p-2">{{ translations.overview.icon[store.lang] }}</th>
                     <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-[#FFFFFF10]" v-for="option in selectedComponent.userOptions">
-                    <td class="p-2 border border-slate-700">
+                <tr class="bg-[#FFFFFF60] dark:bg-[#FFFFFF10]" v-for="option in selectedComponent.userOptions">
+                    <td class="p-2 border border-slate-600">
                         <div class="w-full flex justify-center">
                             <VueUiIcon :name="option.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
                         </div>
                     </td>
-                    <td class="p-2 border border-slate-700 text-xs">
+                    <td class="p-2 border border-slate-600 text-xs">
                         {{ option.description }}
                     </td>
                 </tr>
@@ -221,17 +221,17 @@ const excl5 = 'number';
                 Slots
             </caption>
             <thead>
-                <tr class="bg-[#FFFFFF05]">
+                <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
                     <th class="border border-slate-600 p-2">Slot</th>
                     <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-[#FFFFFF10]" v-for="option in selectedComponent.slots">
-                    <td class="p-2 border border-slate-700 text-xs">
+                <tr class="bg-[#FFFFFF60] dark:bg-[#FFFFFF10]" v-for="option in selectedComponent.slots">
+                    <td class="p-2 border border-slate-600 text-xs">
                         #{{ option.name }}
                     </td>
-                    <td class="p-2 border border-slate-700 text-xs">
+                    <td class="p-2 border border-slate-600 text-xs">
                         {{ option.description }}
                     </td>
                 </tr>
@@ -243,17 +243,17 @@ const excl5 = 'number';
                 Emits
             </caption>
             <thead>
-                <tr class="bg-[#FFFFFF05]">
+                <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
                     <th class="border border-slate-600 p-2">Emit</th>
                     <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-[#FFFFFF10]" v-for="option in selectedComponent.emits">
-                    <td class="p-2 border border-slate-700 text-xs">
+                <tr class="bg-[#FFFFFF60] dark:bg-[#FFFFFF10]" v-for="option in selectedComponent.emits">
+                    <td class="p-2 border border-slate-600 text-xs">
                         @{{ option.name }}
                     </td>
-                    <td class="p-2 border border-slate-700 text-xs">
+                    <td class="p-2 border border-slate-600 text-xs">
                         {{ option.description }}
                     </td>
                 </tr>
@@ -265,17 +265,17 @@ const excl5 = 'number';
                 {{ translations.overview.exposedMethods[store.lang] }}
             </caption>
             <thead>
-                <tr class="bg-[#FFFFFF05]">
+                <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
                     <th class="border border-slate-600 p-2">Method</th>
                     <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-[#FFFFFF10]" v-for="option in selectedComponent.exposed">
-                    <td class="p-2 border border-slate-700 text-xs">
+                <tr class="bg-[#FFFFFF60] dark:bg-[#FFFFFF10]" v-for="option in selectedComponent.exposed">
+                    <td class="p-2 border border-slate-600 text-xs">
                         {{ option.name }}
                     </td>
-                    <td class="p-2 border border-slate-700 text-xs">
+                    <td class="p-2 border border-slate-600 text-xs">
                         {{ option.description }}
                     </td>
                 </tr>
