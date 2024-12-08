@@ -240,7 +240,7 @@ const menuItems = computed(() => {
 
 <template>
     <div v-if="schema"
-        class="border px-4 border-gray-700 rounded-md my-6 relative overflow-x-auto bg-gray-200 dark:bg-[#FFFFFF05]">
+        class="border border-gray-700 rounded-md my-6 relative overflow-x-auto bg-gray-200 dark:bg-[#FFFFFF05]">
         <VueDataUi component="VueUiAccordion" :config="isDarkMode ? darkModeConfig : config">
             <template #title="{ color }">
                 <div :style="`color:${color}`">
@@ -248,7 +248,9 @@ const menuItems = computed(() => {
                 </div>
             </template>
             <template #content>
-                <Schema :component="schema" :showLink="false" :hideDisclaimer="hideSchemaDisclaimer" />
+                <div class="mx-auto w-fit">
+                    <Schema :component="schema" :showLink="false" :hideDisclaimer="hideSchemaDisclaimer" />
+                </div>
             </template>
         </VueDataUi>
     </div>
