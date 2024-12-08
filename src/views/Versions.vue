@@ -389,9 +389,9 @@ onMounted(() => {
           {
             name: "Daily npm downloads",
             series: json.downloads.map(d => d.downloads).slice(0, -1),
-            type: "bar",
+            type: "line",
             useArea: true,
-            smooth: false,
+            smooth: true,
             shape: "star"
           }
         ]
@@ -1468,6 +1468,11 @@ const xyCanvasConfig = computed(() => {
           dataLabels: {
             show: false
           },
+          line: {
+            plots: {
+              radiusRatio: 0.5
+            }
+          },
           zoom: {
             highlightColor: '#42d392',
             color: isDarkMode.value ? '#616161' : '#CCCCCC',
@@ -1476,7 +1481,8 @@ const xyCanvasConfig = computed(() => {
             top: 0.05
           },
           selector: {
-            color: '#42d392'
+            color: '#5f8aee',
+            dashed: false
           },
           tooltip: {
             backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
@@ -1900,26 +1906,6 @@ const versionsReleases = computed(() => {
                       </template>
                     </VueDataUi>
                   </div>
-                    N - 1
-                    <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
-                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'n-1'}}}">
-                        <template #source>
-                        <div class="text-xs text-gray-500 text-left mt-3 pl-2">
-                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
-                        </div>
-                      </template>
-                      </VueDataUi>
-                    </div>
-                    Last to First
-                    <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
-                      <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="{...trendConfig, style: {...trendConfig.style, trendLabel: {...trendConfig.style.trendLabel, trendType: 'lastToFirst'}}}">
-                        <template #source>
-                        <div class="text-xs text-gray-500 text-left mt-3 pl-2">
-                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
-                        </div>
-                      </template>
-                      </VueDataUi>
-                    </div>
                 </div>
                 <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
                   <VueUiSparkline :dataset="versionsReleases" :config="sparklineConfigForReleases">
