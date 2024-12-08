@@ -5347,7 +5347,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiFunnel',
                 icon: 'chartFunnel',
-                id: 'funnel-basic',
+                id: 'funnel-colors',
                 link: 'vue-ui-funnel',
                 description: {
                     en: "With custom colors and rounded bars",
@@ -5361,6 +5361,59 @@ export default function useExamples() {
                     ar: "مع ألوان مخصصة وأشرطة مستديرة"
                 }
             },
+            // FUNNEL COMPACT
+            { 
+                dataset: DATASET_FUNNEL_BASIC.value, 
+                config: {
+                    ...CONFIG_FUNNEL_BASIC.value,
+                    style: {
+                        ...CONFIG_FUNNEL_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_FUNNEL_BASIC.value.style.chart,
+                            height: 200,
+                            barCircleSpacingRatio: 0,
+                            circles: {
+                                ...CONFIG_FUNNEL_BASIC.value.style.chart.circles,
+                                dataLabels: {
+                                    ...CONFIG_FUNNEL_BASIC.value.style.chart.dataLabels,
+                                    fontSize: 10
+                                }
+                            },
+                            bars: {
+                                ...CONFIG_FUNNEL_BASIC.value.style.chart.bars,
+                                gapRatio: 0,
+                                dataLabels: {
+                                    ...CONFIG_FUNNEL_BASIC.value.style.chart.bars.dataLabels,
+                                    name: {
+                                        ...CONFIG_FUNNEL_BASIC.value.style.chart.bars.dataLabels.name,
+                                        offsetY: 4,
+                                        fontSize: 12
+                                    },
+                                    value: {
+                                        ...CONFIG_FUNNEL_BASIC.value.style.chart.bars.dataLabels.value,
+                                        fontSize: 12
+                                    },
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiFunnel',
+                icon: 'chartFunnel',
+                id: 'funnel-compact',
+                link: 'vue-ui-funnel',
+                description: {
+                    en: "Compact",
+                    fr: "Compact",
+                    pt: "Compacto",
+                    de: "Kompakt",
+                    zh: "紧凑",
+                    jp: "コンパクト",
+                    es: "Compacto",
+                    ko: "콤팩트",
+                    ar: "مضغوط"
+                }
+            }
         ]
     })
 
