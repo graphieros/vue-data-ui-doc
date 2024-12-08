@@ -241,15 +241,15 @@ const skeletonsDarkMode = [
 const componentTypes = ref([
   {
     name: "Charts",
-    value: 32
+    value: 35
   },
   {
     name: "Utilities",
-    value: 11
+    value: 10
   },
   {
     name: 'Mini charts',
-    value: 6
+    value: 10
   },
   {
     name: "Tables",
