@@ -203,6 +203,8 @@ const heatmapConfig = computed(() => {
       color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
       fontSize: 14,
       roundingValue: 0,
+      backgroundOpacity: 0,
+      borderColor: isDarkMode.value ? '#4A4A4A' : '#e1e5e8',
       // customFormat: ({datapoint}) => {
       //   return `<div style="border-radius:50%;background:${datapoint.color};display:flex;align-items:center;justify-content:center;height: 64px;width:64px;box-shadow:0 12px 24px -12px rgba(0,0,0,0.3)">${datapoint.value}</div>`
       // }
@@ -539,6 +541,8 @@ const config = computed(() => {
                 showPercentage: false,
                 roundingValue: 0,
                 roundingPercentage: 0,
+                backgroundOpacity: 0,
+                borderColor: isDarkMode.value ? '#4A4A4A' : '#e1e5e8',
             },
             userOptions: {
                 show: true,
@@ -1451,7 +1455,7 @@ table: {
         tooltip: {
           backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
           color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-          backgroundOpacity: 30
+          backgroundOpacity: 0
         },
       }
     }
@@ -1487,7 +1491,8 @@ const xyCanvasConfig = computed(() => {
           tooltip: {
             backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-            borderColor: isDarkMode.value ? '#4A4A4A' : '#e1e5e8'
+            borderColor: isDarkMode.value ? '#4A4A4A' : '#e1e5e8',
+            backgroundOpacity: 0
           },
           legend: {
             backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
