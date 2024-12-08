@@ -6,10 +6,21 @@ import SideMenu from "../components/SideMenu.vue";
 import Prism from "prismjs"
 import "prismjs/themes/prism-okaidia.css"
 
+import sdk from '@stackblitz/sdk'
+
 onMounted(() => {
     window.Prism = window.Prism || {}
     window.Prism.manual = true
-    Prism.highlightAll()
+    Prism.highlightAll();
+
+    sdk.embedProjectId(
+        'stackblitz',
+        'vitejs-vite-qre4ps',
+        {
+            forceEmbedLayout: true,
+            openFile: 'index.html',
+        }
+    );
 })
 
     const store = useMainStore()
@@ -74,5 +85,9 @@ onMounted(() => {
 </pre>
             </code>
         </div>
+        <div 
+            id="stackblitz"
+            class="w-full mx-auto min-h-[1000px]"
+        />
     </div>
 </template>
