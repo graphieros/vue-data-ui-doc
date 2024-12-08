@@ -76,6 +76,7 @@ const smallMenu = ref([
         tooltipContent: 'Sparkline',
         thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
+        component: 'Sparkline'
     },
     {
         route: '/docs#vue-ui-sparkbar',
@@ -85,6 +86,7 @@ const smallMenu = ref([
         tooltipContent: 'Sparkbar',
         thumb: new URL('../assets/thumb_sparkbar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_sparkbar_light.png', import.meta.url).href,
+        component: 'Sparkbar'
     },
     {
         route: '/docs#vue-ui-sparkstackbar',
@@ -94,6 +96,7 @@ const smallMenu = ref([
         tooltipContent: 'SparkStackbar',
         thumb: new URL('../assets/thumb_stackbar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_stackbar_light.png', import.meta.url).href,
+        component: 'SparkStackbar'
     },
     {
         route: '/docs#vue-ui-sparkhistogram',
@@ -103,6 +106,7 @@ const smallMenu = ref([
         tooltipContent: 'SparkHistogram',
         thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_histogram_light.png', import.meta.url).href,
+        component: 'SparkHistogram'
     },
     {
         route: '/docs#vue-ui-sparkgauge',
@@ -112,6 +116,7 @@ const smallMenu = ref([
         tooltipContent: 'Sparkgauge',
         thumb: new URL('../assets/thumb_sparkgauge.png', import.meta.url).href, 
         thumbLight: new URL('../assets/thumb_sparkgauge_light.png', import.meta.url).href, 
+        component: 'Sparkgauge'
     },
     {
         route: '/docs#vue-ui-spark-trend',
@@ -121,6 +126,7 @@ const smallMenu = ref([
         tooltipContent: 'SparkTrend',
         thumb: new URL('../assets/thumb_spark_trend.png', import.meta.url).href, 
         thumbLight: new URL('../assets/thumb_spark_trend_light.png', import.meta.url).href, 
+        component: 'SparkTrend'
     },
     {
         route: '/docs#vue-ui-gizmo',
@@ -130,6 +136,7 @@ const smallMenu = ref([
         tooltipContent: 'Gizmo',
         thumb: new URL('../assets/thumb_gizmo.png', import.meta.url).href, 
         thumbLight: new URL('../assets/thumb_gizmo_light.png', import.meta.url).href, 
+        component: 'Gizmo'
     },
     {
         route: '/docs#vue-ui-quick-chart',
@@ -139,6 +146,7 @@ const smallMenu = ref([
         tooltipContent: 'QuickChart',
         thumb: new URL('../assets/thumb_quick_chart.png', import.meta.url).href, 
         thumbLight: new URL('../assets/thumb_quick_chart_light.png', import.meta.url).href, 
+        component: 'QuickChart'
     },
     {
         route: '/docs#vue-ui-bullet',
@@ -148,6 +156,7 @@ const smallMenu = ref([
         tooltipContent: 'Bullet',
         thumb: new URL('../assets/thumb_bullet.png', import.meta.url).href, 
         thumbLight: new URL('../assets/thumb_bullet_light.png', import.meta.url).href, 
+        component: 'Bullet'
     },
     {
         route: '/docs#vue-ui-xy',
@@ -156,7 +165,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: 'Xy',
         thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href
+        thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
+        component: 'Xy'
     },
     {
         route: '/docs#vue-ui-xy-canvas',
@@ -165,7 +175,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: 'XyCanvas',
         thumb: new URL('../assets/thumb_xy_canvas.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_xy_canvas_light.png', import.meta.url).href
+        thumbLight: new URL('../assets/thumb_xy_canvas_light.png', import.meta.url).href,
+        component: 'XyCanvas'
     },
     {
         route: '/docs#vue-ui-vertical-bar',
@@ -175,6 +186,7 @@ const smallMenu = ref([
         tooltipContent: 'VerticalBar',
         thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
+        component: 'VerticalBar'
     },
     {
         route: '/docs#vue-ui-parallel-coordinate-plot',
@@ -184,6 +196,7 @@ const smallMenu = ref([
         tooltipContent: 'ParallelCoordinatePlot',
         thumb: new URL('../assets/thumb_pcp.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_pcp_light.png', import.meta.url).href,
+        component: 'PCP'
     },
     {
         route: '/docs#vue-ui-flow',
@@ -193,6 +206,7 @@ const smallMenu = ref([
         tooltipContent: 'Flow',
         thumb: new URL('../assets/thumb_flow.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_flow_light.png', import.meta.url).href,
+        component: 'Flow'
     },
     {
         route: '/docs#vue-ui-candlestick',
@@ -202,6 +216,7 @@ const smallMenu = ref([
         tooltipContent: 'Candlestick',
         thumb: new URL('../assets/thumb_candlestick.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_candlestick_light.png', import.meta.url).href,
+        component: 'Candlestick'
     },
     {
         route: '/docs#vue-ui-age-pyramid',
@@ -211,6 +226,7 @@ const smallMenu = ref([
         tooltipContent: 'AgePyramid',
         thumb: new URL('../assets/thumb_age_pyramid.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_age_pyramid_light.png', import.meta.url).href,
+        component: 'AgePyramid'
     },
     {
         route: '/docs#vue-ui-stackbar',
@@ -220,6 +236,7 @@ const smallMenu = ref([
         tooltipContent: 'Stackbar',
         thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
+        component: 'Stackbar'
     },
     {
         route: '/docs#vue-ui-donut-evolution',
@@ -229,6 +246,7 @@ const smallMenu = ref([
         tooltipContent: 'DonutEvolution',
         thumb: new URL('../assets/thumb_donut_evolution.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_donut_evolution_light.png', import.meta.url).href,
+        component: 'DonutEvolution'
     },
     {
         route: '/docs#vue-ui-funnel',
@@ -238,6 +256,7 @@ const smallMenu = ref([
         tooltipContent: 'Funnel',
         thumb: new URL('../assets/thumb_funnel.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_funnel_light.png', import.meta.url).href,
+        component: 'Funnel'
     },
     {
         route: '/docs#vue-ui-donut',
@@ -246,7 +265,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: 'Donut',
         thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href
+        thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
+        component: 'Donut'
     },
     {
         route: '/docs#vue-ui-nested-donuts',
@@ -256,6 +276,7 @@ const smallMenu = ref([
         tooltipContent: 'NestedDonuts',
         thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
+        component: 'NestedDonuts'
     },
     {
         route: '/docs#vue-ui-waffle',
@@ -265,6 +286,7 @@ const smallMenu = ref([
         tooltipContent: 'Waffle',
         thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
+        component: 'Waffle'
     },
     {
         route: '/docs#vue-ui-heatmap',
@@ -274,6 +296,7 @@ const smallMenu = ref([
         tooltipContent: 'Heatmap',
         thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
+        component: 'Heatmap'
     },
     {
         route: '/docs#vue-ui-treemap',
@@ -282,7 +305,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: 'Treemap',
         thumb: new URL('../assets/thumb_treemap.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_treemap_light.png', import.meta.url).href
+        thumbLight: new URL('../assets/thumb_treemap_light.png', import.meta.url).href,
+        component: 'Treemap'
     },
     {
         route: '/docs#vue-ui-rings',
@@ -292,6 +316,7 @@ const smallMenu = ref([
         tooltipContent: 'Rings',
         thumb: new URL('../assets/thumb_rings.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_rings_light.png', import.meta.url).href,
+        component: 'Rings'
     },
     {
         route: '/docs#vue-ui-galaxy',
@@ -301,6 +326,7 @@ const smallMenu = ref([
         tooltipContent: 'Galaxy',
         thumb: new URL('../assets/thumb_galaxy.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_galaxy_light.png', import.meta.url).href,
+        component: 'Galaxy'
     },
     {
         route: '/docs#vue-ui-chestnut',
@@ -310,6 +336,7 @@ const smallMenu = ref([
         tooltipContent: 'Chestnut',
         thumb: new URL('../assets/thumb_chestnut.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href,
+        component: 'Chestnut'
     },
     {
         route: '/docs#vue-ui-gauge',
@@ -319,6 +346,7 @@ const smallMenu = ref([
         tooltipContent: 'Gauge',
         thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
+        component: 'Gauge'
     },
     {
         route: '/docs#vue-ui-onion',
@@ -328,6 +356,7 @@ const smallMenu = ref([
         tooltipContent: 'Onion',
         thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
+        component: 'Onion'
     },
     {
         route: '/docs#vue-ui-wheel',
@@ -337,6 +366,7 @@ const smallMenu = ref([
         tooltipContent: 'Wheel',
         thumb: new URL('../assets/thumb_wheel.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_wheel_light.png', import.meta.url).href,
+        component: 'Wheel'
     },
     {
         route: '/docs#vue-ui-tiremarks',
@@ -346,6 +376,7 @@ const smallMenu = ref([
         tooltipContent: 'Tiremarks',
         thumb: new URL('../assets/thumb_tiremarks.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_tiremarks_light.png', import.meta.url).href,
+        component: 'Tiremarks'
     },
     {
         route: '/docs#vue-ui-thermometer',
@@ -355,6 +386,7 @@ const smallMenu = ref([
         tooltipContent: 'Thermometer',
         thumb: new URL('../assets/thumb_thermometer.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_thermometer_light.png', import.meta.url).href,
+        component: 'Thermometer'
     },
     {
         route: '/docs#vue-ui-word-cloud',
@@ -364,6 +396,7 @@ const smallMenu = ref([
         tooltipContent: 'WordCloud',
         thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
+        component: 'WordCloud'
     },
     {
         route: '/docs#vue-ui-relation-circle',
@@ -373,6 +406,7 @@ const smallMenu = ref([
         tooltipContent: 'RelationCircle',
         thumb: new URL('../assets/thumb_relation_circle.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_relation_circle_light.png', import.meta.url).href,
+        component: 'RelationCircle'
     },
     {
         route: '/docs#vue-ui-radar',
@@ -382,6 +416,7 @@ const smallMenu = ref([
         tooltipContent: 'Radar',
         thumb: new URL('../assets/thumb_radar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_radar_light.png', import.meta.url).href,
+        component: 'Radar'
     },
     {
         route: '/docs#vue-ui-mood-radar',
@@ -391,6 +426,7 @@ const smallMenu = ref([
         tooltipContent: 'MoodRadar',
         thumb: new URL('../assets/thumb_mood_radar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_mood_radar_light.png', import.meta.url).href,
+        component: 'MoodRadar'
     },
     {
         route: '/docs#vue-ui-quadrant',
@@ -399,7 +435,8 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: 'Quadrant',
         thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href,
-        thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href
+        thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href,
+        component: 'Quadrant'
     },
     {
         route: '/docs#vue-ui-scatter',
@@ -409,6 +446,7 @@ const smallMenu = ref([
         tooltipContent: 'Scatter',
         thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_scatter_light.png', import.meta.url).href,
+        component: 'Scatter'
     },
     {
         route: '/docs#vue-ui-molecule',
@@ -418,6 +456,7 @@ const smallMenu = ref([
         tooltipContent: 'Molecule',
         thumb: new URL('../assets/thumb_molecule.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_molecule_light.png', import.meta.url).href,
+        component: 'Molecule'
     },
     {
         route: '/docs#vue-ui-strip-plot',
@@ -427,6 +466,7 @@ const smallMenu = ref([
         tooltipContent: 'StripPlot',
         thumb: new URL('../assets/thumb_strip_plot.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href,
+        component: 'StripPlot'
     },
     {
         route: '/docs#vue-ui-dumbbell',
@@ -436,6 +476,7 @@ const smallMenu = ref([
         tooltipContent: 'Dumbbell',
         thumb: new URL('../assets/thumb_dumbbell.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_dumbbell_light.png', import.meta.url).href,
+        component: 'Dumbbell'
     },
     {
         route: '/docs#vue-ui-3d-bar',
@@ -445,6 +486,7 @@ const smallMenu = ref([
         tooltipContent: '3dBar',
         thumb: new URL('../assets/thumb_3d_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_3d_bar_light.png', import.meta.url).href,
+        component: '3dBar'
     },
     {
         route: '/docs#vue-ui-table-sparkline',
@@ -454,6 +496,7 @@ const smallMenu = ref([
         tooltipContent: 'TableSparkline',
         thumb: new URL('../assets/thumb_table_sparkline.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_table_sparkline_light.png', import.meta.url).href,
+        component: 'TableSparkline'
     },
     {
         route: '/docs#vue-ui-table-heatmap',
@@ -463,6 +506,7 @@ const smallMenu = ref([
         tooltipContent: 'TableHeatmap',
         thumb: new URL('../assets/thumb_table_heatmap.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_table_heatmap_light.png', import.meta.url).href,
+        component: 'TableHeatmap'
     },
     {
         route: '/docs#vue-ui-table',
@@ -472,6 +516,7 @@ const smallMenu = ref([
         tooltipContent: 'Table',
         thumb: new URL('../assets/thumb_table.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_table_light.png', import.meta.url).href,
+        component: 'Table'
     },
     {
         route: '/docs#vue-ui-carousel-table',
@@ -481,6 +526,7 @@ const smallMenu = ref([
         tooltipContent: 'CarouselTable',
         thumb: new URL('../assets/thumb_carousel_table.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href,
+        component: 'CarouselTable'
     },
     {
         route: '/docs#vue-ui-rating',
@@ -490,6 +536,7 @@ const smallMenu = ref([
         tooltipContent: 'Rating',
         thumb: new URL('../assets/thumb_rating.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_rating_light.png', import.meta.url).href,
+        component: 'Rating'
     },
     {
         route: '/docs#vue-ui-smiley',
@@ -499,6 +546,7 @@ const smallMenu = ref([
         tooltipContent: 'Smiley',
         thumb: new URL('../assets/thumb_smiley.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_smiley_light.png', import.meta.url).href,
+        component: 'Smiley'
     },
     {
         route: '/docs#vue-ui-accordion',
@@ -506,6 +554,7 @@ const smallMenu = ref([
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Accordion',
+        component: 'Accordion'
     },
     {
         route: '/docs#vue-ui-screenshot',
@@ -513,6 +562,7 @@ const smallMenu = ref([
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Screenshot',
+        component: 'Screenshot'
     },
     {
         route: '/docs#vue-ui-skeleton',
@@ -520,6 +570,7 @@ const smallMenu = ref([
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Skeleton',
+        component: 'Skeleton'
     },
     {
         route: '/docs#vue-ui-dashboard',
@@ -527,6 +578,7 @@ const smallMenu = ref([
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Dashboard',
+        component: 'Dashboard'
     },
     {
         route: '/docs#vue-ui-annotator',
@@ -534,6 +586,7 @@ const smallMenu = ref([
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Annotator',
+        component: 'Annotator'
     },
     {
         route: '/docs#vue-ui-icon',
@@ -541,6 +594,7 @@ const smallMenu = ref([
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Icon',
+        component: 'Icon'
     },
     {
         route: '/docs#vue-ui-digits',
@@ -548,6 +602,7 @@ const smallMenu = ref([
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Digits',
+        component: 'Digits'
     },
     {
         route: '/docs#vue-ui-cursor',
@@ -555,6 +610,7 @@ const smallMenu = ref([
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Cursor',
+        component: 'Cursor'
     },
     {
         route: '/docs#vue-ui-mini-loader',
@@ -562,6 +618,7 @@ const smallMenu = ref([
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'MiniLoader',
+        component: 'MiniLoader'
     },
     {
         route: '/docs#vue-ui-kpi',
@@ -569,13 +626,15 @@ const smallMenu = ref([
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Kpi',
+        component: 'Kpi'
     },
     {
         route: '/docs#vue-ui-timer',
         icon: 'lap',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'Timer'
+        tooltipContent: 'Timer',
+        component: 'Timer'
     }
 ])
 
