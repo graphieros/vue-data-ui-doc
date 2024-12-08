@@ -289,11 +289,12 @@ const datasetDonutMenu = computed(() => {
             values: [0.6],
             color: "#de8b37",
             comment: translations.value.menu.customizationComment[store.lang]
-        },
-        {
+          },
+          {
             name: translations.value.menu.examples[store.lang],
             values: [0.4],
-            color: "#de6937"
+            color: "#de6937",
+            comment: translations.value.menu.exampleComment[store.lang]
         },
     ]
 })
@@ -478,6 +479,7 @@ const componentTranslation = ref({
                     ${plot.seriesIndex === 1 ? 'mt-2 -ml-2' : ''}
                     ${plot.seriesIndex === 2 ? '-mt-8' : ''}
                     ${plot.seriesIndex === 3 ? 'mt-2 -mr-2' : ''}
+                    ${plot.seriesIndex === 4 ? 'mt-[90px] -mr-2 leading-3' : ''}
                   `"
                 >
                   {{ plot.comment }}

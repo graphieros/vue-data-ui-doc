@@ -1157,6 +1157,17 @@ export const useMainStore = defineStore("main", {
                         ko: '옵션, 툴팁, 범례... 모든 것을 사용자 정의하세요',
                         ar: 'خيارات، تلميح، أسطورة... قم بتخصيص كل شيء.'
                     },
+                    exampleComment: {
+                        en: "Wide variety of chart examples",
+                        fr: "Large variété d'exemples de graphiques",
+                        pt: "Ampla variedade de exemplos de gráficos",
+                        de: "Große Auswahl an Diagrammbeispielen",
+                        zh: "多种图表示例",
+                        jp: "幅広いチャート例",
+                        es: "Gran variedad de ejemplos de gráficos",
+                        ko: "다양한 차트 예제",
+                        ar: "مجموعة واسعة من أمثلة الرسوم البيانية"
+                    },
                     examples: {
                         en: "Examples",
                         fr: "Exemples",
