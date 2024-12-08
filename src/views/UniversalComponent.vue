@@ -18,7 +18,7 @@ onMounted(() => {
         'vitejs-vite-qre4ps',
         {
             forceEmbedLayout: true,
-            openFile: 'index.html',
+            openFile: 'src/App.vue',
         }
     );
 })
