@@ -7,6 +7,7 @@ import BaseDocHeaderActions from "../components/BaseDocHeaderActions.vue";
 import BaseTabContainer from "../components/BaseTabContainer.vue";
 import { useRoute, useRouter } from "vue-router";
 import BaseSpinner from "../components/BaseSpinner.vue";
+import BaseDropdown from "../components/BaseDropdown.vue";
 
 const { examples } = useExamples()
 const store = useMainStore()
@@ -324,26 +325,44 @@ const hoveredLink = ref(null);
         </div>
         <div class="flex flex-col gap-2 place-items-start">
             <label for="exampleSelect" class="text-xs">Select component:</label>
-            <select id="exampleSelect" v-model="selectedLink" @change="goToExample" class="py-2 px-2">
-                <option v-for="option in categories" :value="option.link">{{ option.component }}</option>
-            </select>
+            <BaseDropdown
+                :options="categories"
+                v-model:value="selectedLink"
+                @change="goToExample"
+                id="exampleSelect"
+            >
+                <template #selected="{ selectedOption }">
+                    <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                        <div class="h-[24px] w-[24px] flex place-items-center">
+                            <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                        </div>
+                        <div class="text-xl">
+                            <span :class="'text-gray-500 dark:text-app-blue'">VueUi</span>
+                            <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.component.replace('VueUi', '') }}</span>
+                        </div>
+                    </div>
+                </template>
+                <template #option="{ option, selected }">
+                    <div class="text-left flex flex-row gap-2 place-items-center">
+                        <div class="h-[20px] w-[20px] flex place-items-center">
+                            <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? selected ? '#FFFFFF' : '#8A8A8A' : selected ? '#FFFFFF' :  '#1A1A1A'" />
+                        </div>
+                        <div>
+                            <span :class="selected ? `text-white` : 'text-gray-500 dark:text-app-blue'">VueUi</span>
+                            <span :class="selected ? `text-white`: 'dark:text-app-blue-light'">{{ option.component.replace('VueUi', '') }}</span>
+                        </div>
+                    </div>
+                </template>
+            </BaseDropdown>
         </div>
+        <div v-if="selectedType" class="text-gray-500 mx-auto max-w-[60ch]" dir="auto">{{ selectedType.description[store.lang] }}</div>
     </div>
 
-    <div v-if="selectedType && selectedType.description" class="max-w-[1270px] px-12 my-12 pt-12 mx-auto text-center border-t border-gray-500 flex flex-col justify-center gap-2">
-        <div class="flex flex-row gap-4 place-items-center justify-center">
-            <VueUiIcon :name="selectedType.icon" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'" :size="50"/>
-            <span class="text-black dark:text-app-blue-light text-4xl">
-                <span class="text-gray-500 dark:text-app-blue">VueUi</span>
-                <span class="dark:text-app-blue-light">{{ selectedType.component.replace('VueUi', '') }}</span>
-            </span>
-        </div>
-        <div class="text-gray-500 mx-auto max-w-[60ch]" dir="auto">{{ selectedType.description[store.lang] }}</div>
-    </div>
+    <div class="max-w-[1270px] px-12 pt-12 mx-auto text-center border-t border-gray-500 flex flex-col justify-center gap-2"/>
 
     <div class="min-h-[1000px]">
         <!-- EXAMPLES DISPLAY -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap px-4 sm:px-16 mt-12 sm:mt-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap px-4 sm:px-16 sm:mt-6">
             <div v-for="example in filteredExamples" :key="`${example.id}_${key}`" class=" flex-col inline-flex w-full bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded shadow-md" :id="example.id">
                 <div dir="auto" class="bg-gray-200 dark:bg-[rgb(35,35,35)] p-4 rounded-t">
                     <div class="flex flex-row gap-4 place-items-center">

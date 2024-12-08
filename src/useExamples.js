@@ -4683,7 +4683,7 @@ export default function useExamples() {
                     ar: "سلاسل متعددة، بقيم مختلطة"
                 }
             },
-            // SCATTER GIFT WRAP
+            // SCATTER MULTIPLE
             { 
                 dataset: DATASET_SCATTER_MULTIPLE.value, 
                 config: {
@@ -4703,7 +4703,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiScatter',
                 icon: 'chartScatter',
-                id: 'scatter-gift-wrap',
+                id: 'scatter-multiple',
                 link: 'vue-ui-scatter',
                 description: {
                     en: "Multiple series, with mixed values and gift wrap algorithm",
