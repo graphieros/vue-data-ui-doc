@@ -292,7 +292,7 @@ const datasetDonutMenu = computed(() => {
           },
           {
             name: translations.value.menu.examples[store.lang],
-            values: [0.4],
+            values: [0.5],
             color: "#de6937",
             comment: translations.value.menu.exampleComment[store.lang]
         },
