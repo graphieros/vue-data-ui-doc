@@ -54,14 +54,20 @@ const translations = ref({
 </script>
 
 <template>
-    <div class="rounded flex flex-row gap-2 w-full bg-[#42d39220] p-4 mb-4" v-if="['positiveOnly', 'positiveOrNegativeOnly'].includes(type)">
+    <div class="rounded flex flex-row gap-2 w-full bg-[#42d39220] p-4 mb-4 shadowed" v-if="['positiveOnly', 'positiveOrNegativeOnly'].includes(type)">
         <VueUiIcon name="moodWink" stroke="#42d392"/>
         <VueUiIcon name="numbers" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
         <span dir="auto">{{ translations[type][store.lang] }}</span>
     </div>
-    <div v-else-if="type === 'both'" class="rounded flex flex-row gap-2 w-full bg-[#42d39220] p-4 mb-4">
+    <div v-else-if="type === 'both'" class="rounded flex flex-row gap-2 w-full bg-[#42d39220] p-4 mb-4 shadowed">
         <VueUiIcon name="smiley" stroke="#42d392"/>
         <VueUiIcon name="numbers" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
         <span dir="auto">{{ translations.both[store.lang] }}</span>
     </div>
 </template>
+
+<style scoped>
+.shadowed {
+    box-shadow: 0 6px 12px -6px rgba(0,0,0,0.3);
+}
+</style>

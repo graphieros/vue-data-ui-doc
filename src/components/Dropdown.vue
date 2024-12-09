@@ -70,7 +70,7 @@ const config = computed(() => {
             </template>
             <template #content>
                 <div class="py-2 pb-2 -mt-2">
-                    <div class="dark:bg-[#1F1F1F] bg-[#EEEEEE] shadow-md py-1 rounded-md">
+                    <div class="bg-gradient-to-br dark:from-transparent dark:to-[#5f8aee20] from-[#FFFFFF] to-[#EFEFEF] shadow-md py-1 rounded-md">
                         <SideMenuItem 
                             v-for="item in items"
                             :itsRoute="item.route"

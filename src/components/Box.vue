@@ -45,13 +45,13 @@ const config = ref({
     maxHeight: 10000,
     head: {
         useArrowSlot: false,
-        backgroundColor: "#5f8bee20",
+        backgroundColor: "transparent",
         color: "#2D353C",
         iconColor: "#5f8bee",
         padding: "12px 6px",
     },
     body: {
-        backgroundColor: "#5f8bee20",
+        backgroundColor: "transparent",
         color: "#2D353C",
     },
 });
@@ -61,13 +61,13 @@ const darkModeConfig = ref({
     maxHeight: 10000,
     head: {
         useArrowSlot: false,
-        backgroundColor: "#5f8bee20",
+        backgroundColor: "transparent",
         color: "#CCCCCC",
         iconColor: "#5f8bee",
         padding: "12px 6px",
     },
     body: {
-        backgroundColor: "#5f8bee20",
+        backgroundColor: "transparent",
         color: "#CCCCCC",
     },
 });
@@ -240,7 +240,7 @@ const menuItems = computed(() => {
 
 <template>
     <div v-if="schema"
-        class="border border-gray-700 rounded-md my-6 relative overflow-x-auto bg-gray-200 dark:bg-[#FFFFFF05]">
+        class="border border-gray-700 rounded-md my-6 relative overflow-x-auto dark:bg-[#FFFFFF05] bg-gradient-to-br from-transparent to-[#5F8BEE20]">
         <VueDataUi component="VueUiAccordion" :config="isDarkMode ? darkModeConfig : config">
             <template #title="{ color }">
                 <div :style="`color:${color}`">
@@ -254,7 +254,7 @@ const menuItems = computed(() => {
             </template>
         </VueDataUi>
     </div>
-    <div class="p-6 rounded-md border border-gray-700 my-6 relative overflow-x-auto">
+    <div class="p-6 rounded-md border border-gray-700 my-6 relative overflow-x-auto bg-gradient-to-br from-transparent to-[#5F8BEE20]">
 
         <h2 class="mb-6 flex flex-row place-items-center gap-3" dir="auto">
             <VueUiIcon name="clipBoard" :size="24" stroke="#5F8BEE" />
