@@ -10,6 +10,10 @@ const props = defineProps({
         required: true,
         default: () => [],
     },
+    optionTarget: {
+        type: String,
+        default: 'link'
+    }
 });
 
 const emit = defineEmits(["update:value", "change"]);
@@ -19,8 +23,14 @@ const list = ref(null);
 const highlightedIndex = ref(null);
 const optionsRef = ref([]);
 const selectedOption = computed(() =>
-    props.options.find((option) => option.link === props.value)
+    props.options.find((option) => option[props.optionTarget] === props.value)
 );
+
+const currentIndex = computed(() => {
+    return props.options.findIndex(o => {
+        return o[props.optionTarget] === props.value
+    });
+})
 
 const toggleDropdown = (forceState) => {
     isOpen.value = forceState !== undefined ? forceState : !isOpen.value;
@@ -53,8 +63,8 @@ const highlight = (index) => {
 };
 
 const selectOption = (option) => {
-    emit("update:value", option.link);
-    emit("change", option.link);
+    emit("update:value", option[props.optionTarget]);
+    emit("change", option[props.optionTarget]);
     toggleDropdown(false);
 };
 
@@ -94,14 +104,14 @@ const button = ref(null);
             role="listbox" 
             :aria-labelledby="id"
         >
-            <li v-for="(option, index) in options" :key="option.link"
+            <li v-for="(option, index) in options" :key="option[props.optionTarget]"
                 ref="optionsRef"
-                :class="{ highlighted: index === highlightedIndex }" 
+                :class="{ highlighted: index === highlightedIndex, current: index === currentIndex }" 
                 class="dropdown-option" 
                 role="option"
                 :aria-selected="index === highlightedIndex" @click="selectOption(option)" @mouseover="highlight(index)"
                 @mouseleave="highlight(null)">
-                <slot name="option" v-bind="{ option, selected: index === highlightedIndex }"/>
+                <slot name="option" v-bind="{ option, selected: index === highlightedIndex, current: index === currentIndex }"/>
             </li>
         </ul>
     </div>
@@ -110,9 +120,8 @@ const button = ref(null);
 <style scoped>
 .dropdown {
     display: inline-block;
-    width: 255px;
+    width: 305px;
     position: relative;
-    width: 100%;
 }
 
 .dropdown-button {
@@ -122,7 +131,7 @@ const button = ref(null);
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0.75rem;
-    width: 255px;
+    width: 305px;
 }
 
 .dropdown-options {
@@ -133,7 +142,7 @@ const button = ref(null);
     overflow-y: auto;
     padding: 0;
     position: absolute;
-    width: 255px;
+    width: 305px;
     z-index: 10;
     box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
@@ -144,6 +153,10 @@ const button = ref(null);
 }
 
 .dropdown-option.highlighted {
+    background-color: #5f8aee99;
+    color: white;
+}
+.dropdown-option.current {
     background-color: #5f8aee;
     color: white;
 }

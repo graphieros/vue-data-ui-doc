@@ -342,14 +342,14 @@ const hoveredLink = ref(null);
                         </div>
                     </div>
                 </template>
-                <template #option="{ option, selected }">
+                <template #option="{ option, selected, current }">
                     <div class="text-left flex flex-row gap-2 place-items-center">
                         <div class="h-[20px] w-[20px] flex place-items-center">
-                            <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? selected ? '#FFFFFF' : '#8A8A8A' : selected ? '#FFFFFF' :  '#1A1A1A'" />
+                            <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
                         </div>
                         <div>
-                            <span :class="selected ? `text-white` : 'text-gray-500 dark:text-app-blue'">VueUi</span>
-                            <span :class="selected ? `text-white`: 'dark:text-app-blue-light'">{{ option.component.replace('VueUi', '') }}</span>
+                            <span :class="(selected || current) ? `text-white` : 'text-gray-500 dark:text-app-blue'">VueUi</span>
+                            <span :class="(selected || current) ? `text-white`: 'dark:text-app-blue-light'">{{ option.component.replace('VueUi', '') }}</span>
                         </div>
                     </div>
                 </template>

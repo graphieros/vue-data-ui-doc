@@ -5,6 +5,7 @@ import { useMakerStore } from "../stores/maker"
 import Tooltip from "../components/FlexibleTooltip.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
+import BaseDropdown from "../components/BaseDropdown.vue";
 
 const MakerXy = defineAsyncComponent(() => import('../components/maker/MakerXy.vue'));
 const MakerDonut = defineAsyncComponent(() => import('../components/maker/MakerDonut.vue'));
@@ -98,22 +99,32 @@ const options = ref([
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
+const selectedComponent = ref("VueUiXy")
 
 onMounted(() => {
     if(!localStorage.currentChart) {
         localStorage.setItem('currentChart', 'VueUiXy')
     } else {
-        selectedChart.value = options.value.find(item => item.name === localStorage.currentChart)
+        selectedChart.value = options.value.find(item => item.name === localStorage.currentChart);
+        selectedComponent.value = selectedChart.name;
+        selectChart(selectedChart.value)
     }
     window.scrollTo(0,0)
 })
 
+watch(() => selectedComponent.value, (v) => {
+    const opt = options.value.find(o => o.name === v);
+    selectChart(opt);
+})
+
 function saveSelectedChartToLocalStorage() {
     localStorage.currentChart = selectedChart.value.name;
+    selectedComponent.value = selectedChart.value.name;
 }
 
 function selectChart(opt) {
     selectedChart.value = opt;
+    selectedComponent.value = opt.name;
     saveSelectedChartToLocalStorage()
 }
 
@@ -185,12 +196,36 @@ const crumbs = computed(() => {
             <div class="flex flex-row gap-3 place-items-end justify-center border-t w-full pt-2 mt-2">
                 <div class="flex flex-col gap-2">
                     <label for="chartType" class="text-black">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
-                    <select @change="saveSelectedChartToLocalStorage" style="outline:1px solid #5f8bee !important;margin-left:1px" id="chartType" v-model="selectedChart" class="h-[40px] px-6">
-                        <option class="text-left" v-for="option in options" :value="option">{{ option.name }}</option>
-                    </select>
-                </div>
-                <div style="margin-bottom:0.3px">
-                    <VueUiIcon :size="38" :stroke-width="0.8" :name="selectedChart.icon" stroke="white"/>
+
+                    <BaseDropdown
+                        :options="options"
+                        v-model:value="selectedComponent"
+                        optionTarget="name"
+                        id="exampleSelect"
+                    >
+                        <template #selected="{ selectedOption }">
+                            <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                                <div class="h-[24px] w-[24px] flex place-items-center">
+                                    <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                                </div>
+                                <div class="text-xl">
+                                    <span :class="'text-gray-500 dark:text-app-blue'">VueUi</span>
+                                    <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('VueUi', '') }}</span>
+                                </div>
+                            </div>
+                        </template>
+                        <template #option="{ option, selected, current }">
+                            <div class="text-left flex flex-row gap-2 place-items-center">
+                                <div class="h-[20px] w-[20px] flex place-items-center">
+                                    <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                                </div>
+                                <div>
+                                    <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">VueUi</span>
+                                    <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('VueUi', '') }}</span>
+                                </div>
+                            </div>
+                        </template>
+                    </BaseDropdown>
                 </div>
             </div>
         </div>
