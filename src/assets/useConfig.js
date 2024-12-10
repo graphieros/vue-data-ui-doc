@@ -4662,6 +4662,10 @@ export function useConfig() {
                 textAlign: 'left'
             }
         },
+        scrollbar: {
+            showOnlyOnHover: false,
+            hide: false,
+        },
         thead: {
             style: {
                 verticalAlign: 'middle',

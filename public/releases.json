@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.27",
+    "date": "2024-12-10",
+    "updates": [
+      {
+        "component": "VueUiCarouselTable",
+        "description": "Add config options to control scrollbar display",
+        "link": "/docs#vue-ui-carousel-table"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.26",
     "date": "2024-12-07",
     "updates": [

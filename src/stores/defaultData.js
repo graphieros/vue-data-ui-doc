@@ -421,6 +421,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
                     { key: 'animation.speedMs', def: 1000, type: 'number', min: 500, max: 5000, step: 100, label: ['animation', 'is', 'speed'], category: 'general'},
                     { key: 'animation.pauseOnHover', def: true, type: 'checkbox', label: ['animation', 'is', 'pause on hover'], category: 'general'},
+                    { key: 'scrollbar.showOnlyOnHover', def: false, type: 'checkbox', label: ['scrollbar', 'is', 'show only on hover'], category: 'general'},
+                    { key: 'scrollbar.hide', def: false, type: 'checkbox', label: ['scrollbar', 'is', 'hide'], category: 'general'},
 
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: ['backgroundColor'], category: 'userOptions'},
                     { key: 'style.color', def: '#1A1A1A', type: 'color', label: ['textColor'], category: 'userOptions'},

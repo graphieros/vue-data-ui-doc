@@ -88,6 +88,10 @@ const darkModeConfig = ref({
         size: 0,
         color: "#2D353C"
     },
+    scrollbar: {
+        showOnlyOnHover: false,
+        hide: false,
+    },
     caption: {
         text: "Gentle random data",
         padding: {
@@ -214,6 +218,10 @@ const config = ref({
     border: {
         size: 0,
         color: "#2D353C"
+    },
+    scrollbar: {
+        showOnlyOnHover: false,
+        hide: false,
     },
     caption: {
         text: "Gentle random data",
@@ -432,6 +440,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDa
         <BaseDetails attr="border" :level="1">
             <BaseAttr name="size" attr="border.size" type="number" defaultVal="0" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="color" attr="border.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        </BaseDetails>
+        <BaseDetails attr="scrollbar" :level="1">
+            <BaseAttr name="showOnlyOnHover" attr="scrollbar.showOnlyOnHover" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+            <BaseAttr name="hide" attr="scrollbar.hide" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseDetails attr="caption" :level="1">
             <BaseAttr name="text" attr="caption.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
