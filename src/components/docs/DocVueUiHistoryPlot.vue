@@ -516,9 +516,9 @@ function forceChartUpdate() {
             {{ translations.docs.tooltips.historyPlot[store.lang] }}
         </p>
 
-        <!-- TODO: add maker link -->
         <BaseDocHeaderActions
             targetLink="vue-ui-history-plot"
+            targetMaker="VueUiHistoryPlot"
             :configSource="mainConfig.vue_ui_history_plot"
         />
 
