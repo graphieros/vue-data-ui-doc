@@ -2462,6 +2462,15 @@ export default function useExamples() {
                         borderColor: colors.value.gridStroke,
                         backgroundOpacity: 30
                     },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddingLeft: 36,
+                        subtitle: {
+                            text: 'Subtitle',
+                        }
+                    },
                     grid: {
                         xAxis: {
                             stroke: colors.value.gridStroke
