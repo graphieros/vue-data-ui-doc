@@ -110,7 +110,8 @@ const config = ref({
     fontSize: 14,
     outline: "none",
     textAlign: "left",
-    bold: false
+    bold: false,
+    showColorMarker: true
   },
   tbody: {
     backgroundColor: "#F3F4F6",
@@ -200,7 +201,8 @@ const darkModeConfig = ref({
     fontSize: 14,
     outline: "none",
     textAlign: "left",
-    bold: false
+    bold: false,
+    showColorMarker: true
   },
   userOptions: {
     show: true,
@@ -402,6 +404,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
       <BaseAttr name="outline" attr="tbody.outline" type="text" defaultVal="none" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="textAlign" attr="tbody.textAlign" type="select" defaultVal="left" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="bold" attr="tbody.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="showColorMarker" attr="tbody.showColorMarker" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     </BaseDetails>
     <BaseDetails attr="thead" :level="1">
       <BaseAttr name="backgroundColor" attr="thead.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 

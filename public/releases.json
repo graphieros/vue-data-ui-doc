@@ -1,6 +1,6 @@
 [
   {
-    "version": "v 2.4.29",
+    "version": "v 2.4.31",
     "date": "2024-12-11",
     "updates": [
       {
@@ -12,6 +12,11 @@
         "component": "VueUiCarouselTable",
         "description": "Fix regression causing caption to move",
         "link": "/docs#vue-ui-carousel-table"
+      },
+      {
+        "component": "VueUiTableSparkline",
+        "description": "Improve selection behavior",
+        "link": "/docs#vue-ui-table-sparkline"
       }
     ]
   },
