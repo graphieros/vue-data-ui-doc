@@ -5744,38 +5744,38 @@ export default function useExamples() {
                 }
             },
             // HISTORY PLOT THICK PATH
-            // { 
-            //     dataset: DATASET_HISTORY_PLOT_BASIC.value, 
-            //     config: {
-            //         ...CONFIG_HISTORY_PLOT_BASIC.value,
-            //         style: {
-            //             ...CONFIG_HISTORY_PLOT_BASIC.value.style,
-            //             chart: {
-            //                 ...CONFIG_HISTORY_PLOT_BASIC.value.style.chart,
-            //                 paths: {
-            //                     useSerieColor: false,
-            //                     strokeWidth: 16,
-            //                     stroke: colors.value.gridStroke
-            //                 }
-            //             }
-            //         }
-            //     },
-            //     component: 'VueUiHistoryPlot',
-            //     icon: 'chartHistoryPlot',
-            //     id: 'history-plot-thick-path',
-            //     link: 'vue-ui-history-plot',
-            //     description: {
-            //         en: "With Thick path",
-            //         fr: "Avec chemin épais",
-            //         pt: "Com caminho grosso",
-            //         de: "Mit dickem Pfad",
-            //         zh: "带粗线路径",
-            //         jp: "太いパス付き",
-            //         es: "Con trazo grueso",
-            //         ko: "두꺼운 경로 포함",
-            //         ar: "بمسار سميك"
-            //     }
-            // },
+            { 
+                dataset: DATASET_HISTORY_PLOT_BASIC.value, 
+                config: {
+                    ...CONFIG_HISTORY_PLOT_BASIC.value,
+                    style: {
+                        ...CONFIG_HISTORY_PLOT_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_HISTORY_PLOT_BASIC.value.style.chart,
+                            paths: {
+                                useSerieColor: false,
+                                strokeWidth: 24,
+                                stroke: colors.value.gridStroke + '40'
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiHistoryPlot',
+                icon: 'chartHistoryPlot',
+                id: 'history-plot-thick-path',
+                link: 'vue-ui-history-plot',
+                description: {
+                    en: "With Thick path",
+                    fr: "Avec chemin épais",
+                    pt: "Com caminho grosso",
+                    de: "Mit dickem Pfad",
+                    zh: "带粗线路径",
+                    jp: "太いパス付き",
+                    es: "Con trazo grueso",
+                    ko: "두꺼운 경로 포함",
+                    ar: "بمسار سميك"
+                }
+            },
         ]
     })
 
