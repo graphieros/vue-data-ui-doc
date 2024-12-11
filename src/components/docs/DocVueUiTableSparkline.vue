@@ -119,7 +119,11 @@ const config = ref({
     fontSize: 14,
     outline: "none",
     textAlign: "left",
-    bold: false
+    bold: false,
+    selectedColor: {
+      useSerieColor: true,
+      fallback: "#2D353C05"
+    }
   },
   userOptions: {
     show: true,
@@ -202,7 +206,11 @@ const darkModeConfig = ref({
     outline: "none",
     textAlign: "left",
     bold: false,
-    showColorMarker: true
+    showColorMarker: true,
+    selectedColor: {
+      useSerieColor: true,
+      fallback: "#FFFFFF10"
+    }
   },
   userOptions: {
     show: true,
@@ -405,6 +413,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
       <BaseAttr name="textAlign" attr="tbody.textAlign" type="select" defaultVal="left" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="bold" attr="tbody.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="showColorMarker" attr="tbody.showColorMarker" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseDetails attr="selectedColor" :level="2" title="tbody.selectedColor">
+        <BaseAttr name="useSerieColor" attr="tbody.selectedColor.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="fallback" attr="tbody.selectedColor.fallback" type="text" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      </BaseDetails>
     </BaseDetails>
     <BaseDetails attr="thead" :level="1">
       <BaseAttr name="backgroundColor" attr="thead.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
