@@ -163,7 +163,7 @@ function fixChart() {
     <div>
         <ClearStorageAndRefresh keyConfig="historyPlotConfig" keyDataset="historyPlotDataset" :key="`clear_${clearStep}`"/>
 
-        <BaseDocExampleLink link="vue-ui-history-plot" :example="false" componentName="VueUiHistoryPlot"/>
+        <BaseDocExampleLink link="vue-ui-history-plot" componentName="VueUiHistoryPlot"/>
 
         <BaseMakerChart
             v-if="!isFixed"

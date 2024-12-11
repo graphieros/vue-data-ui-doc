@@ -218,6 +218,14 @@ const categories = computed(() => {
             thumbLight: new URL('../assets/thumb_treemap_light.png', import.meta.url).href,
             description: translations.value.docs.tooltips.treemap
         },
+        {
+            link: 'vue-ui-history-plot',
+            icon: 'chartHistoryPlot',
+            component: 'VueUiHistoryPlot',
+            thumb: new URL('../assets/thumb_history_plot.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.historyPlot
+        },
     ].map((c, i) => {
         return {
             ...c,

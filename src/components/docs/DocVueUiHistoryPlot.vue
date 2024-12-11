@@ -557,9 +557,9 @@ function forceChartUpdate() {
             <!-- <BaseRandomButton @click="randomizeData"/> -->
         </div>
 
-        <!-- <div class="w-full flex justify-center mt-6">
-            <BaseViewExampleButton link="/examples/categories#vue-ui-bullet"/>
-        </div> -->
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-history-plot"/>
+        </div>
 
         <!-- TODO: add schema -->
         <Box showEmits showSlots showThemes showResponsive showTooltip signInfo="both" schema="vue_ui_history_plot">

@@ -2421,6 +2421,92 @@ export default function useExamples() {
         }
     })
 
+    //-------------- VUE-UI-HISTORY-MAP --------------//
+    const DATASET_HISTORY_PLOT_BASIC = ref([
+        {
+            name: "Series 1",
+            values: [
+                { x: 355, y: 2.3, label: "January" },
+                { x: 112, y: 1.2, label: "February" },
+                { x: 313, y: 0.4, label: "March" },
+                { x: 555, y: 1.2, label: "April" },
+            ],
+        },
+        {
+            name: "Series 2",
+            values: [
+                { x: 1000, y: 2, label: "January" },
+                { x: 655, y: 4, label: "February" },
+                { x: 350, y: 3, label: "March" },
+                { x: 815, y: 2.5, label: "April" },
+            ],
+        },
+    ]);
+
+    const CONFIG_HISTORY_PLOT_BASIC = computed(() => {
+        return {
+            table: {
+                ...TABLE.value,
+            },
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                    grid: {
+                        xAxis: {
+                            stroke: colors.value.gridStroke
+                        },
+                        yAxis: {
+                            stroke: colors.value.gridStroke
+                        },
+                        horizontalLines: {
+                            stroke: colors.value.greyStroke
+                        },
+                        verticalLines: {
+                            stroke: colors.value.greyStroke
+                        }
+                    },
+                    axes: {
+                        x: {
+                            labels: {
+                                color: colors.value.grey
+                            },
+                            name: {
+                                text: 'x Axis',
+                                color: colors.value.grey
+                            }
+                        },
+                        y: {
+                            labels: {
+                                color: colors.value.grey
+                            },
+                            name: {
+                                text: 'y Axis',
+                                color: colors.value.grey
+                            }
+                        }
+                    },
+                    plots: {
+                        stroke: colors.value.bg,
+                        labels: {
+                            color: colors.value.grey
+                        }
+                    }
+                }
+            }
+        }
+    })
+
     const examples = computed(() => {
         return [
             // XY BASIC LINE
@@ -5628,6 +5714,59 @@ export default function useExamples() {
                     ar: "بدون تدرج"
                 }
             },
+            // BASIC HISTORY PLOT
+            { 
+                dataset: DATASET_HISTORY_PLOT_BASIC.value, 
+                config: CONFIG_HISTORY_PLOT_BASIC.value,
+                component: 'VueUiHistoryPlot',
+                icon: 'chartHistoryPlot',
+                id: 'history-plot-basic',
+                link: 'vue-ui-history-plot',
+                description: {
+                    en: "Basic layout",
+                    fr: "Disposition de base",
+                    pt: "Layout básico",
+                    de: "Grundlegendes Layout",
+                    zh: "基本布局",
+                    jp: "基本レイアウト",
+                    es: "Diseño básico",
+                    ko: "기본 레이아웃",
+                    ar: "تخطيط أساسي"
+                }
+            },
+            // HISTORY PLOT THICK PATH
+            // { 
+            //     dataset: DATASET_HISTORY_PLOT_BASIC.value, 
+            //     config: {
+            //         ...CONFIG_HISTORY_PLOT_BASIC.value,
+            //         style: {
+            //             ...CONFIG_HISTORY_PLOT_BASIC.value.style,
+            //             chart: {
+            //                 ...CONFIG_HISTORY_PLOT_BASIC.value.style.chart,
+            //                 paths: {
+            //                     useSerieColor: false,
+            //                     strokeWidth: 16,
+            //                     stroke: colors.value.gridStroke
+            //                 }
+            //             }
+            //         }
+            //     },
+            //     component: 'VueUiHistoryPlot',
+            //     icon: 'chartHistoryPlot',
+            //     id: 'history-plot-thick-path',
+            //     link: 'vue-ui-history-plot',
+            //     description: {
+            //         en: "With Thick path",
+            //         fr: "Avec chemin épais",
+            //         pt: "Com caminho grosso",
+            //         de: "Mit dickem Pfad",
+            //         zh: "带粗线路径",
+            //         jp: "太いパス付き",
+            //         es: "Con trazo grueso",
+            //         ko: "두꺼운 경로 포함",
+            //         ar: "بمسار سميك"
+            //     }
+            // },
         ]
     })
 
