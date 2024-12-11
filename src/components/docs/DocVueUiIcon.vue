@@ -67,6 +67,7 @@ const specialIcons = ref([
     "chartGalaxy",
     "chartGauge",
     "chartHeatmap",
+    "chartHistoryPlot",
     "chartLine",
     "chartMoodRadar",
     "chartNestedDonuts",

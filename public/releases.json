@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.4.29",
+    "date": "2024-12-11",
+    "updates": [
+      {
+        "component": "VueUiHistoryPlot",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-history-plot"
+      },
+      {
+        "component": "VueUiCarouselTable",
+        "description": "Fix regression causing caption to move",
+        "link": "/docs#vue-ui-carousel-table"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.27",
     "date": "2024-12-10",
     "updates": [

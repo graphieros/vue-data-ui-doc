@@ -1588,6 +1588,17 @@ export const useMainStore = defineStore("main", {
                         ar: 'تزودك صفحات التوثيق بعلامة تبويب التكوين حيث يمكنك تعديل التكوين الخاص بك وحفظه بتنسيق JSON. يمكنك أيضًا التبديل من السمات الداكنة إلى الفاتحة لحفظ التكوينات لكلا الوضعين'
                     },
                     tooltips: {
+                        historyPlot: {
+                            en: 'Visualize the dynamic journey of two variables over time, with every point telling a story of change and connection in two-dimensional space.',
+                            fr: 'Visualisez le parcours dynamique de deux variables dans le temps, chaque point racontant une histoire de changement et de connexion dans un espace bidimensionnel.',
+                            pt: 'Visualize a jornada dinâmica de duas variáveis ao longo do tempo, com cada ponto contando uma história de mudança e conexão em um espaço bidimensional.',
+                            de: 'Visualisieren Sie die dynamische Reise von zwei Variablen im Laufe der Zeit, wobei jeder Punkt eine Geschichte von Veränderung und Verbindung im zweidimensionalen Raum erzählt.',
+                            zh: '可视化两个变量随时间动态变化的旅程，每个点都讲述了在二维空间中变化与连接的故事。',
+                            jp: '2次元空間で、時間の経過に伴う2つの変数の動的な軌跡を可視化し、各ポイントが変化と接続の物語を語ります。',
+                            es: 'Visualiza el viaje dinámico de dos variables a lo largo del tiempo, donde cada punto cuenta una historia de cambio y conexión en un espacio bidimensional.',
+                            ko: '시간에 따라 두 변수의 역동적인 여정을 시각화하며, 각 포인트가 2차원 공간에서 변화와 연결의 이야기를 전합니다.',
+                            ar: 'تصور الرحلة الديناميكية لمتغيرين بمرور الوقت، حيث يروي كل نقطة قصة تغيير واتصال في مساحة ثنائية الأبعاد.'
+                        },
                         funnel: {
                             en: "Highlight the progression of attrition that occurs at each stage of a process.",
                             fr: "Met en évidence la progression de l'attrition qui se produit à chaque étape d'un processus.",

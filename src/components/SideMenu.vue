@@ -259,6 +259,16 @@ const smallMenu = ref([
         component: 'Funnel'
     },
     {
+        route: '/docs#vue-ui-history-plot',
+        icon: 'chartHistoryPlot',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'HistoryPlot',
+        thumb: new URL('../assets/thumb_history_plot.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href,
+        component: 'HistoryPlot'
+    },
+    {
         route: '/docs#vue-ui-donut',
         icon: 'chartDonut',
         cssClasses: '',
@@ -692,6 +702,7 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-stackbar', componentName: 'Stackbar', icon: 'chartStackbar' },
             {route: '/docs#vue-ui-donut-evolution', componentName: 'DonutEvolution', icon: 'chartDonutEvolution' },
             {route: '/docs#vue-ui-funnel', componentName: 'Funnel', icon: 'chartFunnel' },
+            {route: '/docs#vue-ui-history-plot', componentName: 'HistoryPlot', icon: 'chartHistoryPlot' },
         ]
     },
     {

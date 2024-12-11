@@ -71,6 +71,7 @@ const DocVueUiGizmo = defineAsyncComponent(() => import('../components/docs/DocV
 const DocVueUiStackbar = defineAsyncComponent(() => import('../components/docs/DocVueUiStackbar.vue'));
 const DocVueUiBullet = defineAsyncComponent(() => import('../components/docs/DocVueUiBullet.vue'));
 const DocVueUiFunnel = defineAsyncComponent(() => import('../components/docs/DocVueUiFunnel.vue'));
+const DocVueUiHistoryPlot = defineAsyncComponent(() => import('../components/docs/DocVueUiHistoryPlot.vue'));
 
 const mainConfig = useConfig()
 
@@ -855,6 +856,18 @@ const menuItems = computed(() => [
         hasTableCss: true,
         hasLegend: false
     },
+    {
+        name: "HistoryPlot",
+        icon: "chartHistoryPlot",
+        tooltip: translations.value.docs.tooltips.historyPlot[store.lang],
+        link: "/docs#vue-ui-history-plot",
+        type: "xy",
+        thumb: new URL('../assets/thumb_history_plot.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: true
+    },
 ]);
 
 function updateCrumb() {
@@ -867,12 +880,12 @@ function updateCrumb() {
     if (docsCrumbs.value.length === 1) {
         docsCrumbs.value.push({
             description: hash,
-            icon: !hashLink ? undefined : menuItems.value.find(m => m.link === hashLink).icon
+            icon: !hashLink ? undefined : menuItems.value.find(m => m.link === hashLink) ? menuItems.value.find(m => m.link === hashLink).icon : ''
         })
     } else {
         docsCrumbs.value[1] = {
             description: hash,
-            icon: !hashLink ? undefined : menuItems.value.find(m => m.link === hashLink).icon
+            icon: !hashLink ? undefined : menuItems.value.find(m => m.link === hashLink) ? menuItems.value.find(m => m.link === hashLink).icon : ''
         }
     }
 }
@@ -1139,6 +1152,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiFunnel v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-funnel'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiHistoryPlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-history-plot'" />
             </Transition>
 
             <Transition name="fade">
