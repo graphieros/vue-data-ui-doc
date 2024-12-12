@@ -1,6 +1,6 @@
 [
   {
-    "version": "v 2.4.35",
+    "version": "v 2.4.36",
     "date": "2024-12-12",
     "updates": [
       {
@@ -10,7 +10,7 @@
       },
       {
         "component": "VueUiCarouselTable",
-        "description": "Fix regression causing caption to move",
+        "description": "Fix regression causing caption to move, add config attributes",
         "link": "/docs#vue-ui-carousel-table"
       },
       {

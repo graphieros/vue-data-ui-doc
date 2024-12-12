@@ -623,6 +623,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'thead.tr.th.style.textAlign', def: 'right', type: 'select', options: ['left', 'center', 'right'], label: ['thead', 'TH', 'is', 'textAlign'], category: 'table'},
                     { key: 'thead.tr.th.style.fontVariantNumeric', def: 'tabular-nums', type: 'select', options: ['tabular-nums', 'normal', 'slashed-zero', 'oldstyle-nums'], label: ['thead', 'TH', 'is', 'fontVariantNumeric'], category: 'table'},
                     
+                    { key: 'tbody.backgroundColor', def: '#FFFFFF', type: 'color', label: ['table', 'is', 'backgroundColor'], category: 'table'},
                     { key: 'tbody.tr.visible', def: 5, type: 'number', min:1, max: 12, label: ['rows', 'is', 'visible'], category: 'table'},
                     { key: 'tbody.tr.height', def: 32, type: 'number', min: 32, max: 64, label: ['tbody', 'TR', 'is', 'height'], category: 'table'},
                     { key: 'tbody.tr.style.backgroundColor', def: '#FFFFFF', type: 'color', label: ['tbody', 'TR', 'is', 'backgroundColor'], category: 'table'},

@@ -144,6 +144,7 @@ const darkModeConfig = ref({
         }
     },
     tbody: {
+        backgroundColor: '#2A2A2A',
         tr: {
             visible: 5,
             height: 32,
@@ -275,6 +276,7 @@ const config = ref({
         }
     },
     tbody: {
+        backgroundColor: '#FFFFFF',
         tr: {
             visible: 5,
             height: 32,
@@ -497,6 +499,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDa
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="tbody" :level="1">
+            <BaseAttr name="backgroundColor" attr="tbody.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseDetails attr="tr" :level="2" title="tbody.tr">
                 <BaseAttr name="visible" attr="tbody.tr.visible" type="number" defaultVal="5" :min="1" :max="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="height" attr="tbody.tr.height" type="number" defaultVal="32" :min="24" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
