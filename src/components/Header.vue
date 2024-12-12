@@ -240,6 +240,7 @@ const isHome = computed(() => {
                         :options="languageOptions"
                         v-model:value="selectedLanguage"
                         :width="130"
+                        basePadding="0 6px"
                         optionTarget="value"
                         id="internationalization"
                     >

@@ -17,6 +17,10 @@ const props = defineProps({
     width: {
         type: Number,
         default: 305
+    },
+    basePadding: {
+        type: String,
+        default: '0.5rem 0.75rem'
     }
 });
 
@@ -103,7 +107,8 @@ const button = ref(null);
             :aria-expanded="isOpen.toString()"
             @click="toggleDropdown()"
             :style="{
-                width: props.width + 'px'
+                width: props.width + 'px',
+                padding: props.basePadding
             }"
         >
             <slot name="selected" v-bind="{ selectedOption }"/>
@@ -143,7 +148,6 @@ const button = ref(null);
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 0.75rem;
 }
 
 .dropdown-options {
