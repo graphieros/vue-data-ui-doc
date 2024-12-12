@@ -11,6 +11,9 @@ import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseMenuCategory from "../components/BaseMenuCategory.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import UserOptionsMenu from "../components/UserOptionsMenu.vue";
+import BaseDropdown from "../components/BaseDropdown.vue";
+import { useIconMapUnderscore } from '../useIconMapUnderscore';
+import { useMakerStore } from "../stores/maker";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -79,6 +82,9 @@ const store = useMainStore();
 const translations = computed(() => {
     return store.translations;
 })
+
+const makerStore = useMakerStore();
+const makerTranslations = computed(() => makerStore.translations);
 
 const isDarkMode = computed(() => store.isDarkMode);
 
@@ -1207,8 +1213,44 @@ const stackbarKey = ref(0);
         <div class="w-full text-left text-lg">
             {{ translations.overview.title[store.lang] }}
         </div>
-        <div>
-            <select class="mb-4 h-8 px-2" v-model="schemaSelect"><option v-for="opt in chartKeys">{{ opt }}</option> </select>
+        <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
+            <div class="flex flex-col gap-1">
+                <label for="schemaSelect">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
+                <BaseDropdown
+                    :options="chartKeys.map(k => {
+                        return {
+                            name: k,
+                            icon: useIconMapUnderscore(k)
+                        }
+                    })"
+                    v-model:value="schemaSelect"
+                    optionTarget="name"
+                    id="schemaSelect"
+                >
+                    <template #selected="{ selectedOption }">
+                        <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                            <div class="h-[24px] w-[24px] flex place-items-center">
+                                <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                            </div>
+                            <div class="text-[17px]">
+                                <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
+                            </div>
+                        </div>
+                    </template>
+                    <template #option="{ option, selected, current }">
+                        <div class="text-left flex flex-row gap-2 place-items-center">
+                            <div class="h-[20px] w-[20px] flex place-items-center">
+                                <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                            </div>
+                            <div>
+                                <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
+                            </div>
+                        </div>
+                    </template>
+                </BaseDropdown>
+            </div>
         </div>
         <Schema :component="schemaSelect"/>
     </div>
@@ -1221,7 +1263,47 @@ const stackbarKey = ref(0);
     
                             const {{ themeSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_themes = getThemeConfig("{{ themeSelect }}");
                         </code>
-                        <select class="mb-4 h-8 px-2" v-model="themeSelect"><option v-for="opt in themeKeys">{{ opt }}</option> </select>
+
+
+                        <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
+                        <div class="flex flex-col gap-1">
+                            <label for="themeSelect">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
+                            <BaseDropdown
+                                :options="themeKeys.map(k => {
+                                    return {
+                                        name: k,
+                                        icon: useIconMapUnderscore(k)
+                                    }
+                                })"
+                                v-model:value="themeSelect"
+                                optionTarget="name"
+                                id="themeSelect"
+                            >
+                                <template #selected="{ selectedOption }">
+                                    <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                                        <div class="h-[24px] w-[24px] flex place-items-center">
+                                            <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                                        </div>
+                                        <div class="text-[17px]">
+                                            <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                            <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template #option="{ option, selected, current }">
+                                    <div class="text-left flex flex-row gap-2 place-items-center">
+                                        <div class="h-[20px] w-[20px] flex place-items-center">
+                                            <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                                        </div>
+                                        <div>
+                                            <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                            <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
+                                        </div>
+                                    </div>
+                                </template>
+                            </BaseDropdown>
+                        </div>
+                    </div>
     
                         <VueDataUi component="VueUiAccordion" :config="{
                             head: {
@@ -1258,7 +1340,46 @@ const stackbarKey = ref(0);
     
                             const {{ configSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_config = getVueDataUiConfig("{{ configSelect }}");
                         </code>
-                        <select class="mb-4 h-8 px-2" v-model="configSelect"><option v-for="opt in configKeys">{{ opt }}</option> </select>
+
+                        <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
+                        <div class="flex flex-col gap-1">
+                            <label for="configSelect">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
+                            <BaseDropdown
+                                :options="configKeys.map(k => {
+                                    return {
+                                        name: k,
+                                        icon: useIconMapUnderscore(k)
+                                    }
+                                })"
+                                v-model:value="configSelect"
+                                optionTarget="name"
+                                id="configSelect"
+                            >
+                                <template #selected="{ selectedOption }">
+                                    <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                                        <div class="h-[24px] w-[24px] flex place-items-center">
+                                            <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                                        </div>
+                                        <div class="text-[17px]">
+                                            <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                            <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template #option="{ option, selected, current }">
+                                    <div class="text-left flex flex-row gap-2 place-items-center">
+                                        <div class="h-[20px] w-[20px] flex place-items-center">
+                                            <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                                        </div>
+                                        <div>
+                                            <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                            <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
+                                        </div>
+                                    </div>
+                                </template>
+                            </BaseDropdown>
+                        </div>
+                    </div>
     
                         <VueDataUi component="VueUiAccordion" :config="{
                             head: {

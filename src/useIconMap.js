@@ -1,5 +1,3 @@
-import { VueUi3dBar } from "vue-data-ui";
-
 export function useIconMap(componentName) {
     const mapping = {
         VueUiBullet: 'chartBullet',
@@ -63,7 +61,6 @@ export function useIconMap(componentName) {
         VueUiFunnel: 'chartFunnel',
         VueUiHistoryPlot: 'chartHistoryPlot'
     }
-
     return mapping[componentName] || 'clipBoard';
 }
 
