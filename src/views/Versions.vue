@@ -1715,6 +1715,7 @@ const carouselConfig = computed(() => {
         }
     },
     tbody: {
+        backgroundColor: isDarkMode.value ? "#2A2A2A" : '#F3F4F6',
         tr: {
             visible: 1,
             height: 32,
