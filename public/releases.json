@@ -1,7 +1,7 @@
 [
   {
-    "version": "v 2.4.33",
-    "date": "2024-12-11",
+    "version": "v 2.4.35",
+    "date": "2024-12-12",
     "updates": [
       {
         "component": "VueUiHistoryPlot",
@@ -15,7 +15,7 @@
       },
       {
         "component": "VueUiTableSparkline",
-        "description": "Improve selection behavior",
+        "description": "Improve selection behavior and text align issues",
         "link": "/docs#vue-ui-table-sparkline"
       }
     ]

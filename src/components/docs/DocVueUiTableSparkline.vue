@@ -410,7 +410,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
       <BaseAttr name="color" attr="tbody.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="fontSize" attr="tbody.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="outline" attr="tbody.outline" type="text" defaultVal="none" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      <BaseAttr name="textAlign" attr="tbody.textAlign" type="select" defaultVal="left" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="textAlign" attr="tbody.textAlign" type="select" defaultVal="left" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" />
       <BaseAttr name="bold" attr="tbody.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="showColorMarker" attr="tbody.showColorMarker" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseDetails attr="selectedColor" :level="2" title="tbody.selectedColor">
@@ -423,7 +423,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
       <BaseAttr name="color" attr="thead.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
       <BaseAttr name="fontSize" attr="thead.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="outline" attr="thead.outline" type="text" defaultVal="none" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      <BaseAttr name="textAlign" attr="thead.textAlign" type="select" defaultVal="left" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="textAlign" attr="thead.textAlign" type="select" defaultVal="left" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
       <BaseAttr name="bold" attr="thead.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     </BaseDetails>
     <BaseDetails attr="title" :level="1">
