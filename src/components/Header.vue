@@ -7,6 +7,7 @@ import { useMainStore } from "../stores";
 import ChartMaker from "./ChartMaker.vue";
 import releases from "../../public/releases.json";
 import HeaderDropdownItem from "./HeaderDropdownItem.vue";
+import BaseDropdown from "./BaseDropdown.vue";
 
 const router = useRouter();
 const store = useMainStore();
@@ -235,12 +236,23 @@ const isHome = computed(() => {
                     <MoonStarsIcon v-else />
                 </button>
                 <div class="z-10 flex flex-row place-items-center gap-2">
-                    <LanguageIcon />
-                    <select data-cy="header-select" v-model="selectedLanguage" class="h-[24px] px-2">
-                        <option v-for="option in languageOptions" :value="option.value">
+                    <BaseDropdown
+                        :options="languageOptions"
+                        v-model:value="selectedLanguage"
+                        :width="130"
+                        optionTarget="value"
+                        id="internationalization"
+                    >
+                        <template #selected="{ selectedOption }">
+                            <div class="flex flex-row gap-2">
+                                <LanguageIcon class="text-app-blue" />
+                                {{ selectedOption.text }}
+                            </div>
+                        </template>
+                        <template #option="{ option, selected, current }">
                             {{ option.text }}
-                        </option>
-                    </select>
+                        </template>
+                    </BaseDropdown>
                 </div>
             </nav>
             <div class="relative xl:hidden">

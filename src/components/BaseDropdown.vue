@@ -13,6 +13,10 @@ const props = defineProps({
     optionTarget: {
         type: String,
         default: 'link'
+    },
+    width: {
+        type: Number,
+        default: 305
     }
 });
 
@@ -87,13 +91,20 @@ const button = ref(null);
 <template>
     <div class="dropdown" @keydown.down.prevent="navigate(1)" @keydown.up.prevent="navigate(-1)"
         @keydown.enter.prevent="selectHighlighted" @keydown.esc.prevent="toggleDropdown(false)"
-        v-click-outside="onClickAway">
+        v-click-outside="onClickAway"
+        :style="{
+            width: props.width + 'px'
+        }"
+    >
         <button 
             ref="button" 
             class="dropdown-button bg-white dark:bg-[#2A2A2A] border border-[#5f8aee50] hover:border-app-blue transition-colors" 
             :aria-haspopup="true" 
             :aria-expanded="isOpen.toString()"
             @click="toggleDropdown()"
+            :style="{
+                width: props.width + 'px'
+            }"
         >
             <slot name="selected" v-bind="{ selectedOption }"/>
         </button>
@@ -103,6 +114,9 @@ const button = ref(null);
             class="dropdown-options bg-white dark:bg-[#2A2A2A]" 
             role="listbox" 
             :aria-labelledby="id"
+            :style="{
+                width: props.width + 'px'
+            }"
         >
             <li v-for="(option, index) in options" :key="option[props.optionTarget]"
                 ref="optionsRef"
@@ -120,7 +134,6 @@ const button = ref(null);
 <style scoped>
 .dropdown {
     display: inline-block;
-    width: 305px;
     position: relative;
 }
 
@@ -131,7 +144,6 @@ const button = ref(null);
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0.75rem;
-    width: 305px;
 }
 
 .dropdown-options {
@@ -142,7 +154,6 @@ const button = ref(null);
     overflow-y: auto;
     padding: 0;
     position: absolute;
-    width: 305px;
     z-index: 10;
     box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
