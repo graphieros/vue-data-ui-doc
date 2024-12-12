@@ -1,6 +1,6 @@
 [
   {
-    "version": "v 2.4.36",
+    "version": "v 2.4.37",
     "date": "2024-12-12",
     "updates": [
       {
@@ -15,7 +15,12 @@
       },
       {
         "component": "VueUiTableSparkline",
-        "description": "Improve selection behavior and text align issues",
+        "description": "Improve selection behavior, fix text align issues",
+        "link": "/docs#vue-ui-table-sparkline"
+      },
+      {
+        "component": "VueUiTableSparkline",
+        "description": "Add config attributes to control chart dimensions",
         "link": "/docs#vue-ui-table-sparkline"
       }
     ]

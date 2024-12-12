@@ -78,6 +78,10 @@ const config = ref({
     strokeWidth: 3,
     type: "line",
     smooth: true,
+    dimensions: {
+      width: 150,
+      heightRatio: 1,
+    },
     animation: {
       show: true,
       animationFrames: 360
@@ -165,6 +169,10 @@ const darkModeConfig = ref({
     strokeWidth: 3,
     type: "line",
     smooth: true,
+    dimensions: {
+      width: 150,
+      heightRatio: 1,
+    },
     animation: {
       show: true,
       animationFrames: 360
@@ -400,6 +408,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
       <BaseAttr name="strokeWidth" attr="sparkline.strokeWidth"  type="number" defaultVal="3" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="type" attr="sparkline.type" type="select" defaultVal="line" :options="['line', 'bar']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="smooth" attr="sparkline.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+      <BaseDetails attr="dimensions" :level="2" title="sparkline.dimensions">
+        <BaseAttr name="width" attr="sparkline.dimensions.width" type="number" defaultVal="150" :min="100" :max="300" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="heightRatio" attr="sparkline.dimensions.heightRatio" type="range" defaultVal="1" :min="0.5" :max="2" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      </BaseDetails>
       <BaseDetails attr="animation" :level="2" title="sparkline.animation">
         <BaseAttr name="show" attr="sparkline.animation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="animationFrames" attr="sparkline.animation.animationFrames" type="number" defaultVal="360" :min="60" :max="600" :step="20" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
