@@ -196,7 +196,8 @@ function fixChart() {
                             <td><input class="h-[36px]" type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
                             <td>
                                 <div class="flex flex-row gap-2 overflow-scroll max-w-[800px]">
-                                    <div v-for="dp, i in ds.values">
+                                    <div v-for="dp, j in ds.values" class="relative">
+                                        <button tabindex="0" @click="deleteDatapoint(i, j)"><VueUiIcon name="close" stroke="#ff6400" :size="18" class="cursor-pointer absolute top-1 left-1" /></button>
                                         <div class="flex flex-col gap-1">
                                             <label class="text-xs">Label:</label>
                                             <input type="text" class="w-[84px]" v-model="dp.label"/>
