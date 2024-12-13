@@ -216,7 +216,7 @@ const isHome = computed(() => {
                 </router-link>
                 <router-link data-cy="link-versions" to="/versions">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/versions')
-                                ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm'
+                                ? 'text-app-blue dark:text-gray-300 hover:cursor-default bg-[#5f8bee20] shadow-sm'
                                 : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
                         {{ translations.menu.versions[store.lang] }}
@@ -224,7 +224,7 @@ const isHome = computed(() => {
                 </router-link>
                 <router-link data-cy="link-about" to="/about">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/about')
-                                ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm'
+                                ? 'text-app-blue dark:text-gray-300 hover:cursor-default bg-[#5f8bee20] shadow-sm'
                                 : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
                         {{ translations.menu.about[store.lang] }}
