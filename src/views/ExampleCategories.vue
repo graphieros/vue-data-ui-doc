@@ -338,6 +338,7 @@ const hoveredLink = ref(null);
                 v-model:value="selectedLink"
                 @change="goToExample"
                 id="exampleSelect"
+                additional-option-target="component"
             >
                 <template #selected="{ selectedOption }">
                     <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">

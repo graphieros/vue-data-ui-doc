@@ -1227,6 +1227,7 @@ const stackbarKey = ref(0);
                     v-model:value="schemaSelect"
                     background="bg-white dark:bg-[#1A1A1A]"
                     optionTarget="name"
+                    additionalOptionTarget="name"
                     id="schemaSelect"
                 >
                     <template #selected="{ selectedOption }">
@@ -1280,6 +1281,7 @@ const stackbarKey = ref(0);
                                 v-model:value="themeSelect"
                                 background="bg-white dark:bg-[#1A1A1A]"
                                 optionTarget="name"
+                                additionalOptionTarget="name"
                                 id="themeSelect"
                             >
                                 <template #selected="{ selectedOption }">
@@ -1357,6 +1359,7 @@ const stackbarKey = ref(0);
                                 v-model:value="configSelect"
                                 background="bg-white dark:bg-[#1A1A1A]"
                                 optionTarget="name"
+                                additionalOptionTarget="name"
                                 id="configSelect"
                             >
                                 <template #selected="{ selectedOption }">

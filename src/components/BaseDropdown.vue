@@ -1,6 +1,8 @@
 <script setup>
-import { ref, computed, nextTick } from "vue";
+import { ref, computed, nextTick, onBeforeUnmount, toRefs } from "vue";
 import vClickOutside from "../directives/vClickOutside";
+import { SearchIcon, XIcon } from "vue-tabler-icons";
+import { useMainStore } from "../stores";
 
 const props = defineProps({
     id: { type: String, required: true },
@@ -14,6 +16,10 @@ const props = defineProps({
         type: String,
         default: 'link'
     },
+    additionalOptionTarget: {
+        type: String,
+        default: 'component'
+    },
     width: {
         type: Number,
         default: 305
@@ -25,8 +31,15 @@ const props = defineProps({
     background: {
         type: String,
         default: 'bg-white dark:bg-[#2A2A2A]'
+    },
+    search: {
+        type: Boolean,
+        default: true
     }
 });
+
+const store = useMainStore();
+const translations = computed(() => store.translations)
 
 const emit = defineEmits(["update:value", "change"]);
 
@@ -34,6 +47,7 @@ const isOpen = ref(false);
 const list = ref(null);
 const highlightedIndex = ref(null);
 const optionsRef = ref([]);
+
 const selectedOption = computed(() =>
     props.options.find((option) => option[props.optionTarget] === props.value)
 );
@@ -94,6 +108,14 @@ const onClickAway = (event) => {
 };
 
 const button = ref(null);
+
+const availableOptions = computed(() => {
+    if(!searchModel.value) return props.options
+    return props.options.filter(o => o[props.optionTarget].toUpperCase().includes(searchModel.value.toUpperCase()) || o[props.additionalOptionTarget].toUpperCase().includes(searchModel.value.toUpperCase()))
+});
+
+const searchModel = ref('');
+
 </script>
 
 <template>
@@ -127,7 +149,19 @@ const button = ref(null);
                 width: props.width + 'px'
             }"
         >
-            <li v-for="(option, index) in options" :key="option[props.optionTarget]"
+            <li v-if="search" class="sticky top-0 bg-inherit py-1 shadow-md">
+                <div class="w-full flex flex-row mt-1 mb-1 px-2 gap-2 place-items-center peer relative">
+                    <input class="dd-search-input peer w-full h-[36px] transition-colors" style="padding-left:36px" type="text" v-model="searchModel"/>
+                    <SearchIcon class="peer-focus:text-app-blue peer-hover:text-app-blue absolute left-4 transition-colors"/>
+                    <button @click="searchModel = ''" :style="`opacity:${searchModel ? 1 : 0}; cursor:${searchModel ? 'pointer' : 'default'}`">
+                        <XIcon class="text-gray-500 peer-focus:text-app-blue peer-hover:text-app-blue hover:text-app-blue transition-colors"/>
+                    </button>
+                </div>
+                <div v-if="availableOptions.length === 0" class="text-xs mb-3 text-center">
+                    {{ store.translations.search.noResults[store.lang] }}
+                </div>
+            </li>
+            <li v-for="(option, index) in availableOptions" :key="option[props.optionTarget]"
                 ref="optionsRef"
                 :class="{ highlighted: index === highlightedIndex, current: index === currentIndex }" 
                 class="dropdown-option" 
@@ -178,5 +212,16 @@ const button = ref(null);
 .dropdown-option.current {
     background-color: #5f8aee;
     color: white;
+}
+.dd-search-input {
+    background: transparent !important;
+    border-radius: unset !important;
+    border: unset !important;
+    background: #FFFFFF10 !important;
+}
+.dd-search-input:hover, .dd-search-input:focus {
+    border:unset !important;
+    outline: unset !important;
+    border-bottom: 1px solid #5f8aee !important;
 }
 </style>

@@ -203,6 +203,7 @@ const crumbs = computed(() => {
                         :options="options"
                         v-model:value="selectedComponent"
                         optionTarget="name"
+                        additionalOptionTarget="name"
                         id="exampleSelect"
                     >
                         <template #selected="{ selectedOption }">

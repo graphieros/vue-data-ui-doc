@@ -242,6 +242,7 @@ const isHome = computed(() => {
                         :width="130"
                         basePadding="0 6px"
                         optionTarget="value"
+                        :search="false"
                         id="internationalization"
                     >
                         <template #selected="{ selectedOption }">
