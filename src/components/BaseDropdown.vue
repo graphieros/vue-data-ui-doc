@@ -209,6 +209,11 @@ const searchModel = ref('');
     background-color: #5f8aee99;
     color: white;
 }
+
+.dark .dropdown-option.highlighted {
+    background: linear-gradient(to right, #5f8aee99, transparent);
+}
+
 .dropdown-option.current {
     background-color: #5f8aee;
     color: white;
