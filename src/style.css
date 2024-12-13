@@ -137,7 +137,7 @@ input[type="checkbox"]::before {
 }
 
 input[type="checkbox"]:checked {
-  background: #5F8bee;
+  background: radial-gradient(at top left, #b3c4ed, #5F8bee);
 }
 input[type="checkbox"]:checked::before {
   content: "true";
@@ -155,7 +155,7 @@ input[type="checkbox"]:checked::before {
   appearance: none;
   position: relative;
   display: inline-block;
-  background: #3A3A3A;
+  background: #2A2A2A;
   height: 1.65rem;
   width: 3.75rem;
   vertical-align: middle;
@@ -184,7 +184,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .dark input[type="checkbox"]:checked {
-  background: #5F8bee;
+  background: radial-gradient(at top left, #b3c4ed, #416dd4);
   border: none;
 }
 .dark input[type="checkbox"]:checked::before {
