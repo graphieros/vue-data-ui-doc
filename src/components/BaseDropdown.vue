@@ -21,6 +21,10 @@ const props = defineProps({
     basePadding: {
         type: String,
         default: '0.5rem 0.75rem'
+    },
+    background: {
+        type: String,
+        default: 'bg-white dark:bg-[#2A2A2A]'
     }
 });
 
@@ -102,7 +106,7 @@ const button = ref(null);
     >
         <button 
             ref="button" 
-            class="dropdown-button bg-white dark:bg-[#2A2A2A] border border-[#5f8aee50] hover:border-app-blue transition-colors" 
+            :class="`dropdown-button ${background} border border-[#5f8aee50] hover:border-app-blue transition-colors`" 
             :aria-haspopup="true" 
             :aria-expanded="isOpen.toString()"
             @click="toggleDropdown()"
@@ -116,7 +120,7 @@ const button = ref(null);
         <ul 
             v-show="isOpen" 
             ref="list" 
-            class="dropdown-options bg-white dark:bg-[#2A2A2A]" 
+            :class="`dropdown-options ${background}`" 
             role="listbox" 
             :aria-labelledby="id"
             :style="{

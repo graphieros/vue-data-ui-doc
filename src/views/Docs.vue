@@ -1165,7 +1165,7 @@ const stackbarKey = ref(0);
 
             <Transition name="fade">
                 <div v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)" class="flex flex-col place-items-center place-content-center">
-                    <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-6 mt-4">
+                    <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-2 mt-4">
                         <div class="flex flex-row gap-4 place-items-center">
                             <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.docs[store.lang] }}</h1>
                         </div>
@@ -1178,8 +1178,9 @@ const stackbarKey = ref(0);
         </div>
         
         <RouterLink class="w-[360px]" to="/universal-component">
-        <div title="Checkout how to use the VueDataUi universal component" class="mx-auto  rounded-md py-1 px-6 sm:px-10">
+        <div title="Checkout how to use the VueDataUi universal component" class="mx-auto rounded-md py-1 px-6 sm:px-10">
     <pre>
+
     <code class="text-gray-500 text-md">
     &lt;<span class="dark:text-gray-200">VueDataUi</span>
         <span class="text-black dark:text-app-orange">component</span>="VueUi{{ currentShowcase }}"
@@ -1224,6 +1225,7 @@ const stackbarKey = ref(0);
                         }
                     })"
                     v-model:value="schemaSelect"
+                    background="bg-white dark:bg-[#1A1A1A]"
                     optionTarget="name"
                     id="schemaSelect"
                 >
@@ -1276,6 +1278,7 @@ const stackbarKey = ref(0);
                                     }
                                 })"
                                 v-model:value="themeSelect"
+                                background="bg-white dark:bg-[#1A1A1A]"
                                 optionTarget="name"
                                 id="themeSelect"
                             >
@@ -1352,6 +1355,7 @@ const stackbarKey = ref(0);
                                     }
                                 })"
                                 v-model:value="configSelect"
+                                background="bg-white dark:bg-[#1A1A1A]"
                                 optionTarget="name"
                                 id="configSelect"
                             >
