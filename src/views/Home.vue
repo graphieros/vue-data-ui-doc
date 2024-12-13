@@ -377,6 +377,10 @@ const componentTranslation = ref({
   ar: 'عناصر'
 })
 
+const specialOccasion = computed(() => {
+  return [1200, 1250, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 3000, 4000, 5000].includes(store.stars) || store.stars > 5000;
+})
+
 </script>
 
 <template>
@@ -395,7 +399,7 @@ const componentTranslation = ref({
         </h1>
         <p class="text-board-2 text-xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
 
-        <div class="flex flex-row gap-2 text-gray-500" :title="componentsLen + ' components'">
+        <div class="flex flex-row gap-2 text-gray-500 relative" :title="componentsLen + ' components'">
           {{ componentTranslation[store.lang] }}: 
           <div class="h-[22px]">
             <VueUiDigits :dataset="componentsLen" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#5f8bee' : '#1A1A1A' }  }"/>
@@ -426,9 +430,9 @@ const componentTranslation = ref({
                 <div class="relative">
                   <StarFilledIcon class="text-[#fdd663] drop-shadow-sm"/>
                   <!-- FOR SPECIAL OCCASIONS -->
-                  <!-- <svg viewBox="0 0 20 20" height="16" class="absolute top-[6px] left-1">
+                  <svg viewBox="0 0 20 20" height="16" class="absolute top-[6px] left-1" v-if="specialOccasion">
                     <path d="M 7 7 L 7 4 M 13 7 L 13 4 Z M 5 9 C 7 14 13 14 15 9" fill="none" stroke="black" stroke-width="1.3" stroke-linecap="round"/>
-                  </svg> -->
+                  </svg>
                 </div>
                 <span class="text-xs dark:text-[#fdd663] h-[20px]">
                   <Suspense>
@@ -522,9 +526,9 @@ const componentTranslation = ref({
           <div class="relative">
             <StarFilledIcon class="text-[#fdd663] drop-shadow-sm"/>
             <!-- FOR SPECIAL OCCASIONS -->
-            <!-- <svg viewBox="0 0 20 20" height="16" class="absolute top-[6px] left-1">
+            <svg viewBox="0 0 20 20" height="16" class="absolute top-[6px] left-1" v-if="specialOccasion">
               <path d="M 7 7 L 7 4 M 13 7 L 13 4 Z M 5 9 C 7 14 13 14 15 9" fill="none" stroke="black" stroke-width="1.3" stroke-linecap="round"/>
-            </svg> -->
+            </svg>
           </div>
           <span class="text-xs dark:text-[#fdd663] h-[20px]">
             <VueUiDigits :dataset="store.stars" :config="digitConfigStars"/>
