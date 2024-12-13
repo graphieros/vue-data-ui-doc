@@ -210,7 +210,7 @@ const searchModel = ref('');
     color: white;
 }
 
-.dark .dropdown-option.highlighted {
+.dark .dropdown-option.highlighted:not(.current) {
     background: linear-gradient(to right, #5f8aee99, transparent);
 }
 
