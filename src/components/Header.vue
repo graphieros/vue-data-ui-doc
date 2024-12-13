@@ -133,8 +133,8 @@ const dropdownItems = computed(() => {
         { link: '/installation', title: translations.value.menu.installation[store.lang], clickableWhenActive: false},
         { link: '/docs', title: translations.value.menu.docs[store.lang], clickableWhenActive: true },
         { link: '/chart-builder', title: translations.value.menu.chartBuilder[store.lang], clickableWhenActive: false },
-        { link: '/examples', title: translations.value.menu.examples[store.lang], clickableWhenActive: false },
         { link: '/customization', title: translations.value.menu.customization[store.lang], clickableWhenActive: false },
+        { link: '/examples', title: translations.value.menu.examples[store.lang], clickableWhenActive: false },
         { link: '/versions', title: translations.value.menu.versions[store.lang], clickableWhenActive: false },
         { link: '/about', title: translations.value.menu.about[store.lang], clickableWhenActive: false },
     ]
@@ -175,43 +175,43 @@ const isHome = computed(() => {
 
                 <router-link data-cy="link-installation" to="/installation">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/installation')
-                                ? 'text-[#277753] dark:text-app-green hover:cursor-default bg-[#42d39233] shadow-md'
-                                : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-md'
+                                : 'text-gray-800 dark:text-app-blue dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
                         {{ translations.menu.installation[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-docs" to="/docs">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/docs')
-                                ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-md'
-                                : 'text-gray-800 dark:text-app-blue dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                ? 'text-[#277753] dark:text-app-green hover:cursor-default bg-[#42d39233] shadow-md'
+                                : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
                         {{ translations.menu.docs[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-docs" to="/chart-builder">
                     <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/chart-builder')
-                                ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-[#FFFFFF33] shadow-md'
+                                ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-[#ffe59633] shadow-md'
                                 : 'text-gray-800 dark:text-[#ffe596] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
                             <VueUiIcon name="boxes" :stroke="isDarkMode ? '#ffe596' : '#1A1A1A'" :size="18" :strokeWidth="1" />
                         {{ translations.menu.chartBuilder[store.lang] }}
                     </span>
                 </router-link>
-                <router-link to="/examples">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/examples')
-                                ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm'
-                                : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
-                            }`">
-                        {{ translations.menu.examples[store.lang] }}
-                    </span>
-                </router-link>
                 <router-link data-cy="link-customization" to="/customization">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/customization')
-                                ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-sm'
-                                : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                ? 'text-black dark:text-[#de8b37] hover:cursor-default bg-[#de8b3733] shadow-md'
+                                : 'text-gray-800 dark:text-[#de8b37] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
                         {{ translations.menu.customization[store.lang] }}
+                    </span>
+                </router-link>
+                <router-link to="/examples">
+                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/examples')
+                                ? 'text-black dark:text-[#de6937] hover:cursor-default bg-[#de693733] shadow-md'
+                                : 'text-gray-800 dark:text-[#de6937] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                            }`">
+                        {{ translations.menu.examples[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-versions" to="/versions">

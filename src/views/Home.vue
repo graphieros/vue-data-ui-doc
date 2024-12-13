@@ -269,13 +269,13 @@ const datasetDonutMenu = computed(() => {
         {
             name: translations.value.menu.installation[store.lang],
             values: [1],
-            color: "#42d392",
+            color: "#5f8bee",
             comment: "Vue 3, Nuxt"
-        },
-        {
+          },
+          {
             name: translations.value.menu.docs[store.lang],
             values: [0.9],
-            color: "#5f8bee",
+            color: "#42d392",
             comment: translations.value.menu.docsComment[store.lang]
         },
         {
