@@ -119,7 +119,7 @@ const config = ref({
 
 const darkModeConfig = ref({
   style: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#1A1A1A00",
     fontFamily: "inherit",
     animation: {
       show: true,
@@ -258,7 +258,7 @@ function randomizeData() {
                 <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
                 <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
             </div>
-            <div class="w-full px-4">
+            <div class="w-full px-4 mb-6">
                 <Suspense>
                   <template #default>
                     <VueUiSparkStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>

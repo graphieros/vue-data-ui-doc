@@ -208,7 +208,7 @@ const config = ref({
 
 const darkModeConfig = ref({
   style: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#1A1A1A00",
     fontFamily: "inherit",
     animation: {
       show: true,

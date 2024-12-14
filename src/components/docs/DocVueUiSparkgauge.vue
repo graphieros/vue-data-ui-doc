@@ -99,7 +99,7 @@ const config = ref({
 const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
-        background: "#1A1A1A",
+        background: "#1A1A1A00",
         height: 84,
         basePosition: 72,
         animation: {

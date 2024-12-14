@@ -66,7 +66,7 @@ const config = ref({
 const darkModeConfig = ref({
     animationFrames: 60,
     animationValueStart: 0,
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#2A2A2A",
     fontFamily: "inherit",
     layoutClass: "p-4 rounded-md shadow-md mb-6",
     prefix: "",

@@ -110,7 +110,7 @@ const darkModeConfig = ref({
         threshold: 500
     },
   style: {
-    backgroundColor: "#242424",
+    backgroundColor: "#FFFFFF05",
     fontFamily: "inherit",
     chartWidth: 290,
     animation: {
