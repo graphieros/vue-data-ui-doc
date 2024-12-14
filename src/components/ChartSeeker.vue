@@ -79,7 +79,7 @@ function updateFilters(f) {
                     v-for="chart in charts"
                     position="bottom" 
                     :content="`${chart.description}`" 
-                    width="w-fit min-w-[120px]" 
+                    width="w-fit min-w-[200px]" 
                     delay="delay-150"
                 >
                     <RouterLink :to="chart.link">
