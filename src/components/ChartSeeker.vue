@@ -67,7 +67,7 @@ function updateFilters(f) {
                 <button 
                     v-for="filter in filters" 
                     @click="() => updateFilters(filter)"
-                    :class="`text-xs cursor-pointer flex flex-col gap-2 w-[100px] place-items-center p-2 rounded-md ${filter.selected ? 'bg-app-blue' : 'bg-gray-100 dark:bg-[#FFFFFF10] hover:bg-gray-300 dark:hover:bg-[#FFFFFF20]'} transition-colors`"
+                    :class="`text-xs cursor-pointer flex flex-col gap-2 place-items-center p-2 rounded-md ${filter.selected ? 'bg-app-blue' : 'bg-gray-100 dark:bg-[#FFFFFF10] hover:bg-gray-300 dark:hover:bg-[#FFFFFF20]'} transition-colors`"
                 >
                     {{ classification[filter.name][store.lang] }}
                 </button>
