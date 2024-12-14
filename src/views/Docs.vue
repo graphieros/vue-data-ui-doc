@@ -14,6 +14,7 @@ import UserOptionsMenu from "../components/UserOptionsMenu.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import { useIconMapUnderscore } from '../useIconMapUnderscore';
 import { useMakerStore } from "../stores/maker";
+import ChartSeeker from "../components/ChartSeeker.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -1208,6 +1209,10 @@ const stackbarKey = ref(0);
     
     <div dir="auto" class="w-full px-2 sm:px-0 max-w-[72ch] text-left mx-auto mb-12 mt-12 text-xs sm:text-lg">
         {{ translations.docs.p1[store.lang] }}
+    </div>
+
+    <div class="w-full">
+        <ChartSeeker/>
     </div>
     
     <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
