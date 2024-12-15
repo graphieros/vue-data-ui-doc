@@ -45,7 +45,7 @@ export function useIconMap(componentName) {
         VueUiStripPlot: 'chartStripPlot',
         VueUiTable: 'chartTable',
         VueUiTableHeatmap: 'chartTable',
-        VueUiTableSparkline: 'chartTable',
+        VueUiTableSparkline: 'chartTableSparkline',
         VueUiThermometer: 'chartThermometer',
         VueUiTimer: 'lap',
         VueUiTiremarks: 'chartTiremarks',
@@ -125,7 +125,7 @@ export function isValidComponent(content) {
         'VueUiWordCloud',
         'VueUiXy',
         'VueUiXyCanvas',
-        'VueUiHistoryPlot'
+        'VueUiHistoryPlot',
     ];
 
     return valid.includes(content);

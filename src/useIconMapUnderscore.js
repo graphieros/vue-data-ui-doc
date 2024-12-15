@@ -45,7 +45,7 @@ export function useIconMapUnderscore(componentName) {
         vue_ui_strip_plot: 'chartStripPlot',
         vue_ui_table: 'chartTable',
         vue_ui_table_heatmap: 'chartTable',
-        vue_ui_table_sparkline: 'chartTable',
+        vue_ui_table_sparkline: 'chartTableSparkline',
         vue_ui_thermometer: 'chartThermometer',
         vue_ui_timer: 'lap',
         vue_ui_tiremarks: 'chartTiremarks',

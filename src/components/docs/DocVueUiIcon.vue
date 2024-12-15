@@ -85,6 +85,7 @@ const specialIcons = ref([
     "chartStackbar",
     "chartStripPlot",
     "chartTable",
+    "chartTableSparkline",
     "chartThermometer",
     "chartTiremarks",
     "chartTreemap",

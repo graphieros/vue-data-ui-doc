@@ -500,7 +500,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-table-sparkline',
-        icon: 'chartTable',
+        icon: 'chartTableSparkline',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'TableSparkline',
@@ -766,7 +766,7 @@ const sideMenuItems = computed(() => {
     {
         title: translations.value.sideMenu.tables[store.lang],
         items: [
-            { route: '/docs#vue-ui-table-sparkline', componentName: 'TableSparkline', icon: 'chartTable' },
+            { route: '/docs#vue-ui-table-sparkline', componentName: 'TableSparkline', icon: 'chartTableSparkline' },
             { route: '/docs#vue-ui-table-heatmap', componentName: 'TableHeatmap', icon: 'chartTable' },
             { route: '/docs#vue-ui-table', componentName: 'Table', icon: 'chartTable' },
             { route: '/docs#vue-ui-carousel-table', componentName: 'CarouselTable', icon: 'carouselTable' },

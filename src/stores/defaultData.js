@@ -1450,10 +1450,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.track.useGradient', def: true, type: 'checkbox', label: ['track', 'is', 'useGradient'], category: 'general' },
                     { key: 'style.chart.layout.track.gradientIntensity', def: 20, min: 1, max: 30, type: 'range', label: ['track', 'is', 'gradientIntensity'], category: 'general' },
                     { key: 'style.chart.layout.markers.color', def: '#1A1A1A', type: 'color', label: ['markers', 'is', 'textColor'], category: 'general' },
+                    { key: 'style.chart.layout.markers.show', def: true, type: 'checkbox', label: ['markers', 'is', 'show'], category: 'general'},
                     { key: 'style.chart.layout.markers.bold', def: true, type: 'checkbox', label: ['markers', 'is', 'bold'], category: 'general' },
                     { key: 'style.chart.layout.markers.fontSizeRatio', def: 1, type: 'number', min: 0, max: 3, label: ['markers', 'fontSize', 'is', 'ratio'], category: 'general' },
                     { key: 'style.chart.layout.markers.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['markers', 'is', 'offsetY'], category: 'general' },
                     { key: 'style.chart.layout.markers.roundingValue', def: 0, type: 'number', min: 0, max: 3, label: ['markers', 'is', 'rounding'], category: 'general' },
+                    { key: 'style.chart.layout.markers.prefix', def: '', type: 'text', label: ['markers', 'is', 'prefix'], category: 'general'},
+                    { key: 'style.chart.layout.markers.suffix', def: '', type: 'text', label: ['markers', 'is', 'suffix'], category: 'general'},
+
                     { key: 'style.chart.layout.pointer.type', def: 'pointy', type:'select', options: ['pointy', 'rounded'], label: ['pointer', 'is', 'shape'], category: 'general'},
                     { key: 'style.chart.layout.pointer.size', def: 1, type: 'number', min: 0, max: 1.5, step: 0.01, label: ['pointer', 'is', 'size'], category: 'general' },
                     { key: 'style.chart.layout.pointer.stroke', def: '#1A1A1A', type: 'color', label: ['pointer', 'border', 'is', 'color'], category: 'general' },
@@ -1464,6 +1468,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.pointer.circle.stroke', def: '#1A1A1A', type: 'color', label: ['pointer', 'circle', 'is', 'border', 'color'], category: 'general' },
                     { key: 'style.chart.layout.pointer.circle.strokeWidth', def: 2, type: 'number', min: 0, max: 12, label: ['pointer', 'circle', 'is', 'border', 'thickness'], category: 'general' },
                     { key: 'style.chart.layout.pointer.circle.color', def: '#FFFFFF', type: 'color', label: ['pointer', 'circle', 'is', 'backgroundColor'], category: 'general' },
+
+                    { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: ['legend', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.fontSize', def: 48, type: 'number', min: 12, max: 120, label: 'fontSize', category: 'legend' },
                     { key: 'style.chart.legend.prefix', def: '', type: 'text', label: 'prefix', category: 'legend' },
                     { key: 'style.chart.legend.suffix', def: '', type: 'text', label: 'suffix', category: 'legend' },

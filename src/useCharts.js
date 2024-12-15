@@ -565,7 +565,7 @@ export default function useCharts() {
                 taxinomy: ['dataTables', 'relationships']
             },
             VueUiTableSparkline: {
-                icon: 'chartTable',
+                icon: 'chartTableSparkline',
                 link: '/docs#vue-ui-table-sparkline',
                 description: translations.value.docs.tooltips.sparklineTable[store.lang],
                 taxinomy: ['dataTables', 'dataOverTime']

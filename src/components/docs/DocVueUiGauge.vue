@@ -90,6 +90,9 @@ const config = ref({
                     gradientIntensity: 20,
                 },
                 markers: {
+                    show: true,
+                    prefix: '',
+                    suffix: '',
                     color: "#1A1A1A",
                     bold: true,
                     fontSizeRatio: 1,
@@ -112,6 +115,7 @@ const config = ref({
                 }
             },
             legend: {
+                show: true,
                 fontSize: 48,
                 prefix: "",
                 suffix: "",
@@ -178,6 +182,9 @@ const darkModeConfig = ref({
                     gradientIntensity: 20,
                 },
                 markers: {
+                    show: true,
+                    prefix: '',
+                    suffix: '',
                     color: "#CCCCCC",
                     bold: true,
                     fontSizeRatio: 1,
@@ -200,6 +207,7 @@ const darkModeConfig = ref({
                 }
             },
             legend: {
+                show: true,
                 fontSize: 48,
                 prefix: "",
                 suffix: "",
@@ -466,11 +474,15 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                 </BaseDetails>
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">
                     <BaseDetails attr="markers" :level="4" title="style.chart.layout.markers">
+                        <BaseAttr name="show" attr="style.chart.layout.markers.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="prefix" attr="style.chart.layout.markers.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="suffix" attr="style.chart.layout.markers.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="color" attr="style.chart.layout.markers.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="bold" attr="style.chart.layout.markers.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSizeRatio" attr="style.chart.layout.markers.fontSizeRatio" type="range" defaultVal="1" :min="0.5" :max="2" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="offsetY" attr="style.chart.layout.markers.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                         <BaseAttr name="roundingValue" attr="style.chart.layout.markers.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                     </BaseDetails>
                     <BaseDetails attr="pointer" :level="4" title="style.chart.layout.pointer">
                         <BaseAttr name="type" attr="style.chart.layout.pointer.type" type="select" defaultVal="rounded" :options="['rounded', 'pointy']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -493,6 +505,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="legend" :level="3" title="style.chart.legend">
+                    <BaseAttr name="show" attr="style.chart.legend.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="48" :min="8" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="prefix" attr="style.chart.legend.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="suffix" attr="style.chart.legend.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

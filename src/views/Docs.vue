@@ -604,7 +604,7 @@ const menuItems = computed(() => [
     },
     {
         name: "TableSparkline",
-        icon: "chartTable",
+        icon: "chartTableSparkline",
         tooltip: translations.value.docs.tooltips.sparklineTable[store.lang],
         link: "/docs#vue-ui-table-sparkline",
         type: "table",
