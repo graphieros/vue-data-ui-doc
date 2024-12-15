@@ -7,7 +7,7 @@ import { useMainStore } from "../stores";
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
-const { classification, taxinomy } = useCharts()
+const { classification, classificationDescription, taxinomy } = useCharts()
 
 const filters = ref(Object.keys(classification.value).map(f => {
         return {
@@ -64,13 +64,20 @@ function updateFilters(f) {
         <div class="dark:bg-[#FFFFFF10] pb-2">
             <h3 class="p-4 pb-1 text-lg" dir="auto">{{ title }}</h3>
             <div class="flex flex-row flex-wrap gap-2 p-2 rounded-md mx-2 bg-gray-200 dark:bg-[#FFFFFF10]">
+                <FlexibleTooltip
+                    v-for="filter in filters"
+                    position="bottom" 
+                    :content="classificationDescription[filter.name][store.lang]" 
+                    width="w-fit min-w-[200px]" 
+                    delay="delay-150"
+                >
                 <button 
-                    v-for="filter in filters" 
                     @click="() => updateFilters(filter)"
                     :class="`text-xs cursor-pointer flex flex-col gap-2 place-items-center p-2 rounded-md ${filter.selected ? 'bg-app-blue' : 'bg-gray-100 dark:bg-[#FFFFFF10] hover:bg-gray-300 dark:hover:bg-[#FFFFFF20]'} transition-colors`"
                 >
                     {{ classification[filter.name][store.lang] }}
                 </button>
+            </FlexibleTooltip>
             </div>
         </div>
         <div class="flex flex-row gap-4 place-items-center mt-2 py-4 dark:bg-[#FFFFFF05]" v-if="charts.length">
