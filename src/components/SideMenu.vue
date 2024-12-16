@@ -645,6 +645,14 @@ const smallMenu = ref([
         isSelected: isSelected,
         tooltipContent: 'Timer',
         component: 'Timer'
+    },
+    {
+        route: '/docs#utility-functions',
+        icon: 'func',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: '',
+        component: 'Utils'
     }
 ])
 
@@ -653,7 +661,13 @@ const tooltipContent = ref('');
 
 function showTooltip(source) {
     isTooltip.value = true;
-    tooltipContent.value = `<div class="flex flex-center flex-col gap-2 place-items-center"><div class="flex flex-row place-items-center"><span>VueUi</span><b class="text-app-blue">${source.tooltipContent}</b></div>${source.thumb ? `<img class="h-12 max-w-[150px]" src="${isDarkMode.value ? source.thumb : source.thumbLight}">` : ''}</div>`
+
+    if (source.route === '/docs#utility-functions') {
+        tooltipContent.value = `<div>${ translations.value.utilityFunctions[store.lang] }</div>`
+    } else {
+        tooltipContent.value = `<div class="flex flex-center flex-col gap-2 place-items-center"><div class="flex flex-row place-items-center"><span>VueUi</span><b class="text-app-blue">${source.tooltipContent}</b></div>${source.thumb ? `<img class="h-12 max-w-[150px]" src="${isDarkMode.value ? source.thumb : source.thumbLight}">` : ''}</div>`
+    }
+
 }
 
 function nukeTooltip() {
@@ -791,7 +805,8 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-digits', componentName: 'Digits', icon: 'digit8' },
             { route: '/docs#vue-ui-cursor', componentName: 'Cursor', icon: 'cursor' },
             { route: '/docs#vue-ui-mini-loader', componentName: 'MiniLoader', icon: 'chartWheel' },
-            { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' }
+            { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' },
+            { route: '/docs#utility-functions', componentName: translations.value.utilityFunctions[store.lang], icon: 'func' },
         ]
     },
 ]

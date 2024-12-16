@@ -26,6 +26,28 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                utilityFunctionsDescription: {
+                    en: "A set of tested functions to ease-in development",
+                    fr: "Un ensemble de fonctions testées pour faciliter le développement",
+                    pt: "Um conjunto de funções testadas para facilitar o desenvolvimento",
+                    de: "Eine Sammlung getesteter Funktionen, die die Entwicklung erleichtern",
+                    zh: "一组经过测试的函数，用于简化开发",
+                    jp: "開発を容易にするためのテスト済み関数のセット",
+                    es: "Un conjunto de funciones probadas para facilitar el desarrollo",
+                    ko: "개발을 용이하게 하기 위한 테스트된 함수 모음",
+                    ar: "مجموعة من الوظائف المجربة لتسهيل التطوير"
+                },
+                utilityFunctions: {
+                    en: "Utility functions",
+                    fr: "Fonctions utilitaires",
+                    pt: "Funções utilitárias",
+                    de: "Hilfsfunktionen",
+                    zh: "实用函数",
+                    jp: "ユーティリティ関数",
+                    es: "Funciones de utilidad",
+                    ko: "유틸리티 함수",
+                    ar: "وظائف مساعدة"
+                },
                 lttb: {
                     en: "This component uses the Largest-Triangle-Three-Bucket algorithm to downsample very large datasets above a certain threshold, while preserving the shape of the dataset. This threshold is configurable in the config object passed as props to the component.",
                     fr: "Ce composant utilise l'algorithme Largest-Triangle-Three-Bucket pour réduire les grands ensembles de données au-delà d'un certain seuil, tout en préservant la forme de l'ensemble de données. Ce seuil est configurable dans l'objet de configuration passé en tant que props au composant.",

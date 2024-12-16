@@ -76,6 +76,7 @@ const DocVueUiStackbar = defineAsyncComponent(() => import('../components/docs/D
 const DocVueUiBullet = defineAsyncComponent(() => import('../components/docs/DocVueUiBullet.vue'));
 const DocVueUiFunnel = defineAsyncComponent(() => import('../components/docs/DocVueUiFunnel.vue'));
 const DocVueUiHistoryPlot = defineAsyncComponent(() => import('../components/docs/DocVueUiHistoryPlot.vue'));
+const DocUtilityFunctions = defineAsyncComponent(() => import('../components/docs/DocUtilityFunctions.vue'));
 
 const mainConfig = useConfig()
 
@@ -883,21 +884,25 @@ function updateCrumb() {
         return String(val).charAt(0).toUpperCase() + String(val).slice(1);
     }
     const hash = router.currentRoute.value.hash ? router.currentRoute.value.hash.replace('#', '').split('-').map(s => capitalizeFirstLetter(s)).join('') : null
+
+    console.log(router.currentRoute.value.hash)
+
     const hashLink = router.currentRoute.value.hash ? `/docs${router.currentRoute.value.hash}` : null;
     if (docsCrumbs.value.length === 1) {
         docsCrumbs.value.push({
-            description: hash,
-            icon: !hashLink ? undefined : menuItems.value.find(m => m.link === hashLink) ? menuItems.value.find(m => m.link === hashLink).icon : ''
+            description: router.currentRoute.value.hash === '#utility-functions' ? translations.value.utilityFunctions[store.lang] : hash,
+            icon: router.currentRoute.value.hash === '#utility-functions' ? 'func' : !hashLink ? undefined : menuItems.value.find(m => m.link === hashLink) ? menuItems.value.find(m => m.link === hashLink).icon : ''
         })
     } else {
         docsCrumbs.value[1] = {
-            description: hash,
-            icon: !hashLink ? undefined : menuItems.value.find(m => m.link === hashLink) ? menuItems.value.find(m => m.link === hashLink).icon : ''
+            description: router.currentRoute.value.hash === '#utility-functions' ? translations.value.utilityFunctions[store.lang] : hash,
+            icon: router.currentRoute.value.hash === '#utility-functions' ? 'func' : !hashLink ? undefined : menuItems.value.find(m => m.link === hashLink) ? menuItems.value.find(m => m.link === hashLink).icon : ''
         }
     }
 }
 
 watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: true });
+watch(() => store.lang, updateCrumb, { deep: true });
 
 const currentShowcase = ref('VueUiXy')
 const menuItemsCount = ref(40);
@@ -1162,6 +1167,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiHistoryPlot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-history-plot'" />
+            </Transition>
+            <Transition name="fade">
+                <DocUtilityFunctions v-if="router.currentRoute.value.fullPath === '/docs#utility-functions'" />
             </Transition>
 
             <Transition name="fade">
