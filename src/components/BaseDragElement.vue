@@ -2,6 +2,13 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { GripHorizontalIcon } from "vue-tabler-icons";
 
+const props = defineProps({
+    snapOnResize: {
+        type: Boolean,
+        default: false
+    }
+})
+
 const draggableElement = ref(null);
 const isDragging = ref(false);
 const isInteracting = ref(false);
@@ -70,7 +77,17 @@ onMounted(() => {
     const elementWidth = draggableElement.value.offsetWidth;
     draggableElement.value.style.left = `${(window.innerWidth - elementWidth - 42)
         }px`;
+
+    if (props.snapOnResize) {
+        window.addEventListener('resize', snapRight)
+    }
 });
+
+function snapRight(e) {
+    const windowWidth = window.innerWidth;
+    const elementWidth = draggableElement.value.offsetWidth;
+    draggableElement.value.style.left = `${windowWidth - elementWidth - 24}px`
+}
 
 onUnmounted(() => {
     endDrag();
