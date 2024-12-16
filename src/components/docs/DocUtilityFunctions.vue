@@ -83,7 +83,7 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <div class="p-4">
+                <div class="p-4 overflow-auto">
 <pre>
 <code>
 import { abbreviate } from "vue-data-ui";
@@ -111,7 +111,7 @@ const abbreviated = abbreviate({
         </div>
     </div>
 
-    <div class="p-4">
+    <div class="p-4 overflow-auto">
 <pre>
 <code>
 import { darkenColor } from "vue-data-ui";
@@ -136,7 +136,7 @@ import { darkenColor } from "vue-data-ui";
             <p class="text-gray-500">{{ utilityTranslations.lightenColor[store.lang] }}</p>
         </div>
     </div>
-    <div class="p-4">
+    <div class="p-4 overflow-auto">
 <pre>
 <code>
 import { lightenColor } from "vue-data-ui";
@@ -159,7 +159,7 @@ import { lightenColor } from "vue-data-ui";
             <p class="text-gray-500">{{ utilityTranslations.shiftColorHue[store.lang] }}</p>
         </div>
     </div>
-    <div class="p-4">
+    <div class="p-4 overflow-auto">
 <pre>
 <code>
 import { shiftColorHue } from "vue-data-ui";
