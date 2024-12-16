@@ -116,6 +116,7 @@ const abbreviated = abbreviate({
 <code>
 import { darkenColor } from "vue-data-ui";
 
+<span class="text-gray-500">// Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color</span>
 <div class="flex flex-row gap-2 place-items-center">const color = "#FF0000"; <div class="h-[24px] w-[24px] rounded" style="background: #FF0000"/></div>
 <div class="flex flex-row gap-2 place-items-center">const darkened = darkenColor(color, 0.5); <div class="h-[24px] w-[24px] rounded" :style="`background:${darkenColor('#FF0000', 0.5)}`"/></div>
 
@@ -140,6 +141,7 @@ import { darkenColor } from "vue-data-ui";
 <code>
 import { lightenColor } from "vue-data-ui";
 
+<span class="text-gray-500">// Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color</span>
 <div class="flex flex-row gap-2 place-items-center">const color = "#FF0000"; <div class="h-[24px] w-[24px] rounded" style="background: #FF0000"/></div>
 <div class="flex flex-row gap-2 place-items-center">const lightened = lightenColor(color, 0.5); <div class="h-[24px] w-[24px] rounded" :style="`background:${lightenColor('#FF0000', 0.5)}`"/></div>
 </code>
@@ -162,6 +164,7 @@ import { lightenColor } from "vue-data-ui";
 <code>
 import { shiftColorHue } from "vue-data-ui";
 
+<span class="text-gray-500">// Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color</span>
 <div class="flex flex-row gap-2 place-items-center">const color = "#FF0000"; <div class="h-[24px] w-[24px] rounded" style="background: #FF0000"/></div>
 <div class="flex flex-row gap-2 place-items-center">const shifted = shiftColorHue(color, 0.1); <div class="h-[24px] w-[24px] rounded" :style="`background:${shiftColorHue('#FF0000', 0.1)}`"/></div>
 </code>
