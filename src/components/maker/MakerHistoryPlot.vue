@@ -52,6 +52,10 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.grid[store.lang]
         },
         {
+            key: 'legend',
+            title: makerTranslations.value.categories.legend[store.lang]
+        },
+        {
             key: 'datapoints',
             title: makerTranslations.value.categories.datapoints[store.lang]
         },

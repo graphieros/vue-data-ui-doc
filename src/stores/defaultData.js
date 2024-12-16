@@ -35,7 +35,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.height', def: 500, type: 'range', min: 300, max: 1000, label: 'height', category: 'general'},
                     { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
                     { key: 'style.chart.padding.right', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
-                    { key: 'style.chart.padding.botoom', def: 48, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
+                    { key: 'style.chart.padding.bottom', def: 48, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
                     { key: 'style.chart.padding.left', def: 48, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
 
                     { key: 'style.chart.grid.xAxis.show', def: true, type: 'checkbox', label: ['xAxis', 'is', 'show'], category: 'grid'},
@@ -72,7 +72,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.axes.x.name.color', def: '#1A1A1A', type: 'color', label: ['xAxis', 'name', 'is', 'textColor'], category: 'grid'},
                     { key: 'style.chart.axes.x.name.fontSize', def: 16, type: 'number', min: 8, max: 42, label: ['xAxis', 'name', 'is', 'fontSize'], category: 'grid'},
                     { key: 'style.chart.axes.x.name.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['xAxis', 'name', 'is', 'offsetX'], category: 'grid'},
-                    { key: 'style.chart.axes.x.name.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['xAxis', 'name', 'is', 'offsetY'], category: 'grid'},
+                    { key: 'style.chart.axes.x.name.offsetY', def: -6, type: 'number', min: -100, max: 100, label: ['xAxis', 'name', 'is', 'offsetY'], category: 'grid'},
                     { key: 'style.chart.axes.x.name.bold', def: false, type: 'checkbox', label: ['xAxis', 'name', 'is', 'bold'], category: 'grid'},
 
                     { key: 'style.chart.axes.y.scaleMin', def: null, type: 'number', min: -10000, max: 10000, label: ['yAxis', 'is', 'scale', 'min'], category: 'grid'},
