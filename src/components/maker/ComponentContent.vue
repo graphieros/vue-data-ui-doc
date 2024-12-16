@@ -185,8 +185,9 @@ function nuke() {
         <input id="univ" type="checkbox" v-model="isUniversal">
         <label for="univ" class="text-sm cursor-pointer">Use VueDataUi universal component</label>
     </div>
-    
-<pre class="bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer border border-transparent hover:border-app-blue transition-colors mb-12"  @click="emit('click')">
+
+<pre class="relative bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded cursor-pointer border border-transparent hover:border-app-blue hover:bg-[#5f8aee20] dark:hover:bg-[#5f8aee20] transition-colors mb-12"  @click="emit('click')">
+        <CopyIcon class="absolute top-2 right-2 pointer-events-none text-app-blue"/>
 <code id="componentContent" ref="compContent">
 &lt;script setup&gt;
     import { {{ isComputed ? 'computed' : 'ref' }} } from "vue";
@@ -218,6 +219,7 @@ function nuke() {
 
 </code>
 </pre>  
+
 </template>
 
 
