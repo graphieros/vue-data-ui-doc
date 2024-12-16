@@ -2,6 +2,8 @@
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
 import { darkenColor, lightenColor, shiftColorHue } from "vue-data-ui";
+import BaseColorInput from "../BaseColorInput.vue";
+import BaseNumberInput from "../BaseNumberInput.vue";
 
 const store = useMainStore();
 
@@ -54,12 +56,16 @@ const utilityTranslations = ref({
     }
 })
 
-onMounted(() => {
-    console.log(abbreviate({
-        source: 'lorem ipsum dolor sit amet',
-        length: 5
-    }))
-})
+const colorDark = ref('#FF0000');
+const strengthDark = ref(0.5);
+
+const colorLight = ref('#FF0000');
+const strengthLight = ref(0.5);
+
+const colorHue = ref('#FF0000');
+const strengthHue = ref(0.1);
+
+console.log(shiftColorHue('rgba(51,87,255,1)', 0.83))
 
 </script>
 
@@ -117,12 +123,19 @@ const abbreviated = abbreviate({
 import { darkenColor } from "vue-data-ui";
 
 <span class="text-gray-500">// Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color</span>
-<div class="flex flex-row gap-2 place-items-center">const color = "#FF0000"; <div class="h-[24px] w-[24px] rounded" style="background: #FF0000"/></div>
-<div class="flex flex-row gap-2 place-items-center">const darkened = darkenColor(color, 0.5); <div class="h-[24px] w-[24px] rounded" :style="`background:${darkenColor('#FF0000', 0.5)}`"/></div>
-
+<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background: ${colorDark}`"/>const color = "{{ colorDark }}";</div>
+<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background:${darkenColor(colorDark, strengthDark)}`"/>const darkened = darkenColor(color, {{ strengthDark }});<span class="text-gray-500">// "{{ darkenColor(colorDark, strengthDark) }}""</span></div>
 </code>
 </pre>
-
+    </div>
+    <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
+        <div class="p-4 flex flex-col gap-2 w-fit">
+            <BaseColorInput v-model:value="colorDark" label="Color source" label-id="source-light"/>
+            <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                <label for="range-dark" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Darken strength</label>
+                <input id="range-dark" type="range" v-model="strengthDark" :min="0" :max="1" :step="0.01" class="accent-app-blue z-0">
+            </div>
+        </div>
     </div>
 </div>
 </div>
@@ -142,10 +155,19 @@ import { darkenColor } from "vue-data-ui";
 import { lightenColor } from "vue-data-ui";
 
 <span class="text-gray-500">// Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color</span>
-<div class="flex flex-row gap-2 place-items-center">const color = "#FF0000"; <div class="h-[24px] w-[24px] rounded" style="background: #FF0000"/></div>
-<div class="flex flex-row gap-2 place-items-center">const lightened = lightenColor(color, 0.5); <div class="h-[24px] w-[24px] rounded" :style="`background:${lightenColor('#FF0000', 0.5)}`"/></div>
+<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background: ${colorLight}`"/>const color = "{{ colorLight }}";</div>
+<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background:${lightenColor(colorLight, strengthLight)}`"/>const lightened = lightenColor(color, {{ strengthLight }});<span class="text-gray-500">// "{{ lightenColor(colorLight, strengthLight) }}""</span></div>
 </code>
 </pre>
+    </div>
+    <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
+        <div class="p-4 flex flex-col gap-2 w-fit">
+            <BaseColorInput v-model:value="colorLight" label="Color source" label-id="source-light"/>
+            <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                <label for="range-light" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Lighten strength</label>
+                <input id="range-light" type="range" v-model="strengthLight" :min="0" :max="1" :step="0.01" class="accent-app-blue z-0">
+            </div>
+        </div>
     </div>
 </div>
 </div>
@@ -165,12 +187,22 @@ import { lightenColor } from "vue-data-ui";
 import { shiftColorHue } from "vue-data-ui";
 
 <span class="text-gray-500">// Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color</span>
-<div class="flex flex-row gap-2 place-items-center">const color = "#FF0000"; <div class="h-[24px] w-[24px] rounded" style="background: #FF0000"/></div>
-<div class="flex flex-row gap-2 place-items-center">const shifted = shiftColorHue(color, 0.1); <div class="h-[24px] w-[24px] rounded" :style="`background:${shiftColorHue('#FF0000', 0.1)}`"/></div>
+<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background: ${colorHue}`"/>const color = "{{ colorHue }}";</div>
+<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background:${shiftColorHue(colorHue.replaceAll(' ',''), Number(strengthHue.toFixed(2)))}`"/>const shifted = shiftColorHue(color, {{ strengthHue.toFixed(2) }});<span class="text-gray-500">// "{{ shiftColorHue(colorHue.replaceAll(' ',''), strengthHue) }}"</span></div>
 </code>
 </pre>
     </div>
+    <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
+        <div class="p-4 flex flex-col gap-2 w-fit">
+            <BaseColorInput v-model:value="colorHue" label="Color source" label-id="source-hue"/>
+            <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                <label for="range-hue" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Hue strength</label>
+                <BaseNumberInput v-model:value="strengthHue" :min="0" :max="1" :step="0.01"/>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
+
     </div>
 </template>
