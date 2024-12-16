@@ -654,7 +654,8 @@ const sparklineConfig = ref({
     },
     verticalIndicator: {
       show: true,
-      strokeWidth: 1.5
+      strokeWidth: 1.5,
+      strokeDasharray: 0
     },
     dataLabel: {
       position: "left",
@@ -701,7 +702,8 @@ const darkModeSparklineConfig = ref({
     },
     verticalIndicator: {
       show: true,
-      strokeWidth: 1.5
+      strokeWidth: 1.5,
+      strokeDasharray: 0
     },
     dataLabel: {
       position: "left",
