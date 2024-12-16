@@ -552,6 +552,12 @@ export default function useCharts() {
                 description: translations.value.docs.tooltips.stripPlot[store.lang],
                 taxinomy: ['comparisons']
             },
+            VueUiTableSparkline: {
+                icon: 'chartTableSparkline',
+                link: '/docs#vue-ui-table-sparkline',
+                description: translations.value.docs.tooltips.sparklineTable[store.lang],
+                taxinomy: ['dataTables', 'dataOverTime']
+            },
             VueUiTable: {
                 icon: 'chartTable',
                 link: '/docs#vue-ui-table',
@@ -563,12 +569,6 @@ export default function useCharts() {
                 link: '/docs#vue-ui-table-heatmap',
                 description: translations.value.docs.tooltips.tableHeatmap[store.lang],
                 taxinomy: ['dataTables', 'relationships']
-            },
-            VueUiTableSparkline: {
-                icon: 'chartTableSparkline',
-                link: '/docs#vue-ui-table-sparkline',
-                description: translations.value.docs.tooltips.sparklineTable[store.lang],
-                taxinomy: ['dataTables', 'dataOverTime']
             },
             VueUiThermometer: {
                 icon: 'chartThermometer',

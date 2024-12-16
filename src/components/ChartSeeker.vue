@@ -70,10 +70,11 @@ function updateFilters(f) {
                     :content="classificationDescription[filter.name][store.lang]" 
                     width="w-fit min-w-[200px]" 
                     delay="delay-150"
+                    :alwaysBlue="true"
                 >
                 <button 
                     @click="() => updateFilters(filter)"
-                    :class="`text-xs cursor-pointer flex flex-col gap-2 place-items-center p-2 rounded-md ${filter.selected ? 'bg-app-blue' : 'bg-gray-100 dark:bg-[#FFFFFF10] hover:bg-gray-300 dark:hover:bg-[#FFFFFF20]'} transition-colors`"
+                    :class="`text-xs cursor-pointer flex flex-col gap-2 place-items-center p-2 rounded-md ${filter.selected ? 'bg-app-blue text-black' : 'bg-gray-100 dark:bg-[#FFFFFF10] hover:bg-gray-300 dark:hover:bg-[#FFFFFF20]'} transition-colors`"
                 >
                     {{ classification[filter.name][store.lang] }}
                 </button>
@@ -88,6 +89,7 @@ function updateFilters(f) {
                     :content="`${chart.description}`" 
                     width="w-fit min-w-[200px]" 
                     delay="delay-150"
+                    :alwaysBlue="true"
                 >
                     <RouterLink :to="chart.link">
                         <div class="relative flex place-items-center justify-center p-2 border border-gray-200 dark:border-[#FFFFFF10] hover:bg-[#5f8aee30] hover:shadow-md hover:border-app-blue dark:hover:border-app-blue transition-all pb-3 h-[80px] w-[80px]">

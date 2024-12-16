@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.4.39",
+    "date": "2024-12-16",
+    "updates": [
+      {
+        "component": "Exposed utility functions",
+        "description": "Add color utility functions"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.38",
     "date": "2024-12-15",
     "updates": [
@@ -7,6 +17,11 @@
         "component": "VueUiGauge",
         "description": "Add config options to further customize labels",
         "link": "/docs#vue-ui-gauge"
+      },
+      {
+        "component": "VueUiIcon",
+        "description": "Add chartTableSparkline icon",
+        "link": "/docs#vue-ui-icon"
       }
     ]
   },
