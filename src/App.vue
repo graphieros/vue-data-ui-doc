@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick, onMounted, watch } from "vue";
+import { computed, onMounted, ref } from "vue";
 import Header from "./components/Header.vue";
 import UpToTop from "./components/UpToTop.vue";
 import { useRoute, useRouter } from "vue-router";
@@ -17,6 +17,20 @@ const isDarkMode = computed(() => store.isDarkMode)
 
 const currentRoute = computed(() => {
     return router.currentRoute.value.fullPath;
+});
+
+const start = ref("2023-07-25");
+const lastDate = ref(new Date(Date.now()));
+
+const end = computed(() => {
+    const day = lastDate.value.getDate();
+    const month = lastDate.value.getMonth()+1;
+    const year = lastDate.value.getFullYear();
+    return `${year}-${String(month).length === 1 ? `0${month}` : month}-${String(day).length === 1 ? `0${day}` : day}`;
+});
+
+const url = computed(() => {
+    return `https://api.npmjs.org/downloads/range/${start.value}:${end.value}/vue-data-ui`;
 });
 
 onMounted(() => {
@@ -38,6 +52,21 @@ onMounted(() => {
   }).finally(() => {
     store.isFetching = false;
   })
+
+  fetch(url.value, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'default'
+    }).then((response) => {
+        return response.json();
+    }).then(json =>  {
+      store.npmDownloads = json.downloads.map(d => {
+            return {
+                period: d.day,
+                value: d.downloads
+            }
+        }).slice(0,-1).slice(-30);
+    })
 });
 
 const showUnderlay = computed(() => {

@@ -38,9 +38,38 @@ const digitConfigIssues = computed(() => {
         <BrandGithubFilledIcon class="text-black" size="24"/>
         <StarFilledIcon class="text-black dark:text-[#fdd663] absolute top-0 -left-4" size="14"/>
         <div class="w-[40px] absolute -top-6" v-if="stars">
-            <VueDataUi component="VueUiDigits" :dataset="stars" :config="digitConfig"/>
+            <VueDataUi 
+                component="VueUiDigits" 
+                :dataset="stars" 
+                :config="digitConfig"
+            />
         </div>
     </a>
+    
+    <div class="w-[60px] h-[35px] fixed right-0 bottom-[122px]" v-if="store.npmDownloads.length">
+        <VueUiSparkline
+            :dataset="store.npmDownloads"
+            :config="{
+                responsive: true,
+                style: {
+                    backgroundColor: '#FFFFFF00',
+                    chartWidth: 300,
+                    dataLabel: { show: false },
+                    title: { show: false },
+                    line: {
+                        strokeWidth: 1.6,
+                    },
+                    plot: {
+                        show: false,
+                    },
+                    verticalIndicator: {
+                        show: false,
+                    }
+                }
+            }"
+        />
+    </div>
+
     <a v-if="issues" href="https://github.com/graphieros/vue-data-ui/issues" target="_blank" class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[235px] right-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#5f8aee] hover:shadow-md bg-gradient-to-b from-[#8eabed] to-[#5f8aee]">
         <BrandGithubFilledIcon class="text-black" size="24"/>
         <ToolIcon class="text-black dark:text-[#5f8aee] absolute top-0 -left-4" size="14"/>

@@ -1638,7 +1638,8 @@ const treemapConfig = computed(() => {
 
 const parsedData = computed(() => {
   if(!data.value || !data.value.length) return []
-  return JSON.parse(JSON.stringify(data.value)).slice(-100)
+  const parsed = JSON.parse(JSON.stringify(data.value)).slice(-100);
+  return parsed
 })
 
 const trendData = computed(() => {
