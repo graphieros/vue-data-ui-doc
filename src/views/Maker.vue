@@ -231,8 +231,18 @@ const crumbs = computed(() => {
                     </BaseDropdown>
                 </div>
             </div>
-            <div class="text-black max-w-[320px] pl-2">
+            <div class="text-black w-[300px] pl-2 border-l-2 border-white dark:border-[#1A1A1A] relative bg-gradient-to-r from-[#FFFFFF40] to-transparent shadow-md py-2 pr-2 rounded-l">
                 {{ options.find(o => o.name === selectedComponent).description[store.lang] }}
+                <svg class="absolute -top-[38px] -left-[12px] overflow-visible w-[10px]" viewBox="0 0 20 100">
+                    <path
+                        d="M20,120 -16,120 -16,16 13,16"
+                        :stroke="isDarkMode ? '#1A1A1A' : '#FFFFFF'"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="none"
+                    />
+                </svg>
             </div>
         </div>
 
