@@ -2191,7 +2191,7 @@
         "hasSlots": true,
         "hasEmits": true,
         "hasExposed": false,
-        "responsive": false,
+        "responsive": true,
         "hasLttb": true,
         "props": [
             "config",
