@@ -40,7 +40,7 @@ export const xyConfig = {
             opacity: 10,
         },
         zoom: {
-            show: false,
+            show: true,
             color: "#42d392"
         },
         padding: {
