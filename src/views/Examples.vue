@@ -6,6 +6,7 @@ import ExampleSpark from "../components/examples/ExampleSpark.vue";
 import ExampleCharts from "../components/examples/ExampleCharts.vue";
 import ExampleKpi from "../components/examples/ExampleKpi.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
+import ChartSeeker from "../components/ChartSeeker.vue";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -81,6 +82,6 @@ const crumbs = ref([
         <ExampleSpark v-if="currentMenu === 'mini'"/>
         <ExampleCharts v-if="currentMenu === 'charts'" />
         <ExampleKpi v-if="currentMenu === 'kpi'" />
-
+        <ChartSeeker class="mt-12"/>
     </div>
 </template>

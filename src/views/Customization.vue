@@ -13,6 +13,7 @@ import LabelFormatter from "../components/customization/LabelFormatter.vue";
 import { useRouter } from "vue-router";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import SourceSlot from "../components/customization/SourceSlot.vue";
+import ChartSeeker from "../components/ChartSeeker.vue";
 
 const store = useMainStore();
 
@@ -143,4 +144,6 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
   <Watermark v-if="currentRoute === '/customization#watermark-slot'" />
   <LabelFormatter v-if="currentRoute === '/customization#formatter'" />
   <SourceSlot v-if="currentRoute === '/customization#source'"/>
+
+  <ChartSeeker class="mt-12"/>
 </template>

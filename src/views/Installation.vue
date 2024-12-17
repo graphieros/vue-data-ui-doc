@@ -3,6 +3,7 @@ import { computed, onMounted } from "vue";
 import AppSkeletons from '../components/AppSkeletons.vue';
 import { useMainStore } from '../stores';
 import router from "../router";
+import ChartSeeker from "../components/ChartSeeker.vue";
 const store = useMainStore();
 
 const isDarkMode = computed(() => store.isDarkMode);
@@ -122,5 +123,7 @@ function gotoMaker() {
                 {{ translations.makeNow[store.lang] }}
             </button>
         </div>
+
+        <ChartSeeker class="mt-12"/>
     </div>
 </template>
