@@ -82,7 +82,7 @@ const useTransparencyLabel = ref({
             </div>
         </div>
     </div>
-    <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4" v-for="(category, c) in categories">
+    <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4 overflow-visible" v-for="(category, c) in categories">
         <div class="w-full bg-gradient-to-r from-app-blue-light dark:from-app-blue-dark to-transparent pl-3 py-2 rounded text-black dark:text-white">
             <h4>{{ category.title }}</h4> 
         </div>
@@ -110,3 +110,9 @@ const useTransparencyLabel = ref({
         </div>
     </div>
 </template>
+
+<style>
+.vue-ui-accordion-content {
+    overflow: visible !important;
+}
+</style>
