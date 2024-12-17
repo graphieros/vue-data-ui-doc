@@ -65,7 +65,7 @@ onMounted(() => {
                 period: d.day,
                 value: d.downloads
             }
-        }).slice(0,-1).slice(-30);
+        }).slice(0,-1).slice(-28);
     })
 });
 

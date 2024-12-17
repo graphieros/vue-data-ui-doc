@@ -45,12 +45,13 @@ const digitConfigIssues = computed(() => {
             />
         </div>
     </a>
-    
+
     <div class="w-[60px] h-[35px] fixed right-0 bottom-[122px]" v-if="store.npmDownloads.length">
         <VueUiSparkline
             :dataset="store.npmDownloads"
             :config="{
                 responsive: true,
+                type: 'line',
                 style: {
                     backgroundColor: '#FFFFFF00',
                     chartWidth: 300,
