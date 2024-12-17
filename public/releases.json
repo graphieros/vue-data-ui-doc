@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.4.40",
+    "date": "2024-12-17",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix regression in responsive mode when there is no title",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiDashboard",
+        "description": "Pause dashboard events when using zoom inputs in chart components.",
+        "link": "/docs#vue-ui-dashboard"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.39",
     "date": "2024-12-16",
     "updates": [
