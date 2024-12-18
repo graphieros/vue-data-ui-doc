@@ -238,7 +238,7 @@ function fixChart() {
                                                 <div v-for="relation in getRelationNodes(ds.relations)" class="p-1 pl-4 pr-10 bg-gray-100 dark:bg-[#FFFFFF20] rounded-full relative shadow-md flex flex-row gap-2 place-items-center">
                                                     <div class="flex flex-col gap-1">
                                                         <label class="text-xs text-left">{{ makerTranslations.labels.weight[store.lang] }}</label>
-                                                        <input class="w-[72px] tabular-nums" type="number" min="0" max="1" step="0.01" v-model="ds.weights[ds.relations.indexOf(relation.id)]" @change="saveDatasetToLocalStorage">
+                                                        <input class="w-[72px] tabular-nums" type="number" :min="0" v-model="ds.weights[ds.relations.indexOf(relation.id)]" @change="saveDatasetToLocalStorage">
                                                     </div>
                                                     <div>{{ relation.label }}</div>
                                                     <button class="absolute right-3 top-1/2 -translate-y-1/2" @click="removeRelation(ds, relation.id)">
