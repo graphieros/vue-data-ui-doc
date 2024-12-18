@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.41",
+    "date": "2024-12-18",
+    "updates": [
+      {
+        "component": "VueUiRelationCircle",
+        "description": "Full component revamping with better functionality and labels.",
+        "link": "/docs#vue-ui-relation-circle"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.40",
     "date": "2024-12-17",
     "updates": [

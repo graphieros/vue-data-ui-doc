@@ -154,18 +154,26 @@ const config = ref({
       color: "#2D353C",
       fontSize: 10,
     },
+    weightLabels: {
+      show: true,
+      size: 8,
+      prefix: '',
+      suffix: '',
+      rounding: 0
+    },
     links: {
-      curved: true,
+      curved: false,
       maxWidth: 3,
     },
     circle: {
-      radiusProportion: 0.3,
+      radiusProportion: 0.26,
       stroke: "#CCCCCC",
       strokeWidth: 1,
       offsetY: 0,
     },
     plot: {
       radius: 2,
+      useSerieColor: true,
       color: "#2D353C",
     },
     title: {
@@ -220,18 +228,26 @@ const darkModeConfig = ref({
       color: "#CCCCCC",
       fontSize: 10,
     },
+    weightLabels: {
+      show: true,
+      size: 8,
+      prefix: '',
+      suffix: '',
+      rounding: 0
+    },
     links: {
-      curved: true,
+      curved: false,
       maxWidth: 3,
     },
     circle: {
-      radiusProportion: 0.3,
+      radiusProportion: 0.26,
       stroke: "#565656",
       strokeWidth: 1,
       offsetY: 0,
     },
     plot: {
       radius: 2,
+      useSerieColor: true,
       color: "#FAFAFA",
     },
     title: {
@@ -521,12 +537,21 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRelationCircleD
         <BaseAttr name="color" attr="style.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="fontSize" attr="style.labels.fontSize" type="number" defaultVal="10" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       </BaseDetails>
+      <BaseDetails attr="weightLabels" :level="2" title="style.weightLabels">
+        <BaseAttr name="show" attr="style.weightLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="size" attr="style.weightLabels.size" type="number" defaultVal="8" :min="2" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+        <BaseAttr name="prefix" attr="style.weightLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="suffix" attr="style.weightLabels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="rounding" attr="style.weightLabels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      </BaseDetails>
       <BaseDetails attr="links" :level="2" title="style.links">
         <BaseAttr name="curved" attr="style.links.curved" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="maxWidth" attr="style.links.maxWidth" type="number" defaultVal="3" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       </BaseDetails>
       <BaseDetails attr="plot" :level="2" title="style.plot">
         <BaseAttr name="radius" attr="style.plot.radius" type="range" defaultVal="2" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="useSerieColor" attr="style.plot.useSerieColor" type="boolean" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="color" attr="style.plot.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       </BaseDetails>
       <BaseDetails attr="title" :level="2" title="style.title">

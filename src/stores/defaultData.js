@@ -3198,10 +3198,11 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.circle.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['circle', 'is', 'offsetY'], category: 'general' },
                     { key: 'style.labels.color', def: '#1A1A1A', type: 'color', label: ['labels', 'is', 'textColor'], category: 'datapoints' },
                     { key: 'style.labels.fontSize', def: 12, type: 'number', min: 6, max: 48, label: ['labels', 'is', 'fontSize'], category: 'datapoints' },
-                    { key: 'style.links.curved', def: true, type: 'checkbox', label: 'smooth', category: 'datapoints' },
+                    { key: 'style.links.curved', def: false, type: 'checkbox', label: 'smooth', category: 'datapoints' },
                     { key: 'style.links.maxWidth', def: 6, type: 'number', min: 0.1, max: 24, label: ['thickness', 'is', 'max'], category: 'datapoints' },
                     { key: 'style.plot.radius', def: 2, type: 'number', min: 0, max: 24, label: ['plots', 'is', 'radius'], category: 'datapoints' },
                     { key: 'style.plot.color', def: '#1A1A1A', type: 'color', label: ['plots', 'is', 'color'], category: 'datapoints' },
+                    { key: 'style.plot.useSerieColor', def: true, type: 'checkbox', label: ['plots', 'is', 'use serie color'], category: 'datapoints'},
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['menu', 'is', 'position'], category: 'general'},
                     { key: 'style.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
@@ -3216,6 +3217,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle' },
                     { key: 'style.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'subtitle' },
                     { key: 'style.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
+
+                    { key: 'style.weightLabels.show', def: true, type: 'checkbox', label: ['weight labels', 'is', 'show'], category: 'labels'},
+                    { key: 'style.weightLabels.size', def: 12, type: 'number', min: 4, max: 42, label: ['weight labels', 'is', 'fontSize'], category: 'labels'},
+                    { key: 'style.weightLabels.prefix', def: '', type: 'text', label: ['weight labels', 'is', 'prefix'], category: 'labels'},
+                    { key: 'style.weightLabels.suffix', def: '', type: 'text', label: ['weight labels', 'is', 'suffix'], category: 'labels'},
+                    { key: 'style.weightLabels.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['weight', 'labels', 'is', 'rounding'], category: 'labels'}
                 ]
             },
             vue_ui_thermometer: {
