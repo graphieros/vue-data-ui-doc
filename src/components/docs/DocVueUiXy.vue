@@ -139,6 +139,8 @@ const config = ref({
             highlightColor: "#4A4A4A",
             fontSize: 14,
             useResetSlot: false,
+            startIndex: null,
+            endIndex: null,
             minimap: {
                 show: true,
                 smooth: true,
@@ -146,7 +148,7 @@ const config = ref({
                 selectedColorOpacity: 0.2,
                 lineColor: "#1F77B4",
                 selectionRadius: 2,
-                indicatorColor: '#1A1A1A'
+                indicatorColor: '#1A1A1A',
             }
         },
         padding: {
@@ -418,6 +420,8 @@ const darkModeConfig = ref({
             highlightColor: "#4A4A4A",
             fontSize: 14,
             useResetSlot: false,
+            startIndex: null,
+            endIndex: null,
             minimap: {
                 show: true,
                 smooth: true,
@@ -425,7 +429,7 @@ const darkModeConfig = ref({
                 selectedColorOpacity: 0.2,
                 selectedColor: '#8A8A8A',
                 selectionRadius: 2,
-                indicatorColor: '#CCCCCC'
+                indicatorColor: '#CCCCCC',
             }
         },
         padding: {
@@ -1117,6 +1121,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="highlightColor" attr="chart.zoom.highlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="chart.zoom.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <span>useResetSlot: false, <span class="text-app-blue break-keep text-xs">// To use a custom slot for the reset feature (see slots tab)</span></span>
+                <span>startIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span>
+                <span>endIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
                 <BaseDetails attr="minimap" :level="3" title="chart.zoom.minimap">
                     <span><BaseComment>Since v2.3.49</BaseComment></span>
                     <BaseAttr name="show" attr="chart.zoom.minimap.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

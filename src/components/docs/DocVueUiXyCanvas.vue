@@ -125,6 +125,8 @@ const config = ref({
         highlightColor: "#4A4A4A",
         fontSize: 14,
         useResetSlot: false,
+        startIndex: null,
+        endIndex: null
       },
       selector: {
         show: true,
@@ -314,6 +316,8 @@ const darkModeConfig = ref({
         highlightColor: "#4A4A4A",
         fontSize: 14,
         useResetSlot: false,
+        startIndex: null,
+        endIndex: null
       },
       selector: {
         show: true,
@@ -1628,6 +1632,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                       :dark="mutableConfigDarkMode"
                       @change="forceChartUpdate()"
                     />
+                    <span>startIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span>
+                    <span>endIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
                     <span
                       >useResetSlot: false,
                       <span class="text-app-blue break-keep text-xs"

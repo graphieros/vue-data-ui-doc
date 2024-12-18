@@ -11,6 +11,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseComment from "../BaseComment.vue";
 
 const mainConfig = useConfig()
 
@@ -125,6 +126,8 @@ const config = ref({
         highlightColor: "#4A4A4A",
         fontSize: 14,
         useResetSlot: false,
+        startIndex: null,
+        endIndex: null
     },
     title: {
       text: "Title",
@@ -287,6 +290,8 @@ const darkModeConfig = ref({
         highlightColor: "#4A4A4A",
         fontSize: 14,
         useResetSlot: false,
+        startIndex: null,
+        endIndex: null
     },
     title: {
       text: "Title",
@@ -615,6 +620,8 @@ const <span class="text-black dark:text-app-green">dataset: Array&lt;Array&lt;st
         <BaseAttr name="highlightColor" attr="style.zoom.highlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="fontSize" attr="style.zoom.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <span>useResetSlot: false, <span class="text-app-blue text-xs">// To use a custom slot for the reset feature (see slots tab)</span></span>
+        <span>startIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span>
+        <span>endIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
       </BaseDetails>
     </BaseDetails>
     <BaseDetails attr="table" :level="1">

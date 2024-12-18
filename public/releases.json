@@ -1,5 +1,19 @@
 [
   {
+    "version": "v 2.4.42",
+    "date": "2024-12-18",
+    "updates": [
+      {
+        "component": "Tooltips",
+        "description": "Fix tooltip offset issue when component is placed inside a wrapper with css transform attributes."
+      },
+      {
+        "component": "All components with zoom",
+        "description": "Add config attributes to set zoom's start index and end index"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.41",
     "date": "2024-12-18",
     "updates": [

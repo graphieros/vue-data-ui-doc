@@ -219,7 +219,9 @@ const config = ref({
         lineColor: "#1f77b4",
         selectionRadius: 2,
         indicatorColor: '#1A1A1A'
-    }
+    },
+    zoomStartIndex: null,
+    zoomEndIndex: null
 })
 
 const darkModeConfig = ref({
@@ -325,7 +327,9 @@ const darkModeConfig = ref({
         lineColor: "#1f77b4",
         selectionRadius: 2,
         indicatorColor: '#CCCCCC'
-    }
+    },
+    zoomStartIndex: null,
+    zoomEndIndex: null
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -836,6 +840,8 @@ const { configCode, showAllConfig } = useConfigCode()
                 <BaseAttr name="selectionRadius" attr="zoomMinimap.selectionRadius" type="range" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="indicatorColor" attr="zoomMinimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
+            <span>zoomStartIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span>
+            <span>zoomEndIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
         </div>
     </BaseDetails>
 </code>

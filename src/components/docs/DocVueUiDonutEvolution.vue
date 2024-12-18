@@ -61,6 +61,8 @@ const config = ref({
                 highlightColor: "#4A4A4A",
                 fontSize: 14,
                 useResetSlot: false,
+                startIndex: null,
+                endIndex: null
             },
             layout: {
                 height: 316,
@@ -201,6 +203,8 @@ const darkModeConfig = ref({
                 highlightColor: '#4A4A4A',
                 fontSize: 14,
                 useResetSlot: false,
+                startIndex: null,
+                endIndex: null
             },
             layout: {
                 height: 316,
@@ -566,6 +570,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionD
                     <BaseAttr name="highlightColor" attr="style.chart.zoom.highlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="fontSize" attr="style.chart.zoom.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <span>useResetSlot: false; <BaseComment>To use a custom slot for the reset feature (see slots tab)</BaseComment></span>
+                    <span>startIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span>
+                    <span>endIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
                 </BaseDetails>
             </BaseDetails>
         </BaseDetails>
