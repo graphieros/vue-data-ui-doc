@@ -27,6 +27,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                checkSlotsTab: {
+                    en: "Check the 'Slots' tab of the documentation",
+                    fr: "Consultez l'onglet 'Slots' de la documentation",
+                    pt: "Verifique a aba 'Slots' da documentação",
+                    de: "Überprüfen Sie den Reiter 'Slots' in der Dokumentation",
+                    zh: "查看文档的“插槽”选项卡",
+                    jp: "ドキュメントの「スロット」タブを確認してください",
+                    es: "Consulta la pestaña 'Slots' de la documentación",
+                    ko: "'슬롯' 탭을 문서에서 확인하세요",
+                    ar: "تحقق من علامة التبويب 'Slots' في الوثائق"
+                },
                 utilityFunctionsDescription: {
                     en: "A set of tested functions to ease-in development",
                     fr: "Un ensemble de fonctions testées pour faciliter le développement",
