@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.4.44",
+    "date": "2024-12-19",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Fix percentage display bug when segregating legends",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Slight improvement of marker shapes in tooltip & legend",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.43",
     "date": "2024-12-19",
     "updates": [
