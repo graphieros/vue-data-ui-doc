@@ -90,3 +90,10 @@ const showUnderlay = computed(() => {
   <!-- <Follower v-if="!['/', '/docs#vue-ui-cursor'].includes(currentRoute)"/> -->
   <BaseFooter v-if="!['/'].includes(currentRoute)"/>
 </template>
+
+<style>
+.vue-data-ui-tooltip {
+  z-index: 1000000 !important;
+  font-family: Satoshi;
+}
+</style>
