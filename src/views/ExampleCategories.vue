@@ -388,6 +388,15 @@ const hoveredLink = ref(null);
                         />
                     </div>
                     <p class="text-sm dark:text-[#9dcbeb]">{{  example.description[store.lang] }}</p>
+
+                    <div v-if="example.tags && example.tags.length" class="flex flex-row gap-2 place-items-center flex-wrap mt-2">
+                        <div>Slots used:</div>
+                        <div v-for="tag in example.tags">
+                            <div class="text-xs px-2 py-0.5 border border-app-green bg-[#42d392] text-black rounded-full">
+                                {{ tag }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
     
                 <Suspense>

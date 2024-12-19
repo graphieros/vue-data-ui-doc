@@ -2803,6 +2803,7 @@ export default function useExamples() {
                         }
                     }
                 },
+                tags: ['#plot-comment'],
                 component: 'VueUiXy',
                 icon: 'chartLine',
                 id: 'basic-line',
@@ -3205,6 +3206,7 @@ export default function useExamples() {
                 icon: 'chartDonut',
                 id: 'donut-comment',
                 link: 'vue-ui-donut',
+                tags: ['#plot-comment'],
                 description: {
                     en: 'With individual comments in the dataset',
                     fr: 'Avec des commentaires individuels dans le jeu de données',
