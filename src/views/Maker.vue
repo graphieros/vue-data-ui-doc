@@ -384,3 +384,9 @@ const crumbs = computed(() => {
         </Transition>
     </div>
 </template>
+
+<style>
+.vue-data-ui-tooltip {
+  z-index: 1000000 !important;
+}
+</style>

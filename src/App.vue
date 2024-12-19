@@ -90,4 +90,3 @@ const showUnderlay = computed(() => {
   <!-- <Follower v-if="!['/', '/docs#vue-ui-cursor'].includes(currentRoute)"/> -->
   <BaseFooter v-if="!['/'].includes(currentRoute)"/>
 </template>
-

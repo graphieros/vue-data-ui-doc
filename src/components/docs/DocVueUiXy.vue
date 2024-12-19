@@ -257,7 +257,8 @@ const config = ref({
             fontSize: 14,
             backgroundOpacity: 30,
             position: "center",
-            offsetY: 24
+            offsetY: 24,
+            showTimeLabel: true
         },
         userOptions: {
             show: true,
@@ -538,7 +539,8 @@ const darkModeConfig = ref({
             fontSize: 14,
             backgroundOpacity: 30,
             position: "center",
-            offsetY: 24
+            offsetY: 24,
+            showTimeLabel: true
         },
         userOptions: {
             show: true,
@@ -1086,6 +1088,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="backgroundOpacity" attr="chart.tooltip.backgroundOpacity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="position" attr="chart.tooltip.position" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="offsetY" attr="chart.tooltip.offsetY" type="number" defaultVal="24" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="showTimeLabel" attr="chart.tooltip.showTimeLabel" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
             <BaseDetails attr="userOptions" :level="2" title="chart.userOptions">
                 <BaseAttr name="show" attr="chart.userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1238,6 +1241,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
     ]
     </code>
     </pre>
+
+    <div><code><b>@selectTimeLabel</b></code></div>
+    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.selectTimeLabel[store.lang] }}</div>
+
                 <div><code><b>@selectX</b></code></div>
                 <div class="text-gray-400 pl-5">{{  translations.docs.emits.xy.selectX[store.lang]  }}</div>
     <pre>
@@ -1431,6 +1438,32 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
     &gt;
         &lt;template #reset-action="{ reset }"&gt;
             &lt;button @click="reset()"&gt;Refresh&lt;/button&gt;
+        &lt;/template&gt;
+    &lt;/VueUiXy&gt;
+</code>
+</pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.timeLabel[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiXy
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #time-label="{ x, y, fontSize, fill, transform, absoluteIndex, content, textAnchor }"&gt;
+            <span class="text-gray-500">&lt;!-- Elements used in this slot must be SVG elements --&gt;</span>
+            &lt;text
+                :x="x"
+                :y="y"
+                :font-size="fontSize"
+                :fill="fill"
+                :text-anchor="textAnchor"
+            &gt;
+                <span v-pre>{{ content }}</span>
+            &lt;/text&gt;
         &lt;/template&gt;
     &lt;/VueUiXy&gt;
 </code>

@@ -447,6 +447,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.showTimeLabel', def: true, type: 'checkbox', label: ['time label', 'is', 'show'], category: 'tooltip'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: ['textContent'], category: 'title'},
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: ['textColor'], category: 'title'},
@@ -970,6 +971,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'chart.tooltip.showTimeLabel', def: true, type: 'checkbox', label: ['time label', 'is', 'show'], category: 'tooltip'},
 
                     { key: 'chart.userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'chart.userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},

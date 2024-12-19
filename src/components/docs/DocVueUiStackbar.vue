@@ -165,7 +165,8 @@ const config = ref({
                 showValue: true,
                 showPercentage: true,
                 roundingValue: 0,
-                roundingPercentage: 0
+                roundingPercentage: 0,
+                showTimeLabel:  true
             },
             highlighter: {
                 color: "#2D353C",
@@ -364,7 +365,8 @@ const darkModeConfig = ref({
                 showValue: true,
                 showPercentage: true,
                 roundingValue: 0,
-                roundingPercentage: 0
+                roundingPercentage: 0,
+                showTimeLabel:  true
             },
             highlighter: {
                 color: "#e1e5e8",
@@ -745,6 +747,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                         <BaseAttr name="backgroundOpacity" attr="style.chart.tooltip.backgroundOpacity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="position" attr="style.chart.tooltip.position" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="offsetY" attr="style.chart.tooltip.offsetY" type="number" defaultVal="24" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="showTimeLabel" attr="style.chart.tooltip.showTimeLabel" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="highlighter" :level="3" title="style.chart.highlighter">
                         <BaseAttr name="color" attr="style.chart.highlighter.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -917,6 +920,10 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
     ]
     </code>
     </pre>
+
+                <div><code><b>@selectTimeLabel</b></code></div>
+                <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.selectTimeLabel[store.lang] }}</div>
+
     <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
@@ -1038,6 +1045,33 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
     &lt;/VueUiStackbar&gt;
 </code>
 </pre>
+
+<div class="text-gray-500">
+    {{ translations.slots.timeLabel[store.lang]  }}
+</div>
+
+<pre>
+<code>
+    &lt;VueUiStackbar
+        :config="config"
+        :dataset="dataset"
+    &gt;
+        &lt;template #time-label="{ x, y, fontSize, fill, transform, absoluteIndex, content, textAnchor }"&gt;
+            <span class="text-gray-500">&lt;!-- Elements used in this slot must be SVG elements --&gt;</span>
+            &lt;text
+                :x="x"
+                :y="y"
+                :font-size="fontSize"
+                :fill="fill"
+                :text-anchor="textAnchor"
+            &gt;
+                <span v-pre>{{ content }}</span>
+            &lt;/text&gt;
+        &lt;/template&gt;
+    &lt;/VueUiStackbar&gt;
+</code>
+</pre>
+
 
 <div class="text-gray-500">
     {{ translations.slots.watermark[store.lang]  }}

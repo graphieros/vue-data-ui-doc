@@ -727,6 +727,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    timeLabel: {
+                        en: "Use this slot to customize time labels",
+                        fr: "Utilisez cet emplacement pour personnaliser les étiquettes temporelles",
+                        pt: "Use este slot para personalizar os rótulos de tempo",
+                        de: "Verwenden Sie diesen Slot, um Zeitbeschriftungen anzupassen",
+                        zh: "使用此插槽自定义时间标签",
+                        jp: "このスロットを使用して時間ラベルをカスタマイズします",
+                        es: "Usa este espacio para personalizar las etiquetas de tiempo",
+                        ko: "이 슬롯을 사용하여 시간 레이블을 사용자 정의하세요",
+                        ar: "استخدم هذه الفتحة لتخصيص تسميات الوقت"
+                    },
                     source: {
                         en: "Use this slot to add a source caption to your chart.",
                         fr: "Utilisez cet emplacement pour ajouter une légende de source à votre graphique.",
@@ -2541,6 +2552,17 @@ export const useMainStore = defineStore("main", {
                             }
                         },
                         xy: {
+                            selectTimeLabel: {
+                                en: "returns the data associated with the selected time label",
+                                fr: "renvoie les données associées à l'étiquette temporelle sélectionnée",
+                                pt: "retorna os dados associados ao rótulo de tempo selecionado",
+                                de: "gibt die Daten zurück, die mit dem ausgewählten Zeitlabel verknüpft sind",
+                                zh: "返回与所选时间标签关联的数据",
+                                jp: "選択された時間ラベルに関連付けられたデータを返します",
+                                es: "devuelve los datos asociados con la etiqueta de tiempo seleccionada",
+                                ko: "선택된 시간 레이블과 연결된 데이터를 반환합니다",
+                                ar: "يُرجع البيانات المرتبطة بتسمية الوقت المحددة"
+                            },
                             selectLegend: {
                                 en: "returns the current visible series when selecting / unselecting the legend:",
                                 fr: "renvoie la série visible actuelle lors de la sélection/désélection de la légende :",
