@@ -14,6 +14,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseRandomButton from "../BaseRandomButton.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -569,70 +570,15 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
             </template>
 
             <template #tab3>
-                <div class="text-gray-500">
-                    {{ translations.slots.presentation[store.lang]  }}
-                </div>
-<pre>
-<code>
-    &lt;VueUiGauge
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #svg="{ svg }"&gt;
-            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
-        &lt;/template&gt;
-    &lt;/VueUiGauge&gt;
-</code>
-</pre>                    
-<div class="text-gray-500">
-                    {{ translations.slots.legendDetail[store.lang]  }}
-                </div>
-<pre>
-<code>
-    &lt;VueUiGauge
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #legend="{ legend }"&gt;
-            ...your content here
-        &lt;/template&gt;
-    &lt;/VueUiGauge&gt;
-</code>
-</pre> 
-
-<div class="text-gray-500">
-    {{ translations.slots.watermark[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiGauge
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #watermark="{ isPrinting }"&gt;
-            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiGauge&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiGauge
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiGauge&gt;
-</code>
-</pre>
+                <BaseSlotDocumenter
+                    componentName="VueUiGauge"
+                    :types="[
+                        'svg',
+                        'legend',
+                        'watermark',
+                        'source',
+                    ]" 
+                />
             </template>
 
             <template #tab6>

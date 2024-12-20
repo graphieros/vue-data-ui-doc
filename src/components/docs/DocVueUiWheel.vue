@@ -14,6 +14,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseRandomButton from "../BaseRandomButton.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -406,56 +407,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
             </template>
 
             <template #tab3>
-                <div class="text-gray-500">
-                    {{ translations.slots.presentation[store.lang]  }}
-                </div>
-<pre>
-<code>
-    &lt;VueUiWheel
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #svg="{ svg }"&gt;
-            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
-        &lt;/template&gt;
-    &lt;/VueUiWheel&gt;
-</code>
-</pre>     
-
-<div class="text-gray-500">
-    {{ translations.slots.watermark[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiWheel
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #watermark="{ isPrinting }"&gt;
-            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiWheel&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiWheel
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiWheel&gt;
-</code>
-</pre>
-
+              <BaseSlotDocumenter
+                    componentName="VueUiWheel"
+                    :types="[
+                        'svg',
+                        'watermark',
+                        'source',
+                    ]" 
+                />
             </template>
 
             <template #tab6>

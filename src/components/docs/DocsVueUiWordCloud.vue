@@ -15,6 +15,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import { shiftHue } from "../maker/lib";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -616,72 +617,15 @@ const { configCode, showAllConfig } = useConfigCode()
             </template>
 
             <template #tab3>
-                <div class="text-gray-500">
-    {{ translations.slots.presentation[store.lang]  }}
-</div>
-<pre>
-<code>
-    &lt;VueUiWordCloud
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #svg="{ svg }"&gt;
-            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
-        &lt;/template&gt;
-    &lt;/VueUiWordCloud&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.watermark[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiWordCloud
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #watermark="{ isPrinting }"&gt;
-            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiWordCloud&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.resetButton[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiWordCloud
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #reset-action="{ reset }"&gt;
-            &lt;button @click="reset()"&gt;Refresh&lt;/button&gt;
-        &lt;/template&gt;
-    &lt;/VueUiWordCloud&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiWordCloud
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiWordCloud&gt;
-</code>
-</pre>
+                <BaseSlotDocumenter
+                    componentName="VueUiWordCloud"
+                    :types="[
+                        'svg',
+                        'reset-action',
+                        'watermark',
+                        'source',
+                    ]" 
+                />
             </template>
 
             <template #tab6>
