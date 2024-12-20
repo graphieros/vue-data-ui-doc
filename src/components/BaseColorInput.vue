@@ -117,7 +117,6 @@ function setColor(c) {
 
 function updateColorFromHex() {
     colorValue.value = rgbaColor.value
-    console.log(colorValue.value)
     emit('update:value', rgbaColor.value)
     emit('change')
 }

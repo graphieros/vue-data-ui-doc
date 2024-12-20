@@ -218,7 +218,6 @@ onBeforeMount(() => {
 
 
 function saveAnnotations({ shapes, lastSelectedShape }) {
-  console.log({ shapes, lastSelectedShape });
   localStorage['vue-data-ui-annotator'] = JSON.stringify({
       shapes,
       lastSelectedShape

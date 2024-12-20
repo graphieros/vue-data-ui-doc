@@ -885,8 +885,6 @@ function updateCrumb() {
     }
     const hash = router.currentRoute.value.hash ? router.currentRoute.value.hash.replace('#', '').split('-').map(s => capitalizeFirstLetter(s)).join('') : null
 
-    console.log(router.currentRoute.value.hash)
-
     const hashLink = router.currentRoute.value.hash ? `/docs${router.currentRoute.value.hash}` : null;
     if (docsCrumbs.value.length === 1) {
         docsCrumbs.value.push({

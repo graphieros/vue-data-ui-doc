@@ -65,8 +65,6 @@ const strengthLight = ref(0.5);
 const colorHue = ref('#FF0000');
 const strengthHue = ref(0.1);
 
-console.log(shiftColorHue('rgba(51,87,255,1)', 0.83))
-
 </script>
 
 <template>
