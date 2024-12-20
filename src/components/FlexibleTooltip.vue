@@ -41,6 +41,8 @@ const tpClass = computed(() => {
         return `opacity-0 ${props.width} text-gray-200 bg-[#2A2A2A] ${props.alwaysBlue ? 'dark:bg-app-blue dark:text-black' : 'dark:bg-[#3A3A3A] dark:text-gray-300'} text-center text-xs rounded py-2 absolute z-10 group-hover:opacity-100 transition-opacity ${props.delay} top-full left-1/2 -translate-x-1/2 px-3 pointer-events-none mt-2`
     } else if (props.position === 'right') {
         return `opacity-0 ${props.width} text-gray-200 bg-[#2A2A2A] dark:text-gray-300 dark:bg-[#3A3A3A] text-center text-xs rounded py-2 absolute z-10 group-hover:opacity-100 transition-opacity ${props.delay} top-1/2 left-full -translate-y-1/2 pointer-events-none ml-2`
+    } else if (props.position === 'left') {
+        return `opacity-0 ${props.width} text-gray-200 bg-[#2A2A2A] dark:text-gray-300 dark:bg-[#3A3A3A] text-center text-xs rounded py-2 absolute z-10 group-hover:opacity-100 transition-opacity ${props.delay} top-1/2 right-full -translate-y-1/2 pointer-events-none ml-2`
     }
 })
 
@@ -71,6 +73,10 @@ const tpClass = computed(() => {
             <svg v-if="position === 'right'" :class="`absolute text-[#2A2A2A] ${props.alwaysBlue ? 'dark:text-app-blue' : 'dark:text-[#3A3A3A]'} h-2 top-1/2 -translate-y-1/2 -left-2 bottom-full`" x="0px" y="0px" viewBox="0 0 10 10"
                 xml:space="preserve">
                 <polygon class="fill-current" points="10,0 3,5 10,10" />
+            </svg>
+            <svg v-if="position === 'left'" :class="`absolute text-[#2A2A2A] ${props.alwaysBlue ? 'dark:text-app-blue' : 'dark:text-[#3A3A3A]'} h-2 top-1/2 -translate-y-1/2 -right-2 bottom-full`" x="0px" y="0px" viewBox="0 0 10 10"
+                xml:space="preserve">
+                <polygon class="fill-current" points="0,0 0,10 5,5" />
             </svg>
         </div>
     </div>

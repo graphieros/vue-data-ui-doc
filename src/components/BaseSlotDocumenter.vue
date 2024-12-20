@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import { CopyIcon } from "vue-tabler-icons";
+import FlexibleTooltip from "./FlexibleTooltip.vue";
 
 const props = defineProps({
     types: {
@@ -304,11 +305,15 @@ function copyToClipboard(conf) {
                     </div>
                 </div>
                 <div class="pl-6 border-l border-gray-500 bg-[#FFFFFF10] rounded-tr py-3 pr-6">{{ item.description }}</div>
-<div class="bg-[#2A2A2A] overflow-auto border-l border-gray-500 rounded-br rounded-bl relative">
-        <button class="absolute top-1 right-1 flex place-items-center justify-center p-1 rounded-full hover:bg-[#42d39230] transition-colors" @click="() => copyToClipboard(item.snippet)">
-            <CopyIcon class="text-app-green" />
-        </button>
-<pre v-if="item.snippet" class="text-xs text-gray-300">
+<div class="bg-gray-200 dark:bg-[#2A2A2A] overflow-auto border-l border-gray-500 rounded-br rounded-bl relative shadow">
+    <div class="absolute top-1 right-1">
+        <FlexibleTooltip position="left" :content="translations.clickToCopy[store.lang]">
+            <button class="flex place-items-center justify-center p-1 rounded-full hover:bg-[#42d39230] transition-colors" @click="() => copyToClipboard(item.snippet)">
+                <CopyIcon class="text-[#3A3A3A] dark:text-app-green" />
+            </button>
+        </FlexibleTooltip>
+    </div>
+<pre v-if="item.snippet" class="text-xs text-[#3A3A3A] dark:text-gray-300">
 <code>
 {{ item.snippet }}
 </code>
