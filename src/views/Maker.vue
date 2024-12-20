@@ -387,7 +387,6 @@ const crumbs = computed(() => {
 
 <style>
 .vue-data-ui-tooltip {
-  z-index: 1000000 !important;
   font-family: Satoshi;
 }
 </style>

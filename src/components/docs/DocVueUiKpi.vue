@@ -12,6 +12,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseDetails from "../BaseDetails.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -214,46 +215,15 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
             </template>
 
             <template #tab3>
-<pre>
-<code>
-#title
-<span class="text-gray-400">
-    &lt;VueUiKpi :dataset="299792458" :config="config"&gt;
-        &lt;template #title="{ comment }"&gt;
-            <span v-pre>This is the title, it contains the {{ comment }} which is the actual dataset</span>
-        &lt;/template&gt;
-    &lt;/VueUiKpi&gt;
-</span>
-
-#value
-<span class="text-gray-400">
-    &lt;VueUiKpi :dataset="299792458" :config="config"&gt;
-        &lt;template #value="{ comment }"&gt;
-            <span v-pre>This is the value, it contains the {{ comment }} which is the actual dataset</span>
-        &lt;/template&gt;
-    &lt;/VueUiKpi&gt;
-</span>
-
-#comment-before
-<span class="text-gray-400">
-    &lt;VueUiKpi :dataset="299792458" :config="config"&gt;
-        &lt;template #comment-before="{ comment }"&gt;
-            <span v-pre>This is the comment before the value, it contains the {{ comment }} which is the actual dataset</span>
-        &lt;/template&gt;
-    &lt;/VueUiKpi&gt;
-</span>
-
-#comment-after
-<span class="text-gray-400">
-    &lt;VueUiKpi :dataset="299792458" :config="config"&gt;
-        &lt;template #comment-after="{ comment }"&gt;
-            <span v-pre>This is the comment after the value, it contains the {{ comment }} which is the actual dataset</span>
-        &lt;/template&gt;
-    &lt;/VueUiKpi&gt;
-</span>
-
-</code>
-</pre>
+                <BaseSlotDocumenter
+                    componentName="VueUiKpi"
+                    :types="[
+                        'title_',
+                        'value',
+                        'comment-before',
+                        'comment-after',
+                    ]" 
+                />
             </template>
         </Box>
     </div>

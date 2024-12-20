@@ -14,6 +14,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseRandomButton from "../BaseRandomButton.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -1010,102 +1011,17 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                 </div>
             </template>
             <template #tab3>
-                <div class="text-gray-500">
-                    {{ translations.slots.presentation[store.lang]  }}
-                </div>
-<pre>
-<code>
-    &lt;VueUiStackbar
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #svg="{ svg }"&gt;
-            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
-        &lt;/template&gt;
-    &lt;/VueUiStackbar&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.tooltip[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiStackbar
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #tooltip-before="{ datapoint, series, config }"&gt;
-            ...your content here
-        &lt;/template&gt;
-        &lt;template #tooltip-after="{ datapoint, series, config }"&gt;
-            ...your content here
-        &lt;/template&gt;
-    &lt;/VueUiStackbar&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.timeLabel[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiStackbar
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #time-label="{ x, y, fontSize, fill, transform, absoluteIndex, content, textAnchor }"&gt;
-            <span class="text-gray-500">&lt;!-- Elements used in this slot must be SVG elements --&gt;</span>
-            &lt;text
-                :x="x"
-                :y="y"
-                :font-size="fontSize"
-                :fill="fill"
-                :text-anchor="textAnchor"
-            &gt;
-                <span v-pre>{{ content }}</span>
-            &lt;/text&gt;
-        &lt;/template&gt;
-    &lt;/VueUiStackbar&gt;
-</code>
-</pre>
-
-
-<div class="text-gray-500">
-    {{ translations.slots.watermark[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiStackbar
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #watermark="{ isPrinting }"&gt;
-            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiXy&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiStackbar
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiStackbar&gt;
-</code>
-</pre>
+                <BaseSlotDocumenter
+                    componentName="VueUiStackbar"
+                    :types="[
+                        'svg',
+                        'tooltip-before',
+                        'tooltip-after',
+                        'time-label',
+                        'watermark',
+                        'source'
+                    ]" 
+                />
             </template>
             <template #tab4>
                 <pre>

@@ -12,6 +12,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseRandomButton from "../BaseRandomButton.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -875,112 +876,18 @@ const <span class="text-black dark:text-app-green">dataset: VueUiParallelCoordin
 
             <!-- SLOTS -->
             <template #tab3>
-                <div class="text-gray-500">
-    If your dataset contains a comments attribute, you can display comments on the chart using the #plot-comment slot.
-</div>
-
-<pre>
-<code>
-    &lt;VueUiParallelCoordinatePlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #plot-comment="{ plot }"&gt;
-            &lt;div :style="`width:100%; text-align:center; color:${plot.color}`"&gt;<span v-pre>{{ plot.comment }}</span>&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiParallelCoordinatePlot&gt;
-</code>
-</pre>
-
-                <div class="text-gray-500">
-    {{ translations.slots.presentation[store.lang]  }}
-</div>
-<pre>
-<code>
-    &lt;VueUiParallelCoordinatePlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #svg="{ svg }"&gt;
-            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
-        &lt;/template&gt;
-    &lt;/VueUiParallelCoordinatePlot&gt;
-</code>
-</pre>
-
-<hr class="mb-6 border-t-gray-500">
-
-<div class="text-gray-500">
-                    {{ translations.slots.legendDetail[store.lang]  }}
-                </div>
-<pre>
-<code>
-    &lt;VueUiParallelCoordinatePlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #legend="{ legend }"&gt;
-            ...your content here
-        &lt;/template&gt;
-    &lt;/VueUiParallelCoordinatePlot&gt;
-</code>
-</pre>
-
-<hr class="mb-6 border-t-gray-500">
-
-<div class="text-gray-500">
-    {{ translations.slots.tooltip[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiParallelCoordinatePlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #tooltip-before="{ datapoint, seriesIndex, series, config }"&gt;
-            ...your content here
-        &lt;/template&gt;
-        &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
-            ...your content here
-        &lt;/template&gt;
-    &lt;/VueUiParallelCoordinatePlot&gt;
-</code>
-</pre> 
-
-<div class="text-gray-500">
-    {{ translations.slots.watermark[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiParallelCoordinatePlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #watermark="{ isPrinting }"&gt;
-            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiParallelCoordinatePlot&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiParallelCoordinatePlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiParallelCoordinatePlot&gt;
-</code>
-</pre>
+                <BaseSlotDocumenter
+                    componentName="VueUiParallelCoordinatePlot"
+                    :types="[
+                        'svg',
+                        'plot-comment',
+                        'tooltip-before',
+                        'tooltip-after',
+                        'legend',
+                        'watermark',
+                        'source'
+                    ]" 
+                />
             </template>
 
             <!-- TOOLTIP -->

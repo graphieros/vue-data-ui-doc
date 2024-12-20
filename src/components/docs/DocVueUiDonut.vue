@@ -15,6 +15,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseRandomButton from "../BaseRandomButton.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -1054,227 +1055,21 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
             </template>
 
             <template #tab3>
-                <div class="text-gray-500">
-    If your dataset contains a comments attribute, you can display comments on the chart using the #plot-comment slot.
-</div>
-
-<pre>
-<code>
-    &lt;VueUiDonut
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #plot-comment="{ plot }"&gt;
-            &lt;div :style="`width:100%; text-align:${plot.textAlign}; color:${plot.color}`"&gt;<span v-pre>{{ plot.comment }}</span>&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiDonut&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.donutDataLabels[store.lang]  }}
-Set <code class="text-app-orange">config.style.chart.layout.labels.dataLabels.useLabelSlots</code> to true. 
-</div>
-<pre>
-<code>
-    &lt;VueUiDonut
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #dataLabel="{ datapoint, isBlur, isVisible, isSafari, textAlign, flexAlign, percentage }"&gt;
-            &lt;div :style="`background:${datapoint.color}`"&gt;
-                <span v-pre>{{ datapoint.name }} : {{ percentage }}</span>
-            &lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiDonut&gt;
-</code>
-</pre>
-
-
-<fieldset class="flex flex-row gap-2 mb-6 place-items-center justify-center">        
-    <label :for="slotOptions[0]">Simple label</label>
-    <input type="radio" v-model="slotOption" :value="slotOptions[0]" class="accent-app-orange">
-    <label :for="slotOptions[1]">Chart</label>
-    <input type="radio" v-model="slotOption" :value="slotOptions[1]" class="accent-app-orange">
-</fieldSet>
-
-
-<div class="mx-auto max-w-[600px] mb-6">
-    <VueUiDonut :dataset="mutableDataset" :config="isDarkMode ? slotsConfig.darkMode : slotsConfig.lightMode" :key="key">
-        <template #dataLabel="{ datapoint, percentage }">
-            <div v-if="slotOption === 'justLabels'" :style="`background:${datapoint.color}33;`" class="rounded text-xs py-2">
-                {{ datapoint.name }} : {{ percentage }}
-            </div>
-            <div v-if="slotOption === 'chart'" class="w-[100px]">
-                <VueDataUi v-if="datapoint.name === 'Serie 1'" component="VueUiSparkgauge" :dataset="sparkGaugeDatasets[0]" :config="isDarkMode ? {
-                    ...sparkGaugeConfigDarkMode,
-                    style: {
-                        ...sparkGaugeConfigDarkMode.style,
-                        colors: {
-                            showGradient: true,
-                            min: `${datapoint.color}33`,
-                            max: datapoint.color
-                        }
-                    }
-                } 
-                    : {
-                    ...sparkGaugeConfig,
-                    style: {
-                        ...sparkGaugeConfig.style,
-                        colors: {
-                            showGradient: true,
-                            min: `${datapoint.color}33`,
-                            max: datapoint.color
-                        }
-                    }
-                }"
+                <BaseSlotDocumenter
+                    componentName="VueUiDonut"
+                    :types="[
+                        'svg',
+                        'dataLabel',
+                        'legend',
+                        'tooltip-before',
+                        'tooltip-after',
+                        'watermark',
+                        'source',
+                        'plot-comment'
+                    ]" 
                 />
-                <VueDataUi v-if="datapoint.name === 'Serie 2'" component="VueUiSparkgauge" :dataset="sparkGaugeDatasets[1]" :config="isDarkMode ? {
-                    ...sparkGaugeConfigDarkMode,
-                    style: {
-                        ...sparkGaugeConfigDarkMode.style,
-                        colors: {
-                            showGradient: true,
-                            min: `${datapoint.color}33`,
-                            max: datapoint.color
-                        }
-                    }
-                } 
-                    : {
-                    ...sparkGaugeConfig,
-                    style: {
-                        ...sparkGaugeConfig.style,
-                        colors: {
-                            showGradient: true,
-                            min: `${datapoint.color}33`,
-                            max: datapoint.color
-                        }
-                    }
-                }"/>
-                <VueDataUi v-if="datapoint.name === 'Serie 3'" component="VueUiSparkgauge" :dataset="sparkGaugeDatasets[2]" :config="isDarkMode ? {
-                    ...sparkGaugeConfigDarkMode,
-                    style: {
-                        ...sparkGaugeConfigDarkMode.style,
-                        colors: {
-                            showGradient: true,
-                            min: `${datapoint.color}33`,
-                            max: datapoint.color
-                        }
-                    }
-                } 
-                    : {
-                    ...sparkGaugeConfig,
-                    style: {
-                        ...sparkGaugeConfig.style,
-                        colors: {
-                            showGradient: true,
-                            min: `${datapoint.color}33`,
-                            max: datapoint.color
-                        }
-                    }
-                }"/>
-            </div>
-        </template>
-    </VueUiDonut>
-</div>
-
-
-<hr class="mb-6 border-t-gray-500">
-
-<div class="text-gray-500">
-    {{ translations.slots.presentation[store.lang]  }}
-</div>
-<pre>
-<code>
-    &lt;VueUiDonut
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #svg="{ svg }"&gt;
-            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
-        &lt;/template&gt;
-    &lt;/VueUiDonut&gt;
-</code>
-</pre>
-
-<hr class="mb-6 border-t-gray-500">
-
-<div class="text-gray-500">
-                    {{ translations.slots.legendDetail[store.lang]  }}
-                </div>
-<pre>
-<code>
-    &lt;VueUiDonut
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #legend="{ legend }"&gt;
-            ...your content here
-        &lt;/template&gt;
-    &lt;/VueUiDonut&gt;
-</code>
-</pre>
-
-<hr class="mb-6 border-t-gray-500">
-
-<div class="text-gray-500">
-    {{ translations.slots.tooltip[store.lang]  }}
-</div>
-
-<pre>
-    <code>
-        &lt;VueUiDonut
-        :config="config"
-        :dataset="dataset"
-        &gt;
-        &lt;template #tooltip-before="{ datapoint, seriesIndex, series, config }"&gt;
-        ...your content here
-        &lt;/template&gt;
-        &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
-        ...your content here
-        &lt;/template&gt;
-        &lt;/VueUiDonut&gt;
-    </code>
-</pre>
- 
-<hr class="mb-6 border-t-gray-500">
-
-<div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiDonut
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiDonut&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.watermark[store.lang]  }}
-</div>
-
-<hr class="mb-6 border-t-gray-500">
-
-<pre>
-<code>
-    &lt;VueUiDonut
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #watermark="{ isPrinting }"&gt;
-            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiDonut&gt;
-</code>
-</pre>
             </template>
+
             <template #tab4>
 <pre>
 <code>

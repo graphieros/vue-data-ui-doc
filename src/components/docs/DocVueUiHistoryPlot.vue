@@ -14,6 +14,7 @@ import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseRandomButton from "../BaseRandomButton.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import ThemesVueUiHistoryPlot from "../themes/ThemesVueUiHistoryPlot.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -965,99 +966,17 @@ const <span class="text-black dark:text-app-green">dataset: VueUiHistoryPlotData
 
             <!-- SLOTS -->
             <template #tab3>
-                <div class="text-gray-500">
-    {{ translations.slots.presentation[store.lang]  }}
-</div>
-<pre>
-<code>
-    &lt;VueUiHistoryPlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #svg="{ svg }"&gt;
-            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
-        &lt;/template&gt;
-    &lt;/VueUiHistoryPlot&gt;
-</code>
-</pre>
-
-<hr class="mb-6 border-t-gray-500">
-
-<div class="text-gray-500">
-                    {{ translations.slots.legendDetail[store.lang]  }}
-                </div>
-<pre>
-<code>
-    &lt;VueUiHistoryPlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #legend="{ legend }"&gt;
-            ...your content here
-        &lt;/template&gt;
-    &lt;/VueUiHistoryPlot&gt;
-</code>
-</pre>
-
-<hr class="mb-6 border-t-gray-500">
-
-<div class="text-gray-500">
-    {{ translations.slots.tooltip[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiHistoryPlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #tooltip-before="{ datapoint, seriesIndex, series, config }"&gt;
-            ...your content here
-        &lt;/template&gt;
-        &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
-            ...your content here
-        &lt;/template&gt;
-    &lt;/VueUiHistoryPlot&gt;
-</code>
-</pre>
-
-<hr class="mb-6 border-t-gray-500">
-
-<div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiHistoryPlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiHistoryPlot&gt;
-</code>
-</pre>
-
-<hr class="mb-6 border-t-gray-500">
-
-<div class="text-gray-500">
-    {{ translations.slots.watermark[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiHistoryPlot
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #watermark="{ isPrinting }"&gt;
-            &lt;div v-if="isPrinting"&gt;WATERMARK&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiHistoryPlot&gt;
-</code>
-</pre>
+                <BaseSlotDocumenter
+                    componentName="VueUiHistoryPlot"
+                    :types="[
+                        'svg',
+                        'legend',
+                        'tooltip-before',
+                        'tooltip-after',
+                        'watermark',
+                        'source'
+                    ]" 
+                />
             </template>
 
             <template #tab4>

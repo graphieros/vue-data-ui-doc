@@ -738,6 +738,28 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    hideLegend: {
+                        en: "Set legend.show to false in your config to hide default legend",
+                        fr: "Définissez legend.show sur false dans votre configuration pour masquer la légende par défaut",
+                        pt: "Defina legend.show como false na sua configuração para ocultar a legenda padrão",
+                        de: "Setzen Sie legend.show in Ihrer Konfiguration auf false, um die Standardlegende auszublenden",
+                        zh: "在配置中将 legend.show 设置为 false 以隐藏默认图例",
+                        jp: "設定で legend.show を false に設定してデフォルトの凡例を非表示にします",
+                        es: "Establece legend.show en false en tu configuración para ocultar la leyenda predeterminada",
+                        ko: "설정에서 legend.show를 false로 설정하여 기본 범례를 숨기세요",
+                        ar: "قم بتعيين legend.show إلى false في إعداداتك لإخفاء المفتاح الافتراضي"
+                    },
+                    plotComment: {
+                        en: "If your dataset contains a 'comments' attribute, you can display comments on the chart using the #plot-comment slot",
+                        fr: "Si votre ensemble de données contient un attribut \"comments\", vous pouvez afficher les commentaires sur le graphique en utilisant l'emplacement #plot-comment",
+                        pt: "Se o seu conjunto de dados contém um atributo \"comments\", você pode exibir comentários no gráfico usando o slot #plot-comment",
+                        de: "Wenn Ihr Datensatz ein \"comments\"-Attribut enthält, können Sie Kommentare im Diagramm über den #plot-comment-Slot anzeigen",
+                        zh: "如果您的数据集包含“comments”属性，您可以使用 #plot-comment 插槽在图表上显示评论",
+                        jp: "データセットに「comments」属性が含まれている場合、#plot-comment スロットを使用してチャートにコメントを表示できます",
+                        es: "Si tu conjunto de datos contiene un atributo \"comments\", puedes mostrar comentarios en el gráfico utilizando el slot #plot-comment",
+                        ko: "데이터셋에 \"comments\" 속성이 포함되어 있으면 #plot-comment 슬롯을 사용하여 차트에 댓글을 표시할 수 있습니다",
+                        ar: "إذا كانت مجموعة البيانات تحتوي على خاصية \"comments\"، يمكنك عرض التعليقات على الرسم البياني باستخدام فتحة #plot-comment"
+                    },
                     timeLabel: {
                         en: "Use this slot to customize time labels",
                         fr: "Utilisez cet emplacement pour personnaliser les étiquettes temporelles",

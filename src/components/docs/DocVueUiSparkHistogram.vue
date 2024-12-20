@@ -14,6 +14,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -597,22 +598,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkHistogramD
             </template>
 
             <template #tab3>
-              <div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiSparkHistogram
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiSparkHistogram&gt;
-</code>
-</pre>
+              <BaseSlotDocumenter
+                    componentName="VueUiSparkHistogram"
+                    :types="[
+                        'source'
+                    ]" 
+                />
             </template>
 
             <template #tab6>

@@ -14,6 +14,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseRandomButton from "../BaseRandomButton.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -413,56 +414,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkbarDataset
             </template>
 
             <template #tab3>
-                <div class="text-gray-500">
-                    {{ translations.slots.dataLabel[store.lang]  }}
-                </div>
-                <pre>
-<code>
-    &lt;VueUiSparkbar
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #data-label="{ bar }"&gt;
-            &lt;div style="width:100%"&gt;
-                <span v-pre>{{ bar.name }}: {{ bar.labelValue }} / {{ bar.labelTarget }}</span>
-            &lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiSparkbar&gt;
-</code>
-</pre>
-                <div class="text-gray-500">
-                    {{ translations.slots.title[store.lang]  }}
-                </div>
-                <pre>
-<code>
-    &lt;VueUiSparkbar
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #title="{ title }"&gt;
-            &lt;div&gt;<span v-pre>{{ title.title }}</span>&lt;/div&gt;
-            &lt;div&gt;<span v-pre>{{ title.subtitle }}</span>&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiSparkbar&gt;
-</code>
-</pre>
-
-<div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiSparkbar
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiSparkbar&gt;
-</code>
-</pre>
+                <BaseSlotDocumenter
+                    componentName="VueUiSparkbar"
+                    :types="[
+                        'title',
+                        'data-label',
+                        'source'
+                    ]" 
+                />
             </template>
 
             <template #tab6>

@@ -12,6 +12,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseRandomButton from "../BaseRandomButton.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -428,42 +429,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkStackBarDa
             </template>
 
             <template #tab3>
-              <div class="text-gray-500">
-    {{ translations.slots.tooltip[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiSparkStackbar
-      :config="config"
-      :dataset="dataset"
-    &gt;
-      &lt;template #tooltip-before="{ datapoint, seriesIndex, series, config }"&gt;
-      ...your content here
-      &lt;/template&gt;
-      &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
-      ...your content here
-      &lt;/template&gt;
-    &lt;/VueUiSparkStackbar&gt;
-</code>
-</pre>
-
-              <div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiSparkStackbar
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiXy&gt;
-</code>
-</pre>
+              <BaseSlotDocumenter
+                    componentName="VueUiSparkStackbar"
+                    :types="[
+                        'tooltip-before',
+                        'tooltip-after',
+                        'source'
+                    ]" 
+                />
             </template>
 
             <template #tab6>

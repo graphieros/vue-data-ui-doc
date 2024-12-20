@@ -15,6 +15,7 @@ import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseRandomButton from "../BaseRandomButton.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 
 const mainConfig = useConfig()
 
@@ -544,61 +545,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
 
             
             <template #tab3>
-
-              <div class="text-gray-500">
-    {{ translations.slots.sparklineBefore[store.lang]  }}
-</div>
-<pre>
-<code>
-    &lt;VueUiSparkline
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #before="{ selected, latest, sum, average, median, trend }"&gt;
-            &lt;ul&gt;
-              &lt;li&gt;Latest: <span v-pre>{{ latest }}</span>&lt;/li&gt;
-              &lt;li&gt;Sum: <span v-pre>{{ sum }}</span>&lt;/li&gt;
-              &lt;li&gt;Average: <span v-pre>{{ average }}</span>&lt;/li&gt;
-              &lt;li&gt;Median: <span v-pre>{{ median }}</span>&lt;/li&gt;
-              &lt;li&gt;Trend: <span v-pre>{{ trend }}</span>&lt;/li&gt;
-              &lt;li&gt;Selected: <span v-pre>{{ selected }}</span>&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/template&gt;
-    &lt;/VueUiSparkline&gt;
-</code>
-</pre>  
-                <div class="text-gray-500">
-                    {{ translations.slots.presentation[store.lang]  }}
-                </div>
-<pre>
-<code>
-    &lt;VueUiSparkline
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #svg="{ svg }"&gt;
-            &lt;circle :cx="svg.width / 2" :cy="svg.height / 2" :r="30" fill="#FF0000" /&gt;
-        &lt;/template&gt;
-    &lt;/VueUiSparkline&gt;
-</code>
-</pre>    
-
-<div class="text-gray-500">
-    {{ translations.slots.source[store.lang]  }}
-</div>
-
-<pre>
-<code>
-    &lt;VueUiSparkline
-        :config="config"
-        :dataset="dataset"
-    &gt;
-        &lt;template #source&gt;
-            &lt;div&gt;Source: Lorem ipsum...&lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiSparkline&gt;
-</code>
-</pre>
+              <BaseSlotDocumenter
+                    componentName="VueUiSparkline"
+                    :types="[
+                        'svg',
+                        'before',
+                        'source'
+                    ]" 
+                />
             </template>
 
             <template #tab5>
