@@ -1432,13 +1432,15 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         from: 0,
                         to: 5,
                         color: "#6376DD",
-                        id: "111"
+                        id: "111",
+                        name: 'Label 1'
                     },
                     {
                         from: 5,
                         to: 10,
                         color: "#42d392",
-                        id: "222"
+                        id: "222",
+                        name: 'Label 2'
                     }
                 ],
                 model: [
@@ -1470,6 +1472,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.pointer.circle.stroke', def: '#1A1A1A', type: 'color', label: ['pointer', 'circle', 'is', 'border', 'color'], category: 'general' },
                     { key: 'style.chart.layout.pointer.circle.strokeWidth', def: 2, type: 'number', min: 0, max: 12, label: ['pointer', 'circle', 'is', 'border', 'thickness'], category: 'general' },
                     { key: 'style.chart.layout.pointer.circle.color', def: '#FFFFFF', type: 'color', label: ['pointer', 'circle', 'is', 'backgroundColor'], category: 'general' },
+
+                    { key: 'style.chart.layout.segmentNames.show', def: true, type: 'checkbox', label: ['segment', 'name', 'is', 'show'], category: 'general'},
+                    { key: 'style.chart.layout.segmentNames.curved', def: true, type: 'checkbox', label: ['segment', 'name', 'is', 'curved'], category: 'general'},
+                    { key: 'style.chart.layout.segmentNames.offsetRatio', def: 1.1, type: 'range', min: 0.6, max: 1.2, step: 0.01, label: ['segment', 'name', 'is', 'offset'], category: 'general'},
+                    { key: 'style.chart.layout.segmentNames.fontSize', def: 16, type: 'number', min: 8, max: 42, label: ['segment', 'name', 'is', 'fontSize'], category: 'general'},
+                    { key: 'style.chart.layout.segmentNames.useSerieColor', def: true, type: 'checkbox', label: ['segment', 'name', 'is', 'use serie color'], category: 'general'},
+                    { key: 'style.chart.layout.segmentNames.color', def: '#1A1A1A', type: 'color', label: ['segment', 'name', 'is', 'color'], category: 'general'},
+                    { key: 'style.chart.layout.segmentNames.bold', def: false, type: 'checkbox', label: ['segment', 'name', 'is', 'bold'], category: 'general'},
 
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: ['legend', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.fontSize', def: 48, type: 'number', min: 12, max: 120, label: 'fontSize', category: 'legend' },

@@ -40,17 +40,20 @@ const dataset1 = ref({
         {
             from: 1,
             to: 3,
-            color: "#ff6400"
+            color: "#ff6400",
+            name: 'bad'
         },
         {
             from: 3,
             to: 4,
-            color: "#5f8bee"
+            color: "#5f8bee",
+            name: 'acceptable'
         },
         {
             from: 4,
             to: 5,
             color: "#42d392",
+            name: 'very good'
         },
     ]
 });
@@ -62,12 +65,14 @@ const dataset2 = ref({
         {
             from: -100,
             to: 0,
-            color: "#ff6400"
+            color: "#ff6400",
+            name: 'critical'
         },
         {
             from: 0,
             to: 100,
             color: "#42d392",
+            name: 'nominal'
         },
     ]
 });
@@ -99,6 +104,15 @@ const config = ref({
                     fontSizeRatio: 1,
                     offsetY: 0,
                     roundingValue: 0,
+                },
+                segmentNames: {
+                    show: true,
+                    curved: true,
+                    offsetRatio: 1.1,
+                    fontSize: 16,
+                    useSerieColor: true,
+                    color: '#1A1A1A',
+                    bold: false,
                 },
                 pointer: {
                     type: "pointy",
@@ -191,6 +205,15 @@ const darkModeConfig = ref({
                     fontSizeRatio: 1,
                     offsetY: 0,
                     roundingValue: 0,
+                },
+                segmentNames: {
+                    show: true,
+                    curved: true,
+                    offsetRatio: 1.1,
+                    fontSize: 16,
+                    useSerieColor: true,
+                    color: '#CCCCCC',
+                    bold: false,
                 },
                 pointer: {
                     type: "pointy",
@@ -381,10 +404,14 @@ function randomizeData() {
             {
                 from: number;
                 to: number;
+                name?: string;
+                color?: string;
             },
             {
                 from: number;
                 to: number;
+                name?: string;
+                color?: string;
             },
             {...and so on}
         ]
@@ -404,17 +431,20 @@ const <span class="text-black dark:text-app-green">dataset: VueUiGaugeDataset</s
         {
             from: 1,
             to: 3,
-            color: "#ff6400"
+            color: "#ff6400",
+            name: 'bad'
         },
         {
             from: 3,
             to: 4,
-            color: "#5f8bee"
+            color: "#5f8bee",
+            name: 'acceptable'
         },
         {
             from: 4,
             to: 5,
             color: "#42d392",
+            name: 'very good'
         },
     ]
 }
@@ -484,6 +514,15 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                         <BaseAttr name="offsetY" attr="style.chart.layout.markers.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                         <BaseAttr name="roundingValue" attr="style.chart.layout.markers.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                    </BaseDetails>
+                    <BaseDetails attr="segmentNames" :level="4" title="style.chart.layout.segmentNames">
+                        <BaseAttr name="show" attr="style.chart.layout.segmentNames.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="curved" attr="style.chart.layout.segmentNames.curved" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="offsetRatio" attr="style.chart.layout.segmentNames.offsetRatio" type="range" defaultVal="1.1" :min="0.6" :max="1.2" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="fontSize" attr="style.chart.layout.segmentNames.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="useSerieColor" attr="style.chart.layout.segmentNames.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.chart.layout.segmentNames.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="bold" attr="style.chart.layout.segmentNames.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="pointer" :level="4" title="style.chart.layout.pointer">
                         <BaseAttr name="type" attr="style.chart.layout.pointer.type" type="select" defaultVal="rounded" :options="['rounded', 'pointy']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

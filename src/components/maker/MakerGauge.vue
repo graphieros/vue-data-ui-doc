@@ -69,7 +69,8 @@ const options = ref({
     datasetItems: {
         from: 0,
         to: 0,
-        color: "#42d392"
+        color: "#CCCCCC",
+        name: 'Label'
     },
     value: 6,
     dataset: {},
@@ -208,6 +209,7 @@ function fixChart() {
                             <th class="text-left text-xs h-[40px]">{{ makerTranslations.labels.color[store.lang] }}</th>
                             <th class="text-left text-xs">{{ makerTranslations.labels.from[store.lang] }}</th>
                             <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
+                            <th class="text-left text-xs">{{ makerTranslations.labels.name[store.lang] }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -215,6 +217,7 @@ function fixChart() {
                             <td><input type="color" v-model="datasetItems[i].color" @change="saveDatasetToLocalStorage"></td>
                             <td><input class="h-[36px]" type="number" v-model="ds.from" @change="saveDatasetToLocalStorage"></td>
                             <td><input class="h-[36px]" type="number" v-model="ds.to" @change="saveDatasetToLocalStorage"></td>
+                            <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
                         </tr>
                     </tbody>
                 </table>
