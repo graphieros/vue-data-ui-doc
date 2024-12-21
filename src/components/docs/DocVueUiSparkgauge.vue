@@ -297,7 +297,7 @@ function randomizeData() {
                     <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                 </div>
                 <div class="mt-4">
-                    TS type: <code class="text-app-blue">VueUiGaugeConfig</code>
+                    TS type: <code class="text-app-blue">VueUiSparkgaugeConfig</code>
                 </div>
 
 <div class="my-4">
