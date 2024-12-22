@@ -70,7 +70,8 @@ const options = ref({
         from: 0,
         to: 0,
         color: "#CCCCCC",
-        name: 'Label'
+        name: 'Label',
+        nameOffsetRatio: 1,
     },
     value: 6,
     dataset: {},
@@ -210,6 +211,7 @@ function fixChart() {
                             <th class="text-left text-xs">{{ makerTranslations.labels.from[store.lang] }}</th>
                             <th class="text-left text-xs">{{ makerTranslations.labels.to[store.lang] }}</th>
                             <th class="text-left text-xs">{{ makerTranslations.labels.name[store.lang] }}</th>
+                            <th class="text-left text-xs">name offset ratio</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -218,6 +220,12 @@ function fixChart() {
                             <td><input class="h-[36px]" type="number" v-model="ds.from" @change="saveDatasetToLocalStorage"></td>
                             <td><input class="h-[36px]" type="number" v-model="ds.to" @change="saveDatasetToLocalStorage"></td>
                             <td><input class="h-[36px]" type="text" v-model="ds.name" @change="saveDatasetToLocalStorage"></td>
+                            <td>
+                                <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                                    <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ ds.nameOffsetRatio }}</div>
+                                    <input :id="`k_${i}_${uid}_${c}`" type="range" v-model="ds.nameOffsetRatio" :min="0.5" :max="1.3" :step="0.01" class="accent-app-blue z-0" @change="saveDatasetToLocalStorage">
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
