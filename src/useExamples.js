@@ -1274,7 +1274,7 @@ export default function useExamples() {
     const DATASET_GAUGE_MIXED = ref({
         value: -20,
         series: [
-            { from: -100, to: 0, color: '#c96747', name: 'Critial' },
+            { from: -100, to: 0, color: '#c96747', name: 'Critical' },
             { from: 0, to: 100, color: '#54b840', name: 'Nominal' }
         ]
     })
@@ -4522,6 +4522,66 @@ export default function useExamples() {
                     es: "Con separadores de segmentos",
                     ko: "세그먼트 구분선 포함",
                     ar: "مع فواصل المقاطع"
+                }
+            },
+            // MORE GAUGE WITH SEPARATORS
+            { 
+                dataset: {
+                    ...DATASET_GAUGE_MIXED.value,
+                    series: DATASET_GAUGE_MIXED.value.series.map(s => {
+                        return {
+                            ...s,
+                            name: s.name.toUpperCase()
+                        }
+                    })
+                }, 
+                config: {
+                    ...CONFIG_GAUGE_BASE.value,
+                    style: {
+                        ...CONFIG_GAUGE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_GAUGE_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_GAUGE_BASE.value.style.chart.layout,
+                                radiusRatio: 0.8,
+                                segmentNames: {
+                                    fontSize: 50
+                                },
+                                segmentSeparators: {
+                                    show: true,
+                                    stroke: colors.value.gridStrokeLight,
+                                    offsetOut: 36
+                                },
+                                markers: {
+                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.markers,
+                                    offsetY: 36
+                                },
+                                track: {
+                                    size: 4
+                                },
+                                pointer: {
+                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.pointer,
+                                    useRatingColor: false,
+                                    color: isDarkMode.value ? colors.value.bg : '#3A3A3A'
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gauge-separators-2',
+                link: 'vue-ui-gauge',
+                description: {
+                    en: "",
+                    fr: "",
+                    pt: "",
+                    de: "",
+                    zh: "",
+                    jp: "",
+                    es: "",
+                    ko: "",
+                    ar: ''
                 }
             },
             // ONION BASIC
