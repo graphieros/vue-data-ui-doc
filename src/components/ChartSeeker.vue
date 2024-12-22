@@ -120,9 +120,13 @@ const selectedIndex = ref(null);
         </div>
         <div class="p-2 w-fit">
             <a href="https://github.com/graphieros/vue-data-ui-cli" target="_blank" class="w-fit">
-                <button class="py-2 px-4 rounded bg-[#fdd663BB] hover:bg-app-gold transition-colors text-black flex flex-row place-items-center flex-wrap gap-2" dir="auto">
-                    <VueUiIcon name="dashboard" stroke="#1A1A1A"/>
-                    {{ cli }}
+                <button class="py-2 px-4 rounded bg-[#fdd663BB] hover:bg-app-gold transition-colors text-black flex flex-row place-items-center gap-2" dir="auto">
+                    <div class="w-[40px] h-[40px] flex place-items-center justify-center">
+                        <VueUiIcon name="dashboard" stroke="#1A1A1A"/>
+                    </div>
+                    <div dir="auto" class="text-left">
+                        {{ cli }}
+                    </div>
                 </button>
             </a>
         </div>
