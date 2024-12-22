@@ -90,6 +90,7 @@ const config = ref({
                 acceleration: 1,
             },
             layout: {
+                radiusRatio: 1,
                 track: {
                     size: 1,
                     useGradient: true,
@@ -191,6 +192,7 @@ const darkModeConfig = ref({
                 acceleration: 1,
             },
             layout: {
+                radiusRatio: 1,
                 track: {
                     size: 1,
                     useGradient: true,
@@ -404,14 +406,9 @@ function randomizeData() {
             {
                 from: number;
                 to: number;
-                name?: string;
                 color?: string;
-            },
-            {
-                from: number;
-                to: number;
                 name?: string;
-                color?: string;
+                nameOffsetRatio?: number; // e.g. 1.1
             },
             {...and so on}
         ]
@@ -462,12 +459,14 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
         {
             from: -100,
             to: 0,
-            color: "#ff6400"
+            color: "#ff6400",
+            name: 'critical'
         },
         {
             from: 0,
             to: 100,
             color: "#42d392",
+            name: 'nominal'
         },
     ]
 }
@@ -504,6 +503,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                     <BaseAttr name="acceleration" attr="style.chart.animation.acceleration" type="range" defaultVal="1" :min="0.1" :max="5" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 </BaseDetails>
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">
+                    <BaseAttr name="radiusRatio" attr="style.chart.layout.radiusRatio" type="range" defaultVal="1" :min="0.5" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseDetails attr="markers" :level="4" title="style.chart.layout.markers">
                         <BaseAttr name="show" attr="style.chart.layout.markers.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="prefix" attr="style.chart.layout.markers.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -519,7 +519,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                         <BaseAttr name="show" attr="style.chart.layout.segmentNames.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="curved" attr="style.chart.layout.segmentNames.curved" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="offsetRatio" attr="style.chart.layout.segmentNames.offsetRatio" type="range" defaultVal="1.1" :min="0.6" :max="1.2" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="fontSize" attr="style.chart.layout.segmentNames.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="fontSize" attr="style.chart.layout.segmentNames.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                         <BaseAttr name="useSerieColor" attr="style.chart.layout.segmentNames.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="color" attr="style.chart.layout.segmentNames.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="bold" attr="style.chart.layout.segmentNames.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

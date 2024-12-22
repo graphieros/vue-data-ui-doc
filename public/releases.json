@@ -1,7 +1,7 @@
 [
   {
-    "version": "v 2.4.45",
-    "date": "2024-12-21",
+    "version": "v 2.4.46",
+    "date": "2024-12-22",
     "updates": [
       {
         "component": "VueUiGauge",

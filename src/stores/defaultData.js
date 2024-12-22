@@ -1450,6 +1450,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.animation.use', def: false, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general' },
                     { key: 'style.chart.animation.speed', def: 1, min: 0, max: 10, type: 'range', label: ['animation', 'is', 'speed'], category: 'general' },
                     { key: 'style.chart.animation.acceleration', def: 1, min: 0, max: 10, type: 'range', label: ['animation', 'is', 'acceleration'], category: 'general' },
+
+                    { key: 'style.chart.layout.radiusRatio', def: 1, type: 'range', min: 0.5, max: 1, step: 0.01, label: ['gauge', 'is', 'size'], category: 'general' },
                     { key: 'style.chart.layout.track.size', def: 1, type: 'number', min: 1, max: 3, label: ['track', 'is', 'thickness'], category: 'general' },
                     { key: 'style.chart.layout.track.useGradient', def: true, type: 'checkbox', label: ['track', 'is', 'useGradient'], category: 'general' },
                     { key: 'style.chart.layout.track.gradientIntensity', def: 20, min: 1, max: 30, type: 'range', label: ['track', 'is', 'gradientIntensity'], category: 'general' },
