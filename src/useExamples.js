@@ -1265,17 +1265,24 @@ export default function useExamples() {
     const DATASET_GAUGE_BASIC = ref({
         value: 7,
         series: [
-            { from: 0, to: 4, color: '#c96747' },
-            { from: 4, to: 6, color: '#c7c34c' },
-            { from: 6, to: 10, color: '#54b840' }
+            { from: 0, to: 4, color: '#c96747', name: 'Critical' },
+            { from: 4, to: 6, color: '#c7c34c', name: 'Nominal' },
+            { from: 6, to: 10, color: '#54b840', name: 'Excellent' }
         ]
     })
 
     const DATASET_GAUGE_MIXED = ref({
         value: -20,
         series: [
-            { from: -100, to: 0, color: '#c96747' },
-            { from: 0, to: 100, color: '#54b840' }
+            { from: -100, to: 0, color: '#c96747', name: 'Critial' },
+            { from: 0, to: 100, color: '#54b840', name: 'Nominal' }
+        ]
+    })
+
+    const DATASET_GAUGE_SINGLE = ref({
+        value: 66,
+        series: [
+            { from: 0, to: 100, name: 'CURRENT SATISFACTION'}
         ]
     })
 
@@ -4428,6 +4435,41 @@ export default function useExamples() {
                     es: 'Más ancho',
                     ko: '더 넓은',
                     ar: 'أوسع'
+                }
+            },
+            // GAUGE SINGLE WITH HUGE LABEL
+            { 
+                dataset: DATASET_GAUGE_SINGLE.value, 
+                config: {
+                    ...CONFIG_GAUGE_BASE.value,
+                    style: {
+                        ...CONFIG_GAUGE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_GAUGE_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_GAUGE_BASE.value.style.chart.layout,
+                                radiusRatio: 0.8,
+                                segmentNames: {
+                                    fontSize: 44
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gaueg-single',
+                link: 'vue-ui-gauge',
+                description: {
+                    en: '',
+                    fr: '',
+                    pt: '',
+                    de: '',
+                    zh: '',
+                    jp: '',
+                    es: '',
+                    ko: '',
+                    ar: ''
                 }
             },
             // ONION BASIC
