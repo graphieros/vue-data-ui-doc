@@ -4472,6 +4472,58 @@ export default function useExamples() {
                     ar: "قطاع واحد يحمل تسمية اسم كبيرة"
                 }
             },
+            // GAUGE WITH SEPARATORS
+            { 
+                dataset: {
+                    ...DATASET_GAUGE_BASIC.value,
+                    series: DATASET_GAUGE_BASIC.value.series.map(s => {
+                        return {
+                            ...s,
+                            name: s.name.toUpperCase()
+                        }
+                    })
+                }, 
+                config: {
+                    ...CONFIG_GAUGE_BASE.value,
+                    style: {
+                        ...CONFIG_GAUGE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_GAUGE_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_GAUGE_BASE.value.style.chart.layout,
+                                radiusRatio: 0.8,
+                                segmentNames: {
+                                    fontSize: 20
+                                },
+                                segmentSeparators: {
+                                    show: true,
+                                    stroke: colors.value.gridStrokeLight,
+                                    offsetOut: 36
+                                },
+                                markers: {
+                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.markers,
+                                    offsetY: 36
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gauge-separators',
+                link: 'vue-ui-gauge',
+                description: {
+                    en: "With segment separators",
+                    fr: "Avec séparateurs de segments",
+                    pt: "Com separadores de segmentos",
+                    de: "Mit Segmenttrennzeichen",
+                    zh: "带段分隔符",
+                    jp: "セグメントセパレーター付き",
+                    es: "Con separadores de segmentos",
+                    ko: "세그먼트 구분선 포함",
+                    ar: "مع فواصل المقاطع"
+                }
+            },
             // ONION BASIC
             { 
                 dataset: DATASET_ONION_BASE.value, 

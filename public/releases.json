@@ -1,11 +1,11 @@
 [
   {
-    "version": "v 2.4.46",
+    "version": "v 2.4.47",
     "date": "2024-12-22",
     "updates": [
       {
         "component": "VueUiGauge",
-        "description": "Add optional segment labels",
+        "description": "Add optional segment labels and separators",
         "link": "/docs#vue-ui-gauge"
       }
     ]

@@ -1485,6 +1485,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.segmentNames.color', def: '#1A1A1A', type: 'color', label: ['segment', 'name', 'is', 'color'], category: 'general'},
                     { key: 'style.chart.layout.segmentNames.bold', def: false, type: 'checkbox', label: ['segment', 'name', 'is', 'bold'], category: 'general'},
 
+                    { key: 'style.chart.layout.segmentSeparators.show', def: false, type: 'checkbox', label: ['separators', 'is', 'show'], category: 'general'},
+                    { key: 'style.chart.layout.segmentSeparators.offsetOut', def: 0, type: 'range', min: 0, max: 100, label: ['separators', 'is', 'offset outside'], category: 'general'},
+                    { key: 'style.chart.layout.segmentSeparators.offsetIn', def: 0, type: 'range', min: 0, max: 100, label: ['separators', 'is', 'offset inside'], category: 'general'},
+                    { key: 'style.chart.layout.segmentSeparators.stroke', def: '#1A1A1A', type: 'color', label: ['separators', 'is', 'color'], category: 'general'},
+                    { key: 'style.chart.layout.segmentSeparators.strokeWidth', def: 2, type: 'number', min: 1, max: 24, label: ['separators', 'is', 'thickness'], category: 'general'},
+
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: ['legend', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.fontSize', def: 48, type: 'number', min: 12, max: 120, label: 'fontSize', category: 'legend' },
                     { key: 'style.chart.legend.prefix', def: '', type: 'text', label: 'prefix', category: 'legend' },

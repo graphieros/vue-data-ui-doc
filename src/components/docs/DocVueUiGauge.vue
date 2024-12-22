@@ -106,6 +106,13 @@ const config = ref({
                     offsetY: 0,
                     roundingValue: 0,
                 },
+                segmentSeparators: {
+                    show: false,
+                    offsetOut: 0,
+                    offsetIn: 0,
+                    stroke: "#1A1A1A",
+                    strokeWidth: 2
+                },  
                 segmentNames: {
                     show: true,
                     curved: true,
@@ -208,6 +215,13 @@ const darkModeConfig = ref({
                     offsetY: 0,
                     roundingValue: 0,
                 },
+                segmentSeparators: {
+                    show: false,
+                    offsetOut: 0,
+                    offsetIn: 0,
+                    stroke: "#4A4A4A",
+                    strokeWidth: 2
+                }, 
                 segmentNames: {
                     show: true,
                     curved: true,
@@ -523,6 +537,13 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                         <BaseAttr name="useSerieColor" attr="style.chart.layout.segmentNames.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="color" attr="style.chart.layout.segmentNames.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="bold" attr="style.chart.layout.segmentNames.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="segmentSeparators" :level="4" title="style.chart.layout.segmentSeparators">
+                        <BaseAttr name="show" attr="style.chart.layout.segmentSeparators.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="offsetOut" attr="style.chart.layout.segmentSeparators.offsetOut" type="range" defaultVal="0" :min="0" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="offsetIn" attr="style.chart.layout.segmentSeparators.offsetIn" type="range" defaultVal="0" :min="0" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="stroke" attr="style.chart.layout.segmentSeparators.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.layout.segmentSeparators.strokeWidth" type="number" defaultVal="2" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="pointer" :level="4" title="style.chart.layout.pointer">
                         <BaseAttr name="type" attr="style.chart.layout.pointer.type" type="select" defaultVal="rounded" :options="['rounded', 'pointy']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
