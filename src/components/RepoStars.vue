@@ -155,7 +155,7 @@ const config = computed(() => {
       <!-- #source slot: display the source for your data -->
       <template #source>
         <div class="text-xs text-gray-500 text-left">
-          Source: Github
+          Source: <a class="text-app-blue underline" href="https://github.com/graphieros" target="_blank">Github</a>
         </div>
       </template>
     </VueDataUi>
