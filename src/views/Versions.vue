@@ -9,6 +9,7 @@ import { useIconMap, isValidComponent } from "../useIconMap";
 import updates from "../../public/releases.json"
 import GithubIssues from "../components/GithubIssues.vue";
 import { shiftHue } from '../components/maker/lib'
+import RepoStars from "../components/RepoStars.vue";
 
 const globalConfig = useConfig()
 
@@ -1837,6 +1838,10 @@ const versionsReleases = computed(() => {
                       </template>
                     </VueUiSparkline>
                   </div>
+
+                  <div class="my-12">
+                  <RepoStars />
+                </div>
                   <!-- <div class="max-w-[300px] mx-auto px-6 mb-6">
                     <div class="pb-2 mb-2">
                       Current NPM score:
@@ -1904,6 +1909,7 @@ const versionsReleases = computed(() => {
                       </template>
                   </VueDataUi>
                 </div>
+
                 <div class="max-w-[400px] mx-auto my-6 flex flex-col gap-2">
                   Overall trend
                   <div class="w-full border border-gray-500 shadow-md rounded-md p-2">

@@ -53,6 +53,56 @@ onMounted(() => {
     store.isFetching = false;
   })
 
+  fetch(`https://api.github.com/repos/graphieros/vue-data-ui-cli`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    store.stars_cli = data.stargazers_count;
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  }).finally(() => {
+    store.isFetching = false;
+  })
+
+  fetch(`https://api.github.com/repos/graphieros/vue-data-ui-nuxt`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    store.stars_nuxt = data.stargazers_count;
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  }).finally(() => {
+    store.isFetching = false;
+  })
+
+  fetch(`https://api.github.com/repos/graphieros/vue-data-ui-doc`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    store.stars_docs = data.stargazers_count;
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  }).finally(() => {
+    store.isFetching = false;
+  })
+
+
+
   fetch(url.value, {
         method: 'GET',
         mode: 'cors',

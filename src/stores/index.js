@@ -5,6 +5,9 @@ export const useMainStore = defineStore("main", {
         return {
             pack: {},
             stars: 0,
+            stars_cli: 0,
+            stars_nuxt: 0,
+            stars_docs: 0,
             issues: 0,
             isMenuOpen: false,
             isDarkMode: true,
