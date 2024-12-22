@@ -18,6 +18,10 @@ const dataset = computed(() => {
   ];
 });
 
+const hasAccess = computed(() => {
+  return store.stars && store.stars_cli && store.stars_nuxt && store.stars_docs;
+})
+
 const config = computed(() => {
   return {
     responsive: false,
@@ -148,7 +152,7 @@ const config = computed(() => {
 </script>
 
 <template>
-    <VueDataUi component="VueUiVerticalBar" :dataset="dataset" :config="config">
+    <VueDataUi component="VueUiVerticalBar" :dataset="dataset" :config="config" v-if="hasAccess">
       <!-- Use slots here in template tags. Official Vue slots documentation https://vuejs.org/guide/components/slots -->
       <!-- Documentation on Vue Data UI slots, check the slots tab at https://vue-data-ui.graphieros.com/docs#vue-ui-vertical-bar -->
 
