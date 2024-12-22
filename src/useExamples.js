@@ -4461,15 +4461,15 @@ export default function useExamples() {
                 id: 'gaueg-single',
                 link: 'vue-ui-gauge',
                 description: {
-                    en: '',
-                    fr: '',
-                    pt: '',
-                    de: '',
-                    zh: '',
-                    jp: '',
-                    es: '',
-                    ko: '',
-                    ar: ''
+                    en: "Single segment with huge name label",
+                    fr: "Segment unique avec une étiquette de nom énorme",
+                    pt: "Segmento único com um rótulo de nome enorme",
+                    de: "Einzelnes Segment mit riesigem Namenslabel",
+                    zh: "带有巨大名称标签的单个段",
+                    jp: "巨大な名前ラベルを持つ単一セグメント",
+                    es: "Segmento único con una etiqueta de nombre enorme",
+                    ko: "큰 이름 레이블이 있는 단일 세그먼트",
+                    ar: "قطاع واحد يحمل تسمية اسم كبيرة"
                 }
             },
             // ONION BASIC
