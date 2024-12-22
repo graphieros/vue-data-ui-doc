@@ -1433,14 +1433,16 @@ export const useDefaultDataStore = defineStore('defaultData', {
                         to: 5,
                         color: "#6376DD",
                         id: "111",
-                        name: 'Label 1'
+                        name: 'Label 1',
+                        nameOffsetRatio: 1
                     },
                     {
                         from: 5,
                         to: 10,
                         color: "#42d392",
                         id: "222",
-                        name: 'Label 2'
+                        name: 'Label 2',
+                        nameOffsetRatio: 1
                     }
                 ],
                 model: [
