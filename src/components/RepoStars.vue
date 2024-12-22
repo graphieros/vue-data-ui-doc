@@ -65,7 +65,7 @@ const config = computed(() => {
               offsetX: -12,
             },
           },
-          highlighter: { color: "#2D353C", opacity: 5 },
+          highlighter: { color: isDarkMode.value ? '#5f8aee' : '#1A1A1A', opacity: 5 },
           separators: { show: false, color: "#e1e5e8", strokeWidth: 1 },
         },
         title: {
