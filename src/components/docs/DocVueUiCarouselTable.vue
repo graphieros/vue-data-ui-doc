@@ -378,7 +378,7 @@ const { configCode, showAllConfig } = useConfigCode()
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mb-4">
-                    TS type: <code class="text-app-green">VueUiCarouselDataset</code>
+                    TS type: <code class="text-app-green">VueUiCarouselTableDataset</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
