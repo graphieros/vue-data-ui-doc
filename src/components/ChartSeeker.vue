@@ -43,6 +43,20 @@ const title = computed(() => {
     }[store.lang]
 })
 
+const cli = computed(() => {
+    return {
+        en: "Use the official CLI tool to create boilerplate",
+        fr: "Utilisez l'outil CLI officiel pour créer un modèle",
+        pt: "Use a ferramenta CLI oficial para criar um modelo",
+        de: "Verwenden Sie das offizielle CLI-Tool, um eine Vorlage zu erstellen",
+        zh: "使用官方CLI工具创建样板",
+        jp: "公式CLIツールを使用してボイラープレートを作成します",
+        es: "Utilice la herramienta CLI oficial para crear una plantilla",
+        ko: "공식 CLI 도구를 사용하여 보일러플레이트를 생성하세요",
+        ar: "استخدم أداة CLI الرسمية لإنشاء قالب"
+    }[store.lang]
+})
+
 const step = ref(0);
 
 function updateFilters(f) {
@@ -103,6 +117,14 @@ const selectedIndex = ref(null);
                     </RouterLink>
                 </FlexibleTooltip>
             </div>
+        </div>
+        <div class="p-2 w-fit">
+            <a href="https://github.com/graphieros/vue-data-ui-cli" target="_blank" class="w-fit">
+                <button class="py-2 px-4 rounded bg-app-gold bg-[#fdd663BB] hover:bg-app-gold transition-colors text-black flex flex-row place-items-center flex-wrap gap-2" dir="auto">
+                    <VueUiIcon name="dashboard" stroke="#1A1A1A"/>
+                    {{ cli }}
+                </button>
+            </a>
         </div>
     </div>
 </template>
