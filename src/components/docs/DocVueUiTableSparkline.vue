@@ -73,11 +73,12 @@ const config = ref({
   prefix: '',
   suffix: '',
   formatter: null,
-  sortedDataColumnIndices: [],
-  sortedSeriesName: false,
-  sortedSum: false,
-  sortedAverage: false,
-  sortedMedian: false,
+  sortedDataColumnIndices: [0,1,2,3,4,5],
+  sortedSeriesName: true,
+  sortedSum: true,
+  sortedAverage: true,
+  sortedMedian: true,
+  resetSortOnClickOutside: true,
   sparkline: {
     useGradient: true,
     showArea: true,
@@ -169,11 +170,12 @@ const darkModeConfig = ref({
   prefix: '',
   suffix: '',
   formater: null,
-  sortedDataColumnIndices: [],
-  sortedSeriesName: false,
-  sortedSum: false,
-  sortedAverage: false,
-  sortedMedian: false,
+  sortedDataColumnIndices: [0,1,2,3,4,5],
+  sortedSeriesName: true,
+  sortedSum: true,
+  sortedAverage: true,
+  sortedMedian: true,
+  resetSortOnClickOutside: true,
   sparkline: {
     useGradient: true,
     showArea: true,
@@ -412,11 +414,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
     <BaseAttr name="showTotal" attr="showTotal" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
     <BaseAttr name="prefix" attr="prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr name="suffix" attr="suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-    <span>sortedDataColumnIndices: number[], <BaseComment>Since v2.4.48 Include data column indices to enable sorting functionality</BaseComment></span>
-    <BaseAttr name="sortedSeriesName" attr="sortedSeriesName" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.48"/>
-    <BaseAttr name="sortedSum" attr="sortedSum" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.48"/>
-    <BaseAttr name="sortedAverage" attr="sortedAverage" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.48"/>
-    <BaseAttr name="sortedMedian" attr="sortedMedian" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.48"/>
+    <span>sortedDataColumnIndices: number[], <BaseComment>Since v2.4.49 Include data column indices to enable sorting functionality</BaseComment></span>
+    <BaseAttr name="sortedSeriesName" attr="sortedSeriesName" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.49"/>
+    <BaseAttr name="sortedSum" attr="sortedSum" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.49"/>
+    <BaseAttr name="sortedAverage" attr="sortedAverage" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.49"/>
+    <BaseAttr name="sortedMedian" attr="sortedMedian" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.49"/>
+    <BaseAttr name="resetSortOnClickOutside" attr="resetSortOnClickOutside" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.49"/>
     <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
     <BaseDetails attr="sparkline" :level="1">
       <BaseAttr name="useGradient" attr="sparkline.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
