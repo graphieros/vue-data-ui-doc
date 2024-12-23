@@ -2431,7 +2431,7 @@ export default function useExamples() {
     //-------------- VUE-UI-HISTORY-MAP --------------//
     const DATASET_HISTORY_PLOT_BASIC = ref([
         {
-            name: "Series 1",
+            name: "2024",
             values: [
                 { x: 355, y: 2.3, label: "January" },
                 { x: 112, y: 1.2, label: "February" },
@@ -2440,7 +2440,7 @@ export default function useExamples() {
             ],
         },
         {
-            name: "Series 2",
+            name: "2025",
             values: [
                 { x: 1000, y: 2, label: "January" },
                 { x: 655, y: 4, label: "February" },
@@ -2495,10 +2495,11 @@ export default function useExamples() {
                     axes: {
                         x: {
                             labels: {
-                                color: colors.value.grey
+                                color: colors.value.grey,
+                                prefix: '$'
                             },
                             name: {
-                                text: 'x Axis',
+                                text: 'Average revenue',
                                 color: colors.value.grey
                             }
                         },
@@ -2507,7 +2508,7 @@ export default function useExamples() {
                                 color: colors.value.grey
                             },
                             name: {
-                                text: 'y Axis',
+                                text: 'Average satisfaction',
                                 color: colors.value.grey
                             }
                         }
