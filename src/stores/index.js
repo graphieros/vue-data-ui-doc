@@ -1328,6 +1328,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 customization: {
+                    injectImage: {
+                        en: "Inject an image",
+                        fr: "Insérer une image",
+                        pt: "Injetar uma imagem",
+                        de: "Ein Bild einfügen",
+                        zh: "插入一张图片",
+                        jp: "画像を挿入",
+                        es: "Insertar una imagen",
+                        ko: "이미지 삽입",
+                        ar: "إدراج صورة"
+                    },
                     source: {
                         en: "You can use the #source slot to add a source caption to your chart. This slot is available on all chart components.",
                         fr: "Vous pouvez utiliser l'emplacement #source pour ajouter une légende de source à votre graphique. Cet emplacement est disponible sur tous les composants de graphiques.",

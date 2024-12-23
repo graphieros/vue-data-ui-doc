@@ -68,6 +68,47 @@ const donutConfig = ref({
     show: false,
   },
 });
+
+const donutDatasetCats = ref([
+  {
+    name: "Burmese",
+    color: "#5f8bee",
+    values: [100],
+  },
+  {
+    name: "Abyssinian",
+    color: "#42d392",
+    values: [200],
+  },
+  {
+    name: "Persian",
+    color: "#ff6400",
+    values: [300, 1],
+  },
+]);
+
+const donutImageConfig = ref({
+  style: {
+    chart: {
+      title: {
+        text: 'Programming cats',
+
+        subtitle: {
+          text: 'Best programming cats'
+        }
+      },
+      layout: {
+        labels: {
+          hollow: {
+            average: { show: false },
+            total: { show: false }
+          }
+        }
+      }
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -231,6 +272,45 @@ import { Arrow } from "vue-data-ui"
           </ul>
         </div>
       </details>
+    </template>
+  </BaseCustomizationBox>
+
+  <BaseCustomizationBox :title="translations.customization.injectImage[store.lang]">
+    <template #code>
+      <pre>
+<code>
+&lt;template&gt;
+    &lt;VueUiDonut :dataset="dataset" :config="config"&gt;
+        &lt;template #svg="{ svg }"&gt;
+          &lt;foreignObject
+            width="130"
+            height="130"
+            :x="svg.width / 2 - 65"
+            :y="svg.height / 2 - 65"
+            :style="{
+              pointerEvents: 'none'
+            }"
+          &gt;
+            &lt;img 
+              src="../../assets/programming_cat.png" 
+              alt="10x cat programmers"
+            &gt;
+          &lt;/foreignObject&gt;
+        &lt;/template&gt;
+    &lt;/VueUiXy&gt;
+&lt;/template&gt;
+</code>
+</pre>
+    </template>
+
+    <template #chart>
+      <VueUiDonut :dataset="donutDatasetCats" :config="donutImageConfig">
+        <template #svg="{ svg }">
+          <foreignObject :x="svg.width / 2  - 65" :y="svg.height / 2 - 65" width="130" height="130" style="overflow: visible; pointer-events: none;">
+            <img src="../../assets/programming_cat.png">
+          </foreignObject>
+        </template>
+      </VueUiDonut>
     </template>
   </BaseCustomizationBox>
 </template>
