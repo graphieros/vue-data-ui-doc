@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../stores";
+import AboutComponentTypes from "../components/AboutComponentTypes.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -307,8 +308,12 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
             {{ translations.about.p4[store.lang] }}<span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-screenshot">VueUiScreenshot</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-skeleton">VueUiSkeleton</router-link></span>
         </p>
 
-        <div class="w-full mx-auto max-w-[400px] mt-8">
+        <!-- <div class="w-full mx-auto max-w-[400px] mt-8">
           <VueUiSparkStackbar :dataset="componentTypes" :config="isDarkMode ? stackConfigDarkMode :stackConfig" />
+        </div> -->
+        
+        <div class="w-full max-w-[500px] mx-auto px-4 my-8">
+          <AboutComponentTypes />
         </div>
 
         <a href="https://github.com/graphieros/vue-data-ui/graphs/contributors" target="_blank" v-if="contributors" class="w-full mt-12 flex flex-row gap-4 place-items-center justify-center">
