@@ -92,10 +92,12 @@ const donutImageConfig = ref({
     chart: {
       title: {
         text: 'Programming cats',
-
         subtitle: {
           text: 'Best programming cats'
         }
+      },
+      tooltip: {
+        backgroundOpacity: 50,
       },
       layout: {
         labels: {
