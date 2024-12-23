@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.48",
+    "date": "2024-12-23",
+    "updates": [
+      {
+        "component": "VueUiTableSparkline",
+        "description": "Improve column sorting options and functionality",
+        "link": "/docs#vue-ui-table-sparkline"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.47",
     "date": "2024-12-22",
     "updates": [
