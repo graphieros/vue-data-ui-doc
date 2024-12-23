@@ -489,7 +489,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiHeatmapDatasetI
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiHeatmapConfig" equal>
-      <span>heme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
+      <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
       <BaseDetails attr="style" :level="1">
         <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="color" attr="style.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

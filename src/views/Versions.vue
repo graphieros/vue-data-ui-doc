@@ -131,7 +131,7 @@ const usableWeekData = computed(() => {
 const heatmapConfig = computed(() => {
   return {
   style: {
-    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#f3f4f6',
+    backgroundColor: 'transparent',
     color: "#2D353C",
     fontFamily: "inherit",
     layout: {
@@ -1435,18 +1435,18 @@ const wordCloudConfig = computed(() => {
 // ],
 table: {
   th: {
-    backgroundColor: isDarkMode.value ? '#1E1E1E' : '#FFFFFF',
+    backgroundColor: 'transparent',
     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
   },
   td: {
-    backgroundColor: isDarkMode.value ? '#1E1E1E' : '#FFFFFF',
+    backgroundColor: 'transparent',
     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
   }
 },
     style: {
       chart: {
         color: isDarkMode.value ? '#CCCCCC' : "#1A1A1A",
-        backgroundColor: isDarkMode.value ? '#1E1E1E' : '#FFFFFF',
+        backgroundColor: 'transparent',
         height: 500,
         width: 500,
         words: {
@@ -1468,9 +1468,10 @@ table: {
 const xyCanvasConfig = computed(() => {
   return {
       customPalette: ['#42d392'],
+      userOptions: { show: false },
       style: {
         chart: {
-          backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+          backgroundColor: 'transparent',
           color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
           dataLabels: {
             show: false
@@ -1931,7 +1932,7 @@ const versionsReleases = computed(() => {
                       </template>
                   </VueUiSparkline>
                   <div style="height: 48px"/>
-                  <div class="w-full shadow-lg" v-if="showWC">
+                  <div class="w-full" v-if="showWC">
                     <VueDataUi v-if="done" component="VueUiWordCloud" :dataset="wordCloudDataset" :config="wordCloudConfig">
                       <template #source>
                         <div class="text-xs text-gray-500 text-right mt-3 pl-2">
