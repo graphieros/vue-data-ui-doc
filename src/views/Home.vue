@@ -33,35 +33,10 @@ const translations = computed(() => {
 
 const componentsLen = computed(() => Object.keys(configs).length + 1)
 
-const languageOptions = ref([
-  { value: "en", text: "English" },
-  { value: "fr", text: "Français" },
-  { value: "de", text: "Deutsch" },
-  { value: "es", text: "Español" },
-  { value: "pt", text: "Portugues" },
-  { value: "zh", text: "中国人" },
-  { value: "jp", text: "日本語" },
-  { value: "ko", text: "한국인"},
-  { value: "ar", text: 'عربي'}
-])
-
-const selectedLanguage = computed({
-  get() {
-    return store.lang;
-  },
-  set(val) {
-    localStorage.setItem("vueDataUiLang", val);
-    store.lang = val;
-    return val;
-  }
-});
-
 const versionsList = ref([]);
 const versionsUrl = ref('https://vue-data-ui.graphieros.com/releases.json');
 const sparklineDataset = ref(generateSparkline())
 const sparklineDataset2 = ref(generateSparkline())
-
-const isLoading = ref(false);
 
 function generateSparkline() {
   const arr = [];
@@ -96,25 +71,6 @@ function updateSparkline() {
 }
 
 const clientPosition = ref({x: 0, y: 0});
-
-const start = ref("2023-07-25");
-const end = computed(() => {
-  const d = new Date(Date.now());
-  const day = d.getDate();
-  const month = d.getMonth()+1;
-  const year = d.getFullYear();
-  return `${year}-${String(month).length === 1 ? `0${month}` : month}-${String(day).length === 1 ? `0${day}` : day}`;
-})
-
-const downloadsUrl = computed(() => {
-    return `https://api.npmjs.org/downloads/range/${start.value}:${end.value}/vue-data-ui`;
-});
-
-const downloads = ref(null);
-const stars = ref(0);
-
-const owner = 'graphieros'; 
-const repo = 'vue-data-ui';
 const viewBox = ref('0 0 0 0');
 const targetSize = ref(48)
 const resizeContainer = ref(null);
@@ -185,58 +141,6 @@ const deviationX = computed(() => {
     return -(window.innerHeight / 2 - clientPosition.value.y) / window.innerHeight
   }
 })
-
-const sparklineConfig = ref({
-  type: 'bar',
-  style: {
-    backgroundColor: isDarkMode ? '#0000000' : "#F3F4F6",
-    fontFamily: "inherit",
-    bar: {
-      color: "#42d392",
-    },
-    line: {
-      color:'#5f8bee',
-      strokeWidth: 3,
-      smooth: true
-    },
-    zeroLine: {
-      color: "#505050",
-      strokeWidth: 1
-    },
-    plot: {
-      show: true,
-      radius: 4,
-      stroke: "#FFFFFF",
-      strokeWidth: 1
-    },
-    verticalIndicator: {
-      show: true,
-      strokeWidth: 1.5
-    },
-    dataLabel: {
-      position: "left",
-      fontSize: 0,
-      bold: true,
-      color: "#1A1A1A",
-      roundingValue: 1,
-      valueType: "latest"
-    },
-    title: {
-      show: true,
-      textAlign: "left",
-      color: "#1A1A1A",
-      fontSize: 0,
-      bold: true,
-      text: ""
-    },
-    area: {
-      show: false,
-      useGradient: true,
-      opacity: 30,
-      color: "#5f8bee"
-    }
-  }
-});
 
 const digitConfigStars = computed(() => {
   return {
@@ -582,7 +486,7 @@ const specialOccasion = computed(() => {
 
 .home-perspective-wrapper {
   perspective-origin: center;
-  perspective: 400px;
+  perspective: 100px;
 }
 .home-perspective {
   transform-style: preserve-3d;
