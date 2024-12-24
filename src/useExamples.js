@@ -3793,6 +3793,38 @@ export default function useExamples() {
                     ar: 'قيم موجبة وسالبة'
                 }
             },
+            // STACKBAR NO GAP
+            { 
+                dataset: DATASET_STACKBAR_BASIC.value, 
+                config: {
+                    ...CONFIG_STACKBAR_BASE.value,
+                    style: {
+                        ...CONFIG_STACKBAR_BASE.value.style,
+                        chart: {
+                            ...CONFIG_STACKBAR_BASE.value.style.chart,
+                            bars: {
+                                ...CONFIG_STACKBAR_BASE.value.style.chart.bars,
+                                gapRatio: 0
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStackbar',
+                icon: 'chartStackbar',
+                id: 'stack-bar-basic-no-gap',
+                link: 'vue-ui-stackbar',
+                description: {
+                    en: "Without gaps",
+                    fr: "Sans espaces",
+                    pt: "Sem lacunas",
+                    de: "Ohne Lücken",
+                    zh: "没有间隙",
+                    jp: "隙間なし",
+                    es: "Sin espacios",
+                    ko: "간격 없이",
+                    ar: "بدون فجوات"
+                }
+            },
             // NESTED DONUTS BASIC
             { 
                 dataset: DATASET_NESTED_DONUTS_BASIC.value, 
