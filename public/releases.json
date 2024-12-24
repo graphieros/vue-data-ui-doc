@@ -1,7 +1,7 @@
 [
   {
-    "version": "v 2.4.49",
-    "date": "2024-12-23",
+    "version": "v 2.4.50",
+    "date": "2024-12-24",
     "updates": [
       {
         "component": "VueUiTableSparkline",

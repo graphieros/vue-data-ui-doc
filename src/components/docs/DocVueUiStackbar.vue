@@ -203,7 +203,9 @@ const config = ref({
             },
             grid: {
                 scale: {
-                    ticks: 10
+                    ticks: 10,
+                    scaleMin: null,
+                    scaleMax: null
                 },
                 x: {
                     showAxis: true,
@@ -403,7 +405,9 @@ const darkModeConfig = ref({
             },
             grid: {
                 scale: {
-                    ticks: 10
+                    ticks: 10,
+                    scaleMin: null,
+                    scaleMax: null
                 },
                 x: {
                     showAxis: true,
