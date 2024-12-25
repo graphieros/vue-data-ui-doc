@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
+import CodeParser from "./CodeParser.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -111,6 +112,86 @@ const donutImageConfig = ref({
   }
 })
 
+const contentComment = ref(`<VueUiXy :dataset="dataset" :config="config">
+    <template #svg="{ svg }">
+        <foreignObject 
+            :x="svg.width / 2 - 90" 
+            :y="svg.height / 2 - 250" 
+            height="100" 
+            width="180"
+        >
+            <div class="bg-gray-100 p-3 shadow">
+                This comment was added in the slot
+            </div>
+        </foreignObject>
+    </template>
+</VueUiXy>`);
+
+const contentChart = ref(`<VueUiXy :dataset="dataset" :config="config">
+    <template #svg>
+        <foreignObject 
+            :x="50" 
+            :y="0" 
+            height="250" 
+            width="250"
+        >
+            <div class="w-full">
+                <VueUiDonut 
+                    :dataset="donutDataset" 
+                    :config="donutConfig"
+                />
+            </div>
+        </foreignObject>
+    </template>
+</VueUiXy>`);
+
+const contentArrow = ref(`<template>
+    <VueUiXy :dataset="dataset" :config="config">
+        <template #svg>
+            <g>
+                <Arrow 
+                    :x1="150"
+                    :y1="100"
+                    :x2="270"
+                    :y2="300"
+                    :markerSize="20"
+                />
+                <foreignObject 
+                    :x="100" 
+                    :y="100" 
+                    height="100" 
+                    width="180"
+                >
+                    <div class="bg-gray-100 p-3 shadow">
+                        Wow this random datapoint is pretty
+                    </div>
+                </foreignObject>
+            </g>
+        </template>
+    </VueUiXy>
+</template>`);
+
+const contentImage = ref(`<template>
+    <VueUiDonut :dataset="dataset" :config="config">
+        <template #svg="{ svg }">
+          <foreignObject
+            width="130"
+            height="130"
+            :x="svg.width / 2 - 65"
+            :y="svg.height / 2 - 65"
+            :style="{
+              pointerEvents: 'none'
+            }"
+          >
+            <img 
+              src="programming_cat.png" 
+              alt="10x cat programmers"
+            >
+          </foreignObject>
+        </template>
+    </VueUiXy>
+</template>`)
+
 </script>
 
 <template>
@@ -120,24 +201,7 @@ const donutImageConfig = ref({
 
   <BaseCustomizationBox :title="translations.customization.comment[store.lang]">
     <template #code>
-      <pre>
-<code>
-&lt;VueUiXy :dataset="dataset" :config="config"&gt;
-    &lt;template #svg="{ svg }"&gt;
-        &lt;foreignObject 
-            :x="svg.width / 2 - 90" 
-            :y="svg.height / 2 - 250" 
-            height="100" 
-            width="180"
-        &gt;
-            &lt;div class="bg-gray-100 p-3 shadow"&gt;
-                This comment was added in the slot
-            &lt;/div&gt;
-        &lt;/foreignObject&gt;
-    &lt;/template&gt;
-&lt;/VueUiXy&gt;
-</code>
-</pre>
+      <CodeParser :content="contentComment" language="html" />
     </template>
 
     <template #chart>
@@ -162,27 +226,7 @@ const donutImageConfig = ref({
     :title="translations.customization.otherChart[store.lang]"
   >
     <template #code>
-      <pre>
-<code>
-&lt;VueUiXy :dataset="dataset" :config="config"&gt;
-    &lt;template #svg&gt;
-        &lt;foreignObject 
-            :x="50" 
-            :y="0" 
-            height="250" 
-            width="250"
-        &gt;
-            &lt;div class="w-full"&gt;
-                &lt;VueUiDonut 
-                    :dataset="donutDataset" 
-                    :config="donutConfig"
-                /&gt;
-            &lt;/div&gt;
-        &lt;/foreignObject&gt;
-    &lt;/template&gt;
-&lt;/VueUiXy&gt;
-</code>
-</pre>
+      <CodeParser :content="contentChart" language="html" />
     </template>
 
     <template #chart>
@@ -205,33 +249,8 @@ const donutImageConfig = ref({
 &lt;script setup&gt;
 import { Arrow } from "vue-data-ui"
 &lt;/script&gt;
-
-&lt;template&gt;
-    &lt;VueUiXy :dataset="dataset" :config="config"&gt;
-        &lt;template #svg&gt;
-            &lt;g&gt;
-                &lt;Arrow 
-                    :x1="150"
-                    :y1="100"
-                    :x2="270"
-                    :y2="300"
-                    :markerSize="20"
-                /&gt;
-                &lt;foreignObject 
-                    :x="100" 
-                    :y="100" 
-                    height="100" 
-                    width="180"
-                &gt;
-                    &lt;div class="bg-gray-100 p-3 shadow"&gt;
-                        Wow this random datapoint is pretty
-                    &lt;/div&gt;
-                &lt;/foreignObject&gt;
-            &lt;/g&gt;
-        &lt;/template&gt;
-    &lt;/VueUiXy&gt;
-&lt;/template&gt;
 </code>
+<CodeParser :content="contentArrow" language="html" />
 </pre>
     </template>
 
@@ -279,30 +298,7 @@ import { Arrow } from "vue-data-ui"
 
   <BaseCustomizationBox :title="translations.customization.injectImage[store.lang]">
     <template #code>
-      <pre>
-<code>
-&lt;template&gt;
-    &lt;VueUiDonut :dataset="dataset" :config="config"&gt;
-        &lt;template #svg="{ svg }"&gt;
-          &lt;foreignObject
-            width="130"
-            height="130"
-            :x="svg.width / 2 - 65"
-            :y="svg.height / 2 - 65"
-            :style="{
-              pointerEvents: 'none'
-            }"
-          &gt;
-            &lt;img 
-              src="../../assets/programming_cat.png" 
-              alt="10x cat programmers"
-            &gt;
-          &lt;/foreignObject&gt;
-        &lt;/template&gt;
-    &lt;/VueUiXy&gt;
-&lt;/template&gt;
-</code>
-</pre>
+      <CodeParser :content="contentImage" language="html" />
     </template>
 
     <template #chart>

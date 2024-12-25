@@ -15,6 +15,11 @@ export const useMainStore = defineStore("main", {
             isFetching: false,
             customColors: [],
             npmDownloads: [],
+            repos: {
+                docs: {},
+                library: {},
+                cli: {},
+            },
             hints: {
                 pin: {
                     en: "Pin the chart to the left so you can visualize configuration changes when you scroll.",

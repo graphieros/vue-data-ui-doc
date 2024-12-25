@@ -46,6 +46,7 @@ onMounted(() => {
     store.stars = data.stargazers_count;
     store.issues = data.open_issues_count;
     store.pack = data;
+    store.repos.library = data;
   })
   .catch(error => {
     console.error('There was a problem fetching the data:', error);
@@ -62,6 +63,7 @@ onMounted(() => {
   })
   .then(data => {
     store.stars_cli = data.stargazers_count;
+    store.repos.cli = data;
   })
   .catch(error => {
     console.error('There was a problem fetching the data:', error);
@@ -94,6 +96,7 @@ onMounted(() => {
   })
   .then(data => {
     store.stars_docs = data.stargazers_count;
+    store.repos.docs = data;
   })
   .catch(error => {
     console.error('There was a problem fetching the data:', error);
