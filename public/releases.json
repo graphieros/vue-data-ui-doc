@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.52",
+    "date": "2024-12-26",
+    "updates": [
+      {
+        "component": "VueUiTableSparkline",
+        "description": "Display buttons for each sorting order",
+        "link": "/docs#vue-ui-table-sparkline"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.51",
     "date": "2024-12-26",
     "updates": [
