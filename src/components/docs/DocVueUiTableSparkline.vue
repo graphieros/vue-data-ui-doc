@@ -138,6 +138,8 @@ const config = ref({
   },
   userOptions: {
     show: true,
+    showOnChartHover: false,
+    keepStateOnChartLeave: true,
     buttons: {
             pdf: true,
             img: true,
@@ -235,6 +237,8 @@ const darkModeConfig = ref({
   },
   userOptions: {
     show: true,
+    showOnChartHover: false,
+    keepStateOnChartLeave: true,
     buttons: {
             pdf: true,
             img: true,
@@ -480,6 +484,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
     </BaseDetails>
     <BaseDetails attr="userOptions" :level="1">
       <BaseAttr name="show" attr="userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="showOnChartHover" attr="userOptions.showOnChartHover" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+      <BaseAttr name="keepStateOnChartLeave" attr="userOptions.keepStateOnChartLeave" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
       <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
         <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="img" attr="userOptions.buttons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

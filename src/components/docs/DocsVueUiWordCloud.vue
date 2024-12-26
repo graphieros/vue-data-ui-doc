@@ -69,6 +69,8 @@ const config = ref({
     animationDelayMs: 20,
     userOptions: {
         show: true,
+        showOnChartHover: false,
+        keepStateOnChartLeave: true,
         position: 'right',
         buttons: {
             tooltip: true,
@@ -179,6 +181,8 @@ const darkModeConfig = ref({
     animationDelayMs: 20,
     userOptions: {
         show: true,
+        showOnChartHover: false,
+        keepStateOnChartLeave: true,
         position: 'right',
         buttons: {
             tooltip: true,
@@ -506,6 +510,8 @@ const { configCode, showAllConfig } = useConfigCode()
         </BaseDetails>
         <BaseDetails attr="userOptions" :level="1">
             <BaseAttr name="show" attr="userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+            <BaseAttr name="showOnChartHover" attr="userOptions.showOnChartHover" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="keepStateOnChartLeave" attr="userOptions.keepStateOnChartLeave" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="position" attr="userOptions.position" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
                 <BaseAttr name="tooltip" attr="userOptions.buttons.tooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

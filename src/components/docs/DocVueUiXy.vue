@@ -263,6 +263,8 @@ const config = ref({
         },
         userOptions: {
             show: true,
+            showOnChartHover: false,
+            keepStateOnChartLeave: true,
             position: 'right',
             buttons: {
                 tooltip: true,
@@ -545,6 +547,8 @@ const darkModeConfig = ref({
         },
         userOptions: {
             show: true,
+            showOnChartHover: false,
+            keepStateOnChartLeave: true,
             position: 'right',
             buttons: {
                 tooltip: true,
@@ -1093,6 +1097,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
             </BaseDetails>
             <BaseDetails attr="userOptions" :level="2" title="chart.userOptions">
                 <BaseAttr name="show" attr="chart.userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="showOnChartHover" attr="chart.userOptions.showOnChartHover" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="keepStateOnChartLeave" attr="chart.userOptions.keepStateOnChartLeave" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="position" attr="chart.userOptions.position" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseDetails attr="buttons" :level="3" title="chart.userOptions.buttons">
                     <BaseAttr name="tooltip" attr="chart.userOptions.buttons.tooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />

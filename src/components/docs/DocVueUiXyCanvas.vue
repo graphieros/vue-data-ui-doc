@@ -81,6 +81,8 @@ const config = ref({
   },
   userOptions: {
     show: true,
+    showOnChartHover: false,
+    keepStateOnChartLeave: true,
     position: "right",
     buttons: {
       tooltip: true,
@@ -272,6 +274,8 @@ const darkModeConfig = ref({
   customPalette: [],
   userOptions: {
     show: true,
+    showOnChartHover: false,
+    keepStateOnChartLeave: true,
     position: "right",
     buttons: {
       tooltip: true,
@@ -1771,6 +1775,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                   :dark="mutableConfigDarkMode"
                   @change="forceChartUpdate()"
                 />
+                <BaseAttr name="showOnChartHover" attr="userOptions.showOnChartHover" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                <BaseAttr name="keepStateOnChartLeave" attr="userOptions.keepStateOnChartLeave" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 <BaseAttr
                   name="position"
                   attr="userOptions.position"

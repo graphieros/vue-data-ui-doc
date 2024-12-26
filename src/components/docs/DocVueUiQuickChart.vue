@@ -222,7 +222,9 @@ const config = ref({
         indicatorColor: '#1A1A1A'
     },
     zoomStartIndex: null,
-    zoomEndIndex: null
+    zoomEndIndex: null,
+    showUserOptionsOnChartHover: false,
+    keepUserOptionsStateOnChartLeave: true,
 })
 
 const darkModeConfig = ref({
@@ -330,7 +332,9 @@ const darkModeConfig = ref({
         indicatorColor: '#CCCCCC'
     },
     zoomStartIndex: null,
-    zoomEndIndex: null
+    zoomEndIndex: null,
+    showUserOptionsOnChartHover: false,
+    keepUserOptionsStateOnChartLeave: true,
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -771,6 +775,8 @@ const { configCode, showAllConfig } = useConfigCode()
         <BaseAttr name="showLegend" attr="showLegend" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="showTooltip" attr="showTooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="showUserOptions" attr="showUserOptions" defaultVal="true" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="showUserOptionsOnChartHover" attr="showUserOptionsOnChartHover" defaultVal="false" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="keepUserOptionsStateOnChartLeave" attr="keepUserOptionsStateOnChartLeave" defaultVal="false" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="userOptionsPosition" attr="userOptionsPosition" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseDetails attr="userOptionsButtons" :level="1">
             <BaseAttr name="tooltip" attr="userOptionsButtons.tooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
