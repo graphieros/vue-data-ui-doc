@@ -7,13 +7,7 @@
         "component": "VueUiTableSparkline",
         "description": "Display buttons for each sorting order",
         "link": "/docs#vue-ui-table-sparkline"
-      }
-    ]
-  },
-  {
-    "version": "v 2.4.51",
-    "date": "2024-12-26",
-    "updates": [
+      },
       {
         "component": "All charts with user options menu",
         "description": "Add config options to control the state of the options menu"
