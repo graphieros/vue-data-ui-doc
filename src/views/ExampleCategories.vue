@@ -8,6 +8,7 @@ import BaseTabContainer from "../components/BaseTabContainer.vue";
 import { useRoute, useRouter } from "vue-router";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
+import SuspenseWrapper from "../components/SuspenseWrapper.vue";
 
 const { examples } = useExamples()
 const store = useMainStore()
@@ -401,31 +402,26 @@ const hoveredLink = ref(null);
                         <a class="text-app-blue underline text-sm">{{ translations.checkSlotsTab[store.lang] }}</a>
                     </RouterLink>
                 </div>
-    
-                <Suspense>
-                    <template #default>
-                        <div class="w-full p-4 example-wrapper">
-                            <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
-                                <template #plot-comment="{ plot }">
-                                    <div v-if="example.component === 'VueUiXy' && plot.value === 140" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-green">
-                                        <VueUiIcon name="smiley" stroke="#42d392" :size="30"/>
-                                        {{ plot.comment }}
-                                    </div>
-                                    <div v-else-if="example.component === 'VueUiXy' && plot.value === 12" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-orange">
-                                        <VueUiIcon name="moodFlat" stroke="#FF6600" :size="30"/>
-                                        {{ plot.comment }}
-                                    </div>
-                                    <div v-else :style="`text-align:${plot.textAlign}; color:${plot.color}; font-size: 10px; padding: 6px;`">
-                                        {{ plot.comment }}
-                                    </div>
-                                </template>
-                            </VueDataUi>
-                        </div>
-                    </template>
-                    <template #fallback>
-                        <BaseSpinner/>
-                    </template>
-                </Suspense>
+                
+                <SuspenseWrapper>
+                    <div class="w-full p-4 example-wrapper">
+                        <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
+                            <template #plot-comment="{ plot }">
+                                <div v-if="example.component === 'VueUiXy' && plot.value === 140" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-green">
+                                    <VueUiIcon name="smiley" stroke="#42d392" :size="30"/>
+                                    {{ plot.comment }}
+                                </div>
+                                <div v-else-if="example.component === 'VueUiXy' && plot.value === 12" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-orange">
+                                    <VueUiIcon name="moodFlat" stroke="#FF6600" :size="30"/>
+                                    {{ plot.comment }}
+                                </div>
+                                <div v-else :style="`text-align:${plot.textAlign}; color:${plot.color}; font-size: 10px; padding: 6px;`">
+                                    {{ plot.comment }}
+                                </div>
+                            </template>
+                        </VueDataUi>
+                    </div>
+                </SuspenseWrapper>
             </div>
         </div>
     </div>
