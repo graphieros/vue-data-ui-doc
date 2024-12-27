@@ -194,6 +194,8 @@ const config = ref({
                 },
                 dataLabels: {
                     show: true,
+                    hideEmptyValues: false,
+                    hideEmptyPercentages: false,
                     adaptColorToBackground: true,
                     color: "#2D353C",
                     fontSize: 14,
@@ -398,6 +400,8 @@ const darkModeConfig = ref({
                 },
                 dataLabels: {
                     show: true,
+                    hideEmptyValues: false,
+                    hideEmptyPercentages: false,
                     adaptColorToBackground: true,
                     color: "#1A1A1A",
                     fontSize: 14,
@@ -781,6 +785,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                         </BaseDetails>
                         <BaseDetails attr="dataLabels" :level="4" title="style.chart.bars.dataLabels">
                             <BaseAttr name="show" attr="style.chart.bars.dataLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                            <BaseAttr name="show" attr="style.chart.bars.dataLabels.hideEmptyValues" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                            <BaseAttr name="show" attr="style.chart.bars.dataLabels.hideEmptyPercentages" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                             <BaseAttr name="adaptColorToBackground" attr="style.chart.bars.dataLabels.adaptColorToBackground" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                             <BaseAttr name="color" attr="style.chart.bars.dataLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="fontSize" attr="style.chart.bars.dataLabels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -503,6 +503,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.bars.totalValues.color', def: '#1A1A1A', type: 'color', label: ['total', 'value', 'is', 'textColor'], category: 'bar'},
 
                     { key: 'style.chart.bars.dataLabels.show', def: true, type: 'checkbox', label: 'show', category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.hideEmptyValues', def: false, type: 'checkbox', label: ['empty values', 'is', 'show'], category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.hideEmptyPercentages', def: false, type: 'checkbox', label: ['empty percentages', 'is', 'show'], category: 'labels'},
                     { key: 'style.chart.bars.dataLabels.adaptColorToBackground', def: true, type: 'checkbox', label: ['textColor', 'is', 'auto'], category: 'labels'},
                     { key: 'style.chart.bars.dataLabels.color', def: '#1A1A1A', type: 'color', label: ['textColor', 'is', 'default'], category: 'labels'},
                     { key: 'style.chart.bars.dataLabels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['fonSize'], category: 'labels'},

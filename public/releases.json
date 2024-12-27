@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.57",
+    "date": "2024-12-27",
+    "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Fix NaN% and add config attributes to display or hide empty values and percentages",
+        "link": "/docs#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.56",
     "date": "2024-12-27",
     "updates": [
