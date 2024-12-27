@@ -1,8 +1,13 @@
 [
   {
-    "version": "v 2.4.55",
+    "version": "v 2.4.56",
     "date": "2024-12-27",
     "updates": [
+      {
+        "component": "VueUiCarouselTable",
+        "description": "Add marquee animation option",
+        "link": "/docs#vue-ui-carousel-table"
+      },
       {
         "component": "VueUiDonut",
         "description": "Improve serie segregation animation timing",

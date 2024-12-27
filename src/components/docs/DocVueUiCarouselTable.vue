@@ -77,6 +77,7 @@ const darkModeConfig = ref({
         }
     },
     animation: {
+        type: 'scroll',
         use: true,
         speedMs: 1000,
         pauseOnHover: true
@@ -211,6 +212,7 @@ const config = ref({
         }
     },
     animation: {
+        type: 'scroll',
         use: true,
         speedMs: 1000,
         pauseOnHover: true
@@ -434,6 +436,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDa
     <BaseDetails attr="const config: VueUiCarouselTableConfig" equal>
         <BaseAttr name="responsiveBreakpoint" attr="responsiveBreakpoint" type="number" defaultVal="400" :min="300" :max="800" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseDetails attr="animation" :level="1">
+            <BaseAttr name="type" attr="animation.type" type="select" defaultVal="scroll" :options="['scroll', 'marquee']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="use" attr="animation.use" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
             <BaseAttr name="speedMs" attr="animation.speedMs" type="range" defaultVal="1000" :min="500" :max="5000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="pauseOnHover" attr="animation.pauseOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 

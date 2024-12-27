@@ -189,6 +189,9 @@ const carouselConfig = computed(() => {
             backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         },
+        animation: {
+            type: 'marquee'
+        },
         caption: {
             text: 'Current stats',
             style: {

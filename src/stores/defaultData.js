@@ -600,6 +600,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
 
                     { key: 'animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},
+                    { key: 'animation.type', def: 'scroll', type: 'select', options: ['scroll', 'marquee'], label: ['animation', 'is', 'type'], category: 'general'},
                     { key: 'animation.speedMs', def: 1000, type: 'number', min: 500, max: 5000, step: 100, label: ['animation', 'is', 'speed'], category: 'general'},
                     { key: 'animation.pauseOnHover', def: true, type: 'checkbox', label: ['animation', 'is', 'pause on hover'], category: 'general'},
                     { key: 'scrollbar.showOnlyOnHover', def: false, type: 'checkbox', label: ['scrollbar', 'is', 'show only on hover'], category: 'general'},
