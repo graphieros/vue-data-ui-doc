@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import CodeParser from "./CodeParser.vue";
 
 const dataset = ref([
     {
@@ -66,6 +67,66 @@ function toggleAnnotator() {
     donutChart.value.toggleAnnotator();
 }
 
+const code0 = ref(`const config = ref({
+    userOptions: {
+        show: false
+    },
+    // Rest of your config
+})`
+)
+
+const code1 = ref(`// The ref used on the chart component
+const donutChart = ref(null);
+
+// Declare the methods used for the custom menu
+function generatePdf() {
+    donutChart.value.generatePdf();
+}
+
+function generateImage() {
+    donutChart.value.generateImage();
+}
+
+function generateCsv() {
+    donutChart.value.generateCsv();
+}
+
+function toggleLabels() {
+    donutChart.value.toggleLabels();
+}
+
+function toggleTable() {
+    donutChart.value.toggleTable();
+}
+
+function toggleTooltip() {
+    donutChart.value.toggleTooltip();
+}
+
+function toggleAnnotator() {
+    donutChart.value.toggleAnnotator();
+}
+`)
+
+const code2 = ref(`<template>
+<div class="my-menu">
+    <button @click="toggleTooltip">VIEW TOOLTIP</button>
+    <button @click="generatePdf">PDF</button>
+    <button @click="generateImage">IMG</button>
+    <button @click="generateCsv">CSV</button>
+    <button @click="toggleTable">VIEW TABLE</button>
+    <button @click="toggleLabels">VIEW LABELS</button>
+    <button @click="toggleAnnotator">TOGGLE ANNOTATOR</button>
+</div>
+
+<VueUiDonut
+    ref="donutChart"
+    :config="config"
+    :dataset="dataset"
+/>
+</template>`
+)
+
 </script>
 
 <template>
@@ -75,80 +136,25 @@ function toggleAnnotator() {
         <div class="mt-6 text-lg">
             1. Hide the built-in user options menu:
         </div>
+
+        <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
+            <CodeParser :content="code0" language="javascript"/>
+        </div>
         
-<pre>
-<code>
-    const config = ref({
-        userOptions: {
-            show: false
-        },
-        ...
-    })
-</code>
-</pre>
         <div class="mt-6 text-lg">
             2. Access exposed methods of the component:
         </div>
-<pre>
-<code>
-    <span class="text-gray-500">// The ref used on the chart component</span>
-    const donutChart = ref(null);
 
-    <span class="text-gray-500">// Declare the methods used for the custom menu</span>
-    function generatePdf() {
-        donutChart.value.generatePdf();
-    }
-
-    function generateImage() {
-        donutChart.value.generateImage();
-    }
-
-    function generateCsv() {
-        donutChart.value.generateCsv();
-    }
-
-    function toggleLabels() {
-        donutChart.value.toggleLabels();
-    }
-
-    function toggleTable() {
-        donutChart.value.toggleTable();
-    }
-
-    function toggleTooltip() {
-        donutChart.value.toggleTooltip();
-    }
-
-    function toggleAnnotator() {
-        donutChart.value.toggleAnnotator();
-    }
-</code>
-</pre>
-
+        <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
+            <CodeParser :content="code1" language="javascript"/>
+        </div>
         <div class="mt-6 text-lg">
             3. Create your own menu (very basic example):
         </div>
-<pre>
-<code>
-    &lt;template&gt;
-        &lt;div class="my-menu"&gt;
-            &lt;button @click="toggleTooltip"&gt;VIEW TOOLTIP&lt;/button&gt;
-            &lt;button @click="generatePdf"&gt;PDF&lt;/button&gt;
-            &lt;button @click="generateImage"&gt;IMG&lt;/button&gt;
-            &lt;button @click="generateCsv"&gt;CSV&lt;/button&gt;
-            &lt;button @click="toggleTable"&gt;VIEW TABLE&lt;/button&gt;
-            &lt;button @click="toggleLabels"&gt;VIEW LABELS&lt;/button&gt;
-            &lt;button @click="toggleAnnotator"&gt;TOGGLE ANNOTATOR&lt;/button&gt;
-        &lt;/div&gt;
 
-        &lt;VueUiDonut
-            ref="donutChart"
-            :config="config"
-            :dataset="dataset"
-        /&gt;
-    &lt;/template&gt;
-</code>
-</pre>
+        <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
+            <CodeParser :content="code2" language="html"/>
+        </div>
 
 <div class="p-4 bg-gray-200 dark:bg-[#FFFFFF10]">
     Example:

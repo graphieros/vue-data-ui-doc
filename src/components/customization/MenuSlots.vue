@@ -1,7 +1,39 @@
 <script setup>
 import { ref, computed } from "vue";
+import CodeParser from "./CodeParser.vue";
 
-    
+const code1 = ref(`<VueUiXy :config="config" :dataset="dataset">
+    <template #optionPdf>
+        PRINT PDF
+    </template>
+</VueUiXy>`
+)
+
+const code2 = ref(`<VueUiXy :config="config" :dataset="dataset">
+    <template #optionFullscreen="{ isFullscreen, toggleFullscreen }">
+        <div @click="toggleFullscreen(isFullscreen ? 'out' : 'in')">
+            TOGGLE FULLSCREEN
+        </div>
+    </template>
+</VueUiXy>`
+)
+
+const code0 = ref(`const config = ref({
+    userOptions: {
+        tooltip: true,
+        pdf: true,
+        csv: true,
+        img: true,
+        table: true,
+        labels: true,
+        sort: true,
+        stack: true,
+        fullscreen: true
+    },
+    // Rest of your config
+})`
+)
+
 </script>
 
 <template>
@@ -9,55 +41,21 @@ import { ref, computed } from "vue";
         Config also allows you to hide some actions.<br>
         The example below illustrates all the possible options.<br>
         <span class="text-orange-500">Check out the docs to know what options are available for a given chart.</span>
-
-<pre>
-<code>
-    const config = ref({
-        userOptions: {
-            tooltip: true,
-            pdf: true,
-            csv: true,
-            img: true,
-            table: true,
-            labels: true,
-            sort: true,
-            stack: true,
-            fullscreen: true
-        },
-        ...
-    })
-</code>
-</pre>
+        <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
+            <CodeParser :content="code0" language="javascript"/>
+        </div>
 
         If you want to customize the contents of the options menu, you can leverage the slots provided with each chart. The click event is managed by the component.<br>
 
         Example:
-<div class="w-full bg-gray-200 dark:bg-[#FFFFFF10] my-4 rounded-md">
-<pre>
-<code>
-    &lt;VueUiXy :config="config" :dataset="dataset"&gt;
-        &lt;template #optionPdf&gt;
-            PRINT PDF
-        &lt;/template&gt;
-    &lt;/VueUiXy&gt;
-</code>
-</pre>
+<div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
+    <CodeParser :content="code1" language="html"/>
 </div>
 
     The #optionFullscreen slot has a specific implementation, where you need to apply a click event with the exposed data:
 
-<div class="w-full bg-gray-200 dark:bg-[#FFFFFF10] my-4 rounded-md">
-<pre>
-<code>
-    &lt;VueUiXy :config="config" :dataset="dataset"&gt;
-        &lt;template #optionFullscreen="{ isFullscreen, toggleFullscreen }"&gt;
-            &lt;div @click="toggleFullscreen(isFullscreen ? 'out' : 'in')"&gt;
-                TOGGLE FULLSCREEN
-            &lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiXy&gt;
-</code>
-</pre>
+<div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
+    <CodeParser :content="code2" language="html"/>
 </div>
 
 

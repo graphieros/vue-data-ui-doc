@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
+import CodeParser from "./CodeParser.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -516,6 +517,20 @@ const configSparkline = ref({
   }
 });
 
+const code = ref(`<template>
+  <VueUiDonut
+    :dataset="dataset"
+    :config="config"
+  >
+    <template #tooltip-before={ datapoint, seriesindex, series, config }">
+      This content shows first
+    </template>
+    <template #tooltip-after="{ datapoint, seriesIndex, series, config }">
+      This content shows last
+    </template>
+  </VueUiDonut>
+</template>`)
+
 </script>
 
 <template>
@@ -535,21 +550,7 @@ const configSparkline = ref({
 
   <BaseCustomizationBox>
     <template #code>
-      <pre>
-&lt;template&gt;
-  &lt;VueUiDonut
-    :dataset="dataset"
-    :config="config"
-  &gt;
-    &lt;template #tooltip-before={ datapoint, seriesindex, series, config }"&gt;
-      This content shows first
-    &lt;/template&gt;
-    &lt;template #tooltip-after="{ datapoint, seriesIndex, series, config }"&gt;
-      This content shows last
-    &lt;/template&gt;
-  &lt;/VueUiDonut&gt;
-&lt;/template&gt;
-</pre>
+      <CodeParser :content="code" language="html"/>
     </template>
     <template #chart>
       <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">

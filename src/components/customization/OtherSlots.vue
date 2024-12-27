@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
+import CodeParser from "./CodeParser.vue";
 
 const store = useMainStore();
 
@@ -130,6 +131,35 @@ const waffleConfig = computed(() => {
     },
   };
 });
+
+const waffleCode = ref(`  <VueUiWaffle
+    :config="config"
+    :dataset="dataset"
+  >
+    <template #cell="{ cell, isSelected }">
+      <div :style="{ opacity: isSelected ? 1 : 0.3 }">
+        <VueUiIcon
+          v-if="cell.name === 'Serie 3'"
+          name="moodFlat"
+          size="40"
+          :stroke="cell.color"
+        />
+        <VueUiIcon
+          v-if="cell.name === 'Serie 2'"
+          name="moodHappy"
+          size="40"
+          :stroke="cell.color"
+        />
+        <VueUiIcon
+          v-if="cell.name === 'Serie 1'"
+          name="smiley"
+          size="40"
+          :stroke="cell.color"
+        />
+      </div>
+    </template>
+  </VueUiWaffle>`)
+
 </script>
 
 <template>
@@ -140,35 +170,7 @@ const waffleConfig = computed(() => {
       </p>
     </template>
     <template #code>
-      <pre>
-  &lt;VueUiWaffle
-    :config="config"
-    :dataset="dataset"
-  &gt;
-    &lt;template #cell="{ cell, isSelected }"&gt;
-      &lt;div :style="`opacity:${isSelected ? 1 : 0.3}`"&gt;
-        &lt;VueUiIcon
-          v-if="cell.name === 'Serie 3'"
-          name="moodFlat"
-          size="40"
-          :stroke="cell.color"
-        /&gt;
-        &lt;VueUiIcon
-          v-if="cell.name === 'Serie 2'"
-          name="moodHappy"
-          size="40"
-          :stroke="cell.color"
-        /&gt;
-        &lt;VueUiIcon
-          v-if="cell.name === 'Serie 1'"
-          name="smiley"
-          size="40"
-          :stroke="cell.color"
-        /&gt;
-      &lt;/div&gt;
-    &lt;/template&gt;
-  &lt;/VueUiWaffle&gt;
-</pre>
+      <CodeParser :content="waffleCode" language="html" />
     </template>
     <template #chart>
       <VueDataUi component="VueUiWaffle" :dataset="waffleDataset" :config="waffleConfig">

@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
+import CodeParser from "./CodeParser.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -495,6 +496,20 @@ style: {
 }
 });
 
+const code = ref(`<template>
+    <VueUiDonut
+        :dataset="dataset"
+        :config="config"
+    >
+        <template #source">
+            <div class="text-xs text-left px-8 pb-6 text-gray-500">
+                Source: Lorem ipsum dolor...
+            </div>
+        </template>
+    </VueUiDonut>
+</template>`
+)
+
 </script>
 
 <template>
@@ -504,20 +519,7 @@ style: {
 
 <BaseCustomizationBox>
     <template #code>
-    <pre>
-&lt;template&gt;
-    &lt;VueUiDonut
-        :dataset="dataset"
-        :config="config"
-    &gt;
-        &lt;template #source"&gt;
-            &lt;div class="text-xs text-left px-8 pb-6 text-gray-500"&gt;
-                Source: Lorem ipsum dolor...
-            &lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiDonut&gt;
-&lt;/template&gt;
-</pre>
+        <CodeParser :content="code" language="html"/>
     </template>
     <template #chart>
     <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">
