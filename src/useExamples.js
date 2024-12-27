@@ -1405,7 +1405,6 @@ export default function useExamples() {
         .replaceAll(' THIS ', ' ')
         .replaceAll(' TO ', ' ')
         .replaceAll(' WHEN ', ' ')
-        .replaceAll('S ', ' ')
         .replaceAll(' OR ', ' ')
         .replaceAll(' AN ', ' ')
         .replaceAll(' ON ', ' ')
