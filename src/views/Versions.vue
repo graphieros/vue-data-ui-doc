@@ -10,6 +10,7 @@ import updates from "../../public/releases.json"
 import GithubIssues from "../components/GithubIssues.vue";
 import { shiftHue } from '../components/maker/lib'
 import RepoStars from "../components/RepoStars.vue";
+import { darkenColor } from "vue-data-ui";
 
 const globalConfig = useConfig()
 
@@ -1561,24 +1562,25 @@ function convertVersionsToTreemap(ds) {
       const component = update.component;
       if (isValidComponent(component.toString())) {
         if (componentCountMap[component]) {
-          componentCountMap[component]++;
+          componentCountMap[component] += 1;
         } else {
           componentCountMap[component] = 1;
         }
       }
     });
   });
-  return Object.entries(componentCountMap).map(([name, value]) => ({ name, value }));
+  const baseColor = '#5f8aee';
+  const total = Object.entries(componentCountMap).length;
+  return Object.entries(componentCountMap).map(([name, value], i) => ({ name, value})).sort((a, b) => b.value - a.value).map((el, i) => {
+    return {
+      ...el,
+      color: darkenColor(baseColor, i/2 / total ) 
+    }
+  });
 }
 
 const versionTreemap = computed(() => {
-  return [
-    {
-      name: 'Releases',
-      value: convertVersionsToTreemap(versionsList.value).map(e => e.value).reduce((a, b) => a+b, 0),
-      children: !versionsList.value ? [] : convertVersionsToTreemap(versionsList.value),
-    }
-  ]
+  return convertVersionsToTreemap(versionsList.value)
 })
 
 const treemapConfig = computed(() => {
@@ -1615,6 +1617,7 @@ const treemapConfig = computed(() => {
           },
           rects: {
             stroke: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+            borderRadius: 2,
             colorRatio: 0,
             gradient: {
               intensity: 10,
