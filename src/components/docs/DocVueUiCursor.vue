@@ -1,22 +1,17 @@
 <script setup>
-import { ref, watch, nextTick, computed } from "vue";
+import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import GitHubLink from "../GitHubLink.vue";
-import MakerLink from "../MakerLink.vue"
-import ConfigAttribute from "../ConfigAttribute.vue";
 import { useConfig } from "../../assets/useConfig";
-import BaseDocActions from "./BaseDocActions.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
 
 const store = useMainStore();
 const key = ref(0);
-const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
-
+onMounted(() => store.docSnap = false);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {

@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useMainStore = defineStore("main", {
     state: () => {
         return {
+            docSnap: false,
             pack: {},
             stars: 0,
             stars_cli: 0,

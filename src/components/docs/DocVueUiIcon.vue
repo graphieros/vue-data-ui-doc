@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, nextTick, computed } from "vue";
+import { ref, watch, nextTick, computed, onMounted } from "vue";
 import { XIcon, CopyIcon, CheckIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { copyText } from "../maker/lib";
@@ -7,6 +7,8 @@ import { copyText } from "../maker/lib";
 const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
+
+onMounted(() => store.docSnap = false);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {

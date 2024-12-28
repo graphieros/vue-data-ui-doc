@@ -9,6 +9,8 @@ const store = useMainStore();
 
 const translations = computed(() => store.translations);
 
+onMounted(() => store.docSnap = false);
+
 const utilityTranslations = ref({
     abbreviate: {
         en: "Generate abbreviations for labels",

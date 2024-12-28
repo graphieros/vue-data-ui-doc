@@ -1,13 +1,11 @@
 <script setup>
-import { ref, computed, watch, nextTick, onBeforeMount } from "vue";
+import { ref, computed, watch, nextTick, onBeforeMount, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon, InfoTriangleIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { donutConfig, donutDataset } from "./dash";
-import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import SuspenseWrapper from "../SuspenseWrapper.vue";
-import BaseDocActions from "./BaseDocActions.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
@@ -16,7 +14,7 @@ const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
 
-
+onMounted(() => store.docSnap = false);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {

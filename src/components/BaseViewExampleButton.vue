@@ -16,7 +16,7 @@ import { useMainStore } from "../stores";
 
 <template>
     <RouterLink :to="link">
-        <button dir="auto" class="rounded-full h-[50px] px-6 border border-app-green bg-[#42d39220] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-[#42D39230] transition-all">
+        <button dir="auto" class="rounded-full py-2 px-6 border border-app-green bg-[#42d39220] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-[#42D39230] transition-all">
             {{ translations.viewExamples[store.lang]  }}
         </button>
     </RouterLink>

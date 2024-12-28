@@ -1,13 +1,11 @@
 <script setup>
-import { ref, computed, watch, nextTick } from "vue";
+import { ref, computed, watch, nextTick, onMounted } from "vue";
 import Box from "../Box.vue";
 import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import ThemesVueUiSparkgauge from "../themes/ThemesVueUiSparkgauge.vue";
-import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
-import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
@@ -15,6 +13,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseRandomButton from "../BaseRandomButton.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
+import useMobile from "../../useMobile";
 
 const mainConfig = useConfig()
 
@@ -22,6 +21,9 @@ const store = useMainStore();
 const key = ref(0);
 const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
+
+onMounted(() => store.docSnap = false);
+const { isMobile } = useMobile()
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {
@@ -173,6 +175,7 @@ const isFixed = ref(false);
 
 function fixChart() {
     isFixed.value = !isFixed.value;
+    store.docSnap = !store.docSnap;
 }
 
 const { configCode, showAllConfig } = useConfigCode()
@@ -215,46 +218,50 @@ function randomizeData() {
                 </button>
         <div class="w-3/4 mx-auto flex flex-row gap-2">
             
-            <div :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : ''}`">
-                <button v-if="isFixed" @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                    <PinnedOffIcon/>
-                </button>
-                <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                    <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
-                    <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
-                </div>
-                <div class="flex flex-row gap-4">
-                    <div class="w-[100px]">
-                        <Suspense>
-                            <template #default>
-                                <VueUiSparkgauge :dataset="dataset1" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
-                            </template>
-                            <template #fallback>
-                                <BaseSpinner/>
-                            </template>
-                        </Suspense>
+            <div :class="`transition-all mx-auto`">
+                <Teleport to="#docSnap" :disabled="!isFixed || isMobile">
+                    <template v-if="!isMobile">
+                        <button v-if="isFixed" @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                            <PinnedOffIcon/>
+                        </button>
+                        <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
+                            <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
+                            <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
+                        </div>
+                    </template>
+                    <div class="flex flex-row gap-4">
+                        <div class="w-[100px]">
+                            <Suspense>
+                                <template #default>
+                                    <VueUiSparkgauge :dataset="dataset1" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                                </template>
+                                <template #fallback>
+                                    <BaseSpinner/>
+                                </template>
+                            </Suspense>
+                        </div>
+                        <div class="w-[100px]">
+                            <Suspense>
+                                <template #default>
+                                    <VueUiSparkgauge :dataset="dataset2" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                                </template>
+                                <template #fallback>
+                                    <div class="min-h-[100px]"></div>
+                                </template>
+                            </Suspense>
+                        </div>
+                        <div class="w-[100px]">
+                            <Suspense>
+                                <template #default>
+                                    <VueUiSparkgauge :dataset="dataset3" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                                </template>
+                                <template #fallback>
+                                    <div class="min-h-[100px]"></div>
+                                </template>
+                            </Suspense>
+                        </div>
                     </div>
-                    <div class="w-[100px]">
-                        <Suspense>
-                            <template #default>
-                                <VueUiSparkgauge :dataset="dataset2" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
-                            </template>
-                            <template #fallback>
-                                <div class="min-h-[100px]"></div>
-                            </template>
-                        </Suspense>
-                    </div>
-                    <div class="w-[100px]">
-                        <Suspense>
-                            <template #default>
-                                <VueUiSparkgauge :dataset="dataset3" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
-                            </template>
-                            <template #fallback>
-                                <div class="min-h-[100px]"></div>
-                            </template>
-                        </Suspense>
-                    </div>
-                </div>
+                </Teleport>
                 <BaseRandomButton @click="randomizeData"/>
             </div>
         </div>

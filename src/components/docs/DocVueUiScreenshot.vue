@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, nextTick } from "vue";
+import { ref, computed, watch, nextTick, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
@@ -13,6 +13,8 @@ const mainConfig = useConfig()
 const store = useMainStore();
 const step = ref(0)
 const translations = computed(() => store.translations);
+
+onMounted(() => store.docSnap = false);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {

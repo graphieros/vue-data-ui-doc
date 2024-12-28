@@ -1,13 +1,11 @@
 <script setup>
-import { ref, computed, watch, nextTick } from "vue";
+import { ref, computed, watch, nextTick, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { xyConfig, xyDataset, donutConfig, donutDataset, waffleConfig, waffleDataset, radarConfig, radarDataset, chestnutConfig, chestnutDataset } from "./dash";
-import GitHubLink from "../GitHubLink.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
-import BaseDocActions from "./BaseDocActions.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 
 const mainConfig = useConfig()
@@ -15,6 +13,8 @@ const mainConfig = useConfig()
 const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
+
+onMounted(() => store.docSnap = false);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {

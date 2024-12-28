@@ -1,13 +1,11 @@
 <script setup>
-import { ref, watch, nextTick, computed } from "vue";
+import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import ThemesVueUiQuickChart from "../themes/ThemesVueUiQuickChart.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
-import BaseDocActions from "./BaseDocActions.vue";
 import { useConfig } from "../../assets/useConfig";
-import BaseNumberInput from "../BaseNumberInput.vue";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseDetails from "../BaseDetails.vue";
@@ -20,8 +18,9 @@ const mainConfig = useConfig()
 
 const store = useMainStore();
 const key = ref(0);
-const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
+
+onMounted(() => store.docSnap = false);
 
 watch(() => store.isDarkMode, (val) => {
     nextTick(() => {

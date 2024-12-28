@@ -1,13 +1,20 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, nextTick, watch } from "vue";
 import { GripHorizontalIcon } from "vue-tabler-icons";
+import { useMainStore } from "../stores";
 
 const props = defineProps({
     snapOnResize: {
         type: Boolean,
         default: false
+    },
+    snapOnLoad: {
+        type: Boolean,
+        default:false,
     }
-})
+});
+
+const store = useMainStore();
 
 const draggableElement = ref(null);
 const isDragging = ref(false);
@@ -72,7 +79,7 @@ const endDrag = () => {
     window.removeEventListener("touchend", endDrag);
 };
 
-onMounted(() => {
+onMounted(async () => {
     draggableElement.value.style.top = `${120}px`;
     const elementWidth = draggableElement.value.offsetWidth;
     draggableElement.value.style.left = `${(window.innerWidth - elementWidth - 42)
@@ -89,6 +96,14 @@ function snapRight(e) {
     draggableElement.value.style.left = `${windowWidth - elementWidth - 24}px`
 }
 
+watch(() => store.docSnap, async (bool) => {
+    if (bool && props.snapOnLoad) {
+        await nextTick();
+        await nextTick();
+        snapRight()
+    }
+})
+
 onUnmounted(() => {
     endDrag();
 });
@@ -96,7 +111,7 @@ onUnmounted(() => {
 
 <template>
     <div ref="draggableElement"
-        class="hidden sm:block fixed left-0 bg-gradient-to-br bg-white dark:bg-[#2A2A2A] p-4 pt-12 rounded cursor-move select-none py-6"
+        class="hidden min-w-[300px] sm:block fixed left-0 bg-gradient-to-br bg-white dark:bg-[#2A2A2A] p-4 pt-12 rounded cursor-move select-none py-6"
         style="box-shadow: 0 6px 12px rgba(0,0,0,0.5); z-index: 1000"
         @mousedown="startDrag" @touchstart="startDrag">
         <GripHorizontalIcon class="absolute top-3 left-1/2 -translate-x-1/2" size="20"/>

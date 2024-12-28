@@ -15,6 +15,7 @@ import BaseDropdown from "../components/BaseDropdown.vue";
 import { useIconMapUnderscore } from '../useIconMapUnderscore';
 import { useMakerStore } from "../stores/maker";
 import ChartSeeker from "../components/ChartSeeker.vue";
+import BaseDragElement from "../components/BaseDragElement.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -1505,6 +1506,9 @@ const stackbarKey = ref(0);
             </Transition>
 
             <UserOptionsMenu v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)" />
+            <BaseDragElement snap-on-resize snap-on-load v-show="store.docSnap && router.currentRoute.value.fullPath.includes('/docs#vue')">
+                <div id="docSnap" class="max-w-[300px] max-h-[800px] overflow-hidden"/>
+            </BaseDragElement>
         </div>
     </div>
 </template>

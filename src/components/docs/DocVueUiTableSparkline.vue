@@ -1,7 +1,7 @@
 <script setup>
-import { ref, watch, nextTick, computed } from "vue";
+import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
@@ -18,6 +18,8 @@ const store = useMainStore();
 const key = ref(0);
 const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
+
+onMounted(() => store.docSnap = false);
 
 
 watch(() => store.isDarkMode, (val) => {
@@ -309,19 +311,6 @@ const { configCode, showAllConfig } = useConfigCode()
         />
 
         <div :class="`transition-all mx-auto no-style ${isFixed ? 'fixed bottom-16 w-[300px] max-h-[500px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[1200px] overflow-x-auto'}`">
-            <button @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                <PinnedOffIcon v-if="isFixed"/>
-                <div v-else class="relative overflow-visible">
-                    <PinIcon class="peer overflow-visible"/>
-                    <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
-                        {{ hintPin[store.lang] }}
-                    </div>
-                </div>
-            </button>
-            <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
-                <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
-            </div>
             <Suspense>
               <template #default>
                 <VueUiTableSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
