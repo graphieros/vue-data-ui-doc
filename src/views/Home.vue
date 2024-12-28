@@ -9,7 +9,6 @@ import { useConfig } from "../assets/useConfig";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseColorInput from "../components/BaseColorInput.vue";
 import updates from '../../public/releases.json'
-import SuspenseWrapper from "../components/SuspenseWrapper.vue";
 
 const configs = useConfig()
 
@@ -373,29 +372,33 @@ const specialOccasion = computed(() => {
     </div>
 
     <div class="w-[400px] max-w-[400px] lg:w-[500px] lg:min-w-[500px] 2xl:w-[900px] 2xl:min-w-[900px] relative transition-all">
-      <SuspenseWrapper>
-        <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu">
-          <template #plot-comment="{ plot }">
-            <div 
-              dir="auto" 
-              style="pointer-events: all !important;" 
-              :title="plot.comment" @click="selectMenu({index: plot.seriesIndex})" 
-              :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" 
-              :class="`
-                px-2 cursor-pointer 
-                ${plot.seriesIndex === 0 ? 'mt-[90px] -ml-2' : ''}
-                ${plot.seriesIndex === 1 ? 'mt-2 -ml-2' : ''}
-                ${plot.seriesIndex === 2 ? '-mt-8' : ''}
-                ${plot.seriesIndex === 3 ? 'mt-2 -mr-2' : ''}
-                ${plot.seriesIndex === 4 ? 'mt-[90px] -mr-2 leading-3' : ''}
-              `"
-            >
-              {{ plot.comment }}
-            </div>
+        <Suspense>
+          <template #default>
+            <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu">
+              <template #plot-comment="{ plot }">
+                <div 
+                  dir="auto" 
+                  style="pointer-events: all !important;" 
+                  :title="plot.comment" @click="selectMenu({index: plot.seriesIndex})" 
+                  :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" 
+                  :class="`
+                    px-2 cursor-pointer 
+                    ${plot.seriesIndex === 0 ? 'mt-[90px] -ml-2' : ''}
+                    ${plot.seriesIndex === 1 ? 'mt-2 -ml-2' : ''}
+                    ${plot.seriesIndex === 2 ? '-mt-8' : ''}
+                    ${plot.seriesIndex === 3 ? 'mt-2 -mr-2' : ''}
+                    ${plot.seriesIndex === 4 ? 'mt-[90px] -mr-2 leading-3' : ''}
+                  `"
+                >
+                  {{ plot.comment }}
+                </div>
+              </template>
+            </VueUiDonut>
           </template>
-        </VueUiDonut>        
-      </SuspenseWrapper>
-
+          <template #fallback>
+            <BaseSpinner />
+          </template>
+        </Suspense>
         <div class="home-perspective-wrapper flex flex-col gap-6 sm:gap-12 max-w-[500px] place-items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20px] pointer-events-none"> 
             <div class="relative z-10 home-perspective" :style="`transform: rotateY(${deviationY * 30}deg) rotateX(${-deviationX * 20}deg);`">
                 <img data-cy="app-logo" src="../assets/logo.png" alt="vue data ui logo" class="h-[48px] mx-auto drop-shadow-xl logo-shape mt-2 ml-1">
