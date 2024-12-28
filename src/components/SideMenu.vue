@@ -699,8 +699,9 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-gizmo', componentName: 'Gizmo', icon: 'battery' },
             { route: '/docs#vue-ui-quick-chart', componentName: 'QuickChart', icon: 'vueDataUi' },
             { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' },
-            { route: '/docs#vue-ui-bullet', componentName: 'Bullet', icon: 'chartBullet' }
+            { route: '/docs#vue-ui-bullet', componentName: 'Bullet', icon: 'chartBullet' },
         ],
+        icon: 'chartSparkline'
     },
     {
         title: translations.value.sideMenu.lineAndBars[store.lang],
@@ -717,7 +718,8 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-donut-evolution', componentName: 'DonutEvolution', icon: 'chartDonutEvolution' },
             {route: '/docs#vue-ui-funnel', componentName: 'Funnel', icon: 'chartFunnel' },
             {route: '/docs#vue-ui-history-plot', componentName: 'HistoryPlot', icon: 'chartHistoryPlot' },
-        ]
+        ],
+        icon: 'chartLine'
     },
     {
         title: translations.value.sideMenu.donuts[store.lang],
@@ -731,7 +733,8 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-galaxy', componentName: 'Galaxy', icon: 'chartGalaxy' },
             {route: '/docs#vue-ui-donut-evolution', componentName: 'DonutEvolution', icon: 'chartDonutEvolution' },
             {route: '/docs#vue-ui-chestnut', componentName: 'Chestnut', icon: 'chartChestnut' },
-        ]
+        ],
+        icon: 'chartDonut'
     },
     {
         title: translations.value.sideMenu.gauges[store.lang],
@@ -743,21 +746,24 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-tiremarks', componentName: 'Tiremarks', icon: 'chartTiremarks' },
             {route: '/docs#vue-ui-thermometer', componentName: 'Thermometer', icon: 'chartThermometer' },
             { route: '/docs#vue-ui-timer', componentName: 'Timer', icon: 'lap'}
-        ]
+        ],
+        icon: 'chartGauge'
     },
     {
         title: translations.value.sideMenu.semantic[store.lang],
         items: [
             {route: '/docs#vue-ui-word-cloud', componentName: 'WordCloud', icon: 'chartWordCloud' },
             {route: '/docs#vue-ui-relation-circle', componentName: 'RelationCircle', icon: 'chartRelationCircle' },
-        ]
+        ],
+        icon: 'chartWordCloud'
     },
     {
         title: translations.value.sideMenu.radars[store.lang],
         items: [
             {route: '/docs#vue-ui-radar', componentName: 'Radar', icon: 'chartRadar' },
             {route: '/docs#vue-ui-mood-radar', componentName: 'MoodRadar', icon: 'chartMoodRadar' },
-        ]
+        ],
+        icon: 'chartRadar'
     },
     {
         title: translations.value.sideMenu.misc[store.lang],
@@ -767,15 +773,16 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-scatter', componentName: 'Scatter', icon: 'chartScatter' },
             {route: '/docs#vue-ui-molecule', componentName: 'Molecule', icon: 'chartCluster' },
             {route: '/docs#vue-ui-strip-plot', componentName: 'StripPlot', icon: 'chartStripPlot' },
-            {route: '/docs#vue-ui-dumbbell', componentName: 'Dumbbell', icon: 'chartDumbbell' },
-            
-        ]
+            {route: '/docs#vue-ui-dumbbell', componentName: 'Dumbbell', icon: 'chartDumbbell' },   
+        ],
+        icon: 'chartScatter'
     },
     {
         title: translations.value.sideMenu.charts3d[store.lang],
         items: [
             { route: '/docs#vue-ui-3d-bar', componentName: '3dBar', icon: 'chart3dBar' }
-        ]
+        ],
+        icon:  'chart3dBar'
     },
     {
         title: translations.value.sideMenu.tables[store.lang],
@@ -784,14 +791,16 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-table-heatmap', componentName: 'TableHeatmap', icon: 'chartTable' },
             { route: '/docs#vue-ui-table', componentName: 'Table', icon: 'chartTable' },
             { route: '/docs#vue-ui-carousel-table', componentName: 'CarouselTable', icon: 'carouselTable' },
-        ]
+        ],
+        icon: 'chartTable'
     },
     {
         title: translations.value.sideMenu.rating[store.lang],
         items: [
             { route: '/docs#vue-ui-rating', componentName: 'Rating', icon: 'star' },
             { route: '/docs#vue-ui-smiley', componentName: 'Smiley', icon: 'smiley' },
-        ]
+        ],
+        icon: 'starFill'
     },
     {
         title: translations.value.sideMenu.utilities[store.lang],
@@ -807,7 +816,8 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-mini-loader', componentName: 'MiniLoader', icon: 'chartWheel' },
             { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' },
             { route: '/docs#utility-functions', componentName: translations.value.utilityFunctions[store.lang], icon: 'func' },
-        ]
+        ],
+        icon: 'func'
     },
 ]
 });
@@ -841,6 +851,7 @@ const sideMenuItems = computed(() => {
                 :open="menu.items.some(item => item.route === router.currentRoute.value.fullPath)"
                 :title="menu.title"
                 :items="menu.items"
+                :icon="menu.icon"
                 @close="closeIfOpen"
             />
         </div>
