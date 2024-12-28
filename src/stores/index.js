@@ -23,15 +23,15 @@ export const useMainStore = defineStore("main", {
             },
             hints: {
                 pin: {
-                    en: "Pin the chart to the left so you can visualize configuration changes when you scroll.",
-                    fr: "Épinglez le graphique à gauche afin de pouvoir visualiser les modifications de configuration lorsque vous faites défiler.",
-                    pt: "Fixe o gráfico à esquerda para poder visualizar as alterações de configuração ao rolar.",
-                    de: "Fixieren Sie das Diagramm auf der linken Seite, damit Sie Konfigurationsänderungen beim Scrollen visualisieren können.",
-                    zh: "将图表固定在左侧，以便您在滚动时可以直观地看到配置更改。",
-                    jp: "グラフを左側に固定すると、スクロール時に構成の変更を視覚化できます。",
-                    es: "Fije el gráfico a la izquierda para que pueda visualizar los cambios de configuración cuando se desplaza.",
-                    ko: "스크롤할 때 구성 변경 사항을 시각화할 수 있도록 차트를 왼쪽에 고정합니다.",
-                    ar: "ثبت المخطط إلى اليسار حتى تتمكن من رؤية التغييرات في الإعدادات أثناء التمرير."
+                    en: "Pin the chart so you can visualize configuration changes when you scroll.",
+                    fr: "Épinglez le graphique pour visualiser les modifications de configuration lors du défilement.",
+                    pt: "Fixe o gráfico para visualizar as alterações de configuração ao rolar.",
+                    de: "Fixieren Sie das Diagramm, um Konfigurationsänderungen beim Scrollen zu sehen.",
+                    zh: "固定图表，以便在滚动时查看配置更改。",
+                    jp: "グラフを固定して、スクロール時に設定変更を視覚化できます。",
+                    es: "Fija el gráfico para visualizar los cambios de configuración al desplazarte.",
+                    ko: "스크롤 시 구성 변경 사항을 시각화할 수 있도록 차트를 고정하세요.",
+                    ar: "ثبّت المخطط لتتمكن من تصور تغييرات التكوين عند التمرير."
                 }
             },
             lang: "en",
