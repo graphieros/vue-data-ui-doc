@@ -3,12 +3,15 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import useMobile from "../useMobile";
 import BaseSpinner from "./BaseSpinner.vue";
-import { PinnedOffIcon, PinIcon } from "vue-tabler-icons";
+import { PinnedOffIcon, PinIcon, CopyIcon } from "vue-tabler-icons";
+import FlexibleTooltip from "./FlexibleTooltip.vue";
+import IconSettings from "./IconSettings.vue";
 
 const store = useMainStore();
 const { isMobile } = useMobile();
 const translations = computed(() => store.translations);
 const hintPin = computed(() => store.hints.pin);
+const isDarkMode = computed(() => store.isDarkMode);
 
 const props = defineProps({
     disabled: {
@@ -39,9 +42,23 @@ const emit = defineEmits(['resetDefault', 'copyToClipboard', 'fixChart']);
                     </div>
                 </div>
             </button>
-            <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                <button @click="emit('resetDefault')" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
-                <button @click="emit('copyToClipboard')" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
+            <div class="flex flex-row gap-3 place-items-center justify-center mb-4" v-if="isFixed">
+                <FlexibleTooltip position="bottom" :content="translations.docs.reset[store.lang]">
+                    <button 
+                        @click="emit('resetDefault')"
+                        class="h-[36px] w-[36px] border border-app-orange flex place-items-center justify-center rounded bg-[#ff660040] hover:bg-[#ff660090] transition-colors relative"
+                    >
+                        <VueUiIcon name="restart" :stroke="isDarkMode ? '#CCCCCC' : '#2A2A2A'"/>
+                    </button>
+                </FlexibleTooltip>
+                <FlexibleTooltip position="bottom" :content="translations.docs.copyThisConfig[store.lang]" width="min-w-[140px]">
+                    <button 
+                        @click="emit('copyToClipboard')"
+                        class="h-[36px] w-[36px] border border-app-blue flex place-items-center justify-center rounded bg-[#5f8bee40] hover:bg-[#5f8bee90] transition-colors relative"
+                    >
+                        <CopyIcon class="text-[#2A2A2A] dark:text-[#CCCCCC]" />
+                    </button>
+                </FlexibleTooltip>
             </div>
         </template>
 
