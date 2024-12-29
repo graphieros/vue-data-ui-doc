@@ -11,6 +11,10 @@ const props = defineProps({
     snapOnLoad: {
         type: Boolean,
         default:false,
+    },
+    backgroundColor: {
+        type: String,
+        default: 'bg-white dark:bg-[#2A2A2A]'
     }
 });
 
@@ -111,7 +115,7 @@ onUnmounted(() => {
 
 <template>
     <div ref="draggableElement"
-        class="hidden min-w-[300px] sm:block fixed left-0 bg-gradient-to-br bg-white dark:bg-[#2A2A2A] p-4 pt-12 rounded cursor-move select-none py-6"
+        :class="`hidden min-w-[300px] sm:block fixed left-0 ${backgroundColor} p-4 pt-12 rounded cursor-move select-none py-6`"
         style="box-shadow: 0 6px 12px rgba(0,0,0,0.5); z-index: 1000"
         @mousedown="startDrag" @touchstart="startDrag">
         <GripHorizontalIcon class="absolute top-3 left-1/2 -translate-x-1/2" size="20"/>
