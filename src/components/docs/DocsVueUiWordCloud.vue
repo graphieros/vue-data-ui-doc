@@ -1,14 +1,13 @@
 <script setup>
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
 import ThemesVueUiWordCloud from "../themes/ThemesVueUiWordCloud.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
-import BaseSpinner from "../BaseSpinner.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
@@ -23,7 +22,6 @@ const mainConfig = useConfig()
 
 const store = useMainStore();
 const key = ref(0);
-const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
 
 onMounted(() => store.docSnap = false);
@@ -40,13 +38,13 @@ const isDarkMode = computed(() => {
 })
 
 function makeColors({ colorStart, iterations, force }) {
-  let color = colorStart;
-  const arr = [colorStart];
-  for (let i = 0; i < iterations; i += 1) {
-    color = shiftHue(color, force);
-    arr.push(color)
-  }
-  return arr;
+    let color = colorStart;
+    const arr = [colorStart];
+    for (let i = 0; i < iterations; i += 1) {
+        color = shiftHue(color, force);
+        arr.push(color)
+    }
+    return arr;
 }
 
 // This could be a textarea

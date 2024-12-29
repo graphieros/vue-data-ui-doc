@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
@@ -12,7 +12,6 @@ const mainConfig = useConfig()
 
 const store = useMainStore();
 const key = ref(0);
-const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
 
 onMounted(() => store.docSnap = false);
@@ -29,31 +28,31 @@ const isDarkMode = computed(() => {
 })
 
 const config = ref({
-  type: "onion",
-  onion: {
-    gutterColor: "#CCCCCC",
-    gutterOpacity: 0.3,
-    gutterBlur: 0,
-    trackHueRotate: 360,
-    trackBlur: 1,
-    trackColor: "#42d392"
-  },
-  line: {
-    gutterColor: "#CCCCCC",
-    gutterOpacity: 0.3,
-    gutterBlur: 0,
-    trackHueRotate: 360,
-    trackBlur: 1,
-    trackColor: "#42d392"
-  },
-  bar: {
-    gutterColor: "#CCCCCC",
-    gutterOpacity: 0.3,
-    gutterBlur: 0,
-    trackHueRotate: 360,
-    trackBlur: 1,
-    trackColor: "#42d392"
-  }
+    type: "onion",
+    onion: {
+        gutterColor: "#CCCCCC",
+        gutterOpacity: 0.3,
+        gutterBlur: 0,
+        trackHueRotate: 360,
+        trackBlur: 1,
+        trackColor: "#42d392"
+    },
+    line: {
+        gutterColor: "#CCCCCC",
+        gutterOpacity: 0.3,
+        gutterBlur: 0,
+        trackHueRotate: 360,
+        trackBlur: 1,
+        trackColor: "#42d392"
+    },
+    bar: {
+        gutterColor: "#CCCCCC",
+        gutterOpacity: 0.3,
+        gutterBlur: 0,
+        trackHueRotate: 360,
+        trackBlur: 1,
+        trackColor: "#42d392"
+    }
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));

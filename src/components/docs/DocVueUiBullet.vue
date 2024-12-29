@@ -1,11 +1,10 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDetails from "../BaseDetails.vue";
-import BaseSpinner from "../BaseSpinner.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
@@ -19,7 +18,6 @@ import DocSnapper from "../DocSnapper.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
-const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
 const isDarkMode = computed(() => store.isDarkMode);
 

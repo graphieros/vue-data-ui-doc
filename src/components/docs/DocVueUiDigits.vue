@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons";
+import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
@@ -12,7 +12,6 @@ const mainConfig = useConfig()
 
 const store = useMainStore();
 const key = ref(0);
-const hintPin = computed(() => store.hints.pin);
 const translations = computed(() => store.translations);
 
 onMounted(() => store.docSnap = false);
