@@ -1510,7 +1510,7 @@ const stackbarKey = ref(0);
                 snap-on-resize 
                 snap-on-load 
                 v-show="store.docSnap && router.currentRoute.value.fullPath.includes('/docs#vue')"
-                backgroundColor="bg-[#f3f4f6] dark:bg-[#2A2A2A] border border-white dark:border-[#3A3A3A]"
+                backgroundColor="bg-[#f3f4f6] dark:bg-[#1A1A1A] border border-white dark:border-[#3A3A3A]"
             >
                 <div id="docSnap" class="max-w-[300px] max-h-[800px] overflow-hidden"/>
             </BaseDragElement>
