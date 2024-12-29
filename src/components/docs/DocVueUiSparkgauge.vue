@@ -14,6 +14,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseRandomButton from "../BaseRandomButton.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
+import DocSnapper from "../DocSnapper.vue";
 
 const mainConfig = useConfig()
 
@@ -208,60 +209,23 @@ function randomizeData() {
             :configSource="mainConfig.vue_ui_sparkgauge"
         />
 
-        <button v-if="!isFixed" @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-            <div class="relative overflow-visible">
-                    <PinIcon class="peer overflow-visible"/>
-                    <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
-                        {{ hintPin[store.lang] }}
-                    </div>
-                </div>
-                </button>
-        <div class="w-3/4 mx-auto flex flex-row gap-2">
+        <div class="w-3/4 mx-auto flex flex-row gap-2 max-w-[400px]">
             
             <div :class="`transition-all mx-auto`">
-                <Teleport to="#docSnap" :disabled="!isFixed || isMobile">
-                    <template v-if="!isMobile">
-                        <button v-if="isFixed" @click="fixChart" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                            <PinnedOffIcon/>
-                        </button>
-                        <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                            <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{ translations.docs.reset[store.lang] }}</button>
-                            <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
-                        </div>
-                    </template>
+                <DocSnapper
+                    :isFixed="isFixed"
+                    :disabled="!isFixed || isMobile"
+                    @fixChart="fixChart"
+                    @resetDefault="resetDefault"
+                    @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+                >
                     <div class="flex flex-row gap-4">
-                        <div class="w-[100px]">
-                            <Suspense>
-                                <template #default>
-                                    <VueUiSparkgauge :dataset="dataset1" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
-                                </template>
-                                <template #fallback>
-                                    <BaseSpinner/>
-                                </template>
-                            </Suspense>
-                        </div>
-                        <div class="w-[100px]">
-                            <Suspense>
-                                <template #default>
-                                    <VueUiSparkgauge :dataset="dataset2" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
-                                </template>
-                                <template #fallback>
-                                    <div class="min-h-[100px]"></div>
-                                </template>
-                            </Suspense>
-                        </div>
-                        <div class="w-[100px]">
-                            <Suspense>
-                                <template #default>
-                                    <VueUiSparkgauge :dataset="dataset3" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
-                                </template>
-                                <template #fallback>
-                                    <div class="min-h-[100px]"></div>
-                                </template>
-                            </Suspense>
-                        </div>
+                        <VueUiSparkgauge :dataset="dataset1" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                        <VueUiSparkgauge :dataset="dataset2" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                        <VueUiSparkgauge :dataset="dataset3" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
                     </div>
-                </Teleport>
+                </DocSnapper>
+
                 <BaseRandomButton @click="randomizeData"/>
             </div>
         </div>

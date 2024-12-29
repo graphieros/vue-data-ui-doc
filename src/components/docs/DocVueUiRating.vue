@@ -11,6 +11,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import useMobile from "../../useMobile";
+import DocSnapper from "../DocSnapper.vue";
 
 const mainConfig = useConfig()
 
@@ -247,53 +248,34 @@ const { configCode, showAllConfig } = useConfigCode()
         <BaseDocHeaderActions targetLink="vue-ui-rating" :configSource="mainConfig.vue_ui_rating" />
 
         
-        <div
-        :class="`transition-all mx-auto w-fit`">
-        <Teleport to="#docSnap" :disabled="!isFixed || isMobile">
-            <div class="flex flex-row gap-6 justify-center mt-6">
-                <div class="flex flex-row gap-1">
-                    <input type="radio" id="r-read" name="r-readonly" value="readonly" v-model="mode"
-                        class="accent-app-green" @change="setReadonly(true)">
-                    <label for="r-read">{{ translations.docs.comments.rating.readonly[store.lang] }}</label>
-                </div>
-                <div class="flex flex-row gap-1">
-                    <input type="radio" id="r-act" name="r-readonly" value="active" v-model="mode" class="accent-app-green"
-                        @change="setReadonly(false)">
-                    <label for="r-act">{{ translations.docs.comments.rating.active[store.lang] }}</label>
-                </div>
-            </div>
-                <template v-if="!isMobile">
-                    <button @click="fixChart"
-                        class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                        <PinnedOffIcon v-if="isFixed" />
-                        <div v-else class="relative overflow-visible">
-                            <PinIcon class="peer overflow-visible" />
-                            <div
-                                class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
-                                {{ hintPin[store.lang] }}
-                            </div>
-                        </div>
-                    </button>
-                    <div class="flex flex-col mb-6 gap-2" v-if="isFixed">
-                        <button @click="resetDefault"
-                            class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:shadow-xl hover:bg-white dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mx-6">{{
-                        translations.docs.reset[store.lang] }}</button>
-                        <button @click="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-                            class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 mx-6 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue">
-                            <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
-                        </button>
+        <div :class="`transition-all mx-auto w-[200px]`">
+            <DocSnapper
+                :isFixed="isFixed"
+                :disabled="!isFixed || isMobile"
+                @fixChart="fixChart"
+                @resetDefault="resetDefault"
+                @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+            >
+                <div class="flex flex-row gap-6 justify-center my-4">
+                    <div class="flex flex-row gap-1">
+                        <input type="radio" id="r-read" name="r-readonly" value="readonly" v-model="mode"
+                            class="accent-app-green" @change="setReadonly(true)">
+                        <label for="r-read">{{ translations.docs.comments.rating.readonly[store.lang] }}</label>
                     </div>
-                </template>
-                <Suspense>
-                    <template #default>
-                        <VueUiRating ref="rating" :dataset="dataset"
-                            :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" @rate="showRating" />
-                    </template>
-                    <template #fallback>
-                        <BaseSpinner />
-                    </template>
-                </Suspense>
-            </Teleport>
+                    <div class="flex flex-row gap-1">
+                        <input type="radio" id="r-act" name="r-readonly" value="active" v-model="mode" class="accent-app-green"
+                            @change="setReadonly(false)">
+                        <label for="r-act">{{ translations.docs.comments.rating.active[store.lang] }}</label>
+                    </div>
+                </div>
+                <VueUiRating 
+                    ref="rating" 
+                    :dataset="dataset"
+                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
+                    :key="key" 
+                    @rate="showRating" 
+                />
+            </DocSnapper>
         </div>
 
         <Box showEmits>
