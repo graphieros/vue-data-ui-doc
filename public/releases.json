@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.58",
+    "date": "2024-12-29",
+    "updates": [
+      {
+        "component": "VueUiGauge",
+        "description": "Always start animation from the smallest from value",
+        "link": "/docs#vue-ui-gauge"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.57",
     "date": "2024-12-27",
     "updates": [
