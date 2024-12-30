@@ -425,6 +425,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
                         'svg',
                         'watermark',
                         'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

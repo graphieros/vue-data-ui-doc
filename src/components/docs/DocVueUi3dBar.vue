@@ -695,7 +695,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                     :types="[
                         'svg',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

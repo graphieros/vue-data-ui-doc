@@ -739,7 +739,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDumbbellDataset
                         'svg',
                         'legend',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

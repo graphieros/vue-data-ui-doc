@@ -330,7 +330,8 @@ function randomizeData() {
                 <BaseSlotDocumenter
                     componentName="VueUiSparkgauge"
                     :types="[
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

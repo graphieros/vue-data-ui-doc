@@ -705,7 +705,8 @@ const <span class="text-black dark:text-app-green">dataset: Array&lt;Array&lt;st
                         'tooltip-after',
                         'reset-action',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

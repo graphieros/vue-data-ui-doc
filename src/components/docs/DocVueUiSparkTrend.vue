@@ -316,7 +316,8 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
                 <BaseSlotDocumenter
                     componentName="VueUiSparkTrend"
                     :types="[
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

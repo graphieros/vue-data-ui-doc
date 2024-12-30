@@ -411,6 +411,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                         'svg',
                         'watermark',
                         'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

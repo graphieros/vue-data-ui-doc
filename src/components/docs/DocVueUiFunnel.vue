@@ -675,7 +675,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiFunnelDatasetIt
                     :types="[
                         'svg',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

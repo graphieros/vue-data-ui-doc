@@ -1262,7 +1262,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiChestnutDataset
                       'svg',
                       'legend',
                       'watermark',
-                      'source'
+                      'source',
+                      'chart-background'
                   ]" 
               />
             </template>

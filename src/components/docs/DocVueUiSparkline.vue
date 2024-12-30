@@ -542,7 +542,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
                     :types="[
                         'svg',
                         'before',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

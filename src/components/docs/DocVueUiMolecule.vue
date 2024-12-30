@@ -846,7 +846,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiMoleculeDataset
                         'tooltip-before',
                         'tooltip-after',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

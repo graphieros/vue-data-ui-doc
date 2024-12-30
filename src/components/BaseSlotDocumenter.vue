@@ -33,6 +33,17 @@ const items = computed(() => {
     </${props.componentName}>
             `
         },
+        {
+            names: ['chart-background'],
+            description: translations.value.slots.chartBackground[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #chart-background>
+            <div :style="{ width: '100%', height: '100%', background: 'radial-gradient(at top left, red, white)'}"/>
+        </template>
+    </${props.componentName}>
+            `
+        },
         { 
             names: ['legend'], 
             description: translations.value.slots.legendDetail[store.lang],

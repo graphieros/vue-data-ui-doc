@@ -82,14 +82,29 @@ export default function useExamples() {
         12, 10, 9, 11, 7, 4, 10, 11, 8, 9, 7, 19, 27, 25, 32, 29, 37, 48, 52, 51, 60
     ]);
 
+    const BG_SET = ref([
+        12, 25, 16, 24, 28, 44, 32, 19, 65, 67, 55, 34, 32, 67, 89
+    ])
+
     const DATASET_XY_BASIC_LINE = ref([
         {
             name: 'Serie 1',
             type: 'line',
             dataLabels: true,
-            series: LINESET
+            series: LINESET,
         }
     ]);
+
+    const DATASET_XY_BACKGROUND = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            dataLabels: false,
+            series: BG_SET,
+            color: 'white',
+            useArea: true
+        }
+    ])
 
     const raf = ref(null);
     const to = ref(null);
@@ -2850,6 +2865,48 @@ export default function useExamples() {
                     es: 'Con un comentario de punto de datos individual',
                     ko: '개별 데이터 포인트에 대한 주석 포함',
                     ar: 'مع تعليق على نقطة بيانات فردية'
+                }
+            },
+            // XY CUSTOM BACKGROUND
+            { 
+                dataset: DATASET_XY_BACKGROUND.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        highlightArea: {
+                            show: false,
+                        },
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            position: 'start',
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: 0,
+                                    scaleMax: 100
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'basic-bar',
+                link: 'vue-ui-xy',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // XY INDIVIDUAL SCALE

@@ -558,7 +558,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiFlowDatasetItem
                     :types="[
                         'svg',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.4.59",
+    "date": "2024-12-30",
+    "updates": [
+      {
+        "component": "Most components",
+        "description": "Add #chart-background slot to customize the chart background"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.58",
     "date": "2024-12-29",
     "updates": [

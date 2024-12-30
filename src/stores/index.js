@@ -747,6 +747,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    chartBackground: {
+                        en: "Use this slot to customize the chart background (gradient, image, etc).",
+                        fr: "Utilisez cet emplacement pour personnaliser l'arrière-plan du graphique (dégradé, image, etc.).",
+                        pt: "Use este slot para personalizar o fundo do gráfico (gradiente, imagem, etc.).",
+                        de: "Verwenden Sie diesen Slot, um den Hintergrund des Diagramms anzupassen (Verlauf, Bild usw.).",
+                        zh: "使用此插槽自定义图表背景（渐变、图像等）。",
+                        jp: "このスロットを使用して、グラフの背景（グラデーション、画像など）をカスタマイズします。",
+                        es: "Usa este slot para personalizar el fondo del gráfico (degradado, imagen, etc.).",
+                        ko: "이 슬롯을 사용하여 차트 배경(그라데이션, 이미지 등)을 사용자 정의하세요.",
+                        ar: "استخدم هذه الفتحة لتخصيص خلفية المخطط (التدرج، الصورة، إلخ)."
+                    },
                     hideLegend: {
                         en: "Set legend.show to false in your config to hide default legend",
                         fr: "Définissez legend.show sur false dans votre configuration pour masquer la légende par défaut",

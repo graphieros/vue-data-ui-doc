@@ -790,6 +790,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiOnionDatasetIte
                         'tooltip-after',
                         'watermark',
                         'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

@@ -886,7 +886,8 @@ const { configCode, showAllConfig } = useConfigCode()
                         'tooltip-before',
                         'tooltip-after',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

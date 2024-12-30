@@ -589,7 +589,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkHistogramD
               <BaseSlotDocumenter
                     componentName="VueUiSparkHistogram"
                     :types="[
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

@@ -618,6 +618,7 @@ const { configCode, showAllConfig } = useConfigCode()
                         'reset-action',
                         'watermark',
                         'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

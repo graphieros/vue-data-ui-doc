@@ -603,7 +603,8 @@ const { configCode, showAllConfig } = useConfigCode()
                         'svg',
                         'legend',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

@@ -426,9 +426,9 @@ const { configCode, showAllConfig } = useConfigCode()
 <code>
 &lt;template&gt;
     &lt;VueUiTimer :config="config"&gt;
-        &lt;template #controls="{ start, pause, reset, restart, lap, laps, isRunning, isPaused, timestamp, elapsed, formatted }"&lt;
+        &lt;template #controls="{ start, pause, reset, restart, lap, laps, isRunning, isPaused, timestamp, elapsed, formatted }"&gt;
             <span class="text-gray-500">&lt;!-- Make your own menu --&gt;</span>
-        &lt;/template&lt;
+        &lt;/template&gt;
     &lt;/VueUiTimer&gt;
 &lt;/template&gt;
 </code>
@@ -439,9 +439,9 @@ const { configCode, showAllConfig } = useConfigCode()
 <code>
 &lt;template&gt;
     &lt;VueUiTimer :config="config"&gt;
-        &lt;template #laps="{ laps, lap, isRunning, isPaused, timestamp, elapsed, formatted }"&lt;
+        &lt;template #laps="{ laps, lap, isRunning, isPaused, timestamp, elapsed, formatted }"&gt;
             <span class="text-gray-500">&lt;!-- Show a stack of laps --&gt;</span>
-        &lt;/template&lt;
+        &lt;/template&gt;
     &lt;/VueUiTimer&gt;
 &lt;/template&gt;
 </code>
@@ -452,9 +452,22 @@ const { configCode, showAllConfig } = useConfigCode()
 <code>
 &lt;template&gt;
     &lt;VueUiTimer :config="config"&gt;
-        &lt;template #time="{ timestamp, elapsed, formatted }"&lt;
+        &lt;template #time="{ timestamp, elapsed, formatted }"&gt;
             <span class="text-gray-500">&lt;!-- Format your own time label --&gt;</span>
-        &lt;/template&lt;
+        &lt;/template&gt;
+    &lt;/VueUiTimer&gt;
+&lt;/template&gt;
+</code>
+
+</pre>                
+<div class="text-xl border-t border-gray-500 pt-4">#chart-background</div>   
+<pre>
+<code>
+&lt;template&gt;
+    &lt;VueUiTimer :config="config"&gt;
+        &lt;template #chart-background&gt;
+            &lt;div :style="{ width: '100%', height: '100%', background: 'radial-gradient(at top left, red, white)' }" /&gt;
+        &lt;/template&gt;
     &lt;/VueUiTimer&gt;
 &lt;/template&gt;
 </code>

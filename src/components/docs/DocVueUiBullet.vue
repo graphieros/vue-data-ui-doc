@@ -613,7 +613,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiBulletDataset</
                         'svg',
                         'legend',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

@@ -1366,7 +1366,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                         'time-label',
                         'watermark',
                         'source',
-                        'plot-comment'
+                        'plot-comment',
+                        'chart-background'
                     ]" 
                 />
             </template>

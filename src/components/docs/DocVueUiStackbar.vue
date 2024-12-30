@@ -1018,7 +1018,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                         'tooltip-after',
                         'time-label',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

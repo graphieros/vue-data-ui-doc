@@ -627,6 +627,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                         'legend',
                         'watermark',
                         'source',
+                        'chart-background'
                     ]" 
                 />
             </template>

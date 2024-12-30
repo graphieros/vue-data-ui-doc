@@ -419,6 +419,14 @@ const hoveredLink = ref(null);
                                         {{ plot.comment }}
                                     </div>
                                 </template>
+                                <template #chart-background v-if="example.chartBackground">
+                                    <div v-if="isDarkMode" :style="{ height: '100%', width: '100%' }">
+                                        <img src="../assets/slot_chart_background.png" class="w-full object-cover h-full">
+                                    </div>
+                                    <div v-else :style="{ height: '100%', width: '100%' }">
+                                        <img src="../assets/slot_chart_background_light.png" class="w-full object-cover h-full">
+                                    </div>
+                                </template>
                             </VueDataUi>
                         </div>
                     </template>

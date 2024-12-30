@@ -901,7 +901,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStripPlotDatase
                         'tooltip-before',
                         'tooltip-after',
                         'watermark',
-                        'source'
+                        'source',
+                        'chart-background'
                     ]" 
                 />
             </template>
