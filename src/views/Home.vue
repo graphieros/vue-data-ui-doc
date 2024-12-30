@@ -234,12 +234,15 @@ const configDonutMenu = computed(() => {
                         show: false,
                       },
                       percentage: {
+                          formatter: ({ config} ) => {
+                            return ''
+                          },
                           color: isDarkMode.value ? '#7A7A7A': '#AAAAAA',
                           bold: false
                       },
                       name: {
                           color: isDarkMode.value ? '#C1C1C1': '#1A1A1A',
-                          fontSize: 14,
+                          fontSize: 0,
                           bold: true
                       },
                       hollow: {
@@ -383,13 +386,14 @@ const specialOccasion = computed(() => {
                   :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" 
                   :class="`
                     px-2 cursor-pointer 
-                    ${plot.seriesIndex === 0 ? 'mt-[90px] -ml-2' : ''}
-                    ${plot.seriesIndex === 1 ? 'mt-2 -ml-2' : ''}
-                    ${plot.seriesIndex === 2 ? '-mt-8' : ''}
-                    ${plot.seriesIndex === 3 ? 'mt-2 -mr-2' : ''}
-                    ${plot.seriesIndex === 4 ? 'mt-[90px] -mr-2 leading-3' : ''}
+                    ${plot.seriesIndex === 0 ? 'mt-[50px] -ml-2' : ''}
+                    ${plot.seriesIndex === 1 ? '-mt-[50px] -ml-2' : ''}
+                    ${plot.seriesIndex === 2 ? '-mt-[64px]' : ''}
+                    ${plot.seriesIndex === 3 ? '-mt-[50px] -mr-2' : ''}
+                    ${plot.seriesIndex === 4 ? 'mt-[32px] -mr-2 leading-3' : ''}
                   `"
                 >
+                  <div :class="`text-[#1A1A1A] dark:text-[#CCCCCC] text-[12px] sm:text-[16px] ${plot.seriesIndex === 4 ? 'pb-2' : ''}`">{{ plot.name }}</div>
                   {{ plot.comment }}
                 </div>
               </template>
