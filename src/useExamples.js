@@ -2203,6 +2203,33 @@ export default function useExamples() {
         ]
     })
 
+    const DATASET_BULLET_BACKGROUND = computed(() => {
+        return {
+            value: 80,
+            target: 75,
+            segments: [
+                {
+                    name: 'Low',
+                    from: 0,
+                    to: 50,
+                    color: isDarkMode.value ? '#FFFFFF40' : '#1A1A1A10'
+                },
+                {
+                    name: 'Medium',
+                    from: 50,
+                    to: 70,
+                    color: isDarkMode.value ? '#FFFFFF60' : '#1A1A1A20'
+                },
+                {
+                    name: 'High',
+                    from: 70,
+                    to: 100,
+                    color: isDarkMode.value ? '#FFFFFF80' : '#1A1A1A40'
+                },
+            ]
+        }
+    })
+
     const DATASET_BULLET_COLORS = ref({
         value: 80,
         target: 75,
@@ -2893,7 +2920,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiXy',
                 icon: 'chartLine',
-                id: 'basic-bar',
+                id: 'xy-background',
                 link: 'vue-ui-xy',
                 chartBackground: true,
                 tags: ['#chart-background'],
@@ -3560,6 +3587,50 @@ export default function useExamples() {
                     ar: 'مخطط دائري مع ظل'
                 }
             },
+            // DONUT BACKGROUND
+            // {
+            //     dataset: DATASET_DONUT_BASIC.value,
+            //     config: {
+            //         ...CONFIG_DONUT_BASE.value,
+            //         style: {
+            //             ...CONFIG_DONUT_BASE.value.style,
+            //             chart: {
+            //                 ...CONFIG_DONUT_BASE.value.style.chart,
+            //                 layout: {
+            //                     ...CONFIG_DONUT_BASE.value.style.chart.layout,
+            //                     donut: {
+            //                         ...CONFIG_DONUT_BASE.value.style.chart.layout.donut,
+            //                         useShadow: false,
+            //                     },
+            //                     labels: {
+            //                         ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+            //                         hollow: {
+            //                             show: false,
+            //                             average: { show: false },
+            //                             total: { show: false },
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     },
+            //     chartBackground: true,
+            //     component: 'VueUiDonut',
+            //     icon: 'chartDonut',
+            //     id: 'donut-bg',
+            //     link: 'vue-ui-donut',
+            //     description: {
+            //         en: 'With shadow',
+            //         fr: 'Avec ombre',
+            //         pt: 'Com sombra',
+            //         de: 'Mit Schatten',
+            //         zh: '带阴影',
+            //         jp: '影付き',
+            //         es: 'Con sombra',
+            //         ko: '그림자 포함',
+            //         ar: 'مع ظل'
+            //     }
+            // },
             // SPARKLINE BASIX
             {
                 dataset: DATASET_SPARKLINE.value,
@@ -3728,6 +3799,37 @@ export default function useExamples() {
                     es: 'Barras redondeadas',
                     ko: '둥근 막대',
                     ar: 'أعمدة مستديرة'
+                }
+            },
+            // SPARKLINE BACKGROUND
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: {
+                    ...CONFIG_SPARKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_SPARKLINE_BASE.value.style,
+                        line: {
+                            ...CONFIG_SPARKLINE_BASE.value.style.line,
+                            color: isDarkMode.value ? 'white' : 'black'
+                        }
+                    }
+                },
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-background',
+                chartBackground: true,
+                link: 'vue-ui-sparkline',
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // STACKBAR BASIC
@@ -3906,6 +4008,28 @@ export default function useExamples() {
                     ar: "بدون فجوات"
                 }
             },
+            // STACKBAR BACKGROUND
+            { 
+                dataset: DATASET_STACKBAR_BASIC.value, 
+                config: CONFIG_STACKBAR_BASE.value,
+                component: 'VueUiStackbar',
+                icon: 'chartStackbar',
+                id: 'stack-bar-background',
+                link: 'vue-ui-stackbar',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
+                }
+            },
             // NESTED DONUTS BASIC
             { 
                 dataset: DATASET_NESTED_DONUTS_BASIC.value, 
@@ -4074,6 +4198,28 @@ export default function useExamples() {
                     es: 'Desglose en el anillo externo',
                     ko: '외부 링의 분해',
                     ar: 'تفصيل على الحلقة الخارجية'
+                }
+            },
+            // NESTED DONUTS BACKGROUND
+            { 
+                dataset: DATASET_NESTED_DONUTS_BASIC.value, 
+                config: CONFIG_NESTED_DONUTS_BASE.value,
+                component: 'VueUiNestedDonuts',
+                icon: 'chartNestedDonuts',
+                id: 'nested-donuts-background',
+                link: 'vue-ui-nested-donuts',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // WAFFLE BASIC
@@ -4356,6 +4502,28 @@ export default function useExamples() {
                     ar: 'أعمدة أرق، ترتيب عكسي'
                 }
             },
+            // VERTICAL BAR BACKGROUND
+            { 
+                dataset: DATASET_VERTICAL_BAR_BASE.value, 
+                config: CONFIG_VERTICAL_BAR_BASIC.value,
+                component: 'VueUiVerticalBar',
+                icon: 'chartVerticalBar',
+                id: 'vertical-bar-background',
+                link: 'vue-ui-vertical-bar',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
+                }
+            },
             // HEATMAP BASIC
             { 
                 dataset: DATASET_HEATMAP_BASE.value, 
@@ -4435,6 +4603,28 @@ export default function useExamples() {
                     es: 'Con leyenda abajo',
                     ko: '아래에 범례 포함',
                     ar: 'مع وسيلة إيضاح في الأسفل'
+                }
+            },
+            // HEATMAP BACKGROUND
+            { 
+                dataset: DATASET_HEATMAP_BASE.value, 
+                config: CONFIG_HEATMAP_BASIC.value,
+                component: 'VueUiHeatmap',
+                icon: 'chartHeatmap',
+                id: 'heatmap-background',
+                link: 'vue-ui-heatmap',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // GAUGE BASIC
@@ -4698,6 +4888,28 @@ export default function useExamples() {
                     ar: ''
                 }
             },
+            // GAUGE BACKGROUND
+            { 
+                dataset: DATASET_GAUGE_BASIC.value, 
+                config: CONFIG_GAUGE_BASE.value,
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gauge-background',
+                link: 'vue-ui-gauge',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
+                }
+            },
             // ONION BASIC
             { 
                 dataset: DATASET_ONION_BASE.value, 
@@ -4793,6 +5005,43 @@ export default function useExamples() {
                     es: 'Con pistas más delgadas',
                     ko: '더 얇은 트랙으로',
                     ar: 'مع مسارات أرق'
+                }
+            },
+            // ONION BACKGROUND
+            { 
+                dataset: DATASET_ONION_BASE.value, 
+                config: {
+                    ...CONFIG_ONION_BASIC.value,
+                    style: {
+                        ...CONFIG_ONION_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_ONION_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_ONION_BASIC.value.style.chart.layout,
+                                gutter: {
+                                    ...CONFIG_ONION_BASIC.value.style.chart.layout.gutter,
+                                    color: isDarkMode.value ? '#FFFFFF40' : '#FFFFFF60'
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiOnion',
+                icon: 'chartOnion',
+                id: 'onion-background',
+                link: 'vue-ui-onion',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // WORD CLOUD CHINESE
@@ -4900,6 +5149,35 @@ export default function useExamples() {
                     es: "Paleta personalizada con cambio progresivo de tono",
                     ko: "점진적인 색조 변화를 포함한 사용자 정의 팔레트",
                     ar: "لوحة ألوان مخصصة مع انتقال تدريجي في درجات اللون"
+                }
+            },
+            // WORD CLOUD CUSTOM PALETTE BACKGROUND
+            { 
+                dataset: DATASET_WORDCLOUD_CHINESE.value, 
+                config: {
+                    ...CONFIG_WORD_WLOUD_BASIC.value,
+                    customPalette: makeColors({
+                        colorStart: '#FFFFFF',
+                        iterations: 200,
+                        force: 0.0006
+                    })
+                },
+                component: 'VueUiWordCloud',
+                icon: 'chartWordCloud',
+                id: 'word-cloud-chinese-custom-palette-background',
+                link: 'vue-ui-word-cloud',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // SCATTER BASIC
@@ -5254,6 +5532,28 @@ export default function useExamples() {
                     ar: ''
                 }
             },
+            // WHEEL BACKGROUND
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: CONFIG_WHEEL_BASIC.value,
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-background',
+                link: 'vue-ui-wheel',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
+                }
+            },
             // SPARKHISTOGRAM BASIC
             { 
                 dataset: DATASET_SPARKHISTOGRAM_BASE.value, 
@@ -5348,6 +5648,47 @@ export default function useExamples() {
                     ar: "ممتد، بدون نصف قطر الحدود، بدون مسافة بين"
                 }
             },
+            // SPARKHISTOGRAM STRECHED, SDQUARED, NO GAP, BACKGROUND
+            { 
+                dataset: DATASET_SPARKHISTOGRAM_BASE.value, 
+                config: {
+                    ...CONFIG_SPARKHISTOGRAM_BASIC.value,
+                    style: {
+                        ...CONFIG_SPARKHISTOGRAM_BASIC.value.style,
+                        bars: {
+                            ...CONFIG_SPARKHISTOGRAM_BASIC.value.style.bars,
+                            borderRadius: 0,
+                            gap: 1,
+                            colors: {
+                                positive: '#FFFFFF'
+                            }
+                        },
+                        layout: {
+                            height: 300
+                        },
+                        selector: {
+                            stroke: colors.value.orange
+                        }
+                    }
+                },
+                component: 'VueUiSparkHistogram',
+                icon: 'chartSparkHistogram',
+                id: 'sparkhistogram-stretched-background',
+                link: 'vue-ui-sparkhistogram',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
+                }
+            },
             // QUADRANT BASIC
             { 
                 dataset: DATASET_QUADRANT_BASE.value, 
@@ -5400,6 +5741,42 @@ export default function useExamples() {
                     es: "Con algoritmo de envoltura de regalos",
                     ko: "선물 포장 알고리즘 포함",
                     ar: "مع خوارزمية التغليف الهدي"
+                }
+            },
+            // QUADRANT WITH AREAS, BACKGROUND
+            { 
+                dataset: DATASET_QUADRANT_BASE.value, 
+                config: {
+                    ...CONFIG_QUADRANT_BASIC.value,
+                    style: {
+                        ...CONFIG_QUADRANT_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_QUADRANT_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_QUADRANT_BASIC.value.style.chart.layout,
+                                areas: {
+                                    show: true
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiQuadrant',
+                icon: 'chartQuadrant',
+                id: 'quadrant-areas-background',
+                link: 'vue-ui-quadrant',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // RADAR BASIC
@@ -5512,6 +5889,60 @@ export default function useExamples() {
                     es: "Múltiples categorías con polígonos rellenos",
                     ko: "채워진 다각형이 포함된 여러 카테고리",
                     ar: "فئات متعددة مع مضلعات ممتلئة"
+                }
+            },
+            // RADAR FILLED, BACKGROUND
+            { 
+                dataset: {
+                    ...DATASET_RADAR_BASE.value,
+                    categories: DATASET_RADAR_BASE.value.categories.map(c => {
+                        return {
+                            ...c,
+                            color: '#FFFFFF'
+                        }
+                    })
+                }, 
+                config: {
+                    ...CONFIG_RADAR_BASIC.value,
+                    style: {
+                        ...CONFIG_RADAR_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_RADAR_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_RADAR_BASIC.value.style.chart.layout,
+                                grid: {
+                                    ...CONFIG_RADAR_BASIC.value.style.chart.layout.grid,
+                                    stroke: '#FFFFFF'
+                                },
+                                dataPolygon: {
+                                    transparent: false,
+                                    opacity: 70
+                                },
+                                outerPolygon: {
+                                    ...CONFIG_RADAR_BASIC.value.style.chart.layout.outerPolygon,
+                                    stroke: '#FFFFFF'
+                                }
+                            }
+                        }
+                    }
+
+                },
+                component: 'VueUiRadar',
+                icon: 'chartRadar',
+                id: 'radar-filled-background',
+                link: 'vue-ui-radar',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // STRIP PLOT BASIC
@@ -5636,6 +6067,42 @@ export default function useExamples() {
                     es: "Marcadores de puntos de datos con formas geométricas",
                     ko: "기하학적 모양의 데이터 포인트 마커",
                     ar: "علامات نقاط البيانات بأشكال هندسية"
+                }
+            },
+            // STRIP PLOT SHAPES STAR, BACKGROUND
+            { 
+                dataset: DATASET_STRIP_PLOT_BASIC.value, 
+                config: {
+                    ...CONFIG_STRIP_PLOT_BASE.value,
+                    style: {
+                        ...CONFIG_STRIP_PLOT_BASE.value,
+                        chart: {
+                            ...CONFIG_STRIP_PLOT_BASE.value.style.chart,
+                            plots: {
+                                ...CONFIG_STRIP_PLOT_BASE.value.style.chart.plots,
+                                shape: 'star',
+                                radius: 12,
+                                opacity: 1
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiStripPlot',
+                icon: 'chartStripPlot',
+                id: 'strip-plot-star-background',
+                link: 'vue-ui-strip-plot',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // BULLET BASIC
@@ -5786,6 +6253,28 @@ export default function useExamples() {
                     ar: "مع القيم السالبة والموجبة"
                 }
             },
+            // BULLET BASIC, BACKGROUND
+            { 
+                dataset: DATASET_BULLET_BACKGROUND.value, 
+                config: CONFIG_BULLET_BASE.value,
+                component: 'VueUiBullet',
+                icon: 'chartBullet',
+                id: 'bullet-background',
+                link: 'vue-ui-bullet',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
+                }
+            },
             // FUNNEL BASIC
             { 
                 dataset: DATASET_FUNNEL_BASIC.value, 
@@ -5898,6 +6387,56 @@ export default function useExamples() {
                     es: "Compacto",
                     ko: "콤팩트",
                     ar: "مضغوط"
+                }
+            },
+            // FUNNEL BACKGROUND
+            { 
+                dataset: DATASET_FUNNEL_BASIC.value, 
+                config: {
+                    ...CONFIG_FUNNEL_BASIC.value,
+                    style: {
+                        ...CONFIG_FUNNEL_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_FUNNEL_BASIC.value.style.chart,
+                            area: {
+                                ...CONFIG_FUNNEL_BASIC.value.style.chart.area,
+                                color: '#FFFFFF40'
+                            },
+                            circleLinks: {
+                                ...CONFIG_FUNNEL_BASIC.value.style.chart.circleLinks,
+                                color: '#FFFFFF40'
+                            },
+                            bars: {
+                                ...CONFIG_FUNNEL_BASIC.value.style.chart.bars,
+                                dataLabels: {
+                                    ...CONFIG_FUNNEL_BASIC.value.style.chart.bars.dataLabels,
+                                    name: {
+                                        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
+                                    },
+                                    value: {
+                                        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiFunnel',
+                icon: 'chartFunnel',
+                id: 'funnel-background',
+                link: 'vue-ui-funnel',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // TREEMAP BASIC
@@ -6044,6 +6583,28 @@ export default function useExamples() {
                     es: "Con trazo grueso",
                     ko: "두꺼운 경로 포함",
                     ar: "بمسار سميك"
+                }
+            },
+            // BASIC HISTORY PLOT BACKGROUND
+            { 
+                dataset: DATASET_HISTORY_PLOT_BASIC.value, 
+                config: CONFIG_HISTORY_PLOT_BASIC.value,
+                component: 'VueUiHistoryPlot',
+                icon: 'chartHistoryPlot',
+                id: 'history-plot-background',
+                link: 'vue-ui-history-plot',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
         ]
