@@ -40,7 +40,10 @@ function updateCrumb() {
     function capitalizeFirstLetter(val) {
         return String(val).charAt(0).toUpperCase() + String(val).slice(1);
     }
-    const hash = route.hash ? route.hash.replace('#', '').split('-').map(s => capitalizeFirstLetter(s)).join('') : null
+    let hash = route.hash ? route.hash.replace('#', '').split('-').map(s => capitalizeFirstLetter(s)).join('') : null;
+    if (hash === 'VueUiSparkhistogram') {
+        hash = 'VueUiSparkHistogram'
+    }
     const hashIcon = hash ? categories.value.find(c => c.component === hash) ? categories.value.find(c => c.component === hash).icon : undefined : undefined
 
     if (crumbs.value.length === 2) {

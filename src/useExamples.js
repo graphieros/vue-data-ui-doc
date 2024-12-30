@@ -2880,7 +2880,7 @@ export default function useExamples() {
                 tags: ['#plot-comment'],
                 component: 'VueUiXy',
                 icon: 'chartLine',
-                id: 'basic-line',
+                id: 'line-comment',
                 link: 'vue-ui-xy',
                 description: {
                     en: 'With an individual datapoint comment',
@@ -3927,7 +3927,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiStackbar',
                 icon: 'chartStackbar',
-                id: 'stack-bar-basic-distributed',
+                id: 'stack-bar-horizontal-distributed',
                 link: 'vue-ui-stackbar',
                 description: {
                     en: 'Distributed horizontal stack bar',
@@ -6239,7 +6239,7 @@ export default function useExamples() {
                 },
                 component: 'VueUiBullet',
                 icon: 'chartBullet',
-                id: 'bullet-thinner',
+                id: 'bullet-mixed',
                 link: 'vue-ui-bullet',
                 description: {
                     en: "With negative and positive values",
