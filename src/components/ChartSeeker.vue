@@ -3,6 +3,7 @@ import { ref, computed, nextTick } from "vue";
 import useCharts from "../useCharts";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { useMainStore } from "../stores";
+import { TerminalIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -122,7 +123,7 @@ const selectedIndex = ref(null);
             <a href="https://github.com/graphieros/vue-data-ui-cli" target="_blank" class="w-fit">
                 <button class="py-2 px-4 rounded bg-[#fdd663BB] hover:bg-app-gold transition-colors text-black flex flex-row place-items-center gap-2" dir="auto">
                     <div class="w-[40px] h-[40px] flex place-items-center justify-center">
-                        <VueUiIcon name="dashboard" stroke="#1A1A1A"/>
+                        <TerminalIcon/>
                     </div>
                     <div dir="auto" class="text-left">
                         {{ cli }}
