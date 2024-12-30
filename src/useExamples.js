@@ -3588,49 +3588,49 @@ export default function useExamples() {
                 }
             },
             // DONUT BACKGROUND
-            // {
-            //     dataset: DATASET_DONUT_BASIC.value,
-            //     config: {
-            //         ...CONFIG_DONUT_BASE.value,
-            //         style: {
-            //             ...CONFIG_DONUT_BASE.value.style,
-            //             chart: {
-            //                 ...CONFIG_DONUT_BASE.value.style.chart,
-            //                 layout: {
-            //                     ...CONFIG_DONUT_BASE.value.style.chart.layout,
-            //                     donut: {
-            //                         ...CONFIG_DONUT_BASE.value.style.chart.layout.donut,
-            //                         useShadow: false,
-            //                     },
-            //                     labels: {
-            //                         ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
-            //                         hollow: {
-            //                             show: false,
-            //                             average: { show: false },
-            //                             total: { show: false },
-            //                         }
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //     },
-            //     chartBackground: true,
-            //     component: 'VueUiDonut',
-            //     icon: 'chartDonut',
-            //     id: 'donut-bg',
-            //     link: 'vue-ui-donut',
-            //     description: {
-            //         en: 'With shadow',
-            //         fr: 'Avec ombre',
-            //         pt: 'Com sombra',
-            //         de: 'Mit Schatten',
-            //         zh: '带阴影',
-            //         jp: '影付き',
-            //         es: 'Con sombra',
-            //         ko: '그림자 포함',
-            //         ar: 'مع ظل'
-            //     }
-            // },
+            {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: {
+                    ...CONFIG_DONUT_BASE.value,
+                    style: {
+                        ...CONFIG_DONUT_BASE.value.style,
+                        chart: {
+                            ...CONFIG_DONUT_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_DONUT_BASE.value.style.chart.layout,
+                                donut: {
+                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.donut,
+                                    useShadow: false,
+                                },
+                                labels: {
+                                    ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    hollow: {
+                                        show: false,
+                                        average: { show: false },
+                                        total: { show: false },
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                chartBackground: true,
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'donut-bg',
+                link: 'vue-ui-donut',
+                description: {
+                    en: 'With shadow',
+                    fr: 'Avec ombre',
+                    pt: 'Com sombra',
+                    de: 'Mit Schatten',
+                    zh: '带阴影',
+                    jp: '影付き',
+                    es: 'Con sombra',
+                    ko: '그림자 포함',
+                    ar: 'مع ظل'
+                }
+            },
             // SPARKLINE BASIX
             {
                 dataset: DATASET_SPARKLINE.value,
