@@ -159,7 +159,10 @@ const iconMap = ref({
     VueUiKpi: 'kpiBox',
     VueUiSparkstackbar: 'chartSparkStackbar',
     VueUiStackbar: 'chartStackbar',
-    VueUiBullet: 'chartBullet'
+    VueUiBullet: 'chartBullet',
+    VueUiFunnel: 'chartFunnel',
+    VueUiHistoryPlot: 'chartHistoryPlot',
+    VueUiGizmo: 'battery'
 })
 
 
