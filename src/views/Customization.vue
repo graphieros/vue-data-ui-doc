@@ -14,6 +14,7 @@ import { useRouter } from "vue-router";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import SourceSlot from "../components/customization/SourceSlot.vue";
 import ChartSeeker from "../components/ChartSeeker.vue";
+import ComposedComponents from "../components/customization/ComposedComponents.vue";
 
 const store = useMainStore();
 
@@ -69,6 +70,11 @@ const menu = ref([
     label: "source",
     link: "/customization#source",
   },
+  {
+    name: 'experiments',
+    label: 'Component ideas',
+    link: '/customization#experiments'
+  }
 ]);
 
 const docsCrumbs = ref([
@@ -144,6 +150,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
   <Watermark v-if="currentRoute === '/customization#watermark-slot'" />
   <LabelFormatter v-if="currentRoute === '/customization#formatter'" />
   <SourceSlot v-if="currentRoute === '/customization#source'"/>
+  <ComposedComponents v-if="currentRoute === '/customization#experiments'" />
 
   <ChartSeeker class="mt-12"/>
 </template>
