@@ -124,6 +124,6 @@ function gotoMaker() {
             </button>
         </div>
 
-        <ChartSeeker class="mt-12"/>
+        <ChartSeeker class="mt-12 z-10"/>
     </div>
 </template>
