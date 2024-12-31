@@ -185,13 +185,16 @@ const sparklineDatasetSubscribers = computed(() => {
     <h1 class="mx-auto text-center max-w-[50ch] text-xl border-b border-gray-500 pb-6" dir="auto">
         {{ translations.ideas[store.lang] }}
     </h1>
-    <div class="mx-auto max-w-[1000px] p-4 rounded pt-6 pb-12">
-        <h2 class="mb-6 text-center max-w-[50ch] mx-auto" dir="auto">
-            {{ translations.buttonSparkline[store.lang] }}
-            <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/BaseButtonSparkline.vue" target="_blank" class="text-app-blue underline">
-            {{ translations.seeHowItsMade[store.lang] }}
-        </a>
-        </h2>
+    <div class="mx-auto max-w-[1000px] p-4 rounded">
+        <div class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6">
+            <div class="text-app-blue text-[52px]">1</div>
+            <h2 dir="auto">
+                {{ translations.buttonSparkline[store.lang] }}
+                <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/BaseButtonSparkline.vue" target="_blank" class="text-app-blue underline">
+                    {{ translations.seeHowItsMade[store.lang] }}
+                </a>
+            </h2>
+        </div>
         <div class="flex flex-row gap-4 flex-wrap justify-center">
             <BaseButtonSparkline
                 title="Daily users"

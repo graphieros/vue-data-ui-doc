@@ -15,6 +15,7 @@ import BaseCrumbs from "../components/BaseCrumbs.vue";
 import SourceSlot from "../components/customization/SourceSlot.vue";
 import ChartSeeker from "../components/ChartSeeker.vue";
 import ComposedComponents from "../components/customization/ComposedComponents.vue";
+import { BulbIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 
@@ -120,7 +121,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
       <div class="border border-gray-500 rounded-md p-4 flex flex-row flex-wrap gap-4 place-items-center justify-center mx-6">        
         <router-link v-for="(menuItem, i) in menu" :to="menuItem.link">
           <button
-            :class="`transition-colorsrounded py-2 px-4 ${
+            :class="`transition-colorsrounded py-2 px-4 flex flex-row gap-2 place-items-center ${
               currentRoute === menuItem.link ||
               (i === 0 && currentRoute === '/customization')
                 ? 'bg-[#5f8bee20] text-app-blue border-b border-app-blue'
@@ -128,6 +129,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
             }`"
             @click="selectedMenu = menuItem.name"
           >
+            <BulbIcon v-if="menuItem.name === 'experiments'" class="text-black dark:text-app-gold"/>
             {{ menuItem.label }}
           </button>
         </router-link>
