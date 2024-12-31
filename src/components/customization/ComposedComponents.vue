@@ -31,6 +31,17 @@ const translations = computed(() => {
             es: "Este componente consiste en un botón que muestra un KPI y, al hacer clic, muestra un gráfico sparkline dentro de un popover.",
             ko: "이 구성 요소는 KPI를 표시하는 버튼으로 구성되며, 클릭하면 팝오버 안에 스파크라인 차트를 표시합니다.",
             ar: "يتكون هذا المكون من زر يعرض مؤشر KPI، وعند النقر عليه، يعرض مخطط شرارة داخل نافذة منبثقة."
+        },
+        seeHowItsMade: {
+            en: "See how it is made",
+            fr: "Découvrez comment c'est fait",
+            pt: "Veja como é feito",
+            de: "Sehen Sie, wie es gemacht wird",
+            zh: "看看它是如何制作的",
+            jp: "作り方を見てみましょう",
+            es: "Mira cómo está hecho",
+            ko: "어떻게 만들어졌는지 확인하세요",
+            ar: "شاهد كيف تم صنعه"
         }
     }
 })
@@ -177,6 +188,9 @@ const sparklineDatasetSubscribers = computed(() => {
     <div class="mx-auto max-w-[1000px] p-4 rounded pt-6 pb-12">
         <h2 class="mb-6 text-center max-w-[50ch] mx-auto" dir="auto">
             {{ translations.buttonSparkline[store.lang] }}
+            <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/BaseButtonSparkline.vue" target="_blank" class="text-app-blue underline">
+            {{ translations.seeHowItsMade[store.lang] }}
+        </a>
         </h2>
         <div class="flex flex-row gap-4 flex-wrap justify-center">
             <BaseButtonSparkline
