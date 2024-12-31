@@ -422,6 +422,7 @@ const hoveredLink = ref(null);
                                         {{ plot.comment }}
                                     </div>
                                 </template>
+
                                 <template #chart-background v-if="example.chartBackground">
                                     <div v-if="isDarkMode" :style="{ height: '100%', width: '100%' }">
                                         <img src="../assets/slot_chart_background.png" class="w-full object-cover h-full">
@@ -429,6 +430,11 @@ const hoveredLink = ref(null);
                                     <div v-else :style="{ height: '100%', width: '100%' }">
                                         <img src="../assets/slot_chart_background_light.png" class="w-full object-cover h-full">
                                     </div>
+                                </template>
+
+                                <template #chart-background v-if="example.chartBackgroundPattern">
+                                    <div v-if="isDarkMode" :style="{ height: '100%', width: '100%' }" class="bg-pattern-dark"/>
+                                    <div v-else :style="{ height: '100%', width: '100%' }" class="bg-pattern" />
                                 </template>
                             </VueDataUi>
                         </div>
@@ -446,5 +452,17 @@ const hoveredLink = ref(null);
 .example-wrapper .vue-ui-treemap-cell {
     padding-left: 12px;
     padding-top: 6px;
+}
+
+.bg-pattern-dark {
+    background-image: radial-gradient(#FFFFFF20 2px, transparent 2px);
+    background-size: 24px 24px;
+    background-color: transparent;
+}
+
+.bg-pattern {
+    background-image: radial-gradient(#CCCCCC 2px, transparent 2px);
+    background-size: 24px 24px;
+    background-color: transparent;
 }
 </style>

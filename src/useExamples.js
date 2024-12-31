@@ -2894,48 +2894,6 @@ export default function useExamples() {
                     ar: 'مع تعليق على نقطة بيانات فردية'
                 }
             },
-            // XY CUSTOM BACKGROUND
-            { 
-                dataset: DATASET_XY_BACKGROUND.value, 
-                config: {
-                    ...BASE_XY_CONFIG.value,
-                    chart: {
-                        ...BASE_XY_CONFIG.value.chart,
-                        highlightArea: {
-                            show: false,
-                        },
-                        grid: {
-                            ...BASE_XY_CONFIG.value.chart.grid,
-                            position: 'start',
-                            labels: {
-                                ...BASE_XY_CONFIG.value.chart.grid.labels,
-                                yAxis: {
-                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
-                                    scaleMin: 0,
-                                    scaleMax: 100
-                                }
-                            }
-                        }
-                    }
-                },
-                component: 'VueUiXy',
-                icon: 'chartLine',
-                id: 'xy-background',
-                link: 'vue-ui-xy',
-                chartBackground: true,
-                tags: ['#chart-background'],
-                description: {
-                    en: "With a custom background",
-                    fr: "Avec un arrière-plan personnalisé",
-                    pt: "Com um fundo personalizado",
-                    de: "Mit einem benutzerdefinierten Hintergrund",
-                    zh: "带有自定义背景",
-                    jp: "カスタム背景付き",
-                    es: "Con un fondo personalizado",
-                    ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
-                }
-            },
             // XY INDIVIDUAL SCALE
             { 
                 dataset: DATASET_XY_DUAL.value,
@@ -2986,6 +2944,95 @@ export default function useExamples() {
                     es: "Múltiples series con escalas individuales",
                     ko: "개별 스케일이 있는 여러 시리즈",
                     ar: "سلاسل متعددة بمقاييس فردية"
+                }
+            },
+            // XY CUSTOM BACKGROUND
+            { 
+                dataset: DATASET_XY_BACKGROUND.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        highlightArea: {
+                            show: false,
+                        },
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            position: 'start',
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: 0,
+                                    scaleMax: 100
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-background',
+                link: 'vue-ui-xy',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
+                }
+            },
+            // XY CUSTOM BACKGROUND PATTERN
+            { 
+                dataset: DATASET_XY_BACKGROUND.value.map(ds => {
+                    return {
+                        ...ds,
+                        color: undefined,
+                    }
+                }),
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        highlightArea: {
+                            show: false,
+                        },
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            position: 'start',
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: 0,
+                                    scaleMax: 100
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-background',
+                link: 'vue-ui-xy',
+                chartBackgroundPattern: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background pattern",
+                    fr: "Avec un motif d'arrière-plan personnalisé",
+                    pt: "Com um padrão de fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrundmuster",
+                    zh: "带有自定义背景图案",
+                    jp: "カスタム背景パターン付き",
+                    es: "Con un patrón de fondo personalizado",
+                    ko: "사용자 정의 배경 패턴과 함께",
+                    ar: "مع نمط خلفية مخصص"
                 }
             },
             // XY STYLED MARKERS
