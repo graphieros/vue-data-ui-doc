@@ -117,6 +117,8 @@ const darkModeConfig = ref({
     backgroundColor: "#FFFFFF05",
     fontFamily: "inherit",
     chartWidth: 290,
+    scaleMin: null,
+    scaleMax: null,
     animation: {
       show: true,
       animationFrames: 360,
@@ -184,6 +186,8 @@ const config = ref({
     backgroundColor: "#e1e5e8",
     fontFamily: "inherit",
     chartWidth: 290,
+    scaleMin: null,
+    scaleMax: null,
     animation: {
       show: true,
       animationFrames: 360
@@ -446,6 +450,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
       <span>fontFamily: "inherit",</span>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="chartWidth" attr="style.chartWidth" type="number" defaultVal="290" :min="100" :max="400" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="scaleMin" attr="style.scaleMin" type="number" defaultVal="null" :min="-1000" :max="0" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.61 - Force the min scale"/>
+      <BaseAttr name="scaleMax" attr="style.scaleMax" type="number" defaultVal="null" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.61 - Force the max scale"/>
       <BaseDetails attr="animation" :level="2" title="style.animation">
         <BaseAttr name="show" attr="style.animation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="animationFrames" attr="style.animation.animationFrames" type="number" defaultVal="60" :min="0" :max="500" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

@@ -140,7 +140,7 @@ const sparklineDatasetViewers = computed(() => {
     for (let i = 0; i < 31; i += 1) {
         arr.push({
             period: `${i + 1 < 10 ? "0" : ""}${i + 1}-01-2026`,
-            value: Math.round(Math.random() * 1000),
+            value: Math.round(Math.random() * 750),
         });
     }
 
@@ -184,7 +184,7 @@ const sparklineDatasetSubscribers = computed(() => {
     for (let i = 0; i < 31; i += 1) {
         arr.push({
             period: `${i + 1 < 10 ? "0" : ""}${i + 1}-01-2026`,
-            value: Math.round(Math.random() * 100),
+            value: Math.round(Math.random() * 500),
         });
     }
 
@@ -263,6 +263,14 @@ const selectedIndex = ref(undefined);
 function hoverIndex({index}) {
     selectedIndex.value = index;
 }
+
+const max = computed(() => {
+    return Math.max(
+        Math.max(...sparklineDatasetUsers.value.map(s => s.value)),
+        Math.max(...sparklineDatasetSubscribers.value.map(s => s.value)),
+        Math.max(...sparklineDatasetViewers.value.map(s => s.value))
+    )
+})
 
 </script>
 
@@ -345,7 +353,13 @@ function hoverIndex({index}) {
 
                 <template #popover-content>
                     <VueUiSparkline 
-                        :config="sparklineConfigUsers" 
+                        :config="{
+                            ...sparklineConfigUsers,
+                            style: {
+                                ...sparklineConfigUsers.style,
+                                scaleMax: max
+                            }
+                        }" 
                         :dataset="sparklineDatasetUsers"
                         @hoverIndex="hoverIndex"
                         class="-ml-1"
@@ -358,6 +372,7 @@ function hoverIndex({index}) {
                             type: 'line', 
                             style: {
                                 ...sparklineConfigViewers.style,
+                                scaleMax: max,
                                 area: {
                                     ...sparklineConfigViewers.style.area,
                                     show: true
@@ -370,7 +385,14 @@ function hoverIndex({index}) {
                         :selectedIndex="selectedIndex"
                     />
                     <VueUiSparkline 
-                        :config="{...sparklineConfigSubscribers, type: 'line'}" 
+                        :config="{
+                            ...sparklineConfigSubscribers, 
+                            type: 'line',
+                            style: {
+                                ...sparklineConfigSubscribers.style,
+                                scaleMax: max
+                            }
+                        }" 
                         :dataset="sparklineDatasetSubscribers"
                         @hoverIndex="hoverIndex"
                         class="-ml-1"

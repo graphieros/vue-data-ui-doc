@@ -2387,6 +2387,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chartWidth', def: 290, type: 'range', min: 200, max: 400, label: 'width', category: 'general' },
+                    { key: 'style.scaleMin', def: null, type: 'number', min: -10000, max: 10000, label: ['xAxis', 'is', 'scale', 'min'], category: 'general'},
+                    { key: 'style.scaleMax', def: null, type: 'number', min: -10000, max: 10000, label: ['xAxis', 'is', 'scale', 'max'], category: 'general'},
                     { key: 'style.zeroLine.color', def: '#CCCCCC', type: 'color', label: ['zeroAxis', 'is', 'color'], category: 'general' },
                     { key: 'style.zeroLine.strokeWidth', def: 1, type: 'number', min: 0, max: 6, step: 0.1, label: ['zeroAxis', 'is', 'thickness'], category: 'general' },
                     { key: 'style.animation.show', def: false, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},

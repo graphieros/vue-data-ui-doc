@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.61",
+    "date": "2025-01-01",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Add scaleMin and scaleMax config attributes",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.60",
     "date": "2024-12-30",
     "updates": [
