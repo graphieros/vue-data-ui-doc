@@ -67,6 +67,17 @@ const translations = computed(() => {
             ko: "이 구성 요소는 일련의 스파크라인으로 구성되며, 마우스오버 시 현재 선택된 인덱스에 의해 연결되고, 선택된 인덱스에서 모든 시리즈의 분포를 보여주는 와플 차트를 포함합니다.",
             ar: "يتكون هذا المكون من سلسلة من الرسوم البيانية الصغيرة المرتبطة بالمؤشر المحدد حاليًا عند تحريك الماوس فوقها، مع رسم بياني من نوع وافل يوضح توزيع جميع السلاسل عند المؤشر المحدد."
         },
+        linkedSparklinesWithDonut: {
+            en: "This component consists of a series of sparklines, linked by the current selected index on mouseover, with a donut chart showing the breakdown of all series at the selected index.",
+            fr: "Ce composant se compose d'une série de mini-graphes, reliés par l'index sélectionné actuel lors du survol de la souris, avec un diagramme en anneau affichant la répartition de toutes les séries à l'index sélectionné.",
+            pt: "Este componente consiste em uma série de mini-gráficos, ligados pelo índice selecionado atual ao passar o mouse, com um gráfico de rosquinha mostrando a distribuição de todas as séries no índice selecionado.",
+            de: "Dieses Element besteht aus einer Reihe von Sparklines, die durch den aktuell ausgewählten Index bei Mausüberfahrt verbunden sind, mit einem Donut-Diagramm, das die Aufschlüsselung aller Serien am ausgewählten Index zeigt.",
+            zh: "该组件由一系列微型图表组成，通过鼠标悬停时的当前选定索引进行链接，并包含一个环形图显示所选索引处所有系列的细分。",
+            jp: "このコンポーネントは、一連のスパークラインで構成されており、マウスオーバー時に現在選択されているインデックスによってリンクされ、選択されたインデックスで全シリーズの内訳を示すドーナツチャートが表示されます。",
+            es: "Este componente consta de una serie de gráficos, vinculados por el índice seleccionado actual al pasar el ratón, con un gráfico de dona que muestra la descomposición de todas las series en el índice seleccionado.",
+            ko: "이 구성 요소는 일련의 스파크라인으로 구성되며, 마우스오버 시 현재 선택된 인덱스에 의해 연결되고, 선택된 인덱스에서 모든 시리즈의 분포를 보여주는 도넛 차트를 포함합니다.",
+            ar: "يتكون هذا المكون من سلسلة من الرسوم البيانية الصغيرة المرتبطة بالمؤشر المحدد حاليًا عند تحريك الماوس فوقها، مع رسم بياني دائري يوضح توزيع جميع السلاسل عند المؤشر المحدد."
+        },
         seeHowItsMade: {
             en: "See how it is made",
             fr: "Découvrez comment c'est fait",
@@ -467,6 +478,25 @@ const max = computed(() => {
 
         <div class="">
             <LinkedSparklines waffle />
+        </div>
+    </div>
+
+    <!-- 5 -->
+    <!-- Linked sparklines with donut -->
+    <div class="mx-auto max-w-[1000px] p-4 rounded">
+        <div class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6">
+            <div class="text-app-blue text-[52px]">5</div>
+            <h2 dir="auto">
+                {{ translations.linkedSparklinesWithDonut[store.lang] }}
+                <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/customization/LinkedSparklines.vue"
+                    target="_blank" class="text-app-blue underline">
+                    {{ translations.seeHowItsMade[store.lang] }}
+                </a>
+            </h2>
+        </div>
+
+        <div class="">
+            <LinkedSparklines donut />
         </div>
     </div>
 </template>

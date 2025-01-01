@@ -2,12 +2,17 @@
 import { ref, computed } from "vue";
 import BaseLinkedSparklineUnit from "./BaseLinkedSparklineUnit.vue";
 import LinkedSparklineWaffle from "./LinkedSparklineWaffle.vue";
+import LinkedSparklineDonut from "./LinkedSparklineDonut.vue";
 
 const props = defineProps({
     waffle: {
         type: Boolean,
         default: false
     },
+    donut: {
+        type: Boolean,
+        default: false
+    }
 })
 
 function makeSparklineRandomDataset(scale=1000, n=24, periodName="Period") {
@@ -102,6 +107,11 @@ const waffleDataset = computed(() => {
             <div class="w-full rounded overflow-hidden">
                 <LinkedSparklineWaffle
                     v-if="waffle"
+                    :dataset="waffleDataset"
+                    :active="![null, undefined].includes(selectedIndex)"
+                />
+                <LinkedSparklineDonut
+                    v-if="donut"
                     :dataset="waffleDataset"
                     :active="![null, undefined].includes(selectedIndex)"
                 />
