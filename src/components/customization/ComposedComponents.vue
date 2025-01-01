@@ -278,6 +278,9 @@ const max = computed(() => {
     <h1 class="mx-auto text-center max-w-[50ch] text-xl border-b border-gray-500 pb-6" dir="auto">
         {{ translations.ideas[store.lang] }}
     </h1>
+
+    <!-- 1 -->
+    <!-- KPI in a button with sparkline in popover -->
     <div class="mx-auto max-w-[1000px] p-4 rounded">
         <div class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6">
             <div class="text-app-blue text-[52px]">1</div>
@@ -318,12 +321,14 @@ const max = computed(() => {
         </div>
     </div>
 
+    <!-- 2 -->
+    <!-- Chart in a button with linked sparklines in popover -->
     <div class="mx-auto max-w-[1000px] p-4 rounded">
         <div class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6">
             <div class="text-app-blue text-[52px]">2</div>
             <h2 dir="auto">
                 {{ translations.buttonSparklineOnion[store.lang] }}
-                <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/ComposedComponents.vue"
+                <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/customization/ComposedComponents.vue"
                     target="_blank" class="text-app-blue underline">
                     {{ translations.seeHowItsMade[store.lang] }}
                 </a>
