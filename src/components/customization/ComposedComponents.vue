@@ -309,7 +309,7 @@ const max = computed(() => {
             <BaseButtonSparkline title="Daily users"
                 :buttonClass="`bg-gradient-to-bl from-app-blue-light to-app-blue hover:bg-gradient-to-l text-black transition-all`"
                 popoverClass="rounded-b-md py-1 bg-white dark:bg-[#2A2A2A] shadow-md"
-                :sparklineDataset="sparklineDatasetUsers" :sparklineConfig="sparklineConfigUsers" class="z-20">
+                :sparklineDataset="sparklineDatasetUsers" :sparklineConfig="sparklineConfigUsers" style="z-index: 2">
                 <template #icon>
                     <UserIcon class="text-app-blue" />
                 </template>
@@ -317,7 +317,7 @@ const max = computed(() => {
             <BaseButtonSparkline title="Daily viewers"
                 :buttonClass="`bg-gradient-to-bl from-app-orange-light to-app-orange hover:bg-gradient-to-l text-black transition-all`"
                 popoverClass="rounded-b-md py-1 bg-white dark:bg-[#2A2A2A] shadow-md"
-                :sparklineDataset="sparklineDatasetViewers" :sparklineConfig="sparklineConfigViewers" class="z-10">
+                :sparklineDataset="sparklineDatasetViewers" :sparklineConfig="sparklineConfigViewers" style="z-index: 1">
                 <template #icon>
                     <EyeIcon class="text-app-orange" />
                 </template>
@@ -351,7 +351,7 @@ const max = computed(() => {
             <BaseButtonSparklineFree
                 :buttonClass="`bg-gradient-to-b from-[#DDDDDD] to-[#EEEEEE] dark:from-[#1A1A1A] dark:to-[#2A2A2A] text-black transition-all`"
                 popoverClass="rounded-b-md py-1 bg-[#EEEEEE] dark:bg-[#2A2A2A] shadow-md"
-                :sparklineDataset="sparklineDatasetUsers" :sparklineConfig="sparklineConfigUsers" class="z-20">
+                :sparklineDataset="sparklineDatasetUsers" :sparklineConfig="sparklineConfigUsers" style="z-index: 1">
                 <template #button-content>
                     <div class="relative w-full h-full">
                         <VueDataUi component="VueUiOnion" :config="onionConfig" :dataset="onionDataset" />
