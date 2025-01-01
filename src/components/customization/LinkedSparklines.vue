@@ -1,6 +1,14 @@
 <script setup>
 import { ref, computed } from "vue";
 import BaseLinkedSparklineUnit from "./BaseLinkedSparklineUnit.vue";
+import LinkedSparklineWaffle from "./LinkedSparklineWaffle.vue";
+
+const props = defineProps({
+    waffle: {
+        type: Boolean,
+        default: false
+    }
+})
 
 function makeSparklineRandomDataset(scale=1000, n=24, periodName="Period") {
     const arr = [];
@@ -45,15 +53,32 @@ const scaleMax = computed(() => {
     return Math.max(...sparklines.value.flatMap(sparkline => Math.max(...sparkline.dataset.map(ds => ds.value))))
 })
 
-const selectedIndex = ref(null);
+const lastIndex = ref(sparklines.value[0].dataset.length - 1);
+
+const selectedIndex = ref(lastIndex.value);
 
 function hoverIndex(index) {
-    selectedIndex.value = index;
+    if ([null, undefined].includes(index)) {
+        selectedIndex.value = lastIndex.value
+    } else {
+        selectedIndex.value = index;
+    }
 }
 
 const selectedPeriod = computed(() => {
     if([null, undefined].includes(selectedIndex.value)) return ''
     return sparklines.value[0].dataset[selectedIndex.value].period;
+});
+
+const waffleDataset = computed(() => {
+    if ([null, undefined].includes(selectedIndex.value)) return [];
+    return sparklines.value.map(sparkline => {
+        return {
+            name: sparkline.title,
+            values: [sparkline.dataset[selectedIndex.value].value],
+            color: sparkline.color
+        }
+    })
 })
 
 </script>
@@ -63,16 +88,23 @@ const selectedPeriod = computed(() => {
         <span class="tabular-nums text-gray-500">
             Monthly statistics: {{ selectedPeriod}}
         </span>
-        <BaseLinkedSparklineUnit
-            v-for="sparkline in sparklines"
-            :dataset="sparkline.dataset"
-            :color="sparkline.color"
-            :gradient="sparkline.gradient"
-            :lineColor="sparkline.lineColor"
-            :title="sparkline.title"
-            :selectedIndex="selectedIndex"
-            :scaleMax="scaleMax"
-            @hoverIndex="hoverIndex"
-        />
+            <BaseLinkedSparklineUnit
+                v-for="sparkline in sparklines"
+                :dataset="sparkline.dataset"
+                :color="sparkline.color"
+                :gradient="sparkline.gradient"
+                :lineColor="sparkline.lineColor"
+                :title="sparkline.title"
+                :selectedIndex="selectedIndex"
+                :scaleMax="scaleMax"
+                @hoverIndex="hoverIndex"
+            />
+            <div class="w-full rounded overflow-hidden">
+                <LinkedSparklineWaffle
+                    v-if="waffle"
+                    :dataset="waffleDataset"
+                    :active="![null, undefined].includes(selectedIndex)"
+                />
+            </div>
     </div>
 </template>
