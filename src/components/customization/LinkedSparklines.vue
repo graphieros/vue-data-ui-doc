@@ -7,7 +7,7 @@ const props = defineProps({
     waffle: {
         type: Boolean,
         default: false
-    }
+    },
 })
 
 function makeSparklineRandomDataset(scale=1000, n=24, periodName="Period") {

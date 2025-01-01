@@ -53,7 +53,7 @@ const config = computed(() => {
       backgroundColor: "transparent",
       scaleMin: null,
       scaleMax: props.scaleMax,
-      line: { color: '#3A3A3A', strokeWidth: 3, smooth: false },
+      line: { color: '#3A3A3A', strokeWidth: 3, smooth: true },
       bar: { borderRadius: 3, color: props.color },
       zeroLine: { color: "#2D353C", strokeWidth: 1 },
       plot: { show: true, radius: 8, stroke: "#FFFFFF", strokeWidth: 1 },
