@@ -5,6 +5,7 @@ import { useMainStore } from "../../stores";
 import { UserIcon, EyeIcon, UserPlusIcon } from "vue-tabler-icons";
 import BaseButtonSparkline from "../BaseButtonSparkline.vue";
 import BaseButtonSparklineFree from "../BaseButtonSparklineFree.vue";
+import LinkedSparklines from "./LinkedSparklines.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -43,6 +44,17 @@ const translations = computed(() => {
             es: "Este componente consta de un botón grande que muestra un gráfico y, al hacer clic, muestra una serie de gráficos en un popover",
             ko: "이 구성 요소는 차트를 표시하는 큰 버튼으로 구성되어 있으며 클릭하면 팝오버 안에 일련의 스파크라인이 표시됩니다",
             ar: "يتكون هذا المكون من زر كبير يعرض مخططًا وعند النقر عليه يعرض سلسلة من الرسومات الصغيرة داخل نافذة منبثقة"
+        },
+        linkedSparklines: {
+            en: "This component consists of a series of sparklines, linked by the current selected index on mouseover",
+            fr: "Ce composant se compose d'une série de mini-graphes, reliés par l'index sélectionné actuel lors du survol de la souris",
+            pt: "Este componente consiste em uma série de mini-gráficos, ligados pelo índice selecionado atual ao passar o mouse",
+            de: "Dieses Element besteht aus einer Reihe von Sparklines, die durch den aktuell ausgewählten Index bei Mausüberfahrt verbunden sind",
+            zh: "该组件由一系列微型图表组成，通过鼠标悬停时的当前选定索引进行链接",
+            jp: "このコンポーネントは、一連のスパークラインで構成されており、マウスオーバー時に現在選択されているインデックスによってリンクされています",
+            es: "Este componente consta de una serie de gráficos, vinculados por el índice seleccionado actual al pasar el ratón",
+            ko: "이 구성 요소는 일련의 스파크라인으로 구성되며, 마우스오버 시 현재 선택된 인덱스에 의해 연결됩니다",
+            ar: "يتكون هذا المكون من سلسلة من الرسوم البيانية الصغيرة المرتبطة بالمؤشر المحدد حاليًا عند تحريك الماوس فوقها"
         },
         seeHowItsMade: {
             en: "See how it is made",
@@ -335,7 +347,7 @@ const max = computed(() => {
             </h2>
         </div>
 
-        <div class="flex flex-row gap-4 flex-wrap justify-center mb-20">
+        <div class="flex flex-row gap-4 flex-wrap justify-center">
             <BaseButtonSparklineFree
                 :buttonClass="`bg-gradient-to-b from-[#DDDDDD] to-[#EEEEEE] dark:from-[#1A1A1A] dark:to-[#2A2A2A] text-black transition-all`"
                 popoverClass="rounded-b-md py-1 bg-[#EEEEEE] dark:bg-[#2A2A2A] shadow-md"
@@ -406,6 +418,25 @@ const max = computed(() => {
 
                 </template>
             </BaseButtonSparklineFree>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <!-- Linked sparklines -->
+    <div class="mx-auto max-w-[1000px] p-4 rounded">
+        <div class="flex flex-row gap-6 max-w-[50ch] mx-auto place-items-center py-6">
+            <div class="text-app-blue text-[52px]">3</div>
+            <h2 dir="auto">
+                {{ translations.linkedSparklines[store.lang] }}
+                <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/customization/LinkedSparklines.vue"
+                    target="_blank" class="text-app-blue underline">
+                    {{ translations.seeHowItsMade[store.lang] }}
+                </a>
+            </h2>
+        </div>
+
+        <div class="">
+            <LinkedSparklines />
         </div>
     </div>
 </template>
