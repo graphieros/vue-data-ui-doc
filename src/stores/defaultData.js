@@ -488,6 +488,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.zoom.color', def: '#CCCCCC', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
                     { key: 'style.chart.zoom.highlightColor', def: '#4A4A4A', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
                     { key: 'style.chart.zoom.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['zoom',  'is', 'fontSize'], category: 'general'},
+                    { key: 'style.chart.zoom.enableSelectionDrag', def: true, type: 'checkbox', label: ['zoom', 'is', 'enable', 'handles'], category: 'general'},
+                    { key: 'style.chart.zoom.enableSelectionDrag', def: true, type: 'checkbox', label: ['zoom', 'is', 'enable', 'selection', 'drag'], category: 'general'},
 
                     { key: 'style.chart.bars.gapRatio', def: 0.5, type: 'range', min: 0, max: 1, step:0.01, label: ['gap', 'is', 'ratio'], category: 'bar'},
                     { key: 'style.chart.bars.distributed', def: false, type: 'checkbox', label: ['distributed'], category: 'bar'},
@@ -879,6 +881,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.zoom.color', def: '#CCCCCC', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.highlightColor', def: '#4A4A4A', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['zoom',  'is', 'fontSize'], category: 'general'},
+                    { key: 'chart.zoom.enableRangeHandles', def: true, type: 'checkbox', label: ['zoom', 'is', 'enable', 'handles'], category: 'general'},
+                    { key: 'chart.zoom.enableSelectionDrag', def: true, type: 'checkbox', label: ['zoom', 'is', 'enable', 'selection', 'drag'], category: 'general'},
 
                     { key: 'chart.zoom.minimap.show', def: true, type: 'checkbox', label: ['zoom', 'minimap', 'is', 'show'], category: 'general'},
                     { key: 'chart.zoom.minimap.smooth', def: false, type: 'checkbox', label: ['zoom', 'minimap', 'is', 'smooth'], category: 'general'},

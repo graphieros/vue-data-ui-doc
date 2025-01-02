@@ -66,7 +66,9 @@ const config = ref({
                 fontSize: 14,
                 useResetSlot: false,
                 startIndex: null,
-                endIndex: null
+                endIndex: null,
+                enableRangeHandles: true,
+                enableSelectionDrag: true
             },
             layout: {
                 height: 316,
@@ -210,7 +212,9 @@ const darkModeConfig = ref({
                 fontSize: 14,
                 useResetSlot: false,
                 startIndex: null,
-                endIndex: null
+                endIndex: null,
+                enableRangeHandles: true,
+                enableSelectionDrag: true
             },
             layout: {
                 height: 316,
@@ -569,6 +573,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionD
                     <span>useResetSlot: false; <BaseComment>To use a custom slot for the reset feature (see slots tab)</BaseComment></span>
                     <span>startIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span>
                     <span>endIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
+                    <BaseAttr name="enableRangeHandles" attr="style.chart.zoom.enableRangeHandles" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
+                    <BaseAttr name="enableSelectionDrag" attr="style.chart.zoom.enableSelectionDrag" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
                 </BaseDetails>
             </BaseDetails>
         </BaseDetails>

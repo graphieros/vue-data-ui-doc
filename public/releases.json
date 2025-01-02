@@ -1,7 +1,38 @@
 [
   {
+    "version": "v 2.4.63",
+    "date": "2025-01-02",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add config attributes to drag the zoom selection",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Add config attributes to drag the zoom selection",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Add config attributes to drag the zoom selection",
+        "link": "/docs#vue-ui-stackbar"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Add config attributes to drag the zoom selection",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Add config attributes to drag the zoom selection",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.62",
-    "date": "2025-01-03",
+    "date": "2025-01-02",
     "updates": [
       {
         "component": "VueUiSparkline",

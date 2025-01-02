@@ -145,6 +145,8 @@ const config = ref({
             useResetSlot: false,
             startIndex: null,
             endIndex: null,
+            enableRangeHandles: true,
+            enableSelectionDrag: true,
             minimap: {
                 show: true,
                 smooth: true,
@@ -429,6 +431,8 @@ const darkModeConfig = ref({
             useResetSlot: false,
             startIndex: null,
             endIndex: null,
+            enableRangeHandles: true,
+            enableSelectionDrag: true,
             minimap: {
                 show: true,
                 smooth: true,
@@ -1125,6 +1129,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <span>useResetSlot: false, <span class="text-app-blue break-keep text-xs">// To use a custom slot for the reset feature (see slots tab)</span></span>
                 <span>startIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span>
                 <span>endIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
+                <BaseAttr name="enableRangeHandles" attr="chart.zoom.enableRangeHandles" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
+                <BaseAttr name="enableSelectionDrag" attr="chart.zoom.enableSelectionDrag" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
                 <BaseDetails attr="minimap" :level="3" title="chart.zoom.minimap">
                     <span><BaseComment>Since v2.3.49</BaseComment></span>
                     <BaseAttr name="show" attr="chart.zoom.minimap.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

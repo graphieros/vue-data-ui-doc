@@ -133,7 +133,9 @@ const config = ref({
         fontSize: 14,
         useResetSlot: false,
         startIndex: null,
-        endIndex: null
+        endIndex: null,
+        enableRangeHandles: true,
+        enableSelectionDrag: true
       },
       selector: {
         show: true,
@@ -326,7 +328,9 @@ const darkModeConfig = ref({
         fontSize: 14,
         useResetSlot: false,
         startIndex: null,
-        endIndex: null
+        endIndex: null,
+        enableRangeHandles: true,
+        enableSelectionDrag: true
       },
       selector: {
         show: true,
@@ -1630,6 +1634,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                         slots tab)</span
                       ></span
                     >
+                    <BaseAttr name="enableRangeHandles" attr="style.chart.zoom.enableRangeHandles" type="chexkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.3.63"/>
+                    <BaseAttr name="enableSelectionDrag" attr="style.chart.zoom.enableSelectionDrag" type="chexkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.3.63"/>
                   </BaseDetails>
                 </BaseDetails>
               </BaseDetails>

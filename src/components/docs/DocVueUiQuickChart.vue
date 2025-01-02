@@ -224,6 +224,8 @@ const config = ref({
     zoomEndIndex: null,
     showUserOptionsOnChartHover: false,
     keepUserOptionsStateOnChartLeave: true,
+    zoomEnableRangeHandles: true,
+    zoomEnableSelectionDrag: true
 })
 
 const darkModeConfig = ref({
@@ -334,6 +336,8 @@ const darkModeConfig = ref({
     zoomEndIndex: null,
     showUserOptionsOnChartHover: false,
     keepUserOptionsStateOnChartLeave: true,
+    zoomEnableRangeHandles: true,
+    zoomEnableSelectionDrag: true
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -836,6 +840,8 @@ const { configCode, showAllConfig } = useConfigCode()
             <BaseAttr name="zoomHighlightColor" attr="zoomHighlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="zoomFontSize" attr="zoomFontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="zoomUseResetSlot" attr="zoomUseResetSlot" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="zoomEnableRangeHandles" attr="zoomEnableRangeHandles" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
+            <BaseAttr name="zoomEnableSelectionDrag" attr="zoomEnableSelectionDrag" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
             <BaseDetails attr="zoomMinimap" :level="1">
                 <span><BaseComment>Since v2.3.56</BaseComment></span>
                 <BaseAttr name="show" attr="zoomMinimap.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
