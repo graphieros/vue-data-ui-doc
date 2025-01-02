@@ -2389,6 +2389,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chartWidth', def: 290, type: 'range', min: 200, max: 400, label: 'width', category: 'general' },
                     { key: 'style.scaleMin', def: null, type: 'number', min: -10000, max: 10000, label: ['xAxis', 'is', 'scale', 'min'], category: 'general'},
                     { key: 'style.scaleMax', def: null, type: 'number', min: -10000, max: 10000, label: ['xAxis', 'is', 'scale', 'max'], category: 'general'},
+
+                    { key: 'style.padding.top', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
+                    { key: 'style.padding.right', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
+                    { key: 'style.padding.bottom', def: 12, type: 'number', min: 0, max: 50, label: ['padding', 'is', 'bottom'], category: 'padding'},
+                    { key: 'style.padding.left', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'padding'},
+
                     { key: 'style.zeroLine.color', def: '#CCCCCC', type: 'color', label: ['zeroAxis', 'is', 'color'], category: 'general' },
                     { key: 'style.zeroLine.strokeWidth', def: 1, type: 'number', min: 0, max: 6, step: 0.1, label: ['zeroAxis', 'is', 'thickness'], category: 'general' },
                     { key: 'style.animation.show', def: false, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general'},

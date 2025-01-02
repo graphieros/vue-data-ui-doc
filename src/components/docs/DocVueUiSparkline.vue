@@ -119,6 +119,12 @@ const darkModeConfig = ref({
     chartWidth: 290,
     scaleMin: null,
     scaleMax: null,
+    padding: {
+      top: 12,
+      right: 0,
+      bottom: 3,
+      left: 0
+    },
     animation: {
       show: true,
       animationFrames: 360,
@@ -188,6 +194,12 @@ const config = ref({
     chartWidth: 290,
     scaleMin: null,
     scaleMax: null,
+    padding: {
+      top: 12,
+      right: 0,
+      bottom: 3,
+      left: 0
+    },
     animation: {
       show: true,
       animationFrames: 360
@@ -450,8 +462,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
       <span>fontFamily: "inherit",</span>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="chartWidth" attr="style.chartWidth" type="number" defaultVal="290" :min="100" :max="400" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      <BaseAttr name="scaleMin" attr="style.scaleMin" type="number" defaultVal="null" :min="-1000" :max="0" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.61 - Force the min scale"/>
-      <BaseAttr name="scaleMax" attr="style.scaleMax" type="number" defaultVal="null" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.61 - Force the max scale"/>
+      <BaseAttr name="scaleMin" attr="style.scaleMin" type="number" defaultVal="null" :min="-1000" :max="0" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62 - Force the min scale"/>
+      <BaseAttr name="scaleMax" attr="style.scaleMax" type="number" defaultVal="null" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62 - Force the max scale"/>
+      <BaseDetails attr="padding" :level="2" title="style.padding">
+        <BaseAttr name="top" attr="style.padding.top" type="number" defaultVal="12" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
+        <BaseAttr name="right" attr="style.padding.right" type="number" defaultVal="0" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
+        <BaseAttr name="bottom" attr="style.padding.bottom" type="number" defaultVal="3" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
+        <BaseAttr name="left" attr="style.padding.left" type="number" defaultVal="0" :min="0" :max="36" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62"/>
+      </BaseDetails>
       <BaseDetails attr="animation" :level="2" title="style.animation">
         <BaseAttr name="show" attr="style.animation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="animationFrames" attr="style.animation.animationFrames" type="number" defaultVal="60" :min="0" :max="500" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
