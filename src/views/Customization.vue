@@ -150,7 +150,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
   <MenuSlots v-if="currentRoute === '/customization#menu-slots'" />
   <CustomMenu v-if="currentRoute === '/customization#custom-menu'" />
   <Watermark v-if="currentRoute === '/customization#watermark-slot'" />
-  <LabelFormatter v-if="currentRoute === '/customization#formatter'" />
+  <LabelFormatter v-if="currentRoute === '/customization#formatter'" /> 
   <SourceSlot v-if="currentRoute === '/customization#source'"/>
   <ComposedComponents v-if="currentRoute === '/customization#experiments'" />
 

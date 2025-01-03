@@ -154,7 +154,7 @@ const isHome = computed(() => {
             <router-link data-cy="link-home" to="/" v-if="!isHome">
                 <div class="flex flex-row gap-3">
                     <div data-cy="header-app-name" class="flex flex-row gap-3 w-full whitespace-nowrap">
-                        <img data-cy="header-logo" src="../assets/logo.png" class="h-5" />
+                        <img data-cy="header-logo" src="../assets/logo3.png" class="h-5" />
                         <span>Vue Data UI</span>
                     </div>
                     <div class="h-[20px] flex flex-row align-center sm:ml-4">

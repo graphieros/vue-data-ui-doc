@@ -99,6 +99,7 @@ const sparklineConfigUsers = computed(() => {
         type: "line",
         downsample: { threshold: 500 },
         style: {
+            scaleMax: 1000,
             chartWidth: 290,
             animation: { show: true, animationFrames: 360 },
             fontFamily: "inherit",
@@ -143,6 +144,7 @@ const sparklineConfigViewers = computed(() => {
         type: "line",
         downsample: { threshold: 500 },
         style: {
+            scaleMax: 750,
             chartWidth: 290,
             animation: { show: true, animationFrames: 360 },
             fontFamily: "inherit",
@@ -187,6 +189,7 @@ const sparklineConfigSubscribers = computed(() => {
         type: "bar",
         downsample: { threshold: 500 },
         style: {
+            scaleMax: 500,
             chartWidth: 290,
             animation: { show: true, animationFrames: 360 },
             fontFamily: "inherit",

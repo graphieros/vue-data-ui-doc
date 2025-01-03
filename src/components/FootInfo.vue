@@ -38,7 +38,7 @@ s
 
         <div :class="`mx-auto max-w-[800px] flex flex-col sm:flex-row gap-12 place-items-center justify-center`">
             <div class="flex flex-col gap-2 place-items-center justify-center min-w-[200px]">
-                <img data-cy="header-logo" src="../assets/logo.png" class="h-12" />
+                <img data-cy="header-logo" src="../assets/logo3.png" class="h-12" />
                 <span>Vue Data UI</span>
                 <div class="flex flex-row gap-2 place-items-center justify-center" title="Copy Left">
                     <VueUiIcon name="copyLeft" stroke="#6A6A6A"/>

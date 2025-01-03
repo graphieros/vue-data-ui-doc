@@ -241,7 +241,7 @@ function closeList() {
   >
     <div class="z-10 w-full text-2xl sticky top-0 font-black">
       <div class="flex flex-row gap-2 place-items-center">
-        <img data-cy="header-logo" src="../assets/logo.png" class="h-5" />
+        <img data-cy="header-logo" src="../assets/logo3.png" class="h-5" />
         <span>
           {{ store.translations.search.term[store.lang] }}
           <span class="text-app-blue">{{ searchTerm }}</span>

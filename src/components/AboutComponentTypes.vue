@@ -155,7 +155,7 @@ const config = computed(() => {
           }"
         >
           <img 
-            src="../assets/logo.png" 
+            src="../assets/logo3.png" 
             alt="10x cat programmers"
           >
         </foreignObject>

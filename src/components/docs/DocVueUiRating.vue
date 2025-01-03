@@ -50,7 +50,7 @@ const config = ref({
             useGradient: true
         },
         image: {
-            src: `https://vue-data-ui.graphieros.com/logo.png`,
+            src: `https://vue-data-ui.graphieros.com/logo3.png`,
             inactiveOpacity: 0.3,
             alt: "rating image"
         },
@@ -113,7 +113,7 @@ const darkModeConfig = ref({
             useGradient: true
         },
         image: {
-            src: `https://vue-data-ui.graphieros.com/logo.png`,
+            src: `https://vue-data-ui.graphieros.com/logo3.png`,
             inactiveOpacity: 0.3,
             alt: "rating image"
         },
