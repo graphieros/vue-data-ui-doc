@@ -147,10 +147,10 @@ function clean(text) {
 </script>
 
 <template>
-    <div class="w-full flex flex-row place-items-center justify-center gap-2 p-4 bg-[#e1e5e8] dark:bg-[#2A2A2A] rounded-md">
+    <!-- <div class="w-full flex flex-row place-items-center justify-center gap-2 p-4 bg-[#e1e5e8] dark:bg-[#2A2A2A] rounded-md">
         <VueUiWordCloud v-if="closedIssuesWordCloud.length" :dataset="closedIssuesWordCloud"
             :config="wordCloudConfig" />
-    </div>
+    </div> -->
     <div class="mt-4 w-full flex flex-col gap-2 max-h-[800px] overflow-y-auto p-2 bg-[#e1e5e8] dark:bg-[#2A2A2A] rounded-md">
 
         <h2 class="text-xl">Open issues</h2>
