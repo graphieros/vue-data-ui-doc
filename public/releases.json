@@ -27,6 +27,16 @@
         "component": "VueUiDonutEvolution",
         "description": "Add config attributes to drag the zoom selection",
         "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiSparkline",
+        "description": "Fix harmless svg console error in some cases when the component is loading",
+        "link": "/docs#vue-ui-sparkline"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Fix harmless svg console error in some cases when the component is loading",
+        "link": "/docs#vue-ui-stackbar"
       }
     ]
   },
