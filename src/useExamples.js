@@ -3713,16 +3713,17 @@ export default function useExamples() {
                 icon: 'chartDonut',
                 id: 'donut-bg',
                 link: 'vue-ui-donut',
+                tags: ['#chart-background'],
                 description: {
-                    en: 'With shadow',
-                    fr: 'Avec ombre',
-                    pt: 'Com sombra',
-                    de: 'Mit Schatten',
-                    zh: '带阴影',
-                    jp: '影付き',
-                    es: 'Con sombra',
-                    ko: '그림자 포함',
-                    ar: 'مع ظل'
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
                 }
             },
             // DONUT PATTERN
@@ -3745,6 +3746,31 @@ export default function useExamples() {
                     es: "Usando un patrón personalizado",
                     ko: "맞춤형 패턴 사용",
                     ar: "استخدام نمط مخصص"
+                }
+            },
+            // POLAR PATTERN
+            {
+                dataset: DATASET_DONUT_POLAR.value,
+                config: {
+                    ...CONFIG_DONUT_BASE.value,
+                    type: 'polar'
+                },
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'donut-polar-pattern',
+                multiPattern: true,
+                tags: ['#pattern'],
+                link: 'vue-ui-donut',
+                description: {
+                    en: "Polar area chart - Using a custom pattern",
+                    fr: "Diagramme en aires polaires - Utilisation d'un motif personnalisé",
+                    pt: "Gráfico de área polar - Usando um padrão personalizado",
+                    de: "Polarer Flächendiagramm - Verwendung eines benutzerdefinierten Musters",
+                    zh: "极区面积图 使用自定义图案",
+                    jp: "ポーラーエリアチャート カスタムパターンの使用",
+                    es: "Gráfico de área polar - Usando un patrón personalizado",
+                    ko: "극 영역 차트 - 맞춤형 패턴 사용",
+                    ar: "استخدام نمط مخصص - مخطط المساحة القطبية"
                 }
             },
             // SPARKLINE BASIX
