@@ -680,7 +680,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRingsDatasetIte
                         'tooltip-after',
                         'watermark',
                         'source',
-                        'chart-background'
+                        'chart-background',
+                        'pattern'
                     ]" 
                 />
             </template>

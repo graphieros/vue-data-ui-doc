@@ -893,7 +893,8 @@ const <span class="text-app-green">dataset: VueUiVerticalBarDatasetItem[]</span>
                     'tooltip-after',
                     'watermark',
                     'source',
-                    'chart-background'
+                    'chart-background',
+                    'pattern'
                   ]" 
               />
             </template>

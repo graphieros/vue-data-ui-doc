@@ -1,7 +1,43 @@
 [
   {
-    "version": "v 2.4.64",
+    "version": "v 2.4.65",
     "date": "2025-01-04",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add #pattern scoped slot",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Add #pattern scoped slot",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiGauge",
+        "description": "Add #pattern scoped slot",
+        "link": "/docs#vue-ui-gauge"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Add #pattern scoped slot",
+        "link": "/docs#vue-ui-vertical-bar"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Add #pattern scoped slot",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Add #pattern scoped slot",
+        "link": "/docs#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.4.64",
+    "date": "2025-01-03",
     "updates": [
       {
         "component": "VueUiXy",

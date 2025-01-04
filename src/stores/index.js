@@ -747,6 +747,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    pattern: {
+                        en: "Use this slot to superimpose a pattern on datapoints.",
+                        fr: "Utilisez cet emplacement pour superposer un motif sur les points de données.",
+                        pt: "Use este slot para sobrepor um padrão nos pontos de dados.",
+                        de: "Verwenden Sie diesen Slot, um ein Muster auf Datenpunkte zu überlagern.",
+                        zh: "使用此插槽在数据点上叠加图案。",
+                        jp: "このスロットを使用して、データポイントにパターンを重ね合わせます。",
+                        es: "Utilice este espacio para superponer un patrón en los puntos de datos.",
+                        ko: "이 슬롯을 사용하여 데이터 포인트에 패턴을 겹쳐 표시하세요.",
+                        ar: "استخدم هذه الفتحة لإضافة نمط فوق نقاط البيانات."
+                    },
                     chartBackground: {
                         en: "Use this slot to customize the chart background (gradient, image, etc).",
                         fr: "Utilisez cet emplacement pour personnaliser l'arrière-plan du graphique (dégradé, image, etc.).",

@@ -1063,7 +1063,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
                         'watermark',
                         'source',
                         'plot-comment',
-                        'chart-background'
+                        'chart-background',
+                        'pattern'
                     ]" 
                 />
             </template>

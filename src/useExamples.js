@@ -3035,6 +3035,53 @@ export default function useExamples() {
                     ar: "مع نمط خلفية مخصص"
                 }
             },
+            // XY PATTERN
+            { 
+                dataset: DATASET_XY_BACKGROUND.value.map(ds => {
+                    return {
+                        ...ds,
+                        color: undefined,
+                    }
+                }),
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        highlightArea: {
+                            show: false,
+                        },
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            position: 'start',
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: 0,
+                                    scaleMax: 100
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-pattern',
+                link: 'vue-ui-xy',
+                tags: ['#pattern'],
+                pattern: true,
+                description: {
+                    en: "Using a custom pattern",
+                    fr: "Utilisation d'un motif personnalisé",
+                    pt: "Usando um padrão personalizado",
+                    de: "Verwendung eines benutzerdefinierten Musters",
+                    zh: "使用自定义图案",
+                    jp: "カスタムパターンの使用",
+                    es: "Usando un patrón personalizado",
+                    ko: "맞춤형 패턴 사용",
+                    ar: "استخدام نمط مخصص"
+                }
+            },
             // XY STYLED MARKERS
             { 
                 dataset: DATASET_XY_SINUSOID.value, 
@@ -3678,6 +3725,28 @@ export default function useExamples() {
                     ar: 'مع ظل'
                 }
             },
+            // DONUT PATTERN
+            {
+                dataset: DATASET_DONUT_BASIC.value,
+                config: CONFIG_DONUT_BASE.value,
+                component: 'VueUiDonut',
+                icon: 'chartDonut',
+                id: 'donut-pattern',
+                link: 'vue-ui-donut',
+                multiPattern: true,
+                tags: ['#pattern'],
+                description: {
+                    en: "Using a custom pattern",
+                    fr: "Utilisation d'un motif personnalisé",
+                    pt: "Usando um padrão personalizado",
+                    de: "Verwendung eines benutzerdefinierten Musters",
+                    zh: "使用自定义图案",
+                    jp: "カスタムパターンの使用",
+                    es: "Usando un patrón personalizado",
+                    ko: "맞춤형 패턴 사용",
+                    ar: "استخدام نمط مخصص"
+                }
+            },
             // SPARKLINE BASIX
             {
                 dataset: DATASET_SPARKLINE.value,
@@ -4075,6 +4144,28 @@ export default function useExamples() {
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
                     ar: "مع خلفية مخصصة"
+                }
+            },
+            // STACKBAR BASIC
+            { 
+                dataset: DATASET_STACKBAR_BASIC.value, 
+                config: CONFIG_STACKBAR_BASE.value,
+                component: 'VueUiStackbar',
+                icon: 'chartStackbar',
+                id: 'stack-bar-pattern',
+                link: 'vue-ui-stackbar',
+                tags: ['#pattern'],
+                pattern: true,
+                description: {
+                    en: "Using a custom pattern",
+                    fr: "Utilisation d'un motif personnalisé",
+                    pt: "Usando um padrão personalizado",
+                    de: "Verwendung eines benutzerdefinierten Musters",
+                    zh: "使用自定义图案",
+                    jp: "カスタムパターンの使用",
+                    es: "Usando un patrón personalizado",
+                    ko: "맞춤형 패턴 사용",
+                    ar: "استخدام نمط مخصص"
                 }
             },
             // NESTED DONUTS BASIC
@@ -4571,6 +4662,28 @@ export default function useExamples() {
                     ar: "مع خلفية مخصصة"
                 }
             },
+            // VERTICAL BAR PATTERN
+            { 
+                dataset: DATASET_VERTICAL_BAR_BASE.value, 
+                config: CONFIG_VERTICAL_BAR_BASIC.value,
+                component: 'VueUiVerticalBar',
+                icon: 'chartVerticalBar',
+                id: 'vertical-bar-pattern',
+                link: 'vue-ui-vertical-bar',
+                tags: ['#pattern'],
+                multiPattern: true,
+                description: {
+                    en: "Using a custom pattern",
+                    fr: "Utilisation d'un motif personnalisé",
+                    pt: "Usando um padrão personalizado",
+                    de: "Verwendung eines benutzerdefinierten Musters",
+                    zh: "使用自定义图案",
+                    jp: "カスタムパターンの使用",
+                    es: "Usando un patrón personalizado",
+                    ko: "맞춤형 패턴 사용",
+                    ar: "استخدام نمط مخصص"
+                }
+            },
             // HEATMAP BASIC
             { 
                 dataset: DATASET_HEATMAP_BASE.value, 
@@ -4955,6 +5068,28 @@ export default function useExamples() {
                     es: "Con un fondo personalizado",
                     ko: "사용자 정의 배경과 함께",
                     ar: "مع خلفية مخصصة"
+                }
+            },
+            // GAUGE PATTERN
+            { 
+                dataset: DATASET_GAUGE_BASIC.value, 
+                config: CONFIG_GAUGE_BASE.value,
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gauge-pattern',
+                tags: ['#pattern'],
+                link: 'vue-ui-gauge',
+                multiPattern: true,
+                description: {
+                    en: "Using a custom pattern",
+                    fr: "Utilisation d'un motif personnalisé",
+                    pt: "Usando um padrão personalizado",
+                    de: "Verwendung eines benutzerdefinierten Musters",
+                    zh: "使用自定义图案",
+                    jp: "カスタムパターンの使用",
+                    es: "Usando un patrón personalizado",
+                    ko: "맞춤형 패턴 사용",
+                    ar: "استخدام نمط مخصص"
                 }
             },
             // ONION BASIC

@@ -1025,7 +1025,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                         'time-label',
                         'watermark',
                         'source',
-                        'chart-background'
+                        'chart-background',
+                        'pattern'
                     ]" 
                 />
             </template>
