@@ -1,8 +1,13 @@
 [
   {
-    "version": "v 2.4.66",
+    "version": "v 2.4.67",
     "date": "2025-01-04",
     "updates": [
+      {
+        "component": "VueUiPattern",
+        "description": "Add new utility component VueUiPattern to be used with the #pattern slot",
+        "link": ""
+      },
       {
         "component": "VueUiXy",
         "description": "Add #pattern scoped slot",

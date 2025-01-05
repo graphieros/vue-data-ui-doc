@@ -52,7 +52,8 @@ import {
     VueUiXyCanvas,
     VueUiCarouselTable,
     VueUiGizmo,
-    VueUiStackbar
+    VueUiStackbar,
+    VueUiPattern
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -109,6 +110,7 @@ app.component("VueUiXyCanvas", VueUiXyCanvas)
 app.component("VueUiCarouselTable", VueUiCarouselTable)
 app.component("VueUiGizmo", VueUiGizmo)
 app.component("VueUiStackbar", VueUiStackbar)
+app.component('VueUiPattern', VueUiPattern)
 
 
 app.mount('#app')
