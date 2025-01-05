@@ -379,11 +379,11 @@ const specialOccasion = computed(() => {
           <template #default>
             <VueUiDonut :dataset="datasetDonutMenu" :config="configDonutMenu" @selectDatapoint="selectMenu">
               <template #pattern="{ seriesIndex, patternId }">
-                <Suspense><VueUiPattern v-if="seriesIndex === 0" name="hexagon-flooring" :id="patternId" :scale="1"/></Suspense>
-                <Suspense><VueUiPattern v-if="seriesIndex === 1" name="hexagon-diamond" :id="patternId" :scale="1"/></Suspense>
-                <Suspense><VueUiPattern v-if="seriesIndex === 2" name="scales" :id="patternId" :scale="0.7"/></Suspense>
-                <Suspense><VueUiPattern v-if="seriesIndex === 3" name="maze" :id="patternId" :scale="0.5" :stroke-width="2"/></Suspense>
-                <Suspense><VueUiPattern v-if="seriesIndex === 4" name="redrum" :id="patternId" :scale="0.5" :stroke-width="2"/></Suspense>
+                <Suspense><VueUiPattern v-if="seriesIndex === 0" name="hexagon-flooring" :id="patternId" :scale="1" stroke="#1A1A1A70"/></Suspense>
+                <Suspense><VueUiPattern v-if="seriesIndex === 1" name="hexagon-diamond" :id="patternId" :scale="1" stroke="#1A1A1A70"/></Suspense>
+                <Suspense><VueUiPattern v-if="seriesIndex === 2" name="scales" :id="patternId" :scale="0.7" stroke="#1A1A1A70"/></Suspense>
+                <Suspense><VueUiPattern v-if="seriesIndex === 3" name="maze" :id="patternId" :scale="0.5" :stroke-width="2" stroke="#1A1A1A70"/></Suspense>
+                <Suspense><VueUiPattern v-if="seriesIndex === 4" name="redrum" :id="patternId" :scale="0.5" :stroke-width="2" stroke="#1A1A1A70"/></Suspense>
               </template>
               <template #plot-comment="{ plot }">
                 <div 
