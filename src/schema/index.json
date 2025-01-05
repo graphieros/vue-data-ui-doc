@@ -530,6 +530,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "pattern",
+                "description": "Use this slot to customize datapoints with patterns"
             }
         ]
     },
@@ -952,6 +956,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "pattern",
+                "description": "Use this slot to customize datapoints with patterns"
             }
         ]
     },
@@ -1454,6 +1462,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "pattern",
+                "description": "Use this slot to customize datapoints with patterns"
             }
         ]
     },
@@ -2887,6 +2899,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "pattern",
+                "description": "Use this slot to customize datapoints with patterns"
             }
         ]
     },
@@ -4829,6 +4845,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "pattern",
+                "description": "Use this slot to customize datapoints with patterns"
             }
         ]
     },
@@ -5435,6 +5455,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "pattern",
+                "description": "Use this slot to customize datapoints with patterns"
             }
         ]
     },
