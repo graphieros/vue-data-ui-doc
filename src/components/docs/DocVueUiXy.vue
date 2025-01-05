@@ -37,6 +37,38 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 })
 
+const patternDataset = ref([
+    {
+        name: "Series 1",
+        series: [ 12, 25, 32, 64, 34, 26],
+        type: "bar",
+        color: "rgb(95,139,238)",
+        shape: 'circle',
+        dataLabels: false,
+        scaleSteps: 3,
+    },
+    {
+        name: "Series 2",
+        series: [ 12, 25, 32, 64, 34, 26],
+        type: "line",
+        color: "rgb(66,211,146)",
+        useArea: false,
+        useProgression: false,
+        dataLabels: false,
+        scaleSteps: 3,
+    },
+    {
+        name: "Series 4",
+        series: [ 8, 20, 27, 48, 27, 20],
+        type: "bar",
+        smooth: true,
+        useArea: false,
+        dataLabels: false,
+        color: "rgb(200,100,50)",
+        shape: 'Yellow circles',
+        scaleSteps: 3,
+    },
+]);
 const dataset = ref([
     {
         name: "Series 1",
@@ -790,7 +822,7 @@ function randomizeData() {
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
             </div>
         </div> -->
-        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive schema="vue_ui_xy" signInfo="both">
+        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive showPatterns schema="vue_ui_xy" signInfo="both">
             <template v-slot:tab0>
 
             {{ translations.docs.datastructure[store.lang] }}
@@ -1440,6 +1472,39 @@ Target the following css class to apply custom styles:
                         />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab8>
+                <VueUiXy :dataset="patternDataset" :config="
+                    isDarkMode ? 
+                    {
+                        ...mutableConfigDarkMode,
+                        chart: {
+                            ...mutableConfigDarkMode.chart,
+                            highlightArea: { show: false }
+                        },
+                        line: {
+                            ...mutableConfigDarkMode.line,
+                            radius: 4
+                        }
+                    } : 
+                    {
+                        ...mutableConfig,
+                        chart: {
+                            ...mutableConfig.chart,
+                            highlightArea: { show: false }
+                        },
+                        line: {
+                            ...mutableConfig.line,
+                            radius: 4
+                        }
+                    }" 
+                    :key="key">
+                    <template #pattern="{ seriesIndex, patternId }">
+                        <VueUiPattern v-if="seriesIndex === 0" :id="patternId" name="bubbles" stroke="blue" :strokeWidth="1" :scale="1"/>
+                        <VueUiPattern v-if="seriesIndex === 2" :id="patternId" name="maze" stroke="#fdd663"/>
+                    </template>
+                </VueUiXy>
             </template>
         </Box>
     </div>

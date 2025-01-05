@@ -676,7 +676,7 @@ const { configCode, showAllConfig } = useConfigCode()
             <BaseViewExampleButton link="/examples/categories#vue-ui-donut"/>
         </div>
 
-        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive schema="vue_ui_donut" signInfo="positiveOrNegativeOnly">
+        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive showPatterns schema="vue_ui_donut" signInfo="positiveOrNegativeOnly">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -1119,6 +1119,16 @@ Target the following css class to apply custom styles:
                         />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab8>
+                <VueDataUi component="VueUiDonut" :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                    <template #pattern="{ seriesIndex, patternId }">
+                        <VueUiPattern v-if="seriesIndex === 0" :id="patternId" name="zig-zag" stroke="blue" :strokeWidth="3" :scale="0.5"/>
+                        <VueUiPattern v-if="seriesIndex === 1" :id="patternId" name="scales" stroke="#1A1A1A"/>
+                        <VueUiPattern v-if="seriesIndex === 2" :id="patternId" name="hexagon-flooring" stroke="#1A1A1A"/>
+                    </template>
+                </VueDataUi>
             </template>
         </Box>
     </div>

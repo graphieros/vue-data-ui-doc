@@ -44,19 +44,19 @@ const dataset1 = ref({
             from: 1,
             to: 3,
             color: "#ff6400",
-            name: 'bad'
+            name: 'BAD'
         },
         {
             from: 3,
             to: 4,
             color: "#5f8bee",
-            name: 'acceptable'
+            name: 'ACCEPTABLE'
         },
         {
             from: 4,
             to: 5,
             color: "#42d392",
-            name: 'very good'
+            name: 'VERY GOOD'
         },
     ]
 });
@@ -69,13 +69,13 @@ const dataset2 = ref({
             from: -100,
             to: 0,
             color: "#ff6400",
-            name: 'critical'
+            name: 'CRITICAL'
         },
         {
             from: 0,
             to: 100,
             color: "#42d392",
-            name: 'nominal'
+            name: 'NOMINAL'
         },
     ]
 });
@@ -391,7 +391,7 @@ function randomizeData() {
             <BaseViewExampleButton link="/examples/categories#vue-ui-gauge"/>
         </div>
 
-        <Box showEmits showSlots showThemes showResponsive schema="vue_ui_gauge">
+        <Box showEmits showSlots showThemes showResponsive showPatterns schema="vue_ui_gauge">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -657,6 +657,104 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                         />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab8>
+                <VueUiGauge 
+                    :dataset="{...dataset2, value: 42}" 
+                    :config="isDarkMode ? 
+                    {
+                        ...darkModeConfig,
+                        style: {
+                            ...darkModeConfig.style,
+                            chart: {
+                                ...darkModeConfig.style.chart,
+                                layout: {
+                                    ...darkModeConfig.style.chart.layout,
+                                    radiusRatio: 0.8,
+                                    track: {
+                                        ...darkModeConfig.style.chart.layout.track,
+                                        size: 4
+                                    },
+                                    pointer: {
+                                        ...darkModeConfig.style.chart.layout.pointer,
+                                        size: 1,
+                                        useRatingColor: false,
+                                        stroke: 'transparent',
+                                        color: '#3A3A3A',
+                                        circle: {
+                                            ...darkModeConfig.style.chart.layout.pointer.circle,
+                                            color: '#2A2A2A',
+                                            stroke: '#4A4A4A',
+                                            strokeWidth: 1
+                                        }
+                                    },
+                                    segmentNames: {
+                                        ...darkModeConfig.style.chart.layout.segmentNames,
+                                        fontSize: 36
+                                    },
+                                    segmentSeparators: {
+                                        show: true,
+                                        offsetOut: 24,
+                                        strokeWidth: 1
+                                    },
+                                    markers: {
+                                        ...darkModeConfig.style.chart.layout.markers,
+                                        offsetY: 36
+                                    }
+                                }
+                            }
+                        }
+                    } : 
+                    {
+                        ...config,
+                        style: {
+                            ...config.style,
+                            chart: {
+                                ...config.style.chart,
+                                layout: {
+                                    ...config.style.chart.layout,
+                                    radiusRatio: 0.8,
+                                    track: {
+                                        ...config.style.chart.layout.track,
+                                        size: 4
+                                    },
+                                    pointer: {
+                                        ...config.style.chart.layout.pointer,
+                                        size: 0.8,
+                                        useRatingColor: false,
+                                        stroke: 'transparent',
+                                        color: '#3A3A3A',
+                                        circle: {
+                                            ...config.style.chart.layout.pointer.circle,
+                                            color: '#6A6A6A',
+                                            stroke: '#e1e5e8',
+                                            strokeWidth: 1
+                                        }
+                                    },
+                                    segmentNames: {
+                                        ...config.style.chart.layout.segmentNames,
+                                        fontSize: 36
+                                    },
+                                    segmentSeparators: {
+                                        show: true,
+                                        offsetOut: 24,
+                                        strokeWidth: 1
+                                    },
+                                    markers: {
+                                        ...config.style.chart.layout.markers,
+                                        offsetY: 36
+                                    }
+                                }
+                            }
+                        }
+                    }"
+                >
+                    <template #pattern="{ seriesIndex, patternId }">
+                        <VueUiPattern v-if="seriesIndex === 0" :id="patternId" name="bubbles" stroke="#FFFFFF40" :strokeWidth="1" :scale="1"/>
+                        <VueUiPattern v-if="seriesIndex === 1" :id="patternId" name="scales" stroke="#FFFFFF40"/>
+                    </template>
+                </VueUiGauge>
             </template>
         </Box>
     </div>

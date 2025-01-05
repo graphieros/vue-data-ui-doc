@@ -499,7 +499,7 @@ function randomizeData() {
             <BaseViewExampleButton link="/examples/categories#vue-ui-vertical-bar"/>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_vertical_bar" signInfo="both">
+        <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_vertical_bar" signInfo="both">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
               <div class="mt-4">
@@ -943,6 +943,14 @@ Target the following css class to apply custom styles:
                   />
                 </template>
               </ResponsiveUnit>
+            </template>
+
+            <template #tab8>
+              <VueUiVerticalBar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                <template #pattern="{ seriesIndex, patternId }">
+                        <VueUiPattern :id="patternId" name="maze" stroke="#FFFFFF80" :strokeWidth="3" :scale="0.5"/>
+                    </template>
+              </VueUiVerticalBar>
             </template>
         </Box>
     </div>

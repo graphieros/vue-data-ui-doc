@@ -377,7 +377,7 @@ function randomizeData() {
             <BaseRandomButton @click="randomizeData"/>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_rings" signInfo="positiveOnly">
+        <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_rings" signInfo="positiveOnly">
         
           <template #tab0>
             {{ translations.docs.datastructure[store.lang] }}
@@ -730,6 +730,18 @@ Target the following css class to apply custom styles:
                   />
                 </template>
               </ResponsiveUnit>
+            </template>
+
+            <template #tab8>
+              <VueUiRings :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                <template #pattern="{ seriesIndex, patternId }">
+                        <VueUiPattern v-if="seriesIndex === 0" :id="patternId" name="scales" stroke="#0000FF50" :strokeWidth="3" :scale="0.7"/>
+                        <VueUiPattern v-if="seriesIndex === 1" :id="patternId" name="scales" stroke="#00FF0090" :strokeWidth="3" :scale="0.7"/>
+                        <VueUiPattern v-if="seriesIndex === 2" :id="patternId" name="scales" stroke="#FF000060" :strokeWidth="3" :scale="0.7"/>
+                        <VueUiPattern v-if="seriesIndex === 3" :id="patternId" name="scales" stroke="#FF000030" :strokeWidth="3" :scale="0.7"/>
+                        <VueUiPattern v-if="seriesIndex === 4" :id="patternId" name="scales" stroke="#0000FF40" :strokeWidth="3" :scale="0.7"/>
+                    </template>
+              </VueUiRings>
             </template>
         </Box>
 

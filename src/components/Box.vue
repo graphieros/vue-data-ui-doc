@@ -19,6 +19,7 @@ type BoxProps = {
     showUseCases?: boolean;
     showThemes?: boolean;
     showResponsive?: boolean;
+    showPatterns?: boolean;
     activeTab?: number;
     schema?: string;
     hideSchemaDisclaimer?: boolean;
@@ -32,6 +33,7 @@ const props = withDefaults(defineProps<BoxProps>(), {
     showUseCases: false,
     showThemes: false,
     showResponsive: false,
+    showPatterns: false,
     activeTab: 0,
     schema: "",
     hideSchemaDisclaimer: false,
@@ -170,6 +172,17 @@ const menuTranslations = computed(() => {
             es: 'Responsivo',
             ko: '반응형',
             ar: 'متجاوب'
+        },
+        patterns: {
+            en: "Patterns",
+            fr: "Motifs",
+            pt: "Padrões",
+            de: "Muster",
+            zh: "图案",
+            jp: "模様",
+            es: "Patrones",
+            ko: "패턴",
+            ar: "أنماط"
         }
     }
 })
@@ -232,9 +245,44 @@ const menuItems = computed(() => {
             color: isDarkMode.value ? '#40b3c7' : '#1A1A1A',
             active: props.showResponsive,
             order: 7
-        }
+        },
+        {
+            name: menuTranslations.value.patterns[store.lang],
+            icon: 'hexagon',
+            color: isDarkMode.value ? '#FF7F7F' : '#1A1A1A',
+            active: props.showPatterns,
+            order: 8,
+        },
     ].filter(menu => menu.active)
 })
+
+const patternTranslations = computed(() => {
+    return {
+        description: {
+                en: "This component supports the #pattern slot. Here is how the chart looks like with patterns:",
+                fr: "Ce composant prend en charge le slot #pattern. Voici à quoi ressemble le graphique avec des motifs :",
+                pt: "Este componente suporta o slot #pattern. Veja como o gráfico fica com padrões:",
+                de: "Diese Komponente unterstützt den Slot #pattern. So sieht das Diagramm mit Mustern aus:",
+                zh: "此组件支持 #pattern 插槽。以下是带有图案的图表外观：",
+                jp: "このコンポーネントは #pattern スロットをサポートしています。パターンを適用した場合のチャートの見た目は以下の通りです:",
+                es: "Este componente admite el slot #pattern. Así es como se ve el gráfico con patrones:",
+                ko: "이 구성 요소는 #pattern 슬롯을 지원합니다. 패턴이 적용된 차트의 모습은 다음과 같습니다:",
+                ar: "يدعم هذا المكون الفتحة #pattern. هكذا يبدو الرسم البياني مع الأنماط:"
+            },
+            moreInfo: {
+                en: "More info on patterns",
+                fr: "Plus d'informations sur les motifs",
+                pt: "Mais informações sobre padrões",
+                de: "Mehr Informationen zu Mustern",
+                zh: "关于图案的更多信息",
+                jp: "パターンに関する詳細情報",
+                es: "Más información sobre patrones",
+                ko: "패턴에 대한 추가 정보",
+                ar: "مزيد من المعلومات حول الأنماط"
+            }
+    }
+})
+
 
 </script>
 
@@ -296,6 +344,20 @@ const menuItems = computed(() => {
         </div>
         <div v-if="activeTab === 7">
             <slot name="tab7" />
+        </div>
+        <div v-if="activeTab === 8">
+            <div v-if="patternTranslations" class="mb-8">
+                {{ patternTranslations.description[store.lang] }}
+            </div>
+            <slot name="tab8" />
+
+            <div v-if="patternTranslations && patternTranslations.moreInfo" class="flex place-items-center justify-center my-6">
+                <RouterLink :to="{ path: '/customization', hash: '#patterns'}">
+                    <button class="relative py-2 px-6 rounded-full bg-[#FF7F7F] text-black opacity-90 hover:opacity-100 hover:shadow-md transition-all">
+                        {{ patternTranslations.moreInfo[store.lang] }}
+                    </button>
+                </RouterLink>
+            </div>
         </div>
     </div>
 </template>

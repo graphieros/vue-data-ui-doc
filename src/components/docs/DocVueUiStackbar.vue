@@ -615,7 +615,7 @@ function randomizeData() {
             </code>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_stackbar" signInfo="both">
+        <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_stackbar" signInfo="both">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -1087,6 +1087,17 @@ Target the following css class to apply custom styles:
                         />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab8>
+                <VueUiStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                    <template #pattern="{ seriesIndex, patternId }">
+                        <VueUiPattern v-if="seriesIndex === 0" :id="patternId" name="zig-zag" stroke="#FFFFFF40" :strokeWidth="3" :scale="0.5"/>
+                        <VueUiPattern v-if="seriesIndex === 1" :id="patternId" name="maze" stroke="#6376DD60"/>
+                        <VueUiPattern v-if="seriesIndex === 2" :id="patternId" name="hexagon-flooring" stroke="#FF000050"/>
+                        <VueUiPattern v-if="seriesIndex === 3" :id="patternId" name="bubbles" stroke="#FF000050"/>
+                    </template>
+                </VueUiStackbar>
             </template>
         </Box>
 
