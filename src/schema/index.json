@@ -1324,6 +1324,10 @@
             {
                 "name": "chart-background",
                 "description": "Use this slot to customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "pattern",
+                "description": "Use this slot to customize datapoints with patterns"
             }
         ]
     },

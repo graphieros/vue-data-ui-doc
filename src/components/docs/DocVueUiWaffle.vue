@@ -395,7 +395,7 @@ const { configCode, showAllConfig } = useConfigCode()
             <BaseViewExampleButton link="/examples/categories#vue-ui-waffle"/>
         </div>
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_waffle" signInfo="positiveOrNegativeOnly">
+        <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_waffle" signInfo="positiveOrNegativeOnly">
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -753,6 +753,18 @@ Target the following css class to apply custom styles:
                         />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab8>
+                <div class="w-full mx-auto max-w-[500px]">
+                    <VueUiWaffle :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                        <template #pattern="{ seriesIndex, patternId }">
+                            <VueUiPattern v-if="seriesIndex === 0" :id="patternId" name="squares" stroke="#0000FF60" :scale="0.64"/>
+                            <VueUiPattern v-if="seriesIndex === 1" :id="patternId" name="squares" stroke="#0000FF40" :scale="0.64"/>
+                            <VueUiPattern v-if="seriesIndex === 2" :id="patternId" name="squares" stroke="#FF000060" :scale="0.64"/>
+                        </template>
+                    </VueUiWaffle>
+                </div>
             </template>
         </Box>
     </div>
