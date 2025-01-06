@@ -113,6 +113,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ],
         "exposed": [
@@ -240,6 +244,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ],
         "exposed": [
@@ -341,6 +349,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ],
         "exposed": [
@@ -530,6 +542,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
@@ -779,6 +795,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -958,6 +978,10 @@
                 "description": "Use this slot to add a chart caption content"
             },
             {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
+            },
+            {
                 "name": "pattern",
                 "description": "Use this slot to customize datapoints with patterns"
             }
@@ -1065,6 +1089,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ],
         "examples": [
@@ -1144,6 +1172,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -1288,6 +1320,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -1464,6 +1500,10 @@
                 "description": "Use this slot to add a chart caption content"
             },
             {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
+            },
+            {
                 "name": "pattern",
                 "description": "Use this slot to customize datapoints with patterns"
             }
@@ -1631,6 +1671,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -1705,6 +1749,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -1786,6 +1834,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2132,6 +2184,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2305,6 +2361,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2415,6 +2475,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2451,6 +2515,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2557,6 +2625,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2745,6 +2817,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -2903,6 +2979,10 @@
             {
                 "name": "pattern",
                 "description": "Use this slot to customize datapoints with patterns"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3157,6 +3237,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3348,6 +3432,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3444,6 +3532,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3656,6 +3748,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3797,6 +3893,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -3977,6 +4077,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -4080,6 +4184,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -4508,6 +4616,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -4755,6 +4867,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -4849,6 +4965,10 @@
             {
                 "name": "pattern",
                 "description": "Use this slot to customize datapoints with patterns"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -4999,6 +5119,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -5127,6 +5251,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -5294,6 +5422,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -5455,6 +5587,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             },
             {
                 "name": "pattern",
@@ -5637,6 +5773,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -5885,6 +6025,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -6028,6 +6172,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -6154,6 +6302,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
@@ -6327,6 +6479,10 @@
             {
                 "name": "source",
                 "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
             }
         ]
     },
