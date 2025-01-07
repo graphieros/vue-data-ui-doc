@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.69",
+    "date": "2025-01-07",
+    "updates": [
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Add 'none' sort option to load the chart in the provided order.",
+        "link": "/docs#vue-ui-vertical-bar"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.68",
     "date": "2025-01-06",
     "updates": [

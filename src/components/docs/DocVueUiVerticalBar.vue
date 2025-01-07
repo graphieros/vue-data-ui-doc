@@ -606,7 +606,7 @@ const <span class="text-app-green">dataset: VueUiVerticalBarDatasetItem[]</span>
         <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseDetails attr="layout" :level="3" title="style.chart.layout">
           <BaseDetails attr="bars" :level="4" title="style.chart.layout.bars">
-            <BaseAttr name="sort" attr="style.chart.layout.bars.sort" type="select" defaultVal="desc" :options="['desc', 'asc']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="sort" attr="style.chart.layout.bars.sort" type="select" defaultVal="desc" :options="['desc', 'asc', 'none']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="The 'none' option is supported since v2.4.69"/>
             <BaseAttr name="useStroke" attr="style.chart.layout.bars.useStroke" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="strokeWidth" attr="style.chart.layout.bars.strokeWidth" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="height" attr="style.chart.layout.bars.height" type="number" defaultVal="32" :min="1" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

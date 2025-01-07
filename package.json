@@ -19,8 +19,8 @@
     "prismjs": "^1.29.0",
     "ssh2": "^1.16.0",
     "vue": "^3.5.13",
-    "vue-data-ui": "^2.4.68",
-    "vue-data-ui-cli": "^1.0.13",
+    "vue-data-ui": "^2.4.69",
+    "vue-data-ui-cli": "^1.0.14",
     "vue-router": "^4.0.13",
     "vue-tabler-icons": "^2.21.0"
   },
