@@ -469,7 +469,13 @@ onMounted(() => {
         <div class="flex flex-row place-items-center justify-center">
             <RouterLink to="/examples/categories">
                 <button class="bg-app-green text-black py-4 px-8 rounded-full text-xl opacity-90 hover:opacity-100 hover:shadow-md transition-all flex flex-row gap-2 place-items-center" dir="auto">
-                    <VueUiIcon name="smiley" stroke="#1d915d" :size="32"/>
+                    <div class="relative w-[32px]">
+                        <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" viewBox="0 0 10 10" height="32" width="32">
+                            <circle cx="5" cy="5" r="5" fill="#FFFFFF80"/>
+                            <circle cx="5" cy="5" r="5" fill="#FF800020"/>
+                        </svg>
+                        <VueUiIcon class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" name="smiley" stroke="#0e5938" :size="32"/>
+                    </div>
                     {{ translations.docs.moreExamples[store.lang] }}
                 </button>
             </RouterLink>
