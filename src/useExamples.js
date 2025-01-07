@@ -4172,10 +4172,25 @@ export default function useExamples() {
                     ar: "مع خلفية مخصصة"
                 }
             },
-            // STACKBAR BASIC
+            // STACKBAR PATTERN
             { 
                 dataset: DATASET_STACKBAR_BASIC.value, 
-                config: CONFIG_STACKBAR_BASE.value,
+                config: {
+                    ...CONFIG_STACKBAR_BASE.value,
+                    style: {
+                        ...CONFIG_STACKBAR_BASE.value.style,
+                        chart: {
+                            ...CONFIG_STACKBAR_BASE.value.style.chart,
+                            bars: {
+                                ...CONFIG_STACKBAR_BASE.value.style.chart.bars,
+                                dataLabels: {
+                                    ...CONFIG_STACKBAR_BASE.value.style.chart.bars.dataLabels,
+                                    show: false
+                                }
+                            }
+                        }
+                    }
+                },
                 component: 'VueUiStackbar',
                 icon: 'chartStackbar',
                 id: 'stack-bar-pattern',

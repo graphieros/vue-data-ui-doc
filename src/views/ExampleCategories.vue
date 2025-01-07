@@ -439,7 +439,7 @@ const hoveredLink = ref(null);
 
                                 <template #pattern="{ seriesIndex, patternId }" v-if="example.pattern">
                                     <Suspense>
-                                        <VueUiPattern name="hexagon-diamond" :id="patternId" :stroke="isDarkMode ? '#5A5A5A' : '#CCCCCC'" :scale="2"/>
+                                        <VueUiPattern name="bubbles" :id="patternId" :stroke="isDarkMode ? '#5A5A5A' : '#CCCCCC'" :scale="1"/>
                                     </Suspense>
                                 </template>
 
