@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import ThemeTag from "../ThemeTag.vue";
 
 const quickDatasetDonut = ref([
     {
@@ -47,22 +48,22 @@ const config = ref({
 <template>
     <div class="my-4 grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center w-full p-4 bg-gray-200 dark:bg-[#3A3A3A] rounded-md">
         <div class="w-full shadow-md">
-            <code>theme: "" (default)</code>
+            <ThemeTag type="default"/>
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetLine" :config="{...config, theme: ''}" />
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="{...config, theme: ''}" />
         </div>
         <div class="w-full shadow-md">
-            <code>theme: "zen"</code>
+            <ThemeTag type="zen"/>
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetLine" :config="{...config, theme: 'zen'}" />
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="{...config, theme: 'zen'}" />
         </div>
         <div class="w-full shadow-md">
-            <code>theme: "concrete"</code>
+            <ThemeTag type="concrete"/>
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetLine" :config="{...config, theme: 'concrete'}" />
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="{...config, theme: 'concrete'}" />
         </div>
         <div class="w-full shadow-md">
-            <code>theme: "hack"</code>
+            <ThemeTag type="hack"/>
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetLine" :config="{...config, theme: 'hack'}" />
             <VueDataUi component="VueUiQuickChart" :dataset="quickDatasetDonut" :config="{...config, theme: 'hack'}" />
         </div>
