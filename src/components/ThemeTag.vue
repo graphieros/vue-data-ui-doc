@@ -29,7 +29,17 @@ const themes = ref({
         backgroundColor: "#1A1A1A",
         color: "#99AA99",
         fill: "#009900"
-    }
+    },
+    celebration: {
+        backgroundColor: "#FFF8E1",
+        color: "#424242",
+        fill: "#D32F2F"
+    },
+    celebrationNight: {
+        backgroundColor: "#1E1E1E",
+        color: "#BDBDBD",
+        fill: "#D32F2F"
+    },
 })
 
 </script>

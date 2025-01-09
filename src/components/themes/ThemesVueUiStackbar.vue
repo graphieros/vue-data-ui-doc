@@ -55,5 +55,13 @@ const config = ref({
             <ThemeTag type="hack"/>
             <VueUiStackbar :dataset="dataset" :config="{...config, theme: 'hack'}" />
         </div>
+        <div class="w-full shadow-md">
+            <ThemeTag type="celebration"/>
+            <VueUiStackbar :dataset="dataset" :config="{...config, theme: 'celebration'}" />
+        </div>
+        <div class="w-full shadow-md">
+            <ThemeTag type="celebrationNight"/>
+            <VueUiStackbar :dataset="dataset" :config="{...config, theme: 'celebrationNight'}" />
+        </div>
     </div>
 </template>

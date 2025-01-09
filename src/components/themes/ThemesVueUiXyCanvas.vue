@@ -71,5 +71,13 @@ const config = ref({ // TODO
             <ThemeTag type="hack"/>
             <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="{...config, theme: 'hack'}" />
         </div>
+        <div class="w-full shadow-md">
+            <ThemeTag type="celebration"/>
+            <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="{...config, theme: 'celebration'}" />
+        </div>
+        <div class="w-full shadow-md">
+            <ThemeTag type="celebrationNight"/>
+            <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="{...config, theme: 'celebrationNight'}" />
+        </div>
     </div>
 </template>
