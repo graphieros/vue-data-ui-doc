@@ -964,7 +964,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiXyConfig" equal>
         <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-        <span>theme: ""; ("zen" | "hack" | "concrete" | "")</span>
+        <span>theme: ""; ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
         <span>customPalette: []; <span class="text-app-blue text-xs">// string[]</span></span>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="showTable" attr="showTable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />

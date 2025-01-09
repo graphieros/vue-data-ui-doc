@@ -451,7 +451,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRingsDatasetIte
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiRingsConfig" equal>
     <span>responsive: false; <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
-    <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
+    <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
     <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

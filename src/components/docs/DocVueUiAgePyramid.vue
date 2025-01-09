@@ -1045,7 +1045,7 @@ const { configCode, showAllConfig } = useConfigCode()
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiAgePyramidConfig" equal>
     <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-    <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+    <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

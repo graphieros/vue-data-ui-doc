@@ -741,7 +741,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
     <BaseDetails attr="const config: VueUiDonutConfig" equal>
         <BaseAttr name="type" attr="type" type="select" defaultVal="classic" :options="['classic', 'polar']" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <span>responsive: false, <span class="text-gray-600 dark:text-app-blue text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-        theme: "", ("zen" | "hack" | "concrete" | "")<br>
+        theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")<br>
         <span>customPalette: [], <span class="text-xs text-app-blue">// string[]</span></span>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

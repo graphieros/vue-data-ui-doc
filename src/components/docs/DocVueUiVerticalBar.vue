@@ -596,7 +596,7 @@ const <span class="text-app-green">dataset: VueUiVerticalBarDatasetItem[]</span>
 
 <code ref="configCode">
   <BaseDetails attr="const config:VueUiVerticalBarConfig" equal>
-    <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+    <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
     <span>customPalette: []; <span class="text-app-blue text-xs">// string[]</span></span>
     <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
     <BaseDetails attr="style" :level="1">

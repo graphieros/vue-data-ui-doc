@@ -661,7 +661,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
 
           <code ref="configCode">
             <BaseDetails attr="const config: VueUiXyCanvasConfig" equal>
-              <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+              <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
               <span
                 >customPalette: [];
                 <span class="text-app-blue text-xs">// string[]</span></span

@@ -489,7 +489,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDumbbellDataset
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiDumbbellConfig">
         <span> responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
-        <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
+        <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <BaseAttr name="useAnimation" attr="useAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseAttr name="animationSpeed" attr="animationSpeed" type="range" defaultVal="2" :min="0.1" :max="6" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseDetails attr="style" :level="1">

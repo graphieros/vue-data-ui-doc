@@ -251,7 +251,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiSparkTrendConfig" equal>
-        <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+        <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
         <BaseDetails attr="downsample" :level="1">
             <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
         </BaseDetails>

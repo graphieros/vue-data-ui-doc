@@ -321,7 +321,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparkStackbarDa
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiSparkStackBarConfig" equal>
-    <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+    <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
     <span>customPalette: [], <span class="text-app-blue text-xs">// string[]</span></span>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>

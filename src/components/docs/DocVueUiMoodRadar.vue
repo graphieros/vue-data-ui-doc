@@ -392,7 +392,7 @@ const { configCode, showAllConfig } = useConfigCode()
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiMoodRadarConfig" equal>
-        <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
+        <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">

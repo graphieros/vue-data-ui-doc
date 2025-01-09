@@ -731,7 +731,7 @@ const { configCode, showAllConfig } = useConfigCode()
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiQuickChartConfig" equal>
         <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-        <span>theme: ""; ("zen" | "hack" | "concrete" | "")</span>
+        <span>theme: ""; ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
         <BaseAttr name="axisLabelsFontSize" attr="axisLabelsFontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="backgroundColor" attr="backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <div class="py-4 bg-gray-200 dark:bg-[#FFFFFF10] rounded-md px-4 pl-8 border-l border-black dark:border-app-blue my-2">

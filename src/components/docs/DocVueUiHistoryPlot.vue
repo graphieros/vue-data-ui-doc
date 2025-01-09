@@ -620,7 +620,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiHistoryPlotData
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiHistoryPlotConfig" equal>
         <span>responsive: false, <span class="text-gray-600 dark:text-app-blue text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-        <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+        <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
         <span>customPalette: [], <span class="text-xs text-app-blue">// string[]</span></span>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseDetails attr="style" :level="1">

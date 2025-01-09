@@ -313,7 +313,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiWheelConfig" equal>
     <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
-    <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
+    <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseDetails attr="chart" :level="2" title="style.chart">

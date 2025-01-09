@@ -585,7 +585,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiParallelCoordin
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiParallelCoordinatePlotConfig" equal>
-        <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+        <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
         <span>customPalette: [], // string[]</span>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="style" :level="1">

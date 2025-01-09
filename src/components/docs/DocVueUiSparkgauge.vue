@@ -275,7 +275,7 @@ function randomizeData() {
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiSparkgaugeConfig" equal>
-        <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+        <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
         <BaseDetails attr="style" level="1">
             <span>fontFamily: "inherit",</span>
             <BaseAttr name="background" attr="style.background" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -392,7 +392,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiTableSparklineConfig" equal>
-    <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
+    <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <span>colNames: [], <BaseComment>{{ translations.docs.example[store.lang] }} : ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE"]</BaseComment></span>
     <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
     <span>fontFamily: "inherit",</span>

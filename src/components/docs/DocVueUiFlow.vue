@@ -366,7 +366,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiFlowDatasetItem
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiFlowConfig" equal>
-        <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+        <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
         <span>customPalette: []; // string[]</span>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>

@@ -716,7 +716,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
                     <code ref="configCode">
     <BaseDetails attr="const config: VueUiQuadrantConfig" equal>
         <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
-        <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span>
+        <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="zoomAnimationFrames" attr="zoomAnimationFrames" type="range" defaultVal="20" :min="5" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />

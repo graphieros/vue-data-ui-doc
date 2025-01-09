@@ -491,7 +491,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRelationCircleD
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiRelationCircleConfig" equal>
     <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
-    <span>theme: "", <BaseComment>"zen" | "hack" | "concrete" | ""</BaseComment></span> 
+    <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span> 
     <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
     <BaseDetails attr="style">
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

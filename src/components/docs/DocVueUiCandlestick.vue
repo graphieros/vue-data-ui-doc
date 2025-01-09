@@ -509,7 +509,7 @@ const <span class="text-black dark:text-app-green">dataset: Array&lt;Array&lt;st
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiCandlestickConfig" equal>
     <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-    <span>theme: "", ("zen" | "hack" | "concrete" | "")</span>
+    <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
     <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
