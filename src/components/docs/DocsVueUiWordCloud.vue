@@ -432,7 +432,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 <BaseDetails attr="zoom" :level="3" title="style.chart.zoom">
                     <BaseAttr name="show" attr="style.chart.zoom.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="style.chart.zoom.color" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <BaseAttr name="color" attr="style.chart.zoom.highlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="highlightColor" attr="style.chart.zoom.highlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <span>useResetSlot: false, <BaseComment>To use a custom slot for the reset feature (see slots tab)</BaseComment></span>
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
