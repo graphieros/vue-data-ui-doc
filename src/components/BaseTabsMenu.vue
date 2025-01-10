@@ -26,7 +26,9 @@ const selectTab = (item) => {
 </script>
 
 <template>
-    <BaseTabContainer>
+    <BaseTabContainer
+        containerClass="py-2 shadow-md bg-[#FEFEFE] dark:bg-[#FFFFFF05]"
+    >
         <template #content>
             <div
                 v-for="(item, index) in items"

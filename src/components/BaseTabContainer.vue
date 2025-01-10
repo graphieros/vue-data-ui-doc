@@ -6,6 +6,10 @@ const props = defineProps({
     selectedIndexOnLoad: {
         type: Number,
         default: null
+    },
+    containerClass: {
+        type: String,
+        default: ''
     }
 });
 
@@ -134,7 +138,7 @@ onUnmounted(() => {
             <VueUiIcon name="arrowLeft" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'" />
         </button>
 
-        <div ref="tabsContainer" class="flex select-none overflow-x-auto space-x-4 scrollbar-hide w-full px-8"
+        <div ref="tabsContainer" :class="`flex select-none overflow-x-auto space-x-4 scrollbar-hide w-full px-8 ${containerClass}`"
             @scroll="onScroll">
             <slot name="content" />
         </div>
