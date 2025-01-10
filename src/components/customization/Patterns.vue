@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
 import CodeParser from "./CodeParser.vue";
+import FlexibleTooltip from "../FlexibleTooltip.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -403,6 +404,18 @@ const codeMultiPattern = ref(`<VueUiDonut
 </VueUiDonut>`
 )
 
+const supportedComponents = computed(() => {
+    return [
+        { name: 'VueUiXy', link: 'docs#vue-ui-xy', icon: 'chartLine' },
+        { name: 'VueUiDonut', link: 'docs#vue-ui-donut', icon: 'chartDonut' },
+        { name: 'VueUiGauge', link: 'docs#vue-ui-gauge', icon: 'chartGauge' },
+        { name: 'VueUiRings', link: 'docs#vue-ui-rings', icon: 'chartRings' },
+        { name: 'VueUiStackbar', link: 'docs#vue-ui-stackbar', icon: 'chartStackbar' },
+        { name: 'VueUiVerticalBar', link: 'docs#vue-ui-vertical-bar', icon: 'chartVerticalBar' },
+        { name: 'VueUiWaffle', link: 'docs#vue-ui-waffle', icon: 'chartWaffle' },
+    ]
+})
+
 </script>
 
 <template>
@@ -425,16 +438,27 @@ const codeMultiPattern = ref(`<VueUiDonut
                 </div>
             </div>
         </div>
-        <div class="flex-1 mb-6">
+        <div class="flex-1 mb-6 text-center">
             {{ translations.supportedComponents[store.lang] }}
-            <ul class="list-disc pl-4 mt-2">
-                <li>VueUiDonut</li>
-                <li>VueUiGauge</li>
-                <li>VueUiRings</li>
-                <li>VueUiStackbar</li>
-                <li>VueUiVerticalBar</li>
-                <li>VueUiXy</li>
-            </ul>
+
+            <div class="flex flex-row gap-2 flex-wrap place-items-center justify-center mt-6 mb-12">
+                <FlexibleTooltip 
+                    v-for="c in supportedComponents"
+                    position="bottom"
+                    :content="c.name"
+                    width="w-fit"
+                    delay="delay-150"
+                    :always-blue="true"
+                >
+                    <RouterLink :to="c.link">
+                        <button
+                            class="flex place-items-center justify-center p-4 bg-[#FFFFFF10] shadow hover:outline hover:outline-app-blue hover:bg-[#5f8aee20] transition-colors"
+                        >
+                            <VueUiIcon :name="c.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                        </button>
+                    </RouterLink>
+                </FlexibleTooltip>
+            </div>
         </div>
 
         <BaseCustomizationBox :title="translations.uniquePattern[store.lang]">
