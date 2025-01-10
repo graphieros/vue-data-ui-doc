@@ -16,8 +16,6 @@ The repo for the actual Vue Data UI library is available <a href="https://github
 
 Contributions are welcome:)
 
-The documentation website was built in a hurry, so it might appear messy. We are gradually refactoring it so it becomes more pleasing to maintain.
-
 ### Translations
 
 Translations are setup on a Pinia store (useMainStore), and serve translations for the following languages:
