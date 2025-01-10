@@ -23,7 +23,7 @@ defineProps({
         backgroundColor: backgroundColor,
         color: color
     }"
-        class="pl-2 pr-4 rounded-full w-fit flex flex-row gap-2 place-items-center shadow-md"
+        class="py-1 pl-2 pr-4 rounded-full w-fit flex flex-row gap-2 place-items-center shadow-md"
     >
         <slot/>
     </div>
