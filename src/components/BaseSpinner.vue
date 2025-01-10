@@ -11,6 +11,7 @@ const isDarkMode = computed(() => {
 
 <template>
     <div class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+        <img class="loader-logo fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" src="../assets/logo.png" width="80" height="80"/>
         <span :class="{ 'loader': true, 'loader-dark': isDarkMode, 'loader-light': !isDarkMode }"></span>
     </div>
 </template>
@@ -55,6 +56,19 @@ const isDarkMode = computed(() => {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+.loader-logo {
+    animation: loader-logo 1s infinite alternate-reverse;
+}
+
+@keyframes loader-logo {
+    from {
+        transform: translateX(-50%) translateY(-50%) scale(0.5);
+    }
+    to {
+        transform: translateX(-50%) translateY(-50%) scale(1);
     }
 }
 </style>
