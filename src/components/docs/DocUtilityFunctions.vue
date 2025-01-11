@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { darkenColor, lightenColor, shiftColorHue } from "vue-data-ui";
+import { abbreviate, darkenColor, lightenColor, shiftColorHue } from "vue-data-ui";
 import BaseColorInput from "../BaseColorInput.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 
@@ -67,6 +67,16 @@ const strengthLight = ref(0.5);
 const colorHue = ref('#FF0000');
 const strengthHue = ref(0.1);
 
+const abbrSource = ref('lorem ipsum dolor sit amet');
+const abbrLen = ref(5);
+
+const abbreviated = computed(() => {
+    return abbreviate({
+        source: abbrSource.value,
+        length: abbrLen.value
+    })
+})
+
 </script>
 
 <template>
@@ -103,6 +113,24 @@ const abbreviated = abbreviate({
 </code>
 </pre>
 
+                </div>
+                <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
+                    <div class="p-4 flex flex-col gap-2 w-full">
+                        <div class="flex flex-col gap-1">
+                            <label for="abbrSource" class="text-xs">Text source:</label>
+                            <input id="abbrSource" type="text" v-model="abbrSource" class="w-full py-1">
+                        </div>
+                        <div class="flex flex-col gap-1 w-fit">
+                            <label class="text-xs" for="abbrLen">Abbrevation length:</label>
+                            <BaseNumberInput v-model:value="abbrLen" :min="1" :max="12" labelId="abbrLen"/>
+                        </div>
+                        <div class="flex flex-row gap-2 place-items-center">
+                            <div>Result:</div>
+                            <div class="bg-gray-200 dark:bg-[#FFFFFF10] w-full py-1 px-2 rounded">
+                                {{ abbreviated }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
