@@ -75,17 +75,14 @@ const patterns = ref([
 const dataset = ref([
 {
     name: "Serie 1",
-    color: "#5f8bee",
     values: [100]
 },
 {
     name: "Serie 2",
-    color: "#42d392",
     values: [200]
 },
 {
     name: "Serie 3",
-    color: "#ff6400",
     values: [300, 1]
 },
 ]);
@@ -96,7 +93,7 @@ useCssAnimation: true,
 style: {
     fontFamily: "inherit",
     chart: {
-    useGradient: true,
+    useGradient: false,
     gradientIntensity: 40,
     backgroundColor: "#1A1A1A",
     color: "#CCCCCC",
@@ -346,22 +343,22 @@ table: {
     show: false,
     responsiveBreakpoint: 300,
     columnNames: {
-    series: "Series",
-    value: "Value",
-    percentage: "Percentage"
+        series: "Series",
+        value: "Value",
+        percentage: "Percentage"
     },
     th: {
-    backgroundColor: "#F3F4F6",
-    color: "#1A1A1A",
-    outline: "none"
+        backgroundColor: "#F3F4F6",
+        color: "#1A1A1A",
+        outline: "none"
     },
     td: {
-    backgroundColor: "#F3F4F6",
-    color: "#1A1A1A",
-    outline: "none",
-    roundingValue: 0,
-    roundingPercentage: 0
-    }
+        backgroundColor: "#F3F4F6",
+        color: "#1A1A1A",
+        outline: "none",
+        roundingValue: 0,
+        roundingPercentage: 0
+        }
 }
 });
 
@@ -441,7 +438,7 @@ const supportedComponents = computed(() => {
         <div class="flex-1 mb-6 text-center">
             {{ translations.supportedComponents[store.lang] }}
 
-            <div class="flex flex-row gap-2 flex-wrap place-items-center justify-center mt-6 mb-12">
+            <div class="flex flex-row gap-2 flex-wrap place-items-center justify-center mt-8 mb-12">
                 <FlexibleTooltip 
                     v-for="c in supportedComponents"
                     position="bottom"
@@ -452,8 +449,9 @@ const supportedComponents = computed(() => {
                 >
                     <RouterLink :to="c.link">
                         <button
-                            class="flex place-items-center justify-center p-4 bg-[#FFFFFF10] shadow hover:outline hover:outline-app-blue hover:bg-[#5f8aee20] transition-colors"
+                            class="relative flex place-items-center justify-center p-4 bg-[#FFFFFF10] shadow hover:outline hover:outline-app-blue hover:bg-[#5f8aee20] transition-colors"
                         >
+                            <div class="text-[8px] absolute -top-4">{{ c.name }}</div>
                             <VueUiIcon :name="c.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
                         </button>
                     </RouterLink>
@@ -467,7 +465,7 @@ const supportedComponents = computed(() => {
             </template>
             <template #chart>
             <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">
-                <template #pattern="{ seriesIndex, patternId}">
+                <template #pattern="{ patternId}">
                     <VueUiPattern :id="patternId" name="maze"/>
                 </template>
             </VueDataUi>
