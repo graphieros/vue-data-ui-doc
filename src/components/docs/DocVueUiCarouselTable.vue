@@ -9,6 +9,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseAttr from "../BaseAttr.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseExposedMethod from "../BaseExposedMethod.vue";
 
 const mainConfig = useConfig()
 
@@ -564,30 +565,36 @@ const <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDa
             </template>
 
             <template #tab2>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generatePdf</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generatePdf[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generateCsv</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateCsv[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generateImage</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>toggleAnimation</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleAnimation[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>pauseAnimation</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.pauseAnimation[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>resumeAnimation</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.resumeAnimation[store.lang] }}</div>
-                </div>
+                <BaseExposedMethod
+                    component="VueUiCarouselTable"
+                    name="generatePdf"
+                    :description="translations.docs.emits.generatePdf[store.lang]"
+                />
+                <BaseExposedMethod
+                    component="VueUiCarouselTable"
+                    name="generateCsv"
+                    :description="translations.docs.emits.generateCsv[store.lang]"
+                />
+                <BaseExposedMethod
+                    component="VueUiCarouselTable"
+                    name="generateImage"
+                    :description="translations.docs.emits.generateImage[store.lang]"
+                />
+                <BaseExposedMethod
+                    component="VueUiCarouselTable"
+                    name="toggleAnimation"
+                    :description="translations.docs.emits.toggleAnimation[store.lang]"
+                />
+                <BaseExposedMethod
+                    component="VueUiCarouselTable"
+                    name="pauseAnimation"
+                    :description="translations.docs.emits.pauseAnimation[store.lang]"
+                />
+                <BaseExposedMethod
+                    component="VueUiCarouselTable"
+                    name="resumeAnimation"
+                    :description="translations.docs.emits.resumeAnimation[store.lang]"
+                />
             </template>
 
             <template #tab3>
