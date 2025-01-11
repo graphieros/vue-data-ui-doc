@@ -4,6 +4,7 @@ import {adaptColorToBackground} from '../maker/lib'
 import { useMainStore } from "../../stores";
 import { getPalette } from "vue-data-ui";
 import ConfirmCopy from "../ConfirmCopy.vue";
+import CodeParser from "./CodeParser.vue";
 
 const store = useMainStore()
 const translations = computed(() => {
@@ -37,6 +38,41 @@ function copyContent(color) {
     document.body.removeChild(selBox);
     store.copy();
 }
+
+const codeContent = computed(() => {
+    return {
+        default: `
+        // default palette
+        import { getPalette } from "vue-data-ui";
+        const palette = getPalette();
+        `,
+        celebration: `
+        // celebration palette
+        import { getPalette } from "vue-data-ui";
+        const palette = getPalette('celebration');
+        `,
+        celebrationNight: `
+        // celebrationNight palette
+        import { getPalette } from "vue-data-ui";
+        const palette = getPalette('celebrationNight');
+        `,
+        zen: `
+        // zen palette
+        import { getPalette } from "vue-data-ui";
+        const palette = getPalette('zen');
+        `,
+        concrete: `
+        // concrete palette
+        import { getPalette } from "vue-data-ui";
+        const palette = getPalette('concrete');
+        `,
+        hack: `
+        // hack palette
+        import { getPalette } from "vue-data-ui";
+        const palette = getPalette('hack');
+        `,
+    }
+})
 
 </script>
 
@@ -138,11 +174,8 @@ function copyContent(color) {
             </li>
         </ul>
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
-        <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md">
-            <code class="text-xs text-left">
-                import { getPalette } from "vue-data-ui";<br>
-                const palette = getPalette(); // Default palette
-            </code>
+        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+            <CodeParser :content="codeContent.default" language="javascript"/>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in palette">
@@ -156,12 +189,10 @@ function copyContent(color) {
             </div>
         </div>
 
-        <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md mt-12">
-            <code class="text-xs text-left">
-                import { getPalette } from "vue-data-ui";<br>
-                const palette = getPalette('celebration');
-            </code>
+        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+            <CodeParser :content="codeContent.celebration" language="javascript"/>
         </div>
+
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('celebration')">
                 <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
@@ -174,11 +205,8 @@ function copyContent(color) {
             </div>
         </div>
 
-        <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md mt-12">
-            <code class="text-xs text-left">
-                import { getPalette } from "vue-data-ui";<br>
-                const palette = getPalette('celebrationNight');
-            </code>
+        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+            <CodeParser :content="codeContent.celebrationNight" language="javascript"/>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('celebrationNight')">
@@ -192,11 +220,8 @@ function copyContent(color) {
             </div>
         </div>
 
-        <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md mt-12">
-            <code class="text-xs text-left">
-                import { getPalette } from "vue-data-ui";<br>
-                const palette = getPalette('zen');
-            </code>
+        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+            <CodeParser :content="codeContent.zen" language="javascript"/>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('zen')">
@@ -210,11 +235,8 @@ function copyContent(color) {
             </div>
         </div>
 
-        <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md mt-12">
-            <code class="text-xs text-left">
-                import { getPalette } from "vue-data-ui";<br>
-                const palette = getPalette('concrete');
-            </code>
+        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+            <CodeParser :content="codeContent.concrete" language="javascript"/>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('concrete')">
@@ -228,11 +250,8 @@ function copyContent(color) {
             </div>
         </div>
 
-        <div class="w-full text-left mb-10 p-2 bg-gray-200 dark:bg-[#2A2A2A] rounded-md mt-12">
-            <code class="text-xs text-left">
-                import { getPalette } from "vue-data-ui";<br>
-                const palette = getPalette('hack');
-            </code>
+        <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+            <CodeParser :content="codeContent.hack" language="javascript"/>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('hack')">
