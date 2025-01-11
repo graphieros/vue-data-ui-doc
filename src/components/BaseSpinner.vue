@@ -18,12 +18,9 @@ const isDarkMode = computed(() => {
 
 <style scoped>
 
-.loader-dark {
-    border-top: 4px solid #FFF;
-}
-
+.loader-dark,
 .loader-light {
-    border-top: 4px solid #1A1A1A;
+    border-top: 4px solid #5f8aee;
 }
 
 .loader {
