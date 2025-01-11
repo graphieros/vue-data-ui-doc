@@ -11,8 +11,9 @@ const dataset = ref([
     },
     {
         name: 'Serie 2',
-        series: [8, 25, 13, 29, 31, 42, 23, 29, 12, 44, 13, 20],
+        series: [44, 32, 42, 50, 45, 40, 38, 42, 36, 32, 33, 40],
         type: 'line',
+        smooth: true,
         dataLabels: true
     }
 ])
@@ -24,7 +25,11 @@ const config = ref({ // TODO
         }
     },
     line: {
-        strokeWidth: 4
+        strokeWidth: 4,
+        radius: 6,
+        labels: {
+            show: true
+        }
     },
     chart: {
         title: {
