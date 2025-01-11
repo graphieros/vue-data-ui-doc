@@ -1301,6 +1301,25 @@ export default function useExamples() {
         ]
     })
 
+    const DATASET_GAUGE_SINGLE_TEXT = ref({
+        value: 66,
+        series: [
+            { from: 0, to: 50, color: '#c96747', name: 'CRITICAL' },
+            { from: 50, to: 100, color: '#54b840', name: ' NOMINAL' },
+        ]
+    })
+
+    const DATASET_GAUGE_EMOJIS = ref({
+        value: 3.5,
+        series: [
+            { from: 0, to: 1, color: '#c95247', name: '😧' },
+            { from: 1, to: 2, color: '#c97047', name: '🙁' },
+            { from: 2, to: 3, color: '#c5c947', name: '😐' },
+            { from: 3, to: 4, color: '#86c947', name: '🙂' },
+            { from: 4, to: 5, color: '#54b840', name: '😀' },
+        ]
+    })
+
      //-------------- VUE-UI-ONION --------------//
     const CONFIG_ONION_BASIC = computed(() => {
         return {
@@ -4975,6 +4994,110 @@ export default function useExamples() {
                     es: "Segmento único con una etiqueta de nombre enorme",
                     ko: "큰 이름 레이블이 있는 단일 세그먼트",
                     ar: "قطاع واحد يحمل تسمية اسم كبيرة"
+                }
+            },
+            // GAUGE SINGLE WITH TEXT ONLY
+            { 
+                dataset: DATASET_GAUGE_SINGLE_TEXT.value, 
+                config: {
+                    ...CONFIG_GAUGE_BASE.value,
+                    style: {
+                        ...CONFIG_GAUGE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_GAUGE_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_GAUGE_BASE.value.style.chart.layout,
+                                radiusRatio: 0.8,
+                                track: {
+                                    size: 0,
+                                },
+                                markers: {
+                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.markers,
+                                    offsetY: 40
+                                },
+                                segmentNames: {
+                                    fontSize: 55
+                                },
+                                pointer: {
+                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.pointer,
+                                    size: 1.1,
+                                },
+                                segmentSeparators: {
+                                    show: true,
+                                    stroke: colors.value.gridStrokeLight,
+                                    offsetOut: 36,
+                                    offsetIn: 150,
+                                },
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gauge-text-only',
+                link: 'vue-ui-gauge',
+                description: {
+                    en: "Text only",
+                    fr: "Texte uniquement",
+                    pt: "Somente texto",
+                    de: "Nur Text",
+                    zh: "仅文本",
+                    jp: "テキストのみ",
+                    es: "Solo texto",
+                    ko: "텍스트만",
+                    ar: "نص فقط"
+                }
+            },
+            // GAUGE SINGLE WITH EMOJIS
+            { 
+                dataset: DATASET_GAUGE_EMOJIS.value, 
+                config: {
+                    ...CONFIG_GAUGE_BASE.value,
+                    style: {
+                        ...CONFIG_GAUGE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_GAUGE_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_GAUGE_BASE.value.style.chart.layout,
+                                radiusRatio: 0.8,
+                                track: {
+                                    size: 0,
+                                },
+                                markers: {
+                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.markers,
+                                    offsetY: 40
+                                },
+                                segmentNames: {
+                                    fontSize: 55
+                                },
+                                pointer: {
+                                    ...CONFIG_GAUGE_BASE.value.style.chart.layout.pointer,
+                                    size: 1.1,
+                                },
+                                segmentSeparators: {
+                                    show: true,
+                                    stroke: colors.value.gridStrokeLight,
+                                    offsetOut: 36,
+                                    offsetIn: 150,
+                                },
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gauge-emojis',
+                link: 'vue-ui-gauge',
+                description: {
+                    en: "Emojis only",
+                    fr: "Emojis uniquement",
+                    pt: "Apenas emojis",
+                    de: "Nur Emojis",
+                    zh: "仅表情符号",
+                    jp: "絵文字のみ",
+                    es: "Solo emojis",
+                    ko: "이모지만",
+                    ar: "إيموجيات فقط"
                 }
             },
             // GAUGE WITH SEPARATORS
