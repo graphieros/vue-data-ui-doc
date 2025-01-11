@@ -12,11 +12,8 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
-import BaseViewExampleButton from "../BaseViewExampleButton.vue";
-import BaseRandomButton from "../BaseRandomButton.vue";
-import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile  from "../../useMobile";
-import DocSnapper from "../DocSnapper.vue";
+import BaseExposedMethod from "../BaseExposedMethod.vue";
 
 const mainConfig = useConfig()
 
@@ -1366,30 +1363,36 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
     </pre>
                 </div>
 
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generatePdf</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generatePdf[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generateCsv</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateCsv[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generateImage</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>toggleTable</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleTable[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>toggleLabels</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleLabels[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>toggleStack</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleStack[store.lang] }}</div>
-                </div>
+                    <BaseExposedMethod
+                        component="VueUiXy"
+                        name="generatePdf"
+                        :description="translations.docs.emits.generatePdf[store.lang]"
+                    />
+                    <BaseExposedMethod
+                        component="VueUiXy"
+                        name="generateCsv"
+                        :description="translations.docs.emits.generateCsv[store.lang]"
+                    />
+                    <BaseExposedMethod
+                        component="VueUiXy"
+                        name="generateImage"
+                        :description="translations.docs.emits.generateImage[store.lang]"
+                    />
+                    <BaseExposedMethod
+                        component="VueUiXy"
+                        name="toggleTable"
+                        :description="translations.docs.emits.toggleTable[store.lang]"
+                    />
+                    <BaseExposedMethod
+                        component="VueUiXy"
+                        name="toggleStack"
+                        :description="translations.docs.emits.toggleStack[store.lang]"
+                    />
+                    <BaseExposedMethod
+                        component="VueUiXy"
+                        name="toggleLabels"
+                        :description="translations.docs.emits.toggleLabels[store.lang]"
+                    />
             </template>
 
             <template #tab3>
