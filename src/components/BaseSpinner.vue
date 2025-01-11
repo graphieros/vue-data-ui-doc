@@ -11,7 +11,7 @@ const isDarkMode = computed(() => {
 
 <template>
     <div class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-        <img class="loader-logo fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" src="../assets/logo.png" width="80" height="80"/>
+        <img class="loader-logo fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" alt="Vue Data UI logo" src="../assets/logo.png" width="80" height="80"/>
         <span :class="{ 'loader': true, 'loader-dark': isDarkMode, 'loader-light': !isDarkMode }"></span>
     </div>
 </template>
