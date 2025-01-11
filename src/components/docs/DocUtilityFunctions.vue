@@ -4,6 +4,7 @@ import { useMainStore } from "../../stores";
 import { abbreviate, darkenColor, lightenColor, shiftColorHue } from "vue-data-ui";
 import BaseColorInput from "../BaseColorInput.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const store = useMainStore();
 
@@ -77,6 +78,42 @@ const abbreviated = computed(() => {
     })
 })
 
+const abbrContent = computed(() => `import { abbreviate } from "vue-data-ui";
+
+const text = "${abbrSource.value}";
+const abbreviated = abbreviate({
+    source: text,
+    length: ${abbrLen.value}
+});
+
+// Result: ${abbreviated.value}
+`);
+
+const darkenContent = computed(() => `import { darkenColor } from "vue-data-ui";
+
+const color = "${colorDark.value}";
+const darkened = darkenColor(color, ${strengthDark.value});
+
+// Result: ${darkenColor(colorDark.value, strengthDark.value)}
+`);
+
+const lightenContent = computed(() => `import { lightenColor } from "vue-data-ui";
+
+const color = "${colorLight.value}";
+const lightened = lightenColor(color, ${strengthLight.value});
+
+// Result: ${lightenColor(colorLight.value, strengthLight.value)}
+`);
+
+const shiftColorContent = computed(() => `import { shiftColorHue } from "vue-data-ui";
+
+// Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color
+const color = "${colorHue.value}";
+const shifted = shiftColorHue(color, ${Math.round(strengthHue.value * 100) / 100});
+
+// Result: ${shiftColorHue(colorHue.value, strengthHue.value)}
+`);
+
 </script>
 
 <template>
@@ -99,21 +136,10 @@ const abbreviated = computed(() => {
                     </div>
                 </div>
 
-                <div class="p-4 overflow-auto">
-<pre>
-<code>
-import { abbreviate } from "vue-data-ui";
-
-const text = 'lorem ipsum dolor sit amet';
-const abbreviated = abbreviate({
-    source: text,
-    length: 5
-});
-<span class="text-gray-500">// Result: "LIDSA"</span>
-</code>
-</pre>
-
+                <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+                    <CodeParser :content="abbrContent" language="javascript"/>
                 </div>
+
                 <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
                     <div class="p-4 flex flex-col gap-2 w-full">
                         <div class="flex flex-col gap-1">
@@ -145,23 +171,23 @@ const abbreviated = abbreviate({
         </div>
     </div>
 
-    <div class="p-4 overflow-auto">
-<pre>
-<code>
-import { darkenColor } from "vue-data-ui";
-
-<span class="text-gray-500">// Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color</span>
-<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background: ${colorDark}`"/>const color = "{{ colorDark }}";</div>
-<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background:${darkenColor(colorDark, strengthDark)}`"/>const darkened = darkenColor(color, {{ strengthDark }});<span class="text-gray-500">// "{{ darkenColor(colorDark, strengthDark) }}""</span></div>
-</code>
-</pre>
+    <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+        <CodeParser :content="darkenContent" language="javascript"/>
     </div>
+
     <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
         <div class="p-4 flex flex-col gap-2 w-fit">
             <BaseColorInput v-model:value="colorDark" label="Color source" label-id="source-light"/>
             <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
                 <label for="range-dark" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Darken strength</label>
                 <input id="range-dark" type="range" v-model="strengthDark" :min="0" :max="1" :step="0.01" class="accent-app-blue z-0">
+            </div>
+            <div class="flex flex-row place-items-center gap-2">
+                Result: <div :style="{
+                    background: darkenColor(colorDark, strengthDark),
+                    height: '40px',
+                    width: '40px'
+                }"/>
             </div>
         </div>
     </div>
@@ -177,23 +203,24 @@ import { darkenColor } from "vue-data-ui";
             <p class="text-gray-500">{{ utilityTranslations.lightenColor[store.lang] }}</p>
         </div>
     </div>
-    <div class="p-4 overflow-auto">
-<pre>
-<code>
-import { lightenColor } from "vue-data-ui";
 
-<span class="text-gray-500">// Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color</span>
-<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background: ${colorLight}`"/>const color = "{{ colorLight }}";</div>
-<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background:${lightenColor(colorLight, strengthLight)}`"/>const lightened = lightenColor(color, {{ strengthLight }});<span class="text-gray-500">// "{{ lightenColor(colorLight, strengthLight) }}""</span></div>
-</code>
-</pre>
+    <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+        <CodeParser :content="lightenContent" language="javascript"/>
     </div>
+
     <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
         <div class="p-4 flex flex-col gap-2 w-fit">
             <BaseColorInput v-model:value="colorLight" label="Color source" label-id="source-light"/>
             <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
                 <label for="range-light" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Lighten strength</label>
                 <input id="range-light" type="range" v-model="strengthLight" :min="0" :max="1" :step="0.01" class="accent-app-blue z-0">
+            </div>
+            <div class="flex flex-row place-items-center gap-2">
+                Result: <div :style="{
+                    background: lightenColor(colorLight, strengthLight),
+                    height: '40px',
+                    width: '40px'
+                }"/>
             </div>
         </div>
     </div>
@@ -209,23 +236,24 @@ import { lightenColor } from "vue-data-ui";
             <p class="text-gray-500">{{ utilityTranslations.shiftColorHue[store.lang] }}</p>
         </div>
     </div>
-    <div class="p-4 overflow-auto">
-<pre>
-<code>
-import { shiftColorHue } from "vue-data-ui";
 
-<span class="text-gray-500">// Color format can be HEX (with or without alpha channel), RGB, RGBA, or named color</span>
-<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background: ${colorHue}`"/>const color = "{{ colorHue }}";</div>
-<div class="flex flex-row gap-2 place-items-center"><div class="h-[24px] w-[24px] rounded" :style="`background:${shiftColorHue(colorHue.replaceAll(' ',''), Number(strengthHue.toFixed(2)))}`"/>const shifted = shiftColorHue(color, {{ strengthHue.toFixed(2) }});<span class="text-gray-500">// "{{ shiftColorHue(colorHue.replaceAll(' ',''), strengthHue) }}"</span></div>
-</code>
-</pre>
+    <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+        <CodeParser :content="shiftColorContent" language="javascript"/>
     </div>
+
     <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
         <div class="p-4 flex flex-col gap-2 w-fit">
             <BaseColorInput v-model:value="colorHue" label="Color source" label-id="source-hue"/>
             <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
                 <label for="range-hue" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Hue strength</label>
                 <BaseNumberInput v-model:value="strengthHue" :min="0" :max="1" :step="0.01"/>
+            </div>
+            <div class="flex flex-row place-items-center gap-2">
+                Result: <div :style="{
+                    background: shiftColorHue(colorHue, strengthHue),
+                    height: '40px',
+                    width: '40px'
+                }"/>
             </div>
         </div>
     </div>
