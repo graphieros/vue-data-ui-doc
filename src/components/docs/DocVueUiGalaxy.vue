@@ -13,6 +13,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import BaseExposedMethod from "../BaseExposedMethod.vue";
 
 const mainConfig = useConfig()
 
@@ -684,22 +685,26 @@ const { configCode, showAllConfig } = useConfigCode()
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generatePdf</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generatePdf[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generateCsv</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateCsv[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>generateImage</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.generateImage[store.lang] }}</div>
-                </div>
-                <div class="pt-4 border-t border-gray-700 overflow-x-auto">
-                    <div><code>toggleTable</code></div>
-                    <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.toggleTable[store.lang] }}</div>
-                </div>
+                <BaseExposedMethod
+                  component="VueUiGalaxy"
+                  name="generatePdf"
+                  :description="translations.docs.emits.generatePdf[store.lang]"
+                />
+                <BaseExposedMethod
+                  component="VueUiGalaxy"
+                  name="generateCsv"
+                  :description="translations.docs.emits.generateCsv[store.lang]"
+                />
+                <BaseExposedMethod
+                  component="VueUiGalaxy"
+                  name="generateImage"
+                  :description="translations.docs.emits.generateImage[store.lang]"
+                />
+                <BaseExposedMethod
+                  component="VueUiGalaxy"
+                  name="toggleTable"
+                  :description="translations.docs.emits.toggleTable[store.lang]"
+                />
                 </div>
 
       </template>
