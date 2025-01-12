@@ -31,6 +31,11 @@ const digitConfigIssues = computed(() => {
     }
 })
 
+const maxDownload = computed(() => {
+    if (!store.npmDownloads.length) return 0
+    return Math.max(...store.npmDownloads.map(d => d.value))
+})
+
 </script>
 
 <template>
@@ -53,6 +58,7 @@ const digitConfigIssues = computed(() => {
                 responsive: true,
                 type: 'line',
                 style: {
+                    scaleMax: maxDownload,
                     backgroundColor: '#FFFFFF00',
                     chartWidth: 300,
                     dataLabel: { show: false },
