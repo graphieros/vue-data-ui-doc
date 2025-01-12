@@ -16,6 +16,8 @@ import useMobile  from "../../useMobile";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseRandomButton from "../BaseRandomButton.vue";
 
 const mainConfig = useConfig()
 
