@@ -186,7 +186,7 @@ const config = ref({
                 lineColor: "#1F77B4",
                 selectionRadius: 2,
                 indicatorColor: '#1A1A1A',
-                verticalHandles: true
+                verticalHandles: false
             }
         },
         padding: {
@@ -473,7 +473,7 @@ const darkModeConfig = ref({
                 selectedColor: '#8A8A8A',
                 selectionRadius: 2,
                 indicatorColor: '#CCCCCC',
-                verticalHandles: true
+                verticalHandles: false
             }
         },
         padding: {
