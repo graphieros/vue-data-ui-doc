@@ -13,9 +13,9 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import useMobile  from "../../useMobile";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import DocSnapper from "../DocSnapper.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -1367,37 +1367,17 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
     </code>
     </pre>
                 </div>
-
-                    <BaseExposedMethod
-                        component="VueUiXy"
-                        name="generatePdf"
-                        :description="translations.docs.emits.generatePdf[store.lang]"
-                    />
-                    <BaseExposedMethod
-                        component="VueUiXy"
-                        name="generateCsv"
-                        :description="translations.docs.emits.generateCsv[store.lang]"
-                    />
-                    <BaseExposedMethod
-                        component="VueUiXy"
-                        name="generateImage"
-                        :description="translations.docs.emits.generateImage[store.lang]"
-                    />
-                    <BaseExposedMethod
-                        component="VueUiXy"
-                        name="toggleTable"
-                        :description="translations.docs.emits.toggleTable[store.lang]"
-                    />
-                    <BaseExposedMethod
-                        component="VueUiXy"
-                        name="toggleStack"
-                        :description="translations.docs.emits.toggleStack[store.lang]"
-                    />
-                    <BaseExposedMethod
-                        component="VueUiXy"
-                        name="toggleLabels"
-                        :description="translations.docs.emits.toggleLabels[store.lang]"
-                    />
+                <ExposedMethods
+                    component="VueUiXy"
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'toggleTable',
+                        'toggleStack',
+                        'toggleLabels'
+                    ]"
+                />
             </template>
 
             <template #tab3>

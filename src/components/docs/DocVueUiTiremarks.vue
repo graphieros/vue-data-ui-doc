@@ -14,7 +14,7 @@ import BaseRandomButton from "../BaseRandomButton.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -381,15 +381,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
 </code>
             </template>
             <template #tab2>
-              <BaseExposedMethod
+              <ExposedMethods
                 component="VueUiTiremarks"
-                name="generatePdf"
-                :description="translations.docs.emits.generatePdf[store.lang]"
-              />
-              <BaseExposedMethod
-                component="VueUiTiremarks"
-                name="generateImage"
-                :description="translations.docs.emits.generateImage[store.lang]"
+                :names="[
+                  'generatePdf',
+                  'generateImage'
+                ]"
               />
             </template>
 

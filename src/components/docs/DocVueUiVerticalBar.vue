@@ -16,7 +16,7 @@ import BaseRandomButton from "../BaseRandomButton.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -863,30 +863,15 @@ const <span class="text-app-green">dataset: VueUiVerticalBarDatasetItem[]</span>
     </pre>
                 </div>
 
-                <BaseExposedMethod
+                <ExposedMethods
                   component="VueUiVerticalBar"
-                  name="generatePdf"
-                  :description="translations.docs.emits.generatePdf[store.lang]"
-                />
-                <BaseExposedMethod
-                  component="VueUiVerticalBar"
-                  name="generateCsv"
-                  :description="translations.docs.emits.generateCsv[store.lang]"
-                />
-                <BaseExposedMethod
-                  component="VueUiVerticalBar"
-                  name="generateImage"
-                  :description="translations.docs.emits.generateImage[store.lang]"
-                />
-                <BaseExposedMethod
-                  component="VueUiVerticalBar"
-                  name="toggleTable"
-                  :description="translations.docs.emits.toggleTable[store.lang]"
-                />
-                <BaseExposedMethod
-                  component="VueUiVerticalBar"
-                  name="toggleSort"
-                  :description="translations.docs.emits.toggleSort[store.lang]"
+                  :names="[
+                    'generatePdf',
+                    'generateCsv',
+                    'generateImage',
+                    'toggleTable',
+                    'toggleSort'
+                  ]"
                 />
             </template>
 

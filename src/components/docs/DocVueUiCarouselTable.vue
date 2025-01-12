@@ -9,7 +9,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseAttr from "../BaseAttr.vue";
 import { useConfigCode } from "../../useConfigCode";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -565,35 +565,16 @@ const <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDa
             </template>
 
             <template #tab2>
-                <BaseExposedMethod
+                <ExposedMethods
                     component="VueUiCarouselTable"
-                    name="generatePdf"
-                    :description="translations.docs.emits.generatePdf[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiCarouselTable"
-                    name="generateCsv"
-                    :description="translations.docs.emits.generateCsv[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiCarouselTable"
-                    name="generateImage"
-                    :description="translations.docs.emits.generateImage[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiCarouselTable"
-                    name="toggleAnimation"
-                    :description="translations.docs.emits.toggleAnimation[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiCarouselTable"
-                    name="pauseAnimation"
-                    :description="translations.docs.emits.pauseAnimation[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiCarouselTable"
-                    name="resumeAnimation"
-                    :description="translations.docs.emits.resumeAnimation[store.lang]"
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'toggleAnimation',
+                        'pauseAnimation',
+                        'resumeAnimation'
+                    ]"
                 />
             </template>
 

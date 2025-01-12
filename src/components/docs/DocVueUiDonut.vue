@@ -17,7 +17,7 @@ import BaseRandomButton from "../BaseRandomButton.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -1029,31 +1029,15 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-
-                <BaseExposedMethod
+                <ExposedMethods
                     component="VueUiDonut"
-                    name="generatePdf"
-                    :description="translations.docs.emits.generatePdf[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiDonut"
-                    name="generateCsv"
-                    :description="translations.docs.emits.generateCsv[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiDonut"
-                    name="generateImage"
-                    :description="translations.docs.emits.generateImage[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiDonut"
-                    name="toggleTable"
-                    :description="translations.docs.emits.toggleTable[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiDonut"
-                    name="toggleLabels"
-                    :description="translations.docs.emits.toggleLabels[store.lang]"
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'toggleTable',
+                        'toggleLabels'
+                    ]"
                 />
                 </div>
             </template>

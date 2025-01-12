@@ -15,7 +15,7 @@ import ThemesVueUiBullet from "../themes/ThemesVueUiBullet.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -596,18 +596,13 @@ const <span class="text-black dark:text-app-green">dataset: VueUiBulletDataset</
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-
-                    <BaseExposedMethod
+                    <ExposedMethods
                         component="VueUiBullet"
-                        name="generatePdf"
-                        :description="translations.docs.emits.generatePdf[store.lang] "
+                        :names="[
+                            'generatePdf',
+                            'generateImage'
+                        ]"
                     />
-                    <BaseExposedMethod
-                        component="VueUiBullet"
-                        name="generateImage"
-                        :description="translations.docs.emits.generateImage[store.lang] "
-                    />
-
                 </div>
             </template>
 

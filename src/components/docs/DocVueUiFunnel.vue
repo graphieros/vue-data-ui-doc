@@ -15,7 +15,7 @@ import ThemesVueUiFunnel from "../themes/ThemesVueUiFunnel.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -658,15 +658,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiFunnelDatasetIt
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-                <BaseExposedMethod
+                <ExposedMethods
                     component="VueUiFunnel"
-                    name="generatePdf"
-                    :description="translations.docs.emits.generatePdf[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiFunnel"
-                    name="generateImage"
-                    :description="translations.docs.emits.generateImage[store.lang]"
+                    :names="[
+                        'generatePdf',
+                        'generateImage'
+                    ]"
                 />
                 </div>
             </template>

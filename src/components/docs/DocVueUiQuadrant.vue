@@ -14,7 +14,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -1035,31 +1035,15 @@ const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDataset
     </code>
     </pre>
                 </div>
-
-                <BaseExposedMethod
+                <ExposedMethods
                     component="VueUiQuadrant"
-                    name="generatePdf"
-                    :description="translations.docs.emits.generatePdf[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiQuadrant"
-                    name="generateCsv"
-                    :description="translations.docs.emits.generateCsv[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiQuadrant"
-                    name="generateImage"
-                    :description="translations.docs.emits.generateImage[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiQuadrant"
-                    name="toggleTable"
-                    :description="translations.docs.emits.toggleTable[store.lang]"
-                />
-                <BaseExposedMethod
-                    component="VueUiQuadrant"
-                    name="toggleLabels"
-                    :description="translations.docs.emits.toggleLabels[store.lang]"
+                    :names="[
+                        'generatePdf',
+                        'generateCsv',
+                        'generateImage',
+                        'toggleTable',
+                        'toggleLabels'
+                    ]"
                 />
             </template>
 

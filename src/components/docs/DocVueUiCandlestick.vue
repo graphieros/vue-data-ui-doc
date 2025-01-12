@@ -14,7 +14,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -678,25 +678,14 @@ const <span class="text-black dark:text-app-green">dataset: Array&lt;Array&lt;st
 
             </template>
             <template #tab2>
-              <BaseExposedMethod
-                  component="VueUiCandlestick"
-                  name="generatePdf"
-                  :description="translations.docs.emits.generatePdf[store.lang]"
-              />
-              <BaseExposedMethod
-                  component="VueUiCandlestick"
-                  name="generateCsv"
-                  :description="translations.docs.emits.generateCsv[store.lang]"
-              />
-              <BaseExposedMethod
-                  component="VueUiCandlestick"
-                  name="generateImage"
-                  :description="translations.docs.emits.generateImage[store.lang]"
-              />
-              <BaseExposedMethod
-                  component="VueUiCandlestick"
-                  name="toggleTable"
-                  :description="translations.docs.emits.toggleTable[store.lang]"
+              <ExposedMethods
+                component="VueUiCandlestick"
+                :names="[
+                  'generatePdf',
+                  'generateCsv',
+                  'generateImage',
+                  'toggleTable'
+                ]"
               />
             </template>
 

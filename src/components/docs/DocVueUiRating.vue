@@ -11,7 +11,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -462,10 +462,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRatingDataset</
     </pre>
                 </div>
 
-                <BaseExposedMethod
+                <ExposedMethods
                     component="VueUiRating"
-                    name="toggleReadonly"
-                    :description="translations.docs.emits.rating.toggleReadonly[store.lang]"
+                    :names="['toggleReadonly']"
                 />
             </template>
         </Box>

@@ -13,7 +13,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -685,27 +685,16 @@ const { configCode, showAllConfig } = useConfigCode()
         <span class="text-gray-400">&lt;/script&gt;</span>
     </code>
     </pre>
-                <BaseExposedMethod
+                <ExposedMethods
                   component="VueUiGalaxy"
-                  name="generatePdf"
-                  :description="translations.docs.emits.generatePdf[store.lang]"
+                  :names="[
+                    'generatePdf',
+                    'generateCsv',
+                    'generateImage',
+                    'toggleTable'
+                  ]"
                 />
-                <BaseExposedMethod
-                  component="VueUiGalaxy"
-                  name="generateCsv"
-                  :description="translations.docs.emits.generateCsv[store.lang]"
-                />
-                <BaseExposedMethod
-                  component="VueUiGalaxy"
-                  name="generateImage"
-                  :description="translations.docs.emits.generateImage[store.lang]"
-                />
-                <BaseExposedMethod
-                  component="VueUiGalaxy"
-                  name="toggleTable"
-                  :description="translations.docs.emits.toggleTable[store.lang]"
-                />
-                </div>
+              </div>
 
       </template>
 

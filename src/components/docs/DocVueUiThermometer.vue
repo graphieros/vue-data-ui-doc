@@ -13,7 +13,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -409,15 +409,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
             
             </template>
             <template #tab2>
-              <BaseExposedMethod
-                  component="VueUiThermometer"
-                  name="generatePdf"
-                  :description="translations.docs.emits.generatePdf[store.lang]"
-              />
-              <BaseExposedMethod
-                  component="VueUiThermometer"
-                  name="generateImage"
-                  :description="translations.docs.emits.generatePdf[store.lang]"
+              <ExposedMethods
+                component="VueUiThermometer"
+                :names="[
+                  'generatePdf',
+                  'generateImage'
+                ]"
               />
             </template>
 

@@ -14,7 +14,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -1198,20 +1198,13 @@ const { configCode, showAllConfig } = useConfigCode()
 
             </template>
             <template #tab2>
-              <BaseExposedMethod
-                  component="VueUiAgePyramid"
-                  name="generatePdf"
-                  :description="translations.docs.emits.generatePdf[store.lang]"
-              />
-              <BaseExposedMethod
-                  component="VueUiAgePyramid"
-                  name="generateImage"
-                  :description="translations.docs.emits.generateImage[store.lang]"
-              />
-              <BaseExposedMethod
-                  component="VueUiAgePyramid"
-                  name="toggleTable"
-                  :description="translations.docs.emits.toggleTable[store.lang]"
+              <ExposedMethods
+                component="VueUiAgePyramid"
+                :names="[
+                  'generatePdf',
+                  'generateImage',
+                  'toggleTable'
+                ]"
               />
             </template>
 

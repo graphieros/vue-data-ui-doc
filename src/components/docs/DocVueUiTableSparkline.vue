@@ -11,7 +11,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
-import BaseExposedMethod from "../BaseExposedMethod.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -496,20 +496,13 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineD
               
           </template>
           <template #tab2>
-            <BaseExposedMethod
-                component="VueUiTableSparkline"
-                name="generatePdf"
-                :description="translations.docs.emits.generatePdf[store.lang]"
-            />
-            <BaseExposedMethod
-                component="VueUiTableSparkline"
-                name="generateCsv"
-                :description="translations.docs.emits.generateCsv[store.lang]"
-            />
-            <BaseExposedMethod
-                component="VueUiTableSparkline"
-                name="generateImage"
-                :description="translations.docs.emits.generateImage[store.lang]"
+            <ExposedMethods
+              component="VueUiTableSparkline"
+              :names="[
+                'generatePdf',
+                'generateCsv',
+                'generateImage'
+              ]"
             />
           </template>
 
