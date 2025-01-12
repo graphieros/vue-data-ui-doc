@@ -218,7 +218,8 @@ const config = ref({
         selectedColorOpacity: 0.2,
         lineColor: "#1f77b4",
         selectionRadius: 2,
-        indicatorColor: '#1A1A1A'
+        indicatorColor: '#1A1A1A',
+        verticalHandles: true,
     },
     zoomStartIndex: null,
     zoomEndIndex: null,
@@ -330,7 +331,8 @@ const darkModeConfig = ref({
         selectedColorOpacity: 0.2,
         lineColor: "#1f77b4",
         selectionRadius: 2,
-        indicatorColor: '#CCCCCC'
+        indicatorColor: '#CCCCCC',
+        verticalHandles: true,
     },
     zoomStartIndex: null,
     zoomEndIndex: null,
@@ -851,8 +853,9 @@ const { configCode, showAllConfig } = useConfigCode()
                 <BaseAttr name="lineColor" attr="zoomMinimap.lineColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="selectionRadius" attr="zoomMinimap.selectionRadius" type="range" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="indicatorColor" attr="zoomMinimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="verticalHandles" attr="zoomMinimap.verticalHandles" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.72"/>
             </BaseDetails>
-            <span>zoomStartIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span>
+            <span>zoomStartIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span><br>
             <span>zoomEndIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
         </div>
     </BaseDetails>

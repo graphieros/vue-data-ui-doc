@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.4.72",
+    "date": "2025-01-12",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add config option to show vertical zoom handles in minimap variant",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Add config option to show vertical zoom handles in minimap variant",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.71",
     "date": "2025-01-11",
     "updates": [

@@ -891,6 +891,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.zoom.minimap.lineColor', def: '#1A1A1A', type: 'color', label: ['zoom', 'minimap', 'line', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.minimap.selectionRadius', def: 2, type: 'range', min: 0, max: 24, label: ['zoom', 'minimap', 'selection', 'is', 'radius'], category: 'general'},
                     { key: 'chart.zoom.minimap.indicatorColor', def: '#1A1A1A', type: 'color', label: ['zoom', 'minimap', 'indicator', 'is', 'color'], category: 'general'},
+                    { key: 'chart.zoom.minimap.verticalHandles', def: false, type: 'checkbox', label: ['zoom', 'minimap', 'vertical', 'handles'], category: 'general'},
 
                     { key: 'chart.padding.top', def: 36, type: 'number', min: 0, max: 100, label: "top", category: 'padding' },
                     { key: 'chart.padding.right', def: 24, type: 'number', min: 0, max: 100, label: 'right', category: 'padding' },

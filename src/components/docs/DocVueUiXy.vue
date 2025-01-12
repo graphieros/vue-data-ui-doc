@@ -15,6 +15,7 @@ import { useConfigCode } from "../../useConfigCode";
 import useMobile  from "../../useMobile";
 import BaseExposedMethod from "../BaseExposedMethod.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
+import DocSnapper from "../DocSnapper.vue";
 
 const mainConfig = useConfig()
 
@@ -185,6 +186,7 @@ const config = ref({
                 lineColor: "#1F77B4",
                 selectionRadius: 2,
                 indicatorColor: '#1A1A1A',
+                verticalHandles: true
             }
         },
         padding: {
@@ -471,6 +473,7 @@ const darkModeConfig = ref({
                 selectedColor: '#8A8A8A',
                 selectionRadius: 2,
                 indicatorColor: '#CCCCCC',
+                verticalHandles: true
             }
         },
         padding: {
@@ -1170,6 +1173,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                     <BaseAttr name="selectedColorOpacity" attr="chart.zoom.minimap.selectedColorOpacity" type="range" defaultVal="0.2" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="selectionRadius" attr="chart.zoom.minimap.selectionRadius" type="range" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="indicatorColor" attr="chart.zoom.minimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="verticalHandles" attr="chart.zoom.minimap.verticalHandles" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.72"/>
                 </BaseDetails>
             </BaseDetails>
         </BaseDetails>
