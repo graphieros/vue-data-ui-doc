@@ -54,6 +54,17 @@ const translations = computed(() => {
             ko: "각 데이터 포인트에 사용된 개별 패턴의 예",
             ar: "مثال على أنماط فردية مستخدمة لكل نقطة بيانات"
         },
+        limitedColors: {
+            en: "Patterns are ideal if your color palette is monotone.",
+            fr: "Les motifs sont idéaux si votre palette de couleurs est monotone.",
+            pt: "Os padrões são ideais se sua paleta de cores for monocromática.",
+            de: "Muster sind ideal, wenn Ihre Farbpalette einfarbig ist.",
+            zh: "如果您的色彩调色板是单色的，图案是理想的选择。",
+            jp: "パターンはカラーパレットが単色の場合に最適です。",
+            es: "Los patrones son ideales si tu paleta de colores es monocromática.",
+            ko: "색상 팔레트가 단색인 경우 패턴이 이상적입니다.",
+            ar: "الأنماط مثالية إذا كانت لوحة الألوان لديك أحادية اللون."
+        }
     }
 })
 
@@ -84,6 +95,24 @@ const dataset = ref([
 {
     name: "Serie 3",
     values: [300, 1]
+},
+]);
+
+const datasetMonotone = ref([
+{
+    name: "Serie 1",
+    values: [100],
+    color: '#BBBBBB'
+},
+{
+    name: "Serie 2",
+    values: [200],
+    color: '#BBBBBB'
+},
+{
+    name: "Serie 3",
+    values: [300, 1],
+    color: '#BBBBBB'
 },
 ]);
 
@@ -399,6 +428,33 @@ const codeMultiPattern = ref(`<VueUiDonut
         />
     </template>
 </VueUiDonut>`
+);
+
+const codeLimitedColors = ref(`<VueUiDonut
+    :dataset="dataset"
+    :config="config"
+>
+    <template #pattern="{ seriesIndex, patternId }">
+        <VueUiPattern
+            :id="patternId"
+            v-if="seriesIndex === 0"
+            name="maze"
+        />
+        <VueUiPattern
+            :id="patternId"
+            v-if="seriesIndex === 1"
+            :scale="0.5"
+            :strokeWidth="3"
+            name="hexagon-grid"
+        />
+        <VueUiPattern
+            :id="patternId"
+            v-if="seriesIndex === 2"
+            :scale="2"
+            name="hexagon-flooring"
+        />
+    </template>
+</VueUiDonut>`
 )
 
 const supportedComponents = computed(() => {
@@ -476,27 +532,81 @@ const supportedComponents = computed(() => {
                 <CodeParser :content="codeMultiPattern" language="html"/>
             </template>
             <template #chart>
-            <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">
-                <template #pattern="{ seriesIndex, patternId }">
-                    <VueUiPattern
-                        :id="patternId"
-                        v-if="seriesIndex === 0"
-                        name="maze"
-                    />
-                    <VueUiPattern
-                        :id="patternId"
-                        v-if="seriesIndex === 1"
-                        :scale="0.5"
-                        :strokeWidth="3"
-                        name="redrum"
-                    />
-                    <VueUiPattern
-                        :id="patternId"
-                        v-if="seriesIndex === 2"
-                        name="scales"
-                    />
-                </template>
-            </VueDataUi>
+                <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">
+                    <template #pattern="{ seriesIndex, patternId }">
+                        <VueUiPattern
+                            :id="patternId"
+                            v-if="seriesIndex === 0"
+                            name="maze"
+                        />
+                        <VueUiPattern
+                            :id="patternId"
+                            v-if="seriesIndex === 1"
+                            :scale="0.5"
+                            :strokeWidth="3"
+                            name="redrum"
+                        />
+                        <VueUiPattern
+                            :id="patternId"
+                            v-if="seriesIndex === 2"
+                            name="scales"
+                        />
+                    </template>
+                </VueDataUi>
+            </template>
+        </BaseCustomizationBox>
+
+        <BaseCustomizationBox :title="translations.limitedColors[store.lang]">
+            <template #code>
+                <CodeParser :content="codeLimitedColors" language="html"/>
+            </template>
+            <template #chart>
+                <VueDataUi 
+                    component="VueUiDonut" 
+                    :dataset="datasetMonotone" 
+                    :config="isDarkMode 
+                    ? {
+                        ...darkModeConfig,
+                        style: {
+                            ...darkModeConfig.style,
+                            chart: {
+                                ...darkModeConfig.style.chart,
+                                useGradient: false
+                            }
+                        }
+                    } 
+                    : {
+                        ...config,
+                        style: {
+                            ...config.style,
+                            chart: {
+                                ...config.style.chart,
+                                useGradient: false
+                            }
+                        }
+                    }"
+                >
+                    <template #pattern="{ seriesIndex, patternId }">
+                        <VueUiPattern
+                            :id="patternId"
+                            v-if="seriesIndex === 0"
+                            name="maze"
+                            />
+                            <VueUiPattern
+                            :id="patternId"
+                            v-if="seriesIndex === 1"
+                            :scale="0.5"
+                            :strokeWidth="3"
+                            name="hexagon-grid"
+                        />
+                        <VueUiPattern
+                            :id="patternId"
+                            v-if="seriesIndex === 2"
+                            :scale="2"
+                            name="hexagon-flooring"
+                        />
+                    </template>
+                </VueDataUi>
             </template>
         </BaseCustomizationBox>
 
