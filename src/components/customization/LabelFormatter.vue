@@ -26,7 +26,7 @@ const code = ref(`formatter: ({ value, config }) => {
     <div
       class="bg-black p-4 text-gray-300 text-xs w-full overflow-auto rounded-md"
     >
-    <CodeParser :content="code" language="javascript"/>
+      <CodeParser :content="code" language="javascript"/>
     </div>
 </div>
 </template>

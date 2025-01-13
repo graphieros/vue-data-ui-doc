@@ -77,7 +77,7 @@ const dataset = ref([
         type: "bar",
         color: "rgb(95,139,238)",
         shape: 'circle',
-        scaleSteps: 2,
+        scaleSteps: 5,
     },
     {
         name: "Series 2",
@@ -88,7 +88,7 @@ const dataset = ref([
         useProgression: true,
         dataLabels: false,
         shape: "triangle",
-        scaleSteps: 2,
+        scaleSteps: 5,
         showSerieName: 'end'
     },
     {
@@ -97,7 +97,7 @@ const dataset = ref([
         type: "plot",
         color: "rgb(255,100,0)",
         shape: "star",
-        scaleSteps: 2,
+        scaleSteps: 5,
         showSerieName: 'end'
     },
     {
@@ -110,7 +110,7 @@ const dataset = ref([
         dataLabels: false,
         color: "rgb(200,200,50)",
         shape: 'Yellow circles',
-        scaleSteps: 2,
+        scaleSteps: 5,
         showSerieName: 'end'
     },
     {
@@ -122,7 +122,7 @@ const dataset = ref([
         useTag: "start",
         dataLabels: false,
         shape: 'circle',
-        scaleSteps: 2,
+        scaleSteps: 5,
     },
 ]);
 
