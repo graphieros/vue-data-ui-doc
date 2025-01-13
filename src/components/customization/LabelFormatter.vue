@@ -7,7 +7,8 @@ import CodeParser from "./CodeParser.vue";
 const store = useMainStore();
 const translations = computed(() => store.translations);
 
-const code = ref(`formatter: ({ value, config }) => {
+const code = ref(`
+formatter: ({ value, config }) => {
   return \`my format:\`\${value.toLocaleString('de-DE')}\`;
 }
 `)
@@ -29,7 +30,7 @@ const configDonut = ref({
       }
     }
   }
-})
+});
 `)
     
 </script>
