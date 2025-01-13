@@ -2,11 +2,15 @@
 import { ref, computed } from "vue";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
 import { useMainStore } from "../../stores";
+import CodeParser from "./CodeParser.vue";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
 
-
+const code = ref(`formatter: ({ value, config }) => {
+  return \`my format:\`\${value.toLocaleString('de-DE')}\`;
+}
+`)
     
 </script>
 
@@ -22,13 +26,7 @@ const translations = computed(() => store.translations);
     <div
       class="bg-black p-4 text-gray-300 text-xs w-full overflow-auto rounded-md"
     >
-<pre>
-<code>
-formatter: ({ value, config }) => {
-    return `my format: ${value.toLocaleString('de-DE')}`
-}
-</code>
-</pre>
+    <CodeParser :content="code" language="javascript"/>
     </div>
 </div>
 </template>
