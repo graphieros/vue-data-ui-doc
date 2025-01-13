@@ -9,13 +9,19 @@
         "link": "/docs#vue-ui-xy"
       },
       {
+        "component": "VueUiXy",
+        "description": "Improve zoom dragging speed for large datasets",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
         "component": "VueUiQuickChart",
         "description": "Add config option to show vertical zoom handles in minimap variant",
         "link": "/docs#vue-ui-quick-chart"
       },
       {
-        "component": "",
-        "description": "Improve zoom dragging speed for large datasets (VueUiXy, VueUiQuickChart)"
+        "component": "VueUiQuickChart",
+        "description": "Improve zoom dragging speed for large datasets",
+        "link": "/docs#vue-ui-quick-chart"
       }
     ]
   },
