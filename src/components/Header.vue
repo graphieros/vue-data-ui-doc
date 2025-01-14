@@ -233,6 +233,7 @@ onBeforeUnmount(() => {
                         class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 rounded-md bg-gray-200 border border-gray-400 dark:border-[#4A4A4A] shadow-xl dark:bg-[#1A1A1A] grid grid-cols-4 w-max gap-6"
                         tabindex="0"
                     >
+                        <kbd>Esc</kbd>
                         <div v-for="menu in simpleMenu" class="flex flex-col bg-gradient-to-b from-[#FFFFFF10] to-transparent pl-2 pt-2 rounded-md">
                             <div class="text-s mb-4 font-satoshi-bold">{{ menu.category }}</div>
                             <RouterLink v-for="item in menu.components" :to="item.link" @click="closeDocsMenu">
@@ -379,5 +380,27 @@ onBeforeUnmount(() => {
 
 .link-disabled {
     cursor: default;
+}
+</style>
+
+<style scoped>
+kbd {
+    position: absolute;
+    background: radial-gradient(at top left, #AAAAAA, #DDDDDD);
+    border: 1px solid #808080;
+    border-right: 4px solid #606060;
+    border-bottom: 4px solid #606060;
+    border-radius: 7px;
+    color: #000000;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    padding: 1px 4px;
+    min-width: 1.5em;
+    text-align: center;
+    display: inline-block;
+    top: -12px;
+    left: -12px;
+    box-shadow: 0 6px 12px -6px black;
 }
 </style>
