@@ -15,8 +15,6 @@ const router = useRouter();
 const store = useMainStore();
 const { simpleMenu } = useCharts();
 
-console.log(simpleMenu.value)
-
 const isOpen = ref(false);
 const translations = computed(() => {
     return store.translations;
@@ -152,7 +150,6 @@ const isHome = computed(() => {
 const isDocOpen = ref(false);
 
 function openDocMenu() {
-    console.log('OPEN')
     isDocOpen.value = true;
 }
 
