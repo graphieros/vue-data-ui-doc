@@ -57,9 +57,12 @@ const tpClass = computed(() => {
                 <img v-if="img" :src="img" class="rounded shadow"/>
                 <div class="flex flex-row place-items-center gap-1" @click="emit('click')">
                     <slot name="before"/>
-                    <span dir="auto" class="w-full text-center">
-                        {{ content }}
-                    </span>
+                    <div class="flex flex-col gap-2 place-items-center">
+                        <slot name="before-inside"/>
+                        <span dir="auto" class="w-full text-center">
+                            {{ content }}
+                        </span>
+                    </div>
                 </div> 
             </div>
             <svg v-if="position === 'top'" class="absolute text-[#2A2A2A] dark:text-[#CCCCCC] h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255"

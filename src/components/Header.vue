@@ -10,6 +10,7 @@ import HeaderDropdownItem from "./HeaderDropdownItem.vue";
 import BaseDropdown from "./BaseDropdown.vue";
 import vClickOutside from "../directives/vClickOutside";
 import useCharts from "../useCharts";
+import FlexibleTooltip from "./FlexibleTooltip.vue";
 
 const router = useRouter();
 const store = useMainStore();
@@ -230,21 +231,35 @@ onBeforeUnmount(() => {
                             <kbd>Esc</kbd>
                             <div v-for="menu in simpleMenu" class="flex flex-col bg-gradient-to-b from-[#FFFFFF10] to-transparent pl-2 pt-2 rounded-md">
                                 <div class="text-s mb-4 font-satoshi-bold">{{ menu.category }}</div>
-                                <RouterLink v-for="item in menu.components" :to="item.link" @click="closeDocsMenu">
-                                    <div class="flex flex-row place-items-center py-1 gap-2 relative">
-                                        <svg v-if="item.link === router.currentRoute.value.fullPath" viewBox="0 0 10 10" height="10" width="10" class="shadow rounded-full absolute -left-3 top-1/2 -translate-y-1/2 animate-pulse">
-                                            <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#42d392' : '#5f8aee'"/>
-                                        </svg>
-                                        <div class="h-[16px] w-[16px]">
-                                            <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'"/>
+                                <FlexibleTooltip
+                                        v-for="(item, i) in menu.components"
+                                        position="bottom" 
+                                        :content="`${item.description}`" 
+                                        width="w-fit min-w-[200px]" 
+                                        delay="delay-150"
+                                        :alwaysBlue="true"
+                                    >
+                                    <template #before-inside>
+                                        <div class="h-[32px] w-[32px]">
+                                            <VueUiIcon :name="item.icon" :size="32" :stroke="isDarkMode ? '#1A1A1A' : '#5f8aee'"/>
                                         </div>
-                                        <div 
-                                            :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-satoshi-bold cursor-default hover:no-underline' : ''}`"
-                                        >
-                                            {{ item.name }}
+                                    </template>
+                                    <RouterLink  :to="item.link" @click="closeDocsMenu">
+                                        <div class="flex flex-row place-items-center py-1 gap-2 relative">
+                                            <svg v-if="item.link === router.currentRoute.value.fullPath" viewBox="0 0 10 10" height="10" width="10" class="shadow rounded-full absolute -left-3 top-1/2 -translate-y-1/2 animate-pulse">
+                                                <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#42d392' : '#5f8aee'"/>
+                                            </svg>
+                                            <div class="h-[16px] w-[16px]">
+                                                <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'"/>
+                                            </div>
+                                            <div 
+                                                :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-satoshi-bold cursor-default hover:no-underline' : ''}`"
+                                            >
+                                                {{ item.name }}
+                                            </div>
                                         </div>
-                                    </div>
-                                </RouterLink>
+                                    </RouterLink>
+                                </FlexibleTooltip>
                             </div>
                         </div>
                     </Transition>
