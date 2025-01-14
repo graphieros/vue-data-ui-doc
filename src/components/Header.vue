@@ -224,30 +224,35 @@ onBeforeUnmount(() => {
                             {{ translations.menu.docs[store.lang] }}
                         </div>
                     </router-link>
-                    <div 
-                        v-if="isDocOpen"
-                        v-click-outside="closeDocsMenu"
-                        class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 rounded-md bg-gray-200 border border-gray-400 dark:border-[#4A4A4A] shadow-xl dark:bg-[#1A1A1A] grid grid-cols-4 w-max gap-6"
-                        tabindex="0"
-                    >
-                        <kbd>Esc</kbd>
-                        <div v-for="menu in simpleMenu" class="flex flex-col bg-gradient-to-b from-[#FFFFFF10] to-transparent pl-2 pt-2 rounded-md">
-                            <div class="text-s mb-4 font-satoshi-bold">{{ menu.category }}</div>
-                            <RouterLink v-for="item in menu.components" :to="item.link" @click="closeDocsMenu">
-                                <div class="flex flex-row place-items-center py-1 gap-2">
-                                    <div class="h-[16px] w-[16px]">
-                                        <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'"/>
+                    <Transition name="fade">
+                        <div 
+                            v-if="isDocOpen"
+                            v-click-outside="closeDocsMenu"
+                            class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 rounded-md bg-gray-200 border border-gray-400 dark:border-[#4A4A4A] shadow-xl dark:bg-[#1A1A1A] grid grid-cols-4 w-max gap-6"
+                            tabindex="0"
+                        >
+                            <kbd>Esc</kbd>
+                            <div v-for="menu in simpleMenu" class="flex flex-col bg-gradient-to-b from-[#FFFFFF10] to-transparent pl-2 pt-2 rounded-md">
+                                <div class="text-s mb-4 font-satoshi-bold">{{ menu.category }}</div>
+                                <RouterLink v-for="item in menu.components" :to="item.link" @click="closeDocsMenu">
+                                    <div class="flex flex-row place-items-center py-1 gap-2 relative">
+                                        <svg v-if="item.link === router.currentRoute.value.fullPath" viewBox="0 0 10 10" height="10" width="10" class="shadow rounded-full absolute -left-3 top-1/2 -translate-y-1/2">
+                                            <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#42d392' : '#5f8aee'"/>
+                                        </svg>
+                                        <div class="h-[16px] w-[16px]">
+                                            <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'"/>
+                                        </div>
+                                        <div 
+                                            :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-satoshi-bold cursor-default hover:no-underline' : ''}`"
+                                        >
+                                            {{ item.name }}
+                                        </div>
                                     </div>
-                                    <div 
-                                        :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-satoshi-bold cursor-default hover:no-underline' : ''}`"
-                                    >
-                                        {{ item.name }}
-                                    </div>
-                                </div>
-                            </RouterLink>
+                                </RouterLink>
+                            </div>
                         </div>
-                    </div>
-                    </div>
+                    </Transition>
+                </div>
                 <router-link data-cy="link-docs" to="/chart-builder">
                     <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/chart-builder')
                                 ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-[#ffe59633] shadow-md'
