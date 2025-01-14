@@ -1,1 +1,8 @@
 . update all number inputs with BaseInputNumber component
+
+
+Docs menu:
+
+use a dropdown modal with options by category
+
+examples page: use main pic with carousel to display the available options

@@ -8,9 +8,14 @@ import ChartMaker from "./ChartMaker.vue";
 import releases from "../../public/releases.json";
 import HeaderDropdownItem from "./HeaderDropdownItem.vue";
 import BaseDropdown from "./BaseDropdown.vue";
+import vClickOutside from "../directives/vClickOutside";
+import useCharts from "../useCharts";
 
 const router = useRouter();
 const store = useMainStore();
+const { simpleMenu } = useCharts();
+
+console.log(simpleMenu.value)
 
 const isOpen = ref(false);
 const translations = computed(() => {
@@ -144,6 +149,21 @@ const isHome = computed(() => {
     return currentRoute.value === '/'
 })
 
+const isDocOpen = ref(false);
+
+function openDocMenu() {
+    console.log('OPEN')
+    isDocOpen.value = true;
+}
+
+function closeDocsMenu() {
+    isDocOpen.value = false;
+}
+
+function toggleDocMenu() {
+    isDocOpen.value = !isDocOpen.value;
+}
+
 </script>
 
 <template>
@@ -181,14 +201,38 @@ const isHome = computed(() => {
                         {{ translations.menu.installation[store.lang] }}
                     </span>
                 </router-link>
-                <router-link data-cy="link-docs" to="/docs">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/docs')
-                                ? 'text-[#277753] dark:text-app-green hover:cursor-default bg-[#42d39233] shadow-md'
-                                : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
-                            }`">
-                        {{ translations.menu.docs[store.lang] }}
-                    </span>
-                </router-link>
+                <div class="relative" @keydown.esc="closeDocsMenu">
+                    <router-link data-cy="link-docs" to="/docs" @mouseover="openDocMenu" @click.stop="toggleDocMenu" @focus="openDocMenu">
+                        <div 
+                            :class="`relative py-1 px-2 rounded-xl ${isSelected('/docs')
+                                    ? 'text-[#277753] dark:text-app-green hover:cursor-default bg-[#42d39233] shadow-md'
+                                    : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                }`"
+                            >
+                            {{ translations.menu.docs[store.lang] }}
+                        </div>
+                    </router-link>
+                    <div 
+                        v-if="isDocOpen"
+                        v-click-outside="closeDocsMenu"
+                        class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 rounded-md bg-gray-200 border border-gray-400 dark:border-[#4A4A4A] shadow-xl dark:bg-[#1A1A1A] grid grid-cols-4 w-max gap-6"
+                        tabindex="0"
+                    >
+                        <div v-for="menu in simpleMenu" class="flex flex-col bg-gradient-to-b from-[#FFFFFF10] to-transparent pl-2 pt-2 rounded-md">
+                            <div class="text-s mb-4 font-satoshi-bold">{{ menu.category }}</div>
+                            <RouterLink v-for="item in menu.components" :to="item.link" @click="closeDocsMenu">
+                                <div class="flex flex-row place-items-center py-1 gap-2">
+                                    <div class="h-[16px] w-[16px]">
+                                        <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'"/>
+                                    </div>
+                                    <div class="text-xs hover:underline dark:hover:text-app-blue">
+                                        {{ item.name }}
+                                    </div>
+                                </div>
+                            </RouterLink>
+                        </div>
+                    </div>
+                    </div>
                 <router-link data-cy="link-docs" to="/chart-builder">
                     <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/chart-builder')
                                 ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-[#ffe59633] shadow-md'
@@ -317,7 +361,6 @@ const isHome = computed(() => {
 }
 
 .link-disabled {
-    pointer-events: none;
     cursor: default;
 }
 </style>
