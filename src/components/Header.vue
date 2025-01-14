@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, onBeforeUnmount } from "vue";
 import { Menu2Icon, XIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import { SunFilledIcon, MoonStarsIcon, LanguageIcon } from "vue-tabler-icons";
@@ -164,12 +164,27 @@ function toggleDocMenu() {
     isDocOpen.value = !isDocOpen.value;
 }
 
+function closeOnEsc(e) {
+    if(e.key === 'Escape') {
+            closeDocsMenu();
+        }
+}
+
+onMounted(() => {
+    window.addEventListener('keydown', closeOnEsc);
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener('keydown', closeOnEsc);
+});
+
 </script>
 
 <template>
     <ChartMaker ref="chartMkr" />
     <header data-cy="app-header"
-        class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A]">
+        tabindex="1"
+        class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] outline-none">
         <div class="mx-auto w-5/6 py-3 flex justify-between place-items-center">
             <router-link data-cy="link-home" to="/" v-if="!isHome">
                 <div class="flex flex-row gap-3">
