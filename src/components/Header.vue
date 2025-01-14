@@ -201,10 +201,6 @@ onBeforeUnmount(() => {
             <div v-else/>
 
             <nav class="hidden xl:flex flex-row gap-1 justify-end w-full place-items-center">
-                <!-- <button @click="openChartMaker">
-                    <ToolIcon/>
-                </button> -->
-
                 <router-link data-cy="link-installation" to="/installation">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/installation')
                                 ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-md'
@@ -236,7 +232,7 @@ onBeforeUnmount(() => {
                                 <div class="text-s mb-4 font-satoshi-bold">{{ menu.category }}</div>
                                 <RouterLink v-for="item in menu.components" :to="item.link" @click="closeDocsMenu">
                                     <div class="flex flex-row place-items-center py-1 gap-2 relative">
-                                        <svg v-if="item.link === router.currentRoute.value.fullPath" viewBox="0 0 10 10" height="10" width="10" class="shadow rounded-full absolute -left-3 top-1/2 -translate-y-1/2">
+                                        <svg v-if="item.link === router.currentRoute.value.fullPath" viewBox="0 0 10 10" height="10" width="10" class="shadow rounded-full absolute -left-3 top-1/2 -translate-y-1/2 animate-pulse">
                                             <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#42d392' : '#5f8aee'"/>
                                         </svg>
                                         <div class="h-[16px] w-[16px]">

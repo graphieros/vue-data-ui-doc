@@ -7,6 +7,7 @@ import { useConfig } from "../../assets/useConfig";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import BaseDropdown from "../BaseDropdown.vue";
 
 const  mainConfig = useConfig()
 
@@ -27,8 +28,9 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
 
-const config = ref({
-  type: "line",
+const config = computed(() => {
+  return {
+  type: type.value,
   style: {
     backgroundColor: "#F3F4F6",
     color: "#CCCCCC",
@@ -163,9 +165,12 @@ const config = ref({
       color: "#C4C4C4"
     }
   }
-});
-const darkModeConfig = ref({
-  type: "line",
+}
+})
+
+const darkModeConfig = computed(() => {
+  return {
+  type: type.value.text,
   style: {
     backgroundColor: "#1A1A1A",
     color: "#CCCCCC",
@@ -300,9 +305,10 @@ const darkModeConfig = ref({
       color: "#5c5c5c"
     }
   }
-});
+}
+})
 
-const type = ref("line");
+const type = ref('line');
 
 const options = ref([
     "bar",
@@ -335,7 +341,12 @@ const options = ref([
     "verticalBar",
     "waffle",
     "wheel",
-]);
+].map(el => {
+  return {
+    value: el,
+    text: el
+  }
+}))
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value)));
@@ -343,19 +354,13 @@ const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value
 function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
     mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
-    mutableConfig.value.type = type.value;
-    mutableConfigDarkMode.value.type = type.value;
+    mutableConfig.value.type = type.value.text;
+    mutableConfigDarkMode.value.type = type.value.text;
     forceChartUpdate();
 }
 
 function forceChartUpdate() {
     key.value += 1;
-}
-
-function setType() {
-    mutableConfig.value.type = type.value;
-    mutableConfigDarkMode.value.type = type.value;
-    forceChartUpdate();
 }
 
 function copyToClipboard(conf) {
@@ -397,30 +402,45 @@ function fixChart() {
           :configSource="mainConfig.vue_ui_skeleton"
         />
 
-        <div :class="`transition-all mx-auto w-1/2`">
-          <DocSnapper
-            :isFixed="isFixed"
-            :disabled="!isFixed || isMobile"
-            @fixChart="fixChart"
-            @resetDefault="resetDefault"
-            @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-          >
-            <div class="flex flex-row gap-6 justify-center mt-6 mb-6">
-              <select v-model="type" class="h-10 px-2 border border-app-green" @change="setType">
-                <option v-for="option in options" :value="option" >
-                    {{ option }}
-                </option>
-              </select>
+          <div class="flex flex-row justify-center w-full">
+            <div>
+              <DocSnapper
+                :isFixed="isFixed"
+                :disabled="!isFixed || isMobile"
+                @fixChart="fixChart"
+                @resetDefault="resetDefault"
+                @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+                @change="forceChartUpdate"
+              >
+                <div class="flex flex-col gap-1 justify-center place-items-center mt-6 mb-6">
+                  <label for="skeletons" class="text-xs text-left">Select skeleton type:</label>
+                  <BaseDropdown
+                    :options="options"
+                    option-target="value"
+                    additional-option-target="text"
+                    v-model:value="type"
+                    :width="255"
+                    id="skeletons"
+                  >
+                    <template #selected="{ selectedOption }">
+                      {{ selectedOption.text }}
+                    </template>
+                    <template #option="{ option }">
+                      {{ option.text }}
+                    </template>
+                  </BaseDropdown>
+                </div>
+                <VueUiSkeleton :config="isDarkMode ? {...mutableConfigDarkMode, type: type} : {...mutableConfig, type: type}" :key="key"/>
+                <div v-if="[type].includes('rating')" class="mt-4 mx-auto flex flex-row place-items-center justify-center gap-2">
+                  <input id="useSmiley" v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.rating.useSmiley"><input id="useSmiley" v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.useSmiley" @change="forceChartUpdate()">
+                  <label for="useSmiley">
+                    {{ translations.docs.comments.skeleton.smiley[store.lang] }}
+                  </label>
+                </div>
+              </DocSnapper>
             </div>
-            <VueUiSkeleton :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
-            <div v-if="[mutableConfig.type, mutableConfigDarkMode.type].includes('rating')" class="mt-4 mx-auto flex flex-row place-items-center justify-center gap-2">
-              <input id="useSmiley" v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.rating.useSmiley"><input id="useSmiley" v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.useSmiley" @change="forceChartUpdate()">
-              <label for="useSmiley">
-                {{ translations.docs.comments.skeleton.smiley[store.lang] }}
-              </label>
-            </div>
-          </DocSnapper>
-        </div>
+          </div>
+
 
         <Box :activeTab="1">
             <template v-slot:tab0>
