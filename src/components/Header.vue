@@ -225,7 +225,9 @@ function toggleDocMenu() {
                                     <div class="h-[16px] w-[16px]">
                                         <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'"/>
                                     </div>
-                                    <div class="text-xs hover:underline dark:hover:text-app-blue">
+                                    <div 
+                                        :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-satoshi-bold cursor-default hover:no-underline' : ''}`"
+                                    >
                                         {{ item.name }}
                                     </div>
                                 </div>
