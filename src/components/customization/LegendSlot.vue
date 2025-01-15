@@ -65,6 +65,13 @@ const config = computed(() => {
             },
             userOptions: {
                 position: 'left'
+            },
+            grid: {
+                labels: {
+                    yAxis: {
+                        scaleMax: 100
+                    }
+                }
             }
         }
     }
@@ -144,7 +151,7 @@ const config = computed(() => {
                     :config="config"
                 >
                     <template #legend="{ legend }">
-                        <div class="absolute -right-[125px] bottom-20 flex flex-col gap-2 p-2 border">
+                        <div class="absolute -right-[125px] bottom-20 flex flex-col gap-2 p-2 border shadow">
                             <div 
                                 v-for="datapoint in legend"
                                 class="flex flex-row gap-2 place-items-center"
