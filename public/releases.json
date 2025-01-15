@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.4.74",
+    "date": "2025-01-15",
+    "updates": [
+      {
+        "component": "VueUiXy, VueUiQuickChart",
+        "description": "Fix vertical scroll freeze on mobile when touching the minimap"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.73",
     "date": "2025-01-12",
     "updates": [
