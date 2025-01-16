@@ -22,7 +22,7 @@ const crumbs = ref([
         link: '/examples'
     },
     {
-        description: 'Themes',
+        description: 'Theme dashboards',
     }
 ]);
 
