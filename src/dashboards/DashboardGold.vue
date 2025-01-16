@@ -362,6 +362,8 @@ const CONFIG_STACKBAR = computed(() => {
                     x: {
                         timeLabels: {
                             values: GOLD_YEARS.value.map(y => String(y)),
+                            rotation: -33,
+                            fontSize: 12
                         }
                     }
                 }
