@@ -1,6 +1,9 @@
 <script setup>
 import { ref, computed } from "vue";
 import { getPalette } from "vue-data-ui";
+import { useMainStore } from "../stores";
+
+const store = useMainStore();
 
 const GOLD_YEARLY_SINCE_2000 = ref([
     279.29,
@@ -396,7 +399,7 @@ const CONFIG_STACKBAR = computed(() => {
                     theme: 'celebration'
                 }"
             >
-                <template #chart-background>
+                <template #chart-background v-if="!store.isSafari">
                     <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
                         <img src="../assets/gold.png" class="object-cover w-full h-full opacity-20">
                     </div>
@@ -435,7 +438,7 @@ const CONFIG_STACKBAR = computed(() => {
                     theme: 'celebration'
                 }"
             >
-                <template #chart-background>
+                <template #chart-background v-if="!store.isSafari">
                     <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
                         <img src="../assets/gold.png" class="object-cover w-full h-full opacity-[0.15]">
                     </div>
@@ -458,7 +461,7 @@ const CONFIG_STACKBAR = computed(() => {
                     theme: 'celebration'
                 }"
             >
-                <template #chart-background>
+                <template #chart-background v-if="!store.isSafari">
                     <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
                         <img src="../assets/gold.png" class="object-cover w-full h-full opacity-[0.15]">
                     </div>

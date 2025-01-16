@@ -4,6 +4,7 @@ import { useMainStore } from "../stores";
 import { useRoute, useRouter } from "vue-router";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import DashboardGold from "../dashboards/DashboardGold.vue";
+import DashboardHealth from "../dashboards/DashboardHealth.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -79,5 +80,6 @@ const themes = computed(() => {
 <template>
     <BaseCrumbs :tree="crumbs" noMargin showMobile/>
 
+    <!-- <DashboardHealth/> -->
     <DashboardGold/>
 </template>

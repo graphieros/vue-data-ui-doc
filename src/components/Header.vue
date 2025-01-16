@@ -16,6 +16,11 @@ const router = useRouter();
 const store = useMainStore();
 const { simpleMenu } = useCharts();
 
+onMounted(() => {
+    const ua = navigator.userAgent;
+    store.isSafari = /Safari/.test(ua) && !/Chrome/.test(ua) && !/Edg/.test(ua);
+});
+
 const isOpen = ref(false);
 const translations = computed(() => {
     return store.translations;
