@@ -1,11 +1,16 @@
 [
   {
-    "version": "v 2.4.77",
+    "version": "v 2.4.78",
     "date": "2025-01-16",
     "updates": [
       {
         "component": "VueUiXy",
         "description": "Fix offset of series labels on y axis in individual scale mode",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Fix scaleMin config option not working properly",
         "link": "/docs#vue-ui-xy"
       },
       {

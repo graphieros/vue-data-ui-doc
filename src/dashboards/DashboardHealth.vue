@@ -1,5 +1,8 @@
 <script setup>
 import { ref, computed } from "vue";
+import { useMainStore } from "../stores";
+
+const store = useMainStore();
 
 const YEARS = computed(() => {
     let year = 2000;
@@ -40,7 +43,7 @@ const DATASET_LIFE_EXPECTANCY = ref([
             72.6,
             73.2
         ],
-        type: 'line'
+        type: 'line',
     }
 ]);
 
@@ -126,9 +129,9 @@ const CONFIG_XY = computed(() => {
                     theme: 'concrete'
                 }"
             >
-                <template #chart-background>
+                <template #chart-background v-if="!store.isSafari">
                     <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
-                        <img src="../assets/tree.png" style="width: 100%; min-height: 100%; object-fit: cover;">
+                        <img src="../assets/tree.png" class="object-cover w-full h-full opacity-20">
                     </div>
                 </template>
                 <template #source>
