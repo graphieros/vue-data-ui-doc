@@ -2412,6 +2412,17 @@ export const useMainStore = defineStore("main", {
                         ko: '이 데이터셋을 JSON으로 복사',
                         ar: 'نسخ مجموعة البيانات هذه كـ JSON'
                     },
+                    themeDashboards: {
+                        en: "Themed dashboards",
+                        fr: "Tableaux de bord thématiques",
+                        pt: "Painéis temáticos",
+                        de: "Thematische Dashboards",
+                        zh: "主题仪表板",
+                        jp: "テーマ付きダッシュボード",
+                        es: "Tableros temáticos",
+                        ko: "테마 대시보드",
+                        ar: "لوحات القيادة ذات الطابع الخاص"
+                    },
                     moreExamples: {
                         en: 'More examples',
                         fr: 'Plus d\'exemples',

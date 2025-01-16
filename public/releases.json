@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.76",
+    "date": "2025-01-16",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix offset of series labels on y axis in individual scale mode",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.75",
     "date": "2025-01-15",
     "updates": [
