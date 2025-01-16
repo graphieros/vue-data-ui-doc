@@ -1,12 +1,17 @@
 [
   {
-    "version": "v 2.4.76",
+    "version": "v 2.4.77",
     "date": "2025-01-16",
     "updates": [
       {
         "component": "VueUiXy",
         "description": "Fix offset of series labels on y axis in individual scale mode",
         "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Fix NAN% values in data table in some cases",
+        "link": "/docs#vue-ui-donut"
       }
     ]
   },

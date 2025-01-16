@@ -207,9 +207,9 @@ const CONFIG_XY = computed(() => {
                         useIndividualScale: true,
                     },
                     xAxisLabels: {
-                        values: GOLD_YEARS.value,
+                        values: GOLD_YEARS.value.map(y => String(y)),
                         rotation: -33,
-                        yOffset: -6
+                        yOffset: 12
                     }
                 },
             },
