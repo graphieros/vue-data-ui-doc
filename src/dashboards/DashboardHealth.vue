@@ -57,7 +57,8 @@ const CONFIG_XY = computed(() => {
                 },
                 labels: {
                     yAxis: {
-                        scaleMax: 100,
+                        scaleMax: 80,
+                        scaleMin: 60
                     },
                     xAxisLabels: {
                         values: YEARS.value.map(y => String(y)),
@@ -73,7 +74,7 @@ const CONFIG_XY = computed(() => {
                 show: false,
             },
             padding: {
-                left: 80,
+                left: 40,
             },
             title: {
                 text: 'World average Life expectancy',
@@ -87,16 +88,6 @@ const CONFIG_XY = computed(() => {
                 showPercentage: false
             }
         },
-        bar: {
-            periodGap: 0.1,
-            border: {
-                useSerieColor: false,
-                strokeWidth: 1,
-            },
-            labels: {
-                show: true
-            }
-        },
         line: {
             radius: 6,
             useGradient: false,
@@ -107,7 +98,8 @@ const CONFIG_XY = computed(() => {
             },
             labels: {
                 show: true,
-                offsetY: -16
+                offsetY: -16,
+                rounding: 1
             }
         },
         table: {

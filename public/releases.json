@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.79",
+    "date": "2025-01-17",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Fix words not rendering when all values are identical",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.78",
     "date": "2025-01-16",
     "updates": [
