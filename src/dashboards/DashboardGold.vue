@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { getPalette } from "vue-data-ui";
 import { useMainStore } from "../stores";
+import BaseSpinner from "../components/BaseSpinner.vue";
 
 const store = useMainStore();
 
@@ -389,89 +390,117 @@ const CONFIG_STACKBAR = computed(() => {
 </script>
 
 <template>
-    <div class="grid grid-cols-1 sm:grid-cols-2 max-w-[1200px] mx-auto gap-4 mt-12 p-4 bg-white dark:bg-[#3A3A3A]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 max-w-[1200px] mx-auto gap-4 mt-12 p-4 bg-white dark:bg-[#3A3A3A] min-h-[1000px]">
         <div class="w-full h-full bg-[#fff8e1]">
-            <VueDataUi
-                component="VueUiXy"
-                :dataset="DATASET_XY"
-                :config="{
-                    ...CONFIG_XY,
-                    theme: 'celebration'
-                }"
-            >
-                <template #chart-background v-if="!store.isSafari">
-                    <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
-                        <img src="../assets/gold.png" class="object-cover w-full h-full opacity-20">
-                    </div>
+            <Suspense>
+                <template #default>
+                    <VueDataUi
+                        component="VueUiXy"
+                        :dataset="DATASET_XY"
+                        :config="{
+                            ...CONFIG_XY,
+                            theme: 'celebration'
+                        }"
+                    >
+                        <template #chart-background v-if="!store.isSafari">
+                            <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
+                                <img src="../assets/gold.png" class="object-cover w-full h-full opacity-20">
+                            </div>
+                        </template>
+                        <template #source>
+                            <div class="text-xs px-4 text-left text-[#8A8A8A]">
+                                Source: Macrotrends
+                            </div>
+                        </template>
+                    </VueDataUi>
                 </template>
-                <template #source>
-                    <div class="text-xs px-4 text-left text-[#8A8A8A]">
-                        Source: Macrotrends
-                    </div>
+                <template #fallback>
+                    <BaseSpinner/>
                 </template>
-            </VueDataUi>
+            </Suspense>
         </div>
 
         <div class="w-full place-items-center bg-[#fff8e1] h-full">
-            <VueDataUi
-                component="VueUiDonut"
-                :dataset="DATASET_DONUT"
-                :config="{
-                    ...CONFIG_DONUT,
-                    theme: 'celebration'
-                }"
-            >
-                <template #source>
-                    <div class="text-xs px-4 text-left text-[#8A8A8A]">
-                        Source: Metals Focus, Refinitiv GFMS, US Geological Survey, World Gold Council, as of the end of 2022. Value calculated using the LBMA Gold Price at the end of the year.
-                    </div>
+            <Suspense>
+                <template #default>
+                    <VueDataUi
+                        component="VueUiDonut"
+                        :dataset="DATASET_DONUT"
+                        :config="{
+                            ...CONFIG_DONUT,
+                            theme: 'celebration'
+                        }"
+                    >
+                        <template #source>
+                            <div class="text-xs px-4 text-left text-[#8A8A8A]">
+                                Source: Metals Focus, Refinitiv GFMS, US Geological Survey, World Gold Council, as of the end of 2022. Value calculated using the LBMA Gold Price at the end of the year.
+                            </div>
+                        </template>
+                    </VueDataUi>
                 </template>
-            </VueDataUi>
+                <template #fallback>
+                    <BaseSpinner />
+                </template>
+            </Suspense>
         </div>
 
         <div class="w-full place-items-center bg-[#fff8e1] h-full">
-            <VueDataUi
-                component="VueUiCandlestick"
-                :dataset="DATASET_CANDLESTICK"
-                :config="{
-                    ...CONFIG_CANDLESTICK,
-                    theme: 'celebration'
-                }"
-            >
-                <template #chart-background v-if="!store.isSafari">
-                    <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
-                        <img src="../assets/gold.png" class="object-cover w-full h-full opacity-[0.15]">
-                    </div>
+            <Suspense>
+                <template #default>
+                    <VueDataUi
+                        component="VueUiCandlestick"
+                        :dataset="DATASET_CANDLESTICK"
+                        :config="{
+                            ...CONFIG_CANDLESTICK,
+                            theme: 'celebration'
+                        }"
+                    >
+                        <template #chart-background v-if="!store.isSafari">
+                            <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
+                                <img src="../assets/gold.png" class="object-cover w-full h-full opacity-[0.15]">
+                            </div>
+                        </template>
+                        <template #source>
+                            <div class="text-xs px-4 text-left text-[#8A8A8A]">
+                                Source: Macrotrends<br>
+                                The volumes in the dataset are null because gold trading does not have a single consolidated volume figure in the way that stocks or other exchange-traded instruments do.
+                            </div>
+                        </template>
+                    </VueDataUi>
                 </template>
-                <template #source>
-                    <div class="text-xs px-4 text-left text-[#8A8A8A]">
-                        Source: Macrotrends<br>
-                        The volumes in the dataset are null because gold trading does not have a single consolidated volume figure in the way that stocks or other exchange-traded instruments do.
-                    </div>
+                <template #fallback>
+                    <BaseSpinner/>
                 </template>
-            </VueDataUi>
+            </Suspense>
         </div>
 
         <div class="w-full place-items-center bg-[#fff8e1] h-full">
-            <VueDataUi
-                component="VueUiStackbar"
-                :dataset="DATASET_STACKBAR"
-                :config="{
-                    ...CONFIG_STACKBAR,
-                    theme: 'celebration'
-                }"
-            >
-                <template #chart-background v-if="!store.isSafari">
-                    <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
-                        <img src="../assets/gold.png" class="object-cover w-full h-full opacity-[0.15]">
-                    </div>
+            <Suspense>
+                <template #default>
+                    <VueDataUi
+                        component="VueUiStackbar"
+                        :dataset="DATASET_STACKBAR"
+                        :config="{
+                            ...CONFIG_STACKBAR,
+                            theme: 'celebration'
+                        }"
+                    >
+                        <template #chart-background v-if="!store.isSafari">
+                            <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
+                                <img src="../assets/gold.png" class="object-cover w-full h-full opacity-[0.15]">
+                            </div>
+                        </template>
+                        <template #source>
+                            <div class="text-xs px-4 text-left text-[#8A8A8A]">
+                                Source: U.S. Geological Survey's Mineral Commodity Summaries
+                            </div>
+                        </template>
+                    </VueDataUi>
                 </template>
-                <template #source>
-                    <div class="text-xs px-4 text-left text-[#8A8A8A]">
-                        Source: U.S. Geological Survey's Mineral Commodity Summaries
-                    </div>
+                <template #fallback>
+                    <BaseSpinner/>
                 </template>
-            </VueDataUi>
+            </Suspense>
         </div>
     </div>
 </template>

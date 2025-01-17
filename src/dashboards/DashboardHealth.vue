@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
+import BaseSpinner from "../components/BaseSpinner.vue";
 
 const store = useMainStore();
 
@@ -85,7 +86,8 @@ const CONFIG_XY = computed(() => {
                 }
             },
             tooltip: {
-                showPercentage: false
+                showPercentage: false,
+                backgroundOpacity: 30
             }
         },
         line: {
@@ -150,6 +152,9 @@ const CONFIG_VERTICAL_BAR = computed(() => {
                                 suffix: ' million',
                             }
                         }
+                    },
+                    separators: {
+                        show: false,
                     }
                 },
                 legend: {
@@ -165,7 +170,8 @@ const CONFIG_VERTICAL_BAR = computed(() => {
                 },
                 tooltip: {
                     roundingValue: 2,
-                    suffix: ' million'
+                    suffix: ' million',
+                    backgroundOpacity: 0
                 }
             }
         }
@@ -175,49 +181,63 @@ const CONFIG_VERTICAL_BAR = computed(() => {
 </script>
 
 <template>
-    <div class="grid grid-cols-1 sm:grid-cols-2 max-w-[1200px] mx-auto gap-4 mt-12 p-4 bg-white dark:bg-[#3A3A3A]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 max-w-[1200px] mx-auto gap-4 mt-12 p-4 bg-white dark:bg-[#3A3A3A] min-h-[520px]">
         <div class="w-full h-full bg-[#f6f6fb]">
-            <VueDataUi
-                component="VueUiXy"
-                :dataset="DATASET_LIFE_EXPECTANCY"
-                :config="{
-                    ...CONFIG_XY,
-                    theme: 'concrete'
-                }"
-            >
-                <template #chart-background v-if="!store.isSafari">
-                    <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
-                        <img src="../assets/tree.png" class="object-cover w-full h-full opacity-20">
-                    </div>
+            <Suspense>
+                <template #default>
+                    <VueDataUi
+                        component="VueUiXy"
+                        :dataset="DATASET_LIFE_EXPECTANCY"
+                        :config="{
+                            ...CONFIG_XY,
+                            theme: 'concrete'
+                        }"
+                    >
+                        <template #chart-background v-if="!store.isSafari">
+                            <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
+                                <img src="../assets/tree.png" class="object-cover w-full h-full opacity-20">
+                            </div>
+                        </template>
+                        <template #source>
+                            <div class="text-xs px-4 text-left text-[#8A8A8A]">
+                                Source: UN WPP (2024); HMD (2024); Zijdeman et al. (2015); Riley (2005)
+                            </div>
+                        </template>
+                    </VueDataUi>
                 </template>
-                <template #source>
-                    <div class="text-xs px-4 text-left text-[#8A8A8A]">
-                        Source: UN WPP (2024); HMD (2024); Zijdeman et al. (2015); Riley (2005)
-                    </div>
+                <template #fallback>
+                    <BaseSpinner/>
                 </template>
-            </VueDataUi>
+            </Suspense>
         </div>
 
         <div class="w-full h-full bg-[#f6f6fb]">
-            <VueDataUi
-                component="VueUiVerticalBar"
-                :dataset="DATASET_DEATHS_BY_AGE"
-                :config="{
-                    ...CONFIG_VERTICAL_BAR,
-                    theme: 'concrete'
-                }"
-            >
-                <template #chart-background v-if="!store.isSafari">
-                    <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
-                        <img src="../assets/tree.png" class="object-cover w-full h-full opacity-20">
-                    </div>
+            <Suspense>
+                <template #default>
+                    <VueDataUi
+                        component="VueUiVerticalBar"
+                        :dataset="DATASET_DEATHS_BY_AGE"
+                        :config="{
+                            ...CONFIG_VERTICAL_BAR,
+                            theme: 'concrete'
+                        }"
+                    >
+                        <template #chart-background v-if="!store.isSafari">
+                            <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
+                                <img src="../assets/tree.png" class="object-cover w-full h-full opacity-20">
+                            </div>
+                        </template>
+                        <template #source>
+                            <div class="text-xs px-4 text-left text-[#8A8A8A]">
+                                Source: UN, World Population Prospects (2024)
+                            </div>
+                        </template>
+                    </VueDataUi>
                 </template>
-                <template #source>
-                    <div class="text-xs px-4 text-left text-[#8A8A8A]">
-                        Source: UN, World Population Prospects (2024)
-                    </div>
+                <template #fallback>
+                    <BaseSpinner/>
                 </template>
-            </VueDataUi>
+            </Suspense>
         </div>
     </div>
 </template>
