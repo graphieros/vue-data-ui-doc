@@ -57,7 +57,7 @@ const tpClass = computed(() => {
                 <img v-if="img" :src="img" class="rounded shadow"/>
                 <div class="flex flex-row place-items-center gap-1" @click="emit('click')">
                     <slot name="before"/>
-                    <div class="flex flex-col gap-2 place-items-center">
+                    <div class="flex flex-col gap-2 place-items-center w-full justify-center">
                         <slot name="before-inside"/>
                         <span dir="auto" class="w-full text-center">
                             {{ content }}
