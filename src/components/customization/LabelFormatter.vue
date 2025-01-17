@@ -9,7 +9,7 @@ const translations = computed(() => store.translations);
 
 const code = ref(`
 formatter: ({ value, config }) => {
-  return \`my format:\`\${value.toLocaleString('de-DE')}\`;
+  return \`my format:\${value.toLocaleString('de-DE')}\`;
 }
 `)
 
@@ -23,7 +23,7 @@ const configDonut = ref({
         labels: {
           value: {
             formatter: ({ value, config }) => {
-              return \`my format:\`\${value.toLocaleString('de-DE')}\`;
+              return \`my format:\${value.toLocaleString('de-DE')}\`;
             }
           }
         }
