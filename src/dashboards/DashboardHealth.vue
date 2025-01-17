@@ -108,11 +108,75 @@ const CONFIG_XY = computed(() => {
     }
 })
 
+const DATASET_DEATHS_BY_AGE = ref([
+    { name: '100+ years', value: 0.243, color: '#4A6A75' },
+    { name: '95-99 years', value: 1.31, color: '#4A6A75' },
+    { name: '90-94 years', value: 3.64, color: '#4A6A75' },
+    { name: '85-89 years', value: 5.96, color: '#4A6A75' },
+    { name: '80-84 years', value: 6.81, color: '#4A6A75' },
+    { name: '75-79 years', value: 6.58, color: '#4A6A75' },
+    { name: '75-79 years', value: 6.58, color: '#4A6A75' },
+    { name: '70-74 years', value: 6.59, color: '#4A6A75' },
+    { name: '65-69 years', value: 5.75, color: '#4A6A75' },
+    { name: '60-64 years', value: 4.48, color: '#4A6A75' },
+    { name: '55-59 years', value: 3.59, color: '#4A6A75' },
+    { name: '50-54 years', value: 2.63, color: '#4A6A75' },
+    { name: '45-49 years', value: 1.86, color: '#4A6A75' },
+    { name: '40-44 years', value: 1.5, color: '#4A6A75' },
+    { name: '35-39 years', value: 1.22, color: '#4A6A75' },
+    { name: '30-34 years', value: 1.04, color: '#4A6A75' },
+    { name: '25-29 years', value: 0.927, color: '#4A6A75' },
+    { name: '20-24 years', value: 0.864, color: '#4A6A75' },
+    { name: '15-19 years', value: 0.673, color: '#4A6A75' },
+    { name: '10-14 years', value: 0.454, color: '#4A6A75' },
+    { name: '5-9 years', value: 0.7, color: '#4A6A75' },
+    { name: '0-4 years', value: 4.83, color: '#4A6A75' },
+])
+
+const CONFIG_VERTICAL_BAR = computed(() => {
+    return {
+        style: {
+            chart: {
+                layout: {
+                    bars: {
+                        sort: 'none',
+                        offsetX: -52,
+                        paddingRight: 32,
+                        height: 10,
+                        dataLabels: {
+                            fontSize: 10,
+                            value: {
+                                roundingValue: 2,
+                                suffix: ' million',
+                            }
+                        }
+                    }
+                },
+                legend: {
+                    show: false
+                },
+                title: {
+                    text: 'Number of deaths by age',
+                    textAlign: 'left',
+                    paddingLeft: 14,
+                    subtitle: {
+                        text: 'World, 2023',
+                    }
+                },
+                tooltip: {
+                    roundingValue: 2,
+                    suffix: ' million'
+                }
+            }
+        }
+    }
+})
+
 </script>
 
 <template>
     <div class="grid grid-cols-1 sm:grid-cols-2 max-w-[1200px] mx-auto gap-4 mt-12 p-4 bg-white dark:bg-[#3A3A3A]">
-        <div class="w-full h-full bg-[#fff8e1]">
+        <div class="w-full h-full bg-[#f6f6fb]">
             <VueDataUi
                 component="VueUiXy"
                 :dataset="DATASET_LIFE_EXPECTANCY"
@@ -129,6 +193,28 @@ const CONFIG_XY = computed(() => {
                 <template #source>
                     <div class="text-xs px-4 text-left text-[#8A8A8A]">
                         Source: UN WPP (2024); HMD (2024); Zijdeman et al. (2015); Riley (2005)
+                    </div>
+                </template>
+            </VueDataUi>
+        </div>
+
+        <div class="w-full h-full bg-[#f6f6fb]">
+            <VueDataUi
+                component="VueUiVerticalBar"
+                :dataset="DATASET_DEATHS_BY_AGE"
+                :config="{
+                    ...CONFIG_VERTICAL_BAR,
+                    theme: 'concrete'
+                }"
+            >
+                <template #chart-background v-if="!store.isSafari">
+                    <div class="w-full h-full bg-gradient-to-t from-[#FFFFFF40] to-transparent">
+                        <img src="../assets/tree.png" class="object-cover w-full h-full opacity-20">
+                    </div>
+                </template>
+                <template #source>
+                    <div class="text-xs px-4 text-left text-[#8A8A8A]">
+                        Source: UN, World Population Prospects (2024)
                     </div>
                 </template>
             </VueDataUi>

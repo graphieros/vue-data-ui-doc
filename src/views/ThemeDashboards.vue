@@ -32,7 +32,7 @@ function updateCrumb() {
     function capitalizeFirstLetter(val) {
         return String(val).charAt(0).toUpperCase() + String(val).slice(1);
     }
-    let hash = route.hash ? route.hash.replace('#', '').split('-').map(s => capitalizeFirstLetter(s)).join('') : null;
+    let hash = route.hash ? capitalizeFirstLetter(route.hash.replace('#', '')).replaceAll('-', ' ') : null;
     if (hash === 'VueUiSparkhistogram') {
         hash = 'VueUiSparkHistogram'
     }
@@ -51,7 +51,7 @@ function updateCrumb() {
     }
 }
 
-const selectedLink = ref('');
+const selectedLink = ref('gold');
 
 onMounted(() => {
     if (route.hash) {
@@ -59,7 +59,7 @@ onMounted(() => {
         updateCrumb();
     } else {
         updateHash('gold');
-        selectedLink.value = themes.value.find(c => c.link === 'gold')
+        selectedLink.value = 'gold'
     }
 });
 
@@ -71,7 +71,8 @@ function updateHash(link) {
 
 const themes = computed(() => {
     return [
-        { link: 'gold' },
+        { link: 'gold', name: 'Gold', backgroundColor: '#fff8e1', color: '#424242' },
+        { link: 'life-expectancy', name: 'Life expectancy', backgroundColor: '#f6f6fb', color: '#50606C' },
     ]
 })
 
@@ -79,7 +80,29 @@ const themes = computed(() => {
 
 <template>
     <BaseCrumbs :tree="crumbs" noMargin showMobile/>
+    <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative mt-12">
+        <h1 class="text-[36px] text-center">Theme dashboards</h1>
+    </div>
+    <div class="flex place-items-center mx-auto max-w-[1000px] justify-center">
+        <div class="mt-4 flex flex-row gap-4 flex-wrap justify-center">
+            <button 
+                v-for="theme in themes"
+                @click="updateHash(theme.link)"
+                :style="{
+                    backgroundColor: theme.backgroundColor,
+                    color: theme.color,
+                    border: `1px solid ${theme.color}`
+                }"
+                class="px-4 py-2 rounded-md opacity-90 hover:opacity-100 transition-opacity flex flex-row place-items-center gap-2"
+            >
+                <span v-if="selectedLink === theme.link">⬤</span>
+                <span>
+                    {{ theme.name }}
+                </span>
+            </button>
+        </div>
+    </div>
 
-    <!-- <DashboardHealth/> -->
-    <DashboardGold/>
+    <DashboardHealth v-if="selectedLink === 'life-expectancy'"/>
+    <DashboardGold v-if="selectedLink === 'gold'"/>
 </template>
