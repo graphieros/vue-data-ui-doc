@@ -15,7 +15,7 @@ onMounted(() => {
 
     sdk.embedProjectId(
         'stackblitz',
-        'vitejs-vite-qre4ps',
+        'vitejs-vite-cjmxbt3n',
         {
             forceEmbedLayout: true,
             openFile: 'src/App.vue',
