@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.80",
+    "date": "2025-01-17",
+    "updates": [
+      {
+        "component": "All components with zoom",
+        "description": "Improve design with tooltips above range handles",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.4.79",
     "date": "2025-01-17",
     "updates": [
