@@ -47,6 +47,7 @@ const tableConfig = computed(() => {
             showMedian: true,
             head: {
                 backgroundColor: isDarkMode.value ? "#2A2A2A" :  "#FFFFFF",
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                 values: ["", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "TOTAL", "AVG", "MED"],
             },
         },
@@ -65,7 +66,7 @@ const tableConfig = computed(() => {
             :dataset="135.42"
             :config="{
                 title: 'Average basket',
-                layoutClass: 'p-4 rounded-md shadow-md bg-white dark:bg-[#FFFFFF10]',
+                layoutClass: 'p-4 rounded-md shadow-md bg-white dark:bg-[#2A2A2A]',
                 backgroundColor: 'null',
                 titleColor: 'null',
                 titleClass: 'text-gray-800 dark:text-gray-400',
@@ -100,7 +101,7 @@ const tableConfig = computed(() => {
                         ]"
                         :config="{
                             style: {
-                                backgroundColor: isDarkMode ? '#FFFFFF10' : '#FFFFFF',
+                                backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
                                 area: {
                                     color: isDarkMode ? '#42d392' : '#5f8bee',
                                 },
@@ -137,7 +138,7 @@ const tableConfig = computed(() => {
             :dataset="1260655"
             :config="{
                 title: 'Expected revenue',
-                layoutClass: 'p-4 rounded-md shadow-md bg-white dark:bg-[#FFFFFF10]',
+                layoutClass: 'p-4 rounded-md shadow-md bg-white dark:bg-[#2A2A2A]',
                 backgroundColor: 'null',
                 titleColor: 'null',
                 titleClass: 'text-gray-800 dark:text-gray-400',
@@ -160,6 +161,11 @@ const tableConfig = computed(() => {
                         :config="{
                             style: {
                                 backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
+                                tooltip: {
+                                    backgroundOpacity: 0,
+                                    borderColor: isDarkMode ? '#42d392' : '#E1E5E8',
+                                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                                },
                                 legend: {
                                     name: {
                                         color: isDarkMode ? '#8A8A8A' : '#3A3A3A',
@@ -185,7 +191,7 @@ const tableConfig = computed(() => {
             :dataset="1022"
             :config="{
                 title: 'Average customers per day',
-                layoutClass: 'p-4 rounded-md shadow-md bg-white dark:bg-[#FFFFFF10]',
+                layoutClass: 'p-4 rounded-md shadow-md bg-white dark:bg-[#2A2A2A]',
                 backgroundColor: 'null',
                 titleColor: 'null',
                 titleClass: 'text-gray-800 dark:text-gray-400',
@@ -211,7 +217,7 @@ const tableConfig = computed(() => {
                         ]"
                         :config="{
                             style: {
-                                backgroundColor: isDarkMode ? '#FFFFFF10' : '#FFFFFF',
+                                backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
                                 layout: {
                                     height: 160
                                 },
