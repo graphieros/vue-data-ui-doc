@@ -1,43 +1,10 @@
-<template>
-    <div class="inline-flex flex-col flex-wrap border-l border-r border-b border-[#9A9A9A] dark:border-[#4A4A4A] px-2 mt-2 rounded-md pb-2 bg-[#FFFFFF10]">
-        <label class="text-xs text-black dark:text-white">{{ label }}</label>
-        <div class="color-picker flex flex-row">
-            <div class="flex flex-col place-items-center">
-
-                <button class="h-[20px] my-1 w-[110px] relative rounded-lg outline outline-gray-500" :style="{ background: rgbaColor }" @click="open = true" v-click-outside="close" @keydown.esc="close">
-                    <div v-if="open" class="absolute top-[100%] left-1/2 -translate-x-1/2 color-picker-dialog bg-white dark:bg-[#2A2A2A]">
-                        <div 
-                            v-for="c in defaultPalette" 
-                            class="color-picker-option"  
-                            :style="{ 
-                                backgroundColor: c,
-                                outline: `1px solid #CCCCCC`, 
-                            }" 
-                            @click="() => setColor(c)"
-                        />
-                        <div class="my-color-picker-option-empty" @click="triggerColorPicker" :style="{
-                            background: value
-                        }">
-                            <VueUiIcon name="palette" :stroke="adaptColorToBackground(convertColorToHex(value))" :size="20"/>
-                        </div>
-                    </div>
-                    <input ref="myColorInput" type="color"  v-model="hexColor" @input="updateColorFromHex" class="hidden-input"/>
-                </button>
-                
-                <div class="inline-flex place-items-center justify-center gap-2 relative h-[20px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                    <input aria-label="Alpha channel" type="range" class="w-full accent-app-blue" v-model="alpha" min="0" max="1" step="0.01" @input="updateColorFromAlpha" />
-                </div>
-            </div>
-            <input :aria-labelledby="labelId" :id="id" type="text" class="text-xs h-[36px] w-[200px]" v-model="colorValue" @input="updateColorFromInput" placeholder="Enter RGBA" />
-        </div>
-    </div>
-</template>
 
 <script setup>
 import { ref, computed, watch, toRefs, onMounted } from 'vue'
 import { adaptColorToBackground } from './maker/lib';
 import vClickOutside from "../directives/vClickOutside"
 import { convertColorToHex } from '../useNestedProp';
+import { useMainStore } from '../stores';
 
 const props = defineProps({
     value: {
@@ -59,6 +26,8 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:value', 'change'])
+const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
 
 const { value } = toRefs(props)
 const hexColor = ref('#000000') 
@@ -187,6 +156,44 @@ function hslToRgb(h, s, l) {
     return [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)]
 }
 </script>
+
+<template>
+    <div class="inline-flex flex-col flex-wrap border-l border-r border-b border-[#9A9A9A] dark:border-[#4A4A4A] px-2 mt-2 rounded-md pb-2 bg-[#FFFFFF10]">
+        <label class="text-xs text-black dark:text-white">{{ label }}</label>
+        <div class="color-picker flex flex-row">
+            <div class="flex flex-col place-items-center">
+
+                <button class="h-[20px] my-1 w-[110px] relative rounded-lg " :style="{ background: rgbaColor }" @click="open = true" v-click-outside="close" @keydown.esc="close">
+                    <div v-if="open" class="absolute top-[100%] left-1/2 -translate-x-1/2 color-picker-dialog bg-white dark:bg-[#2A2A2A]">
+                        <div 
+                            v-for="c in defaultPalette" 
+                            class="color-picker-option outline outline-gray-300 dark:outline-[#5A5A5A] hover:outline-gray-500 hover:dark:outline-gray-200 hover:outline-dotted"  
+                            :style="{ 
+                                backgroundColor: c,
+                            }" 
+                            @click="() => setColor(c)"
+                        />
+                        <div class="my-color-picker-option-empty" @click="triggerColorPicker" :style="{
+                            background: value
+                        }">
+                            <VueUiIcon name="palette" :stroke="adaptColorToBackground(convertColorToHex(value))" :size="20"/>
+                        </div>
+                        <div/>
+                        <button @click="close" class="flex place-items-center justify-center rounded-full p-1 hover:bg-gray-100 hover:dark:bg-[#4A4A4A] transition-colors">
+                            <VueUiIcon name="close" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                        </button>
+                    </div>
+                    <input ref="myColorInput" type="color"  v-model="hexColor" @input="updateColorFromHex" class="hidden-input"/>
+                </button>
+                
+                <div class="inline-flex place-items-center justify-center gap-2 relative h-[20px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                    <input aria-label="Alpha channel" type="range" class="w-full accent-app-blue" v-model="alpha" min="0" max="1" step="0.01" @input="updateColorFromAlpha" />
+                </div>
+            </div>
+            <input :aria-labelledby="labelId" :id="id" type="text" class="text-xs h-[36px] w-[200px]" v-model="colorValue" @input="updateColorFromInput" placeholder="Enter RGBA" />
+        </div>
+    </div>
+</template>
 
 <style scoped>
 .color-picker {
