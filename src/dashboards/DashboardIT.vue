@@ -270,7 +270,7 @@ const CONFIG_XY_IT_SPENDING = computed(() => {
                     <div :style="{ width: '100%', textAlign: 'center', marginTop: '-80px'}" class="flex flex-col place-items-center text-xs gap-2">
                         {{ plot.comment }}
                         <div class="animate-ping">
-                            <VueUiIcon name="circleExclamation" :size="16" :stroke="isDarkMode ? '#549ed1' : '#1f77b4'"/>
+                            <VueUiIcon name="circleExclamation" :size="16" :stroke="isDarkMode ? '#ff6600' : '#ff6600'"/>
                         </div>
                     </div>
                 </template>
