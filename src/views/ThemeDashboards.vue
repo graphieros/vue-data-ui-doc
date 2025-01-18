@@ -5,6 +5,7 @@ import { useRoute, useRouter } from "vue-router";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import DashboardGold from "../dashboards/DashboardGold.vue";
 import DashboardHealth from "../dashboards/DashboardHealth.vue";
+import DashboardIT from "../dashboards/DashboardIT.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -73,6 +74,7 @@ const themes = computed(() => {
     return [
         { link: 'gold', name: 'Gold', backgroundColor: '#fff8e1', color: '#424242' },
         { link: 'life-expectancy', name: 'Life expectancy', backgroundColor: '#f6f6fb', color: '#50606C' },
+        { link: 'it-industry', name: 'IT industry', backgroundColor: '#f6f6fb', color: '#50606C' },
     ]
 })
 
@@ -105,4 +107,5 @@ const themes = computed(() => {
 
     <DashboardHealth v-if="selectedLink === 'life-expectancy'"/>
     <DashboardGold v-if="selectedLink === 'gold'"/>
+    <DashboardIT v-if="selectedLink ===  'it-industry'"/>
 </template>
