@@ -71,6 +71,11 @@ const routes = [
         component: () => import("../views/ThemeDashboards.vue")
     },
     {
+        path: "/examples/dont-try-this-at-home",
+        name: "Dont try this at home",
+        component: () => import("../views/DontTryThisAtHome.vue")
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound
     }

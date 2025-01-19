@@ -91,6 +91,20 @@ const crumbs = ref([
                 </div>
                 </button>
             </RouterLink>
+            <RouterLink to="/examples/dont-try-this-at-home">
+                <button :class="`relative rounded cursor-pointer py-2 px-4 border transition-colors ${selected ? 'bg-app-green cursor-default dark:text-black border-app-green' : 'hover:bg-gray-200 dark:hover:bg-[#42d39230] border-gray-400 dark:border-[#2A2A2A]'}`">
+                    <svg class="absolute top-0.5 right-0.5" v-if="selected" viewBox="0 0 10 10" height="8" width="8">
+                        <circle cx="5.5" cy="6" r="5" :fill="isDarkMode ? '#FFFFFF' : '#1A1A1A'"/>
+                        <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#1A1A1A' : '#F3F4F6'"/>
+                    </svg>
+                    <div class="flex flex-row gap-2 place-items-center">
+                    <VueUiIcon name="moodWink" :stroke="currentMenu === 'dontTryThisAtHome' ? '#1A1A1A' : isDarkMode ? '#42d392' : '#1A1A1A'"/>
+                    <span>
+                        {{ translations.docs.dontTryThisAtHome[store.lang] }}
+                    </span>
+                </div>
+                </button>
+            </RouterLink>
         </div>
 
         <ExampleSpark v-if="currentMenu === 'mini'"/>

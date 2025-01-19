@@ -2,6 +2,7 @@
 import { computed, ref } from "vue";
 import { useMainStore } from '../../stores';
 import DocLink from "../DocLink.vue";
+
 const store = useMainStore();
 
 const isDarkMode = computed(() => store.isDarkMode)
@@ -225,7 +226,7 @@ const tableConfig = computed(() => {
                                     borderRadius: 2,
                                     gap: 1,
                                     colors: {
-                                        positive: '#42d392'
+                                        positive: '#42d392',
                                     }
                                 },
                                 labels: {

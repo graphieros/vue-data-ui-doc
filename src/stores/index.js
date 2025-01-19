@@ -2413,6 +2413,17 @@ export const useMainStore = defineStore("main", {
                         ko: '이 데이터셋을 JSON으로 복사',
                         ar: 'نسخ مجموعة البيانات هذه كـ JSON'
                     },
+                    dontTryThisAtHome: {
+                        en: "Don't try this at home",
+                        fr: "Ne tentez pas ça chez vous",
+                        pt: "Não tente isso em casa",
+                        de: "Versuchen Sie das nicht zu Hause",
+                        zh: "不要在家尝试",
+                        jp: "自宅で試さないでください",
+                        es: "No intentes esto en casa",
+                        ko: "집에서 따라 하지 마세요",
+                        ar: "لا تحاول هذا في المنزل"
+                    },
                     themeDashboards: {
                         en: "Themed dashboards",
                         fr: "Tableaux de bord thématiques",
