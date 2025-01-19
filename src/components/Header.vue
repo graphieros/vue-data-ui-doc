@@ -147,7 +147,19 @@ const dropdownItems = computed(() => {
         { link: '/versions', title: translations.value.menu.versions[store.lang], clickableWhenActive: false },
         { link: '/about', title: translations.value.menu.about[store.lang], clickableWhenActive: false },
     ]
-})
+});
+
+const detailedDoc = ref({
+        en: "Detailed components documentation",
+        fr: "Documentation détaillée des composants",
+        pt: "Documentação detalhada dos componentes",
+        de: "Detaillierte Komponenten-Dokumentation",
+        zh: "详细的组件文档",
+        jp: "詳細なコンポーネントドキュメント",
+        es: "Documentación detallada de los componentes",
+        ko: "상세한 구성 요소 문서",
+        ar: "توثيق مفصل للمكونات"
+    })
 
 const isHome = computed(() => {
     return currentRoute.value === '/'
@@ -230,10 +242,13 @@ onBeforeUnmount(() => {
                         <div 
                             v-if="isDocOpen"
                             v-click-outside="closeDocsMenu"
-                            class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 rounded-md bg-gray-200 border border-gray-400 dark:border-[#4A4A4A] shadow-xl dark:bg-[#1A1A1A] grid grid-cols-4 w-max gap-6"
+                            class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 pt-10 rounded-md bg-gray-200 border border-gray-400 dark:border-[#4A4A4A] shadow-xl dark:bg-[#1A1A1A] grid grid-cols-4 w-max gap-6"
                             tabindex="0"
                         >
                             <kbd>Esc</kbd>
+                            <div class="fixed -top-1 left-0 py-3 w-full text-center">
+                                {{ detailedDoc[store.lang] }}
+                            </div>
                             <div v-for="menu in simpleMenu" class="flex flex-col bg-gradient-to-b from-[#FFFFFF10] to-transparent pl-2 pt-2 rounded-md">
                                 <div class="text-s mb-4 font-satoshi-bold">{{ menu.category }}</div>
                                 <FlexibleTooltip
