@@ -1,5 +1,19 @@
 <script setup>
 import { computed } from "vue";
+import { useMainStore } from "../stores";
+import { BrandGithubFilledIcon } from "vue-tabler-icons";
+
+/**
+ * DISCLAIMER:
+ * 
+ * This example will probably fail to render properly in Safari.
+ * Safari cannot handle styles properly when HTML content is placed inside foreignObjects
+ * 
+ */
+
+const store = useMainStore()
+const translations = computed(() => store.translations);
+const isDarkMode = computed(() => store.isDarkMode);
 
 const dataset = computed(() => {
   return [
@@ -45,25 +59,25 @@ function makeTimeSeries(n) {
 const sparklines = computed(() => {
   return {
     ['P1 C1']: {
-      dataset: [{ name: 'P1 C1', series: makeDs(12, 100), type: 'bar', color: '#dbdb8d' }],
+      dataset: [{ name: 'P1 C1', series: makeDs(12, 100), type: 'bar', color: '#e7ba52' }],
       config: {
         ...xyConfig.value
       }
     },
     ['P1 C2']: {
-      dataset: [{ name: 'P1 C2', series: makeDs(12, 100), type: 'bar', color: '#5254a3' }],
+      dataset: [{ name: 'P1 C2', series: makeDs(12, 100), type: 'bar', color: '#9edae5' }],
       config: {
         ...xyConfig.value
       }
     },
     ['P1 C3']: {
-      dataset: [{ name: 'P1 C3', series: makeDs(12, 100), type: 'bar', color: '#5254a3' }],
+      dataset: [{ name: 'P1 C3', series: makeDs(12, 100), type: 'bar', color: '#9edae5' }],
       config: {
         ...xyConfig.value
       }
     },
     ['P1 C4']: {
-      dataset: [{ name: 'P1 C3', series: makeDs(12, 100), type: 'bar', color: '#5254a3' }],
+      dataset: [{ name: 'P1 C3', series: makeDs(12, 100), type: 'bar', color: '#e7ba52' }],
       config: {
         ...xyConfig.value
       }
@@ -91,7 +105,7 @@ const sparklines = computed(() => {
       }
     },
     ['P2 C2']: {
-      dataset: [{ name: 'P2 C2', series: makeDs(12, 100), type: 'line', useArea: true, smooth: true, color: '#D32F2F' }],
+      dataset: [{ name: 'P2 C2', series: makeDs(12, 100), type: 'line', useArea: true, smooth: true, color: '#C1FFFF' }],
       config: {
         ...xyConfig.value,
         chart: {
@@ -113,7 +127,7 @@ const sparklines = computed(() => {
       }
     },
     ['P2 C3']: {
-      dataset: [{ name: 'P2 C3', series: makeDs(12, 100), type: 'line', useArea: true, smooth: true, color: '#D32F2F' }],
+      dataset: [{ name: 'P2 C3', series: makeDs(12, 100), type: 'line', useArea: true, smooth: true, color: '#C1FFFF' }],
       config: {
         ...xyConfig.value,
         chart: {
@@ -139,52 +153,18 @@ const sparklines = computed(() => {
 
 const config = computed(() => {
   return {
-    responsive: false,
-    theme: "",
-    customPalette: [],
-    userOptions: {
-      show: true,
-      showOnChartHover: false,
-      keepStateOnChartLeave: true,
-      position: "right",
-      buttons: {
-        tooltip: true,
-        pdf: true,
-        csv: true,
-        img: true,
-        table: true,
-        labels: false,
-        fullscreen: true,
-        sort: false,
-        stack: false,
-        animation: false,
-        annotator: true,
-      },
-      buttonTitles: {
-        open: "Open options",
-        close: "Close options",
-        tooltip: "Toggle tooltip",
-        pdf: "Download PDF",
-        csv: "Download CSV",
-        img: "Download PNG",
-        table: "Toggle table",
-        fullscreen: "Toggle fullscreen",
-        annotator: "Toggle annotator",
-      },
-    },
     style: {
-      fontFamily: "inherit",
       chart: {
-        backgroundColor: "#FFFFFF",
-        color: "#2D353C",
-        height: 500,
+        backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+        height: 600,
         width: 800,
         padding: { top: 0, right: 6, bottom: 12, left: 6 },
         layout: {
           sorted: true,
           rects: {
-            stroke: "#e1e5e8",
-            strokeWidth: 1,
+            stroke: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+            strokeWidth: 2,
             borderRadius: 0,
             colorRatio: 0.3,
             gradient: { show: true, intensity: 30 },
@@ -208,15 +188,15 @@ const config = computed(() => {
         legend: {
           show: true,
           bold: false,
-          backgroundColor: "#FFFFFF",
-          color: "#2D353C",
+          backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
           fontSize: 14,
           roundingValue: 0,
           roundingPercentage: 0,
         },
         title: {
           text: "Xy charts in a treemap",
-          color: "#2D353C",
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
           fontSize: 20,
           bold: true,
           textAlign: "left",
@@ -226,14 +206,14 @@ const config = computed(() => {
         },
         tooltip: {
           show: true,
-          color: "#2D353C",
-          backgroundColor: "#FFFFFF",
+          backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
           fontSize: 14,
           customFormat: null,
           borderRadius: 4,
-          borderColor: "#e1e5e8",
+          borderColor: isDarkMode.value ? '#6A6A6A' : '#E1E5E8',
           borderWidth: 1,
-          backgroundOpacity: 100,
+          backgroundOpacity: isDarkMode.value ? 60 : 10,
           position: "center",
           offsetY: 24,
           roundingValue: 1,
@@ -248,10 +228,11 @@ const config = computed(() => {
         value: "Value",
         percentage: "Percentage",
       },
-      th: { backgroundColor: "#fafafa", color: "#2D353C", outline: "none" },
+      th: { backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A', outline: "none" },
       td: {
-        backgroundColor: "#FFFFFF",
-        color: "#2D353C",
+        backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         outline: "none",
         roundingValue: 0,
         roundingPercentage: 0,
@@ -295,7 +276,11 @@ const xyConfig = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col gap-4">
+    <div v-if="store.isSafari">
+      You are using Safari, this is why the rendering sucks.
+      This is also why we named this section "Don't try this at home"...
+    </div>
     <VueDataUi component="VueUiTreemap" :dataset="dataset" :config="config">
       <template #rect="{ rect }">
         <div :style="{ width: '100%', height: 'calc(100% - 50px)' }">
@@ -307,8 +292,11 @@ const xyConfig = computed(() => {
         </div>
       </template>
     </VueDataUi>
-    <button>
-      <a href="" target="_blank">T</a>
+    <button class="py-1 px-4 bg-gray-100 dark:bg-[#FFFFFF20] hover:bg-gray-200 dark:hover:bg-[#FFFFFF30] transition-colors flex flex-row place-items-center gap-2 justify-center">
+      <BrandGithubFilledIcon />
+      <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/TreemapXy.vue" target="_blank">
+        {{ translations.githubCode[store.lang] }}
+      </a>
     </button>
   </div>
 </template>
