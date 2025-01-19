@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.83",
+    "date": "2025-01-19",
+    "updates": [
+      {
+        "component": "TS types",
+        "description": "Fix wriong types in ChartUserOption type",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.4.82",
     "date": "2025-01-18",
     "updates": [
