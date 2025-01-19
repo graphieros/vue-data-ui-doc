@@ -6,6 +6,7 @@ import HelpConfiguration from "./HelpConfiguration.vue";
 import HelpDataset from "./HelpDataset.vue";
 import HelpVueDataUiComponent from "./HelpVueDataUiComponent.vue";
 import HelpNuxt from "./HelpNuxt.vue";
+import ChartSeeker from "../ChartSeeker.vue";
 
 const store = useMainStore();
 const help = useHelpStore();
@@ -95,11 +96,17 @@ const linksTranslations = computed(() => {
         <div class="w-full flex place-items-center gap-4 px-10 absolute top-6 left-0 text-app-orange">
             <VueUiIcon name="circleQuestion" stroke="#FF6400"/> {{ help.title[store.lang] }}
         </div>
-        <div class="h-full max-h-[600px] overflow-auto mt-14 px-4" style="overscroll-behavior: contain;">
+        <div class="h-full max-h-[600px] overflow-auto overflow-x-visible mt-14 px-4" style="overscroll-behavior: contain;">
             <HelpConfiguration/>
             <HelpDataset/>
             <HelpVueDataUiComponent/>
             <HelpNuxt/>
+
+            <div class="w-full border-t border-gray-500 py-2"/>
+            <div class="w-full max-w-[850px] mx-auto">
+                <ChartSeeker @click="closeDialog"/>
+            </div>
+
             <div class="w-full flex flex-col place-items-start border-t border-gray-500 mt-2 pt-4">
                 <button class="p-2" dir="auto">
                     <a href="https://github.com/graphieros/vue-data-ui/issues" target="_blank" class="underline text-app-blue">

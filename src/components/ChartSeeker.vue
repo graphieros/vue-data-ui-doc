@@ -8,6 +8,8 @@ import { TerminalIcon } from "vue-tabler-icons";
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
+const emit = defineEmits(['click'])
+
 const { classification, classificationDescription, taxinomy } = useCharts()
 
 const filters = ref(Object.keys(classification.value).map(f => {
@@ -108,7 +110,7 @@ const selectedIndex = ref(null);
                     delay="delay-150"
                     :alwaysBlue="true"
                 >
-                    <RouterLink :to="chart.link">
+                    <RouterLink :to="chart.link" @click="emit('click')">
                         <div class="relative flex place-items-center justify-center p-2 border border-gray-200 dark:border-[#FFFFFF10] hover:bg-[#5f8aee30] hover:shadow-md hover:border-app-blue dark:hover:border-app-blue transition-all pb-3 h-[80px] w-[80px]" @mouseover="selectedIndex = i" @mouseout="selectedIndex = null">
                             <VueUiIcon :name="chart.icon" :stroke="selectedIndex !== null && selectedIndex === i ? '#5f8aee' : isDarkMode ? '#CCCCCC' : '#1A1A1A'" class="-mt-1" :size="32" />
                             <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[10px] pb-[10px]">
