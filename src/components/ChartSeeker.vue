@@ -131,6 +131,36 @@ const selectedIndex = ref(null);
                 </button>
             </a>
         </div>
+
+        <div class="w-full">
+            <VueDataUi
+                component="VueUiAccordion"
+                :config="{
+                    maxHeight: 5000,
+                    head: {
+                        useArrowSlot: true,
+                        backgroundColor: 'transparent',
+                        iconColor: isDarkMode ? '#fdd663' : '#1A1A1A'
+                    },
+                    body: {
+                        backgroundColor: 'transparent',
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                    }
+                }"
+            >
+                <template #arrow="{ iconColor }">
+                    <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                </template>
+                <template #title>
+                    CLI demo
+                </template>
+                <template #content>
+                    <video controls width="100%" loop="true" autoplay="true">
+                        <source src="../assets/vdui_cli.mp4" type="video/mp4" />
+                    </video>
+                </template>
+            </VueDataUi>
+        </div>
     </div>
 </template>
 
