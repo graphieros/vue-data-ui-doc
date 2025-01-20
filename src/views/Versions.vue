@@ -11,6 +11,7 @@ import GithubIssues from "../components/GithubIssues.vue";
 import { shiftHue } from '../components/maker/lib'
 import RepoStars from "../components/RepoStars.vue";
 import { darkenColor } from "vue-data-ui";
+import Downloads from "../components/Downloads.vue";
 
 const globalConfig = useConfig()
 
@@ -1883,6 +1884,11 @@ const versionsReleases = computed(() => {
                     <VueUi3dBar v-else :dataset="{ percentage: bar.value }" :config="{...config3dBar, style: {...config3dBar.style, chart: {...config3dBar.style.chart}}}"/>
                   </div>
                 </div> -->
+
+                <div class="w-full max-w-[800] mx-auto py-6">
+                  <Downloads/>
+                </div>
+
                 <div class="max-w-[500px] mx-auto mb-6" v-if="!!data && !isLoadingLine">
                   <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkHistogram', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' } }"/>
                   <VueDataUi v-else component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`">

@@ -17,6 +17,10 @@ export const useMainStore = defineStore("main", {
             isFetching: false,
             customColors: [],
             npmDownloads: [],
+            downloads: {
+                lib: [],
+                cli: []
+            },
             repos: {
                 docs: {},
                 library: {},

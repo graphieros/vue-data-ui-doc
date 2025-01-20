@@ -32,6 +32,10 @@ const end = computed(() => {
 const url = computed(() => {
     return `https://api.npmjs.org/downloads/range/${start.value}:${end.value}/vue-data-ui`;
 });
+  
+const url_cli = computed(() => {
+  return `https://api.npmjs.org/downloads/range/${start.value}:${end.value}/vue-data-ui-cli`;
+})
 
 onMounted(() => {
   store.isFetching = true;
@@ -104,8 +108,6 @@ onMounted(() => {
     store.isFetching = false;
   })
 
-
-
   fetch(url.value, {
         method: 'GET',
         mode: 'cors',
@@ -113,12 +115,23 @@ onMounted(() => {
     }).then((response) => {
         return response.json();
     }).then(json =>  {
+      store.downloads.lib = json.downloads;
       store.npmDownloads = json.downloads.map(d => {
             return {
                 period: d.day,
                 value: d.downloads
             }
         }).slice(0,-1).slice(-28);
+    })
+
+  fetch(url_cli.value, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'default'
+    }).then((response) => {
+        return response.json();
+    }).then(json =>  {
+      store.downloads.cli = json.downloads;
     })
 });
 
