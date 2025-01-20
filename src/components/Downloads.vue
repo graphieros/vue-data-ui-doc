@@ -17,17 +17,24 @@ const periods = ref({
   _1Y: { id: '_1Y', name: 'Last year', value: 365, plotRadius: 0.1 },
 })
 
+const data_lib = computed(() => {
+  return store.downloads.lib.map(d => d.downloads).slice(-periods.value[selectedPeriod.value].value).slice(0, -1)
+})
+const data_cli = computed(() => {
+  return store.downloads.cli.map(d => d.downloads).slice(-periods.value[selectedPeriod.value].value).slice(0, -1)
+})
+
 const dataset = computed(() => {
   return [
     {
       name: "vue-data-ui",
-      series: store.downloads.lib.map(d => d.downloads).slice(-periods.value[selectedPeriod.value].value).slice(0, -1),
+      series: data_lib.value,
       type: "line",
       dataLabels: false,
     },
     {
       name: "vue-data-ui-cli",
-      series: store.downloads.cli.map(d => d.downloads).slice(-periods.value[selectedPeriod.value].value).slice(0, -1),
+      series: data_cli.value,
       type: "line",
       dataLabels: false,
       color: '#ff7f0e',
@@ -35,6 +42,10 @@ const dataset = computed(() => {
     },
   ];
 });
+
+const max = computed(() => {
+  return Math.max(Math.max(...data_lib.value), Math.max(...data_cli.value))
+})
 
 /**
  * This is the default config.
@@ -75,25 +86,25 @@ const config = computed(() => {
           verticalHandles: false,
         },
       },
-      padding: { top: 36, right: 24, bottom: 64, left: 64 },
+      padding: { top: 36, right: 36, bottom: 64, left: 64 },
       highlighter: {
-        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+        color: '#8A8A8A',
         opacity: 0,
         useLine: true,
         lineDasharray: 2,
         lineWidth: 1,
       },
       timeTag: {
-        show: false,
-        backgroundColor: "#e1e5e8",
-        color: "#2D353C",
-        fontSize: 12,
+        show: true,
+        backgroundColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+        fontSize: 14,
         circleMarker: { radius: 3, color: "#2D353C" },
       },
       grid: {
         stroke: isDarkMode.value ? '#6A6A6A' : '#E1E5E8',
         showVerticalLines: false,
-        showHorizontalLines: false,
+        showHorizontalLines: true,
         position: "middle",
         frame: {
           show: true,
@@ -125,15 +136,15 @@ const config = computed(() => {
             labelWidth: 40,
             formatter: null,
             scaleMin: null,
-            scaleMax: null,
+            scaleMax: Math.ceil(max.value / 100) * 100,
           },
           xAxisLabels: {
             color: isDarkMode.value ? '#8A8A8A' : '#1A1A1A',
-            show: true,
+            show: false,
             values: store.downloads.cli.map(d => d.day).slice(-periods.value[selectedPeriod.value].value).slice(0, -1),
             fontSize: 14,
-            showOnlyFirstAndLast: false,
-            showOnlyAtModulo: true,
+            showOnlyFirstAndLast: true,
+            showOnlyAtModulo: false,
             modulo: 12,
             yOffset: 0,
             rotation: -33,
