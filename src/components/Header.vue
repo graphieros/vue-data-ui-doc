@@ -242,7 +242,7 @@ onBeforeUnmount(() => {
                         <div 
                             v-if="isDocOpen"
                             v-click-outside="closeDocsMenu"
-                            class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 pt-10 rounded-md bg-gray-200 border border-gray-400 dark:border-[#4A4A4A] shadow-xl dark:bg-[#1A1A1A] grid grid-cols-4 w-max gap-6"
+                            class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 pt-10 rounded-md bg-gray-200 border border-gray-400 dark:border-[#4A4A4A] shadow-xl dark:bg-[#1A1A1A] grid grid-cols-6 w-max gap-6"
                             tabindex="0"
                         >
                             <kbd>Esc</kbd>
