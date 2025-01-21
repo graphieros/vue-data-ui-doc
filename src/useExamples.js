@@ -3283,9 +3283,13 @@ export default function useExamples() {
                     ...BASE_XY_CONFIG.value,
                     line: {
                         ...BASE_XY_CONFIG.value.line,
-                        radius: 0.1,
+                        radius: 5,
                         useGradient: false,
                         strokeWidth: 2,
+                        dot: {
+                            useSerieColor: false,
+                            fill: '#ff3700'
+                        }
                     },
                     chart: {
                         ...BASE_XY_CONFIG.value.chart,
