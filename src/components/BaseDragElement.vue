@@ -84,6 +84,7 @@ const endDrag = () => {
 };
 
 onMounted(async () => {
+    if (!draggableElement.value) return
     draggableElement.value.style.top = `${120}px`;
     const elementWidth = draggableElement.value.offsetWidth;
     draggableElement.value.style.left = `${(window.innerWidth - elementWidth - 42)
@@ -94,7 +95,8 @@ onMounted(async () => {
     }
 });
 
-function snapRight(e) {
+function snapRight(_e) {
+    if (!draggableElement.value) return;
     const windowWidth = window.innerWidth;
     const elementWidth = draggableElement.value.offsetWidth;
     draggableElement.value.style.left = `${windowWidth - elementWidth - 24}px`
