@@ -188,7 +188,7 @@ const config = computed(() => {
       },
     },
     line: {
-      radius: periods.value[selectedPeriod.value].plotRadius,
+      radius: 5,
       useGradient: false,
       strokeWidth: 3,
       dot: { 
