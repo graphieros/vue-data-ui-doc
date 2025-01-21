@@ -1,12 +1,17 @@
 [
   {
-    "version": "v 2.4.84",
+    "version": "v 2.4.85",
     "date": "2025-01-21",
     "updates": [
       {
         "component": "VueUiXy",
         "description": "Line optimization (less dom nodes)",
         "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "All components with responsive feature",
+        "description": "Fix harmless console error",
+        "link": ""
       }
     ]
   },
@@ -16,7 +21,7 @@
     "updates": [
       {
         "component": "TS types",
-        "description": "Fix wriong types in ChartUserOption type",
+        "description": "Fix wrong types in ChartUserOption type",
         "link": ""
       }
     ]
