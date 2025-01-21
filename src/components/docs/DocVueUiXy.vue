@@ -361,6 +361,7 @@ const config = ref({
         useGradient: true,
         strokeWidth: 2,
         dot: {
+            hideAboveMaxSerieLength: 62,
             useSerieColor: true,
             fill: '#FFFFFF',
             strokeWidth: 0.5
@@ -648,6 +649,7 @@ const darkModeConfig = ref({
         useGradient: true,
         strokeWidth: 2,
         dot: {
+            hideAboveMaxSerieLength: 62,
             useSerieColor: true,
             fill: '#FFFFFF',
             strokeWidth: 0.5

@@ -1044,6 +1044,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'line.dot.useSerieColor', def: true, type: 'checkbox', label: ['dot', 'is', 'serie color'], category: 'line'},
                     { key: 'line.dot.fill', def: '#FFFFFF', type: 'color', label: ['dot', 'is', 'fill'], category: 'line'},
                     { key: 'line.dot.strokeWidth', def: 0.5, type: 'number', min: 0, max: 12, step: 0.1, label: ['dot', 'is', 'strokeWidth'], category: 'line'},
+                    { key: 'line.dot.hideAboveMaxSerieLength', def: 62, type: 'number', min: 12, max: 100, label: ['dot', 'is', 'hide above max serie length'], category: 'line'},
 
                     { key: 'line.labels.show', def: true, type: 'checkbox', label: 'showDataLabels', category: 'line' },
                     { key: 'line.labels.offsetY', def: -8, type: 'number', min: -100, max: 100, label: 'offsetYDataLabels', category: 'line' },
