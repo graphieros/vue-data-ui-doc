@@ -76,6 +76,11 @@ const routes = [
         component: () => import("../views/DontTryThisAtHome.vue")
     },
     {
+        path: "/examples/loading-states",
+        name: "Loading states",
+        component: () => import("../views/LoadingStates.vue")
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound
     }

@@ -2417,6 +2417,17 @@ export const useMainStore = defineStore("main", {
                         ko: '이 데이터셋을 JSON으로 복사',
                         ar: 'نسخ مجموعة البيانات هذه كـ JSON'
                     },
+                    loadingStates: {
+                        en: "Loading states",
+                        fr: "États de chargement",
+                        pt: "Estados de carregamento",
+                        de: "Ladezustände",
+                        zh: "加载状态",
+                        jp: "ロード状態",
+                        es: "Estados de carga",
+                        ko: "로딩 상태",
+                        ar: "حالات التحميل"
+                    },
                     dontTryThisAtHome: {
                         en: "Don't try this at home",
                         fr: "Ne tentez pas ça chez vous",
