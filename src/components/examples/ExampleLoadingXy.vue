@@ -6,17 +6,6 @@
     :dataset="dataset"
     :config="{
       ...config,
-      chart: {
-        ...config.chart,
-        tooltip: {
-          ...config.chart.tooltip,
-          show: !loading
-        },
-        userOptions: {
-          ...config.chart.userOptions,
-          show: !loading
-        }
-      },
       bar: {
         ...config.line,
         labels: {
@@ -234,7 +223,7 @@ const config = computed(() => {
         show: true,
       },
       tooltip: {
-        show: true,
+        show: !props.loading,
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
         fontSize: 14,
@@ -252,7 +241,7 @@ const config = computed(() => {
         roundingPercentage: 0,
       },
       userOptions: {
-        show: true,
+        show: !props.loading,
         showOnChartHover: false,
         keepStateOnChartLeave: true,
         position: "right",

@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.87",
+    "date": "2025-01-22",
+    "updates": [
+      {
+        "component": "Most components",
+        "description": "Improve component reactivity with mutable config values",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.4.86",
     "date": "2025-01-21",
     "updates": [
