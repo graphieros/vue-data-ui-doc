@@ -4,6 +4,7 @@ import { useMainStore } from "../stores";
 import { useRoute, useRouter } from "vue-router";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import ExampleLoadingXy from "../components/examples/ExampleLoadingXy.vue";
+import { BrandGithubFilledIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -98,9 +99,19 @@ const loadingStates = ref({
             <label for="toggleTwin">{{ localTranslations.toggleState[store.lang] }}</label>
             <input id="toggleTwin" type="checkbox" v-model="loadingStates.twin">
         </div>
-        <div class="w-full max-w-[600px] mx-auto">
+        <div class="w-full max-w-[600px] mx-auto flex flex-col">
             <ExampleLoadingXy :loading="loadingStates.twin"/>
+
+            <div class="mx-auto mt-12">
+                <button class="py-1 px-4 bg-gray-100 dark:bg-[#FFFFFF20] hover:bg-gray-200 dark:hover:bg-[#FFFFFF30] transition-colors flex flex-row place-items-center gap-2 justify-center">
+                    <BrandGithubFilledIcon />
+                    <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/examples/ExampleLoadingXy.vue" target="_blank">
+                        {{ translations.githubCode[store.lang] }}
+                    </a>
+                </button>
+            </div>
         </div>
+        
 
         <div class="mt-12">
             ... more examples are coming

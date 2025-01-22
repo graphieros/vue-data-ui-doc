@@ -72,7 +72,7 @@ function createDs(n, m = 100) {
 
 function createDates(n, mock = false) {
   const arr = [];
-  for(let i = 0; i < n; i += 1) {
+  for(let i = 1; i < n+1; i += 1) {
     if (mock) {
       arr.push('-- -- --')
     } else {
@@ -230,7 +230,7 @@ const config = computed(() => {
         textAlign: "center",
         paddingLeft: 0,
         paddingRight: 0,
-        subtitle: { color: "#A1A1A1", text: props.loading ? 'Loading...' : 'Subtitle', fontSize: 16, bold: false },
+        subtitle: { color: "#A1A1A1", text: props.loading ? loadingLabel.value[store.lang] : 'Subtitle', fontSize: 16, bold: false },
         show: true,
       },
       tooltip: {
