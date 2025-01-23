@@ -6,10 +6,14 @@
     :dataset="loading ? loadingDataset : loadedDataset"
     :config="config"
   >
-    <!-- Use the watermark slot to display additional loading information, or a spinner -->
+    <!-- Use the watermark slot to display additional loading information, or a loading animation -->
     <template #watermark v-if="loading">
       <div>
-        <BaseSpinner class="mt-5"/>
+        <BaseBubbles 
+          class="mt-5"
+          randomColor
+          stroke="#FFFFFF40"
+        />
       </div>
     </template>
   </VueDataUi>
@@ -19,7 +23,7 @@
 <script setup>
 import { computed, ref } from "vue";
 import { useMainStore } from "../../stores";
-import BaseSpinner from "../BaseSpinner.vue";
+import BaseBubbles from "../BaseBubbles.vue";
 
 const props = defineProps({
   loading: {
