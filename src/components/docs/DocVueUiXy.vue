@@ -24,6 +24,7 @@ const mainConfig = useConfig()
 const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
+const lang = computed(() => store.lang)
 
 onMounted(() => store.docSnap = false);
 const { isMobile } = useMobile()
@@ -38,7 +39,8 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 })
 
-const patternDataset = ref([
+const patternDataset = computed(() => {
+    return [
     {
         name: "Series 1",
         series: [ 12, 25, 32, 64, 34, 26],
@@ -66,16 +68,18 @@ const patternDataset = ref([
         useArea: false,
         dataLabels: false,
         color: "rgb(200,100,50)",
-        shape: 'Yellow circles',
         scaleSteps: 3,
     },
-]);
-const dataset = ref([
+]
+})
+
+const dataset = computed(() => {
+    return [
     {
         name: "Series 1",
         series: [ -55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
         type: "bar",
-        color: "rgb(95,139,238)",
+        color: lang.value === 'zh' ? 'rgb(200,100,100)' : "rgb(95,139,238)",
         shape: 'circle',
         scaleSteps: 5,
     },
@@ -83,7 +87,7 @@ const dataset = ref([
         name: "Series 2",
         series: [ 55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],
         type: "line",
-        color: "rgb(66,211,146)",
+        color: lang.value === 'zh' ? 'rgb(200,100,0)' : "rgb(66,211,146)",
         useArea: true,
         useProgression: true,
         dataLabels: false,
@@ -109,7 +113,6 @@ const dataset = ref([
         useArea: false,
         dataLabels: false,
         color: "rgb(200,200,50)",
-        shape: 'Yellow circles',
         scaleSteps: 5,
         showSerieName: 'end'
     },
@@ -124,7 +127,8 @@ const dataset = ref([
         shape: 'circle',
         scaleSteps: 5,
     },
-]);
+]
+})
 
 const config = ref({
     responsive: false,
@@ -705,6 +709,10 @@ const darkModeConfig = ref({
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value)));
 const mutableDataset = ref(JSON.parse(JSON.stringify(dataset.value)));
+
+watch(() => lang.value, (v) => {
+    mutableDataset.value = JSON.parse(JSON.stringify(dataset.value))
+})
 
 function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
