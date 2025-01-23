@@ -16,7 +16,7 @@
     }"
   >
     <!-- Use the watermark slot to display additional loading information, or a spinner -->
-    <template #watermark v-if="loading">
+    <template #watermark v-if="loading && !randomizedLoadingData">
       <div>
         <BaseSpinner/>
       </div>
@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useMainStore } from "../../stores";
 import BaseSpinner from "../BaseSpinner.vue";
 
@@ -33,6 +33,10 @@ const props = defineProps({
   loading: {
     type: Boolean,
     default: true
+  },
+  randomizedLoadingData: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -72,19 +76,56 @@ function createDates(n, mock = false) {
 }
 
 const loadingDataset = ref(createDs(24))
-const loadedDataset = ref(createDs(24))
+const loadedDataset = ref(createDs(24));
+
+
+/**
+ * Random data triggered every second for the loading state, if randomizedLoadingData=true
+ */
+const randomData = ref([]);
+const intervalId = ref(null);
+
+const startRandomDataInterval = () => {
+  intervalId.value = setInterval(() => {
+    randomData.value = createDs(24);
+  }, 1000);
+};
+
+const stopRandomDataInterval = () => {
+  if (intervalId.value) {
+    clearInterval(intervalId.value);
+    intervalId.value = null;
+  }
+};
+
+watch(
+  () => props.randomizedLoadingData,
+  (newVal) => {
+    if (newVal) {
+      startRandomDataInterval();
+    } else {
+      stopRandomDataInterval();
+    }
+  },
+  { immediate: true }
+);
+
+onBeforeUnmount(() => {
+  stopRandomDataInterval();
+});
+
 
 const dataset = computed(() => {
   return [
-    {
-      name: props.loading ? loadingLabel.value[store.lang] : "Serie",
-      series: props.loading ? loadingDataset.value : loadedDataset.value,
-      type: "bar",
-      dataLabels: true,
-      color: props.loading ? isDarkMode.value ? '#8A8A8A' : '#CCCCCC' : undefined
-    },
-  ];
-});
+      {
+        name: props.loading ? loadingLabel.value[store.lang] : "Serie",
+        series: props.loading ? props.randomizedLoadingData ? randomData.value : loadingDataset.value : loadedDataset.value,
+        type: "bar",
+        dataLabels: true,
+        color: props.loading ? isDarkMode.value ? '#8A8A8A' : '#CCCCCC' : undefined
+      },
+    ];
+})
 
 const config = computed(() => {
   return {

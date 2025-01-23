@@ -96,12 +96,18 @@ const loadingStates = ref({
             1. {{ localTranslations.twinChart[store.lang] }}
         </h2>
         <p class="text-gray-500">{{ localTranslations.twinChartDescription[store.lang] }}</p>
-        <div class="flex flex-row gap-2 place-items-center my-4">
-            <label for="toggleTwin">{{ localTranslations.toggleState[store.lang] }}</label>
-            <input id="toggleTwin" type="checkbox" v-model="loadingStates.twin">
-        </div>
+
         <div class="w-full max-w-[600px] mx-auto flex flex-col">
-            <ExampleLoadingXy :loading="loadingStates.twin"/>
+            <div class="flex flex-row gap-2 place-items-center my-4">
+                <label for="toggleTwin">{{ localTranslations.toggleState[store.lang] }}</label>
+                <input id="toggleTwin" type="checkbox" v-model="loadingStates.twin">
+            </div>
+            <ExampleLoadingXy :loading="loadingStates.twin" />
+            <div class="flex flex-row gap-2 place-items-center my-4">
+                <label for="toggleTwin">{{ localTranslations.toggleState[store.lang] }}</label>
+                <input id="toggleTwin" type="checkbox" v-model="loadingStates.twin">
+            </div>
+            <ExampleLoadingXy :loading="loadingStates.twin" randomized-loading-data/>
 
             <div class="mx-auto mt-12">
                 <button class="py-1 px-4 bg-gray-100 dark:bg-[#FFFFFF20] hover:bg-gray-200 dark:hover:bg-[#FFFFFF30] transition-colors flex flex-row place-items-center gap-2 justify-center">
@@ -113,11 +119,11 @@ const loadingStates = ref({
             </div>
         </div>
 
-        <div class="flex flex-row gap-2 place-items-center my-4">
-            <label for="toggleTwin">{{ localTranslations.toggleState[store.lang] }}</label>
-            <input id="toggleTwin" type="checkbox" v-model="loadingStates.twin">
-        </div>
-        <div class="w-full max-w-[600px] mx-auto flex flex-col">
+        <div class="w-full max-w-[600px] mx-auto flex flex-col mt-12">
+            <div class="flex flex-row gap-2 place-items-center my-4">
+                <label for="toggleTwin">{{ localTranslations.toggleState[store.lang] }}</label>
+                <input id="toggleTwin" type="checkbox" v-model="loadingStates.twin">
+            </div>
             <ExampleLoadingDonut :loading="loadingStates.twin"/>
 
             <div class="mx-auto mt-12">
