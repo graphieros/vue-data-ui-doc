@@ -23,6 +23,7 @@ const mainConfig = useConfig()
 const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
+const lang = computed(() => store.lang);
 
 onMounted(() => store.docSnap = false);
 const { isMobile } = useMobile()
@@ -37,14 +38,15 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 })
 
-const dataset1 = ref({
+const dataset1 = computed(() => {
+    return {
     base: 12250,
     value: 4.2,
     series: [
         {
             from: 1,
             to: 3,
-            color: "#ff6400",
+            color: lang.value === 'zh' ? '#42D392' : "#ff6400",
             name: 'BAD'
         },
         {
@@ -56,30 +58,33 @@ const dataset1 = ref({
         {
             from: 4,
             to: 5,
-            color: "#42d392",
+            color: lang.value === 'zh' ? '#FF6400' :  "#42d392",
             name: 'VERY GOOD'
         },
     ]
-});
+}
+})
 
-const dataset2 = ref({
+const dataset2 = computed(() => {
+    return {
     base: 21200,
     value: -42,
     series: [
         {
             from: -100,
             to: 0,
-            color: "#ff6400",
+            color: lang.value === 'zh' ? '#42D392' : "#ff6400",
             name: 'CRITICAL'
         },
         {
             from: 0,
             to: 100,
-            color: "#42d392",
+            color: lang.value === 'zh' ? '#FF6400' :  "#42d392",
             name: 'NOMINAL'
         },
     ]
-});
+}
+})
 
 const config = ref({
     responsive: false,

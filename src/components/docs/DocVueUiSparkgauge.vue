@@ -20,6 +20,7 @@ const mainConfig = useConfig()
 const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
+const lang = computed(() => store.lang);
 
 onMounted(() => store.docSnap = false);
 const { isMobile } = useMobile()
@@ -82,8 +83,8 @@ const config = ref({
             suffix: ""
         },
         colors: {
-            min: "#FF0000",
-            max: "#00FF00",
+            min: lang.value === 'zh' ? '#00FF00' : "#FF0000",
+            max: lang.value === 'zh' ? '#FF0000' : "#00FF00",
             showGradient: true,
         },
         track: {
@@ -127,8 +128,8 @@ const darkModeConfig = ref({
             suffix: ""
         },
         colors: {
-            min: "#FF0000",
-            max: "#00FF00",
+            min: lang.value === 'zh' ? '#00FF00' : "#FF0000",
+            max: lang.value === 'zh' ? '#FF0000' : "#00FF00",
             showGradient: true,
         },
         track: {
@@ -145,6 +146,13 @@ const darkModeConfig = ref({
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value)));
+
+watch(() => lang.value, (v) => {
+    mutableConfig.value.style.colors.min = v === 'zh' ? '#00FF00' : '#FF0000';
+    mutableConfig.value.style.colors.max = v === 'zh' ? '#FF0000' : '#00FF00';
+    mutableConfigDarkMode.value.style.colors.min = v === 'zh' ? '#00FF00' : '#FF0000';
+    mutableConfigDarkMode.value.style.colors.max = v === 'zh' ? '#FF0000' : '#00FF00';
+})
 
 function resetDefault() {
     mutableConfig.value = JSON.parse(JSON.stringify(config.value));
