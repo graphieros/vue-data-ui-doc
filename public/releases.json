@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.88",
+    "date": "2025-01-24",
+    "updates": [
+      {
+        "component": "VueUiGauge",
+        "description": "TS types - Fix wrong typing",
+        "link": "/docs#vue-ui-gauge"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.87",
     "date": "2025-01-22",
     "updates": [
