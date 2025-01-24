@@ -10,11 +10,6 @@ import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseColorInput from "../components/BaseColorInput.vue";
 import updates from '../../public/releases.json'
 import BaseBubbles from "../components/BaseBubbles.vue";
-import colorBridge from "color-bridge"
-
-const { palette, hues } = colorBridge({culture: 'chinese'});
-
-console.log(palette, hues)
 
 const configs = useConfig()
 
