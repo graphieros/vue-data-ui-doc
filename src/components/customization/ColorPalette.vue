@@ -72,6 +72,24 @@ const codeContent = computed(() => {
         const palette = getPalette('hack');
         `,
     }
+});
+
+const colorBridgeDescription = ref({
+    en: "Colors may have different meanings in some cultures. We created a tool to generate region-specific color palettes based on cultural contexts, to make your data-storytelling even more pertinent.",
+    fr: "Les couleurs peuvent avoir des significations différentes selon les cultures. Nous avons créé un outil pour générer des palettes de couleurs spécifiques à chaque région en fonction des contextes culturels, afin de rendre votre narration de données encore plus pertinente.",
+    pt: "As cores podem ter significados diferentes em algumas culturas. Criamos uma ferramenta para gerar paletas de cores específicas para cada região com base em contextos culturais, tornando sua narrativa de dados ainda mais relevante.",
+    de: "Farben können in verschiedenen Kulturen unterschiedliche Bedeutungen haben. Wir haben ein Tool entwickelt, das regionsspezifische Farbpaletten basierend auf kulturellen Kontexten erstellt, um Ihre Daten-Storytelling noch relevanter zu machen.",
+    zh: "颜色在某些文化中可能有不同的意义。我们创建了一种工具，可以根据文化背景生成特定地区的调色板，从而使您的数据叙述更具相关性。",
+    jp: "色は文化によって異なる意味を持つことがあります。文化的な文脈に基づいて地域固有のカラーパレットを生成するツールを作成しました。これにより、データストーリーテリングがさらに適切になります。",
+    es: "Los colores pueden tener diferentes significados en algunas culturas. Hemos creado una herramienta para generar paletas de colores específicas por región basadas en contextos culturales, para hacer que tu narración de datos sea aún más relevante.",
+    ko: "색상은 일부 문화에서 다른 의미를 가질 수 있습니다. 우리는 문화적 맥락에 따라 지역별 색상 팔레트를 생성하는 도구를 만들어 데이터를 활용한 스토리텔링을 더욱 적합하게 만들었습니다.",
+    ar: "قد تحمل الألوان معاني مختلفة في بعض الثقافات. لقد أنشأنا أداة لتوليد لوحات ألوان مخصصة لكل منطقة بناءً على السياقات الثقافية، لجعل رواية البيانات الخاصة بك أكثر ملاءمة."
+})
+
+const colorBridgeCode = computed(() => {
+  return `import colorBridge from "color-bridge";
+const { palette, hues } = colorBridge({culture: 'western'});
+`
 })
 
 </script>
@@ -262,6 +280,25 @@ const codeContent = computed(() => {
                     </div>
                     <div class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"/>
                 </div>
+            </div>
+        </div>
+
+        <div class="mt-12 bg-[#FFFFFF10] w-full p-4">
+            <h2 class="text-2xl mb-4">Color Bridge</h2>
+            {{ colorBridgeDescription[store.lang] }}
+            <div class="flex flex-row justify-center mt-6">
+                <code>npm i color-bridge</code>
+            </div>
+            <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+                <CodeParser :content="colorBridgeCode" language="javascript"/>
+            </div>
+            <div class="flex flex-row justify-center mt-6">
+                <button class="py-2 px-5 bg-gradient-to-br to-[#FF6030] from-[#FF9020] hover:from-[#FF6030] hover:to-[#FF9020] text-black rounded flex flew-row place-items-center gap-2">
+                    <VueUiIcon name="moodWink" stroke="#1A1A1A" />
+                    <a href="https://color-bridge.graphieros.com/" target="_blank">
+                        Color Bridge docs
+                    </a>
+                </button>
             </div>
         </div>
     </div>
