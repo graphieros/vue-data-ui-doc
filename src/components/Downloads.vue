@@ -23,6 +23,9 @@ const data_lib = computed(() => {
 const data_cli = computed(() => {
   return store.downloads.cli.map(d => d.downloads).slice(-periods.value[selectedPeriod.value].value).slice(0, -1)
 })
+const data_color_bridge = computed(() => {
+  return store.downloads.color_bridge.map(d => d.downloads).slice(-periods.value[selectedPeriod.value].value).slice(0, -1)
+})
 
 const dataset = computed(() => {
   return [
@@ -39,6 +42,14 @@ const dataset = computed(() => {
       dataLabels: false,
       color: '#ff7f0e',
       shape: 'diamond'
+    },
+    {
+      name: "color-bridge",
+      series: data_color_bridge.value,
+      type: "line",
+      dataLabels: false,
+      color: '#d62728',
+      shape: 'circle'
     },
   ];
 });
@@ -188,7 +199,7 @@ const config = computed(() => {
       },
     },
     line: {
-      radius: 5,
+      radius: 3,
       useGradient: false,
       strokeWidth: 3,
       dot: { 

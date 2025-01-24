@@ -19,7 +19,8 @@ export const useMainStore = defineStore("main", {
             npmDownloads: [],
             downloads: {
                 lib: [],
-                cli: []
+                cli: [],
+                color_bridge: []
             },
             repos: {
                 docs: {},
