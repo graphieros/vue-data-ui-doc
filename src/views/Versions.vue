@@ -1797,6 +1797,17 @@ const versionsReleases = computed(() => {
   return JSON.parse(JSON.stringify(sparklineReleases.value)).reverse()
 })
 
+const dogFood = ref({
+  en: "A dashboard with Vue Data UI KPIs, dogfooding the library :)",
+  fr: "Un tableau de bord avec les indicateurs clés de Vue Data UI, en testant la bibliothèque sur elle-même :)",
+  pt: "Um painel sobre os KPIs do Vue Data UI, utilizando a própria biblioteca :)",
+  de: "Ein Dashboard zu Vue Data UI-KPIs, das die Bibliothek selbst testet :)",
+  zh: "一个关于 Vue Data UI KPI 的仪表盘，自测库功能 :)",
+  jp: "Vue Data UI の KPI に関するダッシュボード、ライブラリを自分で試しています :)",
+  es: "Un panel sobre los KPIs de Vue Data UI, probando la biblioteca internamente :)",
+  ar: "لوحة معلومات حول مؤشرات الأداء الرئيسية لـ Vue Data UI، تجربة المكتبة داخليًا :)"
+})
+
 </script>
 
 <template>
@@ -1809,6 +1820,7 @@ const versionsReleases = computed(() => {
     <div :class="`pt-9 sm:pt-24 overflow-x-hidden`">
         <div :class="``">
           <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.versions[store.lang] }}</h1>
+          <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 
           <div class="flex flex-row gap-4 flex-wrap mx-auto max-w-[1200px] px-4 justify-center">
           <button class="flex-1 w-[200px] min-w-[200px] hover:outline hover:outline-app-blue rounded-md transition-colors" v-for="kpi in KPIS" >
