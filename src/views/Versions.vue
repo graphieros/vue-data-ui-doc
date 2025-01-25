@@ -1537,6 +1537,13 @@ const xyCanvasConfig = computed(() => {
       }}
 })
 
+const kpiLinks = ref({
+  stargazers_count: 'stargazers',
+  forks_count: 'forks',
+  open_issues_count: 'issues',
+  subscribers_count: 'watchers'
+})
+
 const KPIS = computed(() => {
   return Object.keys(store.pack).map(key => {
     if(typeof store.pack[key] === 'number' && ![
@@ -1550,7 +1557,8 @@ const KPIS = computed(() => {
     ].includes(key)) {
       return {
         name: key.replaceAll('_', ' '),
-        value: store.pack[key]
+        value: store.pack[key],
+        link: `https://github.com/graphieros/vue-data-ui/${kpiLinks.value[key]}`
       }
     }
   }).filter(el => el && el.name)
@@ -1803,25 +1811,27 @@ const versionsReleases = computed(() => {
           <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.versions[store.lang] }}</h1>
 
           <div class="flex flex-row gap-4 flex-wrap mx-auto max-w-[1200px] px-4 justify-center">
-          <div class="flex-1 w-[200px] min-w-[200px]" v-for="kpi in KPIS" >
-            <VueDataUi 
-              component="VueUiKpi" 
-              :dataset="kpi.value"
-              :config="{
-                backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
-                layoutClass: 'p-4 rounded-md shadow-md',
-                title: kpi.name,
-                titleColor: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                valueClass: 'tabular-nums mt-2',
-                analogDigits: {
-                  show: true,
-                  height: 40,
-                  color: isDarkMode ? '#5f8aee' : '#1A1A1A',
-                  skeletonColor: isDarkMode ? '#3A3A3A' : '#E1E5E8'
-                }
-              }"
-            />
-          </div>
+          <button class="flex-1 w-[200px] min-w-[200px] hover:outline hover:outline-app-blue rounded-md transition-colors" v-for="kpi in KPIS" >
+            <a :href="kpi.link" target="_blank">
+              <VueDataUi 
+                component="VueUiKpi" 
+                :dataset="kpi.value"
+                :config="{
+                  backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
+                  layoutClass: 'p-4 rounded-md shadow-md',
+                  title: kpi.name,
+                  titleColor: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                  valueClass: 'tabular-nums mt-2',
+                  analogDigits: {
+                    show: true,
+                    height: 40,
+                    color: isDarkMode ? '#5f8aee' : '#1A1A1A',
+                    skeletonColor: isDarkMode ? '#3A3A3A' : '#E1E5E8'
+                  }
+                }"
+              />
+            </a>
+          </button>
         </div>
 
             <div class="max-w-[800px] mx-auto px-6">
