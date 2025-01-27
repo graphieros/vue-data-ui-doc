@@ -88,7 +88,8 @@ const colorBridgeDescription = ref({
 
 const colorBridgeCode = computed(() => {
   return `import colorBridge from "color-bridge";
-const { palette, hues } = colorBridge({culture: 'western'});
+const { bridge, utils } = colorBridge();
+const { palette, hues } = bridge({ culture: 'western' });
 `
 })
 

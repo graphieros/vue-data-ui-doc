@@ -2,9 +2,13 @@ import { ref, computed } from "vue";
 import { useMainStore } from "./stores";
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
 import { shiftHue } from "./components/maker/lib";
+import colorBridge from "color-bridge";
 
 // nested donuts où l'externe est le détail de l'interne, (mêmes couleurs)
 
+const { utils } = colorBridge();
+
+const { lightenHexColor } = utils();
 
 export default function useExamples() {
     
@@ -5205,15 +5209,67 @@ export default function useExamples() {
                 id: 'gauge-separators-2',
                 link: 'vue-ui-gauge',
                 description: {
-                    en: "",
-                    fr: "",
-                    pt: "",
-                    de: "",
-                    zh: "",
-                    jp: "",
-                    es: "",
-                    ko: "",
-                    ar: ''
+                    en: "With huge labels and separators",
+                    fr: "Avec de grandes étiquettes et des séparateurs",
+                    pt: "Com rótulos enormes e separadores",
+                    de: "Mit großen Beschriftungen und Trennlinien",
+                    zh: "带有大标签和分隔符",
+                    jp: "巨大なラベルとセパレーター付き",
+                    es: "Con etiquetas grandes y separadores",
+                    ko: "큰 레이블과 구분선 포함",
+                    ar: "بعلامات كبيرة وفواصل"
+                }
+            },
+            // GAUGE SINGLE WITH HUGE LABEL AND INDICATOR ARC
+            { 
+                dataset: {
+                    ...DATASET_GAUGE_SINGLE.value,
+                    series: [{
+                        ...DATASET_GAUGE_SINGLE.value.series[0],
+                    }]
+                }, 
+                config: {
+                    ...CONFIG_GAUGE_BASE.value,
+                    style: {
+                        ...CONFIG_GAUGE_BASE.value.style,
+                        chart: {
+                            ...CONFIG_GAUGE_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_GAUGE_BASE.value.style.chart.layout,
+                                radiusRatio: 0.8,
+                                track: {
+                                    size: 0.1,
+                                    useGradient: false
+                                },
+                                segmentNames: {
+                                    fontSize: 44
+                                },
+                                pointer: {
+                                    show: false
+                                },
+                                indicatorArc: {
+                                    show: true,
+                                    radius: 1610,
+                                    fill: lightenHexColor({ hexColor: colors.value.blue, force: 0.2 })
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiGauge',
+                icon: 'chartGauge',
+                id: 'gauge-indicator-arc',
+                link: 'vue-ui-gauge',
+                description: {
+                    en: "With only a label and arc indicator",
+                    fr: "Avec seulement une étiquette et un indicateur en arc",
+                    pt: "Com apenas um rótulo e um indicador de arco",
+                    de: "Nur mit einem Label und einem Bogenindikator",
+                    zh: "仅带标签和弧形指示器",
+                    jp: "ラベルとアークインジケーターのみ",
+                    es: "Con solo una etiqueta y un indicador de arco",
+                    ko: "레이블과 아크 표시기만 포함",
+                    ar: "بمؤشر قوسي ووسم فقط"
                 }
             },
             // GAUGE BACKGROUND
