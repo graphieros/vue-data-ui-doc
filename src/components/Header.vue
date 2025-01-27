@@ -219,7 +219,7 @@ onBeforeUnmount(() => {
             <div v-else/>
 
             <nav class="hidden xl:flex flex-row gap-1 justify-end w-full place-items-center">
-                <router-link data-cy="link-installation" to="/installation">
+                <router-link data-cy="link-installation" to="/installation" @mouseenter="closeDocsMenu">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/installation')
                                 ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-md'
                                 : 'text-gray-800 dark:text-app-blue dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
@@ -284,7 +284,7 @@ onBeforeUnmount(() => {
                         </div>
                     </Transition>
                 </div>
-                <router-link data-cy="link-docs" to="/chart-builder">
+                <router-link data-cy="link-docs" to="/chart-builder"  @mouseenter="closeDocsMenu">
                     <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/chart-builder')
                                 ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-[#ffe59633] shadow-md'
                                 : 'text-gray-800 dark:text-[#ffe596] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
@@ -293,7 +293,7 @@ onBeforeUnmount(() => {
                         {{ translations.menu.chartBuilder[store.lang] }}
                     </span>
                 </router-link>
-                <router-link data-cy="link-customization" to="/customization">
+                <router-link data-cy="link-customization" to="/customization"  @mouseenter="closeDocsMenu">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/customization')
                                 ? 'text-black dark:text-[#de8b37] hover:cursor-default bg-[#de8b3733] shadow-md'
                                 : 'text-gray-800 dark:text-[#de8b37] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
@@ -301,7 +301,7 @@ onBeforeUnmount(() => {
                         {{ translations.menu.customization[store.lang] }}
                     </span>
                 </router-link>
-                <router-link to="/examples">
+                <router-link to="/examples"  @mouseenter="closeDocsMenu">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/examples')
                                 ? 'text-black dark:text-[#de6937] hover:cursor-default bg-[#de693733] shadow-md'
                                 : 'text-gray-800 dark:text-[#de6937] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
@@ -309,7 +309,7 @@ onBeforeUnmount(() => {
                         {{ translations.menu.examples[store.lang] }}
                     </span>
                 </router-link>
-                <router-link data-cy="link-versions" to="/versions">
+                <router-link data-cy="link-versions" to="/versions"  @mouseenter="closeDocsMenu">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/versions')
                                 ? 'text-app-blue dark:text-gray-300 hover:cursor-default bg-[#5f8bee20] shadow-sm'
                                 : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
@@ -317,7 +317,7 @@ onBeforeUnmount(() => {
                         {{ translations.menu.versions[store.lang] }}
                     </span>
                 </router-link>
-                <router-link data-cy="link-about" to="/about">
+                <router-link data-cy="link-about" to="/about"  @mouseenter="closeDocsMenu">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/about')
                                 ? 'text-app-blue dark:text-gray-300 hover:cursor-default bg-[#5f8bee20] shadow-sm'
                                 : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
