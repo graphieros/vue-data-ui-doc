@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from "vue";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { BrandGithubFilledIcon } from "vue-tabler-icons";
-import { VueUiWordCloud } from "vue-data-ui";
+// import { VueUiWordCloud } from "vue-data-ui";
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui"
 import { useMainStore } from "../stores";
 import { shiftHue } from '../components/maker/lib'

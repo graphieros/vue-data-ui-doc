@@ -1522,6 +1522,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.segmentSeparators.stroke', def: '#1A1A1A', type: 'color', label: ['separators', 'is', 'color'], category: 'general'},
                     { key: 'style.chart.layout.segmentSeparators.strokeWidth', def: 2, type: 'number', min: 1, max: 24, label: ['separators', 'is', 'thickness'], category: 'general'},
 
+                    { key: 'style.chart.layout.indicatorArc.show', def: false, type: 'checkbox', label: ['indicator arc', 'is', 'show'], category: 'general'},
+                    { key: 'style.chart.layout.indicatorArc.radius', def: 123, type: 'range', min: 0, max: 200, label: ['indicator arc', 'is', 'radius'], category: 'general' },
+                    { key: 'style.chart.layout.indicatorArc.fill', def: '#E1E5E8', type: 'color', label: ['indicator arc', 'is', 'color'], category: 'general'},
+
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: ['legend', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.fontSize', def: 48, type: 'number', min: 12, max: 120, label: 'fontSize', category: 'legend' },
                     { key: 'style.chart.legend.prefix', def: '', type: 'text', label: 'prefix', category: 'legend' },

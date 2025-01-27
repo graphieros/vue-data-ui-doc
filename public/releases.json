@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.4.90",
+    "date": "2025-01-27",
+    "updates": [
+      {
+        "component": "VueUiGauge",
+        "description": "Add new layout option to display an arc following the score proportion",
+        "link": "/docs#vue-ui-gauge"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.88",
     "date": "2025-01-24",
     "updates": [
