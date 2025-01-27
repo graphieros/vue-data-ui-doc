@@ -7,8 +7,6 @@ import router from "../router"
 import staticReleases from "../../public/releases.json"
 import { useConfig } from "../assets/useConfig";
 import BaseSpinner from "../components/BaseSpinner.vue";
-import BaseColorInput from "../components/BaseColorInput.vue";
-import updates from '../../public/releases.json'
 import BaseBubbles from "../components/BaseBubbles.vue";
 
 const configs = useConfig()
