@@ -137,6 +137,7 @@ const config = ref({
                     fill: '#E1E5E8',
                 },
                 pointer: {
+                    show: true,
                     type: "pointy",
                     size: 1,
                     stroke: "#1A1A1A",
@@ -253,6 +254,7 @@ const darkModeConfig = ref({
                     fill: '#3A3A3A',
                 },
                 pointer: {
+                    show: true,
                     type: "pointy",
                     size: 1,
                     stroke: "#CCCCCC",
@@ -550,11 +552,12 @@ const <span class="text-black dark:text-app-green">dataset</span> = {
                         <BaseAttr name="strokeWidth" attr="style.chart.layout.segmentSeparators.strokeWidth" type="number" defaultVal="2" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="indicatorArc" :level="4" title="style.chart.layout.indicatorArc">
-                        <BaseAttr name="show" attr="style.chart.layout.indicatorArc.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="radius" attr="style.chart.layout.indicatorArc.radius" type="range" defaultVal="123" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="fill" attr="style.chart.layout.indicatorArc.fill" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="show" attr="style.chart.layout.indicatorArc.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.90"/>
+                        <BaseAttr name="radius" attr="style.chart.layout.indicatorArc.radius" type="range" defaultVal="123" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.90"/>
+                        <BaseAttr name="fill" attr="style.chart.layout.indicatorArc.fill" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.90"/>
                     </BaseDetails>
                     <BaseDetails attr="pointer" :level="4" title="style.chart.layout.pointer">
+                        <BaseAttr name="show" attr="style.chart.layout.pointer.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.90"/>
                         <BaseAttr name="type" attr="style.chart.layout.pointer.type" type="select" defaultVal="rounded" :options="['rounded', 'pointy']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="size" attr="style.chart.layout.pointer.size" type="range" defaultVal="1" :min="0.5" :max="1.4" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                         <BaseAttr name="stroke" attr="style.chart.layout.pointer.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
