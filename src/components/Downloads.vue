@@ -26,6 +26,9 @@ const data_cli = computed(() => {
 const data_color_bridge = computed(() => {
   return store.downloads.color_bridge.map(d => d.downloads).slice(-periods.value[selectedPeriod.value].value).slice(0, -1)
 })
+const data_vue_hi_code = computed(() => {
+  return store.downloads.hiCode.map(d => d.downloads).slice(-periods.value[selectedPeriod.value].value).slice(0, -1)
+})
 
 const dataset = computed(() => {
   return [
@@ -50,6 +53,14 @@ const dataset = computed(() => {
       dataLabels: false,
       color: '#d62728',
       shape: 'circle'
+    },
+    {
+      name: "vue-hi-code",
+      series: data_vue_hi_code.value,
+      type: "line",
+      dataLabels: false,
+      color: '#239e33',
+      shape: 'hexagon'
     },
   ];
 });

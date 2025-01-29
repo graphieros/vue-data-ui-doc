@@ -26,6 +26,7 @@ export const useMainStore = defineStore("main", {
                 docs: {},
                 library: {},
                 cli: {},
+                hiCode: {}
             },
             hints: {
                 pin: {

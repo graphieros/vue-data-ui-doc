@@ -42,6 +42,10 @@ const url_color_bridge = computed(() => {
   return `https://api.npmjs.org/downloads/range/${start.value}:${end.value}/color-bridge`;
 })
 
+const url_vue_hi_code = computed(() => {
+  return `https://api.npmjs.org/downloads/range/${start.value}:${end.value}/vue-hi-code`;
+})
+
 function fetchGithubStats() {
   return useFetch({
     url: 'https://api.github.com/repos/graphieros/vue-data-ui',
@@ -123,6 +127,16 @@ onMounted(() => {
         return response.json();
     }).then(json =>  {
       store.downloads.color_bridge = json.downloads;
+    })
+
+  fetch(url_vue_hi_code.value, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'default'
+    }).then((response) => {
+        return response.json();
+    }).then(json =>  {
+      store.downloads.hiCode = json.downloads;
     })
 });
 
