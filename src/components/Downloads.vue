@@ -157,8 +157,8 @@ const config = computed(() => {
             gap: 12,
             labelWidth: 40,
             formatter: null,
-            scaleMin: null,
-            scaleMax: Math.ceil(max.value / 100) * 100,
+            // scaleMin: null,
+            // scaleMax: Math.ceil(max.value / 100) * 100,
           },
           xAxisLabels: {
             color: isDarkMode.value ? '#8A8A8A' : '#1A1A1A',
@@ -187,7 +187,7 @@ const config = computed(() => {
         textAlign: "center",
         paddingLeft: 0,
         paddingRight: 0,
-        subtitle: { color: "#A1A1A1", text: "", fontSize: 16, bold: false },
+        subtitle: { color: "#A1A1A1", text: "@Graphieros packages", fontSize: 16, bold: false },
         show: true,
       },
       tooltip: {
