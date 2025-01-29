@@ -12,21 +12,25 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    title: {
+        type: String,
+        default: ''
+    }
 });
 
+const emit = defineEmits(['copy']);
 
 const config = computed(() => {
     return {
         withLineNumbers: false,
-        fontSize: '0.8rem'
+        fontSize: '0.8rem',
+        title: props.title
     }
-})
-
-
+});
 </script>
 
 <template>
     <div class="relative">
-        <VueHiCode :content="content" :language="language" v-bind="config"/>
+        <VueHiCode :content="content" :language="language" v-bind="config" @copy="emit('copy')"/>
     </div>
 </template>

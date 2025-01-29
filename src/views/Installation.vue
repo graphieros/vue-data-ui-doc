@@ -1,9 +1,13 @@
 <script setup>
-import { computed, onMounted } from "vue";
-import AppSkeletons from '../components/AppSkeletons.vue';
+import { computed, onMounted, ref } from "vue";
 import { useMainStore } from '../stores';
 import router from "../router";
 import ChartSeeker from "../components/ChartSeeker.vue";
+import ConfirmCopy from "../components/ConfirmCopy.vue";
+import { VueHiCode } from "vue-hi-code";
+import "vue-hi-code/style.css"
+
+
 const store = useMainStore();
 
 const isDarkMode = computed(() => store.isDarkMode);
@@ -19,6 +23,74 @@ function gotoMaker() {
     router.push({ path: '/chart-builder'})
 }
 
+const codeParserConfig = computed(() => {
+    return {
+        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FAFAFA',
+        baseTextColor: isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
+        colorPunctuation: isDarkMode.value ? '#E1E5E8' : '#2A2A2A',
+        colorFunction: isDarkMode.value ? '#DCDCAA' : '#1A1A1A',
+        colorTitle: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+        copyIconColor: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+    }
+})
+
+const mainCodeContent = computed(() => {
+    return `import { createApp } from 'vue'
+import App from "./App.vue" 
+import "vue-data-ui/style.css" // ${translations.value.installation.comments.includeCss[store.lang]}
+
+// ${translations.value.installation.comments.global[store.lang]}
+import { VueUiRadar } from "vue-data-ui"
+
+const app = createApp(App)
+
+app.component("VueUiRadar", VueUiRadar)
+app.mount('#app')
+`
+});
+
+const componentContent = computed(() => {
+    return `// ${translations.value.installation.comments.import[store.lang]}
+import { VueUiRadar, VueUiXy } from "vue-data-ui";
+
+// With Typescript:
+import { ref } from "vue";
+import {
+    VueUiRadar,
+    type VueUiRadarDataset,
+    type VueUiRadarConfig
+} from "vue-data-ui";
+
+const dataset = ref<VueUiRadarDataset>(/* your dataset */);
+const config = ref<VueUiRadarConfig>(/* your config (optional) */);
+    `
+})
+
+const universalComponentContent = computed(() => {
+    return `// ${translations.value.installation.comments.universalComponent[store.lang]}
+
+import { ref } from "vue";
+import { VueDataUi } from "vue-data-ui";
+import "vue-data-ui/style.css";
+
+const dataset = ref(/* Your dataset */);
+const config = ref(/* Your config (optional) */);
+    `
+})
+
+const universalComponentTemplateContent = computed(() => {
+    return `<template>
+    <div style="width:600px;">
+        <VueDataUi
+            component="VueUiXy"
+            :dataset="dataset"
+            :config="config"
+        />
+    </div>
+</template>
+    `
+})
+
 </script>
 
 <template>
@@ -28,9 +100,9 @@ function gotoMaker() {
 
         </div>
 
-      <h1 class="text-[64px] sm:text-[96px] text-center">
-          {{ translations.menu.installation[store.lang] }}
-      </h1>
+        <h1 class="text-[64px] sm:text-[96px] text-center">
+            {{ translations.menu.installation[store.lang] }}
+        </h1>
 
 
         <div class="z-10 mt-10 p-6 border border-gray-700 rounded-lg flex flex-col text-start text-gray-800 bg-gray-200 dark:text-app-green dark:bg-[rgb(26,26,26)]">
@@ -52,69 +124,43 @@ function gotoMaker() {
         </div>
         
         <div class="z-10 p-6 border border-gray-700 rounded-lg flex flex-col mt-6 bg-gray-200 dark:bg-[rgb(26,26,26)] max-w-[800px]">
-            <span class="text-app-blue">src/main.js</span>
-            <code class="mt-3 text-start">
-                import { createApp } from 'vue'<br>
-                import App from "./App.vue"<br>
-                <span class="text-red-600 dark:text-gray-500">// {{ translations.installation.comments.includeCss[store.lang] }}</span><br>
-                import "<span class="text-gray-800 dark:text-app-green">vue-data-ui/style.css</span>"<br><br>
-                
-                <span class="text-gray-600 dark:text-gray-500">// <span dir="auto">{{ translations.installation.comments.global[store.lang] }}</span></span><br>
-                import { <span class="text-gray-800 dark:text-app-green">VueUiRadar</span> } from "vue-data-ui"<br><br>
 
-                const app = createApp(App)<br><br>
+            <div class="text-left">
+                <VueHiCode 
+                    :content="mainCodeContent" 
+                    language="javascript" 
+                    @copy="store.copy()"
+                    v-bind="{...codeParserConfig, title: 'src/main.js'}"
+                />
+            </div>
 
-                app.component("VueUiRadar", <span class="text-gray-800 dark:text-app-green">VueUiRadar</span>)<br>
+            <div class="text-left mt-6">
+                <VueHiCode 
+                    :content="componentContent" 
+                    language="javascript" 
+                    @copy="store.copy()"
+                    v-bind="codeParserConfig"
+                    title="MyComponent.vue"
+                />
+            </div>
 
-                app.mount('#app')<br><br>
-
-                <span class="text-gray-600 dark:text-gray-500">// <span dir="auto">{{ translations.installation.comments.import[store.lang] }}</span></span><br>
-            </code>
-
-            <span class="text-app-blue">MyComponent.vue</span>
-            <code class="mt-3 text-start">
-               &lt;script setup&gt;<br>
-               &nbsp;&nbsp;import { <span class="text-gray-800 dark:text-app-green">VueUiRadar, VueUiXy</span> } from "vue-data-ui";<br>
-               
-               &lt;/script&gt;<br><br>
-               <span class="text-gray-600 dark:text-gray-500 text-left">// Typescript</span><br><br>
-               &lt;script setup&gt;<br>
-               &nbsp;&nbsp;import { ref } from "vue";<br>
-               &nbsp;&nbsp;import { <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-800 dark:text-app-green">VueUiRadar, <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">type </span>VueUiRadarDataset,<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">type </span>VueUiRadarConfig</span><br>
-                &nbsp;&nbsp;} from "vue-data-ui";<br><br>
-                const dataset = ref&lt;<span class="text-gray-800 dark:text-app-green">VueUiRadarDataset</span>&gt;({
-                    ...
-                })<br>
-                const config = ref&lt;<span class="text-gray-800 dark:text-app-green">VueUiRadarConfig</span>&gt;({
-                    ...
-                })<br>
-               &lt;/script&gt;<br><br>
-
-               <span class="text-gray-600 dark:text-gray-500">// <span dir="auto">{{ translations.installation.comments.universalComponent[store.lang] }}</span></span><br>
-            </code>
-
-            <span class="text-app-blue">MyComponent.vue</span>
-            <code class="mt-3 text-start">
-                &lt;script setup&gt;<br>
-                &nbsp;&nbsp;import { ref } from "vue"; <br>
-                &nbsp;&nbsp;import { <span class="text-gray-800 dark:text-app-green">VueDataUi</span> } from "vue-data-ui";<br>
-                &nbsp;&nbsp;import "<span class="text-gray-800 dark:text-app-green">vue-data-ui/style.css</span>";<br><br>
-                &nbsp;&nbsp;const dataset = ref([...]);<br>
-                &nbsp;&nbsp;const config = ref({...});<br>
-                &lt;/script&gt;<br><br>
-                &lt;template&gt;<br>
-                &nbsp;&nbsp;&lt;div style="width:600px;"&gt;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-gray-800 dark:text-app-green">VueDataUi</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;component="VueUiXy"<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
-                &nbsp;&nbsp;&lt;/div&gt;<br>
-                &lt;/template&gt;
-            </code>
+            <div class="text-left mt-6">
+                <VueHiCode 
+                    :content="universalComponentContent" 
+                    language="javascript" 
+                    @copy="store.copy()"
+                    v-bind="codeParserConfig"
+                    title="MyUniversalChart.vue"
+                />
+            </div>
+            <div class="text-left mt-6">
+                <VueHiCode 
+                    :content="universalComponentTemplateContent" 
+                    language="html" 
+                    @copy="store.copy()"
+                    v-bind="codeParserConfig"
+                />
+            </div>
         </div>
         <div class="flex flex-row place-items-center justify-center z-10 mt-10">
             <button dir="auto" @click="gotoMaker" class="bg-gradient-to-br from-app-blue-light to-app-blue text-black py-3 px-6 rounded-full text-xl flex flex-row gap-2 place-items-center hover:from-app-blue hover:to-app-blue-light transition-colors shadow-md">
@@ -125,5 +171,6 @@ function gotoMaker() {
         </div>
 
         <ChartSeeker class="mt-12 z-10"/>
+        <ConfirmCopy/>
     </div>
 </template>
