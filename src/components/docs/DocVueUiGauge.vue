@@ -38,10 +38,13 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 })
 
+const value1 = ref(4);
+const value2 = ref(-42);
+
 const dataset1 = computed(() => {
     return {
     base: 12250,
-    value: 4,
+    value: value1.value,
     series: [
         {
             from: 1,
@@ -68,7 +71,7 @@ const dataset1 = computed(() => {
 const dataset2 = computed(() => {
     return {
     base: 21200,
-    value: -42,
+    value: value2.value,
     series: [
         {
             from: -100,
@@ -362,8 +365,8 @@ function getRandomNumber(min, max) {
 }
 
 function randomizeData() {
-    dataset1.value.value = getRandomNumber(1, 5);
-    dataset2.value.value = getRandomNumber(-100, 100);
+    value1.value = getRandomNumber(1, 5);
+    value2.value = getRandomNumber(-100, 100);
 }
 
 
@@ -396,8 +399,8 @@ function randomizeData() {
                     @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
                 >
                     <div class="flex flex-row">
-                        <VueUiGauge :dataset="dataset1" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
-                        <VueUiGauge v-if="!isFixed" :dataset="dataset2" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_2_${key}`"/>
+                        <VueUiGauge :dataset="{...dataset1, value: value1 }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                        <VueUiGauge v-if="!isFixed" :dataset="{...dataset2, value: value2 }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_2_${key}`"/>
                     </div>
                 </DocSnapper>
             </div>
