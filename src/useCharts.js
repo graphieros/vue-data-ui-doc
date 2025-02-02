@@ -701,6 +701,13 @@ export default function useCharts() {
                 description: translations.value.docs.tooltips.historyPlot[store.lang],
                 taxinomy: ['comparisons', 'dataOverTime'],
                 singleTaxinomy: 'dataOverTime'
+            },
+            VueUiCirclePack: {
+                icon: 'chartCirclePack',
+                link: '/docs#vue-ui-circle-pack',
+                description: translations.value.docs.tooltips.circlePack[store.lang],
+                taxinomy: ['proportions', 'hierarchy'],
+                singleTaxinomy: 'hierarchy'
             }
         }
     })
