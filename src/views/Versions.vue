@@ -1966,10 +1966,9 @@ const dogFood = ref({
                   <div style="height: 48px"/>
                   <div class="w-full" v-if="showWC">
                     <VueDataUi v-if="done" component="VueUiCirclePack" :dataset="wordCloudDataset" :config="{
+                      theme: isDarkMode ? 'celebrationNight' : 'celebration',
                       style: {
                         chart: {
-                          backgroundColor: 'transparent',
-                          color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
                           circles: {
                             strokeWidth: 0,
                             labels: {
