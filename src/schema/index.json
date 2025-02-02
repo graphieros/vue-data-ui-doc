@@ -36,7 +36,20 @@
                     { "name": "Datapoint M", "value": 40 },
                     { "name": "Datapoint N", "value": 30 },
                     { "name": "Datapoint O", "value": 20 }
-                ]
+                ],
+                "config": {
+                    "style": {
+                        "chart": {
+                            "circles": {
+                                "labels": {
+                                    "name": {
+                                        "offsetY": -12
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         ],
         "userOptions": [

@@ -123,7 +123,7 @@ const config = ref({
                     name: {
                         show: true,
                         bold: false,
-                        offsetY: 0,
+                        offsetY: -5,
                         color: "auto",
                     },
                     value: {
@@ -248,7 +248,7 @@ const darkModeConfig = ref({
                     name: {
                         show: true,
                         bold: false,
-                        offsetY: 0,
+                        offsetY: -5,
                         color: "auto",
                     },
                     value: {

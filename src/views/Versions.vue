@@ -1375,6 +1375,7 @@ const wordCloudDataset = computed(() => {
   }).sort((a, b) => b.value - a.value).filter(el => el.value > 5)
 })
 
+
 function makeColors({ colorStart, iterations, force }) {
   let color = colorStart;
   const arr = [colorStart];
