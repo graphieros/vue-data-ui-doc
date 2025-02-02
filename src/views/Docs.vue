@@ -78,6 +78,7 @@ const DocVueUiBullet = defineAsyncComponent(() => import('../components/docs/Doc
 const DocVueUiFunnel = defineAsyncComponent(() => import('../components/docs/DocVueUiFunnel.vue'));
 const DocVueUiHistoryPlot = defineAsyncComponent(() => import('../components/docs/DocVueUiHistoryPlot.vue'));
 const DocUtilityFunctions = defineAsyncComponent(() => import('../components/docs/DocUtilityFunctions.vue'));
+const DocVueUiCirclePack = defineAsyncComponent(() => import('../components/docs/DocVueUiCirclePack.vue'));
 
 const mainConfig = useConfig()
 
@@ -281,6 +282,18 @@ const menuItems = computed(() => [
         hasSlot: true,
         hasTableCss: true,
         hasLegend: true
+    },
+    {
+        name: "CirclePack",
+        icon: "chartCirclePack",
+        tooltip: translations.value.docs.tooltips.circlePack[store.lang],
+        link: "/docs#vue-ui-circle-pack",
+        type: "donuts",
+        thumb: new URL('../assets/thumb_circle_pack.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_circle_pack_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: false
     },
     {
         name: "NestedDonuts",
@@ -1169,6 +1182,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocUtilityFunctions v-if="router.currentRoute.value.fullPath === '/docs#utility-functions'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiCirclePack v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-circle-pack'" />
             </Transition>
 
             <Transition name="fade">

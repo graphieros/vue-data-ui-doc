@@ -1,4 +1,125 @@
 {
+    "vue_ui_circle_pack": {
+        "name": "VueUiCirclePack",
+        "icon": "chartCirclePack",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-circle-pack",
+        "path": "/docs#vue-ui-circle-pack",
+        "description": "circlePack",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": false,
+        "hasExposed": true,
+        "responsive": false,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiCirclePackConfig",
+            "dataset": "VueUiCirclePackDatasetItem[]"
+        },
+        "examples": [
+            {
+                "dataset": [
+                    { "name": "Datapoint A", "value": 200 },
+                    { "name": "Datapoint B", "value": 190 },
+                    { "name": "Datapoint C", "value": 180 },
+                    { "name": "Datapoint D", "value": 170 },
+                    { "name": "Datapoint E", "value": 160 },
+                    { "name": "Datapoint F", "value": 150 },
+                    { "name": "Datapoint G", "value": 120 },
+                    { "name": "Datapoint H", "value": 90 },
+                    { "name": "Datapoint I", "value": 80 },
+                    { "name": "Datapoint J", "value": 70 },
+                    { "name": "Datapoint K", "value": 60 },
+                    { "name": "Datapoint L", "value": 50 },
+                    { "name": "Datapoint M", "value": 40 },
+                    { "name": "Datapoint N", "value": 30 },
+                    { "name": "Datapoint O", "value": 20 }
+                ]
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "pattern",
+                "description": "Use this slot to customize datapoints with patterns"
+            },
+            {
+                "name": "zoom-label",
+                "description": "Use this slot to customize the content of the zoom circle label"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            },
+            {
+                "name": "toggleTable",
+                "description": "Triggers toggling of the data table visibility"
+            }
+        ]
+    },
     "vue_ui_history_plot": {
         "name": "VueUiHistoryPlot",
         "icon": "chartHistoryPlot",

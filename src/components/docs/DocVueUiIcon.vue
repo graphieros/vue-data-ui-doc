@@ -60,6 +60,7 @@ const specialIcons = ref([
     "chartBullet",
     "chartCandlestick",
     "chartChestnut",
+    "chartCirclePack",
     "chartCluster",
     "chartDonut",
     "chartDonutEvolution",

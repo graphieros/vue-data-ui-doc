@@ -339,6 +339,16 @@ const smallMenu = ref([
         component: 'Galaxy'
     },
     {
+        route: '/docs#vue-ui-circle-pack',
+        icon: 'chartCirclePack',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'CirclePack',
+        thumb: new URL('../assets/thumb_circle_pack.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_circle_pack_light.png', import.meta.url).href,
+        component: 'CirclePack'
+    },
+    {
         route: '/docs#vue-ui-chestnut',
         icon: 'chartChestnut',
         cssClasses: '',
@@ -733,6 +743,7 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-galaxy', componentName: 'Galaxy', icon: 'chartGalaxy' },
             {route: '/docs#vue-ui-donut-evolution', componentName: 'DonutEvolution', icon: 'chartDonutEvolution' },
             {route: '/docs#vue-ui-chestnut', componentName: 'Chestnut', icon: 'chartChestnut' },
+            {route: '/docs#vue-ui-circle-pack', componentName: 'CirclePack', icon: 'chartCirclePack'}
         ],
         icon: 'chartDonut'
     },

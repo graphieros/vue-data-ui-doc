@@ -754,6 +754,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    zoomLabel: {
+                        en: "Use this slot to customize the content of the zoom label",
+                        fr: "Utilisez cet emplacement pour personnaliser le contenu de l'étiquette de zoom",
+                        pt: "Use este slot para personalizar o conteúdo do rótulo de zoom",
+                        de: "Verwenden Sie diesen Slot, um den Inhalt des Zoom-Labels anzupassen",
+                        zh: "使用此插槽自定义缩放标签的内容",
+                        jp: "このスロットを使用してズームラベルの内容をカスタマイズ",
+                        es: "Utiliza este slot para personalizar el contenido de la etiqueta de zoom",
+                        ko: "이 슬롯을 사용하여 확대 라벨의 내용을 사용자 지정",
+                        ar: "استخدم هذه الفتحة لتخصيص محتوى تسمية التكبير"
+                    },
                     pattern: {
                         en: "Use this slot to superimpose a pattern on datapoints.",
                         fr: "Utilisez cet emplacement pour superposer un motif sur les points de données.",
@@ -1999,6 +2010,17 @@ export const useMainStore = defineStore("main", {
                             es: "Visualiza porcentajes con una barra 3d.",
                             ko: "3D 막대로 백분율 시각화",
                             ar: 'تصور النسب المئوية باستخدام شريط ثلاثي الأبعاد'
+                        },
+                        circlePack: {
+                            en: "Effectively represent hierarchical data, with each value proportionally scaled into a visually intuitive arrangement of packed circles.",
+                            fr: "Représentez efficacement des données hiérarchiques, avec chaque valeur proportionnellement mise à l'échelle dans un arrangement visuel intuitif de cercles imbriqués.",
+                            pt: "Represente efetivamente dados hierárquicos, com cada valor escalado proporcionalmente em um arranjo visual intuitivo de círculos agrupados.",
+                            de: "Stellen Sie hierarchische Daten effektiv dar, wobei jeder Wert proportional skaliert in einer visuell intuitiven Anordnung gepackter Kreise erscheint.",
+                            zh: "有效地表示分层数据，每个值按比例缩放，形成直观排列的紧密圆形。",
+                            jp: "階層データを効果的に表現し、各値が比例的にスケールされた直感的な配置のパックサークルとして表示されます。",
+                            es: "Represente eficazmente datos jerárquicos, con cada valor escalado proporcionalmente en una disposición visual intuitiva de círculos empaquetados.",
+                            ko: "계층적 데이터를 효과적으로 표현하며, 각 값이 비율에 맞게 조정되어 직관적인 원형 배열로 표시됩니다.",
+                            ar: "تمثيل البيانات الهرمية بفعالية، حيث يتم تحجيم كل قيمة بشكل متناسب ضمن ترتيب مرئي بديهي للدوائر المتراصة."
                         },
                         moodRadar: {
                             en: "Visualize rating statistics on a colorful and expressive radar chart",

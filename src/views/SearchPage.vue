@@ -162,7 +162,8 @@ const iconMap = ref({
     VueUiBullet: 'chartBullet',
     VueUiFunnel: 'chartFunnel',
     VueUiHistoryPlot: 'chartHistoryPlot',
-    VueUiGizmo: 'battery'
+    VueUiGizmo: 'battery',
+    VueUiCirclePack: 'chartCirclePack'
 })
 
 

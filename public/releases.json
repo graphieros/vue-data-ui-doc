@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.5.5",
+    "date": "2025-02-02",
+    "updates": [
+      {
+        "component": "VueUiCirclePack",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-circle-pack"
+      }
+    ]
+  },
+  {
     "version": "v 2.4.90",
     "date": "2025-01-27",
     "updates": [

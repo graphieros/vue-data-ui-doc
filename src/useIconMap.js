@@ -59,7 +59,8 @@ export function useIconMap(componentName) {
         VueUiGizmo: 'battery',
         VueUiStackbar: 'chartStackbar',
         VueUiFunnel: 'chartFunnel',
-        VueUiHistoryPlot: 'chartHistoryPlot'
+        VueUiHistoryPlot: 'chartHistoryPlot',
+        VueUiCirclePack: 'chartCirclePack'
     }
     return mapping[componentName] || 'clipBoard';
 }
@@ -126,6 +127,7 @@ export function isValidComponent(content) {
         'VueUiXy',
         'VueUiXyCanvas',
         'VueUiHistoryPlot',
+        'VueUiCirclePack'
     ];
 
     return valid.includes(content);
