@@ -1965,6 +1965,25 @@ const dogFood = ref({
                   </VueUiSparkline>
                   <div style="height: 48px"/>
                   <div class="w-full" v-if="showWC">
+                    <VueDataUi v-if="done" component="VueUiCirclePack" :dataset="wordCloudDataset" :config="{
+                      style: {
+                        chart: {
+                          backgroundColor: 'transparent',
+                          color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                          circles: {
+                            strokeWidth: 0,
+                            labels: {
+                              name: {
+                                offsetY: 10
+                              },
+                              value: {
+                                show: false
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }"/>
                     <VueDataUi v-if="done" component="VueUiWordCloud" :dataset="wordCloudDataset" :config="wordCloudConfig">
                       <template #source>
                         <div class="text-xs text-gray-500 text-right mt-3 pl-2">
