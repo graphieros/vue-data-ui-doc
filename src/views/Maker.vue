@@ -45,6 +45,7 @@ const MakerStackbar = defineAsyncComponent(() => import('../components/maker/Mak
 const MakerBullet = defineAsyncComponent(() => import('../components/maker/MakerBullet.vue'));
 const MakerFunnel = defineAsyncComponent(() => import('../components/maker/MakerFunnel.vue'));
 const MakerHistoryPlot = defineAsyncComponent(() => import('../components/maker/MakerHistoryPlot.vue'));
+const MakerCirclePack = defineAsyncComponent(() => import('../components/maker/MakerCirclePack.vue'));
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -97,7 +98,8 @@ const options = ref([
     { name: "VueUiStackbar", icon: "chartStackbar", thumb: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.stackbarBig},
     { name: "VueUiBullet", icon: "chartBullet", thumb: new URL('../assets/thumb_bullet_light.png', import.meta.url).href, description: translations.value.docs.tooltips.bullet},
     { name: "VueUiFunnel", icon: "chartFunnel", thumb: new URL('../assets/thumb_funnel_light.png', import.meta.url).href, description: translations.value.docs.tooltips.funnel},
-    { name: "VueUiHistoryPlot", icon: "chartHistoryPlot", thumb: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href, description: translations.value.docs.tooltips.historyPlot}
+    { name: "VueUiHistoryPlot", icon: "chartHistoryPlot", thumb: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href, description: translations.value.docs.tooltips.historyPlot},
+    { name: "VueUiCirclePack", icon: "chartCirclePack", thumb: new URL('../assets/thumb_circle_pack_light.png', import.meta.url).href, description: translations.value.docs.tooltips.circlePack},
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
@@ -381,6 +383,9 @@ const crumbs = computed(() => {
         </Transition>
         <Transition name="fade">
             <MakerHistoryPlot v-if="selectedChart.name === 'VueUiHistoryPlot'" />
+        </Transition>
+        <Transition name="fade">
+            <MakerCirclePack v-if="selectedChart.name === 'VueUiCirclePack'" />
         </Transition>
     </div>
 </template>

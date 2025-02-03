@@ -121,12 +121,14 @@ const config = ref({
                 },
                 labels: {
                     name: {
+                        fontSizeRatio: 0.8,
                         show: true,
                         bold: false,
-                        offsetY: -5,
+                        offsetY: 0,
                         color: "auto",
                     },
                     value: {
+                        fontSizeRatio: 1,
                         show: true,
                         color: "auto",
                         rounding: 0,
@@ -246,12 +248,14 @@ const darkModeConfig = ref({
                 },
                 labels: {
                     name: {
+                        fontSizeRatio: 0.8,
                         show: true,
                         bold: false,
-                        offsetY: -5,
+                        offsetY: 0,
                         color: "auto",
                     },
                     value: {
+                        fontSizeRatio: 1,
                         show: true,
                         color: "auto",
                         rounding: 0,
@@ -368,6 +372,7 @@ const { configCode, showAllConfig } = useConfigCode()
     
     <BaseDocHeaderActions
         targetLink="vue-ui-circle-pack"
+        targetMaker="VueUiCirclePack"
         :configSource="mainConfig.vue_ui_circle_pack"
     />
 
@@ -464,12 +469,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiCirclePackDatas
                     <BaseDetails attr="labels" :level="4" title="style.chart.circles.labels">
                         <BaseDetails attr="name" :level="5" title="style.chart.circles.labels.name">
                             <BaseAttr name="show" attr="style.chart.circles.labels.name.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="fontSizeRatio" attr="style.chart.circles.labels.name.fontSizeRatio" type="number" defaultVal="1" :min="0" :max="2" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="bold" attr="style.chart.circles.labels.name.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="offsetY" attr="style.chart.circles.labels.name.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="color" attr="style.chart.circles.labels.name.color" type="color" defaultVal="auto" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
                         <BaseDetails attr="value" :level="5" title="style.chart.circles.labels.value">
                             <BaseAttr name="show" attr="style.chart.circles.labels.value.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="fontSizeRatio" attr="style.chart.circles.labels.value.fontSizeRatio" type="number" defaultVal="1" :min="0" :max="2" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="color" attr="style.chart.circles.labels.value.color" type="color" defaultVal="auto" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="rounding" attr="style.chart.circles.labels.value.rounding" type="number" defaultVal="0"  :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="prefix" attr="style.chart.circles.labels.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
