@@ -576,6 +576,27 @@ const <span class="text-black dark:text-app-green">dataset: VueUiCirclePackDatas
         </template>
 
         <template #tab2>
+            @selectDatapoint<br><br>
+
+{{ translations.docs.emits.selectDatapoint[store.lang] }}
+<br>
+<pre><code>
+&lt;template&gt;
+    &lt;VueUiCirclePack
+        :dataset="dataset"
+        :config="config"
+        @selectDatapoint="selectDatapoint"
+    /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+    function selectDatapoint(datapoint) {
+        console.log(datapoint)
+    }
+&lt;/script&gt;
+</code>
+</pre>
+
             <div class="pt-4 border-t border-gray-700 overflow-x-auto">
                     <div><code>getData</code></div>
                     <div class="text-gray-400 pl-5 mb-4">{{ translations.docs.emits.xy.getData[store.lang] }}</div>
@@ -660,7 +681,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiCirclePackDatas
                     'source',
                     'chart-background',
                     'pattern',
-                    'zoom-label'
+                    'zoom-label',
+                    'data-label-circlePack'
                 ]" 
             />
         </template>

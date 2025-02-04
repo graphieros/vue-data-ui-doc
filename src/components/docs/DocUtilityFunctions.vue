@@ -56,6 +56,17 @@ const utilityTranslations = ref({
         es: "Ajusta el matiz de un color según una intensidad específica",
         ko: "지정된 강도로 주어진 색상의 색조를 변경합니다",
         ar: "يُغيّر درجة اللون للون معين بقوة محددة"
+    },
+    createTSpans: {
+        en: "Create TSpan elements from a string to break text into multiple lines. The output should be placed with `v-html` inside an SVG `<text>` element.",
+        fr: "Créez des éléments TSpan à partir d'une chaîne pour diviser le texte en plusieurs lignes. La sortie doit être placée avec `v-html` à l'intérieur d'un élément `<text>` SVG.",
+        pt: "Crie elementos TSpan a partir de uma string para dividir o texto em várias linhas. A saída deve ser colocada com `v-html` dentro de um elemento `<text>` SVG.",
+        de: "Erstellen Sie TSpan-Elemente aus einer Zeichenkette, um Text in mehrere Zeilen aufzubrechen. Die Ausgabe sollte mit `v-html` in einem SVG-`<text>`-Element platziert werden.",
+        zh: "从字符串创建 TSpan 元素，以将文本拆分为多行。输出应使用 `v-html` 放置在 SVG `<text>` 元素内。",
+        jp: "文字列から TSpan 要素を作成して、テキストを複数行に分割します。出力は `v-html` を使用して SVG `<text>` 要素内に配置する必要があります。",
+        es: "Crea elementos TSpan a partir de una cadena para dividir el texto en varias líneas. La salida debe colocarse con `v-html` dentro de un elemento `<text>` SVG.",
+        ko: "문자열에서 TSpan 요소를 생성하여 텍스트를 여러 줄로 나눕니다. 출력은 `v-html`을 사용하여 SVG `<text>` 요소 내에 배치해야 합니다.",
+        ar: "قم بإنشاء عناصر TSpan من سلسلة نصية لتقسيم النص إلى عدة أسطر. يجب وضع الإخراج باستخدام `v-html` داخل عنصر `<text>` في SVG."
     }
 })
 
@@ -113,6 +124,27 @@ const shifted = shiftColorHue(color, ${Math.round(strengthHue.value * 100) / 100
 
 // Result: ${shiftColorHue(colorHue.value, strengthHue.value)}
 `);
+
+const createTSpanContent = computed(() => `import { createTSpans } from "vue-data-ui";
+
+const textContent = createTSpans({
+    content: "This is an example of multiline text",
+    fontSize: 16,
+    fill: "#333",
+    maxWords: 2,
+    x: 10,
+    y: 20
+});`)
+
+const createTSpanTemplate = computed(() => `<text
+    :x="10"
+    :y="20"
+    :font-size="16"
+    fill="#1A1A1A"
+    text-anchor="middle"
+    v-html="textContent"
+/>`
+)
 
 </script>
 
@@ -258,6 +290,23 @@ const shifted = shiftColorHue(color, ${Math.round(strengthHue.value * 100) / 100
         </div>
     </div>
 </div>
+
+<div class="max-w-[1000px] mx-auto mt-12">
+
+    <div class="w-full rounded border border-gray-300 dark:border-gray-700">
+        <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
+            <div class="p-4" dir="auto">
+                <code class="text-lg">createTSpans</code>
+                <p class="text-gray-500">{{ utilityTranslations.createTSpans[store.lang] }}</p>
+            </div>
+        </div>
+
+        <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+            <CodeParser :content="createTSpanContent" language="javascript"/>
+            <CodeParser :content="createTSpanTemplate" language="html"/>
+        </div>
+    </div>
+    </div>
 </div>
 
     </div>

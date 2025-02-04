@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.5.9",
+    "date": "2025-02-04",
+    "updates": [
+      {
+        "component": "VueUiCirclePack",
+        "description": "Improve packing algo, add @selectDatapoint emit and #data-label slot",
+        "link": "/docs#vue-ui-circle-pack"
+      },
+      {
+        "component": "Utility functions",
+        "description": "Add createTSpans utility function",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.5.8",
     "date": "2025-02-03",
     "updates": [
