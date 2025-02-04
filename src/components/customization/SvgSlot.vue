@@ -13,33 +13,40 @@ const translations = computed(() => {
 
 const xyDataset = ref([
   {
-    name: "Series 1",
-    series: [
-      -55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21,
-      34, 55,
-    ],
+    name: "Circles",
+    series: [12, 18, 19, 29, 32, 15, 66, 28, 16],
     type: "line",
-    color: "rgb(66,211,146)",
     shape: "circle",
+    smooth: true,
+  },
+  {
+    name: "Stars",
+    series: [28, 12, 27, 15, 19, 33, 12, 16, 48],
+    type: "line",
+    shape: "star",
+    smooth: true,
+  },
+  {
+    name: "Squares",
+    series: [3, 8, 34, 16, 44, 77, 43, 19, 98],
+    type: "line",
+    shape: "square",
     smooth: true,
   },
 ]);
 
 const donutDataset = ref([
   {
-    name: "Serie 1",
-    color: "#5f8bee",
-    values: [100],
+    name: "Circles",
+    values: [xyDataset.value[0].series.reduce((a, b) => a + b, 0)],
   },
   {
-    name: "Serie 2",
-    color: "#42d392",
-    values: [200],
+    name: "Stars",
+    values: [xyDataset.value[1].series.reduce((a, b) => a + b, 0)],
   },
   {
-    name: "Serie 1",
-    color: "#ff6400",
-    values: [300, 1],
+    name: "Squares",
+    values: [xyDataset.value[2].series.reduce((a, b) => a + b, 0)],
   },
 ]);
 
@@ -48,21 +55,42 @@ const xyConfig = ref({
     zoom: {
       show: false,
     },
+    tooltip: {
+        backgroundOpacity: 0,
+      },
     userOptions: {
       show: false,
     },
+    grid: {
+      labels: {
+        yAxis: {
+          scaleMax: 100
+        }
+      }
+    }
   },
+  line: {
+    radius: 6,
+    useGradient: false,
+    dot: {
+      useSerieColor: false,
+      fill: '#FFFFFF',
+      strokeWidth: 3,
+    }
+  }
 });
 
 const donutConfig = ref({
   style: {
     chart: {
+      backgroundColor: 'transparent',
       legend: {
         show: false,
+        backgroundColor: 'transparent'
       },
-      title: {
-        text: "Donut title",
-      },
+      tooltip: {
+        backgroundOpacity: 0,
+      }
     },
   },
   userOptions: {
@@ -132,8 +160,8 @@ const contentChart = ref(`<VueUiXy :dataset="dataset" :config="config">
         <foreignObject 
             :x="50" 
             :y="0" 
-            height="250" 
-            width="250"
+            height="320" 
+            width="360"
         >
             <div class="w-full">
                 <VueUiDonut 
@@ -232,7 +260,7 @@ const contentImage = ref(`<template>
     <template #chart>
       <VueUiXy :dataset="xyDataset" :config="xyConfig">
         <template #svg>
-          <foreignObject :x="50" :y="0" height="250" width="250">
+          <foreignObject :x="50" :y="0" height="320" width="360">
             <div class="w-full">
               <VueUiDonut :dataset="donutDataset" :config="donutConfig" />
             </div>
