@@ -163,7 +163,7 @@ const config = computed(() => {
       },
       padding: { top: 36, right: 24, bottom: 64, left: 48 },
       highlighter: {
-        color: "#2D353C",
+        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
         opacity: 5,
         useLine: false,
         lineDasharray: 2,
