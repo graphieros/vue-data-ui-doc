@@ -957,15 +957,15 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_xy: {
                 dataset: [
                     {
-                        name: "name",
-                        series: [1, 2, 3, 5, 8, 13, 21, 13, 8, 5, 3, 2, 1],
-                        color: "#6376DD",
+                        name: "Serie name",
+                        series: [1, 9, 7, 2, 12, 16, 17, 30, 16, 23],
+                        color: "#1f77b4",
                         type: "line",
                         shape: 'circle',
                         useArea: false,
                         useProgression: false,
                         dataLabels: true,
-                        smooth: false,
+                        smooth: true,
                         dashed: false,
                         useTag: 'none',
                         showSerieName: 'none'
@@ -1039,7 +1039,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
 
                     { key: 'chart.grid.labels.show', def: true, type: 'checkbox', label: 'showLabels', category: 'grid' },
                     { key: 'chart.grid.labels.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'grid' },
-                    { key: 'chart.grid.labels.fontSize', def: 12, type: 'number', min: 4, max: 30, label: 'fontSize', category: 'grid' },
+                    { key: 'chart.grid.labels.fontSize', def: 16, type: 'number', min: 4, max: 30, label: 'fontSize', category: 'grid' },
                     { key: 'chart.grid.labels.axis.yLabel', def: '', type: 'text', label: 'yAxisLabel', category: 'grid' },
                     { key: 'chart.grid.labels.axis.xLabel', def: '', type: 'text', label: 'xAxisLabel', category: 'grid' },
                     { key: 'chart.grid.labels.axis.fontSize', def: 12, type: 'number', min: 4, max: 30, label: 'fontSize', category: 'grid' },
@@ -1061,7 +1061,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.grid.labels.yAxis.gap', def: 12, type: 'number', min: 8, max: 24, label: ['yAxis', 'is', 'stack gap'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.labelWidth', def: 40, type: 'number', min: 36, max: 64, label: ['yAxis', 'is', 'labelWidth'], category: 'grid'},
 
-                    { key: 'chart.labels.fontSize', def: 10, type: 'number', min: 6, max: 30, label: 'fontSize', category: 'labels' },
+                    { key: 'chart.labels.fontSize', def: 16, type: 'number', min: 6, max: 30, label: 'fontSize', category: 'labels' },
                     { key: 'chart.labels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },
                     { key: 'chart.labels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels' },
 
@@ -1141,15 +1141,15 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'bar.border.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'bar'},
 
                     { key: 'line.radius', def: 6, type: 'number', min: 0, max: 20, label: 'radius', category: 'line' },
-                    { key: 'line.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'line' },
+                    { key: 'line.useGradient', def: false, type: 'checkbox', label: 'useGradient', category: 'line' },
+                    { key: 'line.dot.useSerieColor', def: false, type: 'checkbox', label: ['dot', 'is', 'serie color'], category: 'line'},
                     { key: 'line.strokeWidth', def: 2, type: 'number', min: 1, max: 20, label: 'thickness', category: 'line' },
-                    { key: 'line.dot.useSerieColor', def: true, type: 'checkbox', label: ['dot', 'is', 'serie color'], category: 'line'},
                     { key: 'line.dot.fill', def: '#FFFFFF', type: 'color', label: ['dot', 'is', 'fill'], category: 'line'},
-                    { key: 'line.dot.strokeWidth', def: 0.5, type: 'number', min: 0, max: 12, step: 0.1, label: ['dot', 'is', 'strokeWidth'], category: 'line'},
+                    { key: 'line.dot.strokeWidth', def: 2, type: 'number', min: 0, max: 12, step: 0.1, label: ['dot', 'is', 'strokeWidth'], category: 'line'},
                     { key: 'line.dot.hideAboveMaxSerieLength', def: 62, type: 'number', min: 12, max: 100, label: ['dot', 'is', 'hide above max serie length'], category: 'line'},
 
                     { key: 'line.labels.show', def: true, type: 'checkbox', label: 'showDataLabels', category: 'line' },
-                    { key: 'line.labels.offsetY', def: -8, type: 'number', min: -100, max: 100, label: 'offsetYDataLabels', category: 'line' },
+                    { key: 'line.labels.offsetY', def: -16, type: 'number', min: -100, max: 100, label: 'offsetYDataLabels', category: 'line' },
                     { key: 'line.labels.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'line' },
                     { key: 'line.labels.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'line' },
                     { key: 'line.area.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'line' },
