@@ -124,10 +124,10 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
     <div
       class="my-12 max-w-[800px] mx-auto"
     >
-      <div class="border border-gray-500 rounded-md p-4 flex flex-row flex-wrap gap-4 place-items-center justify-center mx-6">        
-        <router-link v-for="(menuItem, i) in menu" :to="menuItem.link">
+      <div class="border border-[#5f8aee50] rounded-md p-4 place-items-center justify-center mx-6 grid grid-cols-2 sm:grid-cols-3 gap-2">        
+        <router-link v-for="(menuItem, i) in menu" :to="menuItem.link" class="w-full">
           <button
-            :class="`transition-colors rounded py-2 px-4 flex flex-row gap-2 place-items-center ${
+            :class="`w-full transition-colors rounded py-2 px-4 flex flex-row gap-2 place-items-center ${
               currentRoute === menuItem.link ||
               (i === 0 && currentRoute === '/customization')
                 ? 'bg-[#5f8bee20] text-app-blue border-b border-app-blue'
@@ -139,7 +139,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
             {{ menuItem.label }}
           </button>
         </router-link>
-        <button class="transition-colors rounded py-2 px-4 flex flex-row gap-2 place-items-center hover:bg-[#5f8bee20] bg-[#5f8bee10]">
+        <button class="w-full transition-colors rounded py-2 px-4 flex flex-row gap-2 place-items-center hover:bg-[#5f8bee20] bg-[#5f8bee10]">
           <a href="https://color-bridge.graphieros.com/" target="_blank" class="flex flex-row gap-2 place-items-center">
             <VueUiIcon name="moodWink" :stroke="isDarkMode ? '#FF5000' : '#1A1A1A'"/> Color Bridge
           </a>
