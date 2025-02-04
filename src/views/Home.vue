@@ -466,8 +466,8 @@ const specialOccasion = computed(() => {
     <line :x1="clientPosition.x - targetSize" :x2="clientPosition.x + targetSize" :y1="clientPosition.y" :y2="clientPosition.y" :stroke="isDarkMode ? '#212121' : '#E1E1E1'" stroke-width="1" />
     <line :x1="clientPosition.x + targetSize" :x2="boardSize.width" :y1="clientPosition.y" :y2="clientPosition.y" stroke="#616161" stroke-width="0.6" />
 
-    <text :x="clientPosition.x - targetSize" :y="clientPosition.y - 6" text-anchor="end" class="tabular-nums" :fill="isDarkMode ? '#616161' : '#BBBBBB'">{{ clientPosition.x.toFixed(0) }}</text>
-    <g :transform="`translate(${clientPosition.x - 6}, ${clientPosition.y - targetSize})`">
+    <!-- <text :x="clientPosition.x - targetSize" :y="clientPosition.y - 6" text-anchor="end" class="tabular-nums" :fill="isDarkMode ? '#616161' : '#BBBBBB'">{{ clientPosition.x.toFixed(0) }}</text> -->
+    <!-- <g :transform="`translate(${clientPosition.x - 6}, ${clientPosition.y - targetSize})`">
         <text
             text-anchor="start"
             transform="rotate(-90)"
@@ -475,7 +475,49 @@ const specialOccasion = computed(() => {
         >
             {{ clientPosition.y.toFixed(0) }}
         </text>
-    </g>
+    </g> -->
+    <foreignObject
+      :x="clientPosition.x - 34"
+      :y="clientPosition.y - targetSize - 34"
+      width="28"
+      height="28"
+      style="overflow: visible;"
+    >
+      <div style="transform: rotate(-90Deg); height: 16px; width: 46px">
+        <VueUiDigits
+          :dataset="Number(clientPosition.y.toFixed(0))"
+          :config="{
+            ...digitConfigStars,
+            digits: {
+              color: isDarkMode ? '#616161' : '#8A8A8A',
+              skeletonColor: 'transparent'
+            }
+          }"
+          
+        />
+      </div>
+    </foreignObject>
+
+    <foreignObject
+      :x="clientPosition.x - targetSize - 34"
+      :y="clientPosition.y - 20"
+      width="46"
+      height="16"
+      style="overflow: visible"
+    >
+      <VueUiDigits
+        :dataset="Number(clientPosition.x.toFixed(0))"
+        :config="{
+          ...digitConfigStars,
+          digits: {
+            color: isDarkMode ? '#616161' : '#8A8A8A',
+            skeletonColor: 'transparent'
+          }
+        }"
+        
+      />
+    </foreignObject>
+
     <circle :cx="clientPosition.x - targetSize" :cy="clientPosition.y" r="2" fill="#42d392"/>
     <circle :cx="clientPosition.x + targetSize" :cy="clientPosition.y" r="2" fill="#42d392"/>
     <circle :cx="clientPosition.x" :cy="clientPosition.y - targetSize" r="2" fill="#5f8bee"/>
