@@ -56,7 +56,7 @@ onUnmounted(() => {
 
 <template>
     <div ref="draggableElement"
-        class="hidden sm:block fixed left-0 bg-gradient-to-br from-app-blue-light to-app-blue text-white p-4 rounded-r shadow-md cursor-move select-none py-6"
+        class="z-10 hidden sm:block fixed left-0 bg-gradient-to-br from-app-blue-light to-app-blue text-white p-4 rounded-r shadow-md cursor-move select-none py-6"
         @mousedown="startDrag" @touchstart="startDrag">
         <GripVerticalIcon class="absolute top-1 right-0" size="16" />
         <slot />

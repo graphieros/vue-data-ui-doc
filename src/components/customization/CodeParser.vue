@@ -15,6 +15,18 @@ const props = defineProps({
     title: {
         type: String,
         default: ''
+    },
+    withCopy: {
+        type: Boolean,
+        default: true
+    },
+    noPointerEvents: {
+        type: Boolean,
+        default: false
+    },
+    borderRadius: {
+        type: String,
+        default: '0.3rem'
     }
 });
 
@@ -24,13 +36,17 @@ const config = computed(() => {
     return {
         withLineNumbers: false,
         fontSize: '0.8rem',
-        title: props.title
+        title: props.title,
+        withCopy: props.withCopy,
+        borderRadius: props.borderRadius
     }
 });
 </script>
 
 <template>
-    <div class="relative">
+    <div class="relative" :style="{
+        pointerEvents: noPointerEvents ? 'none' : 'all'
+    }">
         <VueHiCode :content="content" :language="language" v-bind="config" @copy="emit('copy')"/>
     </div>
 </template>

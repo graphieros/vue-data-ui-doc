@@ -73,6 +73,15 @@ export function copyText(text, parent) {
     parent.removeChild(selBox);
 }
 
+export async function copyCode(str) {
+    try {
+        await navigator.clipboard.writeText(str);
+        console.log('Content copied to clipboard!');
+    } catch (err) {
+        console.error('Failed to copy text: ', err);
+    }
+}
+
 export function adaptColorToBackground(bgColor) {
     if (bgColor) {
         let color = bgColor;
