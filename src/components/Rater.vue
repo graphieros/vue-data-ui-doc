@@ -147,7 +147,8 @@ const labels = computed(() => {
             zh: '请评价这个组件。',
             jp: 'このコンポーネントを評価してください。',
             es: 'Califica este componente',
-            ko: '이 컴포넌트를 평가해 주세요.'
+            ko: '이 컴포넌트를 평가해 주세요.',
+            ar: 'قيم هذا المكون'
         }
     }
 })
