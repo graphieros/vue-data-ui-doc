@@ -8,6 +8,7 @@ import BaseTabContainer from "../components/BaseTabContainer.vue";
 import { useRoute, useRouter } from "vue-router";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
+import Rater from "../components/Rater.vue";
 
 const { examples } = useExamples()
 const store = useMainStore()
@@ -15,6 +16,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 const router = useRouter();
 const route = useRoute();
 const translations = computed(() => store.translations);
+const raterStep = ref(0);
 
 const key = ref(0);
 
@@ -57,7 +59,10 @@ function updateCrumb() {
             icon: hashIcon
         }
     }
+    raterStep.value += 1;
 }
+
+//<Rater itemId="vue_ui_donut" />
 
 const categories = computed(() => {
     return  [
@@ -67,7 +72,8 @@ const categories = computed(() => {
             component: 'VueUiXy',
             thumb: new URL('../assets/thumb_xy.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_xy_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.xy
+            description: translations.value.docs.tooltips.xy,
+            raterId: 'vue_ui_xy'
         },
         { 
             link: 'vue-ui-donut', 
@@ -75,7 +81,8 @@ const categories = computed(() => {
             component: 'VueUiDonut',
             thumb: new URL('../assets/thumb_donut.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_donut_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.donut
+            description: translations.value.docs.tooltips.donut,
+            raterId: 'vue_ui_donut'
         },
         {
             link: 'vue-ui-sparkline',
@@ -83,7 +90,8 @@ const categories = computed(() => {
             component: 'VueUiSparkline',
             thumb: new URL('../assets/thumb_sparkline.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.sparkline
+            description: translations.value.docs.tooltips.sparkline,
+            raterId: 'vue_ui_sparkline'
         },
         {
             link: 'vue-ui-stackbar',
@@ -91,7 +99,8 @@ const categories = computed(() => {
             component: 'VueUiStackbar',
             thumb: new URL('../assets/thumb_stack_bar.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.stackbar
+            description: translations.value.docs.tooltips.stackbar,
+            raterId: 'vue_ui_stackbar'
         },
         { 
             link: 'vue-ui-nested-donuts', 
@@ -99,7 +108,8 @@ const categories = computed(() => {
             component: 'VueUiNestedDonuts',
             thumb: new URL('../assets/thumb_nested_donuts.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.nestedDonuts
+            description: translations.value.docs.tooltips.nestedDonuts,
+            raterId: 'vue_ui_nested_donuts'
         },
         {
             link: 'vue-ui-waffle',
@@ -107,7 +117,8 @@ const categories = computed(() => {
             component: 'VueUiWaffle',
             thumb: new URL('../assets/thumb_waffle.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_waffle_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.waffle
+            description: translations.value.docs.tooltips.waffle,
+            raterId: 'vue_ui_waffle'
         },
         {
             link: 'vue-ui-vertical-bar',
@@ -115,7 +126,8 @@ const categories = computed(() => {
             component: 'VueUiVerticalBar',
             thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.verticalBar
+            description: translations.value.docs.tooltips.verticalBar,
+            raterId: 'vue_ui_vertical_bar'
         },
         {
             link: 'vue-ui-heatmap',
@@ -123,7 +135,8 @@ const categories = computed(() => {
             component: 'VueUiHeatmap',
             thumb: new URL('../assets/thumb_heatmap.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.heatmap
+            description: translations.value.docs.tooltips.heatmap,
+            raterId: 'vue_ui_heatmap'
         },
         {
             link: 'vue-ui-gauge',
@@ -131,7 +144,8 @@ const categories = computed(() => {
             component: 'VueUiGauge',
             thumb: new URL('../assets/thumb_gauge.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_gauge_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.gauge
+            description: translations.value.docs.tooltips.gauge,
+            raterId: 'vue_ui_gauge'
         },
         {
             link: 'vue-ui-onion',
@@ -139,7 +153,8 @@ const categories = computed(() => {
             component: 'VueUiOnion',
             thumb: new URL('../assets/thumb_onion.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_onion_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.onion
+            description: translations.value.docs.tooltips.onion,
+            raterId: 'vue_ui_onion'
         },
         {
             link: 'vue-ui-word-cloud',
@@ -147,7 +162,8 @@ const categories = computed(() => {
             component: 'VueUiWordCloud',
             thumb: new URL('../assets/thumb_word_cloud.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.wordCloud
+            description: translations.value.docs.tooltips.wordCloud,
+            raterId: 'vue_ui_word_cloud'
         },
         {
             link: "vue-ui-scatter",
@@ -155,7 +171,8 @@ const categories = computed(() => {
             component: 'VueUiScatter',
             thumb: new URL('../assets/thumb_scatter.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_scatter_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.scatter
+            description: translations.value.docs.tooltips.scatter,
+            raterId: 'vue_ui_scatter'
         },
         {
             link: 'vue-ui-wheel',
@@ -163,7 +180,8 @@ const categories = computed(() => {
             component: 'VueUiWheel',
             thumb: new URL('../assets/thumb_wheel.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_wheel_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.wheel
+            description: translations.value.docs.tooltips.wheel,
+            raterId: 'vue_ui_wheel'
         },
         {
             link: 'vue-ui-sparkhistogram',
@@ -171,7 +189,8 @@ const categories = computed(() => {
             component: 'VueUiSparkHistogram',
             thumb: new URL('../assets/thumb_histogram.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_histogram_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.histogram
+            description: translations.value.docs.tooltips.histogram,
+            raterId: 'vue_ui_sparkhistogram'
         },
         {
             link: 'vue-ui-quadrant',
@@ -179,7 +198,8 @@ const categories = computed(() => {
             component: 'VueUiQuadrant',
             thumb: new URL('../assets/thumb_quadrant.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.quadrant
+            description: translations.value.docs.tooltips.quadrant,
+            raterId: 'vue_ui_quadrant'
         },
         {
             link: 'vue-ui-radar',
@@ -187,7 +207,8 @@ const categories = computed(() => {
             component: 'VueUiRadar',
             thumb: new URL('../assets/thumb_radar.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_radar_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.radar
+            description: translations.value.docs.tooltips.radar,
+            raterId: 'vue_ui_radar'
         },
         {
             link: 'vue-ui-strip-plot',
@@ -195,7 +216,8 @@ const categories = computed(() => {
             component: 'VueUiStripPlot',
             thumb: new URL('../assets/thumb_strip_plot.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.stripPlot
+            description: translations.value.docs.tooltips.stripPlot,
+            raterId: 'vue_ui_strip_plot'
         },
         {
             link: 'vue-ui-bullet',
@@ -203,7 +225,8 @@ const categories = computed(() => {
             component: 'VueUiBullet',
             thumb: new URL('../assets/thumb_bullet.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_bullet_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.bullet
+            description: translations.value.docs.tooltips.bullet,
+            raterId: 'vue_ui_bullet'
         },
         {
             link: 'vue-ui-funnel',
@@ -211,7 +234,8 @@ const categories = computed(() => {
             component: 'VueUiFunnel',
             thumb: new URL('../assets/thumb_funnel.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_funnel_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.funnel
+            description: translations.value.docs.tooltips.funnel,
+            raterId: 'vue_ui_funnel'
         },
         {
             link: 'vue-ui-treemap',
@@ -219,7 +243,8 @@ const categories = computed(() => {
             component: 'VueUiTreemap',
             thumb: new URL('../assets/thumb_treemap.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_treemap_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.treemap
+            description: translations.value.docs.tooltips.treemap,
+            raterId: 'vue_ui_treemap'
         },
         {
             link: 'vue-ui-history-plot',
@@ -227,7 +252,8 @@ const categories = computed(() => {
             component: 'VueUiHistoryPlot',
             thumb: new URL('../assets/thumb_history_plot.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href,
-            description: translations.value.docs.tooltips.historyPlot
+            description: translations.value.docs.tooltips.historyPlot,
+            raterId: 'vue_ui_history_plot'
         },
     ].map((c, i) => {
         return {
@@ -473,6 +499,7 @@ const hoveredLink = ref(null);
                 </Suspense>
             </div>
         </div>
+        <Rater :key="`rater_${raterStep}`" v-if="selectedType && selectedType.raterId" :itemId="selectedType.raterId" />
     </div>
 </template>
 
