@@ -2,6 +2,7 @@
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../stores";
 import AboutComponentTypes from "../components/AboutComponentTypes.vue";
+import SatisfactionStats from "../components/SatisfactionStats.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -346,6 +347,8 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
                 </p>
             </div>
         </div>
+
+        <SatisfactionStats/>
 
         <div v-if="isDarkMode" class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px] mb-12">
             <div v-for="skeleton in skeletonsDarkMode.slice(3, skeletons.length)" class="max-w-1/3">
