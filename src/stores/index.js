@@ -28,6 +28,10 @@ export const useMainStore = defineStore("main", {
                 cli: {},
                 hiCode: {}
             },
+            ratings: {
+                average: 0,
+                breakdown: []
+            },
             hints: {
                 pin: {
                     en: "Pin the chart so you can visualize configuration changes when you scroll.",
