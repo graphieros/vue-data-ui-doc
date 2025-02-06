@@ -14,6 +14,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -343,6 +344,8 @@ const { configCode, showAllConfig } = useConfigCode()
                 <VueUiMoodRadar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
             </DocSnapper>
         </div>
+
+        <Rater itemId="vue_ui_mood_radar" />
 
         <Box showEmits showSlots showThemes schema="vue_ui_mood_radar" signInfo="positiveOnly">
             <template #tab0>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed, onBeforeUnmount } from "vue";
+import { ref, onMounted, computed, onBeforeUnmount, nextTick } from "vue";
 import { Menu2Icon, XIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import { SunFilledIcon, MoonStarsIcon, LanguageIcon } from "vue-tabler-icons";
@@ -11,6 +11,7 @@ import BaseDropdown from "./BaseDropdown.vue";
 import vClickOutside from "../directives/vClickOutside";
 import useCharts from "../useCharts";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
+import { createUid } from "../components/maker/lib";
 
 const router = useRouter();
 const store = useMainStore();
@@ -19,6 +20,13 @@ const { simpleMenu } = useCharts();
 onMounted(() => {
     const ua = navigator.userAgent;
     store.isSafari = /Safari/.test(ua) && !/Chrome/.test(ua) && !/Edg/.test(ua);
+
+    if (!localStorage.visitor) {
+        localStorage.setItem('visitor', createUid());
+    }
+    if (!localStorage.votes) {
+        localStorage.setItem('votes', JSON.stringify([]));
+    }
 });
 
 const isOpen = ref(false);

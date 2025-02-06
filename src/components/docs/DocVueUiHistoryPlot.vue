@@ -16,6 +16,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -542,14 +543,14 @@ function forceChartUpdate() {
             >
                 <VueDataUi component="VueUiHistoryPlot" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
             </DocSnapper>
-            <!-- <BaseRandomButton @click="randomizeData"/> -->
         </div>
 
         <div class="w-full flex justify-center mt-6">
             <BaseViewExampleButton link="/examples/categories#vue-ui-history-plot"/>
         </div>
 
-        <!-- TODO: add schema -->
+        <Rater itemId="vue_ui_history_plot" />
+
         <Box showEmits showSlots showThemes showResponsive showTooltip signInfo="both" schema="vue_ui_history_plot">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}

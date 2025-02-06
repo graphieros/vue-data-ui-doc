@@ -12,6 +12,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -321,6 +322,8 @@ const { configCode, showAllConfig } = useConfigCode()
               </template>
             </Suspense>
         </div>
+
+        <Rater itemId="vue_ui_table_sparkline" />
 
         <Box showEmits showSlots signInfo="both">
           <template #tab0>

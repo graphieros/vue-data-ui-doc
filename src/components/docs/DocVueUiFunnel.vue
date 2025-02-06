@@ -16,6 +16,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -396,7 +397,8 @@ const { configCode, showAllConfig } = useConfigCode()
             <BaseViewExampleButton link="/examples/categories#vue-ui-funnel"/>
         </div>
 
-        <!--TODO: ADD SCHEMA -->
+        <Rater itemId="vue_ui_funnel" />
+
         <Box showEmits showSlots showThemes showResponsive schema="vue_ui_funnel" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}

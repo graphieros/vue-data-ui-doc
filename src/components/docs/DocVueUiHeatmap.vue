@@ -16,6 +16,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -428,6 +429,8 @@ function randomizeData() {
         <div class="w-full flex justify-center mt-6">
             <BaseViewExampleButton link="/examples/categories#vue-ui-heatmap"/>
         </div>
+
+        <Rater itemId="vue_ui_heatmap" />
 
         <Box showEmits showSlots showTooltip showThemes schema="vue_ui_heatmap" signInfo="both">
             <template v-slot:tab0>

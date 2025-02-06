@@ -15,6 +15,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -493,6 +494,7 @@ function randomizeData() {
                 </VueDataUi>
             </DocSnapper>
             <BaseRandomButton @click="randomizeData"/>
+            <Rater itemId="vue_ui_parallel_coordinate_plot" />
         </div>
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_parallel_coordinate_plot" signInfo="both">

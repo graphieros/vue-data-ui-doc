@@ -14,6 +14,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -445,6 +446,8 @@ const { configCode, showAllConfig } = useConfigCode()
         <div class="w-full mx-auto max-w-[600px] text-gray-500 mb-10 mt-5 text-center">
             {{ translations.docs.comments.bar3d.mode[store.lang] }}
         </div>
+
+        <Rater itemId="vue_ui_3d_bar" />
 
         <Box showEmits showSlots showThemes schema="vue_ui_3d_bar" signInfo="positiveOrNegativeOnly">
             <template #tab0>

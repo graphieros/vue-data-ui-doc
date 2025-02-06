@@ -11,6 +11,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -283,6 +284,8 @@ const { configCode, showAllConfig } = useConfigCode()
                 </div>
             </DocSnapper>
         </div>
+
+        <Rater itemId="vue_ui_timer" />
 
         <Box showEmits showSlots :activeTab="1">
             <template #tab0>{{ translations.docs.comments.noDataset[store.lang] }}</template>

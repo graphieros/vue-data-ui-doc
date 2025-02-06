@@ -14,6 +14,7 @@ import BaseRandomButton from "../BaseRandomButton.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -233,6 +234,8 @@ function randomizeData() {
                 </DocSnapper>
 
                 <BaseRandomButton @click="randomizeData"/>
+
+                <Rater itemId="vue_ui_sparkgauge" />
             </div>
         </div>
 

@@ -8,6 +8,7 @@ import staticReleases from "../../public/releases.json"
 import { useConfig } from "../assets/useConfig";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseBubbles from "../components/BaseBubbles.vue";
+import Rater from "../components/Rater.vue";
 
 const configs = useConfig()
 
@@ -452,6 +453,7 @@ const specialOccasion = computed(() => {
       </button>
     </a>
 </div>
+
 <button @click="changeTheme" id="themeToggle" class=" flex place-items-center place-content-end w-full py-1 pr-4 text-center absolute top-3 right-2">
   <BrightnessUpIcon v-if="isDarkMode" class="text-chalk"/>
   <MoonIcon v-else class="text-board-2"/>

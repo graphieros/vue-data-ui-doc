@@ -17,6 +17,7 @@ import BaseRandomButton from "../BaseRandomButton.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -339,6 +340,8 @@ function randomizeData() {
         <div class="w-full flex justify-center mt-6">
             <BaseViewExampleButton link="/examples/categories#vue-ui-sparkline"/>
         </div>
+
+        <Rater itemId="vue_ui_sparkline" />
 
         <Box showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline" signInfo="both">
             <template v-slot:tab0>

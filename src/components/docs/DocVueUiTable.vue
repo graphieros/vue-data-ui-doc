@@ -6,6 +6,7 @@ import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -607,6 +608,8 @@ function copyToClipboard(conf) {
                 <BaseSpinner/>
             </template>
         </Suspense>   
+
+        <Rater itemId="vue_ui_table" />
     
         <Box>
             <template v-slot:tab0>

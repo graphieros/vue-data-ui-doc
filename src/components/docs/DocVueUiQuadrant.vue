@@ -15,6 +15,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -578,6 +579,8 @@ const { configCode, showAllConfig } = useConfigCode()
                 />
             </DocSnapper>
         </div>
+
+        <Rater itemId="vue_ui_quadrant" />
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_quadrant" signInfo="both">
             <template v-slot:tab0>

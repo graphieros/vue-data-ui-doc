@@ -10,6 +10,7 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -265,6 +266,8 @@ const { configCode, showAllConfig } = useConfigCode()
                 </template>
             </Suspense>
         </div>
+
+        <Rater itemId="vue_ui_table_heatmap" />
 
         <Box showSlots signInfo="both">
             <template #warning>

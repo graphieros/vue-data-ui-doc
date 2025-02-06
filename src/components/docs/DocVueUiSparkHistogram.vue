@@ -14,6 +14,7 @@ import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -352,6 +353,8 @@ const { configCode, showAllConfig } = useConfigCode()
         <div class="w-full flex justify-center mt-6">
             <BaseViewExampleButton link="/examples/categories#vue-ui-sparkhistogram"/>
         </div>
+        
+        <Rater itemId="vue_ui_sparkhistogram" />
 
         <Box showEmits showThemes showSlots schema="vue_ui_sparkhistogram" signInfo="positiveOnly">
             <template #tab0>

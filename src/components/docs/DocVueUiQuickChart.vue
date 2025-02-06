@@ -13,6 +13,7 @@ import BaseComment from "../BaseComment.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -684,6 +685,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 </VueDataUi>                         
             </div>
         </div>
+        <Rater itemId="vue_ui_quick_chart" />
 
         <Box showSlots showTooltip showEmits showThemes showResponsive schema="vue_ui_quick_chart">
             <template #tab0>

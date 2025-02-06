@@ -17,6 +17,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -606,6 +607,7 @@ function randomizeData() {
             <BaseViewExampleButton link="/examples/categories#vue-ui-stackbar"/>
         </div>
 
+        
         <div class="w-full mt-6 pt-6 border-t border-gray-500 max-w-[600px] mx-auto">
             <div dir="auto">{{ innerTranslations.distributed[store.lang] }}</div>
             <code class="mt-4 flex flex-row place-items-center gap-4">
@@ -615,6 +617,8 @@ function randomizeData() {
                 <BaseAttr name="orientation" attr="orientation" type="select" defaultVal="vertical" :options="['vertical', 'horizontal']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="Since v2.3.45"/>
             </code>
         </div>
+        
+        <Rater itemId="vue_ui_stackbar" />
 
         <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_stackbar" signInfo="both">
             <template #tab0>

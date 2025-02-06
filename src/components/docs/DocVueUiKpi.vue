@@ -10,6 +10,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -151,6 +152,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 </template>
             </Suspense>
         </div>
+        <Rater itemId="vue_ui_kpi" />
 
         <Box showSlots schema="vue_ui_kpi">
             <template #tab0>

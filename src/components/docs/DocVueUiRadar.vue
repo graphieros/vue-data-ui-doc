@@ -16,6 +16,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -459,8 +460,10 @@ const { configCode, showAllConfig } = useConfigCode()
         <div class="mt-6 flex flex-col gap-3">
             <label for="player">{{ translations.docs.showMoreSeries[store.lang] }}</label>
             <input id="player" type="range" :min="3" :max="10" v-model="slicer" @input="updateDataset"
-                class="accent-app-green max-w-[200px]">
+            class="accent-app-green max-w-[200px]">
         </div>
+
+        <Rater itemId="vue_ui_radar" />
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_radar" signInfo="both">
             <template v-slot:tab0>

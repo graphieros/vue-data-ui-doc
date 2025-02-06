@@ -16,6 +16,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -570,6 +571,8 @@ const { configCode, showAllConfig } = useConfigCode()
         <div class="w-full flex justify-center mt-6">
             <BaseViewExampleButton link="/examples/categories#vue-ui-scatter"/>
         </div>
+
+        <Rater itemId="vue_ui_scatter" />
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_scatter" signInfo="both">
             <template v-slot:tab0>

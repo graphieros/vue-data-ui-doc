@@ -13,6 +13,7 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -219,6 +220,8 @@ const { configCode, showAllConfig } = useConfigCode()
                     <VueDataUi component="VueUiSparkTrend" :dataset="negativeDs" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
                 </div>
             </DocSnapper>
+
+            <Rater itemId="vue_ui_spark_trend" />
         </div>
 
         <Box showThemes showSlots schema="vue_ui_spark_trend" signInfo="both">

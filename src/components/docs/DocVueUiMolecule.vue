@@ -13,6 +13,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -451,6 +452,8 @@ const { configCode, showAllConfig } = useConfigCode()
                 <VueUiMolecule :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
             </DocSnapper>
         </div>
+
+        <Rater itemId="vue_ui_molecule" />
 
         <Box showEmits showSlots showTooltip>
             <template #tab0>

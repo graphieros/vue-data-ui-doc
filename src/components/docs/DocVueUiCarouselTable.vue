@@ -10,6 +10,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseAttr from "../BaseAttr.vue";
 import { useConfigCode } from "../../useConfigCode";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -380,6 +381,8 @@ const { configCode, showAllConfig } = useConfigCode()
                 </template>
             </Suspense>
         </div>
+
+        <Rater itemId="vue_ui_carousel_table" />
 
         <Box showEmits showSlots schema="vue_ui_carousel_table" hideSchemaDisclaimer>
             <template #tab0>

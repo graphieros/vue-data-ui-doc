@@ -14,6 +14,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -437,6 +438,8 @@ watch(() => showAllConfig.value, (v) => {
                 <VueDataUi component="VueUiDumbbell" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
             </DocSnapper>
         </div>
+
+        <Rater itemId="vue_ui_dumbbell" />
 
         <Box showEmits showSlots showThemes showResponsive schema="vue_ui_dumbbell" signInfo="both">
             <template #tab0>

@@ -14,6 +14,7 @@ import BaseRandomButton from "../BaseRandomButton.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -260,6 +261,7 @@ function randomizeData() {
             <VueUiSparkStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
           </DocSnapper>
           <BaseRandomButton @click="randomizeData"/>
+          <Rater itemId="vue_ui_sparkstackbar" />
         </div>
 
         <Box showEmits showThemes showSlots schema="vue_ui_sparkstackbar" signInfo="positiveOrNegativeOnly">

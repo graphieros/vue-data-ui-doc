@@ -11,6 +11,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -124,6 +125,7 @@ const { configCode, showAllConfig } = useConfigCode()
                     <VueUiGizmo :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode: mutableConfig"/>
                 </div>
             </DocSnapper>
+            <Rater itemId="vue_ui_gizmo" />
         </div>
 
         <Box schema="vue_ui_gizmo" signInfo="positiveOnly">

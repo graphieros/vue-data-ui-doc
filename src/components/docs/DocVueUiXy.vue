@@ -18,6 +18,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseRandomButton from "../BaseRandomButton.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -822,6 +823,7 @@ function randomizeData() {
             <div class="w-full flex justify-center mt-6">
                 <BaseViewExampleButton link="/examples/categories#vue-ui-xy"/>
             </div>
+            <Rater itemId="vue_ui_xy" />
         </div>
 
 

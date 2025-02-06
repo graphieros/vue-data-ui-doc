@@ -17,6 +17,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import Rater from "../Rater.vue";
 
 const mainConfig = useConfig()
 
@@ -271,6 +272,8 @@ function randomizeData() {
         <div class="w-full flex justify-center mt-6">
             <BaseViewExampleButton link="/examples/categories#vue-ui-wheel"/>
         </div>
+
+        <Rater itemId="vue_ui_wheel" />
 
         <Box showEmits showSlots showThemes showResponsive schema="vue_ui_wheel" signInfo="positiveOnly">
             <template #tab0>
