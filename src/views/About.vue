@@ -13,18 +13,18 @@ const translations = computed(() => {
 
 const contributors = ref(null)
 
-onMounted(() => {
-  window.scrollTo(0,0)
-  fetch('https://api.github.com/repos/graphieros/vue-data-ui/contributors').then(response => {
-    if(!response.ok) {
-      throw new Error('Meh')
-    }
-    return response.json()
-  }).then(data => {
-    contributors.value = data;
-    console.log({data})
-  })
-})
+// onMounted(() => {
+//   window.scrollTo(0,0)
+//   fetch('https://api.github.com/repos/graphieros/vue-data-ui/contributors').then(response => {
+//     if(!response.ok) {
+//       throw new Error('Meh')
+//     }
+//     return response.json()
+//   }).then(data => {
+//     contributors.value = data;
+//     console.log({data})
+//   })
+// })
 
 // https://api.github.com/repos/graphieros/vue-data-ui/contributors
 
