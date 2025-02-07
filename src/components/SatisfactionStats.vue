@@ -9,6 +9,39 @@ const stats = computed(() => {
     return store.ratings.breakdown;
 })
 
+// const stats = ref([
+//         {
+//             "id": 39,
+//             "rating": 1,
+//             "item_id": "vue_ui_kpi",
+//             "created_at": "2025-02-07 06:16:10"
+//         },
+//         {
+//             "id": 38,
+//             "rating": 5,
+//             "item_id": "vue_ui_kpi",
+//             "created_at": "2025-02-07 03:39:02"
+//         },
+//         {
+//             "id": 37,
+//             "rating": 5,
+//             "item_id": "vue_ui_donut",
+//             "created_at": "2025-02-07 03:29:25"
+//         },
+//         {
+//             "id": 35,
+//             "rating": 5,
+//             "item_id": "vue_ui_donut_evolution",
+//             "created_at": "2025-02-06 11:41:28"
+//         },
+//         {
+//             "id": 34,
+//             "rating": 5,
+//             "item_id": "vue_ui_table_sparkline",
+//             "created_at": "2025-02-06 09:00:54"
+//         }
+//     ])
+
 const ratings = computed(() => {
     const groups = Object.groupBy(stats.value, ({ item_id }) => item_id);
     return Object.keys(groups).map((component) => {
@@ -176,6 +209,79 @@ const xyConfig = computed(() => {
     }
 })
 
+const verticalBarDataset = computed(() => {
+    return ratings.value.map(r => {
+        return {
+            name: `${r.name} (${r.raters})`,
+            value: r.average,
+            color: '#1F77B4'
+        }
+    })
+})
+
+const verticalBarConfig = computed(() => {
+    return {
+        style: {
+            chart: {
+                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                layout: {
+                    bars: {
+                        borderRadius: 1,
+                        dataLabels: {
+                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                            offsetX: 8,
+                            percentage: {
+                                show: false
+                            },
+                            value: {
+                                suffix: ' ⭐'
+                            }
+                        },
+                        height: 24,
+                        nameLabels: {
+                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                            offsetX: -12,
+                            fontSize: 12
+                        }
+                    },
+                    highlighter: {
+                        color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
+                    },
+                    separators: {
+                        show: false
+                    }
+                },
+                legend: {
+                    show: false
+                },
+                title: {
+                    text: 'Component satisfaction ranking',
+                    color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
+                    textAlign: 'center',
+                    subtitle: {
+                        text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
+                        color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
+                    }
+                },
+                tooltip: {
+                    showPercentage: false,
+                    suffix: ' ⭐',
+                    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                    backgroundOpacity: 20,
+                    borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                }
+            }
+        },
+        userOptions: {
+            buttons: {
+                table: false
+            }
+        }
+    }
+})
+
 function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
@@ -225,6 +331,13 @@ function capitalizeFirstLetter(val) {
         <VueUiXy
             :dataset="xyDataset"
             :config="xyConfig"
+        />
+    </div>
+
+    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#F3F4F6] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueUiVerticalBar
+            :dataset="verticalBarDataset"
+            :config="verticalBarConfig"
         />
     </div>
 </template>

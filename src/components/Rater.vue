@@ -59,25 +59,6 @@ function submitRating() {
     });
 }
 
-// async function fetchRatings() {
-//     try {
-//         const response = await fetch('https://vue-data-ui.graphieros.com/api/get_ratings.php');
-//         if (!response.ok) {
-//             console.warn('Network response was not ok');
-//             return;
-//         }
-//         const data = await response.json();
-//         if (data.error) {
-//             console.error(data.error);
-//             return;
-//         }
-//         console.log('Average Rating:', data.average);
-//         console.log('Ratings:', data.ratings);
-//     } catch (error) {
-//         console.error('Fetch error:', error);
-//     }
-// }
-
 const config = computed(() => {
     return {
         type: 'star',
