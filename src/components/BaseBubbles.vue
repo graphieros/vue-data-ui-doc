@@ -8,7 +8,8 @@ const props = defineProps({
     g: { type: Number, default: 255 },
     b: { type: Number, default: 255 },
     randomColor: { type: Boolean, default: false },
-    stroke: { type: String, default: '#FFFFFF20' }
+    stroke: { type: String, default: '#FFFFFF20' },
+    palette: { type: String, default: 'concrete' }
 })
 
 const svgWidth = 500;
@@ -19,7 +20,7 @@ const bubbles = ref([]);
 
 const random = (min, max) => Math.random() * (max - min) + min;
 
-const palette = getPalette('concrete');
+const palette = getPalette(props.palette);
 
 const createBubble = () => {
     const id = Math.random().toString(36).substring(7);

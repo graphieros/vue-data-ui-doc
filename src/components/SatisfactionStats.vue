@@ -122,11 +122,13 @@ const xyDataset = computed(() => {
             type: 'line',
             scaleMin: 0,
             scaleMax: 5,
+            scaleSteps: 5
         },
         { 
             name: 'Ratings per day',
             series: history.value.ratingsPerDay,
             type: 'bar',
+            scaleSteps: 5
         },
     ]
 })

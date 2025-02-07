@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
+import BaseBubbles from "./BaseBubbles.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -18,6 +19,8 @@ const props = defineProps({
 
 function submitRating() {
     const apiUrl = 'https://vue-data-ui.graphieros.com/api/rate.php';
+
+    confirmed.value = true;
 
     if (rating.value < 1 || rating.value > 5) {
         console.warn("Please provide a rating between 1 and 5.");
@@ -84,6 +87,7 @@ const rated = ref(false);
 const rating = ref(3);
 const done = ref(false);
 const visible = ref(true);
+const confirmed = ref(false);
 
 function setRating(v) {
     rated.value = true;
@@ -99,15 +103,15 @@ const alreadyRated = computed(() => {
 const labels = computed(() => {
     return {
         r8: {
-            en: 'Post your rating',
-            fr: 'Donnez votre note',
-            pt: 'Faça seu comentário',
-            de: 'Geben Sie Ihre Bewertung ab',
-            zh: '发表你的评分',
-            jp: '評価を投稿してください',
-            es: 'Publica tu calificación',
-            ko: '평점을 게시하세요',
-            ar: 'ارفع تقييمك'
+            en: "Submit",
+            fr: "Envoyer",       
+            pt: "Enviar",        
+            de: "Absenden",      
+            zh: "提交",           
+            jp: "送信",           
+            es: "Enviar",        
+            ko: "제출",           
+            ar: "إرسال"           
         },
         thx: {
             en: 'Thank you!',
@@ -121,15 +125,15 @@ const labels = computed(() => {
             ar: 'شُكرًا لك!'
         },
         title: {
-            en: 'Rate this component',
-            fr: 'Notez ce composant',
-            pt: 'Avalie este componente',
-            de: 'Beurteilen Sie diesen Komponenten',
-            zh: '请评价这个组件。',
-            jp: 'このコンポーネントを評価してください。',
-            es: 'Califica este componente',
-            ko: '이 컴포넌트를 평가해 주세요.',
-            ar: 'قيم هذا المكون'
+            en: "Rate this component!",
+            fr: "Évaluez ce composant !",
+            pt: "Avalie este componente!",
+            de: "Bewerten Sie diese Komponente!",
+            zh: "为此组件评分！",
+            jp: "このコンポーネントを評価してください！",
+            es: "¡Califica este componente!",
+            ko: "이 컴포넌트를 평가하세요!",
+            ar: "قيّم هذا المكون!"
         }
     }
 })
@@ -138,7 +142,7 @@ const labels = computed(() => {
 
 <template>
     <Transition name="fade">
-        <div v-if="!alreadyRated && visible" class="w-fit flex flex-col justify-center place-items-center gap-3 mx-auto my-4 bg-[#FAFAFA] dark:bg-[#FFFFFF10] p-4 rounded-md shadow-md">
+        <div v-if="!alreadyRated && visible" class="relative w-fit flex flex-col justify-center place-items-center gap-3 mx-auto my-4 bg-[#FAFAFA] dark:bg-[#FFFFFF10] p-4 rounded-md shadow-md">
             <VueUiRating
                 :dataset="{ rating }"
                 :config="config"
@@ -166,6 +170,7 @@ const labels = computed(() => {
             >
                 {{ done ? labels.thx[store.lang] : labels.r8[store.lang] }}
             </button>
+            <BaseBubbles v-if="confirmed" class="absolute" random-color palette="celebration" />
         </div>
     </Transition>
 </template>
