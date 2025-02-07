@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.0",
+    "date": "2025-02-07",
+    "updates": [
+      {
+        "component": "Technical release",
+        "description": "Vue version updated to 3.5.13",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.5.9",
     "date": "2025-02-04",
     "updates": [
