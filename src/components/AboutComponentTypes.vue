@@ -1,39 +1,42 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useMainStore } from "../stores";
+import colorBridge from "color-bridge";
+
+const { utils } = colorBridge();
+
+const { lightenHexColor, shiftHue } = utils();
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
 
-const dataset = computed(() => {
-  return [
+const dataset = ref([
   {
     name: "Charts",
-    values: [36],
-    color: '#2A2A2A'
+    values: [37],
+    color: shiftHue({ hexColor: '#1f77b4', force: 0.05})
   },
   {
     name: "Utilities",
     values: [10],
-    color: '#4A4A4A'
+    color: shiftHue({ hexColor: '#1f77b4', force: 0})
   },
   {
     name: 'Mini charts',
     values: [10],
-    color: '#6A6A6A'
+    color: shiftHue({ hexColor: '#1f77b4', force: -0.1})
   },
   {
     name: "Tables",
     values: [4],
-    color: '#8A8A8A'
+    color: shiftHue({ hexColor: '#1f77b4', force: -0.15})
   },
   {
     name: "Rating",
     values: [2],
-    color: '#A1A1A1'
+    color: shiftHue({ hexColor: '#1f77b4', force: -0.2})
   },
-  ]
-});
+])
 
 /**
  * This is the default config.
@@ -57,7 +60,7 @@ const config = computed(() => {
       chart: {
         useGradient: true,
         gradientIntensity: 40,
-        backgroundColor: "transparent",
+        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
         color: "#2D353C",
         layout: {
           labels: {
@@ -90,7 +93,7 @@ const config = computed(() => {
           donut: {
             strokeWidth: 55,
             borderWidth: 1,
-            useShadow: false,
+            useShadow: true,
             shadowColor: "#2D353C",
           },
         },
@@ -149,14 +152,14 @@ const config = computed(() => {
           width="100"
           height="100"
           :x="svg.width / 2 - 45"
-          :y="svg.height / 2 - 40"
+          :y="svg.height / 2 - 35"
           :style="{
             pointerEvents: 'none'
           }"
         >
           <img 
             src="../assets/logo3.png" 
-            alt="10x cat programmers"
+            alt="10x cat programmers ^^"
           >
         </foreignObject>
       </template>

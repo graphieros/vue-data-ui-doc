@@ -136,7 +136,7 @@ const xyDataset = computed(() => {
 const xyConfig = computed(() => {
     return {
         chart: {
-            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
+            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             grid: {
                 labels: {
@@ -199,11 +199,11 @@ const xyConfig = computed(() => {
         table: {
             showSum: false,
             th: {
-                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
+                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
             },
             td: {
-                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
+                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
             },
         }
@@ -224,7 +224,7 @@ const verticalBarConfig = computed(() => {
     return {
         style: {
             chart: {
-                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
+                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                 layout: {
                     bars: {
@@ -293,7 +293,7 @@ function capitalizeFirstLetter(val) {
         User ratings of individual components
     </h1>
     <div class="flex flex-row flex-wrap gap-6" v-if="ratings.length">
-        <div class="w-[150px] p-2 bg-[#F3F4F6] dark:bg-[#2A2A2A] rounded-md shadow-md" v-for="c in ratings">
+        <div class="w-[150px] p-2 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md" v-for="c in ratings">
             <VueUiSparkgauge :dataset="{
                 value: c.average,
                 min: 1,
@@ -328,14 +328,14 @@ function capitalizeFirstLetter(val) {
         </div>
     </div>
 
-    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#F3F4F6] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <VueUiXy
             :dataset="xyDataset"
             :config="xyConfig"
         />
     </div>
 
-    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#F3F4F6] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <VueUiVerticalBar
             :dataset="verticalBarDataset"
             :config="verticalBarConfig"
