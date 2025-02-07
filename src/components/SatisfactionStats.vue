@@ -38,7 +38,7 @@ const stats = computed(() => {
 //             "id": 34,
 //             "rating": 5,
 //             "item_id": "vue_ui_table_sparkline",
-//             "created_at": "2025-02-06 09:00:54"
+//             "created_at": "2025-02-10 09:00:54"
 //         }
 //     ])
 
@@ -101,10 +101,10 @@ const history = computed(() => {
     const dates = fillEmptyDays(Object.keys(groups).toSorted((a, b) => dateToTimestamp(a) - dateToTimestamp(b)))
     
     const ratingsPerDay = dates.map(date => {
-        return groups[date] ? groups[date].length : 0
+        return groups[date] ? groups[date].length : null
     });
     const averagePerDay = dates.map(date => {
-        return groups[date] ? groups[date].map(user => user.rating).reduce((a, b) => a + b, 0) / groups[date].length : 0
+        return groups[date] ? groups[date].map(user => user.rating).reduce((a, b) => a + b, 0) / groups[date].length : null
     })
 
     return {
