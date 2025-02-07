@@ -310,6 +310,13 @@ export default function useCharts() {
                 taxinomy: ['comparisons', 'proportions'],
                 singleTaxinomy: 'proportions'
             },
+            VueUiKpi: {
+                icon: 'kpiBox',
+                link: '/docs#vue-ui-kpi',
+                description: translations.value.docs.tooltips.kpi[store.lang],
+                taxinomy: ['uiTools'],
+                singleTaxinomy: 'uiTools'
+            },
             VueUiAccordion: {
                 icon: 'accordion',
                 link: '/docs#vue-ui-accordion',
@@ -426,22 +433,15 @@ export default function useCharts() {
                 icon: 'smiley',
                 link: '/docs#vue-ui-icon',
                 description: translations.value.docs.tooltips.icon[store.lang],
-                taxinomy: ['uiTool'],
-                singleTaxinomy: 'uiTool'
-            },
-            VueUiKpi: {
-                icon: 'kpiBox',
-                link: '/docs#vue-ui-kpi',
-                description: translations.value.docs.tooltips.kpi[store.lang],
-                taxinomy: ['uiTool'],
-                singleTaxinomy: 'uiTool'
+                taxinomy: ['uiTools'],
+                singleTaxinomy: 'uiTools'
             },
             VueUiMiniLoader: {
                 icon: 'chartWheel',
                 link: '/docs#vue-ui-mini-loader',
                 description: translations.value.docs.tooltips.miniLoader[store.lang],
-                taxinomy: ['uiTool'],
-                singleTaxinomy: 'uiTool'
+                taxinomy: ['uiTools'],
+                singleTaxinomy: 'uiTools'
             },
             VueUiMolecule: {
                 icon: 'chartCluster',
@@ -717,6 +717,7 @@ export default function useCharts() {
 
         return keys.map(key => {
             const components = Object.keys(taxinomy.value).filter(t => taxinomy.value[t].singleTaxinomy === key).map(k => {
+                console.log(k)
                 return {
                     ...taxinomy.value[k],
                     name: k
