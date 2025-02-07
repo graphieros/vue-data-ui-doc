@@ -133,7 +133,6 @@ const xyDataset = computed(() => {
 
 const xyConfig = computed(() => {
     return {
-        showTable: true,
         chart: {
             backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
