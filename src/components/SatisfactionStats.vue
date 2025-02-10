@@ -117,7 +117,7 @@ const history = computed(() => {
 const xyDataset = computed(() => {
     return [
         {
-            name: 'Average rating per day',
+            name: 'Average rating',
             series: history.value.averagePerDay,
             type: 'line',
             scaleMin: 0,
