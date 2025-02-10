@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.2",
+    "date": "2025-02-10",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Ignore null values for line generation",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.1",
     "date": "2025-02-07",
     "updates": [
