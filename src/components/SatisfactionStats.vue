@@ -120,9 +120,11 @@ const xyDataset = computed(() => {
             name: 'Average rating',
             series: history.value.averagePerDay,
             type: 'line',
+            smooth: true,
             scaleMin: 0,
             scaleMax: 5,
-            scaleSteps: 5
+            scaleSteps: 5,
+            suffix: ' ⭐'
         },
         { 
             name: 'Ratings per day',
@@ -140,8 +142,10 @@ const xyConfig = computed(() => {
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             grid: {
                 labels: {
+                    fontSize: 20,
                     yAxis: {
-                        useIndividualScale: true
+                        useIndividualScale: true,
+                        labelWidth: 64,
                     },
                     xAxisLabels: {
                         values: history.value.dates,
@@ -156,7 +160,8 @@ const xyConfig = computed(() => {
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             },
             padding: {
-                bottom: 6
+                bottom: 12,
+                left: 80
             },
             title: {
                 text: 'User ratings history',
@@ -172,7 +177,8 @@ const xyConfig = computed(() => {
                 backgroundOpacity: 20,
                 borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                showPercentage: false
+                showPercentage: false,
+                roundingValue: 1
             },
             userOptions: {
                 buttons: {
@@ -183,6 +189,9 @@ const xyConfig = computed(() => {
                 color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
                 highlightColor: '#1F77B4'
             }
+        },
+        bar: {
+            periodGap: 0.01,
         },
         line: {
             radius: 6,
@@ -313,9 +322,10 @@ function capitalizeFirstLetter(val) {
                     max: '#42d392',
                 },
                 dataLabel: {
-                    fontSize: 42,
+                    fontSize: 28,
                     rounding: 1,
                     offsetY: -3,
+                    suffix: ' ⭐'
                 },
                 gutter: {
                     color: isDarkMode ? '#3A3A3A' : '#CCCCCC',
