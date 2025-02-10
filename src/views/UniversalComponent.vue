@@ -3,8 +3,7 @@
 import { useMainStore } from "../stores";
 import { useUniversalStore } from "../stores/universal"
 import SideMenu from "../components/SideMenu.vue";
-import Prism from "prismjs"
-import "prismjs/themes/prism-okaidia.css"
+import CodeParser from "../components/customization/CodeParser.vue";
 
 import sdk from '@stackblitz/sdk'
 
@@ -33,6 +32,28 @@ onMounted(() => {
     function toggleMenu(state) {
         isOpen.value = state;
     }
+
+    const setupStart = ref(`<script setup>`)
+    const setupCode = ref(`import { VueDataUi } from "vue-data-ui";
+
+const lineConfig = ref({}); // A config corresponding to VueUiXy specs
+const donutConfig  = ref({}); // A config corresponding to VueUiDonut specs    
+const lineDataset = ref([]); // A dataset corresponding to VueUiXy specs
+const donutDataset = ref([]); // A dataset corresponding to VueUiDonut specs`)
+    const setupEnd = ref(`${'<'}/script>`)
+    const templateCode = ref(`<template>
+    <VueDataUi
+        component="VueUiXy"
+        :dataset="lineDataset"
+        :config="lineConfig"
+    />
+
+    <VueDataUi
+        component="VueUiDonut"
+        :dataset="donutDataset"
+        :config="donutConfig"
+    />
+</template>`)
     
 </script>
 
@@ -52,38 +73,12 @@ onMounted(() => {
         </p>
 
         <div class="mx-auto mt-6 bg-[#1A1A1A] p-4 rounded-md">
-            <code class="language-javascript" style="white-space: pre-wrap; background: #1A1A1A !important">
-<pre>
-    &lt;script setup&gt;
-        import { VueDataUi } from "vue-data-ui";
-        
-        const lineConfig = ref({}); // A config corresponding to VueUiXy specs
-        const donutConfig  = ref({}); // A config corresponding to VueUiDonut specs
-        
-        const lineDataset = ref([]); // A dataset corresponding to VueUiXy specs
-        const donutDataset = ref([]); // A dataset corresponding to VueUiDonut specs
-    &lt;/script&gt;
-</pre>
-            </code>
-        </div>
-        <div class="mx-auto mb-6 bg-[#1A1A1A] p-4 rounded-md">
-            <code class="language-html" style="white-space: pre-wrap; background: #1A1A1A !important">
-<pre>
-    &lt;template&gt;
-        &lt;VueDataUi
-            component="VueUiXy"
-            :dataset="lineDataset"
-            :config="lineConfig"
-        /&gt;
 
-        &lt;VueDataUi
-            component="VueUiDonut"
-            :dataset="donutDataset"
-            :config="donutConfig"
-        /&gt;
-    &lt;/template&gt;
-</pre>
-            </code>
+        <CodeParser :content="setupStart" language="html" :withCopy="false" borderRadius="none"/>
+        <CodeParser :content="setupCode" language="javascript" :withCopy="false" borderRadius="none"/>
+        <CodeParser :content="setupEnd" language="html" :withCopy="false" borderRadius="none"/>
+        <CodeParser :content="templateCode" language="html" :withCopy="false" borderRadius="none"/>
+
         </div>
         <div 
             id="stackblitz"
