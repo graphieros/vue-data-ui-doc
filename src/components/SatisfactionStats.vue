@@ -88,6 +88,22 @@ function dateToTimestamp(dateStr) {
     return Math.floor(date.getTime() / 1000);
 }
 
+function countRatings(ratingsObj) {
+    let result = {}; // Initialize an empty object that will store the results.
+    
+    // Iterate over each possible key from 1 to 5.
+    for (let i = 1; i <= 5; i++) {
+        // Check if the current key exists in the input object.
+        if (ratingsObj[i]) {
+            result[i] = ratingsObj[i].length; // Assign count of elements to this key.
+        } else {
+            result[i] = 0; // If the key does not exist, assign a value of 0.
+        }
+    }
+    
+    return result; // Return the newly constructed object with lengths or zeros as values.
+}
+
 const history = computed(() => {
     const groups = Object.groupBy(stats.value.map(s => {
         const created_at = s.created_at.split(' ')[0];
@@ -107,10 +123,13 @@ const history = computed(() => {
         return groups[date] ? groups[date].map(user => user.rating).reduce((a, b) => a + b, 0) / groups[date].length : null
     })
 
+    const ratingBreakdown = countRatings(Object.groupBy(stats.value, ({ rating }) =>  rating));
+
     return {
         dates,
         ratingsPerDay,
-        averagePerDay
+        averagePerDay,
+        ratingBreakdown
     }
 });
 
@@ -349,6 +368,37 @@ function capitalizeFirstLetter(val) {
         <VueUiVerticalBar
             :dataset="verticalBarDataset"
             :config="verticalBarConfig"
+        />
+    </div>
+
+    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueUiRating
+            :dataset="{
+                rating: history.ratingBreakdown
+            }"
+            :config="{
+                type: 'star',
+                readonly: true,
+                style: {
+                    backgroundColor: 'transparent',
+                    title: {
+                        text: 'Ratings breakdown',
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                        fontSize: 20,
+                        bold: false,
+                        offsetY: 40
+                    },
+                    star: {
+                        inactiveColor: isDarkMode ? '#3A3A3A': '#6A6A6A'
+                    },
+                    tooltip: {
+                        backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                        borderColor: isDarkMode ? '#fdd663' : '#E1E5E8',
+                        offsetY: 12,
+                    }
+                }
+            }"
         />
     </div>
 </template>
