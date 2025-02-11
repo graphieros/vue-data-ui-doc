@@ -89,19 +89,17 @@ function dateToTimestamp(dateStr) {
 }
 
 function countRatings(ratingsObj) {
-    let result = {}; // Initialize an empty object that will store the results.
+    let result = {};
     
-    // Iterate over each possible key from 1 to 5.
     for (let i = 1; i <= 5; i++) {
-        // Check if the current key exists in the input object.
         if (ratingsObj[i]) {
-            result[i] = ratingsObj[i].length; // Assign count of elements to this key.
+            result[i] = ratingsObj[i].length;
         } else {
-            result[i] = 0; // If the key does not exist, assign a value of 0.
+            result[i] = 0;
         }
     }
     
-    return result; // Return the newly constructed object with lengths or zeros as values.
+    return result;
 }
 
 const history = computed(() => {
@@ -132,6 +130,68 @@ const history = computed(() => {
         ratingBreakdown
     }
 });
+
+const ratingBreakdownBarDataset = computed(() => {
+    const source = Object.keys(history.value.ratingBreakdown)
+    const bd = source.map(key => {
+        return history.value.ratingBreakdown[key] || 0
+    })
+    return [
+        {
+            name: 'Number of votes',
+            series: bd,
+            type: 'bar',
+            dataLabels: true
+        }
+    ]
+})
+
+const ratingBreakdownBarConfig = computed(() => {
+    return {
+        chart: {
+            backgroundColor: 'transparent',
+            grid: {
+                labels: {
+                    show: false,
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    xAxisLabels: {
+                        values: ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'],
+                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        fontSize: 24
+                    },
+                    yAxis: {
+                        showBaseline: false,
+                    }
+                },
+                stroke: isDarkMode.value ? '#6A6A6A' : '#CCCCCC'
+            },
+            highlighter: {
+                color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
+            },
+            labels: {
+                fontSize: 28
+            },
+            legend: {
+                show: false,
+            },
+            tooltip: {
+                backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                backgroundOpacity: 20,
+                borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                showPercentage: false,
+            },
+            userOptions: { show: false }
+        },
+        bar: {
+            labels: {
+                show: true,
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                offsetY: -12
+            }
+        }
+    }
+})
 
 const xyDataset = computed(() => {
     return [
@@ -389,7 +449,7 @@ function capitalizeFirstLetter(val) {
                         offsetY: 40
                     },
                     star: {
-                        inactiveColor: isDarkMode ? '#3A3A3A': '#6A6A6A'
+                        inactiveColor: isDarkMode ? '#3A3A3A': '#FFFFFF'
                     },
                     tooltip: {
                         backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
@@ -399,6 +459,10 @@ function capitalizeFirstLetter(val) {
                     }
                 }
             }"
+        />
+        <VueUiXy
+            :dataset="ratingBreakdownBarDataset"
+            :config="ratingBreakdownBarConfig"
         />
     </div>
 </template>
