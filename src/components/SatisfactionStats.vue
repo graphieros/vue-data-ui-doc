@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
+import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -46,9 +47,11 @@ const ratings = computed(() => {
     const groups = Object.groupBy(stats.value, ({ item_id }) => item_id);
     return Object.keys(groups).map((component) => {
         const raters = groups[component].length;
+        const breakdown = countRatings(Object.groupBy(groups[component], ({ rating }) => rating));
         return {
             name: component,
             raters,
+            breakdown,
             average:
                 groups[component].map((r) => r.rating).reduce((a, b) => a + b, 0) /
                 raters || 0,
@@ -145,6 +148,21 @@ const ratingBreakdownBarDataset = computed(() => {
         }
     ]
 })
+
+function makeRatingBreakdown(ratingBreakdown, name, type="bar") {
+    const source = Object.keys(ratingBreakdown);
+    const series = source.map(key => {
+        return ratingBreakdown[key] || 0
+    })
+    return [
+        {
+            name,
+            series,
+            type,
+            dataLabels: true
+        }
+    ]
+}
 
 const ratingBreakdownBarConfig = computed(() => {
     return {
@@ -377,12 +395,13 @@ function capitalizeFirstLetter(val) {
 </script>
 
 <template>
-    <h1 v-if="ratings.length" class="my-6 text-xl">
+        <h1 v-if="ratings.length" class="my-6 text-xl">
         User ratings of individual components
     </h1>
-    <div class="flex flex-row flex-wrap gap-6" v-if="ratings.length">
-        <div class="w-[150px] p-2 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md" v-for="c in ratings">
-            <VueUiSparkgauge :dataset="{
+    <div class="flex flex-row flex-wrap gap-6 z-10" v-if="ratings.length">
+        <ButtonSatisfactionBreakdown 
+            v-for="c in ratings"
+            :dataset-gauge="{
                 value: c.average,
                 min: 1,
                 max: 5,
@@ -392,29 +411,62 @@ function capitalizeFirstLetter(val) {
                         return capitalizeFirstLetter(w);
                     })
                     .join('')} (${c.raters})`,
-            }" :config="{
-            style: {
-                background: 'transparent',
-                basePosition: 64,
-                colors: {
-                    min: '#5f8aee',
-                    max: '#42d392',
+            }"
+            :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')"
+            :config-gauge="{
+                style: {
+                    background: 'transparent',
+                    basePosition: 64,
+                    colors: {
+                        min: '#5f8aee',
+                        max: '#42d392',
+                    },
+                    dataLabel: {
+                        fontSize: 28,
+                        rounding: 1,
+                        offsetY: -3,
+                        suffix: ' ⭐'
+                    },
+                    gutter: {
+                        color: isDarkMode ? '#3A3A3A' : '#CCCCCC',
+                    },
+                    title: {
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                    },
                 },
-                dataLabel: {
-                    fontSize: 28,
-                    rounding: 1,
-                    offsetY: -3,
-                    suffix: ' ⭐'
+            }"
+            :config-xy="{
+                ...ratingBreakdownBarConfig,
+                chart: {
+                    ...ratingBreakdownBarConfig.chart,
+                    grid: {
+                        ...ratingBreakdownBarConfig.chart.grid,
+                        labels: {
+                            ...ratingBreakdownBarConfig.chart.grid.labels,
+                            xAxisLabels: {
+                                ...ratingBreakdownBarConfig.chart.grid.labels.xAxisLabels,
+                                values: isDarkMode ? ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'] : ['★', '★★', '★★★', '★★★★', '★★★★★'],
+                                fontSize: isDarkMode ? 24: 36,
+                                yOffset: isDarkMode ? 4 : -4
+                            }
+                        }
+                    },
+                    labels: {
+                        fontSize: 64
+                    },
+                    padding: {
+                        top: 100
+                    }
                 },
-                gutter: {
-                    color: isDarkMode ? '#3A3A3A' : '#CCCCCC',
-                },
-                title: {
-                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                },
-            },
-        }" />
-        </div>
+                bar: {
+                    ...ratingBreakdownBarConfig.bar,
+                    labels: {
+                        ...ratingBreakdownBarConfig.bar.labels,
+                        offsetY: -36
+                    }
+                }
+            }"
+        />
     </div>
 
     <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
