@@ -1943,7 +1943,7 @@ const dogFood = ref({
                   </VueDataUi>
                 </div>
 
-                <div class="max-w-[400px] mx-auto my-6 flex flex-col gap-2">
+                <!-- <div class="max-w-[400px] mx-auto my-6 flex flex-col gap-2">
                   Overall trend
                   <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
                     <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="trendConfig">
@@ -1954,7 +1954,7 @@ const dogFood = ref({
                       </template>
                     </VueDataUi>
                   </div>
-                </div>
+                </div> -->
                 <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
                   <VueUiSparkline :dataset="versionsReleases" :config="sparklineConfigForReleases">
                     <template #source>
@@ -1965,7 +1965,7 @@ const dogFood = ref({
                   </VueUiSparkline>
                   <div style="height: 48px"/>
                   <div class="w-full" v-if="showWC">
-                    <VueDataUi v-if="done" component="VueUiCirclePack" :dataset="wordCloudDataset" :config="{
+                    <!-- <VueDataUi v-if="done" component="VueUiCirclePack" :dataset="wordCloudDataset" :config="{
                       theme: isDarkMode ? 'celebrationNight' : 'celebration',
                       style: {
                         chart: {
@@ -1982,7 +1982,7 @@ const dogFood = ref({
                           }
                         }
                       }
-                    }"/>
+                    }"/> -->
                     <VueDataUi v-if="done" component="VueUiWordCloud" :dataset="wordCloudDataset" :config="wordCloudConfig">
                       <template #source>
                         <div class="text-xs text-gray-500 text-right mt-3 pl-2">
