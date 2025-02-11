@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
+import CodeParser from "./CodeParser.vue";
+import ConfirmCopy from "../ConfirmCopy.vue";
 
 const store = useMainStore();
 
@@ -410,6 +412,33 @@ const comment2 = ref({
   ko: "또는 PDF 및 PNG 다운로드에서만 표시되도록 설정하세요.",
   ar: "أو اجعله مرئيًا فقط على تنزيل PDF وPNG:",
 });
+
+const codeWatermarkAlways = ref(`<!-- ${comment1.value[store.lang]} -->
+<VueUiDonut
+  :dataset="dataset"
+  :config="config"
+>
+    <template #watermark>
+        <div class="text-gray-500 -rotate-12 text-[90px] opacity-30 mx-auto">
+            WATERMARK
+        </div>
+    </template>
+</VueUiDonut>
+`)
+
+const codeWatermarkPrintOnly = ref(`<!-- ${comment2.value[store.lang]} -->
+<VueUiDonut
+  :dataset="dataset"
+  :config="config"
+>
+    <template #watermark="{ isPrinting }">
+        <div v-if="isPrinting " class="text-gray-500 -rotate-12 text-[90px] opacity-30 mx-auto">
+            WATERMARK
+        </div>
+    </template>
+</VueUiDonut>
+`)
+
 </script>
 
 <template>
@@ -431,31 +460,9 @@ const comment2 = ref({
             </div>
           </template>
         </VueUiDonut>
-        <div
-          class="my-6 w-full bg-[#2A2A2A] text-gray-300 p-4 rounded-md text-xs overflow-auto"
-        >
-          <pre>
-<span class="text-gray-400 dark:text-app-green">// <span dir="auto">{{ comment1[store.lang] }}</span></span>
-<code>
-    &lt;VueUiDonut :dataset="dataset" :config="config"&gt;
-        &lt;template #watermark&gt;
-            &lt;div class="text-gray-500 -rotate-12 text-[90px] opacity-30 mx-auto"&gt;
-                WATERMARK
-            &lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiDonut&gt;
-</code>
-<span class="text-gray-400 dark:text-app-green">// <span dir="auto">{{ comment2[store.lang] }}</span></span>
-<code>
-    &lt;VueUiDonut :dataset="dataset" :config="config"&gt;
-        &lt;template #watermark="{ <span class="text-app-blue">isPrinting</span> }"&gt;
-            &lt;div v-if="<span class="text-app-blue">isPrinting</span> " class="text-gray-500 -rotate-12 text-[90px] opacity-30 mx-auto"&gt;
-                WATERMARK
-            &lt;/div&gt;
-        &lt;/template&gt;
-    &lt;/VueUiDonut&gt;
-</code>
-</pre>
+        <div class="my-6 w-full bg-[#2A2A2A] text-gray-300 p-4 rounded-md text-xs overflow-auto">
+          <CodeParser :content="codeWatermarkAlways" language="html" @copy="store.copy()"/>
+          <CodeParser :content="codeWatermarkPrintOnly" language="html" @copy="store.copy()"/>
         </div>
       </div>
     </template>
@@ -463,4 +470,7 @@ const comment2 = ref({
       <BaseSpinner />
     </template>
   </Suspense>
+  <ConfirmCopy/>
 </template>
+
+
