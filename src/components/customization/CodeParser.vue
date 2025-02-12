@@ -27,6 +27,14 @@ const props = defineProps({
     borderRadius: {
         type: String,
         default: '0.3rem'
+    },
+    fontSize: {
+        type: String,
+        default: '0.8rem'
+    },
+    lineHeight: {
+        type: String,
+        default: '1.4rem'
     }
 });
 
@@ -35,7 +43,8 @@ const emit = defineEmits(['copy']);
 const config = computed(() => {
     return {
         withLineNumbers: false,
-        fontSize: '0.8rem',
+        fontSize: props.fontSize,
+        lineHeight: props.lineHeight,
         title: props.title,
         withCopy: props.withCopy,
         borderRadius: props.borderRadius
@@ -47,6 +56,11 @@ const config = computed(() => {
     <div class="relative" :style="{
         pointerEvents: noPointerEvents ? 'none' : 'all'
     }">
-        <VueHiCode :content="content" :language="language" v-bind="config" @copy="emit('copy')"/>
+        <VueHiCode 
+            :content="content" 
+            :language="language" 
+            v-bind="config" 
+            @copy="emit('copy')"
+        />
     </div>
 </template>

@@ -14,6 +14,8 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import Rater from "../Rater.vue";
+import CodeParser from "../customization/CodeParser.vue";
+import { jsonToJsObject, copyCode } from "../maker/lib";
 
 const mainConfig = useConfig()
 
@@ -377,6 +379,149 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const datasetSnippets = ref({
+    longArray: `const dataset = ref([1, 2, 3, 5, 8, 13, 21, 55, 89]);`,
+    shortArray: `const dataset = ref([1, 2, -3, 5, 8]);`,
+    lines: `const dataset = ref([
+    {
+        name: 'Serie1',
+        values: [1, 2, 3, 2, 3, 4, 3, 4, 5]
+    },
+    {
+        name: 'Serie2',
+        values: [5, 6, 7, 6, 7, 8, 7, 8, 9]
+    },
+    {
+        name: 'Serie3',
+        values: [1, 2, 3, 5, 8, 13, 21, 13, 8]
+    },
+])`,
+    donut: `const dataset = ref([
+    { name: 'Serie1', value: 10 },
+    { name: 'Serie2', value: 20 },
+    { name: 'Serie3', value: 5 },
+    { name: 'Serie4', value: 2 },
+    { name: 'Serie5', value: 1 },
+])`
+})
+
+const componentSnippets = computed(() => {
+    return {
+    longArray: {
+        open: '<script setup>',
+        close: `${'<'}/script>`,
+        js: `import { ref } from "vue"
+import { VueUiQuickChart } from "vue-data-ui";
+import "vue-data-ui/style.css";
+
+const dataset = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89]);
+
+const config = ref(${jsonToJsObject(isDarkMode.value ? mutableConfigDarkMode.value : mutableConfig.value)});
+        `,
+        html: `<template>
+    <div style="width: 600px">
+        <VueUiQuickChart 
+            :dataset="dataset" 
+            :config="config" 
+        />
+    </div>
+</template>
+    `
+    },
+    shortArray: {
+        open: '<script setup>',
+        close: `${'<'}/script>`,
+        js: `import { ref } from "vue"
+import { VueUiQuickChart } from "vue-data-ui";
+import "vue-data-ui/style.css";
+
+const dataset = ref([1, 2, -3, 5, 8]);
+
+const config = ref(${jsonToJsObject(isDarkMode.value ? mutableConfigDarkMode.value : mutableConfig.value)});
+        `,
+        html: `<template>
+    <div style="width: 600px">
+        <VueUiQuickChart 
+            :dataset="dataset" 
+            :config="config" 
+        />
+    </div>
+</template>
+    `
+    },
+    lines: {
+        open: '<script setup>',
+        close: `${'<'}/script>`,
+        js: `import { ref } from "vue"
+import { VueUiQuickChart } from "vue-data-ui";
+import "vue-data-ui/style.css";
+
+const dataset = ref([
+    {
+        name: 'Serie1',
+        values: [1, 2, 3, 2, 3, 4, 3, 4, 5]
+    },
+    {
+        name: 'Serie2',
+        values: [5, 6, 7, 6, 7, 8, 7, 8, 9]
+    },
+    {
+        name: 'Serie3',
+        values: [1, 2, 3, 5, 8, 13, 21, 13, 8]
+    },
+]);
+
+const config = ref(${jsonToJsObject(isDarkMode.value ? mutableConfigDarkMode.value : mutableConfig.value)});
+        `,
+        html: `<template>
+    <div style="width: 600px">
+        <VueUiQuickChart 
+            :dataset="dataset" 
+            :config="config" 
+        />
+    </div>
+</template>
+    `
+    },
+    donut: {
+        open: '<script setup>',
+        close: `${'<'}/script>`,
+        js: `import { ref } from "vue"
+import { VueUiQuickChart } from "vue-data-ui";
+import "vue-data-ui/style.css";
+
+const dataset = ref([
+    { name: 'Serie1', value: 10 },
+    { name: 'Serie2', value: 20 },
+    { name: 'Serie3', value: 5 },
+    { name: 'Serie4', value: 2 },
+    { name: 'Serie5', value: 1 },
+]);
+
+const config = ref(${jsonToJsObject(isDarkMode.value ? mutableConfigDarkMode.value : mutableConfig.value)});
+        `,
+        html: `<template>
+    <div style="width: 600px">
+        <VueUiQuickChart 
+            :dataset="dataset" 
+            :config="config" 
+        />
+    </div>
+</template>
+    `
+    },
+}
+})
+
+function copyComponentSnippet(snip) {
+    copyCode(`${snip.open}
+    ${snip.js}
+    ${snip.close}
+
+    ${snip.html}`);
+    store.copy();
+}
+
 </script>
 
 <template>
@@ -415,11 +560,10 @@ const { configCode, showAllConfig } = useConfigCode()
                         </template>
                     </Suspense>
 
-                <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
-                    const dataset = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89])
-                </code>
+                <CodeParser :content="datasetSnippets.longArray" language="javascript" @copy="store.copy()"/>
 
                 <VueDataUi component="VueUiAccordion" :config="{
+                    maxHeight: 20000,
                     head: {
                         useArrowSlot: true,
                         backgroundColor: 'transparent'
@@ -436,25 +580,14 @@ const { configCode, showAllConfig } = useConfigCode()
                         {{ translations.search.viewComponentCode[store.lang] }}
                     </template>
                     <template #content>
-                        <div style="background:transparent" class="p-2">
-                            <code class="text-[10px]">
-                                &lt;script setup&gt;<br>
-                                &nbsp;&nbsp;import { ref } from "vue";<br>
-                                &nbsp;&nbsp;import { VueUiQuickChart } from "vue-data-ui";<br>
-                                &nbsp;&nbsp;import "vue-data-ui/style.css";<br><br>
-                                &nbsp;&nbsp;const dataset = ref([1, 2, 3, 5, 8, 13, 21, 34, 55, 89]);<br><br>
-                                &nbsp;&nbsp;const config = ref({{ isDarkMode ? mutableConfigDarkMode : mutableConfig }});<br>
-                                &lt;/script&gt;<br><br>
-                                
-                                &lt;template&gt;<br>
-                                &nbsp;&nbsp;&lt;div style="width: 500px"&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiQuickChart<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
-                                &nbsp;&nbsp;&lt/div&gt;<br>
-                                &lt;/template&gt;
-                            </code>
+                        <div class="relative">
+                            <button @click="copyComponentSnippet(componentSnippets.longArray)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
+                                <VueUiIcon name="copy" :size="20"/>
+                            </button>
+                            <CodeParser :content="componentSnippets.longArray.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.longArray.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.longArray.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.longArray.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
                         </div>
                     </template>
                 </VueDataUi>                     
@@ -469,10 +602,11 @@ const { configCode, showAllConfig } = useConfigCode()
                         <div class="min-h-[500px]"></div>
                     </template>
                 </Suspense>
-                <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
-                    const dataset = ref([1, 2, -3, 5, 8])
-                </code>
+
+                <CodeParser :content="datasetSnippets.shortArray" language="javascript" @copy="store.copy()"/>
+
                 <VueDataUi component="VueUiAccordion" :config="{
+                    maxHeight: 20000,
                     head: {
                         useArrowSlot: true,
                         backgroundColor: 'transparent'
@@ -489,25 +623,14 @@ const { configCode, showAllConfig } = useConfigCode()
                         {{ translations.search.viewComponentCode[store.lang] }}
                     </template>
                     <template #content>
-                        <div style="background:transparent" class="p-2">
-                            <code class="text-[10px]">
-                                &lt;script setup&gt;<br>
-                                &nbsp;&nbsp;import { ref } from "vue";<br>
-                                &nbsp;&nbsp;import { VueUiQuickChart } from "vue-data-ui";<br>
-                                &nbsp;&nbsp;import "vue-data-ui/style.css";<br><br>
-                                &nbsp;&nbsp;const dataset = ref([1, 2, -3, 5, 8]);<br><br>
-                                &nbsp;&nbsp;const config = ref({{ isDarkMode ? mutableConfigDarkMode : mutableConfig }});<br>
-                                &lt;/script&gt;<br><br>
-                                
-                                &lt;template&gt;<br>
-                                &nbsp;&nbsp;&lt;div style="width: 500px"&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiQuickChart<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
-                                &nbsp;&nbsp;&lt/div&gt;<br>
-                                &lt;/template&gt;
-                            </code>
+                        <div class="relative">
+                            <button @click="copyComponentSnippet(componentSnippets.shortArray)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
+                                <VueUiIcon name="copy" :size="20"/>
+                            </button>
+                            <CodeParser :content="componentSnippets.shortArray.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.shortArray.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.shortArray.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.shortArray.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
                         </div>
                     </template>
                 </VueDataUi>                          
@@ -521,23 +644,11 @@ const { configCode, showAllConfig } = useConfigCode()
                         <div class="min-h-[500px]"></div>
                     </template>
                 </Suspense>
-                <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
-                    const dataset = ref([<br>
-                    &nbsp;&nbsp;{<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie1',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;values: [1, 2, 3, 2, 3, 4, 3, 4, 5]<br>
-                    &nbsp;&nbsp;},<br>
-                    &nbsp;&nbsp;{<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie2',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;values: [5, 6, 7, 6, 7, 8, 7, 8, 9]<br>
-                    &nbsp;&nbsp;},<br>
-                    &nbsp;&nbsp;{<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie3',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;values: [1, 2, 3, 5, 8, 13, 21, 13, 8]<br>
-                    &nbsp;&nbsp;},<br>
-                    ])
-                </code>
+
+                <CodeParser :content="datasetSnippets.lines" language="javascript" @copy="store.copy()"/>
+
                 <VueDataUi component="VueUiAccordion" :config="{
+                    maxHeight: 20000,
                     head: {
                         useArrowSlot: true,
                         backgroundColor: 'transparent'
@@ -554,38 +665,14 @@ const { configCode, showAllConfig } = useConfigCode()
                         {{ translations.search.viewComponentCode[store.lang] }}
                     </template>
                     <template #content>
-                        <div style="background:transparent" class="p-2">
-                            <code class="text-[10px]">
-                                &lt;script setup&gt;<br>
-                                &nbsp;&nbsp;import { ref } from "vue";<br>
-                                &nbsp;&nbsp;import { VueUiQuickChart } from "vue-data-ui";<br>
-                                &nbsp;&nbsp;import "vue-data-ui/style.css";<br><br>
-                                &nbsp;&nbsp;const dataset = ref([<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie1',<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values: [1, 2, 3, 2, 3, 4, 3, 4, 5]<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie2',<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values: [5, 6, 7, 6, 7, 8, 7, 8, 9]<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie3',<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values: [1, 2, 3, 5, 8, 13, 21, 13, 8]<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-                                &nbsp;&nbsp;]);<br><br>
-                                &nbsp;&nbsp;const config = ref({{ isDarkMode ? mutableConfigDarkMode : mutableConfig }});<br>
-                                &lt;/script&gt;<br><br>
-                                
-                                &lt;template&gt;<br>
-                                &nbsp;&nbsp;&lt;div style="width: 500px"&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiQuickChart<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
-                                &nbsp;&nbsp;&lt/div&gt;<br>
-                                &lt;/template&gt;
-                            </code>
+                        <div class="relative">
+                            <button @click="copyComponentSnippet(componentSnippets.lines)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
+                                <VueUiIcon name="copy" :size="20"/>
+                            </button>
+                            <CodeParser :content="componentSnippets.lines.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.lines.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.lines.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.lines.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
                         </div>
                     </template>
                 </VueDataUi>                  
@@ -599,31 +686,11 @@ const { configCode, showAllConfig } = useConfigCode()
                         <div class="min-h-[500px]"></div>
                     </template>
                 </Suspense>
-                <code class="text-xs rounded bg-gray-200 dark:bg-[#1A1A1A] p-2 text-black dark:text-[#A1A1A1]">
-                    const dataset = ref([<br>
-                    &nbsp;&nbsp;{<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie1',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;value: 10<br>
-                    &nbsp;&nbsp;},<br>
-                    &nbsp;&nbsp;{<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie2',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;value: 20<br>
-                    &nbsp;&nbsp;},<br>
-                    &nbsp;&nbsp;{<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie3',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;value: 5<br>
-                    &nbsp;&nbsp;},<br>
-                    &nbsp;&nbsp;{<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie4',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;value: 2<br>
-                    &nbsp;&nbsp;},<br>
-                    &nbsp;&nbsp;{<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie5',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;value: 1<br>
-                    &nbsp;&nbsp;},<br>
-                    ])
-                </code>
+
+                <CodeParser :content="datasetSnippets.donut" language="javascript" @copy="store.copy()"/>
+
                 <VueDataUi component="VueUiAccordion" :config="{
+                    maxHeight: 20000,
                     head: {
                         useArrowSlot: true,
                         backgroundColor: 'transparent'
@@ -640,46 +707,14 @@ const { configCode, showAllConfig } = useConfigCode()
                         {{ translations.search.viewComponentCode[store.lang] }}
                     </template>
                     <template #content>
-                        <div style="background:transparent" class="p-2">
-                            <code class="text-[10px]">
-                                &lt;script setup&gt;<br>
-                                &nbsp;&nbsp;import { ref } from "vue";<br>
-                                &nbsp;&nbsp;import { VueUiQuickChart } from "vue-data-ui";<br>
-                                &nbsp;&nbsp;import "vue-data-ui/style.css";<br><br>
-                                &nbsp;&nbsp;const dataset = ref([<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie1',<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 10<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie2',<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 20<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie3',<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 5<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie4',<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 2<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Serie5',<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 1<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-                                &nbsp;&nbsp;])<br><br>
-                                &nbsp;&nbsp;const config = ref({{ isDarkMode ? mutableConfigDarkMode : mutableConfig }});<br>
-                                &lt;/script&gt;<br><br>
-                                
-                                &lt;template&gt;<br>
-                                &nbsp;&nbsp;&lt;div style="width: 500px"&gt;<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiQuickChart<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dataset="dataset"<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:config="config"<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
-                                &nbsp;&nbsp;&lt/div&gt;<br>
-                                &lt;/template&gt;
-                            </code>
+                        <div class="relative">
+                            <button @click="copyComponentSnippet(componentSnippets.donut)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
+                                <VueUiIcon name="copy" :size="20"/>
+                            </button>
+                            <CodeParser :content="componentSnippets.donut.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.donut.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.donut.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            <CodeParser :content="componentSnippets.donut.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
                         </div>
                     </template>
                 </VueDataUi>                         
