@@ -758,6 +758,28 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    layerUnder: {
+                        en: "Use this slot to customize rating units on their under layer.",
+                        fr: "Utilisez cet emplacement pour personnaliser les unités de notation sur leur couche inférieure.",
+                        pt: "Use este slot para personalizar as unidades de avaliação na camada inferior.",
+                        de: "Verwenden Sie diesen Slot, um Bewertungseinheiten in der unteren Ebene anzupassen.",
+                        zh: "使用此插槽自定义评分单元的下层。",
+                        jp: "このスロットを使用して、評価単位の下層をカスタマイズします。",
+                        es: "Usa este espacio para personalizar las unidades de calificación en su capa inferior.",
+                        ko: "이 슬롯을 사용하여 평가 단위의 하위 레이어를 사용자 지정하세요.",
+                        ar: "استخدم هذه الفتحة لتخصيص وحدات التقييم على الطبقة السفلية."
+                    },
+                    layerAbove: {
+                        en: "Use this slot to customize rating units on their above layer.",
+                        fr: "Utilisez cet emplacement pour personnaliser les unités de notation sur leur couche supérieure.",
+                        pt: "Use este slot para personalizar as unidades de avaliação na camada superior.",
+                        de: "Verwenden Sie diesen Slot, um Bewertungseinheiten in der oberen Ebene anzupassen.",
+                        zh: "使用此插槽自定义评分单元的上层。",
+                        jp: "このスロットを使用して、評価単位の上層をカスタマイズします。",
+                        es: "Usa este espacio para personalizar las unidades de calificación en su capa superior.",
+                        ko: "이 슬롯을 사용하여 평가 단위의 상위 레이어를 사용자 지정하세요.",
+                        ar: "استخدم هذه الفتحة لتخصيص وحدات التقييم على الطبقة العلوية."
+                    },
                     zoomLabel: {
                         en: "Use this slot to customize the content of the zoom label",
                         fr: "Utilisez cet emplacement pour personnaliser le contenu de l'étiquette de zoom",

@@ -330,7 +330,41 @@ const items = computed(() => {
             </template>
         </${props.componentName}>
             `
-        }
+        },
+        {
+            names: ['layer-under'],
+            description: translations.value.slots.layerUnder[store.lang],
+            snippet:`
+        <${props.componentName} :dataset="dataset" :config="config">
+            <template #layer-under="{ value, size, focusedValue }">
+                <svg viewBox="0 0 10 10" :style="{ overflow: 'visible' }">
+                    <path v-if="value === 1" :stroke="focusedValue === value ? '#6A6A6A' : '#CCCCCC'" stroke-linecap="round" d="M 0 5 L 10 4 L 10 6 L 0 5 Z" fill="#CCCCCC"/>
+                    <path v-if="value === 2" :stroke="focusedValue === value ? '#6A6A6A' : '#CCCCCC'" stroke-linecap="round" d="M 0 4 L 10 3 L 10 7 L 0 6 Z" fill="#CCCCCC"/>
+                    <path v-if="value === 3" :stroke="focusedValue === value ? '#6A6A6A' : '#CCCCCC'" stroke-linecap="round" d="M 0 3 L 10 2 L 10 8 L 0 7 Z" fill="#CCCCCC"/>
+                    <path v-if="value === 4" :stroke="focusedValue === value ? '#6A6A6A' : '#CCCCCC'" stroke-linecap="round" d="M 0 2 L 10 1 L 10 9 L 0 8 Z" fill="#CCCCCC"/>
+                    <path v-if="value === 5" :stroke="focusedValue === value ? '#6A6A6A' : '#CCCCCC'" stroke-linecap="round" d="M 0 1 L 10 0 L 10 10 L 0 9 Z" fill="#CCCCCC"/>
+                </svg>
+            </template>
+        </${props.componentName}>
+            `
+        },
+        {
+            names: ['layer-above'],
+            description: translations.value.slots.layerAbove[store.lang],
+            snippet:`
+        <${props.componentName} :dataset="dataset" :config="config">
+            <template #layer-above="{ value, size, hoveredValue, focusedValue }">
+                <svg viewBox="0 0 10 10" :style="{ overflow: 'visible' }">
+                    <path v-if="value === 1" fill="#5A5A5A" stroke="#5A5A5A" stroke-linecap="round" d="M 0 5 L 10 4 L 10 6 L 0 5 Z" :style="{ opacity: (value ≤ r || value ≤ hoveredValue) ? 1 : 0}"/>
+                    <path v-if="value === 2" fill="#4A4A4A" stroke="#4A4A4A" stroke-linecap="round" d="M 0 4 L 10 3 L 10 7 L 0 6 Z" :style="{ opacity: (value ≤ r || value ≤ hoveredValue) ? 1 : 0}"/>
+                    <path v-if="value === 3" fill="#3A3A3A" stroke="#3A3A3A" stroke-linecap="round" d="M 0 3 L 10 2 L 10 8 L 0 7 Z" :style="{ opacity: (value ≤ r || value ≤ hoveredValue) ? 1 : 0}"/>
+                    <path v-if="value === 4" fill="#2A2A2A" stroke="#2A2A2A" stroke-linecap="round" d="M 0 2 L 10 1 L 10 9 L 0 8 Z" :style="{ opacity: (value ≤ r || value ≤ hoveredValue) ? 1 : 0}"/>
+                    <path v-if="value === 5" fill="#1A1A1A" stroke="#1A1A1A" stroke-linecap="round" d="M 0 1 L 10 0 L 10 10 L 0 9 Z" :style="{ opacity: (value ≤ r || value ≤ hoveredValue) ? 1 : 0}"/>
+                </svg>
+            </template>
+        </${props.componentName}>
+            `
+        },
     ]
 })
 

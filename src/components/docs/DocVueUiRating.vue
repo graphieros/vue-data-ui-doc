@@ -12,6 +12,8 @@ import BaseComment from "../BaseComment.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
+import UcRating from "../useCases/uc-rating.vue";
 
 const mainConfig = useConfig()
 
@@ -277,7 +279,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </DocSnapper>
         </div>
 
-        <Box showEmits>
+        <Box showEmits showSlots showUseCases>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -466,6 +468,17 @@ const <span class="text-black dark:text-app-green">dataset: VueUiRatingDataset</
                     component="VueUiRating"
                     :names="['toggleReadonly']"
                 />
+            </template>
+
+            <template #tab3>
+                <BaseSlotDocumenter
+                    componentName="VueUiRating"
+                    :types="['layer-under', 'layer-above']"
+                />
+            </template>
+
+            <template #tab5>
+                <UcRating/>
             </template>
         </Box>
     </div>

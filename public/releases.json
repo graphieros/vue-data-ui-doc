@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.3",
+    "date": "2025-02-12",
+    "updates": [
+      {
+        "component": "VueUiRating",
+        "description": "Add #layer-under and #layer-above scoped slots to customize rating units",
+        "link": "/docs#vue-ui-rating"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.2",
     "date": "2025-02-10",
     "updates": [
