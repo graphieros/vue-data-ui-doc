@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
+import { BrandGithubFilledIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 
@@ -142,6 +143,15 @@ const description = ref({
                     </svg>
                 </template>
             </VueUiRating>
+        </div>
+
+        <div class="flex justify-center mt-6">
+            <button class="py-1 px-4 bg-gray-100 dark:bg-[#FFFFFF20] hover:bg-gray-200 dark:hover:bg-[#FFFFFF30] transition-colors flex flex-row place-items-center gap-2 justify-center">
+                <BrandGithubFilledIcon />
+                <a href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/useCases/uc-rating.vue" target="_blank">
+                    {{ translations.githubCode[store.lang] }}
+                </a>
+            </button>
         </div>
     </div>
 </template>
