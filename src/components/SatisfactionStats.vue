@@ -30,6 +30,12 @@ const stats = computed(() => {
 //             "created_at": "2025-02-07 03:29:25"
 //         },
 //         {
+//             "id": 2,
+//             "rating": 4,
+//             "item_id": "vue_ui_donut",
+//             "created_at": "2025-02-07 03:29:25"
+//         },
+//         {
 //             "id": 35,
 //             "rating": 5,
 //             "item_id": "vue_ui_donut_evolution",
@@ -342,7 +348,8 @@ const verticalBarConfig = computed(() => {
                                 show: false
                             },
                             value: {
-                                suffix: ' ⭐'
+                                suffix: ' ⭐',
+                                roundingValue: 1
                             }
                         },
                         height: 24,
