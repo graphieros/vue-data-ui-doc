@@ -124,23 +124,24 @@ const description = ref({
                     </svg>
                 </template>
                 <template #layer-above="{ value, size, hoveredValue, focusedValue }">
-                    <svg viewBox="0 0 10 10" :style="{ overflow: 'visible' }">
+                    <svg viewBox="0 0 10 10" :style="{ overflow: 'visible' }">                            
                         <path v-if="value === 1" :fill="colorsAbove[value]" :stroke="colorsAbove[value]" stroke-linecap="round"
-                            d="M 0 5 L 10 4 L 10 6 L 0 5 Z"
-                            :style="{ opacity: value <= r || value < hoveredValue ? 1 : 0 }" />
+                        d="M 0 5 L 10 4 L 10 6 L 0 5 Z"
+                        :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
                         <path v-if="value === 2" :fill="colorsAbove[value]" :stroke="colorsAbove[value]" stroke-linecap="round"
-                            d="M 0 4 L 10 3 L 10 7 L 0 6 Z"
-                            :style="{ opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
+                        d="M 0 4 L 10 3 L 10 7 L 0 6 Z"
+                        :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
                         <path v-if="value === 3" :fill="colorsAbove[value]" :stroke="colorsAbove[value]" stroke-linecap="round"
-                            d="M 0 3 L 10 2 L 10 8 L 0 7 Z"
-                            :style="{ opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
+                        d="M 0 3 L 10 2 L 10 8 L 0 7 Z"
+                        :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
                         <path v-if="value === 4" :fill="colorsAbove[value]" :stroke="colorsAbove[value]" stroke-linecap="round"
-                            d="M 0 2 L 10 1 L 10 9 L 0 8 Z"
-                            :style="{ opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
+                        d="M 0 2 L 10 1 L 10 9 L 0 8 Z"
+                        :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
                         <path v-if="value === 5" :fill="colorsAbove[value]" :stroke="colorsAbove[value]" stroke-linecap="round"
-                            d="M 0 1 L 10 0 L 10 10 L 0 9 Z"
-                            :style="{ opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
-                    </svg>
+                        d="M 0 1 L 10 0 L 10 10 L 0 9 Z"
+                        :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
+
+                        </svg>
                 </template>
             </VueUiRating>
         </div>
@@ -155,3 +156,12 @@ const description = ref({
         </div>
     </div>
 </template>
+
+<style>
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s ease-in-out;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+</style>
