@@ -325,7 +325,12 @@ const xyConfig = computed(() => {
 const verticalBarDataset = computed(() => {
     return ratings.value.map(r => {
         return {
-            name: `${r.name} (${r.raters})`,
+            name: `${r.name
+                    .split('_')
+                    .map((w, _i) => {
+                        return capitalizeFirstLetter(w);
+                    })
+                    .join('')} ( ${r.raters} )`,
             value: r.average,
             color: '#1F77B4'
         }
@@ -385,6 +390,7 @@ const verticalBarConfig = computed(() => {
                     backgroundOpacity: 20,
                     borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
                     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    roundingValue: 1
                 }
             }
         },
