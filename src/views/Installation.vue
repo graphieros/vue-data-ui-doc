@@ -104,10 +104,8 @@ const universalComponentTemplateContent = computed(() => {
             {{ translations.menu.installation[store.lang] }}
         </h1>
 
-
-        <div class="z-10 mt-10 p-6 border border-gray-700 rounded-lg flex flex-col text-start text-gray-800 bg-gray-200 dark:text-app-green dark:bg-[rgb(26,26,26)]">
-            <code>npm i vue-data-ui</code>
-            <code>yarn add vue-data-ui</code>
+        <div class="z-10 p-3 border border-gray-700 rounded-lg flex flex-col mt-6 bg-gray-200 dark:bg-[rgb(26,26,26)]">
+            <VueHiCode content="npm i vue-data-ui   " language="javascript" v-bind="codeParserConfig" @copy="store.copy()"/>
         </div>
 
         <div class="mt-4 z-10" dir="auto">
