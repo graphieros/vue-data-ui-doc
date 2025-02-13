@@ -104,7 +104,7 @@ const universalComponentTemplateContent = computed(() => {
             {{ translations.menu.installation[store.lang] }}
         </h1>
 
-        <div class="z-10 p-3 border border-gray-700 rounded-lg flex flex-col mt-6 bg-gray-200 dark:bg-[rgb(26,26,26)]">
+        <div class="z-10 p-3 shadow-md rounded-lg flex flex-col mt-6 bg-gray-600 dark:bg-[rgb(26,26,26)]">
             <VueHiCode content="npm i vue-data-ui   " language="javascript" v-bind="codeParserConfig" @copy="store.copy()"/>
         </div>
 
@@ -121,7 +121,7 @@ const universalComponentTemplateContent = computed(() => {
             </a>
         </div>
         
-        <div class="z-10 p-6 border border-gray-700 rounded-lg flex flex-col mt-6 bg-gray-200 dark:bg-[rgb(26,26,26)] max-w-[800px]">
+        <div class="z-10 p-6 shadow-md rounded-lg flex flex-col mt-6 bg-gray-200 dark:bg-[rgb(26,26,26)] max-w-[800px]">
 
             <div class="text-left">
                 <VueHiCode 
