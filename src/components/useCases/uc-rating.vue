@@ -13,6 +13,7 @@ const dataset = ref({ rating: 1 });
 const r = ref(dataset.value.rating);
 function setRating(rat) {
     r.value = rat;
+    dataset.value.rating = rat;
 }
 
 const config = computed(() => {
@@ -51,7 +52,7 @@ const config = computed(() => {
             },
         },
         rating: {
-            show: true,
+            show: false,
             fontSize: 24,
             bold: true,
             roundingValue: 1,
@@ -77,13 +78,23 @@ const config = computed(() => {
 }
 });
 
-const colorsAbove = computed(() => {
+const colorsAbove_1 = computed(() => {
     return {
-        '1': isDarkMode.value ? '#997d33' : '#5A5A5A',
-        '2': isDarkMode.value ? '#b3923c' : '#4A4A4A',
-        '3': isDarkMode.value ? '#cca644' : '#3A3A3A',
-        '4': isDarkMode.value ? '#e6bb4d' : '#2A2A2A',
-        '5': isDarkMode.value ? '#FFD055' : '#1A1A1A',
+        '1': isDarkMode.value ? '#997d33' : '#011c10',
+        '2': isDarkMode.value ? '#b3923c' : '#04331d',
+        '3': isDarkMode.value ? '#cca644' : '#094d2e',
+        '4': isDarkMode.value ? '#e6bb4d' : '#0e613b',
+        '5': isDarkMode.value ? '#FFD055' : '#1d915d',
+    }
+})
+
+const colorsAbove_2 = computed(() => {
+    return {
+        '1': isDarkMode.value ? '#ff3700' : '#ff3700',
+        '2': isDarkMode.value ? '#ff6600' : '#ff6600',
+        '3': isDarkMode.value ? '#e6bb4d' : '#e6bb4d',
+        '4': isDarkMode.value ? '#6aa331' : '#6aa331',
+        '5': isDarkMode.value ? '#1d915d' : '#1d915d',
     }
 })
 
@@ -106,9 +117,11 @@ const description = ref({
 
 <template>
     <div>
-        {{ description[store.lang] }}
+        <h3 dir="auto" class="px-6">{{ description[store.lang] }}</h3>
+        <!-- EXAMPLE 1: using SVG to display a growing range -->
         <div class="p-4 pt-12">
             <VueUiRating :dataset="dataset" :config="config" ref="build" @rate="setRating">
+                <!-- First layer -->
                 <template #layer-under="{ value, size, focusedValue }">
                     <svg viewBox="0 0 10 10" :style="{ overflow: 'visible' }">
                         <path v-if="value === 1" :stroke="focusedValue === value ? colorUnder : colorFocus"
@@ -123,25 +136,51 @@ const description = ref({
                             stroke-linecap="round" d="M 0 1 L 10 0 L 10 10 L 0 9 Z" :fill="colorFocus" />
                     </svg>
                 </template>
+                <!-- Second layer -->
                 <template #layer-above="{ value, size, hoveredValue, focusedValue }">
                     <svg viewBox="0 0 10 10" :style="{ overflow: 'visible' }">                            
-                        <path v-if="value === 1" :fill="colorsAbove[value]" :stroke="colorsAbove[value]" stroke-linecap="round"
+                        <path v-if="value === 1" :fill="colorsAbove_1[value]" :stroke="colorsAbove_1[value]" stroke-linecap="round"
                         d="M 0 5 L 10 4 L 10 6 L 0 5 Z"
                         :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
-                        <path v-if="value === 2" :fill="colorsAbove[value]" :stroke="colorsAbove[value]" stroke-linecap="round"
+                        <path v-if="value === 2" :fill="colorsAbove_1[value]" :stroke="colorsAbove_1[value]" stroke-linecap="round"
                         d="M 0 4 L 10 3 L 10 7 L 0 6 Z"
                         :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
-                        <path v-if="value === 3" :fill="colorsAbove[value]" :stroke="colorsAbove[value]" stroke-linecap="round"
+                        <path v-if="value === 3" :fill="colorsAbove_1[value]" :stroke="colorsAbove_1[value]" stroke-linecap="round"
                         d="M 0 3 L 10 2 L 10 8 L 0 7 Z"
                         :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
-                        <path v-if="value === 4" :fill="colorsAbove[value]" :stroke="colorsAbove[value]" stroke-linecap="round"
+                        <path v-if="value === 4" :fill="colorsAbove_1[value]" :stroke="colorsAbove_1[value]" stroke-linecap="round"
                         d="M 0 2 L 10 1 L 10 9 L 0 8 Z"
                         :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
-                        <path v-if="value === 5" :fill="colorsAbove[value]" :stroke="colorsAbove[value]" stroke-linecap="round"
+                        <path v-if="value === 5" :fill="colorsAbove_1[value]" :stroke="colorsAbove_1[value]" stroke-linecap="round"
                         d="M 0 1 L 10 0 L 10 10 L 0 9 Z"
                         :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
+                    </svg>
+                </template>
+            </VueUiRating>
+        </div>
 
-                        </svg>
+        <!-- EXAMPLE 2: using individual icons for each rating unit -->
+        <div class="p-4 pt-12">
+            <VueUiRating :dataset="dataset" :config="config" ref="build" @rate="setRating">
+                <!-- First layer -->
+                <template #layer-under="{ value, size, focusedValue }">
+                    <div class="flex place-items-center justify-center">
+                        <VueUiIcon name="moodSad" :size="size" v-if="value === 1" :stroke="focusedValue === value ? colorUnder : colorFocus"/>
+                        <VueUiIcon name="moodFlat" :size="size" v-if="value === 2" :stroke="focusedValue === value ? colorUnder : colorFocus"/>
+                        <VueUiIcon name="moodNeutral" :size="size" v-if="value === 3" :stroke="focusedValue === value ? colorUnder : colorFocus"/>
+                        <VueUiIcon name="smiley" :size="size" v-if="value === 4" :stroke="focusedValue === value ? colorUnder : colorFocus"/>
+                        <VueUiIcon name="moodHappy" :size="size" v-if="value === 5" :stroke="focusedValue === value ? colorUnder : colorFocus"/>
+                    </div>
+                </template>
+                <!-- Second layer -->
+                <template #layer-above="{ value, size, hoveredValue, focusedValue }">
+                    <div class="flex justify-center">
+                        <VueUiIcon name="moodSad" :size="size" v-if="value === 1" :stroke="colorsAbove_2[value]" :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
+                        <VueUiIcon name="moodFlat" :size="size" v-if="value === 2" :stroke="colorsAbove_2[value]" :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
+                        <VueUiIcon name="moodNeutral" :size="size" v-if="value === 3" :stroke="colorsAbove_2[value]" :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
+                        <VueUiIcon name="smiley" :size="size" v-if="value === 4" :stroke="colorsAbove_2[value]" :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
+                        <VueUiIcon name="moodHappy" :size="size" v-if="value === 5" :stroke="colorsAbove_2[value]" :style="{ transition: 'opacity 0.3s ease-in-out', opacity: value <= r || value <= hoveredValue ? 1 : 0 }" />
+                    </div>
                 </template>
             </VueUiRating>
         </div>
