@@ -99,10 +99,12 @@ const universalComponentTemplateContent = computed(() => {
             <div class="absolute top-0 left-0 w-full h-full" :style="isDarkMode ? 'background:radial-gradient(#5f8bee, transparent) !important' : 'background:radial-gradient(#F3F4F6, transparent)'"/>
 
         </div>
-
-        <h1 class="text-[64px] sm:text-[96px] text-center">
-            {{ translations.menu.installation[store.lang] }}
-        </h1>
+        <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
+            <VueUiIcon name="starFill" :size="80" :strokeWidth="0.8" class="hidden md:block" stroke="#5f8bee"/>
+            <h1 class="text-[64px] sm:text-[96px] text-center">
+                {{ translations.menu.installation[store.lang] }}
+            </h1>
+        </div>
 
         <div class="z-10 p-3 shadow-md rounded-lg flex flex-col mt-6 bg-gray-600 dark:bg-[rgb(26,26,26)]">
             <VueHiCode content="npm i vue-data-ui   " language="javascript" v-bind="codeParserConfig" @copy="store.copy()"/>

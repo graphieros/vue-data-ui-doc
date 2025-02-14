@@ -158,7 +158,9 @@ const crumbs = computed(() => {
 
     <div class="w-full max-w-[1400px] mx-auto overflow-visible min-h-[3000px]">
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
-            <VueUiIcon name="boxes" :size="80" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#5f8aee60' : '#CCCCCC'"/>
+            <div class="relative h-[80px] w-[80px]">
+                <VueUiIcon name="boxes" :size="80" :strokeWidth="0.8" class="absolute hidden md:block lushicon top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="isDarkMode ? '#5f8aee60' : '#5f8aee'"/>
+            </div>
             <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>
 
@@ -393,5 +395,18 @@ const crumbs = computed(() => {
 <style>
 .vue-data-ui-tooltip {
   font-family: Satoshi;
+}
+
+.lushicon {
+    animation: lush 2s infinite linear;
+}
+
+@keyframes lush {
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
 }
 </style>

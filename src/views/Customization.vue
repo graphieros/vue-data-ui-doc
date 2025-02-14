@@ -118,20 +118,24 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
   <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
 
   <div class="my-12 w-full mx-auto text-center">
-    <h1 class="text-[64px] sm:text-[96px] text-center">
-      {{ translations.menu.customization[store.lang] }}
-    </h1>
+
+    <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
+      <VueUiIcon name="palette" :size="80" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#de8b37' : '#de8b37'"/>
+      <h1 class="text-[64px] sm:text-[96px] text-center">
+        {{ translations.menu.customization[store.lang] }}
+      </h1>
+    </div>
     <div
       class="my-12 max-w-[800px] mx-auto"
     >
-      <div class="border border-[#5f8aee50] rounded-md p-4 place-items-center justify-center mx-6 grid grid-cols-2 sm:grid-cols-3 gap-2">        
+      <div class="border border-[#de8b3750] rounded-md p-4 place-items-center justify-center mx-6 grid grid-cols-2 sm:grid-cols-3 gap-2">        
         <router-link v-for="(menuItem, i) in menu" :to="menuItem.link" class="w-full">
           <button
             :class="`w-full transition-colors rounded py-2 px-4 flex flex-row gap-2 place-items-center ${
               currentRoute === menuItem.link ||
               (i === 0 && currentRoute === '/customization')
-                ? 'bg-[#5f8bee20] text-app-blue border-b border-app-blue'
-                : 'hover:bg-[#5f8bee20] bg-[#5f8bee10]'
+                ? 'bg-[#de8b3720] text-[#de8b37] border-b border-[#de8b37]'
+                : 'hover:bg-[#de8b3720] bg-[#de8b3710]'
             }`"
             @click="selectedMenu = menuItem.name"
           >
@@ -139,7 +143,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
             {{ menuItem.label }}
           </button>
         </router-link>
-        <button class="w-full transition-colors rounded py-2 px-4 flex flex-row gap-2 place-items-center hover:bg-[#5f8bee20] bg-[#5f8bee10]">
+        <button class="w-full transition-colors rounded py-2 px-4 flex flex-row gap-2 place-items-center hover:bg-[#de8b3720] bg-[#de8b3710]">
           <a href="https://color-bridge.graphieros.com/" target="_blank" class="flex flex-row gap-2 place-items-center">
             <VueUiIcon name="moodWink" :stroke="isDarkMode ? '#FF5000' : '#1A1A1A'"/> Color Bridge
           </a>

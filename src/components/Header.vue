@@ -252,21 +252,23 @@ onBeforeUnmount(() => {
 
             <nav class="hidden xl:flex flex-row gap-1 justify-end w-full place-items-center">
                 <router-link data-cy="link-installation" to="/installation" @mouseenter="closeDocsMenu">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/installation')
+                    <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/installation')
                                 ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-md'
                                 : 'text-gray-800 dark:text-app-blue dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
+                            <VueUiIcon name="starFill" :stroke="isDarkMode ? '#5f8bee' : '#1A1A1A'" :size="18" :strokeWidth="1" />
                         {{ translations.menu.installation[store.lang] }}
                     </span>
                 </router-link>
                 <div class="relative" @keydown.esc="closeDocsMenu">
                     <router-link data-cy="link-docs" to="/docs" @mouseover="openDocMenu" @click.stop="toggleDocMenu" @focus="openDocMenu">
                         <div 
-                            :class="`relative py-1 px-2 rounded-xl ${isSelected('/docs')
+                            :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/docs')
                                     ? 'text-[#277753] dark:text-app-green hover:cursor-default bg-[#42d39233] shadow-md'
                                     : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                                 }`"
                             >
+                            <VueUiIcon name="settings" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" :size="18" :strokeWidth="1" />
                             {{ translations.menu.docs[store.lang] }}
                         </div>
                     </router-link>
@@ -296,7 +298,7 @@ onBeforeUnmount(() => {
                                             <VueUiIcon :name="item.icon" :size="32" :stroke="isDarkMode ? '#1A1A1A' : '#5f8aee'"/>
                                         </div>
                                     </template>
-                                    <RouterLink  :to="item.link" @click="closeDocsMenu">
+                                    <RouterLink :to="item.link" @click="closeDocsMenu">
                                         <div class="flex flex-row place-items-center py-1 gap-2 relative">
                                             <svg v-if="item.link === router.currentRoute.value.fullPath" viewBox="0 0 10 10" height="10" width="10" class="shadow rounded-full absolute -left-3 top-1/2 -translate-y-1/2 animate-pulse">
                                                 <circle cx="5" cy="5" r="5" :fill="isDarkMode ? '#42d392' : '#5f8aee'"/>
@@ -326,18 +328,20 @@ onBeforeUnmount(() => {
                     </span>
                 </router-link>
                 <router-link data-cy="link-customization" to="/customization"  @mouseenter="closeDocsMenu">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/customization')
+                    <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/customization')
                                 ? 'text-black dark:text-[#de8b37] hover:cursor-default bg-[#de8b3733] shadow-md'
                                 : 'text-gray-800 dark:text-[#de8b37] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
+                            <VueUiIcon name="palette" :stroke="isDarkMode ? '#de8b37' : '#1A1A1A'" :size="18" :strokeWidth="1" />
                         {{ translations.menu.customization[store.lang] }}
                     </span>
                 </router-link>
                 <router-link to="/examples"  @mouseenter="closeDocsMenu">
-                    <span :class="`py-1 px-2 rounded-xl ${isSelected('/examples')
+                    <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/examples')
                                 ? 'text-black dark:text-[#de6937] hover:cursor-default bg-[#de693733] shadow-md'
                                 : 'text-gray-800 dark:text-[#de6937] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                             }`">
+                            <VueUiIcon name="dashboard" :stroke="isDarkMode ? '#de6937' : '#1A1A1A'" :size="18" :strokeWidth="1" />
                         {{ translations.menu.examples[store.lang] }}
                     </span>
                 </router-link>

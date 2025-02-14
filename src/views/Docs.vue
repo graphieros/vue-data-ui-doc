@@ -1191,6 +1191,7 @@ const stackbarKey = ref(0);
                 <div v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)" class="flex flex-col place-items-center place-content-center">
                     <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-2 mt-4">
                         <div class="flex flex-row gap-4 place-items-center">
+                            <VueUiIcon name="settings" :size="80" :strokeWidth="1" class="hidden md:block" stroke="#42d392"/>
                             <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.docs[store.lang] }}</h1>
                         </div>
                     </div>
