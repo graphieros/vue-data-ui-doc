@@ -645,6 +645,9 @@ const sparklineConfig = ref({
       strokeWidth: 1,
       smooth: true
     },
+    bar: {
+      borderRadius: 1,
+    },
     zeroLine: {
       color: "#505050",
       strokeWidth: 1
@@ -692,6 +695,9 @@ const darkModeSparklineConfig = ref({
       color: "#42d392",
       strokeWidth: 1,
       smooth: true
+    },
+    bar: {
+      borderRadius: 1,
     },
     zeroLine: {
       color: "#505050",
@@ -1257,7 +1263,7 @@ const sparklineConfigForReleases = computed(() => {
       backgroundColor: isDarkMode.value ? '#1E1E1E': '#f3f4f6',
       color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
       bar: {
-        borderRadius: 1,
+        borderRadius: 0,
         color: '#5f8bee'
       },
       dataLabel: {
