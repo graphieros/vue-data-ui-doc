@@ -466,6 +466,7 @@ const supportedComponents = computed(() => {
         { name: 'VueUiStackbar', link: 'docs#vue-ui-stackbar', icon: 'chartStackbar' },
         { name: 'VueUiVerticalBar', link: 'docs#vue-ui-vertical-bar', icon: 'chartVerticalBar' },
         { name: 'VueUiWaffle', link: 'docs#vue-ui-waffle', icon: 'chartWaffle' },
+        { name: 'VueUiCirclePack', link: 'docs#vue-ui-circle-pack', icon: 'chartCirclePack' },
     ]
 })
 
