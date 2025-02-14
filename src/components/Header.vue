@@ -384,6 +384,7 @@ onBeforeUnmount(() => {
                     </BaseDropdown>
                 </div>
             </nav>
+
             <div class="relative xl:hidden">
                 <button id="mainDropdownButton" v-if="isOpen" @click="useMenu" type="button">
                     <XIcon />

@@ -11,43 +11,103 @@ const stats = computed(() => {
 })
 
 // const stats = ref([
-//         {
-//             "id": 39,
-//             "rating": 1,
-//             "item_id": "vue_ui_kpi",
-//             "created_at": "2025-02-07 06:16:10"
-//         },
-//         {
-//             "id": 38,
-//             "rating": 5,
-//             "item_id": "vue_ui_kpi",
-//             "created_at": "2025-02-07 03:39:02"
-//         },
-//         {
-//             "id": 37,
-//             "rating": 5,
-//             "item_id": "vue_ui_donut",
-//             "created_at": "2025-02-07 03:29:25"
-//         },
-//         {
-//             "id": 2,
-//             "rating": 4,
-//             "item_id": "vue_ui_donut",
-//             "created_at": "2025-02-07 03:29:25"
-//         },
-//         {
-//             "id": 35,
-//             "rating": 5,
-//             "item_id": "vue_ui_donut_evolution",
-//             "created_at": "2025-02-06 11:41:28"
-//         },
-//         {
-//             "id": 34,
-//             "rating": 5,
-//             "item_id": "vue_ui_table_sparkline",
-//             "created_at": "2025-02-10 09:00:54"
-//         }
-//     ])
+//   {
+//     "id": 53,
+//     "rating": 5,
+//     "item_id": "vue_ui_age_pyramid",
+//     "created_at": "2025-02-14 11:14:20"
+//   },
+//   {
+//     "id": 52,
+//     "rating": 1,
+//     "item_id": "vue_ui_thermometer",
+//     "created_at": "2025-02-14 08:43:51"
+//   },
+//   {
+//     "id": 51,
+//     "rating": 4,
+//     "item_id": "vue_ui_kpi",
+//     "created_at": "2025-02-14 03:07:50"
+//   },
+//   {
+//     "id": 50,
+//     "rating": 4,
+//     "item_id": "vue_ui_kpi",
+//     "created_at": "2025-02-13 13:00:16"
+//   },
+//   {
+//     "id": 49,
+//     "rating": 5,
+//     "item_id": "vue_ui_bullet",
+//     "created_at": "2025-02-13 09:42:49"
+//   },
+//   {
+//     "id": 48,
+//     "rating": 5,
+//     "item_id": "vue_ui_quick_chart",
+//     "created_at": "2025-02-13 04:49:29"
+//   },
+//   {
+//     "id": 47,
+//     "rating": 5,
+//     "item_id": "vue_ui_xy",
+//     "created_at": "2025-02-13 03:24:13"
+//   },
+//   {
+//     "id": 46,
+//     "rating": 5,
+//     "item_id": "vue_ui_sparkgauge",
+//     "created_at": "2025-02-12 10:10:54"
+//   },
+//   {
+//     "id": 45,
+//     "rating": 4,
+//     "item_id": "vue_ui_table_heatmap",
+//     "created_at": "2025-02-12 03:57:57"
+//   },
+//   {
+//     "id": 44,
+//     "rating": 5,
+//     "item_id": "vue_ui_carousel_table",
+//     "created_at": "2025-02-10 03:46:45"
+//   },
+//   {
+//     "id": 42,
+//     "rating": 4,
+//     "item_id": "vue_ui_sparkgauge",
+//     "created_at": "2025-02-08 07:46:48"
+//   },
+//   {
+//     "id": 39,
+//     "rating": 1,
+//     "item_id": "vue_ui_kpi",
+//     "created_at": "2025-02-07 06:16:10"
+//   },
+//   {
+//     "id": 38,
+//     "rating": 5,
+//     "item_id": "vue_ui_kpi",
+//     "created_at": "2025-02-07 03:39:02"
+//   },
+//   {
+//     "id": 37,
+//     "rating": 5,
+//     "item_id": "vue_ui_donut",
+//     "created_at": "2025-02-07 03:29:25"
+//   },
+//   {
+//     "id": 35,
+//     "rating": 5,
+//     "item_id": "vue_ui_donut_evolution",
+//     "created_at": "2025-02-06 11:41:28"
+//   },
+//   {
+//     "id": 34,
+//     "rating": 5,
+//     "item_id": "vue_ui_table_sparkline",
+//     "created_at": "2025-02-06 09:00:54"
+//   }
+// ])
 
 const ratings = computed(() => {
     const groups = Object.groupBy(stats.value, ({ item_id }) => item_id);
@@ -411,7 +471,7 @@ function capitalizeFirstLetter(val) {
         <h1 v-if="ratings.length" class="my-6 text-xl">
         User ratings of individual components
     </h1>
-    <div class="flex flex-row flex-wrap gap-6 z-10" v-if="ratings.length">
+    <div class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10" v-if="ratings.length">
         <ButtonSatisfactionBreakdown 
             v-for="c in ratings"
             :dataset-gauge="{
