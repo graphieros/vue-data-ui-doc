@@ -468,9 +468,58 @@ function capitalizeFirstLetter(val) {
 </script>
 
 <template>
-        <h1 v-if="ratings.length" class="my-6 text-xl">
+    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueUiXy
+            :dataset="xyDataset"
+            :config="xyConfig"
+        />
+    </div>
+
+    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueUiVerticalBar
+            :dataset="verticalBarDataset"
+            :config="verticalBarConfig"
+        />
+    </div>
+
+    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueUiRating
+            :dataset="{
+                rating: history.ratingBreakdown
+            }"
+            :config="{
+                type: 'star',
+                readonly: true,
+                style: {
+                    backgroundColor: 'transparent',
+                    title: {
+                        text: 'Ratings breakdown',
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                        fontSize: 20,
+                        bold: false,
+                        offsetY: 40
+                    },
+                    star: {
+                        inactiveColor: isDarkMode ? '#3A3A3A': '#FFFFFF'
+                    },
+                    tooltip: {
+                        backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                        borderColor: isDarkMode ? '#fdd663' : '#E1E5E8',
+                        offsetY: 12,
+                    }
+                }
+            }"
+        />
+        <VueUiXy
+            :dataset="ratingBreakdownBarDataset"
+            :config="ratingBreakdownBarConfig"
+        />
+    </div>
+
+    <h2 v-if="ratings.length" class="my-6 text-xl">
         User ratings of individual components
-    </h1>
+    </h2>
     <div class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10" v-if="ratings.length">
         <ButtonSatisfactionBreakdown 
             v-for="c in ratings"
@@ -539,55 +588,6 @@ function capitalizeFirstLetter(val) {
                     }
                 }
             }"
-        />
-    </div>
-
-    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueUiXy
-            :dataset="xyDataset"
-            :config="xyConfig"
-        />
-    </div>
-
-    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueUiVerticalBar
-            :dataset="verticalBarDataset"
-            :config="verticalBarConfig"
-        />
-    </div>
-
-    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueUiRating
-            :dataset="{
-                rating: history.ratingBreakdown
-            }"
-            :config="{
-                type: 'star',
-                readonly: true,
-                style: {
-                    backgroundColor: 'transparent',
-                    title: {
-                        text: 'Ratings breakdown',
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                        fontSize: 20,
-                        bold: false,
-                        offsetY: 40
-                    },
-                    star: {
-                        inactiveColor: isDarkMode ? '#3A3A3A': '#FFFFFF'
-                    },
-                    tooltip: {
-                        backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                        borderColor: isDarkMode ? '#fdd663' : '#E1E5E8',
-                        offsetY: 12,
-                    }
-                }
-            }"
-        />
-        <VueUiXy
-            :dataset="ratingBreakdownBarDataset"
-            :config="ratingBreakdownBarConfig"
         />
     </div>
 </template>

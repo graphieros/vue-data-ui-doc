@@ -41,7 +41,7 @@ const dataset = ref({
   to: 100,
   steps: 20,
   colors: {
-    from: "#42d392",
+    from: "#ff3700",
     to: "#5f8bee",
   }
 });
