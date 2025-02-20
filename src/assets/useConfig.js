@@ -3655,7 +3655,8 @@ export function useConfig() {
                 selector: {
                     show: true,
                     color: COLOR_BLACK,
-                    dashed: true
+                    dashed: true,
+                    showHorizontalSelector: false,
                 },
                 tooltip: TOOLTIP,
                 legend: LEGEND,
@@ -3683,6 +3684,7 @@ export function useConfig() {
                         },
                         timeLabels: {
                             show: true,
+                            showMarker: true,
                             fontSizeRatio: 0.8,
                             values: [],
                             rotation: 0,
@@ -3701,7 +3703,7 @@ export function useConfig() {
                             color: COLOR_GREY_MID,
                             alternate: true,
                             opacity: 20
-                        }
+                        },
                     },
                     zeroLine: {
                         show: true,

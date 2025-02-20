@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.6.4",
+    "date": "2025-02-20",
+    "updates": [
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Fix scale issue in stack mode with individual scale",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Add dataset optional attribute to display a marker on Y axis when hovering the chart",
+        "link": "/docs#vue-ui-xy-canvas"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.3",
     "date": "2025-02-12",
     "updates": [

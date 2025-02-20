@@ -52,7 +52,7 @@ const dataset = ref([
     type: "bar",
     color: "rgb(95,139,238)",
     scaleSteps: 5,
-    dataLabels: false,
+    dataLabels: false
   },
   {
     name: "Series 2",
@@ -143,6 +143,7 @@ const config = ref({
         show: true,
         color: "#2D353C",
         dashed: true,
+        showHorizontalSelector: false,
       },
       tooltip: {
         show: true,
@@ -338,6 +339,7 @@ const darkModeConfig = ref({
         show: true,
         color: "#6A6A6A",
         dashed: true,
+        showHorizontalSelector: false,
       },
       tooltip: {
         show: true,
@@ -596,6 +598,7 @@ function randomizeData() {
             stackRatio?: number; // if used on all datapoints, must sum up to 1
             scaleMin?: number; // applied in stack mode
             scaleMax?: number; // applied in stack mode
+            showYMarker?: boolean; // if true, will show a marker on Y axis with the value at hovered index
         },
         {...}
     ]
@@ -1355,6 +1358,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                       :dark="mutableConfigDarkMode"
                       @change="forceChartUpdate()"
                     />
+                    <BaseAttr name="showHorizontalSelector" attr="style.chart.selector.showHorizontalSelector" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                   </BaseDetails>
                   <BaseDetails
                     attr="title"
