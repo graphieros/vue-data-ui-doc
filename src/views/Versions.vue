@@ -397,7 +397,8 @@ onMounted(() => {
             type: "line",
             useArea: true,
             smooth: true,
-            shape: "star"
+            shape: "star",
+            showYMarker: true
           }
         ]
         xyConfig.value.chart.grid.labels.xAxisLabels.values = json.downloads.map(d => d.day)
@@ -1499,7 +1500,8 @@ const xyCanvasConfig = computed(() => {
           },
           selector: {
             color: '#5f8aee',
-            dashed: false
+            dashed: false,
+            showHorizontalSelector: true
           },
           tooltip: {
             backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
