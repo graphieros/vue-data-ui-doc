@@ -176,7 +176,8 @@ const charts = ref({
     VueUiMolecule: { name: 'VueUiMolecule', icon: 'chartCluster', link: '/docs#vue-ui-molecule'},
     VueUiStripPlot: { name: 'VueUiStripPlot', icon: 'chartStripPlot', link: '/docs#vue-ui-strip-plot'},
     VueUiDumbbell: { name: 'VueUiDumbbell', icon: 'chartDumbbell', link: '/docs#vue-ui-dumbbell'},
-    VueUi3dBar: { name: 'VueUi3dBar', icon: 'chart3dBar', link: '/docs#vue-ui-3d-bar'}
+    VueUi3dBar: { name: 'VueUi3dBar', icon: 'chart3dBar', link: '/docs#vue-ui-3d-bar'},
+    VueUiCirclePack: { name: 'VueUiCirclePack', icon: 'chartCirclePack', link: '/docs#vue-ui-circle-pack'}
 })
 
 const items = ref([
@@ -193,7 +194,7 @@ const items = ref([
     {
         name: 'csv',
         icon: 'excel',
-        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar']
+        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack']
     },
     {
         name: 'img',
@@ -203,7 +204,7 @@ const items = ref([
     {
         name: 'table',
         icon:  'tableOpen',
-        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar']
+        charts: ['VueUiXy', 'VueUiXyCanvas', 'VueUiVerticalBar', 'VueUiParallelCoordinatePlot', 'VueUiFlow', 'VueUiCandlestick', 'VueUiAgePyramid', 'VueUiStackbar', 'VueUiDonutEvolution', 'VueUiDonut', 'VueUiNestedDonuts', 'VueUiWaffle', 'VueUiHeatmap', 'VueUiTreemap', 'VueUiRings', 'VueUiGalaxy', 'VueUiChestnut', 'VueUiOnion', 'VueUiWordCloud', 'VueUiRadar', 'VueUiMoodRadar', 'VueUiQuadrant', 'VueUiScatter', 'VueUiMolecule', 'VueUiStripPlot', 'VueUiDumbbell', 'VueUi3dBar', 'VueUiCirclePack']
     },
     {
         name: 'labels',
