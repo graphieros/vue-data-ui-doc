@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.5",
+    "date": "2025-02-23",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Fix layout bug edge case when dataset contains a single datapoint.",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.4",
     "date": "2025-02-20",
     "updates": [
