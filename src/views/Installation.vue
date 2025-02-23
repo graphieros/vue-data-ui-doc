@@ -163,11 +163,13 @@ const universalComponentTemplateContent = computed(() => {
             </div>
         </div>
         <div class="flex flex-row place-items-center justify-center z-10 mt-10">
-            <button dir="auto" @click="gotoMaker" class="bg-gradient-to-br from-app-blue-light to-app-blue text-black py-3 px-6 rounded-full text-xl flex flex-row gap-2 place-items-center hover:from-app-blue hover:to-app-blue-light transition-colors shadow-md">
-                <VueUiIcon name="arrowRight" class="animate-pulse" stroke="#2A2A2A"/>
-                <VueUiIcon name="clipboardBar" stroke="#2A2A2A"/>
-                {{ translations.makeNow[store.lang] }}
-            </button>
+            <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-lg hover:shadow-xl transition-all">
+                <button dir="auto" @click="gotoMaker" class="py-3 px-6 rounded-md text-xl flex flex-row gap-2 place-items-cente transition-colors bg-white dark:bg-[#1A1A1A]">
+                    <VueUiIcon name="arrowRight" class="animate-pulse" :stroke="isDarkMode ? '#42d392' : '#2A2A2A'"/>
+                    <VueUiIcon name="clipboardBar" :stroke="isDarkMode ? '#42d392' : '#2A2A2A'"/>
+                    {{ translations.makeNow[store.lang] }}
+                </button>
+            </div>
         </div>
 
         <ChartSeeker class="mt-12 z-10"/>
