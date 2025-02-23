@@ -314,7 +314,8 @@ const specialOccasion = computed(() => {
         </div>
 
         <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 hidden lg:block">
-            <button class="relative flex flex-row place-content-center place-items-center bg-transparent dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] dark:hover:border-[#fdd663] gap-3 transition-all">
+          <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-lg">
+            <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
               <BrandGithubFilledIcon class="dark:text-gray-200"/>
               <span>
                 {{ translations.github[store.lang] }}
@@ -354,6 +355,7 @@ const specialOccasion = computed(() => {
               </div>
 
             </button>
+          </div>
           </a>
           <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center" :title="'Version ' + staticReleases[0].version.replace('v', '')">
             <Suspense>
@@ -419,38 +421,40 @@ const specialOccasion = computed(() => {
     </div>
 
     <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 lg:hidden mt-6">
-      <button class="relative flex flex-row place-content-center place-items-center bg-transparent dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 border border-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[rgba(255,255,255,0.02)] hover:border-app-blue gap-3 transition-all">
-        <BrandGithubFilledIcon/>
-        <span>
-          {{ translations.github[store.lang] }}
-        </span>
-        <div class="w-[25px]" v-if="store.isFetching">              
-          <VueUiMiniLoader 
-            :config="{
-              onion: {
-                gutterColor: '#CCCCCC',
-                gutterOpacity: 0.3,
-                gutterBlur: 0,
-                trackHueRotate: 360,
-                trackBlur: 1,
-                trackColor: '#42d392'
-              }
-            }"
-          />
-        </div>
-        <div class="flex flex-row gap-2 place-items-center" v-if="store.stars && !store.isFetching">
-          <div class="relative">
-            <StarFilledIcon class="text-[#fdd663] drop-shadow-sm"/>
-            <!-- FOR SPECIAL OCCASIONS -->
-            <svg viewBox="0 0 20 20" height="16" class="absolute top-[6px] left-1" v-if="specialOccasion">
-              <path d="M 7 7 L 7 4 M 13 7 L 13 4 Z M 5 9 C 7 14 13 14 15 9" fill="none" stroke="black" stroke-width="1.3" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <span class="text-xs dark:text-[#fdd663] h-[20px]">
-            <VueUiDigits :dataset="store.stars" :config="digitConfigStars"/>
+      <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-lg">
+        <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
+          <BrandGithubFilledIcon/>
+          <span>
+            {{ translations.github[store.lang] }}
           </span>
-        </div>
-      </button>
+          <div class="w-[25px]" v-if="store.isFetching">              
+            <VueUiMiniLoader 
+              :config="{
+                onion: {
+                  gutterColor: '#CCCCCC',
+                  gutterOpacity: 0.3,
+                  gutterBlur: 0,
+                  trackHueRotate: 360,
+                  trackBlur: 1,
+                  trackColor: '#42d392'
+                }
+              }"
+            />
+          </div>
+          <div class="flex flex-row gap-2 place-items-center" v-if="store.stars && !store.isFetching">
+            <div class="relative">
+              <StarFilledIcon class="text-[#fdd663] drop-shadow-sm"/>
+              <!-- FOR SPECIAL OCCASIONS -->
+              <svg viewBox="0 0 20 20" height="16" class="absolute top-[6px] left-1" v-if="specialOccasion">
+                <path d="M 7 7 L 7 4 M 13 7 L 13 4 Z M 5 9 C 7 14 13 14 15 9" fill="none" stroke="black" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="text-xs dark:text-[#fdd663] h-[20px]">
+              <VueUiDigits :dataset="store.stars" :config="digitConfigStars"/>
+            </span>
+          </div>
+        </button>
+      </div>
     </a>
 </div>
 
