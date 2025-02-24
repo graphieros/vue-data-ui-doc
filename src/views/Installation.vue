@@ -4,11 +4,14 @@ import { useMainStore } from '../stores';
 import router from "../router";
 import ChartSeeker from "../components/ChartSeeker.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
+import colorBridge from "color-bridge";
 import { VueHiCode } from "vue-hi-code";
 import "vue-hi-code/style.css"
 
 
 const store = useMainStore();
+const { utils } = colorBridge();
+const { lightenHexColor } = utils();
 
 const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => {
@@ -100,7 +103,13 @@ const universalComponentTemplateContent = computed(() => {
 
         </div>
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
-            <VueUiIcon name="starFill" :size="80" :strokeWidth="0.8" class="hidden md:block" stroke="#5f8bee"/>
+            <div class="relative w-[80px] h-[80px]">
+                <VueUiIcon name="starFill" :size="80" :strokeWidth="0.8" class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" stroke="#5f8bee"/>
+                <VueUiIcon name="starFill" :size="60" :strokeWidth="0.8" class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="lightenHexColor({ hexColor: '#5F8BEE' , force: 0.2 })"/>
+                <VueUiIcon name="starFill" :size="40" :strokeWidth="0.8" class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="lightenHexColor({ hexColor: '#5F8BEE' , force: 0.4 })"/>
+                <VueUiIcon name="starFill" :size="20" :strokeWidth="0.8" class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="lightenHexColor({ hexColor: '#5F8BEE' , force: 0.6 })"/>
+                <VueUiIcon name="starFill" :size="5" :strokeWidth="0.8" class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="lightenHexColor({ hexColor: '#5F8BEE' , force: 0.8 })"/>
+            </div>
             <h1 class="text-[64px] sm:text-[96px] text-center">
                 {{ translations.menu.installation[store.lang] }}
             </h1>
