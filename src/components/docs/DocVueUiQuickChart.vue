@@ -16,6 +16,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import Rater from "../Rater.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import { jsonToJsObject, copyCode } from "../maker/lib";
+import BaseDocTitle from "../BaseDocTitle.vue";
 
 const mainConfig = useConfig()
 
@@ -526,10 +527,8 @@ function copyComponentSnippet(snip) {
 
 <template>
     <div>
-        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
-            <VueUiIcon name="vueDataUi" stroke="#42d392" :strokeWidth="1.5" />
-            <span>VueUi<span class="text-black dark:text-app-blue-light">QuickChart</span></span>
-        </h1>
+        <BaseDocTitle name="VueUiQuickChart" />
+
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-4 text-center">
             {{ translations.docs.tooltips.quickChart[store.lang] }}
         </p>

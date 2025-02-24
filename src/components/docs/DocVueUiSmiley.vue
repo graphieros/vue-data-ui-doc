@@ -12,6 +12,7 @@ import BaseColorInfo from "../BaseColorInfo.vue";
 import BaseComment from "../BaseComment.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import BaseDocTitle from "../BaseDocTitle.vue";
 
 const mainConfig = useConfig()
 
@@ -252,11 +253,8 @@ const { configCode, showAllConfig } = useConfigCode()
 
 <template>
     <div>
-        <h1
-            class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
-            <VueUiIcon name="smiley" stroke="#42d392" :strokeWidth="1.5" />
-            <span>VueUi<span class="text-black dark:text-app-blue-light">Smiley</span></span>
-        </h1>
+        <BaseDocTitle name="VueUiSmiley" />
+
         <h2 class="text-center text-gray-500">
             {{ translations.docs.comments.smiley.p1[store.lang] }}<br><br>
             {{ translations.docs.comments.rating.p2[store.lang] }}

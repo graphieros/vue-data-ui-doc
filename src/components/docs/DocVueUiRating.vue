@@ -14,6 +14,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import UcRating from "../useCases/uc-rating.vue";
+import BaseDocTitle from "../BaseDocTitle.vue";
 
 const mainConfig = useConfig()
 
@@ -236,11 +237,8 @@ const { configCode, showAllConfig } = useConfigCode()
 
 <template>
     <div>
-        <h1
-            class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
-            <VueUiIcon name="star" stroke="#42d392" :strokeWidth="1.5" />
-            <span>VueUi<span class="text-black dark:text-app-blue-light">Rating</span></span>
-        </h1>
+        <BaseDocTitle name="VueUiRating" />
+
         <h2 class="text-center text-gray-500">
             {{ translations.docs.comments.rating.p1[store.lang] }}<br><br>
             {{ translations.docs.comments.rating.p2[store.lang] }}

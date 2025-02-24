@@ -5,6 +5,7 @@ import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import BaseDocTitle from "../BaseDocTitle.vue";
 
 const mainConfig = useConfig()
 
@@ -118,10 +119,8 @@ const isActive = ref(true);
     <div>
         <VueDataUi component="VueUiCursor" v-if="isActive" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" />
         <div style="min-height:100vh">
-            <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
-                <VueUiIcon name="cursor" stroke="#42d392" :strokeWidth="1.5" />
-                <span>VueUi<span class="text-black dark:text-app-blue-light">Cursor</span></span>
-            </h1>
+            <BaseDocTitle name="VueUiCursor"/>
+
             <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
                 {{ translations.docs.tooltips.cursor[store.lang] }}
             </p>

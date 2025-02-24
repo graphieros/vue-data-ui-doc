@@ -8,6 +8,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
 import { useConfigCode } from "../../useConfigCode";
+import BaseDocTitle from "../BaseDocTitle.vue";
 
 const mainConfig = useConfig();
 
@@ -107,10 +108,8 @@ const { configCode, showAllConfig } = useConfigCode()
 
 <template>
     <div>
-        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
-            <VueUiIcon name="accordion" stroke="#42d392" :strokeWidth="1.5" />
-            <span>VueUi<span class="text-black dark:text-app-blue-light">Accordion</span></span>
-        </h1>
+        <BaseDocTitle name="VueUiAccordion" />
+
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.accordion[store.lang] }}
         </p>

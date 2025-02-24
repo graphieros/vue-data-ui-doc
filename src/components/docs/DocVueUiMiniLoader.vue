@@ -7,6 +7,7 @@ import { useConfig } from "../../assets/useConfig";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
+import BaseDocTitle from "../BaseDocTitle.vue";
 
 const mainConfig = useConfig()
 
@@ -91,10 +92,8 @@ function fixChart() {
 
 <template>
     <div>
-        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
-            <VueUiIcon name="chartWheel" stroke="#42d392" :strokeWidth="1.5" />
-            <span>VueUi<span class="text-black dark:text-app-blue-light">MiniLoader</span></span>
-        </h1>
+        <BaseDocTitle name="VueUiMiniLoader" />
+
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.docs.tooltips.miniLoader[store.lang] }}
         </p>

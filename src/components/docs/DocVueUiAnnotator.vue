@@ -7,6 +7,7 @@ import { donutConfig, donutDataset } from "./dash";
 import { useConfig } from "../../assets/useConfig";
 import SuspenseWrapper from "../SuspenseWrapper.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import BaseDocTitle from "../BaseDocTitle.vue";
 
 const mainConfig = useConfig()
 
@@ -226,10 +227,8 @@ function saveAnnotations({ shapes, lastSelectedShape }) {
 
 <template>
     <div>
-      <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
-            <VueUiIcon name="annotator" stroke="#42d392" :strokeWidth="1.5" />
-            <span>VueUi<span class="text-black dark:text-app-blue-light">Annotator</span></span>
-        </h1>
+      <BaseDocTitle name="VueUiAnnotator" />
+
         <div class="mx-auto w-full max-w-[400px] text-center mb-4">
             {{ translations.docs.comments.annotator.description[store.lang] }}<br>
         </div>
