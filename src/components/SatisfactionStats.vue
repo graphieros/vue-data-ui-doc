@@ -10,103 +10,284 @@ const stats = computed(() => {
     return store.ratings.breakdown;
 })
 
+
 // const stats = ref([
-//   {
-//     "id": 53,
-//     "rating": 5,
-//     "item_id": "vue_ui_age_pyramid",
-//     "created_at": "2025-02-14 11:14:20"
-//   },
-//   {
-//     "id": 52,
-//     "rating": 1,
-//     "item_id": "vue_ui_thermometer",
-//     "created_at": "2025-02-14 08:43:51"
-//   },
-//   {
-//     "id": 51,
-//     "rating": 4,
-//     "item_id": "vue_ui_kpi",
-//     "created_at": "2025-02-14 03:07:50"
-//   },
-//   {
-//     "id": 50,
-//     "rating": 4,
-//     "item_id": "vue_ui_kpi",
-//     "created_at": "2025-02-13 13:00:16"
-//   },
-//   {
-//     "id": 49,
-//     "rating": 5,
-//     "item_id": "vue_ui_bullet",
-//     "created_at": "2025-02-13 09:42:49"
-//   },
-//   {
-//     "id": 48,
-//     "rating": 5,
-//     "item_id": "vue_ui_quick_chart",
-//     "created_at": "2025-02-13 04:49:29"
-//   },
-//   {
-//     "id": 47,
-//     "rating": 5,
-//     "item_id": "vue_ui_xy",
-//     "created_at": "2025-02-13 03:24:13"
-//   },
-//   {
-//     "id": 46,
-//     "rating": 5,
-//     "item_id": "vue_ui_sparkgauge",
-//     "created_at": "2025-02-12 10:10:54"
-//   },
-//   {
-//     "id": 45,
-//     "rating": 4,
-//     "item_id": "vue_ui_table_heatmap",
-//     "created_at": "2025-02-12 03:57:57"
-//   },
-//   {
-//     "id": 44,
-//     "rating": 5,
-//     "item_id": "vue_ui_carousel_table",
-//     "created_at": "2025-02-10 03:46:45"
-//   },
-//   {
-//     "id": 42,
-//     "rating": 4,
-//     "item_id": "vue_ui_sparkgauge",
-//     "created_at": "2025-02-08 07:46:48"
-//   },
-//   {
-//     "id": 39,
-//     "rating": 1,
-//     "item_id": "vue_ui_kpi",
-//     "created_at": "2025-02-07 06:16:10"
-//   },
-//   {
-//     "id": 38,
-//     "rating": 5,
-//     "item_id": "vue_ui_kpi",
-//     "created_at": "2025-02-07 03:39:02"
-//   },
-//   {
-//     "id": 37,
-//     "rating": 5,
-//     "item_id": "vue_ui_donut",
-//     "created_at": "2025-02-07 03:29:25"
-//   },
-//   {
-//     "id": 35,
-//     "rating": 5,
-//     "item_id": "vue_ui_donut_evolution",
-//     "created_at": "2025-02-06 11:41:28"
-//   },
-//   {
-//     "id": 34,
-//     "rating": 5,
-//     "item_id": "vue_ui_table_sparkline",
-//     "created_at": "2025-02-06 09:00:54"
-//   }
+//     {
+//         "id": 83,
+//         "rating": 4,
+//         "item_id": "vue_ui_table",
+//         "created_at": "2025-02-26 05:06:14"
+//     },
+//     {
+//         "id": 82,
+//         "rating": 5,
+//         "item_id": "vue_ui_sparkline",
+//         "created_at": "2025-02-26 04:40:52"
+//     },
+//     {
+//         "id": 81,
+//         "rating": 3,
+//         "item_id": "vue_ui_vertical_bar",
+//         "created_at": "2025-02-25 16:45:21"
+//     },
+//     {
+//         "id": 80,
+//         "rating": 5,
+//         "item_id": "vue_ui_xy",
+//         "created_at": "2025-02-25 16:41:45"
+//     },
+//     {
+//         "id": 79,
+//         "rating": 5,
+//         "item_id": "vue_ui_quick_chart",
+//         "created_at": "2025-02-25 14:54:30"
+//     },
+//     {
+//         "id": 78,
+//         "rating": 5,
+//         "item_id": "vue_ui_table_heatmap",
+//         "created_at": "2025-02-25 08:26:15"
+//     },
+//     {
+//         "id": 77,
+//         "rating": 5,
+//         "item_id": "vue_ui_quick_chart",
+//         "created_at": "2025-02-24 18:13:46"
+//     },
+//     {
+//         "id": 76,
+//         "rating": 5,
+//         "item_id": "vue_ui_scatter",
+//         "created_at": "2025-02-23 11:56:34"
+//     },
+//     {
+//         "id": 75,
+//         "rating": 5,
+//         "item_id": "vue_ui_strip_plot",
+//         "created_at": "2025-02-23 11:11:04"
+//     },
+//     {
+//         "id": 74,
+//         "rating": 5,
+//         "item_id": "vue_ui_kpi",
+//         "created_at": "2025-02-23 11:07:53"
+//     },
+//     {
+//         "id": 73,
+//         "rating": 5,
+//         "item_id": "vue_ui_3d_bar",
+//         "created_at": "2025-02-21 08:29:40"
+//     },
+//     {
+//         "id": 72,
+//         "rating": 2,
+//         "item_id": "vue_ui_xy_canvas",
+//         "created_at": "2025-02-20 09:16:02"
+//     },
+//     {
+//         "id": 71,
+//         "rating": 1,
+//         "item_id": "vue_ui_sparkhistogram",
+//         "created_at": "2025-02-20 07:33:03"
+//     },
+//     {
+//         "id": 70,
+//         "rating": 5,
+//         "item_id": "vue_ui_timer",
+//         "created_at": "2025-02-20 02:56:38"
+//     },
+//     {
+//         "id": 69,
+//         "rating": 5,
+//         "item_id": "vue_ui_spark_trend",
+//         "created_at": "2025-02-19 14:07:10"
+//     },
+//     {
+//         "id": 68,
+//         "rating": 5,
+//         "item_id": "vue_ui_carousel_table",
+//         "created_at": "2025-02-19 09:59:16"
+//     },
+//     {
+//         "id": 67,
+//         "rating": 5,
+//         "item_id": "vue_ui_carousel_table",
+//         "created_at": "2025-02-17 14:18:51"
+//     },
+//     {
+//         "id": 66,
+//         "rating": 5,
+//         "item_id": "vue_ui_thermometer",
+//         "created_at": "2025-02-17 14:14:12"
+//     },
+//     {
+//         "id": 65,
+//         "rating": 5,
+//         "item_id": "vue_ui_age_pyramid",
+//         "created_at": "2025-02-17 14:00:55"
+//     },
+//     {
+//         "id": 64,
+//         "rating": 5,
+//         "item_id": "vue_ui_candlestick",
+//         "created_at": "2025-02-17 13:58:23"
+//     },
+//     {
+//         "id": 63,
+//         "rating": 5,
+//         "item_id": "vue_ui_flow",
+//         "created_at": "2025-02-17 13:57:26"
+//     },
+//     {
+//         "id": 62,
+//         "rating": 5,
+//         "item_id": "vue_ui_galaxy",
+//         "created_at": "2025-02-17 13:16:28"
+//     },
+//     {
+//         "id": 61,
+//         "rating": 5,
+//         "item_id": "vue_ui_rings",
+//         "created_at": "2025-02-17 13:15:18"
+//     },
+//     {
+//         "id": 60,
+//         "rating": 5,
+//         "item_id": "vue_ui_heatmap",
+//         "created_at": "2025-02-17 12:13:12"
+//     },
+//     {
+//         "id": 59,
+//         "rating": 5,
+//         "item_id": "vue_ui_waffle",
+//         "created_at": "2025-02-17 09:35:58"
+//     },
+//     {
+//         "id": 58,
+//         "rating": 3,
+//         "item_id": "vue_ui_xy",
+//         "created_at": "2025-02-17 07:29:23"
+//     },
+//     {
+//         "id": 57,
+//         "rating": 3,
+//         "item_id": "vue_ui_xy_canvas",
+//         "created_at": "2025-02-17 07:20:41"
+//     },
+//     {
+//         "id": 56,
+//         "rating": 5,
+//         "item_id": "vue_ui_chestnut",
+//         "created_at": "2025-02-17 01:46:51"
+//     },
+//     {
+//         "id": 55,
+//         "rating": 4,
+//         "item_id": "vue_ui_3d_bar",
+//         "created_at": "2025-02-16 05:36:35"
+//     },
+//     {
+//         "id": 54,
+//         "rating": 5,
+//         "item_id": "vue_ui_stackbar",
+//         "created_at": "2025-02-16 05:29:25"
+//     },
+//     {
+//         "id": 53,
+//         "rating": 5,
+//         "item_id": "vue_ui_age_pyramid",
+//         "created_at": "2025-02-14 11:14:20"
+//     },
+//     {
+//         "id": 52,
+//         "rating": 1,
+//         "item_id": "vue_ui_thermometer",
+//         "created_at": "2025-02-14 08:43:51"
+//     },
+//     {
+//         "id": 51,
+//         "rating": 4,
+//         "item_id": "vue_ui_kpi",
+//         "created_at": "2025-02-14 03:07:50"
+//     },
+//     {
+//         "id": 50,
+//         "rating": 4,
+//         "item_id": "vue_ui_kpi",
+//         "created_at": "2025-02-13 13:00:16"
+//     },
+//     {
+//         "id": 49,
+//         "rating": 5,
+//         "item_id": "vue_ui_bullet",
+//         "created_at": "2025-02-13 09:42:49"
+//     },
+//     {
+//         "id": 48,
+//         "rating": 5,
+//         "item_id": "vue_ui_quick_chart",
+//         "created_at": "2025-02-13 04:49:29"
+//     },
+//     {
+//         "id": 47,
+//         "rating": 5,
+//         "item_id": "vue_ui_xy",
+//         "created_at": "2025-02-13 03:24:13"
+//     },
+//     {
+//         "id": 46,
+//         "rating": 5,
+//         "item_id": "vue_ui_sparkgauge",
+//         "created_at": "2025-02-12 10:10:54"
+//     },
+//     {
+//         "id": 45,
+//         "rating": 4,
+//         "item_id": "vue_ui_table_heatmap",
+//         "created_at": "2025-02-12 03:57:57"
+//     },
+//     {
+//         "id": 44,
+//         "rating": 5,
+//         "item_id": "vue_ui_carousel_table",
+//         "created_at": "2025-02-10 03:46:45"
+//     },
+//     {
+//         "id": 42,
+//         "rating": 4,
+//         "item_id": "vue_ui_sparkgauge",
+//         "created_at": "2025-02-08 07:46:48"
+//     },
+//     {
+//         "id": 39,
+//         "rating": 1,
+//         "item_id": "vue_ui_kpi",
+//         "created_at": "2025-02-07 06:16:10"
+//     },
+//     {
+//         "id": 38,
+//         "rating": 5,
+//         "item_id": "vue_ui_kpi",
+//         "created_at": "2025-02-07 03:39:02"
+//     },
+//     {
+//         "id": 37,
+//         "rating": 5,
+//         "item_id": "vue_ui_donut",
+//         "created_at": "2025-02-07 03:29:25"
+//     },
+//     {
+//         "id": 35,
+//         "rating": 5,
+//         "item_id": "vue_ui_donut_evolution",
+//         "created_at": "2025-02-06 11:41:28"
+//     },
+//     {
+//         "id": 34,
+//         "rating": 5,
+//         "item_id": "vue_ui_table_sparkline",
+//         "created_at": "2025-02-06 09:00:54"
+//     }
 // ])
 
 const ratings = computed(() => {
@@ -265,7 +446,7 @@ const ratingBreakdownBarConfig = computed(() => {
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                 showPercentage: false,
             },
-            userOptions: { show: false }
+            userOptions: { show: false },
         },
         bar: {
             labels: {
@@ -350,14 +531,16 @@ const xyConfig = computed(() => {
             },
             zoom: {
                 color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
-                highlightColor: '#1F77B4'
+                highlightColor: '#1F77B4',
+                startIndex: history.value.averagePerDay.length - 14,
+                endIndex:  history.value.averagePerDay.length - 1
             }
         },
         bar: {
             periodGap: 0.01,
         },
         line: {
-            radius: 6,
+            radius: 4,
             useGradient: false,
             dot: {
                 useSerieColor: false,
