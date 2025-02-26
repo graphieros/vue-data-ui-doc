@@ -1,28 +1,26 @@
 <script setup>
-import { ref, computed, onMounted, nextTick } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon } from "vue-tabler-icons"
+import { PlusIcon, AlertTriangleIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { useDefaultDataStore } from "../../stores/defaultData"
 import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
-import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import BaseShape from "../BaseShape.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
+import useMaker from "./useMaker.js";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
 const clearStep = ref(0)
 
-const isMobile = computed(() => {
-    return window.innerWidth < 800;
-})
+const { isFixed, step, chart, fixChart } = useMaker();
 
 const translations = computed(() => {
     return store.translations;
@@ -34,13 +32,9 @@ const xyTranslations = computed(() => {
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
-
-const isFixed = ref(!isMobile.value);
+});
 
 const datasetItems = ref(defaultData.vue_ui_xy.dataset)
-const step = ref(0);
-
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -221,29 +215,23 @@ const accordionConfig = ref(
         }
 )
 
-function fixChart() {
-    isFixed.value = !isFixed.value;
-    setTimeout(() => {
-        step.value += 1;
-    }, 100)
-}
-
 </script>
 
 <template>
     <div>
         <ClearStorageAndRefresh keyConfig="xyConfig" keyDataset="xyDataset" :key="`clear_${clearStep}`"/>
-        
         <BaseDocExampleLink link="vue-ui-xy" componentName="VueUiXy"/>
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px); isolation: isolate">
-            <BaseMakerChart
-                v-if="!isFixed"
-                :isFixed="isFixed"
-                @fixChart="fixChart"
-                @resetModel="resetModel"
-            >
-                <VueUiXy :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-            </BaseMakerChart>
+            <Transition name="fade">
+                <BaseMakerChart
+                    v-if="!isFixed"
+                    :isFixed="isFixed"
+                    @fixChart="fixChart"
+                    @resetModel="resetModel"
+                >
+                    <VueUiXy ref="chart" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                </BaseMakerChart>
+            </Transition>
 
             <div class="relative z-0">
                 <VueDataUi
@@ -361,14 +349,16 @@ function fixChart() {
             </div>
         </div>
     </div>
-    <BaseMakerChart
-        v-if="isFixed"
-        :isFixed="isFixed"
-        @fixChart="fixChart"
-        @resetModel="resetModel"
-    >
-        <VueUiXy :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-    </BaseMakerChart>
+    <Transition name="fade">
+        <BaseMakerChart
+            v-if="isFixed"
+            :isFixed="isFixed"
+            @fixChart="fixChart"
+            @resetModel="resetModel"
+        >
+            <VueUiXy :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+        </BaseMakerChart>
+    </Transition>
 </template>
 
 <style scoped>

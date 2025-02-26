@@ -1,40 +1,35 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons"
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
-import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
+import useMaker from "./useMaker.js";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
-const clearStep = ref(0)
+const clearStep = ref(0);
 
-const isMobile = computed(() => {
-    return window.innerWidth < 800;
-})
+const { isFixed, step, chart, fixChart } = useMaker();
 
 const translations = computed(() => {
     return store.translations;
-})
+});
 
 const makerTranslations = computed(() => {
     return makerStore.translations;
-})
+});
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
-
-const isFixed = ref(!isMobile.value);
+});
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -65,10 +60,8 @@ const CONFIG_CATEGORIES = computed(() => {
     ]
 })
 
-const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_thermometer.model)))
-const dataset = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_thermometer.dataset)))
-
-const step = ref(0)
+const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_thermometer.model)));
+const dataset = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_thermometer.dataset)));
 
 onMounted(() => {
     if(localStorage.thermometerConfig) {
@@ -108,15 +101,7 @@ function forceChartUpdate() {
 
 const finalConfig = computed(() => {
     return convertArrayToObject(CONFIG_MODEL.value)
-})
-
-function fixChart() {
-    isFixed.value = !isFixed.value;
-    setTimeout(() => {
-        step.value += 1;
-    }, 100)
-}
-
+});
 </script>
 
 <template>
@@ -125,16 +110,18 @@ function fixChart() {
         <BaseDocExampleLink link="vue-ui-thermometer" :example="false" componentName="VueUiThermometer"/>
     
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-        <BaseMakerChart
-            v-if="!isFixed"
-            :isFixed="isFixed"
-            @fixChart="fixChart"
-            @resetModel="resetModel"
-            fixedWidth="w-[250px]"
-            expandedWidth="max-w-[250px]"
-        >
-            <VueUiThermometer :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
-        </BaseMakerChart>
+        <Transition name="fade">
+            <BaseMakerChart
+                v-if="!isFixed"
+                :isFixed="isFixed"
+                @fixChart="fixChart"
+                @resetModel="resetModel"
+                fixedWidth="w-[250px]"
+                expandedWidth="max-w-[250px]"
+            >
+                <VueUiThermometer ref="chart" :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
+            </BaseMakerChart>
+        </Transition>
 
     </div>
     
@@ -197,16 +184,18 @@ function fixChart() {
             </ComponentContent>    
         </div>
     </div>
-    <BaseMakerChart
-        v-if="isFixed"
-        :isFixed="isFixed"
-        @fixChart="fixChart"
-        @resetModel="resetModel"
-        fixedWidth="w-[250px]"
-        expandedWidth="max-w-[250px]"
-    >
-        <VueUiThermometer :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
-    </BaseMakerChart>
+    <Transition name="fade">
+        <BaseMakerChart
+            v-if="isFixed"
+            :isFixed="isFixed"
+            @fixChart="fixChart"
+            @resetModel="resetModel"
+            fixedWidth="w-[250px]"
+            expandedWidth="max-w-[250px]"
+        >
+            <VueUiThermometer :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
+        </BaseMakerChart>
+    </Transition>
 </template>
 
 <style scoped>

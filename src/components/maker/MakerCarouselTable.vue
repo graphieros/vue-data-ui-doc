@@ -1,12 +1,11 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PinIcon, PinnedOffIcon, PlusIcon } from "vue-tabler-icons"
+import { PlusIcon } from "vue-tabler-icons"
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
-import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import { VueUiCarouselTable } from "vue-data-ui";
@@ -14,29 +13,26 @@ import Tooltip from "../../components/FlexibleTooltip.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
+import useMaker from "./useMaker.js";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
-const clearStep = ref(0)
+const clearStep = ref(0);
 
-const isMobile = computed(() => {
-    return window.innerWidth < 800;
-})
+const { isFixed, step, chart, fixChart } = useMaker();
 
 const translations = computed(() => {
     return store.translations;
-})
+});
 
 const makerTranslations = computed(() => {
     return makerStore.translations;
-})
+});
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
-
-const isFixed = ref(false);
+});
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -61,9 +57,7 @@ const CONFIG_CATEGORIES = computed(() => {
 
 const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_carousel_table.model)))
 
-const currentDataset = ref(defaultData.vue_ui_carousel_table.dataset)
-
-const step = ref(0);
+const currentDataset = ref(defaultData.vue_ui_carousel_table.dataset);
 
 onMounted(() => {
     if(localStorage.carouselTableConfig) {
@@ -142,14 +136,6 @@ function deleteRow(index) {
 
 const rowDeleteIndexIndicator = ref(null);
 const colDeleteIndexIndicator = ref(null);
-
-function fixChart() {
-    isFixed.value = !isFixed.value;
-    setTimeout(() => {
-        step.value += 1;
-    }, 100)
-}
-
 </script>
 
 <template>
@@ -159,14 +145,16 @@ function fixChart() {
         <BaseDocExampleLink link="vue-ui-carousel-table" :example="false" componentName="VueUiCarouselTable"/>
     
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-            <BaseMakerChart
-                v-if="!isFixed"
-                :isFixed="isFixed"
-                @fixChart="fixChart"
-                @resetModel="resetModel"
-            >
-                <VueUiCarouselTable :dataset="currentDataset" :config="finalConfig" :key="`chart_${step}`"/>
-            </BaseMakerChart>
+            <Transition name="fade">
+                <BaseMakerChart
+                    v-if="!isFixed"
+                    :isFixed="isFixed"
+                    @fixChart="fixChart"
+                    @resetModel="resetModel"
+                >
+                    <VueUiCarouselTable ref="chart" :dataset="currentDataset" :config="finalConfig" :key="`chart_${step}`"/>
+                </BaseMakerChart>
+            </Transition>
         </div>
     
         <details open>
@@ -248,12 +236,14 @@ function fixChart() {
             </ComponentContent>          
         </div>
     </div>
-    <BaseMakerChart
-        v-if="isFixed"
-        :isFixed="isFixed"
-        @fixChart="fixChart"
-        @resetModel="resetModel"
-    >
-        <VueUiCarouselTable :dataset="currentDataset" :config="finalConfig" :key="`chart_${step}`"/>
-    </BaseMakerChart>
+    <Transition name="fade">
+        <BaseMakerChart
+            v-if="isFixed"
+            :isFixed="isFixed"
+            @fixChart="fixChart"
+            @resetModel="resetModel"
+        >
+            <VueUiCarouselTable :dataset="currentDataset" :config="finalConfig" :key="`chart_${step}`"/>
+        </BaseMakerChart>
+    </Transition>
 </template>

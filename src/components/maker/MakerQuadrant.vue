@@ -13,15 +13,14 @@ import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
+import useMaker from "./useMaker.js";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
-const clearStep = ref(0)
+const clearStep = ref(0);
 
-const isMobile = computed(() => {
-    return window.innerWidth < 800;
-})
+const { isFixed, step, chart, fixChart } = useMaker();
 
 const translations = computed(() => {
     return store.translations;
@@ -32,8 +31,6 @@ const makerTranslations = computed(() => {
 })
 
 const isDarkMode = computed(() => store.isDarkMode);
-
-const isFixed = ref(!isMobile.value);
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -105,9 +102,7 @@ const options = ref({
     ]
 });
 
-const datasetItems = ref(defaultData.vue_ui_quadrant.dataset)
-
-const step = ref(0);
+const datasetItems = ref(defaultData.vue_ui_quadrant.dataset);
 
 onMounted(() => {
     if(localStorage.quadrantConfig) {
@@ -179,14 +174,6 @@ function getLabel(label) {
     }).join(" ") :
     makerTranslations.value.labels[label][store.lang]
 }
-
-function fixChart() {
-    isFixed.value = !isFixed.value;
-    setTimeout(() => {
-        step.value += 1;
-    }, 100)
-}
-
 </script>
 
 <template>
@@ -195,14 +182,16 @@ function fixChart() {
         <BaseDocExampleLink link="vue-ui-quadrant" componentName="VueUiQuadrant"/>
 
 <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-    <BaseMakerChart
-        v-if="!isFixed"
-        :isFixed="isFixed"
-        @fixChart="fixChart"
-        @resetModel="resetModel"
-    >
-        <VueUiQuadrant :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-    </BaseMakerChart>
+    <Transition name="fade">
+        <BaseMakerChart
+            v-if="!isFixed"
+            :isFixed="isFixed"
+            @fixChart="fixChart"
+            @resetModel="resetModel"
+        >
+            <VueUiQuadrant ref="chart" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+        </BaseMakerChart>
+    </Transition>
 </div>
 
 <details open>
@@ -278,14 +267,16 @@ function fixChart() {
     </ComponentContent>           
 </div>
     </div>
-    <BaseMakerChart
-        v-if="isFixed"
-        :isFixed="isFixed"
-        @fixChart="fixChart"
-        @resetModel="resetModel"
-    >
-        <VueUiQuadrant :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-    </BaseMakerChart>    
+    <Transition name="fade">
+        <BaseMakerChart
+            v-if="isFixed"
+            :isFixed="isFixed"
+            @fixChart="fixChart"
+            @resetModel="resetModel"
+        >
+            <VueUiQuadrant :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+        </BaseMakerChart>    
+    </Transition>
 </template>
 
 <style scoped>

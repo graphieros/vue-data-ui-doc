@@ -1,42 +1,37 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, PinIcon, PinnedOffIcon, AlertTriangleIcon, CopyIcon, RefreshIcon } from "vue-tabler-icons"
-import { getVueDataUiConfig } from "vue-data-ui";
+import { PlusIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
-import { copyComponent, convertArrayToObject, getValueByPath, createUid } from "./lib.js";
+import { copyComponent, convertArrayToObject, createUid } from "./lib.js";
 import { useDefaultDataStore } from "../../stores/defaultData"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue";
-import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
+import useMaker from "./useMaker.js";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
-const clearStep = ref(0)
+const clearStep = ref(0);
 
-const isMobile = computed(() => {
-    return window.innerWidth < 800;
-})
+const { isFixed, step, chart, fixChart } = useMaker();
 
 const translations = computed(() => {
     return store.translations;
-})
+});
 
 const makerTranslations = computed(() => {
     return makerStore.translations;
-})
+});
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
-
-const isFixed = ref(!isMobile.value);
+});
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -99,9 +94,7 @@ const options = ref({
 })
 
 const datasetItems = ref(defaultData.vue_ui_radar.dataset);
-const categoryItems = ref(defaultData.vue_ui_radar.categories)
-
-const step = ref(0);
+const categoryItems = ref(defaultData.vue_ui_radar.categories);
 
 onMounted(() => {
     if(localStorage.radarConfig) {
@@ -210,15 +203,7 @@ const dataset = computed(() => {
         categories: categoryItems.value,
         series: datasetItems.value
     }
-})
-
-function fixChart() {
-    isFixed.value = !isFixed.value;
-    setTimeout(() => {
-        step.value += 1;
-    }, 100)
-}
-
+});
 </script>
 
 <template>
@@ -227,14 +212,16 @@ function fixChart() {
         <BaseDocExampleLink link="vue-ui-radar" componentName="VueUiRadar"/>
 
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-        <BaseMakerChart
-            v-if="!isFixed"
-            :isFixed="isFixed"
-            @fixChart="fixChart"
-            @resetModel="resetModel"
-        >
-            <VueUiRadar :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
-        </BaseMakerChart>
+        <Transition name="fade">
+            <BaseMakerChart
+                v-if="!isFixed"
+                :isFixed="isFixed"
+                @fixChart="fixChart"
+                @resetModel="resetModel"
+            >
+                <VueUiRadar ref="chart" :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
+            </BaseMakerChart>
+        </Transition>
     </div>
 
     <details open>
@@ -325,14 +312,16 @@ function fixChart() {
         </ComponentContent>     
     </div>
     </div>
-    <BaseMakerChart
-        v-if="isFixed"
-        :isFixed="isFixed"
-        @fixChart="fixChart"
-        @resetModel="resetModel"
-    >
-        <VueUiRadar :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
-    </BaseMakerChart>
+    <Transition name="fade">
+        <BaseMakerChart
+            v-if="isFixed"
+            :isFixed="isFixed"
+            @fixChart="fixChart"
+            @resetModel="resetModel"
+        >
+            <VueUiRadar :dataset="dataset" :config="finalConfig" :key="`chart_${step}`"/>
+        </BaseMakerChart>
+    </Transition>
 </template>
 
 <style scoped>

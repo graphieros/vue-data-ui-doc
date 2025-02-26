@@ -1,41 +1,37 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, PinIcon, PinnedOffIcon, CopyIcon } from "vue-tabler-icons"
+import { PlusIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { copyComponent, convertArrayToObject, createUid } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue"
-import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
+import useMaker from "./useMaker.js";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
-const clearStep = ref(0)
-const step = ref(0)
-const isMobile = computed(() => {
-    return window.innerWidth < 800;
-})
+const clearStep = ref(0);
+
+const { isFixed, step, chart, fixChart } = useMaker();
 
 const translations = computed(() => {
     return store.translations;
-})
+});
 
 const makerTranslations = computed(() => {
     return makerStore.translations;
-})
+});
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
-
-const isFixed = ref(!isMobile.value);
+});
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -155,15 +151,7 @@ function deletePlot(catId, plotId) {
 
 const finalConfig = computed(() => {
     return convertArrayToObject(CONFIG_MODEL.value)
-})
-
-function fixChart() {
-    isFixed.value = !isFixed.value;
-    setTimeout(() => {
-        step.value += 1;
-    }, 100)
-}
-
+});
 </script>
 
 <template>
@@ -173,15 +161,17 @@ function fixChart() {
         <BaseDocExampleLink link="vue-ui-strip-plot" componentName="VueUiStripPlot"/>
     
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-            <BaseMakerChart
-                v-if="!isFixed"
-                :isFixed="isFixed"
-                @fixChart="fixChart"
-                @resetModel="resetModel"
-                expandedWidth="max-w-[400px]"
-            >
-                <VueDataUi component="VueUiStripPlot" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-            </BaseMakerChart>
+            <Transition name="fade">
+                <BaseMakerChart
+                    v-if="!isFixed"
+                    :isFixed="isFixed"
+                    @fixChart="fixChart"
+                    @resetModel="resetModel"
+                    expandedWidth="max-w-[400px]"
+                >
+                    <VueDataUi ref="chart" component="VueUiStripPlot" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                </BaseMakerChart>
+            </Transition>
         </div>
     
         <details open>
@@ -263,13 +253,15 @@ function fixChart() {
             </ComponentContent>          
         </div>
     </div>
-    <BaseMakerChart
-        v-if="isFixed"
-        :isFixed="isFixed"
-        @fixChart="fixChart"
-        @resetModel="resetModel"
-        fixedWidth="max-w-[300px]"
-    >
-        <VueDataUi component="VueUiStripPlot" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-    </BaseMakerChart>
+    <Transition name="fade">
+        <BaseMakerChart
+            v-if="isFixed"
+            :isFixed="isFixed"
+            @fixChart="fixChart"
+            @resetModel="resetModel"
+            fixedWidth="max-w-[300px]"
+        >
+            <VueDataUi component="VueUiStripPlot" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+        </BaseMakerChart>
+    </Transition>
 </template>

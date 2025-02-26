@@ -1,27 +1,25 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { PlusIcon, PinIcon, PinnedOffIcon } from "vue-tabler-icons"
+import { PlusIcon } from "vue-tabler-icons"
 import Tooltip from "../../components/FlexibleTooltip.vue";
 import { useMakerStore } from "../../stores/maker"
 import { convertArrayToObject, copyComponent } from "./lib.js"
 import { useDefaultDataStore } from "../../stores/defaultData"
 import ClearStorageAndRefresh from "../ClearStorageAndRefresh.vue"
-import DocLink from "../DocLink.vue";
 import CopyComponent from "./CopyComponent.vue";
 import ComponentContent from "./ComponentContent.vue";
 import MakerKnobs from "./MakerKnobs.vue";
 import BaseMakerChart from "../BaseMakerChart.vue";
 import BaseDocExampleLink from "../BaseDocExampleLink.vue";
+import useMaker from "./useMaker.js";
 
 const store = useMainStore();
 const makerStore = useMakerStore();
 const defaultData = useDefaultDataStore();
-const clearStep = ref(0)
+const clearStep = ref(0);
 
-const isMobile = computed(() => {
-    return window.innerWidth < 800;
-});
+const { isFixed, step, chart, fixChart } = useMaker();
 
 const translations = computed(() => {
     return store.translations;
@@ -30,8 +28,6 @@ const translations = computed(() => {
 const makerTranslations = computed(() => {
     return makerStore.translations;
 });
-
-const isFixed = ref(!isMobile.value);
 
 const CONFIG_CATEGORIES = computed(() => {
     return [
@@ -65,8 +61,6 @@ const options = ref({
 });
 
 const datasetItems = ref(defaultData.vue_ui_flow.dataset);
-
-const step = ref(0);
 
 onMounted(() => {
     if(localStorage.flowConfig) {
@@ -118,14 +112,6 @@ function deleteDatasetItem(index) {
 const finalConfig = computed(() => {
     return convertArrayToObject(CONFIG_MODEL.value)
 });
-
-function fixChart() {
-    isFixed.value = !isFixed.value;
-    setTimeout(() => {
-        step.value += 1;
-    }, 100)
-}
-
 </script>
 
 <template>
@@ -135,14 +121,16 @@ function fixChart() {
         <BaseDocExampleLink link="vue-ui-flow" :example="false" componentName="VueUiFlow"/>
     
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
-            <BaseMakerChart
-                v-if="!isFixed"
-                :isFixed="isFixed"
-                @fixChart="fixChart"
-                @resetModel="resetModel"
-            >
-                <VueDataUi component="VueUiFlow" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-            </BaseMakerChart>
+            <Transition name="fade">
+                <BaseMakerChart
+                    v-if="!isFixed"
+                    :isFixed="isFixed"
+                    @fixChart="fixChart"
+                    @resetModel="resetModel"
+                >
+                    <VueDataUi ref="chart" component="VueUiFlow" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                </BaseMakerChart>
+            </Transition>
         </div>
     
         <details open>
@@ -202,12 +190,14 @@ function fixChart() {
             </ComponentContent>         
         </div>
     </div>
-    <BaseMakerChart
-        v-if="isFixed"
-        :isFixed="isFixed"
-        @fixChart="fixChart"
-        @resetModel="resetModel"
-    >
-        <VueDataUi component="VueUiFlow" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
-    </BaseMakerChart>
+    <Transition name="fade">
+        <BaseMakerChart
+            v-if="isFixed"
+            :isFixed="isFixed"
+            @fixChart="fixChart"
+            @resetModel="resetModel"
+        >
+            <VueDataUi component="VueUiFlow" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+        </BaseMakerChart>
+    </Transition>
 </template>

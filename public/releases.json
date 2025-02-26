@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.6",
+    "date": "2025-02-26",
+    "updates": [
+      {
+        "component": "",
+        "description": "Fix Typescript type errors",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.6.5",
     "date": "2025-02-23",
     "updates": [
