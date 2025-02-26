@@ -17,6 +17,7 @@ import ChartSeeker from "../components/ChartSeeker.vue";
 import ComposedComponents from "../components/customization/ComposedComponents.vue";
 import { BulbIcon } from "vue-tabler-icons";
 import Patterns from "../components/customization/Patterns.vue";
+import ColorBridgeIcon from "../components/maker/ColorBridgeIcon.vue";
 
 const store = useMainStore();
 
@@ -145,7 +146,7 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
         </router-link>
         <button class="w-full transition-colors rounded py-2 px-4 flex flex-row gap-2 place-items-center hover:bg-[#de8b3720] bg-[#de8b3710]">
           <a href="https://color-bridge.graphieros.com/" target="_blank" class="flex flex-row gap-2 place-items-center">
-            <VueUiIcon name="moodWink" :stroke="isDarkMode ? '#FF5000' : '#1A1A1A'"/> Color Bridge
+            <ColorBridgeIcon/> Color Bridge
           </a>
         </button>
       </div>
