@@ -29,6 +29,7 @@ export const useMainStore = defineStore("main", {
                 hiCode: {}
             },
             ratings: {
+                show: true, // switch on | off all raters
                 average: 0,
                 breakdown: []
             },
