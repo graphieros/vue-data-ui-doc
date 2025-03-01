@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.7",
+    "date": "2025-03-01",
+    "updates": [
+      {
+        "component": "Most chart components",
+        "description": "Improve accessibility with aria attributes for charts svg",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.6.6",
     "date": "2025-02-26",
     "updates": [
