@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.8",
+    "date": "2025-03-02",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improve style of selected scale in individualScale mode.",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.7",
     "date": "2025-03-01",
     "updates": [
