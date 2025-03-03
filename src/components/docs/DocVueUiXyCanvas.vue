@@ -236,6 +236,11 @@ const config = ref({
           radiusRatio: 1,
         },
       },
+      bar: {
+        gradient: {
+          show: true
+        },
+      },
       area: {
         opacity: 60,
       },
@@ -430,6 +435,11 @@ const darkModeConfig = ref({
         plots: {
           show: true,
           radiusRatio: 1,
+        },
+      },
+      bar: {
+        gradient: {
+          show: true
         },
       },
       area: {
@@ -1243,6 +1253,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                         :dark="mutableConfigDarkMode"
                         @change="forceChartUpdate()"
                       />
+                    </BaseDetails>
+                  </BaseDetails>
+                  <BaseDetails attr="bar" :level="3" title="style.chart.bar">
+                    <BaseDetails attr="gradient" :level="4" title="style.chart.bar.gradient">
+                      <BaseAttr name="show" attr="style.chart.bar.gradient.show" type="checkbox" defaultVal="true" :light="mutableConfig"
+                      :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                   </BaseDetails>
                   <BaseDetails
