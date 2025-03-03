@@ -126,4 +126,13 @@ details[open] .summary-marker {
     opacity: 1;
 }
 
+html.dark details .vue-ui-accordion-head .relative {
+    border-right: 2px solid transparent;
+}
+
+html.dark details[open] .vue-ui-accordion-head .relative,
+html.dark details:hover .vue-ui-accordion-head .relative {
+    border-right: 2px solid #5f8aee;
+}
+
 </style>
