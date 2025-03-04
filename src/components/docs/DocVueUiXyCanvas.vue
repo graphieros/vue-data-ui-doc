@@ -195,6 +195,7 @@ const config = ref({
             rounding: 1,
             prefix: "",
             suffix: "",
+            bold: false,
           },
           verticalLines: {
             show: true,
@@ -210,6 +211,7 @@ const config = ref({
             offsetY: 30,
             color: "#2D353C",
             modulo: 12,
+            bold: false,
           },
         },
         x: {
@@ -250,6 +252,7 @@ const config = ref({
         useSerieColor: true,
         color: "#2D353C",
         offsetY: -12,
+        bold: false,
       },
       paddingProportions: {
         top: 0.1,
@@ -396,6 +399,7 @@ const darkModeConfig = ref({
             rounding: 1,
             prefix: "",
             suffix: "",
+            bold: false
           },
           verticalLines: {
             show: true,
@@ -411,6 +415,7 @@ const darkModeConfig = ref({
             offsetY: 30,
             color: "#6A6A6A",
             modulo: 12,
+            bold: false
           },
         },
         x: {
@@ -451,6 +456,7 @@ const darkModeConfig = ref({
         useSerieColor: true,
         color: "#CCCCCC",
         offsetY: -12,
+        bold: false
       },
       paddingProportions: {
         top: 0.1,
@@ -779,6 +785,15 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                       @change="forceChartUpdate()"
                     />
                     <BaseAttr
+                      name="bold"
+                      attr="style.chart.dataLabels.bold"
+                      type="checkbox"
+                      defaultVal="false"
+                      :light="mutableConfig"
+                      :dark="mutableConfigDarkMode"
+                      @change="forceChartUpdate()"
+                    />
+                    <BaseAttr
                       name="fontSizeRatio"
                       attr="style.chart.dataLabels.fontSizeRatio"
                       type="range"
@@ -965,6 +980,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                           @change="forceChartUpdate()"
                         />
                         <BaseAttr
+                          name="bold"
+                          attr="style.chart.grid.y.axisLabels.bold"
+                          type="checkbox"
+                          defaultVal="false"
+                          :light="mutableConfig"
+                          :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
                           name="fontSizeRatio"
                           attr="style.chart.grid.y.axisLabels.fontSizeRatio"
                           type="range"
@@ -1046,6 +1069,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                           :light="mutableConfig"
                           :dark="mutableConfigDarkMode"
                           @change="forceChartUpdate()"
+                        />
+                        <BaseAttr
+                          name="bold"
+                          attr="style.chart.grid.y.timeLabels.bold"
+                          type="checkbox"
+                          defaultVal="true"
+                          :light="mutableConfig"
+                          :dark="mutableConfigDarkMode"
                         />
                         <BaseAttr
                           name="fontSizeRatio"
