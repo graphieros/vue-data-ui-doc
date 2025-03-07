@@ -1567,7 +1567,16 @@ const KPIS = computed(() => {
       return {
         name: key.replaceAll('_', ' '),
         value: store.pack[key],
-        link: `https://github.com/graphieros/vue-data-ui/${kpiLinks.value[key]}`
+        link: `https://github.com/graphieros/vue-data-ui/${kpiLinks.value[key]}`,
+        color: key === 'stargazers_count'
+          ? '#fdd663'
+          : key === 'forks_count'
+            ? '#5f8aee'
+            : key === 'open_issues_count'
+              ? '#ff6600'
+              : key === 'subscribers_count'
+                ? '#42d392'
+          : ''
       }
     }
   }).filter(el => el && el.name)
@@ -1832,21 +1841,22 @@ const dogFood = ref({
           <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 
           <div class="flex flex-row gap-4 flex-wrap mx-auto max-w-[1200px] px-4 justify-center">
-          <button class="flex-1 w-[200px] min-w-[200px] hover:outline hover:outline-app-blue rounded-md transition-colors" v-for="kpi in KPIS" >
+          <button :class="`flex-1 w-[200px] min-w-[200px] hover:outline hover:outline-app-blue dark:hover:outline-[#5A5A5A] rounded-md transition-colors`" v-for="kpi in KPIS" >
             <a :href="kpi.link" target="_blank">
               <VueDataUi 
                 component="VueUiKpi" 
                 :dataset="kpi.value"
                 :config="{
-                  backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
+                  backgroundColor: isDarkMode ? `${kpi.color}10` : '#FFFFFF',
                   layoutClass: 'p-4 rounded-md shadow-md',
                   title: kpi.name,
-                  titleColor: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                  titleColor: isDarkMode ? kpi.color : '#1A1A1A',
+                  titleClass: 'text-left pl-1 capitalize',
                   valueClass: 'tabular-nums mt-2',
                   analogDigits: {
                     show: true,
                     height: 40,
-                    color: isDarkMode ? '#5f8aee' : '#1A1A1A',
+                    color: isDarkMode ? kpi.color : '#1A1A1A',
                     skeletonColor: isDarkMode ? '#3A3A3A' : '#E1E5E8'
                   }
                 }"
