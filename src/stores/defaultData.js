@@ -653,7 +653,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.grid.y.axisLabels.show', def: true, type: 'checkbox', label: ['scale', 'labels', 'is', 'show'], category: 'grid'},
                     { key: 'style.chart.grid.y.axisLabels.color', def: '#1A1A1A', type: 'color', label: ['scale', 'labels', 'is', 'textColor'], category: 'grid'},
                     { key: 'style.chart.grid.y.axisLabels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['scale', 'labels', 'is', 'fontSize'], category: 'grid'},
-                    { key: 'style.chart.grid.y.axisLabels.bold', def: false, type: 'checkbox', label: ['scale', 'labels', 'is', 'bold'], category: 'grid'}
+                    { key: 'style.chart.grid.y.axisLabels.bold', def: false, type: 'checkbox', label: ['scale', 'labels', 'is', 'bold'], category: 'grid'},
+                    { key: 'style.chart.grid.y.axisLabels.rounding', def: 0, min: 0, max: 6, type: 'number', label: ['scale', 'labels', 'is', 'rounding'], category: 'grid'},
 
                 ]
             },

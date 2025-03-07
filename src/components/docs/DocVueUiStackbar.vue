@@ -259,7 +259,8 @@ const config = ref({
                         show: true,
                         color: "#2D353C",
                         fontSize: 14,
-                        bold: false
+                        bold: false,
+                        rounding: 0
                     }
                 }
             }
@@ -467,7 +468,8 @@ const darkModeConfig = ref({
                         show: true,
                         color: "#CCCCCC",
                         fontSize: 14,
-                        bold: false
+                        bold: false,
+                        rounding: 0
                     }
                 }
             }
@@ -836,6 +838,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDataset
                                 <BaseAttr name="fontSize" attr="style.chart.grid.y.axisLabels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="color" attr="style.chart.grid.y.axisLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="bold" attr="style.chart.grid.y.axisLabels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="rounding" attr="style.chart.grid.y.axisLabels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             </BaseDetails>
                         </BaseDetails>
                     </BaseDetails>

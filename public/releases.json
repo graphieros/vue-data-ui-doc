@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.12",
+    "date": "2025-03-07",
+    "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Add missing rounding config option to scale labels",
+        "link": "/docs#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.11",
     "date": "2025-03-04",
     "updates": [
