@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.13",
+    "date": "2025-03-08",
+    "updates": [
+      {
+        "component": "VueUiMolecule",
+        "description": "Remove direction pad and use better mouse or touch pan and zoom features",
+        "link": "/docs#vue-ui-molecule"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.12",
     "date": "2025-03-07",
     "updates": [
