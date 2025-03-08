@@ -1522,11 +1522,11 @@ const stackbarKey = ref(0);
                         v-bind="cat"
                     />
                 </div>
-            </Transition v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)">
+            </Transition>
 
             <UserOptionsMenu v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)" />
 
-            <DocsComponentMenu/>
+            <DocsComponentMenu v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)"/>
 
             <BaseDragElement 
                 snap-on-resize 
