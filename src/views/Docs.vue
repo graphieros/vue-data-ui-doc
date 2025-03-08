@@ -16,6 +16,7 @@ import { useIconMapUnderscore } from '../useIconMapUnderscore';
 import { useMakerStore } from "../stores/maker";
 import ChartSeeker from "../components/ChartSeeker.vue";
 import BaseDragElement from "../components/BaseDragElement.vue";
+import DocsComponentMenu from "../components/docs/DocsComponentMenu.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -1189,6 +1190,7 @@ const stackbarKey = ref(0);
 
             <Transition name="fade">
                 <div v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)" class="flex flex-col place-items-center place-content-center">
+
                     <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-2 mt-4">
                         <div class="flex flex-row gap-4 place-items-center">
                             <VueUiIcon name="settings" :size="80" :strokeWidth="1" class="hidden md:block" stroke="#42d392"/>
@@ -1523,6 +1525,9 @@ const stackbarKey = ref(0);
             </Transition>
 
             <UserOptionsMenu v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)" />
+
+            <DocsComponentMenu/>
+            
             <BaseDragElement 
                 snap-on-resize 
                 snap-on-load 
