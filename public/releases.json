@@ -1,5 +1,20 @@
 [
   {
+    "version": "v 2.6.14",
+    "date": "2025-03-09",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Fix chart not reactive when dataset changes",
+        "link": "/docs#vue-ui-word-cloud"
+      },
+      {
+        "component": "All charts with built-in annotator",
+        "description": "Draw directly on the chart svg, so that doodles are responsive."
+      }
+    ]
+  },
+  {
     "version": "v 2.6.13",
     "date": "2025-03-08",
     "updates": [
