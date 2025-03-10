@@ -1526,7 +1526,7 @@ const stackbarKey = ref(0);
 
             <UserOptionsMenu v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)" />
 
-            <DocsComponentMenu v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)"/>
+            <!-- <DocsComponentMenu v-if="['/docs', '/docs#list'].includes(router.currentRoute.value.fullPath)"/> -->
 
             <BaseDragElement 
                 snap-on-resize 
