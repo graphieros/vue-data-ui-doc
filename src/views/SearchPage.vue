@@ -5,6 +5,8 @@ import { searchInConfig } from '../searchHelper';
 import { useMainStore } from '../stores';
 import SideMenu from '../components/SideMenu.vue';
 import { FilterXIcon, ZoomCancelIcon } from 'vue-tabler-icons';
+import CodeParser from '../components/customization/CodeParser.vue';
+import ConfirmCopy from '../components/ConfirmCopy.vue';
 
 const store = useMainStore();
 const route = useRoute();
@@ -53,7 +55,8 @@ const accordionConfig = computed(() => {
         open: false,
         maxHeight: 10000,
         head: {
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        useArrowSlot: true
         },
         body: {
         backgroundColor: 'transparent'
@@ -65,7 +68,8 @@ const accordionConfig = computed(() => {
         open: false,
         maxHeight: 10000,
         head: {
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        useArrowSlot: true
         },
         body: {
         backgroundColor: 'transparent',
@@ -166,6 +170,33 @@ const iconMap = ref({
     VueUiCirclePack: 'chartCirclePack'
 })
 
+function jsonToJsObject(json, indent = 0, colorAuto=false) {
+
+    function formatValue(value, currentIndent) {
+        const nextIndent = currentIndent + 4;
+        const indentSpace = ' '.repeat(currentIndent);
+        const nextIndentSpace = ' '.repeat(nextIndent);
+
+        if (typeof value === 'boolean') return value.toString()
+        if (typeof value === 'string') {
+            return `'${value.replace(/'/g, "\\'")}'`;
+        } else if (Array.isArray(value)) {
+            return value.length === 0 ? '[]' : `[
+${nextIndentSpace}${value.map(v => formatValue(v, nextIndent)).join(`,
+${nextIndentSpace}`)}
+${indentSpace}]`;
+        } else if (typeof value === 'object' && value !== null) {
+            return `{
+${nextIndentSpace}${Object.entries(value)
+                    .map(([key, val]) => `${typeof Number(key) === 'number' && !isNaN(Number(key)) ? `'${key}'` : key}: ${colorAuto && key === 'color' && !val ? `'auto'`: formatValue(val, nextIndent)}`)
+                    .join(`,
+${nextIndentSpace}`)}
+${indentSpace}}`;
+        }
+        return value;
+    }
+    return formatValue(json, indent);
+}
 
 </script>
 
@@ -215,16 +246,21 @@ const iconMap = ref({
             component="VueUiAccordion"
             :config="isDarkMode ? accordionConfigDarkMode : accordionConfig"
             >
+            <template #arrow="{ backgroundColor, color, iconColor, isOpen }">
+                <VueUiIcon name="arrowRight" :size="12" :stroke="iconColor" />
+            </template>
+
             <template #title="{ color }">
                 <VueUiIcon :name="iconMap[res.componentName]" stroke="#666666"/>
-                <span
+                <span>{{ res.componentName }}: </span>
+                <code
                 v-html="
-                    res.path.replace(
+                    res.shortPath.replace(
                     searchTerm,
                     `<span class='text-app-blue font-black'>${searchTerm}</span>`
                     )
                 "
-                ></span>
+                ></code>
             </template>
 
             <template #content>
@@ -232,12 +268,11 @@ const iconMap = ref({
                 <div>Type: <code class="text-app-blue">{{ res.type }}</code></div>
                 {{ translations.search.defaultValue[store.lang] }} :
                 <div class="bg-[#272822] p-4 rounded">
-                    <code class="language-javascript" style="white-space: pre-wrap;">
-                        <span >{{
-                        res.type === "string" ? `"${res.value}"` : res.value
-                        }}</span>
-                        <div v-if="res.type === 'string' && res.value.includes('#')" :style="`background:${res.value}`" class="h-6 w-6 rounded border border-gray-400"/>
-                    </code>
+                    <CodeParser :content="jsonToJsObject(res.value)" language="javascript" @copy="store.copy()">
+                        <template #color v-if="res.type === 'string' && res.value.includes('#')">
+                            <div :style="`background:${res.value}`" class="h-6 w-6 rounded border border-gray-400"/>
+                        </template>
+                    </CodeParser>
                 </div>
                 <router-link :to="`/docs#${res.route}`">
                     <div class="hover:underline dark:text-app-green font-black mt-2">
@@ -250,4 +285,5 @@ const iconMap = ref({
             </VueDataUi>
         </div>
     </div>
+    <ConfirmCopy/>
 </template>

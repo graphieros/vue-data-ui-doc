@@ -53,10 +53,12 @@ const config = computed(() => {
 </script>
 
 <template>
-    <div class="relative" :style="{
+    <div class="relative flex flex-row w-full place-items-center" :style="{
         pointerEvents: noPointerEvents ? 'none' : 'all'
     }">
-        <VueHiCode 
+        <slot name="color"/>
+        <VueHiCode
+            class="w-full"
             :content="content" 
             :language="language" 
             v-bind="config" 

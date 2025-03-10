@@ -17,12 +17,13 @@ export function searchInConfig(searchTerm) {
     function searchObject(obj, objName = "", path = "") {
         for (let key in obj) {
             if (obj.hasOwnProperty(key)) {
-                const newPath = path ? `${path} ➜ ${key}` : key;
+                const newPath = path ? `${path}.${key}` : key;
                 const fullPath = objName ? `${formatString(objName)} : ${newPath}` : newPath;
 
                 if (key.toUpperCase() === searchTerm.toUpperCase()) {
                     results.push({
                         path: fullPath,
+                        shortPath: newPath,
                         value: obj[key] === null ? 'null' : obj[key],
                         type: getType(obj[key]),
                         route: objName.replaceAll("_", "-"),

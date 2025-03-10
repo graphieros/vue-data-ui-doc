@@ -6,6 +6,7 @@ import {useConfig} from "../assets/useConfig";
 import Prism from "prismjs"
 import { useRouter } from "vue-router";
 import vClickOutside from "../directives/vClickOutside"
+import CodeParser from "./customization/CodeParser.vue";
 
 const config = useConfig()
 
@@ -341,12 +342,13 @@ function closeList() {
                 <div>Type: <code class="text-app-blue">{{ res.type }}</code></div>
                 {{ store.translations.search.defaultValue[store.lang] }} :
                 <div class="bg-[#272822] p-4 rounded">
-                  <code class="language-javascript" style="white-space: pre-wrap;">
+                  <CodeParser :content="res.value"/>
+                  <!-- <code class="language-javascript" style="white-space: pre-wrap;">
                       <span >{{
                       res.type === "string" ? `"${res.value}"` : res.value
                       }}</span>
                       <div v-if="res.type === 'string' && res.value.includes('#')" :style="`background:${res.value}`" class="h-6 w-6 rounded border border-gray-400"/>
-                  </code>
+                  </code> -->
                 </div>
                 <router-link :to="`/docs#${res.route}`" @click="useModal('close')">
                   <div class="hover:underline dark:text-app-green font-black mt-2">
