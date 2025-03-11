@@ -2,9 +2,9 @@
 import { ref, computed, nextTick } from "vue";
 import { useNestedProp } from "../../useNestedProp";
 import { getVueDataUiConfig } from "vue-data-ui";
-import { copyCode, copyText } from "./lib";
+import { copyCode } from "./lib";
 import { useMainStore } from "../../stores";
-import { NumbersIcon, CopyIcon, RefreshDotIcon } from "vue-tabler-icons";
+import { CopyIcon, RefreshDotIcon } from "vue-tabler-icons";
 import { useMakerStore } from "../../stores/maker";
 import IconSettings from "../IconSettings.vue";
 import BaseDragMenu from "../BaseDragMenu.vue";

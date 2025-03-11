@@ -5,7 +5,7 @@ import colorBridge from "color-bridge";
 
 const { utils } = colorBridge();
 
-const { lightenHexColor, shiftHue } = utils();
+const { shiftHue } = utils();
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
