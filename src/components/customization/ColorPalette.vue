@@ -5,6 +5,7 @@ import { useMainStore } from "../../stores";
 import { getPalette } from "vue-data-ui";
 import ConfirmCopy from "../ConfirmCopy.vue";
 import CodeParser from "./CodeParser.vue";
+import ColorBridgeIcon from "../maker/ColorBridgeIcon.vue";
 
 const store = useMainStore()
 const translations = computed(() => {
@@ -294,8 +295,8 @@ const { palette, hues } = bridge({ culture: 'western' });
                 <CodeParser :content="colorBridgeCode" language="javascript"/>
             </div>
             <div class="flex flex-row justify-center mt-6">
-                <button class="py-2 px-5 bg-gradient-to-br to-[#FF6030] from-[#FF9020] hover:from-[#FF6030] hover:to-[#FF9020] text-black rounded flex flew-row place-items-center gap-2">
-                    <VueUiIcon name="moodWink" stroke="#1A1A1A" />
+                <button class="py-2 px-5 rounded flex flew-row place-items-center gap-2 bg-gray-200 dark:bg-[#FFFFFF20] shadow-md hover:shadow-lg transition-all">
+                    <ColorBridgeIcon/>
                     <a href="https://color-bridge.graphieros.com/" target="_blank">
                         Color Bridge docs
                     </a>
