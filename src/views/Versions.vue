@@ -12,6 +12,7 @@ import { shiftHue } from '../components/maker/lib'
 import RepoStars from "../components/RepoStars.vue";
 import { darkenColor } from "vue-data-ui";
 import Downloads from "../components/Downloads.vue";
+import { BugIcon, GitForkIcon, StarFilledIcon, UserHeartIcon } from "vue-tabler-icons";
 
 const globalConfig = useConfig()
 
@@ -1568,6 +1569,16 @@ const KPIS = computed(() => {
         name: key.replaceAll('_', ' '),
         value: store.pack[key],
         link: `https://github.com/graphieros/vue-data-ui/${kpiLinks.value[key]}`,
+        icon: key === 'stargazers_count'
+          ? StarFilledIcon
+          : key === 'forks_count'
+            ? GitForkIcon
+            : key === 'open_issues_count'
+              ? BugIcon
+              : key === 'subscribers_count'
+                ? UserHeartIcon
+                : ''
+        ,
         color: key === 'stargazers_count'
           ? '#fdd663'
           : key === 'forks_count'
@@ -1849,7 +1860,6 @@ const dogFood = ref({
                 :config="{
                   backgroundColor: isDarkMode ? `${kpi.color}10` : '#FFFFFF',
                   layoutClass: 'p-4 rounded-md shadow-md',
-                  title: kpi.name,
                   titleColor: isDarkMode ? kpi.color : '#1A1A1A',
                   titleClass: 'text-left pl-1 capitalize',
                   valueClass: 'tabular-nums mt-2',
@@ -1860,7 +1870,13 @@ const dogFood = ref({
                     skeletonColor: isDarkMode ? '#3A3A3A' : '#E1E5E8'
                   }
                 }"
-              />
+              >
+                <template #title>
+                  <div class="flex flex-row place-items-center gap-2">
+                    <component :is="kpi.icon"/> {{  kpi.name }}
+                  </div>
+                </template>
+            </VueDataUi>
             </a>
           </button>
         </div>
