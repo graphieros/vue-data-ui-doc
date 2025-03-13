@@ -398,7 +398,7 @@ function copyToClipboard(conf) {
         <template v-for="item in items" >
             <div v-if="isVisible(item.names)" class="mb-4">
                 <div class="flex flex-row gap-2 place-items-center flex-wrap mb-2">
-                    <div v-for="tag in item.names" class="bg-app-green text-black rounded-full px-2 py-0.5 shadow">
+                    <div v-for="tag in item.names" class="bg-gradient-to-br from-[#6fe8b2] to-app-green text-black rounded-full px-2 py-0.5 shadow">
                         #{{ tag.replaceAll('_', '').replaceAll('-circlePack', '') }}
                     </div>
                 </div>
