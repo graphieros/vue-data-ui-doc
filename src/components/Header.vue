@@ -309,7 +309,8 @@ onBeforeUnmount(() => {
                                             <div 
                                                 :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-satoshi-bold cursor-default hover:no-underline' : ''}`"
                                             >
-                                                {{ item.name }}
+                                                <span class="text-gray-500">VueUi</span>
+                                                <span>{{ item.name.replaceAll('VueUi', '') }}</span>
                                             </div>
                                         </div>
                                     </RouterLink>
