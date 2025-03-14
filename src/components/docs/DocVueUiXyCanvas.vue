@@ -1335,7 +1335,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDataset
                     />
                     <BaseAttr
                       name="left"
-                      attr="style.chart.paddingProportions.bottom"
+                      attr="style.chart.paddingProportions.left"
                       type="number"
                       defaultVal="0.1"
                       :min="0"
