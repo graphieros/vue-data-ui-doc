@@ -2545,6 +2545,16 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.title.fontSize', def: 16, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title' },
                     { key: 'style.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
                     { key: 'style.title.bold', def: true, type: 'checkbox', label: 'bold', category: 'title' },
+
+                    { key: 'style.tooltip.show', def: false, type: 'checkbox', label: 'show', category: 'tooltip' },
+                    { key: 'style.tooltip.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'tooltip' },
+                    { key: 'style.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip'},
+                    { key: 'style.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip'},
+                    { key: 'style.tooltip.offsetY', def: 0, type: 'number', min: -50, max: 50, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.tooltip.borderWidth', def: 0, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'tooltip'},
+                    { key: 'style.tooltip.borderColor', def: '#E1E5E8', type: 'color', label: ['border', 'is', 'color'], category: 'tooltip'},
+                    { key: 'style.tooltip.borderRadius', def: 2, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
+                    { key: 'style.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['background', 'is', 'opacity'], category: 'tooltip'}
                 ]
             },
             vue_ui_sparkstackbar: {

@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.18",
+    "date": "2025-03-15",
+    "updates": [
+      {
+        "component": "VueUiSparkline",
+        "description": "Add optional mini tooltip",
+        "link": "/docs#vue-ui-sparkline"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.17",
     "date": "2025-03-14",
     "updates": [

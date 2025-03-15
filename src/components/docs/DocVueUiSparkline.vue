@@ -177,6 +177,17 @@ const darkModeConfig = ref({
       bold: true,
       text: "Title"
     },
+    tooltip: {
+      show: false,
+      fontSize: 14,
+      color: "#CCCCCC",
+      backgroundColor: '#1A1A1A',
+      offsetY: 0,
+      borderWidth: 0,
+      borderColor: '#3A3A3A',
+      borderRadius: 2,
+      backgroundOpacity: 100,
+    },
     area: {
       show: true,
       useGradient: true,
@@ -185,6 +196,7 @@ const darkModeConfig = ref({
     }
   }
 });
+
 const config = ref({
   type: 'line',
   downsample: {
@@ -251,6 +263,17 @@ const config = ref({
       fontSize: 16,
       bold: true,
       text: "Title"
+    },
+    tooltip: {
+      show: false,
+      fontSize: 14,
+      color: "#1A1A1A",
+      backgroundColor: '#FFFFFF',
+      offsetY: 0,
+      borderWidth: 0,
+      borderColor: '#E1E5E8',
+      borderRadius: 2,
+      backgroundOpacity: 100,
     },
     area: {
       show: true,
@@ -330,7 +353,8 @@ function randomizeData() {
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <VueUiSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <VueUiSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+            </VueUiSparkline>
           </DocSnapper>
           <BaseRandomButton @click="randomizeData"/>
         </div>
@@ -517,6 +541,17 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
         <BaseAttr name="fontSize" attr="style.title.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="bold" attr="style.title.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="text" attr="style.title.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+      </BaseDetails>
+      <BaseDetails attr="tooltip" :level="2" title="style.tooltip">
+        <BaseAttr name="show" attr="style.tooltip.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="fontSize" attr="style.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="color" attr="style.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseAttr name="backgroundColor" attr="style.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseAttr name="offsetY" attr="style.tooltip.offsetY" type="number" :min="-30" :max="30" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="borderWidth" attr="style.tooltip.borderWidth" type="number" :min="0" :max="12" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="borderColor" attr="style.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="borderRadius" attr="style.tooltip.borderRadius" type="number" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="backgroundOpacity" attr="style.tooltip.backgroundOpacity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       </BaseDetails>
       <BaseDetails attr="verticalIndicator" :level="2" title="style.verticalIndicator">
         <BaseAttr name="show" attr="style.verticalIndicator.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />

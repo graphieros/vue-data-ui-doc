@@ -357,6 +357,7 @@ export function useConfig() {
                             color: COLOR_BLACK,
                             fontSize: FONT._14,
                             bold: false,
+                            rounding: 0
                         }
                     },
                 }
@@ -1224,10 +1225,13 @@ export function useConfig() {
                 layout: {
                     wheel: {
                         ticks: {
+                            type: 'classic', // or 'arc'
                             rounded: true,
                             inactiveColor: COLOR_GREY_LIGHT,
                             activeColor: COLOR_BLUE,
                             sizeRatio: 0.9,
+                            quantity: 100, // min 100
+                            strokeWidth: 5,
                             gradient: {
                                 show: true,
                                 shiftHueIntensity: 100
@@ -2090,6 +2094,17 @@ export function useConfig() {
                 bold: true,
                 text: ''
             },
+            tooltip: {
+                show: false,
+                fontSize: FONT._14,
+                color: COLOR_BLACK,
+                backgroundColor: COLOR_WHITE,
+                offsetY: 0,
+                borderWidth: 0,
+                borderColor: COLOR_GREY_LIGHT,
+                borderRadius: 2,
+                backgroundOpacity: 100
+            },
             area: {
                 show: true,
                 useGradient: true,
@@ -2405,7 +2420,7 @@ export function useConfig() {
         donutShowTotal: true,
         donutStrokeWidth: 2,
         donutThicknessRatio: 0.18,
-        donutTotalLabelFontSize: 24,
+        donutTotalLabelFontSize: FONT._24,
         donutTotalLabelOffsetY: 0,
         donutTotalLabelText: 'Total',
         donutUseShadow: false,
@@ -2445,14 +2460,14 @@ export function useConfig() {
         },
         title: '',
         titleBold: true,
-        titleFontSize: 16,
+        titleFontSize: FONT._16,
         titleTextAlign: 'center',
         tooltipCustomFormat: null,
         tooltipBackgroundOpacity: 100,
         tooltipBorderRadius: 4,
         tooltipBorderColor: COLOR_GREY_LIGHT,
         tooltipBorderWidth: 1,
-        tooltipFontSize: 14,
+        tooltipFontSize: FONT._14,
         tooltipPosition: POSITION.CENTER,
         tooltipOffsetY: 24,
         useCustomLegend: false,
@@ -3674,7 +3689,8 @@ export function useConfig() {
                             offsetX: 0,
                             rounding: 1,
                             prefix: '',
-                            suffix: ''
+                            suffix: '',
+                            bold: false,
                         },
                         verticalLines: {
                             show: true,
@@ -3690,7 +3706,8 @@ export function useConfig() {
                             rotation: 0,
                             offsetY: 30,
                             color: COLOR_BLACK,
-                            modulo: 12
+                            modulo: 12,
+                            bold: false,
                         }
                     },
                     x: {
@@ -3717,6 +3734,11 @@ export function useConfig() {
                         radiusRatio: 1
                     }
                 },
+                bar: {
+                    gradient: {
+                        show: true
+                    }
+                },
                 area: {
                     opacity: 60
                 },
@@ -3726,7 +3748,8 @@ export function useConfig() {
                     useSerieColor: true,
                     color: COLOR_BLACK,
                     offsetY: -12,
-                    formatter: null
+                    formatter: null,
+                    bold: true
                 },
                 paddingProportions: {
                     top: 0.1,
@@ -5125,7 +5148,7 @@ export function useConfig() {
                     },
                     labels: {
                         show: true,
-                        fontSize: 10,
+                        fontSize: FONT._10,
                         color: COLOR_BLACK,
                         bold: false,
                         offsetY: 0,
@@ -5212,13 +5235,13 @@ export function useConfig() {
                         zoomRatio: 1,
                         label: {
                             name: {
-                                fontSize: 14,
+                                fontSize: FONT._14,
                                 bold: false,
                                 offsetY: 0,
                                 color: 'auto'
                             },
                             value: {
-                                fontSize: 14,
+                                fontSize: FONT._14,
                                 bold: false,
                                 offsetY: 0,
                                 rounding: 0,

@@ -4001,6 +4001,41 @@ export default function useExamples() {
                     ar: "مع خلفية مخصصة"
                 }
             },
+            // SPARKLINE TOOLTIP
+            {
+                dataset: DATASET_SPARKLINE.value,
+                config: {
+                    ...CONFIG_SPARKLINE_BASE.value,
+                    style: {
+                        ...CONFIG_SPARKLINE_BASE.value.style,
+                        line: {
+                            ...CONFIG_SPARKLINE_BASE.value.style.line,
+                        },
+                        tooltip: {
+                            show: true,
+                            backgroundOpacity: 20,
+                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                        },
+                        title: { show: false },
+                        dataLabel: { show: false }
+                    }
+                },
+                component: 'VueUiSparkline',
+                icon: 'chartSparkline',
+                id: 'sparkline-tooltip',
+                link: 'vue-ui-sparkline',
+                description: {
+                    en: "With a tooltip",
+                    fr: "Avec une info-bulle",
+                    pt: "Com uma dica de ferramenta",
+                    de: "Mit einem Tooltip",
+                    zh: "带有工具提示",
+                    jp: "ツールチップ付き",
+                    es: "Con un tooltip",
+                    ko: "툴팁 포함",
+                    ar: "مع تلميح الأدوات"
+                }
+            },
             // STACKBAR BASIC
             { 
                 dataset: DATASET_STACKBAR_BASIC.value, 

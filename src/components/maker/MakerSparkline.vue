@@ -63,6 +63,10 @@ const CONFIG_CATEGORIES = computed(() => {
             key: 'title',
             title: makerTranslations.value.categories.title[store.lang]
         },
+        {
+            key: 'tooltip',
+            title: makerTranslations.value.categories.tooltip[store.lang] + ' (since v2.6.18)'
+        },
     ]
 })
 
