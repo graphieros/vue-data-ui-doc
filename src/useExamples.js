@@ -4011,6 +4011,9 @@ export default function useExamples() {
                         line: {
                             ...CONFIG_SPARKLINE_BASE.value.style.line,
                         },
+                        area: {
+                            show: true,
+                        },
                         tooltip: {
                             show: true,
                             backgroundOpacity: 20,
