@@ -69,6 +69,10 @@ const maxDownload = computed(() => {
                     plot: {
                         show: false,
                     },
+                    // tooltip: {
+                    //     show: true,
+                    //     fontSize: 8
+                    // },
                     verticalIndicator: {
                         show: false,
                     }
