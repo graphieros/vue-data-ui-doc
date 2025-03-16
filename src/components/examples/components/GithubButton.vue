@@ -36,6 +36,21 @@ const maxDownload = computed(() => {
     return Math.max(...store.npmDownloads.map(d => d.value))
 })
 
+const months = {
+    '01': 'Jan',
+    '02': 'Feb',
+    '03': 'Mar',
+    '04': 'Apr',
+    '05': 'May',
+    '06': 'Jun',
+    '07': 'Jul',
+    '08': 'Aug',
+    '09': 'Sep',
+    '10': 'Oct',
+    '11': 'Nov',
+    '12': 'Dec',
+}
+
 </script>
 
 <template>
@@ -67,18 +82,31 @@ const maxDownload = computed(() => {
                         strokeWidth: 1.6,
                     },
                     plot: {
-                        show: false,
+                        show: true,
+                        radius: isDarkMode ? 2 : 3,
+                        stroke: isDarkMode ? '#fdd663' : '#FFFFFF'
                     },
-                    // tooltip: {
-                    //     show: true,
-                    //     fontSize: 8
-                    // },
+                    tooltip: {
+                        show: true,
+                        fontSize: 8,
+                        backgroundOpacity: 0,
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                    },
                     verticalIndicator: {
-                        show: false,
+                        show: true,
+                        strokeWidth: 1,
+                        strokeDasharray: 2,
+                        color: isDarkMode ? '#fdd663' : '#8A8A8A'
                     }
                 }
             }"
-        />
+        >
+            <template #tooltip="{ period, absoluteValue }">
+                <div class="flex flex-nowrap">
+                    {{ months[period.split('-')[1]] }} {{ Number(period.split('-')[2]) }}: {{ absoluteValue }}
+                </div>
+            </template>
+        </VueUiSparkline>
     </div>
 
     <a v-if="issues" href="https://github.com/graphieros/vue-data-ui/issues" target="_blank" class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[235px] right-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#5f8aee] hover:shadow-md bg-gradient-to-b from-[#8eabed] to-[#5f8aee]">
