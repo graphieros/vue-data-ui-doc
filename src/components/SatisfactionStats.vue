@@ -573,7 +573,7 @@ const xyConfig = computed(() => {
 })
 
 const verticalBarDataset = computed(() => {
-    return ratings.value.map((r, i) => {
+    return ratings.value.sort((a, b) => b.raters - a.raters).map((r, i) => {
         return {
             name: `${r.name
                     .split('_')
@@ -582,9 +582,11 @@ const verticalBarDataset = computed(() => {
                     })
                     .join('')} ( ${r.raters} )`,
             value: r.average,
+            raters: r.raters
         }
-    }).sort((a, b) => b.value - a.value).map((r, i) => {
-        console.log(i, i / ratings.value.length / 10)
+    })
+        .toSorted((a, b) => b.value - a.value)
+        .map((r, i) => {
         return {
             ...r,
             color: shiftHue({
@@ -604,6 +606,7 @@ const verticalBarConfig = computed(() => {
                 layout: {
                     bars: {
                         borderRadius: 1,
+                        gap: 2,
                         dataLabels: {
                             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                             offsetX: 8,
@@ -615,11 +618,11 @@ const verticalBarConfig = computed(() => {
                                 roundingValue: 1
                             }
                         },
-                        height: 24,
+                        height: 16,
                         nameLabels: {
                             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                             offsetX: -12,
-                            fontSize: 12
+                            fontSize: 10
                         }
                     },
                     highlighter: {
