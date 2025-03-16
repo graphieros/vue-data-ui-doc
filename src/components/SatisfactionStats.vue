@@ -2,6 +2,13 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
+import colorBridge from "color-bridge"
+
+const { utils } = colorBridge();
+
+const {
+    shiftHue,
+} = utils();
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -566,7 +573,7 @@ const xyConfig = computed(() => {
 })
 
 const verticalBarDataset = computed(() => {
-    return ratings.value.map(r => {
+    return ratings.value.map((r, i) => {
         return {
             name: `${r.name
                     .split('_')
@@ -575,7 +582,15 @@ const verticalBarDataset = computed(() => {
                     })
                     .join('')} ( ${r.raters} )`,
             value: r.average,
-            color: '#1F77B4'
+        }
+    }).sort((a, b) => b.value - a.value).map((r, i) => {
+        console.log(i, i / ratings.value.length / 10)
+        return {
+            ...r,
+            color: shiftHue({
+                hexColor: '#1F77B4',
+                force: -i / ratings.value.length / 5
+            })
         }
     })
 })
