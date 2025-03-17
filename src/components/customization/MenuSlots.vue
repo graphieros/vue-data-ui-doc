@@ -36,7 +36,7 @@ const code0 = ref(`const config = ref({
 
 const code3 = ref(`<VueUiXy :config="config" :dataset="dataset">
     <template #menuIcon="{ isOpen, color }">
-        <div>{{ isOpen ? 'close' : 'open' }}</div>
+        <div>{{ isOpen ? '👆' : '👇' }}</div>
     </template>
 </VueUiXy>`
 )
