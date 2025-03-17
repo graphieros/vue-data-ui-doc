@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.20",
+    "date": "2025-03-17",
+    "updates": [
+      {
+        "component": "All components with user options menu",
+        "description": "Add #menuIcon slot to customize menu icon",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.6.19",
     "date": "2025-03-16",
     "updates": [

@@ -34,6 +34,13 @@ const code0 = ref(`const config = ref({
 })`
 )
 
+const code3 = ref(`<VueUiXy :config="config" :dataset="dataset">
+    <template #menuIcon="{ isOpen, color }">
+        <div>{{ isOpen ? 'close' : 'open' }}</div>
+    </template>
+</VueUiXy>`
+)
+
 </script>
 
 <template>
@@ -58,6 +65,11 @@ const code0 = ref(`const config = ref({
     <CodeParser :content="code2" language="html"/>
 </div>
 
+    The menu icon is also customizable if you don't like the classical burger menu icon:
+<div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
+    <CodeParser :content="code3" language="html"/>
+</div>
+
 
         <table class="schema table-auto border-collapse border border-slate-500 my-4 w-full">
             <caption class="my-6">User options</caption>
@@ -68,6 +80,10 @@ const code0 = ref(`const config = ref({
                 </tr>
             </thead>
             <tbody>
+                <tr class="bg-[#FFFFFF10]">
+                    <td class="p-2 border border-slate-700">-</td>
+                    <td class="p-2 border border-slate-700">#menuIcon</td>
+                </tr>
                 <tr class="bg-[#FFFFFF10]">
                     <td class="p-2 border border-slate-700">tooltip</td>
                     <td class="p-2 border border-slate-700">#optionTooltip</td>
