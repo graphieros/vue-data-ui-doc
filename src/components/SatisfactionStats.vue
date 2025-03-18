@@ -866,7 +866,7 @@ function capitalizeFirstLetter(val) {
         <ul>
             <li v-for="item in latestItems" class="flex flex-row gap-2">
                 <span>{{ item.stars }}</span>
-                <span>{{ item.name }}</span>
+                <span class="text-gray-400 dark:text-gray-500">VueUi<span class="text-black dark:text-gray-200">{{ item.name.replaceAll('VueUi', '') }}</span></span>
             </li>
         </ul>
     </div>
