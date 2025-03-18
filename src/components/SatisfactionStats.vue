@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 import colorBridge from "color-bridge"
+import { VueDataUi } from "vue-data-ui";
 
 const { utils } = colorBridge();
 
@@ -313,6 +314,149 @@ const ratings = computed(() => {
     });
 });
 
+const latestItems = computed(() => {
+    if (!stats.value.length) return [];
+    const dates = stats.value.map(item => item.created_at.split(' ')[0]);
+    const latestDate = dates.reduce((max, date) => date > max ? date : max, dates[0]);
+    return stats.value.filter(item => item.created_at.split(' ')[0] === latestDate).map(item => {
+        return {
+            ...item,
+            stars:  Array(item.rating).fill('⭐').join(''),
+            name: `${item.item_id
+                .split('_')
+                .map((w, _i) => {
+                    return capitalizeFirstLetter(w);
+                })
+                .join('')}`
+        }
+    })
+});
+
+const stackbarData = computed(() => {
+    const stripped = stats.value.map(s => ({
+        ...s,
+        created_at: s.created_at.split(' ')[0]
+    }));
+
+    const groups = Object.groupBy(stripped, ({ created_at }) => created_at);
+
+    const dates = fillEmptyDays(
+        Object.keys(groups).toSorted((a, b) => dateToTimestamp(a) - dateToTimestamp(b))
+    );
+
+    const defaultRatings = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+
+    const t = dates.map(date => {
+        let series;
+        if (groups[date]) {
+            series = countRatings(
+                Object.groupBy(groups[date], ({ rating }) => rating)
+            );
+            series = { ...defaultRatings, ...series };
+        } else {
+            series = { ...defaultRatings };
+        }
+        return series;
+    });
+
+    const colors = [
+        '#fc5603',
+        '#ff8c00',
+        '#ffd500',
+        '#07e319',
+        '#1F77B4'
+    ];
+
+    const arr = [];
+    for (let i = 1; i <= 5; i += 1) {
+        arr.push({
+            name: Array(i).fill('⭐').join(''),
+            series: t.map(series => series[i]),
+            color: colors[i - 1]
+        });
+    }
+    return arr;
+});
+
+
+const stackbarConfig = computed(() => {
+    return {
+        userOptions: { show: false },
+        style: {
+            chart: {
+                backgroundColor: 'transparent',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                bars: {
+                    distributed: false,
+                    gapRatio: 0,
+                    totalValues: {
+                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    },
+                    dataLabels: {
+                        show: false
+                    }
+                },
+                grid: {
+                    x: {
+                        axisColor: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                        timeLabels: {
+                            show: false,
+                            values: history.value.dates
+                        }
+                    },
+                    y: {
+                        axisColor: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                        axisName: {
+                            show: true,
+                            text: 'Number of votes',
+                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                            fontSize: 24
+                        },
+                        axisLabels: {
+                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                            fontSize: 16
+                        }
+                    }
+                },
+                highlighter: {
+                    color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
+                },
+                legend: {
+                    backgroundColor: 'transparent',
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                },
+                padding: {
+                    top: 0,
+                    right: 36,
+                    bottom: 0,
+                    left: 64
+                },
+                title: {
+                    text: 'Ratings daily breakdown',
+                    color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
+                    textAlign: 'center',
+                    subtitle: {
+                        text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
+                        color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
+                    }
+                },
+                tooltip: {
+                    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                    backgroundOpacity: 20,
+                    borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                },
+                zoom: {
+                    color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                    highlightColor: '#1F77B4',
+                    startIndex: history.value.averagePerDay.length - 14,
+                    endIndex: history.value.averagePerDay.length - 1
+                }
+            }
+        }
+    }
+})
+
 function fillEmptyDays(dates) {
     const parsedDates = dates.map(dateStr => {
         const parts = dateStr.split('-');
@@ -347,7 +491,7 @@ function dateToTimestamp(dateStr) {
 
 function countRatings(ratingsObj) {
     let result = {};
-    
+
     for (let i = 1; i <= 5; i++) {
         if (ratingsObj[i]) {
             result[i] = ratingsObj[i].length;
@@ -355,7 +499,7 @@ function countRatings(ratingsObj) {
             result[i] = 0;
         }
     }
-    
+
     return result;
 }
 
@@ -370,7 +514,7 @@ const history = computed(() => {
     }), ({ created_at }) => created_at)
 
     const dates = fillEmptyDays(Object.keys(groups).toSorted((a, b) => dateToTimestamp(a) - dateToTimestamp(b)))
-    
+
     const ratingsPerDay = dates.map(date => {
         return groups[date] ? groups[date].length : null
     });
@@ -378,7 +522,7 @@ const history = computed(() => {
         return groups[date] ? groups[date].map(user => user.rating).reduce((a, b) => a + b, 0) / groups[date].length : null
     })
 
-    const ratingBreakdown = countRatings(Object.groupBy(stats.value, ({ rating }) =>  rating));
+    const ratingBreakdown = countRatings(Object.groupBy(stats.value, ({ rating }) => rating));
 
     return {
         dates,
@@ -403,7 +547,7 @@ const ratingBreakdownBarDataset = computed(() => {
     ]
 })
 
-function makeRatingBreakdown(ratingBreakdown, name, type="bar") {
+function makeRatingBreakdown(ratingBreakdown, name, type = "bar") {
     const source = Object.keys(ratingBreakdown);
     const series = source.map(key => {
         return ratingBreakdown[key] || 0
@@ -477,7 +621,7 @@ const xyDataset = computed(() => {
             scaleSteps: 5,
             suffix: ' ⭐'
         },
-        { 
+        {
             name: 'Ratings per day',
             series: history.value.ratingsPerDay,
             type: 'bar',
@@ -540,7 +684,7 @@ const xyConfig = computed(() => {
                 color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
                 highlightColor: '#1F77B4',
                 startIndex: history.value.averagePerDay.length - 14,
-                endIndex:  history.value.averagePerDay.length - 1
+                endIndex: history.value.averagePerDay.length - 1
             }
         },
         bar: {
@@ -576,25 +720,25 @@ const verticalBarDataset = computed(() => {
     return ratings.value.sort((a, b) => b.raters - a.raters).map((r, i) => {
         return {
             name: `${r.name
-                    .split('_')
-                    .map((w, _i) => {
-                        return capitalizeFirstLetter(w);
-                    })
-                    .join('')} ( ${r.raters} )`,
+                .split('_')
+                .map((w, _i) => {
+                    return capitalizeFirstLetter(w);
+                })
+                .join('')} ( ${r.raters} )`,
             value: r.average,
             raters: r.raters
         }
     })
         .toSorted((a, b) => b.value - a.value)
         .map((r, i) => {
-        return {
-            ...r,
-            color: shiftHue({
-                hexColor: '#1F77B4',
-                force: -i / ratings.value.length / 5
-            })
-        }
-    })
+            return {
+                ...r,
+                color: shiftHue({
+                    hexColor: '#1F77B4',
+                    force: -i / ratings.value.length / 5
+                })
+            }
+        })
 })
 
 const verticalBarConfig = computed(() => {
@@ -669,26 +813,21 @@ function capitalizeFirstLetter(val) {
 </script>
 
 <template>
-    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueUiXy
-            :dataset="xyDataset"
-            :config="xyConfig"
-        />
+    <div v-if="ratings.length"
+        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueUiXy :dataset="xyDataset" :config="xyConfig" />
     </div>
 
-    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueUiVerticalBar
-            :dataset="verticalBarDataset"
-            :config="verticalBarConfig"
-        />
+    <div v-if="ratings.length"
+        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueUiVerticalBar :dataset="verticalBarDataset" :config="verticalBarConfig" />
     </div>
 
-    <div v-if="ratings.length" class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueUiRating
-            :dataset="{
-                rating: history.ratingBreakdown
-            }"
-            :config="{
+    <div v-if="ratings.length"
+        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueUiRating :dataset="{
+            rating: history.ratingBreakdown
+        }" :config="{
                 type: 'star',
                 readonly: true,
                 style: {
@@ -701,7 +840,7 @@ function capitalizeFirstLetter(val) {
                         offsetY: 40
                     },
                     star: {
-                        inactiveColor: isDarkMode ? '#3A3A3A': '#FFFFFF'
+                        inactiveColor: isDarkMode ? '#3A3A3A' : '#FFFFFF'
                     },
                     tooltip: {
                         backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
@@ -710,33 +849,43 @@ function capitalizeFirstLetter(val) {
                         offsetY: 12,
                     }
                 }
-            }"
-        />
-        <VueUiXy
-            :dataset="ratingBreakdownBarDataset"
-            :config="ratingBreakdownBarConfig"
-        />
+            }" />
+        <VueUiXy :dataset="ratingBreakdownBarDataset" :config="ratingBreakdownBarConfig" />
+    </div>
+
+    <div v-if="ratings.length"
+    class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueDataUi component="VueUiStackbar" :dataset="stackbarData" :config="stackbarConfig" />
+    </div>
+
+    <div v-if="ratings.length"
+    class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <div class="text-xl text-center mb-4 flex flex-col">
+            <span>Latest votes</span> 
+            <span class="text-xs text-gray-500">{{ latestItems[0].created_at.split(' ')[0] }}</span></div>
+        <ul>
+            <li v-for="item in latestItems" class="flex flex-row gap-2">
+                <span>{{ item.stars }}</span>
+                <span>{{ item.name }}</span>
+            </li>
+        </ul>
     </div>
 
     <h2 v-if="ratings.length" class="my-6 text-xl">
         User ratings of individual components
     </h2>
     <div class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10" v-if="ratings.length">
-        <ButtonSatisfactionBreakdown 
-            v-for="c in ratings"
-            :dataset-gauge="{
-                value: c.average,
-                min: 1,
-                max: 5,
-                title: `${c.name
-                    .split('_')
-                    .map((w, _i) => {
-                        return capitalizeFirstLetter(w);
-                    })
-                    .join('')} (${c.raters})`,
-            }"
-            :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')"
-            :config-gauge="{
+        <ButtonSatisfactionBreakdown v-for="c in ratings" :dataset-gauge="{
+            value: c.average,
+            min: 1,
+            max: 5,
+            title: `${c.name
+                .split('_')
+                .map((w, _i) => {
+                    return capitalizeFirstLetter(w);
+                })
+                .join('')} (${c.raters})`,
+        }" :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')" :config-gauge="{
                 style: {
                     background: 'transparent',
                     basePosition: 64,
@@ -757,8 +906,7 @@ function capitalizeFirstLetter(val) {
                         color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
                     },
                 },
-            }"
-            :config-xy="{
+            }" :config-xy="{
                 ...ratingBreakdownBarConfig,
                 chart: {
                     ...ratingBreakdownBarConfig.chart,
@@ -769,7 +917,7 @@ function capitalizeFirstLetter(val) {
                             xAxisLabels: {
                                 ...ratingBreakdownBarConfig.chart.grid.labels.xAxisLabels,
                                 values: isDarkMode ? ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'] : ['★', '★★', '★★★', '★★★★', '★★★★★'],
-                                fontSize: isDarkMode ? 24: 36,
+                                fontSize: isDarkMode ? 24 : 36,
                                 yOffset: isDarkMode ? 4 : -4
                             }
                         }
@@ -788,7 +936,6 @@ function capitalizeFirstLetter(val) {
                         offsetY: -36
                     }
                 }
-            }"
-        />
+            }" />
     </div>
 </template>
