@@ -833,11 +833,11 @@ function capitalizeFirstLetter(val) {
                 style: {
                     backgroundColor: 'transparent',
                     title: {
-                        text: 'Ratings breakdown',
+                        text: `Ratings breakdown (${stats.length} votes)`,
                         color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
                         fontSize: 20,
                         bold: false,
-                        offsetY: 40
+                        offsetY: 40,
                     },
                     star: {
                         inactiveColor: isDarkMode ? '#3A3A3A' : '#FFFFFF'
