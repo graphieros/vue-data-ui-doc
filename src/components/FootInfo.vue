@@ -21,13 +21,13 @@ const isMenuOpen = computed(() => store.isMenuOpen);
 
 const menuItems = computed(() => {
     return [
-        { link: '/installation', title: translations.value.menu.installation[store.lang] },
-        { link: '/docs', title: translations.value.menu.docs[store.lang] },
-        { link: '/chart-builder', title: translations.value.menu.chartBuilder[store.lang] },
-        { link: '/examples', title: translations.value.menu.examples[store.lang] },
-        { link: '/customization', title: translations.value.menu.customization[store.lang] },
-        { link: '/versions', title: translations.value.menu.versions[store.lang] },
-        { link: '/about', title: translations.value.menu.about[store.lang] },
+        { link: '/installation', title: translations.value.menu.installation[store.lang], icon: 'starFill' },
+        { link: '/docs', title: translations.value.menu.docs[store.lang], icon: 'settings' },
+        { link: '/chart-builder', title: translations.value.menu.chartBuilder[store.lang], icon: 'boxes'},
+        { link: '/examples', title: translations.value.menu.examples[store.lang], icon: 'dashboard' },
+        { link: '/customization', title: translations.value.menu.customization[store.lang], icon: 'palette'},
+        { link: '/versions', title: translations.value.menu.versions[store.lang], icon: ''},
+        { link: '/about', title: translations.value.menu.about[store.lang], icon: ''},
     ]
 })
     
@@ -49,7 +49,10 @@ s
             <div class="flex flex-col sm:flex-row gap-6 flex-wrap" dir="auto">
                 <div class="flex flex-col place-items-center justify-center gap-2" v-for="menuItem in menuItems">
                     <a :class="`text-black dark:text-app-blue hover:underline px-2 rounded-md ${isSelected(menuItem.link) ? 'bg-[#5f8aee30] shadow-md border-b border-app-blue' : ''}`" :href="menuItem.link">
-                        {{ menuItem.title }} 
+                        <div class="flex flex-row place-items-center gap-2">
+                            <VueUiIcon v-if="menuItem.icon" :name="menuItem.icon" :size="18" :stroke="isDarkMode ? '#CCCCCC' : '#6A6A6A'"/>
+                            {{ menuItem.title }} 
+                        </div>
                     </a>
                 </div>
                 <div class="flex flex-col place-items-center justify-center gap-2">
