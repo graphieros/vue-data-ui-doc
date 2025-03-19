@@ -119,9 +119,9 @@ const universalComponentTemplateContent = computed(() => {
             <VueHiCode content="npm i vue-data-ui   " language="javascript" v-bind="codeParserConfig" @copy="store.copy()"/>
         </div>
 
-        <div class="mt-4 z-10" dir="auto">
+        <!-- <div class="mt-4 z-10" dir="auto">
             {{ translations.installation.tsUsers[store.lang] }}
-        </div>
+        </div> -->
 
         <div class="mt-4 z-10">
 
