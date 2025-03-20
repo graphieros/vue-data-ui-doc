@@ -1,6 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import CodeParser from "./CodeParser.vue";
+import { useMainStore } from "../../stores";
+
+const store = useMainStore()
 
 const dataset = ref([
     {
@@ -138,7 +141,7 @@ const code2 = ref(`<template>
         </div>
 
         <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
-            <CodeParser :content="code0" language="javascript"/>
+            <CodeParser :content="code0" language="javascript" @copy="store.copy()"/>
         </div>
         
         <div class="mt-6 text-lg">
@@ -146,14 +149,14 @@ const code2 = ref(`<template>
         </div>
 
         <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
-            <CodeParser :content="code1" language="javascript"/>
+            <CodeParser :content="code1" language="javascript" @copy="store.copy()"/>
         </div>
         <div class="mt-6 text-lg">
             3. Create your own menu (very basic example):
         </div>
 
         <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
-            <CodeParser :content="code2" language="html"/>
+            <CodeParser :content="code2" language="html" @copy="store.copy()"/>
         </div>
 
 <div class="p-4 bg-gray-200 dark:bg-[#FFFFFF10]">

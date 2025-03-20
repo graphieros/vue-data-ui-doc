@@ -518,7 +518,7 @@ const supportedComponents = computed(() => {
 
         <BaseCustomizationBox :title="translations.uniquePattern[store.lang]">
             <template #code>
-                <CodeParser :content="codeSinglePattern" language="html"/>
+                <CodeParser :content="codeSinglePattern" language="html" @copy="store.copy()"/>
             </template>
             <template #chart>
             <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">
@@ -530,7 +530,7 @@ const supportedComponents = computed(() => {
         </BaseCustomizationBox>
         <BaseCustomizationBox :title="translations.multiPattern[store.lang]">
             <template #code>
-                <CodeParser :content="codeMultiPattern" language="html"/>
+                <CodeParser :content="codeMultiPattern" language="html" @copy="store.copy()"/>
             </template>
             <template #chart>
                 <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">
@@ -559,7 +559,7 @@ const supportedComponents = computed(() => {
 
         <BaseCustomizationBox :title="translations.limitedColors[store.lang]">
             <template #code>
-                <CodeParser :content="codeLimitedColors" language="html"/>
+                <CodeParser :content="codeLimitedColors" language="html" @copy="store.copy()"/>
             </template>
             <template #chart>
                 <VueDataUi 

@@ -18,6 +18,7 @@ import ComposedComponents from "../components/customization/ComposedComponents.v
 import { BulbIcon } from "vue-tabler-icons";
 import Patterns from "../components/customization/Patterns.vue";
 import ColorBridgeIcon from "../components/maker/ColorBridgeIcon.vue";
+import ConfirmCopy from "../components/ConfirmCopy.vue";
 
 const store = useMainStore();
 
@@ -172,4 +173,5 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
   <ComposedComponents v-if="currentRoute === '/customization#experiments'" />
 
   <ChartSeeker class="mt-12"/>
+  <ConfirmCopy/>
 </template>

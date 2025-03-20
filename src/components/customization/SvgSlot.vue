@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
 import CodeParser from "./CodeParser.vue";
+import ConfirmCopy from "../ConfirmCopy.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -229,7 +230,7 @@ const contentImage = ref(`<template>
 
   <BaseCustomizationBox :title="translations.customization.comment[store.lang]">
     <template #code>
-      <CodeParser :content="contentComment" language="html" />
+      <CodeParser :content="contentComment" language="html" @copy="store.copy()"/>
     </template>
 
     <template #chart>
@@ -254,7 +255,7 @@ const contentImage = ref(`<template>
     :title="translations.customization.otherChart[store.lang]"
   >
     <template #code>
-      <CodeParser :content="contentChart" language="html" />
+      <CodeParser :content="contentChart" language="html" @copy="store.copy()" />
     </template>
 
     <template #chart>
@@ -278,7 +279,7 @@ const contentImage = ref(`<template>
 import { Arrow } from "vue-data-ui"
 &lt;/script&gt;
 </code>
-<CodeParser :content="contentArrow" language="html" />
+<CodeParser :content="contentArrow" language="html" @copy="store.copy()" />
 </pre>
     </template>
 
@@ -326,7 +327,7 @@ import { Arrow } from "vue-data-ui"
 
   <BaseCustomizationBox :title="translations.customization.injectImage[store.lang]">
     <template #code>
-      <CodeParser :content="contentImage" language="html" />
+      <CodeParser :content="contentImage" language="html" @copy="store.copy()" />
     </template>
 
     <template #chart>

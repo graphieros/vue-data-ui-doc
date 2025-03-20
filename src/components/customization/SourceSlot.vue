@@ -519,7 +519,7 @@ const code = ref(`<template>
 
 <BaseCustomizationBox>
     <template #code>
-        <CodeParser :content="code" language="html"/>
+        <CodeParser :content="code" language="html" @copy="store.copy()"/>
     </template>
     <template #chart>
     <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">

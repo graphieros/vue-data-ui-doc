@@ -195,7 +195,7 @@ const { palette, hues } = bridge({ culture: 'western' });
         </ul>
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.default" language="javascript"/>
+            <CodeParser :content="codeContent.default" language="javascript" @copy="store.copy()"/>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in palette">
@@ -210,7 +210,7 @@ const { palette, hues } = bridge({ culture: 'western' });
         </div>
 
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.celebration" language="javascript"/>
+            <CodeParser :content="codeContent.celebration" language="javascript" @copy="store.copy()"/>
         </div>
 
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
@@ -226,7 +226,7 @@ const { palette, hues } = bridge({ culture: 'western' });
         </div>
 
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.celebrationNight" language="javascript"/>
+            <CodeParser :content="codeContent.celebrationNight" language="javascript" @copy="store.copy()"/>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('celebrationNight')">
@@ -241,7 +241,7 @@ const { palette, hues } = bridge({ culture: 'western' });
         </div>
 
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.zen" language="javascript"/>
+            <CodeParser :content="codeContent.zen" language="javascript" @copy="store.copy()"/>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('zen')">
@@ -256,7 +256,7 @@ const { palette, hues } = bridge({ culture: 'western' });
         </div>
 
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.concrete" language="javascript"/>
+            <CodeParser :content="codeContent.concrete" language="javascript" @copy="store.copy()"/>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('concrete')">
@@ -271,7 +271,7 @@ const { palette, hues } = bridge({ culture: 'western' });
         </div>
 
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.hack" language="javascript"/>
+            <CodeParser :content="codeContent.hack" language="javascript" @copy="store.copy()"/>
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
             <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('hack')">
@@ -292,7 +292,7 @@ const { palette, hues } = bridge({ culture: 'western' });
                 <code>npm i color-bridge</code>
             </div>
             <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-                <CodeParser :content="colorBridgeCode" language="javascript"/>
+                <CodeParser :content="colorBridgeCode" language="javascript" @copy="store.copy()"/>
             </div>
             <div class="flex flex-row justify-center mt-6">
                 <button class="py-2 px-5 rounded flex flew-row place-items-center gap-2 bg-gray-200 dark:bg-[#FFFFFF20] shadow-md hover:shadow-lg transition-all">

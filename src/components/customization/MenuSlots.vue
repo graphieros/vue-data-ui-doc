@@ -1,6 +1,9 @@
 <script setup>
 import { ref, computed } from "vue";
 import CodeParser from "./CodeParser.vue";
+import { useMainStore } from "../../stores";
+
+const store = useMainStore()
 
 const code1 = ref(`<VueUiXy :config="config" :dataset="dataset">
     <template #optionPdf>
@@ -49,25 +52,25 @@ const code3 = ref(`<VueUiXy :config="config" :dataset="dataset">
         The example below illustrates all the possible options.<br>
         <span class="text-orange-500">Check out the docs to know what options are available for a given chart.</span>
         <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
-            <CodeParser :content="code0" language="javascript"/>
+            <CodeParser :content="code0" language="javascript" @copy="store.copy()"/>
         </div>
 
         If you want to customize the contents of the options menu, you can leverage the slots provided with each chart. The click event is managed by the component.<br>
 
         Example:
 <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
-    <CodeParser :content="code1" language="html"/>
+    <CodeParser :content="code1" language="html" @copy="store.copy()"/>
 </div>
 
     The #optionFullscreen slot has a specific implementation, where you need to apply a click event with the exposed data:
 
 <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
-    <CodeParser :content="code2" language="html"/>
+    <CodeParser :content="code2" language="html" @copy="store.copy()"/>
 </div>
 
     The menu icon is also customizable if you don't like the classical burger menu icon:
 <div class="w-full bg-[#2A2A2A] dark:bg-[#FFFFFF10] my-4 rounded-md p-4">
-    <CodeParser :content="code3" language="html"/>
+    <CodeParser :content="code3" language="html" @copy="store.copy()"/>
 </div>
 
 

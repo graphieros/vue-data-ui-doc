@@ -47,7 +47,7 @@ const configDonut = ref({
       <div
         class="bg-black p-4 text-gray-300 text-xs w-full overflow-auto rounded-md"
       >
-        <CodeParser :content="code" language="javascript"/>
+        <CodeParser :content="code" language="javascript" @copy="store.copy()"/>
       </div>
   </div>
 
@@ -58,7 +58,7 @@ const configDonut = ref({
       <div
         class="bg-black p-4 text-gray-300 text-xs w-full overflow-auto rounded-md"
       >
-        <CodeParser :content="codeConfig" language="javascript"/>
+        <CodeParser :content="codeConfig" language="javascript" @copy="store.copy()"/>
       </div>
   </div>
 </template>

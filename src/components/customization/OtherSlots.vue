@@ -170,7 +170,7 @@ const waffleCode = ref(`  <VueUiWaffle
       </p>
     </template>
     <template #code>
-      <CodeParser :content="waffleCode" language="html" />
+      <CodeParser :content="waffleCode" language="html" @copy="store.copy()"/>
     </template>
     <template #chart>
       <VueDataUi component="VueUiWaffle" :dataset="waffleDataset" :config="waffleConfig">
