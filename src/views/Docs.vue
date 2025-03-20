@@ -1221,13 +1221,13 @@ const stackbarKey = ref(0);
     </div>
 
     <div class="p-4 rounded-full gap-4 mx-auto flex flex-row justify-center bg-gray-200 dark:bg-[#FFFFFF10] w-fit">
-        <button class="text-xs sm:text-lg rounded-full h-[48px] sm:h-[60px] px-3 sm:px-6 border border-app-green bg-[#42d39280] dark:bg-[#42d39220] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-[#42D392] dark:hover:bg-[#42D39230] transition-all">
+        <button class="text-xs sm:text-lg rounded-full h-[48px] sm:h-[60px] px-3 sm:px-6 border border-app-green bg-app-green-light-extra dark:bg-[#42d39220] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-app-green-light dark:hover:bg-[#42D39230] transition-all">
             <a href="#list">
                 {{  translations.availableComponents[store.lang] }}
             </a>
         </button>
         <RouterLink to="/examples/categories">
-            <button class="text-xs sm:text-lg rounded-full h-[48px] sm:h-[60px] px-3 sm:px-6 border border-app-blue bg-[#5f8aee80] dark:bg-[#5f8aee20] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-[#5f8aee] dark:hover:bg-[#5f8aee30] transition-all">
+            <button class="text-xs sm:text-lg rounded-full h-[48px] sm:h-[60px] px-3 sm:px-6 border border-app-blue bg-app-blue-light dark:bg-[#5f8aee20] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-app-blue-mid dark:hover:bg-[#5f8aee30] transition-all">
                 {{ translations.examplesAndVariations[store.lang] }}
             </button>
         </RouterLink>

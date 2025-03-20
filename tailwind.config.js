@@ -19,6 +19,7 @@ export default {
         "app-green-light": "#87e6bb",
         "app-green-light-extra": "#d5eee3",
         "app-blue": "#5f8aee",
+        "app-blue-mid": "#83a4f2",
         "app-blue-light": "#abc2f6",
         "app-blue-dark": "#314063",
         "app-orange": "#ff6600",
