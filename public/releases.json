@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.21",
+    "date": "2025-03-22",
+    "updates": [
+      {
+        "component": "VueUiCirclePack",
+        "description": "Make chart responsive",
+        "link": "/docs#vue-ui-circle-pack"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.20",
     "date": "2025-03-17",
     "updates": [

@@ -375,7 +375,7 @@ const { configCode, showAllConfig } = useConfigCode()
         :configSource="mainConfig.vue_ui_circle_pack"
     />
 
-    <div :class="`transition-all mx-auto w-2/3`">
+    <div :class="`transition-all mx-auto w-2/3 pb-12`">
         <BaseRandomButton @click="randomizeData" />
         <DocSnapper :isFixed="isFixed" :disabled="!isFixed || isMobile" @fixChart="fixChart"
             @resetDefault="resetDefault" @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)">
