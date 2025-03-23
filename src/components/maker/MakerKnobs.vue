@@ -102,7 +102,7 @@ function scrollToId(id) {
         <div>Config categories:</div>
         <button 
             v-for="category in categories" @click="scrollToId(category.key)"
-            :class="`text-xs py-1 px-2 rounded bg-[#1A1A1A10] dark:bg-[#FFFFFF10] ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : ''}`"
+            :class="`text-xs py-1 px-2 rounded ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : 'bg-[#1A1A1A10] dark:bg-[#FFFFFF10]'}`"
         >
             {{ category.title }}
         </button>
