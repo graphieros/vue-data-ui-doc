@@ -1,7 +1,7 @@
 [
   {
-    "version": "v 2.6.23",
-    "date": "2025-03-22",
+    "version": "v 2.6.24",
+    "date": "2025-03-23",
     "updates": [
       {
         "component": "VueUiCirclePack",

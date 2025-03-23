@@ -379,7 +379,7 @@ const { configCode, showAllConfig } = useConfigCode()
         <BaseRandomButton @click="randomizeData" />
         <DocSnapper :isFixed="isFixed" :disabled="!isFixed || isMobile" @fixChart="fixChart"
             @resetDefault="resetDefault" @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)">
-            <div class="w-full max-h-[400px]">
+            <div class="w-full min-h-[500px]">
                 <VueDataUi component="VueUiCirclePack" :dataset="mutableDataset"
                     :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
                     <template #plot-comment="{ plot }">
