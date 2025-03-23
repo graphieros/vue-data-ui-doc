@@ -23,6 +23,7 @@ const props = defineProps({
 
 const store = useMainStore();
 const makerStore = useMakerStore();
+const isDarkMode = computed(() => store.isDarkMode)
 
 const makerTranslations = computed(() => {
     return makerStore.translations;
@@ -66,6 +67,21 @@ const useTransparencyLabel = ref({
     ko: "구버전 색상 선택기 사용 (v2.3.77 이전)",
     ar: "استخدم أدوات اختيار الألوان القديمة (قبل الإصدار v2.3.77)"
 })
+
+const selectedCategory = ref(null)
+
+function scrollToId(id) {
+    const element = document.getElementById(id)
+    const headerOffset = 160
+    const elementPosition = element.getBoundingClientRect().top
+    const offsetPosition = elementPosition + window.scrollY - headerOffset
+    selectedCategory.value = id
+    
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+    })
+}
     
 </script>
 
@@ -82,7 +98,16 @@ const useTransparencyLabel = ref({
             </div>
         </div>
     </div>
-    <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4 overflow-visible" v-for="(category, c) in categories">
+    <div class="hidden sm:flex flex-row flex-wrap place-items-center gap-2 fixed top-[85px] left-0 w-full py-2 px-4 bg-white dark:bg-[#1A1A1A]" style="z-index:1000">
+        <div>Config categories:</div>
+        <button 
+            v-for="category in categories" @click="scrollToId(category.key)"
+            :class="`text-xs py-1 px-2 rounded bg-[#1A1A1A10] dark:bg-[#FFFFFF10] ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : ''}`"
+        >
+            {{ category.title }}
+        </button>
+    </div>
+    <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4 overflow-visible" v-for="(category, c) in categories" :id="category.key" :style="{ scrollMarginTop : '80px'}">
         <div class="w-full bg-gradient-to-r from-app-blue-light dark:from-app-blue-dark to-transparent pl-3 py-2 rounded text-black dark:text-white">
             <h4>{{ category.title }}</h4> 
         </div>
