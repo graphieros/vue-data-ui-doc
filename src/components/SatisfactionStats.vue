@@ -4,6 +4,7 @@ import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 import colorBridge from "color-bridge"
 import { VueDataUi } from "vue-data-ui";
+import useExamples from "../useExamples";
 
 const { utils } = colorBridge();
 
@@ -298,6 +299,69 @@ const stats = computed(() => {
 //     }
 // ])
 
+function getCumulativeAveragePerDayWithMissingDays(statistics) {
+    const ratingsByDate = {};
+    statistics.forEach(entry => {
+        const date = entry.created_at.split(' ')[0];
+        if (!ratingsByDate[date]) {
+            ratingsByDate[date] = [];
+        }
+        ratingsByDate[date].push(entry.rating);
+    });
+
+    const ratingDates = Object.keys(ratingsByDate).sort(
+        (a, b) => new Date(a) - new Date(b)
+    );
+
+    const allDates = fillEmptyDays(ratingDates);
+
+    let cumulativeSum = 0;
+    let cumulativeCount = 0;
+    const cumulativeAverages = [];
+
+    allDates.forEach(date => {
+        if (ratingsByDate[date]) {
+            ratingsByDate[date].forEach(rating => {
+                cumulativeSum += rating;
+                cumulativeCount++;
+            });
+            cumulativeAverages.push({
+                date: date,
+                cumulativeAverage: cumulativeSum / cumulativeCount
+            });
+        } else {
+            cumulativeAverages.push({
+                date: date,
+                cumulativeAverage: null
+            });
+        }
+    });
+
+    return cumulativeAverages;
+}
+
+function calcAverage(ds) {
+    let arr = []
+    let sum = []
+    Object.keys(ds).forEach(key => {
+        arr.push(Number(key) * ds[key])
+        sum.push(ds[key])
+    })
+    return arr.reduce((a, b) => a + b, 0) / sum.reduce((a, b) => a + b, 0)
+}
+
+const gaugeDataset = computed(() => {
+    return {
+        value: calcAverage(history.value.ratingBreakdown),
+        series: [
+            { from: 1, to: 2, color: '#c97047', name: '🙁' },
+            { from: 2, to: 3, color: '#c5c947', name: '😐' },
+            { from: 3, to: 4, color: '#86c947', name: '🙂' },
+            { from: 4, to: 5, color: '#54b840', name: '😀' },
+        ]
+    }
+})
+
 const ratings = computed(() => {
     const groups = Object.groupBy(stats.value, ({ item_id }) => item_id);
     return Object.keys(groups).map((component) => {
@@ -321,7 +385,7 @@ const latestItems = computed(() => {
     return stats.value.filter(item => item.created_at.split(' ')[0] === latestDate).map(item => {
         return {
             ...item,
-            stars:  Array(item.rating).fill('⭐').join(''),
+            stars: Array(item.rating).fill('⭐').join(''),
             name: `${item.item_id
                 .split('_')
                 .map((w, _i) => {
@@ -414,7 +478,8 @@ const stackbarConfig = computed(() => {
                         },
                         axisLabels: {
                             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                            fontSize: 16
+                            fontSize: 16,
+                            rounding: 1
                         }
                     }
                 },
@@ -603,7 +668,7 @@ const ratingBreakdownBarConfig = computed(() => {
             labels: {
                 show: true,
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                offsetY: -12
+                offsetY: -12,
             }
         }
     }
@@ -622,10 +687,23 @@ const xyDataset = computed(() => {
             suffix: ' ⭐'
         },
         {
+            name: 'Cumulative average',
+            series: getCumulativeAveragePerDayWithMissingDays(stats.value).map(d => d.cumulativeAverage),
+            type: 'line',
+            smooth: true,
+            scaleMin: 0,
+            scaleMax: 5,
+            scaleSteps: 5,
+            suffix: ' ⭐',
+            dashed: true,
+            color: '#ff7f0e'
+        },
+        {
             name: 'Ratings per day',
             series: history.value.ratingsPerDay,
             type: 'bar',
-            scaleSteps: 5
+            scaleSteps: 5,
+            color: '#aec7e8'
         },
     ]
 })
@@ -825,7 +903,52 @@ function capitalizeFirstLetter(val) {
 
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueUiRating :dataset="{
+        <div class="max-w-[300px] mx-auto">
+            <VueUiGauge :dataset="gaugeDataset" :config="{
+                userOptions: { show: false },
+                style: {
+                    chart: {
+                        backgroundColor: 'transparent',
+                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                        layout: {
+                            radiusRatio: 0.8,
+                            track: { size: 0 },
+                            markers: {
+                                offsetY: 40,
+                                color: isDarkMode ? '#8A8A8A' : '#1A1A1A'
+                            },
+                            segmentNames: { fontSize: 55 },
+                            segmentSeparators: {
+                                show: true,
+                                stroke: isDarkMode ? '#4A4A4A' : '#CCCCCC',
+                                offsetOut: 36,
+                                offsetIn: 150
+                            },
+                            pointer: {
+                                size: 1.1,
+                                stroke: 'transparent',
+                                circle: {
+                                    color: isDarkMode ? '#6A6A6A' : '#FFFFFF'
+                                }
+                            },
+                        },
+                        legend: {
+                            showPlusSymbol: false,
+                            roundingValue: 2
+                        },
+                        title: {
+                            text: `Ratings breakdown (${stats.length} votes)`,
+                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                            fontSize: 20,
+                            bold: false,
+                            offsetY: 40,
+                        },
+                    }
+                }
+            }" />
+        </div>
+
+        <!-- <VueUiRating :dataset="{
             rating: history.ratingBreakdown
         }" :config="{
                 type: 'star',
@@ -849,24 +972,38 @@ function capitalizeFirstLetter(val) {
                         offsetY: 12,
                     }
                 }
-            }" />
-        <VueUiXy :dataset="ratingBreakdownBarDataset" :config="ratingBreakdownBarConfig" />
+            }" /> -->
+        <VueUiXy :dataset="ratingBreakdownBarDataset" :config="{
+            ...ratingBreakdownBarConfig,
+            bar: {
+                ...ratingBreakdownBarConfig.bar,
+                labels: {
+                    ...ratingBreakdownBarConfig.bar.labels,
+                    formatter: ({ value }) => {
+                        if (!value) return value
+                        return `${value} (${Math.round(value / stats.length * 100)}%)`
+                    }
+                }
+            }
+        }" />
     </div>
 
     <div v-if="ratings.length"
-    class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <VueDataUi component="VueUiStackbar" :dataset="stackbarData" :config="stackbarConfig" />
     </div>
 
     <div v-if="ratings.length"
-    class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <div class="text-xl text-center mb-4 flex flex-col">
-            <span>Latest votes</span> 
-            <span class="text-xs text-gray-500">{{ latestItems[0].created_at.split(' ')[0] }}</span></div>
+            <span>Latest votes</span>
+            <span class="text-xs text-gray-500">{{ latestItems[0].created_at.split(' ')[0] }}</span>
+        </div>
         <ul>
             <li v-for="item in latestItems" class="flex flex-row gap-2">
                 <span>{{ item.stars }}</span>
-                <span class="text-gray-400 dark:text-gray-500">VueUi<span class="text-black dark:text-gray-200">{{ item.name.replaceAll('VueUi', '') }}</span></span>
+                <span class="text-gray-400 dark:text-gray-500">VueUi<span class="text-black dark:text-gray-200">{{
+                    item.name.replaceAll('VueUi', '') }}</span></span>
             </li>
         </ul>
     </div>
@@ -886,56 +1023,56 @@ function capitalizeFirstLetter(val) {
                 })
                 .join('')} (${c.raters})`,
         }" :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')" :config-gauge="{
-                style: {
-                    background: 'transparent',
-                    basePosition: 64,
-                    colors: {
-                        min: '#5f8aee',
-                        max: '#42d392',
-                    },
-                    dataLabel: {
-                        fontSize: 28,
-                        rounding: 1,
-                        offsetY: -3,
-                        suffix: ' ⭐'
-                    },
-                    gutter: {
-                        color: isDarkMode ? '#3A3A3A' : '#CCCCCC',
-                    },
-                    title: {
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                    },
+            style: {
+                background: 'transparent',
+                basePosition: 64,
+                colors: {
+                    min: '#5f8aee',
+                    max: '#42d392',
                 },
-            }" :config-xy="{
-                ...ratingBreakdownBarConfig,
-                chart: {
-                    ...ratingBreakdownBarConfig.chart,
-                    grid: {
-                        ...ratingBreakdownBarConfig.chart.grid,
-                        labels: {
-                            ...ratingBreakdownBarConfig.chart.grid.labels,
-                            xAxisLabels: {
-                                ...ratingBreakdownBarConfig.chart.grid.labels.xAxisLabels,
-                                values: isDarkMode ? ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'] : ['★', '★★', '★★★', '★★★★', '★★★★★'],
-                                fontSize: isDarkMode ? 24 : 36,
-                                yOffset: isDarkMode ? 4 : -4
-                            }
+                dataLabel: {
+                    fontSize: 28,
+                    rounding: 1,
+                    offsetY: -3,
+                    suffix: ' ⭐'
+                },
+                gutter: {
+                    color: isDarkMode ? '#3A3A3A' : '#CCCCCC',
+                },
+                title: {
+                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                },
+            },
+        }" :config-xy="{
+            ...ratingBreakdownBarConfig,
+            chart: {
+                ...ratingBreakdownBarConfig.chart,
+                grid: {
+                    ...ratingBreakdownBarConfig.chart.grid,
+                    labels: {
+                        ...ratingBreakdownBarConfig.chart.grid.labels,
+                        xAxisLabels: {
+                            ...ratingBreakdownBarConfig.chart.grid.labels.xAxisLabels,
+                            values: isDarkMode ? ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'] : ['★', '★★', '★★★', '★★★★', '★★★★★'],
+                            fontSize: isDarkMode ? 24 : 36,
+                            yOffset: isDarkMode ? 4 : -4
                         }
-                    },
-                    labels: {
-                        fontSize: 64
-                    },
-                    padding: {
-                        top: 100
                     }
                 },
-                bar: {
-                    ...ratingBreakdownBarConfig.bar,
-                    labels: {
-                        ...ratingBreakdownBarConfig.bar.labels,
-                        offsetY: -36
-                    }
+                labels: {
+                    fontSize: 64
+                },
+                padding: {
+                    top: 100
                 }
-            }" />
+            },
+            bar: {
+                ...ratingBreakdownBarConfig.bar,
+                labels: {
+                    ...ratingBreakdownBarConfig.bar.labels,
+                    offsetY: -36
+                }
+            }
+        }" />
     </div>
 </template>
