@@ -1,6 +1,6 @@
 
 <script setup>
-import { ref, computed, watch, toRefs, onMounted } from 'vue'
+import { ref, computed, watch, toRefs, onMounted, nextTick } from 'vue'
 import { adaptColorToBackground } from './maker/lib';
 import vClickOutside from "../directives/vClickOutside"
 import { convertColorToHex } from '../useNestedProp';
@@ -48,8 +48,15 @@ const defaultPalette = ref([
     '#00CED1',
 ]);
 
+const to = ref(null)
+
 function close(_e){
-    open.value = false;
+    if (to.value) {
+        clearTimeout(to.value)
+    }
+    to.value = setTimeout(() => {
+        open.value = false;
+    }, 0)
 }
 
 const open = ref(false);
@@ -164,25 +171,27 @@ function hslToRgb(h, s, l) {
             <div class="flex flex-col place-items-center">
 
                 <button class="h-[20px] my-1 w-[110px] relative rounded-lg " :style="{ background: rgbaColor }" @click="open = true" v-click-outside="close" @keydown.esc="close">
-                    <div v-if="open" class="absolute top-[100%] left-1/2 -translate-x-1/2 color-picker-dialog bg-white dark:bg-[#2A2A2A]">
-                        <div 
-                            v-for="c in defaultPalette" 
-                            class="color-picker-option outline outline-gray-300 dark:outline-[#5A5A5A] hover:outline-gray-500 hover:dark:outline-gray-200 hover:outline-dotted"  
-                            :style="{ 
-                                backgroundColor: c,
-                            }" 
-                            @click="() => setColor(c)"
-                        />
-                        <div class="my-color-picker-option-empty" @click="triggerColorPicker" :style="{
-                            background: value
-                        }">
-                            <VueUiIcon name="palette" :stroke="adaptColorToBackground(convertColorToHex(value))" :size="20"/>
+                    <Transition name="picker">
+                        <div v-if="open" class="absolute top-[100%] left-1/2 -translate-x-1/2 color-picker-dialog bg-white dark:bg-[#2A2A2A]">
+                            <div 
+                                v-for="c in defaultPalette" 
+                                class="color-picker-option outline outline-gray-300 dark:outline-[#5A5A5A] hover:outline-gray-500 hover:dark:outline-gray-200 hover:outline-dotted"  
+                                :style="{ 
+                                    backgroundColor: c,
+                                }" 
+                                @click="() => setColor(c)"
+                            />
+                            <div class="my-color-picker-option-empty" @click="triggerColorPicker" :style="{
+                                background: value
+                            }">
+                                <VueUiIcon name="palette" :stroke="adaptColorToBackground(convertColorToHex(value))" :size="20"/>
+                            </div>
+                            <div/>
+                            <button @click="close" class="flex place-items-center justify-center rounded-full p-1 hover:bg-gray-100 hover:dark:bg-[#4A4A4A] transition-colors">
+                                <VueUiIcon name="close" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                            </button>
                         </div>
-                        <div/>
-                        <button @click="close" class="flex place-items-center justify-center rounded-full p-1 hover:bg-gray-100 hover:dark:bg-[#4A4A4A] transition-colors">
-                            <VueUiIcon name="close" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                        </button>
-                    </div>
+                    </Transition>
                     <input ref="myColorInput" type="color"  v-model="hexColor" @input="updateColorFromHex" class="hidden-input"/>
                 </button>
                 
@@ -248,5 +257,14 @@ input[type="range"] {
     visibility: hidden;
 }
 
-</style>
+.picker-enter-active,
+.picker-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
+.picker-enter-from,
+.picker-leave-to {
+  opacity: 0;
+  transform: translateY(-40px) translateX(-50%) scale(1,0.7);
+}
+</style>
