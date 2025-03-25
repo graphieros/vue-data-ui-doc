@@ -25,15 +25,12 @@ const emit = defineEmits(['fixChart', 'resetModel'])
 const store = useMainStore()
 const makerStore = useMakerStore()
 const translations = computed(() => makerStore.translations);
-
-
-
     
 </script>
 
 <template>
     <transition name="fade">
-        <BaseDragElement v-if="isFixed" snap-on-resize>
+        <BaseDragElement v-if="isFixed" snap-on-resize :startTop="130">
             <div :class="`${fixedWidth} overflow-hidden`">
                 <div class="flex flex-row gap-2 mb-2 w-full bg-white dark:bg-[#2A2A2A] py-2 justify-center">
                     <button @click="emit('fixChart')" class="flex align-center justify-center bg-gradient-to-br from-app-blue-light to-app-blue  p-2 rounded-full opacity-80 hover:opacity-100 transition-all">

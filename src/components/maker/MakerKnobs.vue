@@ -68,6 +68,18 @@ const useTransparencyLabel = ref({
     ar: "استخدم أدوات اختيار الألوان القديمة (قبل الإصدار v2.3.77)"
 })
 
+const configCategoriesLabel = ref({
+    en: 'Config categories:',
+    fr: 'Catégories de configuration:',
+    pt: 'Categorias de configuração:',
+    de: 'Konfigurationskategorien:',
+    zh: '配置类别:',
+    jp: '設定カテゴリ:',
+    es: 'Categorías de configuración:',
+    ko: '설정 범주:',
+    ar: 'فئات التكوين:'
+})
+
 const selectedCategory = ref(null)
 
 function scrollToId(id) {
@@ -98,11 +110,11 @@ function scrollToId(id) {
             </div>
         </div>
     </div>
-    <div class="hidden sm:flex flex-row flex-wrap place-items-center gap-2 fixed top-[85px] left-0 w-full py-2 px-4 bg-white dark:bg-[#1A1A1A]" style="z-index:1000">
-        <div>Config categories:</div>
+    <div class="hidden sm:flex flex-row flex-wrap place-items-center gap-2 fixed top-[85px] left-0 w-full py-2 px-4 bg-white dark:bg-[#1A1A1A]" style="z-index:1000" dir="auto">
+        <div>{{ configCategoriesLabel[store.lang] }}</div>
         <button 
             v-for="category in categories" @click="scrollToId(category.key)"
-            :class="`text-xs py-1 px-2 rounded ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : 'bg-[#1A1A1A10] dark:bg-[#FFFFFF10]'}`"
+            :class="`text-xs py-1 px-2 rounded ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : 'bg-[#1A1A1A10] hover:bg-[#1A1A1A20] dark:bg-[#FFFFFF10] hover:dark:bg-[#FFFFFF20]'} transition-colors`"
         >
             {{ category.title }}
         </button>
