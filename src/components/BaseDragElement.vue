@@ -15,6 +15,10 @@ const props = defineProps({
     backgroundColor: {
         type: String,
         default: 'bg-white dark:bg-[#2A2A2A]'
+    },
+    startTop: {
+        type: Number,
+        default: 120
     }
 });
 
@@ -85,7 +89,7 @@ const endDrag = () => {
 
 onMounted(async () => {
     if (!draggableElement.value) return
-    draggableElement.value.style.top = `${120}px`;
+    draggableElement.value.style.top = `${props.startTop}px`;
     const elementWidth = draggableElement.value.offsetWidth;
     draggableElement.value.style.left = `${(window.innerWidth - elementWidth - 42)
         }px`;

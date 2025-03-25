@@ -26,8 +26,8 @@ const handleDrag = (event) => {
     const windowHeight = window.innerHeight;
     const elementHeight = draggableElement.value.offsetHeight;
 
-    if (newTop < 90) {
-        newTop = 90;
+    if (newTop < 130) {
+        newTop = 130;
     } else if (newTop + elementHeight > windowHeight - 64) {
         newTop = windowHeight - elementHeight - 64;
     }
