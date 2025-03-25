@@ -689,6 +689,7 @@ const sparklineConfig = ref({
     }
   }
 });
+
 const darkModeSparklineConfig = ref({
   style: {
     backgroundColor: "#1A1A1A",
@@ -1885,14 +1886,73 @@ const dogFood = ref({
                 <div class="max-w-[500px] mx-auto my-6">
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
                     <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
-                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="parsedData" :config="isDarkMode ? darkModeSparklineConfig : sparklineConfig">
+                    <VueUiSparkline 
+                      v-if="!isLoadingLine && !!data" 
+                      :dataset="parsedData" 
+                      :config="isDarkMode ? {
+                        ...darkModeSparklineConfig,
+                        style: {
+                          ...darkModeSparklineConfig.style,
+                          scaleMax: Math.max(...parsedData.map(d => d.value))
+                        }
+                        } : {
+                          ...sparklineConfig
+                        }">
                       <template #source>
                         <div class="text-xs text-gray-500 text-right">
                           Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
                         </div>
                       </template>
                     </VueUiSparkline>
-                    <VueUiSparkline v-if="!isLoadingLine && !!data" :dataset="usableWeekData" :config="isDarkMode ? {...darkModeSparklineConfig, type: 'bar', style: {...darkModeSparklineConfig.style, line: {...darkModeSparklineConfig.style.line, color: '#5f8bee'}, area: {...darkModeSparklineConfig.style.area, color: '#5f8bee'}, dataLabel: {...darkModeSparklineConfig.style.dataLabel, color: '#5f8bee'}, verticalIndicator:{...darkModeSparklineConfig.style.verticalIndicator, color: '#42d392'}, title: {...darkModeSparklineConfig.style.title, text: 'Weekly downloads - Last 52 weeks'}}} : {...sparklineConfig, type: 'bar', style: {...sparklineConfig.style, line: {...sparklineConfig.style.line, color: '#5f8bee'}, area: {...sparklineConfig.style.area, color: '#5f8bee'}, title: {...sparklineConfig.style.title, text: 'Weekly downloads - Last 52 weeks'}}} ">
+                    <VueUiSparkline 
+                      v-if="!isLoadingLine && !!data" 
+                      :dataset="usableWeekData" 
+                      :config="isDarkMode ? {
+                        ...darkModeSparklineConfig, 
+                        type: 'bar', 
+                        style: {
+                          ...darkModeSparklineConfig.style,
+                          scaleMax: Math.max(...usableWeekData.map(d => d.value)),
+                          line: {
+                            ...darkModeSparklineConfig.style.line, 
+                            color: '#5f8bee'
+                          }, 
+                          area: {
+                            ...darkModeSparklineConfig.style.area, 
+                            color: '#5f8bee'
+                          }, 
+                          dataLabel: {
+                            ...darkModeSparklineConfig.style.dataLabel, 
+                            color: '#5f8bee'
+                          }, 
+                          verticalIndicator: {
+                            ...darkModeSparklineConfig.style.verticalIndicator, 
+                            color: '#42d392'
+                          }, 
+                          title: {
+                            ...darkModeSparklineConfig.style.title, 
+                            text: 'Weekly downloads - Last 52 weeks'
+                          }
+                        }
+                      } : {
+                        ...sparklineConfig, 
+                        type: 'bar', 
+                        style: {
+                          ...sparklineConfig.style, 
+                          line: {
+                            ...sparklineConfig.style.line, 
+                            color: '#5f8bee'
+                          }, 
+                          area: {
+                            ...sparklineConfig.style.area, 
+                            color: '#5f8bee'
+                          }, 
+                          title: {
+                            ...sparklineConfig.style.title, 
+                            text: 'Weekly downloads - Last 52 weeks'
+                          }
+                        }
+                      } ">
                       <template #source>
                         <div class="text-xs text-gray-500 text-right">
                           Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
