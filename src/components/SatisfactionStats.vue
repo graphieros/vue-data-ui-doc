@@ -19,7 +19,6 @@ const stats = computed(() => {
     return store.ratings.breakdown;
 })
 
-
 // const stats = ref([
 //     {
 //         "id": 83,
@@ -751,7 +750,7 @@ const xyConfig = computed(() => {
                 borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                 showPercentage: false,
-                roundingValue: 1
+                roundingValue: 2
             },
             userOptions: {
                 buttons: {
