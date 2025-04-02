@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.26",
+    "date": "2025-04-01",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add scale group management to use same scales on several series in individual scale mode",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.24",
     "date": "2025-03-23",
     "updates": [

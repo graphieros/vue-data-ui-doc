@@ -1061,6 +1061,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.grid.labels.yAxis.stacked', def: false, type: 'checkbox', label: ['yAxis', 'is', 'stacked scales'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.gap', def: 12, type: 'number', min: 8, max: 24, label: ['yAxis', 'is', 'stack gap'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.labelWidth', def: 40, type: 'number', min: 36, max: 64, label: ['yAxis', 'is', 'labelWidth'], category: 'grid'},
+                    { key: 'chart.grid.labels.yAxis.groupColor', def: '#1A1A1A', type: 'color', label: ['yAxis', 'scales', 'group', 'is', 'color'], category: 'grid'},
 
                     { key: 'chart.labels.fontSize', def: 16, type: 'number', min: 6, max: 30, label: 'fontSize', category: 'labels' },
                     { key: 'chart.labels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },

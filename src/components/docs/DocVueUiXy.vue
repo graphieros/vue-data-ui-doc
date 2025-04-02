@@ -238,7 +238,8 @@ const config = ref({
                     labelWidth: 40,
                     showBaseline: true,
                     scaleMin: null,
-                    scaleMax: null
+                    scaleMax: null,
+                    groupColor: null
                 },
                 xAxis: {
                     showBaseline: true
@@ -526,7 +527,8 @@ const darkModeConfig = ref({
                     labelWidth: 40,
                     showBaseline: true,
                     scaleMin: null,
-                    scaleMax: null
+                    scaleMax: null,
+                    groupColor: null
                 },
                 xAxis: {
                     showBaseline: true
@@ -1047,6 +1049,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                         <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                         <BaseAttr name="scaleMin" attr="chart.grid.labels.yAxis.scaleMin" type="number" defaultVal="null" :min="-1000" :max="0" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Force the min scale for the whole chart"/>
                         <BaseAttr name="scaleMax" attr="chart.grid.labels.yAxis.scaleMax" type="number" defaultVal="null" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Force the max scale for the whole chart"/>
+                        <BaseAttr name="groupColor" attr="chart.grid.labels.yAxis.groupColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set color of scales when they are grouped by the same scaleLabel (requires useIndividualScale: true)"/>
                     </BaseDetails>
                     <BaseDetails attr="zeroLine" :level="4" title="chart.grid.labels.zeroLine">
                         <BaseAttr name="show" attr="chart.grid.labels.zeroLine.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" /> 
