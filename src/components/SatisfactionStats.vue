@@ -683,7 +683,8 @@ const xyDataset = computed(() => {
             scaleMin: 0,
             scaleMax: 5,
             scaleSteps: 5,
-            suffix: ' ⭐'
+            suffix: ' ⭐',
+            scaleLabel: 'Satisfaction rating'
         },
         {
             name: 'Cumulative average',
@@ -695,10 +696,11 @@ const xyDataset = computed(() => {
             scaleSteps: 5,
             suffix: ' ⭐',
             dashed: true,
-            color: '#ff7f0e'
+            color: '#ff7f0e',
+            scaleLabel: 'Satisfaction rating'
         },
         {
-            name: 'Ratings per day',
+            name: 'Number of daily votes',
             series: history.value.ratingsPerDay,
             type: 'bar',
             scaleSteps: 5,
@@ -717,7 +719,10 @@ const xyConfig = computed(() => {
                     fontSize: 20,
                     yAxis: {
                         useIndividualScale: true,
-                        labelWidth: 64,
+                        labelWidth: 32,
+                        scaleLabelOffsetX: -24,
+                        groupColor: isDarkMode.value ? '#8A8A8A' : '#1A1A1A'
+
                     },
                     xAxisLabels: {
                         values: history.value.dates,

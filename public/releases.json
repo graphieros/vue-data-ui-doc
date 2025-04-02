@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.28",
+    "date": "2025-04-02",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix yAxis scale width in individual scale mode when segregating series",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.27",
     "date": "2025-04-01",
     "updates": [
