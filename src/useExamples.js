@@ -331,26 +331,6 @@ export default function useExamples() {
 
     const DATASET_XY_GROUPS = ref([
         {
-            name: 'Pizza sales',
-            type: 'line',
-            smooth: true,
-            series: makeDs(21, 2000),
-            dataLabels: false,
-            scaleLabel: 'Revenue',
-            scaleMin: 0,
-            scaleMax: 2000
-        },
-        {
-            name: 'Donut sales',
-            type: 'line',
-            smooth: true,
-            series: makeDs(21, 1000),
-            dataLabels: false,
-            scaleLabel: 'Revenue',
-            scaleMin: 0,
-            scaleMax: 2000
-        },
-        {
             name: 'Pizza satisfaction',
             type: 'bar',
             smooth: true,
@@ -358,7 +338,9 @@ export default function useExamples() {
             dataLabels: false,
             scaleLabel: 'Satisfaction',
             scaleMin: 0,
-            scaleMax: 100
+            scaleMax: 100,
+            suffix: '%',
+            color: '#8A8A8A'
         },
         {
             name: 'Donut satisfaction',
@@ -368,7 +350,29 @@ export default function useExamples() {
             dataLabels: false,
             scaleLabel: 'Satisfaction',
             scaleMin: 0,
-            scaleMax: 100
+            scaleMax: 100,
+            suffix: '%',
+            color: '#5A5A5A'
+        },
+        {
+            name: 'Donut sales',
+            type: 'line',
+            smooth: true,
+            series: makeDs(21, 1000),
+            dataLabels: false,
+            scaleLabel: 'Revenue',
+            scaleMin: 0,
+            scaleMax: 2000,
+        },
+        {
+            name: 'Pizza sales',
+            type: 'line',
+            smooth: true,
+            series: makeDs(21, 2000),
+            dataLabels: false,
+            scaleLabel: 'Revenue',
+            scaleMin: 0,
+            scaleMax: 2000,
         },
     ])
 
@@ -3430,14 +3434,14 @@ export default function useExamples() {
                 link: 'vue-ui-xy',
                 description: {
                     en: 'Grouped y axis scales',
-                    fr: '',
-                    pt: '',
-                    de: '',
-                    zh: '',
-                    jp: '',
-                    es: '',
-                    ko: '',
-                    ar: ''
+                    fr: 'Échelles de l’axe des ordonnées groupées',
+                    pt: 'Escalas do eixo y agrupadas',
+                    de: 'Gruppierte Y-Achsenskalen',
+                    zh: '分组的 Y 轴刻度',
+                    jp: 'グループ化されたY軸スケール',
+                    es: 'Escalas del eje Y agrupadas',
+                    ko: '그룹화된 Y축 스케일',
+                    ar: 'مقاييس محور Y مجمعة'
                 }
             },
             // XY LIVE DATA
