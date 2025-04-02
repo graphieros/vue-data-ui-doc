@@ -239,7 +239,8 @@ const config = ref({
                     showBaseline: true,
                     scaleMin: null,
                     scaleMax: null,
-                    groupColor: null
+                    groupColor: null,
+                    scaleLabelOffsetX: 0
                 },
                 xAxis: {
                     showBaseline: true
@@ -528,7 +529,8 @@ const darkModeConfig = ref({
                     showBaseline: true,
                     scaleMin: null,
                     scaleMax: null,
-                    groupColor: null
+                    groupColor: null,
+                    scaleLabelOffsetX: 0
                 },
                 xAxis: {
                     showBaseline: true
@@ -1050,6 +1052,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                         <BaseAttr name="scaleMin" attr="chart.grid.labels.yAxis.scaleMin" type="number" defaultVal="null" :min="-1000" :max="0" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Force the min scale for the whole chart"/>
                         <BaseAttr name="scaleMax" attr="chart.grid.labels.yAxis.scaleMax" type="number" defaultVal="null" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Force the max scale for the whole chart"/>
                         <BaseAttr name="groupColor" attr="chart.grid.labels.yAxis.groupColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set color of scales when they are grouped by the same scaleLabel (requires useIndividualScale: true)"/>
+                        <BaseAttr name="scaleLabelOffsetX" attr="chart.grid.labels.yAxis.scaleLabelOffsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="zeroLine" :level="4" title="chart.grid.labels.zeroLine">
                         <BaseAttr name="show" attr="chart.grid.labels.zeroLine.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" /> 

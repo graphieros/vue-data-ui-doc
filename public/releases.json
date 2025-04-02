@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.27",
+    "date": "2025-04-01",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add config attribute to set scale labels x offset",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.26",
     "date": "2025-04-01",
     "updates": [

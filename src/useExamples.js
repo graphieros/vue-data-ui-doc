@@ -329,6 +329,49 @@ export default function useExamples() {
         }
     ])
 
+    const DATASET_XY_GROUPS = ref([
+        {
+            name: 'Pizza sales',
+            type: 'line',
+            smooth: true,
+            series: makeDs(21, 2000),
+            dataLabels: false,
+            scaleLabel: 'Revenue',
+            scaleMin: 0,
+            scaleMax: 2000
+        },
+        {
+            name: 'Donut sales',
+            type: 'line',
+            smooth: true,
+            series: makeDs(21, 1000),
+            dataLabels: false,
+            scaleLabel: 'Revenue',
+            scaleMin: 0,
+            scaleMax: 2000
+        },
+        {
+            name: 'Pizza satisfaction',
+            type: 'bar',
+            smooth: true,
+            series: makeDs(21, 100),
+            dataLabels: false,
+            scaleLabel: 'Satisfaction',
+            scaleMin: 0,
+            scaleMax: 100
+        },
+        {
+            name: 'Donut satisfaction',
+            type: 'bar',
+            smooth: true,
+            series: makeDs(21, 100),
+            dataLabels: false,
+            scaleLabel: 'Satisfaction',
+            scaleMin: 0,
+            scaleMax: 100
+        },
+    ])
+
     const DATASET_XY_SHAPES = ref([
         {
             name: 'Stars',
@@ -3357,6 +3400,44 @@ export default function useExamples() {
                     es: "Conjunto de datos de 10000 puntos reducido a 500 puntos",
                     ko: "10000개의 데이터 포인트를 500개로 다운샘플링한 데이터 세트",
                     ar: "مجموعة بيانات تحتوي على 10000 نقطة بيانات تم تقليلها إلى 500 نقطة بيانات"
+                }
+            },
+            // XY GROUPS
+            { 
+                dataset: DATASET_XY_GROUPS.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    useIndividualScale: true,
+                                    groupColor: colors.value.textColor,
+                                    labelWidth: 20,
+                                    scaleLabelOffsetX: -36
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'line-scale-groups',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'Grouped y axis scales',
+                    fr: '',
+                    pt: '',
+                    de: '',
+                    zh: '',
+                    jp: '',
+                    es: '',
+                    ko: '',
+                    ar: ''
                 }
             },
             // XY LIVE DATA
