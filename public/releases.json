@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.29",
+    "date": "2025-04-03",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add scaleValueOffsetX config option to set scale label x offset in individual scale mode",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.28",
     "date": "2025-04-02",
     "updates": [

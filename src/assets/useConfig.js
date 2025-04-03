@@ -458,7 +458,9 @@ export function useConfig() {
                         formatter: null,
                         scaleMin: null, // Overrides auto scaling
                         scaleMax: null, // idem
-                        groupColor: null // force yAxis labels color
+                        groupColor: null, // force yAxis labels color
+                        scaleLabelOffsetX: 0,
+                        scaleValueOffsetX: 0
                     },
                     xAxisLabels: {
                         color: COLOR_BLACK,
