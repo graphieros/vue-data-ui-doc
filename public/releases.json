@@ -1,5 +1,15 @@
 [
   {
+    "version": "v 2.6.30",
+    "date": "2025-04-03",
+    "updates": [
+      {
+        "component": "Library",
+        "description": "Add llms.txt for AI assistance"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.29",
     "date": "2025-04-03",
     "updates": [
