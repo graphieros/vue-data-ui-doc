@@ -131,6 +131,10 @@ const universalComponentTemplateContent = computed(() => {
                 </div>
             </a>
         </div>
+
+        <div class="mt-4 z-10">
+            <a href="https://vue-data-ui.graphieros.com/llms.txt" class="underline" target="_blank">AI assistance (llms.txt)</a>
+        </div>
         
         <div class="z-10 p-6 shadow-md rounded-lg flex flex-col mt-6 bg-gray-200 dark:bg-[rgb(26,26,26)] max-w-[800px]">
 
