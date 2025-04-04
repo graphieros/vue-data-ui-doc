@@ -3421,8 +3421,8 @@ export default function useExamples() {
                                     ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
                                     useIndividualScale: true,
                                     groupColor: colors.value.textColor,
-                                    labelWidth: 20,
-                                    scaleLabelOffsetX: -36
+                                    labelWidth: 36,
+                                    scaleLabelOffsetX: -26
                                 }
                             }
                         }
