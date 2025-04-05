@@ -75,10 +75,10 @@ const config = ref({
             color: "#1A1A1A"
         },
         dataLabel: {
-            fontSize: 24,
+            fontSize: 36,
             autoColor: true,
             color: "#1A1A1A",
-            offsetY: 0,
+            offsetY: -2,
             bold: true,
             rounding: 0,
             prefix: "",
@@ -117,13 +117,13 @@ const darkModeConfig = ref({
             position: "bottom",
             textAlign: "center",
             bold: false,
-            color: "#6A6A6A"
+            color: "#8A8A8A"
         },
         dataLabel: {
-            fontSize: 20,
+            fontSize: 36,
             autoColor: true,
             color: "#CCCCCC",
-            offsetY: 0,
+            offsetY: -2,
             bold: true,
             rounding: 0,
             prefix: "",
