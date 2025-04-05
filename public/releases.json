@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.31",
+    "date": "2025-04-05",
+    "updates": [
+      {
+        "component": "VueUiQuickChart",
+        "description": "Add config options to show time labels at modulo (ideal for large datasets)",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.30",
     "date": "2025-04-03",
     "updates": [

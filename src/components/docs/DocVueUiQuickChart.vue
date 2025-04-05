@@ -202,6 +202,8 @@ const config = ref({
     xyPaddingTop: 24,
     xyPeriods: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
     xyPeriodLabelsRotation: 0,
+    xyPeriodsShowOnlyAtModulo: false,
+    xyPeriodsModulo: 12,
     xyScaleSegments: 10,
     xyShowAxis: true,
     xyShowGrid: true,
@@ -315,6 +317,8 @@ const darkModeConfig = ref({
     xyPaddingTop: 24,
     xyPeriods: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
     xyPeriodLabelsRotation: 0,
+    xyPeriodsShowOnlyAtModulo: true,
+    xyPeriodsModulo: 12,
     xyScaleSegments: 10,
     xyShowAxis: true,
     xyShowGrid: true,
@@ -868,6 +872,8 @@ function copyComponentSnippet(snip) {
             <BaseAttr name="xyPaddingTop" attr="xyPaddingTop" type="number" defaultVal="24" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <span>xyPeriods: [], <span class="text-app-blue text-xs">// Array&lt;string | number&gt;</span></span>
             <BaseAttr name="xyPeriodLabelsRotation" attr="xyPeriodLabelsRotation" type="number" defaultVal="0" :min="-360" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="xyPeriodsShowOnlyAtModulo" attr="xyPeriodsShowOnlyAtModulo" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="Ideal for large datasets"/>
+            <BaseAttr name="xyPeriodsModulo" attr="xyPeriodsModulo" type="number" defaultVal="12" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="With xyPeriodsShowOnlyAtModulo set to true" />
             <BaseAttr name="xyScaleSegments" attr="xyScaleSegments" type="number" defaultVal="10" :min="2" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="xyShowAxis" attr="xyShowAxis" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="xyShowGrid" attr="xyShowGrid" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
