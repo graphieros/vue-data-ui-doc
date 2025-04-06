@@ -9,6 +9,7 @@ import { useRoute, useRouter } from "vue-router";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import Rater from "../components/Rater.vue";
+import { CircleArrowDownRightFilledIcon, CircleArrowRightFilledIcon, CircleArrowUpRightFilledIcon } from "vue-tabler-icons";
 
 const { examples } = useExamples()
 const store = useMainStore()
@@ -436,14 +437,23 @@ const hoveredLink = ref(null);
                         <div class="w-full p-4 example-wrapper">
                             <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
                                 <template #plot-comment="{ plot }">
-                                    <div v-if="example.component === 'VueUiXy' && plot.value === 140" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-green">
-                                        <VueUiIcon name="smiley" stroke="#42d392" :size="30"/>
-                                        {{ plot.comment }}
-                                    </div>
-                                    <div v-else-if="example.component === 'VueUiXy' && plot.value === 12" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-orange">
-                                        <VueUiIcon name="moodFlat" stroke="#FF6600" :size="30"/>
-                                        {{ plot.comment }}
-                                    </div>
+                                    <template v-if="example.component === 'VueUiXy'">
+                                        <div v-if="['up', 'eq', 'down'].includes(plot.comment)" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl py-2">
+                                            <CircleArrowUpRightFilledIcon v-if="plot.comment === 'up'" color="#42d392" style="transform: scale(1.2,1.2)"/>
+                                            <CircleArrowRightFilledIcon v-if="plot.comment === 'eq'" color="#6A6A6A" style="transform: scale(1.2,1.2)"/>
+                                            <CircleArrowDownRightFilledIcon v-if="plot.comment === 'down'" color="#FF6600" style="transform: scale(1.2,1.2)"/>
+                                        </div>
+                                        <template v-else>
+                                            <div v-if="plot.value === 140" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-green">
+                                                <VueUiIcon name="smiley" stroke="#42d392" :size="30"/>
+                                                {{ plot.comment }}
+                                            </div>
+                                            <div v-else-if="plot.value === 12" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-orange">
+                                                <VueUiIcon name="moodFlat" stroke="#FF6600" :size="30"/>
+                                                {{ plot.comment }}
+                                            </div>
+                                        </template>
+                                    </template>
                                     <div v-else :style="`text-align:${plot.textAlign}; color:${plot.color}; font-size: 10px; padding: 6px;`">
                                         {{ plot.comment }}
                                     </div>

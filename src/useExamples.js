@@ -192,6 +192,29 @@ export default function useExamples() {
         }
     ]);
 
+    const TRENDSET = ref([12, 25, 31, 19, 17, 34, 55, 12, 29, 29, 29, 20])
+    
+    function makeTrendComments(ds) {
+        return ds.map((d,i) => {
+            if (i > 0) {
+                return d === ds[i - 1] ? 'eq' : d > ds[i - 1] ? 'up' : 'down'
+            }
+            return ''
+        })
+    }
+
+    const DATASET_XY_COMMENTS_TRENDS = ref([
+        {
+            name: 'Series 1',
+            type: 'line',
+            dataLabels: true,
+            series: TRENDSET.value,
+            comments: makeTrendComments(TRENDSET.value),
+            color: '#8A8A8A',
+            smooth: true,
+        }
+    ])
+
     const DATASET_XY_LINE_FIXED = ref([
         {
             name: 'Serie 1',
@@ -2964,6 +2987,50 @@ export default function useExamples() {
                     ar: 'مع تعليق على نقطة بيانات فردية'
                 }
             },
+
+            // XY LINE WITH TREND COMMENT
+            { 
+                dataset: DATASET_XY_COMMENTS_TRENDS.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        comments: {
+                            showInTooltip: false,
+                            width: 100,
+                            offsetY: -80
+                        },
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: 0,
+                                    scaleMax: 100
+                                }
+                            }
+                        }
+                    }
+                },
+                tags: ['#plot-comment'],
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'line-comment-trend',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'With an individual datapoint comment as a trend arrow',
+                    fr: 'Avec un commentaire de point de données individuel sous forme de flèche de tendance',
+                    pt: 'Com um comentário de ponto de dados individual como uma seta de tendência',
+                    de: 'Mit einem einzelnen Datenpunktkommentar als Trendpfeil',
+                    zh: '带有单个数据点评论的趋势箭头',
+                    jp: '個々のデータポイントに対するトレンド矢印としてのコメント付き',
+                    es: 'Con un comentario individual de punto de datos como una flecha de tendencia',
+                    ko: '개별 데이터 포인트 주석을 추세 화살표로 표시',
+                    ar: 'مع تعليق على نقطة بيانات فردية كسهم للاتجاه'
+                }
+            },
+
             // XY INDIVIDUAL SCALE
             { 
                 dataset: DATASET_XY_DUAL.value,

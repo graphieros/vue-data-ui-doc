@@ -120,6 +120,7 @@ const sparklineConfigUsers = computed(() => {
             title: {
                 show: false,
             },
+            tooltip: { show: true },
             area: { show: true, useGradient: true, opacity: 30, color: "#5f8bee" },
         },
     };
