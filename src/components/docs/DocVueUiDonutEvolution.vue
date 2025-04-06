@@ -86,7 +86,7 @@ const config = ref({
                 show: true,
                 stroke: "#e1e5e8",
                 strokeWidth: 0.7,
-                showVerticalLines: true,
+                showVerticalLines: false,
                 yAxis: {
                     dataLabels: {
                         show: true,
@@ -232,7 +232,7 @@ const darkModeConfig = ref({
                     show: true,
                     stroke: "#4A4A4A",
                     strokeWidth: 0.7,
-                    showVerticalLines: true,
+                    showVerticalLines: false,
                     yAxis: {
                         dataLabels: {
                             show: true,
