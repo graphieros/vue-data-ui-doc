@@ -1,6 +1,5 @@
 <script setup>
 import { ref, computed, onMounted, watch, nextTick } from "vue";
-import SideMenu from '../components/SideMenu.vue';
 import { useMainStore } from "../stores";
 import staticReleases from "../../public/releases.json"
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui"
@@ -10,7 +9,7 @@ import updates from "../../public/releases.json"
 import GithubIssues from "../components/GithubIssues.vue";
 import { shiftHue } from '../components/maker/lib'
 import RepoStars from "../components/RepoStars.vue";
-import { darkenColor } from "vue-data-ui";
+import { darkenColor, lightenColor } from "vue-data-ui";
 import Downloads from "../components/Downloads.vue";
 import { BugIcon, GitForkIcon, StarFilledIcon, UserHeartIcon } from "vue-tabler-icons";
 
@@ -1852,29 +1851,33 @@ const dogFood = ref({
           <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.versions[store.lang] }}</h1>
           <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 
-          <div class="flex flex-row gap-4 flex-wrap mx-auto max-w-[1200px] px-4 justify-center">
-          <button :class="`flex-1 w-[200px] min-w-[200px] hover:outline hover:outline-app-blue dark:hover:outline-[#5A5A5A] rounded-md transition-colors`" v-for="kpi in KPIS" >
-            <a :href="kpi.link" target="_blank">
-              <VueDataUi 
+          <div class="grid grid-cols-2 align-center gap-4 mx-auto max-w-[525px] px-4 justify-center">
+          <button :class="`hover:outline hover:outline-app-blue dark:hover:outline-[#5A5A5A] rounded-md transition-colors`" v-for="kpi in KPIS" >
+            <a :href="kpi.link" target="_blank" class="kpi-wrapper">
+              <VueDataUi
+                :class="kpi.name.replaceAll(' ', '_')"
                 component="VueUiKpi" 
                 :dataset="kpi.value"
                 :config="{
-                  backgroundColor: isDarkMode ? `${kpi.color}10` : '#FFFFFF',
-                  layoutClass: 'p-4 rounded-md shadow-md',
-                  titleColor: isDarkMode ? kpi.color : '#1A1A1A',
+                  backgroundColor: 'transparent',
+                  layoutClass: 'p-4 rounded-md shadow-md relative',
+                  titleColor: '#1A1A1A',
                   titleClass: 'text-left pl-1 capitalize',
-                  valueClass: 'tabular-nums mt-2',
+                  valueClass: 'tabular-nums pl-10 !drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]',
                   analogDigits: {
                     show: true,
                     height: 40,
-                    color: isDarkMode ? kpi.color : '#1A1A1A',
-                    skeletonColor: isDarkMode ? '#3A3A3A' : '#E1E5E8'
+                    color: lightenColor(kpi.color, 0.4),
+                    skeletonColor: '#1A1A1A20'
                   }
                 }"
               >
                 <template #title>
-                  <div class="flex flex-row place-items-center gap-2">
-                    <component :is="kpi.icon"/> {{  kpi.name }}
+                  <!-- <div class="absolute top-0 text-xs" :style="{ color: kpi.color }">
+                    {{ kpi.name }}
+                  </div> -->
+                  <div class="absolute top-1/2 -translate-y-1/2 scale-125 flex-row place-items-center gap-2">
+                    <component :is="kpi.icon" :color="kpi.color" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
                   </div>
                 </template>
             </VueDataUi>
@@ -2152,5 +2155,18 @@ const dogFood = ref({
   width: fit-content;
   min-width: 120px;
   font-size: 14px;
+}
+
+.kpi-wrapper .stargazers_count {
+  background: radial-gradient(at top right, #fdd663, #644e0f) !important;
+}
+.kpi-wrapper .forks_count {
+  background: radial-gradient(at top right, #7e9fed, #101f46) !important;
+}
+.kpi-wrapper .open_issues_count {
+  background: radial-gradient(at top right, #ff812d, #4e1f00) !important;
+}
+.kpi-wrapper .subscribers_count {
+  background: radial-gradient(at top right, #73e1af, #084f2f) !important;
 }
 </style>
