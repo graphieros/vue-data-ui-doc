@@ -1852,7 +1852,7 @@ const dogFood = ref({
           <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 
           <div class="grid grid-cols-2 align-center gap-4 mx-auto max-w-[525px] px-4 justify-center">
-          <button :class="`hover:outline hover:outline-app-blue dark:hover:outline-[#5A5A5A] rounded-md transition-colors`" v-for="kpi in KPIS" >
+          <button v-for="kpi in KPIS" :class="`button-kpi-${kpi.name.replaceAll(' ', '-')} rounded-md hover:shadow-xl transition-all`"  >
             <a :href="kpi.link" target="_blank" class="kpi-wrapper">
               <VueDataUi
                 :class="kpi.name.replaceAll(' ', '_')"
@@ -2182,5 +2182,21 @@ const dogFood = ref({
 
 .thin-icon path {
   stroke-width: 0.6px !important;
+}
+
+.button-kpi-stargazers-count:hover {
+  outline: 2px solid #fdd663;
+}
+
+.button-kpi-forks-count:hover {
+  outline: 2px solid #7e9fed;
+}
+
+.button-kpi-open-issues-count:hover {
+  outline: 2px solid #ff812d;
+}
+
+.button-kpi-subscribers-count:hover {
+  outline: 2px solid #73e1af;
 }
 </style>
