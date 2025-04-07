@@ -1860,10 +1860,10 @@ const dogFood = ref({
                 :dataset="kpi.value"
                 :config="{
                   backgroundColor: 'transparent',
-                  layoutClass: 'p-4 rounded-md shadow-md relative',
+                  layoutClass: 'p-4 rounded-md shadow-md relative overflow-hidden',
                   titleColor: '#1A1A1A',
                   titleClass: 'text-left pl-1 capitalize',
-                  valueClass: 'tabular-nums pl-10 !drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]',
+                  valueClass: 'tabular-nums pl-0 sm:pl-6 !drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]',
                   analogDigits: {
                     show: true,
                     height: 40,
@@ -1876,9 +1876,19 @@ const dogFood = ref({
                   <!-- <div class="absolute top-0 text-xs" :style="{ color: kpi.color }">
                     {{ kpi.name }}
                   </div> -->
-                  <div class="absolute top-1/2 -translate-y-1/2 scale-125 flex-row place-items-center gap-2">
+                  <!-- <div class="absolute top-1/2 -translate-y-1/2 scale-125 flex-row place-items-center gap-2">
                     <component :is="kpi.icon" :color="kpi.color" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
+                  </div> -->
+                  <div class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(2,2)">
+                    <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.3)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
                   </div>
+                  <div v-if="kpi.name === 'stargazers count'" class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(1,1)">
+                    <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
+                  </div>
+                  <div v-else class="thin-icon absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(2, 2)">
+                    <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
+                  </div>
+                  
                 </template>
             </VueDataUi>
             </a>
@@ -2168,5 +2178,9 @@ const dogFood = ref({
 }
 .kpi-wrapper .subscribers_count {
   background: radial-gradient(at top right, #73e1af, #084f2f) !important;
+}
+
+.thin-icon path {
+  stroke-width: 0.6px !important;
 }
 </style>

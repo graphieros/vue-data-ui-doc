@@ -197,9 +197,15 @@ export default function useExamples() {
     function makeTrendComments(ds) {
         return ds.map((d,i) => {
             if (i > 0) {
-                return d === ds[i - 1] ? 'eq' : d > ds[i - 1] ? 'up' : 'down'
+                return {
+                    trend: d === ds[i - 1] ? 'eq' : d > ds[i - 1] ? 'up' : 'down',
+                    evolution: ((d / ds[i - 1]) - 1) * 100
+                }
             }
-            return ''
+            return {
+                trend: '',
+                evolution: null
+            }
         })
     }
 
