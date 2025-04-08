@@ -1,7 +1,8 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, watch, ref } from 'vue';
 import { VueHiCode } from "vue-hi-code";
 import "vue-hi-code/style.css"
+import { useMainStore } from '../../stores';
 
 const props = defineProps({
     content: {
@@ -40,6 +41,10 @@ const props = defineProps({
 
 const emit = defineEmits(['copy']);
 
+const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
+const step = ref(0);
+
 const config = computed(() => {
     return {
         withLineNumbers: false,
@@ -47,9 +52,14 @@ const config = computed(() => {
         lineHeight: props.lineHeight,
         title: props.title,
         withCopy: props.withCopy,
-        borderRadius: props.borderRadius
+        borderRadius: props.borderRadius,
+        backgroundColor: isDarkMode.value ? '#FFFFFF10' : '#2A2A2A'
     }
 });
+
+watch(() => isDarkMode.value, () => {
+    step.value += 1
+})
 </script>
 
 <template>
@@ -58,6 +68,7 @@ const config = computed(() => {
     }">
         <slot name="color"/>
         <VueHiCode
+            :key="step"
             class="w-full"
             :content="content" 
             :language="language" 
