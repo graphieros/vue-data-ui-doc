@@ -18,6 +18,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -514,6 +515,19 @@ function forceChartUpdate() {
     key.value += 1;
 }
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiHistoryPlotDatasetItem = {
+        name: string
+        values: Array<{
+            x: number;
+            y: number;
+            label: string
+        }>
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -556,24 +570,13 @@ function forceChartUpdate() {
                     TS type: <code class="text-app-green">VueUiHistoryPlotDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            values: [
-                {
-                    x: number;
-                    y: number;
-                    label: string;
-                },
-                {...}
-            ]
-        },
-        {...}
-    ]
-</code>
-</pre>                    
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />                  
                 </div>
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">

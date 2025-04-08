@@ -18,6 +18,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -349,6 +350,16 @@ function randomizeData() {
   dataset.value[4].values = [Math.random() * 25];
 }
 
+const dsTypeCode = computed(() => {
+  return `
+  type VueUiRingsDatasetItem = {
+    name: string
+    values: number[]
+    color?: string
+  }
+  `
+})
+
 </script>
 
 <template>
@@ -388,18 +399,14 @@ function randomizeData() {
               TS type: <code class="text-app-green">VueUiRingsDatasetItem[]</code>
             </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            color: string;
-            values: number[];
-        },
-        {...}
-    ]
-</code>
-</pre>
+
+          <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />  
+
       {{ translations.docs.example[store.lang] }}
       <div class="w-full overflow-x-auto">
 <pre>

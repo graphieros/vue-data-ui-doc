@@ -16,6 +16,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -62,6 +63,14 @@ const config = ref({
         chart: {
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
+            donuts: {
+                hover: {
+                    hideLabelsUnderValue: 5
+                },
+                zoom: {
+                    hideLabelsUnderValue: 3
+                }
+            },
             zoom: {
                 show: true,
                 color: "#CCCCCC",
@@ -208,6 +217,14 @@ const darkModeConfig = ref({
         chart: {
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
+            donuts: {
+                hover: {
+                    hideLabelsUnderValue: 5
+                },
+                zoom: {
+                    hideLabelsUnderValue: 3
+                }
+            },
             zoom: {
                 show: true,
                 color: "#CCCCCC",
@@ -384,6 +401,16 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiDonutEvolutionDatasetItem = {
+        name: string
+        values: number[]
+        color?: string
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -423,18 +450,14 @@ const { configCode, showAllConfig } = useConfigCode()
                 </div>
 
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            values: number[];
-            color?: string; 
-        },
-        {...}
-    ]
-</code>
-</pre>                
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        /> 
+
                 </div>
 
                 {{ translations.docs.example[store.lang] }} :
@@ -486,6 +509,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionD
             <BaseDetails attr="chart" :level="2" title="style.chart">
                 <BaseAttr name="backgroundColor" attr="style.chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                <BaseDetails attr="donuts" :level="3" title="style.chart.donuts">
+                    <BaseDetails attr="hover" :level="4" title="style.chart.donuts.hover">
+                        <BaseAttr name="hideLabelsUnderValue" attr="style.chart.donuts.hover.hideLabelUnderValue" type="number" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    </BaseDetails>
+                    <BaseDetails attr="zoom" :level="4" title="style.chart.donuts.zoom">
+                        <BaseAttr name="hideLabelsUnderValue" attr="style.chart.donuts.zoom.hideLabelUnderValue" type="number" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    </BaseDetails>
+                </BaseDetails>
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">
                     <BaseAttr name="height" attr="style.chart.layout.height" type="number" defaultVal="316" :min="200" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="width" attr="style.chart.layout.width" type="number" defaultVal="316" :min="400" :max="1500" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

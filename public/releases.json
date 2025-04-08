@@ -1,5 +1,27 @@
 [
   {
+    "version": "v 2.6.33",
+    "date": "2025-04-08",
+    "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Add missing content for tooltip-before and tooltip-after scoped slots",
+        "link": "/docs#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
+    "version": "v 2.6.32",
+    "date": "2025-04-08",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Add config options to hide labels under a given percentage value",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.31",
     "date": "2025-04-05",
     "updates": [

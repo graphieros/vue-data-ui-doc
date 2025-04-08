@@ -15,6 +15,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -425,6 +426,16 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiMoleculeDatasetNode = {
+        name: string
+        details?: string
+        nodes?: VueUiMoleculeDatasetNode[]
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -462,24 +473,13 @@ const { configCode, showAllConfig } = useConfigCode()
                 </div>
 
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            details?: string;
-            nodes: [
-                {
-                    name: string,
-                    details?: string;
-                    nodes?: ...
-                }
-            ]
-        },
-        {...}
-    ]
-</code>
-</pre>                
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />               
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
 <pre>

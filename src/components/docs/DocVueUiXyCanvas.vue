@@ -19,6 +19,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig();
 
@@ -542,6 +543,28 @@ function randomizeData() {
   dataset.value[2].series = makeSet(21, 80);
   key.value += 1;
 }
+
+const dsTypeCode = computed(() => {
+  return `
+  type VueUiXyCanvasDatasetItem = {
+      name: string;
+      series: number[];
+      type?: "line" | "bar" | "plot";
+      useArea?: boolean;
+      dataLabels?: boolean;
+      scaleSteps?: number;
+      prefix?: string;
+      suffix?: string;
+      rounding?: number;
+      autoScaling?: boolean;
+      stackRatio?: number; // if used on all datapoints, must sum up to 1
+      scaleMin?: number; // applied in stack mode
+      scaleMax?: number; // applied in stack mode
+      showYMarker?: boolean; // if true, will show a marker on Y axis with the value at hovered index
+  }
+  `
+})
+
 </script>
 
 <template>
@@ -595,29 +618,12 @@ function randomizeData() {
           <code class="text-app-green">VueUiXyCanvasDatasetItem[]</code>
         </div>
         <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-          <pre>
-<code>
-    [
-        {
-            name: string;
-            series: number[];
-            type?: "line" | "bar" | "plot";
-            useArea?: boolean;
-            dataLabels?: boolean;
-            scaleSteps?: number;
-            prefix?: string;
-            suffix?: string;
-            rounding?: number;
-            autoScaling?: boolean;
-            stackRatio?: number; // if used on all datapoints, must sum up to 1
-            scaleMin?: number; // applied in stack mode
-            scaleMax?: number; // applied in stack mode
-            showYMarker?: boolean; // if true, will show a marker on Y axis with the value at hovered index
-        },
-        {...}
-    ]
-</code>
-</pre>
+          <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />    
         </div>
 
         {{ translations.docs.example[store.lang] }} :

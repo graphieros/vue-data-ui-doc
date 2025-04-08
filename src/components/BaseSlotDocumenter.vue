@@ -78,10 +78,10 @@ const items = computed(() => {
             description: translations.value.slots.tooltip[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
-        <template #tooltip-before={ datapoint, seriesIndex, series, config, bars, lines, plots }>
+        <template #tooltip-before={ datapoint, seriesIndex, series, config }>
             {{ datapoint }}
         </template>
-        <template #tooltip-after={ datapoint, seriesIndex, series, config, bars, lines, plots }>
+        <template #tooltip-after={ datapoint, seriesIndex, series, config }>
             {{ datapoint }}
         </template>
     </${props.componentName}>

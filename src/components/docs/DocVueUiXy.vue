@@ -20,6 +20,7 @@ import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseRandomButton from "../BaseRandomButton.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -792,6 +793,34 @@ function randomizeData() {
     mutableDataset.value[3].series = makeSet(21, 40);
 }
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiXyDatasetItem = {
+        name: string
+        series: number[]
+        type: "bar" | "line" | "plot"
+        // ${translations.value.docs.comments.xy.type[store.lang]}
+        color?: string // ${translations.value.docs.comments.xy.color[store.lang]}
+        dashed?: boolean // ${translations.value.docs.comments.xy.dashed[store.lang]}
+        useTag?: "start" | "end" // ${translations.value.docs.comments.xy.useTag[store.lang]}
+        dataLabels?: boolean // ${translations.value.docs.comments.xy.dataLabels[store.lang]}
+        useProgression?: boolean // ${translations.value.docs.comments.xy.useProgression[store.lang]}
+        useArea?: boolean // ${translations.value.docs.comments.xy.area[store.lang]}
+        smooth?: boolean // ${translations.value.docs.comments.xy.smooth[store.lang]}
+        shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star" // ${translations.value.docs.comments.xy.shape[store.lang]}
+        scaleSteps?: number // ${translations.value.docs.comments.xy.scaleSteps[store.lang]}
+        scaleLabel?: string // ${translations.value.docs.comments.xy.scaleLabel[store.lang]}
+        scaleMax?: number // ${translations.value.docs.comments.xy.scaleMax[store.lang]}
+        scaleMin?: number // ${translations.value.docs.comments.xy.scaleMin[store.lang]}
+        autoScaling?: boolean // ${translations.value.docs.comments.xy.autoScaling[store.lang]}
+        stackRatio?: number // (0 to 1) ${translations.value.docs.comments.xy.stackRatio[store.lang]}
+        showSerieName?: "start" | "end" // ${translations.value.docs.comments.xy.showSerieName[store.lang]}
+        prefix?: string // since v2.3.83
+        suffix?: string // since v2.3.83
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -850,37 +879,12 @@ function randomizeData() {
                 TS type: <code class="text-app-green">VueUiXyDatasetItem[]</code>
             </div>
             <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            series: number[];
-            type: "bar" | "line" | "plot";
-            <span class="text-gray-600 dark:text-app-orange">// {{ translations.docs.comments.xy.type[store.lang] }}</span>
-            color?: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.color[store.lang] }}</span>
-            dashed?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.dashed[store.lang] }}</span>
-            useTag?: "start" | "end"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.useTag[store.lang] }}</span>
-            dataLabels?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.dataLabels[store.lang] }}</span>
-            useProgression?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.useProgression[store.lang] }}</span>
-            useArea?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.area[store.lang] }}</span>
-            smooth?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.smooth[store.lang] }}</span>
-            shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.shape[store.lang] }}</span>
-            scaleSteps?: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleSteps[store.lang] }}</span>
-            scaleLabel?: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleLabel[store.lang] }}</span>
-            scaleMax?: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleMax[store.lang] }}</span>
-            scaleMin?: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.scaleMin[store.lang] }}</span>
-            autoScaling?: boolean; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.autoScaling[store.lang] }}</span>
-            stackRatio?: number; (0 to 1) <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.stackRatio[store.lang] }}</span>
-            showSerieName?: "start" | "end"; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.showSerieName[store.lang] }}</span>
-            prefix?: string; <span class="text-gray-600 dark:text-app-green">// since v2.3.83</span>
-            suffix?: string; <span class="text-gray-600 dark:text-app-green">// since v2.3.83</span>
-
-        },
-        {...}
-    ]
-</code>
-</pre>      
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="mt-6"
+        />     
             </div>
 
             {{ translations.docs.example[store.lang] }} :

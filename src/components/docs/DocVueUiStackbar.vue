@@ -19,6 +19,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -573,6 +574,15 @@ function randomizeData() {
     ];
 }
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiStackbarDatasetItem = {
+        name: string
+        series: number[]
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -627,17 +637,13 @@ function randomizeData() {
                     TS type: <code class="text-app-green">VueUiStackbarDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b my-6 border-gray-700">
-                    <pre>
-<code>
-    [
-        {
-            name: string;
-            series: number[];
-        },
-        {...}
-    ]
-</code>
-</pre>
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />  
                 </div>
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">

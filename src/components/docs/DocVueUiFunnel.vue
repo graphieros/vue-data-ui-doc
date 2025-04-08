@@ -18,6 +18,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -362,6 +363,15 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiFunnelDatasetItem = {
+        name: string
+        value: number
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -404,17 +414,14 @@ const { configCode, showAllConfig } = useConfigCode()
                     TS type: <code class="text-app-green">VueUiFunnelDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b my-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            value: number;
-        },
-        {...}
-    ]
-</code>
-</pre>                    
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        /> 
+
                 </div>
                 {{ translations.docs.example[store.lang] }} :
 <pre>

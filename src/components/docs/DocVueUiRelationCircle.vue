@@ -17,6 +17,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -316,6 +317,18 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+  return `
+  type VueUiRelationCircleDatasetItem = {
+    id: string | number
+    label: string
+    relations: (string | number)[] // ${translations.value.docs.comments.relationCircle.relations[store.lang]}
+    weights?: number[] // ${translations.value.docs.comments.relationCircle.weight[store.lang] }
+    color?: string
+  }
+  `
+})
+
 </script>
 
 <template>
@@ -357,20 +370,14 @@ const { configCode, showAllConfig } = useConfigCode()
         <div class="mt-4">
           TS type: <code class="text-app-green">VueUiRelationCircleDatasetItem[]</code>
         </div>
-          <pre>
-<code>
-    [
-        {
-            id: string | number;
-            label: string;
-            relations: Array&lt;string | number&gt; ; <span class="dark:text-app-green text-gray-500">// {{ translations.docs.comments.relationCircle.relations[store.lang] }}</span>
-            weights?: number[]; <span class="dark:text-app-green text-gray-500">// {{ translations.docs.comments.relationCircle.weight[store.lang] }}</span>
-            color?: string;
-        },
-        {...}
-    ]
-</code>
-</pre>
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        /> 
+
           {{ translations.docs.example[store.lang] }} :
           <div class="w-full overflow-x-auto">
             <pre>

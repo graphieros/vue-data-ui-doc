@@ -19,6 +19,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -371,6 +372,21 @@ function randomizeData() {
     value2.value = getRandomNumber(-100, 100);
 }
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiGaugeDataset = {
+        value: number
+        base?: number
+        series: Array<{
+            from: number;
+            to: number;
+            color?: string;
+            name?: string;
+            nameOffsetRatio?: number // example: 1.1
+        }>
+    }
+    `
+})
 
 </script>
 
@@ -421,25 +437,13 @@ function randomizeData() {
                     TS type: <code class="text-app-green">VueUiGaugeDataset</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    {
-        base: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.optional[store.lang] }}</span>
-        value: number;
-        series: [
-            <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.gauge.steps[store.lang] }}</span>
-            {
-                from: number;
-                to: number;
-                color?: string;
-                name?: string;
-                nameOffsetRatio?: number; // e.g. 1.1
-            },
-            {...and so on}
-        ]
-    }
-</code>
-</pre>                
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />                 
                 </div>
 
                 {{ translations.docs.example[store.lang] }} 1:

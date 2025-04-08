@@ -2871,6 +2871,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
+                    { key: 'style.chart.donuts.hover.hideLabelsUnderValue', def: 5, type: 'number', min: 0, max: 12, label: ['donut', 'hover', 'hide label under %'], category: 'general'},
+                    { key: 'style.chart.donuts.zoom.hideLabelsUnderValue', def: 5, type: 'number', min: 0, max: 12, label: ['donut', 'zoom', 'hide label under %'], category: 'general'},
                     { key: 'style.chart.layout.padding.top', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'general' },
                     { key: 'style.chart.layout.padding.right', def: 48, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'general' },
                     { key: 'style.chart.layout.padding.bottom', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'general' },

@@ -18,6 +18,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -396,6 +397,15 @@ function randomizeData() {
     dataset.value = arr
 }
 
+const dsTypeCode = computed(() => {
+  return `
+  type VueUiHeatmapDatasetItem = {
+    name: string
+    values: number[]
+  }
+  `
+})
+
 </script>
 
 <template>
@@ -438,17 +448,13 @@ function randomizeData() {
                 TS type: <code class="text-app-green">VueUiHeatmapDatasetItem[]</code>
               </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            values: number[];
-        },
-        {...}
-    ]
-</code>
-</pre>                
+
+        <CodeParser
+          language="javascript"
+          @copy="store.copy()"
+          :content="dsTypeCode"
+          class="my-6"
+        />             
                 </div>
 
                 {{ translations.docs.example[store.lang] }}:

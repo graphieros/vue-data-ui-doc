@@ -19,6 +19,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -467,6 +468,20 @@ function randomizeData() {
   dataset.value[4].value = dataset.value[4].children.map(c => c.value).reduce((a, b) => a + b, 0)
 }
 
+const dsTypeCode = computed(() => {
+  return `
+  type VueUiVerticalBarDatasetItem = {
+        name: string;
+        value: number;
+        color: string; // ${translations.value.docs.comments.xy.color[store.lang]}
+        children: Array<{  // ${translations.value.docs.comments.verticalBar.breakdown[store.lang]}
+          name: string;
+          value: number;
+        }>
+    }
+  `
+})
+
 </script>
 
 <template>
@@ -509,26 +524,13 @@ function randomizeData() {
                 TS type: <code class="text-app-green">VueUiVerticalBarDatasetItem[]</code>
               </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            value: number;
-            color: string; <span class="text-app-green">// {{ translations.docs.comments.xy.color[store.lang] }}</span>
-            children: [
-                <span class="text-app-green">// {{ translations.docs.comments.verticalBar.breakdown[store.lang] }}</span>
-                {
-                    name: string;
-                    value: number;
-                },
-                {...}
-            ]
-        },
-        {...}
-    ]
-</code>
-</pre>          
+
+          <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />  
                 </div>
                 {{ translations.docs.example[store.lang] }}:
                 <div class="w-full overflow-x auto">

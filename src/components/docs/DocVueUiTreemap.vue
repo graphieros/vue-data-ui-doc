@@ -18,6 +18,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -451,8 +452,18 @@ function randomizeData() {
     dataset.value[2].children[5].value = Math.random() * 30
     dataset.value[2].children[6].value = Math.random() * 30
     dataset.value[2].value = dataset.value[2].children.map(c => c.value).reduce((a, b) => a + b, 0)
-
 }
+
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiTreemapDatasetItem = {
+        name: string
+        value: number
+        color?: string
+        children?: VueUiTreemapDatasetItem[]
+    }
+    `
+})
 
 </script>
 
@@ -495,19 +506,12 @@ function randomizeData() {
                     TS type: <code class="text-app-green">VueUiTreemapDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-                    <pre>
-<code>
-    [
-        {
-            name: string;
-            value: number;
-            color?: string;
-            children?: VueUiTreemapDatasetItem[];
-        },
-        {...}
-    ]
-</code>
-</pre>
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        /> 
                 </div>
 
                 {{ translations.docs.example[store.lang] }} :

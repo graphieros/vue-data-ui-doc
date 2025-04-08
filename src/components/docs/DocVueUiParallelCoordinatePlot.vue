@@ -17,6 +17,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -457,6 +458,19 @@ function randomizeData() {
     ]
 }
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiParallelCoordinatePlotDatasetItem = {
+        name: string
+        shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star"
+        series: Array<{
+            name: string;
+            values: number[]
+        }>
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -502,24 +516,13 @@ function randomizeData() {
                     TS type: <code class="text-app-green">VueUiParallelCoordinatePlotDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-                    <pre>
-<code>
-    [
-        {
-            name: string;
-            shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star";
-            series: [
-                {
-                    name: string;
-                    values: number[];
-                },
-                {...}
-            ]
-        },
-        {...}
-    ]
-</code>
-</pre>
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />  
                 </div>
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">

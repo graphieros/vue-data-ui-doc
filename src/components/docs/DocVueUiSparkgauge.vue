@@ -16,6 +16,7 @@ import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -199,6 +200,25 @@ function randomizeData() {
     dataset3.value.value = getRandomNumber(-10, 10);
 }
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiSparkgaugeDataset = {
+        value: number
+        min: number
+        max: number
+        title?: string
+    }
+
+    // ${translations.value.docs.example[store.lang]}
+    const dataset = {
+        value: -8,
+        min: -10,
+        max: 10,
+        title: "KPI 1"
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -245,29 +265,13 @@ function randomizeData() {
                     TS type: <code class="text-app-green">VueUiSparkgaugeDataset</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-                    <pre>
-<code>
-    {
-        value: number;
-        min: number;
-        max: number;
-        title?: string;
-    }
-</code>
-</pre>                     
-                </div>
-                {{ translations.docs.example[store.lang] }}
-                <div class="w-full overflow-x auto">
-<pre>
-<code>
-    const <span class="text-black dark:text-app-green">dataset: VueUiSparkgaugeDataset</span> = {
-        value: -8,
-        min: -10,
-        max: 10,
-        title: 'KPI 1'
-    }
-</code>
-</pre>               
+
+    <CodeParser
+        language="javascript"
+        @copy="store.copy()"
+        :content="dsTypeCode"
+        class="my-6"
+    />                               
                 </div>
             </template>
             <template #tab1>

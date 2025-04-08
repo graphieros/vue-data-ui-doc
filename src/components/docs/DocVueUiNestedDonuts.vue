@@ -18,6 +18,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -389,6 +390,19 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiNestedDonutsDatasetItem = {
+        name: string
+        series: Array<{
+            name: string;
+            values: number[];
+            color?: string
+        }>
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -431,24 +445,13 @@ const { configCode, showAllConfig } = useConfigCode()
                     TS type: <code class="text-app-green">VueUiNestedDonutsDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-                    <pre>
-<code>
-    [
-        {
-            name: string;
-            series: [
-                {
-                    name: string;
-                    color?: string; 
-                    values: number[];
-                },
-                {...}
-            ]
-        },
-        {...}
-    ]
-</code>
-</pre>
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />  
                 </div>
 
 

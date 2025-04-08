@@ -16,6 +16,7 @@ import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -270,18 +271,20 @@ function randomizeData() {
                   TS type: <code class="text-app-green">VueUiSparkStackBarDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            value: number;
-            color?: string;
-        },
-        {...}
-    ]
-</code>
-</pre>          {{ translations.docs.example[store.lang] }}:
+
+  <CodeParser
+    language="javascript"
+    @copy="store.copy()"
+    :content="`
+    type VueUiSparkStackBarDatasetItem = {
+        name: string
+        value: number
+        color?: string
+    }
+    `"
+    class="my-6"
+  />
+          {{ translations.docs.example[store.lang] }}:
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>

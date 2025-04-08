@@ -19,6 +19,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig();
 
@@ -360,6 +361,16 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiCirclePackDatasetItem = {
+        name: string
+        value: number
+        color?: string
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -401,18 +412,12 @@ const { configCode, showAllConfig } = useConfigCode()
                     TS type: <code class="text-app-green">VueUiCirclePackDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            value: number;
-            color?: string;
-        },
-        {...}
-    ]
-</code>
-</pre>                
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />              
                 </div>
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">

@@ -18,6 +18,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -539,6 +540,22 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+  return `
+  type VueUiScatterDatasetItem = {
+    name: string
+    color?: string // ${translations.value.docs.comments.xy.color[store.lang]}
+    shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star" // default: "circle"
+    values: Array<{
+      x: number
+      y: number
+      name?: string
+      weight?: number // ${translations.value.docs.comments.scatterWeight[store.lang]}
+    }>
+  }
+  `
+})
+
 </script>
 
 <template>
@@ -580,27 +597,13 @@ const { configCode, showAllConfig } = useConfigCode()
                 TS type: <code class="text-app-green">VueUiScatterDatasetItem[]</code>
               </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            color: string; <span class="text-gray-500">// {{ translations.docs.comments.xy.color[store.lang] }}</span>
-            shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star ";
-            values: [
-                { 
-                    x: number; 
-                    y: number; 
-                    name?: string;
-                    weight?: number; <span class="text-gray-500">// {{ translations.docs.comments.scatterWeight[store.lang] }}</span>
-                },
-                {...}
-            ]
-        },
-        {...}
-    ]
-</code>
-</pre>                
+
+          <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />                
                 </div>
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">

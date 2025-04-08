@@ -19,6 +19,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -425,6 +426,19 @@ function randomizeData() {
     }
 }
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiOnionDatasetItem = {
+        name: string
+        percentage: number // 0 - 100
+        value: number
+        color?: string
+        prefix?: string
+        suffix?: string
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -473,20 +487,13 @@ function randomizeData() {
                     TS type: <code class="text-app-green">VueUiOnionDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            percentage: number; <span class="text-gray-600 dark:text-app-green">// 0 - 100</span>
-            value: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.onion.optionalDisplay[store.lang] }}</span>
-            color: string; 
-            prefix: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.onion.prefix[store.lang] }}</span>
-            suffix: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.onion.suffix[store.lang] }}</span>
-        }
-    ]
-</code>
-</pre>                
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />                
                 </div>
 
                 {{ translations.docs.example[store.lang] }} :

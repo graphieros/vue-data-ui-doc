@@ -16,6 +16,7 @@ import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -321,6 +322,17 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+  return `
+  type VueUiSparkHistogramDatasetItem = {
+    value: number
+    intensity?: number // (0 to 1)
+    valueLabel?: string
+    timeLabel?: string
+  }
+  `
+})
+
 </script>
 
 <template>
@@ -362,19 +374,14 @@ const { configCode, showAllConfig } = useConfigCode()
                   TS type: <code class="text-app-green">VueUiSparkHistogramDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            value: number;
-            intensity?: number; (between 0 and 1)
-            valueLabel?: string;
-            timeLabel?: string;
-        },
-        {...}
-    ]
-</code>
-</pre>          {{ translations.docs.example[store.lang] }}:
+
+    <CodeParser
+      language="javascript"
+      @copy="store.copy()"
+      :content="dsTypeCode"
+      class="my-6"
+    />   
+        {{ translations.docs.example[store.lang] }}:
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>

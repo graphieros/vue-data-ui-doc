@@ -16,6 +16,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -242,6 +243,21 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+  return `
+  type VueUiThermometerDataset = {
+      value: number
+      from: number
+      to: number
+      steps?: number // default: 10
+      colors?: {
+          from?: string // default: "#dc3912"
+          to?: string // default: "#3366cc"
+      }
+  }
+  `
+})
+
 </script>
 
 <template>
@@ -281,20 +297,14 @@ const { configCode, showAllConfig } = useConfigCode()
                   TS type: <code class="text-app-green">VueUiThermometerDataset</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    {
-        value: number;
-        from: number;
-        to: number;
-        steps?: number; (default: 10)
-        colors?: {
-            from?: string; (default: "#dc3912")
-            to?: string; (default: "#3366cc")
-        }
-    }
-</code>
-</pre>          {{ translations.docs.example[store.lang] }} :
+
+          <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />
+      {{ translations.docs.example[store.lang] }} :
                     <div class="w-full overflow-x-auto">
 <pre>
 <code>

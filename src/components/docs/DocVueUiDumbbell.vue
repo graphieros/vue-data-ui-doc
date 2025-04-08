@@ -16,6 +16,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -411,6 +412,16 @@ watch(() => showAllConfig.value, (v) => {
     }
 })
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiDumbbellDataset = {
+        name: string
+        start: number
+        end: number
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -446,18 +457,13 @@ watch(() => showAllConfig.value, (v) => {
                 <div>
                     TS type: <code class="text-app-green">VueUiDumbbellDataset[]</code>
                     <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            start: number;
-            end: number;
-        },
-        {...}
-    ]
-</code>
-</pre>                        
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />                       
                     </div>
                     {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">

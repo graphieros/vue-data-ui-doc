@@ -16,6 +16,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -668,6 +669,24 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+  return `
+  type VueUiChestnutDatasetRoot = {
+    name: string
+    color?: string
+    branches: Array<{
+      name: string;
+      value: number;
+      breakdown: Array<{
+        name: string;
+        value: number;
+        color?: string;
+      }>
+    }>
+  }
+  `
+})
+
 </script>
 
 <template>
@@ -705,31 +724,13 @@ const { configCode, showAllConfig } = useConfigCode()
                   TS type: <code class="text-app-green">VueUiChestnutDatasetRoot[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            color: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.color[store.lang] }}</span>
-            branches: [
-                {
-                    name: string;
-                    value: number;
-                    breakdown: [
-                        {
-                            name: string;
-                            value: string;
-                            color: string; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.xy.color[store.lang] }}</span>
-                        },
-                        {...}
-                    ]
-                },
-                {...}
-            ]
-        }
-    ]
-</code>
-</pre>                
+
+          <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />  
                 </div>
 
                 {{ translations.docs.example[store.lang] }} :

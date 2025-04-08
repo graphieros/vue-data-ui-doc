@@ -16,6 +16,7 @@ import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -220,6 +221,20 @@ function randomizeData() {
     dataset.value[2].value = Math.random() * 100;
 }
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiSparkbarDatasetItem = {
+        name: string
+        value: number
+        prefix?: string // ${translations.value.docs.comments.onion.prefix[store.lang]}
+        suffix?: string // ${translations.value.docs.comments.onion.suffix[store.lang]}
+        rounding?: number
+        target?: number // ${translations.value.docs.comments.sparkbar.target[store.lang]}
+        formatter?: null | ({ value: number; config?: any }) => number | string // ${translations.value.formatterLink[store.lang]}
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -258,21 +273,14 @@ function randomizeData() {
                     TS type: <code class="text-app-green">VueUiSparkbarDatasetItem[]</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        {
-            name: string;
-            value: number;
-            prefix?: string; <BaseComment>{{ translations.docs.comments.onion.prefix[store.lang] }}</BaseComment>
-            suffix?: string; <BaseComment>{{ translations.docs.comments.onion.suffix[store.lang] }}</BaseComment>
-            rounding?: number;
-            target?: number; <BaseComment>{{ translations.docs.comments.sparkbar.target[store.lang] }}</BaseComment>
-            formatter?: null | ({ value: number; config?: any }) => number | string <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment>
-        }
-    ]
-</code>
-</pre>          {{ translations.docs.example[store.lang] }}:
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />    
+        {{ translations.docs.example[store.lang] }}:
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>

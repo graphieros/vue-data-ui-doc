@@ -8,6 +8,7 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -582,6 +583,33 @@ function copyToClipboard(conf) {
     store.copy();
 }
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiTableDataset = {
+        // ${translations.value.docs.comments.table.header[store.lang]}
+        header: Array<{
+            name: string
+            type: "text" | "date" | "numeric"
+            average: boolean
+            decimals?: number
+            sum: boolean
+            isSort: boolean
+            isSearch: boolean
+            isMultiselect: boolean
+            isPercentage: boolean
+            percentageTo?: string // ${translations.value.docs.comments.table.reference[store.lang]}
+            suffix?: string
+            prefix?: string
+            rangeFilter: boolean
+        }>
+        // ${translations.value.docs.comments.table.body[store.lang]}
+        body: Array<{
+            td: (number|string)[] // ${translations.value.docs.comments.table.td[store.lang]}
+        }>
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -616,38 +644,13 @@ function copyToClipboard(conf) {
                     TS type: <code class="text-app-green">VueUiTableDataset</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-    <pre>
-    <code>
-        {
-            header: [
-                <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.table.header[store.lang] }}</span>
-                {
-                    name: string;
-                    type: "text" | "date" | "numeric";
-                    average: boolean;
-                    decimals: number | undefined;
-                    sum: boolean;
-                    isSort: boolean;
-                    isSearch: boolean;
-                    isMultiselect: boolean;
-                    isPercentage: boolean;
-                    percentageTo: string | undefined; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.table.reference[store.lang] }}</span>
-                    suffix: string; (default: "")
-                    prefix: string; (default: "")
-                    rangeFilter: boolean;
-                },
-                {...}
-            ],
-            body: [
-                <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.table.body[store.lang] }}</span>
-                {
-                    td: (number|string)[], <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.table.td[store.lang] }}</span>
-                },
-                {...}
-            ]
-        }
-    </code>
-    </pre>
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />  
                 </div>
     
                 {{ translations.docs.example[store.lang] }} :

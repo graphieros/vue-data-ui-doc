@@ -12,6 +12,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import { useConfigCode } from "../../useConfigCode";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -192,6 +193,17 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiTableHeatmapDatasetItem = {
+        name: string
+        values: (number | string)[]
+        color?: string
+        shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star"
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -277,19 +289,13 @@ const { configCode, showAllConfig } = useConfigCode()
                 <div class="mt-4">
                     TS type: <code class="text-app-green">VueUiTableHeatmapDatasetItem[]</code>
                     <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-                        <pre>
-<code>
-    [
-        {
-            name: string;
-            values: Array&lt;number | string&gt;
-            color?: string;
-            shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star";
-        },
-        {...}
-    ]
-</code>    
-</pre>
+
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        /> 
                     </div>
 
                     {{ translations.docs.example[store.lang] }} :

@@ -18,6 +18,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -422,6 +423,24 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiRadarDataset = {
+        categories: Array<{
+            name: string
+            color?: string
+        }>
+        // ${translations.value.docs.comments.radar.polygon[store.lang]}
+        series: Array<{
+            name: string
+            values: number[] // ${translations.value.docs.comments.radar.seriesValues[store.lang]}
+            target: number[] // ${translations.value.docs.comments.radar.target[store.lang]}
+            formatter?: null // ${translations.value.formatterLink[store.lang]}
+        }>
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -470,28 +489,13 @@ const { configCode, showAllConfig } = useConfigCode()
                     TS type: <code class="text-app-green">VueUiRadarDataset</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-                    <pre>
-<code>
-    {
-        categories: [
-            {
-                name: string;
-                color: string;
-            },
-            {...}
-        ],
-        series: [
-            {
-                name: string;
-                values: number[]; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.radar.seriesValues[store.lang] }}</span>
-                target: number; <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.radar.target[store.lang] }}</span>
-                formatter?: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment>
-            },
-            {...} <span class="text-gray-600 dark:text-app-orange">// {{ translations.docs.comments.radar.polygon[store.lang] }}</span>
-        ]
-    }
-</code>
-</pre>
+        <CodeParser
+            language="javascript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />  
+
                 </div>
 
                 {{ translations.docs.example[store.lang] }} :

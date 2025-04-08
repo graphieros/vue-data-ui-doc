@@ -17,6 +17,7 @@ import { useMakerStore } from "../stores/maker";
 import ChartSeeker from "../components/ChartSeeker.vue";
 import BaseDragElement from "../components/BaseDragElement.vue";
 import DocsComponentMenu from "../components/docs/DocsComponentMenu.vue";
+import CodeParser from "../components/customization/CodeParser.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -1291,14 +1292,14 @@ const stackbarKey = ref(0);
     
                     <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
                         <div dir="auto" class="mb-4">{{ translations.getTheme[store.lang] }}</div>
-                        <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-300 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
-                        <CopyIcon class="absolute right-2 top-2"/>
-                            import { getThemeConfig } from "vue-data-ui";<br>
-    
-                            const {{ themeSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_themes = getThemeConfig("{{ themeSelect }}");
-                        </code>
-
-
+                        <CodeParser
+                            language="javascript"
+                            :content="`
+import { getThemeConfig } from 'vue-data-ui';
+const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_themes = getThemeConfig('${configSelect}')
+                            `"
+                            @copy="store.copy()"
+                        />
                         <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
                         <div class="flex flex-col gap-1">
                             <label for="themeSelect">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
@@ -1342,6 +1343,7 @@ const stackbarKey = ref(0);
                     </div>
     
                         <VueDataUi component="VueUiAccordion" :config="{
+                            maxHeight: 20000,
                             head: {
                                 useArrowSlot: true,
                                 backgroundColor: 'transparent'
@@ -1358,24 +1360,25 @@ const stackbarKey = ref(0);
                                 {{ translations.viewSelectedTheme[store.lang] }}
                             </template>
                             <template #content>
-                                <div class="text-xs text-left mt-6 cursor-pointer bg-black text-green-300 px-6 py-4 rounded" @click="copyToClipboard(selectedTheme)">
-                                    <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
-                                    <code>
-                                        {{ selectedTheme }}
-                                    </code>
-                                </div>
+                                <CodeParser
+                                    language="javascript"
+                                    :content="JSON.stringify(selectedTheme, null, 2)"
+                                    @copy="store.copy()"
+                                />
                             </template>
                         </VueDataUi>
                     </div>
     
                     <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
                         <div dir="auto" class="mb-4">{{ translations.getConfig[store.lang] }}</div>
-                        <code @click="copyContent" ref="copyConfigContent" class="bg-[#1A1A1A] text-gray-300 rounded-sm p-4 mb-4 w-full overflow-auto text-xs sm:text-sm relative cursor-pointer">
-                        <CopyIcon class="absolute right-2 top-2"/>
-                            import { getVueDataUiConfig } from "vue-data-ui";<br>
-    
-                            const {{ configSelect.replace('vue_ui_', '').replace('3d', 'three_d') }}_config = getVueDataUiConfig("{{ configSelect }}");
-                        </code>
+                        <CodeParser
+                            language="javascript"
+                            :content="`
+import { getVueDataUiConfig } from 'vue-data-ui';
+const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_config = getVueDataUiConfig('${configSelect}')
+                            `"
+                            @copy="store.copy()"
+                        />
 
                         <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
                         <div class="flex flex-col gap-1">
@@ -1420,6 +1423,7 @@ const stackbarKey = ref(0);
                     </div>
     
                         <VueDataUi component="VueUiAccordion" :config="{
+                            maxHeight: 50000,
                             head: {
                                 useArrowSlot: true,
                                 backgroundColor: 'transparent'
@@ -1436,12 +1440,11 @@ const stackbarKey = ref(0);
                                 {{ translations.viewSelectedConfig[store.lang] }}
                             </template>
                             <template #content>
-                                <div class="text-xs text-left mt-6 cursor-pointer bg-black text-green-300 px-6 py-4 rounded" @click="copyToClipboard(selectedConfig)">
-                                    <div class="my-2 flex flex-row gap-2 place-items-center"><CopyIcon/>{{ translations.clickToCopy[store.lang] }}</div>
-                                    <code>
-                                        {{ selectedConfig }}
-                                    </code>
-                                </div>
+                                <CodeParser
+                                    language="javascript"
+                                    :content="JSON.stringify(selectedConfig, null, 2)"
+                                    @copy="store.copy()"
+                                />
                             </template>
                         </VueDataUi>
                     </div>

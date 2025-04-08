@@ -18,6 +18,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -313,6 +314,21 @@ function randomizeData() {
     dataset.value.value = Math.random() * 100;
 }
 
+const dsTypeCode = computed(() => {
+    return `
+    type VueUiBulletDataset = {
+        value: number
+        target: number
+        segments: Array<{
+            name: string;
+            from: number;
+            to: number;
+            color?: string
+        }>
+    }
+    `
+})
+
 </script>
 
 <template>
@@ -357,23 +373,13 @@ function randomizeData() {
                     TS type: <code class="text-app-green">VueUiBulletDataset</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b my-6 border-gray-700">
-<pre>
-<code>
-    {
-        value: number;
-        target: number;
-        segments: [
-            {
-                name: string;
-                from: number;
-                to: number;
-                color?: string;
-            },
-            {...}
-        ]
-    }
-</code>
-</pre>                    
+
+    <CodeParser
+        language="javascript"
+        @copy="store.copy()"
+        :content="dsTypeCode"
+        class="my-6"
+    />   
                 </div>
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
