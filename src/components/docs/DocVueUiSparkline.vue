@@ -331,6 +331,12 @@ function randomizeData() {
   dataset.value = arr;
 }
 
+const datasetContent = computed(() => {
+  return `
+  const dataset = ref(${JSON.stringify(dataset.value, null, 4)})
+  `
+})
+
 </script>
 
 <template>
@@ -385,7 +391,14 @@ function randomizeData() {
       `"
       class="my-6"
     />
-         {{ translations.docs.example[store.lang] }} :
+
+    <!-- <CodeParser
+      language="javascript"
+      @copy="store.copy"
+      :content="datasetContent"
+      :title="translations.docs.example[store.lang]"
+    /> -->
+
                 <div class="w-full overflow-x-auto">
 <pre>
 <code>

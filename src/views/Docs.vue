@@ -1342,7 +1342,7 @@ const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_themes = g
                         </div>
                     </div>
     
-                        <VueDataUi component="VueUiAccordion" :config="{
+                        <VueDataUi class="w-full" component="VueUiAccordion" :config="{
                             maxHeight: 20000,
                             head: {
                                 useArrowSlot: true,
@@ -1422,7 +1422,7 @@ const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_config = g
                         </div>
                     </div>
     
-                        <VueDataUi component="VueUiAccordion" :config="{
+                        <VueDataUi class="w-full" component="VueUiAccordion" :config="{
                             maxHeight: 50000,
                             head: {
                                 useArrowSlot: true,
