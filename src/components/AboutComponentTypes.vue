@@ -63,6 +63,7 @@ const config = computed(() => {
         backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
         color: "#2D353C",
         layout: {
+          curvedMarkers: true,
           labels: {
             dataLabels: {
               show: true,
@@ -91,7 +92,7 @@ const config = computed(() => {
             },
           },
           donut: {
-            strokeWidth: 55,
+            strokeWidth: 64,
             borderWidth: 1,
             useShadow: true,
             shadowColor: "#2D353C",

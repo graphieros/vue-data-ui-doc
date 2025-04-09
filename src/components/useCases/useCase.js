@@ -146,8 +146,9 @@ export function useCase() {
                         color: textColor.value,
                     },
                     layout: {
+                        curvedMarkers: true,
                         donut: {
-                            strokeWidth: 120
+                            strokeWidth: 180
                         },
                         labels: {
                             percentage: {

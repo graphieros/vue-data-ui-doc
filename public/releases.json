@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.34",
+    "date": "2025-04-09",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Improve responsive behavior, add curved markers option",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.33",
     "date": "2025-04-08",
     "updates": [

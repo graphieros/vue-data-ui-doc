@@ -74,6 +74,7 @@ const darkModeConfig = ref({
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
             layout: {
+                curvedMarkers: true,
                 labels: {
                     dataLabels: {
                         show: true,
@@ -136,7 +137,7 @@ const darkModeConfig = ref({
                     }
                 },
                 donut: {
-                    strokeWidth: 55,
+                    strokeWidth: 64,
                     borderWidth: 2,
                     useShadow: false,
                     shadowColor: '#1A1A1A',
@@ -256,6 +257,7 @@ const config = ref({
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
             layout: {
+                curvedMarkers: true,
                 labels: {
                     dataLabels: {
                         show: true,
@@ -318,7 +320,7 @@ const config = ref({
                     }
                 },
                 donut: {
-                    strokeWidth: 55,
+                    strokeWidth: 64,
                     borderWidth: 2,
                     useShadow: false,
                     shadowColor: '#1A1A1A',
@@ -759,6 +761,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
                     <BaseAttr name="offsetY" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.comments.offsetY" :min="-50" :max="50" defaultVal="0"/>
                 </BaseDetails>
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">
+                    <BaseAttr name="curvedMarkers" attr="style.chart.layout.curvedMarkers" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseDetails attr="donut" :level="4" title="style.chart.layout.donut">
                         <BaseAttr name="strokeWidth" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.layout.donut.strokeWidth" :min="6" :max="100" defaultVal="55"/>
                         <BaseAttr name="borderWidth" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.layout.donut.borderWidth" :min="0" :max="12" defaultVal="2"/>

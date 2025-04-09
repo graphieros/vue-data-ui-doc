@@ -578,6 +578,10 @@ export default function useExamples() {
                         }
                     },
                     layout: {
+                        curvedMarkers: true,
+                        donut: {
+                            strokeWidth: 64,
+                        },
                         labels: {
                             percentage: {
                                 color: colors.value.textColor,
@@ -3626,7 +3630,7 @@ export default function useExamples() {
                             layout: {
                                 ...CONFIG_DONUT_BASE.value.style.chart.layout,
                                 donut:{
-                                    strokeWidth: 120,
+                                    strokeWidth: 180,
                                 },
                                 labels: {
                                     ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
@@ -3696,7 +3700,7 @@ export default function useExamples() {
                             layout: {
                                 ...CONFIG_DONUT_BASE.value.style.chart.layout,
                                 donut:{
-                                    strokeWidth: 120,
+                                    strokeWidth: 180,
                                 },
                                 labels: {
                                     ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
@@ -3832,7 +3836,7 @@ export default function useExamples() {
                                 donut: {
                                     ...CONFIG_DONUT_BASE.value.style.chart.layout.donut,
                                     useShadow: true,
-                                    strokeWidth: 120,
+                                    strokeWidth: 180,
                                 },
                                 labels: {
                                     ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,

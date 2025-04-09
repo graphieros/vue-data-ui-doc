@@ -1216,6 +1216,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.gradientIntensity', def: 40, min: 0, max: 100, type: 'range', label: 'gradientIntensity', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
+
+                    { key: 'style.chart.layout.curvedMarkers', def: true, type: 'checkbox', label: ['markers', 'is', 'curved'], category: 'labels'},
                     { key: 'style.chart.layout.labels.dataLabels.show', def: true, type: 'checkbox', label: 'show', category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.hideUnderValue', def: 3, type: 'number', min: 0, max: 100, label: 'hideUnderValue', category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },
@@ -1255,7 +1257,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.hollow.average.value.suffix', def: '', type: 'text', label: ['hollow', 'average', 'value', 'is', 'suffix'], category: 'labels' },
                     { key: 'style.chart.layout.labels.hollow.average.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'average', 'value', 'is', 'offsetY'], category: 'labels' },
                     { key: 'style.chart.layout.labels.hollow.average.value.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['hollow', 'average', 'value', 'is', 'rounding'], category: 'labels' },
-                    { key: 'style.chart.layout.donut.strokeWidth', def: 55, type: 'range', min: 3, max: 130, label: 'thickness', category: 'donut' },
+                    { key: 'style.chart.layout.donut.strokeWidth', def: 64, type: 'range', min: 3, max: 130, label: 'thickness', category: 'donut' },
                     { key: 'style.chart.layout.donut.borderWidth', def: 1, type: 'range', min: 0, max: 36, label: ['border', 'is', 'thickness'], category: 'donut' },
                     { key: 'style.chart.layout.donut.useShadow', def: false, type: 'checkbox', label: ['shadow', 'is', 'show'], category: 'donut'},
                     { key: 'style.chart.layout.donut.shadowColor', def: '#1A1A1A', type: 'color', label: ['shadow', 'is', 'color'], category: 'donut'},
