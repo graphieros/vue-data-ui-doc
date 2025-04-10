@@ -349,6 +349,11 @@ const heatmapConfig = computed(() => {
                         hot: '#1F77B4',
                         cold: '#FFFFFF00',
                         underlayer: 'transparent'
+                    },
+                    spacing: 0,
+                    selected: {
+                        border: 2,
+                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
                     }
                 },
                 dataLabels: {
