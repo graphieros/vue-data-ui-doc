@@ -332,9 +332,8 @@ const heatmapDataset = computed(() => {
         };
     });
 
-    const orderedDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const orderedDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     result.sort((a, b) => orderedDays.indexOf(a.name) - orderedDays.indexOf(b.name));
-
     return result;
 })
 
