@@ -362,11 +362,7 @@ const heatmapConfig = computed(() => {
                     }
                 }
             },
-            legend: {
-                position: 'bottom',
-                fontSize: 8,
-                color: isDarkMode.value ? '#8A8A8A' : '#1A1A1A'
-            },
+            legend: { show: false },
             title: {
                 text: 'Number of votes per day',
                 color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
