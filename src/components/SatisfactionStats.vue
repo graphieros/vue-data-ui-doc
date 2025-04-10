@@ -347,7 +347,7 @@ const heatmapConfig = computed(() => {
                 cells: {
                     colors: {
                         hot: '#1F77B4',
-                        cold: '#FFFFFF00',
+                        cold: '#1F77B410',
                         underlayer: 'transparent'
                     },
                     spacing: 0,
