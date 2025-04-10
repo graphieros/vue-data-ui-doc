@@ -298,6 +298,90 @@ const stats = computed(() => {
 //     }
 // ])
 
+const heatmapDataset = computed(() => {
+    const weekdays = {
+        Mon: {},
+        Tue: {},
+        Wed: {},
+        Thu: {},
+        Fri: {},
+        Sat: {},
+        Sun: {}
+    };
+
+    const daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    stats.value.forEach(item => {
+        const dateObj = new Date(item.created_at);
+        const dateStr = dateObj.toISOString().split('T')[0];
+        const dayAbbr = daysMapping[dateObj.getDay()];
+
+        if (!weekdays[dayAbbr][dateStr]) {
+            weekdays[dayAbbr][dateStr] = 0;
+        }
+        weekdays[dayAbbr][dateStr]++;
+    });
+
+    const result = Object.keys(weekdays).map(day => {
+        const counts = Object.keys(weekdays[day])
+            .sort()
+            .map(date => weekdays[day][date]);
+        return {
+            name: day,
+            values: counts
+        };
+    });
+
+    const orderedDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    result.sort((a, b) => orderedDays.indexOf(a.name) - orderedDays.indexOf(b.name));
+
+    return result;
+})
+
+const heatmapConfig = computed(() => {
+    return {
+        userOptions: { show: false },
+        style: {
+            backgroundColor: 'transparent',
+            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            layout: {
+                cells: {
+                    colors: {
+                        hot: '#1F77B4',
+                        cold: '#FFFFFF00',
+                        underlayer: 'transparent'
+                    }
+                },
+                dataLabels: {
+                    yAxis: {
+                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                    }
+                }
+            },
+            legend: {
+                position: 'bottom',
+                fontSize: 8,
+                color: isDarkMode.value ? '#8A8A8A' : '#1A1A1A'
+            },
+            title: {
+                text: 'Number of votes per day',
+                color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
+                textAlign: 'center',
+                subtitle: {
+                    text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
+                    color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
+                }
+            },
+            tooltip: {
+                backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                backgroundOpacity: 20,
+                borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            },
+        }
+    }
+})
+
 function getCumulativeAveragePerDayWithMissingDays(statistics) {
     const ratingsByDate = {};
     statistics.forEach(entry => {
@@ -1011,6 +1095,11 @@ function capitalizeFirstLetter(val) {
                     item.name.replaceAll('VueUi', '') }}</span></span>
             </li>
         </ul>
+    </div>
+
+    <div v-if="ratings.length"
+        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueDataUi component="VueUiHeatmap" :dataset="heatmapDataset" :config="heatmapConfig" />
     </div>
 
     <h2 v-if="ratings.length" class="my-6 text-xl">
