@@ -575,7 +575,6 @@ const xyDataset = computed(() => {
             scaleMax: 5,
             scaleSteps: 5,
             suffix: ' ⭐',
-            dashed: true,
             color: '#ff7f0e',
             scaleLabel: 'Satisfaction rating'
         },
