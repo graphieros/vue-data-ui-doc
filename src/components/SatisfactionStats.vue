@@ -90,7 +90,7 @@ function getWeekRanges(data) {
 
         const date = new Date(item.created_at.replace(" ", "T"));
         const { year, week } = getISOWeek(date);
-        const key = `${year}-${week}`; 
+        const key = `${year}-${week}`;
 
         if (!weekGroups[key]) {
             weekGroups[key] = date;
@@ -218,6 +218,126 @@ function getCumulativeAveragePerDayWithMissingDays(statistics) {
 
     return cumulativeAverages;
 }
+
+function getMonthlyStatistics(statistics) {
+    const monthLabels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const monthsData = {};
+
+    statistics.forEach(entry => {
+        const date = new Date(entry.created_at);
+        const monthIndex = date.getMonth();
+        if (!monthsData[monthIndex]) {
+            monthsData[monthIndex] = { ratings: [] };
+        }
+        const rating = typeof entry.rating === 'number' ? entry.rating : parseFloat(entry.rating);
+        monthsData[monthIndex].ratings.push(rating);
+    });
+
+    const result = [];
+    for (const monthIndex in monthsData) {
+        const index = parseInt(monthIndex, 10);
+        const ratings = monthsData[index].ratings;
+        const count = ratings.length;
+        const sum = ratings.reduce((acc, cur) => acc + cur, 0);
+        const average = sum / count;
+        result.push({
+            x: count,
+            y: average,
+            label: monthLabels[index]
+        });
+    }
+    result.sort((a, b) => monthLabels.indexOf(a.label) - monthLabels.indexOf(b.label));
+    return result;
+}
+
+
+const historyPlotDataset = computed(() => {
+    return [{
+        name: 'Average rating and total votes per week',
+        values: getMonthlyStatistics(JSON.parse(JSON.stringify(stats.value)))
+    }]
+})
+
+const historyPlotConfig = computed(() => {
+    return {
+        userOptions: { show: false },
+        style: {
+            chart: {
+                backgroundColor: 'transparent',
+                color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                axes: {
+                    x: {
+                        labels: {
+                            color: isDarkMode.value ? '#8A8A8A' : '#8A8A8A'
+                        },
+                        name: {
+                            text: 'Number of votes',
+                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                            offsetY: -12
+                        }
+                    },
+                    y: {
+                        scaleMin: 1,
+                        scaleMax: 5,
+                        labels: {
+                            color: isDarkMode.value ? '#8A8A8A' : '#8A8A8A',
+                        },
+                        name: {
+                            text: 'Average rating',
+                            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        }
+                    }
+                },
+                grid: {
+                    xAxis: {
+                        stroke: '#CCCCCC'
+                    },
+                    horizontalLines: {
+                        stroke: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
+                    },
+                    verticalLines: {
+                        stroke: isDarkMode.value ? '#4A4A4A' : '#E1E5E8'
+                    },
+                    yAxis: {
+                        stroke: '#CCCCCC'
+                    }
+                },
+                legend: { show: false },
+                padding: {
+                    left: 64,
+                    bottom: 64
+                },
+                plots: {
+                    radius: 6,
+                    stroke: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+                    indexLabels: {
+                        show: false,
+                        fontSize: 8
+                    },
+                    labels: {
+                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        offsetY: 6
+                    }
+                },
+                title: {
+                    text: 'Monthly average rating & number of votes',
+                    color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
+                    textAlign: 'center',
+                    subtitle: {
+                        text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
+                        color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
+                    }
+                },
+                tooltip: {
+                    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+                    backgroundOpacity: 20,
+                    borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                },
+            }
+        }
+    }
+})
 
 function calcAverage(ds) {
     let arr = []
@@ -895,6 +1015,11 @@ function capitalizeFirstLetter(val) {
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <VueDataUi component="VueUiHeatmap" :dataset="heatmapDataset" :config="heatmapConfig" />
+    </div>
+
+    <div v-if="ratings.length"
+        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueDataUi component="VueUiHistoryPlot" :dataset="historyPlotDataset" :config="historyPlotConfig" />
     </div>
 
     <h2 v-if="ratings.length" class="my-6 text-xl">
