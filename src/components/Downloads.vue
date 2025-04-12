@@ -38,6 +38,7 @@ const dataset = computed(() => {
       series: data_lib.value,
       type: "line",
       dataLabels: false,
+      useTag: 'end'
     },
     {
       name: "vue-data-ui-cli",
@@ -45,7 +46,8 @@ const dataset = computed(() => {
       type: "line",
       dataLabels: false,
       color: '#ff7f0e',
-      shape: 'diamond'
+      shape: 'diamond',
+      useTag: 'end'
     },
     {
       name: "color-bridge",
@@ -53,7 +55,8 @@ const dataset = computed(() => {
       type: "line",
       dataLabels: false,
       color: '#d62728',
-      shape: 'circle'
+      shape: 'circle',
+      useTag: 'end'
     },
     {
       name: "vue-hi-code",
@@ -61,7 +64,8 @@ const dataset = computed(() => {
       type: "line",
       dataLabels: false,
       color: '#239e33',
-      shape: 'hexagon'
+      shape: 'hexagon',
+      useTag: 'end'
     },
   ];
 });
@@ -192,7 +196,7 @@ const config = computed(() => {
         show: true,
       },
       tooltip: {
-        show: true,
+        show: false,
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
         fontSize: 14,
@@ -214,13 +218,25 @@ const config = computed(() => {
       radius: 3,
       useGradient: false,
       strokeWidth: 3,
+      tag: {
+        followValue: true,
+        formatter: ({ value, config }) => {
+          const { serieName } = config;
+          return `
+          <div style="display:flex;align-items:center;gap:4px">
+            <span style="font-size: 10px">${serieName}</span>
+            <span>${value}</span>
+          </div>
+          `
+        }
+      },
       dot: { 
           useSerieColor: false, 
           fill: isDarkMode.value ? '#2A2A2A' : "#FFFFFF", 
           strokeWidth: 2 
       },
       labels: {
-        show: true,
+        show: false,
         offsetY: -18,
         rounding: 0,
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
