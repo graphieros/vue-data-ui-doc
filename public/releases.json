@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.35",
+    "date": "2025-04-12",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improve datapoint tag management and config options",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.34",
     "date": "2025-04-09",
     "updates": [

@@ -1158,6 +1158,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'line.labels.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'line' },
                     { key: 'line.area.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'line' },
                     { key: 'line.area.opacity', def: 20, type: 'range', min: 0, max: 100, label: 'opacity', category: 'line' },
+                    
+                    { key: 'line.tag.followValue', def: true, type: 'checkbox', label: 'follow value', category: 'line'},
+                    { key: 'line.tag.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'line'},
 
                     { key: 'plot.radius', def: 6, type: 'number', min: 0, max: 20, label: 'radius', category: 'plot' },
                     { key: 'plot.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'plot' },
@@ -1170,6 +1173,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'plot.labels.offsetY', def: -8, type: 'number', min: -100, max: 100, label: 'offsetYDataLabels', category: 'plot' },
                     { key: 'plot.labels.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'plot' },
                     { key: 'plot.labels.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'plot' },
+
+                    { key: 'plot.tag.followValue', def: true, type: 'checkbox', label: 'follow value', category: 'plot'},
+                    { key: 'plot.tag.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'plot'},
 
                     { key: 'showTable', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 350, max: 800, label: 'responsiveBreakpoint', category: 'table' },

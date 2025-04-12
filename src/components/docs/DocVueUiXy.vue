@@ -385,6 +385,11 @@ const config = ref({
         area: {
             useGradient: true,
             opacity: 30
+        },
+        tag: {
+            followValue: true,
+            formatter: null,
+            fontSize: 14
         }
     },
     plot: {
@@ -400,6 +405,11 @@ const config = ref({
             offsetY: -6,
             rounding: 0,
             color: "#1A1A1A",
+        },
+        tag: {
+            followValue: true,
+            formatter: null,
+            fontSize: 14
         }
     },
     table: {
@@ -1249,6 +1259,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="color" attr="line.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
             </BaseDetails>
+            <BaseDetails attr="tag" :level="2" title="line.tag">
+                <BaseAttr name="followValue" attr="line.tag.followValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="fontSize" attr="line.tag.fontSize" type="number" :min="8" :max="42" defaultVal="14" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+            </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="plot" :level="1">
             <BaseAttr name="radius" attr="plot.radius" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1263,6 +1278,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                 <BaseAttr name="offsetY" attr="plot.labels.offsetY" type="number" defaultVal="-6" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="rounding" attr="plot.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="plot.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+            </BaseDetails>
+            <BaseDetails attr="tag" :level="2" title="plot.tag">
+                <BaseAttr name="followValue" attr="plot.tag.followValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="fontSize" attr="plot.tag.fontSize" type="number" :min="8" :max="42" defaultVal="14" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
             </BaseDetails>
         </BaseDetails>
