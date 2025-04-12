@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref } from "vue";
 import { useMainStore } from "../stores";
+import useMobile from "../useMobile";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -31,6 +32,8 @@ const data_vue_hi_code = computed(() => {
   return store.downloads.hiCode.map(d => d.downloads).slice(-periods.value[selectedPeriod.value].value).slice(0, -1)
 })
 
+const { isMobile } = useMobile();
+
 const dataset = computed(() => {
   return [
     {
@@ -38,7 +41,7 @@ const dataset = computed(() => {
       series: data_lib.value,
       type: "line",
       dataLabels: false,
-      useTag: 'end'
+      useTag: isMobile.value ? undefined : 'end'
     },
     {
       name: "vue-data-ui-cli",
@@ -47,7 +50,7 @@ const dataset = computed(() => {
       dataLabels: false,
       color: '#ff7f0e',
       shape: 'diamond',
-      useTag: 'end'
+      useTag: isMobile.value ? undefined : 'end'
     },
     {
       name: "color-bridge",
@@ -56,7 +59,7 @@ const dataset = computed(() => {
       dataLabels: false,
       color: '#d62728',
       shape: 'circle',
-      useTag: 'end'
+      useTag: isMobile.value ? undefined : 'end'
     },
     {
       name: "vue-hi-code",
@@ -65,7 +68,7 @@ const dataset = computed(() => {
       dataLabels: false,
       color: '#239e33',
       shape: 'hexagon',
-      useTag: 'end'
+      useTag: isMobile.value ? undefined : 'end'
     },
   ];
 });
@@ -196,7 +199,7 @@ const config = computed(() => {
         show: true,
       },
       tooltip: {
-        show: false,
+        show: isMobile.value,
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
         fontSize: 14,
@@ -236,7 +239,7 @@ const config = computed(() => {
           strokeWidth: 2 
       },
       labels: {
-        show: false,
+        show: isMobile.value,
         offsetY: -18,
         rounding: 0,
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
