@@ -354,6 +354,7 @@ export default function useExamples() {
             type: 'line',
             smooth: false,
             series: makeDs(10000, 100),
+            useTag: 'end',
             dataLabels: false
         }
     ])
@@ -3414,10 +3415,23 @@ export default function useExamples() {
                         radius: 5,
                         useGradient: false,
                         strokeWidth: 2,
+                        labels: {
+                            show: false,
+                        },
                         dot: {
                             useSerieColor: false,
                             fill: '#ff3700'
+                        },
+                        tag: {
+                            formatter: ({ value, config }) => {
+                                const { serieName } = config
+                                return `<div>
+                                    <span style="font-size:10px">${serieName}</span>
+                                    <span>${value.toFixed(1)}</span>
+                                </div>`
+                            }
                         }
+
                     },
                     chart: {
                         ...BASE_XY_CONFIG.value.chart,
