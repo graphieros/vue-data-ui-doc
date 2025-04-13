@@ -333,6 +333,7 @@ const historyPlotConfig = computed(() => {
                     backgroundOpacity: 20,
                     borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
                     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    roundingValue: 2
                 },
             }
         }
