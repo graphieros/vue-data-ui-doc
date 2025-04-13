@@ -134,7 +134,7 @@ const config = computed(() => {
       grid: {
         stroke: isDarkMode.value ? '#6A6A6A' : '#E1E5E8',
         showVerticalLines: false,
-        showHorizontalLines: true,
+        showHorizontalLines: false,
         position: "middle",
         frame: {
           show: true,
