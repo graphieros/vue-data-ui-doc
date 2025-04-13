@@ -22,45 +22,54 @@ const stats = computed(() => {
 })
 
 const heatmapDataset = computed(() => {
-    const weekdays = {
-        Mon: {},
-        Tue: {},
-        Wed: {},
-        Thu: {},
-        Fri: {},
-        Sat: {},
-        Sun: {}
-    };
 
-    const daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    function getISOWeek(date) {
+        const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+        const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        return weekNo;
+    }
 
-    stats.value.forEach(item => {
-        const dateObj = new Date(item.created_at.replace(" ", "T"));
-        const year = dateObj.getFullYear();
-        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-        const day = String(dateObj.getDate()).padStart(2, '0');
-        const dateStr = `${year}-${month}-${day}`;
+    function addDayAndWeek(data) {
+        const daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-        const dayAbbr = daysMapping[dateObj.getDay()];
+        return data.map(item => {
+            const dateObj = new Date(item.created_at.replace(" ", "T"));
+            const day = daysMapping[dateObj.getDay()];
+            const week = getISOWeek(dateObj);
+            return {
+                ...item,
+                day,
+                week
+            };
+        });
+    }
 
-        if (!weekdays[dayAbbr][dateStr]) {
-            weekdays[dayAbbr][dateStr] = 0;
+    const augmentedData = addDayAndWeek(stats.value);
+
+    const uniqueWeeks = Array.from(
+        new Set(augmentedData.map(item => item.week))
+    ).sort((a, b) => a - b);
+
+    const orderedDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const grouped = {};
+
+    augmentedData.forEach(item => {
+        if (!grouped[item.day]) {
+            grouped[item.day] = {};
         }
-        weekdays[dayAbbr][dateStr] += 1;
+        grouped[item.day][item.week] = (grouped[item.day][item.week] || 0) + 1;
     });
 
-    const result = Object.keys(weekdays).map(day => {
-        const counts = Object.keys(weekdays[day])
-            .sort()
-            .map(date => weekdays[day][date]);
+    const result = orderedDays.map(day => {
+        const values = uniqueWeeks.map(week => (grouped[day] && grouped[day][week]) || 0);
         return {
             name: day,
-            values: counts
+            values: values
         };
     });
 
-    const orderedDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    result.sort((a, b) => orderedDays.indexOf(a.name) - orderedDays.indexOf(b.name));
     return result;
 });
 
@@ -133,7 +142,7 @@ const heatmapConfig = computed(() => {
                 cells: {
                     colors: {
                         hot: '#1F77B4',
-                        cold: '#1F77B410',
+                        cold: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
                         underlayer: 'transparent'
                     },
                     spacing: 0,
