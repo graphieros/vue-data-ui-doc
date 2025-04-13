@@ -73,6 +73,25 @@ const config = ref({
       },
       cells: {
         height: 36,
+        rowTotal: {
+          value: {
+              show: true,
+          },
+          color: {
+              show: true
+          }
+        },
+        columnTotal: {
+          value: {
+              show: true,
+              rotation: 0,
+              offsetX: 0,
+              offsetY: 0
+          },
+          color: {
+              show: true
+          },
+        },
         value: {
           show: true,
           fontSize: 12,
@@ -215,6 +234,25 @@ const darkModeConfig = ref({
       },
       cells: {
         height: 36,
+        rowTotal: {
+          value: {
+              show: true,
+          },
+          color: {
+              show: true
+          }
+        },
+        columnTotal: {
+          value: {
+              show: true,
+              rotation: 0,
+              offsetX: 0,
+              offsetY: 0
+          },
+          color: {
+              show: true
+          },
+        },
         value: {
           show: true,
           fontSize: 12,
@@ -518,6 +556,25 @@ const <span class="text-black dark:text-app-green">dataset: VueUiHeatmapDatasetI
               <BaseAttr name="roundingValue" attr="style.layout.cells.value.roundingValue" type="number" defaulVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="color" attr="style.layout.cells.value.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+            </BaseDetails>
+            <BaseDetails attr="rowTotal" :level="4" title="style.layout.cells.rowTotal">
+              <BaseDetails attr="value" :level="5" title="style.layout.cells.rowTotal.value">
+                <BaseAttr name="show" attr="style.layout.cells.rowTotal.value.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              </BaseDetails>
+              <BaseDetails attr="color" :level="5" title="style.layout.cells.rowTotal.color">
+                <BaseAttr name="show" attr="style.layout.cells.rowTotal.color.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              </BaseDetails>
+            </BaseDetails>
+            <BaseDetails attr="columnTotal" :level="4" title="style.layout.cells.columnTotal">
+              <BaseDetails attr="value" :level="5" title="style.layout.cells.columnTotal.value">
+                <BaseAttr name="show" attr="style.layout.cells.columnTotal.value.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="rotation" attr="style.layout.cells.columnTotal.value.rotation" type="number" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="offsetX" attr="style.layout.cells.columnTotal.value.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="offsetY" attr="style.layout.cells.columnTotal.value.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              </BaseDetails>
+              <BaseDetails attr="color" :level="5" title="style.layout.cells.columnTotal.color">
+                <BaseAttr name="show" attr="style.layout.cells.columnTotal.color.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              </BaseDetails>
             </BaseDetails>
           </BaseDetails>
           <BaseDetails attr="dataLabels" :level="3" title="style.layout.dataLabels">

@@ -2425,6 +2425,15 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.cells.spacing', def: 1, type: 'range', min: 0, max: 12, step: 0.1, label: ['cell', 'is', 'spacing'], category: 'general' },
                     { key: 'style.layout.cells.selected.border', def: 2, type: 'number', min: 0, max: 12, step: 0.1, label: ['cell', 'selected', 'is', 'border', 'thickness'], category: 'general' },
                     { key: 'style.layout.cells.selected.color', def: '#1A1A1A', type: 'color', label: ['cell', 'selected', 'is', 'border', 'color'], category: 'general' },
+                    { key: 'style.layout.cells.rowTotal.value.show', def: true, type: 'checkbox', label: ['cell', 'row total', 'value', 'is', 'show'], category: 'general'},
+                    { key: 'style.layout.cells.rowTotal.color.show', def: true, type: 'checkbox', label: ['cell', 'row total', 'color', 'is', 'show'], category: 'general'},
+
+                    { key: 'style.layout.cells.columnTotal.value.show', def: true, type: 'checkbox', label: ['cell', 'column total', 'value', 'is', 'show'], category: 'general'},
+                    { key: 'style.layout.cells.columnTotal.value.rotation', def: 0, type: 'range', min: -90, max: 90, label: ['cell', 'column total', 'value', 'is', 'rotation'], category: 'general'},
+                    { key: 'style.layout.cells.columnTotal.value.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['cell', 'column total', 'value', 'is', 'offsetX'], category: 'general'},
+                    { key: 'style.layout.cells.columnTotal.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['cell', 'column total', 'value', 'is', 'offsetY'], category: 'general'},
+                    { key: 'style.layout.cells.columnTotal.color.show', def: true, type: 'checkbox', label: ['cell', 'column total', 'color', 'is', 'show'], category: 'geenral'},
+                    
                     { key: 'style.layout.dataLabels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },
                     { key: 'style.layout.dataLabels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels' },
                     { key: 'style.layout.dataLabels.xAxis.show', def: true, type: 'checkbox', label: ['xAxisLabel', 'is', 'show'], category: 'labels' },

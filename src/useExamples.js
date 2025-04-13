@@ -1260,6 +1260,25 @@ export default function useExamples() {
                 color: colors.value.textColor,
                 layout: {
                     cells: {
+                        rowTotal: {
+                            value: {
+                                show: true,
+                            },
+                            color: {
+                                show: true
+                            }
+                        },
+                        columnTotal: {
+                            value: {
+                                show: true,
+                                rotation: 0,
+                                offsetX: 0,
+                                offsetY: 0
+                            },
+                            color: {
+                                show: true
+                            },
+                        },
                         colors: {
                             hot: isDarkMode.value ? '#5f8aee' : '#1d7318',
                             cold: isDarkMode.value ? '#3A3A3A' : '#FFFFFF'
@@ -5025,6 +5044,19 @@ export default function useExamples() {
                     ...CONFIG_HEATMAP_BASIC.value,
                     style: {
                         ...CONFIG_HEATMAP_BASIC.value.style,
+                        layout: {
+                            ...CONFIG_HEATMAP_BASIC.value.style.layout,
+                            cells: {
+                                ...CONFIG_HEATMAP_BASIC.value.style.layout.cells,
+                                columnTotal: {
+                                    ...CONFIG_HEATMAP_BASIC.value.style.layout.cells.columnTotal,
+                                    value: {
+                                        ...CONFIG_HEATMAP_BASIC.value.style.layout.cells.columnTotal.value,
+                                        offsetY: 30
+                                    }
+                                }
+                            }
+                        },
                         legend: {
                             ...CONFIG_HEATMAP_BASIC.value.style.legend,
                             position: 'bottom',

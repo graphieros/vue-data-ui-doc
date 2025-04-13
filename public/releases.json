@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.38",
+    "date": "2025-04-13",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Add optional row and column totals with colors",
+        "link": "/docs#vue-ui-heatmap"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.37",
     "date": "2025-04-12",
     "updates": [
