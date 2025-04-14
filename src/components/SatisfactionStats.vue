@@ -140,6 +140,25 @@ const heatmapConfig = computed(() => {
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             layout: {
                 cells: {
+                    rowTotal: {
+                        value: {
+                            show: true,
+                        },
+                        color: {
+                            show: true
+                        }
+                    },
+                    columnTotal: {
+                        value: {
+                            show: true,
+                            rotation: 0,
+                            offsetX: 0,
+                            offsetY: 24
+                        },
+                        color: {
+                            show: true
+                        },
+                    },
                     colors: {
                         hot: '#1F77B4',
                         cold: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',

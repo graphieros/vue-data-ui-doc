@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.39",
+    "date": "2025-04-14",
+    "updates": [
+      {
+        "component": "Zoom component",
+        "description": "Set z-index preeminence to input label when hovering a handle",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.6.38",
     "date": "2025-04-13",
     "updates": [

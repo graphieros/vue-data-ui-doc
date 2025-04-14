@@ -145,6 +145,25 @@ const heatmapConfig = computed(() => {
       },
       cells: {
         height: 24,
+        rowTotal: {
+            value: {
+                show: false,
+            },
+            color: {
+                show: true
+            }
+        },
+        columnTotal: {
+            value: {
+                show: false,
+                rotation: 0,
+                offsetX: 0,
+                offsetY: 0
+            },
+            color: {
+                show: true
+            },
+        },
         value: {
           show: false,
           fontSize: 8,
@@ -198,7 +217,7 @@ const heatmapConfig = computed(() => {
       fontSize: 12,
       bold: true,
       roundingValue: 0,
-      position: 'bottom'
+      position: 'right'
     },
     tooltip: {
       show: true,
