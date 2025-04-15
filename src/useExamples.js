@@ -5016,9 +5016,16 @@ export default function useExamples() {
                             ...CONFIG_HEATMAP_BASIC.value.style.layout,
                             cells: {
                                 ...CONFIG_HEATMAP_BASIC.value.style.layout.cells,
-                                spacing: 0
+                                spacing: 0,
+                                columnTotal: {
+                                    ...CONFIG_HEATMAP_BASIC.value.style.layout.cells.columnTotal,
+                                    value: {
+                                        ...CONFIG_HEATMAP_BASIC.value.style.layout.cells.columnTotal.value,
+                                        offsetY: 20
+                                    }
+                                }
                             }
-                        }
+                        },
                     }
                 },
                 component: 'VueUiHeatmap',
@@ -5052,7 +5059,6 @@ export default function useExamples() {
                                     ...CONFIG_HEATMAP_BASIC.value.style.layout.cells.columnTotal,
                                     value: {
                                         ...CONFIG_HEATMAP_BASIC.value.style.layout.cells.columnTotal.value,
-                                        offsetY: 30
                                     }
                                 }
                             }

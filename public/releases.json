@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.40",
+    "date": "2025-04-14",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Fix issue with dynamic y positioning of column totals",
+        "link": "/docs#vue-ui-heatmap"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.39",
     "date": "2025-04-14",
     "updates": [

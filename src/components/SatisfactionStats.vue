@@ -153,7 +153,7 @@ const heatmapConfig = computed(() => {
                             show: true,
                             rotation: 0,
                             offsetX: 0,
-                            offsetY: 24
+                            offsetY: 40
                         },
                         color: {
                             show: true
@@ -335,6 +335,11 @@ const historyPlotConfig = computed(() => {
                     left: 64,
                     bottom: 64
                 },
+                // paths: {
+                //     strokeWidth: 10,
+                //     useSerieColor: false,
+                //     stroke: isDarkMode.value ? '#FFFFFF20' : '#1A1A1A10'
+                // },
                 plots: {
                     radius: 6,
                     stroke: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',

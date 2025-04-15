@@ -86,7 +86,7 @@ const config = ref({
               show: true,
               rotation: 0,
               offsetX: 0,
-              offsetY: 0
+              offsetY: 16
           },
           color: {
               show: true
@@ -247,7 +247,7 @@ const darkModeConfig = ref({
               show: true,
               rotation: 0,
               offsetX: 0,
-              offsetY: 0
+              offsetY: 16
           },
           color: {
               show: true
