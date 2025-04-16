@@ -1070,13 +1070,31 @@ function capitalizeFirstLetter(val) {
                     return capitalizeFirstLetter(w);
                 })
                 .join('')} (${c.raters})`,
-        }" :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')" :config-gauge="{
+        }" 
+            :total="c.raters"
+            :datasetRating="{ rating: c.average }"
+            :configRating="{
+                readonly: true,
+                style: {
+                    backgroundColor: 'transparent',
+                    star: {
+                        inactiveColor: 'transparent'
+                    }
+                }
+            }"
+            :name="c.name
+                .split('_')
+                .map((w, _i) => {
+                    return capitalizeFirstLetter(w);
+                })
+                .join('')"
+        :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')" :config-gauge="{
             style: {
                 background: 'transparent',
                 basePosition: 64,
                 colors: {
-                    min: '#5f8aee',
-                    max: '#42d392',
+                    min: '#1f77b4',
+                    max: '#aec7e8',
                 },
                 dataLabel: {
                     fontSize: 28,

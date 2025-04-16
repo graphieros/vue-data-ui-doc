@@ -1,6 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import BasePopoverButton from "./BasePopoverButton.vue"
+import { useMainStore } from "../stores";
+import { useIconMap } from "../useIconMap";
 
 const props = defineProps({
     datasetGauge: {
@@ -14,8 +16,26 @@ const props = defineProps({
     },
     configXy: {
         type: Object
+    },
+    datasetRating: {
+        type: Object,
+    },
+    configRating: {
+        type: Object,
+        default() {
+            return {}
+        }
+    },
+    name: {
+        type: String
+    },
+    total: {
+        type: Number
     }
 })
+
+const store = useMainStore()
+const isDarkMode = computed(() => store.isDarkMode);
 
 const isOpen = ref(false);
 
@@ -33,8 +53,21 @@ function open(state) {
             @open="open"
         >
             <template #button-content>
-                <div class="w-[150px] p-2 bg-[#FFFFFF] dark:bg-[#2A2A2A]">
-                    <VueUiSparkgauge :dataset="datasetGauge" :config="configGauge" />
+                <div class="w-[150px] bg-[#FFFFFF] dark:bg-[#2A2A2A]">
+                    <div class="flex flex-col place-items-center pt-4">
+                        <VueUiIcon :name="useIconMap(name)" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'"/>
+                        <div class="pt-2 text-xs">
+                            <span class="text-gray-500">VueUi</span>
+                            <span>{{ name.replaceAll('VueUi', '') }} ({{ total }})</span>
+                        </div>
+                    </div>
+                    <div :style="{ transform: 'scale(0.7, 0.7)', pointerEvents:'none', cursor: 'default' }">
+                        <VueUiRating
+                            :dataset="datasetRating"
+                            :config="configRating"
+                        />
+                    </div>
+                    <!-- <VueUiSparkgauge :dataset="datasetGauge" :config="configGauge" /> -->
                 </div>
             </template>
             <template #popover-content>
