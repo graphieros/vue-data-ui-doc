@@ -2431,7 +2431,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.cells.columnTotal.value.show', def: true, type: 'checkbox', label: ['cell', 'column total', 'value', 'is', 'show'], category: 'general'},
                     { key: 'style.layout.cells.columnTotal.value.rotation', def: 0, type: 'range', min: -90, max: 90, label: ['cell', 'column total', 'value', 'is', 'rotation'], category: 'general'},
                     { key: 'style.layout.cells.columnTotal.value.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['cell', 'column total', 'value', 'is', 'offsetX'], category: 'general'},
-                    { key: 'style.layout.cells.columnTotal.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['cell', 'column total', 'value', 'is', 'offsetY'], category: 'general'},
+                    { key: 'style.layout.cells.columnTotal.value.offsetY', def: 24, type: 'number', min: -100, max: 100, label: ['cell', 'column total', 'value', 'is', 'offsetY'], category: 'general'},
                     { key: 'style.layout.cells.columnTotal.color.show', def: true, type: 'checkbox', label: ['cell', 'column total', 'color', 'is', 'show'], category: 'general'},
                     
                     { key: 'style.layout.dataLabels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },
