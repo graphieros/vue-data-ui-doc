@@ -281,7 +281,7 @@ function getMonthlyStatistics(statistics) {
 
 const historyPlotDataset = computed(() => {
     return [{
-        name: 'Average rating and total votes per week',
+        name: 'Average monthly rating and total votes',
         values: getMonthlyStatistics(JSON.parse(JSON.stringify(stats.value)))
     }]
 })
