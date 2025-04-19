@@ -9,6 +9,7 @@ import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig();
 
@@ -104,6 +105,26 @@ const skeletonConfig = computed(() => {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const slotContent = ref(`
+<VueUiAccordion :config="config">
+    <template #arrow="{ backgroundColor, color, iconColor, isOpen }">
+        <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+    </template>
+
+    <template #title="{ color, isOpen }">
+        <div :style="{ color }">
+            My Title
+        </div>
+    </template>
+
+    <template #content="{ backgroundColor, color, isOpen }">
+        <div :style="{ color }">
+            My content, components, etc
+        </div>
+    </template>
+</VueUiAccordion>
+`)
+
 </script>
 
 <template>
@@ -126,7 +147,7 @@ const { configCode, showAllConfig } = useConfigCode()
             </div>
             <VueDataUi component="VueUiAccordion" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
                 <template #title="{color}">
-                    <div :style="`color:${color}`">Title</div>
+                    <div :style="{ color }">Title</div>
                 </template>
                 <template #arrow="{ backgroundColor, color, iconColor, isOpen }">
                     <span class="text-gray-500">[your slot content here]</span>
@@ -181,24 +202,10 @@ const { configCode, showAllConfig } = useConfigCode()
                     <li>#title</li>
                     <li>#content</li>
                 </ul>
-                <code class="dark:text-gray-400">
-                    &lt;VueUiAccordion<br>
-                    &nbsp;&nbsp;:config="config"<br>
-                    &gt;<br>
-
-                    &nbsp;&nbsp;&lt;template #arrow="{ backgroundColor, color, iconColor, isOpen }"&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;VueUiIcon name="arrowRight" :size="16" :stroke="iconColor" /&gt;<br>
-                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
-
-                    &nbsp;&nbsp;&lt;template #title="{ color, isOpen }"&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div :style="color: color;"&gt;My title&lt;/div&gt;<br>
-                    &nbsp;&nbsp;&lt;/template&gt;<br><br>
-                    
-                    &nbsp;&nbsp;&lt;template #content="{ backgroundColor, color, isOpen }"&gt;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div :style="color: color;"&gt;My content and components&lt;/div&gt;<br>
-                    &nbsp;&nbsp;&lt;/template&gt;<br>
-                    &lt;/VueUiAccordion&gt;
-                </code>
+                <CodeParser
+                    :content="slotContent"
+                    language="html"
+                />
             </template>
         </Box>
     </div>
