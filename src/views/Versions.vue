@@ -1904,6 +1904,9 @@ const dogFood = ref({
                   <div v-if="kpi.name === 'stargazers count'" class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.1,1.1)">
                     <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
                   </div>
+                  <div v-if="kpi.name === 'stargazers count'" class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(0.3,0.3)">
+                    <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.5)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
+                  </div>
                   <div v-else class="thin-icon absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(2, 2)">
                     <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
                   </div>
