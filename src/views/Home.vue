@@ -8,7 +8,6 @@ import staticReleases from "../../public/releases.json"
 import { useConfig } from "../assets/useConfig";
 import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseBubbles from "../components/BaseBubbles.vue";
-import Rater from "../components/Rater.vue";
 
 const configs = useConfig()
 

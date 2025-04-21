@@ -432,6 +432,7 @@ const dsTypeCode = computed(() => {
         name: string
         details?: string
         nodes?: VueUiMoleculeDatasetNode[]
+        color?: string
     }
     `
 })

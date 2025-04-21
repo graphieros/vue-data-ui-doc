@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.41",
+    "date": "2025-04-21",
+    "updates": [
+      {
+        "component": "VueUiMolecule",
+        "description": "Add color dataset attribute to set individual node colors",
+        "link": "/docs#vue-ui-molecule"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.40",
     "date": "2025-04-14",
     "updates": [
