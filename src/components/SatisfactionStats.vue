@@ -1,10 +1,9 @@
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 import colorBridge from "color-bridge"
 import { VueDataUi } from "vue-data-ui";
-import useExamples from "../useExamples";
 import mockStats from './mockStats.json'
 
 const { utils } = colorBridge();
@@ -950,7 +949,7 @@ function capitalizeFirstLetter(val) {
                         color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
                         layout: {
                             radiusRatio: 0.8,
-                            track: { size: 0 },
+                            track: { size: 0.1 },
                             markers: {
                                 offsetY: 40,
                                 color: isDarkMode ? '#8A8A8A' : '#1A1A1A'
@@ -968,6 +967,11 @@ function capitalizeFirstLetter(val) {
                                 circle: {
                                     color: isDarkMode ? '#6A6A6A' : '#FFFFFF'
                                 }
+                            },
+                            indicatorArc: {
+                                show: true,
+                                fill: isDarkMode ? '#FFFFFF10' : '#00000010',
+                                radius: 1000
                             },
                         },
                         legend: {
