@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed, watch } from "vue";
 import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 import colorBridge from "color-bridge"
@@ -19,6 +19,27 @@ const stats = computed(() => {
     // return mockStats;
     return store.ratings.breakdown;
 })
+
+watch(() => stats, () => {
+    setTimeout(() => {
+        const texts = document.querySelectorAll('.gauge-sat text');
+        const withPath = Array.from(texts).filter(text => !!text.querySelector('textPath'));
+        withPath.forEach((p, i) => {
+            if (i === 0) {
+                p.style.filter = 'hue-rotate(330deg)'
+            }
+            if (i === 1) {
+                p.style.filter = 'hue-rotate(0deg)'
+            }
+            if (i === 2) {
+                p.style.filter = 'hue-rotate(30deg)'
+            }
+            if (i === 3) {
+                p.style.filter = 'hue-rotate(50deg)'
+            }
+        })
+    },100)
+}, { immediate: true, deep: true })
 
 const heatmapDataset = computed(() => {
 
@@ -940,7 +961,7 @@ function capitalizeFirstLetter(val) {
 
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <div class="max-w-[300px] mx-auto">
+        <div class="max-w-[300px] mx-auto gauge-sat">
             <VueUiGauge :dataset="gaugeDataset" :config="{
                 userOptions: { show: false },
                 style: {
