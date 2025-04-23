@@ -80,55 +80,32 @@ const dataset = computed(() => {
     return [
     {
         name: "Series 1",
-        series: [ -55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
+        series: [ 12, 25, 32, 64, 34, 26],
         type: "bar",
-        color: lang.value === 'zh' ? 'rgb(200,100,100)' : "rgb(95,139,238)",
+        color: "#1f77b4",
         shape: 'circle',
         scaleSteps: 5,
     },
     {
         name: "Series 2",
-        series: [ 55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],
-        type: "line",
-        color: lang.value === 'zh' ? 'rgb(200,100,0)' : "rgb(66,211,146)",
-        useArea: true,
-        useProgression: true,
-        dataLabels: false,
-        shape: "triangle",
-        scaleSteps: 5,
-        showSerieName: 'end'
-    },
-    {
-        name: "Series 3",
-        series: [ 64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],
-        type: "plot",
-        color: "rgb(255,100,0)",
+        series: [ 8, 20, 27, 48, 27, 20],
+        type: "bar",
+        color: "#aec7e8",
         shape: "star",
         scaleSteps: 5,
         showSerieName: 'end'
     },
     {
-        name: "Series 4",
-        series: [ 0, 1, -2, 3, -4, 5, -6, 7, -8, 9, -10, 36, -12, 13, -14, 15, -16, 17, -18, 19, -20],
-        comments: ["", "", "", "", "", "", "", "", "", "", "", "A comment for this specific datapoint"],
+        name: "Series 3",
+        series: [75, 82, 80, 72, 90, 100],
         type: "line",
-        smooth: true,
+        color: "#ff7f0e",
         useArea: false,
         dataLabels: false,
-        color: "rgb(200,200,50)",
+        smooth: true,
+        shape: "circle",
         scaleSteps: 5,
         showSerieName: 'end'
-    },
-    {
-        name: "Target",
-        series: [ 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
-        type: "line",
-        color: "#404040",
-        dashed: true,
-        useTag: "start",
-        dataLabels: false,
-        shape: 'circle',
-        scaleSteps: 5,
     },
 ]
 })
@@ -162,8 +139,8 @@ const config = ref({
         },
         highlightArea: {
             show: true,
-            from: 5,
-            to: 8,
+            from: 1,
+            to: 2,
             color: "#1f77b4",
             opacity: 10,
             caption: {
@@ -239,7 +216,7 @@ const config = ref({
                     labelWidth: 40,
                     showBaseline: true,
                     scaleMin: null,
-                    scaleMax: null,
+                    scaleMax: 100,
                     groupColor: null,
                     scaleLabelOffsetX: 0,
                     scaleValueOffsetX: 0
@@ -367,7 +344,7 @@ const config = ref({
         }
     },
     line: {
-        radius: 3,
+        radius: 4,
         useGradient: true,
         strokeWidth: 2,
         dot: {
@@ -378,7 +355,7 @@ const config = ref({
         },
         labels: {
             show: true,
-            offsetY: -6,
+            offsetY: -12,
             rounding: 0,
             color: "#1A1A1A",
         },
@@ -463,8 +440,8 @@ const darkModeConfig = ref({
         },
         highlightArea: {
             show: true,
-            from: 5,
-            to: 8,
+            from: 1,
+            to: 2,
             color: "#1f77b4",
             opacity: 10,
             caption: {
@@ -540,7 +517,7 @@ const darkModeConfig = ref({
                     labelWidth: 40,
                     showBaseline: true,
                     scaleMin: null,
-                    scaleMax: null,
+                    scaleMax: 100,
                     groupColor: null,
                     scaleLabelOffsetX: 0,
                     scaleValueOffsetX: 0
@@ -668,7 +645,7 @@ const darkModeConfig = ref({
         }
     },
     line: {
-        radius: 3,
+        radius: 4,
         useGradient: true,
         strokeWidth: 2,
         dot: {
@@ -679,7 +656,7 @@ const darkModeConfig = ref({
         },
         labels: {
             show: true,
-            offsetY: -6,
+            offsetY: -12,
             rounding: 0,
             color: "#c8c8c8",
         },
@@ -797,10 +774,17 @@ function randomizeData() {
         return arr
     }
 
-    mutableDataset.value[0].series = makeSet(21, 100);
-    mutableDataset.value[1].series = makeSet(21, 90);
-    mutableDataset.value[2].series = makeSet(21, 80);
-    mutableDataset.value[3].series = makeSet(21, 40);
+    mutableDataset.value[0].series = makeSet(6, 30);
+    mutableDataset.value[1].series = makeSet(6, 30);
+    mutableDataset.value[2].series = (() => {
+        const s1 = mutableDataset.value[0].series;
+        const s2 = mutableDataset.value[1].series;
+        let arr = []
+        for (let i = 0; i < mutableDataset.value[0].series.length; i += 1) {
+            arr.push(s1[i] + s2[i] + 20)
+        }
+        return arr;
+    })()
 }
 
 const dsTypeCode = computed(() => {
@@ -944,33 +928,6 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
         <template v-if="['line', 'plot'].includes(mutableDataset[2].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[2].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
         scaleSteps: 10,
         scaleLabel: "Plots"
-    },
-    {
-        name: <span class="text-app-yellow">"Series 4",</span>
-        series: <span class="text-app-yellow">[0, 1, -2, 3, -4, 5, -6, 7, -8, 9, -10, 11, -12, 13, -14, 15, -16, 17, -18, 19, -20],</span>
-        comments: ["", "", "", "", "", "", "", "", "", "", "", "A comment for this specific datapoint"],
-        type:<span class="text-app-yellow"><select v-model="mutableDataset[3].type">
-            <option>bar</option>
-            <option>line</option>
-            <option>plot</option>
-        </select>,</span>
-        smooth: true, <span class="text-gray-500">// {{ translations.docs.comments.xy.smooth2[store.lang] }}</span>
-        color: <span class="text-app-yellow">"rgb(200,200,50)"</span>
-        <template v-if="['line', 'plot'].includes(mutableDataset[3].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[3].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
-        scaleSteps: 10,
-        scaleLabel: ""
-    },
-    {
-        name: <span class="text-gray-500">"Target",</span> 
-        series: <span class="text-gray-500">[ 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],</span>
-        type: <span class="text-gray-500">"line",</span>
-        color: <span class="text-gray-500">"#404040",</span>
-        dashed: <span class="text-gray-500">true,</span>
-        useTag: <span class="text-gray-500">"start",</span>
-        dataLabels: <span class="text-gray-500">false,</span>
-        <template v-if="['line', 'plot'].includes(mutableDataset[4].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[4].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
-        scaleSteps: 10,
-        scaleLabel: "Black circles"
     },
 ];
 </code>
