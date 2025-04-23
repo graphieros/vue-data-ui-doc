@@ -16,6 +16,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -411,6 +412,23 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsType1 = ref(`type VueUi3dBarDataset = {
+    percentage: number // from 0 to 100
+}`)
+
+const dsType2 = ref(`type VueUi3dBarDataset = {
+    series: Array<{
+        name: string
+        value: number
+        color?: string
+        // Use breakdown to display donuts in the legend
+        breakdown?: Array<{
+            name: string
+            value: number
+        }>
+    }>
+}`)
+
 </script>
 
 <template>
@@ -451,18 +469,15 @@ const { configCode, showAllConfig } = useConfigCode()
         <Box showEmits showSlots showThemes schema="vue_ui_3d_bar" signInfo="positiveOrNegativeOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUi3dBarDataset</code>
-                </div>
                 <div class="w-full overflow-x-auto mb-6 border-gray-700">
-Percentage mode:                    
-<pre>
-<code>
-    {
-        percentage: number; (from 0 to 100)
-    }
-</code>
-</pre>
+Percentage mode:
+
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsType1"
+            class="my-6"
+        />  
                 </div>
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
@@ -475,26 +490,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
 </pre>
 <div class="border-b border-gray-700 mb-6"></div>                
 Stack mode:
-<pre>
-<code>
-    {
-        series: [
-            {
-                name: string;
-                value: number;
-                color?: string;
-                breakdown?: [ <span class="text-gray-500">// will display donuts in the legend</span>
-                    {
-                        name: string;
-                        value: number;
-                    }
-                ]
-            },
-            {...}
-        ]
-    }
-</code>
-</pre>
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsType2"
+            class="my-6"
+        />  
                 </div>
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">

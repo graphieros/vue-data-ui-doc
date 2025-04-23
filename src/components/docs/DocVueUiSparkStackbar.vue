@@ -273,7 +273,7 @@ function randomizeData() {
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
   <CodeParser
-    language="javascript"
+    language="typescript"
     @copy="store.copy()"
     :content="`
     type VueUiSparkStackBarDatasetItem = {

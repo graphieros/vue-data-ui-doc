@@ -17,6 +17,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -976,6 +977,10 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+  return `Array<Array<string | number>>`
+})
+
 </script>
 
 <template>
@@ -1008,15 +1013,18 @@ const { configCode, showAllConfig } = useConfigCode()
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_age_pyramid" signInfo="positiveOnly">
             <template #tab0>
-                {{ translations.docs.example[store.lang] }}:
-                <br>
-                {{ translations.docs.comments.agePyramid.arrayOfEach[store.lang] }}<br><br>
-                {{ translations.docs.comments.agePyramid.cols[store.lang] }}
-
-                <div class="mt-4">
-                  TS type: <code class="text-app-green">Array&lt;Array&lt;string | number&gt;&gt;</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+              
+              <CodeParser
+              language="typescript"
+              @copy="store.copy()"
+              :content="dsTypeCode"
+              class="my-6"
+              />  
+              {{ translations.docs.example[store.lang] }}:
+              <br>
+              {{ translations.docs.comments.agePyramid.arrayOfEach[store.lang] }}<br><br>
+              {{ translations.docs.comments.agePyramid.cols[store.lang] }}
+              <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 <pre>
 <code>
 [

@@ -12,6 +12,7 @@ import { useConfigCode } from "../../useConfigCode";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -348,6 +349,27 @@ function copyToClipboard(conf) {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = ref(`type VueUiCarouselTableDataset = {
+    head: string[]
+    body: Array<Array<number | string>>
+}`)
+
+const dsExample = ref(`const dataset = {
+    head: ["col1", "col2", "col3", "col4", "col5"],
+    body: [
+        [10000, 1000, 100, 10, 0],
+        [10001, 1001, 101, 11, 1],
+        [10002, 1002, 102, 12, 2],
+        [10003, 1003, 103, 13, 3],
+        [10004, 1004, 104, 14, 4],
+        [10005, 1005, 105, 15, 5],
+        [10006, 1006, 106, 16, 6],
+        [10007, 1007, 107, 17, 7],
+        [10008, 1008, 108, 18, 8],
+        [10009, 1009, 109, 19, 9]
+    ]
+}`)
+
 </script>
 
 <template>
@@ -386,40 +408,22 @@ const { configCode, showAllConfig } = useConfigCode()
         <Box showEmits showSlots schema="vue_ui_carousel_table" hideSchemaDisclaimer>
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
-                <div class="mb-4">
-                    TS type: <code class="text-app-green">VueUiCarouselTableDataset</code>
-                </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    {
-        head: string[];
-        body: Array&lt;Array&lt;number | string&gt;&gt;;
-    }
-</code>
-</pre>
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+        />  
                 </div>
                 {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiCarouselTableDataset</span> = {
-    head: ["col1", "col2", "col3", "col4", "col5"],
-    body: [
-        [10000, 1000, 100, 10, 0],
-        [10001, 1001, 101, 11, 1],
-        [10002, 1002, 102, 12, 2],
-        [10003, 1003, 103, 13, 3],
-        [10004, 1004, 104, 14, 4],
-        [10005, 1005, 105, 15, 5],
-        [10006, 1006, 106, 16, 6],
-        [10007, 1007, 107, 17, 7],
-        [10008, 1008, 108, 18, 8],
-        [10009, 1009, 109, 19, 9]
-    ]
-}
-</code>
-</pre>                    
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsExample"
+            class="my-6"
+        />                    
                 </div>
             </template>
 

@@ -58,10 +58,10 @@ const config = computed(() => {
         copyIconColor: isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
         colorFunction: isDarkMode.value ? '#DCDCAA' : '#559AD3',
         colorVariableKeyword: isDarkMode.value ? '#559AD3' : 'rgb(161, 82, 152)',
-        colorKeywords: isDarkMode.value ? '#B37BAE' : 'rgb(161, 82, 152)',
+        colorKeywords: props.language === 'typescript' ? '#559AD3' : isDarkMode.value ? '#B37BAE' : 'rgb(161, 82, 152)',
         colorString: isDarkMode.value ? '#CD9077' : 'rgb(112, 168, 118)',
         colorNumber: isDarkMode.value ? '#AEC6A1' : 'rgb(149, 116, 42)',
-        colorBrackets: isDarkMode.value ? '#559AD3' : '#2A2A2A',
+        colorBrackets: isDarkMode.value ? '#CCCCCC' : '#2A2A2A',
         colorPunctuation: isDarkMode.value ? '#E1E5E8' : '#3A3A3A',
         colorParenthesis: isDarkMode.value ? '#8A8A8A' : '#3A3A3A'
     }

@@ -17,6 +17,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -421,6 +422,29 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = computed(() => {
+    return `Array<Array<string | number>>`
+})
+
+const dsTypeCodeExample = ref(`const dataset = [
+  // period | open | high | low | last | volume
+  ["2024-01-01", 56, 120, 40, 110, 1250],
+  ["2024-02-01", 110, 150, 80, 98, 2200],
+  ["2024-03-01", 98, 155, 75, 103, 3500],
+  ["2024-04-01", 103, 115, 102, 102, 999],
+  ["2024-05-01", 102, 135, 72, 85, 3216],
+  ["2024-06-01", 85, 162, 65, 107, 4315],
+  ["2024-07-01", 107, 134, 99, 112, 2561],
+  ["2024-08-01", 112, 125, 112, 120, 669],
+  ["2024-09-01", 120, 113, 76, 89, 2591],
+  ["2024-10-01", 89, 150, 85, 125, 2881],
+  ["2024-11-01", 125, 130, 45, 92, 1972],
+  ["2024-12-01", 92, 120, 35, 75, 3599],
+  ["2024-13-01", 75, 80, 26, 45, 5881],
+  ["2024-14-01", 45, 60, 20, 30, 2881],
+  ["2024-15-01", 30, 120, 10, 105, 2881]
+]`)
+
 </script>
 
 <template>
@@ -453,17 +477,13 @@ const { configCode, showAllConfig } = useConfigCode()
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_candlestick" signInfo="positiveOnly">
             <template #tab0>
               {{ translations.docs.datastructure[store.lang] }}
-              <div class="mt-4">
-                TS type: <code class="text-app-green">Array&lt;Array&lt;string | number&gt;&gt;</code>
-              </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    [
-        Array&lt;Array&lt;string | number&gt;&gt;;
-    ]
-</code>
-</pre>                
+          <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            class="my-6"
+          />                
                 </div>
 
                 {{ translations.docs.example[store.lang] }}:<br>
@@ -472,28 +492,13 @@ const { configCode, showAllConfig } = useConfigCode()
                 period | open | high | low | last | volume
                 </span>
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: Array&lt;Array&lt;string | number&gt;&gt;</span> = [
-    <span class="text-gray-500">// period | open | high | low | last | volume</span>
-    ["2024-01-01", 56, 120, 40, 110, 1250],
-    ["2024-02-01", 110, 150, 80, 98, 2200],
-    ["2024-03-01", 98, 155, 75, 103, 3500],
-    ["2024-04-01", 103, 115, 102, 102, 999],
-    ["2024-05-01", 102, 135, 72, 85, 3216],
-    ["2024-06-01", 85, 162, 65, 107, 4315],
-    ["2024-07-01", 107, 134, 99, 112, 2561],
-    ["2024-08-01", 112, 125, 112, 120, 669],
-    ["2024-09-01", 120, 113, 76, 89, 2591],
-    ["2024-10-01", 89, 150, 85, 125, 2881],
-    ["2024-11-01", 125, 130, 45, 92, 1972],
-    ["2024-12-01", 92, 120, 35, 75, 3599],
-    ["2024-13-01", 75, 80, 26, 45, 5881],
-    ["2024-14-01", 45, 60, 20, 30, 2881],
-    ["2024-15-01", 30, 120, 10, 105, 2881]
-]
-</code>
-</pre>                
+
+          <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsTypeCodeExample"
+            class="my-6"
+          />                   
                 </div>
             </template>
             <template #tab1>
