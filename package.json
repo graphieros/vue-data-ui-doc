@@ -24,7 +24,7 @@
     "vue-data-ui": "^2.6.41",
     "vue-data-ui-cli": "^1.1.38",
     "vue-hi-code": "^1.4.0",
-    "vue-router": "^4.5.0",
+    "vue-router": "^4.5.1",
     "vue-tabler-icons": "^2.21.0"
   },
   "devDependencies": {
