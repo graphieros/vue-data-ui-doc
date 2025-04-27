@@ -169,7 +169,7 @@ const createTSpanTemplate = computed(() => `<text
                 </div>
 
                 <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
-                    <CodeParser :content="abbrContent" language="javascript"/>
+                    <CodeParser :content="abbrContent" language="javascript" @copy="store.copy()"/>
                 </div>
 
                 <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
@@ -204,7 +204,7 @@ const createTSpanTemplate = computed(() => `<text
     </div>
 
     <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
-        <CodeParser :content="darkenContent" language="javascript"/>
+        <CodeParser :content="darkenContent" language="javascript" @copy="store.copy()"/>
     </div>
 
     <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
@@ -237,7 +237,7 @@ const createTSpanTemplate = computed(() => `<text
     </div>
 
     <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
-        <CodeParser :content="lightenContent" language="javascript"/>
+        <CodeParser :content="lightenContent" language="javascript" @copy="store.copy()"/>
     </div>
 
     <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
@@ -270,7 +270,7 @@ const createTSpanTemplate = computed(() => `<text
     </div>
 
     <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
-        <CodeParser :content="shiftColorContent" language="javascript"/>
+        <CodeParser :content="shiftColorContent" language="javascript" @copy="store.copy()"/>
     </div>
 
     <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
@@ -302,8 +302,8 @@ const createTSpanTemplate = computed(() => `<text
         </div>
 
         <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
-            <CodeParser :content="createTSpanContent" language="javascript"/>
-            <CodeParser :content="createTSpanTemplate" language="html"/>
+            <CodeParser :content="createTSpanContent" language="javascript" @copy="store.copy()"/>
+            <CodeParser :content="createTSpanTemplate" language="html" @copy="store.copy()"/>
         </div>
     </div>
     </div>
