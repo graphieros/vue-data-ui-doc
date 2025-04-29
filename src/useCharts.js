@@ -717,7 +717,6 @@ export default function useCharts() {
 
         return keys.map(key => {
             const components = Object.keys(taxinomy.value).filter(t => taxinomy.value[t].singleTaxinomy === key).map(k => {
-                console.log(k)
                 return {
                     ...taxinomy.value[k],
                     name: k

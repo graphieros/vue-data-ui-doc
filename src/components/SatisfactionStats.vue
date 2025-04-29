@@ -567,6 +567,8 @@ const stackbarConfig = computed(() => {
                 zoom: {
                     color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
                     highlightColor: '#1F77B4',
+                    startIndex: history.value.averagePerDay.length - 14,
+                    endIndex: history.value.averagePerDay.length - 1
                 }
             }
         }
@@ -816,7 +818,9 @@ const xyConfig = computed(() => {
             },
             zoom: {
                 color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
-                highlightColor: '#1F77B4'
+                highlightColor: '#1F77B4',
+                startIndex: history.value.averagePerDay.length - 14,
+                endIndex: history.value.averagePerDay.length - 1
             }
         },
         bar: {
@@ -1052,7 +1056,7 @@ function capitalizeFirstLetter(val) {
         <VueDataUi component="VueUiStackbar" :dataset="stackbarData" :config="stackbarConfig" />
     </div>
 
-    <!-- <div v-if="ratings.length"
+    <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <div class="text-xl text-center mb-4 flex flex-col">
             <span>Latest votes</span>
@@ -1065,17 +1069,17 @@ function capitalizeFirstLetter(val) {
                     item.name.replaceAll('VueUi', '') }}</span></span>
             </li>
         </ul>
-    </div> -->
+    </div>
 
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <VueDataUi component="VueUiHeatmap" :dataset="heatmapDataset" :config="heatmapConfig" />
     </div>
 
-    <!-- <div v-if="ratings.length"
+    <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <VueDataUi component="VueUiHistoryPlot" :dataset="historyPlotDataset" :config="historyPlotConfig" />
-    </div> -->
+    </div>
 
     <h2 v-if="ratings.length" class="my-6 text-xl">
         User ratings of individual components
