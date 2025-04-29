@@ -36,6 +36,7 @@ function submitRating() {
         rating: rating.value,
         user_id: localStorage.getItem('visitor')
     };
+
     fetch(apiUrl, {
         method: 'POST',
         headers: {
