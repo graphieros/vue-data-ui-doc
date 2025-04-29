@@ -946,6 +946,57 @@ const verticalBarConfig = computed(() => {
 function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
+
+function toVueUiMoodRadarDataset(data) {
+    return data.reduce(
+        (acc, { rating }) => {
+        const key = String(rating);
+        if (acc.hasOwnProperty(key)) acc[key]++;
+        return acc;
+        },
+        { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 }
+    );
+}
+
+const radarDataset = computed(() => {
+    if(!stats.value) return undefined
+    return toVueUiMoodRadarDataset(stats.value)
+})
+
+const radarConfig = computed(() => {
+    return {
+        userOptions: { show: false },
+        style: {
+            chart: {
+                backgroundColor: 'transparent',
+                layout: {
+                    dataLabel: {
+                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        roundingPercentage: 2
+                    },
+                    dataPolygon: {
+                        color: '#1f77b4',
+                        stroke: '#1f77b4',
+                        strokeWidth: 1,
+                        gradient: {
+                            intensity: 7
+                        }
+                    },
+                    grid: {
+                        stroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
+                    },
+                    outerPolygon: {
+                        stroke: isDarkMode.value ? '#7A7A7A' : '#BBBBBB'
+                    }
+                },
+                legend: {
+                    show: false
+                }
+            }
+        }
+    }
+})
+
 </script>
 
 <template>
@@ -961,54 +1012,59 @@ function capitalizeFirstLetter(val) {
 
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <div class="max-w-[300px] mx-auto gauge-sat">
-            <VueUiGauge :dataset="gaugeDataset" :config="{
-                userOptions: { show: false },
-                style: {
-                    chart: {
-                        backgroundColor: 'transparent',
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                        layout: {
-                            radiusRatio: 0.8,
-                            track: { size: 0.1 },
-                            markers: {
-                                offsetY: 40,
-                                color: isDarkMode ? '#8A8A8A' : '#1A1A1A'
-                            },
-                            segmentNames: { fontSize: 55 },
-                            segmentSeparators: {
-                                show: true,
-                                stroke: isDarkMode ? '#4A4A4A' : '#CCCCCC',
-                                offsetOut: 36,
-                                offsetIn: 150
-                            },
-                            pointer: {
-                                size: 1.1,
-                                stroke: 'transparent',
-                                circle: {
-                                    color: isDarkMode ? '#6A6A6A' : '#FFFFFF'
-                                }
-                            },
-                            indicatorArc: {
-                                show: true,
-                                fill: isDarkMode ? '#FFFFFF10' : '#00000010',
-                                radius: 1000
-                            },
-                        },
-                        legend: {
-                            showPlusSymbol: false,
-                            roundingValue: 2
-                        },
-                        title: {
-                            text: `Ratings breakdown (${stats.length} votes)`,
+        <div class="flex flex-row place-items-center gap-2">
+            <div class="w-full">
+                <VueUiGauge :dataset="gaugeDataset" :config="{
+                    userOptions: { show: false },
+                    style: {
+                        chart: {
+                            backgroundColor: 'transparent',
                             color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                            fontSize: 20,
-                            bold: false,
-                            offsetY: 40,
-                        },
+                            layout: {
+                                radiusRatio: 0.8,
+                                track: { size: 0.1 },
+                                markers: {
+                                    offsetY: 40,
+                                    color: isDarkMode ? '#8A8A8A' : '#1A1A1A'
+                                },
+                                segmentNames: { fontSize: 55 },
+                                segmentSeparators: {
+                                    show: true,
+                                    stroke: isDarkMode ? '#4A4A4A' : '#CCCCCC',
+                                    offsetOut: 36,
+                                    offsetIn: 150
+                                },
+                                pointer: {
+                                    size: 1.1,
+                                    stroke: 'transparent',
+                                    circle: {
+                                        color: isDarkMode ? '#6A6A6A' : '#FFFFFF'
+                                    }
+                                },
+                                indicatorArc: {
+                                    show: true,
+                                    fill: isDarkMode ? '#FFFFFF10' : '#00000010',
+                                    radius: 1000
+                                },
+                            },
+                            legend: {
+                                showPlusSymbol: false,
+                                roundingValue: 2
+                            },
+                            title: {
+                                text: `Ratings breakdown (${stats.length} votes)`,
+                                color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                                fontSize: 20,
+                                bold: false,
+                                offsetY: 40,
+                            },
+                        }
                     }
-                }
-            }" />
+                }" />
+            </div>
+            <div class="w-full">
+                <VueUiMoodRadar :dataset="radarDataset" :config="radarConfig"/>
+            </div>
         </div>
 
         <!-- <VueUiRating :dataset="{
