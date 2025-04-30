@@ -1012,6 +1012,7 @@ const radarConfig = computed(() => {
 
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <div class="text-center text-xl">Ratings breakdown ({{ stats.length }} votes)</div>
         <div class="flex flex-row place-items-center gap-2">
             <div class="w-full">
                 <VueUiGauge :dataset="gaugeDataset" :config="{
@@ -1051,13 +1052,13 @@ const radarConfig = computed(() => {
                                 showPlusSymbol: false,
                                 roundingValue: 2
                             },
-                            title: {
-                                text: `Ratings breakdown (${stats.length} votes)`,
-                                color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                                fontSize: 20,
-                                bold: false,
-                                offsetY: 40,
-                            },
+                            // title: {
+                            //     text: `Ratings breakdown (${stats.length} votes)`,
+                            //     color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                            //     fontSize: 20,
+                            //     bold: false,
+                            //     offsetY: 40,
+                            // },
                         }
                     }
                 }" />
