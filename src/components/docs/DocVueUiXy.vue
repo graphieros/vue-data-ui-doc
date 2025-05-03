@@ -1527,6 +1527,6 @@ Target the following css class to apply custom styles:
 
 <style>
 .vue-ui-xy-legend {
-    margin-top: 12px !important;
+    padding: 12px 0;
 }
 </style>
