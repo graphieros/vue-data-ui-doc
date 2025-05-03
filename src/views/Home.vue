@@ -292,7 +292,37 @@ const specialOccasion = computed(() => {
 <template>
     <!-- <div v-if="!isDarkMode" class="underlay-paper"></div>
     <div v-if="isDarkMode" class="underlay-paper--dark"></div> -->
-      <div class="underlay"></div>
+    <div class="underlay">
+  <svg class="w-full h-full">
+    <defs>
+      <!-- make the pattern tile exactly 50×50 units -->
+      <pattern
+        id="griddit"
+        x="0" y="0"
+        width="50" height="50"
+        patternUnits="userSpaceOnUse"
+      >
+        <path
+          fill="none"
+          :stroke="isDarkMode ? '#2A2A2A50' : '#2A2A2A10'"
+          d="
+            M0 0   L50 0   L50 50   L0 50   Z
+            M1 1   L49 1   L49 49   L1 49   Z
+            M10 1  L10 49
+            M20 1  L20 49
+            M30 1  L30 49
+            M40 1  L40 49
+            M1 10  L49 10
+            M1 20  L49 20
+            M1 30  L49 30
+            M1 40  L49 40
+          "
+        />
+      </pattern>
+    </defs>
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#griddit)" />
+  </svg>
+</div>
       <div ref="resizeContainer" class="absolute top-0 left-0" style="width:100%;height:100%;overflow: hidden" @mousemove="setClientPosition($event)">
 
         <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
@@ -596,7 +626,7 @@ const specialOccasion = computed(() => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('../assets/paper.png');
+  /* background-image: url('../assets/paper.png'); */
   background-size: 30%;
   opacity: 0.02;
   pointer-events: none;
