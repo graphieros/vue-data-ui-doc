@@ -288,6 +288,14 @@ const config = ref({
             showTimeLabel: true
         },
         userOptions: {
+            print: {
+                allowTaint: true,
+                backgroundColor: '#FFFFFF',
+                useCORS: true,
+                onclone: null,
+                scale: 2,
+                logging: false
+            },
             show: true,
             showOnChartHover: false,
             keepStateOnChartLeave: true,
@@ -589,6 +597,14 @@ const darkModeConfig = ref({
             showTimeLabel: true
         },
         userOptions: {
+            print: {
+                allowTaint: true,
+                backgroundColor: '#FFFFFF',
+                useCORS: true,
+                onclone: null,
+                scale: 2,
+                logging: false,
+            },
             show: true,
             showOnChartHover: false,
             keepStateOnChartLeave: true,
@@ -1145,6 +1161,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]
                     <BaseAttr name="fullscreen" attr="chart.userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="stack" attr="chart.userOptions.buttonTitles.stack" type="text" defaultVal="Toggle stack mode" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="annotator" attr="chart.userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+                <BaseDetails attr="print" :level="3" title="chart.userOptions.print">
+                    <BaseAttr name="allowTaint" attr="chart.userOptions.print.allowTaint" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="backgroundColor" attr="chart.userOptions.print.backgroundColor" type="string" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Apply a background on pdf and img when chart background is transparent"/>
+                    <BaseAttr name="useCORS" attr="chart.userOptions.print.useCORS" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <span>onclone: null,</span><BaseComment>Modify the document before the print occurs (see html2canvas docs)</BaseComment>
+                    <BaseAttr name="scale" attr="chart.userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
+                    <BaseAttr name="logging" attr="chart.userOptions.print.logging" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
             </BaseDetails>
             <BaseDetails attr="zoom" :level="2" title="chart.zoom">

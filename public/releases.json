@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.43",
+    "date": "2025-05-03",
+    "updates": [
+      {
+        "component": "Print options",
+        "description": "Add print options for pdf & img generation",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.6.41",
     "date": "2025-04-21",
     "updates": [
