@@ -304,7 +304,7 @@ const specialOccasion = computed(() => {
       >
         <path
           fill="none"
-          :stroke="isDarkMode ? '#2A2A2A50' : '#2A2A2A10'"
+          :stroke="isDarkMode ? '#2A2A2A50' : '#2A2A2A07'"
           d="
             M0 0   L50 0   L50 50   L0 50   Z
             M1 1   L49 1   L49 49   L1 49   Z
