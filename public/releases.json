@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.44",
+    "date": "2025-05-05",
+    "updates": [
+      {
+        "component": "VueUiTreemap",
+        "description": "Improve drilling and add breadcrumbs",
+        "link": "/docs#vue-ui-treemap"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.43",
     "date": "2025-05-03",
     "updates": [
