@@ -126,6 +126,8 @@ const specialIcons = ref([
     "digit8",
     "digit9",
     "func",
+    "home",
+    "homeFilled",
     "hexagon",
     "hexagonFill",
     "kpi",
