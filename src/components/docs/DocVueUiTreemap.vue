@@ -863,7 +863,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTreemapDatasetI
                         'tooltip-before',
                         'tooltip-after',
                         'watermark',
-                        'source'
+                        'source',
+                        'breadcrumb-label',
+                        'breadcrumb-arrow'
                     ]" 
                 />
             </template>

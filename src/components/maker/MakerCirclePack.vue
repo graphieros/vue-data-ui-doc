@@ -157,7 +157,9 @@ function focusOnItem() {
                     @fixChart="fixChart"
                     @resetModel="resetModel"
                 >
-                    <VueDataUi ref="chart" component="VueUiCirclePack" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                    <div style="max-height: 600px">
+                        <VueDataUi ref="chart" component="VueUiCirclePack" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+                    </div>
                 </BaseMakerChart>
             </Transition>
         </div>
@@ -233,7 +235,9 @@ function focusOnItem() {
             @fixChart="fixChart"
             @resetModel="resetModel"
         >
-            <VueDataUi component="VueUiCirclePack" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+            <div style="max-height: 400px">
+                <VueDataUi component="VueUiCirclePack" :dataset="datasetItems" :config="finalConfig" :key="`chart_${step}`"/>
+            </div>
         </BaseMakerChart>
     </Transition>
 </template>

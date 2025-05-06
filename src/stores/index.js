@@ -759,6 +759,28 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    breadcrumbLabel: {
+                        en: 'Use this slot to customize the breadcrumb labels',
+                        fr: 'Utilisez ce slot pour personnaliser les étiquettes du fil d’Ariane',
+                        pt: 'Use este slot para personalizar os rótulos do caminho de navegação',
+                        de: 'Verwenden Sie diesen Slot, um die Breadcrumb-Bezeichnungen anzupassen',
+                        zh: '使用此插槽来自定义面包屑标签',
+                        jp: 'このスロットを使用してパンくずリストのラベルをカスタマイズします',
+                        es: 'Utilice este slot para personalizar las etiquetas de las migas de pan',
+                        ko: '이 슬롯을 사용하여 빵 부스러기 레이블을 사용자 지정하세요',
+                        ar: 'استخدم هذا الـ slot لتخصيص تسميات مسار التنقل'
+                    },
+                    breadcrumbArrow: {
+                        en: 'Use this slot to customize the breadcrumb arrows',
+                        fr: 'Utilisez ce slot pour personnaliser les flèches du fil d’Ariane',
+                        pt: 'Use este slot para personalizar as setas do caminho de navegação',
+                        de: 'Verwenden Sie diesen Slot, um die Breadcrumb-Pfeile anzupassen',
+                        zh: '使用此插槽来自定义面包屑箭头',
+                        jp: 'このスロットを使用してパンくずリストの矢印をカスタマイズします',
+                        es: 'Utilice este slot para personalizar las flechas de las migas de pan',
+                        ko: '이 슬롯을 사용하여 빵 부스러기 화살표를 사용자 지정하세요',
+                        ar: 'استخدم هذا الـ slot لتخصيص أسهم مسار التنقل'
+                    },
                     layerUnder: {
                         en: "Use this slot to customize rating units on their under layer.",
                         fr: "Utilisez cet emplacement pour personnaliser les unités de notation sur leur couche inférieure.",

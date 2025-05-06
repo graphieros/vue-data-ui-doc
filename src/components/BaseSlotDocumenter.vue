@@ -365,6 +365,33 @@ const items = computed(() => {
         </${props.componentName}>
             `
         },
+        {
+            names: ['breadcrumb-label'],
+            description: translations.value.slots.breadcrumbLabel[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #breadcrumb-label="{ crumb, isRoot }">
+            <span v-if="isRoot">
+                <VueUiIcon name="home"/>
+            </span>
+            <span v-else>
+                {{ crumb.label }}
+            </span>
+        </template>
+    </${props.componentName}>
+            `
+        },
+        {
+            names: ['breadcrumb-arrow'],
+            description: translations.value.slots.breadcrumbArrow[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #breadcrumb-arrow>
+            <VueUiIcon name="arrowRight"/>
+        </template>
+    </${props.componentName}>
+            `
+        },
     ]
 })
 
