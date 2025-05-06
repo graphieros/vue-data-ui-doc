@@ -20,6 +20,7 @@ type BoxProps = {
     showThemes?: boolean;
     showResponsive?: boolean;
     showPatterns?: boolean;
+    showCssOverride?: boolean;
     activeTab?: number;
     schema?: string;
     hideSchemaDisclaimer?: boolean;
@@ -34,6 +35,7 @@ const props = withDefaults(defineProps<BoxProps>(), {
     showThemes: false,
     showResponsive: false,
     showPatterns: false,
+    showCssOverride: false,
     activeTab: 0,
     schema: "",
     hideSchemaDisclaimer: false,
@@ -183,6 +185,17 @@ const menuTranslations = computed(() => {
             es: "Patrones",
             ko: "패턴",
             ar: "أنماط"
+        },
+        cssOverride: {
+            en: "Css override",
+            fr: "Surcharge CSS",
+            pt: "Sobrescrever CSS",
+            de: "CSS-Überschreibung",
+            zh: "CSS 覆盖",
+            jp: "CSS オーバーライド",
+            es: "Anulación de CSS",
+            ko: "CSS 재정의",
+            ar: "تجاوز CSS"
         }
     }
 })
@@ -252,6 +265,13 @@ const menuItems = computed(() => {
             color: isDarkMode.value ? '#FF7F7F' : '#1A1A1A',
             active: props.showPatterns,
             order: 8,
+        },
+        {
+            name: menuTranslations.value.cssOverride[store.lang],
+            icon: 'annotator',
+            color: isDarkMode.value ? '#77a3fc' : '#1A1A1A',
+            active: props.showCssOverride,
+            order: 9,
         },
     ].filter(menu => menu.active)
 })
@@ -358,6 +378,9 @@ const patternTranslations = computed(() => {
                     </button>
                 </RouterLink>
             </div>
+        </div>
+        <div v-if="activeTab === 9">
+            <slot name="tab9"/>
         </div>
     </div>
 </template>

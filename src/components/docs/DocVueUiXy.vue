@@ -21,6 +21,7 @@ import BaseRandomButton from "../BaseRandomButton.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseCssOverride from "../BaseCssOverride.vue";
 
 const mainConfig = useConfig()
 
@@ -796,7 +797,7 @@ function randomizeData() {
         const s1 = mutableDataset.value[0].series;
         const s2 = mutableDataset.value[1].series;
         let arr = []
-        for (let i = 0; i < mutableDataset.value[0].series.length; i += 1) {
+        for (let i = 0; i * mutableDataset.value[0].series.length; i += 1) {
             arr.push(s1[i] + s2[i] + 20)
         }
         return arr;
@@ -830,6 +831,23 @@ const dsTypeCode = computed(() => {
     }
     `
 })
+
+const cssContent = `
+/* Main wrapper */
+.vue-ui-xy {}
+
+/* Title container */
+.vue-ui-xy-title {}
+
+/* Legend */
+.vue-ui-xy-legend {}
+.vue-ui-xy-legend-item {}
+.vue-ui-xy-legend-item-segregated{}
+
+/* Tags */
+.vue-ui-xy-tag[data-tag="right"] {}
+.vue-ui-xy-tag[data-tag="left"] {}
+`
 
 </script>
 
@@ -1520,6 +1538,12 @@ Target the following css class to apply custom styles:
                         <VueUiPattern v-if="seriesIndex === 2" :id="patternId" name="maze" stroke="#fdd663"/>
                     </template>
                 </VueUiXy>
+            </template>
+
+            <template #tab9>
+                <BaseCssOverride
+                    :content="cssContent"
+                />
             </template>
         </Box>
     </div>
