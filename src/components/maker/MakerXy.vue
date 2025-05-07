@@ -346,6 +346,7 @@ const accordionConfig = ref(
                         <CopyComponent @click="() => copyComponent('componentContent', store)"/>
                     </template>
                 </ComponentContent>
+                <slot name="rater"/>
             </div>
         </div>
     </div>

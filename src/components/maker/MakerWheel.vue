@@ -182,7 +182,8 @@ function randomVal() {
                     <template #component-copy>
                         <CopyComponent @click="() => copyComponent('componentContent', store)"/>
                     </template>
-                </ComponentContent>        
+                </ComponentContent>
+                <slot name="rater"/>
             </div>
     </div>
 

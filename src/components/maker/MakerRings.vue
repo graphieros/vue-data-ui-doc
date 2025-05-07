@@ -212,6 +212,7 @@ const finalConfig = computed(() => {
                         <CopyComponent @click="() => copyComponent('componentContent', store)"/>
                     </template>
                 </ComponentContent>     
+                <slot name="rater"/>
             </div>
     </div>
     <Transition name="fade">

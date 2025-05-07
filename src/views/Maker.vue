@@ -6,6 +6,7 @@ import Tooltip from "../components/FlexibleTooltip.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
+import Rater from "../components/Rater.vue";
 
 const MakerXy = defineAsyncComponent(() => import('../components/maker/MakerXy.vue'));
 const MakerDonut = defineAsyncComponent(() => import('../components/maker/MakerDonut.vue'));
@@ -273,121 +274,199 @@ const crumbs = computed(() => {
         </div>
         
         <Transition name="fade">
-            <MakerXy v-if="selectedChart.name === 'VueUiXy'"/>
+            <MakerXy v-if="selectedChart.name === 'VueUiXy'">
+                <template #rater><Rater item="vue_ui_xy"/></template>
+            </MakerXy>
         </Transition>
         <Transition name="fade">
-            <MakerDonut v-if="selectedChart.name === 'VueUiDonut'"/>
+            <MakerDonut v-if="selectedChart.name === 'VueUiDonut'">
+                <template #rater><Rater item="vue_ui_donut"/></template>
+            </MakerDonut>
         </Transition>
         <Transition name="fade">
-            <MakerWaffle v-if="selectedChart.name === 'VueUiWaffle'"/>
+            <MakerWaffle v-if="selectedChart.name === 'VueUiWaffle'">
+                <template #rater><Rater item="vue_ui_waffle"/></template>
+            </MakerWaffle>
         </Transition>
         <Transition name="fade">
-            <MakerRadar v-if="selectedChart.name === 'VueUiRadar'"/>
+            <MakerRadar v-if="selectedChart.name === 'VueUiRadar'">
+                <template #rater><Rater item="vue_ui_radar"/></template>
+            </MakerRadar>
         </Transition>
         <Transition name="fade">
-            <MakerGauge v-if="selectedChart.name === 'VueUiGauge'"/>
+            <MakerGauge v-if="selectedChart.name === 'VueUiGauge'">
+                <template #rater><Rater item="vue_ui_gauge"/></template>
+            </MakerGauge>
         </Transition>
         <Transition name="fade">
-            <MakerOnion v-if="selectedChart.name === 'VueUiOnion'"/>
+            <MakerOnion v-if="selectedChart.name === 'VueUiOnion'">
+                <template #rater><Rater item="vue_ui_onion"/></template>
+            </MakerOnion>
         </Transition>
         <Transition name="fade">
-            <MakerQuadrant v-if="selectedChart.name === 'VueUiQuadrant'"/>
+            <MakerQuadrant v-if="selectedChart.name === 'VueUiQuadrant'">
+                <template #rater><Rater item="vue_ui_quadrant"/></template>
+            </MakerQuadrant>
         </Transition>
         <Transition name="fade">
-            <MakerWheel v-if="selectedChart.name === 'VueUiWheel'"/>
+            <MakerWheel v-if="selectedChart.name === 'VueUiWheel'">
+                <template #rater><Rater item="vue_ui_wheel"/></template>
+            </MakerWheel>
         </Transition>
         <Transition name="fade">
-            <MakerTiremarks v-if="selectedChart.name === 'VueUiTiremarks'"/>
+            <MakerTiremarks v-if="selectedChart.name === 'VueUiTiremarks'">
+                <template #rater><Rater item="vue_ui_tiremarks"/></template>
+            </MakerTiremarks>
         </Transition>
         <Transition name="fade">
-            <MakerChestnut v-if="selectedChart.name === 'VueUiChestnut'"/>
+            <MakerChestnut v-if="selectedChart.name === 'VueUiChestnut'">
+                <template #rater><Rater item="vue_ui_chestnut"/></template>
+            </MakerChestnut>
         </Transition>
         <Transition name="fade">
-            <MakerVerticalBar v-if="selectedChart.name === 'VueUiVerticalBar'"/>
+            <MakerVerticalBar v-if="selectedChart.name === 'VueUiVerticalBar'">
+                <template #rater><Rater item="vue_ui_vertical_bar"/></template>
+            </MakerVerticalBar>
         </Transition>
         <Transition name="fade">
-            <MakerHeatmap v-if="selectedChart.name === 'VueUiHeatmap'"/>
+            <MakerHeatmap v-if="selectedChart.name === 'VueUiHeatmap'">
+                <template #rater><Rater item="vue_ui_heatmap"/></template>
+            </MakerHeatmap>
         </Transition>
         <Transition name="fade">
-            <MakerStripPlot v-if="selectedChart.name === 'VueUiStripPlot'" />
+            <MakerStripPlot v-if="selectedChart.name === 'VueUiStripPlot'">
+                <template #rater><Rater item="vue_ui_strip_plot"/></template>
+            </MakerStripPlot>
         </Transition>
         <Transition name="fade">
-            <MakerSparkline v-if="selectedChart.name === 'VueUiSparkline'"/>
+            <MakerSparkline v-if="selectedChart.name === 'VueUiSparkline'">
+                <template #rater><Rater item="vue_ui_sparkline"/></template>
+            </MakerSparkline>
         </Transition>
         <Transition name="fade">
-            <MakerSparkStackbar v-if="selectedChart.name === 'VueUiSparkStackbar'"/>
+            <MakerSparkStackbar v-if="selectedChart.name === 'VueUiSparkStackbar'">
+                <template #rater><Rater item="vue_ui_sparkstackbar"/></template>
+            </MakerSparkStackbar>
         </Transition>
         <Transition name="fade">
-            <MakerSparkbar v-if="selectedChart.name === 'VueUiSparkbar'"/>
+            <MakerSparkbar v-if="selectedChart.name === 'VueUiSparkbar'">
+                <template #rater><Rater item="vue_ui_sparkbar"/></template>
+            </MakerSparkbar>
         </Transition>
         <Transition name="fade">
-            <MakerSparkHistogram v-if="selectedChart.name === 'VueUiSparkHistogram'"/>
+            <MakerSparkHistogram v-if="selectedChart.name === 'VueUiSparkHistogram'">
+                <template #rater><Rater item="vue_ui_sparkhistogram"/></template>
+            </MakerSparkHistogram>
         </Transition>
         <Transition name="fade">
-            <MakerDonutEvolution v-if="selectedChart.name === 'VueUiDonutEvolution'"/>
+            <MakerDonutEvolution v-if="selectedChart.name === 'VueUiDonutEvolution'">
+                <template #rater><Rater item="vue_ui_donut_evolution"/></template>
+            </MakerDonutEvolution>
         </Transition>
         <Transition name="fade">
-            <MakerRings v-if="selectedChart.name === 'VueUiRings'"/>
+            <MakerRings v-if="selectedChart.name === 'VueUiRings'">
+                <template #rater><Rater item="vue_ui_rings"/></template>
+            </MakerRings>
         </Transition>
         <Transition name="fade">
-            <MakerScatter v-if="selectedChart.name === 'VueUiScatter'"/>
+            <MakerScatter v-if="selectedChart.name === 'VueUiScatter'">
+                <template #rater><Rater item="vue_ui_scatter"/></template>
+            </MakerScatter>
         </Transition>
         <Transition name="fade">
-            <MakerPyramid v-if="selectedChart.name === 'VueUiAgePyramid'"/>
+            <MakerPyramid v-if="selectedChart.name === 'VueUiAgePyramid'">
+                <template #rater><Rater item="vue_ui_age_pyramid"/></template>
+            </MakerPyramid>
         </Transition>
         <Transition name="fade">
-            <MakerMoodRadar v-if="selectedChart.name === 'VueUiMoodRadar'"/>
+            <MakerMoodRadar v-if="selectedChart.name === 'VueUiMoodRadar'">
+                <template #rater><Rater item="vue_ui_mood_radar"/></template>
+            </MakerMoodRadar>
         </Transition>
         <Transition name="fade">
-            <MakerRelationCircle v-if="selectedChart.name === 'VueUiRelationCircle'"/>
+            <MakerRelationCircle v-if="selectedChart.name === 'VueUiRelationCircle'">
+                <template #rater><Rater item="vue_ui_relation_circle"/></template>
+            </MakerRelationCircle>
         </Transition>
         <Transition name="fade">
-            <MakerThermometer v-if="selectedChart.name === 'VueUiThermometer'" />
+            <MakerThermometer v-if="selectedChart.name === 'VueUiThermometer'">
+                <template #rater><Rater item="vue_ui_thermometer"/></template>
+            </MakerThermometer>
         </Transition>
         <Transition name="fade">
-            <Maker3dBar v-if="selectedChart.name === 'VueUi3dBar'" />
+            <Maker3dBar v-if="selectedChart.name === 'VueUi3dBar'">
+                <template #rater><Rater item="vue_ui_3d_bar"/></template>
+            </Maker3dBar>
         </Transition>
         <Transition name="fade">
-            <MakerNestedDonuts v-if="selectedChart.name === 'VueUiNestedDonuts'" />
+            <MakerNestedDonuts v-if="selectedChart.name === 'VueUiNestedDonuts'">
+                <template #rater><Rater item="vue_ui_nested_donuts"/></template>
+            </MakerNestedDonuts>
         </Transition>
         <Transition name="fade">
-            <MakerSparkgauge v-if="selectedChart.name === 'VueUiSparkgauge'" />
+            <MakerSparkgauge v-if="selectedChart.name === 'VueUiSparkgauge'">
+                <template #rater><Rater item="vue_ui_sparkgauge"/></template>
+            </MakerSparkgauge>
         </Transition>
         <Transition name="fade">
-            <MakerGalaxy v-if="selectedChart.name === 'VueUiGalaxy'" />
+            <MakerGalaxy v-if="selectedChart.name === 'VueUiGalaxy'">
+                <template #rater><Rater item="vue_ui_galaxy"/></template>
+            </MakerGalaxy>
         </Transition>
         <Transition name="fade">
-            <MakerKpi v-if="selectedChart.name === 'VueUiKpi'" />
+            <MakerKpi v-if="selectedChart.name === 'VueUiKpi'">
+                <template #rater><Rater item="vue_ui_kpi"/></template>
+            </MakerKpi>
         </Transition>
         <Transition name="fade">
-            <MakerVueUiWordCloud v-if="selectedChart.name === 'VueUiWordCloud'" />
+            <MakerVueUiWordCloud v-if="selectedChart.name === 'VueUiWordCloud'">
+                <template #rater><Rater item="vue_ui_word_cloud"/></template>
+            </MakerVueUiWordCloud>
         </Transition>
         <Transition name="fade">
-            <MakerFlow v-if="selectedChart.name === 'VueUiFlow'" />
+            <MakerFlow v-if="selectedChart.name === 'VueUiFlow'">
+                <template #rater><Rater item="vue_ui_flow"/></template>
+            </MakerFlow>
         </Transition>
         <Transition name="fade">
-            <MakerPcp v-if="selectedChart.name === 'VueUiParallelCoordinatePlot'" />
+            <MakerPcp v-if="selectedChart.name === 'VueUiParallelCoordinatePlot'">
+                <template #rater><Rater item="vue_ui_parallel_coordinate_plot"/></template>
+            </MakerPcp>
         </Transition>
         <Transition name="fade">
-            <MakerCarouselTable v-if="selectedChart.name === 'VueUiCarouselTable'" />
+            <MakerCarouselTable v-if="selectedChart.name === 'VueUiCarouselTable'">
+                <template #rater><Rater item="vue_ui_carousel_table"/></template>
+            </MakerCarouselTable>
         </Transition>
         <Transition name="fade">
-            <MakerGizmo v-if="selectedChart.name === 'VueUiGizmo'" />
+            <MakerGizmo v-if="selectedChart.name === 'VueUiGizmo'">
+                <template #rater><Rater item="vue_ui_gizmo"/></template>
+            </MakerGizmo>
         </Transition>
         <Transition name="fade">
-            <MakerStackbar v-if="selectedChart.name === 'VueUiStackbar'" />
+            <MakerStackbar v-if="selectedChart.name === 'VueUiStackbar'">
+                <template #rater><Rater item="vue_ui_stackbar"/></template>
+            </MakerStackbar>
         </Transition>
         <Transition name="fade">
-            <MakerBullet v-if="selectedChart.name === 'VueUiBullet'" />
+            <MakerBullet v-if="selectedChart.name === 'VueUiBullet'">
+                <template #rater><Rater item="vue_ui_bullet"/></template>
+            </MakerBullet>
         </Transition>
         <Transition name="fade">
-            <MakerFunnel v-if="selectedChart.name === 'VueUiFunnel'" />
+            <MakerFunnel v-if="selectedChart.name === 'VueUiFunnel'">
+                <template #rater><Rater item="vue_ui_funnel"/></template>
+            </MakerFunnel>
         </Transition>
         <Transition name="fade">
-            <MakerHistoryPlot v-if="selectedChart.name === 'VueUiHistoryPlot'" />
+            <MakerHistoryPlot v-if="selectedChart.name === 'VueUiHistoryPlot'">
+                <template #rater><Rater item="vue_ui_history_plot"/></template>
+            </MakerHistoryPlot>
         </Transition>
         <Transition name="fade">
-            <MakerCirclePack v-if="selectedChart.name === 'VueUiCirclePack'" />
+            <MakerCirclePack v-if="selectedChart.name === 'VueUiCirclePack'">
+                <template #rater><Rater item="vue_ui_circle_pack"/></template>
+            </MakerCirclePack>
         </Transition>
     </div>
 </template>
