@@ -128,6 +128,7 @@ const config = computed(() => {
         backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         layout: {
+          curvedMarkers: true,
           labels: {
             dataLabels: {
               show: true,
