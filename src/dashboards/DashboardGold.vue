@@ -197,6 +197,10 @@ const CONFIG_DONUT = computed(() => {
         style: {
             chart: {
                 useGradient: false,
+                padding: {
+                    left: 24,
+                    right: 24
+                },
                 layout: {
                     curvedMarkers: true,
                     donut: {
