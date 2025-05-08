@@ -18,7 +18,7 @@ export function useIconMap(componentName) {
         VueUiGalaxy: 'chartGalaxy',
         VueUiGauge: 'chartGauge',
         VueUiHeatmap: 'chartHeatmap',
-        VueUiIcon: 'smiley',
+        VueUiIcon: 'icons',
         VueUiKpi: 'kpiBox',
         VueUiMiniLoader: 'chartWheel',
         VueUiMolecule: 'chartCluster',

@@ -7,7 +7,6 @@ import ConfirmCopy from "../components/ConfirmCopy.vue";
 import colorBridge from "color-bridge";
 import { VueHiCode } from "vue-hi-code";
 import "vue-hi-code/style.css"
-import { RobotIcon } from "vue-tabler-icons";
 
 
 const store = useMainStore();
@@ -134,7 +133,7 @@ const universalComponentTemplateContent = computed(() => {
         </div>
 
         <div class="mt-4 z-10 flex flex-row place-items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" :stroke="isDarkMode ? '#83a4f2' : '#5f8aee'" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2"> <path d="M6 4m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path> <path d="M12 2v2"></path> <path d="M9 12v9"></path> <path d="M15 12v9"></path> <path d="M5 16l4 -2"></path> <path d="M15 14l4 2"></path> <path d="M9 18h6"></path> <path d="M10 8v.01"></path> <path d="M14 8v.01"></path> </svg> 
+            <VueUiIcon name="robot" stroke="#5F8BEE"/>
             <a href="https://vue-data-ui.graphieros.com/llms.txt" class="underline" target="_blank">AI assistance (llms.txt)</a>
         </div>
         

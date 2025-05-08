@@ -610,7 +610,7 @@ const smallMenu = ref([
     },
     {
         route: '/docs#vue-ui-icon',
-        icon: 'smiley',
+        icon: 'icons',
         cssClasses: '',
         isSelected: isSelected,
         tooltipContent: 'Icon',
@@ -821,7 +821,7 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-skeleton', componentName: 'Skeleton', icon: 'skeleton' },
             { route: '/docs#vue-ui-dashboard', componentName: 'Dashboard', icon: 'dashboard' },
             { route: '/docs#vue-ui-annotator', componentName: 'Annotator', icon: 'annotator' },
-            { route: '/docs#vue-ui-icon', componentName: 'Icon', icon: 'smiley' },
+            { route: '/docs#vue-ui-icon', componentName: 'Icon', icon: 'icons' },
             { route: '/docs#vue-ui-digits', componentName: 'Digits', icon: 'digit8' },
             { route: '/docs#vue-ui-cursor', componentName: 'Cursor', icon: 'cursor' },
             { route: '/docs#vue-ui-mini-loader', componentName: 'MiniLoader', icon: 'chartWheel' },

@@ -430,7 +430,7 @@ export default function useCharts() {
                 singleTaxinomy: 'proportions'
             },
             VueUiIcon: {
-                icon: 'smiley',
+                icon: 'icons',
                 link: '/docs#vue-ui-icon',
                 description: translations.value.docs.tooltips.icon[store.lang],
                 taxinomy: ['uiTools'],
