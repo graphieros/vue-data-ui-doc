@@ -73,6 +73,12 @@ const darkModeConfig = ref({
             gradientIntensity: 40,
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
+            padding: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
             layout: {
                 curvedMarkers: true,
                 labels: {
@@ -264,6 +270,12 @@ const config = ref({
             gradientIntensity: 40,
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
+            padding: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
             layout: {
                 curvedMarkers: true,
                 labels: {
@@ -769,6 +781,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDonutDatasetIte
                 <BaseAttr name="gradientIntensity" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="0" :max="100" attr="style.chart.gradientIntensity" defaultVal="40" />
                 <BaseAttr name="backgroundColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.backgroundColor" defaultVal="#FFFFFF"/>                
                 <BaseAttr name="color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.color" defaultVal="#2D353C"/>
+                <BaseDetails attr="padding" :level="3" title="style.chart.padding">
+                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="left" attr="style.chart.padding.left" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
                 <BaseDetails attr="comments" :level="3" title="style.chart.comments">
                     <BaseAttr name="show" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" attr="style.chart.comments.show" defaultVal="true"/>
                     <BaseAttr name="showInTooltip" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" attr="style.chart.comments.showInTooltip" defaultVal="true"/>

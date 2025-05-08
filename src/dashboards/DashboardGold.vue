@@ -198,7 +198,9 @@ const CONFIG_DONUT = computed(() => {
             chart: {
                 useGradient: false,
                 layout: {
+                    curvedMarkers: true,
                     donut: {
+                        strokeWidth: 64,
                         useShadow: false
                     },
                     labels: {
@@ -206,7 +208,7 @@ const CONFIG_DONUT = computed(() => {
                             suffix: 't'
                         },
                         value: {
-                            show: false,
+                            show: true,
                         },
                         hollow: {
                             show: false,
@@ -215,8 +217,9 @@ const CONFIG_DONUT = computed(() => {
                             },
                             total: {
                                 show: true,
-                                offsetY: -10,
+                                offsetY: -20,
                                 value: {
+                                    fontSize: 30,
                                     offsetY: -3,
                                     suffix: 't'
                                 }

@@ -123,6 +123,12 @@ const darkModeConfig = ref({
             gradientIntensity: 40,
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
+            padding: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
             layout: {
                 labels: {
                     dataLabels: {
@@ -270,6 +276,12 @@ const config = ref({
             gradientIntensity: 40,
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
+            padding: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
             layout: {
                 labels: {
                     dataLabels: {
@@ -548,6 +560,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiNestedDonutsDat
                 <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="useGradient" attr="style.chart.useGradient" type="chexkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="gradientIntensity" attr="style.chart.gradientIntensity" type="range" defaultVal="40" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="padding" :level="3" title="style.chart.padding">
+                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="left" attr="style.chart.padding.left" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">
                     <BaseDetails attr="donut" :level="4" title="style.chart.layout.donut">
                         <BaseAttr name="strokeWidth" attr="style.chart.layout.donut.strokeWidth" type="range" defaultVal="200" :min="64" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

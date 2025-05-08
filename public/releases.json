@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.6.47",
+    "date": "2025-05-08",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add padding config options",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add padding config options",
+        "link": "/docs#vue-ui-nested-donuts"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.46",
     "date": "2025-05-06",
     "updates": [

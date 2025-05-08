@@ -41,6 +41,10 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.general[store.lang]
         },
         {
+            key: 'padding',
+            title: makerTranslations.value.categories.padding[store.lang]
+        },
+        {
             key: 'userOptions',
             title: makerTranslations.value.categories.userOptions[store.lang]
         },

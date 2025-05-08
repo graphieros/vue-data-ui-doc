@@ -1223,6 +1223,11 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
 
+                    { key: 'style.chart.padding.top', def: 0, type: 'number', min: 0, max: 100, label:['top'], category: 'padding'},
+                    { key: 'style.chart.padding.right', def: 0, type: 'number', min: 0, max: 100, label:['right'], category: 'padding'},
+                    { key: 'style.chart.padding.bottom', def: 0, type: 'number', min: 0, max: 100, label:['bottom'], category: 'padding'},
+                    { key: 'style.chart.padding.left', def: 0, type: 'number', min: 0, max: 100, label:['left'], category: 'padding'},
+
                     { key: 'style.chart.layout.curvedMarkers', def: true, type: 'checkbox', label: ['markers', 'is', 'curved'], category: 'labels'},
                     { key: 'style.chart.layout.labels.dataLabels.show', def: true, type: 'checkbox', label: 'show', category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.hideUnderValue', def: 3, type: 'number', min: 0, max: 100, label: 'hideUnderValue', category: 'labels' },
@@ -3652,6 +3657,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'general' },
                     { key: 'style.chart.gradientIntensity', def: 40, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'general' },
+
+                    { key: 'style.chart.padding.top', def: 0, type: 'number', min: 0, max: 100, label:['top'], category: 'padding'},
+                    { key: 'style.chart.padding.right', def: 0, type: 'number', min: 0, max: 100, label:['right'], category: 'padding'},
+                    { key: 'style.chart.padding.bottom', def: 0, type: 'number', min: 0, max: 100, label:['bottom'], category: 'padding'},
+                    { key: 'style.chart.padding.left', def: 0, type: 'number', min: 0, max: 100, label:['left'], category: 'padding'},
+                    
                     { key: 'style.chart.layout.labels.dataLabels.show', def: true, type: 'checkbox', label: 'show', category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.fontSize', def: 14, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.useSerieColor', def: false, type: 'checkbox', label: ['textColor', 'is', 'auto'], category: 'labels' },
