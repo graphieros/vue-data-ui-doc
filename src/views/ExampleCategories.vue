@@ -63,8 +63,6 @@ function updateCrumb() {
     raterStep.value += 1;
 }
 
-//<Rater itemId="vue_ui_donut" />
-
 const categories = computed(() => {
     return  [
         { 
@@ -356,7 +354,8 @@ const hoveredLink = ref(null);
         <div dir="auto" class="flex flex-row gap-4 place-items-center justify-center flex-wrap">
             <span dir="auto" class="text-gray-500">{{ checkTheDocs[store.lang] }}</span>
             <RouterLink to="/docs">
-                <button dir="auto" class="py-2 px-4 rounded border bg-[#5f8aee30] border-app-blue hover:bg-[#5f8aee50] transition-colors">
+                <button dir="auto" class="flex flex-row gap-2 place-items-center py-2 px-4 rounded border bg-[#5f8aee30] border-app-blue hover:bg-[#5f8aee50] transition-colors">
+                    <VueUiIcon name="clipBoard" :stroke="isDarkMode ? '#5f8aee' : '#2A2A2A'" :size="18"/>
                     {{ translations.menu.docs[store.lang]  }}
                 </button>
             </RouterLink>
