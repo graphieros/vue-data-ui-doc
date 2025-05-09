@@ -16,6 +16,7 @@ const periods = ref({
   _90D: { id: '_90D', name: 'Last 90 days', value: 91, plotRadius: 3 },
   _6M: { id: '_6M', name: 'Last 6 months', value: 181, plotRadius: 0.1 },
   _1Y: { id: '_1Y', name: 'Last year', value: 365, plotRadius: 0.1 },
+  _ALL: { id: '_ALL', name: 'Full history', value: store.downloads.lib.map(d => d.downloads).length, plotRadius: 0.1 }
 })
 
 const data_lib = computed(() => {
