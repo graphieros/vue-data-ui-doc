@@ -86,8 +86,32 @@ const donutConfig = ref({
     chart: {
       backgroundColor: 'transparent',
       legend: {
-        show: false,
+        show: true,
         backgroundColor: 'transparent'
+      },
+      layout: {
+        curvedMarkers: true,
+        donut: {
+          strokeWidth: 74
+        },
+        labels: {
+          hollow: {
+            average: {
+              offsetY: -6,
+              value: {
+                offsetY: 6,
+                fontSize: 32
+              }
+            },
+            total: {
+              offsetY: -20,
+              value: {
+                offsetY: -8,
+                fontSize: 32
+              }
+            },
+          }
+        }
       },
       tooltip: {
         backgroundOpacity: 0,
@@ -102,17 +126,14 @@ const donutConfig = ref({
 const donutDatasetCats = ref([
   {
     name: "Burmese",
-    color: "#5f8bee",
     values: [100],
   },
   {
     name: "Abyssinian",
-    color: "#42d392",
     values: [200],
   },
   {
     name: "Persian",
-    color: "#ff6400",
     values: [300, 1],
   },
 ]);
@@ -130,6 +151,10 @@ const donutImageConfig = ref({
         backgroundOpacity: 50,
       },
       layout: {
+        curvedMarkers: true,
+        donut: {
+          strokeWidth: 80,
+        },
         labels: {
           hollow: {
             average: { show: false },
