@@ -228,8 +228,8 @@ const excl5 = 'number';
             </thead>
             <tbody>
                 <tr class="bg-[#FFFFFF60] dark:bg-[#FFFFFF10]" v-for="option in selectedComponent.slots">
-                    <td class="p-2 border border-slate-600 text-xs">
-                        #{{ option.name }}
+                    <td class="p-2 border border-slate-600 text-xs dark:bg-[#1A1A1A]">
+                        <code>#{{ option.name }}</code>
                     </td>
                     <td class="p-2 border border-slate-600 text-xs">
                         {{ option.description }}
@@ -250,8 +250,8 @@ const excl5 = 'number';
             </thead>
             <tbody>
                 <tr class="bg-[#FFFFFF60] dark:bg-[#FFFFFF10]" v-for="option in selectedComponent.emits">
-                    <td class="p-2 border border-slate-600 text-xs">
-                        @{{ option.name }}
+                    <td class="p-2 border border-slate-600 text-xs dark:bg-[#1A1A1A]">
+                        <code>@{{ option.name }}</code>
                     </td>
                     <td class="p-2 border border-slate-600 text-xs">
                         {{ option.description }}
@@ -272,8 +272,8 @@ const excl5 = 'number';
             </thead>
             <tbody>
                 <tr class="bg-[#FFFFFF60] dark:bg-[#FFFFFF10]" v-for="option in selectedComponent.exposed">
-                    <td class="p-2 border border-slate-600 text-xs">
-                        {{ option.name }}
+                    <td class="p-2 border border-slate-600 text-xs dark:bg-[#1A1A1A]">
+                        <code>{{ option.name }}</code>
                     </td>
                     <td class="p-2 border border-slate-600 text-xs">
                         {{ option.description }}
