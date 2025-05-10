@@ -39,6 +39,7 @@ const config = computed(() => {
         backgroundColor: "transparent",
         color: "#2D353C",
         layout: {
+          curvedMarkers: true,
           labels: {
             dataLabels: {
               show: true,
@@ -86,7 +87,7 @@ const config = computed(() => {
             },
           },
           donut: {
-            strokeWidth: 32,
+            strokeWidth: 54,
           },
         },
         legend: {

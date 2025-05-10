@@ -11,17 +11,14 @@ const isDarkMode = computed(() => store.isDarkMode);
 const dataset = ref([
   {
     name: "Serie 1",
-    color: "#5f8bee",
     values: [100],
   },
   {
     name: "Serie 2",
-    color: "#42d392",
     values: [200],
   },
   {
     name: "Serie 3",
-    color: "#ff6400",
     values: [300, 1],
     comment: "A comment for this specific datapoint",
   },
@@ -39,6 +36,7 @@ const darkModeConfig = ref({
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
       layout: {
+        curvedMarkers: true,
         labels: {
           dataLabels: {
             show: true,
@@ -100,7 +98,7 @@ const darkModeConfig = ref({
           },
         },
         donut: {
-          strokeWidth: 55,
+          strokeWidth: 64,
           borderWidth: 2,
           useShadow: false,
           shadowColor: "#1A1A1A",

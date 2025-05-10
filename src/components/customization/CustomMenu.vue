@@ -30,6 +30,12 @@ const config = ref({
     },
     style: {
         chart: {
+            layout: {
+                curvedMarkers: true,
+                donut: {
+                    strokeWidth: 64
+                }
+            },
             title: {
                 text: 'Title',
                 subtitle: {

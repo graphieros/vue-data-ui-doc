@@ -127,6 +127,7 @@ style: {
     backgroundColor: "#1A1A1A",
     color: "#CCCCCC",
     layout: {
+        curvedMarkers: true,
         labels: {
         dataLabels: {
             show: true,
@@ -186,7 +187,7 @@ style: {
         }
         },
         donut: {
-        strokeWidth: 54,
+        strokeWidth: 64,
         borderWidth: 2,
         },
     },
