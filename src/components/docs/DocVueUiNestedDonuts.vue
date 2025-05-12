@@ -76,6 +76,43 @@ const dataset = ref([
     },
 ])
 
+const codeDataset = ref(`const dataset: VueUiNestedDonutsDatasetItem[] = [
+    {
+        name: "Group 1",
+        series: [
+            {
+                name: 'Serie 1',
+                values: [50]
+            },
+            {
+                name: 'Serie 2',
+                values: [30]
+            },
+            {
+                name: 'Serie 3',
+                values: [20]
+            },
+        ]
+    },
+    {
+        name: "Group 2",
+        series: [
+            {
+                name: 'Serie 1',
+                values: [40]
+            },
+            {
+                name: 'Serie 2',
+                values: [40]
+            },
+            {
+                name: 'Serie 3',
+                values: [30]
+            },
+        ]
+    },
+];`)
+
 const darkModeConfig = ref({
     responsive: false,
     useCssAnimation: true,
@@ -419,16 +456,14 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiNestedDonutsDatasetItem = {
-        name: string
-        series: Array<{
-            name: string;
-            values: number[];
-            color?: string
-        }>
-    }
-    `
+    return `type VueUiNestedDonutsDatasetItem = {
+    name: string
+    series: Array<{
+        name: string;
+        values: number[];
+        color?: string
+    }>
+}`
 })
 
 </script>
@@ -468,63 +503,25 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showTooltip showSlots showThemes showResponsive schema="vue_ui_nested_donuts" signInfo="positiveOrNegativeOnly">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiNestedDonutsDatasetItem[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />  
                 </div>
 
-
-                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-                    <pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiNestedDonutsDatasetItem[]</span> = [
-    {
-        name: "Group 1",
-        series: [
-            {
-                name: 'Serie 1',
-                values: [50]
-            },
-            {
-                name: 'Serie 2',
-                values: [30]
-            },
-            {
-                name: 'Serie 3',
-                values: [20]
-            },
-        ]
-    },
-    {
-        name: "Group 2",
-        series: [
-            {
-                name: 'Serie 1',
-                values: [40]
-            },
-            {
-                name: 'Serie 2',
-                values: [40]
-            },
-            {
-                name: 'Serie 3',
-                values: [30]
-            },
-        ]
-    },
-]
-</code>
-</pre>
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />  
+
                 </div>
             </template>
 

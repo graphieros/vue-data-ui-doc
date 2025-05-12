@@ -43,17 +43,14 @@ const isDarkMode = computed(() => {
 const dataset = ref([
   {
     name: "Serie 1",
-    color: "#5f8bee",
     values: [100],
   },
   {
     name: "Serie 2",
-    color: "#42d392",
     values: [200],
   },
   {
     name: "Serie 1",
-    color: "#ff6400",
     values: [300, 1],
   },
 ]);
@@ -210,7 +207,7 @@ const darkModeConfig = ref({
           gradient: {
             show: true,
             intensity: 20,
-            color: "#1A1A1A"
+            color: "#FFFFFF80"
           }
         },
         labels: {
@@ -361,14 +358,27 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-  return `
-  type VueUiGalaxyDatasetItem = {
-    name: string
-    values: number[]
-    color?: string
-  }
-  `
+  return `type VueUiGalaxyDatasetItem = {
+  name: string
+  values: number[]
+  color?: string
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiGalaxyDatasetItem[] = [
+  {
+      name: "Series 1",
+      values: [100]
+  },
+  {
+      name: "Series 2",
+      values: [200]
+  },
+  {
+      name: "Series 1",
+      values: [300, 1]
+  },
+];`)
 
 </script>
 
@@ -409,43 +419,23 @@ const dsTypeCode = computed(() => {
 
     <Box showEmits showSlots showTooltip showThemes schema="vue_ui_galaxy" signInfo="positiveOrNegativeOnly">
       <template #tab0>
-        {{ translations.docs.datastructure[store.lang] }}
-        <div>
-          TS type: <code class="text-app-green">VueUiGalaxyDatasetItem[]</code>
-        </div>
-        <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+        <div class="w-full overflow-x-auto">
           <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         /> 
         </div>
 
-        {{ translations.docs.example[store.lang] }} :
         <div class="w-full overflow-x-auto">
-          <pre>
-    
-    <code>
-        const <span class="text-black dark:text-app-green">dataset: VueUiGalaxyDatasetItem[]</span> = [
-        {
-            name: "Series 1",
-            color: <input type="color" v-model="mutableDataset[0].color">,
-            values: [100]
-        },
-        {
-            name: "Series 2",
-            color: <input type="color" v-model="mutableDataset[1].color">,
-            values: [200]
-        },
-        {
-            name: "Series 1",
-            color: <input type="color" v-model="mutableDataset[2].color">,
-            values: [300, 1]
-        },
-        ]
-    </code>
-</pre>
+      <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+      />  
         </div>
       </template>
 

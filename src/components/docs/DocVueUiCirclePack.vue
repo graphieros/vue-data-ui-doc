@@ -378,14 +378,27 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiCirclePackDatasetItem = {
-        name: string
-        value: number
-        color?: string
-    }
-    `
+    return `type VueUiCirclePackDatasetItem = {
+    name: string
+    value: number
+    color?: string
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
+    {
+        name: "Datapoint A",
+        value: 200
+    },
+    {
+        name: "Datapoint B",
+        value: 150
+    },
+    {
+        name: "Datapoint C",
+        value: 100
+    },
+];`)
 
 </script>
 
@@ -423,38 +436,23 @@ const dsTypeCode = computed(() => {
 
     <Box showEmits showSlots showThemes showPatterns schema="vue_ui_circle_pack" signInfo="positiveOnly">
         <template #tab0>
-            {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiCirclePackDatasetItem[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />              
                 </div>
-                {{ translations.docs.example[store.lang] }} :
+
                 <div class="w-full overflow-x-auto">
-                    <pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiCirclePackDatasetItem[]</span> = [
-    {
-        name: "Datapoint A",
-        value: 200
-    },
-    {
-        name: "Datapoint B",
-        value: 150
-    },
-    {
-        name: "Datapoint C",
-        value: 100
-    },
-]
-</code>
-</pre>        
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />     
                 </div>
         </template>
 

@@ -471,15 +471,66 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiTreemapDatasetItem = {
-        name: string
-        value: number
-        color?: string
-        children?: VueUiTreemapDatasetItem[]
-    }
-    `
+    return `type VueUiTreemapDatasetItem = {
+    name: string
+    value: number
+    color?: string
+    children?: VueUiTreemapDatasetItem[]
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiTreemapDatasetItem[] = [
+    {
+        name: "Parent 1",
+        value: 100,
+        children: [
+            {
+                name: "P1 C1",
+                value: 70,
+            },
+            {
+                name: 'P1 C2',
+                value: 20
+            },
+            {
+                name: 'P1 C3',
+                value: 10,
+            },
+        ]
+    },
+    {
+        name: "Parent 2",
+        value: 110,
+        children: [
+            {
+                name: "P2 C1",
+                value: 80,
+            },
+            {
+                name: 'P2 C2',
+                value: 20
+            },
+            {
+                name: 'P2 C3',
+                value: 10,
+                children: [
+                    {
+                        name: "P2 C3 A",
+                        value: 4,
+                    },
+                    {
+                        name: 'P2 C3 B',
+                        value: 3
+                    },
+                    {
+                        name: 'P2 C3 C',
+                        value: 3,
+                    },
+                ]
+            },
+        ]
+    }
+]`)
 
 </script>
 
@@ -517,63 +568,24 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showTooltip :showThemes="false" showResponsive schema="vue_ui_treemap" signInfo="positiveOnly">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiTreemapDatasetItem[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         /> 
                 </div>
 
-                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-                    <pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiTreemapDatasetItem[]</span> = [
-    {
-        name: "Parent 1",
-        value: 100,
-        children: [
-            {
-                name: "P1 C1",
-                value: 70,
-            },
-            {
-                name: 'P1 C2',
-                value: 20
-            },
-            {
-                name: 'P1 C3',
-                value: 10,
-            },
-        ]
-    },
-    {
-        name: "Parent 2",
-        value: 110,
-        children: [
-            {
-                name: "P2 C1",
-                value: 80,
-            },
-            {
-                name: 'P2 C2',
-                value: 20
-            },
-            {
-                name: 'P2 C3',
-                value: 10,
-            },
-        ]
-    }
-]
-</code>
-</pre>
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />  
+
                 </div>
             </template>
 

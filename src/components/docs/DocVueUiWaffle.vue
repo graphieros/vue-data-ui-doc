@@ -42,20 +42,32 @@ const isDarkMode = computed(() => {
     const dataset = ref([
         {
             name: "Serie 1",
-            color: "#5f8bee",
-            values: [100]
+            values: [300, 1]
         },
         {
             name: "Serie 2",
-            color: "#42d392",
             values: [200]
         },
         {
             name: "Serie 3",
-            color: "#ff6400",
-            values: [300, 1]
+            values: [100]
         }
     ]);
+
+    const codeDataset = ref(`const dataset: VueUiWaffleDatasetItem[] = [
+        {
+            name: "Serie 1",
+            values: [300, 1]
+        },
+        {
+            name: "Serie 2",
+            values: [200]
+        },
+        {
+            name: "Serie 3",
+            values: [100]
+        }
+    ];`)
 
     const darkModeConfig = ref({
         responsive: false,
@@ -382,13 +394,11 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiWaffleDatasetItem = {
-        name: string
-        values: number[]
-        color?: string
-    }
-    `
+    return `type VueUiWaffleDatasetItem = {
+    name: string
+    values: number[]
+    color?: string
+}`
 })
 
 </script>
@@ -427,43 +437,24 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_waffle" signInfo="positiveOrNegativeOnly">
             <template v-slot:tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiWaffleDatasetItem[]</code>
-                </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         /> 
                 </div>
 
-                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiWaffleDatasetItem[]</span> = [
-    {
-        name: "Series 1",
-        color: <input type="color" v-model="mutableDataset[0].color">, 
-        values: [100]
-    },
-    {
-        name: "Series 2",
-        color: <input type="color" v-model="mutableDataset[1].color">,
-        values: [200]
-    },
-    {
-        name: "Series 1",
-        color: <input type="color" v-model="mutableDataset[2].color">,
-        values: [300, 1]
-    },
-]
-</code>
-</pre> 
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />  
                 </div>
             </template>
 

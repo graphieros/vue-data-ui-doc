@@ -452,13 +452,26 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-  return `
-  type VueUiHeatmapDatasetItem = {
-    name: string
-    values: number[]
-  }
-  `
+  return `type VueUiHeatmapDatasetItem = {
+  name: string
+  values: number[]
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
+    {
+        name: "Mon",
+        values: [31, 58, 12, 25, 13]
+    },
+    {
+        name: "Tue",
+        values: [3, 12, 7, 9, 15, 27]
+    },
+    {
+        name: "Wed",
+        values: [8, 9, 3, 18, 11, 7]
+    }
+];`)
 
 </script>
 
@@ -497,40 +510,25 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showTooltip showThemes schema="vue_ui_heatmap" signInfo="both">
             <template v-slot:tab0>
-              {{ translations.docs.datastructure[store.lang] }}
-              <div class="mt-4">
-                TS type: <code class="text-app-green">VueUiHeatmapDatasetItem[]</code>
-              </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
 
         <CodeParser
           language="typescript"
           @copy="store.copy()"
           :content="dsTypeCode"
+          :title="translations.docs.datastructure[store.lang]"
           class="my-6"
         />             
                 </div>
 
-                {{ translations.docs.example[store.lang] }}:
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiHeatmapDatasetItem[]</span> = [
-    {
-        name: "Mon",
-        values: [31, 58, 12, 25, 13]
-    },
-    {
-        name: "Tue",
-        values: [3, 12, 7, 9, 15, 27]
-    },
-    {
-        name: "Wed",
-        values: [8, 9, 3, 18, 11, 7]
-    }
-]
-</code>
-</pre>                
+
+      <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+      />                
                 </div>
             </template>
             <template v-slot:tab1>

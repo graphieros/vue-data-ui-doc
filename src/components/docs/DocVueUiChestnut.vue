@@ -41,7 +41,6 @@ const isDarkMode = computed(() => {
 const dataset = ref([
     {
     name: "Root1",
-    color: "#ff6400",
     branches: [
       {
         name: "branch 1.1",
@@ -111,7 +110,6 @@ const dataset = ref([
   },
   {
     name: "Root2",
-    color: "#5f8bee",
     branches: [
       {
         name: "branch 2.1",
@@ -180,7 +178,6 @@ const dataset = ref([
   },
   {
     name: "Root3",
-    color: "#42d392",
     branches: [
       {
         name: "branch 3.1",
@@ -686,75 +683,23 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-  return `
-  type VueUiChestnutDatasetRoot = {
-    name: string
-    color?: string
-    branches: Array<{
+  return `type VueUiChestnutDatasetRoot = {
+  name: string
+  color?: string
+  branches: Array<{
+    name: string;
+    value: number;
+    breakdown: Array<{
       name: string;
       value: number;
-      breakdown: Array<{
-        name: string;
-        value: number;
-        color?: string;
-      }>
+      color?: string;
     }>
-  }
-  `
+  }>
+}`
 })
 
-</script>
-
-<template>
-    <div>
-      <BaseDocTitle name="VueUiChestnut" />
-
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.chestnut[store.lang] }}
-        </p>
-
-        <BaseDocHeaderActions
-          targetLink="vue-ui-chestnut"
-          targetMaker="VueUiChestnut"
-          :configSource="mainConfig.vue_ui_chestnut"
-        />
-
-        <div :class="`transition-all mx-auto w-3/4`">
-          <DocSnapper
-            :isFixed="isFixed"
-            :disabled="!isFixed || isMobile"
-            @fixChart="fixChart"
-            @resetDefault="resetDefault"
-            @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-          >
-            <VueUiChestnut :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
-          </DocSnapper>
-        </div>
-
-        <Rater itemId="vue_ui_chestnut" />
-
-        <Box showEmits showSlots showThemes schema="vue_ui_chestnut" signInfo="positiveOnly">
-            <template v-slot:tab0>
-              {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                  TS type: <code class="text-app-green">VueUiChestnutDatasetRoot[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-
-          <CodeParser
-            language="typescript"
-            @copy="store.copy()"
-            :content="dsTypeCode"
-            class="my-6"
-        />  
-                </div>
-
-                {{ translations.docs.example[store.lang] }} :
-                <div class="w-full overflow-x auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiChestnutDatasetRoot[]</span> = [
-    {
+const codeDataset = ref(`const dataset: VueUiChestnutDatasetRoot[] = [
+  {
     name: "Root1",
     color: "#ff6400",
     branches: [
@@ -822,11 +767,59 @@ const <span class="text-black dark:text-app-green">dataset: VueUiChestnutDataset
         ]
       },
     ]
-  },
-  {...and so on}
-]
-</code>
-</pre>                
+  }
+];`)
+
+</script>
+
+<template>
+    <div>
+      <BaseDocTitle name="VueUiChestnut" />
+
+        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
+            {{ translations.docs.tooltips.chestnut[store.lang] }}
+        </p>
+
+        <BaseDocHeaderActions
+          targetLink="vue-ui-chestnut"
+          targetMaker="VueUiChestnut"
+          :configSource="mainConfig.vue_ui_chestnut"
+        />
+
+        <div :class="`transition-all mx-auto w-3/4`">
+          <DocSnapper
+            :isFixed="isFixed"
+            :disabled="!isFixed || isMobile"
+            @fixChart="fixChart"
+            @resetDefault="resetDefault"
+            @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+          >
+            <VueUiChestnut :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+          </DocSnapper>
+        </div>
+
+        <Rater itemId="vue_ui_chestnut" />
+
+        <Box showEmits showSlots showThemes schema="vue_ui_chestnut" signInfo="positiveOnly">
+            <template v-slot:tab0>
+                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+
+          <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
+            class="my-6"
+        />  
+                </div>
+
+                <div class="w-full overflow-x auto">
+      <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />            
                 </div>
             </template>
 

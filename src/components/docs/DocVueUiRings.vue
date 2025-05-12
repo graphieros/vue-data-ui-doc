@@ -42,27 +42,22 @@ const isDarkMode = computed(() => {
 const dataset = ref([
         {
             name: "Serie 1",
-            color: "#5f8bee",
             values: [100]
         },
         {
             name: "Serie 2",
-            color: "#42d392",
             values: [200]
         },
         {
             name: "Serie 3",
-            color: "#ff6400",
             values: [300, 1]
         },
         {
             name: "Serie 4",
-            color: "#f7e97c",
             values: [50, 1]
         },
         {
             name: "Serie 5",
-            color: "#42e9f5",
             values: [25, 1]
         }
     ]);
@@ -367,14 +362,35 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-  return `
-  type VueUiRingsDatasetItem = {
-    name: string
-    values: number[]
-    color?: string
-  }
-  `
+  return `type VueUiRingsDatasetItem = {
+  name: string
+  values: number[]
+  color?: string
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiRingsDatasetItem[] = [
+  {
+      name: "Serie 1",
+      values: [100]
+  },
+  {
+      name: "Serie 2",
+      values: [200]
+  },
+  {
+      name: "Serie 3",
+      values: [300, 1]
+  },
+  {
+      name: "Serie 4",
+      values: [50, 1]
+  },
+  {
+      name: "Serie 5",
+      values: [25, 1]
+  }
+];`)
 
 </script>
 
@@ -410,52 +426,24 @@ const dsTypeCode = computed(() => {
         <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_rings" signInfo="positiveOnly">
         
           <template #tab0>
-            {{ translations.docs.datastructure[store.lang] }}
-            <div class="mt-4">
-              TS type: <code class="text-app-green">VueUiRingsDatasetItem[]</code>
-            </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
           <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />  
 
-      {{ translations.docs.example[store.lang] }}
       <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiRingsDatasetItem[]</span> = [
-  {
-      name: "Serie 1",
-      color: "#5f8bee",
-      values: [100]
-  },
-  {
-      name: "Serie 2",
-      color: "#42d392",
-      values: [200]
-  },
-  {
-      name: "Serie 3",
-      color: "#ff6400",
-      values: [300, 1]
-  },
-  {
-      name: "Serie 4",
-      color: "#f7e97c",
-      values: [50, 1]
-  },
-  {
-      name: "Serie 5",
-      color: "#42e9f5",
-      values: [25, 1]
-  }
-]
-</code>
-</pre>      
+      <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+      />  
+    
       </div>
 
 </div>      
