@@ -39,7 +39,5 @@ const content = computed(() => {
         <code class="text-xl">{{ name }}</code>
         <div class="text-gray-500">{{ description }}</div>
     </div>
-    <div class="bg-[#2A2A2A] dark:bg-[#1A1A1A] py-4">
-        <CodeParser :content="content" language="javascript"/>
-    </div>
+    <CodeParser :content="content" language="javascript"/>
 </template>
