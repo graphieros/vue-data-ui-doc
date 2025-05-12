@@ -1188,6 +1188,7 @@ const gaugeConfig = computed(() => {
                             show: false,
                         },
                         pointer: {
+                            stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
                             circle: {
                                 radius: 18,
                                 stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
