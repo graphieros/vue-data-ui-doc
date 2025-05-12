@@ -450,15 +450,13 @@ const currentConfig = computed(() => {
 
         <Box showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline" signInfo="both">
             <template v-slot:tab0>
-              {{ translations.docs.datastructure[store.lang] }}
- 
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
     <CodeParser
       language="typescript"
       @copy="store.copy()"
-      :content="`
-type VueUiSparklineDatasetItem = {
+      :title="translations.docs.datastructure[store.lang]"
+      :content="`type VueUiSparklineDatasetItem = {
   period: string
   value: number
 }
@@ -466,18 +464,12 @@ type VueUiSparklineDatasetItem = {
       class="my-6"
     />
 
-    <!-- <CodeParser
-      language="javascript"
-      @copy="store.copy"
-      :content="datasetContent"
-      :title="translations.docs.example[store.lang]"
-    /> -->
-
                 <div class="w-full overflow-x-auto">
     <CodeParser
       language="typescript"
       @copy="store.copy()"
       :content="codeDataset"
+      :title="translations.docs.example[store.lang]"
     />              
                 </div>
                 </div>

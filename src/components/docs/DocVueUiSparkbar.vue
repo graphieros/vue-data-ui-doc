@@ -222,18 +222,38 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiSparkbarDatasetItem = {
-        name: string
-        value: number
-        prefix?: string // ${translations.value.docs.comments.onion.prefix[store.lang]}
-        suffix?: string // ${translations.value.docs.comments.onion.suffix[store.lang]}
-        rounding?: number
-        target?: number // ${translations.value.docs.comments.sparkbar.target[store.lang]}
-        formatter?: null | ({ value: number; config?: any }) => number | string // ${translations.value.formatterLink[store.lang]}
-    }
-    `
-})
+    return `type VueUiSparkbarDatasetItem = {
+    name: string
+    value: number
+    prefix?: string // ${translations.value.docs.comments.onion.prefix[store.lang]}
+    suffix?: string // ${translations.value.docs.comments.onion.suffix[store.lang]}
+    rounding?: number
+    target?: number // ${translations.value.docs.comments.sparkbar.target[store.lang]}
+    formatter?: null | ({ value: number; config?: any }) => number | string // ${translations.value.formatterLink[store.lang]}
+}
+`
+});
+
+const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
+    {
+        name: "quality",
+        value: 61.953,
+        rounding: 2,
+        suffix: "%",
+    },
+    {
+        name: "popularity",
+        value: 2.0412,
+        rounding: 2,
+        suffix: "%",
+    },
+    {
+        name: "maintenance",
+        value: 33.3291,
+        rounding: 2,
+        suffix: "%",
+    },
+];`)
 
 </script>
 
@@ -279,33 +299,16 @@ const dsTypeCode = computed(() => {
             @copy="store.copy()"
             :content="dsTypeCode"
             class="my-6"
+            :title="translations.docs.datastructure[store.lang]"
         />    
-        {{ translations.docs.example[store.lang] }}:
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiSparkbarDatasetItem[]</span> = [
-    {
-        name: "quality",
-        value: 61.953,
-        rounding: 2,
-        suffix: "%",
-    },
-    {
-        name: "popularity",
-        value: 2.0412,
-        rounding: 2,
-        suffix: "%",
-    },
-    {
-        name: "maintenance",
-        value: 33.3291,
-        rounding: 2,
-        suffix: "%",
-    },
-]
-</code>
-</pre>                
+
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />               
                 </div>
                 </div>
             </template>

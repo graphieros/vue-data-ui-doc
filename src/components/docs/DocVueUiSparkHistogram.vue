@@ -323,15 +323,88 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-  return `
-  type VueUiSparkHistogramDatasetItem = {
-    value: number
-    intensity?: number // (0 to 1)
-    valueLabel?: string
-    timeLabel?: string
-  }
-  `
+  return `type VueUiSparkHistogramDatasetItem = {
+  value: number
+  intensity?: number // (0 to 1)
+  valueLabel?: string
+  timeLabel?: string
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
+  {
+    value: 1.2,
+    valueLabel: "20%",
+    timeLabel: "09:00",
+    intensity: 0.2,
+  },
+  {
+    value: 1.3,
+    valueLabel: "50%",
+    timeLabel: "10:00",
+    intensity: 0.5,
+  },
+  {
+    value: 1.1,
+    valueLabel: "60%",
+    timeLabel: "11:00",
+    intensity: 0.6,
+  },
+  {
+    value: 0.8,
+    valueLabel: "70%",
+    timeLabel: "12:00",
+    intensity: 0.7,
+  },
+  {
+    value: 2,
+    valueLabel: "100%",
+    timeLabel: "13:00",
+    intensity: 1,
+  },
+  {
+    value: 2.1,
+    valueLabel: "100%",
+    timeLabel: "14:00",
+    intensity: 1,
+  },
+  {
+    value: 2.3,
+    valueLabel: "80%",
+    timeLabel: "15:00",
+    intensity: 0.8,
+  },
+  {
+    value: 2.1,
+    valueLabel: "70%",
+    timeLabel: "16:00",
+    intensity: 0.7,
+  },
+  {
+    value: 0.9,
+    valueLabel: "60%",
+    timeLabel: "17:00",
+    intensity: 0.6,
+  },
+  {
+    value: 0.7,
+    valueLabel: "50%",
+    timeLabel: "18:00",
+    intensity: 0.5,
+  },
+  {
+    value: 0.3,
+    valueLabel: "30%",
+    timeLabel: "19:00",
+    intensity: 0.3,
+  },
+  {
+    value: 0.2,
+    valueLabel: "20%",
+    timeLabel: "20:00",
+    intensity: 0.2,
+  }
+];`)
 
 </script>
 
@@ -379,99 +452,17 @@ const dsTypeCode = computed(() => {
       language="typescript"
       @copy="store.copy()"
       :content="dsTypeCode"
+      :title="translations.docs.datastructure[store.lang]"
       class="my-6"
     />   
-        {{ translations.docs.example[store.lang] }}:
+
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiSparkHistogramDatasetItem[]</span> = [
-    {
-        value: 1.2,
-        valueLabel: "20%",
-        timeLabel: "09:00",
-        intensity: 0.2,
-    },
-    {
-        value: 1.3,
-        valueLabel: "50%",
-        timeLabel: "10:00",
-        intensity: 0.5,
-
-    },
-    {
-        value: 1.1,
-        valueLabel: "60%",
-        timeLabel: "11:00",
-        intensity: 0.6,
-
-    },
-    {
-        value: 0.8,
-        valueLabel: "70%",
-        timeLabel: "12:00",
-        intensity: 0.7,
-
-    },
-    {
-        value: 2,
-        valueLabel: "100%",
-        timeLabel: "13:00",
-        intensity: 1,
-
-    },
-    {
-        value: 2.1,
-        valueLabel: "100%",
-        timeLabel: "14:00",
-        intensity: 1,
-
-    },
-    {
-        value: 2.3,
-        valueLabel: "80%",
-        timeLabel: "15:00",
-        intensity: 0.8,
-
-    },
-    {
-        value: 2.1,
-        valueLabel: "70%",
-        timeLabel: "16:00",
-        intensity: 0.7,
-
-    },
-    {
-        value: 0.9,
-        valueLabel: "60%",
-        timeLabel: "17:00",
-        intensity: 0.6,
-
-    },
-    {
-        value: 0.7,
-        valueLabel: "50%",
-        timeLabel: "18:00",
-        intensity: 0.5,
-
-    },
-    {
-        value: 0.3,
-        valueLabel: "30%",
-        timeLabel: "19:00",
-        intensity: 0.3,
-
-    },
-    {
-        value: 0.2,
-        valueLabel: "20%",
-        timeLabel: "20:00",
-        intensity: 0.2,
-
-    },
-]
-</code>
-</pre>                
+    <CodeParser
+      language="typescript"
+      @copy="store.copy()"
+      :content="codeDataset"
+      :title="translations.docs.example[store.lang]"
+    />               
                 </div>
                 </div>
             </template>

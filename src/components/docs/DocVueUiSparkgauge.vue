@@ -201,23 +201,20 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiSparkgaugeDataset = {
-        value: number
-        min: number
-        max: number
-        title?: string
-    }
-
-    // ${translations.value.docs.example[store.lang]}
-    const dataset = {
-        value: -8,
-        min: -10,
-        max: 10,
-        title: "KPI 1"
-    }
-    `
+    return `type VueUiSparkgaugeDataset = {
+    value: number
+    min: number
+    max: number
+    title?: string
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
+    value: -8,
+    min: -10,
+    max: 10,
+    title: "KPI 1"
+}`)
 
 </script>
 
@@ -260,18 +257,22 @@ const dsTypeCode = computed(() => {
 
         <Box showThemes showSlots schema="vue_ui_sparkgauge">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiSparkgaugeDataset</code>
-                </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
     <CodeParser
         language="typescript"
         @copy="store.copy()"
         :content="dsTypeCode"
+        :title="translations.docs.datastructure[store.lang]"
         class="my-6"
-    />                               
+    />  
+    
+    <CodeParser
+      language="typescript"
+      @copy="store.copy()"
+      :content="codeDataset"
+      :title="translations.docs.example[store.lang]"
+    />  
                 </div>
             </template>
             <template #tab1>

@@ -234,6 +234,24 @@ function randomizeData() {
   dataset.value[2].value = Math.random() * 100;
 }
 
+const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
+  {
+    name: "Vue",
+    value: 258,
+    color: "#42d392"
+  },
+  {
+    name: "Javascript",
+    value: 36,
+    color: "#ff9900"
+  },
+  {
+    name: "Other",
+    value: 16,
+    color: "#5f8bee"
+  }
+]`)
+
 </script>
 
 <template>
@@ -275,38 +293,23 @@ function randomizeData() {
   <CodeParser
     language="typescript"
     @copy="store.copy()"
-    :content="`
-    type VueUiSparkStackBarDatasetItem = {
-        name: string
-        value: number
-        color?: string
-    }
+    :title="translations.docs.datastructure[store.lang]"
+    :content="`type VueUiSparkStackBarDatasetItem = {
+  name: string
+  value: number
+  color?: string
+}
     `"
     class="my-6"
   />
-          {{ translations.docs.example[store.lang] }}:
+
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiSparkStackbarDatasetItem[]</span> = [
-    {
-        name: "Vue",
-        value: 258,
-        color: "#42d392"
-    },
-    {
-        name: "Javascript",
-        value: 36,
-        color: "#ff9900"
-    },
-    {
-        name: "Other",
-        value: 16,
-        color: "#5f8bee"
-    },
-]
-</code>
-</pre>                
+    <CodeParser
+      language="typescript"
+      @copy="store.copy()"
+      :content="codeDataset"
+      :title="translations.docs.example[store.lang]"
+    />               
                 </div>
                 </div>
             </template>

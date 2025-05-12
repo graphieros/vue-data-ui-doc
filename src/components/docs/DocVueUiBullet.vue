@@ -331,19 +331,39 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiBulletDataset = {
-        value: number
-        target: number
-        segments: Array<{
-            name: string;
-            from: number;
-            to: number;
-            color?: string
-        }>
-    }
-    `
+    return `type VueUiBulletDataset = {
+    value: number
+    target: number
+    segments: Array<{
+        name: string;
+        from: number;
+        to: number;
+        color?: string
+    }>
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiBulletDataset = {
+    value: 85,
+    target: 80,
+    segments: [
+        {
+            name: "Low",
+            from: 0,
+            to: 50,
+        },
+        {
+            name: "Medium",
+            from: 50,
+            to: 70,
+        },
+        {
+            name: "High",
+            from: 70,
+            to: 100,
+        },
+    ]
+}`)
 
 </script>
 
@@ -384,46 +404,25 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showThemes signInfo="both" schema="vue_ui_bullet">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiBulletDataset</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b my-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
 
     <CodeParser
         language="typescript"
         @copy="store.copy()"
         :content="dsTypeCode"
+        :title="translations.docs.datastructure[store.lang]"
         class="my-6"
     />   
                 </div>
-                {{ translations.docs.example[store.lang] }} :
+                
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiBulletDataset</span> = {
-    value: 85,
-    target: 80,
-    segments: [
-        {
-            name: "Low",
-            from: 0,
-            to: 50,
-        },
-        {
-            name: "Medium",
-            from: 50,
-            to: 70,
-        },
-        {
-            name: "High",
-            from: 70,
-            to: 100,
-        },
-    ],
-}
-</code>
-</pre>                    
+
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />                   
                 </div>
             </template>
 
