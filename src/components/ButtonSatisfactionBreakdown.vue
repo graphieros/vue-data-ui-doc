@@ -70,14 +70,16 @@ function open(state) {
                             :config="configRating"
                         />
                     </div>
-                    <!-- <VueUiSparkgauge :dataset="datasetGauge" :config="configGauge" /> -->
                 </div>
             </template>
             <template #popover-content>
-                <VueUiXy
-                    :dataset="datasetXy"
-                    :config="configXy"
-                />
+                <div>
+                    <VueUiGauge :dataset="datasetGauge" :config="configGauge" />
+                    <VueUiXy
+                        :dataset="datasetXy"
+                        :config="configXy"
+                    />
+                </div>
             </template>
         </BasePopoverButton>
     </div>

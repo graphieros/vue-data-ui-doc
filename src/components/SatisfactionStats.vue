@@ -997,6 +997,12 @@ const radarConfig = computed(() => {
     }
 })
 
+const gaugeConfig = computed(() => {
+    return {
+
+    }
+})
+
 </script>
 
 <template>
@@ -1144,14 +1150,11 @@ const radarConfig = computed(() => {
     <div class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10" v-if="ratings.length">
         <ButtonSatisfactionBreakdown v-for="c in ratings" :dataset-gauge="{
             value: c.average,
-            min: 1,
-            max: 5,
-            title: `${c.name
-                .split('_')
-                .map((w, _i) => {
-                    return capitalizeFirstLetter(w);
-                })
-                .join('')} (${c.raters})`,
+            series: [
+                { from: 1, to: 3, color: '#c97047' , name: 'BAD' },
+                { from: 3, to: 4, color: '#FFDD00', name: 'ACCEPTABLE' },
+                { from: 4, to: 5, color: '#54b840', name: 'VERY GOOD' }
+            ]
         }" 
             :total="c.raters"
             :datasetRating="{ rating: c.average }"
@@ -1171,25 +1174,35 @@ const radarConfig = computed(() => {
                 })
                 .join('')"
         :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')" :config-gauge="{
+            userOptions: { show: false },
             style: {
-                background: 'transparent',
-                basePosition: 64,
-                colors: {
-                    min: '#1f77b4',
-                    max: '#aec7e8',
-                },
-                dataLabel: {
-                    fontSize: 28,
-                    rounding: 1,
-                    offsetY: -3,
-                    suffix: ' ⭐'
-                },
-                gutter: {
-                    color: isDarkMode ? '#3A3A3A' : '#CCCCCC',
-                },
-                title: {
-                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                },
+                chart: {
+                    backgroundColor: 'transparent',
+                    layout: {
+                        indicatorArc: {
+                            show: true,
+                            fill: isDarkMode ? '#4A4A4A' : '#E1E5E8',
+                            radius: 100
+                        },
+                        markers: {
+                            show: false,
+                        },
+                        pointer: {
+                            circle: {
+                                radius: 18,
+                                stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
+                                color: isDarkMode ? '#5A5A5A' : '#8A8A8A'
+                            }
+                        },
+                        segmentNames: {
+                            fontSize: 24
+                        }
+                    },
+                    legend: {
+                        roundingValue: 2,
+                        fontSize: 63
+                    }
+                }
             },
         }" :config-xy="{
             ...ratingBreakdownBarConfig,

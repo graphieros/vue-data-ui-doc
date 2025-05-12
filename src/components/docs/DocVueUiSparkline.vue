@@ -20,6 +20,7 @@ import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import DocJsonConfigAccordion from "./DocJsonConfigAccordion.vue";
 
 const mainConfig = useConfig()
 
@@ -337,6 +338,81 @@ const datasetContent = computed(() => {
   `
 })
 
+const codeDataset = ref(`const dataset: VueUiSparklineDatasetItem[] = [
+  {
+    period: "period 1",
+    value: 0
+  },
+  {
+    period: "period 2",
+    value: -1
+  },
+  {
+    period: "period 3",
+    value: 2
+  },
+  {
+    period: "period 4",
+    value: -3
+  },
+  {
+    period: "period 5",
+    value: 4
+  },
+  {
+    period: "period 6",
+    value: -5
+  },
+  {
+    period: "period 7",
+    value: 6
+  },
+  {
+    period: "period 8",
+    value: -7
+  },
+  {
+    period: "period 9",
+    value: 8
+  },
+  {
+    period: "period 10",
+    value: -9
+  },
+  {
+    period: "period 11",
+    value: 10
+  },
+  {
+    period: "period 12",
+    value: -11
+  },
+  {
+    period: "period 13",
+    value: 12
+  },
+  {
+    period: "period 14",
+    value: -13
+  },
+  {
+    period: "period 15",
+    value: 14
+  },
+  {
+    period: "period 16",
+    value: -15
+  },
+  {
+    period: "period 17",
+    value: 16
+  },
+]`)
+
+const currentConfig = computed(() => {
+  return isDarkMode.value ? JSON.stringify(mutableConfigDarkMode.value, null, 2) : JSON.stringify(mutableConfig.value, null, 2)
+})
+
 </script>
 
 <template>
@@ -375,19 +451,17 @@ const datasetContent = computed(() => {
         <Box showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline" signInfo="both">
             <template v-slot:tab0>
               {{ translations.docs.datastructure[store.lang] }}
-              <div class="mt-4">
-                TS type: <code class="text-app-green">VueUiSparklineDatasetItem[]</code>
-              </div>
+ 
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
     <CodeParser
       language="typescript"
       @copy="store.copy()"
       :content="`
-      type VueUiSparklineDatasetItem = {
-        period: string
-        value: number
-      }
+type VueUiSparklineDatasetItem = {
+  period: string
+  value: number
+}
       `"
       class="my-6"
     />
@@ -400,80 +474,11 @@ const datasetContent = computed(() => {
     /> -->
 
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatasetItem[]</span> = [
-    {
-      period: "period 1",
-      value: 0
-    },
-    {
-      period: "period 2",
-      value: -1
-    },
-    {
-      period: "period 3",
-      value: 2
-    },
-    {
-      period: "period 4",
-      value: -3
-    },
-    {
-      period: "period 5",
-      value: 4
-    },
-    {
-      period: "period 6",
-      value: -5
-    },
-    {
-      period: "period 7",
-      value: 6
-    },
-    {
-      period: "period 8",
-      value: -7
-    },
-    {
-      period: "period 9",
-      value: 8
-    },
-    {
-      period: "period 10",
-      value: -9
-    },
-    {
-      period: "period 11",
-      value: 10
-    },
-    {
-      period: "period 12",
-      value: -11
-    },
-    {
-      period: "period 13",
-      value: 12
-    },
-    {
-      period: "period 14",
-      value: -13
-    },
-    {
-      period: "period 15",
-      value: 14
-    },
-    {
-      period: "period 16",
-      value: -15
-    },
-    {
-      period: "period 17",
-      value: 16
-    },
-]
-</code>
-</pre>                
+    <CodeParser
+      language="typescript"
+      @copy="store.copy()"
+      :content="codeDataset"
+    />              
                 </div>
                 </div>
             </template>
@@ -652,5 +657,12 @@ const <span class="text-black dark:text-app-green">dataset: VueUiSparklineDatase
               </ResponsiveUnit>
             </template>
         </Box>
+
+        <!-- <DocJsonConfigAccordion>
+          <template #content>
+            <CodeParser :content="currentConfig" language="javascript"/>
+          </template>
+        </DocJsonConfigAccordion> -->
+        
     </div>
 </template>
