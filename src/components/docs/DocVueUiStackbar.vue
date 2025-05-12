@@ -591,13 +591,31 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiStackbarDatasetItem = {
-        name: string
-        series: number[]
-    }
-    `
+    return `type VueUiStackbarDatasetItem = {
+    name: string
+    series: number[]
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
+    {
+        name: "Serie 1",
+        series: [19, 20.07, 30, 40, 50, 60],
+    },
+    {
+        name: "Serie 2",
+        series: [13, 8, 9, 13, 25, 27],
+    },
+    {
+        name: "Serie 3",
+        series: [13, 10, 9, 13, 25, 19],
+    },
+    {
+        name: "Serie 4",
+        series: [25, 23, 9, 13, 25, 31],
+
+    },
+]`)
 
 </script>
 
@@ -648,44 +666,25 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_stackbar" signInfo="both">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiStackbarDatasetItem[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b my-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />  
                 </div>
-                {{ translations.docs.example[store.lang] }} :
-                <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiStackbarDatasetItem[]</span> = [
-    {
-        name: "Serie 1",
-        series: [19, 20.07, 30, 40, 50, 60],
-    },
-    {
-        name: "Serie 2",
-        series: [13, 8, 9, 13, 25, 27],
-    },
-    {
-        name: "Serie 3",
-        series: [13, 10, 9, 13, 25, 19],
-    },
-    {
-        name: "Serie 4",
-        series: [25, 23, 9, 13, 25, 31],
 
-    },
-]
-</code>
-</pre>                    
+                <div class="w-full overflow-x-auto">
+
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />                   
                 </div>
             </template>
 

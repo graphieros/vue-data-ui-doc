@@ -475,17 +475,53 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiParallelCoordinatePlotDatasetItem = {
-        name: string
-        shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star"
-        series: Array<{
-            name: string;
-            values: number[]
-        }>
-    }
-    `
+    return `type VueUiParallelCoordinatePlotDatasetItem = {
+    name: string
+    shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star"
+    series: Array<{
+        name: string;
+        values: number[]
+    }>
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[] = [
+    {
+        name: "Series 1",
+        shape: "triangle",
+        series: [
+            {
+                name: 'Item 1.1',
+                values: [1200, 300, 12, 1.2]
+            },
+            {
+                name: 'Item 1.2',
+                values: [1000, 100, 10, 1]
+            },
+            {
+                name: 'Item 1.3',
+                values: [-800, 85, 8.5, 0.85]
+            },
+        ]
+    },
+    {
+        name: "Series 2",
+        series: [
+            {
+                name: 'Item 2.1',
+                values: [2300, 230, 23, 2.3]
+            },
+            {
+                name: 'Item 2.2',
+                values: [2500, 250, 25, 2.5]
+            },
+            {
+                name: 'Item 2.3',
+                values: [2800, 280, 28, 2.8]
+            },
+        ]
+    }
+]`)
 
 </script>
 
@@ -527,62 +563,25 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_parallel_coordinate_plot" signInfo="both">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiParallelCoordinatePlotDatasetItem[]</code>
-                </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
+            :title="translations.docs.datastructure[store.lang]"
             :content="dsTypeCode"
             class="my-6"
         />  
                 </div>
-                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-                    <pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiParallelCoordinatePlotDatasetItem[]</span> = [
-    {
-        name: "Series 1",
-        shape: "triangle",
-        series: [
-            {
-                name: 'Item 1.1',
-                values: [1200, 300, 12, 1.2]
-            },
-            {
-                name: 'Item 1.2',
-                values: [1000, 100, 10, 1]
-            },
-            {
-                name: 'Item 1.3',
-                values: [-800, 85, 8.5, 0.85]
-            },
-        ]
-    },
-    {
-        name: "Series 2",
-        series: [
-            {
-                name: 'Item 2.1',
-                values: [2300, 230, 23, 2.3]
-            },
-            {
-                name: 'Item 2.2',
-                values: [2500, 250, 25, 2.5]
-            },
-            {
-                name: 'Item 2.3',
-                values: [2800, 280, 28, 2.8]
-            },
-        ]
-    },
-]
-</code>
-</pre>
+
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />  
+
                 </div>
             </template>
             <template #tab1>

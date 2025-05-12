@@ -418,14 +418,31 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiDonutEvolutionDatasetItem = {
-        name: string
-        values: number[]
-        color?: string
-    }
-    `
+    return `type VueUiDonutEvolutionDatasetItem = {
+    name: string
+    values: number[]
+    color?: string
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
+    {
+        name: "Serie 1",
+        values: [55, 34, 21, 13, 8, 5, 8, 13, 21, 34, 55 ],
+    },
+    {
+        name: "Serie 2",
+        values: [1, 12, 24, 32, 5, 8, 13, 21, 34, 55, 89 ]
+    },
+    {
+        name: "Serie 3",
+        values: [16, 2, 3, 5, 28, 13, 21, 34, 55, 89, 134 ]
+    },
+    {
+        name: "Serie 4",
+        values: [5, null, 5, 5, 5, 5 ]
+    }
+]`)
 
 </script>
 
@@ -459,47 +476,28 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showThemes schema="vue_ui_donut_evolution" signInfo="positiveOnly">
             <template #tab0>
-            
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiDonutEvolutionDatasetItem[]</code>
-                </div>
 
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         /> 
 
                 </div>
 
-                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiDonutEvolutionDatasetItem[]</span> = [
-    {
-        name: "Serie 1",
-        values: [55, 34, 21, 13, 8, 5, 8, 13, 21, 34, 55 ],
-    },
-    {
-        name: "Serie 2",
-        values: [1, 12, 24, 32, 5, 8, 13, 21, 34, 55, 89 ]
-    },
-    {
-        name: "Serie 3",
-        values: [16, 2, 3, 5, 28, 13, 21, 34, 55, 89, 134 ]
-    },
-    {
-        name: "Serie 4",
-        values: [5, null, 5, 5, 5, 5 ]
-    }
-]
-</code>
-</pre>
+
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />  
+
                 </div>
             </template>
 

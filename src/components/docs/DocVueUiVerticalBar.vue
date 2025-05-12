@@ -485,18 +485,63 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-  return `
-  type VueUiVerticalBarDatasetItem = {
-        name: string;
-        value: number;
-        color: string; // ${translations.value.docs.comments.xy.color[store.lang]}
-        children: Array<{  // ${translations.value.docs.comments.verticalBar.breakdown[store.lang]}
-          name: string;
-          value: number;
-        }>
-    }
-  `
+  return `type VueUiVerticalBarDatasetItem = {
+  name: string;
+  value: number;
+  color: string; // ${translations.value.docs.comments.xy.color[store.lang]}
+  children: Array<{  // ${translations.value.docs.comments.verticalBar.breakdown[store.lang]}
+    name: string;
+    value: number;
+  }>
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiVerticalBarDatasetItem[] = [
+  {
+    name: "Serie 1",
+    value: 100,
+    children: [
+      {
+        name: "serie 1 child 1",
+        value: 80
+      },
+      {
+        name: "serie 1 child 2",
+        value: 20
+      },
+    ]
+  },
+  {
+    name: "Serie 2",
+    value: 345,
+  },
+  {
+    name: "Serie 3",
+    value: 210,
+  },
+  {
+    name: "Serie 4",
+    value: 188,
+  },
+  {
+    name: "Serie 5",
+    value: 120,
+    children: [
+      {
+        name: "Serie 5 child 1",
+        value: 60,
+    },
+      {
+        name: "Serie 5 child 2",
+        value: 20,
+      },
+      {
+        name: "Serie 5 child 3",
+        value: 40,
+      },
+    ]
+  }
+]`)
 
 </script>
 
@@ -535,71 +580,25 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_vertical_bar" signInfo="both">
             <template v-slot:tab0>
-              {{ translations.docs.datastructure[store.lang] }}
-              <div class="mt-4">
-                TS type: <code class="text-app-green">VueUiVerticalBarDatasetItem[]</code>
-              </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
           <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />  
                 </div>
-                {{ translations.docs.example[store.lang] }}:
+
                 <div class="w-full overflow-x auto">
-<pre>
-<code>
-const <span class="text-app-green">dataset: VueUiVerticalBarDatasetItem[]</span> = [
-    {
-        name: "Serie 1",
-        value: 100,
-        children: [
-        {
-            name: "serie 1 child 1",
-            value: 80
-        },
-        {
-            name: "serie 1 child 2",
-            value: 20
-        },
-        ]
-    },
-    {
-        name: "Serie 2",
-        value: 345,
-    },
-    {
-        name: "Serie 3",
-        value: 210,
-    },
-    {
-        name: "Serie 4",
-        value: 188,
-    },
-    {
-        name: "Serie 5",
-        value: 120,
-        children: [
-        {
-            name: "Serie 5 child 1",
-            value: 60,
-        },
-        {
-            name: "Serie 5 child 2",
-            value: 20,
-        },
-        {
-            name: "Serie 5 child 3",
-            value: 40,
-        },
-        ]
-    }
-]
-</code>
-</pre>                
+
+    <CodeParser
+      language="typescript"
+      @copy="store.copy()"
+      :content="codeDataset"
+      :title="translations.docs.example[store.lang]"
+    />                
                 </div>
             </template>
             <template v-slot:tab1>

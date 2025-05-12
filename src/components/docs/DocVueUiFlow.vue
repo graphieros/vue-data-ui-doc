@@ -16,6 +16,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -51,6 +52,24 @@ const dataset = ref([
     ['C2', 'D2', 2],
     ['C3', 'D2', 1],
 ]);
+
+const codeDataset = ref(`const dataset: VueUiFlowDatasetItem[] = [
+    ['A1', 'B1', 10],
+    ['A1', 'B2', 10],
+    ['B1', 'C1', 5],
+    ['B1', 'C2', 5],
+    ['B1', 'C3', 5],
+    ['B1', 'C4', 5],
+    ['A2', 'B1', 10],
+    ['B2', 'C5', 10],
+    ['C3', 'D1', 2],
+    ['C4', 'D1', 2],
+    ['C5', 'D1', 2],
+    ['C2', 'D2', 2],
+    ['C3', 'D2', 1],
+]`)
+
+const dsTypeCode = ref(`type VueUiFlowDatasetItem = [string, string, number]`)
 
 const config = ref({
     userOptions: {
@@ -330,41 +349,24 @@ const { configCode, showAllConfig } = useConfigCode()
 
         <Box showSlots showThemes showEmits schema="vue_ui_flow" signInfo="positiveOnly">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiFlowDatasetItem[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700 mt-4">
-<pre>
-<code>
-    [
-        [ string, string, number ],
-        [...]
-    ]
-</code>
-</pre>
-                </div>
-                {{ translations.docs.example[store.lang] }} :
+
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :title="translations.docs.datastructure[store.lang]"
+            :content="dsTypeCode"
+            class="my-6"
+        />  
+
+
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiFlowDatasetItem[]</span> = [
-    ['A1', 'B1', 10],
-    ['A1', 'B2', 10],
-    ['B1', 'C1', 5],
-    ['B1', 'C2', 5],
-    ['B1', 'C3', 5],
-    ['B1', 'C4', 5],
-    ['A2', 'B1', 10],
-    ['B2', 'C5', 10],
-    ['C3', 'D1', 2],
-    ['C4', 'D1', 2],
-    ['C5', 'D1', 2],
-    ['C2', 'D2', 2],
-    ['C3', 'D2', 1],
-]
-</code>
-</pre>                    
+
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />                  
                 </div>
             </template>
 

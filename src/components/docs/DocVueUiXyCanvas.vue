@@ -561,25 +561,50 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-  return `
-  type VueUiXyCanvasDatasetItem = {
-      name: string;
-      series: number[];
-      type?: "line" | "bar" | "plot";
-      useArea?: boolean;
-      dataLabels?: boolean;
-      scaleSteps?: number;
-      prefix?: string;
-      suffix?: string;
-      rounding?: number;
-      autoScaling?: boolean;
-      stackRatio?: number; // if used on all datapoints, must sum up to 1
-      scaleMin?: number; // applied in stack mode
-      scaleMax?: number; // applied in stack mode
-      showYMarker?: boolean; // if true, will show a marker on Y axis with the value at hovered index
-  }
-  `
+  return `type VueUiXyCanvasDatasetItem = {
+    name: string;
+    series: number[];
+    type?: "line" | "bar" | "plot";
+    useArea?: boolean;
+    dataLabels?: boolean;
+    scaleSteps?: number;
+    prefix?: string;
+    suffix?: string;
+    rounding?: number;
+    autoScaling?: boolean;
+    stackRatio?: number; // if used on all datapoints, must sum up to 1
+    scaleMin?: number; // applied in stack mode
+    scaleMax?: number; // applied in stack mode
+    showYMarker?: boolean; // if true, will show a marker on Y axis with the value at hovered index
+}`
 })
+
+const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
+  {
+    name: "Series 1",
+    series: [-55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
+    type: "bar",
+    color: "rgb(95,139,238)",
+    scaleSteps: 5,
+    dataLabels: false
+  },
+  {
+    name: "Series 2",
+    series: [55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],
+    type: "line",
+    color: "rgb(66,211,146)",
+    useArea: true,
+    dataLabels: false,
+    scaleSteps: 5,
+  },
+  {
+    name: "Series 3",
+    series: [64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],
+    type: "plot",
+    color: "rgb(255,100,0)",
+    scaleSteps: 5,
+  }, 
+]`)
 
 </script>
 
@@ -628,52 +653,24 @@ const dsTypeCode = computed(() => {
     <Box showEmits showSlots showUseCases showThemes showTooltip showResponsive schema="vue_ui_xy_canvas"
       signInfo="both">
       <template #tab0>
-        {{ translations.docs.datastructure[store.lang] }}
-        <div>
-          TS type:
-          <code class="text-app-green">VueUiXyCanvasDatasetItem[]</code>
-        </div>
         <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
           <CodeParser
             language="typescript"
             @copy="store.copy()"
+            :title="translations.docs.datastructure[store.lang]"
             :content="dsTypeCode"
             class="my-6"
         />    
         </div>
 
-        {{ translations.docs.example[store.lang] }} :
         <div class="w-full overflow-x-auto">
-          <pre class="break-words">
-<code class="break-words">
-const <span class="text-black dark:text-app-green">dataset: VueUiXyCanvasDatasetItem[]</span> = [
-    {
-        name: "Series 1",
-        series: [-55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
-        type: "bar",
-        color: "rgb(95,139,238)",
-        scaleSteps: 5,
-        dataLabels: false
-    },
-    {
-        name: "Series 2",
-        series: [55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],
-        type: "line",
-        color: "rgb(66,211,146)",
-        useArea: true,
-        dataLabels: false,
-        scaleSteps: 5,
-    },
-    {
-        name: "Series 3",
-        series: [64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],
-        type: "plot",
-        color: "rgb(255,100,0)",
-        scaleSteps: 5,
-    },  
-]
-</code>
-</pre>
+
+    <CodeParser
+      language="typescript"
+      @copy="store.copy()"
+      :content="codeDataset"
+      :title="translations.docs.example[store.lang]"
+    />  
         </div>
       </template>
 

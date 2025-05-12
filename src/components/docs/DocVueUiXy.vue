@@ -111,6 +111,38 @@ const dataset = computed(() => {
 ]
 })
 
+const codeDataset = ref(`const dataset: VueUiXyDatasetItem[] = [
+    {
+        name: "Series 1",
+        series: [ 12, 25, 32, 64, 34, 26],
+        type: "bar",
+        color: "#1f77b4",
+        shape: 'circle',
+        scaleSteps: 5,
+    },
+    {
+        name: "Series 2",
+        series: [ 8, 20, 27, 48, 27, 20],
+        type: "bar",
+        color: "#aec7e8",
+        shape: "star",
+        scaleSteps: 5,
+        showSerieName: 'end'
+    },
+    {
+        name: "Series 3",
+        series: [75, 82, 80, 72, 90, 100],
+        type: "line",
+        color: "#ff7f0e",
+        useArea: false,
+        dataLabels: false,
+        smooth: true,
+        shape: "circle",
+        scaleSteps: 5,
+        showSerieName: 'end'
+    },
+]`)
+
 const config = ref({
     responsive: false,
     useCssAnimation: true,
@@ -805,31 +837,29 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiXyDatasetItem = {
-        name: string
-        series: number[]
-        type: "bar" | "line" | "plot"
-        // ${translations.value.docs.comments.xy.type[store.lang]}
-        color?: string // ${translations.value.docs.comments.xy.color[store.lang]}
-        dashed?: boolean // ${translations.value.docs.comments.xy.dashed[store.lang]}
-        useTag?: "start" | "end" // ${translations.value.docs.comments.xy.useTag[store.lang]}
-        dataLabels?: boolean // ${translations.value.docs.comments.xy.dataLabels[store.lang]}
-        useProgression?: boolean // ${translations.value.docs.comments.xy.useProgression[store.lang]}
-        useArea?: boolean // ${translations.value.docs.comments.xy.area[store.lang]}
-        smooth?: boolean // ${translations.value.docs.comments.xy.smooth[store.lang]}
-        shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star" // ${translations.value.docs.comments.xy.shape[store.lang]}
-        scaleSteps?: number // ${translations.value.docs.comments.xy.scaleSteps[store.lang]}
-        scaleLabel?: string // ${translations.value.docs.comments.xy.scaleLabel[store.lang]}
-        scaleMax?: number // ${translations.value.docs.comments.xy.scaleMax[store.lang]}
-        scaleMin?: number // ${translations.value.docs.comments.xy.scaleMin[store.lang]}
-        autoScaling?: boolean // ${translations.value.docs.comments.xy.autoScaling[store.lang]}
-        stackRatio?: number // (0 to 1) ${translations.value.docs.comments.xy.stackRatio[store.lang]}
-        showSerieName?: "start" | "end" // ${translations.value.docs.comments.xy.showSerieName[store.lang]}
-        prefix?: string // since v2.3.83
-        suffix?: string // since v2.3.83
-    }
-    `
+    return `type VueUiXyDatasetItem = {
+    name: string
+    series: number[]
+    type: "bar" | "line" | "plot"
+    // ${translations.value.docs.comments.xy.type[store.lang]}
+    color?: string // ${translations.value.docs.comments.xy.color[store.lang]}
+    dashed?: boolean // ${translations.value.docs.comments.xy.dashed[store.lang]}
+    useTag?: "start" | "end" // ${translations.value.docs.comments.xy.useTag[store.lang]}
+    dataLabels?: boolean // ${translations.value.docs.comments.xy.dataLabels[store.lang]}
+    useProgression?: boolean // ${translations.value.docs.comments.xy.useProgression[store.lang]}
+    useArea?: boolean // ${translations.value.docs.comments.xy.area[store.lang]}
+    smooth?: boolean // ${translations.value.docs.comments.xy.smooth[store.lang]}
+    shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star" // ${translations.value.docs.comments.xy.shape[store.lang]}
+    scaleSteps?: number // ${translations.value.docs.comments.xy.scaleSteps[store.lang]}
+    scaleLabel?: string // ${translations.value.docs.comments.xy.scaleLabel[store.lang]}
+    scaleMax?: number // ${translations.value.docs.comments.xy.scaleMax[store.lang]}
+    scaleMin?: number // ${translations.value.docs.comments.xy.scaleMin[store.lang]}
+    autoScaling?: boolean // ${translations.value.docs.comments.xy.autoScaling[store.lang]}
+    stackRatio?: number // (0 to 1) ${translations.value.docs.comments.xy.stackRatio[store.lang]}
+    showSerieName?: "start" | "end" // ${translations.value.docs.comments.xy.showSerieName[store.lang]}
+    prefix?: string // since v2.3.83
+    suffix?: string // since v2.3.83
+}`
 })
 
 const cssContent = `
@@ -902,70 +932,23 @@ const cssContent = `
         <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive showPatterns schema="vue_ui_xy" signInfo="both">
             <template v-slot:tab0>
 
-            {{ translations.docs.datastructure[store.lang] }}
-            <div>
-                TS type: <code class="text-app-green">VueUiXyDatasetItem[]</code>
-            </div>
             <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="mt-6"
         />     
             </div>
 
-            {{ translations.docs.example[store.lang] }} :
             <div class="w-full overflow-x-auto">
-                    
-<pre class="break-words">
-<code class="break-words">
-const <span class="text-black dark:text-app-green">dataset: VueUiXyDatasetItem[]</span> = [
-    {
-        name: <span class="text-app-blue">"Series 1",</span>
-        series: <span class="text-app-blue">[-55, -34, -21, -13, -8, -5, -3, -2, -1, -1, 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],</span>
-        type:<span class="text-app-blue"><select v-model="mutableDataset[0].type">
-            <option>bar</option>
-            <option>line</option>
-            <option>plot</option>
-        </select>,</span>
-        color: <span class="text-app-blue">"rgb(95,139,238)",</span>
-        <template v-if="['line', 'plot'].includes(mutableDataset[0].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[0].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
-        scaleSteps: 10,
-        scaleLabel: "Blue circles"
-    },
-    {
-        name: <span class="text-app-green">"Series 2",</span>
-        series: <span class="text-app-green">[55, 34, 21, 13, 8, 5, 3, 2, 1, 1, 0, -1, -1, -2, -3, -5, -8, -13, -21, -34, -55],</span>
-        type:<span class="text-app-green"><select v-model="mutableDataset[1].type">
-            <option>bar</option>
-            <option>line</option>
-            <option>plot</option>
-        </select>,</span>
-        color: <span class="text-app-green">"rgb(66,211,146)"</span>
-        useProgression: <span class="text-app-green">true,</span>
-        dataLabels: <span class="text-app-green">false,</span>
-        useArea: <span class="text-app-green">true</span>
-        <template v-if="['line', 'plot'].includes(mutableDataset[1].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[1].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
-        scaleSteps: 10,
-        scaleLabel: "Triangles"
-    },
-    {
-        name: <span class="text-app-orange">"Series 3",</span>
-        series: <span class="text-app-orange">[64, 60, 52, 42, 30, 16, 0, -18, -38, -46, -50, -46, -38, -18, 0, 16, 30, 42, 52, 60, 64],</span>
-        type:<span class="text-app-orange"><select v-model="mutableDataset[2].type">
-            <option>bar</option>
-            <option>line</option>
-            <option>plot</option>
-        </select>,</span>
-        color: <span class="text-app-orange">"rgb(255,100,0)"</span>
-        <template v-if="['line', 'plot'].includes(mutableDataset[2].type)">shape: <span class="text-app-blue"><select v-model="mutableDataset[2].shape"><option v-for="opt in shapeOptions">{{ opt }}</option></select></span> <span class="text-gray-500">// {{ translations.docs.comments.xy.shape[store.lang] }}</span></template>
-        scaleSteps: 10,
-        scaleLabel: "Plots"
-    },
-];
-</code>
-</pre>
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />  
             </div>
                 </template>
 

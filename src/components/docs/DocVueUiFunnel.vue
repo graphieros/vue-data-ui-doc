@@ -380,13 +380,34 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiFunnelDatasetItem = {
-        name: string
-        value: number
-    }
-    `
+    return `type VueUiFunnelDatasetItem = {
+    name: string
+    value: number
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiFunnelDatasetItem[] = [
+    {
+        name: "Lead",
+        value: 8249,
+    },
+    {
+        name: "Opportunity",
+        value: 6322,
+    },
+    {
+        name: "Qualified",
+        value: 4562,
+    },
+    {
+        name: "Sold",
+        value: 3021,
+    },
+    {
+        name: "Retained",
+        value: 1412,
+    },
+]`)
 
 </script>
 
@@ -425,47 +446,23 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showThemes showResponsive schema="vue_ui_funnel" signInfo="positiveOnly">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiFunnelDatasetItem[]</code>
-                </div>
                 <div class="w-full overflow-x-auto border-b my-6 border-gray-700">
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
+            :title="translations.docs.datastructure[store.lang]"
             :content="dsTypeCode"
             class="my-6"
         /> 
 
                 </div>
-                {{ translations.docs.example[store.lang] }} :
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiFunnelDatasetItem[]</span> = [
-    {
-        name: "Lead",
-        value: 8249,
-    },
-    {
-        name: "Opportunity",
-        value: 6322,
-    },
-    {
-        name: "Qualified",
-        value: 4562,
-    },
-    {
-        name: "Sold",
-        value: 3021,
-    },
-    {
-        name: "Retained",
-        value: 1412,
-    },
-]
-</code>
-</pre>
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />  
             </template>
 
             <template #tab1>

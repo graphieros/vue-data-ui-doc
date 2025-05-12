@@ -532,17 +532,36 @@ function forceChartUpdate() {
 }
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiHistoryPlotDatasetItem = {
-        name: string
-        values: Array<{
-            x: number;
-            y: number;
-            label: string
-        }>
-    }
-    `
+    return `type VueUiHistoryPlotDatasetItem = {
+    name: string
+    values: Array<{
+        x: number;
+        y: number;
+        label: string
+    }>
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
+    {
+        name: "Series 1",
+        values: [
+            { x: 355, y: 2.3, label: "January" },
+            { x: 112, y: 1.2, label: "February" },
+            { x: 313, y: 0.4, label: "March" },
+            { x: 555, y: 1.2, label: "April" },
+        ],
+    },
+    {
+        name: "Series 2",
+        values: [
+            { x: 1000, y: 2, label: "January" },
+            { x: 655, y: 4, label: "February" },
+            { x: 350, y: 3, label: "March" },
+            { x: 815, y: 2.5, label: "April" },
+        ],
+    },
+]`)
 
 </script>
 
@@ -581,45 +600,26 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showThemes showResponsive showTooltip signInfo="both" schema="vue_ui_history_plot">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiHistoryPlotDatasetItem[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />                  
                 </div>
-                {{ translations.docs.example[store.lang] }} :
+
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiHistoryPlotDatasetItem[]</span> = [
-    {
-        name: "Series 1",
-        values: [
-            { x: 355, y: 2.3, label: "January" },
-            { x: 112, y: 1.2, label: "February" },
-            { x: 313, y: 0.4, label: "March" },
-            { x: 555, y: 1.2, label: "April" },
-        ],
-    },
-    {
-        name: "Series 2",
-        values: [
-            { x: 1000, y: 2, label: "January" },
-            { x: 655, y: 4, label: "February" },
-            { x: 350, y: 3, label: "March" },
-            { x: 815, y: 2.5, label: "April" },
-        ],
-    },
-]
-</code>
-</pre>                    
+
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />  
+                  
                 </div>
             </template>
 
