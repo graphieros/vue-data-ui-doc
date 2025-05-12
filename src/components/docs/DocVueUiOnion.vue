@@ -45,7 +45,6 @@ const dataset = ref([
         name: "Serie 1",
         percentage: 21,
         value: 1200,
-        color: "#5f8bee",
         prefix: "",
         suffix: "",
     },
@@ -53,7 +52,6 @@ const dataset = ref([
         name: "Serie 2",
         percentage: 34,
         value: 1000,
-        color: "#ff6400",
         prefix: "",
         suffix: "",
     },
@@ -66,7 +64,6 @@ const dataset = ref([
     },
     {
         name: "Serie 4",
-        color: "#42d392",
         percentage: 79,
         value: 1280,
         prefix: "",
@@ -443,17 +440,38 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiOnionDatasetItem = {
-        name: string
-        percentage: number // 0 - 100
-        value: number
-        color?: string
-        prefix?: string
-        suffix?: string
-    }
-    `
+    return `type VueUiOnionDatasetItem = {
+    name: string
+    percentage: number // 0 - 100
+    value: number
+    color?: string
+    prefix?: string
+    suffix?: string
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiOnionDatasetItem[] = [
+    {
+        name: "Serie 1",
+        percentage: 21,
+        value: 1200,
+    },
+    {
+        name: "Serie 2",
+        percentage: 34,
+        value: 1000,
+    },
+    {
+        name: "Serie 3",
+        percentage: 55,
+        value: 500
+    },
+    {
+        name: "Serie 4",
+        percentage: 79,
+        value: 1280
+    }
+];`)
 
 </script>
 
@@ -498,51 +516,24 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_onion" signInfo="positiveOnly">
             <template v-slot:tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiOnionDatasetItem[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
 
         <CodeParser
-            language="javascript"
+            language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />                
                 </div>
 
-                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiOnionDatasetItem[]</span> = [
-    {
-        name: "Serie 1",
-        percentage: 21,
-        value: 1200,
-        color: "#5f8bee"
-    },
-    {
-        name: "Serie 2",
-        percentage: 34,
-        value: 1000,
-        color: "#ff6400"
-    },
-    {
-        name: "Serie 3",
-        percentage: 55,
-        value: 500
-    },
-    {
-        name: "Serie 4",
-        color: "#42d392",
-        percentage: 79,
-        value: 1280
-    }
-];
-</code>
-</pre>                
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+    />               
             </div>
             </template>
             <template v-slot:tab1>

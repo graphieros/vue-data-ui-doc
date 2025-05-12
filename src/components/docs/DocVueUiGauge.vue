@@ -389,20 +389,62 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiGaugeDataset = {
-        value: number
-        base?: number
-        series: Array<{
-            from: number;
-            to: number;
-            color?: string;
-            name?: string;
-            nameOffsetRatio?: number // example: 1.1
-        }>
-    }
-    `
+    return `type VueUiGaugeDataset = {
+    value: number
+    base?: number
+    series: Array<{
+        from: number;
+        to: number;
+        color?: string;
+        name?: string;
+        nameOffsetRatio?: number // example: 1.1
+    }>
+}`
 })
+
+const codeDataset1 = ref(`const dataset: VueUiGaugeDataset = {
+    base: 12250,
+    value: 4.2,
+    series: [
+        {
+            from: 1,
+            to: 3,
+            color: "#ff6400",
+            name: 'bad'
+        },
+        {
+            from: 3,
+            to: 4,
+            color: "#5f8bee",
+            name: 'acceptable'
+        },
+        {
+            from: 4,
+            to: 5,
+            color: "#42d392",
+            name: 'very good'
+        },
+    ]
+};`)
+
+const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
+    base: 21200,
+    value: -42,
+    series: [
+        {
+            from: -100,
+            to: 0,
+            color: "#ff6400",
+            name: 'critical'
+        },
+        {
+            from: 0,
+            to: 100,
+            color: "#42d392",
+            name: 'nominal'
+        },
+    ]
+}`)
 
 </script>
 
@@ -448,76 +490,34 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showThemes showResponsive showPatterns schema="vue_ui_gauge">
             <template v-slot:tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiGaugeDataset</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
 
         <CodeParser
             language="javascript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />                 
                 </div>
 
-                {{ translations.docs.example[store.lang] }} 1:
                 <div class="w-full overflow-x auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiGaugeDataset</span> = {
-    base: 12250,
-    value: 4.2,
-    series: [
-        {
-            from: 1,
-            to: 3,
-            color: "#ff6400",
-            name: 'bad'
-        },
-        {
-            from: 3,
-            to: 4,
-            color: "#5f8bee",
-            name: 'acceptable'
-        },
-        {
-            from: 4,
-            to: 5,
-            color: "#42d392",
-            name: 'very good'
-        },
-    ]
-}
-</code>
-</pre>                
+    <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset1"
+        :title="translations.docs.example[store.lang] + ' 1'"
+    />  
+    <CodeParser
+        class="mt-6"
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset2"
+        :title="translations.docs.example[store.lang] + ' 2'"
+    />  
+
                 </div>
-                {{ translations.docs.example[store.lang] }}  2:
-                <div class="w-full overflow-x auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset</span> = {
-    base: 21200,
-    value: -42,
-    series: [
-        {
-            from: -100,
-            to: 0,
-            color: "#ff6400",
-            name: 'critical'
-        },
-        {
-            from: 0,
-            to: 100,
-            color: "#42d392",
-            name: 'nominal'
-        },
-    ]
-}
-</code>
-</pre>               
-                </div>
+
             </template>
             <template v-slot:tab1>
                 <div class="flex gap-2">
