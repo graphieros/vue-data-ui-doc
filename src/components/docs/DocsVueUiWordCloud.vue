@@ -20,6 +20,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -338,6 +339,35 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const dsTypeCode = ref(`type VueUiWordCloudDatasetItem = {
+    name: string
+    value: number
+}`)
+
+const codeDataset1 = ref(`const dataset: VueUiWordCloudDatasetItem[] = [
+    { name: 'lorem', value: 100 },
+    { name: 'ipsum', value: 65 },
+    { name: 'dolor', value: 80 },
+    { name: 'sit', value: 86 },
+    { name: 'amet', value: 32 },
+];`)
+
+const codeDataset2 = computed(() => {
+    return `
+    // ${translations.value.wordCloud.dataset[store.lang]}
+    
+    import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
+
+    const plainText = "orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar pretium venenatis. Donec imperdiet elit id porttitor tristique. Aenean ac commodo justo. Vestibulum placerat molestie nisl, sit amet lacinia nulla posuere quis. Aenean ullamcorper eu ex vitae facilisis. Aliquam erat volutpat. Proin nunc felis, porttitor quis commodo lacinia, gravida sed orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus mattis vitae tellus ac luctus. Vestibulum faucibus sem nec varius eleifend. In gravida venenatis ipsum sit amet ultricies.";
+
+    const dataset = createWordCloudDatasetFromPlainText(plainText)
+        .sort((a, b) => b.value - a.value);
+
+    // An optional callback can also be passed to the function to format text output:
+    const uppercaseDataset = createWordCloudDatasetFromPlainText(plainText, word => word.toUpperCase())
+        .sort((a, b) => b.value - a.value);`
+})
+
 </script>
 
 <template>
@@ -380,38 +410,29 @@ const { configCode, showAllConfig } = useConfigCode()
 
         <Box showSlots showEmits showThemes showResponsive schema="vue_ui_word_cloud">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiWordCloudDatasetItem[] | string</code>
-                </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-                    <pre>
-<code>
-    [
-        {
-            name: string;
-            value: number;
-        },
-        {...}
-    ]
-</code>
-</pre>
-                    <div>
-                        {{ translations.wordCloud.dataset[store.lang] }}
-                    </div>
-                    <pre>
-<code>
-    import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
 
-    const plainText = "Lorem ipsum dolor sit amet";
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
+            class="my-6"
+        />
 
-    const dataset = ref(createWordCloudDatasetFromPlainText(plainText).sort((a, b) => b.value - a.value));
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset1"
+            :title="translations.docs.example[store.lang]"
+        />   
 
-    // An optional callback can also be passed to the function to format text output:
-    const uppercaseDataset = ref(createWordCloudDatasetFromPlainText(plainText, word => word.toUpperCase()).sort((a, b) => b.value - a.value))
-
-</code>
-</pre>
+        <CodeParser
+            class="mt-6"
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset2"
+        />   
                 </div>
             </template>
 
