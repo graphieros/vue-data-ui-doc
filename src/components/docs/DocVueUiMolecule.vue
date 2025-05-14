@@ -443,65 +443,15 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiMoleculeDatasetNode = {
-        name: string
-        details?: string
-        nodes?: VueUiMoleculeDatasetNode[]
-        color?: string // since v2.6.41
-    }
-    `
-})
+    return `type VueUiMoleculeDatasetNode = {
+    name: string
+    details?: string
+    nodes?: VueUiMoleculeDatasetNode[]
+    color?: string // since v2.6.41
+}`
+});
 
-</script>
-
-<template>
-    <div>
-        <BaseDocTitle name="VueUiMolecule" />
-
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.molecule[store.lang] }}
-        </p>
-
-        <BaseDocHeaderActions
-            targetLink="vue-ui-molecule"
-            :configSource="mainConfig.vue_ui_molecule"
-        />
-
-        <div :class="`transition-all mx-auto w-1/2`">
-            <DocSnapper
-                :isFixed="isFixed"
-                :disabled="!isFixed || isMobile"
-                @fixChart="fixChart"
-                @resetDefault="resetDefault"
-                @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-            >
-                <VueUiMolecule :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
-            </DocSnapper>
-        </div>
-
-        <Rater itemId="vue_ui_molecule" />
-
-        <Box showEmits showSlots showTooltip>
-            <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiMoleculeDatasetNode[]</code>
-                </div>
-
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-
-        <CodeParser
-            language="typescript"
-            @copy="store.copy()"
-            :content="dsTypeCode"
-            class="my-6"
-        />               
-                {{ translations.docs.example[store.lang] }} :
-                <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiMoleculeDatasetNode[]</span> = [
+const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
     {
         name: "Root",
         details: "This is the root node",
@@ -588,7 +538,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiMoleculeDataset
                                             { name: 'node2.1.6.6.4' },
                                             { name: 'node2.1.6.6.5' },
                                             {
-                                                name: 'node2.1.6.6.6', nodes: [
+                                                name: 'node2.1.6.6.6', 
+                                                nodes: [
                                                     { name: 'node2.1.6.6.6.1' },
                                                     { name: 'node2.1.6.6.6.2' },
                                                     { name: 'node2.1.6.6.6.3' },
@@ -653,9 +604,56 @@ const <span class="text-black dark:text-app-green">dataset: VueUiMoleculeDataset
             },
         ]
     }
-]
-</code>
-</pre>                
+]`)
+
+</script>
+
+<template>
+    <div>
+        <BaseDocTitle name="VueUiMolecule" />
+
+        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
+            {{ translations.docs.tooltips.molecule[store.lang] }}
+        </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-molecule"
+            :configSource="mainConfig.vue_ui_molecule"
+        />
+
+        <div :class="`transition-all mx-auto w-1/2`">
+            <DocSnapper
+                :isFixed="isFixed"
+                :disabled="!isFixed || isMobile"
+                @fixChart="fixChart"
+                @resetDefault="resetDefault"
+                @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+            >
+                <VueUiMolecule :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </DocSnapper>
+        </div>
+
+        <Rater itemId="vue_ui_molecule" />
+
+        <Box showEmits showSlots showTooltip>
+            <template #tab0>
+                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
+            class="my-6"
+        />               
+
+                <div class="w-full overflow-x-auto">
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset"
+            :title="translations.docs.example[store.lang]"
+        />                
                 </div>
                 </div>
             </template>

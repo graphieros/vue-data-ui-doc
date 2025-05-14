@@ -557,20 +557,61 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-  return `
-  type VueUiScatterDatasetItem = {
-    name: string
-    color?: string // ${translations.value.docs.comments.xy.color[store.lang]}
-    shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star" // default: "circle"
-    values: Array<{
-      x: number
-      y: number
-      name?: string
-      weight?: number // ${translations.value.docs.comments.scatterWeight[store.lang]}
-    }>
+  return `type VueUiScatterDatasetItem = {
+  name: string
+  color?: string // ${translations.value.docs.comments.xy.color[store.lang]}
+  shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star" // default: "circle"
+  values: Array<{
+    x: number
+    y: number
+    name?: string
+    weight?: number // ${translations.value.docs.comments.scatterWeight[store.lang]}
+  }>
+}`
+});
+
+const codeDataset = ref(`const dataset: VueUiScatterDatasetItem[] = [
+  {
+    name: "Cluster 1",
+    values: [
+      {
+        x: 1,
+        y: 1,
+        name: "Cluster 1 point 1"
+      },
+      {
+        x: 0,
+        y: -1,
+        name: "Cluster 1 point 2"
+      },
+      {
+        x: 2,
+        y: 3,
+        name: "Cluster 1 point 3"
+      },
+    ]
+},
+{
+    name: "Cluster 2",
+    values: [
+      {
+        x: -5,
+        y: -4,
+        name: "Cluster 2 point 1"
+      },
+      {
+        x: 13,
+        y: 8,
+        name: "Cluster 2 point 2"
+      },
+      {
+        x: -2,
+        y: -7,
+        name: "Cluster 2 point 3"
+      },
+    ]
   }
-  `
-})
+];`);
 
 </script>
 
@@ -608,67 +649,24 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_scatter" signInfo="both">
             <template v-slot:tab0>
-              {{ translations.docs.datastructure[store.lang] }}
-              <div class="mt-4">
-                TS type: <code class="text-app-green">VueUiScatterDatasetItem[]</code>
-              </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
 
           <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
-        />                
+          />                
                 </div>
-                {{ translations.docs.example[store.lang] }} :
+
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiScatterDatasetItem[]</span> = [
-    {
-        name: "Cluster 1",
-        values: [
-            {
-                x: 1,
-                y: 1,
-                name: "Cluster 1 point 1"
-            },
-            {
-                x: 0,
-                y: -1,
-                name: "Cluster 1 point 2"
-            },
-            {
-                x: 2,
-                y: 3,
-                name: "Cluster 1 point 3"
-            },
-        ]
-    },
-    {
-        name: "Cluster 2",
-        values: [
-            {
-                x: -5,
-                y: -4,
-                name: "Cluster 2 point 1"
-            },
-            {
-                x: 13,
-                y: 8,
-                name: "Cluster 2 point 2"
-            },
-            {
-                x: -2,
-                y: -7,
-                name: "Cluster 2 point 3"
-            },
-        ]
-    }
-]
-</code>
-</pre>                
+          <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset"
+            :title="translations.docs.example[store.lang]"
+          />  
                 </div>
             </template>
             <template v-slot:tab1>

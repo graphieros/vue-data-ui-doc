@@ -567,19 +567,96 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiQuadrantDatasetItem = {
+    return `type VueUiQuadrantDatasetItem = {
+    name: string
+    shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star" // default: "circle"
+    color?: string
+    series: Array<{
         name: string
-        shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star" // default: "circle"
-        color?: string
-        series: Array<{
-            name: string
-            x: number
-            y: number
-        }>
+        x: number
+        y: number
+    }>
+}`
+});
+
+const codeDataset = ref(`const dataset: VueUiQuadrantDatasetItem[] = [
+    {
+        name: "Stars",
+        shape: "star",
+        color: "#5f8bee",
+        series: [
+            {
+                name: "Star 1",
+                x: 50,
+                y: 50
+            },
+            {
+                name: "Star 2",
+                x: -10,
+                y: -10
+            },
+            {
+                name: "Star 3",
+                x: -15,
+                y: 20
+            },
+            {
+                name: "Star 4",
+                x: 15,
+                y: -20
+            },
+        ]
+    },
+    {
+        name: "Triangles",
+        shape: "triangle",
+        color: "#42d392",
+        series: [
+            {
+                name: "Triangle 1",
+                x: -50,
+                y: -50
+            },
+            {
+                name: "Triangle 2",
+                x: 25,
+                y: -25
+            },
+            {
+                name: "Triangle 3",
+                x: -25,
+                y: 25
+            },
+            {
+                name: "Triangle 4",
+                x: 10,
+                y: 10
+            }
+        ]
+    },
+    {
+        name: "Hexagons",
+        shape: "hexagon",
+        color: "#ff6400",
+        series: [
+            {
+                name: "Hexagon 1",
+                x: -39,
+                y: 39
+            },
+            {
+                name: "Hexagon 2",
+                x: -2,
+                y: 45
+            },
+            {
+                name: "Hexagon 3",
+                x: -15,
+                y: 30
+            },
+        ]
     }
-    `
-})
+]`)
 
 </script>
 
@@ -614,103 +691,23 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_quadrant" signInfo="both">
             <template v-slot:tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiQuadrantDatasetItem[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
         <CodeParser
-            language="javascript"
+            language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         /> 
                 </div>
 
-                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-                    <pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiQuadrantDatasetItem[]</span> = [
-    {
-        name: "Stars",
-        shape: <select v-model="mutableDataset[0].shape"><option v-for="shape in shapes" :value="shape">{{ shape }}</option></select>,
-        color: <input type="color" v-model="mutableDataset[0].color">,
-        series: [
-            {
-                name: "Star 1",
-                x: 50,
-                y: 50
-            },
-            {
-                name: "Star 2",
-                x: -10,
-                y: -10
-            },
-            {
-                name: "Star 3",
-                x: -15,
-                y: 20
-            },
-            {
-                name: "Star 4",
-                x: 15,
-                y: -20
-            },
-        ]
-  },
-  {
-    name: "Triangles",
-    shape: <select v-model="mutableDataset[1].shape"><option v-for="shape in shapes" :value="shape">{{ shape }}</option></select>,
-    color: <input type="color" v-model="mutableDataset[1].color">,
-        series: [
-            {
-                name: "Triangle 1",
-                x: -50,
-                y: -50
-            },
-            {
-                name: "Triangle 2",
-                x: 25,
-                y: -25
-            },
-            {
-                name: "Triangle 3",
-                x: -25,
-                y: 25
-            },
-            {
-                name: "Triangle 4",
-                x: 10,
-                y: 10
-            }
-        ]
-  },
-  {
-    name: "Hexagons",
-    shape: <select v-model="mutableDataset[2].shape"><option v-for="shape in shapes" :value="shape">{{ shape }}</option></select>,
-    color: <input type="color" v-model="mutableDataset[2].color">,
-    series: [
-        {
-            name: "Hexagon 1",
-            x: -39,
-            y: 39
-        },
-        {
-            name: "Hexagon 2",
-            x: -2,
-            y: 45
-        },
-        {
-            name: "Hexagon 3",
-            x: -15,
-            y: 30
-        },
-    ]
-  },
-]
-</code>
-</pre>
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset"
+            :title="translations.docs.example[store.lang]"
+        />  
                 </div>
             </template>
 
