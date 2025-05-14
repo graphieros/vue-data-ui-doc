@@ -429,14 +429,21 @@ watch(() => showAllConfig.value, (v) => {
 })
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiDumbbellDataset = {
-        name: string
-        start: number
-        end: number
-    }
-    `
-})
+    return `type VueUiDumbbellDataset = {
+    name: string
+    start: number
+    end: number
+}`
+});
+
+const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
+    { name: 'Sweden', start: 5000, end: 7100 },
+    { name: 'Korea, Rep.', start: 4900, end: 7050 },
+    { name: 'Iceland', start: 6500, end: 8000 },
+    { name: 'Finland', start: 6400, end: 7600 },
+    { name: 'Norway', start: 5400, end: 6050 },
+    { name: 'Ireland', start: 3000, end: 2000 }
+];`)
 
 </script>
 
@@ -469,32 +476,24 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showThemes showResponsive schema="vue_ui_dumbbell" signInfo="both">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
                 <div>
-                    TS type: <code class="text-app-green">VueUiDumbbellDataset[]</code>
-                    <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                    <div class="w-full overflow-x-auto">
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />                       
                     </div>
-                    {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiDumbbellDataset[]</span> = [
-    { name: 'Sweden', start: 5000, end: 7100 },
-    { name: 'Korea, Rep.', start: 4900, end: 7050 },
-    { name: 'Iceland', start: 6500, end: 8000 },
-    { name: 'Finland', start: 6400, end: 7600 },
-    { name: 'Norway', start: 5400, end: 6050 },
-    { name: 'Ireland', start: 3000, end: 2000 }
-]
-</code>
-</pre>                    
+            <CodeParser
+                language="typescript"
+                @copy="store.copy()"
+                :content="codeDataset"
+                :title="translations.docs.example[store.lang]"
+            />                   
                 </div>
                 </div>
             </template>

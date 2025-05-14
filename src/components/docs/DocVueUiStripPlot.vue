@@ -485,70 +485,16 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiStripPlotDataset = {
+    return `type VueUiStripPlotDataset = {
+    name: string
+    plots: Array<{
         name: string
-        plots: Array<{
-            name: string
-            value: number
-        }>
-    }
-    `
-})
+        value: number
+    }>
+}`
+});
 
-</script>
-
-<template>
-    <div>
-        <BaseDocTitle name="VueUiStripPlot" />
-
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.stripPlot[store.lang] }}
-        </p>
-
-        <BaseDocHeaderActions
-            targetLink="vue-ui-strip-plot"
-            targetMaker="VueUiStripPlot"
-            :configSource="mainConfig.vue_ui_strip_plot"
-        />
-
-        <div :class="`transition-all mx-auto w-1/2`">
-            <DocSnapper
-                :isFixed="isFixed"
-                :disabled="!isFixed || isMobile"
-                @fixChart="fixChart"
-                @resetDefault="resetDefault"
-                @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-            >
-                <VueUiStripPlot :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
-            </DocSnapper>
-        </div>
-
-        <div class="w-full flex justify-center mt-6">
-            <BaseViewExampleButton link="/examples/categories#vue-ui-strip-plot"/>
-        </div>
-
-        <Rater itemId="vue_ui_strip_plot" />
-
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_strip_plot" signInfo="both">
-            <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div>
-                    TS type: <code class="text-app-green">VueUiStripPlotDataset[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-        <CodeParser
-            language="typescript"
-            @copy="store.copy()"
-            :content="dsTypeCode"
-            class="my-6"
-        /> 
-                </div>
-                {{ translations.docs.example[store.lang] }} :
-                <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiStripPlotDataset[]</span> = [
+const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
     {
         name: "Asia",
         plots: [
@@ -623,10 +569,62 @@ const <span class="text-black dark:text-app-green">dataset: VueUiStripPlotDatase
             { name: "Newcastle-Maitland", value: 0.5 },
             { name: "Canberra", value: 0.46 },
         ]
-    },
-]
-</code>
-</pre>                    
+    }
+]`)
+
+</script>
+
+<template>
+    <div>
+        <BaseDocTitle name="VueUiStripPlot" />
+
+        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
+            {{ translations.docs.tooltips.stripPlot[store.lang] }}
+        </p>
+
+        <BaseDocHeaderActions
+            targetLink="vue-ui-strip-plot"
+            targetMaker="VueUiStripPlot"
+            :configSource="mainConfig.vue_ui_strip_plot"
+        />
+
+        <div :class="`transition-all mx-auto w-1/2`">
+            <DocSnapper
+                :isFixed="isFixed"
+                :disabled="!isFixed || isMobile"
+                @fixChart="fixChart"
+                @resetDefault="resetDefault"
+                @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+            >
+                <VueUiStripPlot :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </DocSnapper>
+        </div>
+
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-strip-plot"/>
+        </div>
+
+        <Rater itemId="vue_ui_strip_plot" />
+
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_strip_plot" signInfo="both">
+            <template #tab0>
+                <div class="w-full overflow-x-auto">
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
+            class="my-6"
+        /> 
+                </div>
+
+                <div class="w-full overflow-x-auto">
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset"
+            :title="translations.docs.example[store.lang]"
+        />                   
                 </div>
             </template>
             <template #tab1>
