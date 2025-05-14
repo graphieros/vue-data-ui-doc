@@ -440,22 +440,76 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiRadarDataset = {
-        categories: Array<{
-            name: string
-            color?: string
-        }>
-        // ${translations.value.docs.comments.radar.polygon[store.lang]}
-        series: Array<{
-            name: string
-            values: number[] // ${translations.value.docs.comments.radar.seriesValues[store.lang]}
-            target: number[] // ${translations.value.docs.comments.radar.target[store.lang]}
-            formatter?: null // ${translations.value.formatterLink[store.lang]}
-        }>
-    }
-    `
-})
+    return `type VueUiRadarDataset = {
+    categories: Array<{
+        name: string
+        color?: string
+    }>
+    // ${translations.value.docs.comments.radar.polygon[store.lang]}
+    series: Array<{
+        name: string
+        values: number[] // ${translations.value.docs.comments.radar.seriesValues[store.lang]}
+        target: number[] // ${translations.value.docs.comments.radar.target[store.lang]}
+        formatter?: null // ${translations.value.formatterLink[store.lang]}
+    }>
+}`
+});
+
+const codeDataset = ref(`const dataset: VueUiRadarDataset = {
+    categories: [
+        {
+            name: "category 1",
+            color: "#5f8bee"
+        },
+        {
+            name: "category 2",
+            color: "#42d392"
+        },
+        {
+            name: "category 3",
+            color: "#ff6400"
+        }
+    ],
+    // Each serie can have its own scale using the target attribute, so you can represent all types of data relations (revenue, satisfaction, percentages...)
+    series: [
+        {
+            name: "Serie 1",
+            values: [65, 45, 12],
+            color: "",
+            target: 100
+        },
+        {
+            name: "Serie 2",
+            values: [2525, 3472, 4950],
+            color: "",
+            target: 10000
+        },
+        {
+            name: "Serie 3",
+            values: [4.7, 1, 3],
+            color: "",
+            target: 5
+        },
+        {
+            name: "Serie 4",
+            values: [400, 250, 325],
+            color: "",
+            target: 500
+        },
+        {
+            name: "Serie 5",
+            values: [5, 9, 7],
+            color: "",
+            target: 10
+        },
+        {
+            name: "Serie 6",
+            values: [6, 7, 10],
+            color: "",
+            target: 10
+        },
+    ]
+}`)
 
 </script>
 
@@ -500,81 +554,26 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_radar" signInfo="both">
             <template v-slot:tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiRadarDataset</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+
+                <div class="w-full overflow-x-auto">
+
         <CodeParser
-            language="javascript"
+            language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />  
 
                 </div>
 
-                {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-                    <pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiRadarDataset</span> = {
-    categories: [
-        {
-            name: "category 1",
-            color: "#5f8bee"
-        },
-        {
-            name: "category 2",
-            color: "#42d392"
-        },
-        {
-            name: "category 3",
-            color: "#ff6400"
-        }
-    ],
-    <span class="text-gray-600 dark:text-app-green">// {{ translations.docs.comments.radar.scale[store.lang] }}</span>
-    series: [
-        {
-            name: "Serie 1",
-            values: [65, 45, 12],
-            color: "",
-            target: 100
-        },
-        {
-            name: "Serie 2",
-            values: [2525, 3472, 4950],
-            color: "",
-            target: 10000
-        },
-        {
-            name: "Serie 3",
-            values: [4.7, 1, 3],
-            color: "",
-            target: 5
-        },
-        {
-            name: "Serie 4",
-            values: [400, 250, 325],
-            color: "",
-            target: 500
-        },
-        {
-            name: "Serie 5",
-            values: [5, 9, 7],
-            color: "",
-            target: 10
-        },
-        {
-            name: "Serie 6",
-            values: [6, 7, 10],
-            color: "",
-            target: 10
-        },
-    ]
-}
-</code>
-</pre>
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset"
+            :title="translations.docs.example[store.lang]"
+        /> 
                 </div>
             </template>
 

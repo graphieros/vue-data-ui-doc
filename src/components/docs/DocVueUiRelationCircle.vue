@@ -334,16 +334,101 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-  return `
-  type VueUiRelationCircleDatasetItem = {
-    id: string | number
-    label: string
-    relations: (string | number)[] // ${translations.value.docs.comments.relationCircle.relations[store.lang]}
-    weights?: number[] // ${translations.value.docs.comments.relationCircle.weight[store.lang] }
-    color?: string
-  }
-  `
+  return `type VueUiRelationCircleDatasetItem = {
+  id: string | number
+  label: string
+  relations: (string | number)[] // ${translations.value.docs.comments.relationCircle.relations[store.lang]}
+  weights?: number[] // ${translations.value.docs.comments.relationCircle.weight[store.lang] }
+  color?: string
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
+  {
+    id: "01",
+    label: "Lorem",
+    relations: ["02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+    weights: [5, 3, 10, 2, 9, 3, 1, 2, 3, 7, 1],
+    color: "#eb4034",
+  },
+  {
+      id: "02",
+      label: "Ipsum",
+      relations: ["01", "03", "07", "06", "07"],
+      weights: [3, 2, 9, 7, 1],
+      color: "#e0992d",
+  },
+  {
+      id: "03",
+      label: "Dolor",
+      relations: ["01", "02"],
+      weights: [2, 5],
+      color: "#decc2c",
+  },
+  {
+      id: "04",
+      label: "Consectetur",
+      relations: ["01", "05", "10"],
+      weights: [2, 1, 4],
+      color: "#a8de2a",
+  },
+  {
+      id: "05",
+      label: "Amet",
+      relations: ["01", "04", "07", "10"],
+      weights: [2, 3, 4, 5],
+      color: "#5ed622",
+  },
+  {
+      id: "06",
+      label: "Rherum",
+      relations: ["01", "02"],
+      weights: [4, 1],
+      color: "#21d92d",
+  },
+  {
+      id: "07",
+      label: "Delecta",
+      relations: ["01", "02", "08", "12"],
+      weights: [4, 8, 2, 1],
+      color: "#23d97b",
+  },
+  {
+      id: "08",
+      label: "Nitimur",
+      relations: ["01", "07", "12", "01"],
+      weights: [7, 3, 2, 3],
+      color: "#29d6c2",
+  },
+  {
+      id: "09",
+      label: "Vetitum",
+      relations: ["01"],
+      weights: [1],
+      color: "#2aacdb",
+  },
+  {
+      id: "10",
+      label: "Monumentum",
+      relations: ["01", "04", "05"],
+      weights: [4, 1, 4],
+      color: "#295bd9",
+  },
+  {
+      id: "11",
+      label: "Aere",
+      relations: ["01"],
+      weights: [3],
+      color: "#523ed6",
+  },
+  {
+      id: "12",
+      label: "Perennius",
+      relations: ["01", "07", "08"],
+      weights: [8, 1, 1],
+      color: "#8235db",
+  }
+]`)
 
 </script>
 
@@ -381,112 +466,26 @@ const dsTypeCode = computed(() => {
 
     <Box showEmits showSlots showThemes showResponsive schema="vue_ui_relation_circle">
       <template v-slot:tab0>
-        {{ translations.docs.datastructure[store.lang] }}
-        <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-        <div class="mt-4">
-          TS type: <code class="text-app-green">VueUiRelationCircleDatasetItem[]</code>
-        </div>
+        <div class="w-full overflow-x-auto">
 
         <CodeParser
-            language="javascript"
+            language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         /> 
+      </div>
 
-          {{ translations.docs.example[store.lang] }} :
           <div class="w-full overflow-x-auto">
-            <pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiRelationCircleDatasetItem[]</span> = [
-    {
-        id: "01",
-        label: "Lorem",
-        relations: ["02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
-        weights: [5, 3, 10, 2, 9, 3, 1, 2, 3, 7, 1],
-        color: "#eb4034",
-    },
-    {
-        id: "02",
-        label: "Ipsum",
-        relations: ["01", "03", "07", "06", "07"],
-        weights: [3, 2, 9, 7, 1],
-        color: "#e0992d",
-    },
-    {
-        id: "03",
-        label: "Dolor",
-        relations: ["01", "02"],
-        weights: [2, 5],
-        color: "#decc2c",
-    },
-    {
-        id: "04",
-        label: "Consectetur",
-        relations: ["01", "05", "10"],
-        weights: [2, 1, 4],
-        color: "#a8de2a",
-    },
-    {
-        id: "05",
-        label: "Amet",
-        relations: ["01", "04", "07", "10"],
-        weights: [2, 3, 4, 5],
-        color: "#5ed622",
-    },
-    {
-        id: "06",
-        label: "Rherum",
-        relations: ["01", "02"],
-        weights: [4, 1],
-        color: "#21d92d",
-    },
-    {
-        id: "07",
-        label: "Delecta",
-        relations: ["01", "02", "08", "12"],
-        weights: [4, 8, 2, 1],
-        color: "#23d97b",
-    },
-    {
-        id: "08",
-        label: "Nitimur",
-        relations: ["01", "07", "12", "01"],
-        weights: [7, 3, 2, 3],
-        color: "#29d6c2",
-    },
-    {
-        id: "09",
-        label: "Vetitum",
-        relations: ["01"],
-        weights: [1],
-        color: "#2aacdb",
-    },
-    {
-        id: "10",
-        label: "Monumentum",
-        relations: ["01", "04", "05"],
-        weights: [4, 1, 4],
-        color: "#295bd9",
-    },
-    {
-        id: "11",
-        label: "Aere",
-        relations: ["01"],
-        weights: [3],
-        color: "#523ed6",
-    },
-    {
-        id: "12",
-        label: "Perennius",
-        relations: ["01", "07", "08"],
-        weights: [8, 1, 1],
-        color: "#8235db",
-    }
-];
-</code>
-</pre>
-          </div>
+
+      <CodeParser
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
+      />  
+
         </div>
       </template>
 
