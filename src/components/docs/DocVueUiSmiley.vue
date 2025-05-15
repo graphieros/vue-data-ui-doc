@@ -13,6 +13,7 @@ import BaseComment from "../BaseComment.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -247,6 +248,27 @@ const defaultValueTranslation = ref({
     ar: 'القيمة الافتراضية:'
 })
 
+const dsTypeCode = ref(`type VueUiRatingDataset = {
+    rating: number | {
+        "1": number
+        "2": number
+        "3": number
+        "4": number
+        "5": number
+    }
+}`)
+
+const codeDataset1 = ref(`const dataset: VueUiRatingDataset = { rating: 3.6 }`);
+const codeDataset2 = ref(`const dataset: VueUiRatingDataset = {
+    rating: {
+        "1": 146,
+        "2": 225,
+        "3": 3920,
+        "4": 1050,
+        "5": 2125,
+    }
+};`);
+
 const { configCode, showAllConfig } = useConfigCode()
 
 </script>
@@ -295,34 +317,30 @@ const { configCode, showAllConfig } = useConfigCode()
 
         <Box showEmits>
             <template v-slot:tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiRatingDataset</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-                    <pre>
-<code>
-<span class="text-gray-500">
-// {{ translations.docs.comments.rating.simpleRating[store.lang] }} :
-</span>
-const <span class="text-black dark:text-app-green">dataset: VueUiRatingDataset</span> = { rating: 3.6 };
 
-<span class="text-gray-500">
-// {{ translations.docs.comments.rating.breakdown[store.lang] }} :
-</span>
-const <span class="text-black dark:text-app-green">dataset: VueUiRatingDataset</span> = {
-    rating: {
-        "1": 146,
-        "2": 225,
-        "3": 3920,
-        "4": 1050,
-        "5": 2125
-    }
-};
-<span class="text-gray-500">// {{ translations.docs.comments.rating.calculation[store.lang] }} 
-// {{ translations.docs.comments.rating.tooltip[store.lang] }}</span>
-</code>
-</pre>
+                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
+            class="my-6"
+        />  
+
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset1"
+            :title="translations.docs.comments.rating.simpleRating[store.lang]"
+            class="my-6"
+        />    
+
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset2"
+            :title="translations.docs.comments.rating.breakdown[store.lang]"
+        />  
                 </div>
             </template>
 
