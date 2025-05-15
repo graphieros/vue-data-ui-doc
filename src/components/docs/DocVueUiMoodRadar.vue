@@ -16,6 +16,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -43,6 +44,22 @@ const dataset = ref({
     "4": 256,
     "5": 384
 })
+
+const dsTypeCode = ref(`type VueUiMoodRadarDataset = {
+    "1": number
+    "2": number
+    "3": number
+    "4": number
+    "5": number
+}`)
+
+const codeDataset = ref(`const dataset: VueUiMoodRadarDataset = {
+    "1": 96,
+    "2": 64,
+    "3": 128,
+    "4": 256,
+    "5": 384,
+};`)
 
 const darkModeConfig = ref({
     style: {
@@ -364,35 +381,23 @@ const { configCode, showAllConfig } = useConfigCode()
 
         <Box showEmits showSlots showThemes schema="vue_ui_mood_radar" signInfo="positiveOnly">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiMoodRadarDataset</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-<pre>
-<code>
-    {
-        "1": number;
-        "2": number;
-        "3": number;
-        "4": number;
-        "5": number;
-    }
-</code>
-</pre>      {{ translations.docs.example[store.lang] }} :
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-    const <span class="text-black dark:text-app-green">dataset: VueUiMoodRadarDataset</span> = {
-        "1": 96,
-        "2": 64,
-        "3": 128,
-        "4": 256,
-        "5": 384
-    }
-</code>
-</pre>                
-                </div>
+
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
+            class="my-6"
+        />               </div>
+                <div class="w-full overflow-x-auto">
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset"
+            :title="translations.docs.example[store.lang]"
+        />                
+   
                 </div>
             </template>
 

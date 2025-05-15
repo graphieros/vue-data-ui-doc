@@ -210,15 +210,46 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `
-    type VueUiTableHeatmapDatasetItem = {
-        name: string
-        values: (number | string)[]
-        color?: string
-        shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star"
-    }
-    `
+    return `type VueUiTableHeatmapDatasetItem = {
+    name: string
+    values: (number | string)[]
+    color?: string
+    shape?: "circle" | "triangle" | "square" | "diamond" | "pentagon" | "hexagon" | "star"
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiTableHeatmapDatasetItem[] = [
+    {
+        name: "Serie 1",
+        values: [20, 30, 40, 50, 40, 30, 20,],
+        color: '#1f77b4',
+        shape: 'circle'
+    },
+    {
+        name: "Serie 2",
+        values: [30, 40, 50, 60, 50, 40, 30,],
+        color: '#aec7e8',
+        shape: 'triangle'
+    },
+    {
+        name: "Serie 3",
+        values: [40, 50, 60, 70, 60, 50, 40,],
+        color: '#ff7f0e',
+        shape: 'diamond'
+    },
+    {
+        name: "Serie 4",
+        values: [50, 60, 70, 80, 70, 60, 50,],
+        color: '#ffbb78',
+        shape: 'hexagon'
+    },
+    {
+        name: "Serie 5",
+        values: [60, 70, 80, 90, 80, 70, 60,],
+        color: '#2ca02c',
+        shape: 'star'
+    },
+];`)
 
 </script>
 
@@ -301,58 +332,24 @@ const dsTypeCode = computed(() => {
                 {{ translations.slots.warning[store.lang] }}
             </template>
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiTableHeatmapDatasetItem[]</code>
-                    <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                    <div class="w-full overflow-x-auto">
 
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         /> 
                     </div>
 
-                    {{ translations.docs.example[store.lang] }} :
                     <div class="w-full overflow-x-auto">
-                        <pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiTableHeatmapDatasetItem[]</span> = [
-    {
-        name: "Serie 1",
-        values: [20, 30, 40, 50, 40, 30, 20,],
-        color: '#1f77b4',
-        shape: 'circle'
-    },
-    {
-        name: "Serie 2",
-        values: [30, 40, 50, 60, 50, 40, 30,],
-        color: '#aec7e8',
-        shape: 'triangle'
-    },
-    {
-        name: "Serie 3",
-        values: [40, 50, 60, 70, 60, 50, 40,],
-        color: '#ff7f0e',
-        shape: 'diamond'
-    },
-    {
-        name: "Serie 4",
-        values: [50, 60, 70, 80, 70, 60, 50,],
-        color: '#ffbb78',
-        shape: 'hexagon'
-    },
-    {
-        name: "Serie 5",
-        values: [60, 70, 80, 90, 80, 70, 60,],
-        color: '#2ca02c',
-        shape: 'star'
-    },
-]
-</code>    
-</pre>
-                    </div>
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset"
+            :title="translations.docs.example[store.lang]"
+        />   
                 </div>
             </template>
 

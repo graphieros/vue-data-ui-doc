@@ -314,14 +314,40 @@ function fixChart() {
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-  return `
-  type VueUiTableSparklineDatasetItem = {
-    name: string
-    values: number[]
-    color?: string
-  }
-  `
+  return `type VueUiTableSparklineDatasetItem = {
+  name: string
+  values: number[]
+  color?: string
+}`
 })
+
+const codeDataset = ref(`const dataset: VueUiTableSparklineDatasetItem[] = [
+  {
+    name: "Serie 1",
+    values: [0, 1, 2, 3, 5, 8],
+    color: "#5f8bee",
+  },
+  {
+    name: "Serie 2",
+    values: [8, 12, 13, 25, 31, 42],
+    color: "#42d392",
+  },
+  {
+    name: "Serie 3",
+    values: [66, 22, 33, 12, 55, 64],
+    color: "#ff6400",
+  },
+  {
+    name: "Serie 4",
+    values: [54, 44, 34, 12, 32, 26],
+    color: "#f7e97c"
+  },
+  {
+    name: "Serie 5",
+    values: [12, 14, 18, 25, 32, 64],
+    color: "#42e9f5"
+  },
+];`)
 
 </script>
 
@@ -353,51 +379,23 @@ const dsTypeCode = computed(() => {
 
         <Box showEmits showSlots signInfo="both">
           <template #tab0>
-            {{ translations.docs.datastructure[store.lang] }}
-            <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiTableSparklineDatasetItem[]</code>
-                </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
           <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />               
                 </div>
-                {{ translations.docs.example[store.lang] }} :
+
                 <div class="w-full overflow-x-auto">
-<pre>
-<code>
-const <span class="text-black dark:text-app-green">dataset: VueUiTableSparklineDatasetItem[]</span> = [
-    {
-        name: "Serie 1",
-        values: [0, 1, 2, 3, 5, 8],
-        color: "#5f8bee",
-    },
-    {
-        name: "Serie 2",
-        values: [8, 12, 13, 25, 31, 42],
-        color: "#42d392",
-    },
-    {
-        name: "Serie 3",
-        values: [66, 22, 33, 12, 55, 64],
-        color: "#ff6400",
-    },
-    {
-        name: "Serie 4",
-        values: [54, 44, 34, 12, 32, 26],
-        color: "#f7e97c"
-    },
-    {
-        name: "Serie 5",
-        values: [12, 14, 18, 25, 32, 64],
-        color: "#42e9f5"
-    },
-]
-</code>
-</pre>                
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset"
+            :title="translations.docs.example[store.lang]"
+        />               
                 </div>
           </template>
 

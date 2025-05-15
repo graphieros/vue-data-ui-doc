@@ -423,21 +423,22 @@ const dsExample = ref(`const dataset = {
 
         <Box showEmits showSlots schema="vue_ui_carousel_table" hideSchemaDisclaimer>
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
             class="my-6"
         />  
                 </div>
-                {{ translations.docs.example[store.lang] }} :
+
                 <div class="w-full overflow-x-auto">
         <CodeParser
             language="typescript"
             @copy="store.copy()"
             :content="dsExample"
+            :title="translations.docs.example[store.lang]"
             class="my-6"
         />                    
                 </div>

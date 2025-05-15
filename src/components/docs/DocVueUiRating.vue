@@ -15,6 +15,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import UcRating from "../useCases/uc-rating.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -173,6 +174,27 @@ const dataset = ref({
     }
 });
 
+const dsTypeCode = ref(`type VueUiRatingDataset = {
+    rating: number | {
+        "1": number
+        "2": number
+        "3": number
+        "4": number
+        "5": number
+    }
+}`)
+
+const codeDataset1 = ref(`const dataset: VueUiRatingDataset = { rating: 3.6 }`);
+const codeDataset2 = ref(`const dataset: VueUiRatingDataset = {
+    rating: {
+        "1": 146,
+        "2": 225,
+        "3": 3920,
+        "4": 1050,
+        "5": 2125,
+    }
+};`);
+
 const mode = ref("readonly");
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -279,34 +301,30 @@ const { configCode, showAllConfig } = useConfigCode()
 
         <Box showEmits showSlots showUseCases>
             <template v-slot:tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                    TS type: <code class="text-app-green">VueUiRatingDataset</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-                    <pre>
-<code>
-<span class="text-gray-500">
-// {{ translations.docs.comments.rating.simpleRating[store.lang] }} :
-</span>
-const <span class="text-black dark:text-app-green">dataset: VueUiRatingDataset</span> = { rating: 3.6 };
 
-<span class="text-gray-500">
-// {{ translations.docs.comments.rating.breakdown[store.lang] }} :
-</span>
-const <span class="text-black dark:text-app-green">dataset: VueUiRatingDataset</span> = {
-    rating: {
-        "1": 146,
-        "2": 225,
-        "3": 3920,
-        "4": 1050,
-        "5": 2125
-    }
-};
-<span class="text-gray-500">// {{ translations.docs.comments.rating.calculation[store.lang] }} 
-// {{ translations.docs.comments.rating.tooltip[store.lang] }}</span>
-</code>
-</pre>
+                <div class="w-full overflow-x-auto">
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="dsTypeCode"
+            :title="translations.docs.datastructure[store.lang]"
+            class="my-6"
+        />  
+
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset1"
+            :title="translations.docs.comments.rating.simpleRating[store.lang]"
+            class="my-6"
+        />    
+
+        <CodeParser
+            language="typescript"
+            @copy="store.copy()"
+            :content="codeDataset2"
+            :title="translations.docs.comments.rating.breakdown[store.lang]"
+        />    
                 </div>
             </template>
             <template v-slot:tab1>
