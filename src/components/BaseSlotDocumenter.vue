@@ -4,6 +4,7 @@ import { useMainStore } from "../stores";
 import { CopyIcon } from "vue-tabler-icons";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { VueHiCode } from "vue-hi-code";
+import CodeParser from "./customization/CodeParser.vue";
 
 const props = defineProps({
     types: {
@@ -438,7 +439,12 @@ function copyToClipboard(conf) {
             </button>
         </FlexibleTooltip>
     </div>
-    <VueHiCode v-if="item.snippet" :content="item.snippet" language="html"  @copy="() => copyToClipboard(item.snippet)"/>
+    <CodeParser
+        v-if="item.snippet"
+        language="html"
+        :content="item.snippet"
+        @copy="store.copy()"
+    />
 </div>                
             </div>
         </template>

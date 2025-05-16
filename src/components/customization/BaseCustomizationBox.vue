@@ -20,7 +20,7 @@ defineProps({
     style="width: calc(100% - 48px)"
   >
     <div
-      class="bg-black p-4 text-gray-300 text-xs w-full mx-auto max-w-[600px] overflow-auto rounded-md"
+      class="text-xs w-full mx-auto max-w-[600px] overflow-auto rounded-md"
     >
       <pre>
 <code>

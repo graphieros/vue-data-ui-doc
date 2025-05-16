@@ -1399,7 +1399,7 @@ const wordCloudDataset = computed(() => {
     if(!uselessWords.value.includes(ds.name.toUpperCase())) {
       return ds
     }
-  }).sort((a, b) => b.value - a.value).filter(el => el.value > 5)
+  }).sort((a, b) => b.value - a.value).filter(el => el.value > 1)
 })
 
 
@@ -1417,7 +1417,7 @@ const wordCloudConfig = computed(() => {
   return {
     customPalette: makeColors({
       colorStart: '#5f8aee',
-      iterations: 200,
+      iterations: 1000,
       force: 0.0006
     }),
 //     customPalette: [

@@ -7,6 +7,7 @@ import Prism from "prismjs"
 import "prismjs/themes/prism-okaidia.css"
 import DocLink from "../components/DocLink.vue";
 import { CopyIcon } from "vue-tabler-icons";
+import CodeParser from "../components/customization/CodeParser.vue";
 
 const store = useMainStore()
 
@@ -79,6 +80,10 @@ const excl2 = 'number[]';
 const excl3 = ' | string';
 const excl4 = '[]';
 const excl5 = 'number';
+
+const datasetRefContent = computed(() => {
+    return `const dataset = ref<${selectedComponent.value.types.dataset}>(${typeof selectedComponent.value.examples[0].dataset === 'string' ? `${selectedComponent.value.examples[0].dataset}` : JSON.stringify(selectedComponent.value.examples[0].dataset, null, 2)})`
+})
 
 </script>
 
@@ -304,11 +309,11 @@ const excl5 = 'number';
                 {{ translations.overview.viewSampleDataset[store.lang] }}
             </template>
             <template #content>
-                <div class="bg-[#272822] p-4 rounded-md">
-                    <code class="language-javascript" style="white-space: pre-wrap;">
-                        const dataset = ref<{{ selectedComponent.types.dataset }}>({{ typeof selectedComponent.examples[0].dataset === 'string' ? `"${selectedComponent.examples[0].dataset}"`: selectedComponent.examples[0].dataset }})
-                    </code>
-                </div>
+                <CodeParser
+                    language="typescript"
+                    :content="datasetRefContent"
+                    @copy="store.copy()"
+                />
             </template>
         </VueDataUi>
     </div>

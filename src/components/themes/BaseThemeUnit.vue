@@ -93,9 +93,9 @@ function copyToClipboard(conf) {
             <ThemeTag :type="theme.name"/>
             <VueDataUi :component="component" :dataset="dataset" :config="{ ...config, theme: theme.name }"/>
             <template v-if="theme.name !== 'default'">
-                <div class="bg-[#2A2A2A] py-4 rounded-b border-t border-[#CCCCCC] dark:border-gray-500">
-                    <div class="pl-3 mb-2 text-[#CCCCCC]">{{ translations.usage[store.lang] }}</div>
-                    <CodeParser :content="code.replace('#THEME#', theme.name)" language="javascript"/>              
+                <div class="bg-white dark:bg-[#2A2A2A] py-4 rounded-b border-t border-[#CCCCCC] dark:border-gray-500">
+                    <div class="pl-3 mb-2">{{ translations.usage[store.lang] }}</div>
+                    <CodeParser :content="code.replace('#THEME#', theme.name)" language="javascript" @copy="store.copy()"/>              
                 </div>
                 <button 
                     dir="auto"
