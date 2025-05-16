@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.6.49",
+    "date": "2025-05-16",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Improve word packing algorithm and add pan zoom functionality",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.48",
     "date": "2025-05-11",
     "updates": [

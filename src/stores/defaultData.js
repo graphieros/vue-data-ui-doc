@@ -3662,7 +3662,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.padding.right', def: 0, type: 'number', min: 0, max: 100, label:['right'], category: 'padding'},
                     { key: 'style.chart.padding.bottom', def: 0, type: 'number', min: 0, max: 100, label:['bottom'], category: 'padding'},
                     { key: 'style.chart.padding.left', def: 0, type: 'number', min: 0, max: 100, label:['left'], category: 'padding'},
-                    
+
                     { key: 'style.chart.layout.labels.dataLabels.show', def: true, type: 'checkbox', label: 'show', category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.fontSize', def: 14, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.useSerieColor', def: false, type: 'checkbox', label: ['textColor', 'is', 'auto'], category: 'labels' },
@@ -4066,8 +4066,6 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.paddingRight', def: 0, type: 'number', min: 0, max: 24, label: ['padding', 'is', 'right'], category: 'title'},
 
                     { key: 'style.chart.zoom.show', def: true, type: 'checkbox', label: 'zoom', category: 'general' },
-                    { key: 'style.chart.zoom.color', def: '#CCCCCC', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
-                    { key: 'style.chart.zoom.highlightColor', def: '#4A4A4A', type: 'color', label: ['zoom', 'is', 'color'], category: 'general'},
 
                     { key: 'style.chart.title.subtitle.text', def: 'Subtitle', type: 'text', label: 'textContent', category: 'subtitle'},
                     { key: 'style.chart.title.subtitle.color', def: '#CCCCCC', type: 'color', label: 'textColor', category: 'subtitle'},

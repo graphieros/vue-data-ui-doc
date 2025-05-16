@@ -442,10 +442,6 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
 
         <Box showEmits showThemes showSlots schema="vue_ui_sparkhistogram" signInfo="positiveOnly">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                  TS type: <code class="text-app-green">VueUiSparkHistogramDatasetItem[]</code>
-                </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
     <CodeParser

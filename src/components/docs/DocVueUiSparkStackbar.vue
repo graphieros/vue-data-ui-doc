@@ -284,11 +284,7 @@ const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
 
         <Box showEmits showThemes showSlots schema="vue_ui_sparkstackbar" signInfo="positiveOrNegativeOnly">
             <template #tab0>
-                {{ translations.docs.datastructure[store.lang] }}
-                <div class="mt-4">
-                  TS type: <code class="text-app-green">VueUiSparkStackBarDatasetItem[]</code>
-                </div>
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                <div class="w-full overflow-x-auto">
 
   <CodeParser
     language="typescript"
