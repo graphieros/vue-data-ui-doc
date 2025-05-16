@@ -1393,7 +1393,7 @@ const uselessWords = ref([
 const wordCloudDataset = computed(() => {
   const source = staticReleases.map(r => {
     if(!r.updates || !r.updates.length) return ''
-    return r.updates.map(u => u.description + ' ').join(' ') + ' '
+    return r.updates.map(u => u.description.toUpperCase() + ' ').join(' ') + ' '
   }).join(' ')
   return createWordCloudDatasetFromPlainText(source).filter(ds => {
     if(!uselessWords.value.includes(ds.name.toUpperCase())) {
