@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.6.51",
+    "date": "2025-05-17",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Add reset zoom button",
+        "link": "/docs#vue-ui-word-cloud"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Add reset zoom button",
+        "link": "/docs#vue-ui-molecule"
+      }
+    ]
+  },
+  {
     "version": "v 2.6.50",
     "date": "2025-05-16",
     "updates": [
