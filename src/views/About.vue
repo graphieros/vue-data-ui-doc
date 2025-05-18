@@ -271,10 +271,6 @@ const stackConfig = ref({"style":{"backgroundColor":"#F3F4F6","fontFamily":"inhe
         <p class="my-3" dir="auto">
             {{ translations.about.p3[store.lang] }} <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-chestnut">VueUiChestnut</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-quadrant">VueUiQuadrant</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-table">VueUiTable</router-link></span>.
         </p>
-
-        <p class="my-3" dir="auto">
-            {{ translations.about.p4[store.lang] }}<span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-screenshot">VueUiScreenshot</router-link></span>, <span class="text-black font-bold dark:text-app-green hover:underline"><router-link to="/docs#vue-ui-skeleton">VueUiSkeleton</router-link></span>
-        </p>
         
         <div class="w-full max-w-[500px] mx-auto p-4 rounded shadow bg-white dark:bg-[#1A1A1A] my-8">
           <AboutComponentTypes />

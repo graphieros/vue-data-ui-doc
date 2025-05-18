@@ -602,7 +602,6 @@ export function useChartSlots(component) {
             VDUI_SLOTS.CONTENT,
             VDUI_SLOTS.TITLE,
         ],
-        vue_ui_screenshot: [],
         vue_ui_skeleton: [],
         vue_ui_dashboard: [
             VDUI_SLOTS.CONTENT

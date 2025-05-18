@@ -527,13 +527,6 @@ export default function useCharts() {
                 taxinomy: ['comparisons', 'relationships', 'distribution'],
                 singleTaxinomy: 'distribution'
             },
-            VueUiScreenshot: {
-                icon: 'screenshot',
-                link: '/docs#vue-ui-screenshot',
-                description: translations.value.docs.tooltips.screenshot[store.lang],
-                taxinomy: ['uiTools'],
-                singleTaxinomy: 'uiTools'
-            },
             VueUiSkeleton: {
                 icon: 'skeleton',
                 link: '/docs#vue-ui-skeleton',

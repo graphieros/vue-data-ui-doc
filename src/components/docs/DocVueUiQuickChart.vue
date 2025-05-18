@@ -173,12 +173,7 @@ const config = ref({
         annotator: 'Toggle annotator'
     },
     userOptionsPrint: {
-        allowTaint: true,
-        backgroundColor: '#FFFFFF',
-        useCORS: true,
-        onclone: null,
         scale: 2,
-        logging: false
     },
     title: "A quick chart",
     titleBold: true,
@@ -296,12 +291,7 @@ const darkModeConfig = ref({
         annotator: 'Toggle annotator'
     },
     userOptionsPrint: {
-        allowTaint: true,
-        backgroundColor: '#FFFFFF',
-        useCORS: true,
-        onclone: null,
         scale: 2,
-        logging: false
     },
     title: "A quick chart",
     titleBold: true,
@@ -856,12 +846,7 @@ function copyComponentSnippet(snip) {
             <BaseAttr name="annotator" attr="userOptionsButtonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseDetails attr="print" :level="1" title="userOptionsPrint">
-            <BaseAttr name="allowTaint" attr="userOptionsPrint.allowTaint" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-            <BaseAttr name="backgroundColor" attr="userOptionsPrint.backgroundColor" type="string" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Apply a background on pdf and img when chart background is transparent"/>
-            <BaseAttr name="useCORS" attr="userOptionsPrint.useCORS" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-            <span>onclone: null,</span><BaseComment>Modify the document before the print occurs (see html2canvas docs)</BaseComment>
             <BaseAttr name="scale" attr="userOptionsPrint.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
-            <BaseAttr name="logging" attr="userOptionsPrint.logging" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseAttr name="title" attr="title" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="titleBold" attr="titleBold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

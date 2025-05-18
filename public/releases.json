@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.7.0",
+    "date": "2025-05-18",
+    "updates": [
+      {
+        "component": "All components with img or pdf generation",
+        "description": "Replace html2canvas dependency",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.6.51",
     "date": "2025-05-17",
     "updates": [

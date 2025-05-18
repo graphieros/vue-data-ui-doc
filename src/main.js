@@ -14,7 +14,6 @@ import {
     VueUiChestnut,
     VueUiOnion,
     VueUiVerticalBar,
-    VueUiScreenshot,
     VueUiRating,
     VueUiSkeleton,
     VueUiSparkline,
@@ -71,7 +70,6 @@ app.component("VueUiGauge", VueUiGauge);
 app.component("VueUiChestnut", VueUiChestnut);
 app.component("VueUiOnion", VueUiOnion);
 app.component("VueUiVerticalBar", VueUiVerticalBar);
-app.component("VueUiScreenshot", VueUiScreenshot);
 app.component("VueUiRating", VueUiRating);
 app.component("VueUiSkeleton", VueUiSkeleton);
 app.component("VueUiSparkline", VueUiSparkline);

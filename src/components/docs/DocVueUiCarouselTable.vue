@@ -80,12 +80,7 @@ const darkModeConfig = ref({
             animation: "Toggle animation"
         },
         print: {
-            allowTaint: true,
-            backgroundColor: '#FFFFFF',
-            useCORS: true,
-            onclone: null,
             scale: 2,
-            logging: false
         },
     },
     animation: {
@@ -223,12 +218,7 @@ const config = ref({
             animation: "Toggle animation"
         },
         print: {
-            allowTaint: true,
-            backgroundColor: '#FFFFFF',
-            useCORS: true,
-            onclone: null,
             scale: 2,
-            logging: false
         },
     },
     animation: {
@@ -583,12 +573,7 @@ const dsExample = ref(`const dataset = {
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
             </BaseDetails>
             <BaseDetails attr="print" :level="2" title="userOptions.print">
-                <BaseAttr name="allowTaint" attr="userOptions.print.allowTaint" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="backgroundColor" attr="userOptions.print.backgroundColor" type="string" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Apply a background on pdf and img when chart background is transparent"/>
-                <BaseAttr name="useCORS" attr="userOptions.print.useCORS" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <span>onclone: null,</span><BaseComment>Modify the document before the print occurs (see html2canvas docs)</BaseComment>
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
-                <BaseAttr name="logging" attr="userOptions.print.logging" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
         </BaseDetails>
     </BaseDetails>

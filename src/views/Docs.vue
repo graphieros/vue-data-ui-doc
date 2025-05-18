@@ -29,7 +29,6 @@ const DocVueUiGauge = defineAsyncComponent(() => import('../components/docs/DocV
 const DocVueUiChestnut = defineAsyncComponent(() => import('../components/docs/DocVueUiChestnut.vue'));
 const DocVueUiOnion = defineAsyncComponent(() => import('../components/docs/DocVueUiOnion.vue'));
 const DocVueUiVerticalBar = defineAsyncComponent(() => import('../components/docs/DocVueUiVerticalBar.vue'));
-const DocVueUiScreenshot = defineAsyncComponent(() => import('../components/docs/DocVueUiScreenshot.vue'));
 const DocVueUiRating = defineAsyncComponent(() => import('../components/docs/DocVueUiRating.vue'));
 const DocVueUiSkeleton = defineAsyncComponent(() => import('../components/docs/DocVueUiSkeleton.vue'));
 const DocVueUiSparkline = defineAsyncComponent(() => import('../components/docs/DocVueUiSparkline.vue'));
@@ -182,7 +181,6 @@ const chartKeys = computed(() => {
     return Object.keys(mainConfig).toSorted().filter(key => {
         return ![
             "vue_ui_accordion",
-            "vue_ui_screenshot",
             "vue_ui_skeleton",
             "vue_ui_dashboard",
             "vue_ui_annotator",
@@ -693,15 +691,6 @@ const menuItems = computed(() => [
         hasTableCss: false,
     },
     {
-        name: "Screenshot",
-        icon: "screenshot",
-        tooltip: translations.value.docs.tooltips.screenshot[store.lang],
-        link: "/docs#vue-ui-screenshot",
-        type: "tool",
-        hasSlot: false,
-        hasTableCss: false,
-    },
-    {
         name: "Skeleton",
         icon: "skeleton",
         tooltip: translations.value.docs.tooltips.skeleton[store.lang],
@@ -1034,9 +1023,6 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiVerticalBar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-vertical-bar'"/>
-            </Transition>
-            <Transition name="fade">
-                <DocVueUiScreenshot v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-screenshot'"/>
             </Transition>
             <Transition name="fade">
                 <DocVueUiRating v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-rating'"/>

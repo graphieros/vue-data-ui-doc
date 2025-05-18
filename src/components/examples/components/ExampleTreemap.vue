@@ -55,7 +55,6 @@ const types = ref({
         'vue_ui_smiley'
     ],
     utilities: [
-        'vue_ui_screenshot',
         'vue_ui_skeleton',
         'vue_ui_dashboard',
         'vue_ui_annotator',

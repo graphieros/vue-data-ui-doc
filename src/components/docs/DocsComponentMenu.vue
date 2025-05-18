@@ -135,7 +135,6 @@ const dataset = ref([
                 name: translations.value.sideMenu.utilities[store.lang],
                 nodes: [
                     { route: '/docs#vue-ui-accordion', name: 'Accordion', icon: 'accordion' },
-                    { route: '/docs#vue-ui-screenshot', name: 'Screenshot', icon: 'screenshot' },
                     { route: '/docs#vue-ui-skeleton', name: 'Skeleton', icon: 'skeleton' },
                     { route: '/docs#vue-ui-dashboard', name: 'Dashboard', icon: 'dashboard' },
                     { route: '/docs#vue-ui-annotator', name: 'Annotator', icon: 'annotator' },

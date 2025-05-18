@@ -577,14 +577,6 @@ const smallMenu = ref([
         component: 'Accordion'
     },
     {
-        route: '/docs#vue-ui-screenshot',
-        icon: 'screenshot',
-        cssClasses: '',
-        isSelected: isSelected,
-        tooltipContent: 'Screenshot',
-        component: 'Screenshot'
-    },
-    {
         route: '/docs#vue-ui-skeleton',
         icon: 'skeleton',
         cssClasses: '',
@@ -817,7 +809,6 @@ const sideMenuItems = computed(() => {
         title: translations.value.sideMenu.utilities[store.lang],
         items: [
             { route: '/docs#vue-ui-accordion', componentName: 'Accordion', icon: 'accordion' },
-            { route: '/docs#vue-ui-screenshot', componentName: 'Screenshot', icon: 'screenshot' },
             { route: '/docs#vue-ui-skeleton', componentName: 'Skeleton', icon: 'skeleton' },
             { route: '/docs#vue-ui-dashboard', componentName: 'Dashboard', icon: 'dashboard' },
             { route: '/docs#vue-ui-annotator', componentName: 'Annotator', icon: 'annotator' },
