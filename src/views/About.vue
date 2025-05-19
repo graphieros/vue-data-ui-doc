@@ -42,7 +42,7 @@ const skeletonConfig = ref({
         strokeWidth: 0.5
       },
       path: {
-        color: "#5c5c5c",
+        color: "#5f8aee",
         strokeWidth: 1,
         showPlots: true
       }
@@ -61,14 +61,14 @@ const skeletonConfig = ref({
       color: "#5C5C5C"
     },
     donut: {
-      color: "#5c5c5c",
+      color: "#5f8aee",
       strokeWidth: 64
     },
     onion: {
-      color: "#5c5c5c"
+      color: "#5f8aee"
     },
     gauge: {
-      color: "#5c5c5c"
+      color: "#5f8aee"
     },
     quadrant: {
       grid: {
@@ -77,7 +77,7 @@ const skeletonConfig = ref({
       },
       plots: {
         radius: 1.5,
-        color: "#5c5c5c"
+        color: "#5f8aee"
       }
     },
     radar: {
@@ -86,7 +86,7 @@ const skeletonConfig = ref({
         strokeWidth: 0.5
       },
       shapes: {
-        color: "#5c5c5c"
+        color: "#5f8aee"
       }
     },
     waffle: {
@@ -102,8 +102,8 @@ const skeletonConfig = ref({
       }
     },
     rating: {
-      color: "#5c5c5c",
-      filled: true,
+      color: "#5f8aee",
+      filled: false,
       strokeWidth: 1,
       maxWidth: 200
     },
@@ -133,7 +133,7 @@ const skeletonConfigDark = ref({
         strokeWidth: 0.5
       },
       path: {
-        color: "#5c5c5c",
+        color: "#42d392",
         strokeWidth: 1,
         showPlots: true
       }
@@ -152,14 +152,14 @@ const skeletonConfigDark = ref({
       color: "#5C5C5C"
     },
     donut: {
-      color: "#5c5c5c",
+      color: "#42d392",
       strokeWidth: 64
     },
     onion: {
-      color: "#5c5c5c"
+      color: "#42d392"
     },
     gauge: {
-      color: "#5c5c5c"
+      color: "#42d392"
     },
     quadrant: {
       grid: {
@@ -168,7 +168,7 @@ const skeletonConfigDark = ref({
       },
       plots: {
         radius: 1.5,
-        color: "#5c5c5c"
+        color: "#42d392"
       }
     },
     radar: {
@@ -177,7 +177,7 @@ const skeletonConfigDark = ref({
         strokeWidth: 0.5
       },
       shapes: {
-        color: "#5c5c5c"
+        color: "#42d392"
       }
     },
     waffle: {
@@ -193,8 +193,8 @@ const skeletonConfigDark = ref({
       }
     },
     rating: {
-      color: "#5c5c5c",
-      filled: true,
+      color: "#42d392",
+      filled: false,
       strokeWidth: 1,
       maxWidth: 200
     },
