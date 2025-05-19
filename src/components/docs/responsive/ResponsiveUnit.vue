@@ -1,6 +1,7 @@
 <script setup>
-import { computed } from "vue"; 
+import { computed, ref } from "vue"; 
 import { useMainStore } from '../../../stores';
+import CodeParser from "../../customization/CodeParser.vue";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -25,20 +26,19 @@ defineProps({
     },
 });
 
+const codeContent = ref(`const config = ref({
+    responsive: true,
+    //...rest of your config
+})`)
+
 </script>
 
 <template>
     <div class="w-full h-[2000px]">
         <div class="pb-8">
             {{ translations.responsiveUnitPresentation[store.lang] }} <code>reponsive: true</code>
-<pre>
-    <code>
-        const config = ref({
-            responsive: true,
-            ... // rest of your config
-        })
-    </code>
-</pre>  
+        <CodeParser class="my-6" :content="codeContent" language="javascript" @copy="store.copy()"/>
+
         <div class="text-app-green">
             {{ translations.responsiveHandle[store.lang] }}
         </div>
