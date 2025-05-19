@@ -152,7 +152,6 @@ const iconMap = ref({
     VueUiRating: 'star',
     VueUiSmiley: 'smiley',
     VueUiAccordion: 'accordion',
-    VueUiScreenshot: 'screenshot',
     VueUiSkeleton: 'skeleton',
     VueUiDashboard: 'dashboard',
     VueUiAnnotator: 'annotator',
