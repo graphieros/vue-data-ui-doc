@@ -173,7 +173,12 @@ export function useConfig() {
             },
             buttonTitles,
             print: {
+                allowTaint: false,
+                backgroundColor: '#FFFFFF',
+                useCORS: false,
+                onclone: null,
                 scale: 2,
+                logging: false
             }
         }
     }
@@ -549,6 +554,7 @@ export function useConfig() {
             radius: 3,
             useGradient: true,
             strokeWidth: 3,
+            cutNullValues: false,
             dot: {
                 hideAboveMaxSerieLength: 62,
                 useSerieColor: true,
@@ -2496,7 +2502,12 @@ export function useConfig() {
             annotator: 'Toggle annotator'
         },
         userOptionsPrint: {
+            allowTaint: false,
+            backgroundColor: '#FFFFFF',
+            useCORS: false,
+            onclone: null,
             scale: 2,
+            logging: false,
         },
         title: '',
         titleBold: true,

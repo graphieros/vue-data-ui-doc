@@ -1144,6 +1144,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'bar.border.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'bar'},
                     { key: 'bar.border.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'bar'},
 
+                    { key: 'line.cutNullValues', def: false, type: 'checkbox', label: 'Cut null values', category: 'line'},
                     { key: 'line.radius', def: 6, type: 'number', min: 0, max: 20, label: 'radius', category: 'line' },
                     { key: 'line.useGradient', def: false, type: 'checkbox', label: 'useGradient', category: 'line' },
                     { key: 'line.dot.useSerieColor', def: false, type: 'checkbox', label: ['dot', 'is', 'serie color'], category: 'line'},

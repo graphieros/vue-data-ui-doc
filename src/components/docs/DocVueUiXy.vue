@@ -98,7 +98,7 @@ const dataset = computed(() => {
     },
     {
         name: "Series 3",
-        series: [75, 82, 80, 72, 90, 100],
+        series: [75, 82, 80, null, 90, 100],
         type: "line",
         color: "#ff7f0e",
         useArea: false,
@@ -383,6 +383,7 @@ const config = ref({
         radius: 4,
         useGradient: true,
         strokeWidth: 2,
+        cutNullValues: false,
         dot: {
             hideAboveMaxSerieLength: 62,
             useSerieColor: true,
@@ -687,6 +688,7 @@ const darkModeConfig = ref({
         radius: 4,
         useGradient: true,
         strokeWidth: 2,
+        cutNullValues: false,
         dot: {
             hideAboveMaxSerieLength: 62,
             useSerieColor: true,
@@ -1210,6 +1212,7 @@ const cssContent = `
             <BaseAttr name="radius" attr="line.radius" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="useGradient" attr="line.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="strokeWidth" attr="line.strokeWidth" type="number" defaultVal="2" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="cutNullValues" attr="line.cutNullValues" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.7.2"/>
             <BaseDetails attr="dot" :level="2" title="line.dot">
                 <BaseAttr name="useSerieColor" attr="line.dot.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fill" attr="line.dot.fill" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
