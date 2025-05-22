@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.7.1",
+    "date": "2025-05-21",
+    "updates": [
+      {
+        "component": "VueUi3dBar",
+        "description": "Remove default labels when using formatter",
+        "link": "/docs#vue-ui-3d-bar"
+      }
+    ]
+  },
+  {
     "version": "v 2.7.0",
     "date": "2025-05-18",
     "updates": [

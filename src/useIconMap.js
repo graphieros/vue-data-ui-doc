@@ -60,7 +60,7 @@ export function useIconMap(componentName) {
         VueUiStackbar: 'chartStackbar',
         VueUiFunnel: 'chartFunnel',
         VueUiHistoryPlot: 'chartHistoryPlot',
-        VueUiCirclePack: 'chartCirclePack'
+        VueUiCirclePack: 'chartCirclePack',
     }
     return mapping[componentName] || 'clipBoard';
 }
