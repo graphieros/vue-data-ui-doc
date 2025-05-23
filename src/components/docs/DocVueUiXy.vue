@@ -807,6 +807,7 @@ const shapeOptions = ref([
 const { configCode, showAllConfig } = useConfigCode()
 
 function randomizeData() {
+    const len = 6;
     function makeSet(n ,m) {
         const arr = [];
         for (let i = 0; i < n; i += 1) {
@@ -815,13 +816,13 @@ function randomizeData() {
         return arr
     }
 
-    mutableDataset.value[0].series = makeSet(6, 30);
-    mutableDataset.value[1].series = makeSet(6, 30);
+    mutableDataset.value[0].series = makeSet(len, 30);
+    mutableDataset.value[1].series = makeSet(len, 30);
     mutableDataset.value[2].series = (() => {
         const s1 = mutableDataset.value[0].series;
         const s2 = mutableDataset.value[1].series;
         let arr = []
-        for (let i = 0; i * mutableDataset.value[0].series.length; i += 1) {
+        for (let i = 0; i < len; i += 1) {
             arr.push(s1[i] + s2[i] + 20)
         }
         return arr;
