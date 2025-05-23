@@ -1,5 +1,5 @@
-<script setup>
-import { computed, watch } from "vue";
+const selectedDate = ref(latestItems.value[0].created_at.split(' ')[0])<script setup>
+import { computed, watch, ref } from "vue";
 import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 import colorBridge from "color-bridge"
@@ -431,23 +431,24 @@ const ratings = computed(() => {
     });
 });
 
+const today = new Date().toISOString().slice(0, 10)
+const selectedDate = ref(today)
+
 const latestItems = computed(() => {
-    if (!stats.value.length) return [];
-    const dates = stats.value.map(item => item.created_at.split(' ')[0]);
-    const latestDate = dates.reduce((max, date) => date > max ? date : max, dates[0]);
-    return stats.value.filter(item => item.created_at.split(' ')[0] === latestDate).map(item => {
-        return {
-            ...item,
-            stars: Array(item.rating).fill('⭐').join(''),
-            name: `${item.item_id
-                .split('_')
-                .map((w, _i) => {
-                    return capitalizeFirstLetter(w);
-                })
-                .join('')}`
-        }
-    })
+  if (!Array.isArray(stats.value) || !stats.value.length || !selectedDate.value) return [];
+  return stats.value
+    .filter(item => item && typeof item.created_at === 'string')
+    .filter(item => item.created_at.split(' ')[0] === selectedDate.value)
+    .map(item => ({
+      ...item,
+      stars: Array(item.rating).fill('⭐').join(''),
+      name: item.item_id
+        .split('_')
+        .map(capitalizeFirstLetter)
+        .join('')
+    }))
 });
+
 
 const stackbarData = computed(() => {
     const stripped = stats.value.map(s => ({
@@ -1123,7 +1124,28 @@ const gaugeConfig = computed(() => {
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <div class="text-xl text-center mb-4 flex flex-col">
             <span>Latest votes</span>
-            <span class="text-xs text-gray-500">{{ latestItems[0].created_at.split(' ')[0] }}</span>
+            <input
+                id="date"
+                type="date"
+                v-model="selectedDate"
+                class="
+                    mx-auto
+                    mt-3
+                    block w-52 px-3 py-1 rounded-xl shadow
+                    focus:ring-2 focus:ring-app-blue focus:border-app-blue
+                    border border-gray-300 bg-white text-gray-800
+                    hover:border-blue-400
+                    transition duration-200 outline-none
+                    dark:border-gray-700 dark:bg-[#FFFFFF50] dark:text-[#1A1A1A]
+                    dark:focus:border-app-blue dark:focus:ring-app-blue
+                    dark:hover:border-app-blue
+                    dark:placeholder-gray-400
+                "
+                placeholder="YYYY-MM-DD"
+            />
+        </div>
+        <div class="w-full text-center text-gray-500" v-if="latestItems.length === 0">
+            No votes were cast on this day.
         </div>
         <ul>
             <li v-for="item in latestItems" class="flex flex-row gap-2">
