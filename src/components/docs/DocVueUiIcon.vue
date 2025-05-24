@@ -173,6 +173,7 @@ const specialIcons = ref([
     "starFace",
     "starFill",
     "stop",
+    "text",
     "trash",
     "trend",
     "trendDown",
