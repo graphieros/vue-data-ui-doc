@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.7.3",
+    "date": "2025-05-24",
+    "updates": [
+      {
+        "component": "All components with built-in annotator",
+        "description": "Add support for text annotations",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.7.2",
     "date": "2025-05-22",
     "updates": [
