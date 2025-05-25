@@ -1123,7 +1123,7 @@ const gaugeConfig = computed(() => {
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <div class="text-xl text-center mb-4 flex flex-col">
-            <span>Latest votes</span>
+            <span>Latest votes ({{ latestItems.length }})</span>
             <input
                 id="date"
                 type="date"
