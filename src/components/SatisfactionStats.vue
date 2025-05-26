@@ -5,6 +5,7 @@ import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 import colorBridge from "color-bridge"
 import { VueDataUi } from "vue-data-ui";
 import mockStats from './mockStats.json'
+import { createUid } from "./maker/lib";
 
 const { utils } = colorBridge();
 
@@ -355,11 +356,11 @@ const historyPlotConfig = computed(() => {
                     left: 64,
                     bottom: 64
                 },
-                // paths: {
-                //     strokeWidth: 10,
-                //     useSerieColor: false,
-                //     stroke: isDarkMode.value ? '#FFFFFF20' : '#1A1A1A10'
-                // },
+                paths: {
+                    strokeWidth: 6,
+                    useSerieColor: false,
+                    stroke: isDarkMode.value ? '#FFFFFF20' : '#1A1A1A20'
+                },
                 plots: {
                     radius: 6,
                     stroke: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
@@ -421,6 +422,7 @@ const ratings = computed(() => {
         const raters = groups[component].length;
         const breakdown = countRatings(Object.groupBy(groups[component], ({ rating }) => rating));
         return {
+            id: createUid(),
             name: component,
             raters,
             breakdown,
@@ -428,8 +430,12 @@ const ratings = computed(() => {
                 groups[component].map((r) => r.rating).reduce((a, b) => a + b, 0) /
                 raters || 0,
         };
-    });
+    })
 });
+
+const individualRatings = computed(() => {
+    return [...ratings.value].toSorted((a, b) => detailSortMode.value === 'byVotes' ? b.raters - a.raters : b.average - a.average)
+})
 
 const today = new Date().toISOString().slice(0, 10)
 const selectedDate = ref(today)
@@ -998,11 +1004,7 @@ const radarConfig = computed(() => {
     }
 })
 
-const gaugeConfig = computed(() => {
-    return {
-
-    }
-})
+const detailSortMode = ref('byVotes') // or 'byRatings'
 
 </script>
 
@@ -1166,11 +1168,26 @@ const gaugeConfig = computed(() => {
         <VueDataUi component="VueUiHistoryPlot" :dataset="historyPlotDataset" :config="historyPlotConfig" />
     </div>
 
-    <h2 v-if="ratings.length" class="my-6 text-xl">
+    <h2 v-if="ratings.length" class="mt-12 mb-3 text-xl">
         User ratings of individual components
     </h2>
+
+    <div class="flex flex-row place-items-center justify-center mb-6 gap-4">
+        <label class="flex flex-row gap-1 place-items-center cursor-pointer">
+            <span :class="`select-none ${detailSortMode === 'byVotes' ? 'text-app-blue' : ''}`">By votes</span>
+            <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byVotes">
+        </label>
+        <label class="flex flex-row gap-1 place-items-center cursor-pointer">
+            <span :class="`select-none ${detailSortMode === 'byRatings' ? 'text-app-blue' : ''}`">By ratings</span>
+            <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byRatings">
+        </label>
+    </div>
+
     <div class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10" v-if="ratings.length">
-        <ButtonSatisfactionBreakdown v-for="c in ratings" :dataset-gauge="{
+        <ButtonSatisfactionBreakdown
+            v-for="c in individualRatings"
+            :key="c.id"
+            :dataset-gauge="{
             value: c.average,
             series: [
                 { from: 1, to: 3, color: '#c97047' , name: 'BAD' },

@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.7.6",
+    "date": "2025-05-26",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix area base y position when all values are negative",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.7.5",
     "date": "2025-05-25",
     "updates": [
