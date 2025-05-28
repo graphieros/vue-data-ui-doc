@@ -139,6 +139,17 @@ export default function useCharts() {
                 ko: "UI 도구",
                 ar: "أدوات واجهة المستخدم"
             },
+            maps: {
+                en: 'Maps',
+                fr: 'Cartes',
+                pt: 'Mapas',
+                de: 'Karten',
+                zh: '地图',
+                jp: '地図',
+                es: 'Mapas',
+                ko: '지도',
+                ar: 'خرائط'
+            }
         }
     });
 
@@ -275,13 +286,31 @@ export default function useCharts() {
                 es: "Herramientas geniales para mejorar tu interfaz de usuario.",
                 ko: "UI를 업그레이드할 멋진 도구들.",
                 ar: "أدوات رائعة لتحسين واجهة المستخدم الخاصة بك."
-            }
+            },
+            maps: {
+                en: "",
+                fr: "",
+                pt: "",
+                de: "",
+                zh: "",
+                jp: "",
+                es: "",
+                ko: "",
+                ar: ""
+            },
         }
     })
 
 
     const taxinomy = computed(() => {
         return {
+            VueUiWorld: {
+                icon: 'world',
+                link: '/docs#vue-ui-world',
+                description: translations.value.docs.tooltips.world[store.lang],
+                taxinomy: ['maps'],
+                singleTaxinomy: 'maps'
+            },
             VueUiXy: {
                 icon: 'chartLine',
                 link: '/docs#vue-ui-xy',
