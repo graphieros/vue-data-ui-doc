@@ -16,6 +16,8 @@ import BaseAttr from "../BaseAttr.vue";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import { VueUiPattern } from "vue-data-ui";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseComment from "../BaseComment.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
