@@ -2060,6 +2060,17 @@ export const useMainStore = defineStore("main", {
                             ko: "3D 막대로 백분율 시각화",
                             ar: 'تصور النسب المئوية باستخدام شريط ثلاثي الأبعاد'
                         },
+                        world: {
+                            en: "An interactive world map that highlights countries and displays custom tooltips with country data.",
+                            fr: "Une carte du monde interactive qui met en surbrillance les pays et affiche des infobulles personnalisées avec des données par pays.",
+                            pt: "Um mapa mundial interativo que destaca países e exibe dicas personalizadas com dados de cada país.",
+                            de: "Eine interaktive Weltkarte, die Länder hervorhebt und individuelle Tooltips mit Länderdaten anzeigt.",
+                            zh: "一个交互式世界地图，高亮显示国家并展示包含国家数据的自定义提示框。",
+                            jp: "国をハイライトし、国のデータ付きカスタムツールチップを表示するインタラクティブな世界地図です。",
+                            es: "Un mapa mundial interactivo que resalta países y muestra información personalizada con datos de cada país.",
+                            ko: "국가를 강조 표시하고 국가 데이터를 포함한 맞춤 툴팁을 표시하는 인터랙티브 세계 지도입니다.",
+                            ar: "خريطة عالمية تفاعلية تبرز البلدان وتعرض تلميحات مخصصة تحتوي على بيانات كل بلد."
+                        },
                         circlePack: {
                             en: "Effectively represent hierarchical data, with each value proportionally scaled into a visually intuitive arrangement of packed circles.",
                             fr: "Représentez efficacement des données hiérarchiques, avec chaque valeur proportionnellement mise à l'échelle dans un arrangement visuel intuitif de cercles imbriqués.",

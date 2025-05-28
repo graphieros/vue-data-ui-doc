@@ -182,6 +182,7 @@ const specialIcons = ref([
     "triangleFill",
     "vueDataUi",
     "window",
+    "world",
     "zoomMinus",
     "zoomPlus",
 ])

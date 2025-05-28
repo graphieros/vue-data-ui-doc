@@ -499,6 +499,16 @@ const smallMenu = ref([
         component: 'Dumbbell'
     },
     {
+        route: '/docs#vue-ui-world',
+        icon: 'world',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'World',
+        thumb: new URL('../assets/thumb_world.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_world_light.png', import.meta.url).href,
+        component: 'World'
+    },
+    {
         route: '/docs#vue-ui-3d-bar',
         icon: 'chart3dBar',
         cssClasses: '',
@@ -777,6 +787,7 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-molecule', componentName: 'Molecule', icon: 'chartCluster' },
             {route: '/docs#vue-ui-strip-plot', componentName: 'StripPlot', icon: 'chartStripPlot' },
             {route: '/docs#vue-ui-dumbbell', componentName: 'Dumbbell', icon: 'chartDumbbell' },   
+            {route: '/docs#vue-ui-world', componentName: 'World', icon: 'world' },   
         ],
         icon: 'chartScatter'
     },

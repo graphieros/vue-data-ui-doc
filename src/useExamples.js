@@ -53,6 +53,205 @@ export default function useExamples() {
         }
     })
 
+    //-------------- VUE-UI-WORLD --------------//
+    const DATASET_WORLD = ref({
+        AFG: { value: 12.8 },
+        ALB: { value: 13.5 },
+        DZA: { value: 22.2 },
+        AGO: { value: 22.4 },
+        ARG: { value: 14.8 },
+        ARM: { value: 7.2 },
+        AUS: { value: 21.8 },
+        AUT: { value: 8.5 },
+        AZE: { value: 12.4 },
+        BHS: { value: 24.9 },
+        BHR: { value: 27.5 },
+        BGD: { value: 25.9 },
+        BRB: { value: 26.5 },
+        BLR: { value: 7.0 },
+        BEL: { value: 10.5 },
+        BLZ: { value: 25.9 },
+        BEN: { value: 27.8 },
+        BTN: { value: 12.0 },
+        BOL: { value: 20.1 },
+        BIH: { value: 10.9 },
+        BWA: { value: 21.5 },
+        BRA: { value: 24.9 },
+        BRN: { value: 26.8 },
+        BGR: { value: 10.8 },
+        BFA: { value: 28.3 },
+        BDI: { value: 19.9 },
+        KHM: { value: 27.5 },
+        CMR: { value: 24.6 },
+        CAN: { value: -5.35 },
+        CPV: { value: 24.0 },
+        CAF: { value: 25.6 },
+        TCD: { value: 26.9 },
+        CHL: { value: 8.5 },
+        CHN: { value: 6.9 },
+        COL: { value: 24.2 },
+        COM: { value: 25.4 },
+        COG: { value: 24.5 },
+        COD: { value: 24.8 },
+        CRI: { value: 24.8 },
+        HRV: { value: 11.6 },
+        CUB: { value: 25.2 },
+        CYP: { value: 19.6 },
+        CZE: { value: 8.0 },
+        DNK: { value: 7.7 },
+        DJI: { value: 29.8 },
+        DMA: { value: 26.0 },
+        DOM: { value: 25.5 },
+        TLS: { value: 26.9 },
+        ECU: { value: 21.8 },
+        EGY: { value: 22.0 },
+        SLV: { value: 24.8 },
+        GNQ: { value: 25.0 },
+        ERI: { value: 26.0 },
+        EST: { value: 5.2 },
+        SWZ: { value: 20.0 },
+        ETH: { value: 22.0 },
+        FJI: { value: 26.0 },
+        FIN: { value: 2.0 },
+        FRA: { value: 11.5 },
+        GAB: { value: 25.0 },
+        GMB: { value: 27.5 },
+        GEO: { value: 7.5 },
+        DEU: { value: 8.5 },
+        GHA: { value: 26.8 },
+        GRC: { value: 16.5 },
+        GRD: { value: 26.5 },
+        GTM: { value: 22.0 },
+        GIN: { value: 26.0 },
+        GNB: { value: 26.5 },
+        GUY: { value: 26.8 },
+        HTI: { value: 25.5 },
+        HND: { value: 23.5 },
+        HUN: { value: 10.5 },
+        ISL: { value: 1.75 },
+        IND: { value: 24.0 },
+        IDN: { value: 25.5 },
+        IRN: { value: 17.0 },
+        IRQ: { value: 22.0 },
+        IRL: { value: 9.5 },
+        ISR: { value: 20.0 },
+        ITA: { value: 13.5 },
+        JAM: { value: 25.5 },
+        JPN: { value: 11.5 },
+        JOR: { value: 18.0 },
+        KAZ: { value: 5.0 },
+        KEN: { value: 24.0 },
+        KIR: { value: 28.0 },
+        PRK: { value: 8.0 },
+        KOR: { value: 12.5 },
+        KWT: { value: 27.5 },
+        KGZ: { value: 5.0 },
+        LAO: { value: 25.0 },
+        LVA: { value: 6.0 },
+        LBN: { value: 15.0 },
+        LSO: { value: 12.0 },
+        LBR: { value: 26.5 },
+        LBY: { value: 22.0 },
+        LIE: { value: 8.0 },
+        LTU: { value: 6.5 },
+        LUX: { value: 9.0 },
+        MDG: { value: 22.0 },
+        MWI: { value: 22.5 },
+        MYS: { value: 26.5 },
+        MDV: { value: 28.0 },
+        MLI: { value: 28.3 },
+        MLT: { value: 18.8 },
+        MHL: { value: 27.5 },
+        MRT: { value: 26.0 },
+        MUS: { value: 23.0 },
+        MEX: { value: 21.0 },
+        FSM: { value: 27.0 },
+        MDA: { value: 9.0 },
+        MCO: { value: 16.0 },
+        MNG: { value: -0.5 },
+        MNE: { value: 11.5 },
+        MAR: { value: 17.5 },
+        MOZ: { value: 23.5 },
+        MMR: { value: 25.5 },
+        NAM: { value: 20.0 },
+        NRU: { value: 28.0 },
+        NPL: { value: 12.0 },
+        NLD: { value: 9.5 },
+        NZL: { value: 10.5 },
+        NIC: { value: 25.5 },
+        NER: { value: 28.3 },
+        NGA: { value: 26.0 },
+        MKD: { value: 11.0 },
+        NOR: { value: 1.5 },
+        OMN: { value: 27.0 },
+        PAK: { value: 20.0 },
+        PLW: { value: 27.5 },
+        PAN: { value: 25.5 },
+        PNG: { value: 25.5 },
+        PRY: { value: 23.5 },
+        PER: { value: 19.5 },
+        PHL: { value: 26.5 },
+        POL: { value: 7.5 },
+        PRT: { value: 15.5 },
+        QAT: { value: 28.0 },
+        ROU: { value: 9.5 },
+        RUS: { value: -5.1 },
+        RWA: { value: 19.0 },
+        KNA: { value: 26.5 },
+        LCA: { value: 26.5 },
+        VCT: { value: 26.5 },
+        WSM: { value: 26.5 },
+        SMR: { value: 13.5 },
+        STP: { value: 26.5 },
+        SAU: { value: 24.5 },
+        SEN: { value: 27.5 },
+        SRB: { value: 11.0 },
+        SYC: { value: 27.0 },
+        SLE: { value: 26.5 },
+        SGP: { value: 27.0 },
+        SVK: { value: 8.5 },
+        SVN: { value: 9.0 },
+        SLB: { value: 26.5 },
+        SOM: { value: 27.5 },
+        ZAF: { value: 17.5 },
+        SSD: { value: 27.5 },
+        ESP: { value: 15.5 },
+        LKA: { value: 26.0 },
+        SDN: { value: 27.5 },
+        SUR: { value: 27.0 },
+        SWE: { value: 2.0 },
+        CHE: { value: 6.0 },
+        SYR: { value: 18.0 },
+        TWN: { value: 21.7 },
+        TJK: { value: 7.0 },
+        TZA: { value: 22.5 },
+        THA: { value: 26.3 },
+        TGO: { value: 27.2 },
+        TON: { value: 24.8 },
+        TTO: { value: 26.5 },
+        TUN: { value: 18.7 },
+        TUR: { value: 13.2 },
+        TKM: { value: 15.8 },
+        TUV: { value: 28.0 },
+        UGA: { value: 22.8 },
+        UKR: { value: 7.7 },
+        ARE: { value: 27.7 },
+        GBR: { value: 9.3 },
+        USA: { value: 8.6 },
+        URY: { value: 16.7 },
+        UZB: { value: 13.2 },
+        VUT: { value: 24.0 },
+        VAT: { value: 15.0 },
+        VEN: { value: 26.8 },
+        VNM: { value: 24.7 },
+        YEM: { value: 23.5 },
+        ZMB: { value: 21.7 },
+        ZWE: { value: 21.1 },
+        CIV: { value: 26.5 },
+        SOM: { value: 27.5 },
+        XKX: { value: 10.7 },
+    });
+
     //-------------- VUE-UI-XY --------------//
 
     const LINESET = ref([
@@ -2722,8 +2921,329 @@ export default function useExamples() {
         }
     })
 
+    const CONFIG_WORLD_BASIC = computed(() => {
+        return {
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    territory: {
+                        stroke: isDarkMode.value ? '#FFFFFF' : '#FFFFFF',
+                        colors: {
+                            min: '#b8c8fc',
+                            max: '#b54f0b'
+                        },
+                        emptyColor: isDarkMode.value ? '#4A4A4A' : '#E0E0E0'
+                    },
+                    dataLabels: {
+                        suffix: '°C'
+                    },
+                    title: {
+                        text: 'Average yearly temperatures °C',
+                        color: colors.value.textColor,
+                        subtitle: {
+                            text: '(Approximation)',
+                            color: colors.value.grey
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        showPercentage: false,
+                        borderColor: colors.value.gridStroke,
+                        backgroundOpacity: 30
+                    },
+                }
+            }
+        }
+    })
+
     const examples = computed(() => {
         return [
+            // WORLD GLOBE
+            {
+                dataset: DATASET_WORLD.value,
+                config: CONFIG_WORLD_BASIC.value,
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Globe projection',
+                    fr: 'Projection du globe',
+                    pt: 'Projeção do globo',
+                    de: 'Globus-Projektion',
+                    zh: '地球投影',
+                    jp: '地球儀投影',
+                    es: 'Proyección del globo',
+                    ko: '지구본 투영',
+                    ar: 'إسقاط الكرة الأرضية'
+                }
+            },
+            // WORLD MERCATOR
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'mercator'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Mercator projection',
+                    fr: 'Projection de Mercator',
+                    pt: 'Projeção de Mercator',
+                    de: 'Mercator-Projektion',
+                    zh: '墨卡托投影',
+                    jp: 'メルカトル図法',
+                    es: 'Proyección de Mercator',
+                    ko: '메르카토르 도법',
+                    ar: 'إسقاط مركاتور'
+                }
+            },
+            // WORLD AITOFF
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'aitoff'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Aitoff projection',
+                    fr: 'Projection Aitoff',
+                    pt: 'Projeção de Aitoff',
+                    de: 'Aitoff-Projektion',
+                    zh: '艾托夫投影',
+                    jp: 'アイトフ図法',
+                    es: 'Proyección de Aitoff',
+                    ko: '아이토프 도법',
+                    ar: 'إسقاط أيتوف'
+                }
+            },
+            // WORLD AZIMUTAL EQUIDISTANT
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'azimuthalEquidistant'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Azimuthal equidistant projection',
+                    fr: 'Projection azimutale équidistante',
+                    pt: 'Projeção azimutal equidistante',
+                    de: 'Azimutal äquidistante Projektion',
+                    zh: '方位等距投影',
+                    jp: '方位等距図法',
+                    es: 'Proyección azimutal equidistante',
+                    ko: '방위 등거리 투영법',
+                    ar: 'إسقاط سمتي متساوي البعد'
+                }
+            },
+            // WORLD BONNE
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'bonne'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Bonne projection',
+                    fr: 'Projection de Bonne',
+                    pt: 'Projeção de Bonne',
+                    de: 'Bonne-Projektion',
+                    zh: '邦纳投影',
+                    jp: 'ボンヌ図法',
+                    es: 'Proyección de Bonne',
+                    ko: '본 도법',
+                    ar: 'إسقاط بونيه'
+                }
+            },
+            // WORLD EQUI RECTANGULAR
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'equirectangular'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Equirectangular projection',
+                    fr: 'Projection équirectangulaire',
+                    pt: 'Projeção equiretangular',
+                    de: 'Equirektangulare Projektion',
+                    zh: '等矩形投影',
+                    jp: '等緯度経線図法',
+                    es: 'Proyección equirectangular',
+                    ko: '등직각 도법',
+                    ar: 'الإسقاط المستطيل المتساوي'
+                }
+            },
+            // WORLD GALL PETERS
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'gallPeters'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Gall Peters projection',
+                    fr: 'Projection Gall-Peters',
+                    pt: 'Projeção Gall-Peters',
+                    de: 'Gall-Peters-Projektion',
+                    zh: '盖尔-彼得斯投影',
+                    jp: 'ガル＝ピーターズ図法',
+                    es: 'Proyección Gall-Peters',
+                    ko: '갈-피터스 도법',
+                    ar: 'إسقاط غال-بيترز'
+                }
+            },
+            // WORLD HAMMER
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'hammer'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Hammer projection',
+                    fr: 'Projection Hammer',
+                    pt: 'Projeção Hammer',
+                    de: 'Hammer-Projektion',
+                    zh: '哈默投影',
+                    jp: 'ハマー図法',
+                    es: 'Proyección Hammer',
+                    ko: '해머 도법',
+                    ar: 'إسقاط هامَر'
+                }
+            },
+            // WORLD MOLLWEIDE
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'mollweide'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Mollweide projection',
+                    fr: 'Projection Mollweide',
+                    pt: 'Projeção Mollweide',
+                    de: 'Mollweide-Projektion',
+                    zh: '莫尔魏德投影',
+                    jp: 'モルワイデ図法',
+                    es: 'Proyección Mollweide',
+                    ko: '몰바이데 도법',
+                    ar: 'إسقاط مولفايده'
+                }
+            },
+            // WORLD ROBINSON
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'robinson'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Robinson projection',
+                    fr: 'Projection Robinson',
+                    pt: 'Projeção de Robinson',
+                    de: 'Robinson-Projektion',
+                    zh: '罗宾逊投影',
+                    jp: 'ロビンソン図法',
+                    es: 'Proyección Robinson',
+                    ko: '로빈슨 도법',
+                    ar: 'إسقاط روبنسون'
+                }
+            },
+            // WORLD SINUSOIDAL
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'sinusoidal'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Sinusoidal projection',
+                    fr: 'Projection sinusoïdale',
+                    pt: 'Projeção sinusoidal',
+                    de: 'Sinusoidal-Projektion',
+                    zh: '正弦曲线投影',
+                    jp: 'サイノソイダル図法',
+                    es: 'Proyección sinusoidal',
+                    ko: '사인 곡선 도법',
+                    ar: 'إسقاط جيبي'
+                }
+            },
+            // WORLD VAN DER GRINTEN
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'vanDerGrinten'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Van Der Grinten projection',
+                    fr: 'Projection Van Der Grinten',
+                    pt: 'Projeção Van Der Grinten',
+                    de: 'Van-der-Grinten-Projektion',
+                    zh: '范德格林滕投影',
+                    jp: 'ヴァン・デル・グリント図法',
+                    es: 'Proyección Van Der Grinten',
+                    ko: '반 데어 그린텐 도법',
+                    ar: 'إسقاط فان دير غرينتن'
+                }
+            },
+            // WORLD WINKEL TRIPEL
+            {
+                dataset: DATASET_WORLD.value,
+                config: {
+                    ...CONFIG_WORLD_BASIC.value,
+                    projection: 'winkelTripel'
+                },
+                component: 'VueUiWorld',
+                icon: 'world',
+                link: 'vue-ui-world',
+                description: {
+                    en: 'Winkel Tripel projection',
+                    fr: 'Projection Winkel Tripel',
+                    pt: 'Projeção Winkel Tripel',
+                    de: 'Winkel-Tripel-Projektion',
+                    zh: '温克尔三重投影',
+                    jp: 'ウィンケル・トリペル図法',
+                    es: 'Proyección Winkel Tripel',
+                    ko: '빈켈 트리펠 도법',
+                    ar: 'إسقاط وينكل تريبل'
+                }
+            },
+
             // XY BASIC LINE
             { 
                 dataset: DATASET_XY_BASIC_LINE.value, 

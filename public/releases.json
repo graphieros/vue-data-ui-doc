@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.8.0",
+    "date": "2025-05-28",
+    "updates": [
+      {
+        "component": "VueUiWorld",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-world"
+      }
+    ]
+  },
+  {
     "version": "v 2.7.6",
     "date": "2025-05-26",
     "updates": [

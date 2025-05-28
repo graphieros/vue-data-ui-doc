@@ -80,6 +80,7 @@ const DocVueUiFunnel = defineAsyncComponent(() => import('../components/docs/Doc
 const DocVueUiHistoryPlot = defineAsyncComponent(() => import('../components/docs/DocVueUiHistoryPlot.vue'));
 const DocUtilityFunctions = defineAsyncComponent(() => import('../components/docs/DocUtilityFunctions.vue'));
 const DocVueUiCirclePack = defineAsyncComponent(() => import('../components/docs/DocVueUiCirclePack.vue'));
+const DocVueUiWorld = defineAsyncComponent(() => import('../components/docs/DocVueUiWorld.vue'));
 
 const mainConfig = useConfig()
 
@@ -811,6 +812,18 @@ const menuItems = computed(() => [
         hasLegend: true
     },
     {
+        name: "World",
+        icon: "world",
+        tooltip: translations.value.docs.tooltips.world[store.lang],
+        link: "/docs#vue-ui-world",
+        type: ['misc'],
+        thumb: new URL('../assets/thumb_world.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_world_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: true
+    },
+    {
         name: "WordCloud",
         icon: "chartWordCloud",
         tooltip: translations.value.docs.tooltips.wordCloud[store.lang],
@@ -1173,6 +1186,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiCirclePack v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-circle-pack'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiWorld v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-world'" />
             </Transition>
 
             <Transition name="fade">

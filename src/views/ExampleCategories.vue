@@ -101,6 +101,15 @@ const categories = computed(() => {
             description: translations.value.docs.tooltips.stackbar,
             raterId: 'vue_ui_stackbar'
         },
+        {
+            link: 'vue-ui-world',
+            icon: 'world',
+            component: 'VueUiWorld',
+            thumb: new URL('../assets/thumb_world.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_world_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.world,
+            raterId: 'vue_ui_world'
+        },
         { 
             link: 'vue-ui-nested-donuts', 
             icon: 'chartNestedDonuts', 
