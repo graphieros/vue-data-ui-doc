@@ -215,10 +215,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDashboardElemen
         height: 25,
         left: 62,
         top: 2,
-        component: 'VueUiDonut',
+        component: markRaw(MyCustomComponent), // VueUiDashboard supports custom components since v2.8.1
         props: {
-            config: myDonutConfig,
-            dataset: myDonutDataset
+            str: 'My custom string'
         }
     }
 ]
