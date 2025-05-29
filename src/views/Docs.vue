@@ -174,6 +174,7 @@ const themeKeys = computed(() => {
             "vue_ui_kpi",
             "vue_ui_carousel_table",
             "vue_ui_gizmo",
+            "vue_ui_world"
         ].includes(key)
     });
 });
