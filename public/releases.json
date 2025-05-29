@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.9.0",
+    "date": "2025-05-29",
+    "updates": [
+      {
+        "component": "Package deps",
+        "description": "Move jspdf to peer deps",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.8.1",
     "date": "2025-05-29",
     "updates": [
