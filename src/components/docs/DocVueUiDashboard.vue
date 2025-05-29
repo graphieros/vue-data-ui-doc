@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, nextTick, onMounted } from "vue";
+import { ref, computed, watch, nextTick, onMounted, markRaw } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
@@ -8,6 +8,7 @@ import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import BaseButtonSparkline from "../BaseButtonSparkline.vue";
 
 const mainConfig = useConfig()
 
@@ -22,6 +23,8 @@ watch(() => store.isDarkMode, (val) => {
         key.value += 1;
     })
 });
+
+const isDarkMode = computed(() => store.isDarkMode)
 
 const config = ref(
     {
@@ -70,11 +73,65 @@ function copyToClipboard(conf) {
     store.copy();
 }
 
+const sparklineDatasetUsers = computed(() => {
+    const arr = [];
+
+    for (let i = 0; i < 31; i += 1) {
+        arr.push({
+            period: `${i + 1 < 10 ? "0" : ""}${i + 1}-01-2026`,
+            value: Math.round(Math.random() * 1000),
+        });
+    }
+
+    return arr;
+});
+
+
+const sparklineConfigUsers = computed(() => {
+    return {
+        theme: "",
+        responsive: false,
+        type: "line",
+        downsample: { threshold: 500 },
+        style: {
+            scaleMax: 1000,
+            chartWidth: 290,
+            animation: { show: true, animationFrames: 360 },
+            fontFamily: "inherit",
+            backgroundColor: 'transparent',
+            line: { color: "#5f8bee", strokeWidth: 3, smooth: true },
+            bar: { borderRadius: 3, color: "#5f8bee" },
+            zeroLine: { color: "#2D353C", strokeWidth: 1 },
+            plot: { show: true, radius: 8, stroke: "#FFFFFF", strokeWidth: 1 },
+            verticalIndicator: {
+                show: true,
+                strokeWidth: 1.5,
+                color: isDarkMode.value ? "#FFFFFF" : "#5f8bee",
+                strokeDasharray: 0,
+            },
+            dataLabel: {
+                show: false,
+            },
+            title: {
+                show: false,
+            },
+            area: { show: true, useGradient: true, opacity: 30, color: "#5f8bee" },
+        },
+    };
+});
+
 const dashboardComponents = computed(() => {
     return [
         { id: 1, width: 50, height: 25, left: 3, top: 2, component: 'VueUiXy', props: { config: xyConfig, dataset: xyDataset}},
         { id: 2, width: 35, height: 25, left: 62, top: 2, component: 'VueUiDonut', props: { config: donutConfig, dataset: donutDataset}},
-        { id: 3, width: 35, height: 33, left: 3, top: 29, component: 'VueUiWaffle', props: { config: waffleConfig, dataset: waffleDataset}},
+        { id: 3, width: 25, height: 7, left: 12, top: 45, component: markRaw(BaseButtonSparkline), props: {
+            title: 'Daily users',
+            buttonClass: 'bg-gradient-to-bl from-app-blue-light to-app-blue hover:bg-gradient-to-l text-black transition-all',
+            popoverClass: 'rounded-b-md py-1 bg-white dark:bg-[#2A2A2A] shadow-md',
+            sparklineDataset: sparklineDatasetUsers.value,
+            sparklineConfig: sparklineConfigUsers.value,
+            openState: true
+        }},
         { id: 4, width: 55, height: 33, left: 42, top: 31, component: 'VueUiRadar', props: { config: radarConfig, dataset: radarDataset}},
         { id: 5, width: 94, height: 36, left: 3, top: 62, component: 'VueUiChestnut', props: { config: chestnutConfig, dataset: chestnutDataset}},
     ]

@@ -29,6 +29,10 @@ const props = defineProps({
         type: String,
         default: ''
     },
+    openState: {
+        type: Boolean,
+        default: false
+    }
 })
 
 const emit = defineEmits(['open'])
@@ -46,7 +50,7 @@ function hoverIndex({ index }) {
     }
 }
 
-const isOpen = ref(false);
+const isOpen = ref(props.openState);
 
 function open(state) {
     isOpen.value = state;
@@ -60,6 +64,7 @@ function open(state) {
         <BasePopoverButton
             :buttonClass="`${buttonClass} ${isOpen ? 'rounded-t-md' : 'rounded-md shadow-lg'}`"
             :popoverClass="popoverClass"
+            :openState="openState"
             @open="open"
         >
             <template #button-content>

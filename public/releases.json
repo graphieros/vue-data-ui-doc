@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.8.1",
+    "date": "2025-05-29",
+    "updates": [
+      {
+        "component": "VueUiWorld",
+        "description": "Reverse drag direction in globe projection",
+        "link": "/docs#vue-ui-world"
+      },
+      {
+        "component": "VueUiDashboard",
+        "description": "Add support for custom components",
+        "link": "/docs#vue-ui-dashboard"
+      }
+    ]
+  },
+  {
     "version": "v 2.8.0",
     "date": "2025-05-28",
     "updates": [

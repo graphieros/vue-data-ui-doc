@@ -284,7 +284,7 @@ const componentTranslation = ref({
 })
 
 const specialOccasion = computed(() => {
-  return [1200, 1250, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 3000, 4000, 5000].includes(store.stars) || store.stars > 5000;
+  return [1200, 1250, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 7500, 10000].includes(store.stars) || store.stars > 20000;
 })
 
 </script>

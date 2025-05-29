@@ -13,12 +13,16 @@ const props = defineProps({
     popoverClass: {
         type: String,
         default: ''
+    },
+    openState: {
+        type: Boolean,
+        default: false
     }
 });
 
 const emit = defineEmits(['open']);
 
-const isOpen = ref(false);
+const isOpen = ref(props.openState);
 const buttonRef = ref(null);
 
 const togglePopover = () => {
