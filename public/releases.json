@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.9.2",
+    "date": "2025-05-30",
+    "updates": [
+      {
+        "component": "VueUiTable",
+        "description": "Fix reactivity issue with dataset",
+        "link": "/docs#vue-ui-table"
+      }
+    ]
+  },
+  {
     "version": "v 2.9.1",
     "date": "2025-05-30",
     "updates": [
