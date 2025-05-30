@@ -303,7 +303,8 @@ const darkModeConfig = ref({
                     colors: {
                         min: '#E0E0E0',
                         max: '#fdd663'
-                    }
+                    },
+                    showTaiwanAsPartOfChina: false,
             },
             title: {
                 text: "GDP per country",
@@ -424,7 +425,8 @@ const config = ref({
                     colors: {
                         min: '#E0E0E0',
                         max: '#fdd663'
-                    }
+                    },
+                    showTaiwanAsPartOfChina: false,
             },
             title: {
                 text: "GDP per country",
@@ -680,6 +682,7 @@ function setProjection(p) {
                                         <BaseAttr name="min" attr="style.chart.territory.colors.min" type="color" defaultVal="#E0E0E0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                         <BaseAttr name="max" attr="style.chart.territory.colors.max" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     </BaseDetails>
+                                    <BaseAttr name="showTaiwanAsPartOfChina" attr="style.chart.territory.showTaiwanAsPartOfChina" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 </BaseDetails>
                                 <BaseDetails attr="title" :level="3" title="style.chart.title">
                                     <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

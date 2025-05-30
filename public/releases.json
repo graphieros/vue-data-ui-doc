@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.9.1",
+    "date": "2025-05-30",
+    "updates": [
+      {
+        "component": "VueUiWorld",
+        "description": "Add optional config attribute to show Taiwan as part of China",
+        "link": "/docs#vue-ui-world"
+      }
+    ]
+  },
+  {
     "version": "v 2.9.0",
     "date": "2025-05-29",
     "updates": [
