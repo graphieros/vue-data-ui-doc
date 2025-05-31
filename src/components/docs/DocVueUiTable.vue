@@ -339,6 +339,8 @@ const config = ref({
                     stroke: "#FFFFFF"
                 },
                 line: {
+                    smooth: true,
+                    useArea: false,
                     stroke: "#42d392",
                     strokeWidth: 4,
                     plot: {
@@ -503,6 +505,8 @@ const darkModeConfig = ref({
                     stroke: "#1a1a1a"
                 },
                 line: {
+                    smooth: true,
+                    useArea: false,
                     stroke: "#42d392",
                     strokeWidth: 4,
                     plot: {
@@ -960,11 +964,13 @@ const dsTypeCode = computed(() => {
                         stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.bar.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.bar.stroke">, (default: "#FFFFFF")
                     },
                     line: {
+                        smooth: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.line.smooth"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.line.smooth">
+                        useArea: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.line.useArea"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.line.useArea">
                         stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.line.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.line.stroke">, (default: "#6376DD")
                         strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.strokeWidth"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.strokeWidth">, (default: 4)
                         plot: {
                             fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.line.plot.fill"><input v-else type="color" v-model="mutableConfig.style.chart.layout.line.plot.fill">, (default: "#22348f")
-                            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.line.plot.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.line.plot.stroke">, (default: "#FFFFFF")
+                            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.line.plot.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.line.plot.stroke">, (default: "#FFFFFF", deprecated since v2.9.3)
                             strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.plot.strokeWidth"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.plot.strokeWidth">, (default: 1)
                             radius: {
                                 selected: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.plot.radius.selected"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.plot.radius.selected">, (default: 6)
@@ -972,9 +978,9 @@ const dsTypeCode = computed(() => {
                             }
                         },
                         selector: {
-                            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.line.selector.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.line.selector.stroke">, (default: "#CCCCCC")
-                            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.selector.strokeWidth"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.selector.strokeWidth">, (default: 4)
-                            strokeDasharray: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.selector.strokeDasharray"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.selector.strokeDasharray">, (default: 5)
+                            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.line.selector.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.line.selector.stroke">, (default: "#CCCCCC", deprecated since v2.9.3)
+                            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.selector.strokeWidth"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.selector.strokeWidth">, (default: 4, deprecated since v2.9.3)
+                            strokeDasharray: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.selector.strokeDasharray"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.selector.strokeDasharray">, (default: 5, deprecated since v2.9.3)
                         },
                     },
                     labels: {

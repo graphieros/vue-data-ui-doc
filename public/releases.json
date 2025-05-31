@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.9.4",
+    "date": "2025-05-31",
+    "updates": [
+      {
+        "component": "VueUiTable",
+        "description": "Use VueUiXy and VueUiDonut for charts. Fix chart dialog resizing issues.",
+        "link": "/docs#vue-ui-table"
+      }
+    ]
+  },
+  {
     "version": "v 2.9.2",
     "date": "2025-05-30",
     "updates": [
