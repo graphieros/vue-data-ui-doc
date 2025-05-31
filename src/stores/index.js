@@ -48,6 +48,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                updateDatasetWillReset: {
+                    en: 'Dynamic updating the dataset results in a reset of the internal state of the component.',
+                    fr: 'La mise à jour dynamique du jeu de données réinitialise l’état interne du composant.',
+                    pt: 'A atualização dinâmica do conjunto de dados resulta na redefinição do estado interno do componente.',
+                    de: 'Das dynamische Aktualisieren des Datensatzes setzt den internen Zustand der Komponente zurück.',
+                    zh: '动态更新数据集会导致组件的内部状态重置。',
+                    jp: 'データセットを動的に更新すると、コンポーネントの内部状態がリセットされます。',
+                    es: 'La actualización dinámica del conjunto de datos restablece el estado interno del componente.',
+                    ko: '데이터셋을 동적으로 업데이트하면 컴포넌트의 내부 상태가 초기화됩니다.',
+                    ar: 'تحديث مجموعة البيانات ديناميكيًا يؤدي إلى إعادة تعيين الحالة الداخلية للمكوّن.'
+                },
                 checkSlotsTab: {
                     en: "Check the 'Slots' tab of the documentation",
                     fr: "Consultez l'onglet 'Slots' de la documentation",

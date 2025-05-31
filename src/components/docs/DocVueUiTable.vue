@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch, nextTick, onMounted } from "vue";
 import Box from "../Box.vue";
-import { CopyIcon } from "vue-tabler-icons";
+import { CopyIcon, InfoCircleIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import { useConfig } from "../../assets/useConfig";
 import BaseSpinner from "../BaseSpinner.vue";
@@ -644,6 +644,12 @@ const dsTypeCode = computed(() => {
                     TS type: <code class="text-app-green">VueUiTableDataset</code>
                 </div>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+                    <div class="mt-3 flex flex-row flex-wrap place-items-center gap-2 text-gray-500">
+                        <InfoCircleIcon/>
+                        <span>
+                            {{ translations.updateDatasetWillReset[store.lang] }}
+                        </span>
+                    </div>
 
         <CodeParser
             language="typescript"
