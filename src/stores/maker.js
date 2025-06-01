@@ -1568,6 +1568,39 @@ export const useMakerStore = defineStore('maker', {
                         ko: "긍정적인",
                         ar: "إيجابي"
                     },
+                    country: {
+                        en: 'Country',
+                        fr: 'Pays',
+                        pt: 'País',
+                        de: 'Land',
+                        zh: '国家',
+                        jp: '国',
+                        es: 'País',
+                        ko: '국가',
+                        ar: 'دولة'
+                    },
+                    emptyColor: {
+                        en: 'Empty color',
+                        fr: 'Couleur vide',
+                        pt: 'Cor vazia',
+                        de: 'Leere Farbe',
+                        zh: '空色',
+                        jp: '空の色',
+                        es: 'Color vacío',
+                        ko: '빈 색상',
+                        ar: 'لون فارغ'
+                    },
+                    projection: {
+                        en: 'Map projection',
+                        fr: 'Projection cartographique',
+                        pt: 'Projeção cartográfica',
+                        de: 'Kartografische Projektion',
+                        zh: '地图投影',
+                        jp: '地図投影法',
+                        es: 'Proyección cartográfica',
+                        ko: '지도 투영법',
+                        ar: 'إسقاط الخريطة'
+                    },
                     prefix: {
                         en: "Prefix",
                         fr: "Préfixe",
@@ -1710,6 +1743,16 @@ export const useMakerStore = defineStore('maker', {
                         es: "Escala",
                         ko: "규모",
                         ar: 'حجم'
+                    },
+                    showTaiwanAsPartOfChina: {
+                        en: 'Show Taiwan as part of China',
+                        fr: 'Afficher Taïwan comme faisant partie de la Chine',
+                        pt: 'Mostrar Taiwan como parte da China',
+                        de: 'Taiwan als Teil Chinas anzeigen',
+                        zh: '将台湾显示为中国的一部分',
+                        jp: '台湾を中国の一部として表示する',
+                        ko: '대만을 중국의 일부로 표시',
+                        ar: 'إظهار تايوان كجزء من الصين'
                     },
                     selected: {
                         en: 'Selected',

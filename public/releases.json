@@ -1,7 +1,18 @@
 [
   {
+    "version": "v 2.9.6",
+    "date": "2025-06-01",
+    "updates": [
+      {
+        "component": "VueUiWorld",
+        "description": "Fix issues with legend colors",
+        "link": "/docs#vue-ui-world"
+      }
+    ]
+  },
+  {
     "version": "v 2.9.5",
-    "date": "2025-05-31",
+    "date": "2025-06-01",
     "updates": [
       {
         "component": "Technical release",

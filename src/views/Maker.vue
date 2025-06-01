@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, defineAsyncComponent, watch } from "vue";
+import { ref, computed, onMounted, defineAsyncComponent, watch, markRaw } from "vue";
 import { useMainStore } from "../stores";
 import { useMakerStore } from "../stores/maker"
 import Tooltip from "../components/FlexibleTooltip.vue";
@@ -47,6 +47,7 @@ const MakerBullet = defineAsyncComponent(() => import('../components/maker/Maker
 const MakerFunnel = defineAsyncComponent(() => import('../components/maker/MakerFunnel.vue'));
 const MakerHistoryPlot = defineAsyncComponent(() => import('../components/maker/MakerHistoryPlot.vue'));
 const MakerCirclePack = defineAsyncComponent(() => import('../components/maker/MakerCirclePack.vue'));
+const MakerWorld = defineAsyncComponent(() => import('../components/maker/MakerVueUiWorld.vue'));
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -62,45 +63,46 @@ const makerTranslations = computed(() => {
 })
 
 const options = ref([
-    { component: MakerXy, key: 'vue_ui_xy', name: "VueUiXy", icon: "chartLine", thumb: new URL('../assets/thumb_xy_light.png', import.meta.url).href, description: translations.value.docs.tooltips.xy},
-    { component: MakerDonut, key: 'vue_ui_donut', name: "VueUiDonut", icon: "chartDonut", thumb: new URL('../assets/thumb_donut_light.png', import.meta.url).href, description: translations.value.docs.tooltips.donut},
-    { component: MakerWaffle, key: 'vue_ui_waffle', name: "VueUiWaffle", icon: "chartWaffle", thumb: new URL('../assets/thumb_waffle_light.png', import.meta.url).href, description: translations.value.docs.tooltips.waffle},
-    { component: MakerRadar, key: 'vue_ui_radar', name: "VueUiRadar", icon: "chartRadar", thumb: new URL('../assets/thumb_radar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.radar},
-    { component: MakerGauge, key: 'vue_ui_gauge', name: "VueUiGauge", icon: "chartGauge", thumb: new URL('../assets/thumb_gauge_light.png', import.meta.url).href, description: translations.value.docs.tooltips.gauge},
-    { component: MakerOnion, key: 'vue_ui_onion', name: "VueUiOnion", icon: "chartOnion", thumb: new URL('../assets/thumb_onion_light.png', import.meta.url).href, description: translations.value.docs.tooltips.onion},
-    { component: MakerQuadrant, key: 'vue_ui_quadrant', name: "VueUiQuadrant", icon: "chartQuadrant", thumb: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href, description: translations.value.docs.tooltips.quadrant},
-    { component: MakerWheel, key: 'vue_ui_wheel', name: "VueUiWheel", icon: "chartWheel", thumb: new URL('../assets/thumb_wheel_light.png', import.meta.url).href, description: translations.value.docs.tooltips.wheel},
-    { component: MakerTiremarks, key: 'vue_ui_tiremarks', name: "VueUiTiremarks", icon: "chartTiremarks", thumb: new URL('../assets/thumb_tiremarks_light.png', import.meta.url).href, description: translations.value.docs.tooltips.tiremarks},
-    { component: MakerChestnut, key: 'vue_ui_chestnut', name: "VueUiChestnut", icon: "chartChestnut", thumb: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href, description: translations.value.docs.tooltips.chestnut},
-    { component: MakerVerticalBar, key: 'vue_ui_vertical_bar', name: "VueUiVerticalBar", icon: "chartVerticalBar", thumb: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.verticalBar},
-    { component: MakerHeatmap, key: 'vue_ui_heatmap', name: "VueUiHeatmap", icon: "chartHeatmap", thumb: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href, description: translations.value.docs.tooltips.heatmap},
-    { component: MakerStripPlot, key: 'vue_ui_strip_plot', name: "VueUiStripPlot", icon: "chartStripPlot", thumb: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href, description: translations.value.docs.tooltips.stripPlot},
-    { component: MakerSparkline, key: 'vue_ui_sparkline', name: "VueUiSparkline", icon: "chartSparkline", thumb: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href, description: translations.value.docs.tooltips.sparkline},
-    { component: MakerSparkStackbar, key: 'vue_ui_sparkstackbar', name: "VueUiSparkStackbar", icon: "chartSparkStackbar", thumb: new URL('../assets/thumb_stackbar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.stackbar},
-    { component: MakerSparkbar, key: 'vue_ui_sparkbar', name: "VueUiSparkbar", icon: "chartSparkbar", thumb: new URL('../assets/thumb_sparkbar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.sparkbar},
-    { component: MakerSparkHistogram, key: 'vue_ui_sparkhistogram', name: "VueUiSparkHistogram", icon: "chartSparkHistogram", thumb: new URL('../assets/thumb_histogram_light.png', import.meta.url).href, description: translations.value.docs.tooltips.histogram},
-    { component: MakerDonutEvolution, key: 'vue_ui_donut_evolution', name: "VueUiDonutEvolution", icon: "chartDonutEvolution", thumb: new URL('../assets/thumb_donut_evolution_light.png', import.meta.url).href, description: translations.value.docs.tooltips.donutEvolution },
-    { component: MakerRings, key: 'vue_ui_rings', name: "VueUiRings", icon: "chartRings", thumb: new URL('../assets/thumb_rings_light.png', import.meta.url).href, description: translations.value.docs.tooltips.rings},
-    { component: MakerScatter, key: 'vue_ui_scatter', name: "VueUiScatter", icon: "chartScatter", thumb: new URL('../assets/thumb_scatter_light.png', import.meta.url).href, description: translations.value.docs.tooltips.scatter},
-    { component: MakerPyramid, key: 'vue_ui_age_pyramid', name: "VueUiAgePyramid", icon: "chartAgePyramid", thumb: new URL('../assets/thumb_age_pyramid_light.png', import.meta.url).href, description: translations.value.docs.tooltips.agePyramid},
-    { component: MakerMoodRadar, key: 'vue_ui_mood_radar', name: "VueUiMoodRadar", icon: "chartMoodRadar", thumb: new URL('../assets/thumb_mood_radar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.moodRadar},
-    { component: MakerRelationCircle, key: 'vue_ui_relation_circle', name: "VueUiRelationCircle", icon: "chartRelationCircle", thumb: new URL('../assets/thumb_relation_circle_light.png', import.meta.url).href, description: translations.value.docs.tooltips.relationCircle},
-    { component: MakerThermometer, key: 'vue_ui_thermometer', name: "VueUiThermometer", icon: "chartThermometer", thumb: new URL('../assets/thumb_thermometer_light.png', import.meta.url).href, description: translations.value.docs.tooltips.thermometer},
-    { component: Maker3dBar, key: 'vue_ui_3d_bar', name: "VueUi3dBar", icon: "chart3dBar", thumb: new URL('../assets/thumb_3d_bar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.bar3d},
-    { component: MakerNestedDonuts, key: 'vue_ui_nested_donuts', name: "VueUiNestedDonuts", icon: "chartNestedDonuts", thumb: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href, description: translations.value.docs.tooltips.nestedDonuts},
-    { component: MakerSparkgauge, key: 'vue_ui_sparkgauge', name: "VueUiSparkgauge", icon: "chartGauge", thumb: new URL('../assets/thumb_sparkgauge_light.png', import.meta.url).href, description: translations.value.docs.tooltips.gauge},
-    { component: MakerGalaxy, key: 'vue_ui_galaxy', name: "VueUiGalaxy", icon: "chartGalaxy", thumb: new URL('../assets/thumb_galaxy_light.png', import.meta.url).href, description: translations.value.docs.tooltips.galaxy},
-    { component: MakerVueUiWordCloud, key: 'vue_ui_word_cloud', name: "VueUiWordCloud", icon: "chartWordCloud", thumb: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href, description: translations.value.docs.tooltips.wordCloud},
-    { component: MakerFlow, key: 'vue_ui_flow', name: "VueUiFlow", icon: "chartFlow", thumb: new URL('../assets/thumb_flow_light.png', import.meta.url).href, description: translations.value.docs.tooltips.flow},
-    { component: MakerPcp, key: 'vue_ui_parallel_coordinate_plot', name: "VueUiParallelCoordinatePlot", icon: "chartParallelCoordinatePlot", thumb: new URL('../assets/thumb_pcp_light.png', import.meta.url).href, description: translations.value.docs.tooltips.pcp},
-    { component: MakerKpi, key: 'vue_ui_kpi', name: "VueUiKpi", icon: "kpiBox", thumb: "", description: translations.value.docs.tooltips.kpi},
-    { component: MakerCarouselTable, key: 'vue_ui_carousel_table', name: "VueUiCarouselTable", icon: "carouselTable", thumb: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href, description: translations.value.docs.tooltips.carouselTable},
-    { component: MakerGizmo, key: 'vue_ui_gizmo', name: "VueUiGizmo", icon: "battery", thumb: new URL('../assets/thumb_gizmo_light.png', import.meta.url).href, description: translations.value.docs.tooltips.gizmo},
-    { component: MakerStackbar, key: 'vue_ui_stackbar', name: "VueUiStackbar", icon: "chartStackbar", thumb: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.stackbarBig},
-    { component: MakerBullet, key: 'vue_ui_bullet', name: "VueUiBullet", icon: "chartBullet", thumb: new URL('../assets/thumb_bullet_light.png', import.meta.url).href, description: translations.value.docs.tooltips.bullet},
-    { component: MakerFunnel, key: 'vue_ui_funnel', name: "VueUiFunnel", icon: "chartFunnel", thumb: new URL('../assets/thumb_funnel_light.png', import.meta.url).href, description: translations.value.docs.tooltips.funnel},
-    { component: MakerHistoryPlot, key: 'vue_ui_history_plot', name: "VueUiHistoryPlot", icon: "chartHistoryPlot", thumb: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href, description: translations.value.docs.tooltips.historyPlot},
-    { component: MakerCirclePack, key: 'vue_ui_circle_pack', name: "VueUiCirclePack", icon: "chartCirclePack", thumb: new URL('../assets/thumb_circle_pack_light.png', import.meta.url).href, description: translations.value.docs.tooltips.circlePack},
+    { component: markRaw(MakerXy), key: 'vue_ui_xy', name: "VueUiXy", icon: "chartLine", thumb: new URL('../assets/thumb_xy_light.png', import.meta.url).href, description: translations.value.docs.tooltips.xy},
+    { component: markRaw(MakerDonut), key: 'vue_ui_donut', name: "VueUiDonut", icon: "chartDonut", thumb: new URL('../assets/thumb_donut_light.png', import.meta.url).href, description: translations.value.docs.tooltips.donut},
+    { component: markRaw(MakerWaffle), key: 'vue_ui_waffle', name: "VueUiWaffle", icon: "chartWaffle", thumb: new URL('../assets/thumb_waffle_light.png', import.meta.url).href, description: translations.value.docs.tooltips.waffle},
+    { component: markRaw(MakerRadar), key: 'vue_ui_radar', name: "VueUiRadar", icon: "chartRadar", thumb: new URL('../assets/thumb_radar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.radar},
+    { component: markRaw(MakerGauge), key: 'vue_ui_gauge', name: "VueUiGauge", icon: "chartGauge", thumb: new URL('../assets/thumb_gauge_light.png', import.meta.url).href, description: translations.value.docs.tooltips.gauge},
+    { component: markRaw(MakerOnion), key: 'vue_ui_onion', name: "VueUiOnion", icon: "chartOnion", thumb: new URL('../assets/thumb_onion_light.png', import.meta.url).href, description: translations.value.docs.tooltips.onion},
+    { component: markRaw(MakerQuadrant), key: 'vue_ui_quadrant', name: "VueUiQuadrant", icon: "chartQuadrant", thumb: new URL('../assets/thumb_quadrant_light.png', import.meta.url).href, description: translations.value.docs.tooltips.quadrant},
+    { component: markRaw(MakerWheel), key: 'vue_ui_wheel', name: "VueUiWheel", icon: "chartWheel", thumb: new URL('../assets/thumb_wheel_light.png', import.meta.url).href, description: translations.value.docs.tooltips.wheel},
+    { component: markRaw(MakerTiremarks), key: 'vue_ui_tiremarks', name: "VueUiTiremarks", icon: "chartTiremarks", thumb: new URL('../assets/thumb_tiremarks_light.png', import.meta.url).href, description: translations.value.docs.tooltips.tiremarks},
+    { component: markRaw(MakerChestnut), key: 'vue_ui_chestnut', name: "VueUiChestnut", icon: "chartChestnut", thumb: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href, description: translations.value.docs.tooltips.chestnut},
+    { component: markRaw(MakerVerticalBar), key: 'vue_ui_vertical_bar', name: "VueUiVerticalBar", icon: "chartVerticalBar", thumb: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.verticalBar},
+    { component: markRaw(MakerHeatmap), key: 'vue_ui_heatmap', name: "VueUiHeatmap", icon: "chartHeatmap", thumb: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href, description: translations.value.docs.tooltips.heatmap},
+    { component: markRaw(MakerStripPlot), key: 'vue_ui_strip_plot', name: "VueUiStripPlot", icon: "chartStripPlot", thumb: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href, description: translations.value.docs.tooltips.stripPlot},
+    { component: markRaw(MakerSparkline), key: 'vue_ui_sparkline', name: "VueUiSparkline", icon: "chartSparkline", thumb: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href, description: translations.value.docs.tooltips.sparkline},
+    { component: markRaw(MakerSparkStackbar), key: 'vue_ui_sparkstackbar', name: "VueUiSparkStackbar", icon: "chartSparkStackbar", thumb: new URL('../assets/thumb_stackbar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.stackbar},
+    { component: markRaw(MakerSparkbar), key: 'vue_ui_sparkbar', name: "VueUiSparkbar", icon: "chartSparkbar", thumb: new URL('../assets/thumb_sparkbar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.sparkbar},
+    { component: markRaw(MakerSparkHistogram), key: 'vue_ui_sparkhistogram', name: "VueUiSparkHistogram", icon: "chartSparkHistogram", thumb: new URL('../assets/thumb_histogram_light.png', import.meta.url).href, description: translations.value.docs.tooltips.histogram},
+    { component: markRaw(MakerDonutEvolution), key: 'vue_ui_donut_evolution', name: "VueUiDonutEvolution", icon: "chartDonutEvolution", thumb: new URL('../assets/thumb_donut_evolution_light.png', import.meta.url).href, description: translations.value.docs.tooltips.donutEvolution },
+    { component: markRaw(MakerRings), key: 'vue_ui_rings', name: "VueUiRings", icon: "chartRings", thumb: new URL('../assets/thumb_rings_light.png', import.meta.url).href, description: translations.value.docs.tooltips.rings},
+    { component: markRaw(MakerScatter), key: 'vue_ui_scatter', name: "VueUiScatter", icon: "chartScatter", thumb: new URL('../assets/thumb_scatter_light.png', import.meta.url).href, description: translations.value.docs.tooltips.scatter},
+    { component: markRaw(MakerPyramid), key: 'vue_ui_age_pyramid', name: "VueUiAgePyramid", icon: "chartAgePyramid", thumb: new URL('../assets/thumb_age_pyramid_light.png', import.meta.url).href, description: translations.value.docs.tooltips.agePyramid},
+    { component: markRaw(MakerMoodRadar), key: 'vue_ui_mood_radar', name: "VueUiMoodRadar", icon: "chartMoodRadar", thumb: new URL('../assets/thumb_mood_radar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.moodRadar},
+    { component: markRaw(MakerRelationCircle), key: 'vue_ui_relation_circle', name: "VueUiRelationCircle", icon: "chartRelationCircle", thumb: new URL('../assets/thumb_relation_circle_light.png', import.meta.url).href, description: translations.value.docs.tooltips.relationCircle},
+    { component: markRaw(MakerThermometer), key: 'vue_ui_thermometer', name: "VueUiThermometer", icon: "chartThermometer", thumb: new URL('../assets/thumb_thermometer_light.png', import.meta.url).href, description: translations.value.docs.tooltips.thermometer},
+    { component: markRaw(Maker3dBar), key: 'vue_ui_3d_bar', name: "VueUi3dBar", icon: "chart3dBar", thumb: new URL('../assets/thumb_3d_bar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.bar3d},
+    { component: markRaw(MakerNestedDonuts), key: 'vue_ui_nested_donuts', name: "VueUiNestedDonuts", icon: "chartNestedDonuts", thumb: new URL('../assets/thumb_nested_donuts_light.png', import.meta.url).href, description: translations.value.docs.tooltips.nestedDonuts},
+    { component: markRaw(MakerSparkgauge), key: 'vue_ui_sparkgauge', name: "VueUiSparkgauge", icon: "chartGauge", thumb: new URL('../assets/thumb_sparkgauge_light.png', import.meta.url).href, description: translations.value.docs.tooltips.gauge},
+    { component: markRaw(MakerGalaxy), key: 'vue_ui_galaxy', name: "VueUiGalaxy", icon: "chartGalaxy", thumb: new URL('../assets/thumb_galaxy_light.png', import.meta.url).href, description: translations.value.docs.tooltips.galaxy},
+    { component: markRaw(MakerVueUiWordCloud), key: 'vue_ui_word_cloud', name: "VueUiWordCloud", icon: "chartWordCloud", thumb: new URL('../assets/thumb_word_cloud_light.png', import.meta.url).href, description: translations.value.docs.tooltips.wordCloud},
+    { component: markRaw(MakerFlow), key: 'vue_ui_flow', name: "VueUiFlow", icon: "chartFlow", thumb: new URL('../assets/thumb_flow_light.png', import.meta.url).href, description: translations.value.docs.tooltips.flow},
+    { component: markRaw(MakerPcp), key: 'vue_ui_parallel_coordinate_plot', name: "VueUiParallelCoordinatePlot", icon: "chartParallelCoordinatePlot", thumb: new URL('../assets/thumb_pcp_light.png', import.meta.url).href, description: translations.value.docs.tooltips.pcp},
+    { component: markRaw(MakerKpi), key: 'vue_ui_kpi', name: "VueUiKpi", icon: "kpiBox", thumb: "", description: translations.value.docs.tooltips.kpi},
+    { component: markRaw(MakerCarouselTable), key: 'vue_ui_carousel_table', name: "VueUiCarouselTable", icon: "carouselTable", thumb: new URL('../assets/thumb_carousel_table_light.png', import.meta.url).href, description: translations.value.docs.tooltips.carouselTable},
+    { component: markRaw(MakerGizmo), key: 'vue_ui_gizmo', name: "VueUiGizmo", icon: "battery", thumb: new URL('../assets/thumb_gizmo_light.png', import.meta.url).href, description: translations.value.docs.tooltips.gizmo},
+    { component: markRaw(MakerStackbar), key: 'vue_ui_stackbar', name: "VueUiStackbar", icon: "chartStackbar", thumb: new URL('../assets/thumb_stack_bar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.stackbarBig},
+    { component: markRaw(MakerBullet), key: 'vue_ui_bullet', name: "VueUiBullet", icon: "chartBullet", thumb: new URL('../assets/thumb_bullet_light.png', import.meta.url).href, description: translations.value.docs.tooltips.bullet},
+    { component: markRaw(MakerFunnel), key: 'vue_ui_funnel', name: "VueUiFunnel", icon: "chartFunnel", thumb: new URL('../assets/thumb_funnel_light.png', import.meta.url).href, description: translations.value.docs.tooltips.funnel},
+    { component: markRaw(MakerHistoryPlot), key: 'vue_ui_history_plot', name: "VueUiHistoryPlot", icon: "chartHistoryPlot", thumb: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href, description: translations.value.docs.tooltips.historyPlot},
+    { component: markRaw(MakerCirclePack), key: 'vue_ui_circle_pack', name: "VueUiCirclePack", icon: "chartCirclePack", thumb: new URL('../assets/thumb_circle_pack_light.png', import.meta.url).href, description: translations.value.docs.tooltips.circlePack},
+    { component: markRaw(MakerWorld), key: 'vue_ui_world', name: 'VueUiWorld', icon: 'world', thumb: new URL('../assets/thumb_world_light.png', import.meta.url).href, description: translations.value.docs.tooltips.world }
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});

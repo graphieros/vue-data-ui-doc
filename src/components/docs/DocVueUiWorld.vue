@@ -306,6 +306,13 @@ const darkModeConfig = ref({
                     },
                     showTaiwanAsPartOfChina: false,
             },
+            legend: {
+                show: true,
+                backgroundColor: '#1A1A1A',
+                color: '#CCCCCC',
+                fontSize: 16,
+                bold:false,
+            },
             title: {
                 text: "GDP per country",
                 color: "#FAFAFA",
@@ -416,6 +423,13 @@ const config = ref({
                     y: 0
                 },
                 waterColor: '#1f77b4'
+            },
+            legend: {
+                show: true,
+                backgroundColor: '#FFFFFF',
+                color: '#1A1A1A',
+                fontSize: 16,
+                bold:false,
             },
             territory: {
                 stroke: '#666666',
@@ -576,6 +590,7 @@ function setProjection(p) {
 
         <BaseDocHeaderActions
             targetLink="vue-ui-world"
+            targetMaker="VueUiWorld"
             :configSource="mainConfig.vue_ui_world"
         />
 
