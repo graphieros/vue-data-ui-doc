@@ -278,7 +278,7 @@ const crumbs = computed(() => {
         <Transition name="fade">
             <component :is="selectedChart.component">
                 <template #rater>
-                    <Rater :item="selectedChart.key"/>
+                    <Rater :itemId="selectedChart.key"/>
                 </template>
             </component>
         </Transition>
