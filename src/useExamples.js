@@ -1725,53 +1725,232 @@ export default function useExamples() {
       }
 
     const DATASET_WORDCLOUD_CHINESE = computed(() => {
-        const data = createWordCloudDatasetFromPlainText('编程，是一门艺术与科学的结合。对于那些热爱技术和解决问题的人来说，编程不仅仅是一项技能，更是一种带来无尽乐趣的活动。在这不断变化的数字世界中，编程已成为塑造未来的重要工具，而它所带来的满足感和成就感则是无与伦比的。首先，编程带来最大的乐趣之一就是创造的自由。编程就像在一片空白的画布上作画，程序员可以随心所欲地构建自己的“作品”。无论是一个简单的网页，还是一个复杂的数据处理系统，编程都为创作者提供了实现想法的工具。写代码的过程充满挑战，但每当一个新的功能实现或者一个棘手的错误被成功解决时，那种心满意足的感觉是无与伦比的。编程的过程犹如解谜。每个程序都是由无数个小问题和挑战组成，程序员需要一步步地寻找解决方案。这就像一个庞大的谜题，每当找到合适的解法时，都会感到兴奋和满足。编程中的调试过程尤为如此。当代码中存在错误时，找到原因并解决问题仿佛在黑暗中找到了光明，这种喜悦总能让人重新振作并继续前行。此外，编程还能让人感受到逻辑思维的美妙。编写一个程序需要精确的思考和合理的逻辑结构，这种思维训练不仅可以帮助人们提高解决问题的能力，还可以在生活的各个方面带来启示。例如，在遇到复杂的生活问题时，程序员常常会运用编程思维，将大问题拆分成更小的可解决部分，然后逐步解决。这种技能不仅让编程充满乐趣，还能让人受益终生。编程还让人体验到学习和成长的乐趣。技术在不断演进，新语言、新框架、新工具层出不穷，这意味着程序员总有新的东西可以学习。尽管这种学习过程有时会令人感到挫败，但每次掌握新技能后的成就感却无比令人满足。编程让人意识到，学习是一种永无止境的过程，正是在这种不断挑战自我的过程中，程序员才能不断进步，并体验到成长的喜悦。团队合作也是编程中一大乐趣所在。在许多项目中，程序员需要与其他开发者、设计师、产品经理甚至客户紧密合作。这种合作不仅让人学会如何更好地沟通和分享想法，还能带来共同创造的喜悦。当一个团队一起努力完成一个项目，并看到它最终成功上线时，那种集体成就感让人感到无比欣慰和骄傲。编程还提供了无限的可能性和探索的空间。一个程序员可以开发应用程序来简化日常任务、构建网站来分享自己的想法，甚至开发游戏来娱乐大众。编程让人体验到创造力的释放，每个人都可以成为自己世界的“建造者”。正是这种无限的可能性，让人们在编程中找到属于自己的乐趣和意义。另一方面，编程的乐趣还来自于它对社会的积极影响。通过编写有用的软件，程序员可以真正改变世界。无论是开发一款改善人们生活质量的健康应用，还是构建一个帮助学生学习的新平台，编程的成果可以直接影响成千上万人的生活。这种贡献社会的满足感，常常成为程序员继续前行的重要动力。编程的挑战也不可忽视，但正是这些挑战让编程更加有趣。每个程序员都会遇到让人头疼的错误，或是面对看似无法解决的难题。然而，正是这些困难让编程过程充满刺激和挑战。当一个复杂的算法终于成功运行，或者一个系统终于稳定下来时，那种如释重负的快感让一切努力都变得值得。最后，编程的乐趣还体现在其独特的灵活性和无限的创造空间。一个程序员可以随时随地用自己的笔记本电脑编写代码，可以自由选择自己感兴趣的项目和技术领域。这种自由和灵活性让编程成为一项能够完全适应个人兴趣和生活方式的活动，无论你是在家里、咖啡馆，还是在旅途中，都可以体验编程的乐趣。总而言之，编程是一项充满乐趣和挑战的活动，它结合了逻辑与创造，让人体验到解决问题的快感、成长的满足感以及创造的喜悦。无论是初学者还是经验丰富的开发者，编程总能为人们带来新鲜和激动人心的体验。正因为如此，编程不仅仅是一项技能，更是一种充满无限可能的乐趣源泉。在这条不断学习和探索的道路上，每个程序员都可以找到自己的快乐和成就感。').sort((a,b) => b.value - a.value)
-
-        return data.filter(el => el.value > 2)
+        return [
+            { name: '编程', value: 95 },
+            { name: '代码', value: 55 },
+            { name: '算法', value: 18 },
+            { name: '调试', value: 15 },
+            { name: '变量', value: 22 },
+            { name: '函数', value: 13 },
+            { name: '对象', value: 26 },
+            { name: '类', value: 16 },
+            { name: '继承', value: 10 },
+            { name: '多态', value: 11 },
+            { name: '接口', value: 23 },
+            { name: '数组', value: 25 },
+            { name: '链表', value: 12 },
+            { name: '栈', value: 14 },
+            { name: '队列', value: 20 },
+            { name: '哈希', value: 19 },
+            { name: '递归', value: 16 },
+            { name: '循环', value: 13 },
+            { name: '条件', value: 28 },
+            { name: '异常', value: 12 },
+            { name: '编译', value: 29 },      
+            { name: '解释', value: 14 },
+            { name: '框架', value: 24 },
+            { name: '模块', value: 21 },
+            { name: '库', value: 27 },
+            { name: '包', value: 18 },
+            { name: '主函数', value: 20 },
+            { name: '流程', value: 11 },
+            { name: '事件', value: 17 },
+            { name: '回调', value: 13 },
+            { name: '异步', value: 95 },      
+            { name: '同步', value: 22 },
+            { name: '线程', value: 16 },
+            { name: '进程', value: 12 },
+            { name: '内存', value: 23 },
+            { name: '指针', value: 29 },
+            { name: '引用', value: 18 },
+            { name: '堆', value: 20 },
+            { name: 'API', value: 93 },    
+            { name: '表', value: 15 },
+            { name: '字段', value: 25 },
+            { name: '查询', value: 21 },
+            { name: '排序', value: 13 },
+            { name: '过滤', value: 12 },
+            { name: '映射', value: 15 },
+            { name: '合并', value: 14 },
+            { name: 'API', value: 12 },       
+            { name: '请求', value: 26 },
+            { name: '响应', value: 17 },
+            { name: '服务器', value: 44 },    
+            { name: '前端', value: 12 },
+          ].sort((a,b) => b.value - a.value)
     })
 
     const DATASET_WORDCLOUD_ENGLISH = computed(() => {
-        const text = `Programming is a combination of art and science. For those who love technology and problem-solving, programming is more than just a skill; it’s an activity that brings endless joy. In this ever-changing digital world, programming has become a vital tool for shaping the future, and the sense of fulfillment and achievement it brings is unparalleled. One of the greatest joys of programming is the freedom of creation. Programming is like painting on a blank canvas, where programmers can build their "works" as they wish. Whether it’s a simple webpage or a complex data processing system, programming provides creators with the tools to realize their ideas. The process of writing code is full of challenges, but the feeling of satisfaction when a new feature is completed or a tricky bug is fixed is incomparable. Programming is like solving puzzles. Every program consists of countless small problems and challenges, and programmers need to find solutions step by step. It’s like a grand puzzle, and every time a suitable solution is found, there’s excitement and satisfaction. Debugging is especially true. When there’s a bug in the code, finding the cause and solving the problem feels like finding light in the darkness, and this joy always reignites motivation and the drive to move forward. Additionally, programming allows people to appreciate the beauty of logical thinking. Writing a program requires precise thought and logical structure. This kind of mental training not only helps people improve their problem-solving skills but also provides insights in various aspects of life. For example, when facing complex life problems, programmers often apply programming thinking, breaking down big problems into smaller, solvable parts and then addressing them step by step. This skill not only makes programming enjoyable but also brings lifelong benefits. Programming also offers the joy of learning and growth. Technology is continuously evolving, with new languages, frameworks, and tools emerging constantly, meaning programmers always have something new to learn. Although the learning process can sometimes be frustrating, the sense of accomplishment after mastering a new skill is incredibly satisfying. Programming makes people realize that learning is a never-ending journey, and it is through this continuous self-challenge that programmers make progress and experience the joy of growth. Teamwork is another aspect of programming that brings great joy. In many projects, programmers need to collaborate closely with other developers, designers, product managers, and even clients. This collaboration not only teaches people how to communicate better and share ideas but also brings the joy of collective creation. When a team works together to complete a project and sees it successfully launched, the sense of collective achievement is deeply gratifying and proud. Programming offers endless possibilities and areas to explore. A programmer can develop apps to simplify daily tasks, build websites to share ideas, or even create games to entertain people. Programming allows for the release of creativity, and everyone can become a "builder" of their own world. This sense of infinite possibility lets people find their own joy and meaning in programming. On the other hand, the joy of programming also comes from its positive impact on society. By writing useful software, programmers can truly change the world. Whether it’s developing a health app to improve quality of life or building a new platform to help students learn, the results of programming can directly affect the lives of thousands. This sense of contributing to society often serves as a significant motivation for programmers to keep moving forward. The challenges of programming shouldn’t be ignored, but it is these challenges that make programming more exciting. Every programmer will encounter headaches or seemingly unsolvable problems. However, these difficulties make the process stimulating and challenging. When a complex algorithm finally runs successfully or a system stabilizes, the feeling of relief makes all the effort worthwhile. Finally, the joy of programming lies in its unique flexibility and limitless creative space. A programmer can write code anytime, anywhere, with a laptop, and choose projects and technologies that interest them. This freedom and flexibility make programming an activity that can perfectly align with personal interests and lifestyles. Whether at home, in a café, or while traveling, you can always experience the joy of programming. In summary, programming is an activity full of fun and challenges. It combines logic and creativity, allowing people to experience the thrill of problem-solving, the satisfaction of growth, and the joy of creation. Whether a beginner or an experienced developer, programming always brings fresh and exciting experiences. It’s more than just a skill; it’s a source of endless possibilities and joy. On this journey of continuous learning and exploration, every programmer can find their happiness and sense of achievement.`.toUpperCase()
-        .replaceAll(" IT'S ", ' ')
-        .replaceAll(' IT ', ' ')
-        .replaceAll(' IT', ' ')
-        .replaceAll(' A ', ' ')
-        .replaceAll(' AND ', ' ')
-        .replaceAll(' AS ', ' ')
-        .replaceAll(' AT ', ' ')
-        .replaceAll(' FOR ', ' ')
-        .replaceAll(' IN ', ' ')
-        .replaceAll(' IS ', ' ')
-        .replaceAll(' ITS ', ' ')
-        .replaceAll(' OF ', ' ')
-        .replaceAll(' THAT ', ' ')
-        .replaceAll(' THE ', ' ')
-        .replaceAll(' THEIR ', ' ')
-        .replaceAll(' THEM ', ' ')
-        .replaceAll(' THIS ', ' ')
-        .replaceAll(' TO ', ' ')
-        .replaceAll(' WHEN ', ' ')
-        .replaceAll(' OR ', ' ')
-        .replaceAll(' AN ', ' ')
-        .replaceAll(' ON ', ' ')
-        .replaceAll(' BY ', ' ')
-        const data = createWordCloudDatasetFromPlainText(text)
-
-        return data.filter(el => el.value > 2).sort((a, b) => b.value - a.value)
+        return [
+            { name: 'Programming', value: 95 },
+            { name: 'Code', value: 55 },
+            { name: 'Algorithm', value: 18 },
+            { name: 'Debugging', value: 15 },
+            { name: 'Variable', value: 22 },
+            { name: 'Function', value: 13 },
+            { name: 'Object', value: 26 },
+            { name: 'Class', value: 16 },
+            { name: 'Inheritance', value: 10 },
+            { name: 'Polymorphism', value: 11 },
+            { name: 'Interface', value: 23 },
+            { name: 'Array', value: 25 },
+            { name: 'Linked List', value: 12 },
+            { name: 'Stack', value: 14 },
+            { name: 'Queue', value: 20 },
+            { name: 'Hash', value: 19 },
+            { name: 'Recursion', value: 16 },
+            { name: 'Loop', value: 13 },
+            { name: 'Condition', value: 28 },
+            { name: 'Exception', value: 12 },
+            { name: 'Compile', value: 29 },
+            { name: 'Interpret', value: 14 },
+            { name: 'Framework', value: 24 },
+            { name: 'Module', value: 21 },
+            { name: 'Library', value: 27 },
+            { name: 'Package', value: 18 },
+            { name: 'Main Function', value: 20 },
+            { name: 'Process Flow', value: 11 },
+            { name: 'Event', value: 17 },
+            { name: 'Callback', value: 13 },
+            { name: 'Asynchronous', value: 95 },
+            { name: 'Synchronous', value: 22 },
+            { name: 'Thread', value: 16 },
+            { name: 'Process', value: 12 },
+            { name: 'Memory', value: 23 },
+            { name: 'Pointer', value: 29 },
+            { name: 'Reference', value: 18 },
+            { name: 'Heap', value: 20 },
+            { name: 'API', value: 93 },
+            { name: 'Table', value: 15 },
+            { name: 'Field', value: 25 },
+            { name: 'Query', value: 21 },
+            { name: 'Sorting', value: 13 },
+            { name: 'Filter', value: 12 },
+            { name: 'Mapping', value: 15 },
+            { name: 'Merge', value: 14 },
+            { name: 'API', value: 12 },
+            { name: 'Request', value: 26 },
+            { name: 'Response', value: 17 },
+            { name: 'Server', value: 44 },
+            { name: 'Frontend', value: 12 },     
+          ].sort((a,b) => b.value - a.value).map(el => {
+            return {
+                ...el,
+                name: el.name.toUpperCase()
+            }
+          })
     })
 
     const DATASET_WORDCLOUD_ARABIC = computed(() => {
-        const data = createWordCloudDatasetFromPlainText(
-            'البرمجة هي مزيج من الفن والعلم. بالنسبة لأولئك الذين يحبون التكنولوجيا وحل المشكلات، البرمجة ليست مجرد مهارة؛ إنها نشاط يجلب فرحة لا تنتهي. في هذا العالم الرقمي المتغير باستمرار، أصبحت البرمجة أداة حيوية لتشكيل المستقبل، والإحساس بالرضا والإنجاز الذي تجلبه لا مثيل له. واحدة من أعظم متع البرمجة هي حرية الإبداع. البرمجة تشبه الرسم على لوحة فارغة، حيث يمكن للمبرمجين بناء "أعمالهم" كما يشاؤون. سواء كان ذلك موقعًا إلكترونيًا بسيطًا أو نظام معالجة بيانات معقد، توفر البرمجة للمبدعين الأدوات لتحقيق أفكارهم. عملية كتابة الشيفرة مليئة بالتحديات، ولكن شعور الرضا عند إتمام ميزة جديدة أو حل خطأ معقد لا يوصف. البرمجة تشبه حل الألغاز. كل برنامج يتكون من عدد لا يحصى من المشكلات الصغيرة والتحديات، ويحتاج المبرمجون إلى إيجاد الحلول خطوة بخطوة. إنها مثل لغز ضخم، وكلما تم العثور على الحل المناسب، يكون هناك شعور بالإثارة والرضا. عملية التصحيح (debugging) تجسد ذلك بشكل خاص. عندما يكون هناك خطأ في الشيفرة، فإن العثور على السبب وحل المشكلة يشبه العثور على الضوء في الظلام، وهذه الفرحة دائمًا ما تعيد الدافع وتحث على المضي قدمًا. بالإضافة إلى ذلك، تتيح البرمجة للناس تقدير جمال التفكير المنطقي. كتابة برنامج تتطلب تفكيرًا دقيقًا وبنية منطقية. هذا النوع من التدريب العقلي لا يساعد الناس فقط على تحسين مهارات حل المشكلات، بل يوفر رؤى في مختلف جوانب الحياة. على سبيل المثال، عند مواجهة مشكلات حياتية معقدة، غالبًا ما يطبق المبرمجون التفكير البرمجي، حيث يقومون بتقسيم المشكلة الكبيرة إلى أجزاء أصغر قابلة للحل ثم معالجتها تدريجيًا. هذه المهارة لا تجعل البرمجة ممتعة فحسب، بل تجلب فوائد مدى الحياة. البرمجة تقدم أيضًا متعة التعلم والنمو. التكنولوجيا في تطور مستمر، مع ظهور لغات جديدة، وأطر عمل، وأدوات بشكل مستمر، مما يعني أن المبرمجين دائمًا لديهم شيء جديد ليتعلموه. على الرغم من أن عملية التعلم قد تكون محبطة في بعض الأحيان، فإن شعور الإنجاز بعد إتقان مهارة جديدة لا يقدر بثمن. تجعل البرمجة الناس يدركون أن التعلم عملية لا تنتهي، ومن خلال هذا التحدي المستمر لأنفسهم، يتمكن المبرمجون من التقدم وتجربة فرحة النمو. العمل الجماعي هو جانب آخر من البرمجة يجلب الكثير من الفرح. في العديد من المشاريع، يحتاج المبرمجون إلى التعاون الوثيق مع مطورين آخرين، ومصممين، ومديري منتجات، وحتى العملاء. هذا التعاون لا يعلم الناس كيفية التواصل بشكل أفضل ومشاركة الأفكار فحسب، بل يجلب أيضًا فرحة الإبداع الجماعي. عندما يعمل الفريق معًا لإكمال مشروع ويرى أنه تم إطلاقه بنجاح، فإن شعور الإنجاز الجماعي يكون عميقًا للغاية ومليئًا بالفخر. البرمجة توفر إمكانيات لا حصر لها ومجالات للاستكشاف. يمكن للمبرمج تطوير تطبيقات لتبسيط المهام اليومية، أو بناء مواقع لمشاركة أفكاره، أو حتى إنشاء ألعاب لتسلية الجمهور. تتيح البرمجة إطلاق العنان للإبداع، ويمكن للجميع أن يصبحوا "بناة" لعالمهم الخاص. هذه الإمكانية اللانهائية تجعل الناس يجدون متعتهم ومعناهم في البرمجة. من ناحية أخرى، تأتي متعة البرمجة أيضًا من تأثيرها الإيجابي على المجتمع. من خلال كتابة البرامج المفيدة، يمكن للمبرمجين حقًا تغيير العالم. سواء كان ذلك تطوير تطبيق صحي يحسن نوعية الحياة، أو بناء منصة جديدة تساعد الطلاب على التعلم، يمكن أن تؤثر نتائج البرمجة مباشرة على حياة الآلاف. هذا الإحساس بالمساهمة في المجتمع غالبًا ما يكون دافعًا مهمًا للمبرمجين لمواصلة التقدم. لا ينبغي تجاهل تحديات البرمجة، ولكن هذه التحديات هي ما يجعل البرمجة أكثر إثارة. كل مبرمج سيواجه أخطاء تسبب الصداع، أو يواجه مشكلات تبدو غير قابلة للحل. لكن هذه الصعوبات تجعل العملية مليئة بالإثارة والتحدي. عندما يعمل خوارزم معقد بنجاح أخيرًا، أو يستقر نظام بعد جهد طويل، فإن شعور الراحة يجعل كل الجهد يستحق العناء. أخيرًا، تتمثل متعة البرمجة في مرونتها الفريدة ومساحة الإبداع غير المحدودة. يمكن للمبرمج كتابة الشيفرة في أي وقت وأي مكان، باستخدام جهاز كمبيوتر محمول، ويمكنه اختيار المشاريع والمجالات التقنية التي تهمه. هذه الحرية والمرونة تجعل البرمجة نشاطًا يمكن أن يتكيف تمامًا مع اهتمامات الفرد وأسلوب حياته. سواء كنت في المنزل، أو في مقهى، أو في رحلة، يمكنك دائمًا الاستمتاع بمتعة البرمجة. باختصار، البرمجة نشاط مليء بالمتعة والتحديات. إنها تجمع بين المنطق والإبداع، مما يتيح للناس تجربة إثارة حل المشكلات، ورضا النمو، ومتعة الإبداع. سواء كنت مبتدئًا أو مطورًا ذو خبرة، فإن البرمجة دائمًا ما تجلب تجارب جديدة ومثيرة. إنها أكثر من مجرد مهارة؛ إنها مصدر لإمكانيات وفرح لا تنتهي. في هذه الرحلة المستمرة من التعلم والاستكشاف، يمكن لكل مبرمج أن يجد سعادته وإحساسه بالإنجاز.'
-            ).sort((a,b) => b.value - a.value)
-
-            return data.filter(el => el.value > 2)
+        return [
+            { name: 'برمجة', value: 95 },     
+            { name: 'كود', value: 55 },       
+            { name: 'خوارزمية', value: 18 },  
+            { name: 'تصحيح', value: 15 },     
+            { name: 'متغير', value: 22 },     
+            { name: 'دالة', value: 13 },      
+            { name: 'كائن', value: 26 },      
+            { name: 'فئة', value: 16 },       
+            { name: 'وراثة', value: 10 },     
+            { name: 'تعدد الأشكال', value: 11 }, 
+            { name: 'واجهة', value: 23 },     
+            { name: 'مصفوفة', value: 25 },    
+            { name: 'قائمة مرتبطة', value: 12 }, 
+            { name: 'مكدس', value: 14 },      
+            { name: 'طابور', value: 20 },     
+            { name: 'تجزئة', value: 19 },     
+            { name: 'استدعاء ذاتي', value: 16 }, 
+            { name: 'حلقة', value: 13 },      
+            { name: 'شرط', value: 28 },       
+            { name: 'استثناء', value: 12 },   
+            { name: 'ترجمة', value: 29 },     
+            { name: 'تفسير', value: 14 },     
+            { name: 'إطار عمل', value: 24 },  
+            { name: 'وحدة', value: 21 },      
+            { name: 'مكتبة', value: 27 },     
+            { name: 'حزمة', value: 18 },      
+            { name: 'الدالة الرئيسية', value: 20 }, 
+            { name: 'تدفق العملية', value: 11 }, 
+            { name: 'حدث', value: 17 },       
+            { name: 'نداء العودة', value: 13 }, 
+            { name: 'غير متزامن', value: 95 }, 
+            { name: 'متزامن', value: 22 },     
+            { name: 'خيط', value: 16 },        
+            { name: 'عملية', value: 12 },      
+            { name: 'ذاكرة', value: 23 },      
+            { name: 'مؤشر', value: 29 },       
+            { name: 'مرجع', value: 18 },       
+            { name: 'كومة', value: 20 },       
+            { name: 'واجهة برمجة التطبيقات', value: 93 }, 
+            { name: 'جدول', value: 15 },       
+            { name: 'حقل', value: 25 },        
+            { name: 'استعلام', value: 21 },    
+            { name: 'ترتيب', value: 13 },      
+            { name: 'تصفية', value: 12 },      
+            { name: 'تعيين', value: 15 },      
+            { name: 'دمج', value: 14 },        
+            { name: 'API', value: 12 },        
+            { name: 'طلب', value: 26 },        
+            { name: 'استجابة', value: 17 },    
+            { name: 'خادم', value: 44 },       
+            { name: 'الواجهة الأمامية', value: 12 }, 
+          ].sort((a,b) => b.value - a.value)
     })
 
     const DATASET_WORDCLOUD_HINDI = computed(() => {
-        const data = createWordCloudDatasetFromPlainText('प्रोग्रामिंग, एक कला और विज्ञान का संयोजन है। उन लोगों के लिए जो प्रौद्योगिकी और समस्याओं को हल करने के शौकीन हैं, प्रोग्रामिंग केवल एक कौशल नहीं है, बल्कि यह एक ऐसी गतिविधि है जो अनगिनत आनंद लाती है। इस लगातार बदलती डिजिटल दुनिया में, प्रोग्रामिंग भविष्य को आकार देने के लिए एक महत्वपूर्ण उपकरण बन गई है, और इसके द्वारा लाया गया संतोष और सफलता की भावना अनमोल है। सबसे पहले, प्रोग्रामिंग में सबसे बड़ी खुशी में से एक है सृजन की स्वतंत्रता। प्रोग्रामिंग एक खाली कैनवास पर चित्र बनाने के समान है, जहां प्रोग्रामर अपनी इच्छानुसार अपनी "रचनाएँ" बना सकता है। चाहे वह एक साधारण वेब पेज हो, या एक जटिल डेटा प्रोसेसिंग सिस्टम, प्रोग्रामिंग रचनाकारों को अपने विचारों को लागू करने का उपकरण प्रदान करती है। कोड लिखने की प्रक्रिया चुनौतीपूर्ण होती है, लेकिन जब भी एक नई सुविधा लागू होती है या एक जटिल त्रुटि हल हो जाती है, तो उस संतोषजनक भावना का अनुभव अनमोल होता है। प्रोग्रामिंग की प्रक्रिया एक पहेली हल करने जैसी होती है। प्रत्येक प्रोग्राम अनगिनत छोटे समस्याओं और चुनौतियों से बना होता है, और प्रोग्रामर को समाधान ढूंढने के लिए एक-एक कदम उठाना पड़ता है। यह एक विशाल पहेली की तरह है, और जैसे ही एक सही समाधान मिल जाता है, उत्तेजना और संतोष का अनुभव होता है। प्रोग्रामिंग में डिबगिंग की प्रक्रिया विशेष रूप से महत्वपूर्ण होती है। जब कोड में त्रुटियाँ होती हैं, तो कारण को पहचानना और समस्या का समाधान करना जैसे अंधेरे में प्रकाश पाना होता है, और यह खुशी हमेशा प्रोग्रामर को फिर से ऊर्जा देती है। इसके अलावा, प्रोग्रामिंग से हमें तार्किक सोच की सुंदरता का अनुभव होता है। एक प्रोग्राम लिखने के लिए सटीक सोच और उचित तार्किक संरचना की आवश्यकता होती है, और यह सोचने का प्रशिक्षण न केवल समस्या हल करने की क्षमता को बढ़ाता है, बल्कि जीवन के विभिन्न पहलुओं में भी प्रेरणा प्रदान करता है। उदाहरण के लिए, जब जटिल जीवन समस्याओं का सामना होता है, तो प्रोग्रामर अक्सर प्रोग्रामिंग सोच का उपयोग करते हैं, बड़े मुद्दों को छोटे, हल करने योग्य हिस्सों में विभाजित करते हैं, और फिर उन्हें एक-एक करके हल करते हैं। यह कौशल प्रोग्रामिंग को न केवल मजेदार बनाता है, बल्कि जीवन भर लाभकारी भी बनाता है। प्रोग्रामिंग से हम सीखने और बढ़ने के आनंद का अनुभव करते हैं। प्रौद्योगिकी निरंतर विकसित हो रही है, नई भाषाएँ, नए ढांचे और नए उपकरण निरंतर आ रहे हैं, जो यह दर्शाता है कि प्रोग्रामरों के पास हमेशा कुछ नया सीखने के लिए होता है। हालांकि यह सीखने की प्रक्रिया कभी-कभी निराशाजनक हो सकती है, लेकिन हर बार जब नया कौशल सीखा जाता है, तो यह भावना अद्वितीय रूप से संतोषजनक होती है। प्रोग्रामिंग हमें यह एहसास कराती है कि सीखना एक अनंत प्रक्रिया है, और यह वह प्रक्रिया है जिसमें प्रोग्रामर लगातार सुधार करते हैं और बढ़ने की खुशी का अनुभव करते हैं। टीमवर्क भी प्रोग्रामिंग में एक बड़ा आनंद है। कई परियोजनाओं में, प्रोग्रामर को अन्य डेवलपर्स, डिजाइनरों, उत्पाद प्रबंधकों, और यहां तक कि ग्राहकों के साथ भी निकटता से सहयोग करना पड़ता है। यह सहयोग न केवल यह सिखाता है कि विचारों को बेहतर तरीके से कैसे साझा करें, बल्कि सामूहिक रचनात्मकता की खुशी भी लाता है। जब एक टीम एक परियोजना को पूरा करने के लिए मिलकर काम करती है और उसे अंततः सफलतापूर्वक लॉन्च करती है, तो उस सामूहिक सफलता की भावना अविस्मरणीय होती है। प्रोग्रामिंग असीम संभावनाओं और अन्वेषण के स्थान भी प्रदान करती है। एक प्रोग्रामर आवेदन बनाने में सक्षम हो सकता है ताकि रोज़मर्रा के कामों को सरल बनाया जा सके, एक वेबसाइट बना सकता है ताकि अपनी सोच को साझा किया जा सके, और यहां तक कि खेल भी बना सकता है ताकि लोगों का मनोरंजन किया जा सके। प्रोग्रामिंग हमें रचनात्मकता की मुक्ति का अनुभव कराती है, जहां हर कोई अपनी दुनिया का "निर्माता" बन सकता है। यही असीमित संभावनाएँ प्रोग्रामिंग में लोगों को अपने आनंद और उद्देश्य का अनुभव करने का अवसर देती हैं। दूसरी ओर, प्रोग्रामिंग का आनंद इसके समाज पर सकारात्मक प्रभाव से भी आता है। उपयोगी सॉफ़्टवेयर लिखकर, प्रोग्रामर वास्तव में दुनिया को बदल सकते हैं। चाहे वह एक स्वास्थ्य एप्लिकेशन हो जो लोगों की जीवन गुणवत्ता को सुधारता है, या एक नया प्लेटफ़ॉर्म जो छात्रों को सीखने में मदद करता है, प्रोग्रामिंग के परिणाम सीधे लाखों लोगों के जीवन को प्रभावित कर सकते हैं। समाज में योगदान का यह संतोषजनक अनुभव प्रोग्रामर को लगातार प्रेरित करता है। प्रोग्रामिंग की चुनौतियाँ भी महत्वपूर्ण होती हैं, लेकिन इन्हीं चुनौतियों से प्रोग्रामिंग और भी मजेदार बनती है। हर प्रोग्रामर को परेशान करने वाली त्रुटियाँ मिलती हैं, या ऐसी समस्याओं का सामना करना पड़ता है जो हल नहीं हो रही होतीं। लेकिन ये कठिनाइयाँ प्रोग्रामिंग के अनुभव को रोमांचक और चुनौतीपूर्ण बनाती हैं। जब एक जटिल एल्गोरिथम आखिरकार सफलतापूर्वक चलता है, या एक प्रणाली अंततः स्थिर हो जाती है, तो वह राहत का अहसास सभी प्रयासों को सार्थक बना देता है। अंत में, प्रोग्रामिंग का आनंद इसकी अद्वितीय लचीलापन और असीम रचनात्मकता में भी होता है। एक प्रोग्रामर अपनी लैपटॉप के साथ कहीं भी, कभी भी कोड लिख सकता है, और वह जिस परियोजना और तकनीकी क्षेत्र में रुचि रखता है, उसे चुन सकता है। यह स्वतंत्रता और लचीलापन प्रोग्रामिंग को एक ऐसी गतिविधि बनाती है, जो व्यक्तिगत रुचियों और जीवनशैली के अनुरूप हो सकती है। चाहे आप घर पर हों, कैफे में, या यात्रा कर रहे हों, आप हमेशा प्रोग्रामिंग का आनंद ले सकते हैं। कुल मिलाकर, प्रोग्रामिंग एक रोमांचक और चुनौतीपूर्ण गतिविधि है जो तर्क और रचनात्मकता को जोड़ती है, जिससे समस्याओं को हल करने, बढ़ने और सृजनात्मकता का आनंद मिलता है। चाहे आप एक शुरुआत करने वाले हों या अनुभवी डेवलपर, प्रोग्रामिंग हमेशा नए और रोमांचक अनुभव प्रदान करती है। इसलिए, प्रोग्रामिंग केवल एक कौशल नहीं है, बल्कि यह एक ऐसा स्रोत है जिसमें असीमित संभावनाएँ और आनंद है। इस निरंतर सीखने और अन्वेषण की प्रक्रिया में, हर प्रोग्रामर अपनी खुशी और सफलता प्राप्त कर सकता है।').sort((a,b) => b.value - a.value)
-    
-        return data.filter(el => el.value > 3)
+        return [
+            { name: 'प्रोग्रामिंग', value: 95 },  
+            { name: 'कोड', value: 55 },           
+            { name: 'एल्गोरिदम', value: 18 },      
+            { name: 'डीबग', value: 15 },          
+            { name: 'वेरिएबल', value: 22 },       
+            { name: 'फ़ंक्शन', value: 13 },       
+            { name: 'ऑब्जेक्ट', value: 26 },      
+            { name: 'क्लास', value: 16 },         
+            { name: 'इनहेरिटेंस', value: 10 },    
+            { name: 'पॉलीमॉर्फिज़्म', value: 11 },
+            { name: 'इंटरफ़ेस', value: 23 },      
+            { name: 'ऐरे', value: 25 },           
+            { name: 'लिंक्ड लिस्ट', value: 12 },   
+            { name: 'स्टैक', value: 14 },          
+            { name: 'क्यू', value: 20 },           
+            { name: 'हैश', value: 19 },           
+            { name: 'रिकर्सन', value: 16 },       
+            { name: 'लूप', value: 13 },           
+            { name: 'कंडीशन', value: 28 },        
+            { name: 'एक्सेप्शन', value: 12 },     
+            { name: 'कंपाइल', value: 29 },        
+            { name: 'इंटरप्रेट', value: 14 },     
+            { name: 'फ्रेमवर्क', value: 24 },      
+            { name: 'मॉड्यूल', value: 21 },       
+            { name: 'लाइब्रेरी', value: 27 },      
+            { name: 'पैकेज', value: 18 },         
+            { name: 'मुख्य फ़ंक्शन', value: 20 }, 
+            { name: 'प्रोसेस फ्लो', value: 11 },   
+            { name: 'इवेंट', value: 17 },         
+            { name: 'कॉलबैक', value: 13 },        
+            { name: 'असिंक', value: 95 },         
+            { name: 'सिंक', value: 22 },          
+            { name: 'थ्रेड', value: 16 },         
+            { name: 'प्रोसेस', value: 12 },       
+            { name: 'मेमोरी', value: 23 },        
+            { name: 'पॉइंटर', value: 29 },        
+            { name: 'रेफरेंस', value: 18 },       
+            { name: 'हीप', value: 20 },           
+            { name: 'एपीआई', value: 93 },         
+            { name: 'टेबल', value: 15 },          
+            { name: 'फ़ील्ड', value: 25 },        
+            { name: 'क्वेरी', value: 21 },        
+            { name: 'सॉर्टिंग', value: 13 },      
+            { name: 'फिल्टर', value: 12 },        
+            { name: 'मैपिंग', value: 15 },        
+            { name: 'मरज', value: 14 },           
+            { name: 'एपीआई', value: 12 },         
+            { name: 'रिक्वेस्ट', value: 26 },     
+            { name: 'रिस्पॉन्स', value: 17 },     
+            { name: 'सर्वर', value: 44 },         
+            { name: 'फ्रंटएंड', value: 12 },      
+          ].sort((a,b) => b.value - a.value)
     })
 
     //-------------- VUE-UI-SCATTER --------------//
