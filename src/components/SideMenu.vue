@@ -1,12 +1,11 @@
 <script setup>
-import { ref, computed, watch, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { ChevronLeftIcon, ChevronRightIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import LinkTooltip from "../components/LinkTooltip.vue";
 import DynamicTooltip from "./DynamicTooltip.vue";
 import { useMainStore } from "../stores";
 import Dropdown from "./Dropdown.vue";
-import SideMenuItem from "./SideMenuItem.vue";
 
 const router = useRouter();
 
@@ -45,26 +44,6 @@ function closeIfOpen(){
 
 function isSelected(route) {
     return currentRoute.value === route;
-}
-
-function scrollToTop() {
-    window.scrollTo({ top: 0});
-}
-
-function getIconColor(route) {
-    if(isSelected(route)) {
-        if(isDarkMode.value) {
-            return '#5f8bee'
-        } else {
-            return '#5f8bee'
-        }
-    } else {
-        if(isDarkMode.value) {
-            return 'rgb(156, 163, 175)'
-        } else {
-            return 'rgb(31, 41, 55)'
-        }
-    }
 }
 
 const smallMenu = ref([
@@ -679,7 +658,6 @@ function showTooltip(source) {
     } else {
         tooltipContent.value = `<div class="flex flex-center flex-col gap-2 place-items-center"><div class="flex flex-row place-items-center"><span>VueUi</span><b class="text-app-blue">${source.tooltipContent}</b></div>${source.thumb ? `<img class="h-12 max-w-[150px]" src="${isDarkMode.value ? source.thumb : source.thumbLight}">` : ''}</div>`
     }
-
 }
 
 function nukeTooltip() {
@@ -689,13 +667,7 @@ function nukeTooltip() {
 
 const thisApp = computed(() => {
     return document.getElementById("app")
-})
-
-// Line & bars
-// Donuts
-// Gauges
-// Radar
-// Misc charts
+});
 
 const sideMenuItems = computed(() => {
     return [

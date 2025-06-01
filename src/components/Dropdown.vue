@@ -22,13 +22,13 @@ const props = defineProps({
         type: String,
         default: ''
     }
-})
+});
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close']);
 const store = useMainStore();
 
 function scrollToTop() {
-    window.scrollTo({ top: 0});
+    window.scrollTo({ top: 0 });
 }
 
 function close(){
@@ -53,7 +53,7 @@ const config = computed(() => {
             color: "#2D353C"
         }
     }
-})
+});
 
 </script>
 
