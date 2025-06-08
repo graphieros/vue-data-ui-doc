@@ -263,6 +263,15 @@ const categories = computed(() => {
             description: translations.value.docs.tooltips.historyPlot,
             raterId: 'vue_ui_history_plot'
         },
+        {
+            link: 'vue-ui-ridgeline',
+            icon: 'chartRidgeline',
+            component: 'VueUiRidgeline',
+            thumb: new URL('../assets/thumb_ridgeline.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_ridgeline_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.ridgeline,
+            raterId: 'vue_ui_ridgeline'
+        },
     ].map((c, i) => {
         return {
             ...c,

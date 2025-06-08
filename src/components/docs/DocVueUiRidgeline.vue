@@ -242,7 +242,7 @@ const dataset = computed(() => {
             datapoints: c.datapoints.map((d) => {
                 return {
                     ...d,
-                    color: shiftHue({ hexColor: color.value, force: (isDarkMode.value ? -0.01 : 0.01) * i }),
+                    color: shiftHue({ hexColor: color.value, force: (isDarkMode.value ? -0.01 : -0.005) * i }),
                 };
             }),
         };
@@ -945,9 +945,9 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
             </DocSnapper>
         </div>
 
-        <!-- <div class="w-full flex justify-center mt-6">
+        <div class="w-full flex justify-center mt-6">
             <BaseViewExampleButton link="/examples/categories#vue-ui-ridgeline"/>
-        </div> -->
+        </div>
 
         <Rater itemId="vue_ui_ridgeline" class="mt-12" />
 

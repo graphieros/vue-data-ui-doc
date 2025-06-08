@@ -53,6 +53,287 @@ export default function useExamples() {
         }
     })
 
+    //-------------- VUE-UI-RIDGELINE --------------//
+    const DATASET_RIDGELINE = ref([
+        {
+            name: "Moscow",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [-7, -6, 0, 8, 15, 18, 20, 18, 13, 7, 1, -4],
+                },
+            ],
+        },
+        {
+            name: "Chicago",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [-4, -2, 3, 10, 16, 22, 24, 23, 19, 12, 5, -1],
+                },
+            ],
+        },
+        {
+            name: "Toronto",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [-3, -2, 2, 9, 15, 20, 22, 21, 17, 10, 4, -1],
+                },
+            ],
+        },
+        {
+            name: "Berlin",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [0, 2, 6, 12, 16, 19, 21, 21, 17, 12, 7, 3],
+                },
+            ],
+        }, 
+        {
+            name: "Beijing",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [-3, 0, 6, 14, 20, 24, 26, 25, 20, 13, 5, -1],
+                },
+            ],
+        },
+        {
+            name: "London",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [5, 6, 8, 11, 15, 18, 20, 20, 17, 13, 9, 6],
+                },
+            ],
+        },
+        {
+            name: "Paris",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [5, 6, 9, 12, 16, 19, 21, 21, 18, 13, 8, 5],
+                },
+            ],
+        }, 
+        {
+            name: "San Francisco",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [11, 12, 13, 13, 14, 15, 15, 16, 17, 16, 14, 12],
+                },
+            ],
+        },
+        {
+            name: "New York",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [0, 2, 7, 13, 18, 24, 27, 26, 22, 15, 9, 3],
+                },
+            ],
+        },
+        {
+            name: "Milan",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [3, 5, 9, 14, 18, 22, 24, 24, 20, 15, 8, 4],
+                },
+            ],
+        },
+        {
+            name: "Madrid",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [6, 8, 11, 13, 17, 22, 26, 25, 21, 15, 10, 7],
+                },
+            ],
+        },
+        {
+            name: "Rome",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [8, 9, 11, 14, 18, 22, 25, 25, 22, 17, 12, 9],
+                },
+            ],
+        },
+        {
+            name: "Seoul",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [-2, 0, 5, 12, 17, 21, 25, 26, 21, 15, 7, 1],
+                },
+            ],
+        },
+        {
+            name: "Tokyo",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [5, 6, 9, 15, 19, 22, 26, 27, 24, 18, 13, 8],
+                },
+            ],
+        },
+        {
+            name: "Los Angeles",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [14, 15, 15, 17, 18, 20, 22, 22, 22, 19, 16, 13],
+                },
+            ],
+        }, 
+        {
+            name: "Istanbul",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [6, 6, 8, 12, 16, 21, 23, 23, 20, 16, 12, 8],
+                },
+            ],
+        },
+        {
+            name: "Mexico City",
+            datapoints: [
+                {
+                    name: "Average Temperature (°C)",
+                    values: [13, 14, 15, 16, 16, 16, 15, 15, 15, 14, 13, 13],
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_RIDGELINE_MULTIPLE = ref([
+        {
+            name: "Moscow (cold: 1985, hot: 2020)",
+            datapoints: [
+                { name: "hottest", values: [-5, -3, 3, 11, 17, 20, 22, 21, 15, 9, 3, -2], color: '#ff3700'},
+                { name: "coldest", values: [-9, -8, -3, 5, 13, 16, 18, 17, 11, 4, -2, -7], color: '#5f8aee'},
+            ],
+        },
+        {
+            name: "Chicago (cold: 1979, hot: 2012)",
+            datapoints: [
+                { name: "hottest", values: [0, 3, 7, 14, 19, 25, 27, 27, 22, 16, 8, 2], color: '#ff3700' },
+                { name: "coldest", values: [-7, -5, 0, 8, 14, 19, 21, 20, 15, 8, 2, -4], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "Toronto (cold: 1993, hot: 2016)",
+            datapoints: [
+                { name: "hottest", values: [0, 2, 7, 13, 19, 24, 26, 25, 20, 13, 7, 1], color: '#ff3700' },
+                { name: "coldest", values: [-7, -5, -1, 7, 13, 18, 19, 18, 14, 7, 1, -4], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "Berlin (cold: 1962, hot: 2919)",
+            datapoints: [
+                { name: "hottest", values: [3, 5, 9, 15, 19, 23, 25, 25, 21, 15, 8, 5], color: '#ff3700' },
+                { name: "coldest", values: [-2, 0, 4, 10, 14, 16, 17, 16, 13, 7, 3, 0], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "Beijing (cold: 1984, hot: 2021)",
+            datapoints: [
+                { name: "hottest", values: [0, 4, 10, 18, 23, 28, 30, 29, 25, 16, 8, 2], color: '#ff3700' },
+                { name: "coldest", values: [-7, -4, 2, 11, 17, 21, 23, 22, 17, 9, 2, -4], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "London (cold: 1963, hot: 2014)",
+            datapoints: [
+                { name: "hottest", values: [8, 9, 12, 15, 19, 22, 24, 24, 21, 17, 13, 9], color: '#ff3700' },
+                { name: "coldest", values: [2, 3, 5, 8, 12, 15, 16, 16, 13, 8, 5, 3], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "Paris (cold: 1956, hot: 2019)",
+            datapoints: [
+                { name: "hottest", values: [8, 9, 13, 17, 21, 25, 27, 27, 24, 19, 14, 9], color: '#ff3700' },
+                { name: "coldest", values: [2, 3, 5, 9, 13, 16, 17, 17, 14, 9, 5, 2], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "San Francisco (cold: 1972, hot: 2015)",
+            datapoints: [
+                { name: "hottest", values: [13, 14, 15, 15, 16, 17, 18, 19, 19, 18, 16, 14], color: '#ff3700' },
+                { name: "coldest", values: [10, 11, 12, 12, 13, 14, 14, 15, 16, 15, 13, 11], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "New York (cold: 1978, hot: 2010)",
+            datapoints: [
+                { name: "hottest", values: [4, 6, 12, 17, 23, 28, 30, 30, 25, 18, 13, 7], color: '#ff3700' },
+                { name: "coldest", values: [-4, -2, 3, 9, 14, 20, 23, 22, 17, 10, 3, -2], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "Milan (cold: 1981, hot: 2017)",
+            datapoints: [
+                { name: "hottest", values: [6, 8, 12, 18, 22, 26, 28, 28, 25, 19, 12, 7], color: '#ff3700' },
+                { name: "coldest", values: [1, 3, 7, 12, 16, 20, 21, 21, 17, 11, 5, 2], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "Madrid (cold: 1985, hot: 2022)",
+            datapoints: [
+                { name: "hottest", values: [10, 12, 16, 19, 24, 30, 34, 33, 28, 22, 16, 12], color: '#ff3700' },
+                { name: "coldest", values: [3, 5, 8, 10, 14, 19, 22, 22, 18, 13, 7, 4], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "Rome (cold: 1971, hot: 2020)",
+            datapoints: [
+                { name: "hottest", values: [11, 12, 15, 19, 23, 27, 30, 30, 27, 22, 17, 13], color: '#ff3700' },
+                { name: "coldest", values: [5, 6, 8, 11, 15, 18, 20, 20, 17, 13, 9, 6], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "Seoul (cold: 1980, hot: 2021)",
+            datapoints: [
+                { name: "hottest", values: [2, 4, 10, 16, 22, 27, 31, 32, 27, 20, 13, 7], color: '#ff3700' },
+                { name: "coldest", values: [-5, -2, 2, 8, 13, 17, 20, 21, 16, 9, 3, -1], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "Tokyo (cold: 1966, hot: 2018)",
+            datapoints: [
+                { name: "hottest", values: [8, 9, 13, 19, 23, 27, 31, 32, 29, 24, 18, 13], color: '#ff3700' },
+                { name: "coldest", values: [2, 3, 6, 12, 16, 19, 23, 23, 20, 14, 9, 4], color: '#5f8aee' },
+            ],
+        },
+        {
+            name: "Los Angeles (cold: 1975, hot: 2016)",
+            datapoints: [
+                { name: "hottest", values: [16, 17, 17, 19, 20, 22, 25, 26, 25, 22, 19, 16], color: '#ff3700' },
+                { name: "coldest", values: [12, 13, 13, 14, 15, 16, 18, 18, 18, 16, 14, 12] , color: '#5f8aee'},
+            ],
+        },
+        {
+            name: "Istanbul (cold: 1983, hot: 2020)",
+            datapoints: [
+                { name: "hottest", values: [9, 10, 13, 17, 22, 27, 29, 29, 26, 20, 15, 11], color: '#ff3700' },
+                { name: "coldest", values: [3, 4, 6, 9, 13, 17, 19, 19, 16, 11, 7, 4] , color: '#5f8aee'},
+            ],
+        },
+        {
+            name: "Mexico City (cold: 1974, hot: 2019)",
+            datapoints: [
+                { name: "hottest", values: [15, 16, 17, 18, 18, 18, 18, 18, 18, 17, 16, 15], color: '#ff3700' },
+                { name: "coldest", values: [10, 11, 12, 13, 13, 13, 13, 13, 13, 12, 11, 10], color: '#5f8aee' },
+            ],
+        },
+    ]);
+    
+
+
     //-------------- VUE-UI-WORLD --------------//
     const DATASET_WORLD = ref({
         AFG: { value: 12.8 },
@@ -3137,8 +3418,342 @@ export default function useExamples() {
         }
     })
 
+    const CONFIG_RIDGELINE_BASIC = computed(() => {
+        return {
+            theme: "",
+            customPalette: [],
+            responsive: false,
+            useCssAnimation: true,
+            table: {
+                show: false,
+                responsiveBreakpoint: 400,
+                th: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    outline: "none",
+                },
+                td: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    outline: "none",
+                    roundingValue: 0,
+                },
+                columnNames: {
+                    series: "Series",
+                },
+            },
+            style: {
+                fontFamily: "inherit",
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    padding: {
+                        top: 12,
+                        right: 0,
+                        bottom: 0,
+                        left: 12,
+                    },
+                    title: {
+                        text: "Average temperatures",
+                        color: colors.value.textColor,
+                        fontSize: 20,
+                        bold: true,
+                        textAlign: "center",
+                        paddingLeft: 0,
+                        paddingRight: 0,
+                        subtitle: {
+                            color: "#A1A1A1",
+                            text: "In °C",
+                            fontSize: 16,
+                            bold: false,
+                        },
+                    },
+                    legend: {
+                        show: true,
+                        bold: false,
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        fontSize: 14,
+                    },
+                    dialog: {
+                        show: true,
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor,
+                        header: {
+                            backgroundColor: colors.value.bg,
+                            color: colors.value.textColor,
+                        },
+                        xyChart: {
+                            showTable: false,
+                            line: {
+                                radius: 4,
+                                useGradient: true,
+                                strokeWidth: 2,
+                                cutNullValues: false,
+                                dot: {
+                                    hideAboveMaxSerieLength: 62,
+                                    useSerieColor: true,
+                                    fill: '#FFFFFF',
+                                    strokeWidth: 0.5
+                                },
+                                labels: {
+                                    show: true,
+                                    offsetY: -12,
+                                    rounding: 0,
+                                    color: colors.value.textColor,
+                                },
+                                area: {
+                                    useGradient: true,
+                                    opacity: 30
+                                }
+                            },
+                            table: {
+                                rounding: 0,
+                                responsiveBreakpoint: 400,
+                                sparkline: true,
+                                showSum: true,
+                                th: {
+                                    backgroundColor: colors.value.bg,
+                                    color: colors.value.textColor,
+                                    outline: "none"
+                                },
+                                td: {
+                                    backgroundColor: colors.value.bg,
+                                    color: colors.value.textColor,
+                                    outline: "none",
+                                },
+                                columnNames: {
+                                    period: "Period",
+                                    total: "Total"
+                                }
+                            },
+                            chart:  {
+                                backgroundColor: colors.value.bg,
+                                color: colors.value.textColor,
+                                highlighter: {
+                                    color: colors.value.textColor,
+                                    opacity: 10,
+                                    useLine: false,
+                                    lineDasharray: 2,
+                                    lineWidth: 1
+                                },
+                                legend: {
+                                    color: colors.value.textColor,
+                                },
+                                tooltip: {
+                                    backgroundColor: colors.value.bg,
+                                    color: colors.value.textColor,
+                                    show: true,
+                                    showValue: true,
+                                    showPercentage: false,
+                                    roundingValue: 0,
+                                    roundingPercentage: 0,
+                                    customFormat: null,
+                                    borderRadius: 4,
+                                    borderColor:"#3A3A3A",
+                                    borderWidth: 1,
+                                    fontSize: 14,
+                                    backgroundOpacity: 30,
+                                    position: "center",
+                                    offsetY: 24,
+                                    showTimeLabel: true
+                                },
+                                zoom: {
+                                    show: true,
+                                    color: "#6A6A6A",
+                                    highlightColor: "#4A4A4A",
+                                    minimap: {
+                                        show: true,
+                                        smooth: true,
+                                        lineColor: "#1F77B4",
+                                        selectedColorOpacity: 0.2,
+                                        selectedColor: '#8A8A8A',
+                                        selectionRadius: 2,
+                                        indicatorColor: '#CCCCCC',
+                                        verticalHandles: false
+                                    }
+                                },
+                                grid: {
+                                    stroke: colors.value.gridStroke,
+                                    showVerticalLines: false,
+                                    showHorizontalLines: false,
+                                    position: 'middle',
+                                    frame: {
+                                        show: false,
+                                        stroke: '#E1E5E8',
+                                        strokeWidth: 2,
+                                        strokeLinecap: 'round',
+                                        strokeLinejoin: 'round',
+                                        strokeDasharray: 0
+                                    },
+                                    labels: {
+                                        show: true,
+                                        color: colors.value.textColor,
+                                        fontSize: 20,
+                                        zeroLine: {
+                                            show: true,
+                                        },
+                                        xAxisLabels: {
+                                            color: colors.value.textColor,
+                                            show: true,
+                                            showOnlyFirstAndLast: false,
+                                            values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                                            fontSize: 18,
+                                            yOffset: 0,
+                                            rotation: 0,
+                                            showOnlyAtModulo: false,
+                                            modulo: 12
+                                        }
+                                    }
+                                },
+                            }
+                        },
+                    },
+                    areas: {
+                        height: 60,
+                        rowHeight: 30,
+                        strokeWidth: 1,
+                        useCommonColor: true,
+                        useGradient: true,
+                        stroke: {
+                            useSerieColor: false,
+                            color: "transparent",
+                        },
+                        smooth: true,
+                        opacity: 0.9,
+                        maxPoint: {
+                            show: true,
+                            adaptStrokeToBackground: false,
+                            stroke: "#9A9A9A",
+                            strokeWidth: 1,
+                            strokeDasharray: 4,
+                        },
+                    },
+                    selector: {
+                        show: true,
+                        stroke: "#6A6A6A",
+                        strokeWidth: 1,
+                        strokeDasharray: 2,
+                        labels: {
+                            fontSize: 12,
+                            formatter: null,
+                            rounding: 0,
+                            color: colors.value.textColor,
+                        },
+                        dot: {
+                            radius: 4,
+                            useDatapointColor: true,
+                            fill: colors.value.textColor,
+                            stroke: colors.value.bg,
+                            strokeWidth: 1,
+                        },
+                    },
+                    zeroLine: {
+                        show: true,
+                        strokeWidth: 1,
+                        strokeDasharray: 0,
+                        useSerieColor: false,
+                        stroke: colors.value.greyStroke,
+                    },
+                    xAxis: {
+                        labels: {
+                            prefix: "",
+                            suffix: "",
+                            rotation: 0,
+                            values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                            color: colors.value.textColor,
+                            fontSize: 14,
+                            bold: false,
+                            showOnlyAtModulo: true,
+                            modulo: 6,
+                            showOnlyFirstAndLast: false,
+                            offsetY: 0,
+                        },
+                    },
+                    yAxis: {
+                        labels: {
+                            fontSize: 12,
+                            bold: false,
+                            color: colors.value.textColor,
+                            offsetX: 0,
+                        },
+                    },
+                },
+            },
+        }
+    })
+
     const examples = computed(() => {
         return [
+            // RIDGELINE CLASSIC
+            {
+                dataset: DATASET_RIDGELINE.value,
+                config: CONFIG_RIDGELINE_BASIC.value,
+                component: 'VueUiRidgeline',
+                icon: 'chartRidgeline',
+                link: 'vue-ui-ridgeline',
+                description: {
+                    en: 'Basic rendering',
+                    fr: 'Rendu de base',
+                    pt: 'Renderização básica',
+                    de: 'Grundlegende Darstellung',
+                    zh: '基本渲染',
+                    jp: '基本的なレンダリング',
+                    es: 'Representación básica',
+                    ko: '기본 렌더링',
+                    ar: 'عرض أساسي'
+                }
+            },
+            // RIDGELINE CATEGORIES
+            {
+                dataset: DATASET_RIDGELINE_MULTIPLE.value,
+                config: CONFIG_RIDGELINE_BASIC.value,
+                component: 'VueUiRidgeline',
+                icon: 'chartRidgeline',
+                link: 'vue-ui-ridgeline',
+                description: {
+                    en: 'Multiple series per datapoint',
+                    fr: 'Séries multiples par point de données',
+                    pt: 'Múltiplas séries por ponto de dados',
+                    de: 'Mehrere Reihen pro Datenpunkt',
+                    zh: '每个数据点的多组序列',
+                    jp: '各データポイントごとの複数系列',
+                    es: 'Varias series por punto de datos',
+                    ko: '데이터 포인트별 다중 시리즈',
+                    ar: 'سلاسل متعددة لكل نقطة بيانات'
+                }
+            },
+            // RIDGELINE CONDENSED
+            {
+                dataset: DATASET_RIDGELINE.value,
+                config: {
+                    ...CONFIG_RIDGELINE_BASIC.value,
+                    style: {
+                        ...CONFIG_RIDGELINE_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_RIDGELINE_BASIC.value.style.chart,
+                            areas: {
+                                ...CONFIG_RIDGELINE_BASIC.value.style.chart.areas,
+                                rowHeight: 15
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiRidgeline',
+                icon: 'chartRidgeline',
+                link: 'vue-ui-ridgeline',
+                description: {
+                    en: 'Condensed rows',
+                    fr: 'Rangées condensées',
+                    pt: 'Linhas condensadas',
+                    de: 'Kompakte Reihen',
+                    zh: '紧凑行',
+                    jp: '凝縮された行',
+                    es: 'Filas condensadas',
+                    ko: '압축된 행',
+                    ar: 'صفوف مكثفة'
+                }
+            },
             // WORLD GLOBE
             {
                 dataset: DATASET_WORLD.value,
