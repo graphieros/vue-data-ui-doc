@@ -48,6 +48,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                checkVueUiXyConfig: {
+                    en: 'The contents of this config attributes correspond to the config of VueUiXy.',
+                    fr: "Le contenu de ces attributs de configuration correspond à la configuration de VueUiXy.",
+                    pt: "O conteúdo destes atributos de configuração corresponde à configuração do VueUiXy.",
+                    de: "Der Inhalt dieser Konfigurationsattribute entspricht der Konfiguration von VueUiXy.",
+                    zh: "这些配置属性的内容对应于 VueUiXy 的配置。",
+                    jp: "この構成属性の内容は VueUiXy の設定に対応しています。",
+                    es: "El contenido de estos atributos de configuración corresponde a la configuración de VueUiXy.",
+                    ko: "이 구성 속성의 내용은 VueUiXy의 구성에 해당합니다.",
+                    ar: "محتويات سمات التكوين هذه تتوافق مع تكوين VueUiXy."
+                },
                 updateDatasetWillReset: {
                     en: 'Dynamic updating the dataset results in a reset of the internal state of the component.',
                     fr: 'La mise à jour dynamique du jeu de données réinitialise l’état interne du composant.',
@@ -2070,6 +2081,17 @@ export const useMainStore = defineStore("main", {
                             es: "Visualiza porcentajes con una barra 3d.",
                             ko: "3D 막대로 백분율 시각화",
                             ar: 'تصور النسب المئوية باستخدام شريط ثلاثي الأبعاد'
+                        },
+                        ridgeline: {
+                            en: 'Line plots stacked vertically to enable easy visualization of changes across space or time. The plots often slightly overlap to make differences stand out more clearly.',
+                            fr: `Tracés linéaires combinés par empilement vertical pour permettre une visualisation facile des changements dans l'espace ou dans le temps. Les parcelles se chevauchent souvent légèrement pour permettre aux changements d'être plus clairement contrastés.`,
+                            pt: 'Gráficos de linhas empilhados verticalmente para facilitar a visualização de mudanças ao longo do espaço ou do tempo. Os gráficos geralmente se sobrepõem levemente para destacar melhor as diferenças.',
+                            de: 'Linien-Diagramme werden vertikal gestapelt, um Veränderungen im Raum oder über die Zeit leicht zu visualisieren. Die Diagramme überlappen sich oft leicht, um Unterschiede deutlicher hervorzuheben.',
+                            zh: '通过垂直堆叠的线图，便于直观展示空间或时间上的变化。这些图形通常会略有重叠，以更清晰地对比变化。',
+                            jp: '折れ線グラフを垂直に重ねて、空間や時間の変化を簡単に可視化します。グラフはしばしばわずかに重なり、違いがより明確に際立ちます。',
+                            es: 'Gráficas de líneas apiladas verticalmente que facilitan la visualización de cambios a través del espacio o del tiempo. Las curvas suelen superponerse ligeramente para contrastar más claramente los cambios.',
+                            ko: '선 그래프를 수직으로 쌓아 공간 또는 시간에 따른 변화를 쉽게 시각화할 수 있습니다. 그래프는 종종 약간 겹쳐져 변화가 더 뚜렷하게 드러납니다.',
+                            ar: 'مخططات خطية مكدسة رأسياً لتسهيل تصور التغيرات عبر المكان أو الزمن. غالبًا ما تتداخل المخططات قليلاً لإبراز الاختلافات بشكل أوضح.'
                         },
                         world: {
                             en: "An interactive world map that highlights countries and displays custom tooltips with country data.",

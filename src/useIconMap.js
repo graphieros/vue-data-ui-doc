@@ -61,7 +61,8 @@ export function useIconMap(componentName) {
         VueUiFunnel: 'chartFunnel',
         VueUiHistoryPlot: 'chartHistoryPlot',
         VueUiCirclePack: 'chartCirclePack',
-        VueUiWorld: 'world'
+        VueUiWorld: 'world',
+        VueUiRidgeline: 'chartRidgeline'
     }
     return mapping[componentName] || 'clipBoard';
 }
@@ -129,7 +130,8 @@ export function isValidComponent(content) {
         'VueUiXyCanvas',
         'VueUiHistoryPlot',
         'VueUiCirclePack',
-        'VueUiWorld'
+        'VueUiWorld',
+        'VueUiRidgeline'
     ];
 
     return valid.includes(content);

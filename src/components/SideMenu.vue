@@ -248,6 +248,16 @@ const smallMenu = ref([
         component: 'HistoryPlot'
     },
     {
+        route: '/docs#vue-ui-ridgeline',
+        icon: 'chartRidgeline',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Ridgeline',
+        thumb: new URL('../assets/thumb_ridgeline.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_ridgeline_light.png', import.meta.url).href,
+        component: 'Ridgeline'
+    },
+    {
         route: '/docs#vue-ui-donut',
         icon: 'chartDonut',
         cssClasses: '',
@@ -702,6 +712,7 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-donut-evolution', componentName: 'DonutEvolution', icon: 'chartDonutEvolution' },
             {route: '/docs#vue-ui-funnel', componentName: 'Funnel', icon: 'chartFunnel' },
             {route: '/docs#vue-ui-history-plot', componentName: 'HistoryPlot', icon: 'chartHistoryPlot' },
+            {route: '/docs#vue-ui-ridgeline', componentName: 'Ridgeline', icon: 'chartRidgeline' },
         ],
         icon: 'chartLine'
     },

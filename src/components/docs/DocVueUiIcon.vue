@@ -82,6 +82,7 @@ const specialIcons = ref([
     "chartQuadrant",
     "chartRadar",
     "chartRelationCircle",
+    "chartRidgeline",
     "chartRings",
     "chartScatter",
     "chartSparkHistogram",

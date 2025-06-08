@@ -81,6 +81,7 @@ const DocVueUiHistoryPlot = defineAsyncComponent(() => import('../components/doc
 const DocUtilityFunctions = defineAsyncComponent(() => import('../components/docs/DocUtilityFunctions.vue'));
 const DocVueUiCirclePack = defineAsyncComponent(() => import('../components/docs/DocVueUiCirclePack.vue'));
 const DocVueUiWorld = defineAsyncComponent(() => import('../components/docs/DocVueUiWorld.vue'));
+const DocVueUiRidgeline = defineAsyncComponent(() => import('../components/docs/DocVueUiRidgeline.vue'));
 
 const mainConfig = useConfig()
 
@@ -411,6 +412,18 @@ const menuItems = computed(() => [
         type: ['xy', 'donuts', 'misc'],
         thumb: new URL('../assets/thumb_chestnut.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: true
+    },
+    {
+        name: "Ridgeline",
+        icon: "chartRidgeline",
+        tooltip: translations.value.docs.tooltips.ridgeline[store.lang],
+        link: "/docs#vue-ui-ridgeline",
+        type: ['xy'],
+        thumb: new URL('../assets/thumb_ridgeline.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_ridgeline_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: true,
         hasLegend: true
@@ -1190,6 +1203,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiWorld v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-world'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiRidgeline v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-ridgeline'" />
             </Transition>
 
             <Transition name="fade">

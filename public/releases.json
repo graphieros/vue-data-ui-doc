@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.10.0",
+    "date": "2025-06-08",
+    "updates": [
+      {
+        "component": "VueUiRidgeline",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-ridgeline"
+      }
+    ]
+  },
+  {
     "version": "v 2.9.6",
     "date": "2025-06-01",
     "updates": [

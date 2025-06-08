@@ -724,6 +724,13 @@ export default function useCharts() {
                 taxinomy: ['comparisons', 'dataOverTime'],
                 singleTaxinomy: 'dataOverTime'
             },
+            VueUiRidgeline: {
+                icon: 'chartRidgeline',
+                link: '/docs#vue-ui-ridgeline',
+                description: translations.value.docs.tooltips.ridgeline[store.lang],
+                taxinomy: ['comparisons', 'dataOverTime'],
+                singleTaxinomy: 'dataOverTime'
+            },
             VueUiCirclePack: {
                 icon: 'chartCirclePack',
                 link: '/docs#vue-ui-circle-pack',
