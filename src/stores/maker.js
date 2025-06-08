@@ -194,6 +194,17 @@ export const useMakerStore = defineStore('maker', {
                     ar: 'انسخ المكون بالكامل'
                 },
                 categories: {
+                    modalDialog: {
+                        en: 'Modal dialog',
+                        fr: 'Dialogue modal',
+                        pt: 'Diálogo modal',
+                        de: 'Modaler Dialog',
+                        zh: '模态对话框',
+                        jp: 'モーダルダイアログ',
+                        es: 'Diálogo modal',
+                        ko: '모달 대화상자',
+                        ar: 'مربع حوار مشروط'
+                    },
                     userOptions: {
                         en: 'User options',
                         fr: 'Options utilisateur',

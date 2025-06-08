@@ -48,6 +48,7 @@ const MakerFunnel = defineAsyncComponent(() => import('../components/maker/Maker
 const MakerHistoryPlot = defineAsyncComponent(() => import('../components/maker/MakerHistoryPlot.vue'));
 const MakerCirclePack = defineAsyncComponent(() => import('../components/maker/MakerCirclePack.vue'));
 const MakerWorld = defineAsyncComponent(() => import('../components/maker/MakerVueUiWorld.vue'));
+const MakerVueUiRidgeline = defineAsyncComponent(() => import('../components/maker/MakerVueUiRidgeline.vue'))
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -102,7 +103,8 @@ const options = ref([
     { component: markRaw(MakerFunnel), key: 'vue_ui_funnel', name: "VueUiFunnel", icon: "chartFunnel", thumb: new URL('../assets/thumb_funnel_light.png', import.meta.url).href, description: translations.value.docs.tooltips.funnel},
     { component: markRaw(MakerHistoryPlot), key: 'vue_ui_history_plot', name: "VueUiHistoryPlot", icon: "chartHistoryPlot", thumb: new URL('../assets/thumb_history_plot_light.png', import.meta.url).href, description: translations.value.docs.tooltips.historyPlot},
     { component: markRaw(MakerCirclePack), key: 'vue_ui_circle_pack', name: "VueUiCirclePack", icon: "chartCirclePack", thumb: new URL('../assets/thumb_circle_pack_light.png', import.meta.url).href, description: translations.value.docs.tooltips.circlePack},
-    { component: markRaw(MakerWorld), key: 'vue_ui_world', name: 'VueUiWorld', icon: 'world', thumb: new URL('../assets/thumb_world_light.png', import.meta.url).href, description: translations.value.docs.tooltips.world }
+    { component: markRaw(MakerWorld), key: 'vue_ui_world', name: 'VueUiWorld', icon: 'world', thumb: new URL('../assets/thumb_world_light.png', import.meta.url).href, description: translations.value.docs.tooltips.world },
+    { component: markRaw(MakerVueUiRidgeline), key: 'vue_ui_ridgeline', name: 'VueUiRidgeline', icon: 'chartRidgeline', thumb: new URL('../assets/thumb_ridgeline_light.png', import.meta.url).href, description: translations.value.docs.tooltips.ridgeline },
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});

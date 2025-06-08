@@ -933,6 +933,7 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
 
         <BaseDocHeaderActions
             targetLink="vue-ui-ridgeline"
+            targetMaker="VueUiRidgeline"
             :configSource="mainConfig.vue_ui_ridgeline"
         />
 
