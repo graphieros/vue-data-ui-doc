@@ -18,6 +18,7 @@ import ChartSeeker from "../components/ChartSeeker.vue";
 import BaseDragElement from "../components/BaseDragElement.vue";
 import DocsComponentMenu from "../components/docs/DocsComponentMenu.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
+import { useIconMap } from "../useIconMap";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -1228,7 +1229,8 @@ const stackbarKey = ref(0);
         <div title="Checkout how to use the VueDataUi universal component" class="mx-auto rounded-md py-1 px-6 sm:px-10">
     <pre>
 
-    <code class="text-gray-500 text-md">
+    <code class="text-gray-500 text-md relative">
+        <VueUiIcon :name="useIconMap(`VueUi${currentShowcase}`)" class="absolute top-1/2" :size="32" :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"/>
     &lt;<span class="dark:text-gray-200">VueDataUi</span>
         <span class="text-black dark:text-app-orange">component</span>="VueUi{{ currentShowcase }}"
         <span class="text-black dark:text-app-green">:dataset</span>="dataset"
