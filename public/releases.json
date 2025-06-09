@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.10.1",
+    "date": "2025-06-09",
+    "updates": [
+      {
+        "component": "Tooltips",
+        "description": "Use smoother position transition on tooltips",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.10.0",
     "date": "2025-06-08",
     "updates": [
