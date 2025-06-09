@@ -198,7 +198,7 @@ const finalConfig = computed(() => {
                             <tr>
                                 <th class="text-left text-xs">{{ makerTranslations.labels.serieName[store.lang] }}</th>
                                 <th class="text-left text-xs flex flex-row place-items-center gap-4">
-                                    datapoints 
+                                    {{ makerTranslations.datapoints[store.lang] }} 
                                     <button class="h-[24px] w-[24px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatapoint(i)"><PlusIcon/></button>
                                 </th>
                             </tr>
@@ -211,9 +211,9 @@ const finalConfig = computed(() => {
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th class="text-left text-xs">datapoint name</th>
-                                                    <th class="text-left text-xs">datapoint color</th>
-                                                    <th class="text-left text-xs">datapoint values</th>
+                                                    <th class="text-left text-xs">{{ makerTranslations.datapointName[store.lang] }} </th>
+                                                    <th class="text-left text-xs">{{ makerTranslations.datapointColor[store.lang] }} </th>
+                                                    <th class="text-left text-xs">{{ makerTranslations.datapointValues[store.lang] }} </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -235,7 +235,7 @@ const finalConfig = computed(() => {
                                                             <thead>
                                                             <tr>
                                                                 <th class="text-left text-xs flex flex-row place-items-center gap-2">
-                                                                    Values
+                                                                    {{ makerTranslations.values[store.lang] }} 
                                                                     <button class="h-[24px] w-[24px] rounded-md border border-app-green bg-[#42d392FF] shadow-md dark:bg-[#42d39233] flex place-items-center justify-center" @click="addDatapointValue(i,j)"><PlusIcon/></button>
                                                                 </th>
                                                             </tr>

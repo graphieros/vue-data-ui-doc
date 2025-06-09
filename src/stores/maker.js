@@ -15,6 +15,61 @@ export const useMakerStore = defineStore('maker', {
                 ar: ""
             },
             translations: {
+                datapointName: {
+                    en: 'Datapoint name',
+                    fr: 'Nom du point de données',
+                    pt: 'Nome do ponto de dados',
+                    de: 'Datenpunktname',
+                    zh: '数据点名称',
+                    jp: 'データポイント名',
+                    es: 'Nombre del punto de datos',
+                    ko: '데이터 포인트 이름',
+                    ar: 'اسم نقطة البيانات'
+                },
+                datapointColor: {
+                    en: 'Datapoint color',
+                    fr: 'Couleur du point de données',
+                    pt: 'Cor do ponto de dados',
+                    de: 'Datenpunktfarbe',
+                    zh: '数据点颜色',
+                    jp: 'データポイントの色',
+                    es: 'Color del punto de datos',
+                    ko: '데이터 포인트 색상',
+                    ar: 'لون نقطة البيانات'
+                },
+                datapointValues: {
+                    en: 'Datapoint values',
+                    fr: 'Valeurs du point de données',
+                    pt: 'Valores do ponto de dados',
+                    de: 'Datenpunktwerte',
+                    zh: '数据点值',
+                    jp: 'データポイント値',
+                    es: 'Valores del punto de datos',
+                    ko: '데이터 포인트 값',
+                    ar: 'قيم نقطة البيانات'
+                },
+                datapoints: {
+                    en: 'Datapoints',
+                    fr: 'Points de données',
+                    pt: 'Pontos de dados',
+                    de: 'Datenpunkte',
+                    zh: '数据点',
+                    jp: 'データポイント',
+                    es: 'Puntos de datos',
+                    ko: '데이터 포인트',
+                    ar: 'نقاط البيانات'
+                },
+                values: {
+                    en: 'Values',
+                    fr: 'Valeurs',
+                    pt: 'Valores',
+                    de: 'Werte',
+                    zh: '数值',
+                    jp: '値',
+                    es: 'Valores',
+                    ko: '값',
+                    ar: 'القيم'
+                },
                 tableHeader: {
                     en: 'Table header cells',
                     fr: `Cellules d'en-tête de tableau`,
