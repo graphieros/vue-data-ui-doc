@@ -483,7 +483,7 @@ const hoveredLink = ref(null);
 
                                 <template #chart-background v-if="example.chartBackground">
                                     <div v-if="isDarkMode" :style="{ height: '100%', width: '100%' }">
-                                        <img src="../assets/slot_chart_background.png" class="w-full object-cover h-full">
+                                        <img src="../assets/slot_chart_background.png" class="w-full object-cover h-full opacity-50">
                                     </div>
                                     <div v-else :style="{ height: '100%', width: '100%' }">
                                         <img src="../assets/slot_chart_background_light.png" class="w-full object-cover h-full">

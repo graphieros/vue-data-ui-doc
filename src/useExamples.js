@@ -2563,10 +2563,16 @@ export default function useExamples() {
                                 color: colors.value.gridStroke,
                             },      
                             xAxis: {
-                                name: 'xAxis',
+                                name: 'Market reach',
+                                min: -100,
+                                max: 100,
+                                auto: false,
                             },
                             yAxis: {
-                                name: 'yAxis'
+                                name: 'Innovation index',
+                                min: -100,
+                                max: 100,
+                                auto: false,
                             }
                         },
                         labels: {
@@ -2582,19 +2588,19 @@ export default function useExamples() {
                             },
                             quadrantLabels: {
                                 bl: {
-                                    text: 'Bottom left',
+                                    text: 'Niche players',
                                     color: colors.value.red
                                 },
                                 br: {
-                                    text: 'Bottom right',
+                                    text: 'Challengers',
                                     color: colors.value.blue
                                 },
                                 tl: {
-                                    text: 'Top left',
+                                    text: 'Innovators',
                                     color: colors.value.yellow
                                 },
                                 tr: {
-                                    text: 'Top right',
+                                    text: 'Market leaders',
                                     color: colors.value.green
                                 }
                             }
@@ -2608,12 +2614,12 @@ export default function useExamples() {
                         color: colors.value.textColor,
                     },
                     title: {
-                        text: 'Title',
+                        text: 'Business Landscape Quadrant',
                         color: colors.value.textColor,
                         textAlign: 'left',
-                        paddingLeft: 24,
+                        paddingLeft: 0,
                         subtitle: {
-                            text: 'Subtitle'
+                            text: 'Market Reach vs. Innovation'
                         }
                     },
                     tooltip: {
@@ -2629,53 +2635,37 @@ export default function useExamples() {
 
     const DATASET_QUADRANT_BASE = ref([
         {
-            name: 'Stars',
-            shape: 'star',
-            color: colors.value.blue,
-            series: [
-                {
-                    name: "Star 1",
-                    x: 50,
-                    y: 50
-                },
-                {
-                    name: "Star 2",
-                    x: -10,
-                    y: -10
-                },
-                {
-                    name: "Star 3",
-                    x: -15,
-                    y: 20
-                },
-                {
-                    name: "Star 4",
-                    x: 15,
-                    y: -20
-                },
-            ]
+        name: "Startups",
+        shape: "circle",
+        series: [
+            { name: "BrightTech", x: 77, y: 86 },
+            { name: "NanoApps", x: 87, y: 72 },  
+            { name: "QuickShift", x: 14, y: 22 },
+            { name: "UrbanNest", x: 12, y: 18 }, 
+            { name: "CloudVibe", x: 27, y: 25 }, 
+            { name: "GreenByte", x: -5, y: 15 },
+            { name: "IdeaForge", x: 16, y: 5 },
+            { name: "BluePeak", x: 8, y: -6 },
+            { name: "Sparkle", x: -15, y: -14 },
+            { name: "MiniMint", x: 5, y: 11 }
+        ]
         },
         {
-            name: 'Hexagons',
-            shape: 'hexagon',
-            color: colors.value.orange,
-            series: [
-                {
-                    name: "Hexagon 1",
-                    x: -39,
-                    y: 39
-                },
-                {
-                    name: "Hexagon 2",
-                    x: -2,
-                    y: 45
-                },
-                {
-                    name: "Hexagon 3",
-                    x: -15,
-                    y: 30
-                },
-            ]
+        name: "Enterprises",
+        shape: "square",
+        color: "#ff7f0e",
+        series: [
+            { name: "OmniCorp", x: 22, y: 75 },  
+            { name: "GigaWorks", x: 72, y: -27 }, 
+            { name: "DataDrive", x: -44, y: 65 }, 
+            { name: "PrimeSoft", x: 36, y: -19 }, 
+            { name: "EcoSphere", x: -67, y: -76 },
+            { name: "NextGen", x: -35, y: 30 },   
+            { name: "CoreVision", x: 51, y: -38 },
+            { name: "AstraSys", x: -55, y: 57 },  
+            { name: "PeakLogic", x: 40, y: 21 }, 
+            { name: "Solidus", x: -24, y: -31 }   
+        ]
         }
     ])
 
