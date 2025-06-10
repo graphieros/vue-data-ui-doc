@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.10.2",
+    "date": "2025-06-09",
+    "updates": [
+      {
+        "component": "VueUiWordCloud",
+        "description": "Improve performance",
+        "link": "/docs#vue-ui-word-cloud"
+      }
+    ]
+  },
+  {
     "version": "v 2.10.1",
     "date": "2025-06-09",
     "updates": [

@@ -2114,7 +2114,7 @@ export default function useExamples() {
             { name: 'Response', value: 17 },
             { name: 'Server', value: 44 },
             { name: 'Frontend', value: 12 },     
-          ].sort((a,b) => b.value - a.value).map(el => {
+        ].sort((a,b) => b.value - a.value).map(el => {
             return {
                 ...el,
                 name: el.name.toUpperCase()
