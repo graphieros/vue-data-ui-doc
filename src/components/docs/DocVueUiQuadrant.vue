@@ -18,6 +18,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 
 const mainConfig = useConfig()
 
@@ -675,6 +676,10 @@ const codeDataset = ref(`const dataset: VueUiQuadrantDatasetItem[] = [
                     :key="key" 
                 />
             </DocSnapper>
+        </div>
+
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-quadrant"/>
         </div>
 
         <Rater itemId="vue_ui_quadrant" />
