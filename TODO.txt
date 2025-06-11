@@ -1,8 +1,3 @@
-. update all number inputs with BaseInputNumber component
+TODO:
 
-
-Docs menu:
-
-use a dropdown modal with options by category
-
-examples page: use main pic with carousel to display the available options
+- create a config attributes translation / description mapping to display tooltips above attributes with translation 
