@@ -287,6 +287,11 @@ const specialOccasion = computed(() => {
   return [1200, 1250, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 7500, 10000].includes(store.stars) || store.stars > 20000;
 })
 
+function getPlotLabel(plot) {
+  console.log(plot)
+  return plot.comment
+}
+
 </script>
 
 <template>
@@ -418,22 +423,23 @@ const specialOccasion = computed(() => {
                   <Suspense><VueUiPattern v-if="seriesIndex === 4" name="redrum" :id="patternId" :scale="0.4" :stroke-width="2" stroke="#1A1A1A70"/></Suspense>
                 </template>
                 <template #plot-comment="{ plot }">
-                  <div 
+                  <div
+                    v-if="!plot.firstLoad"
                     dir="auto" 
                     style="pointer-events: all !important;" 
-                    :title="plot.comment" @click="selectMenu({index: plot.seriesIndex})" 
-                    :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.textAlign};`" 
+                    :title="plot.comment" @click="selectMenu({index: plot.patternIndex})" 
+                    :style="`color:${isDarkMode ? plot.color : 'black'};font-size: 10px; text-align:${plot.patternIndex === 2 ? 'center' : plot.textAlign};`" 
                     :class="`
                       px-2 cursor-pointer 
-                      ${plot.seriesIndex === 0 ? 'mt-[50px] -ml-2' : ''}
-                      ${plot.seriesIndex === 1 ? '-mt-[50px] -ml-2' : ''}
-                      ${plot.seriesIndex === 2 ? '-mt-[64px]' : ''}
-                      ${plot.seriesIndex === 3 ? '-mt-[50px] -mr-2' : ''}
-                      ${plot.seriesIndex === 4 ? 'mt-[32px] -mr-2 leading-3' : ''}
+                      ${plot.patternIndex === 0 ? 'mt-[50px] -ml-2' : ''}
+                      ${plot.patternIndex === 1 ? '-mt-[50px] -ml-2' : ''}
+                      ${plot.patternIndex === 2 ? '-mt-[64px]' : ''}
+                      ${plot.patternIndex === 3 ? '-mt-[50px] -mr-2' : ''}
+                      ${plot.patternIndex === 4 ? 'mt-[32px] -mr-2 leading-3' : ''}
                     `"
                   >
-                    <div :class="`text-[#1A1A1A] dark:text-[#CCCCCC] text-[12px] sm:text-[16px] ${plot.seriesIndex === 4 ? 'pb-2' : ''}`">{{ plot.name }}</div>
-                    {{ plot.comment }}
+                    <div :class="`text-[#1A1A1A] dark:text-[#CCCCCC] text-[12px] sm:text-[16px] ${plot.patternIndex === 4 ? 'pb-2' : ''}`">{{ plot.name }}</div>
+                    {{ getPlotLabel(plot) }}
                   </div>
                 </template>
               </VueUiDonut>

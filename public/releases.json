@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.10.3",
+    "date": "2025-06-11",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Improve animations",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 2.10.2",
     "date": "2025-06-09",
     "updates": [

@@ -22,7 +22,7 @@
     "ssh2": "^1.16.0",
     "target-highlight": "^0.1.0",
     "vue": "^3.5.14",
-    "vue-data-ui": "2.10.2",
+    "vue-data-ui": "2.10.3",
     "vue-hi-code": "^1.4.0",
     "vue-router": "^4.5.1",
     "vue-tabler-icons": "^2.21.0"
