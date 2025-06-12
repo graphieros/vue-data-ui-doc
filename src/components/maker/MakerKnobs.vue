@@ -5,6 +5,7 @@ import { useMainStore } from "../../stores";
 import { useMakerStore } from "../../stores/maker";
 import BaseColorInput from "../BaseColorInput.vue";
 import { createUid } from "./lib";
+import useAttrMapping from "../../useAttrMapping";
 
 const props = defineProps({
     categories: {
@@ -94,6 +95,11 @@ function scrollToId(id) {
         behavior: 'smooth'
     })
 }
+
+function getKeyTranslation(key) {
+    const attr = key.split('.').at(-1);
+    return useAttrMapping(attr);
+}
     
 </script>
 
@@ -125,8 +131,7 @@ function scrollToId(id) {
         </div>
         <div class="flex flex-row gap-4 place-items-center flex-wrap">
             <div v-for="(knob, i) in model.filter(k => k.category === category.key)" class="flex flex-col justify-start my-2">
-
-                <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type !== 'color'" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }}</label>
+                <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type !== 'color'" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }} <br v-if="getKeyTranslation(knob.key)"/><span v-if="getKeyTranslation(knob.key) && typeof getKeyTranslation(knob.key) === 'string' && typeof getLabel(knob.label) === 'string' && getKeyTranslation(knob.key).toUpperCase() !== getLabel(knob.label).toUpperCase()" class="text-xs text-gray-500">({{ getKeyTranslation(knob.key) }})</span></label>
                 <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type === 'color' && (useOldColorPickers || knob.old)" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }}</label>
 
                 <div class="flex place-items-center justify-start h-[40px]">

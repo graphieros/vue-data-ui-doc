@@ -32,7 +32,7 @@ const props = defineProps({
     },
     opacity: {
         type: String,
-        default: 'group-hover:opacity-[0.9]'
+        default: 'group-hover:opacity-[1]'
     }
 });
 

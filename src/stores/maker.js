@@ -2289,7 +2289,7 @@ export const useMakerStore = defineStore('maker', {
                         de: "Typ",
                         zh: "类型",
                         jp: "タイプ",
-                        es: "タイプ",
+                        es: "tipo",
                         ko: "유형",
                         ar: "يكتب"
                     },
