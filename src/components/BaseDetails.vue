@@ -1,12 +1,13 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useMainStore } from "../stores";
+import useAttrMapping from "../useAttrMapping";
 
 const store = useMainStore()
 
 const isDarkMode = computed(() => store.isDarkMode);
 
-defineProps({
+const props = defineProps({
     attr: {
         type: String,
         default: ''
@@ -38,12 +39,16 @@ onMounted(() => {
 
 const isSelected = ref(false);
 
+const translatedAttr = computed(() => {
+    return useAttrMapping(props.attr)
+})
+
 </script>
 
 <template>
     <div class="relative mt-2">
         <details ref="det" :style="level ? `margin-left:0px` : ''" :class="`border-l ${isSelected ? 'border-app-blue dark:border-app-green' : 'border-gray-500'} rounded-md pl-2 bg-[#1A1A1A05] dark:bg-[#FFFFFF05] mb-2 shadow`">
-            <summary @mouseenter="isSelected=true" @mouseout="isSelected=false" class="cursor-pointer -ml-2 pl-2 font-black hover:bg-[#5f8aee20] dark:hover:bg-[#42d39220] transition-colors">{{ attr }} {{ equal ? '=' : ':' }} {{ isOpen ? `{` : `{ ... }`}}</summary>
+            <summary @mouseenter="isSelected=true" @mouseout="isSelected=false" class="cursor-pointer -ml-2 pl-2 font-black hover:bg-[#5f8aee20] dark:hover:bg-[#42d39220] transition-colors">{{ attr }} <i class="text-gray-500" v-if="translatedAttr">({{ translatedAttr }})</i> {{ equal ? '=' : ':' }} {{ isOpen ? `{` : `{ ... }`}}</summary>
             <code class="pl-6 flex flex-col mt-1">
                 <slot/>
             </code>

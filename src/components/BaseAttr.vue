@@ -8,6 +8,7 @@ import BaseColorInfo from "./BaseColorInfo.vue";
 import BaseColorInput from "./BaseColorInput.vue";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { createUid } from "./maker/lib";
+import useAttrMapping from "../useAttrMapping";
 
 const props = defineProps({
     light: {
@@ -144,11 +145,15 @@ const defaultValueTranslation = ref({
 
 const isSelected = ref(false);
 
+const translatedTooltip = computed(() => {
+    return props.tooltip || useAttrMapping(props.name)
+})
+
 </script>
 
 <template>
     <div class="relative min-h-[32px] py-1" @mouseenter="isSelected=true" @mouseout="isSelected=false">
-        <FlexibleTooltip position="bottom" :mute="!tooltip" :content="tooltip" width="min-w-[100px] max-w-[300px]">
+        <FlexibleTooltip position="top" :mute="!translatedTooltip" :content="translatedTooltip" width="min-w-[100px] max-w-[300px]" opacity="group-hover:opacity-[0.9]">
             <label :for="`i_${id}`" :id="id" class="pr-1">{{ name }}:</label> 
             <template v-if="type === 'number'">
                 <BaseNumberInput v-model:value="nestedAttribute" :min="min" :max="max" :step="step" @change="emit('change')" :labelId="id" :id="`i_${id}`"/>
