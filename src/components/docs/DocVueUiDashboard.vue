@@ -302,6 +302,29 @@ const <span class="text-black dark:text-app-blue">config: VueUiDashboardConfig</
     &lt;/template&gt;
 </code>
 </pre>                
+
+<br>
+Use #top and #bottom slots to add custom content aboveor below the components
+<pre>
+<code>
+    &lt;template&gt;
+        &lt;VueUiDashboard :dataset="dataset" :config="config"&gt;
+            &lt;template #top="{ item }"&gt;
+                &lt;button&gt;My button on top&lt;/button&gt;
+            &lt;/template&gt;
+
+            &lt;template #content="{ item }"&gt;
+                &lt;component :is="item.component" v-bind="item.props" /&gt;
+            &lt;/template&gt;
+
+            &lt;template #bottom="{ item }"&gt;
+                Content below
+            &lt;/template&gt;
+        &lt;/VueUiDashboard&gt;
+    &lt;/template&gt;
+</code>
+</pre>
+
             </template>
         </Box>
     </div>

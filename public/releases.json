@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.10.5",
+    "date": "2025-06-13",
+    "updates": [
+      {
+        "component": "VueUiDashboard",
+        "description": "Add #top and #bottom scoped slots",
+        "link": "/docs#vue-ui-dashboard"
+      }
+    ]
+  },
+  {
     "version": "v 2.10.4",
     "date": "2025-06-13",
     "updates": [
