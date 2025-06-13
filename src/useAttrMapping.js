@@ -37,6 +37,9 @@ export default function useAttrMapping(attr) {
 
     if (store.lang === "en") return "";
 
+    /**
+     * Config attributes translations
+     */
     const mapping = {
         1: {
             fr: "",
