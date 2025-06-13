@@ -1006,6 +1006,44 @@ const radarConfig = computed(() => {
 
 const detailSortMode = ref('byVotes') // or 'byRatings'
 
+function getDateFromAxis({ xAxisName, yAxisName }, year = new Date().getFullYear()) {
+    const daysMapping = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const weekNum = parseInt(xAxisName.replace(/[^0-9]/g, ""), 10);
+    const dayIndex = daysMapping.indexOf(yAxisName);
+    if (isNaN(weekNum) || dayIndex === -1) return null;
+
+    for (let month = 0; month < 12; month += 1) {
+        for (let day = 1; day <= 31; day += 1) {
+            let date;
+            try {
+                date = new Date(Date.UTC(year, month, day));
+                if (date.getUTCMonth() !== month) continue;
+            } catch {
+                continue;
+            }
+            if (date.getUTCDay() !== dayIndex) continue;
+
+            const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+            d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+            const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+            const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+
+            if (weekNo === weekNum) {
+                const yyyy = date.getUTCFullYear();
+                const mm = String(date.getUTCMonth() + 1).padStart(2, "0");
+                const dd = String(date.getUTCDate()).padStart(2, "0");
+                return `${yyyy}-${mm}-${dd}`;
+            }
+        }
+    }
+    return null;
+}
+
+function selectHeatmapCell(cell) {
+    console.log(cell)
+    selectedDate.value = getDateFromAxis(cell);
+}
+
 </script>
 
 <template>
@@ -1124,6 +1162,11 @@ const detailSortMode = ref('byVotes') // or 'byRatings'
 
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <VueDataUi component="VueUiHeatmap" :dataset="heatmapDataset" :config="heatmapConfig" @selectDatapoint="selectHeatmapCell"/>
+    </div>
+
+    <div v-if="ratings.length"
+        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <div class="text-xl text-center mb-4 flex flex-col">
             <span>Latest votes ({{ latestItems.length }})</span>
             <input
@@ -1156,11 +1199,6 @@ const detailSortMode = ref('byVotes') // or 'byRatings'
                     item.name.replaceAll('VueUi', '') }}</span></span>
             </li>
         </ul>
-    </div>
-
-    <div v-if="ratings.length"
-        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueDataUi component="VueUiHeatmap" :dataset="heatmapDataset" :config="heatmapConfig" />
     </div>
 
     <div v-if="ratings.length"
