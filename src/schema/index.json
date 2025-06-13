@@ -4995,7 +4995,7 @@
         "description": "heatmap",
         "hasThemes": true,
         "hasSlots": true,
-        "hasEmits": false,
+        "hasEmits": true,
         "hasExposed": true,
         "responsive": false,
         "props": [
@@ -5235,6 +5235,12 @@
             {
                 "name": "chart-background",
                 "description": "Use this slot to customize the chart background (gradient, image...)"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectDatapoint",
+                "description": "Emits the selected datapoint on click"
             }
         ]
     },

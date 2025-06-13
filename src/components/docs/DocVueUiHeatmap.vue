@@ -463,6 +463,18 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
     }
 ];`)
 
+
+/**
+ * {
+    "side": "up",
+    "color": "#be4133",
+    "ratio": 0.6428571428571429,
+    "value": 46,
+    "yAxisName": "Fri",
+    "xAxisName": 21,
+    "id": "vue-data-ui-heatmap-cell-77e48fa5-4062-43ad-9d8f-b8d88f074c1d"
+}
+ */
 </script>
 
 <template>
@@ -703,6 +715,9 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
 
             </template>
             <template #tab2>
+              @selectDatapoint<br><br>
+
+              {{ translations.docs.emits.selectDatapoint[store.lang] }}
               <ExposedMethods
                 component="VueUiHeatmap"
                 :names="[

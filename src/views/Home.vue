@@ -288,7 +288,6 @@ const specialOccasion = computed(() => {
 })
 
 function getPlotLabel(plot) {
-  console.log(plot)
   return plot.comment
 }
 

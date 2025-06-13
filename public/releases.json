@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.10.4",
+    "date": "2025-06-13",
+    "updates": [
+      {
+        "component": "VueUiHeatmap",
+        "description": "Add @selectDatapoint emit on cell click",
+        "link": "/docs#vue-ui-heatmap"
+      }
+    ]
+  },
+  {
     "version": "v 2.10.3",
     "date": "2025-06-11",
     "updates": [
