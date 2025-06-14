@@ -78,12 +78,13 @@ const config = ref({
         keepStateOnChartLeave: true,
         position: 'right',
         buttons: {
+            tooltip: true,
             pdf: true,
             img: true,
             csv: true,
             table: true,
             fullscreen: true,
-            annotator: true
+            annotator: true,
         },
         buttonTitles: {
             open: "Open options",
@@ -93,7 +94,8 @@ const config = ref({
             img: "Download PNG",
             table: "Toggle table",
             fullscreen: "Toggle fullscreen",
-            annotator: "Toggle annotator"
+            annotator: "Toggle annotator",
+            tooltip: "Toggle tooltip",
         },
         print: {
             scale: 2,
@@ -104,6 +106,30 @@ const config = ref({
         chart: {
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
+            tooltip: {
+                show: true,
+                color: "#1A1A1A",
+                backgroundColor: "#F3F4F6",
+                fontSize: 14,
+                showValue: true,
+                showPercentage: true,
+                roundingValue: 0,
+                roundingPercentage: 0,
+                customFormat: null,
+                borderRadius: 4,
+                borderColor:"#e1e5e8",
+                borderWidth: 1,
+                backgroundOpacity: 30,
+                position: "center",
+                offsetY: 24,
+                showPercentage: true,
+                roundingPercentage: 0,
+                translations: {
+                    from: 'From:',
+                    to: 'To:',
+                    percentOfTotal: 'Percent of total:'
+                }
+            },
             padding: {
                 top: 0,
                 left: 24,
@@ -178,12 +204,13 @@ const darkModeConfig = ref({
         keepStateOnChartLeave: true,
         position: 'right',
         buttons: {
+            tooltip: true,
             pdf: true,
             img: true,
             csv: true,
             table: true,
             fullscreen: true,
-            annotator: true
+            annotator: true,
         },
         buttonTitles: {
             open: "Open options",
@@ -193,7 +220,8 @@ const darkModeConfig = ref({
             img: "Download PNG",
             table: "Toggle table",
             fullscreen: "Toggle fullscreen",
-            annotator: "Toggle annotator"
+            annotator: "Toggle annotator",
+            tooltip: "Toggle tooltip",
         },
         print: {
             scale: 2,
@@ -209,6 +237,30 @@ const darkModeConfig = ref({
                 left: 24,
                 right: 24,
                 bottom: 0
+            },
+            tooltip: {
+                show: true,
+                color: "#CCCCCC",
+                backgroundColor: "#1A1A1A",
+                fontSize: 14,
+                showValue: true,
+                showPercentage: true,
+                roundingValue: 0,
+                roundingPercentage: 0,
+                customFormat: null,
+                borderRadius: 4,
+                borderColor:"#3A3A3A",
+                borderWidth: 1,
+                backgroundOpacity: 30,
+                position: "center",
+                offsetY: 24,
+                showPercentage: true,
+                roundingPercentage: 0,
+                translations: {
+                    from: 'From:',
+                    to: 'To:',
+                    percentOfTotal: 'Percent of total:'
+                }
             },
             title: {
                 text: "Title",
@@ -337,7 +389,7 @@ const { configCode, showAllConfig } = useConfigCode()
 
         <Rater itemId="vue_ui_flow" />
 
-        <Box showSlots showThemes showEmits schema="vue_ui_flow" signInfo="positiveOnly">
+        <Box showSlots showThemes showEmits showTooltip schema="vue_ui_flow" signInfo="positiveOnly">
             <template #tab0>
 
         <CodeParser
@@ -405,6 +457,26 @@ const { configCode, showAllConfig } = useConfigCode()
                             <BaseAttr name="use" attr="style.chart.nodes.labels.abbreviation.use" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="length" attr="style.chart.nodes.labels.abbreviation.length" type="number" defaultVal="3" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
+                    </BaseDetails>
+                </BaseDetails>
+                <BaseDetails attr="tooltip" :level="3" title="style.chart.tooltip">
+                    <BaseAttr name="show" attr="style.chart.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="backgroundColor" attr="style.chart.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.chart.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="fontSize" attr="style.chart.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="showPercentage" attr="style.chart.tooltip.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="roundingPercentage" attr="style.chart.tooltip.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <span>customFormat: null, <span class="text-gray-600 dark:text-app-blue text-xs">// default behavior. To customize content, see 'custom tooltip' tab</span></span>
+                    <BaseAttr name="borderRadius" attr="style.chart.tooltip.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="borderColor" attr="style.chart.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="borderWidth" attr="style.chart.tooltip.borderWidth" type="number" defaultVal="1" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="backgroundOpacity" attr="style.chart.tooltip.backgroundOpacity" type="number" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="position" attr="style.chart.tooltip.position" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="offsetY" attr="style.chart.tooltip.offsetY" type="number" defaultVal="24" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseDetails attr="translations" :level="4" title="style.chart.tooltip.translations">
+                        <BaseAttr name="from" attr="style.chart.tooltip.translations.from" type="text" defaultVal="From:" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="to" attr="style.chart.tooltip.translations.to" type="text" defaultVal="To:" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="percentOfTotal" attr="style.chart.tooltip.translations.percentOfTotal" type="text" defaultVal="Percent of total:" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="padding" :level="3" title="style.chart.padding">
@@ -568,6 +640,27 @@ const { configCode, showAllConfig } = useConfigCode()
                         'chart-background'
                     ]" 
                 />
+            </template>
+
+            <template #tab4>
+<pre>
+<code>
+<span class="text-gray-400">config.style.chart.tooltip.customFormat</span>
+
+customFormat: ({ <span class="text-app-blue">datapoint</span> }) => {
+    <span class="text-gray-400">// use args to build your custom content</span>
+    const content = "My custom content";
+    return `&lt;div&gt;${content}&lt;/div&gt;`
+}
+</code>
+</pre> 
+Using custom mode, the tooltip will be headless.
+Target the following css class to apply custom styles:
+<pre>
+<code>
+.vue-data-ui-custom-tooltip
+</code>
+</pre>
             </template>
 
             <!-- THEMES -->

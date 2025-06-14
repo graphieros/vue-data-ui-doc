@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.10.7",
+    "date": "2025-06-14",
+    "updates": [
+      {
+        "component": "VueUiFlow",
+        "description": "Add optional tooltip",
+        "link": "/docs#vue-ui-flow"
+      }
+    ]
+  },
+  {
     "version": "v 2.10.6",
     "date": "2025-06-14",
     "updates": [
