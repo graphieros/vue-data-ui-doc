@@ -3927,6 +3927,11 @@ export const useDefaultDataStore = defineStore('defaultData', {
                 ],
                 model: [
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: "general" },
+                    { key: 'serieToggleAnimation.show', def: true, type: 'checkbox', label: ['serie toggle animation', 'is', 'show'], category: 'general'},
+                    { key: 'serieToggleAnimation.durationMs', def: 500, type: 'number', min: 0, max: 2000, step: 100, label: ['serie toggle animation', 'is', 'durationMs'], category: 'general'},
+                    { key: 'startAnimation.show', def: true, type: 'checkbox', label: ['start animation', 'is', 'show'], category: 'general'},
+                    { key: 'startAnimation.durationMs', def: 1000, type: 'number', min: 0, max: 5000, step: 100, label: ['start animation', 'is', 'durationMs'], category: 'general'},
+                    { key: 'startAnimation.staggerMs', def: 50, type: 'number', min: 0, max: 500, step: 25, label: ['start animation', 'is', 'staggerMs'], category: 'general'},
                     { key: 'useBlurOnHover', def: true, type: 'checkbox', label: 'useBlurOnHover', category: 'general' },
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'general' },

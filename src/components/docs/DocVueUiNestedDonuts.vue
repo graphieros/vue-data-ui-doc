@@ -117,6 +117,15 @@ const darkModeConfig = ref({
     responsive: false,
     useCssAnimation: true,
     useBlurOnHover: true,
+    serieToggleAnimation: {
+        show: true,
+        durationMs: 500,
+    },
+    startAnimation: {
+        show: true,
+        durationMs: 1000,
+        staggerMs: 50
+    },
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -265,6 +274,15 @@ const config = ref({
     responsive: false,
     useCssAnimation: true,
     useBlurOnHover: true,
+    serieToggleAnimation: {
+        show: true,
+        durationMs: 500,
+    },
+    startAnimation: {
+        show: true,
+        durationMs: 1000,
+        staggerMs: 50
+    },
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -540,6 +558,15 @@ const dsTypeCode = computed(() => {
         <span>customPalette: []; <BaseComment>string[]</BaseComment></span>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseDetails attr="serieToggleAnimation" :level="1">
+            <BaseAttr name="show" attr="serieToggleAnimation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="durationMs" attr="serieToggleAnimation.durationMs" type="number" defaultVal="500" :min="0" :max="2000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        </BaseDetails>
+        <BaseDetails attr="startAnimation" :level="1">
+            <BaseAttr name="show" attr="startAnimation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="durationMs" attr="startAnimation.durationMs" type="number" defaultVal="1000" :min="0" :max="5000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="staggerMs" attr="startAnimation.staggerMs" type="number" defaultVal="50" :min="0" :max="500" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
