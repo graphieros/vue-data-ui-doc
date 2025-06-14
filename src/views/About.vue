@@ -445,7 +445,10 @@ const advantagesTitle = ref({
         <tbody>
           <tr v-for="adv in advantages" :key="adv[store.lang]" class="bg-white dark:bg-[#FFFFFF10] shadow-sm rounded-md">
             <td class="px-4 py-3 rounded-md flex flex-row place-items-center gap-4">
-              <CheckIcon class="text-app-green"/> {{ adv[store.lang] }}
+              <div class="w-[40px]">
+                <CheckIcon class="text-app-green"/>
+              </div>
+              {{ adv[store.lang] }}
             </td>
           </tr>
         </tbody>
