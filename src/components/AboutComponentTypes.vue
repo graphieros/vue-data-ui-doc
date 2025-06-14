@@ -17,13 +17,13 @@ const dataset = ref([
     color: shiftHue({ hexColor: '#1f77b4', force: 0.05})
   },
   {
-    name: "Utilities",
+    name: 'Mini charts',
     values: [10],
     color: shiftHue({ hexColor: '#1f77b4', force: 0})
   },
   {
-    name: 'Mini charts',
-    values: [10],
+    name: "Utilities",
+    values: [9],
     color: shiftHue({ hexColor: '#1f77b4', force: -0.1})
   },
   {
