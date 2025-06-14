@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref, onMounted } from "vue";
-import { BrandGithubFilledIcon } from "vue-tabler-icons";
+import { BrandGithubFilledIcon, CheckIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import { BrightnessUpIcon, MoonIcon, StarFilledIcon } from "vue-tabler-icons";
 import router from "../router"
@@ -291,6 +291,212 @@ function getPlotLabel(plot) {
   return plot.comment
 }
 
+const advantages = computed(() => {
+  return [
+    {
+      en: "Vue-native, no runtime dependencies",
+      fr: "Natif Vue, sans dépendances d’exécution",
+      pt: "Vue nativo, sem dependências em runtime",
+      de: "Vue-nativ, keine Laufzeitabhängigkeiten",
+      zh: "原生 Vue，无运行依赖",
+      jp: "Vueネイティブ、依存なし",
+      es: "Vue nativo, sin dependencias",
+      ko: "Vue 네이티브, 런타임 의존성 없음",
+      ar: "مبني على Vue، دون تبعيات",
+    },
+    {
+      en: `${componentsLen.value} ready-made components`,
+      fr: `${componentsLen.value} composants prêts à l’emploi`,
+      pt: `${componentsLen.value} componentes prontos`,
+      de: `${componentsLen.value} fertige Komponenten`,
+      zh: `${componentsLen.value} 个组件`,
+      jp: `既製コンポーネント ${componentsLen.value} 個`,
+      es: `${componentsLen.value} componentes listos`,
+      ko: `미리 제작된 컴포넌트 ${componentsLen.value}개`,
+      ar: `${componentsLen.value} مكوّنات جاهزة`,
+    },
+    {
+      en: "Universal component",
+      fr: "Composant universel",
+      pt: "Componente universal",
+      de: "Universelle Komponente",
+      zh: "通用组件",
+      jp: "ユニバーサルコンポーネント",
+      es: "Componente universal",
+      ko: "범용 컴포넌트",
+      ar: "مكوّن عام",
+    },
+    {
+      en: "Deep slot customization",
+      fr: "Personnalisation avancée via slots",
+      pt: "Customização com slots",
+      de: "Tiefgreifende Slot-Anpassung",
+      zh: "插槽自定义",
+      jp: "スロットで柔軟カスタム",
+      es: "Personalización con slots",
+      ko: "슬롯 기반 커스터마이징",
+      ar: "تخصيص عبر الـ slot",
+    },
+    {
+      en: "Built-in end-user empowering menu",
+      fr: "Menu intégré puissant pour l’utilisateur final",
+      pt: "Menu embutido para usuário final avançado",
+      de: "Integriertes Menü für Endnutzer",
+      zh: "内建终端用户功能菜单",
+      jp: "組み込みエンドユーザーメニュー",
+      es: "Menú integrado para el usuario final",
+      ko: "엔드유저용 내장 메뉴",
+      ar: "قائمة مدمجة للمستخدم النهائي",
+    },
+    {
+      en: "Widgets for dashboard UI",
+      fr: "Widgets pour interface de tableau de bord",
+      pt: "Widgets para interface de dashboard",
+      de: "Widgets für Dashboard-Oberfläche",
+      zh: "仪表盘界面组件",
+      jp: "ダッシュボードUI用ウィジェット",
+      es: "Widgets para interfaz de dashboard",
+      ko: "대시보드 UI용 위젯",
+      ar: "عناصر واجهة للوحة التحكم",
+    },
+    {
+      en: "Programmatic control API",
+      fr: "API de contrôle programmable",
+      pt: "API de controle programável",
+      de: "Programmierbare Steuerungs-API",
+      zh: "可编程控制 API",
+      jp: "プログラマブル制御API",
+      es: "API de control programático",
+      ko: "프로그래밍 제어 API",
+      ar: "واجهة تحكم برمجية",
+    },
+    {
+      en: "Responsive and mobile-friendly",
+      fr: "Adapté au mobile",
+      pt: "Responsivo e amigável ao móvel",
+      de: "Responsiv und mobilfreundlich",
+      zh: "响应式，适配移动端",
+      jp: "レスポンシブでモバイル対応",
+      es: "Responsivo y apto para móviles",
+      ko: "반응형, 모바일 친화적",
+      ar: "متجاوب ويدعم الجوال",
+    },
+    {
+      en: "Works with Nuxt",
+      fr: "Fonctionne avec Nuxt",
+      pt: "Compatível com Nuxt",
+      de: "Funktioniert mit Nuxt",
+      zh: "兼容 Nuxt",
+      jp: "Nuxtに対応",
+      es: "Funciona con Nuxt",
+      ko: "Nuxt 호환 가능",
+      ar: "يعمل مع Nuxt",
+    }
+  ]
+})
+
+
+const carouselDataset = computed(() => {
+  return {
+    head: [''],
+    body: advantages.value.map(a => {
+      return [a[store.lang]]
+    })
+  }
+})
+
+const carouselConfig = computed(() => {
+  return {
+    responsiveBreakpoint: 400,
+    scrollbar: { hide: true },
+    userOptions: {
+        show: false,
+    },
+    animation: {
+        use: true,
+        speedMs: 2000,
+        pauseOnHover: true
+    },
+    style: {
+        backgroundColor: isDarkMode.value ? "#2A2A2A" : '#F3F4F6',
+        color: "#CCCCCC",
+        fontFamily: "inherit"
+    },
+    border: {
+        size: 0,
+        color: "#2D353C"
+    },
+    thead: {
+        style: {
+            verticalAlign: "middle"
+        },
+        tr: {
+            height: 0,
+            border: {
+                size: 0,
+                color: "#2D353C"
+            },
+            style: {
+                backgroundColor: isDarkMode.value ? "#3A3A3A" : '#FFFFFF',
+                color: isDarkMode.value ? "#8A8A8A" : '#1A1A1A',
+                boxShadow: "0px 6px 12px -6px #1A1A1A"
+            },
+            th: {
+                border: {
+                    size: 0,
+                    color: "#2D353C"
+                },
+                padding: {
+                    top: 0,
+                    right: 12,
+                    bottom: 0,
+                    left: 12
+                },
+                style: {
+                    borderSpacing: 0,
+                    border: "none",
+                    textAlign: "left",
+                    fontVariantNumeric: "tabular-nums"
+                }
+            }
+        }
+    },
+    tbody: {
+        backgroundColor: isDarkMode.value ? "#2A2A2A" : '#F3F4F6',
+        tr: {
+            visible: 1,
+            height: 32,
+            border: {
+                size: 0,
+                color: "#2D353C"
+            },
+            style: {
+                backgroundColor: isDarkMode.value ? "#4A4A4A" : '#F3F4F6',
+                color: isDarkMode.value ? "#CCCCCC" : '#1A1A1A'
+            },
+            td: {
+                alternateColor: true,
+                alternateOpacity: 0.8,
+                border: {
+                    size: 0,
+                    color: "#2D353C"
+                },
+                padding: {
+                    top: 0,
+                    right: 12,
+                    bottom: 0,
+                    left: 12
+                },
+                style: {
+                    fontVariantNumeric: "tabular-nums",
+                    backgroundColor: isDarkMode.value ? "#2A2A2A" : '#F3F4F6'
+                }
+            }
+        }
+    }
+}
+})
+
 </script>
 
 <template>
@@ -330,6 +536,18 @@ function getPlotLabel(plot) {
       <div ref="resizeContainer" class="absolute top-0 left-0" style="width:100%;height:100%;overflow: hidden" @mousemove="setClientPosition($event)">
 
         <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
+
+        <VueUiCarouselTable 
+          :dataset="carouselDataset"
+          :config="carouselConfig"
+          class="hidden sm:block mt-14 pointer-events-none"
+        >
+          <template #td="{ td }">
+            <div class="flex flex-row place-items-center gap-4 justify-center">
+              <CheckIcon class="text-app-green"/> {{ td }}
+            </div>
+          </template>
+      </VueUiCarouselTable>
         
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col lg:flex-row justify-center place-items-center lg:gap-[100px] w-full max-w-[1280px]">
     <div class="flex flex-col gap-6 max-w-[360px] justify-center place-items-center text-center">
@@ -393,17 +611,20 @@ function getPlotLabel(plot) {
           <div v-if="versionsList.length" class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center" :title="'Version ' + staticReleases[0].version.replace('v', '')">
             <Suspense>
               <template #default>
+                <div class="h-full flex flex-col">
                   <div class="h-full flex flex-row place-items-center justify-center">
                     <svg style="height:100%" viewBox="-6 -6 22 22">
                       <path d="M 0,4.5 5,12.5 10,4.5" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <VueUiDigits v-for="d in digits" :config="digitsConfigVersion" :dataset="d === '.' ? '.' : +d" :class="d === '.' ? '-mr-[0.8rem]' : ''"/>
                   </div>
+                </div>
               </template>
               <template #fallback>
-                    <div class="min-h-[50px]"></div>
-                </template>
+                <div class="min-h-[50px]"></div>
+              </template>
             </Suspense>
+            <br>
         </div>
           <div v-else class="flex flex-row place-items-center h-[30px] mx-auto w-full justify-center">
         </div>
