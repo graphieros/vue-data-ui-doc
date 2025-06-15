@@ -58,6 +58,7 @@ const config = computed(() => {
                     stroke: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
                 },
                 nodes: {
+                    gap: 0,
                     stroke: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
                     minHeight: 25,
                     labels: {
