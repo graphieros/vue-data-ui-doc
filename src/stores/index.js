@@ -2545,6 +2545,17 @@ export const useMainStore = defineStore("main", {
                         ko: "로딩 상태",
                         ar: "حالات التحميل"
                     },
+                    configFlow: {
+                        en: 'Config trees',
+                        fr: 'Arbres de configuration',
+                        pt: 'Árvores de configuração',
+                        de: 'Konfigurationsbäume',
+                        zh: '配置树',
+                        jp: '設定ツリー',
+                        es: 'Árboles de configuración',
+                        ko: '구성 트리',
+                        ar: 'أشجار التكوين'
+                    },
                     dontTryThisAtHome: {
                         en: "Don't try this at home",
                         fr: "Ne tentez pas ça chez vous",

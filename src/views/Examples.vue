@@ -122,6 +122,16 @@ const crumbs = ref([
                 </div>
                 </button>
             </RouterLink>
+            <RouterLink to="/examples/config-flows" class="w-full">
+                <button :class="`w-full relative rounded cursor-pointer py-2 px-4 border transition-colors ${selected ? 'bg-app-green cursor-default dark:text-black border-app-green' : 'hover:bg-gray-200 dark:hover:bg-[#de693730] border-gray-400 dark:border-[#2A2A2A]'}`">
+                    <div class="flex flex-row gap-2 place-items-center">
+                    <VueUiIcon name="chartFlow" :stroke="currentMenu === 'configFlow' ? '#1A1A1A' : isDarkMode ? '#de6937' : '#1A1A1A'"/>
+                    <span>
+                        {{ translations.docs.configFlow[store.lang] }}
+                    </span>
+                </div>
+                </button>
+            </RouterLink>
         </div>
 
         <ExampleSpark v-if="currentMenu === 'mini'"/>

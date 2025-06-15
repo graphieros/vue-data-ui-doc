@@ -61,6 +61,11 @@ const routes = [
         component: () => import("../views/ExampleCategories.vue")
     },
     {
+        path: "/examples/config-flows",
+        name: "Config flows",
+        component: () => import("../views/ConfigFlows.vue")
+    },
+    {
         path: "/universal-component",
         name: "Universal component",
         component: () => import("../views/UniversalComponent.vue")
