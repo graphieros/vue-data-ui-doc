@@ -1171,6 +1171,10 @@
             {
                 "name": "tooltip-after",
                 "description": "Use this slot to inject content on the bottom area of the tooltip."
+            },
+            {
+                "name": "legend",
+                "description": "Use this slot to create a custom legend."
             }
         ]
     },
