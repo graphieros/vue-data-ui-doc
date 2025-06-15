@@ -1186,6 +1186,11 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.keepStateOnChartLeave', def: true, type: 'checkbox', label: ['user options', 'is', 'keep state on leave'], category: 'general' },
                     { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
 
+                    { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label:['top'], category: 'padding'},
+                    { key: 'style.chart.padding.right', def: 12, type: 'number', min: 0, max: 100, label:['right'], category: 'padding'},
+                    { key: 'style.chart.padding.bottom', def: 12, type: 'number', min: 0, max: 100, label:['bottom'], category: 'padding'},
+                    { key: 'style.chart.padding.left', def: 12, type: 'number', min: 0, max: 100, label:['left'], category: 'padding'},
+
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },

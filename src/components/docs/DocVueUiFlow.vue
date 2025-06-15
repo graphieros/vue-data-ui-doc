@@ -220,10 +220,10 @@ const config = ref({
                 }
             },
             padding: {
-                top: 0,
-                left: 24,
-                right: 24,
-                bottom: 0
+                top: 12,
+                left: 12,
+                right: 12,
+                bottom: 12
             },
             title: {
                 text: "Material Flow in the Smartphone Lifecycle",
@@ -366,10 +366,10 @@ const darkModeConfig = ref({
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
             padding: {
-                top: 0,
-                left: 24,
-                right: 24,
-                bottom: 0
+                top: 12,
+                left: 12,
+                right: 12,
+                bottom: 12
             },
             legend: {
                 backgroundColor: "#1A1A1A",
