@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch, nextTick, computed, onMounted } from "vue";
 import Box from "../Box.vue";
-import { CopyIcon } from "vue-tabler-icons";
+import { CopyIcon, ExclamationCircleIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
 import ThemesVueUiFlow from "../themes/ThemesVueUiFlow.vue";
 import { useConfig } from "../../assets/useConfig";
@@ -38,19 +38,38 @@ const isDarkMode = computed(() => {
 });
 
 const dataset = ref([
-    ['A1', 'B1', 10],
-    ['A1', 'B2', 10],
-    ['B1', 'C1', 5],
-    ['B1', 'C2', 5],
-    ['B1', 'C3', 5],
-    ['B1', 'C4', 5],
-    ['A2', 'B1', 10],
-    ['B2', 'C5', 10],
-    ['C3', 'D1', 2],
-    ['C4', 'D1', 2],
-    ['C5', 'D1', 2],
-    ['C2', 'D2', 2],
-    ['C3', 'D2', 1],
+    // Raw materials → Components
+    ['Mining', 'Copper', 40,],
+    ['Mining', 'Lithium', 30,],
+    ['Mining', 'Gold', 10,],
+    ['Mining', 'Rare Earths', 20],
+
+    // Components → Manufacturing
+    ['Copper', 'PCB Assembly', 40],
+    ['Lithium', 'Battery Production', 30],
+    ['Gold', 'Microchips', 10],
+    ['Rare Earths', 'Microchips', 20],
+
+    // Manufacturing → Assembly
+    ['PCB Assembly', 'Phone Assembly', 40],
+    ['Battery Production', 'Phone Assembly', 30],
+    ['Microchips', 'Phone Assembly', 30],
+
+    // Assembly → Distribution
+    ['Phone Assembly', 'Retail', 100],
+
+    // Distribution → Consumers
+    ['Retail', 'Consumer Use', 100],
+
+    // Consumers → End-of-life
+    ['Consumer Use', 'Recycling', 40],
+    ['Consumer Use', 'Landfill', 30],
+    ['Consumer Use', 'Resale', 30],
+
+    // End-of-life → Secondary flow
+    ['Recycling', 'Recovered Materials', 25],
+    ['Recycling', 'E-Waste', 15],
+    ['Resale', 'Second-hand Use', 30]
 ]);
 
 const codeDataset = ref(`const dataset: VueUiFlowDatasetItem[] = [
@@ -72,6 +91,50 @@ const codeDataset = ref(`const dataset: VueUiFlowDatasetItem[] = [
 const dsTypeCode = ref(`type VueUiFlowDatasetItem = [string, string, number]`)
 
 const config = ref({
+    nodeCategories: {
+            // Raw Materials
+            'Mining': 'raw',
+
+            // Components
+            'Copper': 'component',
+            'Lithium': 'component',
+            'Gold': 'component',
+            'Rare Earths': 'component',
+
+            // Manufacturing
+            'PCB Assembly': 'manufacturing',
+            'Battery Production': 'manufacturing',
+            'Microchips': 'manufacturing',
+
+            // Assembly
+            'Phone Assembly': 'assembly',
+
+            // Distribution
+            'Retail': 'distribution',
+
+            // Consumer Use
+            'Consumer Use': 'consumer',
+
+            // End-of-life
+            'Recycling': 'endOfLife',
+            'Landfill': 'endOfLife',
+            'Resale': 'endOfLife',
+
+            // Secondary flow
+            'Recovered Materials': 'secondary',
+            'E-Waste': 'secondary',
+            'Second-hand Use': 'secondary'
+        },
+        nodeCategoryColors: {
+            raw: '#8B4513',             // Brown - for extraction
+            component: '#1E90FF',       // Blue - technical materials
+            manufacturing: '#FFD700',   // Gold - active production
+            assembly: '#FF8C00',        // Dark orange
+            distribution: '#A020F0',    // Purple - logistics
+            consumer: '#228B22',        // Green - use phase
+            endOfLife: '#B22222',       // Firebrick red
+            secondary: '#20B2AA'        // Light sea green - reuse/recover
+        },
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -106,6 +169,13 @@ const config = ref({
         chart: {
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
+            legend: {
+                backgroundColor: "#F3F4F6",
+                color: "#1A1A1A",
+                show: true,
+                fontSize: 14,
+                bold: false,
+            },
             tooltip: {
                 show: true,
                 color: "#1A1A1A",
@@ -137,7 +207,7 @@ const config = ref({
                 bottom: 0
             },
             title: {
-                text: "Title",
+                text: "Material Flow in the Smartphone Lifecycle",
                 color: "#2D353C",
                 fontSize: 20,
                 bold: true,
@@ -146,14 +216,14 @@ const config = ref({
                 paddingRight: 0,
                 subtitle: {
                     color: "#A1A1A1",
-                    text: "Subtitle",
+                    text: "From Raw‐Material Extraction through Manufacturing, Use and End-of-Life",
                     fontSize: 16,
                     bold: false
                 }
             },
             nodes: {
-                gap: 10,
-                minHeight: 20,
+                gap: 0,
+                minHeight: 25,
                 width: 40,
                 labels: {
                     fontSize: 14,
@@ -198,6 +268,50 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    nodeCategories: {
+        // Raw Materials
+        'Mining': 'raw',
+
+        // Components
+        'Copper': 'component',
+        'Lithium': 'component',
+        'Gold': 'component',
+        'Rare Earths': 'component',
+
+        // Manufacturing
+        'PCB Assembly': 'manufacturing',
+        'Battery Production': 'manufacturing',
+        'Microchips': 'manufacturing',
+
+        // Assembly
+        'Phone Assembly': 'assembly',
+
+        // Distribution
+        'Retail': 'distribution',
+
+        // Consumer Use
+        'Consumer Use': 'consumer',
+
+        // End-of-life
+        'Recycling': 'endOfLife',
+        'Landfill': 'endOfLife',
+        'Resale': 'endOfLife',
+
+        // Secondary flow
+        'Recovered Materials': 'secondary',
+        'E-Waste': 'secondary',
+        'Second-hand Use': 'secondary'
+    },
+    nodeCategoryColors: {
+        raw: '#8B4513',
+        component: '#1E90FF',
+        manufacturing: '#FFD700',
+        assembly: '#FF8C00', 
+        distribution: '#A020F0',
+        consumer: '#228B22',
+        endOfLife: '#B22222',  
+        secondary: '#20B2AA'        
+    },
     userOptions: {
         show: true,
         showOnChartHover: false,
@@ -238,6 +352,13 @@ const darkModeConfig = ref({
                 right: 24,
                 bottom: 0
             },
+            legend: {
+                backgroundColor: "#1A1A1A",
+                color: "#CCCCCC",
+                show: true,
+                fontSize: 14,
+                bold: false,
+            },
             tooltip: {
                 show: true,
                 color: "#CCCCCC",
@@ -263,7 +384,7 @@ const darkModeConfig = ref({
                 }
             },
             title: {
-                text: "Title",
+                text: "Material Flow in the Smartphone Lifecycle",
                 color: "#FAFAFA",
                 fontSize: 20,
                 bold: true,
@@ -272,14 +393,14 @@ const darkModeConfig = ref({
                 paddingRight: 0,
                 subtitle: {
                     color: "#A1A1A1",
-                    text: "Subtitle",
+                    text: "From Raw‐Material Extraction through Manufacturing, Use and End-of-Life",
                     fontSize: 16,
                     bold: false
                 }
             },
             nodes: {
-                gap: 10,
-                minHeight: 20,
+                gap: 0,
+                minHeight: 25,
                 width: 40,
                 labels: {
                     fontSize: 14,
@@ -359,6 +480,44 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const additionalTranslations = computed(() => {
+    return {
+        nodeCategories: {
+            en: `Map dataset keys to specific categories (will appear in legend); example: { Mining: 'component' }`,
+            fr: `Associez les clés du jeu de données à des catégories spécifiques (apparaîtront dans la légende) ; exemple : { Mining: 'component' }`,
+            pt: `Mapeie as chaves do conjunto de dados para categorias específicas (serão exibidas na legenda); exemplo: { Mining: 'component' }`,
+            de: `Ordnen Sie die Schlüssel des Datensatzes bestimmten Kategorien zu (werden in der Legende angezeigt); Beispiel: { Mining: 'component' }`,
+            zh: `将数据集键映射到特定类别（将出现在图例中）；示例：{ Mining: 'component' }`,
+            jp: `データセットのキーを特定のカテゴリにマッピングします（凡例に表示されます）；例: { Mining: 'component' }`,
+            es: `Mapear claves del conjunto de datos a categorías específicas (aparecerán en la leyenda); ejemplo: { Mining: 'component' }`,
+            ko: `데이터셋 키를 특정 카테고리에 매핑합니다(범례에 표시됨); 예: { Mining: 'component' }`,
+            ar: `قم بتعيين مفاتيح مجموعة البيانات إلى فئات محددة (ستظهر في وسيلة الإيضاح)؛ مثال: { Mining: 'component' }`
+        },
+        nodeCategoryColors: {
+            en: `Map node categories to custom colors; example: { component: '#1E90FF' }`,
+            fr: `Associez les catégories de nœuds à des couleurs personnalisées ; exemple : { component: '#1E90FF' }`,
+            pt: `Mapeie as categorias de nó para cores personalizadas; exemplo: { component: '#1E90FF' }`,
+            de: `Ordnen Sie Knotenkategorien benutzerdefinierten Farben zu; Beispiel: { component: '#1E90FF' }`,
+            zh: `将节点类别映射到自定义颜色；示例：{ component: '#1E90FF' }`,
+            jp: `ノードカテゴリをカスタムカラーにマッピングします；例: { component: '#1E90FF' }`,
+            es: `Mapear categorías de nodos a colores personalizados; ejemplo: { component: '#1E90FF' }`,
+            ko: `노드 카테고리를 사용자 지정 색상에 매핑합니다; 예: { component: '#1E90FF' }`,
+            ar: `قم بتعيين فئات العقد إلى ألوان مخصصة؛ مثال: { component: '#1E90FF' }`
+        },
+        legend: {
+            en: 'A legend can be displayed, if nodeCategories and nodeCategoryColors are provided.',
+            fr: 'Une légende peut être affichée si nodeCategories et nodeCategoryColors sont fournis.',
+            pt: 'Uma legenda pode ser exibida se nodeCategories e nodeCategoryColors forem fornecidos.',
+            de: 'Eine Legende kann angezeigt werden, wenn nodeCategories und nodeCategoryColors bereitgestellt werden.',
+            zh: '如果提供了 nodeCategories 和 nodeCategoryColors，则可以显示图例。',
+            jp: 'nodeCategories と nodeCategoryColors が提供されている場合、凡例を表示できます。',
+            es: 'Se puede mostrar una leyenda si se proporcionan nodeCategories y nodeCategoryColors.',
+            ko: 'nodeCategories 및 nodeCategoryColors가 제공되면 범례를 표시할 수 있습니다.',
+            ar: 'يمكن عرض وسيلة إيضاح إذا تم توفير nodeCategories و nodeCategoryColors.'
+        }
+    }
+})
+
 </script>
 
 <template>
@@ -375,7 +534,7 @@ const { configCode, showAllConfig } = useConfigCode()
             :configSource="mainConfig.vue_ui_flow"
         />
 
-        <div :class="`transition-all mx-auto w-1/2`">
+        <div :class="`transition-all mx-auto w-full`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
@@ -426,10 +585,17 @@ const { configCode, showAllConfig } = useConfigCode()
     Toggle tree view: <input type="checkbox" v-model="showAllConfig">
 </div>
 
+<div class="flex flew-row gap-2 text-app-orange">
+    <ExclamationCircleIcon/>
+    {{ additionalTranslations.legend[store.lang] }}
+</div>
+
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiFlowConfig" equal>
         <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
-        <span>customPalette: []; // string[]</span>
+        <span>customPalette: [],<BaseComment>string[]</BaseComment></span>
+        <span>nodeCategories: {},<BaseComment>{{ additionalTranslations.nodeCategories[store.lang] }}</BaseComment></span>
+        <span>nodeCategoryColors: {},<BaseComment>{{ additionalTranslations.nodeCategoryColors[store.lang] }}</BaseComment></span>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
@@ -458,6 +624,13 @@ const { configCode, showAllConfig } = useConfigCode()
                             <BaseAttr name="length" attr="style.chart.nodes.labels.abbreviation.length" type="number" defaultVal="3" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
                     </BaseDetails>
+                </BaseDetails>
+                <BaseDetails attr="legend" :level="3" title="style.chart.legend">
+                    <BaseAttr name="show" attr="style.chart.legend.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="backgroundColor" attr="style.chart.legend.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="bold" attr="style.chart.legend.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="tooltip" :level="3" title="style.chart.tooltip">
                     <BaseAttr name="show" attr="style.chart.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -623,7 +796,7 @@ const { configCode, showAllConfig } = useConfigCode()
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
-                        'toggleTable'
+                        'toggleTable',
                     ]"
                 />
                 </div>
@@ -637,7 +810,8 @@ const { configCode, showAllConfig } = useConfigCode()
                         'svg',
                         'watermark',
                         'source',
-                        'chart-background'
+                        'chart-background',
+                        'legend'
                     ]" 
                 />
             </template>

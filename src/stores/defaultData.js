@@ -1196,6 +1196,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.paddingLeft', def: 0, type: 'number', min: 0, max: 24, label: ['padding', 'is', 'left'], category: 'title'},
                     { key: 'style.chart.title.paddingRight', def: 0, type: 'number', min: 0, max: 24, label: ['padding', 'is', 'right'], category: 'title'},
 
+                    { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
+                    { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend' },
+                    { key: 'style.chart.legend.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'legend' },
+                    { key: 'style.chart.legend.fontSize', def: 16, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'legend' },
+                    { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend' },
+
                     { key: 'style.chart.title.subtitle.text', def: '', type: 'text', label: 'textContent', category: 'subtitle' },
                     { key: 'style.chart.title.subtitle.color', def: '#A1A1A1', type: 'color', label: 'textColor', category: 'subtitle' },
                     { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'subtitle' },

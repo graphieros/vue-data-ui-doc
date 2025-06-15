@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.10.8",
+    "date": "2025-06-15",
+    "updates": [
+      {
+        "component": "VueUiFlow",
+        "description": "Add config attributes to set categories and category colors mapping, add optional legend.",
+        "link": "/docs#vue-ui-flow"
+      }
+    ]
+  },
+  {
     "version": "v 2.10.7",
     "date": "2025-06-14",
     "updates": [
