@@ -770,9 +770,9 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiDonutConfig" equal>
         <BaseAttr name="type" attr="type" type="select" defaultVal="classic" :options="['classic', 'polar']" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <span>responsive: false, <span class="text-gray-600 dark:text-app-blue text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-        theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")<br>
-        <span>customPalette: [], <span class="text-xs text-app-blue">// string[]</span></span>
+        <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+        <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+        <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="serieToggleAnimation" :level="1">
@@ -785,7 +785,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
             <BaseAttr name="staggerMs" attr="startAnimation.staggerMs" type="number" defaultVal="50" :min="0" :max="500" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         </BaseDetails>
         <BaseDetails attr="style" :level="1">
-            <span>fontFamily: "inherit",</span>
+            <BaseAttr inactive name="fontFamily" defaultVal="inherit"/>
             <BaseDetails attr="chart" :level="2" title="style.chart">
                 <BaseAttr name="useGradient" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" attr="style.chart.useGradient" defaultVal="true"/>
                 <BaseAttr name="gradientIntensity" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="0" :max="100" attr="style.chart.gradientIntensity" defaultVal="40" />
@@ -815,7 +815,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                     <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">                    
                         <BaseDetails attr="dataLabels" :level="5" title="style.chart.layout.labels.dataLabels">
                             <BaseAttr name="show" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" attr="style.chart.layout.labels.dataLabels.show" defaultVal="true" @change="forceChartUpdate()"/>
-                            <span>useLabelSlots: false, <span class="text-gray-600 dark:text-app-blue text-xs">// Check out the slots tab for information on how to use custom data labels</span></span>
+                            <BaseAttr inactive name="useLabelSlots" defaultVal="false" comment="Check out the slots tab for information on how to use custom data labels"/>
                             <BaseAttr name="hideUnderValue" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.layout.labels.dataLabels.hideUnderValue" :min="0" :max="10" defaultVal="3" :comment="translations.docs.comments.donut.hideUnderValue[store.lang]"/>
                             <BaseAttr name="prefix" :light="mutableConfig" :dark="mutableConfigDarkMode" type="text" attr="style.chart.layout.labels.dataLabels.prefix" defaultVal="''"/>
                             <BaseAttr name="suffix" :light="mutableConfig" :dark="mutableConfigDarkMode" type="text" attr="style.chart.layout.labels.dataLabels.suffix" defaultVal="''"/>
@@ -823,14 +823,14 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                         <BaseDetails attr="value" :level="5" title="style.chart.layout.labels.value">
                             <BaseAttr name="show" attr="style.chart.layout.labels.value.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="rounding" attr="style.chart.layout.labels.value.rounding" type="number" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
                         </BaseDetails>
                         <BaseDetails attr="percentage" :level="5" title="style.chart.layout.labels.percentage">
                             <BaseAttr name="color" attr="style.chart.layout.labels.percentage.color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" defaultVal="#2D353C"/>
                             <BaseAttr name="bold" attr="style.chart.layout.labels.percentage.bold" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" defaultVal="true"/>
                             <BaseAttr name="fontSize" attr="style.chart.layout.labels.percentage.fontSize" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="8" :max="42" defaultVal="18"/>
                             <BaseAttr name="rounding" attr="style.chart.layout.labels.percentage.rounding" type="number" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
                         </BaseDetails>
                         <BaseDetails attr="name" :level="5" title="style.chart.layout.labels.name">
                             <BaseAttr name="color" attr="style.chart.layout.labels.name.color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" defaultVal="#2D353C"/>
@@ -854,7 +854,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                                     <BaseAttr name="rounding" attr="style.chart.layout.labels.hollow.average.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="prefix" attr="style.chart.layout.labels.hollow.average.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="suffix" attr="style.chart.layout.labels.hollow.average.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
                                 </BaseDetails>
                             </BaseDetails>
                             <BaseDetails attr="total" :level="6" title="style.chart.layout.labels.hollow.total">
@@ -872,7 +872,8 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                                     <BaseAttr name="rounding" attr="style.chart.layout.labels.hollow.total.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="prefix" attr="style.chart.layout.labels.hollow.total.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="suffix" attr="style.chart.layout.labels.hollow.total.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                                    <BaseAttr name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
                                 </BaseDetails>
                             </BaseDetails>
                         </BaseDetails>
@@ -911,7 +912,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                     <BaseAttr name="showPercentage" attr="style.chart.tooltip.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="roundingValue" attr="style.chart.tooltip.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="roundingPercentage" attr="style.chart.tooltip.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <span>customFormat: null, <span class="text-gray-600 dark:text-app-blue text-xs">// default behavior. To customize content, see 'custom tooltip' tab</span></span>
+                    <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab"/>
                     <BaseAttr name="borderRadius" attr="style.chart.tooltip.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="borderColor" attr="style.chart.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="borderWidth" attr="style.chart.tooltip.borderWidth" type="number" defaultVal="1" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
