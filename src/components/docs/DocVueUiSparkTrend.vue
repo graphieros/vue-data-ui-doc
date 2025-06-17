@@ -253,12 +253,12 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiSparkTrendConfig" equal>
-        <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
+        <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseDetails attr="downsample" :level="1">
             <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
         </BaseDetails>
         <BaseDetails attr="style" :level="1">
-            <span>fontFamily: "inherit",</span>
+            <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
             <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
             <BaseDetails attr="animation" :level="2" title="style.animation">
                 <BaseAttr name="animation" attr="style.animation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

@@ -186,7 +186,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
     <BaseDetails attr="const config: VueUiKpiConfig" equal>
         <BaseAttr name="animationFrames" attr="animationFrames" type="number" defaultVal="60" :min="0" :max="1000" :step="20" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseAttr name="backgroundColor" attr="backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <span>fontFamily: "inherit",</span>
+        <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
         <BaseAttr name="layoutClass" attr="layoutClass" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="layoutCss" attr="layoutCss" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="prefix" attr="prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

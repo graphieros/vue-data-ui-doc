@@ -785,7 +785,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
             <BaseAttr name="staggerMs" attr="startAnimation.staggerMs" type="number" defaultVal="50" :min="0" :max="500" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         </BaseDetails>
         <BaseDetails attr="style" :level="1">
-            <BaseAttr inactive name="fontFamily" defaultVal="inherit"/>
+            <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
             <BaseDetails attr="chart" :level="2" title="style.chart">
                 <BaseAttr name="useGradient" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" attr="style.chart.useGradient" defaultVal="true"/>
                 <BaseAttr name="gradientIntensity" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="0" :max="100" attr="style.chart.gradientIntensity" defaultVal="40" />

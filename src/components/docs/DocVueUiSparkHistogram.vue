@@ -478,9 +478,9 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiSparkHistogramConfig" equal>
-    <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
+    <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
     <BaseDetails attr="style" :level="1">
-      <span>fontFamily: "inherit",</span>
+      <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseDetails attr="animation" :level="2" title="style.animation">
         <BaseAttr name="show" attr="style.animation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -513,7 +513,7 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
           <BaseAttr name="prefix" attr="style.labels.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="suffix" attr="style.labels.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="offsetY" attr="style.labels.value.offsetY" type="number" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+          <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
         </BaseDetails>
         <BaseDetails attr="valueLabel" :level="3" title="style.labels.valueLabel">
           <BaseAttr name="fontSize" attr="style.labels.valueLabel.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

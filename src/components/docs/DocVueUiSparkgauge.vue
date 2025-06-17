@@ -290,9 +290,9 @@ const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiSparkgaugeConfig" equal>
-        <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
+        <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseDetails attr="style" level="1">
-            <span>fontFamily: "inherit",</span>
+            <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
             <BaseAttr name="background" attr="style.background" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="height" attr="style.height" type="number" defaultVal="84" :min="84" :max="150" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="basePosition" attr="style.basePosition" type="number" defaultVal="72" :min="72" :max="150" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -314,7 +314,7 @@ const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
                 <BaseAttr name="rounding" attr="style.dataLabel.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="prefix" attr="style.dataLabel.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="suffix" attr="style.dataLabel.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
             </BaseDetails>
             <BaseDetails attr="gutter" :level="2" title="style.gutter">
                 <BaseAttr name="color" attr="style.gutter.color" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

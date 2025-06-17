@@ -778,8 +778,8 @@ function copyComponentSnippet(snip) {
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiQuickChartConfig" equal>
-        <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-        <span>theme: ""; ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
+        <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+        <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr name="axisLabelsFontSize" attr="axisLabelsFontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="backgroundColor" attr="backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <div class="py-4 bg-gray-200 dark:bg-[#FFFFFF10] rounded-md px-4 pl-8 border-l border-black dark:border-app-blue my-2">
@@ -809,8 +809,8 @@ function copyComponentSnippet(snip) {
             <BaseAttr name="donutShadowColor" attr="donutShadowColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </div>
 
-        fontFamily: "inherit",
-        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+        <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
+        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
         <BaseAttr name="height" attr="height" type="number" defaultVal="338" :min="100" :max="600" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="legendFontSize" attr="legendFontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="legendIcon" attr="legendIcon" type="select" defaultVal="circleFill" :options="icons" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -852,7 +852,7 @@ function copyComponentSnippet(snip) {
         <BaseAttr name="titleBold" attr="titleBold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="titleFontSize" attr="titleFontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="titleTextAlign" attr="titleTextAlign" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <span>tooltipCustomFormat: null, <span class="text-app-blue text-xs">// default behavior. To customize content, see 'custom tooltip' tab</span></span>
+        <BaseAttr inactive name="tooltipCustomFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab"/>
         <BaseAttr name="tooltipBorderRadius" attr="tooltipBorderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="tooltipBorderColor" attr="tooltipBorderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="tooltipBorderWidth" attr="tooltipBorderWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -906,8 +906,8 @@ function copyComponentSnippet(snip) {
                 <BaseAttr name="indicatorColor" attr="zoomMinimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="verticalHandles" attr="zoomMinimap.verticalHandles" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.72"/>
             </BaseDetails>
-            <span>zoomStartIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span><br>
-            <span>zoomEndIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
+            <BaseAttr inactive name="zoomStartIndex" defaultVal="null" comment="number | null. Force zoom start index"/>
+            <BaseAttr inactive name="zoomEndIndex" defaultVal="null" comment="number | null. Force zoom end index"/>
         </div>
     </BaseDetails>
 </code>

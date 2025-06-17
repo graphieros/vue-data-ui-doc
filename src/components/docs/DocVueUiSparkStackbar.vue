@@ -324,10 +324,10 @@ const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiSparkStackBarConfig" equal>
-    <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
-    <span>customPalette: [], <span class="text-app-blue text-xs">// string[]</span></span>
+    <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+    <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
     <BaseDetails attr="style" :level="1">
-      <span>fontFamily: "inherit",</span>
+      <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseDetails attr="animation" :level="2" title="style.animation">
         <BaseAttr name="show" attr="style.animation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -362,7 +362,7 @@ const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
           <BaseAttr name="rounding" attr="style.legend.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="prefix" attr="style.legend.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>          
           <BaseAttr name="suffix" attr="style.legend.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+          <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
         </BaseDetails>
       </BaseDetails>
       <BaseDetails attr="title" :level="2" title="style.title">
@@ -384,7 +384,7 @@ const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
         <BaseAttr name="backgroundColor" attr="style.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="color" attr="style.tooltip.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="fontSize" attr="style.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <span>customFormat: null, <span class="text-gray-600 dark:text-app-blue text-xs">// default behavior. To customize content, see 'custom tooltip' tab</span></span>
+        <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab"/>
         <BaseAttr name="borderRadius" attr="style.tooltip.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="borderColor" attr="style.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="borderWidth" attr="style.tooltip.borderWidth" type="number" defaultVal="1" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

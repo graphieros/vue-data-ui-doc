@@ -490,14 +490,14 @@ const currentConfig = computed(() => {
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiSparklineConfig" equal>
-    <span>responsive: false, <BaseComment>Since v2.3.44 - {{ translations.responsive[store.lang] }}</BaseComment></span>
-    <span>theme: "", ("" | "zen" | "hack" | "concrete")</span>
+    <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+    <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
     <BaseAttr name="type" attr="type" type="select" defaultVal="line" :options="['line', 'bar']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseDetails attr="downsample" :level="1">
         <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
     </BaseDetails>
     <BaseDetails attr="style" :level="1">
-      <span>fontFamily: "inherit",</span>
+      <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="chartWidth" attr="style.chartWidth" type="number" defaultVal="290" :min="100" :max="400" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="scaleMin" attr="style.scaleMin" type="number" defaultVal="null" :min="-1000" :max="0" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.62 - Force the min scale"/>
@@ -534,7 +534,7 @@ const currentConfig = computed(() => {
         <BaseAttr name="valueType" attr="style.dataLabel.valueType" type="select" defaultVal="latest" :options="['latest', 'sum', 'average']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="prefix" attr="style.dataLabel.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="suffix" attr="style.dataLabel.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
       </BaseDetails>
       <BaseDetails attr="line" :level="2" title="style.line">
         <BaseAttr name="color" attr="style.line.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

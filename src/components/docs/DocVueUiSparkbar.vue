@@ -324,8 +324,8 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiSparkbarConfig" equal>
-        <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
-        <span>customPalette: [], <span class="text-app-blue text-xs">// string[]</span></span>
+        <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+        <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -361,7 +361,7 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
             <BaseDetails attr="layout" :level="2" title="style.layout">
                 <BaseAttr name="independant" attr="style.layout.independant" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="percentage" attr="style.layout.percentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <span>target: 0, <span class="text-app-blue text-xs">// Common to all bars. Use target in dataset for individual targets.</span></span>
+                <BaseAttr inactive name="target" defaultVal="0" comment="Common to all bars. Use target in dataset for individual targets."/>
                 <BaseAttr name="showTargetValue" attr="style.layout.showTargetValue" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="targetValueText" attr="style.layout.targetValueText" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
