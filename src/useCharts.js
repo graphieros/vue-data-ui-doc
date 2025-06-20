@@ -542,6 +542,13 @@ export default function useCharts() {
                 taxinomy: ['comparisons', 'relationships', 'semantic'],
                 singleTaxinomy: 'semantic'
             },
+            VueUiChord: {
+                icon: 'chartChord',
+                link: '/docs#vue-ui-chord',
+                description: translations.value.docs.tooltips.chord[store.lang],
+                taxinomy: ['comparisons', 'relationships', 'semantic'],
+                singleTaxinomy: 'semantic'
+            },
             VueUiRings: {
                 icon: 'chartRings',
                 link: '/docs#vue-ui-rings',

@@ -54,7 +54,8 @@ import {
     VueUiStackbar,
     VueUiPattern,
     VueUiWorld,
-    VueUiRidgeline
+    VueUiRidgeline,
+    VueUiChord
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -113,5 +114,6 @@ app.component("VueUiStackbar", VueUiStackbar)
 app.component('VueUiPattern', VueUiPattern)
 app.component('VueUiWorld', VueUiWorld)
 app.component('VueUiRidgeline', VueUiRidgeline)
+app.component('VueUiChord', VueUiChord)
 
 app.mount('#app')

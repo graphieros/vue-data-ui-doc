@@ -61,7 +61,8 @@ export function useIconMapUnderscore(componentName) {
         vue_ui_funnel: 'chartFunnel',
         vue_ui_history_plot: 'chartHistoryPlot',
         vue_ui_world: 'world',
-        vue_ui_ridgeline: 'chartRidgeline'
+        vue_ui_ridgeline: 'chartRidgeline',
+        vue_ui_chord: 'chartChord'
     }
     return mapping[componentName] || 'clipBoard';
 }

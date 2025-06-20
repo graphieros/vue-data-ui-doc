@@ -83,6 +83,7 @@ const DocUtilityFunctions = defineAsyncComponent(() => import('../components/doc
 const DocVueUiCirclePack = defineAsyncComponent(() => import('../components/docs/DocVueUiCirclePack.vue'));
 const DocVueUiWorld = defineAsyncComponent(() => import('../components/docs/DocVueUiWorld.vue'));
 const DocVueUiRidgeline = defineAsyncComponent(() => import('../components/docs/DocVueUiRidgeline.vue'));
+const DocVueUiChord = defineAsyncComponent(() => import('../components/docs/DocVueUiChord.vue'));
 
 const mainConfig = useConfig()
 
@@ -610,6 +611,18 @@ const menuItems = computed(() => [
         thumbLight: new URL('../assets/thumb_relation_circle_light.png', import.meta.url).href,
         hasSlot: true,
         hasTableCss: false,
+    },
+    {
+        name: "Chord",
+        icon: "chartChord",
+        tooltip: translations.value.docs.tooltips.chord[store.lang],
+        link: "/docs#vue-ui-chord",
+        type: "semantic",
+        thumb: new URL('../assets/thumb_chord.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_chord_light.png', import.meta.url).href,
+        hasSlot: true,
+        hasTableCss: true,
+        hasLegend: true
     },
     {
         name: "Thermometer",
@@ -1207,6 +1220,9 @@ const stackbarKey = ref(0);
             </Transition>
             <Transition name="fade">
                 <DocVueUiRidgeline v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-ridgeline'" />
+            </Transition>
+            <Transition name="fade">
+                <DocVueUiChord v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-chord'" />
             </Transition>
 
             <Transition name="fade">

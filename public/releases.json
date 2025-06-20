@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.11.0",
+    "date": "2025-06-20",
+    "updates": [
+      {
+        "component": "VueUiChord",
+        "description": "Add new component",
+        "link": "/docs#vue-ui-chord"
+      }
+    ]
+  },
+  {
     "version": "v 2.10.11",
     "date": "2025-06-15",
     "updates": [

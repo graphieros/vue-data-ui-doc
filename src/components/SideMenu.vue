@@ -418,6 +418,16 @@ const smallMenu = ref([
         component: 'RelationCircle'
     },
     {
+        route: '/docs#vue-ui-chord',
+        icon: 'chartChord',
+        cssClasses: '',
+        isSelected: isSelected,
+        tooltipContent: 'Chord',
+        thumb: new URL('../assets/thumb_chord.png', import.meta.url).href,
+        thumbLight: new URL('../assets/thumb_chord_light.png', import.meta.url).href,
+        component: 'Chord'
+    },
+    {
         route: '/docs#vue-ui-radar',
         icon: 'chartRadar',
         cssClasses: '',
@@ -750,6 +760,7 @@ const sideMenuItems = computed(() => {
         items: [
             {route: '/docs#vue-ui-word-cloud', componentName: 'WordCloud', icon: 'chartWordCloud' },
             {route: '/docs#vue-ui-relation-circle', componentName: 'RelationCircle', icon: 'chartRelationCircle' },
+            {route: '/docs#vue-ui-chord', componentName: 'Chord', icon: 'chartChord' },
         ],
         icon: 'chartWordCloud'
     },

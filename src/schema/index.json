@@ -1,4 +1,127 @@
 {
+    "vue_ui_chord": {
+        "name": "VueUiChord",
+        "icon": "chartChord",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-chord",
+        "path": "/docs#vue-ui-chord",
+        "description": "chord",
+        "hasThemes": true,
+        "hasSlots": true,
+        "hasEmits": true,
+        "hasExposed": true,
+        "responsive": true,
+        "props": [
+            "dataset",
+            "config"
+        ],
+        "types": {
+            "config": "VueUiChordConfig",
+            "dataset": "VueUiChordDataset"
+        },
+        "examples": [
+            {
+                "dataset": {
+                    "matrix": [
+                        [ 12000, 6000, 9000, 3000],
+                        [ 2000, 10000, 2000, 6001], 
+                        [ 8000, 1600, 8000, 8001], 
+                        [ 1000, 1000, 1000, 7001]  
+                    ],
+                    "labels": ["A", "B", "C", "D"]
+                }
+            }
+        ],
+        "userOptions": [
+            {
+                "name": "pdf",
+                "description": "Triggers pdf download.",
+                "icon": "pdf"
+            },
+            {
+                "name": "img",
+                "description": "Triggers image download.",
+                "icon": "image"
+            },
+            {
+                "name": "csv",
+                "description": "Triggers csv download.",
+                "icon": "excel"
+            },
+            {
+                "name": "table",
+                "description": "Toggles data table visibility.",
+                "icon": "tableOpen"
+            },
+            {
+                "name": "Full screen",
+                "description": "Displays the chart in full screen mode.",
+                "icon": "fullscreen"
+            },
+            {
+                "name": "Annotator",
+                "description": "Toggles the annotator mode",
+                "icon": "annotator"
+            }
+        ],
+        "slots": [
+            {
+                "name": "svg",
+                "description": "Use this slot to inject any svg element on the top layer of the chart."
+            },
+            {
+                "name": "watermark",
+                "description": "Use this slot to display a watermark"
+            },
+            {
+                "name": "source",
+                "description": "Use this slot to add a chart caption content"
+            },
+            {
+                "name": "chart-background",
+                "description": "Use this slot to customize the chart background (gradient, image...)"
+            },
+            {
+                "name": "pattern",
+                "description": "Use this slot to customize datapoints with patterns"
+            }
+        ],
+        "exposed": [
+            {
+                "name": "getData",
+                "description": "Returns the full formatted dataset."
+            },
+            {
+                "name": "generatePdf",
+                "description": "Triggers pdf download."
+            },
+            {
+                "name": "generateCsv",
+                "description": "Triggers csv download."
+            },
+            {
+                "name": "generateImage",
+                "description": "Triggers image download."
+            },
+            {
+                "name": "toggleTable",
+                "description": "Triggers toggling of the data table visibility"
+            }
+        ],
+        "emits": [
+            {
+                "name": "selectLegend",
+                "description": "Emits the current visible series when selecting a legend item."
+            },
+            {
+                "name": "selectGroup",
+                "description": "Emits the related group data when clicking arcs."
+            },
+            {
+                "name": "selectRibbon",
+                "description": "Emits the related data when clicking ribbons."
+            }
+        ]
+    },
     "vue_ui_ridgeline": {
         "name": "VueUiRidgeline",
         "icon": "chartRidgeline",
@@ -110,7 +233,7 @@
             },
             {
                 "name": "selectX",
-                "description": "Emits the current visivle series at the selected x index when clicking on the chart."
+                "description": "Emits the current visible series at the selected x index when clicking on the chart."
             },
             {
                 "name": "selectDatapoint",
@@ -1283,7 +1406,7 @@
             },
             {
                 "name": "selectX",
-                "description": "Emits the current visivle series at the selected x index when clicking on the chart."
+                "description": "Emits the current visible series at the selected x index when clicking on the chart."
             }
         ],
         "exposed": [
