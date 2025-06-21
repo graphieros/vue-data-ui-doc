@@ -383,6 +383,7 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
 
         <BaseDocHeaderActions
             targetLink="vue-ui-chord"
+            targetMaker="VueUiChord"
             :configSource="mainConfig.vue_ui_chord"
         />
 

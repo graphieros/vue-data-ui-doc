@@ -249,6 +249,28 @@ export const useMakerStore = defineStore('maker', {
                     ar: 'انسخ المكون بالكامل'
                 },
                 categories: {
+                    arcs: {
+                        en: 'Arcs',
+                        fr: 'Arcs',
+                        pt: 'Arcos',
+                        de: 'Bögen',
+                        zh: '弧',
+                        jp: '弧',
+                        es: 'Arcos',
+                        ko: '호',
+                        ar: 'الأقواس'
+                    },
+                    ribbons: {
+                        en: 'Ribbons',
+                        fr: 'Rubans',
+                        pt: 'Fitas',
+                        de: 'Bänder',
+                        zh: '带',
+                        jp: 'リボン',
+                        es: 'Cintas',
+                        ko: '리본',
+                        ar: 'الشريط'
+                    },
                     modalDialog: {
                         en: 'Modal dialog',
                         fr: 'Dialogue modal',
@@ -1370,6 +1392,61 @@ export const useMakerStore = defineStore('maker', {
                         ko: '연결',
                         ar: 'روابط'
                     },
+                    theme: {
+                        en: 'Theme',
+                        fr: 'Thème',
+                        pt: 'Tema',
+                        de: 'Thema',
+                        zh: '主题',
+                        jp: 'テーマ',
+                        es: 'Tema',
+                        ko: '테마',
+                        ar: 'السمة'
+                    },
+                    separation: {
+                        en: 'Separation',
+                        fr: 'Séparation',
+                        pt: 'Separação',
+                        de: 'Abstand',
+                        zh: '间距',
+                        jp: '分離',
+                        es: 'Separación',
+                        ko: '분리',
+                        ar: 'الفصل'
+                    },
+                    marker: {
+                        en: 'Marker',
+                        fr: 'Marqueur',
+                        pt: 'Marcador',
+                        de: 'Markierung',
+                        zh: '标记',
+                        jp: 'マーカー',
+                        es: 'Marcador',
+                        ko: '마커',
+                        ar: 'مؤشر'
+                    },
+                    label: {
+                        en: 'Label',
+                        fr: 'Étiquette',
+                        pt: 'Rótulo',
+                        de: 'Beschriftung',
+                        zh: '标签',
+                        jp: 'ラベル',
+                        es: 'Etiqueta',
+                        ko: '레이블',
+                        ar: 'تسمية'
+                    },
+                    connector: {
+                        en: 'Connector',
+                        fr: 'Connecteur',
+                        pt: 'Conector',
+                        de: 'Verbinder',
+                        zh: '连接器',
+                        jp: '接続線',
+                        es: 'Conector',
+                        ko: '연결선',
+                        ar: 'موصل'
+                    },
                     markers: {
                         en: "Markers",
                         fr: "Marqueurs",
@@ -1435,6 +1512,39 @@ export const useMakerStore = defineStore('maker', {
                         es: "Negativo",
                         ko: "부정적인",
                         ar: 'سلبي'
+                    },
+                    offset: {
+                        en: 'Offset',
+                        fr: 'Décalage',
+                        pt: 'Deslocamento',
+                        de: 'Versatz',
+                        zh: '偏移',
+                        jp: 'オフセット',
+                        es: 'Desplazamiento',
+                        ko: '오프셋',
+                        ar: 'الإزاحة'
+                    },
+                    inner: {
+                        en: 'Inner',
+                        fr: 'Intérieur',
+                        pt: 'Interno',
+                        de: 'Innen',
+                        zh: '内部',
+                        jp: '内側',
+                        es: 'Interior',
+                        ko: '내부',
+                        ar: 'داخلي'
+                    },
+                    outer: {
+                        en: 'Outer',
+                        fr: 'Extérieur',
+                        pt: 'Externo',
+                        de: 'Außen',
+                        zh: '外部',
+                        jp: '外側',
+                        es: 'Exterior',
+                        ko: '외부',
+                        ar: 'خارجي'
                     },
                     offsetX: {
                         en: "Offset X",
@@ -1721,6 +1831,17 @@ export const useMakerStore = defineStore('maker', {
                         es: "Cantidad",
                         ko: "수량",
                         ar: "كمية"
+                    },
+                    underlayer: {
+                        en: 'Underlayer',
+                        fr: 'Sous-couche',
+                        pt: 'Camada inferior',
+                        de: 'Unterschicht',
+                        zh: '底层',
+                        jp: 'アンダーレイヤー',
+                        es: 'Capa inferior',
+                        ko: '하부 레이어',
+                        ar: 'الطبقة السفلية'
                     },
                     radius: {
                         en: "Radius",

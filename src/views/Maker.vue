@@ -48,7 +48,8 @@ const MakerFunnel = defineAsyncComponent(() => import('../components/maker/Maker
 const MakerHistoryPlot = defineAsyncComponent(() => import('../components/maker/MakerHistoryPlot.vue'));
 const MakerCirclePack = defineAsyncComponent(() => import('../components/maker/MakerCirclePack.vue'));
 const MakerWorld = defineAsyncComponent(() => import('../components/maker/MakerVueUiWorld.vue'));
-const MakerVueUiRidgeline = defineAsyncComponent(() => import('../components/maker/MakerVueUiRidgeline.vue'))
+const MakerVueUiRidgeline = defineAsyncComponent(() => import('../components/maker/MakerVueUiRidgeline.vue'));
+const MakerChord = defineAsyncComponent(() => import('../components/maker/MakerChord.vue'));
 
 const store = useMainStore();
 const makerStore = useMakerStore();
@@ -105,6 +106,7 @@ const options = ref([
     { component: markRaw(MakerCirclePack), key: 'vue_ui_circle_pack', name: "VueUiCirclePack", icon: "chartCirclePack", thumb: new URL('../assets/thumb_circle_pack_light.png', import.meta.url).href, description: translations.value.docs.tooltips.circlePack},
     { component: markRaw(MakerWorld), key: 'vue_ui_world', name: 'VueUiWorld', icon: 'world', thumb: new URL('../assets/thumb_world_light.png', import.meta.url).href, description: translations.value.docs.tooltips.world },
     { component: markRaw(MakerVueUiRidgeline), key: 'vue_ui_ridgeline', name: 'VueUiRidgeline', icon: 'chartRidgeline', thumb: new URL('../assets/thumb_ridgeline_light.png', import.meta.url).href, description: translations.value.docs.tooltips.ridgeline },
+    { component: markRaw(MakerChord), key: 'vue_ui_chord', name: 'VueUiChord', icon: 'chartChord', thumb: new URL('../assets/thumb_chord_light.png', import.meta.url).href, description: translations.value.docs.tooltips.chord },
 ])
 
 const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
