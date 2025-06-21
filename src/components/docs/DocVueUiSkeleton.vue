@@ -342,6 +342,8 @@ const options = ref([
     "verticalBar",
     "waffle",
     "wheel",
+    "ridgeline",
+    "chord"
 ].map(el => {
   return {
     value: el,
