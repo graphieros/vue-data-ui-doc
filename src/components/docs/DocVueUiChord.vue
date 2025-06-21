@@ -18,6 +18,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 
 const mainConfig = useConfig();
 
@@ -395,9 +396,9 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
             </DocSnapper>
         </div>
 
-        <!-- <div class="w-full flex justify-center mt-6">
-            <BaseViewExampleButton link="/examples/categories#vue-ui-donut"/>
-        </div> -->
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-chord"/>
+        </div>
 
         <Rater itemId="vue_ui_chord" />
 

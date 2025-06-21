@@ -272,6 +272,15 @@ const categories = computed(() => {
             description: translations.value.docs.tooltips.ridgeline,
             raterId: 'vue_ui_ridgeline'
         },
+        {
+            link: 'vue-ui-chord',
+            icon: 'chartChord',
+            component: 'VueUiChord',
+            thumb: new URL('../assets/thumb_chord.png', import.meta.url).href,
+            thumbLight: new URL('../assets/thumb_chord_light.png', import.meta.url).href,
+            description: translations.value.docs.tooltips.chord,
+            raterId: 'vue_ui_chord'
+        },
     ].map((c, i) => {
         return {
             ...c,

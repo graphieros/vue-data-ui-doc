@@ -3673,8 +3673,207 @@ export default function useExamples() {
         }
     })
 
+    // CHORD
+
+    const DATASET_CHORD_BASIC = ref({
+        matrix: [
+            //        DEU  JPN  GBR  FRA  IND  CHN
+            /* DEU */ [   0,  90, 100, 120,  60, 140 ],
+            /* JPN */ [ 110,   0,  70,  80,  40, 160 ],
+            /* GBR */ [  80,  70,   0,  70,  30,  90 ],
+            /* FRA */ [ 120,  50,  70,   0,  40, 100 ],
+            /* IND */ [  60,  40,  30,  40,   0,  70 ],
+            /* CHN */ [ 150, 200, 100, 120,  80,   0 ],
+          ],
+          labels: ['Germany', 'Japan', 'United Kingdom', 'France', 'India', 'China'],
+        colors: [
+            '#FFCE00', // Germany (gold)
+            '#f7a1ec', // Japan (red disc)
+            '#5c23cf', // United Kingdom (navy blue)
+            '#3477eb', // France (blue)
+            '#FF9933',  // India (saffron)
+            '#eb4034', // China (red)
+          ]
+      })
+
+    
+
+    const CONFIG_CHORD_BASE = computed(() => {
+        return {
+            table: {
+                th: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor
+                },
+                td: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor
+                }
+            },
+            style: {
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    legend: {
+                        backgroundColor: colors.value.bg,
+                        color: colors.value.textColor
+                    },
+                    arcs: {
+                        stroke: colors.value.bg,
+                        labels: {
+                            color: colors.value.textColor
+                        }
+                    },
+                    ribbons: {
+                        stroke: colors.value.bg,
+                        labels: {
+                            color: colors.value.textColor,
+                            connector: {
+                                stroke: colors.value.textColor
+                            },
+                            marker: {
+                                stroke: colors.value.bg
+                            }
+                        }
+                    },
+                    title: {
+                        text: 'Export Flows Among Leading Economies',
+                        color: colors.value.textColor,
+                        subtitle: {
+                            text: 'Bilateral export values (in billions USD)',
+                        }
+                    }
+                }
+            }
+        }
+    })
+
     const examples = computed(() => {
         return [
+            // CHORD CLASSIC
+            {
+                dataset: DATASET_CHORD_BASIC.value,
+                config: CONFIG_CHORD_BASE.value,
+                component: 'VueUiChord',
+                icon: 'chartChord',
+                link: 'vue-ui-chord',
+                description: {
+                    en: 'Basic rendering',
+                    fr: 'Rendu de base',
+                    pt: 'Renderização básica',
+                    de: 'Grundlegende Darstellung',
+                    zh: '基本渲染',
+                    jp: '基本的なレンダリング',
+                    es: 'Representación básica',
+                    ko: '기본 렌더링',
+                    ar: 'عرض أساسي'
+                }
+            },
+            // CHORD SPACED
+            {
+                dataset: DATASET_CHORD_BASIC.value,
+                config: {
+                    ...CONFIG_CHORD_BASE.value,
+                    style: {
+                        ...CONFIG_CHORD_BASE.value.style,
+                        chart: {
+                            ...CONFIG_CHORD_BASE.value.style.chart,
+                            arcs: {
+                                ...CONFIG_CHORD_BASE.value.style.chart.arcs,
+                                padAngle: 48
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiChord',
+                icon: 'chartChord',
+                link: 'vue-ui-chord',
+                description: {
+                    en: 'Spaced',
+                    fr: 'Espacé',
+                    pt: 'Espaçado',
+                    de: 'Abstand',
+                    zh: '间距',
+                    jp: '間隔',
+                    es: 'Espaciado',
+                    ko: '간격',
+                    ar: 'متباعد'
+                }
+            },
+            // CHORD DONUT LIKE
+            {
+                dataset: DATASET_CHORD_BASIC.value,
+                config: {
+                    ...CONFIG_CHORD_BASE.value,
+                    style: {
+                        ...CONFIG_CHORD_BASE.value.style,
+                        chart: {
+                            ...CONFIG_CHORD_BASE.value.style.chart,
+                            arcs: {
+                                ...CONFIG_CHORD_BASE.value.style.chart.arcs,
+                                padAngle: 0,
+                                innerRadiusRatio: 0.7
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiChord',
+                icon: 'chartChord',
+                link: 'vue-ui-chord',
+                description: {
+                    en: 'Donut-like',
+                    fr: 'En forme de beignet',
+                    pt: 'Em forma de rosquinha',
+                    de: 'Donut-ähnlich',
+                    zh: '甜甜圈状',
+                    jp: 'ドーナツ状',
+                    es: 'En forma de dona',
+                    ko: '도넛 모양',
+                    ar: 'على شكل دونات'
+                }
+            },
+            // CHORD PATTERNS
+            {
+                dataset: DATASET_CHORD_BASIC.value,
+                config: CONFIG_CHORD_BASE.value,
+                component: 'VueUiChord',
+                icon: 'chartChord',
+                link: 'vue-ui-chord',
+                tags: ['#pattern'],
+                multiPattern: true,
+                description: {
+                    en: "Using a custom pattern",
+                    fr: "Utilisation d'un motif personnalisé",
+                    pt: "Usando um padrão personalizado",
+                    de: "Verwendung eines benutzerdefinierten Musters",
+                    zh: "使用自定义图案",
+                    jp: "カスタムパターンの使用",
+                    es: "Usando un patrón personalizado",
+                    ko: "맞춤형 패턴 사용",
+                    ar: "استخدام نمط مخصص"
+                }
+            },
+            // CHORD BACKGROUND
+            {
+                dataset: DATASET_CHORD_BASIC.value,
+                config: CONFIG_CHORD_BASE.value,
+                component: 'VueUiChord',
+                icon: 'chartChord',
+                link: 'vue-ui-chord',
+                chartBackground: true,
+                tags: ['#chart-background'],
+                description: {
+                    en: "With a custom background",
+                    fr: "Avec un arrière-plan personnalisé",
+                    pt: "Com um fundo personalizado",
+                    de: "Mit einem benutzerdefinierten Hintergrund",
+                    zh: "带有自定义背景",
+                    jp: "カスタム背景付き",
+                    es: "Con un fondo personalizado",
+                    ko: "사용자 정의 배경과 함께",
+                    ar: "مع خلفية مخصصة"
+                }
+            },
             // RIDGELINE CLASSIC
             {
                 dataset: DATASET_RIDGELINE.value,

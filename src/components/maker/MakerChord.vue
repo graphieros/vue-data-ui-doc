@@ -135,7 +135,7 @@ function addDatasetItem() {
 <template>
     <div>
         <ClearStorageAndRefresh keyConfig="chordConfig" keyDataset="chordDataset" :key="`clear_${clearStep}`"/>
-        <BaseDocExampleLink link="vue-ui-chord" :example="false" componentName="VueUiChord"/>
+        <BaseDocExampleLink link="vue-ui-chord" componentName="VueUiChord"/>
 
         <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
             <Transition name="fade">
