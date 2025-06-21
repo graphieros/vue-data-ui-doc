@@ -54,6 +54,186 @@ export default function useExamples() {
     })
 
     //-------------- VUE-UI-RIDGELINE --------------//
+
+    let raf_ridgline = ref(null);
+    let to_ridgeline = ref(null);
+
+    const YOINK = ref([
+        {
+            name: "Moscow",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [-7, -6, 0, 8, 15, 18, 20, 18, 13, 7, 1, -4],
+                },
+            ],
+        },
+        {
+            name: "Chicago",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [-4, -2, 3, 10, 16, 22, 24, 23, 19, 12, 5, -1],
+                },
+            ],
+        },
+        {
+            name: "Toronto",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [-3, -2, 2, 9, 15, 20, 22, 21, 17, 10, 4, -1],
+                },
+            ],
+        },
+        {
+            name: "Berlin",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [0, 2, 6, 12, 16, 19, 21, 21, 17, 12, 7, 3],
+                },
+            ],
+        }, 
+        {
+            name: "Beijing",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [-3, 0, 6, 14, 20, 24, 26, 25, 20, 13, 5, -1],
+                },
+            ],
+        },
+        {
+            name: "London",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [5, 6, 8, 11, 15, 18, 20, 20, 17, 13, 9, 6],
+                },
+            ],
+        },
+        {
+            name: "Paris",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [5, 6, 9, 12, 16, 19, 21, 21, 18, 13, 8, 5],
+                },
+            ],
+        }, 
+        {
+            name: "San Francisco",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [11, 12, 13, 13, 14, 15, 15, 16, 17, 16, 14, 12],
+                },
+            ],
+        },
+        {
+            name: "New York",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [0, 2, 7, 13, 18, 24, 27, 26, 22, 15, 9, 3],
+                },
+            ],
+        },
+        {
+            name: "Milan",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [3, 5, 9, 14, 18, 22, 24, 24, 20, 15, 8, 4],
+                },
+            ],
+        },
+        {
+            name: "Madrid",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [6, 8, 11, 13, 17, 22, 26, 25, 21, 15, 10, 7],
+                },
+            ],
+        },
+        {
+            name: "Rome",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [8, 9, 11, 14, 18, 22, 25, 25, 22, 17, 12, 9],
+                },
+            ],
+        },
+        {
+            name: "Seoul",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [-2, 0, 5, 12, 17, 21, 25, 26, 21, 15, 7, 1],
+                },
+            ],
+        },
+        {
+            name: "Tokyo",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [5, 6, 9, 15, 19, 22, 26, 27, 24, 18, 13, 8],
+                },
+            ],
+        },
+        {
+            name: "Los Angeles",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [14, 15, 15, 17, 18, 20, 22, 22, 22, 19, 16, 13],
+                },
+            ],
+        }, 
+        {
+            name: "Istanbul",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [6, 6, 8, 12, 16, 21, 23, 23, 20, 16, 12, 8],
+                },
+            ],
+        },
+        {
+            name: "Mexico City",
+            datapoints: [
+                {
+                    name: "Average sismic activity",
+                    values: [13, 14, 15, 16, 16, 16, 15, 15, 15, 14, 13, 13],
+                },
+            ],
+        },
+    ]);
+
+    const DATASET_RIDGELINE_LIVE_DATA = computed(() => {
+        function anim() {
+            const seed = Math.random();
+
+            YOINK.value.forEach(ds => {
+                ds.datapoints[0].values.shift()
+                ds.datapoints[0].values.push(20 + Math.random() * seed * 50)
+            })
+
+            to_ridgeline.value = setTimeout(() => {
+                raf.value = requestAnimationFrame(anim);
+            }, 250)
+        }
+
+        anim();
+
+        return YOINK.value;
+
+    })
+
     const DATASET_RIDGELINE = ref([
         {
             name: "Moscow",
@@ -605,7 +785,7 @@ export default function useExamples() {
             ds2.push(Math.random() * 60)
             to.value = setTimeout(() => {
                 raf.value = requestAnimationFrame(anim)
-            }, 300)
+            }, 250)
         }
 
         anim()
@@ -3941,6 +4121,46 @@ export default function useExamples() {
                     es: 'Filas condensadas',
                     ko: '압축된 행',
                     ar: 'صفوف مكثفة'
+                }
+            },
+            // RIDGELINE CLASSIC
+            {
+                dataset: DATASET_RIDGELINE_LIVE_DATA.value,
+                config: {
+                    ...CONFIG_RIDGELINE_BASIC.value,
+                    style: {
+                        ...CONFIG_RIDGELINE_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_RIDGELINE_BASIC.value.style.chart,
+                            areas: {
+                                ...CONFIG_RIDGELINE_BASIC.value.style.chart.areas,
+                                rowHeight: 20,
+                                height: 100
+                            },
+                            title: {
+                                ...CONFIG_RIDGELINE_BASIC.value.style.chart.title,
+                                text: 'Sismic acitivity',
+                                subtitle: {
+                                    ...CONFIG_RIDGELINE_BASIC.value.style.chart.title.subtitle,
+                                    text: ''
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiRidgeline',
+                icon: 'chartRidgeline',
+                link: 'vue-ui-ridgeline',
+                description: {
+                    en: "Frequent data update",
+                    fr: "Mise à jour fréquente des données",
+                    pt: "Atualização frequente de dados",
+                    de: "Häufige Datenaktualisierung",
+                    zh: "频繁的数据更新",
+                    jp: "頻繁なデータ更新",
+                    es: "Actualización frecuente de datos",
+                    ko: "빈번한 데이터 업데이트",
+                    ar: "تحديث متكرر للبيانات"
                 }
             },
             // WORLD GLOBE

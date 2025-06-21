@@ -437,6 +437,7 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="initialRotation" attr="initialRotation" defaultVal="0" :min="0" :max="360" type="number" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseDetails attr="style" :level="1">
             <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
             <BaseDetails attr="chart" :level="2" title="style.chart">
