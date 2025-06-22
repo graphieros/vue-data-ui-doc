@@ -32,6 +32,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.arcs.labels.adaptColorToBackground', def: true, type: 'checkbox', label: ['label', 'color', 'is', 'auto'], category: 'arcs'},
                     { key: 'style.chart.arcs.labels.color', def: '#1A1A1A', type: 'color', label: ['label', 'is', 'default color'], category: 'arcs'},
                     { key: 'style.chart.arcs.labels.offset', def: 0, type: 'number', min: -100, max: 100, label: ['label', 'is', 'offset'], category: 'arcs'},
+                    { key: 'style.chart.arcs.labels.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'arcs'},
+                    { key: 'style.chart.arcs.labels.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'arcs'},
 
                     { key: 'style.chart.ribbons.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'ribbons'},
                     { key: 'style.chart.ribbons.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'ribbons'},
