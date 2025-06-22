@@ -700,10 +700,10 @@ const config = ref({
         gap: 0,
         borderRadius: 1,
         left: {
-          color: "#ff6400"
+          color: "#ff7f0e"
         },
         right: {
-          color: "#5f8bee"
+          color: "#1f77b4"
         },
         gradient: {
           show: true,
@@ -850,10 +850,10 @@ const darkModeConfig = ref({
         gap: 0,
         borderRadius: 1,
         left: {
-          color: "#ff6400"
+          color: "#ff7f0e"
         },
         right: {
-          color: "#5f8bee"
+          color: "#1f77b4"
         },
         gradient: {
           show: true,

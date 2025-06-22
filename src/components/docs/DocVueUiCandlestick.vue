@@ -118,8 +118,8 @@ const config = ref({
         stroke: "#1A1A1A",
         strokeWidth: 0.5,
         colors: {
-          bearish: "#ff6400",
-          bullish: "#42d392"
+          bearish: "#d62728",
+          bullish: "#2ca02c"
         },
         gradient: {
           show: true,
@@ -287,8 +287,8 @@ const darkModeConfig = ref({
         stroke: "#2D353C",
         strokeWidth: 0.5,
         colors: {
-          bearish: "#ff6400",
-          bullish: "#42d392"
+          bearish: "#d62728",
+          bullish: "#2ca02c"
         },
         gradient: {
           show: true,

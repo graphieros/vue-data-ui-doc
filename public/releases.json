@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.12.2",
+    "date": "2025-06-22",
+    "updates": [
+      {
+        "component": "VueUiChord",
+        "description": "Add optional group percentage display",
+        "link": "/docs#vue-ui-chord"
+      }
+    ]
+  },
+  {
     "version": "v 2.12.1",
     "date": "2025-06-21",
     "updates": [

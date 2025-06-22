@@ -138,8 +138,8 @@ const config = ref({
                 },
             },
             arcs: {
-                innerRadiusRatio: 1,
-                outerRadiusRatio: 1,
+                innerRadiusRatio: 0.8,
+                outerRadiusRatio: 0.8,
                 padAngle: 5,
                 stroke: "#F3F4F6",
                 strokeWidth: 1,
@@ -151,6 +151,8 @@ const config = ref({
                     adaptColorToBackground: true,
                     color: "#1A1A1A",
                     offset: 0,
+                    showPercentage: true,
+                    roundingPercentage: 0
                 },
             },
             ribbons: {
@@ -266,8 +268,8 @@ const darkModeConfig = ref({
                 },
             },
             arcs: {
-                innerRadiusRatio: 1,
-                outerRadiusRatio: 1,
+                innerRadiusRatio: 0.8,
+                outerRadiusRatio: 0.8,
                 padAngle: 5,
                 stroke: "#1A1A1A",
                 strokeWidth: 1,
@@ -279,6 +281,8 @@ const darkModeConfig = ref({
                     adaptColorToBackground: true,
                     color: "#CCCCCC",
                     offset: 0,
+                    showPercentage: true,
+                    roundingPercentage: 0
                 },
             },
             ribbons: {
@@ -457,6 +461,8 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
                         <BaseAttr name="adaptColorToBackground" attr="style.chart.arcs.labels.adaptColorToBackground" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="color" attr="style.chart.arcs.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="offset" attr="style.chart.arcs.labels.offset" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="showPercentage" attr="style.chart.arcs.labels.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="roundingPercentage" attr="style.chart.arcs.labels.roundingPercentage" type="number" :min="0" :max="6" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="ribbons" :level="3" title="style.chart.ribbons">
