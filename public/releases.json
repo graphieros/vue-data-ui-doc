@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.12.3",
+    "date": "2025-06-23",
+    "updates": [
+      {
+        "component": "",
+        "description": "Technical release",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.12.2",
     "date": "2025-06-22",
     "updates": [

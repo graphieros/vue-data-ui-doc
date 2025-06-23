@@ -2399,6 +2399,24 @@ export default function useAttrMapping(attr) {
             es: "círculo interior",
             ar: "الدائرة الداخلية",
         },
+        innerRadiusRatio: {
+            fr: "Ratio du rayon intérieur par rapport au rayon extérieur, contrôlant l’épaisseur des rubans.",
+            pt: "Razão do raio interno em relação ao raio externo, controlando a espessura das fitas.",
+            de: "Verhältnis des inneren Radius zum äußeren Radius, das die Dicke der Bänder steuert.",
+            zh: "内部半径相对于外部半径的比例，用于控制带状区域的厚度。",
+            jp: "内半径を外半径に対する比率で定義し、リボンの厚みを調整します。",
+            es: "Proporción del radio interno con respecto al radio externo, controlando el grosor de las cintas.",
+            ar: "نسبة نصف القطر الداخلي إلى نصف القطر الخارجي، للتحكم في سمك الأشرطة."
+        },
+        outerRadiusRatio: {
+            fr: "Ratio du rayon extérieur par rapport à la taille globale du graphique, définissant la dimension externe du diagramme.",
+            pt: "Razão do raio externo em relação ao tamanho total do gráfico, definindo o tamanho externo do diagrama.",
+            de: "Verhältnis des äußeren Radius zur Gesamtgröße der Grafik, das die äußere Dimension des Diagramms festlegt.",
+            zh: "外部半径相对于图表整体大小的比例，用于定义图表的外部尺寸。",
+            jp: "外半径をチャート全体のサイズに対する比率で定義し、図の外形サイズを決定します。",
+            es: "Proporción del radio externo con respecto al tamaño total de la gráfica, definiendo la dimensión externa del diagrama.",
+            ar: "نسبة نصف القطر الخارجي إلى الحجم الكلي للمخطط، لتحديد البعد الخارجي للرسوم البيانية."
+        },
         display: {
             fr: "affichage",
             pt: "exibição",
