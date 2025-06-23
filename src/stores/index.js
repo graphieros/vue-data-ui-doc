@@ -1864,16 +1864,16 @@ export const useMainStore = defineStore("main", {
                             ar: 'يتم تصوير كل نقطة بيانات كخط يمر عبر سلسلة من المحاور المتوازية، المقابلة لمتغير أو بعد محدد. يسمح هذا الترتيب باستكشاف العلاقات والاتجاهات والاختلافات التي قد تكون محجوبة في البيانات الأولية.'
                         },
                         chord: {
-                            en: "A chord diagram is a circular network chart that uses arcs for each category and ribbons to encode the strength and direction of relationships between them—ideal for revealing patterns of flow or connectivity in complex matrix or network data.",
-                            fr: "Un diagramme en cordes est un graphique de réseau circulaire qui utilise des arcs pour chaque catégorie et des rubans pour coder la force et la direction des relations entre elles — idéal pour révéler les schémas de flux ou de connectivité dans des ensembles de données matricielles ou de réseaux complexes.",
-                            pt: "Um diagrama de cordas é um gráfico de rede circular que usa arcos para cada categoria e fitas para codificar a intensidade e a direção dos relacionamentos entre elas — ideal para revelar padrões de fluxo ou conectividade em dados matriciais ou de rede complexos.",
-                            de: "Ein Chord-Diagramm ist ein kreisförmiges Netzdiagramm, das Bögen für jede Kategorie und Bänder verwendet, um die Stärke und Richtung der Beziehungen zwischen ihnen zu kodieren – ideal, um Fluss- oder Konnektivitätsmuster in komplexen Matrix- oder Netzwerkdaten aufzuzeigen.",
-                            zh: "弦图是一种圆形网络图，它使用每个类别的弧线和带状图来编码它们之间关系的强度和方向——非常适合在复杂的矩阵或网络数据中揭示流动或连接模式。",
-                            jp: "コードダイアグラムは、各カテゴリに対応する弧とリボンを使用して、それらの間の関係の強度と方向を表現する円形のネットワークチャートであり、複雑な行列やネットワークデータにおけるフローや接続性のパターンを明らかにするのに最適です。",
-                            es: "Un diagrama de acordes es un gráfico de red circular que utiliza arcos para cada categoría y cintas para codificar la intensidad y la dirección de las relaciones entre ellas, siendo ideal para revelar patrones de flujo o conectividad en datos de matriz o red complejos.",
-                            ko: "코드 다이어그램은 각 범주에 대해 호와 리본을 사용하여 이들 간 관계의 강도와 방향을 인코딩하는 원형 네트워크 차트로, 복잡한 행렬 또는 네트워크 데이터에서 흐름 또는 연결 패턴을 밝혀내기에 적합합니다.",
-                            ar: "مخطط الأوتار هو مخطط شبكي دائري يستخدم أقواساً لكل فئة وأشرطة لتشفير قوة واتجاه العلاقات بينها، مما يجعله مثالياً لكشف أنماط التدفق أو الاتصال في بيانات المصفوفة أو الشبكة المعقدة."
-                          },
+                            en: "Reveal patterns of flow or connectivity in complex matrix or network data with a circular chart that uses arcs for each category and ribbons to encode the strength and direction of relationships between them.",
+                            fr: "Révéler les schémas de flux ou de connectivité dans des données matricielles ou en réseau complexes à l'aide d'un graphique circulaire utilisant des arcs pour chaque catégorie et des rubans pour coder la force et la direction des relations entre elles.",
+                            pt: "Revelar padrões de fluxo ou conectividade em dados matriciais ou de rede complexos com um gráfico circular que usa arcos para cada categoria e fitas para codificar a força e a direção dos relacionamentos entre elas.",
+                            de: "Zeigt Fluss- oder Konnektivitätsmuster in komplexen Matrix- oder Netzwerkdaten mithilfe eines Kreisdiagramms, das Bögen für jede Kategorie und Bänder verwendet, um die Stärke und Richtung der Beziehungen zwischen ihnen zu kodieren.",
+                            zh: "通过使用圆形图表来揭示复杂矩阵或网络数据中的流动或连接模式，该图表为每个类别使用弧，并使用带状图编码它们之间关系的强度和方向。",
+                            jp: "複雑な行列やネットワークデータにおけるフローや接続性のパターンを、各カテゴリのアークと関係の強さと方向を表すリボンを用いた円形チャートで明らかにします。",
+                            es: "Revelar patrones de flujo o conectividad en datos de matriz o red complejos con un gráfico circular que utiliza arcos para cada categoría y cintas para codificar la fuerza y la dirección de las relaciones entre ellas.",
+                            ko: "원형 차트를 사용하여 복잡한 행렬 또는 네트워크 데이터에서 각 범주에 대한 호와 관계의 강도 및 방향을 인코딩하는 리본을 통해 흐름 또는 연결 패턴을 드러냅니다.",
+                            ar: "كشف أنماط التدفق أو الترابط في بيانات المصفوفة أو الشبكة المعقدة باستخدام مخطط دائري يستخدم أقواسًا لكل فئة وأشرطة لتشفير قوة واتجاه العلاقات بينها."
+                        },
                         flow: {
                             en: "Classic Sankey diagram in which the width of the links is proportional to the flow depicted,used in particular to visualize process energy flows.",
                             fr: "Diagramme de Sankey classique dans lequel la largeur des liens est proportionnelle au flux représenté, utilisé notamment pour visualiser les flux d'énergie des procédés.",
