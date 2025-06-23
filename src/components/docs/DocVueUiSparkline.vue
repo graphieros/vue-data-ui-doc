@@ -120,13 +120,13 @@ const darkModeConfig = ref({
   style: {
     backgroundColor: "#FFFFFF05",
     fontFamily: "inherit",
-    chartWidth: 290,
+    chartWidth: 400,
     scaleMin: null,
     scaleMax: null,
     padding: {
-      top: 12,
+      top: 0,
       right: 0,
-      bottom: 3,
+      bottom: 20,
       left: 0
     },
     animation: {
@@ -134,13 +134,13 @@ const darkModeConfig = ref({
       animationFrames: 360,
     },
     line: {
-      color: "#5f8bee",
+      color: "#1f77b4",
       strokeWidth: 3,
       smooth: true,
     },
     bar: {
       borderRadius: 3,
-      color: "#5f8bee",
+      color: "#1f77b4",
     },
     zeroLine: {
       color: "#505050",
@@ -155,7 +155,7 @@ const darkModeConfig = ref({
     verticalIndicator: {
       show: true,
       strokeWidth: 1.5,
-      color: "#5f8bee",
+      color: "#1f77b4",
       strokeDasharray: 3
     },
     dataLabel: {
@@ -194,7 +194,7 @@ const darkModeConfig = ref({
       show: true,
       useGradient: true,
       opacity: 30,
-      color: "#5f8bee"
+      color: "#1f77b4"
     }
   }
 });
@@ -205,15 +205,15 @@ const config = ref({
         threshold: 500
     },
   style: {
-    backgroundColor: "#e1e5e8",
+    backgroundColor: "#FAFAFA",
     fontFamily: "inherit",
-    chartWidth: 290,
+    chartWidth: 400,
     scaleMin: null,
     scaleMax: null,
     padding: {
-      top: 12,
+      top: 0,
       right: 0,
-      bottom: 3,
+      bottom: 12,
       left: 0
     },
     animation: {
@@ -221,13 +221,13 @@ const config = ref({
       animationFrames: 360
     },
     line: {
-      color: "#5f8bee",
+      color: "#1f77b4",
       strokeWidth: 3,
       smooth: true
     },
     bar: {
       borderRadius: 3,
-      color: "#5f8bee",
+      color: "#1f77b4",
     },
     zeroLine: {
       color: "#505050",
@@ -242,7 +242,7 @@ const config = ref({
     verticalIndicator: {
       show: true,
       strokeWidth: 1.5,
-      color: "#5f8bee",
+      color: "#1f77b4",
       strokeDasharray: 3
     },
     dataLabel: {
@@ -281,7 +281,7 @@ const config = ref({
       show: true,
       useGradient: true,
       opacity: 30,
-      color: "#5f8bee"
+      color: "#1f77b4"
     }
   }
 });
