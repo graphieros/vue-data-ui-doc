@@ -48,6 +48,10 @@ const CONFIG_CATEGORIES = computed(() => {
             title: makerTranslations.value.categories.labels[store.lang]
         },
         {
+            key: 'dialog',
+            title: makerTranslations.value.categories.modalDialog[store.lang]
+        },
+        {
             key: 'title',
             title: makerTranslations.value.categories.title[store.lang]
         },

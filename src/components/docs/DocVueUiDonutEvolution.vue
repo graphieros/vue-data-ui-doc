@@ -63,13 +63,55 @@ const config = ref({
         chart: {
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
+            dialog: {
+                show: true,
+                backgroundColor: "#FFFFFF",
+                color: '#1A1A1A',
+                header: {
+                    backgroundColor: "#FFFFFF",
+                    color: '#1A1A1A',
+                },
+                donutChart: {
+                    style: {
+                        chart: {
+                            backgroundColor: '#FFFFFF',
+                            color: '#1A1A1A',
+                            legend: {
+                                backgroundColor: '#FFFFFF',
+                                color: '#1A1A1A',
+                            },
+                            layout: {
+                                labels: {
+                                    percentage: {
+                                        color: '#1A1A1A'
+                                    },
+                                    name: {
+                                        color: '#1A1A1A'
+                                    },
+                                    hollow: {
+                                        average: {
+                                            color: '#1A1A1A',
+                                            value: {
+                                                color: '#1A1A1A',
+                                            }
+                                        },
+                                        total: {
+                                            color: '#1A1A1A',
+                                            value: {
+                                                color: '#1A1A1A',
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             donuts: {
                 hover: {
                     hideLabelsUnderValue: 5
                 },
-                zoom: {
-                    hideLabelsUnderValue: 3
-                }
             },
             zoom: {
                 show: true,
@@ -220,13 +262,55 @@ const darkModeConfig = ref({
         chart: {
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
+            dialog: {
+                show: true,
+                backgroundColor: "#2A2A2A",
+                color: '#CCCCCC',
+                header: {
+                    backgroundColor: "#2A2A2A",
+                    color: '#CCCCCC',
+                },
+                donutChart: {
+                    style: {
+                        chart: {
+                            backgroundColor: '#2A2A2A',
+                            color: '#CCCCCC',
+                            legend: {
+                                backgroundColor: '#2A2A2A',
+                                color: '#CCCCCC',
+                            },
+                            layout: {
+                                labels: {
+                                    percentage: {
+                                        color: '#CCCCCC'
+                                    },
+                                    name: {
+                                        color: '#CCCCCC'
+                                    },
+                                    hollow: {
+                                        average: {
+                                            color: '#CCCCCC',
+                                            value: {
+                                                color: '#CCCCCC',
+                                            }
+                                        },
+                                        total: {
+                                            color: '#CCCCCC',
+                                            value: {
+                                                color: '#CCCCCC',
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             donuts: {
                 hover: {
                     hideLabelsUnderValue: 5
                 },
-                zoom: {
-                    hideLabelsUnderValue: 3
-                }
             },
             zoom: {
                 show: true,
@@ -517,8 +601,19 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
                     <BaseDetails attr="hover" :level="4" title="style.chart.donuts.hover">
                         <BaseAttr name="hideLabelsUnderValue" attr="style.chart.donuts.hover.hideLabelUnderValue" type="number" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     </BaseDetails>
-                    <BaseDetails attr="zoom" :level="4" title="style.chart.donuts.zoom">
-                        <BaseAttr name="hideLabelsUnderValue" attr="style.chart.donuts.zoom.hideLabelUnderValue" type="number" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                </BaseDetails>
+                <BaseDetails attr="dialog" :level="3" title="style.chart.dialog">
+                    <BaseAttr name="show" attr="style.chart.dialog.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="backgroundColor" attr="style.chart.dialog.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.chart.dialog.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseDetails attr="header" :level="4" title="style.chart.dialog.header">
+                        <BaseAttr name="backgroundColor" attr="style.chart.dialog.header.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.chart.dialog.header.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="donutChart" :level="4" title="style.chart.dialog.donutChart">
+                        <BaseComment class="hover:underline">
+                            <RouterLink to="/docs#vue-ui-donut">{{ translations.checkVueUiXyConfig[store.lang].replaceAll('VueUiXy', 'VueUiDonut') }}</RouterLink>
+                        </BaseComment>
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">

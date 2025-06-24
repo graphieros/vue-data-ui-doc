@@ -3368,7 +3368,26 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.td.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'table' },
                     { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'table' },
                     { key: 'table.columnNames.period', def: 'Period', type: 'text', label: 'columnNamePeriod', category: 'table' },
-                    { key: 'table.columnNames.total', def: 'Total', type: 'text', label: 'columnNameTotal', category: 'table' }
+                    { key: 'table.columnNames.total', def: 'Total', type: 'text', label: 'columnNameTotal', category: 'table' },
+
+                    { key: 'style.chart.dialog.show', def: true, type: 'checkbox', label: 'show', category: 'dialog'},
+                    { key: 'style.chart.dialog.backgroundColor', def: '#FFFFFF', type:'color', label: 'backgroundColor', category: 'dialog'},
+                    { key: 'style.chart.dialog.color', def: '#1A1A1A', type:'color', label: 'textColor', category: 'dialog'},
+                    { key: 'style.chart.dialog.header.backgroundColor', def: '#E1E5E8', type: 'color', label: ['header', 'is', 'backgroundColor'], category: 'dialog'},
+                    { key: 'style.chart.dialog.header.color', def: '#1A1A1A', type: 'color', label: ['header', 'is', 'textColor'], category: 'dialog'},
+
+                    //----------------------------------------------- EMBEDDED DONUT START -------------------------------------------------
+                    { key: 'style.chart.dialog.donutChart.style.chart.background', def: '#FFFFFF', type: 'color', label: ['donut chart', 'is', 'backgroundColor'], category: 'dialog'},
+                    { key: 'style.chart.dialog.donutChart.style.chart.color', def: '#1A1A1A', type: 'color', label: ['donut chart', 'is', 'textColor'], category: 'dialog'},
+                    { key: 'style.chart.dialog.donutChart.style.chart.legend.backgroundColor', type: 'color', def: '#FFFFFF', label: ['donut chart', 'legend', 'is', 'backgroundColor'], category: 'dialog'},
+                    { key: 'style.chart.dialog.donutChart.style.chart.legend.color', type: 'color', def: '#1A1A1A', label: ['donut chart', 'legend', 'is', 'textColor'], category: 'dialog'},
+                    { key: 'style.chart.dialog.donutChart.style.chart.layout.labels.percentage.color', type: 'color', def: '#1A1A1A', label: ['donut chart', 'label', 'percentage', 'is', 'textColor'], category: 'dialog'},
+                    { key: 'style.chart.dialog.donutChart.style.chart.layout.labels.name.color', type: 'color', def: '#1A1A1A', label: ['donut chart', 'label', 'name', 'is', 'textColor'], category: 'dialog'},
+                    { key: 'style.chart.dialog.donutChart.style.chart.layout.labels.hollow.average.color', type: 'color', def: '#1A1A1A', label: ['donut chart', 'hollow', 'average', 'name', 'is', 'textColor'], category: 'dialog'},
+                    { key: 'style.chart.dialog.donutChart.style.chart.layout.labels.hollow.average.value.color', type: 'color', def: '#1A1A1A', label: ['donut chart', 'hollow', 'average', 'value', 'is', 'textColor'], category: 'dialog'},
+                    { key: 'style.chart.dialog.donutChart.style.chart.layout.labels.hollow.total.color', type: 'color', def: '#1A1A1A', label: ['dialog chart', 'hollow', 'total', 'name', 'is', 'textColor'], category: 'dialog'},
+                    { key: 'style.chart.dialog.donutChart.style.chart.layout.labels.hollow.total.value.color', type:'color', def: '#1A1A1A', label: ['donut chart', 'hollow', 'total', 'value', 'is', 'textColor'], category: 'dialog'}
+                    
                 ]
             },
             vue_ui_rings: {

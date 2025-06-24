@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.12.4",
+    "date": "2025-06-24",
+    "updates": [
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Use VueUiDonut in a dialog when selecting a datapoint",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
+  {
     "version": "v 2.12.3",
     "date": "2025-06-23",
     "updates": [
