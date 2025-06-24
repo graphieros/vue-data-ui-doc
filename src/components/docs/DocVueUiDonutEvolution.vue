@@ -80,6 +80,23 @@ const config = ref({
                                 backgroundColor: '#FFFFFF',
                                 color: '#1A1A1A',
                             },
+                            tooltip: {
+                                show: true,
+                                color: "#1A1A1A",
+                                backgroundColor: "#F3F4F6",
+                                fontSize: 14,
+                                showValue: true,
+                                showPercentage: true,
+                                roundingValue: 0,
+                                roundingPercentage: 0,
+                                customFormat: null,
+                                borderRadius: 4,
+                                borderColor:"#e1e5e8",
+                                borderWidth: 1,
+                                backgroundOpacity: 30,
+                                position: "center",
+                                offsetY: 24
+                            },
                             layout: {
                                 labels: {
                                     percentage: {
@@ -278,6 +295,23 @@ const darkModeConfig = ref({
                             legend: {
                                 backgroundColor: '#2A2A2A',
                                 color: '#CCCCCC',
+                            },
+                            tooltip: {
+                                show: true,
+                                color: "#CCCCCC",
+                                backgroundColor: "#1A1A1A",
+                                fontSize: 14,
+                                showValue: true,
+                                showPercentage: true,
+                                roundingValue: 0,
+                                roundingPercentage: 0,
+                                customFormat: null,
+                                borderRadius: 4,
+                                borderColor:"#3A3A3A",
+                                borderWidth: 1,
+                                backgroundOpacity: 30,
+                                position: "center",
+                                offsetY: 24
                             },
                             layout: {
                                 labels: {
