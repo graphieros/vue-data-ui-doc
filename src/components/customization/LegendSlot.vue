@@ -2,6 +2,8 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
+import ComponentsTable from "../docs/ComponentsTable.vue";
+import { CheckIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -9,29 +11,6 @@ const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => {
     return store.translations;
 })
-
-const allowedComponents = ref([
-    { name: "VueUiAgePyramid", icon: 'chartAgePyramid', link: '/docs#vue-ui-age-pyramid' },
-    { name: "VueUiCandlestick", icon: 'chartCandlestick', link: '/docs#vue-ui-candlestick' },
-    { name: "VueUiChestnut", icon: 'chartChestnut', link: '/docs#vue-ui-chestnut' },
-    { name: "VueUiDonut", icon: 'chartDonut', link: '/docs#vue-ui-donut' },
-    { name: "VueUiDonutEvolution", icon: 'chartDonutEvolution', link: '/docs#vue-ui-donut-evolution' },
-    { name: "VueUiDumbbell", icon: 'chartDumbbell', link: '/docs#vue-ui-dumbbell' },
-    { name: "VueUiGauge", icon: 'chartGauge', link: '/docs#vue-ui-gauge' },
-    { name: "VueUiMoodRadar", icon: 'chartMoodRadar', link: '/docs#vue-ui-mood-radar' },
-    { name: "VueUiNestedDonuts", icon: 'chartNestedDonuts', link: '/docs#vue-ui-nested-donuts' },
-    { name: "VueUiOnion", icon: 'chartOnion', link: '/docs#vue-ui-onion' },
-    { name: "VueUiParallelCoordinatePlot", icon: "chartParallelCoordinatePlot", link: '/docs#vue-ui-parallel-coordinate-plot' },
-    { name: "VueUiQuadrant", icon: 'chartQuadrant', link: '/docs#vue-ui-quadrant' },
-    { name: "VueUiQuickChart", icon: 'vueDataUi', link: '/docs#vue-ui-quick-chart' },
-    { name: "VueUiRadar", icon: 'chartRadar', link: '/docs#vue-ui-radar' },
-    { name: "VueUiRings", icon: 'chartRings', link: '/docs#vue-ui-rings' },
-    { name: "VueUiScatter", icon: 'chartScatter', link: '/docs#vue-ui-scatter' },
-    { name: "VueUiVerticalBar", icon: 'chartBar', link: '/docs#vue-ui-vertical-bar' },
-    { name: "VueUiWaffle", icon: 'chartWaffle', link: '/docs#vue-ui-waffle' },
-    { name: 'VueUiXy', icon: 'chartLine', link: '/docs#vue-ui-xy' },
-    { name: 'VueUiXyCanvas', icon: 'chartLine', link: '/docs#vue-ui-xy-canvas' },
-])
 
 function makeDs({n, m, type, name, smooth=false}) {
     let series = [];
@@ -177,16 +156,29 @@ const config = computed(() => {
         </template>
 
     </BaseCustomizationBox>
+
     <div class="mx-auto max-w-[1000px]">
-        <p class="my-6" dir="auto">{{ translations.customization.legendAllowed[store.lang] }}</p>
-            <ul>
-                <RouterLink v-for="allowed in allowedComponents" :to="allowed.link">
-                    <li class="flex flex-row gap-2 py-1 px-2 rounded text-xs hover:bg-[#5f8bee20]">
-                        <VueUiIcon :name="allowed.icon" :size="16" :stroke="isDarkMode ? '#5f8bee' : '#3A3A3A'" />
-                        <span>{{ allowed.name }}</span>
-                    </li>
-                </RouterLink>
-            </ul>
+        <p class="my-6 text-center" dir="auto">{{ translations.customization.legendAllowed[store.lang] }}</p>
+        <ComponentsTable :cols="['Component', 'Legend']" class="mx-auto">
+            <template #th="{ col }">
+                {{ col }}
+            </template>
+
+            <template #Component="{ row }">
+                <div class="flex flex-row gap-2 place-items-center">
+                    <VueUiIcon :name="row.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
+                    <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
+                        <span class="text-gray-500">VueUi</span><span>{{ row.name.replaceAll("VueUi", "") }}</span>
+                    </RouterLink>
+                </div>
+            </template>
+
+            <template #Legend="{ row }">
+                <div class="w-full h-full flex justify-center" :style="{ background: row.legend ? '#42d39230' : 'transparent'}">
+                    <CheckIcon v-if="row.legend" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
+                </div>
+            </template>
+        </ComponentsTable>
     </div>
 
 </template>

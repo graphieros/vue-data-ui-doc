@@ -8,6 +8,7 @@ import CodeParser from "./CodeParser.vue";
 import ColorBridgeIcon from "../maker/ColorBridgeIcon.vue";
 import { useFeatures } from "../../useFeatures";
 import { CheckIcon } from "vue-tabler-icons";
+import ComponentsTable from "../docs/ComponentsTable.vue";
 
 const store = useMainStore();
 const translations = computed(() => {
@@ -154,33 +155,26 @@ const description = ref({
             {{ description[store.lang] }}
         </p>
 
-        <table class="table-auto border-collapse border border-slate-500 my-4">
-            <thead>
-                <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
-                    <th />
-                    <th class="border border-slate-600 p-2">Component</th>
-                    <th class="border border-slate-600 p-2">
-                        <code>config.customPalette</code>
-                    </th>
-                </tr>
-            </thead>
+        <ComponentsTable :cols="['Component', 'customPalette']">
+            <template #th="{ col }">
+                {{ col }}
+            </template>
 
-            <tbody>
-                <tr class="bg-[#FFFFFF60] dark:bg-[#FFFFFF10]" v-for="c in components">
-                    <td class="p-2 border border-slate-600">
-                        <div class="flex justify-center">
-                            <VueUiIcon :name="c.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
-                        </div>
-                    </td>
-                    <td class="p-2 border border-slate-600">
-                        <span class="text-gray-500">VueUi</span><span>{{ c.name.replaceAll("VueUi", "") }}</span>
-                    </td>
-                    <td class="p-2 border border-slate-600">
-                        <CheckIcon v-if="c.customPalette" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <template #Component="{ row }">
+                <div class="flex flex-row gap-2 place-items-center">
+                    <VueUiIcon :name="row.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
+                    <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
+                        <span class="text-gray-500">VueUi</span><span>{{ row.name.replaceAll("VueUi", "") }}</span>
+                    </RouterLink>
+                </div>
+            </template>
+
+            <template #customPalette="{ row }">
+                <div class="w-full h-full flex justify-center" :style="{ background: row.customPalette ? '#42d39230' : 'transparent'}">
+                    <CheckIcon v-if="row.customPalette" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
+                </div>
+            </template>
+        </ComponentsTable>
 
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">

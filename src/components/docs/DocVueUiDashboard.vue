@@ -122,7 +122,7 @@ const sparklineConfigUsers = computed(() => {
 
 const dashboardComponents = computed(() => {
     return [
-        { id: 1, width: 50, height: 25, left: 3, top: 2, component: 'VueUiXy', props: { config: xyConfig, dataset: xyDataset}},
+        { id: 1, width: 50, height: 35, left: 3, top: 2, component: 'VueUiXy', props: { config: xyConfig, dataset: xyDataset}},
         { id: 2, width: 35, height: 25, left: 62, top: 2, component: 'VueUiDonut', props: { config: donutConfig, dataset: donutDataset}},
         { id: 3, width: 25, height: 7, left: 12, top: 45, component: markRaw(BaseButtonSparkline), props: {
             title: 'Daily users',

@@ -3,6 +3,8 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
 import CodeParser from "./CodeParser.vue";
+import ComponentsTable from "../docs/ComponentsTable.vue";
+import { CheckIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -535,16 +537,27 @@ const code = ref(`<template>
   <div class="px-4 max-w-[1200px] mx-auto mt-4 mb-8" dir="auto">
     {{ translations.customization.tooltipSlot[store.lang] }}
   </div>
-  <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
-    <ul>
-      <RouterLink v-for="allowed in allowedComponents" :to="allowed.link">
-        <li class="flex flex-row gap-2 py-1 px-2 rounded text-xs hover:bg-[#5f8bee20]">
-          <VueUiIcon :name="allowed.icon" :size="16" :stroke="isDarkMode ? '#5f8bee' : '#3A3A3A'" />
-          <span>{{ allowed.name }}</span>
-        </li>
-      </RouterLink>
-    </ul>
-  </div>
+
+  <ComponentsTable :cols="['Component', 'Tooltip']" class="mx-auto">
+      <template #th="{ col }">
+          {{ col }}
+      </template>
+
+      <template #Component="{ row }">
+          <div class="flex flex-row gap-2 place-items-center">
+              <VueUiIcon :name="row.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
+              <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
+                  <span class="text-gray-500">VueUi</span><span>{{ row.name.replaceAll("VueUi", "") }}</span>
+              </RouterLink>
+          </div>
+      </template>
+
+      <template #Tooltip="{ row }">
+          <div class="w-full h-full flex justify-center" :style="{ background: row.tooltip ? '#42d39230' : 'transparent'}">
+              <CheckIcon v-if="row.tooltip" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
+          </div>
+      </template>
+  </ComponentsTable>
 
   <BaseCustomizationBox>
     <template #code>
