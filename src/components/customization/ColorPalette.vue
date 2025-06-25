@@ -1,41 +1,79 @@
 <script setup>
-import { ref, computed } from "vue";
-import {adaptColorToBackground} from '../maker/lib'
+import { ref, computed, toRef } from "vue";
+import { adaptColorToBackground } from "../maker/lib";
 import { useMainStore } from "../../stores";
 import { getPalette } from "vue-data-ui";
 import ConfirmCopy from "../ConfirmCopy.vue";
 import CodeParser from "./CodeParser.vue";
 import ColorBridgeIcon from "../maker/ColorBridgeIcon.vue";
+import { useFeatures } from "../../useFeatures";
+import { CheckIcon } from "vue-tabler-icons";
 
-const store = useMainStore()
+const store = useMainStore();
 const translations = computed(() => {
     return store.translations;
-})
+});
+
+const { components } = useFeatures();
+
+const isDarkMode = computed(() => store.isDarkMode);
 
 const palette = ref([
-    "#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c",
-    "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5",
-    "#8c564b", "#c49c94", "#e377c2", "#f7b6d2", "#7f7f7f",
-    "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", "#9edae5",
-    "#393b79", "#5254a3", "#6b6ecf", "#9c9ede", "#637939",
-    "#8ca252", "#b5cf6b", "#cedb9c", "#8c6d31", "#bd9e39",
-    "#e7ba52", "#e7cb94", "#843c39", "#ad494a", "#d6616b",
-    "#e7969c", "#7b4173", "#a55194", "#ce6dbd", "#de9ed6"
+    "#1f77b4",
+    "#aec7e8",
+    "#ff7f0e",
+    "#ffbb78",
+    "#2ca02c",
+    "#98df8a",
+    "#d62728",
+    "#ff9896",
+    "#9467bd",
+    "#c5b0d5",
+    "#8c564b",
+    "#c49c94",
+    "#e377c2",
+    "#f7b6d2",
+    "#7f7f7f",
+    "#c7c7c7",
+    "#bcbd22",
+    "#dbdb8d",
+    "#17becf",
+    "#9edae5",
+    "#393b79",
+    "#5254a3",
+    "#6b6ecf",
+    "#9c9ede",
+    "#637939",
+    "#8ca252",
+    "#b5cf6b",
+    "#cedb9c",
+    "#8c6d31",
+    "#bd9e39",
+    "#e7ba52",
+    "#e7cb94",
+    "#843c39",
+    "#ad494a",
+    "#d6616b",
+    "#e7969c",
+    "#7b4173",
+    "#a55194",
+    "#ce6dbd",
+    "#de9ed6",
 ]);
 
 // TODO: THEMES HERE ?
 
 function copyContent(color) {
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
+    let selBox = document.createElement("textarea");
+    selBox.style.position = "fixed";
+    selBox.style.left = "0";
+    selBox.style.top = "0";
+    selBox.style.opacity = "0";
     selBox.value = color;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(selBox);
     store.copy();
 }
@@ -72,7 +110,7 @@ const codeContent = computed(() => {
         import { getPalette } from "vue-data-ui";
         const palette = getPalette('hack');
         `,
-    }
+    };
 });
 
 const colorBridgeDescription = ref({
@@ -84,203 +122,178 @@ const colorBridgeDescription = ref({
     jp: "色は文化によって異なる意味を持つことがあります。文化的な文脈に基づいて地域固有のカラーパレットを生成するツールを作成しました。これにより、データストーリーテリングがさらに適切になります。",
     es: "Los colores pueden tener diferentes significados en algunas culturas. Hemos creado una herramienta para generar paletas de colores específicas por región basadas en contextos culturales, para hacer que tu narración de datos sea aún más relevante.",
     ko: "색상은 일부 문화에서 다른 의미를 가질 수 있습니다. 우리는 문화적 맥락에 따라 지역별 색상 팔레트를 생성하는 도구를 만들어 데이터를 활용한 스토리텔링을 더욱 적합하게 만들었습니다.",
-    ar: "قد تحمل الألوان معاني مختلفة في بعض الثقافات. لقد أنشأنا أداة لتوليد لوحات ألوان مخصصة لكل منطقة بناءً على السياقات الثقافية، لجعل رواية البيانات الخاصة بك أكثر ملاءمة."
-})
+    ar: "قد تحمل الألوان معاني مختلفة في بعض الثقافات. لقد أنشأنا أداة لتوليد لوحات ألوان مخصصة لكل منطقة بناءً على السياقات الثقافية، لجعل رواية البيانات الخاصة بك أكثر ملاءمة.",
+});
 
 const colorBridgeCode = computed(() => {
-  return `import colorBridge from "color-bridge";
+    return `import colorBridge from "color-bridge";
 const { bridge, utils } = colorBridge();
 const { palette, hues } = bridge({ culture: 'western' });
-`
-})
+`;
+});
 
+const description = ref({
+    en: `You can use config.customPalette (string[]]) to use your own color palette. Colors provided in datasets will always override custom and default palettes. Allowed color formats: HEX, RGB, HSL, named colors.
+            The config.customPalette attribute can be used on the following components:`,
+    fr: "Vous pouvez utiliser config.customPalette (string[]) pour définir votre propre palette de couleurs. Les couleurs spécifiées dans les jeux de données auront toujours la priorité sur les palettes personnalisées et par défaut. Formats de couleur acceptés : HEX, RGB, HSL, noms de couleurs. L’attribut config.customPalette peut être utilisé sur les composants suivants :",
+    pt: "Você pode usar config.customPalette (string[]) para definir sua própria paleta de cores. As cores fornecidas nos conjuntos de dados sempre substituirão as paletas personalizadas e padrão. Formatos de cores permitidos: HEX, RGB, HSL, nomes de cores. O atributo config.customPalette pode ser usado nos seguintes componentes:",
+    de: "Sie können config.customPalette (string[]) verwenden, um Ihre eigene Farbpalette festzulegen. Farben, die in den Datensätzen angegeben sind, überschreiben immer benutzerdefinierte und Standardpaletten. Erlaubte Farbformate: HEX, RGB, HSL, Farbnamen. Das Attribut config.customPalette kann in den folgenden Komponenten verwendet werden:",
+    zh: "您可以使用 config.customPalette (string[]) 来设置自定义调色板。数据集内指定的颜色将始终覆盖自定义和默认调色板。允许的颜色格式：HEX、RGB、HSL、命名颜色。config.customPalette 属性可用于以下组件：",
+    jp: "config.customPalette（string[]）を使って独自のカラーパレットを設定できます。データセットで指定された色は、常にカスタムおよびデフォルトのパレットより優先されます。利用可能な色形式：HEX、RGB、HSL、色名。config.customPalette 属性は以下のコンポーネントで使用できます：",
+    es: "Puede usar config.customPalette (string[]) para definir su propia paleta de colores. Los colores proporcionados en los conjuntos de datos siempre tendrán prioridad sobre las paletas personalizadas y predeterminadas. Formatos de color permitidos: HEX, RGB, HSL, nombres de colores. El atributo config.customPalette se puede usar en los siguientes componentes:",
+    ko: "config.customPalette (string[])를 사용하여 나만의 색상 팔레트를 지정할 수 있습니다. 데이터셋에 지정된 색상은 항상 커스텀 및 기본 팔레트보다 우선 적용됩니다. 허용되는 색상 형식: HEX, RGB, HSL, 색상명. config.customPalette 속성은 다음 컴포넌트에서 사용할 수 있습니다:",
+    ar: "يمكنك استخدام config.customPalette (string[]) لتحديد لوحة الألوان الخاصة بك. الألوان المحددة في مجموعات البيانات ستتجاوز دائماً اللوحات المخصصة ولوحات الألوان الافتراضية. صيغ الألوان المسموحة: HEX وRGB وHSL وأسماء الألوان. يمكن استخدام خاصية config.customPalette في المكونات التالية:",
+});
 </script>
 
 <template>
-    <ConfirmCopy/>
-    
+    <ConfirmCopy />
+
     <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
-        <p class="my-6">
-            You can use config.customPalette (string[]]) to use your own color palette. Colors provided in datasets will always override custom and default palettes. Allowed color formats: HEX, RGB, HSL, named colors.
-            The config.customPalette attribute can be used on the following components:
+        <p class="my-6" dir="auto">
+            {{ description[store.lang] }}
         </p>
-        <ul class="grid grid-cols-1 sm:grid-cols-2">
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUi3dBar
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiChestnut
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiDonut
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiDonutEvolution
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiGalaxy
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiGauge
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiMolecule
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiNestedDonuts
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiOnion
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiParallelCoordinatePlot
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiQuadrant
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiQuickChart
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiRadar
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiRelationCircle
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiRings
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiScatter
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiSparkStackbar
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiSparkbar
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiStripPlot
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiTableSparkline
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiThermometer
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiTreemap
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiVerticalBar
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiWaffle
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiWordCloud
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiXy
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiXyCanvas
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiStackbar
-            </li>
-            <li class="flex flex-row gap-2 place-items-center">
-                <VueUiIcon name="circleFill" stroke="#42d392" size="8"/> VueUiFlow
-            </li>
-        </ul>
+
+        <table class="table-auto border-collapse border border-slate-500 my-4">
+            <thead>
+                <tr class="bg-[#FFFFFF80] dark:bg-[#FFFFFF05]">
+                    <th />
+                    <th class="border border-slate-600 p-2">Component</th>
+                    <th class="border border-slate-600 p-2">
+                        <code>config.customPalette</code>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr class="bg-[#FFFFFF60] dark:bg-[#FFFFFF10]" v-for="c in components">
+                    <td class="p-2 border border-slate-600">
+                        <div class="flex justify-center">
+                            <VueUiIcon :name="c.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
+                        </div>
+                    </td>
+                    <td class="p-2 border border-slate-600">
+                        <span class="text-gray-500">VueUi</span><span>{{ c.name.replaceAll("VueUi", "") }}</span>
+                    </td>
+                    <td class="p-2 border border-slate-600">
+                        <CheckIcon v-if="c.customPalette" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.default" language="javascript" @copy="store.copy()"/>
+            <CodeParser :content="codeContent.default" language="javascript" @copy="store.copy()" />
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in palette">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
+            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
+                v-for="(color, i) in palette">
+                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
+                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
+                    @click="() => copyContent(color)">
                     {{ color.toUpperCase() }}
                     <div class="absolute top-0 left-1 text-xs">
                         {{ i }}
                     </div>
-                    <div class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"/>
+                    <div
+                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
                 </div>
             </div>
         </div>
 
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.celebration" language="javascript" @copy="store.copy()"/>
+            <CodeParser :content="codeContent.celebration" language="javascript" @copy="store.copy()" />
         </div>
 
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('celebration')">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
+            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
+                v-for="(color, i) in getPalette('celebration')">
+                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
+                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
+                    @click="() => copyContent(color)">
                     {{ color.toUpperCase() }}
                     <div class="absolute top-0 left-1 text-xs">
                         {{ i }}
                     </div>
-                    <div class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"/>
+                    <div
+                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
                 </div>
             </div>
         </div>
 
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.celebrationNight" language="javascript" @copy="store.copy()"/>
+            <CodeParser :content="codeContent.celebrationNight" language="javascript" @copy="store.copy()" />
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('celebrationNight')">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
+            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
+                v-for="(color, i) in getPalette('celebrationNight')">
+                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
+                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
+                    @click="() => copyContent(color)">
                     {{ color.toUpperCase() }}
                     <div class="absolute top-0 left-1 text-xs">
                         {{ i }}
                     </div>
-                    <div class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"/>
+                    <div
+                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
                 </div>
             </div>
         </div>
 
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.zen" language="javascript" @copy="store.copy()"/>
+            <CodeParser :content="codeContent.zen" language="javascript" @copy="store.copy()" />
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('zen')">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
+            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
+                v-for="(color, i) in getPalette('zen')">
+                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
+                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
+                    @click="() => copyContent(color)">
                     {{ color.toUpperCase() }}
                     <div class="absolute top-0 left-1 text-xs">
                         {{ i }}
                     </div>
-                    <div class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"/>
+                    <div
+                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
                 </div>
             </div>
         </div>
 
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.concrete" language="javascript" @copy="store.copy()"/>
+            <CodeParser :content="codeContent.concrete" language="javascript" @copy="store.copy()" />
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('concrete')">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
+            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
+                v-for="(color, i) in getPalette('concrete')">
+                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
+                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
+                    @click="() => copyContent(color)">
                     {{ color.toUpperCase() }}
                     <div class="absolute top-0 left-1 text-xs">
                         {{ i }}
                     </div>
-                    <div class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"/>
+                    <div
+                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
                 </div>
             </div>
         </div>
 
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-            <CodeParser :content="codeContent.hack" language="javascript" @copy="store.copy()"/>
+            <CodeParser :content="codeContent.hack" language="javascript" @copy="store.copy()" />
         </div>
         <div class="flex flex-row flex-wrap gap-2 justify-center place-items-center">
-            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors" v-for="(color, i) in getPalette('hack')">
-                <div :style="`background:${color};color:${adaptColorToBackground(color)}`" class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center" @click="() => copyContent(color)">
+            <div class="p-1 hover:bg-[#1A1A1A] dark:hover:bg-white rounded-md transition-colors"
+                v-for="(color, i) in getPalette('hack')">
+                <div :style="`background:${color};color:${adaptColorToBackground(color)}`"
+                    class="w-[100px] h-[100px] text-center py-4 rounded shadow text-xs relative cursor-pointer flex place-items-center justify-center"
+                    @click="() => copyContent(color)">
                     {{ color.toUpperCase() }}
                     <div class="absolute top-0 left-1 text-xs">
                         {{ i }}
                     </div>
-                    <div class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]"/>
+                    <div
+                        class="absolute top-2 left-2 h-[84px] w-[84px] rounded bg-gradient-to-br from-transparent to-[#FFFFFF30]" />
                 </div>
             </div>
         </div>
@@ -291,12 +304,14 @@ const { palette, hues } = bridge({ culture: 'western' });
             <div class="flex flex-row justify-center mt-6">
                 <code>npm i color-bridge</code>
             </div>
-            <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
-                <CodeParser :content="colorBridgeCode" language="javascript" @copy="store.copy()"/>
+            <div
+                class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
+                <CodeParser :content="colorBridgeCode" language="javascript" @copy="store.copy()" />
             </div>
             <div class="flex flex-row justify-center mt-6">
-                <button class="py-2 px-5 rounded flex flew-row place-items-center gap-2 bg-gray-200 dark:bg-[#FFFFFF20] shadow-md hover:shadow-lg transition-all">
-                    <ColorBridgeIcon/>
+                <button
+                    class="py-2 px-5 rounded flex flew-row place-items-center gap-2 bg-gray-200 dark:bg-[#FFFFFF20] shadow-md hover:shadow-lg transition-all">
+                    <ColorBridgeIcon />
                     <a href="https://color-bridge.graphieros.com/" target="_blank">
                         Color Bridge docs
                     </a>
