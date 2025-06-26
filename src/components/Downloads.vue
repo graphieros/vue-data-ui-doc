@@ -325,7 +325,7 @@ const datasetCumulativeAverage = computed(() => {
       series: getCumulativeAveragePerDayWithMissingDays(store.downloads.lib).map(d => {
         return d.cumulativeAverage
       }),
-      useTag: 'end',
+      useTag: 'start',
       useArea: true
     }
   ]
@@ -344,7 +344,7 @@ const configCumulativeAverage = computed(() => {
           const { serieName } = config;
           return `
           <div style="display:flex;align-items:center;gap:4px">
-            <span>${value.toFixed(0)}</span>
+            <span style="font-variant-numeric: tabular-nums">${value.toFixed(0)}</span>
           </div>
           `
         }
