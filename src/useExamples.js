@@ -5637,7 +5637,18 @@ export default function useExamples() {
             },
             // DONUT BACKGROUND
             {
-                dataset: DATASET_DONUT_BASIC.value,
+                dataset: DATASET_DONUT_BASIC.value.map((ds,i) => {
+                    return {
+                        ...ds,
+                        color: i === 0
+                            ? '#36206e'
+                            : i === 1
+                            ? '#594087'
+                            : i === 2
+                            ? '#8350a3'
+                            : '#ad66bd'
+                    }
+                }),
                 config: {
                     ...CONFIG_DONUT_BASE.value,
                     style: {
@@ -5652,10 +5663,26 @@ export default function useExamples() {
                                 },
                                 labels: {
                                     ...CONFIG_DONUT_BASE.value.style.chart.layout.labels,
+                                    name: {
+                                        ...CONFIG_DONUT_BASE.value.style.chart.layout.labels.name,
+                                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                                    },
                                     hollow: {
-                                        show: false,
-                                        average: { show: false },
-                                        total: { show: false },
+                                        average: {
+                                            show: false
+                                        },
+                                        total: {
+                                            color: colors.value.textColor,
+                                            fontSize: 0,
+                                            value: {
+                                                color: colors.value.textColor,
+                                                fontSize: 64,
+                                                offsetY: 24
+                                            }
+                                        }
+                                        // show: false,
+                                        // average: { show: false },
+                                        // total: { show: false },
                                     }
                                 }
                             }
