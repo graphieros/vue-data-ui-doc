@@ -411,12 +411,17 @@ const configCumulativeAverage = computed(() => {
       :dataset="datasetCumulativeAverage"
       :config="configCumulativeAverage"
     >
-      <template #pattern="{ patternId }">
-        <VueUiPattern
-            :id="patternId"
-            name="grid"
-            :stroke="isDarkMode ? '#1f77b460' : '#aec7e8'"
-        />
+    <template #pattern="{ patternId }">
+      <VueUiPattern
+      :id="patternId"
+      name="grid"
+      :stroke="isDarkMode ? '#1f77b460' : '#aec7e8'"
+      />
+    </template>
+    <template #source>
+      <div class="text-xs text-gray-500 text-left mt-3 pl-2">
+        Source: api.npmjs.org
+      </div>
     </template>
     </VueDataUi>
   </div>
