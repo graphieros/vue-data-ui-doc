@@ -415,7 +415,7 @@ const configCumulativeAverage = computed(() => {
       <VueUiPattern
       :id="patternId"
       name="grid"
-      :stroke="isDarkMode ? '#1f77b460' : '#aec7e8'"
+      :stroke="isDarkMode ? '#1f77b460' : '#FAFAFA'"
       />
     </template>
     <template #source>

@@ -506,7 +506,14 @@ const hoveredLink = ref(null);
 
                                 <template #pattern="{ seriesIndex, patternId }" v-if="example.pattern">
                                     <Suspense>
-                                        <VueUiPattern name="bubbles" :id="patternId" :stroke="isDarkMode ? '#5A5A5A' : '#CCCCCC'" :scale="1"/>
+                                        <VueUiPattern 
+                                            v-if="['VueUiXy'].includes(example.component)" 
+                                            name="grid" 
+                                            :id="patternId" 
+                                            :stroke="isDarkMode ? '#1f77b460' : '#FAFAFA'"
+                                            :scale="1"
+                                        />
+                                        <VueUiPattern v-else name="bubbles" :id="patternId" :stroke="isDarkMode ? '#5A5A5A' : '#CCCCCC'" :scale="1"/>
                                     </Suspense>
                                 </template>
 
