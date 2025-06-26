@@ -325,7 +325,8 @@ const datasetCumulativeAverage = computed(() => {
       series: getCumulativeAveragePerDayWithMissingDays(store.downloads.lib).map(d => {
         return d.cumulativeAverage
       }),
-      useTag: 'end'
+      useTag: 'end',
+      useArea: true
     }
   ]
 })
@@ -409,6 +410,14 @@ const configCumulativeAverage = computed(() => {
       component="VueUiXy"
       :dataset="datasetCumulativeAverage"
       :config="configCumulativeAverage"
-    />
+    >
+      <template #pattern="{ patternId }">
+        <VueUiPattern
+            :id="patternId"
+            name="grid"
+            :stroke="isDarkMode ? '#1f77b460' : '#aec7e8'"
+        />
+    </template>
+    </VueDataUi>
   </div>
 </template>
