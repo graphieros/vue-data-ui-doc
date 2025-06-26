@@ -11,28 +11,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 
 const translations = computed(() => {
   return store.translations;
-})
-
-const allowedComponents = ref([
-  { name: "VueUiAgePyramid", icon: 'chartAgePyramid', link: '/docs#vue-ui-age-pyramid' },
-  { name: "VueUiCandlestick", icon: 'chartCandlestick', link: '/docs#vue-ui-candlestick' },
-  { name: "VueUiDonut", icon: 'chartDonut', link: '/docs#vue-ui-donut' },
-  { name: 'VueUiGalaxy', icon: 'chartGalaxy', link: '/docs#vue-ui-galaxy' },
-  { name: "VueUiHeatmap", icon: "chartHeatmap", link: '/docs#vue-ui-heatmap' },
-  { name: "VueUiMolecule", icon: 'chartCluster', link: '/docs#vue-ui-molecule' },
-  { name: "VueUiNestedDonuts", icon: 'chartNestedDonuts', link: '/docs#vue-ui-nested-donuts' },
-  { name: "VueUiOnion", icon: 'chartOnion', link: '/docs#vue-ui-onion' },
-  { name: "VueUiParallelCoordinatePlot", icon: "chartParallelCoordinatePlot", link: '/docs#vue-ui-parallel-coordinate-plot' },
-  { name: "VueUiQuadrant", icon: 'chartQuadrant', link: '/docs#vue-ui-quadrant' },
-  { name: "VueUiQuickChart", icon: 'vueDataUi', link: '/docs#vue-ui-quick-chart' },
-  { name: "VueUiRadar", icon: 'chartRadar', link: '/docs#vue-ui-radar' },
-  { name: "VueUiRings", icon: 'chartRings', link: '/docs#vue-ui-rings' },
-  { name: "VueUiScatter", icon: 'chartScatter', link: '/docs#vue-ui-scatter' },
-  { name: "VueUiVerticalBar", icon: 'chartBar', link: '/docs#vue-ui-vertical-bar' },
-  { name: "VueUiWaffle", icon: 'chartWaffle', link: '/docs#vue-ui-waffle' },
-  { name: 'VueUiXy', icon: 'chartLine', link: '/docs#vue-ui-xy' },
-  { name: 'VueUiXyCanvas', icon: 'chartLine', link: '/docs#vue-ui-xy-canvas' },
-]);
+});
 
 const dataset = ref([
   {

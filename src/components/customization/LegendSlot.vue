@@ -4,9 +4,14 @@ import { useMainStore } from "../../stores";
 import BaseCustomizationBox from "./BaseCustomizationBox.vue";
 import ComponentsTable from "../docs/ComponentsTable.vue";
 import { CheckIcon } from "vue-tabler-icons";
+import FlexibleTooltip from "../FlexibleTooltip.vue";
+import { useFeatures } from "../../useFeatures";
+import { VueUiIcon } from "vue-data-ui";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
+
+const { components } = useFeatures();
 
 const translations = computed(() => {
     return store.translations;
@@ -156,6 +161,30 @@ const config = computed(() => {
         </template>
 
     </BaseCustomizationBox>
+
+    <!-- <div class="flex-1 text-center max-w-[600px] mx-auto">
+            {{ translations.customization.legendAllowed[store.lang] }}
+
+            <div class="flex flex-row gap-10 flex-wrap place-items-center justify-center mt-8">
+                <FlexibleTooltip
+                    v-for="c in components.filter(c => c.legend)"
+                    position="bottom"
+                    :content="c.name"
+                    width="w-fit"
+                    delay="delay-150"
+                    :always-blue="true"
+                >
+                    <RouterLink :to="`/docs#${c.link}`">
+                        <button
+                            class="relative flex place-items-center justify-center p-4 bg-[#FFFFFF10] shadow hover:outline hover:outline-app-blue hover:bg-[#5f8aee20] transition-colors"
+                        >
+                            <div class="text-[8px] absolute -top-4">{{ c.name }}</div>
+                            <VueUiIcon :name="c.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                        </button>
+                    </RouterLink>
+                </FlexibleTooltip>
+            </div>
+        </div> -->
 
     <div class="mx-auto max-w-[1000px]">
         <p class="my-6 text-center" dir="auto">{{ translations.customization.legendAllowed[store.lang] }}</p>
