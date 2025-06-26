@@ -240,6 +240,33 @@ ${indentSpace}}`;
     return formatValue(json, indent);
 }
 
+export function fillEmptyDays(dates) {
+    const parsedDates = dates.map(dateStr => {
+        const parts = dateStr.split('-');
+        return new Date(parts[0], parseInt(parts[1]) - 1, parts[2]);
+    });
+
+    if (parsedDates.length === 0) return [];
+
+    parsedDates.sort((a, b) => a - b);
+    const startDate = parsedDates[0];
+    const endDate = parsedDates[parsedDates.length - 1];
+
+    if (isNaN(startDate) || isNaN(endDate)) return [];
+
+    const result = [];
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= endDate) {
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        result.push(`${year}-${month}-${day}`);
+        currentDate = new Date(year, currentDate.getMonth(), currentDate.getDate() + 1);
+    }
+    return result;
+}
+
 const lib = {
     adaptColorToBackground,
     copyComponent,
@@ -249,7 +276,8 @@ const lib = {
     convertArrayToObject,
     shiftHue,
     convertColorToHex,
-    jsonToJsObject
+    jsonToJsObject,
+    fillEmptyDays
 }
 
 export default lib

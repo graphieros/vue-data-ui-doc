@@ -5,7 +5,7 @@ import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 import colorBridge from "color-bridge"
 import { VueDataUi } from "vue-data-ui";
 import mockStats from './mockStats.json'
-import { createUid } from "./maker/lib";
+import { createUid, fillEmptyDays } from "./maker/lib";
 
 const { utils } = colorBridge();
 
@@ -228,6 +228,7 @@ const heatmapConfig = computed(() => {
 })
 
 function getCumulativeAveragePerDayWithMissingDays(statistics) {
+    console.log(statistics)
     const ratingsByDate = {};
     statistics.forEach(entry => {
         const date = entry.created_at.split(' ')[0];
@@ -581,33 +582,6 @@ const stackbarConfig = computed(() => {
         }
     }
 })
-
-function fillEmptyDays(dates) {
-    const parsedDates = dates.map(dateStr => {
-        const parts = dateStr.split('-');
-        return new Date(parts[0], parseInt(parts[1]) - 1, parts[2]);
-    });
-
-    if (parsedDates.length === 0) return [];
-
-    parsedDates.sort((a, b) => a - b);
-    const startDate = parsedDates[0];
-    const endDate = parsedDates[parsedDates.length - 1];
-
-    if (isNaN(startDate) || isNaN(endDate)) return [];
-
-    const result = [];
-    let currentDate = new Date(startDate);
-
-    while (currentDate <= endDate) {
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-        const day = String(currentDate.getDate()).padStart(2, '0');
-        result.push(`${year}-${month}-${day}`);
-        currentDate = new Date(year, currentDate.getMonth(), currentDate.getDate() + 1);
-    }
-    return result;
-}
 
 function dateToTimestamp(dateStr) {
     const date = new Date(dateStr);

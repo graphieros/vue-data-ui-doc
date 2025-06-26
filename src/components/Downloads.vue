@@ -2,6 +2,7 @@
 import { computed, ref } from "vue";
 import { useMainStore } from "../stores";
 import useMobile from "../useMobile";
+import { fillEmptyDays } from "./maker/lib";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -78,11 +79,6 @@ const max = computed(() => {
   return Math.max(Math.max(...data_lib.value), Math.max(...data_cli.value))
 })
 
-/**
- * This is the default config.
- * It is not required to send it all to the component.
- * You can keep only the modified attributes you need.
- */
 const config = computed(() => {
   return {
     theme: "",
@@ -269,71 +265,122 @@ const config = computed(() => {
   };
 });
 
-/**
- * @selectLegend - Returns the current visible series when selecting / unselecting the legend
- *
- * @typedef {Object} VueUiXySelectedLegend
- * @property {string} name - The name of the legend item.
- * @property {number[]} values - The array of values associated with the legend item.
- * @property {string} color - The color representing the legend item.
- * @property {"line" | "bar" | "plot"} type - The type of the series.
- *
- * @param {VueUiXySelectedLegend[]} legend - The current visible series when selecting or unselecting the legend.
- * @returns {void}
- */
 function selectLegend(legend) {
   console.log({ legend });
 }
 
-/**
- * @selectX - Returns the selected X-axis data
- *
- * @typedef {Object} DatasetItem
- * @property {string} name - The name of the dataset item.
- * @property {number} value - The value associated with the dataset item.
- * @property {string} color - The color representing the dataset item.
- * @property {"line" | "bar" | "plot"} type - The type of the dataset item.
- *
- * @typedef {Object} VueUiXySelectedX
- * @property {DatasetItem[]} dataset - An array of dataset items representing the selected X-axis data.
- * @property {number} index - The index of the selected item.
- * @property {string} indexLabel - The label of the selected index.
- *
- * Logs the selected X-axis data.
- *
- * @param {VueUiXySelectedX} selectedX - The data representing the selected X-axis.
- * @returns {void}
- */
 function selectX(selectedX) {
   console.log({ selectedX });
 }
 
-/**
- * @selectTimeLabel - Returns the data associated with the selected time label
- *
- * @typedef {Object} DatapointItem
- * @property {"circle" | "triangle" | "square" | "diamond" | "pentagon" | "star" | "hexagon"} shape - The shape representing the datapoint.
- * @property {string} name - The name of the datapoint.
- * @property {string} color - The color associated with the datapoint.
- * @property {"line" | "bar" | "plot"} type - The type of the datapoint.
- * @property {number} value - The value of the datapoint.
- * @property {string[]} comments - Additional comments associated with the datapoint.
- * @property {string} prefix - A prefix to be displayed with the value.
- * @property {string} suffix - A suffix to be displayed with the value.
- *
- * @typedef {Object} VueUiXySelectedTimeLabel
- * @property {DatapointItem[]} datapoint - An array of datapoints representing the selected time label.
- * @property {number} absoluteIndex - The absolute index of the selected time label.
- * @property {string} label - The label of the selected time.
- *
- * Logs the data associated with the selected time label.
- *
- * @param {VueUiXySelectedTimeLabel} selectedTimeLabel - The data associated with the selected time label.
- * @returns {void}
- */
 function selectTimeLabel(selectedTimeLabel) {
   console.log({ selectedTimeLabel });
 }
+function getCumulativeAveragePerDayWithMissingDays(statistics) {
+    const ratingsByDate = {};
+    statistics.forEach(entry => {
+        const date = entry.day;
+        if (!ratingsByDate[date]) {
+            ratingsByDate[date] = [];
+        }
+        ratingsByDate[date].push(entry.downloads);
+    });
+
+    const ratingDates = Object.keys(ratingsByDate).sort(
+        (a, b) => new Date(a) - new Date(b)
+    );
+
+    const allDates = fillEmptyDays(ratingDates);
+
+    let cumulativeSum = 0;
+    let cumulativeCount = 0;
+    const cumulativeAverages = [];
+
+    allDates.forEach(date => {
+        if (ratingsByDate[date]) {
+            ratingsByDate[date].forEach(rating => {
+                cumulativeSum += rating;
+                cumulativeCount++;
+            });
+            cumulativeAverages.push({
+                date: date,
+                cumulativeAverage: cumulativeSum / cumulativeCount
+            });
+        } else {
+            cumulativeAverages.push({
+                date: date,
+                cumulativeAverage: null
+            });
+        }
+    });
+
+    return cumulativeAverages;
+}
+
+const datasetCumulativeAverage = computed(() => {
+  return [
+    {
+      name: 'Downloads cumulative average',
+      type: 'line',
+      series: getCumulativeAveragePerDayWithMissingDays(store.downloads.lib).map(d => {
+        return d.cumulativeAverage
+      }),
+      useTag: 'end'
+    }
+  ]
+})
+
+const configCumulativeAverage = computed(() => {
+  return {
+    ...config.value,
+    showTable: false,
+    downsample: { threshold: 2000 },
+    line: {
+      ...config.value.line,
+      tag: {
+        followValue: true,
+        formatter: ({ value, config }) => {
+          const { serieName } = config;
+          return `
+          <div style="display:flex;align-items:center;gap:4px">
+            <span>${value.toFixed(0)}</span>
+          </div>
+          `
+        }
+      },
+    },
+    chart: {
+      ...config.value.chart,
+      zoom: { show: false },
+      padding: {
+        top: 36,
+        right: 36,
+        bottom: 36,
+        left: 64
+      },
+      title: {
+        ...config.value.chart.title,
+        text: "Vue Data UI",
+        subtitle: {
+          ...config.value.chart.title.subtitle,
+          text: 'Daily downloads cumulative average'
+        }
+      },
+      grid: {
+        ...config.value.chart.grid,
+        labels: {
+          ...config.value.chart.grid.labels,
+          xAxisLabels: {
+            ...config.value.chart.grid.labels.xAxisLabels,
+            values: getCumulativeAveragePerDayWithMissingDays(store.downloads.lib).map(d => d.date),
+            show: false,
+          }
+        }
+      }
+    }
+  }
+})
+
 </script>
 
 <template>
@@ -356,5 +403,12 @@ function selectTimeLabel(selectedTimeLabel) {
         <div class="w-full h-full dark:bg-[#FFFFFF06]"/>
       </template>
     </VueDataUi>
+
+    <div class="border-t border-gray-500 my-12"/>
+    <VueDataUi
+      component="VueUiXy"
+      :dataset="datasetCumulativeAverage"
+      :config="configCumulativeAverage"
+    />
   </div>
 </template>
