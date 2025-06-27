@@ -1875,7 +1875,7 @@ const dogFood = ref({
           <button v-for="kpi in KPIS" :class="`button-kpi-${kpi.name.replaceAll(' ', '-')} rounded-md hover:shadow-xl transition-all`"  >
             <a :href="kpi.link" target="_blank" class="kpi-wrapper">
               <VueDataUi
-                :class="kpi.name.replaceAll(' ', '_')"
+                :class="`${kpi.name.replaceAll(' ', '_')}${isDarkMode ? '-dark' : ''}`"
                 component="VueUiKpi" 
                 :dataset="kpi.value"
                 :config="{
@@ -2201,6 +2201,19 @@ const dogFood = ref({
 }
 .kpi-wrapper .subscribers_count {
   background: radial-gradient(at top right, #73e1af, #084f2f) !important;
+}
+
+.kpi-wrapper .stargazers_count-dark {
+  background: radial-gradient(at top right, #fdd66340, #644e0f40) !important;
+}
+.kpi-wrapper .forks_count-dark {
+  background: radial-gradient(at top right, #7e9fed40, #101f4640) !important;
+}
+.kpi-wrapper .open_issues_count-dark {
+  background: radial-gradient(at top right, #ff812d40, #4e1f0040) !important;
+}
+.kpi-wrapper .subscribers_count-dark {
+  background: radial-gradient(at top right, #73e1af40, #084f2f40) !important;
 }
 
 .thin-icon path {
