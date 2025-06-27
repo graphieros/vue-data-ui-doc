@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.12.6",
+    "date": "2025-06-27",
+    "updates": [
+      {
+        "component": "Utility functions",
+        "description": "Add getCumulativeAverage and getCumulativeMedian utility functions",
+        "link": "/docs#utility-functions"
+      }
+    ]
+  },
+  {
     "version": "v 2.12.5",
     "date": "2025-06-24",
     "updates": [

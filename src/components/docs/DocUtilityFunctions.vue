@@ -67,6 +67,28 @@ const utilityTranslations = ref({
         es: "Crea elementos TSpan a partir de una cadena para dividir el texto en varias líneas. La salida debe colocarse con `v-html` dentro de un elemento `<text>` SVG.",
         ko: "문자열에서 TSpan 요소를 생성하여 텍스트를 여러 줄로 나눕니다. 출력은 `v-html`을 사용하여 SVG `<text>` 요소 내에 배치해야 합니다.",
         ar: "قم بإنشاء عناصر TSpan من سلسلة نصية لتقسيم النص إلى عدة أسطر. يجب وضع الإخراج باستخدام `v-html` داخل عنصر `<text>` في SVG."
+    },
+    getCumulativeAverage: {
+        en: 'From an array of numbers, return an array of cumulative averages',
+        fr: 'À partir d\'un tableau de nombres, retourner un tableau des moyennes cumulées',
+        pt: 'A partir de um array de números, retorne um array de médias cumulativas',
+        de: 'Aus einem Array von Zahlen ein Array kumulativer Durchschnitte zurückgeben',
+        zh: '从数字数组返回累积平均值数组',
+        jp: '数値の配列から累積平均の配列を返す',
+        es: 'A partir de un array de números, devuelve un array de promedios acumulados',
+        ko: '숫자 배열에서 누적 평균 배열을 반환',
+        ar: 'من مصفوفة أرقام، أعِد مصفوفة من المتوسطات التراكمية'
+    },
+    getCumulativeMedian: {
+        en: 'From an array of numbers, return an array of cumulative medians',
+        fr: 'À partir d\'un tableau de nombres, retourner un tableau des médianes cumulées',
+        pt: 'A partir de um array de números, retorne um array de medianas cumulativas',
+        de: 'Aus einem Array von Zahlen ein Array kumulativer Mediane zurückgeben',
+        zh: '从数字数组返回累积中位数数组',
+        jp: '数値の配列から累積中央値の配列を返す',
+        es: 'A partir de un array de números, devuelve un array de medianas acumuladas',
+        ko: '숫자 배열에서 누적 중앙값 배열을 반환',
+        ar: 'من مصفوفة أرقام، أعِد مصفوفة من الوسيطات التراكمية'
     }
 })
 
@@ -145,6 +167,82 @@ const createTSpanTemplate = computed(() => `<text
     v-html="textContent"
 />`
 )
+
+const comments = ref({
+    simpleUsage: {
+        en: 'Simple usage',
+        fr: 'Utilisation simple',
+        pt: 'Uso simples',
+        de: 'Einfache Verwendung',
+        zh: '简单用法',
+        jp: '簡単な使用方法',
+        es: 'Uso simple',
+        ko: '간단한 사용법',
+        ar: 'استخدام بسيط'
+    },
+    ignore: {
+        en: 'Ignore invalid values entirely',
+        fr: 'Ignorer complètement les valeurs invalides',
+        pt: 'Ignorar totalmente os valores inválidos',
+        de: 'Ungültige Werte vollständig ignorieren',
+        zh: '完全忽略无效值',
+        jp: '無効な値を完全に無視する',
+        es: 'Ignorar completamente los valores inválidos',
+        ko: '잘못된 값을 완전히 무시',
+        ar: 'تجاهل القيم غير الصالحة تمامًا'
+    },
+    convert: {
+        en: 'Convert invalid values to zero',
+        fr: 'Convertir les valeurs invalides en zéro',
+        pt: 'Converter valores inválidos para zero',
+        de: 'Ungültige Werte auf Null umwandeln',
+        zh: '将无效值转换为零',
+        jp: '無効な値をゼロに変換する',
+        es: 'Convertir valores inválidos a cero',
+        ko: '잘못된 값을 0으로 변환',
+        ar: 'تحويل القيم غير الصالحة إلى صفر'
+    }
+})
+
+const getCumulativeAverageTemplate = computed(() => `import { getCumulativeAverage } from "vue-data-ui";
+
+// ${comments.value.simpleUsage[store.lang]}
+const arr = [0, 1, 2, 3, 4];
+const cumulativeAvg = getCumulativeAverage({ values: arr });
+
+// ${comments.value.ignore[store.lang]}
+const arrWithInvalid = [0, 1, 2, null, undefined, NaN, Infinity, -Infinity];
+const cumulativeAvgNoInvalid = getCumulativeAverage({
+    values: arrWithInvalid,
+    config: { keepInvalid: false }
+});
+
+// ${comments.value.convert[store.lang]}
+const cumulativeAvgZeroed = getCumulativeAverage({
+    values: arrWithInvalid,
+    config: { convertInvalidToZero: true }
+});
+`);
+
+const getCumulativeMedianTemplate = computed(() => `import { getCumulativeMedian } from "vue-data-ui";
+
+// ${comments.value.simpleUsage[store.lang]}
+const arr = [0, 1, 2, 3, 4];
+const cumulativeMed = getCumulativeMedian({ values: arr });
+
+// ${comments.value.ignore[store.lang]}
+const arrWithInvalid = [0, 1, 2, null, undefined, NaN, Infinity, -Infinity];
+const cumulativeMedNoInvalid = getCumulativeMedian({
+    values: arrWithInvalid,
+    config: { keepInvalid: false }
+});
+
+// ${comments.value.convert[store.lang]}
+const cumulativeMedZeroed = getCumulativeMedian({
+    values: arrWithInvalid,
+    config: { convertInvalidToZero: true }
+});
+`)
 
 </script>
 
@@ -292,7 +390,6 @@ const createTSpanTemplate = computed(() => `<text
 </div>
 
 <div class="max-w-[1000px] mx-auto mt-12">
-
     <div class="w-full rounded border border-gray-300 dark:border-gray-700">
         <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
             <div class="p-4" dir="auto">
@@ -306,7 +403,39 @@ const createTSpanTemplate = computed(() => `<text
             <CodeParser :content="createTSpanTemplate" language="html" @copy="store.copy()"/>
         </div>
     </div>
+</div>
+
+<div class="max-w-[1000px] mx-auto mt-12">
+    <div class="w-full rounded border border-gray-300 dark:border-gray-700">
+        <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
+            <div class="p-4" dir="auto">
+                <code class="text-lg">getCumulativeAverage</code>
+                <p class="text-gray-500">{{ utilityTranslations.getCumulativeAverage[store.lang] }}</p>
+            </div>
+        </div>
+
+        <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+            <CodeParser :content="getCumulativeAverageTemplate" language="javascript" @copy="store.copy()"/>
+        </div>
     </div>
+</div>
+
+<div class="max-w-[1000px] mx-auto mt-12">
+    <div class="w-full rounded border border-gray-300 dark:border-gray-700">
+        <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
+            <div class="p-4" dir="auto">
+                <code class="text-lg">getCumulativeMedian</code>
+                <p class="text-gray-500">{{ utilityTranslations.getCumulativeMedian[store.lang] }}</p>
+            </div>
+        </div>
+
+        <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+            <CodeParser :content="getCumulativeMedianTemplate" language="javascript" @copy="store.copy()"/>
+        </div>
+    </div>
+</div>
+
+
 </div>
 
     </div>
