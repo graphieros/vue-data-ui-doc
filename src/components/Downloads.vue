@@ -363,6 +363,9 @@ const configCumulativeAverage = computed(() => {
         bottom: 36,
         left: 64
       },
+      tooltip: {
+        show: false,
+      },
       title: {
         ...config.value.chart.title,
         text: "Vue Data UI",
