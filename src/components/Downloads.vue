@@ -338,6 +338,10 @@ const configCumulativeAverage = computed(() => {
     downsample: { threshold: 2000 },
     line: {
       ...config.value.line,
+      labels: {
+        ...config.value.line.labels,
+        show: false
+      },
       tag: {
         followValue: true,
         formatter: ({ value, config }) => {
