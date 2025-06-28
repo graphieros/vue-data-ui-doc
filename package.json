@@ -28,11 +28,11 @@
     "vue-tabler-icons": "^2.21.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue": "^6.0.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.6.2",
-    "vite": "^6.3.4"
+    "vite": "^7.0.0"
   }
 }
