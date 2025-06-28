@@ -63,7 +63,8 @@ export function useIconMap(componentName) {
         VueUiCirclePack: 'chartCirclePack',
         VueUiWorld: 'world',
         VueUiRidgeline: 'chartRidgeline',
-        VueUiChord: 'chartChord'
+        VueUiChord: 'chartChord',
+        ['Utility functions']: 'func'
     }
     return mapping[componentName] || 'clipBoard';
 }
@@ -133,7 +134,8 @@ export function isValidComponent(content) {
         'VueUiCirclePack',
         'VueUiWorld',
         'VueUiRidgeline',
-        'VueUiChord'
+        'VueUiChord',
+        'Utility functions'
     ];
 
     return valid.includes(content);
