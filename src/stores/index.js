@@ -70,6 +70,28 @@ export const useMainStore = defineStore("main", {
                     ko: '데이터셋을 동적으로 업데이트하면 컴포넌트의 내부 상태가 초기화됩니다.',
                     ar: 'تحديث مجموعة البيانات ديناميكيًا يؤدي إلى إعادة تعيين الحالة الداخلية للمكوّن.'
                 },
+                checkUtilityFunctions: {
+                    en: 'Check out the utility functions documentation',
+                    fr: 'Consultez la documentation des fonctions utilitaires',
+                    pt: 'Confira a documentação das funções utilitárias',
+                    de: 'Sehen Sie sich die Dokumentation der Utility-Funktionen an',
+                    zh: '查看实用程序函数文档',
+                    jp: 'ユーティリティ関数のドキュメントを確認する',
+                    es: 'Consulta la documentación de las funciones de utilidad',
+                    ko: '유틸리티 함수 문서를 확인하세요',
+                    ar: 'تحقق من وثائق دوال المرافق'
+                },
+                utilityFunctionsUsed: {
+                    en: 'Utility functions used',
+                    fr: 'Fonctions utilitaires utilisées',
+                    pt: 'Funções utilitárias usadas',
+                    de: 'Verwendete Hilfsfunktionen',
+                    zh: '使用的实用程序函数',
+                    jp: '使用されたユーティリティ関数',
+                    es: 'Funciones de utilidad utilizadas',
+                    ko: '사용된 유틸리티 함수',
+                    ar: 'الدوال المساعدة المستخدمة'
+                },
                 checkSlotsTab: {
                     en: "Check the 'Slots' tab of the documentation",
                     fr: "Consultez l'onglet 'Slots' de la documentation",
