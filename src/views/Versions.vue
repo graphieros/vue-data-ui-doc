@@ -1395,7 +1395,7 @@ const wordCloudDataset = computed(() => {
     if(!r.updates || !r.updates.length) return ''
     return r.updates.map(u => u.description + ' ').join(' ') + ' '
   }).join(' ')
-  return createWordCloudDatasetFromPlainText(source).filter(ds => {
+  return createWordCloudDatasetFromPlainText(source, (w) => w.toUpperCase()).filter(ds => {
     if(!uselessWords.value.includes(ds.name.toUpperCase())) {
       return ds
     }
@@ -1419,7 +1419,7 @@ const wordCloudConfig = computed(() => {
     customPalette: makeColors({
       colorStart: '#5f8aee',
       iterations: 1000,
-      force: 0.1
+      force: 0.0001
     }),
 //     customPalette: [
 //   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
