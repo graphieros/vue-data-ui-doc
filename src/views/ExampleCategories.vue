@@ -456,6 +456,18 @@ const hoveredLink = ref(null);
                     <RouterLink :to="`/docs#${example.link}`" v-if="example.tags && example.tags.length">
                         <a class="text-app-blue underline text-sm">{{ translations.checkSlotsTab[store.lang] }}</a>
                     </RouterLink>
+
+                    <div v-if="example.utilityFunctions && example.utilityFunctions.length" class="flex flex-row gap-2 place-items-center flex-wrap my-2">
+                        <div dir="auto">{{ translations.utilityFunctionsUsed[store.lang] }}:</div>
+                        <div v-for="func in example.utilityFunctions">
+                            <div class="text-xs px-2 py-0.5 bg-gradient-to-br from-[#fcb77a] to-[#ff7f0e] text-black rounded-full">
+                                {{ func }}
+                            </div>
+                        </div>
+                    </div>
+                    <RouterLink :to="`/docs#utility-functions`" v-if="example.utilityFunctions && example.utilityFunctions.length">
+                        <a class="text-app-blue underline text-sm">{{ translations.checkUtilityFunctions[store.lang] }}</a>
+                    </RouterLink>
                 </div>
     
                 <Suspense>

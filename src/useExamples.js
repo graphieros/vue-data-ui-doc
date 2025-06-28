@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "./stores";
-import { createWordCloudDatasetFromPlainText } from "vue-data-ui";
+import { getCumulativeAverage } from "vue-data-ui";
 import { shiftHue } from "./components/maker/lib";
 import colorBridge from "color-bridge";
 
@@ -1108,6 +1108,36 @@ export default function useExamples() {
             series: [20, 30, 20, 10, 20, 30, 20, 10, 20]
         },
     ])
+
+    const DATASET_XY_CUMULATIVE_AVERAGE = computed(() => {
+
+        const makeS = () => {
+            let arr = [];
+            for (let i = 0; i < 500; i  += 1) {
+                arr.push(Math.random() * 10 + Math.random() * (i / 250))
+            }
+            return arr
+        }
+
+        const series = makeS()
+        const avg = getCumulativeAverage({ values: series })
+
+        return [
+            {
+                name: 'Hourly revenue',
+                type: 'bar',
+                dataLabels: false,
+                series,
+            },
+            {
+                name: 'Cumulmative average',
+                type: 'line',
+                dataLabels: false,
+                series: avg,
+                color: isDarkMode.value ? undefined : '#d62728',
+            }
+        ]
+    })
 
     const BASE_XY_CONFIG = computed(() => {
         return {
@@ -5329,6 +5359,49 @@ export default function useExamples() {
                     es: "Actualización frecuente de datos",
                     ko: "빈번한 데이터 업데이트",
                     ar: "تحديث متكرر للبيانات"
+                }
+            },
+            // XY CUMULATIVE AVERAGE
+            { 
+                dataset: DATASET_XY_CUMULATIVE_AVERAGE.value,
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        highlightArea: {
+                            show: false,
+                        },
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            position: 'start',
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                xAxisLabels: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
+                                    showOnlyAtModulo: true,
+                                    values: makeDs(1000,100,'T'),
+                                    modulo: 9,
+                                    rotation: 0
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-cumulative-average',
+                link: 'vue-ui-xy',
+                utilityFunctions: ['getCumulativeAverage'],
+                description: {
+                    en: "With cumulative average",
+                    fr: "Avec la moyenne cumulée",
+                    pt: "Com média cumulativa",
+                    de: "Mit kumulativem Durchschnitt",
+                    zh: "带累积平均值",
+                    jp: "累積平均付き",
+                    es: "Con promedio acumulativo",
+                    ko: "누적 평균 포함",
+                    ar: "مع المتوسط التراكمي"
                 }
             },
             // DONUT BASIC
