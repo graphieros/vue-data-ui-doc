@@ -1868,7 +1868,10 @@ const dogFood = ref({
     <!-- <SideMenu @toggle="toggleMenu"/> -->
     <div :class="`pt-9 sm:pt-24 overflow-x-hidden`">
         <div :class="``">
-          <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.versions[store.lang] }}</h1>
+          <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
+            <VueUiIcon name="vueDataUi" :size="80" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#42d392' : '#1d915d'"/>
+            <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.versions[store.lang] }}</h1>
+          </div>
           <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 
           <div class="grid grid-cols-2 align-center gap-4 mx-auto max-w-[525px] px-4 justify-center">
