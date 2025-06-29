@@ -1627,12 +1627,12 @@ function convertVersionsToTreemap(ds) {
       }
     });
   });
-  const baseColor = '#5f8aee';
+  const baseColor = '#5F8AEE';
   const total = Object.entries(componentCountMap).length;
-  return Object.entries(componentCountMap).map(([name, value], i) => ({ name, value})).sort((a, b) => b.value - a.value).map((el, i) => {
+  return Object.entries(componentCountMap).map(([name, value], k) => ({ name, value})).sort((a, b) => b.value - a.value).map((el, i) => {
     return {
       ...el,
-      color: darkenColor(baseColor, i/2 / total ) 
+      color: darkenColor(baseColor, i / 2 / total ) 
     }
   });
 }

@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 2.12.7",
+    "date": "2025-06-29",
+    "updates": [
+      {
+        "component": "Most chart components",
+        "description": "Improve treeshaking of atomic components",
+        "link": ""
+      },
+      {
+        "component": "VueUiRidgeline",
+        "description": "Fix - Show chart dialog in fullscreen mode",
+        "link": "/docs#vue-ui-ridgeline"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Fix - Show chart dialog in fullscreen mode",
+        "link": "/docs#vue-ui-donut-evolution"
+      }
+    ]
+  },
+  {
     "version": "v 2.12.6",
     "date": "2025-06-27",
     "updates": [
