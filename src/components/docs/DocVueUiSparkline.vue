@@ -120,7 +120,7 @@ const darkModeConfig = ref({
   style: {
     backgroundColor: "#FFFFFF05",
     fontFamily: "inherit",
-    chartWidth: 400,
+    chartWidth: 380,
     scaleMin: null,
     scaleMax: null,
     padding: {
@@ -207,7 +207,7 @@ const config = ref({
   style: {
     backgroundColor: "#FAFAFA",
     fontFamily: "inherit",
-    chartWidth: 400,
+    chartWidth: 380,
     scaleMin: null,
     scaleMax: null,
     padding: {
