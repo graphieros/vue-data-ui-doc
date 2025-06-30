@@ -3,7 +3,7 @@ import {ref, computed, onMounted, defineAsyncComponent, watch } from "vue";
 import SideMenu from '../components/SideMenu.vue';
 import { useRouter } from "vue-router";
 import { getVueDataUiConfig, getThemeConfig } from "vue-data-ui";
-import { SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon, CopyIcon, StarFilledIcon } from "vue-tabler-icons";
+import { SquareRoundedLetterSIcon, SquareRoundedLetterTIcon, SquareRoundedLetterLIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
 import Schema from "../schema/Schema.vue";
 import { useConfig } from "../assets/useConfig";
@@ -16,7 +16,6 @@ import { useIconMapUnderscore } from '../useIconMapUnderscore';
 import { useMakerStore } from "../stores/maker";
 import ChartSeeker from "../components/ChartSeeker.vue";
 import BaseDragElement from "../components/BaseDragElement.vue";
-import DocsComponentMenu from "../components/docs/DocsComponentMenu.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
 import { useIconMap } from "../useIconMap";
 

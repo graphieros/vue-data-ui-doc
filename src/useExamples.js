@@ -2217,7 +2217,7 @@ export default function useExamples() {
 
     const DATASET_WORDCLOUD_CHINESE = computed(() => {
         return [
-            { name: '编程', value: 95 },
+            { name: '编程', value: 255 },
             { name: '代码', value: 55 },
             { name: '算法', value: 18 },
             { name: '调试', value: 15 },
@@ -7537,7 +7537,17 @@ export default function useExamples() {
             // WORD CLOUD CHINESE
             { 
                 dataset: DATASET_WORDCLOUD_CHINESE.value, 
-                config: CONFIG_WORD_WLOUD_BASIC.value,
+                config: {
+                    ...CONFIG_WORD_WLOUD_BASIC.value,
+                    style: {
+                        ...CONFIG_WORD_WLOUD_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_WORD_WLOUD_BASIC.value.style.chart,
+                            height: 300,
+                            width: 300,
+                        }
+                    }
+                },
                 component: 'VueUiWordCloud',
                 icon: 'chartWordCloud',
                 id: 'word-cloud-chinese',
@@ -7623,7 +7633,15 @@ export default function useExamples() {
                         colorStart: '#5f8aee',
                         iterations: 200,
                         force: 0.0006
-                    })
+                    }),
+                    style: {
+                        ...CONFIG_WORD_WLOUD_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_WORD_WLOUD_BASIC.value.style.chart,
+                            height: 300,
+                            width: 300,
+                        }
+                    }
                 },
                 component: 'VueUiWordCloud',
                 icon: 'chartWordCloud',
@@ -7650,7 +7668,15 @@ export default function useExamples() {
                         colorStart: '#FFFFFF',
                         iterations: 200,
                         force: 0.0006
-                    })
+                    }),
+                    style: {
+                        ...CONFIG_WORD_WLOUD_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_WORD_WLOUD_BASIC.value.style.chart,
+                            height: 300,
+                            width: 300,
+                        }
+                    }
                 },
                 component: 'VueUiWordCloud',
                 icon: 'chartWordCloud',
