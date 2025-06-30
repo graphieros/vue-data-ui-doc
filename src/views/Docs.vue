@@ -1246,7 +1246,7 @@ const stackbarKey = ref(0);
     <pre>
 
     <code class="text-gray-500 text-md relative">
-        <VueUiIcon :name="useIconMap(`VueUi${currentShowcase}`)" class="absolute top-1/2" :size="32" :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"/>
+        <VueUiIcon :name="useIconMap(`VueUi${currentShowcase}`)" class="absolute top-1/2 animate-pulse" :size="32" :stroke="isDarkMode ? '#6A6A6A' : '#1A1A1A'"/>
     &lt;<span class="dark:text-gray-200">VueDataUi</span>
         <span class="text-black dark:text-app-orange">component</span>="VueUi{{ currentShowcase }}"
         <span class="text-black dark:text-app-green">:dataset</span>="dataset"
