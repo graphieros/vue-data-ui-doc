@@ -462,7 +462,7 @@ function closeDialogExample() {
                             justify="justify-start"
                         >
                             <template #componentCode>
-                                <div class="relative">
+                                <div class="hidden sm:block relative">
                                     <FlexibleTooltip position="bottom" :content="makerStore.translations.steps.three[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
                                         <button @click="openComponentCode(example)" class="h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] border border-gray-500 flex place-items-center justify-center rounded bg-white dark:bg-[#FFFFFF05] hover:bg-[#5f8bee20] dark:hover:bg-[#5f8bee20] transition-colors">
                                             <VueUiIcon name="htmlTag" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
