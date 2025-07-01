@@ -10,9 +10,14 @@ import BaseSpinner from "../components/BaseSpinner.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import Rater from "../components/Rater.vue";
 import { CircleArrowDownRightFilledIcon, CircleArrowRightFilledIcon, CircleArrowUpRightFilledIcon } from "vue-tabler-icons";
+import FlexibleTooltip from "../components/FlexibleTooltip.vue";
+import BaseExampleComponentDialog from "../components/BaseExampleComponentDialog.vue";
+import ConfirmCopy from "../components/ConfirmCopy.vue";
+import { useMakerStore } from "../stores/maker";
 
 const { examples } = useExamples()
 const store = useMainStore()
+const makerStore = useMakerStore()
 const isDarkMode = computed(() => store.isDarkMode); 
 const router = useRouter();
 const route = useRoute();
@@ -349,6 +354,20 @@ const filteredExamples = computed(() => {
 
 const hoveredLink = ref(null);
 
+const dialogExample = ref(null);
+const showDialogExample = ref(false);
+
+function openComponentCode(example) {
+    console.log(example)
+    dialogExample.value = example;
+    showDialogExample.value = true;
+}
+
+function closeDialogExample() {
+    dialogExample.value = null;
+    showDialogExample.value = false;
+}
+
 </script>
 
 <template>
@@ -441,7 +460,17 @@ const hoveredLink = ref(null);
                             :customDataset="example.dataset"
                             :targetDoc="example.link"
                             justify="justify-start"
-                        />
+                        >
+                            <template #componentCode>
+                                <div class="relative">
+                                    <FlexibleTooltip position="bottom" :content="makerStore.translations.steps.three[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
+                                        <button @click="openComponentCode(example)" class="h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] border border-gray-500 flex place-items-center justify-center rounded bg-white dark:bg-[#FFFFFF05] hover:bg-[#5f8bee20] dark:hover:bg-[#5f8bee20] transition-colors">
+                                            <VueUiIcon name="htmlTag" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                                        </button>
+                                    </FlexibleTooltip>
+                                </div>
+                            </template>
+                        </BaseDocHeaderActions>
                     </div>
                     <p class="text-sm dark:text-[#9dcbeb]">{{  example.description[store.lang] }}</p>
 
@@ -561,6 +590,14 @@ const hoveredLink = ref(null);
         </div>
         <Rater :key="`rater_${raterStep}`" v-if="selectedType && selectedType.raterId" :itemId="selectedType.raterId" />
     </div>
+
+    <BaseExampleComponentDialog
+        :isOpen="showDialogExample"
+        :example="dialogExample"
+        @close="closeDialogExample"
+    />
+
+    <ConfirmCopy />
 </template>
 
 <style>

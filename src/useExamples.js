@@ -4050,6 +4050,16 @@ export default function useExamples() {
                 icon: 'chartChord',
                 link: 'vue-ui-chord',
                 tags: ['#pattern'],
+                slot: `<template #pattern="{ seriesIndex, patternId }">
+                <!-- Will be applied on all datasets -->
+                <!-- Condition specific patterns to the seriesIndex if necessary -->
+                <VueUiPattern
+                    name="grid"
+                    :id="patternId"
+                    stroke="#1f77b460"
+                    :scale="1"
+                />    
+            </template>`,
                 multiPattern: true,
                 description: {
                     en: "Using a custom pattern",
@@ -4072,6 +4082,11 @@ export default function useExamples() {
                 link: 'vue-ui-chord',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -4763,6 +4778,22 @@ export default function useExamples() {
                     }
                 },
                 tags: ['#plot-comment'],
+                slot: `<template #plot-comment="{ plot }">
+                <div 
+                    v-if="plot.value === 140" 
+                    class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-green"
+                >
+                    <VueUiIcon name="smiley" stroke="#42d392" :size="30"/>
+                    {{ plot.comment }}
+                </div>
+                <div 
+                    v-else-if="plot.value === 12" 
+                    class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl bg-[#FFFFFF] dark:bg-[#4A4A4A] py-2 rounded shadow-md border border-app-orange"
+                >
+                    <VueUiIcon name="moodFlat" stroke="#FF6600" :size="30"/>
+                    {{ plot.comment }}
+                </div>
+            </template>`,
                 component: 'VueUiXy',
                 icon: 'chartLine',
                 id: 'line-comment',
@@ -4810,6 +4841,41 @@ export default function useExamples() {
                 icon: 'chartLine',
                 id: 'line-comment-trend',
                 link: 'vue-ui-xy',
+                slot: `<template #plot-comment="{ plot }">
+                <div 
+                    v-if="['up', 'eq', 'down'].includes(plot.comment.trend)" 
+                    class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl py-2 -mt-5"
+                >
+                    <div class="text-sm mb-1">
+                        <span class="text-app-green" v-if="plot.comment.trend === 'up'">
+                            {{ plot.comment.evolution.toFixed(1) + '%' }}
+                        </span>
+                        <span class="text-[#FF6600]" v-if="plot.comment.trend === 'down'">
+                            {{ plot.comment.evolution.toFixed(1) + '%' }}
+                        </span>
+                        <span class="text-[#6A6A6A]" v-if="plot.comment.trend === 'eq'">
+                            {{ plot.comment.evolution.toFixed(1) + '%' }}
+                        </span>
+                    </div>
+
+                    <!-- Tabler icons -->
+                    <CircleArrowUpRightFilledIcon 
+                        v-if="plot.comment.trend === 'up'" 
+                        color="#42d392" 
+                        style="transform: scale(1.2,1.2)"
+                    />
+                    <CircleArrowRightFilledIcon 
+                        v-if="plot.comment.trend === 'eq'" 
+                        color="#6A6A6A" 
+                        style="transform: scale(1.2,1.2)"
+                    />
+                    <CircleArrowDownRightFilledIcon 
+                        v-if="plot.comment.trend === 'down'" 
+                        color="#FF6600" 
+                        style="transform: scale(1.2,1.2)"
+                    />
+                </div>    
+            </template>`,
                 description: {
                     en: 'With an individual datapoint comment as a trend arrow',
                     fr: 'Avec un commentaire de point de données individuel sous forme de flèche de tendance',
@@ -4905,6 +4971,11 @@ export default function useExamples() {
                 link: 'vue-ui-xy',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -4952,6 +5023,11 @@ export default function useExamples() {
                 link: 'vue-ui-xy',
                 chartBackgroundPattern: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background pattern",
                     fr: "Avec un motif d'arrière-plan personnalisé",
@@ -4999,6 +5075,16 @@ export default function useExamples() {
                 link: 'vue-ui-xy',
                 tags: ['#pattern'],
                 pattern: true,
+                slot: `<template #pattern="{ seriesIndex, patternId }">
+                <!-- Will be applied on all datasets -->
+                <!-- Condition specific patterns to the seriesIndex if necessary -->
+                <VueUiPattern
+                    name="grid"
+                    :id="patternId"
+                    stroke="#1f77b460"
+                    :scale="1"
+                />    
+            </template>`,
                 description: {
                     en: "Using a custom pattern",
                     fr: "Utilisation d'un motif personnalisé",
@@ -5444,6 +5530,18 @@ export default function useExamples() {
                 id: 'donut-comment',
                 link: 'vue-ui-donut',
                 tags: ['#plot-comment'],
+                slot: `<template #plot-comment="{ plot }">
+                <div
+                    :style="{
+                        textAlign: plot.textAlign,
+                        color: plot.color,
+                        fontSize: '10px',
+                        padding: '6px'
+                    }"
+                >
+                    {{ plot.comment }}
+                </div>
+            </template>`,
                 description: {
                     en: 'With individual comments in the dataset',
                     fr: 'Avec des commentaires individuels dans le jeu de données',
@@ -5768,6 +5866,11 @@ export default function useExamples() {
                 id: 'donut-bg',
                 link: 'vue-ui-donut',
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -5790,6 +5893,16 @@ export default function useExamples() {
                 link: 'vue-ui-donut',
                 multiPattern: true,
                 tags: ['#pattern'],
+                slot: `<template #pattern="{ seriesIndex, patternId }">
+                <!-- Will be applied on all datasets -->
+                <!-- Condition specific patterns to the seriesIndex if necessary -->
+                <VueUiPattern
+                    name="grid"
+                    :id="patternId"
+                    stroke="#1f77b460"
+                    :scale="1"
+                />    
+            </template>`,
                 description: {
                     en: "Using a custom pattern",
                     fr: "Utilisation d'un motif personnalisé",
@@ -5815,6 +5928,16 @@ export default function useExamples() {
                 multiPattern: true,
                 tags: ['#pattern'],
                 link: 'vue-ui-donut',
+                slot: `<template #pattern="{ seriesIndex, patternId }">
+                <!-- Will be applied on all datasets -->
+                <!-- Condition specific patterns to the seriesIndex if necessary -->
+                <VueUiPattern
+                    name="grid"
+                    :id="patternId"
+                    stroke="#1f77b460"
+                    :scale="1"
+                />    
+            </template>`,
                 description: {
                     en: "Polar area chart - Using a custom pattern",
                     fr: "Diagramme en aires polaires - Utilisation d'un motif personnalisé",
@@ -6016,6 +6139,11 @@ export default function useExamples() {
                 chartBackground: true,
                 link: 'vue-ui-sparkline',
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -6252,6 +6380,11 @@ export default function useExamples() {
                 link: 'vue-ui-stackbar',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -6289,6 +6422,16 @@ export default function useExamples() {
                 link: 'vue-ui-stackbar',
                 tags: ['#pattern'],
                 pattern: true,
+                slot: `<template #pattern="{ seriesIndex, patternId }">
+                <!-- Will be applied on all datasets -->
+                <!-- Condition specific patterns to the seriesIndex if necessary -->
+                <VueUiPattern
+                    name="grid"
+                    :id="patternId"
+                    stroke="#1f77b460"
+                    :scale="1"
+                />    
+            </template>`,
                 description: {
                     en: "Using a custom pattern",
                     fr: "Utilisation d'un motif personnalisé",
@@ -6481,6 +6624,11 @@ export default function useExamples() {
                 link: 'vue-ui-nested-donuts',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -6783,6 +6931,11 @@ export default function useExamples() {
                 link: 'vue-ui-vertical-bar',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -6804,6 +6957,16 @@ export default function useExamples() {
                 id: 'vertical-bar-pattern',
                 link: 'vue-ui-vertical-bar',
                 tags: ['#pattern'],
+                slot: `<template #pattern="{ seriesIndex, patternId }">
+                <!-- Will be applied on all datasets -->
+                <!-- Condition specific patterns to the seriesIndex if necessary -->
+                <VueUiPattern
+                    name="grid"
+                    :id="patternId"
+                    stroke="#1f77b460"
+                    :scale="1"
+                />    
+            </template>`,
                 multiPattern: true,
                 description: {
                     en: "Using a custom pattern",
@@ -6927,6 +7090,11 @@ export default function useExamples() {
                 link: 'vue-ui-heatmap',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -7366,6 +7534,11 @@ export default function useExamples() {
                 link: 'vue-ui-gauge',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -7386,6 +7559,16 @@ export default function useExamples() {
                 icon: 'chartGauge',
                 id: 'gauge-pattern',
                 tags: ['#pattern'],
+                slot: `<template #pattern="{ seriesIndex, patternId }">
+                <!-- Will be applied on all datasets -->
+                <!-- Condition specific patterns to the seriesIndex if necessary -->
+                <VueUiPattern
+                    name="grid"
+                    :id="patternId"
+                    stroke="#1f77b460"
+                    :scale="1"
+                />    
+            </template>`,
                 link: 'vue-ui-gauge',
                 multiPattern: true,
                 description: {
@@ -7522,6 +7705,11 @@ export default function useExamples() {
                 link: 'vue-ui-onion',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -7684,6 +7872,11 @@ export default function useExamples() {
                 link: 'vue-ui-word-cloud',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -8058,6 +8251,11 @@ export default function useExamples() {
                 link: 'vue-ui-wheel',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -8193,6 +8391,11 @@ export default function useExamples() {
                 link: 'vue-ui-sparkhistogram',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -8283,6 +8486,11 @@ export default function useExamples() {
                 link: 'vue-ui-quadrant',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -8449,6 +8657,11 @@ export default function useExamples() {
                 link: 'vue-ui-radar',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -8609,6 +8822,11 @@ export default function useExamples() {
                 link: 'vue-ui-strip-plot',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -8779,6 +8997,11 @@ export default function useExamples() {
                 link: 'vue-ui-bullet',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -8943,6 +9166,11 @@ export default function useExamples() {
                 link: 'vue-ui-funnel',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",
@@ -9111,6 +9339,11 @@ export default function useExamples() {
                 link: 'vue-ui-history-plot',
                 chartBackground: true,
                 tags: ['#chart-background'],
+                slot: `<template #chart-background>
+                <div :style="{ height: '100%', width: '100%' }">
+                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
+                </div>
+            </template>`,
                 description: {
                     en: "With a custom background",
                     fr: "Avec un arrière-plan personnalisé",

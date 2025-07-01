@@ -267,6 +267,7 @@ export function fillEmptyDays(dates) {
     return result;
 }
 
+
 const lib = {
     adaptColorToBackground,
     copyComponent,

@@ -97,6 +97,7 @@ function copyToClipboard(conf) {
         <GitHubLink v-if="targetLink" :link="targetLink" simple/>
         <DocLink v-if="targetDoc" :to="targetDoc" simple/>
         <slot name="grabber"/>
+        <slot name="componentCode"/>
     </div>
 </template>
 

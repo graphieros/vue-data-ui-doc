@@ -2,7 +2,7 @@
 import { ref, computed, nextTick } from "vue";
 import { useNestedProp } from "../../useNestedProp";
 import { getVueDataUiConfig } from "vue-data-ui";
-import { copyCode } from "./lib";
+import { copyCode, jsonToJsObject } from "./lib";
 import { useMainStore } from "../../stores";
 import { CopyIcon, RefreshDotIcon } from "vue-tabler-icons";
 import { useMakerStore } from "../../stores/maker";
@@ -122,33 +122,6 @@ function nuke() {
         localStorage.removeItem(props.keyDataset);
     }
     nextTick(() => location.reload());
-}
-
-function jsonToJsObject(json, indent = 0, colorAuto=false) {
-    function formatValue(value, currentIndent) {
-        const nextIndent = currentIndent + 4;
-        const indentSpace = ' '.repeat(currentIndent);
-        const nextIndentSpace = ' '.repeat(nextIndent);
-
-        if (typeof value === 'string') {
-            return `'${value.replace(/'/g, "\\'")}'`;
-        } else if (Array.isArray(value)) {
-            return value.length === 0 ? '[]' : `[
-${nextIndentSpace}${value.map(v => formatValue(v, nextIndent)).join(`,
-${nextIndentSpace}`)}
-${indentSpace}]`;
-        } else if (typeof value === 'object' && value !== null) {
-            return `{
-${nextIndentSpace}${Object.entries(value)
-                    .map(([key, val]) => `${typeof Number(key) === 'number' && !isNaN(Number(key)) ? `'${key}'` : key}: ${colorAuto && key === 'color' && !val ? `'auto'`: formatValue(val, nextIndent)}`)
-                    .join(`,
-${nextIndentSpace}`)}
-${indentSpace}}`;
-        }
-        return value;
-    }
-
-    return formatValue(json, indent);
 }
 
 const generatedScript = computed(() => {
