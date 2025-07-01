@@ -59,8 +59,8 @@ const config = computed(() => {
       fontFamily: "inherit",
       chart: {
         useGradient: true,
-        gradientIntensity: 40,
-        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+        gradientIntensity: 20,
+        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
         color: "#2D353C",
         layout: {
           curvedMarkers: true,
@@ -68,19 +68,19 @@ const config = computed(() => {
             dataLabels: {
               show: true,
               useLabelSlots: false,
-              hideUnderValue: 3,
+              hideUnderValue: 5,
               prefix: "",
               suffix: "",
             },
             value: { rounding: 0, show: true, formatter: null },
             percentage: {
-              color: isDarkMode.value ? '#6A6A6A' : '#6A6A6A',
+              color: isDarkMode.value ? '#FAFAFA' : '#1A1A1A',
               bold: true,
-              fontSize: 12,
+              fontSize: 20,
               rounding: 0,
               formatter: null,
             },
-            name: { color: isDarkMode.value ? '#8A8A8A' : '#1A1A1A', bold: false, fontSize: 12 },
+            name: { color: isDarkMode.value ? '#CCCCCC' : '#6A6A6A', bold: false, fontSize: 14 },
             hollow: {
               show: true,
               total: {
@@ -92,14 +92,14 @@ const config = computed(() => {
             },
           },
           donut: {
-            strokeWidth: 64,
-            borderWidth: 1,
+            strokeWidth: 24,
+            borderWidth: 2,
             useShadow: true,
             shadowColor: "#2D353C",
           },
         },
         legend: {
-          show: true,
+          show: false,
           bold: false,
           backgroundColor: "transparent",
           color: isDarkMode.value ? '#6A6A6A' : '#6A6A6A',
@@ -124,16 +124,6 @@ const config = computed(() => {
           roundingValue: 0,
           roundingPercentage: 0,
         },
-        title: {
-          text: "Vue Data UI",
-          color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-          fontSize: 20,
-          bold: true,
-          textAlign: "center",
-          paddingLeft: 0,
-          paddingRight: 0,
-          subtitle: { color: "#A1A1A1", text: "Component types", fontSize: 16, bold: false },
-        },
       },
     },
   };
@@ -150,17 +140,18 @@ const config = computed(() => {
     >
       <template #svg="{ svg }">
         <foreignObject
-          width="100"
-          height="100"
-          :x="svg.width / 2 - 45"
-          :y="svg.height / 2 - 35"
+          width="150"
+          height="150"
+          :x="svg.width / 2 - 67.5"
+          :y="svg.height / 2 - 50"
           :style="{
             pointerEvents: 'none'
           }"
         >
           <img 
             src="../assets/logo3.png" 
-            alt="10x cat programmers ^^"
+            alt="Vue Data UI logo"
+            class="drop-shadow-[0_5px_4px_#1A1A1A90]"
           >
         </foreignObject>
       </template>

@@ -5,6 +5,7 @@ import AboutComponentTypes from "../components/AboutComponentTypes.vue";
 import SatisfactionStats from "../components/SatisfactionStats.vue";
 import { useConfig } from "../assets/useConfig";
 import { CheckIcon } from "vue-tabler-icons";
+import BaseSpinner from "../components/BaseSpinner.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -429,18 +430,18 @@ const advantagesTitle = ref({
       {{ translations.menu.about[store.lang] }}
     </h1>
 
-    <div v-if="isDarkMode" class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px]">
-      <div v-for="skeleton in skeletonsDarkMode.slice(0, 3)" class="max-w-1/3">
-        <VueUiSkeleton :config="skeleton" />
-      </div>
-    </div>
-    <div v-else class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px]">
-      <div v-for="skeleton in skeletons.slice(0, 3)" class="max-w-1/3">
-        <VueUiSkeleton :config="skeleton" />
-      </div>
+    <div class="w-full max-w-[500px] max-h-[500px] mx-auto p-4">
+      <Suspense>
+        <template #default>
+          <AboutComponentTypes />
+        </template>
+        <template #fallback>
+          <BaseSpinner/>
+        </template>
+      </Suspense>
     </div>
 
-    <div class="w-full mt-12 mb-3 overflow-x-auto">
+    <div class="w-full mb-3 overflow-x-auto">
       <table class="w-full border-separate border-spacing-y-2 text-sm text-gray-800 dark:text-gray-200">
         <tbody>
           <tr v-for="adv in advantages" :key="adv[store.lang]" class="bg-white dark:bg-[#FFFFFF10] shadow-sm rounded-md">
@@ -473,9 +474,15 @@ const advantagesTitle = ref({
           to="/docs#vue-ui-table">VueUiTable</router-link></span>.
     </p>
 
-
-    <div class="w-full max-w-[500px] mx-auto p-4 rounded shadow bg-white dark:bg-[#1A1A1A] my-8">
-      <AboutComponentTypes />
+    <div v-if="isDarkMode" class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px]">
+      <div v-for="skeleton in skeletonsDarkMode.slice(0, 3)" class="max-w-1/3">
+        <VueUiSkeleton :config="skeleton" />
+      </div>
+    </div>
+    <div v-else class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px]">
+      <div v-for="skeleton in skeletons.slice(0, 3)" class="max-w-1/3">
+        <VueUiSkeleton :config="skeleton" />
+      </div>
     </div>
 
     <a href="https://github.com/graphieros/vue-data-ui/graphs/contributors" target="_blank" v-if="contributors"
