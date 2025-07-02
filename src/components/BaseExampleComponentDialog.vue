@@ -22,14 +22,14 @@ const props = defineProps({
 const emit = defineEmits(['close']);
 
 const finalConfig = computed(() => {
-    const defaultConfig = getVueDataUiConfig(props.example.link.replaceAll('-', '_'));
+    // const defaultConfig = getVueDataUiConfig(props.example.link.replaceAll('-', '_'));
 
-    const final = useNestedProp({
-        userConfig: props.example.config,
-        defaultConfig,
-    });
+    // const final = useNestedProp({
+    //     userConfig: props.example.config,
+    //     defaultConfig,
+    // });
 
-    return final;
+    return props.example.config;
 });
 
 const generatedScript = computed(() => {
