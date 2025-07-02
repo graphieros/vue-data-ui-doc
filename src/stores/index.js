@@ -48,6 +48,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                viewComponentCode: {
+                    en: 'View component code',
+                    fr: 'Voir le code du composant',
+                    pt: 'Ver código do componente',
+                    de: 'Komponenten-Code anzeigen',
+                    zh: '查看组件代码',
+                    jp: 'コンポーネントのコードを表示',
+                    es: 'Ver código del componente',
+                    ko: '컴포넌트 코드 보기',
+                    ar: 'عرض شفرة المكون'
+                },
                 checkVueUiXyConfig: {
                     en: 'The contents of this config attributes correspond to the config of VueUiXy.',
                     fr: "Le contenu de ces attributs de configuration correspond à la configuration de VueUiXy.",
