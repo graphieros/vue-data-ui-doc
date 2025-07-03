@@ -35,7 +35,7 @@ const finalConfig = computed(() => {
 const generatedScript = computed(() => {
     return `import { ref } from "vue";
 import { ${props.example.component}${props.example.pattern || props.example.multiPattern ? ', VueUiPattern' : ''} } from "vue-data-ui";
-import "vue-data-ui/style.css"; // If you are using multiple components, place styles import in your main
+import "vue-data-ui/style.css"; // ${store.translations.styleImport[store.lang]}
 
 ${`const config = ref(${jsonToJsObject(finalConfig.value, 4, true)});`}
 

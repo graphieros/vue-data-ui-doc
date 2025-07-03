@@ -48,6 +48,17 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                styleImport: {
+                    en: 'If you are using multiple components, place this style import in your main',
+                    fr: 'Si vous utilisez plusieurs composants, placez cette importation de style dans votre fichier principal',
+                    pt: 'Se você estiver usando vários componentes, coloque esta importação de estilo no seu arquivo principal',
+                    de: 'Wenn Sie mehrere Komponenten verwenden, platzieren Sie diesen Style-Import in Ihrer Hauptdatei',
+                    zh: '如果您使用多个组件，请将此样式导入放在您的主文件中',
+                    jp: '複数のコンポーネントを使用している場合は、このスタイルのインポートをメインファイルに配置してください',
+                    es: 'Si estás utilizando varios componentes, coloca esta importación de estilos en tu archivo principal',
+                    ko: '여러 컴포넌트를 사용하는 경우 이 스타일 임포트를 메인 파일에 배치하세요',
+                    ar: 'إذا كنت تستخدم مكونات متعددة، فضع استيراد النمط هذا في ملفك الرئيسي'
+                },
                 viewComponentCode: {
                     en: 'View component code',
                     fr: 'Voir le code du composant',

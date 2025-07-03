@@ -127,7 +127,7 @@ function nuke() {
 const generatedScript = computed(() => {
     return `import { ${isComputed.value ? "computed" : "ref"} } from "vue";
 import { ${isUniversal.value ? "VueDataUi" : props.componentName} } from "vue-data-ui";
-import "vue-data-ui/style.css"; // If you are using multiple components, place styles import in your main
+import "vue-data-ui/style.css"; // ${store.translations.styleImport[store.lang]}
 
 ${isComputed.value
             ? `const config = computed(() => { 
