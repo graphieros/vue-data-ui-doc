@@ -393,6 +393,17 @@ export const useMainStore = defineStore("main", {
                     ko: `기본적으로 모든 차트는 상위 컨테이너의 너비를 기준으로 크기가 조정됩니다. '반응형' 구성 옵션이 있는 차트에서는 기본적으로 비활성화되어 있습니다. 차트에 '반응형' 구성 옵션을 사용할 수 있는 경우:`,
                     ar: ':بشكل افتراضي، سيتم ضبط حجم جميع المخططات بناءً على عرض الحاوية الرئيسية. يتم تعطيل خيار التكوين الخاص بالتجاوب افتراضيًا. إذا كان المخطط يحتوي على خيار التكوين الخاص بالتجاوب متاحًا'
                 },
+                responsiveProportionalSizing: {
+                    en: 'In responsive mode, set this attribute to false to disable proportional sizing of fonts and other elements.',
+                    fr: 'En mode responsive, définissez cet attribut sur false pour désactiver la mise à l\'échelle proportionnelle des polices et d\'autres éléments.',
+                    pt: 'No modo responsivo, defina este atributo como false para desabilitar o dimensionamento proporcional de fontes e outros elementos.',
+                    de: 'Im responsiven Modus setzen Sie dieses Attribut auf false, um die proportionale Größenanpassung von Schriftarten und anderen Elementen zu deaktivieren.',
+                    zh: '在响应模式下，将此属性设置为 false 以禁用字体和其他元素的比例缩放。',
+                    jp: 'レスポンシブモードでは、この属性を false に設定してフォントやその他の要素の比例サイズ変更を無効にします。',
+                    es: 'En modo responsive, establece este atributo en false para deshabilitar el dimensionamiento proporcional de las fuentes y otros elementos.',
+                    ko: '반응형 모드에서 이 속성을 false로 설정하여 글꼴 및 기타 요소의 비례 크기 조정을 비활성화합니다.',
+                    ar: 'في الوضع المتجاوب، اضبط هذه الخاصية على false لتعطيل تغيير حجم الخطوط والعناصر الأخرى بشكل نسبي.'
+                },
                 responsive: {
                     en: 'Set this attribute to true when the chart is placed inside a resizable container, or when the container has fixed dimensions. Never use when no height is set on the parent container, this will cause infinite height growth of the chart.',
                     fr: `Définissez cet attribut sur true lorsque le graphique est placé dans un conteneur redimensionnable ou lorsque le conteneur a des dimensions fixes. Ne jamais utiliser lorsqu'aucune hauteur n'est définie sur le conteneur parent, cela entraînerait une croissance infinie de la hauteur du graphique.`,
