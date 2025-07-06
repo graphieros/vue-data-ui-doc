@@ -60,6 +60,7 @@ const dataset = ref([
 const config = ref({
     theme: "",
     responsive: false,
+    responsiveProportionalSizing: true,
     useCssAnimation: true,
     table: {
         show: false,
@@ -199,6 +200,7 @@ const config = ref({
 const darkModeConfig = ref({
     theme: "",
     responsive: false,
+    responsiveProportionalSizing: true,
     useCssAnimation: true,
     table: {
         show: false,
@@ -474,8 +476,9 @@ const codeDataset = ref(`const dataset: VueUiFunnelDatasetItem[] = [
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiFunnelConfig" equal>
-        <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
-        <span>responsive: false, <span class="text-gray-600 dark:text-app-blue text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+        <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+        <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
+        <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>

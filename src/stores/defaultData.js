@@ -1458,15 +1458,20 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.grid.labels.xAxisLabels.modulo', def: 12, type: 'number', min: 2, max: 365, label: 'modulo', category: 'grid'},
 
                     { key: 'chart.grid.labels.xAxis.showBaseline', def: true, type: 'checkbox', label: ['xAxis', 'base line', 'is', 'show'], category: 'grid'},
+                    { key: 'chart.grid.labels.xAxis.showCrosshairs', def: true, type: 'checkbox', label: ['xAxis', 'crosshairs', 'is', 'show'], category: 'grid'},
+                    { key: 'chart.grid.labels.xAxis.crosshairSize', def: 6, type: 'number', min: 0, max: 20, label: ['xAxis', 'crosshairs', 'is', 'size'], category: 'grid'},
 
                     { key: 'chart.grid.labels.yAxis.commonScaleSteps', def: 10, type: 'number', min: 2, max: 20, label: ['yAxis', 'scale', 'is', 'steps'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.useIndividualScale', def: false, type: 'checkbox', label: ['yAxis', 'is', 'use individual scale'], category: 'grid'},
+                    { key: 'chart.grid.labels.yAxis.useNiceScale', def: true, type: 'checkbox', label: ['yAxis', 'is', 'use nice scale'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.stacked', def: false, type: 'checkbox', label: ['yAxis', 'is', 'stacked scales'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.gap', def: 12, type: 'number', min: 8, max: 24, label: ['yAxis', 'is', 'stack gap'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.labelWidth', def: 40, type: 'number', min: 36, max: 64, label: ['yAxis', 'is', 'labelWidth'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.groupColor', def: '#1A1A1A', type: 'color', label: ['yAxis', 'scales', 'group', 'is', 'color'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.scaleLabelOffsetX', def: 0, type: 'number', min: -100, max: 100, label: ['yAxis', 'scale label', 'is', 'offsetX'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.scaleValueOffsetX', def: 0, type: 'number', min: -100, max: 100, label: ['yAxis', 'scale value', 'is', 'offsetX'], category: 'grid'},
+                    { key: 'chart.grid.labels.yAxis.showCrosshairs', def: true, type: 'checkbox', label: ['yAxis', 'crosshairs', 'is', 'show'], category: 'grid'},
+                    { key: 'chart.grid.labels.yAxis.crosshairSize', def: 6, type: 'number', min: 0, max: 20, label: ['yAxis', 'crosshairs', 'is', 'size'], category: 'grid'},
 
                     { key: 'chart.labels.fontSize', def: 16, type: 'number', min: 6, max: 30, label: 'fontSize', category: 'labels' },
                     { key: 'chart.labels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },

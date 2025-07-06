@@ -1,5 +1,36 @@
 [
   {
+    "version": "v 2.13.1",
+    "date": "2025-07-06",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add responsiveProportionalSizing config attribute",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Add forceNiceScale config attribute",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Show baseline at the bottom when dataset is empty",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Add optional annotations",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "All charts with user options",
+        "description": "Add optional callbacks to override default button actions",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.12.7",
     "date": "2025-06-29",
     "updates": [

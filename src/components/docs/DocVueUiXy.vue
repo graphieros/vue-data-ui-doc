@@ -29,6 +29,7 @@ const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
 const lang = computed(() => store.lang)
+const average = ref(0);
 
 onMounted(() => store.docSnap = false);
 const { isMobile } = useMobile()
@@ -98,7 +99,7 @@ const dataset = computed(() => {
     },
     {
         name: "Series 3",
-        series: [75, 82, 80, null, 90, 100],
+        series: [75, 82, 80, null, 90, 97],
         type: "line",
         color: "#ff7f0e",
         useArea: false,
@@ -145,6 +146,7 @@ const codeDataset = ref(`const dataset: VueUiXyDatasetItem[] = [
 
 const config = ref({
     responsive: false,
+    responsiveProportionalSizing: true,
     useCssAnimation: true,
     showTable: false,
     downsample: {
@@ -153,6 +155,54 @@ const config = ref({
     chart: {
         backgroundColor: "#F3F4F6",
         color: "#1A1A1A",
+        annotations: [
+            {
+                show: true,
+                yAxis: {
+                    yTop: 70,
+                    yBottom: 60,
+                    label: {
+                        text: 'Target range',
+                        backgroundColor: '#42d392',
+                        offsetX: 3,
+                        fontSize: 18,
+                        border: {
+                            stroke: '#42d392',
+                        }
+                    },
+                    line: {
+                        stroke: '#42d392',
+                        strokeDasharray: 5,
+                    },
+                    area: {
+                        fill: '#42d392'
+                    }
+                }
+            },
+            {
+                show: true,
+                yAxis: {
+                    yTop: 50,
+                    yBottom: null,
+                    label: {
+                        text: 'Target n-1',
+                        position: 'end',
+                        textAnchor: 'end',
+                        backgroundColor: '#ff6600',
+                        color: '#1A1A1A',
+                        fontSize: 18,
+                        offsetY: 2,
+                        border: {
+                            stroke: '#3A3A3A',
+                        },
+                    },
+                    line: {
+                        stroke: '#ff6600',
+                        strokeDasharray: 5,
+                    }
+                }
+            }
+        ],
         highlighter: {
             color: "#1A1A1A",
             opacity: 10,
@@ -244,6 +294,7 @@ const config = ref({
                 yAxis: {
                     commonScaleSteps: 10,
                     useIndividualScale: false,
+                    useNiceScale: true,
                     stacked: false,
                     gap: 64,
                     labelWidth: 40,
@@ -252,10 +303,14 @@ const config = ref({
                     scaleMax: 100,
                     groupColor: null,
                     scaleLabelOffsetX: 0,
-                    scaleValueOffsetX: 0
+                    scaleValueOffsetX: 0,
+                    showCrosshairs: true,
+                    crosshairSize: 6
                 },
                 xAxis: {
-                    showBaseline: true
+                    showBaseline: true,
+                    showCrosshairs: true,
+                    crosshairSize: 6,
                 },
                 xAxisLabels: {
                     color: "#1A1A1A",
@@ -453,11 +508,60 @@ const darkModeConfig = ref({
         threshold: 500
     },
     responsive: false,
+    responsiveProportionalSizing: true,
     useCssAnimation: true,
     showTable: false,
     chart: {
         backgroundColor: "#1A1A1A",
         color: "#c8c8c8",
+        annotations: [
+            {
+                show: true,
+                yAxis: {
+                    yTop: 70,
+                    yBottom: 60,
+                    label: {
+                        text: 'Target range',
+                        backgroundColor: '#42d392',
+                        offsetX: 3,
+                        fontSize: 18,
+                        border: {
+                            stroke: '#42d392',
+                        }
+                    },
+                    line: {
+                        stroke: '#42d392',
+                        strokeDasharray: 5,
+                    },
+                    area: {
+                        fill: '#42d392'
+                    }
+                }
+            },
+            {
+                show: true,
+                yAxis: {
+                    yTop: 50,
+                    yBottom: null,
+                    label: {
+                        text: 'Target n-1',
+                        position: 'end',
+                        textAnchor: 'end',
+                        backgroundColor: '#ff6600',
+                        color: '#1A1A1A',
+                        fontSize: 18,
+                        offsetY: 2,
+                        border: {
+                            stroke: '#3A3A3A',
+                        },
+                    },
+                    line: {
+                        stroke: '#ff6600',
+                        strokeDasharray: 5,
+                    }
+                }
+            }
+        ],
         highlighter: {
             color: "#e1e5e8",
             opacity: 10,
@@ -549,6 +653,7 @@ const darkModeConfig = ref({
                 yAxis: {
                     commonScaleSteps: 10,
                     useIndividualScale: false,
+                    useNiceScale: true,
                     stacked: false,
                     gap: 64,
                     labelWidth: 40,
@@ -557,10 +662,14 @@ const darkModeConfig = ref({
                     scaleMax: 100,
                     groupColor: null,
                     scaleLabelOffsetX: 0,
-                    scaleValueOffsetX: 0
+                    scaleValueOffsetX: 0,
+                    showCrosshairs: true,
+                    crosshairSize: 6,
                 },
                 xAxis: {
-                    showBaseline: true
+                    showBaseline: true,
+                    showCrosshairs: true,
+                    crosshairSize: 6,
                 },
                 xAxisLabels: {
                     color: "#c8c8c8",
@@ -827,6 +936,12 @@ function randomizeData() {
         }
         return arr;
     })()
+
+    average.value = [
+        ...mutableDataset.value[0].series,
+        ...mutableDataset.value[1].series,
+        ...mutableDataset.value[2].series,
+    ].reduce((a, b) => a + b, 0) / (mutableDataset.value[0].series.length + mutableDataset.value[1].series.length + mutableDataset.value[1].series.length)
 }
 
 const dsTypeCode = computed(() => {
@@ -965,6 +1080,7 @@ const cssContent = `
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiXyConfig" equal>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+        <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
@@ -1012,6 +1128,8 @@ const cssContent = `
                     </BaseDetails>
                     <BaseDetails attr="xAxis" :level="4" title="chart.grid.labels.xAxis">
                         <BaseAttr name="showBaseline" attr="chart.grid.labels.xAxis.showBaseline" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="showCrosshairs" attr="chart.grid.labels.xAxis.showCrosshairs" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="crosshairSize" attr="chart.grid.labels.xAxis.crosshairSize" type="number" defaultVal="6" :min="0" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="xAxisLabels" :level="4" title="chart.grid.labels.xAxisLabels">
                         <BaseAttr name="show" attr="chart.grid.labels.xAxisLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1027,6 +1145,7 @@ const cssContent = `
                     <BaseDetails attr="yAxis" :level="4" title="chart.grid.labels.yAxis">
                         <BaseAttr name="commonScaleSteps" attr="chart.grid.labels.yAxis.commonScaleSteps" type="number" defaultVal="10" :min="2" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="useIndividualScale" attr="chart.grid.labels.yAxis.useIndividualScale" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                        <BaseAttr name="useNiceScale" attr="chart.grid.labels.yAxis.useNiceScale" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="labelWidth" attr="chart.grid.labels.yAxis.labelWidth" type="number" defaultVal="40" :min="40" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="stacked" attr="chart.grid.labels.yAxis.stacked" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Always use in combination with useIndividualScale: true" />
                         <BaseAttr name="gap" attr="chart.grid.labels.yAxis.gap" type="number" defaultVal="64" :min="20" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="To be used with useIndividualScale: true && stacked: true"/>
@@ -1037,6 +1156,8 @@ const cssContent = `
                         <BaseAttr name="groupColor" attr="chart.grid.labels.yAxis.groupColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set color of scales when they are grouped by the same scaleLabel (requires useIndividualScale: true)"/>
                         <BaseAttr name="scaleLabelOffsetX" attr="chart.grid.labels.yAxis.scaleLabelOffsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Active when useIndividualScale is set to true"/>
                         <BaseAttr name="scaleValueOffsetX" attr="chart.grid.labels.yAxis.scaleValueOffsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Active when useIndividualScale is set to true"/>
+                        <BaseAttr name="showCrosshairs" attr="chart.grid.labels.yAxis.showCrosshairs" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="crosshairSize" attr="chart.grid.labels.yAxis.crosshairSize" type="number" defaultVal="6" :min="0" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="zeroLine" :level="4" title="chart.grid.labels.zeroLine">
                         <BaseAttr name="show" attr="chart.grid.labels.zeroLine.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" /> 

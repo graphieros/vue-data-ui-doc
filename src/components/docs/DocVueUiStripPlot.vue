@@ -119,6 +119,7 @@ const dataset = ref([
 
 const config = ref({
     responsive: false,
+    responsiveProportionalSizing: true,
     useCssAnimation: true,
     userOptions: {
         show: true,
@@ -280,6 +281,7 @@ const config = ref({
 
 const darkModeConfig = ref({
     responsive: false,
+    responsiveProportionalSizing: true,
     useCssAnimation: true,
     userOptions: {
         show: true,
@@ -632,9 +634,10 @@ const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiStripPlotConfig" equal>
-        <span> responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
-        <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
-        <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
+        <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+        <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
+        <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+        <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>

@@ -36,6 +36,7 @@ const isDarkMode = computed(() => {
 const config = ref({
     type: "stopwatch",
     responsive: false,
+    responsiveProportionalSizing: true,
     style: {
         backgroundColor: "#F3F4F6",
         fontFamily: "inherit",
@@ -119,6 +120,7 @@ const config = ref({
 const darkModeConfig = ref({
     type: "stopwatch",
     responsive: false,
+    responsiveProportionalSizing: true,
     style: {
         backgroundColor: "#1A1A1A",
         fontFamily: "inherit",
@@ -304,7 +306,8 @@ const { configCode, showAllConfig } = useConfigCode()
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiTimerConfig" equal>
-        <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment> </span>
+        <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+        <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseAttr name="backgroundColor" attr="style.backgroundColor"  type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />

@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "./stores";
-import { getCumulativeAverage } from "vue-data-ui";
+import { getCumulativeAverage, mergeConfigs } from "vue-data-ui";
 import { shiftHue } from "./components/maker/lib";
 import colorBridge from "color-bridge";
 
@@ -4491,7 +4491,6 @@ export default function useExamples() {
                     ar: 'إسقاط وينكل تريبل'
                 }
             },
-
             // XY BASIC LINE
             { 
                 dataset: DATASET_XY_BASIC_LINE.value, 
@@ -4650,6 +4649,102 @@ export default function useExamples() {
                     es: 'Escala fija, punto de partida',
                     ko: '고정 스케일, 시작점',
                     ar: 'مقياس ثابت، نقطة البداية'
+                }
+            },
+            // XY ANNOTATIONS
+            { 
+                dataset: DATASET_XY_BASIC_LINE.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        annotations: [
+                            {
+                                show: true,
+                                yAxis: {
+                                    yTop: 40,
+                                    label: {
+                                        text: 'Good',
+                                        fontSize: 18,
+                                        offsetX: 2,
+                                        backgroundColor: '#42d39290',
+                                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                                        padding: { top: 8 },
+                                        border: {
+                                            stroke: '#42d392'
+                                        }
+                                    },
+                                    line: {
+                                        stroke: '#42d392',
+                                        strokeWidth: 2,
+                                        strokeDasharray: 5
+                                    }
+                                }
+                            },
+                            {
+                                show: true,
+                                yAxis: {
+                                    yTop: -40,
+                                    label: {
+                                        text: 'Bad',
+                                        fontSize: 18,
+                                        offsetX: -2,
+                                        position: 'end',
+                                        textAnchor: 'end',
+                                        backgroundColor: '#ff660090',
+                                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                                        padding: { top: 8 },
+                                        border: {
+                                            stroke: '#ff6600'
+                                        }
+                                    },
+                                    line: {
+                                        stroke: '#ff6600',
+                                        strokeWidth: 2,
+                                        strokeDasharray: 5
+                                    }
+                                }
+                            },
+                            {
+                                show: true,
+                                yAxis: {
+                                    yTop: 10,
+                                    yBottom: -10,
+                                    label: {
+                                        text: 'Neutral',
+                                        fontSize: 18,
+                                        offsetX: 2,
+                                        backgroundColor: '#CCCCCC90',
+                                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                                        padding: { top: 8 },
+                                        border: {
+                                            stroke: '#CCCCCC'
+                                        }
+                                    },
+                                    line: {
+                                        stroke: '#CCCCCC',
+                                        strokeWidth: 2,
+                                        strokeDasharray: 5
+                                    }
+                                }
+                            },
+                        ] 
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'line-annotations',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'With annotations on the Y axis',
+                    fr: 'Avec des annotations sur l’axe Y',
+                    pt: 'Com anotações no eixo Y',
+                    de: 'Mit Anmerkungen auf der Y-Achse',
+                    zh: '带有 Y 轴注释',
+                    jp: 'Y軸に注釈付き',
+                    es: 'Con anotaciones en el eje Y',
+                    ko: 'Y축에 주석 포함',
+                    ar: 'مع تعليقات توضيحية على المحور الصادي'
                 }
             },
             // XY HIGHLIGHT AREAS

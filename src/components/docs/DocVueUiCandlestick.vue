@@ -58,6 +58,7 @@ const dataset = ref([
 
 const config = ref({
   responsive: false,
+  responsiveProportionalSizing: true,
   useCssAnimation: true,
   style: {
     backgroundColor: "#F3F4F6",
@@ -227,6 +228,7 @@ const config = ref({
 
 const darkModeConfig = ref({
   responsive: false,
+  responsiveProportionalSizing: true,
   useCssAnimation: true,
   style: {
     backgroundColor: "#1A1A1A",
@@ -522,8 +524,9 @@ const dsTypeCodeExample = ref(`const dataset = [
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiCandlestickConfig" equal>
-    <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-    <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
+    <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+    <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
+    <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
     <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>

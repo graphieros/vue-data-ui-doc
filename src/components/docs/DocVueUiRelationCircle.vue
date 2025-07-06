@@ -130,6 +130,7 @@ const dataset = ref([
 
 const config = ref({
   responsive: false,
+  responsiveProportionalSizing: true,
   userOptions: {
     show: true,
     showOnChartHover: false,
@@ -209,6 +210,7 @@ const config = ref({
 
 const darkModeConfig = ref({
   responsive: false,
+  responsiveProportionalSizing: true,
   userOptions: {
     show: true,
     showOnChartHover: false,
@@ -505,9 +507,10 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiRelationCircleConfig" equal>
-    <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
-    <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span> 
-    <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
+    <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+    <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
+    <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+    <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
     <BaseDetails attr="style">
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="color" attr="style.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

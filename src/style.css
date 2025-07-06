@@ -239,3 +239,7 @@ input[type="range"]:hover {
 .fade-leave-to {
   opacity: 0;
 }
+
+.vue-data-ui-zoom input[type="range"] {
+  top:8px !important;
+}
