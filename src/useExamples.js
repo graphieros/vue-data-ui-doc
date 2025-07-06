@@ -759,6 +759,20 @@ export default function useExamples() {
         }
     ]);
 
+    const DATASET_XY_WITH_NULL = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            smooth: true,
+            series: [null, 64, 29, 55, 44, null, null, 77, 65, 45, 89]
+        },
+        {
+            name: 'Serie 2',
+            type: 'line',
+            series: [53, 24, 19, 35, null, null, null, 47, 25, 35, null]
+        },
+    ])
+
     const DATASET_XY_BACKGROUND = ref([
         {
             name: 'Serie 1',
@@ -4581,6 +4595,52 @@ export default function useExamples() {
                     es: 'Combinado',
                     ko: '결합된',
                     ar: 'مركب'
+                }
+            },
+            // XY WITH NULL VALUES LINKED
+            { 
+                dataset: DATASET_XY_WITH_NULL.value, 
+                config: BASE_XY_CONFIG.value,
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'line-incomplete',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'With incomplete data (null values) linked',
+                    fr: 'Avec des données incomplètes (valeurs nulles) liées',
+                    pt: 'Com dados incompletos (valores nulos) vinculados',
+                    de: 'Mit unvollständigen Daten (Nullwerte) verknüpft',
+                    zh: '已链接不完整的数据（空值）',
+                    jp: '不完全なデータ（null 値）がリンクされています',
+                    es: 'Con datos incompletos (valores nulos) vinculados',
+                    ko: '불완전한 데이터(널 값)이 연결됨',
+                    ar: 'مع بيانات غير مكتملة (قيم فارغة) مرتبطة'
+                }
+            },
+            // XY WITH NULL VALUES CUT
+            { 
+                dataset: DATASET_XY_WITH_NULL.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    line: {
+                        ...BASE_XY_CONFIG.value.line,
+                        cutNullValues: true
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'line-incomplete',
+                link: 'vue-ui-xy',
+                description: {
+                    en: 'With incomplete data (null values) cut',
+                    fr: 'Avec des données incomplètes (valeurs nulles) coupées',
+                    pt: 'Com dados incompletos (valores nulos) cortados',
+                    de: 'Mit ausgeschnittenen unvollständigen Daten (Nullwerte)',
+                    zh: '已剪切不完整的数据（空值）',
+                    jp: '不完全なデータ（null 値）が切り捨てられています',
+                    es: 'Con datos incompletos (valores nulos) cortados',
+                    ko: '불완전한 데이터(널 값)이 잘라짐',
+                    ar: 'مع قطع البيانات غير المكتملة (القيم الفارغة)'
                 }
             },
             // XY MULTIBAR
