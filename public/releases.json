@@ -1,6 +1,17 @@
 [
   {
-    "version": "v 2.13.2",
+    "version": "v 2.13.4",
+    "date": "2025-07-07",
+    "updates": [
+      {
+        "component": "All components with dual range input zoom",
+        "description": "Merge tooltips when they collide",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "version": "v 2.13.3",
     "date": "2025-07-06",
     "updates": [
       {
