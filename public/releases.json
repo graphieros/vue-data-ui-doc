@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.14.1",
+    "date": "2025-07-08",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Improve series layout in stacked mode",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Add config option to always position x axis crosshairs on zero",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 2.14.0",
     "date": "2025-07-08",
     "updates": [

@@ -1460,6 +1460,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.grid.labels.xAxis.showBaseline', def: true, type: 'checkbox', label: ['xAxis', 'base line', 'is', 'show'], category: 'grid'},
                     { key: 'chart.grid.labels.xAxis.showCrosshairs', def: true, type: 'checkbox', label: ['xAxis', 'crosshairs', 'is', 'show'], category: 'grid'},
                     { key: 'chart.grid.labels.xAxis.crosshairSize', def: 6, type: 'number', min: 0, max: 20, label: ['xAxis', 'crosshairs', 'is', 'size'], category: 'grid'},
+                    { key: 'chart.grid.labels.xAxis.crosshairsAlwaysAtZero', def: false, type: 'checkbox', label: ['xAxis', 'crosshairs', 'is', 'always at zero'], category: 'grid'},
 
                     { key: 'chart.grid.labels.yAxis.commonScaleSteps', def: 10, type: 'number', min: 2, max: 20, label: ['yAxis', 'scale', 'is', 'steps'], category: 'grid'},
                     { key: 'chart.grid.labels.yAxis.useIndividualScale', def: false, type: 'checkbox', label: ['yAxis', 'is', 'use individual scale'], category: 'grid'},

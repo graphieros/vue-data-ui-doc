@@ -306,7 +306,7 @@ const config = ref({
                     useIndividualScale: false,
                     useNiceScale: true,
                     stacked: false,
-                    gap: 64,
+                    gap: 28,
                     labelWidth: 40,
                     showBaseline: true,
                     scaleMin: null,
@@ -320,6 +320,7 @@ const config = ref({
                 xAxis: {
                     showBaseline: true,
                     showCrosshairs: true,
+                    crosshairsAlwaysAtZero: false,
                     crosshairSize: 6,
                 },
                 xAxisLabels: {
@@ -679,7 +680,7 @@ const darkModeConfig = ref({
                     useIndividualScale: false,
                     useNiceScale: true,
                     stacked: false,
-                    gap: 64,
+                    gap: 28,
                     labelWidth: 40,
                     showBaseline: true,
                     scaleMin: null,
@@ -694,6 +695,7 @@ const darkModeConfig = ref({
                     showBaseline: true,
                     showCrosshairs: true,
                     crosshairSize: 6,
+                    crosshairsAlwaysAtZero: false,
                 },
                 xAxisLabels: {
                     color: "#c8c8c8",
@@ -1168,6 +1170,7 @@ const cssContent = `
                         <BaseAttr name="showBaseline" attr="chart.grid.labels.xAxis.showBaseline" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="showCrosshairs" attr="chart.grid.labels.xAxis.showCrosshairs" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="crosshairSize" attr="chart.grid.labels.xAxis.crosshairSize" type="number" defaultVal="6" :min="0" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="crosshairsAlwaysAtZero" attr="chart.grid.labels.xAxis.crosshairsAlwaysAtZero" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="xAxisLabels" :level="4" title="chart.grid.labels.xAxisLabels">
                         <BaseAttr name="show" attr="chart.grid.labels.xAxisLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
