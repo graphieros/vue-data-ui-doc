@@ -142,7 +142,17 @@ const codeDataset = ref(`const dataset: VueUiXyDatasetItem[] = [
         scaleSteps: 5,
         showSerieName: 'end'
     },
-]`)
+]`);
+
+const monthValues = computed(() => {
+    const yearStart = 2026;
+    const arr = [];
+    for (let i = 0; i < 21; i += 1) {
+        const d = new Date(yearStart, i, 1);
+        arr.push(d.getTime());
+    }
+    return arr;
+});
 
 const config = ref({
     responsive: false,
@@ -316,7 +326,21 @@ const config = ref({
                     color: "#1A1A1A",
                     show: true,
                     showOnlyFirstAndLast: false,
-                    values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
+                    values: monthValues.value,
+                    datetimeFormatter: {
+                        enable: true,
+                        locale: 'en',
+                        useUTC: false,
+                        januaryAsYear: false,
+                        options: {
+                            year: 'yyyy',
+                            month: `MMM 'yy`,
+                            day: 'dd MMM',
+                            hour: 'HH:mm',
+                            minute: 'HH:mm:ss',
+                            second: 'HH:mm:ss'
+                        }
+                    },
                     fontSize: 18,
                     yOffset: 0,
                     rotation: 0,
@@ -675,7 +699,21 @@ const darkModeConfig = ref({
                     color: "#c8c8c8",
                     show: true,
                     showOnlyFirstAndLast: false,
-                    values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
+                    values: monthValues.value,
+                    datetimeFormatter: {
+                        enable: true,
+                        locale: 'en',
+                        useUTC: false,
+                        januaryAsYear: false,
+                        options: {
+                            year: 'yyyy',
+                            month: `MMM 'yy`,
+                            day: 'dd MMM',
+                            hour: 'HH:mm',
+                            minute: 'HH:mm:ss',
+                            second: 'HH:mm:ss'
+                        }
+                    },
                     fontSize: 18,
                     yOffset: 0,
                     rotation: 0,
@@ -1136,6 +1174,19 @@ const cssContent = `
                         <BaseAttr name="showOnlyFirstAndLast" attr="chart.grid.labels.xAxisLabels.showOnlyFirstAndLast" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="color" attr="chart.grid.labels.xAxisLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <span>values: [], <BaseComment>string[]</BaseComment></span>
+                        <BaseDetails attr="datetimeFormatter" :level="5" title="chart.grid.labels.xAxisLabels.datetimeFormatter">
+                            <BaseAttr name="enable" attr="chart.grid.labels.xAxisLabels.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="locale" attr="chart.grid.labels.xAxisLabels.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="useUTC" attr="chart.grid.labels.xAxisLabels.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="januaryAsYear" attr="chart.grid.labels.xAxisLabels.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseDetails attr="options" :level="6" title="chart.grid.labels.xAxisLabels.datetimeFormatter.options">
+                                <BaseAttr name="year" attr="chart.grid.labels.xAxisLabels.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="month" attr="chart.grid.labels.xAxisLabels.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="day" attr="chart.grid.labels.xAxisLabels.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="minute" attr="chart.grid.labels.xAxisLabels.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="second" attr="chart.grid.labels.xAxisLabels.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            </BaseDetails>
+                        </BaseDetails>
                         <BaseAttr name="fontSize" attr="chart.grid.labels.xAxisLabels.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="yOffset" attr="chart.grid.labels.xAxisLabels.yOffset" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="rotation" attr="chart.grid.labels.xAxisLabels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

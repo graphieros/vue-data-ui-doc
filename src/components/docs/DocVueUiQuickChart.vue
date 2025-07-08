@@ -45,7 +45,17 @@ const palette = ref([
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
-})
+});
+
+const monthValues = computed(() => {
+    const yearStart = 2026;
+    const arr = [];
+    for (let i = 0; i < 21; i += 1) {
+        const d = new Date(yearStart, i, 1);
+        arr.push(d.getTime());
+    }
+    return arr;
+});
 
 const icons = ref([
     "spin",
@@ -203,7 +213,21 @@ const config = ref({
     xyPaddingLeft: 48,
     xyPaddingRight: 12,
     xyPaddingTop: 24,
-    xyPeriods: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+    xyPeriods: monthValues.value,
+    datetimeFormatter: {
+        enable: true,
+        locale: 'en',
+        useUTC: false,
+        januaryAsYear: false,
+        options: {
+            year: 'yyyy',
+            month: `MMM 'yy`,
+            day: 'dd MMM',
+            hour: 'HH:mm',
+            minute: 'HH:mm:ss',
+            second: 'HH:mm:ss'
+        }
+    },
     xyPeriodLabelsRotation: 0,
     xyPeriodsShowOnlyAtModulo: false,
     xyPeriodsModulo: 12,
@@ -321,7 +345,21 @@ const darkModeConfig = ref({
     xyPaddingLeft: 48,
     xyPaddingRight: 12,
     xyPaddingTop: 24,
-    xyPeriods: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+    xyPeriods: monthValues.value,
+    datetimeFormatter: {
+        enable: true,
+        locale: 'en',
+        useUTC: false,
+        januaryAsYear: false,
+        options: {
+            year: 'yyyy',
+            month: `MMM 'yy`,
+            day: 'dd MMM',
+            hour: 'HH:mm',
+            minute: 'HH:mm:ss',
+            second: 'HH:mm:ss'
+        }
+    },
     xyPeriodLabelsRotation: 0,
     xyPeriodsShowOnlyAtModulo: true,
     xyPeriodsModulo: 12,
@@ -880,6 +918,19 @@ function copyComponentSnippet(snip) {
             <BaseAttr name="xyPaddingRight" attr="xyPaddingRight" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="xyPaddingTop" attr="xyPaddingTop" type="number" defaultVal="24" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <span>xyPeriods: [], <span class="text-app-blue text-xs">// Array&lt;string | number&gt;</span></span>
+            <BaseDetails attr="datetimeFormatter" :level="1" title="datetimeFormatter">
+                <BaseAttr name="enable" attr="datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="locale" attr="datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="useUTC" attr="datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="januaryAsYear" attr="datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="options" :level="6" title="datetimeFormatter.options">
+                    <BaseAttr name="year" attr="datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="month" attr="datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="day" attr="datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="minute" attr="datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="second" attr="datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+            </BaseDetails>
             <BaseAttr name="xyPeriodLabelsRotation" attr="xyPeriodLabelsRotation" type="number" defaultVal="0" :min="-360" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="xyPeriodsShowOnlyAtModulo" attr="xyPeriodsShowOnlyAtModulo" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="Ideal for large datasets"/>
             <BaseAttr name="xyPeriodsModulo" attr="xyPeriodsModulo" type="number" defaultVal="12" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="With xyPeriodsShowOnlyAtModulo set to true" />

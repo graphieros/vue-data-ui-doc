@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useMainStore = defineStore("main", {
     state: () => {
         return {
+            locales: ['ar', 'be-cyrl', 'be-latn', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'fa', 'fi', 'fr', 'he', 'hi', 'hr', 'hu', 'hy', 'id', 'it', 'ja', 'ka', 'ko', 'lt', 'lv', 'ms', 'nb', 'nl', 'pl', 'pt-br', 'pt', 'rs', 'ru', 'se', 'sk', 'sl', 'sq', 'th', 'tr', 'ua', 'vi', 'zh-cn', 'zh-tw'],
             isSafari: false,
             docSnap: false,
             pack: {},

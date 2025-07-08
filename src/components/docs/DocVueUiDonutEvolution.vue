@@ -33,6 +33,15 @@ watch(() => store.isDarkMode, (val) => {
     })
 });
 
+const monthValues = computed(() => {
+    const yearStart = 2026;
+    const arr = [];
+    for (let i = 0; i < 21; i += 1) {
+        const d = new Date(yearStart, i, 1);
+        arr.push(d.getTime());
+    }
+    return arr;
+});
 
 const isDarkMode = computed(() => {
     return store.isDarkMode;
@@ -170,7 +179,21 @@ const config = ref({
                     dataLabels: {
                         color: "#2D353C",
                         show: true,
-                        values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                        values: monthValues.value,
+                        datetimeFormatter: {
+                            enable: true,
+                            locale: 'en',
+                            useUTC: false,
+                            januaryAsYear: false,
+                            options: {
+                                year: 'yyyy',
+                                month: `MMM 'yy`,
+                                day: 'dd MMM',
+                                hour: 'HH:mm',
+                                minute: 'HH:mm:ss',
+                                second: 'HH:mm:ss'
+                            }
+                        },
                         fontSize: 8,
                         showOnlyFirstAndLast: false,
                         offsetY: 0,
@@ -385,7 +408,21 @@ const darkModeConfig = ref({
                     xAxis: {
                         dataLabels: {
                             show: true,
-                            values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                            values: monthValues.value,
+                            datetimeFormatter: {
+                                enable: true,
+                                locale: 'en',
+                                useUTC: false,
+                                januaryAsYear: false,
+                                options: {
+                                    year: 'yyyy',
+                                    month: `MMM 'yy`,
+                                    day: 'dd MMM',
+                                    hour: 'HH:mm',
+                                    minute: 'HH:mm:ss',
+                                    second: 'HH:mm:ss'
+                                }
+                            },
                             fontSize: 8,
                             showOnlyFirstAndLast: false,
                             color: "#CCCCCC",
@@ -673,6 +710,19 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
                             <BaseDetails attr="dataLabels" :level="6" title="style.chart.layout.grid.xAxis.dataLabels">
                                 <BaseAttr name="show" attr="style.chart.layout.grid.xAxis.dataLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <span>values: string[],</span>
+                                <BaseDetails attr="datetimeFormatter" :level="7" title="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter">
+                                    <BaseAttr name="enable" attr="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="locale" attr="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="useUTC" attr="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="januaryAsYear" attr="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseDetails attr="options" :level="8" title="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter.options">
+                                        <BaseAttr name="year" attr="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="month" attr="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="day" attr="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="minute" attr="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="second" attr="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    </BaseDetails>
+                                </BaseDetails>
                                 <BaseAttr name="fontSize" attr="style.chart.layout.grid.xAxis.dataLabels.fontSize" type="number" defaultVal="8" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="color" attr="style.chart.layout.grid.xAxis.dataLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="offsetY" attr="style.chart.layout.grid.xAxis.dataLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

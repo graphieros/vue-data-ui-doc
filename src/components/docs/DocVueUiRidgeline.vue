@@ -47,6 +47,16 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
 
+const monthValues = computed(() => {
+    const yearStart = 2026;
+    const arr = [];
+    for (let i = 0; i < 21; i += 1) {
+        const d = new Date(yearStart, i, 1);
+        arr.push(d.getTime());
+    }
+    return arr;
+});
+
 function makeDs(n) {
     let arr = [];
     for (let i = 0; i < n; i += 1) {
@@ -459,7 +469,21 @@ const darkModeConfig = ref({
                                     color: "#CCCCCC",
                                     show: true,
                                     showOnlyFirstAndLast: false,
-                                    values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                                    values: monthValues.value,
+                                    datetimeFormatter: {
+                                        enable: true,
+                                        locale: 'en',
+                                        useUTC: false,
+                                        januaryAsYear: false,
+                                        options: {
+                                            year: 'yyyy',
+                                            month: `MMM 'yy`,
+                                            day: 'dd MMM',
+                                            hour: 'HH:mm',
+                                            minute: 'HH:mm:ss',
+                                            second: 'HH:mm:ss'
+                                        }
+                                    },
                                     fontSize: 18,
                                     yOffset: 0,
                                     rotation: 0,
@@ -523,7 +547,21 @@ const darkModeConfig = ref({
                     prefix: "",
                     suffix: "",
                     rotation: 0,
-                    values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                    values: monthValues.value,
+                    datetimeFormatter: {
+                        enable: true,
+                        locale: 'en',
+                        useUTC: false,
+                        januaryAsYear: false,
+                        options: {
+                            year: 'yyyy',
+                            month: `MMM 'yy`,
+                            day: 'dd MMM',
+                            hour: 'HH:mm',
+                            minute: 'HH:mm:ss',
+                            second: 'HH:mm:ss'
+                        }
+                    },
                     color: "#8A8A8A",
                     fontSize: 14,
                     bold: false,
@@ -1098,6 +1136,19 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
                                         <BaseAttr name="suffix" attr="style.chart.xAxis.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                         <BaseAttr name="rotation" attr="style.chart.xAxis.labels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                         <span>values: string[],</span>
+                                        <BaseDetails attr="datetimeFormatter" :level="5" title="style.chart.xAxis.labels.datetimeFormatter">
+                                            <BaseAttr name="enable" attr="style.chart.xAxis.labels.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseAttr name="locale" attr="style.chart.xAxis.labels.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseAttr name="useUTC" attr="style.chart.xAxis.labels.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseAttr name="januaryAsYear" attr="style.chart.xAxis.labels.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseDetails attr="options" :level="6" title="style.chart.xAxis.labels.datetimeFormatter.options">
+                                                <BaseAttr name="year" attr="style.chart.xAxis.labels.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                                <BaseAttr name="month" attr="style.chart.xAxis.labels.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                                <BaseAttr name="day" attr="style.chart.xAxis.labels.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                                <BaseAttr name="minute" attr="style.chart.xAxis.labels.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                                <BaseAttr name="second" attr="style.chart.xAxis.labels.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            </BaseDetails>
+                                        </BaseDetails>
                                         <BaseAttr name="color" attr="style.chart.xAxis.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                         <BaseAttr name="fontSize" attr="style.chart.xAxis.labels.fontSize" type="number" defaultVal="14" :min="8" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                         <BaseAttr name="bold" attr="style.chart.xAxis.labels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

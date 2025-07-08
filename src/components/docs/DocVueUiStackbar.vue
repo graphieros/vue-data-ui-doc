@@ -36,6 +36,16 @@ watch(() => store.isDarkMode, (val) => {
     emit('forceDocReload');
 });
 
+const monthValues = computed(() => {
+    const yearStart = 2026;
+    const arr = [];
+    for (let i = 0; i < 21; i += 1) {
+        const d = new Date(yearStart, i, 1);
+        arr.push(d.getTime());
+    }
+    return arr;
+});
+
 const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
@@ -238,7 +248,21 @@ const config = ref({
                     },
                     timeLabels: {
                         show: true,
-                        values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN'],
+                        values: monthValues.value,
+                        datetimeFormatter: {
+                            enable: true,
+                            locale: 'en',
+                            useUTC: false,
+                            januaryAsYear: false,
+                            options: {
+                                year: 'yyyy',
+                                month: `MMM 'yy`,
+                                day: 'dd MMM',
+                                hour: 'HH:mm',
+                                minute: 'HH:mm:ss',
+                                second: 'HH:mm:ss'
+                            }
+                        },
                         offsetY: 0,
                         rotation: 0,
                         fontSize: 14,
@@ -450,7 +474,21 @@ const darkModeConfig = ref({
                     },
                     timeLabels: {
                         show: true,
-                        values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN'],
+                        values: monthValues.value,
+                        datetimeFormatter: {
+                            enable: true,
+                            locale: 'en',
+                            useUTC: false,
+                            januaryAsYear: false,
+                            options: {
+                                year: 'yyyy',
+                                month: `MMM 'yy`,
+                                day: 'dd MMM',
+                                hour: 'HH:mm',
+                                minute: 'HH:mm:ss',
+                                second: 'HH:mm:ss'
+                            }
+                        },
                         offsetY: 0,
                         rotation: 0,
                         fontSize: 14,
@@ -824,6 +862,19 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                             <BaseDetails attr="timeLabels" :level="5" title="style.chart.grid.x.timeLabels">
                                 <BaseAttr name="show" attr="style.chart.grid.x.timeLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <span>values: string[],</span>
+                                <BaseDetails attr="datetimeFormatter" :level="6" title="style.chart.grid.x.timeLabels.datetimeFormatter">
+                                    <BaseAttr name="enable" attr="style.chart.grid.x.timeLabels.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="locale" attr="style.chart.grid.x.timeLabels.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="useUTC" attr="style.chart.grid.x.timeLabels.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="januaryAsYear" attr="style.chart.grid.x.timeLabels.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseDetails attr="options" :level="7" title="style.chart.grid.x.timeLabels.datetimeFormatter.options">
+                                        <BaseAttr name="year" attr="style.chart.grid.x.timeLabels.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="month" attr="style.chart.grid.x.timeLabels.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="day" attr="style.chart.grid.x.timeLabels.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="minute" attr="style.chart.grid.x.timeLabels.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseAttr name="second" attr="style.chart.grid.x.timeLabels.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    </BaseDetails>
+                                </BaseDetails>
                                 <BaseAttr name="fontSize" attr="style.chart.grid.x.timeLabels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="color" attr="style.chart.grid.x.timeLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="offsetY" attr="style.chart.grid.x.timeLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
