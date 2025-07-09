@@ -20,6 +20,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 
 const mainConfig = useConfig()
 
@@ -692,7 +693,7 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
         
         <Rater itemId="vue_ui_stackbar" />
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_stackbar" signInfo="both">
+        <Box :showDatetimeFormatter="true" showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_stackbar" signInfo="both">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -1159,6 +1160,12 @@ Target the following css class to apply custom styles:
                         <VueUiPattern v-if="seriesIndex === 3" :id="patternId" name="bubbles" stroke="#FF000050"/>
                     </template>
                 </VueUiStackbar>
+            </template>
+
+            <template #tab10>
+                <DatetimeFormatterDoc
+                    path="style.chart.grid.x.timeLabels.datetimeFormatter"
+                />
             </template>
         </Box>
 

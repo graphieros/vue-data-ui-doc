@@ -17,6 +17,7 @@ import Rater from "../Rater.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import { jsonToJsObject, copyCode } from "../maker/lib";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 
 const mainConfig = useConfig()
 
@@ -769,7 +770,7 @@ function copyComponentSnippet(snip) {
         </div>
         <Rater itemId="vue_ui_quick_chart" />
 
-        <Box showSlots showTooltip showEmits showThemes showResponsive schema="vue_ui_quick_chart">
+        <Box :showDatetimeFormatter="true" showSlots showTooltip showEmits showThemes showResponsive schema="vue_ui_quick_chart">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -1048,6 +1049,13 @@ Target the following css class to apply custom styles:
                     </template>
                 </ResponsiveUnit>
             </template>
+
+            <template #tab10>
+                <DatetimeFormatterDoc
+                    path="datetimeFormatter"
+                />
+            </template>
+
         </Box>
     </div>
 </template>

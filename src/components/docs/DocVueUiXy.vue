@@ -1695,11 +1695,11 @@ Target the following css class to apply custom styles:
                 />
             </template>
 
-            <!-- <template #tab10>
+            <template #tab10>
                 <DatetimeFormatterDoc
                     path="chart.grid.labels.xAxisLabels.datetimeFormatter"
                 />
-            </template> -->
+            </template>
         </Box>
     </div>
 </template>

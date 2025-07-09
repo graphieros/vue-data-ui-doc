@@ -22,6 +22,7 @@ import colorBridge from "color-bridge";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { RouterLink } from "vue-router";
 import ThemesVueUiRidgeline from "../themes/ThemesVueUiRidgeline.vue";
+import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -990,7 +991,7 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
 
         <Rater itemId="vue_ui_ridgeline" class="mt-12" />
 
-        <Box showEmits showSlots showThemes showResponsive showPatterns schema="vue_ui_ridgeline" signInfo="both">
+        <Box :showDatetimeFormatter="true" showEmits showSlots showThemes showResponsive showPatterns schema="vue_ui_ridgeline" signInfo="both">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
@@ -1291,6 +1292,12 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
                         <VueUiPattern v-if="seriesIndex === 0" :id="patternId" name="scales" stroke="grey" :strokeWidth="1" :scale="0.7"/>
                     </template>
                 </VueDataUi>
+            </template>
+
+            <template #tab10>
+                <DatetimeFormatterDoc
+                    path="style.chart.xAxis.labels.datetimeFormatter"
+                />
             </template>
         </Box>
     </div>

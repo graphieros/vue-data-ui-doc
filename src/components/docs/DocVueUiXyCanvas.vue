@@ -20,6 +20,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 
 const mainConfig = useConfig();
 
@@ -678,7 +679,7 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
       <Rater itemId="vue_ui_xy_canvas" />
     </div>
 
-    <Box showEmits showSlots showUseCases showThemes showTooltip showResponsive schema="vue_ui_xy_canvas"
+    <Box :showDatetimeFormatter="true" showEmits showSlots showUseCases showThemes showTooltip showResponsive schema="vue_ui_xy_canvas"
       signInfo="both">
       <template #tab0>
         <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -2258,6 +2259,13 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
           </template>
         </ResponsiveUnit>
       </template>
+
+      <template #tab10>
+          <DatetimeFormatterDoc
+              path="style.chart.grid.y.timeLabels.datetimeFormatter"
+          />
+      </template>
+
     </Box>
   </div>
 </template>
