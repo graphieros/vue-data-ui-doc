@@ -1140,8 +1140,8 @@ const cssContent = `
                 {
                     <BaseAttr indent inactive name="show" defaultVal="false,"/>
                     <BaseDetails indent attr="yAxis" title="chart.annotations[i].yAxis" :level="3">
-                        <BaseAttr inactive name="yTop" defaultVal="null,"/>
-                        <BaseAttr inactive name="yBottom" defaultVal="null,"/>
+                        <BaseAttr inactive name="yTop" defaultVal="null," comment="Provide a number in the scale of your dataset"/>
+                        <BaseAttr inactive name="yBottom" defaultVal="null," comment="Provide another number in the scale of your dataset. If it's different than yTop, an area will appear"/>
                         <BaseDetails attr="label" :level="4" title="chart.annotations[i].yAxis.label">
                             <BaseAttr inactive name="text" defaultVal="'',"/>
                             <BaseAttr inactive name="color" defaultVal="'#2D353C',"/>
@@ -1149,8 +1149,8 @@ const cssContent = `
                             <BaseAttr inactive name="offsetX" defaultVal="0,"/>
                             <BaseAttr inactive name="offsetY" defaultVal="0,"/>
                             <BaseAttr inactive name="fontSize" defaultVal="14,"/>
-                            <BaseAttr inactive name="textAnchor" defaultVal="'start',"/>
-                            <BaseAttr inactive name="position" defaultVal="'start',"/>
+                            <BaseAttr inactive name="textAnchor" defaultVal="'start'," comment="or 'end'"/>
+                            <BaseAttr inactive name="position" defaultVal="'start'," comment="or 'end'"/>
                             <BaseDetails attr="padding" :level="5" title="chart.annotations[i].yAxis.label.padding">
                                 <BaseAttr inactive name="top" defaultVal="5,"/>
                                 <BaseAttr inactive name="right" defaultVal="10,"/>
