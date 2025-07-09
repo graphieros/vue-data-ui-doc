@@ -1135,9 +1135,9 @@ const cssContent = `
             <BaseAttr name="color" attr="chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr inactive name="height" defaultVal="600"/>
             <BaseAttr inactive name="width" defaultVal="1000"/>
-            <BaseDetails attr="annotations" :level="2" title="chart.annotations">
+            <BaseDetails brackets attr="annotations" :level="2" title="chart.annotations">
                 <BaseComment>Provide an array of annotations</BaseComment>
-                [
+                {
                     <BaseAttr indent inactive name="show" defaultVal="false,"/>
                     <BaseDetails indent attr="yAxis" title="chart.annotations[i].yAxis" :level="3">
                         <BaseAttr inactive name="yTop" defaultVal="null,"/>
@@ -1174,7 +1174,7 @@ const cssContent = `
                             <BaseAttr inactive name="opacity" defaultVal="30,"/>
                         </BaseDetails>
                     </BaseDetails>
-                ]
+                }, <BaseComment>Other annotations...</BaseComment>
             </BaseDetails>
             <BaseDetails attr="comments" :level="2" title="chart.comments">
                 <BaseAttr name="show" attr="chart.comments.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
