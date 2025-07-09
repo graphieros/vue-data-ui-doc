@@ -1,5 +1,61 @@
 [
   {
+    "version": "v 2.15.0",
+    "date": "2025-07-09",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Remove opacity from arc colors",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Display layout gracefully when dataset values are all empty arrays",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiRidgeline",
+        "description": "Allow usage of line breaks on time labels to display multiline labels",
+        "link": "/docs#vue-ui-ridgeline"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Allow usage of line breaks on time labels to display multiline labels",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Allow usage of line breaks on plot labels to display multiline labels",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Allow usage of line breaks on axis labels to display multiline labels",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiHistoryPlot",
+        "description": "Allow usage of line breaks on plot labels to display multiline labels",
+        "link": "/docs#vue-ui-history-plot"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Allow usage of line breaks on time labels to display multiline labels",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Allow usage of line breaks on time labels to display multiline labels",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Allow usage of line breaks on time labels to display multiline labels",
+        "link": "/docs#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.14.2",
     "date": "2025-07-09",
     "updates": [
