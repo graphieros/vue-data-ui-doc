@@ -72,6 +72,10 @@ const props = defineProps({
     inactive: {
         type: Boolean,
         default: false
+    },
+    indent: {
+        type: Boolean,
+        default: false,
     }
 })
 
@@ -156,7 +160,7 @@ const translatedTooltip = computed(() => {
 </script>
 
 <template>
-    <div class="relative min-h-[32px] py-1" @mouseenter="isSelected=true" @mouseout="isSelected=false">
+    <div :class="`relative min-h-[32px] py-1 ${indent ? 'ml-6' : ''}`" @mouseenter="isSelected=true" @mouseout="isSelected=false">
         <FlexibleTooltip position="top" :mute="!translatedTooltip" :content="translatedTooltip" width="min-w-[100px] max-w-[300px]" opacity="group-hover:opacity-[0.9]">
             <label :for="`i_${id}`" :id="id" class="pr-1">{{ name }}:</label>
             <span v-if="inactive" class="ml-1">

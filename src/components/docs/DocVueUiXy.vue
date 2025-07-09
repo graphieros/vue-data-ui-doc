@@ -1135,6 +1135,47 @@ const cssContent = `
             <BaseAttr name="color" attr="chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr inactive name="height" defaultVal="600"/>
             <BaseAttr inactive name="width" defaultVal="1000"/>
+            <BaseDetails attr="annotations" :level="2" title="chart.annotations">
+                <BaseComment>Provide an array of annotations</BaseComment>
+                [
+                    <BaseAttr indent inactive name="show" defaultVal="false,"/>
+                    <BaseDetails indent attr="yAxis" title="chart.annotations[i].yAxis" :level="3">
+                        <BaseAttr inactive name="yTop" defaultVal="null,"/>
+                        <BaseAttr inactive name="yBottom" defaultVal="null,"/>
+                        <BaseDetails attr="label" :level="4" title="chart.annotations[i].yAxis.label">
+                            <BaseAttr inactive name="text" defaultVal="'',"/>
+                            <BaseAttr inactive name="color" defaultVal="'#2D353C',"/>
+                            <BaseAttr inactive name="backgroundColor" defaultVal="'#E1E5E8',"/>
+                            <BaseAttr inactive name="offsetX" defaultVal="0,"/>
+                            <BaseAttr inactive name="offsetY" defaultVal="0,"/>
+                            <BaseAttr inactive name="fontSize" defaultVal="14,"/>
+                            <BaseAttr inactive name="textAnchor" defaultVal="'start',"/>
+                            <BaseAttr inactive name="position" defaultVal="'start',"/>
+                            <BaseDetails attr="padding" :level="5" title="chart.annotations[i].yAxis.label.padding">
+                                <BaseAttr inactive name="top" defaultVal="5,"/>
+                                <BaseAttr inactive name="right" defaultVal="10,"/>
+                                <BaseAttr inactive name="bottom" defaultVal="5,"/>
+                                <BaseAttr inactive name="left" defaultVal="10,"/>
+                            </BaseDetails>
+                            <BaseDetails attr="border" :level="5" title="chart.annotations[i].yAxis.label.border">
+                                <BaseAttr inactive name="stroke" defaultVal="'#FFFFFF',"/>
+                                <BaseAttr inactive name="strokeWidth" defaultVal="1,"/>
+                                <BaseAttr inactive name="rx" defaultVal="0,"/>
+                                <BaseAttr inactive name="ry" defaultVal="0,"/>
+                            </BaseDetails>
+                        </BaseDetails>
+                        <BaseDetails attr="line" :level="4" title="chart.annotations[i].yAxis.line">
+                            <BaseAttr inactive name="stroke" defaultVal="'#2D353C',"/>
+                            <BaseAttr inactive name="strokeWidth" defaultVal="1,"/>
+                            <BaseAttr inactive name="strokeDasharray" defaultVal="0,"/>
+                        </BaseDetails>
+                        <BaseDetails attr="area" :level="2" title="chart.annotations[i].yAxis.area">
+                            <BaseAttr inactive name="fill" defaultVal="'#E1E5E8',"/>
+                            <BaseAttr inactive name="opacity" defaultVal="30,"/>
+                        </BaseDetails>
+                    </BaseDetails>
+                ]
+            </BaseDetails>
             <BaseDetails attr="comments" :level="2" title="chart.comments">
                 <BaseAttr name="show" attr="chart.comments.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="showInTooltip" attr="chart.comments.showInTooltip" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
