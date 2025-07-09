@@ -79,6 +79,8 @@ const darkModeConfig = ref({
             gradientIntensity: 40,
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
+            width: 512,
+            height: 360,
             padding: {
                 top: 0,
                 right: 0,
@@ -280,6 +282,8 @@ const config = ref({
             gradientIntensity: 40,
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
+            width: 512,
+            height: 360,
             padding: {
                 top: 0,
                 right: 0,
@@ -787,6 +791,8 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
         <BaseDetails attr="style" :level="1">
             <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
             <BaseDetails attr="chart" :level="2" title="style.chart">
+                <BaseAttr name="width" attr="style.chart.width" defaultVal="512" type="number" :min="360" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Ignored when responsive is true"/>
+                <BaseAttr name="height" attr="style.chart.height" defaultVal="512" type="number" :min="360" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Ignored when responsive is true"/>
                 <BaseAttr name="useGradient" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" attr="style.chart.useGradient" defaultVal="true"/>
                 <BaseAttr name="gradientIntensity" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="0" :max="100" attr="style.chart.gradientIntensity" defaultVal="40" />
                 <BaseAttr name="backgroundColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.backgroundColor" defaultVal="#FFFFFF"/>                

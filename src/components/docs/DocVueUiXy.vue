@@ -22,6 +22,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCssOverride from "../BaseCssOverride.vue";
+import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 
 const mainConfig = useConfig()
 
@@ -1077,7 +1078,7 @@ const cssContent = `
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
             </div>
         </div> -->
-        <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive showPatterns schema="vue_ui_xy" signInfo="both">
+        <Box :showDatetimeFormatter="true" showEmits showSlots showTooltip showUseCases showThemes showResponsive showPatterns schema="vue_ui_xy" signInfo="both">
             <template v-slot:tab0>
 
             <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -1693,6 +1694,12 @@ Target the following css class to apply custom styles:
                     :content="cssContent"
                 />
             </template>
+
+            <!-- <template #tab10>
+                <DatetimeFormatterDoc
+                    path="chart.grid.labels.xAxisLabels.datetimeFormatter"
+                />
+            </template> -->
         </Box>
     </div>
 </template>

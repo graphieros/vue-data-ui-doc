@@ -25,6 +25,7 @@ type BoxProps = {
     schema?: string;
     hideSchemaDisclaimer?: boolean;
     signInfo?: string;
+    showDatetimeFormatter?: string;
 };
 
 const props = withDefaults(defineProps<BoxProps>(), {
@@ -39,7 +40,8 @@ const props = withDefaults(defineProps<BoxProps>(), {
     activeTab: 0,
     schema: "",
     hideSchemaDisclaimer: false,
-    signInfo: ''
+    signInfo: '',
+    showDatetimeFormatter: false,
 });
 
 const activeTab = ref(props.activeTab);
@@ -196,6 +198,17 @@ const menuTranslations = computed(() => {
             es: "Anulación de CSS",
             ko: "CSS 재정의",
             ar: "تجاوز CSS"
+        },
+        datetimeFormatter: {
+            en: "Datetime formatter",
+            fr: "Formatteur de date et heure",
+            pt: "Formatador de data e hora",
+            de: "Datums- und Zeitformatierer",
+            zh: "日期时间格式器",
+            jp: "日時フォーマッター",
+            es: "Formateador de fecha y hora",
+            ko: "날짜 및 시간 형식기",
+            ar: "منسق التاريخ والوقت"
         }
     }
 })
@@ -272,6 +285,13 @@ const menuItems = computed(() => {
             color: isDarkMode.value ? '#77a3fc' : '#1A1A1A',
             active: props.showCssOverride,
             order: 9,
+        },
+        {
+            name: menuTranslations.value.datetimeFormatter[store.lang],
+            icon: 'lap',
+            color: isDarkMode.value ? '#1d915d' : '#1A1A1A',
+            active: props.showDatetimeFormatter,
+            order: 10
         },
     ].filter(menu => menu.active)
 })
@@ -381,6 +401,9 @@ const patternTranslations = computed(() => {
         </div>
         <div v-if="activeTab === 9">
             <slot name="tab9"/>
+        </div>
+        <div v-if="activeTab === 10">
+            <slot name="tab10"/>
         </div>
     </div>
 </template>

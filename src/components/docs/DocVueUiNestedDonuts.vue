@@ -164,6 +164,8 @@ const darkModeConfig = ref({
             gradientIntensity: 40,
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
+            height: 512,
+            width: 512,
             padding: {
                 top: 0,
                 right: 0,
@@ -321,6 +323,8 @@ const config = ref({
             gradientIntensity: 40,
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
+            height: 512,
+            width: 512,
             padding: {
                 top: 0,
                 right: 0,
@@ -570,6 +574,8 @@ const dsTypeCode = computed(() => {
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
+                <BaseAttr name="width" attr="style.chart.width" defaultVal="512" type="number" :min="360" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Ignored when responsive is true"/>
+                <BaseAttr name="height" attr="style.chart.height" defaultVal="512" type="number" :min="360" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Ignored when responsive is true"/>
                 <BaseAttr name="backgroundColor" attr="style.chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="useGradient" attr="style.chart.useGradient" type="chexkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

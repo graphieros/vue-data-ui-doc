@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.14.2",
+    "date": "2025-07-09",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add width and height config attributes",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add width and height config attributes",
+        "link": "/docs#vue-ui-nested-donuts"
+      }
+    ]
+  },
+  {
     "version": "v 2.14.1",
     "date": "2025-07-08",
     "updates": [

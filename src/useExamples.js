@@ -4718,6 +4718,17 @@ export default function useExamples() {
                     ...BASE_XY_CONFIG.value,
                     chart: {
                         ...BASE_XY_CONFIG.value.chart,
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: -100,
+                                    scaleMax: 100
+                                }
+                            }
+                        },
                         annotations: [
                             {
                                 show: true,

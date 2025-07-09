@@ -1638,6 +1638,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.gradientIntensity', def: 40, min: 0, max: 100, type: 'range', label: 'gradientIntensity', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
+                    { key: 'style.chart.width', def: 512, type: 'number', min: 360, max: 1000, label: ['width'], category: 'general'},
+                    { key: 'style.chart.height', def: 360, type: 'number', min: 360, max: 1000, label: ['height'], category: 'general'},
 
                     { key: 'style.chart.padding.top', def: 0, type: 'number', min: 0, max: 100, label:['top'], category: 'padding'},
                     { key: 'style.chart.padding.right', def: 0, type: 'number', min: 0, max: 100, label:['right'], category: 'padding'},
@@ -4097,6 +4099,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'general' },
                     { key: 'style.chart.gradientIntensity', def: 40, type: 'range', min: 0, max: 100, label: 'gradientIntensity', category: 'general' },
+                    { key: 'style.chart.width', def: 512, type: 'number', min: 360, max: 1000, label: ['width'], category: 'general'},
+                    { key: 'style.chart.height', def: 360, type: 'number', min: 360, max: 1000, label: ['height'], category: 'general'},
 
                     { key: 'style.chart.padding.top', def: 0, type: 'number', min: 0, max: 100, label:['top'], category: 'padding'},
                     { key: 'style.chart.padding.right', def: 0, type: 'number', min: 0, max: 100, label:['right'], category: 'padding'},
