@@ -166,7 +166,11 @@ const iconMap = ref({
     VueUiFunnel: 'chartFunnel',
     VueUiHistoryPlot: 'chartHistoryPlot',
     VueUiGizmo: 'battery',
-    VueUiCirclePack: 'chartCirclePack'
+    VueUiCirclePack: 'chartCirclePack',
+    VueUiRidgeline: 'chartRidgeline',
+    VueUiChord: 'chartChord',
+    VueUiWorld: 'world',
+    VueUiCarouselTable: 'carouselTable'
 })
 
 function jsonToJsObject(json, indent = 0, colorAuto=false) {

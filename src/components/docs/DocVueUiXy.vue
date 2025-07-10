@@ -1136,12 +1136,12 @@ const cssContent = `
             <BaseAttr inactive name="height" defaultVal="600"/>
             <BaseAttr inactive name="width" defaultVal="1000"/>
             <BaseDetails brackets attr="annotations" :level="2" title="chart.annotations">
-                <BaseComment>Provide an array of annotations</BaseComment>
+                <BaseComment>{{ translations.annotationsArray[store.lang] }}</BaseComment>
                 {
                     <BaseAttr indent inactive name="show" defaultVal="false,"/>
                     <BaseDetails indent attr="yAxis" title="chart.annotations[i].yAxis" :level="3">
-                        <BaseAttr inactive name="yTop" defaultVal="null," comment="Provide a number in the scale of your dataset"/>
-                        <BaseAttr inactive name="yBottom" defaultVal="null," comment="Provide another number in the scale of your dataset. If it's different than yTop, an area will appear"/>
+                        <BaseAttr inactive name="yTop" defaultVal="null," :comment="translations.annotationsYTop[store.lang]"/>
+                        <BaseAttr inactive name="yBottom" defaultVal="null," :comment="translations.annotationsYBottom[store.lang]"/>
                         <BaseDetails attr="label" :level="4" title="chart.annotations[i].yAxis.label">
                             <BaseAttr inactive name="text" defaultVal="'',"/>
                             <BaseAttr inactive name="color" defaultVal="'#2D353C',"/>
