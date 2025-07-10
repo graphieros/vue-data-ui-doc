@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.15.1",
+    "date": "2025-07-10",
+    "updates": [
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Improve graceful layout management of empty data",
+        "link": "/docs/#vue-ui-nested-donuts"
+      }
+    ]
+  },
+  {
     "version": "v 2.15.0",
     "date": "2025-07-09",
     "updates": [
