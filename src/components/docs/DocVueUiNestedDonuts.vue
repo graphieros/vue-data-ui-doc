@@ -202,7 +202,8 @@ const darkModeConfig = ref({
                     borderWidth: 2,
                     spacingRatio: 0.5,
                     useShadow: false,
-                    shadowColor: '#1A1A1A'
+                    shadowColor: '#1A1A1A',
+                    emptyFill: '#2A2A2A'
                 }
             },
             legend: {
@@ -361,7 +362,8 @@ const config = ref({
                     borderWidth: 2,
                     spacingRatio: 0.5,
                     useShadow: false,
-                    shadowColor: '#1A1A1A'
+                    shadowColor: '#1A1A1A',
+                    emptyFill: '#E1E5E8'
                 }
             },
             legend: {
@@ -593,6 +595,7 @@ const dsTypeCode = computed(() => {
                         <BaseAttr name="spacingRatio" attr="style.chart.layout.donut.spacingRatio" type="range" defaultVal="0.5" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="useShadow" attr="style.chart.layout.donut.useShadow" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="shadowColor" attr="style.chart.layout.donut.shadowColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="emptyFill" attr="style.chart.layout.donut.emptyFill" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">
                         <BaseDetails attr="dataLabels" :level="5" title="style.chart.layout.labels.dataLabels">

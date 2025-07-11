@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.15.2",
+    "date": "2025-07-11",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add config to set color of empty arc",
+        "link": "/docs/#vue-ui-donut"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add config to set color of empty arc",
+        "link": "/docs/#vue-ui-nested-donuts"
+      }
+    ]
+  },
+  {
     "version": "v 2.15.1",
     "date": "2025-07-10",
     "updates": [

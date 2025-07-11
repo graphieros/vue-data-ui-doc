@@ -22,7 +22,7 @@
     "ssh2": "^1.16.0",
     "target-highlight": "^0.1.0",
     "vue": "^3.5.14",
-    "vue-data-ui": "2.15.1",
+    "vue-data-ui": "2.15.2",
     "vue-hi-code": "^1.4.0",
     "vue-router": "^4.5.1",
     "vue-tabler-icons": "^2.21.0"
@@ -33,6 +33,6 @@
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.6.2",
-    "vite": "^7.0.0"
+    "vite": "^7.0.4"
   }
 }

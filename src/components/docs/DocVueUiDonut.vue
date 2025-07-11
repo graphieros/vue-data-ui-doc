@@ -155,6 +155,7 @@ const darkModeConfig = ref({
                     borderWidth: 2,
                     useShadow: false,
                     shadowColor: '#1A1A1A',
+                    emptyFill: '#2A2A2A'
                 },
             },
             comments: {
@@ -358,6 +359,7 @@ const config = ref({
                     borderWidth: 2,
                     useShadow: false,
                     shadowColor: '#1A1A1A',
+                    emptyFill: '#E1E5E8'
                 },
             },
             comments: {
@@ -817,6 +819,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                         <BaseAttr name="borderWidth" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.layout.donut.borderWidth" :min="0" :max="12" defaultVal="2"/>
                         <BaseAttr name="useShadow" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" attr="style.chart.layout.donut.useShadow" defaultVal="false"/>
                         <BaseAttr name="shadowColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.layout.donut.shadowColor" defaultVal="#2D353C"/>
+                        <BaseAttr name="emptyFill" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.layout.donut.emptyFill" defaultVal="#E1E5E8"/>
                     </BaseDetails>
                     <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">                    
                         <BaseDetails attr="dataLabels" :level="5" title="style.chart.layout.labels.dataLabels">

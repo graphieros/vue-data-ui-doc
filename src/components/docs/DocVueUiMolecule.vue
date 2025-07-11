@@ -611,7 +611,12 @@ const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
             :configSource="mainConfig.vue_ui_molecule"
         />
 
-        <div :class="`transition-all mx-auto w-1/2`">
+        <div class="mx-auto w-1/2">
+            <VueUiMolecule :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+        </div>
+        
+
+        <!-- <div :class="`transition-all mx-auto w-1/2`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
@@ -621,7 +626,7 @@ const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
             >
                 <VueUiMolecule :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
             </DocSnapper>
-        </div>
+        </div> -->
 
         <Rater itemId="vue_ui_molecule" />
 
