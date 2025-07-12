@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 2.15.3",
+    "date": "2025-07-12",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix resizing issues in responsive mode",
+        "link": "/docs/#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Fix caption area labels stacking order issues",
+        "link": "/docs/#vue-ui-xy"
+      },
+      {
+        "component": "All charts with fullscreen feature",
+        "description": "Fix scrollbars appearing after quitting fullscreen mode with ESC",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.15.2",
     "date": "2025-07-11",
     "updates": [
