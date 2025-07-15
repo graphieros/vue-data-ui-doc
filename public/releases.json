@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.15.4",
+    "date": "2025-07-15",
+    "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Add formatter for y axis labels",
+        "link": "/docs/#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.15.3",
     "date": "2025-07-12",
     "updates": [

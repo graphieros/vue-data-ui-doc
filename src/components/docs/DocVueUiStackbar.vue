@@ -285,6 +285,7 @@ const config = ref({
                         offsetX: 0
                     },
                     axisLabels: {
+                        formatter: null,
                         show: true,
                         color: "#2D353C",
                         fontSize: 14,
@@ -511,6 +512,7 @@ const darkModeConfig = ref({
                         offsetX: 0
                     },
                     axisLabels: {
+                        formatter: null,
                         show: true,
                         color: "#CCCCCC",
                         fontSize: 14,
@@ -897,6 +899,7 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                                 <BaseAttr name="offsetX" attr="style.chart.grid.y.axisName.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             </BaseDetails>
                             <BaseDetails attr="axisLabels" :level="5" title="style.chart.grid.y.axisLabels">
+                                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                                 <BaseAttr name="show" attr="style.chart.grid.y.axisLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="fontSize" attr="style.chart.grid.y.axisLabels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="color" attr="style.chart.grid.y.axisLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
