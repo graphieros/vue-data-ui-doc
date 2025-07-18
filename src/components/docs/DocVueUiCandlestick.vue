@@ -39,22 +39,22 @@ const isDarkMode = computed(() => {
 });
 
 const dataset = ref([
-    ["2024-01-01", 56, 120, 40, 110, 1250],
-    ["2024-02-01", 110, 150, 80, 98, 2200],
-    ["2024-03-01", 98, 155, 75, 103, 3500],
-    ["2024-04-01", 103, 115, 102, 102, 999],
-    ["2024-05-01", 102, 135, 72, 85, 3216],
-    ["2024-06-01", 85, 162, 65, 107, 4315],
-    ["2024-07-01", 107, 134, 99, 112, 2561],
-    ["2024-08-01", 112, 125, 112, 120, 669],
-    ["2024-09-01", 120, 113, 76, 89, 2591],
-    ["2024-10-01", 89, 150, 85, 125, 2881],
-    ["2024-11-01", 125, 130, 45, 92, 1972],
-    ["2024-12-01", 92, 120, 35, 75, 3599],
-    ["2024-13-01", 75, 80, 26, 45, 5881],
-    ["2024-14-01", 45, 60, 20, 30, 2881],
-    ["2024-15-01", 30, 120, 10, 105, 2881],
-]);
+  [1704067200000, 1200, 2300, 1000, 2100, 1800],
+  [1706745600000, 2100, 2400, 1800, 2000, 2200],
+  [1709251200000, 2000, 2500, 1700, 2150, 2400],
+  [1711929600000, 2150, 2300, 2000, 2050, 1600],
+  [1714521600000, 2050, 2450, 1900, 1950, 2000],
+  [1717200000000, 1950, 2500, 1800, 2300, 2500],
+  [1719792000000, 2300, 2400, 2100, 2250, 1900],
+  [1722470400000, 2250, 2350, 2200, 2300, 1750],
+  [1725148800000, 2300, 2250, 1800, 1850, 2100],
+  [1727740800000, 1850, 2500, 1800, 2450, 2300],
+  [1730419200000, 2450, 2500, 1000, 1250, 1500],
+  [1733011200000, 1250, 2000, 1000, 1350, 1700],
+  [1735689600000, 1350, 2100, 1200, 2000, 1600],
+  [1738368000000, 2000, 2400, 1950, 2300, 1850],
+  [1740787200000, 2300, 2500, 2200, 2400, 2400]
+])
 
 const config = ref({
   responsive: false,
@@ -84,14 +84,32 @@ const config = ref({
         xAxis: {
           dataLabels: {
             show: true,
-            fontSize: 4,
+            fontSize: 10,
             color: "#1A1A1A",
             offsetY: 0,
             bold: false,
-            rotation: 0
+            rotation: -30,
+            datetimeFormatter: {
+              enable: true,
+              locale: 'en',
+              useUTC: false,
+              januaryAsYear: false,
+              options: {
+                year: 'yyyy',
+                month: `MMM 'yy`,
+                day: 'dd MMM',
+                hour: 'HH:mm',
+                minute: 'HH:mm:ss',
+                second: 'HH:mm:ss'
+              }
+            },
           }
         },
         yAxis: {
+          scale: {
+            min: null,
+            max: null
+          },
           dataLabels: {
             show: true,
             fontSize: 12,
@@ -254,14 +272,32 @@ const darkModeConfig = ref({
         xAxis: {
           dataLabels: {
             show: true,
-            fontSize: 4,
+            fontSize: 10,
             color: "#CCCCCC",
             offsetY: 0,
             bold: false,
-            rotation: 0
+            rotation: -30,
+            datetimeFormatter: {
+                enable: true,
+                locale: 'en',
+                useUTC: false,
+                januaryAsYear: false,
+                options: {
+                    year: 'yyyy',
+                    month: `MMM 'yy`,
+                    day: 'dd MMM',
+                    hour: 'HH:mm',
+                    minute: 'HH:mm:ss',
+                    second: 'HH:mm:ss'
+                }
+            },
           }
         },
         yAxis: {
+          scale: {
+            min: null,
+            max: null
+          },
           dataLabels: {
             show: true,
             fontSize: 12,
@@ -561,9 +597,26 @@ const dsTypeCodeExample = ref(`const dataset = [
               <BaseAttr name="offsetY" attr="style.layout.grid.xAxis.dataLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
               <BaseAttr name="bold" attr="style.layout.grid.xAxis.dataLabels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="rotation" attr="style.layout.grid.xAxis.dataLabels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseDetails attr="datetimeFormatter" :level="6" title="style.layout.grid.xAxis.dataLabels.datetimeFormatter">
+                  <BaseAttr name="enable" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseAttr name="locale" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseAttr name="useUTC" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseAttr name="januaryAsYear" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseDetails attr="options" :level="6" title="style.layout.grid.xAxis.dataLabels.datetimeFormatter.options">
+                      <BaseAttr name="year" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                      <BaseAttr name="month" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                      <BaseAttr name="day" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                      <BaseAttr name="minute" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                      <BaseAttr name="second" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  </BaseDetails>
+              </BaseDetails>
             </BaseDetails>
           </BaseDetails>
           <BaseDetails attr="yAxis" :level="4" title="style.layout.grid.yAxis">
+            <BaseDetails attr="scale" :level="5" title="style.layout.grid.yAxis.scale">
+              <BaseAttr name="min" attr="style.layout.grid.yAxis.scale.min" type="number" :min="0" :max="10000000" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="max" attr="style.layout.grid.yAxis.scale.max" type="number" :min="0" :max="10000000" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
             <BaseDetails attr="dataLabels" :level="5" title="style.layout.grid.yAxis.dataLabels">
               <BaseAttr name="show" attr="style.layout.grid.yAxis.dataLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="fontSize" attr="style.layout.grid.yAxis.dataLabels.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

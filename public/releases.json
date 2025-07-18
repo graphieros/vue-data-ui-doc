@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.15.5",
+    "date": "2025-07-18",
+    "updates": [
+      {
+        "component": "VueUiCandlestick",
+        "description": "Add optional scale min and max for yAxis",
+        "link": "/docs/#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Add optional datetimeFormatter for time series",
+        "link": "/docs/#vue-ui-candlestick"
+      }
+    ]
+  },
+  {
     "version": "v 2.15.4",
     "date": "2025-07-15",
     "updates": [
