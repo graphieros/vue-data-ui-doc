@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.16.0",
+    "date": "2025-07-20",
+    "updates": [
+      {
+        "component": "config colors",
+        "description": "You can now use shorthand hex color format in configs",
+        "link": ""
+      },
+      {
+        "component": "useObjectBindings",
+        "description": "Add useObjectBindings composable",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.15.5",
     "date": "2025-07-18",
     "updates": [
