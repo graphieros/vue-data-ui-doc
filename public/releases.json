@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.16.3",
+    "date": "2025-07-21",
+    "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Add config options to hide dataLabels under given value or percentage",
+        "link": "/docs#vue-ui-stackbar"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Add config options to style grid lines",
+        "link": "/docs#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.16.1",
     "date": "2025-07-20",
     "updates": [

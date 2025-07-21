@@ -239,6 +239,9 @@ const config = ref({
                     showHorizontalLines: true,
                     axisColor: "#e1e5e8",
                     axisThickness: 2,
+                    linesColor: '#E1E5E8',
+                    linesThickness: 1,
+                    linesStrokeDasharray: 0,
                     axisName: {
                         show: true,
                         text: "xAxis",
@@ -276,6 +279,9 @@ const config = ref({
                     showVerticalLines: false,
                     axisColor: "#e1e5e8",
                     axisThickness: 2,
+                    linesColor: '#E1E5E8',
+                    linesThickness: 1,
+                    linesStrokeDasharray: 0,
                     axisName: {
                         show: true,
                         text: "yAxis",
@@ -466,6 +472,9 @@ const darkModeConfig = ref({
                     showHorizontalLines: true,
                     axisColor: "#3A3A3A",
                     axisThickness: 2,
+                    linesColor: '#3A3A3A',
+                    linesThickness: 1,
+                    linesStrokeDasharray: 0,
                     axisName: {
                         show: true,
                         text: "xAxis",
@@ -500,9 +509,12 @@ const darkModeConfig = ref({
                 },
                 y: {
                     showAxis: true,
-                    showVerticalLines: false,
+                    showVerticalLines: true,
                     axisColor: "#3A3A3A",
                     axisThickness: 2,
+                    linesColor: '#3A3A3A',
+                    linesThickness: 1,
+                    linesStrokeDasharray: 0,
                     axisName: {
                         show: true,
                         text: "yAxis",
@@ -854,6 +866,10 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                             <BaseAttr name="showHorizontalLines" attr="style.chart.grid.x.showHorizontalLines" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                             <BaseAttr name="axisColor" attr="style.chart.grid.x.axisColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="axisThickness" attr="style.chart.grid.x.axisThickness" type="number" defaultVal="2" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="linesColor" attr="style.chart.grid.x.linesColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="linesThickness" attr="style.chart.grid.x.linesThickness" type="number" :min="0" :max="12" defaultVal="1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="linesStrokeDasharray" attr="style.chart.grid.x.linesStrokeDasharray" type="number" :min="0" :max="12" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+
                             <BaseDetails attr="axisName" :level="5" title="style.chart.grid.x.axisName">
                                 <BaseAttr name="show" attr="style.chart.grid.x.axisName.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="text" attr="style.chart.grid.x.axisName.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -890,6 +906,10 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                             <BaseAttr name="showVerticalLines" attr="style.chart.grid.y.showVerticalLines" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                             <BaseAttr name="axisColor" attr="style.chart.grid.y.axisColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="axisThickness" attr="style.chart.grid.y.axisThickness" type="number" defaultVal="2" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="linesColor" attr="style.chart.grid.y.linesColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="linesThickness" attr="style.chart.grid.y.linesThickness" type="number" :min="0" :max="12" defaultVal="1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="linesStrokeDasharray" attr="style.chart.grid.y.linesStrokeDasharray" type="number" :min="0" :max="12" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+
                             <BaseDetails attr="axisName" :level="5" title="style.chart.grid.y.axisName">
                                 <BaseAttr name="show" attr="style.chart.grid.y.axisName.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="text" attr="style.chart.grid.y.axisName.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
