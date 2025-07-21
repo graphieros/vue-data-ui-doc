@@ -992,12 +992,18 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.bars.dataLabels.rounding', def: 0, type: 'number', min: 0, max: 6, label: 'rounding', category: 'labels'},
                     { key: 'style.chart.bars.dataLabels.prefix', def: '', type: 'text', label: 'prefix', category: 'labels'},
                     { key: 'style.chart.bars.dataLabels.suffix', def: '', type: 'text', label: 'suffix', category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.hideUnderValue', def: null, type: 'number', label: 'hideUnderValue', min: 0, max: 100000, category: 'labels'},
+                    { key: 'style.chart.bars.dataLabels.hideUnderPercentage', def: null, type: 'number', label: 'hide under percentage', min: 0, max: 100000, category: 'labels'},
 
                     { key: 'style.chart.grid.scale.ticks', def: 10, type: 'select', options: [2, 5, 10, 20], label: ['scale', 'is', 'ticks'], category: 'grid'},
                     { key: 'style.chart.grid.scale.scaleMin', def: null, type: 'number', min: -10000, max: 10000, label: ['scale', 'is', 'min'], category: 'grid'},
                     { key: 'style.chart.grid.scale.scaleMax', def: null, type: 'number', min: -10000, max: 10000, label: ['scale', 'is', 'max'], category: 'grid'},
                     { key: 'style.chart.grid.x.showAxis', def: true, type: 'checkbox', label: ['xAxis', 'is', 'show'], category: 'grid'},
                     { key: 'style.chart.grid.x.showHorizontalLines', def: false, type: 'checkbox', label: ['horizontal', 'lines', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.x.linesColor', def: '#E1E5E8', type: 'color', label: ['horizontal', 'lines', 'is', 'color'], category: 'grid'},
+                    { key: 'style.chart.grid.x.linesThickness', def: 1, type: 'number', min: 0, max: 12, label: ['horizontal', 'lines', 'is', 'thickness'], category: 'grid'},
+                    { key: 'style.chart.grid.x.linesStrokeDasharray', def: 0, type: 'number', min: 0, max: 12, label: ['horizontal', 'lines', 'is', 'strokeDasharray'], category: 'grid'},
+
                     { key: 'style.chart.grid.x.axisColor', def: '#E1E5E8', type: 'color', label: ['xAxis', 'is', 'color'], category: 'grid'},
                     { key: 'style.chart.grid.x.axisThickness', def: 2, type: 'number', min: 0, max: 6, label: ['xAxis', 'is', 'thickness'], category: 'grid'},
                     { key: 'style.chart.grid.x.axisName.show', def: true, type: 'checkbox', label: ['xAxis', 'name', 'is', 'show'], category: 'grid'},
@@ -1016,6 +1022,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
 
                     { key: 'style.chart.grid.y.showAxis', def: true, type: 'checkbox', label: ['yAxis', 'is', 'show'], category: 'grid'},
                     { key: 'style.chart.grid.y.showVerticalLines', def: false, type: 'checkbox', label: ['verticalLines', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.y.linesColor', def: '#E1E5E8', type: 'color', label: ['horizontal', 'lines', 'is', 'color'], category: 'grid'},
+                    { key: 'style.chart.grid.y.linesThickness', def: 1, type: 'number', min: 0, max: 12, label: ['horizontal', 'lines', 'is', 'thickness'], category: 'grid'},
+                    { key: 'style.chart.grid.y.linesStrokeDasharray', def: 0, type: 'number', min: 0, max: 12, label: ['horizontal', 'lines', 'is', 'strokeDasharray'], category: 'grid'},
+
                     { key: 'style.chart.grid.y.axisColor', def: '#E1E5E8', type: 'color', label: ['yAxis', 'is', 'color'], category: 'grid'},
                     { key: 'style.chart.grid.y.axisThickness', def: 2, type: 'number', min: 0, max: 6, label: ['yAxis', 'is', 'thickness'], category: 'grid'},
 
