@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useMainStore } from "../../stores";
-import { abbreviate, darkenColor, lightenColor, shiftColorHue } from "vue-data-ui";
+import { abbreviate, darkenColor, getVueDataUiConfig, lightenColor, shiftColorHue, useObjectBindings } from "vue-data-ui";
 import BaseColorInput from "../BaseColorInput.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import CodeParser from "../customization/CodeParser.vue";
@@ -13,6 +13,17 @@ const translations = computed(() => store.translations);
 onMounted(() => store.docSnap = false);
 
 const utilityTranslations = ref({
+    useObjectBindings: {
+        en: 'useObjectBindings is a composable that flattens a reactive object into a set of refs (one for each “leaf” property) so you can easily bind to deeply nested values by their string paths.',
+        fr: 'useObjectBindings est un composable qui aplatit un objet réactif en un ensemble de refs (une pour chaque propriété « feuille ») afin que vous puissiez facilement lier des valeurs profondément imbriquées via leurs chemins sous forme de chaîne.',
+        pt: 'useObjectBindings é um composable que achata um objeto reativo em um conjunto de refs (uma para cada propriedade “folha”), para que você possa vincular facilmente valores profundamente aninhados pelos seus caminhos em string.',
+        de: 'useObjectBindings ist ein Composable, das ein reaktives Objekt in ein Set von Refs (je eine für jede „Blatteigenschaft“) abflacht, sodass Sie tief verschachtelte Werte einfach anhand ihrer String-Pfade binden können.',
+        zh: 'useObjectBindings 是一个可组合函数，它将一个响应式对象展平为一组 refs（针对每个“叶子”属性一个），这样您就可以通过字符串路径轻松绑定到深层嵌套的值。',
+        jp: 'useObjectBindings は、リアクティブオブジェクトを各“リーフ”プロパティごとに1つの ref を持つ一連の refs にフラット化するコンポーザブルで、文字列パスを使って深くネストされた値に簡単にバインドできるようにします。',
+        es: 'useObjectBindings es un composable que aplana un objeto reactivo en un conjunto de refs (una por cada propiedad “hoja”) para que puedas enlazar fácilmente valores profundamente anidados mediante sus rutas de cadena de texto.',
+        ko: 'useObjectBindings는 반응형 객체를 각 “리프” 속성마다 하나의 ref로 평탄화하는 composable로, 문자열 경로를 통해 깊이 중첩된 값에 쉽게 바인딩할 수 있게 해줍니다.',
+        ar: 'useObjectBindings هو كومبوزابل يقوم بتحويل كائن تفاعلي إلى مجموعة من refs (واحدة لكل خاصية “ورقية”) لتتمكن من ربط القيم المتداخلة بعمق بسهولة عبر مساراتها النصية.'
+    },
     abbreviate: {
         en: "Generate abbreviations for labels",
         fr: "Générer des abréviations pour les étiquettes",
@@ -168,6 +179,19 @@ const createTSpanTemplate = computed(() => `<text
 />`
 )
 
+const bindingsContent = computed(() => `import { useObjectBindings, getVueDataUiConfig } from "vue-data-ui";
+
+const config = ref(getVueDataUiConfig('vue_ui_donut'));
+const bindings = useObjectBindings(config);
+`)
+
+const bindingsTemplate = computed(() => `<template>
+    <div>
+        <input type="color" v-model="bindings['style.chart.backgroundColor'].value">
+    </div>
+</template>
+`)
+
 const comments = ref({
     simpleUsage: {
         en: 'Simple usage',
@@ -244,6 +268,24 @@ const cumulativeMedZeroed = getCumulativeMedian({
 });
 `)
 
+const donutSet = ref([
+    {
+        name: 'Series 1',
+        values: [1]
+    },
+    {
+        name: 'Series 2',
+        values: [1]
+    },
+    {
+        name: 'Series 3',
+        values: [1]
+    },
+])
+
+const donutConfig = ref(getVueDataUiConfig('vue_ui_donut'));
+const bindings = useObjectBindings(donutConfig);
+
 </script>
 
 <template>
@@ -255,6 +297,31 @@ const cumulativeMedZeroed = getCumulativeMedian({
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ translations.utilityFunctionsDescription[store.lang] }}
         </p>
+
+        <div class="max-w-[1000px] mx-auto mt-12">
+            <div class="w-full rounded border border-gray-300 dark:border-gray-700">
+                <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
+                    <div class="p-4" dir="auto">
+                        <code class="text-lg">useObjectBindings</code>
+                        <p class="text-gray-500">{{ utilityTranslations.useObjectBindings[store.lang] }}</p>
+                    </div>
+                </div>
+
+                <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+                    <CodeParser :content="bindingsContent" language="javascript" @copy="store.copy()"/>
+                    <CodeParser :content="bindingsTemplate" language="html" @copy="store.copy()" class="mt-4"/>
+                </div>
+
+                <div class="mx-auto max-w-[300px] my-4">
+                    <input type="color" v-model="bindings['style.chart.backgroundColor'].value" class="mb-4">
+                    <VueUiDonut
+                        :dataset="donutSet"
+                        :config="donutConfig"
+                    />
+                </div>
+            </div>
+        </div>
+
 
         <div class="max-w-[1000px] mx-auto mt-12">
 
