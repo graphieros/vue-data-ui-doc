@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.16.5",
+    "date": "2025-07-21",
+    "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Enable usage of dataLabels.hideUnderPercentage in value mode",
+        "link": "/docs#vue-ui-stackbar"
+      }
+    ]
+  },
+  {
     "version": "v 2.16.4",
     "date": "2025-07-22",
     "updates": [
