@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.16.4",
+    "date": "2025-07-22",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix some harmless svg console errors in edge cases with empty data",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "getVueDataUiConfig utility function",
+        "description": "Improve TS typing",
+        "link": "/docs#utility-functions"
+      }
+    ]
+  },
+  {
     "version": "v 2.16.3",
     "date": "2025-07-21",
     "updates": [
