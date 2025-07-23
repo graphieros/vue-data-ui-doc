@@ -997,8 +997,8 @@ const codeDataset = ref(`const dataset: VueUiQuadrantDatasetItem[] = [
             const quadrantChart = ref(null);
             const quadrantDataset = ref([]);
 
-            onMounted(() => {
-                quadrantDataset.value = quadrantChart.value.getData();
+            onMounted(async () => {
+                quadrantDataset.value = await quadrantChart.value.getData();
             });
 
             const config = ref({
@@ -1041,8 +1041,8 @@ const codeDataset = ref(`const dataset: VueUiQuadrantDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.quadrantDataset = this.$refs.quadrantChart.getData();
+                async mounted () {
+                    this.quadrantDataset = await this.$refs.quadrantChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

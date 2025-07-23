@@ -427,8 +427,8 @@ const { configCode, showAllConfig } = useConfigCode()
             const ratingComponent = ref(null);
             const currentRating = ref(null);
 
-            onMounted(() => {
-                currentRating.value = ratingComponent.value.getData();
+            onMounted(async () => {
+                currentRating.value = await ratingComponent.value.getData();
             });
 
             const config = ref({
@@ -471,8 +471,8 @@ const { configCode, showAllConfig } = useConfigCode()
                         }
                     }
                 },
-                mounted () {
-                    this.currentRating = this.$refs.ratingComponent.getData();
+                async mounted () {
+                    this.currentRating = await this.$refs.ratingComponent.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

@@ -560,8 +560,8 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
             const bulletChart = ref(null);
             const bulletDataset = ref({});
 
-            onMounted(() => {
-                bulletDataset.value = bulletChart.value.getData();
+            onMounted(async () => {
+                bulletDataset.value = await bulletChart.value.getData();
             });
 
             const config = ref({
@@ -604,8 +604,8 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
                         }
                     }
                 },
-                mounted () {
-                    this.bulletDataset = this.$refs.bulletChart.getData();
+                async mounted () {
+                    this.bulletDataset = await this.$refs.bulletChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

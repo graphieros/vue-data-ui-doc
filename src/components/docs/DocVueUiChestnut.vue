@@ -1191,8 +1191,8 @@ const codeDataset = ref(`const dataset: VueUiChestnutDatasetRoot[] = [
             const chestnutChart = ref(null);
             const chestnutDataset = ref([]);
 
-            onMounted(() => {
-                chestnutDataset.value = chestnutChart.value.getData();
+            onMounted(async () => {
+                chestnutDataset.value = await chestnutChart.value.getData();
             });
 
             const config = ref({
@@ -1235,8 +1235,8 @@ const codeDataset = ref(`const dataset: VueUiChestnutDatasetRoot[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.chestnutDataset = this.$refs.chestnutChart.getData();
+                async mounted () {
+                    this.chestnutDataset = await this.$refs.chestnutChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

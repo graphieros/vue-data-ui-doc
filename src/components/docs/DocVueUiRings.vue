@@ -607,8 +607,8 @@ const codeDataset = ref(`const dataset: VueUiRingsDatasetItem[] = [
             const ringsChart = ref(null);
             const ringsDataset = ref([]);
 
-            onMounted(() => {
-                ringsDataset.value = ringsChart.value.getData();
+            onMounted(async () => {
+                ringsDataset.value = await ringsChart.value.getData();
             });
 
             const config = ref({
@@ -651,8 +651,8 @@ const codeDataset = ref(`const dataset: VueUiRingsDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.ringsDataset = this.$refs.ringsChart.getData();
+                async mounted () {
+                    this.ringsDataset = await this.$refs.ringsChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

@@ -822,8 +822,8 @@ const codeDataset = ref(`const dataset: VueUiVerticalBarDatasetItem[] = [
             const verticalBarChart = ref(null);
             const verticalBarDataset = ref([]);
 
-            onMounted(() => {
-                verticalBarDataset.value = verticalBarChart.value.getData();
+            onMounted(async () => {
+                verticalBarDataset.value = await verticalBarChart.value.getData();
             });
 
             const config = ref({
@@ -866,8 +866,8 @@ const codeDataset = ref(`const dataset: VueUiVerticalBarDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.verticalBarDataset = this.$refs.verticalBarChart.getData();
+                async mounted () {
+                    this.verticalBarDataset = await this.$refs.verticalBarChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

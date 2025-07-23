@@ -781,8 +781,8 @@ const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
             const moleculeChart = ref(null);
             const moleculeDataset = ref([]);
 
-            onMounted(() => {
-                moleculeDataset.value = moleculeChart.value.getData();
+            onMounted(async () => {
+                moleculeDataset.value = await moleculeChart.value.getData();
             });
 
             const config = ref({
@@ -825,8 +825,8 @@ const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.moleculeDataset = this.$refs.moleculeChart.getData();
+                async mounted () {
+                    this.moleculeDataset = await this.$refs.moleculeChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

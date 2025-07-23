@@ -543,8 +543,8 @@ const { configCode, showAllConfig } = useConfigCode()
             const moodRadarChart = ref(null);
             const moodRadarDataset = ref([]);
 
-            onMounted(() => {
-                moodRadarDataset.value = moodRadarChart.value.getData();
+            onMounted(async () => {
+                moodRadarDataset.value = await moodRadarChart.value.getData();
             });
 
             const config = ref({
@@ -587,8 +587,8 @@ const { configCode, showAllConfig } = useConfigCode()
                         ]
                     }
                 },
-                mounted () {
-                    this.moodRadarDataset = this.$refs.moodRadarChart.getData();
+                async mounted () {
+                    this.moodRadarDataset = await this.$refs.moodRadarChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

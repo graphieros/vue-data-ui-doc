@@ -624,8 +624,8 @@ const codeDataset = ref(`const dataset: VueUiFunnelDatasetItem[] = [
             const funnelChart = ref(null);
             const funnelDataset = ref({});
 
-            onMounted(() => {
-                funnelDataset.value = funnelChart.value.getData();
+            onMounted(async () => {
+                funnelDataset.value = await funnelChart.value.getData();
             });
 
             const config = ref({
@@ -667,8 +667,8 @@ const codeDataset = ref(`const dataset: VueUiFunnelDatasetItem[] = [
                         
                     }
                 },
-                mounted () {
-                    this.funnelDataset = this.$refs.funnelChart.getData();
+                async mounted () {
+                    this.funnelDataset = await this.$refs.funnelChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

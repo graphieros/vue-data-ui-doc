@@ -720,8 +720,8 @@ const codeDataset = ref(`const dataset: VueUiOnionDatasetItem[] = [
             const onionChart = ref(null);
             const onionDataset = ref([]);
 
-            onMounted(() => {
-                onionDataset.value = onionChart.value.getData();
+            onMounted(async () => {
+                onionDataset.value = await onionChart.value.getData();
             });
 
             const config = ref({
@@ -764,8 +764,8 @@ const codeDataset = ref(`const dataset: VueUiOnionDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.onionDataset = this.$refs.onionChart.getData();
+                async mounted () {
+                    this.onionDataset = await this.$refs.onionChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

@@ -905,8 +905,8 @@ const codeDataset = ref(`const dataset: VueUiScatterDatasetItem[] = [
             const scatterChart = ref(null);
             const scatterDataset = ref([]);
 
-            onMounted(() => {
-                scatterDataset.value = scatterChart.value.getData();
+            onMounted(async () => {
+                scatterDataset.value = await scatterChart.value.getData();
             });
 
             const config = ref({
@@ -949,8 +949,8 @@ const codeDataset = ref(`const dataset: VueUiScatterDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.scatterDataset = this.$refs.scatterChart.getData();
+                async mounted () {
+                    this.scatterDataset = await this.$refs.scatterChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

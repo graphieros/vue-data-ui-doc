@@ -455,8 +455,8 @@ const { configCode, showAllConfig } = useConfigCode()
             const smileyComponent = ref(null);
             const currentRating = ref(null);
 
-            onMounted(() => {
-                currentRating.value = smileyComponent.value.getData();
+            onMounted(async () => {
+                currentRating.value = await smileyComponent.value.getData();
             });
 
             const config = ref({
@@ -499,8 +499,8 @@ const { configCode, showAllConfig } = useConfigCode()
                         }
                     }
                 },
-                mounted () {
-                    this.currentRating = this.$refs.smileyComponent.getData();
+                async mounted () {
+                    this.currentRating = await this.$refs.smileyComponent.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

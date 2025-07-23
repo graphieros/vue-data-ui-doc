@@ -773,8 +773,8 @@ const dsTypeCode = computed(() => {
             const nestedDonutsChart = ref(null);
             const nestedDonutsDataset = ref([]);
 
-            onMounted(() => {
-                nestedDonutsDataset.value = nestedDonutsChart.value.getData();
+            onMounted(async () => {
+                nestedDonutsDataset.value = await nestedDonutsChart.value.getData();
             });
 
             const config = ref({
@@ -817,8 +817,8 @@ const dsTypeCode = computed(() => {
                         ]
                     }
                 },
-                mounted () {
-                    this.nestedDonutsDataset = this.$refs.nestedDonutsChart.getData();
+                async mounted () {
+                    this.nestedDonutsDataset = await this.$refs.nestedDonutsChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

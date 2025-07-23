@@ -787,8 +787,8 @@ const codeDataset = ref(`const dataset: VueUiTreemapDatasetItem[] = [
             const treemapChart = ref(null);
             const treemapDataset = ref([]);
 
-            onMounted(() => {
-                treemapDataset.value = treemapChart.value.getData();
+            onMounted(async () => {
+                treemapDataset.value = await treemapChart.value.getData();
             });
 
             const config = ref({
@@ -831,8 +831,8 @@ const codeDataset = ref(`const dataset: VueUiTreemapDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.treemapDataset = this.$refs.treemapChart.getData();
+                async mounted () {
+                    this.treemapDataset = await this.$refs.treemapChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

@@ -569,8 +569,8 @@ const codeDataset2 = computed(() => {
             const wordCloudData = ref(null);
             const wordCloudDataset = ref([]);
 
-            onMounted(() => {
-                wordCloudDataset.value = wordCloudData.value.getData();
+            onMounted(async () => {
+                wordCloudDataset.value = await wordCloudData.value.getData();
             });
 
             const config = ref({
@@ -613,8 +613,8 @@ const codeDataset2 = computed(() => {
                         ]
                     }
                 },
-                mounted () {
-                    this.wordCloudDataset = this.$refs.wordCloudData.getData();
+                async mounted () {
+                    this.wordCloudDataset = await this.$refs.wordCloudData.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

@@ -835,8 +835,8 @@ const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
             const stripPlotChart = ref(null);
             const stripPlotDataset = ref([]);
 
-            onMounted(() => {
-                stripPlotDataset.value = stripPlotChart.value.getData();
+            onMounted(async () => {
+                stripPlotDataset.value = await stripPlotChart.value.getData();
             });
 
             const config = ref({
@@ -879,8 +879,8 @@ const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.stripPlotDataset = this.$refs.stripPlotChart.getData();
+                async mounted () {
+                    this.stripPlotDataset = await this.$refs.stripPlotChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

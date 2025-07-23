@@ -682,8 +682,8 @@ const codeDataset = ref(`const dataset: VueUiGalaxyDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.galaxyDataset = this.$refs.galaxyChart.getData();
+                async mounted () {
+                    this.galaxyDataset = await this.$refs.galaxyChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

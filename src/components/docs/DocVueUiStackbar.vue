@@ -1037,8 +1037,8 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
             const stackbarChart = ref(null);
             const stackbarDatasett = ref([]);
 
-            onMounted(() => {
-                stackbarDatasett.value = stackbarChart.value.getData();
+            onMounted(async () => {
+                stackbarDatasett.value = await stackbarChart.value.getData();
             });
 
             const config = ref({
@@ -1081,8 +1081,8 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.stackbarDatasett = this.$refs.stackbarChart.getData();
+                async mounted () {
+                    this.stackbarDatasett = await this.$refs.stackbarChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

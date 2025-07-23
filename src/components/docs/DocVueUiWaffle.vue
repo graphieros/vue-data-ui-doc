@@ -634,8 +634,8 @@ const dsTypeCode = computed(() => {
             const waffleChart = ref(null);
             const waffleDataset = ref([]);
 
-            onMounted(() => {
-                waffleDataset.value = waffleChart.value.getData();
+            onMounted(async () => {
+                waffleDataset.value = await waffleChart.value.getData();
             });
 
             const config = ref({
@@ -678,8 +678,8 @@ const dsTypeCode = computed(() => {
                         ]
                     }
                 },
-                mounted () {
-                    this.waffleDataset = this.$refs.waffleChart.getData();
+                async mounted () {
+                    this.waffleDataset = await this.$refs.waffleChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

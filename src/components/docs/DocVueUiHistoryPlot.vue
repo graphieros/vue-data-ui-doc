@@ -893,8 +893,8 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
             const historyPlotChart = ref(null);
             const historyPlotDataset = ref([]);
 
-            onMounted(() => {
-                historyPlotDataset.value = historyPlotChart.value.getData();
+            onMounted(async () => {
+                historyPlotDataset.value = await historyPlotChart.value.getData();
             });
 
             const config = ref({
@@ -937,8 +937,8 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.historyPlotDataset = this.$refs.historyPlotChart.getData();
+                async mounted () {
+                    this.historyPlotDataset = await this.$refs.historyPlotChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

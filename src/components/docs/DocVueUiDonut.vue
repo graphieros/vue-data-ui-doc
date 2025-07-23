@@ -1036,8 +1036,8 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
             const donutChart = ref(null);
             const donutDataset = ref([]);
 
-            onMounted(() => {
-                donutDataset.value = donutChart.value.getData();
+            onMounted(async () => {
+                donutDataset.value = await donutChart.value.getData();
             });
 
             const config = ref({
@@ -1080,8 +1080,8 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.donutDataset = this.$refs.donutChart.getData();
+                async mounted () {
+                    this.donutDataset = await this.$refs.donutChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

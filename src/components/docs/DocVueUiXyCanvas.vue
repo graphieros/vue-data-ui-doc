@@ -2121,8 +2121,8 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
             const xyChart = ref(null);
             const xyDataset = ref([]);
 
-            onMounted(() => {
-                xyDataset.value = xyChart.value.getData();
+            onMounted(async () => {
+                xyDataset.value = await xyChart.value.getData();
             });
 
             const config = ref({
@@ -2165,8 +2165,8 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.xyDataset = this.$refs.xyChart.getData();
+                async mounted () {
+                    this.xyDataset = await this.$refs.xyChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

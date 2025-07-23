@@ -758,8 +758,8 @@ const additionalTranslations = computed(() => {
             const flowChart = ref(null);
             const flowDataset = ref([]);
 
-            onMounted(() => {
-                flowDataset.value = flowChart.value.getData();
+            onMounted(async () => {
+                flowDataset.value = await flowChart.value.getData();
             });
 
             const config = ref({
@@ -802,8 +802,8 @@ const additionalTranslations = computed(() => {
                         ]
                     }
                 },
-                mounted () {
-                    this.flowDataset = this.$refs.flowChart.getData();
+                async mounted () {
+                    this.flowDataset = await this.$refs.flowChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

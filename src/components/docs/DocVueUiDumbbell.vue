@@ -680,8 +680,8 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
             const dumbbellChart = ref(null);
             const dumbbellDataset = ref([]);
 
-            onMounted(() => {
-                dumbbellDataset.value = dumbbellChart.value.getData();
+            onMounted(async () => {
+                dumbbellDataset.value = await dumbbellChart.value.getData();
             });
 
             const config = ref({
@@ -724,8 +724,8 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.dumbbellDataset = this.$refs.dumbbellChart.getData();
+                async mounted () {
+                    this.dumbbellDataset = await this.$refs.dumbbellChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

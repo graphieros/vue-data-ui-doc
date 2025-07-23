@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.17.0",
+    "date": "2025-07-23",
+    "updates": [
+      {
+        "component": "Most chart components",
+        "description": "Add exposed method 'getImage' and improve components TS typing",
+        "link": ""
+      },
+      {
+        "component": "All components with pdf & image user options",
+        "description": "Expose png imageUri in pdf and img user options callbacks",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.16.5",
     "date": "2025-07-21",
     "updates": [

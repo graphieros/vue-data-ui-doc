@@ -878,8 +878,8 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
             const donutEvolutionChart = ref(null);
             const donutEvolutionDataset = ref([]);
 
-            onMounted(() => {
-                donutEvolutionDataset.value = donutEvolutionChart.value.getData();
+            onMounted(async () => {
+                donutEvolutionDataset.value = await donutEvolutionChart.value.getData();
             });
 
             const config = ref({
@@ -922,8 +922,8 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.donutEvolutionDataset = this.$refs.donutEvolutionChart.getData();
+                async mounted () {
+                    this.donutEvolutionDataset = await this.$refs.donutEvolutionChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

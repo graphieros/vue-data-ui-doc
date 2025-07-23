@@ -620,8 +620,8 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
             const circlePackChart = ref(null);
             const circlePackDataset = ref([]);
 
-            onMounted(() => {
-                circlePackDataset.value = circlePackChart.value.getData();
+            onMounted(async () => {
+                circlePackDataset.value = await circlePackChart.value.getData();
             });
 
             const config = ref({
@@ -664,8 +664,8 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
                         ]
                     }
                 },
-                mounted () {
-                    this.circlePackDataset = this.$refs.circlePackChart.getData();
+                async mounted () {
+                    this.circlePackDataset = await this.$refs.circlePackChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

@@ -823,8 +823,8 @@ function setProjection(p) {
             const worldChart = ref(null);
             const worldDataset = ref([]);
 
-            onMounted(() => {
-                worldDataset.value = worldChart.value.getData();
+            onMounted(async () => {
+                worldDataset.value = await worldChart.value.getData();
             });
 
             const config = ref({
@@ -867,8 +867,8 @@ function setProjection(p) {
                         ]
                     }
                 },
-                mounted () {
-                    this.worldDataset = this.$refs.worldChart.getData();
+                async mounted () {
+                    this.worldDataset = await this.$refs.worldChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

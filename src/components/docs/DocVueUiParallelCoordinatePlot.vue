@@ -808,8 +808,8 @@ const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[]
             const pcpChart = ref(null);
             const pcpDataset = ref([]);
 
-            onMounted(() => {
-                pcpDataset.value = pcpChart.value.getData();
+            onMounted(async () => {
+                pcpDataset.value = await pcpChart.value.getData();
             });
 
             const config = ref({
@@ -852,8 +852,8 @@ const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[]
                         ]
                     }
                 },
-                mounted () {
-                    this.pcpDataset = this.$refs.pcpChart.getData();
+                async mounted () {
+                    this.pcpDataset = await this.$refs.pcpChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>

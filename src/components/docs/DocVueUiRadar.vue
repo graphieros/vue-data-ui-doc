@@ -756,8 +756,8 @@ const codeDataset = ref(`const dataset: VueUiRadarDataset = {
             const radarChart = ref(null);
             const radarDataset = ref([]);
 
-            onMounted(() => {
-                radarDataset.value = radarChart.value.getData();
+            onMounted(async () => {
+                radarDataset.value = await radarChart.value.getData();
             });
 
             const config = ref({
@@ -800,8 +800,8 @@ const codeDataset = ref(`const dataset: VueUiRadarDataset = {
                         ]
                     }
                 },
-                mounted () {
-                    this.radarDataset = this.$refs.radarChart.getData();
+                async mounted () {
+                    this.radarDataset = await this.$refs.radarChart.getData();
                 }
             }
         <span class="text-gray-400">&lt;/script&gt;</span>
