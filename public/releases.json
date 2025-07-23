@@ -1,5 +1,51 @@
 [
   {
+    "version": "v 2.17.1",
+    "date": "2025-07-23",
+    "updates": [
+      {
+        "component": "Most chart components",
+        "description": "Add width, height ans aspect ratio in getImage exposed method",
+        "link": ""
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Add config options to show/hide value & percentage in legend",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add config options to show/hide value & percentage in legend",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Add config options to show/hide value & percentage in legend",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Add config options to show/hide value & percentage in legend",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Add config options to show/hide value & percentage in legend",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Add config options to show/hide value & percentage in legend",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Add config options to show/hide value & percentage in legend",
+        "link": "/docs#vue-ui-galaxy"
+      }
+    ]
+  },
+  {
     "version": "v 2.17.0",
     "date": "2025-07-23",
     "updates": [

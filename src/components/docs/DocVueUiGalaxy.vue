@@ -94,6 +94,8 @@ const config = ref({
         bold: false,
         roundingValue: 0,
         roundingPercentage: 0,
+        showValue: true,
+        showPercentage: true
       },
       title: {
         text: "Title",
@@ -220,6 +222,8 @@ const darkModeConfig = ref({
         bold: false,
         roundingValue: 0,
         roundingPercentage: 0,
+        showValue: true,
+        showPercentage: true
       },
       title: {
         text: "Title",
@@ -499,6 +503,8 @@ const codeDataset = ref(`const dataset: VueUiGalaxyDatasetItem[] = [
           <BaseAttr name="bold" attr="style.chart.legend.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="roundingValue" attr="style.chart.legend.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="roundingPercentage" attr="style.chart.legend.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="showValue" attr="style.chart.legend.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="showPercentage" attr="style.chart.legend.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseDetails attr="title" :level="3" title="style.chart.title">
           <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

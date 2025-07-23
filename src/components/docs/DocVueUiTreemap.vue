@@ -209,7 +209,9 @@ const config = ref({
                 fontSize: 16,
                 bold: false,
                 roundingValue: 0,
-                roundingPercentage: 0
+                roundingPercentage: 0,
+                showValue: true,
+                showPercentage: true
             },
             title: {
                 text: "Title",
@@ -343,7 +345,9 @@ const darkModeConfig = ref({
                 fontSize: 16,
                 bold: false,
                 roundingValue: 0,
-                roundingPercentage: 0
+                roundingPercentage: 0,
+                showValue: true,
+                showPercentage: true
             },
             title: {
                 text: "Title",
@@ -644,7 +648,9 @@ const codeDataset = ref(`const dataset: VueUiTreemapDatasetItem[] = [
                     <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="bold" attr="style.chart.legend.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="roundingValue" attr="style.chart.legend.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>                    
-                    <BaseAttr name="roundingPercentage" attr="style.chart.legend.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>                    
+                    <BaseAttr name="roundingPercentage" attr="style.chart.legend.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="showValue" attr="style.chart.legend.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="showPercentage" attr="style.chart.legend.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>                    
                 </BaseDetails>
                 <BaseDetails attr="padding" :level="3" title="style.chart.padding">
                     <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -1709,6 +1709,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend' },
                     { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'legend' },
                     { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: 'percentageRounding', category: 'legend' },
+                    { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
+
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
                     { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title' },
@@ -1838,6 +1841,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend' },
                     { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'legend' },
                     { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: 'percentageRounding', category: 'legend' },
+                    { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
+
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table' },
@@ -3377,6 +3383,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.fontSize', def: 16, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'legend' },
                     { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'legend' },
                     { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend' },
+                    { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
+
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
                     { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table' },
@@ -3448,6 +3457,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.fontSize', def: 14, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'legend' },
                     { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'legend' },
                     { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend' },
+                    { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
+
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
                     { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title' },
@@ -4148,6 +4160,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend' },
                     { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'value'], category: 'legend' },
                     { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: 'percentageRounding', category: 'legend' },
+                    { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
+
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title' },
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title' },
                     { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title' },
@@ -4274,6 +4289,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.bold', def: false, type: 'checkbox', label: 'bold', category: 'legend'},
                     { key: 'style.chart.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'legend'},
                     { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend'},
+                    { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
+                    { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
+                    
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
                     { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},
