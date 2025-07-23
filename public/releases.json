@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 2.17.2",
+    "date": "2025-07-23",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add exposed method 'autoSize'",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add exposed method 'autoSize'",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "Legends",
+        "description": "Avoid legend item wrap in print mode",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.17.1",
     "date": "2025-07-23",
     "updates": [
