@@ -408,6 +408,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
             <template #tab2>
               <ExposedMethods
                 component="VueUiWheel"
+                getImage
                 :names="[
                   'generatePdf',
                   'generateImage'

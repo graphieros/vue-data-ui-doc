@@ -676,6 +676,7 @@ const codeDataset = ref(`const dataset: VueUiFunnelDatasetItem[] = [
     </pre>
                 <ExposedMethods
                     component="VueUiFunnel"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateImage'

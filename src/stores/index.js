@@ -2800,6 +2800,28 @@ export const useMainStore = defineStore("main", {
                             ko: '캐러셀 애니메이션을 일시중지하려면 상위 구성요소에서 이 메소드를 호출하세요.',
                             ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لإيقاف الرسوم المتحركة الدائرية مؤقتًا'
                         },
+                        autoSize: {
+                            en: 'Call this method from the parent component to force the svg viewBox to fit all its contents.',
+                            fr: 'Appelez cette méthode depuis le composant parent pour forcer le viewBox du SVG à englober tout son contenu.',
+                            pt: 'Chame este método a partir do componente pai para forçar o viewBox do SVG a ajustar todo o seu conteúdo.',
+                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um das SVG-viewBox so anzupassen, dass es alle Inhalte umfasst.',
+                            zh: '从父组件调用此方法，以强制 SVG 的 viewBox 适应其所有内容。',
+                            jp: 'このメソッドを親コンポーネントから呼び出して、SVG の viewBox がすべてのコンテンツを収めるように強制してください。',
+                            es: 'Llama a este método desde el componente padre para forzar que el viewBox del SVG abarque todo su contenido.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 SVG viewBox가 모든 콘텐츠를 포함하도록 강제합니다.',
+                            ar: 'استدعِ هذه الطريقة من المكوّن الأب لإجبار viewBox الخاص بـ SVG على احتواء جميع محتوياته.',
+                        },
+                        getImage: {
+                            en: 'Call this method from the parent to get a base64 string of the chart, along with other metadata',
+                            fr: 'Appelez cette méthode depuis le composant parent pour obtenir une chaîne base64 du graphique, ainsi que d\'autres métadonnées.',
+                            pt: 'Chame este método a partir do componente pai para obter uma string base64 do gráfico, junto com outros metadados.',
+                            de: 'Rufen Sie diese Methode aus der übergeordneten Komponente auf, um einen Base64-String des Diagramms zusammen mit weiteren Metadaten zu erhalten.',
+                            zh: '从父组件调用此方法，以获取图表的 Base64 字符串及其他元数据。',
+                            jp: '親コンポーネントからこのメソッドを呼び出して、チャートの base64 文字列やその他のメタデータを取得します。',
+                            es: 'Llama a este método desde el componente padre para obtener una cadena base64 del gráfico, junto con otros metadatos.',
+                            ko: '부모 컴포넌트에서 이 메서드를 호출하여 차트의 base64 문자열과 기타 메타데이터를 가져옵니다.',
+                            ar: 'استدعِ هذه الطريقة من المكوّن الأب للحصول على سلسلة base64 للرسم البياني، بالإضافة إلى بيانات وصفية أخرى.'
+                        },
                         resumeAnimation: {
                             en: 'Call this method from the parent component to resume the carousel animation after it was paused.',
                             fr: `Appelez cette méthode à partir du composant parent pour reprendre l'animation du carrousel après sa pause.`,

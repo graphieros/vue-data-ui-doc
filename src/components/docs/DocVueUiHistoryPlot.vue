@@ -946,6 +946,7 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
     </pre>
                 <ExposedMethods
                     component="VueUiHistoryPlot"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

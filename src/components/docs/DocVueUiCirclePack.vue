@@ -673,6 +673,7 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
     </pre>
         <ExposedMethods
             component="VueUiCirclePack"
+            getImage
             :names="[
                 'generatePdf',
                 'generateCsv',

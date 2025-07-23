@@ -14,7 +14,7 @@ const props = defineProps({
     description: {
         type: String,
         required: true,
-    }
+    },
 })
 
 const content = computed(() => {

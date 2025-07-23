@@ -876,6 +876,7 @@ function setProjection(p) {
     </pre>
                 <ExposedMethods
                     component="VueUiWorld"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

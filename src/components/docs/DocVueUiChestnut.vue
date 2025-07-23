@@ -1245,6 +1245,7 @@ const codeDataset = ref(`const dataset: VueUiChestnutDatasetRoot[] = [
   </div>
                 <ExposedMethods
                   component="VueUiChestnut"
+                  getImage
                   :names="[
                     'generatePdf',
                     'generateCsv',

@@ -666,6 +666,7 @@ const codeDataset = ref(`const dataset: VueUiRingsDatasetItem[] = [
     </pre>
                 <ExposedMethods
                   component="VueUiRings"
+                  getImage
                   :names="[
                     'generatePdf',
                     'generateCsv',

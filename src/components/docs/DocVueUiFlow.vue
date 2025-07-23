@@ -811,6 +811,7 @@ const additionalTranslations = computed(() => {
     </pre>
                 <ExposedMethods
                     component="VueUiFlow"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

@@ -613,9 +613,10 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
     </pre>
                     <ExposedMethods
                         component="VueUiBullet"
+                        getImage
                         :names="[
                             'generatePdf',
-                            'generateImage'
+                            'generateImage',
                         ]"
                     />
                 </div>

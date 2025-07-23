@@ -720,6 +720,7 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
               {{ translations.docs.emits.selectDatapoint[store.lang] }}
               <ExposedMethods
                 component="VueUiHeatmap"
+                getImage
                 :names="[
                   'generatePdf',
                   'generateCsv',

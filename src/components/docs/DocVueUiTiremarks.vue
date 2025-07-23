@@ -394,6 +394,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
             <template #tab2>
               <ExposedMethods
                 component="VueUiTiremarks"
+                getImage
                 :names="[
                   'generatePdf',
                   'generateImage'

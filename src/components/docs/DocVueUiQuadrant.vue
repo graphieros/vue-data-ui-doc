@@ -1051,6 +1051,7 @@ const codeDataset = ref(`const dataset: VueUiQuadrantDatasetItem[] = [
                 </div>
                 <ExposedMethods
                     component="VueUiQuadrant"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

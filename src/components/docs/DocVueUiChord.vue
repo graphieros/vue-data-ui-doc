@@ -575,6 +575,7 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
 
                     <ExposedMethods
                     component="VueUiDonut"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

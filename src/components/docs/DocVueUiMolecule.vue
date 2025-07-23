@@ -834,6 +834,7 @@ const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
     </pre>
                 <ExposedMethods
                     component="VueUiMolecule"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

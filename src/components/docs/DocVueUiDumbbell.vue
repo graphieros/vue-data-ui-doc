@@ -733,6 +733,7 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
     </pre>
                 <ExposedMethods
                     component="VueUiDumbbell"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

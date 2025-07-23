@@ -810,6 +810,7 @@ const codeDataset = ref(`const dataset: VueUiRadarDataset = {
 </div>
                 <ExposedMethods
                     component="VueUiRadar"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

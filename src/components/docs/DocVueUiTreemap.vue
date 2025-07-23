@@ -846,6 +846,7 @@ const codeDataset = ref(`const dataset: VueUiTreemapDatasetItem[] = [
     </pre>
                 <ExposedMethods
                     component="VueUiTreemap"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

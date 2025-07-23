@@ -960,6 +960,7 @@ const codeDataset = ref(`const dataset: VueUiScatterDatasetItem[] = [
 
                 <ExposedMethods
                   component="VueUiScatter"
+                  getImage
                   :names="[
                     'generatePdf',
                     'generateCsv',

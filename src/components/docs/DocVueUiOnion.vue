@@ -774,6 +774,7 @@ const codeDataset = ref(`const dataset: VueUiOnionDatasetItem[] = [
 </div>
                 <ExposedMethods
                     component="VueUiOnion"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

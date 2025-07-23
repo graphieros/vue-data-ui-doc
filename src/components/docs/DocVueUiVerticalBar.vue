@@ -877,6 +877,7 @@ const codeDataset = ref(`const dataset: VueUiVerticalBarDatasetItem[] = [
 
                 <ExposedMethods
                   component="VueUiVerticalBar"
+                  getImage
                   :names="[
                     'generatePdf',
                     'generateCsv',

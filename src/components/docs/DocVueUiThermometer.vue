@@ -432,6 +432,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
             <template #tab2>
               <ExposedMethods
                 component="VueUiThermometer"
+                getImage
                 :names="[
                   'generatePdf',
                   'generateImage'

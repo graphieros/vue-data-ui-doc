@@ -832,12 +832,14 @@ const dsTypeCode = computed(() => {
     </pre>
                 <ExposedMethods
                     component="VueUiNestedDonuts"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
                         'toggleTable',
-                        'toggleLabels'
+                        'toggleLabels',
+                        'autoSize'
                     ]"
                 />
                 </div>

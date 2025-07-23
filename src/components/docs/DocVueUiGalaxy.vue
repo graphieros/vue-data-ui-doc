@@ -697,6 +697,7 @@ const codeDataset = ref(`const dataset: VueUiGalaxyDatasetItem[] = [
     </pre>
                 <ExposedMethods
                   component="VueUiGalaxy"
+                  getImage
                   :names="[
                     'generatePdf',
                     'generateCsv',

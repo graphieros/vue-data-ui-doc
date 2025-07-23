@@ -695,6 +695,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
             <template #tab2>
                 <ExposedMethods
                     component="VueUi3dBar"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateImage'

@@ -1604,6 +1604,7 @@ const cssContent = `
                 </div>
                 <ExposedMethods
                     component="VueUiXy"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

@@ -861,6 +861,7 @@ const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[]
     </pre>
                 <ExposedMethods
                     component="VueUiParallelCoordinatePlot"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

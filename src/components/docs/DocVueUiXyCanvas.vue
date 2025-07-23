@@ -2176,6 +2176,7 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
 
         <ExposedMethods
           component="VueUiXyCanvas"
+          getImage
           :names="[
             'generatePdf',
             'generateCsv',

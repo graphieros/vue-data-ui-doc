@@ -693,6 +693,7 @@ const dsTypeCode = computed(() => {
     </pre>
                 <ExposedMethods
                     component="VueUiWaffle"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

@@ -752,6 +752,7 @@ const dsTypeCodeExample = ref(`const dataset = [
             <template #tab2>
               <ExposedMethods
                 component="VueUiCandlestick"
+                getImage
                 :names="[
                   'generatePdf',
                   'generateCsv',

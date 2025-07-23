@@ -653,6 +653,7 @@ const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
             <template #tab2>
                 <ExposedMethods
                     component="VueUiGauge"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateImage'

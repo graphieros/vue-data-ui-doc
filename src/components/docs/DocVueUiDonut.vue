@@ -1095,12 +1095,14 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
     </pre>
                 <ExposedMethods
                     component="VueUiDonut"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
                         'toggleTable',
-                        'toggleLabels'
+                        'toggleLabels',
+                        'autoSize'
                     ]"
                 />
                 </div>

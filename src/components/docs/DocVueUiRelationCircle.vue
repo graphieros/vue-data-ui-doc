@@ -593,6 +593,7 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
       <template #tab2>
         <ExposedMethods
           component="VueUiRelationCircle"
+          getImage
           :names="[
             'generatePdf',
             'generateImage'

@@ -888,6 +888,7 @@ const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
     </pre>
                 <ExposedMethods
                     component="VueUiStripPlot"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

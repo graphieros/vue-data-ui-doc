@@ -596,6 +596,7 @@ const { configCode, showAllConfig } = useConfigCode()
     </pre>
                 <ExposedMethods
                     component="VueUiMoodRadar"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

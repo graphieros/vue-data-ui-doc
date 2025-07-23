@@ -1219,6 +1219,7 @@ const dsTypeCode = computed(() => {
             <template #tab2>
               <ExposedMethods
                 component="VueUiAgePyramid"
+                getImage
                 :names="[
                   'generatePdf',
                   'generateImage',

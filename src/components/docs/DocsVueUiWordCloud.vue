@@ -622,6 +622,7 @@ const codeDataset2 = computed(() => {
     </pre>
                 <ExposedMethods
                     component="VueUiWordCloud"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

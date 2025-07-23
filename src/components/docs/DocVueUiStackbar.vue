@@ -1090,6 +1090,7 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
     </pre>  
                 <ExposedMethods
                     component="VueUiStackbar"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

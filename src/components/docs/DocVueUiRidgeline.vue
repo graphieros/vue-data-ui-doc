@@ -1235,6 +1235,7 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
                 </ul>
                 <ExposedMethods
                     component="VueUiRidgeline"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',

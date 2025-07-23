@@ -937,6 +937,7 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
     </pre>
                 <ExposedMethods
                     component="VueUiDonutEvolution"
+                    getImage
                     :names="[
                         'generatePdf',
                         'generateCsv',
