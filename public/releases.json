@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.17.4",
+    "date": "2025-07-24",
+    "updates": [
+      {
+        "component": "VueUiCandlestick",
+        "description": "Fix image & print error",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "PNG & PDF generation in Safari",
+        "description": "Fix images not working in Safari",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.17.2",
     "date": "2025-07-23",
     "updates": [
