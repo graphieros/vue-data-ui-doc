@@ -1,8 +1,13 @@
 [
   {
-    "version": "v 2.17.4",
+    "version": "v 2.17.5",
     "date": "2025-07-24",
     "updates": [
+      {
+        "component": "VueUiStackbar",
+        "description": "Fix title config not reactive",
+        "link": "/docs#vue-ui-stackbar"
+      },
       {
         "component": "VueUiCandlestick",
         "description": "Fix image & print error",
