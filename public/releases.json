@@ -1,5 +1,32 @@
 [
   {
+    "version": "v 2.17.7",
+    "date": "2025-07-29",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Fix incomplete arcs when datapoints are way under 0",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
+    "version": "v 2.17.6",
+    "date": "2025-07-29",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add config events",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiVerticalBar",
+        "description": "Add config events",
+        "link": "/docs#vue-ui-donut"
+      }
+    ]
+  },
+  {
     "version": "v 2.17.5",
     "date": "2025-07-24",
     "updates": [

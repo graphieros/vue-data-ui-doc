@@ -703,6 +703,11 @@ export function useConfig() {
         theme: '',
         customPalette: [],
         useCssAnimation: true,
+        events: {
+            datapointEnter: null,
+            datapointLeave: null,
+            datapointClick: null
+        },
         serieToggleAnimation: {
             show: true,
             durationMs: 500,
@@ -823,7 +828,8 @@ export function useConfig() {
                         borderWidth: 1,
                         useShadow: false,
                         shadowColor: COLOR_BLACK,
-                        emptyFill: COLOR_GREY_LIGHT
+                        emptyFill: COLOR_GREY_LIGHT,
+                        selectedColor: '#0000001A'
                     }
                 },
                 comments: {
@@ -1694,6 +1700,11 @@ export function useConfig() {
         theme: '',
         customPalette: [],
         useCssAnimation: true,
+        events: {
+            datapointEnter: null,
+            datapointLeave: null,
+            datapointClick: null
+        },
         style: {
             fontFamily: 'inherit',
             chart: {

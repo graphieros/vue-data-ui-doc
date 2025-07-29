@@ -90,6 +90,11 @@ const dataset = ref([
 const config = ref({
   responsive: false,
   useCssAnimation: true,
+  events: {
+    datapointEnter: null,
+    datapointLeave: null,
+    datapointClick: null
+  },
   style: {
     fontFamily: "inherit",
     chart: {
@@ -258,6 +263,11 @@ const config = ref({
 const darkModeConfig = ref({
   responsive: false,
   useCssAnimation: true,
+  events: {
+    datapointEnter: null,
+    datapointLeave: null,
+    datapointClick: null
+  },
   style: {
     fontFamily: "inherit",
     chart: {
@@ -609,6 +619,11 @@ const codeDataset = ref(`const dataset: VueUiVerticalBarDatasetItem[] = [
     <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
     <span>customPalette: []; <span class="text-app-blue text-xs">// string[]</span></span>
     <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseDetails attr="events" :level="1">
+      <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+      <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+      <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+    </BaseDetails>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseDetails attr="chart" :level="2" title="style.chart">

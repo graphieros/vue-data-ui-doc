@@ -225,10 +225,26 @@ onBeforeUnmount(() => {
     window.removeEventListener('keydown', closeOnEsc);
 });
 
+const message = ref({
+    en: 'If your company makes more than 2M$ a year, Vue Data UI remains FREE',
+    fr: "Si votre entreprise génère plus de 2M$ par an, Vue Data UI demeure GRATUIT",
+    pt: "Se sua empresa fatura mais de 2 milhões de dólares por ano, o Vue Data UI permanece GRATUITO",
+    de: "Wenn Ihr Unternehmen mehr als 2 Mio. $ pro Jahr verdient, bleibt Vue Data UI KOSTENLOS",
+    zh: "如果您的公司年收入超过 200 万美元，Vue Data UI 仍然是免费的",
+    jp: "御社の年間収益が200万ドルを超えていても、Vue Data UI は無料のままです",
+    es: "Si su empresa gana más de 2 millones de dólares al año, Vue Data UI permanece GRATUITO",
+    ko: "귀사의 연매출이 200만 달러를 초과해도 Vue Data UI는 여전히 무료로 제공됩니다",
+    ar: "إذا كانت شركتك تجني أكثر من 2 مليون دولار سنويًا، يظل Vue Data UI مجانيًا",
+})
+
+
 </script>
 
 <template>
     <ChartMaker ref="chartMkr" />
+    <div v-if="currentRoute === '/'" class="fixed bottom-0 left-0 w-full h-[40px] bg-app-green-light dark:bg-app-blue hidden sm:flex z-[2147483647] place-items-center justify-center">
+        {{ message[store.lang] }} ✊
+    </div>
     <header data-cy="app-header"
         tabindex="1"
         class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] outline-none">

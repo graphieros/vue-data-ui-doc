@@ -63,6 +63,11 @@ const darkModeConfig = ref({
     responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
+    events: {
+        datapointEnter: null,
+        datapointLeave: null,
+        datapointClick: null
+    },
     serieToggleAnimation: {
         show: true,
         durationMs: 500,
@@ -155,7 +160,8 @@ const darkModeConfig = ref({
                     borderWidth: 2,
                     useShadow: false,
                     shadowColor: '#1A1A1A',
-                    emptyFill: '#2A2A2A'
+                    emptyFill: '#2A2A2A',
+                    selectedColor: '#0000001A'
                 },
             },
             comments: {
@@ -269,6 +275,11 @@ const config = ref({
     responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
+    events: {
+        datapointEnter: null,
+        datapointLeave: null,
+        datapointClick: null
+    },
     serieToggleAnimation: {
         show: true,
         durationMs: 500,
@@ -361,7 +372,8 @@ const config = ref({
                     borderWidth: 2,
                     useShadow: false,
                     shadowColor: '#1A1A1A',
-                    emptyFill: '#E1E5E8'
+                    emptyFill: '#E1E5E8',
+                    selectedColor: '#0000001A'
                 },
             },
             comments: {
@@ -785,6 +797,11 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
         <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="serieToggleAnimation" :level="1">
             <BaseAttr name="show" attr="serieToggleAnimation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="durationMs" attr="serieToggleAnimation.durationMs" type="number" defaultVal="500" :min="0" :max="2000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -824,6 +841,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                         <BaseAttr name="useShadow" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" attr="style.chart.layout.donut.useShadow" defaultVal="false"/>
                         <BaseAttr name="shadowColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.layout.donut.shadowColor" defaultVal="#2D353C"/>
                         <BaseAttr name="emptyFill" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.layout.donut.emptyFill" defaultVal="#E1E5E8"/>
+                        <BaseAttr name="selectedColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.layout.donut.selectedColor" defaultVal="#0000001A" comment="It is recommended to keep it very transparent"/>
                     </BaseDetails>
                     <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">                    
                         <BaseDetails attr="dataLabels" :level="5" title="style.chart.layout.labels.dataLabels">
