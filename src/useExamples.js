@@ -7388,40 +7388,40 @@ export default function useExamples() {
                 }
             },
             // GAUGE SINGLE WITH HUGE LABEL
-            { 
-                dataset: DATASET_GAUGE_SINGLE.value, 
-                config: {
-                    ...CONFIG_GAUGE_BASE.value,
-                    style: {
-                        ...CONFIG_GAUGE_BASE.value.style,
-                        chart: {
-                            ...CONFIG_GAUGE_BASE.value.style.chart,
-                            layout: {
-                                ...CONFIG_GAUGE_BASE.value.style.chart.layout,
-                                radiusRatio: 0.8,
-                                segmentNames: {
-                                    fontSize: 44
-                                }
-                            }
-                        }
-                    }
-                },
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gaueg-single',
-                link: 'vue-ui-gauge',
-                description: {
-                    en: "Single segment with huge name label",
-                    fr: "Segment unique avec une étiquette de nom énorme",
-                    pt: "Segmento único com um rótulo de nome enorme",
-                    de: "Einzelnes Segment mit riesigem Namenslabel",
-                    zh: "带有巨大名称标签的单个段",
-                    jp: "巨大な名前ラベルを持つ単一セグメント",
-                    es: "Segmento único con una etiqueta de nombre enorme",
-                    ko: "큰 이름 레이블이 있는 단일 세그먼트",
-                    ar: "قطاع واحد يحمل تسمية اسم كبيرة"
-                }
-            },
+            // { 
+            //     dataset: DATASET_GAUGE_SINGLE.value, 
+            //     config: {
+            //         ...CONFIG_GAUGE_BASE.value,
+            //         style: {
+            //             ...CONFIG_GAUGE_BASE.value.style,
+            //             chart: {
+            //                 ...CONFIG_GAUGE_BASE.value.style.chart,
+            //                 layout: {
+            //                     ...CONFIG_GAUGE_BASE.value.style.chart.layout,
+            //                     radiusRatio: 0.8,
+            //                     segmentNames: {
+            //                         fontSize: 44
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     },
+            //     component: 'VueUiGauge',
+            //     icon: 'chartGauge',
+            //     id: 'gaueg-single',
+            //     link: 'vue-ui-gauge',
+            //     description: {
+            //         en: "Single segment with huge name label",
+            //         fr: "Segment unique avec une étiquette de nom énorme",
+            //         pt: "Segmento único com um rótulo de nome enorme",
+            //         de: "Einzelnes Segment mit riesigem Namenslabel",
+            //         zh: "带有巨大名称标签的单个段",
+            //         jp: "巨大な名前ラベルを持つ単一セグメント",
+            //         es: "Segmento único con una etiqueta de nombre enorme",
+            //         ko: "큰 이름 레이블이 있는 단일 세그먼트",
+            //         ar: "قطاع واحد يحمل تسمية اسم كبيرة"
+            //     }
+            // },
             // GAUGE SINGLE WITH TEXT ONLY
             { 
                 dataset: DATASET_GAUGE_SINGLE_TEXT.value, 
@@ -7639,57 +7639,57 @@ export default function useExamples() {
                 }
             },
             // GAUGE SINGLE WITH HUGE LABEL AND INDICATOR ARC
-            { 
-                dataset: {
-                    ...DATASET_GAUGE_SINGLE.value,
-                    series: [{
-                        ...DATASET_GAUGE_SINGLE.value.series[0],
-                    }]
-                }, 
-                config: {
-                    ...CONFIG_GAUGE_BASE.value,
-                    style: {
-                        ...CONFIG_GAUGE_BASE.value.style,
-                        chart: {
-                            ...CONFIG_GAUGE_BASE.value.style.chart,
-                            layout: {
-                                ...CONFIG_GAUGE_BASE.value.style.chart.layout,
-                                radiusRatio: 0.8,
-                                track: {
-                                    size: 0.1,
-                                    useGradient: false
-                                },
-                                segmentNames: {
-                                    fontSize: 44
-                                },
-                                pointer: {
-                                    show: false
-                                },
-                                indicatorArc: {
-                                    show: true,
-                                    radius: 1610,
-                                    fill: lightenHexColor({ hexColor: colors.value.blue, force: 0.2 })
-                                }
-                            }
-                        }
-                    }
-                },
-                component: 'VueUiGauge',
-                icon: 'chartGauge',
-                id: 'gauge-indicator-arc',
-                link: 'vue-ui-gauge',
-                description: {
-                    en: "With only a label and arc indicator",
-                    fr: "Avec seulement une étiquette et un indicateur en arc",
-                    pt: "Com apenas um rótulo e um indicador de arco",
-                    de: "Nur mit einem Label und einem Bogenindikator",
-                    zh: "仅带标签和弧形指示器",
-                    jp: "ラベルとアークインジケーターのみ",
-                    es: "Con solo una etiqueta y un indicador de arco",
-                    ko: "레이블과 아크 표시기만 포함",
-                    ar: "بمؤشر قوسي ووسم فقط"
-                }
-            },
+            // { 
+            //     dataset: {
+            //         ...DATASET_GAUGE_SINGLE.value,
+            //         series: [{
+            //             ...DATASET_GAUGE_SINGLE.value.series[0],
+            //         }]
+            //     }, 
+            //     config: {
+            //         ...CONFIG_GAUGE_BASE.value,
+            //         style: {
+            //             ...CONFIG_GAUGE_BASE.value.style,
+            //             chart: {
+            //                 ...CONFIG_GAUGE_BASE.value.style.chart,
+            //                 layout: {
+            //                     ...CONFIG_GAUGE_BASE.value.style.chart.layout,
+            //                     radiusRatio: 0.8,
+            //                     track: {
+            //                         size: 0.1,
+            //                         useGradient: false
+            //                     },
+            //                     segmentNames: {
+            //                         fontSize: 44
+            //                     },
+            //                     pointer: {
+            //                         show: false
+            //                     },
+            //                     indicatorArc: {
+            //                         show: true,
+            //                         radius: 1610,
+            //                         fill: lightenHexColor({ hexColor: colors.value.blue, force: 0.2 })
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     },
+            //     component: 'VueUiGauge',
+            //     icon: 'chartGauge',
+            //     id: 'gauge-indicator-arc',
+            //     link: 'vue-ui-gauge',
+            //     description: {
+            //         en: "With only a label and arc indicator",
+            //         fr: "Avec seulement une étiquette et un indicateur en arc",
+            //         pt: "Com apenas um rótulo e um indicador de arco",
+            //         de: "Nur mit einem Label und einem Bogenindikator",
+            //         zh: "仅带标签和弧形指示器",
+            //         jp: "ラベルとアークインジケーターのみ",
+            //         es: "Con solo una etiqueta y un indicador de arco",
+            //         ko: "레이블과 아크 표시기만 포함",
+            //         ar: "بمؤشر قوسي ووسم فقط"
+            //     }
+            // },
             // GAUGE BACKGROUND
             { 
                 dataset: DATASET_GAUGE_BASIC.value, 

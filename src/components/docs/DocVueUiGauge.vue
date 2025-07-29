@@ -478,7 +478,7 @@ const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
 
         <Rater itemId="vue_ui_gauge" />
 
-        <Box showEmits showSlots showThemes showResponsive showPatterns schema="vue_ui_gauge">
+        <Box showEmits showSlots showThemes showResponsive :showPatterns="false" schema="vue_ui_gauge">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -711,6 +711,7 @@ const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
                             ...darkModeConfig.style,
                             chart: {
                                 ...darkModeConfig.style.chart,
+                                animation: { use: false },
                                 layout: {
                                     ...darkModeConfig.style.chart.layout,
                                     radiusRatio: 0.8,
