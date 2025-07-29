@@ -203,7 +203,10 @@ const darkModeConfig = ref({
                     spacingRatio: 0.5,
                     useShadow: false,
                     shadowColor: '#1A1A1A',
-                    emptyFill: '#2A2A2A'
+                    emptyFill: '#2A2A2A',
+                    selectedColor: '#0000001A',
+                    borderColorAuto: true,
+                    borderColor: '#3A3A3A'
                 }
             },
             legend: {
@@ -365,7 +368,10 @@ const config = ref({
                     spacingRatio: 0.5,
                     useShadow: false,
                     shadowColor: '#1A1A1A',
-                    emptyFill: '#E1E5E8'
+                    emptyFill: '#E1E5E8',
+                    selectedColor: '#0000001A',
+                    borderColorAuto: true,
+                    borderColor: '#CCCCCC'
                 }
             },
             legend: {
@@ -600,6 +606,9 @@ const dsTypeCode = computed(() => {
                         <BaseAttr name="useShadow" attr="style.chart.layout.donut.useShadow" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="shadowColor" attr="style.chart.layout.donut.shadowColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="emptyFill" attr="style.chart.layout.donut.emptyFill" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="selectedColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.layout.donut.selectedColor" defaultVal="#0000001A" comment="It is recommended to keep it very transparent"/>
+                        <BaseAttr name="borderColorAuto" attr="style.chart.layout.donut.borderColorAuto" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" defaultVal="true" />
+                        <BaseAttr name="borderColor" attr="style.chart.layout.donut.borderColor" :light="mutableConfig" :dark="mutableConfigDarkMode" defaultVal="#CCCCCC" type="color" />
                     </BaseDetails>
                     <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">
                         <BaseDetails attr="dataLabels" :level="5" title="style.chart.layout.labels.dataLabels">

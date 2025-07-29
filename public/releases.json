@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 2.17.8",
+    "date": "2025-07-29",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Add config options to control arcs stroke color",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add config options to control arcs stroke color",
+        "link": "/docs#vue-ui-nested-donuts"
+      }
+    ]
+  },
+  {
     "version": "v 2.17.7",
     "date": "2025-07-29",
     "updates": [

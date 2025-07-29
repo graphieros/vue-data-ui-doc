@@ -1701,6 +1701,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.donut.useShadow', def: false, type: 'checkbox', label: ['shadow', 'is', 'show'], category: 'donut'},
                     { key: 'style.chart.layout.donut.shadowColor', def: '#1A1A1A', type: 'color', label: ['shadow', 'is', 'color'], category: 'donut'},
                     { key: 'style.chart.layout.donut.emptyFill', def: '#E1E5E8', type: 'color', label: ['empty', 'is', 'color'], category: 'donut'},
+                    { key: 'style.chart.layout.donut.borderColorAuto', def: true, type: 'checkbox', label: ['border', 'color', 'is', 'auto'], category: 'donut'},
+                    { key: 'style.chart.layout.donut.borderColor', def: '#CCCCCC', type: 'color', label: ['border', 'is', 'color'], category: 'donut'},
 
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend' },
@@ -4152,6 +4154,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.donut.useShadow', def: false, type: 'checkbox', label: ['shadow', 'is', 'show'], category: 'donut'},
                     { key: 'style.chart.layout.donut.shadowColor', def: '#1A1A1A', type: 'color', label: ['shadow', 'is', 'color'], category: 'donut'},
                     { key: 'style.chart.layout.donut.emptyFill', def: '#E1E5E8', type: 'color', label: ['empty', 'is', 'color'], category: 'donut'},
+                    { key: 'style.chart.layout.donut.borderColorAuto', def: true, type: 'checkbox', label: ['border', 'color', 'is', 'auto'], category: 'donut'},
+                    { key: 'style.chart.layout.donut.borderColor', def: '#CCCCCC', type: 'color', label: ['border', 'is', 'color'], category: 'donut'},
 
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend' },
@@ -4291,7 +4295,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.legend.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'legend'},
                     { key: 'style.chart.legend.showValue', def: true, type: 'checkbox', label: ['value', 'is', 'show'], category: 'legend'},
                     { key: 'style.chart.legend.showPercentage', def: true, type: 'checkbox', label: ['percentage', 'is', 'show'], category: 'legend'},
-                    
+
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: 'textContent', category: 'title'},
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'title'},
                     { key: 'style.chart.title.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'title'},

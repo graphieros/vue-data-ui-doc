@@ -161,7 +161,9 @@ const darkModeConfig = ref({
                     useShadow: false,
                     shadowColor: '#1A1A1A',
                     emptyFill: '#2A2A2A',
-                    selectedColor: '#0000001A'
+                    selectedColor: '#0000001A',
+                    borderColorAuto: true,
+                    borderColor: '#3A3A3A'
                 },
             },
             comments: {
@@ -373,7 +375,9 @@ const config = ref({
                     useShadow: false,
                     shadowColor: '#1A1A1A',
                     emptyFill: '#E1E5E8',
-                    selectedColor: '#0000001A'
+                    selectedColor: '#0000001A',
+                    borderColorAuto: true,
+                    borderColor: '#CCCCCC'
                 },
             },
             comments: {
@@ -842,6 +846,8 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                         <BaseAttr name="shadowColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.layout.donut.shadowColor" defaultVal="#2D353C"/>
                         <BaseAttr name="emptyFill" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.layout.donut.emptyFill" defaultVal="#E1E5E8"/>
                         <BaseAttr name="selectedColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.layout.donut.selectedColor" defaultVal="#0000001A" comment="It is recommended to keep it very transparent"/>
+                        <BaseAttr name="borderColorAuto" attr="style.chart.layout.donut.borderColorAuto" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" defaultVal="true" />
+                        <BaseAttr name="borderColor" attr="style.chart.layout.donut.borderColor" :light="mutableConfig" :dark="mutableConfigDarkMode" defaultVal="#CCCCCC" type="color" />
                     </BaseDetails>
                     <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">                    
                         <BaseDetails attr="dataLabels" :level="5" title="style.chart.layout.labels.dataLabels">
