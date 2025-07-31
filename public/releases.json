@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 2.17.10",
+    "date": "2025-07-31",
+    "updates": [
+      {
+        "component": "datetime formatter",
+        "description": "Fix display issues when passing timestamps with hour intervals",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.17.9",
     "date": "2025-07-29",
     "updates": [
