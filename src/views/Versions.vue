@@ -1417,9 +1417,9 @@ const wordCloudConfig = computed(() => {
   return {
     userOptions: { show: false},
     customPalette: makeColors({
-      colorStart: '#5f8aee',
+      colorStart: '#607D8B',
       iterations: 1000,
-      force: 0.1
+      force: 0
     }),
 //     customPalette: [
 //   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
