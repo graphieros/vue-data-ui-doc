@@ -2927,15 +2927,19 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [    
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.layout.dataLabels.xAxis.values', def: [], type: 'none' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
-                    { key: 'style.layout.padding.top', def: 60, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'top'], category: 'general' },
+                    { key: 'style.layout.width', def: 1000, type: 'number', min: 200, max: 2000, label: 'width', category: 'general'},
+                    { key: 'style.layout.height', def: 300, type: 'number', min: 200, max: 1000, label: 'height', category: 'general'},
+
+                    { key: 'style.layout.padding.top', def: 6, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'top'], category: 'general' },
                     { key: 'style.layout.padding.right', def: 12, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'right'], category: 'general' },
-                    { key: 'style.layout.padding.bottom', def: 12, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'bottom'], category: 'general' },
-                    { key: 'style.layout.padding.left', def: 48, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'left'], category: 'general' },
-                    { key: 'style.layout.cells.height', def: 48, type: 'number', min: 36, max: 100, label: ['cell', 'is', 'height'], category: 'general' },
+                    { key: 'style.layout.padding.bottom', def: 0, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'bottom'], category: 'general' },
+                    { key: 'style.layout.padding.left', def: 0, type: 'number', min: 0, max: 200, label: ['padding', 'is', 'left'], category: 'general' },
                     { key: 'style.layout.cells.value.show', def: true, type: 'checkbox', label: ['cell', 'value', 'is', 'show'], category: 'general' },
                     { key: 'style.layout.cells.value.fontSize', def: 18, type: 'number', min: 6, max: 48, label: ['cell', 'is', 'fontSize'], category: 'general' },
                     { key: 'style.layout.cells.value.roundingValue', def: 0, type: 'number', min: 0, max: 3, label: ['cell', 'is', 'valueRounding'], category: 'general' },
@@ -2950,6 +2954,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
 
                     { key: 'style.layout.cells.columnTotal.value.show', def: true, type: 'checkbox', label: ['cell', 'column total', 'value', 'is', 'show'], category: 'general'},
                     { key: 'style.layout.cells.columnTotal.value.rotation', def: 0, type: 'range', min: -90, max: 90, label: ['cell', 'column total', 'value', 'is', 'rotation'], category: 'general'},
+                    { key: 'style.layout.cells.columnTotal.value.autoRotate.enable', def: true, type: 'checkbox', label: ['cell', 'column total', 'is', 'auto rotate'], category: 'general'},
+                    { key: 'style.layout.cells.columnTotal.value.autoRotate.angle', def: -30, type: 'number', min: -90, max: 90, label: ['cell', 'column total', 'is', 'angle (auto)'], category: 'general'},
+
                     { key: 'style.layout.cells.columnTotal.value.offsetX', def: 0, type: 'number', min: -100, max: 100, label: ['cell', 'column total', 'value', 'is', 'offsetX'], category: 'general'},
                     { key: 'style.layout.cells.columnTotal.value.offsetY', def: 24, type: 'number', min: -100, max: 100, label: ['cell', 'column total', 'value', 'is', 'offsetY'], category: 'general'},
                     { key: 'style.layout.cells.columnTotal.color.show', def: true, type: 'checkbox', label: ['cell', 'column total', 'color', 'is', 'show'], category: 'general'},
@@ -2963,6 +2970,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.dataLabels.xAxis.offsetX', def: 0, type: 'number', min: -100, max: 100, step: 0.1, label: ['xAxisLabel', 'is', 'offsetX'], category: 'labels' },
                     { key: 'style.layout.dataLabels.xAxis.offsetY', def: 0, type: 'number', min: -100, max: 100, step: 0.1, label: ['xAxisLabel', 'is', 'offsetY'], category: 'labels' },
                     { key: 'style.layout.dataLabels.xAxis.rotation', def: 0, type: 'range', min: -90, max: 90, label: ['xAxisLabel', 'is', 'rotation'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.autoRotate.enable', def: true, type: 'checkbox', label: ['xAxisLabel', 'is', 'auto rotate'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.autoRotate.angle', def: -30, type: 'number', min: -90, max: 90, label: ['xAxisLabel', 'is', 'angle (auto)'], category: 'labels'},
+
                     { key: 'style.layout.dataLabels.xAxis.showOnlyAtModulo', def: null, type: 'number', min: 0, max: 12, label: ['xAxisLabel', 'is', 'show only at modulo'], category: 'labels'},
 
                     { key: 'style.layout.dataLabels.yAxis.show', def: true, type: 'checkbox', label: ['yAxisLabel', 'is', 'show'], category: 'labels' },
@@ -2990,7 +3000,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.legend.bold', def: true, type: 'checkbox', label: 'bold', category: 'legend' },
                     { key: 'style.legend.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: 'valueRounding', category: 'legend' },
                     { key: 'style.legend.scaleBorderRadius', def: 18, type: 'range', min: 0, max: 18, label: ['borderRadius', 'is', 'scale'], category: 'legend' },
-                    { key: 'style.legend.position', def: 'right', type: 'select', options: ['right', 'bottom'], label: 'position', category: 'legend' },
+
                     { key: 'style.tooltip.show', def: true, type: 'checkbox', label: 'show', category: 'tooltip' },
                     { key: 'style.tooltip.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'tooltip' },
                     { key: 'style.tooltip.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'tooltip' },
