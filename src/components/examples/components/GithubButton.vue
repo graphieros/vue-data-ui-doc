@@ -82,7 +82,7 @@ const months = {
                         top: 12,
                         right: 0,
                         left: 0,
-                        bottom: 0
+                        bottom: 6
                     },
                     line: {
                         strokeWidth: 1.6,
