@@ -20,12 +20,6 @@ const config = computed(() => {
             zoom: {
                 show: false,
             },
-            padding: {
-                top: 36,
-                right: 24,
-                bottom: 48,
-                left: 83,
-            },
             highlighter: {
                 color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                 opacity: 5,

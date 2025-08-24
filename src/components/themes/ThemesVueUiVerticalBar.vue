@@ -68,7 +68,7 @@ const config = ref({
   <BaseThemeUnit
       :config="config"
       :dataset="dataset"
-      component="VueUiVerticalBar"
-      componentTheme="vue_ui_vertical_bar"
+      component="VueUiHorizontalBar"
+      componentTheme="vue_ui_horizontal_bar"
   />
 </template>

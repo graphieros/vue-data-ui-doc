@@ -21,6 +21,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -72,6 +73,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
+    loading: false,
     theme: "",
     responsive: false,
     customPalette: [],
@@ -139,9 +142,9 @@ const config = ref({
             width: 800,
             padding: {
                 top: 12,
-                right: 24,
-                bottom: 36,
-                left: 64
+                right: 12,
+                bottom: 12,
+                left: 12
             },
             title: {
                 text: "Title",
@@ -269,6 +272,10 @@ const config = ref({
                         },
                         offsetY: 0,
                         rotation: 0,
+                        autoRotate: {
+                            enable: true,
+                            angle: -30
+                        },
                         fontSize: 14,
                         color: "#2D353C",
                         bold: false
@@ -305,6 +312,8 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     theme: "",
     responsive: false,
     customPalette: [],
@@ -372,9 +381,9 @@ const darkModeConfig = ref({
             width: 800,
             padding: {
                 top: 12,
-                right: 24,
-                bottom: 36,
-                left: 64
+                right: 12,
+                bottom: 12,
+                left: 12
             },
             title: {
                 text: "Title",
@@ -502,6 +511,10 @@ const darkModeConfig = ref({
                         },
                         offsetY: 0,
                         rotation: 0,
+                        autoRotate: {
+                            enable: true,
+                            angle: -30
+                        },
                         fontSize: 14,
                         color: "#CCCCCC",
                         bold: false
@@ -707,6 +720,13 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
         
         <Rater itemId="vue_ui_stackbar" />
 
+        <BaseMigrationInfo
+            autoRotate
+            cssAnimation
+            debug 
+            padding
+        />
+
         <Box :showDatetimeFormatter="true" showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_stackbar" signInfo="both">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
@@ -754,8 +774,15 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
         <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="orientation" attr="orientation" type="select" defaultVal="vertical" :options="['vertical', 'horizontal']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="Since v2.3.45"/>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
@@ -899,6 +926,10 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                                 <BaseAttr name="offsetY" attr="style.chart.grid.x.timeLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="bold" attr="style.chart.grid.x.timeLabels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="rotation" attr="style.chart.grid.x.timeLabels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseDetails attr="autoRotate" title="style.chart.grid.x.timeLabels.autoRotate">
+                                    <BaseAttr name="enable" type="checkbox" defaultVal="true" attr="style.chart.grid.x.timeLabels.autoRotate.enable" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="angle" type="number" :min="-90" :max="90" attr="style.chart.grid.x.timeLabels.autoRotate.angle" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                </BaseDetails>
                             </BaseDetails>
                         </BaseDetails>
                         <BaseDetails attr="y" :level="4" title="style.chart.grid.y">

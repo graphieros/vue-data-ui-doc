@@ -88,6 +88,9 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  debug: false,
+  loading: false,
+  autoSize: true,
   responsive: false,
   useCssAnimation: true,
   events: {
@@ -261,6 +264,9 @@ const config = ref({
   }
 });
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
+  autoSize: true,
   responsive: false,
   useCssAnimation: true,
   events: {
@@ -434,6 +440,18 @@ const darkModeConfig = ref({
   }
 });
 
+const renameWarning = ref({
+  en: 'This component was renamed to VueUiHorizontalBar. Using the old VueUiVerticalBar will work in v3, but we recommend you switch to the new name.',
+  fr: 'Ce composant a été renommé en VueUiHorizontalBar. L’ancien VueUiVerticalBar continuera de fonctionner en v3, mais nous vous recommandons de passer au nouveau nom.',
+  pt: 'Este componente foi renomeado para VueUiHorizontalBar. Usar o antigo VueUiVerticalBar continuará funcionando na v3, mas recomendamos que você mude para o novo nome.',
+  de: 'Diese Komponente wurde in VueUiHorizontalBar umbenannt. Die Verwendung von VueUiVerticalBar funktioniert in v3 weiterhin, wir empfehlen jedoch, zum neuen Namen zu wechseln.',
+  zh: '该组件已重命名为 VueUiHorizontalBar。旧的 VueUiVerticalBar 在 v3 中仍可使用，但建议您切换到新名称。',
+  jp: 'このコンポーネントは VueUiHorizontalBar に名称変更されました。従来の VueUiVerticalBar も v3 では動作しますが、新しい名称への移行をおすすめします。',
+  es: 'Este componente pasó a llamarse VueUiHorizontalBar. El antiguo VueUiVerticalBar seguirá funcionando en la v3, pero te recomendamos cambiar al nuevo nombre.',
+  ko: '이 컴포넌트는 VueUiHorizontalBar로 이름이 변경되었습니다. 기존 VueUiVerticalBar는 v3에서 계속 동작하지만, 새로운 이름으로 전환하길 권장합니다.',
+  ar: 'تمت إعادة تسمية هذا المكوّن إلى VueUiHorizontalBar. سيستمر الاسم القديم VueUiVerticalBar بالعمل في الإصدار v3، لكن نوصي بالانتقال إلى الاسم الجديد.'
+})
+
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value)));
 function resetDefault() {
@@ -485,7 +503,7 @@ function randomizeData() {
 }
 
 const dsTypeCode = computed(() => {
-  return `type VueUiVerticalBarDatasetItem = {
+  return `type VueUiHorizontalBarDatasetItem = {
   name: string;
   value: number;
   color: string; // ${translations.value.docs.comments.xy.color[store.lang]}
@@ -496,7 +514,7 @@ const dsTypeCode = computed(() => {
 }`
 })
 
-const codeDataset = ref(`const dataset: VueUiVerticalBarDatasetItem[] = [
+const codeDataset = ref(`const dataset: VueUiHorizontalBarDatasetItem[] = [
   {
     name: "Serie 1",
     value: 100,
@@ -547,16 +565,22 @@ const codeDataset = ref(`const dataset: VueUiVerticalBarDatasetItem[] = [
 
 <template>
     <div>
-      <BaseDocTitle name="VueUiVerticalBar" />
+      <BaseDocTitle name="VueUiHorizontalBar" />
 
       <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
           {{ translations.docs.tooltips.verticalBar[store.lang] }}
       </p>
+      <div class="mx-auto max-w-[500px] text-md text-app-orange p-4 border border-app-orange flex bg-[#ff370010] gap-4">
+        <div class="h-[40px] w-[40px]">
+          <VueUiIcon name="circleExclamation" stroke="#ff6600"/>
+        </div>
+        {{ renameWarning[store.lang] }}
+      </div>
 
         <BaseDocHeaderActions
           targetLink="vue-ui-vertical-bar"
-          targetMaker="VueUiVerticalBar"
-          :configSource="mainConfig.vue_ui_vertical_bar"
+          targetMaker="VueUiHorizontalBar"
+          :configSource="mainConfig.vue_ui_horizontal_bar"
         />
 
         <div :class="`transition-all mx-auto w-1/2`">
@@ -567,18 +591,18 @@ const codeDataset = ref(`const dataset: VueUiVerticalBarDatasetItem[] = [
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <VueUiVerticalBar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <VueUiHorizontalBar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
           </DocSnapper>
           <BaseRandomButton @click="randomizeData"/>
         </div>
 
         <div class="w-full flex justify-center mt-6">
-            <BaseViewExampleButton link="/examples/categories#vue-ui-vertical-bar"/>
+            <BaseViewExampleButton link="/examples/categories#vue-ui-horizontal-bar"/>
         </div>
 
-        <Rater itemId="vue_ui_vertical_bar" />
+        <Rater itemId="vue_ui_horizontal_bar" />
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_vertical_bar" signInfo="both">
+        <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_horizontal_bar" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
@@ -607,7 +631,7 @@ const codeDataset = ref(`const dataset: VueUiVerticalBarDatasetItem[] = [
                         <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
                     </div>
                 <div class="mt-4">
-                  TS type: <code class="text-app-blue">VueUiVerticalBarConfig</code>
+                  TS type: <code class="text-app-blue">VueUiHorizontalBarConfig</code>
                 </div>
 
 <div class="my-4">
@@ -615,9 +639,12 @@ const codeDataset = ref(`const dataset: VueUiVerticalBarDatasetItem[] = [
 </div>
 
 <code ref="configCode">
-  <BaseDetails attr="const config:VueUiVerticalBarConfig" equal>
+  <BaseDetails attr="const config:VueUiHorizontalBarConfig" equal>
     <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
     <span>customPalette: []; <span class="text-app-blue text-xs">// string[]</span></span>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseAttr name="autoSize" attr="autoSize" type="checkbox" defaultVal="true"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
     <BaseDetails attr="events" :level="1">
       <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />

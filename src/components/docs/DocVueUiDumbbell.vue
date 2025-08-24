@@ -17,6 +17,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -47,6 +48,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     useAnimation: true,
     animationSpeed: 2,
@@ -83,12 +86,12 @@ const config = ref({
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
             width: 600,
-            rowHeight: 40,
+            rowHeight: 48,
             padding: {
                 top: 12,
-                left: 100,
                 right: 24,
-                bottom: 24
+                bottom: 12,
+                left: 12,
             },
             plots: {
                 startColor: "#ff6400",
@@ -103,11 +106,19 @@ const config = ref({
                 gradient: {
                     show: true,
                     intensity: 40
+                },
+                evaluationColors: {
+                    enable: false,
+                    positive: '#2ca02c',
+                    negative: '#d62728',
+                    neutral: '#c7c7c7',
                 }
             },
             grid: {
                 strokeWidth: 1,
                 scaleSteps: 10,
+                scaleMin: null,
+                scaleMax: null,
                 horizontalGrid: {
                     show: true,
                     stroke: "#cccccc",
@@ -121,9 +132,32 @@ const config = ref({
                     strokeDasharray: 0
                 }
             },
+            comparisonLines: {
+                show: true,
+                strokeWidth: 1,
+                strokeDasharray: 4,
+                showRect: true,
+                rectColor: '#2D353C',
+                rectOpacity: 5,
+                showLabel: true,
+                labelColor: '#2D353C',
+                labelFontSize: 12,
+            },
+            highlighter: {
+                color: '#2D353C',
+                opacity: 5  
+            },
             labels: {
                 prefix: "",
                 suffix: "",
+                axis: {
+                    yLabel: 'Y axis',
+                    yLabelOffsetX: 0,
+                    xLabel: 'X axis',
+                    xLabelOffsetY: 0,
+                    fontSize: 14,
+                    color: '#2D353C'
+                },
                 yAxisLabels: {
                     show: true,
                     fontSize: 14,
@@ -131,7 +165,8 @@ const config = ref({
                     offsetX: 0,
                     bold: true,
                     showProgression: true,
-                    rounding: 1
+                    rounding: 1,
+                    formatter: null
                 },
                 xAxisLabels: {
                     show: true,
@@ -139,7 +174,12 @@ const config = ref({
                     color: "#2D353C",
                     offsetY: 0,
                     bold: false,
-                    rounding: 0
+                    rounding: 0,
+                    rotation: 0,
+                    autoRotate: {
+                        enable: true,
+                        angle: -30
+                    }
                 },
                 startLabels: {
                     show: true,
@@ -147,7 +187,8 @@ const config = ref({
                     color: "#2D353C",
                     offsetY: 0,
                     rounding: 0,
-                    useStartColor: true
+                    useStartColor: true,
+                    useEvaluationColor: true,
                 },
                 endLabels: {
                     show: true,
@@ -155,13 +196,17 @@ const config = ref({
                     color: "#2D353C",
                     offsetY: 0,
                     rounding: 0,
-                    useEndColor: true
+                    useEndColor: true,
+                    useEvaluationColor: true,
                 }
             },
             legend: {
                 show: true,
                 labelStart: "2014",
                 labelEnd: "2024",
+                labelPositive: 'positive',
+                labelNegative: 'negative',
+                labelNeutral: 'neutral',
                 backgroundColor: "#F3F4F6",
                 color: "#2D353C",
                 fontSize: 14,
@@ -209,6 +254,8 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     useAnimation: true,
     animationSpeed: 2,
@@ -245,12 +292,12 @@ const darkModeConfig = ref({
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
             width: 600,
-            rowHeight: 40,
+            rowHeight: 48,
             padding: {
                 top: 12,
-                left: 100,
                 right: 24,
-                bottom: 24
+                bottom: 12,
+                left: 12,
             },
             plots: {
                 startColor: "#ff6400",
@@ -265,11 +312,19 @@ const darkModeConfig = ref({
                 gradient: {
                     show: true,
                     intensity: 40
+                },
+                evaluationColors: {
+                    enable: false,
+                    positive: '#2ca02c',
+                    negative: '#d62728',
+                    neutral: '#c7c7c7',
                 }
             },
             grid: {
                 strokeWidth: 1,
                 scaleSteps: 10,
+                scaleMin: null,
+                scaleMax: null,
                 horizontalGrid: {
                     show: true,
                     stroke: "#6A6A6A",
@@ -283,9 +338,32 @@ const darkModeConfig = ref({
                     strokeDasharray: 0
                 }
             },
+            comparisonLines: {
+                show: true,
+                strokeWidth: 1,
+                strokeDasharray: 4,
+                showRect: true,
+                rectColor: '#CCCCCC',
+                rectOpacity: 5,
+                showLabel: true,
+                labelColor: '#CCCCCC',
+                labelFontSize: 12,
+            },
+            highlighter: {
+                color: '#CCCCCC',
+                opacity: 5  
+            },
             labels: {
                 prefix: "",
                 suffix: "",
+                axis: {
+                    yLabel: 'Y axis',
+                    yLabelOffsetX: 0,
+                    xLabel: 'X axis',
+                    xLabelOffsetY: 0,
+                    fontSize: 14,
+                    color: '#CCCCCC'
+                },
                 yAxisLabels: {
                     show: true,
                     fontSize: 14,
@@ -293,7 +371,8 @@ const darkModeConfig = ref({
                     offsetX: 0,
                     bold: true,
                     showProgression: true,
-                    rounding: 1
+                    rounding: 1,
+                    formatter: null,
                 },
                 xAxisLabels: {
                     show: true,
@@ -301,7 +380,12 @@ const darkModeConfig = ref({
                     color: "#CCCCCC",
                     offsetY: 0,
                     bold: false,
-                    rounding: 0
+                    rounding: 0,
+                    rotation: 0,
+                    autoRotate: {
+                        enable: true,
+                        angle: -30
+                    }
                 },
                 startLabels: {
                     show: true,
@@ -309,7 +393,8 @@ const darkModeConfig = ref({
                     color: "#CCCCCC",
                     offsetY: 0,
                     rounding: 0,
-                    useStartColor: true
+                    useStartColor: true,
+                    useEvaluationColor: true,
                 },
                 endLabels: {
                     show: true,
@@ -317,13 +402,17 @@ const darkModeConfig = ref({
                     color: "#CCCCCC",
                     offsetY: 0,
                     rounding: 0,
-                    useEndColor: true
+                    useEndColor: true,
+                    useEvaluationColor: true,
                 }
             },
             legend: {
                 show: true,
                 labelStart: "2014",
                 labelEnd: "2024",
+                labelPositive: 'positive',
+                labelNegative: 'negative',
+                labelNeutral: 'neutral',
                 backgroundColor: "#1A1A1A",
                 color: "#CCCCCC",
                 fontSize: 14,
@@ -464,6 +553,12 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
 
         <Rater itemId="vue_ui_dumbbell" />
 
+        <BaseMigrationInfo
+            autoRotate
+            debug 
+            padding
+        />
+
         <Box showEmits showSlots showThemes showResponsive schema="vue_ui_dumbbell" signInfo="both">
             <template #tab0>
                 <div>
@@ -503,19 +598,28 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiDumbbellConfig">
         <span> responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
-        <BaseAttr name="useAnimation" attr="useAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+        <BaseAttr name="useAnimation" attr="useAnimation" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseAttr name="animationSpeed" attr="animationSpeed" type="range" defaultVal="2" :min="0.1" :max="6" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
                 <BaseAttr name="backgroundColor" attr="style.chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="width" attr="style.chart.width" type="number" defaultVal="600" :min="300" :max="1000" :step="50" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                <BaseAttr name="rowHeight" attr="style.chart.rowHeight" type="range" defaultVal="40" :min="40" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+                <BaseAttr name="rowHeight" attr="style.chart.rowHeight" type="range" defaultVal="48" :min="40" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseDetails attr="grid" :level="3" title="style.chart.grid">
                     <BaseAttr name="strokeWidth" attr="style.chart.grid.strokeWidth" type="number" defaultVal="1" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="scaleSteps" attr="style.chart.grid.scaleSteps" type="select" defaultVal="10" :options="[2, 5, 10, 20]" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="scaleMin" attr="style.chart.grid.scaleMin" type="number" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="scaleMax" attr="style.chart.grid.scaleMax" type="number" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseDetails attr="horizontalGrid" :level="4" title="style.chart.grid.horizontalGrid">
                         <BaseAttr name="show" attr="style.chart.grid.horizontalGrid.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                         <BaseAttr name="stroke" attr="style.chart.grid.horizontalGrid.stroke" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -529,10 +633,38 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
                         <BaseAttr name="strokeDasharray" attr="style.chart.grid.verticalGrid.strokeDasharray" type="range" defaultVal="4" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                 </BaseDetails>
+
+                <BaseDetails attr="comparisonLines" :level="3" title="style.chart.comparisonLines">
+                    <BaseAttr name="show" attr="style.chart.comparisonLines.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="strokeWidth" attr="style.chart.comparisonLines.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="strokeDasharray" attr="style.chart.comparisonLines.strokeDasharray" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="showRect" attr="style.chart.comparisonLines.showRect" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="rectColor" attr="style.chart.comparisonLines.rectColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="rectOpacity" attr="style.chart.comparisonLines.rectOpacity" type="range" defaultVal="5" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="showLabel" attr="style.chart.comparisonLines.showLabel" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="labelColor" attr="style.chart.comparisonLines.labelColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="labelFontSize" attr="style.chart.comparisonLines.labelFontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+
+                <BaseDetails attr="highlighter" :level="3" title="style.chart.highlighter">
+                    <BaseAttr name="color" attr="style.chart.highlighter.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="opacity" attr="style.chart.highlighter.opacity" type="range" defaultVal="5" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+
                 <BaseDetails attr="labels" :level="3" title="style.chart.labels">
                     <BaseAttr name="prefix" attr="style.chart.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="suffix" attr="style.chart.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+
+                    <BaseDetails attr="axis" :level="4" title="style.chart.labels.axis">
+                        <BaseAttr name="yLabel" attr="style.chart.labels.axis.yLabel" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="yLabelOffsetX" attr="style.chart.labels.axis.yLabelOffsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="xLabel" attr="style.chart.labels.axis.xLabel" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="xLabelOffsetY" attr="style.chart.labels.axis.xLabelOffsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="fontSize" attr="style.chart.labels.axis.fontSize"  type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.chart.labels.axis.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+
                     <BaseDetails attr="endLabels" :level="4" title="style.chart.labels.endLabels">
                         <BaseAttr name="show" attr="style.chart.labels.endLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                         <BaseAttr name="fontSize" attr="style.chart.labels.endLabels.fontSize" type="number" defaultVal="10" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -540,6 +672,7 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
                         <BaseAttr name="offsetY" attr="style.chart.labels.endLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="rounding" attr="style.chart.labels.endLabels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="useEndColor" attr="style.chart.labels.endLabels.useEndColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="useEvaluationColor" attr="style.chart.labels.endLabels.useEvaluationColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="startLabels" :level="4" title="style.chart.labels.startLabels">
                         <BaseAttr name="show" attr="style.chart.labels.startLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -548,6 +681,7 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
                         <BaseAttr name="offsetY" attr="style.chart.labels.startLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="rounding" attr="style.chart.labels.startLabels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="useStartColor" attr="style.chart.labels.startLabels.useStartColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="useEvaluationColor" attr="style.chart.labels.startLabels.useEvaluationColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="xAxisLabels" :level="4" title="style.chart.labels.xAxisLabels">
                         <BaseAttr name="show" attr="style.chart.labels.xAxisLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
@@ -556,6 +690,11 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
                         <BaseAttr name="offsetY" attr="style.chart.labels.xAxisLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="bold" attr="style.chart.labels.xAxisLabels.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                         <BaseAttr name="rounding" attr="style.chart.labels.xAxisLabels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="rotation" attr="style.chart.labels.xAxisLabels.rotation" type="number" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseDetails attr="autoRotate" :level="5" title="style.chart.labels.xAxisLabels.autoRotate">
+                            <BaseAttr name="enable" attr="style.chart.labels.xAxisLabels.autoRotate.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="angle" attr="style.chart.labels.xAxisLabels.autoRotate.angle" type="number" defaultVal="-30" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="yAxisLabels" :level="4" title="style.chart.labels.yAxisLabels">
                         <BaseAttr name="show" attr="style.chart.labels.yAxisLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
@@ -565,22 +704,26 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
                         <BaseAttr name="bold" attr="style.chart.labels.yAxisLabels.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                         <BaseAttr name="rounding" attr="style.chart.labels.yAxisLabels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="showProgression" attr="style.chart.labels.yAxisLabels.showProgression" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="legend" :level="3" title="style.chart.legend">
                     <BaseAttr name="show" attr="style.chart.legend.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="labelStart" attr="style.chart.legend.labelStart" type="text" defaultVal="start" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="labelEnd" attr="style.chart.legend.labelEnd" type="text" defaultVal="end" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="labelPositive" attr="style.chart.legend.labelPositive" type="text" defaultVal="positive" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="labelNegative" attr="style.chart.legend.labelNegative" type="text" defaultVal="negative" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="labelNeutral" attr="style.chart.legend.labelNeutral" type="text" defaultVal="neutral" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="backgroundColor" attr="style.chart.legend.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="bold" attr="style.chart.legend.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 </BaseDetails>
                 <BaseDetails attr="padding" :level="3" title="style.chart.padding">
-                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" defaultVal="24" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="left" attr="style.chart.padding.left" type="number" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" defaultVal="24" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="left" attr="style.chart.padding.left" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 </BaseDetails>
                 <BaseDetails attr="plots" :level="3" title="style.chart.plots">
                     <BaseAttr name="startColor" attr="style.chart.plots.startColor" type="color" defaultVal="#DC3912" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -595,6 +738,12 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
                     <BaseDetails attr="link" :level="4" title="style.chart.plots.link">
                         <BaseAttr name="type" attr="style.chart.plots.link.type" type="select" defaultVal="curved" :options="['curved', 'line']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="strokeWidth" attr="style.chart.plots.link.strokeWidth" type="number" defaultVal="2" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="For type line"/>
+                    </BaseDetails>
+                    <BaseDetails attr="evaluationColors" :level="4" title="style.chart.plots.evaluationColors">
+                        <BaseAttr name="enable" attr="style.chart.plots.evaluationColors.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="positive" attr="style.chart.plots.evaluationColors.positive" type="color" defaultVal="#2ca02c" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="negative" attr="style.chart.plots.evaluationColors.negative" type="color" defaultVal="#d62728" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="neutral" attr="style.chart.plots.evaluationColors.neutral" type="color" defaultVal="#c7c7c7" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">

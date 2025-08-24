@@ -18,6 +18,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -129,6 +130,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   responsiveProportionalSizing: true,
   userOptions: {
@@ -167,6 +170,7 @@ const config = ref({
     labels: {
       color: "#2D353C",
       fontSize: 10,
+      minFontSize: 6
     },
     weightLabels: {
       show: true,
@@ -209,6 +213,8 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   responsiveProportionalSizing: true,
   userOptions: {
@@ -247,6 +253,7 @@ const darkModeConfig = ref({
     labels: {
       color: "#CCCCCC",
       fontSize: 10,
+      minFontSize: 6,
     },
     weightLabels: {
       show: true,
@@ -456,6 +463,10 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
 
     <Rater itemId="vue_ui_relation_circle" />
 
+    <BaseMigrationInfo
+      debug 
+    />
+
     <Box showEmits showSlots showThemes showResponsive schema="vue_ui_relation_circle">
       <template v-slot:tab0>
         <div class="w-full overflow-x-auto">
@@ -508,9 +519,16 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiRelationCircleConfig" equal>
     <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
     <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
     <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
+    <BaseDetails attr="events" :level="1">
+        <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+        <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+    </BaseDetails>
     <BaseDetails attr="style">
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="color" attr="style.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -530,6 +548,7 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
       <BaseDetails attr="labels" :level="2" title="style.labels">
         <BaseAttr name="color" attr="style.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="fontSize" attr="style.labels.fontSize" type="number" defaultVal="10" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="minFontSize" attr="style.labels.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       </BaseDetails>
       <BaseDetails attr="weightLabels" :level="2" title="style.weightLabels">
         <BaseAttr name="show" attr="style.weightLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

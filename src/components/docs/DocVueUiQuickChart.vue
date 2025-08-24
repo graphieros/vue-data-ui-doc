@@ -18,6 +18,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import { jsonToJsObject, copyCode } from "../maker/lib";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -132,6 +133,8 @@ const quickDatasetBar = ref([
 ])
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     backgroundColor: "#FFFFFF",
     barAnimated: true,
@@ -143,6 +146,7 @@ const config = ref({
     dataLabelFontSize: 14,
     dataLabelRoundingPercentage: 1,
     dataLabelRoundingValue: 1,
+    donutCurvedMarkers: true,
     donutHideLabelUnderPercentage: 3,
     donutLabelMarkerStrokeWidth: 1,
     donutRadiusRatio: 0.4,
@@ -210,8 +214,8 @@ const config = ref({
     xyHighlighterOpacity: 0.05,
     xyLabelsXFontSize: 8,
     xyLabelsYFontSize: 12,
-    xyPaddingBottom: 48,
-    xyPaddingLeft: 48,
+    xyPaddingBottom: 24,
+    xyPaddingLeft: 24,
     xyPaddingRight: 12,
     xyPaddingTop: 24,
     xyPeriods: monthValues.value,
@@ -230,6 +234,10 @@ const config = ref({
         }
     },
     xyPeriodLabelsRotation: 0,
+    xyPeriodLabelsAutoRotate: { 
+        enable: true, 
+        angle: -30, 
+    },
     xyPeriodsShowOnlyAtModulo: false,
     xyPeriodsModulo: 12,
     xyScaleSegments: 10,
@@ -264,6 +272,8 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     backgroundColor: "#2A2A2A",
     barAnimated: true,
@@ -275,6 +285,7 @@ const darkModeConfig = ref({
     dataLabelFontSize: 14,
     dataLabelRoundingPercentage: 1,
     dataLabelRoundingValue: 1,
+    donutCurvedMarkers: true,
     donutHideLabelUnderPercentage: 3,
     donutLabelMarkerStrokeWidth: 1,
     donutRadiusRatio: 0.4,
@@ -342,8 +353,8 @@ const darkModeConfig = ref({
     xyHighlighterOpacity: 0.05,
     xyLabelsXFontSize: 8,
     xyLabelsYFontSize: 12,
-    xyPaddingBottom: 48,
-    xyPaddingLeft: 48,
+    xyPaddingBottom: 24,
+    xyPaddingLeft: 24,
     xyPaddingRight: 12,
     xyPaddingTop: 24,
     xyPeriods: monthValues.value,
@@ -362,6 +373,10 @@ const darkModeConfig = ref({
         }
     },
     xyPeriodLabelsRotation: 0,
+    xyPeriodLabelsAutoRotate: { 
+        enable: true, 
+        angle: -30, 
+    },
     xyPeriodsShowOnlyAtModulo: true,
     xyPeriodsModulo: 12,
     xyScaleSegments: 10,
@@ -770,6 +785,12 @@ function copyComponentSnippet(snip) {
         </div>
         <Rater itemId="vue_ui_quick_chart" />
 
+        <BaseMigrationInfo
+            autoRotate
+            debug 
+            padding
+        />
+
         <Box :showDatetimeFormatter="true" showSlots showTooltip showEmits showThemes showResponsive schema="vue_ui_quick_chart">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
@@ -817,8 +838,15 @@ function copyComponentSnippet(snip) {
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiQuickChartConfig" equal>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseAttr name="axisLabelsFontSize" attr="axisLabelsFontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="backgroundColor" attr="backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <div class="py-4 bg-gray-200 dark:bg-[#FFFFFF10] rounded-md px-4 pl-8 border-l border-black dark:border-app-blue my-2">
@@ -839,6 +867,7 @@ function copyComponentSnippet(snip) {
             <BaseAttr name="donutHideLabelUnderPercentage" attr="donutHideLabelUnderPercentage" type="number" defaultVal="3" :min="1" :max="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutLabelMarkerStrokeWidth" attr="donutLabelMarkerStrokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutRadiusRatio" attr="donutRadiusRatio" type="range" defaultVal="0.4" :min="0.2" :max="0.5" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="donutCurvedMarkers" attr="donutCurvedMarkers" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutShowTotal" attr="donutShowTotal" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutStrokeWidth" attr="donutStrokeWidth" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="donutThicknessRatio" attr="donutThicknessRatio" type="range" defaultVal="0.18" :min="0.01" :max="0.4" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -935,6 +964,10 @@ function copyComponentSnippet(snip) {
             <BaseAttr name="xyPeriodLabelsRotation" attr="xyPeriodLabelsRotation" type="number" defaultVal="0" :min="-360" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="xyPeriodsShowOnlyAtModulo" attr="xyPeriodsShowOnlyAtModulo" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="Ideal for large datasets"/>
             <BaseAttr name="xyPeriodsModulo" attr="xyPeriodsModulo" type="number" defaultVal="12" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" comment="With xyPeriodsShowOnlyAtModulo set to true" />
+            <BaseDetails attr="xyPeriodLabelsAutoRotate" :level="1" title="xyPeriodLabelsAutoRotate">
+                <BaseAttr name="enable" type="checkbox" defaultVal="true" attr="xyPeriodLabelsAutoRotate.enable" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="angle" type="number" defaultVal="-30" attr="xyPeriodLabelsAutoRotate.angle" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+            </BaseDetails>
             <BaseAttr name="xyScaleSegments" attr="xyScaleSegments" type="number" defaultVal="10" :min="2" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="xyShowAxis" attr="xyShowAxis" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="xyShowGrid" attr="xyShowGrid" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

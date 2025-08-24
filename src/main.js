@@ -55,7 +55,8 @@ import {
     VueUiPattern,
     VueUiWorld,
     VueUiRidgeline,
-    VueUiChord
+    VueUiChord,
+    VueUiHorizontalBar
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
 
@@ -73,6 +74,7 @@ app.component("VueUiGauge", VueUiGauge);
 app.component("VueUiChestnut", VueUiChestnut);
 app.component("VueUiOnion", VueUiOnion);
 app.component("VueUiVerticalBar", VueUiVerticalBar);
+app.component("VueUiHorizontalBar", VueUiHorizontalBar);
 app.component("VueUiRating", VueUiRating);
 app.component("VueUiSkeleton", VueUiSkeleton);
 app.component("VueUiSparkline", VueUiSparkline);

@@ -158,14 +158,14 @@ const smallMenu = ref([
         component: 'XyCanvas'
     },
     {
-        route: '/docs#vue-ui-vertical-bar',
+        route: '/docs#vue-ui-horizontal-bar',
         icon: 'chartVerticalBar',
         cssClasses: '',
         isSelected: isSelected,
-        tooltipContent: 'VerticalBar',
+        tooltipContent: 'HorizontalBar',
         thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
-        component: 'VerticalBar'
+        component: 'HorizontalBar'
     },
     {
         route: '/docs#vue-ui-parallel-coordinate-plot',
@@ -713,7 +713,7 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-quick-chart', componentName: 'QuickChart', icon: 'vueDataUi' },
             {route: '/docs#vue-ui-xy', componentName: 'Xy', icon: 'chartLine' },
             {route: '/docs#vue-ui-xy-canvas', componentName: 'XyCanvas', icon: 'chartLine' },
-            {route: '/docs#vue-ui-vertical-bar', componentName: 'VerticalBar', icon: 'chartVerticalBar' },
+            {route: '/docs#vue-ui-horizontal-bar', componentName: 'HorizontalBar', icon: 'chartVerticalBar' },
             {route: '/docs#vue-ui-parallel-coordinate-plot', componentName: 'ParallelCoordinatePlot', icon: 'chartParallelCoordinatePlot' },
             {route: '/docs#vue-ui-flow', componentName: 'Flow', icon: 'chartFlow' },
             {route: '/docs#vue-ui-candlestick', componentName: 'Candlestick', icon: 'chartCandlestick' },

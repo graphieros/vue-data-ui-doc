@@ -19,6 +19,8 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -51,6 +53,9 @@ const dataset = ref({
 });
 
 const config = ref({
+    debug: false,
+    loading: false,
+    responsive: false,
     theme: "",
     userOptions: {
         show: true,
@@ -119,6 +124,7 @@ const config = ref({
                 },
             },
             target: {
+                show: true,
                 onTop: true,
                 color: "#1A1A1A",
                 rounded: true,
@@ -168,6 +174,9 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
+    responsive: false,
     theme: "",
     userOptions: {
         show: true,
@@ -236,6 +245,7 @@ const darkModeConfig = ref({
                 },
             },
             target: {
+                show: true,
                 onTop: true,
                 color: "#1A1A1A",
                 rounded: true,
@@ -392,7 +402,11 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
 
         <Rater itemId="vue_ui_bullet" />
 
-        <Box showEmits showSlots showThemes signInfo="both" schema="vue_ui_bullet">
+        <BaseMigrationInfo
+            debug
+        />
+
+        <Box showEmits showSlots showThemes showResponsive signInfo="both" schema="vue_ui_bullet">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -436,6 +450,9 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiBulletConfig" equal>
+        <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseDetails attr="userOptions" :level="1">
             <BaseAttr name="show" attr="userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -497,6 +514,7 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="target" :level="3" title="style.chart.target">
+                    <BaseAttr name="show" attr="style.chart.target.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="ontTop" attr="style.chart.target.onTop" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="style.chart.target.color" type="color" defaultVal="#1A1A1A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="rounded" attr="style.chart.target.rounded" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -637,6 +655,28 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
 
             <template #tab6>
                 <ThemesVueUiBullet />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit height="200px" minHeight="150px">
+                    <template #chart>
+                        <VueDataUi
+                            component="VueUiBullet"
+                            :dataset="dataset"
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    }
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
 

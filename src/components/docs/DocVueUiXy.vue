@@ -23,6 +23,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCssOverride from "../BaseCssOverride.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -156,6 +157,13 @@ const monthValues = computed(() => {
 });
 
 const config = ref({
+    debug: true,
+    loading: false,
+    events: {
+        datapointEnter: null,
+        datapointLeave: null,
+        datapointClick: null,
+    },
     responsive: false,
     responsiveProportionalSizing: true,
     useCssAnimation: true,
@@ -267,13 +275,21 @@ const config = ref({
                 selectionRadius: 2,
                 indicatorColor: '#1A1A1A',
                 verticalHandles: false
+            },
+            preview: {
+                enable: true,
+                enable: false,
+                fill: '#CCCCCC50',
+                stroke: '#6A6A6A',
+                strokeWidth: 2,
+                strokeDasharray: 0,
             }
         },
         padding: {
-            top:  36,
-            right: 92,
-            bottom: 48,
-            left: 64
+            top:  12,
+            right: 12,
+            bottom: 12,
+            left: 12
         },
         grid: {
             stroke: "#C4C4C4",
@@ -316,7 +332,8 @@ const config = ref({
                     scaleLabelOffsetX: 0,
                     scaleValueOffsetX: 0,
                     showCrosshairs: true,
-                    crosshairSize: 6
+                    crosshairSize: 6,
+                    serieNameFormatter: null
                 },
                 xAxis: {
                     showBaseline: true,
@@ -347,7 +364,11 @@ const config = ref({
                     yOffset: 0,
                     rotation: 0,
                     showOnlyAtModulo: false,
-                    modulo: 12
+                    modulo: 12,
+                    autoRotate: {
+                        enable: true,
+                        angle: -30
+                    }
                 }
             }
         },
@@ -436,6 +457,7 @@ const config = ref({
         },
     },
     bar: {
+        showTransition: true,
         borderRadius: 2,
         useGradient: true,
         periodGap: 0.1,
@@ -461,6 +483,7 @@ const config = ref({
         }
     },
     line: {
+        showTransition: true,
         radius: 4,
         useGradient: true,
         strokeWidth: 2,
@@ -488,6 +511,7 @@ const config = ref({
         }
     },
     plot: {
+        showTransition: true,
         radius: 3,
         useGradient: true,
         dot: {
@@ -532,6 +556,13 @@ const config = ref({
 const darkModeConfig = ref({
     downsample: {
         threshold: 500
+    },
+    debug: true,
+    loading: false,
+    events: {
+        datapointEnter: null,
+        datapointLeave: null,
+        datapointClick: null,
     },
     responsive: false,
     responsiveProportionalSizing: true,
@@ -641,13 +672,21 @@ const darkModeConfig = ref({
                 selectionRadius: 2,
                 indicatorColor: '#CCCCCC',
                 verticalHandles: false
+            },
+            preview: {
+                enable: true,
+                enable: false,
+                fill: '#CCCCCC50',
+                stroke: '#6A6A6A',
+                strokeWidth: 2,
+                strokeDasharray: 0,
             }
         },
         padding: {
-            top:  36,
-            right: 92,
-            bottom: 48,
-            left: 64
+            top:  12,
+            right: 12,
+            bottom: 12,
+            left: 12
         },
         grid: {
             stroke: "#e1e5e8",
@@ -691,6 +730,7 @@ const darkModeConfig = ref({
                     scaleValueOffsetX: 0,
                     showCrosshairs: true,
                     crosshairSize: 6,
+                    serieNameFormatter: null,
                 },
                 xAxis: {
                     showBaseline: true,
@@ -721,7 +761,11 @@ const darkModeConfig = ref({
                     yOffset: 0,
                     rotation: 0,
                     showOnlyAtModulo: false,
-                    modulo: 12
+                    modulo: 12,
+                    autoRotate: {
+                        enable: true,
+                        angle: -30
+                    }
                 }
             }
         },
@@ -810,6 +854,7 @@ const darkModeConfig = ref({
         },
     },
     bar: {
+        showTransition: true,
         borderRadius: 2,
         useGradient: true,
         periodGap: 0.1,
@@ -835,6 +880,7 @@ const darkModeConfig = ref({
         }
     },
     line: {
+        showTransition: true,
         radius: 4,
         useGradient: true,
         strokeWidth: 2,
@@ -857,6 +903,7 @@ const darkModeConfig = ref({
         }
     },
     plot: {
+        showTransition: true,
         radius: 3,
         useGradient: true,
         dot: {
@@ -1067,6 +1114,15 @@ const cssContent = `
             <Rater itemId="vue_ui_xy" />
         </div>
 
+        <BaseMigrationInfo 
+            autoRotate
+            cssAnimation
+            debug 
+            padding 
+            xyTransitions
+            zoomPreview
+        />
+
 
         <!-- <div class="w-full mx-auto max-w-[500px] flex flex-col p-6 border border-app-blue rounded-md bg-[#5f8bee12]">
             <span class="dark:text-blue-300">
@@ -1120,12 +1176,19 @@ const cssContent = `
 </div>
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiXyConfig" equal>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
         <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="showTable" attr="showTable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="downsample" :level="1">
             <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
         </BaseDetails>
@@ -1234,9 +1297,13 @@ const cssContent = `
                         </BaseDetails>
                         <BaseAttr name="fontSize" attr="chart.grid.labels.xAxisLabels.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="yOffset" attr="chart.grid.labels.xAxisLabels.yOffset" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="rotation" attr="chart.grid.labels.xAxisLabels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="showOnlyAtModulo" attr="chart.grid.labels.xAxisLabels.showOnlyAtModulo" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                         <BaseAttr name="modulo" attr="chart.grid.labels.xAxisLabels.modulo" type="number" defaultVal="12" :min="1" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                        <BaseAttr name="rotation" attr="chart.grid.labels.xAxisLabels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseDetails attr="autoRotate" title="chart.grid.labels.xAxisLabels.autoRotate">
+                            <BaseAttr name="enable" type="checkbox" defaultVal="true" attr="chart.grid.labels.xAxisLabels.autoRotate.enable" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="angle" type="number" :min="-90" :max="90" attr="chart.grid.labels.xAxisLabels.autoRotate.angle" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="yAxis" :level="4" title="chart.grid.labels.yAxis">
                         <BaseAttr name="commonScaleSteps" attr="chart.grid.labels.yAxis.commonScaleSteps" type="number" defaultVal="10" :min="2" :max="20" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1297,10 +1364,10 @@ const cssContent = `
                 <BaseAttr name="fontSize" attr="chart.legend.fontSize" type="number" defaultVal="14" :min="8" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
             <BaseDetails attr="padding" :level="2" title="chart.padding">
-                <BaseAttr name="top" attr="chart.padding.top" type="number" defaultVal="36" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="right" attr="chart.padding.right" type="number" defaultVal="24" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="bottom" attr="chart.padding.bottom" type="number" defaultVal="64" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="left" attr="chart.padding.left" type="number" defaultVal="48" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="top" attr="chart.padding.top" type="number" defaultVal="0" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="right" attr="chart.padding.right" type="number" defaultVal="0" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="bottom" attr="chart.padding.bottom" type="number" defaultVal="0" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="left" attr="chart.padding.left" type="number" defaultVal="0" :min="0" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
             <BaseDetails attr="timeTag" :level="2" title="chart.timeTag">
                 <BaseAttr name="show" attr="chart.timeTag.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
@@ -1399,9 +1466,13 @@ const cssContent = `
                     <BaseAttr name="indicatorColor" attr="chart.zoom.minimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="verticalHandles" attr="chart.zoom.minimap.verticalHandles" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.72"/>
                 </BaseDetails>
+                <BaseDetails attr="preview" :level="3" title="chart.zoom.preview">
+                    <BaseAttr name="enable" attr="chart.zoom.preview.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.0.0"/>
+                </BaseDetails>
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="bar" :level="1">
+            <BaseAttr name="showTransition" attr="bar.showTransition" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="borderRadius" attr="bar.borderRadius" type="number" defaultVal="2" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="useGradient" attr="bar.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="periodGap" attr="bar.periodGap" type="range" defaultVal="0.1" :min="0" :max="0.9" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1428,6 +1499,7 @@ const cssContent = `
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="line" :level="1">
+            <BaseAttr name="showTransition" attr="line.showTransition" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="radius" attr="line.radius" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="useGradient" attr="line.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="strokeWidth" attr="line.strokeWidth" type="number" defaultVal="2" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1455,6 +1527,7 @@ const cssContent = `
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="plot" :level="1">
+            <BaseAttr name="showTransition" attr="plot.showTransition" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="radius" attr="plot.radius" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="useGradient" attr="plot.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseDetails attr="dot" :level="2" title="plot.dot">

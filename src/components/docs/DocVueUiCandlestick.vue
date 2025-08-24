@@ -18,6 +18,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -57,6 +58,8 @@ const dataset = ref([
 ])
 
 const config = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   responsiveProportionalSizing: true,
   useCssAnimation: true,
@@ -68,10 +71,10 @@ const config = ref({
     width: 500,
     layout: {
       padding: {
-        top: 36,
-        right: 48,
-        bottom: 36,
-        left: 48
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
       },
       selector: {
         color: "#1A1A1A",
@@ -88,7 +91,11 @@ const config = ref({
             color: "#1A1A1A",
             offsetY: 0,
             bold: false,
-            rotation: -30,
+            rotation: 0,
+            autoRotate: {
+              enable: true,
+              angle: -30
+            },
             datetimeFormatter: {
               enable: true,
               locale: 'en',
@@ -245,6 +252,8 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   responsiveProportionalSizing: true,
   useCssAnimation: true,
@@ -256,10 +265,10 @@ const darkModeConfig = ref({
     width: 500,
     layout: {
       padding: {
-        top: 36,
-        right: 48,
-        bottom: 36,
-        left: 48
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
       },
       selector: {
         color: "#E1E5E8",
@@ -276,7 +285,11 @@ const darkModeConfig = ref({
             color: "#CCCCCC",
             offsetY: 0,
             bold: false,
-            rotation: -30,
+            rotation: 0,
+            autoRotate: {
+              enable: true,
+              angle: -30
+            },
             datetimeFormatter: {
                 enable: true,
                 locale: 'en',
@@ -518,6 +531,13 @@ const dsTypeCodeExample = ref(`const dataset = [
 
         <Rater itemId="vue_ui_candlestick" />
 
+        <BaseMigrationInfo
+            autoRotate
+            cssAnimation
+            debug 
+            padding
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_candlestick" signInfo="positiveOnly">
             <template #tab0>
               {{ translations.docs.datastructure[store.lang] }}
@@ -563,7 +583,14 @@ const dsTypeCodeExample = ref(`const dataset = [
     <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
     <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
     <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseDetails attr="events" :level="1">
+        <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+        <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+    </BaseDetails>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
@@ -597,6 +624,10 @@ const dsTypeCodeExample = ref(`const dataset = [
               <BaseAttr name="offsetY" attr="style.layout.grid.xAxis.dataLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
               <BaseAttr name="bold" attr="style.layout.grid.xAxis.dataLabels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="rotation" attr="style.layout.grid.xAxis.dataLabels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseDetails attr="autoRotate" title="style.layout.grid.xAxis.dataLabels.autoRotate">
+                  <BaseAttr name="enable" type="checkbox" defaultVal="true" attr="style.layout.grid.xAxis.dataLabels.autoRotate.enable" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseAttr name="angle" type="number" :min="-90" :max="90" attr="style.layout.grid.xAxis.dataLabels.autoRotate.angle" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              </BaseDetails>
               <BaseDetails attr="datetimeFormatter" :level="6" title="style.layout.grid.xAxis.dataLabels.datetimeFormatter">
                   <BaseAttr name="enable" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                   <BaseAttr name="locale" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

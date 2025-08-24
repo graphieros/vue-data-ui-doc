@@ -19,6 +19,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -119,6 +120,8 @@ const dataset = ref({
 });
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     useCssAnimation: true,
     style: {
@@ -253,6 +256,8 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     useCssAnimation: true,
     style: {
@@ -542,6 +547,11 @@ const codeDataset = ref(`const dataset: VueUiRadarDataset = {
 
         <Rater itemId="vue_ui_radar" />
 
+        <BaseMigrationInfo
+            cssAnimation
+            debug
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_radar" signInfo="both">
             <template v-slot:tab0>
 
@@ -589,9 +599,11 @@ const codeDataset = ref(`const dataset: VueUiRadarDataset = {
                     <code ref="configCode">
     <BaseDetails attr="const config: VueUiRadarConfig" equal>
         <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
-        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">

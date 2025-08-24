@@ -51,6 +51,7 @@ export function useIconMapUnderscore(componentName) {
         vue_ui_tiremarks: 'chartTiremarks',
         vue_ui_treemap: 'chartTreemap',
         vue_ui_vertical_bar: 'chartVerticalBar',
+        vue_ui_horizontal_bar: 'chartVerticalBar',
         vue_ui_waffle: 'chartWaffle',
         vue_ui_wheel: 'chartWheel',
         vue_ui_word_cloud: 'chartWordCloud',

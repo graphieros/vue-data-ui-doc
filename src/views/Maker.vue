@@ -75,7 +75,7 @@ const options = ref([
     { component: markRaw(MakerWheel), key: 'vue_ui_wheel', name: "VueUiWheel", icon: "chartWheel", thumb: new URL('../assets/thumb_wheel_light.png', import.meta.url).href, description: translations.value.docs.tooltips.wheel},
     { component: markRaw(MakerTiremarks), key: 'vue_ui_tiremarks', name: "VueUiTiremarks", icon: "chartTiremarks", thumb: new URL('../assets/thumb_tiremarks_light.png', import.meta.url).href, description: translations.value.docs.tooltips.tiremarks},
     { component: markRaw(MakerChestnut), key: 'vue_ui_chestnut', name: "VueUiChestnut", icon: "chartChestnut", thumb: new URL('../assets/thumb_chestnut_light.png', import.meta.url).href, description: translations.value.docs.tooltips.chestnut},
-    { component: markRaw(MakerVerticalBar), key: 'vue_ui_vertical_bar', name: "VueUiVerticalBar", icon: "chartVerticalBar", thumb: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.verticalBar},
+    { component: markRaw(MakerVerticalBar), key: 'vue_ui_horizontal_bar', name: "VueUiHorizontalBar", icon: "chartVerticalBar", thumb: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href, description: translations.value.docs.tooltips.verticalBar},
     { component: markRaw(MakerHeatmap), key: 'vue_ui_heatmap', name: "VueUiHeatmap", icon: "chartHeatmap", thumb: new URL('../assets/thumb_heatmap_light.png', import.meta.url).href, description: translations.value.docs.tooltips.heatmap},
     { component: markRaw(MakerStripPlot), key: 'vue_ui_strip_plot', name: "VueUiStripPlot", icon: "chartStripPlot", thumb: new URL('../assets/thumb_strip_plot_light.png', import.meta.url).href, description: translations.value.docs.tooltips.stripPlot},
     { component: markRaw(MakerSparkline), key: 'vue_ui_sparkline', name: "VueUiSparkline", icon: "chartSparkline", thumb: new URL('../assets/thumb_sparkline_light.png', import.meta.url).href, description: translations.value.docs.tooltips.sparkline},
@@ -113,7 +113,7 @@ const selectedChart = ref({name: "VueUiXy", icon: "chartLine"});
 const selectedComponent = ref("VueUiXy")
 
 onMounted(() => {
-    if(!localStorage.currentChart) {
+    if(!localStorage.currentChart) {π
         localStorage.setItem('currentChart', 'VueUiXy')
     } else {
         selectedChart.value = options.value.find(item => item.name === localStorage.currentChart);
@@ -134,8 +134,13 @@ function saveSelectedChartToLocalStorage() {
 }
 
 function selectChart(opt) {
-    selectedChart.value = opt;
-    selectedComponent.value = opt.name;
+    if (!opt) {
+        selectedChart.value = options.value[0];
+        selectedComponent.value = options.value[0].name;
+    } else {
+        selectedChart.value = opt;
+        selectedComponent.value = opt.name;
+    }
     saveSelectedChartToLocalStorage()
 }
 

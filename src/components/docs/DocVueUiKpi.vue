@@ -36,6 +36,7 @@ const dataset1 = ref(40075);
 const dataset2 = ref(384400);
 
 const config = ref({
+    debug: false,
     animationFrames: 60,
     animationValueStart: 0,
     backgroundColor: "#FFFFFF",
@@ -65,6 +66,7 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
     animationFrames: 60,
     animationValueStart: 0,
     backgroundColor: "#2A2A2A",
@@ -184,6 +186,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = 299792458;
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiKpiConfig" equal>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
         <BaseAttr name="animationFrames" attr="animationFrames" type="number" defaultVal="60" :min="0" :max="1000" :step="20" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseAttr name="backgroundColor" attr="backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>

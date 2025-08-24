@@ -82,7 +82,7 @@ const CONFIG_CATEGORIES = computed(() => {
     ]
 })
 
-const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_vertical_bar.model)))
+const CONFIG_MODEL = ref(JSON.parse(JSON.stringify(defaultData.vue_ui_horizontal_bar.model)))
 
 const options = ref({
     parent: {
@@ -97,40 +97,40 @@ const options = ref({
     }
 })
 
-const datasetItems = ref(defaultData.vue_ui_vertical_bar.dataset);
+const datasetItems = ref(defaultData.vue_ui_horizontal_bar.dataset);
 
 onMounted(() => {
-    if(localStorage.verticalBarConfig) {
-        CONFIG_MODEL.value = JSON.parse(localStorage.verticalBarConfig);
+    if(localStorage.horizontalBarConfig) {
+        CONFIG_MODEL.value = JSON.parse(localStorage.horizontalBarConfig);
     } 
-    if(localStorage.verticalBarDataset) {
-        datasetItems.value = JSON.parse(localStorage.verticalBarDataset)
+    if(localStorage.horizontalBarDataset) {
+        datasetItems.value = JSON.parse(localStorage.horizontalBarDataset)
     }else {
-        localStorage.setItem('verticalBarDataset', JSON.stringify(defaultData.vue_ui_vertical_bar.dataset))
+        localStorage.setItem('horizontalBarDataset', JSON.stringify(defaultData.vue_ui_horizontal_bar.dataset))
     }
 
     step.value += 1;
 })
 
 function saveDatasetToLocalStorage() {
-    localStorage.verticalBarDataset = JSON.stringify(datasetItems.value);
+    localStorage.horizontalBarDataset = JSON.stringify(datasetItems.value);
     clearStep.value += 1;
 }
 
 function saveConfigToLocalStorage() {
-    localStorage.verticalBarConfig = JSON.stringify(CONFIG_MODEL.value);
+    localStorage.horizontalBarConfig = JSON.stringify(CONFIG_MODEL.value);
     clearStep.value += 1;
 }
 
 function resetModel() {
-    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_vertical_bar.model))
+    CONFIG_MODEL.value = JSON.parse(JSON.stringify(defaultData.vue_ui_horizontal_bar.model))
     step.value += 1;
     saveConfigToLocalStorage();
 }
 
 function forceChartUpdate() {
-    if(!localStorage.verticalBarConfig) {
-        localStorage.setItem('verticalBarConfig', {})
+    if(!localStorage.horizontalBarConfig) {
+        localStorage.setItem('horizontalBarConfig', {})
     }
     saveConfigToLocalStorage()
     step.value += 1;
@@ -177,8 +177,8 @@ function updateParent({parentId}) {
 <template>
     <div>
 
-        <ClearStorageAndRefresh keyConfig="verticalBarConfig" keyDataset="verticalBarDataset" :key="`clear_${clearStep}`"/>
-        <BaseDocExampleLink link="vue-ui-vertical-bar" componentName="VueUiVerticalBar"/>
+        <ClearStorageAndRefresh keyConfig="horizontalBarConfig" keyDataset="horizontalBarDataset" :key="`clear_${clearStep}`"/>
+        <BaseDocExampleLink link="vue-ui-horizontal-bar" componentName="VueUiHorizontalBar"/>
     
     <div class="w-full mt-[64px]" style="height:calc(100% - 64px)">
         <Transition name="fade">
@@ -262,12 +262,12 @@ function updateParent({parentId}) {
             <ComponentContent
                 :dataset="datasetItems.map(({name, value, color, children}) => {return {name, value, color, children}})"
                 :config="finalConfig"
-                componentName="VueUiVerticalBar"
-                configName="vue_ui_vertical_bar"
+                componentName="VueUiHorizontalBar"
+                configName="vue_ui_horizontal_bar"
                 @click="() => copyComponent('componentContent', store)"
                 :copyComponentFunc="() => copyComponent('componentContent', store)"
-                keyConfig="verticalBarConfig"
-                keyDataset="verticalBarDataset"
+                keyConfig="horizontalBarConfig"
+                keyDataset="horizontalBarDataset"
             >
                 <template #component-copy>
                     <CopyComponent @click="() => copyComponent('componentContent', store)"/>

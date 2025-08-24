@@ -19,6 +19,8 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const mainConfig = useConfig()
 
@@ -65,14 +67,15 @@ const config = ref({
     color: "#1A1A1A",
     fontFamily: "inherit",
     layout: {
+      height: 300,
+      width: 1000,
       padding: {
-        top: 36,
-        right: 12,
-        bottom: 12,
-        left: 48
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
       },
       cells: {
-        height: 36,
         rowTotal: {
           value: {
               show: true,
@@ -84,9 +87,13 @@ const config = ref({
         columnTotal: {
           value: {
               show: true,
-              rotation: 0,
               offsetX: 0,
-              offsetY: 16
+              offsetY: 16,
+              rotation: 0,
+              autoRotate: {
+                enable: true,
+                angle: -30
+              }
           },
           color: {
               show: true
@@ -122,7 +129,11 @@ const config = ref({
           offsetX: 0,
           offsetY: 0,
           showOnlyAtModulo: null,
-          rotation: 0
+          rotation: 0,
+          autoRotate: {
+            enable: true,
+            angle: -30
+          }
         },
         yAxis: {
           show: true,
@@ -157,8 +168,7 @@ const config = ref({
       fontSize: 12,
       bold: true,
       roundingValue: 0,
-      position: "right",
-      scaleBorderRadius: 18,
+      width: 24
     },
     tooltip: {
       show: true,
@@ -229,14 +239,15 @@ const darkModeConfig = ref({
     color: "#CCCCCC",
     fontFamily: "inherit",
     layout: {
+      height: 300,
+      width: 1000,
       padding: {
-        top: 36,
-        right: 12,
-        bottom: 12,
-        left: 48
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
       },
       cells: {
-        height: 36,
         rowTotal: {
           value: {
               show: true,
@@ -250,7 +261,11 @@ const darkModeConfig = ref({
               show: true,
               rotation: 0,
               offsetX: 0,
-              offsetY: 16
+              offsetY: 16,
+              autoRotate: {
+                enable: true,
+                angle: -30
+              }
           },
           color: {
               show: true
@@ -286,7 +301,11 @@ const darkModeConfig = ref({
           offsetX: 0,
           offsetY: 0,
           showOnlyAtModulo: null,
-          rotation: 0
+          rotation: 0,
+          autoRotate: {
+            enable: true,
+            angle: -30
+          }
         },
         yAxis: {
           show: true,
@@ -321,8 +340,7 @@ const darkModeConfig = ref({
       fontSize: 12,
       bold: true,
       roundingValue: 0,
-      position: "right",
-      scaleBorderRadius: 18,
+      width: 24
     },
     tooltip: {
       show: true,
@@ -510,7 +528,14 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
 
         <Rater itemId="vue_ui_heatmap" />
 
-        <Box showEmits showSlots showTooltip showThemes schema="vue_ui_heatmap" signInfo="both">
+        <BaseMigrationInfo
+            autoRotate
+            debug 
+            padding
+            heatmapSize
+        />
+
+        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_heatmap" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -554,6 +579,8 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
         <BaseAttr name="color" attr="style.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>fontFamily: "inherit",</span>
         <BaseDetails attr="layout" :level="2" title="style.layout">
+          <BaseAttr name="width" attr="style.layout.width" type="number" defaultVal="1000" :min="300" :max="2000" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="height" attr="style.layout.height" type="number" defaultVal="300" :min="100" :max="2000" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseDetails attr="cells" :level="3" title="style.layout.cells">
             <BaseAttr name="height" attr="style.layout.cells.height" type="number" defaultVal="36" :min="16" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="spacing" attr="style.layout.cells.spacing" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -584,9 +611,13 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
             <BaseDetails attr="columnTotal" :level="4" title="style.layout.cells.columnTotal">
               <BaseDetails attr="value" :level="5" title="style.layout.cells.columnTotal.value">
                 <BaseAttr name="show" attr="style.layout.cells.columnTotal.value.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr name="rotation" attr="style.layout.cells.columnTotal.value.rotation" type="number" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="offsetX" attr="style.layout.cells.columnTotal.value.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="offsetY" attr="style.layout.cells.columnTotal.value.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="rotation" attr="style.layout.cells.columnTotal.value.rotation" type="number" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="autoRotate" :level="5" title="style.layout.cells.columnTotal.value.autoRotate">
+                  <BaseAttr name="enable" attr="style.layout.cells.columnTotal.value.autoRotate.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseAttr name="angle" attr="style.layout.cells.columnTotal.value.autoRotate.angle" type="number" defaultVal="-30" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
               </BaseDetails>
               <BaseDetails attr="color" :level="5" title="style.layout.cells.columnTotal.color">
                 <BaseAttr name="show" attr="style.layout.cells.columnTotal.color.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -604,8 +635,12 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
               <BaseAttr name="bold" attr="style.layout.dataLabels.xAxis.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="offsetX" attr="style.layout.dataLabels.xAxis.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="offsetY" attr="style.layout.dataLabels.xAxis.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-              <BaseAttr name="rotation" attr="style.layout.dataLabels.xAxis.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="showOnlyAtModulo" attr="style.layout.dataLabels.xAxis.showOnlyAtModulo" type="number" defaultVal="null" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="rotation" attr="style.layout.dataLabels.xAxis.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseDetails attr="autoRotate" :level="5" title="style.layout.dataLabels.xAxis.autoRotate">
+                <BaseAttr name="enable" attr="style.layout.dataLabels.xAxis.autoRotate.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="angle" attr="style.layout.dataLabels.xAxis.autoRotate.angle" type="number" defaultVal="-30" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              </BaseDetails>
             </BaseDetails>
             <BaseDetails attr="yAxis" :level="4" title="style.layout.dataLabels.yAxis">
               <BaseAttr name="show" attr="style.layout.dataLabels.yAxis.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -626,13 +661,12 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
         </BaseDetails>
         <BaseDetails attr="legend" :level="2" title="style.legend">
           <BaseAttr name="show" attr="style.legend.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="width" attr="style.legend.width" type="number" defaultVal="24" :min="12" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="backgroundColor" attr="style.legend.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="color" attr="style.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="fontSize" attr="style.legend.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="bold" attr="style.legend.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="roundingValue" attr="style.legend.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>          
-          <BaseAttr name="position" attr="style.legend.position" type="select" defaultVal="right" :options="['right', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <BaseAttr name="scaleBorderRadius" attr="style.legend.scaleBorderRadius" type="number" defaultVal="18" :min="0" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseDetails attr="title" :level="2" title="style.title">
           <BaseAttr name="text" attr="style.title.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -766,6 +800,23 @@ Target the following css class to apply custom styles:
 
             <template #tab6>
               <ThemesVueUiHeatmap />
+            </template>
+
+            <template #tab7>
+              <ResponsiveUnit height="200px">
+                <template #chart>
+                  <VueUiHeatmap 
+                    :dataset="dataset"
+                    :config="isDarkMode ? {
+                      ...mutableConfigDarkMode,
+                      responsive: true,
+                    } : {
+                      ...mutableConfig,
+                      responsive: true
+                    }"
+                  />
+                </template>
+              </ResponsiveUnit>
             </template>
         </Box>
     </div>

@@ -63,7 +63,6 @@ const CONFIG_XY = computed(() => {
                     },
                     xAxisLabels: {
                         values: YEARS.value.map(y => String(y)),
-                        rotation: -33,
                         yOffset: 12
                     }
                 },
@@ -75,7 +74,10 @@ const CONFIG_XY = computed(() => {
                 show: false,
             },
             padding: {
-                left: 40,
+                left: 12,
+                top: 12,
+                right: 12,
+                bottom: 12
             },
             title: {
                 text: 'World average Life expectancy',
@@ -142,7 +144,6 @@ const CONFIG_VERTICAL_BAR = computed(() => {
                 layout: {
                     bars: {
                         sort: 'none',
-                        offsetX: -52,
                         paddingRight: 32,
                         height: 10,
                         dataLabels: {

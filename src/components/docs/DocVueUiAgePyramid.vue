@@ -18,6 +18,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -648,6 +649,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   style: {
     backgroundColor: "#F3F4F6",
@@ -657,9 +660,9 @@ const config = ref({
     width: 500,
     layout: {
       padding: {
-        top: 36,
+        top: 12,
         right: 12,
-        bottom: 48,
+        bottom: 36,
         left: 12
       },
       grid: {
@@ -682,7 +685,12 @@ const config = ref({
           color: "#1A1A1A",
           bold: false,
           scale: 1000,
-          translation: "in thousands"
+          translation: "in thousands",
+          rotation: 0,
+          autoRotate: {
+            enable: true,
+            angle: -30
+          }
         },
         yAxis: {
           show: true,
@@ -797,7 +805,10 @@ const config = ref({
     }
   }
 });
+
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   style: {
     backgroundColor: "#1A1A1A",
@@ -807,9 +818,9 @@ const darkModeConfig = ref({
     width: 500,
     layout: {
       padding: {
-        top: 36,
+        top: 12,
         right: 12,
-        bottom: 48,
+        bottom: 36,
         left: 12
       },
       grid: {
@@ -832,7 +843,12 @@ const darkModeConfig = ref({
           color: "#CCCCCC",
           bold: false,
           scale: 1000,
-          translation: "in thousands"
+          translation: "in thousands",
+          rotation: 0,
+          autoRotate: {
+            enable: true,
+            angle: -30
+          }
         },
         yAxis: {
           show: true,
@@ -1017,6 +1033,12 @@ const dsTypeCode = computed(() => {
 
         <Rater itemId="vue_ui_age_pyramid" />
 
+        <BaseMigrationInfo
+            autoRotate
+            debug 
+            padding
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_age_pyramid" signInfo="positiveOnly">
             <template #tab0>
               
@@ -1062,7 +1084,14 @@ const dsTypeCode = computed(() => {
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiAgePyramidConfig" equal>
     <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
+    <BaseDetails attr="events" :level="1">
+      <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+      <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+      <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+    </BaseDetails>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1110,6 +1139,11 @@ const dsTypeCode = computed(() => {
             <BaseAttr name="scale" attr="style.layout.dataLabels.xAxis.scale" type="select" defaultVal="1000" :options="['1', '10', '100', '1000', '10000', '100000']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="translation" attr="style.layout.dataLabels.xAxis.translation" type="text" defaultVal="in thousands" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+            <BaseAttr name="rotation" attr="style.layout.dataLabels.xAxis.rotation" type="number" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseDetails attr="autoRotate" :level="5" title="style.layout.dataLabels.xAxis.autoRotate">
+              <BaseAttr name="enable" attr="style.layout.dataLabels.xAxis.autoRotate.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="angle" attr="style.layout.dataLabels.xAxis.autoRotate.angle" defaultVal="-30" type="number" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
           </BaseDetails>
           <BaseDetails attr="yAxis" :level="4" title="style.layout.dataLabels.yAxis">
             <BaseAttr name="show" attr="style.layout.dataLabels.yAxis.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1127,9 +1161,9 @@ const dsTypeCode = computed(() => {
           <BaseAttr name="strokeWidth" attr="style.layout.grid.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
         </BaseDetails>
         <BaseDetails attr="padding" :level="3" title="style.layout.padding">
-          <BaseAttr name="top" attr="style.layout.padding.top" type="number" defaultVal="36" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="top" attr="style.layout.padding.top" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="right" attr="style.layout.padding.right" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <BaseAttr name="bottom" attr="style.layout.padding.bottom" type="number" defaultVal="48" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="bottom" attr="style.layout.padding.bottom" type="number" defaultVal="36" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="left" attr="style.layout.padding.left" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
       </BaseDetails>

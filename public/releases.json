@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.0.0",
+    "date": "2025-08-24",
+    "updates": [
+      {
+        "component": "Version 3",
+        "description": "",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 2.17.11",
     "date": "2025-08-01",
     "updates": [

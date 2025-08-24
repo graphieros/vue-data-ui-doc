@@ -15,6 +15,8 @@ import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const mainConfig = useConfig()
 
@@ -40,6 +42,9 @@ const neutralDs = ref([10, 12, 8, 4, 9, 6, 7, 4, 8, 8])
 const negativeDs = ref([89, 55, 34, 21, 13, 8, 5, 3, 2, 1])
 
 const config = ref({
+    debug: false,
+    loading: false,
+    responsive: false,
     downsample: {
         threshold: 500
     },
@@ -98,6 +103,9 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
+    responsive: false,
     downsample: {
         threshold: 500
     },
@@ -223,7 +231,11 @@ const { configCode, showAllConfig } = useConfigCode()
             <Rater itemId="vue_ui_spark_trend" />
         </div>
 
-        <Box showThemes showSlots schema="vue_ui_spark_trend" signInfo="both">
+        <BaseMigrationInfo
+            debug
+        />
+
+        <Box showResponsive showThemes showSlots schema="vue_ui_spark_trend" signInfo="both">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="border-b my-6 pb-6 border-gray-700">
@@ -253,6 +265,9 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiSparkTrendConfig" equal>
+        <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseDetails attr="downsample" :level="1">
             <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
@@ -326,6 +341,28 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
 
             <template #tab6>
                 <ThemesVueUiSparkTrend />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit height="200px" width="300px" minHeight="64px">
+                    <template #chart>
+                        <VueDataUi 
+                            component="VueUiSparkTrend" 
+                            :dataset="positiveDs" 
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    }
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>

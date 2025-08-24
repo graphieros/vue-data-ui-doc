@@ -19,6 +19,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -63,6 +64,8 @@ const dataset = ref([
     ]);
 
 const config = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   useCssAnimation: true,
   useBlurOnHover: true,
@@ -187,6 +190,8 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   useCssAnimation: true,
   useBlurOnHover: true,
@@ -417,6 +422,11 @@ const codeDataset = ref(`const dataset: VueUiRingsDatasetItem[] = [
 
         <Rater itemId="vue_ui_rings" />
 
+        <BaseMigrationInfo
+            cssAnimation
+            debug 
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_rings" signInfo="positiveOnly">
         
           <template #tab0>
@@ -459,10 +469,17 @@ const codeDataset = ref(`const dataset: VueUiRingsDatasetItem[] = [
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiRingsConfig" equal>
     <span>responsive: false; <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
     <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-    <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseDetails attr="events" :level="1">
+        <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+        <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+    </BaseDetails>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseDetails attr="chart" :level="2" title="style.chart">

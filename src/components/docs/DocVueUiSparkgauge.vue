@@ -17,6 +17,7 @@ import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -58,6 +59,8 @@ const dataset3 = ref({
 })
 
 const config = ref({
+    debug: false,
+    loading: false,
     style: {
         fontFamily: "inherit",
         background: "#F3F4F6",
@@ -103,6 +106,8 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     style: {
         fontFamily: "inherit",
         background: "#1A1A1A00",
@@ -243,9 +248,7 @@ const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
                     @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
                 >
                     <div class="flex flex-row gap-4">
-                        <VueUiSparkgauge :dataset="dataset1" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
-                        <VueUiSparkgauge :dataset="dataset2" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
-                        <VueUiSparkgauge :dataset="dataset3" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                        <VueUiSparkgauge :dataset="dataset3" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_3_${key}`"/>
                     </div>
                 </DocSnapper>
 
@@ -254,6 +257,10 @@ const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
                 <Rater itemId="vue_ui_sparkgauge" />
             </div>
         </div>
+
+        <BaseMigrationInfo
+            debug 
+        />
 
         <Box showThemes showSlots schema="vue_ui_sparkgauge">
             <template #tab0>
@@ -268,10 +275,10 @@ const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
     />  
     
     <CodeParser
-      language="typescript"
-      @copy="store.copy()"
-      :content="codeDataset"
-      :title="translations.docs.example[store.lang]"
+        language="typescript"
+        @copy="store.copy()"
+        :content="codeDataset"
+        :title="translations.docs.example[store.lang]"
     />  
                 </div>
             </template>
@@ -290,6 +297,8 @@ const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiSparkgaugeConfig" equal>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseDetails attr="style" level="1">
             <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>

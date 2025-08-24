@@ -17,6 +17,8 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const mainConfig = useConfig()
 
@@ -49,20 +51,22 @@ const dataset = ref({
 });
 
 const config = ref({
+  debug: false,
+  loading: false,
+  responsive: false,
   style: {
     fontFamily: "inherit",
     chart: {
       backgroundColor: "#f3f4f6",
       color: "#2D353C",
       height: 360,
+      width: 256,
       thermometer: {
         width: 48
       },
       padding: {
         top: 12,
         bottom: 12,
-        left: 64,
-        right: 64
       },
       graduations: {
         show: true,
@@ -81,7 +85,9 @@ const config = ref({
         speedMs: 1000
       },
       label: {
+        show: true,
         fontSize: 20,
+        minFontSize: 6,
         rounding: 1,
         bold: true,
         color: "#2D353C",
@@ -131,20 +137,22 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
+  responsive: false,
   style: {
     fontFamily: "inherit",
     chart: {
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
       height: 360,
+      width: 256,
       thermometer: {
         width: 48
       },
       padding: {
         top: 12,
         bottom: 12,
-        left: 64,
-        right: 64
       },
       graduations: {
         show: true,
@@ -163,7 +171,9 @@ const darkModeConfig = ref({
         speedMs: 1000
       },
       label: {
+        show: true,
         fontSize: 20,
+        minFontSize: 6,
         rounding: 1,
         bold: true,
         color: "#CCCCCC",
@@ -296,7 +306,12 @@ const dsTypeCode = computed(() => {
 
         <Rater itemId="vue_ui_thermometer" />
 
-        <Box showEmits showSlots showThemes schema="vue_ui_thermometer">
+        <BaseMigrationInfo
+            debug 
+            padding
+        />
+
+        <Box showResponsive showEmits showSlots showThemes schema="vue_ui_thermometer">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -344,6 +359,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiThermometerConfig" equal>
+    <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
     <BaseDetails attr="style" :level="1">
@@ -352,6 +370,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
         <BaseAttr name="backgroundColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.backgroundColor" defaultVal="#FFFFFF"/>                
         <BaseAttr name="color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.color" defaultVal="#2D353C"/>
         <BaseAttr name="height" attr="style.chart.height" type="number" defaultVal="360" :min="100" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="width" attr="style.chart.width" type="number" defaultVal="256" :min="100" :max="360" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseDetails attr="animation" :level="3" title="style.chart.animation">
           <BaseAttr name="use" attr="style.chart.animation.use" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
           <BaseAttr name="speedMs" attr="style.chart.animation.speedMs" type="number" defaultVal="1000" :min="50" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -368,7 +387,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
           </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="label" :level="3" title="style.chart.label">
+          <BaseAttr name="show" attr="style.chart.label.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="fontSize" attr="style.chart.label.fontSize" type="number" defaultVal="20" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="minFontSize" attr="style.chart.label.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="rounding" attr="style.chart.label.rounding" type="number" defaultVal="0" :min="1" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="bold" attr="style.chart.label.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="color" attr="style.chart.label.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -378,9 +399,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
         </BaseDetails>
         <BaseDetails attr="padding" :level="3" title="style.chart.padding">
           <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-          <BaseAttr name="right" attr="style.chart.padding.right" type="number" defaultVal="64" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
           <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-          <BaseAttr name="left" attr="style.chart.padding.left" type="number" defaultVal="64" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         </BaseDetails>
         <BaseDetails attr="thermometer" :level="3" title="style.chart.thermometer">
           <BaseAttr name="width" attr="style.chart.thermometer.width" type="number" defaultVal="48" :min="10" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -454,6 +473,28 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
 
             <template #tab6>
               <ThemesVueUiThermometer />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit height="500px" minHeight="200px">
+                    <template #chart>
+                        <VueDataUi 
+                            component="VueUiThermometer" 
+                            :dataset="dataset" 
+                            :config="
+                              isDarkMode 
+                                  ? {
+                                      ...mutableConfigDarkMode,
+                                      responsive: true
+                                  }
+                                  : {
+                                      ...mutableConfig,
+                                      responsive: true
+                                  }
+                              " 
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
 
         </Box>

@@ -754,8 +754,8 @@ const xyConfig = computed(() => {
                     yAxis: {
                         useIndividualScale: true,
                         labelWidth: 32,
-                        scaleLabelOffsetX: 20,
-                        scaleValueOffsetX: -20,
+                        scaleLabelOffsetX: 0,
+                        scaleValueOffsetX: 0,
                         groupColor: isDarkMode.value ? '#8A8A8A' : '#1A1A1A'
 
                     },

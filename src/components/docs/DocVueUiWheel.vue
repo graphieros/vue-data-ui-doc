@@ -19,6 +19,7 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -47,6 +48,8 @@ const dataset = ref({
 });
 
 const config = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   style: {
     fontFamily: "inherit",
@@ -126,6 +129,8 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   style: {
     fontFamily: "inherit",
@@ -280,6 +285,10 @@ function randomizeData() {
 
         <Rater itemId="vue_ui_wheel" />
 
+        <BaseMigrationInfo
+            debug 
+        />
+
         <Box showEmits showSlots showThemes showResponsive schema="vue_ui_wheel" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
@@ -322,6 +331,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiWheelConfig" equal>
     <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>

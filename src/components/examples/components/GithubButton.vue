@@ -78,6 +78,12 @@ const months = {
                     chartWidth: 300,
                     dataLabel: { show: false },
                     title: { show: false },
+                    padding: {
+                        top: 12,
+                        right: 0,
+                        left: 0,
+                        bottom: 0
+                    },
                     line: {
                         strokeWidth: 1.6,
                     },

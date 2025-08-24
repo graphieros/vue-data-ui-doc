@@ -17,6 +17,8 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const mainConfig = useConfig()
 
@@ -42,18 +44,18 @@ const dataset = ref([
     ['Mining', 'Copper', 40,],
     ['Mining', 'Lithium', 30,],
     ['Mining', 'Gold', 10,],
-    ['Mining', 'Rare Earths', 20],
+    ['Mining', 'Rare Earths', 30],
 
     // Components → Manufacturing
     ['Copper', 'PCB Assembly', 40],
-    ['Lithium', 'Battery Production', 30],
-    ['Gold', 'Microchips', 10],
+    ['Lithium', 'Battery Production', 35],
+    ['Gold', 'Microchips', 15],
     ['Rare Earths', 'Microchips', 20],
 
     // Manufacturing → Assembly
     ['PCB Assembly', 'Phone Assembly', 40],
     ['Battery Production', 'Phone Assembly', 30],
-    ['Microchips', 'Phone Assembly', 30],
+    ['Microchips', 'Phone Assembly', 35],
 
     // Assembly → Distribution
     ['Phone Assembly', 'Retail', 100],
@@ -110,6 +112,9 @@ const codeDataset = ref(`const dataset: VueUiFlowDatasetItem[] = [
 const dsTypeCode = ref(`type VueUiFlowDatasetItem = [string, string, number]`)
 
 const config = ref({
+    debug: false,
+    loading: false,
+    responsive: false,
     nodeCategories: {
             // Raw Materials
             'Mining': 'raw',
@@ -186,6 +191,8 @@ const config = ref({
     style: {
         fontFamily: "inherit",
         chart: {
+            height: 300,
+            width: 1000,
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
             legend: {
@@ -241,10 +248,10 @@ const config = ref({
                 }
             },
             nodes: {
-                gap: 0,
-                minHeight: 25,
+                gap: 10,
                 width: 40,
                 labels: {
+                    show: true,
                     fontSize: 14,
                     abbreviation: {
                         use: true,
@@ -258,7 +265,6 @@ const config = ref({
                 strokeWidth: 1
             },
             links: {
-                width: 200,
                 opacity: 0.8,
                 stroke: "#FFFFFF",
                 strokeWidth: 1
@@ -287,6 +293,9 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
+    responsive: false,
     nodeCategories: {
         // Raw Materials
         'Mining': 'raw',
@@ -363,6 +372,8 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
+            height: 300,
+            width: 1000,
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
             padding: {
@@ -418,10 +429,10 @@ const darkModeConfig = ref({
                 }
             },
             nodes: {
-                gap: 0,
-                minHeight: 25,
+                gap: 10,
                 width: 40,
                 labels: {
+                    show: true,
                     fontSize: 14,
                     abbreviation: {
                         use: true,
@@ -435,7 +446,6 @@ const darkModeConfig = ref({
                 strokeWidth: 1
             },
             links: {
-                width: 200,
                 opacity: 0.8,
                 stroke: "#1A1A1A",
                 strokeWidth: 1
@@ -567,7 +577,12 @@ const additionalTranslations = computed(() => {
 
         <Rater itemId="vue_ui_flow" />
 
-        <Box showSlots showThemes showEmits showTooltip schema="vue_ui_flow" signInfo="positiveOnly">
+        <BaseMigrationInfo
+            debug 
+            padding
+        />
+
+        <Box showSlots showThemes showEmits showTooltip showResponsive schema="vue_ui_flow" signInfo="positiveOnly">
             <template #tab0>
 
         <CodeParser
@@ -611,24 +626,32 @@ const additionalTranslations = computed(() => {
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiFlowConfig" equal>
+        <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")</span>
         <span>customPalette: [],<BaseComment>string[]</BaseComment></span>
         <span>nodeCategories: {},<BaseComment>{{ additionalTranslations.nodeCategories[store.lang] }}</BaseComment></span>
         <span>nodeCategoryColors: {},<BaseComment>{{ additionalTranslations.nodeCategoryColors[store.lang] }}</BaseComment></span>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
                 <BaseAttr name="backgroundColor" attr="style.chart.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                <BaseAttr name="width" attr="style.chart.width" type="number" defaultVal="1000" :min="300" :max="2000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="height" attr="style.chart.height" type="number" defaultVal="600" :min="300" :max="2000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="style.chart.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseDetails attr="links" :level="3" title="style.chart.links">
-                    <BaseAttr name="width" attr="style.chart.links.width" type="number" defaultVal="200" :min="100" :max="300" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="opacity" attr="style.chart.links.opacity" type="range" defaultVal="0.8" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="stroke" attr="style.chart.links.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="strokeWidth" attr="style.chart.links.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="nodes" :level="3" title="style.chart.nodes">
                     <BaseAttr name="gap" attr="style.chart.nodes.gap" type="number" defaultVal="10" :min="0" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <BaseAttr name="minHeight" attr="style.chart.nodes.minHeight" type="number" defaultVal="20" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="width" attr="style.chart.nodes.width" type="number" defaultVal="40" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="stroke" attr="style.chart.nodes.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="strokeWdith" attr="style.chart.nodes.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -672,10 +695,10 @@ const additionalTranslations = computed(() => {
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="padding" :level="3" title="style.chart.padding">
-                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" defaultVal="24" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <BaseAttr name="left" attr="style.chart.padding.left" type="number" defaultVal="24" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="left" attr="style.chart.padding.left" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
                     <BaseAttr name="text" attr="style.chart.title.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -860,6 +883,28 @@ Target the following css class to apply custom styles:
             <!-- THEMES -->
             <template #tab6>
                 <ThemesVueUiFlow/>
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit height="400px" minHeight="300px">
+                    <template #chart>
+                        <VueDataUi
+                            component="VueUiFlow"
+                            :dataset="dataset"
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    }
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
     </div>

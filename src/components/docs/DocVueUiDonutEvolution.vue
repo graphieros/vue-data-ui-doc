@@ -18,6 +18,8 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -68,6 +70,9 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
+    loading: false,
+    responsive: false,
     style: {
         fontFamily: "inherit",
         chart: {
@@ -155,52 +160,64 @@ const config = ref({
                 height: 316,
                 width: 500,
                 padding: {
-                    top: 24,
-                    left: 48,
-                    right: 48,
-                    bottom: 24
+                    top: 5,
+                    left: 10,
+                    right: 5,
+                    bottom: 10
                 },
                 grid: {
-                show: true,
-                stroke: "#e1e5e8",
-                strokeWidth: 0.7,
-                showVerticalLines: false,
-                yAxis: {
-                    dataLabels: {
-                        show: true,
-                        fontSize: 10,
-                        color: "#2D353C",
-                        roundingValue: 0,
-                        offsetX: 0,
-                        bold: false,
-                        steps: 10
-                    }
-                },
-                xAxis: {
-                    dataLabels: {
-                        color: "#2D353C",
-                        show: true,
-                        values: monthValues.value,
-                        datetimeFormatter: {
-                            enable: true,
-                            locale: 'en',
-                            useUTC: false,
-                            januaryAsYear: false,
-                            options: {
-                                year: 'yyyy',
-                                month: `MMM 'yy`,
-                                day: 'dd MMM',
-                                hour: 'HH:mm',
-                                minute: 'HH:mm:ss',
-                                second: 'HH:mm:ss'
+                    show: true,
+                    stroke: "#e1e5e8",
+                    strokeWidth: 0.7,
+                    showVerticalLines: false,
+                    axis: {
+                        yLabel: 'Y axis',
+                        yLabelOffsetX: 0,
+                        xLabel: 'X axis',
+                        xLabelOffsetY: 0,
+                        fontSize: 12,
+                        color: '#1A1A1A'
+                    },
+                    yAxis: {
+                        dataLabels: {
+                            show: true,
+                            fontSize: 10,
+                            color: "#2D353C",
+                            roundingValue: 0,
+                            offsetX: 0,
+                            bold: false,
+                            steps: 10
+                        }
+                    },
+                    xAxis: {
+                        dataLabels: {
+                            color: "#2D353C",
+                            show: true,
+                            values: monthValues.value,
+                            datetimeFormatter: {
+                                enable: true,
+                                locale: 'en',
+                                useUTC: false,
+                                januaryAsYear: false,
+                                options: {
+                                    year: 'yyyy',
+                                    month: `MMM 'yy`,
+                                    day: 'dd MMM',
+                                    hour: 'HH:mm',
+                                    minute: 'HH:mm:ss',
+                                    second: 'HH:mm:ss'
+                                }
+                            },
+                            fontSize: 8,
+                            showOnlyFirstAndLast: false,
+                            offsetY: 0,
+                            rotation: 0,
+                            autoRotate: {
+                                enable: true,
+                                angle: -30
                             }
-                        },
-                        fontSize: 8,
-                        showOnlyFirstAndLast: false,
-                        offsetY: 0,
-                        rotation: 0
+                        }
                     }
-                }
                 },
                 line: {
                     show: true,
@@ -300,6 +317,9 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
+    responsive: false,
     style: {
         fontFamily: "inherit",
         chart: {
@@ -387,16 +407,24 @@ const darkModeConfig = ref({
                 height: 316,
                 width: 500,
                 padding: {
-                    top: 24,
-                    left: 48,
-                    right: 48,
-                    bottom: 24
+                    top: 5,
+                    left: 10,
+                    right: 5,
+                    bottom: 10
                 },
                 grid: {
                     show: true,
                     stroke: "#4A4A4A",
                     strokeWidth: 0.7,
                     showVerticalLines: false,
+                    axis: {
+                        yLabel: 'Y axis',
+                        yLabelOffsetX: 0,
+                        xLabel: 'X axis',
+                        xLabelOffsetY: 0,
+                        fontSize: 12,
+                        color: '#CCCCCC'
+                    },
                     yAxis: {
                         dataLabels: {
                             show: true,
@@ -430,7 +458,11 @@ const darkModeConfig = ref({
                             showOnlyFirstAndLast: false,
                             color: "#CCCCCC",
                             offsetY: 0,
-                            rotation: 0
+                            rotation: 0,
+                            autoRotate: {
+                                enable: true,
+                                angle: -30
+                            }
                         }
                     }
                 },
@@ -624,7 +656,13 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
 
         <Rater itemId="vue_ui_donut_evolution" />
 
-        <Box :showDatetimeFormatter="true" showEmits showSlots showThemes schema="vue_ui_donut_evolution" signInfo="positiveOnly">
+        <BaseMigrationInfo
+            autoRotate
+            debug 
+            padding
+        />
+
+        <Box :showDatetimeFormatter="true" showEmits showSlots showThemes showResponsive schema="vue_ui_donut_evolution" signInfo="positiveOnly">
             <template #tab0>
 
                 <div class="w-full overflow-x-auto">
@@ -668,6 +706,14 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
     <BaseDetails attr="const config: VueUiDonutEvolutionConfig" equal>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: []; <BaseComment>string[]</BaseComment></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
@@ -711,6 +757,14 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
                         <BaseAttr name="stroke" attr="style.chart.layout.grid.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="strokeWidth" attr="style.chart.layout.grid.strokeWidth" type="number" defaultVal="0.7" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="showVerticalLines" attr="style.chart.layout.grid.showVerticalLines" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseDetails attr="axis" :level="5" title="style.chart.layout.grid.axis">
+                            <BaseAttr name="yLabel" attr="style.chart.layout.grid.axis.yLabel" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="yLabelOffsetX" attr="style.chart.layout.grid.axis.yLabelOffsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="xLabel" attr="style.chart.layout.grid.axis.xLabel" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="xLabelOffsetY" attr="style.chart.layout.grid.axis.xLabelOffsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="fontSize" attr="style.chart.layout.grid.axis.fontSize" type="number" defautlVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.chart.layout.grid.axis.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
                         <BaseDetails attr="xAxis" :level="5" title="style.chart.layout.grid.xAxis">
                             <BaseDetails attr="dataLabels" :level="6" title="style.chart.layout.grid.xAxis.dataLabels">
                                 <BaseAttr name="show" attr="style.chart.layout.grid.xAxis.dataLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -731,8 +785,12 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
                                 <BaseAttr name="fontSize" attr="style.chart.layout.grid.xAxis.dataLabels.fontSize" type="number" defaultVal="8" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="color" attr="style.chart.layout.grid.xAxis.dataLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="offsetY" attr="style.chart.layout.grid.xAxis.dataLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="rotation" attr="style.chart.layout.grid.xAxis.dataLabels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="showOnlyFirstAndLast" attr="style.chart.layout.grid.xAxis.dataLabels.showOnlyFirstAndLast" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="rotation" attr="style.chart.layout.grid.xAxis.dataLabels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseDetails attr="autoRotate" title="style.chart.layout.grid.xAxis.dataLabels.autoRotate">
+                                    <BaseAttr name="enable" type="checkbox" defaultVal="true" attr="style.chart.layout.grid.xAxis.dataLabels.autoRotate.enable" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="angle" type="number" :min="-90" :max="90" attr="style.chart.layout.grid.xAxis.dataLabels.autoRotate.angle" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                </BaseDetails>
                             </BaseDetails>
                         </BaseDetails>
                         <BaseDetails attr="yAxis" :level="5" title="style.chart.layout.grid.yAxis">
@@ -757,10 +815,10 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
                         <BaseAttr name="strokeWidth" attr="style.chart.layout.line.strokeWidth" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="padding" :level="4" title="style.chart.layout.padding">
-                        <BaseAttr name="top" attr="style.chart.layout.padding.top" type="number" :min="0" :max="64" defaultVal="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="right" attr="style.chart.layout.padding.right" type="number" :min="0" :max="64" defaultVal="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="bottom" attr="style.chart.layout.padding.bottom" type="number" :min="0" :max="64" defaultVal="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr name="left" attr="style.chart.layout.padding.left" type="number" :min="0" :max="64" defaultVal="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="top" attr="style.chart.layout.padding.top" type="number" :min="0" :max="64" defaultVal="5" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="right" attr="style.chart.layout.padding.right" type="number" :min="0" :max="64" defaultVal="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="bottom" attr="style.chart.layout.padding.bottom" type="number" :min="0" :max="64" defaultVal="5" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="left" attr="style.chart.layout.padding.left" type="number" :min="0" :max="64" defaultVal="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="legend" :level="3" title="style.chart.legend">
@@ -964,6 +1022,24 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
             
             <template #tab6>
                 <ThemesVueUiDonutEvolution />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit height="600px">
+                    <template #chart>
+                        <VueDataUi
+                            component="VueUiDonutEvolution"
+                            :dataset="dataset"
+                            :config="isDarkMode ? {
+                                ...mutableConfigDarkMode,
+                                responsive: true
+                            } : {
+                                ...mutableConfig,
+                                responsive: true
+                            }"
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
 
             <template #tab10>

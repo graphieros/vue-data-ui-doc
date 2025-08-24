@@ -133,15 +133,13 @@ const usableWeekData = computed(() => {
 const heatmapConfig = computed(() => {
   return {
   style: {
-    backgroundColor: 'transparent',
+    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FAFAFA',
     color: "#2D353C",
     fontFamily: "inherit",
     layout: {
+      height: 180,
       padding: {
-        top: 36,
-        right: 12,
-        bottom: 12,
-        left: 48
+        top: 0
       },
       cells: {
         height: 24,
@@ -150,7 +148,7 @@ const heatmapConfig = computed(() => {
                 show: false,
             },
             color: {
-                show: true
+                show: false
             }
         },
         columnTotal: {
@@ -161,7 +159,7 @@ const heatmapConfig = computed(() => {
                 offsetY: 0
             },
             color: {
-                show: true
+                show: false
             },
         },
         value: {
@@ -217,7 +215,7 @@ const heatmapConfig = computed(() => {
       fontSize: 12,
       bold: true,
       roundingValue: 0,
-      position: 'right'
+      width: 48
     },
     tooltip: {
       show: true,
@@ -326,6 +324,12 @@ const xyConfig = computed({
       ...globalConfig.vue_ui_xy,
       chart: {
         ...globalConfig.vue_ui_xy.chart,
+        padding: {
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        },
         backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
         color: isDarkMode.value ? '#F3F4F6': '#1A1A1A',
         highlighter: {
@@ -335,11 +339,6 @@ const xyConfig = computed({
         tooltip: {
           backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
           color: isDarkMode.value ? '#F3F4F6': '#1A1A1A',
-        },
-        padding: {
-          ...globalConfig.vue_ui_xy.chart.padding,
-          left: 64,
-          right: 64
         },
         legend: {
           ...globalConfig.vue_ui_xy.chart.legend,
@@ -513,10 +512,10 @@ const config = computed(() => {
                 color: "#FAFAFA"
             },
             padding: {
-                top:  36,
-                right: 12,
-                bottom: 36,
-                left: 48
+                top:  0,
+                right: 0,
+                bottom: 0,
+                left: 0
             },        
             grid: {
                 stroke: "#e1e5e8",

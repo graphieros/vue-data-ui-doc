@@ -23,6 +23,7 @@ import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import { RouterLink } from "vue-router";
 import ThemesVueUiRidgeline from "../themes/ThemesVueUiRidgeline.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -261,6 +262,8 @@ const dataset = computed(() => {
 });
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     theme: "",
     customPalette: [],
     responsive: false,
@@ -487,9 +490,9 @@ const darkModeConfig = ref({
                                     },
                                     fontSize: 18,
                                     yOffset: 0,
-                                    rotation: 0,
                                     showOnlyAtModulo: false,
-                                    modulo: 12
+                                    modulo: 12,
+                                    rotation: 0,
                                 }
                             }
                         },
@@ -504,7 +507,7 @@ const darkModeConfig = ref({
                 useGradient: true,
                 stroke: {
                     useSerieColor: false,
-                    color: "transparent",
+                    color: "#3A3A3A",
                 },
                 smooth: true,
                 opacity: 0.9,
@@ -548,6 +551,10 @@ const darkModeConfig = ref({
                     prefix: "",
                     suffix: "",
                     rotation: 0,
+                    autoRotate: {
+                        enable: true,
+                        angle: -30
+                    },
                     values: monthValues.value,
                     datetimeFormatter: {
                         enable: true,
@@ -585,6 +592,8 @@ const darkModeConfig = ref({
 });
 
 const config = ref({
+    debug: false,
+    loading: false,
     theme: "",
     customPalette: [],
     responsive: false,
@@ -800,9 +809,9 @@ const config = ref({
                                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
                                     fontSize: 18,
                                     yOffset: 0,
-                                    rotation: 0,
                                     showOnlyAtModulo: false,
-                                    modulo: 12
+                                    modulo: 12,
+                                    rotation: 0,
                                 }
                             }
                         },
@@ -817,7 +826,7 @@ const config = ref({
                 useGradient: true,
                 stroke: {
                     useSerieColor: false,
-                    color: "transparent",
+                    color: "#FFFFFF",
                 },
                 smooth: true,
                 opacity: 0.9,
@@ -860,7 +869,6 @@ const config = ref({
                 labels: {
                     prefix: "",
                     suffix: "",
-                    rotation: 0,
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
                     color: "#1A1A1A",
                     fontSize: 14,
@@ -869,6 +877,11 @@ const config = ref({
                     modulo: 6,
                     showOnlyFirstAndLast: false,
                     offsetY: 0,
+                    rotation: 0,
+                    autoRotate: {
+                        enable: true,
+                        angle: -30
+                    }
                 },
             },
             yAxis: {
@@ -991,6 +1004,12 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
 
         <Rater itemId="vue_ui_ridgeline" class="mt-12" />
 
+        <BaseMigrationInfo
+            autoRotate
+            cssAnimation
+            debug
+        />
+
         <Box :showDatetimeFormatter="true" showEmits showSlots showThemes showResponsive showPatterns schema="vue_ui_ridgeline" signInfo="both">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
@@ -1028,9 +1047,16 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiRidgelineConfig" equal>
                         <span>responsive: false, <span class="text-gray-600 dark:text-app-blue text-xs">// {{ translations.responsive[store.lang] }}</span></span>
-        theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")<br>
+                        <BaseAttr inactive name="debug" defaultVal="false"/>
+                        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")<br>
                         <span>customPalette: [], <span class="text-xs text-app-blue">// string[]</span></span>
                         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseDetails attr="events" :level="1">
+                            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+                            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+                            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+                        </BaseDetails>
                         <BaseDetails attr="style" :level="1">
                             <span>fontFamily: "inherit",</span>
                             <BaseDetails attr="chart" :level="2" title="style.chart">
@@ -1136,6 +1162,10 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
                                         <BaseAttr name="prefix" attr="style.chart.xAxis.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                         <BaseAttr name="suffix" attr="style.chart.xAxis.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                         <BaseAttr name="rotation" attr="style.chart.xAxis.labels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        <BaseDetails attr="autoRotate" :level="5" title="style.chart.xAxis.labels.autoRotate">
+                                            <BaseAttr name="enable" attr="style.chart.xAxis.labels.autoRotate.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                            <BaseAttr name="angle" attr="style.chart.xAxis.labels.autoRotate.angle" type="number" defaultVal="-30" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                        </BaseDetails>
                                         <span>values: string[],</span>
                                         <BaseDetails attr="datetimeFormatter" :level="5" title="style.chart.xAxis.labels.datetimeFormatter">
                                             <BaseAttr name="enable" attr="style.chart.xAxis.labels.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -37,6 +37,8 @@ const isDarkMode = computed(() => {
 const dataset = ref(66);
 
 const config = ref({
+    debug: false,
+    loading: false,
     type: 'battery',
     size: 82,
     stroke: "#9A9A9A",
@@ -49,6 +51,8 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     type: 'battery',
     size: 82,
     stroke: "#6A6A6A",
@@ -157,6 +161,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiGizmoDataset</s
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiGizmoConfig" equal>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="type" attr="type" type="select" defaultVal="battery" :options="['battery', 'gauge']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="size" attr="size" type="number" defaultVal="64" :min="12" :max="128" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="stroke" attr="stroke" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode" />

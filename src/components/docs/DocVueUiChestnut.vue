@@ -17,6 +17,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -247,6 +248,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
+    loading: false,
     style: {
         fontFamily: "inherit",
         chart: {
@@ -442,6 +445,8 @@ const config = ref({
     }
 });
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
     style: {
         fontFamily: "inherit",
         chart: {
@@ -790,6 +795,10 @@ const codeDataset = ref(`const dataset: VueUiChestnutDatasetRoot[] = [
 
         <Rater itemId="vue_ui_chestnut" />
 
+        <BaseMigrationInfo
+            debug 
+        />
+
         <Box showEmits showSlots showThemes schema="vue_ui_chestnut" signInfo="positiveOnly">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -829,6 +838,8 @@ const codeDataset = ref(`const dataset: VueUiChestnutDatasetRoot[] = [
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiChestnutConfig" equal>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <span>customPalette: []; <BaseComment>string[]</BaseComment></span>
     <BaseDetails attr="style" :level="1">

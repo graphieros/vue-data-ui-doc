@@ -21,6 +21,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -64,6 +65,8 @@ const themes = ref([
 const selectedTheme = ref(themes.value[0]);
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     theme: "",
     customPalette: makeColors({
@@ -111,9 +114,6 @@ const config = ref({
             width: 1000,
             zoom: {
                 show: true,
-                color: "#CCCCCC",
-                highlightColor: "#4A4A4A",
-                useResetSlot: false,
             },
             words: {
                 maxFontSize: 100,
@@ -179,6 +179,8 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     theme: "",
     customPalette: makeColors({
@@ -226,9 +228,6 @@ const darkModeConfig = ref({
             width: 1000,
             zoom: {
                 show: true,
-                color: "#CCCCCC",
-                highlightColor: '#4A4A4A',
-                useResetSlot: false,
             },
             words: {
                 maxFontSize: 100,
@@ -398,6 +397,10 @@ const codeDataset2 = computed(() => {
 
         <Rater itemId="vue_ui_word_cloud" />
 
+        <BaseMigrationInfo
+            debug 
+        />
+
         <Box showSlots showEmits showThemes showResponsive schema="vue_ui_word_cloud">
             <template #tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -447,9 +450,16 @@ const codeDataset2 = computed(() => {
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiWordCloudConfig" equal>
         <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseAttr name="animationDelayMs" attr="animationDelayMs" type="range" defaultVal="20" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>

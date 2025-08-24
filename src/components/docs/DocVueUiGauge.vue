@@ -20,6 +20,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -93,6 +94,8 @@ const dataset2 = computed(() => {
 })
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     style: {
         fontFamily: "inherit",
@@ -133,6 +136,7 @@ const config = ref({
                     curved: true,
                     offsetRatio: 1.1,
                     fontSize: 16,
+                    minFontSize: 6,
                     useSerieColor: true,
                     color: '#1A1A1A',
                     bold: false,
@@ -212,7 +216,10 @@ const config = ref({
         base: "Base"
     }
 });
+
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     style: {
         fontFamily: "inherit",
@@ -253,6 +260,7 @@ const darkModeConfig = ref({
                     curved: true,
                     offsetRatio: 1.1,
                     fontSize: 16,
+                    minFontSize: 6,
                     useSerieColor: true,
                     color: '#CCCCCC',
                     bold: false,
@@ -478,6 +486,10 @@ const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
 
         <Rater itemId="vue_ui_gauge" />
 
+        <BaseMigrationInfo
+            debug 
+        />
+
         <Box showEmits showSlots showThemes showResponsive :showPatterns="false" schema="vue_ui_gauge">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
@@ -525,6 +537,8 @@ const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiGaugeConfig" equal>
         <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
         <BaseDetails attr="style" :level="1">
@@ -555,6 +569,7 @@ const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
                         <BaseAttr name="curved" attr="style.chart.layout.segmentNames.curved" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="offsetRatio" attr="style.chart.layout.segmentNames.offsetRatio" type="range" defaultVal="1.1" :min="0.6" :max="1.2" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSize" attr="style.chart.layout.segmentNames.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                        <BaseAttr name="minFontSize" attr="style.chart.layout.segmentNames.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                         <BaseAttr name="useSerieColor" attr="style.chart.layout.segmentNames.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="color" attr="style.chart.layout.segmentNames.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="bold" attr="style.chart.layout.segmentNames.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

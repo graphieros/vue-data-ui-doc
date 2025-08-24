@@ -19,6 +19,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -114,6 +115,8 @@ const codeDataset = ref(`const dataset: VueUiNestedDonutsDatasetItem[] = [
 ];`)
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     useCssAnimation: true,
     useBlurOnHover: true,
@@ -190,9 +193,10 @@ const darkModeConfig = ref({
                         boldPercentage: true,
                         roundingValue: 0,
                         roundingPercentage: 0,
+                        curvedDonutName: true,
                         "showDonutName": true,
                         "boldDonutName": true,
-                        "donutNameAbbreviation": true,
+                        "donutNameAbbreviation": false,
                         "donutNameMaxAbbreviationSize": 3,
                         "donutNameOffsetY": 0
                     }
@@ -279,6 +283,8 @@ const darkModeConfig = ref({
 })
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     useCssAnimation: true,
     useBlurOnHover: true,
@@ -355,9 +361,10 @@ const config = ref({
                         boldPercentage: true,
                         roundingValue: 0,
                         roundingPercentage: 0,
+                        curvedDonutName: true,
                         "showDonutName": true,
                         "boldDonutName": true,
-                        "donutNameAbbreviation": true,
+                        "donutNameAbbreviation": false,
                         "donutNameMaxAbbreviationSize": 3,
                         "donutNameOffsetY": 0
                     }
@@ -525,6 +532,11 @@ const dsTypeCode = computed(() => {
 
         <Rater itemId="vue_ui_nested_donuts" />
 
+        <BaseMigrationInfo
+            cssAnimation
+            debug 
+        />
+
         <Box showEmits showTooltip showSlots showThemes showResponsive schema="vue_ui_nested_donuts" signInfo="positiveOrNegativeOnly">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
@@ -572,8 +584,15 @@ const dsTypeCode = computed(() => {
         <span>responsive: false; <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: []; <BaseComment>string[]</BaseComment></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="serieToggleAnimation" :level="1">
             <BaseAttr name="show" attr="serieToggleAnimation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="durationMs" attr="serieToggleAnimation.durationMs" type="number" defaultVal="500" :min="0" :max="2000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -628,8 +647,9 @@ const dsTypeCode = computed(() => {
                             <BaseAttr name="roundingValue" attr="style.chart.layout.labels.dataLabels.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="roundingPercentage" attr="style.chart.layout.labels.dataLabels.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="showDonutName" attr="style.chart.layout.labels.dataLabels.showDonutName" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="curvedDonutName" attr="style.chart.layout.labels.dataLabels.curvedDonutName" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="boldDonutName" attr="style.chart.layout.labels.dataLabels.boldDonutName" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <BaseAttr name="donutNameAbbreviation" attr="style.chart.layout.labels.dataLabels.donutNameAbbreviation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="donutNameAbbreviation" attr="style.chart.layout.labels.dataLabels.donutNameAbbreviation" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="donutNameMaxAbbreviationSize" attr="style.chart.layout.labels.dataLabels.donutNameMaxAbbreviationSize" type="number" defaultVal="3" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
                             <BaseAttr name="donutNameOffsetY" attr="style.chart.layout.labels.dataLabels.donutNameOffsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>

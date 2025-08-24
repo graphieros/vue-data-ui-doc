@@ -18,6 +18,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -79,6 +80,8 @@ const dataset = ref([
 ])
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     responsiveProportionalSizing: true,
     theme: "",
@@ -123,10 +126,10 @@ const config = ref({
             height: 600,
             width: 1000,
             padding: {
-                top: 24,
+                top: 0,
                 left: 0,
                 right: 0,
-                bottom: 36
+                bottom: 0
             },
             lines: {
                 smooth: true,
@@ -145,6 +148,11 @@ const config = ref({
                 labels: {
                     showAxisNames: true,
                     axisNames: ['KPI 1', 'KPI 2', 'KPI 3', 'KPI 4'],
+                    axisNamesRotation: 0,
+                    axisNamesAutoRotate: {
+                        enable: true,
+                        angle: -30
+                    },
                     axisNamesColor: "#2D353C",
                     axisNamesFontSize: 16,
                     axisNamesBold: true,
@@ -235,6 +243,8 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     responsiveProportionalSizing: true,
     theme: "",
@@ -279,10 +289,10 @@ const darkModeConfig = ref({
             height: 600,
             width: 1000,
             padding: {
-                top: 24,
+                top: 0,
                 left: 0,
                 right: 0,
-                bottom: 36
+                bottom: 0
             },
             lines: {
                 smooth: true,
@@ -301,6 +311,11 @@ const darkModeConfig = ref({
                 labels: {
                     showAxisNames: true,
                     axisNames: ['KPI 1', 'KPI 2', 'KPI 3', 'KPI 4'],
+                    axisNamesRotation: 0,
+                    axisNamesAutoRotate: {
+                        enable: true,
+                        angle: -30
+                    },
                     axisNamesColor: "#6A6A6A",
                     axisNamesFontSize: 16,
                     axisNamesBold: true,
@@ -553,6 +568,13 @@ const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[]
             <Rater itemId="vue_ui_parallel_coordinate_plot" />
         </div>
 
+        <BaseMigrationInfo
+            autoRotate
+            cssAnimation
+            debug
+            padding
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_parallel_coordinate_plot" signInfo="both">
             <template #tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -597,10 +619,17 @@ const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[]
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiParallelCoordinatePlotConfig" equal>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
-        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
@@ -628,10 +657,10 @@ const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[]
                     <BaseAttr name="opacity" attr="style.chart.lines.opacity" type="range" defaultVal="0.8" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="padding" :level="3" title="style.chart.padding">
-                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="24" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" defaultVal="24" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" defaultVal="36" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <BaseAttr name="left" attr="style.chart.padding.left" type="number" defaultVal="36" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="left" attr="style.chart.padding.left" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="plots" :level="3" title="style.chart.plots">
                     <BaseAttr name="show" attr="style.chart.plots.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -673,6 +702,11 @@ const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[]
                     <BaseDetails attr="labels" :level="4" title="style.chart.yAxis.labels">
                         <BaseAttr name="showAxisNames" attr="style.chart.yAxis.labels.showAxisNames" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <span>axisNames: [], <span class="text-app-blue text-xs">// string[]</span></span>
+                        <BaseAttr name="axisNamesRotation" attr="style.chart.yAxis.axisNamesRotation" type="number" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseDetails attr="axisNamesAutoRotate" :level="4" title="style.chart.yAxis.axisNamesAutoRotate">
+                            <BaseAttr name="enable" attr="style.chart.yAxis.axisNamesAutoRotate.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="angle" attr="style.chart.yAxis.axisNamesAutoRotate.angle" type="number" defaultVal="-30" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
                         <BaseAttr name="axisNamesColor" attr="style.chart.yAxis.axisNamesColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="axisNamesFontSize" attr="style.chart.yAxis.axisNamesFontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="axisNamesBold" attr="style.chart.yAxis.axisNamesBold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -14,6 +14,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     colors: ['#1f77b4', '#aec7e8', '#ff7f0e']
                 },
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'theme', def: 'default', type: 'select', label: 'theme', options: ['default', 'celebration', 'celebrationNight', 'zen', 'hack', 'concrete'], category: 'general'},
 
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
@@ -146,6 +148,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'theme', def: 'default', type: 'select', label: 'theme', options: ['default', 'celebration', 'celebrationNight', 'zen', 'hack', 'concrete'], category: 'general'},
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
@@ -270,6 +274,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.xAxis.labels.prefix', def: '', type: 'text', label: ['xAxis', 'label', 'is', 'prefix'], category: 'labels'},
                     { key: 'style.chart.xAxis.labels.suffix', def: '', type: 'text', label: ['xAxis', 'label', 'is', 'suffix'], category: 'labels'},
                     { key: 'style.chart.xAxis.labels.rotation', def: 0, type: 'number', min: -90, max: 90, label: ['xAxis', 'label', 'is', 'rotation'], category: 'labels'},
+                    { key: 'style.chart.xAxis.labels.autoRotate.enable', def: true, type: 'checkbox', label: ['xAxis', 'label', 'is', 'auto rotate'], category: 'labels'},
+                    { key: 'style.chart.xAxis.labels.autoRotate.angle', def: -30, type: 'number', min: -90, max: 90, label: ['xAxis', 'label', 'is', 'angle (auto)'], category: 'labels'},
+
                     { key: 'style.chart.xAxis.labels.color', def: '#1A1A1A', type: 'color', label: ['xAxis', 'label', 'is', 'textColor'], category: 'labels'},
                     { key: 'style.chart.xAxis.labels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['xAxis', 'label', 'is', 'fontSize'], category: 'labels'},
                     { key: 'style.chart.xAxis.labels.bold', def: false, type: 'checkbox', label: ['xAxis', 'label', 'is', 'bold'], category: 'labels'},
@@ -290,6 +297,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     USA: { value: 90, category: 'USA', color: 'blue' },
                 },
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'projection', def: 'globe', type: 'select', label: 'projection', category: 'general', options: [
                         'aitoff',
                         'azimuthalEquidistant',
@@ -393,6 +402,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { name: 'Datapoint J', value: 10.345, color: null },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFmaily', category: 'general'},
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
@@ -505,6 +516,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general'},
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
@@ -512,9 +525,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.width', def: 600, type: 'range', min: 300, max: 1000, label: 'width', category: 'general'},
                     { key: 'style.chart.height', def: 500, type: 'range', min: 300, max: 1000, label: 'height', category: 'general'},
                     { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
-                    { key: 'style.chart.padding.right', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
-                    { key: 'style.chart.padding.bottom', def: 48, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'padding'},
-                    { key: 'style.chart.padding.left', def: 48, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'padding'},
+                    { key: 'style.chart.padding.right', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
+                    { key: 'style.chart.padding.bottom', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'padding'},
+                    { key: 'style.chart.padding.left', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'padding'},
 
                     { key: 'style.chart.grid.xAxis.show', def: true, type: 'checkbox', label: ['xAxis', 'is', 'show'], category: 'grid'},
                     { key: 'style.chart.grid.xAxis.stroke', def: '#E1E5E8', type: 'color', label: ['xAxis', 'is', 'color'], category: 'grid'},
@@ -543,6 +556,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.axes.x.labels.rounding', def: 1, type: 'number', min: 0, max: 6, label: ['xAxis', 'labels', 'is', 'rounding'], category: 'grid'},
                     { key: 'style.chart.axes.x.labels.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['xAxis', 'labels', 'is', 'offsetY'], category: 'grid'},
                     { key: 'style.chart.axes.x.labels.rotation', def: 0, type: 'range', min: -90, max: 90, label: ['xAxis', 'labels', 'is', 'rotation'], category: 'grid'},
+                    { key: 'style.chart.axes.x.labels.autoRotate.enable', def: true, type: 'checkbox', label: ['xAxis', 'labels', 'is', 'auto rotate'], category: 'grid'},
+                    { key: 'style.chart.axes.x.labels.autoRotate.angle', def: -30, type: 'number', min: -90, max: 90, label: ['xAxis', 'labels', 'is', 'angle (auto)'], category: 'grid'},
+
                     { key: 'style.chart.axes.x.labels.prefix', def: '', type: 'text', label: ['xAxis', 'labels', 'is', 'prefix'], category: 'grid'},
                     { key: 'style.chart.axes.x.labels.suffix', def: '', type: 'text', label: ['xAxis', 'labels', 'is', 'suffix'], category: 'grid'},
 
@@ -787,6 +803,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     ]
                 },
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general'},
@@ -814,6 +832,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.segments.ticks.divisions', def: 10, type: 'select', options: [2, 3, 5, 10, 20], label: ['scale', 'is', 'size'], category: 'labels' },
                     { key: 'style.chart.segments.ticks.stroke', def: '#8A8A8A', type: 'color', label: ['ticks', 'is', 'color'], category: 'labels'},
 
+                    { key: 'style.chart.target.show', def: true, type: 'checkbox', label: ['target', 'is', 'show'], category: 'general'},
                     { key: 'style.chart.target.onTop', def: true, type: 'checkbox', label: ['target', 'is', 'on top'], category: 'general'},
                     { key: 'style.chart.target.color', def: '#1A1A1A', type:'color', label: ['target', 'is', 'color'], category: 'general'},
                     { key: 'style.chart.target.rounded', def: true, type: 'checkbox', label: ['target', 'is', 'border radius'], category: 'general'},
@@ -883,6 +902,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.chart.grid.x.timeLabels.values', def: ['JAN', 'FEB', 'MAR'], type: 'none', label: 'fontSize' },
                     { key: 'orientation', def: 'vertical', type:'select', options:['vertical', 'horizontal'], label: 'orientation', category: 'general'},
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
@@ -1015,10 +1036,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
 
                     { key: 'style.chart.grid.x.timeLabels.show', def: true, type: 'checkbox', label: ['time', 'labels', 'is', 'show'], category: 'grid'},
                     { key: 'style.chart.grid.x.timeLabels.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['time', 'labels', 'is', 'offsetY'], category: 'grid'},
-                    { key: 'style.chart.grid.x.timeLabels.rotation', def: 0, type: 'range', min: -90, max: 90, label: ['time', 'labels', 'is', 'rotation'], category: 'grid'},
                     { key: 'style.chart.grid.x.timeLabels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['time', 'labels', 'is', 'fontSize'], category: 'grid'},
                     { key: 'style.chart.grid.x.timeLabels.color', def: '#1A1A1A', type: 'color', label: ['time', 'labels', 'is', 'textColor'], category: 'grid'},
                     { key: 'style.chart.grid.x.timeLabels.bold', def: false, type: 'checkbox', label: ['time', 'labels', 'is', 'bold'], category: 'grid'},
+                    { key: 'style.chart.grid.x.timeLabels.rotation', def: 0, type: 'range', min: -90, max: 90, label: ['time', 'labels', 'is', 'rotation'], category: 'grid'},
+                    { key: 'style.chart.grid.x.timeLabels.autoRotate.enable', def: true, type: 'checkbox', label: ['time', 'labels', 'auto rotate', 'is', 'show'], category: 'grid'},
+                    { key: 'style.chart.grid.x.timeLabels.autoRotate.angle', def: -30, type: 'number', min: -90, max: 90,  label: ['time', 'labels', 'auto rotate', 'is', 'angle'], category: 'grid'},
 
                     { key: 'style.chart.grid.y.showAxis', def: true, type: 'checkbox', label: ['yAxis', 'is', 'show'], category: 'grid'},
                     { key: 'style.chart.grid.y.showVerticalLines', def: false, type: 'checkbox', label: ['verticalLines', 'is', 'show'], category: 'grid'},
@@ -1047,6 +1070,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_gizmo: {
                 dataset: 66.5,
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'type', def: 'battery', type: 'select', options: ['battery', 'gauge'], label: 'type', category: 'general'},
                     { key: 'size', def: 128, type: 'number', min: 12, max: 400, label: 'size', category: 'general'},
                     { key: 'stroke', def: '#8A8A8A', type: 'color', label: ['border', 'is', 'color'], category: 'general'},
@@ -1181,16 +1206,18 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: ['backgroundColor'], category: 'general'},
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: ['textColor'], category: 'general'},
                     { key: 'style.chart.height', def: 600, type: 'number', min: 300, max: 1000, label: ['height'], category: 'general'},
                     { key: 'style.chart.width', def: 1000, type: 'number', min: 300, max: 1500, label: ['width'], category: 'general'},
 
-                    { key: 'style.chart.padding.top', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
-                    { key: 'style.chart.padding.right', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
-                    { key: 'style.chart.padding.bottom', def: 36, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'padding'},
-                    { key: 'style.chart.padding.left', def: 36, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'padding'},
+                    { key: 'style.chart.padding.top', def: 0, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
+                    { key: 'style.chart.padding.right', def: 0, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
+                    { key: 'style.chart.padding.bottom', def: 0, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'padding'},
+                    { key: 'style.chart.padding.left', def: 0, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'padding'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'userOptions' },
@@ -1238,6 +1265,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.yAxis.labels.axisNamesColor', def: '#1A1A1A', type: 'color', label: ['axis', 'name', 'is', 'textColor'], category: 'labels'},
                     { key: 'style.chart.yAxis.labels.axisNamesFontSize', def: 16, type: 'number', min: 8, max: 42, label: ['axis', 'name', 'is', 'fontSize'], category: 'labels'},
                     { key: 'style.chart.yAxis.labels.axisNamesBold', def: true, type: 'checkbox', label: ['axis', 'name', 'is', 'bold'], category: 'labels'},
+                    { key: 'style.chart.yAxis.labels.axisNamesRotation', def: 0, type: 'number', min: -90, max: 90, label: ['axis', 'name', 'is', 'rotation'], category: 'labels'},
+                    { key: 'style.chart.yAxis.labels.axisNamesAutoRotate.enable', def: true, type: 'checkbox', label: ['axis', 'name', 'is', 'auto rotate'], category: 'labels'},
+                    { key: 'style.chart.yAxis.labels.axisNamesAutoRotate.angle', def: -30, type: 'number', min: -90, max: 90, label: ['axis', 'name', 'is', 'angle (auto)'], category: 'labels'},
+
                     { key: 'style.chart.yAxis.labels.ticks.show', def: true, type: 'checkbox', label: ['ticks', 'is', 'show'], category: 'labels'},
                     { key: 'style.chart.yAxis.labels.ticks.fontSize', def: 14, type: 'number', min: 8, max: 42, label: ['ticks', 'is', 'fontSize'], category: 'labels'},
                     { key: 'style.chart.yAxis.labels.ticks.color', def: '#1A1A1A', type: 'color', label: ['ticks', 'is', 'textColor'], category: 'labels'},
@@ -1294,10 +1325,15 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     ['A2', 'B2', 5]
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'general' },
                     { key: 'userOptions.keepStateOnChartLeave', def: true, type: 'checkbox', label: ['user options', 'is', 'keep state on leave'], category: 'general' },
                     { key: 'userOptions.position', def: 'right', type: 'select', options: ['right', 'left'], label: ['position'], category: 'userOptions'},
+
+                    { key: 'style.chart.width', def: 1000, type: 'number', min: 300, max: 2000, label: ['width'], category: 'general'},
+                    { key: 'style.chart.height', def: 300, type: 'number', min: 100, max: 2000, label: ['height'], category: 'general'},
 
                     { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label:['top'], category: 'padding'},
                     { key: 'style.chart.padding.right', def: 12, type: 'number', min: 0, max: 100, label:['right'], category: 'padding'},
@@ -1325,8 +1361,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.subtitle.fontSize', def: 16, type: 'number', min: 6, max: 42, label: 'fontSize', category: 'subtitle' },
                     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
                     { key: 'style.chart.nodes.gap', def: 10, type: 'number', min: 0, max: 100, label: ['gap'], category: 'datapoints'},
-                    { key: 'style.chart.nodes.minHeight', def: 20, type: 'number', min: 10, max: 100, label: ['height', 'is', 'min'], category: 'datapoints'},
+
                     { key: 'style.chart.nodes.width', def: 40, type: 'number', min: 10, max: 100, label: ['width'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.labels.show', def: true, type: 'checkbox', label: ['labels', 'is', 'show'], category: 'datapoints'},
                     { key: 'style.chart.nodes.labels.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'datapoints' },
                     { key: 'style.chart.nodes.labels.abbreviation.use', def: true, type: 'checkbox', label: ['abbreviation', 'is', 'use'], category: 'datapoints'},
                     { key: 'style.chart.nodes.labels.abbreviation.length', def: 3, type: 'number', min: 1, max: 12, label: ['abbreviation', 'is', 'length'], category: 'datapoints'},
@@ -1335,7 +1372,6 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.nodes.labels.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'datapoints'},
                     { key: 'style.chart.nodes.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'datapoints'},
                     { key: 'style.chart.nodes.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'datapoints'},
-                    { key: 'style.chart.links.width', def: 200, type: 'number', min: 0, max: 500, label: ['link', 'is', 'width'], category: 'datapoints'},
                     { key: 'style.chart.links.opacity', def: 0.8, type: 'number', min: 0, max: 1, step: 0.01, label: ['link', 'is', 'opacity'], category: 'datapoints'},
                     { key: 'style.chart.links.stroke', def: '#FFFFFF', type: 'color', label: ['link', 'border', 'is', 'color'], category: 'datapoints'},
                     { key: 'style.chart.links.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['link', 'border', 'is', 'thickness'], category: 'datapoints'},
@@ -1386,7 +1422,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
-                    { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
+                    { key: 'useCssAnimation', def: false, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'downsample.threshold', def: 500, type: 'number', min: 100, max: 5000, label: ['LTTB', 'algorithm', 'is', 'threshold'], category: 'general'},
                     { key: 'chart.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
@@ -1408,11 +1446,15 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.zoom.minimap.selectionRadius', def: 2, type: 'range', min: 0, max: 24, label: ['zoom', 'minimap', 'selection', 'is', 'radius'], category: 'general'},
                     { key: 'chart.zoom.minimap.indicatorColor', def: '#1A1A1A', type: 'color', label: ['zoom', 'minimap', 'indicator', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.minimap.verticalHandles', def: false, type: 'checkbox', label: ['zoom', 'minimap', 'vertical', 'handles'], category: 'general'},
+                    { key: 'chart.zoom.preview.enable', def: true, type: 'checkbox', label: ['zoom', 'preview', 'is', 'show'], category: 'general'},
+                    { key: 'chart.zoom.preview.stroke', def: '#6A6A6A', type: 'color', label: ['zoom', 'preview', 'stroke', 'is', 'color'], category: 'general'},
+                    { key: 'chart.zoom.preview.strokeWidth', def: 2, type: 'number', min: 0, max: 12, label: ['zoom', 'preview', 'is', 'strokeWidth'], category: 'general'},
+                    { key: 'chart.zoom.preview.strokeDasharray', def: 0, type: 'number', min: 0, max: 12, label: ['zoom', 'preview', 'border', 'is', 'thickness'], category: 'general'},
 
-                    { key: 'chart.padding.top', def: 36, type: 'number', min: 0, max: 100, label: "top", category: 'padding' },
-                    { key: 'chart.padding.right', def: 24, type: 'number', min: 0, max: 100, label: 'right', category: 'padding' },
-                    { key: 'chart.padding.bottom', def: 48, type: 'number', min: 0, max: 100, label: 'bottom', category: 'padding' },
-                    { key: 'chart.padding.left', def: 48, type: 'number', min: 0, max: 100, label: 'left', category: 'padding' },
+                    { key: 'chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label: "top", category: 'padding' },
+                    { key: 'chart.padding.right', def: 12, type: 'number', min: 0, max: 100, label: 'right', category: 'padding' },
+                    { key: 'chart.padding.bottom', def: 6, type: 'number', min: 0, max: 100, label: 'bottom', category: 'padding' },
+                    { key: 'chart.padding.left', def: 6, type: 'number', min: 0, max: 100, label: 'left', category: 'padding' },
 
                     { key: 'chart.highlighter.color', def: '#1A1A1A', type: 'color', label: 'highlighterColor', category: 'general' },
                     { key: 'chart.highlighter.opacity', def: 5, type: 'range', min: 0, max: 100, label: 'highlighterOpacity', category: 'general' },
@@ -1463,9 +1505,11 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.grid.labels.xAxisLabels.fontSize', def: 18, type: 'number', min: 6, max: 30, label: 'fontSizePeriodLabels', category: 'grid' },
                     { key: 'chart.grid.labels.xAxisLabels.showOnlyFirstAndLast', def: false, type: 'checkbox', label: 'showOnlyFirstAndLast', category: 'grid' },
                     { key: 'chart.grid.labels.xAxisLabels.yOffset', def: 8, type: 'number', min:-100, max: 100, label: 'offsetYPeriodLabels', category: 'grid' },
-                    { key: 'chart.grid.labels.xAxisLabels.rotation', def: 0, type: 'range', min: -360, max: 360, label: 'rotation', category: 'grid'},
                     { key: 'chart.grid.labels.xAxisLabels.showOnlyAtModulo', def: false, type: 'checkbox', label: 'show only at mod', category: 'grid'},
                     { key: 'chart.grid.labels.xAxisLabels.modulo', def: 12, type: 'number', min: 2, max: 365, label: 'modulo', category: 'grid'},
+                    { key: 'chart.grid.labels.xAxisLabels.rotation', def: 0, type: 'range', min: -360, max: 360, label: 'rotation', category: 'grid'},
+                    { key: 'chart.grid.labels.xAxisLabels.autoRotate.enable', def: true, type: 'checkbox', label: ['rotation', 'is', 'auto'], category: 'grid'},
+                    { key: 'chart.grid.labels.xAxisLabels.autoRotate.angle', def: -30, type: 'number', min: -90, max: 90, label: ['rotation', 'is', 'angle (auto)'], category: 'grid'},
 
                     { key: 'chart.grid.labels.xAxis.showBaseline', def: true, type: 'checkbox', label: ['xAxis', 'base line', 'is', 'show'], category: 'grid'},
                     { key: 'chart.grid.labels.xAxis.showCrosshairs', def: true, type: 'checkbox', label: ['xAxis', 'crosshairs', 'is', 'show'], category: 'grid'},
@@ -1546,6 +1590,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'chart.userOptions.buttonTitles.stack', def: 'Toggle stack mode', type: 'text', label: ['button', 'stack', 'title', 'is', 'textContent'], category: 'userOptions'},
                     {key: 'chart.userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
 
+                    { key: 'bar.showTransition', def: true, type: 'checkbox', label: ['css', 'transition', 'is', 'show'], category: 'bar'},
                     { key: 'bar.borderRadius', def: 2, type: 'number', min: 0, max: 120, label: 'borderRadius', category: 'bar' },
                     { key: 'bar.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'bar' },
                     { key: 'bar.labels.show', def: true, type: 'checkbox', label: 'showDataLabels', category: 'bar' },
@@ -1563,6 +1608,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'bar.border.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'bar'},
                     { key: 'bar.border.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'bar'},
 
+                    { key: 'line.showTransition', def: true, type: 'checkbox', label: ['css', 'transition', 'is', 'show'], category: 'line'},
                     { key: 'line.cutNullValues', def: false, type: 'checkbox', label: 'Cut null values', category: 'line'},
                     { key: 'line.radius', def: 6, type: 'number', min: 0, max: 20, label: 'radius', category: 'line' },
                     { key: 'line.useGradient', def: false, type: 'checkbox', label: 'useGradient', category: 'line' },
@@ -1582,12 +1628,13 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'line.tag.followValue', def: true, type: 'checkbox', label: 'follow value', category: 'line'},
                     { key: 'line.tag.fontSize', def: 14, type: 'number', min: 8, max: 42, label: 'fontSize', category: 'line'},
 
+                    { key: 'plot.showTransition', def: true, type: 'checkbox', label: ['css', 'transition', 'is', 'show'], category: 'plot'},
                     { key: 'plot.radius', def: 6, type: 'number', min: 0, max: 20, label: 'radius', category: 'plot' },
                     { key: 'plot.useGradient', def: true, type: 'checkbox', label: 'useGradient', category: 'plot' },
                     { key: 'plot.strokeWidth', def: 2, type: 'number', min: 1, max: 20, label: 'thickness', category: 'plot' },
-                    { key: 'plot.dot.useSerieColor', def: true, type: 'checkbox', label: ['dot', 'is', 'serie color'], category: 'line'},
-                    { key: 'plot.dot.fill', def: '#FFFFFF', type: 'color', label: ['dot', 'is', 'fill'], category: 'line'},
-                    { key: 'plot.dot.strokeWidth', def: 0.5, type: 'number', min: 0, max: 12, step: 0.1, label: ['dot', 'is', 'strokeWidth'], category: 'line'},
+                    { key: 'plot.dot.useSerieColor', def: true, type: 'checkbox', label: ['dot', 'is', 'serie color'], category: 'plot'},
+                    { key: 'plot.dot.fill', def: '#FFFFFF', type: 'color', label: ['dot', 'is', 'fill'], category: 'plot'},
+                    { key: 'plot.dot.strokeWidth', def: 0.5, type: 'number', min: 0, max: 12, step: 0.1, label: ['dot', 'is', 'strokeWidth'], category: 'plot'},
 
                     { key: 'plot.labels.show', def: true, type: 'checkbox', label: 'showDataLabels', category: 'plot' },
                     { key: 'plot.labels.offsetY', def: -8, type: 'number', min: -100, max: 100, label: 'offsetYDataLabels', category: 'plot' },
@@ -1634,6 +1681,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
+                    { key: 'pie', def: false, type: 'checkbox', label: 'pie', category: 'general' },
+                    { key: 'autoSize', def: true, type: 'checkbox', label: 'autoSize', category: 'general' },
                     { key: 'type', def: 'classic', type: 'select', options: ['classic', 'polar'], label:'type', category: 'general'},
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'serieToggleAnimation.show', def: true, type: 'checkbox', label: ['serie toggle animation', 'is', 'show'], category: 'general'},
@@ -1666,9 +1717,11 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.percentage.color', def: '#1A1A1A', type: 'color', label: 'colorPercentage', category: 'labels' },
                     { key: 'style.chart.layout.labels.percentage.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels' },
                     { key: 'style.chart.layout.labels.percentage.fontSize', def: 18, min: 6, max: 48, type: 'number', label: 'fontSize', category: 'labels' },
+                    { key: 'style.chart.layout.labels.percentage.minFontSize', def: 6, min: '', max: 48, type: 'number', label: 'min fontSize', category: 'labels' },
                     { key: 'style.chart.layout.labels.name.color', def: '#1A1A1A', type: 'color', label: 'colorName', category: 'labels' },
                     { key: 'style.chart.layout.labels.name.bold', def: false, type: 'checkbox', label: 'bold', category: 'labels' },
                     { key: 'style.chart.layout.labels.name.fontSize', def: 14, type: 'number', min: 6, max: 36, label: 'fontSize', category: 'labels' },
+                    { key: 'style.chart.layout.labels.name.minFontSize', def: 6, type: 'number', min: 6, max: 36, label: 'min fontSize', category: 'labels' },
                     { key: 'style.chart.layout.labels.hollow.show', def: true, type: 'checkbox', label: ['hollow', 'is', 'show'], category: 'labels'},
                     { key: 'style.chart.layout.labels.hollow.total.show', def: true, type: 'checkbox', label: ['hollow', 'total', 'is', 'show'], category: 'labels' },
                     { key: 'style.chart.layout.labels.hollow.total.bold', def: false, type: 'checkbox', label: ['hollow', 'total', 'is', 'bold'], category: 'labels' },
@@ -1696,6 +1749,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.hollow.average.value.suffix', def: '', type: 'text', label: ['hollow', 'average', 'value', 'is', 'suffix'], category: 'labels' },
                     { key: 'style.chart.layout.labels.hollow.average.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['hollow', 'average', 'value', 'is', 'offsetY'], category: 'labels' },
                     { key: 'style.chart.layout.labels.hollow.average.value.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['hollow', 'average', 'value', 'is', 'rounding'], category: 'labels' },
+                    { key: 'style.chart.layout.donut.radiusRatio', def: 0.3, type: 'range', min: 0.1, max: 0.5, step: 0.01, label: ['radius', 'is', 'ratio'], category: 'donut'},
                     { key: 'style.chart.layout.donut.strokeWidth', def: 64, type: 'range', min: 3, max: 130, label: 'thickness', category: 'donut' },
                     { key: 'style.chart.layout.donut.borderWidth', def: 1, type: 'range', min: 0, max: 36, label: ['border', 'is', 'thickness'], category: 'donut' },
                     { key: 'style.chart.layout.donut.useShadow', def: false, type: 'checkbox', label: ['shadow', 'is', 'show'], category: 'donut'},
@@ -1795,6 +1849,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useBlurOnHover', def: true, type: 'checkbox', label: 'useBlurOnHover', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
@@ -1928,6 +1984,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
@@ -2034,6 +2092,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
@@ -2069,6 +2129,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.segmentNames.curved', def: true, type: 'checkbox', label: ['segment', 'name', 'is', 'curved'], category: 'general'},
                     { key: 'style.chart.layout.segmentNames.offsetRatio', def: 1.1, type: 'range', min: 0.6, max: 1.2, step: 0.01, label: ['segment', 'name', 'is', 'offset'], category: 'general'},
                     { key: 'style.chart.layout.segmentNames.fontSize', def: 16, type: 'number', min: 8, max: 42, label: ['segment', 'name', 'is', 'fontSize'], category: 'general'},
+                    { key: 'style.chart.layout.segmentNames.minFontSize', def: 6, type: 'number', min: 6, max: 42, label: ['segment', 'name', 'is', 'min', 'fontSize'], category: 'general'},
                     { key: 'style.chart.layout.segmentNames.useSerieColor', def: true, type: 'checkbox', label: ['segment', 'name', 'is', 'use serie color'], category: 'general'},
                     { key: 'style.chart.layout.segmentNames.color', def: '#1A1A1A', type: 'color', label: ['segment', 'name', 'is', 'color'], category: 'general'},
                     { key: 'style.chart.layout.segmentNames.bold', def: false, type: 'checkbox', label: ['segment', 'name', 'is', 'bold'], category: 'general'},
@@ -2152,6 +2213,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'useStartAnimation', def: true, type: 'checkbox', label: ['start animation', 'is', 'use'], category: 'general' },
                     { key: 'useBlurOnHover', def: true, type: 'checkbox', label: 'useBlurOnHover', category: 'general' },
@@ -2167,6 +2230,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.labels.show', def: true, type: 'checkbox', label: 'show', category: 'labels' },
                     { key: 'style.chart.layout.labels.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'labels' },
                     { key: 'style.chart.layout.labels.fontSize', def: 14, type: 'number', min: 6, max: 32, label: 'fontSize', category: 'labels' },
+                    { key: 'style.chart.layout.labels.minFontSize', def: 6, type: 'number', min: 6, max: 32, label: ['min', 'fontSize'], category: 'labels' },
                     { key: 'style.chart.layout.labels.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels' },
                     { key: 'style.chart.layout.labels.roundingValue', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'labels' },
                     { key: 'style.chart.layout.labels.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['percentage', 'is', 'rounding'], category: 'labels' },
@@ -2281,6 +2345,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'zoomAnimationFrames', def: 20, type: 'number', min: 5, max: 40, label: ['zoom animation', 'is', 'speed'], category: 'general' },
                     { key: 'downsample.threshold', def: 500, type: 'number', min: 100, max: 5000, label: ['LTTB', 'algorithm', 'is', 'threshold'], category: 'general'},
@@ -2408,6 +2474,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_wheel: {
                 dataset: { percentage: 95.555 },
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
@@ -2460,9 +2528,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_tiremarks: {
                 dataset: { percentage: 95.555 },
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
+                    { key: 'style.chart.width', def: 312, type: 'number', min: 100, max: 1000, label: 'width', category: 'general'},
+                    { key: 'style.chart.height', def: 56, type: 'number', min: 24, max: 1000, label: 'height', category: 'general'},
+
                     { key: 'style.chart.animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general' },
                     { key: 'style.chart.animation.speed', def: 0.5, step: 0.1, min: 0.1, max: 2, type: 'number', label: ['animation', 'is', 'speed'], category: 'general' },
                     { key: 'style.chart.animation.acceleration', def: 1, step: 0.1, min: 0, max: 100, type: 'number', label: ['animation', 'is', 'acceleration'], category: 'general' },
@@ -2565,6 +2638,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
@@ -2681,13 +2756,15 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.th.translations.nutToTotal', def: '% / total', type: 'text', label: ['breakdown', '/', 'total'], category: 'translations' }
                 ]
             },
-            vue_ui_vertical_bar: {
+            vue_ui_horizontal_bar: {
                 dataset: [
                     { name: 'Serie 1', value: 100, color: '#42d392', children: [], id: '111' },
                     { name: 'Serie 2', value: 66.4, color: '#6376DD', children: [], id: '222' },
                     { name: 'Serie 3', value: 33.6, color: '#ff6400', children: [], id: '333' },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
@@ -2958,6 +3035,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { period: 'day15', value: 55, id: '16' },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'type', def: 'line', type: 'select', options: ['line', 'bar'], label: 'type', category: 'general' },
                     { key: 'downsample.threshold', def: 500, type: 'number', min: 100, max: 5000, label: ['LTTB', 'algorithm', 'is', 'threshold'], category: 'general'},
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
@@ -3042,6 +3121,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.bar.gradient.show', def: true, type: 'checkbox', label: 'useGradient', category: 'general' },
@@ -3121,6 +3202,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.layout.independant', def: true, type: 'checkbox', label: ['series', 'is', 'independant'], category: 'general' },
@@ -3254,6 +3337,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.layout.height', def: 96, type: 'range', min: 96, max: 500, label: 'height', category: 'general' },
@@ -3273,6 +3358,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.animation.speedMs', def: 500, type: 'range', min: 0, max: 1000, label: ['animation', 'is', 'speed'], category: 'general'},
                     { key: 'style.labels.value.color', def: '#1A1A1A', type: 'color', label: ['value', 'is', 'textColor'], category: 'labels' },
                     { key: 'style.labels.value.fontSize', def: 14, type: 'number', min: 6, max: 48, label: ['value', 'is', 'fontSize'], category: 'labels' },
+                    { key: 'style.labels.value.minFontSize', def: 6, type: 'number', min: 6, max: 48, label: ['value', 'is', 'min', 'fontSize'], category: 'labels' },
                     { key: 'style.labels.value.rounding', def: 1, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'labels' },
                     { key: 'style.labels.value.bold', def: true, type: 'checkbox', label: ['value', 'is', 'bold'], category: 'labels' },
                     { key: 'style.labels.value.prefix', def: '', type: 'text', label: ['value', 'is', 'prefix'], category: 'labels' },
@@ -3280,10 +3366,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.labels.value.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['value', 'is', 'offsetY'], category: 'labels' },
                     { key: 'style.labels.valueLabel.color', def: '#1A1A1A', type: 'color', label: ['value', 'labels', 'is', 'textColor'], category: 'labels' },
                     { key: 'style.labels.valueLabel.fontSize', def: 14, type: 'number', min: 6, max: 48, label: ['value', 'labels', 'is', 'fontSize'], category: 'labels' },
+                    { key: 'style.labels.valueLabel.minFontSize', def: 6, type: 'number', min: 6, max: 48, label: ['value', 'labels', 'is', 'min', 'fontSize'], category: 'labels' },
                     { key: 'style.labels.valueLabel.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'labels', 'is', 'rounding'], category: 'labels' },
                     { key: 'style.labels.valueLabel.bold', def: false, type: 'checkbox', label: ['value', 'labels', 'is', 'bold'], category: 'labels' },
                     { key: 'style.labels.timeLabel.color', def: '#1A1A1A', type: 'color', label: ['period', 'labels', 'is', 'textColor'], category: 'labels' },
                     { key: 'style.labels.timeLabel.fontSize', def: 12, type: 'number', min: 6, max: 48, label: ['period', 'labels', 'is', 'fontSize'], category: 'labels' },
+                    { key: 'style.labels.timeLabel.minFontSize', def: 6, type: 'number', min: 6, max: 48, label: ['period', 'labels', 'is', 'min', 'fontSize'], category: 'labels' },
                     { key: 'style.labels.timeLabel.bold', def: false, type: 'checkbox', label: ['period', 'labels', 'is', 'bold'], category: 'labels' },
                     { key: 'style.selector.stroke', def: '#CCCCCC', type: 'color', label: ['border', 'is', 'color'], category: 'selector' },
                     { key: 'style.selector.strokeWidth', def: 2, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'selector' },
@@ -3323,6 +3411,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.chart.layout.grid.xAxis.dataLabels.values', def: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG'], type: 'none' },
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'general' },
@@ -3333,14 +3423,22 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'style.chart.donuts.hover.hideLabelsUnderValue', def: 5, type: 'number', min: 0, max: 12, label: ['donut', 'hover', 'hide label under %'], category: 'general'},
                     { key: 'style.chart.donuts.zoom.hideLabelsUnderValue', def: 5, type: 'number', min: 0, max: 12, label: ['donut', 'zoom', 'hide label under %'], category: 'general'},
-                    { key: 'style.chart.layout.padding.top', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'general' },
-                    { key: 'style.chart.layout.padding.right', def: 48, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'general' },
-                    { key: 'style.chart.layout.padding.bottom', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'general' },
-                    { key: 'style.chart.layout.padding.left', def: 48, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'general' },
+                    { key: 'style.chart.layout.padding.top', def: 5, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'general' },
+                    { key: 'style.chart.layout.padding.right', def: 10, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'general' },
+                    { key: 'style.chart.layout.padding.bottom', def: 5, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'general' },
+                    { key: 'style.chart.layout.padding.left', def: 10, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'general' },
                     { key: 'style.chart.layout.grid.show', def: true, type: 'checkbox', label: 'show', category: 'grid' },
                     { key: 'style.chart.layout.grid.stroke', def: '#e1e5e8', type: 'color', label: 'lineColor', category: 'grid' },
                     { key: 'style.chart.layout.grid.strokeWidth', def: 0.7, type: 'number', min: 0, max: 12, step: 0.1, label: 'thickness', category: 'grid' },
                     { key: 'style.chart.layout.grid.showVerticalLines', def: true, type: 'checkbox', label: ['verticalLines', 'is', 'show'], category: 'grid' },
+
+                    { key: 'style.chart.layout.grid.axis.yLabel', def: '', type: 'text', label: ['yAxis', 'is', 'label'], category: 'grid'},
+                    { key: 'style.chart.layout.grid.axis.yLabelOffsetX', def: 0, type: 'number', min: -100, max: 100, label: ['yAxis', 'label', 'is', 'offsetX'], category: 'grid'},
+                    { key: 'style.chart.layout.grid.axis.xLabel', def: '', type: 'text', label: ['xAxis', 'is', 'label'], category: 'grid'},
+                    { key: 'style.chart.layout.grid.axis.xLabelOffsetY', def: 0, type: 'number', min: -100, max: 100, label: ['xAxis', 'label', 'is', 'offsetY'], category: 'grid'},
+                    { key: 'style.chart.layout.grid.axis.fontSize', def: 12, type: 'number', min: 8, max: 48, label: ['axis', 'labels', 'is', 'fontSize'], category: 'grid'},
+                    { key: 'style.chart.layout.grid.axis.color', def: '#1A1A1A', type: 'color', label: ['axis', 'labels', 'is', 'color'], category: 'grid'},
+
                     { key: 'style.chart.layout.grid.yAxis.dataLabels.show', def: true, type: 'checkbox', label: ['yAxisLabel', 'is', 'show'], category: 'grid' },
                     { key: 'style.chart.layout.grid.yAxis.dataLabels.color', def: '#1A1A1A', type: 'color', label: ['yAxisLabel', 'is', 'textColor'], category: 'grid' },
                     { key: 'style.chart.layout.grid.yAxis.dataLabels.fontSize', def: 14, type: 'number', min: 6, max: 48, label: ['yAxisLabel', 'is', 'fontSize'], category: 'grid' },
@@ -3353,6 +3451,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.grid.xAxis.dataLabels.showOnlyFirstAndLast', def: false, type: 'checkbox', label: ['xAxisLabel', 'is', 'showOnlyFirstAndLast'], category: 'grid' },
                     { key: 'style.chart.layout.grid.xAxis.dataLabels.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['xAxisLabel', 'is', 'offsetY'], category: 'grid'},
                     { key: 'style.chart.layout.grid.xAxis.dataLabels.rotation', def: 0, type: 'number', min: -360, max: 360, label: ['xAxisLabel', 'is', 'rotation'], category: 'grid'},
+                    { key: 'style.chart.layout.grid.xAxis.dataLabels.autoRotate.enable', def: true, type: 'checkbox', label: ['xAxisLabel', 'is', 'auto rotate', 'show'], category: 'grid'},
+                    { key: 'style.chart.layout.grid.xAxis.dataLabels.autoRotate.angle', def: -30, type: 'number', min: -90, max: 90, label: ['xAxisLabel', 'is', 'auto rotate', 'angle'], category: 'grid'},
+
                     { key: 'style.chart.layout.line.show', def: true, type: 'checkbox', label: ['line', 'is', 'show'], category: 'general' },
                     { key: 'style.chart.layout.line.stroke', def: '#CCCCCC', type: 'color', label: ['line', 'is', 'color'], category: 'general' },
                     { key: 'style.chart.layout.line.strokeWidth', def: 4, type: 'number', min: 0.1, max: 48, step: 0.1, label: ['line', 'is', 'thickness'], category: 'general' },
@@ -3440,6 +3541,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'useBlurOnHover', def: true, type: 'checkbox', label: 'useBlurOnHover', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
@@ -3555,6 +3658,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'downsample.threshold', def: 500, type: 'number', min: 100, max: 5000, label: ['LTTB', 'algorithm', 'is', 'threshold'], category: 'general'},
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
@@ -3563,10 +3668,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.height', def: 316, type: 'range', min: 200, max: 1000, label: 'height', category: 'general' },
                     { key: 'style.layout.width', def: 512, type: 'range', min: 200, max: 1000, label: 'width', category: 'general' },
 
-                    { key: 'style.layout.padding.top', def: 36, type: 'number', min: 0, max: 100, label: 'top', category: 'padding' },
-                    { key: 'style.layout.padding.right', def: 48, type: 'number', min: 0, max: 100, label: 'right', category: 'padding' },
-                    { key: 'style.layout.padding.bottom', def: 36, type: 'number', min: 0, max: 100, label: 'bottom', category: 'padding' },
-                    { key: 'style.layout.padding.left', def: 48, type: 'number', min: 0, max: 100, label: 'left', category: 'padding' },
+                    { key: 'style.layout.padding.top', def: 0, type: 'number', min: 0, max: 100, label: 'top', category: 'padding' },
+                    { key: 'style.layout.padding.right', def: 24, type: 'number', min: 0, max: 100, label: 'right', category: 'padding' },
+                    { key: 'style.layout.padding.bottom', def: 0, type: 'number', min: 0, max: 100, label: 'bottom', category: 'padding' },
+                    { key: 'style.layout.padding.left', def: 0, type: 'number', min: 0, max: 100, label: 'left', category: 'padding' },
 
                     { key: 'style.layout.axis.show', def: true, type: 'checkbox', label: ['axis', 'is', 'show'], category: 'grid' },
                     { key: 'style.layout.axis.stroke', def: "#e1e5e8", type: 'color', label: ['axis', 'is', 'color'], category: 'grid' },
@@ -3699,14 +3804,16 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     ['2023', 0, 77900, 77800],
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.height', def: 500, type: 'number', min: 300, max: 1200, label: 'height', category: 'general' },
                     { key: 'style.width', def: 500, type: 'number', min: 300, max: 1200, label: 'width', category: 'general' },
-                    { key: 'style.layout.padding.top', def: 36, type: 'number', min: 0, max: 100, label: 'top', category: 'padding' },
+                    { key: 'style.layout.padding.top', def: 12, type: 'number', min: 0, max: 100, label: 'top', category: 'padding' },
                     { key: 'style.layout.padding.right', def: 12, type: 'number', min: 0, max: 100, label: 'right', category: 'padding' },
-                    { key: 'style.layout.padding.bottom', def: 48, type: 'number', min: 0, max: 100, label: 'bottom', category: 'padding' },
+                    { key: 'style.layout.padding.bottom', def: 36, type: 'number', min: 0, max: 100, label: 'bottom', category: 'padding' },
                     { key: 'style.layout.padding.left', def: 12, type: 'number', min: 0, max: 100, label: 'left', category: 'padding' },
                     { key: 'style.layout.grid.show', def: true, type: 'checkbox', label: 'show', category: 'grid' },
                     { key: 'style.layout.grid.stroke', def: '#e1e5e8', type: 'color', label: 'color', category: 'grid' },
@@ -3725,6 +3832,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.dataLabels.xAxis.bold', def: false, type: 'checkbox', label: ['xAxisLabel', 'is', 'bold'], category: 'labels' },
                     { key: 'style.layout.dataLabels.xAxis.scale', def: 1000, type: 'number', min: 10, max: 10000000000, label: ['xAxisLabel', 'is', 'scale'], category: 'labels' },
                     { key: 'style.layout.dataLabels.xAxis.translation', def: 'in thousands', type: 'text', label: ['xAxisLabel', 'is', 'translation'], category: 'labels' },
+                    { key: 'style.layout.dataLabels.xAxis.rotation', def: 0, type: 'number', min: -90, max: 90, label: ['xAxisLabel', 'is', 'rotation'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.autoRotate.enable', def: true, type: 'checkbox', label: ['xAxisLabel', 'is', 'auto rotate'], category: 'labels'},
+                    { key: 'style.layout.dataLabels.xAxis.autoRotate.angle', def: -30, type: 'number', min: -90, max: 90, label: ['xAxisLabel', 'is', 'angle (auto)'], category: 'labels'},
+
                     { key: 'style.layout.dataLabels.yAxis.show', def: true, type: 'checkbox', label: ['yAxisLabel', 'is', 'show'], category: 'labels' },
                     { key: 'style.layout.dataLabels.yAxis.display', def: 'age', type: 'select', options: ['age', 'year'], label: ['yAxisLabel', 'is', 'display'], category: 'labels' },
                     { key: 'style.layout.dataLabels.yAxis.color', def: '#1A1A1A', type: 'color', label: ['yAxisLabel', 'is', 'textColor'], category: 'labels' },
@@ -3792,6 +3903,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     '5': 75
                 },
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
@@ -3879,6 +3992,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
@@ -3892,6 +4007,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.circle.offsetY', def: 0, type: 'number', min: -100, max: 100, label: ['circle', 'is', 'offsetY'], category: 'general' },
                     { key: 'style.labels.color', def: '#1A1A1A', type: 'color', label: ['labels', 'is', 'textColor'], category: 'datapoints' },
                     { key: 'style.labels.fontSize', def: 12, type: 'number', min: 6, max: 48, label: ['labels', 'is', 'fontSize'], category: 'datapoints' },
+                    { key: 'style.labels.minFontSize', def: 6, type: 'number', min: 6, max: 48, label: ['labels', 'is', 'min', 'fontSize'], category: 'datapoints' },
                     { key: 'style.links.curved', def: false, type: 'checkbox', label: 'smooth', category: 'datapoints' },
                     { key: 'style.links.maxWidth', def: 6, type: 'number', min: 0.1, max: 24, label: ['thickness', 'is', 'max'], category: 'datapoints' },
                     { key: 'style.plot.radius', def: 2, type: 'number', min: 0, max: 24, label: ['plots', 'is', 'radius'], category: 'datapoints' },
@@ -3933,9 +4049,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 },
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
                     { key: 'style.chart.height', def: 360, type: 'number', min: 200, max: 800, label: 'height', category: 'general' },
+                    { key: 'style.chart.width', def: 256, type: 'number', min: 200, max: 800, label: 'width', category: 'general' },
                     { key: 'style.chart.thermometer.width', def: 48, type: 'number', min: 12, max: 100, label: 'width', category: 'general' },
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'general' },
@@ -3944,9 +4063,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.animation.use', def: true, type: 'checkbox', label: ['animation', 'is', 'show'], category: 'general' },
                     { key: 'style.chart.animation.speedMs', def: 1000, type: 'number', min: 100, max: 2000, label: ['animation', 'is', 'speed'], category: 'general' },
                     { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label: 'top', category: 'padding' },
-                    { key: 'style.chart.padding.right', def: 64, type: 'number', min: 0, max: 100, label: 'right', category: 'padding' },
                     { key: 'style.chart.padding.bottom', def: 12, type: 'number', min: 0, max: 100, label: 'bottom', category: 'padding' },
-                    { key: 'style.chart.padding.left', def: 64, type: 'number', min: 0, max: 100, label: 'left', category: 'padding' },
                     { key: 'style.chart.graduations.show', def: true, type: 'checkbox', label: 'show', category: 'grid' },
                     { key: 'style.chart.graduations.sides', def: 'both', type: 'select', options: ['both', 'left', 'right'], label: 'position', category: 'grid' },
                     // { key: 'style.chart.graduations.height', def: 2, type: 'number', mon: 0.1, max: 12, step: 0.1, label: 'thickness', category: 'grid'}
@@ -3955,8 +4072,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.graduations.showIntermediate', def: true, type: 'checkbox', label: ['between', 'is', 'show'], category: 'grid' },
                     { key: 'style.chart.graduations.gradient.show', def: true, type: 'checkbox', label: 'useGradient', category: 'grid' },
                     { key: 'style.chart.graduations.gradient.intensity', def: 20, type: 'range', min: 0, max: 100, label: ['gradient', 'is', 'intensity'], category: 'grid' },
+                    { key: 'style.chart.label.show', def: true, type: 'checkbox', label: 'show', category: 'labels' },
                     { key: 'style.chart.label.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'labels' },
                     { key: 'style.chart.label.fontSize', def: 20, type: 'number', min: 6, max: 48, label: 'fontSize', category: 'labels' },
+                    { key: 'style.chart.label.minFontSize', def: 6, type: 'number', min: 6, max: 48, label: ['min', 'fontSize'], category: 'labels' },
                     { key: 'style.chart.label.bold', def: true, type: 'checkbox', label: 'bold', category: 'labels' },
                     { key: 'style.chart.label.rounding', def: 1, type: 'number', min: 0, max: 6, label: 'rounding', category: 'labels' },
                     { key: 'style.chart.label.prefix', def: '', type: 'text', label: 'prefix', category: 'labels' },
@@ -4003,6 +4122,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     ]
                 },
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
+                    { key: 'useCssAnmation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
                     { key: 'style.shape', def: 'bar', type: 'select', options: ['bar', 'tube'], label: 'shape', category: 'general' },
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'textColor', category: 'general' },
@@ -4109,6 +4231,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: "general" },
                     { key: 'serieToggleAnimation.show', def: true, type: 'checkbox', label: ['serie toggle animation', 'is', 'show'], category: 'general'},
                     { key: 'serieToggleAnimation.durationMs', def: 500, type: 'number', min: 0, max: 2000, step: 100, label: ['serie toggle animation', 'is', 'durationMs'], category: 'general'},
@@ -4210,7 +4334,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'table.td.roundingPercentage', def: 0, type: 'number', min: 0, max: 6, label: ['rounding', 'is', 'percentage'], category: 'table' },
                     { key: 'style.chart.layout.labels.dataLabels.showDonutName', def: true, type: 'checkbox', label: ['series', 'name', 'is', 'show'], category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.boldDonutName', def: true, type: 'checkbox', label: ['series', 'name', 'is', 'bold'], category: 'labels' },
-                    { key: 'style.chart.layout.labels.dataLabels.donutNameAbbreviation', def: true, type: 'checkbox', label: ['series', 'name', 'is', 'abbreviation'], category: 'labels' },
+                    { key: 'style.chart.layout.labels.dataLabels.curvedDonutName', def: true, type: 'checkbox', label: ['series', 'name', 'is', 'bold'], category: 'labels' },
+                    { key: 'style.chart.layout.labels.dataLabels.donutNameAbbreviation', def: false, type: 'checkbox', label: ['series', 'name', 'is', 'abbreviation'], category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.donutNameMaxAbbreviationSize', def: 3, type: 'number', min: 1, max: 12, label: ['abbreviation', 'is', 'max', 'size'], category: 'labels' },
                     { key: 'style.chart.layout.labels.dataLabels.donutNameOffsetY', def: 0, type: 'number', min: -100, max: 100, label: ['series', 'name', 'is', 'offsetY'], category: 'labels' }
                 ]
@@ -4223,6 +4348,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     title: 'Title'
                 },
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'style.fontFamily', def: 'inherit', type: 'text', label: 'fontFamily', category: 'general' },
                     { key: 'style.background', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general' },
                     { key: 'style.height', def: 84, type: 'number', min: 84, max: 150, label: 'height', category: 'general' },
@@ -4275,6 +4402,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     },
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnimation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general' },
                     { key: 'useBlurOnHover', def: true, type: 'checkbox', label: 'useBlurOnHover', category: 'general' },
                     { key: 'style.fontFamily', def: "inherit", type: 'text', label: 'fontFamily', category: 'general'},
@@ -4419,6 +4548,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     }
                 ],
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: 'useCssAnmation', def: true, type: 'checkbox', label: 'useCssAnimation', category: 'general'},
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general'},
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'general' },
@@ -4427,11 +4558,12 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'general'},
                     { key: 'style.chart.color', def: '#1A1A1A', type: 'color', label: 'color', category: 'general'},
                     { key: 'style.chart.height', def: 600, type: 'range', min: 200, max: 1000, label: 'height', category: 'general'},
-                    { key: 'style.chart.stripWidth', def: 120, type: 'range', min: 48, max: 200, label: ['slot', 'is', 'width'], category: 'general'},
-                    { key: 'style.chart.padding.top', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
-                    { key: 'style.chart.padding.right', def: 24, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
-                    { key: 'style.chart.padding.bottom', def: 64, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'padding'},
-                    { key: 'style.chart.padding.left', def: 64, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'padding'},
+                    { key: 'style.chart.width', def: 600, type: 'range', min: 200, max: 1000, label: 'width', category: 'general'},
+
+                    { key: 'style.chart.padding.top', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'top'], category: 'padding'},
+                    { key: 'style.chart.padding.right', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'right'], category: 'padding'},
+                    { key: 'style.chart.padding.bottom', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'bottom'], category: 'padding'},
+                    { key: 'style.chart.padding.left', def: 12, type: 'number', min: 0, max: 100, label: ['padding', 'is', 'left'], category: 'padding'},
                     { key: 'style.chart.grid.show', def: true, type: 'checkbox', label: 'show', category: 'grid'},
                     { key: 'style.chart.grid.stroke', def: '#CCCCCC', type: 'color', label: ['line', 'is', 'color'], category: 'grid'},
                     { key: 'style.chart.grid.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['line', 'is', 'thickness'], category: 'grid'},
@@ -4469,6 +4601,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.labels.xAxisLabels.color', def: '#1A1A1A', type: 'color', label: ['category', 'labels', 'is', 'textColor'], category: 'labels'},
                     { key: 'style.chart.labels.xAxisLabels.fontSize', def: 14, type: 'number', min:6, max: 42, label: ['category', 'labels', 'is', 'fontSize'], category: 'labels'},
                     { key: 'style.chart.labels.xAxisLabels.offsetY', def: 0, type: 'number', min: -100, max: 100, label:  ['category', 'labels', 'is', 'offsetY'], category: 'labels'},
+                    { key: 'style.chart.labels.xAxisLabel.rotation', def: 0, type: 'number', min: -90, max: 90, label: ['category', 'labels', 'is', 'rotation'], category: 'labels'},
+                    { key: 'style.chart.labels.xAxisLabel.autoRotate.enable', def: true, type: 'checkbox', label: ['category', 'labels', 'is', 'auto rotate'], category: 'labels'},
+                    { key: 'style.chart.labels.xAxisLabels.autoRotate.angle', def: -30, type: 'number', min: -90, max: 90, label: ['category', 'labels', 'is', 'angle (auto)'], category: 'labels'},
+
                     { key: 'style.chart.labels.yAxisLabels.show', def: true, type: 'checkbox', label: ['Y', 'labels', 'is', 'show'], category: 'labels'},
                     { key: 'style.chart.labels.yAxisLabels.color', def: '#1A1A1A', type: 'color', label: ['Y', 'labels', 'is', 'textColor'], category: 'labels'},
                     { key: 'style.chart.labels.yAxisLabels.fontSize', def: 14, type: 'number', min: 6, max: 42, label: ['Y', 'labels', 'is', 'fontSize'], category: 'labels'},
@@ -4518,6 +4654,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
             vue_ui_word_cloud: {
                 dataset: "Curabitur rhoncus tortor vel quam tempor, non placerat metus aliquet. Morbi malesuada id ex a pellentesque. Nam consectetur molestie mauris vitae volutpat. Aliquam efficitur ac nulla efficitur cursus. Nullam accumsan nisi et purus vehicula efficitur. Integer rutrum leo urna, et dictum magna iaculis et. Proin eget velit eget urna volutpat gravida. Nulla suscipit gravida tempus. Phasellus sodales, neque vel lacinia euismod, tortor nunc condimentum ipsum, sit amet ornare dui neque non ex. In quis viverra tortor, a elementum ex. Donec vitae diam purus. Cras mollis neque vel leo congue, at sagittis lorem eleifend. Sed porta nulla nisl, in hendrerit ipsum egestas vitae. Phasellus et dolor convallis lectus varius tincidunt eu vel mauris. Praesent iaculis vestibulum arcu, eu dictum lectus feugiat a.",
                 model: [
+                    { key: 'debug', def: false, type: 'checkbox', label: 'debug', category: 'general' },
+                    { key: 'loading', def: false, type: 'checkbox', label: 'loading', category: 'general' },
                     { key: "useCssAnimation", def: true, type: 'checkbox', label: "useCssAnimation", category: "general"},
                     { key: "theme", def: '', type: "select", options: ['', 'zen', 'hack', 'concrete'], label: "theme", category: "general"},
                     { key: 'animationDelayMs', def: 20, type: 'number', min: 0, max: 100, label: ['animation', 'is', 'delay'], category: 'general'},

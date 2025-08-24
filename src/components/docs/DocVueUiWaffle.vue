@@ -19,6 +19,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -70,6 +71,8 @@ const isDarkMode = computed(() => {
     ];`)
 
     const darkModeConfig = ref({
+        debug: false,
+        loading: false,
         responsive: false,
         useBlurOnHover: true,
         useCustomCells: false,
@@ -211,6 +214,8 @@ const isDarkMode = computed(() => {
     });
 
     const config = ref({
+        debug: false,
+        loading: false,
         responsive: false,
         useBlurOnHover: true,
         useCustomCells: false,
@@ -429,6 +434,10 @@ const dsTypeCode = computed(() => {
 
         <Rater itemId="vue_ui_waffle" />
 
+        <BaseMigrationInfo
+            debug 
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_waffle" signInfo="positiveOrNegativeOnly">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -468,11 +477,18 @@ const dsTypeCode = computed(() => {
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiWaffleConfig" equal>
         <span>responsive: false; <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: []; <BaseComment>string[]</BaseComment></span>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>useCustomCells: false, <BaseComment>{{ translations.customization.otherSlots.waffle[store.lang] }}</BaseComment></span>
         <BaseAttr name="useAnimation" attr="useAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">

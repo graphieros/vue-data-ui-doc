@@ -19,6 +19,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -50,6 +51,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     responsiveProportionalSizing: true,
     theme: "",
@@ -118,9 +121,9 @@ const config = ref({
             width: 600,
             padding: {
                 top: 12,
-                right: 24,
-                bottom: 48,
-                left: 48,
+                right: 12,
+                bottom: 12,
+                left: 12,
             },
             grid: {
                 xAxis: {
@@ -156,10 +159,14 @@ const config = ref({
                         bold: false,
                         rounding: 1,
                         offsetY: 0,
-                        rotation: 0,
                         formatter: null,
                         prefix: "",
                         suffix: "",
+                        rotation: 0,
+                        autoRotate: {
+                            enable: true,
+                            angle: -30
+                        }
                     },
                     name: {
                         text: "x Axis",
@@ -268,6 +275,8 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     responsiveProportionalSizing: true,
     theme: "",
@@ -336,9 +345,9 @@ const darkModeConfig = ref({
             width: 600,
             padding: {
                 top: 12,
-                right: 24,
-                bottom: 48,
-                left: 48,
+                right: 12,
+                bottom: 12,
+                left: 12,
             },
             grid: {
                 xAxis: {
@@ -374,10 +383,14 @@ const darkModeConfig = ref({
                         bold: false,
                         rounding: 1,
                         offsetY: 0,
-                        rotation: 0,
                         formatter: null,
                         prefix: "",
                         suffix: "",
+                        rotation: 0,
+                        autoRotate: {
+                            enable: true,
+                            angle: -30
+                        }
                     },
                     name: {
                         text: "x Axis",
@@ -590,6 +603,13 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
 
         <Rater itemId="vue_ui_history_plot" />
 
+        <BaseMigrationInfo
+            autoRotate
+            cssAnimation
+            debug 
+            padding
+        />
+
         <Box showEmits showSlots showThemes showResponsive showTooltip signInfo="both" schema="vue_ui_history_plot">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
@@ -631,10 +651,17 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiHistoryPlotConfig" equal>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
-        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
@@ -682,10 +709,14 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
                             <BaseAttr name="bold" attr="style.chart.axes.x.labels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="rounding" attr="style.chart.axes.x.labels.rounding" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="offsetY" attr="style.chart.axes.x.labels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <BaseAttr name="rotation" attr="style.chart.axes.x.labels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
                             <BaseAttr name="prefix" attr="style.chart.axes.x.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="suffix" attr="style.chart.axes.x.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="rotation" attr="style.chart.axes.x.labels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseDetails attr="autoRotate" :level="6" title="style.chart.axes.x.labels.autoRotate">
+                                <BaseAttr name="enable" attr="style.chart.axes.x.labels.autoRotate.enable" :light="mutableConfig" :dark="mutableConfigDarkMode" defaultVal="true" type="checkbox"/>
+                                <BaseAttr name="angle" attr="style.chart.axes.x.labels.autoRotate.angle" type="number" defaultVal="-30" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            </BaseDetails>
                         </BaseDetails>
                         <BaseDetails attr="name" title="style.chart.axes.x.name" :level="5">
                             <BaseAttr name="text" attr="style.chart.axes.x.name.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

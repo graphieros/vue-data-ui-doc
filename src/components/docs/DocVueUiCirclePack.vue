@@ -20,6 +20,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig();
 
@@ -46,6 +47,8 @@ const isDarkMode = computed(() => {
 const dataset = ref(makeDs({ qty: 24, maxVal: 1000 }));
 
 const config = ref({
+    debug: false,
+    loading: false,
     theme: "",
     customPalette: [],
     userOptions: {
@@ -176,6 +179,8 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     theme: "",
     customPalette: [],
     userOptions: {
@@ -424,6 +429,10 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
 
     <Rater itemId="vue_ui_circle_pack" />
 
+    <BaseMigrationInfo
+            debug 
+        />
+
     <Box showEmits showSlots showThemes showPatterns schema="vue_ui_circle_pack" signInfo="positiveOnly">
         <template #tab0>
                 <div class="w-full overflow-x-auto">
@@ -460,8 +469,15 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
 </div>
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiCirclePackConfig" equal>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", ("celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | "")<br></span>
         <span>customPalette: [], <span class="text-xs text-app-blue">// string[]</span></span>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">

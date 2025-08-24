@@ -17,6 +17,8 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const mainConfig = useConfig()
 
@@ -56,6 +58,9 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  debug: false,
+  loading: false,
+  responsive: false,
   useCssAnimation: true,
   useBlurOnHover: true,
   style: {
@@ -184,6 +189,9 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
+  responsive: false,
   useCssAnimation: true,
   useBlurOnHover: true,
   style: {
@@ -411,7 +419,12 @@ const codeDataset = ref(`const dataset: VueUiGalaxyDatasetItem[] = [
 
     <Rater itemId="vue_ui_galaxy" />
 
-    <Box showEmits showSlots showTooltip showThemes schema="vue_ui_galaxy" signInfo="positiveOrNegativeOnly">
+    <BaseMigrationInfo
+        cssAnimation
+        debug
+    />
+
+    <Box showResponsive showEmits showSlots showTooltip showThemes schema="vue_ui_galaxy" signInfo="positiveOrNegativeOnly">
       <template #tab0>
         <div class="w-full overflow-x-auto">
           <CodeParser
@@ -462,10 +475,18 @@ const codeDataset = ref(`const dataset: VueUiGalaxyDatasetItem[] = [
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiGalaxyConfig" equal>
+    <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
     <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-    <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseDetails attr="events" :level="1">
+        <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+        <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+    </BaseDetails>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseDetails attr="chart" :level="2" title="style.chart">
@@ -747,6 +768,28 @@ Target the following css class to apply custom styles:
 
       <template #tab6>
         <ThemesVueUiGalaxy />
+      </template>
+
+      <template #tab7>
+          <ResponsiveUnit height="500px" minHeight="300px">
+              <template #chart>
+                  <VueDataUi 
+                      component="VueUiGalaxy" 
+                      :dataset="dataset" 
+                      :config="
+                          isDarkMode 
+                              ? {
+                                  ...mutableConfigDarkMode,
+                                  responsive: true
+                              }
+                              : {
+                                  ...mutableConfig,
+                                  responsive: true
+                              }
+                          " 
+                  />
+              </template>
+          </ResponsiveUnit>
       </template>
     </Box>
   </div>

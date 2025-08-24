@@ -1169,9 +1169,8 @@ export default function useExamples() {
                     }
                 },
                 padding: {
-                    left: 82,
-                    bottom: 90,
-                    right: 70
+                    top: 18,
+                    bottom: 0,
                 },
                 legend: {
                     color: colors.value.textColor,
@@ -1218,7 +1217,6 @@ export default function useExamples() {
                         xAxisLabels: {
                             color: colors.value.textColor,
                             values: ['01-25', '02-25', '03-25', '04-25', '05-25', '06-25', '07-25', '08-25', '09-25', '10-25', '11-25', '12-25', '01-26', '02-26', '03-26', '04-26', '05-26', '06-26', '07-26', '08-26', '09-26'],
-                            rotation: -45
                         }
                     }
                 },
@@ -5080,7 +5078,7 @@ export default function useExamples() {
                                 
                                 yAxis: {
                                     useIndividualScale: true,
-                                    labelWidth: 80
+                                    labelWidth: 64
                                 },
                                 xAxisLabels: {
                                     ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
@@ -5545,8 +5543,8 @@ export default function useExamples() {
                                     ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
                                     useIndividualScale: true,
                                     groupColor: colors.value.textColor,
-                                    labelWidth: 36,
-                                    scaleLabelOffsetX: -26
+                                    labelWidth: 12,
+                                    scaleLabelOffsetX: 0
                                 }
                             }
                         }
@@ -6977,30 +6975,30 @@ export default function useExamples() {
             { 
                 dataset: DATASET_VERTICAL_BAR_BASE.value, 
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
-                component: 'VueUiVerticalBar',
+                component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
                 id: 'vertical-bar-basic',
-                link: 'vue-ui-vertical-bar',
+                link: 'vue-ui-horizontal-bar',
                 description: {
-                    en: 'Sorted vertical histogram',
-                    fr: 'Histogramme vertical classé',
-                    pt: 'Histograma vertical ordenado',
-                    de: 'Sortiertes vertikales Histogramm',
-                    zh: '排序的垂直直方图',
-                    jp: 'ソート済み縦ヒストグラム',
-                    es: 'Histograma vertical ordenado',
-                    ko: '정렬된 세로 히스토그램',
-                    ar: 'مدرج تكراري عمودي مرتب'
+                    en: 'Sorted horizontal histogram',
+                    fr: 'Histogramme horizontal trié',
+                    pt: 'Histograma horizontal ordenado',
+                    de: 'Sortiertes horizontales Histogramm',
+                    zh: '已排序的水平直方图',
+                    jp: 'ソートされた水平ヒストグラム',
+                    es: 'Histograma horizontal ordenado',
+                    ko: '정렬된 가로 히스토그램',
+                    ar: 'مدرج تكراري أفقي مُرتَّب'
                 }
             },
             // VERTICAL BAR MIXED
             { 
                 dataset: DATASET_VERTICAL_BAR_MIXED.value, 
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
-                component: 'VueUiVerticalBar',
+                component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
                 id: 'vertical-bar-mixed',
-                link: 'vue-ui-vertical-bar',
+                link: 'vue-ui-horizontal-bar',
                 description: {
                     en: 'Positive and negative values',
                     fr: 'Valeurs positives et négatives',
@@ -7034,10 +7032,10 @@ export default function useExamples() {
                         }
                     }
                 },
-                component: 'VueUiVerticalBar',
+                component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
                 id: 'vertical-bar-no-gap-no-gradient',
-                link: 'vue-ui-vertical-bar',
+                link: 'vue-ui-horizontal-bar',
                 description: {
                     en: 'No gap, no gradient',
                     fr: 'Pas d’interstice, pas de dégradé',
@@ -7071,10 +7069,10 @@ export default function useExamples() {
                         }
                     }
                 },
-                component: 'VueUiVerticalBar',
+                component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
                 id: 'vertical-bar-no-gap-no-gradient-inverse-sort',
-                link: 'vue-ui-vertical-bar',
+                link: 'vue-ui-horizontal-bar',
                 description: {
                     en: 'Thinner bars, inverse sort',
                     fr: 'Barres plus fines, tri inversé',
@@ -7091,10 +7089,10 @@ export default function useExamples() {
             { 
                 dataset: DATASET_VERTICAL_BAR_BASE.value, 
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
-                component: 'VueUiVerticalBar',
+                component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
                 id: 'vertical-bar-background',
-                link: 'vue-ui-vertical-bar',
+                link: 'vue-ui-horizontal-bar',
                 chartBackground: true,
                 tags: ['#chart-background'],
                 slot: `<template #chart-background>
@@ -7118,10 +7116,10 @@ export default function useExamples() {
             { 
                 dataset: DATASET_VERTICAL_BAR_BASE.value, 
                 config: CONFIG_VERTICAL_BAR_BASIC.value,
-                component: 'VueUiVerticalBar',
+                component: 'VueUiHorizontalBar',
                 icon: 'chartVerticalBar',
                 id: 'vertical-bar-pattern',
-                link: 'vue-ui-vertical-bar',
+                link: 'vue-ui-horizontal-bar',
                 tags: ['#pattern'],
                 slot: `<template #pattern="{ seriesIndex, patternId }">
                 <!-- Will be applied on all datasets -->
@@ -7203,74 +7201,6 @@ export default function useExamples() {
                     es: 'Sin espacio',
                     ko: '간격 없음',
                     ar: 'بدون فجوة'
-                }
-            },
-            // HEATMAP LEGEND BELOW
-            { 
-                dataset: DATASET_HEATMAP_BASE.value, 
-                config: {
-                    ...CONFIG_HEATMAP_BASIC.value,
-                    style: {
-                        ...CONFIG_HEATMAP_BASIC.value.style,
-                        layout: {
-                            ...CONFIG_HEATMAP_BASIC.value.style.layout,
-                            cells: {
-                                ...CONFIG_HEATMAP_BASIC.value.style.layout.cells,
-                                columnTotal: {
-                                    ...CONFIG_HEATMAP_BASIC.value.style.layout.cells.columnTotal,
-                                    value: {
-                                        ...CONFIG_HEATMAP_BASIC.value.style.layout.cells.columnTotal.value,
-                                    }
-                                }
-                            }
-                        },
-                        legend: {
-                            ...CONFIG_HEATMAP_BASIC.value.style.legend,
-                            position: 'bottom',
-                        }
-                    }
-                },
-                component: 'VueUiHeatmap',
-                icon: 'chartHeatmap',
-                id: 'heatmap-legend-below',
-                link: 'vue-ui-heatmap',
-                description: {
-                    en: 'With legend below',
-                    fr: 'Avec légende en dessous',
-                    pt: 'Com legenda abaixo',
-                    de: 'Mit Legende unten',
-                    zh: '带有下方图例',
-                    jp: '下に凡例付き',
-                    es: 'Con leyenda abajo',
-                    ko: '아래에 범례 포함',
-                    ar: 'مع وسيلة إيضاح في الأسفل'
-                }
-            },
-            // HEATMAP BACKGROUND
-            { 
-                dataset: DATASET_HEATMAP_BASE.value, 
-                config: CONFIG_HEATMAP_BASIC.value,
-                component: 'VueUiHeatmap',
-                icon: 'chartHeatmap',
-                id: 'heatmap-background',
-                link: 'vue-ui-heatmap',
-                chartBackground: true,
-                tags: ['#chart-background'],
-                slot: `<template #chart-background>
-                <div :style="{ height: '100%', width: '100%' }">
-                    <img src="../assets/myImage.png" class="w-full object-cover h-full opacity-50" alt="my-image">
-                </div>
-            </template>`,
-                description: {
-                    en: "With a custom background",
-                    fr: "Avec un arrière-plan personnalisé",
-                    pt: "Com um fundo personalizado",
-                    de: "Mit einem benutzerdefinierten Hintergrund",
-                    zh: "带有自定义背景",
-                    jp: "カスタム背景付き",
-                    es: "Con un fondo personalizado",
-                    ko: "사용자 정의 배경과 함께",
-                    ar: "مع خلفية مخصصة"
                 }
             },
             // GAUGE BASIC

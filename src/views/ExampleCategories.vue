@@ -134,13 +134,13 @@ const categories = computed(() => {
             raterId: 'vue_ui_waffle'
         },
         {
-            link: 'vue-ui-vertical-bar',
+            link: 'vue-ui-horizontal-bar',
             icon: 'chartVerticalBar',
-            component: 'VueUiVerticalBar',
+            component: 'VueUiHorizontalBar',
             thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
             thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
             description: translations.value.docs.tooltips.verticalBar,
-            raterId: 'vue_ui_vertical_bar'
+            raterId: 'vue_ui_horizontal_bar'
         },
         {
             link: 'vue-ui-heatmap',

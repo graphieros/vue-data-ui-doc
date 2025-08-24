@@ -21,6 +21,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -59,6 +60,10 @@ const dataset = ref([
 ]);
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
+    pie: false, 
+    autoSize: true,
     type: 'classic',
     responsive: false,
     useBlurOnHover: true,
@@ -111,11 +116,13 @@ const darkModeConfig = ref({
                         bold: true,
                         fontSize: 18,
                         rounding: 0,
+                        minFontSize: 6,
                     },
                     name: {
                         color: "#CCCCCC",
                         bold: false,
                         fontSize: 14,
+                        minFontSize: 6,
                     },
                     hollow: {
                         show: true,
@@ -156,6 +163,7 @@ const darkModeConfig = ref({
                     }
                 },
                 donut: {
+                    radiusRatio: 0.3,
                     strokeWidth: 64,
                     borderWidth: 2,
                     useShadow: false,
@@ -325,11 +333,13 @@ const config = ref({
                         bold: true,
                         fontSize: 18,
                         rounding: 0,
+                        minFontSize: 6,
                     },
                     name: {
                         color: "#1A1A1A",
                         bold: false,
                         fontSize: 14,
+                        minFontSize: 6,
                     },
                     hollow: {
                         show: true,
@@ -370,6 +380,7 @@ const config = ref({
                     }
                 },
                 donut: {
+                    radiusRatio: 0.3,
                     strokeWidth: 64,
                     borderWidth: 2,
                     useShadow: false,
@@ -756,6 +767,11 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
 
         <Rater itemId="vue_ui_donut" />
 
+        <BaseMigrationInfo
+            cssAnimation
+            debug 
+        />
+
         <Box showEmits showSlots showTooltip showUseCases showThemes showResponsive showPatterns schema="vue_ui_donut" signInfo="positiveOrNegativeOnly">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
@@ -796,11 +812,15 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiDonutConfig" equal>
         <BaseAttr name="type" attr="type" type="select" defaultVal="classic" :options="['classic', 'polar']" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" defaultVal="false" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="pie" attr="pie" defaultVal="false" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="autoSize" attr="autoSize" defaultVal="false" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="events" :level="1">
             <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
             <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
@@ -811,7 +831,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
             <BaseAttr name="durationMs" attr="serieToggleAnimation.durationMs" type="number" defaultVal="500" :min="0" :max="2000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseDetails attr="startAnimation" :level="1">
-            <BaseAttr name="show" attr="startAnimation.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="show" attr="startAnimation.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="durationMs" attr="startAnimation.durationMs" type="number" defaultVal="1000" :min="0" :max="5000" :step="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="staggerMs" attr="startAnimation.staggerMs" type="number" defaultVal="50" :min="0" :max="500" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         </BaseDetails>
@@ -838,8 +858,9 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                     <BaseAttr name="offsetY" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.comments.offsetY" :min="-50" :max="50" defaultVal="0"/>
                 </BaseDetails>
                 <BaseDetails attr="layout" :level="3" title="style.chart.layout">
-                    <BaseAttr name="curvedMarkers" attr="style.chart.layout.curvedMarkers" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="curvedMarkers" attr="style.chart.layout.curvedMarkers" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseDetails attr="donut" :level="4" title="style.chart.layout.donut">
+                        <BaseAttr name="radiusRatio" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.layout.donut.radiusRatio" :min="0.1" :max="0.5" :step="0.01" defaultVal="0.3"/>
                         <BaseAttr name="strokeWidth" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.layout.donut.strokeWidth" :min="6" :max="100" defaultVal="55"/>
                         <BaseAttr name="borderWidth" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" attr="style.chart.layout.donut.borderWidth" :min="0" :max="12" defaultVal="2"/>
                         <BaseAttr name="useShadow" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" attr="style.chart.layout.donut.useShadow" defaultVal="false"/>
@@ -866,6 +887,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                             <BaseAttr name="color" attr="style.chart.layout.labels.percentage.color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" defaultVal="#2D353C"/>
                             <BaseAttr name="bold" attr="style.chart.layout.labels.percentage.bold" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" defaultVal="true"/>
                             <BaseAttr name="fontSize" attr="style.chart.layout.labels.percentage.fontSize" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="8" :max="42" defaultVal="18"/>
+                            <BaseAttr name="minFontSize" attr="style.chart.layout.labels.percentage.minFontSize" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="4" :max="42" defaultVal="6"/>
                             <BaseAttr name="rounding" attr="style.chart.layout.labels.percentage.rounding" type="number" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
                         </BaseDetails>
@@ -873,6 +895,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                             <BaseAttr name="color" attr="style.chart.layout.labels.name.color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" defaultVal="#2D353C"/>
                             <BaseAttr name="bold" attr="style.chart.layout.labels.name.bold" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" defaultVal="false"/>
                             <BaseAttr name="fontSize" attr="style.chart.layout.labels.name.fontSize" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="8" :max="42" defaultVal="14"/>
+                            <BaseAttr name="minFontSize" attr="style.chart.layout.labels.name.minFontSize" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="4" :max="42" defaultVal="6"/>
                         </BaseDetails>
                         <BaseDetails attr="hollow" :level="5" title="style.chart.layout.labels.hollow">
                             <BaseAttr name="show" attr="style.chart.layout.labels.hollow.show" :light="mutableConfig" :dark="mutableConfigDarkMode" type="checkbox" defaultVal="true"/>

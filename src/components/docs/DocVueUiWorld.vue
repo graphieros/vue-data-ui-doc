@@ -18,6 +18,7 @@ import { VueUiPattern } from "vue-data-ui";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseComment from "../BaseComment.vue";
 import ExposedMethods from "../ExposedMethods.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -267,6 +268,8 @@ const projections = ref([
 ])
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     projection: currentProjection.value,
     style: {
         fontFamily: 'inherit',
@@ -396,6 +399,8 @@ const darkModeConfig = ref({
 })
 
 const config = ref({
+    debug: false,
+    loading: false,
     projection: currentProjection.value,
     style: {
         fontFamily: 'inherit',
@@ -616,6 +621,10 @@ function setProjection(p) {
 
         <Rater itemId="vue_ui_world" />
 
+        <BaseMigrationInfo
+            debug 
+        />
+
         <Box showEmits showSlots showTooltip showPatterns schema="vue_ui_world">
             <template v-slot:tab0>
                 You can also use this component without a dataset, it will just show the naked map.
@@ -651,18 +660,25 @@ function setProjection(p) {
 
                 <code ref="configCode">
                     <BaseDetails attr="const config: VueUiWorldConfig" equal>
+                        <BaseAttr inactive name="debug" defaultVal="false"/>
+                        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="projection" attr="projection" type="select" defaultVal="globe" :options="projections" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <span>customPalette: [], <span class="text-xs text-app-blue">// string[]</span></span>
+                        <BaseDetails attr="events" :level="1">
+                            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+                            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+                            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+                        </BaseDetails>
                         <BaseDetails attr="style" :level="1">
                             <span>fontFamily: "inherit",</span>
                             <BaseDetails attr="chart" :level="2" title="style.chart">
                                 <BaseAttr name="backgroundColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.backgroundColor" defaultVal="#FFFFFF"/>                
                                 <BaseAttr name="color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.color" defaultVal="#2D353C"/>
                                 <BaseDetails attr="padding" :level="3" title="style.chart.padding">
-                                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr name="left" attr="style.chart.padding.left" type="number" :min="0" :max="100" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" :min="0" :max="100" defaultVal="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" :min="0" :max="100" defaultVal="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" :min="0" :max="100" defaultVal="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="left" attr="style.chart.padding.left" type="number" :min="0" :max="100" defaultVal="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 </BaseDetails>
                                 <BaseDetails attr="dataLabels" :level="3" title="style.chart.dataLabels">
                                     <BaseAttr name="prefix" attr="style.chart.dataLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

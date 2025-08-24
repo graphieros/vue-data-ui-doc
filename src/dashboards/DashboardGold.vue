@@ -99,8 +99,11 @@ const DATASET_XY = computed(() => {
 const CONFIG_XY = computed(() => {
     return {
         chart: {
+            padding: {
+                right: 12
+            },
             grid: {
-                position: 'start',
+                // position: 'start',
                 frame: {
                     show: true,
                     stroke: '#9F8A8A'
@@ -112,8 +115,6 @@ const CONFIG_XY = computed(() => {
                     },
                     xAxisLabels: {
                         values: GOLD_YEARS.value.map(y => String(y)),
-                        rotation: -33,
-                        yOffset: 12
                     }
                 },
             },
@@ -122,9 +123,6 @@ const CONFIG_XY = computed(() => {
             },
             legend: {
                 show: false,
-            },
-            padding: {
-                left: 80,
             },
             title: {
                 text: 'Gold yearly average closing price in $ (oz)',
@@ -223,7 +221,7 @@ const CONFIG_DONUT = computed(() => {
                                 show: true,
                                 offsetY: -20,
                                 value: {
-                                    fontSize: 30,
+                                    fontSize: 24,
                                     offsetY: -3,
                                     suffix: 't'
                                 }
@@ -286,7 +284,7 @@ const CONFIG_CANDLESTICK = computed(() => {
                     }
                 },
                 padding: {
-                    right: 24
+                    right: 12
                 }
             },
             title: {
@@ -370,7 +368,10 @@ const CONFIG_STACKBAR = computed(() => {
                     }
                 },
                 padding: {
-                    left: 64,
+                    top: 0,
+                    left: 12,
+                    right: 12,
+                    bottom: 0
                 },
                 title: {
                     text: 'Gold production in tons',
@@ -384,7 +385,6 @@ const CONFIG_STACKBAR = computed(() => {
                     x: {
                         timeLabels: {
                             values: GOLD_YEARS.value.map(y => String(y)),
-                            rotation: -33,
                             fontSize: 12
                         }
                     }

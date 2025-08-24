@@ -16,6 +16,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -202,6 +203,8 @@ const dataset = ref([
 ])
 
 const config = ref({
+    debug: false,
+    loading: false,
     style: {
         fontFamily: "inherit",
         chart: {
@@ -300,6 +303,8 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     style: {
         fontFamily: "inherit",
         chart: {
@@ -630,6 +635,10 @@ const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
 
         <Rater itemId="vue_ui_molecule" />
 
+        <BaseMigrationInfo
+            debug 
+        />
+
         <Box showEmits showSlots showTooltip>
             <template #tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -667,8 +676,15 @@ const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
 
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiMoleculeConfig">
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">

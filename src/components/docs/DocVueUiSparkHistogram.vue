@@ -17,6 +17,8 @@ import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 
 const mainConfig = useConfig()
 
@@ -136,6 +138,9 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  debug: false,
+  loading: false,
+  responsive: false,
   style: {
     backgroundColor: "#F3F4F6",
     fontFamily: "inherit",
@@ -169,6 +174,7 @@ const config = ref({
     labels: {
       value: {
         fontSize: 24,
+        minFontSize: 6,
         color: "#2D353C",
         bold: true,
         rounding: 1,
@@ -178,12 +184,14 @@ const config = ref({
       },
       valueLabel: {
         fontSize: 24,
+        minFontSize: 6,
         color: "#2D353C",
         bold: false,
         rounding: 0
       },
       timeLabel: {
         fontSize: 24,
+        minFontSize: 6,
         color: "#2D353C",
         bold: false
       }
@@ -212,6 +220,9 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
+  responsive: false,
   style: {
     backgroundColor: "#1A1A1A00",
     fontFamily: "inherit",
@@ -440,7 +451,11 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
         
         <Rater itemId="vue_ui_sparkhistogram" />
 
-        <Box showEmits showThemes showSlots schema="vue_ui_sparkhistogram" signInfo="positiveOnly">
+        <BaseMigrationInfo
+            debug
+        />
+
+        <Box showResponsive showEmits showThemes showSlots schema="vue_ui_sparkhistogram" signInfo="positiveOnly">
             <template #tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
@@ -478,7 +493,15 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiSparkHistogramConfig" equal>
+    <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
+    <BaseDetails attr="events" :level="1">
+        <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+        <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+    </BaseDetails>
     <BaseDetails attr="style" :level="1">
       <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -502,11 +525,13 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
       <BaseDetails attr="labels" :level="2" title="style.labels">
         <BaseDetails attr="timeLabel" :level="3" title="style.labels.timeLabel">
           <BaseAttr name="fontSize" attr="style.labels.timeLabel.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="minFontSize" attr="style.labels.timeLabel.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="color" attr="style.labels.timeLabel.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="bold" attr="style.labels.timeLabel.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
         <BaseDetails attr="value" :level="3" title="style.labels.value">
           <BaseAttr name="fontSize" attr="style.labels.value.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="minFontSize" attr="style.labels.value.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="color" attr="style.labels.value.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="bold" attr="style.labels.value.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="rounding" attr="style.labels.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -517,6 +542,7 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
         </BaseDetails>
         <BaseDetails attr="valueLabel" :level="3" title="style.labels.valueLabel">
           <BaseAttr name="fontSize" attr="style.labels.valueLabel.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="minFontSize" attr="style.labels.valueLabel.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="color" attr="style.labels.valueLabel.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="bold" attr="style.labels.valueLabel.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="rounding" attr="style.labels.valueLabel.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -593,6 +619,28 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
 
             <template #tab6>
               <ThemesVueUiSparkHistogram />
+            </template>
+
+            <template #tab7>
+                <ResponsiveUnit height="250px" minHeight="200px">
+                    <template #chart>
+                        <VueDataUi 
+                            component="VueUiSparkHistogram" 
+                            :dataset="dataset" 
+                            :config="
+                                isDarkMode 
+                                    ? {
+                                        ...mutableConfigDarkMode,
+                                        responsive: true
+                                    }
+                                    : {
+                                        ...mutableConfig,
+                                        responsive: true
+                                    }
+                                " 
+                        />
+                    </template>
+                </ResponsiveUnit>
             </template>
         </Box>
 

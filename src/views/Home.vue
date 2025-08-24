@@ -30,7 +30,7 @@ const translations = computed(() => {
   return store.translations;
 });
 
-const componentsLen = computed(() => Object.keys(configs).length + 1)
+const componentsLen = computed(() => Object.keys(configs).length)
 
 const versionsList = ref([]);
 const versionsUrl = ref('https://vue-data-ui.graphieros.com/releases.json');

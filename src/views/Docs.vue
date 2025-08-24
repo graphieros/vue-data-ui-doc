@@ -28,7 +28,7 @@ const DocVueUiQuadrant = defineAsyncComponent(() => import('../components/docs/D
 const DocVueUiGauge = defineAsyncComponent(() => import('../components/docs/DocVueUiGauge.vue'));
 const DocVueUiChestnut = defineAsyncComponent(() => import('../components/docs/DocVueUiChestnut.vue'));
 const DocVueUiOnion = defineAsyncComponent(() => import('../components/docs/DocVueUiOnion.vue'));
-const DocVueUiVerticalBar = defineAsyncComponent(() => import('../components/docs/DocVueUiVerticalBar.vue'));
+const DocVueUiHorizontalBar = defineAsyncComponent(() => import('../components/docs/DocVueUiHorizontalBar.vue'));
 const DocVueUiRating = defineAsyncComponent(() => import('../components/docs/DocVueUiRating.vue'));
 const DocVueUiSkeleton = defineAsyncComponent(() => import('../components/docs/DocVueUiSkeleton.vue'));
 const DocVueUiSparkline = defineAsyncComponent(() => import('../components/docs/DocVueUiSparkline.vue'));
@@ -442,10 +442,10 @@ const menuItems = computed(() => [
         hasLegend: true
     },
     {
-        name: "VerticalBar",
+        name: "HorizontalBar",
         icon: "chartVerticalBar",
         tooltip: translations.value.docs.tooltips.verticalBar[store.lang],
-        link: "/docs#vue-ui-vertical-bar",
+        link: "/docs#vue-ui-horizontal-bar",
         type: "xy",
         thumb: new URL('../assets/thumb_vertical_bar.png', import.meta.url).href,
         thumbLight: new URL('../assets/thumb_vertical_bar_light.png', import.meta.url).href,
@@ -1062,7 +1062,7 @@ const stackbarKey = ref(0);
                 <DocVueUiOnion v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-onion'"/>
             </Transition>
             <Transition name="fade">
-                <DocVueUiVerticalBar v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-vertical-bar'"/>
+                <DocVueUiHorizontalBar v-if="['/docs#vue-ui-horizontal-bar', '/docs#vue-ui-vertical-bar'].includes(router.currentRoute.value.fullPath)"/>
             </Transition>
             <Transition name="fade">
                 <DocVueUiRating v-if="router.currentRoute.value.fullPath === '/docs#vue-ui-rating'"/>
@@ -1237,7 +1237,7 @@ const stackbarKey = ref(0);
         <div class="flex flex-col gap-2 place-items-center place-content-center border-r border-gray-500 pr-6">
             <div class="text-xl sm:text-4xl w-full text-end">1 import</div>
             <div class="text-xl sm:text-4xl w-full text-end">3 props</div>
-            <div class="text-xl sm:text-4xl w-full text-end">{{ Object.keys(mainConfig).length + 1 }} components</div>
+            <div class="text-xl sm:text-4xl w-full text-end">{{ Object.keys(mainConfig).length }} components</div>
         </div>
         
         <RouterLink class="w-[360px]" to="/universal-component">

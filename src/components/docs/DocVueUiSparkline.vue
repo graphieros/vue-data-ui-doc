@@ -21,6 +21,8 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import DocJsonConfigAccordion from "./DocJsonConfigAccordion.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 
 const mainConfig = useConfig()
 
@@ -113,6 +115,9 @@ const dataset = ref([
 ]);
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
+  responsive: false,
   type: 'line',
   downsample: {
         threshold: 500
@@ -124,9 +129,9 @@ const darkModeConfig = ref({
     scaleMin: null,
     scaleMax: null,
     padding: {
-      top: 0,
-      right: 0,
-      bottom: 20,
+      top: 12,
+      right: 12,
+      bottom: 3,
       left: 0
     },
     animation: {
@@ -169,7 +174,21 @@ const darkModeConfig = ref({
       roundingValue: 1,
       valueType: "latest",
       prefix: "",
-      suffix: ""
+      suffix: "",
+      datetimeFormatter: {
+          enable: true,
+          locale: 'en',
+          useUTC: false,
+          januaryAsYear: false,
+          options: {
+              year: 'yyyy',
+              month: `MMM 'yy`,
+              day: 'dd MMM',
+              hour: 'HH:mm',
+              minute: 'HH:mm:ss',
+              second: 'HH:mm:ss'
+          }
+      },
     },
     title: {
       show: true,
@@ -200,6 +219,9 @@ const darkModeConfig = ref({
 });
 
 const config = ref({
+  debug: false,
+  loading: false,
+  responsive: false,
   type: 'line',
   downsample: {
         threshold: 500
@@ -211,9 +233,9 @@ const config = ref({
     scaleMin: null,
     scaleMax: null,
     padding: {
-      top: 0,
-      right: 0,
-      bottom: 12,
+      top: 12,
+      right: 12,
+      bottom: 3,
       left: 0
     },
     animation: {
@@ -256,7 +278,21 @@ const config = ref({
       roundingValue: 1,
       valueType: "latest",
       prefix: "",
-      suffix: ""
+      suffix: "",
+      datetimeFormatter: {
+          enable: true,
+          locale: 'en',
+          useUTC: false,
+          januaryAsYear: false,
+          options: {
+              year: 'yyyy',
+              month: `MMM 'yy`,
+              day: 'dd MMM',
+              hour: 'HH:mm',
+              minute: 'HH:mm:ss',
+              second: 'HH:mm:ss'
+          }
+      },
     },
     title: {
       show: true,
@@ -448,7 +484,12 @@ const currentConfig = computed(() => {
 
         <Rater itemId="vue_ui_sparkline" />
 
-        <Box showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline" signInfo="both">
+        <BaseMigrationInfo
+            debug 
+            padding
+        />
+
+        <Box :showDatetimeFormatter="true" showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
@@ -491,8 +532,15 @@ const currentConfig = computed(() => {
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiSparklineConfig" equal>
     <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
     <BaseAttr name="type" attr="type" type="select" defaultVal="line" :options="['line', 'bar']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+    <BaseDetails attr="events" :level="1">
+      <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+      <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+      <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+    </BaseDetails>
     <BaseDetails attr="downsample" :level="1">
         <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
     </BaseDetails>
@@ -535,6 +583,19 @@ const currentConfig = computed(() => {
         <BaseAttr name="prefix" attr="style.dataLabel.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="suffix" attr="style.dataLabel.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+        <BaseDetails attr="datetimeFormatter" :level="6" title="style.dataLabel.datetimeFormatter">
+          <BaseAttr name="enable" attr="style.dataLabel.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="locale" attr="style.dataLabel.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="useUTC" attr="style.dataLabel.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="januaryAsYear" attr="style.dataLabel.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseDetails attr="options" :level="7" title="style.dataLabel.datetimeFormatter.options">
+              <BaseAttr name="year" attr="style.dataLabel.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="month" attr="style.dataLabel.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="day" attr="style.dataLabel.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="minute" attr="style.dataLabel.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="second" attr="style.dataLabel.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          </BaseDetails>
+      </BaseDetails>
       </BaseDetails>
       <BaseDetails attr="line" :level="2" title="style.line">
         <BaseAttr name="color" attr="style.line.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -647,6 +708,12 @@ const currentConfig = computed(() => {
                   />
                 </template>
               </ResponsiveUnit>
+            </template>
+
+            <template #tab10>
+                <DatetimeFormatterDoc
+                    path="style.dataLabel.datetimeFormatter"
+                />
             </template>
         </Box>
 

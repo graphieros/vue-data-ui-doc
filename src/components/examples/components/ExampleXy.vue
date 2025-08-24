@@ -21,12 +21,6 @@ const config = computed(() => {
         "zoom": {
             "show": false
         },
-        "padding": {
-            "top": 36,
-            "right": 24,
-            "bottom": 48,
-            "left": 88
-        },
         "highlighter": {
             "color": "#1A1A1A",
             "opacity": 0
@@ -97,9 +91,10 @@ const config = computed(() => {
         }
     },
     "bar": {
+        "innerGap": 0.2,
+        "periodGap": 0.007,
         "borderRadius": 4,
         "useGradient": true,
-        "periodGap": 0,
         "labels": {
             "show": true,
             "offsetY": -8,

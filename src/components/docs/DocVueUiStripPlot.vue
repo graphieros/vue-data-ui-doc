@@ -19,6 +19,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -118,6 +119,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     responsiveProportionalSizing: true,
     useCssAnimation: true,
@@ -177,12 +180,12 @@ const config = ref({
             backgroundColor: "#F3F4F6",
             color: "#2D353C",
             height: 600,
-            stripWidth: 120,
+            width: 600,
             padding: {
-                top: 24,
-                left: 64,
-                right: 24,
-                bottom: 64
+                top: 12,
+                left: 12,
+                right: 12,
+                bottom: 12
             },
             grid: {
                 show: true,
@@ -236,7 +239,12 @@ const config = ref({
                     show: true,
                     color: "#2D353C",
                     fontSize: 14,
-                    offsetY: 0
+                    offsetY: 0,
+                    rotation: 0,
+                    autoRotate: {
+                        enable: true,
+                        angle: -30
+                    }
                 },
                 yAxisLabels: {
                     show: true,
@@ -280,6 +288,8 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     responsiveProportionalSizing: true,
     useCssAnimation: true,
@@ -339,12 +349,12 @@ const darkModeConfig = ref({
             backgroundColor: "#1A1A1A",
             color: "#CCCCCC",
             height: 600,
-            stripWidth: 120,
+            width: 600,
             padding: {
-                top: 24,
-                left: 64,
-                right: 24,
-                bottom: 64
+                top: 12,
+                left: 12,
+                right: 12,
+                bottom: 12
             },
             grid: {
                 show: true,
@@ -398,7 +408,12 @@ const darkModeConfig = ref({
                     show: true,
                     color: "#6A6A6A",
                     fontSize: 14,
-                    offsetY: 0
+                    offsetY: 0,
+                    rotation: 0,
+                    autoRotate: {
+                        enable: true,
+                        angle: -30
+                    }
                 },
                 yAxisLabels: {
                     show: true,
@@ -598,6 +613,12 @@ const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
 
         <Rater itemId="vue_ui_strip_plot" />
 
+        <BaseMigrationInfo
+            autoRotate
+            debug 
+            padding
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_strip_plot" signInfo="both">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
@@ -635,17 +656,24 @@ const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiStripPlotConfig" equal>
         <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>
             <BaseDetails attr="chart" :level="2" title="style.chart">
                 <BaseAttr name="backgroundColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.backgroundColor" defaultVal="#FFFFFF"/>                
                 <BaseAttr name="color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.color" defaultVal="#2D353C"/>
-                <BaseAttr name="height" attr="style.chart.height" type="number" :min="300" :max="1000" :step="50" defaultVal="600" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
-                <BaseAttr name="stripWidth" attr="style.chart.stripWidth" type="number" defaultVal="120" :min="64" :max="200" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+                <BaseAttr name="height" attr="style.chart.height" type="number" :min="300" :max="1000" :step="50" defaultVal="600" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                <BaseAttr name="width" attr="style.chart.width" type="number" :min="300" :max="1000" :step="50" defaultVal="600" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseDetails attr="grid" :level="3" title="style.chart.grid">
                     <BaseAttr name="show" attr="style.chart.grid.show" type="checkbox" defaultval="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="stroke" attr="style.chart.grid.stroke" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode" />
@@ -689,6 +717,11 @@ const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
                         <BaseAttr name="color" attr="style.chart.labels.xAxisLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSize" attr="style.chart.labels.xAxisLabels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="offsetY" attr="style.chart.labels.xAxisLabels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="rotation" attr="style.chart.labels.xAxisLabels.rotation" type="number" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseDetails attr="autoRotate" :level="5" title="style.chart.labels.xAxisLabels.autoRotate">
+                            <BaseAttr name="enable" attr="style.chart.labels.xAxisLabels.autoRotate.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="angle" attr="style.chart.labels.xAxisLabels.autoRotate.angle" type="number" defaultVal="-30" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="yAxisLabels" :level="4" title="style.chart.labels.yAxisLabels">
                         <BaseAttr name="show" attr="style.chart.labels.yAxisLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -699,10 +732,10 @@ const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
                     </BaseDetails>
                 </BaseDetails>
                 <BaseDetails attr="padding" :level="3" title="style.chart.padding">
-                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="24" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" defaultVal="24" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" defaultVal="64" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
-                    <BaseAttr name="lzft" attr="style.chart.padding.left" type="number" defaultVal="64" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="right" attr="style.chart.padding.right" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="bottom" attr="style.chart.padding.bottom" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="lzft" attr="style.chart.padding.left" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                 </BaseDetails>
                 <BaseDetails attr="plots" :level="3" title="style.chart.plots">
                     <BaseAttr name="opacity" attr="style.chart.plots.opacity" type="range" defaultVal="0.5" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

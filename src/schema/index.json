@@ -1830,11 +1830,11 @@
             }
         ]
     },
-    "vue_ui_vertical_bar": {
-        "name": "VueUiVerticalBar",
+    "vue_ui_horizontal_bar": {
+        "name": "VueUiHorizontalBar",
         "icon": "chartVerticalBar",
-        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-vertical-bar",
-        "path": "/docs#vue-ui-vertical-bar",
+        "link": "https://vue-data-ui.graphieros.com/docs#vue-ui-horizontal-bar",
+        "path": "/docs#vue-ui-horizontal-bar",
         "description": "verticalBar",
         "hasThemes": true,
         "hasSlots": true,
@@ -1846,8 +1846,8 @@
             "config"
         ],
         "types": {
-            "config": "VueUiVerticalBarConfig",
-            "dataset": "VueUiVerticalBarDatasetItem[]"
+            "config": "VueUiHorizontalBarConfig",
+            "dataset": "VueUiHorizontalBarDatasetItem[]"
         },
         "examples": [
             {

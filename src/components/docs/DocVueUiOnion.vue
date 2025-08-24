@@ -20,6 +20,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -115,6 +116,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
@@ -138,6 +141,7 @@ const config = ref({
                 labels: {
                     show: true,
                     fontSize: 14,
+                    minFontSize: 6,
                     color: "#1A1A1A",
                     roundingValue: 0,
                     roundingPercentage: 0,
@@ -246,7 +250,10 @@ const config = ref({
         }
     }
 });
+
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     useBlurOnHover: true,
     useCssAnimation: true,
@@ -270,6 +277,7 @@ const darkModeConfig = ref({
                 labels: {
                     show: true,
                     fontSize: 14,
+                    minFontSize: 6,
                     color: "#CCCCCC",
                     roundingValue: 0,
                     roundingPercentage: 0,
@@ -504,6 +512,10 @@ const codeDataset = ref(`const dataset: VueUiOnionDatasetItem[] = [
 
         <Rater itemId="vue_ui_onion" />
 
+        <BaseMigrationInfo
+            debug
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_onion" signInfo="positiveOnly">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
@@ -542,6 +554,8 @@ const codeDataset = ref(`const dataset: VueUiOnionDatasetItem[] = [
 <code ref="configCode">
     <BaseDetails attr="const config: VueUiOnionConfig" equal>
         <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
         <BaseAttr name="useBlurOnHover" attr="useBlurOnHover" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -563,6 +577,7 @@ const codeDataset = ref(`const dataset: VueUiOnionDatasetItem[] = [
                     <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">
                         <BaseAttr name="show" attr="style.chart.layout.labels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSize" attr="style.chart.layout.labels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="minFontSize" attr="style.chart.layout.labels.minFontSize" type="number" defaultVal="6" :min="6" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="color" attr="style.chart.layout.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="roundingValue" attr="style.chart.layout.labels.roundingValue" type="number" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="roundingPercentage" attr="style.chart.layout.labels.roundingPercentage" type="number" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

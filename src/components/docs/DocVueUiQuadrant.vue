@@ -19,6 +19,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -119,6 +120,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     useCssAnimation: true,
     zoomAnimationFrames: 20,
@@ -315,6 +318,8 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+    debug: false,
+    loading: false,
     responsive: false,
     useCssAnimation: true,
     zoomAnimationFrames: 20,
@@ -684,6 +689,11 @@ const codeDataset = ref(`const dataset: VueUiQuadrantDatasetItem[] = [
 
         <Rater itemId="vue_ui_quadrant" />
 
+        <BaseMigrationInfo
+            cssAnimation
+            debug 
+        />
+
         <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_quadrant" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
@@ -728,10 +738,17 @@ const codeDataset = ref(`const dataset: VueUiQuadrantDatasetItem[] = [
                     <code ref="configCode">
     <BaseDetails attr="const config: VueUiQuadrantConfig" equal>
         <span>responsive: false, <BaseComment>{{ translations.responsive[store.lang] }}</BaseComment></span>
+        <BaseAttr inactive name="debug" defaultVal="false"/>
+        <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
         <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
         <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="zoomAnimationFrames" attr="zoomAnimationFrames" type="range" defaultVal="20" :min="5" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+        <BaseDetails attr="events" :level="1">
+            <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+            <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+            <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        </BaseDetails>
         <BaseDetails attr="downsample" :level="1">
             <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
         </BaseDetails>

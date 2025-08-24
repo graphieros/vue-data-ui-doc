@@ -22,7 +22,7 @@ const types = ref({
         'vue_ui_wheel',
         'vue_ui_tiremarks',
         'vue_ui_onion',
-        'vue_ui_vertical_bar',
+        'vue_ui_horizontal_bar',
         'vue_ui_heatmap',
         'vue_ui_scatter',
         'vue_ui_candlestick',

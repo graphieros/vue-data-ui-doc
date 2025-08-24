@@ -17,6 +17,7 @@ import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -56,6 +57,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  debug: false,
+  loading: false,
   style: {
     backgroundColor: "#F3F4F6",
     fontFamily: "inherit",
@@ -125,6 +128,8 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
   style: {
     backgroundColor: "#1A1A1A00",
     fontFamily: "inherit",
@@ -282,6 +287,10 @@ const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
           <Rater itemId="vue_ui_sparkstackbar" />
         </div>
 
+        <BaseMigrationInfo
+            debug 
+        />
+
         <Box showEmits showThemes showSlots schema="vue_ui_sparkstackbar" signInfo="positiveOrNegativeOnly">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
@@ -324,8 +333,15 @@ const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiSparkStackBarConfig" equal>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
     <BaseAttr inactive name="customPalette" defaultVal="[]" comment="string[]"/>
+    <BaseDetails attr="events" :level="1">
+        <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
+        <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+        <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
+    </BaseDetails>
     <BaseDetails attr="style" :level="1">
       <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
       <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

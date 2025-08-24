@@ -86,6 +86,15 @@ const routes = [
         component: () => import("../views/LoadingStates.vue")
     },
     {
+        path: '/docs',
+        redirect: to => {
+            if (to.hash === '#vue-ui-vertical-bar') {
+            return { path: '/docs', hash: '#vue-ui-horizontal-bar' }
+            }
+            return true
+        }
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound
     }

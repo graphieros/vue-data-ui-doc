@@ -17,6 +17,8 @@ import DocSnapper from "../DocSnapper.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 
 const mainConfig = useConfig()
 
@@ -45,9 +47,14 @@ const dataset = ref({
 });
 
 const config = ref({
+  debug: false,
+  loading: false,
+  responsive: false,
   style: {
     fontFamily: "inherit",
     chart: {
+      width: 312,
+      height: 56,
       backgroundColor: "#F3F4F6",
       color: "#2D353C",
       animation: {
@@ -123,9 +130,14 @@ const config = ref({
 })
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
+  responsive: false,
   style: {
     fontFamily: "inherit",
     chart: {
+      width: 312,
+      height: 56,
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
       animation: {
@@ -270,7 +282,11 @@ function randomizeData() {
 
         <Rater itemId="vue_ui_tiremarks" />
 
-        <Box showEmits showSlots showThemes schema="vue_ui_tiremarks" signInfo="positiveOnly">
+        <BaseMigrationInfo
+            debug 
+        />
+
+        <Box showResponsive showEmits showSlots showThemes schema="vue_ui_tiremarks" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -311,12 +327,17 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiTiremarksConfig" equal>
+    <span>responsive: false; <span class="text-app-blue break-keep text-xs">// {{ translations.responsive[store.lang] }}</span></span>
+    <BaseAttr inactive name="debug" defaultVal="false"/>
+    <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseDetails attr="chart" :level="2" title="style.chart">
         <BaseAttr name="backgroundColor" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.backgroundColor" defaultVal="#FFFFFF"/>                
         <BaseAttr name="color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" attr="style.chart.color" defaultVal="#2D353C"/>
+        <BaseAttr name="width" attr="style.chart.width" type="number" defaultVal="312" :min="100" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="height" attr="style.chart.height" type="number" defaultVal="56" :min="24" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseDetails attr="animation" :level="3" title="style.chart.animation">
           <BaseAttr name="use" attr="style.chart.animation.use" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
           <BaseAttr name="speed" attr="style.chart.animation.speed" type="number" defaultVal="1" :min="0.1" :max="100" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -416,6 +437,28 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
 
             <template #tab6>
               <ThemesVueUiTiremarks />
+            </template>
+
+            <template #tab7>
+              <ResponsiveUnit height="200px" minHeight="100px">
+                <template #chart>
+                  <VueDataUi
+                    component="VueUiTiremarks"
+                    :dataset="dataset"
+                    :config="
+                      isDarkMode 
+                          ? {
+                              ...mutableConfigDarkMode,
+                              responsive: true
+                          }
+                          : {
+                              ...mutableConfig,
+                              responsive: true
+                          }
+                      " 
+                  />
+                </template>
+              </ResponsiveUnit>
             </template>
         </Box>
     </div>
