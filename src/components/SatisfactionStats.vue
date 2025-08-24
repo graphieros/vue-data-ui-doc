@@ -174,7 +174,7 @@ const heatmapConfig = computed(() => {
                             show: true,
                             rotation: 0,
                             offsetX: 0,
-                            offsetY: 40
+                            offsetY: 6
                         },
                         color: {
                             show: true
@@ -198,14 +198,10 @@ const heatmapConfig = computed(() => {
                     xAxis: {
                         values: getWeekRanges(stats.value),
                         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                        rotation: -45,
                         fontSize: 9,
                         // showOnlyAtModulo: 4
                     }
                 },
-                padding: {
-                    top: 64
-                }
             },
             legend: { show: false },
             title: {
@@ -353,10 +349,6 @@ const historyPlotConfig = computed(() => {
                     }
                 },
                 legend: { show: false },
-                padding: {
-                    left: 64,
-                    bottom: 64
-                },
                 paths: {
                     strokeWidth: 6,
                     useSerieColor: false,
@@ -550,12 +542,6 @@ const stackbarConfig = computed(() => {
                 legend: {
                     backgroundColor: 'transparent',
                     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                },
-                padding: {
-                    top: 0,
-                    right: 36,
-                    bottom: 0,
-                    left: 64
                 },
                 title: {
                     text: 'Satisfaction survey, ratings breakdown',
@@ -770,10 +756,6 @@ const xyConfig = computed(() => {
             },
             legend: {
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-            },
-            padding: {
-                bottom: 12,
-                left: 80
             },
             title: {
                 text: 'Satisfaction survey history',
