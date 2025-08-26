@@ -263,7 +263,8 @@ const config = ref({
                 roundingPercentage: 0,
                 roundingValue: 0,
                 showValue: true,
-                showPercentage: true
+                showPercentage: true,
+                position: 'bottom'
             }
         }
     },
@@ -510,7 +511,8 @@ const darkModeConfig = ref({
                 roundingPercentage: 0,
                 roundingValue: 0,
                 showValue: true,
-                showLegend: true
+                showPercentage: true,
+                position: 'bottom'
             }
         }
     },
@@ -831,6 +833,7 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
                     <BaseAttr name="roundingPercentage" attr="style.chart.legend.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="showValue" attr="style.chart.legend.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="showPercentage" attr="style.chart.legend.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
                     <BaseAttr name="text" attr="style.chart.title.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

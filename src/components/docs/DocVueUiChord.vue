@@ -125,6 +125,7 @@ const config = ref({
                 backgroundColor: "#F3F4F6",
                 color: "#1A1A1A",
                 fontSize: 14,
+                position: 'bottom'
             },
             title: {
                 text: "Title",
@@ -258,6 +259,7 @@ const darkModeConfig = ref({
                 backgroundColor: "#1A1A1A",
                 color: "#CCCCCC",
                 fontSize: 14,
+                position: 'bottom'
             },
             title: {
                 text: "Title",
@@ -518,6 +520,7 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
                     <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="bold" attr="style.chart.legend.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
                     <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

@@ -201,6 +201,7 @@ const config = ref({
                 show: true,
                 fontSize: 14,
                 bold: false,
+                position: 'bottom'
             },
             tooltip: {
                 show: true,
@@ -388,6 +389,7 @@ const darkModeConfig = ref({
                 show: true,
                 fontSize: 14,
                 bold: false,
+                position: 'bottom'
             },
             tooltip: {
                 show: true,
@@ -673,6 +675,7 @@ const additionalTranslations = computed(() => {
                     <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="bold" attr="style.chart.legend.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="tooltip" :level="3" title="style.chart.tooltip">
                     <BaseAttr name="show" attr="style.chart.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -205,7 +205,8 @@ const config = ref({
                 color: "#2D353C",
                 show: true,
                 fontSize: 16,
-                bold: false
+                bold: false,
+                position: 'bottom'
             },
             tooltip: {
                 show: true,
@@ -368,7 +369,8 @@ const darkModeConfig = ref({
                 color: "#CCCCCC",
                 show: true,
                 fontSize: 16,
-                bold: false
+                bold: false,
+                position: 'bottom'
             },
             tooltip: {
                 show: true,
@@ -650,6 +652,7 @@ const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[]
                     <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="bold" attr="style.chart.legend.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="lines" :level="3" title="style.chart.lines">
                     <BaseAttr name="smooth" attr="style.chart.lines.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

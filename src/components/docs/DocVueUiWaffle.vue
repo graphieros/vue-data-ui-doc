@@ -157,7 +157,8 @@ const isDarkMode = computed(() => {
                     roundingValue: 0,
                     roundingPercentage: 0,
                     showValue: true,
-                    showPercentage: true
+                    showPercentage: true,
+                    position: 'bottom'
                 }
             }
         },
@@ -300,7 +301,8 @@ const isDarkMode = computed(() => {
                     roundingValue: 0,
                     roundingPercentage: 0,
                     showValue: true,
-                    showPercentage: true
+                    showPercentage: true,
+                    position: 'bottom'
                 }
             }
         },
@@ -539,6 +541,7 @@ const dsTypeCode = computed(() => {
                     <BaseAttr name="roundingPercentage" attr="style.chart.legend.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="showValue" attr="style.chart.legend.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="showPercentage" attr="style.chart.legend.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
                     <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

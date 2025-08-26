@@ -180,6 +180,7 @@ const config = ref({
         show: true,
         fontSize: 16,
         bold: false,
+        position: 'bottom'
       },
       title: {
         text: "Title",
@@ -401,6 +402,7 @@ const darkModeConfig = ref({
         show: true,
         fontSize: 16,
         bold: false,
+        position: 'bottom'
       },
       title: {
         text: "Title",
@@ -1311,6 +1313,8 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
                       :dark="mutableConfigDarkMode"
                       @change="forceChartUpdate()"
                     />
+                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" :options="['top', 'bottom']" :light="mutableConfig"
+                      :dark="mutableConfigDarkMode" defaultVal="bottom"/>
                   </BaseDetails>
                   <BaseDetails attr="line" :level="3" title="style.chart.line">
                     <BaseDetails

@@ -315,6 +315,7 @@ const darkModeConfig = ref({
                 color: '#CCCCCC',
                 fontSize: 16,
                 bold:false,
+                position: 'bottom'
             },
             title: {
                 text: "GDP per country",
@@ -435,6 +436,7 @@ const config = ref({
                 color: '#1A1A1A',
                 fontSize: 16,
                 bold:false,
+                position: 'bottom'
             },
             territory: {
                 stroke: '#666666',
@@ -703,6 +705,7 @@ function setProjection(p) {
                                     <BaseAttr name="color" attr="style.chart.legend.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="bold" attr="style.chart.legend.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
                                 </BaseDetails>
                                 <BaseDetails attr="territory" :level="3" title="style.chart.territory">
                                     <BaseAttr name="stroke" attr="style.chart.territory.stroke" type="color" defaultVal="#666666" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

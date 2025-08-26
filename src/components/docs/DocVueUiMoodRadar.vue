@@ -133,7 +133,8 @@ const darkModeConfig = ref({
                 show: true,
                 fontSize: 16,
                 roundingPercentage: 0,
-                roundingValue: 0
+                roundingValue: 0,
+                position: 'bottom'
             }
         }
     },
@@ -257,7 +258,8 @@ const config = ref({
                 show: true,
                 fontSize: 16,
                 roundingPercentage: 0,
-                roundingValue: 0
+                roundingValue: 0,
+                position: 'bottom'
             }
         }
     },
@@ -479,6 +481,7 @@ const { configCode, showAllConfig } = useConfigCode()
                     <BaseAttr name="fontSize" attr="style.chart.legend.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="roundingValue" attr="style.chart.legend.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="roundingPercentage" attr="style.chart.legend.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
                 </BaseDetails>
                 <BaseDetails attr="title" :level="3" title="style.chart.title">
                     <BaseAttr name="color" attr="style.chart.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

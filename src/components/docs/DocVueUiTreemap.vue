@@ -214,7 +214,8 @@ const config = ref({
                 roundingValue: 0,
                 roundingPercentage: 0,
                 showValue: true,
-                showPercentage: true
+                showPercentage: true,
+                position: 'bottom'
             },
             title: {
                 text: "Title",
@@ -352,7 +353,8 @@ const darkModeConfig = ref({
                 roundingValue: 0,
                 roundingPercentage: 0,
                 showValue: true,
-                showPercentage: true
+                showPercentage: true,
+                position: 'bottom'
             },
             title: {
                 text: "Title",
@@ -667,7 +669,8 @@ const codeDataset = ref(`const dataset: VueUiTreemapDatasetItem[] = [
                     <BaseAttr name="roundingValue" attr="style.chart.legend.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>                    
                     <BaseAttr name="roundingPercentage" attr="style.chart.legend.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="showValue" attr="style.chart.legend.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <BaseAttr name="showPercentage" attr="style.chart.legend.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>                    
+                    <BaseAttr name="showPercentage" attr="style.chart.legend.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="position" attr="style.chart.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>                    
                 </BaseDetails>
                 <BaseDetails attr="padding" :level="3" title="style.chart.padding">
                     <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="0" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

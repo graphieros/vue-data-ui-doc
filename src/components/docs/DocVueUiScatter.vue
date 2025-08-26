@@ -226,7 +226,8 @@ const darkModeConfig = ref({
       color: "#CCCCCC",
       fontSize: 12,
       bold: true,
-      roundingValue: 0
+      roundingValue: 0,
+      position: 'bottom'
     },
     tooltip: {
       show: true,
@@ -444,7 +445,8 @@ const config = ref({
       color: "#1A1A1A",
       fontSize: 12,
       bold: true,
-      roundingValue: 0
+      roundingValue: 0,
+      position: 'bottom'
     },
     tooltip: {
       show: true,
@@ -823,6 +825,7 @@ const codeDataset = ref(`const dataset: VueUiScatterDatasetItem[] = [
         <BaseAttr name="fontSize" attr="style.legend.fontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="bold" attr="style.legend.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="roundingValue" attr="style.legend.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="position" attr="style.legend.position" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
       </BaseDetails>
       <BaseDetails attr="title" :level="3" title="style.title">
         <BaseAttr name="color" attr="style.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

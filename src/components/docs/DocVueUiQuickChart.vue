@@ -163,6 +163,7 @@ const config = ref({
     legendFontSize: 12,
     legendIcon: "circleFill",
     legendIconSize: 12,
+    legendPosition: 'bottom',
     lineAnimated: true,
     lineSmooth: true,
     lineStrokeWidth: 2,
@@ -302,6 +303,7 @@ const darkModeConfig = ref({
     legendFontSize: 12,
     legendIcon: "circleFill",
     legendIconSize: 12,
+    legendPosition: 'bottom',
     lineAnimated: true,
     lineSmooth: true,
     lineStrokeWidth: 2,
@@ -883,6 +885,7 @@ function copyComponentSnippet(snip) {
         <BaseAttr name="legendFontSize" attr="legendFontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="legendIcon" attr="legendIcon" type="select" defaultVal="circleFill" :options="icons" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="legendIconSize" attr="legendIconSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="legendPosition" attr="legendPosition" type="select" defaultVal="bottom" :options="['top', 'bottom']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <div class="py-4 bg-gray-200 dark:bg-[#FFFFFF10] rounded-md px-4 pl-8 border-l border-black dark:border-app-blue my-2">
             <span class="font-black text-black dark:text-app-blue inline-flex gap-2"><VueUiIcon name="chartLine" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/> Line specific attributes:</span>
             <BaseAttr name="lineAnimated" attr="lineAnimated" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
