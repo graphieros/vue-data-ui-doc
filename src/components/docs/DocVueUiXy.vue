@@ -166,7 +166,7 @@ const config = ref({
     },
     responsive: false,
     responsiveProportionalSizing: true,
-    useCssAnimation: true,
+    useCssAnimation: false,
     showTable: false,
     downsample: {
         threshold: 500
@@ -566,7 +566,7 @@ const darkModeConfig = ref({
     },
     responsive: false,
     responsiveProportionalSizing: true,
-    useCssAnimation: true,
+    useCssAnimation: false,
     showTable: false,
     chart: {
         backgroundColor: "#1A1A1A",
@@ -1467,7 +1467,11 @@ const cssContent = `
                     <BaseAttr name="verticalHandles" attr="chart.zoom.minimap.verticalHandles" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.72"/>
                 </BaseDetails>
                 <BaseDetails attr="preview" :level="3" title="chart.zoom.preview">
-                    <BaseAttr name="enable" attr="chart.zoom.preview.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.0.0"/>
+                    <BaseAttr name="enable" attr="chart.zoom.preview.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr inactive name="fill" attr="chart.zoom.preview.fill" type="color" defaultVal="#CCCCCC50" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Important: use a transparent color"/>
+                    <BaseAttr name="stroke" attr="chart.zoom.preview.stroke" type="color" defaultVal="#6A6A6A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="strokeWidth" attr="chart.zoom.preview.strokeWidth" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="strokeDasharray" attr="chart.zoom.preview.strokeDasharray" type="number" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
             </BaseDetails>
         </BaseDetails>

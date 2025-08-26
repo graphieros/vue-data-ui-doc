@@ -112,8 +112,12 @@ const config = computed(() => {
           indicatorColor: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
           verticalHandles: false,
         },
+        preview: {
+          fill: '#42d39220',
+          stroke: '#42d39240',
+          strokeDasharray: 4
+        }
       },
-      padding: { top: 36, right: 36, bottom: 64, left: 64 },
       highlighter: {
         color: '#8A8A8A',
         opacity: 0,
@@ -356,12 +360,12 @@ const configCumulativeAverage = computed(() => {
     },
     chart: {
       ...config.value.chart,
-      zoom: { show: false },
-      padding: {
-        top: 36,
-        right: 36,
-        bottom: 36,
-        left: 64
+      zoom: {
+        preview: {
+          fill: '#42d39220',
+          stroke: '#42d39240',
+          strokeDasharray: 4
+        }
       },
       tooltip: {
         show: false,

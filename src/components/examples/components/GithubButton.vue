@@ -80,8 +80,8 @@ const months = {
                     title: { show: false },
                     padding: {
                         top: 12,
-                        right: 0,
-                        left: 0,
+                        right: 4,
+                        left: 4,
                         bottom: 6
                     },
                     line: {
