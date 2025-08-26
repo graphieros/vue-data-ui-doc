@@ -862,6 +862,7 @@ const verticalBarConfig = computed(() => {
                             }
                         },
                         height: 16,
+                        offsetX: 150,
                         nameLabels: {
                             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                             offsetX: -12,
