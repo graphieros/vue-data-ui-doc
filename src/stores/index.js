@@ -49,6 +49,28 @@ export const useMainStore = defineStore("main", {
             },
             lang: "en",
             translations: {
+                xyInterLinePairs: {
+                    en: `since v3.0.5 - Reference line series names by pairs, for example: [['serie A', 'serie B'], ['serie C', 'serie D']] to color interline areas. The names must be identical to the dataset serie names.`,
+                    fr: `depuis la v3.0.5 - Référencez les noms des séries de lignes par paires, par exemple : [['série A', 'série B'], ['série C', 'série D']] pour colorer les zones interlignes. Les noms doivent être identiques à ceux du jeu de données.`,
+                    pt: `desde a v3.0.5 - Referencie os nomes das séries de linhas em pares, por exemplo: [['série A', 'série B'], ['série C', 'série D']] para colorir áreas entre linhas. Os nomes devem ser idênticos aos nomes das séries no conjunto de dados.`,
+                    de: `seit v3.0.5 - Referenzieren Sie die Namen der Liniendatenreihen paarweise, z. B.: [['Serie A', 'Serie B'], ['Serie C', 'Serie D']], um Zwischenlinienbereiche zu färben. Die Namen müssen mit den Seriennamen im Datensatz identisch sein.`,
+                    zh: `自 v3.0.5 起 - 按成对方式引用折线系列的名称，例如：[['系列A', '系列B'], ['系列C', '系列D']] 来为线间区域着色。名称必须与数据集中的系列名称完全相同。`,
+                    jp: `v3.0.5 以降 - 線系列の名前をペアで参照します。例：[['シリーズA', 'シリーズB'], ['シリーズC', 'シリーズD']]。これにより線間領域に色が付きます。名前はデータセットのシリーズ名と同一である必要があります。`,
+                    es: `desde v3.0.5 - Referencie los nombres de las series de líneas en pares, por ejemplo: [['serie A', 'serie B'], ['serie C', 'serie D']] para colorear las áreas entre líneas. Los nombres deben ser idénticos a los de las series en el conjunto de datos.`,
+                    ko: `v3.0.5부터 - 선 시리즈 이름을 쌍으로 참조합니다. 예: [['시리즈 A', '시리즈 B'], ['시리즈 C', '시리즈 D']]로 선 사이 영역을 색칠합니다. 이름은 데이터셋의 시리즈 이름과 동일해야 합니다.`,
+                    ar: `منذ الإصدار v3.0.5 - اشِر إلى أسماء سلاسل الخطوط على شكل أزواج، على سبيل المثال: [['السلسلة A', 'السلسلة B'], ['السلسلة C', 'السلسلة D']] لتلوين المناطق بين الخطوط. يجب أن تكون الأسماء مطابقة تمامًا لأسماء السلاسل في مجموعة البيانات.`
+                },
+                xyInterLineColors: {
+                    en: `since v3.0.5 - If left empty, colors defined by your dataset will be used. Use this to override colors for interline areas. For example: [['green', 'red'], ['blue', 'orange']]; or [['green', undefined]] to only override one.`,
+                    fr: `depuis la v3.0.5 - Si laissé vide, les couleurs définies dans votre jeu de données seront utilisées. Utilisez ceci pour remplacer les couleurs des zones interlignes. Par exemple : [['green', 'red'], ['blue', 'orange']]; ou [['green', undefined]] pour n’en remplacer qu’une.`,
+                    pt: `desde a v3.0.5 - Se deixado vazio, serão usadas as cores definidas no conjunto de dados. Use isto para sobrescrever as cores das áreas entre linhas. Exemplo: [['green', 'red'], ['blue', 'orange']]; ou [['green', undefined]] para sobrescrever apenas uma.`,
+                    de: `seit v3.0.5 - Wenn leer gelassen, werden die im Datensatz definierten Farben verwendet. Verwenden Sie dies, um die Farben für Zwischenlinienbereiche zu überschreiben. Zum Beispiel: [['green', 'red'], ['blue', 'orange']]; oder [['green', undefined]], um nur eine zu überschreiben.`,
+                    zh: `自 v3.0.5 起 - 如果留空，将使用数据集中定义的颜色。使用此选项可覆盖线间区域的颜色。例如：[['#00FF00', '#FF0000'], ['#0000FF', '#FFAA00']]；或 [['#FF0000', undefined]] 仅覆盖其中一个。`,
+                    jp: `v3.0.5 以降 - 空にすると、データセットで定義された色が使用されます。これを使って線間領域の色を上書きできます。例：[['緑', '赤'], ['青', 'オレンジ']]、または [['緑', undefined]] で一方のみを上書き。`,
+                    es: `desde v3.0.5 - Si se deja vacío, se usarán los colores definidos en el conjunto de datos. Use esto para sobrescribir los colores de las áreas entre líneas. Ejemplo: [['green', 'red'], ['blue', 'orange']]; o [['green', undefined]] para sobrescribir solo uno.`,
+                    ko: `v3.0.5부터 - 비워두면 데이터셋에 정의된 색상이 사용됩니다. 이를 사용하여 선 사이 영역의 색상을 덮어쓸 수 있습니다. 예: [['#00FF00', '#FF0000'], ['#0000FF', '#FFAA00']]; 또는 [['#FF0000', undefined]]로 하나만 덮어쓸 수 있습니다.`,
+                    ar: `منذ الإصدار v3.0.5 - إذا تُرك فارغًا، ستُستخدم الألوان المعرفة في مجموعة البيانات. استخدم هذا الخيار لتجاوز الألوان للمناطق بين الخطوط. على سبيل المثال: [['أخضر', 'أحمر'], ['أزرق', 'برتقالي']]؛ أو [['أخضر', undefined]] لتجاوز لون واحد فقط.`
+                },
                 annotationsArray: {
                     en: 'Provide an array of annotation objects',
                     fr: 'Fournissez un tableau d’objets d’annotation',

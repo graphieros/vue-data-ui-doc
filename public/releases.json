@@ -1,5 +1,27 @@
 [
   {
+    "version": "v 3.0.5",
+    "date": "2025-08-28",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add optional interline coloring of line series by pairs",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 3.0.4",
+    "date": "2025-08-27",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Dedupe time labels in some edge cases when using datetimeFormatter",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.0.3",
     "date": "2025-08-26",
     "updates": [

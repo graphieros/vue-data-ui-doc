@@ -489,6 +489,11 @@ const config = ref({
         useGradient: true,
         strokeWidth: 2,
         cutNullValues: false,
+        interLine: {
+            pairs: [],
+            colors: [],
+            fillOpacity: 0.25
+        },
         dot: {
             hideAboveMaxSerieLength: 62,
             useSerieColor: true,
@@ -887,6 +892,11 @@ const darkModeConfig = ref({
         useGradient: true,
         strokeWidth: 2,
         cutNullValues: false,
+        interLine: {
+            pairs: [],
+            colors: [],
+            fillOpacity: 0.25
+        },
         dot: {
             hideAboveMaxSerieLength: 62,
             useSerieColor: true,
@@ -1511,6 +1521,11 @@ const cssContent = `
             <BaseAttr name="useGradient" attr="line.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="strokeWidth" attr="line.strokeWidth" type="number" defaultVal="2" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="cutNullValues" attr="line.cutNullValues" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.7.2"/>
+            <BaseDetails attr="interLine" :level="2" title="line.interLine">
+                <BaseAttr inactive name="pairs" attr="line.interLine.pairs" defaultVal="[]" :comment="translations.xyInterLinePairs[store.lang]"/>
+                <BaseAttr inactive name="colors" attr="line.interLine.colors" defaultVal="[]" :comment="translations.xyInterLineColors[store.lang]"/>
+                <BaseAttr inactive name="fillOpacity" attr="line.interLine.fillOpacity" defaultVal="0.25"/>
+            </BaseDetails>
             <BaseDetails attr="dot" :level="2" title="line.dot">
                 <BaseAttr name="useSerieColor" attr="line.dot.useSerieColor" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fill" attr="line.dot.fill" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

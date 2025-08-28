@@ -759,6 +759,33 @@ export default function useExamples() {
         }
     ]);
 
+    const DATASET_XY_INTERLINE = ref([
+        {
+            name: 'Serie A',
+            type: 'line',
+            series: [1, 3, 5, 7, 25, 32, 13, 15, 17, 19],
+        },
+        {
+            name: 'Serie B',
+            type: 'line',
+            series: [1, 4, 7, 10, 13, 16, 19, 22, 25, 28],
+        },
+    ])
+    const DATASET_XY_INTERLINE_SMOOTH = ref([
+        {
+            name: 'Serie A',
+            type: 'line',
+            series: [1, 3, 5, 7, 25, 32, 13, 15, 17, 19],
+            smooth: true
+        },
+        {
+            name: 'Serie B',
+            type: 'line',
+            series: [1, 4, 7, 10, 13, 16, 19, 22, 25, 28],
+            smooth: true
+        },
+    ])
+
     const DATASET_XY_WITH_NULL = ref([
         {
             name: 'Serie 1',
@@ -5652,6 +5679,75 @@ export default function useExamples() {
                     es: "Con promedio acumulativo",
                     ko: "누적 평균 포함",
                     ar: "مع المتوسط التراكمي"
+                }
+            },
+            // XY INTERLINE DEFAULT
+            {
+                dataset: DATASET_XY_INTERLINE,
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                    },
+                    line: {
+                        ...BASE_XY_CONFIG.value.line,
+                        interLine: {
+                            pairs: [
+                                ['Serie A', 'Serie B']
+                            ]
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-interline-default',
+                link: 'vue-ui-xy',
+                description: {
+                    en: "With interline coloring of line pairs",
+                    fr: "Avec la coloration interligne des paires de lignes",
+                    pt: "Com coloração entre linhas de pares de linhas",
+                    de: "Mit Zwischenlinienfärbung von Linienpaaren",
+                    zh: "带有线对之间的着色",
+                    jp: "線ペア間のインターライン塗りつぶしあり",
+                    es: "Con coloreado entre líneas de pares de líneas",
+                    ko: "선 쌍 사이의 인터라인 색상 적용",
+                    ar: "مع تلوين بيني لأزواج الخطوط"
+                }
+            },
+            // XY INTERLINE CUSTOM COLORS
+            {
+                dataset: DATASET_XY_INTERLINE_SMOOTH,
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                    },
+                    line: {
+                        ...BASE_XY_CONFIG.value.line,
+                        interLine: {
+                            pairs: [
+                                ['Serie A', 'Serie B']
+                            ],
+                            colors: [
+                                ['green', 'red']
+                            ]
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'xy-interline-custom-colors',
+                link: 'vue-ui-xy',
+                description: {
+                    en: "With interline coloring of line pairs with custom colors",
+                    fr: "Avec la coloration interligne des paires de lignes avec des couleurs personnalisées",
+                    pt: "Com coloração entre linhas de pares de linhas com cores personalizadas",
+                    de: "Mit Zwischenlinienfärbung von Linienpaaren mit benutzerdefinierten Farben",
+                    zh: "带有自定义颜色的线对之间的着色",
+                    jp: "線ペア間のインターライン塗りつぶし（カスタムカラー付き）",
+                    es: "Con coloreado entre líneas de pares de líneas con colores personalizados",
+                    ko: "사용자 정의 색상으로 선 쌍 사이 인터라인 색상 적용",
+                    ar: "مع تلوين بيني لأزواج الخطوط باستخدام ألوان مخصصة"
                 }
             },
             // DONUT BASIC

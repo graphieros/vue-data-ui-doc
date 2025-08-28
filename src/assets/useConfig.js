@@ -313,7 +313,10 @@ export function useConfig() {
                 width: 800,
                 padding: PADDING([12, 12, 12, 12]),
                 title: TITLE,
-                legend: LEGEND,
+                legend: {
+                    ...LEGEND,
+                    position: 'bottom'
+                },
                 zoom: ZOOM,
                 tooltip: {
                     ...TOOLTIP,
@@ -618,7 +621,8 @@ export function useConfig() {
             legend: {
                 color: COLOR_BLACK,
                 show: true,
-                fontSize: FONT._14
+                fontSize: FONT._14,
+                position: 'bottom', // bottom | top
             },
             title: {
                 ...TITLE,
@@ -680,6 +684,11 @@ export function useConfig() {
             useGradient: true,
             strokeWidth: 3,
             cutNullValues: false,
+            interLine: {
+                pairs: [],
+                colors: [],
+                fillOpacity: 0.25,
+            },
             dot: {
                 hideAboveMaxSerieLength: 62,
                 useSerieColor: true,
@@ -897,7 +906,8 @@ export function useConfig() {
                     roundingValue: 0,
                     roundingPercentage: 0,
                     showPercentage: true,
-                    showValue: true
+                    showValue: true,
+                    position: 'bottom'
                 },
                 tooltip: {
                     ...TOOLTIP,
@@ -972,7 +982,8 @@ export function useConfig() {
                     roundingValue: 0,
                     roundingPercentage: 0,
                     showValue: true,
-                    showPercentage: true
+                    showPercentage: true,
+                    position: 'bottom'
                 },
                 title: TITLE,
                 tooltip: {
@@ -1064,7 +1075,8 @@ export function useConfig() {
                     roundingValue: 0,
                     roundingPercentage: 0,
                     showValue: true,
-                    showPercentage: true
+                    showPercentage: true,
+                    position: 'bottom'
                 }
             }
         },
@@ -1153,7 +1165,8 @@ export function useConfig() {
                 },
                 legend: {
                     ...LEGEND,
-                    roundingPercentage: 0
+                    roundingPercentage: 0,
+                    position: 'bottom'
                 }
             }
         },
@@ -1299,7 +1312,10 @@ export function useConfig() {
                     roundingValue: 0,
                     showShape: true,
                 },
-                legend: LEGEND
+                legend: {
+                    ...LEGEND,
+                    position: 'bottom'
+                }
             }
         },
         table: {
@@ -1718,7 +1734,7 @@ export function useConfig() {
         },
         theme: '',
         customPalette: [],
-        useCssAnimation: true,
+        useCssAnimation: false, // v2 = true
         useStartAnimation: true,
         useBlurOnHover: true,
         style: {
@@ -1760,7 +1776,8 @@ export function useConfig() {
                 legend: {
                     ...LEGEND,
                     roundingValue: 0,
-                    roundingPercentage: 0
+                    roundingPercentage: 0,
+                    position: 'bottom'
                 },
                 tooltip: {
                     ...TOOLTIP,
@@ -2179,7 +2196,8 @@ export function useConfig() {
             title: TITLE,
             legend: {
                 ...LEGEND,
-                roundingValue: 0
+                roundingValue: 0,
+                position: 'bottom'
             },
             tooltip: {
                 ...TOOLTIP,
@@ -2788,6 +2806,7 @@ export function useConfig() {
         legendFontSize: FONT._12,
         legendIcon: 'circleFill',
         legendIconSize: FONT._12,
+        legendPosition: 'bottom',
         lineAnimated: true,
         lineSmooth: true,
         lineStrokeWidth: 2,
@@ -2857,7 +2876,7 @@ export function useConfig() {
         xyHighlighterOpacity: 0.05,
         xyLabelsXFontSize: FONT._10,
         xyLabelsYFontSize: FONT._12,
-        xyPaddingBottom: 0,
+        xyPaddingBottom: 12,
         xyPaddingLeft: 12,
         xyPaddingRight: 12,
         xyPaddingTop: 12,
@@ -3157,7 +3176,8 @@ export function useConfig() {
                     roundingValue: 0,
                     roundingPercentage: 0,
                     showValue: true,
-                    showPercentage: true
+                    showPercentage: true,
+                    position: 'bottom'
                 },
                 title: TITLE,
                 tooltip: {
@@ -3339,7 +3359,8 @@ export function useConfig() {
                     roundingValue: 0,
                     roundingPercentage: 0,
                     showValue: true,
-                    showPercentage: true
+                    showPercentage: true,
+                    position: 'bottom'
                 }
             }
         },
@@ -3367,13 +3388,13 @@ export function useConfig() {
     }
 
     const vue_ui_mood_radar = {
-        debug: false, // null
-        loading: false, // null
-        responsive: false, // null
+        debug: false, // v3
+        loading: false, // v3
+        responsive: false, // v3
         events: {
-            datapointEnter: null, // null
-            datapointLeave: null, // null
-            datapointClick: null, // null
+            datapointEnter: null, // v3
+            datapointLeave: null, // v3
+            datapointClick: null, // v3
         },
         theme: '',
         style: {
@@ -3425,7 +3446,8 @@ export function useConfig() {
                 legend: {
                     ...LEGEND,
                     roundingValue: 0,
-                    roundingPercentage: 0
+                    roundingPercentage: 0,
+                    position: 'bottom'
                 }
             }
         },
@@ -3507,7 +3529,6 @@ export function useConfig() {
     const vue_ui_nested_donuts = {
         debug: false, // v3
         loading: false, // v3
-        autoSize: true, // v3 (false = v2), unused on this component for now
         responsive: false,
         theme: '',
         customPalette: [],
@@ -3591,7 +3612,8 @@ export function useConfig() {
                     roundingValue: 0,
                     roundingPercentage: 0,
                     showValue: true,
-                    showPercentage: true
+                    showPercentage: true,
+                    position: 'bottom'
                 },
                 title: TITLE,
                 tooltip: {
@@ -3667,7 +3689,8 @@ export function useConfig() {
                     roundingValue: 0,
                     roundingPercentage: 0,
                     showValue: true,
-                    showPercentage: true
+                    showPercentage: true,
+                    position: 'bottom'
                 },
                 title: TITLE,
                 tooltip: {
@@ -3967,7 +3990,8 @@ export function useConfig() {
                     labelEnd: 'end',
                     labelPositive: 'positive', // v3
                     labelNegative: 'negative', // v3
-                    labelNeutral: 'neutral' // v3
+                    labelNeutral: 'neutral', // v3
+                    position: 'bottom'
                 },
                 title: TITLE
             }
@@ -4233,9 +4257,6 @@ export function useConfig() {
                 width: 512,
                 zoom: {
                     show: true,
-                    color: COLOR_GREY_MID, // deprecated
-                    highlightColor: COLOR_GREY_DARK, // deprecated
-                    useResetSlot: false // deprecated
                 },
                 words: {
                     maxFontSize: 100,
@@ -4308,7 +4329,10 @@ export function useConfig() {
                     showHorizontalSelector: false,
                 },
                 tooltip: TOOLTIP,
-                legend: LEGEND,
+                legend: {
+                    ...LEGEND,
+                    position: 'bottom',
+                },
                 title: TITLE,
                 grid: {
                     y: {
@@ -4449,6 +4473,7 @@ export function useConfig() {
                 },
                 legend: {
                     ...LEGEND,
+                    position: 'bottom'
                 },
                 nodes: {
                     gap: 10,
@@ -4519,7 +4544,7 @@ export function useConfig() {
                 color: COLOR_BLACK,
                 height: 600,
                 width: 1000,
-                padding: PADDING([24, 24, 36, 36]),
+                padding: PADDING([0, 0, 0, 0]),
                 comments: {
                     show: true,
                     showInTooltip: true,
@@ -4576,7 +4601,10 @@ export function useConfig() {
                     }
                 },
                 title: TITLE,
-                legend: LEGEND,
+                legend: {
+                    ...LEGEND,
+                    position: 'bottom'
+                },
                 tooltip: TOOLTIP
             }
         },
@@ -5553,7 +5581,8 @@ export function useConfig() {
                 },
                 legend: {
                     ...LEGEND,
-                    roundingValue: 0
+                    roundingValue: 0,
+                    position: 'bottom'
                 },
             }
         }
@@ -5810,6 +5839,7 @@ export function useConfig() {
                 },
                 legend: {
                     ...LEGEND,
+                    position: 'bottom'
                 },
                 title: TITLE,
                 tooltip: TOOLTIP
@@ -5977,7 +6007,10 @@ export function useConfig() {
                     showMinimap: true
                 },
                 title: TITLE,
-                legend: LEGEND
+                legend: {
+                    ...LEGEND,
+                    position: 'bottom'
+                }
             }
         },
         table: {
@@ -6050,6 +6083,7 @@ export function useConfig() {
                         responsive: true,
                         line: {
                             ...vue_ui_xy.line,
+                            showTransition: false,
                             labels: {
                                 ...vue_ui_xy.line.labels,
                                 show: true
@@ -6192,7 +6226,10 @@ export function useConfig() {
             chart: {
                 backgroundColor: COLOR_WHITE,
                 color: COLOR_BLACK,
-                legend: LEGEND,
+                legend: {
+                    ...LEGEND,
+                    position: 'bottom'
+                },
                 title: TITLE,
                 arcs: {
                     innerRadiusRatio: 1,
