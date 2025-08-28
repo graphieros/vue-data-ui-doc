@@ -161,7 +161,6 @@ const config = computed(() => {
           verticalHandles: false,
         },
       },
-      padding: { top: 36, right: 24, bottom: 64, left: 48 },
       highlighter: {
         color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
         opacity: 5,
