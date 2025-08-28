@@ -237,7 +237,8 @@ const config = ref({
             circleMarker: {
                 radius: 3,
                 color: "#1A1A1A"
-            }
+            },
+            customFormat: null
         },
         highlightArea: {
             show: true,
@@ -640,7 +641,8 @@ const darkModeConfig = ref({
             circleMarker: {
                 radius: 3,
                 color: "#6A6A6A"
-            }
+            },
+            customFormat: null
         },
         highlightArea: {
             show: true,
@@ -1391,6 +1393,7 @@ const cssContent = `
                     <BaseAttr name="radius" attr="chart.timeTag.circleMarker.radius" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="chart.timeTag.circleMarker.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
+                <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
             </BaseDetails>
             <BaseDetails attr="title" :level="2" title="chart.title">
                 <BaseAttr name="show" attr="chart.title.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

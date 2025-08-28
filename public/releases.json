@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.0.6",
+    "date": "2025-08-28",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add optional customFormat callback to customize timeTag content",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.0.5",
     "date": "2025-08-28",
     "updates": [
