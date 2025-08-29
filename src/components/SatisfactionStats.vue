@@ -112,6 +112,10 @@ function getWeekBoundary(date) {
     return { monday, sunday };
 }
 
+function revertComponentName(str) {
+    return str.split(/(?=[A-Z0-9])/).map(el => el.toLowerCase()).join('_')
+}
+
 function getWeekRanges(data) {
 
     const weekGroups = {};
@@ -224,7 +228,6 @@ const heatmapConfig = computed(() => {
 })
 
 function getCumulativeAveragePerDayWithMissingDays(statistics) {
-    console.log(statistics)
     const ratingsByDate = {};
     statistics.forEach(entry => {
         const date = entry.created_at.split(' ')[0];
@@ -434,20 +437,19 @@ const today = new Date().toISOString().slice(0, 10)
 const selectedDate = ref(today)
 
 const latestItems = computed(() => {
-  if (!Array.isArray(stats.value) || !stats.value.length || !selectedDate.value) return [];
-  return stats.value
-    .filter(item => item && typeof item.created_at === 'string')
-    .filter(item => item.created_at.split(' ')[0] === selectedDate.value)
-    .map(item => ({
-      ...item,
-      stars: Array(item.rating).fill('⭐').join(''),
-      name: item.item_id
-        .split('_')
-        .map(capitalizeFirstLetter)
-        .join('')
-    }))
+    if (!Array.isArray(stats.value) || !stats.value.length || !selectedDate.value) return [];
+    return stats.value
+        .filter(item => item && typeof item.created_at === 'string')
+        .filter(item => item.created_at.split(' ')[0] === selectedDate.value)
+        .map(item => ({
+        ...item,
+        stars: Array(item.rating).fill('⭐').join(''),
+        name: item.item_id
+            .split('_')
+            .map(capitalizeFirstLetter)
+            .join('')
+        }))
 });
-
 
 const stackbarData = computed(() => {
     const stripped = stats.value.map(s => ({
@@ -895,7 +897,45 @@ const verticalBarConfig = computed(() => {
                     backgroundOpacity: 20,
                     borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
                     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    roundingValue: 1
+                    roundingValue: 1,
+                    customFormat: ({ datapoint }) => {
+                        const [name, ...rest] = datapoint.name.split(' ');
+                        const cmp = revertComponentName(name);
+                        const rat = ratings.value.find(r => r.name === cmp);
+                        const total = rat.raters;
+                        const avg = rat.average.toFixed(2);
+                        return `
+                            <div
+                                style="
+                                    padding: 6px 12px;
+                                    background: ${isDarkMode.value ? '#1A1A1A80' : '#FFFFFF80'};
+                                    color: ${isDarkMode.value ? '#CCCCCC' : '#1A1A1A'};
+                                    font-variant-numeric: tabular-nums;
+                                    font-family: 'Satoshi';
+                                    box-shadow: 0 12px 6px -6px rgba(0,0,0,0.2);
+                                "
+                            >
+                                <div>${name}</div>
+                                <div>⭐ ${avg}</div>
+                                <small>Total votes: ${total}</small>
+                                <div 
+                                    style="
+                                        display:flex; 
+                                        flex-direction:column;
+                                        padding-top: 3px;
+                                        margin-top: 3px;
+                                        border-top: 1px solid ${isDarkMode.value ? '#8A8A8A' : '#4A4A4A'}
+                                    "
+                                >
+                                    <small>${rat.breakdown[5]} ⭐⭐⭐⭐⭐ (${(rat.breakdown[5] / total * 100).toFixed(1)}%)</small>
+                                    <small>${rat.breakdown[4]} ⭐⭐⭐⭐ (${(rat.breakdown[4] / total * 100).toFixed(1)}%)</small>
+                                    <small>${rat.breakdown[3]} ⭐⭐⭐ (${(rat.breakdown[3] / total * 100).toFixed(1)}%)</small>
+                                    <small>${rat.breakdown[2]} ⭐⭐ (${(rat.breakdown[2] / total * 100).toFixed(1)}%)</small>
+                                    <small>${rat.breakdown[1]} ⭐ (${(rat.breakdown[1] / total * 100).toFixed(1)}%)</small>
+                                </div>
+                            </div>
+                        `
+                    }
                 }
             }
         },
