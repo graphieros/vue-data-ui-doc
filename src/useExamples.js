@@ -6708,7 +6708,25 @@ export default function useExamples() {
             // NESTED DONUTS BASIC
             { 
                 dataset: DATASET_NESTED_DONUTS_BASIC.value, 
-                config: CONFIG_NESTED_DONUTS_BASE.value,
+                config: {
+                    ...CONFIG_NESTED_DONUTS_BASE.value,
+                    style: {
+                        ...CONFIG_NESTED_DONUTS_BASE.value.style,
+                        chart: {
+                            ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                labels: {
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    dataLabels: {
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
+                                        donutNameOffsetY: -6
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 component: 'VueUiNestedDonuts',
                 icon: 'chartNestedDonuts',
                 id: 'nested-donuts-basic',
@@ -6738,6 +6756,13 @@ export default function useExamples() {
                                 ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
                                 donut: {
                                     spacingRatio: 1
+                                },
+                                labels: {
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    dataLabels: {
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
+                                        donutNameOffsetY: -6
+                                    }
                                 }
                             }
                         }
@@ -6776,7 +6801,7 @@ export default function useExamples() {
                                         ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
                                         offsetX: -10,
                                         offsetY: -10,
-                                        donutNameOffsetY: 10
+                                        donutNameOffsetY: -3
                                     }
                                 }
                             }
@@ -6855,6 +6880,16 @@ export default function useExamples() {
                             tooltip: {
                                 ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.tooltip,
                                 showAllItemsAtIndex: false
+                            },
+                            layout: {
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                labels: {
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    dataLabels: {
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
+                                        donutNameOffsetY: -6
+                                    }
+                                }
                             }
                         }
                     }
@@ -6878,7 +6913,25 @@ export default function useExamples() {
             // NESTED DONUTS BACKGROUND
             { 
                 dataset: DATASET_NESTED_DONUTS_BASIC.value, 
-                config: CONFIG_NESTED_DONUTS_BASE.value,
+                config: {
+                    ...CONFIG_NESTED_DONUTS_BASE.value,
+                    style: {
+                        ...CONFIG_NESTED_DONUTS_BASE.value.style,
+                        chart: {
+                            ...CONFIG_NESTED_DONUTS_BASE.value.style.chart,
+                            layout: {
+                                ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout,
+                                labels: {
+                                    ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels,
+                                    dataLabels: {
+                                        ...CONFIG_NESTED_DONUTS_BASE.value.style.chart.layout.labels.dataLabels,
+                                        donutNameOffsetY: -6
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 component: 'VueUiNestedDonuts',
                 icon: 'chartNestedDonuts',
                 id: 'nested-donuts-background',
