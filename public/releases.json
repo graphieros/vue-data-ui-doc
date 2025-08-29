@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.0.7",
+    "date": "2025-08-28",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix offset between zoom selection and selection rect when LTTB is active",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.0.6",
     "date": "2025-08-28",
     "updates": [

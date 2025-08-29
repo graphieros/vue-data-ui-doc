@@ -5464,100 +5464,98 @@ export default function useExamples() {
                 }
             },
             // XY LTTB
-            // { 
-            //     dataset: DATASET_XY_LTTB.value, 
-            //     config: {
-            //         ...BASE_XY_CONFIG.value,
-            //         line: {
-            //             ...BASE_XY_CONFIG.value.line,
-            //             radius: 5,
-            //             useGradient: false,
-            //             strokeWidth: 2,
-            //             labels: {
-            //                 show: false,
-            //             },
-            //             dot: {
-            //                 useSerieColor: false,
-            //                 fill: '#ff3700'
-            //             },
-            //             tag: {
-            //                 formatter: ({ value, config }) => {
-            //                     const { serieName } = config
-            //                     return `<div>
-            //                         <span style="font-size:10px">${serieName}</span>
-            //                         <span>${value.toFixed(1)}</span>
-            //                     </div>`
-            //                 }
-            //             }
+            { 
+                dataset: DATASET_XY_LTTB.value, 
+                config: {
+                    ...BASE_XY_CONFIG.value,
+                    downsample: { threshold: 500 },
+                    line: {
+                        ...BASE_XY_CONFIG.value.line,
+                        radius: 5,
+                        useGradient: false,
+                        strokeWidth: 2,
+                        labels: {
+                            show: false,
+                        },
+                        dot: {
+                            useSerieColor: false,
+                            fill: '#ff3700'
+                        },
+                        tag: {
+                            formatter: ({ value, config }) => {
+                                const { serieName } = config
+                                return `<div>
+                                    <span style="font-size:10px">${serieName}</span>
+                                    <span>${value.toFixed(1)}</span>
+                                </div>`
+                            }
+                        }
 
-            //         },
-            //         chart: {
-            //             ...BASE_XY_CONFIG.value.chart,
-            //             tooltip: {
-            //                 show: false,
-            //             },
-            //             grid: {
-            //                 ...BASE_XY_CONFIG.value.chart.grid,
-            //                 labels: {
-            //                     ...BASE_XY_CONFIG.value.chart.grid.labels,
-            //                     yAxis: {
-            //                         ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
-            //                         scaleMin: 0,
-            //                         scaleMax: 100
-            //                     },
-            //                     xAxisLabels: {
-            //                         ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
-            //                         showOnlyAtModulo: true,
-            //                         values: makeDs(1000,100,'T'),
-            //                         modulo: 9,
-            //                         rotation: 0
-            //                     }
-            //                 }
-            //             },
-            //             highlightArea: {
-            //                 show: false,
-            //             },
-            //             highlighter: {
-            //                 useLine: true,
-            //                 color: '#ff3700'
-            //             },
-            //             timeTag: {
-            //                 show: true,
-            //                 backgroundColor: '#ff3700',
-            //                 color: '#FFFFFF',
-            //                 fontSize: 14,
-            //                 circleMarker: {
-            //                     radius: 0
-            //                 }
-            //             },
-            //             zoom: {
-            //                 ...BASE_XY_CONFIG.value.chart.zoom,
-            //                 preview: {
-            //                     enable: false
-            //                 },
-            //                 minimap: {
-            //                     ...BASE_XY_CONFIG.value.chart.zoom.minimap,
-            //                     smooth: true
-            //                 }
-            //             }
-            //         }
-            //     },
-            //     component: 'VueUiXy',
-            //     icon: 'chartLine',
-            //     id: 'line-lttb',
-            //     link: 'vue-ui-xy',
-            //     description: {
-            //         en: "Dataset of 10000 datapoints downsampled to 500 datapoints",
-            //         fr: "Ensemble de données de 10000 points réduit à 500 points",
-            //         pt: "Conjunto de dados de 10000 pontos reduzido para 500 pontos",
-            //         de: "Datensatz mit 10000 Datenpunkten auf 500 Datenpunkte reduziert",
-            //         zh: "数据集包含10000个数据点，降采样至500个数据点",
-            //         jp: "10000のデータポイントを500にダウンサンプリングしたデータセット",
-            //         es: "Conjunto de datos de 10000 puntos reducido a 500 puntos",
-            //         ko: "10000개의 데이터 포인트를 500개로 다운샘플링한 데이터 세트",
-            //         ar: "مجموعة بيانات تحتوي على 10000 نقطة بيانات تم تقليلها إلى 500 نقطة بيانات"
-            //     }
-            // },
+                    },
+                    chart: {
+                        ...BASE_XY_CONFIG.value.chart,
+                        tooltip: {
+                            show: false,
+                        },
+                        grid: {
+                            ...BASE_XY_CONFIG.value.chart.grid,
+                            labels: {
+                                ...BASE_XY_CONFIG.value.chart.grid.labels,
+                                yAxis: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.yAxis,
+                                    scaleMin: 0,
+                                    scaleMax: 100
+                                },
+                                xAxisLabels: {
+                                    ...BASE_XY_CONFIG.value.chart.grid.labels.xAxisLabels,
+                                    showOnlyAtModulo: true,
+                                    values: makeDs(1000,100,'T'),
+                                    modulo: 9,
+                                    rotation: 0
+                                }
+                            }
+                        },
+                        highlightArea: {
+                            show: false,
+                        },
+                        highlighter: {
+                            useLine: true,
+                            color: '#ff3700'
+                        },
+                        timeTag: {
+                            show: true,
+                            backgroundColor: '#ff3700',
+                            color: '#FFFFFF',
+                            fontSize: 14,
+                            circleMarker: {
+                                radius: 0
+                            }
+                        },
+                        zoom: {
+                            ...BASE_XY_CONFIG.value.chart.zoom,
+                            minimap: {
+                                ...BASE_XY_CONFIG.value.chart.zoom.minimap,
+                                smooth: true
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'line-lttb',
+                link: 'vue-ui-xy',
+                description: {
+                    en: "Dataset of 10000 datapoints downsampled to 500 datapoints",
+                    fr: "Ensemble de données de 10000 points réduit à 500 points",
+                    pt: "Conjunto de dados de 10000 pontos reduzido para 500 pontos",
+                    de: "Datensatz mit 10000 Datenpunkten auf 500 Datenpunkte reduziert",
+                    zh: "数据集包含10000个数据点，降采样至500个数据点",
+                    jp: "10000のデータポイントを500にダウンサンプリングしたデータセット",
+                    es: "Conjunto de datos de 10000 puntos reducido a 500 puntos",
+                    ko: "10000개의 데이터 포인트를 500개로 다운샘플링한 데이터 세트",
+                    ar: "مجموعة بيانات تحتوي على 10000 نقطة بيانات تم تقليلها إلى 500 نقطة بيانات"
+                }
+            },
             // XY GROUPS
             { 
                 dataset: DATASET_XY_GROUPS.value, 
