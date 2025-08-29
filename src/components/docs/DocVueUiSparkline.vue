@@ -176,7 +176,7 @@ const darkModeConfig = ref({
       prefix: "",
       suffix: "",
       datetimeFormatter: {
-          enable: true,
+          enable: false,
           locale: 'en',
           useUTC: false,
           januaryAsYear: false,
@@ -280,7 +280,7 @@ const config = ref({
       prefix: "",
       suffix: "",
       datetimeFormatter: {
-          enable: true,
+          enable: false,
           locale: 'en',
           useUTC: false,
           januaryAsYear: false,
