@@ -198,7 +198,7 @@ const darkModeConfig = ref({
                         "boldDonutName": true,
                         "donutNameAbbreviation": false,
                         "donutNameMaxAbbreviationSize": 3,
-                        "donutNameOffsetY": 0
+                        "donutNameOffsetY": -6
                     }
                 },
                 donut: {
@@ -367,7 +367,7 @@ const config = ref({
                         "boldDonutName": true,
                         "donutNameAbbreviation": false,
                         "donutNameMaxAbbreviationSize": 3,
-                        "donutNameOffsetY": 0
+                        "donutNameOffsetY": -6
                     }
                 },
                 donut: {
