@@ -43,6 +43,21 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 })
 
+// const values = [0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5, 13, 8, 21, 13, 34, 21];
+
+// const startYear = 2026;
+// const startMonth = 0;
+
+// const dataset = ref(
+//   values.map((value, index) => {
+//     const date = new Date(startYear, startMonth + index, 1);
+//     return {
+//       period: date.getTime(),
+//       value
+//     };
+//   })
+// );
+
 const dataset = ref([
   {
     period: "period 1",
