@@ -190,13 +190,13 @@ const generatedTemplate = computed(() => {
     <div class="flex flex-col sm:flex-row gap-4 mt-6">
         <CopyComponent @click="copyComponent"/>
         <button
-            class="flex gap-1 bg-app-blue py-3 px-5 rounded-md opacity-80 hover:opacity-100 text-white dark:text-black hover:shadow-xl font-satoshi-bold transition-all place-items-center text-sm mb-4"
+            class="flex gap-1 bg-app-blue py-3 px-5 rounded-md opacity-80 hover:opacity-100 text-white dark:text-black hover:shadow-xl font-inter-medium transition-all place-items-center text-sm mb-4"
             @click="copyConfigOnly">
             <IconSettings :size="28" :strokeWidth="1.4" :stroke="isDarkMode ? '#1A1A1A' : '#FFFFFF'" />
             {{ makerTranslations.copyConfigOnly[store.lang] }}
         </button>
         <button
-            class="flex gap-1 bg-app-green py-3 px-5 rounded-md opacity-80 hover:opacity-100 text-black hover:shadow-xl font-satoshi-bold transition-all place-items-center text-sm mb-4"
+            class="flex gap-1 bg-app-green py-3 px-5 rounded-md opacity-80 hover:opacity-100 text-black hover:shadow-xl font-inter-medium transition-all place-items-center text-sm mb-4"
             @click="copyDatasetOnly">
             <VueUiIcon name="numbers" :size="24" stroke="#3A3A3A" />
             {{ makerTranslations.copyDatasetOnly[store.lang] }}

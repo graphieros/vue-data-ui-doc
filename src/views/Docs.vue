@@ -1229,8 +1229,8 @@ const stackbarKey = ref(0);
 
                     <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-2 mt-4">
                         <div class="flex flex-row gap-4 place-items-center">
-                            <VueUiIcon name="settings" :size="80" :strokeWidth="1" class="hidden md:block" stroke="#42d392"/>
-                            <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.docs[store.lang] }}</h1>
+                            <VueUiIcon name="settings" :size="80" :strokeWidth="1" stroke="#42d392" class="hidden md:block"/>
+                            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center">{{ translations.menu.docs[store.lang] }}</h1>
                         </div>
                     </div>
     <div class="flex flex-col sm:flex-row place-items-center gap-2 justify-center w-full mx-auto">

@@ -506,7 +506,7 @@ export function useCase() {
     const XY_CANVAS_CONFIG = computed(() => {
         return {
             style: {
-                fontFamily: "Satoshi",
+                fontFamily: "Inter",
                 chart: {
                     backgroundColor: bgColor.value,
                     color: textColor.value,

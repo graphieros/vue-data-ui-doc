@@ -352,7 +352,7 @@ const patternTranslations = computed(() => {
 
         <BaseTabsMenu :items="menuItems" @tabSelected="({order}) => activeTab = order" :activeTab="activeTab"/>
 
-        <div class="text-satoshi-bold text-app-green text-2xl mb-3">
+        <div class="text-inter-medium text-app-green text-2xl mb-3">
             <slot name="title" />
         </div>
 

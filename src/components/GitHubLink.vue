@@ -37,7 +37,7 @@ const translations = computed(() => store.translations);
     </div>
 
     <a v-else :href="`https://github.com/graphieros/vue-data-ui/blob/master/src/components/${link}.vue`" target="_blank">
-        <button class="flex gap-1 font-satoshi-bold transition-all border border-app-blue py-3 px-5 rounded-md bg-[#5f8bee20] hover:bg-[#5f8bee33] hover:shadow-xl">
+        <button class="flex gap-1 font-inter-medium transition-all border border-app-blue py-3 px-5 rounded-md bg-[#5f8bee20] hover:bg-[#5f8bee33] hover:shadow-xl">
             <BrandGithubFilledIcon class="text-app-blue"/>
             {{ translations.githubCode[store.lang] }}
         </button>

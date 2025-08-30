@@ -172,7 +172,7 @@ const datasetDonutMenu = computed(() => {
         {
             name: translations.value.menu.installation[store.lang],
             values: [1],
-            color: "#5f8bee",
+            color: "#647EFF",
             comment: "Vue 3, Nuxt"
           },
           {
@@ -551,22 +551,22 @@ const carouselConfig = computed(() => {
         
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 custom-styles flex flex-col lg:flex-row justify-center place-items-center lg:gap-[100px] w-full max-w-[1280px]">
     <div class="flex flex-col gap-6 max-w-[360px] justify-center place-items-center text-center">
-        <h1 style="font-family: SatoshiBold" class="text-[48px]">
-            <span class="text-app-green">Vue </span>
-            <span class="text-app-blue">Data UI</span>
+        <h1 style="font-family: InterBold" class="text-[48px]">
+            <!-- <span class="">Vue </span> -->
+            <span class="bg-gradient-to-r from-app-green to-indigo-400 bg-clip-text text-transparent">Vue Data UI</span>
         </h1>
         <p class="text-board-2 text-xl text-gray-700 dark:text-gray-400">{{ translations.tagline[store.lang] }}</p>
 
         <div class="flex flex-row gap-2 text-gray-500 relative" :title="componentsLen + ' components'">
           {{ componentTranslation[store.lang] }}: 
           <div class="h-[22px]">
-            <VueUiDigits :dataset="componentsLen" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#5f8bee' : '#1A1A1A' }  }"/>
+            <VueUiDigits :dataset="componentsLen" :config="{ ...digitConfigStars, digits: { ...digitConfigStars.digits, color: isDarkMode ? '#647EFF' : '#1A1A1A' }  }"/>
           </div>
         </div>
 
         <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 hidden lg:block">
           <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-lg">
-            <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
+            <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 font-inter-medium hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
               <BrandGithubFilledIcon class="dark:text-gray-200"/>
               <span>
                 {{ translations.github[store.lang] }}
@@ -680,7 +680,7 @@ const carouselConfig = computed(() => {
 
     <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 lg:hidden mt-6">
       <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-lg">
-        <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 font-satoshi-bold hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
+        <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 font-inter-medium hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
           <BrandGithubFilledIcon/>
           <span>
             {{ translations.github[store.lang] }}
@@ -784,8 +784,8 @@ const carouselConfig = computed(() => {
 
     <circle :cx="clientPosition.x - targetSize" :cy="clientPosition.y" r="2" fill="#42d392"/>
     <circle :cx="clientPosition.x + targetSize" :cy="clientPosition.y" r="2" fill="#42d392"/>
-    <circle :cx="clientPosition.x" :cy="clientPosition.y - targetSize" r="2" fill="#5f8bee"/>
-    <circle :cx="clientPosition.x" :cy="clientPosition.y + targetSize" r="2" fill="#5f8bee"/>
+    <circle :cx="clientPosition.x" :cy="clientPosition.y - targetSize" r="2" fill="#647EFF"/>
+    <circle :cx="clientPosition.x" :cy="clientPosition.y + targetSize" r="2" fill="#647EFF"/>
     <circle class="moving-target" :cx="clientPosition.x" :cy="clientPosition.y" :r="targetSize" :fill="isDarkMode ? '#FFFFFF05' : '#00000005'"/>
 </svg>
 
@@ -881,6 +881,6 @@ const carouselConfig = computed(() => {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(at top left, #5f8aee20, transparent, transparent);
+    background: radial-gradient(at top left, #647EFF20, transparent, transparent);
 }
 </style>

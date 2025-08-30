@@ -152,7 +152,7 @@ const showUnderlay = computed(() => {
   <div v-if="showUnderlay && !isDarkMode"></div>
 
   <div v-if="showUnderlay && isDarkMode" class="underlay-paper--dark"></div>
-  <div id="vdui" class="font-satoshi bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors mb-[60px]">
+  <div id="vdui" class="font-inter bg-gray-100 dark:bg-black text-black dark:text-slate-300 transition-colors mb-[60px]">
     <router-view />
     <UpToTop/>
     <GithubButton v-if="route.name !== 'Home'"/>
@@ -164,6 +164,6 @@ const showUnderlay = computed(() => {
 
 <style>
 .vue-data-ui-tooltip {
-  font-family: Satoshi;
+  font-family: Inter;
 }
 </style>

@@ -61,7 +61,7 @@ const donutDataset = ref([]); // A dataset corresponding to VueUiDonut specs`)
     <SideMenu @toggle="toggleMenu"/>
     <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`">
 
-        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-6 text-2xl">
+        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue mb-6 text-2xl">
             <VueUiIcon name="vueDataUi" stroke="#42d392" :strokeWidth="1.5" />
             VueDataUi
         </h1>

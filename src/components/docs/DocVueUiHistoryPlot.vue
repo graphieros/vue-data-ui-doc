@@ -193,7 +193,7 @@ const config = ref({
                         suffix: "",
                     },
                     name: {
-                        text: "",
+                        text: "y Axis",
                         fontSize: 16,
                         offsetX: 0,
                         offsetY: 0,

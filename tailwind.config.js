@@ -10,6 +10,9 @@ export default {
       fontFamily: {
         "satoshi": ["Satoshi"],
         "satoshi-bold": ["SatoshiBold"],
+        "inter": ["Inter"],
+        "inter-bold": ["InterBold"],
+        "inter-medium": ["InterMedium"]
       },
       colors: {
         "black": "#1a1a1a",

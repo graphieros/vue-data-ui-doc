@@ -79,13 +79,13 @@ const darkModeConfig = ref({
     titleColor: "#CCCCCC",
     titleClass: "",
     titleCss: "",
-    titleFontSize: 16,
+    titleFontSize: 18,
     useAnimation: true,
     valueBold: true,
     valueColor: "#6376DD",
     valueClass: "tabular-nums",
     valueCss: "",
-    valueFontSize: 32,
+    valueFontSize: 36,
     valueRounding: 0,
     analogDigits: {
         show: false,
@@ -144,7 +144,7 @@ const { configCode, showAllConfig } = useConfigCode()
                 <template #default>
                     <VueDataUi component="VueUiKpi" :dataset="dataset0" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`kpi0_${key}`">
                         <template #comment-before>
-                            <div :class="`max-w-[300px] text-[10px] mt-2 text-gray-500 ${mutableConfigDarkMode.analogDigits.show || mutableConfig.analogDigits.show ? 'mb-2' : ''}`">According to the special theory of relativity, c is the upper limit for the speed at which conventional matter or energy (and thus any signal carrying information) can travel through space</div>
+                            <div :class="`max-w-[300px] text-[12px] mt-2 text-gray-500 ${mutableConfigDarkMode.analogDigits.show || mutableConfig.analogDigits.show ? 'mb-2' : ''}`">According to the special theory of relativity, c is the upper limit for the speed at which conventional matter or energy (and thus any signal carrying information) can travel through space</div>
                         </template>
                     </VueDataUi>
                 </template>

@@ -46,7 +46,7 @@ function copyToClipboard(conf) {
 <template>
     <div class="w-fit mx-auto flex flex-col sm:flex-row gap-4 place-items-center align-center my-12">
         <button 
-            class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-satoshi-bold hover:from-app-blue hover:to-app-green transition-all" 
+            class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-inter-medium hover:from-app-blue hover:to-app-green transition-all" 
             @click="copyToClipboard(configSource)"
         >
             <CopyIcon/> 

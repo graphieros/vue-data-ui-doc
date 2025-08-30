@@ -290,7 +290,7 @@ const bindings = useObjectBindings(donutConfig);
 
 <template>
     <div>
-        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
+        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue mb-2 text-2xl">
             <VueUiIcon name="func" stroke="#42d392" :strokeWidth="1.5" />
             <span><span class="text-black dark:text-app-blue-light">{{ translations.utilityFunctions[store.lang] }}</span></span>
         </h1>

@@ -911,7 +911,7 @@ const verticalBarConfig = computed(() => {
                                     background: ${isDarkMode.value ? '#1A1A1A80' : '#FFFFFF80'};
                                     color: ${isDarkMode.value ? '#CCCCCC' : '#1A1A1A'};
                                     font-variant-numeric: tabular-nums;
-                                    font-family: 'Satoshi';
+                                    font-family: 'Inter';
                                     box-shadow: 0 12px 6px -6px rgba(0,0,0,0.2);
                                 "
                             >

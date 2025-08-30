@@ -24,7 +24,7 @@ function btnClick(e) {
 </script>
 
 <template>
-    <button ref="btn" @click="btnClick" :class="`${isClicked ? 'clicked' : ''} overflow-hidden relative flex gap-1  py-3 px-5 rounded-md  font-satoshi-bold hover:shadow-xl transition-all ${colorClasses}`">
+    <button ref="btn" @click="btnClick" :class="`${isClicked ? 'clicked' : ''} overflow-hidden relative flex gap-1  py-3 px-5 rounded-md  font-inter-medium hover:shadow-xl transition-all ${colorClasses}`">
         <slot name="icon"/>
         {{ text }}
     </button>

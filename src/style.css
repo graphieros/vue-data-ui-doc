@@ -13,6 +13,21 @@
   src: url("./fonts/Satoshi-Bold.ttf");
 }
 
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter.ttf");
+}
+
+@font-face {
+  font-family: "InterBold";
+  src: url("./fonts/Inter-Bold.ttf");
+}
+
+@font-face {
+  font-family: "InterMedium";
+  src: url("./fonts/Inter-Medium.ttf");
+}
+
 * {
   scrollbar-color: #3A3A3A transparent;
   scrollbar-width: thin;

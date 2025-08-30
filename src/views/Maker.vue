@@ -170,10 +170,10 @@ const crumbs = computed(() => {
 
     <div class="w-full max-w-[1400px] mx-auto overflow-visible min-h-[3000px]">
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12 mt-20">
-            <div class="relative h-[80px] w-[80px]">
-                <VueUiIcon name="boxes" :size="80" :strokeWidth="0.8" class="absolute hidden md:block lushicon top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="isDarkMode ? '#5f8aee60' : '#5f8aee'"/>
+            <div class="relative h-[80px] w-[80px] hidden md:block">
+                <VueUiIcon name="boxes" :size="80" :strokeWidth="0.8" class="absolute lushicon top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" :stroke="isDarkMode ? '#5f8aee60' : '#5f8aee'"/>
             </div>
-            <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
+            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>
 
         <div class="w-full max-w-[500px] flex flex-row flex-wrap gap-2 mx-auto justify-center my-12 bg-gradient-to-br from-app-blue-light to-app-blue py-3 px-2 rounded-md">
@@ -296,7 +296,7 @@ const crumbs = computed(() => {
 
 <style>
 .vue-data-ui-tooltip {
-  font-family: Satoshi;
+  font-family: Inter;
 }
 
 .lushicon {

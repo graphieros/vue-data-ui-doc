@@ -17,7 +17,7 @@ const translations = computed(() => store.translations);
 
 <template>
     <div>
-        <h1 class="text-center font-satoshi-bold text-app-blue mb-2 text-2xl">{{ title }}</h1>
+        <h1 class="text-center font-inter-medium text-app-blue mb-2 text-2xl">{{ title }}</h1>
         <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
             {{ subtitle }} {{ updateKey }}
         </p>

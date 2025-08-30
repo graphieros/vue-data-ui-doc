@@ -354,7 +354,7 @@ const darkModeConfig = ref({
     },
   },
   style: {
-    fontFamily: "Satoshi",
+    fontFamily: "Inter",
     chart: {
       backgroundColor: "#1A1A1A",
       color: "#CCCCCC",
@@ -662,14 +662,14 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
               ...mutableConfigDarkMode,
               style: {
                 ...mutableConfigDarkMode.style,
-                fontFamily: 'Satoshi',
+                fontFamily: 'Inter',
               },
             }
             : {
               ...mutableConfig,
               style: {
                 ...mutableConfig.style,
-                fontFamily: 'Satoshi',
+                fontFamily: 'Inter',
               },
             }
           " :key="key" 
@@ -2249,7 +2249,7 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
             responsive: true,
             style: {
               ...mutableConfigDarkMode.style,
-              fontFamily: 'Satoshi',
+              fontFamily: 'Inter',
             },
           }
           : {
@@ -2257,7 +2257,7 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
             responsive: true,
             style: {
               ...mutableConfig.style,
-              fontFamily: 'Satoshi',
+              fontFamily: 'Inter',
             },
           }
         " :key="key" />

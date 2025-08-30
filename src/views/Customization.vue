@@ -122,8 +122,8 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
   <div class="my-12 w-full mx-auto text-center">
 
     <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
-      <VueUiIcon name="palette" :size="80" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#de8b37' : '#de8b37'"/>
-      <h1 class="text-[64px] sm:text-[96px] text-center">
+      <VueUiIcon class="hidden md:block" name="palette" :size="80" :strokeWidth="0.8" :stroke="isDarkMode ? '#de8b37' : '#de8b37'"/>
+      <h1 class="font-inter-bold text-[36px] sm:text-[72px] text-center">
         {{ translations.menu.customization[store.lang] }}
       </h1>
     </div>

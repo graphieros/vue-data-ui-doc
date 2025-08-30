@@ -38,7 +38,7 @@ const crumbs = ref([
     <div class="max-w-[1280px] px-12 2xl:px-4 mx-auto relative my-12">
         <div class="w-full flex flex-row gap-4 place-items-center justify-center my-12">
             <VueUiIcon name="dashboard" :size="80" :strokeWidth="0.8" class="hidden md:block" :stroke="isDarkMode ? '#de6937' : '#de6937'"/>
-            <h1 class="text-[64px] sm:text-[96px] text-center">{{ translations.menu.examples[lang] }}</h1>
+            <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center">{{ translations.menu.examples[lang] }}</h1>
         </div>
 
         <div class="place-items-center justify-center mt-10 flex-wrap border border-[#de693750] rounded-md p-4 w-fit mx-auto grid grid-cols-2 sm:grid-cols-3 gap-2">

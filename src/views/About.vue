@@ -426,7 +426,7 @@ const advantagesTitle = ref({
 <template>
   <div :class="{ vdui: isDarkMode, 'pointer-events-none': true }" />
   <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto">
-    <h1 class="text-[64px] sm:text-[96px] text-center">
+    <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center">
       {{ translations.menu.about[store.lang] }}
     </h1>
 
@@ -502,7 +502,7 @@ const advantagesTitle = ref({
       </div>
     </a>
 
-    <div class="text-center w-full text-app-blue font-satoshi-bold text-2xl mt-12">
+    <div class="text-center w-full text-app-blue font-inter-medium text-2xl mt-12">
       {{ translations.about.maintainers[store.lang] }}
     </div>
     <div class="w-full mt-12 flex place-items-center place-content-center">

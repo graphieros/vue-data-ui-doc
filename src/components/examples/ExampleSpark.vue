@@ -249,7 +249,7 @@ const trendConfig = computed(() => {
 
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl">
                             Net Promoter Score<span class="text-gray-500 dark:text-gray-500"> Boutique</span> 
                         </div>
                         <div class="text-gray-500">
@@ -274,7 +274,7 @@ const trendConfig = computed(() => {
 
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl">
                             Net Promoter Score<span class="text-gray-500 dark:text-gray-500"> Office</span> 
                         </div>
                         <div class="text-gray-500">
@@ -320,7 +320,7 @@ const trendConfig = computed(() => {
 
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
                             Respondents<span class="text-gray-500 dark:text-gray-500"> France</span> 
                         </div>
                         <div class="text-gray-500">
@@ -340,7 +340,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
                             Respondents<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
                         </div>
                         <div class="text-gray-500">
@@ -360,7 +360,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
                             Respondents<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
                         </div>
                         <div class="text-gray-500">
@@ -383,7 +383,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl">
                             NPS<span class="text-gray-500 dark:text-gray-500"> France</span> 
                         </div>
                         <div class="text-gray-500">
@@ -407,7 +407,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl">
                             NPS<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
                         </div>
                         <div class="text-gray-500">
@@ -431,7 +431,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-row gap-4 justify-between place-items-center">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl">
                             NPS<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
                         </div>
                         <div class="text-gray-500">
@@ -537,7 +537,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
                             Targets<span class="text-gray-500 dark:text-gray-500"> France</span> 
                         </div>
                         <div class="text-gray-500">
@@ -557,7 +557,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
                             Targets<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
                         </div>
                         <div class="text-gray-500">
@@ -577,7 +577,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
                             Targets<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
                         </div>
                         <div class="text-gray-500">
@@ -600,7 +600,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
                             Avg. clients per hour<span class="text-gray-500 dark:text-gray-500"> France</span> 
                         </div>
                         <div class="text-gray-500">
@@ -620,7 +620,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
                             Avg. clients per hour<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
                         </div>
                         <div class="text-gray-500">
@@ -640,7 +640,7 @@ const trendConfig = computed(() => {
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col">
-                        <div class="font-[SatoshiBold] text-xl lg:text-3xl text-left">
+                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
                             Avg. clients per hour<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
                         </div>
                         <div class="text-gray-500">

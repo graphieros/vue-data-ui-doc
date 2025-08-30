@@ -312,7 +312,7 @@ const max = computed(() => {
 </script>
 
 <template>
-    <h1 class="mx-auto text-center max-w-[50ch] text-xl border-b border-gray-500 pb-6" dir="auto">
+    <h1 class="font-inter-bold mx-auto text-center max-w-[50ch] text-xl border-b border-gray-500 pb-6" dir="auto">
         {{ translations.ideas[store.lang] }}
     </h1>
 

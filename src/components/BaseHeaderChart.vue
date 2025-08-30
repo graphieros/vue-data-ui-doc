@@ -61,7 +61,7 @@ const headerClass = computed(() => {
         <div :class="`${isMenuOpen ? 'w-[360px]' : 'w-[59px]'}`"/>
         <div class="w-full pl-14 flex flex-col">
             <div class="flex flex-row gap-6 pr-24">
-                <h1 class="flex flex-col sm:flex-row place-items-center w-full justify-start gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
+                <h1 class="flex flex-col sm:flex-row place-items-center w-full justify-start gap-5 font-inter-medium text-app-blue mb-2 text-2xl">
                     <div class="flex flex-row place-items-center gap-2">
                         <VueUiIcon :name="icon" stroke="#42d392" :strokeWidth="1.5" />
                         <span>VueUi<span class="text-black dark:text-app-blue-light">{{ componentName }}</span></span>

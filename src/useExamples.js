@@ -1049,6 +1049,19 @@ export default function useExamples() {
         return arr
     }
 
+    function generateDayTimestamps(n) {
+        const result = [];
+        const start = new Date();
+        start.setHours(0, 0, 0, 0);
+
+        for (let i = 0; i < n; i += 1) {
+            result.push(new Date(start.getTime() + i * 24 * 60 * 60 * 1000).getTime());
+        }
+
+        return result;
+    }
+
+
     const DATASET_XY_LTTB = ref([
         {
             name: 'Serie',
@@ -1243,7 +1256,32 @@ export default function useExamples() {
                         },
                         xAxisLabels: {
                             color: colors.value.textColor,
-                            values: ['01-25', '02-25', '03-25', '04-25', '05-25', '06-25', '07-25', '08-25', '09-25', '10-25', '11-25', '12-25', '01-26', '02-26', '03-26', '04-26', '05-26', '06-26', '07-26', '08-26', '09-26'],
+                            values: [
+                                1735689600000,
+                                1738368000000,
+                                1740787200000,
+                                1743465600000,
+                                1746057600000,
+                                1748736000000,
+                                1751328000000,
+                                1754006400000,
+                                1756684800000,
+                                1759276800000,
+                                1761955200000,
+                                1764547200000,
+                                1767225600000,
+                                1769904000000,
+                                1772323200000,
+                                1775001600000,
+                                1777593600000,
+                                1780272000000,
+                                1782864000000,
+                                1785542400000,
+                                1788220800000 
+                            ],
+                            datetimeFormatter: {
+                                enable: true
+                            }
                         }
                     }
                 },
@@ -5511,7 +5549,10 @@ export default function useExamples() {
                                     showOnlyAtModulo: true,
                                     values: makeDs(1000,100,'T'),
                                     modulo: 9,
-                                    rotation: 0
+                                    rotation: 0,
+                                    datetimeFormatter: {
+                                        enable: false
+                                    }
                                 }
                             }
                         },
@@ -5659,7 +5700,10 @@ export default function useExamples() {
                                     showOnlyAtModulo: true,
                                     values: makeDs(1000,100,'T'),
                                     modulo: 9,
-                                    rotation: 0
+                                    rotation: 0,
+                                    datetimeFormatter: {
+                                        enable: false
+                                    }
                                 }
                             }
                         }

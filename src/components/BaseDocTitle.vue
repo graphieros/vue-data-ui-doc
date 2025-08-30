@@ -20,7 +20,7 @@ function capitalizeFirstLetter(val) {
 </script>
 
 <template>
-    <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-satoshi-bold text-app-blue mb-2 text-2xl">
+    <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue mb-2 text-2xl">
         <VueUiIcon :name="useIconMap(name)" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" :strokeWidth="1.5" />
         <span>VueUi<span class="text-black dark:text-app-blue-light">{{ capitalizeFirstLetter(name.replaceAll('VueUi', '')) }}</span></span>
     </h1>

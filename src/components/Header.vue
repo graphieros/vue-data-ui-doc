@@ -247,7 +247,7 @@ const message = ref({
     </div>
     <header data-cy="app-header"
         tabindex="1"
-        class="z-[2147483647] sticky top-0 w-full font-satoshi bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] outline-none">
+        class="z-[2147483647] sticky top-0 w-full font-inter bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] outline-none">
         <div class="mx-auto w-5/6 py-3 flex justify-between place-items-center">
             <router-link data-cy="link-home" to="/" v-if="!isHome">
                 <div class="flex flex-row gap-3">
@@ -300,7 +300,7 @@ const message = ref({
                                 {{ detailedDoc[store.lang] }}
                             </div>
                             <div v-for="menu in simpleMenu" class="flex flex-col bg-gradient-to-b from-[#FFFFFF10] to-transparent pl-2 pt-2 rounded-md">
-                                <div class="text-s mb-4 font-satoshi-bold">{{ menu.category }}</div>
+                                <div class="text-s mb-4 font-inter-medium">{{ menu.category }}</div>
                                 <FlexibleTooltip
                                         v-for="(item, i) in menu.components"
                                         position="bottom" 
@@ -323,7 +323,7 @@ const message = ref({
                                                 <VueUiIcon :name="item.icon" :size="18" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'"/>
                                             </div>
                                             <div 
-                                                :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-satoshi-bold cursor-default hover:no-underline' : ''}`"
+                                                :class="`text-xs hover:underline dark:hover:text-app-blue ${item.link === router.currentRoute.value.fullPath ? 'dark:text-app-blue font-inter-medium cursor-default hover:no-underline' : ''}`"
                                             >
                                                 <span class="text-gray-500">VueUi</span>
                                                 <span>{{ item.name.replaceAll('VueUi', '') }}</span>
