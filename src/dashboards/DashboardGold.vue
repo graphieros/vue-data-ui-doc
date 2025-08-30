@@ -134,6 +134,13 @@ const CONFIG_XY = computed(() => {
             },
             tooltip: {
                 showPercentage: false
+            },
+            zoom: {
+                preview: {
+                    fill: '#91792f30',
+                    stroke: '#91792f',
+                    strokeDasharray: 6
+                }
             }
         },
         bar: {
@@ -272,7 +279,6 @@ const CONFIG_CANDLESTICK = computed(() => {
                 grid: {
                     xAxis: {
                         dataLabels: {
-                            rotation: -33,
                             fontSize: 7
                         }
                     },
