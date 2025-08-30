@@ -118,7 +118,16 @@ const darkModeConfig = ref({
         borderRadius: 2,
         useGradient: true,
         showLines: true,
-        linesStrokeWidth: 1
+        linesStrokeWidth: 1,
+        highlighter: {
+            show: true,
+            opacity: 0.1,
+            color: '#FFFFFF',
+            stroke: '#6A6A6A',
+            strokeWidth: 0.5,
+            strokeDasharray: 2,
+            highlightBothAxes: false,
+        }
       },
       plots: {
         radius: 3,
@@ -337,7 +346,16 @@ const config = ref({
         borderRadius: 2,
         useGradient: true,
         showLines: true,
-        linesStrokeWidth: 1
+        linesStrokeWidth: 1,
+        highlighter: {
+            show: true,
+            opacity: 0.1,
+            color: '#1A1A1A',
+            stroke: '#1A1A1A',
+            strokeWidth: 0.5,
+            strokeDasharray: 2,
+            highlightBothAxes: false,
+        }
       },
       plots: {
         radius: 3,
@@ -761,6 +779,15 @@ const codeDataset = ref(`const dataset: VueUiScatterDatasetItem[] = [
           <BaseAttr name="useGradient" attr="style.layout.marginalBars.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="showLines" attr="style.layout.marginalBars.showLines" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="linesStrokeWidth" attr="style.layout.marginalBars.linesStrokeWidth" type="number" defaultVal="1" :min="0.1" :max="6" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseDetails attr="highlighter" :level="4" title="style.layout.marginalBars.highlighter">
+            <BaseAttr name="show" attr="style.layout.marginalBars.highlighter.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="opacity" attr="style.layout.marginalBars.highlighter.opacity" type="number" defaultVal="0.1" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="color" attr="style.layout.marginalBars.highlighter.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="stroke" attr="style.layout.marginalBars.highlighter.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="strokeWidth" attr="style.layout.marginalBars.highlighter.strokeWidth" type="number" defaultVal="0.5" :min="0" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="strokeDasharray" attr="style.layout.marginalBars.highlighter.strokeDasharray" type="number" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="highlightBothAxes" attr="style.layout.marginalBars.highlighter.highlightBothAxes" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="padding" :level="3" title="style.layout.padding">
           <BaseAttr name="top" attr="style.layout.padding.top" type="number" defaultVal="36" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

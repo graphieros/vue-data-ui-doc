@@ -3716,6 +3716,14 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.layout.marginalBars.showLines', def: true, type: 'checkbox', label: ['lines', 'is', 'show'], category: 'grid' },
                     { key: 'style.layout.marginalBars.linesStrokeWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['lines', 'is', 'strokeWidth'], category: 'grid' },
 
+                    { key: 'style.layout.marginalBars.highlighter.show', def: true, type: 'checkbox', label: ['highlighter', 'is', 'show'], category: 'grid'},
+                    { key: 'style.layout.marginalBars.highlighter.highlightBothAxes', def: true, type: 'checkbox', label: ['highlighter', 'is', 'both axes'], category: 'grid'},
+                    { key: 'style.layout.marginalBars.highlighter.opacity', def: 0.1, type: 'number', min: 0, max: 1, step: 0.01, label: ['highlighter', 'is', 'opacity'], category: 'grid'},
+                    { key: 'style.layout.marginalBars.highlighter.color', def: '#1A1A1A', type: 'color', label: ['highlighter', 'is', 'color'], category: 'grid'},
+                    { key: 'style.layout.marginalBars.highlighter.stroke', def: '#1A1A1A', type: 'color', label: ['highlighter', 'border', 'is', 'color'], category: 'grid'},
+                    { key: 'style.layout.marginalBars.highlighter.strokeWidth', def: 0.5, type: 'number', min: 0, max: 12, step: 0.1, label: ['highlighter', 'border', 'is', 'thickness'], category: 'grid'},
+                    { key: 'style.layout.marginalBars.highlighter.strokeDasharray', def: 2, type: 'number', min: 0, max: 24, label: ['highlighter', 'border', 'is', 'strokeDasharray'], category: 'grid'},
+
                     { key: 'style.layout.plots.radius', def: 8, type: 'number', min: 0.1, max: 48, step: 0.1, label: 'radius', category: 'datapoints' },
                     { key: 'style.layout.plots.opacity', def: 0.6, type: 'number', min: 0.01, max: 1, step: 0.01, label: 'opacity', category: 'datapoints' },
                     { key: 'style.layout.plots.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'datapoints' },

@@ -8225,6 +8225,11 @@ export default function useExamples() {
                                 show: true,
                                 fill: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
                                 showLines: true,
+                                highlighter: {
+                                    color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                                    stroke: isDarkMode.value ? '#6A6A6A' : '#1A1A1A',
+                                    highlightBothAxes: true
+                                }
                             }
                         }
                     }
@@ -8261,6 +8266,11 @@ export default function useExamples() {
                                 show: true,
                                 fill: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
                                 showLines: true,
+                                highlighter: {
+                                    color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                                    stroke: isDarkMode.value ? '#6A6A6A' : '#1A1A1A',
+                                    highlightBothAxes: true
+                                }
                             }
                         }
                     }
