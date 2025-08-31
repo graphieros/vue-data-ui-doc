@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.0.10",
+    "date": "2025-08-31",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add formatters for time labels in time tag, tooltip, zoom labels",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.0.8",
     "date": "2025-08-30",
     "updates": [

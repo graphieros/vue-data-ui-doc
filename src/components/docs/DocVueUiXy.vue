@@ -238,6 +238,8 @@ const config = ref({
                 radius: 3,
                 color: "#1A1A1A"
             },
+            useDefaultFormat: true,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss',
             customFormat: null
         },
         highlightArea: {
@@ -284,7 +286,10 @@ const config = ref({
                 stroke: '#6A6A6A',
                 strokeWidth: 2,
                 strokeDasharray: 0,
-            }
+            },
+            useDefaultFormat: true,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss',
+            customFormat: null
         },
         padding: {
             top:  12,
@@ -422,7 +427,9 @@ const config = ref({
             backgroundOpacity: 30,
             position: "center",
             offsetY: 24,
-            showTimeLabel: true
+            showTimeLabel: true,
+            useDefaultTimeFormat: true,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss'
         },
         userOptions: {
             print: {
@@ -642,6 +649,8 @@ const darkModeConfig = ref({
                 radius: 3,
                 color: "#6A6A6A"
             },
+            useDefaultFormat: true,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss',
             customFormat: null
         },
         highlightArea: {
@@ -688,7 +697,10 @@ const darkModeConfig = ref({
                 stroke: '#6A6A6A',
                 strokeWidth: 2,
                 strokeDasharray: 0,
-            }
+            },
+            useDefaultFormat: true,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss',
+            customFormat: null
         },
         padding: {
             top:  12,
@@ -826,7 +838,9 @@ const darkModeConfig = ref({
             backgroundOpacity: 30,
             position: "center",
             offsetY: 24,
-            showTimeLabel: true
+            showTimeLabel: true,
+            useDefaultTimeFormat: true,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss'
         },
         userOptions: {
             print: {
@@ -1393,6 +1407,8 @@ const cssContent = `
                     <BaseAttr name="radius" attr="chart.timeTag.circleMarker.radius" type="number" defaultVal="3" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="color" attr="chart.timeTag.circleMarker.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
+                <BaseAttr name="useDefaultFormat" attr="chart.timeTag.useDefaultFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="timeFormat" attr="chart.timeTag.timeFormat" type="text" defaultVal="yyyy-MM-dd HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Use with datetimeFormatter.enable = true"/>
                 <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
             </BaseDetails>
             <BaseDetails attr="title" :level="2" title="chart.title">
@@ -1427,6 +1443,8 @@ const cssContent = `
                 <BaseAttr name="position" attr="chart.tooltip.position" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="offsetY" attr="chart.tooltip.offsetY" type="number" defaultVal="24" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="showTimeLabel" attr="chart.tooltip.showTimeLabel" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="useDefaultTimeFormat" attr="chart.tooltip.useDefaultTimeFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="timeFormat" attr="chart.tooltip.timeFormat" type="text" defaultVal="yyyy-MM-dd HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
             <BaseDetails attr="userOptions" :level="2" title="chart.userOptions">
                 <BaseAttr name="show" attr="chart.userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1471,6 +1489,9 @@ const cssContent = `
                 <BaseAttr inactive name="endIndex" defaultVal="null" comment="Force zoom end index (number)"/>
                 <BaseAttr name="enableRangeHandles" attr="chart.zoom.enableRangeHandles" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
                 <BaseAttr name="enableSelectionDrag" attr="chart.zoom.enableSelectionDrag" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
+                <BaseAttr name="useDefaultFormat" attr="chart.zoom.useDefaultFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="timeFormat" attr="chart.zoom.timeFormat" type="text" defaultVal="yyyy-MM-dd HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Use with datetimeFormatter.enable = true"/>
+                <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
                 <BaseDetails attr="minimap" :level="3" title="chart.zoom.minimap">
                     <span><BaseComment>Since v2.3.49</BaseComment></span>
                     <BaseAttr name="show" attr="chart.zoom.minimap.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
