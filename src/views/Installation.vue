@@ -187,6 +187,24 @@ const universalComponentTemplateContent = computed(() => {
         </div>
 
         <ChartSeeker class="mt-12 z-10"/>
+
+        <div class="mt-8 w-full max-w-[800px] text-[18px]">
+            Check out awesome free tools provided by our friends at
+        </div>
+        <a href="https://fncsy.com/" target="_blank" class="mt-2 w-full max-w-[800px] flex flex-col gap-4 p-4 rounded border border-app-green bg-white dark:bg-[#1A1A1A] z-50 hover:bg-[#E1E5E6] hover:dark:bg-[#2A2A2A] transition-colors">
+            <div class="flex flex-row gap-2 place-items-center justify-center">
+                <img src="../assets/fncsy-logo.webp" height="64" width="64"/>
+                <code class="text-app-green-dark text-[32px]">FNCSY</code>
+            </div>
+            <code class="text-left">
+                <span class="text-app-green-dark dark:text-app-green">Save Hours of Work</span> with
+                Smart Digital Tools
+                Stop wasting time with complex setups. 
+                <br/>
+                <br/>
+                Get instant access to <span class="text-app-green-dark dark:text-app-green">production-ready tools</span> that creators, designers, and developers trust. Extract data with smart patterns, generate QR codes, convert currencies, transform CSV data, encode Base64, generate UUIDs, check your IP, calculate subnets, create patterns — <span class="text-app-green-dark dark:text-app-green">all in seconds, completely free</span>.
+            </code>
+        </a>
         <ConfirmCopy/>
     </div>
 </template>

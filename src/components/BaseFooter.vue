@@ -52,7 +52,7 @@ const target = computed(() => {
         <!-- <div class="w-[64px]">
             <BaseSignature :color="isDarkMode ? '#3A3A3A' : '#CCCCCC'" :strokeWidth="7"/>
         </div> -->
-        <div class="pr-1">
+        <div class="pr-1 font-satoshi">
             <VueDataUi
                 v-if="currentStars"
                 component="VueUiGizmo"
