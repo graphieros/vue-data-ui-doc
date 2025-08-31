@@ -138,5 +138,7 @@ const content = computed(() => {
                 <div>{{ translations[key][store.lang] }}</div>
             </div>
         </div>
+
+        <slot/>
     </div>
 </template>

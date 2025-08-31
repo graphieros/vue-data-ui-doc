@@ -1103,6 +1103,39 @@ const cssContent = `
 .vue-ui-xy-tag[data-tag="left"] {}
 `
 
+const timeFormats = `const config = ref({
+    chart: {
+        tooltip: {
+            customFormat: null,
+            useDefaultTimeFormat: false,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss'
+        },
+        timeTag: {
+            show: true,
+            customFormat: null,
+            useDefaultFormat: false,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss',
+        },
+        zoom: {
+            customFormat: null,
+            useDefaultFormat: false,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss'
+        }
+    }
+})`
+
+const timeFormatTranslation = ref({
+    en: 'When datetimeFormatter is enabled, you can also customize time labels for:',
+    fr: 'Lorsque datetimeFormatter est activé, vous pouvez également personnaliser les étiquettes de temps pour :',
+    pt: 'Quando o datetimeFormatter está ativado, você também pode personalizar os rótulos de tempo para:',
+    de: 'Wenn datetimeFormatter aktiviert ist, können Sie auch die Zeitbeschriftungen anpassen für:',
+    zh: '启用 datetimeFormatter 后，您还可以自定义以下时间标签：',
+    jp: 'datetimeFormatter が有効な場合、時間ラベルをカスタマイズできます：',
+    es: 'Cuando datetimeFormatter está habilitado, también puede personalizar las etiquetas de tiempo para:',
+    ko: 'datetimeFormatter가 활성화되면 시간 레이블을 다음에 대해 사용자 정의할 수 있습니다:',
+    ar: 'عند تفعيل datetimeFormatter، يمكنك أيضًا تخصيص تسميات الوقت لـ:'
+})
+
 </script>
 
 <template>
@@ -1859,7 +1892,12 @@ Target the following css class to apply custom styles:
             <template #tab10>
                 <DatetimeFormatterDoc
                     path="chart.grid.labels.xAxisLabels.datetimeFormatter"
-                />
+                >
+                    <div class="mt-6">
+                        {{ timeFormatTranslation[store.lang] }}
+                        <CodeParser class="mt-2" language="javascript" :content="timeFormats"/>
+                    </div>
+                </DatetimeFormatterDoc>
             </template>
         </Box>
     </div>
