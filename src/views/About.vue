@@ -325,7 +325,7 @@ const stackConfig = ref({
 
 const configs = useConfig();
 
-const componentsLen = computed(() => Object.keys(configs).length + 1);
+const componentsLen = computed(() => Object.keys(configs).length);
 
 const advantages = computed(() => {
   return [
