@@ -304,6 +304,22 @@ const config = ref({
   }
 });
 
+function makeDs(max) {
+  const arr = [];
+  let m = max;
+  let i = 0;
+  while (m > 1) {
+    const value = max / 10 + (i * i * i);
+    m -= value;
+    i += 1;
+    arr.push({
+      period: `period ${i}`,
+      value 
+    })
+  }
+  return arr;
+}
+
 const sparklineDataset = ref([
   {
     period: "period 1",
@@ -375,23 +391,24 @@ const sparklineDataset = ref([
   },
 ]);
 
-const darkModeConfigSparkline = ref({
+const darkModeConfigSparkline = computed(() => {
+  return (color) => ({
   type: 'line',
   style: {
     backgroundColor: "#1A1A1A",
     fontFamily: "inherit",
     animation: {
-      show: true,
+      show: false,
       animationFrames: 360,
     },
     line: {
-      color: "#5f8bee",
+      color: color,
       strokeWidth: 3,
       smooth: true,
     },
     bar: {
       borderRadius: 3,
-      color: "#5f8bee",
+      color: color,
     },
     zeroLine: {
       color: "#505050",
@@ -406,17 +423,17 @@ const darkModeConfigSparkline = ref({
     verticalIndicator: {
       show: true,
       strokeWidth: 1.5,
-      color: "#5f8bee",
+      color: color,
       strokeDasharray: 3
     },
     dataLabel: {
       position: "left",
-      fontSize: 48,
+      fontSize: 36,
       bold: true,
       color: "#CCCCCC",
       roundingValue: 1,
-      valueType: "latest",
-      prefix: "",
+      valueType: "average",
+      prefix: "avg: ",
       suffix: ""
     },
     title: {
@@ -431,27 +448,30 @@ const darkModeConfigSparkline = ref({
       show: true,
       useGradient: true,
       opacity: 30,
-      color: "#5f8bee"
+      color: color
     }
   }
-});
-const configSparkline = ref({
+})
+})
+
+const configSparkline = computed(() => {
+  return (color) => ({
   type: 'line',
   style: {
     backgroundColor: "#F3F4F6",
     fontFamily: "inherit",
     animation: {
-      show: true,
+      show: false,
       animationFrames: 360
     },
     line: {
-      color: "#5f8bee",
+      color: color,
       strokeWidth: 3,
       smooth: true
     },
     bar: {
       borderRadius: 3,
-      color: "#5f8bee",
+      color: color,
     },
     zeroLine: {
       color: "#505050",
@@ -466,17 +486,17 @@ const configSparkline = ref({
     verticalIndicator: {
       show: true,
       strokeWidth: 1.5,
-      color: "#5f8bee",
+      color: color,
       strokeDasharray: 3
     },
     dataLabel: {
       position: "left",
-      fontSize: 48,
+      fontSize: 36,
       bold: true,
       color: "#1A1A1A",
       roundingValue: 1,
-      valueType: "latest",
-      prefix: "",
+      valueType: "average",
+      prefix: "avg: ",
       suffix: ""
     },
     title: {
@@ -491,10 +511,11 @@ const configSparkline = ref({
       show: true,
       useGradient: true,
       opacity: 30,
-      color: "#5f8bee"
+      color: color
     }
   }
-});
+})
+})
 
 const code = ref(`<template>
   <VueUiDonut
@@ -549,13 +570,13 @@ const code = ref(`<template>
             This comment was added inside the #tooltip-before slot.
           </div>
         </template>
-        <template #tooltip-after>
+        <template #tooltip-after="{ datapoint }">
           <div class="w-full max-w-[200px]">
             <div class="text-xs max-w-[200px] text-left pb-2 mb-2">
               This comment and chart are added inside the #tooltip-after slot.
             </div>
-            <VueDataUi component="VueUiSparkline" :dataset="sparklineDataset"
-              :config="isDarkMode ? darkModeConfigSparkline : configSparkline"></VueDataUi>
+            <VueDataUi component="VueUiSparkline" :dataset="makeDs(datapoint.value)"
+              :config="isDarkMode ? darkModeConfigSparkline(datapoint.color) : configSparkline(datapoint.color)"></VueDataUi>
           </div>
         </template>
       </VueDataUi>
