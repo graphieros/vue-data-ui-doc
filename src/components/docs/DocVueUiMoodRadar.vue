@@ -184,6 +184,8 @@ const darkModeConfig = ref({
         },
         print: {
             scale: 2,
+            orientation: 'auto',
+            overflowTolerance: 0.2
         },
     }
 })
@@ -309,6 +311,8 @@ const config = ref({
         },
         print: {
             scale: 2,
+            orientation: 'auto',
+            overflowTolerance: 0.2
         },
     }
 })
@@ -546,6 +550,8 @@ const { configCode, showAllConfig } = useConfigCode()
             </BaseDetails>
             <BaseDetails attr="print" :level="2" title="userOptions.print">
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
+                <BaseAttr inactive name="orientation" defaultVal="auto" comment="'auto' | 'l' | 'p'"/>
+                <BaseAttr inactive name="overflowTolerance" defaultVal="0.2"/>
             </BaseDetails>
         </BaseDetails>
     </BaseDetails>

@@ -190,6 +190,8 @@ const config = ref({
     },
     userOptionsPrint: {
         scale: 2,
+        overflowTolerance: 0.2,
+        orientation: 'auto'
     },
     title: "A quick chart",
     titleBold: true,
@@ -330,6 +332,8 @@ const darkModeConfig = ref({
     },
     userOptionsPrint: {
         scale: 2,
+        overflowTolerance: 0.2,
+        orientation: 'auto'
     },
     title: "A quick chart",
     titleBold: true,
@@ -918,6 +922,8 @@ function copyComponentSnippet(snip) {
         </BaseDetails>
         <BaseDetails attr="print" :level="1" title="userOptionsPrint">
             <BaseAttr name="scale" attr="userOptionsPrint.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
+            <BaseAttr inactive name="orientation" defaultVal="auto" comment="'auto' | 'l' | 'p'"/>
+            <BaseAttr inactive name="overflowTolerance" defaultVal="0.2"/>
         </BaseDetails>
         <BaseAttr name="title" attr="title" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="titleBold" attr="titleBold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -92,12 +92,9 @@ const config = ref({
             annotator: "Toggle annotator",
         },
         print: {
-            allowTaint: false,
-            backgroundColor: "#F3F4F6",
-            useCORS: false,
-            onclone: null,
             scale: 2,
-            logging: false,
+            orientation: 'auto',
+            overflowTolerance: 0.2
         },
     },
     table: {
@@ -232,6 +229,8 @@ const darkModeConfig = ref({
         },
         print: {
             scale: 2,
+            orientation: 'auto',
+            overflowTolerance: 0.2
         },
     },
     table: {
@@ -579,6 +578,8 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
             </BaseDetails>
             <BaseDetails attr="print" :level="2" title="userOptions.print">
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
+                <BaseAttr inactive name="orientation" defaultVal="auto" comment="'auto' | 'l' | 'p'"/>
+                <BaseAttr inactive name="overflowTolerance" defaultVal="0.2"/>
             </BaseDetails>
         </BaseDetails>
     </BaseDetails>
