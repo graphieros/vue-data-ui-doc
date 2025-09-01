@@ -761,27 +761,27 @@ export default function useExamples() {
 
     const DATASET_XY_INTERLINE = ref([
         {
-            name: 'Serie A',
+            name: 'Performance',
             type: 'line',
-            series: [1, 3, 5, 7, 25, 32, 13, 15, 17, 19],
+            series: [0, 2.5, 5, 8, 12, 17, 20.5, 22, 20.5, 17, 12, 8, 5, 2.5, 0],
         },
         {
-            name: 'Serie B',
+            name: 'Target',
             type: 'line',
-            series: [1, 4, 7, 10, 13, 16, 19, 22, 25, 28],
+            series: [10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10],
         },
     ])
     const DATASET_XY_INTERLINE_SMOOTH = ref([
         {
-            name: 'Serie A',
+            name: 'Performance',
             type: 'line',
-            series: [1, 3, 5, 7, 25, 32, 13, 15, 17, 19],
+            series: [0, 2.5, 5, 8, 12, 17, 20.5, 22, 20.5, 17, 12, 8, 5, 2.5, 0],
             smooth: true
         },
         {
-            name: 'Serie B',
+            name: 'Target',
             type: 'line',
-            series: [1, 4, 7, 10, 13, 16, 19, 22, 25, 28],
+            series: [10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10, 12, 10, 8, 10],
             smooth: true
         },
     ])
@@ -5738,7 +5738,7 @@ export default function useExamples() {
                         ...BASE_XY_CONFIG.value.line,
                         interLine: {
                             pairs: [
-                                ['Serie A', 'Serie B']
+                                ['Performance', 'Target']
                             ]
                         }
                     }
@@ -5771,7 +5771,7 @@ export default function useExamples() {
                         ...BASE_XY_CONFIG.value.line,
                         interLine: {
                             pairs: [
-                                ['Serie A', 'Serie B']
+                                ['Performance', 'Target']
                             ],
                             colors: [
                                 ['green', 'red']
