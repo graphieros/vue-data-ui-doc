@@ -288,16 +288,16 @@ export default function useCharts() {
                 ar: "أدوات رائعة لتحسين واجهة المستخدم الخاصة بك."
             },
             maps: {
-                en: "",
-                fr: "",
-                pt: "",
-                de: "",
-                zh: "",
-                jp: "",
-                es: "",
-                ko: "",
-                ar: ""
-            },
+                en: "Maps",
+                fr: "Cartes",
+                pt: "Mapas",
+                de: "Karten",
+                zh: "地图",
+                jp: "地図",
+                es: "Mapas",
+                ko: "지도",
+                ar: "خرائط"
+            }
         }
     })
 
