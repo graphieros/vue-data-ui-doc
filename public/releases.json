@@ -1,12 +1,17 @@
 [
   {
-    "version": "v 3.0.15",
-    "date": "2025-09-01",
+    "version": "v 3.0.16",
+    "date": "2025-09-02",
     "updates": [
       {
         "component": "VueUiRelationCircle",
-        "description": "Disable auto font size feature for now",
+        "description": "Fix auto font size feature glitch",
         "link": "/docs#vue-ui-relation-circle"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Fix auto font size feature glitch",
+        "link": "/docs#vue-ui-radar"
       }
     ]
   },
