@@ -447,7 +447,21 @@ const codeSinglePattern = ref(`<VueUiDonut
     <template #pattern="{ patternId }">
         <VueUiPattern
             :id="patternId"
+            v-if="seriesIndex === 0"
             name="maze"
+            stroke="#55a2d9"
+        />
+        <VueUiPattern
+            :id="patternId"
+            v-if="seriesIndex === 1"
+            name="maze"
+            stroke="#5885bf"
+        />
+        <VueUiPattern
+            :id="patternId"
+            v-if="seriesIndex === 2"
+            name="maze"
+            stroke="#ffcda1"
         />
     </template>
 </VueUiDonut>`
@@ -462,6 +476,7 @@ const codeMultiPattern = ref(`<VueUiDonut
             :id="patternId"
             v-if="seriesIndex === 0"
             name="maze"
+            stroke="#55a2d9"
         />
         <VueUiPattern
             :id="patternId"
@@ -469,11 +484,13 @@ const codeMultiPattern = ref(`<VueUiDonut
             :scale="0.5"
             :strokeWidth="3"
             name="redrum"
+            stroke="#5885bf"
         />
         <VueUiPattern
             :id="patternId"
             v-if="seriesIndex === 2"
             name="scales"
+            stroke="#ffcda1"
         />
     </template>
 </VueUiDonut>`
@@ -488,6 +505,7 @@ const codeLimitedColors = ref(`<VueUiDonut
             :id="patternId"
             v-if="seriesIndex === 0"
             name="maze"
+            stroke="#6A6A6A"
         />
         <VueUiPattern
             :id="patternId"
@@ -495,12 +513,14 @@ const codeLimitedColors = ref(`<VueUiDonut
             :scale="0.5"
             :strokeWidth="3"
             name="hexagon-grid"
+            stroke="#6A6A6A"
         />
         <VueUiPattern
             :id="patternId"
             v-if="seriesIndex === 2"
             :scale="2"
             name="hexagon-flooring"
+            stroke="#6A6A6A"
         />
     </template>
 </VueUiDonut>`
@@ -583,8 +603,25 @@ const supportedComponents = computed(() => {
             </template>
             <template #chart>
             <VueDataUi component="VueUiDonut" :dataset="dataset" :config="isDarkMode ? darkModeConfig : config">
-                <template #pattern="{ patternId}">
-                    <VueUiPattern :id="patternId" name="maze"/>
+                <template #pattern="{ seriesIndex, patternId}">
+                    <VueUiPattern
+                        :id="patternId"
+                        v-if="seriesIndex === 0"
+                        name="maze"
+                        stroke="#55a2d9"
+                    />
+                    <VueUiPattern
+                        :id="patternId"
+                        v-if="seriesIndex === 1"
+                        name="maze"
+                        stroke="#5885bf"
+                    />
+                    <VueUiPattern
+                        :id="patternId"
+                        v-if="seriesIndex === 2"
+                        name="maze"
+                        stroke="#ffcda1"
+                    />
                 </template>
             </VueDataUi>
             </template>
@@ -600,6 +637,7 @@ const supportedComponents = computed(() => {
                             :id="patternId"
                             v-if="seriesIndex === 0"
                             name="maze"
+                            stroke="#55a2d9"
                         />
                         <VueUiPattern
                             :id="patternId"
@@ -607,11 +645,13 @@ const supportedComponents = computed(() => {
                             :scale="0.5"
                             :strokeWidth="3"
                             name="redrum"
+                            stroke="#5885bf"
                         />
                         <VueUiPattern
                             :id="patternId"
                             v-if="seriesIndex === 2"
                             name="scales"
+                            stroke="#ffcda1"
                         />
                     </template>
                 </VueDataUi>
@@ -653,19 +693,22 @@ const supportedComponents = computed(() => {
                             :id="patternId"
                             v-if="seriesIndex === 0"
                             name="maze"
-                            />
-                            <VueUiPattern
+                            stroke="#6A6A6A"
+                        />
+                        <VueUiPattern
                             :id="patternId"
                             v-if="seriesIndex === 1"
                             :scale="0.5"
                             :strokeWidth="3"
                             name="hexagon-grid"
+                            stroke="#6A6A6A"
                         />
                         <VueUiPattern
                             :id="patternId"
                             v-if="seriesIndex === 2"
                             :scale="2"
                             name="hexagon-flooring"
+                            stroke="#6A6A6A"
                         />
                     </template>
                 </VueDataUi>
