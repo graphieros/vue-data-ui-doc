@@ -1,4 +1,4 @@
-const selectedDate = ref(latestItems.value[0].created_at.split(' ')[0])<script setup>
+<script setup>
 import { computed, watch, ref } from "vue";
 import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
@@ -563,8 +563,8 @@ const stackbarConfig = computed(() => {
                 zoom: {
                     color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
                     highlightColor: '#1F77B4',
-                    // startIndex: history.value.averagePerDay.length - 14,
-                    // endIndex: history.value.averagePerDay.length - 1
+                    startIndex: history.value.averagePerDay.length - 14,
+                    endIndex: history.value.averagePerDay.length - 1
                 }
             }
         }
@@ -1046,6 +1046,42 @@ function selectHeatmapCell(cell) {
 <template>
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <div class="text-xl text-center mb-4 flex flex-col">
+            <span>Latest votes ({{ latestItems.length }})</span>
+            <input
+                id="date"
+                type="date"
+                v-model="selectedDate"
+                class="
+                    mx-auto
+                    mt-3
+                    block w-52 px-3 py-1 rounded-xl shadow
+                    focus:ring-2 focus:ring-app-blue focus:border-app-blue
+                    border border-gray-300 bg-white text-gray-800
+                    hover:border-blue-400
+                    transition duration-200 outline-none
+                    dark:border-gray-700 dark:bg-[#FFFFFF50] dark:text-[#1A1A1A]
+                    dark:focus:border-app-blue dark:focus:ring-app-blue
+                    dark:hover:border-app-blue
+                    dark:placeholder-gray-400
+                "
+                placeholder="YYYY-MM-DD"
+            />
+        </div>
+        <div class="w-full text-center text-gray-500" v-if="latestItems.length === 0">
+            No votes were cast on this day.
+        </div>
+        <ul>
+            <li v-for="item in latestItems" class="flex flex-row gap-2">
+                <span>{{ item.stars }}</span>
+                <span class="text-gray-400 dark:text-gray-500">VueUi<span class="text-black dark:text-gray-200">{{
+                    item.name.replaceAll('VueUi', '') }}</span></span>
+            </li>
+        </ul>
+    </div>
+
+    <div v-if="ratings.length"
+        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <VueUiXy :dataset="xyDataset" :config="xyConfig" />
     </div>
 
@@ -1160,42 +1196,6 @@ function selectHeatmapCell(cell) {
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
         <VueDataUi component="VueUiHeatmap" :dataset="heatmapDataset" :config="heatmapConfig" @selectDatapoint="selectHeatmapCell"/>
-    </div>
-
-    <div v-if="ratings.length"
-        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <div class="text-xl text-center mb-4 flex flex-col">
-            <span>Latest votes ({{ latestItems.length }})</span>
-            <input
-                id="date"
-                type="date"
-                v-model="selectedDate"
-                class="
-                    mx-auto
-                    mt-3
-                    block w-52 px-3 py-1 rounded-xl shadow
-                    focus:ring-2 focus:ring-app-blue focus:border-app-blue
-                    border border-gray-300 bg-white text-gray-800
-                    hover:border-blue-400
-                    transition duration-200 outline-none
-                    dark:border-gray-700 dark:bg-[#FFFFFF50] dark:text-[#1A1A1A]
-                    dark:focus:border-app-blue dark:focus:ring-app-blue
-                    dark:hover:border-app-blue
-                    dark:placeholder-gray-400
-                "
-                placeholder="YYYY-MM-DD"
-            />
-        </div>
-        <div class="w-full text-center text-gray-500" v-if="latestItems.length === 0">
-            No votes were cast on this day.
-        </div>
-        <ul>
-            <li v-for="item in latestItems" class="flex flex-row gap-2">
-                <span>{{ item.stars }}</span>
-                <span class="text-gray-400 dark:text-gray-500">VueUi<span class="text-black dark:text-gray-200">{{
-                    item.name.replaceAll('VueUi', '') }}</span></span>
-            </li>
-        </ul>
     </div>
 
     <div v-if="ratings.length"

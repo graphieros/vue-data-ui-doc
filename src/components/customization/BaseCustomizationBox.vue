@@ -16,7 +16,7 @@ defineProps({
     <slot name="before" />
   </div>
   <div
-    class="max-w-[1200px] flex flex-col lg:flex-row gap-4 justify-center place-items-center mx-auto bg-gray-200 dark:bg-[#FFFFFF10] p-4 rounded-md shadow-md"
+    class="max-w-[1200px] flex flex-col lg:flex-row gap-4 justify-center place-items-center mx-auto bg-white dark:bg-[#FFFFFF10] p-4 rounded-md shadow-md"
     style="width: calc(100% - 48px)"
   >
     <div
