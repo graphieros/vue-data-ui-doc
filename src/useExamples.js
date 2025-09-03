@@ -5736,6 +5736,10 @@ export default function useExamples() {
                     },
                     line: {
                         ...BASE_XY_CONFIG.value.line,
+                        labels: {
+                            ...BASE_XY_CONFIG.value.line.labels,
+                            rounding: 1,
+                        },
                         interLine: {
                             pairs: [
                                 ['Performance', 'Target']
@@ -5769,6 +5773,10 @@ export default function useExamples() {
                     },
                     line: {
                         ...BASE_XY_CONFIG.value.line,
+                        labels: {
+                            ...BASE_XY_CONFIG.value.line.labels,
+                            rounding: 1,
+                        },
                         interLine: {
                             pairs: [
                                 ['Performance', 'Target']
