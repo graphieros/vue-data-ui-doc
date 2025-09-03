@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.0.18",
+    "date": "2025-09-03",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix zoom behavior issues when startIndex and/or endIndex are set",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.0.17",
     "date": "2025-09-02",
     "updates": [
