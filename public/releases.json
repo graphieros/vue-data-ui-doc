@@ -1,12 +1,32 @@
 [
   {
-    "version": "v 3.0.18",
+    "version": "v 3.0.19",
     "date": "2025-09-03",
     "updates": [
       {
         "component": "VueUiXy",
         "description": "Fix zoom behavior issues when startIndex and/or endIndex are set",
         "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Fix zoom behavior issues when startIndex and/or endIndex are set",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Fix zoom behavior issues when startIndex and/or endIndex are set",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Fix zoom behavior issues when startIndex and/or endIndex are set",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Fix zoom behavior issues when startIndex and/or endIndex are set",
+        "link": "/docs#vue-ui-stackbar"
       }
     ]
   },
