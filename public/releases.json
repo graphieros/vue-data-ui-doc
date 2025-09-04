@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.0.20",
+    "date": "2025-09-04",
+    "updates": [
+      {
+        "component": "General",
+        "description": "Bump vue to 3.5.21",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.0.19",
     "date": "2025-09-03",
     "updates": [
