@@ -51,9 +51,56 @@ const months = {
     '12': 'Dec',
 }
 
+const averageRating = computed(() => store.ratings.average);
+
+const thermoConfig = computed(() => {
+    return {
+        userOptions: { show: false },
+        style: {
+            chart: {
+                backgroundColor: 'transparent',
+                width: 100,
+                height: 150,
+                graduations: {
+                    stroke: isDarkMode.value ? '#1A1A1A' : '#2A2A2A',
+                    strokeWidth: 1.5,
+                    gradient: { show: false },
+                },
+                label: {
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    fontSize: 28,
+                    rounding: 2
+                },
+                thermometer: {
+                    width: 16
+                }
+            }
+        }
+    }
+})
+
 </script>
 
 <template>
+    <RouterLink to="/about">
+        <div class="fixed bottom-[250px] -right-[2px] w-[60px]">
+            <VueDataUi
+                component="VueUiThermometer"
+                :dataset="{
+                    value: averageRating,
+                    from: 0,
+                    to: 5,
+                    steps: 5,
+                    colors: {
+                        from: '#42d392',
+                        to: '#42d392',
+                    }
+                }"
+                :config="thermoConfig"
+            />
+        </div>
+    </RouterLink>
+
     <a title="Github repository. Leave a star to support us :)" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[155px] right-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#fdd663] hover:shadow-md bg-gradient-to-b from-[#f7e2a3] to-[#fdd663]">
         <BrandGithubFilledIcon class="text-black" size="24"/>
         <StarFilledIcon class="text-black dark:text-[#fdd663] absolute top-0 -left-4" size="14"/>
