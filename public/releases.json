@@ -1,5 +1,27 @@
 [
   {
+    "version": "v 3.0.22",
+    "date": "2025-09-05",
+    "updates": [
+      {
+        "component": "VueUiScatter",
+        "description": "Add performance mode to display very large datasets",
+        "link": "/docs#vue-ui-scatter"
+      }
+    ]
+  },
+  {
+    "version": "v 3.0.21",
+    "date": "2025-09-04",
+    "updates": [
+      {
+        "component": "General",
+        "description": "Allow more time formats when using datetimeFormatter",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.0.20",
     "date": "2025-09-04",
     "updates": [

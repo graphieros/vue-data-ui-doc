@@ -2529,6 +2529,9 @@ export default function useExamples() {
                 backgroundColor: colors.value.bg,
                 color: colors.value.textColor,
                 layout: {
+                    padding: {
+                        right: 12
+                    },
                     axis: {
                         stroke: colors.value.gridStroke
                     },
@@ -2593,6 +2596,18 @@ export default function useExamples() {
         return arr;
     }
 
+    function makeScatterBigData() {
+        const arr = [];
+        for (let i = -50000; i < 50000; i += 1) {
+            arr.push({
+                x: Math.random() * (Math.random() > 0.5 ? i / 4 : -i / 4),
+                y: Math.random() * (Math.random() > 0.5 ? i / 4 : -i / 4),
+                name: `datapoint_${i}`,
+            });
+        }
+        return arr;
+    }
+
     const DATASET_SCATTER_BASIC = ref([
         {
             name: 'Serie',
@@ -2604,6 +2619,13 @@ export default function useExamples() {
             })
         }
     ]);
+
+    const DATASET_SCATTER_LARGE = ref([
+        {
+            name: 'Big data',
+            values: makeScatterBigData(),
+        }
+    ])
 
     const DATASET_SCATTER_BUBBLE = ref([
         {
@@ -8395,6 +8417,44 @@ export default function useExamples() {
                     es: "Marcadores de puntos de datos con formas geométricas",
                     ko: "기하학적 모양의 데이터 포인트 마커",
                     ar: "علامات نقاط البيانات بأشكال هندسية"
+                }
+            },
+            // SCATTER BIG DATA
+            { 
+                dataset: DATASET_SCATTER_LARGE.value, 
+                config: {
+                    ...CONFIG_SCATTER_BASIC.value,
+                    usePerformanceMode: true,
+                    style: {
+                        ...CONFIG_SCATTER_BASIC.value.style,
+                        layout: {
+                            ...CONFIG_SCATTER_BASIC.value.style.layout,
+                            correlation: { show: false },
+                            plots: {
+                                ...CONFIG_SCATTER_BASIC.value.style.layout.plots,
+                                radius: 0.5,
+                                selectors: {
+                                    ...CONFIG_SCATTER_BASIC.value.style.layout.plots.selectors,
+                                    stroke: isDarkMode.value ? '#CCCCCC' : '#3A3A3A'
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiScatter',
+                icon: 'chartScatter',
+                id: 'scatter-large',
+                link: 'vue-ui-scatter',
+                description: {
+                    en: "100000 datapoints using performance mode",
+                    fr: "100000 points de données en mode performance",
+                    pt: "100000 pontos de dados usando o modo de desempenho",
+                    de: "100000 Datenpunkte im Leistungsmodus",
+                    zh: "使用性能模式的 100000 个数据点",
+                    jp: "パフォーマンスモードを使用した 100000 データポイント",
+                    es: "100000 puntos de datos usando el modo de rendimiento",
+                    ko: "성능 모드를 사용한 100000 데이터 포인트",
+                    ar: "100000 نقطة بيانات باستخدام وضع الأداء"
                 }
             },
             // WHEEL BASIC

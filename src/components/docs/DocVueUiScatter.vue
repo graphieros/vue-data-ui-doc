@@ -89,6 +89,7 @@ const darkModeConfig = ref({
     },
   responsive: false,
   useCssAnimation: true,
+  usePerformanceMode: false,
   style: {
     backgroundColor: "#1A1A1A",
     color: "#CCCCCC",
@@ -319,6 +320,7 @@ const config = ref({
     },
   responsive: false,
   useCssAnimation: true,
+  usePerformanceMode: false,
   style: {
     backgroundColor: "#F3F4F6",
     color: "#1A1A1A",
@@ -633,6 +635,19 @@ const codeDataset = ref(`const dataset: VueUiScatterDatasetItem[] = [
   }
 ];`);
 
+const performanceModeComment = ref({
+    en: 'Enable performance mode when your dataset is large (> 1000) and when you do not wish to downsample the data. Performance mode will generate a single dom node per series. When this mode is enabled, note that plot.significance will have no effect on plot opacity.',
+    fr: 'Activez le mode performance lorsque votre jeu de données est volumineux (> 1000) et que vous ne souhaitez pas réduire l’échantillon de données. Le mode performance générera un seul nœud DOM par série. Lorsque ce mode est activé, notez que plot.significance n’aura aucun effet sur l’opacité du tracé.',
+    pt: 'Ative o modo de desempenho quando seu conjunto de dados for grande (> 1000) e quando você não quiser reduzir a amostragem dos dados. O modo de desempenho gerará um único nó DOM por série. Quando este modo estiver ativado, observe que plot.significance não terá efeito na opacidade do gráfico.',
+    de: 'Aktivieren Sie den Leistungsmodus, wenn Ihr Datensatz groß ist (> 1000) und Sie die Daten nicht herunterstichproben möchten. Der Leistungsmodus generiert einen einzelnen DOM-Knoten pro Serie. Wenn dieser Modus aktiviert ist, beachten Sie, dass plot.significance keinen Einfluss auf die Transparenz des Plots hat.',
+    zh: '当您的数据集很大（>1000）并且不希望对数据进行降采样时，请启用性能模式。性能模式将为每个系列生成一个 DOM 节点。启用此模式时，请注意 plot.significance 对绘图的不透明度将没有影响。',
+    jp: 'データセットが大きい場合（>1000）やデータをダウンサンプリングしたくない場合は、パフォーマンスモードを有効にしてください。パフォーマンスモードでは、シリーズごとに1つのDOMノードが生成されます。このモードを有効にすると、plot.significanceはプロットの不透明度に影響しないことに注意してください。',
+    es: 'Active el modo de rendimiento cuando su conjunto de datos sea grande (> 1000) y cuando no desee reducir la muestra de los datos. El modo de rendimiento generará un solo nodo DOM por serie. Cuando este modo esté habilitado, tenga en cuenta que plot.significance no tendrá efecto en la opacidad del gráfico.',
+    ko: '데이터셋이 크고 (>1000) 데이터를 다운샘플링하고 싶지 않을 때 성능 모드를 활성화하세요. 성능 모드는 시리즈당 하나의 DOM 노드를 생성합니다. 이 모드가 활성화되면 plot.significance는 플롯 불투명도에 영향을 주지 않습니다.',
+    ar: 'قم بتمكين وضع الأداء عندما يكون حجم مجموعة البيانات كبيرًا (> 1000) وعندما لا ترغب في تقليل حجم البيانات. سيؤدي وضع الأداء إلى إنشاء عقدة DOM واحدة لكل سلسلة. عند تفعيل هذا الوضع، لاحظ أن plot.significance لن يكون له أي تأثير على شفافية المخطط.'
+  }
+)
+
 </script>
 
 <template>
@@ -716,6 +731,7 @@ const codeDataset = ref(`const dataset: VueUiScatterDatasetItem[] = [
     <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
     <span>customPalette: [], <BaseComment>string[]</BaseComment></span>
     <BaseAttr name="useCssAnimation" attr="useCssAnimation" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+    <BaseAttr name="usePerformanceMode" attr="usePerformanceMode" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" :comment="performanceModeComment[store.lang]" @change="forceChartUpdate()"/>
     <BaseDetails attr="events" :level="1">
         <BaseAttr inactive name="datapointEnter" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})" />
         <BaseAttr inactive name="datapointLeave" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>

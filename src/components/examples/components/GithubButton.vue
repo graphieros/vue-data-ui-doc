@@ -82,8 +82,8 @@ const thermoConfig = computed(() => {
 </script>
 
 <template>
-    <RouterLink to="/about">
-        <div class="fixed bottom-[250px] -right-[2px] w-[60px]">
+    <!-- <RouterLink to="/about">
+        <div class="fixed bottom-[310px] -right-[2px] w-[60px]">
             <VueDataUi
                 component="VueUiThermometer"
                 :dataset="{
@@ -99,7 +99,7 @@ const thermoConfig = computed(() => {
                 :config="thermoConfig"
             />
         </div>
-    </RouterLink>
+    </RouterLink> -->
 
     <a title="Github repository. Leave a star to support us :)" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="hover:-translate-y-[2px] transition-all z-50 fixed bottom-[155px] right-2 rounded-full p-2 flex place-items-center justify-center border h-[42px] w-[42px] border-[#fdd663] hover:shadow-md bg-gradient-to-b from-[#f7e2a3] to-[#fdd663]">
         <BrandGithubFilledIcon class="text-black" size="24"/>
