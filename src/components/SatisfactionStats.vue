@@ -750,6 +750,9 @@ const xyConfig = computed(() => {
                     xAxisLabels: {
                         values: history.value.dates,
                         show: false,
+                        datetimeFormatter: {
+                            enable: true
+                        }
                     }
                 }
             },
@@ -774,16 +777,21 @@ const xyConfig = computed(() => {
                 borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                 showPercentage: false,
-                roundingValue: 2
+                roundingValue: 2,
+                useDefaultTimeFormat: false,
+                timeFormat: 'yyyy-MM-dd'
             },
             userOptions: {
                 buttons: {
-                    labels: false
+                    labels: false,
+                    table: false,
                 }
             },
             zoom: {
                 color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
                 highlightColor: '#1F77B4',
+                useDefaultFormat: false,
+                timeFormat: 'yyyy-MM-dd'
                 // startIndex: history.value.averagePerDay.length - 14,
                 // endIndex: history.value.averagePerDay.length - 1
             }

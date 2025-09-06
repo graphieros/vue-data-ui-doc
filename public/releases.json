@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.0.23",
+    "date": "2025-09-05",
+    "updates": [
+      {
+        "component": "General",
+        "description": "Harmonize legend marker sizes",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.0.22",
     "date": "2025-09-05",
     "updates": [
