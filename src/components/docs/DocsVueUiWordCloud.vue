@@ -159,6 +159,7 @@ const config = ref({
     },
     table: {
         show: false,
+        useDialog: false,
         responsiveBreakpoint: 300,
         columnNames: {
             series: "Word",
@@ -275,6 +276,7 @@ const darkModeConfig = ref({
     },
     table: {
         show: false,
+        useDialog: false,
         responsiveBreakpoint: 300,
         columnNames: {
             series: "Word",
@@ -517,6 +519,7 @@ const codeDataset2 = computed(() => {
         </BaseDetails>
         <BaseDetails attr="table" :level="1">
             <BaseAttr name="show" attr="table.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="useDialog" attr="table.useDialog" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.1.0"/>
             <BaseAttr name="responsiveBreakpoint" attr="table.responsiveBreakpoint" defaultVal="400" :min="300" :max="800" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseDetails attr="columnNames" :level="2" title="table.columnNames">
                 <BaseAttr name="series" attr="table.columnNames.series" type="text" defaultVal="Word" :light="mutableConfig" :dark="mutableConfigDarkMode" />

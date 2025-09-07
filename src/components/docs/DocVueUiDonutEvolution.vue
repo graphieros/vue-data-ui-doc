@@ -270,6 +270,7 @@ const config = ref({
     },
     table: {
         show: false,
+        useDialog: false,
         responsiveBreakpoint: 400,
         columnNames: {
             period: "Period",
@@ -520,6 +521,7 @@ const darkModeConfig = ref({
     },
     table: {
         show: false,
+        useDialog: false,
         responsiveBreakpoint: 400,
         columnNames: {
             period: "Period",
@@ -869,6 +871,7 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
         </BaseDetails>
         <BaseDetails attr="table" :level="1">
             <BaseAttr name="show" attr="table.show" type="chexkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="useDialog" attr="table.useDialog" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.1.0"/>
             <BaseAttr name="responsiveBreakpoint" attr="table.responsiveBreakpoint" type="number" defaultVal="400" :min="300" :max="800" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseDetails attr="columnNames" :level="2" title="table.columnNames">
                 <BaseAttr name="period" attr="table.columnNames.period" type="text" defaultVal="Period" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -552,6 +552,7 @@ const config = ref({
         responsiveBreakpoint: 400,
         sparkline: true,
         showSum: true,
+        useDialog: false,
         th: {
             backgroundColor: "#F3F4F6",
             color: "#1A1A1A",
@@ -955,6 +956,7 @@ const darkModeConfig = ref({
         responsiveBreakpoint: 400,
         sparkline: true,
         showSum: true,
+        useDialog: false,
         th: {
             backgroundColor: "#1A1A1A",
             color: "#c8c8c8",
@@ -1634,6 +1636,7 @@ const timeFormatTranslation = ref({
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="table" :level="1">
+            <BaseAttr name="useDialog" attr="table.useDialog" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.1.0"/>
             <BaseAttr name="responsiveBreakpoint" attr="table.responsiveBreakpoint" type="number" defaultVal="400" :min="300" :max="800" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="rounding" attr="table.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="showSum" attr="table.showSul" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.3.84"/>

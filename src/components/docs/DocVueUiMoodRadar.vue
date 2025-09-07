@@ -140,6 +140,7 @@ const darkModeConfig = ref({
     },
     table: {
         show: false,
+        useDialog: false,
         responsiveBreakpoint: 300,
         columnNames: {
             series: "Series",
@@ -267,6 +268,7 @@ const config = ref({
     },
     table: {
         show: false,
+        useDialog: false,
         responsiveBreakpoint: 300,
         columnNames: {
             series: "Series",
@@ -506,6 +508,7 @@ const { configCode, showAllConfig } = useConfigCode()
         </BaseDetails>
         <BaseDetails attr="table" :level="1">
             <BaseAttr name="show" attr="table.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="useDialog" attr="table.useDialog" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.1.0"/>
             <BaseAttr name="responsiveBreakpoint" attr="table.responsiveBreakpoint" type="number" defaultVal="400" :min="300" :max="800" :step="50" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseDetails attr="columnNames" :level="2" title="table.columnNames">
                 <BaseAttr name="series" attr="table.columnNames.series" type="text" defaultVal="Series" :light="mutableConfig" :dark="mutableConfigDarkMode"  @change="forceChartUpdate()"/>

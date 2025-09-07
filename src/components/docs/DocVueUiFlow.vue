@@ -276,6 +276,7 @@ const config = ref({
     },
     table: {
         show: false,
+        useDialog: false,
         responsiveBreakpoint: 400,
         columnNames: {
             source: "Source",
@@ -460,6 +461,7 @@ const darkModeConfig = ref({
     },
     table: {
         show: false,
+        useDialog: false,
         responsiveBreakpoint: 400,
         columnNames: {
             source: "Source",
@@ -726,6 +728,7 @@ const additionalTranslations = computed(() => {
         </BaseDetails>
         <BaseDetails attr="table" :level="1">
             <BaseAttr name="show" attr="table.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+            <BaseAttr name="useDialog" attr="table.useDialog" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.1.0"/>
             <BaseAttr name="responsiveBreakpoint" attr="table.responsiveBreakpoint" type="number" defaultVal="400" :min="300" :max="800" :step="10" :light="mutableConfig" :dark="mutableConfigDarkMode" />
             <BaseDetails attr="columnNames" :level="2" title="table.columnNames">
                 <BaseAttr name="source" attr="table.columnNames.source" type="text" defaultVal="Source" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

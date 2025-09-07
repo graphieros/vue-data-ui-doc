@@ -1,5 +1,176 @@
 [
   {
+    "version": "v 3.1.0",
+    "date": "2025-09-07",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiHorizontalBar",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-horizontal-bar"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiFlow",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-flow"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiAgePyramid",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-age-pyramid"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-stackbar"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiFunnel",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-funnel"
+      },
+      {
+        "component": "VueUiHistoryPlot",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-history-plot"
+      },
+      {
+        "component": "VueUiRidgeline",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-ridgeline"
+      },
+      {
+        "component": "VueUiDonut",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiHeatmap",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-heatmap"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiChestnut",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-chestnut"
+      },
+      {
+        "component": "VueUiCirclePack",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-circle-pack"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiWordCloud",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-word-cloud"
+      },
+      {
+        "component": "VueUiChord",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-chord"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiMoodRadar",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-mood-radar"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiMolecule",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-molecule"
+      },
+      {
+        "component": "VueUiStripPlot",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-strip-plot"
+      },
+      {
+        "component": "VueUiDumbbell",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-dumbbell"
+      },
+      {
+        "component": "VueUiWorld",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-world"
+      },
+      {
+        "component": "VueUi3dBar",
+        "description": "Add config option to display data table inside a dialog",
+        "link": "/docs#vue-ui-3d-bar"
+      }
+    ]
+  },
+  {
     "version": "v 3.0.23",
     "date": "2025-09-05",
     "updates": [

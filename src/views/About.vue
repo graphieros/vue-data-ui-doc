@@ -330,13 +330,13 @@ const componentsLen = computed(() => Object.keys(configs).length);
 const advantages = computed(() => {
   return [
   {
-    en: "Vue-native, no runtime deps – the package reports 0 dependencies on npm, so you’re shipping only the library code itself",
-    fr: "Natif Vue, sans dépendances à l'exécution – le package affiche 0 dépendance sur npm, donc vous ne livrez que le code de la bibliothèque",
-    pt: "Nativo Vue, sem dependências em tempo de execução – o pacote reporta 0 dependências no npm, então você está enviando apenas o código da biblioteca",
-    de: "Vue-nativ, keine Laufzeitabhängigkeiten – das Paket weist 0 Abhängigkeiten auf npm aus, sodass nur der Bibliothekscode ausgeliefert wird",
+    en: "Vue-native, no runtime deps so you’re shipping only the library code itself",
+    fr: "Natif Vue, sans dépendances à l'exécution, vous ne livrez que le code de la bibliothèque",
+    pt: "Nativo Vue, sem dependências em tempo de execução então você está enviando apenas o código da biblioteca",
+    de: "Vue-nativ, keine Laufzeitabhängigkeiten sodass nur der Bibliothekscode ausgeliefert wird",
     zh: "原生 Vue，无运行时依赖 – 该包在 npm 上显示为零依赖，因此你只需部署库本身的代码",
     jp: "Vueネイティブ、ランタイム依存なし – npmでは依存が0と表示されており、ライブラリコードのみを配布できます",
-    es: "Nativo de Vue, sin dependencias en tiempo de ejecución – el paquete informa 0 dependencias en npm, por lo que solo se envía el código de la biblioteca",
+    es: "Nativo de Vue, sin dependencias en tiempo de ejecución por lo que solo se envía el código de la biblioteca",
     ko: "Vue 네이티브, 런타임 의존성 없음 – npm에 의존성이 0개로 표시되어 라이브러리 코드만 배포됩니다",
     ar: "مبني على Vue أصلي، بدون تبعيات وقت التشغيل – الحزمة تُظهر 0 تبعيات على npm، لذا يتم شحن كود المكتبة فقط",
   },

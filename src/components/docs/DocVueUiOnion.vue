@@ -233,6 +233,7 @@ const config = ref({
     },
     table: {
         show: false,
+        useDialog: false,
         responsiveBreakpoint: 300,
         th: {
             backgroundColor: "#F3F4F6",
@@ -372,6 +373,7 @@ const darkModeConfig = ref({
     },
     table: {
         show: false,
+        useDialog: false,
         responsiveBreakpoint: 300,
         th: {
             backgroundColor: "#1A1A1A",
@@ -648,6 +650,7 @@ const codeDataset = ref(`const dataset: VueUiOnionDatasetItem[] = [
         </BaseDetails>
         <BaseDetails attr="table" :level="1">
             <BaseAttr name="show" attr="table.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+            <BaseAttr name="useDialog" attr="table.useDialog" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.1.0"/>
             <BaseAttr name="responsiveBreakpoint" attr="table.responsiveBreakpoint" type="number" defaultVal="400" :min="300" :max="800" :step="50" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseDetails attr="th" :level="2" title="table.th">
                 <BaseAttr name="backgroundColor" attr="table.th.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

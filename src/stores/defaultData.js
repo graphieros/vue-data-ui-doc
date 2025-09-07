@@ -98,6 +98,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
+                    { key: 'table.useDialog', def: false, type: 'checkbox', label: 'use dialog', category: 'table'},
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, step: 10, label: 'responsiveBreakpoint', category: 'table'},
                     { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'},
                     { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table'},
@@ -201,6 +202,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
+                    { key: 'table.useDialog', def: false, type: 'checkbox', label: 'use dialog', category: 'table'},
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, step: 10, label: 'responsiveBreakpoint', category: 'table'},
                     { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'},
                     { key: 'table.th.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColorHeader', category: 'table'},
@@ -377,6 +379,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.title.subtitle.bold', def: false, type: 'checkbox', label: 'bold', category: 'subtitle' },
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
+                    { key: 'table.useDialog', def: false, type: 'checkbox', label: 'use dialog', category: 'table'},
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, step: 10, label: 'responsiveBreakpoint', category: 'table'},
                     { key: 'table.columnNames.datapoint', def: 'Datapoint', type: 'text', label: ['columnName', 'is', 'datapoint'], category: 'table'},
                     { key: 'table.columnNames.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table'},
@@ -483,6 +486,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
+                    { key: 'table.useDialog', def: false, type: 'checkbox', label: 'use dialog', category: 'table'},
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, step: 10, label: 'responsiveBreakpoint', category: 'table'},
                     { key: 'table.columnNames.datapoint', def: 'Datapoint', type: 'text', label: ['columnName', 'is', 'datapoint'], category: 'table'},
                     { key: 'table.columnNames.value', def: 'Value', type: 'text', label: ['columnName', 'is', 'value'], category: 'table'},
@@ -659,6 +663,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     {key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
+                    { key: 'table.useDialog', def: false, type: 'checkbox', label: 'use dialog', category: 'table'},
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, step: 10, label: 'responsiveBreakpoint', category: 'table'},
                     { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'},
                     { key: 'table.columnNames.datapoint', def: 'Datapoint', type: 'text', label: ['columnName', 'is', 'datapoint'], category: 'table'},
@@ -933,6 +938,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'userOptions.buttonTitles.annotator', def: 'Toggle annotator', type: 'text', label: ['button', 'annotator', 'title', 'is', 'textContent'], category: 'userOptions'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
+                    { key: 'table.useDialog', def: false, type: 'checkbox', label: 'use dialog', category: 'table'},
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, step: 10, label: 'responsiveBreakpoint', category: 'table'},
                     { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'},
                     { key: 'table.columnNames.period', def: 'Period', type: 'text', label: ['columnName', 'is', 'period'], category: 'table'},
@@ -1313,6 +1319,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
+                    { key: 'table.useDialog', def: false, type: 'checkbox', label: 'use dialog', category: 'table'},
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, step: 10, label: 'responsiveBreakpoint', category: 'table'},
                     { key: 'table.columnNames.series', def: 'Series', type: 'text', label: ['columnName', 'is', 'series'], category: 'table'},
                     { key: 'table.columnNames.item', def: 'Item', type: 'text', label: ['columnName', 'is', 'item'], category: 'table'},

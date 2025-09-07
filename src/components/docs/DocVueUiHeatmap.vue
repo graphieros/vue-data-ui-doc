@@ -218,6 +218,7 @@ const config = ref({
   },
   table: {
     show: false,
+    useDialog: false,
     responsiveBreakpoint: 400,
     colNames: {
       xAxis: "Week"
@@ -392,6 +393,7 @@ const darkModeConfig = ref({
   },
   table: {
     show: false,
+    useDialog: false,
     responsiveBreakpoint: 400,
     colNames: {
       xAxis: "Week"
@@ -703,6 +705,7 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
       </BaseDetails>
       <BaseDetails attr="table" :level="1">
         <BaseAttr name="show" attr="table.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+        <BaseAttr name="useDialog" attr="table.useDialog" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.1.0"/>
         <BaseAttr name="responsiveBreakpoint" attr="table.responsiveBreakpoint" type="number" defaultVal="400" :min="300" :max="800" :step="50" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseDetails attr="colNames" :level="2" title="table.colNames">
           <BaseAttr name="xAxis" attr="table.colNames.xAxis" type="text" defaultVal="X" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>

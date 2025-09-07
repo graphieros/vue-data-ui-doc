@@ -296,6 +296,7 @@ const config = ref({
   },
   table: {
     show: false,
+    useDialog: false,
     rounding: 1,
     responsiveBreakpoint: 400,
     columnNames: {
@@ -520,6 +521,7 @@ const darkModeConfig = ref({
   },
   table: {
     show: false,
+    useDialog: false,
     rounding: 1,
     responsiveBreakpoint: 400,
     columnNames: {
@@ -1765,6 +1767,7 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
                   :dark="mutableConfigDarkMode"
                   @change="forceChartUpdate()"
                 />
+                <BaseAttr name="useDialog" attr="table.useDialog" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.1.0"/>
                 <BaseAttr
                   name="rounding"
                   attr="table.rounding"
