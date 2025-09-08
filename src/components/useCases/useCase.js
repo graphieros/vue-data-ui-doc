@@ -15,6 +15,41 @@ export function useCase() {
         return isDarkMode.value ? '#3A3A3A' : '#CCCCCC'
     })
 
+    function makeScatterBigData() {
+        const arr = [];
+        for (let i = -50000; i < 50000; i += 1) {
+            arr.push({
+                x: Math.random() * (Math.random() > 0.5 ? i / 4 : -i / 4),
+                y: Math.random() * (Math.random() > 0.5 ? i / 4 : -i / 4),
+                name: `datapoint_${i}`,
+            });
+        }
+        return arr;
+    }
+
+    const SCATTER_LARGE_DATASET = ref([
+        {
+            name: 'Big data',
+            values: makeScatterBigData(),
+        }
+    ]);
+
+    const SCATTER_LARGE_CONFIG = ref({
+        usePerformanceMode: true,
+        style: {
+            layout: {
+                correlation: { show: false },
+                padding: {
+                    right: 8,
+                },
+                plots: {
+                    radius: 0.5,
+                }
+            },
+            tooltip: { show: false }
+        }
+    })
+
     const SPARKLINE_SLOT_DATASET = ref([
         {
             period: "period 1",
@@ -406,8 +441,6 @@ export function useCase() {
         }
     })
 
-
-
     const XY_MULTIPLE_Y_AXES_DATASET = ref([
         {
             name: "Serie 1",
@@ -586,5 +619,7 @@ export function useCase() {
         XY_STACKED_CONFIG,
         XY_STACKED_DATASET,
         XY_STACKED_DATASET_WITH_AUTOSCALE,
+        SCATTER_LARGE_DATASET,
+        SCATTER_LARGE_CONFIG
     }
 }

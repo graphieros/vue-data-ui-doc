@@ -14,6 +14,30 @@ export const useCaseStore = defineStore("cases", {
                 ko: "코드 보기",
                 ar: 'عرض الرمز'
             },
+            SCATTER_LARGE: {
+                title: {
+                    en: 'Performance mode',
+                    fr: 'Mode performance',
+                    pt: 'Modo de desempenho',
+                    de: 'Leistungsmodus',
+                    zh: '性能模式',
+                    jp: 'パフォーマンスモード',
+                    es: 'Modo de rendimiento',
+                    ko: '성능 모드',
+                    ar: 'وضع الأداء',
+                },
+                description: {
+                    en: 'Keep your chart performant when displaying a huge amount of datapoints, with performance mode.',
+                    fr: 'Gardez votre graphique performant lors de l’affichage d’un grand nombre de points de données grâce au mode performance.',
+                    pt: 'Mantenha seu gráfico eficiente ao exibir uma grande quantidade de pontos de dados com o modo de desempenho.',
+                    de: 'Halten Sie Ihr Diagramm mit dem Leistungsmodus auch bei einer großen Menge an Datenpunkten leistungsfähig.',
+                    zh: '在显示大量数据点时，使用性能模式保持图表的高效。',
+                    jp: '大量のデータポイントを表示する際も、パフォーマンスモードでグラフの性能を維持します。',
+                    es: 'Mantén tu gráfico eficiente al mostrar una gran cantidad de puntos de datos con el modo de rendimiento.',
+                    ko: '많은 데이터 포인트를 표시할 때 성능 모드로 차트의 성능을 유지하세요.',
+                    ar: 'حافظ على أداء الرسم البياني عند عرض عدد كبير من نقاط البيانات باستخدام وضع الأداء.',
+                }
+            },
             XY_FIXED_SCALE: {
                 title: {
                     en: 'Force min and max yAxis scales',
