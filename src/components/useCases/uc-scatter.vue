@@ -26,40 +26,40 @@ const {
 } = useCase()
 
 const code = ref(`import { VueUiScatter } from "vue-data-ui";
-    function makeScatterBigData() {
-        const arr = [];
-        for (let i = -50000; i < 50000; i += 1) {
-            arr.push({
-                x: Math.random() * (Math.random() > 0.5 ? i / 4 : -i / 4),
-                y: Math.random() * (Math.random() > 0.5 ? i / 4 : -i / 4),
-                name: \`datapoint_\${i}\`,
-            });
-        }
-        return arr;
+function makeScatterBigData() {
+    const arr = [];
+    for (let i = -50000; i < 50000; i += 1) {
+        arr.push({
+            x: Math.random() * (Math.random() > 0.5 ? i / 4 : -i / 4),
+            y: Math.random() * (Math.random() > 0.5 ? i / 4 : -i / 4),
+            name: \`datapoint_\${i}\`,
+        });
     }
+    return arr;
+}
 
-    const dataset = ref([
-        {
-            name: 'Big data',
-            values: makeScatterBigData(),
-        }
-    ]);
+const dataset = ref([
+    {
+        name: 'Big data',
+        values: makeScatterBigData(),
+    }
+]);
 
-    const config = ref({
-        usePerformanceMode: true,
-        style: {
-            layout: {
-                correlation: { show: false },
-                padding: {
-                    right: 8,
-                },
-                plots: {
-                    radius: 0.5,
-                }
+const config = ref({
+    usePerformanceMode: true,
+    style: {
+        layout: {
+            correlation: { show: false },
+            padding: {
+                right: 8,
             },
-            tooltip: { show: false }
-        }
-    })
+            plots: {
+                radius: 0.5,
+            }
+        },
+        tooltip: { show: false }
+    }
+})
 `);
 
 </script>
