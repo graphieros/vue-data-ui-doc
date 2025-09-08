@@ -12,12 +12,15 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import DocSnapper from "../DocSnapper.vue";
+import useMobile from "../../useMobile";
 
 const mainConfig = useConfig()
 
 const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
+const isFixed = ref(false);
 
 onMounted(() => store.docSnap = false);
 
@@ -35,13 +38,14 @@ const dataset0 = ref(299792458);
 const dataset1 = ref(40075);
 const dataset2 = ref(384400);
 
-const config = ref({
+const config = computed(() => {
+    return {
     debug: false,
     animationFrames: 60,
     animationValueStart: 0,
     backgroundColor: "#FFFFFF",
     fontFamily: "inherit",
-    layoutClass: "bg-white p-4 rounded-md shadow-md mb-6",
+    layoutClass: "p-4 rounded-md shadow-md mb-6 w-full max-w-[350px] mx-auto",
     prefix: "",
     suffix: "m/s",
     title: "Speed of light",
@@ -63,15 +67,17 @@ const config = ref({
         color: '#1A1A1A',
         skeletonColor: "#E1E5E8"
     }
+}
 })
 
-const darkModeConfig = ref({
+const darkModeConfig = computed(() => {
+    return {
     debug: false,
     animationFrames: 60,
     animationValueStart: 0,
     backgroundColor: "#2A2A2A",
     fontFamily: "inherit",
-    layoutClass: "p-4 rounded-md shadow-md mb-6",
+    layoutClass: "p-4 rounded-md shadow-md mb-6 w-full max-w-[350px] mx-auto",
     prefix: "",
     suffix: " m/s",
     title: "Speed of light",
@@ -93,6 +99,7 @@ const darkModeConfig = ref({
         color: '#6376DD',
         skeletonColor: "#2A2A2A"
     }
+}
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -123,6 +130,13 @@ function copyToClipboard(conf) {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const { isMobile } = useMobile()
+
+function fixChart() {
+    isFixed.value = !isFixed.value;
+    store.docSnap = !store.docSnap;
+}
+
 </script>
 
 <template>
@@ -139,19 +153,29 @@ const { configCode, showAllConfig } = useConfigCode()
             :configSource="mainConfig.vue_ui_kpi"
         />
 
-        <div class="w-full mx-auto flex flex-row gap-4 flex-grow place-items-center justify-center">
-            <Suspense>
-                <template #default>
-                    <VueDataUi component="VueUiKpi" :dataset="dataset0" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`kpi0_${key}`">
-                        <template #comment-before>
-                            <div :class="`max-w-[300px] text-[12px] mt-2 text-gray-500 ${mutableConfigDarkMode.analogDigits.show || mutableConfig.analogDigits.show ? 'mb-2' : ''}`">According to the special theory of relativity, c is the upper limit for the speed at which conventional matter or energy (and thus any signal carrying information) can travel through space</div>
-                        </template>
-                    </VueDataUi>
-                </template>
-                <template #fallback>
-                    <BaseSpinner/>
-                </template>
-            </Suspense>
+        <div class="transition-all mx-auto w-1/2">
+            <DocSnapper
+                :isFixed="isFixed"
+                :disabled="!isFixed || isMobile"
+                @fixChart="fixChart"
+                @resetDefault="resetDefault"
+                @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
+            >
+                <VueDataUi 
+                    component="VueUiKpi" 
+                    :dataset="dataset0" 
+                    :config="isDarkMode ? {
+                        ...mutableConfigDarkMode,
+                        valueFontSize: isFixed ? 28 : mutableConfigDarkMode.valueFontSize 
+                    } : {
+                        ...mutableConfig,
+                        valueFontSize: isFixed ? 28 : mutableConfig.valueFontSize
+                    }" :key="`kpi0_${key}`">
+                    <template #comment-before>
+                        <div :class="`max-w-[300px] text-[12px] mt-2 text-gray-500 ${mutableConfigDarkMode.analogDigits.show || mutableConfig.analogDigits.show ? 'mb-2' : ''}`">According to the special theory of relativity, c is the upper limit for the speed at which conventional matter or energy (and thus any signal carrying information) can travel through space</div>
+                    </template>
+                </VueDataUi>
+            </DocSnapper>
         </div>
         <Rater itemId="vue_ui_kpi" />
 

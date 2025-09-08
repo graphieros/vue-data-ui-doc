@@ -1573,7 +1573,7 @@ const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_config = g
                 v-show="store.docSnap && router.currentRoute.value.fullPath.includes('/docs#vue')"
                 backgroundColor="bg-[#f3f4f6] dark:bg-[#1A1A1A] border border-white dark:border-[#3A3A3A]"
             >
-                <div id="docSnap" class="max-w-[300px] max-h-[800px] overflow-hidden"/>
+                <div id="docSnap" class="max-w-[350px] max-h-[800px] overflow-hidden"/>
             </BaseDragElement>
         </div>
     </div>
