@@ -676,7 +676,7 @@ const carouselConfig = computed(() => {
                       ${plot.patternIndex === 4 ? 'mt-[32px] -mr-2 leading-3' : ''}
                     `"
                   >
-                    <div :class="`text-[#1A1A1A] dark:text-[#CCCCCC] text-[12px] sm:text-[16px] ${plot.patternIndex === 4 ? 'pb-2' : ''}`">{{ plot.name }}</div>
+                    <div :class="`text-[#3A3A3A] dark:text-[#CCCCCC] font-inter-medium text-[12px] sm:text-[16px] ${plot.patternIndex === 4 ? 'pb-2' : ''}`">{{ plot.name }}</div>
                     {{ getPlotLabel(plot) }}
                   </div>
                 </template>

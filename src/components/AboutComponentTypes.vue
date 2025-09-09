@@ -36,7 +36,30 @@ const dataset = ref([
     values: [2],
     color: shiftHue({ hexColor: '#1f77b4', force: -0.2})
   },
-])
+]);
+
+const datasetBar = computed(() => {
+  return {
+    series: dataset.value.map(d => ({
+      name: d.name,
+      value: d.values[0],
+      color: d.color
+    }))
+  }
+});
+
+const configBar = computed(() => ({
+  userOptions: { show: false },
+  style: {
+    chart: {
+      backgroundColor: 'transparent',
+      color: isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
+      legend: {
+        color: isDarkMode.value ? '#CCCCCC' : '#3A3A3A',
+      }
+    }
+  }
+}))
 
 /**
  * This is the default config.
@@ -59,9 +82,11 @@ const config = computed(() => {
       fontFamily: "inherit",
       chart: {
         useGradient: true,
+        height: 500,
         gradientIntensity: 20,
-        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+        backgroundColor: 'transparent',
         color: "#2D353C",
+        padding: { top: 12 },
         layout: {
           curvedMarkers: true,
           labels: {
@@ -96,6 +121,8 @@ const config = computed(() => {
             borderWidth: 2,
             useShadow: true,
             shadowColor: "#2D353C",
+            borderColorAuto: false,
+            borderColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
           },
         },
         legend: {
@@ -133,27 +160,35 @@ const config = computed(() => {
 </script>
 
 <template>
-    <VueDataUi
-      component="VueUiDonut"
-      :dataset="dataset"
-      :config="config"
-    >
-      <template #svg="{ svg }">
-        <foreignObject
-          width="150"
-          height="150"
-          :x="svg.width / 2 - 67.5"
-          :y="svg.height / 2 - 50"
-          :style="{
-            pointerEvents: 'none'
-          }"
-        >
-          <img 
-            src="../assets/logo3.png" 
-            alt="Vue Data UI logo"
-            class="drop-shadow-[0_5px_4px_#1A1A1A90]"
+    <div class="flex flex-row align-center justify-center">
+      <VueDataUi
+        component="VueUiDonut"
+        :dataset="dataset"
+        :config="config"
+      >
+        <template #svg="{ svg }">
+          <foreignObject
+            width="130"
+            height="130"
+            :x="svg.width / 2 - 60.5"
+            :y="svg.height / 2 - 45"
+            :style="{
+              pointerEvents: 'none'
+            }"
           >
-        </foreignObject>
-      </template>
-    </VueDataUi>
+            <img 
+              src="../assets/logo3.png" 
+              alt="Vue Data UI logo"
+              class="drop-shadow-[0_5px_4px_#1A1A1A90]"
+            >
+          </foreignObject>
+        </template>
+      </VueDataUi>
+  
+      <VueDataUi
+        component="VueUi3dBar"
+        :dataset="datasetBar"
+        :config="configBar"
+      />
+    </div>
 </template>
