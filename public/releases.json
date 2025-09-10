@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.1.2",
+    "date": "2025-09-10",
+    "updates": [
+      {
+        "component": "VueUiDashboard",
+        "description": "Add user options and improve pdf generation",
+        "link": "/docs#vue-ui-dashboard"
+      }
+    ]
+  },
+  {
     "version": "v 3.1.1",
     "date": "2025-09-07",
     "updates": [

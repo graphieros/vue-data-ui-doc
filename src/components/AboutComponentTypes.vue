@@ -14,27 +14,27 @@ const dataset = ref([
   {
     name: "Charts",
     values: [37],
-    color: shiftHue({ hexColor: '#1f77b4', force: 0.05})
+    color: shiftHue({ hexColor: '#5f8aee', force: 0})
   },
   {
     name: 'Mini charts',
     values: [10],
-    color: shiftHue({ hexColor: '#1f77b4', force: 0})
+    color: shiftHue({ hexColor: '#5f8aee', force: -0.05})
   },
   {
     name: "Utilities",
     values: [9],
-    color: shiftHue({ hexColor: '#1f77b4', force: -0.1})
+    color: shiftHue({ hexColor: '#5f8aee', force: -0.1})
   },
   {
     name: "Tables",
     values: [4],
-    color: shiftHue({ hexColor: '#1f77b4', force: -0.15})
+    color: shiftHue({ hexColor: '#5f8aee', force: -0.17})
   },
   {
     name: "Rating",
     values: [2],
-    color: shiftHue({ hexColor: '#1f77b4', force: -0.2})
+    color: shiftHue({ hexColor: '#5f8aee', force: -0.25})
   },
 ]);
 

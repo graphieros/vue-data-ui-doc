@@ -9,6 +9,9 @@ import BaseSpinner from "../BaseSpinner.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseButtonSparkline from "../BaseButtonSparkline.vue";
+import { useConfigCode } from "../../useConfigCode";
+import BaseDetails from "../BaseDetails.vue";
+import BaseAttr from "../BaseAttr.vue";
 
 const mainConfig = useConfig()
 
@@ -26,13 +29,12 @@ watch(() => store.isDarkMode, (val) => {
 
 const isDarkMode = computed(() => store.isDarkMode)
 
-const config = ref(
-    {
+const config = ref({
     locked: false,
     style: {
         board: {
             backgroundColor: "#FFFFFF",
-            color: "#CCCCCC",
+            color: "#1A1A1A",
             aspectRatio: "1/1.4141",
             border: "1px solid #e1e5e8"
         },
@@ -42,12 +44,34 @@ const config = ref(
         },
         resizeHandles: {
             backgroundColor: "#42d392",
-            border: "none"
         }
     },
-        allowPrint: true
-    }
-)
+    userOptions: {
+        show: true,
+        showOnChartHover: false,
+        keepStateOnChartLeave: true,
+        position: 'right',
+        buttons: {
+            pdf: true,
+            img: true,
+            annotator: true,
+        },
+        callbacks: {
+            pdf: null,
+            img: null,
+            annotator: null,
+        },
+        buttonTitles: {
+            pdf: 'Download PDF',
+            img: 'Download PNG',
+            annotator: 'Toggle annotator'
+        },
+        print: {
+            scale: 2,
+            filename: '',
+        }
+    },
+})
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 function resetDefault() {
@@ -136,6 +160,8 @@ const dashboardComponents = computed(() => {
         { id: 5, width: 94, height: 36, left: 3, top: 62, component: 'VueUiChestnut', props: { config: chestnutConfig, dataset: chestnutDataset}},
     ]
 });
+
+const { configCode, showAllConfig } = useConfigCode()
 
 </script>
 
@@ -233,28 +259,56 @@ const <span class="text-black dark:text-app-green">dataset: VueUiDashboardElemen
                 <div class="mt-4">
                     TS type: <code class="text-app-blue">VueUiDashboardConfig</code>
                 </div>
-<pre>
-<code>
-const <span class="text-black dark:text-app-blue">config: VueUiDashboardConfig</span> = {
-    allowPrint: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.allowPrint" @change="forceChartUpdate()">
-    style: {
-        board: {
-            backgroundColor:  <input type="color" v-model="mutableConfig.style.board.backgroundColor">, (default: "#FFFFFF")
-            border:  <input type="text" v-model="mutableConfig.style.board.border">, (default: "1px solid #e1e5e8")
-            aspectRatio: <input type="text" v-model="mutableConfig.style.board.aspectRatio">, (default: "1 / 1.4141")
-            color: <input type="color" v-model="mutableConfig.style.board.color">, (default: "#2D353C")
-        },
-        item: {
-            backgroundColor:  <input type="color" v-model="mutableConfig.style.item.backgroundColor">, (default: "#FFFFFF")
-            borderColor: <input type="color" v-model="mutableConfig.style.item.borderColor">, (default: "#e1e5e8")
-        },
-        resizeHandles: {
-            backgroundColor: <input type="color" v-model="mutableConfig.style.resizeHandles.backgroundColor">, (default: "#2D353C")
-        },
-    },
-}
-</code>
-</pre>                
+
+                <div class="my-4">
+                    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+                </div>
+
+<code ref="configCode">
+    <BaseDetails attr="const config: VueUiDashboardConfig" equal>
+        <BaseAttr name="locked" attr="locked" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfig" @change="forceChartUpdate()"/>
+
+        <BaseDetails attr="style" :level="1">
+            <BaseDetails attr="board" :level="2" title="style.board">
+                <BaseAttr name="backgroundColor" attr="style.board.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfig"/>
+                <BaseAttr name="color" attr="style.board.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfig"/>
+                <BaseAttr name="aspectRatio" attr="style.board.aspectRatio" type="text" defaultVal="1/1.4141" :light="mutableConfig" :dark="mutableConfig"/>
+                <BaseAttr name="border" attr="style.board.border" type="text" defaultVal="none" :light="mutableConfig" :dark="mutableConfig"/>
+            </BaseDetails>
+
+            <BaseDetails attr="item" :level="2" title="style.item">
+                <BaseAttr name="backgroundColor" attr="style.item.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfig"/>  
+                <BaseAttr name="borderColor" attr="style.item.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfig"/>
+            </BaseDetails>
+
+            <BaseDetails attr="resizeHandles" :level="2" title="style.resizeHandles">
+                <BaseAttr name="backgroundColor" attr="style.resizeHandles.backgroundColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfig"/>
+            </BaseDetails>
+        </BaseDetails>
+
+        <BaseDetails attr="userOptions" :level="1">
+            <BaseAttr name="show" attr="userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfig"/>
+            <BaseAttr name="showOnChartHover" attr="userOptions.showOnChartHover" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfig" />
+            <BaseAttr name="keepStateOnChartLeave" attr="userOptions.keepStateOnChartLeave" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfig"/>
+            <BaseAttr name="position" attr="userOptions.position" type="select" defaultVal="right" :options="['right', 'left']" :light="mutableConfig" :dark="mutableConfig"/>
+            <BaseDetails attr="buttons" :level="2" title="userOptions.buttons">
+                <BaseAttr name="pdf" attr="userOptions.buttons.pdf" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfig"/>
+                <BaseAttr name="img" attr="userOptions.buttons.img" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfig"/>
+                <BaseAttr name="annotator" attr="userOptions.buttons.annotator" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfig"/>
+            </BaseDetails>
+            <BaseDetails attr="buttonTitles" :level="2" title="userOptions.buttonTitles">
+                <BaseAttr name="pdf" attr="userOptions.buttonTitles.pdf" type="text" defaultVal="Download PDF" :light="mutableConfig" :dark="mutableConfig"/>
+                <BaseAttr name="img" attr="userOptions.buttonTitles.img" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfig"/>
+                <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfig"/>
+            </BaseDetails>
+            <BaseDetails attr="print" :level="2" title="userOptions.print">
+                <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfig" comment="Set print quality (higher = larger file)"/>
+                <BaseAttr name="filename" attr="userOptions.print.filename" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfig"/>
+            </BaseDetails>
+        </BaseDetails>
+    </BaseDetails>
+</code>                
+
             </template>
             <template #tab2>
                 <div><code><b>@change</b></code></div>
