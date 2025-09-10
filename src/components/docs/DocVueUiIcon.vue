@@ -44,6 +44,8 @@ const icons = ref([
     "tableOpen",
     "tooltip",
     "unstack",
+    "tableDialogOpen",
+    "tableDialogClose"
 ]);
 
 const specialIcons = ref([
