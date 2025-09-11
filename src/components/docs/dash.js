@@ -40,14 +40,7 @@ export const xyConfig = {
             opacity: 10,
         },
         zoom: {
-            show: true,
             color: "#42d392"
-        },
-        padding: {
-            top:  36,
-            right: 12,
-            bottom: 36,
-            left: 48
         },
         grid: {
             stroke: "#C4C4C4",

@@ -146,9 +146,10 @@ const sparklineConfigUsers = computed(() => {
 
 const dashboardComponents = computed(() => {
     return [
-        { id: 1, width: 50, height: 35, left: 3, top: 2, component: 'VueUiXy', props: { config: xyConfig, dataset: xyDataset}},
+        { id: 1, width: 50, height: 25, left: 3, top: 2, component: 'VueUiXy', props: { config: xyConfig, dataset: xyDataset}},
         { id: 2, width: 35, height: 25, left: 62, top: 2, component: 'VueUiDonut', props: { config: donutConfig, dataset: donutDataset}},
-        { id: 3, width: 25, height: 7, left: 12, top: 45, component: markRaw(BaseButtonSparkline), props: {
+        { id: 5, width: 94, height: 36, left: 3, top: 28, component: 'VueUiChestnut', props: { config: chestnutConfig, dataset: chestnutDataset}},
+        { id: 3, width: 25, height: 7, left: 71, top: 50, component: markRaw(BaseButtonSparkline), props: {
             title: 'Daily users',
             buttonClass: 'bg-gradient-to-bl from-app-blue-light to-app-blue hover:bg-gradient-to-l text-black transition-all',
             popoverClass: 'rounded-b-md py-1 bg-white dark:bg-[#2A2A2A] shadow-md',
@@ -156,8 +157,7 @@ const dashboardComponents = computed(() => {
             sparklineConfig: sparklineConfigUsers.value,
             openState: true
         }},
-        { id: 4, width: 55, height: 33, left: 42, top: 31, component: 'VueUiRadar', props: { config: radarConfig, dataset: radarDataset}},
-        { id: 5, width: 94, height: 36, left: 3, top: 62, component: 'VueUiChestnut', props: { config: chestnutConfig, dataset: chestnutDataset}},
+        { id: 4, width: 55, height: 33, left: 22, top: 65, component: 'VueUiRadar', props: { config: radarConfig, dataset: radarDataset}},
     ]
 });
 
