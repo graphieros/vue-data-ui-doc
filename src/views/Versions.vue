@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, watch, nextTick } from "vue";
+import { ref, computed, onMounted, watch, nextTick, watchEffect } from "vue";
 import { useMainStore } from "../stores";
 import staticReleases from "../../public/releases.json"
 import { createWordCloudDatasetFromPlainText } from "vue-data-ui"
@@ -446,9 +446,11 @@ onMounted(() => {
         return response.json();
     }).then(data => {
         versionsList.value = data;
+        setSem()
     }).catch(err => {
         console.error(err.message);
         versionsList.value = staticReleases
+        setSem()
     }).finally(() => {
       done.value = true;
       setTimeout(() => {
@@ -1856,6 +1858,91 @@ const dogFood = ref({
   ar: "لوحة معلومات حول مؤشرات الأداء الرئيسية لـ Vue Data UI، تجربة المكتبة داخليًا :)"
 })
 
+
+const enableSem = ref(false);
+
+const major = ref({
+  ver: 3,
+  available: [0,1,2,3]
+})
+
+const minor = ref({
+  ver: 0,
+  available: [0]
+})
+
+const patch = ref({
+  ver: 0,
+  available: [0]
+})
+
+function resetSem() {
+  major.value.ver = 3;
+  setSem();
+  impactMinor();
+  impactPatch();
+}
+
+function setSem() {
+  const latest = versionsList.value[0].version.split(' ')[1]
+  const [ma, mi, pa] = latest.split('.')
+  major.value.ver = ma;
+  minor.value.ver = mi;
+  patch.value.ver = pa;
+}
+
+const filteredVersions = computed(() => {
+  const maj = Number(major.value.ver);
+  const min = Number(minor.value.ver);
+  const pat = Number(patch.value.ver);
+
+  const parsed = versionsList.value
+    .map(v => {
+      const m = String(v.version).match(/(\d+)\.(\d+)\.(\d+)/);
+      if (!m) return null;
+      return {
+        original: v,
+        major: Number(m[1]),
+        minor: Number(m[2]),
+        patch: Number(m[3]),
+      };
+    })
+    .filter(Boolean);
+
+  const minors = parsed
+    .filter(p => p.major === maj)
+    .map(p => p.minor);
+
+  minor.value.available = Array.from(new Set(minors)).sort((a, b) => a - b);
+
+  const patches = parsed
+    .filter(p => p.major === maj && p.minor === min)
+    .map(p => p.patch);
+
+  patch.value.available = Array.from(new Set(patches)).sort((a, b) => a - b);
+
+  if (!enableSem.value) return versionsList.value;
+
+  return parsed
+    .filter(p => p.major === maj && p.minor === min && p.patch === pat)
+    .map(p => p.original);
+});
+
+
+async function impactMinor() {
+  await nextTick();
+  await nextTick();
+  minor.value.ver = String(Math.max(...minor.value.available.map(n => +n)));
+  impactPatch();
+}
+
+async function impactPatch() {
+  await nextTick();
+  await nextTick();
+  patch.value.ver = String(Math.max(...patch.value.available.map(n => +n)));
+}
+
+
 </script>
 
 <template>
@@ -2129,8 +2216,34 @@ const dogFood = ref({
                   Releases:
                 </div>
                 <div class="w-full max-h-[500px] overflow-y-auto dark:bg-[#1E1E1E] p-4">
+                  <div class="flex flex-row gap-2 mb-6">
+                    <label>
+                      Filter by version
+                      <input type="checkbox" v-model="enableSem" @change="resetSem">
+                    </label>
+                    <template v-if="enableSem">
+                      <label>
+                        Major
+                        <select v-model="major.ver" class="w-[64px]" @change="impactMinor">
+                          <option v-for="o in major.available">{{ o }}</option>
+                        </select>
+                      </label>
+                      <label>
+                        Minor
+                        <select v-model="minor.ver" class="w-[64px]" @change="impactPatch">
+                          <option v-for="o in minor.available">{{ o }}</option>
+                        </select>
+                      </label>
+                      <label>
+                        Patch
+                        <select v-model="patch.ver" class="w-[64px]">
+                          <option v-for="o in patch.available">{{ o }}</option>
+                        </select>
+                      </label>
+                    </template>
+                  </div>
                     <ul>
-                        <li v-for="log in versionsList" class="border-l border-gray-500 mb-4">
+                        <li v-for="log in filteredVersions" class="border-l border-gray-500 mb-4">
                           <div class="bg-gray-200 dark:bg-[#FFFFFF10] pl-6 py-2 mb-2">
                             {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
                           </div>
