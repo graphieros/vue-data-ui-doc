@@ -430,7 +430,7 @@ const advantagesTitle = ref({
       {{ translations.menu.about[store.lang] }}
     </h1>
 
-    <div class="w-full max-h-[500px] mx-auto">
+    <div class="w-full mx-auto">
       <Suspense>
         <template #default>
           <AboutComponentTypes />
