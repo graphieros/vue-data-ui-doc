@@ -301,6 +301,7 @@ const config = ref({
             }
         },
         exportMenu: {
+            show: true,
             backgroundColor: "#FFFFFF",
             color: "#1A1A1A",
             buttons: {
@@ -467,6 +468,7 @@ const darkModeConfig = ref({
             }
         },
         exportMenu: {
+            show: true,
             backgroundColor: "#1a1a1a",
             color: "#E1E5E8",
             buttons: {
@@ -614,6 +616,35 @@ const dsTypeCode = computed(() => {
     `
 })
 
+const pageChangeCodeTemplate = ref(`<VueUiTable
+    :config="config"
+    :dataset="dataset"
+    @page-change="onPageChange"
+/>`)
+
+const pageChangeCode = ref(`function onPageChange(pageData: VueUiTablePageChangeEvent) {
+    const { 
+        currentPage,
+        totalPages,
+        itemsPerPage,
+        currentPageData
+    } = pageData;
+
+    console.log({ currentPage, totalPages, itemsPerPages, currentPageData });
+}`)
+
+const pageEventDescription = ref( {
+    en: 'This event fires when using the pagination buttons, as well as when the number of items per page is modified.',
+    fr: 'Cet événement se déclenche lors de l’utilisation des boutons de pagination, ainsi que lorsque le nombre d’éléments par page est modifié.',
+    pt: 'Este evento é acionado ao usar os botões de paginação, bem como quando o número de itens por página é modificado.',
+    de: 'Dieses Ereignis wird ausgelöst, wenn die Seitenschaltflächen verwendet werden oder wenn die Anzahl der Elemente pro Seite geändert wird.',
+    zh: '当使用分页按钮或修改每页项目数时，会触发此事件。',
+    jp: 'ページネーションボタンを使用したとき、または1ページあたりの項目数が変更されたときに、このイベントが発火します。',
+    es: 'Este evento se dispara al usar los botones de paginación, así como cuando se modifica el número de elementos por página.',
+    ar: 'يتم تشغيل هذا الحدث عند استخدام أزرار الترقيم، وكذلك عند تعديل عدد العناصر لكل صفحة.',
+    ko: '이 이벤트는 페이지네이션 버튼을 사용할 때와 페이지당 항목 수가 변경될 때 발생합니다.'
+})
+
 </script>
 
 <template>
@@ -641,7 +672,21 @@ const dsTypeCode = computed(() => {
 
         <Rater itemId="vue_ui_table" />
     
-        <Box>
+        <Box showEmits>
+            <template #tab2>
+                <p class="mb-4">{{ pageEventDescription[store.lang] }}</p>
+                <CodeParser
+                    language="javascript"
+                    @copy="store.copy()"
+                    :content="pageChangeCode"
+                    title="@page-change"
+                />
+                <CodeParser
+                    language="html"
+                    @copy="store.copy()"
+                    :content="pageChangeCodeTemplate"
+                />
+            </template>
             <template v-slot:tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -926,6 +971,7 @@ const dsTypeCode = computed(() => {
                 }
             },
             exportMenu: {
+                show: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.exportMenu.show"><input v-else type="checkbox" v-model="mutableConfig.style.exportMenu.show">, (default: true)
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.exportMenu.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.exportMenu.backgroundColor">, (default: "#E1E5E8")
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.exportMenu.color"><input v-else type="color" v-model="mutableConfig.style.exportMenu.color">, (default: "#2D353C")
                 buttons: {

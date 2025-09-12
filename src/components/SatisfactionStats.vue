@@ -649,6 +649,19 @@ function makeRatingBreakdown(ratingBreakdown, name, type = "bar") {
     ]
 }
 
+const area = computed(() => {
+    if (!history.value || !history.value.dates) {
+        return {
+            from: 0,
+            to: 1
+        }
+    }
+    return {
+        from: history.value.dates.indexOf('2025-08-24'),
+        to: history.value.dates.length - 1
+    }
+})
+
 const ratingBreakdownBarConfig = computed(() => {
     return {
         chart: {
@@ -736,6 +749,9 @@ const xyConfig = computed(() => {
         chart: {
             backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            padding: {
+                top: 20
+            },
             grid: {
                 labels: {
                     fontSize: 20,
@@ -756,6 +772,26 @@ const xyConfig = computed(() => {
                     }
                 }
             },
+            highlightArea: [
+                {
+                    show: true,
+                    from: area.value.from,
+                    to: area.value.to,
+                    color: '#42d392',
+                    opacity: isDarkMode.value ? 12 : 20,
+                    caption: {
+                        text: 'v.3',
+                        fontFamily: 'inherit',
+                        width: 'auto',
+                        padding: 3,
+                        color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                        fontSize: 20,
+                        bold: false,
+                        offsetY: -36,
+                        textAlign: 'center'
+                    }
+                }
+            ],
             highlighter: {
                 color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
             },
