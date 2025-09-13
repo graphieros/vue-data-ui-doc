@@ -965,6 +965,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
                     { key: 'style.chart.tooltip.showTimeLabel', def: true, type: 'checkbox', label: ['time label', 'is', 'show'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'style.chart.title.text', def: 'Title', type: 'text', label: ['textContent'], category: 'title'},
                     { key: 'style.chart.title.color', def: '#1A1A1A', type: 'color', label: ['textColor'], category: 'title'},
@@ -1317,6 +1320,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'number', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table'},
                     { key: 'table.useDialog', def: false, type: 'checkbox', label: 'use dialog', category: 'table'},
@@ -1416,6 +1422,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.translations.from', def: 'From:', type: 'string', label: ['translation', 'is', 'from'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.translations.to', def: 'To:', type: 'string', label: ['translation', 'is', 'to'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.translations.percentOfTotal', def: 'Percent of total:', type: 'string', label: ['translation', 'is', 'percent of total'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
+
                 ],
             },
             vue_ui_xy: {
@@ -1578,6 +1588,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
                     { key: 'chart.tooltip.showTimeLabel', def: true, type: 'checkbox', label: ['time label', 'is', 'show'], category: 'tooltip'},
+                    { key: 'chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'chart.userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'chart.userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['show', 'on', 'hover'], category: 'userOptions' },
@@ -1823,6 +1836,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['show', 'on', 'hover'], category: 'userOptions' },
@@ -1907,6 +1923,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend' },
@@ -2045,6 +2064,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: "color", label: 'backgroundColor', category: 'legend' },
@@ -2302,6 +2324,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'userOptions' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['show', 'on', 'hover'], category: 'userOptions' },
@@ -2448,6 +2473,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['tooltip', 'background', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'style.chart.legend.show', def: true, type: 'checkbox', label: 'show', category: 'legend' },
                     { key: 'style.chart.legend.backgroundColor', def: '#FFFFFF', type: 'color', label: 'backgroundColor', category: 'legend' },
@@ -2867,6 +2895,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -3033,6 +3064,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.borderColor', def: '#e1e5e8', type: 'color', label: ['border', "is", 'color'], category: 'tooltip'},
                     { key: 'style.tooltip.borderWidth', def: 1, type: 'number', min: 0, max: 12, step: 0.1, label: ['border', 'is', 'thickness'], category: 'tooltip'},
                     { key: 'style.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['tooltip', 'background', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
+
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'general' },
                     { key: 'userOptions.keepStateOnChartLeave', def: true, type: 'checkbox', label: ['user options', 'is', 'keep state on leave'], category: 'general' },
@@ -3129,7 +3164,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.borderWidth', def: 0, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'tooltip'},
                     { key: 'style.tooltip.borderColor', def: '#E1E5E8', type: 'color', label: ['border', 'is', 'color'], category: 'tooltip'},
                     { key: 'style.tooltip.borderRadius', def: 2, type: 'number', min: 0, max: 24, label: ['border', 'is', 'radius'], category: 'tooltip'},
-                    { key: 'style.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['background', 'is', 'opacity'], category: 'tooltip'}
+                    { key: 'style.tooltip.backgroundOpacity', def: 100, type: 'range', min: 0, max: 100, label: ['background', 'is', 'opacity'], category: 'tooltip'},
+                    { key: 'style.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
                 ]
             },
             vue_ui_sparkstackbar: {
@@ -3199,6 +3237,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
                 ]
             },
             vue_ui_sparkbar: {
@@ -3626,6 +3667,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'general' },
@@ -3818,6 +3862,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: "checkbox", label: 'showUserOptions', category: 'general' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'general' },
@@ -3921,6 +3968,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'general' },
@@ -4366,6 +4416,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip' },
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 400, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -4500,6 +4553,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'userOptions.show', def: true, type: 'checkbox', label: 'showUserOptions', category: 'general' },
                     { key: 'userOptions.showOnChartHover', def: false, type: 'checkbox', label: ['user options', 'is', 'show', 'on', 'hover'], category: 'general' },
@@ -4682,6 +4738,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
 
                     { key: 'table.show', def: false, type: 'checkbox', label: 'show', category: 'table' },
                     { key: 'table.responsiveBreakpoint', def: 300, type: 'number', min: 300, max: 800, label: 'responsiveBreakpoint', category: 'table' },
@@ -4763,6 +4822,9 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.tooltip.backgroundOpacity', def: 30, type: 'range', min: 0, max: 100, label: ['backgroundColor', 'is', 'opacity'], category: 'tooltip'},
                     { key: 'style.chart.tooltip.position', def: 'center', type: 'select', options: ['left', 'center', 'right'], label: 'position', category: 'tooltip'},
                     { key: 'style.chart.tooltip.offsetY', def: 24, type: 'number', min: 0, max: 64, label: 'offsetY', category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smooth', def: true, type: 'checkbox', label: ['smoothed'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothForce', def: 0.18, type: 'number', min: 0.1, max: 1, step: 0.01, label: ['smooth', 'is', 'force'], category: 'tooltip'},
+                    { key: 'style.chart.tooltip.smoothSnapThreshold', def: 0.25, type: 'number', min: 0.1, max: 24, step: 0.01, label: ['smooth', 'is', 'snap threshold'], category: 'tooltip'},
                 ]
             }
         }
