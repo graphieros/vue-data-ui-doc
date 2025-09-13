@@ -751,7 +751,10 @@ const config = ref({
       borderWidth: 1,
       backgroundOpacity: 30,
       position: 'center',
-      offsetY: 24
+      offsetY: 24,
+      smooth: true,
+      smoothForce: 0.18,
+      smoothSnapThreshold: 0.25
     }
   },
   translations: {
@@ -912,7 +915,10 @@ const darkModeConfig = ref({
       borderWidth: 1,
       backgroundOpacity: 50,
       position: 'center',
-      offsetY: 24
+      offsetY: 24,
+      smooth: true,
+      smoothForce: 0.18,
+      smoothSnapThreshold: 0.25
     }
   },
   translations: {
@@ -1200,6 +1206,9 @@ const dsTypeCode = computed(() => {
         <BaseAttr name="backgroundOpacity" attr="style.tooltip.backgroundOpacity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="position" attr="style.tooltip.position" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="offsetY" attr="style.tooltip.offsetY" type="number" defaultVal="24" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+        <BaseAttr name="smooth" attr="style.tooltip.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="smoothForce" attr="style.tooltip.smoothForce" type="number" defaultVal="0.18" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="smoothSnapThreshold" attr="style.tooltip.smoothSnapThreshold" type="number" defaultVal="0.25" :min="0.1" :max="24" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       </BaseDetails>
     </BaseDetails>
     <BaseDetails attr="table" :level="1">

@@ -429,7 +429,10 @@ const config = ref({
             offsetY: 24,
             showTimeLabel: true,
             useDefaultTimeFormat: true,
-            timeFormat: 'yyyy-MM-dd HH:mm:ss'
+            timeFormat: 'yyyy-MM-dd HH:mm:ss',
+            smooth: true,
+            smoothForce: 0.18,
+            smoothSnapThreshold: 0.25
         },
         userOptions: {
             print: {
@@ -843,7 +846,10 @@ const darkModeConfig = ref({
             offsetY: 24,
             showTimeLabel: true,
             useDefaultTimeFormat: true,
-            timeFormat: 'yyyy-MM-dd HH:mm:ss'
+            timeFormat: 'yyyy-MM-dd HH:mm:ss',
+            smooth: true,
+            smoothForce: 0.18,
+            smoothSnapThreshold: 0.25
         },
         userOptions: {
             print: {
@@ -1484,6 +1490,9 @@ const timeFormatTranslation = ref({
                 <BaseAttr name="showTimeLabel" attr="chart.tooltip.showTimeLabel" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="useDefaultTimeFormat" attr="chart.tooltip.useDefaultTimeFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="timeFormat" attr="chart.tooltip.timeFormat" type="text" defaultVal="yyyy-MM-dd HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="smooth" attr="chart.tooltip.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="smoothForce" attr="chart.tooltip.smoothForce" type="number" defaultVal="0.18" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="smoothSnapThreshold" attr="chart.tooltip.smoothSnapThreshold" type="number" defaultVal="0.25" :min="0.1" :max="24" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
             <BaseDetails attr="userOptions" :level="2" title="chart.userOptions">
                 <BaseAttr name="show" attr="chart.userOptions.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

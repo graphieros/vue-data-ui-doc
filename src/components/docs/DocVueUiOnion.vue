@@ -196,7 +196,10 @@ const config = ref({
                 showPercentage: true,
                 backgroundOpacity: 30,
                 position: 'center',
-                offsetY: 24
+                offsetY: 24,
+                smooth: true,
+                smoothForce: 0.18,
+                smoothSnapThreshold: 0.25
             }
         }
     },
@@ -336,7 +339,10 @@ const darkModeConfig = ref({
                 showPercentage: true,
                 backgroundOpacity: 30,
                 position: 'center',
-                offsetY: 24
+                offsetY: 24,
+                smooth: true,
+                smoothForce: 0.18,
+                smoothSnapThreshold: 0.25
             }
         }
     },
@@ -645,6 +651,9 @@ const codeDataset = ref(`const dataset: VueUiOnionDatasetItem[] = [
                     <BaseAttr name="backgroundOpacity" attr="style.chart.tooltip.backgroundOpacity" type="number" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="position" attr="style.chart.tooltip.position" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="offsetY" attr="style.chart.tooltip.offsetY" type="number" defaultVal="24" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="smooth" attr="style.chart.tooltip.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="smoothForce" attr="style.chart.tooltip.smoothForce" type="number" defaultVal="0.18" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="smoothSnapThreshold" attr="style.chart.tooltip.smoothSnapThreshold" type="number" defaultVal="0.25" :min="0.1" :max="24" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
             </BaseDetails>
         </BaseDetails>

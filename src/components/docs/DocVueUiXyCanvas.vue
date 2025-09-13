@@ -175,6 +175,9 @@ const config = ref({
         backgroundOpacity: 30,
         position: "center",
         offsetY: 24,
+        smooth: true,
+        smoothForce: 0.18,
+        smoothSnapThreshold: 0.25
       },
       legend: {
         backgroundColor: "#F3F4F6",
@@ -400,6 +403,9 @@ const darkModeConfig = ref({
         backgroundOpacity: 30,
         position: "center",
         offsetY: 24,
+        smooth: true,
+        smoothForce: 0.18,
+        smoothSnapThreshold: 0.25
       },
       legend: {
         backgroundColor: "#1A1A1A",
@@ -1703,6 +1709,9 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
                       :dark="mutableConfigDarkMode"
                       @change="forceChartUpdate()"
                     />
+                    <BaseAttr name="smooth" attr="style.chart.tooltip.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="smoothForce" attr="style.chart.tooltip.smoothForce" type="number" defaultVal="0.18" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="smoothSnapThreshold" attr="style.chart.tooltip.smoothSnapThreshold" type="number" defaultVal="0.25" :min="0.1" :max="24" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                   </BaseDetails>
                   <BaseDetails attr="zoom" :level="3" title="style.chart.zoom">
                     <BaseAttr

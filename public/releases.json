@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.1.5",
+    "date": "2025-09-14",
+    "updates": [
+      {
+        "component": "Tooltips",
+        "description": "Improve performance; add config controls for smooth mode",
+        "link": ""
+      },
+      {
+        "component": "Zoom feature (range slider)",
+        "description": "Fix offset from client position when dragging the range selection",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.1.4",
     "date": "2025-09-12",
     "updates": [

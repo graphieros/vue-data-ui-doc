@@ -199,7 +199,10 @@ const config = ref({
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
-                showTimeLabel:  true
+                showTimeLabel:  true,
+                smooth: true,
+                smoothForce: 0.18,
+                smoothSnapThreshold: 0.25
             },
             highlighter: {
                 color: "#2D353C",
@@ -442,7 +445,10 @@ const darkModeConfig = ref({
                 showPercentage: true,
                 roundingValue: 0,
                 roundingPercentage: 0,
-                showTimeLabel:  true
+                showTimeLabel: true,
+                smooth: true,
+                smoothForce: 0.18,
+                smoothSnapThreshold: 0.25
             },
             highlighter: {
                 color: "#e1e5e8",
@@ -855,6 +861,9 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                         <BaseAttr name="position" attr="style.chart.tooltip.position" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="offsetY" attr="style.chart.tooltip.offsetY" type="number" defaultVal="24" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="showTimeLabel" attr="style.chart.tooltip.showTimeLabel" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="smooth" attr="style.chart.tooltip.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="smoothForce" attr="style.chart.tooltip.smoothForce" type="number" defaultVal="0.18" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="smoothSnapThreshold" attr="style.chart.tooltip.smoothSnapThreshold" type="number" defaultVal="0.25" :min="0.1" :max="24" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     </BaseDetails>
                     <BaseDetails attr="highlighter" :level="3" title="style.chart.highlighter">
                         <BaseAttr name="color" attr="style.chart.highlighter.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

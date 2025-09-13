@@ -205,6 +205,9 @@ const config = ref({
     tooltipBackgroundOpacity: 30,
     tooltipPosition: 'center',
     tooltipOffsetY: 24,
+    tooltipSmooth: true,
+    tooltipSmoothForce: 0.18,
+    tooltipSmoothSnapThreshold: 0.25,
     useCustomLegend: false,
     valuePrefix: "",
     valueSuffix: "",
@@ -347,6 +350,9 @@ const darkModeConfig = ref({
     tooltipBackgroundOpacity: 30,
     tooltipPosition: 'center',
     tooltipOffsetY: 24,
+    tooltipSmooth: true,
+    tooltipSmoothForce: 0.18,
+    tooltipSmoothSnapThreshold: 0.25,
     useCustomLegend: false,
     valuePrefix: "",
     valueSuffix: "",
@@ -937,6 +943,9 @@ function copyComponentSnippet(snip) {
         <BaseAttr name="tooltipBackgroundOpacity" attr="tooltipBackgroundOpacity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
         <BaseAttr name="tooltipPosition" attr="tooltipPosition" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="tooltipOffsetY" attr="tooltipOffsetY" type="number" defaultVal="24" :min="0" :max="64" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="tooltipSmooth" attr="tooltipSmooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="tooltipSmoothForce" attr="tooltipSmoothForce" type="number" defaultVal="0.18" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="tooltipSmoothSnapThreshold" attr="tooltipSmoothSnapThreshold" type="number" defaultVal="0.25" :min="0.1" :max="24" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="useCustomLegend" attr="useCustomLegend" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="If true, use #legend slot to make a custom legend"/>
         <BaseAttr name="valuePrefix" attr="valuePrefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="valueSuffix" attr="valueSuffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
