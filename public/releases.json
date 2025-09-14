@@ -1,7 +1,18 @@
 [
   {
-    "version": "v 3.1.5",
+    "version": "v 3.1.6",
     "date": "2025-09-14",
+    "updates": [
+      {
+        "component": "Built-in chart data tables",
+        "description": "Hide data tables from the dom when userOptions.buttons.table is false",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "version": "v 3.1.5",
+    "date": "2025-09-13",
     "updates": [
       {
         "component": "Tooltips",

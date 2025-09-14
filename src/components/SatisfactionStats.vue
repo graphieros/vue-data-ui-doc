@@ -744,6 +744,8 @@ const xyDataset = computed(() => {
     ]
 })
 
+const cutNullValues = ref(false);
+
 const xyConfig = computed(() => {
     return {
         chart: {
@@ -836,6 +838,7 @@ const xyConfig = computed(() => {
             periodGap: 0.01,
         },
         line: {
+            cutNullValues: cutNullValues.value,
             radius: 4,
             useGradient: false,
             dot: {
@@ -1126,6 +1129,10 @@ function selectHeatmapCell(cell) {
 
     <div v-if="ratings.length"
         class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
+        <label>
+            Cut null values
+            <input type="checkbox" v-model="cutNullValues">
+        </label>
         <VueUiXy :dataset="xyDataset" :config="xyConfig" />
     </div>
 
