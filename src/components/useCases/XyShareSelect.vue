@@ -65,6 +65,15 @@ const config = computed(() => {
                 selectedXIndex.value = undefined;
             }
         },
+        line: {
+            radius: 6,
+            useGradient: false,
+            dot: {
+                useSerieColor: false,
+                fill: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                strokeWidth: 2
+            }
+        },
         chart: {
             userOptions: { show: false },
             backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
@@ -158,14 +167,28 @@ const configB = computed(() => {
                 :dataset="datasets.chartA"
                 :config="configA"
                 :selectedXIndex="selectedXIndex"
-            />
+            >
+            <template #area-gradient="{ series, id }">
+                <linearGradient :id="id" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" :stop-color="series.color"/>
+                    <stop offset="100%" :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'" stop-opacity="0"/>
+                </linearGradient>
+            </template>
+        </VueUiXy>
         </div>
         <div class="w-full max-w-[400px]">
             <VueUiXy
                 :dataset="datasets.chartB"
                 :config="configB"
                 :selectedXIndex="selectedXIndex"
-            />
+            >
+            <template #area-gradient="{ series, id }">
+                <linearGradient :id="id" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" :stop-color="series.color"/>
+                    <stop offset="100%" :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'" stop-opacity="0"/>
+                </linearGradient>
+            </template>
+        </VueUiXy>
         </div>
     </div>
 </template>

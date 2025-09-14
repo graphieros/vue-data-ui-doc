@@ -1800,7 +1800,9 @@ const timeFormatTranslation = ref({
                         'source',
                         'plot-comment',
                         'chart-background',
-                        'pattern'
+                        'pattern',
+                        'area-gradient',
+                        'bar-gradient'
                     ]" 
                 />
             </template>

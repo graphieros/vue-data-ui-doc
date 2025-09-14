@@ -759,6 +759,47 @@ export default function useExamples() {
         }
     ]);
 
+    const DATASET_XY_SINUSOID2 = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            dataLabels: true,
+            series: [0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5, 13, 8, 21],
+        }
+    ]);
+
+    const DATASET_XY_SINUSOID2_AREA = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            dataLabels: true,
+            series: [0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5, 13, 8, 21],
+            useArea: true
+        }
+    ]);
+    
+
+    const DATASET_XY_SINUSOID2_SMOOTH = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            dataLabels: true,
+            series: [0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5, 13, 8, 21],
+            smooth: true
+        }
+    ]);
+
+    const DATASET_XY_SINUSOID2_SMOOTH_AREA = ref([
+        {
+            name: 'Serie 1',
+            type: 'line',
+            dataLabels: true,
+            series: [0, 1, 0, 2, 1, 3, 2, 5, 3, 8, 5, 13, 8, 21],
+            smooth: true,
+            useArea: true
+        }
+    ]);
+
     const DATASET_XY_INTERLINE = ref([
         {
             name: 'Performance',
@@ -4592,7 +4633,7 @@ export default function useExamples() {
             },
             // XY BASIC LINE
             { 
-                dataset: DATASET_XY_BASIC_LINE.value, 
+                dataset: DATASET_XY_SINUSOID2.value, 
                 config: BASE_XY_CONFIG.value,
                 component: 'VueUiXy',
                 icon: 'chartLine',
@@ -4612,7 +4653,7 @@ export default function useExamples() {
             },
             // XY LINE SMOOTH
             { 
-                dataset: DATASET_XY_BASIC_LINE_SMOOTH.value, 
+                dataset: DATASET_XY_SINUSOID2_SMOOTH.value, 
                 config: {
                     ...BASE_XY_CONFIG.value,
                     chart: {
@@ -5823,6 +5864,153 @@ export default function useExamples() {
                     es: "Con coloreado entre líneas de pares de líneas con colores personalizados",
                     ko: "사용자 정의 색상으로 선 쌍 사이 인터라인 색상 적용",
                     ar: "مع تلوين بيني لأزواج الخطوط باستخدام ألوان مخصصة"
+                }
+            },
+            // XY CUSTOM GRADIENT LINE
+            { 
+                dataset: DATASET_XY_SINUSOID2_AREA.value, 
+                config: BASE_XY_CONFIG.value,
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'area-custom-gradient',
+                link: 'vue-ui-xy',
+                tags: ['#area-gradient'],
+                customGradient: true,
+                slot: `<template #area-gradient="{ series, id }">
+                <linearGradient 
+                    :id="id" 
+                    x1="0" 
+                    x2="0" 
+                    y1="0" 
+                    y2="1"
+                >
+                    <stop 
+                        offset="0%" 
+                        :stop-color="series.color"
+                    />
+                    <stop 
+                        offset="100%" 
+                        stop-color="#FFFFFF" 
+                        stop-opacity="0"
+                    />
+                </linearGradient>
+            </template>`,
+                description: {
+                    en: 'Custom area gradient',
+                    fr: 'Dégradé de zone personnalisé',
+                    pt: 'Gradiente de área personalizado',
+                    de: 'Benutzerdefinierter Flächenverlauf',
+                    zh: '自定义区域渐变',
+                    jp: 'カスタムエリアグラデーション',
+                    es: 'Degradado de área personalizado',
+                    ko: '사용자 지정 영역 그라데이션',
+                    ar: 'تدرّج مساحي مخصّص'
+                }
+            },
+            // XY CUSTOM GRADIENT LINE SMOOTH
+            { 
+                dataset: DATASET_XY_SINUSOID2_SMOOTH_AREA.value, 
+                config: BASE_XY_CONFIG.value,
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'area-custom-gradient-smooth',
+                link: 'vue-ui-xy',
+                tags: ['#area-gradient'],
+                customGradient: true,
+                slot: `<template #area-gradient="{ series, id }">
+                <linearGradient 
+                    :id="id" 
+                    x1="0" 
+                    x2="0" 
+                    y1="0" 
+                    y2="1"
+                >
+                    <stop 
+                        offset="0%" 
+                        :stop-color="series.color"
+                    />
+                    <stop 
+                        offset="100%" 
+                        stop-color="#FFFFFF" 
+                        stop-opacity="0"
+                    />
+                </linearGradient>
+            </template>`,
+                description: {
+                    en: 'Custom area gradient with smooth line',
+                    fr: 'Dégradé de zone personnalisé avec courbe lissée',
+                    pt: 'Gradiente de área personalizado com linha suave',
+                    de: 'Benutzerdefinierter Flächenverlauf mit glatter Linie',
+                    zh: '带平滑线的自定义区域渐变',
+                    jp: '滑らかな線付きカスタムエリアグラデーション',
+                    es: 'Degradado de área personalizado con línea suave',
+                    ko: '부드러운 선이 있는 사용자 지정 영역 그라데이션',
+                    ar: 'تدرّج مساحي مخصّص مع خط سلس'
+                }
+            },
+            // XY CUSTOM GRADIENT BAR
+            { 
+                dataset: DATASET_XY_SINUSOID2_AREA.value.map(d => {
+                    return {
+                        ...d,
+                        type: 'bar',
+                        series: [-13, -8, -5, -3, -2, -1, 1, 2, 3, 5, 8, 13]
+                    }
+                }), 
+                config: BASE_XY_CONFIG.value,
+                component: 'VueUiXy',
+                icon: 'chartLine',
+                id: 'bar-custom-gradient',
+                link: 'vue-ui-xy',
+                tags: ['#bar-gradient'],
+                customGradient: true,
+                slot: `<template #bar-gradient="{ series, positiveId, negativeId }">
+                <!-- Use one gradient definition for positive and another for negative, to apply inverse gradient directions -->
+                <linearGradient 
+                    :id="positiveId" 
+                    x1="0" 
+                    x2="0" 
+                    y1="0" 
+                    y2="1"
+                >
+                    <stop 
+                        offset="0%" 
+                        :stop-color="series.color"
+                    />
+                    <stop 
+                        offset="100%" 
+                        stop-color="#FFFFFF" 
+                        stop-opacity="0"
+                    />
+                </linearGradient>
+                <linearGradient 
+                    :id="negativeId" 
+                    x1="0" 
+                    x2="0" 
+                    y1="0" 
+                    y2="1"
+                >
+                    <stop 
+                        offset="0%" 
+                        stop-color="#FFFFFF" 
+                        stop-opacity="0"
+                    />
+                    <stop 
+                        offset="100%" 
+                        :stop-color="series.color"
+                    />
+                </linearGradient>
+            </template>`,
+                description: {
+                    en: 'Custom bar gradient',
+                    fr: 'Dégradé de barres personnalisé',
+                    pt: 'Gradiente de barras personalizado',
+                    de: 'Benutzerdefinierter Balkenverlauf',
+                    zh: '自定义柱状图渐变',
+                    jp: 'カスタムバーグラデーション',
+                    es: 'Degradado de barras personalizado',
+                    ko: '사용자 지정 막대 그라데이션',
+                    ar: 'تدرّج أعمدة مخصّص'
                 }
             },
             // DONUT BASIC

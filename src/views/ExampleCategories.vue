@@ -358,6 +358,7 @@ const dialogExample = ref(null);
 const showDialogExample = ref(false);
 
 function openComponentCode(example) {
+    console.log(example)
     dialogExample.value = example;
     showDialogExample.value = true;
 }
@@ -502,6 +503,23 @@ function closeDialogExample() {
                     <template #default>
                         <div class="w-full p-4 example-wrapper">
                             <VueDataUi :component="example.component" :dataset="example.dataset" :config="example.config">
+                                <template #area-gradient="{ series, id }" v-if="example.customGradient">
+                                    <linearGradient :id="id" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" :stop-color="series.color"/>
+                                        <stop offset="100%" :stop-color="isDarkMode ? '#3A3A3A' : '#FFFFFF'" stop-opacity="0"/>
+                                    </linearGradient>
+                                </template>
+
+                                <template #bar-gradient="{ series, positiveId, negativeId }" v-if="example.customGradient">
+                                    <linearGradient :id="positiveId" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" :stop-color="series.color"/>
+                                        <stop offset="100%" :stop-color="isDarkMode ? '#3A3A3A' : '#FFFFFF'" stop-opacity="0"/>
+                                    </linearGradient>
+                                    <linearGradient :id="negativeId" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" :stop-color="isDarkMode ? '#3A3A3A' : '#FFFFFF'" stop-opacity="0"/>
+                                        <stop offset="100%" :stop-color="series.color"/>
+                                    </linearGradient>
+                                </template>
                                 <template #plot-comment="{ plot }">
                                     <template v-if="example.component === 'VueUiXy'">
                                         <div v-if="['up', 'eq', 'down'].includes(plot.comment.trend)" class="text-black dark:text-[#CCCCCC] w-full flex flex-col place-items-center text-xl py-2 -mt-5">

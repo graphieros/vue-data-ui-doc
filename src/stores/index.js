@@ -892,6 +892,28 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    areaGradient: {
+                        en: 'Use this slot to apply a custom svg linearGradient on line types with useArea set to true',
+                        fr: 'Utilisez ce slot pour appliquer un SVG linearGradient personnalisé sur les types de lignes lorsque useArea est défini sur true',
+                        pt: 'Use este slot para aplicar um SVG linearGradient personalizado em tipos de linha com useArea definido como true',
+                        de: 'Verwende diesen Slot, um ein benutzerdefiniertes SVG-linearGradient bei Linientypen zu verwenden, wenn useArea auf true gesetzt ist',
+                        zh: '在 useArea 设为 true 的折线类型上使用此插槽以应用自定义 SVG linearGradient',
+                        jp: 'useArea が true のラインタイプにカスタム SVG linearGradient を適用するためにこのスロットを使用します',
+                        es: 'Usa este slot para aplicar un SVG linearGradient personalizado en tipos de línea cuando useArea está establecido en true',
+                        ko: 'useArea가 true로 설정된 라인 타입에 사용자 지정 SVG linearGradient를 적용하려면 이 슬롯을 사용하세요',
+                        ar: 'استخدم هذه الخانة (slot) لتطبيق ‎SVG linearGradient‎ مخصّص على أنواع الخطوط عندما تكون ‎useArea‎ مضبوطة على ‎true‎'
+                    },
+                    barGradient: {
+                        en: 'Use this slot to apply a custom svg linearGradient on bar types',
+                        fr: 'Utilisez ce slot pour appliquer un SVG linearGradient personnalisé sur les types de barres',
+                        pt: 'Use este slot para aplicar um SVG linearGradient personalizado em tipos de barra',
+                        de: 'Verwende diesen Slot, um ein benutzerdefiniertes SVG-linearGradient auf Balkentypen anzuwenden',
+                        zh: '使用此插槽在柱状图类型上应用自定义 SVG linearGradient',
+                        jp: 'バータイプにカスタム SVG linearGradient を適用するためにこのスロットを使用します',
+                        es: 'Usa este slot para aplicar un SVG linearGradient personalizado en tipos de barras',
+                        ko: '막대 타입에 사용자 지정 SVG linearGradient를 적용하려면 이 슬롯을 사용하세요',
+                        ar: 'استخدم هذه الخانة (slot) لتطبيق ‎SVG linearGradient‎ مخصّص على أنواع الأعمدة'
+                    },
                     breadcrumbLabel: {
                         en: 'Use this slot to customize the breadcrumb labels',
                         fr: 'Utilisez ce slot pour personnaliser les étiquettes du fil d’Ariane',

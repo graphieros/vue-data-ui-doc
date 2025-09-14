@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.1.7",
+    "date": "2025-09-14",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add #area-gradient & #bar-gradient slots to use custom gradients",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.1.6",
     "date": "2025-09-14",
     "updates": [
