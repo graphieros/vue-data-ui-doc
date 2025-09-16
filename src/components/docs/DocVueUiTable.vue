@@ -307,7 +307,8 @@ const config = ref({
             buttons: {
                 backgroundColor: "#e1e5e8",
                 color: "#2D353C"
-            }
+            },
+            filename: ''
         },
         closeButtons: {
             backgroundColor: "transparent",
@@ -474,7 +475,8 @@ const darkModeConfig = ref({
             buttons: {
                 backgroundColor: "#42d392",
                 color: "#2D353C"
-            }
+            },
+            filename: ''
         },
         closeButtons: {
             backgroundColor: "transparent",
@@ -557,6 +559,7 @@ const darkModeConfig = ref({
         to: "To",
         total: 'Total',
         totalRows: "Total rows",
+        filename: 'File name'
     },
     useChart: true
 });
@@ -977,7 +980,8 @@ const pageEventDescription = ref( {
                 buttons: {
                     backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.exportMenu.buttons.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.exportMenu.buttons.backgroundColor">, (default: "#FAFAFA")
                     color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.exportMenu.buttons.color"><input v-else type="color" v-model="mutableConfig.style.exportMenu.buttons.color">, (default: "#2D353C")
-                }
+                },
+                filename: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.exportMenu.filename"><input v-else type="text" v-model="mutableConfig.style.exportMenu.filename">
             },
             closeButtons: {
                 backgroundColor: "transparent",
@@ -1060,6 +1064,7 @@ const pageEventDescription = ref( {
             to: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.to"><input v-else type="text" v-model="mutableConfig.translations.to">, (default: "To")
             total: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.total"><input v-else type="text" v-model="mutableConfig.translations.total">, (default: "Total")
             totalRows: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.totalRows"><input v-else type="text" v-model="mutableConfig.translations.totalRows">, (default: "Total rows")
+            filename: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.filename"><input v-else type="text" v-model="mutableConfig.translations.filename">, (default: "File name")
         },
         useChart: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useChart"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useChart">, (default: true)
     }

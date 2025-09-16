@@ -1,5 +1,31 @@
 [
   {
+    "version": "v 3.1.8",
+    "date": "2025-09-16",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add option to display compact minimap with all series visible",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Add option to display compact minimap with all series visible",
+        "link": "/docs#vue-ui-quick-chart"
+      },
+      {
+        "component": "VueUiTable",
+        "description": "Add filename input in export menu",
+        "link": "/docs#vue-ui-table"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Fix reversed donut names in Firefox",
+        "link": "/docs#vue-ui-nested-donuts"
+      }
+    ]
+  },
+  {
     "version": "v 3.1.7",
     "date": "2025-09-14",
     "updates": [

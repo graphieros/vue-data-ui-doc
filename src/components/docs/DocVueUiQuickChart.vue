@@ -268,6 +268,9 @@ const config = ref({
         selectionRadius: 2,
         indicatorColor: '#1A1A1A',
         verticalHandles: false,
+        compact: true,
+        merged: false,
+        frameColor: '#CCCCCC'
     },
     zoomStartIndex: null,
     zoomEndIndex: null,
@@ -413,6 +416,9 @@ const darkModeConfig = ref({
         selectionRadius: 2,
         indicatorColor: '#CCCCCC',
         verticalHandles: false,
+        compact: true,
+        merged: false,
+        frameColor: '#6A6A6A'
     },
     zoomStartIndex: null,
     zoomEndIndex: null,
@@ -999,7 +1005,6 @@ function copyComponentSnippet(snip) {
             <BaseAttr name="zoomEnableRangeHandles" attr="zoomEnableRangeHandles" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
             <BaseAttr name="zoomEnableSelectionDrag" attr="zoomEnableSelectionDrag" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
             <BaseDetails attr="zoomMinimap" :level="1">
-                <span><BaseComment>Since v2.3.56</BaseComment></span>
                 <BaseAttr name="show" attr="zoomMinimap.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="smooth" attr="zoomMinimap.smooth" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="selectedColor" attr="zoomMinimap.selectedColor" type="color" defaultVal="#1f77b4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1008,6 +1013,9 @@ function copyComponentSnippet(snip) {
                 <BaseAttr name="selectionRadius" attr="zoomMinimap.selectionRadius" type="range" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="indicatorColor" attr="zoomMinimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="verticalHandles" attr="zoomMinimap.verticalHandles" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.72"/>
+                <BaseAttr name="compact" attr="zoomMinimap.compact" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
+                <BaseAttr name="merged" attr="zoomMinimap.merged" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
+                <BaseAttr name="frameColor" attr="zoomMinimap.frameColor" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
             </BaseDetails>
             <BaseAttr inactive name="zoomStartIndex" defaultVal="null" comment="number | null. Force zoom start index"/>
             <BaseAttr inactive name="zoomEndIndex" defaultVal="null" comment="number | null. Force zoom end index"/>

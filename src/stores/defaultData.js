@@ -1470,6 +1470,10 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'chart.zoom.minimap.selectionRadius', def: 2, type: 'range', min: 0, max: 24, label: ['zoom', 'minimap', 'selection', 'is', 'radius'], category: 'general'},
                     { key: 'chart.zoom.minimap.indicatorColor', def: '#1A1A1A', type: 'color', label: ['zoom', 'minimap', 'indicator', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.minimap.verticalHandles', def: false, type: 'checkbox', label: ['zoom', 'minimap', 'vertical', 'handles'], category: 'general'},
+                    { key: 'chart.zoom.minimap.compact', def: true, type: 'checkbox', label: ['zoom ', 'minimap', 'is', 'compact'], category: 'general'},
+                    { key: 'chart.zoom.minimap.merged', def: true, type: 'checkbox', label: ['zoom ', 'minimap', 'is', 'merged'], category: 'general'},
+                    { key: 'chart.zoom.minimap.frameColor', def: '#CCCCCC', type: 'color', label: ['zoom ', 'minimap', 'frame', 'is', 'color'], category: 'general'},
+
                     { key: 'chart.zoom.preview.enable', def: true, type: 'checkbox', label: ['zoom', 'preview', 'is', 'show'], category: 'general'},
                     { key: 'chart.zoom.preview.stroke', def: '#6A6A6A', type: 'color', label: ['zoom', 'preview', 'stroke', 'is', 'color'], category: 'general'},
                     { key: 'chart.zoom.preview.strokeWidth', def: 2, type: 'number', min: 0, max: 12, label: ['zoom', 'preview', 'is', 'strokeWidth'], category: 'general'},

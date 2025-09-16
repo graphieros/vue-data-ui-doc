@@ -50,7 +50,7 @@ const patternDataset = computed(() => {
     return [
     {
         name: "Series 1",
-        series: [ 12, 25, 32, 64, 34, 26],
+        series: [ 12, 25, 32, 64, 34, 26, 12],
         type: "bar",
         color: "rgb(95,139,238)",
         shape: 'circle',
@@ -59,7 +59,7 @@ const patternDataset = computed(() => {
     },
     {
         name: "Series 2",
-        series: [ 12, 25, 32, 64, 34, 26],
+        series: [ 12, 25, 32, 64, 34, 26, 16],
         type: "line",
         color: "rgb(66,211,146)",
         useArea: false,
@@ -69,7 +69,7 @@ const patternDataset = computed(() => {
     },
     {
         name: "Series 4",
-        series: [ 8, 20, 27, 48, 27, 20],
+        series: [ 8, 20, 27, 48, 27, 20, 15],
         type: "bar",
         smooth: true,
         useArea: false,
@@ -277,7 +277,10 @@ const config = ref({
                 lineColor: "#1F77B4",
                 selectionRadius: 2,
                 indicatorColor: '#1A1A1A',
-                verticalHandles: false
+                verticalHandles: false,
+                compact: true,
+                merged: false,
+                frameColor: '#CCCCCC'
             },
             preview: {
                 enable: true,
@@ -694,7 +697,10 @@ const darkModeConfig = ref({
                 selectedColor: '#8A8A8A',
                 selectionRadius: 2,
                 indicatorColor: '#CCCCCC',
-                verticalHandles: false
+                verticalHandles: false,
+                compact: true,
+                merged: false,
+                frameColor: '#6A6A6A'
             },
             preview: {
                 enable: true,
@@ -1552,6 +1558,9 @@ const timeFormatTranslation = ref({
                     <BaseAttr name="selectionRadius" attr="chart.zoom.minimap.selectionRadius" type="range" defaultVal="2" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="indicatorColor" attr="chart.zoom.minimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="verticalHandles" attr="chart.zoom.minimap.verticalHandles" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.72"/>
+                    <BaseAttr name="compact" attr="chart.zoom.minimap.compact" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
+                    <BaseAttr name="merged" attr="chart.zoom.minimap.merged" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
+                    <BaseAttr name="frameColor" attr="chart.zoom.minimap.frameColor" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v3.1.8"/>
                 </BaseDetails>
                 <BaseDetails attr="preview" :level="3" title="chart.zoom.preview">
                     <BaseAttr name="enable" attr="chart.zoom.preview.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1922,9 +1931,3 @@ Target the following css class to apply custom styles:
         </Box>
     </div>
 </template>
-
-<style>
-.vue-ui-xy-legend {
-    padding: 12px 0;
-}
-</style>
