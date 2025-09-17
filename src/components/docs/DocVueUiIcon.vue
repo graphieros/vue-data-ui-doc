@@ -147,6 +147,7 @@ const specialIcons = ref([
     "lambda",
     "lap",
     "legend",
+    "minimap",
     "moodEmbarrassed",
     "moodFlat",
     "moodHappy",
