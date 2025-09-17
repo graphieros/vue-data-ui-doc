@@ -1,7 +1,29 @@
 [
   {
+    "version": "v 3.1.12",
+    "date": "2025-09-17",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix scale issues in zoom minimap when multiple series are visible",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
+    "version": "v 3.1.11",
+    "date": "2025-09-17",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix recursive update errors in Firefox when using a large amount of chart instances with zoom enabled.",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.1.10",
-    "date": "2025-09-15",
+    "date": "2025-09-17",
     "updates": [
       {
         "component": "Zoom component",

@@ -345,6 +345,9 @@ export function useCase() {
                     roundingValue: 1,
                     backgroundOpacity: 30,
                 },
+                zoom: {
+                    minimap: { show: true }
+                }
             },
             table: {
                 rounding: 1,
@@ -521,6 +524,11 @@ export function useCase() {
                     roundingValue: 1,
                     backgroundOpacity: 30
                 },
+                zoom: {
+                    minimap: {
+                        show: true
+                    }
+                }
             },
             table: {
                 rounding: 1,

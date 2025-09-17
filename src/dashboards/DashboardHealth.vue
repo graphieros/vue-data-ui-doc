@@ -90,6 +90,12 @@ const CONFIG_XY = computed(() => {
             tooltip: {
                 showPercentage: false,
                 backgroundOpacity: 30
+            },
+            zoom: {
+                minimap: {
+                    show: true,
+                    selectedColor: '#4A6A75'
+                }
             }
         },
         line: {

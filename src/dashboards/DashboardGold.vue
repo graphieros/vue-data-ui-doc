@@ -140,6 +140,9 @@ const CONFIG_XY = computed(() => {
                     fill: '#91792f30',
                     stroke: '#91792f',
                     strokeDasharray: 6
+                },
+                minimap: {
+                    show: true,
                 }
             }
         },

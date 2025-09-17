@@ -124,7 +124,11 @@ const config = computed(() => {
             zoom: {
                 preview: {
                     fill:  isDarkMode.value ? '#1A1A1A50' : '#1A1A1A10',
-                    strokeDasharray: 8
+                    strokeDasharray: 8,
+                },
+                minimap: {
+                    show: true,
+                    indicatorColor: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
                 }
             }
         }
@@ -151,6 +155,11 @@ const configB = computed(() => {
             chart: {
                 title: {
                     text: 'Chart B'
+                },
+                zoom: {
+                    minimap: {
+                        selectedColor: '#ff7f0e'
+                    }
                 }
             }
         }
