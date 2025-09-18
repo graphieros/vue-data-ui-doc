@@ -1333,7 +1333,8 @@ export default function useExamples() {
                     minimap: {
                         show: true,
                         lineColor: '#1F77B4',
-                        indicatorColor: colors.value.textColor
+                        indicatorColor: colors.value.textColor,
+                        selectedColor: isDarkMode.value ? '#6A6A6A' : '#CCCCCC'
                     }
                 }
             },
