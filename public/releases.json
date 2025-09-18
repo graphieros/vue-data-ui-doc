@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.1.13",
+    "date": "2025-09-18",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Fix regression affecting selection rect not showing when dragging zoom selection (minimap enabled in preview mode).",
+        "link": "/docs#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.1.12",
     "date": "2025-09-17",
     "updates": [
