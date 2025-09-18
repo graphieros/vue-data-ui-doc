@@ -1255,6 +1255,7 @@ export default function useExamples() {
                 },
                 legend: {
                     color: colors.value.textColor,
+                    position: 'top'
                 },
                 tooltip: {
                     backgroundColor: colors.value.bg,
@@ -1334,7 +1335,8 @@ export default function useExamples() {
                         show: true,
                         lineColor: '#1F77B4',
                         indicatorColor: colors.value.textColor,
-                        selectedColor: isDarkMode.value ? '#6A6A6A' : '#CCCCCC'
+                        selectedColor: isDarkMode.value ? '#6A6A6A' : '#CCCCCC',
+                        frameColor: colors.value.gridStroke,
                     }
                 }
             },
