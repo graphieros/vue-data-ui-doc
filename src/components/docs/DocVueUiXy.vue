@@ -269,6 +269,8 @@ const config = ref({
             endIndex: null,
             enableRangeHandles: true,
             enableSelectionDrag: true,
+            focusOnDrag: false,
+            focusRangeRatio: 0.2,
             minimap: {
                 show: true,
                 smooth: true,
@@ -689,6 +691,8 @@ const darkModeConfig = ref({
             endIndex: null,
             enableRangeHandles: true,
             enableSelectionDrag: true,
+            focusOnDrag: false,
+            focusRangeRatio: 0.2,
             minimap: {
                 show: true,
                 smooth: true,
@@ -1548,6 +1552,8 @@ const timeFormatTranslation = ref({
                 <BaseAttr name="useDefaultFormat" attr="chart.zoom.useDefaultFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="timeFormat" attr="chart.zoom.timeFormat" type="text" defaultVal="yyyy-MM-dd HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Use with datetimeFormatter.enable = true"/>
                 <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                <BaseAttr name="focusOnDrag" attr="chart.zoom.focusOnDrag" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="focusRangeRatio" attr="chart.zoom.focusRangeRatio" type="number" defaultVal="0.2" :min="0.1" :max="0.9" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseDetails attr="minimap" :level="3" title="chart.zoom.minimap">
                     <span><BaseComment>Since v2.3.49</BaseComment></span>
                     <BaseAttr name="show" attr="chart.zoom.minimap.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

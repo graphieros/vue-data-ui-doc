@@ -161,7 +161,9 @@ const config = ref({
         fontSize: 14,
         useResetSlot: false,
         startIndex: null,
-        endIndex: null
+        endIndex: null,
+        focusOnDrag: false,
+        focusRangeRatio: 0.2
     },
     title: {
       text: "Title",
@@ -361,7 +363,9 @@ const darkModeConfig = ref({
         fontSize: 14,
         useResetSlot: false,
         startIndex: null,
-        endIndex: null
+        endIndex: null,
+        focusOnDrag: false,
+        focusRangeRatio: 0.2
     },
     title: {
       text: "Title",
@@ -735,6 +739,8 @@ const dsTypeCodeExample = ref(`const dataset = [
         <span>useResetSlot: false, <span class="text-app-blue text-xs">// To use a custom slot for the reset feature (see slots tab)</span></span>
         <span>startIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span>
         <span>endIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
+        <BaseAttr name="focusOnDrag" attr="style.zoom.focusOnDrag" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseAttr name="focusRangeRatio" attr="style.zoom.focusRangeRatio" type="number" defaultVal="0.2" :min="0.1" :max="0.9" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       </BaseDetails>
     </BaseDetails>
     <BaseDetails attr="table" :level="1">

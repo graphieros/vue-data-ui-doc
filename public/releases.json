@@ -1,5 +1,41 @@
 [
   {
+    "version": "v 3.1.14",
+    "date": "2025-09-18",
+    "updates": [
+      {
+        "component": "VueUiXy",
+        "description": "Add config option to zoom-in on a set range when clicking the zoom component in its starting state.",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Add config option to zoom-in on a set range when clicking the zoom component in its starting state.",
+        "link": "/docs#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiCandlestick",
+        "description": "Add config option to zoom-in on a set range when clicking the zoom component in its starting state.",
+        "link": "/docs#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Add config option to zoom-in on a set range when clicking the zoom component in its starting state.",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Add config option to zoom-in on a set range when clicking the zoom component in its starting state.",
+        "link": "/docs#vue-ui-stackbar"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Add config option to zoom-in on a set range when clicking the zoom component in its starting state.",
+        "link": "/docs#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
     "version": "v 3.1.13",
     "date": "2025-09-18",
     "updates": [

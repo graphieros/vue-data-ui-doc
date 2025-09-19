@@ -277,7 +277,9 @@ const config = ref({
     showUserOptionsOnChartHover: false,
     keepUserOptionsStateOnChartLeave: true,
     zoomEnableRangeHandles: true,
-    zoomEnableSelectionDrag: true
+    zoomEnableSelectionDrag: true,
+    zoomFocusOnDrag: false,
+    zoomFocusRangeRatio: 0.2
 })
 
 const darkModeConfig = ref({
@@ -425,7 +427,9 @@ const darkModeConfig = ref({
     showUserOptionsOnChartHover: false,
     keepUserOptionsStateOnChartLeave: true,
     zoomEnableRangeHandles: true,
-    zoomEnableSelectionDrag: true
+    zoomEnableSelectionDrag: true,
+    zoomFocusOnDrag: false,
+    zoomFocusRangeRatio: 0.2
 })
 
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
@@ -1019,6 +1023,8 @@ function copyComponentSnippet(snip) {
             </BaseDetails>
             <BaseAttr inactive name="zoomStartIndex" defaultVal="null" comment="number | null. Force zoom start index"/>
             <BaseAttr inactive name="zoomEndIndex" defaultVal="null" comment="number | null. Force zoom end index"/>
+            <BaseAttr name="zoomFocusOnDrag" attr="zoomFocusOnDrag" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="zoomFocusRangeRatio" attr="zoomFocusRangeRatio" type="number" defaultVal="0.2" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </div>
     </BaseDetails>
 </code>

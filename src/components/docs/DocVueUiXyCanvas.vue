@@ -155,7 +155,9 @@ const config = ref({
         startIndex: null,
         endIndex: null,
         enableRangeHandles: true,
-        enableSelectionDrag: true
+        enableSelectionDrag: true,
+        focusOnDrag: false,
+        focusRangeRatio: 0.2
       },
       selector: {
         show: true,
@@ -383,7 +385,9 @@ const darkModeConfig = ref({
         startIndex: null,
         endIndex: null,
         enableRangeHandles: true,
-        enableSelectionDrag: true
+        enableSelectionDrag: true,
+        focusOnDrag: false,
+        focusRangeRatio: 0.2
       },
       selector: {
         show: true,
@@ -1761,8 +1765,10 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
                         slots tab)</span
                       ></span
                     >
-                    <BaseAttr name="enableRangeHandles" attr="style.chart.zoom.enableRangeHandles" type="chexkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.3.63"/>
-                    <BaseAttr name="enableSelectionDrag" attr="style.chart.zoom.enableSelectionDrag" type="chexkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.3.63"/>
+                    <BaseAttr name="enableRangeHandles" attr="style.chart.zoom.enableRangeHandles" type="chexkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="enableSelectionDrag" attr="style.chart.zoom.enableSelectionDrag" type="chexkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                    <BaseAttr name="focusOnDrag" attr="style.chart.zoom.focusOnDrag" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="focusRangeRatio" attr="style.chart.zoom.focusRangeRatio" type="number" defaultVal="0.2" :min="0.1" :max="0.9" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
                   </BaseDetails>
                 </BaseDetails>
               </BaseDetails>

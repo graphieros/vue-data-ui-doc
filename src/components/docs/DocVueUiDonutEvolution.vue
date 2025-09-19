@@ -154,7 +154,9 @@ const config = ref({
                 startIndex: null,
                 endIndex: null,
                 enableRangeHandles: true,
-                enableSelectionDrag: true
+                enableSelectionDrag: true,
+                focusOnDrag: false,
+                focusRangeRatio: 0.2
             },
             layout: {
                 height: 316,
@@ -405,7 +407,9 @@ const darkModeConfig = ref({
                 startIndex: null,
                 endIndex: null,
                 enableRangeHandles: true,
-                enableSelectionDrag: true
+                enableSelectionDrag: true,
+                focusOnDrag: false,
+                focusRangeRatio: 0.2
             },
             layout: {
                 height: 316,
@@ -864,8 +868,10 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
                     <span>useResetSlot: false; <BaseComment>To use a custom slot for the reset feature (see slots tab)</BaseComment></span>
                     <span>startIndex: number | null, <BaseComment>Force zoom start index</BaseComment></span>
                     <span>endIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
-                    <BaseAttr name="enableRangeHandles" attr="style.chart.zoom.enableRangeHandles" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
-                    <BaseAttr name="enableSelectionDrag" attr="style.chart.zoom.enableSelectionDrag" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
+                    <BaseAttr name="enableRangeHandles" attr="style.chart.zoom.enableRangeHandles" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="enableSelectionDrag" attr="style.chart.zoom.enableSelectionDrag" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="focusOnDrag" attr="style.chart.zoom.focusOnDrag" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="focusRangeRatio" attr="style.chart.zoom.focusRangeRatio" type="number" defaultVal="0.2" :min="0.1" :max="0.9" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
             </BaseDetails>
         </BaseDetails>
