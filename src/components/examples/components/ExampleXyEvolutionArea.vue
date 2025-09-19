@@ -15,32 +15,58 @@ const config = computed(() => {
             fontFamily: "inherit",
             backgroundColor: isDarkMode.value ? "#2A2A2A" : "#FFFFFF",
             color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
-            height: 800,
+            height: 700,
             width: 1800,
             zoom: {
-                show: false,
+                show: true,
+                focusOnDrag: true,
+                preview: {
+                    enable: false,
+                },
+                minimap: {
+                    show: true,
+                }
             },
             highlighter: {
                 color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
                 opacity: 5,
             },
-            highlightArea: {
-                show: true,
-                from: 3,
-                to: 5,
-                color: "#FF0000",
-                opacity: 10,
-                caption: {
-                    text: "Low season",
-                    fontSize: 20,
-                    color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
-                    bold: false,
-                    offsetY: 0,
-                    width: "auto",
-                    padding: 3,
-                    textAlign: "center",
+            highlightArea: [
+                {
+                    show: true,
+                    from: 3,
+                    to: 5,
+                    color: "#FF0000",
+                    opacity: 10,
+                    caption: {
+                        text: "Low season",
+                        fontSize: 20,
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                        bold: false,
+                        offsetY: 0,
+                        width: "auto",
+                        padding: 3,
+                        textAlign: "center",
+                    },
                 },
-            },
+                {
+                    show: true,
+                    from: 12,
+                    to: 13,
+                    color: "#1f77b4",
+                    opacity: 10,
+                    caption: {
+                        text: "France: closed for work",
+                        fontSize: 20,
+                        color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                        bold: false,
+                        offsetY: 0,
+                        width: "auto",
+                        padding: 3,
+                        textAlign: "center",
+                    },
+                },
+            ],
             grid: {
                 position: "middle",
                 stroke: "#e1e5e8",
@@ -62,19 +88,35 @@ const config = computed(() => {
                         show: true,
                         color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                         values: [
-                            "JAN",
-                            "FEB",
-                            "MAR",
-                            "APR",
-                            "MAY",
-                            "JUN",
-                            "JUL",
-                            "AUG",
-                            "SEP",
-                            "OCT",
-                            "NOV",
-                            "DEC",
+                            1735689600000, // Jan 2025
+                            1738368000000, // Feb 2025
+                            1740787200000, // Mar 2025
+                            1743465600000, // Apr 2025
+                            1746057600000, // May 2025
+                            1748736000000, // Jun 2025
+                            1751328000000, // Jul 2025
+                            1754006400000, // Aug 2025
+                            1756684800000, // Sep 2025
+                            1759276800000, // Oct 2025
+                            1761955200000, // Nov 2025
+                            1764547200000, // Dec 2025
+                            1767225600000, // Jan 2026
+                            1769904000000, // Feb 2026
+                            1772323200000, // Mar 2026
+                            1775001600000, // Apr 2026
+                            1777593600000, // May 2026
+                            1780272000000, // Jun 2026
+                            1782864000000, // Jul 2026
+                            1785542400000, // Aug 2026
+                            1788220800000, // Sep 2026
+                            1790812800000, // Oct 2026
+                            1793491200000, // Nov 2026
+                            1796083200000, // Dec 2026
+                            1798761600000  // Jan 2027
                         ],
+                        datetimeFormatter: {
+                            enable: true,
+                        },
                         fontSize: 14,
                         showOnlyFirstAndLast: false,
                         yOffset: 8,
@@ -87,6 +129,7 @@ const config = computed(() => {
                 suffix: "%",
             },
             legend: {
+                position: 'top',
                 show: true,
                 color: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
                 fontSize: 16,
@@ -140,6 +183,7 @@ const config = computed(() => {
             radius: 6,
             useGradient: true,
             strokeWidth: 2,
+            cutNullValues: true,
             labels: {
                 show: true,
                 offsetY: -8,
@@ -150,6 +194,9 @@ const config = computed(() => {
                 useGradient: true,
                 opacity: "26",
             },
+            tag: {
+                followValue: true
+            }
         },
         plot: {
             radius: 6,
@@ -188,8 +235,7 @@ const config = computed(() => {
 const dataset = ref([
     {
         name: "France",
-        series: [25, 35, 44, 24, 22, 27, 47, 43, 55, 81, 89, 92],
-        color: "#6376DD",
+        series: [25, 35, 44, 24, 22, 27, 47, 43, 55, 81, 89, 92, null, null, 87, 63, 35, 47, 67, 72, 85, 86, 89, 67],
         type: "line",
         shape: "circle",
         useArea: true,
@@ -200,11 +246,11 @@ const dataset = ref([
         useTag: "none",
     },
     {
-        name: "Brazil",
-        series: [87, 76, 65, 55, 43, 19, 86, 88, 45, 67, 43, 76],
-        color: "#42d392",
+        name: "China",
+        series: [87, 76, 65, 55, 43, 19, 86, 88, 45, 67, 43, 76, 72, 66, 52, 44, 27, 85, 91, 85, 65, 61, 41, 78],
         type: "bar",
         shape: "circle",
+        color: '#d62728',
         useArea: true,
         useProgression: false,
         dataLabels: true,
@@ -214,7 +260,7 @@ const dataset = ref([
     },
     {
         name: "Target",
-        series: [65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65],
+        series: [65, 66, 65, 45, 43, 45, 65, 65, 70, 72, 75, 85, 85, 85, 80, 65, 65, 70, 72, 80, 75, 75, 72, 75],
         color: "#d2a441",
         type: "line",
         shape: "circle",
@@ -240,5 +286,23 @@ defineExpose({
 </script>
 
 <template>
-    <VueUiXy :config="config" :dataset="dataset"> </VueUiXy>
+    <VueUiXy :config="config" :dataset="dataset">
+        <template #bar-gradient="{ series, positiveId, negativeId }">
+            <linearGradient :id="positiveId" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" :stop-color="series.color" />
+                <stop offset="100%" :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient :id="negativeId" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'" stop-opacity="0" />
+                <stop offset="100%" :stop-color="series.color" />
+            </linearGradient>
+        </template>
+
+        <!-- <template #area-gradient="{ series, id }">
+            <linearGradient :id="id" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" :stop-color="series.color" />
+                <stop offset="100%" :stop-color="isDarkMode ? '#2A2A2A' : '#FFFFFF'" stop-opacity="0" />
+            </linearGradient>
+        </template> -->
+    </VueUiXy>
 </template>

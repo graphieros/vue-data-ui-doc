@@ -52,10 +52,6 @@ const config = computed(() => {
                     }
                 },
                 "padding": {
-                    "top": 24,
-                    "right": 48,
-                    "bottom": 24,
-                    "left": 48
                 },
                 "line": {
                     "show": true,

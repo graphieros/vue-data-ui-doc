@@ -42,15 +42,15 @@ const config = computed(() => {
                             "roundingPercentage": 0,
                             "showDonutName": true,
                             "boldDonutName": true,
-                            "donutNameAbbreviation": true,
+                            "donutNameAbbreviation": false,
                             "donutNameMaxAbbreviationSize": 3,
-                            "donutNameOffsetY": 0
+                            "donutNameOffsetY": -6
                         }
                     },
                     "donut": {
                         "strokeWidth": 200,
                         "borderWidth": 2,
-                        "spacingRatio": 1
+                        "spacingRatio": 0.6
                     }
                 },
                 "legend": {
@@ -117,14 +117,14 @@ const dataset = ref([
         "series": [
             {
                 "name": "Boutique",
-                "color": "#6376DD",
+                "color": "#1f77b4",
                 "values": [
                     125
                 ]
             },
             {
                 "name": "Online shop",
-                "color": "#41d252",
+                "color": "#aec7e8",
                 "values": [
                     190
                 ]
@@ -136,14 +136,14 @@ const dataset = ref([
         "series": [
             {
                 "name": "Boutique",
-                "color": "#6376DD",
+                "color": "#1f77b4",
                 "values": [
                     455
                 ]
             },
             {
                 "name": "Online shop",
-                "color": "#41d252",
+                "color": "#aec7e8",
                 "values": [
                     842
                 ]
