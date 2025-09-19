@@ -1331,6 +1331,7 @@ export default function useExamples() {
                     fontSize: 20,
                 },
                 zoom: {
+                    focusOnDrag: true,
                     minimap: {
                         show: true,
                         lineColor: '#1F77B4',

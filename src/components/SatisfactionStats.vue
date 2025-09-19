@@ -752,7 +752,9 @@ const xyConfig = computed(() => {
             backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             padding: {
-                top: 20
+                top: 20,
+                bottom: 12,
+                right: 24
             },
             grid: {
                 labels: {
@@ -829,7 +831,12 @@ const xyConfig = computed(() => {
                 color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
                 highlightColor: '#1F77B4',
                 useDefaultFormat: false,
-                timeFormat: 'yyyy-MM-dd'
+                timeFormat: 'yyyy-MM-dd',
+                focusOnDrag: true,
+                focusRangeRatio: 0.15,
+                minimap: {
+                    show: true,
+                }
                 // startIndex: history.value.averagePerDay.length - 14,
                 // endIndex: history.value.averagePerDay.length - 1
             }
