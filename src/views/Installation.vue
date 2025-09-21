@@ -45,16 +45,21 @@ import "vue-data-ui/style.css" // ${translations.value.installation.comments.inc
 // ${translations.value.installation.comments.global[store.lang]}
 import { VueUiRadar } from "vue-data-ui"
 
+// Since v3.2.0 treeshake import:
+import VueUiXy from "vue-data-ui/vue-ui-xy";
+
 const app = createApp(App)
 
 app.component("VueUiRadar", VueUiRadar)
+app.component("VueUiXy", VueUiXy)
 app.mount('#app')
 `
 });
 
 const componentContent = computed(() => {
     return `// ${translations.value.installation.comments.import[store.lang]}
-import { VueUiRadar, VueUiXy } from "vue-data-ui";
+import { VueUiRadar } from "vue-data-ui"; // not treeshaken
+import VueUiXy from "vue-data-ui/vue-ui-xy"; // treeshaken
 
 // With Typescript:
 import { ref } from "vue";
@@ -83,6 +88,7 @@ const config = ref(/* Your config (optional) */);
 
 const universalComponentTemplateContent = computed(() => {
     return `<template>
+    <!-- Caveat: universal component is not treeshakable -->
     <div style="width:600px;">
         <VueDataUi
             component="VueUiXy"

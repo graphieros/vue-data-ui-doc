@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.2.0",
+    "date": "2025-09-21",
+    "updates": [
+      {
+        "component": "General",
+        "description": "Implement component treeshaking",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.1.18",
     "date": "2025-09-21",
     "updates": [

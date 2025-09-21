@@ -4,7 +4,6 @@ import App from './App.vue'
 import router from './router';
 import { createPinia } from 'pinia';
 import { 
-    VueUiXy, 
     VueUiTable, 
     VueUiDonut, 
     VueUiWaffle, 
@@ -59,6 +58,8 @@ import {
     VueUiHorizontalBar
 } from "vue-data-ui";
 import "vue-data-ui/style.css";
+
+import VueUiXy from "vue-data-ui/vue-ui-xy";
 
 const pinia = createPinia();
 
