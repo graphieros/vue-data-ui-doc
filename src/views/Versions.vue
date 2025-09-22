@@ -360,6 +360,9 @@ const xyConfig = computed({
             }
           }
         },
+        zoom: {
+          focusOnDrag: true
+        }
       },
       line: {
         strokeWidth: 1
@@ -422,6 +425,7 @@ onMounted(() => {
         xyConfig.value.chart.grid.labels.xAxisLabels.values = json.downloads.map(d => d.day)
         fDates.value = json.downloads.map(d => d.day)
         xyConfig.value.chart.grid.labels.xAxisLabels.showOnlyFirstAndLast = true
+        xyConfig.value.chart.zoom.focusOnDrag = true;
       })
       .catch(err => {
         isError.value = true;

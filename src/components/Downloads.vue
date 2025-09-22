@@ -102,6 +102,7 @@ const config = computed(() => {
         endIndex: null,
         enableRangeHandles: true,
         enableSelectionDrag: true,
+        focusOnDrag: true,
         minimap: {
           show: true,
           smooth: false,
@@ -361,6 +362,10 @@ const configCumulativeAverage = computed(() => {
     chart: {
       ...config.value.chart,
       zoom: {
+        focusOnDrag: true,
+        minimap: {
+          show: true,
+        },
         preview: {
           fill: '#42d39220',
           stroke: '#42d39240',
