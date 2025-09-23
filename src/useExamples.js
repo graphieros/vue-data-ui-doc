@@ -2747,6 +2747,7 @@ export default function useExamples() {
                             stroke: colors.value.gridStroke
                         },
                         wheel: {
+                            tiltAngle3d: 60,
                             ticks: {
                                 inactiveColor: colors.value.gridStroke
                             }
@@ -2763,6 +2764,71 @@ export default function useExamples() {
                     }    
                 }
             }
+        }
+    })
+
+    const CONFIG_WHEEL_SQUARED_TICKS_3D = computed(() => {
+        return {
+            layout: "3d",
+            style: {
+                fontFamily: "inherit",
+                chart: {
+                    backgroundColor: colors.value.bg,
+                    color: colors.value.textColor,
+                    animation: {
+                        use: true,
+                        speed: 0.5,
+                        acceleration: 1
+                    },
+                    title: {
+                        text: 'Title',
+                        color: colors.value.textColor,
+                        textAlign: 'left',
+                        paddingLeft: 24,
+                        subtitle: {
+                            text: 'Subtitle'
+                        }
+                    },
+                    layout: {
+                        wheel: {
+                            radiusRatio: 0.9,
+                            tiltAngle3d: 60,
+                            ticks: {
+                                rounded: true,
+                                inactiveColor: colors.value.gridStroke,
+                                activeColor: "#1f77b4",
+                                sizeRatio: 0.85,
+                                gradient: {
+                                    show: false,
+                                    shiftHueIntensity: 12
+                                },
+                                quantity: 50,
+                                strokeWidth: 0,
+                                stroke: "#FFFFFF",
+                                type: "arc",
+                                spacingRatio3d: 0.8,
+                                shadeColorRatio3d: 0.15
+                            }
+                        },
+                        innerCircle: {
+                            show: true,
+                            stroke: colors.value.gridStroke,
+                            strokeWidth: 1,
+                            radiusRatio: 0.9
+                        },
+                        percentage: {
+                            show: true,
+                            fontSize: 100,
+                            rounding: 1,
+                            bold: true,
+                            offsetX: 12,
+                            offsetY: -16,
+                            stroke: colors.value.bg,
+                            strokeWidth: 12,
+                        }
+                    },
+                }
+            },
         }
     })
 
@@ -8799,6 +8865,49 @@ export default function useExamples() {
                     es: "",
                     ko: "",
                     ar: ''
+                }
+            },
+            // WHEEL 3D BASIC
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: {
+                    ...CONFIG_WHEEL_BASIC.value,
+                    layout: '3d'
+                },
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-basic-3d',
+                link: 'vue-ui-wheel',
+                description: {
+                    en: "Wheel gauge chart basic 3D",
+                    fr: "Jauge en forme de roue basique 3D",
+                    pt: "Gráfico de medidor de roda básico 3D",
+                    de: "Grundlegendes Radmessgerät-Diagramm 3D",
+                    zh: "3D 基本轮式仪表图",
+                    jp: "3D 基本ホイールゲージチャート",
+                    es: "Gráfico de medidor de rueda básico 3D",
+                    ko: "3D 기본 휠 게이지 차트",
+                    ar: "3Dمخطط عداد عجلة أساسي"
+                }
+            },
+            // WHEEL LESS GRADIENT SQUARED TICKS 3D
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: CONFIG_WHEEL_SQUARED_TICKS_3D.value,
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-less-gradient-squared',
+                link: 'vue-ui-wheel',
+                description: {
+                    en: "Less gradient, rectangular ticks 3D",
+                    fr: "Moins de dégradé, graduations rectangulaires 3D",
+                    pt: "Menos gradiente, marcações retangulares 3D",
+                    de: "Weniger Verlauf, rechteckige Markierungen 3D",
+                    zh: "3D 减少渐变，矩形刻度",
+                    jp: "3D 勾配を少なくし、長方形の目盛り",
+                    es: "Menos gradiente, marcas rectangulares 3D",
+                    ko: "3D 더 적은 그라데이션, 직사각형 눈금",
+                    ar: "3Dتدرج أقل، علامات مستطيلة"
                 }
             },
             // WHEEL BACKGROUND
