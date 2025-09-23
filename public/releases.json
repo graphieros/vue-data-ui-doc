@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.2.1",
+    "date": "2025-09-23",
+    "updates": [
+      {
+        "component": "VueUiWheel",
+        "description": "Add 3d mode",
+        "link": "/docs/#vue-ui-wheel"
+      },
+      {
+        "component": "VueUiQuickChart",
+        "description": "Fix possible dasharray too short when animation is enabled and line is long",
+        "link": "/docs/#vue-ui-quick-chart"
+      }
+    ]
+  },
+  {
     "version": "v 3.2.0",
     "date": "2025-09-21",
     "updates": [

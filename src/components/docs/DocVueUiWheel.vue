@@ -51,6 +51,7 @@ const config = ref({
   debug: false,
   loading: false,
   responsive: false,
+  layout: 'classic',
   style: {
     fontFamily: "inherit",
     chart: {
@@ -63,11 +64,15 @@ const config = ref({
       },
       layout: {
         wheel: {
+          radiusRatio: 1,
+          tiltAngle3d: 50,
           ticks: {
             rounded: true,
             inactiveColor: "#e1e5e8",
             activeColor: "#5f8bee",
             sizeRatio: 0.9,
+            stroke: 'transparent',
+            strokeWidth: 5,
             gradient: {
               show: true,
               shiftHueIntensity: 100,
@@ -78,12 +83,17 @@ const config = ref({
           show: true,
           stroke: "#e1e5e8",
           strokeWidth: 1,
+          radiusRatio: 1,
         },
         percentage: {
           show: true,
           fontSize: 48,
           rounding: 1,
           bold: true,
+          offsetX: 0,
+          offsetY: 0,
+          stroke: 'transparent',
+          strokeWidth: 0
         },
       },
       title: {
@@ -134,6 +144,7 @@ const darkModeConfig = ref({
   debug: false,
   loading: false,
   responsive: false,
+  layout: 'classic',
   style: {
     fontFamily: "inherit",
     chart: {
@@ -146,11 +157,15 @@ const darkModeConfig = ref({
       },
       layout: {
         wheel: {
+          radiusRatio: 1,
+          tiltAngle3d: 50,
           ticks: {
             rounded: true,
             inactiveColor: "#3A3A3A",
             activeColor: "#5f8bee",
             sizeRatio: 0.9,
+            strokeWidth: 5,
+            stroke: 'transparent',
             gradient: {
               show: true,
               shiftHueIntensity: 100,
@@ -161,12 +176,17 @@ const darkModeConfig = ref({
           show: true,
           stroke: "#3A3A3A",
           strokeWidth: 1,
+          radiusRatio: 1,
         },
         percentage: {
           show: true,
           fontSize: 48,
           rounding: 1,
           bold: true,
+          offsetX: 0,
+          offsetY: 0,
+          stroke: 'transparent',
+          strokeWidth: 0
         },
       },
       title: {
@@ -338,6 +358,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
     <BaseAttr inactive name="debug" defaultVal="false"/>
     <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <span>theme: "", <BaseComment>"celebration" | "celebrationNight" | "zen" | "hack" | "concrete" | ""</BaseComment></span>
+    <BaseAttr name="layout" attr="layout" type="select" defaultVal="classic" :options="['classic', '3d']" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.2.1"/>
     <BaseDetails attr="style" :level="1">
       <span>fontFamily: "inherit",</span>
       <BaseDetails attr="chart" :level="2" title="style.chart">
@@ -353,20 +374,29 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
             <BaseAttr name="show" attr="style.chart.layout.innerCircle.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="stroke" attr="style.chart.layout.innerCircle.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="strokeWidth" attr="style.chart.layout.innerCircle.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="radiusRatio" attr="style.chart.layout.innerCircle.radiusRatio" type="number" :min="0.2" :max="2" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.2.1" />
           </BaseDetails>
           <BaseDetails attr="percentage" :level="4" title="style.chart.layout.percentage">
             <BaseAttr name="show" attr="style.chart.layout.percentage.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="fontSize" attr="style.chart.layout.percentage.fontSize" type="number" defaultVal="48" :min="8" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
             <BaseAttr name="rounding" attr="style.chart.layout.percentage.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="bold" attr="style.chart.layout.percentage.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="offsetX" attr="style.chart.layout.percentage.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.2.1"/>
+            <BaseAttr name="offsetY" attr="style.chart.layout.percentage.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.2.1"/>
+            <BaseAttr name="stroke" attr="style.chart.layout.percentage.stroke" type="color" defaultVal="transparent" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="since v3.2.1."/>
+            <BaseAttr name="strokeWidth" attr="style.chart.layout.percentage.strokeWidth" type="number" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
           </BaseDetails>
           <BaseDetails attr="wheel" :level="4" title="style.chart.layout.wheel">
+            <BaseAttr name="radiusRatio" attr="style.chart.layout.wheel.radiusRatio" type="number" :min="0.3" :max="1" :step="0.01" comment="since v3.2.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="tiltAngle3d" attr="style.chart.layout.wheel.tiltAngle3d" type="range" :min="10" :max="80" comment="since v3.2.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseDetails attr="ticks" :level="5" title="style.chart.layout.wheel.ticks">
               <BaseAttr name="rounded" attr="style.chart.layout.wheel.ticks.rounded" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="inactiveColor" attr="style.chart.layout.wheel.ticks.inactiveColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="activeColor" attr="style.chart.layout.wheel.ticks.activeColor" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="sizeRatio" attr="style.chart.layout.wheel.ticks.sizeRatio" type="range" defaultVal="0.9" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="stroke" attr="style.chart.layout.wheel.ticks.stroke" type="color" defaultVal="transparent" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="strokeWidth" attr="style.chart.layout.wheel.ticks.strokeWidth" type="number" defaultVal="5" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseDetails attr="gradient" :level="6" title="style.chart.layout.wheel.ticks.gradient">
                 <BaseAttr name="show" attr="style.chart.layout.wheel.ticks.gradient.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="shiftHueIntensity" attr="style.chart.layout.wheel.ticks.gradient.shiftHueIntensity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
