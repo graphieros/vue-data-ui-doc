@@ -1102,11 +1102,13 @@ Target the following css class to apply custom styles:
                                 isDarkMode 
                                     ? {
                                         ...mutableConfigDarkMode,
-                                        responsive: true
+                                        responsive: true,
+                                        lineAnimated: false,
                                     } 
                                     : {
                                         ...mutableConfig,
-                                        responsive: true
+                                        responsive: true,
+                                        lineAnimated: false,
                                     }
                                 " 
                             :key="key"
