@@ -164,6 +164,9 @@ const heatmapConfig = computed(() => {
             backgroundColor: 'transparent',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             layout: {
+                padding: {
+                    top: 6,
+                },
                 cells: {
                     rowTotal: {
                         value: {
@@ -203,7 +206,10 @@ const heatmapConfig = computed(() => {
                         values: getWeekRanges(stats.value),
                         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                         fontSize: 9,
-                        // showOnlyAtModulo: 4
+                        autoRotate: {
+                            enable: true,
+                            angle: -90
+                        }
                     }
                 },
             },
