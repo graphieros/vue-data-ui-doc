@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, nextTick, onUnmounted } from "vue";
 import { useMainStore } from "../stores";
 import Schema from "../schema/Schema.vue";
 import BaseTabsMenu from "./BaseTabsMenu.vue";
 import BaseSignInfo from "./BaseSignInfo.vue";
+import useMobile from "../useMobile";
+import IconSettings from "./IconSettings.vue";
+import FlexibleTooltip from "./FlexibleTooltip.vue";
 
 const store = useMainStore();
 
 const isDarkMode = computed(() => store.isDarkMode);
 const translations = computed(() => store.translations);
+const isMenuOpen = computed(() => store.isMenuOpen);
 
 const emit = defineEmits(["onResponsiveTab", "onNonResponsiveTab"]);
 
@@ -43,6 +47,8 @@ const props = withDefaults(defineProps<BoxProps>(), {
     signInfo: '',
     showDatetimeFormatter: false,
 });
+
+const { isMobile } = useMobile();
 
 const activeTab = ref(props.activeTab);
 
@@ -323,10 +329,73 @@ const patternTranslations = computed(() => {
     }
 })
 
+const tabsMenu = ref(null)
+const isMini = ref(false);
+const boxWrapper = ref(null);
+let io = null;
+
+onMounted(() => {
+    
+    const root = document.querySelector("#root") || null;
+
+    io = new IntersectionObserver(
+        (entries) => {
+            console.log(entries)
+            for (const entry of entries) {
+                isMini.value = !entry.isIntersecting;
+            }
+        },
+        {
+            root,
+            rootMargin: "0px",
+            threshold: 0,
+        }
+    );
+
+    if (tabsMenu.value) {
+        io.observe(tabsMenu.value);
+    }
+});
+
+onUnmounted(() => {
+    if (io) {
+        io.disconnect();
+        io = null;
+    }
+});
+
+function selectTabFromMini(order) {
+    activeTab.value = order;
+    if (boxWrapper.value) {
+        boxWrapper.value.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+        })
+    }
+}
 
 </script>
 
 <template>
+    <Transition name="fade">
+        <div 
+            v-if="isMini && !isMobile" 
+            :class="`fixed top-[100px] ${isMenuOpen ? 'left-[300px]' : 'left-[60px]'} z-20 flex flex-col gap-2.5 p-2 transition-all`"
+        >
+            <FlexibleTooltip
+                v-for="tab in menuItems"
+                position="right"
+                :content="tab.name"
+            >
+                <button @click="() => selectTabFromMini(tab.order)" class="p-2 bg-gradient-to-br from-white to-white dark:from-[#FFFFFF20] dark:to-[#ffffff05] rounded shadow-md hover:bg-gradient-to-tl transition-colors">
+                    <IconSettings v-if="tab.icon === 'settings'" :stroke="isDarkMode ? '#5F8BEE' : '#1A1A1A'" :size="20" />
+                    <VueUiIcon v-else :name="tab.icon" :stroke="tab.color" :size="20" />
+                </button>
+            </FlexibleTooltip>
+        </div>
+    </Transition>
+
     <div v-if="schema"
         class="border border-gray-700 rounded-md my-6 relative overflow-x-auto dark:bg-[#FFFFFF05] bg-gradient-to-br from-transparent to-[#5F8BEE20]">
         <VueDataUi component="VueUiAccordion" :config="isDarkMode ? darkModeConfig : config">
@@ -342,7 +411,7 @@ const patternTranslations = computed(() => {
             </template>
         </VueDataUi>
     </div>
-    <div class="p-6 rounded-md border border-gray-700 my-6 relative overflow-x-auto bg-gradient-to-br from-transparent to-[#5F8BEE20]">
+    <div ref="boxWrapper" class="p-6 rounded-md border border-gray-700 my-6 relative overflow-x-auto bg-gradient-to-br from-transparent to-[#5F8BEE20] scroll-mt-8">
 
         <h2 class="mb-6 flex flex-row place-items-center gap-3" dir="auto">
             <VueUiIcon name="clipBoard" :size="24" stroke="#5F8BEE" />
@@ -350,7 +419,9 @@ const patternTranslations = computed(() => {
             {{ translations.detailedDocumentation[store.lang] }}
         </h2>
 
-        <BaseTabsMenu :items="menuItems" @tabSelected="({order}) => activeTab = order" :activeTab="activeTab"/>
+        <div ref="tabsMenu">
+            <BaseTabsMenu :items="menuItems" @tabSelected="({order}) => activeTab = order" :activeTab="activeTab"/>
+        </div>
 
         <div class="text-inter-medium text-app-green text-2xl mb-3">
             <slot name="title" />
