@@ -224,7 +224,7 @@ const menuItems = computed(() => {
     return [
         {
             name: menuTranslations.value.dataset[store.lang],
-            icon: 'ratio',
+            icon: 'numbers',
             color: isDarkMode.value ? '#42d392' : '#1A1A1A',
             active: true,
             order: 0
@@ -340,7 +340,6 @@ onMounted(() => {
 
     io = new IntersectionObserver(
         (entries) => {
-            console.log(entries)
             for (const entry of entries) {
                 isMini.value = !entry.isIntersecting;
             }

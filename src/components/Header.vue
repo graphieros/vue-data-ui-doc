@@ -12,6 +12,7 @@ import vClickOutside from "../directives/vClickOutside";
 import useCharts from "../useCharts";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { createUid } from "../components/maker/lib";
+import IconSettings from "./IconSettings.vue";
 
 const router = useRouter();
 const store = useMainStore();
@@ -284,7 +285,7 @@ const message = ref({
                                     : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
                                 }`"
                             >
-                            <VueUiIcon name="settings" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" :size="18" :strokeWidth="1" />
+                            <IconSettings :size="18" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
                             {{ translations.menu.docs[store.lang] }}
                         </div>
                     </router-link>

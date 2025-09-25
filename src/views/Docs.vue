@@ -18,6 +18,7 @@ import ChartSeeker from "../components/ChartSeeker.vue";
 import BaseDragElement from "../components/BaseDragElement.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
 import { useIconMap } from "../useIconMap";
+import IconSettings from "../components/IconSettings.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -1229,7 +1230,7 @@ const stackbarKey = ref(0);
 
                     <div class="w-full flex flex-col gap-4 place-items-center justify-center mb-2 mt-4">
                         <div class="flex flex-row gap-4 place-items-center">
-                            <VueUiIcon name="settings" :size="80" :strokeWidth="1" stroke="#42d392" class="hidden md:block"/>
+                            <IconSettings :size="80" stroke="#42d392" class="hidden md:block"/>
                             <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center">{{ translations.menu.docs[store.lang] }}</h1>
                         </div>
                     </div>

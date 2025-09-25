@@ -366,7 +366,7 @@ export function useCase() {
     const XY_FIXED_SCALE_DATASET = ref([
         {
             name: "Serie 1",
-            series: [-87, -80, -60, -30, 0, 30, 60, 80, 87, 80, 60, 30, 0, -30, -60, -80, -87],
+            series: [-0, -10, 10, -20, 20, -30, 30, -40, 40, -50, 50, -40, 40, -30, 30, -20, 20, -10, 10, 0],
             type: "line",
             smooth: true,
             useArea: false,
@@ -398,13 +398,12 @@ export function useCase() {
                 },
                 grid: {
                     stroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
-                    position: 'start',
                     labels: {
                         color: textColor.value,
                         fontSize: 16,
                         yAxis: {
-                            scaleMin: -120,
-                            scaleMax: 120
+                            scaleMin: -100,
+                            scaleMax: 100
                         },
                         xAxisLabels: {
                             show: false,
