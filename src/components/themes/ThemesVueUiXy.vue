@@ -18,7 +18,7 @@ const dataset = ref([
     }
 ])
 
-const config = ref({ // TODO
+const config = ref({
     bar: {
         labels: {
             show: true,
@@ -28,7 +28,8 @@ const config = ref({ // TODO
         strokeWidth: 4,
         radius: 6,
         labels: {
-            show: true
+            show: true,
+            offsetY: -12
         }
     },
     chart: {
@@ -50,7 +51,16 @@ const config = ref({ // TODO
                 xAxisLabels: {
                     values: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
                     fontSize: 24
+                },
+                yAxis: {
+                    gap: 64
                 }
+            }
+        },
+        zoom: {
+            focusOnDrag: true,
+            minimap: {
+                show: true
             }
         }
     }
