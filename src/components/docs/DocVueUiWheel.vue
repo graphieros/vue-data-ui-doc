@@ -67,6 +67,7 @@ const config = ref({
           radiusRatio: 1,
           tiltAngle3d: 50,
           ticks: {
+            type: 'classic',
             rounded: true,
             inactiveColor: "#e1e5e8",
             activeColor: "#5f8bee",
@@ -74,6 +75,8 @@ const config = ref({
             stroke: 'transparent',
             strokeWidth: 5,
             depth3d: 0,
+            spacingRatio3d: 1,
+            shadeColorRatio3d: 0.15,
             gradient: {
               show: true,
               shiftHueIntensity: 100,
@@ -161,6 +164,7 @@ const darkModeConfig = ref({
           radiusRatio: 1,
           tiltAngle3d: 50,
           ticks: {
+            type: 'classic',
             rounded: true,
             inactiveColor: "#3A3A3A",
             activeColor: "#5f8bee",
@@ -168,6 +172,8 @@ const darkModeConfig = ref({
             strokeWidth: 5,
             stroke: 'transparent',
             depth3d: 0,
+            spacingRatio3d: 1,
+            shadeColorRatio3d: 0.15,
             gradient: {
               show: true,
               shiftHueIntensity: 100,
@@ -393,6 +399,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
             <BaseAttr name="radiusRatio" attr="style.chart.layout.wheel.radiusRatio" type="number" :min="0.3" :max="1" :step="0.01" comment="since v3.2.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="tiltAngle3d" attr="style.chart.layout.wheel.tiltAngle3d" type="range" :min="10" :max="80" comment="since v3.2.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseDetails attr="ticks" :level="5" title="style.chart.layout.wheel.ticks">
+              <BaseAttr name="type" attr="style.chart.layout.wheel.ticks.type" type="select" defaultVal="classic" :options="['classic', 'arc']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="rounded" attr="style.chart.layout.wheel.ticks.rounded" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="inactiveColor" attr="style.chart.layout.wheel.ticks.inactiveColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="activeColor" attr="style.chart.layout.wheel.ticks.activeColor" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -400,6 +407,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
               <BaseAttr name="stroke" attr="style.chart.layout.wheel.ticks.stroke" type="color" defaultVal="transparent" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="strokeWidth" attr="style.chart.layout.wheel.ticks.strokeWidth" type="number" defaultVal="5" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="depth3d" attr="style.chart.layout.wheel.ticks.depth3d" type="number" defaultVal="0" :min="0" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="spacingRatio3d" attr="style.chart.layout.wheel.ticks.spacingRatio3d" type="range" :min="0" :max="1" :step="0.01" defaultVal="1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="shadeColorRatio3d" attr="style.chart.layout.wheel.ticks.shadeColorRatio3d" type="range" :min="0" :max="1" :step="0.01" defaultVal="0.15" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseDetails attr="gradient" :level="6" title="style.chart.layout.wheel.ticks.gradient">
                 <BaseAttr name="show" attr="style.chart.layout.wheel.ticks.gradient.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="shiftHueIntensity" attr="style.chart.layout.wheel.ticks.gradient.shiftHueIntensity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
