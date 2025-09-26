@@ -8910,6 +8910,83 @@ export default function useExamples() {
                     ar: "3Dتدرج أقل، علامات مستطيلة"
                 }
             },
+            // WHEEL 3D BASIC WITH DEPTS
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: {
+                    ...CONFIG_WHEEL_BASIC.value,
+                    layout: '3d',
+                    style: {
+                        ...CONFIG_WHEEL_BASIC.value.style,
+                        chart: {
+                            ...CONFIG_WHEEL_BASIC.value.style.chart,
+                            layout: {
+                                ...CONFIG_WHEEL_BASIC.value.style.chart.layout,
+                                wheel: {
+                                    ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel,
+                                    ticks: {
+                                        ...CONFIG_WHEEL_BASIC.value.style.chart.layout.wheel.ticks,
+                                        depth3d: 40,
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-basic-3d-depth',
+                link: 'vue-ui-wheel',
+                description: {
+                    en: "Wheel gauge chart basic 3D with depth",
+                    fr: "Jauge circulaire 3D simple avec profondeur",
+                    pt: "Gráfico de medidor circular 3D simples com profundidade",
+                    de: "Einfaches 3D-Kreis-Gauge-Diagramm mit Tiefenwirkung",
+                    zh: "基础 3D 环形仪表图（带深度）",
+                    jp: "奥行きのある基本的な3Dリングゲージチャート",
+                    es: "Gráfico de indicador circular 3D básico con profundidad",
+                    ko: "깊이 효과가 있는 기본 3D 원형 게이지 차트",
+                    ar: "مخطط مقياس دائري ثلاثي الأبعاد بسيط مع عمق"
+                }
+            },
+            // WHEEL LESS GRADIENT SQUARED TICKS 3D WITH DEPTH
+            { 
+                dataset: DATASET_WHEEL_BASIC.value, 
+                config: {
+                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value,
+                    style: {
+                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style,
+                        chart: {
+                            ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart,
+                            layout: {
+                                ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout,
+                                wheel: {
+                                    ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel,
+                                    ticks: {
+                                        ...CONFIG_WHEEL_SQUARED_TICKS_3D.value.style.chart.layout.wheel.ticks,
+                                        depth3d: 40
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                component: 'VueUiWheel',
+                icon: 'chartWheel',
+                id: 'wheel-less-gradient-squared-depth',
+                link: 'vue-ui-wheel',
+                description: {
+                    en: "Less gradient, rectangular ticks 3D with depth",
+                    fr: "Moins de dégradé, graduations rectangulaires 3D avec profondeur",
+                    pt: "Menos gradiente, marcas retangulares 3D com profundidade",
+                    de: "Weniger Verlauf, rechteckige Markierungen in 3D mit Tiefe",
+                    zh: "更少渐变，带深度的 3D 矩形刻度",
+                    jp: "グラデーション控えめ、奥行きのある3Dの矩形目盛",
+                    es: "Menos degradado, marcas rectangulares 3D con profundidad",
+                    ko: "그라디언트를 줄인, 깊이감 있는 3D 직사각형 눈금",
+                    ar: "تدرّج لوني أقل، علامات مستطيلة ثلاثية الأبعاد بعمق"
+                }
+            },
             // WHEEL BACKGROUND
             { 
                 dataset: DATASET_WHEEL_BASIC.value, 
