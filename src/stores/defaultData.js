@@ -2553,6 +2553,7 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.layout.wheel.ticks.spacingRatio3d', type: 'range', def: 0.8, min: 0.1, max: 1, step: 0.01, label: ['ticks', '3d', 'is', 'spacing ratio'], category: 'general'},
                     { key: 'style.chart.layout.wheel.ticks.shadeColorRatio3d', type: 'range', def: 0.15, min: 0, max: 1, step: 0.01, label: ['ticks', '3d', 'is', 'shade ratio'], category: 'general'},
                     { key: 'style.chart.layout.wheel.ticks.quantity', type: 'range', def: 100, min: 12, max: 200, label: ['ticks', 'is', 'quantity'], category: 'general'},
+                    { key: 'style.chart.layout.wheel.ticks.depth3d', type: 'range', def: 0, min: 0, max: 40, label: ['ticks', '3d', 'is', 'depth'], category: 'general'},
 
                     { key: 'style.chart.layout.innerCircle.show', def: true, type: 'checkbox', label: ['hollow', 'circle', 'is', 'show'], category: 'general' },
                     { key: 'style.chart.layout.innerCircle.stroke', def: "#e1e5e8", type: 'color', label: ['hollow', 'circle', 'is', 'border', 'color'], category: 'general' },

@@ -73,6 +73,7 @@ const config = ref({
             sizeRatio: 0.9,
             stroke: 'transparent',
             strokeWidth: 5,
+            depth3d: 0,
             gradient: {
               show: true,
               shiftHueIntensity: 100,
@@ -166,6 +167,7 @@ const darkModeConfig = ref({
             sizeRatio: 0.9,
             strokeWidth: 5,
             stroke: 'transparent',
+            depth3d: 0,
             gradient: {
               show: true,
               shiftHueIntensity: 100,
@@ -397,6 +399,7 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
               <BaseAttr name="sizeRatio" attr="style.chart.layout.wheel.ticks.sizeRatio" type="range" defaultVal="0.9" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="stroke" attr="style.chart.layout.wheel.ticks.stroke" type="color" defaultVal="transparent" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="strokeWidth" attr="style.chart.layout.wheel.ticks.strokeWidth" type="number" defaultVal="5" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="depth3d" attr="style.chart.layout.wheel.ticks.depth3d" type="number" defaultVal="0" :min="0" :max="40" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseDetails attr="gradient" :level="6" title="style.chart.layout.wheel.ticks.gradient">
                 <BaseAttr name="show" attr="style.chart.layout.wheel.ticks.gradient.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="shiftHueIntensity" attr="style.chart.layout.wheel.ticks.gradient.shiftHueIntensity" type="range" defaultVal="100" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

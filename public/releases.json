@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 3.2.2",
+    "date": "2025-09-26",
+    "updates": [
+      {
+        "component": "VueUiWheel",
+        "description": "Improve 3d options",
+        "link": "/docs/#vue-ui-wheel"
+      },
+      {
+        "component": "VueUiTable",
+        "description": "Improve chart options (zoom, time labels)",
+        "link": "/docs/#vue-ui-table"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Improve visibility of trend lines and labels",
+        "link": "/docs/#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.2.1",
     "date": "2025-09-23",
     "updates": [

@@ -9,6 +9,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 
 const mainConfig = useConfig()
 
@@ -368,6 +369,27 @@ const config = ref({
                     strokeWidth: 2,
                     strokeDasharray: 4,
                     arrowSize: 7,
+                },
+                timeLabels: {
+                    showOnlyAtModulo: true,
+                    modulo: 12,
+                },
+                datetimeFormatter: {
+                    enable: true,
+                    locale: 'en',
+                    useUTC: false,
+                    januaryAsYear: false,
+                    options: {
+                        year: 'yyyy',
+                        month: `MMM 'yy`,
+                        day: 'dd MMM',
+                        hour: 'HH:mm',
+                        minute: 'HH:mm:ss',
+                        second: 'HH:mm:ss'
+                    }
+                },
+                zoom: {
+                    show: true
                 }
             },
         }
@@ -391,6 +413,7 @@ const config = ref({
         to: "To",
         total: 'Total',
         totalRows: "Total rows",
+        xAxisLabels: 'X axis labels'
     },
     useChart: true
 });
@@ -536,6 +559,27 @@ const darkModeConfig = ref({
                     strokeWidth: 2,
                     strokeDasharray: 4,
                     arrowSize: 7,
+                },
+                timeLabels: {
+                    showOnlyAtModulo: true,
+                    modulo: 12,
+                },
+                datetimeFormatter: {
+                    enable: true,
+                    locale: 'en',
+                    useUTC: false,
+                    januaryAsYear: false,
+                    options: {
+                        year: 'yyyy',
+                        month: `MMM 'yy`,
+                        day: 'dd MMM',
+                        hour: 'HH:mm',
+                        minute: 'HH:mm:ss',
+                        second: 'HH:mm:ss'
+                    }
+                },
+                zoom: {
+                    show: true
                 }
             },
         }
@@ -559,7 +603,8 @@ const darkModeConfig = ref({
         to: "To",
         total: 'Total',
         totalRows: "Total rows",
-        filename: 'File name'
+        filename: 'File name',
+        xAxisLabels: 'X axis labels'
     },
     useChart: true
 });
@@ -636,6 +681,27 @@ const pageChangeCode = ref(`function onPageChange(pageData: VueUiTablePageChange
     console.log({ currentPage, totalPages, itemsPerPages, currentPageData });
 }`)
 
+const timeFormats = `const config = ref({
+    chart: {
+        tooltip: {
+            customFormat: null,
+            useDefaultTimeFormat: false,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss'
+        },
+        timeTag: {
+            show: true,
+            customFormat: null,
+            useDefaultFormat: false,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss',
+        },
+        zoom: {
+            customFormat: null,
+            useDefaultFormat: false,
+            timeFormat: 'yyyy-MM-dd HH:mm:ss'
+        }
+    }
+})`
+
 const pageEventDescription = ref( {
     en: 'This event fires when using the pagination buttons, as well as when the number of items per page is modified.',
     fr: 'Cet événement se déclenche lors de l’utilisation des boutons de pagination, ainsi que lorsque le nombre d’éléments par page est modifié.',
@@ -646,6 +712,18 @@ const pageEventDescription = ref( {
     es: 'Este evento se dispara al usar los botones de paginación, así como cuando se modifica el número de elementos por página.',
     ar: 'يتم تشغيل هذا الحدث عند استخدام أزرار الترقيم، وكذلك عند تعديل عدد العناصر لكل صفحة.',
     ko: '이 이벤트는 페이지네이션 버튼을 사용할 때와 페이지당 항목 수가 변경될 때 발생합니다.'
+})
+
+const timeFormatTranslation = ref({
+    en: 'When datetimeFormatter is enabled, you can also customize time labels for:',
+    fr: 'Lorsque datetimeFormatter est activé, vous pouvez également personnaliser les étiquettes de temps pour :',
+    pt: 'Quando o datetimeFormatter está ativado, você também pode personalizar os rótulos de tempo para:',
+    de: 'Wenn datetimeFormatter aktiviert ist, können Sie auch die Zeitbeschriftungen anpassen für:',
+    zh: '启用 datetimeFormatter 后，您还可以自定义以下时间标签：',
+    jp: 'datetimeFormatter が有効な場合、時間ラベルをカスタマイズできます：',
+    es: 'Cuando datetimeFormatter está habilitado, también puede personalizar las etiquetas de tiempo para:',
+    ko: 'datetimeFormatter가 활성화되면 시간 레이블을 다음에 대해 사용자 정의할 수 있습니다:',
+    ar: 'عند تفعيل datetimeFormatter، يمكنك أيضًا تخصيص تسميات الوقت لـ:'
 })
 
 </script>
@@ -675,7 +753,7 @@ const pageEventDescription = ref( {
 
         <Rater itemId="vue_ui_table" />
     
-        <Box showEmits>
+        <Box showEmits :showDatetimeFormatter="true">
             <template #tab2>
                 <p class="mb-4">{{ pageEventDescription[store.lang] }}</p>
                 <CodeParser
@@ -1041,6 +1119,14 @@ const pageEventDescription = ref( {
                         strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.progression.strokeWidth"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.progression.strokeWidth">, (default: 2)
                         strokeDasharray: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.progression.strokeDasharray"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.progression.strokeDasharray">, (default: 4)
                         arrowSize: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.progression.arrowSize"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.progression.arrowSize">, (default:7)
+                    },
+                    timeLabels: {
+                        showOnlyAtModulo: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.timeLabels.showOnlyAtModulo"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.timeLabels.showOnlyAtModulo"></input>, (default: true)
+                        modulo: <input v-if="isDarkMode" type="number" v-model="mutableConfigDarkMode.style.chart.layout.timeLabels.showmodulo" :min="2" :max="24"><input v-if="isDarkMode" type="number" v-model="mutableConfig.style.chart.layout.timeLabels.showmodulo" :min="2" :max="24">, (default: 12)
+                    },
+                    datetimeFormatter: (see datetimeFormatter tab),
+                    zoom: {
+                        show: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.zoom.show"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.zoom.show"></input>, (default: true)
                     }
                 },
             }
@@ -1070,6 +1156,17 @@ const pageEventDescription = ref( {
     }
     </code>
     </pre>         
+            </template>
+
+            <template #tab10>
+                <DatetimeFormatterDoc
+                    path="style.chart.layout.datetimeFormatter"
+                >
+                    <div class="mt-6">
+                        {{ timeFormatTranslation[store.lang] }}
+                        <CodeParser class="mt-2" language="javascript" :content="timeFormats"/>
+                    </div>
+                </DatetimeFormatterDoc>
             </template>
         </Box>
     </div>
