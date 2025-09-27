@@ -97,6 +97,7 @@ function setNestedAttribute(obj, path, value) {
     let current = obj;
 
     parts.forEach((part, index) => {
+        if (!current) return;
         if (index === parts.length - 1) {
             current[part] = value;
         } else {

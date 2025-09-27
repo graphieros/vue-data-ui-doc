@@ -387,9 +387,14 @@ function selectTabFromMini(order) {
                 position="right"
                 :content="tab.name"
             >
-                <button @click="() => selectTabFromMini(tab.order)" class="p-2 bg-gradient-to-br from-white to-white dark:from-[#FFFFFF20] dark:to-[#ffffff05] rounded shadow-md hover:bg-gradient-to-tl transition-colors">
+                <button @click="() => selectTabFromMini(tab.order)" :class="`p-2 bg-gradient-to-br from-white to-white dark:from-[#FFFFFF20] dark:to-[#ffffff05] rounded shadow-md hover:bg-gradient-to-tl transition-colors relative`" :style="{
+                    outline: activeTab === tab.order ? `1px solid ${tab.color}90` : undefined
+                }">
                     <IconSettings v-if="tab.icon === 'settings'" :stroke="isDarkMode ? '#5F8BEE' : '#1A1A1A'" :size="20" />
                     <VueUiIcon v-else :name="tab.icon" :stroke="tab.color" :size="20" />
+                    <div v-if="activeTab === tab.order" class="absolute -right-2 top-1/2 -translate-y-1/2">
+                        <VueUiIcon name="arrowLeft" :stroke="tab.color" :size="10"/>
+                    </div>
                 </button>
             </FlexibleTooltip>
         </div>

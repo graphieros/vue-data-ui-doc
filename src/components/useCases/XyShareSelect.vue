@@ -122,6 +122,7 @@ const config = computed(() => {
                 backgroundOpacity: 10
             },
             zoom: {
+                focusOnDrag: true,
                 preview: {
                     fill:  isDarkMode.value ? '#1A1A1A50' : '#1A1A1A10',
                     strokeDasharray: 8,
