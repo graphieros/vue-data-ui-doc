@@ -22,25 +22,7 @@ const gizmoConfig = computed(() => {
 const currentStars = computed(() => store.stars)
 
 const target = computed(() => {
-    const thresholds = [
-        { min: 1000, max: 1100 },
-        { min: 1100, max: 1200 },
-        { min: 1200, max: 1300 },
-        { min: 1300, max: 1400 },
-        { min: 1400, max: 1500 },
-        { min: 1500, max: 1600 },
-        { min: 1600, max: 1700 },
-        { min: 1700, max: 1800 },
-        { min: 1800, max: 1900 },
-        { min: 1900, max: 2000 },
-        { min: 2000, max: 2500 },
-        { min: 2500, max: 3000 },
-        { min: 3000, max: 4000 },
-        { min: 4000, max: 5000 },
-        { min: 5000, max: 7500 },
-        { min: 7500, max: 10000 },
-    ];
-    const activeThreshold = thresholds.find(t => currentStars.value >= t.min && currentStars.value < t.max)
+    const activeThreshold = store.thresholds.find(t => currentStars.value >= t.min && currentStars.value < t.max)
     return currentStars.value / activeThreshold.max * 100
 })
 

@@ -3,11 +3,14 @@ import { ref, computed, watch, nextTick, onBeforeMount, onMounted } from "vue";
 import Box from "../Box.vue";
 import { CopyIcon, InfoTriangleIcon } from "vue-tabler-icons";
 import { useMainStore } from "../../stores";
-import { donutConfig, donutDataset } from "./dash";
+import { donutConfig, donutDataset, donutDataset2 } from "./dash";
 import { useConfig } from "../../assets/useConfig";
 import SuspenseWrapper from "../SuspenseWrapper.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import { useConfigCode } from "../../useConfigCode";
+import BaseDetails from "../BaseDetails.vue";
+import BaseAttr from "../BaseAttr.vue";
 
 const mainConfig = useConfig()
 
@@ -24,6 +27,7 @@ watch(() => store.isDarkMode, (val) => {
 });
 
 const config = ref({
+  alwaysVisible: false,
   style: {
     backgroundColor: "#FFFFFF",
     color: "#2D353C",
@@ -31,6 +35,7 @@ const config = ref({
     showPrint: true,
     showSave: true,
     showTooltips: true,
+    showImage: true,
     buttons: {
       borderRadius: 6,
       controls: {
@@ -77,6 +82,7 @@ const config = ref({
     tooltipBringToBack: "Bring to back",
     tooltipDuplicate: "Duplicate",
     tooltipUndo: "Undo last shape",
+    tooltipRedo: "Redo last shape",
     tooltipPdf: "Save pdf",
     tooltipSave: "Save annotations",
     tooltipShapeCircle: "Draw circle",
@@ -91,7 +97,8 @@ const config = ref({
     tooltipShapeTextBold: "Bold",
     tooltipShapeTextItalic: "Italic",
     tooltipShapeTextUnderline: "Underlined",
-    tooltipShapeColor: "Color"
+    tooltipShapeColor: "Color",
+    tooltipImage: 'Download PNG'
   }
 });
 
@@ -125,61 +132,7 @@ function toggleOpenState(state) {
   isAnnotatorOpen.value = state.isOpen;
 }
 
-const initShapes = ref([
-    {
-        "alpha": "FA",
-        "id": "rect_5984.908326049341_1697899539759",
-        "color": "#ffffff",
-        "isFilled": true,
-        "rectStrokeWidth": 2,
-        "rectHeight": 112.14181105579797,
-        "rectWidth": 305.56046572706396,
-        "type": "rect",
-        "x": 83.33469387819179,
-        "y": 137.0906650348501,
-        "strokeWidth": 1,
-        "isDash": false
-    },
-    {
-        "id": "text_262.5479805029807_56906.53122089711",
-        "type": "text",
-        "lines": 2,
-        "x": 104.93996308004542,
-        "y": 181.3300697001898,
-        "textContent": "Serie 1 represents half of ‎the total, with an increase ‎by 10 points from last quarter.",
-        "fontSize": 20,
-        "textAlign": "start",
-        "isBold": false,
-        "isItalic": false,
-        "isUnderline": false,
-        "color": "#000000",
-        "isBulletTextMode": false
-    },
-    {
-        "id": "arrow_3029.9709482549497_1697899520213",
-        "x": 389.9239669971587,
-        "y": 200.87770449499425,
-        "endX": 478.40273708135186,
-        "endY": 288.32766718728436,
-        "type": "arrow",
-        "color": "#000000",
-        "strokeWidth": 1,
-        "isDash": false
-    },
-    {
-        "alpha": "FA",
-        "id": "circle_4641.74639444795_1697899591317",
-        "color": "#ff6400",
-        "isFilled": true,
-        "circleRadius": 23.086461422195327,
-        "circleStrokeWidth": 2,
-        "type": "circle",
-        "x": 83.33469387819179,
-        "y": 141.20597309543473,
-        "strokeWidth": 1,
-        "isDash": false
-    }
-]);
+const initShapes = ref([]);
 
 const initLastSelectedShape = ref({
     "alpha": "FA",
@@ -217,11 +170,26 @@ onBeforeMount(() => {
 
 
 function saveAnnotations({ shapes, lastSelectedShape }) {
+  console.log('VueUiAnnotator docs - saved shapes: ', shapes)
   localStorage['vue-data-ui-annotator'] = JSON.stringify({
       shapes,
       lastSelectedShape
     })
 }
+
+const { configCode, showAllConfig } = useConfigCode()
+
+const comment = ref({
+  en: 'This content is placed inside the default slot. Use the annotator to superimpose annotations.',
+  fr: 'Ce contenu est placé dans le slot par défaut. Utilisez l’annotateur pour superposer des annotations.',
+  pt: 'Este conteúdo é colocado no slot padrão. Use o anotador para sobrepor anotações.',
+  de: 'Dieser Inhalt befindet sich im Standard-Slot. Verwenden Sie den Annotator, um Anmerkungen zu überlagern.',
+  zh: '此内容放置在默认插槽中。使用标注工具叠加注释。',
+  jp: 'このコンテンツはデフォルトスロット内に配置されています。アノテーションツールを使って注釈を重ねます。',
+  es: 'Este contenido se coloca en el slot predeterminado. Use el anotador para superponer anotaciones.',
+  ko: '이 콘텐츠는 기본 슬롯에 배치되어 있습니다. 주석 도구를 사용해 주석을 겹쳐 표시하세요.',
+  ar: 'يوضع هذا المحتوى داخل الـslot الافتراضي. استخدم أداة التعليق التوضيحي لإضافة تعليقات متراكبة.'
+})
 
 </script>
 
@@ -256,8 +224,12 @@ function saveAnnotations({ shapes, lastSelectedShape }) {
             @toggleOpenState="toggleOpenState" 
             @saveAnnotations="saveAnnotations"
           >
-              <div>
-                  <VueUiDonut :config="{...donutConfig, useCssAnimation: !isAnnotatorOpen }" :dataset="donutDataset"></VueUiDonut>
+              <div class="flex flex-row gap-2 p-2 bg-white">
+                  <div class="w-full">
+                    <div class="w-full h-[500px] bg-gray-200 text-black flex place-items-center justify-center">
+                      {{ comment[store.lang] }}
+                    </div>
+                  </div>
               </div>
           </VueUiAnnotator>
         </SuspenseWrapper>
@@ -367,81 +339,89 @@ const <span class="text-black dark:text-app-green">dataset: VueUiAnnotatorDatase
                 <div class="mt-4">
                   TS type: <code class="text-app-blue">VueUiAnnotatorConfig</code>
                 </div>
-  <pre>
-  <code>
-  const <span class="text-black dark:text-app-blue">config: VueUiAnnotatorConfig</span> = {
-    style: {
-        backgroundColor: <input  type="color" v-model="mutableConfig.style.backgroundColor">, (default: "#FFFFFF")
-        color: <input  type="color" v-model="mutableConfig.style.color">, (default: "#2D353C")
-        fontFamily: "inherit",
-        showPrint: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.showPrint" @change="forceChartUpdate()">, (default: true)
-        showSave: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.showSave" @change="forceChartUpdate()">, (default: true)
-        showTooltips: <input type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.showTooltips" @change="forceChartUpdate()">, (default: true)
-        buttons: {
-            borderRadius: <input type="number" min="0" max="32" v-model="mutableConfig.style.buttons.borderRadius">, (default: 6)
-            controls: {
-                backgroundColor: <input  type="color" v-model="mutableConfig.style.buttons.controls.backgroundColor">, (default: "#FFFFFF")
-                color: <input  type="color" v-model="mutableConfig.style.buttons.controls.color">, (default: "#2D353C")
-                border: <input type="text" v-model="mutableConfig.style.buttons.controls.border">, (default: "1px solid #262626")
-                selected: {
-                    backgroundColor: <input  type="color" v-model="mutableConfig.style.buttons.controls.selected.backgroundColor">, (default: "#2D353C")
-                    color: <input  type="color" v-model="mutableConfig.style.buttons.controls.selected.color">, (default: "#fafafa")
-                    border: <input type="text" v-model="mutableConfig.style.buttons.controls.selected.border">, (default: "1px solid #CCCCCC")
-                }
-            },
-            shapes: {
-              backgroundColor: <input  type="color" v-model="mutableConfig.style.buttons.shapes.backgroundColor">, (default: "#FFFFFF")
-                color: <input  type="color" v-model="mutableConfig.style.buttons.shapes.color">, (default: "#2D353C")
-                border: <input type="text" v-model="mutableConfig.style.buttons.shapes.border">, (default: "1px solid #262626")
-                selected: {
-                    backgroundColor: <input  type="color" v-model="mutableConfig.style.buttons.shapes.selected.backgroundColor">, (default: "#2D353C")
-                    color: <input  type="color" v-model="mutableConfig.style.buttons.shapes.selected.color">, (default: "#fafafa")
-                    border: <input type="text" v-model="mutableConfig.style.buttons.shapes.selected.border">, (default: "1px solid #CCCCCC")
-                }
-            }
-        },
-        tooltips: {
-            backgroundColor: <input  type="color" v-model="mutableConfig.style.tooltips.backgroundColor">, (default: "#fafafa")
-            color: <input  type="color" v-model="mutableConfig.style.tooltips.color">, (default: "#2D353C")
-            border: <input type="text" v-model="mutableConfig.style.tooltips.border">, (default: "1px solid #CCCCCC")
-            borderRadius: <input type="number" min="0" max="32" v-model="mutableConfig.style.tooltips.borderRadius">, (default: 6)
-            boxShadow: <input type="text" v-model="mutableConfig.style.tooltips.boxShadow">, (default: "0 6px 12px -6px rgba(0,0,0,0.2)")
-        }
-    },
-    translations: {
-        colorAlpha: <input type="text" v-model="mutableConfig.translations.colorAlpha">, (default: "Color alpha")
-        dashedLines: <input type="text" v-model="mutableConfig.translations.dashedLines">, (default: "Dashed lines")
-        filled: <input type="text" v-model="mutableConfig.translations.filled">, (default: "Filled")
-        fontSize: <input type="text" v-model="mutableConfig.translations.fontSize">, (default: "Font size")
-        thickness: <input type="text" v-model="mutableConfig.translations.thickness">, (default: "Thickness")
-        title: <input type="text" v-model="mutableConfig.translations.title">, (default: "Annotations")
-        tooltipGroup: <input type="text" v-model="mutableConfig.translations.tooltipGroup">, (default: "Select & group")
-        tooltipDelete: <input type="text" v-model="mutableConfig.translations.tooltipDelete">, (default: "Delete")
-        tooltipMove: <input type="text" v-model="mutableConfig.translations.tooltipMove">, (default: "Move")
-        tooltipResize: <input type="text" v-model="mutableConfig.translations.tooltipResize">, (default: "Resize")
-        tooltipBringToFront: <input type="text" v-model="mutableConfig.translations.tooltipBringToFront">, (default: "Bring to front")
-        tooltipBringToBack: <input type="text" v-model="mutableConfig.translations.tooltipBringToBack">, (default: "Bring to back")
-        tooltipDuplicate: <input type="text" v-model="mutableConfig.translations.tooltipDuplicate">, (default: "Duplicate")
-        tooltipUndo: <input type="text" v-model="mutableConfig.translations.tooltipUndo">, (default: "Undo last shape")
-        tooltipPdf: <input type="text" v-model="mutableConfig.translations.tooltipPdf">, (default: "Save pdf")
-        tooltipSave: <input type="text" v-model="mutableConfig.translations.tooltipSave">, (default: "Save annotations")
-        tooltipShapeCircle: <input type="text" v-model="mutableConfig.translations.tooltipShapeCircle">, (default: "Draw circle")
-        tooltipShapeRect: <input type="text" v-model="mutableConfig.translations.tooltipShapeRect">, (default: "Draw rect")
-        tooltipShapeArrow: <input type="text" v-model="mutableConfig.translations.tooltipShapeArrow">, (default: "Draw arrow")
-        tooltipShapeFreehand: <input type="text" v-model="mutableConfig.translations.tooltipShapeFreehand">, (default: "Freehand line")
-        tooltipShapeText: <input type="text" v-model="mutableConfig.translations.tooltipShapeText">, (default: "Text mode")
-        tooltipShapeTextLeft: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextLeft">, (default: "Align left")
-        tooltipShapeTextCenter: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextCenter">, (default: "Align center")
-        tooltipShapeTextRight: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextRight">, (default: "Align right")
-        tooltipShapeTextBullet: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextBullet">, (default: "Bullet points")
-        tooltipShapeTextBold: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextBold">, (default: "Bold")
-        tooltipShapeTextItalic: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextItalic">, (default: "Italic")
-        tooltipShapeTextUnderline: <input type="text" v-model="mutableConfig.translations.tooltipShapeTextUnderline">, (default: "Underlined")
-        tooltipShapeColor: <input type="text" v-model="mutableConfig.translations.tooltipShapeColor">, (default: "Color")
-    }
-}
-  </code>
-  </pre>
+
+<div class="my-4">
+    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+</div>
+
+<code ref="configCode">
+  <BaseDetails attr="const config: VueUiAnnotatorConfig" equal>
+    <BaseAttr name="alwaysVisible" attr="alwaysVisible" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfig"/>
+    <BaseDetails attr="style" :level="1">
+      <BaseAttr name="backgroundColor" attr="style.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="color" attr="style.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr inactive name="fontFamily" attr="style.fontFamily" defaultVal="'inherit'"/>
+      <BaseAttr name="showPrint" attr="style.showPrint" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="showSave" attr="style.showSave" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="showImage" attr="style.showImage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="showTooltips" attr="style.showTooltips" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseDetails attr="buttons" :level="2" title="style.buttons">
+        <BaseAttr name="borderRadius" attr="style.buttons.borderRadius" type="range" defaultVal="6" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfig"/>
+        <BaseDetails attr="controls" :level="3" title="style.buttons.controls">
+          <BaseAttr name="backgroundColor" attr="style.buttons.controls.backgroundColor" defaultVal="#FFFFFF" type="color" :light="mutableConfig" :dark="mutableConfig"/>
+          <BaseAttr name="color" attr="style.buttons.controls.color" defaultVal="#2D353C" type="color" :light="mutableConfig" :dark="mutableConfig"/>
+          <BaseAttr name="border" attr="style.buttons.controls.border" defaultVal="'1px solid #262626'" type="text" :light="mutableConfig" :dark="mutableConfig"/>
+          <BaseDetails attr="selected" :level="4" title="style.buttons.controls.selected">
+            <BaseAttr name="backgroundColor" attr="style.buttons.controls.selected.backgroundColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfig"/>
+            <BaseAttr name="color" attr="style.buttons.controls.selected.color" type="color" defaultVal="#FAFAFA" :light="mutableConfig" :dark="mutableConfig"/>
+            <BaseAttr name="border" attr="style.buttons.controls.selected.border" defaultVal="'1px solid #CCCCCC'" type="text" :light="mutableConfig" :dark="mutableConfig"/>
+          </BaseDetails>
+        </BaseDetails>
+        <BaseDetails attr="shapes" :level="3" title="style.buttons.shapes">
+          <BaseAttr name="backgroundColor" attr="style.buttons.shapes.backgroundColor" defaultVal="#FFFFFF" type="color" :light="mutableConfig" :dark="mutableConfig"/>
+          <BaseAttr name="color" attr="style.buttons.shapes.color" defaultVal="#2D353C" type="color" :light="mutableConfig" :dark="mutableConfig"/>
+          <BaseAttr name="border" attr="style.buttons.shapes.border" defaultVal="'1px solid #262626'" type="text" :light="mutableConfig" :dark="mutableConfig"/>
+          <BaseDetails attr="selected" :level="4" title="style.buttons.shapes.selected">
+            <BaseAttr name="backgroundColor" attr="style.buttons.shapes.selected.backgroundColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfig"/>
+            <BaseAttr name="color" attr="style.buttons.shapes.selected.color" type="color" defaultVal="#FAFAFA" :light="mutableConfig" :dark="mutableConfig"/>
+            <BaseAttr name="border" attr="style.buttons.shapes.selected.border" defaultVal="'1px solid #CCCCCC'" type="text" :light="mutableConfig" :dark="mutableConfig"/>
+          </BaseDetails>
+        </BaseDetails>
+      </BaseDetails>
+      <BaseDetails attr="tooltips" :level="2" title="style.tooltips">
+        <BaseAttr name="backgroundColor" attr="style.tooltips.backgroundColor" type="color" defaultVal="#FAFAFA" :light="mutableConfig" :dark="mutableConfig"/>
+        <BaseAttr name="color" attr="style.tooltips.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfig"/>
+        <BaseAttr name="borderRadius" attr="style.tooltips.borderRadius" type="range" :min="0" :max="12" defaultVal="6" :light="mutableConfig" :dark="mutableConfig"/>
+        <BaseAttr name="border" attr="style.tooltips.border" type="text" defaultVal="'1 px solid #CCCCCC'" :light="mutableConfig" :dark="mutableConfig"/>
+        <BaseAttr name="boxShadow" attr="style.tooltips.boxShadow" type="text" defaultVal="'0 6px 12px -6px rgba(0,0,0,0.2)'" :light="mutableConfig" :dark="mutableConfig"/>
+      </BaseDetails>
+    </BaseDetails>
+    <BaseDetails attr="translations" :level="1">
+      <BaseAttr name="colorAlpha" attr="translations.colorAlpha" type="text" defaultVal="Color alpha" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="dashedLines" attr="translations.dashedLines" type="text" defaultVal="Dashed lines" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="filled" attr="translations.filled" type="text" defaultVal="Filled" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="fontSize" attr="translations.fontSize" type="text" defaultVal="Font size" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="thickness" attr="translations.thickness" type="text" defaultVal="Thickness" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="title" attr="translations.title" type="text" defaultVal="Annotations" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipGroup" attr="translations.tooltipGroup" type="text" defaultVal="Select & group" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipDelete" attr="translations.tooltipDelete" type="text" defaultVal="Delete" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipMove" attr="translations.tooltipMove" type="text" defaultVal="Move" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipResize" attr="translations.tooltipResize" type="text" defaultVal="Resize" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipBringToFront" attr="translations.tooltipBringToFront" type="text" defaultVal="Bring to front" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipBringToBack" attr="translations.tooltipBringToBack" type="text" defaultVal="Bring to back" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipDuplicate" attr="translations.tooltipDuplicate" type="text" defaultVal="Duplicate" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipUndo" attr="translations.tooltipUndo" type="text" defaultVal="Undo last shape" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipRedo" attr="translations.tooltipRedo" type="text" defaultVal="Redo last shape" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipPdf" attr="translations.tooltipPdf" type="text" defaultVal="Save pdf" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipSave" attr="translations.tooltipSave" type="text" defaultVal="Save annotations" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeCircle" attr="translations.tooltipShapeCircle" type="text" defaultVal="Draw circle" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeRect" attr="translations.tooltipShapeRect" type="text" defaultVal="Draw rect" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeArrow" attr="translations.tooltipShapeArrow" type="text" defaultVal="Draw arrow" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeFreehand" attr="translations.tooltipShapeFreehand" type="text" defaultVal="Freehand line" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeText" attr="translations.tooltipShapeText" type="text" defaultVal="Text mode" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeTextLeft" attr="translations.tooltipShapeTextLeft" type="text" defaultVal="Align left" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeTextCenter" attr="translations.tooltipShapeTextCenter" type="text" defaultVal="Align center" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeTextRight" attr="translations.tooltipShapeTextRight" type="text" defaultVal="Align right" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeTextBullet" attr="translations.tooltipShapeTextBullet" type="text" defaultVal="Bullet points" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeTextBold" attr="translations.tooltipShapeTextBold" type="text" defaultVal="Bold" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeTextItalic" attr="translations.tooltipShapeTextItalic" type="text" defaultVal="Italic" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeTextUnderline" attr="translations.tooltipShapeTextUnderline" type="text" defaultVal="Underlined" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipShapeColor" attr="translations.tooltipShapeColor" type="text" defaultVal="Color" :light="mutableConfig" :dark="mutableConfig"/>
+      <BaseAttr name="tooltipImage" attr="translations.tooltipImage" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfig"/>
+    </BaseDetails>
+  </BaseDetails>
+</code>
+
           </template>
           <template #tab2>
             <div><code><b>@toggleOpenState</b></code></div>

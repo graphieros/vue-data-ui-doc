@@ -419,7 +419,74 @@ const advantagesTitle = ref({
   "es": "Ventajas de Vue Data UI",
   "ko": "Vue Data UI의 장점",
   "ar": "مميزات Vue Data UI"
-})
+});
+
+const currentStars = computed(() => store.stars)
+
+const target = computed(() => {
+    const activeThreshold = store.thresholds.find(t => currentStars.value >= t.min && currentStars.value < t.max)
+    return currentStars.value / activeThreshold.max * 100
+});
+
+const wheelDataset = computed(() => ({ percentage: target.value }));
+
+const wheelConfig = computed(() => {
+  return {
+    userOptions: { show: false },
+        layout: '3d',
+        style: {
+            fontFamily: 'inherit',
+            chart: {
+                backgroundColor: 'transparent',
+                color: '#CCCCCC',
+                animation: {
+                    use: true,
+                    speed: 0.5,
+                    acceleration: 1
+                },
+                layout: {
+                    wheel: {
+                        radiusRatio: 0.9,
+                        tiltAngle3d: 60,
+                        ticks: {
+                            rounded: true,
+                            inactiveColor: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                            activeColor: '#fdd663',
+                            sizeRatio: 0.85,
+                            gradient: {
+                                show: false,
+                                shiftHueIntensity: 12
+                            },
+                            quantity: 100,
+                            strokeWidth: 0,
+                            stroke: '#FFFFFF',
+                            type: 'arc',
+                            spacingRatio3d: 0.8,
+                            shadeColorRatio3d: 0.15,
+                            depth3d: 40
+                        }
+                    },
+                    innerCircle: {
+                        show: true,
+                        stroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                        strokeWidth: 1,
+                        radiusRatio: 0.9
+                    },
+                    percentage: {
+                        show: true,
+                        fontSize: 75,
+                        rounding: 1,
+                        bold: true,
+                        offsetX: 12,
+                        offsetY: -16,
+                        stroke: isDarkMode.value ? '#1A1A1A' : '#FAFAFA',
+                        strokeWidth: 12
+                    }
+                }
+            }
+        }
+    }
+});
 
 </script>
 
@@ -433,7 +500,29 @@ const advantagesTitle = ref({
     <div class="w-full mx-auto">
       <Suspense>
         <template #default>
-          <AboutComponentTypes />
+          <div class="flex flex-col">
+              <div class="mx-auto max-w-[300px] w-full">
+                <a title="Github repository. Leave a star to support us :)" href="https://github.com/graphieros/vue-data-ui" target="_blank">
+                  <VueUiWheel :dataset="wheelDataset" :config="wheelConfig">
+                    <template #svg="{ svg }">
+                      <text 
+                        :x="svg.width/ 2" 
+                        :y="40" 
+                        text-anchor="middle" 
+                        :fill="isDarkMode ? '#CCCCCC' : '#3A3A3A'"
+                        :style="{
+                          transform: 'scale(1, 1.7)'
+                        }"
+                        font-size="14"
+                      >
+                        Next star threshold
+                      </text>
+                    </template>
+                  </VueUiWheel>
+                </a>
+              </div>
+            <AboutComponentTypes />
+          </div>
         </template>
         <template #fallback>
           <BaseSpinner/>

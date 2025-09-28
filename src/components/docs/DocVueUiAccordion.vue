@@ -32,17 +32,19 @@ const isDarkMode = computed(() => {
 const config = ref({
     open: false,
     maxHeight: 2000,
-  head: {
-    useArrowSlot: false,
-    backgroundColor: "#e1e5e8",
-    color: "#2D353C",
-    iconColor: "#5f8bee",
-    padding: "12px 6px"
-  },
-  body: {
-    backgroundColor: "#e1e5e8",
-    color: "#2D353C"
-  }
+    head: {
+        useArrowSlot: false,
+        backgroundColor: "#e1e5e8",
+        color: "#2D353C",
+        iconColor: "#5f8bee",
+        padding: "12px 6px",
+        icon: 'arrowRight',
+        iconSize: 20,
+    },
+    body: {
+        backgroundColor: "#e1e5e8",
+        color: "#2D353C"
+    }
 })
 
 const darkModeConfig = ref({
@@ -53,7 +55,9 @@ const darkModeConfig = ref({
     backgroundColor: "#2A2A2A",
     color: "#CCCCCC",
     iconColor: "#5f8bee",
-    padding: "12px 6px"
+    padding: "12px 6px",
+    icon: 'arrowRight',
+    iconSize: 20
   },
   body: {
     backgroundColor: "#2A2A2A",
@@ -188,6 +192,8 @@ const slotContent = ref(`
                             <BaseAttr name="color" attr="head.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="iconColor" attr="head.iconColor" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="padding" attr="head.padding" type="text" defaultVal="12px 6px" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="icon" attr="head.icon" defaultVal="'arrowRight'" type="text" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="iconSize" attr="head.iconSize" defaultVal="20" type="number" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
                         <BaseDetails attr="body" :level="1">
                             <BaseAttr name="backgroundColor" attr="body.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -149,18 +149,38 @@ export const xyConfig = {
 export const donutDataset = [
     {
         name: "Serie 1",
-        color: "#5f8bee",
         values: [100]
     },
     {
         name: "Serie 2",
-        color: "#42d392",
         values: [200]
     },
     {
-        name: "Serie 1",
-        color: "#ff6400",
+        name: "Serie 3",
         values: [300, 1]
+    },
+];
+
+export const donutDataset2 = [
+    {
+        name: "Serie 1",
+        values: [100]
+    },
+    {
+        name: "Serie 2",
+        values: [200]
+    },
+    {
+        name: "Serie 3",
+        values: [300, 1]
+    },
+    {
+        name: "Serie 4",
+        values: [150, 1]
+    },
+    {
+        name: "Serie 5",
+        values: [90, 1]
     },
 ];
 
