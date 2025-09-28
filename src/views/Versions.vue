@@ -133,7 +133,7 @@ const usableWeekData = computed(() => {
 const heatmapConfig = computed(() => {
   return {
   style: {
-    backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FAFAFA',
+    backgroundColor: 'transparent',
     color: "#2D353C",
     fontFamily: "inherit",
     layout: {
@@ -170,7 +170,7 @@ const heatmapConfig = computed(() => {
           color: isDarkMode.value ? '#FAFAFA' : '#1A1A1A',
         },
         colors: {
-          hot: "#42d392",
+          hot: isDarkMode.value ? "#42d392" : '#1f77b4',
           cold: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
           underlayer: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
         },
@@ -203,10 +203,18 @@ const heatmapConfig = computed(() => {
       }
     },
     title: {
-      text: "Downloads heatmap - Last 52 weeks",
-      color: isDarkMode.value ? '#BBBBBB' : '#1A1A1A',
+      textAlign: "left",
+      text: "Downloads heatmap",
+      color: isDarkMode.value ? "#666666" : "#2D353C",
       fontSize: 16,
       bold: true,
+      margin: "0 0 6px 0",
+      subtitle: {
+        color: "#A1A1A1",
+        text: "Last 52 weeks",
+        fontSize: 12,
+        bold: false
+      }
     },
     legend: {
       show: true,
@@ -237,7 +245,7 @@ const heatmapConfig = computed(() => {
 })
 
 const histoData = computed(() => {
-  return (data.value || []).slice(-14).map(d => {
+  return (data.value || []).slice(-30).map(d => {
     return {
       value: d.value,
       timeLabel: d.period,
@@ -248,7 +256,7 @@ const histoData = computed(() => {
 const histoConfig = computed(() => {
   return {
   style: {
-    backgroundColor: isDarkMode.value ? "#1A1A1A" : "#F3F4F6",
+    backgroundColor: 'transparent',
     fontFamily: "inherit",
     layout: {
       height: 240,
@@ -264,18 +272,18 @@ const histoConfig = computed(() => {
       shape: "square",
       strokeWidth: 0,
       colors: {
-        positive: "#42d392",
+        positive: isDarkMode.value ? "#42d392" : '#1f77b4',
         negative: "#ff6400",
         gradient: {
-          show: true
+          show: isDarkMode.value
         }
       },
-      borderRadius: 6,
-      gap: 2
+      borderRadius: 2,
+      gap: 1
     },
     labels: {
       value: {
-        fontSize: 24,
+        fontSize: 18,
         color: isDarkMode.value ? "#CCCCCC" : "#2D353C",
         bold: true,
         rounding: 1,
@@ -296,8 +304,8 @@ const histoConfig = computed(() => {
       }
     },
     selector: {
-      stroke: "#42d392",
-      borderRadius: 12,
+      stroke: isDarkMode.value ? "#42d392" : '#1f77b4',
+      borderRadius: 3,
       strokeDasharray: 6
     },
     title: {
@@ -309,7 +317,7 @@ const histoConfig = computed(() => {
       margin: "0 0 6px 0",
       subtitle: {
         color: "#A1A1A1",
-        text: "Last 14 days",
+        text: "Last 30 days",
         fontSize: 12,
         bold: false
       }
@@ -2135,7 +2143,7 @@ async function impactPatch() {
                   <Downloads/>
                 </div>
 
-                <div class="max-w-[500px] mx-auto mb-6" v-if="!!data && !isLoadingLine">
+                <div class="max-w-[800px] mx-auto mb-6" v-if="!!data && !isLoadingLine">
                   <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkHistogram', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' } }"/>
                   <VueDataUi v-else component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`">
                     <template #source>

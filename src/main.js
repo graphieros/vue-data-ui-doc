@@ -22,7 +22,6 @@ import {
     VueUiAgePyramid,
     VueUiSparkbar,
     VueUiDashboard,
-    VueUiAnnotator,
     VueUiSmiley,
     VueUiRelationCircle,
     VueUiThermometer,
@@ -60,6 +59,7 @@ import {
 import "vue-data-ui/style.css";
 
 import VueUiXy from "vue-data-ui/vue-ui-xy";
+import VueUiAnnotator from "vue-data-ui/vue-ui-annotator";
 
 const pinia = createPinia();
 

@@ -11,6 +11,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
+import CodeParser from "../customization/CodeParser.vue";
 
 const mainConfig = useConfig()
 
@@ -189,7 +190,25 @@ const comment = ref({
   es: 'Este contenido se coloca en el slot predeterminado. Use el anotador para superponer anotaciones.',
   ko: '이 콘텐츠는 기본 슬롯에 배치되어 있습니다. 주석 도구를 사용해 주석을 겹쳐 표시하세요.',
   ar: 'يوضع هذا المحتوى داخل الـslot الافتراضي. استخدم أداة التعليق التوضيحي لإضافة تعليقات متراكبة.'
-})
+});
+
+const exampleScript = ref(`const dataset = ref({});
+
+function saveAnnotations(data) {
+  dataset.value = data;
+}
+`);
+
+const exampleTemplate = ref(`<VueUiAnnotator 
+  :dataset="dataset"
+  :config="config"
+  @saveAnnotations="saveAnnotations"
+>
+  <div class="my-content">
+    <!-- Slotted content -->
+  </div>
+</VueUiAnnotator>
+`)
 
 </script>
 
@@ -233,6 +252,11 @@ const comment = ref({
               </div>
           </VueUiAnnotator>
         </SuspenseWrapper>
+        </div>
+
+        <div class="flex flex-col gap-4 my-4">
+          <CodeParser title="script" :content="exampleScript" language="javascript" @copy="store.copy"/>
+          <CodeParser title="template" :content="exampleTemplate" language="html" @copy="store.copy"/>
         </div>
 
         <Box showEmits>
