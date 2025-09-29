@@ -208,8 +208,7 @@ const exampleTemplate = ref(`<VueUiAnnotator
     <!-- Slotted content -->
   </div>
 </VueUiAnnotator>
-`)
-
+`);
 </script>
 
 <template>

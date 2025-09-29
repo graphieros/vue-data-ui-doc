@@ -187,7 +187,10 @@ const bindings = useObjectBindings(config);
 
 const bindingsTemplate = computed(() => `<template>
     <div>
-        <input type="color" v-model="bindings['style.chart.backgroundColor'].value">
+        <label>
+            Background color:
+            <input type="color" v-model="bindings['style.chart.backgroundColor'].value">
+        </label>
     </div>
 </template>
 `)
@@ -313,11 +316,24 @@ const bindings = useObjectBindings(donutConfig);
                 </div>
 
                 <div class="mx-auto max-w-[300px] my-4">
-                    <input type="color" v-model="bindings['style.chart.backgroundColor'].value" class="mb-4">
+                    <label class="flex flex-row gap-2">
+                        Background color:
+                        <input type="color" v-model="bindings['style.chart.backgroundColor'].value" class="mb-4">
+                    </label>
                     <VueUiDonut
                         :dataset="donutSet"
                         :config="donutConfig"
-                    />
+                    >
+                    </VueUiDonut>
+                    <div class="mt-2">
+                        <a 
+                            href="https://github.com/graphieros/vue-data-ui/discussions/226" 
+                            target="_blank"
+                            class="underline text-[14px] hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        >
+                            Check out where this solution came from
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
