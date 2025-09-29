@@ -232,6 +232,22 @@ const config = ref({
     maxHeight: 700,
     rowsPerPage: 25,
     style: {
+        title: {
+            text: "Title",
+            color: "#1A1A1A",
+            fontSize: 20,
+            bold: true,
+            textAlign: 'left',
+            paddingLeft: 48,
+            paddingRight: 0,
+            backgroundColor: '#F3F4F6',
+            subtitle: {
+                color: "#565656",
+                text: "Subtitle",
+                fontSize: 16,
+                bold: false
+            }
+        },
         th: {
             backgroundColor: "#F3F4F6",
             color:"#1A1A1A",
@@ -422,6 +438,22 @@ const darkModeConfig = ref({
     maxHeight: 700,
     rowsPerPage: 25,
     style: {
+        title: {
+            text: "Title",
+            color: "#FAFAFA",
+            fontSize: 20,
+            bold: true,
+            textAlign: 'left',
+            paddingLeft: 48,
+            paddingRight: 0,
+            backgroundColor: '#1A1A1A',
+            subtitle: {
+                color: "#CCCCCC",
+                text: "Subtitle",
+                fontSize: 16,
+                bold: false
+            }
+        },
         th: {
             backgroundColor: "#1a1a1a",
             color:"#c4c9cc",
@@ -982,6 +1014,22 @@ const timeFormatTranslation = ref({
         maxHeight: <input v-if="isDarkMode" type="number" min="100" max="5000" v-model="mutableConfigDarkMode.maxHeight"><input v-else type="number" min="100" max="5000" v-model="mutableConfig.maxHeight">, (default: 500)
         rowsPerPage: 25,
         style: {
+            title: {
+                text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.text"><input v-else type="text" v-model="mutableConfig.style.title.text">
+                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.color"><input v-else type="color" v-model="mutableConfig.style.title.color">
+                fontSize: <input v-if="isDarkMode" type="number" min="8" max="42" v-model="mutableConfigDarkMode.style.title.fontSize"><input v-else type="number" min="8" max="42" v-model="mutableConfig.style.title.fontSize">
+                bold: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.title.bold"><input v-else type="checkbox" v-model="mutableConfig.style.title.bold">
+                textAlign: 'left' | 'center' | 'right',
+                paddingLeft: 0,
+                paddingRight: 0,
+                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.title.backgroundColor">
+                subtitle: {
+                    text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.subtitle.text"><input v-else type="text" v-model="mutableConfig.style.title.subtitle.text">
+                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.subtitle.color"><input v-else type="color" v-model="mutableConfig.style.title.subtitle.color">
+                    fontSize: <input v-if="isDarkMode" type="number" min="8" max="42" v-model="mutableConfigDarkMode.style.title.subtitle.fontSize"><input v-else type="number" min="8" max="42" v-model="mutableConfig.style.title.subtitle.fontSize">
+                    bold: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.title.subtitle.bold"><input v-else type="checkbox" v-model="mutableConfig.style.title.subtitle.bold">
+                }
+            },
             th: {
                 backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.th.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.th.backgroundColor">, (default: #E1E5E8")
                 color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.th.color"><input v-else type="color" v-model="mutableConfig.style.th.color">, (default: "#2D353C"),

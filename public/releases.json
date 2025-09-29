@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.2.5",
+    "date": "2025-09-29",
+    "updates": [
+      {
+        "component": "VueUiTable",
+        "description": "Add optional title",
+        "link": "/docs/#vue-ui-table"
+      }
+    ]
+  },
+  {
     "version": "v 3.2.4",
     "date": "2025-09-28",
     "updates": [
