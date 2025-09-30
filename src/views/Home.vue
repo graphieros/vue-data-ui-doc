@@ -854,7 +854,6 @@ const carouselConfig = computed(() => {
 .vue-ui-donut {
     background: transparent !important;
 }
-
 .underlay {
   position: fixed;
   top: 0;
