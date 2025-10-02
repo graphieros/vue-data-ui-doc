@@ -570,14 +570,14 @@ export function useCase() {
                                 color: textColor.value,
                                 suffix: "%"
                             },
-                            timeLabels: {
-                                color: textColor.value
-                            }
                         },
                         x: {
                             horizontalLines: {
                                 show: true,
                                 opacity: isDarkMode.value ? 5 : 20
+                            },
+                            timeLabels: {
+                                color: textColor.value
                             }
                         }
                     },

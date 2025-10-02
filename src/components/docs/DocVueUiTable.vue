@@ -10,6 +10,9 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
+import { useConfigCode } from "../../useConfigCode";
+import BaseDetails from "../BaseDetails.vue";
+import BaseAttr from "../BaseAttr.vue";
 
 const mainConfig = useConfig()
 
@@ -255,9 +258,32 @@ const config = ref({
             selected: {
                 backgroundColor: "#42d392",
                 color: "#1a1a1a"
+            },
+            buttons: {
+                filter: {
+                    active: {
+                        backgroundColor: '#5f8aee',
+                        color: '#1A1A1A'
+                    },
+                    inactive: {
+                        backgroundColor: '#E1E5E8',
+                        color: '#1A1A1A'
+                    }
+                },
+                cancel: {
+                    active: {
+                        backgroundColor: '#ff6600',
+                        color: '#1A1A1A'
+                    },
+                    inactive: {
+                        backgroundColor: '#E1E5E8',
+                        color: '#8A8A8A'
+                    }
+                }
             }
         },
         rows: {
+            outline: '1px solid #FFFFFF',
             even: {
                 backgroundColor: "#F3F4F6",
                 color: "#1A1A1A",
@@ -461,9 +487,32 @@ const darkModeConfig = ref({
             selected: {
                 backgroundColor: "#42d392",
                 color: "#1a1a1a"
+            },
+            buttons: {
+                filter: {
+                    active: {
+                        backgroundColor: '#5f8aee',
+                        color: '#1A1A1A'
+                    },
+                    inactive: {
+                        backgroundColor: '#3A3A3A',
+                        color: '#CCCCCC'
+                    }
+                },
+                cancel: {
+                    active: {
+                        backgroundColor: '#ff6600',
+                        color: '#1A1A1A'
+                    },
+                    inactive: {
+                        backgroundColor: '#2A2A2A',
+                        color: '#4A4A4A'
+                    }
+                }
             }
         },
         rows: {
+            outline: '1px solid #4A4A4A',
             even: {
                 backgroundColor: "#1a1a1a",
                 color: "#c4c9cc",
@@ -758,6 +807,8 @@ const timeFormatTranslation = ref({
     ar: 'عند تفعيل datetimeFormatter، يمكنك أيضًا تخصيص تسميات الوقت لـ:'
 })
 
+const { configCode, showAllConfig } = useConfigCode();
+
 </script>
 
 <template>
@@ -1007,203 +1058,235 @@ const timeFormatTranslation = ref({
             <div class="mt-4">
                 TS type: <code class="text-app-blue">VueUiTableConfig</code>
             </div>
-    <pre>
-    <code>
-    const <span class="text-black dark:text-app-blue">config: VueUiTableConfig</span> = {
-        fontFamily: "inherit",
-        maxHeight: <input v-if="isDarkMode" type="number" min="100" max="5000" v-model="mutableConfigDarkMode.maxHeight"><input v-else type="number" min="100" max="5000" v-model="mutableConfig.maxHeight">, (default: 500)
-        rowsPerPage: 25,
-        style: {
-            title: {
-                text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.text"><input v-else type="text" v-model="mutableConfig.style.title.text">
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.color"><input v-else type="color" v-model="mutableConfig.style.title.color">
-                fontSize: <input v-if="isDarkMode" type="number" min="8" max="42" v-model="mutableConfigDarkMode.style.title.fontSize"><input v-else type="number" min="8" max="42" v-model="mutableConfig.style.title.fontSize">
-                bold: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.title.bold"><input v-else type="checkbox" v-model="mutableConfig.style.title.bold">
-                textAlign: 'left' | 'center' | 'right',
-                paddingLeft: 0,
-                paddingRight: 0,
-                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.title.backgroundColor">
-                subtitle: {
-                    text: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.title.subtitle.text"><input v-else type="text" v-model="mutableConfig.style.title.subtitle.text">
-                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.title.subtitle.color"><input v-else type="color" v-model="mutableConfig.style.title.subtitle.color">
-                    fontSize: <input v-if="isDarkMode" type="number" min="8" max="42" v-model="mutableConfigDarkMode.style.title.subtitle.fontSize"><input v-else type="number" min="8" max="42" v-model="mutableConfig.style.title.subtitle.fontSize">
-                    bold: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.title.subtitle.bold"><input v-else type="checkbox" v-model="mutableConfig.style.title.subtitle.bold">
-                }
-            },
-            th: {
-                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.th.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.th.backgroundColor">, (default: #E1E5E8")
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.th.color"><input v-else type="color" v-model="mutableConfig.style.th.color">, (default: "#2D353C"),
-                outline: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.th.outline"><input v-else type="text" v-model="mutableConfig.style.th.outline">, (default: "1px solid #FFFFFF")
-                selected: {
-                    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.th.selected.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.th.selected.backgroundColor">, (default: "#6376DD")
-                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.th.selected.color"><input v-else type="color" v-model="mutableConfig.style.th.selected.color">, (default: "#FFFFFF")
-                }
-            },
-            rows: {
-                even: {
-                    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.even.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.rows.even.backgroundColor">, (default: "#f3f5f7")
-                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.even.color"><input v-else type="color" v-model="mutableConfig.style.rows.even.color">, (default: "#2D353C")
-                    selectedCell: {
-                        backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.even.selectedCell.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.rows.even.selectedCell.backgroundColor">, (default: "#6375dd5b")
-                        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.even.selectedCell.color"><input v-else type="color" v-model="mutableConfig.style.rows.even.selectedCell.color">, (default: "#2D353C")
-                    },
-                    selectedNeighbors: {
-                        backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.even.selectedNeighbors.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.rows.even.selectedNeighbors.backgroundColor">, (selectedNeighbors: "#63dd821e")
-                        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.even.selectedNeighbors.color"><input v-else type="color" v-model="mutableConfig.style.rows.even.selectedNeighbors.color">, (default: "#2D353C")
-                    }
-                },
-                odd: {
-                    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.odd.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.rows.odd.backgroundColor">, (default: "#FFFFFF")
-                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.odd.color"><input v-else type="color" v-model="mutableConfig.style.rows.odd.color">, (default: "#2D353C")
-                    selectedCell: {
-                        backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.odd.selectedCell.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.rows.odd.selectedCell.backgroundColor">, (default: '#6375dd5b')
-                        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.odd.selectedCell.color"><input v-else type="color" v-model="mutableConfig.style.rows.odd.selectedCell.color"> (default: "#2D353C")
-                    },
-                    selectedNeighbors: {
-                        backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.odd.selectedNeighbors.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.rows.odd.selectedNeighbors.backgroundColor">, (default: "#63dd821e")
-                        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.rows.odd.selectedNeighbors.color"><input v-else type="color" v-model="mutableConfig.style.rows.odd.selectedNeighbors.color">, (default: "#2D353C")
-                    }
-                },
-            },
-            inputs: {
-                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.inputs.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.inputs.backgroundColor">, (default: "#FFFFFF"),
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.inputs.color"><input v-else type="color" v-model="mutableConfig.style.inputs.color">, (default: "#2D353C"),
-                border: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.inputs.border"><input v-else type="text" v-model="mutableConfig.style.inputs.border">, (default: "1px solid #CCCCCC")
-                accentColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.inputs.accentColor"><input v-else type="color" v-model="mutableConfig.style.inputs.accentColor">, (default: "#6376DD")
-            },
-            dropdowns: {
-                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.dropdowns.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.dropdowns.backgroundColor">, (default: "#E1E5E8")
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.dropdowns.color"><input v-else type="color" v-model="mutableConfig.style.dropdowns.color">, (default: "#2D353C")
-                icons: {
-                    selected: {
-                        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.dropdowns.icons.selected.color"><input v-else type="color" v-model="mutableConfig.style.dropdowns.icons.selected.color">, (default: "#008000"),
-                        unicode: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.dropdowns.icons.selected.unicode"><input v-else type="text" v-model="mutableConfig.style.dropdowns.icons.selected.unicode">, (default: "✔")
-                    },
-                    unselected: {
-                        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.dropdowns.icons.unselected.color"><input v-else type="color" v-model="mutableConfig.style.dropdowns.icons.unselected.color">, (default: "#ff0000")
-                        unicode: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.dropdowns.icons.unselected.unicode"><input v-else type="text" v-model="mutableConfig.style.dropdowns.icons.unselected.unicode">, (default: "✖")
-                    }
-                }
-            },
-            infoBar: {
-                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.infoBar.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.infoBar.backgroundColor">, (default: "#E1E5E8")
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.infoBar.color"><input v-else type="color" v-model="mutableConfig.style.infoBar.color">, (default: "#2D353C")
-            },
-            pagination: {
-                buttons: {
-                    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.pagination.buttons.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.pagination.buttons.backgroundColor">, (default: "#E1E5E8")
-                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.pagination.buttons.color"><input v-else type="color" v-model="mutableConfig.style.pagination.buttons.color">, (default: "#2D353C")
-                    opacityDisabled: <input v-if="isDarkMode" type="number" min="0" max="1" step="0.1" v-model="mutableConfigDarkMode.style.pagination.buttons.opacityDisabled"><input v-else type="number" min="0" max="1" step="0.1" v-model="mutableConfig.style.pagination.buttons.opacityDisabled">, (default: 0.5)
-                },
-                navigationIndicator: {
-                    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.pagination.navigationIndicator.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.pagination.navigationIndicator.backgroundColor">, (default: "#6376DD")
-                }
-            },
-            exportMenu: {
-                show: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.exportMenu.show"><input v-else type="checkbox" v-model="mutableConfig.style.exportMenu.show">, (default: true)
-                backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.exportMenu.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.exportMenu.backgroundColor">, (default: "#E1E5E8")
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.exportMenu.color"><input v-else type="color" v-model="mutableConfig.style.exportMenu.color">, (default: "#2D353C")
-                buttons: {
-                    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.exportMenu.buttons.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.exportMenu.buttons.backgroundColor">, (default: "#FAFAFA")
-                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.exportMenu.buttons.color"><input v-else type="color" v-model="mutableConfig.style.exportMenu.buttons.color">, (default: "#2D353C")
-                },
-                filename: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.exportMenu.filename"><input v-else type="text" v-model="mutableConfig.style.exportMenu.filename">
-            },
-            closeButtons: {
-                backgroundColor: "transparent",
-                color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.closeButtons.color"><input v-else type="color" v-model="mutableConfig.style.closeButtons.color">,  (default: "#2D353C")
-                borderRadius: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.style.closeButtons.borderRadius"><input v-else type="text" v-model="mutableConfig.style.closeButtons.borderRadius">, (default: "50%")
-            },
-            chart: {
-                modal: {
-                    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.modal.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.modal.backgroundColor">, (default: "#E1E5E8")
-                    color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.modal.color"><input v-else type="color" v-model="mutableConfig.style.chart.modal.color">, (default: "#2D353C")
-                    buttons: {
-                        selected: {
-                            backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.modal.buttons.selected.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.modal.buttons.selected.backgroundColor">, (default: "#6376DD")
-                            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.modal.buttons.selected.color"><input v-else type="color" v-model="mutableConfig.style.chart.modal.buttons.selected.color">, (default: "#FFFFFF")
-                        },
-                        unselected: {
-                            backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.modal.buttons.unselected.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.modal.buttons.unselected.backgroundColor">, (default: "#FFFFFF")
-                            color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.modal.buttons.unselected.color"><input v-else type="color" v-model="mutableConfig.style.chart.modal.buttons.unselected.color">, (default: "#2D353C")
-                        }
-                    }
-                },
-                layout: {
-                    backgroundColor: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.backgroundColor"><input v-else type="color" v-model="mutableConfig.style.chart.layout.backgroundColor">, (default: "#FFFFFF")
-                    axis: {
-                        stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.axis.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.axis.stroke">, (default: "#CCD1D4")
-                        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="10" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.axis.strokeWidth"><input v-else type="number" min="0" max="10" step="0.2" v-model="mutableConfig.style.chart.layout.axis.strokeWidth">, (default: 2)
-                    },
-                    bar: {
-                        fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.bar.fill"><input v-else type="color" v-model="mutableConfig.style.chart.layout.bar.fill">, (default: custom gradient)
-                        stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.bar.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.bar.stroke">, (default: "#FFFFFF")
-                    },
-                    line: {
-                        smooth: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.line.smooth"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.line.smooth">
-                        useArea: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.line.useArea"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.line.useArea">
-                        stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.line.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.line.stroke">, (default: "#6376DD")
-                        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.strokeWidth"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.strokeWidth">, (default: 4)
-                        plot: {
-                            fill: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.line.plot.fill"><input v-else type="color" v-model="mutableConfig.style.chart.layout.line.plot.fill">, (default: "#22348f")
-                            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.line.plot.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.line.plot.stroke">, (default: "#FFFFFF", deprecated since v2.9.3)
-                            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.plot.strokeWidth"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.plot.strokeWidth">, (default: 1)
-                            radius: {
-                                selected: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.plot.radius.selected"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.plot.radius.selected">, (default: 6)
-                                unselected: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.plot.radius.unselected"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.plot.radius.unselected">, (default: 4)
-                            }
-                        },
-                        selector: {
-                            stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.line.selector.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.line.selector.stroke">, (default: "#CCCCCC", deprecated since v2.9.3)
-                            strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.selector.strokeWidth"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.selector.strokeWidth">, (default: 4, deprecated since v2.9.3)
-                            strokeDasharray: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.line.selector.strokeDasharray"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.line.selector.strokeDasharray">, (default: 5, deprecated since v2.9.3)
-                        },
-                    },
-                    labels: {
-                        color: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.labels.color"><input v-else type="color" v-model="mutableConfig.style.chart.layout.labels.color">, (default: "#2D353C")
-                    },
-                    progression: {
-                        stroke: <input v-if="isDarkMode" type="color" v-model="mutableConfigDarkMode.style.chart.layout.progression.stroke"><input v-else type="color" v-model="mutableConfig.style.chart.layout.progression.stroke">, (default: "#2D353C")
-                        strokeWidth: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.progression.strokeWidth"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.progression.strokeWidth">, (default: 2)
-                        strokeDasharray: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.progression.strokeDasharray"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.progression.strokeDasharray">, (default: 4)
-                        arrowSize: <input v-if="isDarkMode" type="number" min="0" max="20" step="0.2" v-model="mutableConfigDarkMode.style.chart.layout.progression.arrowSize"><input v-else type="number" min="0" max="20" step="0.2" v-model="mutableConfig.style.chart.layout.progression.arrowSize">, (default:7)
-                    },
-                    timeLabels: {
-                        showOnlyAtModulo: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.timeLabels.showOnlyAtModulo"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.timeLabels.showOnlyAtModulo"></input>, (default: true)
-                        modulo: <input v-if="isDarkMode" type="number" v-model="mutableConfigDarkMode.style.chart.layout.timeLabels.showmodulo" :min="2" :max="24"><input v-if="isDarkMode" type="number" v-model="mutableConfig.style.chart.layout.timeLabels.showmodulo" :min="2" :max="24">, (default: 12)
-                    },
-                    datetimeFormatter: (see datetimeFormatter tab),
-                    zoom: {
-                        show: <input v-if="isDarkMode" type="checkbox" v-model="mutableConfigDarkMode.style.chart.layout.zoom.show"><input v-else type="checkbox" v-model="mutableConfig.style.chart.layout.zoom.show"></input>, (default: true)
-                    }
-                },
-            }
-        },
-        translations: {
-            average: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.average"><input v-else type="text" v-model="mutableConfig.translations.average">, (default: "Average")
-            by: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.by"><input v-else type="text" v-model="mutableConfig.translations.by">, (default: "by")
-            chooseCategoryColumn: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.chooseCategoryColumn"><input v-else type="text" v-model="mutableConfig.translations.chooseCategoryColumn">, (default: "Choose category column")
-            exportAllButton: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.exportAllButton"><input v-else type="text" v-model="mutableConfig.translations.exportAllButton">, (default "CSV all")
-            exportAllLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.exportAllLabel"><input v-else type="text" v-model="mutableConfig.translations.exportAllLabel">, (default: "Export all rows of your current filtered dataset")
-            exportPageButton: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.exportPageButton"><input v-else type="text" v-model="mutableConfig.translations.exportPageButton">, (default: "CSV page")
-            exportPageLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.exportPageLabel"><input v-else type="text" v-model="mutableConfig.translations.exportPageLabel">, (default: "Export rows of the current page")
-            from: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.from"><input v-else type="text" v-model="mutableConfig.translations.from">, (default: "From")
-            inputPlaceholder: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.inputPlaceholder"><input v-else type="text" v-model="mutableConfig.translations.inputPlaceholder">, (default: "Search...")
-            makeDonut: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.makeDonut"><input v-else type="text" v-model="mutableConfig.translations.makeDonut">, (default: "Generate")
-            nb: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.nb"><input v-else type="text" v-model="mutableConfig.translations.nb">, (default: "Nb")
-            page: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.page"><input v-else type="text" v-model="mutableConfig.translations.page">, (default: "Page")
-            paginatorLabel: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.paginatorLabel"><input v-else type="text" v-model="mutableConfig.translations.paginatorLabel">, (default: "Rows per page")
-            sizeWarning: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.sizeWarning"><input v-else type="text" v-model="mutableConfig.translations.sizeWarning">, (default: "Displaying too many rows at a time can lead to slower performance")
-            sum: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.sum"><input v-else type="text" v-model="mutableConfig.translations.sum">, (defaut: "Sum")
-            to: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.to"><input v-else type="text" v-model="mutableConfig.translations.to">, (default: "To")
-            total: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.total"><input v-else type="text" v-model="mutableConfig.translations.total">, (default: "Total")
-            totalRows: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.totalRows"><input v-else type="text" v-model="mutableConfig.translations.totalRows">, (default: "Total rows")
-            filename: <input v-if="isDarkMode" type="text" v-model="mutableConfigDarkMode.translations.filename"><input v-else type="text" v-model="mutableConfig.translations.filename">, (default: "File name")
-        },
-        useChart: <input v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.useChart"><input v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.useChart">, (default: true)
-    }
-    </code>
-    </pre>         
+
+<div class="my-4">
+    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+</div>
+
+<code ref="configCode">
+    <BaseDetails attr="const config: VueUiTableConfig" equal>
+        <BaseAttr inactive name="fontFamily" defaultVal="'inherit'" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+        <BaseAttr name="maxHeight" attr="maxHeight" type="number" defaultVal="700" :min="400" :max="2000" :step="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr inactive name="rowsPerPage" attr="rowsPerPage" type="number" defaultVal="25" :min="5" :max="100" :step="5" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseDetails attr="style" :level="1">
+            <BaseDetails attr="title" :level="2" title="style.title">
+                <BaseAttr name="text" attr="style.title.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="color" attr="style.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="backgroundColor" attr="style.title.backgroundColor" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="fontSize" attr="style.title.fontSize" type="number" defaultVal="20" :min="12" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="bold" attr="style.title.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="textAlign" attr="style.title.textAlign" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="paddingLeft" attr="style.title.paddingLeft" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="paddingRight" attr="style.title.paddingRight" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="subtitle" :level="3" title="style.title.subtitle">
+                    <BaseAttr name="text" attr="style.title.subtitle.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.title.subtitle.color" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="fontSize" attr="style.title.subtitle.fontSize" type="number" defaultVal="16" :min="12" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="bold" attr="style.title.subtitle.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+            </BaseDetails>
+            <BaseDetails attr="th" :level="2" title="style.th">
+                <BaseAttr name="backgroundColor" attr="style.th.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="color" attr="style.th.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="outline" attr="style.th.outline" type="text" defaultVal="'1px solid #FFFFFF'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="selected" :level="3" title="style.th.selected">
+                    <BaseAttr name="backgroundColor" attr="style.th.selected.backgroundColor" type="color" defaultVal="#1F77B4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.th.selected.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+                <BaseDetails attr="buttons" :level="3" title="style.th.buttons">
+                    <BaseDetails attr="filter" :level="4" title="style.th.buttons.filter">
+                        <BaseDetails attr="inactive" :level="5" title="style.th.buttons.filter.inactive">
+                            <BaseAttr name="backgroundColor" attr="style.th.buttons.filter.inactive.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.th.buttons.filter.inactive.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                        <BaseDetails attr="active" :level="5" title="style.th.buttons.filter.active">
+                            <BaseAttr name="backgroundColor" attr="style.th.buttons.filter.active.backgroundColor" type="color" defaultVal="#1f77b4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.th.buttons.filter.active.color" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                    </BaseDetails>
+                    <BaseDetails attr="cancel" :level="4" title="style.th.buttons.cancel">
+                        <BaseDetails attr="inactive" :level="5" title="style.th.buttons.cancel.inactive">
+                            <BaseAttr name="backgroundColor" attr="style.th.buttons.cancel.inactive.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.th.buttons.cancel.inactive.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                        <BaseDetails attr="active" :level="5" title="style.th.buttons.cancel.active">
+                            <BaseAttr name="backgroundColor" attr="style.th.buttons.cancel.active.backgroundColor" type="color" defaultVal="#F17171" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.th.buttons.cancel.active.color" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                    </BaseDetails>
+                </BaseDetails>
+            </BaseDetails>
+            <BaseDetails attr="rows" :level="2" title="style.rows">
+                <BaseAttr name="outline" attr="style.rows.outline" type="text" defaultVal="1px solid #FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="even" :level="3" title="style.rows.even">
+                    <BaseAttr name="backgroundColor" attr="style.rows.even.backgroundColor" type="color" defaultVal="#F3F5F7" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.rows.even.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseDetails attr="selectedCell" :level="4" title="style.rows.even.selectedCell">
+                        <BaseAttr name="backgroundColor" attr="style.rows.even.selectedCell.backgroundColor" type="color" defaultVal="#1F77B45B" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.rows.even.selectedCell.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="selectedNeighbors" :level="4" title="style.rows.even.selectedNeighbors">
+                        <BaseAttr name="backgroundColor" attr="style.rows.even.selectedNeighbors.backgroundColor" type="color" defaultVal="#63DD621E" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.rows.even.selectedNeighbors.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                </BaseDetails>
+                <BaseDetails attr="odd" :level="3" title="style.rows.odd">
+                    <BaseAttr name="backgroundColor" attr="style.rows.odd.backgroundColor" type="color" defaultVal="#F3F5F7" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.rows.odd.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseDetails attr="selectedCell" :level="4" title="style.rows.odd.selectedCell">
+                        <BaseAttr name="backgroundColor" attr="style.rows.odd.selectedCell.backgroundColor" type="color" defaultVal="#1F77B45B" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.rows.odd.selectedCell.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="selectedNeighbors" :level="4" title="style.rows.odd.selectedNeighbors">
+                        <BaseAttr name="backgroundColor" attr="style.rows.odd.selectedNeighbors.backgroundColor" type="color" defaultVal="#63DD621E" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="color" attr="style.rows.odd.selectedNeighbors.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                </BaseDetails>
+            </BaseDetails>
+            <BaseDetails attr="inputs" :level="2" title="style.inputs">
+                <BaseAttr name="backgroundColor" attr="style.inputs.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="color" attr="style.inputs.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="border" attr="style.inputs.border" type="text" defaultVal="'1px solid #CCCCCC'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="accentColor" attr="style.inputs.accentColor" type="color" defaultVal="#1F77B4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+            <BaseDetails attr="dropdowns" :level="2" title="style.dropdowns">
+                <BaseAttr name="backgroundColor" attr="style.dropdowns.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="color" attr="style.dropdowns.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="icons" :level="3" title="style.dropdowns.icons">
+                    <BaseDetails attr="selected" :level="4" title="style.dropdowns.icons.selected">
+                        <BaseAttr name="color" attr="style.dropdowns.icons.selected.color" type="color" defaultVal="#2CA02C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="unicode" attr="style.dropdowns.icons.selected.unicode" type="text" defaultVal="'✔'":light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="unselected" :level="4" title="style.dropdowns.icons.unselected">
+                        <BaseAttr name="color" attr="style.dropdowns.icons.unselected.color" type="color" defaultVal="#D62728" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="unicode" attr="style.dropdowns.icons.unselected.unicode" type="text" defaultVal="'✖'":light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                </BaseDetails>
+            </BaseDetails>
+            <BaseDetails attr="infoBar" :level="2" title="style.infoBar">
+                <BaseAttr name="backgroundColor" attr="style.infoBar.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="color" attr="style.infoBar.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+            <BaseDetails attr="pagination" :level="2" title="style.pagination">
+                <BaseDetails attr="buttons" :level="3" title="style.pagination.buttons">
+                    <BaseAttr name="backgroundColor" attr="style.pagination.buttons.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.pagination.buttons.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="opacityDisabled" attr="style.pagination.buttons.opacityDisabled" type="range" defaultVal="0.5" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                </BaseDetails>
+                <BaseDetails attr="navigationIndicator" :level="3" title="style.pagination.navigationIndicator">
+                    <BaseAttr name="backgroundColor" attr="style.pagination.navigationIndicator.backgroundColor" type="color" defaultVal="#1F77B4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+            </BaseDetails>
+            <BaseDetails attr="exportMenu" :level="2" title="style.exportMenu">
+                <BaseAttr name="show" attr="style.exportMenu.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="backgroundColor" attr="style.exportMenu.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="color" attr="style.exportMenu.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="filename" attr="style.exportMenu.filename" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseDetails attr="buttons" :level="3" title="style.exportMenu.buttons">
+                    <BaseAttr name="backgroundColor" attr="style.exportMenu.buttons.backgroundColor" type="color" defaultVal="#FAFAFA" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.exportMenu.buttons.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                </BaseDetails>
+            </BaseDetails>
+            <BaseDetails attr="closeButtons" :level="2" title="style.closeButtons">
+                <BaseAttr name="backgroundColor" attr="style.closeButtons.backgroundColor" type="color" defaultVal="'transparent'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="color" attr="style.closeButtons.color" type="color" defaultVal='#2D353C' :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                <BaseAttr name="borderRadius" attr="style.closeButtons.borderRadius" type="text" defaultVal="'50%'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+            <BaseDetails attr="chart" :level="2" title="style.chart">
+                <BaseDetails attr="modal" :level="3" title="style.chart.modal">
+                    <BaseAttr name="backgroundColor" attr="style.chart.modal.backgroundColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="color" attr="style.chart.modal.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseDetails attr="buttons" :level="4" title="style.chart.modal.buttons">
+                        <BaseDetails attr="selected" :level="5" title="style.chart.modal.buttons.selected">
+                            <BaseAttr name="backgroundColor" attr="style.chart.modal.buttons.selected.backgroundColor" type="color" defaultVal="#1F77B4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.chart.modal.buttons.selected.color" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                        <BaseDetails attr="unselected" :level="5" title="style.chart.modal.buttons.unselected">
+                            <BaseAttr name="backgroundColor" attr="style.chart.modal.buttons.unselected.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="color" attr="style.chart.modal.buttons.unselected.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                    </BaseDetails>
+                </BaseDetails>
+                <BaseDetails attr="layout" :level="3" title="style.chart.layout">
+                    <BaseAttr name="backgroundColor" attr="style.chart.layout.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseDetails attr="axis" :level="4" title="style.chart.layout.axis">
+                        <BaseAttr name="stroke" attr="style.chart.layout.axis.stroke" type="color" defaultVal="#CCD1D4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.layout.axis.strokeWidth" type="number" defaultVal="2" :min="1" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="bar" :level="4" title="style.chart.layout.bar">
+                        <BaseAttr name="fill" attr="style.chart.layout.bar.fill" type="color" defaultVal="#1F77B4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="stroke" attr="style.chart.layout.bar.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="line" :level="4" title="style.chart.layout.line">
+                        <BaseAttr name="smooth" attr="style.chart.layout.line.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="useArea" attr="style.chart.layout.line.useArea" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="stroke" attr="style.chart.layout.line.stroke" type="color" defaultVal="#1F77B4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.layout.line.strokeWidth" type="number" defaultVal="4" :min="1" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseDetails attr="plot" :level="5" title="style.chart.layout.line.plot">
+                            <BaseAttr name="fill" attr="style.chart.layout.line.plot.fill" type="color" defaultVal="#1F77B4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="strokeWidth" attr="style.chart.layout.line.plot.strokeWidth" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseDetails attr="radius" :level="6" title="style.chart.layout.line.plot.radius">
+                                <BaseAttr name="selected" attr="style.chart.layout.line.plot.radius.selected" type="number" defaultVal="6" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="unselected" attr="style.chart.layout.line.plot.radius.unselected" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            </BaseDetails>
+                        </BaseDetails>
+                    </BaseDetails>
+                    <BaseDetails attr="labels" :level="4" title="style.chart.layout.labels">
+                        <BaseAttr name="color" attr="style.chart.layout.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="progression" :level="4" title="style.chart.layout.progression">
+                        <BaseAttr name="stroke" attr="style.chart.layout.progression.stroke" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.layout.progression.strokeWidth" type="number" defaultVal="2" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="stokeDasharray" attr="style.chart.layout.progression.strokeDasharray" type="number" defaultVal="4" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="timeLabels" :level="4" title="style.chart.layout.timeLabels">
+                        <BaseAttr name="showOnlyAtModulo" attr="style.chart.layout.timeLabels.showOnlyAtModulo" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="modulo" attr="style.chart.layout.timeLabels.modulo" type="number" defaultVal="12" :min="2" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="zoom" :level="4" title="style.chart.layout.zoom">
+                        <BaseAttr name="show" attr="style.chart.layout.zoom.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="datetimeFormatter" :level="4" title="style.chart.layout.datetimeFormatter">
+                        <BaseAttr name="enable" attr="style.chart.layout.datetimeFormatter.enable" defaultVal="true" type="checkbox" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="locale" attr="style.chart.layout.datetimeFormatter.locale" type="text" defaultVal="en" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="useUTC" attr="style.chart.layout.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="januaryAsYear" attr="style.chart.layout.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseDetails attr="options" :level="5" title="style.chart.layout.datetimeFormatter.options">
+                            <BaseAttr name="year" attr="style.chart.layout.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="month" attr="style.chart.layout.datetimeFormatter.options.month" type="text" defaultVal="MMM 'yy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="day" attr="style.chart.layout.datetimeFormatter.options.day" type="text" defaultVal="dd MMM" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="hour" attr="style.chart.layout.datetimeFormatter.options.hour" type="text" defaultVal="HH:mm" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="minute" attr="style.chart.layout.datetimeFormatter.options.minute" type="text" defaultVal="HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="second" attr="style.chart.layout.datetimeFormatter.options.second" type="text" defaultVal="HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        </BaseDetails>
+                    </BaseDetails>
+                </BaseDetails>
+            </BaseDetails>
+        </BaseDetails>
+        <BaseDetails attr="translations" :level="1">
+            <BaseAttr name="average" attr="translations.average" type="text" defaultVal="'Average'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="by" attr="translations.by" type="text" defaultVal="'by'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="chooseCategoryColumn" attr="translations.chooseCategoryColumn" type="text" defaultVal="'Choose category column'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="exportAllButton" attr="translations.exportAllButton" type="text" defaultVal="'CSV all'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="exportAllLabel" attr="translations.exportAllLabel" type="text" defaultVal="'Export all rows of your current filtered dataset'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="exportPageButton" attr="translations.exportPageButton" type="text" defaultVal="'CSV page'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="exportPageLabel" attr="translations.exportPageLabel" type="text" defaultVal="'Export rows of the current page'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="from" attr="translations.from" type="text" defaultVal="'From'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="inputPlaceholder" attr="translations.inputPlaceholder" type="text" defaultVal="'Search...'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="makeDonut" attr="translations.makeDonut" type="text" defaultVal="'Generate'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="nb" attr="translations.nb" type="text" defaultVal="'Nb'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="page" attr="translations.page" type="text" defaultVal="'Page'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="paginatorLabel" attr="translations.paginatorLabel" type="text" defaultVal="'Rows per page'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="sizeWarning" attr="translations.sizeWarning" type="text" defaultVal="'Displaying too many rows at a time can lead to slower performance'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="sum" attr="translations.sum" type="text" defaultVal="'Sum'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="to" attr="translations.to" type="text" defaultVal="'To'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="total" attr="translations.total" type="text" defaultVal="'Total'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="totalRows" attr="translations.totalRows" type="text" defaultVal="'Total rows'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="filename" attr="translations.filename" type="text" defaultVal="'File name'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="xAxisLabels" attr="translations.xAxisLabels" type="text" defaultVal="'X axis labels'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        </BaseDetails>
+    </BaseDetails>
+</code>      
             </template>
 
             <template #tab10>

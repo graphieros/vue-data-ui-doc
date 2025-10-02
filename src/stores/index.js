@@ -1418,7 +1418,7 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 tagline: {
-                    en: "A user-empowering data visualization Vue3 components library for eloquent data storytelling.",
+                    en: "An user-empowering data visualization Vue3 components library for eloquent data storytelling.",
                     fr: "Bibliothèque de composants Vue3 de visualisation de données pour une data storytelling éloquente.",
                     pt: "Uma biblioteca de componentes Vue3 para visualização de dados, capacitando o usuário para contar histórias de dados eloquentes.",
                     de: "Eine benutzerfreundliche Datenvisualisierungs-Bibliothek mit Vue3-Komponenten für aussagekräftige Datenpräsentation.",

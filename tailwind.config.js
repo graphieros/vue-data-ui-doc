@@ -29,7 +29,13 @@ export default {
         "app-orange-light": "#faa770",
         "app-red": "#ff3700",
         "app-yellow": "#c8c832",
-        "app-gold" : "#fdd663"
+        "app-gold" : "#fdd663",
+        "primary-dark": "#105585",
+        "primary-dark-grey": "#1d3e54",
+        "primary": "#1f77b4",
+        "primary-grey": "#376687",
+        "primary-light": "#579ecf",
+        "primary-light-grey": "#5c7e96"
       }
     },
   },

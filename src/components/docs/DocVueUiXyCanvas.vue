@@ -226,6 +226,18 @@ const config = ref({
             hideUnderXLength: 20,
             position: 'middle'
           },
+        },
+        x: {
+          showAxis: true,
+          axisColor: "#2D353C",
+          axisThickness: 2,
+          axisName: "",
+          horizontalLines: {
+            show: true,
+            color: "#CCCCCC",
+            alternate: true,
+            opacity: 20,
+          },
           timeLabels: {
             show: true,
             fontSizeRatio: 0.7,
@@ -249,18 +261,6 @@ const config = ref({
             color: "#2D353C",
             modulo: 12,
             bold: false,
-          },
-        },
-        x: {
-          showAxis: true,
-          axisColor: "#2D353C",
-          axisThickness: 2,
-          axisName: "",
-          horizontalLines: {
-            show: true,
-            color: "#CCCCCC",
-            alternate: true,
-            opacity: 20,
           },
         },
         zeroLine: {
@@ -456,6 +456,18 @@ const darkModeConfig = ref({
             hideUnderXLength: 20,
             position: 'middle'
           },
+        },
+        x: {
+          showAxis: true,
+          axisColor: "#4A4A4A",
+          axisThickness: 2,
+          axisName: "X Axis",
+          horizontalLines: {
+            show: true,
+            color: "#3A3A3A",
+            alternate: true,
+            opacity: 20,
+          },
           timeLabels: {
             show: true,
             fontSizeRatio: 0.7,
@@ -479,18 +491,6 @@ const darkModeConfig = ref({
             color: "#6A6A6A",
             modulo: 12,
             bold: false
-          },
-        },
-        x: {
-          showAxis: true,
-          axisColor: "#4A4A4A",
-          axisThickness: 2,
-          axisName: "X Axis",
-          horizontalLines: {
-            show: true,
-            color: "#3A3A3A",
-            alternate: true,
-            opacity: 20,
           },
         },
         zeroLine: {
@@ -991,6 +991,97 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
                           @change="forceChartUpdate()"
                         />
                       </BaseDetails>
+                      <BaseDetails
+                        attr="timeLabels"
+                        :level="5"
+                        title="style.chart.grid.x.timeLabels"
+                      >
+                        <span>values: [],</span>
+                        <BaseDetails attr="datetimeFormatter" :level="6" title="style.chart.grid.x.timeLabels.datetimeFormatter">
+                            <BaseAttr name="enable" attr="style.chart.grid.x.timeLabels.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="locale" attr="style.chart.grid.x.timeLabels.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="useUTC" attr="style.chart.grid.x.timeLabels.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseAttr name="januaryAsYear" attr="style.chart.grid.x.timeLabels.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            <BaseDetails attr="options" :level="7" title="style.chart.grid.x.timeLabels.datetimeFormatter.options">
+                                <BaseAttr name="year" attr="style.chart.grid.x.timeLabels.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="month" attr="style.chart.grid.x.timeLabels.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="day" attr="style.chart.grid.x.timeLabels.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="minute" attr="style.chart.grid.x.timeLabels.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                                <BaseAttr name="second" attr="style.chart.grid.x.timeLabels.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                            </BaseDetails>
+                        </BaseDetails>
+                        <BaseAttr
+                          name="show"
+                          attr="style.chart.grid.x.timeLabels.show"
+                          type="checkbox"
+                          defaultVal="true"
+                          :light="mutableConfig"
+                          :dark="mutableConfigDarkMode"
+                          @change="forceChartUpdate()"
+                        />
+                        <BaseAttr
+                          name="bold"
+                          attr="style.chart.grid.x.timeLabels.bold"
+                          type="checkbox"
+                          defaultVal="true"
+                          :light="mutableConfig"
+                          :dark="mutableConfigDarkMode"
+                        />
+                        <BaseAttr
+                          name="fontSizeRatio"
+                          attr="style.chart.grid.x.timeLabels.fontSizeRatio"
+                          type="range"
+                          defaultVal="0.8"
+                          :min="0.5"
+                          :max="2"
+                          :step="0.01"
+                          :light="mutableConfig"
+                          :dark="mutableConfigDarkMode"
+                          @change="forceChartUpdate()"
+                        />
+                        <BaseAttr
+                          name="rotation"
+                          attr="style.chart.grid.x.timeLabels.rotation"
+                          type="range"
+                          defaultVal="0"
+                          :min="-90"
+                          :max="90"
+                          :light="mutableConfig"
+                          :dark="mutableConfigDarkMode"
+                          @change="forceChartUpdate()"
+                        />
+                        <BaseAttr
+                          name="offsetY"
+                          attr="style.chart.grid.x.timeLabels.offsetY"
+                          type="number"
+                          defaultVal="30"
+                          :min="-100"
+                          :max="100"
+                          :light="mutableConfig"
+                          :dark="mutableConfigDarkMode"
+                          @change="forceChartUpdate()"
+                        />
+                        <BaseAttr
+                          name="color"
+                          attr="style.chart.grid.x.timeLabels.color"
+                          type="color"
+                          defaultVal="#2D353C"
+                          :light="mutableConfig"
+                          :dark="mutableConfigDarkMode"
+                          @change="forceChartUpdate()"
+                        />
+                        <BaseAttr
+                          name="modulo"
+                          attr="style.chart.grid.x.timeLabels.modulo"
+                          type="number"
+                          defaultVal="12"
+                          :min="2"
+                          :max="365"
+                          :light="mutableConfig"
+                          :dark="mutableConfigDarkMode"
+                          @change="forceChartUpdate()"
+                        />
+                      </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="y" :level="4" title="style.chart.grid.y">
                       <BaseAttr
@@ -1110,97 +1201,6 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
                           attr="style.chart.grid.y.axisLabels.suffix"
                           type="text"
                           defaultVal="''"
-                          :light="mutableConfig"
-                          :dark="mutableConfigDarkMode"
-                          @change="forceChartUpdate()"
-                        />
-                      </BaseDetails>
-                      <BaseDetails
-                        attr="timeLabels"
-                        :level="5"
-                        title="style.chart.grid.y.timeLabels"
-                      >
-                        <span>values: [],</span>
-                        <BaseDetails attr="datetimeFormatter" :level="6" title="style.chart.grid.y.timeLabels.datetimeFormatter">
-                            <BaseAttr name="enable" attr="style.chart.grid.y.timeLabels.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <BaseAttr name="locale" attr="style.chart.grid.y.timeLabels.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <BaseAttr name="useUTC" attr="style.chart.grid.y.timeLabels.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <BaseAttr name="januaryAsYear" attr="style.chart.grid.y.timeLabels.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <BaseDetails attr="options" :level="7" title="style.chart.grid.y.timeLabels.datetimeFormatter.options">
-                                <BaseAttr name="year" attr="style.chart.grid.y.timeLabels.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="month" attr="style.chart.grid.y.timeLabels.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="day" attr="style.chart.grid.y.timeLabels.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="minute" attr="style.chart.grid.y.timeLabels.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <BaseAttr name="second" attr="style.chart.grid.y.timeLabels.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            </BaseDetails>
-                        </BaseDetails>
-                        <BaseAttr
-                          name="show"
-                          attr="style.chart.grid.y.timeLabels.show"
-                          type="checkbox"
-                          defaultVal="true"
-                          :light="mutableConfig"
-                          :dark="mutableConfigDarkMode"
-                          @change="forceChartUpdate()"
-                        />
-                        <BaseAttr
-                          name="bold"
-                          attr="style.chart.grid.y.timeLabels.bold"
-                          type="checkbox"
-                          defaultVal="true"
-                          :light="mutableConfig"
-                          :dark="mutableConfigDarkMode"
-                        />
-                        <BaseAttr
-                          name="fontSizeRatio"
-                          attr="style.chart.grid.y.timeLabels.fontSizeRatio"
-                          type="range"
-                          defaultVal="0.8"
-                          :min="0.5"
-                          :max="2"
-                          :step="0.01"
-                          :light="mutableConfig"
-                          :dark="mutableConfigDarkMode"
-                          @change="forceChartUpdate()"
-                        />
-                        <BaseAttr
-                          name="rotation"
-                          attr="style.chart.grid.y.timeLabels.rotation"
-                          type="range"
-                          defaultVal="0"
-                          :min="-90"
-                          :max="90"
-                          :light="mutableConfig"
-                          :dark="mutableConfigDarkMode"
-                          @change="forceChartUpdate()"
-                        />
-                        <BaseAttr
-                          name="offsetY"
-                          attr="style.chart.grid.y.timeLabels.offsetY"
-                          type="number"
-                          defaultVal="30"
-                          :min="-100"
-                          :max="100"
-                          :light="mutableConfig"
-                          :dark="mutableConfigDarkMode"
-                          @change="forceChartUpdate()"
-                        />
-                        <BaseAttr
-                          name="color"
-                          attr="style.chart.grid.y.timeLabels.color"
-                          type="color"
-                          defaultVal="#2D353C"
-                          :light="mutableConfig"
-                          :dark="mutableConfigDarkMode"
-                          @change="forceChartUpdate()"
-                        />
-                        <BaseAttr
-                          name="modulo"
-                          attr="style.chart.grid.y.timeLabels.modulo"
-                          type="number"
-                          defaultVal="12"
-                          :min="2"
-                          :max="365"
                           :light="mutableConfig"
                           :dark="mutableConfigDarkMode"
                           @change="forceChartUpdate()"
@@ -2291,7 +2291,7 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
 
       <template #tab10>
           <DatetimeFormatterDoc
-              path="style.chart.grid.y.timeLabels.datetimeFormatter"
+              path="style.chart.grid.x.timeLabels.datetimeFormatter"
           />
       </template>
 

@@ -1561,18 +1561,18 @@ const xyCanvasConfig = computed(() => {
               verticalLines: {
                 show: false
               },
-              timeLabels: {
-                color: isDarkMode.value ? '#6A6A6A' : '#1A1A1A',
-                values: fDates.value,
-                fontSizeRatio: 0.8,
-                rotation: -20
-              }
             },
             x: {
               axisColor: isDarkMode.value ? '#2A2A2A' : '#1A1A1A',
               horizontalLines: {
                 alternate: false,
                 color: isDarkMode.value ? '#2A2A2A' : '#CCCCCC',
+              },
+              timeLabels: {
+                color: isDarkMode.value ? '#6A6A6A' : '#1A1A1A',
+                values: fDates.value,
+                fontSizeRatio: 0.8,
+                rotation: -20
               }
             }
           }

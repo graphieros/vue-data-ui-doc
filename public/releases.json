@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 3.2.6",
+    "date": "2025-10-02",
+    "updates": [
+      {
+        "component": "VueUiTable",
+        "description": "Add config to customize header action buttons",
+        "link": "/docs/#vue-ui-table"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Move timeLabels config to x instead of y (backwards compatible)",
+        "link": "/docs/#vue-ui-xy-canvas"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Allow incomplete configurations for highlightArea",
+        "link": "/docs/#vue-ui-xy"
+      }
+    ]
+  },
+  {
     "version": "v 3.2.5",
     "date": "2025-09-29",
     "updates": [
