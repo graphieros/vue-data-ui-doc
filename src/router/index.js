@@ -66,6 +66,11 @@ const routes = [
         component: () => import("../views/ConfigFlows.vue")
     },
     {
+        path: "/examples/game-of-life",
+        name: "Game of Life",
+        component: () => import('../views/GameOfLife.vue')
+    },
+    {
         path: "/universal-component",
         name: "Universal component",
         component: () => import("../views/UniversalComponent.vue")
