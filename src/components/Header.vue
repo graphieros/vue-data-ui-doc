@@ -73,16 +73,28 @@ function openChartMaker() {
     chartMkr.value.openDialog();
 }
 
-function changeTheme() {
+function updateTheme() {
     if (localStorage.theme === "dark") {
-        localStorage.theme = "light";
-        document.documentElement.classList.remove("dark");
-        store.isDarkMode = false;
-    } else {
-        localStorage.theme = "dark";
-        document.documentElement.classList.add("dark");
-        store.isDarkMode = true;
+            localStorage.theme = "light";
+            document.documentElement.classList.remove("dark");
+            store.isDarkMode = false;
+        } else {
+            localStorage.theme = "dark";
+            document.documentElement.classList.add("dark");
+            store.isDarkMode = true;
+        }
+}
+
+function changeTheme() {
+
+    if (!document.startViewTransition) {
+        updateTheme();
+        return;
     }
+
+    document.startViewTransition(() => {
+        updateTheme();
+    })
 }
 
 const currentRoute = computed(() => {

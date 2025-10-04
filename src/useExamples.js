@@ -880,7 +880,8 @@ export default function useExamples() {
                 series: ds,
                 scaleMin: 0,
                 scaleMax: 100,
-                scaleSteps: 3
+                scaleSteps: 3,
+                dataLabels: false
             },
             {
                 name: 'Channel 2',
@@ -889,7 +890,8 @@ export default function useExamples() {
                 color: colors.value.orange,
                 scaleMin: 0,
                 scaleMax: 60,
-                scaleSteps: 5
+                scaleSteps: 5,
+                dataLabels: false
             }
         ]
     })

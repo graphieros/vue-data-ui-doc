@@ -1,22 +1,47 @@
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { useMainStore } from "../stores";
 
-const store = useMainStore();
-const isDarkMode = computed(() => {
-    return store.isDarkMode;
-})
+const props = defineProps({
+    visible: { type: Boolean, default: true },
+    duration: { type: Number, default: 250 },
+    easing: { type: String, default: "ease" },
+});
 
+const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
+
+const fadeStyle = computed(() => ({
+    "--fade-duration": `${props.duration}ms`,
+    "--fade-easing": props.easing,
+    "z-index": "2147483640"
+}));
 </script>
 
 <template>
-    <div class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-        <img class="loader-logo fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" alt="Vue Data UI logo" src="../assets/logo.png" width="80" height="80"/>
-        <span :class="{ 'loader': true, 'loader-dark': isDarkMode, 'loader-light': !isDarkMode }"></span>
-    </div>
+    <Transition name="fade" appear>
+        <div v-if="props.visible" class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" :style="fadeStyle">
+            <img class="loader-logo fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" alt="Vue Data UI logo"
+                src="../assets/logo.png" width="80" height="80" />
+            <span :class="{
+                loader: true,
+                'loader-dark': isDarkMode,
+                'loader-light': !isDarkMode,
+            }"></span>
+        </div>
+    </Transition>
 </template>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity var(--fade-duration) var(--fade-easing);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
 
 .loader-dark,
 .loader-light {
@@ -24,6 +49,7 @@ const isDarkMode = computed(() => {
 }
 
 .loader {
+    position: relative;
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -34,8 +60,7 @@ const isDarkMode = computed(() => {
 }
 
 .loader::after {
-    content: '';
-    box-sizing: border-box;
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
@@ -64,8 +89,22 @@ const isDarkMode = computed(() => {
     from {
         transform: translateX(-50%) translateY(-50%) scale(0.5);
     }
+
     to {
         transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .loader,
+    .loader-logo {
+        animation: none;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: none;
     }
 }
 </style>
