@@ -14,7 +14,7 @@ const emit = defineEmits(['click'])
 </script>
 
 <template>
-    <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-md text-white hover:shadow-xl dark:text-black font-inter-medium hover:from-app-blue hover:to-app-green transition-all place-items-center text-sm mb-4" @click="emit('click')">
+    <button class="flex gap-1 bg-gradient-to-br from-app-green to-app-blue py-3 px-5 rounded-full text-white hover:shadow-xl dark:text-black font-inter-medium hover:from-app-blue hover:to-app-green transition-all place-items-center text-sm mb-4" @click="emit('click')">
         <CopyIcon/>
         {{ makerTranslations.componentCode[store.lang] }}
     </button>

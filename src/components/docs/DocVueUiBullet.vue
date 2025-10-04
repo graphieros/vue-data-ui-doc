@@ -21,6 +21,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -92,7 +93,7 @@ const config = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#f3f4f6",
             color: "#2D353C",
             height: 96,
             width: 600,
@@ -216,7 +217,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             height: 96,
             width: 600,
@@ -396,7 +397,9 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueDataUi component="VueUiBullet" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <BaseCard>
+                    <VueDataUi component="VueUiBullet" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                </BaseCard>
             </DocSnapper>
 
             <BaseRandomButton @click="randomizeData"/>

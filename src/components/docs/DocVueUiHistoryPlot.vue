@@ -20,6 +20,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -98,12 +99,12 @@ const config = ref({
         useDialog: false,
         responsiveBreakpoint: 400,
         th: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#f3f4f6",
             color: "#2D353Cff",
             outline: "none",
         },
         td: {
-            backgroundColor: "#FFFFFFff",
+            backgroundColor: "#f3f4f6",
             color: "#2D353Cff",
             outline: "none",
             roundingValue: 0,
@@ -118,7 +119,7 @@ const config = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#f3f4f6",
             color: "#2D353C",
             height: 500,
             width: 600,
@@ -241,7 +242,7 @@ const config = ref({
             legend: {
                 show: true,
                 bold: false,
-                backgroundColor: "#FFFFFFff",
+                backgroundColor: "#f3f4f6",
                 color: "#2D353Cff",
                 fontSize: 14,
                 position: 'bottom'
@@ -329,12 +330,12 @@ const darkModeConfig = ref({
         useDialog: false,
         responsiveBreakpoint: 400,
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -349,7 +350,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             height: 500,
             width: 600,
@@ -389,7 +390,7 @@ const darkModeConfig = ref({
                     labels: {
                         show: true,
                         fontSize: 16,
-                        color: "#6A6A6A",
+                        color: "#8A8A8A",
                         bold: false,
                         rounding: 1,
                         offsetY: 0,
@@ -408,7 +409,7 @@ const darkModeConfig = ref({
                         offsetX: 0,
                         offsetY: -12,
                         bold: false,
-                        color: "#6A6A6A",
+                        color: "#8A8A8A",
                     },
                 },
                 y: {
@@ -418,7 +419,7 @@ const darkModeConfig = ref({
                     labels: {
                         show: true,
                         fontSize: 16,
-                        color: "#6A6A6A",
+                        color: "#8A8A8A",
                         bold: false,
                         rounding: 1,
                         offsetX: 0,
@@ -438,7 +439,7 @@ const darkModeConfig = ref({
             },
             plots: {
                 radius: 16,
-                stroke: "#1A1A1A",
+                stroke: "#2A2A2A",
                 strokeWidth: 1,
                 gradient: {
                     show: true,
@@ -472,7 +473,7 @@ const darkModeConfig = ref({
             legend: {
                 show: true,
                 bold: false,
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 fontSize: 14,
                 position: 'bottom'
@@ -607,7 +608,9 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueDataUi component="VueUiHistoryPlot" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <BaseCard>
+                    <VueDataUi component="VueUiHistoryPlot" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                </BaseCard>
             </DocSnapper>
         </div>
 

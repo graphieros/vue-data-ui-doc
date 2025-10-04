@@ -13,6 +13,7 @@ import { useConfigCode } from "../../useConfigCode";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -121,7 +122,7 @@ const config = ref({
 
 const darkModeConfig = ref({
     style: {
-        backgroundColor: "#1A1A1A",
+        backgroundColor: "#2A2A2A",
         color: "#CCCCCC",
         fontFamily: "inherit",
         shapeSize: 14,
@@ -138,7 +139,7 @@ const darkModeConfig = ref({
         showAverage: true,
         showMedian: true,
         head: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             values: ["", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "TOTAL", "AVG", "MED"],
         },
     },
@@ -262,60 +263,61 @@ const codeDataset = ref(`const dataset: VueUiTableHeatmapDatasetItem[] = [
 
         <div
             :class="`transition-all mx-auto ${isFixed ? 'fixed bottom-16 w-[300px] max-h-[500px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[1200px]'}`">
-
-            <Suspense>
-                <template #default>
-                    <VueDataUi component="VueUiTableHeatmap" :dataset="dataset"
-                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                        <template #caption>
-                            <div style="width: 100%; height: 40px" class="pb-8 font-black text-2xl text-left pl-2">
-                                TITLE
-                            </div>
-                        </template>
-        
-                        <template #head="{ value, rowIndex, type }">
-                            <div class="text-black dark:text-gray-300">
-                                {{ value }}
-                            </div>
-                        </template>
-        
-                        <template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }">
-                            <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-start; padding: 0 6px;font-weight:${isResponsive ? 'bold' : 'normal'}`"
-                                class="bg-gray-200 dark:bg-[#2A2A2A] w-full">
-                                {{ value }}
-                            </div>
-                        </template>
-                        <template #cell="{ value, rowIndex, colIndex, type, color, textColor }">
-                            <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-end; padding: 0 6px;background:${color};color:${textColor}`"
-                                class="relative">
-                                {{ value }}
-                            </div>
-                        </template>
-                        <template #sum="{ value }">
-                            <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                                class="bg-gray-200 dark:bg-[#2A2A2A]">
-                                {{ value }}
-                            </div>
-                        </template>
-                        <template #average="{ value }">
-                            <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                                class="bg-gray-200 dark:bg-[#2A2A2A]">
-                                {{ value.toFixed(1) }}
-                            </div>
-                        </template>
-                        <template #median="{ value }">
-                            <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
-                                class="bg-gray-200 dark:bg-[#2A2A2A]">
-                                {{ value.toFixed(1) }}
-                            </div>
-                        </template>
-                    </VueDataUi>
-                </template>
-
-                <template #fallback>
-                    <BaseSpinner/>
-                </template>
-            </Suspense>
+            <BaseCard>
+                <Suspense>
+                    <template #default>
+                        <VueDataUi component="VueUiTableHeatmap" :dataset="dataset"
+                            :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                            <template #caption>
+                                <div style="width: 100%; height: 40px" class="pb-8 font-black text-2xl text-left pl-2">
+                                    TITLE
+                                </div>
+                            </template>
+            
+                            <template #head="{ value, rowIndex, type }">
+                                <div class="text-black dark:text-gray-300">
+                                    {{ value }}
+                                </div>
+                            </template>
+            
+                            <template #rowTitle="{ value, rowIndex, colIndex, type, isResponsive }">
+                                <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-start; padding: 0 6px;font-weight:${isResponsive ? 'bold' : 'normal'}`"
+                                    class="bg-gray-200 dark:bg-[#2A2A2A] w-full">
+                                    {{ value }}
+                                </div>
+                            </template>
+                            <template #cell="{ value, rowIndex, colIndex, type, color, textColor }">
+                                <div :style="`height: 40px; display: flex; align-items:center; justify-content: flex-end; padding: 0 6px;background:${color};color:${textColor}`"
+                                    class="relative">
+                                    {{ value }}
+                                </div>
+                            </template>
+                            <template #sum="{ value }">
+                                <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+                                    class="bg-gray-200 dark:bg-[#2A2A2A]">
+                                    {{ value }}
+                                </div>
+                            </template>
+                            <template #average="{ value }">
+                                <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+                                    class="bg-gray-200 dark:bg-[#2A2A2A]">
+                                    {{ value.toFixed(1) }}
+                                </div>
+                            </template>
+                            <template #median="{ value }">
+                                <div style="height:40px; display: flex; text-align:center; align-items:center; justify-content: flex-end; padding: 0 6px;"
+                                    class="bg-gray-200 dark:bg-[#2A2A2A]">
+                                    {{ value.toFixed(1) }}
+                                </div>
+                            </template>
+                        </VueDataUi>
+                    </template>
+    
+                    <template #fallback>
+                        <BaseSpinner/>
+                    </template>
+                </Suspense>
+            </BaseCard>
         </div>
 
         <Rater itemId="vue_ui_table_heatmap" />

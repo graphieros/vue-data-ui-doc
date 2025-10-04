@@ -21,6 +21,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig();
 
@@ -125,7 +126,7 @@ const config = ref({
                 },
             },
             circles: {
-                stroke: "#FFFFFF",
+                stroke: "#f3f4f6",
                 strokeWidth: 1,
                 gradient: {
                     show: true,
@@ -225,12 +226,12 @@ const darkModeConfig = ref({
         useDialog: false,
         responsiveBreakpoint: 400,
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
         },
@@ -242,7 +243,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             title: {
                 text: "Title",
@@ -420,16 +421,18 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
         <BaseRandomButton @click="randomizeData" />
         <DocSnapper :isFixed="isFixed" :disabled="!isFixed || isMobile" @fixChart="fixChart"
             @resetDefault="resetDefault" @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)">
-            <div class="w-full min-h-[500px]">
-                <VueDataUi component="VueUiCirclePack" :dataset="mutableDataset"
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                    <template #plot-comment="{ plot }">
-                        <div :style="`text-align:${plot.textAlign};font-size: 10px; padding: 6px;`">
-                            {{ plot.comment }}
-                        </div>
-                    </template>
-                </VueDataUi>
-            </div>
+            <BaseCard>
+                <div class="w-full min-h-[500px]">
+                    <VueDataUi component="VueUiCirclePack" :dataset="mutableDataset"
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                        <template #plot-comment="{ plot }">
+                            <div :style="`text-align:${plot.textAlign};font-size: 10px; padding: 6px;`">
+                                {{ plot.comment }}
+                            </div>
+                        </template>
+                    </VueDataUi>
+                </div>
+            </BaseCard>
         </DocSnapper>
     </div>
 

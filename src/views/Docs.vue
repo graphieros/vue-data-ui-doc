@@ -19,6 +19,7 @@ import BaseDragElement from "../components/BaseDragElement.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
 import { useIconMap } from "../useIconMap";
 import IconSettings from "../components/IconSettings.vue";
+import BaseCard from "../components/BaseCard.vue";
 
 const DocVueUiXy = defineAsyncComponent(() => import('../components/docs/DocVueUiXy.vue'));
 const DocVueUiTable = defineAsyncComponent(() => import('../components/docs/DocVueUiTable.vue'));
@@ -1024,7 +1025,7 @@ const stackbarKey = ref(0);
 </script>
 
 <template>
-    <BaseCrumbs :tree="docsCrumbs"/>
+    <BaseCrumbs :tree="docsCrumbs" class="z-20"/>
     
     <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
     <ConfirmCopy/>
@@ -1258,14 +1259,14 @@ const stackbarKey = ref(0);
         </RouterLink>
     </div>
 
-    <div class="p-4 rounded-full gap-4 mx-auto flex flex-row justify-center bg-gray-200 dark:bg-[#FFFFFF10] w-fit">
-        <button class="text-xs sm:text-lg rounded-full h-[48px] sm:h-[60px] px-3 sm:px-6 border border-app-green bg-app-green-light-extra dark:bg-[#42d39220] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-app-green-light dark:hover:bg-[#42D39230] transition-all">
+    <div class="p-4 rounded-full gap-4 mx-auto flex flex-row justify-center bg-gray-100 dark:bg-[#2A2A2A] w-fit shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
+        <button class="text-xs sm:text-lg rounded-full h-[48px] sm:h-[60px] px-3 sm:px-6 border border-app-green bg-app-green-light-extra dark:bg-[#42d39220] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-app-green-light dark:hover:bg-[#42D39230] transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
             <a href="#list">
                 {{  translations.availableComponents[store.lang] }}
             </a>
         </button>
         <RouterLink to="/examples/categories">
-            <button class="text-xs sm:text-lg rounded-full h-[48px] sm:h-[60px] px-3 sm:px-6 border border-app-blue bg-app-blue-light dark:bg-[#5f8aee20] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-app-blue-mid dark:hover:bg-[#5f8aee30] transition-all">
+            <button class="text-xs sm:text-lg rounded-full h-[48px] sm:h-[60px] px-3 sm:px-6 border border-app-blue bg-app-blue-light dark:bg-[#5f8aee20] flex flex-row place-items-center gap-4 hover:shadow-md hover:bg-app-blue-mid dark:hover:bg-[#5f8aee30] transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
                 {{ translations.examplesAndVariations[store.lang] }}
             </button>
         </RouterLink>
@@ -1278,26 +1279,83 @@ const stackbarKey = ref(0);
     <div class="w-full">
         <ChartSeeker/>
     </div>
-    
-    <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
-        <div class="w-full text-left text-lg">
-            {{ translations.overview.title[store.lang] }}
+
+    <BaseCard class="w-full max-w-[1000px] mt-6 z-1">
+        <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center p-4 rounded-lg">
+            <div class="w-full text-left text-lg">
+                {{ translations.overview.title[store.lang] }}
+            </div>
+            <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
+                <div class="flex flex-col gap-1">
+                    <label for="schemaSelect">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
+                    <BaseDropdown
+                        :options="chartKeys.map(k => {
+                            return {
+                                name: k,
+                                icon: useIconMapUnderscore(k)
+                            }
+                        })"
+                        v-model:value="schemaSelect"
+                        background="bg-white dark:bg-[#1A1A1A]"
+                        optionTarget="name"
+                        additionalOptionTarget="name"
+                        id="schemaSelect"
+                    >
+                        <template #selected="{ selectedOption }">
+                            <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                                <div class="h-[24px] w-[24px] flex place-items-center">
+                                    <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                                </div>
+                                <div class="text-[17px]">
+                                    <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                    <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
+                                </div>
+                            </div>
+                        </template>
+                        <template #option="{ option, selected, current }">
+                            <div class="text-left flex flex-row gap-2 place-items-center">
+                                <div class="h-[20px] w-[20px] flex place-items-center">
+                                    <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                                </div>
+                                <div>
+                                    <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                    <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
+                                </div>
+                            </div>
+                        </template>
+                    </BaseDropdown>
+                </div>
+            </div>
+            <Schema :component="schemaSelect"/>
         </div>
-        <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
+    </BaseCard>
+
+    <BaseCard class="w-full max-w-[1000px] mt-6 z-3">
+        <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center p-4 rounded-lg">
+            <div dir="auto" class="mb-4">{{ translations.getTheme[store.lang] }}</div>
+            <CodeParser
+                language="javascript"
+                :content="`
+    import { getThemeConfig } from 'vue-data-ui';
+    const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_themes = getThemeConfig('${configSelect}')
+                `"
+                @copy="store.copy()"
+            />
+            <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
             <div class="flex flex-col gap-1">
-                <label for="schemaSelect">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
+                <label for="themeSelect">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
                 <BaseDropdown
-                    :options="chartKeys.map(k => {
+                    :options="themeKeys.map(k => {
                         return {
                             name: k,
                             icon: useIconMapUnderscore(k)
                         }
                     })"
-                    v-model:value="schemaSelect"
+                    v-model:value="themeSelect"
                     background="bg-white dark:bg-[#1A1A1A]"
                     optionTarget="name"
                     additionalOptionTarget="name"
-                    id="schemaSelect"
+                    id="themeSelect"
                 >
                     <template #selected="{ selectedOption }">
                         <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
@@ -1324,66 +1382,162 @@ const stackbarKey = ref(0);
                 </BaseDropdown>
             </div>
         </div>
-        <Schema :component="schemaSelect"/>
-    </div>
     
-                    <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
-                        <div dir="auto" class="mb-4">{{ translations.getTheme[store.lang] }}</div>
-                        <CodeParser
-                            language="javascript"
-                            :content="`
-import { getThemeConfig } from 'vue-data-ui';
-const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_themes = getThemeConfig('${configSelect}')
-                            `"
-                            @copy="store.copy()"
-                        />
-                        <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
-                        <div class="flex flex-col gap-1">
-                            <label for="themeSelect">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
-                            <BaseDropdown
-                                :options="themeKeys.map(k => {
-                                    return {
-                                        name: k,
-                                        icon: useIconMapUnderscore(k)
-                                    }
-                                })"
-                                v-model:value="themeSelect"
-                                background="bg-white dark:bg-[#1A1A1A]"
-                                optionTarget="name"
-                                additionalOptionTarget="name"
-                                id="themeSelect"
-                            >
-                                <template #selected="{ selectedOption }">
-                                    <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
-                                        <div class="h-[24px] w-[24px] flex place-items-center">
-                                            <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
-                                        </div>
-                                        <div class="text-[17px]">
-                                            <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
-                                            <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
-                                        </div>
-                                    </div>
-                                </template>
-                                <template #option="{ option, selected, current }">
-                                    <div class="text-left flex flex-row gap-2 place-items-center">
-                                        <div class="h-[20px] w-[20px] flex place-items-center">
-                                            <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
-                                        </div>
-                                        <div>
-                                            <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
-                                            <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
-                                        </div>
-                                    </div>
-                                </template>
-                            </BaseDropdown>
+            <VueDataUi class="w-full" component="VueUiAccordion" :config="{
+                maxHeight: 20000,
+                head: {
+                    useArrowSlot: true,
+                    backgroundColor: 'transparent'
+                },
+                body: {
+                    backgroundColor: 'transparent',
+                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                }
+            }">
+                <template #arrow="{ iconColor }">
+                    <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                </template>
+                <template #title>
+                    {{ translations.viewSelectedTheme[store.lang] }}
+                </template>
+                <template #content>
+                    <CodeParser
+                        language="javascript"
+                        :content="JSON.stringify(selectedTheme, null, 2)"
+                        @copy="store.copy()"
+                    />
+                </template>
+            </VueDataUi>
+        </div>
+    </BaseCard>
+    
+    <BaseCard class="w-full max-w-[1000px] mt-6 z-2">
+        <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center p-4">
+            <div dir="auto" class="mb-4">{{ translations.getConfig[store.lang] }}</div>
+            <CodeParser
+                language="javascript"
+                :content="`
+    import { getVueDataUiConfig } from 'vue-data-ui';
+    const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_config = getVueDataUiConfig('${configSelect}')
+                `"
+                @copy="store.copy()"
+            />
+    
+            <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
+            <div class="flex flex-col gap-1">
+                <label for="configSelect">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
+                <BaseDropdown
+                    :options="configKeys.map(k => {
+                        return {
+                            name: k,
+                            icon: useIconMapUnderscore(k)
+                        }
+                    })"
+                    v-model:value="configSelect"
+                    background="bg-white dark:bg-[#1A1A1A]"
+                    optionTarget="name"
+                    additionalOptionTarget="name"
+                    id="configSelect"
+                >
+                    <template #selected="{ selectedOption }">
+                        <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                            <div class="h-[24px] w-[24px] flex place-items-center">
+                                <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                            </div>
+                            <div class="text-[17px]">
+                                <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
+                            </div>
                         </div>
+                    </template>
+                    <template #option="{ option, selected, current }">
+                        <div class="text-left flex flex-row gap-2 place-items-center">
+                            <div class="h-[20px] w-[20px] flex place-items-center">
+                                <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                            </div>
+                            <div>
+                                <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
+                                <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
+                            </div>
+                        </div>
+                    </template>
+                </BaseDropdown>
+            </div>
+        </div>
+    
+            <VueDataUi class="w-full" component="VueUiAccordion" :config="{
+                maxHeight: 50000,
+                head: {
+                    useArrowSlot: true,
+                    backgroundColor: 'transparent'
+                },
+                body: {
+                    backgroundColor: 'transparent',
+                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                }
+            }">
+                <template #arrow="{ iconColor }">
+                    <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                </template>
+                <template #title>
+                    {{ translations.viewSelectedConfig[store.lang] }}
+                </template>
+                <template #content>
+                    <CodeParser
+                        language="javascript"
+                        :content="JSON.stringify(selectedConfig, null, 2)"
+                        @copy="store.copy()"
+                    />
+                </template>
+            </VueDataUi>
+        </div>
+    </BaseCard>
+    
+    <h2 id="list" class="pt-24 text-4xl">{{  translations.availableComponents[store.lang] }}</h2>
+
+    <div class="w-full max-w-[1000px] mx-auto mt-6 mb-4 text-xs sm:text-sm flex flex-col md:flex-row gap-6 z-1">
+        
+        <BaseCard class="w-full">
+            <div  class="w-full p-4 rounded-lg flex flex-col gap-6 place-items-center">
+                <div class="flex flex-row gap-6 place-items-center">
+                    <div class="h-[40px] w-[40px] flex place-items-center justify-center">
+                    <SquareRoundedLetterSIcon class="bg-white dark:bg-black rounded-md text-app-blue"/>
+                    </div>
+                    <div dir="auto">
+                        {{ translations.slots.summary[store.lang] }}
+                    </div>
+                </div>
+                <div class="flex flex-row gap-6 place-items-center">
+                    <div class="h-[40px] w-[40px] flex place-items-center justify-center">
+                    <SquareRoundedLetterLIcon class="bg-white dark:bg-black rounded-md text-app-orange"/>
+                    </div>
+                    <div dir="auto">
+                        {{ translations.slots.legend[store.lang] }}
+                    </div>
+                </div>
+                    <div class="w-full flex justify-center">
+                    <router-link to="/customization">
+                        <button class="py-2 px-6 bg-app-blue text-white dark:text-black rounded-full hover:outline hover:outline-gray-400 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]">{{ translations.docs.example[store.lang] }}</button>
+                    </router-link>
+                </div>
+            </div>
+        </BaseCard>
+
+        <BaseCard class="w-full">
+            <div class="w-full p-4 rounded-lg flex flex-row gap-6 place-items-center">
+                <div class="h-[40px] w-[40px] flex place-items-center justify-center">
+                <SquareRoundedLetterTIcon class="bg-white dark:bg-black rounded-md text-app-green"/>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <div dir="auto">
+                        {{ translations.tableCss.summary[store.lang] }}
                     </div>
     
-                        <VueDataUi class="w-full" component="VueUiAccordion" :config="{
-                            maxHeight: 20000,
+                    <VueDataUi component="VueUiAccordion" :config="{
                             head: {
                                 useArrowSlot: true,
-                                backgroundColor: 'transparent'
+                                backgroundColor: 'transparent',
+                                iconColor: '#42d392'
                             },
                             body: {
                                 backgroundColor: 'transparent',
@@ -1394,167 +1548,25 @@ const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_themes = g
                                 <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
                             </template>
                             <template #title>
-                                {{ translations.viewSelectedTheme[store.lang] }}
+                                {{ translations.tableCss.cta[store.lang] }}
                             </template>
                             <template #content>
-                                <CodeParser
-                                    language="javascript"
-                                    :content="JSON.stringify(selectedTheme, null, 2)"
-                                    @copy="store.copy()"
-                                />
-                            </template>
-                        </VueDataUi>
-                    </div>
-    
-                    <div class="w-full max-w-[1000px] mx-auto mt-4 text-xs sm:text-sm flex flex-col place-items-center border p-4 border-app-blue rounded-lg bg-[#5f8bee20]">
-                        <div dir="auto" class="mb-4">{{ translations.getConfig[store.lang] }}</div>
-                        <CodeParser
-                            language="javascript"
-                            :content="`
-import { getVueDataUiConfig } from 'vue-data-ui';
-const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_config = getVueDataUiConfig('${configSelect}')
-                            `"
-                            @copy="store.copy()"
-                        />
-
-                        <div class="mt-4 flex flex-row gap-1 w-full justify-center border-b border-gray-600 pb-4 mb-4">
-                        <div class="flex flex-col gap-1">
-                            <label for="configSelect">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
-                            <BaseDropdown
-                                :options="configKeys.map(k => {
-                                    return {
-                                        name: k,
-                                        icon: useIconMapUnderscore(k)
-                                    }
-                                })"
-                                v-model:value="configSelect"
-                                background="bg-white dark:bg-[#1A1A1A]"
-                                optionTarget="name"
-                                additionalOptionTarget="name"
-                                id="configSelect"
-                            >
-                                <template #selected="{ selectedOption }">
-                                    <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
-                                        <div class="h-[24px] w-[24px] flex place-items-center">
-                                            <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
-                                        </div>
-                                        <div class="text-[17px]">
-                                            <span :class="'text-gray-500 dark:text-app-blue'">vue_ui_</span>
-                                            <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('vue_ui_', '') }}</span>
-                                        </div>
-                                    </div>
-                                </template>
-                                <template #option="{ option, selected, current }">
-                                    <div class="text-left flex flex-row gap-2 place-items-center">
-                                        <div class="h-[20px] w-[20px] flex place-items-center">
-                                            <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
-                                        </div>
-                                        <div>
-                                            <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">vue_ui_</span>
-                                            <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('vue_ui_', '') }}</span>
-                                        </div>
-                                    </div>
-                                </template>
-                            </BaseDropdown>
-                        </div>
-                    </div>
-    
-                        <VueDataUi class="w-full" component="VueUiAccordion" :config="{
-                            maxHeight: 50000,
-                            head: {
-                                useArrowSlot: true,
-                                backgroundColor: 'transparent'
-                            },
-                            body: {
-                                backgroundColor: 'transparent',
-                                color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                            }
-                        }">
-                            <template #arrow="{ iconColor }">
-                                <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
-                            </template>
-                            <template #title>
-                                {{ translations.viewSelectedConfig[store.lang] }}
-                            </template>
-                            <template #content>
-                                <CodeParser
-                                    language="javascript"
-                                    :content="JSON.stringify(selectedConfig, null, 2)"
-                                    @copy="store.copy()"
-                                />
-                            </template>
-                        </VueDataUi>
-                    </div>
-
-                    <h2 id="list" class="pt-24 text-4xl">{{  translations.availableComponents[store.lang] }}</h2>
-
-                    <div class="w-full max-w-[1000px] mx-auto mt-6 mb-4 text-xs sm:text-sm flex flex-col md:flex-row gap-6">
-                    
-                        <div  class="w-full border border-gray-400 bg-[#FFFFFF10] p-4 rounded-lg flex flex-col gap-6 place-items-center">
-                        <div class="flex flex-row gap-6 place-items-center">
-                            <div class="h-[40px] w-[40px] flex place-items-center justify-center">
-                            <SquareRoundedLetterSIcon class="bg-white dark:bg-black rounded-md text-app-blue"/>
-                            </div>
-                            <div dir="auto">
-                                {{ translations.slots.summary[store.lang] }}
-                            </div>
-                        </div>
-                        <div class="flex flex-row gap-6 place-items-center">
-                            <div class="h-[40px] w-[40px] flex place-items-center justify-center">
-                            <SquareRoundedLetterLIcon class="bg-white dark:bg-black rounded-md text-app-orange"/>
-                            </div>
-                            <div dir="auto">
-                                {{ translations.slots.legend[store.lang] }}
-                            </div>
-                        </div>
-                            <div class="w-full flex justify-center">
-                            <router-link to="/customization">
-                                <button class="py-2 px-6 bg-app-blue text-white dark:text-black rounded shadow hover:outline hover:outline-gray-400">{{ translations.docs.example[store.lang] }}</button>
-                            </router-link>
-                            </div>
-                        </div>
-    
-                        <div  class="w-full border border-gray-400 bg-[#FFFFFF10] p-4 rounded-lg flex flex-row gap-6 place-items-center">
-                            <div class="h-[40px] w-[40px] flex place-items-center justify-center">
-                            <SquareRoundedLetterTIcon class="bg-white dark:bg-black rounded-md text-app-green"/>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <div dir="auto">
-                                    {{ translations.tableCss.summary[store.lang] }}
+                                <div class="mt-2">
+                                    <code>
+                                        <ul>
+                                            <li v-for="cssClass in cssTableClasses">
+                                                {{  cssClass }}
+                                            </li>
+                                        </ul>
+                                    </code>
                                 </div>
-    
-                                <VueDataUi component="VueUiAccordion" :config="{
-                                        head: {
-                                            useArrowSlot: true,
-                                            backgroundColor: 'transparent',
-                                            iconColor: '#42d392'
-                                        },
-                                        body: {
-                                            backgroundColor: 'transparent',
-                                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                                        }
-                                    }">
-                                        <template #arrow="{ iconColor }">
-                                            <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
-                                        </template>
-                                        <template #title>
-                                            {{ translations.tableCss.cta[store.lang] }}
-                                        </template>
-                                        <template #content>
-                                            <div class="mt-2">
-                                                <code>
-                                                    <ul>
-                                                        <li v-for="cssClass in cssTableClasses">
-                                                            {{  cssClass }}
-                                                        </li>
-                                                    </ul>
-                                                </code>
-                                            </div>
-                                        </template>
-                                    </VueDataUi>
-                            </div>
-                        </div>
-                    </div>
+                            </template>
+                        </VueDataUi>
+                </div>
+            </div>
+        </BaseCard>
+
+    </div>
 
                     <BaseMenuCategory
                         v-for="cat in menuCategories"
@@ -1572,9 +1584,9 @@ const ${configSelect.replace('vue_ui_', '').replace('3d', 'three_d')}_config = g
                 snap-on-resize 
                 snap-on-load 
                 v-show="store.docSnap && router.currentRoute.value.fullPath.includes('/docs#vue')"
-                backgroundColor="bg-[#f3f4f6] dark:bg-[#1A1A1A] border border-white dark:border-[#3A3A3A]"
+                backgroundColor="bg-gray-150 dark:bg-[#242424]"
             >
-                <div id="docSnap" class="max-w-[350px] max-h-[800px] overflow-hidden"/>
+                <div id="docSnap" class="max-w-[350px] max-h-[800px] overflow-hidden rounded-xl pb-2"/>
             </BaseDragElement>
         </div>
     </div>

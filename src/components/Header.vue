@@ -248,7 +248,7 @@ const message = ref({
     </div>
     <header data-cy="app-header"
         tabindex="1"
-        class="z-[2147483647] sticky top-0 w-full font-inter bg-gray-200 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] outline-none">
+        class="z-[2147483647] sticky top-0 w-full font-inter bg-gray-300 dark:bg-black text-gray-800 dark:text-slate-300 border-b dark:border-[#2A2A2A] outline-none">
         <div class="mx-auto w-5/6 py-3 flex justify-between place-items-center">
             <router-link data-cy="link-home" to="/" v-if="!isHome">
                 <div class="flex flex-row gap-3">
@@ -270,8 +270,8 @@ const message = ref({
             <nav class="hidden xl:flex flex-row gap-1 justify-end w-full place-items-center">
                 <router-link data-cy="link-installation" to="/installation" @mouseenter="closeDocsMenu">
                     <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/installation')
-                                ? 'text-app-blue hover:cursor-default bg-[#5f8bee33] shadow-md'
-                                : 'text-gray-800 dark:text-app-blue dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                ? 'text-black dark:text-app-blue hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
+                                : 'text-gray-800 dark:text-app-blue dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
                             <VueUiIcon name="starFill" :stroke="isDarkMode ? '#5f8bee' : '#1A1A1A'" :size="18" :strokeWidth="1" />
                         {{ translations.menu.installation[store.lang] }}
@@ -281,8 +281,8 @@ const message = ref({
                     <router-link data-cy="link-docs" to="/docs" @mouseover="openDocMenu" @click.stop="toggleDocMenu" @focus="openDocMenu">
                         <div 
                             :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/docs')
-                                    ? 'text-[#277753] dark:text-app-green hover:cursor-default bg-[#42d39233] shadow-md'
-                                    : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                    ? 'text-black dark:text-app-green hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
+                                    : 'text-gray-800 dark:text-app-green dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                                 }`"
                             >
                             <IconSettings :size="18" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
@@ -293,14 +293,15 @@ const message = ref({
                         <div 
                             v-if="isDocOpen"
                             v-click-outside="closeDocsMenu"
-                            class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 pt-10 rounded-md bg-gray-200 border border-gray-400 dark:border-[#4A4A4A] shadow-xl dark:bg-[#1A1A1A] grid grid-cols-6 w-max gap-6"
+                            class="fixed top-[60px] left-1/2 -translate-x-1/2 mt-2 p-4 pt-10 rounded-2xl bg-gray-200 dark:bg-[#242424] grid grid-cols-6 w-max gap-6 shadow-[inset_0_2px_2px_#FFFFFF,0_8px_12px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_8px_12px_rgba(0,0,0,0.5)]"
                             tabindex="0"
                         >
                             <kbd>Esc</kbd>
-                            <div class="fixed -top-1 left-0 py-3 w-full text-center">
+                            <div class="fixed -top-1 left-0 py-3 w-full text-center font-inter-bold">
                                 {{ detailedDoc[store.lang] }}
                             </div>
-                            <div v-for="menu in simpleMenu" class="flex flex-col bg-gradient-to-b from-[#FFFFFF10] to-transparent pl-2 pt-2 rounded-md">
+                            <div v-for="menu in simpleMenu" class="flex flex-col bg-gray-100 dark:bg-[#2A2A2A] pl-2 pt-2 rounded-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] pb-2">
                                 <div class="text-s mb-4 font-inter-medium">{{ menu.category }}</div>
                                 <FlexibleTooltip
                                         v-for="(item, i) in menu.components"
@@ -338,8 +339,8 @@ const message = ref({
                 </div>
                 <router-link data-cy="link-docs" to="/chart-builder"  @mouseenter="closeDocsMenu">
                     <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/chart-builder')
-                                ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-[#ffe59633] shadow-md'
-                                : 'text-gray-800 dark:text-[#ffe596] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                ? 'text-black dark:text-[#ffe596] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
+                                : 'text-gray-800 dark:text-[#ffe596] dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
                             <VueUiIcon name="boxes" :stroke="isDarkMode ? '#ffe596' : '#1A1A1A'" :size="18" :strokeWidth="1" />
                         {{ translations.menu.chartBuilder[store.lang] }}
@@ -347,8 +348,8 @@ const message = ref({
                 </router-link>
                 <router-link data-cy="link-customization" to="/customization"  @mouseenter="closeDocsMenu">
                     <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/customization')
-                                ? 'text-black dark:text-[#de8b37] hover:cursor-default bg-[#de8b3733] shadow-md'
-                                : 'text-gray-800 dark:text-[#de8b37] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                ? 'text-black dark:text-[#de8b37] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
+                                : 'text-gray-800 dark:text-[#de8b37] dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
                             <VueUiIcon name="palette" :stroke="isDarkMode ? '#de8b37' : '#1A1A1A'" :size="18" :strokeWidth="1" />
                         {{ translations.menu.customization[store.lang] }}
@@ -356,8 +357,8 @@ const message = ref({
                 </router-link>
                 <router-link to="/examples"  @mouseenter="closeDocsMenu">
                     <span :class="`flex flex-row place-items-center gap-1 py-1 px-2 rounded-xl ${isSelected('/examples')
-                                ? 'text-black dark:text-[#de6937] hover:cursor-default bg-[#de693733] shadow-md'
-                                : 'text-gray-800 dark:text-[#de6937] dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                ? 'text-black dark:text-[#de6937] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
+                                : 'text-gray-800 dark:text-[#de6937] dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
                             <VueUiIcon name="dashboard" :stroke="isDarkMode ? '#de6937' : '#1A1A1A'" :size="18" :strokeWidth="1" />
                         {{ translations.menu.examples[store.lang] }}
@@ -365,16 +366,16 @@ const message = ref({
                 </router-link>
                 <router-link data-cy="link-versions" to="/versions"  @mouseenter="closeDocsMenu">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/versions')
-                                ? 'text-app-blue dark:text-gray-300 hover:cursor-default bg-[#5f8bee20] shadow-sm'
-                                : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                ? 'text-black dark:text-[#CCCCCC] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
+                                : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
                         {{ translations.menu.versions[store.lang] }}
                     </span>
                 </router-link>
                 <router-link data-cy="link-about" to="/about"  @mouseenter="closeDocsMenu">
                     <span :class="`py-1 px-2 rounded-xl ${isSelected('/about')
-                                ? 'text-app-blue dark:text-gray-300 hover:cursor-default bg-[#5f8bee20] shadow-sm'
-                                : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-300'
+                                ? 'text-black dark:text-[#CCCCCC] hover:cursor-default bg-gray-200 dark:bg-[#242424] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]'
+                                : 'text-gray-800 dark:text-gray-400 dark:hover:bg-[#FFFFFF10] hover:bg-gray-200'
                             }`">
                         {{ translations.menu.about[store.lang] }}
                     </span>

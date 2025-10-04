@@ -157,7 +157,8 @@ const translations = computed(() => {
 </script>
 
 <template>
-    <div class="w-full border border-gray-700 rounded-md my-6 relative overflow-x-auto dark:bg-[#42d39210] bg-gradient-to-br from-transparent to-[#42d39240]">
+    <div class="w-full rounded-xl my-6 relative overflow-x-auto dark:bg-[#42d39210] bg-gradient-to-br from-transparent to-[#42d39240] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] px-4">
         <VueDataUi component="VueUiAccordion" :config="isDarkMode ? darkModeConfig : config">
             <template #title="{ color }">
                 <div class="flex flex-row place-items-center gap-2">

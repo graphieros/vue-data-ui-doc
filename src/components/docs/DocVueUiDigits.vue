@@ -8,6 +8,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -43,7 +44,7 @@ const config = ref({
 const darkModeConfig = ref({
   height: "100%",
   width: null,
-  backgroundColor: "#1A1A1A",
+  backgroundColor: "#2A2A2A",
   digits: {
     color: "#42d392",
     skeletonColor: "#3A3A3A"
@@ -108,13 +109,15 @@ function fixChart() {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <div style="height: 64px" class="mx-auto flex justify-center">
-                    <VueUiDigits :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
-                </div>
-                <div class="mt-6 mx-auto flex place-items-center justify-center gap-4">
-                    {{ translations.docs.comments.screenshot.tryIt[store.lang] }}:
-                    <input type="number" v-model="dataset">
-                </div>
+                <BaseCard>
+                    <div style="height: 64px" class="mx-auto flex justify-center">
+                        <VueUiDigits :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                    </div>
+                    <div class="mt-6 mx-auto flex place-items-center justify-center gap-4">
+                        {{ translations.docs.comments.screenshot.tryIt[store.lang] }}:
+                        <input type="number" v-model="dataset">
+                    </div>
+                </BaseCard>
             </DocSnapper>
         </div>
 

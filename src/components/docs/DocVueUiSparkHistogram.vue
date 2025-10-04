@@ -19,6 +19,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -441,7 +442,9 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <VueUiSparkHistogram :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <BaseCard>
+              <VueUiSparkHistogram :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </BaseCard>
           </DocSnapper>
         </div>
 

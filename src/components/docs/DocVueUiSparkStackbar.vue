@@ -18,6 +18,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -287,7 +288,9 @@ const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <VueUiSparkStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <BaseCard>
+              <VueUiSparkStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </BaseCard>
           </DocSnapper>
           <BaseRandomButton @click="randomizeData"/>
           <Rater itemId="vue_ui_sparkstackbar" />

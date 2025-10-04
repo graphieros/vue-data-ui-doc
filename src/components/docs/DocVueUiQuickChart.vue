@@ -19,6 +19,7 @@ import { jsonToJsObject, copyCode } from "../maker/lib";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -136,7 +137,7 @@ const config = ref({
     debug: false,
     loading: false,
     responsive: false,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#f3f4f6",
     barAnimated: true,
     barGap: 12,
     barStrokeWidth: 1,
@@ -214,7 +215,7 @@ const config = ref({
     width: 512,
     xyAxisStroke: "#CCCCCC",
     xyAxisStrokeWidth: 1,
-    xyGridStroke: "#e1e5e8",
+    xyGridStroke: "#d4d4d8",
     xyGridStrokeWidth: 0.5,
     xyHighlighterColor: "#000000",
     xyHighlighterOpacity: 0.05,
@@ -631,7 +632,7 @@ function copyComponentSnippet(snip) {
             </div>
         </div>
         <div class="grid md:grid-cols-2 gap-4">
-                <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
+                <BaseCard>
                     <Suspense>
                         <template #default>
                             <VueUiQuickChart :dataset="quickDatasetSimpleLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
@@ -644,166 +645,168 @@ function copyComponentSnippet(snip) {
                             <BaseSpinner/>
                         </template>
                     </Suspense>
+    
+                    <CodeParser :content="datasetSnippets.longArray" language="javascript" @copy="store.copy()" class="mt-4"/>
+    
+                    <VueDataUi component="VueUiAccordion" :config="{
+                        maxHeight: 20000,
+                        head: {
+                            useArrowSlot: true,
+                            backgroundColor: 'transparent'
+                        },
+                        body: {
+                            backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
+                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                        }
+                    }">
+                        <template #arrow="{ iconColor }">
+                            <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
+                        </template>
+                        <template #title>
+                            {{ translations.search.viewComponentCode[store.lang] }}
+                        </template>
+                        <template #content>
+                            <div class="relative">
+                                <button @click="copyComponentSnippet(componentSnippets.longArray)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
+                                    <VueUiIcon name="copy" :size="20"/>
+                                </button>
+                                <CodeParser :content="componentSnippets.longArray.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.longArray.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.longArray.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.longArray.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            </div>
+                        </template>
+                    </VueDataUi>                     
+                </BaseCard>
 
-                <CodeParser :content="datasetSnippets.longArray" language="javascript" @copy="store.copy()"/>
+                <BaseCard>
+                    <Suspense>
+                        <template #default>
+                            <VueUiQuickChart :dataset="quickDatasetSimpleBar" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                        </template>
+                        <template #fallback>
+                            <div class="min-h-[500px]"></div>
+                        </template>
+                    </Suspense>
 
-                <VueDataUi component="VueUiAccordion" :config="{
-                    maxHeight: 20000,
-                    head: {
-                        useArrowSlot: true,
-                        backgroundColor: 'transparent'
-                    },
-                    body: {
-                        backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                    }
-                }">
-                    <template #arrow="{ iconColor }">
-                        <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
-                    </template>
-                    <template #title>
-                        {{ translations.search.viewComponentCode[store.lang] }}
-                    </template>
-                    <template #content>
-                        <div class="relative">
-                            <button @click="copyComponentSnippet(componentSnippets.longArray)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
-                                <VueUiIcon name="copy" :size="20"/>
-                            </button>
-                            <CodeParser :content="componentSnippets.longArray.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.longArray.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.longArray.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.longArray.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                        </div>
-                    </template>
-                </VueDataUi>                     
+                    <CodeParser :content="datasetSnippets.shortArray" language="javascript" @copy="store.copy()" class="mt-4"/>
+
+                    <VueDataUi component="VueUiAccordion" :config="{
+                        maxHeight: 20000,
+                        head: {
+                            useArrowSlot: true,
+                            backgroundColor: 'transparent'
+                        },
+                        body: {
+                            backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
+                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                        }
+                    }">
+                        <template #arrow="{ iconColor }">
+                            <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
+                        </template>
+                        <template #title>
+                            {{ translations.search.viewComponentCode[store.lang] }}
+                        </template>
+                        <template #content>
+                            <div class="relative">
+                                <button @click="copyComponentSnippet(componentSnippets.shortArray)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
+                                    <VueUiIcon name="copy" :size="20"/>
+                                </button>
+                                <CodeParser :content="componentSnippets.shortArray.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.shortArray.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.shortArray.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.shortArray.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            </div>
+                        </template>
+                    </VueDataUi>  
+                </BaseCard>
+
+                <BaseCard>
+                    <Suspense>
+                        <template #default>
+                            <VueUiQuickChart :dataset="quickDatasetLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                        </template>
+                        <template #fallback>
+                            <div class="min-h-[500px]"></div>
+                        </template>
+                    </Suspense>
+
+                    <CodeParser :content="datasetSnippets.lines" language="javascript" @copy="store.copy()" class="mt-4"/>
+
+                    <VueDataUi component="VueUiAccordion" :config="{
+                        maxHeight: 20000,
+                        head: {
+                            useArrowSlot: true,
+                            backgroundColor: 'transparent'
+                        },
+                        body: {
+                            backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
+                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                        }
+                    }">
+                        <template #arrow="{ iconColor }">
+                            <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
+                        </template>
+                        <template #title>
+                            {{ translations.search.viewComponentCode[store.lang] }}
+                        </template>
+                        <template #content>
+                            <div class="relative">
+                                <button @click="copyComponentSnippet(componentSnippets.lines)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
+                                    <VueUiIcon name="copy" :size="20"/>
+                                </button>
+                                <CodeParser :content="componentSnippets.lines.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.lines.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.lines.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.lines.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            </div>
+                        </template>
+                    </VueDataUi>  
+                </BaseCard>
                 
-            </div>
-            <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                <Suspense>
-                    <template #default>
-                        <VueUiQuickChart :dataset="quickDatasetSimpleBar" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
-                    </template>
-                    <template #fallback>
-                        <div class="min-h-[500px]"></div>
-                    </template>
-                </Suspense>
+                <BaseCard>
+                    <Suspense>
+                        <template #default>
+                            <VueUiQuickChart :dataset="quickDatasetDonut" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                        </template>
+                        <template #fallback>
+                            <div class="min-h-[500px]"></div>
+                        </template>
+                    </Suspense>
 
-                <CodeParser :content="datasetSnippets.shortArray" language="javascript" @copy="store.copy()"/>
+                    <CodeParser :content="datasetSnippets.donut" language="javascript" @copy="store.copy()" class="mt-4"/>
 
-                <VueDataUi component="VueUiAccordion" :config="{
-                    maxHeight: 20000,
-                    head: {
-                        useArrowSlot: true,
-                        backgroundColor: 'transparent'
-                    },
-                    body: {
-                        backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                    }
-                }">
-                    <template #arrow="{ iconColor }">
-                        <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
-                    </template>
-                    <template #title>
-                        {{ translations.search.viewComponentCode[store.lang] }}
-                    </template>
-                    <template #content>
-                        <div class="relative">
-                            <button @click="copyComponentSnippet(componentSnippets.shortArray)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
-                                <VueUiIcon name="copy" :size="20"/>
-                            </button>
-                            <CodeParser :content="componentSnippets.shortArray.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.shortArray.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.shortArray.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.shortArray.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                        </div>
-                    </template>
-                </VueDataUi>                          
-            </div>
-            <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                <Suspense>
-                    <template #default>
-                        <VueUiQuickChart :dataset="quickDatasetLine" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
-                    </template>
-                    <template #fallback>
-                        <div class="min-h-[500px]"></div>
-                    </template>
-                </Suspense>
-
-                <CodeParser :content="datasetSnippets.lines" language="javascript" @copy="store.copy()"/>
-
-                <VueDataUi component="VueUiAccordion" :config="{
-                    maxHeight: 20000,
-                    head: {
-                        useArrowSlot: true,
-                        backgroundColor: 'transparent'
-                    },
-                    body: {
-                        backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                    }
-                }">
-                    <template #arrow="{ iconColor }">
-                        <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
-                    </template>
-                    <template #title>
-                        {{ translations.search.viewComponentCode[store.lang] }}
-                    </template>
-                    <template #content>
-                        <div class="relative">
-                            <button @click="copyComponentSnippet(componentSnippets.lines)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
-                                <VueUiIcon name="copy" :size="20"/>
-                            </button>
-                            <CodeParser :content="componentSnippets.lines.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.lines.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.lines.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.lines.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                        </div>
-                    </template>
-                </VueDataUi>                  
-            </div>
-            <div class="w-full p-2 flex flex-col gap-2 rounded bg-white shadow dark:bg-[#2A2A2A]">
-                <Suspense>
-                    <template #default>
-                        <VueUiQuickChart :dataset="quickDatasetDonut" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
-                    </template>
-                    <template #fallback>
-                        <div class="min-h-[500px]"></div>
-                    </template>
-                </Suspense>
-
-                <CodeParser :content="datasetSnippets.donut" language="javascript" @copy="store.copy()"/>
-
-                <VueDataUi component="VueUiAccordion" :config="{
-                    maxHeight: 20000,
-                    head: {
-                        useArrowSlot: true,
-                        backgroundColor: 'transparent'
-                    },
-                    body: {
-                        backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                    }
-                }">
-                    <template #arrow="{ iconColor }">
-                        <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
-                    </template>
-                    <template #title>
-                        {{ translations.search.viewComponentCode[store.lang] }}
-                    </template>
-                    <template #content>
-                        <div class="relative">
-                            <button @click="copyComponentSnippet(componentSnippets.donut)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
-                                <VueUiIcon name="copy" :size="20"/>
-                            </button>
-                            <CodeParser :content="componentSnippets.donut.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.donut.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.donut.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                            <CodeParser :content="componentSnippets.donut.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
-                        </div>
-                    </template>
-                </VueDataUi>                         
-            </div>
+                    <VueDataUi component="VueUiAccordion" :config="{
+                        maxHeight: 20000,
+                        head: {
+                            useArrowSlot: true,
+                            backgroundColor: 'transparent'
+                        },
+                        body: {
+                            backgroundColor: isDarkMode ? '#1A1A1A' : 'rgb(229, 231, 235)',
+                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                        }
+                    }">
+                        <template #arrow="{ iconColor }">
+                            <VueUiIcon name="arrowRight" :size="10" :stroke="iconColor"/>
+                        </template>
+                        <template #title>
+                            {{ translations.search.viewComponentCode[store.lang] }}
+                        </template>
+                        <template #content>
+                            <div class="relative">
+                                <button @click="copyComponentSnippet(componentSnippets.donut)" class="absolute top-3 right-2.5 z-10 rounded-lg p-1 hover:bg-[#FFFFFF10] hover:shadow-md">
+                                    <VueUiIcon name="copy" :size="20"/>
+                                </button>
+                                <CodeParser :content="componentSnippets.donut.open" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.donut.js" language="javascript" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.donut.close" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                                <CodeParser :content="componentSnippets.donut.html" language="html" :with-copy="false" font-size="0.6rem" line-height="1rem" border-radius="none"/>
+                            </div>
+                        </template>
+                    </VueDataUi>  
+                </BaseCard>
         </div>
         <Rater itemId="vue_ui_quick_chart" />
 

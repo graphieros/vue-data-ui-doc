@@ -21,6 +21,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -226,7 +227,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             animation: {
                 use: true,
@@ -474,10 +475,12 @@ const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
                     @resetDefault="resetDefault"
                     @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
                 >
-                    <div class="flex flex-row">
-                        <VueUiGauge :dataset="{...dataset1, value: value1 }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
-                        <VueUiGauge v-if="!isFixed" :dataset="{...dataset2, value: value2 }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_2_${key}`"/>
-                    </div>
+                    <BaseCard>
+                        <div class="flex flex-row">
+                            <VueUiGauge :dataset="{...dataset1, value: value1 }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_1_${key}`"/>
+                            <VueUiGauge v-if="!isFixed" :dataset="{...dataset2, value: value2 }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_2_${key}`"/>
+                        </div>
+                    </BaseCard>
                 </DocSnapper>
             </div>
 

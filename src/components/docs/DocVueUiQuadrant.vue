@@ -20,6 +20,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -338,7 +339,7 @@ const darkModeConfig = ref({
         chart: {
             height: 512, // change to size only ? impose ?
             width: 512,
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             layout: {
                 labels: {
@@ -466,7 +467,7 @@ const darkModeConfig = ref({
                 tooltip: true,
                 show: true,
                 bold: true,
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 fontSize: 14,
                 position: 'bottom'
@@ -478,12 +479,12 @@ const darkModeConfig = ref({
         useDialog: false,
         responsiveBreakpoint: 400,
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0
@@ -689,11 +690,13 @@ const codeDataset = ref(`const dataset: VueUiQuadrantDatasetItem[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueUiQuadrant 
-                    :dataset="mutableDataset"
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
-                    :key="key" 
-                />
+                <BaseCard>
+                    <VueUiQuadrant 
+                        :dataset="mutableDataset"
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
+                        :key="key" 
+                    />
+                </BaseCard>
             </DocSnapper>
         </div>
 

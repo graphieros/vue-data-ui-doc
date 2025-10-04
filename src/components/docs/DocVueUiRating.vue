@@ -16,6 +16,7 @@ import BaseSlotDocumenter from "../BaseSlotDocumenter.vue";
 import UcRating from "../useCases/uc-rating.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -108,7 +109,7 @@ const darkModeConfig = ref({
         fontFamily: "inherit",
         animated: true,
         itemSize: 32,
-        backgroundColor: "#1A1A1A",
+        backgroundColor: "#2A2A2A",
         star: {
             activeColor: "#FFD055",
             borderColor: "#FFD055",
@@ -277,25 +278,27 @@ const { configCode, showAllConfig } = useConfigCode()
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <div class="flex flex-row gap-6 justify-center my-4">
-                    <div class="flex flex-row gap-1">
-                        <input type="radio" id="r-read" name="r-readonly" value="readonly" v-model="mode"
-                            class="accent-app-green" @change="setReadonly(true)">
-                        <label for="r-read">{{ translations.docs.comments.rating.readonly[store.lang] }}</label>
+                <BaseCard>
+                    <div class="flex flex-row gap-6 justify-center my-4">
+                        <div class="flex flex-row gap-1">
+                            <input type="radio" id="r-read" name="r-readonly" value="readonly" v-model="mode"
+                                class="accent-app-green" @change="setReadonly(true)">
+                            <label for="r-read">{{ translations.docs.comments.rating.readonly[store.lang] }}</label>
+                        </div>
+                        <div class="flex flex-row gap-1">
+                            <input type="radio" id="r-act" name="r-readonly" value="active" v-model="mode" class="accent-app-green"
+                                @change="setReadonly(false)">
+                            <label for="r-act">{{ translations.docs.comments.rating.active[store.lang] }}</label>
+                        </div>
                     </div>
-                    <div class="flex flex-row gap-1">
-                        <input type="radio" id="r-act" name="r-readonly" value="active" v-model="mode" class="accent-app-green"
-                            @change="setReadonly(false)">
-                        <label for="r-act">{{ translations.docs.comments.rating.active[store.lang] }}</label>
-                    </div>
-                </div>
-                <VueUiRating 
-                    ref="rating" 
-                    :dataset="dataset"
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
-                    :key="key" 
-                    @rate="showRating" 
-                />
+                    <VueUiRating 
+                        ref="rating" 
+                        :dataset="dataset"
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
+                        :key="key" 
+                        @rate="showRating" 
+                    />
+                </BaseCard>
             </DocSnapper>
         </div>
 

@@ -22,6 +22,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -230,7 +231,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             height: 1000,
             width: 1000,
@@ -289,12 +290,12 @@ const darkModeConfig = ref({
             value: "Value"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -394,12 +395,14 @@ const codeDataset2 = computed(() => {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueDataUi 
-                    component="VueUiWordCloud" 
-                    :dataset="dataset" 
-                    :config="isDarkMode ? {...mutableConfigDarkMode, theme: selectedTheme } : {...mutableConfig, theme: selectedTheme}" 
-                    :key="key" 
-                />
+                <BaseCard>
+                    <VueDataUi 
+                        component="VueUiWordCloud" 
+                        :dataset="dataset" 
+                        :config="isDarkMode ? {...mutableConfigDarkMode, theme: selectedTheme } : {...mutableConfig, theme: selectedTheme}" 
+                        :key="key" 
+                    />
+                </BaseCard>
             </DocSnapper>
         </div>
 

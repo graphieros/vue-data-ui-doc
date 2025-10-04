@@ -88,22 +88,21 @@ function copyToClipboard(conf) {
 </script>
 
 <template>
-    <div class="my-4 grid grid-cols-1 md:grid-cols-2 gap-6 place-items-start w-full p-4 bg-gray-200 dark:bg-[#3A3A3A] rounded-md">
-        <div class="w-full shadow-md" v-for="theme in themes">
+    <div class="my-4 grid grid-cols-1 md:grid-cols-2 gap-6 place-items-start w-full p-4 bg-gray-150 dark:bg-[#3A3A3A] rounded-md">
+        <div class="w-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] p-4 rounded-xl" v-for="theme in themes">
             <ThemeTag :type="theme.name"/>
             <VueDataUi :component="component" :dataset="dataset" :config="{ ...config, theme: theme.name }"/>
             <template v-if="theme.name !== 'default'">
-                <div class="bg-white dark:bg-[#2A2A2A] py-4 rounded-b border-t border-[#CCCCCC] dark:border-gray-500">
+                <div class="bg-gray-150 dark:bg-[#3A3A3A] py-4 rounded-b ">
                     <div class="pl-3 mb-2">{{ translations.usage[store.lang] }}</div>
                     <CodeParser :content="code.replace('#THEME#', theme.name)" language="javascript" @copy="store.copy()"/>              
                 </div>
                 <button 
                     dir="auto"
-                    class="mt-2 w-full py-1 px-6 rounded shadow opacity-90 hover:opacity-100 transition-opacity flex flex-row place-items-center flex-wrap gap-2 justify-center"
+                    class="mt-2 w-full py-2 px-6 rounded-full opacity-90 hover:opacity-100 transition-opacity flex flex-row place-items-center flex-wrap gap-2 justify-center shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
                     :style="{
                         backgroundColor: theme.backgroundColor,
                         color: theme.color,
-                        border: `2px solid ${theme.accent}`
                     }"
                     @click="copyToClipboard(theme.config)"
                 >

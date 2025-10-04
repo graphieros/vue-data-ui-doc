@@ -20,6 +20,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -80,7 +81,7 @@ const isDarkMode = computed(() => {
         style: {
             fontFamily: "inherit",
             chart: {
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 layout: {
                     labels: {
@@ -110,7 +111,7 @@ const isDarkMode = computed(() => {
                     rect: {
                         rounded: true,
                         rounding:2,
-                        stroke: "#1A1A1A",
+                        stroke: "#2A2A2A",
                         strokeWidth: 3,
                         useGradient: true,
                         gradientIntensity: 40,
@@ -153,7 +154,7 @@ const isDarkMode = computed(() => {
                 },
                 legend: {
                     show: true,
-                    backgroundColor: "#1A1A1A",
+                    backgroundColor: "#2A2A2A",
                     color: "#CCCCCC",
                     bold: false,
                     fontSize: 14,
@@ -206,12 +207,12 @@ const isDarkMode = computed(() => {
                 percentage: "Percentage"
             },
             th: {
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 outline: "none"
             },
             td: {
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 outline: "none",
                 roundingValue: 0,
@@ -438,7 +439,9 @@ const dsTypeCode = computed(() => {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueUiWaffle :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <BaseCard>
+                    <VueUiWaffle :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                </BaseCard>
             </DocSnapper>
         </div>
 

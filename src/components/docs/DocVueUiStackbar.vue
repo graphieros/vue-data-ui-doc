@@ -22,6 +22,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -89,12 +90,12 @@ const config = ref({
             total: "Total"
         },
         th: {
-            backgroundColor: "#fafafa",
+            backgroundColor: "#f3f4f6",
             color: "#2D353C",
             outline: "none"
         },
         td: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#f3f4f6",
             color: "#2D353C",
             outline: "none",
             roundingValue: 0
@@ -139,7 +140,7 @@ const config = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#f3f4f6",
             color: "#2D353C",
             height: 500,
             width: 800,
@@ -167,7 +168,7 @@ const config = ref({
             legend: {
                 show: true,
                 bold: false,
-                backgroundColor: "#FFFFFF",
+                backgroundColor: "#f3f4f6",
                 color: "#2D353C",
                 fontSize: 14,
                 position: 'bottom'
@@ -337,12 +338,12 @@ const darkModeConfig = ref({
             total: "Total"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0
@@ -387,7 +388,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             height: 500,
             width: 800,
@@ -415,7 +416,7 @@ const darkModeConfig = ref({
             legend: {
                 show: true,
                 bold: false,
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 fontSize: 14,
                 position: 'bottom'
@@ -716,7 +717,9 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueUiStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <BaseCard>
+                    <VueUiStackbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                </BaseCard>
             </DocSnapper>
             <BaseRandomButton @click="randomizeData"/>
         </div>

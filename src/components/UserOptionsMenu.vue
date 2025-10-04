@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import FlexibleTooltip from './FlexibleTooltip.vue';
+import BaseCard from "./BaseCard.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -236,65 +237,67 @@ const items = ref([
 </script>
 
 <template>
-    <div class="mx-auto max-w-[1000px] mt-6 border border-gray-400 dark:border-gray-700 bg-white dark:bg-[#2A2A2A] rounded-lg overflow-hidden">
-        <div class="mx-6 my-6">
-            <h3 class="text-2xl font-black mb-2">
-                {{ t.title[store.lang] }}
-            </h3>
-            <p>
-                {{ t.description[store.lang] }}
-            </p>
-        </div>
-        <div class="w-full flex justify-center">
-            <video v-if="isDarkMode" controls width="500" loop="true" autoplay="true">
-                <source src="../assets/user_options.mp4" type="video/mp4" />
-            </video>
-            <video v-else controls width="500" loop="true" autoplay="true">
-                <source src="../assets/user_options_light.mp4" type="video/mp4" />
-            </video>
-        </div>
-        <div class="mx-6">
-            <table class="schema table-auto border-collapse border border-gray-400 dark:border-gray-500 my-4 w-full">
-                <thead>
-                    <tr class="bg-[#FFFFFF15]">
-                        <th class="border border-slate-600 p-2">{{ translations.overview.icon[store.lang] }}</th>
-                        <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
-                        <th class="border border-slate-600 p-2">{{ translations.overview.component[store.lang] }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-[#FFFFFF05]" v-for="option in items">
-                        <td class="p-2 border border-gray-400 dark:border-gray-500 bg-[#FFFFFF10]">
-                            <div class="w-full flex justify-center">
-                                <VueUiIcon :name="option.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                            </div>
-                        </td>
-                        <td class="p-2 border border-gray-400 dark:border-gray-500 text-xs">
-                            {{ t[option.name][store.lang] }}
-                        </td>
-                        <td class="p-2 border border-gray-400 dark:border-gray-500 text-xs">
-                            <div class="flex flex-row flex-wrap gap-2 max-w-[500px]">
-                                <FlexibleTooltip
-                                    v-for="c in option.charts"
-                                    position="bottom" 
-                                    :content="charts[c].name" 
-                                    width="w-fit min-w-[120px]" 
-                                    delay="delay-150"
-                                >
-                                    <RouterLink :to="charts[c].link">
-                                        <div class="relative flex place-items-center justify-center p-2 border border-gray-200 dark:border-[#FFFFFF10] hover:bg-[#5f8aee30] hover:shadow-md hover:border-app-blue dark:hover:border-app-blue transition-all pb-3">
-                                            <VueUiIcon :name="charts[c].icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" class="-mt-1" />
-                                            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[6px] pb-[2px]">
-                                                {{ charts[c].name === 'VueUiParallelCoordinatePlot' ? 'PCP' : charts[c].name.replace('VueUi', '') }}
+    <BaseCard class="mx-auto max-w-[1000px] mt-6">
+        <div class="rounded-lg overflow-hidden">
+            <div class="mx-6 my-6">
+                <h3 class="text-2xl font-black mb-2">
+                    {{ t.title[store.lang] }}
+                </h3>
+                <p>
+                    {{ t.description[store.lang] }}
+                </p>
+            </div>
+            <div class="w-full flex justify-center">
+                <video v-if="isDarkMode" controls width="500" loop="true" autoplay="true">
+                    <source src="../assets/user_options.mp4" type="video/mp4" />
+                </video>
+                <video v-else controls width="500" loop="true" autoplay="true">
+                    <source src="../assets/user_options_light.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="mx-6">
+                <table class="schema table-auto border-collapse border border-gray-400 dark:border-gray-500 my-4 w-full">
+                    <thead>
+                        <tr class="bg-[#FFFFFF15]">
+                            <th class="border border-slate-600 p-2">{{ translations.overview.icon[store.lang] }}</th>
+                            <th class="border border-slate-600 p-2">{{ translations.overview.description[store.lang] }}</th>
+                            <th class="border border-slate-600 p-2">{{ translations.overview.component[store.lang] }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-[#FFFFFF05]" v-for="option in items">
+                            <td class="p-2 border border-gray-400 dark:border-gray-500 bg-[#FFFFFF10]">
+                                <div class="w-full flex justify-center">
+                                    <VueUiIcon :name="option.icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                                </div>
+                            </td>
+                            <td class="p-2 border border-gray-400 dark:border-gray-500 text-xs">
+                                {{ t[option.name][store.lang] }}
+                            </td>
+                            <td class="p-2 border border-gray-400 dark:border-gray-500 text-xs">
+                                <div class="flex flex-row flex-wrap gap-2 max-w-[500px]">
+                                    <FlexibleTooltip
+                                        v-for="c in option.charts"
+                                        position="bottom" 
+                                        :content="charts[c].name" 
+                                        width="w-fit min-w-[120px]" 
+                                        delay="delay-150"
+                                    >
+                                        <RouterLink :to="charts[c].link">
+                                            <div class="relative flex place-items-center justify-center p-2 border border-gray-200 dark:border-[#FFFFFF10] hover:bg-[#5f8aee30] hover:shadow-md hover:border-app-blue dark:hover:border-app-blue transition-all pb-3">
+                                                <VueUiIcon :name="charts[c].icon" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" class="-mt-1" />
+                                                <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[6px] pb-[2px]">
+                                                    {{ charts[c].name === 'VueUiParallelCoordinatePlot' ? 'PCP' : charts[c].name.replace('VueUi', '') }}
+                                                </div>
                                             </div>
-                                        </div>
-                                    </RouterLink>
-                                </FlexibleTooltip>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                                        </RouterLink>
+                                    </FlexibleTooltip>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    </BaseCard>
 </template>

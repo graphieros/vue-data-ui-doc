@@ -19,6 +19,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -383,7 +384,7 @@ const darkModeConfig = ref({
         chart: {
             height: 300,
             width: 1000,
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             padding: {
                 top: 12,
@@ -392,7 +393,7 @@ const darkModeConfig = ref({
                 bottom: 12
             },
             legend: {
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 show: true,
                 fontSize: 14,
@@ -475,12 +476,12 @@ const darkModeConfig = ref({
             value: "Value"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         }
@@ -585,7 +586,9 @@ const additionalTranslations = computed(() => {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueDataUi component="VueUiFlow" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                <BaseCard>
+                    <VueDataUi component="VueUiFlow" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                </BaseCard>
             </DocSnapper>
         </div>
 

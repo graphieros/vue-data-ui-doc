@@ -8,6 +8,7 @@ import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
 import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -111,11 +112,13 @@ function fixChart() {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <div class="flex flex-row gap-6 place-items-center justify-center max-w-[300px] mx-auto">            
-                    <VueUiMiniLoader :config="{...mutableConfig, type: 'line'}" :key="key"/>
-                    <VueUiMiniLoader :config="{...mutableConfig, type: 'bar'}" :key="key"/>
-                    <VueUiMiniLoader :config="mutableConfig" :key="key"/>
-                </div>
+                <BaseCard>
+                    <div class="flex flex-row gap-6 place-items-center justify-center max-w-[300px] mx-auto">            
+                        <VueUiMiniLoader :config="{...mutableConfig, type: 'line'}" :key="key"/>
+                        <VueUiMiniLoader :config="{...mutableConfig, type: 'bar'}" :key="key"/>
+                        <VueUiMiniLoader :config="mutableConfig" :key="key"/>
+                    </div>
+                </BaseCard>
             </DocSnapper>
         </div>
 

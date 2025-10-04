@@ -7,6 +7,7 @@ import ConfirmCopy from "../components/ConfirmCopy.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import BaseDropdown from "../components/BaseDropdown.vue";
 import Rater from "../components/Rater.vue";
+import BaseCard from "../components/BaseCard.vue";
 
 const MakerXy = defineAsyncComponent(() => import('../components/maker/MakerXy.vue'));
 const MakerDonut = defineAsyncComponent(() => import('../components/maker/MakerDonut.vue'));
@@ -176,113 +177,116 @@ const crumbs = computed(() => {
             <h1 class="font-inter-bold text-[48px] sm:text-[72px] text-center">{{ translations.menu.chartBuilder[store.lang] }}</h1>
         </div>
 
-        <div class="w-full max-w-[500px] flex flex-row flex-wrap gap-2 mx-auto justify-center my-12 bg-gradient-to-br from-app-blue-light to-app-blue py-3 px-2 rounded-md">
-            <div v-for="(option, i) in options" :class="`relative`">
-                <Tooltip :content="option.name" width="w-fit min-w-[120px]" delay="delay-150" :img="option.thumb">
-                    <button 
-                        @click="selectChart(option)" 
-                        :class="`
-                            p-2 
-                            rounded-md 
-                            h-12 
-                            w-20 
-                            flex 
-                            place-items-center 
-                            justify-center 
-                            shadow 
-                            border 
-                            border-transparent
-                            relative 
-                            ${selectedChart.name === option.name ? 'bg-gradient-to-br from-[#1A1A1A] to-[#4A4A4A]' : 'bg-gradient-to-br from-gray-300 to-white hover:border-app-blue-light'}
-                        `"
-                    >
-                        <VueUiIcon class="-mt-2" :name="option.icon" :stroke="selectedChart.name === option.name ? '#CCCCCC' :'#3A3A3A'"></VueUiIcon>
-                        <div :class="`
-                            absolute 
-                            bottom-1 
-                            left-1/2 
-                            -translate-x-1/2 
-                            text-center 
-                            text-[7px]
-                            ${selectedChart.name === option.name ? 'text-[#CCCCCC]' : 'text-black'}
-                        `">
-                            {{ option.name.replace('VueUi', '') }}
+        <BaseCard class="w-full max-w-[500px] mx-auto my-12">
+            <div class="flex flex-row flex-wrap gap-2 mx-auto justify-center bg-gradient-to-br from-app-blue-light to-app-blue py-3 px-2 rounded-md">
+                <div v-for="(option, i) in options" :class="`relative`">
+                    <Tooltip :content="option.name" width="w-fit min-w-[120px]" delay="delay-150" :img="option.thumb">
+                        <button 
+                            @click="selectChart(option)" 
+                            :class="`
+                                p-2 
+                                rounded-md 
+                                h-12 
+                                w-20 
+                                flex 
+                                place-items-center 
+                                justify-center 
+                                shadow 
+                                border 
+                                border-transparent
+                                relative 
+                                ${selectedChart.name === option.name ? 'bg-gradient-to-br from-[#1A1A1A] to-[#4A4A4A]' : 'bg-gradient-to-br from-gray-300 to-white hover:border-app-blue-light'}
+                            `"
+                        >
+                            <VueUiIcon class="-mt-2" :name="option.icon" :stroke="selectedChart.name === option.name ? '#CCCCCC' :'#3A3A3A'"></VueUiIcon>
+                            <div :class="`
+                                absolute 
+                                bottom-1 
+                                left-1/2 
+                                -translate-x-1/2 
+                                text-center 
+                                text-[7px]
+                                ${selectedChart.name === option.name ? 'text-[#CCCCCC]' : 'text-black'}
+                            `">
+                                {{ option.name.replace('VueUi', '') }}
+                            </div>
+                        </button>
+                    </Tooltip>
+                </div>
+                <div class="flex flex-row gap-3 place-items-end justify-center border-t w-full pt-2 mt-2">
+                    <div class="flex flex-col gap-2">
+                        <label for="chartType" class="text-black">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
+    
+                        <BaseDropdown
+                            :options="options"
+                            v-model:value="selectedComponent"
+                            optionTarget="name"
+                            additionalOptionTarget="name"
+                            id="exampleSelect"
+                        >
+                            <template #selected="{ selectedOption }">
+                                <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
+                                    <div class="h-[24px] w-[24px] flex place-items-center">
+                                        <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
+                                    </div>
+                                    <div class="text-xl">
+                                        <span :class="'text-gray-500 dark:text-app-blue'">VueUi</span>
+                                        <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('VueUi', '') }}</span>
+                                    </div>
+                                </div>
+                            </template>
+                            <template #option="{ option, selected, current }">
+                                <div class="text-left flex flex-row gap-2 place-items-center">
+                                    <div class="h-[20px] w-[20px] flex place-items-center">
+                                        <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
+                                    </div>
+                                    <div>
+                                        <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">VueUi</span>
+                                        <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('VueUi', '') }}</span>
+                                    </div>
+                                </div>
+                            </template>
+                        </BaseDropdown>
+                    </div>
+                </div>
+                <div class="text-black w-[300px] pl-2 border-l-2 border-white dark:border-[#3A3A3A] relative bg-gradient-to-r from-[#FFFFFF40] to-transparent shadow-md py-2 pr-2 rounded-l">
+                    {{ options.find(o => o.name === selectedComponent).description[store.lang] }}
+                    <svg class="absolute -top-[38px] -left-[12px] overflow-visible w-[10px]" viewBox="0 0 20 100">
+                        <path
+                            d="M20,120 -16,120 -16,16 13,16"
+                            :stroke="isDarkMode ? '#3A3A3A' : '#FFFFFF'"
+                            stroke-width="4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            fill="none"
+                        />
+                    </svg>
+                </div>
+            </div>
+        </BaseCard>
+
+        <BaseCard class="w-fit mx-auto" rounding="rounded-full">
+            <div class="w-full">
+                    <div class="font-bold flex flex-col sm:flex-row gap-4 justify-center place-items-center bg-gray-200 dark:bg-[#FFFFFF10] w-fit mx-auto p-4 rounded-full">
+                        <div class="py-2 px-4">1. {{ makerTranslations.steps.one[store.lang] }}</div>
+                        <div class="hidden sm:block">
+                            <VueUiIcon name="arrowRight" stroke="#42d392" class="drop-shadow-lg" />
                         </div>
-                    </button>
-                </Tooltip>
+                        <div class="sm:hidden">
+                            <VueUiIcon name="arrowBottom" stroke="#42d392" class="drop-shadow-lg"/>
+                        </div>
+                        <div class="py-2 px-4">2. {{ makerTranslations.steps.two[store.lang] }}</div>
+                        <div class="hidden sm:block">
+                            <VueUiIcon name="arrowRight" stroke="#42d392" class="drop-shadow-lg"/>
+                        </div>
+                        <div class="sm:hidden">
+                            <VueUiIcon name="arrowBottom" stroke="#42d392" class="drop-shadow-lg"/>
+                        </div>
+                        <div class="py-2 px-4">3. {{ makerTranslations.steps.three[store.lang] }}</div>
+                    </div>
+    
             </div>
-            <div class="flex flex-row gap-3 place-items-end justify-center border-t w-full pt-2 mt-2">
-                <div class="flex flex-col gap-2">
-                    <label for="chartType" class="text-black">{{ makerTranslations.labels.selectChartType[store.lang] }}</label>
-
-                    <BaseDropdown
-                        :options="options"
-                        v-model:value="selectedComponent"
-                        optionTarget="name"
-                        additionalOptionTarget="name"
-                        id="exampleSelect"
-                    >
-                        <template #selected="{ selectedOption }">
-                            <div v-if="selectedOption" class="text-left flex flex-row gap-2 place-items-center">
-                                <div class="h-[24px] w-[24px] flex place-items-center">
-                                    <VueUiIcon :name="selectedOption.icon" :size="24" stroke="#5f8aee" />
-                                </div>
-                                <div class="text-xl">
-                                    <span :class="'text-gray-500 dark:text-app-blue'">VueUi</span>
-                                    <span :class=" 'dark:text-app-blue-light'">{{ selectedOption.name.replace('VueUi', '') }}</span>
-                                </div>
-                            </div>
-                        </template>
-                        <template #option="{ option, selected, current }">
-                            <div class="text-left flex flex-row gap-2 place-items-center">
-                                <div class="h-[20px] w-[20px] flex place-items-center">
-                                    <VueUiIcon :name="option.icon" :size="20" :stroke="isDarkMode ? (selected || current) ? '#FFFFFF' : '#8A8A8A' : (selected || current) ? '#FFFFFF' :  '#1A1A1A'" />
-                                </div>
-                                <div>
-                                    <span :class="selected || current ? `text-white` : 'text-gray-500 dark:text-app-blue'">VueUi</span>
-                                    <span :class="selected || current ? `text-white`: 'dark:text-app-blue-light'">{{ option.name.replace('VueUi', '') }}</span>
-                                </div>
-                            </div>
-                        </template>
-                    </BaseDropdown>
-                </div>
-            </div>
-            <div class="text-black w-[300px] pl-2 border-l-2 border-white dark:border-[#3A3A3A] relative bg-gradient-to-r from-[#FFFFFF40] to-transparent shadow-md py-2 pr-2 rounded-l">
-                {{ options.find(o => o.name === selectedComponent).description[store.lang] }}
-                <svg class="absolute -top-[38px] -left-[12px] overflow-visible w-[10px]" viewBox="0 0 20 100">
-                    <path
-                        d="M20,120 -16,120 -16,16 13,16"
-                        :stroke="isDarkMode ? '#3A3A3A' : '#FFFFFF'"
-                        stroke-width="4"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        fill="none"
-                    />
-                </svg>
-            </div>
-        </div>
-
-        <div class="w-full mt-6">
-
-                <div class="font-bold flex flex-col sm:flex-row gap-4 justify-center place-items-center my-12 bg-gray-200 dark:bg-[#FFFFFF10] w-fit mx-auto p-4 rounded-full">
-                    <div class="py-2 px-4">1. {{ makerTranslations.steps.one[store.lang] }}</div>
-                    <div class="hidden sm:block">
-                        <VueUiIcon name="arrowRight" stroke="#42d392" class="drop-shadow-lg" />
-                    </div>
-                    <div class="sm:hidden">
-                        <VueUiIcon name="arrowBottom" stroke="#42d392" class="drop-shadow-lg"/>
-                    </div>
-                    <div class="py-2 px-4">2. {{ makerTranslations.steps.two[store.lang] }}</div>
-                    <div class="hidden sm:block">
-                        <VueUiIcon name="arrowRight" stroke="#42d392" class="drop-shadow-lg"/>
-                    </div>
-                    <div class="sm:hidden">
-                        <VueUiIcon name="arrowBottom" stroke="#42d392" class="drop-shadow-lg"/>
-                    </div>
-                    <div class="py-2 px-4">3. {{ makerTranslations.steps.three[store.lang] }}</div>
-                </div>
-
-        </div>
+        </BaseCard>
         
         <Transition name="fade">
             <component :is="selectedChart.component">

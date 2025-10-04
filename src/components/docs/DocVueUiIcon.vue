@@ -6,6 +6,7 @@ import { copyText } from "../maker/lib";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import ConfirmCopy from "../ConfirmCopy.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const key = ref(0);
@@ -275,7 +276,7 @@ const code = computed(() => {
             {{ translations.docs.tooltips.icon[store.lang] }}
         </p>
 
-        <div class="border border-[#5f8bee] py-6 mt-6 rounded-lg bg-[#5f8bee10]">
+        <BaseCard>
             <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">{{ translations.docs.tooltips.iconUserOptions[store.lang] }}</p>
             <div class="flex flex-wrap gap-4 place-items-center place-content-center mt-12">
                 <div v-for="icon in icons">
@@ -285,20 +286,23 @@ const code = computed(() => {
                     </div>
                 </div>
             </div>
-        </div>
+        </BaseCard>
 
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center mt-12">
-                {{ translations.docs.tooltips.iconSpecial[store.lang] }}
-        </p>
 
-        <div class="flex flex-wrap gap-4 place-items-center place-content-center">
-            <div v-for="icon in specialIcons">
-                <div class="flex flex-col place-items-center place-content-center gap-4 w-[100px] p-6 rounded-lg cursor-pointer hover:bg-[#00000010] dark:hover:bg-[#FFFFFF03] hover:scale-125 transition-all" @click="selectIcon(icon)">
-                    <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
-                    <div class="dark:text-gray-400 text-black text-xs">{{ icon }}</div>
+        <BaseCard class="mt-6">
+            <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
+                    {{ translations.docs.tooltips.iconSpecial[store.lang] }}
+            </p>
+    
+            <div class="flex flex-wrap gap-4 place-items-center place-content-center mt-12">
+                <div v-for="icon in specialIcons">
+                    <div class="flex flex-col place-items-center place-content-center gap-4 w-[100px] p-6 rounded-lg cursor-pointer hover:bg-[#00000010] dark:hover:bg-[#FFFFFF03] hover:scale-125 transition-all" @click="selectIcon(icon)">
+                        <VueUiIcon :isSpin="icon === 'spin'" :name="icon" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'"/>
+                        <div class="dark:text-gray-400 text-black text-xs">{{ icon }}</div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </BaseCard>
         
         <dialog id="iconDialog"  :class="`glass fixed h-screen max-h-[450px] w-full max-w-[400px] p-6 rounded-lg bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(36,36,36,0.8)] text-black dark:text-gray-300 border dark:border-[#2A2A2A]`">
             <div class="z-10 w-full text-2xl sticky top-0 font-black">

@@ -5,6 +5,7 @@ import { abbreviate, darkenColor, getVueDataUiConfig, lightenColor, shiftColorHu
 import BaseColorInput from "../BaseColorInput.vue";
 import BaseNumberInput from "../BaseNumberInput.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 
@@ -301,16 +302,13 @@ const bindings = useObjectBindings(donutConfig);
             {{ translations.utilityFunctionsDescription[store.lang] }}
         </p>
 
-        <div class="max-w-[1000px] mx-auto mt-12">
-            <div class="w-full rounded border border-gray-300 dark:border-gray-700">
-                <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-                    <div class="p-4" dir="auto">
-                        <code class="text-lg">useObjectBindings</code>
-                        <p class="text-gray-500">{{ utilityTranslations.useObjectBindings[store.lang] }}</p>
-                    </div>
+            <BaseCard>
+                <div class="p-4" dir="auto">
+                    <code class="text-lg">useObjectBindings</code>
+                    <p class="text-gray-500">{{ utilityTranslations.useObjectBindings[store.lang] }}</p>
                 </div>
 
-                <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+                <div class="p-4 overflow-auto">
                     <CodeParser :content="bindingsContent" language="javascript" @copy="store.copy()"/>
                     <CodeParser :content="bindingsTemplate" language="html" @copy="store.copy()" class="mt-4"/>
                 </div>
@@ -335,60 +333,49 @@ const bindings = useObjectBindings(donutConfig);
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
+            </BaseCard>
 
-
-        <div class="max-w-[1000px] mx-auto mt-12">
-
-            <div class="w-full rounded border border-gray-300 dark:border-gray-700">
-                <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-                    <div class="p-4" dir="auto">
+            <BaseCard class="mt-6">
+                <div class="p-4" dir="auto">
                         <code class="text-lg">abbreviate</code>
                         <p class="text-gray-500">{{ utilityTranslations.abbreviate[store.lang] }}</p>
                     </div>
-                </div>
 
-                <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+
+                <div class="p-4 overflow-auto">
                     <CodeParser :content="abbrContent" language="javascript" @copy="store.copy()"/>
                 </div>
 
-                <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-                    <div class="p-4 flex flex-col gap-2 w-full">
-                        <div class="flex flex-col gap-1">
-                            <label for="abbrSource" class="text-xs">Text source:</label>
-                            <input id="abbrSource" type="text" v-model="abbrSource" class="w-full py-1">
-                        </div>
-                        <div class="flex flex-col gap-1 w-fit">
-                            <label class="text-xs" for="abbrLen">Abbrevation length:</label>
-                            <BaseNumberInput v-model:value="abbrLen" :min="1" :max="12" labelId="abbrLen"/>
-                        </div>
-                        <div class="flex flex-row gap-2 place-items-center">
-                            <div>Result:</div>
-                            <div class="bg-gray-200 dark:bg-[#FFFFFF10] w-full py-1 px-2 rounded">
-                                {{ abbreviated }}
-                            </div>
+                <div class="p-4 flex flex-col gap-2 w-full">
+                    <div class="flex flex-col gap-1">
+                        <label for="abbrSource" class="text-xs">Text source:</label>
+                        <input id="abbrSource" type="text" v-model="abbrSource" class="w-full py-1">
+                    </div>
+                    <div class="flex flex-col gap-1 w-fit">
+                        <label class="text-xs" for="abbrLen">Abbrevation length:</label>
+                        <BaseNumberInput v-model:value="abbrLen" :min="1" :max="12" labelId="abbrLen"/>
+                    </div>
+                    <div class="flex flex-row gap-2 place-items-center">
+                        <div>Result:</div>
+                        <div class="bg-gray-200 dark:bg-[#FFFFFF10] w-full py-1 px-2 rounded">
+                            {{ abbreviated }}
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </BaseCard>
 
-        <div class="max-w-[1000px] mx-auto mt-12">
-
-<div class="w-full rounded border border-gray-300 dark:border-gray-700">
-    <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-        <div class="p-4" dir="auto">
+            <BaseCard class="mt-6">
+                        <div class="p-4" dir="auto">
             <code class="text-lg">darkenColor</code>
             <p class="text-gray-500">{{ utilityTranslations.darkenColor[store.lang] }}</p>
         </div>
-    </div>
 
-    <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
+
+    <div class="p-4 overflow-auto">
         <CodeParser :content="darkenContent" language="javascript" @copy="store.copy()"/>
     </div>
 
-    <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
+
         <div class="p-4 flex flex-col gap-2 w-fit">
             <BaseColorInput v-model:value="colorDark" label="Color source" label-id="source-light"/>
             <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
@@ -403,123 +390,106 @@ const bindings = useObjectBindings(donutConfig);
                 }"/>
             </div>
         </div>
-    </div>
-</div>
-</div>
 
-<div class="max-w-[1000px] mx-auto mt-12">
+            </BaseCard>
 
-<div class="w-full rounded border border-gray-300 dark:border-gray-700">
-    <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-        <div class="p-4" dir="auto">
-            <code class="text-lg">lightenColor</code>
-            <p class="text-gray-500">{{ utilityTranslations.lightenColor[store.lang] }}</p>
-        </div>
-    </div>
 
-    <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
-        <CodeParser :content="lightenContent" language="javascript" @copy="store.copy()"/>
-    </div>
+            <BaseCard class="mt-6">
+                <div class="p-4" dir="auto">
+                    <code class="text-lg">lightenColor</code>
+                    <p class="text-gray-500">{{ utilityTranslations.lightenColor[store.lang] }}</p>
+                </div>
 
-    <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-        <div class="p-4 flex flex-col gap-2 w-fit">
-            <BaseColorInput v-model:value="colorLight" label="Color source" label-id="source-light"/>
-            <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                <label for="range-light" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Lighten strength</label>
-                <input id="range-light" type="range" v-model="strengthLight" :min="0" :max="1" :step="0.01" class="accent-app-blue z-0">
-            </div>
-            <div class="flex flex-row place-items-center gap-2">
-                Result: <div :style="{
-                    background: lightenColor(colorLight, strengthLight),
-                    height: '40px',
-                    width: '40px'
-                }"/>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+                <div class="p-4 overflow-auto">
+                    <CodeParser :content="lightenContent" language="javascript" @copy="store.copy()"/>
+                </div>
 
-<div class="max-w-[1000px] mx-auto mt-12">
+                <div class="p-4 flex flex-col gap-2 w-fit">
+                    <BaseColorInput v-model:value="colorLight" label="Color source" label-id="source-light"/>
+                    <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                        <label for="range-light" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Lighten strength</label>
+                        <input id="range-light" type="range" v-model="strengthLight" :min="0" :max="1" :step="0.01" class="accent-app-blue z-0">
+                    </div>
+                    <div class="flex flex-row place-items-center gap-2">
+                        Result: <div :style="{
+                            background: lightenColor(colorLight, strengthLight),
+                            height: '40px',
+                            width: '40px'
+                        }"/>
+                    </div>
+                </div>
+            </BaseCard>
 
-<div class="w-full rounded border border-gray-300 dark:border-gray-700">
-    <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-        <div class="p-4" dir="auto">
-            <code class="text-lg">shiftColorHue</code>
-            <p class="text-gray-500">{{ utilityTranslations.shiftColorHue[store.lang] }}</p>
-        </div>
-    </div>
+            <BaseCard class="mt-6">
+                <div class="p-4" dir="auto">
+                    <code class="text-lg">shiftColorHue</code>
+                    <p class="text-gray-500">{{ utilityTranslations.shiftColorHue[store.lang] }}</p>
+                </div>
 
-    <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
-        <CodeParser :content="shiftColorContent" language="javascript" @copy="store.copy()"/>
-    </div>
+                <div class="p-4 overflow-auto">
+                    <CodeParser :content="shiftColorContent" language="javascript" @copy="store.copy()"/>
+                </div>
 
-    <div class="border-t border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-        <div class="p-4 flex flex-col gap-2 w-fit">
+
+            <div class="p-4 flex flex-col gap-2 w-fit">
             <BaseColorInput v-model:value="colorHue" label="Color source" label-id="source-hue"/>
-            <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                <label for="range-hue" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Hue strength</label>
-                <BaseNumberInput v-model:value="strengthHue" :min="0" :max="1" :step="0.01"/>
+                <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                    <label for="range-hue" class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">Hue strength</label>
+                    <BaseNumberInput v-model:value="strengthHue" :min="0" :max="1" :step="0.01"/>
+                </div>
+                <div class="flex flex-row place-items-center gap-2">
+                    Result: <div :style="{
+                        background: shiftColorHue(colorHue, strengthHue),
+                        height: '40px',
+                        width: '40px'
+                    }"/>
+                </div>
             </div>
-            <div class="flex flex-row place-items-center gap-2">
-                Result: <div :style="{
-                    background: shiftColorHue(colorHue, strengthHue),
-                    height: '40px',
-                    width: '40px'
-                }"/>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="max-w-[1000px] mx-auto mt-12">
-    <div class="w-full rounded border border-gray-300 dark:border-gray-700">
-        <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-            <div class="p-4" dir="auto">
-                <code class="text-lg">createTSpans</code>
-                <p class="text-gray-500">{{ utilityTranslations.createTSpans[store.lang] }}</p>
-            </div>
-        </div>
+            </BaseCard>
 
-        <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
-            <CodeParser :content="createTSpanContent" language="javascript" @copy="store.copy()"/>
-            <CodeParser :content="createTSpanTemplate" language="html" @copy="store.copy()"/>
-        </div>
-    </div>
-</div>
+            <BaseCard class="mt-6">
+                <div class="p-4" dir="auto">
+                    <code class="text-lg">createTSpans</code>
+                    <p class="text-gray-500">{{ utilityTranslations.createTSpans[store.lang] }}</p>
+                </div>
 
-<div class="max-w-[1000px] mx-auto mt-12">
-    <div class="w-full rounded border border-gray-300 dark:border-gray-700">
-        <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-            <div class="p-4" dir="auto">
-                <code class="text-lg">getCumulativeAverage</code>
-                <p class="text-gray-500">{{ utilityTranslations.getCumulativeAverage[store.lang] }}</p>
-            </div>
-        </div>
+                <div class="p-4 overflow-auto">
+                    <CodeParser :content="createTSpanContent" language="javascript" @copy="store.copy()"/>
+                    <CodeParser :content="createTSpanTemplate" language="html" @copy="store.copy()"/>
+                </div>
+            </BaseCard>
 
-        <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
-            <CodeParser :content="getCumulativeAverageTemplate" language="javascript" @copy="store.copy()"/>
-        </div>
-    </div>
-</div>
+            <BaseCard class="mt-6">
+                <div class="p-4" dir="auto">
+                    <code class="text-lg">getCumulativeAverage</code>
+                    <p class="text-gray-500">{{ utilityTranslations.getCumulativeAverage[store.lang] }}</p>
+                </div>
+                <div class="p-4 overflow-auto">
+                    <CodeParser :content="getCumulativeAverageTemplate" language="javascript" @copy="store.copy()"/>
+                </div>
+            </BaseCard>
 
-<div class="max-w-[1000px] mx-auto mt-12">
-    <div class="w-full rounded border border-gray-300 dark:border-gray-700">
-        <div class="border-b border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-[#FFFFFF05]">
-            <div class="p-4" dir="auto">
-                <code class="text-lg">getCumulativeMedian</code>
-                <p class="text-gray-500">{{ utilityTranslations.getCumulativeMedian[store.lang] }}</p>
-            </div>
-        </div>
+            <BaseCard class="mt-6">
+                <div class="p-4" dir="auto">
+                    <code class="text-lg">getCumulativeMedian</code>
+                    <p class="text-gray-500">{{ utilityTranslations.getCumulativeMedian[store.lang] }}</p>
+                </div>
+                <div class="p-4 overflow-auto">
+                    <CodeParser :content="getCumulativeMedianTemplate" language="javascript" @copy="store.copy()"/>
+                </div>
+            </BaseCard>
 
-        <div class="p-4 overflow-auto bg-[#2A2A2A] dark:bg-[#1A1A1A]">
-            <CodeParser :content="getCumulativeMedianTemplate" language="javascript" @copy="store.copy()"/>
-        </div>
-    </div>
-</div>
+
+
+
+
+
+
+
+
 
 
 </div>
 
-    </div>
 </template>

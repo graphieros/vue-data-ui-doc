@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import { GripVerticalIcon } from "vue-tabler-icons";
+import BaseCard from "./BaseCard.vue";
 
 const draggableElement = ref(null);
 const isDragging = ref(false);
@@ -56,10 +57,12 @@ onUnmounted(() => {
 
 <template>
     <div ref="draggableElement"
-        class="z-10 hidden sm:block fixed left-0 bg-gradient-to-br from-app-blue-light to-app-blue text-white p-4 rounded-r shadow-md cursor-move select-none py-6"
+        class="z-10 hidden sm:block fixed left-0 bg-gradient-to-br from-app-blue-light to-app-blue text-white p-4 rounded-r-[55px] shadow-md cursor-move select-none py-6"
         @mousedown="startDrag" @touchstart="startDrag">
-        <GripVerticalIcon class="absolute top-1 right-0" size="16" />
-        <slot />
+        <GripVerticalIcon class="absolute top-1/2 -translate-y-1/2 right-0" size="16" color="#FFFFFF"/>
+        <BaseCard rounding="rounded-full" type="dark">
+            <slot />
+        </BaseCard>
     </div>
 </template>
 

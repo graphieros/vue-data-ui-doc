@@ -19,6 +19,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -817,7 +818,7 @@ const darkModeConfig = ref({
   loading: false,
   responsive: false,
   style: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#2A2A2A",
     color: "#CCCCCC",
     fontFamily: "inherit",
     height: 500,
@@ -964,12 +965,12 @@ const darkModeConfig = ref({
     useDialog: false,
     responsiveBreakpoint: 400,
     th: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none"
     },
     td: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none"
     }
@@ -1039,7 +1040,9 @@ const dsTypeCode = computed(() => {
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <VueUiAgePyramid :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <BaseCard>
+              <VueUiAgePyramid :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </BaseCard>
           </DocSnapper>
         </div>
 

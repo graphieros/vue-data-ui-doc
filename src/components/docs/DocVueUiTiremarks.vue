@@ -19,6 +19,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -140,7 +141,7 @@ const darkModeConfig = ref({
     chart: {
       width: 312,
       height: 56,
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       animation: {
         use: true,
@@ -278,8 +279,10 @@ function randomizeData() {
             @fixChart="fixChart"
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-          >
-            <VueUiTiremarks :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            >
+            <BaseCard>
+              <VueUiTiremarks :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </BaseCard>
           </DocSnapper>
             <BaseRandomButton @click="randomizeData"/>
         </div>

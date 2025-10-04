@@ -13,6 +13,7 @@ import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -122,7 +123,7 @@ const darkModeConfig = ref({
     responsive: false,
     responsiveProportionalSizing: true,
     style: {
-        backgroundColor: "#1A1A1A",
+        backgroundColor: "#2A2A2A",
         fontFamily: "inherit",
         height: 300,
         width: 300,
@@ -154,7 +155,7 @@ const darkModeConfig = ref({
         },
         tracker: {
             radiusRatio: 1,
-            stroke: "#1A1A1A",
+            stroke: "#2A2A2A",
             strokeWidth: 1,
             fill: "#42d392",
             gradient: {
@@ -165,7 +166,7 @@ const darkModeConfig = ref({
                 show: true,
                 radiusRatio: 1,
                 fill: "#42d392",
-                stroke: "#1A1A1A",
+                stroke: "#2A2A2A",
                 strokeWidth: 0
             }
         },
@@ -180,7 +181,7 @@ const darkModeConfig = ref({
             bold: false
         },
         legend: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             buttons: {
                 start: true,
                 pause: true,
@@ -260,7 +261,7 @@ const { configCode, showAllConfig } = useConfigCode()
             :configSource="mainConfig.vue_ui_timer"
         />
 
-        <div :class="`transition-all mx-auto no-style max-w-[400px] overflow-x-auto`">
+        <div :class="`transition-all mx-auto no-style max-w-[400px]`">
             <DocSnapper
                 :isFixed="isFixed"
                 :disabled="!isFixed || isMobile"
@@ -268,21 +269,23 @@ const { configCode, showAllConfig } = useConfigCode()
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueDataUi 
-                    @lap="updateLaps" 
-                    @reset="timerLaps = []"
-                    @restart="timerLaps = []"
-                    ref="timer" 
-                    component="VueUiTimer" 
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
-                    :key="key"
-                />
-                <div class="flex flex-col py-6" v-if="timerLaps.length">
-                    Laps:
-                    <div v-for="lap in timerLaps">
-                        {{  lap }}
+                <BaseCard>
+                    <VueDataUi 
+                        @lap="updateLaps" 
+                        @reset="timerLaps = []"
+                        @restart="timerLaps = []"
+                        ref="timer" 
+                        component="VueUiTimer" 
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" 
+                        :key="key"
+                    />
+                    <div class="flex flex-col py-6" v-if="timerLaps.length">
+                        Laps:
+                        <div v-for="lap in timerLaps">
+                            {{  lap }}
+                        </div>
                     </div>
-                </div>
+                </BaseCard>
             </DocSnapper>
         </div>
 

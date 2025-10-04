@@ -15,6 +15,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -212,7 +213,7 @@ const darkModeConfig = ref({
     chart: "Evolution"
   },
   title: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#2A2A2A",
     text: "Title",
     fontSize: 18,
     color: "#CCCCCC",
@@ -226,7 +227,7 @@ const darkModeConfig = ref({
     }
   },
   thead: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#2A2A2A",
     color: "#CCCCCC",
     fontSize: 14,
     outline: "none",
@@ -234,7 +235,7 @@ const darkModeConfig = ref({
     bold: false
   },
   tbody: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#2A2A2A",
     color: "#CCCCCC",
     fontSize: 14,
     outline: "none",
@@ -358,10 +359,12 @@ const codeDataset = ref(`const dataset: VueUiTableSparklineDatasetItem[] = [
           :configSource="mainConfig.vue_ui_table_sparkline"
         />
 
-        <div :class="`transition-all mx-auto no-style ${isFixed ? 'fixed bottom-16 w-[300px] max-h-[500px] left-0 z-50 overflow-auto border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[1200px] overflow-x-auto'}`">
+        <div :class="`transition-all mx-auto no-style ${isFixed ? 'fixed bottom-16 w-[300px] max-h-[500px] left-0 z-50 border border-black dark:border-white bg-gray-100 dark:bg-[rgb(26,26,26)] shadow-xl' : 'max-w-[1200px]'}`">
             <Suspense>
               <template #default>
-                <VueUiTableSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <BaseCard>
+                  <VueUiTableSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                </BaseCard>
               </template>
               <template #fallback>
                   <BaseSpinner/>

@@ -20,6 +20,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -283,7 +284,7 @@ const darkModeConfig = ref({
   style: {
     fontFamily: "inherit",
     chart: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       layout: {
         bars: {
@@ -362,7 +363,7 @@ const darkModeConfig = ref({
         color: "#CCCCCC",
         bold: true,
         roundingValue: 0,
-        backgroundColor: "#1A1A1A",
+        backgroundColor: "#2A2A2A",
         roundingPercentage: 0,
         prefix: "",
         suffix: ""
@@ -429,12 +430,12 @@ const darkModeConfig = ref({
     useDialog: false,
     responsiveBreakpoint: 400,
     th: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none"
     },
     td: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none",
       roundingValue: 0,
@@ -582,7 +583,7 @@ const codeDataset = ref(`const dataset: VueUiHorizontalBarDatasetItem[] = [
       <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
           {{ translations.docs.tooltips.verticalBar[store.lang] }}
       </p>
-      <div class="mx-auto max-w-[500px] text-md text-app-orange p-4 border border-app-orange flex bg-[#ff370010] gap-4">
+      <div class="mx-auto max-w-[500px] rounded-xl text-md text-[#c2410c] dark:text-app-orange p-4 border border-app-orange flex bg-[#ff370010] gap-4">
         <div class="h-[40px] w-[40px]">
           <VueUiIcon name="circleExclamation" stroke="#ff6600"/>
         </div>
@@ -603,7 +604,9 @@ const codeDataset = ref(`const dataset: VueUiHorizontalBarDatasetItem[] = [
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <VueUiHorizontalBar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <BaseCard>
+              <VueUiHorizontalBar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </BaseCard>
           </DocSnapper>
           <BaseRandomButton @click="randomizeData"/>
         </div>

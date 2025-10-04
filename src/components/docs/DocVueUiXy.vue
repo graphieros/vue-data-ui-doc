@@ -24,6 +24,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseCssOverride from "../BaseCssOverride.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -594,7 +595,7 @@ const darkModeConfig = ref({
     useCssAnimation: false,
     showTable: false,
     chart: {
-        backgroundColor: "#1A1A1A",
+        backgroundColor: "#2A2A2A",
         color: "#c8c8c8",
         annotations: [
             {
@@ -974,12 +975,12 @@ const darkModeConfig = ref({
         showSum: true,
         useDialog: false,
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#c8c8c8",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#c8c8c8",
             outline: "none",
         },
@@ -1182,13 +1183,15 @@ const timeFormatTranslation = ref({
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueUiXy :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                    <template #plot-comment="{ plot }">
-                        <div style="width:100%;text-align:center">
-                            {{ plot.comment }}
-                        </div>
-                    </template>
-                </VueUiXy>
+                <BaseCard>
+                    <VueUiXy :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                        <template #plot-comment="{ plot }">
+                            <div style="width:100%;text-align:center">
+                                {{ plot.comment }}
+                            </div>
+                        </template>
+                    </VueUiXy>
+                </BaseCard>
             </DocSnapper>
             <BaseRandomButton @click="randomizeData"/>
             <div class="w-full flex justify-center mt-6">

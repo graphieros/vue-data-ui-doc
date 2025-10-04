@@ -54,12 +54,15 @@ const translations = ref({
 </script>
 
 <template>
-    <div class="rounded flex flex-row gap-2 w-full bg-app-green-light-extra dark:bg-[#42d39220] p-4 mb-4 shadowed" v-if="['positiveOnly', 'positiveOrNegativeOnly'].includes(type)">
+    <div 
+        class="rounded-full flex flex-row gap-2 w-full bg-app-green-light-extra dark:bg-[#42d39220] p-4 mb-4 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]" 
+        v-if="['positiveOnly', 'positiveOrNegativeOnly'].includes(type)"
+    >
         <VueUiIcon name="moodWink" stroke="#42d392"/>
         <VueUiIcon name="numbers" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
         <span dir="auto">{{ translations[type][store.lang] }}</span>
     </div>
-    <div v-else-if="type === 'both'" class="rounded flex flex-row gap-2 w-full bg-app-green-light-extra dark:bg-[#42d39220] p-4 mb-4 shadowed">
+    <div v-else-if="type === 'both'" class="rounded-full flex flex-row gap-2 w-full bg-app-green-light-extra dark:bg-[#42d39220] p-4 mb-4 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
         <VueUiIcon name="smiley" stroke="#42d392"/>
         <VueUiIcon name="numbers" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
         <span dir="auto">{{ translations.both[store.lang] }}</span>

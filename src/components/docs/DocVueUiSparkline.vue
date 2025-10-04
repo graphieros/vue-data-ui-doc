@@ -23,6 +23,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import DocJsonConfigAccordion from "./DocJsonConfigAccordion.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -138,7 +139,7 @@ const darkModeConfig = ref({
         threshold: 500
     },
   style: {
-    backgroundColor: "#FFFFFF05",
+    backgroundColor: "#2A2A2A",
     fontFamily: "inherit",
     chartWidth: 380,
     scaleMin: null,
@@ -242,7 +243,7 @@ const config = ref({
         threshold: 500
     },
   style: {
-    backgroundColor: "#FAFAFA",
+    backgroundColor: "#f3f4f6",
     fontFamily: "inherit",
     chartWidth: 380,
     scaleMin: null,
@@ -487,8 +488,10 @@ const currentConfig = computed(() => {
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <VueUiSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-            </VueUiSparkline>
+            <BaseCard>
+              <VueUiSparkline :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+              </VueUiSparkline>
+            </BaseCard>
           </DocSnapper>
           <BaseRandomButton @click="randomizeData"/>
         </div>

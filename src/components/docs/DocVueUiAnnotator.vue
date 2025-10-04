@@ -12,12 +12,14 @@ import { useConfigCode } from "../../useConfigCode";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
 const store = useMainStore();
 const key = ref(0);
 const translations = computed(() => store.translations);
+const isDarkMode = computed(() => store.isDarkMode);
 
 onMounted(() => store.docSnap = false);
 
@@ -30,8 +32,8 @@ watch(() => store.isDarkMode, (val) => {
 const config = ref({
   alwaysVisible: false,
   style: {
-    backgroundColor: "#FFFFFF",
-    color: "#2D353C",
+    backgroundColor: isDarkMode.value ? '#2A2A2A' : "#F3F4F6",
+    color: isDarkMode.value ? '#CCCCCC' : "#1A1A1A",
     fontFamily: "inherit",
     showPrint: true,
     showSave: true,
@@ -40,30 +42,30 @@ const config = ref({
     buttons: {
       borderRadius: 6,
       controls: {
-        backgroundColor: "#FFFFFF",
-        color: "#2D353C",
-        border: "1px solid #262626",
+        backgroundColor: isDarkMode.value ? '#4A4A4A' : "#F3F4F6",
+        color: isDarkMode.value ? '#CCCCCC' : "#1A1A1A",
+        border: "1px solid #5A5A5A",
         selected: {
-          backgroundColor: "#2D353C",
+          backgroundColor: isDarkMode.value ? '#5f8aee' : "#2D353C",
           color: "#fafafa",
           border: "1px solid #CCCCCC"
         }
       },
       shapes: {
-        backgroundColor: "#FFFFFF",
-        color: "#2D353C",
-        border: "1px solid #262626",
+        backgroundColor: isDarkMode.value ? '#4A4A4A' : "#F3F4F6",
+        color: isDarkMode.value ? '#CCCCCC' : "#1A1A1A",
+        border: "1px solid #5A5A5A",
         selected: {
-          backgroundColor: "#2D353C",
-          color: "#fafafa",
+          backgroundColor: isDarkMode.value ? '#CCCCCC' : "#2D353C",
+          color: isDarkMode.value ? '#1A1A1A' : "#FAFAFA",
           border: "1px solid #CCCCCC"
         }
       }
     },
     tooltips: {
-      backgroundColor: "#fafafa",
-      color: "#2D353C",
-      border: "1px solid #CCCCCC",
+      backgroundColor: isDarkMode.value ? '#4A4A4A' : "#F3F4F6",
+      color: isDarkMode.value ? '#CCCCCC' : "#1A1A1A",
+      border: "1px solid #5A5A5A",
       borderRadius: 6,
       boxShadow: "0 6px 12px -6px rgba(0,0,0,0.2)"
     }
@@ -235,22 +237,24 @@ const exampleTemplate = ref(`<VueUiAnnotator
           {{ translations.docs.comments.annotator.closedState[store.lang] }}
         </div>
 
-        <SuspenseWrapper :width="200" :height="200">
-          <VueUiAnnotator 
-            :dataset="{ shapes, lastSelectedShape }"
-            :config="mutableConfig"
-            @toggleOpenState="toggleOpenState" 
-            @saveAnnotations="saveAnnotations"
-          >
-              <div class="flex flex-row gap-2 p-2 bg-white">
-                  <div class="w-full">
-                    <div class="w-full h-[500px] bg-gray-200 text-black flex place-items-center justify-center">
-                      {{ comment[store.lang] }}
+        <BaseCard>
+          <SuspenseWrapper :width="200" :height="200">
+            <VueUiAnnotator 
+              :dataset="{ shapes, lastSelectedShape }"
+              :config="mutableConfig"
+              @toggleOpenState="toggleOpenState" 
+              @saveAnnotations="saveAnnotations"
+            >
+                <div class="flex flex-row gap-2 p-2 bg-gray-100 dark:bg-[#2A2A2A]">
+                    <div class="w-full">
+                      <div class="w-full h-[500px] bg-gray-200 dark:bg-[#3A3A3A] text-black dark:text-[#CCCCCC] flex place-items-center justify-center">
+                        {{ comment[store.lang] }}
+                      </div>
                     </div>
-                  </div>
-              </div>
-          </VueUiAnnotator>
-        </SuspenseWrapper>
+                </div>
+            </VueUiAnnotator>
+          </SuspenseWrapper>
+        </BaseCard>
         </div>
 
         <div class="flex flex-col gap-4 my-4">

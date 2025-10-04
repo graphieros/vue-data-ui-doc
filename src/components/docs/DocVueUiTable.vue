@@ -13,6 +13,7 @@ import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import { useConfigCode } from "../../useConfigCode";
 import BaseDetails from "../BaseDetails.vue";
 import BaseAttr from "../BaseAttr.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -472,7 +473,7 @@ const darkModeConfig = ref({
             textAlign: 'left',
             paddingLeft: 48,
             paddingRight: 0,
-            backgroundColor: '#1A1A1A',
+            backgroundColor: '#2A2A2A',
             subtitle: {
                 color: "#CCCCCC",
                 text: "Subtitle",
@@ -481,7 +482,7 @@ const darkModeConfig = ref({
             }
         },
         th: {
-            backgroundColor: "#1a1a1a",
+            backgroundColor: "#2A2A2A",
             color:"#c4c9cc",
             outline: "1px solid #7b8185",
             selected: {
@@ -492,7 +493,7 @@ const darkModeConfig = ref({
                 filter: {
                     active: {
                         backgroundColor: '#5f8aee',
-                        color: '#1A1A1A'
+                        color: '#2A2A2A'
                     },
                     inactive: {
                         backgroundColor: '#3A3A3A',
@@ -502,11 +503,11 @@ const darkModeConfig = ref({
                 cancel: {
                     active: {
                         backgroundColor: '#ff6600',
-                        color: '#1A1A1A'
+                        color: '#3A3A3A'
                     },
                     inactive: {
-                        backgroundColor: '#2A2A2A',
-                        color: '#4A4A4A'
+                        backgroundColor: '#3A3A3A',
+                        color: '#5A5A5A'
                     }
                 }
             }
@@ -514,7 +515,7 @@ const darkModeConfig = ref({
         rows: {
             outline: '1px solid #4A4A4A',
             even: {
-                backgroundColor: "#1a1a1a",
+                backgroundColor: "#2A2A2A",
                 color: "#c4c9cc",
                 selectedCell: {
                     backgroundColor: '#42d392',
@@ -526,7 +527,7 @@ const darkModeConfig = ref({
                 }
             },
             odd: {
-                backgroundColor: "#2A2A2A",
+                backgroundColor: "#3A3A3A",
                 color: "#FFFFFF",
                 selectedCell: {
                     backgroundColor: '#5de8aa',
@@ -545,7 +546,7 @@ const darkModeConfig = ref({
             accentColor: "#42d392"
         },
         dropdowns: {
-            backgroundColor: "#1a1a1a",
+            backgroundColor: "#2A2A2A",
             color: "#c4c9cc",
             icons: {
                 selected: {
@@ -559,12 +560,12 @@ const darkModeConfig = ref({
             }
         },
         infoBar: {
-            backgroundColor: "#1a1a1a",
+            backgroundColor: "#2A2A2A",
             color: "#FFFFFF"
         },
         pagination: {
             buttons: {
-                backgroundColor: "#1a1a1a",
+                backgroundColor: "#2A2A2A",
                 color: "#E1E5E8",
                 opacityDisabled: 0.3
             },
@@ -574,7 +575,7 @@ const darkModeConfig = ref({
         },
         exportMenu: {
             show: true,
-            backgroundColor: "#1a1a1a",
+            backgroundColor: "#2A2A2A",
             color: "#E1E5E8",
             buttons: {
                 backgroundColor: "#42d392",
@@ -589,28 +590,28 @@ const darkModeConfig = ref({
         },
         chart: {
             modal: {
-                backgroundColor: "#1a1a1a",
+                backgroundColor: "#2A2A2A",
                 color: "#E1E5E8",
                 buttons: {
                   selected: {
                       backgroundColor: "#42d392",
-                      color: "#1a1a1a"
+                      color: "#2A2A2A"
                     },
                     unselected: {
-                      backgroundColor: "#1a1a1a",
+                      backgroundColor: "#2A2A2A",
                       color: "#E1E5E8"
                     }
                 }
             },
             layout: {
-                backgroundColor: "#1a1a1a",
+                backgroundColor: "#2A2A2A",
                 axis: {
                     stroke: "#ccd1d4",
                     strokeWidth: 2,
                 },
                 bar: {
                     fill: "#42d392",
-                    stroke: "#1a1a1a"
+                    stroke: "#2A2A2A"
                 },
                 line: {
                     smooth: true,
@@ -824,15 +825,17 @@ const { configCode, showAllConfig } = useConfigCode();
             :configSource="mainConfig.vue_ui_table"
         />
     
-        <Suspense>
-            <template #default>
-                <VueUiTable :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`tablekey_${tableKey}`"/>
-            </template>
-    
-            <template #fallback>
-                <BaseSpinner/>
-            </template>
-        </Suspense>   
+        <BaseCard>
+            <Suspense>
+                <template #default>
+                    <VueUiTable :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`tablekey_${tableKey}`"/>
+                </template>
+        
+                <template #fallback>
+                    <BaseSpinner/>
+                </template>
+            </Suspense>   
+        </BaseCard>
 
         <Rater itemId="vue_ui_table" />
     

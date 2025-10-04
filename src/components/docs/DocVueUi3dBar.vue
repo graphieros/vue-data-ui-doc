@@ -19,6 +19,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -287,13 +288,13 @@ const darkModeConfig = ref({
                 speed: 1,
                 acceleration: 1
             },
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             bar: {
                 color: "#5f8bee",
                 stroke: "#5f8bee",
                 strokeWidth: 0.7,
-                shadeColor: '#1A1A1A'
+                shadeColor: '#2A2A2A'
             },
             box: {
                 stroke: "#5A5A5A",
@@ -383,12 +384,12 @@ const darkModeConfig = ref({
             percentage: "Percentage"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -475,7 +476,9 @@ const dsType2 = ref(`type VueUi3dBarDataset = {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueUi3dBar :dataset="isSeries ? dataset : { percentage: dataset.percentage }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <BaseCard>
+                    <VueUi3dBar :dataset="isSeries ? dataset : { percentage: dataset.percentage }" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                </BaseCard>
             </DocSnapper>
             <div class="w-full mx-auto flex flex-row place-items-center justify-center mt-10 gap-3">
                 <label for="is_series">Stack mode</label>

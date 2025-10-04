@@ -74,21 +74,24 @@ function copyToClipboard(conf) {
     <div :class="`flex flex-row gap-4 w-full my-4 ${justify}`">
         <div class="relative" v-if="defaultConfig">
             <FlexibleTooltip position="bottom" :content="translations.docs.copyDefaultConfig[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
-                <button @click="copyToClipboard(configSource)" class="h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">
+                <button @click="copyToClipboard(configSource)" class="shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] flex place-items-center justify-center rounded-lg bg-gray-100 dark:bg-[#242424] hover:bg-[#FAFAFA] dark:hover:bg-[#2A2A2A] transition-colors">
                     <CopyIcon/> 
                 </button>
             </FlexibleTooltip>
         </div>
         <div class="relative" v-if="customConfig">
             <FlexibleTooltip position="bottom" :content="translations.docs.copyThisConfig[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
-                <button @click="copyToClipboard(customConfig)" class="h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] border border-gray-500 flex place-items-center justify-center rounded bg-white dark:bg-[#FFFFFF05] hover:bg-[#5f8bee20] dark:hover:bg-[#5f8bee20] transition-colors">
+                <button @click="copyToClipboard(customConfig)" class="shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] flex place-items-center justify-center rounded-lg bg-gray-100 dark:bg-[#242424] hover:bg-[#FAFAFA] dark:hover:bg-[#2A2A2A] transition-colors">
                     <VueUiIcon name="settings" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" />
                 </button>
             </FlexibleTooltip>
         </div>
         <div class="relative" v-if="customDataset">
             <FlexibleTooltip position="bottom" :content="translations.docs.copyThisDataset[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
-                <button @click="copyToClipboard(customDataset)" class="h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] border border-gray-500 flex place-items-center justify-center rounded bg-white dark:bg-[#FFFFFF05] hover:bg-[#5f8bee20] dark:hover:bg-[#5f8bee20] transition-colors">
+            <button @click="copyToClipboard(customDataset)" class="shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+                    dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] flex place-items-center justify-center rounded-lg bg-gray-100 dark:bg-[#242424] hover:bg-[#FAFAFA] dark:hover:bg-[#2A2A2A] transition-colors">
                     <VueUiIcon name="numbers" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'" />
                 </button>
             </FlexibleTooltip>

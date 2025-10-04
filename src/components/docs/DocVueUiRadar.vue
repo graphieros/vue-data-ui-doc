@@ -20,6 +20,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -270,7 +271,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             layout: {
                 plots: {
@@ -342,7 +343,7 @@ const darkModeConfig = ref({
             legend: {
                 show: true,
                 bold: true,
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 fontSize: 14,
                 roundingPercentage: 0,
@@ -355,12 +356,12 @@ const darkModeConfig = ref({
         useDialog: false,
         responsiveBreakpoint: 400,
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -541,11 +542,13 @@ const codeDataset = ref(`const dataset: VueUiRadarDataset = {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueUiRadar 
-                    :dataset="mutableDataset" 
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-                    :key="key" 
-                />
+                <BaseCard>
+                    <VueUiRadar 
+                        :dataset="mutableDataset" 
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
+                        :key="key" 
+                    />
+                </BaseCard>
             </DocSnapper>
         </div>
 

@@ -17,6 +17,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -258,12 +259,12 @@ const config = ref({
         useDialog: false,
         responsiveBreakpoint: 400,
         th: {
-            backgroundColor: "#FAFAFA",
+            backgroundColor: "#F3F4F6",
             color: "#2D353C",
             outline: "none"
         },
         td: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#F3F4F6",
             color: "#2D353C",
             outline: "none"
         },
@@ -314,10 +315,10 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             nodes: {
-                stroke: "#1A1A1A",
+                stroke: "#2A2A2A",
                 strokeHovered: "#FAFAFA"
             },
             links: {
@@ -364,12 +365,12 @@ const darkModeConfig = ref({
         useDialog: false,
         responsiveBreakpoint: 400,
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
@@ -629,7 +630,9 @@ const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
         />
 
         <div class="mx-auto w-1/2">
-            <VueUiMolecule :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <BaseCard>
+                <VueUiMolecule :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </BaseCard>
         </div>
         
 

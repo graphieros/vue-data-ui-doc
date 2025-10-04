@@ -19,6 +19,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -145,7 +146,7 @@ const darkModeConfig = ref({
   style: {
     fontFamily: "inherit",
     chart: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       height: 360,
       width: 256,
@@ -294,7 +295,7 @@ const dsTypeCode = computed(() => {
           :configSource="mainConfig.vue_ui_thermometer"
         />
 
-        <div :class="`transition-all mx-auto max-w-[200px]`">
+        <div :class="`transition-all mx-auto max-w-[250px]`">
           <DocSnapper
             :isFixed="isFixed"
             :disabled="!isFixed || isMobile"
@@ -302,9 +303,11 @@ const dsTypeCode = computed(() => {
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <div :style="{ width: isFixed ? '150px' : '200px' }" class="mx-auto">
-              <VueUiThermometer :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
-            </div>
+            <BaseCard>
+              <div :style="{ width: isFixed ? '150px' : '' }" class="mx-auto">
+                <VueUiThermometer :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+              </div>
+            </BaseCard>
           </DocSnapper>
         </div>
 

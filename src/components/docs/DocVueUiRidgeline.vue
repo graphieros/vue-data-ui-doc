@@ -24,6 +24,7 @@ import { RouterLink } from "vue-router";
 import ThemesVueUiRidgeline from "../themes/ThemesVueUiRidgeline.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -307,12 +308,12 @@ const darkModeConfig = ref({
         useDialog: false,
         responsiveBreakpoint: 400,
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -324,7 +325,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             padding: {
                 top: 12,
@@ -392,12 +393,12 @@ const darkModeConfig = ref({
                         sparkline: true,
                         showSum: true,
                         th: {
-                            backgroundColor: "#1A1A1A",
+                            backgroundColor: "#2A2A2A",
                             color: "#c8c8c8",
                             outline: "none"
                         },
                         td: {
-                            backgroundColor: "#1A1A1A",
+                            backgroundColor: "#2A2A2A",
                             color: "#c8c8c8",
                             outline: "none",
                         },
@@ -998,9 +999,11 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
         <div :class="`transition-all mx-auto w-1/2`">
             <DocSnapper :isFixed="isFixed" :disabled="!isFixed || isMobile" @fixChart="fixChart"
                 @resetDefault="resetDefault" @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)">
-                <VueDataUi component="VueUiRidgeline" :dataset="dataset"
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig">
-                </VueDataUi>
+                <BaseCard>
+                    <VueDataUi component="VueUiRidgeline" :dataset="dataset"
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig">
+                    </VueDataUi>
+                </BaseCard>
             </DocSnapper>
         </div>
 

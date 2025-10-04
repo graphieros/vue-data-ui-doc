@@ -33,7 +33,7 @@ function nuke() {
 </script>
 
 <template>
-    <button class="flex flex-row place-items-center gap-2 py-2 px-4 rounded-full mx-auto my-6 bg-gradient-to-br from-app-gold to-app-orange transition-all text-black opacity-80 hover:opacity-100" v-if="isStored" @click="nuke">
+    <button class="flex flex-row place-items-center gap-2 py-2 px-4 rounded-full mx-auto my-6 bg-gradient-to-br from-app-gold to-app-orange transition-all text-black opacity-80 hover:opacity-100 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]" v-if="isStored" @click="nuke">
         <RefreshDotIcon/>
         <span>{{ makerTranslations.clearStorage[store.lang] }}</span>
     </button>

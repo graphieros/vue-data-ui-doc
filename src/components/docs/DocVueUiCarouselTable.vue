@@ -13,6 +13,7 @@ import ExposedMethods from "../ExposedMethods.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -396,22 +397,24 @@ const dsExample = ref(`const dataset = {
             :configSource="mainConfig.vue_ui_carousel_table"
         />
 
-        <div :class="`transition-all mx-auto w-full overflow`">
-            <Suspense>
-                <template #default>
-                    <VueUiCarouselTable :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                        <template #plot-comment="{ plot }">
-                            <div :style="`text-align:${plot.textAlign};font-size: 10px; padding: 6px;`">
-                                {{ plot.comment }}
-                            </div>
-                        </template>
-                    </VueUiCarouselTable>
-                </template>
-                <template #fallback>
-                    <BaseSpinner/>
-                </template>
-            </Suspense>
-        </div>
+        <BaseCard>
+            <div :class="`transition-all mx-auto w-full overflow`">
+                <Suspense>
+                    <template #default>
+                        <VueUiCarouselTable :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                            <template #plot-comment="{ plot }">
+                                <div :style="`text-align:${plot.textAlign};font-size: 10px; padding: 6px;`">
+                                    {{ plot.comment }}
+                                </div>
+                            </template>
+                        </VueUiCarouselTable>
+                    </template>
+                    <template #fallback>
+                        <BaseSpinner/>
+                    </template>
+                </Suspense>
+            </div>
+        </BaseCard>
 
         <Rater itemId="vue_ui_carousel_table" />
 

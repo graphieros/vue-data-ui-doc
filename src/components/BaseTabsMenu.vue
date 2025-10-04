@@ -27,18 +27,19 @@ const selectTab = (item) => {
 
 <template>
     <BaseTabContainer
-        containerClass="py-2 shadow-md bg-[#FEFEFE] dark:bg-[#FFFFFF05]"
+        containerClass="py-6"
     >
         <template #content>
             <div
                 v-for="(item, index) in items"
                 :key="index"
-                :style="{ color: item.color, background: activeTab === item.order ? `${item.color}20` : undefined, borderBottom: activeTab === item.order ? `2px solid ${item.color}` : '2px solid transparent' }"
-                :class="`flex flex-col items-center text-center justify-center cursor-pointer p-2 min-w-[90px] flex-shrink-0 whitespace-nowrap rounded-tl-md rounded-tr-md gap-2 hover:bg-[#1A1A1A10] dark:hover:bg-[#FFFFFF05] transition-colors`"
+                :style="{ color: isDarkMode ? item.color : '#2A2A2A', background: activeTab === item.order ? isDarkMode ? `${item.color}20` : `${item.color}` : undefined, borderBottom: activeTab === item.order ? `2px solid ${item.color}` : '2px solid transparent' }"
+                :class="`flex flex-col items-center text-center justify-center cursor-pointer p-2 min-w-[90px] flex-shrink-0 whitespace-nowrap rounded-2xl gap-2 bg-gray-100 dark:bg-[#3A3A3A] hover:bg-[#FFFFFF] dark:hover:bg-[#4A4A4A] transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
                 @click="selectTab(item)"
             >
                 <IconSettings v-if="item.icon === 'settings'" :stroke="isDarkMode ? '#5F8BEE' : '#1A1A1A'" :size="26" />
-                <VueUiIcon v-else :name="item.icon" :stroke="item.color" />
+                <VueUiIcon v-else :name="item.icon" :stroke="isDarkMode ? item.color : '#2A2A2A'" />
                 <span class="text-sm" dir="auto">{{ item.name }}</span>
             </div>
         </template>

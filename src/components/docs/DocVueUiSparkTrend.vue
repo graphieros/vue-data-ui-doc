@@ -17,6 +17,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -52,7 +53,7 @@ const config = ref({
         backgroundColor: "#F3F4F6",
         fontFamily: "inherit",
         animation: {
-            show: true,
+            show: false,
             animationFrames: 20
         },
         line: {
@@ -113,7 +114,7 @@ const darkModeConfig = ref({
         backgroundColor: "#1A1A1A00",
         fontFamily: "inherit",
         animation: {
-            show: true,
+            show: false,
             animationFrames: 20
         },
         line: {
@@ -221,11 +222,11 @@ const { configCode, showAllConfig } = useConfigCode()
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <div class="flex flex-col gap-4 mx-auto">
+                <BaseCard>
                     <VueDataUi component="VueUiSparkTrend" :dataset="positiveDs" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
                     <VueDataUi component="VueUiSparkTrend" :dataset="neutralDs" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
                     <VueDataUi component="VueUiSparkTrend" :dataset="negativeDs" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
-                </div>
+                </BaseCard>
             </DocSnapper>
 
             <Rater itemId="vue_ui_spark_trend" />

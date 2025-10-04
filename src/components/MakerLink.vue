@@ -43,7 +43,8 @@ function returnToMaker() {
 <template>
     <div class="relative" v-if="simple">
         <FlexibleTooltip position="bottom" :content="translations.menu.chartBuilder[store.lang]" width="w-fit min-w-[120px]" delay="delay-150">
-            <button @click="returnToMaker" class="h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] border border-gray-500 flex place-items-center justify-center rounded hover:bg-[#5f8bee20] transition-colors">
+            <button @click="returnToMaker" class="shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] h-[36px] w-[36px] sm:h-[50px] sm:w-[50px] flex place-items-center justify-center rounded-lg bg-gray-100 dark:bg-[#242424] hover:bg-[#FAFAFA] dark:hover:bg-[#2A2A2A] transition-colors">
                 <VueUiIcon name="boxes" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
             </button>
         </FlexibleTooltip>

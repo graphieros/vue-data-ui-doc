@@ -19,6 +19,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -293,7 +294,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             height: 600,
             width: 1000,
@@ -325,7 +326,7 @@ const darkModeConfig = ref({
                         enable: true,
                         angle: -30
                     },
-                    axisNamesColor: "#6A6A6A",
+                    axisNamesColor: "#8A8A8A",
                     axisNamesFontSize: 16,
                     axisNamesBold: true,
                     roundings: [0, 0, 0, 2],
@@ -334,7 +335,7 @@ const darkModeConfig = ref({
                     ticks: {
                         show: true,
                         fontSize: 14,
-                        color: "#6A6A6A",
+                        color: "#8A8A8A",
                         bold: false,
                         offsetX: 0,
                         offsetY: 0
@@ -373,7 +374,7 @@ const darkModeConfig = ref({
                 offsetY: 0
             },
             legend: {
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 show: true,
                 fontSize: 16,
@@ -407,12 +408,12 @@ const darkModeConfig = ref({
             item: "Item"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         }
@@ -569,14 +570,16 @@ const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[]
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueDataUi component="VueUiParallelCoordinatePlot" :dataset="dataset"
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                    <template #plot-comment="{ plot }">
-                        <div :style="`width: 100%;`">
-                            {{  plot.comment }}
-                        </div>
-                    </template>
-                </VueDataUi>
+                <BaseCard>
+                    <VueDataUi component="VueUiParallelCoordinatePlot" :dataset="dataset"
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                        <template #plot-comment="{ plot }">
+                            <div :style="`width: 100%;`">
+                                {{  plot.comment }}
+                            </div>
+                        </template>
+                    </VueDataUi>
+                </BaseCard>
             </DocSnapper>
             <BaseRandomButton @click="randomizeData"/>
             <Rater itemId="vue_ui_parallel_coordinate_plot" />

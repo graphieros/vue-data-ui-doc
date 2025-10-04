@@ -21,6 +21,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -241,7 +242,7 @@ const config = ref({
 });
 const darkModeConfig = ref({
   style: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#2A2A2A",
     color: "#CCCCCC",
     fontFamily: "inherit",
     layout: {
@@ -341,7 +342,7 @@ const darkModeConfig = ref({
     },
     legend: {
       show: true,
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       fontSize: 12,
       bold: true,
@@ -405,12 +406,12 @@ const darkModeConfig = ref({
       xAxis: "Week"
     },
     th: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none"
     },
     td: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none",
       roundingValue: 0
@@ -529,7 +530,9 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <VueUiHeatmap :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <BaseCard>
+              <VueUiHeatmap :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </BaseCard>
           </DocSnapper>
             <BaseRandomButton @click="randomizeData"/>
         </div>

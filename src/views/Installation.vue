@@ -7,6 +7,7 @@ import ConfirmCopy from "../components/ConfirmCopy.vue";
 import colorBridge from "color-bridge";
 import { VueHiCode } from "vue-hi-code";
 import "vue-hi-code/style.css"
+import BaseCard from "../components/BaseCard.vue";
 
 
 const store = useMainStore();
@@ -196,9 +197,9 @@ const fncsyIntro = ref({
             </h1>
         </div>
 
-        <div class="z-10 p-3 shadow-md rounded-lg flex flex-col mt-6 bg-gray-600 dark:bg-[rgb(26,26,26)]">
+        <BaseCard>
             <VueHiCode content="npm i vue-data-ui   " language="javascript" v-bind="codeParserConfig" @copy="store.copy()"/>
-        </div>
+        </BaseCard>
 
         <!-- <div class="mt-4 z-10" dir="auto">
             {{ translations.installation.tsUsers[store.lang] }}
@@ -217,7 +218,9 @@ const fncsyIntro = ref({
             <a href="https://vue-data-ui.graphieros.com/llms.txt" class="underline" target="_blank">AI assistance (llms.txt)</a>
         </div>
         
-        <div class="z-10 p-6 shadow-md rounded-lg flex flex-col mt-6 bg-gray-200 dark:bg-[rgb(26,26,26)] max-w-[800px]">
+
+        <BaseCard class="max-w-[800px] mt-6">        
+
             <div class="text-left">
                 <VueHiCode 
                     :content="mainCodeContent" 
@@ -254,11 +257,12 @@ const fncsyIntro = ref({
                     v-bind="codeParserConfig"
                 />
             </div>
-        </div>
+
+        </BaseCard>
         
         <div class="flex flex-row place-items-center justify-center z-10 mt-10 px-4">
-            <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-lg hover:shadow-xl transition-all">
-                <button dir="auto" @click="gotoMaker" class="py-3 px-6 rounded-md text-xl flex flex-row gap-2 place-items-cente transition-colors bg-white dark:bg-[#1A1A1A]">
+            <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-full hover:shadow-xl transition-all">
+                <button dir="auto" @click="gotoMaker" class="py-3 px-6 rounded-full text-xl flex flex-row gap-2 place-items-cente transition-colors bg-white dark:bg-[#1A1A1A] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
                     <VueUiIcon name="arrowRight" class="animate-pulse" :stroke="isDarkMode ? '#42d392' : '#2A2A2A'"/>
                     <VueUiIcon name="clipboardBar" :stroke="isDarkMode ? '#42d392' : '#2A2A2A'"/>
                     {{ translations.makeNow[store.lang] }}
@@ -266,18 +270,21 @@ const fncsyIntro = ref({
             </div>
         </div>
 
-        <ChartSeeker class="mt-12 z-10"/>
+        <ChartSeeker class="mt-12 z-10 max-w-[800px]"/>
 
         <div class="mt-8 w-full max-w-[800px] text-[18px]">
             {{ fncsyIntro[store.lang] }}
         </div>
-        <a href="https://fncsy.com/" target="_blank" class="mt-2 w-full max-w-[800px] flex flex-col gap-4 p-4 rounded border border-app-green bg-white dark:bg-[#1A1A1A] z-50 hover:bg-[#E1E5E6] hover:dark:bg-[#2A2A2A] transition-colors">
-            <div class="flex flex-row gap-2 place-items-center justify-center">
-                <img src="../assets/fncsy-logo.webp" height="64" width="64"/>
-                <code class="text-app-green-dark text-[32px]">FNCSY</code>
-            </div>
-            <code class="text-left" v-html="fncsy[store.lang]"/>
-        </a>
+        
+        <BaseCard class="mt-2 max-w-[800px]">
+            <a href="https://fncsy.com/" target="_blank" class="rounded-xl w-full flex flex-col gap-4 p-4 border border-app-green bg-white dark:bg-[#1A1A1A] z-50 hover:bg-[#E1E5E6] hover:dark:bg-[#2A2A2A] transition-colors">
+                <div class="flex flex-row gap-2 place-items-center justify-center">
+                    <img src="../assets/fncsy-logo.webp" height="64" width="64"/>
+                    <code class="text-app-green-dark text-[32px]">FNCSY</code>
+                </div>
+                <code class="text-left" v-html="fncsy[store.lang]"/>
+            </a>
+        </BaseCard>
         <ConfirmCopy/>
     </div>
 </template>

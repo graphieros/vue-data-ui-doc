@@ -19,6 +19,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -245,7 +246,7 @@ const darkModeConfig = ref({
         },
   },
   style: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#2A2A2A",
     color: "#CCCCCC",
     fontFamily: "inherit",
     size: 400,
@@ -457,11 +458,13 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
         @resetDefault="resetDefault"
         @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
       >
-        <VueUiRelationCircle
-          :dataset="dataset"
-          :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-          :key="key"
-        />
+        <BaseCard>
+          <VueUiRelationCircle
+            :dataset="dataset"
+            :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
+            :key="key"
+          />
+        </BaseCard>
       </DocSnapper>
     </div>
 

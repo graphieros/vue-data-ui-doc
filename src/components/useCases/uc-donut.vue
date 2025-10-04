@@ -38,7 +38,7 @@ const {
             {{ cases.DONUT_PIE.description[store.lang] }}
         </template>
     </UseCaseTitle>
-    <div class="w-full rounded p-2 bg-white dark:bg-[#2A2A2A]">
+    <div class="w-full bg-gray-50 dark:bg-[#2A2A2A] rounded-xl p-2 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
         <VueDataUi
             component="VueUiDonut" 
             :dataset="DONUT_PIE_DATASET"

@@ -11,6 +11,7 @@ import BaseDragMenu from "../BaseDragMenu.vue";
 import FlexibleTooltip from "../FlexibleTooltip.vue";
 import CodeParser from "../../components/customization/CodeParser.vue";
 import CopyComponent from "./CopyComponent.vue"
+import BaseCard from "../BaseCard.vue";
 
 const props = defineProps({
     dataset: {
@@ -162,64 +163,82 @@ const generatedTemplate = computed(() => {
         <div class="w-[48px] flex flex-col gap-2 place-items-center justify-center">
             <FlexibleTooltip :content="makerTranslations.componentCode[store.lang]" position="right">
                 <button @click="copyComponent"
-                    class="p-2 rounded-md bg-gradient-to-br from-gray-300 to-white h-12 w-12 flex place-items-center justify-center shadow border border-transparent hover:border-app-blue-light">
-                    <CopyIcon class="text-[#3A3A3A]" />
+                    class="p-2 rounded-full bg-gray-100 dark:bg-[#3A3A3A]
+                        hover:bg-gray-50 dark:hover:bg-[#4A4A4A]
+                        transition-colors
+                        h-12 w-12 flex place-items-center justify-center
+                        shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+                        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
+                    <CopyIcon class="text-[#3A3A3A] dark:text-[#CCCCCC]" />
                 </button>
             </FlexibleTooltip>
             <FlexibleTooltip :content="makerTranslations.copyConfigOnly[store.lang]" position="right">
                 <button @click="copyConfigOnly"
-                    class="p-2 rounded-md bg-gradient-to-br from-gray-300 to-white h-12 w-12 flex place-items-center justify-center shadow border border-transparent hover:border-app-blue-light">
-                    <IconSettings :size="28" :strokeWidth="1.4" stroke="#3A3A3A" />
+                    class="p-2 rounded-full bg-gray-100 dark:bg-[#3A3A3A]
+                        hover:bg-gray-50 dark:hover:bg-[#4A4A4A]
+                        transition-colors
+                        h-12 w-12 flex place-items-center justify-center
+                        shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+                        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
+                    <IconSettings :size="28" :strokeWidth="1.4" :stroke="isDarkMode ? '#CCCCCC' : '#3A3A3A'" />
                 </button>
             </FlexibleTooltip>
             <FlexibleTooltip :content="makerTranslations.copyDatasetOnly[store.lang]" position="right">
                 <button @click="copyDatasetOnly"
-                    class="p-2 rounded-md bg-gradient-to-br from-gray-300 to-white h-12 w-12 flex place-items-center justify-center shadow border border-transparent hover:border-app-blue-light">
-                    <VueUiIcon name="numbers" :size="28" stroke="#3A3A3A" />
+                    class="p-2 rounded-full bg-gray-100 dark:bg-[#3A3A3A]
+                        hover:bg-gray-50 dark:hover:bg-[#4A4A4A]
+                        transition-colors
+                        h-12 w-12 flex place-items-center justify-center
+                        shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+                        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
+                    <VueUiIcon name="numbers" :size="28" :stroke="isDarkMode ? '#CCCCCC' : '#3A3A3A'" />
                 </button>
             </FlexibleTooltip>
             <FlexibleTooltip :content="makerTranslations.clearStorage[store.lang]" position="right" width="w-[200px]">
                 <button @click="nuke"
-                    class="p-2 rounded-full bg-gradient-to-br from-white to-app-orange h-12 w-12 flex place-items-center justify-center shadow border border-transparent hover:border-app-blue-light">
+                    class="p-2 rounded-full bg-gradient-to-br from-white to-app-orange h-12 w-12 flex place-items-center justify-center shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
                     <RefreshDotIcon class="text-[#3A3A3A]" />
                 </button>
             </FlexibleTooltip>
         </div>
     </BaseDragMenu>
 
-    <div class="flex flex-col sm:flex-row gap-4 mt-6">
-        <CopyComponent @click="copyComponent"/>
-        <button
-            class="flex gap-1 bg-app-blue py-3 px-5 rounded-md opacity-80 hover:opacity-100 text-white dark:text-black hover:shadow-xl font-inter-medium transition-all place-items-center text-sm mb-4"
-            @click="copyConfigOnly">
-            <IconSettings :size="28" :strokeWidth="1.4" :stroke="isDarkMode ? '#1A1A1A' : '#FFFFFF'" />
-            {{ makerTranslations.copyConfigOnly[store.lang] }}
-        </button>
-        <button
-            class="flex gap-1 bg-app-green py-3 px-5 rounded-md opacity-80 hover:opacity-100 text-black hover:shadow-xl font-inter-medium transition-all place-items-center text-sm mb-4"
-            @click="copyDatasetOnly">
-            <VueUiIcon name="numbers" :size="24" stroke="#3A3A3A" />
-            {{ makerTranslations.copyDatasetOnly[store.lang] }}
-        </button>
-    </div>
-    <div class="mb-4 flex flex-row gap-4 place-items-center">
-        <input id="comp" type="checkbox" v-model="isComputed" />
-        <label for="comp" class="text-sm cursor-pointer">Use computed instead of ref</label>
-    </div>
-    <div class="mb-4 flex flex-row gap-4 place-items-center">
-        <input id="univ" type="checkbox" v-model="isUniversal" />
-        <label for="univ" class="text-sm cursor-pointer">Use VueDataUi universal component</label>
-    </div>
 
-    <div class="relative bg-[#e1e5e866] shadow dark:shadow-md dark:bg-[#e1e5e812] p-3 rounded border border-transparent hover:border-app-blue hover:bg-[#5f8aee20] dark:hover:bg-[#5f8aee20] transition-colors mb-12" ref="compContent">
-        <div>
-            <CodeParser content="<script setup>" :language="`html`" :withCopy="false" noPointerEvents borderRadius="none"/>
-            <CodeParser :content="generatedScript" language="javascript" :withCopy="false" noPointerEvents borderRadius="none"/>
-            <CodeParser content="</script>" :language="`html`" :withCopy="false" noPointerEvents borderRadius="none"/>
-            <CodeParser :content="generatedTemplate" :language="`html`" :withCopy="false" noPointerEvents borderRadius="none"/>
+    <BaseCard class="mt-6">
+        <div class="flex flex-col sm:flex-row gap-4">
+            <CopyComponent @click="copyComponent"/>
+            <button
+                class="flex gap-1 bg-app-blue py-3 px-5 rounded-full opacity-80 hover:opacity-100 text-white dark:text-black hover:shadow-xl font-inter-medium transition-all place-items-center text-sm mb-4"
+                @click="copyConfigOnly">
+                <IconSettings :size="28" :strokeWidth="1.4" :stroke="isDarkMode ? '#1A1A1A' : '#FFFFFF'" />
+                {{ makerTranslations.copyConfigOnly[store.lang] }}
+            </button>
+            <button
+                class="flex gap-1 bg-app-green py-3 px-5 rounded-full opacity-80 hover:opacity-100 text-black hover:shadow-xl font-inter-medium transition-all place-items-center text-sm mb-4"
+                @click="copyDatasetOnly">
+                <VueUiIcon name="numbers" :size="24" stroke="#3A3A3A" />
+                {{ makerTranslations.copyDatasetOnly[store.lang] }}
+            </button>
         </div>
-        <button @click="copyComponent" class="cursor-pointer absolute top-4 right-4 flex flex-row place-items-center justify-center p-2 rounded-full hover:bg-[#3A3A3A] hover:shadow-md transition-colors">
-            <CopyIcon class="text-app-blue" />
-        </button>
-    </div>
+        <div class="mb-4 flex flex-row gap-4 place-items-center">
+            <input id="comp" type="checkbox" v-model="isComputed" />
+            <label for="comp" class="text-sm cursor-pointer">Use computed instead of ref</label>
+        </div>
+        <div class="mb-4 flex flex-row gap-4 place-items-center">
+            <input id="univ" type="checkbox" v-model="isUniversal" />
+            <label for="univ" class="text-sm cursor-pointer">Use VueDataUi universal component</label>
+        </div>
+    
+        <div class="relative p-3 rounded-xl border border-transparent hover:border-app-blue hover:bg-[#5f8aee20] dark:hover:bg-[#5f8aee20] transition-colors mb-12" ref="compContent">
+            <div>
+                <CodeParser content="<script setup>" :language="`html`" :withCopy="false" noPointerEvents borderRadius="none"/>
+                <CodeParser :content="generatedScript" language="javascript" :withCopy="false" noPointerEvents borderRadius="none"/>
+                <CodeParser content="</script>" :language="`html`" :withCopy="false" noPointerEvents borderRadius="none"/>
+                <CodeParser :content="generatedTemplate" :language="`html`" :withCopy="false" noPointerEvents borderRadius="none"/>
+            </div>
+            <button @click="copyComponent" class="cursor-pointer absolute top-4 right-4 flex flex-row place-items-center justify-center p-2 rounded-full hover:bg-[#3A3A3A] hover:shadow-md transition-colors">
+                <CopyIcon class="text-app-blue" />
+            </button>
+        </div>
+    </BaseCard>
 </template>

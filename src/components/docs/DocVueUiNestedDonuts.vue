@@ -20,6 +20,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -167,7 +168,7 @@ const darkModeConfig = ref({
         chart: {
             useGradient: true,
             gradientIntensity: 40,
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             height: 512,
             width: 512,
@@ -216,7 +217,7 @@ const darkModeConfig = ref({
                 }
             },
             legend: {
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 show: true,
                 fontSize: 16,
@@ -275,12 +276,12 @@ const darkModeConfig = ref({
             percentage: "Percentage"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -536,7 +537,9 @@ const dsTypeCode = computed(() => {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueUiNestedDonuts :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                <BaseCard>
+                    <VueUiNestedDonuts :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                </BaseCard>
             </DocSnapper>
         </div>
 

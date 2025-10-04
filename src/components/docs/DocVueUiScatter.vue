@@ -21,6 +21,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ucScatter from "../useCases/uc-scatter.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -92,7 +93,7 @@ const darkModeConfig = ref({
   useCssAnimation: true,
   usePerformanceMode: false,
   style: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#2A2A2A",
     color: "#CCCCCC",
     fontFamily: "inherit",
     layout: {
@@ -133,7 +134,7 @@ const darkModeConfig = ref({
       },
       plots: {
         radius: 3,
-        stroke: "#1A1A1A",
+        stroke: "#2A2A2A",
         strokeWidth: 0.3,
         opacity: 0.6,
         significance: {
@@ -233,7 +234,7 @@ const darkModeConfig = ref({
     },
     legend: {
       show: true,
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       fontSize: 12,
       bold: true,
@@ -297,12 +298,12 @@ const darkModeConfig = ref({
     useDialog: false,
     responsiveBreakpoint: 400,
     th: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none"
     },
     td: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none",
       roundingValue: 2,
@@ -681,7 +682,9 @@ const performanceModeComment = ref({
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <VueUiScatter :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <BaseCard>
+              <VueUiScatter :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </BaseCard>
           </DocSnapper>
         </div>
 

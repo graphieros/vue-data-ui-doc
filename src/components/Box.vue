@@ -225,77 +225,77 @@ const menuItems = computed(() => {
         {
             name: menuTranslations.value.dataset[store.lang],
             icon: 'numbers',
-            color: isDarkMode.value ? '#42d392' : '#1A1A1A',
+            color: isDarkMode.value ? '#42d392' : '#FFFFFF',
             active: true,
             order: 0
         },
         {
             name: menuTranslations.value.config[store.lang],
             icon: 'settings',
-            color: isDarkMode.value ? '#5F8BEE' : '#1A1A1A',
+            color: isDarkMode.value ? '#5F8BEE' : '#FFFFFF',
             active: true,
             order: 1
         },
         {
             name: menuTranslations.value.emits[store.lang],
             icon: 'func',
-            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            color: isDarkMode.value ? '#CCCCCC' : '#FFFFFF',
             active: props.showEmits,
             order: 2
         },
         {
             name: menuTranslations.value.slots[store.lang],
             icon: 'skeleton',
-            color: isDarkMode.value ? '#ff6600' : '#1A1A1A',
+            color: isDarkMode.value ? '#ff6600' : '#FFFFFF',
             active: props.showSlots,
             order: 3
         },
         {
             name: menuTranslations.value.customTooltip[store.lang],
             icon: 'tooltip',
-            color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            color: isDarkMode.value ? '#CCCCCC' : '#FFFFFF',
             active: props.showTooltip,
             order: 4
         },
         {
             name: menuTranslations.value.useCases[store.lang],
             icon: 'clipboardLine',
-            color: isDarkMode.value ? '#fdd663' : '#1A1A1A',
+            color: isDarkMode.value ? '#fdd663' : '#FFFFFF',
             active: props.showUseCases,
             order: 5
         },
         {
             name: menuTranslations.value.themes[store.lang],
             icon: 'clipboardBar',
-            color: isDarkMode.value ? '#ddaaFF' : '#1A1A1A',
+            color: isDarkMode.value ? '#ddaaFF' : '#FFFFFF',
             active: props.showThemes,
             order: 6
         },
         {
             name: menuTranslations.value.responsive[store.lang],
             icon: 'fullscreen',
-            color: isDarkMode.value ? '#40b3c7' : '#1A1A1A',
+            color: isDarkMode.value ? '#40b3c7' : '#FFFFFF',
             active: props.showResponsive,
             order: 7
         },
         {
             name: menuTranslations.value.patterns[store.lang],
             icon: 'hexagon',
-            color: isDarkMode.value ? '#FF7F7F' : '#1A1A1A',
+            color: isDarkMode.value ? '#FF7F7F' : '#FFFFFF',
             active: props.showPatterns,
             order: 8,
         },
         {
             name: menuTranslations.value.cssOverride[store.lang],
             icon: 'annotator',
-            color: isDarkMode.value ? '#77a3fc' : '#1A1A1A',
+            color: isDarkMode.value ? '#77a3fc' : '#FFFFFF',
             active: props.showCssOverride,
             order: 9,
         },
         {
             name: menuTranslations.value.datetimeFormatter[store.lang],
             icon: 'lap',
-            color: isDarkMode.value ? '#1d915d' : '#1A1A1A',
+            color: isDarkMode.value ? '#1d915d' : '#FFFFFF',
             active: props.showDatetimeFormatter,
             order: 10
         },
@@ -387,13 +387,13 @@ function selectTabFromMini(order) {
                 position="right"
                 :content="tab.name"
             >
-                <button @click="() => selectTabFromMini(tab.order)" :class="`p-2 bg-gradient-to-br from-white to-white dark:from-[#FFFFFF20] dark:to-[#ffffff05] rounded shadow-md hover:bg-gradient-to-tl transition-colors relative`" :style="{
+                <button @click="() => selectTabFromMini(tab.order)" :class="`p-2 hover:bg-[#FAFAFA] dark:hover:bg-[#3A3A3A] bg-gray-100 dark:bg-[#2A2A2A] rounded hover:bg-gradient-to-tl transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`" :style="{
                     outline: activeTab === tab.order ? `1px solid ${tab.color}90` : undefined
                 }">
                     <IconSettings v-if="tab.icon === 'settings'" :stroke="isDarkMode ? '#5F8BEE' : '#1A1A1A'" :size="20" />
-                    <VueUiIcon v-else :name="tab.icon" :stroke="tab.color" :size="20" />
+                    <VueUiIcon v-else :name="tab.icon" :stroke="isDarkMode ? tab.color : '#2A2A2A'" :size="20" />
                     <div v-if="activeTab === tab.order" class="absolute -right-2 top-1/2 -translate-y-1/2">
-                        <VueUiIcon name="arrowLeft" :stroke="tab.color" :size="10"/>
+                        <VueUiIcon name="arrowLeft" :stroke="isDarkMode ? tab.color : '#2A2A2A'" :size="10"/>
                     </div>
                 </button>
             </FlexibleTooltip>
@@ -401,7 +401,8 @@ function selectTabFromMini(order) {
     </Transition>
 
     <div v-if="schema"
-        class="border border-gray-700 rounded-md my-6 relative overflow-x-auto dark:bg-[#FFFFFF05] bg-gradient-to-br from-transparent to-[#5F8BEE20]">
+        class="rounded-xl pl-4 my-6 relative overflow-x-auto dark:bg-[#242424] bg-gradient-to-br from-transparent to-[#5F8BEE20] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
         <VueDataUi component="VueUiAccordion" :config="isDarkMode ? darkModeConfig : config">
             <template #title="{ color }">
                 <div :style="`color:${color}`">
@@ -415,7 +416,9 @@ function selectTabFromMini(order) {
             </template>
         </VueDataUi>
     </div>
-    <div ref="boxWrapper" class="p-6 rounded-md border border-gray-700 my-6 relative overflow-x-auto bg-gradient-to-br from-transparent to-[#5F8BEE20] scroll-mt-8">
+
+    <div ref="boxWrapper" class="p-6 rounded-xl my-6 relative overflow-x-auto bg-gray-100 dark:bg-[#242424] scroll-mt-8 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
 
         <h2 class="mb-6 flex flex-row place-items-center gap-3" dir="auto">
             <VueUiIcon name="clipBoard" :size="24" stroke="#5F8BEE" />

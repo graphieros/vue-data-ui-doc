@@ -20,6 +20,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -341,12 +342,12 @@ const darkModeConfig = ref({
             value: "Value"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCC",
             outline: "none",
             roundingValue: 0
@@ -355,7 +356,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             height: 600,
             width: 600,
@@ -372,13 +373,13 @@ const darkModeConfig = ref({
                 scaleSteps: 10,
                 horizontalGrid: {
                     show: true,
-                    stroke: "#6A6A6A",
+                    stroke: "#8A8A8A",
                     strokeWidth: 0.5,
                     strokeDasharray: 4
                 },
                 verticalGrid: {
                     show: true,
-                    stroke: "#6A6A6A",
+                    stroke: "#8A8A8A",
                     strokeWidth: 0.5,
                     strokeDasharray: 4
                 }
@@ -386,7 +387,7 @@ const darkModeConfig = ref({
             plots: {
                 opacity: 0.5,
                 radius: 20,
-                stroke: "#1A1A1A",
+                stroke: "#2A2A2A",
                 strokeWidth: 1,
                 shape: "circle",
                 gradient: {
@@ -415,7 +416,7 @@ const darkModeConfig = ref({
                 },
                 xAxisLabels: {
                     show: true,
-                    color: "#6A6A6A",
+                    color: "#8A8A8A",
                     fontSize: 14,
                     offsetY: 0,
                     rotation: 0,
@@ -426,7 +427,7 @@ const darkModeConfig = ref({
                 },
                 yAxisLabels: {
                     show: true,
-                    color: "#6A6A6A",
+                    color: "#8A8A8A",
                     fontSize: 14,
                     rounding: 0,
                     offsetX: 0
@@ -614,8 +615,10 @@ const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
                 @fixChart="fixChart"
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-            >
-                <VueUiStripPlot :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                >
+                <BaseCard>
+                    <VueUiStripPlot :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                </BaseCard>
             </DocSnapper>
         </div>
 

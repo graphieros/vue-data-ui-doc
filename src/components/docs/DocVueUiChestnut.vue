@@ -18,6 +18,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -453,7 +454,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             layout: {
                 grandTotal: {
@@ -468,7 +469,7 @@ const darkModeConfig = ref({
                     offsetY: 0,
                 },
                 roots: {
-                    stroke: "#1A1A1A",
+                    stroke: "#2A2A2A",
                     strokeWidth: 5,
                     useGradient: true,
                     gradientIntensity: 20,
@@ -490,19 +491,19 @@ const darkModeConfig = ref({
                     }
                 },
                 verticalSeparator: {
-                    stroke: "#1A1A1A",
+                    stroke: "#2A2A2A",
                     strokeWidth: 5,
                 },
                 links: {
                     opacity: 20,
                 },
                 branches: {
-                    stroke: "#1A1A1A",
+                    stroke: "#2A2A2A",
                     strokeWidth: 0,
                     borderRadius: 6,
                     useGradient: true,
                     gradientIntensity: 30,
-                    underlayerColor: "#1A1A1A",
+                    underlayerColor: "#2A2A2A",
                     widthRatio: 1.5,
                     labels: {
                         show: true,
@@ -586,7 +587,7 @@ const darkModeConfig = ref({
         useDialog: false,
         responsiveBreakpoint: 400,
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             translations: {
@@ -605,7 +606,7 @@ const darkModeConfig = ref({
             }
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -795,7 +796,9 @@ const codeDataset = ref(`const dataset: VueUiChestnutDatasetRoot[] = [
             @resetDefault="resetDefault"
             @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
           >
-            <VueUiChestnut :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            <BaseCard>
+              <VueUiChestnut :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+            </BaseCard>
           </DocSnapper>
         </div>
 

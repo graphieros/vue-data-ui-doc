@@ -19,6 +19,7 @@ import { BulbIcon } from "vue-tabler-icons";
 import Patterns from "../components/customization/Patterns.vue";
 import ColorBridgeIcon from "../components/maker/ColorBridgeIcon.vue";
 import ConfirmCopy from "../components/ConfirmCopy.vue";
+import BaseCard from "../components/BaseCard.vue";
 
 const store = useMainStore();
 
@@ -127,31 +128,31 @@ watch(() => router.currentRoute.value, updateCrumb, { deep: true, immediate: tru
         {{ translations.menu.customization[store.lang] }}
       </h1>
     </div>
-    <div
-      class="my-12 max-w-[800px] mx-auto"
-    >
-      <div class="border border-[#de8b3750] rounded-md p-4 place-items-center justify-center mx-6 grid grid-cols-2 sm:grid-cols-3 gap-2">        
+
+    <BaseCard class="my-12 w-fit mx-auto" rounding="rounded-3xl">
+      <div class="place-items-center justify-center grid grid-cols-2 sm:grid-cols-3 gap-2">        
         <router-link v-for="(menuItem, i) in menu" :to="menuItem.link" class="w-full">
           <button
-            :class="`w-full transition-colors rounded py-2 px-4 flex flex-row gap-2 place-items-center ${
+            :class="`w-full transition-colors rounded-full py-2 px-4 flex flex-row gap-2 place-items-center ${
               currentRoute === menuItem.link ||
               (i === 0 && currentRoute === '/customization')
                 ? 'bg-[#de8b3720] text-[#de8b37] border-b border-[#de8b37]'
-                : 'hover:bg-[#de8b3720] bg-[#de8b3710]'
-            }`"
+                : 'hover:bg-[#de8b3720] bg-gray-50 dark:bg-[#3A3A3A]'
+            } shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
             @click="selectedMenu = menuItem.name"
           >
             <BulbIcon v-if="menuItem.name === 'experiments'" class="text-black dark:text-app-gold"/>
             {{ menuItem.label }}
           </button>
         </router-link>
-        <button class="w-full transition-colors rounded py-2 px-4 flex flex-row gap-2 place-items-center hover:bg-[#de8b3720] bg-[#de8b3710]">
+        <button class="w-full transition-colors rounded-full py-2 px-4 flex flex-row gap-2 place-items-center hover:bg-[#de8b3720] bg-gray-100 dark:bg-[#3A3A3A] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
           <a href="https://color-bridge.graphieros.com/" target="_blank" class="flex flex-row gap-2 place-items-center">
             <ColorBridgeIcon/> Color Bridge
           </a>
         </button>
       </div>
-    </div>
+    </BaseCard>
+
   </div>
   <SvgSlot
     v-if="

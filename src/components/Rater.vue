@@ -143,7 +143,8 @@ const labels = computed(() => {
 
 <template>
     <Transition name="fade">
-        <div v-if="!alreadyRated && visible && store.ratings.show" class="relative w-fit flex flex-col justify-center place-items-center gap-3 mx-auto my-4 bg-[#FAFAFA] dark:bg-[#FFFFFF10] p-4 rounded-md shadow-md">
+        <div v-if="!alreadyRated && visible && store.ratings.show" class="relative w-fit flex flex-col justify-center place-items-center gap-3 mx-auto my-4 bg-gray-100 dark:bg-[#242424] p-4 rounded-xl shadow-md shadow[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
             <VueUiRating
                 :dataset="{ rating }"
                 :config="config"

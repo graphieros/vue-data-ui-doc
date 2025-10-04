@@ -19,6 +19,7 @@ import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseComment from "../BaseComment.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -274,7 +275,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: 'inherit',
         chart: {
-            backgroundColor: '#1A1A1A',
+            backgroundColor: '#2A2A2A',
             color: '#CCCCCC',
             padding: {
                 top: 12,
@@ -311,7 +312,7 @@ const darkModeConfig = ref({
             },
             legend: {
                 show: true,
-                backgroundColor: '#1A1A1A',
+                backgroundColor: '#2A2A2A',
                 color: '#CCCCCC',
                 fontSize: 16,
                 bold:false,
@@ -392,12 +393,12 @@ const darkModeConfig = ref({
             category: "Category"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -621,11 +622,10 @@ function setProjection(p) {
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueDataUi component="VueUiWorld" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" >
-                </VueDataUi>
-                <!-- <select @change="setProjection($event.target.value)">
-                    <option v-for="p in projections">{{ p }}</option>
-                </select> -->
+                <BaseCard>
+                    <VueDataUi component="VueUiWorld" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" >
+                    </VueDataUi>
+                </BaseCard>
             </DocSnapper>
         </div>
 

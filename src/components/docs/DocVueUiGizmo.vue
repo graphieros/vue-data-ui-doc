@@ -13,6 +13,7 @@ import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -123,10 +124,12 @@ const { configCode, showAllConfig } = useConfigCode()
                 @fixChart="fixChart"
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-            >
-                <div class="w-full flex place-items-center justify-center gap-4 py-6">
-                    <VueUiGizmo :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode: mutableConfig"/>
-                </div>
+                >
+                <BaseCard>
+                    <div class="w-full flex place-items-center justify-center pl-3 py-3">
+                        <VueUiGizmo :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode: mutableConfig"/>
+                    </div>
+                </BaseCard>
             </DocSnapper>
             <Rater itemId="vue_ui_gizmo" />
         </div>

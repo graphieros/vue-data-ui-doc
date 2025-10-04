@@ -31,22 +31,21 @@ const emit = defineEmits(['resetDefault', 'copyToClipboard', 'fixChart']);
 <template>
     <Teleport to="#docSnap" :disabled="disabled">
         <template v-if="!isMobile">
-            <button v-if="isFixed" @click="emit('fixChart')" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 absolute top-1 left-1">
-                <PinnedOffIcon />
+            <button v-if="isFixed" @click="emit('fixChart')" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-50 dark:hover:bg-[#3A3A3A] mb-2 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] bg-gray-100 dark:bg-[#2A2A2A] transition-colors absolute top-4 left-4">
+                <PinnedOffIcon :size="20"/>
             </button>
-            <button v-else @click="emit('fixChart')" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                <div class="relative overflow-visible">
-                    <PinIcon class="peer overflow-visible"/>
-                    <div class="text-black dark:text-gray-300 hidden peer-hover:flex left-[calc(100%_+_12px)] top-1/2 -translate-y-1/2 place-items-center absolute z-10 bg-gray-200 shadow-xl dark:bg-black-100 text-xs text-left w-[180px] p-2 rounded">
-                        {{ hintPin[store.lang] }}
+            <FlexibleTooltip v-else position="top" :content="hintPin[store.lang]" width="w-[200px] dark:bg-[#3A3A3A]">
+                <button @click="emit('fixChart')" class="p-2 text-black dark:text-app-green rounded-full hover:bg-gray-50 dark:hover:bg-[#3A3A3A] mb-2 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] bg-gray-100 dark:bg-[#2A2A2A] transition-colors">
+                    <div class="relative overflow-visible">
+                        <PinIcon class="peer overflow-visible"/>
                     </div>
-                </div>
-            </button>
+                </button>
+            </FlexibleTooltip>
             <div class="flex flex-row gap-3 place-items-center justify-center mb-4" v-if="isFixed">
                 <FlexibleTooltip position="bottom" :content="translations.docs.reset[store.lang]">
                     <button 
                         @click="emit('resetDefault')"
-                        class="h-[36px] w-[36px] border border-app-orange flex place-items-center justify-center rounded bg-[#ff660040] hover:bg-[#ff660090] transition-colors relative"
+                        class="h-[36px] w-[36px] flex place-items-center justify-center rounded-lg bg-[#ff660040] hover:bg-[#ff660090] transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
                     >
                         <VueUiIcon name="restart" :stroke="isDarkMode ? '#CCCCCC' : '#2A2A2A'"/>
                     </button>
@@ -54,7 +53,7 @@ const emit = defineEmits(['resetDefault', 'copyToClipboard', 'fixChart']);
                 <FlexibleTooltip position="bottom" :content="translations.docs.copyThisConfig[store.lang]" width="min-w-[140px]">
                     <button 
                         @click="emit('copyToClipboard')"
-                        class="h-[36px] w-[36px] border border-app-blue flex place-items-center justify-center rounded bg-[#5f8bee40] hover:bg-[#5f8bee90] transition-colors relative"
+                        class="h-[36px] w-[36px] flex place-items-center justify-center rounded-lg bg-[#5f8bee40] hover:bg-[#5f8bee90] transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
                     >
                         <CopyIcon class="text-[#2A2A2A] dark:text-[#CCCCCC]" />
                     </button>

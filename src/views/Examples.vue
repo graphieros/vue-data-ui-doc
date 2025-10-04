@@ -7,6 +7,7 @@ import ExampleCharts from "../components/examples/ExampleCharts.vue";
 import ExampleKpi from "../components/examples/ExampleKpi.vue";
 import BaseCrumbs from "../components/BaseCrumbs.vue";
 import ChartSeeker from "../components/ChartSeeker.vue";
+import { SkullIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 const translations = computed(() => store.translations);
@@ -128,6 +129,16 @@ const crumbs = ref([
                     <VueUiIcon name="chartFlow" :stroke="currentMenu === 'configFlow' ? '#1A1A1A' : isDarkMode ? '#de6937' : '#1A1A1A'"/>
                     <span>
                         {{ translations.docs.configFlow[store.lang] }}
+                    </span>
+                </div>
+                </button>
+            </RouterLink>
+            <RouterLink to="/examples/game-of-life" class="w-full">
+                <button :class="`w-full relative rounded cursor-pointer py-2 px-4 border transition-colors ${selected ? 'bg-app-green cursor-default dark:text-black border-app-green' : 'hover:bg-gray-200 dark:hover:bg-[#de693730] border-gray-400 dark:border-[#2A2A2A]'}`">
+                    <div class="flex flex-row gap-2 place-items-center">
+                    <SkullIcon :color=" isDarkMode ? '#de6937' : '#1A1A1A'"/>
+                    <span>
+                        Game of Life
                     </span>
                 </div>
                 </button>

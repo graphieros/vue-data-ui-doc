@@ -832,7 +832,7 @@ const sideMenuItems = computed(() => {
 </script>
 
 <template>
-    <aside :class="`transition-all fixed left-0 top-[49px] ${isOpen ? 'w-[300px]' : 'w-[59px]'} h-[calc(100svh_-_114px)] bg-gray-200 dark:bg-black overflow-y-auto border-r dark:border-[#2A2A2A] p-6 shadow-2xl z-20`">
+    <aside :class="`transition-all fixed left-0 top-[49px] ${isOpen ? 'w-[300px]' : 'w-[59px]'} h-[calc(100svh_-_114px)] bg-gray-300 dark:bg-black overflow-y-auto border-r dark:border-[#2A2A2A] p-6 shadow-2xl z-20`">
     <button class="absolute right-4 top-4" v-if="isOpen" @click="toggle">
         <ChevronLeftIcon class="text-black dark:text-app-green"/>
     </button>
@@ -842,14 +842,15 @@ const sideMenuItems = computed(() => {
     <template v-if="isOpen">
         <div class="mt-8">
             <RouterLink to="/universal-component">
-                <div class="py-2 rounded text-center relative text-sm hover:bg-[#42d39220]" :style="`background:${router.currentRoute.value.fullPath === '/universal-component' ? '#42d39230' : ''}`">
+                <div :class="`py-2 rounded-full text-center relative text-sm shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] ${router.currentRoute.value.fullPath === '/universal-component' ? 'bg-gray-100 dark:bg-[#3A3A3A]' : 'bg-gray-200 dark:bg-[#242424]'}`">
+
                     <div class="flex flex-row place-items-center justify-center gap-2">
                         <VueUiIcon name="vueDataUi" stroke="#6A6A6A"/>
                         <div style="white-space: nowrap;">
                             VueDataUi universal component
                         </div>
                     </div>
-                    <div :class="`is-item-selected bg-app-green ${router.currentRoute.value.fullPath === '/universal-component' ? 'is-active' : ''}`"></div>
                 </div>
                 <div class="w-full mt-6 mb-2 border-b border-gray-500"></div>
             </RouterLink>

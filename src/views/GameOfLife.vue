@@ -374,7 +374,7 @@ const chartConfig = computed(() => {
             fontFamily: "Inter",
             chart: {
                 backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
-                color: "#2D353C",
+                color: isDarkMode.value ? '#8A8A8A' : '#4A4A4A',
                 aspectRatio: "16 / 9",
                 stacked: false,
                 stackGap: 20,
@@ -565,6 +565,7 @@ watch(() => isFlat.value, (bool) => {
 </script>
 
 <template>
+    <h1 class="text-center mt-12 text-2xl">Conway's Game of Life</h1>
     <div
         class="flex flex-row align-center gap-4 flex-wrap justify-center max-w-[1200px] mx-auto p-2 bg-white dark:bg-[#2A2A2A] mt-12">
         <VueUiKpi :dataset="generations" :config="kpiConfig"/>

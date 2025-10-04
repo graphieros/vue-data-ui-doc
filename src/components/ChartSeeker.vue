@@ -4,6 +4,7 @@ import useCharts from "../useCharts";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { useMainStore } from "../stores";
 import { TerminalIcon } from "vue-tabler-icons";
+import BaseCard from "./BaseCard.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -79,90 +80,90 @@ const selectedIndex = ref(null);
 </script>
 
 <template>
-    <div class="w-full max-w-[1000px] mx-auto border border-gray-500 dark:border-gray-700 rounded-md">
-        <div class="dark:bg-[#FFFFFF10] pb-2">
-            <h3 class="p-4 pb-1 text-lg" dir="auto">{{ title }}</h3>
-            <div class="flex flex-row flex-wrap gap-2 p-2 rounded-md mx-2 bg-gray-200 dark:bg-[#FFFFFF10]">
-                <FlexibleTooltip
-                    v-for="filter in filters"
-                    position="bottom" 
-                    :content="classificationDescription[filter.name][store.lang]" 
-                    width="w-fit min-w-[200px]" 
-                    delay="delay-150"
-                    :alwaysBlue="true"
-                >
-                <button 
-                    @click="() => updateFilters(filter)"
-                    :class="`text-xs cursor-pointer flex flex-col gap-2 place-items-center p-2 rounded-md ${filter.selected ? 'bg-app-blue text-black' : 'bg-gray-100 dark:bg-[#FFFFFF10] hover:bg-gray-300 dark:hover:bg-[#FFFFFF20]'} transition-colors`"
-                >
-                    {{ classification[filter.name][store.lang] }}
-                </button>
-            </FlexibleTooltip>
-            </div>
-        </div>
-        <div class="flex flex-row gap-4 place-items-center mt-2 py-4 dark:bg-[#FFFFFF05]" v-if="charts.length">
-            <div class="flex flex-row flex-wrap gap-4 w-full px-4">
-                <FlexibleTooltip
-                    v-for="(chart, i) in charts"
-                    position="bottom" 
-                    :content="`${chart.description}`" 
-                    width="w-fit min-w-[200px]" 
-                    delay="delay-150"
-                    :alwaysBlue="true"
-                >
-                    <RouterLink :to="chart.link" @click="emit('click')">
-                        <div class="relative flex place-items-center justify-center p-2 border border-gray-200 dark:border-[#FFFFFF10] hover:bg-[#5f8aee30] hover:shadow-md hover:border-app-blue dark:hover:border-app-blue transition-all pb-3 h-[80px] w-[80px]" @mouseover="selectedIndex = i" @mouseout="selectedIndex = null">
-                            <VueUiIcon :name="chart.icon" :stroke="selectedIndex !== null && selectedIndex === i ? '#5f8aee' : isDarkMode ? '#CCCCCC' : '#1A1A1A'" class="-mt-1" :size="32" />
-                            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[10px] pb-[10px]">
-                                {{ chart.name === 'VueUiParallelCoordinatePlot' ? 'PCP' : chart.name.replace('VueUi', '') }}
-                            </div>
-                        </div>
-                    </RouterLink>
+    <BaseCard class="w-full max-w-[1000px] mx-auto">
+        <div>
+            <div class="pb-2">
+                <h3 class="p-4 pb-1 text-lg" dir="auto">{{ title }}</h3>
+                <div class="flex flex-row flex-wrap gap-2 p-2 rounded-md mx-2 bg-gray-100 dark:bg-[#2A2A2A]">
+                    <FlexibleTooltip
+                        v-for="filter in filters"
+                        position="bottom" 
+                        :content="classificationDescription[filter.name][store.lang]" 
+                        width="w-fit min-w-[200px]" 
+                        delay="delay-150"
+                    >
+                    <button 
+                        @click="() => updateFilters(filter)"
+                        :class="`text-xs cursor-pointer flex flex-col gap-2 place-items-center p-2 rounded-md ${filter.selected ? 'bg-app-blue text-black' : 'bg-gray-100 dark:bg-[#3A3A3A] hover:bg-gray-50 dark:hover:bg-[#4A4A4A]'} transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
+                    >
+                        {{ classification[filter.name][store.lang] }}
+                    </button>
                 </FlexibleTooltip>
+                </div>
+            </div>
+            <div class="flex flex-row gap-4 place-items-center mt-2 py-4" v-if="charts.length">
+                <div class="flex flex-row flex-wrap gap-4 w-full px-4">
+                    <FlexibleTooltip
+                        v-for="(chart, i) in charts"
+                        position="bottom" 
+                        :content="`${chart.description}`" 
+                        width="w-fit min-w-[200px]" 
+                        delay="delay-150"
+                    >
+                        <RouterLink :to="chart.link" @click="emit('click')">
+                            <div class="bg-gray-50 dark:bg-[#3A3A3A] relative flex place-items-center justify-center p-2 rounded-xl hover:bg-white hover:bg-[#5f8aee30] transition-all pb-3 h-[80px] w-[80px] shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]" @mouseover="selectedIndex = i" @mouseout="selectedIndex = null">
+                                <VueUiIcon :name="chart.icon" :stroke="selectedIndex !== null && selectedIndex === i ? '#5f8aee' : isDarkMode ? '#CCCCCC' : '#1A1A1A'" class="-mt-1" :size="32" />
+                                <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[10px] pb-[10px]">
+                                    {{ chart.name === 'VueUiParallelCoordinatePlot' ? 'PCP' : chart.name.replace('VueUi', '') }}
+                                </div>
+                            </div>
+                        </RouterLink>
+                    </FlexibleTooltip>
+                </div>
+            </div>
+            <div class="p-2 w-fit">
+                <a href="https://github.com/graphieros/vue-data-ui-cli" target="_blank" class="w-fit">
+                    <button class="py-2 px-4 rounded-full bg-[#fdd663BB] hover:bg-app-gold transition-colors text-black flex flex-row place-items-center gap-2 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]" dir="auto">
+                        <div class="w-[40px] h-[40px] flex place-items-center justify-center">
+                            <TerminalIcon/>
+                        </div>
+                        <div dir="auto" class="text-left">
+                            {{ cli }}
+                        </div>
+                    </button>
+                </a>
+            </div>
+    
+            <div class="w-full">
+                <VueDataUi
+                    component="VueUiAccordion"
+                    :config="{
+                        maxHeight: 5000,
+                        head: {
+                            useArrowSlot: true,
+                            backgroundColor: 'transparent',
+                            iconColor: isDarkMode ? '#fdd663' : '#1A1A1A'
+                        },
+                        body: {
+                            backgroundColor: 'transparent',
+                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
+                        }
+                    }"
+                >
+                    <template #arrow="{ iconColor }">
+                        <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
+                    </template>
+                    <template #title>
+                        CLI demo
+                    </template>
+                    <template #content>
+                        <video controls width="100%" loop="true" autoplay="true">
+                            <source src="../assets/vdui_cli.mp4" type="video/mp4" />
+                        </video>
+                    </template>
+                </VueDataUi>
             </div>
         </div>
-        <div class="p-2 w-fit">
-            <a href="https://github.com/graphieros/vue-data-ui-cli" target="_blank" class="w-fit">
-                <button class="py-2 px-4 rounded bg-[#fdd663BB] hover:bg-app-gold transition-colors text-black flex flex-row place-items-center gap-2" dir="auto">
-                    <div class="w-[40px] h-[40px] flex place-items-center justify-center">
-                        <TerminalIcon/>
-                    </div>
-                    <div dir="auto" class="text-left">
-                        {{ cli }}
-                    </div>
-                </button>
-            </a>
-        </div>
-
-        <div class="w-full">
-            <VueDataUi
-                component="VueUiAccordion"
-                :config="{
-                    maxHeight: 5000,
-                    head: {
-                        useArrowSlot: true,
-                        backgroundColor: 'transparent',
-                        iconColor: isDarkMode ? '#fdd663' : '#1A1A1A'
-                    },
-                    body: {
-                        backgroundColor: 'transparent',
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A'
-                    }
-                }"
-            >
-                <template #arrow="{ iconColor }">
-                    <VueUiIcon name="arrowRight" :size="16" :stroke="iconColor"/>
-                </template>
-                <template #title>
-                    CLI demo
-                </template>
-                <template #content>
-                    <video controls width="100%" loop="true" autoplay="true">
-                        <source src="../assets/vdui_cli.mp4" type="video/mp4" />
-                    </video>
-                </template>
-            </VueDataUi>
-        </div>
-    </div>
+    </BaseCard>
 </template>
 

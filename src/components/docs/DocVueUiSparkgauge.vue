@@ -18,6 +18,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -247,9 +248,9 @@ const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
                     @resetDefault="resetDefault"
                     @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
                 >
-                    <div class="flex flex-row gap-4">
+                    <BaseCard>
                         <VueUiSparkgauge :dataset="dataset3" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="`gauge_3_${key}`"/>
-                    </div>
+                    </BaseCard>
                 </DocSnapper>
 
                 <BaseRandomButton @click="randomizeData"/>

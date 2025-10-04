@@ -18,6 +18,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -67,7 +68,7 @@ const darkModeConfig = ref(
         debug: false,
         loading: false,
         style: {
-            backgroundColor: '#1A1A1A00',
+            backgroundColor: 'transparent',
             fontFamily: "inherit",
             animation: {
                 show: true,
@@ -105,7 +106,7 @@ const darkModeConfig = ref(
                 }
             },
             title: {
-                backgroundColor: '#1A1A1A',
+                backgroundColor: 'transparent',
                 text: 'Title',
                 color: '#FAFAFA',
                 fontSize: 20,
@@ -167,7 +168,7 @@ const config = ref(
                 }
             },
             title: {
-                backgroundColor: '#F3F4F6',
+                backgroundColor: 'transparent',
                 text: 'Title',
                 color: '#1A1A1A',
                 fontSize: 20,
@@ -285,7 +286,9 @@ const codeDataset = ref(`const dataset: VueUiSparkbarDatasetItem[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueUiSparkbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <BaseCard>
+                    <VueUiSparkbar :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                </BaseCard>
             </DocSnapper>
             <BaseRandomButton @click="randomizeData"/>
 

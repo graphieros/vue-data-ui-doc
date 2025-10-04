@@ -18,6 +18,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -243,12 +244,12 @@ const config = ref({
             progression: "Progression"
         },
         th: {
-            backgroundColor: "#FAFAFA",
+            backgroundColor: "#F3F4F6",
             color: "#2D353C",
             outline: "none"
         },
         td: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#F3F4F6",
             color: "#2D353C",
             outline: "none",
             roundingValue: 0,
@@ -295,7 +296,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             width: 600,
             rowHeight: 48,
@@ -309,7 +310,7 @@ const darkModeConfig = ref({
                 startColor: "#ff6400",
                 endColor: "#5f8bee",
                 radius: 6,
-                stroke: "#1A1A1A",
+                stroke: "#2A2A2A",
                 strokeWidth: 1,
                 link: {
                     strokeWidth: 2,
@@ -419,7 +420,7 @@ const darkModeConfig = ref({
                 labelPositive: 'positive',
                 labelNegative: 'negative',
                 labelNeutral: 'neutral',
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 fontSize: 14,
                 bold: false,
@@ -453,12 +454,12 @@ const darkModeConfig = ref({
             progression: "Progression"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -555,7 +556,9 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueDataUi component="VueUiDumbbell" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <BaseCard>
+                    <VueDataUi component="VueUiDumbbell" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                </BaseCard>
             </DocSnapper>
         </div>
 

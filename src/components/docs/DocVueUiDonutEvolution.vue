@@ -20,6 +20,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -212,7 +213,7 @@ const config = ref({
                             },
                             fontSize: 8,
                             showOnlyFirstAndLast: false,
-                            offsetY: 0,
+                            offsetY: 6,
                             rotation: 0,
                             autoRotate: {
                                 enable: true,
@@ -279,12 +280,12 @@ const config = ref({
             total: "Total"
         },
         th: {
-            backgroundColor: "#FAFAFA",
+            backgroundColor: "#f3f4f6",
             color: "#2D353C",
             outline: "none"
         },
         td: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#f3f4f6",
             color: "#2D353C",
             outline: "none",
             roundingValue: 0,
@@ -329,7 +330,7 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             dialog: {
                 show: true,
@@ -465,7 +466,7 @@ const darkModeConfig = ref({
                             fontSize: 8,
                             showOnlyFirstAndLast: false,
                             color: "#CCCCCC",
-                            offsetY: 0,
+                            offsetY: 6,
                             rotation: 0,
                             autoRotate: {
                                 enable: true,
@@ -511,7 +512,7 @@ const darkModeConfig = ref({
             },
             legend: {
                 color: "#CCCCCC",
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 bold: false,
                 show: true,
                 fontSize: 16,
@@ -532,12 +533,12 @@ const darkModeConfig = ref({
             total: "Total"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -662,7 +663,9 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueUiDonutEvolution ref="donutEvol" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                <BaseCard>
+                    <VueUiDonutEvolution ref="donutEvol" :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
+                </BaseCard>
             </DocSnapper>
         </div>
 

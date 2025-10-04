@@ -46,7 +46,7 @@ const themes = ref({
 
 <template>
     <BaseTag class="mb-4" :backgroundColor="themes[type].backgroundColor" :color="themes[type].color">
-        <svg class="shadow-md rounded-full" viewBox="0 0 10 10" height="16" width="16"><circle cx="5" cy="5" r="5" :fill="themes[type].fill"/></svg>
+        <svg class="rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_2px_3px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_2px_3px_rgba(0,0,0,0.5)]" viewBox="0 0 10 10" height="16" width="16"><circle cx="5" cy="5" r="5" :fill="themes[type].fill"/></svg>
         {{ type }}
     </BaseTag>
 </template>

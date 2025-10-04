@@ -5,7 +5,7 @@ export function useCase() {
     const store = useMainStore();
     const isDarkMode = computed(() => store.isDarkMode);
     const bgColor = computed(() => {
-        return isDarkMode.value ? '#2A2A2A' : '#FFFFFF'
+        return isDarkMode.value ? '#2A2A2A' : '#f9fafb'
     });
     const textColor = computed(() => {
         return isDarkMode.value ? '#CCCCCC' : '#1A1A1A'

@@ -19,6 +19,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -150,12 +151,12 @@ const config = ref({
       percentage: "Percentage",
     },
     th: {
-      backgroundColor: "#FAFAFA",
+      backgroundColor: "#f3f4f6",
       color: "#2D353C",
       outline: "none",
     },
     td: {
-      backgroundColor: "#FFFFFF",
+      backgroundColor: "#f3f4f6",
       color: "#2D353C",
       outline: "none",
       roundingValue: 0,
@@ -204,7 +205,7 @@ const darkModeConfig = ref({
   style: {
     fontFamily: "inherit",
     chart: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       layout: {
         arcs: {
@@ -230,7 +231,7 @@ const darkModeConfig = ref({
         }
       },
       legend: {
-        backgroundColor: "#1A1A1A",
+        backgroundColor: "#2A2A2A",
         color: "#CCCCCC",
         show: true,
         fontSize: 16,
@@ -288,12 +289,12 @@ const darkModeConfig = ref({
       percentage: "Percentage",
     },
     th: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none",
     },
     td: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none",
       roundingValue: 0,
@@ -422,12 +423,14 @@ const codeDataset = ref(`const dataset: VueUiGalaxyDatasetItem[] = [
           @resetDefault="resetDefault"
           @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
       >
-        <VueDataUi
-          component="VueUiGalaxy"
-          :dataset="mutableDataset"
-          :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
-          :key="key"
-        />
+        <BaseCard>
+          <VueDataUi
+            component="VueUiGalaxy"
+            :dataset="mutableDataset"
+            :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
+            :key="key"
+          />
+        </BaseCard>
       </DocSnapper>
     </div>
 

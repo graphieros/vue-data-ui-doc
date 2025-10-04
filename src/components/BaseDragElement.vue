@@ -153,16 +153,18 @@ onUnmounted(() => {
     <div ref="draggableElement" :class="[
         'hidden min-w-[300px] sm:flex fixed left-0 flex-col',
         backgroundColor,
-        'p-4 pt-12 rounded cursor-move select-none',
+        'px-5 pt-12 rounded cursor-move select-none',
         props.resizable ? 'resize overflow-hidden' : '',
         props.width ? props.width : '',
-        'max-h-[calc(100vh-200px)]'
-    ]" style="box-shadow: 0 6px 12px rgba(0,0,0,0.5); z-index: 1000" @mousedown="startDrag" @touchstart="startDrag">
+        'max-h-[calc(100vh-200px)]',
+        'shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]',
+        'rounded-xl'
+    ]" style="z-index: 1000" @mousedown="startDrag" @touchstart="startDrag">
         <div class="relative flex-none">
             <slot name="header"/>
             <GripHorizontalIcon class="absolute -top-8 left-1/2 -translate-x-1/2" size="20" />
             <div @mousedown="isInteracting = true" @mouseup="isInteracting = false"
-                class="border-t border-gray-500 pt-2" style="cursor: initial">
+                class="pt-2" style="cursor: initial">
             </div>
         </div>
 

@@ -21,6 +21,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig();
 
@@ -209,7 +210,7 @@ const config = ref({
           showAxis: true,
           axisColor: "#2D353C",
           axisThickness: 2,
-          axisName: "",
+          axisName: "Y Axis",
           axisLabels: {
             show: true,
             fontSizeRatio: 1,
@@ -231,7 +232,7 @@ const config = ref({
           showAxis: true,
           axisColor: "#2D353C",
           axisThickness: 2,
-          axisName: "",
+          axisName: "X Axis",
           horizontalLines: {
             show: true,
             color: "#CCCCCC",
@@ -366,7 +367,7 @@ const darkModeConfig = ref({
   style: {
     fontFamily: "Inter",
     chart: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       aspectRatio: "14 / 9",
       stacked: false,
@@ -412,7 +413,7 @@ const darkModeConfig = ref({
         smoothSnapThreshold: 0.25
       },
       legend: {
-        backgroundColor: "#1A1A1A",
+        backgroundColor: "#2A2A2A",
         color: "#CCCCCC",
         show: true,
         fontSize: 16,
@@ -443,7 +444,7 @@ const darkModeConfig = ref({
           axisLabels: {
             show: true,
             fontSizeRatio: 1,
-            color: "#6A6A6A",
+            color: "#8A8A8A",
             offsetX: 0,
             rounding: 1,
             prefix: "",
@@ -488,7 +489,7 @@ const darkModeConfig = ref({
             },
             rotation: 0,
             offsetY: 30,
-            color: "#6A6A6A",
+            color: "#8A8A8A",
             modulo: 12,
             bold: false
           },
@@ -539,12 +540,12 @@ const darkModeConfig = ref({
       total: "Total",
     },
     th: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none",
     },
     td: {
-      backgroundColor: "#1A1A1A",
+      backgroundColor: "#2A2A2A",
       color: "#CCCCCC",
       outline: "none",
     },
@@ -673,23 +674,25 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
         @resetDefault="resetDefault"
         @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
       >
-        <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="isDarkMode
-            ? {
-              ...mutableConfigDarkMode,
-              style: {
-                ...mutableConfigDarkMode.style,
-                fontFamily: 'Inter',
-              },
-            }
-            : {
-              ...mutableConfig,
-              style: {
-                ...mutableConfig.style,
-                fontFamily: 'Inter',
-              },
-            }
-          " :key="key" 
-        />
+        <BaseCard>
+          <VueDataUi component="VueUiXyCanvas" :dataset="dataset" :config="isDarkMode
+              ? {
+                ...mutableConfigDarkMode,
+                style: {
+                  ...mutableConfigDarkMode.style,
+                  fontFamily: 'Inter',
+                },
+              }
+              : {
+                ...mutableConfig,
+                style: {
+                  ...mutableConfig.style,
+                  fontFamily: 'Inter',
+                },
+              }
+            " :key="key" 
+          />
+        </BaseCard>
       </DocSnapper>
 
       <BaseRandomButton @click="randomizeData" />

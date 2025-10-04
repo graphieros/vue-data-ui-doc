@@ -22,6 +22,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig()
 
@@ -87,7 +88,7 @@ const darkModeConfig = ref({
         chart: {
             useGradient: true,
             gradientIntensity: 40,
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             width: 512,
             height: 360,
@@ -182,7 +183,7 @@ const darkModeConfig = ref({
                 offsetY: 0
             },
             legend: {
-                    backgroundColor: "#1A1A1A",
+                    backgroundColor: "#2A2A2A",
                     color: "#CCCCCC",
                     show: true,
                     fontSize: 16,
@@ -273,12 +274,12 @@ const darkModeConfig = ref({
             percentage: "Percentage"
         },
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none"
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
             roundingValue: 0,
@@ -764,13 +765,15 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                 @resetDefault="resetDefault"
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
             >
-                <VueDataUi component="VueUiDonut" :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
-                    <template #plot-comment="{ plot }">
-                        <div :style="`text-align:${plot.textAlign};font-size: 10px; padding: 6px;`">
-                            {{ plot.comment }}
-                        </div>
-                    </template>
-                </VueDataUi>
+                <BaseCard>
+                    <VueDataUi component="VueUiDonut" :dataset="mutableDataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
+                        <template #plot-comment="{ plot }">
+                            <div :style="`text-align:${plot.textAlign};font-size: 10px; padding: 6px;`">
+                                {{ plot.comment }}
+                            </div>
+                        </template>
+                    </VueDataUi>
+                </BaseCard>
             </DocSnapper>
             <BaseRandomButton @click="randomizeData"/>
         </div>

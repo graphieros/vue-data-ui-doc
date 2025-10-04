@@ -9,6 +9,7 @@ import useMobile from "../../useMobile";
 import DocSnapper from "../DocSnapper.vue";
 import BaseDropdown from "../BaseDropdown.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
+import BaseCard from "../BaseCard.vue";
 
 const  mainConfig = useConfig()
 
@@ -173,7 +174,7 @@ const darkModeConfig = computed(() => {
   return {
   type: type.value.text,
   style: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "#2A2A2A",
     color: "#CCCCCC",
     maxHeight: 500,
     animated: true,
@@ -413,31 +414,33 @@ function fixChart() {
                 @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
                 @change="forceChartUpdate"
               >
-                <div class="flex flex-col gap-1 justify-center place-items-center mt-6 mb-6">
-                  <label for="skeletons" class="text-xs text-left">Select skeleton type:</label>
-                  <BaseDropdown
-                    :options="options"
-                    option-target="value"
-                    additional-option-target="text"
-                    v-model:value="type"
-                    :width="255"
-                    id="skeletons"
-                  >
-                    <template #selected="{ selectedOption }">
-                      {{ selectedOption.text }}
-                    </template>
-                    <template #option="{ option }">
-                      {{ option.text }}
-                    </template>
-                  </BaseDropdown>
-                </div>
-                <VueUiSkeleton :config="isDarkMode ? {...mutableConfigDarkMode, type: type} : {...mutableConfig, type: type}" :key="key"/>
-                <div v-if="[type].includes('rating')" class="mt-4 mx-auto flex flex-row place-items-center justify-center gap-2">
-                  <input id="useSmiley" v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.rating.useSmiley"><input id="useSmiley" v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.useSmiley" @change="forceChartUpdate()">
-                  <label for="useSmiley">
-                    {{ translations.docs.comments.skeleton.smiley[store.lang] }}
-                  </label>
-                </div>
+                <BaseCard>
+                  <div class="flex flex-col gap-1 justify-center place-items-center mt-6 mb-6">
+                    <label for="skeletons" class="text-xs text-left">Select skeleton type:</label>
+                    <BaseDropdown
+                      :options="options"
+                      option-target="value"
+                      additional-option-target="text"
+                      v-model:value="type"
+                      :width="255"
+                      id="skeletons"
+                    >
+                      <template #selected="{ selectedOption }">
+                        {{ selectedOption.text }}
+                      </template>
+                      <template #option="{ option }">
+                        {{ option.text }}
+                      </template>
+                    </BaseDropdown>
+                  </div>
+                  <VueUiSkeleton :config="isDarkMode ? {...mutableConfigDarkMode, type: type} : {...mutableConfig, type: type}" :key="key"/>
+                  <div v-if="[type].includes('rating')" class="mt-4 mx-auto flex flex-row place-items-center justify-center gap-2">
+                    <input id="useSmiley" v-if="isDarkMode" type="checkbox" class="accent-app-blue" v-model="mutableConfigDarkMode.style.rating.useSmiley"><input id="useSmiley" v-else type="checkbox" class="accent-app-blue" v-model="mutableConfig.style.rating.useSmiley" @change="forceChartUpdate()">
+                    <label for="useSmiley">
+                      {{ translations.docs.comments.skeleton.smiley[store.lang] }}
+                    </label>
+                  </div>
+                </BaseCard>
               </DocSnapper>
             </div>
           </div>

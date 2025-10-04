@@ -20,6 +20,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
+import BaseCard from "../BaseCard.vue";
 
 const mainConfig = useConfig();
 
@@ -239,12 +240,12 @@ const darkModeConfig = ref({
         useDialog: false,
         responsiveBreakpoint: 400,
         th: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
         },
         td: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             outline: "none",
         },
@@ -252,12 +253,12 @@ const darkModeConfig = ref({
     style: {
         fontFamily: "inherit",
         chart: {
-            backgroundColor: "#1A1A1A",
+            backgroundColor: "#2A2A2A",
             color: "#CCCCCC",
             legend: {
                 show: true,
                 bold: false,
-                backgroundColor: "#1A1A1A",
+                backgroundColor: "#2A2A2A",
                 color: "#CCCCCC",
                 fontSize: 14,
                 position: 'bottom'
@@ -405,8 +406,10 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
         <div :class="`transition-all mx-auto w-2/3`">
             <DocSnapper :isFixed="isFixed" :disabled="!isFixed || isMobile" @fixChart="fixChart"
                 @resetDefault="resetDefault" @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)">
-                <VueDataUi component="VueUiChord" :dataset="dataset"
-                    :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                <BaseCard>
+                    <VueDataUi component="VueUiChord" :dataset="dataset"
+                        :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key" />
+                </BaseCard>
             </DocSnapper>
         </div>
 
