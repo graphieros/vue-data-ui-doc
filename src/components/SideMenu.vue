@@ -840,7 +840,7 @@ const sideMenuItems = computed(() => {
         <ChevronRightIcon class="text-black dark:text-app-green animate-ping sm:animate-none"/>
     </button>
     <template v-if="isOpen">
-        <div class="mt-8">
+        <div class="mt-8 flex flex-col gap-3">
             <RouterLink to="/universal-component">
                 <div :class="`py-2 rounded-full text-center relative text-sm shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
         dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] ${router.currentRoute.value.fullPath === '/universal-component' ? 'bg-gray-100 dark:bg-[#3A3A3A]' : 'bg-gray-200 dark:bg-[#242424]'}`">
@@ -854,7 +854,7 @@ const sideMenuItems = computed(() => {
                 </div>
                 <div class="w-full mt-6 mb-2 border-b border-gray-500"></div>
             </RouterLink>
-            <Dropdown 
+            <Dropdown
                 v-for="(menu, i) in sideMenuItems"
                 :open="menu.items.some(item => item.route === router.currentRoute.value.fullPath)"
                 :title="menu.title"

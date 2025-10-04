@@ -9,6 +9,14 @@ const props = defineProps({
     rounding: {
         type: String,
         default: 'rounded-2xl'
+    },
+    borderRight: {
+        type: String,
+        default: ''
+    },
+    padding: {
+        type: String,
+        default: 'p-4'
     }
 });
 
@@ -25,8 +33,10 @@ const background = computed(() => {
 </script>
 
 <template>
-    <div :class="`${background} p-4
+<div :class="`${background}
+        ${padding}
         ${rounding}
+        ${borderRight}
         shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]
         `">
         <slot/>

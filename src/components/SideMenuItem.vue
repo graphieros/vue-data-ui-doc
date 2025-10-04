@@ -62,7 +62,7 @@ function getIconColor(route) {
             ${isSelected(itsRoute) ? isDarkMode ? `bg-[#3A3A3A] shadow` : 'bg-gray-100 shadow' : ''} 
             flex place-items-center transition-all 
             ${isDarkMode ? 'hover:bg-[#3A3A3A]' : 'hover:bg-gray-100'} 
-            py-1 gap-1 pl-6 
+            py-1 gap-1 pl-4 
             ${isSelected(itsRoute) ? 'text-app-blue dark:text-app-green hover:cursor-default font-bold' : ''}`" 
             @click="emit('close')"
         >
