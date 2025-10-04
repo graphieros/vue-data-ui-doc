@@ -202,7 +202,7 @@ const finalConfig = computed(() => {
 
 const accordionConfig = ref(
     {
-            maxHeight: 5000,
+            maxHeight: 10000,
             open: true,
             head: {
                 backgroundColor: 'transparent',

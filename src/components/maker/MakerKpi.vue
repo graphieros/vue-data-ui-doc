@@ -88,6 +88,7 @@ function forceChartUpdate() {
 const accordionConfig = ref(
     {
             open: true,
+            maxHeight: 10000,
             head: {
                 backgroundColor: 'transparent',
                 iconColor: '#42d392'
@@ -102,7 +103,6 @@ const accordionConfig = ref(
 
 <template>
     <div>
-
         <ClearStorageAndRefresh keyConfig="kpiConfig" keyDataset="kpiDataset" :key="`clear_${clearStep}`"/>
         <BaseDocExampleLink link="vue-ui-kpi" :example="false" componentName="VueUiKpi"/>
         
