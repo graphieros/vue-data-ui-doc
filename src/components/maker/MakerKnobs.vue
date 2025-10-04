@@ -6,6 +6,7 @@ import { useMakerStore } from "../../stores/maker";
 import BaseColorInput from "../BaseColorInput.vue";
 import { createUid } from "./lib";
 import useAttrMapping from "../../useAttrMapping";
+import BaseCard from "../BaseCard.vue";
 
 const props = defineProps({
     categories: {
@@ -104,52 +105,54 @@ function getKeyTranslation(key) {
 </script>
 
 <template>
-    <div class="z-0 w-full border border-app-orange p-4 rounded mt-6 bg-[#ff660020] text-black dark:text-white" dir="auto">
-        <div class="flex flex-col gap-2">
-            <div class="flex flex-row gap-2 text-app-orange">
-                <VueUiIcon name="circleExclamation" stroke="#ff6600"/>
-                {{ warningColorAlpha[store.lang] }}
-            </div>
-            <div class="flex-row" dir="auto">
-                <label for="useTrans" class="px-8">{{ useTransparencyLabel[store.lang] }}</label>
-                <input id="useTrans" type="checkbox" v-model="useOldColorPickers">
+    <BaseCard class="mt-6">
+        <div class="z-0 w-full border border-app-orange p-4 rounded-lg bg-[#ff660020] text-black dark:text-white" dir="auto">
+            <div class="flex flex-col gap-2">
+                <div class="flex flex-row gap-2 text-app-orange">
+                    <VueUiIcon name="circleExclamation" stroke="#ff6600"/>
+                    {{ warningColorAlpha[store.lang] }}
+                </div>
+                <div class="flex-row" dir="auto">
+                    <label for="useTrans" class="px-8">{{ useTransparencyLabel[store.lang] }}</label>
+                    <input id="useTrans" type="checkbox" v-model="useOldColorPickers">
+                </div>
             </div>
         </div>
-    </div>
-    <div class="hidden sm:flex flex-row flex-wrap place-items-center gap-2 fixed top-[85px] left-0 w-full py-2 px-4 bg-white dark:bg-[#1A1A1A]" style="z-index:1000" dir="auto">
+    </BaseCard>
+    <div class="hidden sm:flex flex-row flex-wrap place-items-center gap-2 fixed top-[85px] left-0 w-full py-2 px-4 bg-gray-200 dark:bg-[#1A1A1A]" style="z-index:1000" dir="auto">
         <div>{{ configCategoriesLabel[store.lang] }}</div>
         <button 
             v-for="category in categories" @click="scrollToId(category.key)"
-            :class="`text-xs py-1 px-2 rounded ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : 'bg-[#1A1A1A10] hover:bg-[#1A1A1A20] dark:bg-[#FFFFFF10] hover:dark:bg-[#FFFFFF20]'} transition-colors`"
+            :class="`text-xs py-1 px-2 rounded ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : 'bg-[#1A1A1A10] hover:bg-[#1A1A1A20] dark:bg-[#FFFFFF10] hover:dark:bg-[#FFFFFF20]'} transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
         >
             {{ category.title }}
         </button>
     </div>
-    <div class="flex flex-col gap-2 shadow dark:shadow-md bg-[#5f8bee30] p-3 rounded my-4 overflow-visible" v-for="(category, c) in categories" :id="category.key" :style="{ scrollMarginTop : '80px'}">
-        <div class="w-full bg-gradient-to-r from-app-blue-light dark:from-app-blue-dark to-transparent pl-3 py-2 rounded text-black dark:text-white">
-            <h4>{{ category.title }}</h4> 
-        </div>
-        <div class="flex flex-row gap-4 place-items-center flex-wrap">
-            <div v-for="(knob, i) in model.filter(k => k.category === category.key)" class="flex flex-col justify-start my-2">
-                <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type !== 'color'" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }} <br v-if="getKeyTranslation(knob.key)"/><span v-if="getKeyTranslation(knob.key) && typeof getKeyTranslation(knob.key) === 'string' && typeof getLabel(knob.label) === 'string' && getKeyTranslation(knob.key).toUpperCase() !== getLabel(knob.label).toUpperCase()" class="text-xs text-gray-500">({{ getKeyTranslation(knob.key) }})</span></label>
-                <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type === 'color' && (useOldColorPickers || knob.old)" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }}</label>
-
-                <div class="flex place-items-center justify-start h-[40px]">
-                    <BaseNumberInput v-if="knob.type === 'number'" v-model:value="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" @change="emit('change')" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>
-                    <template v-if="knob.type === 'range'">
-                        <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
-                            <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ knob.def }}</div>
-                            <input :id="`k_${i}_${uid}_${c}`" type="range" v-model="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" class="accent-app-blue z-0" @change="emit('change')">
-                        </div>
-                    </template>
-                    <BaseColorInput v-else-if="knob.type === 'color' && (!useOldColorPickers && !knob.old)" :label="getLabel(knob.label)" :rgba="true" v-model:value="knob.def" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>
-                    <input :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`" v-else-if="!['number', 'range', 'select'].includes(knob.type)" class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" v-model="knob.def" @change="emit('change')">
-                    <select v-else-if="knob.type === 'select'" v-model="knob.def" @change="emit('change')" class="h-[32px] px-2" :id="`k_${i}_${uid}_${c}`">
-                        <option v-for="opt in knob.options">{{ opt }}</option>
-                    </select>
+    <div class="flex flex-col gap-2 my-4 overflow-visible" v-for="(category, c) in categories" :id="category.key" :style="{ scrollMarginTop : '80px'}">
+        <BaseCard type="medium">
+            <h4 class="text-2xl font-inter-bold text-black dark:text-[#CCCCCC]">{{ category.title }}</h4> 
+            <div class="flex flex-row gap-4 place-items-center flex-wrap">
+                <div v-for="(knob, i) in model.filter(k => k.category === category.key)" class="flex flex-col justify-start my-2">
+                    <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type !== 'color'" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }} <br v-if="getKeyTranslation(knob.key)"/><span v-if="getKeyTranslation(knob.key) && typeof getKeyTranslation(knob.key) === 'string' && typeof getLabel(knob.label) === 'string' && getKeyTranslation(knob.key).toUpperCase() !== getLabel(knob.label).toUpperCase()" class="text-xs text-gray-500">({{ getKeyTranslation(knob.key) }})</span></label>
+                    <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type === 'color' && (useOldColorPickers || knob.old)" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }}</label>
+    
+                    <div class="flex place-items-center justify-start h-[40px]">
+                        <BaseNumberInput v-if="knob.type === 'number'" v-model:value="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" @change="emit('change')" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>
+                        <template v-if="knob.type === 'range'">
+                            <div class="inline-flex place-items-center justify-center gap-2 relative h-[32px] bg-[#1A1A1A10] dark:bg-[#FFFFFF10] p-2 rounded-full shadow-md  dark:border-t dark:border-[#6A6A6A]">
+                                <div class="text-xs z-0 pointer-events-none bg-[#4A4A4A] dark:bg-black px-2 rounded-lg min-w-[64px] text-center text-white tabular-nums">{{ knob.def }}</div>
+                                <input :id="`k_${i}_${uid}_${c}`" type="range" v-model="knob.def" :min="knob.min" :max="knob.max" :step="knob.step" class="accent-app-blue z-0" @change="emit('change')">
+                            </div>
+                        </template>
+                        <BaseColorInput v-else-if="knob.type === 'color' && (!useOldColorPickers && !knob.old)" :label="getLabel(knob.label)" :rgba="true" v-model:value="knob.def" :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`"/>
+                        <input :labelId="`l_${i}_${uid}_${c}`" :id="`k_${i}_${uid}_${c}`" v-else-if="!['number', 'range', 'select'].includes(knob.type)" class="accent-app-blue" v-if="!['none', 'select'].includes(knob.type)" :type="knob.type" v-model="knob.def" @change="emit('change')">
+                        <select v-else-if="knob.type === 'select'" v-model="knob.def" @change="emit('change')" class="h-[32px] px-2" :id="`k_${i}_${uid}_${c}`">
+                            <option v-for="opt in knob.options">{{ opt }}</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
+        </BaseCard>
     </div>
 </template>
 

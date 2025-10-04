@@ -417,9 +417,9 @@ const message = ref({
                     <Menu2Icon />
                 </button>
                 <div id="mainDropdown"
-                    class="absolute top-full mt-2 right-0 bg-white dark:bg-black rounded-lg w-[180px] text-right"
+                    class="absolute top-full mt-2 right-0 rounded-lg w-[180px] text-right"
                     v-if="isOpen">
-                    <BaseCard>  
+                    <BaseCard type="dark">  
                         <ul>
                             <HeaderDropdownItem
                                 v-for="item in dropdownItems"
@@ -427,12 +427,13 @@ const message = ref({
                                 @click="isOpen = false"
                                 :clickableWhenActive="item.clickableWhenActive"
                             />
-    
-                            <button @click="changeTheme" id="themeToggle"
-                                class="flex place-items-center place-content-end w-full py-1 pr-4 text-center">
-                                <SunFilledIcon v-if="store.isDarkMode" class="text-[#fdd663]" />
-                                <MoonStarsIcon v-else />
-                            </button>
+                            <div class="flex w-full justify-end mt-2">
+                                <button @click="changeTheme" id="themeToggle"
+                                    class="bg-gray-150 dark:bg-[#2A2A2A] hover:bg-gray-100 hover:dark:bg-[#3A3A3A] flex flex-row place-items-center align-center w-fit p-2 rounded-full shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
+                                    <SunFilledIcon v-if="store.isDarkMode" class="text-[#fdd663]" />
+                                    <MoonStarsIcon v-else />
+                                </button>
+                            </div>
                             <div class="z-10 flex flex-row place-items-center gap-2 mt-4">
                                 <div class="w-fit">
                                     <LanguageIcon class="dark:text-app-green" />
