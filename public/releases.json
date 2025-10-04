@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.2.7",
+    "date": "2025-10-04",
+    "updates": [
+      {
+        "component": "VueUiAccordion",
+        "description": "Disable pointer events on content when closed.",
+        "link": "/docs/#vue-ui-accordion"
+      }
+    ]
+  },
+  {
     "version": "v 3.2.6",
     "date": "2025-10-02",
     "updates": [
