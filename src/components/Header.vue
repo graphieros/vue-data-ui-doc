@@ -13,6 +13,7 @@ import useCharts from "../useCharts";
 import FlexibleTooltip from "./FlexibleTooltip.vue";
 import { createUid } from "../components/maker/lib";
 import IconSettings from "./IconSettings.vue";
+import BaseCard from "./BaseCard.vue";
 
 const router = useRouter();
 const store = useMainStore();
@@ -416,32 +417,34 @@ const message = ref({
                     <Menu2Icon />
                 </button>
                 <div id="mainDropdown"
-                    class="absolute top-full mt-2 right-0 bg-white dark:bg-black rounded-lg border border-gray-700 shadow-2xl px-2 pl-3 py-3 w-[180px] text-right"
+                    class="absolute top-full mt-2 right-0 bg-white dark:bg-black rounded-lg w-[180px] text-right"
                     v-if="isOpen">
-                    <ul>
-                        <HeaderDropdownItem
-                            v-for="item in dropdownItems"
-                            v-bind="item"
-                            @click="isOpen = false"
-                            :clickableWhenActive="item.clickableWhenActive"
-                        />
-
-                        <button @click="changeTheme" id="themeToggle"
-                            class="flex place-items-center place-content-end w-full py-1 pr-4 text-center">
-                            <SunFilledIcon v-if="store.isDarkMode" class="text-[#fdd663]" />
-                            <MoonStarsIcon v-else />
-                        </button>
-                        <div class="z-10 flex flex-row place-items-center gap-2 mt-4">
-                            <div class="w-fit">
-                                <LanguageIcon class="dark:text-app-green" />
+                    <BaseCard>  
+                        <ul>
+                            <HeaderDropdownItem
+                                v-for="item in dropdownItems"
+                                v-bind="item"
+                                @click="isOpen = false"
+                                :clickableWhenActive="item.clickableWhenActive"
+                            />
+    
+                            <button @click="changeTheme" id="themeToggle"
+                                class="flex place-items-center place-content-end w-full py-1 pr-4 text-center">
+                                <SunFilledIcon v-if="store.isDarkMode" class="text-[#fdd663]" />
+                                <MoonStarsIcon v-else />
+                            </button>
+                            <div class="z-10 flex flex-row place-items-center gap-2 mt-4">
+                                <div class="w-fit">
+                                    <LanguageIcon class="dark:text-app-green" />
+                                </div>
+                                <select v-model="selectedLanguage" class="h-[24px] px-2">
+                                    <option v-for="option in languageOptions" :value="option.value">
+                                        {{ option.text }}
+                                    </option>
+                                </select>
                             </div>
-                            <select v-model="selectedLanguage" class="h-[24px] px-2">
-                                <option v-for="option in languageOptions" :value="option.value">
-                                    {{ option.text }}
-                                </option>
-                            </select>
-                        </div>
-                    </ul>
+                        </ul>
+                    </BaseCard>
                 </div>
             </div>
         </div>

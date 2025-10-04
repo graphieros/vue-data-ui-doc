@@ -21,6 +21,9 @@ const props = defineProps({
 });
 
 const background = computed(() => {
+    if (props.type === 'light') {
+        return 'bg-gray-50 dark:bg-[#3A3A3A]'
+    }
     if (props.type === 'medium') {
         return 'bg-gray-100 dark:bg-[#2A2A2A]'
     }
