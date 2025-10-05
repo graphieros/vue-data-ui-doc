@@ -2001,12 +2001,6 @@ async function impactPatch() {
                         }"
                       >
                         <template #title>
-                          <!-- <div class="absolute top-0 text-xs" :style="{ color: kpi.color }">
-                            {{ kpi.name }}
-                          </div> -->
-                          <!-- <div class="absolute top-1/2 -translate-y-1/2 scale-125 flex-row place-items-center gap-2">
-                            <component :is="kpi.icon" :color="kpi.color" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
-                          </div> -->
                           <div class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(2,2)">
                             <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.3)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
                           </div>

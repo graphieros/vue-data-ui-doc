@@ -4,8 +4,9 @@ import { useMainStore } from "../stores";
 import AboutComponentTypes from "../components/AboutComponentTypes.vue";
 import SatisfactionStats from "../components/SatisfactionStats.vue";
 import { useConfig } from "../assets/useConfig";
-import { CheckIcon } from "vue-tabler-icons";
+import { BrandGithubFilledIcon, CheckIcon } from "vue-tabler-icons";
 import BaseSpinner from "../components/BaseSpinner.vue";
+import BaseCard from "../components/BaseCard.vue";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
@@ -521,7 +522,6 @@ const wheelConfig = computed(() => {
                   </VueUiWheel>
                 </a>
               </div>
-            <AboutComponentTypes />
           </div>
         </template>
         <template #fallback>
@@ -530,51 +530,7 @@ const wheelConfig = computed(() => {
       </Suspense>
     </div>
 
-    <div class="w-full mb-3 overflow-x-auto">
-      <table class="w-full border-separate border-spacing-y-2 text-sm text-gray-800 dark:text-gray-200">
-        <tbody>
-          <tr v-for="adv in advantages" :key="adv[store.lang]" class="bg-white dark:bg-[#FFFFFF10] shadow-sm rounded-md">
-            <td class="px-4 py-3 rounded-md flex flex-row place-items-center gap-4">
-              <div class="w-[40px]">
-                <CheckIcon class="text-app-green"/>
-              </div>
-              {{ adv[store.lang] }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="mt-12 mb-3" dir="auto">
-      {{ translations.about.p1[store.lang] }}
-    </p>
-    <p class="my-3" dir="auto">
-      {{ translations.about.p2[store.lang] }}
-    </p>
-    
-
-    <p class="my-3" dir="auto">
-      {{ translations.about.p3[store.lang] }}
-      <span class="text-black font-bold dark:text-app-green hover:underline"><router-link
-          to="/docs#vue-ui-chestnut">VueUiChestnut</router-link></span>,
-      <span class="text-black font-bold dark:text-app-green hover:underline"><router-link
-          to="/docs#vue-ui-quadrant">VueUiQuadrant</router-link></span>,
-      <span class="text-black font-bold dark:text-app-green hover:underline"><router-link
-          to="/docs#vue-ui-table">VueUiTable</router-link></span>.
-    </p>
-
-    <div v-if="isDarkMode" class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px]">
-      <div v-for="skeleton in skeletonsDarkMode.slice(0, 3)" class="max-w-1/3">
-        <VueUiSkeleton :config="skeleton" />
-      </div>
-    </div>
-    <div v-else class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px]">
-      <div v-for="skeleton in skeletons.slice(0, 3)" class="max-w-1/3">
-        <VueUiSkeleton :config="skeleton" />
-      </div>
-    </div>
-
-    <a href="https://github.com/graphieros/vue-data-ui/graphs/contributors" target="_blank" v-if="contributors"
+    <!-- <a href="https://github.com/graphieros/vue-data-ui/graphs/contributors" target="_blank" v-if="contributors"
       class="w-full mt-12 flex flex-row gap-4 place-items-center justify-center">
       <div
         class="mx-auto flex flex-row gap-4 p-4 bg-gray-200 shadow-md dark:bg-[#FFFFFF10] place-items-center rounded-md">
@@ -589,22 +545,71 @@ const wheelConfig = computed(() => {
         </div>
         {{ translations.about.contributors[store.lang] }}
       </div>
-    </a>
+    </a> -->
 
-    <div class="text-center w-full text-app-blue font-inter-medium text-2xl mt-12">
-      {{ translations.about.maintainers[store.lang] }}
-    </div>
-    <div class="w-full mt-12 flex place-items-center place-content-center">
-      <div class="flex gap-6 flex-col md:flex-row place-items-center place-content-center">
-        <img src="../assets/alec_lloyd_probert.png" class="h-[200px] rounded" alt="A picture of Alec Lloyd Probert" />
-        <p dir="auto">
-          {{ translations.about.alp[store.lang] }}<br /><br />
-          <a class="text-app-blue hover:underline" href="https://github.com/graphieros" target="_blank">GitHub</a>
+    <BaseCard class="w-full">
+      <AboutComponentTypes />
+      <BaseCard type="light">
+        <div class="w-full mb-3 overflow-x-auto">
+          <table class="w-full border-separate border-spacing-y-0 text-sm text-gray-800 dark:text-gray-200">
+            <tbody>
+              <tr v-for="adv in advantages" :key="adv[store.lang]">
+                <td class="py-1 rounded-md flex flex-row place-items-center gap-4">
+                  <div class="w-[40px]">
+                    <CheckIcon class="text-app-green"/>
+                  </div>
+                  <span class="w-full">
+                    {{ adv[store.lang] }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </BaseCard>
+
+      <div class="px-2">
+        <p class="mt-12 mb-3" dir="auto">
+          {{ translations.about.p1[store.lang] }}
+        </p>
+        <p class="my-3" dir="auto">
+          {{ translations.about.p2[store.lang] }}
+        </p>
+  
+        <p class="my-3" dir="auto">
+          {{ translations.about.p3[store.lang] }}
+          <span class="text-black font-bold dark:text-app-green hover:underline"><router-link
+              to="/docs#vue-ui-chestnut">VueUiChestnut</router-link></span>,
+          <span class="text-black font-bold dark:text-app-green hover:underline"><router-link
+              to="/docs#vue-ui-quadrant">VueUiQuadrant</router-link></span>,
+          <span class="text-black font-bold dark:text-app-green hover:underline"><router-link
+              to="/docs#vue-ui-table">VueUiTable</router-link></span>.
         </p>
       </div>
-    </div>
+      
+      <BaseCard type="light" class="mt-10">
+        <div class="w-full text-app-blue dark:text-app-blue-light font-inter-medium text-2xl">
+          {{ translations.about.maintainers[store.lang] }}
+        </div>
+        <div class="w-full mt-4 flex place-items-center place-content-center">
+          <div class="flex gap-6 flex-col md:flex-row place-items-center place-content-center">
+            <img src="../assets/alec_lloyd_probert.png" class="h-[200px] rounded" alt="A picture of Alec Lloyd Probert" />
+            <p dir="auto">
+              {{ translations.about.alp[store.lang] }}<br /><br />
+              <a class="text-app-blue dark:text-app-blue-light hover:underline" href="https://github.com/graphieros" target="_blank">
+                <button class="flex flx-row place-items-center gap-2">
+                  <BrandGithubFilledIcon/>
+                  GitHub
+                </button>
+              </a>
+            </p>
+          </div>
+        </div>
+      </BaseCard>
+      <SatisfactionStats />
+    </BaseCard>
 
-    <SatisfactionStats />
+
 
     <div v-if="isDarkMode" class="w-full grid grid-cols-3 gap-6 mt-12 mx-auto max-w-[500px] mb-12">
       <div v-for="skeleton in skeletonsDarkMode.slice(3, skeletons.length)" class="max-w-1/3">

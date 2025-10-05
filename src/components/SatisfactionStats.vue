@@ -6,6 +6,7 @@ import colorBridge from "color-bridge"
 import { VueDataUi } from "vue-data-ui";
 import mockStats from './mockStats.json'
 import { createUid, fillEmptyDays } from "./maker/lib";
+import BaseCard from "./BaseCard.vue";
 
 const { utils } = colorBridge();
 
@@ -189,7 +190,7 @@ const heatmapConfig = computed(() => {
                     },
                     colors: {
                         hot: '#1F77B4',
-                        cold: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                        cold: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
                         underlayer: 'transparent'
                     },
                     spacing: 0,
@@ -755,7 +756,7 @@ const cutNullValues = ref(false);
 const xyConfig = computed(() => {
     return {
         chart: {
-            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+            backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             padding: {
                 top: 20,
@@ -906,7 +907,7 @@ const verticalBarConfig = computed(() => {
     return {
         style: {
             chart: {
-                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                 layout: {
                     bars: {
@@ -1104,275 +1105,286 @@ function selectHeatmapCell(cell) {
 </script>
 
 <template>
-    <div v-if="ratings.length"
-        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <div class="text-xl text-center mb-4 flex flex-col">
-            <span>Latest votes ({{ latestItems.length }})</span>
-            <input
-                id="date"
-                type="date"
-                v-model="selectedDate"
-                class="
-                    mx-auto
-                    mt-3
-                    block w-52 px-3 py-1 rounded-xl shadow
-                    focus:ring-2 focus:ring-app-blue focus:border-app-blue
-                    border border-gray-300 bg-white text-gray-800
-                    hover:border-blue-400
-                    transition duration-200 outline-none
-                    dark:border-gray-700 dark:bg-[#FFFFFF50] dark:text-[#1A1A1A]
-                    dark:focus:border-app-blue dark:focus:ring-app-blue
-                    dark:hover:border-app-blue
-                    dark:placeholder-gray-400
-                "
-                placeholder="YYYY-MM-DD"
-            />
-        </div>
-        <div class="w-full text-center text-gray-500" v-if="latestItems.length === 0">
-            No votes were cast on this day.
-        </div>
-        <ul>
-            <li v-for="item in latestItems" class="flex flex-row gap-2">
-                <span>{{ item.stars }}</span>
-                <span class="text-gray-400 dark:text-gray-500">VueUi<span class="text-black dark:text-gray-200">{{
-                    item.name.replaceAll('VueUi', '') }}</span></span>
-            </li>
-        </ul>
-    </div>
+    <div class="mt-6">
 
-    <div v-if="ratings.length"
-        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <label>
-            Cut null values
-            <input type="checkbox" v-model="cutNullValues">
-        </label>
-        <VueUiXy :dataset="xyDataset" :config="xyConfig" />
-    </div>
+        <BaseCard v-if="ratings.length" class="w-full" type="light">
+            <div class="p-4">
+                <div class="text-xl text-center mb-4 flex flex-col">
+                    <span>Latest votes ({{ latestItems.length }})</span>
+                    <input
+                        id="date"
+                        type="date"
+                        v-model="selectedDate"
+                        class="
+                            mx-auto
+                            mt-3
+                            block w-52 px-3 py-1 rounded-xl shadow
+                            focus:ring-2 focus:ring-app-blue focus:border-app-blue
+                            border border-gray-300 bg-white text-gray-800
+                            hover:border-blue-400
+                            transition duration-200 outline-none
+                            dark:border-gray-700 dark:bg-[#FFFFFF50] dark:text-[#1A1A1A]
+                            dark:focus:border-app-blue dark:focus:ring-app-blue
+                            dark:hover:border-app-blue
+                            dark:placeholder-gray-400
+                        "
+                        placeholder="YYYY-MM-DD"
+                    />
+                </div>
+                <div class="w-full text-center text-gray-500" v-if="latestItems.length === 0">
+                    No votes were cast on this day.
+                </div>
+                <ul>
+                    <li v-for="item in latestItems" class="flex flex-row gap-2">
+                        <span>{{ item.stars }}</span>
+                        <span class="text-gray-400 dark:text-gray-500">VueUi<span class="text-black dark:text-gray-200">{{
+                            item.name.replaceAll('VueUi', '') }}</span></span>
+                    </li>
+                </ul>
+            </div>
+        </BaseCard>
 
-    <div v-if="ratings.length"
-        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueUiVerticalBar :dataset="verticalBarDataset" :config="verticalBarConfig" />
-    </div>
-
-    <div v-if="ratings.length"
-        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <div class="text-center text-xl">Ratings breakdown ({{ stats.length }} votes)</div>
-        <div class="flex flex-row place-items-center gap-2">
-            <div class="w-full">
-                <VueUiGauge :dataset="gaugeDataset" :config="{
-                    userOptions: { show: false },
-                    style: {
-                        chart: {
+        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+            <div class="p-4">
+                <label>
+                    Cut null values
+                    <input type="checkbox" v-model="cutNullValues">
+                </label>
+                <VueUiXy :dataset="xyDataset" :config="xyConfig" />
+            </div>
+        </BaseCard>
+    
+        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+            <div class="p-4">
+                <VueUiVerticalBar :dataset="verticalBarDataset" :config="verticalBarConfig" />
+            </div>
+        </BaseCard>
+    
+        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+            <div class="p-4">
+                <div class="text-center text-xl">Ratings breakdown ({{ stats.length }} votes)</div>
+                <div class="flex flex-row place-items-center gap-2">
+                    <div class="w-full">
+                        <VueUiGauge :dataset="gaugeDataset" :config="{
+                            userOptions: { show: false },
+                            style: {
+                                chart: {
+                                    backgroundColor: 'transparent',
+                                    color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                                    layout: {
+                                        radiusRatio: 0.8,
+                                        track: { size: 0.1 },
+                                        markers: {
+                                            offsetY: 40,
+                                            color: isDarkMode ? '#8A8A8A' : '#1A1A1A'
+                                        },
+                                        segmentNames: { fontSize: 55 },
+                                        segmentSeparators: {
+                                            show: true,
+                                            stroke: isDarkMode ? '#4A4A4A' : '#CCCCCC',
+                                            offsetOut: 36,
+                                            offsetIn: 150
+                                        },
+                                        pointer: {
+                                            size: 1.1,
+                                            stroke: 'transparent',
+                                            circle: {
+                                                color: isDarkMode ? '#6A6A6A' : '#FFFFFF'
+                                            }
+                                        },
+                                        indicatorArc: {
+                                            show: true,
+                                            fill: isDarkMode ? '#FFFFFF10' : '#00000010',
+                                            radius: 1000
+                                        },
+                                    },
+                                    legend: {
+                                        showPlusSymbol: false,
+                                        roundingValue: 2
+                                    },
+                                    // title: {
+                                    //     text: `Ratings breakdown (${stats.length} votes)`,
+                                    //     color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                                    //     fontSize: 20,
+                                    //     bold: false,
+                                    //     offsetY: 40,
+                                    // },
+                                }
+                            }
+                        }" />
+                    </div>
+                    <div class="w-full">
+                        <VueUiMoodRadar :dataset="radarDataset" :config="radarConfig"/>
+                    </div>
+                </div>
+        
+                <!-- <VueUiRating :dataset="{
+                    rating: history.ratingBreakdown
+                }" :config="{
+                        type: 'star',
+                        readonly: true,
+                        style: {
                             backgroundColor: 'transparent',
-                            color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                            layout: {
-                                radiusRatio: 0.8,
-                                track: { size: 0.1 },
-                                markers: {
-                                    offsetY: 40,
-                                    color: isDarkMode ? '#8A8A8A' : '#1A1A1A'
-                                },
-                                segmentNames: { fontSize: 55 },
-                                segmentSeparators: {
-                                    show: true,
-                                    stroke: isDarkMode ? '#4A4A4A' : '#CCCCCC',
-                                    offsetOut: 36,
-                                    offsetIn: 150
-                                },
-                                pointer: {
-                                    size: 1.1,
-                                    stroke: 'transparent',
-                                    circle: {
-                                        color: isDarkMode ? '#6A6A6A' : '#FFFFFF'
-                                    }
-                                },
-                                indicatorArc: {
-                                    show: true,
-                                    fill: isDarkMode ? '#FFFFFF10' : '#00000010',
-                                    radius: 1000
-                                },
+                            title: {
+                                text: `Ratings breakdown (${stats.length} votes)`,
+                                color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                                fontSize: 20,
+                                bold: false,
+                                offsetY: 40,
                             },
-                            legend: {
-                                showPlusSymbol: false,
-                                roundingValue: 2
+                            star: {
+                                inactiveColor: isDarkMode ? '#3A3A3A' : '#FFFFFF'
                             },
-                            // title: {
-                            //     text: `Ratings breakdown (${stats.length} votes)`,
-                            //     color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                            //     fontSize: 20,
-                            //     bold: false,
-                            //     offsetY: 40,
-                            // },
+                            tooltip: {
+                                backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
+                                color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
+                                borderColor: isDarkMode ? '#fdd663' : '#E1E5E8',
+                                offsetY: 12,
+                            }
+                        }
+                    }" /> -->
+                <VueUiXy :dataset="ratingBreakdownBarDataset" :config="{
+                    ...ratingBreakdownBarConfig,
+                    bar: {
+                        ...ratingBreakdownBarConfig.bar,
+                        labels: {
+                            ...ratingBreakdownBarConfig.bar.labels,
+                            formatter: ({ value }) => {
+                                if (!value) return value
+                                return `${value} (${Math.round(value / stats.length * 100)}%)`
+                            }
                         }
                     }
                 }" />
             </div>
-            <div class="w-full">
-                <VueUiMoodRadar :dataset="radarDataset" :config="radarConfig"/>
+        </BaseCard>
+
+        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+            <div class="p-4">
+                <VueDataUi component="VueUiStackbar" :dataset="stackbarData" :config="stackbarConfig" />
             </div>
+        </BaseCard>
+    
+        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+            <div class="p-4">
+                <VueDataUi component="VueUiHeatmap" :dataset="heatmapDataset" :config="heatmapConfig" @selectDatapoint="selectHeatmapCell"/>
+            </div>
+        </BaseCard>
+    
+        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+            <div class="p-4">
+                <VueDataUi component="VueUiHistoryPlot" :dataset="historyPlotDataset" :config="historyPlotConfig" />
+            </div>
+        </BaseCard>
+    
+    
+        <h2 v-if="ratings.length" class="mt-12 mb-3 text-xl text-center">
+            User ratings of individual components
+        </h2>
+    
+        <div class="flex flex-row place-items-center justify-center mb-6 gap-4">
+            <label class="flex flex-row gap-1 place-items-center cursor-pointer">
+                <span :class="`select-none ${detailSortMode === 'byVotes' ? 'text-app-blue' : ''}`">By votes</span>
+                <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byVotes">
+            </label>
+            <label class="flex flex-row gap-1 place-items-center cursor-pointer">
+                <span :class="`select-none ${detailSortMode === 'byRatings' ? 'text-app-blue' : ''}`">By ratings</span>
+                <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byRatings">
+            </label>
         </div>
-
-        <!-- <VueUiRating :dataset="{
-            rating: history.ratingBreakdown
-        }" :config="{
-                type: 'star',
-                readonly: true,
+    
+        <div class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10" v-if="ratings.length">
+            <ButtonSatisfactionBreakdown
+                v-for="c in individualRatings"
+                :key="c.id"
+                :dataset-gauge="{
+                value: c.average,
+                series: [
+                    { from: 1, to: 3, color: '#c97047' , name: 'BAD' },
+                    { from: 3, to: 4, color: '#FFDD00', name: 'ACCEPTABLE' },
+                    { from: 4, to: 5, color: '#54b840', name: 'VERY GOOD' }
+                ]
+            }" 
+                :total="c.raters"
+                :datasetRating="{ rating: c.average }"
+                :configRating="{
+                    readonly: true,
+                    style: {
+                        backgroundColor: 'transparent',
+                        star: {
+                            inactiveColor: 'transparent'
+                        }
+                    }
+                }"
+                :name="c.name
+                    .split('_')
+                    .map((w, _i) => {
+                        return capitalizeFirstLetter(w);
+                    })
+                    .join('')"
+            :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')" :config-gauge="{
+                userOptions: { show: false },
                 style: {
-                    backgroundColor: 'transparent',
-                    title: {
-                        text: `Ratings breakdown (${stats.length} votes)`,
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                        fontSize: 20,
-                        bold: false,
-                        offsetY: 40,
-                    },
-                    star: {
-                        inactiveColor: isDarkMode ? '#3A3A3A' : '#FFFFFF'
-                    },
-                    tooltip: {
-                        backgroundColor: isDarkMode ? '#2A2A2A' : '#FFFFFF',
-                        color: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                        borderColor: isDarkMode ? '#fdd663' : '#E1E5E8',
-                        offsetY: 12,
-                    }
-                }
-            }" /> -->
-        <VueUiXy :dataset="ratingBreakdownBarDataset" :config="{
-            ...ratingBreakdownBarConfig,
-            bar: {
-                ...ratingBreakdownBarConfig.bar,
-                labels: {
-                    ...ratingBreakdownBarConfig.bar.labels,
-                    formatter: ({ value }) => {
-                        if (!value) return value
-                        return `${value} (${Math.round(value / stats.length * 100)}%)`
-                    }
-                }
-            }
-        }" />
-    </div>
-
-    <div v-if="ratings.length"
-        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueDataUi component="VueUiStackbar" :dataset="stackbarData" :config="stackbarConfig" />
-    </div>
-
-    <div v-if="ratings.length"
-        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueDataUi component="VueUiHeatmap" :dataset="heatmapDataset" :config="heatmapConfig" @selectDatapoint="selectHeatmapCell"/>
-    </div>
-
-    <div v-if="ratings.length"
-        class="w-full max-w-[600px] p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded-md shadow-md mt-6">
-        <VueDataUi component="VueUiHistoryPlot" :dataset="historyPlotDataset" :config="historyPlotConfig" />
-    </div>
-
-    <h2 v-if="ratings.length" class="mt-12 mb-3 text-xl">
-        User ratings of individual components
-    </h2>
-
-    <div class="flex flex-row place-items-center justify-center mb-6 gap-4">
-        <label class="flex flex-row gap-1 place-items-center cursor-pointer">
-            <span :class="`select-none ${detailSortMode === 'byVotes' ? 'text-app-blue' : ''}`">By votes</span>
-            <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byVotes">
-        </label>
-        <label class="flex flex-row gap-1 place-items-center cursor-pointer">
-            <span :class="`select-none ${detailSortMode === 'byRatings' ? 'text-app-blue' : ''}`">By ratings</span>
-            <input type="radio" v-model="detailSortMode" class="accent-app-blue" value="byRatings">
-        </label>
-    </div>
-
-    <div class="flex flex-row flex-wrap gap-2 place-items-center justify-center z-10" v-if="ratings.length">
-        <ButtonSatisfactionBreakdown
-            v-for="c in individualRatings"
-            :key="c.id"
-            :dataset-gauge="{
-            value: c.average,
-            series: [
-                { from: 1, to: 3, color: '#c97047' , name: 'BAD' },
-                { from: 3, to: 4, color: '#FFDD00', name: 'ACCEPTABLE' },
-                { from: 4, to: 5, color: '#54b840', name: 'VERY GOOD' }
-            ]
-        }" 
-            :total="c.raters"
-            :datasetRating="{ rating: c.average }"
-            :configRating="{
-                readonly: true,
-                style: {
-                    backgroundColor: 'transparent',
-                    star: {
-                        inactiveColor: 'transparent'
-                    }
-                }
-            }"
-            :name="c.name
-                .split('_')
-                .map((w, _i) => {
-                    return capitalizeFirstLetter(w);
-                })
-                .join('')"
-        :dataset-xy="makeRatingBreakdown(c.breakdown, 'Number of votes')" :config-gauge="{
-            userOptions: { show: false },
-            style: {
-                chart: {
-                    backgroundColor: 'transparent',
-                    layout: {
-                        indicatorArc: {
-                            show: true,
-                            fill: isDarkMode ? '#4A4A4A' : '#E1E5E8',
-                            radius: 100
-                        },
-                        markers: {
-                            show: false,
-                        },
-                        pointer: {
-                            stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
-                            circle: {
-                                radius: 18,
+                    chart: {
+                        backgroundColor: 'transparent',
+                        layout: {
+                            indicatorArc: {
+                                show: true,
+                                fill: isDarkMode ? '#4A4A4A' : '#E1E5E8',
+                                radius: 100
+                            },
+                            markers: {
+                                show: false,
+                            },
+                            pointer: {
                                 stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
-                                color: isDarkMode ? '#5A5A5A' : '#8A8A8A'
+                                circle: {
+                                    radius: 18,
+                                    stroke: isDarkMode ? '#2A2A2A' : '#FFFFFF',
+                                    color: isDarkMode ? '#5A5A5A' : '#8A8A8A'
+                                }
+                            },
+                            segmentNames: {
+                                fontSize: 24
                             }
                         },
-                        segmentNames: {
-                            fontSize: 24
+                        legend: {
+                            roundingValue: 2,
+                            fontSize: 63
+                        }
+                    }
+                },
+            }" :config-xy="{
+                ...ratingBreakdownBarConfig,
+                chart: {
+                    ...ratingBreakdownBarConfig.chart,
+                    grid: {
+                        ...ratingBreakdownBarConfig.chart.grid,
+                        labels: {
+                            ...ratingBreakdownBarConfig.chart.grid.labels,
+                            xAxisLabels: {
+                                ...ratingBreakdownBarConfig.chart.grid.labels.xAxisLabels,
+                                values: isDarkMode ? ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'] : ['★', '★★', '★★★', '★★★★', '★★★★★'],
+                                fontSize: isDarkMode ? 24 : 36,
+                                yOffset: isDarkMode ? 4 : -4
+                            }
                         }
                     },
-                    legend: {
-                        roundingValue: 2,
-                        fontSize: 63
-                    }
-                }
-            },
-        }" :config-xy="{
-            ...ratingBreakdownBarConfig,
-            chart: {
-                ...ratingBreakdownBarConfig.chart,
-                grid: {
-                    ...ratingBreakdownBarConfig.chart.grid,
                     labels: {
-                        ...ratingBreakdownBarConfig.chart.grid.labels,
-                        xAxisLabels: {
-                            ...ratingBreakdownBarConfig.chart.grid.labels.xAxisLabels,
-                            values: isDarkMode ? ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'] : ['★', '★★', '★★★', '★★★★', '★★★★★'],
-                            fontSize: isDarkMode ? 24 : 36,
-                            yOffset: isDarkMode ? 4 : -4
-                        }
+                        fontSize: 64
+                    },
+                    padding: {
+                        top: 100
                     }
                 },
-                labels: {
-                    fontSize: 64
-                },
-                padding: {
-                    top: 100
+                bar: {
+                    ...ratingBreakdownBarConfig.bar,
+                    labels: {
+                        ...ratingBreakdownBarConfig.bar.labels,
+                        offsetY: -36
+                    }
                 }
-            },
-            bar: {
-                ...ratingBreakdownBarConfig.bar,
-                labels: {
-                    ...ratingBreakdownBarConfig.bar.labels,
-                    offsetY: -36
-                }
-            }
-        }" />
+            }" />
+        </div>
     </div>
 </template>
