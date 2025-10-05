@@ -88,7 +88,7 @@ const config = computed(() => {
     downsample: { threshold: 500 },
     chart: {
       fontFamily: "inherit",
-      backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+      backgroundColor: 'transparent',
       color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
       height: 600,
       width: 1000,
@@ -256,12 +256,12 @@ const config = computed(() => {
       showSum: true,
       columnNames: { period: "Period", total: "Total" },
       th: { 
-        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         outline: "none" 
       },
       td: { 
-        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         outline: "none" 
       },
@@ -401,8 +401,8 @@ const configCumulativeAverage = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col p-4 bg-[#FFFFFF] dark:bg-[#2A2A2A] rounded">
-    <div class="flex flex-col gap-1 bg-white dark:bg-[#2A2A2A] pt-2 mb-2">
+  <div class="flex flex-col p-4 rounded">
+    <div class="flex flex-col gap-1 pt-2 mb-2">
       <label for="period" class="text-xs text-black dark:text-[#CCCCCC] px-2">Select period:</label>
       <select id="period" v-model="selectedPeriod" class="h-[36px] w-fit px-2">
         <option v-for="period in periods" :value="period.id">{{ period.name }}</option>
@@ -417,7 +417,7 @@ const configCumulativeAverage = computed(() => {
       @selectTimeLabel="selectTimeLabel"
     >
       <template #chart-background>
-        <div class="w-full h-full dark:bg-[#FFFFFF06]"/>
+        <div class="w-full h-full bg-gradient-to-br from-white dark:from-[#FFFFFF10] to-transparent"/>
       </template>
     </VueDataUi>
 
@@ -427,18 +427,21 @@ const configCumulativeAverage = computed(() => {
       :dataset="datasetCumulativeAverage"
       :config="configCumulativeAverage"
     >
-    <template #pattern="{ patternId }">
-      <VueUiPattern
-      :id="patternId"
-      name="grid"
-      :stroke="isDarkMode ? '#1f77b460' : '#FAFAFA'"
-      />
-    </template>
-    <template #source>
-      <div class="text-xs text-gray-500 text-left mt-3 pl-2">
-        Source: api.npmjs.org
-      </div>
-    </template>
+      <template #chart-background>
+        <div class="w-full h-full bg-gradient-to-br from-white dark:from-[#FFFFFF10] to-transparent"/>
+      </template>
+      <template #pattern="{ patternId }">
+        <VueUiPattern
+        :id="patternId"
+        name="grid"
+        :stroke="isDarkMode ? '#1f77b460' : '#FAFAFA'"
+        />
+      </template>
+      <template #source>
+        <div class="text-xs text-gray-500 text-left mt-3 pl-2">
+          Source: api.npmjs.org
+        </div>
+      </template>
     </VueDataUi>
   </div>
 </template>

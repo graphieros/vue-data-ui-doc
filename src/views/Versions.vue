@@ -12,6 +12,8 @@ import RepoStars from "../components/RepoStars.vue";
 import { darkenColor, lightenColor } from "vue-data-ui";
 import Downloads from "../components/Downloads.vue";
 import { BugIcon, GitForkIcon, StarFilledIcon, UserHeartIcon } from "vue-tabler-icons";
+import BaseCard from "../components/BaseCard.vue";
+import BaseLazy from "../components/BaseLazy.vue";
 
 const globalConfig = useConfig()
 
@@ -205,7 +207,7 @@ const heatmapConfig = computed(() => {
     title: {
       textAlign: "left",
       text: "Downloads heatmap",
-      color: isDarkMode.value ? "#666666" : "#2D353C",
+      color: isDarkMode.value ? "#9A9A9A" : "#2D353C",
       fontSize: 16,
       bold: true,
       margin: "0 0 6px 0",
@@ -311,7 +313,7 @@ const histoConfig = computed(() => {
     title: {
       textAlign: "left",
       text: "NPM downloads",
-      color: isDarkMode.value ? "#666666" : "#2D353C",
+      color: isDarkMode.value ? "#9A9A9A" : "#2D353C",
       fontSize: 16,
       bold: true,
       margin: "0 0 6px 0",
@@ -723,7 +725,7 @@ const sparklineConfig = ref({
 
 const darkModeSparklineConfig = ref({
   style: {
-    backgroundColor: "#1A1A1A",
+    backgroundColor: "transparent",
     fontFamily: "inherit",
     line: {
       color: "#42d392",
@@ -759,7 +761,7 @@ const darkModeSparklineConfig = ref({
     title: {
       show: true,
       textAlign: "left",
-      color: "#666666",
+      color: "#9A9A9A",
       fontSize: 16,
       bold: true,
       text: "Daily downloads - Last 100 days"
@@ -811,7 +813,7 @@ const sparklineSkeletonConfig = computed(() => {
   return {
     type: "sparkline",
     style: {
-      backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+      backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
       sparkline: {
         color: isDarkMode.value ? '#5c5c5c' : '#e1e5e8',
       }
@@ -823,7 +825,7 @@ const sparklineSkeletonConfig = computed(() => {
 const skeletonHeatmapConfig= ref({
     type: "heatmap",
     style: {
-        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
+        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
         heatmap: {
           cellsX: 26,
           cellsY: 7,
@@ -838,7 +840,7 @@ const tableConfigDarkMode = ref({
     rowsPerPage: 25,
     style: {
         th: {
-            backgroundColor: "#1a1a1a",
+            backgroundColor: "#2A2A2A",
             color:"#c4c9cc",
             outline: "1px solid #7b8185",
             selected: {
@@ -848,7 +850,7 @@ const tableConfigDarkMode = ref({
         },
         rows: {
             even: {
-                backgroundColor: "#1a1a1a",
+                backgroundColor: "#2A2A2A",
                 color: "#c4c9cc",
                 selectedCell: {
                     backgroundColor: '#42d392',
@@ -860,7 +862,7 @@ const tableConfigDarkMode = ref({
                 }
             },
             odd: {
-                backgroundColor: "#2A2A2A",
+                backgroundColor: "#3A3A3A",
                 color: "#FFFFFF",
                 selectedCell: {
                     backgroundColor: '#5de8aa',
@@ -879,7 +881,7 @@ const tableConfigDarkMode = ref({
             accentColor: "#42d392"
         },
         dropdowns: {
-            backgroundColor: "#1a1a1a",
+            backgroundColor: "#2A2A2A",
             color: "#c4c9cc",
             icons: {
                 selected: {
@@ -893,12 +895,12 @@ const tableConfigDarkMode = ref({
             }
         },
         infoBar: {
-            backgroundColor: "#1a1a1a",
+            backgroundColor: "#2A2A2A",
             color: "#FFFFFF"
         },
         pagination: {
             buttons: {
-                backgroundColor: "#1a1a1a",
+                backgroundColor: "#2A2A2A",
                 color: "#E1E5E8",
                 opacityDisabled: 0.3
             },
@@ -921,15 +923,15 @@ const tableConfigDarkMode = ref({
         },
         chart: {
             modal: {
-                backgroundColor: "#1a1a1a",
+                backgroundColor: "#2A2A2A",
                 color: "#E1E5E8",
                 buttons: {
                   selected: {
                       backgroundColor: "#42d392",
-                      color: "#1a1a1a"
+                      color: "#2A2A2A"
                     },
                     unselected: {
-                      backgroundColor: "#1a1a1a",
+                      backgroundColor: "#2A2A2A",
                       color: "#E1E5E8"
                     }
                 }
@@ -942,7 +944,7 @@ const tableConfigDarkMode = ref({
                 },
                 bar: {
                     fill: "#42d392",
-                    stroke: "#1a1a1a"
+                    stroke: "#2A2A2A"
                 },
                 line: {
                     stroke: "#42d392",
@@ -1294,7 +1296,8 @@ const sparklineConfigForReleases = computed(() => {
   return {
     type: 'bar',
     style: {
-      backgroundColor: isDarkMode.value ? '#1E1E1E': '#f3f4f6',
+      animation: { show: false },
+      backgroundColor: 'transparent',
       color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
       bar: {
         borderRadius: 0,
@@ -1544,7 +1547,7 @@ const xyCanvasConfig = computed(() => {
             backgroundOpacity: 0
           },
           legend: {
-            backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+            backgroundColor: 'transparent',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
           },
           title: {
@@ -1673,7 +1676,7 @@ const treemapConfig = computed(() => {
     },
     style: {
       chart: {
-        backgroundColor: isDarkMode.value ? '#1A1A1A' : '#F3F4F6',
+        backgroundColor: 'transparent',
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         tooltip: {
           backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
@@ -1701,8 +1704,9 @@ const treemapConfig = computed(() => {
         title: {
           text: 'Updates per component',
           color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-          textAlign: 'left',
-          paddingLeft: 12
+          textAlign: 'center',
+          paddingLeft: 12,
+          fontSize: 20
         },
         legend: {
           show: false,
@@ -1972,179 +1976,155 @@ async function impactPatch() {
           </div>
           <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 
-          <div class="grid grid-cols-2 align-center gap-4 mx-auto max-w-[525px] px-4 justify-center">
-          <button v-for="kpi in KPIS" :class="`button-kpi-${kpi.name.replaceAll(' ', '-')} rounded-md hover:shadow-xl transition-all`"  >
-            <a :href="kpi.link" target="_blank" class="kpi-wrapper">
-              <VueDataUi
-                :class="`${kpi.name.replaceAll(' ', '_')}${isDarkMode ? '-dark' : ''}`"
-                component="VueUiKpi" 
-                :dataset="kpi.value"
-                :config="{
-                  backgroundColor: 'transparent',
-                  layoutClass: 'p-4 rounded-md shadow-md relative overflow-hidden',
-                  titleColor: '#1A1A1A',
-                  titleClass: 'text-left pl-1 capitalize',
-                  valueClass: 'tabular-nums pl-0 sm:pl-6 !drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]',
-                  analogDigits: {
-                    show: true,
-                    height: 40,
-                    color: lightenColor(kpi.color, 0.4),
-                    skeletonColor: '#1A1A1A20'
-                  }
-                }"
-              >
-                <template #title>
-                  <!-- <div class="absolute top-0 text-xs" :style="{ color: kpi.color }">
-                    {{ kpi.name }}
-                  </div> -->
-                  <!-- <div class="absolute top-1/2 -translate-y-1/2 scale-125 flex-row place-items-center gap-2">
-                    <component :is="kpi.icon" :color="kpi.color" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
-                  </div> -->
-                  <div class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(2,2)">
-                    <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.3)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
-                  </div>
-                  <div v-if="kpi.name === 'stargazers count'" class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.1,1.1)">
-                    <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
-                  </div>
-                  <div v-if="kpi.name === 'stargazers count'" class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(0.3,0.3)">
-                    <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.5)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
-                  </div>
-                  <div v-else class="thin-icon absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(2, 2)">
-                    <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
-                  </div>
-                  
-                </template>
-            </VueDataUi>
-            </a>
-          </button>
-        </div>
+          <BaseLazy>
+            <BaseCard class="mx-auto max-w-[525px]">
+              <div class="grid grid-cols-2 align-center gap-4 justify-center">
+                <button v-for="kpi in KPIS" :class="`button-kpi-${kpi.name.replaceAll(' ', '-')} rounded-md hover:shadow-xl transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"  >
+                  <a :href="kpi.link" target="_blank" class="kpi-wrapper">
+                    <VueDataUi
+                      :class="`${kpi.name.replaceAll(' ', '_')}${isDarkMode ? '-dark' : ''}`"
+                      component="VueUiKpi" 
+                      :dataset="kpi.value"
+                      :config="{
+                        backgroundColor: 'transparent',
+                        layoutClass: 'p-4 rounded-md shadow-md relative overflow-hidden',
+                        titleColor: '#1A1A1A',
+                        titleClass: 'text-left pl-1 capitalize',
+                        valueClass: 'tabular-nums pl-0 sm:pl-6 !drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]',
+                        analogDigits: {
+                          show: true,
+                          height: 40,
+                          color: lightenColor(kpi.color, 0.4),
+                          skeletonColor: '#1A1A1A20'
+                        }
+                      }"
+                    >
+                      <template #title>
+                        <!-- <div class="absolute top-0 text-xs" :style="{ color: kpi.color }">
+                          {{ kpi.name }}
+                        </div> -->
+                        <!-- <div class="absolute top-1/2 -translate-y-1/2 scale-125 flex-row place-items-center gap-2">
+                          <component :is="kpi.icon" :color="kpi.color" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
+                        </div> -->
+                        <div class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(2,2)">
+                          <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.3)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
+                        </div>
+                        <div v-if="kpi.name === 'stargazers count'" class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.1,1.1)">
+                          <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
+                        </div>
+                        <div v-if="kpi.name === 'stargazers count'" class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(0.3,0.3)">
+                          <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.5)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
+                        </div>
+                        <div v-else class="thin-icon absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(2, 2)">
+                          <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
+                        </div>
+                        
+                      </template>
+                  </VueDataUi>
+                  </a>
+                </button>
+              </div>
+            </BaseCard>
+          </BaseLazy>
 
             <div class="max-w-[800px] mx-auto px-6">
-                <div class="max-w-[500px] mx-auto my-6">
-                    <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
-                    <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
-                    <VueUiSparkline 
-                      v-if="!isLoadingLine && !!data" 
-                      :dataset="parsedData" 
-                      :config="isDarkMode ? {
-                        ...darkModeSparklineConfig,
-                        style: {
-                          ...darkModeSparklineConfig.style,
-                          scaleMax: Math.max(...parsedData.map(d => d.value))
-                        }
+              <BaseLazy>
+                <BaseCard class="mx-auto mt-6 max-w-[525px]">
+                  <div class="max-w-[500px]">
+                      <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
+                      <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
+                      <VueUiSparkline 
+                        v-if="!isLoadingLine && !!data" 
+                        :dataset="parsedData" 
+                        :config="isDarkMode ? {
+                          ...darkModeSparklineConfig,
+                          style: {
+                            ...darkModeSparklineConfig.style,
+                            scaleMax: Math.max(...parsedData.map(d => d.value))
+                          }
+                          } : {
+                            ...sparklineConfig
+                          }">
+                        <template #source>
+                          <div class="text-xs text-gray-500 text-right">
+                            Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
+                          </div>
+                        </template>
+                      </VueUiSparkline>
+                      <VueUiSparkline 
+                        v-if="!isLoadingLine && !!data" 
+                        :dataset="usableWeekData" 
+                        :config="isDarkMode ? {
+                          ...darkModeSparklineConfig, 
+                          type: 'bar', 
+                          style: {
+                            ...darkModeSparklineConfig.style,
+                            scaleMax: Math.max(...usableWeekData.map(d => d.value)),
+                            line: {
+                              ...darkModeSparklineConfig.style.line, 
+                              color: '#5f8bee'
+                            }, 
+                            area: {
+                              ...darkModeSparklineConfig.style.area, 
+                              color: '#5f8bee'
+                            }, 
+                            dataLabel: {
+                              ...darkModeSparklineConfig.style.dataLabel, 
+                              color: '#5f8bee'
+                            }, 
+                            verticalIndicator: {
+                              ...darkModeSparklineConfig.style.verticalIndicator, 
+                              color: '#42d392'
+                            }, 
+                            title: {
+                              ...darkModeSparklineConfig.style.title, 
+                              text: 'Weekly downloads - Last 52 weeks'
+                            }
+                          }
                         } : {
-                          ...sparklineConfig
-                        }">
-                      <template #source>
-                        <div class="text-xs text-gray-500 text-right">
-                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
-                        </div>
-                      </template>
-                    </VueUiSparkline>
-                    <VueUiSparkline 
-                      v-if="!isLoadingLine && !!data" 
-                      :dataset="usableWeekData" 
-                      :config="isDarkMode ? {
-                        ...darkModeSparklineConfig, 
-                        type: 'bar', 
-                        style: {
-                          ...darkModeSparklineConfig.style,
-                          scaleMax: Math.max(...usableWeekData.map(d => d.value)),
-                          line: {
-                            ...darkModeSparklineConfig.style.line, 
-                            color: '#5f8bee'
-                          }, 
-                          area: {
-                            ...darkModeSparklineConfig.style.area, 
-                            color: '#5f8bee'
-                          }, 
-                          dataLabel: {
-                            ...darkModeSparklineConfig.style.dataLabel, 
-                            color: '#5f8bee'
-                          }, 
-                          verticalIndicator: {
-                            ...darkModeSparklineConfig.style.verticalIndicator, 
-                            color: '#42d392'
-                          }, 
-                          title: {
-                            ...darkModeSparklineConfig.style.title, 
-                            text: 'Weekly downloads - Last 52 weeks'
+                          ...sparklineConfig, 
+                          type: 'bar', 
+                          style: {
+                            ...sparklineConfig.style, 
+                            line: {
+                              ...sparklineConfig.style.line, 
+                              color: '#5f8bee'
+                            }, 
+                            area: {
+                              ...sparklineConfig.style.area, 
+                              color: '#5f8bee'
+                            }, 
+                            title: {
+                              ...sparklineConfig.style.title, 
+                              text: 'Weekly downloads - Last 52 weeks'
+                            }
                           }
-                        }
-                      } : {
-                        ...sparklineConfig, 
-                        type: 'bar', 
-                        style: {
-                          ...sparklineConfig.style, 
-                          line: {
-                            ...sparklineConfig.style.line, 
-                            color: '#5f8bee'
-                          }, 
-                          area: {
-                            ...sparklineConfig.style.area, 
-                            color: '#5f8bee'
-                          }, 
-                          title: {
-                            ...sparklineConfig.style.title, 
-                            text: 'Weekly downloads - Last 52 weeks'
-                          }
-                        }
-                      } ">
-                      <template #source>
-                        <div class="text-xs text-gray-500 text-right">
-                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
-                        </div>
-                      </template>
-                    </VueUiSparkline>
+                        } ">
+                        <template #source>
+                          <div class="text-xs text-gray-500 text-right">
+                            Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
+                          </div>
+                        </template>
+                      </VueUiSparkline>
                   </div>
+                </BaseCard>
+              </BaseLazy>
 
-                  <div class="my-12">
+              <BaseLazy>
+                <BaseCard class="max-w-[525px] mx-auto mt-6">
                   <RepoStars />
-                </div>
-                  <!-- <div class="max-w-[300px] mx-auto px-6 mb-6">
-                    <div class="pb-2 mb-2">
-                      Current NPM score:
-                    </div>
-                    <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkbar', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' }}" />
-                    <VueUiSparkbar v-else-if="sparkbarDataset.length" :dataset="sparkbarDataset" :config="sparkbarConfig">
-                      <template #source>
-                        <div class="text-xs text-gray-500 text-right">
-                          Source: <a class="text-app-blue underline" href="https://registry.npmjs.org/-/v1/search?text=vue-data-ui">registry.npmjs.org</a>
-                        </div>
-                      </template>
-                    </VueUiSparkbar>
-                </div> -->
-                <!-- <div class="flex flew-row gap-2 justify-center mb-6">
-                  <div class="w-[100px] sm:w-[150px]" v-for="(wheel, i) in sparkbarDataset">
-                    <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'wheel', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6'} }" />
-                    <div v-else class="flex place-items-center flex-col">
-                      <div class="w-full py-6 flex justify-end pr-2">
-                        <VueUiGizmo 
-                          :dataset="wheel.value"
-                          :config="{
-                            size: 100,
-                            textColor: isDarkMode ? '#CCCCCC' : '#1A1A1A',
-                            stroke: isDarkMode ? '#8A8A8A': '#4A4A4A'
-                          }"
-                        />
-                      </div>
-                      <VueUiWheel :dataset="{ percentage: wheel.value }" :config="{...wheelConfig, style: {...wheelConfig.style, chart: {...wheelConfig.style.chart, title: {...wheelConfig.style.chart.title, text: i === 0 ? 'Quality' : i === 1 ? 'Popularity' : 'Maintenance'}}}}"/>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- <div class="flex flew-row gap-2 justify-center mb-6">
-                  <div class="w-[100px] sm:w-[150px]" v-for="(bar, i) in sparkbarDataset">
-                    <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'bar3d', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' } }"/>
-                    <VueUi3dBar v-else :dataset="{ percentage: bar.value }" :config="{...config3dBar, style: {...config3dBar.style, chart: {...config3dBar.style.chart}}}"/>
-                  </div>
-                </div> -->
+                </BaseCard>
+              </BaseLazy>
 
-                <div class="w-full max-w-[800] mx-auto py-6">
+              <BaseLazy>
+                <BaseCard class="max-w-[800px] mx-auto mt-6">
                   <Downloads/>
-                </div>
+                </BaseCard>
+              </BaseLazy>
 
-                <div class="max-w-[800px] mx-auto mb-6" v-if="!!data && !isLoadingLine">
-                  <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkHistogram', style: { backgroundColor: isDarkMode ? '#1A1A1A' : '#F3F4F6' } }"/>
+              <BaseLazy>
+                <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="!!data && !isLoadingLine">
+                  <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkHistogram', style: { backgroundColor: isDarkMode ? '#2A2A2A' : '#F3F4F6' } }"/>
                   <VueDataUi v-else component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`">
                     <template #source>
                         <div class="text-xs text-gray-500 text-left">
@@ -2152,9 +2132,11 @@ async function impactPatch() {
                         </div>
                       </template>
                   </VueDataUi>
-                </div>
+                </BaseCard>
+              </BaseLazy>
 
-                <div class="max-w-[800px] mx-auto" v-if="usableHeatmapData.length">
+              <BaseLazy>
+                <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="usableHeatmapData.length">
                   <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig">
                     <template #source>
@@ -2163,8 +2145,11 @@ async function impactPatch() {
                         </div>
                       </template>
                   </VueUiHeatmap>
-                </div>
-                <div class="max-w-[800px] mx-auto my-6" v-if="!isLoadingLine">
+                </BaseCard>
+              </BaseLazy>
+
+              <BaseLazy>
+                <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="!isLoadingLine">
                   <VueDataUi v-if="xyDataset.length" component="VueUiXyCanvas" :dataset="xyDataset" :config="xyCanvasConfig" :key="`xystep_${step}`">
                     <template #source>
                         <div class="text-xs text-gray-500 text-left pl-2">
@@ -2172,21 +2157,11 @@ async function impactPatch() {
                         </div>
                       </template>
                   </VueDataUi>
-                </div>
+                </BaseCard>
+              </BaseLazy>
 
-                <!-- <div class="max-w-[400px] mx-auto my-6 flex flex-col gap-2">
-                  Overall trend
-                  <div class="w-full border border-gray-500 shadow-md rounded-md p-2">
-                    <VueDataUi component="VueUiSparkTrend" v-if="!!data" :dataset="trendData" :config="trendConfig">
-                      <template #source>
-                        <div class="text-xs text-gray-500 text-left mt-3 pl-2">
-                          Source: <a class="text-app-blue underline" :href="url">api.npmjs.org</a>
-                        </div>
-                      </template>
-                    </VueDataUi>
-                  </div>
-                </div> -->
-                <div class="max-w-[800px] mx-auto my-8 p-6 dark:bg-[#1E1E1E] rounded-md" v-if="sparklineReleases.length">
+              <BaseLazy>
+                <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="sparklineReleases.length">
                   <VueUiSparkline :dataset="versionsReleases" :config="sparklineConfigForReleases">
                     <template #source>
                         <div class="text-xs text-gray-500 text-right mt-3 pl-2">
@@ -2196,24 +2171,6 @@ async function impactPatch() {
                   </VueUiSparkline>
                   <div style="height: 48px"/>
                   <div class="w-full" v-if="showWC">
-                    <!-- <VueDataUi v-if="done" component="VueUiCirclePack" :dataset="wordCloudDataset" :config="{
-                      theme: isDarkMode ? 'celebrationNight' : 'celebration',
-                      style: {
-                        chart: {
-                          circles: {
-                            strokeWidth: 0,
-                            labels: {
-                              name: {
-                                offsetY: 10
-                              },
-                              value: {
-                                show: false
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }"/> -->
                     <VueDataUi v-if="done" component="VueUiWordCloud" :dataset="wordCloudDataset" :config="wordCloudConfig">
                       <template #source>
                         <div class="text-xs text-gray-500 text-right mt-3 pl-2">
@@ -2222,81 +2179,90 @@ async function impactPatch() {
                       </template>
                     </VueDataUi>
                   </div>
-                </div>
+                </BaseCard>
+              </BaseLazy>
 
-                <div class="w-full dark:bg-[#1E1E1E] p-4">
-                  Releases:
-                </div>
-                <div class="w-full max-h-[500px] overflow-y-auto dark:bg-[#1E1E1E] p-4">
-                  <div class="flex flex-row gap-2 mb-6">
-                    <label>
-                      Filter by version
-                      <input type="checkbox" v-model="enableSem" @change="resetSem">
-                    </label>
-                    <template v-if="enableSem">
-                      <label>
-                        Major
-                        <select v-model="major.ver" class="w-[64px]" @change="impactMinor">
-                          <option v-for="o in major.available">{{ o }}</option>
-                        </select>
-                      </label>
-                      <label>
-                        Minor
-                        <select v-model="minor.ver" class="w-[64px]" @change="impactPatch">
-                          <option v-for="o in minor.available">{{ o }}</option>
-                        </select>
-                      </label>
-                      <label>
-                        Patch
-                        <select v-model="patch.ver" class="w-[64px]">
-                          <option v-for="o in patch.available">{{ o }}</option>
-                        </select>
-                      </label>
-                    </template>
+              <BaseLazy>
+                <BaseCard class="max-w-[800px] mx-auto mt-6">
+                  <div class="w-full p-4 text-[24px]">
+                    Changelog    
                   </div>
-                    <ul>
-                        <li v-for="log in filteredVersions" class="border-l border-gray-500 mb-4">
-                          <div class="bg-gray-200 dark:bg-[#FFFFFF10] pl-6 py-2 mb-2">
-                            {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
-                          </div>
-                            <div class="pl-6" v-if="log.updates">
-                                <template v-for="update in log.updates">
-                                    <div class="text-gray-500">
-                                          <a class="text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
-                                            <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                                            {{ update.component }}</a>
-                                        <span v-else-if="update.component" class="text-app-blue flex flex-row gap-2 flex-wrap">
-                                          <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
-                                          {{ update.component }}
-                                        </span>
-                                        {{ update.description }}
-                                    </div>
-                                    <br>
-                                </template>
+                  <div class="w-full max-h-[500px] overflow-y-auto p-4">
+                    <div class="flex flex-row gap-2 mb-6">
+                      <label>
+                        Filter by version
+                        <input type="checkbox" v-model="enableSem" @change="resetSem">
+                      </label>
+                      <template v-if="enableSem">
+                        <label>
+                          Major
+                          <select v-model="major.ver" class="w-[64px]" @change="impactMinor">
+                            <option v-for="o in major.available">{{ o }}</option>
+                          </select>
+                        </label>
+                        <label>
+                          Minor
+                          <select v-model="minor.ver" class="w-[64px]" @change="impactPatch">
+                            <option v-for="o in minor.available">{{ o }}</option>
+                          </select>
+                        </label>
+                        <label>
+                          Patch
+                          <select v-model="patch.ver" class="w-[64px]">
+                            <option v-for="o in patch.available">{{ o }}</option>
+                          </select>
+                        </label>
+                      </template>
+                    </div>
+                      <ul>
+                          <li v-for="log in filteredVersions" class="border-l border-gray-500 mb-4">
+                            <div class="bg-gray-200 dark:bg-[#FFFFFF10] pl-6 py-2 mb-2">
+                              {{ log.date }} | <span class="text-black dark:text-app-green">{{ log.version }}</span><br>
                             </div>
-                        </li>
-                    </ul>
-                </div>
+                              <div class="pl-6" v-if="log.updates">
+                                  <template v-for="update in log.updates">
+                                      <div class="text-gray-500">
+                                            <a class="text-app-blue hover:underline text-bold flex flex-row flex-wrap gap-2" v-if="update.component && update.link" :href="update.link">
+                                              <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                                              {{ update.component }}</a>
+                                          <span v-else-if="update.component" class="text-app-blue flex flex-row gap-2 flex-wrap">
+                                            <VueUiIcon :name="useIconMap(update.component)" :stroke="isDarkMode ? '#CCCCCC' : '#1A1A1A'"/>
+                                            {{ update.component }}
+                                          </span>
+                                          {{ update.description }}
+                                      </div>
+                                      <br>
+                                  </template>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+                </BaseCard>
+              </BaseLazy>
 
-                <div class="w-full p-4 bg-gray-200 dark:bg-[#FFFFFF10] shadow-md rounded-md my-6 treemap-wrapper">
-                  <VueDataUi v-if="versionsList.length" component="VueUiTreemap" :dataset="versionTreemap" :config="treemapConfig">
-                    <template #rect="{ rect, fontSize }">
-                      <div class="h-full w-full flex flex-col place-items-center justify-center treemap-icon">
-                        <VueUiIcon :name="useIconMap(rect.name)" stroke="white"/>
-
-                      </div>
-                    </template>
-                    <template #source>
-                        <div class="text-xs text-gray-500 text-right pr-3">
-                          Source: Vue Data UI
+              <BaseLazy>
+                <BaseCard class="mx-auto max-w-[800px] mt-6">
+                    <VueDataUi v-if="versionsList.length" component="VueUiTreemap" :dataset="versionTreemap" :config="treemapConfig">
+                      <template #rect="{ rect, fontSize }">
+                        <div class="h-full w-full flex flex-col place-items-center justify-center treemap-icon">
+                          <VueUiIcon :name="useIconMap(rect.name)" stroke="white"/>
+    
                         </div>
                       </template>
-                  </VueDataUi>
-                </div>
+                      <template #source>
+                          <div class="text-xs text-gray-500 text-right pr-3">
+                            Source: Vue Data UI
+                          </div>
+                        </template>
+                    </VueDataUi>
+                </BaseCard>
+              </BaseLazy>
 
-                <div class="w-full max-w-[800px] mx-auto mt-12">
-                  <VueUiTable :key="`table_${step}`" v-if="!isLoadingLine && !!data" :dataset="tableDataset" :config="isDarkMode ? tableConfigDarkMode: tableConfig"/>
-                </div>
+              <BaseLazy>
+                <BaseCard class="mx-auto max-w-[800px] mt-6" v-if="!isLoadingLine && !!data">
+                  <VueUiTable :key="`table_${step}`" :dataset="tableDataset" :config="isDarkMode ? tableConfigDarkMode: tableConfig"/>
+                </BaseCard>
+              </BaseLazy>
 
                 <div class="w-full max-w-[800] mx-auto py-6">
                   <GithubIssues/>
