@@ -756,7 +756,7 @@ const cutNullValues = ref(false);
 const xyConfig = computed(() => {
     return {
         chart: {
-            backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+            backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
             padding: {
                 top: 20,
@@ -907,7 +907,7 @@ const verticalBarConfig = computed(() => {
     return {
         style: {
             chart: {
-                backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+                backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                 layout: {
                     bars: {
