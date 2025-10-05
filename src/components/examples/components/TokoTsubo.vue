@@ -7,7 +7,7 @@ defineProps(["componentName", "dataset", "config", "id", "link", "hideMaker"])
 </script>
 
 <template>
-    <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow">
+    <div class="w-full">
         <BaseDocHeaderActions
             :targetDoc="link"
             :targetMaker="componentName"

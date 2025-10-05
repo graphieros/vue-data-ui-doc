@@ -20,6 +20,7 @@ import SalesBar from "./components/SalesBar.vue";
 import IceCubes from "./components/IceCubes.vue";
 import ExampleTreemap from "./components/ExampleTreemap.vue";
 import Bar3dVersion from "./components/Bar3dVersion.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const lang = computed(() => store.lang);
@@ -161,309 +162,367 @@ onMounted(() => {
 <template>
     <div class="mt-12 flex flex-col gap-6">
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="bar3dDataset"
-                    :config="bar3dConfig"
-                    componentName="VueUi3dBar"
-                    link="vue-ui-3d-bar"
-                    id="3d"
-                >
-                <template #icon>
-                    <VueUiIcon name="chart3dBar" stroke="#5f8bee"/>
-                </template>    
-            </TokoTsubo>
-                <Bar3dVersion ref="bar3d" class="mt-12"/>
-            </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="revenueDonutDataset"
-                    :config="revenueDonutConfig"
-                    componentName="VueUiDonut"
-                    link="vue-ui-donut"
-                    id="donut1"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartDonut" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <RevenueDonut ref="revenueDonut" class="mt-12" />
-            </div>
-        </div>
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="max-h-[800px] w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="evolutionDataset"
-                    :config="evolutionConfig"
-                    componentName="VueUiXy"
-                    link="vue-ui-xy"
-                    id="xy1"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartLine" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                    
-                <ExampleXyEvolutionArea ref="evolutionArea" class="mt-12"/>
-            </div>
-        </div>
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="phoneCallsDataset"
-                    :config="phoneCallsConfig"
-                    componentName="VueUiXy"
-                    link="vue-ui-xy"
-                    id="xy2"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartBar" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <ExampleXy ref="phoneCalls" class="mt-12"/>
-            </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="revenueBreakDataset"
-                    :config="revenueBreakConfig"
-                    componentName="VueUiNestedDonuts"
-                    link="vue-ui-nested-donuts"
-                    id="donut2"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartNestedDonuts" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <RevenueBreakdown ref="revenueBreak" class="mt-12" />
-            </div>
-        </div>
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="customerOsDataset"
-                    :config="customerOsConfig"
-                    componentName="VueUiWaffle"
-                    link="vue-ui-waffle"
-                    id="waffle"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartWaffle" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <CustomerOs ref="customerOs" class="mt-12" />
-            </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="sprDataset"
-                    :config="sprConfig"
-                    componentName="VueUiRadar"
-                    link="vue-ui-radar"
-                    id="spr"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartRadar" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <ServicesPerRegion ref="spr" class="mt-12" />
-            </div>
-        </div>
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="temperaturesDataset"
-                    :config="temperaturesConfig"
-                    componentName="VueUiHeatmap"
-                    link="vue-ui-heatmap"
-                    id="heat"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartHeatmap" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <ParisTemperatures ref="temperatures" class="mt-12" />
-            </div>
-        </div>
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="worldDataset"
-                    :config="worldConfig"
-                    componentName="VueUiGauge"
-                    link="vue-ui-gauge"
-                    id="world"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartGauge" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <WorldSatisfaction ref="world" class="mt-12" />
-            </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="averageOccupancyDataset"
-                    :config="averageOccupancyConfig"
-                    componentName="VueUiOnion"
-                    link="vue-ui-onion"
-                    id="averageOcc"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartOnion" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <AverageOccupancy ref="averageOccupancy" class="mt-12" />
-            </div>
-        </div>
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="worldSalesDataset"
-                    :config="worldSalesConfig"
-                    componentName="VueUiChestnut"
-                    link="vue-ui-chestnut"
-                    id="chest"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartChestnut" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <WorldSales ref="worldSales" class="mt-12" />
-            </div>
-        </div>
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="salesProjectionsDataset"
-                    :config="salesProjectionsConfig"
-                    componentName="VueUiDonutEvolution"
-                    link="vue-ui-donut-evolution"
-                    id="sales"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartDonutEvolution" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <SalesProjections ref="salesProjections" class="mt-12">
-                    <foreignObject
-                    :x="58"
-                    :y="0"
-                    height="80"
-                    width="80"
-                    style="overflow: visible"
+            <BaseCard class="w-full sm:w-1/2">            
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="bar3dDataset"
+                        :config="bar3dConfig"
+                        componentName="VueUi3dBar"
+                        link="vue-ui-3d-bar"
+                        id="3d"
                     >
-                    <div style="width:80px;">
-                        <DetailedSatisfaction :titleFontSize="8" :subtitleFontSize="8" :value="53.2" title="World" mainTitle="Retail to Service"/>
-                    </div>
-                </foreignObject>
-            </SalesProjections>
-            </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="detailedSatisfactionDataset"
-                    :config="detailedSatisfactionConfig"
-                    componentName="VueUiWheel"
-                    link="vue-ui-wheel"
-                    id="wheel"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartWheel" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <div class="grid grid-cols-2 gap-0 mt-12 place-content-center place-items-center w-full">
-                    <div class="w-full max-w-[200px]">
-                        <DetailedSatisfaction :value="87.6" title="Europe 2025" :isModel="true" ref="detailedSatisfaction" />
-                    </div>
-                    <div class="w-full max-w-[200px]">
-                        <DetailedSatisfaction :value="83.2" title="America 2025" />
-                    </div>
-                    <div class="w-full max-w-[200px]">
-                        <DetailedSatisfaction :value="72.7" title="Asia 2025" />
-                    </div>
-                    <div class="w-full max-w-[200px]">
-                        <DetailedSatisfaction :value="68.9" title="Africa 2025" />
+                        <template #icon>
+                            <VueUiIcon name="chart3dBar" stroke="#5f8bee"/>
+                        </template>    
+                    </TokoTsubo>
+
+                    <Bar3dVersion ref="bar3d" class="mt-4"/>
+
+                </div>
+            </BaseCard>
+
+            <BaseCard class="w-full sm:w-1/2">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="revenueDonutDataset"
+                        :config="revenueDonutConfig"
+                        componentName="VueUiDonut"
+                        link="vue-ui-donut"
+                        id="donut1"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartDonut" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+
+                    <RevenueDonut ref="revenueDonut" class="mt-4" />
+                </div>
+            </BaseCard>
+        </div>
+        
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <BaseCard class="w-full">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="evolutionDataset"
+                        :config="evolutionConfig"
+                        componentName="VueUiXy"
+                        link="vue-ui-xy"
+                        id="xy1"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartLine" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    
+                    <ExampleXyEvolutionArea ref="evolutionArea" class="mt-4"/>
+                </div>
+            </BaseCard>
+        </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <BaseCard class="w-full">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="phoneCallsDataset"
+                        :config="phoneCallsConfig"
+                        componentName="VueUiXy"
+                        link="vue-ui-xy"
+                        id="xy2"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartBar" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    
+                    <ExampleXy ref="phoneCalls" class="mt-12"/>
+                </div>
+            </BaseCard>
+
+            <BaseCard class="w-full">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="revenueBreakDataset"
+                        :config="revenueBreakConfig"
+                        componentName="VueUiNestedDonuts"
+                        link="vue-ui-nested-donuts"
+                        id="donut2"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartNestedDonuts" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <RevenueBreakdown ref="revenueBreak" class="mt-12" />
+                </div>
+            </BaseCard>
+        </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <BaseCard class="w-full">
+                <div class=" flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="customerOsDataset"
+                        :config="customerOsConfig"
+                        componentName="VueUiWaffle"
+                        link="vue-ui-waffle"
+                        id="waffle"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartWaffle" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <CustomerOs ref="customerOs" class="mt-4"/>
+                </div>
+            </BaseCard>
+
+            <BaseCard class="w-full">
+                <div class=" flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="sprDataset"
+                        :config="sprConfig"
+                        componentName="VueUiRadar"
+                        link="vue-ui-radar"
+                        id="spr"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartRadar" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <ServicesPerRegion ref="spr" class="mt-4" />
+                </div>
+            </BaseCard>
+        </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <BaseCard class="w-full">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="temperaturesDataset"
+                        :config="temperaturesConfig"
+                        componentName="VueUiHeatmap"
+                        link="vue-ui-heatmap"
+                        id="heat"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartHeatmap" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <ParisTemperatures ref="temperatures" class="mt-4" />
+                </div>
+            </BaseCard>
+        </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <BaseCard class="w-full sm:w-1/2">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="worldDataset"
+                        :config="worldConfig"
+                        componentName="VueUiGauge"
+                        link="vue-ui-gauge"
+                        id="world"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartGauge" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <WorldSatisfaction ref="world" class="mt-4" />
+                </div>
+            </BaseCard>
+
+            <BaseCard class="w-full sm:w-1/2">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="averageOccupancyDataset"
+                        :config="averageOccupancyConfig"
+                        componentName="VueUiOnion"
+                        link="vue-ui-onion"
+                        id="averageOcc"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartOnion" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <AverageOccupancy ref="averageOccupancy" class="mt-4" />
+                </div>
+            </BaseCard>
+        </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <BaseCard class="w-full">       
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="worldSalesDataset"
+                        :config="worldSalesConfig"
+                        componentName="VueUiChestnut"
+                        link="vue-ui-chestnut"
+                        id="chest"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartChestnut" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <WorldSales ref="worldSales" />
+                </div>
+            </BaseCard>
+        </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <BaseCard class="w-full sm:w-1/2">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="salesProjectionsDataset"
+                        :config="salesProjectionsConfig"
+                        componentName="VueUiDonutEvolution"
+                        link="vue-ui-donut-evolution"
+                        id="sales"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartDonutEvolution" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <SalesProjections ref="salesProjections" class="mt-4">
+                        <foreignObject
+                        :x="58"
+                        :y="0"
+                        height="80"
+                        width="80"
+                        style="overflow: visible"
+                        >
+                        <div style="width:80px;">
+                            <DetailedSatisfaction :titleFontSize="8" :subtitleFontSize="8" :value="53.2" title="World" mainTitle="Retail to Service"/>
+                        </div>
+                    </foreignObject>
+                </SalesProjections>
+                </div>
+            </BaseCard>
+
+            <BaseCard class="w-full sm:w-1/2">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="detailedSatisfactionDataset"
+                        :config="detailedSatisfactionConfig"
+                        componentName="VueUiWheel"
+                        link="vue-ui-wheel"
+                        id="wheel"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartWheel" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <div class="grid grid-cols-2 gap-0 mt-4 place-content-center place-items-center w-full">
+                        <div class="w-full max-w-[200px]">
+                            <DetailedSatisfaction :value="87.6" title="Europe 2025" :isModel="true" ref="detailedSatisfaction" />
+                        </div>
+                        <div class="w-full max-w-[200px]">
+                            <DetailedSatisfaction :value="83.2" title="America 2025" />
+                        </div>
+                        <div class="w-full max-w-[200px]">
+                            <DetailedSatisfaction :value="72.7" title="Asia 2025" />
+                        </div>
+                        <div class="w-full max-w-[200px]">
+                            <DetailedSatisfaction :value="68.9" title="Africa 2025" />
+                        </div>
                     </div>
                 </div>
-            </div>
+            </BaseCard>
         </div>
+
+
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="mainStoresDataset"
-                    :config="mainStoresConfig"
-                    componentName="VueUiQuadrant"
-                    link="vue-ui-quadrant"
-                    id="mainStores"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartQuadrant" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <MainStores ref="mainStores" class="mt-12" />
-            </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="marketShareDataset"
-                    :config="marketShareConfig"
-                    componentName="VueUiRings"
-                    link="vue-ui-rings"
-                    id="marketShare"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartRings" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <MarketShare ref="marketShare" class="mt-12" />
-            </div>
-        </div>
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="salesBarDataset"
-                    :config="salesBarConfig"
-                    componentName="VueUiVerticalBar"
-                    link="vue-ui-vertical-bar"
-                    id="salesBar"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartVerticalBar" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <SalesBar ref="salesBar" class="mt-12" />
-            </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="iceCubesDataset"
-                    :config="iceCubesConfig"
-                    componentName="VueUi3dBar"
-                    link="vue-ui-3d-bar"
-                    id="cubes"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chart3dBar" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <div class="w-full max-w-[200px]">
-                    <IceCubes ref="iceCubes" class="mt-12" />
+            <BaseCard class="w-full sm:w-1/2">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="mainStoresDataset"
+                        :config="mainStoresConfig"
+                        componentName="VueUiQuadrant"
+                        link="vue-ui-quadrant"
+                        id="mainStores"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartQuadrant" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <MainStores ref="mainStores" class="mt-4" />
                 </div>
-            </div>
-        </div>
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md flex flex-col place-items-center justify-center relative">
-                <TokoTsubo
-                    :dataset="treemapDataset"
-                    :config="treemapConfig"
-                    componentName="VueUiTreemap"
-                    link="vue-ui-treemap"
-                    id="treem"
-                    :hideMaker="true"
-                >
-                    <template #icon>
-                        <VueUiIcon name="chartTreemap" stroke="#5f8bee"/>
-                    </template>  
-                </TokoTsubo>
-                <div class="w-full mt-12">
-                    <ExampleTreemap ref="treemap" />
+            </BaseCard>
+
+            <BaseCard class="w-full sm:w-1/2">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="marketShareDataset"
+                        :config="marketShareConfig"
+                        componentName="VueUiRings"
+                        link="vue-ui-rings"
+                        id="marketShare"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartRings" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <MarketShare ref="marketShare" class="mt-4" />
                 </div>
-            </div>
+            </BaseCard>
+        </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <BaseCard class="w-full sm:w-1/2">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="salesBarDataset"
+                        :config="salesBarConfig"
+                        componentName="VueUiVerticalBar"
+                        link="vue-ui-vertical-bar"
+                        id="salesBar"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartVerticalBar" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <SalesBar ref="salesBar" class="mt-4" />
+                </div>
+            </BaseCard>
+
+            <BaseCard class="w-full sm:w-1/2">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="iceCubesDataset"
+                        :config="iceCubesConfig"
+                        componentName="VueUi3dBar"
+                        link="vue-ui-3d-bar"
+                        id="cubes"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chart3dBar" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <div class="w-full max-w-[200px]">
+                        <IceCubes ref="iceCubes" class="mt-4" />
+                    </div>
+                </div>
+            </BaseCard>
+        </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+            <BaseCard class="w-full">
+                <div class="flex flex-col place-items-center justify-center relative">
+                    <TokoTsubo
+                        :dataset="treemapDataset"
+                        :config="treemapConfig"
+                        componentName="VueUiTreemap"
+                        link="vue-ui-treemap"
+                        id="treem"
+                        :hideMaker="true"
+                    >
+                        <template #icon>
+                            <VueUiIcon name="chartTreemap" stroke="#5f8bee"/>
+                        </template>  
+                    </TokoTsubo>
+                    <div class="w-full mt-4">
+                        <ExampleTreemap ref="treemap" />
+                    </div>
+                </div>
+            </BaseCard>
         </div>
 
         <div class="flex flex-row place-items-center justify-center">
