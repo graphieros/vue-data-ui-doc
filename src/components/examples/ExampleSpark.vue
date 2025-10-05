@@ -8,6 +8,7 @@ import SparkRevenue from "./components/SparkRevenue.vue";
 import BoutiqueVisitors from "./components/BoutiqueVisitors.vue";
 import DocLink from "../DocLink.vue";
 import BaseDocHeaderActions from "../BaseDocHeaderActions.vue";
+import BaseCard from "../BaseCard.vue";
 
 const store = useMainStore();
 const lang = computed(() => store.lang);
@@ -186,7 +187,7 @@ const carouselDataset = ref({
 const carouselConfig = computed(() => {
     return {
         style: {
-            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+            backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         },
         animation: {
@@ -196,7 +197,7 @@ const carouselConfig = computed(() => {
             text: 'Current stats',
             style: {
                 fontSize: '32px',
-                backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+                backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
             }
         },
@@ -228,7 +229,7 @@ const carouselConfig = computed(() => {
 const trendConfig = computed(() => {
     return {
         style: {
-            backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+            backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
         }
     }
 })
@@ -238,62 +239,71 @@ const trendConfig = computed(() => {
 <template>
     <div class="mt-12 flex flex-col gap-6">
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkgauge"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkgauge"
-                    />
-                </div>
-
-                <div class="flex flex-row gap-4 justify-between place-items-center">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl">
-                            Net Promoter Score<span class="text-gray-500 dark:text-gray-500"> Boutique</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025 <span :class="`${val1 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val1 > 0 ? '+' : ''}}{{val1}}%</span>
-                        </div>
+            <div class="w-full sm:w-1/2">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkgauge"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkgauge"
+                        />
                     </div>
-                    <GaugeNPS :dataset="{
-                        value: gauge1,
-                        min: 0,
-                        max: 10,
-                    }" />
-                </div>
+                    
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl">
+                                    Net Promoter Score<br><span class="text-gray-500 dark:text-gray-500"> Boutique</span> 
+                                </div>
+                                <div class="text-gray-500 dark:text-gray-400">
+                                    Q1 2025 <span :class="`${val1 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val1 > 0 ? '+' : ''}}{{val1}}%</span>
+                                </div>
+                            </div>
+                            <GaugeNPS :dataset="{
+                                value: gauge1,
+                                min: 0,
+                                max: 10,
+                            }" />
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/2 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkgauge"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkgauge"
-                    />
-                </div>
 
-                <div class="flex flex-row gap-4 justify-between place-items-center">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl">
-                            Net Promoter Score<span class="text-gray-500 dark:text-gray-500"> Office</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025 <span :class="`${val2 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val2 > 0 ? '+' : ''}}{{val2}}%</span>
-                        </div>
+            <div class="w-full sm:w-1/2">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkgauge"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkgauge"
+                        />
                     </div>
-                    <GaugeNPS :dataset="{
-                        value: gauge2,
-                        min: 0,
-                        max: 10,
-                    }" />
-                </div>
+    
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl">
+                                    Net Promoter Score<br><span class="text-gray-500 dark:text-gray-500"> Office</span> 
+                                </div>
+                                <div class="text-gray-500 dark:text-gray-400">
+                                    Q1 2025 <span :class="`${val2 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val2 > 0 ? '+' : ''}}{{val2}}%</span>
+                                </div>
+                            </div>
+                            <GaugeNPS :dataset="{
+                                value: gauge2,
+                                min: 0,
+                                max: 10,
+                            }" />
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
         </div>
 
-        <div class="sm:flex flex-row flex-wrap sm:flex-nowrap gap-6">
-
-                <div class="w-full bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                    <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
+        <BaseCard>
+            <div class="sm:flex flex-row flex-wrap sm:flex-nowrap gap-6">
+                <div class="w-full">
+                    <div class="w-full py-0.5 mb-4">
                         <BaseDocHeaderActions
                             targetDoc="vue-ui-carousel-table"
                             :defaultConfig="false"
@@ -301,354 +311,462 @@ const trendConfig = computed(() => {
                         />
                     </div>
 
-                    <div class="w-full">
+                    <BaseCard type="light">
                         <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig"/>
-                    </div>
-                </div>
-
-        </div>
-
-        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md min-h-[400px]">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkstackbar"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkStackbar"
-                    />
-                </div>
-
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
-                            Respondents<span class="text-gray-500 dark:text-gray-500"> France</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025 <span :class="`${val3 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val3 > 0 ? '+' : ''}}{{val3}}%</span>
-                        </div>
-                    </div>
-                        <StackRespondents :detail="resp1"/>
+                    </BaseCard>
                 </div>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md min-h-[400px]">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkstackbar"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkStackbar"
-                    />
-                </div>
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
-                            Respondents<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025 <span :class="`${val4 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val4 > 0 ? '+' : ''}}{{val4}}%</span>
-                        </div>
-                    </div>
-                        <StackRespondents :detail="resp2"/>
-                </div>
-            </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md min-h-[400px]">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkstackbar"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkStackbar"
-                    />
-                </div>
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
-                            Respondents<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025 <span :class="`${val5 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val5 > 0 ? '+' : ''}}{{val5}}%</span>
-                        </div>
-                    </div>
-                        <StackRespondents :detail="resp3"/>
-                </div>
-            </div>
-        </div>
+        </BaseCard>
 
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkgauge"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkgauge"
-                    />
-                </div>
-                <div class="flex flex-row gap-4 justify-between place-items-center">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl">
-                            NPS<span class="text-gray-500 dark:text-gray-500"> France</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025 <span :class="`${val6 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val6 > 0 ? '+' : ''}}{{val6}}%</span>
-                        </div>
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkstackbar"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkStackbar"
+                        />
                     </div>
-                    <GaugeNPS :dataset="{
-                        value: gauge3,
-                        min: 0,
-                        max: 10,
-                    }" />
-                </div>
+                    
+                    <BaseCard type="light">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
+                                    Respondents<span class="text-gray-500 dark:text-gray-500"> France</span> 
+                                </div>
+                                <div class="text-gray-500">
+                                    Q1 2025 <span :class="`${val3 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val3 > 0 ? '+' : ''}}{{val3}}%</span>
+                                </div>
+                            </div>
+                            <div class="min-h-[70px]">
+                                <StackRespondents :detail="resp1"/>
+                            </div>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkgauge"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkgauge"
-                    />
-                </div>
-                <div class="flex flex-row gap-4 justify-between place-items-center">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl">
-                            NPS<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025 <span :class="`${val7 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val7 > 0 ? '+' : ''}}{{val7}}%</span>
-                        </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkstackbar"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkStackbar"
+                        />
                     </div>
-                    <GaugeNPS :dataset="{
-                        value: gauge4,
-                        min: 0,
-                        max: 10,
-                    }" />
-                </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
+                                    Respondents<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
+                                </div>
+                                <div class="text-gray-500">
+                                    Q1 2025 <span :class="`${val4 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val4 > 0 ? '+' : ''}}{{val4}}%</span>
+                                </div>
+                            </div>
+                            <div class="min-h-[70px]">
+                                <StackRespondents :detail="resp2"/>
+                            </div>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkgauge"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkgauge"
-                    />
-                </div>
-                <div class="flex flex-row gap-4 justify-between place-items-center">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl">
-                            NPS<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025 <span :class="`${val8 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val8 > 0 ? '+' : ''}}{{val8}}%</span>
-                        </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkstackbar"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkStackbar"
+                        />
                     </div>
-                    <GaugeNPS :dataset="{
-                        value: gauge5,
-                        min: 0,
-                        max: 10,
-                    }" />
-                </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
+                                    Respondents<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
+                                </div>
+                                <div class="text-gray-500">
+                                    Q1 2025 <span :class="`${val5 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val5 > 0 ? '+' : ''}}{{val5}}%</span>
+                                </div>
+                            </div>
+                            <div class="min-h-[70px]">
+                                <StackRespondents :detail="resp3"/>
+                            </div>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
         </div>
 
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkline"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkline"
-                    />
-                </div>
-                <div class="flex flex-row gap-4 justify-between place-items-center">
-                    <SparkRevenue title="Expected sales France 2025" :values="line1" />
-                </div>
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkgauge"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkgauge"
+                        />
+                    </div>
+                    
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl">
+                                    NPS<span class="text-gray-500 dark:text-gray-500"> France</span> 
+                                </div>
+                                <div class="text-gray-500 dark:text-gray-400">
+                                    Q1 2025 <span :class="`${val6 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val6 > 0 ? '+' : ''}}{{val6}}%</span>
+                                </div>
+                            </div>
+                            <GaugeNPS :dataset="{
+                                value: gauge3,
+                                min: 0,
+                                max: 10,
+                            }" />
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkline"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkline"
-                    />
-                </div>
-                <div class="flex flex-row gap-4 justify-between place-items-center">
-                    <SparkRevenue title="Expected sales Germany 2025" :values="line2" />
-                </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkgauge"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkgauge"
+                        />
+                    </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl">
+                                    NPS<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
+                                </div>
+                                <div class="text-gray-500 dark:text-gray-400">
+                                    Q1 2025 <span :class="`${val7 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val7 > 0 ? '+' : ''}}{{val7}}%</span>
+                                </div>
+                            </div>
+                            <GaugeNPS :dataset="{
+                                value: gauge4,
+                                min: 0,
+                                max: 10,
+                            }" />
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkline"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkline"
-                    />
-                </div>
-                <div class="flex flex-row gap-4 justify-between place-items-center">
-                    <SparkRevenue title="Expected sales Brazil 2025" :values="line3" />
-                </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkgauge"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkgauge"
+                        />
+                    </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl">
+                                    NPS<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
+                                </div>
+                                <div class="text-gray-500 dark:text-gray-400">
+                                    Q1 2025 <span :class="`${val8 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val8 > 0 ? '+' : ''}}{{val8}}%</span>
+                                </div>
+                            </div>
+                            <GaugeNPS :dataset="{
+                                value: gauge5,
+                                min: 0,
+                                max: 10,
+                            }" />
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
         </div>
 
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-spark-trend"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkTrend"
-                    />
-                </div>
-                <div class="flex flex-row gap-4 justify-between place-items-center mt-2">
-                    <VueDataUi component="VueUiSparkTrend" :dataset="line1" :config="trendConfig"/>
-                </div>
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkline"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkline"
+                        />
+                    </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center">
+                            <SparkRevenue title="Expected sales France 2025" :values="line1" />
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-spark-trend"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkTrend"
-                    />
-                </div>
-                <div class="flex flex-row gap-4 justify-between place-items-center mt-2">
-                    <VueDataUi component="VueUiSparkTrend" :dataset="line2" :config="trendConfig"/>
-                </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkline"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkline"
+                        />
+                    </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center">
+                            <SparkRevenue title="Expected sales Germany 2025" :values="line2" />
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] py-6 px-3 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-spark-trend"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkTrend"
-                    />
-                </div>
-                <div class="flex flex-row gap-4 justify-between place-items-center mt-2">
-                    <VueDataUi component="VueUiSparkTrend" :dataset="line3" :config="trendConfig"/>
-                </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkline"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkline"
+                        />
+                    </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center">
+                            <SparkRevenue title="Expected sales Brazil 2025" :values="line3" />
+                        </div>
+                    </BaseCard>
+                </BaseCard>
+            </div>
+        </div>
+
+        <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-spark-trend"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkTrend"
+                        />
+                    </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center mt-2">
+                            <VueDataUi component="VueUiSparkTrend" :dataset="line1" :config="trendConfig"/>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
+            </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-spark-trend"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkTrend"
+                        />
+                    </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center mt-2">
+                            <VueDataUi component="VueUiSparkTrend" :dataset="line2" :config="trendConfig"/>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
+            </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-spark-trend"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkTrend"
+                        />
+                    </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-row gap-4 justify-between place-items-center mt-2">
+                            <VueDataUi component="VueUiSparkTrend" :dataset="line3" :config="trendConfig"/>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
         </div>
 
 
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6">
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkbar"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkbar"
-                    />
-                </div>
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
-                            Targets<span class="text-gray-500 dark:text-gray-500"> France</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            2025
-                        </div>
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkbar"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkbar"
+                        />
                     </div>
-                        <MiniBar :detail="bar1"/>
-                </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
+                                    Targets<span class="text-gray-500 dark:text-gray-500"> France</span> 
+                                </div>
+                                <div class="text-gray-500">
+                                    2025
+                                </div>
+                            </div>
+                            <MiniBar :detail="bar1"/>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkbar"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkbar"
-                    />
-                </div>
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
-                            Targets<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            2025
-                        </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkbar"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkbar"
+                        />
                     </div>
-                        <MiniBar :detail="bar2"/>
-                </div>
+                    
+                    <BaseCard type="light">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
+                                    Targets<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
+                                </div>
+                                <div class="text-gray-500">
+                                    2025
+                                </div>
+                            </div>
+                            <MiniBar :detail="bar2"/>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkbar"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkbar"
-                    />
-                </div>
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
-                            Targets<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            2025
-                        </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkbar"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkbar"
+                        />
                     </div>
-                        <MiniBar :detail="bar3"/>
-                </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
+                                    Targets<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
+                                </div>
+                                <div class="text-gray-500">
+                                    2025
+                                </div>
+                            </div>
+                            <MiniBar :detail="bar3"/>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
         </div>
 
         <div class="flex flex-row flex-wrap sm:flex-nowrap gap-6 visitors">
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkhistogram"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkHistogram"
-                    />
-                </div>
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
-                            Avg. clients per hour<span class="text-gray-500 dark:text-gray-500"> France</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025
-                        </div>
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkhistogram"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkHistogram"
+                        />
                     </div>
-                        <BoutiqueVisitors :values="hist1"/>
-                </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
+                                    Avg. clients per hour<span class="text-gray-500 dark:text-gray-500"> France</span> 
+                                </div>
+                                <div class="text-gray-500">
+                                    Q1 2025
+                                </div>
+                            </div>
+                            <BoutiqueVisitors :values="hist1"/>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkhistogram"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkHistogram"
-                    />
-                </div>
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
-                            Avg. clients per hour<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025
-                        </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkhistogram"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkHistogram"
+                        />
                     </div>
-                        <BoutiqueVisitors :values="hist2"/>
-                </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
+                                    Avg. clients per hour<span class="text-gray-500 dark:text-gray-500"> Germany</span> 
+                                </div>
+                                <div class="text-gray-500">
+                                    Q1 2025
+                                </div>
+                            </div>
+                            <BoutiqueVisitors :values="hist2"/>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
-            <div class="w-full sm:w-1/3 bg-white dark:bg-[#2A2A2A] p-6 rounded-md shadow-md">
-                <div class="w-full dark:bg-[#FFFFFF05] bg-gray-100 rounded shadow py-0.5 mb-4">
-                    <BaseDocHeaderActions
-                        targetDoc="vue-ui-sparkhistogram"
-                        :defaultConfig="false"
-                        targetMaker="VueUiSparkHistogram"
-                    />
-                </div>
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col">
-                        <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
-                            Avg. clients per hour<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
-                        </div>
-                        <div class="text-gray-500">
-                            Q1 2025
-                        </div>
+
+            <div class="w-full sm:w-1/3">
+                <BaseCard>
+                    <div class="w-full py-0.5 mb-4">
+                        <BaseDocHeaderActions
+                            targetDoc="vue-ui-sparkhistogram"
+                            :defaultConfig="false"
+                            targetMaker="VueUiSparkHistogram"
+                        />
                     </div>
-                        <BoutiqueVisitors :values="hist3"/>
-                </div>
+
+                    <BaseCard type="light">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col">
+                                <div class="font-[InterMedium] text-xl lg:text-3xl text-left">
+                                    Avg. clients per hour<span class="text-gray-500 dark:text-gray-500"> Brazil</span> 
+                                </div>
+                                <div class="text-gray-500">
+                                    Q1 2025
+                                </div>
+                            </div>
+                            <BoutiqueVisitors :values="hist3"/>
+                        </div>
+                    </BaseCard>
+                </BaseCard>
             </div>
         </div>
     </div>

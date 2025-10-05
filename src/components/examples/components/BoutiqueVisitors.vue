@@ -19,7 +19,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 const config = computed(() => {
     return {
     "style": {
-        "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+        "backgroundColor": isDarkMode.value ? '#3A3A3A' : '#f9fafb',
         "fontFamily": "inherit",
         "layout": {
             "height": 120,

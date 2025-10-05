@@ -19,7 +19,7 @@ const isDarkMode = computed(() => store.isDarkMode);
 const config = computed(() => {
     return {
     "style": {
-        "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+        "backgroundColor": isDarkMode.value ? '#3A3A3A' : '#f9fafb',
         "fontFamily": "inherit",
         "layout": {
             "independant": true,
@@ -27,7 +27,7 @@ const config = computed(() => {
             "target": 1500
         },
         "gutter": {
-            "backgroundColor": isDarkMode.value ? '#3A3A3A' : '#e1e5e8',
+            "backgroundColor": isDarkMode.value ? '#4A4A4A' : '#e1e5e8',
             "opacity": 100
         },
         "bar": {

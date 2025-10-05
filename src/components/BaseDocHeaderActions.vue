@@ -45,7 +45,7 @@ const props = defineProps({
     justify: {
         type: String,
         default: 'justify-center'
-    }
+    },
 });
 
 const store = useMainStore();

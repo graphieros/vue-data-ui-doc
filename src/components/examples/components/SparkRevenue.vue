@@ -25,7 +25,7 @@ const config = computed(() => {
     return {
     "type": "line",
     "style": {
-        "backgroundColor": isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+        "backgroundColor": isDarkMode.value ? '#3A3A3A' : '#f9fafb',
         "fontFamily": "inherit",
         "zeroLine": {
             "color": "#CCCCCC",

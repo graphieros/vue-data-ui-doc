@@ -20,7 +20,7 @@ const config = computed(() => {
     return {
     "style": {
         "fontFamily": "inherit",
-        "background": isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+        "background": isDarkMode.value ? '#3A3A3A' : '#f9fafb',
         "height": 84,
         "basePosition": 72,
         "animation": {
