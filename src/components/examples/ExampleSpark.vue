@@ -339,7 +339,7 @@ const trendConfig = computed(() => {
                                     Q1 2025 <span :class="`${val3 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val3 > 0 ? '+' : ''}}{{val3}}%</span>
                                 </div>
                             </div>
-                            <div class="min-h-[70px]">
+                            <div class="min-h-[85px]">
                                 <StackRespondents :detail="resp1"/>
                             </div>
                         </div>
@@ -367,7 +367,7 @@ const trendConfig = computed(() => {
                                     Q1 2025 <span :class="`${val4 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val4 > 0 ? '+' : ''}}{{val4}}%</span>
                                 </div>
                             </div>
-                            <div class="min-h-[70px]">
+                            <div class="min-h-[85px]">
                                 <StackRespondents :detail="resp2"/>
                             </div>
                         </div>
@@ -395,7 +395,7 @@ const trendConfig = computed(() => {
                                     Q1 2025 <span :class="`${val5 > 0 ? 'text-green-600 dark:text-green-500' : 'text-red-600 dark:text-red-500'}`">{{ val5 > 0 ? '+' : ''}}{{val5}}%</span>
                                 </div>
                             </div>
-                            <div class="min-h-[70px]">
+                            <div class="min-h-[85px]">
                                 <StackRespondents :detail="resp3"/>
                             </div>
                         </div>
