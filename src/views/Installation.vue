@@ -272,7 +272,7 @@ const fncsyIntro = ref({
 
         <ChartSeeker class="mt-12 z-10 max-w-[800px]"/>
 
-        <div class="mt-8 w-full max-w-[800px] text-[18px]">
+        <!-- <div class="mt-8 w-full max-w-[800px] text-[18px]">
             {{ fncsyIntro[store.lang] }}
         </div>
         
@@ -284,7 +284,7 @@ const fncsyIntro = ref({
                 </div>
                 <code class="text-left" v-html="fncsy[store.lang]"/>
             </a>
-        </BaseCard>
+        </BaseCard> -->
         <ConfirmCopy/>
     </div>
 </template>
