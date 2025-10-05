@@ -37,9 +37,9 @@ function isSelected(route) {
 function getIconColor(route) {
     if(isSelected(route)) {
         if(isDarkMode.value) {
-            return '#42d392'
+            return '#83a4f2'
         } else {
-            return '#5f8bee'
+            return '#5f8aee'
         }
     } else {
         if(isDarkMode.value) {
@@ -54,24 +54,33 @@ function getIconColor(route) {
 
 <template>
     <router-link :to="itsRoute" @click="emit('scrollToTop')">
-        <div :class="`
-            my-1 text-sm relative 
-            rounded-[12px]
-            py-2
-            ${isSelected(itsRoute) ? `shadow-[inset_0_1px_1px_#FFFFFF,0_2px_3px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_1px_1px_#4A4A4A,0_2px_3px_rgba(0,0,0,0.5)] ${isDarkMode ? 'border-r-2 border-app-green' : ''}` : ''}
-            ${isSelected(itsRoute) ? isDarkMode ? `bg-[#3A3A3A] shadow` : 'bg-gray-100 shadow' : ''} 
-            flex place-items-center transition-all 
-            ${isDarkMode ? 'hover:bg-[#3A3A3A]' : 'hover:bg-gray-100'} 
-            py-1 gap-1 pl-4 
-            ${isSelected(itsRoute) ? 'text-app-blue dark:text-app-green hover:cursor-default font-bold' : ''}`" 
-            @click="emit('close')"
+        <button 
+            :class="`
+                w-full
+                my-1 text-sm relative 
+                rounded-[12px]
+                py-2
+                ${isSelected(itsRoute) ? `shadow-[inset_0_1px_1px_#FFFFFF,0_2px_3px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_1px_1px_#4A4A4A,0_2px_3px_rgba(0,0,0,0.5)] ${isDarkMode ? 'border-r-2 border-app-blue' : ''}` : ''}
+                ${isSelected(itsRoute) ? isDarkMode ? `bg-gradient-to-r from-[#5f8aee50] to-[#5f8aee20] shadow` : 'bg-gray-100 shadow' : ''} 
+                flex place-items-center transition-all 
+                ${isDarkMode ? 'hover:bg-[#3A3A3A]' : 'hover:bg-gray-100'} 
+                py-1 gap-1 pl-4 
+                ${isSelected(itsRoute) ? 'text-app-blue dark:text-app-green hover:cursor-default font-bold' : ''}`" 
+                @click="emit('close')"
         >
             <VueUiIcon :size="18" :name="icon" :stroke="getIconColor(itsRoute)"/>
-            <span v-if="!['/docs#utility-functions'].includes(itsRoute)" class="text-gray-500">VueUi</span>
-            <span class="text-gray-800 dark:text-gray-300">
+            <span v-if="!['/docs#utility-functions'].includes(itsRoute)" :class="`
+                text-gray-500
+                ${isDarkMode && isSelected(itsRoute) ? 'dark:text-app-blue-mid' : ''}
+            `">VueUi</span>
+            <span :class="`
+                text-gray-800 
+                dark:text-gray-300
+                ${isSelected(itsRoute) ? 'font-inter-medium' : ''}
+            `">
                 {{ componentName }}
             </span>
-        </div>
+        </button>
     </router-link>
 </template>
 

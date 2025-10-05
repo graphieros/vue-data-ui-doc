@@ -1,5 +1,6 @@
 export function useIconMap(componentName) {
     const mapping = {
+        VueDataUi: 'vueDataUi',
         VueUiBullet: 'chartBullet',
         VueUi3dBar: 'chart3dBar',
         VueUiAccordion: 'accordion',

@@ -7,6 +7,10 @@ defineProps({
     name: {
         type: String,
         required: true
+    },
+    universal: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -20,8 +24,12 @@ function capitalizeFirstLetter(val) {
 </script>
 
 <template>
-    <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue mb-2 text-2xl">
-        <VueUiIcon :name="useIconMap(name)" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" :strokeWidth="1.5" />
-        <span>VueUi<span class="text-black dark:text-app-blue-light">{{ capitalizeFirstLetter(name.replaceAll('VueUi', '')) }}</span></span>
+    <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-gray-400 dark:text-gray-600 mb-2 text-2xl mt-12">
+        <VueUiIcon 
+            :name="useIconMap(name)" 
+            :stroke="isDarkMode ? '#5f8aee' : '#8A8A8A'" 
+            :strokeWidth="1.5" 
+        />
+        <span><span v-if="!universal">VueUi</span><span class="text-black dark:text-app-blue">{{ capitalizeFirstLetter(name.replaceAll('VueUi', '')) }}</span></span>
     </h1>
 </template>

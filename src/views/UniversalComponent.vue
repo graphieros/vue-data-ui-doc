@@ -6,6 +6,8 @@ import SideMenu from "../components/SideMenu.vue";
 import CodeParser from "../components/customization/CodeParser.vue";
 
 import sdk from '@stackblitz/sdk'
+import BaseDocTitle from "../components/BaseDocTitle.vue";
+import BaseCard from "../components/BaseCard.vue";
 
 onMounted(() => {
     window.Prism = window.Prism || {}
@@ -61,10 +63,8 @@ const donutDataset = ref([]); // A dataset corresponding to VueUiDonut specs`)
     <SideMenu @toggle="toggleMenu"/>
     <div :class="`${isOpen ? 'pl-[348px] pr-[48px]' : 'pl-[59px] sm:pl-[109px] sm:pr-[59px]'} pt-9 overflow-x-hidden relative z-1`">
 
-        <h1 class="flex flex-row place-items-center w-full justify-center gap-5 font-inter-medium text-app-blue mb-6 text-2xl">
-            <VueUiIcon name="vueDataUi" stroke="#42d392" :strokeWidth="1.5" />
-            VueDataUi
-        </h1>
+        <BaseDocTitle name="VueDataUi" universal/>
+
         <p class="mx-auto max-w-[600px] text-md text-black dark:text-gray-500 mb-2 text-left px-4">
             {{ translations.presentation[store.lang] }}
         </p>
@@ -72,14 +72,16 @@ const donutDataset = ref([]); // A dataset corresponding to VueUiDonut specs`)
             {{ translations.features[store.lang] }}
         </p>
 
-        <div class="mx-auto mt-6 bg-[#1A1A1A] p-4 rounded-md">
-
-        <CodeParser :content="setupStart" language="html" :withCopy="false" borderRadius="none"/>
-        <CodeParser :content="setupCode" language="javascript" :withCopy="false" borderRadius="none"/>
-        <CodeParser :content="setupEnd" language="html" :withCopy="false" borderRadius="none"/>
-        <CodeParser :content="templateCode" language="html" :withCopy="false" borderRadius="none"/>
-
-        </div>
+        <BaseCard class="mt-6">
+            <div class="mx-auto rounded-md">
+    
+            <CodeParser :content="setupStart" language="html" :withCopy="false" borderRadius="none"/>
+            <CodeParser :content="setupCode" language="javascript" :withCopy="false" borderRadius="none"/>
+            <CodeParser :content="setupEnd" language="html" :withCopy="false" borderRadius="none"/>
+            <CodeParser :content="templateCode" language="html" :withCopy="false" borderRadius="none"/>
+    
+            </div>
+        </BaseCard>
         <div 
             id="stackblitz"
             class="w-full mx-auto min-h-[1000px]"

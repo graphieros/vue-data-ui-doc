@@ -842,15 +842,30 @@ const tableConfigDarkMode = ref({
         th: {
             backgroundColor: "#2A2A2A",
             color:"#c4c9cc",
-            outline: "1px solid #7b8185",
+            outline: "1px solid #3A3A3A",
             selected: {
                 backgroundColor: "#42d392",
                 color: "#1a1a1a"
+            },
+            buttons: {
+              filter: {
+                inactive: {
+                  backgroundColor: '#3A3A3A',
+                  color: '#9A9A9A'
+                },
+              },
+              cancel: {
+                inactive: {
+                  backgroundColor: '#2A2A2A',
+                  color: '#4A4A4A'
+                },
+              },
             }
         },
         rows: {
+          outline: "1px solid #5A5A5A",
             even: {
-                backgroundColor: "#2A2A2A",
+                backgroundColor: "#3A3A3A",
                 color: "#c4c9cc",
                 selectedCell: {
                     backgroundColor: '#42d392',
@@ -862,7 +877,7 @@ const tableConfigDarkMode = ref({
                 }
             },
             odd: {
-                backgroundColor: "#3A3A3A",
+                backgroundColor: "#4A4A4A",
                 color: "#FFFFFF",
                 selectedCell: {
                     backgroundColor: '#5de8aa',

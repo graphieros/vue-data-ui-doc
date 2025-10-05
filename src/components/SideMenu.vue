@@ -828,28 +828,47 @@ const sideMenuItems = computed(() => {
 </script>
 
 <template>
+    <button
+    class="fixed left-[282px] top-[73px] z-30 rounded-full 
+        bg-gray-200 dark:bg-[#2A2A2A] 
+        hover:bg-gray-100 dark:hover:bg-[#3A3A3A] 
+        shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] 
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+    v-if="isOpen"
+    @click="toggle"
+    >
+        <ChevronLeftIcon class="text-black dark:text-app-blue" />
+    </button>
+
+    <button
+    class="fixed left-[42px] top-[73px] z-30 rounded-full 
+        bg-gray-200 dark:bg-[#2A2A2A] 
+        hover:bg-gray-100 dark:hover:bg-[#3A3A3A] 
+        shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] 
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+    v-if="!isOpen"
+    @click="toggle"
+    >
+        <ChevronRightIcon class="text-black dark:text-app-blue animate-ping sm:animate-none" />
+    </button>
+
     <aside :class="`transition-all fixed left-0 top-[49px] ${isOpen ? 'w-[300px]' : 'w-[59px]'} h-[calc(100svh_-_114px)] bg-gray-300 dark:bg-black overflow-y-auto border-r dark:border-[#2A2A2A] p-6 shadow-2xl z-20`">
-    <button class="absolute right-4 top-4" v-if="isOpen" @click="toggle">
-        <ChevronLeftIcon class="text-black dark:text-app-green"/>
-    </button>
-    <button class="absolute top-5 left-1/2 -translate-x-1/2" v-if="!isOpen" @click="toggle">
-        <ChevronRightIcon class="text-black dark:text-app-green animate-ping sm:animate-none"/>
-    </button>
     <template v-if="isOpen">
         <div class="mt-8 flex flex-col gap-3">
             <RouterLink to="/universal-component">
-                <div :class="`py-2 rounded-full text-center relative text-sm shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
-        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] ${router.currentRoute.value.fullPath === '/universal-component' ? 'bg-gray-100 dark:bg-[#3A3A3A]' : 'bg-gray-200 dark:bg-[#242424]'}`">
+                <button :class="`w-full py-2 rounded-full text-center relative text-sm shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
+        dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)] ${router.currentRoute.value.fullPath === '/universal-component' ? isDarkMode ? `bg-gradient-to-r from-[#5f8aee50] to-[#5f8aee20] shadow` : 'bg-app-blue-light' : 'bg-gray-200 dark:bg-[#242424]'}`">
 
-                    <div class="flex flex-row place-items-center justify-center gap-2">
-                        <VueUiIcon name="vueDataUi" stroke="#6A6A6A"/>
-                        <div style="white-space: nowrap;">
-                            VueDataUi universal component
+                    <div class="flex flex-row place-items-center justify-center gap-4">
+                        <VueUiIcon name="vueDataUi" :stroke="`${router.currentRoute.value.fullPath === '/universal-component' ? isDarkMode ? '#83a4f2' : '#5f8aee' : '#6A6A6A'}`"/>
+                        <div style="white-space: nowrap;" :class="`${router.currentRoute.value.fullPath === '/universal-component' ? 'font-inter-medium' : ''}`">
+                            Universal component
                         </div>
                     </div>
-                </div>
-                <div class="w-full mt-6 mb-2 border-b border-gray-500"></div>
+                </button>
+                <div class="w-full mt-6 mb-2 border-b border-gray-500 dark:border-[#3A3A3A]"></div>
             </RouterLink>
+
             <Dropdown
                 v-for="(menu, i) in sideMenuItems"
                 :open="menu.items.some(item => item.route === router.currentRoute.value.fullPath)"

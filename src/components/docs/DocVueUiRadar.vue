@@ -553,13 +553,15 @@ const codeDataset = ref(`const dataset: VueUiRadarDataset = {
         </div>
 
         <div class="w-full flex justify-center mt-6">
-            <BaseViewExampleButton link="/examples/categories#vue-ui-radar"/>
+            <div class="flex flex-col gap-3">
+                <label for="player">{{ translations.docs.showMoreSeries[store.lang] }}</label>
+                <input id="player" type="range" :min="3" :max="10" v-model="slicer" @input="updateDataset"
+                class="accent-gray-400 dark:accent-500 max-w-[200px]">
+            </div>
         </div>
 
-        <div class="mt-6 flex flex-col gap-3">
-            <label for="player">{{ translations.docs.showMoreSeries[store.lang] }}</label>
-            <input id="player" type="range" :min="3" :max="10" v-model="slicer" @input="updateDataset"
-            class="accent-app-green max-w-[200px]">
+        <div class="w-full flex justify-center mt-6">
+            <BaseViewExampleButton link="/examples/categories#vue-ui-radar"/>
         </div>
 
         <Rater itemId="vue_ui_radar" />
