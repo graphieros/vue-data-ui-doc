@@ -701,9 +701,7 @@ const sideMenuItems = computed(() => {
             { route: '/docs#vue-ui-sparkgauge', componentName: 'Sparkgauge', icon: 'chartGauge' },
             { route: '/docs#vue-ui-spark-trend', componentName: 'SparkTrend', icon: 'trend' },
             { route: '/docs#vue-ui-gizmo', componentName: 'Gizmo', icon: 'battery' },
-            { route: '/docs#vue-ui-quick-chart', componentName: 'QuickChart', icon: 'vueDataUi' },
             { route: '/docs#vue-ui-kpi', componentName: 'Kpi', icon: 'kpiBox' },
-            { route: '/docs#vue-ui-bullet', componentName: 'Bullet', icon: 'chartBullet' },
         ],
         icon: 'chartSparkline'
     },
@@ -719,7 +717,6 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-candlestick', componentName: 'Candlestick', icon: 'chartCandlestick' },
             {route: '/docs#vue-ui-age-pyramid', componentName: 'AgePyramid', icon: 'chartAgePyramid' },
             {route: '/docs#vue-ui-stackbar', componentName: 'Stackbar', icon: 'chartStackbar' },
-            {route: '/docs#vue-ui-donut-evolution', componentName: 'DonutEvolution', icon: 'chartDonutEvolution' },
             {route: '/docs#vue-ui-funnel', componentName: 'Funnel', icon: 'chartFunnel' },
             {route: '/docs#vue-ui-history-plot', componentName: 'HistoryPlot', icon: 'chartHistoryPlot' },
             {route: '/docs#vue-ui-ridgeline', componentName: 'Ridgeline', icon: 'chartRidgeline' },
@@ -737,7 +734,6 @@ const sideMenuItems = computed(() => {
             {route: '/docs#vue-ui-rings', componentName: 'Rings', icon: 'chartRings' },
             {route: '/docs#vue-ui-galaxy', componentName: 'Galaxy', icon: 'chartGalaxy' },
             {route: '/docs#vue-ui-donut-evolution', componentName: 'DonutEvolution', icon: 'chartDonutEvolution' },
-            {route: '/docs#vue-ui-chestnut', componentName: 'Chestnut', icon: 'chartChestnut' },
             {route: '/docs#vue-ui-circle-pack', componentName: 'CirclePack', icon: 'chartCirclePack'}
         ],
         icon: 'chartDonut'
