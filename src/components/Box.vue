@@ -387,7 +387,7 @@ function selectTabFromMini(order) {
                 position="right"
                 :content="tab.name"
             >
-                <button @click="() => selectTabFromMini(tab.order)" :class="`p-2 hover:bg-[#FAFAFA] dark:hover:bg-[#3A3A3A] bg-gray-100 dark:bg-[#2A2A2A] rounded hover:bg-gradient-to-tl transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`" :style="{
+                <button @click="() => selectTabFromMini(tab.order)" :class="`p-2 hover:bg-[#FAFAFA] dark:hover:bg-[#3A3A3A] bg-gray-100 dark:bg-[#2A2A2A] rounded-full hover:bg-gradient-to-tl transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`" :style="{
                     outline: activeTab === tab.order ? `1px solid ${tab.color}90` : undefined
                 }">
                     <IconSettings v-if="tab.icon === 'settings'" :stroke="isDarkMode ? '#5F8BEE' : '#1A1A1A'" :size="20" />

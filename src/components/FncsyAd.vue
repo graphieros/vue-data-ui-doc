@@ -82,7 +82,7 @@ const fncsyIntro = ref({
             {{ fncsyIntro[store.lang] }}
         </div>
     
-        <BaseCard class="mt-2 max-w-[800px]" type="light">
+        <BaseCard class="mt-2 max-w-[800px]">
             <a href="https://fncsy.com/" target="_blank" class="rounded-xl border border-transparent hover:border-app-green w-full flex flex-col gap-4 p-4 z-50 transition-colors">
                 <div class="flex flex-row gap-2 place-items-center justify-start">
                     <img src="../assets/fncsy-logo.webp" height="64" width="64"/>

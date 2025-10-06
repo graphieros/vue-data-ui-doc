@@ -160,12 +160,15 @@ const labels = computed(() => {
                     bg-gradient-to-br
                     disabled:from-[#8A8A8A]
                     disabled:to-[#9A9A9A]
+                    dark:disabled:from-[#242424]
+                    dark:disabled:to-[#242424]
+                    dark:disabled:outline-[#3A3A3A]
+                    dark:disabled:text-[#5A5A5A]
                     from-[#f7e6b0]
                     to-[#f5bb0a]
                     disabled:text-[#CCCCCC]
                     disabled:cursor-not-allowed
                     text-black
-                    hover:shadow-md
                     "
                 :disabled="!rated || done"
                 @click="submitRating"

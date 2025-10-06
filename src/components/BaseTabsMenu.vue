@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted, computed } from "vue";
+import { computed } from "vue";
 import IconSettings from "./IconSettings.vue";
 import { useMainStore } from "../stores";
 import BaseTabContainer from "./BaseTabContainer.vue";
