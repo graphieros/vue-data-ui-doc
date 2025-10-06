@@ -54,5 +54,5 @@ function goToDocs() {
             </button>
         </FlexibleTooltip>
     </div>
-    <button v-else @click="goToDocs" :class="`flex flex-row gap-2 place-items-center rounded-md border border-black dark:border-app-green ${props.size} hover:bg-[#42d39233] hover:shadow-xl`"><VueUiIcon name="clipBoard" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" :size="iconSize"/> {{ props.name }} {{ translations.menu.docs[store.lang] }}</button>
+    <button v-else @click="goToDocs" :class="`flex flex-row gap-2 place-items-center rounded-full border border-black dark:border-app-green ${props.size} hover:bg-[#42d39233] hover:shadow-xl shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"><VueUiIcon name="clipBoard" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" :size="iconSize"/> {{ props.name }} {{ translations.menu.docs[store.lang] }}</button>
 </template>

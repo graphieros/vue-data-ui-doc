@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.2.8",
+    "date": "2025-10-06",
+    "updates": [
+      {
+        "component": "All components",
+        "description": "Add 'vue-data-ui-component' css class on all components.",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.2.7",
     "date": "2025-10-04",
     "updates": [

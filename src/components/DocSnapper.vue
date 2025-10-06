@@ -45,7 +45,7 @@ const emit = defineEmits(['resetDefault', 'copyToClipboard', 'fixChart']);
                 <FlexibleTooltip position="bottom" :content="translations.docs.reset[store.lang]">
                     <button 
                         @click="emit('resetDefault')"
-                        class="h-[36px] w-[36px] flex place-items-center justify-center rounded-lg bg-[#ff660040] hover:bg-[#ff660090] transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                        class="h-[36px] w-[36px] flex place-items-center justify-center rounded-full bg-[#ff660040] hover:bg-[#ff660090] transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
                     >
                         <VueUiIcon name="restart" :stroke="isDarkMode ? '#CCCCCC' : '#2A2A2A'"/>
                     </button>
@@ -53,7 +53,7 @@ const emit = defineEmits(['resetDefault', 'copyToClipboard', 'fixChart']);
                 <FlexibleTooltip position="bottom" :content="translations.docs.copyThisConfig[store.lang]" width="min-w-[140px]">
                     <button 
                         @click="emit('copyToClipboard')"
-                        class="h-[36px] w-[36px] flex place-items-center justify-center rounded-lg bg-[#5f8bee40] hover:bg-[#5f8bee90] transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
+                        class="h-[36px] w-[36px] flex place-items-center justify-center rounded-full bg-[#5f8bee40] hover:bg-[#5f8bee90] transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
                     >
                         <CopyIcon class="text-[#2A2A2A] dark:text-[#CCCCCC]" />
                     </button>
