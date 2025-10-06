@@ -577,8 +577,8 @@ const carouselConfig = computed(() => {
         </div>
 
         <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 hidden lg:block">
-          <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-lg">
-            <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 font-inter-medium hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
+          <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-full">
+            <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-full text-black dark:text-gray-400 font-inter-medium hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
               <BrandGithubFilledIcon class="dark:text-gray-200"/>
               <span>
                 {{ translations.github[store.lang] }}
@@ -697,8 +697,8 @@ const carouselConfig = computed(() => {
     </div>
 
     <a data-cy="btn-github" href="https://github.com/graphieros/vue-data-ui" target="_blank" class="z-10 lg:hidden mt-6">
-      <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-lg">
-        <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-md text-black dark:text-gray-400 font-inter-medium hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
+      <div class="p-0.5 bg-gradient-to-r from-app-green to-app-blue rounded-full">
+        <button class="relative flex flex-row place-content-center place-items-center bg-white dark:bg-black from-app-green to-app-blue py-3 px-5 rounded-full text-black dark:text-gray-400 font-inter-medium hover:shadow-xl  dark:hover:bg-[#2A2A2A] gap-3 transition-all">
           <BrandGithubFilledIcon/>
           <span>
             {{ translations.github[store.lang] }}
