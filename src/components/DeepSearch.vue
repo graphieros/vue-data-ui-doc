@@ -192,11 +192,11 @@ function closeList() {
   >
     <form autocomplete="off" onsubmit="return false">
       <div class="flex flex-row gap-2">
-        <div class="anim-wrapper w-[280px] rounded-lg -mt-[1px]">
+        <div class="anim-wrapper w-[280px] rounded-full -mt-[1px]">
           <input
             @input="handleInput"
             type="text"
-            class="inner p-2 h-[36px] rounded-lg border border-gray-600 text-black focus:outline-app-green w-[280px] bg-white dark:bg-[#252525]"
+            class="inner p-2 !pl-4 h-[36px] !rounded-full text-black focus:outline-app-green w-[280px] bg-white dark:bg-[#252525] shadow-[inset_0_2px_6px_#8A8A8A,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_8px_#000000,0_4px_6px_rgba(0,0,0,0.5)]"
             style="text-align: left !important"
             v-model="searchTerm"
             :placeholder="store.translations.search.placeholder[store.lang]"
@@ -205,14 +205,14 @@ function closeList() {
         </div>
         <button
           :disabled="!searchTerm"
-          class="h-[36px] w-[36px] flex place-items-center justify-center border border-gray-600 rounded-lg hover:bg-gradient-to-br hover:from-app-green hover:to-green-700 hover:border-app-green text-black dark:text-app-green dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+          class="h-[36px] w-[36px] flex place-items-center justify-center rounded-full hover:bg-gradient-to-br hover:from-app-green hover:to-green-700 hover:border-app-green text-black dark:text-app-green dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
           @click="search"
         >
           <SearchIcon />
         </button>
         <button
           v-if="searchTerm || showSuggestions"
-          class="h-[36px] w-[36px] flex place-items-center justify-center border border-gray-600 rounded-lg hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+          class="h-[36px] w-[36px] flex place-items-center justify-center rounded-full hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
           @click="clearSearch"
         >
           <XIcon />

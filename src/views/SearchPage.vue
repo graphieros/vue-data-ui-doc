@@ -7,6 +7,7 @@ import SideMenu from '../components/SideMenu.vue';
 import { FilterXIcon, ZoomCancelIcon } from 'vue-tabler-icons';
 import CodeParser from '../components/customization/CodeParser.vue';
 import ConfirmCopy from '../components/ConfirmCopy.vue';
+import BaseCard from '../components/BaseCard.vue';
 
 const store = useMainStore();
 const route = useRoute();
@@ -223,7 +224,7 @@ ${indentSpace}}`;
             <select
                 v-if="(searchTerm || showSuggestions) && availableComponents.length > 1"
                 v-model="selectedComponent"
-                class="p-2 h-[40px] rounded-lg border border-gray-600 text-black"
+                class="p-2 h-[40px] !rounded-full border border-gray-600 text-black shadow-[inset_0_2px_6px_#6A6A6A,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#000000,0_4px_6px_rgba(0,0,0,0.5)]"
                 @change="filterComponents"
             >
                 <option value="" disabled selected>
@@ -234,7 +235,7 @@ ${indentSpace}}`;
     
             <button
                 v-if="selectedComponent"
-                class="h-[36px] w-[36px] flex place-items-center justify-center border border-gray-600 rounded-lg hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                class="h-[40px] w-[40px] flex place-items-center justify-center rounded-full hover:bg-gradient-to-br hover:from-app-orange hover:to-orange-700 hover:border-app-orange text-black dark:text-app-orange dark:hover:text-white transition-colors hover:text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]"
                 @click="clearFilter"
             >
                 <FilterXIcon />
@@ -243,49 +244,51 @@ ${indentSpace}}`;
 
         <div
             v-for="res in filteredResults"
-            class="p-2 border dark:bg-[#1A1A1A] bg-white border-gray-300 dark:border-[#2A2A2A] my-2 rounded-md hover:bg-gray-100 dark:hover:bg-[#FFFFFF11]"
+            class="my-4 rounded-md"
         >
-            <VueDataUi
-            component="VueUiAccordion"
-            :config="isDarkMode ? accordionConfigDarkMode : accordionConfig"
-            >
-            <template #arrow="{ backgroundColor, color, iconColor, isOpen }">
-                <VueUiIcon name="arrowRight" :size="12" :stroke="iconColor" />
-            </template>
-
-            <template #title="{ color }">
-                <VueUiIcon :name="iconMap[res.componentName]" stroke="#666666"/>
-                <span>{{ res.componentName }}: </span>
-                <code
-                v-html="
-                    res.shortPath.replace(
-                    searchTerm,
-                    `<span class='text-app-blue font-black'>${searchTerm}</span>`
-                    )
-                "
-                ></code>
-            </template>
-
-            <template #content>
-                <div class="flex flex-col w-full">
-                <div>Type: <code class="text-app-blue">{{ res.type }}</code></div>
-                {{ translations.search.defaultValue[store.lang] }} :
-                <div class="bg-[#272822] p-4 rounded">
-                    <CodeParser :content="jsonToJsObject(res.value)" language="javascript" @copy="store.copy()">
-                        <template #color v-if="res.type === 'string' && res.value.includes('#')">
-                            <div :style="`background:${res.value}`" class="h-6 w-6 rounded border border-gray-400"/>
-                        </template>
-                    </CodeParser>
-                </div>
-                <router-link :to="`/docs#${res.route}`">
-                    <div class="hover:underline dark:text-app-green font-black mt-2">
-                    {{ translations.search.viewComponent[store.lang] }}
+            <BaseCard class=" hover:bg-gray-50 dark:hover:bg-[#3A3A3A]">
+                <VueDataUi
+                component="VueUiAccordion"
+                :config="isDarkMode ? accordionConfigDarkMode : accordionConfig"
+                >
+                <template #arrow="{ backgroundColor, color, iconColor, isOpen }">
+                    <VueUiIcon name="arrowRight" :size="12" :stroke="iconColor" />
+                </template>
+    
+                <template #title="{ color }">
+                    <VueUiIcon :name="iconMap[res.componentName]" stroke="#666666"/>
+                    <span>{{ res.componentName }}: </span>
+                    <code
+                    v-html="
+                        res.shortPath.replace(
+                        searchTerm,
+                        `<span class='text-app-blue font-black'>${searchTerm}</span>`
+                        )
+                    "
+                    ></code>
+                </template>
+    
+                <template #content>
+                    <div class="flex flex-col w-full">
+                    <div>Type: <code class="text-app-blue">{{ res.type }}</code></div>
+                    {{ translations.search.defaultValue[store.lang] }} :
+                    <div class="p-4 rounded">
+                        <CodeParser :content="jsonToJsObject(res.value)" language="javascript" @copy="store.copy()">
+                            <template #color v-if="res.type === 'string' && res.value.includes('#')">
+                                <div :style="`background:${res.value}`" class="h-6 w-6 rounded border border-gray-400"/>
+                            </template>
+                        </CodeParser>
                     </div>
-                </router-link>
-                </div>
-
-            </template>
-            </VueDataUi>
+                    <router-link :to="`/docs#${res.route}`">
+                        <div class="hover:underline dark:text-app-green font-black mt-2">
+                        {{ translations.search.viewComponent[store.lang] }}
+                        </div>
+                    </router-link>
+                    </div>
+    
+                </template>
+                </VueDataUi>
+            </BaseCard>
         </div>
     </div>
     <ConfirmCopy/>
