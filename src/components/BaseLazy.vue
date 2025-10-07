@@ -9,20 +9,24 @@
 import { onMounted, onBeforeUnmount, ref, watch, computed } from "vue";
 
 const props = defineProps({
-    bounds: { type: String, default: '500px' },
+    bounds: { type: String, default: "500px 0px" },
     threshold: { type: [Number, Array], default() { return 0 } },
     once: { type: Boolean, default: false },
     root: { type: [String, HTMLElement], default: null },
-    tag: { type: String, default: 'div' },
-    enabled: { type: Boolean, default: true }
+    tag: { type: String, default: "div" },
+    enabled: { type: Boolean, default: true },
+    visibleRatioEnter: { type: Number, default: 0.1 }, 
+    visibleRatioExit: { type: Number, default: 0.0 },
+    leaveDelay: { type: Number, default: 50 }
 });
 
-const emit = defineEmits(['enter', 'leave', 'load', 'change'])
+const emit = defineEmits(["enter", "leave", "load", "change"]);
 
 const hostEl = ref(null);
 const isVisible = ref(false);
 let observer = null;
 let hasLoadedOnce = false;
+let leaveTimer = null;
 
 const resolvedRoot = computed(() => {
     if (!props.root) return null;
@@ -34,6 +38,42 @@ const resolvedRoot = computed(() => {
         return null;
     }
 });
+
+function clearLeaveTimer() {
+    if (leaveTimer) {
+        clearTimeout(leaveTimer);
+        leaveTimer = null;
+    }
+}
+
+function handleEnter() {
+    clearLeaveTimer();
+    const wasVisible = isVisible.value;
+    if (!wasVisible) {
+        isVisible.value = true;
+        if (!hasLoadedOnce) {
+            emit("load");
+            hasLoadedOnce = true;
+        }
+        emit("enter");
+        emit("change", true);
+        if (props.once) destroyObserver();
+    }
+}
+
+function handleLeave() {
+    // Debounce to avoid flicker when right at the boundary
+    clearLeaveTimer();
+    leaveTimer = setTimeout(() => {
+        leaveTimer = null;
+        const wasVisible = isVisible.value;
+        if (wasVisible) {
+            isVisible.value = false;
+            emit("leave");
+            emit("change", false);
+        }
+    }, props.leaveDelay);
+}
 
 function createObserver() {
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
@@ -48,29 +88,26 @@ function createObserver() {
     observer = new IntersectionObserver(
         (entries) => {
             const entry = entries[0];
-            const visible = entry.isIntersecting;
-
-            if (visible) {
-                if (!hasLoadedOnce) {
-                    reveal();
-                    emit("load");
-                    hasLoadedOnce = true;
-                }
-                emit("enter");
-                if (props.once) {
-                    destroyObserver();
-                }
-            } else {
-                emit("leave");
+            const ratio = entry.intersectionRatio ?? 0;
+            if (ratio >= props.visibleRatioEnter) {
+                handleEnter();
+            } else if (ratio <= props.visibleRatioExit) {
+                handleLeave();
             }
-
-            isVisible.value = visible;
-            emit("change", visible);
         },
         {
             root: resolvedRoot.value,
             rootMargin: props.bounds,
-            threshold: props.threshold,
+            threshold: Array.isArray(props.threshold)
+                ? props.threshold
+                :
+                Array.from(
+                    new Set(
+                        [props.threshold, props.visibleRatioEnter, props.visibleRatioExit]
+                            .flat()
+                            .filter((v) => typeof v === "number")
+                    )
+                ).sort((a, b) => a - b)
         }
     );
 
@@ -78,6 +115,7 @@ function createObserver() {
 }
 
 function destroyObserver() {
+    clearLeaveTimer();
     if (observer) {
         observer.disconnect();
         observer = null;
@@ -85,6 +123,7 @@ function destroyObserver() {
 }
 
 function reveal() {
+    clearLeaveTimer();
     isVisible.value = true;
 }
 
@@ -97,7 +136,15 @@ onBeforeUnmount(() => {
 });
 
 watch(
-    () => [props.bounds, props.threshold, props.root, props.enabled],
+    () => [
+        props.bounds,
+        props.threshold,
+        props.root,
+        props.enabled,
+        props.visibleRatioEnter,
+        props.visibleRatioExit,
+        props.leaveDelay
+    ],
     ([, , , enabled]) => {
         if (!enabled) {
             destroyObserver();
@@ -106,7 +153,6 @@ watch(
         createObserver();
     }
 );
-
 
 function refresh() {
     if (props.enabled) createObserver();

@@ -2,6 +2,8 @@
 import { computed, ref } from "vue";
 import { calcTooltipPosition } from "../calcTooltipPosition";
 import { useMouse } from "../useMouse";
+import BaseCard from "./BaseCard.vue";
+import { useMainStore } from "../stores";
 
 const props = defineProps({
     backgroundColor: {
@@ -25,6 +27,8 @@ const props = defineProps({
         default: false,
     },
 });
+const store = useMainStore();
+const isDarkMode = computed(() => store.isDarkMode);
 
 const tooltip = ref(null)
 
@@ -44,23 +48,30 @@ const position = computed(() => {
     <div
         ref="tooltip"
         data-cy="tooltip"
-        class="vue-data-ui-tooltip hidden sm:block"
+        class="tltip hidden sm:block"
         v-if="show"
-        :style="`top:${position.top}px;left:${position.left}px;background:${props.backgroundColor};color:${props.color};max-width:${props.maxWidth}`"
+        :style="`top:${position.top - 32}px;left:${position.left}px;color:${props.color};max-width:${props.maxWidth}`"
     >
-        <slot/>
-        <div v-html="content"/>
-        <slot name="content-after"/>
+        <BaseCard type="dark">
+            <slot/>
+            <div v-html="content"/>
+            <slot name="content-after"/>
+            <svg viewBox="0 0 10 18" height="18" width="12" class="absolute -left-[10px] top-1/2 -translate-y-1/2">
+                <path d="M 0,9 10,0 10,18Z" :fill="isDarkMode ? '#2A2A2A' : '#e5e7eb'"/>
+                <path 
+                    d="M 0,9 10,0 10,3Z" 
+                    stroke-linecap="round" 
+                    :stroke="isDarkMode ? '#4A4A4A' : '#FFFFFF'"
+                    :fill="isDarkMode ? '#4A4A4A' : '#FFFFFF'"
+                />
+            </svg>
+        </BaseCard>
     </div>
 </template>
 
 <style scoped>
-.vue-data-ui-tooltip {
-    border: 1px solid #5A5A5A;
-    border-radius: 4px;
-    box-shadow: 0 6px 12px -6px rgba(0,0,0,0.2);
+.tltip {
     position: fixed;
-    padding:12px;
     z-index:100000;
 }
 </style>

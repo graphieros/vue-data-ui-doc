@@ -452,11 +452,11 @@ function closeDialogExample() {
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full max-w-[1400px] mx-auto flex-wrap px-4 sm:px-16 sm:mt-6">
             <div v-for="example in filteredExamples" :key="`${example.id}_${key}`" class=" flex-col inline-flex w-full" :id="example.id">
                 <BaseLazy>
-                    <tempate #placeholder>
+                    <template #placeholder>
                         <BaseCard>
-                            <div class="w-full h-[500px]"/>
+                            <div class="w-full h-[700px]"/>
                         </BaseCard>
-                    </tempate>
+                    </template>
                     <BaseCard>
                         <div dir="auto" class="bg-gray-200 rounded-2xl dark:bg-[rgb(35,35,35)] p-4">
                             <div class="flex flex-row gap-4 place-items-center">
