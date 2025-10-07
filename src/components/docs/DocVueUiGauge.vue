@@ -151,15 +151,15 @@ const config = ref({
                     show: true,
                     type: "pointy",
                     size: 1,
-                    stroke: "#1A1A1A",
+                    stroke: "#CCCCCC",
                     strokeWidth: 12,
                     useRatingColor: true,
-                    color: "#1A1A1A",
+                    color: "#8A8A8A",
                     circle: {
                         radius: 10,
-                        stroke: "#1A1A1A",
+                        stroke: "#F3F4F6",
                         strokeWidth: 2,
-                        color: "#F3F4F6"
+                        color: "#BBBBBB"
                     }
                 }
             },
@@ -277,15 +277,15 @@ const darkModeConfig = ref({
                     show: true,
                     type: "pointy",
                     size: 1,
-                    stroke: "#CCCCCC",
+                    stroke: "#4A4A4A",
                     strokeWidth: 12,
                     useRatingColor: true,
                     color: "#1A1A1A",
                     circle: {
                         radius: 10,
-                        stroke: "#CCCCCC",
+                        stroke: "#3A3A3A",
                         strokeWidth: 2,
-                        color: "#1A1A1A"
+                        color: "#5A5A5A"
                     }
                 }
             },
