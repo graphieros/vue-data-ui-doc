@@ -3,6 +3,7 @@ import { ref, computed, nextTick, onBeforeUnmount, toRefs } from "vue";
 import vClickOutside from "../directives/vClickOutside";
 import { SearchIcon, XIcon } from "vue-tabler-icons";
 import { useMainStore } from "../stores";
+import BaseCard from "./BaseCard.vue";
 
 const props = defineProps({
     id: { type: String, required: true },
@@ -30,7 +31,7 @@ const props = defineProps({
     },
     background: {
         type: String,
-        default: 'bg-white dark:bg-[#2A2A2A]'
+        default: 'bg-gray-100 dark:bg-[#2A2A2A]'
     },
     search: {
         type: Boolean,
@@ -128,7 +129,7 @@ const searchModel = ref('');
     >
         <button 
             ref="button" 
-            :class="`dropdown-button ${background} border border-[#5f8aee50] hover:border-app-blue transition-colors`" 
+            :class="`dropdown-button ${background} border border-[#5f8aee50] hover:border-app-blue transition-colors !rounded-full`" 
             :aria-haspopup="true" 
             :aria-expanded="isOpen.toString()"
             @click="toggleDropdown()"
@@ -139,38 +140,39 @@ const searchModel = ref('');
         >
             <slot name="selected" v-bind="{ selectedOption }"/>
         </button>
-        <ul 
-            v-show="isOpen" 
-            ref="list" 
-            :class="`dropdown-options ${background}`" 
-            role="listbox" 
-            :aria-labelledby="id"
-            :style="{
-                width: props.width + 'px'
-            }"
-        >
-            <li v-if="search" class="sticky top-0 bg-inherit py-1 shadow-md">
-                <div class="w-full flex flex-row mt-1 mb-1 px-2 gap-2 place-items-center peer relative">
-                    <input class="dd-search-input peer w-full h-[36px] transition-colors" style="padding-left:36px" type="text" v-model="searchModel"/>
-                    <SearchIcon class="peer-focus:text-app-blue peer-hover:text-app-blue absolute left-4 transition-colors"/>
-                    <button @click="searchModel = ''" :style="`opacity:${searchModel ? 1 : 0}; cursor:${searchModel ? 'pointer' : 'default'}`">
-                        <XIcon class="text-gray-500 peer-focus:text-app-blue peer-hover:text-app-blue hover:text-app-blue transition-colors"/>
-                    </button>
-                </div>
-                <div v-if="availableOptions.length === 0" class="text-xs mb-3 text-center">
-                    {{ store.translations.search.noResults[store.lang] }}
-                </div>
-            </li>
-            <li v-for="(option, index) in availableOptions" :key="option[props.optionTarget]"
-                ref="optionsRef"
-                :class="{ highlighted: index === highlightedIndex, current: index === currentIndex }" 
-                class="dropdown-option" 
-                role="option"
-                :aria-selected="index === highlightedIndex" @click="selectOption(option)" @mouseover="highlight(index)"
-                @mouseleave="highlight(null)">
-                <slot name="option" v-bind="{ option, selected: index === highlightedIndex, current: index === currentIndex }"/>
-            </li>
-        </ul>
+        <BaseCard v-show="isOpen" class="dropdown-options">
+            <ul  
+                ref="list" 
+                :class="`${background}`" 
+                role="listbox" 
+                :aria-labelledby="id"
+                :style="{
+                    width: props.width + 'px'
+                }"
+            >
+                <li v-if="search" class="sticky top-0 bg-inherit py-1 shadow-md">
+                    <div class="w-full flex flex-row mt-1 mb-1 px-2 gap-2 place-items-center peer relative">
+                        <input class="dd-search-input peer w-full h-[36px] transition-colors" style="padding-left:36px" type="text" v-model="searchModel"/>
+                        <SearchIcon class="peer-focus:text-app-blue peer-hover:text-app-blue absolute left-4 transition-colors"/>
+                        <button @click="searchModel = ''" :style="`opacity:${searchModel ? 1 : 0}; cursor:${searchModel ? 'pointer' : 'default'}`">
+                            <XIcon class="text-gray-500 peer-focus:text-app-blue peer-hover:text-app-blue hover:text-app-blue transition-colors"/>
+                        </button>
+                    </div>
+                    <div v-if="availableOptions.length === 0" class="text-xs mb-3 text-center">
+                        {{ store.translations.search.noResults[store.lang] }}
+                    </div>
+                </li>
+                <li v-for="(option, index) in availableOptions" :key="option[props.optionTarget]"
+                    ref="optionsRef"
+                    :class="{ highlighted: index === highlightedIndex, current: index === currentIndex }" 
+                    class="dropdown-option" 
+                    role="option"
+                    :aria-selected="index === highlightedIndex" @click="selectOption(option)" @mouseover="highlight(index)"
+                    @mouseleave="highlight(null)">
+                    <slot name="option" v-bind="{ option, selected: index === highlightedIndex, current: index === currentIndex }"/>
+                </li>
+            </ul>
+        </BaseCard>
     </div>
 </template>
 
@@ -189,7 +191,6 @@ const searchModel = ref('');
 }
 
 .dropdown-options {
-    border-radius: 4px;
     list-style: none;
     margin-top: 0.25rem;
     max-height: 300px;
@@ -197,7 +198,6 @@ const searchModel = ref('');
     padding: 0;
     position: absolute;
     z-index: 10;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
 .dropdown-option {

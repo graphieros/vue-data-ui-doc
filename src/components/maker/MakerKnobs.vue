@@ -123,14 +123,14 @@ function getKeyTranslation(key) {
         <div>{{ configCategoriesLabel[store.lang] }}</div>
         <button 
             v-for="category in categories" @click="scrollToId(category.key)"
-            :class="`text-xs py-1 px-2 rounded ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : 'bg-[#1A1A1A10] hover:bg-[#1A1A1A20] dark:bg-[#FFFFFF10] hover:dark:bg-[#FFFFFF20]'} transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
+            :class="`text-xs py-1 px-2 rounded-full ${category.key === selectedCategory ? 'shadow-md bg-[#5F8AEE] text-white dark:bg-[#5F8BEE70]' : 'bg-[#1A1A1A10] hover:bg-[#1A1A1A20] dark:bg-[#FFFFFF10] hover:dark:bg-[#FFFFFF20]'} transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
         >
             {{ category.title }}
         </button>
     </div>
     <div class="flex flex-col gap-2 my-4 overflow-visible" v-for="(category, c) in categories" :id="category.key" :style="{ scrollMarginTop : '80px'}">
         <BaseCard type="medium">
-            <h4 class="text-2xl font-inter-bold text-black dark:text-[#CCCCCC]">{{ category.title }}</h4> 
+            <h4 class="text-2xl font-inter-bold text-black dark:text-[#CCCCCC] mb-4">{{ category.title }}</h4> 
             <div class="flex flex-row gap-4 place-items-center flex-wrap">
                 <div v-for="(knob, i) in model.filter(k => k.category === category.key)" class="flex flex-col justify-start my-2">
                     <label :for="`k_${i}_${uid}_${c}`" :id="`l_${i}_${uid}_${c}`" v-if="knob.type !== 'color'" class="text-xs text-black dark:text-white" dir="auto">{{ getLabel(knob.label) }} <br v-if="getKeyTranslation(knob.key)"/><span v-if="getKeyTranslation(knob.key) && typeof getKeyTranslation(knob.key) === 'string' && typeof getLabel(knob.label) === 'string' && getKeyTranslation(knob.key).toUpperCase() !== getLabel(knob.label).toUpperCase()" class="text-xs text-gray-500">({{ getKeyTranslation(knob.key) }})</span></label>

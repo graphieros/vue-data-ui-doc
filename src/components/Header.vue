@@ -394,7 +394,7 @@ const message = ref({
                     </span>
                 </router-link>
                 <button data-cy="btn-mode" @click="changeTheme" id="themeToggle"
-                    class="dark:hover:bg-[#fdd66320] hover:bg-[#5f8bee30] hover:text-[#5f8bee] rounded-full p-1">
+                    class="dark:hover:bg-[#fdd66320] hover:bg-[#5f8bee30] hover:text-[#5f8bee] rounded-full p-1 shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
                     <SunFilledIcon v-if="isDarkMode" class="text-[#fdd663]" />
                     <MoonStarsIcon v-else />
                 </button>
@@ -403,7 +403,7 @@ const message = ref({
                         :options="languageOptions"
                         v-model:value="selectedLanguage"
                         :width="130"
-                        basePadding="0 6px"
+                        basePadding="2px 6px"
                         optionTarget="value"
                         :search="false"
                         id="internationalization"

@@ -1991,7 +1991,7 @@ async function impactPatch() {
           </div>
           <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 
-          <BaseLazy>
+
             <div class="mx-auto max-w-[800px] px-6">
               <BaseCard>
                 <div class="grid grid-cols-2 align-center gap-4 justify-center">
@@ -2036,10 +2036,10 @@ async function impactPatch() {
                 </div>
               </BaseCard>
             </div>
-          </BaseLazy>
+
 
             <div class="max-w-[800px] mx-auto px-6">
-              <BaseLazy>
+
                 <BaseCard class="mx-auto mt-6 max-w-[800px]">
                   <div class="max-w-[600px] mx-auto">
                       <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
@@ -2119,21 +2119,20 @@ async function impactPatch() {
                       </VueUiSparkline>
                   </div>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
                 <BaseCard class="max-w-[800px] mx-auto mt-6">
                   <RepoStars />
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="max-w-[800px] mx-auto mt-6">
                   <Downloads/>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="!!data && !isLoadingLine">
                   <VueUiSkeleton v-if="isLoadingLine" :config="{ type: 'sparkHistogram', style: { backgroundColor: isDarkMode ? '#2A2A2A' : '#F3F4F6' } }"/>
                   <VueDataUi v-else component="VueUiSparkHistogram" :dataset="histoData" :config="histoConfig" :key="`histostep_${step}`">
@@ -2144,9 +2143,9 @@ async function impactPatch() {
                       </template>
                   </VueDataUi>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="usableHeatmapData.length">
                   <VueUiSkeleton v-if="isLoadingLine" :config="skeletonHeatmapConfig"/>
                   <VueUiHeatmap :dataset="usableHeatmapData" :config="heatmapConfig">
@@ -2157,9 +2156,9 @@ async function impactPatch() {
                       </template>
                   </VueUiHeatmap>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="!isLoadingLine">
                   <VueDataUi v-if="xyDataset.length" component="VueUiXyCanvas" :dataset="xyDataset" :config="xyCanvasConfig" :key="`xystep_${step}`">
                     <template #source>
@@ -2169,9 +2168,9 @@ async function impactPatch() {
                       </template>
                   </VueDataUi>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="max-w-[800px] mx-auto mt-6" v-if="sparklineReleases.length">
                   <VueUiSparkline :dataset="versionsReleases" :config="sparklineConfigForReleases">
                     <template #source>
@@ -2191,9 +2190,9 @@ async function impactPatch() {
                     </VueDataUi>
                   </div>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="max-w-[800px] mx-auto mt-6">
                   <div class="w-full p-4 text-[24px]">
                     Changelog    
@@ -2249,9 +2248,9 @@ async function impactPatch() {
                       </ul>
                   </div>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="mx-auto max-w-[800px] mt-6">
                     <VueDataUi v-if="versionsList.length" component="VueUiTreemap" :dataset="versionTreemap" :config="treemapConfig">
                       <template #rect="{ rect, fontSize }">
@@ -2267,13 +2266,13 @@ async function impactPatch() {
                         </template>
                     </VueDataUi>
                 </BaseCard>
-              </BaseLazy>
 
-              <BaseLazy>
+
+
                 <BaseCard class="mx-auto max-w-[800px] mt-6" v-if="!isLoadingLine && !!data">
                   <VueUiTable :key="`table_${step}`" :dataset="tableDataset" :config="isDarkMode ? tableConfigDarkMode: tableConfig"/>
                 </BaseCard>
-              </BaseLazy>
+
 
                 <div class="w-full max-w-[800] mx-auto py-6">
                   <GithubIssues/>
