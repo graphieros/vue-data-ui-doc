@@ -1,9 +1,8 @@
 <script setup>
-import { selectedIndex } from "happy-dom/lib/PropertySymbol.js";
 import { ref, computed } from "vue";
 import { useMainStore } from "../../stores";
 import BaseCard from "../BaseCard.vue";
-import { RadioactiveFilledIcon, RadioactiveOffIcon } from "vue-tabler-icons";
+import { RadioactiveFilledIcon } from "vue-tabler-icons";
 
 const store = useMainStore();
 const isDarkMode = computed(() => store.isDarkMode);
