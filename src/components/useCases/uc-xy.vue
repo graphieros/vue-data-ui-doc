@@ -8,6 +8,7 @@ import Prism from "prismjs"
 import "prismjs/themes/prism-okaidia.css"
 import XyShareSelect from "./XyShareSelect.vue";
 import CodeParser from "../customization/CodeParser.vue";
+import Tchernob from "./Tchernob.vue";
 
 onMounted(() => {
     window.Prism = window.Prism || {}
@@ -33,6 +34,11 @@ const {
     XY_FIXED_SCALE_DATASET
 } = useCase()
 
+
+/**
+ * Idea: xy next to timeline. selectX highlights timeline item
+ * 
+ */
 
 const shareX = ref({
     en: 'Share selected time index on multiple chart instances',
@@ -169,6 +175,22 @@ const shareXCodeJs = ref(`
             </template>
         </VueDataUi>
     </div>
+
+    <hr class="mt-4 mb-8"/>
+
+    <UseCaseTitle>
+        <template #title>
+            <div>
+                <div class="w-full mb-2">
+                    Timeline example
+                </div>
+                <div class="w-full text-black dark:text-[#CCCCCC]">
+                    Sync a chart to a timeline
+                </div>
+            </div>
+        </template>
+    </UseCaseTitle>
+    <Tchernob/>
 
     <hr class="mt-4 mb-8"/>
     
