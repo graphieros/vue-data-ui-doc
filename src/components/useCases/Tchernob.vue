@@ -233,7 +233,7 @@ const config = computed(() => ({
         }
     },
     chart: {
-        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
+        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#f3f4f6',
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         grid: {
             labels: {
@@ -298,10 +298,12 @@ function view(i) {
                                 v-for="(knob, i) in knobs"
                                 class="flex flex-row gap-2 place-items-center"
                             >
-                                <input type="checkbox" v-model="knob.active"/>
-                                <div class="flex flex-row place-items-center gap-2">
+                                <input type="checkbox" v-model="knob.active" class="!hidden"/>
+                                <div class="flex flex-row place-items-center gap-2 cursor-pointer select-none" :style="{
+                                    opacity: knob.active ? 1 : 0.5
+                                }">
                                     <div class="h-4 w-4 rounded-full" :style="{ background: baseDataset[i]?.color}"/>
-                                    <span>
+                                    <span :class="`${knob.active ? '' : 'line-through'}`">
                                         {{ knob.name }}
                                     </span>
                                 </div>

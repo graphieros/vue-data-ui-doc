@@ -191,6 +191,13 @@ const shareXCodeJs = ref(`
         </template>
     </UseCaseTitle>
     <Tchernob/>
+    <div class="my-4">
+        <a
+            class="my-4 text-app-blue hover:underline" 
+            href="https://github.com/graphieros/vue-data-ui-doc/blob/master/src/components/useCases/Tchernob.vue" target="_blank">
+            View component source code
+        </a>
+    </div>
 
     <hr class="mt-4 mb-8"/>
     
