@@ -1995,7 +1995,7 @@ async function impactPatch() {
             <div class="mx-auto max-w-[800px] px-6">
               <BaseCard>
                 <div class="grid grid-cols-2 align-center gap-4 justify-center">
-                  <button v-for="kpi in KPIS" :class="`button-kpi-${kpi.name.replaceAll(' ', '-')} rounded-md hover:shadow-xl transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"  >
+                  <button v-for="kpi in KPIS" :class="`w-full min-h-[72px] button-kpi-${kpi.name.replaceAll(' ', '-')} rounded-md hover:shadow-xl transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"  >
                     <a :href="kpi.link" target="_blank" class="kpi-wrapper">
                       <VueDataUi
                         :class="`${kpi.name.replaceAll(' ', '_')}${isDarkMode ? '-dark' : ''}`"
