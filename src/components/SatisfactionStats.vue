@@ -826,7 +826,8 @@ const xyConfig = computed(() => {
                 showPercentage: false,
                 roundingValue: 2,
                 useDefaultTimeFormat: false,
-                timeFormat: 'yyyy-MM-dd'
+                timeFormat: 'yyyy-MM-dd',
+                roundingValue: 3
             },
             userOptions: {
                 buttons: {
