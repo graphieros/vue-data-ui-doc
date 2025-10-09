@@ -25,6 +25,7 @@ import BaseCssOverride from "../BaseCssOverride.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import BaseTextCopy from "../BaseTextCopy.vue";
 
 const mainConfig = useConfig()
 
@@ -1254,7 +1255,7 @@ const timeFormatTranslation = ref({
                         {{  translations.docs.cssOverride[store.lang]  }}
                     </p>
                     <div>
-                    TS type: <code class="text-app-blue">VueUiXyConfig</code>
+                    TS type: <code class="text-app-blue"><BaseTextCopy>VueUiXyConfig</BaseTextCopy></code>
                     </div>
 
 <div class="my-4">

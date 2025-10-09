@@ -12,7 +12,7 @@ const translations = computed(() => store.translations)
 
 <template>
     <div style="z-index:10000000" v-if="isCopy" class="origin-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col place-items-center gap-2">    
-        <div style="z-index:10000000" v-if="isCopy" class="animate-ping h-[80px] w-[80px] flex place-items-center place-content-center dark:bg-black rounded-full bg-white">
+        <div style="z-index:10000000" v-if="isCopy" class="animate-ping h-[80px] w-[80px] flex place-items-center place-content-center dark:bg-black rounded-full bg-white shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
             <VueUiIcon name="circleCheck" :size="62" :stroke="isDarkMode ? '#42d392' : '#1A1A1A'" :stroke-width="1" />
         </div>
         <span class="animate-ping text-black dark:text-app-green bg-white dark:bg-black px-4 py-2 mt-12 rounded-full">

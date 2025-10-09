@@ -36,6 +36,10 @@ const props = defineProps({
     lineHeight: {
         type: String,
         default: '1.4rem'
+    },
+    tw: {
+        type: String,
+        default: ''
     }
 });
 
@@ -74,7 +78,7 @@ watch(() => isDarkMode.value, () => {
 </script>
 
 <template>
-    <div class="relative flex flex-row w-full place-items-center" :style="{
+    <div :class="`relative flex flex-row w-full place-items-center ${tw}`" :style="{
         pointerEvents: noPointerEvents ? 'none' : 'all'
     }">
         <slot name="color"/>
