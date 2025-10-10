@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, nextTick } from "vue";
+import { ref, computed, nextTick, watch } from "vue";
 import { useNestedProp } from "../../useNestedProp";
 import { getVueDataUiConfig } from "vue-data-ui";
 import { copyCode, jsonToJsObject } from "./lib";
@@ -12,6 +12,7 @@ import FlexibleTooltip from "../FlexibleTooltip.vue";
 import CodeParser from "../../components/customization/CodeParser.vue";
 import CopyComponent from "./CopyComponent.vue"
 import BaseCard from "../BaseCard.vue";
+import { useImportMap } from "../../useImportMap";
 
 const props = defineProps({
     dataset: {
@@ -125,9 +126,24 @@ function nuke() {
     nextTick(() => location.reload());
 }
 
+const isTreeshaken = ref(false);
+const imp = useImportMap(props.componentName);
+
+watch(() => isUniversal.value, (v) => {
+    if (v && isTreeshaken.value) {
+        isTreeshaken.value = false;
+    }
+})
+
+watch(() => isTreeshaken.value, (v) => {
+    if (v && isUniversal.value) {
+        isUniversal.value = false;
+    }
+})
+
 const generatedScript = computed(() => {
     return `import { ${isComputed.value ? "computed" : "ref"} } from "vue";
-import { ${isUniversal.value ? "VueDataUi" : props.componentName} } from "vue-data-ui";
+${isTreeshaken.value ? imp.treeshaken : `import { ${isUniversal.value ? "VueDataUi" : props.componentName} } from "vue-data-ui";`}
 import "vue-data-ui/style.css"; // ${store.translations.styleImport[store.lang]}
 
 ${isComputed.value
@@ -227,6 +243,10 @@ const generatedTemplate = computed(() => {
         <div class="mb-4 flex flex-row gap-4 place-items-center">
             <input id="univ" type="checkbox" v-model="isUniversal" />
             <label for="univ" class="text-sm cursor-pointer">Use VueDataUi universal component</label>
+        </div>
+        <div class="mb-4 flex flex-row gap-4 place-items-center">
+            <input id="treesh" type="checkbox" v-model="isTreeshaken" />
+            <label for="treesh" class="text-sm cursor-pointer">Treeshaken import ( v3.2.0+ )</label>
         </div>
     
         <div class="relative p-3 rounded-xl border border-transparent hover:border-app-blue hover:bg-[#5f8aee20] dark:hover:bg-[#5f8aee20] transition-colors mb-12" ref="compContent">
