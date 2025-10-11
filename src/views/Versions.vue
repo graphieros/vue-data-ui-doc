@@ -11,7 +11,7 @@ import { shiftHue } from '../components/maker/lib'
 import RepoStars from "../components/RepoStars.vue";
 import { darkenColor, lightenColor } from "vue-data-ui";
 import Downloads from "../components/Downloads.vue";
-import { BugIcon, GitForkIcon, StarFilledIcon, UserHeartIcon } from "vue-tabler-icons";
+import { BugIcon, GitForkIcon, StarFilledIcon, ToolIcon, UserHeartIcon } from "vue-tabler-icons";
 import BaseCard from "../components/BaseCard.vue";
 import BaseLazy from "../components/BaseLazy.vue";
 
@@ -1625,7 +1625,7 @@ const KPIS = computed(() => {
           : key === 'forks_count'
             ? GitForkIcon
             : key === 'open_issues_count'
-              ? BugIcon
+              ? ToolIcon
               : key === 'subscribers_count'
                 ? UserHeartIcon
                 : ''
