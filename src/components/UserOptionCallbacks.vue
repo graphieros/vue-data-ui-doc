@@ -136,6 +136,7 @@ const codeStandard = computed(() => {
         <CodeParser
             language="javascript"
             :content="path === 'chart' ? codeChart : root ? codeRoot : codeStandard"
+            @copy="store.copy()"
         />
     </div>
 </template>
