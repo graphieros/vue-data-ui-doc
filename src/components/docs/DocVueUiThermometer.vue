@@ -20,6 +20,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -318,7 +319,7 @@ const dsTypeCode = computed(() => {
             padding
         />
 
-        <Box showResponsive showEmits showSlots showThemes schema="vue_ui_thermometer">
+        <Box showResponsive showEmits showCallbacks showSlots showThemes schema="vue_ui_thermometer">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -507,6 +508,17 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
                 </ResponsiveUnit>
             </template>
 
+            <template #tab11>
+              <UserOptionCallbacks
+                  :items="[
+                      'annotator',
+                      'fullscreen',
+                      'img',
+                      'pdf',
+                      'svg'
+                  ]"
+              />
+          </template>
         </Box>
     </div>
 </template>

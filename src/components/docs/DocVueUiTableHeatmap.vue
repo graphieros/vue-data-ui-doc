@@ -14,6 +14,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -322,7 +323,7 @@ const codeDataset = ref(`const dataset: VueUiTableHeatmapDatasetItem[] = [
 
         <Rater itemId="vue_ui_table_heatmap" />
 
-        <Box showSlots signInfo="both">
+        <Box showSlots showCallbacks signInfo="both">
             <template #warning>
                 <InfoTriangleFilledIcon/>
                 {{ translations.slots.warning[store.lang] }}
@@ -482,6 +483,18 @@ const codeDataset = ref(`const dataset: VueUiTableHeatmapDatasetItem[] = [
 </code>
 </pre>
             </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                    ]"
+                />
+            </template>
+
         </Box>
     </div>
 </template>

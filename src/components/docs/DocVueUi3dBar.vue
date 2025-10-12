@@ -20,6 +20,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -496,7 +497,7 @@ const dsType2 = ref(`type VueUi3dBarDataset = {
             debug 
         />
 
-        <Box showResponsive showEmits showSlots showThemes schema="vue_ui_3d_bar" signInfo="positiveOrNegativeOnly">
+        <Box showResponsive showEmits showSlots showThemes showCallbacks schema="vue_ui_3d_bar" signInfo="positiveOrNegativeOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="w-full overflow-x-auto mb-6 border-gray-700">
@@ -775,6 +776,20 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                         />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'svg'
+                    ]"
+                />
             </template>
         </Box>
     </div>

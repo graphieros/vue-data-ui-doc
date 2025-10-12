@@ -20,6 +20,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -816,7 +817,16 @@ function copyComponentSnippet(snip) {
             padding
         />
 
-        <Box :showDatetimeFormatter="true" showSlots showTooltip showEmits showThemes showResponsive schema="vue_ui_quick_chart">
+        <Box 
+            :showDatetimeFormatter="true" 
+            showSlots 
+            showTooltip 
+            showEmits 
+            showThemes 
+            showResponsive
+            showCallbacks
+            schema="vue_ui_quick_chart"
+        >
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div>
@@ -1123,6 +1133,20 @@ Target the following css class to apply custom styles:
             <template #tab10>
                 <DatetimeFormatterDoc
                     path="datetimeFormatter"
+                />
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'fullscreen',
+                        'pdf',
+                        'img',
+                        'tooltip',
+                        'svg'
+                    ]"
+                    root="userOptionsCallbacks"
                 />
             </template>
 

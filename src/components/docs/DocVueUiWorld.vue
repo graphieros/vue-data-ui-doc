@@ -20,6 +20,7 @@ import BaseComment from "../BaseComment.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -639,7 +640,7 @@ function setProjection(p) {
             debug 
         />
 
-        <Box showEmits showSlots showTooltip showPatterns schema="vue_ui_world">
+        <Box showEmits showSlots showTooltip showCallbacks showPatterns schema="vue_ui_world">
             <template v-slot:tab0>
                 You can also use this component without a dataset, it will just show the naked map.
                 <div class="w-full overflow-x-auto">
@@ -968,6 +969,21 @@ Target the following css class to apply custom styles:
                         <VueUiPattern :id="patternId" name="wave" stroke="#8A8A8A" :strokeWidth="1" :scale="0.6"/>
                     </template>
                 </VueDataUi>
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'tooltip',
+                        'svg'
+                    ]"
+                />
             </template>
         </Box>
 

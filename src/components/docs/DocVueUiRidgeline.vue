@@ -25,6 +25,7 @@ import ThemesVueUiRidgeline from "../themes/ThemesVueUiRidgeline.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -1019,7 +1020,7 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
             debug
         />
 
-        <Box :showDatetimeFormatter="true" showEmits showSlots showThemes showResponsive showPatterns schema="vue_ui_ridgeline" signInfo="both">
+        <Box :showDatetimeFormatter="true" showEmits showCallbacks showSlots showThemes showResponsive showPatterns schema="vue_ui_ridgeline" signInfo="both">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
@@ -1341,6 +1342,20 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
             <template #tab10>
                 <DatetimeFormatterDoc
                     path="style.chart.xAxis.labels.datetimeFormatter"
+                />
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'svg'
+                    ]"
                 />
             </template>
         </Box>

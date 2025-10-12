@@ -18,6 +18,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -654,7 +655,7 @@ const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
             debug 
         />
 
-        <Box showEmits showSlots showTooltip>
+        <Box showEmits showSlots showTooltip showCallbacks>
             <template #tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
@@ -915,6 +916,22 @@ Target the following css class to apply custom styles:
 .vue-data-ui-custom-tooltip
 </code>
 </pre>           
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'labels',
+                        'pdf',
+                        'table',
+                        'tooltip',
+                        'svg'
+                    ]"
+                />
             </template>
         </Box>
     </div>

@@ -16,6 +16,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -374,7 +375,7 @@ const codeDataset = ref(`const dataset: VueUiTableSparklineDatasetItem[] = [
 
         <Rater itemId="vue_ui_table_sparkline" />
 
-        <Box showEmits showSlots signInfo="both">
+        <Box showEmits showSlots showCallbacks signInfo="both">
           <template #tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
           <CodeParser
@@ -538,6 +539,17 @@ const codeDataset = ref(`const dataset: VueUiTableSparklineDatasetItem[] = [
                     ]" 
                 />
           </template>
+
+          <template #tab11>
+            <UserOptionCallbacks
+                :items="[
+                    'csv',
+                    'fullscreen',
+                    'img',
+                    'pdf',
+                ]"
+            />
+        </template>
         </Box>
     </div>
 </template>

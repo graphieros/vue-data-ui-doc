@@ -22,6 +22,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -497,7 +498,7 @@ const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
             debug 
         />
 
-        <Box showEmits showSlots showThemes showResponsive :showPatterns="false" schema="vue_ui_gauge">
+        <Box showEmits showSlots showThemes showCallbacks showResponsive :showPatterns="false" schema="vue_ui_gauge">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -823,6 +824,18 @@ const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
                         <VueUiPattern v-if="seriesIndex === 1" :id="patternId" name="scales" stroke="#FFFFFF40"/>
                     </template>
                 </VueUiGauge>
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'svg'
+                    ]"
+                />
             </template>
         </Box>
     </div>

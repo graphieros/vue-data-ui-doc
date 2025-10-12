@@ -19,6 +19,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -808,7 +809,7 @@ const codeDataset = ref(`const dataset: VueUiChestnutDatasetRoot[] = [
             debug 
         />
 
-        <Box showEmits showSlots showThemes schema="vue_ui_chestnut" signInfo="positiveOnly">
+        <Box showEmits showSlots showThemes showCallbacks schema="vue_ui_chestnut" signInfo="positiveOnly">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
@@ -1295,6 +1296,20 @@ const codeDataset = ref(`const dataset: VueUiChestnutDatasetRoot[] = [
             <template #tab6>
               <ThemesVueUiChestnut />
             </template>
+
+            <template #tab11>
+              <UserOptionCallbacks
+                  :items="[
+                      'annotator',
+                      'csv',
+                      'fullscreen',
+                      'img',
+                      'pdf',
+                      'table',
+                      'svg'
+                  ]"
+              />
+          </template>
         </Box>
     </div>
 </template>

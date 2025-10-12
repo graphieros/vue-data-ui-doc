@@ -20,6 +20,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -445,7 +446,7 @@ const codeDataset = ref(`const dataset: VueUiFunnelDatasetItem[] = [
 
         <Rater itemId="vue_ui_funnel" />
 
-        <Box showEmits showSlots showThemes showResponsive schema="vue_ui_funnel" signInfo="positiveOnly">
+        <Box showEmits showCallbacks showSlots showThemes showResponsive schema="vue_ui_funnel" signInfo="positiveOnly">
             <template #tab0>
                 <div class="w-full overflow-x-auto border-b my-6 border-gray-700">
 
@@ -738,6 +739,20 @@ const codeDataset = ref(`const dataset: VueUiFunnelDatasetItem[] = [
                         />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'svg'
+                    ]"
+                />
             </template>
         </Box>
     </div>

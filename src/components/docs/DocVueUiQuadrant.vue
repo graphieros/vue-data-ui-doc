@@ -21,6 +21,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -711,7 +712,7 @@ const codeDataset = ref(`const dataset: VueUiQuadrantDatasetItem[] = [
             debug 
         />
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_quadrant" signInfo="both">
+        <Box showEmits showSlots showTooltip showCallbacks showThemes showResponsive schema="vue_ui_quadrant" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
         <CodeParser
@@ -1158,6 +1159,22 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
                                 " :key="key" />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'labels',
+                        'pdf',
+                        'table',
+                        'tooltip',
+                        'svg'
+                    ]"
+                />
             </template>
         </Box>
     </div>

@@ -21,6 +21,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -571,7 +572,7 @@ const codeDataset = ref(`const dataset: VueUiRadarDataset = {
             debug
         />
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_radar" signInfo="both">
+        <Box showEmits showSlots showTooltip showCallbacks showThemes showResponsive schema="vue_ui_radar" signInfo="both">
             <template v-slot:tab0>
 
                 <div class="w-full overflow-x-auto">
@@ -913,6 +914,21 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
                                 " :key="key" />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'tooltip',
+                        'svg'
+                    ]"
+                />
             </template>
         </Box>
     </div>

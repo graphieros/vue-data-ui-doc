@@ -22,6 +22,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -550,7 +551,7 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
             heatmapSize
         />
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive schema="vue_ui_heatmap" signInfo="both">
+        <Box showEmits showSlots showTooltip showThemes showCallbacks showResponsive schema="vue_ui_heatmap" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -840,6 +841,21 @@ Target the following css class to apply custom styles:
                 </template>
               </ResponsiveUnit>
             </template>
+
+            <template #tab11>
+              <UserOptionCallbacks
+                  :items="[
+                      'annotator',
+                      'csv',
+                      'fullscreen',
+                      'img',
+                      'pdf',
+                      'table',
+                      'tooltip',
+                      'svg'
+                  ]"
+              />
+          </template>
         </Box>
     </div>
 </template>

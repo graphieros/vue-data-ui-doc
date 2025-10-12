@@ -21,6 +21,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -587,7 +588,7 @@ const codeDataset = ref(`const dataset: VueUiTreemapDatasetItem[] = [
             padding
         />
 
-        <Box showEmits showSlots showTooltip :showThemes="false" showResponsive schema="vue_ui_treemap" signInfo="positiveOnly">
+        <Box showEmits showSlots showTooltip showCallbacks :showThemes="false" showResponsive schema="vue_ui_treemap" signInfo="positiveOnly">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
         <CodeParser
@@ -962,6 +963,21 @@ Target the following css class to apply custom styles:
                         />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'tooltip',
+                        'svg'
+                    ]"
+                />
             </template>
 
         </Box>

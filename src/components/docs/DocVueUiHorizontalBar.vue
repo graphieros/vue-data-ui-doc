@@ -21,6 +21,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -617,7 +618,7 @@ const codeDataset = ref(`const dataset: VueUiHorizontalBarDatasetItem[] = [
 
         <Rater itemId="vue_ui_horizontal_bar" />
 
-        <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_horizontal_bar" signInfo="both">
+        <Box showEmits showSlots showTooltip showThemes showResponsive showPatterns showCallbacks schema="vue_ui_horizontal_bar" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
@@ -1021,6 +1022,22 @@ Target the following css class to apply custom styles:
                     </template>
               </VueUiVerticalBar>
             </template>
+
+            <template #tab11>
+              <UserOptionCallbacks
+                  :items="[
+                      'annotator',
+                      'csv',
+                      'fullscreen',
+                      'img',
+                      'pdf',
+                      'table',
+                      'sort',
+                      'tooltip',
+                      'svg'
+                  ]"
+              />
+          </template>
         </Box>
     </div>
 </template>

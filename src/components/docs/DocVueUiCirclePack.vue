@@ -22,6 +22,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig();
 
@@ -418,12 +419,11 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
     />
 
     <div :class="`transition-all mx-auto w-2/3 pb-12`">
-        <BaseRandomButton @click="randomizeData" />
         <DocSnapper :isFixed="isFixed" :disabled="!isFixed || isMobile" @fixChart="fixChart"
             @resetDefault="resetDefault" @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)">
-            <BaseCard>
-                <div class="w-full min-h-[500px]">
-                    <VueDataUi component="VueUiCirclePack" :dataset="mutableDataset"
+                <BaseCard>
+                    <div class="w-full min-h-[500px]">
+                        <VueDataUi component="VueUiCirclePack" :dataset="mutableDataset"
                         :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key">
                         <template #plot-comment="{ plot }">
                             <div :style="`text-align:${plot.textAlign};font-size: 10px; padding: 6px;`">
@@ -434,6 +434,7 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
                 </div>
             </BaseCard>
         </DocSnapper>
+        <BaseRandomButton @click="randomizeData" />
     </div>
 
     <Rater itemId="vue_ui_circle_pack" />
@@ -442,7 +443,7 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
             debug 
         />
 
-    <Box showEmits showSlots showThemes showPatterns schema="vue_ui_circle_pack" signInfo="positiveOnly">
+    <Box showEmits showSlots showThemes showCallbacks showPatterns schema="vue_ui_circle_pack" signInfo="positiveOnly">
         <template #tab0>
                 <div class="w-full overflow-x-auto">
         <CodeParser
@@ -739,5 +740,19 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
                 </template>
             </VueDataUi>
         </template>
+
+        <template #tab11>
+            <UserOptionCallbacks
+                :items="[
+                    'annotator',
+                    'csv',
+                    'fullscreen',
+                    'img',
+                    'pdf',
+                    'table',
+                    'svg'
+                ]"
+            />
+      </template>
     </Box>
 </template>

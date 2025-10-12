@@ -20,6 +20,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -474,7 +475,7 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
       debug 
     />
 
-    <Box showEmits showSlots showThemes showResponsive schema="vue_ui_relation_circle">
+    <Box showEmits showSlots showThemes showCallbacks showResponsive schema="vue_ui_relation_circle">
       <template v-slot:tab0>
         <div class="w-full overflow-x-auto">
 
@@ -667,6 +668,18 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
                 </template>
               </ResponsiveUnit>
             </template>
+
+            <template #tab11>
+              <UserOptionCallbacks
+                  :items="[
+                      'annotator',
+                      'fullscreen',
+                      'img',
+                      'pdf',
+                      'svg'
+                  ]"
+              />
+          </template>
     </Box>
   </div>
 </template>

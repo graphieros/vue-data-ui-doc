@@ -20,6 +20,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -293,7 +294,7 @@ function randomizeData() {
             debug 
         />
 
-        <Box showResponsive showEmits showSlots showThemes schema="vue_ui_tiremarks" signInfo="positiveOnly">
+        <Box showResponsive showEmits showCallbacks showSlots showThemes schema="vue_ui_tiremarks" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -470,6 +471,18 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
                 </template>
               </ResponsiveUnit>
             </template>
+
+            <template #tab11>
+              <UserOptionCallbacks
+                  :items="[
+                      'annotator',
+                      'fullscreen',
+                      'img',
+                      'pdf',
+                      'svg'
+                  ]"
+              />
+          </template>
         </Box>
     </div>
 </template>

@@ -20,6 +20,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -599,7 +600,7 @@ const additionalTranslations = computed(() => {
             padding
         />
 
-        <Box showSlots showThemes showEmits showTooltip showResponsive schema="vue_ui_flow" signInfo="positiveOnly">
+        <Box showSlots showThemes showEmits showTooltip showResponsive showCallbacks schema="vue_ui_flow" signInfo="positiveOnly">
             <template #tab0>
 
         <CodeParser
@@ -930,6 +931,21 @@ Target the following css class to apply custom styles:
                         />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'tooltip',
+                        'svg'
+                    ]"
+                />
             </template>
         </Box>
     </div>

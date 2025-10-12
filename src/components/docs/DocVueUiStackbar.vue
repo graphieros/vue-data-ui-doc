@@ -23,6 +23,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -748,7 +749,7 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
             padding
         />
 
-        <Box :showDatetimeFormatter="true" showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_stackbar" signInfo="both">
+        <Box :showDatetimeFormatter="true" showCallbacks showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_stackbar" signInfo="both">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -1251,6 +1252,22 @@ Target the following css class to apply custom styles:
             <template #tab10>
                 <DatetimeFormatterDoc
                     path="style.chart.grid.x.timeLabels.datetimeFormatter"
+                />
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'labels',
+                        'pdf',
+                        'table',
+                        'tooltip',
+                        'svg'
+                    ]"
                 />
             </template>
         </Box>

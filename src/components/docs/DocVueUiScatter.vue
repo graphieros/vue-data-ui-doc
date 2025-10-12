@@ -22,6 +22,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ucScatter from "../useCases/uc-scatter.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -700,7 +701,7 @@ const performanceModeComment = ref({
             padding
         />
 
-        <Box showEmits showSlots showTooltip showThemes showUseCases showResponsive schema="vue_ui_scatter" signInfo="both">
+        <Box showEmits showSlots showTooltip showCallbacks showThemes showUseCases showResponsive schema="vue_ui_scatter" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -1122,6 +1123,22 @@ Target the following css class to apply custom styles:
                 </template>
               </ResponsiveUnit>
             </template>
+
+            <template #tab11>
+              <UserOptionCallbacks
+                  :items="[
+                      'annotator',
+                      'csv',
+                      'fullscreen',
+                      'img',
+                      'pdf',
+                      'table',
+                      'tooltip',
+                      'svg'
+                  ]"
+              />
+          </template>
+
         </Box>
     </div>
 </template>

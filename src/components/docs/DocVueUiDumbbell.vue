@@ -19,6 +19,7 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -570,7 +571,7 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
             padding
         />
 
-        <Box showEmits showSlots showThemes showResponsive schema="vue_ui_dumbbell" signInfo="both">
+        <Box showEmits showSlots showThemes showCallbacks showResponsive schema="vue_ui_dumbbell" signInfo="both">
             <template #tab0>
                 <div>
                     <div class="w-full overflow-x-auto">
@@ -947,6 +948,21 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
                     </template>
                 </ResponsiveUnit>
             </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'svg'
+                    ]"
+                />
+            </template>
+
         </Box>
     </div>
 </template>

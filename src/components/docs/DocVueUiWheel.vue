@@ -21,6 +21,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -324,7 +325,7 @@ function randomizeData() {
             debug 
         />
 
-        <Box showEmits showSlots showThemes showResponsive schema="vue_ui_wheel" signInfo="positiveOnly">
+        <Box showEmits showSlots showThemes showCallbacks showResponsive schema="vue_ui_wheel" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -516,6 +517,19 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                 </template>
               </ResponsiveUnit>
             </template>
+
+            <template #tab11>
+              <UserOptionCallbacks
+                  :items="[
+                      'annotator',
+                      'fullscreen',
+                      'img',
+                      'pdf',
+                      'svg'
+                  ]"
+              />
+          </template>
+
         </Box>
     </div>
 </template>

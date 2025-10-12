@@ -22,6 +22,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -415,7 +416,7 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
             debug
         />
 
-        <Box showEmits showSlots showThemes showResponsive signInfo="both" schema="vue_ui_bullet">
+        <Box showEmits showSlots showThemes showCallbacks showResponsive signInfo="both" schema="vue_ui_bullet">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -691,6 +692,19 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
                     </template>
                 </ResponsiveUnit>
             </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'svg'
+                    ]"
+                />
+            </template>
+
         </Box>
 
     </div>

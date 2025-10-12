@@ -20,6 +20,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -392,7 +393,7 @@ const { configCode, showAllConfig } = useConfigCode()
             debug 
         />
 
-        <Box showResponsive showEmits showSlots showThemes schema="vue_ui_mood_radar" signInfo="positiveOnly">
+        <Box showResponsive showEmits showCallbacks showSlots showThemes schema="vue_ui_mood_radar" signInfo="positiveOnly">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -681,6 +682,21 @@ const { configCode, showAllConfig } = useConfigCode()
                     </template>
                 </ResponsiveUnit>
             </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'svg'
+                    ]"
+                />
+            </template>
+
         </Box>
     </div>
 </template>

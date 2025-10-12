@@ -30,6 +30,7 @@ type BoxProps = {
     hideSchemaDisclaimer?: boolean;
     signInfo?: string;
     showDatetimeFormatter?: string;
+    showCallbacks?: boolean;
 };
 
 const props = withDefaults(defineProps<BoxProps>(), {
@@ -46,6 +47,7 @@ const props = withDefaults(defineProps<BoxProps>(), {
     hideSchemaDisclaimer: false,
     signInfo: '',
     showDatetimeFormatter: false,
+    showCallbacks: false,
 });
 
 const { isMobile } = useMobile();
@@ -215,6 +217,17 @@ const menuTranslations = computed(() => {
             es: "Formateador de fecha y hora",
             ko: "날짜 및 시간 형식기",
             ar: "منسق التاريخ والوقت"
+        },
+        callbacks: {
+            en: 'User menu callbacks',
+            fr: 'Callbacks du menu utilisateur',
+            pt: 'Callbacks do menu do usuário',
+            de: 'Callbacks des Benutzermenüs',
+            zh: '用户菜单回调 (callbacks)',
+            jp: 'ユーザーメニューのコールバック',
+            es: 'Callbacks del menú de usuario',
+            ko: '사용자 메뉴 콜백',
+            ar: 'Callbacks لقائمة المستخدم'
         }
     }
 })
@@ -298,6 +311,13 @@ const menuItems = computed(() => {
             color: isDarkMode.value ? '#1d915d' : '#FFFFFF',
             active: props.showDatetimeFormatter,
             order: 10
+        },
+        {
+            name: menuTranslations.value.callbacks[store.lang],
+            icon: 'lambda',
+            color: isDarkMode.value ? '#ff6ba1' : '#FFFFFF',
+            active: props.showCallbacks,
+            order: 11
         },
     ].filter(menu => menu.active)
 })
@@ -482,6 +502,9 @@ function selectTabFromMini(order) {
         </div>
         <div v-if="activeTab === 10">
             <slot name="tab10"/>
+        </div>
+        <div v-if="activeTab === 11">
+            <slot name="tab11"/>
         </div>
     </div>
 </template>

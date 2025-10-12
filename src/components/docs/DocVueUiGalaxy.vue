@@ -20,6 +20,7 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -441,7 +442,7 @@ const codeDataset = ref(`const dataset: VueUiGalaxyDatasetItem[] = [
         debug
     />
 
-    <Box showResponsive showEmits showSlots showTooltip showThemes schema="vue_ui_galaxy" signInfo="positiveOrNegativeOnly">
+    <Box showResponsive showEmits showSlots showCallbacks showTooltip showThemes schema="vue_ui_galaxy" signInfo="positiveOrNegativeOnly">
       <template #tab0>
         <div class="w-full overflow-x-auto">
           <CodeParser
@@ -815,6 +816,21 @@ Target the following css class to apply custom styles:
                   />
               </template>
           </ResponsiveUnit>
+      </template>
+
+      <template #tab11>
+          <UserOptionCallbacks
+              :items="[
+                  'annotator',
+                  'csv',
+                  'fullscreen',
+                  'img',
+                  'pdf',
+                  'table',
+                  'tooltip',
+                  'svg'
+              ]"
+          />
       </template>
     </Box>
   </div>

@@ -21,6 +21,7 @@ import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -677,7 +678,7 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
             padding
         />
 
-        <Box :showDatetimeFormatter="true" showEmits showSlots showThemes showResponsive schema="vue_ui_donut_evolution" signInfo="positiveOnly">
+        <Box :showDatetimeFormatter="true" showEmits showCallbacks showSlots showThemes showResponsive schema="vue_ui_donut_evolution" signInfo="positiveOnly">
             <template #tab0>
 
                 <div class="w-full overflow-x-auto">
@@ -1066,6 +1067,20 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
 
             <template #tab10>
                 <DatetimeFormatterDoc path="style.chart.layout.grid.xAxis.dataLabels.datetimeFormatter"/>
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'svg'
+                    ]"
+                />
             </template>
         </Box>
     </div>

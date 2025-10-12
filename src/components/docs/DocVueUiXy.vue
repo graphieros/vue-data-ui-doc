@@ -26,6 +26,7 @@ import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseTextCopy from "../BaseTextCopy.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -1221,7 +1222,19 @@ const timeFormatTranslation = ref({
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
             </div>
         </div> -->
-        <Box :showDatetimeFormatter="true" showEmits showSlots showTooltip showUseCases showThemes showResponsive showPatterns schema="vue_ui_xy" signInfo="both">
+        <Box 
+            :showDatetimeFormatter="true" 
+            showEmits 
+            showSlots 
+            showTooltip 
+            showUseCases 
+            showThemes 
+            showResponsive 
+            showPatterns
+            showCallbacks
+            schema="vue_ui_xy" 
+            signInfo="both"
+            >
             <template v-slot:tab0>
 
             <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -1938,6 +1951,24 @@ Target the following css class to apply custom styles:
                         <CodeParser class="mt-2" language="javascript" :content="timeFormats"/>
                     </div>
                 </DatetimeFormatterDoc>
+            </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'labels',
+                        'pdf',
+                        'stack',
+                        'table',
+                        'tooltip',
+                        'svg'
+                    ]"
+                    path="chart"
+                />
             </template>
         </Box>
     </div>

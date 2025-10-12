@@ -21,6 +21,7 @@ import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig();
 
@@ -424,7 +425,7 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
             debug 
         />
 
-        <Box showEmits showSlots showThemes showResponsive showPatterns signInfo="postiveOnly" schema="vue_ui_chord">
+        <Box showEmits showSlots showThemes showResponsive showCallbacks showPatterns signInfo="postiveOnly" schema="vue_ui_chord">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
@@ -667,6 +668,21 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
                     </template>
                 </VueDataUi>
             </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'annotator',
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                        'table',
+                        'svg'
+                    ]"
+                />
+            </template>
+
         </Box>
     </div>
 </template>

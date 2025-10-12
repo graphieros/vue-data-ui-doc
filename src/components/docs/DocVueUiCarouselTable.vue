@@ -14,6 +14,7 @@ import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
+import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 
 const mainConfig = useConfig()
 
@@ -418,7 +419,7 @@ const dsExample = ref(`const dataset = {
 
         <Rater itemId="vue_ui_carousel_table" />
 
-        <Box showEmits showSlots schema="vue_ui_carousel_table" hideSchemaDisclaimer>
+        <Box showEmits showSlots showCallbacks schema="vue_ui_carousel_table" hideSchemaDisclaimer>
             <template #tab0>
                 <div class="w-full overflow-x-auto">
         <CodeParser
@@ -650,6 +651,18 @@ const dsExample = ref(`const dataset = {
 </pre>
                     
             </template>
+
+            <template #tab11>
+                <UserOptionCallbacks
+                    :items="[
+                        'csv',
+                        'fullscreen',
+                        'img',
+                        'pdf',
+                    ]"
+                />
+            </template>
+
         </Box>
 </div>
 
