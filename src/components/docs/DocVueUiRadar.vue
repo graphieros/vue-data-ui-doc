@@ -853,6 +853,7 @@ const codeDataset = ref(`const dataset: VueUiRadarDataset = {
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

@@ -918,6 +918,7 @@ function setProjection(p) {
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable',
                     ]"
                 />

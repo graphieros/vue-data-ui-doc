@@ -41,12 +41,13 @@ const icons = ref([
     "sort",
     "spin",
     "stack",
+    "svg",
     "tableClose",
+    "tableDialogClose",
+    "tableDialogOpen",
     "tableOpen",
     "tooltip",
     "unstack",
-    "tableDialogOpen",
-    "tableDialogClose"
 ]);
 
 const specialIcons = ref([

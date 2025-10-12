@@ -692,7 +692,8 @@ const codeDataset = ref(`const dataset: VueUiFunnelDatasetItem[] = [
                     getImage
                     :names="[
                         'generatePdf',
-                        'generateImage'
+                        'generateImage',
+                        'generateSvg',
                     ]"
                 />
                 </div>

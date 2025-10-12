@@ -1006,6 +1006,7 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

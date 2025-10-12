@@ -636,6 +636,7 @@ const { configCode, showAllConfig } = useConfigCode()
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

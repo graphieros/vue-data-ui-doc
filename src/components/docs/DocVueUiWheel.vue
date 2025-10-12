@@ -473,7 +473,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiWheelDataset</s
                 getImage
                 :names="[
                   'generatePdf',
-                  'generateImage'
+                  'generateImage',
+                  'generateSvg',
                 ]"
               />
             </template>

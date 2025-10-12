@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.3.0",
+    "date": "2025-10-12",
+    "updates": [
+      {
+        "component": "All svg components",
+        "description": "Add SVG export feature",
+        "link": ""
+      },
+      {
+        "component": "VueUiHeatmap",
+        "description": "Fix time label overflow edge case when rotated",
+        "link": "/docs/#vue-ui-heatmap"
+      }
+    ]
+  },
+  {
     "version": "v 3.2.8",
     "date": "2025-10-06",
     "updates": [

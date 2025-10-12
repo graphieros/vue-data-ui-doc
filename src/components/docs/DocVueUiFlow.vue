@@ -863,6 +863,7 @@ const additionalTranslations = computed(() => {
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable',
                     ]"
                 />

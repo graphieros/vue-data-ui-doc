@@ -596,6 +596,7 @@ const dsExample = ref(`const dataset = {
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleAnimation',
                         'pauseAnimation',
                         'resumeAnimation'

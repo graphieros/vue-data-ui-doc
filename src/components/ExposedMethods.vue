@@ -28,6 +28,7 @@ const methodMap = computed(() => {
         generatePdf: { name: 'generatePdf', description: translations.value.docs.emits.generatePdf[store.lang] },
         generateCsv: { name: 'generateCsv', description: translations.value.docs.emits.generateCsv[store.lang] },
         generateImage: { name: 'generateImage', description: translations.value.docs.emits.generateImage[store.lang] },
+        generateSvg: { name: 'generateSvg', description: translations.value.docs.emits.generateSvg[store.lang] },
         toggleTable: { name: 'toggleTable', description: translations.value.docs.emits.toggleTable[store.lang] },
         toggleStack: { name: 'toggleStack', description: translations.value.docs.emits.toggleStack[store.lang] },
         toggleLabels: { name: 'toggleLabels', description: translations.value.docs.emits.toggleLabels[store.lang] },

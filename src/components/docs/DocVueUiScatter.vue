@@ -1052,6 +1052,7 @@ const performanceModeComment = ref({
                     'generatePdf',
                     'generateCsv',
                     'generateImage',
+                    'generateSvg',
                     'toggleTable'
                   ]"
                 />

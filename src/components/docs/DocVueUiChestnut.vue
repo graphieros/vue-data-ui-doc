@@ -1273,6 +1273,7 @@ const codeDataset = ref(`const dataset: VueUiChestnutDatasetRoot[] = [
                     'generatePdf',
                     'generateCsv',
                     'generateImage',
+                    'generateSvg',
                     'toggleTable'
                   ]"
                 />

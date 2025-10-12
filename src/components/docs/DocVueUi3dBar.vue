@@ -734,7 +734,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                     getImage
                     :names="[
                         'generatePdf',
-                        'generateImage'
+                        'generateImage',
+                        'generateSvg',
                     ]"
                 />
             </template>

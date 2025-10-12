@@ -738,6 +738,7 @@ const dsTypeCode = computed(() => {
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

@@ -1097,6 +1097,7 @@ const codeDataset = ref(`const dataset: VueUiQuadrantDatasetItem[] = [
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable',
                         'toggleLabels'
                     ]"

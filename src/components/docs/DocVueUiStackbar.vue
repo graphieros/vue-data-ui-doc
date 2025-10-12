@@ -1156,6 +1156,7 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable',
                         'toggleLabels'
                     ]"

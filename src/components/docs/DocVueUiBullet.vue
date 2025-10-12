@@ -647,6 +647,7 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
                         :names="[
                             'generatePdf',
                             'generateImage',
+                            'generateSvg',
                         ]"
                     />
                 </div>

@@ -712,6 +712,7 @@ const codeDataset = ref(`const dataset: VueUiRingsDatasetItem[] = [
                     'generatePdf',
                     'generateCsv',
                     'generateImage',
+                    'generateSvg',
                     'toggleTable'
                   ]"
                 />

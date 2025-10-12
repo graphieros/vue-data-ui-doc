@@ -624,7 +624,8 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
           getImage
           :names="[
             'generatePdf',
-            'generateImage'
+            'generateImage',
+            'generateSvg',
           ]"
         />
       </template>

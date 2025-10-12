@@ -1798,6 +1798,7 @@ const timeFormatTranslation = ref({
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable',
                         'toggleStack',
                         'toggleLabels'

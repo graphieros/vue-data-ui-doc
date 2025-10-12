@@ -1021,6 +1021,7 @@ const codeDataset = ref(`const dataset: VueUiDonutEvolutionDatasetItem[] = [
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

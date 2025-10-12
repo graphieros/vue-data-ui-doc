@@ -609,6 +609,7 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

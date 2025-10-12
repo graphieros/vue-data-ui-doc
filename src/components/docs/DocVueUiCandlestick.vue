@@ -815,6 +815,7 @@ const dsTypeCodeExample = ref(`const dataset = [
                   'generatePdf',
                   'generateCsv',
                   'generateImage',
+                  'generateSvg',
                   'toggleTable'
                 ]"
               />

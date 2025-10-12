@@ -2917,6 +2917,17 @@ export const useMainStore = defineStore("main", {
                             ko: "png 이미지로 다운로드하려면 상위 구성 요소에서 이 메서드를 호출하세요. 이는 사용자 옵션이 숨겨져 있는 경우 특히 유용합니다.",
                             ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لتنزيلها كصورة png. وهذا مفيد بشكل خاص إذا كانت خيارات المستخدم مخفية'
                         },
+                        generateSvg: {
+                            en: "Call this method from the parent component to download as SVG image. This is especially useful if user options are hidden.",
+                            fr: "Appelez cette méthode à partir du composant parent pour la télécharger sous forme d'image SVG. Ceci est particulièrement utile si les options utilisateur sont masquées.",
+                            pt: "Chame esse método do componente pai para fazer download como imagem SVG. Isto é especialmente útil se as opções do usuário estiverem ocultas.",
+                            de: "Rufen Sie diese Methode von der übergeordneten Komponente aus auf, um sie als PNG-Bild herunterzuladen. Dies ist besonders nützlich, wenn Benutzeroptionen ausgeblendet sind.",
+                            zh: "从父组件调用此方法以下载 SVG 图像。如果用户选项被隐藏，这尤其有用。",
+                            jp: "親コンポーネントからこのメソッドを呼び出して、PNG イメージとしてダウンロードします。これは、ユーザー オプションが非表示の場合に特に便利です。",
+                            es: "Llame a este método desde el componente principal para descargarlo como imagen SVG. Esto es especialmente útil si las opciones de usuario están ocultas.",
+                            ko: "SVG 이미지로 다운로드하려면 상위 구성 요소에서 이 메서드를 호출하세요. 이는 사용자 옵션이 숨겨져 있는 경우 특히 유용합니다.",
+                            ar: 'قم باستدعاء هذه الطريقة من المكون الأصلي لتنزيلها كصورة SVG. وهذا مفيد بشكل خاص إذا كانت خيارات المستخدم مخفية'
+                        },
                         generatePdf: {
                             en: "Call this method from the parent component to print as PDF. This is especially useful if user options are hidden.",
                             fr: "Appelez cette méthode à partir du composant parent pour imprimer au format PDF. Ceci est particulièrement utile si les options utilisateur sont masquées.",

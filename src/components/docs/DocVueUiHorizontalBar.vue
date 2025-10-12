@@ -945,6 +945,7 @@ const codeDataset = ref(`const dataset: VueUiHorizontalBarDatasetItem[] = [
                     'generatePdf',
                     'generateCsv',
                     'generateImage',
+                    'generateSvg',
                     'toggleTable',
                     'toggleSort'
                   ]"

@@ -1977,7 +1977,7 @@ async function impactPatch() {
 </script>
 
 <template>
-    <div :class="{'vdui': isDarkMode, 'pointer-events-none': true}"/>
+    <div :class="{'vdui': isDarkMode, 'pointer-events-none': true, 'versions': true}"/>
     
       <div class="carousel hidden sm:block fixed top-[55px] left-0 w-full" style="z-index: 10">
         <VueUiCarouselTable :dataset="carouselDataset" :config="carouselConfig"/>
@@ -2254,9 +2254,8 @@ async function impactPatch() {
                 <BaseCard class="mx-auto max-w-[800px] mt-6">
                     <VueDataUi v-if="versionsList.length" component="VueUiTreemap" :dataset="versionTreemap" :config="treemapConfig">
                       <template #rect="{ rect, fontSize }">
-                        <div class="h-full w-full flex flex-col place-items-center justify-center treemap-icon">
+                        <div class="!h-full !w-full !flex !flex-col !place-items-center !justify-center treemap-icon">
                           <VueUiIcon :name="useIconMap(rect.name)" stroke="white"/>
-    
                         </div>
                       </template>
                       <template #source>
@@ -2337,5 +2336,12 @@ async function impactPatch() {
 
 .button-kpi-subscribers-count:hover {
   outline: 2px solid #73e1af;
+}
+</style>
+
+<style>
+.vue-ui-treemap-cell {
+  height: 100% !important;
+  width: 100% !important;
 }
 </style>

@@ -658,6 +658,7 @@ const codeDataset2 = computed(() => {
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

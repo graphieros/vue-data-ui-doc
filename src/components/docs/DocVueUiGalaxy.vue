@@ -747,6 +747,7 @@ const codeDataset = ref(`const dataset: VueUiGalaxyDatasetItem[] = [
                     'generatePdf',
                     'generateCsv',
                     'generateImage',
+                    'generateSvg',
                     'toggleTable'
                   ]"
                 />

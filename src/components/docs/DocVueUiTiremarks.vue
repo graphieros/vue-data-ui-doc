@@ -427,7 +427,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
                 getImage
                 :names="[
                   'generatePdf',
-                  'generateImage'
+                  'generateImage',
+                  'generateSvg',
                 ]"
               />
             </template>

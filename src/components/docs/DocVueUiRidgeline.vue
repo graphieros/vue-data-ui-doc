@@ -1282,6 +1282,7 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

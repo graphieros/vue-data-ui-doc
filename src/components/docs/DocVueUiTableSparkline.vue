@@ -524,7 +524,8 @@ const codeDataset = ref(`const dataset: VueUiTableSparklineDatasetItem[] = [
               :names="[
                 'generatePdf',
                 'generateCsv',
-                'generateImage'
+                'generateImage',
+                'generateSvg',
               ]"
             />
           </template>

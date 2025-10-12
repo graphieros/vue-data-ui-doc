@@ -924,6 +924,7 @@ const codeDataset = ref(`const dataset: VueUiParallelCoordinatePlotDatasetItem[]
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable',
                         'toggleLabels'
                     ]"

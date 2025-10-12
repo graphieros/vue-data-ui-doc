@@ -947,6 +947,7 @@ const codeDataset = ref(`const dataset: VueUiStripPlotDataset[] = [
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable',
                         'toggleLabels'
                     ]"

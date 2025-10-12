@@ -463,7 +463,8 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
                 getImage
                 :names="[
                   'generatePdf',
-                  'generateImage'
+                  'generateImage',
+                  'generateSvg',
                 ]"
               />
             </template>

@@ -892,6 +892,7 @@ const codeDataset = ref(`const dataset: VueUiTreemapDatasetItem[] = [
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

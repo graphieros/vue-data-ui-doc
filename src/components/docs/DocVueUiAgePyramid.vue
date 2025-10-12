@@ -1278,6 +1278,7 @@ const dsTypeCode = computed(() => {
                 :names="[
                   'generatePdf',
                   'generateImage',
+                  'generateSvg',
                   'toggleTable'
                 ]"
               />

@@ -75,6 +75,17 @@ const t = ref({
         ko: "차트를 PNG로 다운로드합니다",
         ar: "تنزيل الرسم البياني كملف PNG"
     },
+    svg: {
+        en: "Downloads the chart as SVG",
+        fr: "Télécharge le graphique au format SVG",
+        pt: "Faz o download do gráfico em SVG",
+        de: "Lädt das Diagramm als SVG herunter",
+        zh: "将图表下载为 SVG",
+        jp: "チャートをSVGとしてダウンロードします",
+        es: "Descarga el gráfico como SVG",
+        ko: "차트를 SVG로 다운로드합니다",
+        ar: "تنزيل الرسم البياني كملف SVG"
+    },
     table: {
         en: "Toggles the data table visibility",
         fr: "Bascule la visibilité du tableau de données",
@@ -201,6 +212,11 @@ const items = ref([
         name: 'img',
         icon: 'image',
         charts: Object.keys(charts.value)
+    },
+    {
+        name: 'svg',
+        icon: 'svg',
+        charts: Object.keys(charts.value).filter(k => k !== 'VueUiXyCanvas')
     },
     {
         name: 'table',

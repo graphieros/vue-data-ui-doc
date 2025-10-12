@@ -876,6 +876,7 @@ const codeDataset = ref(`const dataset: VueUiMoleculeDatasetNode[] = [
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable',
                         'toggleLabels'
                     ]"

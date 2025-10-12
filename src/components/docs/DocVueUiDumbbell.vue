@@ -902,6 +902,7 @@ const codeDataset = ref(`const dataset: VueUiDumbbellDataset[] = [
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

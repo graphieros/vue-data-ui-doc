@@ -706,6 +706,7 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
                 'generatePdf',
                 'generateCsv',
                 'generateImage',
+                'generateSvg',
                 'toggleTable'
             ]"
         />

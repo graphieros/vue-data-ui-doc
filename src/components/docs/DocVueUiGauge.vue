@@ -680,7 +680,8 @@ const codeDataset2 = ref(`const dataset: VueUiGaugeDataset = {
                     getImage
                     :names="[
                         'generatePdf',
-                        'generateImage'
+                        'generateImage',
+                        'generateSvg',
                     ]"
                 />
             </template>

@@ -818,6 +818,7 @@ const codeDataset = ref(`const dataset: VueUiOnionDatasetItem[] = [
                         'generatePdf',
                         'generateCsv',
                         'generateImage',
+                        'generateSvg',
                         'toggleTable'
                     ]"
                 />

@@ -780,6 +780,7 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
                   'generatePdf',
                   'generateCsv',
                   'generateImage',
+                  'generateSvg',
                   'toggleTable'
                 ]"
               />
