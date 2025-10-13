@@ -125,6 +125,17 @@ export const useMakerStore = defineStore('maker', {
                     ko: "이 차트의 로컬 저장소 지우기",
                     ar: 'مسح التخزين المحلي لهذا المخطط'
                 },
+                makerStorage: {
+                    en: 'Manage local storage state',
+                    fr: 'Gérer l’état du stockage local',
+                    pt: 'Gerenciar o estado do armazenamento local',
+                    de: 'Zustand des lokalen Speichers verwalten',
+                    zh: '管理本地存储状态',
+                    jp: 'ローカルストレージの状態を管理',
+                    es: 'Gestionar el estado del almacenamiento local',
+                    ko: '로컬 스토리지 상태 관리',
+                    ar: 'إدارة حالة التخزين المحلي'
+                },
                 reset: {
                     en: "Reset config",
                     fr: "Réinitialiser la config",

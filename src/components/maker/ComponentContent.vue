@@ -4,7 +4,7 @@ import { useNestedProp } from "../../useNestedProp";
 import { getVueDataUiConfig } from "vue-data-ui";
 import { copyCode, jsonToJsObject } from "./lib";
 import { useMainStore } from "../../stores";
-import { CopyIcon, RefreshDotIcon } from "vue-tabler-icons";
+import { CopyIcon, DatabaseIcon, RefreshDotIcon } from "vue-tabler-icons";
 import { useMakerStore } from "../../stores/maker";
 import IconSettings from "../IconSettings.vue";
 import BaseDragMenu from "../BaseDragMenu.vue";
@@ -172,6 +172,12 @@ const generatedTemplate = computed(() => {
 </template>`
 });
 
+const storageState = ref(false);
+
+function toggleStorage() {
+    storageState.value = !storageState.value;
+}
+
 </script>
 
 <template>
@@ -210,13 +216,22 @@ const generatedTemplate = computed(() => {
                     <VueUiIcon name="numbers" :size="28" :stroke="isDarkMode ? '#CCCCCC' : '#3A3A3A'" />
                 </button>
             </FlexibleTooltip>
-            <FlexibleTooltip :content="makerTranslations.clearStorage[store.lang]" position="right" width="w-[200px]">
+            <FlexibleTooltip :content="makerTranslations.clearStorage[store.lang]" position="right" width="w-[100px]">
                 <button @click="nuke"
-                    class="p-2 rounded-full bg-gradient-to-br from-white to-app-orange h-12 w-12 flex place-items-center justify-center shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
+                    class="p-2 rounded-full bg-gradient-to-br from-white to-app-orange hover:from-app-orange hover:to-white h-12 w-12 flex place-items-center justify-center shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
                     <RefreshDotIcon class="text-[#3A3A3A]" />
                 </button>
             </FlexibleTooltip>
+            <!-- <FlexibleTooltip :content="makerTranslations.makerStorage[store.lang]" position="right" width="w-[100px]">
+                <button @click="toggleStorage"
+                    class="p-2 rounded-full bg-gradient-to-br from-app-blue to-app-blue-dark hover:from-app-blue-dark hover:to-app-blue h-12 w-12 flex place-items-center justify-center shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
+                    <DatabaseIcon class="text-[#CCCCCC]" />
+                </button>
+            </FlexibleTooltip> -->
         </div>
+        <!-- <div class="absolute top-1/2 left-full -translate-y-1/2" v-if="storageState">
+            TEST
+        </div> -->
     </BaseDragMenu>
 
 
