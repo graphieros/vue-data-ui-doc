@@ -23,6 +23,8 @@ import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -373,6 +375,18 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
     ]
 }`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -416,7 +430,7 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
             debug
         />
 
-        <Box showEmits showSlots showThemes showCallbacks showResponsive signInfo="both" schema="vue_ui_bullet">
+        <Box ref="box" showEmits showSlots showThemes showCallbacks showResponsive signInfo="both" schema="vue_ui_bullet">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -483,6 +497,11 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
+            <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+                <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                    Check out 'callbacks' tab
+                </BaseTabLink>
+            </BaseDetails>
             <BaseDetails attr="print" :level="2" title="userOptions.print">
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
                 <BaseAttr inactive name="orientation" defaultVal="auto" comment="'auto' | 'l' | 'p'"/>
@@ -512,7 +531,14 @@ const codeDataset = ref(`const dataset: VueUiBulletDataset = {
                         <BaseAttr name="show" attr="style.chart.segments.dataLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="color" attr="style.chart.segments.dataLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSize" attr="style.chart.segments.dataLabels.fontSize" type="number" defaultVal="10" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                        <div class="flex flex-row gap-2 place-items-center">
+                            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                            <div class="min-w-[200px]">
+                                <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                    Go to page
+                                </BaseTabLink>
+                            </div>
+                        </div>
                         <BaseAttr name="bold" attr="style.chart.segments.dataLabels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="prefix" attr="style.chart.segments.dataLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="suffix" attr="style.chart.segments.dataLabels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

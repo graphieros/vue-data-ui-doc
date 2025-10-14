@@ -27,6 +27,8 @@ import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import BaseTextCopy from "../BaseTextCopy.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import BaseTabLink from "../BaseTabLink.vue";
+import { useRouter } from "vue-router";
 
 const mainConfig = useConfig()
 
@@ -1159,7 +1161,20 @@ const timeFormatTranslation = ref({
     es: 'Cuando datetimeFormatter está habilitado, también puede personalizar las etiquetas de tiempo para:',
     ko: 'datetimeFormatter가 활성화되면 시간 레이블을 다음에 대해 사용자 정의할 수 있습니다:',
     ar: 'عند تفعيل datetimeFormatter، يمكنك أيضًا تخصيص تسميات الوقت لـ:'
-})
+});
+
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
 
 </script>
 
@@ -1222,7 +1237,8 @@ const timeFormatTranslation = ref({
                 <label for="useCanvas" class="font-black dark:text-blue-300 cursor-pointer">Use individual scales</label>
             </div>
         </div> -->
-        <Box 
+        <Box
+            ref="box"
             :showDatetimeFormatter="true" 
             showEmits 
             showSlots 
@@ -1413,7 +1429,14 @@ const timeFormatTranslation = ref({
                         <BaseAttr name="stacked" attr="chart.grid.labels.yAxis.stacked" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Always use in combination with useIndividualScale: true" />
                         <BaseAttr name="gap" attr="chart.grid.labels.yAxis.gap" type="number" defaultVal="12" :min="12" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="To be used with useIndividualScale: true && stacked: true"/>
                         <BaseAttr name="showBaseline" attr="chart.grid.labels.yAxis.showBaseline" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                        <div class="flex flex-row gap-2 place-items-center">
+                            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                            <div class="min-w-[200px]">
+                                <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                    Go to page
+                                </BaseTabLink>
+                            </div>
+                        </div>
                         <BaseAttr name="scaleMin" attr="chart.grid.labels.yAxis.scaleMin" type="number" defaultVal="null" :min="-1000" :max="0" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Force the min scale for the whole chart"/>
                         <BaseAttr name="scaleMax" attr="chart.grid.labels.yAxis.scaleMax" type="number" defaultVal="null" :min="0" :max="1000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Force the max scale for the whole chart"/>
                         <BaseAttr name="groupColor" attr="chart.grid.labels.yAxis.groupColor" type="color" defaultVal="null" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set color of scales when they are grouped by the same scaleLabel (requires useIndividualScale: true)"/>
@@ -1481,7 +1504,14 @@ const timeFormatTranslation = ref({
                 </BaseDetails>
                 <BaseAttr name="useDefaultFormat" attr="chart.timeTag.useDefaultFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="timeFormat" attr="chart.timeTag.timeFormat" type="text" defaultVal="yyyy-MM-dd HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Use with datetimeFormatter.enable = true"/>
-                <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                            Check out 'Custom tooltip' tab
+                        </BaseTabLink>
+                    </div>
+                </div>
             </BaseDetails>
             <BaseDetails attr="title" :level="2" title="chart.title">
                 <BaseAttr name="show" attr="chart.title.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1504,7 +1534,14 @@ const timeFormatTranslation = ref({
                 <BaseAttr name="backgroundColor" attr="chart.tooltip.backgroundColor" :rgba="false" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="showValue" attr="chart.tooltip.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="showPercentage" attr="chart.tooltip.showPercentage" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab"/>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                            Check out 'Custom tooltip' tab
+                        </BaseTabLink>
+                    </div>
+                </div>
                 <BaseAttr name="roundingValue" attr="chart.tooltip.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="roundingPercentage" attr="chart.tooltip.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="chart.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1550,6 +1587,11 @@ const timeFormatTranslation = ref({
                     <BaseAttr name="stack" attr="chart.userOptions.buttonTitles.stack" type="text" defaultVal="Toggle stack mode" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="annotator" attr="chart.userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
+                <BaseDetails attr="callbacks" :level="3" title="chart.userOptions.callbacks">
+                    <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                        Check out 'callbacks' tab
+                    </BaseTabLink>
+                </BaseDetails>
                 <BaseDetails attr="print" :level="3" title="chart.userOptions.print">
                     <BaseAttr name="scale" attr="chart.userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
                     <BaseAttr inactive name="orientation" defaultVal="auto" comment="'auto' | 'l' | 'p'"/>
@@ -1561,14 +1603,29 @@ const timeFormatTranslation = ref({
                 <BaseAttr name="color" attr="chart.zoom.color" type="color" defaultVal="#CCCCCC" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="highlightColor" attr="chart.zoom.highlightColor" type="color" defaultVal="#4A4A4A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="chart.zoom.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr inactive name="useResetSlot" defaultVal="false" comment="To use a custom slot for the reset feature (see slots tab)"/>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="useResetSlot" defaultVal="false" comment="To use a custom slot for the reset feature (see slots tab)"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => setActiveTab(3)" icon="skeleton">
+                            Check out 'Slots' tab
+                        </BaseTabLink>
+                    </div>
+                </div>
+                
                 <BaseAttr inactive name="startIndex" defaultVal="null" comment="Force zoom start index (number)"/>
                 <BaseAttr inactive name="endIndex" defaultVal="null" comment="Force zoom end index (number)"/>
                 <BaseAttr name="enableRangeHandles" attr="chart.zoom.enableRangeHandles" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
                 <BaseAttr name="enableSelectionDrag" attr="chart.zoom.enableSelectionDrag" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.63"/>
                 <BaseAttr name="useDefaultFormat" attr="chart.zoom.useDefaultFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="timeFormat" attr="chart.zoom.timeFormat" type="text" defaultVal="yyyy-MM-dd HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Use with datetimeFormatter.enable = true"/>
-                <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                            Check out 'Custom tooltip' tab
+                        </BaseTabLink>
+                    </div>
+                </div>
                 <BaseAttr name="focusOnDrag" attr="chart.zoom.focusOnDrag" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="focusRangeRatio" attr="chart.zoom.focusRangeRatio" type="number" defaultVal="0.2" :min="0.1" :max="0.9" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseDetails attr="minimap" :level="3" title="chart.zoom.minimap">
@@ -1609,7 +1666,14 @@ const timeFormatTranslation = ref({
                 <BaseAttr name="offsetY" attr="bar.labels.offsetY" type="number" defaultVal="-6" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="rounding" attr="bar.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="bar.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                            Go to page
+                        </BaseTabLink>
+                    </div>
+                </div>
             </BaseDetails>
             <BaseDetails attr="serieName" :level="2" title="bar.serieName">
                 <BaseAttr name="show" attr="bar.serieName.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1646,12 +1710,26 @@ const timeFormatTranslation = ref({
                 <BaseAttr name="offsetY" attr="line.labels.offsetY" type="number" defaultVal="-6" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="rounding" attr="line.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="line.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                            Go to page
+                        </BaseTabLink>
+                    </div>
+                </div>
             </BaseDetails>
             <BaseDetails attr="tag" :level="2" title="line.tag">
                 <BaseAttr name="followValue" attr="line.tag.followValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="line.tag.fontSize" type="number" :min="8" :max="42" defaultVal="14" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                            Go to page
+                        </BaseTabLink>
+                    </div>
+                </div>
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="plot" :level="1">
@@ -1668,12 +1746,26 @@ const timeFormatTranslation = ref({
                 <BaseAttr name="offsetY" attr="plot.labels.offsetY" type="number" defaultVal="-6" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="rounding" attr="plot.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="plot.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                            Go to page
+                        </BaseTabLink>
+                    </div>
+                </div>
             </BaseDetails>
             <BaseDetails attr="tag" :level="2" title="plot.tag">
                 <BaseAttr name="followValue" attr="plot.tag.followValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fontSize" attr="plot.tag.fontSize" type="number" :min="8" :max="42" defaultVal="14" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                            Go to page
+                        </BaseTabLink>
+                    </div>
+                </div>
             </BaseDetails>
         </BaseDetails>
         <BaseDetails attr="table" :level="1">

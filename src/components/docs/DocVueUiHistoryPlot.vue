@@ -22,6 +22,8 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -584,6 +586,18 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
     },
 ]`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -628,7 +642,7 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
             padding
         />
 
-        <Box showEmits showCallbacks showSlots showThemes showResponsive showTooltip signInfo="both" schema="vue_ui_history_plot">
+        <Box ref="box" showEmits showCallbacks showSlots showThemes showResponsive showTooltip signInfo="both" schema="vue_ui_history_plot">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -727,7 +741,14 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
                             <BaseAttr name="bold" attr="style.chart.axes.x.labels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="rounding" attr="style.chart.axes.x.labels.rounding" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="offsetY" attr="style.chart.axes.x.labels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                            <div class="flex flex-row gap-2 place-items-center">
+                                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                <div class="min-w-[200px]">
+                                    <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                        Go to page
+                                    </BaseTabLink>
+                                </div>
+                            </div>
                             <BaseAttr name="prefix" attr="style.chart.axes.x.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="suffix" attr="style.chart.axes.x.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="rotation" attr="style.chart.axes.x.labels.rotation" type="range" defaultVal="0" :min="-90" :max="90" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -755,7 +776,14 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
                             <BaseAttr name="bold" attr="style.chart.axes.y.labels.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="rounding" attr="style.chart.axes.y.labels.rounding" type="number" defaultVal="1" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="offsetY" attr="style.chart.axes.y.labels.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                            <div class="flex flex-row gap-2 place-items-center">
+                                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                <div class="min-w-[200px]">
+                                    <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                        Go to page
+                                    </BaseTabLink>
+                                </div>
+                            </div>
                             <BaseAttr name="prefix" attr="style.chart.axes.y.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="suffix" attr="style.chart.axes.y.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         </BaseDetails>
@@ -829,7 +857,14 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
                     <BaseAttr name="backgroundColor" attr="style.chart.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="showValue" attr="style.chart.tooltip.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="showPercentage" attr="style.chart.tooltip.showPercentage" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <span>customFormat: null, <span class="text-app-blue break-keep text-xs">// default behavior. To customize, check out the 'custom tooltip' tab</span></span>
+                    <div class="flex flex-row gap-2 place-items-center">
+                        <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                        <div class="min-w-[200px]">
+                            <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                                Check out 'Custom tooltip' tab
+                            </BaseTabLink>
+                        </div>
+                    </div>
                     <BaseAttr name="fontSize" attr="style.chart.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="borderRadius" attr="style.chart.tooltip.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="borderColor" attr="style.chart.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -888,6 +923,11 @@ const codeDataset = ref(`const dataset: VueUiHistoryPlotDatasetItem[] = [
                 <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode"  />
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode"  />
                 <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode"  />
+            </BaseDetails>
+            <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+                <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                    Check out 'callbacks' tab
+                </BaseTabLink>
             </BaseDetails>
             <BaseDetails attr="print" :level="2" title="userOptions.print">
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

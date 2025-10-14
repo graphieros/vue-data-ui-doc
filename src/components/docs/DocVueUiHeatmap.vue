@@ -23,6 +23,8 @@ import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -507,6 +509,19 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
     "id": "vue-data-ui-heatmap-cell-77e48fa5-4062-43ad-9d8f-b8d88f074c1d"
 }
  */
+
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -551,7 +566,7 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
             heatmapSize
         />
 
-        <Box showEmits showSlots showTooltip showThemes showCallbacks showResponsive schema="vue_ui_heatmap" signInfo="both">
+        <Box ref="box" showEmits showSlots showTooltip showThemes showCallbacks showResponsive schema="vue_ui_heatmap" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -614,7 +629,14 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
               <BaseAttr name="bold" attr="style.layout.cells.value.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="roundingValue" attr="style.layout.cells.value.roundingValue" type="number" defaulVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="color" attr="style.layout.cells.value.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-              <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+              <div class="flex flex-row gap-2 place-items-center">
+                  <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                  <div class="min-w-[200px]">
+                      <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                          Go to page
+                      </BaseTabLink>
+                  </div>
+              </div>
             </BaseDetails>
             <BaseDetails attr="rowTotal" :level="4" title="style.layout.cells.rowTotal">
               <BaseDetails attr="value" :level="5" title="style.layout.cells.rowTotal.value">
@@ -705,7 +727,14 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
           <BaseAttr name="color" attr="style.tooltip.color" type="color" defaultVal="#2C353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="fontSize" attr="style.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="roundingValue" attr="style.tooltip.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <span>customFormat: null, <span class="text-app-blue text-xs">// default behavior. To customize content, see 'custom tooltip' tab</span></span>
+          <div class="flex flex-row gap-2 place-items-center">
+              <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+              <div class="min-w-[200px]">
+                  <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                      Check out 'Custom tooltip' tab
+                  </BaseTabLink>
+              </div>
+          </div>
           <BaseAttr name="borderRadius" attr="style.tooltip.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="borderColor" attr="style.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="borderWidth" attr="style.tooltip.borderWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -759,6 +788,11 @@ const codeDataset = ref(`const dataset: VueUiHeatmapDatasetItem[] = [
             <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
             <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
             <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+        </BaseDetails>
+        <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+            <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                Check out 'callbacks' tab
+            </BaseTabLink>
         </BaseDetails>
         <BaseDetails attr="print" :level="2" title="userOptions.print">
           <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

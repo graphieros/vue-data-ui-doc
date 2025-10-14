@@ -15,6 +15,8 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -247,6 +249,18 @@ const codeDataset = ref(`const dataset: VueUiTableHeatmapDatasetItem[] = [
     },
 ];`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -323,7 +337,7 @@ const codeDataset = ref(`const dataset: VueUiTableHeatmapDatasetItem[] = [
 
         <Rater itemId="vue_ui_table_heatmap" />
 
-        <Box showSlots showCallbacks signInfo="both">
+        <Box ref="box" showSlots showCallbacks signInfo="both">
             <template #warning>
                 <InfoTriangleFilledIcon/>
                 {{ translations.slots.warning[store.lang] }}
@@ -410,6 +424,11 @@ const codeDataset = ref(`const dataset: VueUiTableHeatmapDatasetItem[] = [
                 <BaseAttr name="img" attr="userOptions.buttonTitles.img" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="csv" attr="userOptions.buttonTitles.csv" type="text" defaultVal="Download CSV" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
+            <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+                <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                    Check out 'callbacks' tab
+                </BaseTabLink>
             </BaseDetails>
             <BaseDetails attr="print" :level="2" title="userOptions.print">
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

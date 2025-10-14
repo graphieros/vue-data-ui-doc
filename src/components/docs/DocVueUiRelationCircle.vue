@@ -21,6 +21,8 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -435,6 +437,18 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
   }
 ]`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -475,7 +489,7 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
       debug 
     />
 
-    <Box showEmits showSlots showThemes showCallbacks showResponsive schema="vue_ui_relation_circle">
+    <Box ref="box"  showEmits showSlots showThemes showCallbacks showResponsive schema="vue_ui_relation_circle">
       <template v-slot:tab0>
         <div class="w-full overflow-x-auto">
 
@@ -561,7 +575,14 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
       <BaseDetails attr="weightLabels" :level="2" title="style.weightLabels">
         <BaseAttr name="show" attr="style.weightLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="size" attr="style.weightLabels.size" type="number" defaultVal="8" :min="2" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+        <div class="flex flex-row gap-2 place-items-center">
+            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+            <div class="min-w-[200px]">
+                <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                    Go to page
+                </BaseTabLink>
+            </div>
+        </div>
         <BaseAttr name="prefix" attr="style.weightLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="suffix" attr="style.weightLabels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="rounding" attr="style.weightLabels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -609,6 +630,11 @@ const codeDataset = ref(`const dataset: VueUiRelationCircleDatasetItem[] = [
           <BaseAttr name="img" attr="userOptions.buttonTitles.img" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
           <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
           <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+      </BaseDetails>
+      <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+          <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+              Check out 'callbacks' tab
+          </BaseTabLink>
       </BaseDetails>
       <BaseDetails attr="print" :level="2" title="userOptions.print">
           <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

@@ -20,6 +20,8 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -418,6 +420,18 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
   }
 ];`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -458,7 +472,7 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
             debug
         />
 
-        <Box showResponsive showEmits showThemes showSlots schema="vue_ui_sparkhistogram" signInfo="positiveOnly">
+        <Box ref="box" showResponsive showEmits showThemes showSlots schema="vue_ui_sparkhistogram" signInfo="positiveOnly">
             <template #tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
@@ -541,7 +555,14 @@ const codeDataset = ref(`const dataset: VueUiSparkHistogramDatasetItem[] = [
           <BaseAttr name="prefix" attr="style.labels.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="suffix" attr="style.labels.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="offsetY" attr="style.labels.value.offsetY" type="number" defaultVal="0" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+          <div class="flex flex-row gap-2 place-items-center">
+              <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+              <div class="min-w-[200px]">
+                  <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                      Go to page
+                  </BaseTabLink>
+              </div>
+          </div>
         </BaseDetails>
         <BaseDetails attr="valueLabel" :level="3" title="style.labels.valueLabel">
           <BaseAttr name="fontSize" attr="style.labels.valueLabel.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

@@ -19,6 +19,8 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -222,6 +224,18 @@ const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
     title: "KPI 1"
 }`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -263,7 +277,7 @@ const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
             debug 
         />
 
-        <Box showThemes showSlots schema="vue_ui_sparkgauge">
+        <Box ref="box" showThemes showSlots schema="vue_ui_sparkgauge">
             <template #tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
@@ -324,7 +338,14 @@ const codeDataset = ref(`const dataset: VueUiSparkgaugeDataset = {
                 <BaseAttr name="rounding" attr="style.dataLabel.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="prefix" attr="style.dataLabel.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="suffix" attr="style.dataLabel.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                            Go to page
+                        </BaseTabLink>
+                    </div>
+                </div>
             </BaseDetails>
             <BaseDetails attr="gutter" :level="2" title="style.gutter">
                 <BaseAttr name="color" attr="style.gutter.color" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

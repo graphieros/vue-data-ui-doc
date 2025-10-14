@@ -21,6 +21,8 @@ import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -357,6 +359,18 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -393,7 +407,7 @@ const { configCode, showAllConfig } = useConfigCode()
             debug 
         />
 
-        <Box showResponsive showEmits showCallbacks showSlots showThemes schema="vue_ui_mood_radar" signInfo="positiveOnly">
+        <Box ref="box" showResponsive showEmits showCallbacks showSlots showThemes schema="vue_ui_mood_radar" signInfo="positiveOnly">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -452,7 +466,14 @@ const { configCode, showAllConfig } = useConfigCode()
                         <BaseAttr name="bold" attr="style.chart.layout.dataLabel.bold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="prefix" attr="style.chart.layout.dataLabel.prefix" type="text" defaultval="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="suffix" attr="style.chart.layout.dataLabel.suffix" type="text" defaultval="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                        <div class="flex flex-row gap-2 place-items-center">
+                            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                            <div class="min-w-[200px]">
+                                <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                    Go to page
+                                </BaseTabLink>
+                            </div>
+                        </div>
                     </BaseDetails>
                     <BaseDetails attr="dataPolygon" :level="4" title="style.chart.layout.dataPolygon">
                         <BaseAttr name="color" attr="style.chart.layout.dataPolygon.color" type="color" defaultVal="#5F8BEE" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -554,6 +575,11 @@ const { configCode, showAllConfig } = useConfigCode()
                 <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+            </BaseDetails>
+            <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+                <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                    Check out 'callbacks' tab
+                </BaseTabLink>
             </BaseDetails>
             <BaseDetails attr="print" :level="2" title="userOptions.print">
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

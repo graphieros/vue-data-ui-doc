@@ -23,6 +23,8 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig();
 
@@ -403,6 +405,18 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
     },
 ];`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -443,7 +457,7 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
             debug 
         />
 
-    <Box showEmits showSlots showThemes showCallbacks showPatterns schema="vue_ui_circle_pack" signInfo="positiveOnly">
+    <Box ref="box" showEmits showSlots showThemes showCallbacks showPatterns schema="vue_ui_circle_pack" signInfo="positiveOnly">
         <template #tab0>
                 <div class="w-full overflow-x-auto">
         <CodeParser
@@ -517,7 +531,14 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
                             <BaseAttr name="suffix" attr="style.chart.circles.labels.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="bold" attr="style.chart.circles.labels.value.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="offsetY" attr="style.chart.circles.labels.value.offsetY" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                            <div class="flex flex-row gap-2 place-items-center">
+                                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                <div class="min-w-[200px]">
+                                    <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                        Go to page
+                                    </BaseTabLink>
+                                </div>
+                            </div>
                         </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="zoom" :level="4" title="style.chart.circles.zoom">
@@ -541,7 +562,14 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
                                 <BaseAttr name="rounding" attr="style.chart.circles.zoom.label.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="prefix" attr="style.chart.circles.zoom.label.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="suffix" attr="style.chart.circles.zoom.label.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                                <div class="flex flex-row gap-2 place-items-center">
+                                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                    <div class="min-w-[200px]">
+                                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                            Go to page
+                                        </BaseTabLink>
+                                    </div>
+                                </div>
                             </BaseDetails>
                         </BaseDetails>
                     </BaseDetails>
@@ -604,6 +632,11 @@ const codeDataset = ref(`const dataset: VueUiCirclePackDatasetItem[] = [
                 <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode"  />
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode"  />
                 <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode"  />
+            </BaseDetails>
+            <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+                <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                    Check out 'callbacks' tab
+                </BaseTabLink>
             </BaseDetails>
             <BaseDetails attr="print" :level="2" title="userOptions.print">
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

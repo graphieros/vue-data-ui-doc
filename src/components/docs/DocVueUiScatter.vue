@@ -23,6 +23,8 @@ import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ucScatter from "../useCases/uc-scatter.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -659,6 +661,18 @@ const performanceModeComment = ref({
   }
 )
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -701,7 +715,7 @@ const performanceModeComment = ref({
             padding
         />
 
-        <Box showEmits showSlots showTooltip showCallbacks showThemes showUseCases showResponsive schema="vue_ui_scatter" signInfo="both">
+        <Box ref="box" showEmits showSlots showTooltip showCallbacks showThemes showUseCases showResponsive schema="vue_ui_scatter" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -857,10 +871,24 @@ const performanceModeComment = ref({
               <BaseAttr name="prefix" attr="style.layout.plots.selectors.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="suffix" attr="style.layout.plots.selectors.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseDetails attr="x" :level="6" title="style.layout.plots.selectors.labels.x">
-                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                            Go to page
+                        </BaseTabLink>
+                    </div>
+                </div>
               </BaseDetails>
               <BaseDetails attr="y" :level="6" title="style.layout.plots.selectors.labels.y">
-                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                            Go to page
+                        </BaseTabLink>
+                    </div>
+                </div>
               </BaseDetails>
             </BaseDetails>
             <BaseDetails attr="markers" :level="5" title="style.layout.plots.selectors.markers">
@@ -910,7 +938,14 @@ const performanceModeComment = ref({
         <BaseAttr name="showShape" attr="style.tooltip.showShape" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="prefix" attr="style.tooltip.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="suffix" attr="style.tooltip.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" />        
-        <span>customFormat: null, <BaseComment>Default behavior. To customize content, see 'custom tooltip' tab</BaseComment></span>
+        <div class="flex flex-row gap-2 place-items-center">
+            <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+            <div class="min-w-[200px]">
+                <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                    Check out 'Custom tooltip' tab
+                </BaseTabLink>
+            </div>
+        </div>
         <BaseAttr name="borderRadius" attr="style.tooltip.borderRadidus" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="borderColor" attr="style.tooltip.borderColor" type="color" defaultval="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="borderWidth" attr="style.tooltip.borderWidth" type="number" defaultVal="1" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode" />
@@ -969,6 +1004,11 @@ const performanceModeComment = ref({
         <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+      </BaseDetails>
+      <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+          <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+              Check out 'callbacks' tab
+          </BaseTabLink>
       </BaseDetails>
       <BaseDetails attr="print" :level="2" title="userOptions.print">
           <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

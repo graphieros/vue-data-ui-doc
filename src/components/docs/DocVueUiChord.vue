@@ -22,6 +22,8 @@ import BaseViewExampleButton from "../BaseViewExampleButton.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig();
 
@@ -388,6 +390,18 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
     colors: ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78"]
 }`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -425,7 +439,7 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
             debug 
         />
 
-        <Box showEmits showSlots showThemes showResponsive showCallbacks showPatterns signInfo="postiveOnly" schema="vue_ui_chord">
+        <Box ref="box" showEmits showSlots showThemes showResponsive showCallbacks showPatterns signInfo="postiveOnly" schema="vue_ui_chord">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
@@ -497,7 +511,14 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
                     <BaseAttr name="underlayerOpacity" attr="style.chart.ribbons.underlayerOpacity" type="number" defaultVal="1" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseDetails attr="labels" :level="4" title="style.chart.ribbons.labels">
                         <BaseAttr name="show" attr="style.chart.ribbons.labels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                        <div class="flex flex-row gap-2 place-items-center">
+                            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                            <div class="min-w-[200px]">
+                                <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                    Go to page
+                                </BaseTabLink>
+                            </div>
+                        </div>
                         <BaseAttr name="prefix" attr="style.chart.ribbons.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="suffix" attr="style.chart.ribbons.labels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="rounding" attr="style.chart.ribbons.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -582,6 +603,11 @@ const codeDataset = ref(`const dataset: VueUiChordDataset = {
                 <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                 <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+            </BaseDetails>
+            <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+                <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                    Check out 'callbacks' tab
+                </BaseTabLink>
             </BaseDetails>
             <BaseDetails attr="print" :level="2" title="userOptions.print">
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

@@ -24,6 +24,8 @@ import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -742,6 +744,18 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
     },
 ];`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -790,7 +804,7 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
             debug 
         />
 
-        <Box showEmits showSlots showTooltip showUseCases showCallbacks showThemes showResponsive showPatterns schema="vue_ui_donut" signInfo="positiveOrNegativeOnly">
+        <Box ref="box" showEmits showSlots showTooltip showUseCases showCallbacks showThemes showResponsive showPatterns schema="vue_ui_donut" signInfo="positiveOrNegativeOnly">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -899,7 +913,14 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                         <BaseDetails attr="value" :level="5" title="style.chart.layout.labels.value">
                             <BaseAttr name="show" attr="style.chart.layout.labels.value.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="rounding" attr="style.chart.layout.labels.value.rounding" type="number" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                            <div class="flex flex-row gap-2 place-items-center">
+                                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                <div class="min-w-[200px]">
+                                    <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                        Go to page
+                                    </BaseTabLink>
+                                </div>
+                            </div>
                         </BaseDetails>
                         <BaseDetails attr="percentage" :level="5" title="style.chart.layout.labels.percentage">
                             <BaseAttr name="color" attr="style.chart.layout.labels.percentage.color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" defaultVal="#2D353C"/>
@@ -907,7 +928,14 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                             <BaseAttr name="fontSize" attr="style.chart.layout.labels.percentage.fontSize" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="8" :max="42" defaultVal="18"/>
                             <BaseAttr name="minFontSize" attr="style.chart.layout.labels.percentage.minFontSize" :light="mutableConfig" :dark="mutableConfigDarkMode" type="number" :min="4" :max="42" defaultVal="6"/>
                             <BaseAttr name="rounding" attr="style.chart.layout.labels.percentage.rounding" type="number" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                            <div class="flex flex-row gap-2 place-items-center">
+                                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                <div class="min-w-[200px]">
+                                    <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                        Go to page
+                                    </BaseTabLink>
+                                </div>
+                            </div>
                         </BaseDetails>
                         <BaseDetails attr="name" :level="5" title="style.chart.layout.labels.name">
                             <BaseAttr name="color" attr="style.chart.layout.labels.name.color" :light="mutableConfig" :dark="mutableConfigDarkMode" type="color" defaultVal="#2D353C"/>
@@ -932,7 +960,14 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                                     <BaseAttr name="rounding" attr="style.chart.layout.labels.hollow.average.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="prefix" attr="style.chart.layout.labels.hollow.average.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="suffix" attr="style.chart.layout.labels.hollow.average.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                    <div class="flex flex-row gap-2 place-items-center">
+                                        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                        <div class="min-w-[200px]">
+                                            <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                                Go to page
+                                            </BaseTabLink>
+                                        </div>
+                                    </div>
                                 </BaseDetails>
                             </BaseDetails>
                             <BaseDetails attr="total" :level="6" title="style.chart.layout.labels.hollow.total">
@@ -951,7 +986,14 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                                     <BaseAttr name="prefix" attr="style.chart.layout.labels.hollow.total.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="suffix" attr="style.chart.layout.labels.hollow.total.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseAttr name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
-                                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                    <div class="flex flex-row gap-2 place-items-center">
+                                        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                        <div class="min-w-[200px]">
+                                            <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                                Go to page
+                                            </BaseTabLink>
+                                        </div>
+                                    </div>
                                 </BaseDetails>
                             </BaseDetails>
                         </BaseDetails>
@@ -993,7 +1035,14 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                     <BaseAttr name="showPercentage" attr="style.chart.tooltip.showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="roundingValue" attr="style.chart.tooltip.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="roundingPercentage" attr="style.chart.tooltip.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                    <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab"/>
+                    <div class="flex flex-row gap-2 place-items-center">
+                        <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                        <div class="min-w-[200px]">
+                            <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                                Check out 'Custom tooltip' tab
+                            </BaseTabLink>
+                        </div>
+                    </div>
                     <BaseAttr name="borderRadius" attr="style.chart.tooltip.borderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="borderColor" attr="style.chart.tooltip.borderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="borderWidth" attr="style.chart.tooltip.borderWidth" type="number" defaultVal="1" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1055,6 +1104,13 @@ const codeDataset = ref(`const dataset: VueUiDonutDatasetItem[] = [
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
             </BaseDetails>
+
+            <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+                <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                    Check out 'callbacks' tab
+                </BaseTabLink>
+            </BaseDetails>
+            
             <BaseDetails attr="print" :level="2" title="userOptions.print">
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
                 <BaseAttr inactive name="orientation" defaultVal="auto" comment="'auto' | 'l' | 'p'"/>

@@ -23,6 +23,8 @@ import CodeParser from "../customization/CodeParser.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import BaseTabLink from "../BaseTabLink.vue";
+import { useRouter } from "vue-router";
 
 const mainConfig = useConfig();
 
@@ -653,7 +655,20 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
     color: "rgb(255,100,0)",
     scaleSteps: 5,
   }, 
-]`)
+]`);
+
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
 
 </script>
 
@@ -701,7 +716,7 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
       <Rater itemId="vue_ui_xy_canvas" />
     </div>
 
-    <Box :showDatetimeFormatter="true" showEmits showSlots showUseCases showThemes showTooltip showResponsive showCallbacks schema="vue_ui_xy_canvas"
+    <Box ref="box" :showDatetimeFormatter="true" showEmits showSlots showUseCases showThemes showTooltip showResponsive showCallbacks schema="vue_ui_xy_canvas"
       signInfo="both">
       <template #tab0>
         <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
@@ -904,12 +919,14 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
                       :dark="mutableConfigDarkMode"
                       @change="forceChartUpdate()"
                     />
-                    <span
-                      >formatter: null,
-                      <BaseComment>{{
-        translations.formatterLink[store.lang]
-      }}</BaseComment></span
-                    >
+                    <div class="flex flex-row gap-2 place-items-center">
+                        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                        <div class="min-w-[200px]">
+                            <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                Go to page
+                            </BaseTabLink>
+                        </div>
+                    </div>
                   </BaseDetails>
                   <BaseDetails attr="grid" :level="3" title="style.chart.grid">
                     <BaseDetails attr="x" :level="4" title="style.chart.grid.x">
@@ -1647,13 +1664,14 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
                       :dark="mutableConfigDarkMode"
                       @change="forceChartUpdate()"
                     />
-                    <span
-                      >customFormat: null,
-                      <span class="text-app-blue break-keep text-xs"
-                        >// default behavior. To customize, check out the
-                        'custom tooltip' tab</span
-                      ></span
-                    >
+                    <div class="flex flex-row gap-2 place-items-center">
+                        <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                        <div class="min-w-[200px]">
+                            <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                                Check out 'Custom tooltip' tab
+                            </BaseTabLink>
+                        </div>
+                    </div>
                     <BaseAttr
                       name="borderRadius"
                       attr="style.chart.tooltip.borderRadius"
@@ -2105,6 +2123,11 @@ const codeDataset = ref(`const dataset:VueUiXyCanvasDatasetItem[] = [
                     :dark="mutableConfigDarkMode"
                     @change="forceChartUpdate()"
                   />
+                </BaseDetails>
+                <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+                    <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                        Check out 'callbacks' tab
+                    </BaseTabLink>
                 </BaseDetails>
                 <BaseDetails attr="print" :level="2" title="userOptions.print">
                   <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

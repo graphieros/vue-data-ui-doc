@@ -24,6 +24,8 @@ import DocJsonConfigAccordion from "./DocJsonConfigAccordion.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseCard from "../BaseCard.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -463,7 +465,20 @@ const codeDataset = ref(`const dataset: VueUiSparklineDatasetItem[] = [
 
 const currentConfig = computed(() => {
   return isDarkMode.value ? JSON.stringify(mutableConfigDarkMode.value, null, 2) : JSON.stringify(mutableConfig.value, null, 2)
-})
+});
+
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
 
 </script>
 
@@ -507,7 +522,7 @@ const currentConfig = computed(() => {
             padding
         />
 
-        <Box :showDatetimeFormatter="true" showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline" signInfo="both">
+        <Box ref="box" :showDatetimeFormatter="true" showSlots showEmits showUseCases showThemes showResponsive schema="vue_ui_sparkline" signInfo="both">
             <template v-slot:tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
 
@@ -600,7 +615,14 @@ const currentConfig = computed(() => {
         <BaseAttr name="valueType" attr="style.dataLabel.valueType" type="select" defaultVal="latest" :options="['latest', 'sum', 'average']" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="prefix" attr="style.dataLabel.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="suffix" attr="style.dataLabel.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+        <div class="flex flex-row gap-2 place-items-center">
+            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+            <div class="min-w-[200px]">
+                <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                    Go to page
+                </BaseTabLink>
+            </div>
+        </div>
         <BaseDetails attr="datetimeFormatter" :level="6" title="style.dataLabel.datetimeFormatter">
           <BaseAttr name="enable" attr="style.dataLabel.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="locale" attr="style.dataLabel.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

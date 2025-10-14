@@ -126,7 +126,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div ref="menu" class="relative bg-gray-200 dark:bg-[#1A1A1A] rounded-full w-full flex items-center px-6 shadow-[inset_0_2px_2px_rgba(0,0,0,0.1),0_2px_2px_#FFFFFF] dark:shadow-[inset_0_2px_2px_rgba(0,0,0,0.5),0_2px_2px_#FFFFFF40]">
+    <div ref="menu" class="relative bg-gray-200 dark:bg-[#1A1A1A] rounded-2xl flex items-center px-6 shadow-[inset_0_2px_2px_rgba(0,0,0,0.1),0_2px_2px_#FFFFFF] dark:shadow-[inset_0_2px_2px_rgba(0,0,0,0.5),0_2px_2px_#FFFFFF40] mx-[24px]" style="width: calc(100% - 48px)">
         <button v-show="canScrollLeft" 
             @click="scrollToNearestElement('left')" 
             @mousedown="startScrolling('left')" 
@@ -134,7 +134,7 @@ onUnmounted(() => {
             @mouseleave="stopScrolling"
             @touchstart="startScrolling('left')" 
             @touchend="stopScrolling"
-            class="absolute -left-4 p-2 bg-gray-100 dark:bg-[#3A3A3A] rounded-full z-10 h-full hover:bg-gray-50 dark:hover:bg-[#4A4A4A] transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
+            class="absolute -left-5 p-2 bg-gray-100 dark:bg-[#3A3A3A] rounded-l-full z-10 hover:bg-gray-50 dark:hover:bg-[#4A4A4A] transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]" style="height: calc(100% + 4px)">
             <VueUiIcon name="arrowLeft" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'" />
         </button>
 
@@ -150,7 +150,7 @@ onUnmounted(() => {
             @mouseleave="stopScrolling"
             @touchstart="startScrolling('right')" 
             @touchend="stopScrolling"
-            class="absolute -right-4 p-2 bg-gray-100 dark:bg-[#3A3A3A] rounded-full z-10 h-full hover:bg-gray-50 dark:hover:bg-[#4A4A4A] transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]">
+            class="absolute -right-5 p-2 bg-gray-100 dark:bg-[#3A3A3A] rounded-r-full z-10 hover:bg-gray-50 dark:hover:bg-[#4A4A4A] transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]" style="height: calc(100% + 4px)">
             <VueUiIcon name="arrowRight" :stroke="isDarkMode ? '#8A8A8A' : '#1A1A1A'" />
         </button>
     </div>

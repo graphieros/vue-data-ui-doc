@@ -18,6 +18,8 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -199,6 +201,18 @@ function fixChart() {
 
 const { configCode, showAllConfig } = useConfigCode()
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -236,7 +250,7 @@ const { configCode, showAllConfig } = useConfigCode()
             debug
         />
 
-        <Box showResponsive showThemes showSlots schema="vue_ui_spark_trend" signInfo="both">
+        <Box ref="box" showResponsive showThemes showSlots schema="vue_ui_spark_trend" signInfo="both">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="border-b my-6 pb-6 border-gray-700">
@@ -301,7 +315,14 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
                 <BaseAttr name="prefix" attr="style.dataLabel.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="suffix" attr="style.dataLabel.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="rounding" attr="style.dataLabel.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                <div class="flex flex-row gap-2 place-items-center">
+                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                    <div class="min-w-[200px]">
+                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                            Go to page
+                        </BaseTabLink>
+                    </div>
+                </div>
             </BaseDetails>
             <BaseDetails attr="line" :level="2" title="style.line">
                 <BaseAttr name="useColorTrend" attr="style.line.useColorTrend" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

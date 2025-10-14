@@ -14,6 +14,8 @@ import DocSnapper from "../DocSnapper.vue";
 import Rater from "../Rater.vue";
 import BaseDocTitle from "../BaseDocTitle.vue";
 import BaseCard from "../BaseCard.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -100,7 +102,19 @@ function fixChart() {
 }
 
 const { configCode, showAllConfig } = useConfigCode()
-    
+
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -134,7 +148,7 @@ const { configCode, showAllConfig } = useConfigCode()
             <Rater itemId="vue_ui_gizmo" />
         </div>
 
-        <Box schema="vue_ui_gizmo" signInfo="positiveOnly">
+        <Box ref="box" schema="vue_ui_gizmo" signInfo="positiveOnly">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="my-4">
@@ -174,7 +188,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiGizmoDataset</s
         <BaseAttr name="gradientColor" attr="gradientColor" type="color" defaultVal="#9DB5ED" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="showPercentage" attr="showPercentage" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="textColor" attr="textColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" />
-        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+        <div class="flex flex-row gap-2 place-items-center">
+            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+            <div class="min-w-[200px]">
+                <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                    Go to page
+                </BaseTabLink>
+            </div>
+        </div>
     </BaseDetails>
 </code>
             </template>

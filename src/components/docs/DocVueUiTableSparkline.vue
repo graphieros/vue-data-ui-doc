@@ -17,6 +17,8 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -345,6 +347,18 @@ const codeDataset = ref(`const dataset: VueUiTableSparklineDatasetItem[] = [
   },
 ];`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -375,7 +389,7 @@ const codeDataset = ref(`const dataset: VueUiTableSparklineDatasetItem[] = [
 
         <Rater itemId="vue_ui_table_sparkline" />
 
-        <Box showEmits showSlots showCallbacks signInfo="both">
+        <Box ref="box" showEmits showSlots showCallbacks signInfo="both">
           <template #tab0>
                 <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
           <CodeParser
@@ -433,7 +447,14 @@ const codeDataset = ref(`const dataset: VueUiTableSparklineDatasetItem[] = [
     <BaseAttr name="sortedAverage" attr="sortedAverage" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.49"/>
     <BaseAttr name="sortedMedian" attr="sortedMedian" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.49"/>
     <BaseAttr name="resetSortOnClickOutside" attr="resetSortOnClickOutside" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Since v2.4.49"/>
-    <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+    <div class="flex flex-row gap-2 place-items-center">
+        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+        <div class="min-w-[200px]">
+            <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                Go to page
+            </BaseTabLink>
+        </div>
+    </div>
     <BaseDetails attr="sparkline" :level="1">
       <BaseAttr name="useGradient" attr="sparkline.useGradient" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
       <BaseAttr name="showArea" attr="sparkline.showArea" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -508,6 +529,11 @@ const codeDataset = ref(`const dataset: VueUiTableSparklineDatasetItem[] = [
         <BaseAttr name="csv" attr="userOptions.buttonTitles.csv" type="text" defaultVal="Download CSV" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="img" attr="userOptions.buttonTitles.img" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      </BaseDetails>
+      <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+          <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+              Check out 'callbacks' tab
+          </BaseTabLink>
       </BaseDetails>
       <BaseDetails attr="print" :level="2" title="userOptions.print">
         <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

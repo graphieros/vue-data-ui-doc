@@ -57,9 +57,9 @@ const valueRatio = computed(() => (props.value - props.min) / (props.max - props
             <div :style="{ width: `${valueRatio * 100}%`, background: buttonColor, height: '3px', position: 'absolute', top: '-2px', borderRadius: '3px' }"/>
             <div :style="{ width: `${valueRatio * 100}%`, background: buttonColor, height: '24px', position: 'absolute', top: '2px', borderRadius: '3px', opacity: 0.2 }"/>
         </div>
-        <button :style="{ background: buttonColor, color: adaptColorToBackground(buttonColor) }" class="btn-left w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md" @click="decrement">-</button>
+        <button :style="{ background: buttonColor, color: adaptColorToBackground(buttonColor) }" class="btn-left w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]" @click="decrement">-</button>
         <input :aria-labelledby="labelId" class="numinput pl-2 min-w-[74px] max-w-[120px] tabular-nums" type="number" :min="min" :max="max" :step="step" :value="Math.round(Number(value) * 1000) / 1000" @input="emit('update:value', Number($event.target.value))" @change="emit('change')">
-        <button :style="{ background: buttonColor, color: adaptColorToBackground(buttonColor) }" class="btn-right w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md" @click="increment">+</button>
+        <button :style="{ background: buttonColor, color: adaptColorToBackground(buttonColor) }" class="btn-right w-[24px] h-[24px] opacity-80 hover:opacity-100 transition-all hover:shadow-md shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#CCCCCC,0_4px_6px_rgba(0,0,0,0.5)]" @click="increment">+</button>
     </div>
 </template>
 
@@ -69,9 +69,9 @@ button {
 }
 
 .btn-left {
-    border-radius: 6px 0 0 6px;
+    border-radius: 12px 0 0 12px;
 }
 .btn-right {
-    border-radius: 0 6px 6px 0;
+    border-radius: 0 12px 12px 0;
 }
 </style>

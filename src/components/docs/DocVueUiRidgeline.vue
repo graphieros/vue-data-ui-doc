@@ -20,12 +20,13 @@ import BaseComment from "../BaseComment.vue";
 import ExposedMethods from "../ExposedMethods.vue";
 import colorBridge from "color-bridge";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import ThemesVueUiRidgeline from "../themes/ThemesVueUiRidgeline.vue";
 import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const { utils } = colorBridge();
 const { shiftHue } = utils();
@@ -981,6 +982,18 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
     },
 ];`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -1020,7 +1033,7 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
             debug
         />
 
-        <Box :showDatetimeFormatter="true" showEmits showCallbacks showSlots showThemes showResponsive showPatterns schema="vue_ui_ridgeline" signInfo="both">
+        <Box ref="box" :showDatetimeFormatter="true" showEmits showCallbacks showSlots showThemes showResponsive showPatterns schema="vue_ui_ridgeline" signInfo="both">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
                     <CodeParser
@@ -1146,7 +1159,14 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
                                     <BaseAttr name="strokeDasharray" attr="style.chart.selector.strokeDasharray" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     <BaseDetails attr="labels" :level="4" title="style.chart.selector.labels">
                                         <BaseAttr name="fontSize" attr="style.chart.selector.labels.fontSize" type="number" defaultVal="12" :min="8" :max="48" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                                        <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                                        <div class="flex flex-row gap-2 place-items-center">
+                                            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                            <div class="min-w-[200px]">
+                                                <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                                    Go to page
+                                                </BaseTabLink>
+                                            </div>
+                                        </div>
                                         <BaseAttr name="rounding" attr="style.chart.selector.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                         <BaseAttr name="color" attr="style.chart.selector.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                     </BaseDetails>
@@ -1233,6 +1253,11 @@ const codeDataset = ref(`const dataset: VueUiRidgelineDatasetItem[] = [
                                 <BaseAttr name="table" attr="userOptions.buttonTitles.table" type="text" defaultVal="Toggle table" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                                 <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" />
+                            </BaseDetails>
+                            <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+                                <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                                    Check out 'callbacks' tab
+                                </BaseTabLink>
                             </BaseDetails>
                             <BaseDetails attr="print" :level="2" title="userOptions.print">
                                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

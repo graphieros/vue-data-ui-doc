@@ -21,6 +21,8 @@ import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import ResponsiveUnit from "./responsive/ResponsiveUnit.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -280,6 +282,18 @@ const dsTypeCode = computed(() => {
   `
 })
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -319,7 +333,7 @@ const dsTypeCode = computed(() => {
             padding
         />
 
-        <Box showResponsive showEmits showCallbacks showSlots showThemes schema="vue_ui_thermometer">
+        <Box ref="box" showResponsive showEmits showCallbacks showSlots showThemes schema="vue_ui_thermometer">
             <template #tab0>
                 {{ translations.docs.datastructure[store.lang] }}
                 <div class="mt-4">
@@ -403,7 +417,14 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
           <BaseAttr name="color" attr="style.chart.label.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="prefix" attr="style.chart.label.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="suffix" attr="style.chart.label.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+          <div class="flex flex-row gap-2 place-items-center">
+              <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+              <div class="min-w-[200px]">
+                  <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                      Go to page
+                  </BaseTabLink>
+              </div>
+          </div>
         </BaseDetails>
         <BaseDetails attr="padding" :level="3" title="style.chart.padding">
           <BaseAttr name="top" attr="style.chart.padding.top" type="number" defaultVal="12" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -447,6 +468,11 @@ const <span class="text-black dark:text-app-green">dataset: VueUiThermometerData
         <BaseAttr name="img" attr="userOptions.buttonTitles.img" type="text" defaultVal="Download PNG" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
         <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+      </BaseDetails>
+      <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+          <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+              Check out 'callbacks' tab
+          </BaseTabLink>
       </BaseDetails>
       <BaseDetails attr="print" :level="2" title="userOptions.print">
           <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

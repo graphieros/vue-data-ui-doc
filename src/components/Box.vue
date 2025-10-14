@@ -54,6 +54,17 @@ const { isMobile } = useMobile();
 
 const activeTab = ref(props.activeTab);
 
+function setActiveTab(tab) {
+    activeTab.value = tab;
+    if (boxWrapper.value) {
+        boxWrapper.value.scrollIntoView({ behavior: 'smooth'})
+    }
+}
+
+defineExpose({
+    setActiveTab
+})
+
 const config = ref({
     open: false,
     maxHeight: 10000,
@@ -399,7 +410,7 @@ function selectTabFromMini(order) {
 <template>
     <Transition name="fade">
         <div 
-            v-if="isMini && !isMobile" 
+            v-if="!isMobile" 
             :class="`fixed top-[100px] ${isMenuOpen ? 'left-[300px]' : 'left-[60px]'} z-20 flex flex-col gap-2.5 p-2 transition-all`"
         >
             <FlexibleTooltip
@@ -408,7 +419,8 @@ function selectTabFromMini(order) {
                 :content="tab.name"
             >
                 <button @click="() => selectTabFromMini(tab.order)" :class="`p-2 hover:bg-[#FAFAFA] dark:hover:bg-[#3A3A3A] bg-gray-100 dark:bg-[#2A2A2A] rounded-full hover:bg-gradient-to-tl transition-colors relative shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`" :style="{
-                    outline: activeTab === tab.order ? `1px solid ${tab.color}90` : undefined
+                    outline: activeTab === tab.order ? `1px solid ${tab.color}90` : undefined,
+                    background: activeTab === tab.order && !isDarkMode ? 'radial-gradient(at top, white, #abc2f6)' : undefined
                 }">
                     <IconSettings v-if="tab.icon === 'settings'" :stroke="isDarkMode ? '#5F8BEE' : '#1A1A1A'" :size="20" />
                     <VueUiIcon v-else :name="tab.icon" :stroke="isDarkMode ? tab.color : '#2A2A2A'" :size="20" />

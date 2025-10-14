@@ -21,6 +21,7 @@ import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -611,6 +612,13 @@ function copyComponentSnippet(snip) {
     store.copy();
 }
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
 </script>
 
 <template>
@@ -817,7 +825,8 @@ function copyComponentSnippet(snip) {
             padding
         />
 
-        <Box 
+        <Box
+            ref="box"
             :showDatetimeFormatter="true" 
             showSlots 
             showTooltip 
@@ -913,7 +922,14 @@ function copyComponentSnippet(snip) {
         </div>
 
         <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
-        <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+        <div class="flex flex-row gap-2 place-items-center">
+            <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+            <div class="min-w-[200px]">
+                <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                    Go to page
+                </BaseTabLink>
+            </div>
+        </div>
         <BaseAttr name="height" attr="height" type="number" defaultVal="338" :min="100" :max="600" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="legendFontSize" attr="legendFontSize" type="number" defaultVal="12" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="legendIcon" attr="legendIcon" type="select" defaultVal="circleFill" :options="icons" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -949,6 +965,11 @@ function copyComponentSnippet(snip) {
             <BaseAttr name="fullscreen" attr="userOptionsButtonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             <BaseAttr name="annotator" attr="userOptionsButtonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         </BaseDetails>
+        <BaseDetails attr="userOptionsCallbacks" :level="1">
+            <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                Check out 'callbacks' tab
+            </BaseTabLink>
+        </BaseDetails>
         <BaseDetails attr="print" :level="1" title="userOptionsPrint">
             <BaseAttr name="scale" attr="userOptionsPrint.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
             <BaseAttr inactive name="orientation" defaultVal="auto" comment="'auto' | 'l' | 'p'"/>
@@ -958,7 +979,14 @@ function copyComponentSnippet(snip) {
         <BaseAttr name="titleBold" attr="titleBold" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="titleFontSize" attr="titleFontSize" type="number" defaultVal="16" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="titleTextAlign" attr="titleTextAlign" type="select" defaultVal="center" :options="['left', 'center', 'right']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-        <BaseAttr inactive name="tooltipCustomFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab"/>
+        <div class="flex flex-row gap-2 place-items-center">
+            <BaseAttr inactive name="tooltipCustomFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+            <div class="min-w-[200px]">
+                <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                    Check out 'Custom tooltip' tab
+                </BaseTabLink>
+            </div>
+        </div>
         <BaseAttr name="tooltipBorderRadius" attr="tooltipBorderRadius" type="number" defaultVal="4" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="tooltipBorderColor" attr="tooltipBorderColor" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="tooltipBorderWidth" attr="tooltipBorderWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

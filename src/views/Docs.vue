@@ -969,7 +969,9 @@ function playShowcase() {
     }, 1000)
 };
 
-onMounted(playShowcase);
+onMounted(() => {
+    playShowcase();
+});
 
 const menuCategories = computed(() => {
     return [

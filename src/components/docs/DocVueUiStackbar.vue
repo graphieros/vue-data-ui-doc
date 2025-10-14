@@ -24,6 +24,8 @@ import DatetimeFormatterDoc from "../DatetimeFormatterDoc.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -693,6 +695,18 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
     },
 ]`)
 
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
+
 </script>
 
 <template>
@@ -749,7 +763,7 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
             padding
         />
 
-        <Box :showDatetimeFormatter="true" showCallbacks showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_stackbar" signInfo="both">
+        <Box ref="box" :showDatetimeFormatter="true" showCallbacks showEmits showSlots showTooltip showThemes showResponsive showPatterns schema="vue_ui_stackbar" signInfo="both">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -860,7 +874,14 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                         <BaseAttr name="backgroundColor" attr="style.chart.tooltip.backgroundColor" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                         <BaseAttr name="showValue" attr="style.chart.tooltip.showValue" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="showPercentage" attr="style.chart.tooltip.showPercentage" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                        <span>customFormat: null, <span class="text-app-blue break-keep text-xs">// default behavior. To customize, check out the 'custom tooltip' tab</span></span>
+                        <div class="flex flex-row gap-2 place-items-center">
+                            <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                            <div class="min-w-[200px]">
+                                <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                                    Check out 'Custom tooltip' tab
+                                </BaseTabLink>
+                            </div>
+                        </div>
                         <BaseAttr name="roundingValue" attr="style.chart.tooltip.roundingValue" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="roundingPercentage" attr="style.chart.tooltip.roundingPercentage" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="fontSize" attr="style.chart.tooltip.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -907,7 +928,14 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                             <BaseAttr name="rounding" attr="style.chart.bars.dataLabels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="prefix" attr="style.chart.bars.dataLabels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             <BaseAttr name="suffix" attr="style.chart.bars.dataLabels.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-                            <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                            <div class="flex flex-row gap-2 place-items-center">
+                                <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                <div class="min-w-[200px]">
+                                    <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                        Go to page
+                                    </BaseTabLink>
+                                </div>
+                            </div>
                         </BaseDetails>
                     </BaseDetails>
                     <BaseDetails attr="grid" :level="3" title="style.chart.grid">
@@ -978,7 +1006,14 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                                 <BaseAttr name="offsetX" attr="style.chart.grid.y.axisName.offsetX" type="number" defaultVal="0" :min="-100" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                             </BaseDetails>
                             <BaseDetails attr="axisLabels" :level="5" title="style.chart.grid.y.axisLabels">
-                                <span>formatter: null, <BaseComment>{{ translations.formatterLink[store.lang] }}</BaseComment></span>
+                                <div class="flex flex-row gap-2 place-items-center">
+                                    <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+                                    <div class="min-w-[200px]">
+                                        <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                                            Go to page
+                                        </BaseTabLink>
+                                    </div>
+                                </div>
                                 <BaseAttr name="show" attr="style.chart.grid.y.axisLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="fontSize" attr="style.chart.grid.y.axisLabels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                                 <BaseAttr name="color" attr="style.chart.grid.y.axisLabels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1035,6 +1070,11 @@ const codeDataset = ref(`const dataset: VueUiStackbarDatasetItem[] = [
                 <BaseAttr name="labels" attr="userOptions.buttonTitles.labels" type="text" defaultVal="Toggle labels" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="fullscreen" attr="userOptions.buttonTitles.fullscreen" type="text" defaultVal="Toggle fullscreen" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
                 <BaseAttr name="annotator" attr="userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()" />
+            </BaseDetails>
+            <BaseDetails attr="callbacks" :level="2" title="userOptions.callbacks">
+                <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
+                    Check out 'callbacks' tab
+                </BaseTabLink>
             </BaseDetails>
             <BaseDetails attr="print" :level="2" title="userOptions.print">
                 <BaseAttr name="scale" attr="userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>

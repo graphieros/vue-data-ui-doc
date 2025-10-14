@@ -19,6 +19,8 @@ import BaseDocTitle from "../BaseDocTitle.vue";
 import CodeParser from "../customization/CodeParser.vue";
 import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
+import { useRouter } from "vue-router";
+import BaseTabLink from "../BaseTabLink.vue";
 
 const mainConfig = useConfig()
 
@@ -262,7 +264,19 @@ const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
     value: 16,
     color: "#5f8bee"
   }
-]`)
+]`);
+
+const box = ref(null);
+
+function setActiveTab(tab) {
+    if (!box.value) return;
+    box.value.setActiveTab(tab);
+}
+
+const router = useRouter();
+function goToPage(route) {
+    router.push(route)
+}
 
 </script>
 
@@ -300,7 +314,7 @@ const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
             debug 
         />
 
-        <Box showEmits showThemes showSlots schema="vue_ui_sparkstackbar" signInfo="positiveOrNegativeOnly">
+        <Box ref="box" showEmits showThemes showSlots schema="vue_ui_sparkstackbar" signInfo="positiveOrNegativeOnly">
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -387,7 +401,14 @@ const codeDataset = ref(`const dataset: VueUiSparkStackbarDatasetItem[] = [
           <BaseAttr name="rounding" attr="style.legend.value.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="prefix" attr="style.legend.value.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>          
           <BaseAttr name="suffix" attr="style.legend.value.suffix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-          <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+          <div class="flex flex-row gap-2 place-items-center">
+              <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
+              <div class="min-w-[200px]">
+                  <BaseTabLink :action="() => goToPage('/customization#formatter')" icon="cursor">
+                      Go to page
+                  </BaseTabLink>
+              </div>
+          </div>
         </BaseDetails>
       </BaseDetails>
       <BaseDetails attr="title" :level="2" title="style.title">
