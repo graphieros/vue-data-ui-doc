@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.3.1",
+    "date": "2025-10-14",
+    "updates": [
+      {
+        "component": "SVG export",
+        "description": "Fix cropped foreignObjects",
+        "link": ""
+      },
+      {
+        "component": "VueUiHeatmap",
+        "description": "Fix time label overflow edge case when rotated",
+        "link": "/docs/#vue-ui-heatmap"
+      }
+    ]
+  },
+  {
     "version": "v 3.3.0",
     "date": "2025-10-12",
     "updates": [

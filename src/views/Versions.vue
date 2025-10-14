@@ -2339,9 +2339,9 @@ async function impactPatch() {
 }
 </style>
 
-<style>
+<!-- <style>
 .vue-ui-treemap-cell {
   height: 100% !important;
   width: 100% !important;
 }
-</style>
+</style> -->
