@@ -127,6 +127,20 @@ const config = ref({
         xAxis: {
           show: true,
           values: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],
+          datetimeFormatter: {
+              enable: false,
+              locale: 'en',
+              useUTC: false,
+              januaryAsYear: false,
+              options: {
+                  year: 'yyyy',
+                  month: `MMM 'yy`,
+                  day: 'dd MMM',
+                  hour: 'HH:mm',
+                  minute: 'HH:mm:ss',
+                  second: 'HH:mm:ss'
+              }
+          },
           fontSize: 12,
           color: "#1A1A1A",
           bold: false,
@@ -305,6 +319,20 @@ const darkModeConfig = ref({
         xAxis: {
           show: true,
           values: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],
+          datetimeFormatter: {
+              enable: false,
+              locale: 'en',
+              useUTC: false,
+              januaryAsYear: false,
+              options: {
+                  year: 'yyyy',
+                  month: `MMM 'yy`,
+                  day: 'dd MMM',
+                  hour: 'HH:mm',
+                  minute: 'HH:mm:ss',
+                  second: 'HH:mm:ss'
+              }
+          },
           fontSize: 12,
           color: "#CCCCCC",
           bold: false,
@@ -668,6 +696,19 @@ function goToPage(route) {
             <BaseDetails attr="xAxis" :level="4" title="style.layout.dataLabels.xAxis">
               <BaseAttr name="show" attr="style.layout.dataLabels.xAxis.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <span>values: [],</span>
+              <BaseDetails attr="datetimeFormatter" :level="5" title="style.layout.dataLabels.xAxis.datetimeFormatter">
+                  <BaseAttr name="enable" attr="style.layout.dataLabels.xAxis.datetimeFormatter.enable" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseAttr name="locale" attr="style.layout.dataLabels.xAxis.datetimeFormatter.locale" type="select" defaultVal="en" :options="store.locales" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseAttr name="useUTC" attr="style.layout.dataLabels.xAxis.datetimeFormatter.useUTC" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseAttr name="januaryAsYear" attr="style.layout.dataLabels.xAxis.datetimeFormatter.januaryAsYear" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  <BaseDetails attr="options" :level="6" title="style.layout.dataLabels.xAxis.datetimeFormatter.options">
+                      <BaseAttr name="year" attr="style.layout.dataLabels.xAxis.datetimeFormatter.options.year" type="text" defaultVal="yyyy" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                      <BaseAttr name="month" attr="style.layout.dataLabels.xAxis.datetimeFormatter.options.month" type="text" :defaultVal="`MMM 'yy`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                      <BaseAttr name="day" attr="style.layout.dataLabels.xAxis.datetimeFormatter.options.day" type="text" :defaultVal="`dd MMM`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                      <BaseAttr name="minute" attr="style.layout.dataLabels.xAxis.datetimeFormatter.options.minute" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                      <BaseAttr name="second" attr="style.layout.dataLabels.xAxis.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                  </BaseDetails>
+              </BaseDetails>
               <BaseAttr name="fontSize" attr="style.layout.dataLabels.xAxis.fontSize" type="number" defaultVal="8" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="color" attr="style.layout.dataLabels.xAxis.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="bold" attr="style.layout.dataLabels.xAxis.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
