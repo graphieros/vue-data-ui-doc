@@ -43,6 +43,41 @@ const isDarkMode = computed(() => {
     return store.isDarkMode;
 });
 
+function generateRandomCandlestickData({
+    count = 12,
+    startDate = Date.UTC(2024, 0, 1), // starting date (Jan 1, 2024)
+    interval = 30 * 24 * 60 * 60 * 1000, // 1 month in ms
+    startPrice = 100,
+    volatility = 0.2 // 20% volatility
+    } = {}) {
+    const data = [];
+    let lastClose = startPrice;
+
+    for (let i = 0; i < count; i++) {
+        const timestamp = startDate + i * interval;
+
+        // simulate price movement
+        const changePercent = (Math.random() - 0.5) * volatility;
+        const open = lastClose;
+        const close = open * (1 + changePercent);
+        const high = Math.max(open, close) * (1 + Math.random() * volatility);
+        const low = Math.min(open, close) * (1 - Math.random() * volatility);
+        const volume = Math.round(1000 + Math.random() * 9000);
+
+        data.push([
+            timestamp,
+            Math.round(open),
+            Math.round(high),
+            Math.round(low),
+            Math.round(close),
+            volume
+        ]);
+
+        lastClose = close;
+    }
+    return data;
+}
+
 const dataset = ref([
   [1704067200000, 1200, 2300, 1000, 2100, 1800],
   [1706745600000, 2100, 2400, 1800, 2000, 2200],

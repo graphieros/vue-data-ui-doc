@@ -425,8 +425,8 @@ const advantagesTitle = ref({
 const currentStars = computed(() => store.stars)
 
 const target = computed(() => {
-    const activeThreshold = store.thresholds.find(t => currentStars.value >= t.min && currentStars.value < t.max)
-    return currentStars.value / activeThreshold.max * 100
+    const activeThreshold = store.thresholds.find(t => currentStars.value >= (t?.min ?? 0) && currentStars.value < (t?.max || 1))
+    return currentStars.value / (activeThreshold?.max ?? 1) * 100
 });
 
 const wheelDataset = computed(() => ({ percentage: target.value }));

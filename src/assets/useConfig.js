@@ -307,7 +307,20 @@ export function useConfig() {
                     ...LEGEND,
                     position: 'bottom'
                 },
-                zoom: ZOOM,
+                zoom: {
+                    ...ZOOM,
+                    minimap: MINIMAP,
+                    preview: {
+                        enable: true,
+                        fill: '#CCCCCC50',
+                        stroke: '#6A6A6A',
+                        strokeWidth: 2,
+                        strokeDasharray: 0,
+                    },
+                    useDefaultFormat: true,
+                    timeFormat: 'yyyy-MM-dd HH:mm:ss', // When datetimeFormatter is enabled
+                    customFormat: null // overrides all if callback => string
+                },
                 tooltip: {
                     ...TOOLTIP,
                     showValue: true,
@@ -387,7 +400,10 @@ export function useConfig() {
                             },
                             fontSize: FONT._14,
                             color: COLOR_BLACK,
-                            bold: false
+                            bold: false,
+                            showOnlyFirstAndLast: false,
+                            showOnlyAtModulo: false,
+                            modulo: 12
                         }
                     },
                     y: {

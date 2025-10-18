@@ -1617,6 +1617,7 @@ const KPIS = computed(() => {
       'open_issues',
     ].includes(key)) {
       return {
+        key,
         name: key.replaceAll('_', ' '),
         value: store.pack[key],
         link: `https://github.com/graphieros/vue-data-ui/${kpiLinks.value[key]}`,
@@ -1641,7 +1642,15 @@ const KPIS = computed(() => {
           : ''
       }
     }
-  }).filter(el => el && el.name)
+  }).filter(el => el && el.name).map(el => ({
+    ...el,
+    displayName: {
+      stargazers_count: 'Stars',
+      open_issues_count: 'Issues',
+      subscribers_count: 'Subscribers',
+      forks_count: 'Forks'
+    }[el.key]
+  }))
 })
 
 function convertVersionsToTreemap(ds) {
@@ -1991,12 +2000,11 @@ async function impactPatch() {
           </div>
           <h2 class="text-[18px] sm:text-[24px] text-center mb-12 text-gray-500">{{ dogFood[store.lang] }}</h2>
 
-
-            <div class="mx-auto max-w-[800px] px-6">
-              <BaseCard>
-                <div class="grid grid-cols-2 align-center gap-4 justify-center">
-                  <button v-for="kpi in KPIS" :class="`w-full min-h-[72px] button-kpi-${kpi.name.replaceAll(' ', '-')} rounded-md hover:shadow-xl transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"  >
-                    <a :href="kpi.link" target="_blank" class="kpi-wrapper">
+          <div class="mx-auto max-w-[800px] px-6">
+            <BaseCard>
+              <div class="pt-2 flex flex-row flex-wrap align-center gap-4 justify-center place-content-center">
+                <button v-for="kpi in KPIS" :class="`relative w-full max-w-[150px] button-kpi-${kpi.name.replaceAll(' ', '-')} rounded-md hover:shadow-xl transition-all shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"  >
+                  <a :href="kpi.link" target="_blank" class="kpi-wrapper">
                       <VueDataUi
                         :class="`${kpi.name.replaceAll(' ', '_')}${isDarkMode ? '-dark' : ''}`"
                         component="VueUiKpi" 
@@ -2006,32 +2014,33 @@ async function impactPatch() {
                           layoutClass: 'p-4 rounded-md shadow-md relative overflow-hidden',
                           titleColor: '#1A1A1A',
                           titleClass: 'text-left pl-1 capitalize',
-                          valueClass: 'tabular-nums pl-0 sm:pl-6 !drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]',
+                          valueClass: 'tabular-nums pl-0 sm:pl-0 !drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]',
                           analogDigits: {
                             show: true,
-                            height: 40,
+                            height: 32,
                             color: lightenColor(kpi.color, 0.4),
                             skeletonColor: '#1A1A1A20'
                           }
                         }"
                       >
                         <template #title>
-                          <div class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(2,2)">
+                          <div class="absolute top-[21px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.5,1.5)">
                             <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.3)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
                           </div>
-                          <div v-if="kpi.name === 'stargazers count'" class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.1,1.1)">
+                          <div v-if="kpi.name === 'stargazers count'" class="absolute top-[21px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.1,1.1)">
                             <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
                           </div>
-                          <div v-if="kpi.name === 'stargazers count'" class="absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(0.3,0.3)">
+                          <div v-if="kpi.name === 'stargazers count'" class="absolute top-[21px] right-6 flex-row place-items-center gap-2" style="transform: scale(0.3,0.3)">
                             <component :is="kpi.icon" :color="lightenColor(kpi.color, 0.5)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
                           </div>
-                          <div v-else class="thin-icon absolute top-[24px] right-6 flex-row place-items-center gap-2" style="transform: scale(2, 2)">
+                          <div v-else class="thin-icon absolute top-[21px] right-6 flex-row place-items-center gap-2" style="transform: scale(1.5, 1.5)">
                             <component :is="kpi.icon" :color="darkenColor(kpi.color, 0.6)" class="!drop-shadow-[0_6px_5px_rgba(0,0,0,0.5)]"/>
                           </div>
                           
                         </template>
                     </VueDataUi>
                     </a>
+                  <div class="absolute -top-4 left-0 text-xs text-gray-600 dark:text-[#7A7A7A]">{{ kpi.displayName }}</div>
                   </button>
                 </div>
               </BaseCard>
