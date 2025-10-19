@@ -1546,6 +1546,9 @@ const xyCanvasConfig = computed(() => {
           zoom: {
             highlightColor: '#42d392',
             color: isDarkMode.value ? '#616161' : '#CCCCCC',
+            minimap: {
+              show: true
+            }
           },
           paddingProportions: {
             top: 0.05
