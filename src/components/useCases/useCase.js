@@ -564,6 +564,14 @@ export function useCase() {
                     tooltip: {
                         backgroundOpacity: 30,
                     },
+                    zoom: {
+                        preview: {
+                            enable: true
+                        },
+                        minimap: {
+                            show: true
+                        }
+                    },
                     grid: {
                         y: {
                             axisLabels: {

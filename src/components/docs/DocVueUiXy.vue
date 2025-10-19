@@ -713,7 +713,6 @@ const darkModeConfig = ref({
             },
             preview: {
                 enable: true,
-                enable: false,
                 fill: '#CCCCCC50',
                 stroke: '#6A6A6A',
                 strokeWidth: 2,
@@ -1504,6 +1503,7 @@ function goToPage(route) {
                 </BaseDetails>
                 <BaseAttr name="useDefaultFormat" attr="chart.timeTag.useDefaultFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="timeFormat" attr="chart.timeTag.timeFormat" type="text" defaultVal="yyyy-MM-dd HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Use with datetimeFormatter.enable = true"/>
+
                 <div class="flex flex-row gap-2 place-items-center">
                     <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
                     <div class="min-w-[200px]">
@@ -1512,6 +1512,7 @@ function goToPage(route) {
                         </BaseTabLink>
                     </div>
                 </div>
+
             </BaseDetails>
             <BaseDetails attr="title" :level="2" title="chart.title">
                 <BaseAttr name="show" attr="chart.title.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -1587,11 +1588,13 @@ function goToPage(route) {
                     <BaseAttr name="stack" attr="chart.userOptions.buttonTitles.stack" type="text" defaultVal="Toggle stack mode" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="annotator" attr="chart.userOptions.buttonTitles.annotator" type="text" defaultVal="Toggle annotator" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
+
                 <BaseDetails attr="callbacks" :level="3" title="chart.userOptions.callbacks">
                     <BaseTabLink :action="() => setActiveTab(11)" icon="lambda">
                         Check out 'callbacks' tab
                     </BaseTabLink>
                 </BaseDetails>
+
                 <BaseDetails attr="print" :level="3" title="chart.userOptions.print">
                     <BaseAttr name="scale" attr="chart.userOptions.print.scale" type="number" :min="1" :max="5" defaultVal="2" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Set print quality (higher = larger file)"/>
                     <BaseAttr inactive name="orientation" defaultVal="auto" comment="'auto' | 'l' | 'p'"/>
@@ -1666,6 +1669,7 @@ function goToPage(route) {
                 <BaseAttr name="offsetY" attr="bar.labels.offsetY" type="number" defaultVal="-6" :min="-50" :max="50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="rounding" attr="bar.labels.rounding" type="number" defaultVal="0" :min="0" :max="6" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 <BaseAttr name="color" attr="bar.labels.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+
                 <div class="flex flex-row gap-2 place-items-center">
                     <BaseAttr inactive name="formatter" defaultVal="null" :comment="translations.formatterLink[store.lang]"/>
                     <div class="min-w-[200px]">
@@ -1674,6 +1678,7 @@ function goToPage(route) {
                         </BaseTabLink>
                     </div>
                 </div>
+
             </BaseDetails>
             <BaseDetails attr="serieName" :level="2" title="bar.serieName">
                 <BaseAttr name="show" attr="bar.serieName.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

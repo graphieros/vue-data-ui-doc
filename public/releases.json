@@ -1,5 +1,26 @@
 [
   {
+    "version": "v 3.4.0",
+    "date": "2025-10-19",
+    "updates": [
+      {
+        "component": "VueUiCandlestick",
+        "description": "Add zoom minimap, add ohlc mode, improved tooltip content",
+        "link": "/docs/#vue-ui-candlestick"
+      },
+      {
+        "component": "VueUiStackbar",
+        "description": "Add zoom minimap",
+        "link": "/docs/#vue-ui-stackbar"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Add zoom minimap",
+        "link": "/docs/#vue-ui-xy-canvas"
+      }
+    ]
+  },
+  {
     "version": "v 3.3.3",
     "date": "2025-10-15",
     "updates": [

@@ -570,8 +570,15 @@ const stackbarConfig = computed(() => {
                 zoom: {
                     color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
                     highlightColor: '#1F77B4',
-                    startIndex: history.value.averagePerDay.length - 14,
-                    endIndex: history.value.averagePerDay.length - 1
+                    focusOnDrag: true,
+                    focusRangeRatio: 0.1,
+                    minimap: {
+                        show: true,
+                        frameColor: isDarkMode.value ? '#4A4A4A' : '#CCCCCC'
+                    },
+                    preview: {
+                        enable: false
+                    }
                 }
             }
         }

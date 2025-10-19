@@ -1573,6 +1573,11 @@ export default function useExamples() {
                 chart: {
                     backgroundColor: colors.value.bg,
                     color: colors.value.textColor,
+                    zoom: {
+                        minimap: {
+                            show: true
+                        }
+                    },
                     grid: {
                         x: {
                             axisColor: colors.value.gridStroke,
@@ -1582,7 +1587,7 @@ export default function useExamples() {
                             },
                             timeLabels: {
                                 color: colors.value.textColor,
-                                values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5']
+                                values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9']
                             }
                         },
                         y: {
@@ -1632,19 +1637,19 @@ export default function useExamples() {
     const DATASET_STACKBAR_BASIC = ref([
         {
             name: "Serie 1",
-            series: [19, 20.07, 30, 40, 50, 60],
+            series: [19, 20.07, 30, 40, 50, 60, 12, 20, 25, 19],
         },
         {
             name: "Serie 2",
-            series: [13, 8, 9, 13, 25, 27],
+            series: [13, 8, 9, 13, 25, 27, 17, 12, 25, 13],
         },
         {
             name: "Serie 3",
-            series: [13, 10, 9, 13, 25, 19],
+            series: [13, 10, 9, 13, 25, 19, 6, 18, 20, 32],
         },
         {
             name: "Serie 4",
-            series: [25, 23, 9, 13, 25, 31],
+            series: [25, 23, 9, 13, 25, 31, 19, 13, 12, 14],
         },
     ])
     const DATASET_STACKBAR_MIXED = ref([

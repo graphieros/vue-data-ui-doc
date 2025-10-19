@@ -78,25 +78,10 @@ function generateRandomCandlestickData({
     return data;
 }
 
-const dataset = ref([
-  [1704067200000, 1200, 2300, 1000, 2100, 1800],
-  [1706745600000, 2100, 2400, 1800, 2000, 2200],
-  [1709251200000, 2000, 2500, 1700, 2150, 2400],
-  [1711929600000, 2150, 2300, 2000, 2050, 1600],
-  [1714521600000, 2050, 2450, 1900, 1950, 2000],
-  [1717200000000, 1950, 2500, 1800, 2300, 2500],
-  [1719792000000, 2300, 2400, 2100, 2250, 1900],
-  [1722470400000, 2250, 2350, 2200, 2300, 1750],
-  [1725148800000, 2300, 2250, 1800, 1850, 2100],
-  [1727740800000, 1850, 2500, 1800, 2450, 2300],
-  [1730419200000, 2450, 2500, 1000, 1250, 1500],
-  [1733011200000, 1250, 2000, 1000, 1350, 1700],
-  [1735689600000, 1350, 2100, 1200, 2000, 1600],
-  [1738368000000, 2000, 2400, 1950, 2300, 1850],
-  [1740787200000, 2300, 2500, 2200, 2400, 2400]
-])
+const dataset = ref(generateRandomCandlestickData({ count: 100 }));
 
 const config = ref({
+  type: 'candlestick',
   debug: false,
   loading: false,
   responsive: false,
@@ -123,7 +108,20 @@ const config = ref({
         show: true,
         stroke: "#C4C4C4",
         strokeWidth: 0.5,
+        verticalLines: {
+          show: true,
+          strokeDasharray: 4,
+          strokeWidth: 0.5,
+          stroke: '#CCCCCC'
+        },
+        horizontalLines: {
+          show: true,
+          strokeDasharray: 4,
+          strokeWidth: 0.5,
+          stroke: '#CCCCCC'
+        },
         xAxis: {
+          ticks: { show: true },
           dataLabels: {
             show: true,
             fontSize: 10,
@@ -149,6 +147,9 @@ const config = ref({
                 second: 'HH:mm:ss'
               }
             },
+            showOnlyFirstAndLast: false,
+            showOnlyAtModulo: true,
+            modulo: 12
           }
         },
         yAxis: {
@@ -170,12 +171,12 @@ const config = ref({
         }
       },
       wick: {
-        stroke: "#1A1A1A",
+        stroke: "#8A8A8A",
         strokeWidth: 0.5,
         extremity: {
           shape: "line",
           size: "auto",
-          color: "#1A1A1A"
+          color: "#8A8A8A"
         }
       },
       candle: {
@@ -202,7 +203,26 @@ const config = ref({
         startIndex: null,
         endIndex: null,
         focusOnDrag: false,
-        focusRangeRatio: 0.2
+        focusRangeRatio: 0.2,
+        minimap: {
+          show: true,
+          selectedColor: '#1f77b4',
+          selectedColorOpacity: 0.2,
+          indicatorColor: '#CCCCCC',
+          verticalHandles: false,
+          compact: true,
+          frameColor: '#8A8A8A'
+        },
+        preview: {
+          enable: true,
+          fill: '#CCCCCC20',
+          stroke: '#6A6A6A',
+          strokeWidth: 1,
+          strokeDasharray: 3,
+        },
+        useDefaultFormat: false,
+        timeFormat: 'yyyy-MM-dd',
+        customFormat: null
     },
     title: {
       text: "Title",
@@ -236,7 +256,10 @@ const config = ref({
       offsetY: 24,
       smooth: true,
       smoothForce: 0.18,
-      smoothSnapThreshold: 0.25
+      smoothSnapThreshold: 0.25,
+      showChart: true,
+      useDefaultTimeFormat: false,
+      timeFormat: 'yyyy-MM-dd'
     }
   },
   translations: {
@@ -299,6 +322,7 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  type: 'candlestick',
   debug: false,
   loading: false,
   responsive: false,
@@ -325,7 +349,20 @@ const darkModeConfig = ref({
         show: true,
         stroke: "#666666",
         strokeWidth: 0.5,
+        verticalLines: {
+          show: true,
+          strokeDasharray: 4,
+          strokeWidth: 0.5,
+          stroke: '#4A4A4A'
+        },
+        horizontalLines: {
+          show: true,
+          strokeDasharray: 4,
+          strokeWidth: 0.5,
+          stroke: '#4A4A4A'
+        },
         xAxis: {
+          ticks: { show: true },
           dataLabels: {
             show: true,
             fontSize: 10,
@@ -351,6 +388,9 @@ const darkModeConfig = ref({
                     second: 'HH:mm:ss'
                 }
             },
+            showOnlyFirstAndLast: false,
+            showOnlyAtModulo: true,
+            modulo: 12
           }
         },
         yAxis: {
@@ -372,16 +412,16 @@ const darkModeConfig = ref({
         }
       },
       wick: {
-        stroke: "#CCCCCC",
+        stroke: "#6A6A6A",
         strokeWidth: 0.5,
         extremity: {
           shape: "line",
           size: "auto",
-          color: "#CCCCCC"
+          color: "#6A6A6A"
         }
       },
       candle: {
-        borderRadius: 1,
+        borderRadius: 0,
         stroke: "#2D353C",
         strokeWidth: 0.5,
         colors: {
@@ -404,7 +444,26 @@ const darkModeConfig = ref({
         startIndex: null,
         endIndex: null,
         focusOnDrag: false,
-        focusRangeRatio: 0.2
+        focusRangeRatio: 0.2,
+        minimap: {
+          show: true,
+          selectedColor: '#1f77b4',
+          selectedColorOpacity: 0.2,
+          indicatorColor: '#CCCCCC',
+          verticalHandles: false,
+          compact: true,
+          frameColor: '#6A6A6A'
+        },
+        preview: {
+          enable: true,
+          fill: '#CCCCCC20',
+          stroke: '#6A6A6A',
+          strokeWidth: 1,
+          strokeDasharray: 3,
+        },
+        useDefaultFormat: false,
+        timeFormat: 'yyyy-MM-dd',
+        customFormat: null
     },
     title: {
       text: "Title",
@@ -438,7 +497,10 @@ const darkModeConfig = ref({
       offsetY: 24,
       smooth: true,
       smoothForce: 0.18,
-      smoothSnapThreshold: 0.25
+      smoothSnapThreshold: 0.25,
+      showChart: true,
+      useDefaultTimeFormat: false,
+      timeFormat: 'yyyy-MM-dd'
     }
   },
   translations: {
@@ -649,6 +711,7 @@ function goToPage(route) {
 
 <code ref="configCode">
   <BaseDetails attr="const config: VueUiCandlestickConfig" equal>
+    <BaseAttr name="type" attr="type" defaultVal="'candlestick'" type="select" :options="['candlestick', 'ohlc']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
     <BaseAttr inactive name="responsiveProportionalSizing" defaultVal="true" :comment="translations.responsiveProportionalSizing[store.lang]"/>
     <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
@@ -685,7 +748,22 @@ function goToPage(route) {
           <BaseAttr name="show" attr="style.layout.grid.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
           <BaseAttr name="stroke" attr="style.layout.grid.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
           <BaseAttr name="strokeWidth" attr="style.layout.grid.strokeWidth" type="number" defaultVal="0.5" :min="0.1" :max="12" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseDetails attr="verticalLines" :level="4" title="style.layout.grid.verticalLines">
+            <BaseAttr name="show" attr="style.layout.grid.verticalLines.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="strokeDasharray" attr="style.layout.grid.verticalLines.strokeDasharray" type="number" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="strokeWidth" attr="style.layout.grid.verticalLines.strokeWidth" type="number" defaultVal="0.5" :min="0.1" :max="6" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="stroke" attr="style.layout.grid.verticalLines.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          </BaseDetails>
+          <BaseDetails attr="horizontalLines" :level="4" title="style.layout.grid.horizontalLines">
+            <BaseAttr name="show" attr="style.layout.grid.horizontalLines.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="strokeDasharray" attr="style.layout.grid.horizontalLines.strokeDasharray" type="number" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="strokeWidth" attr="style.layout.grid.horizontalLines.strokeWidth" type="number" defaultVal="0.5" :min="0.1" :max="6" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            <BaseAttr name="stroke" attr="style.layout.grid.horizontalLines.stroke" type="color" defaultVal="#E1E5E8" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          </BaseDetails>
           <BaseDetails attr="xAxis" :level="4" title="style.layout.grid.xAxis">
+            <BaseDetails attr="ticks" :level="5" title="style.layout.grid.xAxis.ticks">
+              <BaseAttr name="show" attr="style.layout.grid.xAxis.ticks.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+            </BaseDetails>
             <BaseDetails attr="dataLabels" :level="5" title="style.layout.grid.xAxis.dataLabels">
               <BaseAttr name="show" attr="style.layout.grid.xAxis.dataLabels.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseAttr name="fontSize" attr="style.layout.grid.xAxis.dataLabels.fontSize" type="number" defaultVal="4" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -710,6 +788,9 @@ function goToPage(route) {
                       <BaseAttr name="second" attr="style.layout.grid.xAxis.dataLabels.datetimeFormatter.options.second" type="text" :defaultVal="`HH:mm:ss`" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                   </BaseDetails>
               </BaseDetails>
+              <BaseAttr name="showOnlyFirstAndLast" attr="style.layout.grid.xAxis.dataLabels.showOnlyFirstAndLast" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="showOnlyAtModulo" attr="style.layout.grid.xAxis.dataLabels.showOnlyAtModulo" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+              <BaseAttr name="modulo" attr="style.layout.grid.xAxis.dataLabels.modulo" type="number" defaultVal="12" :min="2" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
             </BaseDetails>
           </BaseDetails>
           <BaseDetails attr="yAxis" :level="4" title="style.layout.grid.yAxis">
@@ -750,6 +831,7 @@ function goToPage(route) {
           </BaseDetails>
         </BaseDetails>
       </BaseDetails>
+
       <BaseDetails attr="title" :level="2" title="style.title">
         <BaseAttr name="text" attr="style.title.text" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
         <BaseAttr name="color" attr="style.title.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
@@ -790,6 +872,9 @@ function goToPage(route) {
         <BaseAttr name="smooth" attr="style.tooltip.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="smoothForce" attr="style.tooltip.smoothForce" type="number" defaultVal="0.18" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr name="smoothSnapThreshold" attr="style.tooltip.smoothSnapThreshold" type="number" defaultVal="0.25" :min="0.1" :max="24" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="showChart" attr="style.tooltip.showChart" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="useDefaultTimeFormat" attr="style.tooltip.useDefaultTimeFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        <BaseAttr name="timeFormat" attr="style.tooltip.timeFormat" type="text" defaultVal="'yyyy-MM-dd HH:mm:ss'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       </BaseDetails>
       <BaseDetails attr="zoom" :level="2" title="style.zoom">
         <BaseAttr name="show" attr="style.zoom.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
@@ -801,6 +886,14 @@ function goToPage(route) {
         <span>endIndex: number | null, <BaseComment>Force zoom end index</BaseComment></span>
         <BaseAttr name="focusOnDrag" attr="style.zoom.focusOnDrag" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" />
         <BaseAttr name="focusRangeRatio" attr="style.zoom.focusRangeRatio" type="number" defaultVal="0.2" :min="0.1" :max="0.9" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+
+        <BaseDetails attr="minimap" :level="3" title="style.zoom.minimap">
+          <BaseAttr name="show" attr="style.zoom.minimap.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="selectedColor" attr="style.zoom.minimap.selectedColor" type="color" defaultVal="#1f77b4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="selectedColorOpacity" attr="style.zoom.minimap.selectedColorOpacity" type="range" defaultVal="0.2" :min="0" :max="0.8" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="indicatorColor" attr="style.zoom.minimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+          <BaseAttr name="frameColor" attr="style.zoom.minimap.frameColor" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+        </BaseDetails>
       </BaseDetails>
     </BaseDetails>
     <BaseDetails attr="table" :level="1">

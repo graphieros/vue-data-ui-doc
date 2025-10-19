@@ -96,6 +96,8 @@ const dataset = ref([
 ]);
 
 const config = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   theme: "",
   customPalette: [],
@@ -161,7 +163,26 @@ const config = ref({
         enableRangeHandles: true,
         enableSelectionDrag: true,
         focusOnDrag: false,
-        focusRangeRatio: 0.2
+        focusRangeRatio: 0.2,
+        minimap: {
+          show: true,
+          selectedColor: '#1f77b4',
+          selectedColorOpacity: 0.2,
+          indicatorColor: '#CCCCCC',
+          verticalHandles: false,
+          compact: true,
+          frameColor: '#8A8A8A'
+        },
+        preview: {
+          enable: true,
+          fill: '#CCCCCC20',
+          stroke: '#6A6A6A',
+          strokeWidth: 1,
+          strokeDasharray: 3,
+        },
+        useDefaultFormat: true,
+        timeFormat: 'yyyy-MM-dd HH:mm:ss',
+        customFormat: null
       },
       selector: {
         show: true,
@@ -183,7 +204,10 @@ const config = ref({
         offsetY: 24,
         smooth: true,
         smoothForce: 0.18,
-        smoothSnapThreshold: 0.25
+        smoothSnapThreshold: 0.25,
+        showTimeLabel: true,
+        useDefaultTimeFormat: true,
+        timeFormat: 'yyyy-MM-dd HH:mm:ss'
       },
       legend: {
         backgroundColor: "#F3F4F6",
@@ -274,6 +298,7 @@ const config = ref({
         },
       },
       line: {
+        cutNullValues: true,
         plots: {
           show: true,
           radiusRatio: 1,
@@ -326,6 +351,8 @@ const config = ref({
 });
 
 const darkModeConfig = ref({
+  debug: false,
+  loading: false,
   responsive: false,
   theme: "",
   downsample: {
@@ -391,7 +418,26 @@ const darkModeConfig = ref({
         enableRangeHandles: true,
         enableSelectionDrag: true,
         focusOnDrag: false,
-        focusRangeRatio: 0.2
+        focusRangeRatio: 0.2,
+        minimap: {
+          show: true,
+          selectedColor: '#1f77b4',
+          selectedColorOpacity: 0.2,
+          indicatorColor: '#CCCCCC',
+          verticalHandles: false,
+          compact: true,
+          frameColor: '#6A6A6A'
+        },
+        preview: {
+          enable: true,
+          fill: '#CCCCCC20',
+          stroke: '#6A6A6A',
+          strokeWidth: 1,
+          strokeDasharray: 3,
+        },
+        useDefaultFormat: true,
+        timeFormat: 'yyyy-MM-dd HH:mm:ss',
+        customFormat: null
       },
       selector: {
         show: true,
@@ -413,7 +459,10 @@ const darkModeConfig = ref({
         offsetY: 24,
         smooth: true,
         smoothForce: 0.18,
-        smoothSnapThreshold: 0.25
+        smoothSnapThreshold: 0.25,
+        showTimeLabel: true,
+        useDefaultTimeFormat: true,
+        timeFormat: 'yyyy-MM-dd HH:mm:ss'
       },
       legend: {
         backgroundColor: "#2A2A2A",
@@ -504,6 +553,7 @@ const darkModeConfig = ref({
         },
       },
       line: {
+        cutNullValues: true,
         plots: {
           show: true,
           radiusRatio: 1,
@@ -778,6 +828,8 @@ function goToPage(route) {
                   >// {{ translations.responsive[store.lang] }}</span
                 ></span
               >
+              <BaseAttr inactive name="debug" defaultVal="false"/>
+              <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
               <BaseDetails attr="downsample" :level="1">
                 <BaseAttr
                   name="threshold"
@@ -1738,7 +1790,11 @@ function goToPage(route) {
                     <BaseAttr name="smooth" attr="style.chart.tooltip.smooth" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="smoothForce" attr="style.chart.tooltip.smoothForce" type="number" defaultVal="0.18" :min="0.1" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="smoothSnapThreshold" attr="style.chart.tooltip.smoothSnapThreshold" type="number" defaultVal="0.25" :min="0.1" :max="24" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <!-- <BaseAttr name="showTimeLabel" attr="style.chart.tooltip.showTimeLabel" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/> -->
+                    <BaseAttr name="useDefaultTimeFormat" attr="style.chart.tooltip.useDefaultTimeFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="timeFormat" attr="style.chart.tooltip.timeFormat" type="text" defaultVal="yyyy-MM-dd HH:mm:ss" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                   </BaseDetails>
+
                   <BaseDetails attr="zoom" :level="3" title="style.chart.zoom">
                     <BaseAttr
                       name="show"
@@ -1791,7 +1847,33 @@ function goToPage(route) {
                     <BaseAttr name="enableSelectionDrag" attr="style.chart.zoom.enableSelectionDrag" type="chexkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" />
                     <BaseAttr name="focusOnDrag" attr="style.chart.zoom.focusOnDrag" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="focusRangeRatio" attr="style.chart.zoom.focusRangeRatio" type="number" defaultVal="0.2" :min="0.1" :max="0.9" :step="0.1" :light="mutableConfig" :dark="mutableConfigDarkMode"/> 
+
+                    <BaseDetails attr="minimap" :level="4" title="style.chart.zoom.minimap">
+                        <BaseAttr name="show" attr="style.chart.zoom.minimap.show" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="selectedColor" attr="style.chart.zoom.minimap.selectedColor" type="color" defaultVal="#1f77b4" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="selectedColorOpacity" attr="style.chart.zoom.minimap.selectedColorOpacity" type="range" defaultVal="0.2" :min="0" :max="0.8" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="indicatorColor" attr="style.chart.zoom.minimap.indicatorColor" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="frameColor" attr="style.chart.zoom.minimap.frameColor" type="color" defaultVal="#A1A1A1" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseDetails attr="preview" :level="4" title="style.chart.zoom.preview">
+                        <BaseAttr name="enable" attr="style.chart.zoom.preview.enable" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="fill" attr="style.chart.zoom.preview.fill" type="color" defaultVal="#CCCCCC50" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="stroke" attr="style.chart.zoom.preview.stroke" type="color" defaultVal="#6A6A6A" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeWidth" attr="style.chart.zoom.preview.strokeWidth" type="number" defaultVal="2" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="strokeDasharray" attr="style.chart.zoom.preview.strokeDasharray" type="number" defaultVal="0" :min="0" :max="24" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    </BaseDetails>
+                    <BaseAttr name="useDefaultFormat" attr="style.chart.zoom.useDefaultFormat" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                        <BaseAttr name="timeFormat" attr="style.chart.zoom.timeFormat" type="text" defaultVal="'yyyy-MM-dd HH:mm:ss'" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                      <div class="flex flex-row gap-2 place-items-center">
+                          <BaseAttr inactive name="customFormat" defaultVal="null" comment="default behavior. To customize content, see 'custom tooltip' tab (works the same way as the tooltip)"/>
+                          <div class="min-w-[200px]">
+                              <BaseTabLink :action="() => setActiveTab(4)" icon="tooltip">
+                                  Check out 'Custom tooltip' tab
+                              </BaseTabLink>
+                          </div>
+                      </div>
                   </BaseDetails>
+
                 </BaseDetails>
               </BaseDetails>
               <BaseDetails attr="table" :level="1">
