@@ -22,6 +22,8 @@ const stats = computed(() => {
     return store.ratings.breakdown;
 })
 
+const selectedXIndex = ref(null);
+
 watch(() => stats, () => {
     setTimeout(() => {
         const texts = document.querySelectorAll('.gauge-sat text');
@@ -507,11 +509,20 @@ const stackbarData = computed(() => {
 
 const stackbarConfig = computed(() => {
     return {
+        events: {
+            datapointEnter: ({ seriesIndex }) => {
+                selectedXIndex.value = seriesIndex;
+            },
+            datapointLeave: () => {
+                selectedXIndex.value = undefined;
+            }
+        },
         userOptions: { show: false },
         style: {
             chart: {
-                backgroundColor: 'transparent',
+                backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                height: 300,
                 bars: {
                     distributed: false,
                     gapRatio: 0,
@@ -555,7 +566,8 @@ const stackbarConfig = computed(() => {
                 title: {
                     text: 'Satisfaction survey, ratings breakdown',
                     color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
-                    textAlign: 'center',
+                    textAlign: 'left',
+                    paddingLeft: 12,
                     subtitle: {
                         text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
                         color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
@@ -762,9 +774,18 @@ const cutNullValues = ref(false);
 
 const xyConfig = computed(() => {
     return {
+        events: {
+            datapointEnter: ({ seriesIndex }) => {
+                selectedXIndex.value = seriesIndex;
+            },
+            datapointLeave: () => {
+                selectedXIndex.value = undefined;
+            }
+        },
         chart: {
             backgroundColor: isDarkMode.value ? '#3A3A3A' : '#f9fafb',
             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+            height: 300,
             padding: {
                 top: 20,
                 bottom: 12,
@@ -811,7 +832,8 @@ const xyConfig = computed(() => {
                 }
             ],
             highlighter: {
-                color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A'
+                color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
+                useLine: true,
             },
             legend: {
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
@@ -819,7 +841,8 @@ const xyConfig = computed(() => {
             title: {
                 text: 'Satisfaction survey history',
                 color: isDarkMode.value ? '#1F77B4' : '#1A1A1A',
-                textAlign: 'center',
+                textAlign: 'left',
+                paddingLeft: 12,
                 subtitle: {
                     text: `${history.value.dates[0]} to ${history.value.dates.at(-1)}`,
                     color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1"
@@ -1158,7 +1181,10 @@ function selectHeatmapCell(cell) {
                     Cut null values
                     <input type="checkbox" v-model="cutNullValues">
                 </label>
-                <VueUiXy :dataset="xyDataset" :config="xyConfig" />
+                <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDataset" :config="xyConfig" />
+            </div>
+            <div class="p-4">
+                <VueUiStackbar :selectedXIndex="selectedXIndex" :dataset="stackbarData" :config="stackbarConfig" />
             </div>
         </BaseCard>
     
@@ -1264,12 +1290,6 @@ function selectHeatmapCell(cell) {
                         }
                     }
                 }" />
-            </div>
-        </BaseCard>
-
-        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
-            <div class="p-4">
-                <VueDataUi component="VueUiStackbar" :dataset="stackbarData" :config="stackbarConfig" />
             </div>
         </BaseCard>
     

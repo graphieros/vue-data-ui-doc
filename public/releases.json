@@ -6,17 +6,17 @@
       {
         "component": "VueUiCandlestick",
         "description": "Add zoom minimap, add ohlc mode, improved tooltip content",
-        "link": "/docs/#vue-ui-candlestick"
+        "link": "/docs#vue-ui-candlestick"
       },
       {
         "component": "VueUiStackbar",
         "description": "Add zoom minimap",
-        "link": "/docs/#vue-ui-stackbar"
+        "link": "/docs#vue-ui-stackbar"
       },
       {
         "component": "VueUiXyCanvas",
         "description": "Add zoom minimap",
-        "link": "/docs/#vue-ui-xy-canvas"
+        "link": "/docs#vue-ui-xy-canvas"
       }
     ]
   },
@@ -32,7 +32,7 @@
       {
         "component": "VueUiHeatmap",
         "description": "Fix time label overflow edge case when rotated",
-        "link": "/docs/#vue-ui-heatmap"
+        "link": "/docs#vue-ui-heatmap"
       }
     ]
   },
@@ -48,7 +48,7 @@
       {
         "component": "VueUiHeatmap",
         "description": "Fix time label overflow edge case when rotated",
-        "link": "/docs/#vue-ui-heatmap"
+        "link": "/docs#vue-ui-heatmap"
       }
     ]
   },
@@ -70,7 +70,7 @@
       {
         "component": "VueUiAccordion",
         "description": "Disable pointer events on content when closed.",
-        "link": "/docs/#vue-ui-accordion"
+        "link": "/docs#vue-ui-accordion"
       }
     ]
   },
@@ -81,17 +81,17 @@
       {
         "component": "VueUiTable",
         "description": "Add config to customize header action buttons",
-        "link": "/docs/#vue-ui-table"
+        "link": "/docs#vue-ui-table"
       },
       {
         "component": "VueUiXyCanvas",
         "description": "Move timeLabels config to x instead of y (backwards compatible)",
-        "link": "/docs/#vue-ui-xy-canvas"
+        "link": "/docs#vue-ui-xy-canvas"
       },
       {
         "component": "VueUiXy",
         "description": "Allow incomplete configurations for highlightArea",
-        "link": "/docs/#vue-ui-xy"
+        "link": "/docs#vue-ui-xy"
       }
     ]
   },
@@ -102,7 +102,7 @@
       {
         "component": "VueUiTable",
         "description": "Add optional title",
-        "link": "/docs/#vue-ui-table"
+        "link": "/docs#vue-ui-table"
       }
     ]
   },
@@ -113,7 +113,7 @@
       {
         "component": "VueUiAnnotator",
         "description": "Improve features and layout",
-        "link": "/docs/#vue-ui-annotator"
+        "link": "/docs#vue-ui-annotator"
       }
     ]
   },
@@ -124,17 +124,17 @@
       {
         "component": "VueUiWheel",
         "description": "Improve 3d options",
-        "link": "/docs/#vue-ui-wheel"
+        "link": "/docs#vue-ui-wheel"
       },
       {
         "component": "VueUiTable",
         "description": "Improve chart options (zoom, time labels)",
-        "link": "/docs/#vue-ui-table"
+        "link": "/docs#vue-ui-table"
       },
       {
         "component": "VueUiXy",
         "description": "Improve visibility of trend lines and labels",
-        "link": "/docs/#vue-ui-xy"
+        "link": "/docs#vue-ui-xy"
       }
     ]
   },
@@ -145,12 +145,12 @@
       {
         "component": "VueUiWheel",
         "description": "Add 3d mode",
-        "link": "/docs/#vue-ui-wheel"
+        "link": "/docs#vue-ui-wheel"
       },
       {
         "component": "VueUiQuickChart",
         "description": "Fix possible dasharray too short when animation is enabled and line is long",
-        "link": "/docs/#vue-ui-quick-chart"
+        "link": "/docs#vue-ui-quick-chart"
       }
     ]
   },
@@ -1108,12 +1108,12 @@
       {
         "component": "VueUiCandlestick",
         "description": "Add optional scale min and max for yAxis",
-        "link": "/docs/#vue-ui-candlestick"
+        "link": "/docs#vue-ui-candlestick"
       },
       {
         "component": "VueUiCandlestick",
         "description": "Add optional datetimeFormatter for time series",
-        "link": "/docs/#vue-ui-candlestick"
+        "link": "/docs#vue-ui-candlestick"
       }
     ]
   },
@@ -1124,7 +1124,7 @@
       {
         "component": "VueUiStackbar",
         "description": "Add formatter for y axis labels",
-        "link": "/docs/#vue-ui-stackbar"
+        "link": "/docs#vue-ui-stackbar"
       }
     ]
   },
@@ -1135,12 +1135,12 @@
       {
         "component": "VueUiXy",
         "description": "Fix resizing issues in responsive mode",
-        "link": "/docs/#vue-ui-xy"
+        "link": "/docs#vue-ui-xy"
       },
       {
         "component": "VueUiXy",
         "description": "Fix caption area labels stacking order issues",
-        "link": "/docs/#vue-ui-xy"
+        "link": "/docs#vue-ui-xy"
       },
       {
         "component": "All charts with fullscreen feature",
@@ -1156,12 +1156,12 @@
       {
         "component": "VueUiDonut",
         "description": "Add config to set color of empty arc",
-        "link": "/docs/#vue-ui-donut"
+        "link": "/docs#vue-ui-donut"
       },
       {
         "component": "VueUiNestedDonuts",
         "description": "Add config to set color of empty arc",
-        "link": "/docs/#vue-ui-nested-donuts"
+        "link": "/docs#vue-ui-nested-donuts"
       }
     ]
   },
@@ -1172,7 +1172,7 @@
       {
         "component": "VueUiNestedDonuts",
         "description": "Improve graceful layout management of empty data",
-        "link": "/docs/#vue-ui-nested-donuts"
+        "link": "/docs#vue-ui-nested-donuts"
       }
     ]
   },
@@ -2989,7 +2989,7 @@
       {
         "component": "VueUiWheel",
         "description": "Add optional config attribute to set the ticks size",
-        "link": "/docs/#vue-ui-wheel"
+        "link": "/docs#vue-ui-wheel"
       }
     ]
   },
@@ -3004,7 +3004,7 @@
       {
         "component": "VueUiXy",
         "description": "Add optional dataset attributes (prefix, suffix) to be used with useIndividualScale set to true",
-        "link": "/docs/#vue-ui-xy"
+        "link": "/docs#vue-ui-xy"
       }
     ]
   },
@@ -3015,22 +3015,22 @@
       {
         "component": "VueUiQuickChart",
         "description": "Fix marker links too short in donut mode",
-        "link": "/docs/#vue-ui-quick-chart"
+        "link": "/docs#vue-ui-quick-chart"
       },
       {
         "component": "VueUiNestedDonuts",
         "description": "Improve gradient layout",
-        "link": "/docs/#vue-ui-nested-donuts"
+        "link": "/docs#vue-ui-nested-donuts"
       },
       {
         "component": "VueUiDonut",
         "description": "Force minimum donut thickness",
-        "link": "/docs/#vue-ui-donut"
+        "link": "/docs#vue-ui-donut"
       },
       {
         "component": "VueUiDonutEvolution",
         "description": "Fix maker links too short in hover mode",
-        "link": "/docs/#vue-ui-donut-evolution"
+        "link": "/docs#vue-ui-donut-evolution"
       }
     ]
   },
@@ -3041,12 +3041,12 @@
       {
         "component": "VueUiDonut",
         "description": "Fix bleeding gradient on transparent background",
-        "link": "/docs/#vue-ui-donut"
+        "link": "/docs#vue-ui-donut"
       },
       {
         "component": "VueUiGauge",
         "description": "Fix bleeding gradient on transparent background",
-        "link": "/docs/#vue-ui-gauge"
+        "link": "/docs#vue-ui-gauge"
       }
     ]
   },
@@ -3067,7 +3067,7 @@
       {
         "component": "VueUiCarouselTable",
         "description": "Fix tr offset when resizing in animated mode under the mobile breakpoint",
-        "link": "/docs/#vue-ui-carousel-table"
+        "link": "/docs#vue-ui-carousel-table"
       }
     ]
   },
@@ -3088,7 +3088,7 @@
       {
         "component": "VueUiVerticalBar",
         "description": "Fix parent data labels showing the wrong sign when total is negative",
-        "link": "/docs/#vue-ui-vertical-bar"
+        "link": "/docs#vue-ui-vertical-bar"
       }
     ]
   },
@@ -3099,7 +3099,7 @@
       {
         "component": "VueUiXy",
         "description": "Fix a few regressions",
-        "link": "/docs/#vue-ui-xy"
+        "link": "/docs#vue-ui-xy"
       }
     ]
   },
@@ -3120,12 +3120,12 @@
       {
         "component": "VueUiWheel",
         "description": "Fix reactivity issues",
-        "link": "/docs/#vue-ui-wheel"
+        "link": "/docs#vue-ui-wheel"
       },
       {
         "component": "VueUiTiremarks",
         "description": "Fix reactivity issues",
-        "link": "/docs/#vue-ui-tiremarks"
+        "link": "/docs#vue-ui-tiremarks"
       }
     ]
   },
@@ -3136,7 +3136,7 @@
       {
         "component": "VueUiOnion",
         "description": "Fix incorrect path calculation",
-        "link": "/docs/#vue-ui-onion"
+        "link": "/docs#vue-ui-onion"
       }
     ]
   },
