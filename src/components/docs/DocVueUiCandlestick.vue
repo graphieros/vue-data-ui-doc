@@ -34,49 +34,51 @@ onMounted(() => store.docSnap = false);
 const { isMobile } = useMobile()
 
 watch(() => store.isDarkMode, (val) => {
-    nextTick(() => {
-        key.value += 1;
-    })
+  nextTick(() => {
+    key.value += 1;
+  })
 });
 
 const isDarkMode = computed(() => {
-    return store.isDarkMode;
+  return store.isDarkMode;
 });
 
 function generateRandomCandlestickData({
-    count = 12,
-    startDate = Date.UTC(2024, 0, 1), // starting date (Jan 1, 2024)
-    interval = 30 * 24 * 60 * 60 * 1000, // 1 month in ms
-    startPrice = 100,
-    volatility = 0.2 // 20% volatility
-    } = {}) {
-    const data = [];
-    let lastClose = startPrice;
+  count = 12,
+  startDate = Date.UTC(2024, 0, 1), // starting date (Jan 1, 2024)
+  interval = 30 * 24 * 60 * 60 * 1000, // 1 month in ms
+  startPrice = 100,
+  volatility = 0.2 // 20% volatility
+} = {}) {
+  const data = [];
+  let lastClose = startPrice;
 
-    for (let i = 0; i < count; i++) {
-        const timestamp = startDate + i * interval;
+  for (let i = 0; i < count; i++) {
+    const timestamp = startDate + i * interval;
 
-        // simulate price movement
-        const changePercent = (Math.random() - 0.5) * volatility;
-        const open = lastClose;
-        const close = open * (1 + changePercent);
-        const high = Math.max(open, close) * (1 + Math.random() * volatility);
-        const low = Math.min(open, close) * (1 - Math.random() * volatility);
-        const volume = Math.round(1000 + Math.random() * 9000);
+    // simulate price movement
+    const changePercent = (Math.random() - 0.5) * volatility;
+    const open = lastClose;
+    const close = open * (1 + changePercent);
+    const high = Math.max(open, close) * (1 + Math.random() * volatility);
+    const low = Math.min(open, close) * (1 - Math.random() * volatility);
+    const volume = Math.round(1000 + Math.random() * 9000);
 
-        data.push([
-            timestamp,
-            Math.round(open),
-            Math.round(high),
-            Math.round(low),
-            Math.round(close),
-            volume
-        ]);
+    data.push([
+      timestamp,
+      Math.round(open),
+      Math.round(high),
+      Math.round(low),
+      Math.round(close),
+      volume
+    ]);
 
-        lastClose = close;
-    }
-    return data;
+    lastClose = close;
+  }
+  return data;
 }
+
+console.log(generateRandomCandlestickData({ count: 6 }))
 
 const dataset = ref(generateRandomCandlestickData({ count: 100 }));
 
@@ -195,34 +197,34 @@ const config = ref({
       }
     },
     zoom: {
+      show: true,
+      color: "#CCCCCC",
+      highlightColor: "#4A4A4A",
+      fontSize: 14,
+      useResetSlot: false,
+      startIndex: null,
+      endIndex: null,
+      focusOnDrag: false,
+      focusRangeRatio: 0.2,
+      minimap: {
         show: true,
-        color: "#CCCCCC",
-        highlightColor: "#4A4A4A",
-        fontSize: 14,
-        useResetSlot: false,
-        startIndex: null,
-        endIndex: null,
-        focusOnDrag: false,
-        focusRangeRatio: 0.2,
-        minimap: {
-          show: true,
-          selectedColor: '#1f77b4',
-          selectedColorOpacity: 0.2,
-          indicatorColor: '#CCCCCC',
-          verticalHandles: false,
-          compact: true,
-          frameColor: '#8A8A8A'
-        },
-        preview: {
-          enable: true,
-          fill: '#CCCCCC20',
-          stroke: '#6A6A6A',
-          strokeWidth: 1,
-          strokeDasharray: 3,
-        },
-        useDefaultFormat: false,
-        timeFormat: 'yyyy-MM-dd',
-        customFormat: null
+        selectedColor: '#1f77b4',
+        selectedColorOpacity: 0.2,
+        indicatorColor: '#CCCCCC',
+        verticalHandles: false,
+        compact: true,
+        frameColor: '#8A8A8A'
+      },
+      preview: {
+        enable: true,
+        fill: '#CCCCCC20',
+        stroke: '#6A6A6A',
+        strokeWidth: 1,
+        strokeDasharray: 3,
+      },
+      useDefaultFormat: false,
+      timeFormat: 'yyyy-MM-dd',
+      customFormat: null
     },
     title: {
       text: "Title",
@@ -249,7 +251,7 @@ const config = ref({
       suffix: "",
       customFormat: null,
       borderRadius: 4,
-      borderColor:"#e1e5e8",
+      borderColor: "#e1e5e8",
       borderWidth: 1,
       backgroundOpacity: 30,
       position: 'center',
@@ -285,15 +287,15 @@ const config = ref({
       annotator: true
     },
     buttonTitles: {
-        open: "Open options",
-        close: "Close options",
-        tooltip: "Toggle tooltip",
-        pdf: "Download PDF",
-        csv: "Download CSV",
-        img: "Download PNG",
-        table: "Toggle table",
-        fullscreen: "Toggle fullscreen",
-        annotator: "Toggle annotator"
+      open: "Open options",
+      close: "Close options",
+      tooltip: "Toggle tooltip",
+      pdf: "Download PDF",
+      csv: "Download CSV",
+      img: "Download PNG",
+      table: "Toggle table",
+      fullscreen: "Toggle fullscreen",
+      annotator: "Toggle annotator"
     },
     print: {
       scale: 2,
@@ -375,18 +377,18 @@ const darkModeConfig = ref({
               angle: -30
             },
             datetimeFormatter: {
-                enable: true,
-                locale: 'en',
-                useUTC: false,
-                januaryAsYear: false,
-                options: {
-                    year: 'yyyy',
-                    month: `MMM 'yy`,
-                    day: 'dd MMM',
-                    hour: 'HH:mm',
-                    minute: 'HH:mm:ss',
-                    second: 'HH:mm:ss'
-                }
+              enable: true,
+              locale: 'en',
+              useUTC: false,
+              januaryAsYear: false,
+              options: {
+                year: 'yyyy',
+                month: `MMM 'yy`,
+                day: 'dd MMM',
+                hour: 'HH:mm',
+                minute: 'HH:mm:ss',
+                second: 'HH:mm:ss'
+              }
             },
             showOnlyFirstAndLast: false,
             showOnlyAtModulo: true,
@@ -436,34 +438,34 @@ const darkModeConfig = ref({
       }
     },
     zoom: {
+      show: true,
+      color: "#CCCCCC",
+      highlightColor: "#4A4A4A",
+      fontSize: 14,
+      useResetSlot: false,
+      startIndex: null,
+      endIndex: null,
+      focusOnDrag: false,
+      focusRangeRatio: 0.2,
+      minimap: {
         show: true,
-        color: "#CCCCCC",
-        highlightColor: "#4A4A4A",
-        fontSize: 14,
-        useResetSlot: false,
-        startIndex: null,
-        endIndex: null,
-        focusOnDrag: false,
-        focusRangeRatio: 0.2,
-        minimap: {
-          show: true,
-          selectedColor: '#1f77b4',
-          selectedColorOpacity: 0.2,
-          indicatorColor: '#CCCCCC',
-          verticalHandles: false,
-          compact: true,
-          frameColor: '#6A6A6A'
-        },
-        preview: {
-          enable: true,
-          fill: '#CCCCCC20',
-          stroke: '#6A6A6A',
-          strokeWidth: 1,
-          strokeDasharray: 3,
-        },
-        useDefaultFormat: false,
-        timeFormat: 'yyyy-MM-dd',
-        customFormat: null
+        selectedColor: '#1f77b4',
+        selectedColorOpacity: 0.2,
+        indicatorColor: '#CCCCCC',
+        verticalHandles: false,
+        compact: true,
+        frameColor: '#6A6A6A'
+      },
+      preview: {
+        enable: true,
+        fill: '#CCCCCC20',
+        stroke: '#6A6A6A',
+        strokeWidth: 1,
+        strokeDasharray: 3,
+      },
+      useDefaultFormat: false,
+      timeFormat: 'yyyy-MM-dd',
+      customFormat: null
     },
     title: {
       text: "Title",
@@ -490,7 +492,7 @@ const darkModeConfig = ref({
       suffix: "",
       customFormat: null,
       borderRadius: 4,
-      borderColor:"#3A3A3A",
+      borderColor: "#3A3A3A",
       borderWidth: 1,
       backgroundOpacity: 30,
       position: 'center',
@@ -526,15 +528,15 @@ const darkModeConfig = ref({
       annotator: true
     },
     buttonTitles: {
-        open: "Open options",
-        close: "Close options",
-        tooltip: "Toggle tooltip",
-        pdf: "Download PDF",
-        csv: "Download CSV",
-        img: "Download PNG",
-        table: "Toggle table",
-        fullscreen: "Toggle fullscreen",
-        annotator: "Toggle annotator"
+      open: "Open options",
+      close: "Close options",
+      tooltip: "Toggle tooltip",
+      pdf: "Download PDF",
+      csv: "Download CSV",
+      img: "Download PNG",
+      table: "Toggle table",
+      fullscreen: "Toggle fullscreen",
+      annotator: "Toggle annotator"
     },
     print: {
       scale: 2,
@@ -565,151 +567,127 @@ const darkModeConfig = ref({
 const mutableConfig = ref(JSON.parse(JSON.stringify(config.value)));
 const mutableConfigDarkMode = ref(JSON.parse(JSON.stringify(darkModeConfig.value)));
 function resetDefault() {
-    mutableConfig.value = JSON.parse(JSON.stringify(config.value));
-    mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
+  mutableConfig.value = JSON.parse(JSON.stringify(config.value));
+  mutableConfigDarkMode.value = JSON.parse(JSON.stringify(darkModeConfig.value));
 }
 function forceChartUpdate() {
-    key.value += 1;
+  key.value += 1;
 }
 
 function copyToClipboard(conf) {
-    let selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = JSON.stringify(conf);
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
-    store.copy();
+  let selBox = document.createElement('textarea');
+  selBox.style.position = 'fixed';
+  selBox.style.left = '0';
+  selBox.style.top = '0';
+  selBox.style.opacity = '0';
+  selBox.value = JSON.stringify(conf);
+  document.body.appendChild(selBox);
+  selBox.focus();
+  selBox.select();
+  document.execCommand('copy');
+  document.body.removeChild(selBox);
+  store.copy();
 }
 
 const isFixed = ref(false);
 
 function fixChart() {
-    isFixed.value = !isFixed.value;
-    store.docSnap = !store.docSnap;
-} 
+  isFixed.value = !isFixed.value;
+  store.docSnap = !store.docSnap;
+}
 
 const { configCode, showAllConfig } = useConfigCode()
 
 const dsTypeCode = computed(() => {
-    return `Array<Array<string | number>>`
+  return `import { type OHLC } from "vue-data-ui";
+// Array<OHLC>`
 })
 
-const dsTypeCodeExample = ref(`const dataset = [
-  // period | open | high | low | last | volume
-  ["2024-01-01", 56, 120, 40, 110, 1250],
-  ["2024-02-01", 110, 150, 80, 98, 2200],
-  ["2024-03-01", 98, 155, 75, 103, 3500],
-  ["2024-04-01", 103, 115, 102, 102, 999],
-  ["2024-05-01", 102, 135, 72, 85, 3216],
-  ["2024-06-01", 85, 162, 65, 107, 4315],
-  ["2024-07-01", 107, 134, 99, 112, 2561],
-  ["2024-08-01", 112, 125, 112, 120, 669],
-  ["2024-09-01", 120, 113, 76, 89, 2591],
-  ["2024-10-01", 89, 150, 85, 125, 2881],
-  ["2024-11-01", 125, 130, 45, 92, 1972],
-  ["2024-12-01", 92, 120, 35, 75, 3599],
-  ["2024-13-01", 75, 80, 26, 45, 5881],
-  ["2024-14-01", 45, 60, 20, 30, 2881],
-  ["2024-15-01", 30, 120, 10, 105, 2881]
+const dsTypeCodeExample = ref(`const dataset: Array<OHLC> = [
+  // period | open | high | low | close | volume
+  [1704067200000, 100, 107, 80, 93, 6164],
+  [1706659200000, 93, 113, 88, 95, 8799],
+  [1709251200000, 95, 116, 94, 98, 7490],
+  [1711843200000, 98, 117, 73, 89, 4024],
+  [1714435200000, 89, 98, 78, 94, 7355],
+  [1717027200000, 94, 120, 85, 102, 2472],
 ]`)
 
 const box = ref(null);
 
 function setActiveTab(tab) {
-    if (!box.value) return;
-    box.value.setActiveTab(tab);
+  if (!box.value) return;
+  box.value.setActiveTab(tab);
 }
 
 const router = useRouter();
 function goToPage(route) {
-    router.push(route)
+  router.push(route)
 }
 
 </script>
 
 <template>
-    <div>
-      <BaseDocTitle name="VueUiCandlestick" />
+  <div>
+    <BaseDocTitle name="VueUiCandlestick" />
 
-        <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
-            {{ translations.docs.tooltips.candlestick[store.lang] }}
-        </p>
+    <p class="mx-auto max-w-[400px] text-md text-black dark:text-gray-500 mb-2 text-center">
+      {{ translations.docs.tooltips.candlestick[store.lang] }}
+    </p>
 
-        <BaseDocHeaderActions
-          targetLink="vue-ui-candlestick"
-          :configSource="mainConfig.vue_ui_candlestick"
-        />
+    <BaseDocHeaderActions targetLink="vue-ui-candlestick" :configSource="mainConfig.vue_ui_candlestick" />
 
-        <div :class="`transition-all mx-auto max-w-[600px]`">
-          <DocSnapper
-            :isFixed="isFixed"
-            :disabled="!isFixed || isMobile"
-            @fixChart="fixChart"
-            @resetDefault="resetDefault"
-            @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)"
-          >
-            <BaseCard>
-              <VueUiCandlestick :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig" :key="key"/>
-            </BaseCard>
-          </DocSnapper>
+    <div :class="`transition-all mx-auto max-w-[600px]`">
+      <DocSnapper :isFixed="isFixed" :disabled="!isFixed || isMobile" @fixChart="fixChart" @resetDefault="resetDefault"
+        @copyToClipboard="copyToClipboard(isDarkMode ? darkModeConfig : config)">
+        <BaseCard>
+          <VueUiCandlestick :dataset="dataset" :config="isDarkMode ? mutableConfigDarkMode : mutableConfig"
+            :key="key" />
+        </BaseCard>
+      </DocSnapper>
+    </div>
+
+    <Rater itemId="vue_ui_candlestick" />
+
+    <BaseMigrationInfo autoRotate cssAnimation debug padding />
+
+    <Box ref="box" showEmits showCallbacks showSlots showTooltip showThemes showResponsive schema="vue_ui_candlestick"
+      signInfo="positiveOnly">
+      <template #tab0>
+        {{ translations.docs.datastructure[store.lang] }}
+        <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
+          <CodeParser language="typescript" @copy="store.copy()" :content="dsTypeCode" class="my-6" />
         </div>
 
-        <Rater itemId="vue_ui_candlestick" />
+        {{ translations.docs.example[store.lang] }}:<br>
+        <span class="text-app-orange">
+          {{ translations.docs.comments.candlestick.order[store.lang] }}<br>
+          period | open | high | low | close | volume
+        </span>
+        <div class="w-full overflow-x-auto">
 
-        <BaseMigrationInfo
-            autoRotate
-            cssAnimation
-            debug 
-            padding
-        />
+          <CodeParser language="typescript" @copy="store.copy()" :content="dsTypeCodeExample" class="my-6" />
+        </div>
+      </template>
+      <template #tab1>
+        <div class="flex gap-2">
+          <button @click="resetDefault"
+            class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{
+              translations.docs.reset[store.lang] }}</button>
+          <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)"
+            class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all">
+            <CopyIcon /> {{ translations.docs.copyThisConfig[store.lang] }}
+          </button>
+        </div>
+        <div class="mt-4">
+          TS type: <code class="text-app-blue">VueUiCandlestickConfig</code>
+        </div>
 
-        <Box ref="box" showEmits showCallbacks showSlots showTooltip showThemes showResponsive schema="vue_ui_candlestick" signInfo="positiveOnly">
-            <template #tab0>
-              {{ translations.docs.datastructure[store.lang] }}
-                <div class="w-full overflow-x-auto border-b mb-6 border-gray-700">
-          <CodeParser
-            language="typescript"
-            @copy="store.copy()"
-            :content="dsTypeCode"
-            class="my-6"
-          />                
-                </div>
+        <div class="my-4">
+          Toggle tree view: <input type="checkbox" v-model="showAllConfig">
+        </div>
 
-                {{ translations.docs.example[store.lang] }}:<br>
-                <span class="text-app-orange">
-                {{ translations.docs.comments.candlestick.order[store.lang] }}<br>
-                period | open | high | low | last | volume
-                </span>
-                <div class="w-full overflow-x-auto">
-
-          <CodeParser
-            language="typescript"
-            @copy="store.copy()"
-            :content="dsTypeCodeExample"
-            class="my-6"
-          />                   
-                </div>
-            </template>
-            <template #tab1>
-              <div class="flex gap-2">
-                    <button @click="resetDefault" class="text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-orange mr-4 transition-all">{{ translations.docs.reset[store.lang] }}</button>
-                    <button @click="copyToClipboard(isDarkMode ? mutableConfigDarkMode : mutableConfig)" class="flex gap-1 text-black dark:text-gray-400 rounded-md border border-gray-400 py-2 px-4 hover:bg-white hover:shadow-xl dark:hover:bg-[rgba(255,255,255,0.05)] hover:border-app-blue transition-all"><CopyIcon/> {{  translations.docs.copyThisConfig[store.lang]  }}</button>
-                </div>
-              <div class="mt-4">
-                TS type: <code class="text-app-blue">VueUiCandlestickConfig</code>
-              </div>
-
-<div class="my-4">
-    Toggle tree view: <input type="checkbox" v-model="showAllConfig">
-</div>
-
-<code ref="configCode">
+        <code ref="configCode">
   <BaseDetails attr="const config: VueUiCandlestickConfig" equal>
     <BaseAttr name="type" attr="type" defaultVal="'candlestick'" type="select" :options="['candlestick', 'ohlc']" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     <BaseAttr inactive name="responsive" defaultVal="false" :comment="translations.responsive[store.lang]"/>
@@ -961,38 +939,31 @@ function goToPage(route) {
   </BaseDetails>
 </code>
 
-            </template>
-            <template #tab2>
-              <ExposedMethods
-                component="VueUiCandlestick"
-                getImage
-                :names="[
-                  'generatePdf',
-                  'generateCsv',
-                  'generateImage',
-                  'generateSvg',
-                  'toggleTable'
-                ]"
-              />
-            </template>
+      </template>
+      <template #tab2>
+        <ExposedMethods component="VueUiCandlestick" getImage :names="[
+          'generatePdf',
+          'generateCsv',
+          'generateImage',
+          'generateSvg',
+          'toggleTable'
+        ]" />
+      </template>
 
-            <template #tab3>
-              <BaseSlotDocumenter
-                    componentName="VueUiCandlestick"
-                    :types="[
-                        'svg',
-                        'legend',
-                        'tooltip-before',
-                        'tooltip-after',
-                        'reset-action',
-                        'watermark',
-                        'source',
-                        'chart-background'
-                    ]" 
-                />
-            </template>
-            <template #tab4>
-<pre>
+      <template #tab3>
+        <BaseSlotDocumenter componentName="VueUiCandlestick" :types="[
+          'svg',
+          'legend',
+          'tooltip-before',
+          'tooltip-after',
+          'reset-action',
+          'watermark',
+          'source',
+          'chart-background'
+        ]" />
+      </template>
+      <template #tab4>
+        <pre>
 <code>
 <span class="text-gray-400">config.style.tooltip.customFormat</span>
 
@@ -1002,56 +973,49 @@ customFormat: ({ <span class="text-app-blue">seriesIndex, datapoint, series, con
     return `&lt;div&gt;${content}&lt;/div&gt;`
 }
 </code>
-</pre>            
-Using custom mode, the tooltip will be headless.
-Target the following css class to apply custom styles:
-<pre>
+</pre>
+        Using custom mode, the tooltip will be headless.
+        Target the following css class to apply custom styles:
+        <pre>
 <code>
 .vue-data-ui-custom-tooltip
 </code>
 </pre>
-            </template>
+      </template>
 
-            <template #tab6>
-              <ThemesVueUiCandlestick />
-            </template>
+      <template #tab6>
+        <ThemesVueUiCandlestick />
+      </template>
 
-            <template #tab7>
-              <ResponsiveUnit>
-                <template #chart>
-                  <VueUiCandlestick 
-                    :dataset="dataset" 
-                    :config="
-                      isDarkMode 
-                        ? {
-                          ...mutableConfigDarkMode,
-                          responsive: true
-                        } 
-                        : {
-                          ...mutableConfig,
-                          responsive: true
-                        }
-                      " 
-                    :key="key"
-                  />
-                </template>
-              </ResponsiveUnit>
-            </template>
-
-            <template #tab11>
-              <UserOptionCallbacks
-                  :items="[
-                      'annotator',
-                      'csv',
-                      'fullscreen',
-                      'img',
-                      'pdf',
-                      'table',
-                      'tooltip',
-                      'svg'
-                  ]"
-              />
+      <template #tab7>
+        <ResponsiveUnit>
+          <template #chart>
+            <VueUiCandlestick :dataset="dataset" :config="isDarkMode
+              ? {
+                ...mutableConfigDarkMode,
+                responsive: true
+              }
+              : {
+                ...mutableConfig,
+                responsive: true
+              }
+              " :key="key" />
           </template>
-        </Box>
-     </div>        
+        </ResponsiveUnit>
+      </template>
+
+      <template #tab11>
+        <UserOptionCallbacks :items="[
+          'annotator',
+          'csv',
+          'fullscreen',
+          'img',
+          'pdf',
+          'table',
+          'tooltip',
+          'svg'
+        ]" />
+      </template>
+    </Box>
+  </div>
 </template>

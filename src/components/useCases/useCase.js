@@ -5,15 +5,15 @@ export function useCase() {
     const store = useMainStore();
     const isDarkMode = computed(() => store.isDarkMode);
     const bgColor = computed(() => {
-        return isDarkMode.value ? '#2A2A2A' : '#f9fafb'
+        return isDarkMode.value ? "#2A2A2A" : "#f9fafb";
     });
     const textColor = computed(() => {
-        return isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+        return isDarkMode.value ? "#CCCCCC" : "#1A1A1A";
     });
 
     const bgGreyColor = computed(() => {
-        return isDarkMode.value ? '#3A3A3A' : '#CCCCCC'
-    })
+        return isDarkMode.value ? "#3A3A3A" : "#CCCCCC";
+    });
 
     function makeScatterBigData() {
         const arr = [];
@@ -29,9 +29,9 @@ export function useCase() {
 
     const SCATTER_LARGE_DATASET = ref([
         {
-            name: 'Big data',
+            name: "Big data",
             values: makeScatterBigData(),
-        }
+        },
     ]);
 
     const SCATTER_LARGE_CONFIG = ref({
@@ -44,80 +44,80 @@ export function useCase() {
                 },
                 plots: {
                     radius: 0.5,
-                }
+                },
             },
-            tooltip: { show: false }
-        }
-    })
+            tooltip: { show: false },
+        },
+    });
 
     const SPARKLINE_SLOT_DATASET = ref([
         {
             period: "period 1",
-            value: 0
+            value: 0,
         },
         {
             period: "period 2",
-            value: 1
+            value: 1,
         },
         {
             period: "period 3",
-            value: 0
+            value: 0,
         },
         {
             period: "period 4",
-            value: 2
+            value: 2,
         },
         {
             period: "period 5",
-            value: 1
+            value: 1,
         },
         {
             period: "period 6",
-            value: 3
+            value: 3,
         },
         {
             period: "period 7",
-            value: 2
+            value: 2,
         },
         {
             period: "period 8",
-            value: 5
+            value: 5,
         },
         {
             period: "period 9",
-            value: 3
+            value: 3,
         },
         {
             period: "period 10",
-            value: 8
+            value: 8,
         },
         {
             period: "period 11",
-            value: 5
+            value: 5,
         },
         {
             period: "period 12",
-            value: 13
+            value: 13,
         },
         {
             period: "period 13",
-            value: 8
+            value: 8,
         },
         {
             period: "period 14",
-            value: 21
+            value: 21,
         },
         {
             period: "period 15",
-            value: 13
+            value: 13,
         },
         {
             period: "period 16",
-            value: 34
+            value: 34,
         },
         {
             period: "period 17",
-            value: 21
+            value: 21,
         },
     ]);
 
@@ -140,29 +140,29 @@ export function useCase() {
                     show: false,
                 },
                 zeroLine: {
-                    color: isDarkMode.value ? '#5A5A5A' : '#CCCCCC'
-                }
-            }
-        }
-    })
+                    color: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
+                },
+            },
+        };
+    });
 
     const DONUT_PIE_DATASET = ref([
         {
-            name: 'Serie 1',
-            values: [100]
+            name: "Serie 1",
+            values: [100],
         },
         {
-            name: 'Serie 2',
-            values: [45]
+            name: "Serie 2",
+            values: [45],
         },
         {
-            name: 'Serie 3',
-            values: [36]
+            name: "Serie 3",
+            values: [36],
         },
         {
-            name: 'Serie 4',
-            values: [12]
-        }
+            name: "Serie 4",
+            values: [12],
+        },
     ]);
 
     const DONUT_PIE_CONFIG = computed(() => {
@@ -183,30 +183,30 @@ export function useCase() {
                     layout: {
                         curvedMarkers: true,
                         donut: {
-                            strokeWidth: 180
+                            strokeWidth: 180,
                         },
                         labels: {
                             percentage: {
-                                color: textColor.value
+                                color: textColor.value,
                             },
                             name: {
-                                color: textColor.value
+                                color: textColor.value,
                             },
                             hollow: {
                                 show: false,
                                 total: {
-                                    show: false
+                                    show: false,
                                 },
                                 average: {
-                                    show: false
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    })
+                                    show: false,
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        };
+    });
 
     const XY_STACKED_DATASET_WITH_AUTOSCALE = ref([
         {
@@ -234,17 +234,20 @@ export function useCase() {
             smooth: false,
             useArea: true,
             dataLabels: false,
-            scaleSteps: 2
+            scaleSteps: 2,
         },
         {
             name: "S3",
-            series: [23.12, 23.12, 23.05, 23.07, 23.65, 23.69, 23.72, 23.21, 23.36, 23.41, 23.08],
+            series: [
+                23.12, 23.12, 23.05, 23.07, 23.65, 23.69, 23.72, 23.21, 23.36, 23.41,
+                23.08,
+            ],
             type: "line",
             smooth: false,
             useArea: true,
             scaleSteps: 5,
             autoScaling: true,
-            stackRatio: 0.7
+            stackRatio: 0.7,
         },
     ]);
 
@@ -257,7 +260,7 @@ export function useCase() {
             useArea: true,
             dataLabels: false,
             scaleSteps: 2,
-            scaleLabel: 'Binary'
+            scaleLabel: "Binary",
         },
         {
             name: "Serie 1",
@@ -266,7 +269,7 @@ export function useCase() {
             smooth: false,
             useArea: true,
             scaleSteps: 3,
-            scaleLabel: 'Newtons'
+            scaleLabel: "Newtons",
         },
         {
             name: "Serie 2",
@@ -275,7 +278,7 @@ export function useCase() {
             smooth: false,
             useArea: true,
             scaleSteps: 3,
-            scaleLabel: 'Pounds'
+            scaleLabel: "Pounds",
         },
         {
             name: "Serie 3",
@@ -284,7 +287,7 @@ export function useCase() {
             smooth: false,
             useArea: true,
             scaleSteps: 3,
-            scaleLabel: 'Grams'
+            scaleLabel: "Grams",
         },
     ]);
 
@@ -294,50 +297,62 @@ export function useCase() {
                 labels: {
                     show: true,
                     color: textColor.value,
-                    rounding: 1
-                }
+                    rounding: 1,
+                },
             },
             chart: {
                 backgroundColor: bgColor.value,
                 color: textColor.value,
                 grid: {
                     showHorizontalLines: true,
-                    stroke: isDarkMode.value ? '#6A6A6A' : '#e1e5e8',
+                    stroke: isDarkMode.value ? "#6A6A6A" : "#e1e5e8",
                     labels: {
                         color: textColor.value,
                         axis: {
-                            xLabel: 'Time',
-                            xLabelOffsetY: 12
+                            xLabel: "Time",
+                            xLabelOffsetY: 12,
                         },
                         xAxisLabels: {
                             color: textColor.value,
-                            values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10'],
+                            values: [
+                                "T0",
+                                "T1",
+                                "T2",
+                                "T3",
+                                "T4",
+                                "T5",
+                                "T6",
+                                "T7",
+                                "T8",
+                                "T9",
+                                "T10",
+                            ],
                             fontSize: 12,
-                            yOffset: 0
+                            yOffset: 0,
                         },
                         yAxis: {
                             useIndividualScale: true,
                             stacked: true,
-                            gap: 24
-                        }
-                    }
+                            gap: 24,
+                        },
+                    },
                 },
                 highlighter: {
-                    color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
-                    opacity: 5
+                    color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
+                    opacity: 5,
                 },
                 timeTag: {
                     show: true,
                 },
                 legend: {
-                    color: textColor.value
+                    color: textColor.value,
                 },
                 padding: {
-                    bottom: 48
+                    bottom: 48,
                 },
                 title: {
                     text: "Grams, Pounds, Newtons & Binary",
-                    color: textColor.value
+                    color: textColor.value,
                 },
                 tooltip: {
                     backgroundColor: bgColor.value,
@@ -346,32 +361,35 @@ export function useCase() {
                     backgroundOpacity: 30,
                 },
                 zoom: {
-                    minimap: { show: true }
-                }
+                    minimap: { show: true },
+                },
             },
             table: {
                 rounding: 1,
                 th: {
                     backgroundColor: bgColor.value,
-                    color: textColor.value
+                    color: textColor.value,
                 },
                 td: {
                     backgroundColor: bgColor.value,
-                    color: textColor.value
-                }
-            }
-        }
+                    color: textColor.value,
+                },
+            },
+        };
     });
 
     const XY_FIXED_SCALE_DATASET = ref([
         {
             name: "Serie 1",
-            series: [-0, -10, 10, -20, 20, -30, 30, -40, 40, -50, 50, -40, 40, -30, 30, -20, 20, -10, 10, 0],
+            series: [
+                -0, -10, 10, -20, 20, -30, 30, -40, 40, -50, 50, -40, 40, -30, 30, -20,
+                20, -10, 10, 0,
+            ],
             type: "line",
             smooth: true,
             useArea: false,
         },
-    ])
+    ]);
 
     const XY_FIXED_SCALE_CONFIG = computed(() => {
         return {
@@ -381,8 +399,8 @@ export function useCase() {
                 labels: {
                     show: true,
                     color: textColor.value,
-                    offsetY: -12
-                }
+                    offsetY: -12,
+                },
             },
             chart: {
                 backgroundColor: bgColor.value,
@@ -394,54 +412,72 @@ export function useCase() {
                     useLine: true,
                     color: textColor.value,
                     opacity: 0,
-                    lineDasharray: 0
+                    lineDasharray: 0,
                 },
                 grid: {
-                    stroke: isDarkMode.value ? '#5A5A5A' : '#CCCCCC',
+                    stroke: isDarkMode.value ? "#5A5A5A" : "#CCCCCC",
                     labels: {
                         color: textColor.value,
                         fontSize: 16,
                         yAxis: {
                             scaleMin: -100,
-                            scaleMax: 100
+                            scaleMax: 100,
                         },
                         xAxisLabels: {
                             show: false,
-                            values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12', 'T13', 'T14', 'T15', 'T16']
-                        }
-                    }
+                            values: [
+                                "T0",
+                                "T1",
+                                "T2",
+                                "T3",
+                                "T4",
+                                "T5",
+                                "T6",
+                                "T7",
+                                "T8",
+                                "T9",
+                                "T10",
+                                "T11",
+                                "T12",
+                                "T13",
+                                "T14",
+                                "T15",
+                                "T16",
+                            ],
+                        },
+                    },
                 },
                 title: {
                     text: "Position",
-                    color: textColor.value
+                    color: textColor.value,
                 },
                 timeTag: {
                     show: true,
                     backgroundColor: bgGreyColor.value,
                     color: textColor,
-                    fontSize: 16
+                    fontSize: 16,
                 },
                 tooltip: {
                     show: false,
                 },
                 legend: {
-                    color: textColor.value
+                    color: textColor.value,
                 },
                 padding: {
-                    bottom: 48
+                    bottom: 48,
                 },
                 zoom: {
                     minimap: {
                         show: true,
                         smooth: true,
                         lineColor: "#1F77B4",
-                        selectedColor: isDarkMode.value ? '#8A8A8A' : '#8A8A8A',
-                        indicatorColor: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
-                    }
-                }
-            }
-        }
-    })
+                        selectedColor: isDarkMode.value ? "#8A8A8A" : "#8A8A8A",
+                        indicatorColor: isDarkMode.value ? "#CCCCCC" : "#1A1A1A",
+                    },
+                },
+            },
+        };
+    });
 
     const XY_MULTIPLE_Y_AXES_DATASET = ref([
         {
@@ -451,7 +487,7 @@ export function useCase() {
             dataLabels: true,
             smooth: true,
             scaleSteps: 10,
-            scaleLabel: "Newtons"
+            scaleLabel: "Newtons",
         },
         {
             name: "Serie 2",
@@ -460,7 +496,7 @@ export function useCase() {
             dataLabels: true,
             smooth: true,
             scaleSteps: 10,
-            scaleLabel: "Pounds"
+            scaleLabel: "Pounds",
         },
         {
             name: "Serie 3",
@@ -469,7 +505,7 @@ export function useCase() {
             dataLabels: true,
             smooth: true,
             scaleSteps: 10,
-            scaleLabel: "Grams"
+            scaleLabel: "Grams",
         },
     ]);
 
@@ -479,8 +515,8 @@ export function useCase() {
                 labels: {
                     show: true,
                     color: textColor.value,
-                    rounding: 1
-                }
+                    rounding: 1,
+                },
             },
             chart: {
                 backgroundColor: bgColor.value,
@@ -489,58 +525,58 @@ export function useCase() {
                     labels: {
                         color: textColor.value,
                         axis: {
-                            xLabel: 'Time',
-                            xLabelOffsetY: 12
+                            xLabel: "Time",
+                            xLabelOffsetY: 12,
                         },
                         xAxisLabels: {
                             color: textColor.value,
-                            values: ['T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+                            values: ["T0", "T1", "T2", "T3", "T4", "T5", "T6", "T7"],
                             fontSize: 12,
-                            yOffset: -18
+                            yOffset: -18,
                         },
                         yAxis: {
                             useIndividualScale: true,
-                        }
-                    }
+                        },
+                    },
                 },
                 highlighter: {
-                    color: isDarkMode.value ? '#FFFFFF' : '#1A1A1A',
-                    opacity: 5
+                    color: isDarkMode.value ? "#FFFFFF" : "#1A1A1A",
+                    opacity: 5,
                 },
                 legend: {
-                    color: textColor.value
+                    color: textColor.value,
                 },
                 padding: {
-                    bottom: 48
+                    bottom: 48,
                 },
                 title: {
                     text: "Grams, Pounds & Newtons",
-                    color: textColor.value
+                    color: textColor.value,
                 },
                 tooltip: {
                     backgroundColor: bgColor.value,
                     color: textColor.value,
                     roundingValue: 1,
-                    backgroundOpacity: 30
+                    backgroundOpacity: 30,
                 },
                 zoom: {
                     minimap: {
-                        show: true
-                    }
-                }
+                        show: true,
+                    },
+                },
             },
             table: {
                 rounding: 1,
                 th: {
                     backgroundColor: bgColor.value,
-                    color: textColor.value
+                    color: textColor.value,
                 },
                 td: {
                     backgroundColor: bgColor.value,
-                    color: textColor.value
-                }
-            }
-        }
+                    color: textColor.value,
+                },
+            },
+        };
     });
 
     const XY_CANVAS_CONFIG = computed(() => {
@@ -551,74 +587,74 @@ export function useCase() {
                     backgroundColor: bgColor.value,
                     color: textColor.value,
                     selector: {
-                        color: textColor.value
+                        color: textColor.value,
                     },
                     tooltip: {
                         backgroundColor: bgColor.value,
-                        color: textColor.value
+                        color: textColor.value,
                     },
                     legend: {
                         backgroundColor: bgColor.value,
-                        color: textColor.value
+                        color: textColor.value,
                     },
                     tooltip: {
                         backgroundOpacity: 30,
                     },
                     zoom: {
                         preview: {
-                            enable: true
+                            enable: true,
                         },
                         minimap: {
-                            show: true
-                        }
+                            show: true,
+                        },
                     },
                     grid: {
                         y: {
                             axisLabels: {
                                 color: textColor.value,
-                                suffix: "%"
+                                suffix: "%",
                             },
                         },
                         x: {
                             horizontalLines: {
                                 show: true,
-                                opacity: isDarkMode.value ? 5 : 20
+                                opacity: isDarkMode.value ? 5 : 20,
                             },
                             timeLabels: {
-                                color: textColor.value
-                            }
-                        }
+                                color: textColor.value,
+                            },
+                        },
                     },
                     line: {
                         plots: {
-                            radiusRatio: 1
-                        }
+                            radiusRatio: 1,
+                        },
                     },
                     paddingProportions: {
-                        left: 0.08
-                    }
-                }
-            }
-        }
-    })
+                        left: 0.08,
+                    },
+                },
+            },
+        };
+    });
 
     const arr = [];
     let incr = 20000;
 
     for (let i = 0; i < 20000; i += 1) {
-        incr -= 1
-        arr.push(Math.random()*0.000001*i*incr)
+        incr -= 1;
+        arr.push(Math.random() * 0.000001 * i * incr);
     }
 
     const XY_CANVAS_DS = [
         {
-            name: 'Serie',
+            name: "Serie",
             series: arr,
-            type: 'line',
+            type: "line",
             dataLabels: false,
-            useArea: false
-        }
-    ]
+            useArea: false,
+        },
+    ];
 
     return {
         DONUT_PIE_CONFIG,
@@ -635,6 +671,6 @@ export function useCase() {
         XY_STACKED_DATASET,
         XY_STACKED_DATASET_WITH_AUTOSCALE,
         SCATTER_LARGE_DATASET,
-        SCATTER_LARGE_CONFIG
-    }
+        SCATTER_LARGE_CONFIG,
+    };
 }
