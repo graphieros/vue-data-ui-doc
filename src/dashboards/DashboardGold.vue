@@ -100,7 +100,7 @@ const CONFIG_XY = computed(() => {
     return {
         chart: {
             padding: {
-                right: 12
+                right: 24
             },
             grid: {
                 // position: 'start',
@@ -143,6 +143,7 @@ const CONFIG_XY = computed(() => {
                 },
                 minimap: {
                     show: true,
+                    selectedColor: '#91792f'
                 }
             }
         },
@@ -277,6 +278,7 @@ const DATASET_CANDLESTICK = ref([
 
 const CONFIG_CANDLESTICK = computed(() => {
     return {
+        type: 'ohlc',
         style: {
             layout: {
                 grid: {
@@ -293,7 +295,7 @@ const CONFIG_CANDLESTICK = computed(() => {
                     }
                 },
                 padding: {
-                    right: 12
+                    right: 16
                 }
             },
             title: {
@@ -306,6 +308,18 @@ const CONFIG_CANDLESTICK = computed(() => {
             },
             tooltip: {
                 prefix: '$'
+            },
+            zoom: {
+                preview: {
+                    fill: '#91792f30',
+                    stroke: '#91792f',
+                    strokeDasharray: 2,
+                    strokeWidth: 1
+                },
+                minimap: {
+                    show: true,
+                    selectedColor: '#91792f'
+                }
             }
         }
     }
@@ -397,7 +411,18 @@ const CONFIG_STACKBAR = computed(() => {
                             fontSize: 12
                         }
                     }
+                },
+                zoom: {
+                preview: {
+                    fill: '#91792f30',
+                    stroke: '#91792f',
+                    strokeDasharray: 6
+                },
+                minimap: {
+                    show: true,
+                    selectedColor: '#91792f'
                 }
+            }
             }
         }
     }
