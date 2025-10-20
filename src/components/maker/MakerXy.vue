@@ -43,6 +43,10 @@ const CONFIG_CATEGORIES = computed(() => {
         title: xyTranslations.value.categories.general[store.lang]
     },
     {
+        key: 'zoom',
+        title: xyTranslations.value.categories.zoom[store.lang]
+    },
+    {
         key: 'userOptions',
         title: xyTranslations.value.categories.userOptions[store.lang]
     },
