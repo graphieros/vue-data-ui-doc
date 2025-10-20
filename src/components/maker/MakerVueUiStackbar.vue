@@ -45,6 +45,10 @@ const CONFIG_CATEGORIES = computed(() => {
         title: makerTranslations.value.categories.userOptions[store.lang]
     },
     {
+        key: 'zoom',
+        title: makerTranslations.value.categories.zoom[store.lang]
+    },
+    {
         key: 'padding',
         title: makerTranslations.value.categories.padding[store.lang]
     },

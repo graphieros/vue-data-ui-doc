@@ -260,6 +260,17 @@ export const useMakerStore = defineStore('maker', {
                     ar: 'انسخ المكون بالكامل'
                 },
                 categories: {
+                    zoom: {
+                        en: 'Zoom',
+                        fr: 'Zoom',
+                        pt: 'Zoom',
+                        de: 'Zoom',
+                        zh: '缩放',
+                        jp: 'ズーム',
+                        es: 'Zoom',
+                        ko: '줌',
+                        ar: 'تكبير'
+                    },
                     arcs: {
                         en: 'Arcs',
                         fr: 'Arcs',
@@ -570,6 +581,72 @@ export const useMakerStore = defineStore('maker', {
                     }
                 },
                 labels: {
+                    enable: {
+                        en: 'Enable',
+                        fr: 'Activer',
+                        pt: 'Ativar',
+                        de: 'Aktivieren',
+                        zh: '启用',
+                        jp: '有効にする',
+                        es: 'Habilitar',
+                        ko: '활성화',
+                        ar: 'تفعيل'
+                    },
+                    frameColor: {
+                        en: 'Frame',
+                        fr: 'Cadre',
+                        pt: 'Moldura',
+                        de: 'Rahmen',
+                        zh: '边框',
+                        jp: 'フレーム',
+                        es: 'Marco',
+                        ko: '프레임',
+                        ar: 'إطار'
+                    },
+                    selector: {
+                        en: 'Selector',
+                        fr: "Sélecteur",
+                        pt: "Seletor",
+                        de: "Wählschalter",
+                        zh: "选择器",
+                        jp: "セレクタ",
+                        es: "Selector",
+                        ko: "선택자",
+                        ar: 'محدد'
+                    },
+                    minimap: {
+                        en: 'Mini map',
+                        fr: 'Mini carte',
+                        pt: 'Mini mapa',
+                        de: 'Minikarte',
+                        zh: '小地图',
+                        jp: 'ミニマップ',
+                        es: 'Minimapa',
+                        ko: '미니맵',
+                        ar: 'خريطة مصغرة'
+                    },
+                    timeFormat: {
+                        en: 'Time format',
+                        fr: 'Format du temps',
+                        pt: 'Formato de tempo',
+                        de: 'Zeitformat',
+                        zh: '时间格式',
+                        jp: '時間の形式',
+                        es: 'Formato de tiempo',
+                        ko: '시간 형식',
+                        ar: 'تنسيق الزمن'
+                    },
+                    preview: {
+                        en: 'Preview',
+                        fr: 'Aperçu',
+                        pt: 'Visualização',
+                        de: 'Vorschau',
+                        zh: '预览',
+                        jp: 'プレビュー',
+                        es: 'Vista previa',
+                        ko: '미리보기',
+                        ar: 'معاينة'
+                    },
                     abbreviation: {
                         en: "Abbreviation",
                         fr: "Abréviation",
@@ -2579,17 +2656,6 @@ export const useMakerStore = defineStore('maker', {
                         ko: "영축",
                         ar: "محور الصفر"
                     },
-                    zoom: {
-                        en: "Show zoom inputs",
-                        fr: "Afficher le zoom",
-                        pt: "Mostrar entradas de zoom",
-                        de: "Zoom-Eingaben anzeigen",
-                        zh: "显示缩放输入",
-                        jp: "ズーム入力を表示",
-                        es: "Mostrar entradas de zoom",
-                        ko: "확대/축소 입력 표시",
-                        ar: "إظهار مدخلات التكبير/التصغير"
-                    }
                 }
             }
         }
