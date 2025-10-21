@@ -28,6 +28,11 @@
   src: url("./fonts/Inter-Medium.ttf");
 }
 
+@font-face {
+  font-family: "JetBrainsMono";
+  src: url('./fonts/JetBrainsMono-Regular.woff2');
+}
+
 * {
   scrollbar-color: #3A3A3A transparent;
   scrollbar-width: thin;

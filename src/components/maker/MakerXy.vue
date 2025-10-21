@@ -142,7 +142,7 @@ const options = ref(
         },
         dataset: []
     },
-)
+);
 
 const selectedChart = ref(options.value)
 

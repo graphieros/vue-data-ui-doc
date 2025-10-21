@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.4.1",
+    "date": "2025-10-21",
+    "updates": [
+      {
+        "component": "VueUiRadar",
+        "description": "Fix conditional display of values and percentages not applied in tooltip",
+        "link": "/docs#vue-ui-radar"
+      }
+    ]
+  },
+  {
     "version": "v 3.4.0",
     "date": "2025-10-19",
     "updates": [
