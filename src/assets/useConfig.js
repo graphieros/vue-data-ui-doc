@@ -2436,7 +2436,7 @@ export function useConfig() {
             open: "Open",
             high: "High",
             low: "Low",
-            last: "Last",
+            last: "Close",
             volume: "Volume"
         },
         userOptions: USER_OPTIONS({
@@ -4398,7 +4398,9 @@ export function useConfig() {
                     proximity: 10,
                     packingWeight: 1,
                     color: COLOR_BLACK,
-                    usePalette: true
+                    usePalette: true,
+                    hoverOpacity: 0.5,
+                    selectedStroke: 'transparent'
                 },
                 title: TITLE,
                 tooltip: {

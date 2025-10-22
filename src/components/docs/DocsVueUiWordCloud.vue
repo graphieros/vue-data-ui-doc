@@ -128,7 +128,9 @@ const config = ref({
                 proximity: 20,
                 packingWeight: 10,
                 color: "#2D353C",
-                usePalette: true
+                usePalette: true,
+                hoverOpacity: 0.5,
+                selectedStroke: '#F3F4F6'
             },
             title: {
                 text: "Title",
@@ -248,7 +250,9 @@ const darkModeConfig = ref({
                 proximity: 20,
                 packingWeight: 10,
                 color: "#CCCCCC",
-                usePalette: true
+                usePalette: true,
+                hoverOpacity: 0.5,
+                selectedStroke: '#2A2A2A'
             },
             title: {
                 text: "Title",
@@ -524,6 +528,8 @@ function goToPage(route) {
                     <BaseAttr name="color" attr="style.chart.words.color" type="color" defaultVal="#2D353C" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="bold" attr="style.chart.words.bold" type="checkbox" defaultVal="false" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
                     <BaseAttr name="usePalette" attr="style.chart.words.usePalette" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
+                    <BaseAttr name="hoverOpacity" attr="style.chart.words.hoverOpacity" type="range" defaultVal="0.5" :min="0" :max="1" :step="0.01" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="selectedStroke" attr="style.chart.words.selectedStroke" type="color" defaultVal="transparent" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                 </BaseDetails>
                 <BaseDetails attr="tooltip" :level="3" title="style.chart.tooltip">
                     <BaseAttr name="show" attr="style.chart.tooltip.show" type="checkbox" defaultVal="true" :light="mutableConfig" :dark="mutableConfigDarkMode" @change="forceChartUpdate()"/>
