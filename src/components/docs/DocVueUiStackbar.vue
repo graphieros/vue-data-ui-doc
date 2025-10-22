@@ -749,6 +749,102 @@ function goToPage(route) {
     router.push(route)
 }
 
+const freestyleDataset = ref(`const dataset = ref([
+    {
+        name: 'Series A',
+        series: [1, 2, 3, 4, 5, 6],
+        // custom metadata, available in the #svg slot
+        marked: true,
+    },
+    {
+        name: 'Series B',
+        series: [12, 2, 8, 7, 3, 1],
+        // custom metadata, available in the #svg slot
+        marked: true,
+    },
+    {
+        name: 'Series C',
+        series: [3, 4, 5, 6, 7, 8],
+    },
+]);
+
+function freestyle({ drawingArea, data }) {
+    const marked = data?.filter((d) => !!d.marked);
+    const paths = marked.map((m, i) => {
+        const dp = m ?? { x: [], y: [] };
+        const minY = Math.min(...dp?.y);
+        const minX = dp.x[dp.y.indexOf(minY)];
+        const maxY = Math.max(...dp?.y);
+        const maxX = dp.x[dp.y.indexOf(maxY)];
+        return \`
+                <defs>
+                    <marker
+                        id="arrow_\${i}"
+                        viewBox="0 0 10 10"
+                        refX="5"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" />
+                    </marker>
+                </defs>
+                <path
+                    d="M\${
+                    minX > maxX
+                        ? \`\${maxX},\${maxY} \${minX},\${minY}\`
+                        : \`\${minX},\${minY} \${maxX},\${maxY}\`
+                    }"
+                    stroke="#000000"
+                    marker-end=\"url(#arrow_\${i})"
+                />
+            \`;
+    });
+    return paths;
+}`);
+
+const freestyleTemplate = ref(`<VueUiStackbar :config="config" :dataset="dataset">
+    <template #svg="{ svg }">
+        <g v-html="freestyle(svg)"/>
+    </template>
+</VueUiStackbar>    
+`)
+
+function freestyle({ drawingArea, data }) {
+  const marked = data?.filter((d) => !!d.marked);
+  const paths = marked.map((m, i) => {
+    const dp = m ?? { x: [], y: [] };
+    const minY = Math.min(...dp?.y);
+    const minX = dp.x[dp.y.indexOf(minY)];
+    const maxY = Math.max(...dp?.y);
+    const maxX = dp.x[dp.y.indexOf(maxY)];
+    return `
+            <defs>
+                <marker
+                    id="arrow_${i}"
+                    viewBox="0 0 10 10"
+                    refX="5"
+                    refY="5"
+                    markerWidth="6"
+                    markerHeight="6"
+                    orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" />
+                </marker>
+            </defs>
+            <path
+                d="M${
+                  minX > maxX
+                    ? `${maxX},${maxY} ${minX},${minY}`
+                    : `${minX},${minY} ${maxX},${maxY}`
+                }"
+                stroke="#000000"
+                marker-end="url(#arrow_${i})"
+            />
+        `;
+  });
+  return paths;
+}
+
 </script>
 
 <template>
@@ -1285,7 +1381,43 @@ function goToPage(route) {
                         'chart-background',
                         'pattern'
                     ]" 
-                />
+                >
+                <template #after="item">
+                    <div v-if="item.names.includes('svg')" class="p-6">
+                        {{ item.freestyle }}
+                        <CodeParser
+                            language="javascript"
+                            :content="freestyleDataset"
+                        />
+                        <CodeParser
+                            language="html"
+                            :content="freestyleTemplate"
+                        />
+                        <VueUiStackbar
+                            :dataset="[
+                                {
+                                    name: 'Series A',
+                                    series: [1, 2, 3, 4, 5, 6],
+                                    marked: true,
+                                },
+                                {
+                                    name: 'Series B',
+                                    series: [12, 2, 8, 7, 3, 1],
+                                    marked: true,
+                                },
+                                {
+                                    name: 'Series C',
+                                    series: [3, 4, 5, 6, 7, 8],
+                                },
+                            ]"
+                        >
+                            <template #svg="{ svg }">
+                                <g v-html="freestyle(svg)" />
+                            </template>
+                        </VueUiStackbar>
+                    </div>
+                </template>
+            </BaseSlotDocumenter>
             </template>
             <template #tab4>
                 <pre>

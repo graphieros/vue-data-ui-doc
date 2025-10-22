@@ -1175,6 +1175,91 @@ function goToPage(route) {
     router.push(route)
 }
 
+const freestyleDataset = ref(`const dataset = ref([
+    {
+        name: 'Series A',
+        type: 'line',
+        color: '#FF0000',
+        series: [1, 1, 2, 3, 5, 8, 13, 21]
+        // Add custom metadata which will be exposed by the #svg slot:
+        markerIndices: [2, 6],
+        exposedMarkers: true
+    }
+]);
+
+function freestyle({ data, drawingArea }) {
+    // Filter series based on metadata:
+    const markedSeries = data.filter((d) => !!d.exposeMarkers);
+
+    // Filter out datapoint coordinates based on metadata:
+    const points = (markedSeries[0]?.plots || []).filter((_, i) =>
+        markedSeries[0].markerIndices.includes(i);
+    );
+
+    // Draw content based on these coordinates:
+    return \`
+            <g>
+                <line
+                    x1="\${points[0]?.x}"
+                    x2="\${points[0]?.x}"
+                    y1="\${drawingArea.top}"
+                    y2="\${drawingArea.bottom}"
+                    stroke="black"
+                    stroke-width="3"
+                />
+                <text
+                    x="\${points[0]?.x + 12}"
+                    y="\${drawingArea.top + 12}"
+                    fill="red"
+                    font-size="16"
+                >
+                    This is awesome
+                </text>
+            </g>
+        \`;
+}`);
+
+const freestyleTemplate = ref(`<VueUiXy :dataset="dataset" :config="config">
+    <template #svg="{ svg }">
+        <!-- Injected content -->
+        <g v-html="freestyle(svg)"/>
+    </template>
+</VueUiXy>    
+`);
+
+function freestyle({ data, drawingArea }) {
+  // Filter series based on metadata:
+  const markedSeries = data.filter((d) => !!d.exposeMarkers);
+
+  // Filter out datapoint coordinates based on metadata:
+  const points = (markedSeries[0]?.plots || []).filter((_, i) =>
+    markedSeries[0].markerIndices.includes(i)
+  );
+
+  // Draw content based on these coordinates:
+  return `
+        <g>
+            <line
+                x1="${points[0]?.x}"
+                x2="${points[0]?.x}"
+                y1="${drawingArea.top}"
+                y2="${drawingArea.bottom}"
+                stroke="black"
+                stroke-width="3"
+            />
+            <text
+                x="${points[0]?.x + 12}"
+                y="${drawingArea.top + 12}"
+                fill="red"
+                font-size="16"
+            >
+                This is awesome
+            </text>
+        </g>
+    `;
+}
+
+
 </script>
 
 <template>
@@ -1934,7 +2019,42 @@ function goToPage(route) {
                         'area-gradient',
                         'bar-gradient'
                     ]" 
-                />
+                >
+                <template #after="item">
+                    <div v-if="item.names.includes('svg')" class="p-6">
+                        {{ item.freestyle }}
+                        <CodeParser
+                            language="javascript"
+                            :content="freestyleDataset"
+                        />
+                        <CodeParser
+                            language="html"
+                            :content="freestyleTemplate"
+                        />
+                        <VueUiXy
+                            :dataset="[
+                                {
+                                    name: 'Series A',
+                                    type: 'line',
+                                    color: '#FF0000',
+                                    series: [1, 1, 2, 3, 5, 8, 13, 21],
+                                    markerIndices: [2, 6],
+                                    exposeMarkers: true
+                                }
+                            ]"
+                            :config="{
+                                chart: {
+                                    zoom: { show: false }
+                                }
+                            }"
+                        >
+                            <template #svg="{ svg }">
+                                <g v-html="freestyle(svg)"/>
+                            </template>
+                        </VueUiXy>
+                    </div>
+                </template>
+            </BaseSlotDocumenter>
             </template>
 
             <template #tab4>

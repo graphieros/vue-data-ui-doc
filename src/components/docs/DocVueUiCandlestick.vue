@@ -659,6 +659,61 @@ const fakeDataFn = ref(`function generateRandomCandlestickData({
 const fakeDataset = generateRandomCandlestickData({ count: 100 });
 `)
 
+const freestyleScript = ref(`function freestyle({ drawingArea, data }) {
+  const maxVol = data.filter((d) => !!d.isMaxVolume);
+  const minVol = data.filter((d) => !!d.isMinVolume);
+  return \`
+    <path
+        d="M\${minVol[0]?.high?.x},\${minVol[0]?.high?.y} \${maxVol[0]?.high?.x},\${maxVol[0]?.high?.y}"
+        stroke="black"
+    />
+    <path
+        d="M\${minVol[0]?.low?.x},\${minVol[0]?.low?.y} \${maxVol[0]?.low?.x},\${maxVol[0]?.low?.y}"
+        stroke="black"
+    />
+    <polygon 
+        points="
+            \${minVol[0]?.high.x},\${minVol[0]?.high?.y} 
+            \${maxVol[0]?.high?.x},\${maxVol[0]?.high?.y} 
+            \${maxVol[0]?.low?.x},\${maxVol[0]?.low?.y}
+            \${minVol[0]?.low?.x},\${minVol[0]?.low?.y} 
+        "
+        fill="#00000020"
+    />
+\`;
+}`);
+
+const freestyleTemplate = ref(`<VueUiCandlestick :dataset="dataset" :config="config">
+  <template #svg="{ svg }">
+    <g v-html="freestyle(svg)"/>
+  </template>
+</VueUiCandlestick>  
+`)
+
+function freestyle({ drawingArea, data }) {
+  const maxVol = data.filter((d) => !!d.isMaxVolume);
+  const minVol = data.filter((d) => !!d.isMinVolume);
+  return `
+        <path
+            d="M${minVol[0]?.high?.x},${minVol[0]?.high?.y} ${maxVol[0]?.high?.x},${maxVol[0]?.high?.y}"
+            stroke="black"
+        />
+        <path
+            d="M${minVol[0]?.low?.x},${minVol[0]?.low?.y} ${maxVol[0]?.low?.x},${maxVol[0]?.low?.y}"
+            stroke="black"
+        />
+        <polygon 
+            points="
+                ${minVol[0]?.high.x},${minVol[0]?.high?.y} 
+                ${maxVol[0]?.high?.x},${maxVol[0]?.high?.y} 
+                ${maxVol[0]?.low?.x},${maxVol[0]?.low?.y}
+                ${minVol[0]?.low?.x},${minVol[0]?.low?.y} 
+            "
+            fill="#00000020"
+        />
+    `;
+}
+
 </script>
 
 <template>
@@ -999,7 +1054,51 @@ const fakeDataset = generateRandomCandlestickData({ count: 100 });
           'watermark',
           'source',
           'chart-background'
-        ]" />
+        ]">
+        <template #after="item">
+          <div v-if="item.names.includes('svg')" class="p-6">
+            {{ item.freestyle }}
+            <CodeParser
+              language="javascript"
+              :content="freestyleScript"
+            />
+            <CodeParser
+              language="html"
+              :content="freestyleTemplate"
+            />
+            <div class="p-4 bg-white">
+              <VueUiCandlestick 
+                :dataset="dataset"
+                :config="{
+                  style: {
+                    layout: {
+                      grid: {
+                        xAxis: {
+                          dataLabels: {
+                            datetimeFormatter: config.style.layout.grid.xAxis.dataLabels.datetimeFormatter,
+                            showOnlyAtModulo: true,
+                          }
+                        }
+                      },
+                      selector: {
+                        color: '#1A1A1A',
+                        opacity: 5
+                      }
+                    },
+                    zoom: {
+                      minimap: { show: true }
+                    }
+                  }
+                }"    
+              >
+                <template #svg="{ svg }">
+                  <g v-html="freestyle(svg)"/>
+                </template>
+              </VueUiCandlestick>
+            </div>
+          </div>
+        </template>  
+      </BaseSlotDocumenter>
       </template>
       <template #tab4>
         <pre>

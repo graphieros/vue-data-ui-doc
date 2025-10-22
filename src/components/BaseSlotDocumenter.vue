@@ -27,6 +27,7 @@ const items = computed(() => {
         { 
             names: ['svg'], 
             description: translations.value.slots.presentation[store.lang],
+            freestyle: translations.value.slots.freestyle[store.lang],
             snippet: `
     <${props.componentName} :dataset="dataset" :config="config">
         <template #svg="{ svg }">
@@ -477,6 +478,7 @@ function copyToClipboard(conf) {
         :content="item.snippet"
         @copy="store.copy()"
     />
+    <slot name="after" v-bind="item"/>
 </div>                
             </div>
         </template>

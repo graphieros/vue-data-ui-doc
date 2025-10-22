@@ -239,7 +239,7 @@ const menuTranslations = computed(() => {
             es: 'Callbacks del menú de usuario',
             ko: '사용자 메뉴 콜백',
             ar: 'Callbacks لقائمة المستخدم'
-        }
+        },
     }
 })
 

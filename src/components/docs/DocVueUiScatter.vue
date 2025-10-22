@@ -51,7 +51,7 @@ const scat1 = computed(() => {
     arr.push({
       x: Math.random()*(Math.random() > 0.3 ? i/3 : -i /5),
       y: Math.random()*i/20,
-      name: `plot_${i}_cluster_1`
+      name: `plot_${i}_cluster_1`,
     });
   }
   return arr;
@@ -673,6 +673,83 @@ function goToPage(route) {
     router.push(route)
 }
 
+const freesetyleScript = ref(`const dataset = ref([
+  {
+    name: 'Cluster A',
+    values: [
+      { x: -10, y: -20, name: 'p0' },
+      { x: 2, y: 10, name: 'p1', /* metadata: */ marked: true },
+      { x: 12, y: 16, name: 'p2' },
+      { x: 11, y: 11, name: 'p3' },
+      { x: 20, y: 10, name: 'p4' },
+    ],
+    color: '#FF0000',
+    // metadata:
+    marked: true
+  }
+]);
+
+function freestyle({ drawingArea, data }) {
+  const marked = (data || []).filter((d) => !!d?.marked);
+  const markedPlots = marked[0]?.plots.filter((p) => !!p?.v?.marked);
+  const circles = (markedPlots || []).map((p) => {
+    return \`
+      <g style="pointer-events: none;">
+          <circle
+              cx="\${p?.x}"
+              cy="\${p?.y}"
+              r="20"
+              stroke="#FF0000"
+              fill="none"
+          />
+          <path
+              d="M\${p?.x - 20},\${p?.y} \${p?.x - 5},\${p?.y} 
+              M\${p?.x},\${p?.y - 20} \${p?.x},\${p?.y - 5} 
+              M\${p?.x + 20},\${p?.y} \${p?.x + 5},\${p?.y} 
+              M\${p?.x},\${p?.y + 20} \${p?.x},\${p?.y + 5}"
+              stroke="#FF0000"
+          />
+      </g>
+  \`;
+  });
+  return circles;
+}
+`);
+
+const freestyleTemplate = ref(`<VueUiScatter :dataset="dataset" :config="config">
+  <template #svg="{ svg }">
+    <g v-html="freestyle(svg)"/>
+  <template>
+</VueUiScatter>  
+`)
+
+function freestyle({ drawingArea, data }) {
+  const marked = (data || []).filter((d) => !!d?.marked);
+  const markedPlots = marked[0]?.plots.filter((p) => !!p?.v?.marked);
+  const circles = (markedPlots || []).map((p) => {
+    return `
+            <g style="pointer-events: none;">
+                <circle
+                    cx="${p?.x}"
+                    cy="${p?.y}"
+                    r="20"
+                    stroke="#FF0000"
+                    fill="none"
+                />
+                <path
+                    d="M${p?.x - 20},${p?.y} ${p?.x - 5},${p?.y} M${p?.x},${
+      p?.y - 20
+    } ${p?.x},${p?.y - 5} M${p?.x + 20},${p?.y} ${p?.x + 5},${p?.y} M${p?.x},${
+      p?.y + 20
+    } ${p?.x},${p?.y + 5}"
+                    stroke="#FF0000"
+                />
+            </g>
+        `;
+  });
+  return circles;
+}
+
 </script>
 
 <template>
@@ -1111,7 +1188,54 @@ function goToPage(route) {
                       'source',
                       'chart-background'
                   ]" 
-              />
+              >
+              <template #after="item">
+                <div v-if="item.names.includes('svg')" class="p-6">
+                  {{ item.freestyle }}
+                  <CodeParser
+                    language="javascript"
+                    :content="freesetyleScript"
+                  />
+                  <CodeParser
+                    language="html"
+                    :content="freestyleTemplate"
+                  />
+                  <div class="p-4 bg-white">
+                    <VueUiScatter
+                      :dataset="[
+                        {
+                          name: 'Cluster A',
+                          values: [
+                            { x: -10, y: -20, name: 'p0' },
+                            { x: 2, y: 10, name: 'p1', marked: true },
+                            { x: 12, y: 16, name: 'p2' },
+                            { x: 11, y: 11, name: 'p3' },
+                            { x: 20, y: 10, name: 'p5',},
+                          ],
+                          color: '#FF0000',
+                          marked: true,
+                        },
+                      ]"
+                      :config="{
+                        style: {
+                          layout: {
+                            padding: {
+                              left: 0,
+                              right: 6,
+                              bottom: 12
+                            }
+                          }
+                        }
+                      }"
+                    >
+                        <template #svg="{ svg }">
+                          <g v-html="freestyle(svg)"/>
+                        </template>
+                    </VueUiScatter>
+                  </div>
+                </div>
+              </template>
+            </BaseSlotDocumenter>
             </template>
             <template #tab4>
 <pre>

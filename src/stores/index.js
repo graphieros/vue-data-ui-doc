@@ -910,6 +910,17 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    freestyle: {
+                        en: 'Even more control can be obtained from the exposed data of the #svg slot, to inject precise content into the chart.',
+                        fr: 'Un contrôle encore plus précis peut être obtenu à partir des données exposées du slot #svg, afin d’injecter un contenu précis dans le graphique.',
+                        pt: 'Ainda mais controle pode ser obtido a partir dos dados expostos do slot #svg, para injetar conteúdo preciso no gráfico.',
+                        de: 'Noch mehr Kontrolle kann über die bereitgestellten Daten des #svg-Slots erlangt werden, um präzisen Inhalt in das Diagramm einzufügen.',
+                        zh: '通过 #svg 插槽公开的数据，可以获得更多控制，以将精确的内容注入图表中。',
+                        jp: '#svg スロットで公開されているデータから、チャートに正確なコンテンツを挿入するために、さらに詳細な制御が可能です。',
+                        es: 'Se puede obtener aún más control a partir de los datos expuestos del slot #svg, para inyectar contenido preciso en el gráfico.',
+                        ko: '#svg 슬롯에서 노출된 데이터를 통해 차트에 정밀한 콘텐츠를 주입하기 위한 더욱 세밀한 제어가 가능합니다.',
+                        ar: 'يمكن الحصول على مزيد من التحكم من البيانات المكشوفة في فتحة ‎#svg‎، لحقن محتوى دقيق في الرسم البياني.'
+                    },
                     areaGradient: {
                         en: 'Use this slot to apply a custom svg linearGradient on line types with useArea set to true',
                         fr: 'Utilisez ce slot pour appliquer un SVG linearGradient personnalisé sur les types de lignes lorsque useArea est défini sur true',
