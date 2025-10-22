@@ -12,7 +12,8 @@ export default {
         "satoshi-bold": ["SatoshiBold"],
         "inter": ["Inter"],
         "inter-bold": ["InterBold"],
-        "inter-medium": ["InterMedium"]
+        "inter-medium": ["InterMedium"],
+        "jetbrains": ["JetBrainsMono"]
       },
       colors: {
         "black": "#1a1a1a",
