@@ -208,7 +208,15 @@ const config = ref({
                     hideUnderProportion: 0.03,
                     prefix: "Value: ",
                     suffix: "",
-                    rounding: 0
+                    rounding: 0,
+                    name: { 
+                        show: true,
+                        bold: true 
+                    },
+                    value: { 
+                        show: true,
+                        bold: false 
+                    }
                 }
             },
             legend: {
@@ -353,7 +361,15 @@ const darkModeConfig = ref({
                     hideUnderProportion: 0.03,
                     prefix: "Value: ",
                     suffix: "",
-                    rounding: 0
+                    rounding: 0,
+                    name: { 
+                        show: true,
+                        bold: true 
+                    },
+                    value: { 
+                        show: true,
+                        bold: false 
+                    }
                 }
             },
             legend: {

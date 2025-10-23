@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.4.4",
+    "date": "2025-10-23",
+    "updates": [
+      {
+        "component": "VueUiTreemap",
+        "description": "Fix issue with default labels line height; fix cropped rect when zoom is active",
+        "link": "/docs#vue-ui-treemap"
+      }
+    ]
+  },
+  {
     "version": "v 3.4.3",
     "date": "2025-10-22",
     "updates": [
