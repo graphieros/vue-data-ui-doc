@@ -685,7 +685,7 @@ const freestyleScript = ref(`function freestyle({ drawingArea, data }) {
 
 const freestyleTemplate = ref(`<VueUiCandlestick :dataset="dataset" :config="config">
   <template #svg="{ svg }">
-    <g v-html="freestyle(svg)"/>
+    <g v-html="freestyle(svg)" style="pointer-events:none;"/>
   </template>
 </VueUiCandlestick>  
 `)
@@ -1092,7 +1092,7 @@ function freestyle({ drawingArea, data }) {
                 }"    
               >
                 <template #svg="{ svg }">
-                  <g v-html="freestyle(svg)"/>
+                  <g v-html="freestyle(svg)" style="pointer-events:none;"/>
                 </template>
               </VueUiCandlestick>
             </div>

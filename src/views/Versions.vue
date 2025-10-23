@@ -2261,25 +2261,6 @@ async function impactPatch() {
                   </div>
                 </BaseCard>
 
-
-
-                <BaseCard class="mx-auto max-w-[800px] mt-6">
-                    <VueDataUi v-if="versionsList.length" component="VueUiTreemap" :dataset="versionTreemap" :config="treemapConfig">
-                      <template #rect="{ rect, fontSize }">
-                        <div class="!h-full !w-full !flex !flex-col !place-items-center !justify-center treemap-icon">
-                          <VueUiIcon :name="useIconMap(rect.name)" stroke="white"/>
-                        </div>
-                      </template>
-                      <template #source>
-                          <div class="text-xs text-gray-500 text-right pr-3">
-                            Source: Vue Data UI
-                          </div>
-                        </template>
-                    </VueDataUi>
-                </BaseCard>
-
-
-
                 <BaseCard class="mx-auto max-w-[800px] mt-6" v-if="!isLoadingLine && !!data">
                   <VueUiTable :key="`table_${step}`" :dataset="tableDataset" :config="isDarkMode ? tableConfigDarkMode: tableConfig"/>
                 </BaseCard>

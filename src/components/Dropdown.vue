@@ -1,5 +1,5 @@
 <script setup>
-import { computed} from "vue"
+import { computed, ref} from "vue"
 import SideMenuItem from './SideMenuItem.vue';
 import { useMainStore } from '../stores';
 import BaseCard from "./BaseCard.vue";
@@ -56,10 +56,15 @@ const config = computed(() => {
     }
 });
 
+const _isOpen = ref(props.open);
+
+function M(_) {
+    _isOpen.value = _;
+}
 </script>
 
 <template>
-    <div class="relative ra-special">
+    <div class="relative ra-special overflow-visible">
         <div class="peer">
             <VueDataUi component="VueUiAccordion" :config="{
                 ...config,
@@ -86,6 +91,7 @@ const config = computed(() => {
                     </div>
                 </template>
                 <template #content="{ isOpen }">
+                    {{ M(isOpen) }}
                     <div class="py-2 pb-2 -mt-2 ()">
                         <BaseCard 
                             type="dark" 
@@ -106,9 +112,9 @@ const config = computed(() => {
                 </template>
             </VueDataUi>
         </div>
-        <!-- <div class="absolute -left-4 top-[32px] -translate-y-1/2 invisible peer-hover:visible">
-            <VueUiIcon :name="icon" :stroke="isDarkMode ? '#5f8aee' : '#1A1A1A'" :size="16"/>
-        </div> -->
+        <div v-show="!_isOpen" class="absolute highlight pointer-events-none opacity-0 transition-opacity duration-200 peer-hover:opacity-100" />
+        <div v-show="!_isOpen" class="absolute highlight-shade pointer-events-none opacity-0 transition-opacity duration-200 peer-hover:opacity-100" />
+        <div v-show="!_isOpen" class="absolute highlight-spark1 pointer-events-none opacity-0 transition-opacity duration-200 peer-hover:opacity-100" />
     </div>
 </template>
 
@@ -134,4 +140,52 @@ html.dark details:hover .vue-ui-accordion-head .relative {
     border-right: 2px solid #5f8aee;
 }
 
+.highlight {
+    top: 8px;
+    left: calc(100% + 22px);
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, #FFFFFF, transparent);
+}
+
+.highlight-spark1 {
+    top: 20px;
+    left: calc(100% - 1.7px);
+    width: 1px;
+    height: 16px;
+    border-radius: 1px;
+}
+
+.highlight-shade {
+    top: -12px;
+    left: calc(100%);
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: radial-gradient(#FFFFFF, transparent, transparent);
+}
+
+html.dark .highlight {
+    background: linear-gradient(to bottom, transparent, #5f8aee, transparent);
+}
+html.dark .highlight-shade {
+    background: radial-gradient(#5f8aee, transparent, transparent);
+}
+html.dark .highlight-spark1 {
+    background: linear-gradient(to bottom, transparent, #FFFFFF, transparent);
+}
+html.dark .highlight {
+    background: linear-gradient(to bottom, transparent, #5f8aee, transparent);
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
