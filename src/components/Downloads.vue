@@ -43,7 +43,8 @@ const dataset = computed(() => {
       series: data_lib.value,
       type: "line",
       dataLabels: false,
-      useTag: isMobile.value ? undefined : 'end'
+      useTag: isMobile.value ? undefined : 'end',
+      marked: true,
     },
     {
       name: "vue-data-ui-cli",
@@ -52,26 +53,27 @@ const dataset = computed(() => {
       dataLabels: false,
       color: '#ff7f0e',
       shape: 'diamond',
-      useTag: isMobile.value ? undefined : 'end'
+      useTag: isMobile.value ? undefined : 'end',
+      marked: true
     },
-    {
-      name: "color-bridge",
-      series: data_color_bridge.value,
-      type: "line",
-      dataLabels: false,
-      color: '#d62728',
-      shape: 'circle',
-      useTag: isMobile.value ? undefined : 'end'
-    },
-    {
-      name: "vue-hi-code",
-      series: data_vue_hi_code.value,
-      type: "line",
-      dataLabels: false,
-      color: '#239e33',
-      shape: 'hexagon',
-      useTag: isMobile.value ? undefined : 'end'
-    },
+    // {
+    //   name: "color-bridge",
+    //   series: data_color_bridge.value,
+    //   type: "line",
+    //   dataLabels: false,
+    //   color: '#d62728',
+    //   shape: 'circle',
+    //   useTag: isMobile.value ? undefined : 'end'
+    // },
+    // {
+    //   name: "vue-hi-code",
+    //   series: data_vue_hi_code.value,
+    //   type: "line",
+    //   dataLabels: false,
+    //   color: '#239e33',
+    //   shape: 'hexagon',
+    //   useTag: isMobile.value ? undefined : 'end'
+    // },
   ];
 });
 
@@ -88,7 +90,7 @@ const config = computed(() => {
     downsample: { threshold: 500 },
     chart: {
       fontFamily: "inherit",
-      backgroundColor: 'transparent',
+      backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
       color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
       height: 600,
       width: 1000,
@@ -256,12 +258,12 @@ const config = computed(() => {
       showSum: true,
       columnNames: { period: "Period", total: "Total" },
       th: { 
-        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
+        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         outline: "none" 
       },
       td: { 
-        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#F3F4F6',
+        backgroundColor: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         outline: "none" 
       },
@@ -398,10 +400,71 @@ const configCumulativeAverage = computed(() => {
   }
 })
 
+function getObjectByY(arr, type = 'max') {
+  if (!Array.isArray(arr) || arr.length === 0) return null;
+  
+  return arr.reduce((selected, current) => {
+    if (type === 'min') {
+      return current?.y < selected?.y ? current : selected;
+    }
+    return current?.y > selected?.y ? current : selected;
+  });
+}
+
+function freestyle({ drawingArea, data }) {
+  const filtered = (data || []).filter(d => !!d?.marked);
+  const lines = (filtered || []).map((d, i) => {
+    const max = getObjectByY((d?.plots || []), 'min')
+    const min = getObjectByY((d?.plots || []), 'max')
+
+    const pointStart = (d?.plots || [])[0];
+    const pointEnd = (d?.plots || []).at(-1);
+    return `
+      <line
+        x1="${pointStart?.x}"
+        x2="${pointEnd?.x}"
+        y1="${pointStart?.y}"
+        y2="${pointEnd?.y}"
+        stroke="${isDarkMode.value ? '#3A3A3A' : '#FFFFFF'}"
+        stroke-width="2"
+        stroke-dasharray="3"
+        stroke-linecap="round"
+      />
+      <line
+        x1="${pointStart?.x}"
+        x2="${pointEnd?.x}"
+        y1="${pointStart?.y}"
+        y2="${pointEnd?.y}"
+        stroke="${d?.color}"
+        stroke-dasharray="3"
+        stroke-linecap="round"
+      />
+      <circle
+        cx="${max.x}"
+        cy="${max.y}"
+        r="12"
+        stroke="#2ca02c"
+        fill="#2ca02c50"
+        stroke-width="2"
+        fill="none"
+      />
+      <circle
+        cx="${min.x}"
+        cy="${min.y}"
+        r="12"
+        stroke="#d62728"
+        stroke-width="2"
+        fill="#d6272850"
+      />
+    `
+  })
+  return lines;
+}
+
 </script>
 
 <template>
-  <div class="flex flex-col p-4 rounded">
+  <div class="flex flex-col p-4 rounded bg-white dark:bg-[#2A2A2A]">
     <div class="flex flex-col gap-1 pt-2 mb-2">
       <label for="period" class="text-xs text-black dark:text-[#CCCCCC] px-2">Select period:</label>
       <select id="period" v-model="selectedPeriod" class="h-[36px] w-fit px-2">
@@ -416,6 +479,9 @@ const configCumulativeAverage = computed(() => {
       @selectX="selectX"
       @selectTimeLabel="selectTimeLabel"
     >
+      <template #svg="{ svg }">
+        <g v-html="freestyle(svg)" />
+      </template>
       <template #chart-background>
         <div class="w-full h-full bg-gradient-to-br from-white dark:from-[#FFFFFF10] to-transparent"/>
       </template>
