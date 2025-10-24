@@ -295,3 +295,35 @@ code {
     to { clip-path: circle(150% at 100% 0%); }
   }
 }
+
+.flashy-pos {
+  animation: flashy-pos infinite 1s alternate-reverse;
+}
+.flashy-neg {
+  animation: flashy-neg infinite 1s alternate-reverse;
+}
+
+@keyframes flashy-pos {
+  from {
+    r: 6;
+    stroke: transparent;
+    stroke-width: 1;
+  }
+  to {
+    r: 12;
+    stroke: #2ca02c;
+    stroke-width: 3;
+  }
+}
+@keyframes flashy-neg {
+  from {
+    r: 6;
+    stroke: transparent;
+    stroke-width: 1;
+  }
+  to {
+    r: 12;
+    stroke: #d62728;
+    stroke-width: 3;
+  }
+}

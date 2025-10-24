@@ -1179,44 +1179,53 @@ const freestyleDataset = ref(`const dataset = ref([
     {
         name: 'Series A',
         type: 'line',
-        color: '#FF0000',
-        series: [1, 1, 2, 3, 5, 8, 13, 21]
+        color: '#8A8A8A',
+        series: [12, 25, 31, 8, 42, 19, 16, 52, 29, 13],
         // Add custom metadata which will be exposed by the #svg slot:
-        markerIndices: [2, 6],
-        exposedMarkers: true
+        marked: true
     }
 ]);
 
-function freestyle({ data, drawingArea }) {
-    // Filter series based on metadata:
-    const markedSeries = data.filter((d) => !!d.exposeMarkers);
+function freestyle({ drawingArea, data }) {
+    const filtered = (data || []).filter(d => !!d?.marked);
+    const lines = (filtered || []).map((d, i) => {
+        const max = getObjectByY((d?.plots || []), 'min')
+        const min = getObjectByY((d?.plots || []), 'max')
 
-    // Filter out datapoint coordinates based on metadata:
-    const points = (markedSeries[0]?.plots || []).filter((_, i) =>
-        markedSeries[0].markerIndices.includes(i);
-    );
+        return \`
+        <circle
+            class="flashy-pos"
+            cx="\${max?.x}"
+            cy="\${max?.y}"
+            r="12"
+            stroke="#2ca02c"
+            fill="#2ca02c50"
+            stroke-width="2"
+            fill="none"
+        />
+        <circle
+            class="flashy-neg"
+            cx="\${min?.x}"
+            cy="\${min?.y}"
+            r="12"
+            stroke="#d62728"
+            stroke-width="2"
+            fill="#d6272850"
+        />
+        \`
+    });
+    return lines;
+}
 
-    // Draw content based on these coordinates:
-    return \`
-            <g>
-                <line
-                    x1="\${points[0]?.x}"
-                    x2="\${points[0]?.x}"
-                    y1="\${drawingArea.top}"
-                    y2="\${drawingArea.bottom}"
-                    stroke="black"
-                    stroke-width="3"
-                />
-                <text
-                    x="\${points[0]?.x + 12}"
-                    y="\${drawingArea.top + 12}"
-                    fill="red"
-                    font-size="16"
-                >
-                    This is awesome
-                </text>
-            </g>
-        \`;
+function getObjectByY(arr, type = 'max') {
+    if (!Array.isArray(arr) || arr.length === 0) return null;
+    
+    return arr.reduce((selected, current) => {
+        if (type === 'min') {
+            return current?.y < selected?.y ? current : selected;
+        }
+        return current?.y > selected?.y ? current : selected;
+    });
 }`);
 
 const freestyleTemplate = ref(`<VueUiXy :dataset="dataset" :config="config">
@@ -1227,39 +1236,79 @@ const freestyleTemplate = ref(`<VueUiXy :dataset="dataset" :config="config">
 </VueUiXy>    
 `);
 
-function freestyle({ data, drawingArea }) {
-  // Filter series based on metadata:
-  const markedSeries = data.filter((d) => !!d.exposeMarkers);
-
-  // Filter out datapoint coordinates based on metadata:
-  const points = (markedSeries[0]?.plots || []).filter((_, i) =>
-    markedSeries[0].markerIndices.includes(i)
-  );
-
-  // Draw content based on these coordinates:
-  return `
-        <g>
-            <line
-                x1="${points[0]?.x}"
-                x2="${points[0]?.x}"
-                y1="${drawingArea.top}"
-                y2="${drawingArea.bottom}"
-                stroke="black"
-                stroke-width="3"
-            />
-            <text
-                x="${points[0]?.x + 12}"
-                y="${drawingArea.top + 12}"
-                fill="red"
-                font-size="16"
-            >
-                This is awesome
-            </text>
-        </g>
-    `;
+const freestyleStyle = ref(`.flashy-pos {
+    animation: flashy-pos infinite 1s alternate-reverse;
+}
+.flashy-neg {
+    animation: flashy-neg infinite 1s alternate-reverse;
 }
 
+@keyframes flashy-pos {
+    from {
+        r: 6;
+        stroke: transparent;
+        stroke-width: 1;
+    }
+    to {
+        r: 12;
+        stroke: #2ca02c;
+        stroke-width: 3;
+    }
+}
+@keyframes flashy-neg {
+    from {
+        r: 6;
+        stroke: transparent;
+        stroke-width: 1;
+    }
+    to {
+        r: 12;
+        stroke: #d62728;
+        stroke-width: 3;
+    }
+}`)
 
+function freestyle({ drawingArea, data }) {
+    const filtered = (data || []).filter(d => !!d?.marked);
+    const lines = (filtered || []).map((d, i) => {
+        const max = getObjectByY((d?.plots || []), 'min')
+        const min = getObjectByY((d?.plots || []), 'max')
+
+        return `
+        <circle
+            class="flashy-pos"
+            cx="${max?.x}"
+            cy="${max?.y}"
+            r="12"
+            stroke="#2ca02c"
+            fill="#2ca02c50"
+            stroke-width="2"
+            fill="none"
+        />
+        <circle
+            class="flashy-neg"
+            cx="${min?.x}"
+            cy="${min?.y}"
+            r="12"
+            stroke="#d62728"
+            stroke-width="2"
+            fill="#d6272850"
+        />
+        `
+    })
+    return lines;
+}
+
+function getObjectByY(arr, type = 'max') {
+    if (!Array.isArray(arr) || arr.length === 0) return null;
+    
+    return arr.reduce((selected, current) => {
+        if (type === 'min') {
+            return current?.y < selected?.y ? current : selected;
+        }
+        return current?.y > selected?.y ? current : selected;
+    });
+}
 </script>
 
 <template>
@@ -2031,15 +2080,19 @@ function freestyle({ data, drawingArea }) {
                             language="html"
                             :content="freestyleTemplate"
                         />
+                        <!-- <CodeParser
+                            language="css"
+                            :content="freestyleStyle"
+                        /> -->
                         <VueUiXy
                             :dataset="[
                                 {
                                     name: 'Series A',
                                     type: 'line',
-                                    color: '#FF0000',
-                                    series: [1, 1, 2, 3, 5, 8, 13, 21],
-                                    markerIndices: [2, 6],
-                                    exposeMarkers: true
+                                    color: '#8A8A8A',
+                                    series: [12, 25, 31, 8, 42, 19, 16, 52, 29, 13],
+                                    smooth: true,
+                                    marked: true,
                                 }
                             ]"
                             :config="{
