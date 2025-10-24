@@ -186,7 +186,8 @@ const config = computed(() => {
         },
       },
       labels: { fontSize: 20, prefix: "", suffix: "" },
-      legend: { 
+      legend: {
+        position: 'top',
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A', 
         show: true, 
         fontSize: 14 
@@ -196,8 +197,8 @@ const config = computed(() => {
         color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
         fontSize: 20,
         bold: true,
-        textAlign: "center",
-        paddingLeft: 0,
+        textAlign: "left",
+        paddingLeft: 6,
         paddingRight: 0,
         subtitle: { color: "#A1A1A1", text: "@Graphieros packages", fontSize: 16, bold: false },
         show: true,
@@ -268,7 +269,7 @@ const config = computed(() => {
         outline: "none" 
       },
     },
-    showTable: true,
+    showTable: false,
   };
 });
 
@@ -333,7 +334,7 @@ const datasetCumulativeAverage = computed(() => {
         return d.cumulativeAverage
       }),
       useTag: 'start',
-      useArea: true
+      useArea: true,
     }
   ]
 })
@@ -385,6 +386,7 @@ const configCumulativeAverage = computed(() => {
           text: 'Daily downloads cumulative average'
         }
       },
+      legend: { show: false },
       grid: {
         ...config.value.chart.grid,
         labels: {
@@ -440,8 +442,9 @@ function freestyle({ drawingArea, data }) {
         stroke-linecap="round"
       />
       <circle
-        cx="${max.x}"
-        cy="${max.y}"
+        class="flashy-pos"
+        cx="${max?.x}"
+        cy="${max?.y}"
         r="12"
         stroke="#2ca02c"
         fill="#2ca02c50"
@@ -449,8 +452,9 @@ function freestyle({ drawingArea, data }) {
         fill="none"
       />
       <circle
-        cx="${min.x}"
-        cy="${min.y}"
+        class="flashy-neg"
+        cx="${min?.x}"
+        cy="${min?.y}"
         r="12"
         stroke="#d62728"
         stroke-width="2"
@@ -511,3 +515,37 @@ function freestyle({ drawingArea, data }) {
     </VueDataUi>
   </div>
 </template>
+
+<style>
+.flashy-pos {
+  animation: flashy-pos infinite 1s alternate-reverse;
+}
+.flashy-neg {
+  animation: flashy-neg infinite 1s alternate-reverse;
+}
+
+@keyframes flashy-pos {
+  from {
+    r: 6;
+    stroke: transparent;
+    stroke-width: 1;
+  }
+  to {
+    r: 12;
+    stroke: #2ca02c;
+    stroke-width: 3;
+  }
+}
+@keyframes flashy-neg {
+  from {
+    r: 6;
+    stroke: transparent;
+    stroke-width: 1;
+  }
+  to {
+    r: 12;
+    stroke: #d62728;
+    stroke-width: 3;
+  }
+}
+</style>
