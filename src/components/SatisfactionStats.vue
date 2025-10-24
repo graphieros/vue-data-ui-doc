@@ -24,6 +24,18 @@ const stats = computed(() => {
 
 const selectedXIndex = ref(null);
 
+function groupByItemId(data) {
+    return data.reduce((acc, { item_id, created_at, rating }) => {
+        if (!acc[item_id]) acc[item_id] = [];
+        acc[item_id].push({ created_at, rating });
+        return acc;
+    }, {});
+}
+
+const ratedComponents = computed(() => {
+    return groupByItemId(stats.value)
+});
+
 watch(() => stats, () => {
     setTimeout(() => {
         const texts = document.querySelectorAll('.gauge-sat text');
@@ -646,6 +658,67 @@ const history = computed(() => {
     }
 });
 
+const navOptions = computed(() => ['All components', ...availableComponents.value]);
+
+function goTo(dir) {
+    const list = navOptions.value;
+    if (!list.length) return;
+    let idx = list.indexOf(selectedComponent.value);
+    if (idx === -1) idx = 0;
+
+    if (dir === 'next') {
+        selectedComponent.value = list[(idx + 1) % list.length];
+    } else if (dir === 'prev') {
+        selectedComponent.value = list[(idx - 1 + list.length) % list.length];
+    }
+}
+
+function makeHistoryForComponent(entry) {
+    const normalized = entry.map((s) => {
+        const created_at = s.created_at.split(" ")[0];
+        return { ...s, created_at };
+    });
+
+    const groups = Object.groupBy(
+        normalized,
+        ({ created_at }) => created_at
+    );
+
+    const dates = fillEmptyDays(
+        Object.keys(groups).toSorted(
+        (a, b) => dateToTimestamp(a) - dateToTimestamp(b)
+        )
+    );
+
+    const ratingsPerDay = dates.map((date) =>
+        groups[date] ? groups[date].length : null
+    );
+
+    const averagePerDay = dates.map((date) =>
+        groups[date]
+        ? groups[date]
+            .map((u) => (typeof u.rating === "number" ? u.rating : parseFloat(u.rating)))
+            .reduce((a, b) => a + b, 0) / groups[date].length
+        : null
+    );
+
+    const ratingBreakdown = countRatings(
+        Object.groupBy(entry, ({ rating }) => rating)
+    );
+
+    return {
+        dates,
+        ratingsPerDay,
+        averagePerDay,
+        ratingBreakdown,
+    };
+}
+
+function makeHistoryForRatedComponent(itemId) {
+    const entry = ratedComponents.value?.[itemId] || [];
+    return makeHistoryForComponent(entry);
+}
+
 const ratingBreakdownBarDataset = computed(() => {
     const source = Object.keys(history.value.ratingBreakdown)
     const bd = source.map(key => {
@@ -736,39 +809,70 @@ const ratingBreakdownBarConfig = computed(() => {
     }
 })
 
+const selectedComponent = ref('All components')
+
+const availableComponents = computed(() => {
+    return Object.keys(ratedComponents.value);
+})
+
 const xyDataset = computed(() => {
-    return [
-        {
-            name: 'Average rating',
-            series: history.value.averagePerDay,
-            type: 'line',
-            smooth: true,
-            scaleMin: 0,
-            scaleMax: 5,
-            scaleSteps: 5,
-            suffix: ' ⭐',
-            scaleLabel: 'Satisfaction rating'
-        },
-        {
-            name: 'Cumulative average',
-            series: getCumulativeAveragePerDayWithMissingDays(stats.value).map(d => d.cumulativeAverage),
-            type: 'line',
-            smooth: true,
-            scaleMin: 0,
-            scaleMax: 5,
-            scaleSteps: 5,
-            suffix: ' ⭐',
-            color: '#ff7f0e',
-            scaleLabel: 'Satisfaction rating'
-        },
-        {
-            name: 'Number of daily votes',
-            series: history.value.ratingsPerDay,
-            type: 'bar',
-            scaleSteps: 5,
-            color: '#aec7e8'
-        },
-    ]
+    if (selectedComponent.value === 'All components') {
+        return [
+            {
+                name: 'Average rating',
+                series: history.value.averagePerDay,
+                type: 'line',
+                smooth: true,
+                scaleMin: 0,
+                scaleMax: 5,
+                scaleSteps: 5,
+                suffix: ' ⭐',
+                scaleLabel: 'Satisfaction rating'
+            },
+            {
+                name: 'Cumulative average',
+                series: getCumulativeAveragePerDayWithMissingDays(stats.value).map(d => d.cumulativeAverage),
+                type: 'line',
+                smooth: true,
+                scaleMin: 0,
+                scaleMax: 5,
+                scaleSteps: 5,
+                suffix: ' ⭐',
+                color: '#ff7f0e',
+                scaleLabel: 'Satisfaction rating'
+            },
+            {
+                name: 'Number of daily votes',
+                series: history.value.ratingsPerDay,
+                type: 'bar',
+                scaleSteps: 5,
+                color: '#aec7e8'
+            },
+        ]
+    } else {
+        const { averagePerDay, ratingsPerDay } = makeHistoryForRatedComponent(selectedComponent.value);
+
+        return [
+            {
+                name: selectedComponent.value,
+                series: averagePerDay,
+                type: 'line',
+                smooth: true,
+                scaleMin: 0,
+                scaleMax: 5,
+                scaleSteps: 5,
+                suffix: ' ⭐',
+                scaleLabel: 'Satisfaction rating'
+            },
+            {
+                name: 'Number of daily votes',
+                series: ratingsPerDay,
+                type: 'bar',
+                scaleSteps: 5,
+                color: '#aec7e8'
+            },
+        ]
+    }
 })
 
 const cutNullValues = ref(false);
@@ -790,7 +894,8 @@ const xyConfig = computed(() => {
             padding: {
                 top: 20,
                 bottom: 12,
-                right: 24
+                right: 24,
+                left: 36,
             },
             grid: {
                 labels: {
@@ -1179,10 +1284,27 @@ function selectHeatmapCell(cell) {
 
         <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
             <div class="p-4">
-                <label>
-                    Cut null values
-                    <input type="checkbox" v-model="cutNullValues">
-                </label>
+                <div class="flex flex-col gap-2 mb-4">
+                    <label>
+                        Cut null values
+                        <input type="checkbox" v-model="cutNullValues">
+                    </label>    
+                    <label class="flex flex-row gap-2 place-items-center">
+                        History for:
+                        <button @click="goTo('prev')">
+                            <VueUiIcon name="arrowLeft" :size="16"/>
+                        </button>
+                        <select v-model="selectedComponent">
+                            <option>All components</option>
+                            <option v-for="o in availableComponents">
+                                {{ o }}
+                            </option>
+                        </select>
+                        <button @click="goTo('next')">
+                            <VueUiIcon name="arrowRight" :size="16"/>
+                        </button>
+                    </label>
+                </div>
                 <VueUiXy :selectedXIndex="selectedXIndex" :dataset="xyDataset" :config="xyConfig" />
             </div>
             <div class="p-4">
