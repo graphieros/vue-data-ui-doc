@@ -1294,7 +1294,7 @@ function selectHeatmapCell(cell) {
                         <button @click="goTo('prev')">
                             <VueUiIcon name="arrowLeft" :size="16"/>
                         </button>
-                        <select v-model="selectedComponent">
+                        <select v-model="selectedComponent" class="p-1 pl-2 !rounded-full bg-white dark:bg-[#2A2A2A] shadow-inner">
                             <option>All components</option>
                             <option v-for="o in availableComponents">
                                 {{ o }}
