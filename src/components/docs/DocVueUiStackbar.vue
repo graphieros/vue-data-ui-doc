@@ -683,6 +683,9 @@ function randomizeData() {
         Math.random() * 50,
         Math.random() * 40,
         Math.random() * 55,
+        Math.random() * 12,
+        Math.random() * 20,
+        Math.random() * 32,
     ];
     dataset.value[1].series = [
         Math.random() * 20,
@@ -691,6 +694,9 @@ function randomizeData() {
         Math.random() * 55,
         Math.random() * 50,
         Math.random() * 40,
+        Math.random() * 12,
+        Math.random() * 20,
+        Math.random() * 32,
     ];
     dataset.value[2].series = [
         Math.random() * 20,
@@ -699,6 +705,9 @@ function randomizeData() {
         Math.random() * 55,
         Math.random() * 40,
         Math.random() * 25,
+        Math.random() * 12,
+        Math.random() * 20,
+        Math.random() * 32,
     ];
     dataset.value[3].series = [
         Math.random() * 20,
@@ -707,6 +716,9 @@ function randomizeData() {
         Math.random() * 50,
         Math.random() * 55,
         Math.random() * 40,
+        Math.random() * 12,
+        Math.random() * 20,
+        Math.random() * 32,
     ];
 }
 
