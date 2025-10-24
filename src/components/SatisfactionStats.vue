@@ -524,6 +524,7 @@ const stackbarConfig = computed(() => {
                 color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
                 height: 300,
                 bars: {
+                    strokeWidth: 0,
                     distributed: false,
                     gapRatio: 0,
                     totalValues: {
@@ -547,7 +548,7 @@ const stackbarConfig = computed(() => {
                             show: true,
                             text: 'Number of votes',
                             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                            fontSize: 24
+                            fontSize: 16
                         },
                         axisLabels: {
                             color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
@@ -886,6 +887,7 @@ const xyConfig = computed(() => {
             cutNullValues: cutNullValues.value,
             radius: 4,
             useGradient: false,
+            strokeWidth: 1.5,
             dot: {
                 useSerieColor: false,
                 fill: isDarkMode.value ? '#AEC7E8' : '#FFFFFF',
