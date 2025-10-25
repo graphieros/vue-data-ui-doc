@@ -50,6 +50,9 @@ const config = computed(() => {
             userOptions: {
                 position: 'left'
             },
+            zoom: {
+                show: false
+            },
             grid: {
                 labels: {
                     yAxis: {
@@ -95,13 +98,13 @@ const config = computed(() => {
 &lt;/script&gt;
 
 &lt;template&gt;
-    &lt;div class="pr-[140px] bg-white"&gt;
+    &lt;div class="pr-[140px] bg-white p-2"&gt;
         &lt;VueUiXy
             :dataset="dataset"
             :config="config"
         &gt;
             &lt;template #legend="{ legend }"&gt;
-                &lt;div class="absolute -right-[125px] bottom-20 flex flex-col gap-2 p-2 border"&gt;
+                &lt;div class="absolute -right-[125px] bottom-[18px] flex flex-col gap-2 p-2 border shadow"&gt;
                     &lt;div
                         v-for="datapoint in legend"
                         class="flex flex-row gap-2 place-items-center"
@@ -129,13 +132,13 @@ const config = computed(() => {
 </pre>
         </template>
         <template #chart>
-            <div class="pr-[140px] bg-white">
+            <div class="pr-[140px] bg-white p-2">
                 <VueUiXy
                     :dataset="dataset"
                     :config="config"
                 >
                     <template #legend="{ legend }">
-                        <div class="absolute -right-[125px] bottom-20 flex flex-col gap-2 p-2 border shadow">
+                        <div class="absolute -right-[125px] bottom-[18px] flex flex-col gap-2 p-2 border shadow">
                             <div 
                                 v-for="datapoint in legend"
                                 class="flex flex-row gap-2 place-items-center"
@@ -161,6 +164,8 @@ const config = computed(() => {
         </template>
 
     </BaseCustomizationBox>
+
+    
 
     <!-- <div class="flex-1 text-center max-w-[600px] mx-auto">
             {{ translations.customization.legendAllowed[store.lang] }}
