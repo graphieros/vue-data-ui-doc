@@ -267,7 +267,7 @@ const config = ref({
     open: "Open",
     high: "High",
     low: "Low",
-    last: "Last",
+    close: "Close",
     volume: "Volume"
   },
   userOptions: {
@@ -508,7 +508,7 @@ const darkModeConfig = ref({
     open: "Open",
     high: "High",
     low: "Low",
-    last: "Last",
+    close: "Close",
     volume: "Volume"
   },
   userOptions: {
@@ -991,7 +991,7 @@ function freestyle({ drawingArea, data }) {
       <BaseAttr name="open" attr="translations.open" type="text" defaultVal="Open" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="high" attr="translations.high" type="text" defaultVal="High" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="low" attr="translations.low" type="text" defaultVal="Low" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
-      <BaseAttr name="last" attr="translations.last" type="text" defaultVal="Last" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+      <BaseAttr name="close" attr="translations.close" type="text" defaultVal="Close" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
       <BaseAttr name="volume" attr="translations.volume" type="text" defaultVal="Volume" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
     </BaseDetails>
     <BaseDetails attr="userOptions" :level="1">
