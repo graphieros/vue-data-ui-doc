@@ -151,31 +151,6 @@ const description = ref({
     <ConfirmCopy />
 
     <div class="flex flex-col place-content-center place-items-center text-left mt-12 w-5/6 sm:w-1/2 mx-auto mb-12">
-        <p class="my-6" dir="auto">
-            {{ description[store.lang] }}
-        </p>
-
-        <ComponentsTable :cols="['Component', 'customPalette']">
-            <template #th="{ col }">
-                {{ col }}
-            </template>
-
-            <template #Component="{ row }">
-                <div class="flex flex-row gap-2 place-items-center">
-                    <VueUiIcon :name="row.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
-                    <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
-                        <span class="text-gray-500">VueUi</span><span>{{ row.name.replaceAll("VueUi", "") }}</span>
-                    </RouterLink>
-                </div>
-            </template>
-
-            <template #customPalette="{ row }">
-                <div class="w-full h-full flex justify-center" :style="{ background: row.customPalette ? '#42d39230' : 'transparent'}">
-                    <CheckIcon v-if="row.customPalette" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
-                </div>
-            </template>
-        </ComponentsTable>
-
         <p class="my-6">{{ translations.customization.palette[store.lang] }}</p>
         <div class="w-full text-left mb-10 p-2 bg-[#2A2A2A] dark:bg-[#1A1A1A] rounded-md mt-12 border border-gray-700">
             <CodeParser :content="codeContent.default" language="javascript" @copy="store.copy()" />
@@ -312,5 +287,30 @@ const description = ref({
                 </button>
             </div>
         </div>
+
+                <p class="my-6" dir="auto">
+            {{ description[store.lang] }}
+        </p>
+
+        <ComponentsTable :cols="['Component', 'customPalette']">
+            <template #th="{ col }">
+                {{ col }}
+            </template>
+
+            <template #Component="{ row }">
+                <div class="flex flex-row gap-2 place-items-center">
+                    <VueUiIcon :name="row.icon" :stroke="isDarkMode ? '#CCCCCC' : '#4A4A4A'" />
+                    <RouterLink :to="`/docs#${row.link}`" class="hover:underline">
+                        <span class="text-gray-500">VueUi</span><span>{{ row.name.replaceAll("VueUi", "") }}</span>
+                    </RouterLink>
+                </div>
+            </template>
+
+            <template #customPalette="{ row }">
+                <div class="w-full h-full flex justify-center" :style="{ background: row.customPalette ? '#42d39230' : 'transparent'}">
+                    <CheckIcon v-if="row.customPalette" :stroke="isDarkMode ? '#42d392': '#1d915d'" />
+                </div>
+            </template>
+        </ComponentsTable>
     </div>
 </template>
