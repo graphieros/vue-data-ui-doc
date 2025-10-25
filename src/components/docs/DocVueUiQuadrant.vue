@@ -130,7 +130,7 @@ const config = ref({
     useCssAnimation: true,
     zoomAnimationFrames: 20,
     downsample: {
-        threshold: 500
+        threshold: 1095
     },
     style: {
         fontFamily: "inherit",
@@ -335,7 +335,7 @@ const darkModeConfig = ref({
     useCssAnimation: true,
     zoomAnimationFrames: 20,
     downsample: {
-        threshold: 500
+        threshold: 1095
     },
     style: {
         fontFamily: "inherit",
@@ -782,7 +782,7 @@ function goToPage(route) {
             <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
         </BaseDetails>
         <BaseDetails attr="downsample" :level="1">
-            <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
+            <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="1095" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
         </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <span>fontFamily: "inherit",</span>

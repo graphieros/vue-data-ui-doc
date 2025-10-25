@@ -49,7 +49,7 @@ const config = ref({
     loading: false,
     responsive: false,
     downsample: {
-        threshold: 500
+        threshold: 1095
     },
     style: {
         backgroundColor: "#F3F4F6",
@@ -110,7 +110,7 @@ const darkModeConfig = ref({
     loading: false,
     responsive: false,
     downsample: {
-        threshold: 500
+        threshold: 1095
     },
     style: {
         backgroundColor: "#1A1A1A00",
@@ -285,7 +285,7 @@ const <span class="text-black dark:text-app-green">dataset</span> = [1, 2, 3, 5,
         <BaseAttr name="loading" attr="loading" type="checkbox" defaultVal="false"  :light="mutableConfig" :dark="mutableConfigDarkMode"/>
         <BaseAttr inactive name="theme" defaultVal="''" comment="'' | 'celebration' | 'celebrationNight' | 'zen' | 'hack' | 'concrete'"/>
         <BaseDetails attr="downsample" :level="1">
-            <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
+            <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="1095" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
         </BaseDetails>
         <BaseDetails attr="style" :level="1">
             <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>

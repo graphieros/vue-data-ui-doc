@@ -809,14 +809,15 @@ const ratingBreakdownBarConfig = computed(() => {
     }
 })
 
-const selectedComponent = ref('All components')
+const ALL_COMPONENTS = 'All components'
+const selectedComponent = ref(ALL_COMPONENTS)
 
 const availableComponents = computed(() => {
     return Object.keys(ratedComponents.value);
 })
 
 const xyDataset = computed(() => {
-    if (selectedComponent.value === 'All components') {
+    if (selectedComponent.value === ALL_COMPONENTS) {
         return [
             {
                 name: 'Average rating',
@@ -878,9 +879,11 @@ const xyDataset = computed(() => {
 const cutNullValues = ref(false);
 
 const xyConfig = computed(() => {
+    const { dates: c_dates } = makeHistoryForRatedComponent(selectedComponent.value);
     return {
         events: {
             datapointEnter: ({ seriesIndex }) => {
+                if (selectedComponent.value !== ALL_COMPONENTS) return;
                 selectedXIndex.value = seriesIndex;
             },
             datapointLeave: () => {
@@ -909,7 +912,7 @@ const xyConfig = computed(() => {
 
                     },
                     xAxisLabels: {
-                        values: history.value.dates,
+                        values: selectedComponent.value === ALL_COMPONENTS ? history.value.dates : c_dates,
                         show: false,
                         datetimeFormatter: {
                             enable: true

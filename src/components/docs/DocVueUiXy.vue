@@ -174,7 +174,7 @@ const config = ref({
     useCssAnimation: false,
     showTable: false,
     downsample: {
-        threshold: 500
+        threshold: 1095
     },
     chart: {
         backgroundColor: "#F3F4F6",
@@ -585,7 +585,7 @@ const config = ref({
 
 const darkModeConfig = ref({
     downsample: {
-        threshold: 500
+        threshold: 1095
     },
     debug: true,
     loading: false,
@@ -1439,7 +1439,7 @@ function getObjectByY(arr, type = 'max') {
             <BaseAttr inactive name="datapointClick" defaultVal="null" comment="({datapoint, seriesIndex} => { console.log(datapoint)})"/>
         </BaseDetails>
         <BaseDetails attr="downsample" :level="1">
-            <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="500" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
+            <BaseAttr name="threshold" attr="downsample.threshold" type="number" defaultVal="1095" :min="100" :max="5000" :light="mutableConfig" :dark="mutableConfigDarkMode" comment="Threshold above which LTTB algorithm kicks in"/>
         </BaseDetails>
         <BaseDetails attr="chart" :level="1">
             <BaseAttr inactive name="fontFamily" defaultVal="'inherit'"/>
