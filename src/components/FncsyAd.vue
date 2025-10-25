@@ -137,7 +137,7 @@ const soMuchMore = ref({
 </script>
 
 <template>
-    <div class="mx-auto max-w-[800px] px-8">
+    <div class="ml-12 sm:mx-auto max-w-[800px] px-8">
         <div class="mt-8 w-full max-w-[800px] text-[18px] font-inter-bold pl-4 mb-4">
             {{ fncsyIntro[store.lang] }}
         </div>
@@ -155,11 +155,11 @@ const soMuchMore = ref({
                 </div>
             </a>
 
-            <div class="grid grid-cols-3 gap-4 my-4">
-                <a href="https://fncsy.com/image-to-pixel-art" target="_blank">
+            <div class="flex flex-col sm:grid sm:grid-cols-3 gap-4 my-4">
+                <a href="https://fncsy.com/image-to-pixel-art" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-white rounded-md transition-colors">
                 <BaseCard type="light">
-                    <div class="flex flex-col place-items-center h-[140px]">
-                        <span class="text-[48px]">
+                    <div class="flex flex-col place-items-center sm:h-[140px]">
+                        <span class="text-[24px] sm:text-[48px]">
                             🎮
                         </span>
                         <code class="text-center">
@@ -168,10 +168,10 @@ const soMuchMore = ref({
                     </div>
                 </BaseCard>
             </a>
-            <a href="https://fncsy.com/steganography" target="_blank">
+            <a href="https://fncsy.com/steganography" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-white rounded-md transition-colors">
                 <BaseCard type="light">
-                    <div class="flex flex-col place-items-center h-[140px]">
-                        <span class="text-[48px]">
+                    <div class="flex flex-col place-items-center sm:h-[140px]">
+                        <span class="text-[24px] sm:text-[48px]">
                             🕵️
                         </span>
                         <code class="text-center">
@@ -180,10 +180,10 @@ const soMuchMore = ref({
                     </div>
                 </BaseCard>
             </a>
-            <a href="https://fncsy.com/dead-link-checker" target="_blank">
+            <a href="https://fncsy.com/dead-link-checker" target="_blank" class="hover:bg-[#3A3A3A] hover:dark:bg-white rounded-md transition-colors">
                 <BaseCard type="light">
-                    <div class="flex flex-col place-items-center h-[140px]">
-                        <span class="text-[48px]">
+                    <div class="flex flex-col place-items-center sm:h-[140px]">
+                        <span class="text-[24px] sm:text-[48px]">
                             🔗
                         </span>
                         <code class="text-center">
