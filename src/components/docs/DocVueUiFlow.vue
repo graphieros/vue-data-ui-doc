@@ -272,7 +272,8 @@ const config = ref({
                     rounding: 0
                 },
                 stroke: "#FFFFFF",
-                strokeWidth: 1
+                strokeWidth: 1,
+                borderRadius: 2,
             },
             links: {
                 opacity: 0.8,
@@ -460,7 +461,8 @@ const darkModeConfig = ref({
                     rounding: 0
                 },
                 stroke: "#1A1A1A",
-                strokeWidth: 1
+                strokeWidth: 1,
+                borderRadius: 2
             },
             links: {
                 opacity: 0.8,
@@ -687,6 +689,7 @@ function goToPage(route) {
                     <BaseAttr name="width" attr="style.chart.nodes.width" type="number" defaultVal="40" :min="0" :max="100" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="stroke" attr="style.chart.nodes.stroke" type="color" defaultVal="#FFFFFF" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseAttr name="strokeWdith" attr="style.chart.nodes.strokeWidth" type="number" defaultVal="1" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
+                    <BaseAttr name="borderRadius" attr="style.chart.nodes.borderRadius" type="number" defaultVal="0" :min="0" :max="12" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                     <BaseDetails attr="labels" :level="4" title="style.chart.nodes.labels">
                         <BaseAttr name="fontSize" attr="style.chart.nodes.labels.fontSize" type="number" defaultVal="14" :min="8" :max="42" :light="mutableConfig" :dark="mutableConfigDarkMode"/>
                         <BaseAttr name="prefix" attr="style.chart.node.labels.prefix" type="text" defaultVal="''" :light="mutableConfig" :dark="mutableConfigDarkMode"/>

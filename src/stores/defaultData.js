@@ -1403,6 +1403,8 @@ export const useDefaultDataStore = defineStore('defaultData', {
                     { key: 'style.chart.nodes.labels.rounding', def: 0, type: 'number', min: 0, max: 6, label: ['value', 'is', 'rounding'], category: 'datapoints'},
                     { key: 'style.chart.nodes.stroke', def: '#FFFFFF', type: 'color', label: ['border', 'is', 'color'], category: 'datapoints'},
                     { key: 'style.chart.nodes.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['border', 'is', 'thickness'], category: 'datapoints'},
+                    { key: 'style.chart.nodes.borderRadius', def: 0, type: 'number', min: 0, max: 12, label: ['borderRadius'], category: 'datapoints'},
+
                     { key: 'style.chart.links.opacity', def: 0.8, type: 'number', min: 0, max: 1, step: 0.01, label: ['link', 'is', 'opacity'], category: 'datapoints'},
                     { key: 'style.chart.links.stroke', def: '#FFFFFF', type: 'color', label: ['link', 'border', 'is', 'color'], category: 'datapoints'},
                     { key: 'style.chart.links.strokeWidth', def: 1, type: 'number', min: 0, max: 12, label: ['link', 'border', 'is', 'thickness'], category: 'datapoints'},

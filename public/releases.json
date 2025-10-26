@@ -1,5 +1,21 @@
 [
   {
+    "version": "v 3.4.7",
+    "date": "2025-10-26",
+    "updates": [
+      {
+        "component": "VueUiFlow",
+        "description": "Improve keyboard accessibility; add node borderRadius config option",
+        "link": "/docs#vue-ui-flow"
+      },
+      {
+        "component": "User menu",
+        "description": "Show menu tooltips when custom content is used through the #optionXxx slots in menu items",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.4.5",
     "date": "2025-10-23",
     "updates": [
