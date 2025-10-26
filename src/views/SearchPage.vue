@@ -200,7 +200,7 @@ ${indentSpace}}`;
         return value;
     }
 
-    return formatValue(String(json), indent);
+    return formatValue(json, indent);
 }
 
 </script>

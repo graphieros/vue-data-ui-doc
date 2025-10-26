@@ -6,7 +6,7 @@ import { useMainStore } from '../../stores';
 
 const props = defineProps({
     content: {
-        type: String,
+        type: [String, Number],
         required: true,
     },
     language: {
