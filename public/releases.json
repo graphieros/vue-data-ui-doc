@@ -1,5 +1,16 @@
 [
   {
+    "version": "v 3.4.8",
+    "date": "2025-10-26",
+    "updates": [
+      {
+        "component": "User menu",
+        "description": "Fix #optionSvg slot not available",
+        "link": ""
+      }
+    ]
+  },
+  {
     "version": "v 3.4.7",
     "date": "2025-10-26",
     "updates": [
