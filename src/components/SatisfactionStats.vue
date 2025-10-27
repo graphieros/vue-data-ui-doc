@@ -326,6 +326,14 @@ const historyPlotDataset = computed(() => {
         name: 'Average monthly rating and total votes',
         values: getMonthlyStatistics(JSON.parse(JSON.stringify(stats.value)))
     }]
+});
+
+const minPlot = computed(() => {
+    return Math.min(...historyPlotDataset.value.flatMap(d => d?.values.map(v => v?.y ?? 0)))
+})
+
+const maxPlot = computed(() => {
+    return Math.max(...historyPlotDataset.value.flatMap(d => d?.values.map(v => v?.y ?? 0)))
 })
 
 const historyPlotConfig = computed(() => {
@@ -347,8 +355,9 @@ const historyPlotConfig = computed(() => {
                         }
                     },
                     y: {
-                        scaleMin: 1,
-                        scaleMax: 5,
+                        scaleMin: minPlot.value,
+                        scaleMax: maxPlot.value,
+                        ticks: 5,
                         labels: {
                             color: isDarkMode.value ? '#8A8A8A' : '#8A8A8A',
                         },
