@@ -1449,8 +1449,9 @@ const wordCloudConfig = computed(() => {
     userOptions: { show: false},
     customPalette: makeColors({
       colorStart: '#607D8B',
+      colorEnd: 'red',
       iterations: 1000,
-      force: 0
+      force: 0.02
     }),
 //     customPalette: [
 //   "#CFD8DC", "#B0BEC5", "#90A4AE", "#78909C", "#607D8B", "#546E7A", "#455A64", "#37474F",
@@ -1506,16 +1507,18 @@ table: {
   }
 },
     style: {
+      fontFamily: 'InterMedium',
       chart: {
         color: isDarkMode.value ? '#CCCCCC' : "#1A1A1A",
         backgroundColor: 'transparent',
         height: 500,
         width: 500,
         words: {
-          proximity: 10,
-          packingWeight: 5,
+          proximity: 20,
+          packingWeight: 20,
           color: isDarkMode.value ? '#8A8A8A' : '#3A3A3A',
           usePalette: true,
+          selectedStroke: isDarkMode.value ? '#2A2A2A' : '#FFFFFF',
         },
         tooltip: {
           backgroundColor: isDarkMode.value ? '#1A1A1A' : '#FFFFFF',
@@ -2051,7 +2054,6 @@ async function impactPatch() {
 
 
             <div class="max-w-[800px] mx-auto px-6">
-
                 <BaseCard class="mx-auto mt-6 max-w-[800px]">
                   <div class="max-w-[600px] mx-auto">
                       <VueUiSkeleton v-if="isLoadingLine" :config="sparklineSkeletonConfig"/>
