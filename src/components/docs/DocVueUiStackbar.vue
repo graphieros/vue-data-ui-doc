@@ -1292,8 +1292,9 @@ function freestyle({ drawingArea, data }) {
     [
         {
             name: string;
-            value: number;
+            series: number[];
             color: string;
+            ...
         },
         {...}
     ]
