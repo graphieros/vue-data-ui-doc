@@ -25,6 +25,7 @@ import BaseCard from "../BaseCard.vue";
 import UserOptionCallbacks from "../UserOptionCallbacks.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
+import UcBullet from "../useCases/uc-bullet.vue";
 
 const mainConfig = useConfig();
 const store = useMainStore();
@@ -430,7 +431,17 @@ function goToPage(route) {
             debug
         />
 
-        <Box ref="box" showEmits showSlots showThemes showCallbacks showResponsive signInfo="both" schema="vue_ui_bullet">
+        <Box 
+            ref="box" 
+            showEmits 
+            showSlots 
+            showThemes 
+            showCallbacks 
+            showResponsive
+            showUseCases
+            signInfo="both" 
+            schema="vue_ui_bullet"
+        >
             <template #tab0>
                 <div class="w-full overflow-x-auto">
 
@@ -717,6 +728,10 @@ function goToPage(route) {
                         />
                     </template>
                 </ResponsiveUnit>
+            </template>
+
+            <template #tab5>
+                <UcBullet/>
             </template>
 
             <template #tab11>
