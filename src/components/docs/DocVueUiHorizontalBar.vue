@@ -973,8 +973,9 @@ function goToPage(route) {
                 </div>
 
                 <ExposedMethods
-                  component="VueUiVerticalBar"
+                  component="VueUiHorizontalBar"
                   getImage
+                  showHideSeries
                   :names="[
                     'generatePdf',
                     'generateCsv',
@@ -988,7 +989,7 @@ function goToPage(route) {
 
             <template #tab3>
               <BaseSlotDocumenter
-                  componentName="VueUiVerticalBar"
+                  componentName="VueUiHorizontalBar"
                   :types="[
                     'svg',
                     'legend',

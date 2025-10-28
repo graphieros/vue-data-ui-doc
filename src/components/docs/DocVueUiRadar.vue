@@ -876,6 +876,7 @@ function goToPage(route) {
                 <ExposedMethods
                     component="VueUiRadar"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

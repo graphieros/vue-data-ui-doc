@@ -768,6 +768,7 @@ function goToPage(route) {
                 <ExposedMethods
                     component="VueUiWaffle"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

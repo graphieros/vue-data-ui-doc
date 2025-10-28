@@ -2884,6 +2884,17 @@ export const useMainStore = defineStore("main", {
                             ko: '부모 컴포넌트에서 이 메서드를 호출하여 SVG viewBox가 모든 콘텐츠를 포함하도록 강제합니다.',
                             ar: 'استدعِ هذه الطريقة من المكوّن الأب لإجبار viewBox الخاص بـ SVG على احتواء جميع محتوياته.',
                         },
+                        showHideSeries: {
+                            en: 'Programmatically hide or show series',
+                            fr: 'Masquer ou afficher des séries par programmation',
+                            pt: 'Ocultar ou mostrar séries programaticamente',
+                            de: 'Serien programmgesteuert ein- oder ausblenden',
+                            zh: '以编程方式隐藏或显示系列',
+                            jp: 'シリーズをプログラムで表示または非表示にする',
+                            es: 'Ocultar o mostrar series mediante programación',
+                            ko: '시리즈를 프로그래밍 방식으로 표시하거나 숨기기',
+                            ar: 'إخفاء أو إظهار السلاسل برمجيًا'
+                        },
                         getImage: {
                             en: 'Call this method from the parent to get a base64 string of the chart, along with other metadata',
                             fr: 'Appelez cette méthode depuis le composant parent pour obtenir une chaîne base64 du graphique, ainsi que d\'autres métadonnées.',

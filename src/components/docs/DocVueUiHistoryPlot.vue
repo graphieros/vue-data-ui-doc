@@ -1043,6 +1043,7 @@ function goToPage(route) {
                 <ExposedMethods
                     component="VueUiHistoryPlot"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

@@ -1166,6 +1166,7 @@ function freestyle({ drawingArea, data }) {
                 <ExposedMethods
                   component="VueUiScatter"
                   getImage
+                  showHideSeries
                   :names="[
                     'generatePdf',
                     'generateCsv',

@@ -2038,6 +2038,7 @@ function getObjectByY(arr, type = 'max') {
                 <ExposedMethods
                     component="VueUiXy"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

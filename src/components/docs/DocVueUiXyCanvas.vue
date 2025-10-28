@@ -2314,6 +2314,7 @@ function goToPage(route) {
         <ExposedMethods
           component="VueUiXyCanvas"
           getImage
+          showHideSeries
           :names="[
             'generatePdf',
             'generateCsv',

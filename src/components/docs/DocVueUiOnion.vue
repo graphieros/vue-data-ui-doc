@@ -850,6 +850,7 @@ function goToPage(route) {
                 <ExposedMethods
                     component="VueUiOnion"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

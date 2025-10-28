@@ -1224,6 +1224,7 @@ function goToPage(route) {
                 <ExposedMethods
                     component="VueUiDonut"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

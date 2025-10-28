@@ -777,6 +777,7 @@ function goToPage(route) {
                 <ExposedMethods
                   component="VueUiGalaxy"
                   getImage
+                  showHideSeries
                   :names="[
                     'generatePdf',
                     'generateCsv',

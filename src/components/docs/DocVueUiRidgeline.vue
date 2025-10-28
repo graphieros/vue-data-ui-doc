@@ -1304,6 +1304,7 @@ function goToPage(route) {
                 <ExposedMethods
                     component="VueUiRidgeline"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

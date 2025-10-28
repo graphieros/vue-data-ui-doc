@@ -938,6 +938,7 @@ function goToPage(route) {
                 <ExposedMethods
                     component="VueUiTreemap"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

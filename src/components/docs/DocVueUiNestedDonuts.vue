@@ -920,6 +920,7 @@ function goToPage(route) {
                 <ExposedMethods
                     component="VueUiNestedDonuts"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

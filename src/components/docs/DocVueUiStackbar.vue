@@ -1370,6 +1370,7 @@ function freestyle({ drawingArea, data }) {
                 <ExposedMethods
                     component="VueUiStackbar"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

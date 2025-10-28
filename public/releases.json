@@ -1,5 +1,111 @@
 [
   {
+    "version": "v 3.5.0",
+    "date": "2025-10-28",
+    "updates": [
+      {
+        "component": "VueUiDonut",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-donut"
+      },
+      {
+        "component": "VueUiDonutEvolution",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-donut-evolution"
+      },
+      {
+        "component": "VueUiGalaxy",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-galaxy"
+      },
+      {
+        "component": "VueUiHistoryPlot",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-history-plot"
+      },
+      {
+        "component": "VueUiHorizontalBar",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-horizontal-bar"
+      },
+      {
+        "component": "VueUiNestedDonuts",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-nested-donuts"
+      },
+      {
+        "component": "VueUiOnion",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-onion"
+      },
+      {
+        "component": "VueUiParallelCoordinatePlot",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-parallel-coordinate-plot"
+      },
+      {
+        "component": "VueUiQuadrant",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-quadrant"
+      },
+      {
+        "component": "VueUiRadar",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-radar"
+      },
+      {
+        "component": "VueUiRidgeline",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-ridgeline"
+      },
+      {
+        "component": "VueUiRings",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-rings"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiScatter",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-scatter"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiTreemap",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-treemap"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiWaffle",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-waffle"
+      },
+      {
+        "component": "VueUiXy",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-xy"
+      },
+      {
+        "component": "VueUiXyCanvas",
+        "description": "Expose hideSeries & showSeries methods",
+        "link": "/docs#vue-ui-xy-canvas"
+      }
+    ]
+  },
+  {
     "version": "v 3.4.9",
     "date": "2025-10-27",
     "updates": [

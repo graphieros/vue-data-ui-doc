@@ -954,6 +954,7 @@ function goToPage(route) {
                 <ExposedMethods
                     component="VueUiParallelCoordinatePlot"
                     getImage
+                    showHideSeries
                     :names="[
                         'generatePdf',
                         'generateCsv',

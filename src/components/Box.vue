@@ -131,15 +131,15 @@ const menuTranslations = computed(() => {
             ar: 'إعدادات'
         },
         emits: {
-            fr: 'Emits',
-            en: 'Emits',
-            pt: 'Emissões',
-            de: 'Ereignisse',
-            zh: '触发',
-            jp: 'エミット',
-            es: 'Emisiones',
-            ko: '이밋',
-            ar: 'إطلاقات'
+            en: 'Emits and exposed methods',
+            fr: 'Emits et méthodes exposées',
+            pt: 'Emissões e métodos expostos',
+            de: 'Emits und exponierte Methoden',
+            zh: '触发事件和暴露的方法',
+            jp: 'emitと公開メソッド',
+            es: 'Emisiones y métodos expuestos',
+            ko: '이벤트와 공개된 메서드',
+            ar: 'الأحداث المنبعثة والوظائف المكشوفة'
         },
         slots: {
             fr: 'Slots',

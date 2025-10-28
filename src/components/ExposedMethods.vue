@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import { useMainStore } from "../stores";
 import BaseExposedMethod from "./BaseExposedMethod.vue";
 import ExposedGetImage from "./ExposedGetImage.vue";
+import ExposedShowHide from "./ExposedShowHide.vue";
 
 const props = defineProps({
     component: {
@@ -15,6 +16,10 @@ const props = defineProps({
         }
     },
     getImage: {
+        type: Boolean,
+        default: false
+    },
+    showHideSeries: {
         type: Boolean,
         default: false
     }
@@ -37,7 +42,7 @@ const methodMap = computed(() => {
         pauseAnimation: { name: 'pauseAnimation', description: translations.value.docs.emits.pauseAnimation[store.lang] },
         resumeAnimation: { name: 'resumeAnimation', description: translations.value.docs.emits.resumeAnimation[store.lang] },
         toggleReadonly: { name: 'toggleReadonly', description: translations.value.docs.emits.rating.toggleReadonly[store.lang] },
-        autoSize: { name: 'autoSize', description: translations.value.docs.emits.autoSize[store.lang] }
+        autoSize: { name: 'autoSize', description: translations.value.docs.emits.autoSize[store.lang] },
     }
 })
 
@@ -50,5 +55,6 @@ const methodMap = computed(() => {
         :name="m"
         :description="methodMap[m].description"
     />
+    <ExposedShowHide v-if="showHideSeries" :component="component"/>
     <ExposedGetImage v-if="getImage" :component="component"/>
 </template>

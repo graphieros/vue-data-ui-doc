@@ -21,6 +21,7 @@ import BaseMigrationInfo from "../BaseMigrationInfo.vue";
 import BaseCard from "../BaseCard.vue";
 import { useRouter } from "vue-router";
 import BaseTabLink from "../BaseTabLink.vue";
+import ExposedMethods from "../ExposedMethods.vue";
 
 const mainConfig = useConfig()
 
@@ -467,6 +468,11 @@ function goToPage(route) {
 &lt;/script&gt;
 </code>
 </pre>
+
+<ExposedMethods
+  component="VueUiSparkStackbar"
+  showHideSeries
+/>
 
             </template>
 
