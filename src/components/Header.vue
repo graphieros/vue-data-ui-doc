@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed, onBeforeUnmount, nextTick } from "vue";
+import { ref, onMounted, computed, onBeforeUnmount, nextTick, watch } from "vue";
 import { Menu2Icon, XIcon } from "vue-tabler-icons";
 import { useRouter } from "vue-router";
 import { SunFilledIcon, MoonStarsIcon, LanguageIcon } from "vue-tabler-icons";
@@ -99,6 +99,12 @@ function changeTheme() {
 
 const currentRoute = computed(() => {
     return router.currentRoute.value.path;
+});
+
+watch(() => currentRoute.value, (nr, or) => {
+    if (nr !== or) {
+        window.scrollTo(0,0);
+    }
 });
 
 function isSelected(route) {

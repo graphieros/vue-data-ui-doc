@@ -865,6 +865,11 @@ const sparkHistogramConfig = computed(() => {
                     fontSize: 10
                 }
             },
+            selector: {
+                stroke: isDarkMode.value ? '#fdd663' : '#bd992f',
+                strokeWidth: 1,
+                strokeDasharray: 3,
+            },
             title: {
                 text: 'Voting intensity',
                 color: isDarkMode.value ? '#1f77b4' : '#1A1A1A',
