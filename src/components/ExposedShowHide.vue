@@ -13,27 +13,27 @@ const store = useMainStore();
 const translations = computed(() => store.translations);
 
 const content = computed(() => {
-    return `import { ref, onMounted } from "vue";
+    return `
+    import { ref, onMounted } from "vue";
 
-// Add this ref to the chart component
-const ${props.component}Ref = ref(null);
+    // Add this ref to the chart component
+    const ${props.component}Ref = ref(null);
 
-// Create a wrapper around exposed functions
-function showSeriesByName(name) {
-    if (!${props.component}Ref.value) return;
-    ${props.component}Ref.value.showSeries(name);
-}
+    // Create a wrapper around exposed functions
+    function showSeriesByName(name) {
+        if (!${props.component}Ref.value) return;
+        ${props.component}Ref.value.showSeries(name);
+    }
 
-function hideSeriesByName(name) {
-    if (!${props.component}Ref.value) return;
-    ${props.component}Ref.value.hideSeries(name);
-}
+    function hideSeriesByName(name) {
+        if (!${props.component}Ref.value) return;
+        ${props.component}Ref.value.hideSeries(name);
+    }
 
-// Example:
-
-onMounted(() => {
-    hideSeriesByName('Series A');
-});
+    // Example:
+    onMounted(() => {
+        hideSeriesByName('Series A');
+    });
 `
 })
 
