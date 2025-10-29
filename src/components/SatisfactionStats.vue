@@ -3,7 +3,7 @@ import { computed, watch, ref } from "vue";
 import { useMainStore } from "../stores";
 import ButtonSatisfactionBreakdown from "./ButtonSatisfactionBreakdown.vue";
 import colorBridge from "color-bridge"
-import { VueDataUi } from "vue-data-ui";
+import { VueDataUi, VueUiSparkHistogram } from "vue-data-ui";
 import mockStats from './mockStats.json'
 import { createUid, fillEmptyDays } from "./maker/lib";
 import BaseCard from "./BaseCard.vue";
@@ -826,6 +826,59 @@ const availableComponents = computed(() => {
     return Object.keys(ratedComponents.value);
 })
 
+const sparkHistogramDataset = computed(() => {
+    const values  = [...history.value.averagePerDay].slice(-15);
+    const perDay = [...history.value.ratingsPerDay].slice(-15);
+    const max = Math.max(...perDay);
+    const _dates = [...history.value.dates].slice(-15);
+    return values.map((d, i) => {
+        const intensity = ((perDay[i] ?? 0) / (max ?? 1)) ?? 0;
+        return {
+            value: d,
+            intensity,
+            timeLabel: _dates[i],
+            valueLabel: `${perDay[i] ?? 0} vote${perDay[i] === 1 ? '' : 's'}`
+        }
+    })
+});
+
+const sparkHistogramConfig = computed(() => {
+    return {
+        style: {
+            backgroundColor: isDarkMode.value ? '#3A3A3A' : '#FFFFFF',
+            bars: {
+                shape: 'star',
+                colors: {
+                    positive: isDarkMode.value ? '#fdd663' : '#bd992f'
+                }
+            },
+            labels: {
+                timeLabel: {
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A'
+                },
+                value: {
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    offsetY: -6
+                },
+                valueLabel: {
+                    color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
+                    fontSize: 10
+                }
+            },
+            title: {
+                text: 'Voting intensity',
+                color: isDarkMode.value ? '#1f77b4' : '#1A1A1A',
+                fontSize: 20,
+                subtitle: {
+                    text: 'Last 15 days',
+                    color: isDarkMode.value ? '#AEC7E8' : "#A1A1A1",
+                    fontSize: 16
+                }
+            }
+        }
+    }
+})
+
 const xyDataset = computed(() => {
     if (selectedComponent.value === ALL_COMPONENTS) {
         return [
@@ -1292,6 +1345,12 @@ function selectHeatmapCell(cell) {
                             item.name.replaceAll('VueUi', '') }}</span></span>
                     </li>
                 </ul>
+            </div>
+        </BaseCard>
+
+        <BaseCard v-if="ratings.length" class="w-full mt-6" type="light">
+            <div class="p-4">
+                <VueUiSparkHistogram :dataset="sparkHistogramDataset" :config="sparkHistogramConfig" />
             </div>
         </BaseCard>
 
