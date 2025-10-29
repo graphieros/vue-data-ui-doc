@@ -4885,7 +4885,6 @@ export default function useExamples() {
                         },
                         grid: {
                             ...BASE_XY_CONFIG.value.chart.grid,
-                            position: 'start',
                             labels: {
                                 ...BASE_XY_CONFIG.value.chart.grid.labels,
                                 yAxis: {
