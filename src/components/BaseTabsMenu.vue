@@ -39,7 +39,7 @@ const selectedIndexOnLoad = computed(() => {
             <div
                 v-for="(item, index) in items"
                 :key="index"
-                :style="{ color: isDarkMode ? item.color : '#2A2A2A', background: activeTab === item.order ? isDarkMode ? `${item.color}20` : `radial-gradient(at top, #ccdbff, #abc2f6)` : undefined, borderBottom: activeTab === item.order && isDarkMode ? `2px solid ${item.color}` : 'none' }"
+                :style="{ color: isDarkMode ? item.color : '#2A2A2A', background: activeTab === item.order ? isDarkMode ? `${item.color}20` : `radial-gradient(at top, #ccdbff, #abc2f6)` : undefined, borderBottom: activeTab === item.order && isDarkMode ? `2px solid ${item.color}` : '2px solid transparent' }"
                 :class="`flex flex-col items-center text-center justify-center cursor-pointer p-2 min-w-[90px] flex-shrink-0 whitespace-nowrap rounded-xl gap-2 bg-gray-100 dark:bg-[#3A3A3A] hover:bg-[#FFFFFF] dark:hover:bg-[#4A4A4A] transition-colors shadow-[inset_0_2px_2px_#FFFFFF,0_4px_6px_rgba(0,0,0,0.1)]
         dark:shadow-[inset_0_2px_2px_#4A4A4A,0_4px_6px_rgba(0,0,0,0.5)]`"
                 @click="selectTab(item)"
