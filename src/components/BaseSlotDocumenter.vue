@@ -459,12 +459,12 @@ function copyToClipboard(conf) {
         <template v-for="item in items" >
             <div v-if="isVisible(item.names)" class="mb-4">
                 <div class="flex flex-row gap-2 place-items-center flex-wrap mb-2">
-                    <div v-for="tag in item.names" class="bg-gradient-to-br from-[#6fe8b2] to-app-green text-black rounded-full px-2 py-0.5 shadow">
+                    <div v-for="tag in item.names" class="bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow">
                         #{{ tag.replaceAll('_', '').replaceAll('-circlePack', '') }}
                     </div>
                 </div>
-                <div class="pl-6 border-l border-gray-500 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-tr py-3 pr-6">{{ item.description }}</div>
-<div class="bg-gray-200 dark:bg-[#1A1A1A] overflow-auto border-l border-gray-500 rounded-br rounded-bl relative shadow">
+                <div class="pl-6 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-t-2xl py-3 pr-6">{{ item.description }}</div>
+<div class="bg-gray-200 dark:bg-[#1A1A1A] overflow-auto rounded-b-2xl relative shadow">
     <div class="absolute top-1 right-1">
         <FlexibleTooltip position="left" :content="translations.clickToCopy[store.lang]">
             <button class="flex place-items-center justify-center p-1 rounded-full hover:bg-[#42d39230] transition-colors" @click="() => copyToClipboard(item.snippet)">

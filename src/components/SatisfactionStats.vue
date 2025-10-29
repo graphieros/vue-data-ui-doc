@@ -360,6 +360,7 @@ const historyPlotConfig = computed(() => {
                         ticks: 5,
                         labels: {
                             color: isDarkMode.value ? '#8A8A8A' : '#8A8A8A',
+                            rounding: 2
                         },
                         name: {
                             text: 'Average rating',
@@ -379,7 +380,7 @@ const historyPlotConfig = computed(() => {
                     },
                     yAxis: {
                         stroke: '#CCCCCC'
-                    }
+                    },
                 },
                 legend: { show: false },
                 paths: {
@@ -413,7 +414,7 @@ const historyPlotConfig = computed(() => {
                     backgroundOpacity: 20,
                     borderColor: isDarkMode.value ? '#3A3A3A' : '#E1E5E8',
                     color: isDarkMode.value ? '#CCCCCC' : '#1A1A1A',
-                    roundingValue: 2
+                    roundingValue: 3
                 },
             }
         }
