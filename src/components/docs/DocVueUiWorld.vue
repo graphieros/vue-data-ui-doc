@@ -962,7 +962,9 @@ function goToPage(route) {
                         'legend',
                         'watermark',
                         'source',
-                        'chart-background'
+                        'chart-background',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 />
             </template>

@@ -790,7 +790,9 @@ function goToPage(route) {
                         'tooltip-before',
                         'tooltip-after',
                         'watermark',
-                        'source'
+                        'source',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 />
             </template>

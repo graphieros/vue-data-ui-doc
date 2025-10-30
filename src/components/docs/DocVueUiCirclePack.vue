@@ -757,7 +757,9 @@ function goToPage(route) {
                     'chart-background',
                     'pattern',
                     'zoom-label',
-                    'data-label-circlePack'
+                    'data-label-circlePack',
+                    'user-menu',
+                    'annotator-actions'
                 ]" 
             />
         </template>

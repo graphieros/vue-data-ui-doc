@@ -467,7 +467,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUiTiremarksDatase
                         'svg',
                         'watermark',
                         'source',
-                        'chart-background'
+                        'chart-background',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 />
             </template>

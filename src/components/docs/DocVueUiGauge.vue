@@ -731,7 +731,9 @@ function goToPage(route) {
                         'watermark',
                         'source',
                         'chart-background',
-                        'pattern'
+                        'pattern',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 />
             </template>

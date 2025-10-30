@@ -1187,7 +1187,9 @@ function freestyle({ drawingArea, data }) {
                       'tooltip-after',
                       'watermark',
                       'source',
-                      'chart-background'
+                      'chart-background',
+                      'user-menu',
+                      'annotator-actions'
                   ]" 
               >
               <template #after="item">

@@ -426,6 +426,78 @@ const items = computed(() => {
     </${props.componentName}>
             `
         },
+        {
+            names: ['user-menu'],
+            description: translations.value.slots.userMenu[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #menuIcon="{ isOpen, color }">
+            <MyCloseIcon v-if="isOpen"/>
+            <MyOpenIcon v-else/>
+        </template>
+        <template #optionTooltip>
+            <MyTooltipIcon/>
+        </template>
+        <template #optionPdf>
+            <MyPdfIcon/>
+        </template>
+        <template #optionCsv>
+            <MyCsvIcon/>
+        </template>
+        <template #optionImg>
+            <MyImageIcon/>
+        </template>
+        <template #optionSvg>
+            <MySvgIcon/>
+        </template>
+        <template #optionTable>
+            <MyTableIcon/>
+        </template>
+        <template #optionLabels>
+            <MyLabelsIcon/>
+        </template>
+        <template #optionSort>
+            <MySortIcon/>
+        </template>
+        <template #optionStack="{ isStack }">
+            <MyStackIcon/>
+        </template>
+        <template #optionFullscreen="{ isFullscreen }">
+            <MyFullscreenIcon/>
+        </template>
+        <template #optionAnnotator="{ isAnnotator }">
+            <MyPenIcon/>
+        </template>
+    </${props.componentName}>
+            `
+        },
+        {
+            names: ['annotator-actions'],
+            description: translations.value.slots.annotatorActions[store.lang],
+            snippet: `
+    <${props.componentName} :dataset="dataset" :config="config">
+        <template #annotator-action-close>
+            <MyCloseIcon/>
+        </template>
+        <template #annotator-action-color="{ color }">
+            <MyColorIcon :color="color"/>
+        </template>
+        <template #annotator-action-draw="{ mode }">
+            <MyDrawIcon v-if="mode === 'draw'"/>
+            <MyTextIcon v-else/>
+        </template>
+        <template #annotator-action-undo="{ disabled }">
+            <MyUndoIcon/>
+        </template>
+        <template #annotator-action-redo="{ disabled }">
+            <MyRedoIcon/>
+        </template>
+        <template #annotator-action-delete="{ disabled }">
+            <MyDeleteIcon/>
+        </template>
+    </${props.componentName}>
+            `
+        }
     ]
 })
 
@@ -460,7 +532,7 @@ function copyToClipboard(conf) {
             <div v-if="isVisible(item.names)" class="mb-4">
                 <div class="flex flex-row gap-2 place-items-center flex-wrap mb-2">
                     <div v-for="tag in item.names" class="bg-gradient-to-br from-app-green-light to-app-green text-black rounded-full px-2 py-0.5 shadow">
-                        #{{ tag.replaceAll('_', '').replaceAll('-circlePack', '') }}
+                        #{{ tag === 'annotator-actions' ? 'annotator-action-xxx' : tag === 'user-menu' ? '#menuIcon, #optionXxx'  : tag.replaceAll('_', '').replaceAll('-circlePack', '') }}
                     </div>
                 </div>
                 <div class="pl-6 bg-[#FFFFFF10] text-black dark:text-gray-400 rounded-t-2xl py-3 pr-6">{{ item.description }}</div>

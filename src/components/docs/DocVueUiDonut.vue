@@ -1251,7 +1251,9 @@ function goToPage(route) {
                         'source',
                         'plot-comment',
                         'chart-background',
-                        'pattern'
+                        'pattern',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 />
             </template>

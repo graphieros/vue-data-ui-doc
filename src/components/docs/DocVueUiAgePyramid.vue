@@ -1335,7 +1335,9 @@ function goToPage(route) {
                         'tooltip-after',
                         'watermark',
                         'source',
-                        'chart-background'
+                        'chart-background',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 />
             </template>

@@ -910,6 +910,28 @@ export const useMainStore = defineStore("main", {
                     }
                 },
                 slots: {
+                    annotatorActions: {
+                        en: 'The content of the annotator menu can be customized using the provided slots.',
+                        fr: 'Le contenu du menu d’annotation peut être personnalisé à l’aide des slots fournis.',
+                        pt: 'O conteúdo do menu do anotador pode ser personalizado usando os slots fornecidos.',
+                        de: 'Der Inhalt des Anmerkungsmenüs kann mit den bereitgestellten Slots angepasst werden.',
+                        zh: '可以使用提供的插槽自定义注释菜单的内容。',
+                        jp: '提供されたスロットを使用して、アノテーターメニューの内容をカスタマイズできます。',
+                        es: 'El contenido del menú del anotador se puede personalizar utilizando las ranuras proporcionadas.',
+                        ko: '제공된 슬롯을 사용하여 주석 메뉴의 내용을 사용자 지정할 수 있습니다.',
+                        ar: 'يمكن تخصيص محتوى قائمة المُعَلِّق باستخدام الفتحات المُقدَّمة.'
+                    },
+                    userMenu: {
+                        en: 'The content of the chart\'s context menu can be customized using the provided slots.',
+                        fr: 'Le contenu du menu contextuel du graphique peut être personnalisé à l’aide des slots fournis.',
+                        pt: 'O conteúdo do menu de contexto do gráfico pode ser personalizado usando os slots fornecidos.',
+                        de: 'Der Inhalt des Kontextmenüs des Diagramms kann mit den bereitgestellten Slots angepasst werden.',
+                        zh: '可以使用提供的插槽自定义图表的上下文菜单内容。',
+                        jp: '提供されたスロットを使用して、チャートのコンテキストメニューの内容をカスタマイズできます。',
+                        es: 'El contenido del menú contextual del gráfico se puede personalizar utilizando las ranuras proporcionadas.',
+                        ko: '제공된 슬롯을 사용하여 차트의 컨텍스트 메뉴 내용을 사용자 지정할 수 있습니다.',
+                        ar: 'يمكن تخصيص محتوى القائمة السياقية للمخطط باستخدام الفتحات المُقدَّمة.'
+                    },
                     freestyle: {
                         en: 'Even more control can be obtained from the exposed data of the #svg slot, to inject precise content into the chart.',
                         fr: 'Un contrôle encore plus précis peut être obtenu à partir des données exposées du slot #svg, afin d’injecter un contenu précis dans le graphique.',

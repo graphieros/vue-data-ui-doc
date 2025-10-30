@@ -2067,7 +2067,9 @@ function getObjectByY(arr, type = 'max') {
                         'chart-background',
                         'pattern',
                         'area-gradient',
-                        'bar-gradient'
+                        'bar-gradient',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 >
                 <template #after="item">

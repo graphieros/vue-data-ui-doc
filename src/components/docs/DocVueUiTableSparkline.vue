@@ -561,7 +561,8 @@ function goToPage(route) {
             <BaseSlotDocumenter
                     componentName="VueUiTableSparkline"
                     :types="[
-                        'source'
+                        'source',
+                        'user-menu',
                     ]" 
                 />
           </template>

@@ -706,7 +706,9 @@ function goToPage(route) {
                         'reset-action',
                         'watermark',
                         'source',
-                        'chart-background'
+                        'chart-background',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 />
             </template>

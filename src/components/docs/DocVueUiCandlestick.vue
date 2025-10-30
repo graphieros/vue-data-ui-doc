@@ -1053,7 +1053,9 @@ function freestyle({ drawingArea, data }) {
           'reset-action',
           'watermark',
           'source',
-          'chart-background'
+          'chart-background',
+          'user-menu',
+          'annotator-actions'
         ]">
         <template #after="item">
           <div v-if="item.names.includes('svg')" class="p-6">

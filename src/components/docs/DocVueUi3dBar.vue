@@ -773,7 +773,9 @@ const <span class="text-black dark:text-app-green">dataset: VueUi3dBarDataset</s
                         'svg',
                         'watermark',
                         'source',
-                        'chart-background'
+                        'chart-background',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 />
             </template>

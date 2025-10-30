@@ -1423,7 +1423,9 @@ function freestyle({ drawingArea, data }) {
                         'watermark',
                         'source',
                         'chart-background',
-                        'pattern'
+                        'pattern',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 >
                 <template #after="item">

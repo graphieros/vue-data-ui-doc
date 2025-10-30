@@ -962,7 +962,9 @@ function goToPage(route) {
                         'watermark',
                         'source',
                         'breadcrumb-label',
-                        'breadcrumb-arrow'
+                        'breadcrumb-arrow',
+                        'user-menu',
+                        'annotator-actions'
                     ]" 
                 />
             </template>

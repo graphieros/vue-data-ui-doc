@@ -2336,7 +2336,9 @@ function goToPage(route) {
                 'tooltip-after',
                 'reset-action',
                 'watermark',
-                'source'
+                'source',
+                'user-menu',
+                'annotator-actions'
             ]" 
         />
       </template>
