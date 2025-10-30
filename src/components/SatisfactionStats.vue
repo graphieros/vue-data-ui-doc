@@ -1366,12 +1366,12 @@ function selectHeatmapCell(cell) {
                         Cut null values
                         <input type="checkbox" v-model="cutNullValues">
                     </label>    
-                    <label class="flex flex-row gap-2 place-items-center">
+                    <label class="flex flex-row gap-2 place-items-center w-full">
                         History for:
                         <button @click="goTo('prev')">
                             <VueUiIcon name="arrowLeft" :size="16"/>
                         </button>
-                        <select v-model="selectedComponent" class="p-1 pl-2 !rounded-full bg-white dark:bg-[#2A2A2A] shadow-inner">
+                        <select v-model="selectedComponent" class="p-1 pl-2 !rounded-full bg-white dark:bg-[#2A2A2A] shadow-inner w-full max-w-[250px]">
                             <option>All components</option>
                             <option v-for="o in availableComponents">
                                 {{ o }}
